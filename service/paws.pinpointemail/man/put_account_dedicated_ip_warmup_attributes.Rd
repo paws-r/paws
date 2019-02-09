@@ -4,9 +4,7 @@
 \alias{put_account_dedicated_ip_warmup_attributes}
 \title{Enable or disable the automatic warm-up feature for dedicated IP addresses}
 \usage{
-put_account_dedicated_ip_warmup_attributes(
-  AutoWarmupEnabled = TRUE|FALSE
-)
+put_account_dedicated_ip_warmup_attributes(AutoWarmupEnabled = NULL)
 }
 \arguments{
 \item{AutoWarmupEnabled}{Enables or disables the automatic warm-up feature for dedicated IP addresses that are associated with your Amazon Pinpoint account in the current AWS Region. Set to \code{true} to enable the automatic warm-up feature, or set to \code{false} to disable it.}
@@ -14,6 +12,10 @@ put_account_dedicated_ip_warmup_attributes(
 \description{
 Enable or disable the automatic warm-up feature for dedicated IP addresses.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_account_dedicated_ip_warmup_attributes(
+  AutoWarmupEnabled = TRUE|FALSE
+)
 }
+}
+

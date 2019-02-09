@@ -4,7 +4,20 @@
 \alias{create_insight}
 \title{Creates an insight, which is a consolidation of findings that identifies a security area that requires attention or intervention}
 \usage{
-create_insight(
+create_insight(Name, Filters, GroupByAttribute)
+}
+\arguments{
+\item{Name}{[required] The user-defined name that identifies the insight that you want to create.}
+
+\item{Filters}{[required] A collection of attributes that are applied to all active Security Hub-aggregated findings and that result in a subset of findings that are included in this insight.}
+
+\item{GroupByAttribute}{[required] The attribute by which the insight's findings are grouped. This attribute is used as a findings aggregator for the purposes of viewing and managing multiple related findings under a single operand.}
+}
+\description{
+Creates an insight, which is a consolidation of findings that identifies a security area that requires attention or intervention.
+}
+\section{Accepted Parameters}{
+\preformatted{create_insight(
   Name = "string",
   Filters = list(
     ProductArn = list(
@@ -558,16 +571,5 @@ create_insight(
   GroupByAttribute = "string"
 )
 }
-\arguments{
-\item{Name}{[required] The user-defined name that identifies the insight that you want to create.}
-
-\item{Filters}{[required] A collection of attributes that are applied to all active Security Hub-aggregated findings and that result in a subset of findings that are included in this insight.}
-
-\item{GroupByAttribute}{[required] The attribute by which the insight's findings are grouped. This attribute is used as a findings aggregator for the purposes of viewing and managing multiple related findings under a single operand.}
 }
-\description{
-Creates an insight, which is a consolidation of findings that identifies a security area that requires attention or intervention.
-}
-\examples{
 
-}

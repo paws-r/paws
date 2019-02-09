@@ -15,7 +15,7 @@ copy_snapshot(Description = NULL, DestinationRegion = NULL,
 
 The snapshot copy is sent to the regional endpoint that you sent the HTTP request to (for example, \code{ec2.us-east-1.amazonaws.com}). With the AWS CLI, this is specified using the \code{--region} parameter or the default region in your AWS configuration file.}
 
-\item{Encrypted}{Specifies whether the destination snapshot should be encrypted. You can encrypt a copy of an unencrypted snapshot, but you cannot use it to create an unencrypted copy of an encrypted snapshot. Your default CMK for EBS is used unless you specify a non-default AWS Key Management Service (AWS KMS) CMK using \code{KmsKeyId}. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS Encryption} in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+\item{Encrypted}{Specifies whether the destination snapshot should be encrypted. You can encrypt a copy of an unencrypted snapshot, but you cannot use it to create an unencrypted copy of an encrypted snapshot. Your default CMK for EBS is used unless you specify a non-default AWS Key Management Service (AWS KMS) CMK using \code{KmsKeyId}. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS Encryption} in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
 \item{KmsKeyId}{An identifier for the AWS Key Management Service (AWS KMS) customer master key (CMK) to use when creating the encrypted volume. This parameter is only required if you want to use a non-default CMK; if this parameter is not specified, the default CMK for EBS is used. If a \code{KmsKeyId} is specified, the \code{Encrypted} flag must also be set.
 
@@ -29,9 +29,9 @@ The CMK identifier may be provided in any of the following formats:
 
 AWS parses \code{KmsKeyId} asynchronously, meaning that the action you call may appear to complete even though you provided an invalid identifier. The action will eventually fail.}
 
-\item{PresignedUrl}{When you copy an encrypted source snapshot using the Amazon EC2 Query API, you must supply a pre-signed URL. This parameter is optional for unencrypted snapshots. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html}{Query Requests}.
+\item{PresignedUrl}{When you copy an encrypted source snapshot using the Amazon EC2 Query API, you must supply a pre-signed URL. This parameter is optional for unencrypted snapshots. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html}{Query Requests}.
 
-The \code{PresignedUrl} should use the snapshot source endpoint, the \code{CopySnapshot} action, and include the \code{SourceRegion}, \code{SourceSnapshotId}, and \code{DestinationRegion} parameters. The \code{PresignedUrl} must be signed using AWS Signature Version 4. Because EBS snapshots are stored in Amazon S3, the signing algorithm for this parameter uses the same logic that is described in \href{http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html}{Authenticating Requests by Using Query Parameters (AWS Signature Version 4)} in the \emph{Amazon Simple Storage Service API Reference}. An invalid or improperly signed \code{PresignedUrl} will cause the copy operation to fail asynchronously, and the snapshot will move to an \code{error} state.}
+The \code{PresignedUrl} should use the snapshot source endpoint, the \code{CopySnapshot} action, and include the \code{SourceRegion}, \code{SourceSnapshotId}, and \code{DestinationRegion} parameters. The \code{PresignedUrl} must be signed using AWS Signature Version 4. Because EBS snapshots are stored in Amazon S3, the signing algorithm for this parameter uses the same logic that is described in \href{https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html}{Authenticating Requests by Using Query Parameters (AWS Signature Version 4)} in the \emph{Amazon Simple Storage Service API Reference}. An invalid or improperly signed \code{PresignedUrl} will cause the copy operation to fail asynchronously, and the snapshot will move to an \code{error} state.}
 
 \item{SourceRegion}{[required] The ID of the region that contains the snapshot to be copied.}
 
@@ -49,7 +49,7 @@ To copy an encrypted snapshot that has been shared from another account, you mus
 
 Snapshots created by copying another snapshot have an arbitrary volume ID that should not be used for any purpose.
 
-For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-copy-snapshot.html}{Copying an Amazon EBS Snapshot} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-copy-snapshot.html}{Copying an Amazon EBS Snapshot} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{copy_snapshot(

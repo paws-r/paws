@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.transfer_operations.R
 \name{describe_user}
 \alias{describe_user}
-\title{Describes the user assigned to a specific server, as identified by its \code{ServerId} property}
+\title{Describes the user assigned to a specific server, as identified by its ServerId property}
 \usage{
-describe_user(
-  ServerId = "string",
-  UserName = "string"
-)
+describe_user(ServerId, UserName)
 }
 \arguments{
 \item{ServerId}{[required] A system-assigned unique identifier for an SFTP server that has this user assigned.}
@@ -20,6 +17,11 @@ Describes the user assigned to a specific server, as identified by its \code{Ser
 \details{
 The response from this call returns the properties of the user associated with the \code{ServerId} value that was specified.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_user(
+  ServerId = "string",
+  UserName = "string"
+)
 }
+}
+

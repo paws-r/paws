@@ -13,7 +13,7 @@ describe_configurations(configurationIds)
 Retrieves attributes for a list of configuration item IDs.
 }
 \details{
-All of the supplied IDs must be for the same asset type from one of the follwoing:
+All of the supplied IDs must be for the same asset type from one of the following:
 \itemize{
 \item server
 \item application

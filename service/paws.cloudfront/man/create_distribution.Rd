@@ -63,6 +63,30 @@ If you are using Adobe Flash Media Server's RTMP protocol, you set up a differen
         )
       )
     ),
+    OriginGroups = list(
+      Quantity = 123,
+      Items = list(
+        list(
+          Id = "string",
+          FailoverCriteria = list(
+            StatusCodes = list(
+              Quantity = 123,
+              Items = list(
+                123
+              )
+            )
+          ),
+          Members = list(
+            Quantity = 123,
+            Items = list(
+              list(
+                OriginId = "string"
+              )
+            )
+          )
+        )
+      )
+    ),
     DefaultCacheBehavior = list(
       TargetOriginId = "string",
       ForwardedValues = list(

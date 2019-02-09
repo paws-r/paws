@@ -31,7 +31,7 @@ Constraints:
 
 For example, --table-mappings file://mappingfile.json}
 
-\item{ReplicationTaskSettings}{Settings for the task, such as target metadata settings. For a complete list of task settings, see \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html}{Task Settings for AWS Database Migration Service Tasks}.}
+\item{ReplicationTaskSettings}{Settings for the task, such as target metadata settings. For a complete list of task settings, see \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html}{Task Settings for AWS Database Migration Service Tasks} in the \emph{AWS Database Migration User Guide.}}
 
 \item{CdcStartTime}{Indicates the start time for a change data capture (CDC) operation. Use either CdcStartTime or CdcStartPosition to specify when you want a CDC operation to start. Specifying both values results in an error.
 

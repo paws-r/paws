@@ -26,7 +26,7 @@ For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGui
 
 \item{SecurityGroups}{One or more security groups with which to associate the instances.
 
-If your instances are launched in EC2-Classic, you can either specify security group names or the security group IDs. For more information about security groups for EC2-Classic, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html}{Amazon EC2 Security Groups} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+If your instances are launched in EC2-Classic, you can either specify security group names or the security group IDs. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html}{Amazon EC2 Security Groups} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 If your instances are launched into a VPC, specify security group IDs. For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html}{Security Groups for Your VPC} in the \emph{Amazon Virtual Private Cloud User Guide}.}
 
@@ -36,7 +36,7 @@ If your instances are launched into a VPC, specify security group IDs. For more 
 
 \item{UserData}{The user data to make available to the launched EC2 instances. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html}{Instance Metadata and User Data} in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
-\item{InstanceId}{The ID of the instance to use to create the launch configuration. The new launch configuration derives attributes from the instance, with the exception of the block device mapping.
+\item{InstanceId}{The ID of the instance to use to create the launch configuration. The new launch configuration derives attributes from the instance, except for the block device mapping.
 
 If you do not specify \code{InstanceId}, you must specify both \code{ImageId} and \code{InstanceType}.
 
@@ -62,7 +62,7 @@ For information about available instance types, see \href{http://docs.aws.amazon
 
 \item{IamInstanceProfile}{The name or the Amazon Resource Name (ARN) of the instance profile associated with the IAM role for the instance.
 
-EC2 instances launched with an IAM role will automatically have AWS security credentials available. You can use IAM roles with Amazon EC2 Auto Scaling to automatically enable applications running on your EC2 instances to securely access other AWS resources. For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/us-iam-role.html}{Launch Auto Scaling Instances with an IAM Role} in the \emph{Amazon EC2 Auto Scaling User Guide}.}
+EC2 instances launched with an IAM role automatically have AWS security credentials available. You can use IAM roles with Amazon EC2 Auto Scaling to automatically enable applications running on your EC2 instances to securely access other AWS resources. For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/us-iam-role.html}{Launch Auto Scaling Instances with an IAM Role} in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{EbsOptimized}{Indicates whether the instance is optimized for Amazon EBS I/O. By default, the instance is not optimized for EBS I/O. The optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack to provide optimal I/O performance. This optimization is not available with all instance types. Additional usage charges apply. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSOptimized.html}{Amazon EBS-Optimized Instances} in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
@@ -74,7 +74,7 @@ Default: If the instance is launched into a default subnet, the default is to as
 
 \item{PlacementTenancy}{The tenancy of the instance. An instance with a tenancy of \code{dedicated} runs on single-tenant hardware and can only be launched into a VPC.
 
-You must set the value of this parameter to \code{dedicated} if want to launch Dedicated Instances into a shared tenancy VPC (VPC with instance placement tenancy attribute set to \code{default}).
+To launch Dedicated Instances into a shared tenancy VPC (a VPC with the instance placement tenancy attribute set to \code{default}), you must set the value of this parameter to \code{dedicated}.
 
 If you specify this parameter, be sure to specify at least one subnet when you create your group.
 

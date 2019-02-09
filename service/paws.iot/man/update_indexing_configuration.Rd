@@ -18,7 +18,8 @@ Updates the search configuration.
 \section{Accepted Parameters}{
 \preformatted{update_indexing_configuration(
   thingIndexingConfiguration = list(
-    thingIndexingMode = "OFF"|"REGISTRY"|"REGISTRY_AND_SHADOW"
+    thingIndexingMode = "OFF"|"REGISTRY"|"REGISTRY_AND_SHADOW",
+    thingConnectivityIndexingMode = "OFF"|"STATUS"
   ),
   thingGroupIndexingConfiguration = list(
     thingGroupIndexingMode = "OFF"|"ON"

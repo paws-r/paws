@@ -18,7 +18,7 @@ To find the ARN for a queue, open the queue you want to use in the Amazon Connec
 
 If no \code{Grouping} is included in the request, a summary of \code{CurrentMetrics} is returned.}
 
-\item{CurrentMetrics}{[required] A list of \code{CurrentMetric} objects for the metrics to retrieve. Each \code{CurrentMetric} includes a name of a metric to retrieve and the unit to use for it.
+\item{CurrentMetrics}{[required] A list of \code{CurrentMetric} objects for the metrics to retrieve. Each \code{CurrentMetric} includes a name of a metric to retrieve and the unit to use for it. You must list each metric to retrieve data for in the request.
 
 The following metrics are available:
 

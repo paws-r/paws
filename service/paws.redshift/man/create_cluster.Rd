@@ -9,13 +9,15 @@ create_cluster(DBName = NULL, ClusterIdentifier, ClusterType = NULL,
   ClusterSecurityGroups = NULL, VpcSecurityGroupIds = NULL,
   ClusterSubnetGroupName = NULL, AvailabilityZone = NULL,
   PreferredMaintenanceWindow = NULL, ClusterParameterGroupName = NULL,
-  AutomatedSnapshotRetentionPeriod = NULL, Port = NULL,
+  AutomatedSnapshotRetentionPeriod = NULL,
+  ManualSnapshotRetentionPeriod = NULL, Port = NULL,
   ClusterVersion = NULL, AllowVersionUpgrade = NULL,
   NumberOfNodes = NULL, PubliclyAccessible = NULL, Encrypted = NULL,
   HsmClientCertificateIdentifier = NULL,
   HsmConfigurationIdentifier = NULL, ElasticIp = NULL, Tags = NULL,
   KmsKeyId = NULL, EnhancedVpcRouting = NULL, AdditionalInfo = NULL,
-  IamRoles = NULL, MaintenanceTrackName = NULL)
+  IamRoles = NULL, MaintenanceTrackName = NULL,
+  SnapshotScheduleIdentifier = NULL)
 }
 \arguments{
 \item{DBName}{The name of the first database to be created when the cluster is created.
@@ -125,6 +127,10 @@ Default: \code{1}
 
 Constraints: Must be a value from 0 to 35.}
 
+\item{ManualSnapshotRetentionPeriod}{The default number of days to retain a manual snapshot. If the value is -1, the snapshot is retained indefinitely. This setting doesn't change the retention period of existing snapshots.
+
+The value must be either -1 or an integer between 1 and 3,653.}
+
 \item{Port}{The port number on which the cluster accepts incoming connections.
 
 The cluster is accessible only via the JDBC and ODBC connection strings. Part of the connection string requires the port on which the cluster will listen for incoming connections.
@@ -188,6 +194,8 @@ Default: false}
 A cluster can have up to 10 IAM roles associated with it at any time.}
 
 \item{MaintenanceTrackName}{An optional parameter for the name of the maintenance track for the cluster. If you don't provide a maintenance track name, the cluster is assigned to the \code{current} track.}
+
+\item{SnapshotScheduleIdentifier}{A unique identifier for the snapshot schedule.}
 }
 \description{
 Creates a new cluster.
@@ -214,6 +222,7 @@ To create a cluster in Virtual Private Cloud (VPC), you must provide a cluster s
   PreferredMaintenanceWindow = "string",
   ClusterParameterGroupName = "string",
   AutomatedSnapshotRetentionPeriod = 123,
+  ManualSnapshotRetentionPeriod = 123,
   Port = 123,
   ClusterVersion = "string",
   AllowVersionUpgrade = TRUE|FALSE,
@@ -235,7 +244,8 @@ To create a cluster in Virtual Private Cloud (VPC), you must provide a cluster s
   IamRoles = list(
     "string"
   ),
-  MaintenanceTrackName = "string"
+  MaintenanceTrackName = "string",
+  SnapshotScheduleIdentifier = "string"
 )
 }
 }

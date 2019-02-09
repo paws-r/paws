@@ -25,7 +25,7 @@ describe_launch_templates(DryRun = NULL, LaunchTemplateIds = NULL,
 
 \item{NextToken}{The token to request the next page of results.}
 
-\item{MaxResults}{The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned \code{NextToken} value. This value can be between 5 and 1000.}
+\item{MaxResults}{The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned \code{NextToken} value. This value can be between 1 and 200.}
 }
 \description{
 Describes one or more launch templates.

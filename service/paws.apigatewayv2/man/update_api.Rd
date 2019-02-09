@@ -4,15 +4,9 @@
 \alias{update_api}
 \title{Updates an Api resource}
 \usage{
-update_api(
-  ApiId = "string",
-  ApiKeySelectionExpression = "string",
-  Description = "string",
-  DisableSchemaValidation = TRUE|FALSE,
-  Name = "string",
-  RouteSelectionExpression = "string",
-  Version = "string"
-)
+update_api(ApiId, ApiKeySelectionExpression = NULL, Description = NULL,
+  DisableSchemaValidation = NULL, Name = NULL,
+  RouteSelectionExpression = NULL, Version = NULL)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -32,6 +26,16 @@ update_api(
 \description{
 Updates an Api resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_api(
+  ApiId = "string",
+  ApiKeySelectionExpression = "string",
+  Description = "string",
+  DisableSchemaValidation = TRUE|FALSE,
+  Name = "string",
+  RouteSelectionExpression = "string",
+  Version = "string"
+)
 }
+}
+

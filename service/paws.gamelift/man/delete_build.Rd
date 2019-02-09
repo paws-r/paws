@@ -14,8 +14,6 @@ Deletes a build. This action permanently deletes the build record and any upload
 }
 \details{
 To delete a build, specify its ID. Deleting a build does not affect the status of any active fleets using the build, but you can no longer create new fleets with the deleted build.
-
-Build-related operations include:
 \itemize{
 \item CreateBuild
 \item ListBuilds

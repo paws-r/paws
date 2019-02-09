@@ -37,6 +37,9 @@ NULL
 #'   SubnetIds = list(
 #'     "string"
 #'   ),
+#'   Tags = list(
+#'     "string"
+#'   ),
 #'   Users = list(
 #'     list(
 #'       ConsoleAccess = TRUE|FALSE,
@@ -56,13 +59,14 @@ NULL
 #' @param CreatorRequestId The unique ID that the requester receives for the created broker. Amazon MQ passes your ID with the API action. Note: We recommend using a Universally Unique Identifier (UUID) for the creatorRequestId. You may omit the creatorRequestId if your application doesn't require idempotency.
 #' @param DeploymentMode Required. The deployment mode of the broker.
 #' @param EngineType Required. The type of broker engine. Note: Currently, Amazon MQ supports only ACTIVEMQ.
-#' @param EngineVersion Required. The version of the broker engine. Note: Currently, Amazon MQ supports only 5.15.6 and 5.15.0.
+#' @param EngineVersion Required. The version of the broker engine. For a list of supported engine versions, see https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
 #' @param HostInstanceType Required. The broker's instance type.
 #' @param Logs Enables Amazon CloudWatch logging for brokers.
 #' @param MaintenanceWindowStartTime The parameters that determine the WeeklyStartTime.
 #' @param PubliclyAccessible Required. Enables connections from applications outside of the VPC that hosts the broker's subnets.
 #' @param SecurityGroups The list of rules (1 minimum, 125 maximum) that authorize connections to brokers.
 #' @param SubnetIds The list of groups (2 maximum) that define which subnets and IP ranges the broker can use from different Availability Zones. A SINGLE_INSTANCE deployment requires one subnet (for example, the default subnet). An ACTIVE_STANDBY_MULTI_AZ deployment requires two subnets.
+#' @param Tags Create tags when creating the broker.
 #' @param Users Required. The list of ActiveMQ users (persons or applications) who can access queues and topics. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.
 #'
 #' @export
@@ -70,7 +74,7 @@ create_broker <- function (AutoMinorVersionUpgrade = NULL, BrokerName = NULL,
     Configuration = NULL, CreatorRequestId = NULL, DeploymentMode = NULL, 
     EngineType = NULL, EngineVersion = NULL, HostInstanceType = NULL, 
     Logs = NULL, MaintenanceWindowStartTime = NULL, PubliclyAccessible = NULL, 
-    SecurityGroups = NULL, SubnetIds = NULL, Users = NULL) 
+    SecurityGroups = NULL, SubnetIds = NULL, Tags = NULL, Users = NULL) 
 {
     op <- new_operation(name = "CreateBroker", http_method = "POST", 
         http_path = "/v1/brokers", paginator = list())
@@ -80,7 +84,7 @@ create_broker <- function (AutoMinorVersionUpgrade = NULL, BrokerName = NULL,
         EngineType = EngineType, EngineVersion = EngineVersion, 
         HostInstanceType = HostInstanceType, Logs = Logs, MaintenanceWindowStartTime = MaintenanceWindowStartTime, 
         PubliclyAccessible = PubliclyAccessible, SecurityGroups = SecurityGroups, 
-        SubnetIds = SubnetIds, Users = Users)
+        SubnetIds = SubnetIds, Tags = Tags, Users = Users)
     output <- create_broker_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -97,23 +101,57 @@ create_broker <- function (AutoMinorVersionUpgrade = NULL, BrokerName = NULL,
 #' create_configuration(
 #'   EngineType = "ACTIVEMQ",
 #'   EngineVersion = "string",
-#'   Name = "string"
+#'   Name = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @param EngineType Required. The type of broker engine. Note: Currently, Amazon MQ supports only ACTIVEMQ.
-#' @param EngineVersion Required. The version of the broker engine. Note: Currently, Amazon MQ supports only 5.15.6 and 5.15.0.
+#' @param EngineVersion Required. The version of the broker engine. For a list of supported engine versions, see https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
 #' @param Name Required. The name of the configuration. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 1-150 characters long.
+#' @param Tags Create tags when creating the configuration.
 #'
 #' @export
 create_configuration <- function (EngineType = NULL, EngineVersion = NULL, 
-    Name = NULL) 
+    Name = NULL, Tags = NULL) 
 {
     op <- new_operation(name = "CreateConfiguration", http_method = "POST", 
         http_path = "/v1/configurations", paginator = list())
     input <- create_configuration_input(EngineType = EngineType, 
-        EngineVersion = EngineVersion, Name = Name)
+        EngineVersion = EngineVersion, Name = Name, Tags = Tags)
     output <- create_configuration_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Add a tag to a resource
+#'
+#' Add a tag to a resource.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' create_tags(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @param ResourceArn &#91;required&#93; the Amazon Resource Name (ARN)
+#' @param Tags The key-value pair for the resource tag.
+#'
+#' @export
+create_tags <- function (ResourceArn, Tags = NULL) 
+{
+    op <- new_operation(name = "CreateTags", http_method = "POST", 
+        http_path = "/v1/tags/{resource-arn}", paginator = list())
+    input <- create_tags_input(ResourceArn = ResourceArn, Tags = Tags)
+    output <- create_tags_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -179,6 +217,36 @@ delete_broker <- function (BrokerId)
         http_path = "/v1/brokers/{broker-id}", paginator = list())
     input <- delete_broker_input(BrokerId = BrokerId)
     output <- delete_broker_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Remove a tag from a resource
+#'
+#' Remove a tag from a resource.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_tags(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @param ResourceArn &#91;required&#93; the Amazon Resource Name (ARN)
+#' @param TagKeys &#91;required&#93; An array of tag keys to delete
+#'
+#' @export
+delete_tags <- function (ResourceArn, TagKeys) 
+{
+    op <- new_operation(name = "DeleteTags", http_method = "DELETE", 
+        http_path = "/v1/tags/{resource-arn}", paginator = list())
+    input <- delete_tags_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+    output <- delete_tags_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -417,6 +485,32 @@ list_configurations <- function (MaxResults = NULL, NextToken = NULL)
     return(response)
 }
 
+#' Lists tags for a resource
+#'
+#' Lists tags for a resource.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' list_tags(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @param ResourceArn &#91;required&#93; the Amazon Resource Name (ARN)
+#'
+#' @export
+list_tags <- function (ResourceArn) 
+{
+    op <- new_operation(name = "ListTags", http_method = "GET", 
+        http_path = "/v1/tags/{resource-arn}", paginator = list())
+    input <- list_tags_input(ResourceArn = ResourceArn)
+    output <- list_tags_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Returns a list of all ActiveMQ users
 #'
 #' Returns a list of all ActiveMQ users.
@@ -498,7 +592,7 @@ reboot_broker <- function (BrokerId)
 #' @param AutoMinorVersionUpgrade Enables automatic upgrades to new minor versions for brokers, as Apache releases the versions. The automatic upgrades occur during the maintenance window of the broker or after a manual broker reboot.
 #' @param BrokerId &#91;required&#93; The name of the broker. This value must be unique in your AWS account, 1-50 characters long, must contain only letters, numbers, dashes, and underscores, and must not contain whitespaces, brackets, wildcard characters, or special characters.
 #' @param Configuration A list of information about the configuration.
-#' @param EngineVersion The version of the broker engine. Note: Currently, Amazon MQ supports only 5.15.6 and 5.15.0.
+#' @param EngineVersion The version of the broker engine. For a list of supported engine versions, see https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
 #' @param Logs Enables Amazon CloudWatch logging for brokers.
 #'
 #' @export

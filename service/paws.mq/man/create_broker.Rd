@@ -9,7 +9,8 @@ create_broker(AutoMinorVersionUpgrade = NULL, BrokerName = NULL,
   DeploymentMode = NULL, EngineType = NULL, EngineVersion = NULL,
   HostInstanceType = NULL, Logs = NULL,
   MaintenanceWindowStartTime = NULL, PubliclyAccessible = NULL,
-  SecurityGroups = NULL, SubnetIds = NULL, Users = NULL)
+  SecurityGroups = NULL, SubnetIds = NULL, Tags = NULL,
+  Users = NULL)
 }
 \arguments{
 \item{AutoMinorVersionUpgrade}{Required. Enables automatic upgrades to new minor versions for brokers, as Apache releases the versions. The automatic upgrades occur during the maintenance window of the broker or after a manual broker reboot.}
@@ -24,7 +25,7 @@ create_broker(AutoMinorVersionUpgrade = NULL, BrokerName = NULL,
 
 \item{EngineType}{Required. The type of broker engine. Note: Currently, Amazon MQ supports only ACTIVEMQ.}
 
-\item{EngineVersion}{Required. The version of the broker engine. Note: Currently, Amazon MQ supports only 5.15.6 and 5.15.0.}
+\item{EngineVersion}{Required. The version of the broker engine. For a list of supported engine versions, see https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html}
 
 \item{HostInstanceType}{Required. The broker's instance type.}
 
@@ -37,6 +38,8 @@ create_broker(AutoMinorVersionUpgrade = NULL, BrokerName = NULL,
 \item{SecurityGroups}{The list of rules (1 minimum, 125 maximum) that authorize connections to brokers.}
 
 \item{SubnetIds}{The list of groups (2 maximum) that define which subnets and IP ranges the broker can use from different Availability Zones. A SINGLE_INSTANCE deployment requires one subnet (for example, the default subnet). An ACTIVE_STANDBY_MULTI_AZ deployment requires two subnets.}
+
+\item{Tags}{Create tags when creating the broker.}
 
 \item{Users}{Required. The list of ActiveMQ users (persons or applications) who can access queues and topics. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.}
 }
@@ -70,6 +73,9 @@ Creates a broker. Note: This API is asynchronous.
     "string"
   ),
   SubnetIds = list(
+    "string"
+  ),
+  Tags = list(
     "string"
   ),
   Users = list(

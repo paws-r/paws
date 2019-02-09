@@ -2,7 +2,7 @@
 % Please edit documentation in R/paws.rekognition_operations.R
 \name{list_stream_processors}
 \alias{list_stream_processors}
-\title{Gets a list of stream processors that you have created with}
+\title{Gets a list of stream processors that you have created with CreateStreamProcessor}
 \usage{
 list_stream_processors(NextToken = NULL, MaxResults = NULL)
 }
@@ -12,7 +12,7 @@ list_stream_processors(NextToken = NULL, MaxResults = NULL)
 \item{MaxResults}{Maximum number of stream processors you want Amazon Rekognition Video to return in the response. The default is 1000.}
 }
 \description{
-Gets a list of stream processors that you have created with .
+Gets a list of stream processors that you have created with CreateStreamProcessor.
 }
 \section{Accepted Parameters}{
 \preformatted{list_stream_processors(

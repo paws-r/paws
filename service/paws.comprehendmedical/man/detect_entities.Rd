@@ -4,9 +4,7 @@
 \alias{detect_entities}
 \title{Inspects the clinical text for a variety of medical entities and returns specific information about them such as entity category, location, and confidence score on that information}
 \usage{
-detect_entities(
-  Text = "string"
-)
+detect_entities(Text)
 }
 \arguments{
 \item{Text}{[required] A UTF-8 text string containing the clinical content being examined for entities. Each string must contain fewer than 20,000 bytes of characters.}
@@ -14,6 +12,10 @@ detect_entities(
 \description{
 Inspects the clinical text for a variety of medical entities and returns specific information about them such as entity category, location, and confidence score on that information .
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{detect_entities(
+  Text = "string"
+)
 }
+}
+

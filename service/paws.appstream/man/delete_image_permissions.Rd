@@ -9,7 +9,7 @@ delete_image_permissions(Name, SharedAccountId)
 \arguments{
 \item{Name}{[required] The name of the private image.}
 
-\item{SharedAccountId}{[required] The 12-digit ID of the AWS account for which to delete image permissions.}
+\item{SharedAccountId}{[required] The 12-digit identifier of the AWS account for which to delete image permissions.}
 }
 \description{
 Deletes permissions for the specified private image. After you delete permissions for an image, AWS accounts to which you previously granted these permissions can no longer use the image.

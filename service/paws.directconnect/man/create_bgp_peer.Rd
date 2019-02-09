@@ -15,9 +15,9 @@ create_bgp_peer(virtualInterfaceId = NULL, newBGPPeer = NULL)
 Creates a BGP peer on the specified virtual interface.
 }
 \details{
-The BGP peer cannot be in the same address family (IPv4/IPv6) of an existing BGP peer on the virtual interface.
+You must create a BGP peer for the corresponding address family (IPv4/IPv6) in order to access AWS resources that also use that address family.
 
-You must create a BGP peer for the corresponding address family in order to access AWS resources that also use that address family.
+If logical redundancy is not supported by the connection, interconnect, or LAG, the BGP peer cannot be in the same address family as an existing BGP peer on the virtual interface.
 
 When creating a IPv6 BGP peer, omit the Amazon address and customer address. IPv6 addresses are automatically assigned from the Amazon pool of IPv6 addresses; you cannot specify custom IPv6 addresses.
 

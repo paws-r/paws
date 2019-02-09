@@ -37,7 +37,7 @@ Commit time example: --cdc-stop-position "commit\_time: 3018-02-09T12:12:12 "}
 Starts the replication task.
 }
 \details{
-For more information about AWS DMS tasks, see the AWS DMS user guide at \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html}{Working with Migration Tasks}
+For more information about AWS DMS tasks, see \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html}{Working with Migration Tasks} in the \emph{AWS Database Migration Service User Guide.}
 }
 \section{Accepted Parameters}{
 \preformatted{start_replication_task(

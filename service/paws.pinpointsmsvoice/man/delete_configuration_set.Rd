@@ -4,9 +4,7 @@
 \alias{delete_configuration_set}
 \title{Deletes an existing configuration set}
 \usage{
-delete_configuration_set(
-  ConfigurationSetName = "string"
-)
+delete_configuration_set(ConfigurationSetName)
 }
 \arguments{
 \item{ConfigurationSetName}{[required] ConfigurationSetName}
@@ -14,6 +12,10 @@ delete_configuration_set(
 \description{
 Deletes an existing configuration set.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_configuration_set(
+  ConfigurationSetName = "string"
+)
 }
+}
+

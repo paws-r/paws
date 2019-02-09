@@ -10,7 +10,7 @@ create_replication_instance(ReplicationInstanceIdentifier,
   ReplicationSubnetGroupIdentifier = NULL,
   PreferredMaintenanceWindow = NULL, MultiAZ = NULL,
   EngineVersion = NULL, AutoMinorVersionUpgrade = NULL, Tags = NULL,
-  KmsKeyId = NULL, PubliclyAccessible = NULL)
+  KmsKeyId = NULL, PubliclyAccessible = NULL, DnsNameServers = NULL)
 }
 \arguments{
 \item{ReplicationInstanceIdentifier}{[required] The replication instance identifier. This parameter is stored as a lowercase string.
@@ -60,9 +60,11 @@ Default: \code{true}}
 
 \item{Tags}{Tags to be associated with the replication instance.}
 
-\item{KmsKeyId}{The KMS key identifier that will be used to encrypt the content on the replication instance. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.}
+\item{KmsKeyId}{The AWS KMS key identifier that is used to encrypt the content on the replication instance. If you don't specify a value for the \code{KmsKeyId} parameter, then AWS DMS uses your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS Region.}
 
 \item{PubliclyAccessible}{Specifies the accessibility options for the replication instance. A value of \code{true} represents an instance with a public IP address. A value of \code{false} represents an instance with a private IP address. The default value is \code{true}.}
+
+\item{DnsNameServers}{A list of DNS name servers supported for the replication instance.}
 }
 \description{
 Creates the replication instance using the specified parameters.
@@ -88,7 +90,8 @@ Creates the replication instance using the specified parameters.
     )
   ),
   KmsKeyId = "string",
-  PubliclyAccessible = TRUE|FALSE
+  PubliclyAccessible = TRUE|FALSE,
+  DnsNameServers = "string"
 )
 }
 }

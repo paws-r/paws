@@ -14,8 +14,6 @@ Deletes everything related to a fleet. Before deleting a fleet, you must set the
 }
 \details{
 This action removes the fleet's resources and the fleet record. Once a fleet is deleted, you can no longer use that fleet.
-
-Fleet-related operations include:
 \itemize{
 \item CreateFleet
 \item ListFleets

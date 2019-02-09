@@ -7,8 +7,8 @@
 create_project(name, description = NULL, source,
   secondarySources = NULL, artifacts, secondaryArtifacts = NULL,
   cache = NULL, environment, serviceRole, timeoutInMinutes = NULL,
-  encryptionKey = NULL, tags = NULL, vpcConfig = NULL,
-  badgeEnabled = NULL, logsConfig = NULL)
+  queuedTimeoutInMinutes = NULL, encryptionKey = NULL, tags = NULL,
+  vpcConfig = NULL, badgeEnabled = NULL, logsConfig = NULL)
 }
 \arguments{
 \item{name}{[required] The name of the build project.}
@@ -29,11 +29,13 @@ create_project(name, description = NULL, source,
 
 \item{serviceRole}{[required] The ARN of the AWS Identity and Access Management (IAM) role that enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.}
 
-\item{timeoutInMinutes}{How long, in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait until timing out any build that has not been marked as completed. The default is 60 minutes.}
+\item{timeoutInMinutes}{How long, in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait before it times out any build that has not been marked as completed. The default is 60 minutes.}
+
+\item{queuedTimeoutInMinutes}{The number of minutes a build is allowed to be queued before it times out.}
 
 \item{encryptionKey}{The AWS Key Management Service (AWS KMS) customer master key (CMK) to be used for encrypting the build output artifacts.
 
-You can specify either the CMK's Amazon Resource Name (ARN) or, if available, the CMK's alias (using the format \code{alias/alias-name alias-name }).}
+You can specify either the Amazon Resource Name (ARN) of the CMK or, if available, the CMK's alias (using the format \code{alias/alias-name alias-name }).}
 
 \item{tags}{A set of tags for this build project.
 
@@ -41,9 +43,9 @@ These tags are available for use by AWS services that support AWS CodeBuild buil
 
 \item{vpcConfig}{VpcConfig enables AWS CodeBuild to access resources in an Amazon VPC.}
 
-\item{badgeEnabled}{Set this to true to generate a publicly-accessible URL for your project's build badge.}
+\item{badgeEnabled}{Set this to true to generate a publicly accessible URL for your project's build badge.}
 
-\item{logsConfig}{Information about logs for the build project. Logs can be Amazon CloudWatch Logs, uploaded to a specified S3 bucket, or both.}
+\item{logsConfig}{Information about logs for the build project. These can be logs in Amazon CloudWatch Logs, logs uploaded to a specified S3 bucket, or both.}
 }
 \description{
 Creates a build project.
@@ -120,10 +122,16 @@ Creates a build project.
       )
     ),
     privilegedMode = TRUE|FALSE,
-    certificate = "string"
+    certificate = "string",
+    registryCredential = list(
+      credential = "string",
+      credentialProvider = "SECRETS_MANAGER"
+    ),
+    imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
   ),
   serviceRole = "string",
   timeoutInMinutes = 123,
+  queuedTimeoutInMinutes = 123,
   encryptionKey = "string",
   tags = list(
     list(

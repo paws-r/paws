@@ -193,11 +193,18 @@ complete_layer_upload <- function (registryId = NULL, repositoryName,
 #' @section Accepted Parameters:
 #' ```
 #' create_repository(
-#'   repositoryName = "string"
+#'   repositoryName = "string",
+#'   tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @param repositoryName &#91;required&#93; The name to use for the repository. The repository name may be specified on its own (such as `nginx-web-app`) or it can be prepended with a namespace to group the repository into a category (such as `project-a/nginx-web-app`).
+#' @param tags 
 #'
 #' @examples
 #' # This example creates a repository called nginx-web-app inside the
@@ -207,11 +214,12 @@ complete_layer_upload <- function (registryId = NULL, repositoryName,
 #' )}
 #'
 #' @export
-create_repository <- function (repositoryName) 
+create_repository <- function (repositoryName, tags = NULL) 
 {
     op <- new_operation(name = "CreateRepository", http_method = "POST", 
         http_path = "/", paginator = list())
-    input <- create_repository_input(repositoryName = repositoryName)
+    input <- create_repository_input(repositoryName = repositoryName, 
+        tags = tags)
     output <- create_repository_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -345,16 +353,16 @@ delete_repository_policy <- function (registryId = NULL, repositoryName)
 #'   nextToken = "string",
 #'   maxResults = 123,
 #'   filter = list(
-#'     tagStatus = "TAGGED"|"UNTAGGED"
+#'     tagStatus = "TAGGED"|"UNTAGGED"|"ANY"
 #'   )
 #' )
 #' ```
 #'
 #' @param registryId The AWS account ID associated with the registry that contains the repository in which to describe images. If you do not specify a registry, the default registry is assumed.
-#' @param repositoryName &#91;required&#93; A list of repositories to describe. If this parameter is omitted, then all repositories in a registry are described.
+#' @param repositoryName &#91;required&#93; A list of repositories to describe.
 #' @param imageIds The list of image IDs for the requested repository.
 #' @param nextToken The `nextToken` value returned from a previous paginated `DescribeImages` request where `maxResults` was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the `nextToken` value. This value is `null` when there are no more results to return. This option cannot be used when you specify images with `imageIds`.
-#' @param maxResults The maximum number of repository results returned by `DescribeImages` in paginated output. When this parameter is used, `DescribeImages` only returns `maxResults` results in a single page along with a `nextToken` response element. The remaining results of the initial request can be seen by sending another `DescribeImages` request with the returned `nextToken` value. This value can be between 1 and 100. If this parameter is not used, then `DescribeImages` returns up to 100 results and a `nextToken` value, if applicable. This option cannot be used when you specify images with `imageIds`.
+#' @param maxResults The maximum number of repository results returned by `DescribeImages` in paginated output. When this parameter is used, `DescribeImages` only returns `maxResults` results in a single page along with a `nextToken` response element. The remaining results of the initial request can be seen by sending another `DescribeImages` request with the returned `nextToken` value. This value can be between 1 and 1000. If this parameter is not used, then `DescribeImages` returns up to 100 results and a `nextToken` value, if applicable. This option cannot be used when you specify images with `imageIds`.
 #' @param filter The filter key and value with which to filter your `DescribeImages` results.
 #'
 #' @export
@@ -394,7 +402,7 @@ describe_images <- function (registryId = NULL, repositoryName,
 #' @param nextToken The `nextToken` value returned from a previous paginated `DescribeRepositories` request where `maxResults` was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the `nextToken` value. This value is `null` when there are no more results to return. This option cannot be used when you specify repositories with `repositoryNames`.
 #' 
 #' This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.
-#' @param maxResults The maximum number of repository results returned by `DescribeRepositories` in paginated output. When this parameter is used, `DescribeRepositories` only returns `maxResults` results in a single page along with a `nextToken` response element. The remaining results of the initial request can be seen by sending another `DescribeRepositories` request with the returned `nextToken` value. This value can be between 1 and 100. If this parameter is not used, then `DescribeRepositories` returns up to 100 results and a `nextToken` value, if applicable. This option cannot be used when you specify repositories with `repositoryNames`.
+#' @param maxResults The maximum number of repository results returned by `DescribeRepositories` in paginated output. When this parameter is used, `DescribeRepositories` only returns `maxResults` results in a single page along with a `nextToken` response element. The remaining results of the initial request can be seen by sending another `DescribeRepositories` request with the returned `nextToken` value. This value can be between 1 and 1000. If this parameter is not used, then `DescribeRepositories` returns up to 100 results and a `nextToken` value, if applicable. This option cannot be used when you specify repositories with `repositoryNames`.
 #'
 #' @examples
 #' # The following example obtains a list and description of all repositories
@@ -532,7 +540,7 @@ get_lifecycle_policy <- function (registryId = NULL, repositoryName)
 #'   nextToken = "string",
 #'   maxResults = 123,
 #'   filter = list(
-#'     tagStatus = "TAGGED"|"UNTAGGED"
+#'     tagStatus = "TAGGED"|"UNTAGGED"|"ANY"
 #'   )
 #' )
 #' ```
@@ -541,7 +549,7 @@ get_lifecycle_policy <- function (registryId = NULL, repositoryName)
 #' @param repositoryName &#91;required&#93; The name of the repository.
 #' @param imageIds The list of imageIDs to be included.
 #' @param nextToken The `nextToken` value returned from a previous paginated  `GetLifecyclePolicyPreviewRequest` request where `maxResults` was used and the  results exceeded the value of that parameter. Pagination continues from the end of the  previous results that returned the `nextToken` value. This value is  `null` when there are no more results to return. This option cannot be used when you specify images with `imageIds`.
-#' @param maxResults The maximum number of repository results returned by `GetLifecyclePolicyPreviewRequest` in  paginated output. When this parameter is used, `GetLifecyclePolicyPreviewRequest` only returns  `maxResults` results in a single page along with a `nextToken`  response element. The remaining results of the initial request can be seen by sending  another `GetLifecyclePolicyPreviewRequest` request with the returned `nextToken`  value. This value can be between 1 and 100. If this  parameter is not used, then `GetLifecyclePolicyPreviewRequest` returns up to  100 results and a `nextToken` value, if  applicable. This option cannot be used when you specify images with `imageIds`.
+#' @param maxResults The maximum number of repository results returned by `GetLifecyclePolicyPreviewRequest` in  paginated output. When this parameter is used, `GetLifecyclePolicyPreviewRequest` only returns  `maxResults` results in a single page along with a `nextToken`  response element. The remaining results of the initial request can be seen by sending  another `GetLifecyclePolicyPreviewRequest` request with the returned `nextToken`  value. This value can be between 1 and 1000. If this  parameter is not used, then `GetLifecyclePolicyPreviewRequest` returns up to  100 results and a `nextToken` value, if  applicable. This option cannot be used when you specify images with `imageIds`.
 #' @param filter An optional parameter that filters results based on image tag status and all tags, if tagged.
 #'
 #' @export
@@ -642,7 +650,7 @@ initiate_layer_upload <- function (registryId = NULL, repositoryName)
 #'   nextToken = "string",
 #'   maxResults = 123,
 #'   filter = list(
-#'     tagStatus = "TAGGED"|"UNTAGGED"
+#'     tagStatus = "TAGGED"|"UNTAGGED"|"ANY"
 #'   )
 #' )
 #' ```
@@ -652,7 +660,7 @@ initiate_layer_upload <- function (registryId = NULL, repositoryName)
 #' @param nextToken The `nextToken` value returned from a previous paginated `ListImages` request where `maxResults` was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the `nextToken` value. This value is `null` when there are no more results to return.
 #' 
 #' This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.
-#' @param maxResults The maximum number of image results returned by `ListImages` in paginated output. When this parameter is used, `ListImages` only returns `maxResults` results in a single page along with a `nextToken` response element. The remaining results of the initial request can be seen by sending another `ListImages` request with the returned `nextToken` value. This value can be between 1 and 100. If this parameter is not used, then `ListImages` returns up to 100 results and a `nextToken` value, if applicable.
+#' @param maxResults The maximum number of image results returned by `ListImages` in paginated output. When this parameter is used, `ListImages` only returns `maxResults` results in a single page along with a `nextToken` response element. The remaining results of the initial request can be seen by sending another `ListImages` request with the returned `nextToken` value. This value can be between 1 and 1000. If this parameter is not used, then `ListImages` returns up to 100 results and a `nextToken` value, if applicable.
 #' @param filter The filter key and value with which to filter your `ListImages` results.
 #'
 #' @examples
@@ -671,6 +679,32 @@ list_images <- function (registryId = NULL, repositoryName, nextToken = NULL,
     input <- list_images_input(registryId = registryId, repositoryName = repositoryName, 
         nextToken = nextToken, maxResults = maxResults, filter = filter)
     output <- list_images_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' List the tags for an Amazon ECR resource
+#'
+#' List the tags for an Amazon ECR resource.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' list_tags_for_resource(
+#'   resourceArn = "string"
+#' )
+#' ```
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to list the tags. Currently, the only supported resource is an Amazon ECR repository.
+#'
+#' @export
+list_tags_for_resource <- function (resourceArn) 
+{
+    op <- new_operation(name = "ListTagsForResource", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_tags_for_resource_input(resourceArn = resourceArn)
+    output <- list_tags_for_resource_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -806,6 +840,70 @@ start_lifecycle_policy_preview <- function (registryId = NULL,
     input <- start_lifecycle_policy_preview_input(registryId = registryId, 
         repositoryName = repositoryName, lifecyclePolicyText = lifecyclePolicyText)
     output <- start_lifecycle_policy_preview_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Adds specified tags to a resource with the specified ARN
+#'
+#' Adds specified tags to a resource with the specified ARN. Existing tags on a resource are not changed if they are not specified in the request parameters.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' tag_resource(
+#'   resourceArn = "string",
+#'   tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the the resource to which to add tags. Currently, the only supported resource is an Amazon ECR repository.
+#' @param tags &#91;required&#93; The tags to add to the resource. A tag is an array of key-value pairs. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.
+#'
+#' @export
+tag_resource <- function (resourceArn, tags) 
+{
+    op <- new_operation(name = "TagResource", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- tag_resource_input(resourceArn = resourceArn, tags = tags)
+    output <- tag_resource_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes specified tags from a resource
+#'
+#' Deletes specified tags from a resource.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' untag_resource(
+#'   resourceArn = "string",
+#'   tagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource from which to remove tags. Currently, the only supported resource is an Amazon ECR repository.
+#' @param tagKeys &#91;required&#93; The keys of the tags to be removed.
+#'
+#' @export
+untag_resource <- function (resourceArn, tagKeys) 
+{
+    op <- new_operation(name = "UntagResource", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- untag_resource_input(resourceArn = resourceArn, 
+        tagKeys = tagKeys)
+    output <- untag_resource_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)

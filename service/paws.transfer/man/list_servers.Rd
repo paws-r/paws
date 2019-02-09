@@ -4,10 +4,7 @@
 \alias{list_servers}
 \title{Lists the Secure File Transfer Protocol (SFTP) servers that are associated with your AWS account}
 \usage{
-list_servers(
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_servers(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{Specifies the number of servers to return as a response to the \code{ListServers} query.}
@@ -17,6 +14,11 @@ list_servers(
 \description{
 Lists the Secure File Transfer Protocol (SFTP) servers that are associated with your AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_servers(
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

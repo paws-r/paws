@@ -4,10 +4,7 @@
 \alias{list_email_identities}
 \title{Returns a list of all of the email identities that are associated with your Amazon Pinpoint account}
 \usage{
-list_email_identities(
-  NextToken = "string",
-  PageSize = 123
-)
+list_email_identities(NextToken = NULL, PageSize = NULL)
 }
 \arguments{
 \item{NextToken}{A token returned from a previous call to \code{ListEmailIdentities} to indicate the position in the list of identities.}
@@ -19,6 +16,11 @@ The value you specify has to be at least 0, and can be no more than 1000.}
 \description{
 Returns a list of all of the email identities that are associated with your Amazon Pinpoint account. An identity can be either an email address or a domain. This operation returns identities that are verified as well as those that aren't.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_email_identities(
+  NextToken = "string",
+  PageSize = 123
+)
 }
+}
+

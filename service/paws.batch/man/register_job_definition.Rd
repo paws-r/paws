@@ -5,7 +5,8 @@
 \title{Registers an AWS Batch job definition}
 \usage{
 register_job_definition(jobDefinitionName, type, parameters = NULL,
-  containerProperties = NULL, retryStrategy = NULL, timeout = NULL)
+  containerProperties = NULL, nodeProperties = NULL,
+  retryStrategy = NULL, timeout = NULL)
 }
 \arguments{
 \item{jobDefinitionName}{[required] The name of the job definition to register. Up to 128 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.}
@@ -14,7 +15,9 @@ register_job_definition(jobDefinitionName, type, parameters = NULL,
 
 \item{parameters}{Default parameter substitution placeholders to set in the job definition. Parameters are specified as a key-value pair mapping. Parameters in a \code{SubmitJob} request override any corresponding parameter defaults from the job definition.}
 
-\item{containerProperties}{An object with various properties specific for container-based jobs. This parameter is required if the \code{type} parameter is \code{container}.}
+\item{containerProperties}{An object with various properties specific to single-node container-based jobs. If the job definition's \code{type} parameter is \code{container}, then you must specify either \code{containerProperties} or \code{nodeProperties}.}
+
+\item{nodeProperties}{An object with various properties specific to multi-node parallel jobs. If you specify node properties for a job, it becomes a multi-node parallel job. For more information, see \href{http://docs.aws.amazon.com/batch/latest/userguide/multi-node-parallel-jobs.html}{Multi-node Parallel Jobs} in the \emph{AWS Batch User Guide}. If the job definition's \code{type} parameter is \code{container}, then you must specify either \code{containerProperties} or \code{nodeProperties}.}
 
 \item{retryStrategy}{The retry strategy to use for failed jobs that are submitted with this job definition. Any retry strategy that is specified during a SubmitJob operation overrides the retry strategy defined here. If a job is terminated due to a timeout, it is not retried.}
 
@@ -26,7 +29,7 @@ Registers an AWS Batch job definition.
 \section{Accepted Parameters}{
 \preformatted{register_job_definition(
   jobDefinitionName = "string",
-  type = "container",
+  type = "container"|"multinode",
   parameters = list(
     "string"
   ),
@@ -68,7 +71,58 @@ Registers an AWS Batch job definition.
         softLimit = 123
       )
     ),
-    user = "string"
+    user = "string",
+    instanceType = "string"
+  ),
+  nodeProperties = list(
+    numNodes = 123,
+    mainNode = 123,
+    nodeRangeProperties = list(
+      list(
+        targetNodes = "string",
+        container = list(
+          image = "string",
+          vcpus = 123,
+          memory = 123,
+          command = list(
+            "string"
+          ),
+          jobRoleArn = "string",
+          volumes = list(
+            list(
+              host = list(
+                sourcePath = "string"
+              ),
+              name = "string"
+            )
+          ),
+          environment = list(
+            list(
+              name = "string",
+              value = "string"
+            )
+          ),
+          mountPoints = list(
+            list(
+              containerPath = "string",
+              readOnly = TRUE|FALSE,
+              sourceVolume = "string"
+            )
+          ),
+          readonlyRootFilesystem = TRUE|FALSE,
+          privileged = TRUE|FALSE,
+          ulimits = list(
+            list(
+              hardLimit = 123,
+              name = "string",
+              softLimit = 123
+            )
+          ),
+          user = "string",
+          instanceType = "string"
+        )
+      )
+    )
   ),
   retryStrategy = list(
     attempts = 123

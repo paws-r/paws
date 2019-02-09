@@ -15,13 +15,13 @@ create_vpc_endpoint_service_configuration(DryRun = NULL,
 
 \item{NetworkLoadBalancerArns}{[required] The Amazon Resource Names (ARNs) of one or more Network Load Balancers for your service.}
 
-\item{ClientToken}{Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
+\item{ClientToken}{Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
 }
 \description{
 Creates a VPC endpoint service configuration to which service consumers (AWS accounts, IAM users, and IAM roles) can connect. Service consumers can create an interface VPC endpoint to connect to your service.
 }
 \details{
-To create an endpoint service configuration, you must first create a Network Load Balancer for your service. For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/endpoint-service.html}{VPC Endpoint Services} in the \emph{Amazon Virtual Private Cloud User Guide}.
+To create an endpoint service configuration, you must first create a Network Load Balancer for your service. For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/endpoint-service.html}{VPC Endpoint Services} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{create_vpc_endpoint_service_configuration(

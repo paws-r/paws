@@ -4,9 +4,7 @@
 \alias{delete_configuration_set}
 \title{Delete an existing configuration set}
 \usage{
-delete_configuration_set(
-  ConfigurationSetName = "string"
-)
+delete_configuration_set(ConfigurationSetName)
 }
 \arguments{
 \item{ConfigurationSetName}{[required] The name of the configuration set that you want to delete.}
@@ -17,6 +15,10 @@ Delete an existing configuration set.
 \details{
 In Amazon Pinpoint, \emph{configuration sets} are groups of rules that you can apply to the emails you send. You apply a configuration set to an email by including a reference to the configuration set in the headers of the email. When you apply a configuration set to an email, all of the rules in that configuration set are applied to the email.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_configuration_set(
+  ConfigurationSetName = "string"
+)
 }
+}
+

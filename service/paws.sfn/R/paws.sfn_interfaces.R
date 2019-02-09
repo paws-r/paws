@@ -26,9 +26,10 @@ create_state_machine_input <- function (...)
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(name = structure(logical(0), tags = list(type = "string", 
         max = 80L, min = 1L)), definition = structure(logical(0), 
-        tags = list(type = "string", max = 1048576L, min = 1L)), 
-        roleArn = structure(logical(0), tags = list(type = "string", 
-            max = 256L, min = 1L))), tags = list(type = "structure"))
+        tags = list(type = "string", max = 1048576L, min = 1L, 
+            sensitive = TRUE)), roleArn = structure(logical(0), 
+        tags = list(type = "string", max = 256L, min = 1L))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -116,8 +117,9 @@ describe_execution_output <- function (...)
                 "ABORTED"))), startDate = structure(logical(0), 
             tags = list(type = "timestamp")), stopDate = structure(logical(0), 
             tags = list(type = "timestamp")), input = structure(logical(0), 
-            tags = list(type = "string", max = 32768L)), output = structure(logical(0), 
-            tags = list(type = "string", max = 32768L))), tags = list(type = "structure"))
+            tags = list(type = "string", max = 32768L, sensitive = TRUE)), 
+        output = structure(logical(0), tags = list(type = "string", 
+            max = 32768L, sensitive = TRUE))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -139,7 +141,7 @@ describe_state_machine_output <- function (...)
             max = 80L, min = 1L)), status = structure(logical(0), 
             tags = list(type = "string", enum = c("ACTIVE", "DELETING"))), 
         definition = structure(logical(0), tags = list(type = "string", 
-            max = 1048576L, min = 1L)), roleArn = structure(logical(0), 
+            max = 1048576L, min = 1L, sensitive = TRUE)), roleArn = structure(logical(0), 
             tags = list(type = "string", max = 256L, min = 1L)), 
         creationDate = structure(logical(0), tags = list(type = "timestamp"))), 
         tags = list(type = "structure"))
@@ -162,10 +164,11 @@ describe_state_machine_for_execution_output <- function (...)
         tags = list(type = "string", max = 256L, min = 1L)), 
         name = structure(logical(0), tags = list(type = "string", 
             max = 80L, min = 1L)), definition = structure(logical(0), 
-            tags = list(type = "string", max = 1048576L, min = 1L)), 
-        roleArn = structure(logical(0), tags = list(type = "string", 
-            max = 256L, min = 1L)), updateDate = structure(logical(0), 
-            tags = list(type = "timestamp"))), tags = list(type = "structure"))
+            tags = list(type = "string", max = 1048576L, min = 1L, 
+                sensitive = TRUE)), roleArn = structure(logical(0), 
+            tags = list(type = "string", max = 256L, min = 1L)), 
+        updateDate = structure(logical(0), tags = list(type = "timestamp"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -185,7 +188,7 @@ get_activity_task_output <- function (...)
     shape <- structure(list(taskToken = structure(logical(0), 
         tags = list(type = "string", max = 1024L, min = 1L)), 
         input = structure(logical(0), tags = list(type = "string", 
-            max = 32768L))), tags = list(type = "structure"))
+            max = 32768L, sensitive = TRUE))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -210,9 +213,12 @@ get_execution_history_output <- function (...)
         tags = list(type = "string", enum = c("ActivityFailed", 
             "ActivityScheduleFailed", "ActivityScheduled", "ActivityStarted", 
             "ActivitySucceeded", "ActivityTimedOut", "ChoiceStateEntered", 
-            "ChoiceStateExited", "ExecutionFailed", "ExecutionStarted", 
-            "ExecutionSucceeded", "ExecutionAborted", "ExecutionTimedOut", 
-            "FailStateEntered", "LambdaFunctionFailed", "LambdaFunctionScheduleFailed", 
+            "ChoiceStateExited", "TaskFailed", "TaskScheduled", 
+            "TaskStartFailed", "TaskStarted", "TaskSubmitFailed", 
+            "TaskSubmitted", "TaskSucceeded", "TaskTimedOut", 
+            "ExecutionFailed", "ExecutionStarted", "ExecutionSucceeded", 
+            "ExecutionAborted", "ExecutionTimedOut", "FailStateEntered", 
+            "LambdaFunctionFailed", "LambdaFunctionScheduleFailed", 
             "LambdaFunctionScheduled", "LambdaFunctionStartFailed", 
             "LambdaFunctionStarted", "LambdaFunctionSucceeded", 
             "LambdaFunctionTimedOut", "SucceedStateEntered", 
@@ -224,75 +230,140 @@ get_execution_history_output <- function (...)
         id = structure(logical(0), tags = list(type = "long")), 
         previousEventId = structure(logical(0), tags = list(type = "long")), 
         activityFailedEventDetails = structure(list(error = structure(logical(0), 
-            tags = list(type = "string", max = 256L, min = 0L)), 
-            cause = structure(logical(0), tags = list(type = "string", 
-                max = 32768L, min = 0L))), tags = list(type = "structure")), 
+            tags = list(type = "string", max = 256L, min = 0L, 
+                sensitive = TRUE)), cause = structure(logical(0), 
+            tags = list(type = "string", max = 32768L, min = 0L, 
+                sensitive = TRUE))), tags = list(type = "structure")), 
         activityScheduleFailedEventDetails = structure(list(error = structure(logical(0), 
-            tags = list(type = "string", max = 256L, min = 0L)), 
-            cause = structure(logical(0), tags = list(type = "string", 
-                max = 32768L, min = 0L))), tags = list(type = "structure")), 
+            tags = list(type = "string", max = 256L, min = 0L, 
+                sensitive = TRUE)), cause = structure(logical(0), 
+            tags = list(type = "string", max = 32768L, min = 0L, 
+                sensitive = TRUE))), tags = list(type = "structure")), 
         activityScheduledEventDetails = structure(list(resource = structure(logical(0), 
             tags = list(type = "string", max = 256L, min = 1L)), 
             input = structure(logical(0), tags = list(type = "string", 
-                max = 32768L)), timeoutInSeconds = structure(logical(0), 
+                max = 32768L, sensitive = TRUE)), timeoutInSeconds = structure(logical(0), 
                 tags = list(box = TRUE, type = "long")), heartbeatInSeconds = structure(logical(0), 
                 tags = list(box = TRUE, type = "long"))), tags = list(type = "structure")), 
         activityStartedEventDetails = structure(list(workerName = structure(logical(0), 
             tags = list(type = "string", max = 256L))), tags = list(type = "structure")), 
         activitySucceededEventDetails = structure(list(output = structure(logical(0), 
-            tags = list(type = "string", max = 32768L))), tags = list(type = "structure")), 
-        activityTimedOutEventDetails = structure(list(error = structure(logical(0), 
-            tags = list(type = "string", max = 256L, min = 0L)), 
-            cause = structure(logical(0), tags = list(type = "string", 
-                max = 32768L, min = 0L))), tags = list(type = "structure")), 
+            tags = list(type = "string", max = 32768L, sensitive = TRUE))), 
+            tags = list(type = "structure")), activityTimedOutEventDetails = structure(list(error = structure(logical(0), 
+            tags = list(type = "string", max = 256L, min = 0L, 
+                sensitive = TRUE)), cause = structure(logical(0), 
+            tags = list(type = "string", max = 32768L, min = 0L, 
+                sensitive = TRUE))), tags = list(type = "structure")), 
+        taskFailedEventDetails = structure(list(resourceType = structure(logical(0), 
+            tags = list(type = "string", max = 80L, min = 1L)), 
+            resource = structure(logical(0), tags = list(type = "string", 
+                max = 80L, min = 1L)), error = structure(logical(0), 
+                tags = list(type = "string", max = 256L, min = 0L, 
+                  sensitive = TRUE)), cause = structure(logical(0), 
+                tags = list(type = "string", max = 32768L, min = 0L, 
+                  sensitive = TRUE))), tags = list(type = "structure")), 
+        taskScheduledEventDetails = structure(list(resourceType = structure(logical(0), 
+            tags = list(type = "string", max = 80L, min = 1L)), 
+            resource = structure(logical(0), tags = list(type = "string", 
+                max = 80L, min = 1L)), region = structure(logical(0), 
+                tags = list(type = "string", max = 80L, min = 1L)), 
+            parameters = structure(logical(0), tags = list(type = "string", 
+                max = 32768L, min = 0L, sensitive = TRUE)), timeoutInSeconds = structure(logical(0), 
+                tags = list(box = TRUE, type = "long"))), tags = list(type = "structure")), 
+        taskStartFailedEventDetails = structure(list(resourceType = structure(logical(0), 
+            tags = list(type = "string", max = 80L, min = 1L)), 
+            resource = structure(logical(0), tags = list(type = "string", 
+                max = 80L, min = 1L)), error = structure(logical(0), 
+                tags = list(type = "string", max = 256L, min = 0L, 
+                  sensitive = TRUE)), cause = structure(logical(0), 
+                tags = list(type = "string", max = 32768L, min = 0L, 
+                  sensitive = TRUE))), tags = list(type = "structure")), 
+        taskStartedEventDetails = structure(list(resourceType = structure(logical(0), 
+            tags = list(type = "string", max = 80L, min = 1L)), 
+            resource = structure(logical(0), tags = list(type = "string", 
+                max = 80L, min = 1L))), tags = list(type = "structure")), 
+        taskSubmitFailedEventDetails = structure(list(resourceType = structure(logical(0), 
+            tags = list(type = "string", max = 80L, min = 1L)), 
+            resource = structure(logical(0), tags = list(type = "string", 
+                max = 80L, min = 1L)), error = structure(logical(0), 
+                tags = list(type = "string", max = 256L, min = 0L, 
+                  sensitive = TRUE)), cause = structure(logical(0), 
+                tags = list(type = "string", max = 32768L, min = 0L, 
+                  sensitive = TRUE))), tags = list(type = "structure")), 
+        taskSubmittedEventDetails = structure(list(resourceType = structure(logical(0), 
+            tags = list(type = "string", max = 80L, min = 1L)), 
+            resource = structure(logical(0), tags = list(type = "string", 
+                max = 80L, min = 1L)), output = structure(logical(0), 
+                tags = list(type = "string", max = 32768L, sensitive = TRUE))), 
+            tags = list(type = "structure")), taskSucceededEventDetails = structure(list(resourceType = structure(logical(0), 
+            tags = list(type = "string", max = 80L, min = 1L)), 
+            resource = structure(logical(0), tags = list(type = "string", 
+                max = 80L, min = 1L)), output = structure(logical(0), 
+                tags = list(type = "string", max = 32768L, sensitive = TRUE))), 
+            tags = list(type = "structure")), taskTimedOutEventDetails = structure(list(resourceType = structure(logical(0), 
+            tags = list(type = "string", max = 80L, min = 1L)), 
+            resource = structure(logical(0), tags = list(type = "string", 
+                max = 80L, min = 1L)), error = structure(logical(0), 
+                tags = list(type = "string", max = 256L, min = 0L, 
+                  sensitive = TRUE)), cause = structure(logical(0), 
+                tags = list(type = "string", max = 32768L, min = 0L, 
+                  sensitive = TRUE))), tags = list(type = "structure")), 
         executionFailedEventDetails = structure(list(error = structure(logical(0), 
-            tags = list(type = "string", max = 256L, min = 0L)), 
-            cause = structure(logical(0), tags = list(type = "string", 
-                max = 32768L, min = 0L))), tags = list(type = "structure")), 
+            tags = list(type = "string", max = 256L, min = 0L, 
+                sensitive = TRUE)), cause = structure(logical(0), 
+            tags = list(type = "string", max = 32768L, min = 0L, 
+                sensitive = TRUE))), tags = list(type = "structure")), 
         executionStartedEventDetails = structure(list(input = structure(logical(0), 
-            tags = list(type = "string", max = 32768L)), roleArn = structure(logical(0), 
-            tags = list(type = "string", max = 256L, min = 1L))), 
-            tags = list(type = "structure")), executionSucceededEventDetails = structure(list(output = structure(logical(0), 
-            tags = list(type = "string", max = 32768L))), tags = list(type = "structure")), 
-        executionAbortedEventDetails = structure(list(error = structure(logical(0), 
-            tags = list(type = "string", max = 256L, min = 0L)), 
-            cause = structure(logical(0), tags = list(type = "string", 
-                max = 32768L, min = 0L))), tags = list(type = "structure")), 
+            tags = list(type = "string", max = 32768L, sensitive = TRUE)), 
+            roleArn = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 1L))), tags = list(type = "structure")), 
+        executionSucceededEventDetails = structure(list(output = structure(logical(0), 
+            tags = list(type = "string", max = 32768L, sensitive = TRUE))), 
+            tags = list(type = "structure")), executionAbortedEventDetails = structure(list(error = structure(logical(0), 
+            tags = list(type = "string", max = 256L, min = 0L, 
+                sensitive = TRUE)), cause = structure(logical(0), 
+            tags = list(type = "string", max = 32768L, min = 0L, 
+                sensitive = TRUE))), tags = list(type = "structure")), 
         executionTimedOutEventDetails = structure(list(error = structure(logical(0), 
-            tags = list(type = "string", max = 256L, min = 0L)), 
-            cause = structure(logical(0), tags = list(type = "string", 
-                max = 32768L, min = 0L))), tags = list(type = "structure")), 
+            tags = list(type = "string", max = 256L, min = 0L, 
+                sensitive = TRUE)), cause = structure(logical(0), 
+            tags = list(type = "string", max = 32768L, min = 0L, 
+                sensitive = TRUE))), tags = list(type = "structure")), 
         lambdaFunctionFailedEventDetails = structure(list(error = structure(logical(0), 
-            tags = list(type = "string", max = 256L, min = 0L)), 
-            cause = structure(logical(0), tags = list(type = "string", 
-                max = 32768L, min = 0L))), tags = list(type = "structure")), 
+            tags = list(type = "string", max = 256L, min = 0L, 
+                sensitive = TRUE)), cause = structure(logical(0), 
+            tags = list(type = "string", max = 32768L, min = 0L, 
+                sensitive = TRUE))), tags = list(type = "structure")), 
         lambdaFunctionScheduleFailedEventDetails = structure(list(error = structure(logical(0), 
-            tags = list(type = "string", max = 256L, min = 0L)), 
-            cause = structure(logical(0), tags = list(type = "string", 
-                max = 32768L, min = 0L))), tags = list(type = "structure")), 
+            tags = list(type = "string", max = 256L, min = 0L, 
+                sensitive = TRUE)), cause = structure(logical(0), 
+            tags = list(type = "string", max = 32768L, min = 0L, 
+                sensitive = TRUE))), tags = list(type = "structure")), 
         lambdaFunctionScheduledEventDetails = structure(list(resource = structure(logical(0), 
             tags = list(type = "string", max = 256L, min = 1L)), 
             input = structure(logical(0), tags = list(type = "string", 
-                max = 32768L)), timeoutInSeconds = structure(logical(0), 
+                max = 32768L, sensitive = TRUE)), timeoutInSeconds = structure(logical(0), 
                 tags = list(box = TRUE, type = "long"))), tags = list(type = "structure")), 
         lambdaFunctionStartFailedEventDetails = structure(list(error = structure(logical(0), 
-            tags = list(type = "string", max = 256L, min = 0L)), 
-            cause = structure(logical(0), tags = list(type = "string", 
-                max = 32768L, min = 0L))), tags = list(type = "structure")), 
+            tags = list(type = "string", max = 256L, min = 0L, 
+                sensitive = TRUE)), cause = structure(logical(0), 
+            tags = list(type = "string", max = 32768L, min = 0L, 
+                sensitive = TRUE))), tags = list(type = "structure")), 
         lambdaFunctionSucceededEventDetails = structure(list(output = structure(logical(0), 
-            tags = list(type = "string", max = 32768L))), tags = list(type = "structure")), 
-        lambdaFunctionTimedOutEventDetails = structure(list(error = structure(logical(0), 
-            tags = list(type = "string", max = 256L, min = 0L)), 
-            cause = structure(logical(0), tags = list(type = "string", 
-                max = 32768L, min = 0L))), tags = list(type = "structure")), 
+            tags = list(type = "string", max = 32768L, sensitive = TRUE))), 
+            tags = list(type = "structure")), lambdaFunctionTimedOutEventDetails = structure(list(error = structure(logical(0), 
+            tags = list(type = "string", max = 256L, min = 0L, 
+                sensitive = TRUE)), cause = structure(logical(0), 
+            tags = list(type = "string", max = 32768L, min = 0L, 
+                sensitive = TRUE))), tags = list(type = "structure")), 
         stateEnteredEventDetails = structure(list(name = structure(logical(0), 
             tags = list(type = "string", max = 80L, min = 1L)), 
             input = structure(logical(0), tags = list(type = "string", 
-                max = 32768L))), tags = list(type = "structure")), 
+                max = 32768L, sensitive = TRUE))), tags = list(type = "structure")), 
         stateExitedEventDetails = structure(list(name = structure(logical(0), 
             tags = list(type = "string", max = 80L, min = 1L)), 
             output = structure(logical(0), tags = list(type = "string", 
-                max = 32768L))), tags = list(type = "structure"))), 
+                max = 32768L, sensitive = TRUE))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))), tags = list(type = "list")), 
         nextToken = structure(logical(0), tags = list(type = "string", 
             max = 1024L, min = 1L))), tags = list(type = "structure"))
@@ -380,15 +451,35 @@ list_state_machines_output <- function (...)
     return(populate(args, shape))
 }
 
+list_tags_for_resource_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(resourceArn = structure(logical(0), 
+        tags = list(type = "string", max = 256L, min = 1L))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_tags_for_resource_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(tags = structure(list(structure(list(key = structure(logical(0), 
+        tags = list(type = "string", max = 128L, min = 1L)), 
+        value = structure(logical(0), tags = list(type = "string", 
+            max = 256L, min = 0L))), tags = list(type = "structure"))), 
+        tags = list(type = "list"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 send_task_failure_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(taskToken = structure(logical(0), 
         tags = list(type = "string", max = 1024L, min = 1L)), 
         error = structure(logical(0), tags = list(type = "string", 
-            max = 256L, min = 0L)), cause = structure(logical(0), 
-            tags = list(type = "string", max = 32768L, min = 0L))), 
-        tags = list(type = "structure"))
+            max = 256L, min = 0L, sensitive = TRUE)), cause = structure(logical(0), 
+            tags = list(type = "string", max = 32768L, min = 0L, 
+                sensitive = TRUE))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -421,7 +512,7 @@ send_task_success_input <- function (...)
     shape <- structure(list(taskToken = structure(logical(0), 
         tags = list(type = "string", max = 1024L, min = 1L)), 
         output = structure(logical(0), tags = list(type = "string", 
-            max = 32768L))), tags = list(type = "structure"))
+            max = 32768L, sensitive = TRUE))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -439,7 +530,8 @@ start_execution_input <- function (...)
         tags = list(type = "string", max = 256L, min = 1L)), 
         name = structure(logical(0), tags = list(type = "string", 
             max = 80L, min = 1L)), input = structure(logical(0), 
-            tags = list(type = "string", max = 32768L))), tags = list(type = "structure"))
+            tags = list(type = "string", max = 32768L, sensitive = TRUE))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -459,9 +551,9 @@ stop_execution_input <- function (...)
     shape <- structure(list(executionArn = structure(logical(0), 
         tags = list(type = "string", max = 256L, min = 1L)), 
         error = structure(logical(0), tags = list(type = "string", 
-            max = 256L, min = 0L)), cause = structure(logical(0), 
-            tags = list(type = "string", max = 32768L, min = 0L))), 
-        tags = list(type = "structure"))
+            max = 256L, min = 0L, sensitive = TRUE)), cause = structure(logical(0), 
+            tags = list(type = "string", max = 32768L, min = 0L, 
+                sensitive = TRUE))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -473,13 +565,51 @@ stop_execution_output <- function (...)
     return(populate(args, shape))
 }
 
+tag_resource_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(resourceArn = structure(logical(0), 
+        tags = list(type = "string", max = 256L, min = 1L)), 
+        tags = structure(list(structure(list(key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L)), 
+            value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L))), tags = list(type = "structure"))), 
+            tags = list(type = "list"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+tag_resource_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+untag_resource_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(resourceArn = structure(logical(0), 
+        tags = list(type = "string", max = 256L, min = 1L)), 
+        tagKeys = structure(list(structure(logical(0), tags = list(type = "string", 
+            max = 128L, min = 1L))), tags = list(type = "list"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+untag_resource_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 update_state_machine_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(stateMachineArn = structure(logical(0), 
         tags = list(type = "string", max = 256L, min = 1L)), 
         definition = structure(logical(0), tags = list(type = "string", 
-            max = 1048576L, min = 1L)), roleArn = structure(logical(0), 
+            max = 1048576L, min = 1L, sensitive = TRUE)), roleArn = structure(logical(0), 
             tags = list(type = "string", max = 256L, min = 1L))), 
         tags = list(type = "structure"))
     return(populate(args, shape))

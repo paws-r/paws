@@ -9,6 +9,8 @@ disassociate_from_master_account()
 \description{
 Disassociates the current Security Hub member account from its master account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disassociate_from_master_account()
 }
+}
+

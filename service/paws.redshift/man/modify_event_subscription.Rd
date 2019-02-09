@@ -25,7 +25,7 @@ Example: my-snapshot-20131010}
 
 \item{EventCategories}{Specifies the Amazon Redshift event categories to be published by the event notification subscription.
 
-Values: Configuration, Management, Monitoring, Security}
+Values: configuration, management, monitoring, security}
 
 \item{Severity}{Specifies the Amazon Redshift event severity to be published by the event notification subscription.
 

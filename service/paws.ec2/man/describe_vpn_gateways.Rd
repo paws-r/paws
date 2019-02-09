@@ -31,7 +31,7 @@ Default: Describes all your virtual private gateways.}
 Describes one or more of your virtual private gateways.
 }
 \details{
-For more information about virtual private gateways, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html}{AWS Managed VPN Connections} in the \emph{Amazon Virtual Private Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html}{AWS Site-to-Site VPN} in the \emph{AWS Site-to-Site VPN User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{describe_vpn_gateways(

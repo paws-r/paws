@@ -5,14 +5,16 @@
 \title{Creates a new configuration for the specified configuration name}
 \usage{
 create_configuration(EngineType = NULL, EngineVersion = NULL,
-  Name = NULL)
+  Name = NULL, Tags = NULL)
 }
 \arguments{
 \item{EngineType}{Required. The type of broker engine. Note: Currently, Amazon MQ supports only ACTIVEMQ.}
 
-\item{EngineVersion}{Required. The version of the broker engine. Note: Currently, Amazon MQ supports only 5.15.6 and 5.15.0.}
+\item{EngineVersion}{Required. The version of the broker engine. For a list of supported engine versions, see https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html}
 
 \item{Name}{Required. The name of the configuration. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 1-150 characters long.}
+
+\item{Tags}{Create tags when creating the configuration.}
 }
 \description{
 Creates a new configuration for the specified configuration name. Amazon MQ uses the default configuration (the engine type and version).
@@ -21,7 +23,10 @@ Creates a new configuration for the specified configuration name. Amazon MQ uses
 \preformatted{create_configuration(
   EngineType = "ACTIVEMQ",
   EngineVersion = "string",
-  Name = "string"
+  Name = "string",
+  Tags = list(
+    "string"
+  )
 )
 }
 }

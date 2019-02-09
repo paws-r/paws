@@ -20,7 +20,7 @@ register_scalable_target(ServiceNamespace, ResourceId, ScalableDimension,
 \item DynamoDB global secondary index - The resource type is \code{index} and the unique identifier is the resource ID. Example: \code{table/my-table/index/my-table-index}.
 \item Aurora DB cluster - The resource type is \code{cluster} and the unique identifier is the cluster name. Example: \code{cluster:my-db-cluster}.
 \item Amazon SageMaker endpoint variants - The resource type is \code{variant} and the unique identifier is the resource ID. Example: \code{endpoint/my-end-point/variant/KMeansClustering}.
-\item Custom resources are not supported with a resource type. This parameter must specify the \code{OutputValue} from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider.
+\item Custom resources are not supported with a resource type. This parameter must specify the \code{OutputValue} from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider. More information is available in our \href{https://github.com/aws/aws-auto-scaling-custom-resource}{GitHub repository}.
 }}
 
 \item{ScalableDimension}{[required] The scalable dimension associated with the scalable target. This string consists of the service namespace, resource type, and scaling property.
@@ -33,24 +33,26 @@ register_scalable_target(ServiceNamespace, ResourceId, ScalableDimension,
 \item \code{dynamodb:table:WriteCapacityUnits} - The provisioned write capacity for a DynamoDB table.
 \item \code{dynamodb:index:ReadCapacityUnits} - The provisioned read capacity for a DynamoDB global secondary index.
 \item \code{dynamodb:index:WriteCapacityUnits} - The provisioned write capacity for a DynamoDB global secondary index.
-\item \code{rds:cluster:ReadReplicaCount} - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+\item \code{rds:cluster:ReadReplicaCount} - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition and Aurora PostgreSQL-compatible edition.
 \item \code{sagemaker:variant:DesiredInstanceCount} - The number of EC2 instances for an Amazon SageMaker model endpoint variant.
 \item \code{custom-resource:ResourceType:Property} - The scalable dimension for a custom resource provided by your own application or service.
 }}
 
-\item{MinCapacity}{The minimum value to scale to in response to a scale in event. This parameter is required if you are registering a scalable target.}
+\item{MinCapacity}{The minimum value to scale to in response to a scale in event. This parameter is required to register a scalable target.}
 
-\item{MaxCapacity}{The maximum value to scale to in response to a scale out event. This parameter is required if you are registering a scalable target.}
+\item{MaxCapacity}{The maximum value to scale to in response to a scale out event. This parameter is required to register a scalable target.}
 
-\item{RoleARN}{Application Auto Scaling creates a service-linked role that grants it permissions to modify the scalable target on your behalf. For more information, see \href{http://docs.aws.amazon.com/autoscaling/application/userguide/application-autoscaling-service-linked-roles.html}{Service-Linked Roles for Application Auto Scaling}.
+\item{RoleARN}{Application Auto Scaling creates a service-linked role that grants it permissions to modify the scalable target on your behalf. For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-service-linked-roles.html}{Service-Linked Roles for Application Auto Scaling}.
 
 For resources that are not supported using a service-linked role, this parameter is required and must specify the ARN of an IAM role that allows Application Auto Scaling to modify the scalable target on your behalf.}
 }
 \description{
-Registers or updates a scalable target. A scalable target is a resource that Application Auto Scaling can scale out or scale in. After you have registered a scalable target, you can use this operation to update the minimum and maximum values for its scalable dimension.
+Registers or updates a scalable target. A scalable target is a resource that Application Auto Scaling can scale in and scale out. Each scalable target has a resource ID, scalable dimension, and namespace, as well as values for minimum and maximum capacity.
 }
 \details{
-After you register a scalable target, you can create and apply scaling policies using PutScalingPolicy. You can view the scaling policies for a service namespace using DescribeScalableTargets. If you no longer need a scalable target, you can deregister it using DeregisterScalableTarget.
+After you register a scalable target, you do not need to register it again to use other Application Auto Scaling operations. To see which resources have been registered, use DescribeScalableTargets. You can also view the scaling policies for a service namespace using DescribeScalableTargets.
+
+If you no longer need a scalable target, you can deregister it using DeregisterScalableTarget.
 }
 \section{Accepted Parameters}{
 \preformatted{register_scalable_target(

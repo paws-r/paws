@@ -44,6 +44,8 @@ To be able to make API calls against the resources that you own, Amazon CloudWat
 
 If another AWS account is in the same region and has granted you permission (using \code{PutPermission}), you can send events to that account. Set that account's event bus as a target of the rules in your account. To send the matched events to the other account, specify that account's event bus as the \code{Arn} value when you run \code{PutTargets}. If your account sends events to another account, your account is charged for each sent event. Each event sent to another account is charged as a custom event. The account receiving the event is not charged. For more information, see \href{https://aws.amazon.com/cloudwatch/pricing/}{Amazon CloudWatch Pricing}.
 
+If you are setting the event bus of another account as the target, and that account granted permission to your account through an organization instead of directly by the account ID, then you must specify a \code{RoleArn} with proper permissions in the \code{Target} structure. For more information, see \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEvents-CrossAccountEventDelivery.html}{Sending and Receiving Events Between AWS Accounts} in the \emph{Amazon CloudWatch Events User Guide}.
+
 For more information about enabling cross-account events, see PutPermission.
 
 \strong{Input}, \strong{InputPath}, and \strong{InputTransformer} are mutually exclusive and optional parameters of a target. When a rule is triggered due to a matched event:

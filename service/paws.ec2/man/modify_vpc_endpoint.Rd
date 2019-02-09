@@ -34,7 +34,7 @@ modify_vpc_endpoint(DryRun = NULL, VpcEndpointId, ResetPolicy = NULL,
 \item{PrivateDnsEnabled}{(Interface endpoint) Indicate whether a private hosted zone is associated with the VPC.}
 }
 \description{
-Modifies attributes of a specified VPC endpoint. The attributes that you can modify depend on the type of VPC endpoint (interface or gateway). For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-endpoints.html}{VPC Endpoints} in the \emph{Amazon Virtual Private Cloud User Guide}.
+Modifies attributes of a specified VPC endpoint. The attributes that you can modify depend on the type of VPC endpoint (interface or gateway). For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-endpoints.html}{VPC Endpoints} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{modify_vpc_endpoint(

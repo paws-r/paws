@@ -40,6 +40,336 @@ add_tags <- function (ResourceArn, Tags)
     return(response)
 }
 
+#' Create a machine learning algorithm that you can use in Amazon SageMaker and list in the AWS Marketplace
+#'
+#' Create a machine learning algorithm that you can use in Amazon SageMaker and list in the AWS Marketplace.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' create_algorithm(
+#'   AlgorithmName = "string",
+#'   AlgorithmDescription = "string",
+#'   TrainingSpecification = list(
+#'     TrainingImage = "string",
+#'     TrainingImageDigest = "string",
+#'     SupportedHyperParameters = list(
+#'       list(
+#'         Name = "string",
+#'         Description = "string",
+#'         Type = "Integer"|"Continuous"|"Categorical"|"FreeText",
+#'         Range = list(
+#'           IntegerParameterRangeSpecification = list(
+#'             MinValue = "string",
+#'             MaxValue = "string"
+#'           ),
+#'           ContinuousParameterRangeSpecification = list(
+#'             MinValue = "string",
+#'             MaxValue = "string"
+#'           ),
+#'           CategoricalParameterRangeSpecification = list(
+#'             Values = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         IsTunable = TRUE|FALSE,
+#'         IsRequired = TRUE|FALSE,
+#'         DefaultValue = "string"
+#'       )
+#'     ),
+#'     SupportedTrainingInstanceTypes = list(
+#'       "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"
+#'     ),
+#'     SupportsDistributedTraining = TRUE|FALSE,
+#'     MetricDefinitions = list(
+#'       list(
+#'         Name = "string",
+#'         Regex = "string"
+#'       )
+#'     ),
+#'     TrainingChannels = list(
+#'       list(
+#'         Name = "string",
+#'         Description = "string",
+#'         IsRequired = TRUE|FALSE,
+#'         SupportedContentTypes = list(
+#'           "string"
+#'         ),
+#'         SupportedCompressionTypes = list(
+#'           "None"|"Gzip"
+#'         ),
+#'         SupportedInputModes = list(
+#'           "Pipe"|"File"
+#'         )
+#'       )
+#'     ),
+#'     SupportedTuningJobObjectiveMetrics = list(
+#'       list(
+#'         Type = "Maximize"|"Minimize",
+#'         MetricName = "string"
+#'       )
+#'     )
+#'   ),
+#'   InferenceSpecification = list(
+#'     Containers = list(
+#'       list(
+#'         ContainerHostname = "string",
+#'         Image = "string",
+#'         ImageDigest = "string",
+#'         ModelDataUrl = "string",
+#'         ProductId = "string"
+#'       )
+#'     ),
+#'     SupportedTransformInstanceTypes = list(
+#'       "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"
+#'     ),
+#'     SupportedRealtimeInferenceInstanceTypes = list(
+#'       "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"
+#'     ),
+#'     SupportedContentTypes = list(
+#'       "string"
+#'     ),
+#'     SupportedResponseMIMETypes = list(
+#'       "string"
+#'     )
+#'   ),
+#'   ValidationSpecification = list(
+#'     ValidationRole = "string",
+#'     ValidationProfiles = list(
+#'       list(
+#'         ProfileName = "string",
+#'         TrainingJobDefinition = list(
+#'           TrainingInputMode = "Pipe"|"File",
+#'           HyperParameters = list(
+#'             "string"
+#'           ),
+#'           InputDataConfig = list(
+#'             list(
+#'               ChannelName = "string",
+#'               DataSource = list(
+#'                 S3DataSource = list(
+#'                   S3DataType = "ManifestFile"|"S3Prefix"|"AugmentedManifestFile",
+#'                   S3Uri = "string",
+#'                   S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+#'                   AttributeNames = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               ContentType = "string",
+#'               CompressionType = "None"|"Gzip",
+#'               RecordWrapperType = "None"|"RecordIO",
+#'               InputMode = "Pipe"|"File",
+#'               ShuffleConfig = list(
+#'                 Seed = 123
+#'               )
+#'             )
+#'           ),
+#'           OutputDataConfig = list(
+#'             KmsKeyId = "string",
+#'             S3OutputPath = "string"
+#'           ),
+#'           ResourceConfig = list(
+#'             InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge",
+#'             InstanceCount = 123,
+#'             VolumeSizeInGB = 123,
+#'             VolumeKmsKeyId = "string"
+#'           ),
+#'           StoppingCondition = list(
+#'             MaxRuntimeInSeconds = 123
+#'           )
+#'         ),
+#'         TransformJobDefinition = list(
+#'           MaxConcurrentTransforms = 123,
+#'           MaxPayloadInMB = 123,
+#'           BatchStrategy = "MultiRecord"|"SingleRecord",
+#'           Environment = list(
+#'             "string"
+#'           ),
+#'           TransformInput = list(
+#'             DataSource = list(
+#'               S3DataSource = list(
+#'                 S3DataType = "ManifestFile"|"S3Prefix"|"AugmentedManifestFile",
+#'                 S3Uri = "string"
+#'               )
+#'             ),
+#'             ContentType = "string",
+#'             CompressionType = "None"|"Gzip",
+#'             SplitType = "None"|"Line"|"RecordIO"|"TFRecord"
+#'           ),
+#'           TransformOutput = list(
+#'             S3OutputPath = "string",
+#'             Accept = "string",
+#'             AssembleWith = "None"|"Line",
+#'             KmsKeyId = "string"
+#'           ),
+#'           TransformResources = list(
+#'             InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge",
+#'             InstanceCount = 123,
+#'             VolumeKmsKeyId = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   CertifyForMarketplace = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param AlgorithmName &#91;required&#93; The name of the algorithm.
+#' @param AlgorithmDescription A description of the algorithm.
+#' @param TrainingSpecification &#91;required&#93; Specifies details about training jobs run by this algorithm, including the following:
+#' 
+#' -   The Amazon ECR path of the container and the version digest of the algorithm.
+#' 
+#' -   The hyperparameters that the algorithm supports.
+#' 
+#' -   The instance types that the algorithm supports for training.
+#' 
+#' -   Whether the algorithm supports distributed training.
+#' 
+#' -   The metrics that the algorithm emits to Amazon CloudWatch.
+#' 
+#' -   Which metrics that the algorithm emits can be used as the objective metric for hyperparameter tuning jobs.
+#' 
+#' -   The input channels that the algorithm supports for training data. For example, an algorithm might support `train`, `validation`, and `test` channels.
+#' @param InferenceSpecification Specifies details about inference jobs that the algorithm runs, including the following:
+#' 
+#' -   The Amazon ECR paths of containers that contain the inference code and model artifacts.
+#' 
+#' -   The instance types that the algorithm supports for transform jobs and real-time endpoints used for inference.
+#' 
+#' -   The input and output content formats that the algorithm supports for inference.
+#' @param ValidationSpecification Specifies configurations for one or more training jobs and that Amazon SageMaker runs to test the algorithm\'s training code and, optionally, one or more batch transform jobs that Amazon SageMaker runs to test the algorithm\'s inference code.
+#' @param CertifyForMarketplace Whether to certify the algorithm so that it can be listed in AWS Marketplace.
+#'
+#' @export
+create_algorithm <- function (AlgorithmName, AlgorithmDescription = NULL, 
+    TrainingSpecification, InferenceSpecification = NULL, ValidationSpecification = NULL, 
+    CertifyForMarketplace = NULL) 
+{
+    op <- new_operation(name = "CreateAlgorithm", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_algorithm_input(AlgorithmName = AlgorithmName, 
+        AlgorithmDescription = AlgorithmDescription, TrainingSpecification = TrainingSpecification, 
+        InferenceSpecification = InferenceSpecification, ValidationSpecification = ValidationSpecification, 
+        CertifyForMarketplace = CertifyForMarketplace)
+    output <- create_algorithm_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a Git repository as a resource in your Amazon SageMaker account
+#'
+#' Creates a Git repository as a resource in your Amazon SageMaker account. You can associate the repository with notebook instances so that you can use Git source control for the notebooks you create. The Git repository is a resource in your Amazon SageMaker account, so it can be associated with more than one notebook instance, and it persists independently from the lifecycle of any notebook instances it is associated with.
+#' 
+#' The repository can be hosted either in [AWS CodeCommit](http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html) or in any other Git repository.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' create_code_repository(
+#'   CodeRepositoryName = "string",
+#'   GitConfig = list(
+#'     RepositoryUrl = "string",
+#'     Branch = "string",
+#'     SecretArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @param CodeRepositoryName &#91;required&#93; The name of the Git repository. The name must have 1 to 63 characters. Valid characters are a-z, A-Z, 0-9, and - (hyphen).
+#' @param GitConfig &#91;required&#93; Specifies details about the repository, including the URL where the repository is located, the default branch, and credentials to use to access the repository.
+#'
+#' @export
+create_code_repository <- function (CodeRepositoryName, GitConfig) 
+{
+    op <- new_operation(name = "CreateCodeRepository", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_code_repository_input(CodeRepositoryName = CodeRepositoryName, 
+        GitConfig = GitConfig)
+    output <- create_code_repository_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Starts a model compilation job
+#'
+#' Starts a model compilation job. After the model has been compiled, Amazon SageMaker saves the resulting model artifacts to an Amazon Simple Storage Service (Amazon S3) bucket that you specify.
+#' 
+#' If you choose to host your model using Amazon SageMaker hosting services, you can use the resulting model artifacts as part of the model. You can also use the artifacts with AWS IoT Greengrass. In that case, deploy them as an ML resource.
+#' 
+#' In the request body, you provide the following:
+#' 
+#' -   A name for the compilation job
+#' 
+#' -   Information about the input model artifacts
+#' 
+#' -   The output location for the compiled model and the device (target) that the model runs on
+#' 
+#' -   `The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker assumes to perform the model compilation job`
+#' 
+#' You can also provide a `Tag` to track the model compilation job\'s resource use and costs. The response body contains the `CompilationJobArn` for the compiled job.
+#' 
+#' To stop a model compilation job, use StopCompilationJob. To get information about a particular model compilation job, use DescribeCompilationJob. To get information about multiple model compilation jobs, use ListCompilationJobs.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' create_compilation_job(
+#'   CompilationJobName = "string",
+#'   RoleArn = "string",
+#'   InputConfig = list(
+#'     S3Uri = "string",
+#'     DataInputConfig = "string",
+#'     Framework = "TENSORFLOW"|"MXNET"|"ONNX"|"PYTORCH"|"XGBOOST"
+#'   ),
+#'   OutputConfig = list(
+#'     S3OutputLocation = "string",
+#'     TargetDevice = "ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"jetson_tx1"|"jetson_tx2"|"rasp3b"|"deeplens"
+#'   ),
+#'   StoppingCondition = list(
+#'     MaxRuntimeInSeconds = 123
+#'   )
+#' )
+#' ```
+#'
+#' @param CompilationJobName &#91;required&#93; A name for the model compilation job. The name must be unique within the AWS Region and within your AWS account.
+#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IIAMAM role that enables Amazon SageMaker to perform tasks on your behalf.
+#' 
+#' During model compilation, Amazon SageMaker needs your permission to:
+#' 
+#' -   Read input data from an S3 bucket
+#' 
+#' -   Write model artifacts to an S3 bucket
+#' 
+#' -   Write logs to Amazon CloudWatch Logs
+#' 
+#' -   Publish metrics to Amazon CloudWatch
+#' 
+#' You grant permissions for all of these tasks to an IAM role. To pass this role to Amazon SageMaker, the caller of this API must have the `iam:PassRole` permission. For more information, see [Amazon SageMaker Roles.](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html)
+#' @param InputConfig &#91;required&#93; Provides information about the location of input model artifacts, the name and shape of the expected data inputs, and the framework in which the model was trained.
+#' @param OutputConfig &#91;required&#93; Provides information about the output location for the compiled model and the target device the model runs on.
+#' @param StoppingCondition &#91;required&#93; The duration allowed for model compilation.
+#'
+#' @export
+create_compilation_job <- function (CompilationJobName, RoleArn, 
+    InputConfig, OutputConfig, StoppingCondition) 
+{
+    op <- new_operation(name = "CreateCompilationJob", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_compilation_job_input(CompilationJobName = CompilationJobName, 
+        RoleArn = RoleArn, InputConfig = InputConfig, OutputConfig = OutputConfig, 
+        StoppingCondition = StoppingCondition)
+    output <- create_compilation_job_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Creates an endpoint using the endpoint configuration specified in the request
 #'
 #' Creates an endpoint using the endpoint configuration specified in the request. Amazon SageMaker uses the endpoint to provision resources and deploy models. You create the endpoint configuration with the [CreateEndpointConfig](http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html) API.
@@ -109,7 +439,8 @@ create_endpoint <- function (EndpointName, EndpointConfigName,
 #'       ModelName = "string",
 #'       InitialInstanceCount = 123,
 #'       InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge",
-#'       InitialVariantWeight = 123.0
+#'       InitialVariantWeight = 123.0,
+#'       AcceleratorType = "ml.eia1.medium"|"ml.eia1.large"|"ml.eia1.xlarge"
 #'     )
 #'   ),
 #'   Tags = list(
@@ -145,7 +476,7 @@ create_endpoint_config <- function (EndpointConfigName, ProductionVariants,
 
 #' Starts a hyperparameter tuning job
 #'
-#' Starts a hyperparameter tuning job.
+#' Starts a hyperparameter tuning job. A hyperparameter tuning job finds the best version of a model by running many training jobs on your dataset using the algorithm you choose and values for hyperparameters within ranges that you specify. It then chooses the hyperparameter values that result in a model that performs the best, as measured by an objective metric that you choose.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -184,7 +515,8 @@ create_endpoint_config <- function (EndpointConfigName, ProductionVariants,
 #'           )
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     TrainingJobEarlyStoppingType = "Off"|"Auto"
 #'   ),
 #'   TrainingJobDefinition = list(
 #'     StaticHyperParameters = list(
@@ -193,6 +525,7 @@ create_endpoint_config <- function (EndpointConfigName, ProductionVariants,
 #'     AlgorithmSpecification = list(
 #'       TrainingImage = "string",
 #'       TrainingInputMode = "Pipe"|"File",
+#'       AlgorithmName = "string",
 #'       MetricDefinitions = list(
 #'         list(
 #'           Name = "string",
@@ -206,15 +539,21 @@ create_endpoint_config <- function (EndpointConfigName, ProductionVariants,
 #'         ChannelName = "string",
 #'         DataSource = list(
 #'           S3DataSource = list(
-#'             S3DataType = "ManifestFile"|"S3Prefix",
+#'             S3DataType = "ManifestFile"|"S3Prefix"|"AugmentedManifestFile",
 #'             S3Uri = "string",
-#'             S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key"
+#'             S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+#'             AttributeNames = list(
+#'               "string"
+#'             )
 #'           )
 #'         ),
 #'         ContentType = "string",
 #'         CompressionType = "None"|"Gzip",
 #'         RecordWrapperType = "None"|"RecordIO",
-#'         InputMode = "Pipe"|"File"
+#'         InputMode = "Pipe"|"File",
+#'         ShuffleConfig = list(
+#'           Seed = 123
+#'         )
 #'       )
 #'     ),
 #'     VpcConfig = list(
@@ -237,6 +576,133 @@ create_endpoint_config <- function (EndpointConfigName, ProductionVariants,
 #'     ),
 #'     StoppingCondition = list(
 #'       MaxRuntimeInSeconds = 123
+#'     ),
+#'     EnableNetworkIsolation = TRUE|FALSE,
+#'     EnableInterContainerTrafficEncryption = TRUE|FALSE
+#'   ),
+#'   WarmStartConfig = list(
+#'     ParentHyperParameterTuningJobs = list(
+#'       list(
+#'         HyperParameterTuningJobName = "string"
+#'       )
+#'     ),
+#'     WarmStartType = "IdenticalDataAndAlgorithm"|"TransferLearning"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @param HyperParameterTuningJobName &#91;required&#93; The name of the tuning job. This name is the prefix for the names of all training jobs that this tuning job launches. The name must be unique within the same AWS account and AWS Region. The name must have { } to { } characters. Valid characters are a-z, A-Z, 0-9, and : + = @ \_ % - (hyphen). The name is not case sensitive.
+#' @param HyperParameterTuningJobConfig &#91;required&#93; The HyperParameterTuningJobConfig object that describes the tuning job, including the search strategy, the objective metric used to evaluate training jobs, ranges of parameters to search, and resource limits for the tuning job. For more information, see automatic-model-tuning
+#' @param TrainingJobDefinition &#91;required&#93; The HyperParameterTrainingJobDefinition object that describes the training jobs that this tuning job launches, including static hyperparameters, input data configuration, output data configuration, resource configuration, and stopping condition.
+#' @param WarmStartConfig Specifies the configuration for starting the hyperparameter tuning job using one or more previous tuning jobs as a starting point. The results of previous tuning jobs are used to inform which combinations of hyperparameters to search over in the new tuning job.
+#' 
+#' All training jobs launched by the new hyperparameter tuning job are evaluated by using the objective metric. If you specify `IDENTICAL_DATA_AND_ALGORITHM` as the `WarmStartType` value for the warm start configuration, the training job that performs the best in the new tuning job is compared to the best training jobs from the parent tuning jobs. From these, the training job that performs the best as measured by the objective metric is returned as the overall best training job.
+#' 
+#' All training jobs launched by parent hyperparameter tuning jobs and the new hyperparameter tuning jobs count against the limit of training jobs for the tuning job.
+#' @param Tags An array of key-value pairs. You can use tags to categorize your AWS resources in different ways, for example, by purpose, owner, or environment. For more information, see [AWS Tagging Strategies](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/).
+#' 
+#' Tags that you specify for the tuning job are also added to all training jobs that the tuning job launches.
+#'
+#' @export
+create_hyper_parameter_tuning_job <- function (HyperParameterTuningJobName, 
+    HyperParameterTuningJobConfig, TrainingJobDefinition, WarmStartConfig = NULL, 
+    Tags = NULL) 
+{
+    op <- new_operation(name = "CreateHyperParameterTuningJob", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- create_hyper_parameter_tuning_job_input(HyperParameterTuningJobName = HyperParameterTuningJobName, 
+        HyperParameterTuningJobConfig = HyperParameterTuningJobConfig, 
+        TrainingJobDefinition = TrainingJobDefinition, WarmStartConfig = WarmStartConfig, 
+        Tags = Tags)
+    output <- create_hyper_parameter_tuning_job_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a job that uses workers to label the data objects in your input dataset
+#'
+#' Creates a job that uses workers to label the data objects in your input dataset. You can use the labeled data to train machine learning models.
+#' 
+#' You can select your workforce from one of three providers:
+#' 
+#' -   A private workforce that you create. It can include employees, contractors, and outside experts. Use a private workforce when want the data to stay within your organization or when a specific set of skills is required.
+#' 
+#' -   One or more vendors that you select from the AWS Marketplace. Vendors provide expertise in specific areas.
+#' 
+#' -   The Amazon Mechanical Turk workforce. This is the largest workforce, but it should only be used for public data or data that has been stripped of any personally identifiable information.
+#' 
+#' You can also use *automated data labeling* to reduce the number of data objects that need to be labeled by a human. Automated data labeling uses *active learning* to determine if a data object can be labeled by machine or if it needs to be sent to a human worker. For more information, see [Using Automated Data Labeling](http://docs.aws.amazon.com/sagemaker/latest/dg/sms-automated-labeling.html).
+#' 
+#' The data objects to be labeled are contained in an Amazon S3 bucket. You create a *manifest file* that describes the location of each object. For more information, see [Using Input and Output Data](http://docs.aws.amazon.com/sagemaker/latest/dg/sms-data.html).
+#' 
+#' The output can be used as the manifest file for another labeling job or as training data for your machine learning models.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' create_labeling_job(
+#'   LabelingJobName = "string",
+#'   LabelAttributeName = "string",
+#'   InputConfig = list(
+#'     DataSource = list(
+#'       S3DataSource = list(
+#'         ManifestS3Uri = "string"
+#'       )
+#'     ),
+#'     DataAttributes = list(
+#'       ContentClassifiers = list(
+#'         "FreeOfPersonallyIdentifiableInformation"|"FreeOfAdultContent"
+#'       )
+#'     )
+#'   ),
+#'   OutputConfig = list(
+#'     S3OutputPath = "string",
+#'     KmsKeyId = "string"
+#'   ),
+#'   RoleArn = "string",
+#'   LabelCategoryConfigS3Uri = "string",
+#'   StoppingConditions = list(
+#'     MaxHumanLabeledObjectCount = 123,
+#'     MaxPercentageOfInputDatasetLabeled = 123
+#'   ),
+#'   LabelingJobAlgorithmsConfig = list(
+#'     LabelingJobAlgorithmSpecificationArn = "string",
+#'     InitialActiveLearningModelArn = "string",
+#'     LabelingJobResourceConfig = list(
+#'       VolumeKmsKeyId = "string"
+#'     )
+#'   ),
+#'   HumanTaskConfig = list(
+#'     WorkteamArn = "string",
+#'     UiConfig = list(
+#'       UiTemplateS3Uri = "string"
+#'     ),
+#'     PreHumanTaskLambdaArn = "string",
+#'     TaskKeywords = list(
+#'       "string"
+#'     ),
+#'     TaskTitle = "string",
+#'     TaskDescription = "string",
+#'     NumberOfHumanWorkersPerDataObject = 123,
+#'     TaskTimeLimitInSeconds = 123,
+#'     TaskAvailabilityLifetimeInSeconds = 123,
+#'     MaxConcurrentTaskCount = 123,
+#'     AnnotationConsolidationConfig = list(
+#'       AnnotationConsolidationLambdaArn = "string"
+#'     ),
+#'     PublicWorkforceTaskPrice = list(
+#'       AmountInUsd = list(
+#'         Dollars = 123,
+#'         Cents = 123,
+#'         TenthFractionsOfACent = 123
+#'       )
 #'     )
 #'   ),
 #'   Tags = list(
@@ -248,23 +714,63 @@ create_endpoint_config <- function (EndpointConfigName, ProductionVariants,
 #' )
 #' ```
 #'
-#' @param HyperParameterTuningJobName &#91;required&#93; The name of the tuning job. This name is the prefix for the names of all training jobs that this tuning job launches. The name must be unique within the same AWS account and AWS Region. Names are not case sensitive, and must be between 1-32 characters.
-#' @param HyperParameterTuningJobConfig &#91;required&#93; The HyperParameterTuningJobConfig object that describes the tuning job, including the search strategy, metric used to evaluate training jobs, ranges of parameters to search, and resource limits for the tuning job.
-#' @param TrainingJobDefinition &#91;required&#93; The HyperParameterTrainingJobDefinition object that describes the training jobs that this tuning job launches, including static hyperparameters, input data configuration, output data configuration, resource configuration, and stopping condition.
-#' @param Tags An array of key-value pairs. You can use tags to categorize your AWS resources in different ways, for example, by purpose, owner, or environment. For more information, see [AWS Tagging Strategies](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/).
+#' @param LabelingJobName &#91;required&#93; The name of the labeling job. This name is used to identify the job in a list of labeling jobs.
+#' @param LabelAttributeName &#91;required&#93; The attribute name to use for the label in the output manifest file. This is the key for the key/value pair formed with the label that a worker assigns to the object. The name can\'t end with \"-metadata\". If you are running a semantic segmentation labeling job, the attribute name must end with \"-ref\". If you are running any other kind of labeling job, the attribute name must not end with \"-ref\".
+#' @param InputConfig &#91;required&#93; Input data for the labeling job, such as the Amazon S3 location of the data objects and the location of the manifest file that describes the data objects.
+#' @param OutputConfig &#91;required&#93; The location of the output data and the AWS Key Management Service key ID for the key used to encrypt the output data, if any.
+#' @param RoleArn &#91;required&#93; The Amazon Resource Number (ARN) that Amazon SageMaker assumes to perform tasks on your behalf during data labeling. You must grant this role the necessary permissions so that Amazon SageMaker can successfully complete data labeling.
+#' @param LabelCategoryConfigS3Uri The S3 URL of the file that defines the categories used to label the data objects.
 #' 
-#' Tags that you specify for the tuning job are also added to all training jobs that the tuning job launches.
+#' The file is a JSON structure in the following format:
+#' 
+#' `{`
+#' 
+#' ` "document-version": "2018-11-28"`
+#' 
+#' ` "labels": [`
+#' 
+#' ` {`
+#' 
+#' ` "label": "label 1"label 1"`
+#' 
+#' ` },`
+#' 
+#' ` {`
+#' 
+#' ` "label": "label 2"label 2"`
+#' 
+#' ` },`
+#' 
+#' ` ...`
+#' 
+#' ` {`
+#' 
+#' ` "label": "label n"label n"`
+#' 
+#' ` }`
+#' 
+#' ` ]`
+#' 
+#' `}`
+#' @param StoppingConditions A set of conditions for stopping the labeling job. If any of the conditions are met, the job is automatically stopped. You can use these conditions to control the cost of data labeling.
+#' @param LabelingJobAlgorithmsConfig Configures the information required to perform automated data labeling.
+#' @param HumanTaskConfig &#91;required&#93; Configures the information required for human workers to complete a labeling task.
+#' @param Tags An array of key/value pairs. For more information, see [Using Cost Allocation Tags](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what) in the *AWS Billing and Cost Management User Guide*.
 #'
 #' @export
-create_hyper_parameter_tuning_job <- function (HyperParameterTuningJobName, 
-    HyperParameterTuningJobConfig, TrainingJobDefinition, Tags = NULL) 
+create_labeling_job <- function (LabelingJobName, LabelAttributeName, 
+    InputConfig, OutputConfig, RoleArn, LabelCategoryConfigS3Uri = NULL, 
+    StoppingConditions = NULL, LabelingJobAlgorithmsConfig = NULL, 
+    HumanTaskConfig, Tags = NULL) 
 {
-    op <- new_operation(name = "CreateHyperParameterTuningJob", 
-        http_method = "POST", http_path = "/", paginator = list())
-    input <- create_hyper_parameter_tuning_job_input(HyperParameterTuningJobName = HyperParameterTuningJobName, 
-        HyperParameterTuningJobConfig = HyperParameterTuningJobConfig, 
-        TrainingJobDefinition = TrainingJobDefinition, Tags = Tags)
-    output <- create_hyper_parameter_tuning_job_output()
+    op <- new_operation(name = "CreateLabelingJob", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_labeling_job_input(LabelingJobName = LabelingJobName, 
+        LabelAttributeName = LabelAttributeName, InputConfig = InputConfig, 
+        OutputConfig = OutputConfig, RoleArn = RoleArn, LabelCategoryConfigS3Uri = LabelCategoryConfigS3Uri, 
+        StoppingConditions = StoppingConditions, LabelingJobAlgorithmsConfig = LabelingJobAlgorithmsConfig, 
+        HumanTaskConfig = HumanTaskConfig, Tags = Tags)
+    output <- create_labeling_job_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -295,6 +801,18 @@ create_hyper_parameter_tuning_job <- function (HyperParameterTuningJobName,
 #'     ModelDataUrl = "string",
 #'     Environment = list(
 #'       "string"
+#'     ),
+#'     ModelPackageName = "string"
+#'   ),
+#'   Containers = list(
+#'     list(
+#'       ContainerHostname = "string",
+#'       Image = "string",
+#'       ModelDataUrl = "string",
+#'       Environment = list(
+#'         "string"
+#'       ),
+#'       ModelPackageName = "string"
 #'     )
 #'   ),
 #'   ExecutionRoleArn = "string",
@@ -311,27 +829,149 @@ create_hyper_parameter_tuning_job <- function (HyperParameterTuningJobName,
 #'     Subnets = list(
 #'       "string"
 #'     )
-#'   )
+#'   ),
+#'   EnableNetworkIsolation = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @param ModelName &#91;required&#93; The name of the new model.
-#' @param PrimaryContainer &#91;required&#93; The location of the primary docker image containing inference code, associated artifacts, and custom environment map that the inference code uses when the model is deployed for predictions.
+#' @param PrimaryContainer The location of the primary docker image containing inference code, associated artifacts, and custom environment map that the inference code uses when the model is deployed for predictions.
+#' @param Containers Specifies the containers in the inference pipeline.
 #' @param ExecutionRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker can assume to access model artifacts and docker image for deployment on ML compute instances or for batch transform jobs. Deploying on ML compute instances is part of model hosting. For more information, see [Amazon SageMaker Roles](http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
 #' 
 #' To be able to pass this role to Amazon SageMaker, the caller of this API must have the `iam:PassRole` permission.
 #' @param Tags An array of key-value pairs. For more information, see [Using Cost Allocation Tags](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what) in the *AWS Billing and Cost Management User Guide*.
 #' @param VpcConfig A VpcConfig object that specifies the VPC that you want your model to connect to. Control access to and from your model container by configuring the VPC. `VpcConfig` is used in hosting services and in batch transform. For more information, see [Protect Endpoints by Using an Amazon Virtual Private Cloud](http://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html) and [Protect Data in Batch Transform Jobs by Using an Amazon Virtual Private Cloud](http://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html).
+#' @param EnableNetworkIsolation Isolates the model container. No inbound or outbound network calls can be made to or from the model container.
+#' 
+#' The Semantic Segmentation built-in algorithm does not support network isolation.
 #'
 #' @export
-create_model <- function (ModelName, PrimaryContainer, ExecutionRoleArn, 
-    Tags = NULL, VpcConfig = NULL) 
+create_model <- function (ModelName, PrimaryContainer = NULL, 
+    Containers = NULL, ExecutionRoleArn, Tags = NULL, VpcConfig = NULL, 
+    EnableNetworkIsolation = NULL) 
 {
     op <- new_operation(name = "CreateModel", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- create_model_input(ModelName = ModelName, PrimaryContainer = PrimaryContainer, 
-        ExecutionRoleArn = ExecutionRoleArn, Tags = Tags, VpcConfig = VpcConfig)
+        Containers = Containers, ExecutionRoleArn = ExecutionRoleArn, 
+        Tags = Tags, VpcConfig = VpcConfig, EnableNetworkIsolation = EnableNetworkIsolation)
     output <- create_model_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a model package that you can use to create Amazon SageMaker models or list on AWS Marketplace
+#'
+#' Creates a model package that you can use to create Amazon SageMaker models or list on AWS Marketplace. Buyers can subscribe to model packages listed on AWS Marketplace to create models in Amazon SageMaker.
+#' 
+#' To create a model package by specifying a Docker container that contains your inference code and the Amazon S3 location of your model artifacts, provide values for `InferenceSpecification`. To create a model from an algorithm resource that you created or subscribed to in AWS Marketplace, provide a value for `SourceAlgorithmSpecification`.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' create_model_package(
+#'   ModelPackageName = "string",
+#'   ModelPackageDescription = "string",
+#'   InferenceSpecification = list(
+#'     Containers = list(
+#'       list(
+#'         ContainerHostname = "string",
+#'         Image = "string",
+#'         ImageDigest = "string",
+#'         ModelDataUrl = "string",
+#'         ProductId = "string"
+#'       )
+#'     ),
+#'     SupportedTransformInstanceTypes = list(
+#'       "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"
+#'     ),
+#'     SupportedRealtimeInferenceInstanceTypes = list(
+#'       "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"
+#'     ),
+#'     SupportedContentTypes = list(
+#'       "string"
+#'     ),
+#'     SupportedResponseMIMETypes = list(
+#'       "string"
+#'     )
+#'   ),
+#'   ValidationSpecification = list(
+#'     ValidationRole = "string",
+#'     ValidationProfiles = list(
+#'       list(
+#'         ProfileName = "string",
+#'         TransformJobDefinition = list(
+#'           MaxConcurrentTransforms = 123,
+#'           MaxPayloadInMB = 123,
+#'           BatchStrategy = "MultiRecord"|"SingleRecord",
+#'           Environment = list(
+#'             "string"
+#'           ),
+#'           TransformInput = list(
+#'             DataSource = list(
+#'               S3DataSource = list(
+#'                 S3DataType = "ManifestFile"|"S3Prefix"|"AugmentedManifestFile",
+#'                 S3Uri = "string"
+#'               )
+#'             ),
+#'             ContentType = "string",
+#'             CompressionType = "None"|"Gzip",
+#'             SplitType = "None"|"Line"|"RecordIO"|"TFRecord"
+#'           ),
+#'           TransformOutput = list(
+#'             S3OutputPath = "string",
+#'             Accept = "string",
+#'             AssembleWith = "None"|"Line",
+#'             KmsKeyId = "string"
+#'           ),
+#'           TransformResources = list(
+#'             InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge",
+#'             InstanceCount = 123,
+#'             VolumeKmsKeyId = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   SourceAlgorithmSpecification = list(
+#'     SourceAlgorithms = list(
+#'       list(
+#'         ModelDataUrl = "string",
+#'         AlgorithmName = "string"
+#'       )
+#'     )
+#'   ),
+#'   CertifyForMarketplace = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param ModelPackageName &#91;required&#93; The name of the model package. The name must have 1 to 63 characters. Valid characters are a-z, A-Z, 0-9, and - (hyphen).
+#' @param ModelPackageDescription A description of the model package.
+#' @param InferenceSpecification Specifies details about inference jobs that can be run with models based on this model package, including the following:
+#' 
+#' -   The Amazon ECR paths of containers that contain the inference code and model artifacts.
+#' 
+#' -   The instance types that the model package supports for transform jobs and real-time endpoints used for inference.
+#' 
+#' -   The input and output content formats that the model package supports for inference.
+#' @param ValidationSpecification Specifies configurations for one or more transform jobs that Amazon SageMaker runs to test the model package.
+#' @param SourceAlgorithmSpecification Details about the algorithm that was used to create the model package.
+#' @param CertifyForMarketplace Whether to certify the model package for listing on AWS Marketplace.
+#'
+#' @export
+create_model_package <- function (ModelPackageName, ModelPackageDescription = NULL, 
+    InferenceSpecification = NULL, ValidationSpecification = NULL, 
+    SourceAlgorithmSpecification = NULL, CertifyForMarketplace = NULL) 
+{
+    op <- new_operation(name = "CreateModelPackage", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_model_package_input(ModelPackageName = ModelPackageName, 
+        ModelPackageDescription = ModelPackageDescription, InferenceSpecification = InferenceSpecification, 
+        ValidationSpecification = ValidationSpecification, SourceAlgorithmSpecification = SourceAlgorithmSpecification, 
+        CertifyForMarketplace = CertifyForMarketplace)
+    output <- create_model_package_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -364,7 +1004,7 @@ create_model <- function (ModelName, PrimaryContainer, ExecutionRoleArn,
 #' ```
 #' create_notebook_instance(
 #'   NotebookInstanceName = "string",
-#'   InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge",
+#'   InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge",
 #'   SubnetId = "string",
 #'   SecurityGroupIds = list(
 #'     "string"
@@ -379,7 +1019,14 @@ create_model <- function (ModelName, PrimaryContainer, ExecutionRoleArn,
 #'   ),
 #'   LifecycleConfigName = "string",
 #'   DirectInternetAccess = "Enabled"|"Disabled",
-#'   VolumeSizeInGB = 123
+#'   VolumeSizeInGB = 123,
+#'   AcceleratorTypes = list(
+#'     "ml.eia1.medium"|"ml.eia1.large"|"ml.eia1.xlarge"
+#'   ),
+#'   DefaultCodeRepository = "string",
+#'   AdditionalCodeRepositories = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
@@ -390,19 +1037,23 @@ create_model <- function (ModelName, PrimaryContainer, ExecutionRoleArn,
 #' @param RoleArn &#91;required&#93; When you send any requests to AWS resources from the notebook instance, Amazon SageMaker assumes this role to perform tasks on your behalf. You must grant this role necessary permissions so Amazon SageMaker can perform these tasks. The policy must allow the Amazon SageMaker service principal (sagemaker.amazonaws.com) permissions to assume this role. For more information, see [Amazon SageMaker Roles](http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
 #' 
 #' To be able to pass this role to Amazon SageMaker, the caller of this API must have the `iam:PassRole` permission.
-#' @param KmsKeyId If you provide a AWS KMS key ID, Amazon SageMaker uses it to encrypt data at rest on the ML storage volume that is attached to your notebook instance.
+#' @param KmsKeyId If you provide a AWS KMS key ID, Amazon SageMaker uses it to encrypt data at rest on the ML storage volume that is attached to your notebook instance. The KMS key you provide must be enabled. For information, see [Enabling and Disabling Keys](http://docs.aws.amazon.com/kms/latest/developerguide/enabling-keys.html) in the *AWS Key Management Service Developer Guide*.
 #' @param Tags A list of tags to associate with the notebook instance. You can add tags later by using the `CreateTags` API.
 #' @param LifecycleConfigName The name of a lifecycle configuration to associate with the notebook instance. For information about lifestyle configurations, see [Step 2.1: (Optional) Customize a Notebook Instance](http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
 #' @param DirectInternetAccess Sets whether Amazon SageMaker provides internet access to the notebook instance. If you set this to `Disabled` this notebook instance will be able to access resources only in your VPC, and will not be able to connect to Amazon SageMaker training and endpoint services unless your configure a NAT Gateway in your VPC.
 #' 
 #' For more information, see [Notebook Instances Are Internet-Enabled by Default](http://docs.aws.amazon.com/sagemaker/latest/dg/appendix-additional-considerations.html#appendix-notebook-and-internet-access). You can set the value of this parameter to `Disabled` only if you set a value for the `SubnetId` parameter.
-#' @param VolumeSizeInGB The size, in GB, of the ML storage volume to attach to the notebook instance.
+#' @param VolumeSizeInGB The size, in GB, of the ML storage volume to attach to the notebook instance. The default value is 5 GB.
+#' @param AcceleratorTypes A list of Elastic Inference (EI) instance types to associate with this notebook instance. Currently, only one instance type can be associated with a notebook instance. For more information, see [Using Elastic Inference in Amazon SageMaker](http://docs.aws.amazon.com/sagemaker/latest/dg/ei.html).
+#' @param DefaultCodeRepository A Git repository to associate with the notebook instance as its default code repository. This can be either the name of a Git repository stored as a resource in your account, or the URL of a Git repository in [AWS CodeCommit](http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html) or in any other Git repository. When you open a notebook instance, it opens in the directory that contains this repository. For more information, see [Associating Git Repositories with Amazon SageMaker Notebook Instances](http://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html).
+#' @param AdditionalCodeRepositories An array of up to three Git repositories to associate with the notebook instance. These can be either the names of Git repositories stored as resources in your account, or the URL of Git repositories in [AWS CodeCommit](http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html) or in any other Git repository. These repositories are cloned at the same level as the default repository of your notebook instance. For more information, see [Associating Git Repositories with Amazon SageMaker Notebook Instances](http://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html).
 #'
 #' @export
 create_notebook_instance <- function (NotebookInstanceName, InstanceType, 
     SubnetId = NULL, SecurityGroupIds = NULL, RoleArn, KmsKeyId = NULL, 
     Tags = NULL, LifecycleConfigName = NULL, DirectInternetAccess = NULL, 
-    VolumeSizeInGB = NULL) 
+    VolumeSizeInGB = NULL, AcceleratorTypes = NULL, DefaultCodeRepository = NULL, 
+    AdditionalCodeRepositories = NULL) 
 {
     op <- new_operation(name = "CreateNotebookInstance", http_method = "POST", 
         http_path = "/", paginator = list())
@@ -410,7 +1061,8 @@ create_notebook_instance <- function (NotebookInstanceName, InstanceType,
         InstanceType = InstanceType, SubnetId = SubnetId, SecurityGroupIds = SecurityGroupIds, 
         RoleArn = RoleArn, KmsKeyId = KmsKeyId, Tags = Tags, 
         LifecycleConfigName = LifecycleConfigName, DirectInternetAccess = DirectInternetAccess, 
-        VolumeSizeInGB = VolumeSizeInGB)
+        VolumeSizeInGB = VolumeSizeInGB, AcceleratorTypes = AcceleratorTypes, 
+        DefaultCodeRepository = DefaultCodeRepository, AdditionalCodeRepositories = AdditionalCodeRepositories)
     output <- create_notebook_instance_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -472,7 +1124,7 @@ create_notebook_instance_lifecycle_config <- function (NotebookInstanceLifecycle
 #'
 #' Returns a URL that you can use to connect to the Jupyter server from a notebook instance. In the Amazon SageMaker console, when you choose `Open` next to a notebook instance, Amazon SageMaker opens a new tab showing the Jupyter server home page from the notebook instance. The console uses this API to get the URL and show the page.
 #' 
-#' You can restrict access to this API and to the URL that it returns to a list of IP addresses that you specify. To restrict access, attach an IAM policy that denies access to this API unless the call comes from an IP address in the specified list to every AWS Identity and Access Management user, group, or role used to access the notebook instance. Use the `NotIpAddress` condition operator and the `aws:SourceIP` condition context key to specify the list of IP addresses that you want to have access to the notebook instance. For more information, see [Limit Access to a Notebook Instance by IP Address](http://docs.aws.amazon.com/https:/docs.aws.amazon.com/sagemaker/latest/dg/howitworks-access-ws.html#nbi-ip-filter).
+#' You can restrict access to this API and to the URL that it returns to a list of IP addresses that you specify. To restrict access, attach an IAM policy that denies access to this API unless the call comes from an IP address in the specified list to every AWS Identity and Access Management user, group, or role used to access the notebook instance. Use the `NotIpAddress` condition operator and the `aws:SourceIP` condition context key to specify the list of IP addresses that you want to have access to the notebook instance. For more information, see [Limit Access to a Notebook Instance by IP Address](http://docs.aws.amazon.com/sagemaker/latest/dg/howitworks-access-ws.html#nbi-ip-filter).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -533,7 +1185,14 @@ create_presigned_notebook_instance_url <- function (NotebookInstanceName,
 #'   ),
 #'   AlgorithmSpecification = list(
 #'     TrainingImage = "string",
-#'     TrainingInputMode = "Pipe"|"File"
+#'     AlgorithmName = "string",
+#'     TrainingInputMode = "Pipe"|"File",
+#'     MetricDefinitions = list(
+#'       list(
+#'         Name = "string",
+#'         Regex = "string"
+#'       )
+#'     )
 #'   ),
 #'   RoleArn = "string",
 #'   InputDataConfig = list(
@@ -541,15 +1200,21 @@ create_presigned_notebook_instance_url <- function (NotebookInstanceName,
 #'       ChannelName = "string",
 #'       DataSource = list(
 #'         S3DataSource = list(
-#'           S3DataType = "ManifestFile"|"S3Prefix",
+#'           S3DataType = "ManifestFile"|"S3Prefix"|"AugmentedManifestFile",
 #'           S3Uri = "string",
-#'           S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key"
+#'           S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+#'           AttributeNames = list(
+#'             "string"
+#'           )
 #'         )
 #'       ),
 #'       ContentType = "string",
 #'       CompressionType = "None"|"Gzip",
 #'       RecordWrapperType = "None"|"RecordIO",
-#'       InputMode = "Pipe"|"File"
+#'       InputMode = "Pipe"|"File",
+#'       ShuffleConfig = list(
+#'         Seed = 123
+#'       )
 #'     )
 #'   ),
 #'   OutputDataConfig = list(
@@ -578,7 +1243,9 @@ create_presigned_notebook_instance_url <- function (NotebookInstanceName,
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   EnableNetworkIsolation = TRUE|FALSE,
+#'   EnableInterContainerTrafficEncryption = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -606,12 +1273,16 @@ create_presigned_notebook_instance_url <- function (NotebookInstanceName,
 #' 
 #' When Amazon SageMaker terminates a job because the stopping condition has been met, training algorithms provided by Amazon SageMaker save the intermediate results of the job. This intermediate data is a valid model artifact. You can use it to create a model using the `CreateModel` API.
 #' @param Tags An array of key-value pairs. For more information, see [Using Cost Allocation Tags](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what) in the *AWS Billing and Cost Management User Guide*.
+#' @param EnableNetworkIsolation Isolates the training container. No inbound or outbound network calls can be made, except for calls between peers within a training cluster for distributed training. If you enable network isolation for training jobs that are configured to use a VPC, Amazon SageMaker downloads and uploads customer data and model artifacts through the specified VPC, but the training container does not have network access.
+#' 
+#' The Semantic Segmentation built-in algorithm does not support network isolation.
+#' @param EnableInterContainerTrafficEncryption To encrypt all communications between ML compute instances in distributed training, choose `True`,. Encryption provides greater security for distributed training, but training can take longer because of additional communications between ML compute instances.
 #'
 #' @export
 create_training_job <- function (TrainingJobName, HyperParameters = NULL, 
     AlgorithmSpecification, RoleArn, InputDataConfig = NULL, 
     OutputDataConfig, ResourceConfig, VpcConfig = NULL, StoppingCondition, 
-    Tags = NULL) 
+    Tags = NULL, EnableNetworkIsolation = NULL, EnableInterContainerTrafficEncryption = NULL) 
 {
     op <- new_operation(name = "CreateTrainingJob", http_method = "POST", 
         http_path = "/", paginator = list())
@@ -620,7 +1291,8 @@ create_training_job <- function (TrainingJobName, HyperParameters = NULL,
         RoleArn = RoleArn, InputDataConfig = InputDataConfig, 
         OutputDataConfig = OutputDataConfig, ResourceConfig = ResourceConfig, 
         VpcConfig = VpcConfig, StoppingCondition = StoppingCondition, 
-        Tags = Tags)
+        Tags = Tags, EnableNetworkIsolation = EnableNetworkIsolation, 
+        EnableInterContainerTrafficEncryption = EnableInterContainerTrafficEncryption)
     output <- create_training_job_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -662,13 +1334,13 @@ create_training_job <- function (TrainingJobName, HyperParameters = NULL,
 #'   TransformInput = list(
 #'     DataSource = list(
 #'       S3DataSource = list(
-#'         S3DataType = "ManifestFile"|"S3Prefix",
+#'         S3DataType = "ManifestFile"|"S3Prefix"|"AugmentedManifestFile",
 #'         S3Uri = "string"
 #'       )
 #'     ),
 #'     ContentType = "string",
 #'     CompressionType = "None"|"Gzip",
-#'     SplitType = "None"|"Line"|"RecordIO"
+#'     SplitType = "None"|"Line"|"RecordIO"|"TFRecord"
 #'   ),
 #'   TransformOutput = list(
 #'     S3OutputPath = "string",
@@ -692,16 +1364,18 @@ create_training_job <- function (TrainingJobName, HyperParameters = NULL,
 #'
 #' @param TransformJobName &#91;required&#93; The name of the transform job. The name must be unique within an AWS Region in an AWS account.
 #' @param ModelName &#91;required&#93; The name of the model that you want to use for the transform job. `ModelName` must be the name of an existing Amazon SageMaker model within an AWS Region in an AWS account.
-#' @param MaxConcurrentTransforms The maximum number of parallel requests that can be sent to each instance in a transform job. This is good for algorithms that implement multiple workers on larger instances . The default value is `1`. To allow Amazon SageMaker to determine the appropriate number for `MaxConcurrentTransforms`, set the value to `0`.
-#' @param MaxPayloadInMB The maximum payload size allowed, in MB. A payload is the data portion of a record (without metadata). The value in `MaxPayloadInMB` must be greater or equal to the size of a single record. You can approximate the size of a record by dividing the size of your dataset by the number of records. Then multiply this value by the number of records you want in a mini-batch. It is recommended to enter a value slightly larger than this to ensure the records fit within the maximum payload size. The default value is `6` MB. For an unlimited payload size, set the value to `0`.
-#' @param BatchStrategy Determines the number of records included in a single mini-batch. `SingleRecord` means only one record is used per mini-batch. `MultiRecord` means a mini-batch is set to contain as many records that can fit within the `MaxPayloadInMB` limit.
+#' @param MaxConcurrentTransforms The maximum number of parallel requests that can be sent to an algorithm container on an instance. This is good for algorithms that implement multiple workers on larger instances . The default value is `1`. To allow Amazon SageMaker to determine the appropriate number for `MaxConcurrentTransforms`, do not set the value in the API.
+#' @param MaxPayloadInMB The maximum payload size allowed, in MB. A payload is the data portion of a record (without metadata). The value in `MaxPayloadInMB` must be greater or equal to the size of a single record. You can approximate the size of a record by dividing the size of your dataset by the number of records. Then multiply this value by the number of records you want in a mini-batch. We recommend to enter a slightly larger value than this to ensure the records fit within the maximum payload size. The default value is `6` MB.
 #' 
-#' Batch transform will automatically split your input data into whatever payload size is specified if you set `SplitType` to `Line` and `BatchStrategy` to `MultiRecord`. There\'s no need to split the dataset into smaller files or to use larger payload sizes unless the records in your dataset are very large.
+#' For cases where the payload might be arbitrarily large and is transmitted using HTTP chunked encoding, set the value to `0`. This feature only works in supported algorithms. Currently, Amazon SageMaker built-in algorithms do not support this feature.
+#' @param BatchStrategy Determines the number of records to include in a mini-batch. If you want to include only one record in a mini-batch, specify `SingleRecord`.. If you want mini-batches to contain a maximum of the number of records specified in the `MaxPayloadInMB` parameter, specify `MultiRecord`.
+#' 
+#' If you set `SplitType` to `Line` and `BatchStrategy` to `MultiRecord`, a batch transform automatically splits your input data into the specified payload size. There\'s no need to split the dataset into smaller files or to use larger payload sizes unless the records in your dataset are very large.
 #' @param Environment The environment variables to set in the Docker container. We support up to 16 key and values entries in the map.
 #' @param TransformInput &#91;required&#93; Describes the input source and the way the transform job consumes it.
 #' @param TransformOutput &#91;required&#93; Describes the results of the transform job.
 #' @param TransformResources &#91;required&#93; Describes the resources, including ML instance types and ML instance count, to use for the transform job.
-#' @param Tags An array of key-value pairs. Adding tags is optional. For more information, see [Using Cost Allocation Tags](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what) in the *AWS Billing and Cost Management User Guide*.
+#' @param Tags (Optional) An array of key-value pairs. For more information, see [Using Cost Allocation Tags](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what) in the *AWS Billing and Cost Management User Guide*.
 #'
 #' @export
 create_transform_job <- function (TransformJobName, ModelName, 
@@ -718,6 +1392,110 @@ create_transform_job <- function (TransformJobName, ModelName,
         TransformOutput = TransformOutput, TransformResources = TransformResources, 
         Tags = Tags)
     output <- create_transform_job_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a new work team for labeling your data
+#'
+#' Creates a new work team for labeling your data. A work team is defined by one or more Amazon Cognito user pools. You must first create the user pools before you can create a work team.
+#' 
+#' You cannot create more than 25 work teams in an account and region.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' create_workteam(
+#'   WorkteamName = "string",
+#'   MemberDefinitions = list(
+#'     list(
+#'       CognitoMemberDefinition = list(
+#'         UserPool = "string",
+#'         UserGroup = "string",
+#'         ClientId = "string"
+#'       )
+#'     )
+#'   ),
+#'   Description = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @param WorkteamName &#91;required&#93; The name of the work team. Use this name to identify the work team.
+#' @param MemberDefinitions &#91;required&#93; A list of `MemberDefinition` objects that contains objects that identify the Amazon Cognito user pool that makes up the work team. For more information, see [Amazon Cognito User Pools](http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html).
+#' 
+#' All of the `CognitoMemberDefinition` objects that make up the member definition must have the same `ClientId` and `UserPool` values.
+#' @param Description &#91;required&#93; A description of the work team.
+#' @param Tags 
+#'
+#' @export
+create_workteam <- function (WorkteamName, MemberDefinitions, 
+    Description, Tags = NULL) 
+{
+    op <- new_operation(name = "CreateWorkteam", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_workteam_input(WorkteamName = WorkteamName, 
+        MemberDefinitions = MemberDefinitions, Description = Description, 
+        Tags = Tags)
+    output <- create_workteam_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Removes the specified algorithm from your account
+#'
+#' Removes the specified algorithm from your account.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_algorithm(
+#'   AlgorithmName = "string"
+#' )
+#' ```
+#'
+#' @param AlgorithmName &#91;required&#93; The name of the algorithm to delete.
+#'
+#' @export
+delete_algorithm <- function (AlgorithmName) 
+{
+    op <- new_operation(name = "DeleteAlgorithm", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_algorithm_input(AlgorithmName = AlgorithmName)
+    output <- delete_algorithm_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified Git repository from your account
+#'
+#' Deletes the specified Git repository from your account.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_code_repository(
+#'   CodeRepositoryName = "string"
+#' )
+#' ```
+#'
+#' @param CodeRepositoryName &#91;required&#93; The name of the Git repository to delete.
+#'
+#' @export
+delete_code_repository <- function (CodeRepositoryName) 
+{
+    op <- new_operation(name = "DeleteCodeRepository", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_code_repository_input(CodeRepositoryName = CodeRepositoryName)
+    output <- delete_code_repository_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -798,6 +1576,34 @@ delete_model <- function (ModelName)
         http_path = "/", paginator = list())
     input <- delete_model_input(ModelName = ModelName)
     output <- delete_model_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes a model package
+#'
+#' Deletes a model package.
+#' 
+#' A model package is used to create Amazon SageMaker models or list on AWS Marketplace. Buyers can subscribe to model packages listed on AWS Marketplace to create models in Amazon SageMaker.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_model_package(
+#'   ModelPackageName = "string"
+#' )
+#' ```
+#'
+#' @param ModelPackageName &#91;required&#93; The name of the model package. The name must have 1 to 63 characters. Valid characters are a-z, A-Z, 0-9, and - (hyphen).
+#'
+#' @export
+delete_model_package <- function (ModelPackageName) 
+{
+    op <- new_operation(name = "DeleteModelPackage", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_model_package_input(ModelPackageName = ModelPackageName)
+    output <- delete_model_package_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -892,6 +1698,112 @@ delete_tags <- function (ResourceArn, TagKeys)
     return(response)
 }
 
+#' Deletes an existing work team
+#'
+#' Deletes an existing work team. This operation can\'t be undone.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_workteam(
+#'   WorkteamName = "string"
+#' )
+#' ```
+#'
+#' @param WorkteamName &#91;required&#93; The name of the work team to delete.
+#'
+#' @export
+delete_workteam <- function (WorkteamName) 
+{
+    op <- new_operation(name = "DeleteWorkteam", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_workteam_input(WorkteamName = WorkteamName)
+    output <- delete_workteam_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a description of the specified algorithm that is in your account
+#'
+#' Returns a description of the specified algorithm that is in your account.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_algorithm(
+#'   AlgorithmName = "string"
+#' )
+#' ```
+#'
+#' @param AlgorithmName &#91;required&#93; The name of the algorithm to describe.
+#'
+#' @export
+describe_algorithm <- function (AlgorithmName) 
+{
+    op <- new_operation(name = "DescribeAlgorithm", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_algorithm_input(AlgorithmName = AlgorithmName)
+    output <- describe_algorithm_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets details about the specified Git repository
+#'
+#' Gets details about the specified Git repository.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_code_repository(
+#'   CodeRepositoryName = "string"
+#' )
+#' ```
+#'
+#' @param CodeRepositoryName &#91;required&#93; The name of the Git repository to describe.
+#'
+#' @export
+describe_code_repository <- function (CodeRepositoryName) 
+{
+    op <- new_operation(name = "DescribeCodeRepository", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_code_repository_input(CodeRepositoryName = CodeRepositoryName)
+    output <- describe_code_repository_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns information about a model compilation job
+#'
+#' Returns information about a model compilation job.
+#' 
+#' To create a model compilation job, use CreateCompilationJob. To get information about multiple model compilation jobs, use ListCompilationJobs.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_compilation_job(
+#'   CompilationJobName = "string"
+#' )
+#' ```
+#'
+#' @param CompilationJobName &#91;required&#93; The name of the model compilation job that you want information about.
+#'
+#' @export
+describe_compilation_job <- function (CompilationJobName) 
+{
+    op <- new_operation(name = "DescribeCompilationJob", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_compilation_job_input(CompilationJobName = CompilationJobName)
+    output <- describe_compilation_job_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Returns the description of an endpoint
 #'
 #' Returns the description of an endpoint.
@@ -970,6 +1882,32 @@ describe_hyper_parameter_tuning_job <- function (HyperParameterTuningJobName)
     return(response)
 }
 
+#' Gets information about a labeling job
+#'
+#' Gets information about a labeling job.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_labeling_job(
+#'   LabelingJobName = "string"
+#' )
+#' ```
+#'
+#' @param LabelingJobName &#91;required&#93; The name of the labeling job to return information for.
+#'
+#' @export
+describe_labeling_job <- function (LabelingJobName) 
+{
+    op <- new_operation(name = "DescribeLabelingJob", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_labeling_job_input(LabelingJobName = LabelingJobName)
+    output <- describe_labeling_job_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Describes a model that you created using the CreateModel API
 #'
 #' Describes a model that you created using the `CreateModel` API.
@@ -990,6 +1928,34 @@ describe_model <- function (ModelName)
         http_path = "/", paginator = list())
     input <- describe_model_input(ModelName = ModelName)
     output <- describe_model_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a description of the specified model package, which is used to create Amazon SageMaker models or list them on AWS Marketplace
+#'
+#' Returns a description of the specified model package, which is used to create Amazon SageMaker models or list them on AWS Marketplace.
+#' 
+#' To create models in Amazon SageMaker, buyers can subscribe to model packages listed on AWS Marketplace.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_model_package(
+#'   ModelPackageName = "string"
+#' )
+#' ```
+#'
+#' @param ModelPackageName &#91;required&#93; The name of the model package to describe.
+#'
+#' @export
+describe_model_package <- function (ModelPackageName) 
+{
+    op <- new_operation(name = "DescribeModelPackage", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_model_package_input(ModelPackageName = ModelPackageName)
+    output <- describe_model_package_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -1050,6 +2016,32 @@ describe_notebook_instance_lifecycle_config <- function (NotebookInstanceLifecyc
     return(response)
 }
 
+#' Gets information about a work team provided by a vendor
+#'
+#' Gets information about a work team provided by a vendor. It returns details about the subscription with a vendor in the AWS Marketplace.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_subscribed_workteam(
+#'   WorkteamArn = "string"
+#' )
+#' ```
+#'
+#' @param WorkteamArn &#91;required&#93; The Amazon Resource Name (ARN) of the subscribed work team to describe.
+#'
+#' @export
+describe_subscribed_workteam <- function (WorkteamArn) 
+{
+    op <- new_operation(name = "DescribeSubscribedWorkteam", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_subscribed_workteam_input(WorkteamArn = WorkteamArn)
+    output <- describe_subscribed_workteam_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Returns information about a training job
 #'
 #' Returns information about a training job.
@@ -1096,6 +2088,210 @@ describe_transform_job <- function (TransformJobName)
         http_path = "/", paginator = list())
     input <- describe_transform_job_input(TransformJobName = TransformJobName)
     output <- describe_transform_job_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets information about a specific work team
+#'
+#' Gets information about a specific work team. You can see information such as the create date, the last updated date, membership information, and the work team\'s Amazon Resource Name (ARN).
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_workteam(
+#'   WorkteamName = "string"
+#' )
+#' ```
+#'
+#' @param WorkteamName &#91;required&#93; The name of the work team to return a description of.
+#'
+#' @export
+describe_workteam <- function (WorkteamName) 
+{
+    op <- new_operation(name = "DescribeWorkteam", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_workteam_input(WorkteamName = WorkteamName)
+    output <- describe_workteam_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' An auto-complete API for the search functionality in the Amazon SageMaker console
+#'
+#' An auto-complete API for the search functionality in the Amazon SageMaker console. It returns suggestions of possible matches for the property name to use in `Search` queries. Provides suggestions for `HyperParameters`, `Tags`, and `Metrics`.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' get_search_suggestions(
+#'   Resource = "TrainingJob",
+#'   SuggestionQuery = list(
+#'     PropertyNameQuery = list(
+#'       PropertyNameHint = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @param Resource &#91;required&#93; The name of the Amazon SageMaker resource to Search for. The only valid `Resource` value is `TrainingJob`.
+#' @param SuggestionQuery Limits the property names that are included in the response.
+#'
+#' @export
+get_search_suggestions <- function (Resource, SuggestionQuery = NULL) 
+{
+    op <- new_operation(name = "GetSearchSuggestions", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_search_suggestions_input(Resource = Resource, 
+        SuggestionQuery = SuggestionQuery)
+    output <- get_search_suggestions_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the machine learning algorithms that have been created
+#'
+#' Lists the machine learning algorithms that have been created.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' list_algorithms(
+#'   CreationTimeAfter = as.POSIXct("2015-01-01"),
+#'   CreationTimeBefore = as.POSIXct("2015-01-01"),
+#'   MaxResults = 123,
+#'   NameContains = "string",
+#'   NextToken = "string",
+#'   SortBy = "Name"|"CreationTime",
+#'   SortOrder = "Ascending"|"Descending"
+#' )
+#' ```
+#'
+#' @param CreationTimeAfter A filter that returns only algorithms created after the specified time (timestamp).
+#' @param CreationTimeBefore A filter that returns only algorithms created before the specified time (timestamp).
+#' @param MaxResults The maximum number of algorithms to return in the response.
+#' @param NameContains A string in the algorithm name. This filter returns only algorithms whose name contains the specified string.
+#' @param NextToken If the response to a previous `ListAlgorithms` request was truncated, the response includes a `NextToken`. To retrieve the next set of algorithms, use the token in the next request.
+#' @param SortBy The parameter by which to sort the results. The default is `CreationTime`.
+#' @param SortOrder The sort order for the results. The default is `Ascending`.
+#'
+#' @export
+list_algorithms <- function (CreationTimeAfter = NULL, CreationTimeBefore = NULL, 
+    MaxResults = NULL, NameContains = NULL, NextToken = NULL, 
+    SortBy = NULL, SortOrder = NULL) 
+{
+    op <- new_operation(name = "ListAlgorithms", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_algorithms_input(CreationTimeAfter = CreationTimeAfter, 
+        CreationTimeBefore = CreationTimeBefore, MaxResults = MaxResults, 
+        NameContains = NameContains, NextToken = NextToken, SortBy = SortBy, 
+        SortOrder = SortOrder)
+    output <- list_algorithms_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets a list of the Git repositories in your account
+#'
+#' Gets a list of the Git repositories in your account.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' list_code_repositories(
+#'   CreationTimeAfter = as.POSIXct("2015-01-01"),
+#'   CreationTimeBefore = as.POSIXct("2015-01-01"),
+#'   LastModifiedTimeAfter = as.POSIXct("2015-01-01"),
+#'   LastModifiedTimeBefore = as.POSIXct("2015-01-01"),
+#'   MaxResults = 123,
+#'   NameContains = "string",
+#'   NextToken = "string",
+#'   SortBy = "Name"|"CreationTime"|"LastModifiedTime",
+#'   SortOrder = "Ascending"|"Descending"
+#' )
+#' ```
+#'
+#' @param CreationTimeAfter A filter that returns only Git repositories that were created after the specified time.
+#' @param CreationTimeBefore A filter that returns only Git repositories that were created before the specified time.
+#' @param LastModifiedTimeAfter A filter that returns only Git repositories that were last modified after the specified time.
+#' @param LastModifiedTimeBefore A filter that returns only Git repositories that were last modified before the specified time.
+#' @param MaxResults The maximum number of Git repositories to return in the response.
+#' @param NameContains A string in the Git repositories name. This filter returns only repositories whose name contains the specified string.
+#' @param NextToken If the result of a `ListCodeRepositoriesOutput` request was truncated, the response includes a `NextToken`. To get the next set of Git repositories, use the token in the next request.
+#' @param SortBy The field to sort results by. The default is `Name`.
+#' @param SortOrder The sort order for results. The default is `Ascending`.
+#'
+#' @export
+list_code_repositories <- function (CreationTimeAfter = NULL, 
+    CreationTimeBefore = NULL, LastModifiedTimeAfter = NULL, 
+    LastModifiedTimeBefore = NULL, MaxResults = NULL, NameContains = NULL, 
+    NextToken = NULL, SortBy = NULL, SortOrder = NULL) 
+{
+    op <- new_operation(name = "ListCodeRepositories", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_code_repositories_input(CreationTimeAfter = CreationTimeAfter, 
+        CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, 
+        LastModifiedTimeBefore = LastModifiedTimeBefore, MaxResults = MaxResults, 
+        NameContains = NameContains, NextToken = NextToken, SortBy = SortBy, 
+        SortOrder = SortOrder)
+    output <- list_code_repositories_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists model compilation jobs that satisfy various filters
+#'
+#' Lists model compilation jobs that satisfy various filters.
+#' 
+#' To create a model compilation job, use CreateCompilationJob. To get information about a particular model compilation job you have created, use DescribeCompilationJob.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' list_compilation_jobs(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   CreationTimeAfter = as.POSIXct("2015-01-01"),
+#'   CreationTimeBefore = as.POSIXct("2015-01-01"),
+#'   LastModifiedTimeAfter = as.POSIXct("2015-01-01"),
+#'   LastModifiedTimeBefore = as.POSIXct("2015-01-01"),
+#'   NameContains = "string",
+#'   StatusEquals = "INPROGRESS"|"COMPLETED"|"FAILED"|"STARTING"|"STOPPING"|"STOPPED",
+#'   SortBy = "Name"|"CreationTime"|"Status",
+#'   SortOrder = "Ascending"|"Descending"
+#' )
+#' ```
+#'
+#' @param NextToken If the result of the previous `ListCompilationJobs` request was truncated, the response includes a `NextToken`. To retrieve the next set of model compilation jobs, use the token in the next request.
+#' @param MaxResults The maximum number of model compilation jobs to return in the response.
+#' @param CreationTimeAfter A filter that returns the model compilation jobs that were created after a specified time.
+#' @param CreationTimeBefore A filter that returns the model compilation jobs that were created before a specified time.
+#' @param LastModifiedTimeAfter A filter that returns the model compilation jobs that were modified after a specified time.
+#' @param LastModifiedTimeBefore A filter that returns the model compilation jobs that were modified before a specified time.
+#' @param NameContains A filter that returns the model compilation jobs whose name contains a specified string.
+#' @param StatusEquals A filter that retrieves model compilation jobs with a specific DescribeCompilationJobResponse\$CompilationJobStatus status.
+#' @param SortBy The field by which to sort results. The default is `CreationTime`.
+#' @param SortOrder The sort order for results. The default is `Ascending`.
+#'
+#' @export
+list_compilation_jobs <- function (NextToken = NULL, MaxResults = NULL, 
+    CreationTimeAfter = NULL, CreationTimeBefore = NULL, LastModifiedTimeAfter = NULL, 
+    LastModifiedTimeBefore = NULL, NameContains = NULL, StatusEquals = NULL, 
+    SortBy = NULL, SortOrder = NULL) 
+{
+    op <- new_operation(name = "ListCompilationJobs", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_compilation_jobs_input(NextToken = NextToken, 
+        MaxResults = MaxResults, CreationTimeAfter = CreationTimeAfter, 
+        CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, 
+        LastModifiedTimeBefore = LastModifiedTimeBefore, NameContains = NameContains, 
+        StatusEquals = StatusEquals, SortBy = SortBy, SortOrder = SortOrder)
+    output <- list_compilation_jobs_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -1246,6 +2442,145 @@ list_hyper_parameter_tuning_jobs <- function (NextToken = NULL,
     return(response)
 }
 
+#' Gets a list of labeling jobs
+#'
+#' Gets a list of labeling jobs.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' list_labeling_jobs(
+#'   CreationTimeAfter = as.POSIXct("2015-01-01"),
+#'   CreationTimeBefore = as.POSIXct("2015-01-01"),
+#'   LastModifiedTimeAfter = as.POSIXct("2015-01-01"),
+#'   LastModifiedTimeBefore = as.POSIXct("2015-01-01"),
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   NameContains = "string",
+#'   SortBy = "Name"|"CreationTime"|"Status",
+#'   SortOrder = "Ascending"|"Descending",
+#'   StatusEquals = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped"
+#' )
+#' ```
+#'
+#' @param CreationTimeAfter A filter that returns only labeling jobs created after the specified time (timestamp).
+#' @param CreationTimeBefore A filter that returns only labeling jobs created before the specified time (timestamp).
+#' @param LastModifiedTimeAfter A filter that returns only labeling jobs modified after the specified time (timestamp).
+#' @param LastModifiedTimeBefore A filter that returns only labeling jobs modified before the specified time (timestamp).
+#' @param MaxResults The maximum number of labeling jobs to return in each page of the response.
+#' @param NextToken If the result of the previous `ListLabelingJobs` request was truncated, the response includes a `NextToken`. To retrieve the next set of labeling jobs, use the token in the next request.
+#' @param NameContains A string in the labeling job name. This filter returns only labeling jobs whose name contains the specified string.
+#' @param SortBy The field to sort results by. The default is `CreationTime`.
+#' @param SortOrder The sort order for results. The default is `Ascending`.
+#' @param StatusEquals A filter that retrieves only labeling jobs with a specific status.
+#'
+#' @export
+list_labeling_jobs <- function (CreationTimeAfter = NULL, CreationTimeBefore = NULL, 
+    LastModifiedTimeAfter = NULL, LastModifiedTimeBefore = NULL, 
+    MaxResults = NULL, NextToken = NULL, NameContains = NULL, 
+    SortBy = NULL, SortOrder = NULL, StatusEquals = NULL) 
+{
+    op <- new_operation(name = "ListLabelingJobs", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_labeling_jobs_input(CreationTimeAfter = CreationTimeAfter, 
+        CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, 
+        LastModifiedTimeBefore = LastModifiedTimeBefore, MaxResults = MaxResults, 
+        NextToken = NextToken, NameContains = NameContains, SortBy = SortBy, 
+        SortOrder = SortOrder, StatusEquals = StatusEquals)
+    output <- list_labeling_jobs_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets a list of labeling jobs assigned to a specified work team
+#'
+#' Gets a list of labeling jobs assigned to a specified work team.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' list_labeling_jobs_for_workteam(
+#'   WorkteamArn = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   CreationTimeAfter = as.POSIXct("2015-01-01"),
+#'   CreationTimeBefore = as.POSIXct("2015-01-01"),
+#'   JobReferenceCodeContains = "string",
+#'   SortBy = "CreationTime",
+#'   SortOrder = "Ascending"|"Descending"
+#' )
+#' ```
+#'
+#' @param WorkteamArn &#91;required&#93; The Amazon Resource Name (ARN) of the work team for which you want to see labeling jobs for.
+#' @param MaxResults The maximum number of labeling jobs to return in each page of the response.
+#' @param NextToken If the result of the previous `ListLabelingJobsForWorkteam` request was truncated, the response includes a `NextToken`. To retrieve the next set of labeling jobs, use the token in the next request.
+#' @param CreationTimeAfter A filter that returns only labeling jobs created after the specified time (timestamp).
+#' @param CreationTimeBefore A filter that returns only labeling jobs created before the specified time (timestamp).
+#' @param JobReferenceCodeContains A filter the limits jobs to only the ones whose job reference code contains the specified string.
+#' @param SortBy The field to sort results by. The default is `CreationTime`.
+#' @param SortOrder The sort order for results. The default is `Ascending`.
+#'
+#' @export
+list_labeling_jobs_for_workteam <- function (WorkteamArn, MaxResults = NULL, 
+    NextToken = NULL, CreationTimeAfter = NULL, CreationTimeBefore = NULL, 
+    JobReferenceCodeContains = NULL, SortBy = NULL, SortOrder = NULL) 
+{
+    op <- new_operation(name = "ListLabelingJobsForWorkteam", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- list_labeling_jobs_for_workteam_input(WorkteamArn = WorkteamArn, 
+        MaxResults = MaxResults, NextToken = NextToken, CreationTimeAfter = CreationTimeAfter, 
+        CreationTimeBefore = CreationTimeBefore, JobReferenceCodeContains = JobReferenceCodeContains, 
+        SortBy = SortBy, SortOrder = SortOrder)
+    output <- list_labeling_jobs_for_workteam_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the model packages that have been created
+#'
+#' Lists the model packages that have been created.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' list_model_packages(
+#'   CreationTimeAfter = as.POSIXct("2015-01-01"),
+#'   CreationTimeBefore = as.POSIXct("2015-01-01"),
+#'   MaxResults = 123,
+#'   NameContains = "string",
+#'   NextToken = "string",
+#'   SortBy = "Name"|"CreationTime",
+#'   SortOrder = "Ascending"|"Descending"
+#' )
+#' ```
+#'
+#' @param CreationTimeAfter A filter that returns only model packages created after the specified time (timestamp).
+#' @param CreationTimeBefore A filter that returns only model packages created before the specified time (timestamp).
+#' @param MaxResults The maximum number of model packages to return in the response.
+#' @param NameContains A string in the model package name. This filter returns only model packages whose name contains the specified string.
+#' @param NextToken If the response to a previous `ListModelPackages` request was truncated, the response includes a `NextToken`. To retrieve the next set of model packages, use the token in the next request.
+#' @param SortBy The parameter by which to sort the results. The default is `CreationTime`.
+#' @param SortOrder The sort order for the results. The default is `Ascending`.
+#'
+#' @export
+list_model_packages <- function (CreationTimeAfter = NULL, CreationTimeBefore = NULL, 
+    MaxResults = NULL, NameContains = NULL, NextToken = NULL, 
+    SortBy = NULL, SortOrder = NULL) 
+{
+    op <- new_operation(name = "ListModelPackages", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_model_packages_input(CreationTimeAfter = CreationTimeAfter, 
+        CreationTimeBefore = CreationTimeBefore, MaxResults = MaxResults, 
+        NameContains = NameContains, NextToken = NextToken, SortBy = SortBy, 
+        SortOrder = SortOrder)
+    output <- list_model_packages_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Lists models created with the CreateModel API
 #'
 #' Lists models created with the [CreateModel](http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateModel.html) API.
@@ -1354,7 +2689,9 @@ list_notebook_instance_lifecycle_configs <- function (NextToken = NULL,
 #'   LastModifiedTimeBefore = as.POSIXct("2015-01-01"),
 #'   LastModifiedTimeAfter = as.POSIXct("2015-01-01"),
 #'   StatusEquals = "Pending"|"InService"|"Stopping"|"Stopped"|"Failed"|"Deleting"|"Updating",
-#'   NotebookInstanceLifecycleConfigNameContains = "string"
+#'   NotebookInstanceLifecycleConfigNameContains = "string",
+#'   DefaultCodeRepositoryContains = "string",
+#'   AdditionalCodeRepositoryEquals = "string"
 #' )
 #' ```
 #'
@@ -1371,12 +2708,15 @@ list_notebook_instance_lifecycle_configs <- function (NextToken = NULL,
 #' @param LastModifiedTimeAfter A filter that returns only notebook instances that were modified after the specified time (timestamp).
 #' @param StatusEquals A filter that returns only notebook instances with the specified status.
 #' @param NotebookInstanceLifecycleConfigNameContains A string in the name of a notebook instances lifecycle configuration associated with this notebook instance. This filter returns only notebook instances associated with a lifecycle configuration with a name that contains the specified string.
+#' @param DefaultCodeRepositoryContains A string in the name or URL of a Git repository associated with this notebook instance. This filter returns only notebook instances associated with a git repository with a name that contains the specified string.
+#' @param AdditionalCodeRepositoryEquals A filter that returns only notebook instances with associated with the specified git repository.
 #'
 #' @export
 list_notebook_instances <- function (NextToken = NULL, MaxResults = NULL, 
     SortBy = NULL, SortOrder = NULL, NameContains = NULL, CreationTimeBefore = NULL, 
     CreationTimeAfter = NULL, LastModifiedTimeBefore = NULL, 
-    LastModifiedTimeAfter = NULL, StatusEquals = NULL, NotebookInstanceLifecycleConfigNameContains = NULL) 
+    LastModifiedTimeAfter = NULL, StatusEquals = NULL, NotebookInstanceLifecycleConfigNameContains = NULL, 
+    DefaultCodeRepositoryContains = NULL, AdditionalCodeRepositoryEquals = NULL) 
 {
     op <- new_operation(name = "ListNotebookInstances", http_method = "POST", 
         http_path = "/", paginator = list())
@@ -1385,8 +2725,42 @@ list_notebook_instances <- function (NextToken = NULL, MaxResults = NULL,
         NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, 
         CreationTimeAfter = CreationTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, 
         LastModifiedTimeAfter = LastModifiedTimeAfter, StatusEquals = StatusEquals, 
-        NotebookInstanceLifecycleConfigNameContains = NotebookInstanceLifecycleConfigNameContains)
+        NotebookInstanceLifecycleConfigNameContains = NotebookInstanceLifecycleConfigNameContains, 
+        DefaultCodeRepositoryContains = DefaultCodeRepositoryContains, 
+        AdditionalCodeRepositoryEquals = AdditionalCodeRepositoryEquals)
     output <- list_notebook_instances_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets a list of the work teams that you are subscribed to in the AWS Marketplace
+#'
+#' Gets a list of the work teams that you are subscribed to in the AWS Marketplace. The list may be empty if no work team satisfies the filter specified in the `NameContains` parameter.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' list_subscribed_workteams(
+#'   NameContains = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @param NameContains A string in the work team name. This filter returns only work teams whose name contains the specified string.
+#' @param NextToken If the result of the previous `ListSubscribedWorkteams` request was truncated, the response includes a `NextToken`. To retrieve the next set of labeling jobs, use the token in the next request.
+#' @param MaxResults The maximum number of work teams to return in each page of the response.
+#'
+#' @export
+list_subscribed_workteams <- function (NameContains = NULL, NextToken = NULL, 
+    MaxResults = NULL) 
+{
+    op <- new_operation(name = "ListSubscribedWorkteams", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_subscribed_workteams_input(NameContains = NameContains, 
+        NextToken = NextToken, MaxResults = MaxResults)
+    output <- list_subscribed_workteams_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -1568,6 +2942,142 @@ list_transform_jobs <- function (CreationTimeAfter = NULL, CreationTimeBefore = 
     return(response)
 }
 
+#' Gets a list of work teams that you have defined in a region
+#'
+#' Gets a list of work teams that you have defined in a region. The list may be empty if no work team satisfies the filter specified in the `NameContains` parameter.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' list_workteams(
+#'   SortBy = "Name"|"CreateDate",
+#'   SortOrder = "Ascending"|"Descending",
+#'   NameContains = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @param SortBy The field to sort results by. The default is `CreationTime`.
+#' @param SortOrder The sort order for results. The default is `Ascending`.
+#' @param NameContains A string in the work team\'s name. This filter returns only work teams whose name contains the specified string.
+#' @param NextToken If the result of the previous `ListWorkteams` request was truncated, the response includes a `NextToken`. To retrieve the next set of labeling jobs, use the token in the next request.
+#' @param MaxResults The maximum number of work teams to return in each page of the response.
+#'
+#' @export
+list_workteams <- function (SortBy = NULL, SortOrder = NULL, 
+    NameContains = NULL, NextToken = NULL, MaxResults = NULL) 
+{
+    op <- new_operation(name = "ListWorkteams", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_workteams_input(SortBy = SortBy, SortOrder = SortOrder, 
+        NameContains = NameContains, NextToken = NextToken, MaxResults = MaxResults)
+    output <- list_workteams_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Renders the UI template so that you can preview the worker's experience
+#'
+#' Renders the UI template so that you can preview the worker\'s experience.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' render_ui_template(
+#'   UiTemplate = list(
+#'     Content = "string"
+#'   ),
+#'   Task = list(
+#'     Input = "string"
+#'   ),
+#'   RoleArn = "string"
+#' )
+#' ```
+#'
+#' @param UiTemplate &#91;required&#93; A `Template` object containing the worker UI template to render.
+#' @param Task &#91;required&#93; A `RenderableTask` object containing a representative task to render.
+#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) that has access to the S3 objects that are used by the template.
+#'
+#' @export
+render_ui_template <- function (UiTemplate, Task, RoleArn) 
+{
+    op <- new_operation(name = "RenderUiTemplate", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- render_ui_template_input(UiTemplate = UiTemplate, 
+        Task = Task, RoleArn = RoleArn)
+    output <- render_ui_template_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Finds Amazon SageMaker resources that match a search query
+#'
+#' Finds Amazon SageMaker resources that match a search query. Matching resource objects are returned as a list of `SearchResult` objects in the response. You can sort the search results by any resource property in a ascending or descending order.
+#' 
+#' You can query against the following value types: numerical, text, Booleans, and timestamps.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' search(
+#'   Resource = "TrainingJob",
+#'   SearchExpression = list(
+#'     Filters = list(
+#'       list(
+#'         Name = "string",
+#'         Operator = "Equals"|"NotEquals"|"GreaterThan"|"GreaterThanOrEqualTo"|"LessThan"|"LessThanOrEqualTo"|"Contains",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     NestedFilters = list(
+#'       list(
+#'         NestedPropertyName = "string",
+#'         Filters = list(
+#'           list(
+#'             Name = "string",
+#'             Operator = "Equals"|"NotEquals"|"GreaterThan"|"GreaterThanOrEqualTo"|"LessThan"|"LessThanOrEqualTo"|"Contains",
+#'             Value = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     SubExpressions = list(
+#'       list()
+#'     ),
+#'     Operator = "And"|"Or"
+#'   ),
+#'   SortBy = "string",
+#'   SortOrder = "Ascending"|"Descending",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @param Resource &#91;required&#93; The name of the Amazon SageMaker resource to search for. Currently, the only valid `Resource` value is `TrainingJob`.
+#' @param SearchExpression A Boolean conditional statement. Resource objects must satisfy this condition to be included in search results. You must provide at least one subexpression, filter, or nested filter. The maximum number of recursive `SubExpressions`, `NestedFilters`, and `Filters` that can be included in a `SearchExpression` object is 50.
+#' @param SortBy The name of the resource property used to sort the `SearchResults`. The default is `LastModifiedTime`.
+#' @param SortOrder How `SearchResults` are ordered. Valid values are `Ascending` or `Descending`. The default is `Descending`.
+#' @param NextToken If more than `MaxResults` resource objects match the specified `SearchExpression`, the `SearchResponse` includes a `NextToken`. The `NextToken` can be passed to the next `SearchRequest` to continue retrieving results for the specified `SearchExpression` and `Sort` parameters.
+#' @param MaxResults The maximum number of results to return in a `SearchResponse`.
+#'
+#' @export
+search <- function (Resource, SearchExpression = NULL, SortBy = NULL, 
+    SortOrder = NULL, NextToken = NULL, MaxResults = NULL) 
+{
+    op <- new_operation(name = "Search", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- search_input(Resource = Resource, SearchExpression = SearchExpression, 
+        SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, 
+        MaxResults = MaxResults)
+    output <- search_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Launches an ML compute instance with the latest version of the libraries and attaches your ML storage volume
 #'
 #' Launches an ML compute instance with the latest version of the libraries and attaches your ML storage volume. After configuring the notebook instance, Amazon SageMaker sets the notebook instance status to `InService`. A notebook instance\'s status must be `InService` before you can connect to your Jupyter notebook.
@@ -1588,6 +3098,36 @@ start_notebook_instance <- function (NotebookInstanceName)
         http_path = "/", paginator = list())
     input <- start_notebook_instance_input(NotebookInstanceName = NotebookInstanceName)
     output <- start_notebook_instance_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Stops a model compilation job
+#'
+#' Stops a model compilation job.
+#' 
+#' To stop a job, Amazon SageMaker sends the algorithm the SIGTERM signal. This gracefully shuts the job down. If the job hasn\'t stopped, it sends the SIGKILL signal.
+#' 
+#' When it receives a `StopCompilationJob` request, Amazon SageMaker changes the CompilationJobSummary\$CompilationJobStatus of the job to `Stopping`. After Amazon SageMaker stops the job, it sets the CompilationJobSummary\$CompilationJobStatus to `Stopped`.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' stop_compilation_job(
+#'   CompilationJobName = "string"
+#' )
+#' ```
+#'
+#' @param CompilationJobName &#91;required&#93; The name of the model compilation job to stop.
+#'
+#' @export
+stop_compilation_job <- function (CompilationJobName) 
+{
+    op <- new_operation(name = "StopCompilationJob", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- stop_compilation_job_input(CompilationJobName = CompilationJobName)
+    output <- stop_compilation_job_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -1616,6 +3156,32 @@ stop_hyper_parameter_tuning_job <- function (HyperParameterTuningJobName)
         http_method = "POST", http_path = "/", paginator = list())
     input <- stop_hyper_parameter_tuning_job_input(HyperParameterTuningJobName = HyperParameterTuningJobName)
     output <- stop_hyper_parameter_tuning_job_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Stops a running labeling job
+#'
+#' Stops a running labeling job. A job that is stopped cannot be restarted. Any results obtained before the job is stopped are placed in the Amazon S3 output bucket.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' stop_labeling_job(
+#'   LabelingJobName = "string"
+#' )
+#' ```
+#'
+#' @param LabelingJobName &#91;required&#93; The name of the labeling job to stop.
+#'
+#' @export
+stop_labeling_job <- function (LabelingJobName) 
+{
+    op <- new_operation(name = "StopLabelingJob", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- stop_labeling_job_input(LabelingJobName = LabelingJobName)
+    output <- stop_labeling_job_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -1708,6 +3274,39 @@ stop_transform_job <- function (TransformJobName)
     return(response)
 }
 
+#' Updates the specified Git repository with the specified values
+#'
+#' Updates the specified Git repository with the specified values.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' update_code_repository(
+#'   CodeRepositoryName = "string",
+#'   GitConfig = list(
+#'     SecretArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @param CodeRepositoryName &#91;required&#93; The name of the Git repository to update.
+#' @param GitConfig The configuration of the git repository, including the URL and the Amazon Resource Name (ARN) of the AWS Secrets Manager secret that contains the credentials used to access the repository. The secret must have a staging label of `AWSCURRENT` and must be in the following format:
+#' 
+#' `{"username": UserName, "password": Password}UserName, "password": Password}`
+#'
+#' @export
+update_code_repository <- function (CodeRepositoryName, GitConfig = NULL) 
+{
+    op <- new_operation(name = "UpdateCodeRepository", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_code_repository_input(CodeRepositoryName = CodeRepositoryName, 
+        GitConfig = GitConfig)
+    output <- update_code_repository_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Deploys the new EndpointConfig specified in the request, switches to using newly created endpoint, and then deletes resources provisioned for the endpoint using the previous EndpointConfig (there is no availability loss)
 #'
 #' Deploys the new `EndpointConfig` specified in the request, switches to using newly created endpoint, and then deletes resources provisioned for the endpoint using the previous `EndpointConfig` (there is no availability loss).
@@ -1785,11 +3384,21 @@ update_endpoint_weights_and_capacities <- function (EndpointName,
 #' ```
 #' update_notebook_instance(
 #'   NotebookInstanceName = "string",
-#'   InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge",
+#'   InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge",
 #'   RoleArn = "string",
 #'   LifecycleConfigName = "string",
 #'   DisassociateLifecycleConfig = TRUE|FALSE,
-#'   VolumeSizeInGB = 123
+#'   VolumeSizeInGB = 123,
+#'   DefaultCodeRepository = "string",
+#'   AdditionalCodeRepositories = list(
+#'     "string"
+#'   ),
+#'   AcceleratorTypes = list(
+#'     "ml.eia1.medium"|"ml.eia1.large"|"ml.eia1.xlarge"
+#'   ),
+#'   DisassociateAcceleratorTypes = TRUE|FALSE,
+#'   DisassociateDefaultCodeRepository = TRUE|FALSE,
+#'   DisassociateAdditionalCodeRepositories = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -1800,19 +3409,31 @@ update_endpoint_weights_and_capacities <- function (EndpointName,
 #' To be able to pass this role to Amazon SageMaker, the caller of this API must have the `iam:PassRole` permission.
 #' @param LifecycleConfigName The name of a lifecycle configuration to associate with the notebook instance. For information about lifestyle configurations, see [Step 2.1: (Optional) Customize a Notebook Instance](http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
 #' @param DisassociateLifecycleConfig Set to `true` to remove the notebook instance lifecycle configuration currently associated with the notebook instance.
-#' @param VolumeSizeInGB The size, in GB, of the ML storage volume to attach to the notebook instance.
+#' @param VolumeSizeInGB The size, in GB, of the ML storage volume to attach to the notebook instance. The default value is 5 GB.
+#' @param DefaultCodeRepository The Git repository to associate with the notebook instance as its default code repository. This can be either the name of a Git repository stored as a resource in your account, or the URL of a Git repository in [AWS CodeCommit](http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html) or in any other Git repository. When you open a notebook instance, it opens in the directory that contains this repository. For more information, see [Associating Git Repositories with Amazon SageMaker Notebook Instances](http://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html).
+#' @param AdditionalCodeRepositories An array of up to three Git repositories to associate with the notebook instance. These can be either the names of Git repositories stored as resources in your account, or the URL of Git repositories in [AWS CodeCommit](http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html) or in any other Git repository.. These repositories are cloned at the same level as the default repository of your notebook instance. For more information, see [Associating Git Repositories with Amazon SageMaker Notebook Instances](http://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html).
+#' @param AcceleratorTypes A list of the Elastic Inference (EI) instance types to associate with this notebook instance. Currently only one EI instance type can be associated with a notebook instance. For more information, see [Using Elastic Inference in Amazon SageMaker](http://docs.aws.amazon.com/sagemaker/latest/dg/ei.html).
+#' @param DisassociateAcceleratorTypes A list of the Elastic Inference (EI) instance types to remove from this notebook instance.
+#' @param DisassociateDefaultCodeRepository The name or URL of the default Git repository to remove from this notebook instance.
+#' @param DisassociateAdditionalCodeRepositories A list of names or URLs of the default Git repositories to remove from this notebook instance.
 #'
 #' @export
 update_notebook_instance <- function (NotebookInstanceName, InstanceType = NULL, 
     RoleArn = NULL, LifecycleConfigName = NULL, DisassociateLifecycleConfig = NULL, 
-    VolumeSizeInGB = NULL) 
+    VolumeSizeInGB = NULL, DefaultCodeRepository = NULL, AdditionalCodeRepositories = NULL, 
+    AcceleratorTypes = NULL, DisassociateAcceleratorTypes = NULL, 
+    DisassociateDefaultCodeRepository = NULL, DisassociateAdditionalCodeRepositories = NULL) 
 {
     op <- new_operation(name = "UpdateNotebookInstance", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- update_notebook_instance_input(NotebookInstanceName = NotebookInstanceName, 
         InstanceType = InstanceType, RoleArn = RoleArn, LifecycleConfigName = LifecycleConfigName, 
         DisassociateLifecycleConfig = DisassociateLifecycleConfig, 
-        VolumeSizeInGB = VolumeSizeInGB)
+        VolumeSizeInGB = VolumeSizeInGB, DefaultCodeRepository = DefaultCodeRepository, 
+        AdditionalCodeRepositories = AdditionalCodeRepositories, 
+        AcceleratorTypes = AcceleratorTypes, DisassociateAcceleratorTypes = DisassociateAcceleratorTypes, 
+        DisassociateDefaultCodeRepository = DisassociateDefaultCodeRepository, 
+        DisassociateAdditionalCodeRepositories = DisassociateAdditionalCodeRepositories)
     output <- update_notebook_instance_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -1854,6 +3475,46 @@ update_notebook_instance_lifecycle_config <- function (NotebookInstanceLifecycle
     input <- update_notebook_instance_lifecycle_config_input(NotebookInstanceLifecycleConfigName = NotebookInstanceLifecycleConfigName, 
         OnCreate = OnCreate, OnStart = OnStart)
     output <- update_notebook_instance_lifecycle_config_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates an existing work team with new member definitions or description
+#'
+#' Updates an existing work team with new member definitions or description.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' update_workteam(
+#'   WorkteamName = "string",
+#'   MemberDefinitions = list(
+#'     list(
+#'       CognitoMemberDefinition = list(
+#'         UserPool = "string",
+#'         UserGroup = "string",
+#'         ClientId = "string"
+#'       )
+#'     )
+#'   ),
+#'   Description = "string"
+#' )
+#' ```
+#'
+#' @param WorkteamName &#91;required&#93; The name of the work team to update.
+#' @param MemberDefinitions A list of `MemberDefinition` objects that contain the updated work team members.
+#' @param Description An updated description for the work team.
+#'
+#' @export
+update_workteam <- function (WorkteamName, MemberDefinitions = NULL, 
+    Description = NULL) 
+{
+    op <- new_operation(name = "UpdateWorkteam", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_workteam_input(WorkteamName = WorkteamName, 
+        MemberDefinitions = MemberDefinitions, Description = Description)
+    output <- update_workteam_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)

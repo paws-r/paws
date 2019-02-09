@@ -41,7 +41,7 @@ With \code{EXPORT} jobs, you specify the bucket or buckets that your transferred
 
 \item{ClusterId}{The ID of a cluster. If you're creating a job for a node in a cluster, you need to provide only this \code{clusterId} value. The other job attributes are inherited from the cluster.}
 
-\item{SnowballType}{The type of AWS Snowball device to use for this job. Currently, the only supported device type for cluster jobs is \code{EDGE}.}
+\item{SnowballType}{The type of AWS Snowball device to use for this job. The only supported device types for cluster jobs are \code{EDGE}, \code{EDGE_C}, and \code{EDGE_CG}.}
 
 \item{ForwardingAddressId}{The forwarding address ID for a job. This field is not supported in most regions.}
 }
@@ -82,7 +82,7 @@ Creates a job to import or export data between Amazon S3 and your on-premises da
   AddressId = "string",
   KmsKeyARN = "string",
   RoleARN = "string",
-  SnowballCapacityPreference = "T50"|"T80"|"T100"|"NoPreference",
+  SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"NoPreference",
   ShippingOption = "SECOND_DAY"|"NEXT_DAY"|"EXPRESS"|"STANDARD",
   Notification = list(
     SnsTopicARN = "string",
@@ -92,7 +92,7 @@ Creates a job to import or export data between Amazon S3 and your on-premises da
     NotifyAll = TRUE|FALSE
   ),
   ClusterId = "string",
-  SnowballType = "STANDARD"|"EDGE",
+  SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG",
   ForwardingAddressId = "string"
 )
 }

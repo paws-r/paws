@@ -17,7 +17,7 @@ Adds or updates the policy that is specified as the IAM role's permissions bound
 \details{
 You cannot set the boundary for a service-linked role.
 
-Policies used as permissions boundaries do not provide permissions. You must also attach a permissions policy to the role. To learn how the effective permissions for a role are evaluated, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html}{IAM JSON Policy Evaluation Logic} in the IAM User Guide.
+Policies used as permissions boundaries do not provide permissions. You must also attach a permissions policy to the role. To learn how the effective permissions for a role are evaluated, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html}{IAM JSON Policy Evaluation Logic} in the IAM User Guide.
 }
 \section{Accepted Parameters}{
 \preformatted{put_role_permissions_boundary(

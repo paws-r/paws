@@ -14,9 +14,8 @@ Authors@R:
              role = "cph"))
 Description: Amazon EC2 Auto Scaling is designed to
     automatically launch or terminate EC2 instances based on user-defined
-    policies, schedules, and health checks. Use this service in
-    conjunction with the AWS Auto Scaling, Amazon CloudWatch, and Elastic
-    Load Balancing services.
+    policies, schedules, and health checks. Use this service with AWS Auto
+    Scaling, Amazon CloudWatch, and Elastic Load Balancing.
 License: Apache License (>= 2.0)
 Depends: 
     R (>= 3.4.0)

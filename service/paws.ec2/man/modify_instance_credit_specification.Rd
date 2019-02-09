@@ -10,7 +10,7 @@ modify_instance_credit_specification(DryRun = NULL, ClientToken = NULL,
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{ClientToken}{A unique, case-sensitive token that you provide to ensure idempotency of your modification request. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
+\item{ClientToken}{A unique, case-sensitive token that you provide to ensure idempotency of your modification request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
 
 \item{InstanceCreditSpecifications}{[required] Information about the credit option for CPU usage.}
 }
@@ -18,7 +18,7 @@ modify_instance_credit_specification(DryRun = NULL, ClientToken = NULL,
 Modifies the credit option for CPU usage on a running or stopped T2 or T3 instance. The credit options are \code{standard} and \code{unlimited}.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html}{Burstable Performance Instances} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html}{Burstable Performance Instances} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{modify_instance_credit_specification(

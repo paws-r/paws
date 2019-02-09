@@ -8,7 +8,8 @@ create_relational_database(relationalDatabaseName,
   availabilityZone = NULL, relationalDatabaseBlueprintId,
   relationalDatabaseBundleId, masterDatabaseName, masterUsername,
   masterUserPassword = NULL, preferredBackupWindow = NULL,
-  preferredMaintenanceWindow = NULL, publiclyAccessible = NULL)
+  preferredMaintenanceWindow = NULL, publiclyAccessible = NULL,
+  tags = NULL)
 }
 \arguments{
 \item{relationalDatabaseName}{[required] The name to use for your new database.
@@ -83,9 +84,16 @@ Constraints:
 }}
 
 \item{publiclyAccessible}{Specifies the accessibility options for your new database. A value of \code{true} specifies a database that is available to resources outside of your Lightsail account. A value of \code{false} specifies a database that is available only to your Lightsail resources in the same region as your database.}
+
+\item{tags}{The tag keys and optional values to add to the resource during create.
+
+To tag a resource after it has been created, see the \code{tag resource} operation.}
 }
 \description{
 Creates a new database in Amazon Lightsail.
+}
+\details{
+The \code{create relational database} operation supports tag-based access control via request tags. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{create_relational_database(
@@ -98,7 +106,13 @@ Creates a new database in Amazon Lightsail.
   masterUserPassword = "string",
   preferredBackupWindow = "string",
   preferredMaintenanceWindow = "string",
-  publiclyAccessible = TRUE|FALSE
+  publiclyAccessible = TRUE|FALSE,
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
 )
 }
 }

@@ -1644,7 +1644,9 @@ create_user_pool <- function (PoolName, Policies = NULL, LambdaConfig = NULL,
 #' @param GenerateSecret Boolean to specify whether you want to generate a secret for the user pool client being created.
 #' @param RefreshTokenValidity The time limit, in days, after which the refresh token is no longer valid and cannot be used.
 #' @param ReadAttributes The read attributes.
-#' @param WriteAttributes The write attributes.
+#' @param WriteAttributes The user pool attributes that the app client can write to.
+#' 
+#' If your app client allows users to sign in through an identity provider, this array must include all attributes that are mapped to identity provider attributes. Amazon Cognito updates mapped attributes when users sign in to your application through an identity provider. If your app client lacks write access to a mapped attribute, Amazon Cognito throws an error when it attempts to update the attribute. For more information, see [Specifying Identity Provider Attribute Mappings for Your User Pool](http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html).
 #' @param ExplicitAuthFlows The explicit authentication flows.
 #' @param SupportedIdentityProviders A list of provider names for the identity providers that are supported on this client.
 #' @param CallbackURLs A list of allowed redirect (callback) URLs for the identity providers.
@@ -1730,7 +1732,7 @@ create_user_pool_client <- function (UserPoolId, ClientName,
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #' @param CustomDomainConfig The configuration for a custom domain that hosts the sign-up and sign-in webpages for your application.
 #' 
-#' Provide this parameter only if you want to use own custom domain for your user pool. Otherwise, you can exclude this parameter and use the Amazon Cognito hosted domain instead.
+#' Provide this parameter only if you want to use a custom domain for your user pool. Otherwise, you can exclude this parameter and use the Amazon Cognito hosted domain instead.
 #' 
 #' For more information about the hosted domain and custom domains, see [Configuring a User Pool Domain](http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-assign-domain.html).
 #'
@@ -3842,6 +3844,55 @@ update_user_pool_client <- function (UserPoolId, ClientId, ClientName = NULL,
         AllowedOAuthScopes = AllowedOAuthScopes, AllowedOAuthFlowsUserPoolClient = AllowedOAuthFlowsUserPoolClient, 
         AnalyticsConfiguration = AnalyticsConfiguration)
     output <- update_user_pool_client_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates the Secure Sockets Layer (SSL) certificate for the custom domain for your user pool
+#'
+#' Updates the Secure Sockets Layer (SSL) certificate for the custom domain for your user pool.
+#' 
+#' You can use this operation to provide the Amazon Resource Name (ARN) of a new certificate to Amazon Cognito. You cannot use it to change the domain for a user pool.
+#' 
+#' A custom domain is used to host the Amazon Cognito hosted UI, which provides sign-up and sign-in pages for your application. When you set up a custom domain, you provide a certificate that you manage with AWS Certificate Manager (ACM). When necessary, you can use this operation to change the certificate that you applied to your custom domain.
+#' 
+#' Usually, this is unnecessary following routine certificate renewal with ACM. When you renew your existing certificate in ACM, the ARN for your certificate remains the same, and your custom domain uses the new certificate automatically.
+#' 
+#' However, if you replace your existing certificate with a new one, ACM gives the new certificate a new ARN. To apply the new certificate to your custom domain, you must provide this ARN to Amazon Cognito.
+#' 
+#' When you add your new certificate in ACM, you must choose US East (N. Virginia) as the AWS Region.
+#' 
+#' After you submit your request, Amazon Cognito requires up to 1 hour to distribute your new certificate to your custom domain.
+#' 
+#' For more information about adding a custom domain to your user pool, see [Using Your Own Domain for the Hosted UI](http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-add-custom-domain.html).
+#'
+#' @section Accepted Parameters:
+#' ```
+#' update_user_pool_domain(
+#'   Domain = "string",
+#'   UserPoolId = "string",
+#'   CustomDomainConfig = list(
+#'     CertificateArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @param Domain &#91;required&#93; The domain name for the custom domain that hosts the sign-up and sign-in pages for your application. For example: `auth.example.com`.
+#' 
+#' This string can include only lowercase letters, numbers, and hyphens. Do not use a hyphen for the first or last character. Use periods to separate subdomain names.
+#' @param UserPoolId &#91;required&#93; The ID of the user pool that is associated with the custom domain that you are updating the certificate for.
+#' @param CustomDomainConfig &#91;required&#93; The configuration for a custom domain that hosts the sign-up and sign-in pages for your application. Use this object to specify an SSL certificate that is managed by ACM.
+#'
+#' @export
+update_user_pool_domain <- function (Domain, UserPoolId, CustomDomainConfig) 
+{
+    op <- new_operation(name = "UpdateUserPoolDomain", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_user_pool_domain_input(Domain = Domain, UserPoolId = UserPoolId, 
+        CustomDomainConfig = CustomDomainConfig)
+    output <- update_user_pool_domain_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)

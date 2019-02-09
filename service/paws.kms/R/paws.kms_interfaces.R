@@ -19,6 +19,22 @@ cancel_key_deletion_output <- function (...)
     return(populate(args, shape))
 }
 
+connect_custom_key_store_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(CustomKeyStoreId = structure(logical(0), 
+        tags = list(type = "string", max = 64L, min = 1L))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+connect_custom_key_store_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 create_alias_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -34,18 +50,41 @@ create_alias_output <- function ()
     return(list())
 }
 
+create_custom_key_store_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(CustomKeyStoreName = structure(logical(0), 
+        tags = list(type = "string", max = 256L, min = 1L)), 
+        CloudHsmClusterId = structure(logical(0), tags = list(type = "string", 
+            max = 24L, min = 19L)), TrustAnchorCertificate = structure(logical(0), 
+            tags = list(type = "string", max = 5000L, min = 1L)), 
+        KeyStorePassword = structure(logical(0), tags = list(type = "string", 
+            min = 1L, sensitive = TRUE))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+create_custom_key_store_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(CustomKeyStoreId = structure(logical(0), 
+        tags = list(type = "string", max = 64L, min = 1L))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 create_grant_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string", 
         max = 2048L, min = 1L)), GranteePrincipal = structure(logical(0), 
-        tags = list(type = "string", max = 256L, min = 1L)), 
+        tags = list(type = "string", max = 256L, min = 1L, pattern = "^[\\w+=,.@:/-]+$")), 
         RetiringPrincipal = structure(logical(0), tags = list(type = "string", 
-            max = 256L, min = 1L)), Operations = structure(list(structure(logical(0), 
-            tags = list(type = "string", enum = c("Decrypt", 
-                "Encrypt", "GenerateDataKey", "GenerateDataKeyWithoutPlaintext", 
-                "ReEncryptFrom", "ReEncryptTo", "CreateGrant", 
-                "RetireGrant", "DescribeKey")))), tags = list(type = "list")), 
+            max = 256L, min = 1L, pattern = "^[\\w+=,.@:/-]+$")), 
+        Operations = structure(list(structure(logical(0), tags = list(type = "string", 
+            enum = c("Decrypt", "Encrypt", "GenerateDataKey", 
+                "GenerateDataKeyWithoutPlaintext", "ReEncryptFrom", 
+                "ReEncryptTo", "CreateGrant", "RetireGrant", 
+                "DescribeKey")))), tags = list(type = "list")), 
         Constraints = structure(list(EncryptionContextSubset = structure(list(structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "map")), 
             EncryptionContextEquals = structure(list(structure(logical(0), 
@@ -78,7 +117,9 @@ create_key_input <- function (...)
             max = 8192L, min = 0L)), KeyUsage = structure(logical(0), 
             tags = list(type = "string", enum = "ENCRYPT_DECRYPT")), 
         Origin = structure(logical(0), tags = list(type = "string", 
-            enum = c("AWS_KMS", "EXTERNAL"))), BypassPolicyLockoutSafetyCheck = structure(logical(0), 
+            enum = c("AWS_KMS", "EXTERNAL", "AWS_CLOUDHSM"))), 
+        CustomKeyStoreId = structure(logical(0), tags = list(type = "string", 
+            max = 64L, min = 1L)), BypassPolicyLockoutSafetyCheck = structure(logical(0), 
             tags = list(type = "boolean")), Tags = structure(list(structure(list(TagKey = structure(logical(0), 
             tags = list(type = "string", max = 128L, min = 1L)), 
             TagValue = structure(logical(0), tags = list(type = "string", 
@@ -101,11 +142,15 @@ create_key_output <- function (...)
         KeyUsage = structure(logical(0), tags = list(type = "string", 
             enum = "ENCRYPT_DECRYPT")), KeyState = structure(logical(0), 
             tags = list(type = "string", enum = c("Enabled", 
-                "Disabled", "PendingDeletion", "PendingImport"))), 
-        DeletionDate = structure(logical(0), tags = list(type = "timestamp")), 
-        ValidTo = structure(logical(0), tags = list(type = "timestamp")), 
-        Origin = structure(logical(0), tags = list(type = "string", 
-            enum = c("AWS_KMS", "EXTERNAL"))), ExpirationModel = structure(logical(0), 
+                "Disabled", "PendingDeletion", "PendingImport", 
+                "Unavailable"))), DeletionDate = structure(logical(0), 
+            tags = list(type = "timestamp")), ValidTo = structure(logical(0), 
+            tags = list(type = "timestamp")), Origin = structure(logical(0), 
+            tags = list(type = "string", enum = c("AWS_KMS", 
+                "EXTERNAL", "AWS_CLOUDHSM"))), CustomKeyStoreId = structure(logical(0), 
+            tags = list(type = "string", max = 64L, min = 1L)), 
+        CloudHsmClusterId = structure(logical(0), tags = list(type = "string", 
+            max = 24L, min = 19L)), ExpirationModel = structure(logical(0), 
             tags = list(type = "string", enum = c("KEY_MATERIAL_EXPIRES", 
                 "KEY_MATERIAL_DOES_NOT_EXPIRE"))), KeyManager = structure(logical(0), 
             tags = list(type = "string", enum = c("AWS", "CUSTOMER")))), 
@@ -149,6 +194,22 @@ delete_alias_output <- function ()
     return(list())
 }
 
+delete_custom_key_store_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(CustomKeyStoreId = structure(logical(0), 
+        tags = list(type = "string", max = 64L, min = 1L))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_custom_key_store_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 delete_imported_key_material_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -160,6 +221,42 @@ delete_imported_key_material_input <- function (...)
 delete_imported_key_material_output <- function () 
 {
     return(list())
+}
+
+describe_custom_key_stores_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(CustomKeyStoreId = structure(logical(0), 
+        tags = list(type = "string", max = 64L, min = 1L)), CustomKeyStoreName = structure(logical(0), 
+        tags = list(type = "string", max = 256L, min = 1L)), 
+        Limit = structure(logical(0), tags = list(type = "integer", 
+            max = 1000L, min = 1L)), Marker = structure(logical(0), 
+            tags = list(type = "string", max = 1024L, min = 1L, 
+                pattern = "[\\u0020-\\u00FF]*"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_custom_key_stores_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(CustomKeyStores = structure(list(structure(list(CustomKeyStoreId = structure(logical(0), 
+        tags = list(type = "string", max = 64L, min = 1L)), CustomKeyStoreName = structure(logical(0), 
+        tags = list(type = "string", max = 256L, min = 1L)), 
+        CloudHsmClusterId = structure(logical(0), tags = list(type = "string", 
+            max = 24L, min = 19L)), TrustAnchorCertificate = structure(logical(0), 
+            tags = list(type = "string", max = 5000L, min = 1L)), 
+        ConnectionState = structure(logical(0), tags = list(type = "string", 
+            enum = c("CONNECTED", "CONNECTING", "FAILED", "DISCONNECTED", 
+                "DISCONNECTING"))), ConnectionErrorCode = structure(logical(0), 
+            tags = list(type = "string", enum = c("INVALID_CREDENTIALS", 
+                "CLUSTER_NOT_FOUND", "NETWORK_ERRORS", "INSUFFICIENT_CLOUDHSM_HSMS", 
+                "USER_LOCKED_OUT"))), CreationDate = structure(logical(0), 
+            tags = list(type = "timestamp"))), tags = list(type = "structure"))), 
+        tags = list(type = "list")), NextMarker = structure(logical(0), 
+        tags = list(type = "string", max = 1024L, min = 1L, pattern = "[\\u0020-\\u00FF]*")), 
+        Truncated = structure(logical(0), tags = list(type = "boolean"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
 }
 
 describe_key_input <- function (...) 
@@ -186,11 +283,15 @@ describe_key_output <- function (...)
         KeyUsage = structure(logical(0), tags = list(type = "string", 
             enum = "ENCRYPT_DECRYPT")), KeyState = structure(logical(0), 
             tags = list(type = "string", enum = c("Enabled", 
-                "Disabled", "PendingDeletion", "PendingImport"))), 
-        DeletionDate = structure(logical(0), tags = list(type = "timestamp")), 
-        ValidTo = structure(logical(0), tags = list(type = "timestamp")), 
-        Origin = structure(logical(0), tags = list(type = "string", 
-            enum = c("AWS_KMS", "EXTERNAL"))), ExpirationModel = structure(logical(0), 
+                "Disabled", "PendingDeletion", "PendingImport", 
+                "Unavailable"))), DeletionDate = structure(logical(0), 
+            tags = list(type = "timestamp")), ValidTo = structure(logical(0), 
+            tags = list(type = "timestamp")), Origin = structure(logical(0), 
+            tags = list(type = "string", enum = c("AWS_KMS", 
+                "EXTERNAL", "AWS_CLOUDHSM"))), CustomKeyStoreId = structure(logical(0), 
+            tags = list(type = "string", max = 64L, min = 1L)), 
+        CloudHsmClusterId = structure(logical(0), tags = list(type = "string", 
+            max = 24L, min = 19L)), ExpirationModel = structure(logical(0), 
             tags = list(type = "string", enum = c("KEY_MATERIAL_EXPIRES", 
                 "KEY_MATERIAL_DOES_NOT_EXPIRE"))), KeyManager = structure(logical(0), 
             tags = list(type = "string", enum = c("AWS", "CUSTOMER")))), 
@@ -222,6 +323,22 @@ disable_key_rotation_input <- function (...)
 disable_key_rotation_output <- function () 
 {
     return(list())
+}
+
+disconnect_custom_key_store_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(CustomKeyStoreId = structure(logical(0), 
+        tags = list(type = "string", max = 64L, min = 1L))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+disconnect_custom_key_store_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(), tags = list(type = "structure"))
+    return(populate(args, shape))
 }
 
 enable_key_input <- function (...) 
@@ -330,8 +447,9 @@ generate_random_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(NumberOfBytes = structure(logical(0), 
-        tags = list(type = "integer", max = 1024L, min = 1L))), 
-        tags = list(type = "structure"))
+        tags = list(type = "integer", max = 1024L, min = 1L)), 
+        CustomKeyStoreId = structure(logical(0), tags = list(type = "string", 
+            max = 64L, min = 1L))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -471,15 +589,16 @@ list_grants_output <- function (...)
             tags = list(type = "string", max = 256L, min = 1L, 
                 pattern = "^[a-zA-Z0-9:/_-]+$")), CreationDate = structure(logical(0), 
             tags = list(type = "timestamp")), GranteePrincipal = structure(logical(0), 
-            tags = list(type = "string", max = 256L, min = 1L)), 
-        RetiringPrincipal = structure(logical(0), tags = list(type = "string", 
-            max = 256L, min = 1L)), IssuingAccount = structure(logical(0), 
-            tags = list(type = "string", max = 256L, min = 1L)), 
-        Operations = structure(list(structure(logical(0), tags = list(type = "string", 
-            enum = c("Decrypt", "Encrypt", "GenerateDataKey", 
-                "GenerateDataKeyWithoutPlaintext", "ReEncryptFrom", 
-                "ReEncryptTo", "CreateGrant", "RetireGrant", 
-                "DescribeKey")))), tags = list(type = "list")), 
+            tags = list(type = "string", max = 256L, min = 1L, 
+                pattern = "^[\\w+=,.@:/-]+$")), RetiringPrincipal = structure(logical(0), 
+            tags = list(type = "string", max = 256L, min = 1L, 
+                pattern = "^[\\w+=,.@:/-]+$")), IssuingAccount = structure(logical(0), 
+            tags = list(type = "string", max = 256L, min = 1L, 
+                pattern = "^[\\w+=,.@:/-]+$")), Operations = structure(list(structure(logical(0), 
+            tags = list(type = "string", enum = c("Decrypt", 
+                "Encrypt", "GenerateDataKey", "GenerateDataKeyWithoutPlaintext", 
+                "ReEncryptFrom", "ReEncryptTo", "CreateGrant", 
+                "RetireGrant", "DescribeKey")))), tags = list(type = "list")), 
         Constraints = structure(list(EncryptionContextSubset = structure(list(structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "map")), 
             EncryptionContextEquals = structure(list(structure(logical(0), 
@@ -573,7 +692,8 @@ list_retirable_grants_input <- function (...)
         max = 1000L, min = 1L)), Marker = structure(logical(0), 
         tags = list(type = "string", max = 1024L, min = 1L, pattern = "[\\u0020-\\u00FF]*")), 
         RetiringPrincipal = structure(logical(0), tags = list(type = "string", 
-            max = 256L, min = 1L))), tags = list(type = "structure"))
+            max = 256L, min = 1L, pattern = "^[\\w+=,.@:/-]+$"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -587,15 +707,16 @@ list_retirable_grants_output <- function (...)
             tags = list(type = "string", max = 256L, min = 1L, 
                 pattern = "^[a-zA-Z0-9:/_-]+$")), CreationDate = structure(logical(0), 
             tags = list(type = "timestamp")), GranteePrincipal = structure(logical(0), 
-            tags = list(type = "string", max = 256L, min = 1L)), 
-        RetiringPrincipal = structure(logical(0), tags = list(type = "string", 
-            max = 256L, min = 1L)), IssuingAccount = structure(logical(0), 
-            tags = list(type = "string", max = 256L, min = 1L)), 
-        Operations = structure(list(structure(logical(0), tags = list(type = "string", 
-            enum = c("Decrypt", "Encrypt", "GenerateDataKey", 
-                "GenerateDataKeyWithoutPlaintext", "ReEncryptFrom", 
-                "ReEncryptTo", "CreateGrant", "RetireGrant", 
-                "DescribeKey")))), tags = list(type = "list")), 
+            tags = list(type = "string", max = 256L, min = 1L, 
+                pattern = "^[\\w+=,.@:/-]+$")), RetiringPrincipal = structure(logical(0), 
+            tags = list(type = "string", max = 256L, min = 1L, 
+                pattern = "^[\\w+=,.@:/-]+$")), IssuingAccount = structure(logical(0), 
+            tags = list(type = "string", max = 256L, min = 1L, 
+                pattern = "^[\\w+=,.@:/-]+$")), Operations = structure(list(structure(logical(0), 
+            tags = list(type = "string", enum = c("Decrypt", 
+                "Encrypt", "GenerateDataKey", "GenerateDataKeyWithoutPlaintext", 
+                "ReEncryptFrom", "ReEncryptTo", "CreateGrant", 
+                "RetireGrant", "DescribeKey")))), tags = list(type = "list")), 
         Constraints = structure(list(EncryptionContextSubset = structure(list(structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "map")), 
             EncryptionContextEquals = structure(list(structure(logical(0), 
@@ -748,6 +869,26 @@ update_alias_input <- function (...)
 update_alias_output <- function () 
 {
     return(list())
+}
+
+update_custom_key_store_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(CustomKeyStoreId = structure(logical(0), 
+        tags = list(type = "string", max = 64L, min = 1L)), NewCustomKeyStoreName = structure(logical(0), 
+        tags = list(type = "string", max = 256L, min = 1L)), 
+        KeyStorePassword = structure(logical(0), tags = list(type = "string", 
+            min = 1L, sensitive = TRUE)), CloudHsmClusterId = structure(logical(0), 
+            tags = list(type = "string", max = 24L, min = 19L))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+update_custom_key_store_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(), tags = list(type = "structure"))
+    return(populate(args, shape))
 }
 
 update_key_description_input <- function (...) 

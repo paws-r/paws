@@ -17,7 +17,7 @@ delete_notification(AccountId, BudgetName, Notification)
 Deletes a notification.
 }
 \details{
-\strong{Deleting a notification also deletes the subscribers associated with the notification.}
+Deleting a notification also deletes the subscribers that are associated with the notification.
 }
 \section{Accepted Parameters}{
 \preformatted{delete_notification(
@@ -27,7 +27,8 @@ Deletes a notification.
     NotificationType = "ACTUAL"|"FORECASTED",
     ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
     Threshold = 123.0,
-    ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
+    ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
+    NotificationState = "OK"|"ALARM"
   )
 )
 }

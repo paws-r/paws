@@ -4,14 +4,9 @@
 \alias{get_dashboard_embed_url}
 \title{Generates a server-side embeddable URL and authorization code}
 \usage{
-get_dashboard_embed_url(
-  AwsAccountId = "string",
-  DashboardId = "string",
-  IdentityType = "IAM"|"QUICKSIGHT",
-  SessionLifetimeInMinutes = 123,
-  UndoRedoDisabled = TRUE|FALSE,
-  ResetDisabled = TRUE|FALSE
-)
+get_dashboard_embed_url(AwsAccountId, DashboardId, IdentityType,
+  SessionLifetimeInMinutes = NULL, UndoRedoDisabled = NULL,
+  ResetDisabled = NULL)
 }
 \arguments{
 \item{AwsAccountId}{[required] AWS account ID that contains the dashboard you are embedding.}
@@ -46,6 +41,15 @@ Get the URL for the embedded dashboard
 
 \code{aws quicksight get-dashboard-embed-url --aws-account-id 111122223333 --dashboard-id 1a1ac2b2-3fc3-4b44-5e5d-c6db6778df89 --identity-type IAM}
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_dashboard_embed_url(
+  AwsAccountId = "string",
+  DashboardId = "string",
+  IdentityType = "IAM"|"QUICKSIGHT",
+  SessionLifetimeInMinutes = 123,
+  UndoRedoDisabled = TRUE|FALSE,
+  ResetDisabled = TRUE|FALSE
+)
 }
+}
+

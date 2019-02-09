@@ -157,7 +157,10 @@ create_fleet_input <- function (...)
             tags = list(type = "string", max = 100L)), EnableDefaultInternetAccess = structure(logical(0), 
             tags = list(type = "boolean")), DomainJoinInfo = structure(list(DirectoryName = structure(logical(0), 
             tags = list(type = "string")), OrganizationalUnitDistinguishedName = structure(logical(0), 
-            tags = list(type = "string", max = 2000L))), tags = list(type = "structure"))), 
+            tags = list(type = "string", max = 2000L))), tags = list(type = "structure")), 
+        Tags = structure(list(structure(logical(0), tags = list(type = "string", 
+            max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+            tags = list(type = "map", max = 50L, min = 1L))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -236,7 +239,11 @@ create_image_builder_input <- function (...)
             tags = list(type = "string")), OrganizationalUnitDistinguishedName = structure(logical(0), 
             tags = list(type = "string", max = 2000L))), tags = list(type = "structure")), 
         AppstreamAgentVersion = structure(logical(0), tags = list(type = "string", 
-            max = 100L, min = 1L))), tags = list(type = "structure"))
+            max = 100L, min = 1L)), Tags = structure(list(structure(logical(0), 
+            tags = list(type = "string", max = 256L, min = 0L, 
+                pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+            tags = list(type = "map", max = 50L, min = 1L))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -335,7 +342,10 @@ create_stack_input <- function (...)
                 enum = c("ENABLED", "DISABLED")))), tags = list(type = "structure"))), 
             tags = list(type = "list", min = 1L)), ApplicationSettings = structure(list(Enabled = structure(logical(0), 
             tags = list(type = "boolean")), SettingsGroup = structure(logical(0), 
-            tags = list(type = "string", max = 100L))), tags = list(type = "structure"))), 
+            tags = list(type = "string", max = 100L))), tags = list(type = "structure")), 
+        Tags = structure(list(structure(logical(0), tags = list(type = "string", 
+            max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+            tags = list(type = "map", max = 50L, min = 1L))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }

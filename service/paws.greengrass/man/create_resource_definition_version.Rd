@@ -48,6 +48,12 @@ Creates a version of a resource definition that has already been defined.
         SageMakerMachineLearningModelResourceData = list(
           DestinationPath = "string",
           SageMakerJobArn = "string"
+        ),
+        SecretsManagerSecretResourceData = list(
+          ARN = "string",
+          AdditionalStagingLabelsToDownload = list(
+            "string"
+          )
         )
       )
     )

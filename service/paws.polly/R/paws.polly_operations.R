@@ -52,7 +52,7 @@ delete_lexicon <- function (Name)
 #' @section Accepted Parameters:
 #' ```
 #' describe_voices(
-#'   LanguageCode = "cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR",
+#'   LanguageCode = "cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR",
 #'   IncludeAdditionalLanguageCodes = TRUE|FALSE,
 #'   NextToken = "string"
 #' )
@@ -265,8 +265,8 @@ put_lexicon <- function (Name, Content)
 #'   ),
 #'   Text = "string",
 #'   TextType = "ssml"|"text",
-#'   VoiceId = "Geraint"|"Gwyneth"|"Mads"|"Naja"|"Hans"|"Marlene"|"Nicole"|"Russell"|"Amy"|"Brian"|"Emma"|"Raveena"|"Ivy"|"Joanna"|"Joey"|"Justin"|"Kendra"|"Kimberly"|"Matthew"|"Salli"|"Conchita"|"Enrique"|"Miguel"|"Penelope"|"Chantal"|"Celine"|"Lea"|"Mathieu"|"Dora"|"Karl"|"Carla"|"Giorgio"|"Mizuki"|"Liv"|"Lotte"|"Ruben"|"Ewa"|"Jacek"|"Jan"|"Maja"|"Ricardo"|"Vitoria"|"Cristiano"|"Ines"|"Carmen"|"Maxim"|"Tatyana"|"Astrid"|"Filiz"|"Vicki"|"Takumi"|"Seoyeon"|"Aditi"|"Zhiyu",
-#'   LanguageCode = "cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR"
+#'   VoiceId = "Geraint"|"Gwyneth"|"Mads"|"Naja"|"Hans"|"Marlene"|"Nicole"|"Russell"|"Amy"|"Brian"|"Emma"|"Raveena"|"Ivy"|"Joanna"|"Joey"|"Justin"|"Kendra"|"Kimberly"|"Matthew"|"Salli"|"Conchita"|"Enrique"|"Miguel"|"Penelope"|"Chantal"|"Celine"|"Lea"|"Mathieu"|"Dora"|"Karl"|"Carla"|"Giorgio"|"Mizuki"|"Liv"|"Lotte"|"Ruben"|"Ewa"|"Jacek"|"Jan"|"Maja"|"Ricardo"|"Vitoria"|"Cristiano"|"Ines"|"Carmen"|"Maxim"|"Tatyana"|"Astrid"|"Filiz"|"Vicki"|"Takumi"|"Seoyeon"|"Aditi"|"Zhiyu"|"Bianca"|"Lucia"|"Mia",
+#'   LanguageCode = "cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR"
 #' )
 #' ```
 #'
@@ -326,8 +326,8 @@ start_speech_synthesis_task <- function (LexiconNames = NULL,
 #'   ),
 #'   Text = "string",
 #'   TextType = "ssml"|"text",
-#'   VoiceId = "Geraint"|"Gwyneth"|"Mads"|"Naja"|"Hans"|"Marlene"|"Nicole"|"Russell"|"Amy"|"Brian"|"Emma"|"Raveena"|"Ivy"|"Joanna"|"Joey"|"Justin"|"Kendra"|"Kimberly"|"Matthew"|"Salli"|"Conchita"|"Enrique"|"Miguel"|"Penelope"|"Chantal"|"Celine"|"Lea"|"Mathieu"|"Dora"|"Karl"|"Carla"|"Giorgio"|"Mizuki"|"Liv"|"Lotte"|"Ruben"|"Ewa"|"Jacek"|"Jan"|"Maja"|"Ricardo"|"Vitoria"|"Cristiano"|"Ines"|"Carmen"|"Maxim"|"Tatyana"|"Astrid"|"Filiz"|"Vicki"|"Takumi"|"Seoyeon"|"Aditi"|"Zhiyu",
-#'   LanguageCode = "cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR"
+#'   VoiceId = "Geraint"|"Gwyneth"|"Mads"|"Naja"|"Hans"|"Marlene"|"Nicole"|"Russell"|"Amy"|"Brian"|"Emma"|"Raveena"|"Ivy"|"Joanna"|"Joey"|"Justin"|"Kendra"|"Kimberly"|"Matthew"|"Salli"|"Conchita"|"Enrique"|"Miguel"|"Penelope"|"Chantal"|"Celine"|"Lea"|"Mathieu"|"Dora"|"Karl"|"Carla"|"Giorgio"|"Mizuki"|"Liv"|"Lotte"|"Ruben"|"Ewa"|"Jacek"|"Jan"|"Maja"|"Ricardo"|"Vitoria"|"Cristiano"|"Ines"|"Carmen"|"Maxim"|"Tatyana"|"Astrid"|"Filiz"|"Vicki"|"Takumi"|"Seoyeon"|"Aditi"|"Zhiyu"|"Bianca"|"Lucia"|"Mia",
+#'   LanguageCode = "cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR"
 #' )
 #' ```
 #'

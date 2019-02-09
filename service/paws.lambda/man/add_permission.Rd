@@ -2,49 +2,47 @@
 % Please edit documentation in R/paws.lambda_operations.R
 \name{add_permission}
 \alias{add_permission}
-\title{Adds a permission to the resource policy associated with the specified AWS Lambda function}
+\title{Grants an AWS service or another account permission to use a function}
 \usage{
 add_permission(FunctionName, StatementId, Action, Principal,
   SourceArn = NULL, SourceAccount = NULL, EventSourceToken = NULL,
   Qualifier = NULL, RevisionId = NULL)
 }
 \arguments{
-\item{FunctionName}{[required] The name of the lambda function.
+\item{FunctionName}{[required] The name of the Lambda function, version, or alias.
 
 \strong{Name formats}
 \itemize{
-\item \strong{Function name} - \code{MyFunction}.
-\item \strong{Function ARN} - \code{arn:aws:lambda:us-west-2:123456789012:function:MyFunction}.
-\item \strong{Partial ARN} - \code{123456789012:function:MyFunction}.
+\item \strong{Function name} - \code{my-function} (name-only), \code{my-function:v1} (with alias).
+\item \strong{Function ARN} - \code{arn:aws:lambda:us-west-2:123456789012:function:my-function}.
+\item \strong{Partial ARN} - \code{123456789012:function:my-function}.
 }
 
-The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
+You can append a version number or alias to any of the formats. The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
 
-\item{StatementId}{[required] A unique statement identifier.}
+\item{StatementId}{[required] A statement identifier that differentiates the statement from others in the same policy.}
 
-\item{Action}{[required] The AWS Lambda action you want to allow in this statement. Each Lambda action is a string starting with \code{lambda:} followed by the API name . For example, \code{lambda:CreateFunction}. You can use wildcard (\code{lambda:*}) to grant permission for all AWS Lambda actions.}
+\item{Action}{[required] The action that the principal can use on the function. For example, \code{lambda:InvokeFunction} or \code{lambda:GetFunction}.}
 
-\item{Principal}{[required] The principal who is getting this permission. The principal can be an AWS service (e.g. \code{s3.amazonaws.com} or \code{sns.amazonaws.com}) for service triggers, or an account ID for cross-account access. If you specify a service as a principal, use the \code{SourceArn} parameter to limit who can invoke the function through that service.}
+\item{Principal}{[required] The AWS service or account that invokes the function. If you specify a service, use \code{SourceArn} or \code{SourceAccount} to limit who can invoke the function through that service.}
 
-\item{SourceArn}{The Amazon Resource Name of the invoker.
+\item{SourceArn}{For AWS services, the ARN of the AWS resource that invokes the function. For example, an Amazon S3 bucket or Amazon SNS topic.}
 
-If you add a permission to a service principal without providing the source ARN, any AWS account that creates a mapping to your function ARN can invoke your Lambda function.}
+\item{SourceAccount}{For AWS services, the ID of the account that owns the resource. Use instead of \code{SourceArn} to grant permission to resources owned by another account (e.g. all of an account's Amazon S3 buckets). Or use together with \code{SourceArn} to ensure that the resource is owned by the specified account. For example, an Amazon S3 bucket could be deleted by its owner and recreated by another account.}
 
-\item{SourceAccount}{This parameter is used for S3 and SES. The AWS account ID (without a hyphen) of the source owner. For example, if the \code{SourceArn} identifies a bucket, then this is the bucket owner's account ID. You can use this additional condition to ensure the bucket you specify is owned by a specific account (it is possible the bucket owner deleted the bucket and some other AWS account created the bucket). You can also use this condition to specify all sources (that is, you don't specify the \code{SourceArn}) owned by a specific account.}
-
-\item{EventSourceToken}{A unique token that must be supplied by the principal invoking the function. This is currently only used for Alexa Smart Home functions.}
+\item{EventSourceToken}{For Alexa Smart Home functions, a token that must be supplied by the invoker.}
 
 \item{Qualifier}{Specify a version or alias to add permissions to a published version of the function.}
 
-\item{RevisionId}{An optional value you can use to ensure you are updating the latest update of the function version or alias. If the \code{RevisionID} you pass doesn't match the latest \code{RevisionId} of the function or alias, it will fail with an error message, advising you to retrieve the latest function version or alias \code{RevisionID} using either GetFunction or GetAlias}
+\item{RevisionId}{Only update the policy if the revision ID matches the ID specified. Use this option to avoid modifying a policy that has changed since you last read it.}
 }
 \description{
-Adds a permission to the resource policy associated with the specified AWS Lambda function. You use resource policies to grant permissions to event sources that use the \emph{push} model. In a \emph{push} model, event sources (such as Amazon S3 and custom applications) invoke your Lambda function. Each permission you add to the resource policy allows an event source permission to invoke the Lambda function.
+Grants an AWS service or another account permission to use a function. You can apply the policy at the function level, or specify a qualifier to restrict access to a single version or alias. If you use a qualifier, the invoker must use the full Amazon Resource Name (ARN) of that version or alias to invoke the function.
 }
 \details{
-Permissions apply to the Amazon Resource Name (ARN) used to invoke the function, which can be unqualified (the unpublished version of the function), or include a version or alias. If a client uses a version or alias to invoke a function, use the \code{Qualifier} parameter to apply permissions to that ARN. For more information about versioning, see \href{http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{AWS Lambda Function Versioning and Aliases}.
+To grant permission to another account, specify the account ID as the \code{Principal}. For AWS services, the principal is a domain-style identifier defined by the service, like \code{s3.amazonaws.com} or \code{sns.amazonaws.com}. For AWS services, you can also specify the ARN or owning account of the associated resource as the \code{SourceArn} or \code{SourceAccount}. If you grant permission to a service principal without specifying the source, other accounts could potentially configure resources in their account to invoke your Lambda function.
 
-This operation requires permission for the \code{lambda:AddPermission} action.
+This action adds a statement to a resource-based permission policy for the function. For more information about function policies, see \href{http://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html}{Lambda Function Policies}.
 }
 \section{Accepted Parameters}{
 \preformatted{add_permission(

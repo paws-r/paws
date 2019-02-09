@@ -4,10 +4,8 @@
 \alias{reject_resource_share_invitation}
 \title{Rejects an invitation to a resource share from another AWS account}
 \usage{
-reject_resource_share_invitation(
-  resourceShareInvitationArn = "string",
-  clientToken = "string"
-)
+reject_resource_share_invitation(resourceShareInvitationArn,
+  clientToken = NULL)
 }
 \arguments{
 \item{resourceShareInvitationArn}{[required] The Amazon Resource Name (ARN) of the invitation.}
@@ -17,6 +15,11 @@ reject_resource_share_invitation(
 \description{
 Rejects an invitation to a resource share from another AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{reject_resource_share_invitation(
+  resourceShareInvitationArn = "string",
+  clientToken = "string"
+)
 }
+}
+

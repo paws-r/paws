@@ -6,9 +6,9 @@
 \alias{paws.fsx-package}
 \title{paws.fsx: Amazon FSx}
 \description{
-Amazon FSx is a fully managed service that makes it easy for
-storage and application administrators to launch and use shared file
-storage.
+Amazon FSx is a fully managed service that makes it
+    easy for storage and application administrators to launch and use
+    shared file storage.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

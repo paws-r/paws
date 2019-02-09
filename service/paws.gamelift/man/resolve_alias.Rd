@@ -13,7 +13,6 @@ resolve_alias(AliasId)
 Retrieves the fleet ID that a specified alias is currently pointing to.
 }
 \details{
-Alias-related operations include:
 \itemize{
 \item CreateAlias
 \item ListAliases

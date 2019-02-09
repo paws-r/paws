@@ -32,7 +32,7 @@ Default: If no value is specified, we replace the ingress rule.}
 \item{RuleNumber}{[required] The rule number of the entry to replace.}
 }
 \description{
-Replaces an entry (rule) in a network ACL. For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html}{Network ACLs} in the \emph{Amazon Virtual Private Cloud User Guide}.
+Replaces an entry (rule) in a network ACL. For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html}{Network ACLs} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{replace_network_acl_entry(

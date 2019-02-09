@@ -9,6 +9,8 @@ get_master_account()
 \description{
 Provides the details for the Security Hub master account to the current member account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_master_account()
 }
+}
+

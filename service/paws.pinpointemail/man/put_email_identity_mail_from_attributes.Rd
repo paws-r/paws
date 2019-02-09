@@ -4,11 +4,8 @@
 \alias{put_email_identity_mail_from_attributes}
 \title{Used to enable or disable the custom Mail-From domain configuration for an email identity}
 \usage{
-put_email_identity_mail_from_attributes(
-  EmailIdentity = "string",
-  MailFromDomain = "string",
-  BehaviorOnMxFailure = "USE_DEFAULT_VALUE"|"REJECT_MESSAGE"
-)
+put_email_identity_mail_from_attributes(EmailIdentity,
+  MailFromDomain = NULL, BehaviorOnMxFailure = NULL)
 }
 \arguments{
 \item{EmailIdentity}{[required] The verified email identity that you want to set up the custom MAIL FROM domain for.}
@@ -27,6 +24,12 @@ These behaviors are taken when the custom MAIL FROM domain configuration is in t
 \description{
 Used to enable or disable the custom Mail-From domain configuration for an email identity.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_email_identity_mail_from_attributes(
+  EmailIdentity = "string",
+  MailFromDomain = "string",
+  BehaviorOnMxFailure = "USE_DEFAULT_VALUE"|"REJECT_MESSAGE"
+)
 }
+}
+

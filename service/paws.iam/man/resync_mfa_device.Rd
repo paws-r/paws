@@ -10,11 +10,11 @@ resync_mfa_device(UserName, SerialNumber, AuthenticationCode1,
 \arguments{
 \item{UserName}{[required] The name of the user whose MFA device you want to resynchronize.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{SerialNumber}{[required] Serial number that uniquely identifies the MFA device.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{AuthenticationCode1}{[required] An authentication code emitted by the device.
 

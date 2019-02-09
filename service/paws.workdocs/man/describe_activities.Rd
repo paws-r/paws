@@ -5,7 +5,8 @@
 \title{Describes the user activities in a specified time period}
 \usage{
 describe_activities(AuthenticationToken = NULL, StartTime = NULL,
-  EndTime = NULL, OrganizationId = NULL, UserId = NULL,
+  EndTime = NULL, OrganizationId = NULL, ActivityTypes = NULL,
+  ResourceId = NULL, UserId = NULL, IncludeIndirectActivities = NULL,
   Limit = NULL, Marker = NULL)
 }
 \arguments{
@@ -17,7 +18,13 @@ describe_activities(AuthenticationToken = NULL, StartTime = NULL,
 
 \item{OrganizationId}{The ID of the organization. This is a mandatory parameter when using administrative API (SigV4) requests.}
 
+\item{ActivityTypes}{Specifies which activity types to include in the response. If this field is left empty, all activity types are returned.}
+
+\item{ResourceId}{The document or folder ID for which to describe activity types.}
+
 \item{UserId}{The ID of the user who performed the action. The response includes activities pertaining to this user. This is an optional parameter and is only applicable for administrative API (SigV4) requests.}
+
+\item{IncludeIndirectActivities}{Includes indirect activities. An indirect activity results from a direct activity performed on a parent resource. For example, sharing a parent folder (the direct activity) shares all of the subfolders and documents within the parent folder (the indirect activity).}
 
 \item{Limit}{The maximum number of items to return.}
 
@@ -32,7 +39,10 @@ Describes the user activities in a specified time period.
   StartTime = as.POSIXct("2015-01-01"),
   EndTime = as.POSIXct("2015-01-01"),
   OrganizationId = "string",
+  ActivityTypes = "string",
+  ResourceId = "string",
   UserId = "string",
+  IncludeIndirectActivities = TRUE|FALSE,
   Limit = 123,
   Marker = "string"
 )

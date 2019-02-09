@@ -5,10 +5,12 @@
 \title{Creates a version of a Lambda function definition that has already been defined}
 \usage{
 create_function_definition_version(AmznClientToken = NULL,
-  FunctionDefinitionId, Functions = NULL)
+  DefaultConfig = NULL, FunctionDefinitionId, Functions = NULL)
 }
 \arguments{
 \item{AmznClientToken}{A client token used to correlate requests and responses.}
+
+\item{DefaultConfig}{Default configuration that will apply to all Lambda functions in this function definition version}
 
 \item{FunctionDefinitionId}{[required] The ID of the Lambda function definition.}
 
@@ -20,6 +22,11 @@ Creates a version of a Lambda function definition that has already been defined.
 \section{Accepted Parameters}{
 \preformatted{create_function_definition_version(
   AmznClientToken = "string",
+  DefaultConfig = list(
+    Execution = list(
+      IsolationMode = "GreengrassContainer"|"NoContainer"
+    )
+  ),
   FunctionDefinitionId = "string",
   Functions = list(
     list(
@@ -28,6 +35,13 @@ Creates a version of a Lambda function definition that has already been defined.
         EncodingType = "binary"|"json",
         Environment = list(
           AccessSysfs = TRUE|FALSE,
+          Execution = list(
+            IsolationMode = "GreengrassContainer"|"NoContainer",
+            RunAs = list(
+              Gid = 123,
+              Uid = 123
+            )
+          ),
           ResourceAccessPolicies = list(
             list(
               Permission = "ro"|"rw",

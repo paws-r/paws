@@ -25,7 +25,7 @@ suspend_processes(AutoScalingGroupName, ScalingProcesses = NULL)
 Suspends the specified automatic scaling processes, or all processes, for the specified Auto Scaling group.
 }
 \details{
-Note that if you suspend either the \code{Launch} or \code{Terminate} process types, it can prevent other process types from functioning properly.
+If you suspend either the \code{Launch} or \code{Terminate} process types, it can prevent other process types from functioning properly.
 
 To resume processes that have been suspended, use ResumeProcesses.
 

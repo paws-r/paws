@@ -54,7 +54,7 @@ A list of strings that indicates third-party software to use with the job flow t
 \item "ganglia" - launch the cluster with the Ganglia Monitoring System installed.
 }}
 
-\item{Applications}{For Amazon EMR releases 4.0 and later. A list of applications for the cluster. Valid values are: "Hadoop", "Hive", "Mahout", "Pig", and "Spark." They are case insensitive.}
+\item{Applications}{Applies to Amazon EMR releases 4.0 and later. A case-insensitive list of applications for Amazon EMR to install and configure when launching the cluster. For a list of applications available for each Amazon EMR release version, see the \href{http://docs.aws.amazon.com/emr/latest/ReleaseGuide/}{Amazon EMR Release Guide}.}
 
 \item{Configurations}{For Amazon EMR releases 4.0 and later. The list of configurations supplied for the EMR cluster you are creating.}
 

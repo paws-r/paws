@@ -26,8 +26,6 @@ Retrieves properties, including the protection policy in force, for one or more 
 }
 \details{
 To get game session record(s), specify just one of the following: game session ID, fleet ID, or alias ID. You can filter this request by game session status. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, a GameSessionDetail object is returned for each session matching the request.
-
-Game-session-related operations include:
 \itemize{
 \item CreateGameSession
 \item DescribeGameSessions

@@ -4,7 +4,18 @@
 \alias{update_domain_name}
 \title{Updates a domain name}
 \usage{
-update_domain_name(
+update_domain_name(DomainName, DomainNameConfigurations = NULL)
+}
+\arguments{
+\item{DomainName}{[required] The domain name.}
+
+\item{DomainNameConfigurations}{The domain name configurations.}
+}
+\description{
+Updates a domain name.
+}
+\section{Accepted Parameters}{
+\preformatted{update_domain_name(
   DomainName = "string",
   DomainNameConfigurations = list(
     list(
@@ -18,14 +29,5 @@ update_domain_name(
   )
 )
 }
-\arguments{
-\item{DomainName}{[required] The domain name.}
+}
 
-\item{DomainNameConfigurations}{The domain name configurations.}
-}
-\description{
-Updates a domain name.
-}
-\examples{
-
-}

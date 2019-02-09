@@ -9,11 +9,11 @@ get_user_policy(UserName, PolicyName)
 \arguments{
 \item{UserName}{[required] The name of the user who the policy is associated with.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{PolicyName}{[required] The name of the policy document to get.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 }
 \description{
 Retrieves the specified inline policy document that is embedded in the specified IAM user.

@@ -16,7 +16,7 @@ update_matchmaking_configuration(Name, Description = NULL,
 
 \item{Description}{Descriptive label that is associated with matchmaking configuration.}
 
-\item{GameSessionQueueArns}{Amazon Resource Name (\href{http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html}{ARN}) that is assigned to a game session queue and uniquely identifies it. Format is \code{arn:aws:gamelift:<region>::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912}. These queues are used when placing game sessions for matches that are created with this matchmaking configuration. Queues can be located in any region.}
+\item{GameSessionQueueArns}{Amazon Resource Name (\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html}{ARN}) that is assigned to a game session queue and uniquely identifies it. Format is \code{arn:aws:gamelift:<region>::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912}. These queues are used when placing game sessions for matches that are created with this matchmaking configuration. Queues can be located in any region.}
 
 \item{RequestTimeoutSeconds}{Maximum duration, in seconds, that a matchmaking ticket can remain in process before timing out. Requests that time out can be resubmitted as needed.}
 
@@ -26,21 +26,20 @@ update_matchmaking_configuration(Name, Description = NULL,
 
 \item{RuleSetName}{Unique identifier for a matchmaking rule set to use with this configuration. A matchmaking configuration can only use rule sets that are defined in the same region.}
 
-\item{NotificationTarget}{SNS topic ARN that is set up to receive matchmaking notifications. See \href{http://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html}{Setting up Notifications for Matchmaking} for more information.}
+\item{NotificationTarget}{SNS topic ARN that is set up to receive matchmaking notifications. See \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html}{Setting up Notifications for Matchmaking} for more information.}
 
 \item{AdditionalPlayerCount}{Number of player slots in a match to keep open for future players. For example, if the configuration's rule set specifies a match for a single 12-person team, and the additional player count is set to 2, only 10 players are selected for the match.}
 
 \item{CustomEventData}{Information to attached to all events related to the matchmaking configuration.}
 
-\item{GameProperties}{Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to a game server process in the GameSession object with a request to start a new game session (see \href{http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession}{Start a Game Session}). This information is added to the new GameSession object that is created for a successful match.}
+\item{GameProperties}{Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to a game server process in the GameSession object with a request to start a new game session (see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession}{Start a Game Session}). This information is added to the new GameSession object that is created for a successful match.}
 
-\item{GameSessionData}{Set of custom game session properties, formatted as a single string value. This data is passed to a game server process in the GameSession object with a request to start a new game session (see \href{http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession}{Start a Game Session}). This information is added to the new GameSession object that is created for a successful match.}
+\item{GameSessionData}{Set of custom game session properties, formatted as a single string value. This data is passed to a game server process in the GameSession object with a request to start a new game session (see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession}{Start a Game Session}). This information is added to the new GameSession object that is created for a successful match.}
 }
 \description{
 Updates settings for a FlexMatch matchmaking configuration. To update settings, specify the configuration name to be updated and provide the new settings.
 }
 \details{
-Operations related to match configurations and rule sets include:
 \itemize{
 \item CreateMatchmakingConfiguration
 \item DescribeMatchmakingConfigurations
@@ -49,6 +48,7 @@ Operations related to match configurations and rule sets include:
 \item CreateMatchmakingRuleSet
 \item DescribeMatchmakingRuleSets
 \item ValidateMatchmakingRuleSet
+\item DeleteMatchmakingRuleSet
 }
 }
 \section{Accepted Parameters}{

@@ -10,9 +10,9 @@ create_group_input <- function (...)
         max = 128L, min = 1L, pattern = "[a-zA-Z0-9_\\.-]+")), 
         Description = structure(logical(0), tags = list(type = "string", 
             max = 512L, pattern = "[\\sa-zA-Z0-9_\\.-]*")), ResourceQuery = structure(list(Type = structure(logical(0), 
-            tags = list(type = "string", enum = "TAG_FILTERS_1_0")), 
-            Query = structure(logical(0), tags = list(type = "string", 
-                max = 2048L))), tags = list(type = "structure")), 
+            tags = list(type = "string", enum = c("TAG_FILTERS_1_0", 
+                "CLOUDFORMATION_STACK_1_0"))), Query = structure(logical(0), 
+            tags = list(type = "string", max = 2048L))), tags = list(type = "structure")), 
         Tags = structure(list(structure(logical(0), tags = list(type = "string", 
             max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
             tags = list(type = "map"))), tags = list(type = "structure"))
@@ -29,9 +29,9 @@ create_group_output <- function (...)
         Description = structure(logical(0), tags = list(type = "string", 
             max = 512L, pattern = "[\\sa-zA-Z0-9_\\.-]*"))), 
         tags = list(type = "structure")), ResourceQuery = structure(list(Type = structure(logical(0), 
-        tags = list(type = "string", enum = "TAG_FILTERS_1_0")), 
-        Query = structure(logical(0), tags = list(type = "string", 
-            max = 2048L))), tags = list(type = "structure")), 
+        tags = list(type = "string", enum = c("TAG_FILTERS_1_0", 
+            "CLOUDFORMATION_STACK_1_0"))), Query = structure(logical(0), 
+        tags = list(type = "string", max = 2048L))), tags = list(type = "structure")), 
         Tags = structure(list(structure(logical(0), tags = list(type = "string", 
             max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
             tags = list(type = "map"))), tags = list(type = "structure"))
@@ -100,9 +100,9 @@ get_group_query_output <- function (...)
     shape <- structure(list(GroupQuery = structure(list(GroupName = structure(logical(0), 
         tags = list(type = "string", max = 128L, min = 1L, pattern = "[a-zA-Z0-9_\\.-]+")), 
         ResourceQuery = structure(list(Type = structure(logical(0), 
-            tags = list(type = "string", enum = "TAG_FILTERS_1_0")), 
-            Query = structure(logical(0), tags = list(type = "string", 
-                max = 2048L))), tags = list(type = "structure"))), 
+            tags = list(type = "string", enum = c("TAG_FILTERS_1_0", 
+                "CLOUDFORMATION_STACK_1_0"))), Query = structure(logical(0), 
+            tags = list(type = "string", max = 2048L))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -154,7 +154,11 @@ list_group_resources_output <- function (...)
         ResourceType = structure(logical(0), tags = list(type = "string", 
             pattern = "AWS::[a-zA-Z0-9]+::\\w+"))), tags = list(type = "structure"))), 
         tags = list(type = "list")), NextToken = structure(logical(0), 
-        tags = list(type = "string"))), tags = list(type = "structure"))
+        tags = list(type = "string")), QueryErrors = structure(list(structure(list(ErrorCode = structure(logical(0), 
+        tags = list(type = "string", enum = c("CLOUDFORMATION_STACK_INACTIVE", 
+            "CLOUDFORMATION_STACK_NOT_EXISTING"))), Message = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))), 
+        tags = list(type = "list"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -199,9 +203,9 @@ search_resources_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(ResourceQuery = structure(list(Type = structure(logical(0), 
-        tags = list(type = "string", enum = "TAG_FILTERS_1_0")), 
-        Query = structure(logical(0), tags = list(type = "string", 
-            max = 2048L))), tags = list(type = "structure")), 
+        tags = list(type = "string", enum = c("TAG_FILTERS_1_0", 
+            "CLOUDFORMATION_STACK_1_0"))), Query = structure(logical(0), 
+        tags = list(type = "string", max = 2048L))), tags = list(type = "structure")), 
         MaxResults = structure(logical(0), tags = list(type = "integer", 
             max = 50L, min = 1L)), NextToken = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))
@@ -216,7 +220,11 @@ search_resources_output <- function (...)
         ResourceType = structure(logical(0), tags = list(type = "string", 
             pattern = "AWS::[a-zA-Z0-9]+::\\w+"))), tags = list(type = "structure"))), 
         tags = list(type = "list")), NextToken = structure(logical(0), 
-        tags = list(type = "string"))), tags = list(type = "structure"))
+        tags = list(type = "string")), QueryErrors = structure(list(structure(list(ErrorCode = structure(logical(0), 
+        tags = list(type = "string", enum = c("CLOUDFORMATION_STACK_INACTIVE", 
+            "CLOUDFORMATION_STACK_NOT_EXISTING"))), Message = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))), 
+        tags = list(type = "list"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -296,9 +304,9 @@ update_group_query_input <- function (...)
         tags = list(location = "uri", locationName = "GroupName", 
             type = "string", max = 128L, min = 1L, pattern = "[a-zA-Z0-9_\\.-]+")), 
         ResourceQuery = structure(list(Type = structure(logical(0), 
-            tags = list(type = "string", enum = "TAG_FILTERS_1_0")), 
-            Query = structure(logical(0), tags = list(type = "string", 
-                max = 2048L))), tags = list(type = "structure"))), 
+            tags = list(type = "string", enum = c("TAG_FILTERS_1_0", 
+                "CLOUDFORMATION_STACK_1_0"))), Query = structure(logical(0), 
+            tags = list(type = "string", max = 2048L))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -309,9 +317,9 @@ update_group_query_output <- function (...)
     shape <- structure(list(GroupQuery = structure(list(GroupName = structure(logical(0), 
         tags = list(type = "string", max = 128L, min = 1L, pattern = "[a-zA-Z0-9_\\.-]+")), 
         ResourceQuery = structure(list(Type = structure(logical(0), 
-            tags = list(type = "string", enum = "TAG_FILTERS_1_0")), 
-            Query = structure(logical(0), tags = list(type = "string", 
-                max = 2048L))), tags = list(type = "structure"))), 
+            tags = list(type = "string", enum = c("TAG_FILTERS_1_0", 
+                "CLOUDFORMATION_STACK_1_0"))), Query = structure(logical(0), 
+            tags = list(type = "string", max = 2048L))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }

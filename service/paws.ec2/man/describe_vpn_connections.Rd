@@ -33,7 +33,7 @@ Default: Describes your VPN connections.}
 Describes one or more of your VPN connections.
 }
 \details{
-For more information about VPN connections, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html}{AWS Managed VPN Connections} in the \emph{Amazon Virtual Private Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html}{AWS Site-to-Site VPN} in the \emph{AWS Site-to-Site VPN User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{describe_vpn_connections(

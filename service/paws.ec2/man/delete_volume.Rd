@@ -17,7 +17,7 @@ Deletes the specified EBS volume. The volume must be in the \code{available} sta
 \details{
 The volume can remain in the \code{deleting} state for several minutes.
 
-For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-volume.html}{Deleting an Amazon EBS Volume} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-volume.html}{Deleting an Amazon EBS Volume} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{delete_volume(

@@ -4,11 +4,7 @@
 \alias{get_dedicated_ips}
 \title{List the dedicated IP addresses that are associated with your Amazon Pinpoint account}
 \usage{
-get_dedicated_ips(
-  PoolName = "string",
-  NextToken = "string",
-  PageSize = 123
-)
+get_dedicated_ips(PoolName = NULL, NextToken = NULL, PageSize = NULL)
 }
 \arguments{
 \item{PoolName}{The name of the IP pool that the dedicated IP address is associated with.}
@@ -20,6 +16,12 @@ get_dedicated_ips(
 \description{
 List the dedicated IP addresses that are associated with your Amazon Pinpoint account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_dedicated_ips(
+  PoolName = "string",
+  NextToken = "string",
+  PageSize = 123
+)
 }
+}
+

@@ -36,8 +36,6 @@ Retrieves properties for one or more player sessions. This action can be used in
 To get game session record(s), specify only one of the following: a player session ID, a game session ID, or a player ID. You can filter this request by player session status. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, a PlayerSession object is returned for each session matching the request.
 
 \emph{Available in Amazon GameLift Local.}
-
-Player-session-related operations include:
 \itemize{
 \item CreatePlayerSession
 \item CreatePlayerSessions

@@ -23,12 +23,27 @@ create_constraint(AcceptLanguage = NULL, PortfolioId, ProductId,
 
 LAUNCH
 
-:   Specify the \code{RoleArn} property as follows:\preformatted{\\\"RoleArn\\\" : \\\"arn:aws:iam::123456789012:role/LaunchRole\\\"
+:   Specify the \code{RoleArn} property as follows:\preformatted{`{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"}`
+
+You cannot have both a `LAUNCH` and a `STACKSET` constraint.
+
+You also cannot have more than one `LAUNCH` constraint on a product and portfolio.
 }
 
 NOTIFICATION
 
-:   Specify the \code{NotificationArns} property as follows:\preformatted{\\\"NotificationArns\\\" : &#91;\\\"arn:aws:sns:us-east-1:123456789012:Topic\\\"&#93;
+:   Specify the \code{NotificationArns} property as follows:\preformatted{`{"NotificationArns" : ["arn:aws:sns:us-east-1:123456789012:Topic"]}`
+}
+
+STACKSET
+
+:   Specify the \code{Parameters} property as follows:\preformatted{`{"Version": "String", "Properties": {"AccountList": [ "String" ], "RegionList": [ "String" ], "AdminRole": "String", "ExecutionRole": "String"}}`
+
+You cannot have both a `LAUNCH` and a `STACKSET` constraint.
+
+You also cannot have more than one `STACKSET` constraint on a product and portfolio.
+
+Products with a `STACKSET` constraint will launch an AWS CloudFormation stack set.
 }
 
 TEMPLATE
@@ -39,6 +54,7 @@ TEMPLATE
 \itemize{
 \item \code{LAUNCH}
 \item \code{NOTIFICATION}
+\item \code{STACKSET}
 \item \code{TEMPLATE}
 }}
 

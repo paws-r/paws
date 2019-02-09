@@ -7,7 +7,7 @@
 create_state_machine(name, definition, roleArn)
 }
 \arguments{
-\item{name}{[required] The name of the state machine. This name must be unique for your AWS account and region for 90 days. For more information, see \href{http://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions}{Limits Related to State Machine Executions} in the \emph{AWS Step Functions Developer Guide}.
+\item{name}{[required] The name of the state machine.
 
 A name must \emph{not} contain:
 \itemize{
@@ -20,7 +20,7 @@ A name must \emph{not} contain:
 
 [ ]: R:%20}
 
-\item{definition}{[required] The Amazon States Language definition of the state machine.}
+\item{definition}{[required] The Amazon States Language definition of the state machine. See \href{http://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html}{Amazon States Language}.}
 
 \item{roleArn}{[required] The Amazon Resource Name (ARN) of the IAM role to use for this state machine.}
 }

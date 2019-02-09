@@ -43,42 +43,42 @@ NULL
 #' Minimum length=1. Maximum length=127. Maximum number of labels: 10
 #' 
 #' Pattern: \"\^&#91;a-zA-Z0-9+\\\\-\_:\\\\/@&#93;+\$\";
-#' @param LicenseBody A local text file that contains the license of the app that matches the spdxLicenseID value of your application. The file is of the format file://\<path\>/\<filename\>.
+#' @param LicenseBody A local text file that contains the license of the app that matches the spdxLicenseID value of your application. The file has the format file://\<path\>/\<filename\>.
 #' 
 #' Maximum size 5 MB
 #' 
-#' Note: Only one of licenseBody and licenseUrl can be specified, otherwise an error will result.
+#' You can specify only one of licenseBody and licenseUrl; otherwise, an error results.
 #' @param LicenseUrl A link to the S3 object that contains the license of the app that matches the spdxLicenseID value of your application.
 #' 
 #' Maximum size 5 MB
 #' 
-#' Note: Only one of licenseBody and licenseUrl can be specified, otherwise an error will result.
+#' You can specify only one of licenseBody and licenseUrl; otherwise, an error results.
 #' @param Name &#91;required&#93; The name of the application that you want to publish.
 #' 
 #' Minimum length=1. Maximum length=140
 #' 
 #' Pattern: \"&#91;a-zA-Z0-9\\\\-&#93;+\";
-#' @param ReadmeBody A local text readme file in Markdown language that contains a more detailed description of the application and how it works. The file is of the format file://\<path\>/\<filename\>.
+#' @param ReadmeBody A local text readme file in Markdown language that contains a more detailed description of the application and how it works. The file has the format file://\<path\>/\<filename\>.
 #' 
 #' Maximum size 5 MB
 #' 
-#' Note: Only one of readmeBody and readmeUrl can be specified, otherwise an error will result.
+#' You can specify only one of readmeBody and readmeUrl; otherwise, an error results.
 #' @param ReadmeUrl A link to the S3 object in Markdown language that contains a more detailed description of the application and how it works.
 #' 
 #' Maximum size 5 MB
 #' 
-#' Note: Only one of readmeBody and readmeUrl can be specified, otherwise an error will result.
+#' You can specify only one of readmeBody and readmeUrl; otherwise, an error results.
 #' @param SemanticVersion The semantic version of the application:
 #' 
 #' <https://semver.org/>
 #' @param SourceCodeUrl A link to a public repository for the source code of your application.
 #' @param SpdxLicenseId A valid identifier from <https://spdx.org/licenses/>.
-#' @param TemplateBody The local raw packaged AWS SAM template file of your application. The file is of the format file://\<path\>/\<filename\>.
+#' @param TemplateBody The local raw packaged AWS SAM template file of your application. The file has the format file://\<path\>/\<filename\>.
 #' 
-#' Note: Only one of templateBody and templateUrl can be specified, otherwise an error will result.
-#' @param TemplateUrl A link to the S3 object cotaining the packaged AWS SAM template of your application.
+#' You can specify only one of templateBody and templateUrl; otherwise an error results.
+#' @param TemplateUrl A link to the S3 object containing the packaged AWS SAM template of your application.
 #' 
-#' Note: Only one of templateBody and templateUrl can be specified, otherwise an error will result.
+#' You can specify only one of templateBody and templateUrl; otherwise an error results.
 #'
 #' @export
 create_application <- function (Author, Description, HomePageUrl = NULL, 
@@ -148,39 +148,123 @@ create_application_version <- function (ApplicationId, SemanticVersion,
 #' ```
 #' create_cloud_formation_change_set(
 #'   ApplicationId = "string",
+#'   Capabilities = list(
+#'     "string"
+#'   ),
+#'   ChangeSetName = "string",
+#'   ClientToken = "string",
+#'   Description = "string",
+#'   NotificationArns = list(
+#'     "string"
+#'   ),
 #'   ParameterOverrides = list(
 #'     list(
 #'       Name = "string",
 #'       Value = "string"
 #'     )
 #'   ),
+#'   ResourceTypes = list(
+#'     "string"
+#'   ),
+#'   RollbackConfiguration = list(
+#'     MonitoringTimeInMinutes = 123,
+#'     RollbackTriggers = list(
+#'       list(
+#'         Arn = "string",
+#'         Type = "string"
+#'       )
+#'     )
+#'   ),
 #'   SemanticVersion = "string",
-#'   StackName = "string"
+#'   StackName = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   TemplateId = "string"
 #' )
 #' ```
 #'
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
+#' @param Capabilities A list of values that you must specify before you can deploy certain applications. Some applications might include resources that can affect permissions in your AWS account, for example, by creating new AWS Identity and Access Management (IAM) users. For those applications, you must explicitly acknowledge their capabilities by specifying this parameter.
+#' 
+#' The only valid values are CAPABILITY\_IAM, CAPABILITY\_NAMED\_IAM, and CAPABILITY\_RESOURCE\_POLICY.
+#' 
+#' The following resources require you to specify CAPABILITY\_IAM or CAPABILITY\_NAMED\_IAM: [AWS::IAM::Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html), [AWS::IAM::InstanceProfile](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html), [AWS::IAM::Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html), and [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html). If the application contains IAM resources, you can specify either CAPABILITY\_IAM or CAPABILITY\_NAMED\_IAM. If the application contains IAM resources with custom names, you must specify CAPABILITY\_NAMED\_IAM.
+#' 
+#' The following resources require you to specify CAPABILITY\_RESOURCE\_POLICY: [AWS::Lambda::Permission](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-permission.html), [AWS::IAM:Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html), [AWS::ApplicationAutoScaling::ScalingPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalingpolicy.html), [AWS::S3::BucketPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-policy.html), [AWS::SQS::QueuePolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sqs-policy.html), and [AWS::SNS:TopicPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-policy.html).
+#' 
+#' If your application template contains any of the above resources, we recommend that you review all permissions associated with the application before deploying. If you don\'t specify this parameter for an application that requires capabilities, the call will fail.
+#' 
+#' Valid values: CAPABILITY\_IAM \| CAPABILITY\_NAMED\_IAM \| CAPABILITY\_RESOURCE\_POLICY
+#' @param ChangeSetName This property corresponds to the parameter of the same name for the *AWS CloudFormation [CreateChangeSet](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)* API.
+#' @param ClientToken This property corresponds to the parameter of the same name for the *AWS CloudFormation [CreateChangeSet](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)* API.
+#' @param Description This property corresponds to the parameter of the same name for the *AWS CloudFormation [CreateChangeSet](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)* API.
+#' @param NotificationArns This property corresponds to the parameter of the same name for the *AWS CloudFormation [CreateChangeSet](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)* API.
 #' @param ParameterOverrides A list of parameter values for the parameters of the application.
+#' @param ResourceTypes This property corresponds to the parameter of the same name for the *AWS CloudFormation [CreateChangeSet](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)* API.
+#' @param RollbackConfiguration This property corresponds to the parameter of the same name for the *AWS CloudFormation [CreateChangeSet](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)* API.
 #' @param SemanticVersion The semantic version of the application:
 #' 
 #' <https://semver.org/>
-#' @param StackName &#91;required&#93; The name or the unique ID of the stack for which you are creating a change set. AWS CloudFormation generates the change set by comparing this stack\'s information with the information that you submit, such as a modified template or different parameter input values.
+#' @param StackName &#91;required&#93; This property corresponds to the parameter of the same name for the *AWS CloudFormation [CreateChangeSet](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)* API.
+#' @param Tags This property corresponds to the parameter of the same name for the *AWS CloudFormation [CreateChangeSet](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)* API.
+#' @param TemplateId The UUID returned by CreateCloudFormationTemplate.
 #' 
-#' Constraints: Minimum length of 1.
-#' 
-#' Pattern: (&#91;a-zA-Z&#93;&#91;-a-zA-Z0-9&#93;\*)\|(arn:\\b(aws\|aws-us-gov\|aws-cn)\\b:&#91;-a-zA-Z0-9:/.\_+&#93;\*)
+#' Pattern: &#91;0-9a-fA-F&#93;{8}\\-&#91;0-9a-fA-F&#93;{4}\\-&#91;0-9a-fA-F&#93;{4}\\-&#91;0-9a-fA-F&#93;{4}\\-&#91;0-9a-fA-F&#93;{12}
 #'
 #' @export
 create_cloud_formation_change_set <- function (ApplicationId, 
-    ParameterOverrides = NULL, SemanticVersion = NULL, StackName) 
+    Capabilities = NULL, ChangeSetName = NULL, ClientToken = NULL, 
+    Description = NULL, NotificationArns = NULL, ParameterOverrides = NULL, 
+    ResourceTypes = NULL, RollbackConfiguration = NULL, SemanticVersion = NULL, 
+    StackName, Tags = NULL, TemplateId = NULL) 
 {
     op <- new_operation(name = "CreateCloudFormationChangeSet", 
         http_method = "POST", http_path = "/applications/{applicationId}/changesets", 
         paginator = list())
     input <- create_cloud_formation_change_set_input(ApplicationId = ApplicationId, 
-        ParameterOverrides = ParameterOverrides, SemanticVersion = SemanticVersion, 
-        StackName = StackName)
+        Capabilities = Capabilities, ChangeSetName = ChangeSetName, 
+        ClientToken = ClientToken, Description = Description, 
+        NotificationArns = NotificationArns, ParameterOverrides = ParameterOverrides, 
+        ResourceTypes = ResourceTypes, RollbackConfiguration = RollbackConfiguration, 
+        SemanticVersion = SemanticVersion, StackName = StackName, 
+        Tags = Tags, TemplateId = TemplateId)
     output <- create_cloud_formation_change_set_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates an AWS CloudFormation template
+#'
+#' Creates an AWS CloudFormation template.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' create_cloud_formation_template(
+#'   ApplicationId = "string",
+#'   SemanticVersion = "string"
+#' )
+#' ```
+#'
+#' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
+#' @param SemanticVersion The semantic version of the application:
+#' 
+#' <https://semver.org/>
+#'
+#' @export
+create_cloud_formation_template <- function (ApplicationId, SemanticVersion = NULL) 
+{
+    op <- new_operation(name = "CreateCloudFormationTemplate", 
+        http_method = "POST", http_path = "/applications/{applicationId}/templates", 
+        paginator = list())
+    input <- create_cloud_formation_template_input(ApplicationId = ApplicationId, 
+        SemanticVersion = SemanticVersion)
+    output <- create_cloud_formation_template_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -268,6 +352,73 @@ get_application_policy <- function (ApplicationId)
     return(response)
 }
 
+#' Gets the specified AWS CloudFormation template
+#'
+#' Gets the specified AWS CloudFormation template.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' get_cloud_formation_template(
+#'   ApplicationId = "string",
+#'   TemplateId = "string"
+#' )
+#' ```
+#'
+#' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
+#' @param TemplateId &#91;required&#93; The UUID returned by CreateCloudFormationTemplate.
+#' 
+#' Pattern: &#91;0-9a-fA-F&#93;{8}\\-&#91;0-9a-fA-F&#93;{4}\\-&#91;0-9a-fA-F&#93;{4}\\-&#91;0-9a-fA-F&#93;{4}\\-&#91;0-9a-fA-F&#93;{12}
+#'
+#' @export
+get_cloud_formation_template <- function (ApplicationId, TemplateId) 
+{
+    op <- new_operation(name = "GetCloudFormationTemplate", http_method = "GET", 
+        http_path = "/applications/{applicationId}/templates/{templateId}", 
+        paginator = list())
+    input <- get_cloud_formation_template_input(ApplicationId = ApplicationId, 
+        TemplateId = TemplateId)
+    output <- get_cloud_formation_template_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves the list of applications nested in the containing application
+#'
+#' Retrieves the list of applications nested in the containing application.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' list_application_dependencies(
+#'   ApplicationId = "string",
+#'   MaxItems = 123,
+#'   NextToken = "string",
+#'   SemanticVersion = "string"
+#' )
+#' ```
+#'
+#' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
+#' @param MaxItems The total number of items to return.
+#' @param NextToken A token to specify where to start paginating.
+#' @param SemanticVersion The semantic version of the application to get.
+#'
+#' @export
+list_application_dependencies <- function (ApplicationId, MaxItems = NULL, 
+    NextToken = NULL, SemanticVersion = NULL) 
+{
+    op <- new_operation(name = "ListApplicationDependencies", 
+        http_method = "GET", http_path = "/applications/{applicationId}/dependencies", 
+        paginator = list())
+    input <- list_application_dependencies_input(ApplicationId = ApplicationId, 
+        MaxItems = MaxItems, NextToken = NextToken, SemanticVersion = SemanticVersion)
+    output <- list_application_dependencies_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Lists versions for the specified application
 #'
 #' Lists versions for the specified application.
@@ -331,7 +482,7 @@ list_applications <- function (MaxItems = NULL, NextToken = NULL)
 
 #' Sets the permission policy for an application
 #'
-#' Sets the permission policy for an application. See [Application Permissions](https://docs.aws.amazon.com/serverlessrepo/latest/devguide/access-control-resource-based.html#application-permissions) for the list of supported actions that can be used with this operation.
+#' Sets the permission policy for an application. For the list of actions supported for this operation, see [Application Permissions](https://docs.aws.amazon.com/serverlessrepo/latest/devguide/access-control-resource-based.html#application-permissions) .
 #'
 #' @section Accepted Parameters:
 #' ```

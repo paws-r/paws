@@ -4,13 +4,8 @@
 \alias{create_model}
 \title{Creates a Model for an API}
 \usage{
-create_model(
-  ApiId = "string",
-  ContentType = "string",
-  Description = "string",
-  Name = "string",
-  Schema = "string"
-)
+create_model(ApiId, ContentType = NULL, Description = NULL, Name,
+  Schema = NULL)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -26,6 +21,14 @@ create_model(
 \description{
 Creates a Model for an API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_model(
+  ApiId = "string",
+  ContentType = "string",
+  Description = "string",
+  Name = "string",
+  Schema = "string"
+)
 }
+}
+

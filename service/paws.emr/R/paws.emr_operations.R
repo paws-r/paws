@@ -1215,7 +1215,7 @@ remove_tags <- function (ResourceId, TagKeys)
 #' -   \"spark\" - launch the cluster with Apache Spark installed.
 #' 
 #' -   \"ganglia\" - launch the cluster with the Ganglia Monitoring System installed.
-#' @param Applications For Amazon EMR releases 4.0 and later. A list of applications for the cluster. Valid values are: \"Hadoop\", \"Hive\", \"Mahout\", \"Pig\", and \"Spark.\" They are case insensitive.
+#' @param Applications Applies to Amazon EMR releases 4.0 and later. A case-insensitive list of applications for Amazon EMR to install and configure when launching the cluster. For a list of applications available for each Amazon EMR release version, see the [Amazon EMR Release Guide](http://docs.aws.amazon.com/emr/latest/ReleaseGuide/).
 #' @param Configurations For Amazon EMR releases 4.0 and later. The list of configurations supplied for the EMR cluster you are creating.
 #' @param VisibleToAllUsers Whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this value is set to `true`, all IAM users of that AWS account can view and (if they have the proper policy permissions set) manage the cluster. If it is set to `false`, only the IAM user that created the cluster can view and manage it.
 #' @param JobFlowRole Also called instance profile and EC2 role. An IAM role for an EMR cluster. The EC2 instances of the cluster assume this role. The default role is `EMR_EC2_DefaultRole`. In order to use the default role, you must have already created it using the CLI or console.

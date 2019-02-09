@@ -25,7 +25,7 @@ Adds an inventory configuration (identified by the inventory ID) from the bucket
       S3BucketDestination = list(
         AccountId = "string",
         Bucket = "string",
-        Format = "CSV"|"ORC",
+        Format = "CSV"|"ORC"|"Parquet",
         Prefix = "string",
         Encryption = list(
           SSES3 = list(),
@@ -42,7 +42,7 @@ Adds an inventory configuration (identified by the inventory ID) from the bucket
     Id = "string",
     IncludedObjectVersions = "All"|"Current",
     OptionalFields = list(
-      "Size"|"LastModifiedDate"|"StorageClass"|"ETag"|"IsMultipartUploaded"|"ReplicationStatus"|"EncryptionStatus"
+      "Size"|"LastModifiedDate"|"StorageClass"|"ETag"|"IsMultipartUploaded"|"ReplicationStatus"|"EncryptionStatus"|"ObjectLockRetainUntilDate"|"ObjectLockMode"|"ObjectLockLegalHoldStatus"
     ),
     Schedule = list(
       Frequency = "Daily"|"Weekly"

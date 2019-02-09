@@ -4,11 +4,7 @@
 \alias{delete_user}
 \title{Deletes the Amazon QuickSight user that is associated with the identity of the AWS Identity and Access Management (IAM) user or role that's making the call}
 \usage{
-delete_user(
-  UserName = "string",
-  AwsAccountId = "string",
-  Namespace = "string"
-)
+delete_user(UserName, AwsAccountId, Namespace)
 }
 \arguments{
 \item{UserName}{[required] The name of the user that you want to delete.}
@@ -27,6 +23,12 @@ The permission resource is \code{arn:aws:quicksight:us-east-1:<aws-account-id>:u
 
 \code{aws quicksight delete-user --aws-account-id=111122223333 --namespace=default --user-name=Pat }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_user(
+  UserName = "string",
+  AwsAccountId = "string",
+  Namespace = "string"
+)
 }
+}
+

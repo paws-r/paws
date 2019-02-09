@@ -58,7 +58,7 @@ Modifies the specified replication task.
 \details{
 You can't modify the task endpoints. The task must be stopped before you can modify it.
 
-For more information about AWS DMS tasks, see the AWS DMS user guide at \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html}{Working with Migration Tasks}
+For more information about AWS DMS tasks, see \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html}{Working with Migration Tasks} in the \emph{AWS Database Migration Service User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{modify_replication_task(

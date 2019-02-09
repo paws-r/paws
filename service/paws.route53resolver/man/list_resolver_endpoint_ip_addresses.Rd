@@ -4,11 +4,8 @@
 \alias{list_resolver_endpoint_ip_addresses}
 \title{Gets the IP addresses for a specified resolver endpoint}
 \usage{
-list_resolver_endpoint_ip_addresses(
-  ResolverEndpointId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_resolver_endpoint_ip_addresses(ResolverEndpointId,
+  MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ResolverEndpointId}{[required] The ID of the resolver endpoint that you want to get IP addresses for.}
@@ -22,6 +19,12 @@ If the specified resolver endpoint has more than \code{MaxResults} IP addresses,
 \description{
 Gets the IP addresses for a specified resolver endpoint.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_resolver_endpoint_ip_addresses(
+  ResolverEndpointId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

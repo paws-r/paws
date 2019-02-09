@@ -4,23 +4,10 @@
 \alias{update_flow_output}
 \title{Updates an existing flow output}
 \usage{
-update_flow_output(
-  Description = "string",
-  Destination = "string",
-  Encryption = list(
-    Algorithm = "aes128"|"aes192"|"aes256",
-    KeyType = "static-key",
-    RoleArn = "string",
-    SecretArn = "string"
-  ),
-  FlowArn = "string",
-  MaxLatency = 123,
-  OutputArn = "string",
-  Port = 123,
-  Protocol = "zixi-push"|"rtp-fec"|"rtp",
-  SmoothingLatency = 123,
-  StreamId = "string"
-)
+update_flow_output(Description = NULL, Destination = NULL,
+  Encryption = NULL, FlowArn, MaxLatency = NULL, OutputArn,
+  Port = NULL, Protocol = NULL, SmoothingLatency = NULL,
+  StreamId = NULL)
 }
 \arguments{
 \item{Description}{A description of the output. This description appears only on the AWS Elemental MediaConnect console and will not be seen by the end user.}
@@ -46,6 +33,24 @@ update_flow_output(
 \description{
 Updates an existing flow output.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_flow_output(
+  Description = "string",
+  Destination = "string",
+  Encryption = list(
+    Algorithm = "aes128"|"aes192"|"aes256",
+    KeyType = "static-key",
+    RoleArn = "string",
+    SecretArn = "string"
+  ),
+  FlowArn = "string",
+  MaxLatency = 123,
+  OutputArn = "string",
+  Port = 123,
+  Protocol = "zixi-push"|"rtp-fec"|"rtp",
+  SmoothingLatency = 123,
+  StreamId = "string"
+)
 }
+}
+

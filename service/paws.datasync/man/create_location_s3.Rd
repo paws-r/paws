@@ -4,19 +4,7 @@
 \alias{create_location_s3}
 \title{Creates an endpoint for an Amazon S3 bucket}
 \usage{
-create_location_s3(
-  Subdirectory = "string",
-  S3BucketArn = "string",
-  S3Config = list(
-    BucketAccessRoleArn = "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_location_s3(Subdirectory, S3BucketArn, S3Config, Tags = NULL)
 }
 \arguments{
 \item{Subdirectory}{[required] A subdirectory in the Amazon S3 bucket. This subdirectory in Amazon S3 is used to read data from the S3 source location or write data to the S3 destination.}
@@ -33,6 +21,20 @@ Creates an endpoint for an Amazon S3 bucket.
 \details{
 For AWS DataSync to access a destination S3 bucket, it needs an AWS Identity and Access Management (IAM) role that has the required permissions. You can set up the required permissions by creating an IAM policy that grants the required permissions and attaching the policy to the role. An example of such a policy is shown in the examples section. For more information, see \href{https://docs.aws.amazon.com/sync-service/latest/userguide/configuring-s3-locations.html}{Configuring Amazon S3 Location Settings} in the \emph{AWS DataSync User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_location_s3(
+  Subdirectory = "string",
+  S3BucketArn = "string",
+  S3Config = list(
+    BucketAccessRoleArn = "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

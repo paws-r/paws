@@ -25,6 +25,16 @@ Updates a specified pipeline with edits or changes to its structure. Use a JSON 
         type = "KMS"
       )
     ),
+    artifactStores = list(
+      list(
+        type = "S3",
+        location = "string",
+        encryptionKey = list(
+          id = "string",
+          type = "KMS"
+        )
+      )
+    ),
     stages = list(
       list(
         name = "string",
@@ -57,7 +67,8 @@ Updates a specified pipeline with edits or changes to its structure. Use a JSON 
                 name = "string"
               )
             ),
-            roleArn = "string"
+            roleArn = "string",
+            region = "string"
           )
         )
       )

@@ -2,7 +2,7 @@
 % Please edit documentation in R/paws.ecs_operations.R
 \name{update_service}
 \alias{update_service}
-\title{Modifies the desired count, deployment configuration, network configuration, or task definition used in a service}
+\title{Modifies the parameters of a service}
 \usage{
 update_service(cluster = NULL, service, desiredCount = NULL,
   taskDefinition = NULL, deploymentConfiguration = NULL,
@@ -24,16 +24,20 @@ update_service(cluster = NULL, service, desiredCount = NULL,
 
 Updating a service to add a subnet to a list of existing subnets does not trigger a service deployment. For example, if your network configuration change is to keep the existing subnets and simply add another subnet to the network configuration, this does not trigger a new service deployment.}
 
-\item{platformVersion}{The platform version that your service should run.}
+\item{platformVersion}{The platform version on which your tasks in the service are running. A platform version is only specified for tasks using the Fargate launch type. If one is not specified, the \code{LATEST} platform version is used by default. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html}{AWS Fargate Platform Versions} in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{forceNewDeployment}{Whether to force a new deployment of the service. Deployments are not forced by default. You can use this option to trigger a new deployment with no service definition changes. For example, you can update a service's tasks to use a newer Docker image with the same image/tag combination (\code{my_image:latest}) or to roll Fargate tasks onto a newer platform version.}
 
-\item{healthCheckGracePeriodSeconds}{The period of time, in seconds, that the Amazon ECS service scheduler should ignore unhealthy Elastic Load Balancing target health checks after a task has first started. This is only valid if your service is configured to use a load balancer. If your service's tasks take a while to start and respond to Elastic Load Balancing health checks, you can specify a health check grace period of up to 1,800 seconds during which the ECS service scheduler ignores the Elastic Load Balancing health check status. This grace period can prevent the ECS service scheduler from marking tasks as unhealthy and stopping them before they have time to come up.}
+\item{healthCheckGracePeriodSeconds}{The period of time, in seconds, that the Amazon ECS service scheduler should ignore unhealthy Elastic Load Balancing target health checks after a task has first started. This is only valid if your service is configured to use a load balancer. If your service's tasks take a while to start and respond to Elastic Load Balancing health checks, you can specify a health check grace period of up to 1,800 seconds. During that time, the ECS service scheduler ignores the Elastic Load Balancing health check status. This grace period can prevent the ECS service scheduler from marking tasks as unhealthy and stopping them before they have time to come up.}
 }
 \description{
-Modifies the desired count, deployment configuration, network configuration, or task definition used in a service.
+Modifies the parameters of a service.
 }
 \details{
+For services using the rolling update (\code{ECS}) deployment controller, the desired count, deployment configuration, network configuration, or task definition used can be updated.
+
+For services using the blue/green (\code{CODE_DEPLOY}) deployment controller, only the desired count, deployment configuration, and health check grace period can be updated using this API. If the network configuration, platform version, or task definition need to be updated, a new AWS CodeDeploy deployment should be created. For more information, see \href{https://docs.aws.amazon.com/codedeploy/latest/APIReference/API_CreateDeployment.html}{CreateDeployment} in the \emph{AWS CodeDeploy API Reference}.
+
 You can add to or subtract from the number of instantiations of a task definition in a service by specifying the cluster that the service is running in and a new \code{desiredCount} parameter.
 
 If you have updated the Docker image of your application, you can create a new task definition with that image and deploy it to your service. The service scheduler uses the minimum healthy percent and maximum percent parameters (in the service's deployment configuration) to determine the deployment strategy.

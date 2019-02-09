@@ -9,11 +9,11 @@ put_role_policy(RoleName, PolicyName, PolicyDocument)
 \arguments{
 \item{RoleName}{[required] The name of the role to associate the policy with.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{PolicyName}{[required] The name of the policy document.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{PolicyDocument}{[required] The policy document.
 

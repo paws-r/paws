@@ -9,7 +9,9 @@ list_notebook_instances(NextToken = NULL, MaxResults = NULL,
   CreationTimeBefore = NULL, CreationTimeAfter = NULL,
   LastModifiedTimeBefore = NULL, LastModifiedTimeAfter = NULL,
   StatusEquals = NULL,
-  NotebookInstanceLifecycleConfigNameContains = NULL)
+  NotebookInstanceLifecycleConfigNameContains = NULL,
+  DefaultCodeRepositoryContains = NULL,
+  AdditionalCodeRepositoryEquals = NULL)
 }
 \arguments{
 \item{NextToken}{If the previous call to the \code{ListNotebookInstances} is truncated, the response includes a \code{NextToken}. You can use this token in your subsequent \code{ListNotebookInstances} request to fetch the next set of notebook instances.
@@ -35,6 +37,10 @@ You might specify a filter or a sort order in your request. When response is tru
 \item{StatusEquals}{A filter that returns only notebook instances with the specified status.}
 
 \item{NotebookInstanceLifecycleConfigNameContains}{A string in the name of a notebook instances lifecycle configuration associated with this notebook instance. This filter returns only notebook instances associated with a lifecycle configuration with a name that contains the specified string.}
+
+\item{DefaultCodeRepositoryContains}{A string in the name or URL of a Git repository associated with this notebook instance. This filter returns only notebook instances associated with a git repository with a name that contains the specified string.}
+
+\item{AdditionalCodeRepositoryEquals}{A filter that returns only notebook instances with associated with the specified git repository.}
 }
 \description{
 Returns a list of the Amazon SageMaker notebook instances in the requester's account in an AWS Region.
@@ -51,7 +57,9 @@ Returns a list of the Amazon SageMaker notebook instances in the requester's acc
   LastModifiedTimeBefore = as.POSIXct("2015-01-01"),
   LastModifiedTimeAfter = as.POSIXct("2015-01-01"),
   StatusEquals = "Pending"|"InService"|"Stopping"|"Stopped"|"Failed"|"Deleting"|"Updating",
-  NotebookInstanceLifecycleConfigNameContains = "string"
+  NotebookInstanceLifecycleConfigNameContains = "string",
+  DefaultCodeRepositoryContains = "string",
+  AdditionalCodeRepositoryEquals = "string"
 )
 }
 }

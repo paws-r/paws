@@ -24,6 +24,7 @@ describe_network_acls(Filters = NULL, DryRun = NULL,
 \item \code{entry.rule-action} - Allows or denies the matching traffic (\code{allow} | \code{deny}).
 \item \code{entry.rule-number} - The number of an entry (in other words, rule) in the set of ACL entries.
 \item \code{network-acl-id} - The ID of the network ACL.
+\item \code{owner-id} - The ID of the AWS account that owns the network ACL.
 \item \code{tag}:<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 \item \code{vpc-id} - The ID of the VPC for the network ACL.
@@ -39,7 +40,7 @@ Default: Describes all your network ACLs.}
 Describes one or more of your network ACLs.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html}{Network ACLs} in the \emph{Amazon Virtual Private Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html}{Network ACLs} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{describe_network_acls(

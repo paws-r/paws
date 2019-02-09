@@ -4,12 +4,7 @@
 \alias{create_api_mapping}
 \title{Creates an API mapping}
 \usage{
-create_api_mapping(
-  ApiId = "string",
-  ApiMappingKey = "string",
-  DomainName = "string",
-  Stage = "string"
-)
+create_api_mapping(ApiId, ApiMappingKey = NULL, DomainName, Stage)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -23,6 +18,13 @@ create_api_mapping(
 \description{
 Creates an API mapping.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_api_mapping(
+  ApiId = "string",
+  ApiMappingKey = "string",
+  DomainName = "string",
+  Stage = "string"
+)
 }
+}
+

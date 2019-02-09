@@ -4,11 +4,7 @@
 \alias{list_listeners}
 \title{List the listeners for an accelerator}
 \usage{
-list_listeners(
-  AcceleratorArn = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_listeners(AcceleratorArn, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{AcceleratorArn}{[required] The Amazon Resource Name (ARN) of the accelerator for which you want to list listener objects.}
@@ -20,6 +16,12 @@ list_listeners(
 \description{
 List the listeners for an accelerator.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_listeners(
+  AcceleratorArn = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

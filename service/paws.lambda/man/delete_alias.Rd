@@ -2,7 +2,7 @@
 % Please edit documentation in R/paws.lambda_operations.R
 \name{delete_alias}
 \alias{delete_alias}
-\title{Deletes the specified Lambda function alias}
+\title{Deletes a Lambda function alias}
 \usage{
 delete_alias(FunctionName, Name)
 }
@@ -18,13 +18,10 @@ delete_alias(FunctionName, Name)
 
 The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
 
-\item{Name}{[required] Name of the alias to delete.}
+\item{Name}{[required] The name of the alias.}
 }
 \description{
-Deletes the specified Lambda function alias. For more information, see \href{http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html}{Introduction to AWS Lambda Aliases}.
-}
-\details{
-This requires permission for the lambda:DeleteAlias action.
+Deletes a Lambda function \href{http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{alias}.
 }
 \section{Accepted Parameters}{
 \preformatted{delete_alias(

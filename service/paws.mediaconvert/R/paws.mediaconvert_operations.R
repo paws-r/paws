@@ -3,6 +3,32 @@
 #' @importFrom paws.common new_operation new_request send_request
 NULL
 
+#' Associates an AWS Certificate Manager (ACM) Amazon Resource Name (ARN) with AWS Elemental MediaConvert
+#'
+#' Associates an AWS Certificate Manager (ACM) Amazon Resource Name (ARN) with AWS Elemental MediaConvert.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' associate_certificate(
+#'   Arn = "string"
+#' )
+#' ```
+#'
+#' @param Arn &#91;required&#93; The ARN of the ACM certificate that you want to associate with your MediaConvert resource.
+#'
+#' @export
+associate_certificate <- function (Arn) 
+{
+    op <- new_operation(name = "AssociateCertificate", http_method = "POST", 
+        http_path = "/2017-08-29/certificates", paginator = list())
+    input <- associate_certificate_input(Arn = Arn)
+    output <- associate_certificate_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Permanently remove a job from a queue
 #'
 #' Permanently remove a job from a queue. Once you have canceled a job, you can't start it again. You can't delete a running job.
@@ -36,6 +62,9 @@ cancel_job <- function (Id)
 #' @section Accepted Parameters:
 #' ```
 #' create_job(
+#'   AccelerationSettings = list(
+#'     Mode = "DISABLED"|"ENABLED"
+#'   ),
 #'   BillingTagsSource = "QUEUE"|"PRESET"|"JOB_TEMPLATE",
 #'   ClientRequestToken = "string",
 #'   JobTemplate = "string",
@@ -106,18 +135,44 @@ cancel_job <- function (Id)
 #'                 SourceFile = "string",
 #'                 TimeDelta = 123
 #'               ),
-#'               SourceType = "ANCILLARY"|"DVB_SUB"|"EMBEDDED"|"SCC"|"TTML"|"STL"|"SRT"|"TELETEXT"|"NULL_SOURCE",
+#'               SourceType = "ANCILLARY"|"DVB_SUB"|"EMBEDDED"|"SCTE20"|"SCC"|"TTML"|"STL"|"SRT"|"SMI"|"TELETEXT"|"NULL_SOURCE"|"IMSC",
 #'               TeletextSourceSettings = list(
 #'                 PageNumber = "string"
+#'               ),
+#'               TrackSourceSettings = list(
+#'                 TrackNumber = 123
 #'               )
 #'             )
 #'           )
 #'         ),
 #'         DeblockFilter = "ENABLED"|"DISABLED",
+#'         DecryptionSettings = list(
+#'           DecryptionMode = "AES_CTR"|"AES_CBC"|"AES_GCM",
+#'           EncryptedDecryptionKey = "string",
+#'           InitializationVector = "string",
+#'           KmsKeyRegion = "string"
+#'         ),
 #'         DenoiseFilter = "ENABLED"|"DISABLED",
 #'         FileInput = "string",
 #'         FilterEnable = "AUTO"|"DISABLE"|"FORCE",
 #'         FilterStrength = 123,
+#'         ImageInserter = list(
+#'           InsertableImages = list(
+#'             list(
+#'               Duration = 123,
+#'               FadeIn = 123,
+#'               FadeOut = 123,
+#'               Height = 123,
+#'               ImageInserterInput = "string",
+#'               ImageX = 123,
+#'               ImageY = 123,
+#'               Layer = 123,
+#'               Opacity = 123,
+#'               StartTime = "string",
+#'               Width = 123
+#'             )
+#'           )
+#'         ),
 #'         InputClippings = list(
 #'           list(
 #'             EndTimecode = "string",
@@ -126,6 +181,9 @@ cancel_job <- function (Id)
 #'         ),
 #'         ProgramNumber = 123,
 #'         PsiControl = "IGNORE_PSI"|"USE_PSI",
+#'         SupplementalImps = list(
+#'           "string"
+#'         ),
 #'         TimecodeSource = "EMBEDDED"|"ZEROBASED"|"SPECIFIEDSTART",
 #'         VideoSelector = list(
 #'           ColorSpace = "FOLLOW"|"REC_601"|"REC_709"|"HDR10"|"HLG_2020",
@@ -148,6 +206,20 @@ cancel_job <- function (Id)
 #'           ProgramNumber = 123
 #'         )
 #'       )
+#'     ),
+#'     MotionImageInserter = list(
+#'       Framerate = list(
+#'         FramerateDenominator = 123,
+#'         FramerateNumerator = 123
+#'       ),
+#'       Input = "string",
+#'       InsertionMode = "MOV"|"PNG",
+#'       Offset = list(
+#'         ImageX = 123,
+#'         ImageY = 123
+#'       ),
+#'       Playback = "ONCE"|"REPEAT",
+#'       StartTime = "string"
 #'     ),
 #'     NielsenConfiguration = list(
 #'       BreakoutCode = 123,
@@ -191,6 +263,7 @@ cancel_job <- function (Id)
 #'             Destination = "string",
 #'             Encryption = list(
 #'               SpekeKeyProvider = list(
+#'                 CertificateArn = "string",
 #'                 ResourceId = "string",
 #'                 SystemIds = list(
 #'                   "string"
@@ -231,6 +304,7 @@ cancel_job <- function (Id)
 #'               EncryptionMethod = "AES128"|"SAMPLE_AES",
 #'               InitializationVectorInManifest = "INCLUDE"|"EXCLUDE",
 #'               SpekeKeyProvider = list(
+#'                 CertificateArn = "string",
 #'                 ResourceId = "string",
 #'                 SystemIds = list(
 #'                   "string"
@@ -265,6 +339,7 @@ cancel_job <- function (Id)
 #'             Destination = "string",
 #'             Encryption = list(
 #'               SpekeKeyProvider = list(
+#'                 CertificateArn = "string",
 #'                 ResourceId = "string",
 #'                 SystemIds = list(
 #'                   "string"
@@ -386,6 +461,7 @@ cancel_job <- function (Id)
 #'                     FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
 #'                     FontOpacity = 123,
 #'                     FontResolution = 123,
+#'                     FontScript = "AUTOMATIC"|"HANS"|"HANT",
 #'                     FontSize = 123,
 #'                     OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
 #'                     OutlineSize = 123,
@@ -397,7 +473,7 @@ cancel_job <- function (Id)
 #'                     XPosition = 123,
 #'                     YPosition = 123
 #'                   ),
-#'                   DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"SCC"|"SRT"|"TELETEXT"|"TTML"|"WEBVTT",
+#'                   DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
 #'                   DvbSubDestinationSettings = list(
 #'                     Alignment = "CENTERED"|"LEFT",
 #'                     BackgroundColor = "NONE"|"BLACK"|"WHITE",
@@ -405,6 +481,7 @@ cancel_job <- function (Id)
 #'                     FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
 #'                     FontOpacity = 123,
 #'                     FontResolution = 123,
+#'                     FontScript = "AUTOMATIC"|"HANS"|"HANT",
 #'                     FontSize = 123,
 #'                     OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
 #'                     OutlineSize = 123,
@@ -415,6 +492,9 @@ cancel_job <- function (Id)
 #'                     TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
 #'                     XPosition = 123,
 #'                     YPosition = 123
+#'                   ),
+#'                   EmbeddedDestinationSettings = list(
+#'                     Destination608ChannelNumber = 123
 #'                   ),
 #'                   SccDestinationSettings = list(
 #'                     Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
@@ -464,6 +544,7 @@ cancel_job <- function (Id)
 #'                 EbpAudioInterval = "VIDEO_AND_FIXED_INTERVALS"|"VIDEO_INTERVAL",
 #'                 EbpPlacement = "VIDEO_AND_AUDIO_PIDS"|"VIDEO_PID",
 #'                 EsRateInPes = "INCLUDE"|"EXCLUDE",
+#'                 ForceTsVideoEbpOrder = "FORCE"|"DEFAULT",
 #'                 FragmentTime = 123.0,
 #'                 MaxPcrInterval = 123,
 #'                 MinEbpInterval = 123,
@@ -786,6 +867,7 @@ cancel_job <- function (Id)
 #' )
 #' ```
 #'
+#' @param AccelerationSettings This is a beta feature. If you are interested in using this feature, please contact AWS customer support.
 #' @param BillingTagsSource 
 #' @param ClientRequestToken Idempotency token for CreateJob operation.
 #' @param JobTemplate When you create a job, you can either specify a job template or specify the transcoding settings individually
@@ -795,14 +877,16 @@ cancel_job <- function (Id)
 #' @param UserMetadata User-defined metadata that you want to associate with an MediaConvert job. You specify metadata in key/value pairs.
 #'
 #' @export
-create_job <- function (BillingTagsSource = NULL, ClientRequestToken = NULL, 
-    JobTemplate = NULL, Queue = NULL, Role, Settings, UserMetadata = NULL) 
+create_job <- function (AccelerationSettings = NULL, BillingTagsSource = NULL, 
+    ClientRequestToken = NULL, JobTemplate = NULL, Queue = NULL, 
+    Role, Settings, UserMetadata = NULL) 
 {
     op <- new_operation(name = "CreateJob", http_method = "POST", 
         http_path = "/2017-08-29/jobs", paginator = list())
-    input <- create_job_input(BillingTagsSource = BillingTagsSource, 
-        ClientRequestToken = ClientRequestToken, JobTemplate = JobTemplate, 
-        Queue = Queue, Role = Role, Settings = Settings, UserMetadata = UserMetadata)
+    input <- create_job_input(AccelerationSettings = AccelerationSettings, 
+        BillingTagsSource = BillingTagsSource, ClientRequestToken = ClientRequestToken, 
+        JobTemplate = JobTemplate, Queue = Queue, Role = Role, 
+        Settings = Settings, UserMetadata = UserMetadata)
     output <- create_job_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -817,6 +901,9 @@ create_job <- function (BillingTagsSource = NULL, ClientRequestToken = NULL,
 #' @section Accepted Parameters:
 #' ```
 #' create_job_template(
+#'   AccelerationSettings = list(
+#'     Mode = "DISABLED"|"ENABLED"
+#'   ),
 #'   Category = "string",
 #'   Description = "string",
 #'   Name = "string",
@@ -886,9 +973,12 @@ create_job <- function (BillingTagsSource = NULL, ClientRequestToken = NULL,
 #'                 SourceFile = "string",
 #'                 TimeDelta = 123
 #'               ),
-#'               SourceType = "ANCILLARY"|"DVB_SUB"|"EMBEDDED"|"SCC"|"TTML"|"STL"|"SRT"|"TELETEXT"|"NULL_SOURCE",
+#'               SourceType = "ANCILLARY"|"DVB_SUB"|"EMBEDDED"|"SCTE20"|"SCC"|"TTML"|"STL"|"SRT"|"SMI"|"TELETEXT"|"NULL_SOURCE"|"IMSC",
 #'               TeletextSourceSettings = list(
 #'                 PageNumber = "string"
+#'               ),
+#'               TrackSourceSettings = list(
+#'                 TrackNumber = 123
 #'               )
 #'             )
 #'           )
@@ -897,6 +987,23 @@ create_job <- function (BillingTagsSource = NULL, ClientRequestToken = NULL,
 #'         DenoiseFilter = "ENABLED"|"DISABLED",
 #'         FilterEnable = "AUTO"|"DISABLE"|"FORCE",
 #'         FilterStrength = 123,
+#'         ImageInserter = list(
+#'           InsertableImages = list(
+#'             list(
+#'               Duration = 123,
+#'               FadeIn = 123,
+#'               FadeOut = 123,
+#'               Height = 123,
+#'               ImageInserterInput = "string",
+#'               ImageX = 123,
+#'               ImageY = 123,
+#'               Layer = 123,
+#'               Opacity = 123,
+#'               StartTime = "string",
+#'               Width = 123
+#'             )
+#'           )
+#'         ),
 #'         InputClippings = list(
 #'           list(
 #'             EndTimecode = "string",
@@ -927,6 +1034,20 @@ create_job <- function (BillingTagsSource = NULL, ClientRequestToken = NULL,
 #'           ProgramNumber = 123
 #'         )
 #'       )
+#'     ),
+#'     MotionImageInserter = list(
+#'       Framerate = list(
+#'         FramerateDenominator = 123,
+#'         FramerateNumerator = 123
+#'       ),
+#'       Input = "string",
+#'       InsertionMode = "MOV"|"PNG",
+#'       Offset = list(
+#'         ImageX = 123,
+#'         ImageY = 123
+#'       ),
+#'       Playback = "ONCE"|"REPEAT",
+#'       StartTime = "string"
 #'     ),
 #'     NielsenConfiguration = list(
 #'       BreakoutCode = 123,
@@ -970,6 +1091,7 @@ create_job <- function (BillingTagsSource = NULL, ClientRequestToken = NULL,
 #'             Destination = "string",
 #'             Encryption = list(
 #'               SpekeKeyProvider = list(
+#'                 CertificateArn = "string",
 #'                 ResourceId = "string",
 #'                 SystemIds = list(
 #'                   "string"
@@ -1010,6 +1132,7 @@ create_job <- function (BillingTagsSource = NULL, ClientRequestToken = NULL,
 #'               EncryptionMethod = "AES128"|"SAMPLE_AES",
 #'               InitializationVectorInManifest = "INCLUDE"|"EXCLUDE",
 #'               SpekeKeyProvider = list(
+#'                 CertificateArn = "string",
 #'                 ResourceId = "string",
 #'                 SystemIds = list(
 #'                   "string"
@@ -1044,6 +1167,7 @@ create_job <- function (BillingTagsSource = NULL, ClientRequestToken = NULL,
 #'             Destination = "string",
 #'             Encryption = list(
 #'               SpekeKeyProvider = list(
+#'                 CertificateArn = "string",
 #'                 ResourceId = "string",
 #'                 SystemIds = list(
 #'                   "string"
@@ -1165,6 +1289,7 @@ create_job <- function (BillingTagsSource = NULL, ClientRequestToken = NULL,
 #'                     FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
 #'                     FontOpacity = 123,
 #'                     FontResolution = 123,
+#'                     FontScript = "AUTOMATIC"|"HANS"|"HANT",
 #'                     FontSize = 123,
 #'                     OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
 #'                     OutlineSize = 123,
@@ -1176,7 +1301,7 @@ create_job <- function (BillingTagsSource = NULL, ClientRequestToken = NULL,
 #'                     XPosition = 123,
 #'                     YPosition = 123
 #'                   ),
-#'                   DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"SCC"|"SRT"|"TELETEXT"|"TTML"|"WEBVTT",
+#'                   DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
 #'                   DvbSubDestinationSettings = list(
 #'                     Alignment = "CENTERED"|"LEFT",
 #'                     BackgroundColor = "NONE"|"BLACK"|"WHITE",
@@ -1184,6 +1309,7 @@ create_job <- function (BillingTagsSource = NULL, ClientRequestToken = NULL,
 #'                     FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
 #'                     FontOpacity = 123,
 #'                     FontResolution = 123,
+#'                     FontScript = "AUTOMATIC"|"HANS"|"HANT",
 #'                     FontSize = 123,
 #'                     OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
 #'                     OutlineSize = 123,
@@ -1194,6 +1320,9 @@ create_job <- function (BillingTagsSource = NULL, ClientRequestToken = NULL,
 #'                     TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
 #'                     XPosition = 123,
 #'                     YPosition = 123
+#'                   ),
+#'                   EmbeddedDestinationSettings = list(
+#'                     Destination608ChannelNumber = 123
 #'                   ),
 #'                   SccDestinationSettings = list(
 #'                     Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
@@ -1243,6 +1372,7 @@ create_job <- function (BillingTagsSource = NULL, ClientRequestToken = NULL,
 #'                 EbpAudioInterval = "VIDEO_AND_FIXED_INTERVALS"|"VIDEO_INTERVAL",
 #'                 EbpPlacement = "VIDEO_AND_AUDIO_PIDS"|"VIDEO_PID",
 #'                 EsRateInPes = "INCLUDE"|"EXCLUDE",
+#'                 ForceTsVideoEbpOrder = "FORCE"|"DEFAULT",
 #'                 FragmentTime = 123.0,
 #'                 MaxPcrInterval = 123,
 #'                 MinEbpInterval = 123,
@@ -1565,6 +1695,7 @@ create_job <- function (BillingTagsSource = NULL, ClientRequestToken = NULL,
 #' )
 #' ```
 #'
+#' @param AccelerationSettings This is a beta feature. If you are interested in using this feature please contact AWS customer support.
 #' @param Category Optional. A category for the job template you are creating
 #' @param Description Optional. A description of the job template you are creating.
 #' @param Name &#91;required&#93; The name of the job template you are creating.
@@ -1573,13 +1704,15 @@ create_job <- function (BillingTagsSource = NULL, ClientRequestToken = NULL,
 #' @param Tags The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.
 #'
 #' @export
-create_job_template <- function (Category = NULL, Description = NULL, 
-    Name, Queue = NULL, Settings, Tags = NULL) 
+create_job_template <- function (AccelerationSettings = NULL, 
+    Category = NULL, Description = NULL, Name, Queue = NULL, 
+    Settings, Tags = NULL) 
 {
     op <- new_operation(name = "CreateJobTemplate", http_method = "POST", 
         http_path = "/2017-08-29/jobTemplates", paginator = list())
-    input <- create_job_template_input(Category = Category, Description = Description, 
-        Name = Name, Queue = Queue, Settings = Settings, Tags = Tags)
+    input <- create_job_template_input(AccelerationSettings = AccelerationSettings, 
+        Category = Category, Description = Description, Name = Name, 
+        Queue = Queue, Settings = Settings, Tags = Tags)
     output <- create_job_template_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -1704,6 +1837,7 @@ create_job_template <- function (Category = NULL, Description = NULL,
 #'             FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
 #'             FontOpacity = 123,
 #'             FontResolution = 123,
+#'             FontScript = "AUTOMATIC"|"HANS"|"HANT",
 #'             FontSize = 123,
 #'             OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
 #'             OutlineSize = 123,
@@ -1715,7 +1849,7 @@ create_job_template <- function (Category = NULL, Description = NULL,
 #'             XPosition = 123,
 #'             YPosition = 123
 #'           ),
-#'           DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"SCC"|"SRT"|"TELETEXT"|"TTML"|"WEBVTT",
+#'           DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
 #'           DvbSubDestinationSettings = list(
 #'             Alignment = "CENTERED"|"LEFT",
 #'             BackgroundColor = "NONE"|"BLACK"|"WHITE",
@@ -1723,6 +1857,7 @@ create_job_template <- function (Category = NULL, Description = NULL,
 #'             FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
 #'             FontOpacity = 123,
 #'             FontResolution = 123,
+#'             FontScript = "AUTOMATIC"|"HANS"|"HANT",
 #'             FontSize = 123,
 #'             OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
 #'             OutlineSize = 123,
@@ -1733,6 +1868,9 @@ create_job_template <- function (Category = NULL, Description = NULL,
 #'             TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
 #'             XPosition = 123,
 #'             YPosition = 123
+#'           ),
+#'           EmbeddedDestinationSettings = list(
+#'             Destination608ChannelNumber = 123
 #'           ),
 #'           SccDestinationSettings = list(
 #'             Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
@@ -1782,6 +1920,7 @@ create_job_template <- function (Category = NULL, Description = NULL,
 #'         EbpAudioInterval = "VIDEO_AND_FIXED_INTERVALS"|"VIDEO_INTERVAL",
 #'         EbpPlacement = "VIDEO_AND_AUDIO_PIDS"|"VIDEO_PID",
 #'         EsRateInPes = "INCLUDE"|"EXCLUDE",
+#'         ForceTsVideoEbpOrder = "FORCE"|"DEFAULT",
 #'         FragmentTime = 123.0,
 #'         MaxPcrInterval = 123,
 #'         MinEbpInterval = 123,
@@ -2097,7 +2236,7 @@ create_preset <- function (Category = NULL, Description = NULL,
 
 #' Create a new transcoding queue
 #'
-#' Create a new transcoding queue. For information about job templates see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
+#' Create a new transcoding queue. For information about queues, see Working With Queues in the User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/working-with-queues.html
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -2118,7 +2257,7 @@ create_preset <- function (Category = NULL, Description = NULL,
 #'
 #' @param Description Optional. A description of the queue that you are creating.
 #' @param Name &#91;required&#93; The name of the queue that you are creating.
-#' @param PricingPlan Optional; default is on-demand. Specifies whether the pricing plan for the queue is on-demand or reserved. The pricing plan for the queue determines whether you pay on-demand or reserved pricing for the transcoding jobs you run through the queue. For reserved queue pricing, you must set up a contract. You can create a reserved queue contract through the AWS Elemental MediaConvert console.
+#' @param PricingPlan Specifies whether the pricing plan for the queue is on-demand or reserved. For on-demand, you pay per minute, billed in increments of .01 minute. For reserved, you pay for the transcoding capacity of the entire queue, regardless of how much or how little you use it. Reserved pricing requires a 12-month commitment. When you use the API to create a queue, the default is on-demand.
 #' @param ReservationPlanSettings Details about the pricing plan for your reserved queue. Required for reserved queues and not applicable to on-demand queues.
 #' @param Tags The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.
 #'
@@ -2201,7 +2340,7 @@ delete_preset <- function (Name)
 #' )
 #' ```
 #'
-#' @param Name &#91;required&#93; The name of the queue to be deleted.
+#' @param Name &#91;required&#93; The name of the queue that you want to delete.
 #'
 #' @export
 delete_queue <- function (Name) 
@@ -2242,6 +2381,32 @@ describe_endpoints <- function (MaxResults = NULL, Mode = NULL,
     input <- describe_endpoints_input(MaxResults = MaxResults, 
         Mode = Mode, NextToken = NextToken)
     output <- describe_endpoints_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Removes an association between the Amazon Resource Name (ARN) of an AWS Certificate Manager (ACM) certificate and an AWS Elemental MediaConvert resource
+#'
+#' Removes an association between the Amazon Resource Name (ARN) of an AWS Certificate Manager (ACM) certificate and an AWS Elemental MediaConvert resource.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' disassociate_certificate(
+#'   Arn = "string"
+#' )
+#' ```
+#'
+#' @param Arn &#91;required&#93; The ARN of the ACM certificate that you want to disassociate from your MediaConvert resource.
+#'
+#' @export
+disassociate_certificate <- function (Arn) 
+{
+    op <- new_operation(name = "DisassociateCertificate", http_method = "DELETE", 
+        http_path = "/2017-08-29/certificates/{arn}", paginator = list())
+    input <- disassociate_certificate_input(Arn = Arn)
+    output <- disassociate_certificate_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -2587,6 +2752,9 @@ untag_resource <- function (Arn, TagKeys = NULL)
 #' @section Accepted Parameters:
 #' ```
 #' update_job_template(
+#'   AccelerationSettings = list(
+#'     Mode = "DISABLED"|"ENABLED"
+#'   ),
 #'   Category = "string",
 #'   Description = "string",
 #'   Name = "string",
@@ -2656,9 +2824,12 @@ untag_resource <- function (Arn, TagKeys = NULL)
 #'                 SourceFile = "string",
 #'                 TimeDelta = 123
 #'               ),
-#'               SourceType = "ANCILLARY"|"DVB_SUB"|"EMBEDDED"|"SCC"|"TTML"|"STL"|"SRT"|"TELETEXT"|"NULL_SOURCE",
+#'               SourceType = "ANCILLARY"|"DVB_SUB"|"EMBEDDED"|"SCTE20"|"SCC"|"TTML"|"STL"|"SRT"|"SMI"|"TELETEXT"|"NULL_SOURCE"|"IMSC",
 #'               TeletextSourceSettings = list(
 #'                 PageNumber = "string"
+#'               ),
+#'               TrackSourceSettings = list(
+#'                 TrackNumber = 123
 #'               )
 #'             )
 #'           )
@@ -2667,6 +2838,23 @@ untag_resource <- function (Arn, TagKeys = NULL)
 #'         DenoiseFilter = "ENABLED"|"DISABLED",
 #'         FilterEnable = "AUTO"|"DISABLE"|"FORCE",
 #'         FilterStrength = 123,
+#'         ImageInserter = list(
+#'           InsertableImages = list(
+#'             list(
+#'               Duration = 123,
+#'               FadeIn = 123,
+#'               FadeOut = 123,
+#'               Height = 123,
+#'               ImageInserterInput = "string",
+#'               ImageX = 123,
+#'               ImageY = 123,
+#'               Layer = 123,
+#'               Opacity = 123,
+#'               StartTime = "string",
+#'               Width = 123
+#'             )
+#'           )
+#'         ),
 #'         InputClippings = list(
 #'           list(
 #'             EndTimecode = "string",
@@ -2697,6 +2885,20 @@ untag_resource <- function (Arn, TagKeys = NULL)
 #'           ProgramNumber = 123
 #'         )
 #'       )
+#'     ),
+#'     MotionImageInserter = list(
+#'       Framerate = list(
+#'         FramerateDenominator = 123,
+#'         FramerateNumerator = 123
+#'       ),
+#'       Input = "string",
+#'       InsertionMode = "MOV"|"PNG",
+#'       Offset = list(
+#'         ImageX = 123,
+#'         ImageY = 123
+#'       ),
+#'       Playback = "ONCE"|"REPEAT",
+#'       StartTime = "string"
 #'     ),
 #'     NielsenConfiguration = list(
 #'       BreakoutCode = 123,
@@ -2740,6 +2942,7 @@ untag_resource <- function (Arn, TagKeys = NULL)
 #'             Destination = "string",
 #'             Encryption = list(
 #'               SpekeKeyProvider = list(
+#'                 CertificateArn = "string",
 #'                 ResourceId = "string",
 #'                 SystemIds = list(
 #'                   "string"
@@ -2780,6 +2983,7 @@ untag_resource <- function (Arn, TagKeys = NULL)
 #'               EncryptionMethod = "AES128"|"SAMPLE_AES",
 #'               InitializationVectorInManifest = "INCLUDE"|"EXCLUDE",
 #'               SpekeKeyProvider = list(
+#'                 CertificateArn = "string",
 #'                 ResourceId = "string",
 #'                 SystemIds = list(
 #'                   "string"
@@ -2814,6 +3018,7 @@ untag_resource <- function (Arn, TagKeys = NULL)
 #'             Destination = "string",
 #'             Encryption = list(
 #'               SpekeKeyProvider = list(
+#'                 CertificateArn = "string",
 #'                 ResourceId = "string",
 #'                 SystemIds = list(
 #'                   "string"
@@ -2935,6 +3140,7 @@ untag_resource <- function (Arn, TagKeys = NULL)
 #'                     FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
 #'                     FontOpacity = 123,
 #'                     FontResolution = 123,
+#'                     FontScript = "AUTOMATIC"|"HANS"|"HANT",
 #'                     FontSize = 123,
 #'                     OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
 #'                     OutlineSize = 123,
@@ -2946,7 +3152,7 @@ untag_resource <- function (Arn, TagKeys = NULL)
 #'                     XPosition = 123,
 #'                     YPosition = 123
 #'                   ),
-#'                   DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"SCC"|"SRT"|"TELETEXT"|"TTML"|"WEBVTT",
+#'                   DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
 #'                   DvbSubDestinationSettings = list(
 #'                     Alignment = "CENTERED"|"LEFT",
 #'                     BackgroundColor = "NONE"|"BLACK"|"WHITE",
@@ -2954,6 +3160,7 @@ untag_resource <- function (Arn, TagKeys = NULL)
 #'                     FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
 #'                     FontOpacity = 123,
 #'                     FontResolution = 123,
+#'                     FontScript = "AUTOMATIC"|"HANS"|"HANT",
 #'                     FontSize = 123,
 #'                     OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
 #'                     OutlineSize = 123,
@@ -2964,6 +3171,9 @@ untag_resource <- function (Arn, TagKeys = NULL)
 #'                     TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
 #'                     XPosition = 123,
 #'                     YPosition = 123
+#'                   ),
+#'                   EmbeddedDestinationSettings = list(
+#'                     Destination608ChannelNumber = 123
 #'                   ),
 #'                   SccDestinationSettings = list(
 #'                     Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
@@ -3013,6 +3223,7 @@ untag_resource <- function (Arn, TagKeys = NULL)
 #'                 EbpAudioInterval = "VIDEO_AND_FIXED_INTERVALS"|"VIDEO_INTERVAL",
 #'                 EbpPlacement = "VIDEO_AND_AUDIO_PIDS"|"VIDEO_PID",
 #'                 EsRateInPes = "INCLUDE"|"EXCLUDE",
+#'                 ForceTsVideoEbpOrder = "FORCE"|"DEFAULT",
 #'                 FragmentTime = 123.0,
 #'                 MaxPcrInterval = 123,
 #'                 MinEbpInterval = 123,
@@ -3332,6 +3543,7 @@ untag_resource <- function (Arn, TagKeys = NULL)
 #' )
 #' ```
 #'
+#' @param AccelerationSettings This is a beta feature. If you are interested in using this feature, please contact AWS customer support.
 #' @param Category The new category for the job template, if you are changing it.
 #' @param Description The new description for the job template, if you are changing it.
 #' @param Name &#91;required&#93; The name of the job template you are modifying
@@ -3339,13 +3551,15 @@ untag_resource <- function (Arn, TagKeys = NULL)
 #' @param Settings 
 #'
 #' @export
-update_job_template <- function (Category = NULL, Description = NULL, 
-    Name, Queue = NULL, Settings = NULL) 
+update_job_template <- function (AccelerationSettings = NULL, 
+    Category = NULL, Description = NULL, Name, Queue = NULL, 
+    Settings = NULL) 
 {
     op <- new_operation(name = "UpdateJobTemplate", http_method = "PUT", 
         http_path = "/2017-08-29/jobTemplates/{name}", paginator = list())
-    input <- update_job_template_input(Category = Category, Description = Description, 
-        Name = Name, Queue = Queue, Settings = Settings)
+    input <- update_job_template_input(AccelerationSettings = AccelerationSettings, 
+        Category = Category, Description = Description, Name = Name, 
+        Queue = Queue, Settings = Settings)
     output <- update_job_template_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -3470,6 +3684,7 @@ update_job_template <- function (Category = NULL, Description = NULL,
 #'             FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
 #'             FontOpacity = 123,
 #'             FontResolution = 123,
+#'             FontScript = "AUTOMATIC"|"HANS"|"HANT",
 #'             FontSize = 123,
 #'             OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
 #'             OutlineSize = 123,
@@ -3481,7 +3696,7 @@ update_job_template <- function (Category = NULL, Description = NULL,
 #'             XPosition = 123,
 #'             YPosition = 123
 #'           ),
-#'           DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"SCC"|"SRT"|"TELETEXT"|"TTML"|"WEBVTT",
+#'           DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
 #'           DvbSubDestinationSettings = list(
 #'             Alignment = "CENTERED"|"LEFT",
 #'             BackgroundColor = "NONE"|"BLACK"|"WHITE",
@@ -3489,6 +3704,7 @@ update_job_template <- function (Category = NULL, Description = NULL,
 #'             FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
 #'             FontOpacity = 123,
 #'             FontResolution = 123,
+#'             FontScript = "AUTOMATIC"|"HANS"|"HANT",
 #'             FontSize = 123,
 #'             OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
 #'             OutlineSize = 123,
@@ -3499,6 +3715,9 @@ update_job_template <- function (Category = NULL, Description = NULL,
 #'             TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
 #'             XPosition = 123,
 #'             YPosition = 123
+#'           ),
+#'           EmbeddedDestinationSettings = list(
+#'             Destination608ChannelNumber = 123
 #'           ),
 #'           SccDestinationSettings = list(
 #'             Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
@@ -3548,6 +3767,7 @@ update_job_template <- function (Category = NULL, Description = NULL,
 #'         EbpAudioInterval = "VIDEO_AND_FIXED_INTERVALS"|"VIDEO_INTERVAL",
 #'         EbpPlacement = "VIDEO_AND_AUDIO_PIDS"|"VIDEO_PID",
 #'         EsRateInPes = "INCLUDE"|"EXCLUDE",
+#'         ForceTsVideoEbpOrder = "FORCE"|"DEFAULT",
 #'         FragmentTime = 123.0,
 #'         MaxPcrInterval = 123,
 #'         MinEbpInterval = 123,
@@ -3877,7 +4097,7 @@ update_preset <- function (Category = NULL, Description = NULL,
 #'
 #' @param Description The new description for the queue, if you are changing it.
 #' @param Name &#91;required&#93; The name of the queue that you are modifying.
-#' @param ReservationPlanSettings Details about the pricing plan for your reserved queue. Required for reserved queues and not applicable to on-demand queues.
+#' @param ReservationPlanSettings The new details of your pricing plan for your reserved queue. When you set up a new pricing plan to replace an expired one, you enter into another 12-month commitment. When you add capacity to your queue by increasing the number of RTS, you extend the term of your commitment to 12 months from when you add capacity. After you make these commitments, you can't cancel them.
 #' @param Status Pause or activate a queue by changing its status between ACTIVE and PAUSED. If you pause a queue, jobs in that queue won't begin. Jobs that are running when you pause the queue continue to run until they finish or result in an error.
 #'
 #' @export

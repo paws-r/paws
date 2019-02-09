@@ -5,10 +5,11 @@
 \title{Retrieves the reservation coverage for your account}
 \usage{
 get_reservation_coverage(TimePeriod, GroupBy = NULL,
-  Granularity = NULL, Filter = NULL, NextPageToken = NULL)
+  Granularity = NULL, Filter = NULL, Metrics = NULL,
+  NextPageToken = NULL)
 }
 \arguments{
-\item{TimePeriod}{[required] The start and end dates of the period for which you want to retrieve data about reservation coverage. You can retrieve data for a maximum of 13 months: the last 12 months and the current month. The start date is inclusive, but the end date is exclusive. For example, if \code{start} is \code{2017-01-01} and \code{end} is \code{2017-05-01}, then the cost and usage data is retrieved from \code{2017-01-01} up to and including \code{2017-04-30} but not including \code{2017-05-01}.}
+\item{TimePeriod}{[required] The start and end dates of the period that you want to retrieve data about reservation coverage for. You can retrieve data for a maximum of 13 months: the last 12 months and the current month. The start date is inclusive, but the end date is exclusive. For example, if \code{start} is \code{2017-01-01} and \code{end} is \code{2017-05-01}, then the cost and usage data is retrieved from \code{2017-01-01} up to and including \code{2017-04-30} but not including \code{2017-05-01}.}
 
 \item{GroupBy}{You can group the data by the following attributes:
 \itemize{
@@ -21,13 +22,14 @@ get_reservation_coverage(TimePeriod, GroupBy = NULL,
 \item OPERATING\_SYSTEM
 \item PLATFORM
 \item REGION
-\item TAG
 \item TENANCY
 }}
 
 \item{Granularity}{The granularity of the AWS cost data for the reservation. Valid values are \code{MONTHLY} and \code{DAILY}.
 
-If \code{GroupBy} is set, \code{Granularity} can't be set. If \code{Granularity} isn't set, the response object doesn't include \code{Granularity}, either \code{MONTHLY} or \code{DAILY}.}
+If \code{GroupBy} is set, \code{Granularity} can't be set. If \code{Granularity} isn't set, the response object doesn't include \code{Granularity}, either \code{MONTHLY} or \code{DAILY}.
+
+The \code{GetReservationCoverage} operation supports only \code{DAILY} and \code{MONTHLY} granularities.}
 
 \item{Filter}{Filters utilization data by dimensions. You can filter by the following dimensions:
 \itemize{
@@ -45,14 +47,16 @@ If \code{GroupBy} is set, \code{Granularity} can't be set. If \code{Granularity}
 \item TENANCY
 }
 
-\code{GetReservationCoverage} uses the same \code{Expression Expression} object as the other operations, but only \code{AND} is supported among each dimension. You can nest only one level deep. If there are multiple values for a dimension, they are OR'd together.
+\code{GetReservationCoverage} uses the same \href{http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html}{Expression} object as the other operations, but only \code{AND} is supported among each dimension. You can nest only one level deep. If there are multiple values for a dimension, they are OR'd together.
 
 If you don't provide a \code{SERVICE} filter, Cost Explorer defaults to EC2.}
+
+\item{Metrics}{}
 
 \item{NextPageToken}{The token to retrieve the next set of results. AWS provides the token when the response from a previous call has more results than the maximum page size.}
 }
 \description{
-Retrieves the reservation coverage for your account. This allows you to see how much of your Amazon Elastic Compute Cloud, Amazon ElastiCache, Amazon Relational Database Service, or Amazon Redshift usage is covered by a reservation. An organization's master account can see the coverage of the associated member accounts. For any time period, you can filter data about reservation usage by the following dimensions:
+Retrieves the reservation coverage for your account. This enables you to see how much of your Amazon Elastic Compute Cloud, Amazon ElastiCache, Amazon Relational Database Service, or Amazon Redshift usage is covered by a reservation. An organization's master account can see the coverage of the associated member accounts. For any time period, you can filter data about reservation usage by the following dimensions:
 }
 \details{
 \itemize{
@@ -84,7 +88,7 @@ To determine valid values for a dimension, use the \code{GetDimensionValues} ope
       Key = "string"
     )
   ),
-  Granularity = "DAILY"|"MONTHLY",
+  Granularity = "DAILY"|"MONTHLY"|"HOURLY",
   Filter = list(
     Or = list(
       list()
@@ -94,7 +98,7 @@ To determine valid values for a dimension, use the \code{GetDimensionValues} ope
     ),
     Not = list(),
     Dimensions = list(
-      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY",
+      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID",
       Values = list(
         "string"
       )
@@ -105,6 +109,9 @@ To determine valid values for a dimension, use the \code{GetDimensionValues} ope
         "string"
       )
     )
+  ),
+  Metrics = list(
+    "string"
   ),
   NextPageToken = "string"
 )

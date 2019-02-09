@@ -17,6 +17,21 @@ add_role_to_db_cluster_output <- function ()
     return(list())
 }
 
+add_role_to_db_instance_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(DBInstanceIdentifier = structure(logical(0), 
+        tags = list(type = "string")), RoleArn = structure(logical(0), 
+        tags = list(type = "string")), FeatureName = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+add_role_to_db_instance_output <- function () 
+{
+    return(list())
+}
+
 add_source_identifier_to_subscription_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -300,8 +315,9 @@ copy_db_snapshot_output <- function (...)
         tags = list(type = "string")), Value = structure(logical(0), 
         tags = list(type = "string"))), tags = list(locationName = "ProcessorFeature", 
         type = "structure"))), tags = list(locationNameList = "ProcessorFeature", 
-        type = "list"))), tags = list(type = "structure", wrapper = TRUE))), 
-        tags = list(type = "structure"))
+        type = "list")), DbiResourceId = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure", 
+        wrapper = TRUE))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -403,6 +419,7 @@ create_db_cluster_input <- function (...)
             tags = list(type = "boolean")), SecondsUntilAutoPause = structure(logical(0), 
             tags = list(type = "integer"))), tags = list(type = "structure")), 
         DeletionProtection = structure(logical(0), tags = list(type = "boolean")), 
+        GlobalClusterIdentifier = structure(logical(0), tags = list(type = "string")), 
         SourceRegion = structure(logical(0), tags = list(type = "string"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
@@ -426,6 +443,8 @@ create_db_cluster_output <- function (...)
         EarliestRestorableTime = structure(logical(0), tags = list(type = "timestamp")), 
         Endpoint = structure(logical(0), tags = list(type = "string")), 
         ReaderEndpoint = structure(logical(0), tags = list(type = "string")), 
+        CustomEndpoints = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list")), 
         MultiAZ = structure(logical(0), tags = list(type = "boolean")), 
         Engine = structure(logical(0), tags = list(type = "string")), 
         EngineVersion = structure(logical(0), tags = list(type = "string")), 
@@ -477,8 +496,42 @@ create_db_cluster_output <- function (...)
             tags = list(type = "integer")), AutoPause = structure(logical(0), 
             tags = list(type = "boolean")), SecondsUntilAutoPause = structure(logical(0), 
             tags = list(type = "integer"))), tags = list(type = "structure")), 
-        DeletionProtection = structure(logical(0), tags = list(type = "boolean"))), 
+        DeletionProtection = structure(logical(0), tags = list(type = "boolean")), 
+        HttpEndpointEnabled = structure(logical(0), tags = list(type = "boolean"))), 
         tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+create_db_cluster_endpoint_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(DBClusterIdentifier = structure(logical(0), 
+        tags = list(type = "string")), DBClusterEndpointIdentifier = structure(logical(0), 
+        tags = list(type = "string")), EndpointType = structure(logical(0), 
+        tags = list(type = "string")), StaticMembers = structure(list(structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "list")), 
+        ExcludedMembers = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+create_db_cluster_endpoint_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(DBClusterEndpointIdentifier = structure(logical(0), 
+        tags = list(type = "string")), DBClusterIdentifier = structure(logical(0), 
+        tags = list(type = "string")), DBClusterEndpointResourceIdentifier = structure(logical(0), 
+        tags = list(type = "string")), Endpoint = structure(logical(0), 
+        tags = list(type = "string")), Status = structure(logical(0), 
+        tags = list(type = "string")), EndpointType = structure(logical(0), 
+        tags = list(type = "string")), CustomEndpointType = structure(logical(0), 
+        tags = list(type = "string")), StaticMembers = structure(list(structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "list")), 
+        ExcludedMembers = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list")), 
+        DBClusterEndpointArn = structure(logical(0), tags = list(type = "string"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -737,7 +790,12 @@ create_db_instance_output <- function (...)
             tags = list(type = "string"))), tags = list(locationName = "ProcessorFeature", 
             type = "structure"))), tags = list(locationNameList = "ProcessorFeature", 
             type = "list")), DeletionProtection = structure(logical(0), 
-            tags = list(type = "boolean")), ListenerEndpoint = structure(list(Address = structure(logical(0), 
+            tags = list(type = "boolean")), AssociatedRoles = structure(list(structure(list(RoleArn = structure(logical(0), 
+            tags = list(type = "string")), FeatureName = structure(logical(0), 
+            tags = list(type = "string")), Status = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(locationName = "DBInstanceRole", 
+            type = "structure"))), tags = list(locationNameList = "DBInstanceRole", 
+            type = "list")), ListenerEndpoint = structure(list(Address = structure(logical(0), 
             tags = list(type = "string")), Port = structure(logical(0), 
             tags = list(type = "integer")), HostedZoneId = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 
@@ -763,7 +821,10 @@ create_db_instance_read_replica_input <- function (...)
         tags = list(type = "string"))), tags = list(locationName = "Tag", 
         type = "structure"))), tags = list(locationNameList = "Tag", 
         type = "list")), DBSubnetGroupName = structure(logical(0), 
-        tags = list(type = "string")), StorageType = structure(logical(0), 
+        tags = list(type = "string")), VpcSecurityGroupIds = structure(list(structure(logical(0), 
+        tags = list(locationName = "VpcSecurityGroupId", type = "string"))), 
+        tags = list(locationNameList = "VpcSecurityGroupId", 
+            type = "list")), StorageType = structure(logical(0), 
         tags = list(type = "string")), CopyTagsToSnapshot = structure(logical(0), 
         tags = list(type = "boolean")), MonitoringInterval = structure(logical(0), 
         tags = list(type = "integer")), MonitoringRoleArn = structure(logical(0), 
@@ -909,7 +970,12 @@ create_db_instance_read_replica_output <- function (...)
             tags = list(type = "string"))), tags = list(locationName = "ProcessorFeature", 
             type = "structure"))), tags = list(locationNameList = "ProcessorFeature", 
             type = "list")), DeletionProtection = structure(logical(0), 
-            tags = list(type = "boolean")), ListenerEndpoint = structure(list(Address = structure(logical(0), 
+            tags = list(type = "boolean")), AssociatedRoles = structure(list(structure(list(RoleArn = structure(logical(0), 
+            tags = list(type = "string")), FeatureName = structure(logical(0), 
+            tags = list(type = "string")), Status = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(locationName = "DBInstanceRole", 
+            type = "structure"))), tags = list(locationNameList = "DBInstanceRole", 
+            type = "list")), ListenerEndpoint = structure(list(Address = structure(logical(0), 
             tags = list(type = "string")), Port = structure(logical(0), 
             tags = list(type = "integer")), HostedZoneId = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 
@@ -1025,8 +1091,9 @@ create_db_snapshot_output <- function (...)
         tags = list(type = "string")), Value = structure(logical(0), 
         tags = list(type = "string"))), tags = list(locationName = "ProcessorFeature", 
         type = "structure"))), tags = list(locationNameList = "ProcessorFeature", 
-        type = "list"))), tags = list(type = "structure", wrapper = TRUE))), 
-        tags = list(type = "structure"))
+        type = "list")), DbiResourceId = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure", 
+        wrapper = TRUE))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1103,6 +1170,43 @@ create_event_subscription_output <- function (...)
         Enabled = structure(logical(0), tags = list(type = "boolean")), 
         EventSubscriptionArn = structure(logical(0), tags = list(type = "string"))), 
         tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+create_global_cluster_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(GlobalClusterIdentifier = structure(logical(0), 
+        tags = list(type = "string")), SourceDBClusterIdentifier = structure(logical(0), 
+        tags = list(type = "string")), Engine = structure(logical(0), 
+        tags = list(type = "string")), EngineVersion = structure(logical(0), 
+        tags = list(type = "string")), DeletionProtection = structure(logical(0), 
+        tags = list(type = "boolean")), DatabaseName = structure(logical(0), 
+        tags = list(type = "string")), StorageEncrypted = structure(logical(0), 
+        tags = list(type = "boolean"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+create_global_cluster_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(GlobalCluster = structure(list(GlobalClusterIdentifier = structure(logical(0), 
+        tags = list(type = "string")), GlobalClusterResourceId = structure(logical(0), 
+        tags = list(type = "string")), GlobalClusterArn = structure(logical(0), 
+        tags = list(type = "string")), Status = structure(logical(0), 
+        tags = list(type = "string")), Engine = structure(logical(0), 
+        tags = list(type = "string")), EngineVersion = structure(logical(0), 
+        tags = list(type = "string")), DatabaseName = structure(logical(0), 
+        tags = list(type = "string")), StorageEncrypted = structure(logical(0), 
+        tags = list(type = "boolean")), DeletionProtection = structure(logical(0), 
+        tags = list(type = "boolean")), GlobalClusterMembers = structure(list(structure(list(DBClusterArn = structure(logical(0), 
+        tags = list(type = "string")), Readers = structure(list(structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "list")), 
+        IsWriter = structure(logical(0), tags = list(type = "boolean"))), 
+        tags = list(locationName = "GlobalClusterMember", type = "structure", 
+            wrapper = TRUE))), tags = list(locationNameList = "GlobalClusterMember", 
+        type = "list"))), tags = list(type = "structure", wrapper = TRUE))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1191,6 +1295,8 @@ delete_db_cluster_output <- function (...)
         EarliestRestorableTime = structure(logical(0), tags = list(type = "timestamp")), 
         Endpoint = structure(logical(0), tags = list(type = "string")), 
         ReaderEndpoint = structure(logical(0), tags = list(type = "string")), 
+        CustomEndpoints = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list")), 
         MultiAZ = structure(logical(0), tags = list(type = "boolean")), 
         Engine = structure(logical(0), tags = list(type = "string")), 
         EngineVersion = structure(logical(0), tags = list(type = "string")), 
@@ -1242,8 +1348,36 @@ delete_db_cluster_output <- function (...)
             tags = list(type = "integer")), AutoPause = structure(logical(0), 
             tags = list(type = "boolean")), SecondsUntilAutoPause = structure(logical(0), 
             tags = list(type = "integer"))), tags = list(type = "structure")), 
-        DeletionProtection = structure(logical(0), tags = list(type = "boolean"))), 
+        DeletionProtection = structure(logical(0), tags = list(type = "boolean")), 
+        HttpEndpointEnabled = structure(logical(0), tags = list(type = "boolean"))), 
         tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_db_cluster_endpoint_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(DBClusterEndpointIdentifier = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_db_cluster_endpoint_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(DBClusterEndpointIdentifier = structure(logical(0), 
+        tags = list(type = "string")), DBClusterIdentifier = structure(logical(0), 
+        tags = list(type = "string")), DBClusterEndpointResourceIdentifier = structure(logical(0), 
+        tags = list(type = "string")), Endpoint = structure(logical(0), 
+        tags = list(type = "string")), Status = structure(logical(0), 
+        tags = list(type = "string")), EndpointType = structure(logical(0), 
+        tags = list(type = "string")), CustomEndpointType = structure(logical(0), 
+        tags = list(type = "string")), StaticMembers = structure(list(structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "list")), 
+        ExcludedMembers = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list")), 
+        DBClusterEndpointArn = structure(logical(0), tags = list(type = "string"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1304,7 +1438,8 @@ delete_db_instance_input <- function (...)
     shape <- structure(list(DBInstanceIdentifier = structure(logical(0), 
         tags = list(type = "string")), SkipFinalSnapshot = structure(logical(0), 
         tags = list(type = "boolean")), FinalDBSnapshotIdentifier = structure(logical(0), 
-        tags = list(type = "string"))), tags = list(type = "structure"))
+        tags = list(type = "string")), DeleteAutomatedBackups = structure(logical(0), 
+        tags = list(type = "boolean"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1431,11 +1566,57 @@ delete_db_instance_output <- function (...)
             tags = list(type = "string"))), tags = list(locationName = "ProcessorFeature", 
             type = "structure"))), tags = list(locationNameList = "ProcessorFeature", 
             type = "list")), DeletionProtection = structure(logical(0), 
-            tags = list(type = "boolean")), ListenerEndpoint = structure(list(Address = structure(logical(0), 
+            tags = list(type = "boolean")), AssociatedRoles = structure(list(structure(list(RoleArn = structure(logical(0), 
+            tags = list(type = "string")), FeatureName = structure(logical(0), 
+            tags = list(type = "string")), Status = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(locationName = "DBInstanceRole", 
+            type = "structure"))), tags = list(locationNameList = "DBInstanceRole", 
+            type = "list")), ListenerEndpoint = structure(list(Address = structure(logical(0), 
             tags = list(type = "string")), Port = structure(logical(0), 
             tags = list(type = "integer")), HostedZoneId = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 
         tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_db_instance_automated_backup_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(DbiResourceId = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_db_instance_automated_backup_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(DBInstanceAutomatedBackup = structure(list(DBInstanceArn = structure(logical(0), 
+        tags = list(type = "string")), DbiResourceId = structure(logical(0), 
+        tags = list(type = "string")), Region = structure(logical(0), 
+        tags = list(type = "string")), DBInstanceIdentifier = structure(logical(0), 
+        tags = list(type = "string")), RestoreWindow = structure(list(EarliestTime = structure(logical(0), 
+        tags = list(type = "timestamp")), LatestTime = structure(logical(0), 
+        tags = list(type = "timestamp"))), tags = list(type = "structure")), 
+        AllocatedStorage = structure(logical(0), tags = list(type = "integer")), 
+        Status = structure(logical(0), tags = list(type = "string")), 
+        Port = structure(logical(0), tags = list(type = "integer")), 
+        AvailabilityZone = structure(logical(0), tags = list(type = "string")), 
+        VpcId = structure(logical(0), tags = list(type = "string")), 
+        InstanceCreateTime = structure(logical(0), tags = list(type = "timestamp")), 
+        MasterUsername = structure(logical(0), tags = list(type = "string")), 
+        Engine = structure(logical(0), tags = list(type = "string")), 
+        EngineVersion = structure(logical(0), tags = list(type = "string")), 
+        LicenseModel = structure(logical(0), tags = list(type = "string")), 
+        Iops = structure(logical(0), tags = list(type = "integer")), 
+        OptionGroupName = structure(logical(0), tags = list(type = "string")), 
+        TdeCredentialArn = structure(logical(0), tags = list(type = "string")), 
+        Encrypted = structure(logical(0), tags = list(type = "boolean")), 
+        StorageType = structure(logical(0), tags = list(type = "string")), 
+        KmsKeyId = structure(logical(0), tags = list(type = "string")), 
+        Timezone = structure(logical(0), tags = list(type = "string")), 
+        IAMDatabaseAuthenticationEnabled = structure(logical(0), 
+            tags = list(type = "boolean"))), tags = list(type = "structure", 
+        wrapper = TRUE))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1506,8 +1687,9 @@ delete_db_snapshot_output <- function (...)
         tags = list(type = "string")), Value = structure(logical(0), 
         tags = list(type = "string"))), tags = list(locationName = "ProcessorFeature", 
         type = "structure"))), tags = list(locationNameList = "ProcessorFeature", 
-        type = "list"))), tags = list(type = "structure", wrapper = TRUE))), 
-        tags = list(type = "structure"))
+        type = "list")), DbiResourceId = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure", 
+        wrapper = TRUE))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1550,6 +1732,37 @@ delete_event_subscription_output <- function (...)
         Enabled = structure(logical(0), tags = list(type = "boolean")), 
         EventSubscriptionArn = structure(logical(0), tags = list(type = "string"))), 
         tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_global_cluster_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(GlobalClusterIdentifier = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_global_cluster_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(GlobalCluster = structure(list(GlobalClusterIdentifier = structure(logical(0), 
+        tags = list(type = "string")), GlobalClusterResourceId = structure(logical(0), 
+        tags = list(type = "string")), GlobalClusterArn = structure(logical(0), 
+        tags = list(type = "string")), Status = structure(logical(0), 
+        tags = list(type = "string")), Engine = structure(logical(0), 
+        tags = list(type = "string")), EngineVersion = structure(logical(0), 
+        tags = list(type = "string")), DatabaseName = structure(logical(0), 
+        tags = list(type = "string")), StorageEncrypted = structure(logical(0), 
+        tags = list(type = "boolean")), DeletionProtection = structure(logical(0), 
+        tags = list(type = "boolean")), GlobalClusterMembers = structure(list(structure(list(DBClusterArn = structure(logical(0), 
+        tags = list(type = "string")), Readers = structure(list(structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "list")), 
+        IsWriter = structure(logical(0), tags = list(type = "boolean"))), 
+        tags = list(locationName = "GlobalClusterMember", type = "structure", 
+            wrapper = TRUE))), tags = list(locationNameList = "GlobalClusterMember", 
+        type = "list"))), tags = list(type = "structure", wrapper = TRUE))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1646,6 +1859,45 @@ describe_db_cluster_backtracks_output <- function (...)
             tags = list(type = "timestamp")), Status = structure(logical(0), 
             tags = list(type = "string"))), tags = list(locationName = "DBClusterBacktrack", 
             type = "structure"))), tags = list(locationNameList = "DBClusterBacktrack", 
+            type = "list"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_db_cluster_endpoints_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(DBClusterIdentifier = structure(logical(0), 
+        tags = list(type = "string")), DBClusterEndpointIdentifier = structure(logical(0), 
+        tags = list(type = "string")), Filters = structure(list(structure(list(Name = structure(logical(0), 
+        tags = list(type = "string")), Values = structure(list(structure(logical(0), 
+        tags = list(locationName = "Value", type = "string"))), 
+        tags = list(locationNameList = "Value", type = "list"))), 
+        tags = list(locationName = "Filter", type = "structure"))), 
+        tags = list(locationNameList = "Filter", type = "list")), 
+        MaxRecords = structure(logical(0), tags = list(type = "integer")), 
+        Marker = structure(logical(0), tags = list(type = "string"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_db_cluster_endpoints_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Marker = structure(logical(0), tags = list(type = "string")), 
+        DBClusterEndpoints = structure(list(structure(list(DBClusterEndpointIdentifier = structure(logical(0), 
+            tags = list(type = "string")), DBClusterIdentifier = structure(logical(0), 
+            tags = list(type = "string")), DBClusterEndpointResourceIdentifier = structure(logical(0), 
+            tags = list(type = "string")), Endpoint = structure(logical(0), 
+            tags = list(type = "string")), Status = structure(logical(0), 
+            tags = list(type = "string")), EndpointType = structure(logical(0), 
+            tags = list(type = "string")), CustomEndpointType = structure(logical(0), 
+            tags = list(type = "string")), StaticMembers = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list")), 
+            ExcludedMembers = structure(list(structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "list")), 
+            DBClusterEndpointArn = structure(logical(0), tags = list(type = "string"))), 
+            tags = list(locationName = "DBClusterEndpointList", 
+                type = "structure"))), tags = list(locationNameList = "DBClusterEndpointList", 
             type = "list"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -1830,50 +2082,52 @@ describe_db_clusters_output <- function (...)
             tags = list(type = "string")), EarliestRestorableTime = structure(logical(0), 
             tags = list(type = "timestamp")), Endpoint = structure(logical(0), 
             tags = list(type = "string")), ReaderEndpoint = structure(logical(0), 
-            tags = list(type = "string")), MultiAZ = structure(logical(0), 
-            tags = list(type = "boolean")), Engine = structure(logical(0), 
-            tags = list(type = "string")), EngineVersion = structure(logical(0), 
-            tags = list(type = "string")), LatestRestorableTime = structure(logical(0), 
-            tags = list(type = "timestamp")), Port = structure(logical(0), 
-            tags = list(type = "integer")), MasterUsername = structure(logical(0), 
-            tags = list(type = "string")), DBClusterOptionGroupMemberships = structure(list(structure(list(DBClusterOptionGroupName = structure(logical(0), 
-            tags = list(type = "string")), Status = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(locationName = "DBClusterOptionGroup", 
-            type = "structure"))), tags = list(locationNameList = "DBClusterOptionGroup", 
-            type = "list")), PreferredBackupWindow = structure(logical(0), 
-            tags = list(type = "string")), PreferredMaintenanceWindow = structure(logical(0), 
-            tags = list(type = "string")), ReplicationSourceIdentifier = structure(logical(0), 
-            tags = list(type = "string")), ReadReplicaIdentifiers = structure(list(structure(logical(0), 
-            tags = list(locationName = "ReadReplicaIdentifier", 
-                type = "string"))), tags = list(locationNameList = "ReadReplicaIdentifier", 
-            type = "list")), DBClusterMembers = structure(list(structure(list(DBInstanceIdentifier = structure(logical(0), 
-            tags = list(type = "string")), IsClusterWriter = structure(logical(0), 
-            tags = list(type = "boolean")), DBClusterParameterGroupStatus = structure(logical(0), 
-            tags = list(type = "string")), PromotionTier = structure(logical(0), 
-            tags = list(type = "integer"))), tags = list(locationName = "DBClusterMember", 
-            type = "structure", wrapper = TRUE))), tags = list(locationNameList = "DBClusterMember", 
-            type = "list")), VpcSecurityGroups = structure(list(structure(list(VpcSecurityGroupId = structure(logical(0), 
-            tags = list(type = "string")), Status = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(locationName = "VpcSecurityGroupMembership", 
-            type = "structure"))), tags = list(locationNameList = "VpcSecurityGroupMembership", 
-            type = "list")), HostedZoneId = structure(logical(0), 
-            tags = list(type = "string")), StorageEncrypted = structure(logical(0), 
-            tags = list(type = "boolean")), KmsKeyId = structure(logical(0), 
-            tags = list(type = "string")), DbClusterResourceId = structure(logical(0), 
-            tags = list(type = "string")), DBClusterArn = structure(logical(0), 
-            tags = list(type = "string")), AssociatedRoles = structure(list(structure(list(RoleArn = structure(logical(0), 
-            tags = list(type = "string")), Status = structure(logical(0), 
-            tags = list(type = "string")), FeatureName = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(locationName = "DBClusterRole", 
-            type = "structure"))), tags = list(locationNameList = "DBClusterRole", 
-            type = "list")), IAMDatabaseAuthenticationEnabled = structure(logical(0), 
-            tags = list(type = "boolean")), CloneGroupId = structure(logical(0), 
-            tags = list(type = "string")), ClusterCreateTime = structure(logical(0), 
-            tags = list(type = "timestamp")), EarliestBacktrackTime = structure(logical(0), 
-            tags = list(type = "timestamp")), BacktrackWindow = structure(logical(0), 
-            tags = list(type = "long")), BacktrackConsumedChangeRecords = structure(logical(0), 
-            tags = list(type = "long")), EnabledCloudwatchLogsExports = structure(list(structure(logical(0), 
+            tags = list(type = "string")), CustomEndpoints = structure(list(structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "list")), 
+            MultiAZ = structure(logical(0), tags = list(type = "boolean")), 
+            Engine = structure(logical(0), tags = list(type = "string")), 
+            EngineVersion = structure(logical(0), tags = list(type = "string")), 
+            LatestRestorableTime = structure(logical(0), tags = list(type = "timestamp")), 
+            Port = structure(logical(0), tags = list(type = "integer")), 
+            MasterUsername = structure(logical(0), tags = list(type = "string")), 
+            DBClusterOptionGroupMemberships = structure(list(structure(list(DBClusterOptionGroupName = structure(logical(0), 
+                tags = list(type = "string")), Status = structure(logical(0), 
+                tags = list(type = "string"))), tags = list(locationName = "DBClusterOptionGroup", 
+                type = "structure"))), tags = list(locationNameList = "DBClusterOptionGroup", 
+                type = "list")), PreferredBackupWindow = structure(logical(0), 
+                tags = list(type = "string")), PreferredMaintenanceWindow = structure(logical(0), 
+                tags = list(type = "string")), ReplicationSourceIdentifier = structure(logical(0), 
+                tags = list(type = "string")), ReadReplicaIdentifiers = structure(list(structure(logical(0), 
+                tags = list(locationName = "ReadReplicaIdentifier", 
+                  type = "string"))), tags = list(locationNameList = "ReadReplicaIdentifier", 
+                type = "list")), DBClusterMembers = structure(list(structure(list(DBInstanceIdentifier = structure(logical(0), 
+                tags = list(type = "string")), IsClusterWriter = structure(logical(0), 
+                tags = list(type = "boolean")), DBClusterParameterGroupStatus = structure(logical(0), 
+                tags = list(type = "string")), PromotionTier = structure(logical(0), 
+                tags = list(type = "integer"))), tags = list(locationName = "DBClusterMember", 
+                type = "structure", wrapper = TRUE))), tags = list(locationNameList = "DBClusterMember", 
+                type = "list")), VpcSecurityGroups = structure(list(structure(list(VpcSecurityGroupId = structure(logical(0), 
+                tags = list(type = "string")), Status = structure(logical(0), 
+                tags = list(type = "string"))), tags = list(locationName = "VpcSecurityGroupMembership", 
+                type = "structure"))), tags = list(locationNameList = "VpcSecurityGroupMembership", 
+                type = "list")), HostedZoneId = structure(logical(0), 
+                tags = list(type = "string")), StorageEncrypted = structure(logical(0), 
+                tags = list(type = "boolean")), KmsKeyId = structure(logical(0), 
+                tags = list(type = "string")), DbClusterResourceId = structure(logical(0), 
+                tags = list(type = "string")), DBClusterArn = structure(logical(0), 
+                tags = list(type = "string")), AssociatedRoles = structure(list(structure(list(RoleArn = structure(logical(0), 
+                tags = list(type = "string")), Status = structure(logical(0), 
+                tags = list(type = "string")), FeatureName = structure(logical(0), 
+                tags = list(type = "string"))), tags = list(locationName = "DBClusterRole", 
+                type = "structure"))), tags = list(locationNameList = "DBClusterRole", 
+                type = "list")), IAMDatabaseAuthenticationEnabled = structure(logical(0), 
+                tags = list(type = "boolean")), CloneGroupId = structure(logical(0), 
+                tags = list(type = "string")), ClusterCreateTime = structure(logical(0), 
+                tags = list(type = "timestamp")), EarliestBacktrackTime = structure(logical(0), 
+                tags = list(type = "timestamp")), BacktrackWindow = structure(logical(0), 
+                tags = list(type = "long")), BacktrackConsumedChangeRecords = structure(logical(0), 
+                tags = list(type = "long")), EnabledCloudwatchLogsExports = structure(list(structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "list")), 
             Capacity = structure(logical(0), tags = list(type = "integer")), 
             EngineMode = structure(logical(0), tags = list(type = "string")), 
             ScalingConfigurationInfo = structure(list(MinCapacity = structure(logical(0), 
@@ -1881,7 +2135,8 @@ describe_db_clusters_output <- function (...)
                 tags = list(type = "integer")), AutoPause = structure(logical(0), 
                 tags = list(type = "boolean")), SecondsUntilAutoPause = structure(logical(0), 
                 tags = list(type = "integer"))), tags = list(type = "structure")), 
-            DeletionProtection = structure(logical(0), tags = list(type = "boolean"))), 
+            DeletionProtection = structure(logical(0), tags = list(type = "boolean")), 
+            HttpEndpointEnabled = structure(logical(0), tags = list(type = "boolean"))), 
             tags = list(locationName = "DBCluster", type = "structure", 
                 wrapper = TRUE))), tags = list(locationNameList = "DBCluster", 
             type = "list"))), tags = list(type = "structure"))
@@ -1940,10 +2195,64 @@ describe_db_engine_versions_output <- function (...)
             SupportsLogExportsToCloudwatchLogs = structure(logical(0), 
                 tags = list(type = "boolean")), SupportsReadReplica = structure(logical(0), 
                 tags = list(type = "boolean")), SupportedEngineModes = structure(list(structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "list")), 
+            SupportedFeatureNames = structure(list(structure(logical(0), 
                 tags = list(type = "string"))), tags = list(type = "list"))), 
             tags = list(locationName = "DBEngineVersion", type = "structure"))), 
             tags = list(locationNameList = "DBEngineVersion", 
                 type = "list"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_db_instance_automated_backups_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(DbiResourceId = structure(logical(0), 
+        tags = list(type = "string")), DBInstanceIdentifier = structure(logical(0), 
+        tags = list(type = "string")), Filters = structure(list(structure(list(Name = structure(logical(0), 
+        tags = list(type = "string")), Values = structure(list(structure(logical(0), 
+        tags = list(locationName = "Value", type = "string"))), 
+        tags = list(locationNameList = "Value", type = "list"))), 
+        tags = list(locationName = "Filter", type = "structure"))), 
+        tags = list(locationNameList = "Filter", type = "list")), 
+        MaxRecords = structure(logical(0), tags = list(type = "integer")), 
+        Marker = structure(logical(0), tags = list(type = "string"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_db_instance_automated_backups_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Marker = structure(logical(0), tags = list(type = "string")), 
+        DBInstanceAutomatedBackups = structure(list(structure(list(DBInstanceArn = structure(logical(0), 
+            tags = list(type = "string")), DbiResourceId = structure(logical(0), 
+            tags = list(type = "string")), Region = structure(logical(0), 
+            tags = list(type = "string")), DBInstanceIdentifier = structure(logical(0), 
+            tags = list(type = "string")), RestoreWindow = structure(list(EarliestTime = structure(logical(0), 
+            tags = list(type = "timestamp")), LatestTime = structure(logical(0), 
+            tags = list(type = "timestamp"))), tags = list(type = "structure")), 
+            AllocatedStorage = structure(logical(0), tags = list(type = "integer")), 
+            Status = structure(logical(0), tags = list(type = "string")), 
+            Port = structure(logical(0), tags = list(type = "integer")), 
+            AvailabilityZone = structure(logical(0), tags = list(type = "string")), 
+            VpcId = structure(logical(0), tags = list(type = "string")), 
+            InstanceCreateTime = structure(logical(0), tags = list(type = "timestamp")), 
+            MasterUsername = structure(logical(0), tags = list(type = "string")), 
+            Engine = structure(logical(0), tags = list(type = "string")), 
+            EngineVersion = structure(logical(0), tags = list(type = "string")), 
+            LicenseModel = structure(logical(0), tags = list(type = "string")), 
+            Iops = structure(logical(0), tags = list(type = "integer")), 
+            OptionGroupName = structure(logical(0), tags = list(type = "string")), 
+            TdeCredentialArn = structure(logical(0), tags = list(type = "string")), 
+            Encrypted = structure(logical(0), tags = list(type = "boolean")), 
+            StorageType = structure(logical(0), tags = list(type = "string")), 
+            KmsKeyId = structure(logical(0), tags = list(type = "string")), 
+            Timezone = structure(logical(0), tags = list(type = "string")), 
+            IAMDatabaseAuthenticationEnabled = structure(logical(0), 
+                tags = list(type = "boolean"))), tags = list(locationName = "DBInstanceAutomatedBackup", 
+            type = "structure", wrapper = TRUE))), tags = list(locationNameList = "DBInstanceAutomatedBackup", 
+            type = "list"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -2087,7 +2396,12 @@ describe_db_instances_output <- function (...)
                 tags = list(type = "string"))), tags = list(locationName = "ProcessorFeature", 
                 type = "structure"))), tags = list(locationNameList = "ProcessorFeature", 
                 type = "list")), DeletionProtection = structure(logical(0), 
-                tags = list(type = "boolean")), ListenerEndpoint = structure(list(Address = structure(logical(0), 
+                tags = list(type = "boolean")), AssociatedRoles = structure(list(structure(list(RoleArn = structure(logical(0), 
+                tags = list(type = "string")), FeatureName = structure(logical(0), 
+                tags = list(type = "string")), Status = structure(logical(0), 
+                tags = list(type = "string"))), tags = list(locationName = "DBInstanceRole", 
+                type = "structure"))), tags = list(locationNameList = "DBInstanceRole", 
+                type = "list")), ListenerEndpoint = structure(list(Address = structure(logical(0), 
                 tags = list(type = "string")), Port = structure(logical(0), 
                 tags = list(type = "integer")), HostedZoneId = structure(logical(0), 
                 tags = list(type = "string"))), tags = list(type = "structure"))), 
@@ -2278,7 +2592,8 @@ describe_db_snapshots_input <- function (...)
         MaxRecords = structure(logical(0), tags = list(type = "integer")), 
         Marker = structure(logical(0), tags = list(type = "string")), 
         IncludeShared = structure(logical(0), tags = list(type = "boolean")), 
-        IncludePublic = structure(logical(0), tags = list(type = "boolean"))), 
+        IncludePublic = structure(logical(0), tags = list(type = "boolean")), 
+        DbiResourceId = structure(logical(0), tags = list(type = "string"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -2317,7 +2632,8 @@ describe_db_snapshots_output <- function (...)
             tags = list(type = "string")), Value = structure(logical(0), 
             tags = list(type = "string"))), tags = list(locationName = "ProcessorFeature", 
             type = "structure"))), tags = list(locationNameList = "ProcessorFeature", 
-            type = "list"))), tags = list(locationName = "DBSnapshot", 
+            type = "list")), DbiResourceId = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(locationName = "DBSnapshot", 
             type = "structure", wrapper = TRUE))), tags = list(locationNameList = "DBSnapshot", 
             type = "list"))), tags = list(type = "structure"))
     return(populate(args, shape))
@@ -2549,6 +2865,47 @@ describe_events_output <- function (...)
             tags = list(locationName = "Event", type = "structure"))), 
             tags = list(locationNameList = "Event", type = "list"))), 
         tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_global_clusters_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(GlobalClusterIdentifier = structure(logical(0), 
+        tags = list(type = "string")), Filters = structure(list(structure(list(Name = structure(logical(0), 
+        tags = list(type = "string")), Values = structure(list(structure(logical(0), 
+        tags = list(locationName = "Value", type = "string"))), 
+        tags = list(locationNameList = "Value", type = "list"))), 
+        tags = list(locationName = "Filter", type = "structure"))), 
+        tags = list(locationNameList = "Filter", type = "list")), 
+        MaxRecords = structure(logical(0), tags = list(type = "integer")), 
+        Marker = structure(logical(0), tags = list(type = "string"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_global_clusters_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Marker = structure(logical(0), tags = list(type = "string")), 
+        GlobalClusters = structure(list(structure(list(GlobalClusterIdentifier = structure(logical(0), 
+            tags = list(type = "string")), GlobalClusterResourceId = structure(logical(0), 
+            tags = list(type = "string")), GlobalClusterArn = structure(logical(0), 
+            tags = list(type = "string")), Status = structure(logical(0), 
+            tags = list(type = "string")), Engine = structure(logical(0), 
+            tags = list(type = "string")), EngineVersion = structure(logical(0), 
+            tags = list(type = "string")), DatabaseName = structure(logical(0), 
+            tags = list(type = "string")), StorageEncrypted = structure(logical(0), 
+            tags = list(type = "boolean")), DeletionProtection = structure(logical(0), 
+            tags = list(type = "boolean")), GlobalClusterMembers = structure(list(structure(list(DBClusterArn = structure(logical(0), 
+            tags = list(type = "string")), Readers = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list")), 
+            IsWriter = structure(logical(0), tags = list(type = "boolean"))), 
+            tags = list(locationName = "GlobalClusterMember", 
+                type = "structure", wrapper = TRUE))), tags = list(locationNameList = "GlobalClusterMember", 
+            type = "list"))), tags = list(locationName = "GlobalClusterMember", 
+            type = "structure", wrapper = TRUE))), tags = list(locationNameList = "GlobalClusterMember", 
+            type = "list"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -2979,6 +3336,8 @@ failover_db_cluster_output <- function (...)
         EarliestRestorableTime = structure(logical(0), tags = list(type = "timestamp")), 
         Endpoint = structure(logical(0), tags = list(type = "string")), 
         ReaderEndpoint = structure(logical(0), tags = list(type = "string")), 
+        CustomEndpoints = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list")), 
         MultiAZ = structure(logical(0), tags = list(type = "boolean")), 
         Engine = structure(logical(0), tags = list(type = "string")), 
         EngineVersion = structure(logical(0), tags = list(type = "string")), 
@@ -3030,7 +3389,8 @@ failover_db_cluster_output <- function (...)
             tags = list(type = "integer")), AutoPause = structure(logical(0), 
             tags = list(type = "boolean")), SecondsUntilAutoPause = structure(logical(0), 
             tags = list(type = "integer"))), tags = list(type = "structure")), 
-        DeletionProtection = structure(logical(0), tags = list(type = "boolean"))), 
+        DeletionProtection = structure(logical(0), tags = list(type = "boolean")), 
+        HttpEndpointEnabled = structure(logical(0), tags = list(type = "boolean"))), 
         tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -3111,7 +3471,8 @@ modify_db_cluster_input <- function (...)
             tags = list(type = "integer")), AutoPause = structure(logical(0), 
             tags = list(type = "boolean")), SecondsUntilAutoPause = structure(logical(0), 
             tags = list(type = "integer"))), tags = list(type = "structure")), 
-        DeletionProtection = structure(logical(0), tags = list(type = "boolean"))), 
+        DeletionProtection = structure(logical(0), tags = list(type = "boolean")), 
+        EnableHttpEndpoint = structure(logical(0), tags = list(type = "boolean"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -3134,6 +3495,8 @@ modify_db_cluster_output <- function (...)
         EarliestRestorableTime = structure(logical(0), tags = list(type = "timestamp")), 
         Endpoint = structure(logical(0), tags = list(type = "string")), 
         ReaderEndpoint = structure(logical(0), tags = list(type = "string")), 
+        CustomEndpoints = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list")), 
         MultiAZ = structure(logical(0), tags = list(type = "boolean")), 
         Engine = structure(logical(0), tags = list(type = "string")), 
         EngineVersion = structure(logical(0), tags = list(type = "string")), 
@@ -3185,8 +3548,41 @@ modify_db_cluster_output <- function (...)
             tags = list(type = "integer")), AutoPause = structure(logical(0), 
             tags = list(type = "boolean")), SecondsUntilAutoPause = structure(logical(0), 
             tags = list(type = "integer"))), tags = list(type = "structure")), 
-        DeletionProtection = structure(logical(0), tags = list(type = "boolean"))), 
+        DeletionProtection = structure(logical(0), tags = list(type = "boolean")), 
+        HttpEndpointEnabled = structure(logical(0), tags = list(type = "boolean"))), 
         tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+modify_db_cluster_endpoint_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(DBClusterEndpointIdentifier = structure(logical(0), 
+        tags = list(type = "string")), EndpointType = structure(logical(0), 
+        tags = list(type = "string")), StaticMembers = structure(list(structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "list")), 
+        ExcludedMembers = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+modify_db_cluster_endpoint_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(DBClusterEndpointIdentifier = structure(logical(0), 
+        tags = list(type = "string")), DBClusterIdentifier = structure(logical(0), 
+        tags = list(type = "string")), DBClusterEndpointResourceIdentifier = structure(logical(0), 
+        tags = list(type = "string")), Endpoint = structure(logical(0), 
+        tags = list(type = "string")), Status = structure(logical(0), 
+        tags = list(type = "string")), EndpointType = structure(logical(0), 
+        tags = list(type = "string")), CustomEndpointType = structure(logical(0), 
+        tags = list(type = "string")), StaticMembers = structure(list(structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "list")), 
+        ExcludedMembers = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list")), 
+        DBClusterEndpointArn = structure(logical(0), tags = list(type = "string"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -3431,7 +3827,12 @@ modify_db_instance_output <- function (...)
             tags = list(type = "string"))), tags = list(locationName = "ProcessorFeature", 
             type = "structure"))), tags = list(locationNameList = "ProcessorFeature", 
             type = "list")), DeletionProtection = structure(logical(0), 
-            tags = list(type = "boolean")), ListenerEndpoint = structure(list(Address = structure(logical(0), 
+            tags = list(type = "boolean")), AssociatedRoles = structure(list(structure(list(RoleArn = structure(logical(0), 
+            tags = list(type = "string")), FeatureName = structure(logical(0), 
+            tags = list(type = "string")), Status = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(locationName = "DBInstanceRole", 
+            type = "structure"))), tags = list(locationNameList = "DBInstanceRole", 
+            type = "list")), ListenerEndpoint = structure(list(Address = structure(logical(0), 
             tags = list(type = "string")), Port = structure(logical(0), 
             tags = list(type = "integer")), HostedZoneId = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 
@@ -3513,8 +3914,9 @@ modify_db_snapshot_output <- function (...)
         tags = list(type = "string")), Value = structure(logical(0), 
         tags = list(type = "string"))), tags = list(locationName = "ProcessorFeature", 
         type = "structure"))), tags = list(locationNameList = "ProcessorFeature", 
-        type = "list"))), tags = list(type = "structure", wrapper = TRUE))), 
-        tags = list(type = "structure"))
+        type = "list")), DbiResourceId = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure", 
+        wrapper = TRUE))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -3611,6 +4013,39 @@ modify_event_subscription_output <- function (...)
         Enabled = structure(logical(0), tags = list(type = "boolean")), 
         EventSubscriptionArn = structure(logical(0), tags = list(type = "string"))), 
         tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+modify_global_cluster_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(GlobalClusterIdentifier = structure(logical(0), 
+        tags = list(type = "string")), NewGlobalClusterIdentifier = structure(logical(0), 
+        tags = list(type = "string")), DeletionProtection = structure(logical(0), 
+        tags = list(type = "boolean"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+modify_global_cluster_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(GlobalCluster = structure(list(GlobalClusterIdentifier = structure(logical(0), 
+        tags = list(type = "string")), GlobalClusterResourceId = structure(logical(0), 
+        tags = list(type = "string")), GlobalClusterArn = structure(logical(0), 
+        tags = list(type = "string")), Status = structure(logical(0), 
+        tags = list(type = "string")), Engine = structure(logical(0), 
+        tags = list(type = "string")), EngineVersion = structure(logical(0), 
+        tags = list(type = "string")), DatabaseName = structure(logical(0), 
+        tags = list(type = "string")), StorageEncrypted = structure(logical(0), 
+        tags = list(type = "boolean")), DeletionProtection = structure(logical(0), 
+        tags = list(type = "boolean")), GlobalClusterMembers = structure(list(structure(list(DBClusterArn = structure(logical(0), 
+        tags = list(type = "string")), Readers = structure(list(structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "list")), 
+        IsWriter = structure(logical(0), tags = list(type = "boolean"))), 
+        tags = list(locationName = "GlobalClusterMember", type = "structure", 
+            wrapper = TRUE))), tags = list(locationNameList = "GlobalClusterMember", 
+        type = "list"))), tags = list(type = "structure", wrapper = TRUE))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -3822,7 +4257,12 @@ promote_read_replica_output <- function (...)
             tags = list(type = "string"))), tags = list(locationName = "ProcessorFeature", 
             type = "structure"))), tags = list(locationNameList = "ProcessorFeature", 
             type = "list")), DeletionProtection = structure(logical(0), 
-            tags = list(type = "boolean")), ListenerEndpoint = structure(list(Address = structure(logical(0), 
+            tags = list(type = "boolean")), AssociatedRoles = structure(list(structure(list(RoleArn = structure(logical(0), 
+            tags = list(type = "string")), FeatureName = structure(logical(0), 
+            tags = list(type = "string")), Status = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(locationName = "DBInstanceRole", 
+            type = "structure"))), tags = list(locationNameList = "DBInstanceRole", 
+            type = "list")), ListenerEndpoint = structure(list(Address = structure(logical(0), 
             tags = list(type = "string")), Port = structure(logical(0), 
             tags = list(type = "integer")), HostedZoneId = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 
@@ -3856,6 +4296,8 @@ promote_read_replica_db_cluster_output <- function (...)
         EarliestRestorableTime = structure(logical(0), tags = list(type = "timestamp")), 
         Endpoint = structure(logical(0), tags = list(type = "string")), 
         ReaderEndpoint = structure(logical(0), tags = list(type = "string")), 
+        CustomEndpoints = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list")), 
         MultiAZ = structure(logical(0), tags = list(type = "boolean")), 
         Engine = structure(logical(0), tags = list(type = "string")), 
         EngineVersion = structure(logical(0), tags = list(type = "string")), 
@@ -3907,7 +4349,8 @@ promote_read_replica_db_cluster_output <- function (...)
             tags = list(type = "integer")), AutoPause = structure(logical(0), 
             tags = list(type = "boolean")), SecondsUntilAutoPause = structure(logical(0), 
             tags = list(type = "integer"))), tags = list(type = "structure")), 
-        DeletionProtection = structure(logical(0), tags = list(type = "boolean"))), 
+        DeletionProtection = structure(logical(0), tags = list(type = "boolean")), 
+        HttpEndpointEnabled = structure(logical(0), tags = list(type = "boolean"))), 
         tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -4084,11 +4527,48 @@ reboot_db_instance_output <- function (...)
             tags = list(type = "string"))), tags = list(locationName = "ProcessorFeature", 
             type = "structure"))), tags = list(locationNameList = "ProcessorFeature", 
             type = "list")), DeletionProtection = structure(logical(0), 
-            tags = list(type = "boolean")), ListenerEndpoint = structure(list(Address = structure(logical(0), 
+            tags = list(type = "boolean")), AssociatedRoles = structure(list(structure(list(RoleArn = structure(logical(0), 
+            tags = list(type = "string")), FeatureName = structure(logical(0), 
+            tags = list(type = "string")), Status = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(locationName = "DBInstanceRole", 
+            type = "structure"))), tags = list(locationNameList = "DBInstanceRole", 
+            type = "list")), ListenerEndpoint = structure(list(Address = structure(logical(0), 
             tags = list(type = "string")), Port = structure(logical(0), 
             tags = list(type = "integer")), HostedZoneId = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 
         tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+remove_from_global_cluster_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(GlobalClusterIdentifier = structure(logical(0), 
+        tags = list(type = "string")), DbClusterIdentifier = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+remove_from_global_cluster_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(GlobalCluster = structure(list(GlobalClusterIdentifier = structure(logical(0), 
+        tags = list(type = "string")), GlobalClusterResourceId = structure(logical(0), 
+        tags = list(type = "string")), GlobalClusterArn = structure(logical(0), 
+        tags = list(type = "string")), Status = structure(logical(0), 
+        tags = list(type = "string")), Engine = structure(logical(0), 
+        tags = list(type = "string")), EngineVersion = structure(logical(0), 
+        tags = list(type = "string")), DatabaseName = structure(logical(0), 
+        tags = list(type = "string")), StorageEncrypted = structure(logical(0), 
+        tags = list(type = "boolean")), DeletionProtection = structure(logical(0), 
+        tags = list(type = "boolean")), GlobalClusterMembers = structure(list(structure(list(DBClusterArn = structure(logical(0), 
+        tags = list(type = "string")), Readers = structure(list(structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "list")), 
+        IsWriter = structure(logical(0), tags = list(type = "boolean"))), 
+        tags = list(locationName = "GlobalClusterMember", type = "structure", 
+            wrapper = TRUE))), tags = list(locationNameList = "GlobalClusterMember", 
+        type = "list"))), tags = list(type = "structure", wrapper = TRUE))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -4102,6 +4582,21 @@ remove_role_from_db_cluster_input <- function (...)
 }
 
 remove_role_from_db_cluster_output <- function () 
+{
+    return(list())
+}
+
+remove_role_from_db_instance_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(DBInstanceIdentifier = structure(logical(0), 
+        tags = list(type = "string")), RoleArn = structure(logical(0), 
+        tags = list(type = "string")), FeatureName = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+remove_role_from_db_instance_output <- function () 
 {
     return(list())
 }
@@ -4276,6 +4771,8 @@ restore_db_cluster_from_s3_output <- function (...)
         EarliestRestorableTime = structure(logical(0), tags = list(type = "timestamp")), 
         Endpoint = structure(logical(0), tags = list(type = "string")), 
         ReaderEndpoint = structure(logical(0), tags = list(type = "string")), 
+        CustomEndpoints = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list")), 
         MultiAZ = structure(logical(0), tags = list(type = "boolean")), 
         Engine = structure(logical(0), tags = list(type = "string")), 
         EngineVersion = structure(logical(0), tags = list(type = "string")), 
@@ -4327,7 +4824,8 @@ restore_db_cluster_from_s3_output <- function (...)
             tags = list(type = "integer")), AutoPause = structure(logical(0), 
             tags = list(type = "boolean")), SecondsUntilAutoPause = structure(logical(0), 
             tags = list(type = "integer"))), tags = list(type = "structure")), 
-        DeletionProtection = structure(logical(0), tags = list(type = "boolean"))), 
+        DeletionProtection = structure(logical(0), tags = list(type = "boolean")), 
+        HttpEndpointEnabled = structure(logical(0), tags = list(type = "boolean"))), 
         tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -4388,6 +4886,8 @@ restore_db_cluster_from_snapshot_output <- function (...)
         EarliestRestorableTime = structure(logical(0), tags = list(type = "timestamp")), 
         Endpoint = structure(logical(0), tags = list(type = "string")), 
         ReaderEndpoint = structure(logical(0), tags = list(type = "string")), 
+        CustomEndpoints = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list")), 
         MultiAZ = structure(logical(0), tags = list(type = "boolean")), 
         Engine = structure(logical(0), tags = list(type = "string")), 
         EngineVersion = structure(logical(0), tags = list(type = "string")), 
@@ -4439,7 +4939,8 @@ restore_db_cluster_from_snapshot_output <- function (...)
             tags = list(type = "integer")), AutoPause = structure(logical(0), 
             tags = list(type = "boolean")), SecondsUntilAutoPause = structure(logical(0), 
             tags = list(type = "integer"))), tags = list(type = "structure")), 
-        DeletionProtection = structure(logical(0), tags = list(type = "boolean"))), 
+        DeletionProtection = structure(logical(0), tags = list(type = "boolean")), 
+        HttpEndpointEnabled = structure(logical(0), tags = list(type = "boolean"))), 
         tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -4491,6 +4992,8 @@ restore_db_cluster_to_point_in_time_output <- function (...)
         EarliestRestorableTime = structure(logical(0), tags = list(type = "timestamp")), 
         Endpoint = structure(logical(0), tags = list(type = "string")), 
         ReaderEndpoint = structure(logical(0), tags = list(type = "string")), 
+        CustomEndpoints = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list")), 
         MultiAZ = structure(logical(0), tags = list(type = "boolean")), 
         Engine = structure(logical(0), tags = list(type = "string")), 
         EngineVersion = structure(logical(0), tags = list(type = "string")), 
@@ -4542,7 +5045,8 @@ restore_db_cluster_to_point_in_time_output <- function (...)
             tags = list(type = "integer")), AutoPause = structure(logical(0), 
             tags = list(type = "boolean")), SecondsUntilAutoPause = structure(logical(0), 
             tags = list(type = "integer"))), tags = list(type = "structure")), 
-        DeletionProtection = structure(logical(0), tags = list(type = "boolean"))), 
+        DeletionProtection = structure(logical(0), tags = list(type = "boolean")), 
+        HttpEndpointEnabled = structure(logical(0), tags = list(type = "boolean"))), 
         tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -4571,12 +5075,15 @@ restore_db_instance_from_db_snapshot_input <- function (...)
         type = "list")), StorageType = structure(logical(0), 
         tags = list(type = "string")), TdeCredentialArn = structure(logical(0), 
         tags = list(type = "string")), TdeCredentialPassword = structure(logical(0), 
-        tags = list(type = "string")), Domain = structure(logical(0), 
-        tags = list(type = "string")), CopyTagsToSnapshot = structure(logical(0), 
-        tags = list(type = "boolean")), DomainIAMRoleName = structure(logical(0), 
-        tags = list(type = "string")), EnableIAMDatabaseAuthentication = structure(logical(0), 
-        tags = list(type = "boolean")), EnableCloudwatchLogsExports = structure(list(structure(logical(0), 
-        tags = list(type = "string"))), tags = list(type = "list")), 
+        tags = list(type = "string")), VpcSecurityGroupIds = structure(list(structure(logical(0), 
+        tags = list(locationName = "VpcSecurityGroupId", type = "string"))), 
+        tags = list(locationNameList = "VpcSecurityGroupId", 
+            type = "list")), Domain = structure(logical(0), tags = list(type = "string")), 
+        CopyTagsToSnapshot = structure(logical(0), tags = list(type = "boolean")), 
+        DomainIAMRoleName = structure(logical(0), tags = list(type = "string")), 
+        EnableIAMDatabaseAuthentication = structure(logical(0), 
+            tags = list(type = "boolean")), EnableCloudwatchLogsExports = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list")), 
         ProcessorFeatures = structure(list(structure(list(Name = structure(logical(0), 
             tags = list(type = "string")), Value = structure(logical(0), 
             tags = list(type = "string"))), tags = list(locationName = "ProcessorFeature", 
@@ -4711,7 +5218,12 @@ restore_db_instance_from_db_snapshot_output <- function (...)
             tags = list(type = "string"))), tags = list(locationName = "ProcessorFeature", 
             type = "structure"))), tags = list(locationNameList = "ProcessorFeature", 
             type = "list")), DeletionProtection = structure(logical(0), 
-            tags = list(type = "boolean")), ListenerEndpoint = structure(list(Address = structure(logical(0), 
+            tags = list(type = "boolean")), AssociatedRoles = structure(list(structure(list(RoleArn = structure(logical(0), 
+            tags = list(type = "string")), FeatureName = structure(logical(0), 
+            tags = list(type = "string")), Status = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(locationName = "DBInstanceRole", 
+            type = "structure"))), tags = list(locationNameList = "DBInstanceRole", 
+            type = "list")), ListenerEndpoint = structure(list(Address = structure(logical(0), 
             tags = list(type = "string")), Port = structure(logical(0), 
             tags = list(type = "integer")), HostedZoneId = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 
@@ -4903,7 +5415,12 @@ restore_db_instance_from_s3_output <- function (...)
             tags = list(type = "string"))), tags = list(locationName = "ProcessorFeature", 
             type = "structure"))), tags = list(locationNameList = "ProcessorFeature", 
             type = "list")), DeletionProtection = structure(logical(0), 
-            tags = list(type = "boolean")), ListenerEndpoint = structure(list(Address = structure(logical(0), 
+            tags = list(type = "boolean")), AssociatedRoles = structure(list(structure(list(RoleArn = structure(logical(0), 
+            tags = list(type = "string")), FeatureName = structure(logical(0), 
+            tags = list(type = "string")), Status = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(locationName = "DBInstanceRole", 
+            type = "structure"))), tags = list(locationNameList = "DBInstanceRole", 
+            type = "list")), ListenerEndpoint = structure(list(Address = structure(logical(0), 
             tags = list(type = "string")), Port = structure(logical(0), 
             tags = list(type = "integer")), HostedZoneId = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 
@@ -4938,11 +5455,14 @@ restore_db_instance_to_point_in_time_input <- function (...)
         type = "list")), StorageType = structure(logical(0), 
         tags = list(type = "string")), TdeCredentialArn = structure(logical(0), 
         tags = list(type = "string")), TdeCredentialPassword = structure(logical(0), 
-        tags = list(type = "string")), Domain = structure(logical(0), 
-        tags = list(type = "string")), DomainIAMRoleName = structure(logical(0), 
-        tags = list(type = "string")), EnableIAMDatabaseAuthentication = structure(logical(0), 
-        tags = list(type = "boolean")), EnableCloudwatchLogsExports = structure(list(structure(logical(0), 
-        tags = list(type = "string"))), tags = list(type = "list")), 
+        tags = list(type = "string")), VpcSecurityGroupIds = structure(list(structure(logical(0), 
+        tags = list(locationName = "VpcSecurityGroupId", type = "string"))), 
+        tags = list(locationNameList = "VpcSecurityGroupId", 
+            type = "list")), Domain = structure(logical(0), tags = list(type = "string")), 
+        DomainIAMRoleName = structure(logical(0), tags = list(type = "string")), 
+        EnableIAMDatabaseAuthentication = structure(logical(0), 
+            tags = list(type = "boolean")), EnableCloudwatchLogsExports = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list")), 
         ProcessorFeatures = structure(list(structure(list(Name = structure(logical(0), 
             tags = list(type = "string")), Value = structure(logical(0), 
             tags = list(type = "string"))), tags = list(locationName = "ProcessorFeature", 
@@ -4950,7 +5470,8 @@ restore_db_instance_to_point_in_time_input <- function (...)
             type = "list")), UseDefaultProcessorFeatures = structure(logical(0), 
             tags = list(type = "boolean")), DBParameterGroupName = structure(logical(0), 
             tags = list(type = "string")), DeletionProtection = structure(logical(0), 
-            tags = list(type = "boolean"))), tags = list(type = "structure"))
+            tags = list(type = "boolean")), SourceDbiResourceId = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -5077,7 +5598,12 @@ restore_db_instance_to_point_in_time_output <- function (...)
             tags = list(type = "string"))), tags = list(locationName = "ProcessorFeature", 
             type = "structure"))), tags = list(locationNameList = "ProcessorFeature", 
             type = "list")), DeletionProtection = structure(logical(0), 
-            tags = list(type = "boolean")), ListenerEndpoint = structure(list(Address = structure(logical(0), 
+            tags = list(type = "boolean")), AssociatedRoles = structure(list(structure(list(RoleArn = structure(logical(0), 
+            tags = list(type = "string")), FeatureName = structure(logical(0), 
+            tags = list(type = "string")), Status = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(locationName = "DBInstanceRole", 
+            type = "structure"))), tags = list(locationNameList = "DBInstanceRole", 
+            type = "list")), ListenerEndpoint = structure(list(Address = structure(logical(0), 
             tags = list(type = "string")), Port = structure(logical(0), 
             tags = list(type = "integer")), HostedZoneId = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 
@@ -5146,6 +5672,8 @@ start_db_cluster_output <- function (...)
         EarliestRestorableTime = structure(logical(0), tags = list(type = "timestamp")), 
         Endpoint = structure(logical(0), tags = list(type = "string")), 
         ReaderEndpoint = structure(logical(0), tags = list(type = "string")), 
+        CustomEndpoints = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list")), 
         MultiAZ = structure(logical(0), tags = list(type = "boolean")), 
         Engine = structure(logical(0), tags = list(type = "string")), 
         EngineVersion = structure(logical(0), tags = list(type = "string")), 
@@ -5197,7 +5725,8 @@ start_db_cluster_output <- function (...)
             tags = list(type = "integer")), AutoPause = structure(logical(0), 
             tags = list(type = "boolean")), SecondsUntilAutoPause = structure(logical(0), 
             tags = list(type = "integer"))), tags = list(type = "structure")), 
-        DeletionProtection = structure(logical(0), tags = list(type = "boolean"))), 
+        DeletionProtection = structure(logical(0), tags = list(type = "boolean")), 
+        HttpEndpointEnabled = structure(logical(0), tags = list(type = "boolean"))), 
         tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -5333,7 +5862,12 @@ start_db_instance_output <- function (...)
             tags = list(type = "string"))), tags = list(locationName = "ProcessorFeature", 
             type = "structure"))), tags = list(locationNameList = "ProcessorFeature", 
             type = "list")), DeletionProtection = structure(logical(0), 
-            tags = list(type = "boolean")), ListenerEndpoint = structure(list(Address = structure(logical(0), 
+            tags = list(type = "boolean")), AssociatedRoles = structure(list(structure(list(RoleArn = structure(logical(0), 
+            tags = list(type = "string")), FeatureName = structure(logical(0), 
+            tags = list(type = "string")), Status = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(locationName = "DBInstanceRole", 
+            type = "structure"))), tags = list(locationNameList = "DBInstanceRole", 
+            type = "list")), ListenerEndpoint = structure(list(Address = structure(logical(0), 
             tags = list(type = "string")), Port = structure(logical(0), 
             tags = list(type = "integer")), HostedZoneId = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 
@@ -5367,6 +5901,8 @@ stop_db_cluster_output <- function (...)
         EarliestRestorableTime = structure(logical(0), tags = list(type = "timestamp")), 
         Endpoint = structure(logical(0), tags = list(type = "string")), 
         ReaderEndpoint = structure(logical(0), tags = list(type = "string")), 
+        CustomEndpoints = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list")), 
         MultiAZ = structure(logical(0), tags = list(type = "boolean")), 
         Engine = structure(logical(0), tags = list(type = "string")), 
         EngineVersion = structure(logical(0), tags = list(type = "string")), 
@@ -5418,7 +5954,8 @@ stop_db_cluster_output <- function (...)
             tags = list(type = "integer")), AutoPause = structure(logical(0), 
             tags = list(type = "boolean")), SecondsUntilAutoPause = structure(logical(0), 
             tags = list(type = "integer"))), tags = list(type = "structure")), 
-        DeletionProtection = structure(logical(0), tags = list(type = "boolean"))), 
+        DeletionProtection = structure(logical(0), tags = list(type = "boolean")), 
+        HttpEndpointEnabled = structure(logical(0), tags = list(type = "boolean"))), 
         tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -5555,7 +6092,12 @@ stop_db_instance_output <- function (...)
             tags = list(type = "string"))), tags = list(locationName = "ProcessorFeature", 
             type = "structure"))), tags = list(locationNameList = "ProcessorFeature", 
             type = "list")), DeletionProtection = structure(logical(0), 
-            tags = list(type = "boolean")), ListenerEndpoint = structure(list(Address = structure(logical(0), 
+            tags = list(type = "boolean")), AssociatedRoles = structure(list(structure(list(RoleArn = structure(logical(0), 
+            tags = list(type = "string")), FeatureName = structure(logical(0), 
+            tags = list(type = "string")), Status = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(locationName = "DBInstanceRole", 
+            type = "structure"))), tags = list(locationNameList = "DBInstanceRole", 
+            type = "list")), ListenerEndpoint = structure(list(Address = structure(logical(0), 
             tags = list(type = "string")), Port = structure(logical(0), 
             tags = list(type = "integer")), HostedZoneId = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 

@@ -4,9 +4,7 @@
 \alias{delete_listener}
 \title{Delete a listener from an accelerator}
 \usage{
-delete_listener(
-  ListenerArn = "string"
-)
+delete_listener(ListenerArn)
 }
 \arguments{
 \item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener.}
@@ -14,6 +12,10 @@ delete_listener(
 \description{
 Delete a listener from an accelerator.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_listener(
+  ListenerArn = "string"
+)
 }
+}
+

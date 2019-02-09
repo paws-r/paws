@@ -17,7 +17,7 @@ reset_snapshot_attribute(Attribute, SnapshotId, DryRun = NULL)
 Resets permission settings for the specified snapshot.
 }
 \details{
-For more information about modifying snapshot permissions, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html}{Sharing Snapshots} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information about modifying snapshot permissions, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html}{Sharing Snapshots} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{reset_snapshot_attribute(

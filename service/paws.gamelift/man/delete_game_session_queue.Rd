@@ -13,7 +13,6 @@ delete_game_session_queue(Name)
 Deletes a game session queue. This action means that any StartGameSessionPlacement requests that reference this queue will fail. To delete a queue, specify the queue name.
 }
 \details{
-Queue-related operations include:
 \itemize{
 \item CreateGameSessionQueue
 \item DescribeGameSessionQueues

@@ -10,9 +10,9 @@ update_stack(DisplayName = NULL, Description = NULL, Name,
   UserSettings = NULL, ApplicationSettings = NULL)
 }
 \arguments{
-\item{DisplayName}{The stack name for display.}
+\item{DisplayName}{The stack name to display.}
 
-\item{Description}{The description for display.}
+\item{Description}{The description to display.}
 
 \item{Name}{[required] The name of the stack.}
 
@@ -22,7 +22,7 @@ update_stack(DisplayName = NULL, Description = NULL, Name,
 
 \item{RedirectURL}{The URL that users are redirected to after their streaming session ends.}
 
-\item{FeedbackURL}{The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.}
+\item{FeedbackURL}{The URL that users are redirected to after they choose the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.}
 
 \item{AttributesToDelete}{The stack attributes to delete.}
 

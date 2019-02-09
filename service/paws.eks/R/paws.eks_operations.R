@@ -36,8 +36,8 @@ NULL
 #' @param name &#91;required&#93; The unique name to give to your cluster.
 #' @param version The desired Kubernetes version for your cluster. If you do not specify a value here, the latest version available in Amazon EKS is used.
 #' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that provides permissions for Amazon EKS to make calls to other AWS API operations on your behalf. For more information, see [Amazon EKS Service IAM Role](http://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html) in the **Amazon EKS User Guide** .
-#' @param resourcesVpcConfig &#91;required&#93; The VPC subnets and security groups used by the cluster control plane. Amazon EKS VPC resources have specific requirements to work properly with Kubernetes. For more information, see [Cluster VPC Considerations](http://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html) and [Cluster Security Group Considerations](http://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html) in the *Amazon EKS User Guide*. You must specify at least two subnets. You may specify up to 5 security groups, but we recommend that you use a dedicated security group for your cluster control plane.
-#' @param clientRequestToken Unique, case-sensitive identifier you provide to ensure the idempotency of the request.
+#' @param resourcesVpcConfig &#91;required&#93; The VPC subnets and security groups used by the cluster control plane. Amazon EKS VPC resources have specific requirements to work properly with Kubernetes. For more information, see [Cluster VPC Considerations](http://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html) and [Cluster Security Group Considerations](http://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html) in the *Amazon EKS User Guide*. You must specify at least two subnets. You may specify up to five security groups, but we recommend that you use a dedicated security group for your cluster control plane.
+#' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
 #'
 #' @examples
 #' # The following example creates an Amazon EKS cluster called prod.
@@ -145,6 +145,36 @@ describe_cluster <- function (name)
     return(response)
 }
 
+#' Returns descriptive information about an update against your Amazon EKS cluster
+#'
+#' Returns descriptive information about an update against your Amazon EKS cluster.
+#' 
+#' When the status of the update is `Succeeded`, the update is complete. If an update fails, the status is `Failed`, and an error detail explains the reason for the failure.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_update(
+#'   name = "string",
+#'   updateId = "string"
+#' )
+#' ```
+#'
+#' @param name &#91;required&#93; The name of the Amazon EKS cluster to update.
+#' @param updateId &#91;required&#93; The ID of the update to describe.
+#'
+#' @export
+describe_update <- function (name, updateId) 
+{
+    op <- new_operation(name = "DescribeUpdate", http_method = "GET", 
+        http_path = "/clusters/{name}/updates/{updateId}", paginator = list())
+    input <- describe_update_input(name = name, updateId = updateId)
+    output <- describe_update_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Lists the Amazon EKS clusters in your AWS account in the specified Region
 #'
 #' Lists the Amazon EKS clusters in your AWS account in the specified Region.
@@ -174,6 +204,70 @@ list_clusters <- function (maxResults = NULL, nextToken = NULL)
         http_path = "/clusters", paginator = list())
     input <- list_clusters_input(maxResults = maxResults, nextToken = nextToken)
     output <- list_clusters_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the updates associated with an Amazon EKS cluster in your AWS account, in the specified Region
+#'
+#' Lists the updates associated with an Amazon EKS cluster in your AWS account, in the specified Region.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' list_updates(
+#'   name = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @param name &#91;required&#93; The name of the Amazon EKS cluster for which to list updates.
+#' @param nextToken The `nextToken` value returned from a previous paginated `ListUpdates` request where `maxResults` was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the `nextToken` value.
+#' @param maxResults The maximum number of update results returned by `ListUpdates` in paginated output. When this parameter is used, `ListUpdates` only returns `maxResults` results in a single page along with a `nextToken` response element. The remaining results of the initial request can be seen by sending another `ListUpdates` request with the returned `nextToken` value. This value can be between 1 and 100. If this parameter is not used, then `ListUpdates` returns up to 100 results and a `nextToken` value if applicable.
+#'
+#' @export
+list_updates <- function (name, nextToken = NULL, maxResults = NULL) 
+{
+    op <- new_operation(name = "ListUpdates", http_method = "GET", 
+        http_path = "/clusters/{name}/updates", paginator = list())
+    input <- list_updates_input(name = name, nextToken = nextToken, 
+        maxResults = maxResults)
+    output <- list_updates_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates an Amazon EKS cluster to the specified Kubernetes version
+#'
+#' Updates an Amazon EKS cluster to the specified Kubernetes version. Your cluster continues to function during the update. The response output includes an update ID that you can use to track the status of your cluster update with the DescribeUpdate API operation.
+#' 
+#' Cluster updates are asynchronous, and they should finish within a few minutes. During an update, the cluster status moves to `UPDATING` (this status transition is eventually consistent). When the update is complete (either `Failed` or `Successful`), the cluster status moves to `Active`.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' update_cluster_version(
+#'   name = "string",
+#'   version = "string",
+#'   clientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @param name &#91;required&#93; The name of the Amazon EKS cluster to update.
+#' @param version &#91;required&#93; The desired Kubernetes version following a successful update.
+#' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @export
+update_cluster_version <- function (name, version, clientRequestToken = NULL) 
+{
+    op <- new_operation(name = "UpdateClusterVersion", http_method = "POST", 
+        http_path = "/clusters/{name}/updates", paginator = list())
+    input <- update_cluster_version_input(name = name, version = version, 
+        clientRequestToken = clientRequestToken)
+    output <- update_cluster_version_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)

@@ -4,9 +4,7 @@
 \alias{delete_dedicated_ip_pool}
 \title{Delete a dedicated IP pool}
 \usage{
-delete_dedicated_ip_pool(
-  PoolName = "string"
-)
+delete_dedicated_ip_pool(PoolName)
 }
 \arguments{
 \item{PoolName}{[required] The name of the dedicated IP pool that you want to delete.}
@@ -14,6 +12,10 @@ delete_dedicated_ip_pool(
 \description{
 Delete a dedicated IP pool.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_dedicated_ip_pool(
+  PoolName = "string"
+)
 }
+}
+

@@ -20,6 +20,26 @@ accept_certificate_transfer_output <- function ()
     return(list())
 }
 
+add_thing_to_billing_group_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(billingGroupName = structure(logical(0), 
+        tags = list(type = "string", max = 128L, min = 1L, pattern = "[a-zA-Z0-9:_-]+")), 
+        billingGroupArn = structure(logical(0), tags = list(type = "string")), 
+        thingName = structure(logical(0), tags = list(type = "string", 
+            max = 128L, min = 1L, pattern = "[a-zA-Z0-9:_-]+")), 
+        thingArn = structure(logical(0), tags = list(type = "string"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+add_thing_to_billing_group_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 add_thing_to_thing_group_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -28,7 +48,8 @@ add_thing_to_thing_group_input <- function (...)
         thingGroupArn = structure(logical(0), tags = list(type = "string")), 
         thingName = structure(logical(0), tags = list(type = "string", 
             max = 128L, min = 1L, pattern = "[a-zA-Z0-9:_-]+")), 
-        thingArn = structure(logical(0), tags = list(type = "string"))), 
+        thingArn = structure(logical(0), tags = list(type = "string")), 
+        overrideDynamicGroups = structure(logical(0), tags = list(type = "boolean"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -171,10 +192,12 @@ cancel_job_input <- function (...)
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(jobId = structure(logical(0), tags = list(location = "uri", 
         locationName = "jobId", type = "string", max = 64L, min = 1L, 
-        pattern = "[a-zA-Z0-9_-]+")), comment = structure(logical(0), 
-        tags = list(type = "string", max = 2028L, pattern = "[^\\p{C}]+")), 
-        force = structure(logical(0), tags = list(location = "querystring", 
-            locationName = "force", type = "boolean"))), tags = list(type = "structure"))
+        pattern = "[a-zA-Z0-9_-]+")), reasonCode = structure(logical(0), 
+        tags = list(type = "string", max = 128L, pattern = "[\\p{Upper}\\p{Digit}_]+")), 
+        comment = structure(logical(0), tags = list(type = "string", 
+            max = 2028L, pattern = "[^\\p{C}]+")), force = structure(logical(0), 
+            tags = list(location = "querystring", locationName = "force", 
+                type = "boolean"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -251,6 +274,33 @@ create_authorizer_output <- function (...)
     return(populate(args, shape))
 }
 
+create_billing_group_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(billingGroupName = structure(logical(0), 
+        tags = list(location = "uri", locationName = "billingGroupName", 
+            type = "string", max = 128L, min = 1L, pattern = "[a-zA-Z0-9:_-]+")), 
+        billingGroupProperties = structure(list(billingGroupDescription = structure(logical(0), 
+            tags = list(type = "string", max = 2028L, pattern = "[\\p{Graph}\\x20]*"))), 
+            tags = list(type = "structure")), tags = structure(list(structure(list(Key = structure(logical(0), 
+            tags = list(type = "string")), Value = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "list"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+create_billing_group_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(billingGroupName = structure(logical(0), 
+        tags = list(type = "string", max = 128L, min = 1L, pattern = "[a-zA-Z0-9:_-]+")), 
+        billingGroupArn = structure(logical(0), tags = list(type = "string")), 
+        billingGroupId = structure(logical(0), tags = list(type = "string", 
+            max = 128L, min = 1L, pattern = "[a-zA-Z0-9\\-]+"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 create_certificate_from_csr_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -272,6 +322,45 @@ create_certificate_from_csr_output <- function (...)
     return(populate(args, shape))
 }
 
+create_dynamic_thing_group_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(thingGroupName = structure(logical(0), 
+        tags = list(location = "uri", locationName = "thingGroupName", 
+            type = "string", max = 128L, min = 1L, pattern = "[a-zA-Z0-9:_-]+")), 
+        thingGroupProperties = structure(list(thingGroupDescription = structure(logical(0), 
+            tags = list(type = "string", max = 2028L, pattern = "[\\p{Graph}\\x20]*")), 
+            attributePayload = structure(list(attributes = structure(list(structure(logical(0), 
+                tags = list(type = "string", max = 800L, pattern = "[a-zA-Z0-9_.,@/:#-]*"))), 
+                tags = list(type = "map")), merge = structure(logical(0), 
+                tags = list(type = "boolean"))), tags = list(type = "structure"))), 
+            tags = list(type = "structure")), indexName = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "[a-zA-Z0-9:_-]+")), queryString = structure(logical(0), 
+            tags = list(type = "string", min = 1L)), queryVersion = structure(logical(0), 
+            tags = list(type = "string")), tags = structure(list(structure(list(Key = structure(logical(0), 
+            tags = list(type = "string")), Value = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "list"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+create_dynamic_thing_group_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(thingGroupName = structure(logical(0), 
+        tags = list(type = "string", max = 128L, min = 1L, pattern = "[a-zA-Z0-9:_-]+")), 
+        thingGroupArn = structure(logical(0), tags = list(type = "string")), 
+        thingGroupId = structure(logical(0), tags = list(type = "string", 
+            max = 128L, min = 1L, pattern = "[a-zA-Z0-9\\-]+")), 
+        indexName = structure(logical(0), tags = list(type = "string", 
+            max = 128L, min = 1L, pattern = "[a-zA-Z0-9:_-]+")), 
+        queryString = structure(logical(0), tags = list(type = "string", 
+            min = 1L)), queryVersion = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 create_job_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -289,10 +378,26 @@ create_job_input <- function (...)
                 max = 3600L, min = 60L))), tags = list(type = "structure")), 
         targetSelection = structure(logical(0), tags = list(type = "string", 
             enum = c("CONTINUOUS", "SNAPSHOT"))), jobExecutionsRolloutConfig = structure(list(maximumPerMinute = structure(logical(0), 
-            tags = list(type = "integer", max = 1000L, min = 1L))), 
-            tags = list(type = "structure")), timeoutConfig = structure(list(inProgressTimeoutInMinutes = structure(logical(0), 
-            tags = list(type = "long"))), tags = list(type = "structure"))), 
-        tags = list(type = "structure"))
+            tags = list(type = "integer", min = 1L)), exponentialRate = structure(list(baseRatePerMinute = structure(logical(0), 
+            tags = list(type = "integer", max = 1000L, min = 1L)), 
+            incrementFactor = structure(logical(0), tags = list(type = "double", 
+                max = 5L, min = 1L)), rateIncreaseCriteria = structure(list(numberOfNotifiedThings = structure(logical(0), 
+                tags = list(type = "integer", min = 1L)), numberOfSucceededThings = structure(logical(0), 
+                tags = list(type = "integer", min = 1L))), tags = list(type = "structure"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure")), 
+        abortConfig = structure(list(criteriaList = structure(list(structure(list(failureType = structure(logical(0), 
+            tags = list(type = "string", enum = c("FAILED", "REJECTED", 
+                "TIMED_OUT", "ALL"))), action = structure(logical(0), 
+            tags = list(type = "string", enum = "CANCEL")), thresholdPercentage = structure(logical(0), 
+            tags = list(type = "double", max = 100L)), minNumberOfExecutedThings = structure(logical(0), 
+            tags = list(type = "integer", min = 1L))), tags = list(type = "structure"))), 
+            tags = list(type = "list", min = 1L))), tags = list(type = "structure")), 
+        timeoutConfig = structure(list(inProgressTimeoutInMinutes = structure(logical(0), 
+            tags = list(type = "long"))), tags = list(type = "structure")), 
+        tags = structure(list(structure(list(Key = structure(logical(0), 
+            tags = list(type = "string")), Value = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "list"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -518,8 +623,11 @@ create_security_profile_input <- function (...)
             max = 100L)), alertTargets = structure(list(structure(list(alertTargetArn = structure(logical(0), 
             tags = list(type = "string")), roleArn = structure(logical(0), 
             tags = list(type = "string", max = 2048L, min = 20L))), 
-            tags = list(type = "structure"))), tags = list(type = "map"))), 
-        tags = list(type = "structure"))
+            tags = list(type = "structure"))), tags = list(type = "map")), 
+        tags = structure(list(structure(list(Key = structure(logical(0), 
+            tags = list(type = "string")), Value = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "list"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -577,7 +685,9 @@ create_thing_input <- function (...)
         attributePayload = structure(list(attributes = structure(list(structure(logical(0), 
             tags = list(type = "string", max = 800L, pattern = "[a-zA-Z0-9_.,@/:#-]*"))), 
             tags = list(type = "map")), merge = structure(logical(0), 
-            tags = list(type = "boolean"))), tags = list(type = "structure"))), 
+            tags = list(type = "boolean"))), tags = list(type = "structure")), 
+        billingGroupName = structure(logical(0), tags = list(type = "string", 
+            max = 128L, min = 1L, pattern = "[a-zA-Z0-9:_-]+"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -607,7 +717,10 @@ create_thing_group_input <- function (...)
                 tags = list(type = "string", max = 800L, pattern = "[a-zA-Z0-9_.,@/:#-]*"))), 
                 tags = list(type = "map")), merge = structure(logical(0), 
                 tags = list(type = "boolean"))), tags = list(type = "structure"))), 
-            tags = list(type = "structure"))), tags = list(type = "structure"))
+            tags = list(type = "structure")), tags = structure(list(structure(list(Key = structure(logical(0), 
+            tags = list(type = "string")), Value = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "list"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -633,8 +746,11 @@ create_thing_type_input <- function (...)
             tags = list(type = "string", max = 2028L, pattern = "[\\p{Graph}\\x20]*")), 
             searchableAttributes = structure(list(structure(logical(0), 
                 tags = list(type = "string", max = 128L, pattern = "[a-zA-Z0-9_.,@/:#-]+"))), 
-                tags = list(type = "list"))), tags = list(type = "structure"))), 
-        tags = list(type = "structure"))
+                tags = list(type = "list"))), tags = list(type = "structure")), 
+        tags = structure(list(structure(list(Key = structure(logical(0), 
+            tags = list(type = "string")), Value = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "list"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -727,6 +843,11 @@ create_topic_rule_input <- function (...)
                 tags = list(type = "string")), channelName = structure(logical(0), 
                 tags = list(type = "string")), roleArn = structure(logical(0), 
                 tags = list(type = "string"))), tags = list(type = "structure")), 
+            iotEvents = structure(list(inputName = structure(logical(0), 
+                tags = list(type = "string", max = 128L, min = 1L)), 
+                messageId = structure(logical(0), tags = list(type = "string", 
+                  max = 128L)), roleArn = structure(logical(0), 
+                  tags = list(type = "string"))), tags = list(type = "structure")), 
             stepFunctions = structure(list(executionNamePrefix = structure(logical(0), 
                 tags = list(type = "string")), stateMachineName = structure(logical(0), 
                 tags = list(type = "string")), roleArn = structure(logical(0), 
@@ -804,11 +925,18 @@ create_topic_rule_input <- function (...)
                 tags = list(type = "string")), channelName = structure(logical(0), 
                 tags = list(type = "string")), roleArn = structure(logical(0), 
                 tags = list(type = "string"))), tags = list(type = "structure")), 
+            iotEvents = structure(list(inputName = structure(logical(0), 
+                tags = list(type = "string", max = 128L, min = 1L)), 
+                messageId = structure(logical(0), tags = list(type = "string", 
+                  max = 128L)), roleArn = structure(logical(0), 
+                  tags = list(type = "string"))), tags = list(type = "structure")), 
             stepFunctions = structure(list(executionNamePrefix = structure(logical(0), 
                 tags = list(type = "string")), stateMachineName = structure(logical(0), 
                 tags = list(type = "string")), roleArn = structure(logical(0), 
                 tags = list(type = "string"))), tags = list(type = "structure"))), 
-            tags = list(type = "structure"))), tags = list(type = "structure"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure")), 
+        tags = structure(logical(0), tags = list(location = "header", 
+            locationName = "x-amz-tagging", type = "string"))), 
         tags = list(type = "structure", payload = "topicRulePayload"))
     return(populate(args, shape))
 }
@@ -851,6 +979,25 @@ delete_authorizer_output <- function (...)
     return(populate(args, shape))
 }
 
+delete_billing_group_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(billingGroupName = structure(logical(0), 
+        tags = list(location = "uri", locationName = "billingGroupName", 
+            type = "string", max = 128L, min = 1L, pattern = "[a-zA-Z0-9:_-]+")), 
+        expectedVersion = structure(logical(0), tags = list(location = "querystring", 
+            locationName = "expectedVersion", type = "long"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_billing_group_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 delete_ca_certificate_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -883,6 +1030,25 @@ delete_certificate_input <- function (...)
 delete_certificate_output <- function () 
 {
     return(list())
+}
+
+delete_dynamic_thing_group_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(thingGroupName = structure(logical(0), 
+        tags = list(location = "uri", locationName = "thingGroupName", 
+            type = "string", max = 128L, min = 1L, pattern = "[a-zA-Z0-9:_-]+")), 
+        expectedVersion = structure(logical(0), tags = list(location = "querystring", 
+            locationName = "expectedVersion", type = "long"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_dynamic_thing_group_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(), tags = list(type = "structure"))
+    return(populate(args, shape))
 }
 
 delete_job_input <- function (...) 
@@ -1254,6 +1420,33 @@ describe_authorizer_output <- function (...)
     return(populate(args, shape))
 }
 
+describe_billing_group_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(billingGroupName = structure(logical(0), 
+        tags = list(location = "uri", locationName = "billingGroupName", 
+            type = "string", max = 128L, min = 1L, pattern = "[a-zA-Z0-9:_-]+"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_billing_group_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(billingGroupName = structure(logical(0), 
+        tags = list(type = "string", max = 128L, min = 1L, pattern = "[a-zA-Z0-9:_-]+")), 
+        billingGroupId = structure(logical(0), tags = list(type = "string", 
+            max = 128L, min = 1L, pattern = "[a-zA-Z0-9\\-]+")), 
+        billingGroupArn = structure(logical(0), tags = list(type = "string")), 
+        version = structure(logical(0), tags = list(type = "long")), 
+        billingGroupProperties = structure(list(billingGroupDescription = structure(logical(0), 
+            tags = list(type = "string", max = 2028L, pattern = "[\\p{Graph}\\x20]*"))), 
+            tags = list(type = "structure")), billingGroupMetadata = structure(list(creationDate = structure(logical(0), 
+            tags = list(type = "timestamp"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 describe_ca_certificate_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -1437,6 +1630,8 @@ describe_job_output <- function (...)
                 tags = list(type = "string", enum = c("IN_PROGRESS", 
                   "CANCELED", "COMPLETED", "DELETION_IN_PROGRESS"))), 
             forceCanceled = structure(logical(0), tags = list(type = "boolean")), 
+            reasonCode = structure(logical(0), tags = list(type = "string", 
+                max = 128L, pattern = "[\\p{Upper}\\p{Digit}_]+")), 
             comment = structure(logical(0), tags = list(type = "string", 
                 max = 2028L, pattern = "[^\\p{C}]+")), targets = structure(list(structure(logical(0), 
                 tags = list(type = "string"))), tags = list(type = "list", 
@@ -1447,11 +1642,26 @@ describe_job_output <- function (...)
                 expiresInSec = structure(logical(0), tags = list(type = "long", 
                   max = 3600L, min = 60L))), tags = list(type = "structure")), 
             jobExecutionsRolloutConfig = structure(list(maximumPerMinute = structure(logical(0), 
-                tags = list(type = "integer", max = 1000L, min = 1L))), 
-                tags = list(type = "structure")), createdAt = structure(logical(0), 
-                tags = list(type = "timestamp")), lastUpdatedAt = structure(logical(0), 
-                tags = list(type = "timestamp")), completedAt = structure(logical(0), 
-                tags = list(type = "timestamp")), jobProcessDetails = structure(list(processingTargets = structure(list(structure(logical(0), 
+                tags = list(type = "integer", min = 1L)), exponentialRate = structure(list(baseRatePerMinute = structure(logical(0), 
+                tags = list(type = "integer", max = 1000L, min = 1L)), 
+                incrementFactor = structure(logical(0), tags = list(type = "double", 
+                  max = 5L, min = 1L)), rateIncreaseCriteria = structure(list(numberOfNotifiedThings = structure(logical(0), 
+                  tags = list(type = "integer", min = 1L)), numberOfSucceededThings = structure(logical(0), 
+                  tags = list(type = "integer", min = 1L))), 
+                  tags = list(type = "structure"))), tags = list(type = "structure"))), 
+                tags = list(type = "structure")), abortConfig = structure(list(criteriaList = structure(list(structure(list(failureType = structure(logical(0), 
+                tags = list(type = "string", enum = c("FAILED", 
+                  "REJECTED", "TIMED_OUT", "ALL"))), action = structure(logical(0), 
+                tags = list(type = "string", enum = "CANCEL")), 
+                thresholdPercentage = structure(logical(0), tags = list(type = "double", 
+                  max = 100L)), minNumberOfExecutedThings = structure(logical(0), 
+                  tags = list(type = "integer", min = 1L))), 
+                tags = list(type = "structure"))), tags = list(type = "list", 
+                min = 1L))), tags = list(type = "structure")), 
+            createdAt = structure(logical(0), tags = list(type = "timestamp")), 
+            lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), 
+            completedAt = structure(logical(0), tags = list(type = "timestamp")), 
+            jobProcessDetails = structure(list(processingTargets = structure(list(structure(logical(0), 
                 tags = list(type = "string"))), tags = list(type = "list")), 
                 numberOfCanceledThings = structure(logical(0), 
                   tags = list(type = "integer")), numberOfSucceededThings = structure(logical(0), 
@@ -1662,7 +1872,9 @@ describe_thing_output <- function (...)
         attributes = structure(list(structure(logical(0), tags = list(type = "string", 
             max = 800L, pattern = "[a-zA-Z0-9_.,@/:#-]*"))), 
             tags = list(type = "map")), version = structure(logical(0), 
-            tags = list(type = "long"))), tags = list(type = "structure"))
+            tags = list(type = "long")), billingGroupName = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "[a-zA-Z0-9:_-]+"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1698,8 +1910,14 @@ describe_thing_group_output <- function (...)
                 pattern = "[a-zA-Z0-9:_-]+")), groupArn = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 
             tags = list(type = "list")), creationDate = structure(logical(0), 
-            tags = list(type = "timestamp"))), tags = list(type = "structure"))), 
-        tags = list(type = "structure"))
+            tags = list(type = "timestamp"))), tags = list(type = "structure")), 
+        indexName = structure(logical(0), tags = list(type = "string", 
+            max = 128L, min = 1L, pattern = "[a-zA-Z0-9:_-]+")), 
+        queryString = structure(logical(0), tags = list(type = "string", 
+            min = 1L)), queryVersion = structure(logical(0), 
+            tags = list(type = "string")), status = structure(logical(0), 
+            tags = list(type = "string", enum = c("ACTIVE", "BUILDING", 
+                "REBUILDING")))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1903,10 +2121,11 @@ get_indexing_configuration_output <- function (...)
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(thingIndexingConfiguration = structure(list(thingIndexingMode = structure(logical(0), 
         tags = list(type = "string", enum = c("OFF", "REGISTRY", 
-            "REGISTRY_AND_SHADOW")))), tags = list(type = "structure")), 
-        thingGroupIndexingConfiguration = structure(list(thingGroupIndexingMode = structure(logical(0), 
-            tags = list(type = "string", enum = c("OFF", "ON")))), 
-            tags = list(type = "structure"))), tags = list(type = "structure"))
+            "REGISTRY_AND_SHADOW"))), thingConnectivityIndexingMode = structure(logical(0), 
+        tags = list(type = "string", enum = c("OFF", "STATUS")))), 
+        tags = list(type = "structure")), thingGroupIndexingConfiguration = structure(list(thingGroupIndexingMode = structure(logical(0), 
+        tags = list(type = "string", enum = c("OFF", "ON")))), 
+        tags = list(type = "structure"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -2172,6 +2391,11 @@ get_topic_rule_output <- function (...)
                 tags = list(type = "string")), channelName = structure(logical(0), 
                 tags = list(type = "string")), roleArn = structure(logical(0), 
                 tags = list(type = "string"))), tags = list(type = "structure")), 
+            iotEvents = structure(list(inputName = structure(logical(0), 
+                tags = list(type = "string", max = 128L, min = 1L)), 
+                messageId = structure(logical(0), tags = list(type = "string", 
+                  max = 128L)), roleArn = structure(logical(0), 
+                  tags = list(type = "string"))), tags = list(type = "structure")), 
             stepFunctions = structure(list(executionNamePrefix = structure(logical(0), 
                 tags = list(type = "string")), stateMachineName = structure(logical(0), 
                 tags = list(type = "string")), roleArn = structure(logical(0), 
@@ -2249,6 +2473,11 @@ get_topic_rule_output <- function (...)
                 tags = list(type = "string")), channelName = structure(logical(0), 
                 tags = list(type = "string")), roleArn = structure(logical(0), 
                 tags = list(type = "string"))), tags = list(type = "structure")), 
+            iotEvents = structure(list(inputName = structure(logical(0), 
+                tags = list(type = "string", max = 128L, min = 1L)), 
+                messageId = structure(logical(0), tags = list(type = "string", 
+                  max = 128L)), roleArn = structure(logical(0), 
+                  tags = list(type = "string"))), tags = list(type = "structure")), 
             stepFunctions = structure(list(executionNamePrefix = structure(logical(0), 
                 tags = list(type = "string")), stateMachineName = structure(logical(0), 
                 tags = list(type = "string")), roleArn = structure(logical(0), 
@@ -2499,6 +2728,32 @@ list_authorizers_output <- function (...)
         tags = list(type = "structure"))), tags = list(type = "list")), 
         nextMarker = structure(logical(0), tags = list(type = "string", 
             pattern = "[A-Za-z0-9+/]+={0,2}"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_billing_groups_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(nextToken = structure(logical(0), 
+        tags = list(location = "querystring", locationName = "nextToken", 
+            type = "string")), maxResults = structure(logical(0), 
+        tags = list(location = "querystring", locationName = "maxResults", 
+            type = "integer", max = 250L, min = 1L)), namePrefixFilter = structure(logical(0), 
+        tags = list(location = "querystring", locationName = "namePrefixFilter", 
+            type = "string", max = 128L, min = 1L, pattern = "[a-zA-Z0-9:_-]+"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_billing_groups_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(billingGroups = structure(list(structure(list(groupName = structure(logical(0), 
+        tags = list(type = "string", max = 128L, min = 1L, pattern = "[a-zA-Z0-9:_-]+")), 
+        groupArn = structure(logical(0), tags = list(type = "string"))), 
+        tags = list(type = "structure"))), tags = list(type = "list")), 
+        nextToken = structure(logical(0), tags = list(type = "string"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -3040,6 +3295,28 @@ list_streams_output <- function (...)
     return(populate(args, shape))
 }
 
+list_tags_for_resource_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(resourceArn = structure(logical(0), 
+        tags = list(location = "querystring", locationName = "resourceArn", 
+            type = "string")), nextToken = structure(logical(0), 
+        tags = list(location = "querystring", locationName = "nextToken", 
+            type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_tags_for_resource_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(tags = structure(list(structure(list(Key = structure(logical(0), 
+        tags = list(type = "string")), Value = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))), 
+        tags = list(type = "list")), nextToken = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 list_targets_for_policy_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -3283,6 +3560,29 @@ list_things_output <- function (...)
     return(populate(args, shape))
 }
 
+list_things_in_billing_group_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(billingGroupName = structure(logical(0), 
+        tags = list(location = "uri", locationName = "billingGroupName", 
+            type = "string", max = 128L, min = 1L, pattern = "[a-zA-Z0-9:_-]+")), 
+        nextToken = structure(logical(0), tags = list(location = "querystring", 
+            locationName = "nextToken", type = "string")), maxResults = structure(logical(0), 
+            tags = list(location = "querystring", locationName = "maxResults", 
+                type = "integer", max = 250L, min = 1L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_things_in_billing_group_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(things = structure(list(structure(logical(0), 
+        tags = list(type = "string", max = 128L, min = 1L, pattern = "[a-zA-Z0-9:_-]+"))), 
+        tags = list(type = "list")), nextToken = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 list_things_in_thing_group_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -3512,6 +3812,26 @@ reject_certificate_transfer_output <- function ()
     return(list())
 }
 
+remove_thing_from_billing_group_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(billingGroupName = structure(logical(0), 
+        tags = list(type = "string", max = 128L, min = 1L, pattern = "[a-zA-Z0-9:_-]+")), 
+        billingGroupArn = structure(logical(0), tags = list(type = "string")), 
+        thingName = structure(logical(0), tags = list(type = "string", 
+            max = 128L, min = 1L, pattern = "[a-zA-Z0-9:_-]+")), 
+        thingArn = structure(logical(0), tags = list(type = "string"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+remove_thing_from_billing_group_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 remove_thing_from_thing_group_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -3610,6 +3930,11 @@ replace_topic_rule_input <- function (...)
                 tags = list(type = "string")), channelName = structure(logical(0), 
                 tags = list(type = "string")), roleArn = structure(logical(0), 
                 tags = list(type = "string"))), tags = list(type = "structure")), 
+            iotEvents = structure(list(inputName = structure(logical(0), 
+                tags = list(type = "string", max = 128L, min = 1L)), 
+                messageId = structure(logical(0), tags = list(type = "string", 
+                  max = 128L)), roleArn = structure(logical(0), 
+                  tags = list(type = "string"))), tags = list(type = "structure")), 
             stepFunctions = structure(list(executionNamePrefix = structure(logical(0), 
                 tags = list(type = "string")), stateMachineName = structure(logical(0), 
                 tags = list(type = "string")), roleArn = structure(logical(0), 
@@ -3687,6 +4012,11 @@ replace_topic_rule_input <- function (...)
                 tags = list(type = "string")), channelName = structure(logical(0), 
                 tags = list(type = "string")), roleArn = structure(logical(0), 
                 tags = list(type = "string"))), tags = list(type = "structure")), 
+            iotEvents = structure(list(inputName = structure(logical(0), 
+                tags = list(type = "string", max = 128L, min = 1L)), 
+                messageId = structure(logical(0), tags = list(type = "string", 
+                  max = 128L)), roleArn = structure(logical(0), 
+                  tags = list(type = "string"))), tags = list(type = "structure")), 
             stepFunctions = structure(list(executionNamePrefix = structure(logical(0), 
                 tags = list(type = "string")), stateMachineName = structure(logical(0), 
                 tags = list(type = "string")), roleArn = structure(logical(0), 
@@ -3729,18 +4059,22 @@ search_index_output <- function (...)
         attributes = structure(list(structure(logical(0), tags = list(type = "string", 
             max = 800L, pattern = "[a-zA-Z0-9_.,@/:#-]*"))), 
             tags = list(type = "map")), shadow = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))), 
-        tags = list(type = "list")), thingGroups = structure(list(structure(list(thingGroupName = structure(logical(0), 
-        tags = list(type = "string", max = 128L, min = 1L, pattern = "[a-zA-Z0-9:_-]+")), 
-        thingGroupId = structure(logical(0), tags = list(type = "string", 
-            max = 128L, min = 1L, pattern = "[a-zA-Z0-9\\-]+")), 
-        thingGroupDescription = structure(logical(0), tags = list(type = "string", 
-            max = 2028L, pattern = "[\\p{Graph}\\x20]*")), attributes = structure(list(structure(logical(0), 
-            tags = list(type = "string", max = 800L, pattern = "[a-zA-Z0-9_.,@/:#-]*"))), 
-            tags = list(type = "map")), parentGroupNames = structure(list(structure(logical(0), 
+            tags = list(type = "string")), connectivity = structure(list(connected = structure(logical(0), 
+            tags = list(type = "boolean")), timestamp = structure(logical(0), 
+            tags = list(type = "long"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))), tags = list(type = "list")), 
+        thingGroups = structure(list(structure(list(thingGroupName = structure(logical(0), 
             tags = list(type = "string", max = 128L, min = 1L, 
-                pattern = "[a-zA-Z0-9:_-]+"))), tags = list(type = "list"))), 
-        tags = list(type = "structure"))), tags = list(type = "list"))), 
+                pattern = "[a-zA-Z0-9:_-]+")), thingGroupId = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "[a-zA-Z0-9\\-]+")), thingGroupDescription = structure(logical(0), 
+            tags = list(type = "string", max = 2028L, pattern = "[\\p{Graph}\\x20]*")), 
+            attributes = structure(list(structure(logical(0), 
+                tags = list(type = "string", max = 800L, pattern = "[a-zA-Z0-9_.,@/:#-]*"))), 
+                tags = list(type = "map")), parentGroupNames = structure(list(structure(logical(0), 
+                tags = list(type = "string", max = 128L, min = 1L, 
+                  pattern = "[a-zA-Z0-9:_-]+"))), tags = list(type = "list"))), 
+            tags = list(type = "structure"))), tags = list(type = "list"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -3885,6 +4219,24 @@ stop_thing_registration_task_output <- function (...)
     return(populate(args, shape))
 }
 
+tag_resource_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(resourceArn = structure(logical(0), 
+        tags = list(type = "string")), tags = structure(list(structure(list(Key = structure(logical(0), 
+        tags = list(type = "string")), Value = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))), 
+        tags = list(type = "list"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+tag_resource_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 test_authorization_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -3982,6 +4334,23 @@ transfer_certificate_output <- function (...)
     return(populate(args, shape))
 }
 
+untag_resource_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(resourceArn = structure(logical(0), 
+        tags = list(type = "string")), tagKeys = structure(list(structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "list"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+untag_resource_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 update_account_audit_configuration_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -4030,6 +4399,27 @@ update_authorizer_output <- function (...)
     return(populate(args, shape))
 }
 
+update_billing_group_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(billingGroupName = structure(logical(0), 
+        tags = list(location = "uri", locationName = "billingGroupName", 
+            type = "string", max = 128L, min = 1L, pattern = "[a-zA-Z0-9:_-]+")), 
+        billingGroupProperties = structure(list(billingGroupDescription = structure(logical(0), 
+            tags = list(type = "string", max = 2028L, pattern = "[\\p{Graph}\\x20]*"))), 
+            tags = list(type = "structure")), expectedVersion = structure(logical(0), 
+            tags = list(type = "long"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+update_billing_group_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(version = structure(logical(0), tags = list(type = "long"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 update_ca_certificate_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -4072,6 +4462,35 @@ update_certificate_output <- function ()
     return(list())
 }
 
+update_dynamic_thing_group_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(thingGroupName = structure(logical(0), 
+        tags = list(location = "uri", locationName = "thingGroupName", 
+            type = "string", max = 128L, min = 1L, pattern = "[a-zA-Z0-9:_-]+")), 
+        thingGroupProperties = structure(list(thingGroupDescription = structure(logical(0), 
+            tags = list(type = "string", max = 2028L, pattern = "[\\p{Graph}\\x20]*")), 
+            attributePayload = structure(list(attributes = structure(list(structure(logical(0), 
+                tags = list(type = "string", max = 800L, pattern = "[a-zA-Z0-9_.,@/:#-]*"))), 
+                tags = list(type = "map")), merge = structure(logical(0), 
+                tags = list(type = "boolean"))), tags = list(type = "structure"))), 
+            tags = list(type = "structure")), expectedVersion = structure(logical(0), 
+            tags = list(type = "long")), indexName = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "[a-zA-Z0-9:_-]+")), queryString = structure(logical(0), 
+            tags = list(type = "string", min = 1L)), queryVersion = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+update_dynamic_thing_group_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(version = structure(logical(0), tags = list(type = "long"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 update_event_configurations_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -4093,10 +4512,11 @@ update_indexing_configuration_input <- function (...)
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(thingIndexingConfiguration = structure(list(thingIndexingMode = structure(logical(0), 
         tags = list(type = "string", enum = c("OFF", "REGISTRY", 
-            "REGISTRY_AND_SHADOW")))), tags = list(type = "structure")), 
-        thingGroupIndexingConfiguration = structure(list(thingGroupIndexingMode = structure(logical(0), 
-            tags = list(type = "string", enum = c("OFF", "ON")))), 
-            tags = list(type = "structure"))), tags = list(type = "structure"))
+            "REGISTRY_AND_SHADOW"))), thingConnectivityIndexingMode = structure(logical(0), 
+        tags = list(type = "string", enum = c("OFF", "STATUS")))), 
+        tags = list(type = "structure")), thingGroupIndexingConfiguration = structure(list(thingGroupIndexingMode = structure(logical(0), 
+        tags = list(type = "string", enum = c("OFF", "ON")))), 
+        tags = list(type = "structure"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -4105,6 +4525,43 @@ update_indexing_configuration_output <- function (...)
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(), tags = list(type = "structure"))
     return(populate(args, shape))
+}
+
+update_job_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(jobId = structure(logical(0), tags = list(location = "uri", 
+        locationName = "jobId", type = "string", max = 64L, min = 1L, 
+        pattern = "[a-zA-Z0-9_-]+")), description = structure(logical(0), 
+        tags = list(type = "string", max = 2028L, pattern = "[^\\p{C}]+")), 
+        presignedUrlConfig = structure(list(roleArn = structure(logical(0), 
+            tags = list(type = "string", max = 2048L, min = 20L)), 
+            expiresInSec = structure(logical(0), tags = list(type = "long", 
+                max = 3600L, min = 60L))), tags = list(type = "structure")), 
+        jobExecutionsRolloutConfig = structure(list(maximumPerMinute = structure(logical(0), 
+            tags = list(type = "integer", min = 1L)), exponentialRate = structure(list(baseRatePerMinute = structure(logical(0), 
+            tags = list(type = "integer", max = 1000L, min = 1L)), 
+            incrementFactor = structure(logical(0), tags = list(type = "double", 
+                max = 5L, min = 1L)), rateIncreaseCriteria = structure(list(numberOfNotifiedThings = structure(logical(0), 
+                tags = list(type = "integer", min = 1L)), numberOfSucceededThings = structure(logical(0), 
+                tags = list(type = "integer", min = 1L))), tags = list(type = "structure"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure")), 
+        abortConfig = structure(list(criteriaList = structure(list(structure(list(failureType = structure(logical(0), 
+            tags = list(type = "string", enum = c("FAILED", "REJECTED", 
+                "TIMED_OUT", "ALL"))), action = structure(logical(0), 
+            tags = list(type = "string", enum = "CANCEL")), thresholdPercentage = structure(logical(0), 
+            tags = list(type = "double", max = 100L)), minNumberOfExecutedThings = structure(logical(0), 
+            tags = list(type = "integer", min = 1L))), tags = list(type = "structure"))), 
+            tags = list(type = "list", min = 1L))), tags = list(type = "structure")), 
+        timeoutConfig = structure(list(inProgressTimeoutInMinutes = structure(logical(0), 
+            tags = list(type = "long"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+update_job_output <- function () 
+{
+    return(list())
 }
 
 update_role_alias_input <- function (...) 
@@ -4316,7 +4773,8 @@ update_thing_groups_for_thing_input <- function (...)
                 pattern = "[a-zA-Z0-9:_-]+"))), tags = list(type = "list")), 
         thingGroupsToRemove = structure(list(structure(logical(0), 
             tags = list(type = "string", max = 128L, min = 1L, 
-                pattern = "[a-zA-Z0-9:_-]+"))), tags = list(type = "list"))), 
+                pattern = "[a-zA-Z0-9:_-]+"))), tags = list(type = "list")), 
+        overrideDynamicGroups = structure(logical(0), tags = list(type = "boolean"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }

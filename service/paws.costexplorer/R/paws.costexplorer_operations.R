@@ -5,7 +5,7 @@ NULL
 
 #' Retrieves cost and usage metrics for your account
 #'
-#' Retrieves cost and usage metrics for your account. You can specify which cost and usage-related metric, such as `BlendedCosts` or `UsageQuantity`, that you want the request to return. You can also filter and group your data by various dimensions, such as `SERVICE` or `AZ`, in a specific time range. For a complete list of valid dimensions, see the ` GetDimensionValues GetDimensionValues ` operation. Master accounts in an organization in AWS Organizations have access to all member accounts.
+#' Retrieves cost and usage metrics for your account. You can specify which cost and usage-related metric, such as `BlendedCosts` or `UsageQuantity`, that you want the request to return. You can also filter and group your data by various dimensions, such as `SERVICE` or `AZ`, in a specific time range. For a complete list of valid dimensions, see the [GetDimensionValues](http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetDimensionValues.html) operation. Master accounts in an organization in AWS Organizations have access to all member accounts.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -14,7 +14,7 @@ NULL
 #'     Start = "string",
 #'     End = "string"
 #'   ),
-#'   Granularity = "DAILY"|"MONTHLY",
+#'   Granularity = "DAILY"|"MONTHLY"|"HOURLY",
 #'   Filter = list(
 #'     Or = list(
 #'       list()
@@ -24,7 +24,7 @@ NULL
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID",
 #'       Values = list(
 #'         "string"
 #'       )
@@ -51,12 +51,14 @@ NULL
 #'
 #' @param TimePeriod Sets the start and end dates for retrieving AWS costs. The start date is inclusive, but the end date is exclusive. For example, if `start` is `2017-01-01` and `end` is `2017-05-01`, then the cost and usage data is retrieved from `2017-01-01` up to and including `2017-04-30` but not including `2017-05-01`.
 #' @param Granularity Sets the AWS cost granularity to `MONTHLY` or `DAILY`. If `Granularity` isn\'t set, the response object doesn\'t include the `Granularity`, either `MONTHLY` or `DAILY`.
+#' 
+#' The `GetCostAndUsageRequest` operation supports only `DAILY` and `MONTHLY` granularities.
 #' @param Filter Filters AWS costs by different dimensions. For example, you can specify `SERVICE` and `LINKED_ACCOUNT` and get the costs that are associated with that account\'s usage of that service. You can nest `Expression` objects to define any combination of dimension filters. For more information, see [Expression](http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html).
 #' @param Metrics Which metrics are returned in the query. For more information about blended and unblended rates, see [Why does the \"blended\" annotation appear on some line items in my bill?](https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/).
 #' 
-#' Valid values are `AmortizedCost`, `BlendedCost`, `UnblendedCost`, and `UsageQuantity`.
+#' Valid values are `AmortizedCost`, `BlendedCost`, `NetAmortizedCost`, `NetUnblendedCost`, `NormalizedUsageAmount`, `UnblendedCost`, and `UsageQuantity`.
 #' 
-#' If you return the `UsageQuantity` metric, the service aggregates all usage numbers without taking into account the units. For example, if you aggregate `usageQuantity` across all of EC2, the results aren\'t meaningful because EC2 compute hours and data transfer are measured in different units (for example, hours vs. GB). To get more meaningful `UsageQuantity` metrics, filter by `UsageType` or `UsageTypeGroups`.
+#' If you return the `UsageQuantity` metric, the service aggregates all usage numbers without taking into account the units. For example, if you aggregate `usageQuantity` across all of Amazon EC2, the results aren\'t meaningful because Amazon EC2 compute hours and data transfer are measured in different units (for example, hours vs. GB). To get more meaningful `UsageQuantity` metrics, filter by `UsageType` or `UsageTypeGroups`.
 #' 
 #' `Metrics` is required for `GetCostAndUsage` requests.
 #' @param GroupBy You can group AWS costs using up to two different groups, either dimensions, tag keys, or both.
@@ -82,6 +84,80 @@ get_cost_and_usage <- function (TimePeriod = NULL, Granularity = NULL,
     return(response)
 }
 
+#' Retrieves a forecast for how much Amazon Web Services predicts that you will spend over the forecast time period that you select, based on your past costs
+#'
+#' Retrieves a forecast for how much Amazon Web Services predicts that you will spend over the forecast time period that you select, based on your past costs.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' get_cost_forecast(
+#'   TimePeriod = list(
+#'     Start = "string",
+#'     End = "string"
+#'   ),
+#'   Metric = "BLENDED_COST"|"UNBLENDED_COST"|"AMORTIZED_COST"|"NET_UNBLENDED_COST"|"NET_AMORTIZED_COST"|"USAGE_QUANTITY"|"NORMALIZED_USAGE_AMOUNT",
+#'   Granularity = "DAILY"|"MONTHLY"|"HOURLY",
+#'   Filter = list(
+#'     Or = list(
+#'       list()
+#'     ),
+#'     And = list(
+#'       list()
+#'     ),
+#'     Not = list(),
+#'     Dimensions = list(
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     ),
+#'     Tags = list(
+#'       Key = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   PredictionIntervalLevel = 123
+#' )
+#' ```
+#'
+#' @param TimePeriod &#91;required&#93; The period of time that you want the forecast to cover.
+#' @param Metric &#91;required&#93; Which metric Cost Explorer uses to create your forecast. For more information about blended and unblended rates, see [Why does the \"blended\" annotation appear on some line items in my bill?](https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/).
+#' 
+#' Valid values for a `GetCostForecast` call are the following:
+#' 
+#' -   AmortizedCost
+#' 
+#' -   BlendedCost
+#' 
+#' -   NetAmortizedCost
+#' 
+#' -   NetUnblendedCost
+#' 
+#' -   UnblendedCost
+#' @param Granularity &#91;required&#93; How granular you want the forecast to be. You can get 3 months of `DAILY` forecasts or 12 months of `MONTHLY` forecasts.
+#' 
+#' The `GetCostForecast` operation supports only `DAILY` and `MONTHLY` granularities.
+#' @param Filter The filters that you want to use to filter your forecast. Cost Explorer API supports all of the Cost Explorer filters.
+#' @param PredictionIntervalLevel Cost Explorer always returns the mean forecast as a single point. You can request a prediction interval around the mean by specifying a confidence level. The higher the confidence level, the more confident Cost Explorer is about the actual value falling in the prediction interval. Higher confidence levels result in wider prediction intervals.
+#'
+#' @export
+get_cost_forecast <- function (TimePeriod, Metric, Granularity, 
+    Filter = NULL, PredictionIntervalLevel = NULL) 
+{
+    op <- new_operation(name = "GetCostForecast", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_cost_forecast_input(TimePeriod = TimePeriod, 
+        Metric = Metric, Granularity = Granularity, Filter = Filter, 
+        PredictionIntervalLevel = PredictionIntervalLevel)
+    output <- get_cost_forecast_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Retrieves all available filter values for a specified filter over a period of time
 #'
 #' Retrieves all available filter values for a specified filter over a period of time. You can search the dimension values for an arbitrary string.
@@ -94,7 +170,7 @@ get_cost_and_usage <- function (TimePeriod = NULL, Granularity = NULL,
 #'     Start = "string",
 #'     End = "string"
 #'   ),
-#'   Dimension = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY",
+#'   Dimension = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID",
 #'   Context = "COST_AND_USAGE"|"RESERVATIONS",
 #'   NextPageToken = "string"
 #' )
@@ -102,8 +178,8 @@ get_cost_and_usage <- function (TimePeriod = NULL, Granularity = NULL,
 #'
 #' @param SearchString The value that you want to search the filter values for.
 #' @param TimePeriod &#91;required&#93; The start and end dates for retrieving the dimension values. The start date is inclusive, but the end date is exclusive. For example, if `start` is `2017-01-01` and `end` is `2017-05-01`, then the cost and usage data is retrieved from `2017-01-01` up to and including `2017-04-30` but not including `2017-05-01`.
-#' @param Dimension &#91;required&#93; The name of the dimension. Each `Dimension` is available for different a `Context`. For more information, see `Context`.
-#' @param Context The context for the call to `GetDimensionValues`. This can be `RESERVATIONS` or `COST_AND_USAGE`. The default value is `COST_AND_USAGE`. If the context is set to `RESERVATIONS`, the resulting dimension values can be used in the `GetReservationUtilization` operation. If the context is set to `COST_AND_USAGE` the resulting dimension values can be used in the `GetCostAndUsage` operation.
+#' @param Dimension &#91;required&#93; The name of the dimension. Each `Dimension` is available for a different `Context`. For more information, see `Context`.
+#' @param Context The context for the call to `GetDimensionValues`. This can be `RESERVATIONS` or `COST_AND_USAGE`. The default value is `COST_AND_USAGE`. If the context is set to `RESERVATIONS`, the resulting dimension values can be used in the `GetReservationUtilization` operation. If the context is set to `COST_AND_USAGE`, the resulting dimension values can be used in the `GetCostAndUsage` operation.
 #' 
 #' If you set the context to `COST_AND_USAGE`, you can use the following dimensions for searching:
 #' 
@@ -111,7 +187,7 @@ get_cost_and_usage <- function (TimePeriod = NULL, Granularity = NULL,
 #' 
 #' -   DATABASE\_ENGINE - The Amazon Relational Database Service database. Examples are Aurora or MySQL.
 #' 
-#' -   INSTANCE\_TYPE - The type of EC2 instance. An example is `m4.xlarge`.
+#' -   INSTANCE\_TYPE - The type of Amazon EC2 instance. An example is `m4.xlarge`.
 #' 
 #' -   LEGAL\_ENTITY\_NAME - The name of the organization that sells you AWS services, such as Amazon Web Services.
 #' 
@@ -121,7 +197,7 @@ get_cost_and_usage <- function (TimePeriod = NULL, Granularity = NULL,
 #' 
 #' -   OPERATION - The action performed. Examples include `RunInstance` and `CreateBucket`.
 #' 
-#' -   PLATFORM - The EC2 operating system. Examples are Windows or Linux.
+#' -   PLATFORM - The Amazon EC2 operating system. Examples are Windows or Linux.
 #' 
 #' -   PURCHASE\_TYPE - The reservation type of the purchase to which this usage is related. Examples include On-Demand Instances and Standard Reserved Instances.
 #' 
@@ -129,7 +205,7 @@ get_cost_and_usage <- function (TimePeriod = NULL, Granularity = NULL,
 #' 
 #' -   USAGE\_TYPE - The type of usage. An example is DataTransfer-In-Bytes. The response for the `GetDimensionValues` operation includes a unit attribute. Examples include GB and Hrs.
 #' 
-#' -   USAGE\_TYPE\_GROUP - The grouping of common usage types. An example is EC2: CloudWatch -- Alarms. The response for this operation includes a unit attribute.
+#' -   USAGE\_TYPE\_GROUP - The grouping of common usage types. An example is Amazon EC2: CloudWatch -- Alarms. The response for this operation includes a unit attribute.
 #' 
 #' -   RECORD\_TYPE - The different types of charges such as RI fees, usage costs, tax refunds, and credits.
 #' 
@@ -141,11 +217,11 @@ get_cost_and_usage <- function (TimePeriod = NULL, Granularity = NULL,
 #' 
 #' -   DEPLOYMENT\_OPTION - The scope of Amazon Relational Database Service deployments. Valid values are `SingleAZ` and `MultiAZ`.
 #' 
-#' -   INSTANCE\_TYPE - The type of EC2 instance. An example is `m4.xlarge`.
+#' -   INSTANCE\_TYPE - The type of Amazon EC2 instance. An example is `m4.xlarge`.
 #' 
 #' -   LINKED\_ACCOUNT - The description in the attribute map that includes the full name of the member account. The value field contains the AWS ID of the member account.
 #' 
-#' -   PLATFORM - The EC2 operating system. Examples are Windows or Linux.
+#' -   PLATFORM - The Amazon EC2 operating system. Examples are Windows or Linux.
 #' 
 #' -   REGION - The AWS Region.
 #' 
@@ -174,7 +250,7 @@ get_dimension_values <- function (SearchString = NULL, TimePeriod,
 
 #' Retrieves the reservation coverage for your account
 #'
-#' Retrieves the reservation coverage for your account. This allows you to see how much of your Amazon Elastic Compute Cloud, Amazon ElastiCache, Amazon Relational Database Service, or Amazon Redshift usage is covered by a reservation. An organization\'s master account can see the coverage of the associated member accounts. For any time period, you can filter data about reservation usage by the following dimensions:
+#' Retrieves the reservation coverage for your account. This enables you to see how much of your Amazon Elastic Compute Cloud, Amazon ElastiCache, Amazon Relational Database Service, or Amazon Redshift usage is covered by a reservation. An organization\'s master account can see the coverage of the associated member accounts. For any time period, you can filter data about reservation usage by the following dimensions:
 #' 
 #' -   AZ
 #' 
@@ -215,7 +291,7 @@ get_dimension_values <- function (SearchString = NULL, TimePeriod,
 #'       Key = "string"
 #'     )
 #'   ),
-#'   Granularity = "DAILY"|"MONTHLY",
+#'   Granularity = "DAILY"|"MONTHLY"|"HOURLY",
 #'   Filter = list(
 #'     Or = list(
 #'       list()
@@ -225,7 +301,7 @@ get_dimension_values <- function (SearchString = NULL, TimePeriod,
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID",
 #'       Values = list(
 #'         "string"
 #'       )
@@ -237,11 +313,14 @@ get_dimension_values <- function (SearchString = NULL, TimePeriod,
 #'       )
 #'     )
 #'   ),
+#'   Metrics = list(
+#'     "string"
+#'   ),
 #'   NextPageToken = "string"
 #' )
 #' ```
 #'
-#' @param TimePeriod &#91;required&#93; The start and end dates of the period for which you want to retrieve data about reservation coverage. You can retrieve data for a maximum of 13 months: the last 12 months and the current month. The start date is inclusive, but the end date is exclusive. For example, if `start` is `2017-01-01` and `end` is `2017-05-01`, then the cost and usage data is retrieved from `2017-01-01` up to and including `2017-04-30` but not including `2017-05-01`.
+#' @param TimePeriod &#91;required&#93; The start and end dates of the period that you want to retrieve data about reservation coverage for. You can retrieve data for a maximum of 13 months: the last 12 months and the current month. The start date is inclusive, but the end date is exclusive. For example, if `start` is `2017-01-01` and `end` is `2017-05-01`, then the cost and usage data is retrieved from `2017-01-01` up to and including `2017-04-30` but not including `2017-05-01`.
 #' @param GroupBy You can group the data by the following attributes:
 #' 
 #' -   AZ
@@ -262,12 +341,12 @@ get_dimension_values <- function (SearchString = NULL, TimePeriod,
 #' 
 #' -   REGION
 #' 
-#' -   TAG
-#' 
 #' -   TENANCY
 #' @param Granularity The granularity of the AWS cost data for the reservation. Valid values are `MONTHLY` and `DAILY`.
 #' 
 #' If `GroupBy` is set, `Granularity` can\'t be set. If `Granularity` isn\'t set, the response object doesn\'t include `Granularity`, either `MONTHLY` or `DAILY`.
+#' 
+#' The `GetReservationCoverage` operation supports only `DAILY` and `MONTHLY` granularities.
 #' @param Filter Filters utilization data by dimensions. You can filter by the following dimensions:
 #' 
 #' -   AZ
@@ -294,20 +373,21 @@ get_dimension_values <- function (SearchString = NULL, TimePeriod,
 #' 
 #' -   TENANCY
 #' 
-#' `GetReservationCoverage` uses the same ` Expression Expression ` object as the other operations, but only `AND` is supported among each dimension. You can nest only one level deep. If there are multiple values for a dimension, they are OR\'d together.
+#' `GetReservationCoverage` uses the same [Expression](http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html) object as the other operations, but only `AND` is supported among each dimension. You can nest only one level deep. If there are multiple values for a dimension, they are OR\'d together.
 #' 
 #' If you don\'t provide a `SERVICE` filter, Cost Explorer defaults to EC2.
+#' @param Metrics 
 #' @param NextPageToken The token to retrieve the next set of results. AWS provides the token when the response from a previous call has more results than the maximum page size.
 #'
 #' @export
 get_reservation_coverage <- function (TimePeriod, GroupBy = NULL, 
-    Granularity = NULL, Filter = NULL, NextPageToken = NULL) 
+    Granularity = NULL, Filter = NULL, Metrics = NULL, NextPageToken = NULL) 
 {
     op <- new_operation(name = "GetReservationCoverage", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- get_reservation_coverage_input(TimePeriod = TimePeriod, 
         GroupBy = GroupBy, Granularity = Granularity, Filter = Filter, 
-        NextPageToken = NextPageToken)
+        Metrics = Metrics, NextPageToken = NextPageToken)
     output <- get_reservation_coverage_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -321,7 +401,7 @@ get_reservation_coverage <- function (TimePeriod, GroupBy = NULL,
 #' 
 #' AWS generates your recommendations by identifying your On-Demand usage during a specific time period and collecting your usage into categories that are eligible for a reservation. After AWS has these categories, it simulates every combination of reservations in each category of usage to identify the best number of each type of RI to purchase to maximize your estimated savings.
 #' 
-#' For example, AWS automatically aggregates your EC2 Linux, shared tenancy, and c4 family usage in the US West (Oregon) Region and recommends that you buy size-flexible regional reservations to apply to the c4 family usage. AWS recommends the smallest size instance in an instance family. This makes it easier to purchase a size-flexible RI. AWS also shows the equal number of normalized units so that you can purchase any instance size that you want. For this example, your RI recommendation would be for `c4.large`, because that is the smallest size instance in the c4 instance family.
+#' For example, AWS automatically aggregates your Amazon EC2 Linux, shared tenancy, and c4 family usage in the US West (Oregon) Region and recommends that you buy size-flexible regional reservations to apply to the c4 family usage. AWS recommends the smallest size instance in an instance family. This makes it easier to purchase a size-flexible RI. AWS also shows the equal number of normalized units so that you can purchase any instance size that you want. For this example, your RI recommendation would be for `c4.large` because that is the smallest size instance in the c4 instance family.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -350,7 +430,7 @@ get_reservation_coverage <- function (TimePeriod, GroupBy = NULL,
 #' @param LookbackPeriodInDays The number of previous days that you want AWS to consider when it calculates your recommendations.
 #' @param TermInYears The reservation term that you want recommendations for.
 #' @param PaymentOption The reservation purchase option that you want recommendations for.
-#' @param ServiceSpecification The hardware specifications for the service instances that you want recommendations for, such as standard or convertible EC2 instances.
+#' @param ServiceSpecification The hardware specifications for the service instances that you want recommendations for, such as standard or convertible Amazon EC2 instances.
 #' @param PageSize The number of recommendations that you want returned in a single response object.
 #' @param NextPageToken The pagination token that indicates the next set of results that you want to retrieve.
 #'
@@ -391,7 +471,7 @@ get_reservation_purchase_recommendation <- function (AccountId = NULL,
 #'       Key = "string"
 #'     )
 #'   ),
-#'   Granularity = "DAILY"|"MONTHLY",
+#'   Granularity = "DAILY"|"MONTHLY"|"HOURLY",
 #'   Filter = list(
 #'     Or = list(
 #'       list()
@@ -401,7 +481,7 @@ get_reservation_purchase_recommendation <- function (AccountId = NULL,
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID",
 #'       Values = list(
 #'         "string"
 #'       )
@@ -417,9 +497,11 @@ get_reservation_purchase_recommendation <- function (AccountId = NULL,
 #' )
 #' ```
 #'
-#' @param TimePeriod &#91;required&#93; Sets the start and end dates for retrieving Reserved Instance (RI) utilization. The start date is inclusive, but the end date is exclusive. For example, if `start` is `2017-01-01` and `end` is `2017-05-01`, then the cost and usage data is retrieved from `2017-01-01` up to and including `2017-04-30` but not including `2017-05-01`.
+#' @param TimePeriod &#91;required&#93; Sets the start and end dates for retrieving RI utilization. The start date is inclusive, but the end date is exclusive. For example, if `start` is `2017-01-01` and `end` is `2017-05-01`, then the cost and usage data is retrieved from `2017-01-01` up to and including `2017-04-30` but not including `2017-05-01`.
 #' @param GroupBy Groups only by `SUBSCRIPTION_ID`. Metadata is included.
 #' @param Granularity If `GroupBy` is set, `Granularity` can\'t be set. If `Granularity` isn\'t set, the response object doesn\'t include `Granularity`, either `MONTHLY` or `DAILY`. If both `GroupBy` and `Granularity` aren\'t set, `GetReservationUtilization` defaults to `DAILY`.
+#' 
+#' The `GetReservationUtilization` operation supports only `DAILY` and `MONTHLY` granularities.
 #' @param Filter Filters utilization data by dimensions. You can filter by the following dimensions:
 #' 
 #' -   AZ
@@ -446,7 +528,7 @@ get_reservation_purchase_recommendation <- function (AccountId = NULL,
 #' 
 #' -   TENANCY
 #' 
-#' `GetReservationUtilization` uses the same ` Expression Expression ` object as the other operations, but only `AND` is supported among each dimension, and nesting is supported up to only one level deep. If there are multiple values for a dimension, they are OR\'d together.
+#' `GetReservationUtilization` uses the same [Expression](http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html) object as the other operations, but only `AND` is supported among each dimension, and nesting is supported up to only one level deep. If there are multiple values for a dimension, they are OR\'d together.
 #' @param NextPageToken The token to retrieve the next set of results. AWS provides the token when the response from a previous call has more results than the maximum page size.
 #'
 #' @export

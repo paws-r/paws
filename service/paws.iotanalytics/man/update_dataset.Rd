@@ -5,7 +5,7 @@
 \title{Updates the settings of a data set}
 \usage{
 update_dataset(datasetName, actions, triggers = NULL,
-  retentionPeriod = NULL)
+  contentDeliveryRules = NULL, retentionPeriod = NULL)
 }
 \arguments{
 \item{datasetName}{[required] The name of the data set to update.}
@@ -13,6 +13,8 @@ update_dataset(datasetName, actions, triggers = NULL,
 \item{actions}{[required] A list of "DatasetAction" objects.}
 
 \item{triggers}{A list of "DatasetTrigger" objects. The list can be empty or can contain up to five \strong{DataSetTrigger} objects.}
+
+\item{contentDeliveryRules}{When data set contents are created they are delivered to destinations specified here.}
 
 \item{retentionPeriod}{How long, in days, message data is kept for the data set.}
 }
@@ -66,6 +68,17 @@ Updates the settings of a data set.
       ),
       dataset = list(
         name = "string"
+      )
+    )
+  ),
+  contentDeliveryRules = list(
+    list(
+      entryName = "string",
+      destination = list(
+        iotEventsDestinationConfiguration = list(
+          inputName = "string",
+          roleArn = "string"
+        )
       )
     )
   ),

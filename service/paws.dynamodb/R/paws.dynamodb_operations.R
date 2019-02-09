@@ -515,6 +515,7 @@ create_global_table <- function (GlobalTableName, ReplicationGroup)
 #'       )
 #'     )
 #'   ),
+#'   BillingMode = "PROVISIONED"|"PAY_PER_REQUEST",
 #'   ProvisionedThroughput = list(
 #'     ReadCapacityUnits = 123,
 #'     WriteCapacityUnits = 123
@@ -554,7 +555,7 @@ create_global_table <- function (GlobalTableName, ReplicationGroup)
 #' For a composite primary key (partition key and sort key), you must provide exactly two elements, in this order: The first element must have a `KeyType` of `HASH`, and the second element must have a `KeyType` of `RANGE`.
 #' 
 #' For more information, see [Specifying the Primary Key](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#WorkingWithTables.primary.key) in the *Amazon DynamoDB Developer Guide*.
-#' @param LocalSecondaryIndexes One or more local secondary indexes (the maximum is five) to be created on the table. Each index is scoped to a given partition key value. There is a 10 GB size limit per partition key value; otherwise, the size of a local secondary index is unconstrained.
+#' @param LocalSecondaryIndexes One or more local secondary indexes (the maximum is 5) to be created on the table. Each index is scoped to a given partition key value. There is a 10 GB size limit per partition key value; otherwise, the size of a local secondary index is unconstrained.
 #' 
 #' Each local secondary index in the array includes the following:
 #' 
@@ -572,8 +573,8 @@ create_global_table <- function (GlobalTableName, ReplicationGroup)
 #' 
 #'         -   `ALL` - All of the table attributes are projected into the index.
 #' 
-#'     -   `NonKeyAttributes` - A list of one or more non-key attribute names that are projected into the secondary index. The total count of attributes provided in `NonKeyAttributes`, summed across all of the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes, this counts as two distinct attributes when determining the total.
-#' @param GlobalSecondaryIndexes One or more global secondary indexes (the maximum is five) to be created on the table. Each global secondary index in the array includes the following:
+#'     -   `NonKeyAttributes` - A list of one or more non-key attribute names that are projected into the secondary index. The total count of attributes provided in `NonKeyAttributes`, summed across all of the secondary indexes, must not exceed 100. If you project the same attribute into two different indexes, this counts as two distinct attributes when determining the total.
+#' @param GlobalSecondaryIndexes One or more global secondary indexes (the maximum is 20) to be created on the table. Each global secondary index in the array includes the following:
 #' 
 #' -   `IndexName` - The name of the global secondary index. Must be unique only for this table.
 #' 
@@ -589,10 +590,17 @@ create_global_table <- function (GlobalTableName, ReplicationGroup)
 #' 
 #'         -   `ALL` - All of the table attributes are projected into the index.
 #' 
-#'     -   `NonKeyAttributes` - A list of one or more non-key attribute names that are projected into the secondary index. The total count of attributes provided in `NonKeyAttributes`, summed across all of the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes, this counts as two distinct attributes when determining the total.
+#'     -   `NonKeyAttributes` - A list of one or more non-key attribute names that are projected into the secondary index. The total count of attributes provided in `NonKeyAttributes`, summed across all of the secondary indexes, must not exceed 100. If you project the same attribute into two different indexes, this counts as two distinct attributes when determining the total.
 #' 
 #' -   `ProvisionedThroughput` - The provisioned throughput settings for the global secondary index, consisting of read and write capacity units.
-#' @param ProvisionedThroughput &#91;required&#93; Represents the provisioned throughput settings for a specified table or index. The settings can be modified using the `UpdateTable` operation.
+#' @param BillingMode Controls how you are charged for read and write throughput and how you manage capacity. This setting can be changed later.
+#' 
+#' -   `PROVISIONED` - Sets the billing mode to `PROVISIONED`. We recommend using `PROVISIONED` for predictable workloads.
+#' 
+#' -   `PAY_PER_REQUEST` - Sets the billing mode to `PAY_PER_REQUEST`. We recommend using `PAY_PER_REQUEST` for unpredictable workloads.
+#' @param ProvisionedThroughput Represents the provisioned throughput settings for a specified table or index. The settings can be modified using the `UpdateTable` operation.
+#' 
+#' If you set BillingMode as `PROVISIONED`, you must specify this property. If you set BillingMode as `PAY_PER_REQUEST`, you cannot specify this property.
 #' 
 #' For current minimum and maximum provisioned throughput values, see [Limits](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html) in the *Amazon DynamoDB Developer Guide*.
 #' @param StreamSpecification The settings for DynamoDB Streams on the table. These settings consist of:
@@ -643,14 +651,16 @@ create_global_table <- function (GlobalTableName, ReplicationGroup)
 #' @export
 create_table <- function (AttributeDefinitions, TableName, KeySchema, 
     LocalSecondaryIndexes = NULL, GlobalSecondaryIndexes = NULL, 
-    ProvisionedThroughput, StreamSpecification = NULL, SSESpecification = NULL) 
+    BillingMode = NULL, ProvisionedThroughput = NULL, StreamSpecification = NULL, 
+    SSESpecification = NULL) 
 {
     op <- new_operation(name = "CreateTable", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- create_table_input(AttributeDefinitions = AttributeDefinitions, 
         TableName = TableName, KeySchema = KeySchema, LocalSecondaryIndexes = LocalSecondaryIndexes, 
-        GlobalSecondaryIndexes = GlobalSecondaryIndexes, ProvisionedThroughput = ProvisionedThroughput, 
-        StreamSpecification = StreamSpecification, SSESpecification = SSESpecification)
+        GlobalSecondaryIndexes = GlobalSecondaryIndexes, BillingMode = BillingMode, 
+        ProvisionedThroughput = ProvisionedThroughput, StreamSpecification = StreamSpecification, 
+        SSESpecification = SSESpecification)
     output <- create_table_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -1013,9 +1023,9 @@ describe_continuous_backups <- function (TableName)
     return(response)
 }
 
-#' 
+#' Returns the regional endpoint information
 #'
-#' 
+#' Returns the regional endpoint information.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1338,7 +1348,7 @@ get_item <- function (TableName, Key, AttributesToGet = NULL,
 #'   TimeRangeLowerBound = as.POSIXct("2015-01-01"),
 #'   TimeRangeUpperBound = as.POSIXct("2015-01-01"),
 #'   ExclusiveStartBackupArn = "string",
-#'   BackupType = "USER"|"SYSTEM"|"ALL"
+#'   BackupType = "USER"|"SYSTEM"|"AWS_BACKUP"|"ALL"
 #' )
 #' ```
 #'
@@ -2453,6 +2463,368 @@ tag_resource <- function (ResourceArn, Tags)
     return(response)
 }
 
+#' TransactGetItems is a synchronous operation that atomically retrieves multiple items from one or more tables (but not from indexes) in a single account and region
+#'
+#' `TransactGetItems` is a synchronous operation that atomically retrieves multiple items from one or more tables (but not from indexes) in a single account and region. A `TransactGetItems` call can contain up to 10 `TransactGetItem` objects, each of which contains a `Get` structure that specifies an item to retrieve from a table in the account and region. A call to `TransactGetItems` cannot retrieve items from tables in more than one AWS account or region.
+#' 
+#' DynamoDB rejects the entire `TransactGetItems` request if any of the following is true:
+#' 
+#' -   A conflicting operation is in the process of updating an item to be read.
+#' 
+#' -   There is insufficient provisioned capacity for the transaction to be completed.
+#' 
+#' -   There is a user error, such as an invalid data format.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' transact_get_items(
+#'   TransactItems = list(
+#'     list(
+#'       Get = list(
+#'         Key = list(
+#'           list(
+#'             S = "string",
+#'             N = "string",
+#'             B = raw,
+#'             SS = list(
+#'               "string"
+#'             ),
+#'             NS = list(
+#'               "string"
+#'             ),
+#'             BS = list(
+#'               raw
+#'             ),
+#'             M = list(
+#'               list()
+#'             ),
+#'             L = list(
+#'               list()
+#'             ),
+#'             NULL = TRUE|FALSE,
+#'             BOOL = TRUE|FALSE
+#'           )
+#'         ),
+#'         TableName = "string",
+#'         ProjectionExpression = "string",
+#'         ExpressionAttributeNames = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE"
+#' )
+#' ```
+#'
+#' @param TransactItems &#91;required&#93; An ordered array of up to 10 `TransactGetItem` objects, each of which contains a `Get` structure.
+#' @param ReturnConsumedCapacity A value of `TOTAL` causes consumed capacity information to be returned, and a value of `NONE` prevents that information from being returned. No other value is valid.
+#'
+#' @export
+transact_get_items <- function (TransactItems, ReturnConsumedCapacity = NULL) 
+{
+    op <- new_operation(name = "TransactGetItems", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- transact_get_items_input(TransactItems = TransactItems, 
+        ReturnConsumedCapacity = ReturnConsumedCapacity)
+    output <- transact_get_items_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' TransactWriteItems is a synchronous write operation that groups up to 10 action requests
+#'
+#' `TransactWriteItems` is a synchronous write operation that groups up to 10 action requests. These actions can target items in different tables, but not in different AWS accounts or regions, and no two actions can target the same item. For example, you cannot both `ConditionCheck` and `Update` the same item.
+#' 
+#' The actions are completed atomically so that either all of them succeed, or all of them fail. They are defined by the following objects:
+#' 
+#' -   `Put`  ---   Initiates a `PutItem` operation to write a new item. This structure specifies the primary key of the item to be written, the name of the table to write it in, an optional condition expression that must be satisfied for the write to succeed, a list of the item\'s attributes, and a field indicating whether or not to retrieve the item\'s attributes if the condition is not met.
+#' 
+#' -   `Update`  ---   Initiates an `UpdateItem` operation to update an existing item. This structure specifies the primary key of the item to be updated, the name of the table where it resides, an optional condition expression that must be satisfied for the update to succeed, an expression that defines one or more attributes to be updated, and a field indicating whether or not to retrieve the item\'s attributes if the condition is not met.
+#' 
+#' -   `Delete`  ---   Initiates a `DeleteItem` operation to delete an existing item. This structure specifies the primary key of the item to be deleted, the name of the table where it resides, an optional condition expression that must be satisfied for the deletion to succeed, and a field indicating whether or not to retrieve the item\'s attributes if the condition is not met.
+#' 
+#' -   `ConditionCheck`  ---   Applies a condition to an item that is not being modified by the transaction. This structure specifies the primary key of the item to be checked, the name of the table where it resides, a condition expression that must be satisfied for the transaction to succeed, and a field indicating whether or not to retrieve the item\'s attributes if the condition is not met.
+#' 
+#' DynamoDB rejects the entire `TransactWriteItems` request if any of the following is true:
+#' 
+#' -   A condition in one of the condition expressions is not met.
+#' 
+#' -   A conflicting operation is in the process of updating the same item.
+#' 
+#' -   There is insufficient provisioned capacity for the transaction to be completed.
+#' 
+#' -   An item size becomes too large (bigger than 400 KB), a Local Secondary Index (LSI) becomes too large, or a similar validation error occurs because of changes made by the transaction.
+#' 
+#' -   There is a user error, such as an invalid data format.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' transact_write_items(
+#'   TransactItems = list(
+#'     list(
+#'       ConditionCheck = list(
+#'         Key = list(
+#'           list(
+#'             S = "string",
+#'             N = "string",
+#'             B = raw,
+#'             SS = list(
+#'               "string"
+#'             ),
+#'             NS = list(
+#'               "string"
+#'             ),
+#'             BS = list(
+#'               raw
+#'             ),
+#'             M = list(
+#'               list()
+#'             ),
+#'             L = list(
+#'               list()
+#'             ),
+#'             NULL = TRUE|FALSE,
+#'             BOOL = TRUE|FALSE
+#'           )
+#'         ),
+#'         TableName = "string",
+#'         ConditionExpression = "string",
+#'         ExpressionAttributeNames = list(
+#'           "string"
+#'         ),
+#'         ExpressionAttributeValues = list(
+#'           list(
+#'             S = "string",
+#'             N = "string",
+#'             B = raw,
+#'             SS = list(
+#'               "string"
+#'             ),
+#'             NS = list(
+#'               "string"
+#'             ),
+#'             BS = list(
+#'               raw
+#'             ),
+#'             M = list(
+#'               list()
+#'             ),
+#'             L = list(
+#'               list()
+#'             ),
+#'             NULL = TRUE|FALSE,
+#'             BOOL = TRUE|FALSE
+#'           )
+#'         ),
+#'         ReturnValuesOnConditionCheckFailure = "ALL_OLD"|"NONE"
+#'       ),
+#'       Put = list(
+#'         Item = list(
+#'           list(
+#'             S = "string",
+#'             N = "string",
+#'             B = raw,
+#'             SS = list(
+#'               "string"
+#'             ),
+#'             NS = list(
+#'               "string"
+#'             ),
+#'             BS = list(
+#'               raw
+#'             ),
+#'             M = list(
+#'               list()
+#'             ),
+#'             L = list(
+#'               list()
+#'             ),
+#'             NULL = TRUE|FALSE,
+#'             BOOL = TRUE|FALSE
+#'           )
+#'         ),
+#'         TableName = "string",
+#'         ConditionExpression = "string",
+#'         ExpressionAttributeNames = list(
+#'           "string"
+#'         ),
+#'         ExpressionAttributeValues = list(
+#'           list(
+#'             S = "string",
+#'             N = "string",
+#'             B = raw,
+#'             SS = list(
+#'               "string"
+#'             ),
+#'             NS = list(
+#'               "string"
+#'             ),
+#'             BS = list(
+#'               raw
+#'             ),
+#'             M = list(
+#'               list()
+#'             ),
+#'             L = list(
+#'               list()
+#'             ),
+#'             NULL = TRUE|FALSE,
+#'             BOOL = TRUE|FALSE
+#'           )
+#'         ),
+#'         ReturnValuesOnConditionCheckFailure = "ALL_OLD"|"NONE"
+#'       ),
+#'       Delete = list(
+#'         Key = list(
+#'           list(
+#'             S = "string",
+#'             N = "string",
+#'             B = raw,
+#'             SS = list(
+#'               "string"
+#'             ),
+#'             NS = list(
+#'               "string"
+#'             ),
+#'             BS = list(
+#'               raw
+#'             ),
+#'             M = list(
+#'               list()
+#'             ),
+#'             L = list(
+#'               list()
+#'             ),
+#'             NULL = TRUE|FALSE,
+#'             BOOL = TRUE|FALSE
+#'           )
+#'         ),
+#'         TableName = "string",
+#'         ConditionExpression = "string",
+#'         ExpressionAttributeNames = list(
+#'           "string"
+#'         ),
+#'         ExpressionAttributeValues = list(
+#'           list(
+#'             S = "string",
+#'             N = "string",
+#'             B = raw,
+#'             SS = list(
+#'               "string"
+#'             ),
+#'             NS = list(
+#'               "string"
+#'             ),
+#'             BS = list(
+#'               raw
+#'             ),
+#'             M = list(
+#'               list()
+#'             ),
+#'             L = list(
+#'               list()
+#'             ),
+#'             NULL = TRUE|FALSE,
+#'             BOOL = TRUE|FALSE
+#'           )
+#'         ),
+#'         ReturnValuesOnConditionCheckFailure = "ALL_OLD"|"NONE"
+#'       ),
+#'       Update = list(
+#'         Key = list(
+#'           list(
+#'             S = "string",
+#'             N = "string",
+#'             B = raw,
+#'             SS = list(
+#'               "string"
+#'             ),
+#'             NS = list(
+#'               "string"
+#'             ),
+#'             BS = list(
+#'               raw
+#'             ),
+#'             M = list(
+#'               list()
+#'             ),
+#'             L = list(
+#'               list()
+#'             ),
+#'             NULL = TRUE|FALSE,
+#'             BOOL = TRUE|FALSE
+#'           )
+#'         ),
+#'         UpdateExpression = "string",
+#'         TableName = "string",
+#'         ConditionExpression = "string",
+#'         ExpressionAttributeNames = list(
+#'           "string"
+#'         ),
+#'         ExpressionAttributeValues = list(
+#'           list(
+#'             S = "string",
+#'             N = "string",
+#'             B = raw,
+#'             SS = list(
+#'               "string"
+#'             ),
+#'             NS = list(
+#'               "string"
+#'             ),
+#'             BS = list(
+#'               raw
+#'             ),
+#'             M = list(
+#'               list()
+#'             ),
+#'             L = list(
+#'               list()
+#'             ),
+#'             NULL = TRUE|FALSE,
+#'             BOOL = TRUE|FALSE
+#'           )
+#'         ),
+#'         ReturnValuesOnConditionCheckFailure = "ALL_OLD"|"NONE"
+#'       )
+#'     )
+#'   ),
+#'   ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE",
+#'   ReturnItemCollectionMetrics = "SIZE"|"NONE",
+#'   ClientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @param TransactItems &#91;required&#93; An ordered array of up to 10 `TransactWriteItem` objects, each of which contains a `ConditionCheck`, `Put`, `Update`, or `Delete` object. These can operate on items in different tables, but the tables must reside in the same AWS account and region, and no two of them can operate on the same item.
+#' @param ReturnConsumedCapacity 
+#' @param ReturnItemCollectionMetrics Determines whether item collection metrics are returned. If set to `SIZE`, the response includes statistics about item collections (if any), that were modified during the operation and are returned in the response. If set to `NONE` (the default), no statistics are returned.
+#' @param ClientRequestToken Providing a `ClientRequestToken` makes the call to `TransactWriteItems` idempotent, meaning that multiple identical calls have the same effect as one single call.
+#' 
+#' Although multiple identical calls using the same client request token produce the same result on the server (no side effects), the responses to the calls may not be the same. If the `ReturnConsumedCapacity>` parameter is set, then the initial `TransactWriteItems` call returns the amount of write capacity units consumed in making the changes, and subsequent `TransactWriteItems` calls with the same client token return the amount of read capacity units consumed in reading the item.
+#' 
+#' A client request token is valid for 10 minutes after the first request that uses it completes. After 10 minutes, any request with the same client token is treated as a new request. Do not resubmit the same request with the same client token for more than 10 minutes or the result may not be idempotent.
+#' 
+#' If you submit a request with the same client token but a change in other parameters within the 10 minute idempotency window, DynamoDB returns an `IdempotentParameterMismatch` exception.
+#'
+#' @export
+transact_write_items <- function (TransactItems, ReturnConsumedCapacity = NULL, 
+    ReturnItemCollectionMetrics = NULL, ClientRequestToken = NULL) 
+{
+    op <- new_operation(name = "TransactWriteItems", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- transact_write_items_input(TransactItems = TransactItems, 
+        ReturnConsumedCapacity = ReturnConsumedCapacity, ReturnItemCollectionMetrics = ReturnItemCollectionMetrics, 
+        ClientRequestToken = ClientRequestToken)
+    output <- transact_write_items_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Removes the association of tags from an Amazon DynamoDB resource
 #'
 #' Removes the association of tags from an Amazon DynamoDB resource. You can call UntagResource up to 5 times per second, per account.
@@ -2577,6 +2949,7 @@ update_global_table <- function (GlobalTableName, ReplicaUpdates)
 #' ```
 #' update_global_table_settings(
 #'   GlobalTableName = "string",
+#'   GlobalTableBillingMode = "PROVISIONED"|"PAY_PER_REQUEST",
 #'   GlobalTableProvisionedWriteCapacityUnits = 123,
 #'   GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate = list(
 #'     MinimumUnits = 123,
@@ -2660,20 +3033,21 @@ update_global_table <- function (GlobalTableName, ReplicaUpdates)
 #' ```
 #'
 #' @param GlobalTableName &#91;required&#93; The name of the global table
+#' @param GlobalTableBillingMode The billing mode of the global table. If `GlobalTableBillingMode` is not specified, the global table defaults to `PROVISIONED` capacity billing mode.
 #' @param GlobalTableProvisionedWriteCapacityUnits The maximum number of writes consumed per second before DynamoDB returns a `ThrottlingException.`
 #' @param GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate AutoScaling settings for managing provisioned write capacity for the global table.
 #' @param GlobalTableGlobalSecondaryIndexSettingsUpdate Represents the settings of a global secondary index for a global table that will be modified.
 #' @param ReplicaSettingsUpdate Represents the settings for a global table in a region that will be modified.
 #'
 #' @export
-update_global_table_settings <- function (GlobalTableName, GlobalTableProvisionedWriteCapacityUnits = NULL, 
-    GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate = NULL, 
+update_global_table_settings <- function (GlobalTableName, GlobalTableBillingMode = NULL, 
+    GlobalTableProvisionedWriteCapacityUnits = NULL, GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate = NULL, 
     GlobalTableGlobalSecondaryIndexSettingsUpdate = NULL, ReplicaSettingsUpdate = NULL) 
 {
     op <- new_operation(name = "UpdateGlobalTableSettings", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- update_global_table_settings_input(GlobalTableName = GlobalTableName, 
-        GlobalTableProvisionedWriteCapacityUnits = GlobalTableProvisionedWriteCapacityUnits, 
+        GlobalTableBillingMode = GlobalTableBillingMode, GlobalTableProvisionedWriteCapacityUnits = GlobalTableProvisionedWriteCapacityUnits, 
         GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate = GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate, 
         GlobalTableGlobalSecondaryIndexSettingsUpdate = GlobalTableGlobalSecondaryIndexSettingsUpdate, 
         ReplicaSettingsUpdate = ReplicaSettingsUpdate)
@@ -3027,6 +3401,7 @@ update_item <- function (TableName, Key, AttributeUpdates = NULL,
 #'     )
 #'   ),
 #'   TableName = "string",
+#'   BillingMode = "PROVISIONED"|"PAY_PER_REQUEST",
 #'   ProvisionedThroughput = list(
 #'     ReadCapacityUnits = 123,
 #'     WriteCapacityUnits = 123
@@ -3078,6 +3453,11 @@ update_item <- function (TableName, Key, AttributeUpdates = NULL,
 #'
 #' @param AttributeDefinitions An array of attributes that describe the key schema for the table and indexes. If you are adding a new global secondary index to the table, `AttributeDefinitions` must include the key element(s) of the new index.
 #' @param TableName &#91;required&#93; The name of the table to be updated.
+#' @param BillingMode Controls how you are charged for read and write throughput and how you manage capacity. When switching from pay-per-request to provisioned capacity, initial provisioned capacity values must be set. The initial provisioned capacity values are estimated based on the consumed read and write capacity of your table and global secondary indexes over the past 30 minutes.
+#' 
+#' -   `PROVISIONED` - Sets the billing mode to `PROVISIONED`. We recommend using `PROVISIONED` for predictable workloads.
+#' 
+#' -   `PAY_PER_REQUEST` - Sets the billing mode to `PAY_PER_REQUEST`. We recommend using `PAY_PER_REQUEST` for unpredictable workloads.
 #' @param ProvisionedThroughput The new provisioned throughput settings for the specified table or index.
 #' @param GlobalSecondaryIndexUpdates An array of one or more global secondary indexes for the table. For each index in the array, you can request one action:
 #' 
@@ -3106,13 +3486,13 @@ update_item <- function (TableName, Key, AttributeUpdates = NULL,
 #'
 #' @export
 update_table <- function (AttributeDefinitions = NULL, TableName, 
-    ProvisionedThroughput = NULL, GlobalSecondaryIndexUpdates = NULL, 
+    BillingMode = NULL, ProvisionedThroughput = NULL, GlobalSecondaryIndexUpdates = NULL, 
     StreamSpecification = NULL, SSESpecification = NULL) 
 {
     op <- new_operation(name = "UpdateTable", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- update_table_input(AttributeDefinitions = AttributeDefinitions, 
-        TableName = TableName, ProvisionedThroughput = ProvisionedThroughput, 
+        TableName = TableName, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, 
         GlobalSecondaryIndexUpdates = GlobalSecondaryIndexUpdates, 
         StreamSpecification = StreamSpecification, SSESpecification = SSESpecification)
     output <- update_table_output()

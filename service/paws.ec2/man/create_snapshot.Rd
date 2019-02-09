@@ -28,9 +28,9 @@ To create a snapshot for EBS volumes that serve as root devices, you should stop
 
 Snapshots that are taken from encrypted volumes are automatically encrypted. Volumes that are created from encrypted snapshots are also automatically encrypted. Your encrypted volumes and any associated snapshots always remain protected.
 
-You can tag your snapshots during creation. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html}{Tagging Your Amazon EC2 Resources} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+You can tag your snapshots during creation. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html}{Tagging Your Amazon EC2 Resources} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
-For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html}{Amazon Elastic Block Store} and \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS Encryption} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html}{Amazon Elastic Block Store} and \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS Encryption} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{create_snapshot(
@@ -38,7 +38,7 @@ For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGui
   VolumeId = "string",
   TagSpecifications = list(
     list(
-      ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"image"|"instance"|"internet-gateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"snapshot"|"spot-instances-request"|"subnet"|"security-group"|"volume"|"vpc"|"vpn-connection"|"vpn-gateway",
+      ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-instances-request"|"subnet"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
       Tags = list(
         list(
           Key = "string",

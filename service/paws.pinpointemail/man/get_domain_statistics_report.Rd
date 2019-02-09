@@ -4,11 +4,7 @@
 \alias{get_domain_statistics_report}
 \title{Retrieve inbox placement and engagement rates for the domains that you use to send email}
 \usage{
-get_domain_statistics_report(
-  Domain = "string",
-  StartDate = as.POSIXct("2015-01-01"),
-  EndDate = as.POSIXct("2015-01-01")
-)
+get_domain_statistics_report(Domain, StartDate, EndDate)
 }
 \arguments{
 \item{Domain}{[required] The domain that you want to obtain deliverability metrics for.}
@@ -20,6 +16,12 @@ get_domain_statistics_report(
 \description{
 Retrieve inbox placement and engagement rates for the domains that you use to send email.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_domain_statistics_report(
+  Domain = "string",
+  StartDate = as.POSIXct("2015-01-01"),
+  EndDate = as.POSIXct("2015-01-01")
+)
 }
+}
+

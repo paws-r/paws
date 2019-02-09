@@ -4,18 +4,8 @@
 \alias{list_resolver_endpoints}
 \title{Lists all the resolver endpoints that were created using the current AWS account}
 \usage{
-list_resolver_endpoints(
-  MaxResults = 123,
-  NextToken = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  )
-)
+list_resolver_endpoints(MaxResults = NULL, NextToken = NULL,
+  Filters = NULL)
 }
 \arguments{
 \item{MaxResults}{The maximum number of resolver endpoints that you want to return in the response to a \code{ListResolverEndpoints} request. If you don't specify a value for \code{MaxResults}, Resolver returns up to 100 resolver endpoints.}
@@ -31,6 +21,19 @@ If you submit a second or subsequent \code{ListResolverEndpoints} request and sp
 \description{
 Lists all the resolver endpoints that were created using the current AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_resolver_endpoints(
+  MaxResults = 123,
+  NextToken = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  )
+)
 }
+}
+

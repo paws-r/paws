@@ -4,11 +4,8 @@
 \alias{delete_application_reference_data_source}
 \title{Deletes a reference data source configuration from the specified SQL-based Amazon Kinesis Data Analytics application's configuration}
 \usage{
-delete_application_reference_data_source(
-  ApplicationName = "string",
-  CurrentApplicationVersionId = 123,
-  ReferenceId = "string"
-)
+delete_application_reference_data_source(ApplicationName,
+  CurrentApplicationVersionId, ReferenceId)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of an existing application.}
@@ -23,6 +20,12 @@ Deletes a reference data source configuration from the specified SQL-based Amazo
 \details{
 If the application is running, Kinesis Data Analytics immediately removes the in-application table that you created using the AddApplicationReferenceDataSource operation.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_application_reference_data_source(
+  ApplicationName = "string",
+  CurrentApplicationVersionId = 123,
+  ReferenceId = "string"
+)
 }
+}
+

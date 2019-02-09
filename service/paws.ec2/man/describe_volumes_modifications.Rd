@@ -24,7 +24,7 @@ Reports the current modification status of EBS volumes.
 \details{
 Current-generation EBS volumes support modification of attributes including type, size, and (for \code{io1} volumes) IOPS provisioning while either attached to or detached from an instance. Following an action from the API or the console to modify a volume, the status of the modification may be \code{modifying}, \code{optimizing}, \code{completed}, or \code{failed}. If a volume has never been modified, then certain elements of the returned \code{VolumeModification} objects are null.
 
-You can also use CloudWatch Events to check the status of a modification to an EBS volume. For information about CloudWatch Events, see the \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/}{Amazon CloudWatch Events User Guide}. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#monitoring_mods}{Monitoring Volume Modifications"} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+You can also use CloudWatch Events to check the status of a modification to an EBS volume. For information about CloudWatch Events, see the \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/}{Amazon CloudWatch Events User Guide}. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#monitoring_mods}{Monitoring Volume Modifications"} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{describe_volumes_modifications(

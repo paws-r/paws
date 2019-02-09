@@ -11,7 +11,7 @@ reset_deployments(AmznClientToken = NULL, Force = NULL, GroupId)
 
 \item{Force}{If true, performs a best-effort only core reset.}
 
-\item{GroupId}{[required] The ID of the AWS Greengrass group.}
+\item{GroupId}{[required] The ID of the Greengrass group.}
 }
 \description{
 Resets a group's deployments.

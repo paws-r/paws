@@ -3,6 +3,35 @@
 #' @importFrom paws.common populate
 NULL
 
+add_layer_version_permission_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(LayerName = structure(logical(0), 
+        tags = list(location = "uri", locationName = "LayerName", 
+            type = "string", max = 140L, min = 1L, pattern = "(arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+)|[a-zA-Z0-9-_]+")), 
+        VersionNumber = structure(logical(0), tags = list(location = "uri", 
+            locationName = "VersionNumber", type = "long")), 
+        StatementId = structure(logical(0), tags = list(type = "string", 
+            max = 100L, min = 1L, pattern = "([a-zA-Z0-9-_]+)")), 
+        Action = structure(logical(0), tags = list(type = "string", 
+            pattern = "lambda:GetLayerVersion")), Principal = structure(logical(0), 
+            tags = list(type = "string", pattern = "\\d{12}|\\*|arn:(aws[a-zA-Z-]*):iam::\\d{12}:root")), 
+        OrganizationId = structure(logical(0), tags = list(type = "string", 
+            pattern = "o-[a-z0-9]{10,32}")), RevisionId = structure(logical(0), 
+            tags = list(location = "querystring", locationName = "RevisionId", 
+                type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+add_layer_version_permission_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Statement = structure(logical(0), 
+        tags = list(type = "string")), RevisionId = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 add_permission_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -111,9 +140,10 @@ create_function_input <- function (...)
         tags = list(type = "string", max = 140L, min = 1L, pattern = "(arn:(aws[a-zA-Z-]*)?:lambda:)?([a-z]{2}(-gov)?-[a-z]+-\\d{1}:)?(\\d{12}:)?(function:)?([a-zA-Z0-9-_]+)(:(\\$LATEST|[a-zA-Z0-9-_]+))?")), 
         Runtime = structure(logical(0), tags = list(type = "string", 
             enum = c("nodejs", "nodejs4.3", "nodejs6.10", "nodejs8.10", 
-                "java8", "python2.7", "python3.6", "dotnetcore1.0", 
-                "dotnetcore2.0", "dotnetcore2.1", "nodejs4.3-edge", 
-                "go1.x"))), Role = structure(logical(0), tags = list(type = "string", 
+                "java8", "python2.7", "python3.6", "python3.7", 
+                "dotnetcore1.0", "dotnetcore2.0", "dotnetcore2.1", 
+                "nodejs4.3-edge", "go1.x", "ruby2.5", "provided"))), 
+        Role = structure(logical(0), tags = list(type = "string", 
             pattern = "arn:(aws[a-zA-Z-]*)?:iam::\\d{12}:role/?[a-zA-Z_0-9+=,.@\\-_/]+")), 
         Handler = structure(logical(0), tags = list(type = "string", 
             max = 128L, pattern = "[^\\s]+")), Code = structure(list(ZipFile = structure(logical(0), 
@@ -142,8 +172,10 @@ create_function_input <- function (...)
         TracingConfig = structure(list(Mode = structure(logical(0), 
             tags = list(type = "string", enum = c("Active", "PassThrough")))), 
             tags = list(type = "structure")), Tags = structure(list(structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "map"))), 
-        tags = list(type = "structure"))
+            tags = list(type = "string"))), tags = list(type = "map")), 
+        Layers = structure(list(structure(logical(0), tags = list(type = "string", 
+            max = 140L, min = 1L, pattern = "arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+:[0-9]+"))), 
+            tags = list(type = "list"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -156,9 +188,10 @@ create_function_output <- function (...)
             pattern = "arn:(aws[a-zA-Z-]*)?:lambda:[a-z]{2}(-gov)?-[a-z]+-\\d{1}:\\d{12}:function:[a-zA-Z0-9-_\\.]+(:(\\$LATEST|[a-zA-Z0-9-_]+))?")), 
         Runtime = structure(logical(0), tags = list(type = "string", 
             enum = c("nodejs", "nodejs4.3", "nodejs6.10", "nodejs8.10", 
-                "java8", "python2.7", "python3.6", "dotnetcore1.0", 
-                "dotnetcore2.0", "dotnetcore2.1", "nodejs4.3-edge", 
-                "go1.x"))), Role = structure(logical(0), tags = list(type = "string", 
+                "java8", "python2.7", "python3.6", "python3.7", 
+                "dotnetcore1.0", "dotnetcore2.0", "dotnetcore2.1", 
+                "nodejs4.3-edge", "go1.x", "ruby2.5", "provided"))), 
+        Role = structure(logical(0), tags = list(type = "string", 
             pattern = "arn:(aws[a-zA-Z-]*)?:iam::\\d{12}:role/?[a-zA-Z_0-9+=,.@\\-_/]+")), 
         Handler = structure(logical(0), tags = list(type = "string", 
             max = 128L, pattern = "[^\\s]+")), CodeSize = structure(logical(0), 
@@ -189,7 +222,12 @@ create_function_output <- function (...)
             tags = list(type = "string", enum = c("Active", "PassThrough")))), 
             tags = list(type = "structure")), MasterArn = structure(logical(0), 
             tags = list(type = "string", pattern = "arn:(aws[a-zA-Z-]*)?:lambda:[a-z]{2}(-gov)?-[a-z]+-\\d{1}:\\d{12}:function:[a-zA-Z0-9-_]+(:(\\$LATEST|[a-zA-Z0-9-_]+))?")), 
-        RevisionId = structure(logical(0), tags = list(type = "string"))), 
+        RevisionId = structure(logical(0), tags = list(type = "string")), 
+        Layers = structure(list(structure(list(Arn = structure(logical(0), 
+            tags = list(type = "string", max = 140L, min = 1L, 
+                pattern = "arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+:[0-9]+")), 
+            CodeSize = structure(logical(0), tags = list(type = "long"))), 
+            tags = list(type = "structure"))), tags = list(type = "list"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -265,6 +303,23 @@ delete_function_concurrency_input <- function (...)
 }
 
 delete_function_concurrency_output <- function () 
+{
+    return(list())
+}
+
+delete_layer_version_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(LayerName = structure(logical(0), 
+        tags = list(location = "uri", locationName = "LayerName", 
+            type = "string", max = 140L, min = 1L, pattern = "(arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+)|[a-zA-Z0-9-_]+")), 
+        VersionNumber = structure(logical(0), tags = list(location = "uri", 
+            locationName = "VersionNumber", type = "long"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_layer_version_output <- function () 
 {
     return(list())
 }
@@ -369,9 +424,10 @@ get_function_output <- function (...)
             pattern = "arn:(aws[a-zA-Z-]*)?:lambda:[a-z]{2}(-gov)?-[a-z]+-\\d{1}:\\d{12}:function:[a-zA-Z0-9-_\\.]+(:(\\$LATEST|[a-zA-Z0-9-_]+))?")), 
         Runtime = structure(logical(0), tags = list(type = "string", 
             enum = c("nodejs", "nodejs4.3", "nodejs6.10", "nodejs8.10", 
-                "java8", "python2.7", "python3.6", "dotnetcore1.0", 
-                "dotnetcore2.0", "dotnetcore2.1", "nodejs4.3-edge", 
-                "go1.x"))), Role = structure(logical(0), tags = list(type = "string", 
+                "java8", "python2.7", "python3.6", "python3.7", 
+                "dotnetcore1.0", "dotnetcore2.0", "dotnetcore2.1", 
+                "nodejs4.3-edge", "go1.x", "ruby2.5", "provided"))), 
+        Role = structure(logical(0), tags = list(type = "string", 
             pattern = "arn:(aws[a-zA-Z-]*)?:iam::\\d{12}:role/?[a-zA-Z_0-9+=,.@\\-_/]+")), 
         Handler = structure(logical(0), tags = list(type = "string", 
             max = 128L, pattern = "[^\\s]+")), CodeSize = structure(logical(0), 
@@ -402,7 +458,12 @@ get_function_output <- function (...)
             tags = list(type = "string", enum = c("Active", "PassThrough")))), 
             tags = list(type = "structure")), MasterArn = structure(logical(0), 
             tags = list(type = "string", pattern = "arn:(aws[a-zA-Z-]*)?:lambda:[a-z]{2}(-gov)?-[a-z]+-\\d{1}:\\d{12}:function:[a-zA-Z0-9-_]+(:(\\$LATEST|[a-zA-Z0-9-_]+))?")), 
-        RevisionId = structure(logical(0), tags = list(type = "string"))), 
+        RevisionId = structure(logical(0), tags = list(type = "string")), 
+        Layers = structure(list(structure(list(Arn = structure(logical(0), 
+            tags = list(type = "string", max = 140L, min = 1L, 
+                pattern = "arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+:[0-9]+")), 
+            CodeSize = structure(logical(0), tags = list(type = "long"))), 
+            tags = list(type = "structure"))), tags = list(type = "list"))), 
         tags = list(type = "structure")), Code = structure(list(RepositoryType = structure(logical(0), 
         tags = list(type = "string")), Location = structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "structure")), 
@@ -434,9 +495,10 @@ get_function_configuration_output <- function (...)
             pattern = "arn:(aws[a-zA-Z-]*)?:lambda:[a-z]{2}(-gov)?-[a-z]+-\\d{1}:\\d{12}:function:[a-zA-Z0-9-_\\.]+(:(\\$LATEST|[a-zA-Z0-9-_]+))?")), 
         Runtime = structure(logical(0), tags = list(type = "string", 
             enum = c("nodejs", "nodejs4.3", "nodejs6.10", "nodejs8.10", 
-                "java8", "python2.7", "python3.6", "dotnetcore1.0", 
-                "dotnetcore2.0", "dotnetcore2.1", "nodejs4.3-edge", 
-                "go1.x"))), Role = structure(logical(0), tags = list(type = "string", 
+                "java8", "python2.7", "python3.6", "python3.7", 
+                "dotnetcore1.0", "dotnetcore2.0", "dotnetcore2.1", 
+                "nodejs4.3-edge", "go1.x", "ruby2.5", "provided"))), 
+        Role = structure(logical(0), tags = list(type = "string", 
             pattern = "arn:(aws[a-zA-Z-]*)?:iam::\\d{12}:role/?[a-zA-Z_0-9+=,.@\\-_/]+")), 
         Handler = structure(logical(0), tags = list(type = "string", 
             max = 128L, pattern = "[^\\s]+")), CodeSize = structure(logical(0), 
@@ -467,6 +529,69 @@ get_function_configuration_output <- function (...)
             tags = list(type = "string", enum = c("Active", "PassThrough")))), 
             tags = list(type = "structure")), MasterArn = structure(logical(0), 
             tags = list(type = "string", pattern = "arn:(aws[a-zA-Z-]*)?:lambda:[a-z]{2}(-gov)?-[a-z]+-\\d{1}:\\d{12}:function:[a-zA-Z0-9-_]+(:(\\$LATEST|[a-zA-Z0-9-_]+))?")), 
+        RevisionId = structure(logical(0), tags = list(type = "string")), 
+        Layers = structure(list(structure(list(Arn = structure(logical(0), 
+            tags = list(type = "string", max = 140L, min = 1L, 
+                pattern = "arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+:[0-9]+")), 
+            CodeSize = structure(logical(0), tags = list(type = "long"))), 
+            tags = list(type = "structure"))), tags = list(type = "list"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+get_layer_version_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(LayerName = structure(logical(0), 
+        tags = list(location = "uri", locationName = "LayerName", 
+            type = "string", max = 140L, min = 1L, pattern = "(arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+)|[a-zA-Z0-9-_]+")), 
+        VersionNumber = structure(logical(0), tags = list(location = "uri", 
+            locationName = "VersionNumber", type = "long"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+get_layer_version_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Content = structure(list(Location = structure(logical(0), 
+        tags = list(type = "string")), CodeSha256 = structure(logical(0), 
+        tags = list(type = "string")), CodeSize = structure(logical(0), 
+        tags = list(type = "long"))), tags = list(type = "structure")), 
+        LayerArn = structure(logical(0), tags = list(type = "string", 
+            max = 140L, min = 1L, pattern = "arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+")), 
+        LayerVersionArn = structure(logical(0), tags = list(type = "string", 
+            max = 140L, min = 1L, pattern = "arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+:[0-9]+")), 
+        Description = structure(logical(0), tags = list(type = "string", 
+            max = 256L, min = 0L)), CreatedDate = structure(logical(0), 
+            tags = list(type = "string")), Version = structure(logical(0), 
+            tags = list(type = "long")), CompatibleRuntimes = structure(list(structure(logical(0), 
+            tags = list(type = "string", enum = c("nodejs", "nodejs4.3", 
+                "nodejs6.10", "nodejs8.10", "java8", "python2.7", 
+                "python3.6", "python3.7", "dotnetcore1.0", "dotnetcore2.0", 
+                "dotnetcore2.1", "nodejs4.3-edge", "go1.x", "ruby2.5", 
+                "provided")))), tags = list(type = "list", max = 5L)), 
+        LicenseInfo = structure(logical(0), tags = list(type = "string", 
+            max = 512L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+get_layer_version_policy_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(LayerName = structure(logical(0), 
+        tags = list(location = "uri", locationName = "LayerName", 
+            type = "string", max = 140L, min = 1L, pattern = "(arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+)|[a-zA-Z0-9-_]+")), 
+        VersionNumber = structure(logical(0), tags = list(location = "uri", 
+            locationName = "VersionNumber", type = "long"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+get_layer_version_policy_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Policy = structure(logical(0), tags = list(type = "string")), 
         RevisionId = structure(logical(0), tags = list(type = "string"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
@@ -652,9 +777,10 @@ list_functions_output <- function (...)
             pattern = "arn:(aws[a-zA-Z-]*)?:lambda:[a-z]{2}(-gov)?-[a-z]+-\\d{1}:\\d{12}:function:[a-zA-Z0-9-_\\.]+(:(\\$LATEST|[a-zA-Z0-9-_]+))?")), 
         Runtime = structure(logical(0), tags = list(type = "string", 
             enum = c("nodejs", "nodejs4.3", "nodejs6.10", "nodejs8.10", 
-                "java8", "python2.7", "python3.6", "dotnetcore1.0", 
-                "dotnetcore2.0", "dotnetcore2.1", "nodejs4.3-edge", 
-                "go1.x"))), Role = structure(logical(0), tags = list(type = "string", 
+                "java8", "python2.7", "python3.6", "python3.7", 
+                "dotnetcore1.0", "dotnetcore2.0", "dotnetcore2.1", 
+                "nodejs4.3-edge", "go1.x", "ruby2.5", "provided"))), 
+        Role = structure(logical(0), tags = list(type = "string", 
             pattern = "arn:(aws[a-zA-Z-]*)?:iam::\\d{12}:role/?[a-zA-Z_0-9+=,.@\\-_/]+")), 
         Handler = structure(logical(0), tags = list(type = "string", 
             max = 128L, pattern = "[^\\s]+")), CodeSize = structure(logical(0), 
@@ -685,7 +811,96 @@ list_functions_output <- function (...)
             tags = list(type = "string", enum = c("Active", "PassThrough")))), 
             tags = list(type = "structure")), MasterArn = structure(logical(0), 
             tags = list(type = "string", pattern = "arn:(aws[a-zA-Z-]*)?:lambda:[a-z]{2}(-gov)?-[a-z]+-\\d{1}:\\d{12}:function:[a-zA-Z0-9-_]+(:(\\$LATEST|[a-zA-Z0-9-_]+))?")), 
-        RevisionId = structure(logical(0), tags = list(type = "string"))), 
+        RevisionId = structure(logical(0), tags = list(type = "string")), 
+        Layers = structure(list(structure(list(Arn = structure(logical(0), 
+            tags = list(type = "string", max = 140L, min = 1L, 
+                pattern = "arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+:[0-9]+")), 
+            CodeSize = structure(logical(0), tags = list(type = "long"))), 
+            tags = list(type = "structure"))), tags = list(type = "list"))), 
+        tags = list(type = "structure"))), tags = list(type = "list"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_layer_versions_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(CompatibleRuntime = structure(logical(0), 
+        tags = list(location = "querystring", locationName = "CompatibleRuntime", 
+            type = "string", enum = c("nodejs", "nodejs4.3", 
+                "nodejs6.10", "nodejs8.10", "java8", "python2.7", 
+                "python3.6", "python3.7", "dotnetcore1.0", "dotnetcore2.0", 
+                "dotnetcore2.1", "nodejs4.3-edge", "go1.x", "ruby2.5", 
+                "provided"))), LayerName = structure(logical(0), 
+        tags = list(location = "uri", locationName = "LayerName", 
+            type = "string", max = 140L, min = 1L, pattern = "(arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+)|[a-zA-Z0-9-_]+")), 
+        Marker = structure(logical(0), tags = list(location = "querystring", 
+            locationName = "Marker", type = "string")), MaxItems = structure(logical(0), 
+            tags = list(location = "querystring", locationName = "MaxItems", 
+                type = "integer", max = 50L, min = 1L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_layer_versions_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(NextMarker = structure(logical(0), 
+        tags = list(type = "string")), LayerVersions = structure(list(structure(list(LayerVersionArn = structure(logical(0), 
+        tags = list(type = "string", max = 140L, min = 1L, pattern = "arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+:[0-9]+")), 
+        Version = structure(logical(0), tags = list(type = "long")), 
+        Description = structure(logical(0), tags = list(type = "string", 
+            max = 256L, min = 0L)), CreatedDate = structure(logical(0), 
+            tags = list(type = "string")), CompatibleRuntimes = structure(list(structure(logical(0), 
+            tags = list(type = "string", enum = c("nodejs", "nodejs4.3", 
+                "nodejs6.10", "nodejs8.10", "java8", "python2.7", 
+                "python3.6", "python3.7", "dotnetcore1.0", "dotnetcore2.0", 
+                "dotnetcore2.1", "nodejs4.3-edge", "go1.x", "ruby2.5", 
+                "provided")))), tags = list(type = "list", max = 5L)), 
+        LicenseInfo = structure(logical(0), tags = list(type = "string", 
+            max = 512L))), tags = list(type = "structure"))), 
+        tags = list(type = "list"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_layers_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(CompatibleRuntime = structure(logical(0), 
+        tags = list(location = "querystring", locationName = "CompatibleRuntime", 
+            type = "string", enum = c("nodejs", "nodejs4.3", 
+                "nodejs6.10", "nodejs8.10", "java8", "python2.7", 
+                "python3.6", "python3.7", "dotnetcore1.0", "dotnetcore2.0", 
+                "dotnetcore2.1", "nodejs4.3-edge", "go1.x", "ruby2.5", 
+                "provided"))), Marker = structure(logical(0), 
+        tags = list(location = "querystring", locationName = "Marker", 
+            type = "string")), MaxItems = structure(logical(0), 
+        tags = list(location = "querystring", locationName = "MaxItems", 
+            type = "integer", max = 50L, min = 1L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_layers_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(NextMarker = structure(logical(0), 
+        tags = list(type = "string")), Layers = structure(list(structure(list(LayerName = structure(logical(0), 
+        tags = list(type = "string", max = 140L, min = 1L, pattern = "(arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+)|[a-zA-Z0-9-_]+")), 
+        LayerArn = structure(logical(0), tags = list(type = "string", 
+            max = 140L, min = 1L, pattern = "arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+")), 
+        LatestMatchingVersion = structure(list(LayerVersionArn = structure(logical(0), 
+            tags = list(type = "string", max = 140L, min = 1L, 
+                pattern = "arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+:[0-9]+")), 
+            Version = structure(logical(0), tags = list(type = "long")), 
+            Description = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L)), CreatedDate = structure(logical(0), 
+                tags = list(type = "string")), CompatibleRuntimes = structure(list(structure(logical(0), 
+                tags = list(type = "string", enum = c("nodejs", 
+                  "nodejs4.3", "nodejs6.10", "nodejs8.10", "java8", 
+                  "python2.7", "python3.6", "python3.7", "dotnetcore1.0", 
+                  "dotnetcore2.0", "dotnetcore2.1", "nodejs4.3-edge", 
+                  "go1.x", "ruby2.5", "provided")))), tags = list(type = "list", 
+                max = 5L)), LicenseInfo = structure(logical(0), 
+                tags = list(type = "string", max = 512L))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))), tags = list(type = "list"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
@@ -734,9 +949,10 @@ list_versions_by_function_output <- function (...)
             pattern = "arn:(aws[a-zA-Z-]*)?:lambda:[a-z]{2}(-gov)?-[a-z]+-\\d{1}:\\d{12}:function:[a-zA-Z0-9-_\\.]+(:(\\$LATEST|[a-zA-Z0-9-_]+))?")), 
         Runtime = structure(logical(0), tags = list(type = "string", 
             enum = c("nodejs", "nodejs4.3", "nodejs6.10", "nodejs8.10", 
-                "java8", "python2.7", "python3.6", "dotnetcore1.0", 
-                "dotnetcore2.0", "dotnetcore2.1", "nodejs4.3-edge", 
-                "go1.x"))), Role = structure(logical(0), tags = list(type = "string", 
+                "java8", "python2.7", "python3.6", "python3.7", 
+                "dotnetcore1.0", "dotnetcore2.0", "dotnetcore2.1", 
+                "nodejs4.3-edge", "go1.x", "ruby2.5", "provided"))), 
+        Role = structure(logical(0), tags = list(type = "string", 
             pattern = "arn:(aws[a-zA-Z-]*)?:iam::\\d{12}:role/?[a-zA-Z_0-9+=,.@\\-_/]+")), 
         Handler = structure(logical(0), tags = list(type = "string", 
             max = 128L, pattern = "[^\\s]+")), CodeSize = structure(logical(0), 
@@ -767,9 +983,65 @@ list_versions_by_function_output <- function (...)
             tags = list(type = "string", enum = c("Active", "PassThrough")))), 
             tags = list(type = "structure")), MasterArn = structure(logical(0), 
             tags = list(type = "string", pattern = "arn:(aws[a-zA-Z-]*)?:lambda:[a-z]{2}(-gov)?-[a-z]+-\\d{1}:\\d{12}:function:[a-zA-Z0-9-_]+(:(\\$LATEST|[a-zA-Z0-9-_]+))?")), 
-        RevisionId = structure(logical(0), tags = list(type = "string"))), 
+        RevisionId = structure(logical(0), tags = list(type = "string")), 
+        Layers = structure(list(structure(list(Arn = structure(logical(0), 
+            tags = list(type = "string", max = 140L, min = 1L, 
+                pattern = "arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+:[0-9]+")), 
+            CodeSize = structure(logical(0), tags = list(type = "long"))), 
+            tags = list(type = "structure"))), tags = list(type = "list"))), 
         tags = list(type = "structure"))), tags = list(type = "list"))), 
         tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+publish_layer_version_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(LayerName = structure(logical(0), 
+        tags = list(location = "uri", locationName = "LayerName", 
+            type = "string", max = 140L, min = 1L, pattern = "(arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+)|[a-zA-Z0-9-_]+")), 
+        Description = structure(logical(0), tags = list(type = "string", 
+            max = 256L, min = 0L)), Content = structure(list(S3Bucket = structure(logical(0), 
+            tags = list(type = "string", max = 63L, min = 3L, 
+                pattern = "^[0-9A-Za-z\\.\\-_]*(?<!\\.)$")), 
+            S3Key = structure(logical(0), tags = list(type = "string", 
+                max = 1024L, min = 1L)), S3ObjectVersion = structure(logical(0), 
+                tags = list(type = "string", max = 1024L, min = 1L)), 
+            ZipFile = structure(logical(0), tags = list(type = "blob", 
+                sensitive = TRUE))), tags = list(type = "structure")), 
+        CompatibleRuntimes = structure(list(structure(logical(0), 
+            tags = list(type = "string", enum = c("nodejs", "nodejs4.3", 
+                "nodejs6.10", "nodejs8.10", "java8", "python2.7", 
+                "python3.6", "python3.7", "dotnetcore1.0", "dotnetcore2.0", 
+                "dotnetcore2.1", "nodejs4.3-edge", "go1.x", "ruby2.5", 
+                "provided")))), tags = list(type = "list", max = 5L)), 
+        LicenseInfo = structure(logical(0), tags = list(type = "string", 
+            max = 512L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+publish_layer_version_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Content = structure(list(Location = structure(logical(0), 
+        tags = list(type = "string")), CodeSha256 = structure(logical(0), 
+        tags = list(type = "string")), CodeSize = structure(logical(0), 
+        tags = list(type = "long"))), tags = list(type = "structure")), 
+        LayerArn = structure(logical(0), tags = list(type = "string", 
+            max = 140L, min = 1L, pattern = "arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+")), 
+        LayerVersionArn = structure(logical(0), tags = list(type = "string", 
+            max = 140L, min = 1L, pattern = "arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+:[0-9]+")), 
+        Description = structure(logical(0), tags = list(type = "string", 
+            max = 256L, min = 0L)), CreatedDate = structure(logical(0), 
+            tags = list(type = "string")), Version = structure(logical(0), 
+            tags = list(type = "long")), CompatibleRuntimes = structure(list(structure(logical(0), 
+            tags = list(type = "string", enum = c("nodejs", "nodejs4.3", 
+                "nodejs6.10", "nodejs8.10", "java8", "python2.7", 
+                "python3.6", "python3.7", "dotnetcore1.0", "dotnetcore2.0", 
+                "dotnetcore2.1", "nodejs4.3-edge", "go1.x", "ruby2.5", 
+                "provided")))), tags = list(type = "list", max = 5L)), 
+        LicenseInfo = structure(logical(0), tags = list(type = "string", 
+            max = 512L))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -795,9 +1067,10 @@ publish_version_output <- function (...)
             pattern = "arn:(aws[a-zA-Z-]*)?:lambda:[a-z]{2}(-gov)?-[a-z]+-\\d{1}:\\d{12}:function:[a-zA-Z0-9-_\\.]+(:(\\$LATEST|[a-zA-Z0-9-_]+))?")), 
         Runtime = structure(logical(0), tags = list(type = "string", 
             enum = c("nodejs", "nodejs4.3", "nodejs6.10", "nodejs8.10", 
-                "java8", "python2.7", "python3.6", "dotnetcore1.0", 
-                "dotnetcore2.0", "dotnetcore2.1", "nodejs4.3-edge", 
-                "go1.x"))), Role = structure(logical(0), tags = list(type = "string", 
+                "java8", "python2.7", "python3.6", "python3.7", 
+                "dotnetcore1.0", "dotnetcore2.0", "dotnetcore2.1", 
+                "nodejs4.3-edge", "go1.x", "ruby2.5", "provided"))), 
+        Role = structure(logical(0), tags = list(type = "string", 
             pattern = "arn:(aws[a-zA-Z-]*)?:iam::\\d{12}:role/?[a-zA-Z_0-9+=,.@\\-_/]+")), 
         Handler = structure(logical(0), tags = list(type = "string", 
             max = 128L, pattern = "[^\\s]+")), CodeSize = structure(logical(0), 
@@ -828,7 +1101,12 @@ publish_version_output <- function (...)
             tags = list(type = "string", enum = c("Active", "PassThrough")))), 
             tags = list(type = "structure")), MasterArn = structure(logical(0), 
             tags = list(type = "string", pattern = "arn:(aws[a-zA-Z-]*)?:lambda:[a-z]{2}(-gov)?-[a-z]+-\\d{1}:\\d{12}:function:[a-zA-Z0-9-_]+(:(\\$LATEST|[a-zA-Z0-9-_]+))?")), 
-        RevisionId = structure(logical(0), tags = list(type = "string"))), 
+        RevisionId = structure(logical(0), tags = list(type = "string")), 
+        Layers = structure(list(structure(list(Arn = structure(logical(0), 
+            tags = list(type = "string", max = 140L, min = 1L, 
+                pattern = "arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+:[0-9]+")), 
+            CodeSize = structure(logical(0), tags = list(type = "long"))), 
+            tags = list(type = "structure"))), tags = list(type = "list"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -850,6 +1128,27 @@ put_function_concurrency_output <- function (...)
     shape <- structure(list(ReservedConcurrentExecutions = structure(logical(0), 
         tags = list(type = "integer", min = 0L))), tags = list(type = "structure"))
     return(populate(args, shape))
+}
+
+remove_layer_version_permission_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(LayerName = structure(logical(0), 
+        tags = list(location = "uri", locationName = "LayerName", 
+            type = "string", max = 140L, min = 1L, pattern = "(arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+)|[a-zA-Z0-9-_]+")), 
+        VersionNumber = structure(logical(0), tags = list(location = "uri", 
+            locationName = "VersionNumber", type = "long")), 
+        StatementId = structure(logical(0), tags = list(location = "uri", 
+            locationName = "StatementId", type = "string", max = 100L, 
+            min = 1L, pattern = "([a-zA-Z0-9-_]+)")), RevisionId = structure(logical(0), 
+            tags = list(location = "querystring", locationName = "RevisionId", 
+                type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+remove_layer_version_permission_output <- function () 
+{
+    return(list())
 }
 
 remove_permission_input <- function (...) 
@@ -1003,9 +1302,10 @@ update_function_code_output <- function (...)
             pattern = "arn:(aws[a-zA-Z-]*)?:lambda:[a-z]{2}(-gov)?-[a-z]+-\\d{1}:\\d{12}:function:[a-zA-Z0-9-_\\.]+(:(\\$LATEST|[a-zA-Z0-9-_]+))?")), 
         Runtime = structure(logical(0), tags = list(type = "string", 
             enum = c("nodejs", "nodejs4.3", "nodejs6.10", "nodejs8.10", 
-                "java8", "python2.7", "python3.6", "dotnetcore1.0", 
-                "dotnetcore2.0", "dotnetcore2.1", "nodejs4.3-edge", 
-                "go1.x"))), Role = structure(logical(0), tags = list(type = "string", 
+                "java8", "python2.7", "python3.6", "python3.7", 
+                "dotnetcore1.0", "dotnetcore2.0", "dotnetcore2.1", 
+                "nodejs4.3-edge", "go1.x", "ruby2.5", "provided"))), 
+        Role = structure(logical(0), tags = list(type = "string", 
             pattern = "arn:(aws[a-zA-Z-]*)?:iam::\\d{12}:role/?[a-zA-Z_0-9+=,.@\\-_/]+")), 
         Handler = structure(logical(0), tags = list(type = "string", 
             max = 128L, pattern = "[^\\s]+")), CodeSize = structure(logical(0), 
@@ -1036,7 +1336,12 @@ update_function_code_output <- function (...)
             tags = list(type = "string", enum = c("Active", "PassThrough")))), 
             tags = list(type = "structure")), MasterArn = structure(logical(0), 
             tags = list(type = "string", pattern = "arn:(aws[a-zA-Z-]*)?:lambda:[a-z]{2}(-gov)?-[a-z]+-\\d{1}:\\d{12}:function:[a-zA-Z0-9-_]+(:(\\$LATEST|[a-zA-Z0-9-_]+))?")), 
-        RevisionId = structure(logical(0), tags = list(type = "string"))), 
+        RevisionId = structure(logical(0), tags = list(type = "string")), 
+        Layers = structure(list(structure(list(Arn = structure(logical(0), 
+            tags = list(type = "string", max = 140L, min = 1L, 
+                pattern = "arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+:[0-9]+")), 
+            CodeSize = structure(logical(0), tags = list(type = "long"))), 
+            tags = list(type = "structure"))), tags = list(type = "list"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -1063,16 +1368,20 @@ update_function_configuration_input <- function (...)
             tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure")), 
         Runtime = structure(logical(0), tags = list(type = "string", 
             enum = c("nodejs", "nodejs4.3", "nodejs6.10", "nodejs8.10", 
-                "java8", "python2.7", "python3.6", "dotnetcore1.0", 
-                "dotnetcore2.0", "dotnetcore2.1", "nodejs4.3-edge", 
-                "go1.x"))), DeadLetterConfig = structure(list(TargetArn = structure(logical(0), 
+                "java8", "python2.7", "python3.6", "python3.7", 
+                "dotnetcore1.0", "dotnetcore2.0", "dotnetcore2.1", 
+                "nodejs4.3-edge", "go1.x", "ruby2.5", "provided"))), 
+        DeadLetterConfig = structure(list(TargetArn = structure(logical(0), 
             tags = list(type = "string", pattern = "(arn:(aws[a-zA-Z-]*)?:[a-z0-9-.]+:.*)|()"))), 
             tags = list(type = "structure")), KMSKeyArn = structure(logical(0), 
             tags = list(type = "string", pattern = "(arn:(aws[a-zA-Z-]*)?:[a-z0-9-.]+:.*)|()")), 
         TracingConfig = structure(list(Mode = structure(logical(0), 
             tags = list(type = "string", enum = c("Active", "PassThrough")))), 
             tags = list(type = "structure")), RevisionId = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))
+            tags = list(type = "string")), Layers = structure(list(structure(logical(0), 
+            tags = list(type = "string", max = 140L, min = 1L, 
+                pattern = "arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+:[0-9]+"))), 
+            tags = list(type = "list"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1085,9 +1394,10 @@ update_function_configuration_output <- function (...)
             pattern = "arn:(aws[a-zA-Z-]*)?:lambda:[a-z]{2}(-gov)?-[a-z]+-\\d{1}:\\d{12}:function:[a-zA-Z0-9-_\\.]+(:(\\$LATEST|[a-zA-Z0-9-_]+))?")), 
         Runtime = structure(logical(0), tags = list(type = "string", 
             enum = c("nodejs", "nodejs4.3", "nodejs6.10", "nodejs8.10", 
-                "java8", "python2.7", "python3.6", "dotnetcore1.0", 
-                "dotnetcore2.0", "dotnetcore2.1", "nodejs4.3-edge", 
-                "go1.x"))), Role = structure(logical(0), tags = list(type = "string", 
+                "java8", "python2.7", "python3.6", "python3.7", 
+                "dotnetcore1.0", "dotnetcore2.0", "dotnetcore2.1", 
+                "nodejs4.3-edge", "go1.x", "ruby2.5", "provided"))), 
+        Role = structure(logical(0), tags = list(type = "string", 
             pattern = "arn:(aws[a-zA-Z-]*)?:iam::\\d{12}:role/?[a-zA-Z_0-9+=,.@\\-_/]+")), 
         Handler = structure(logical(0), tags = list(type = "string", 
             max = 128L, pattern = "[^\\s]+")), CodeSize = structure(logical(0), 
@@ -1118,7 +1428,12 @@ update_function_configuration_output <- function (...)
             tags = list(type = "string", enum = c("Active", "PassThrough")))), 
             tags = list(type = "structure")), MasterArn = structure(logical(0), 
             tags = list(type = "string", pattern = "arn:(aws[a-zA-Z-]*)?:lambda:[a-z]{2}(-gov)?-[a-z]+-\\d{1}:\\d{12}:function:[a-zA-Z0-9-_]+(:(\\$LATEST|[a-zA-Z0-9-_]+))?")), 
-        RevisionId = structure(logical(0), tags = list(type = "string"))), 
+        RevisionId = structure(logical(0), tags = list(type = "string")), 
+        Layers = structure(list(structure(list(Arn = structure(logical(0), 
+            tags = list(type = "string", max = 140L, min = 1L, 
+                pattern = "arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+:[0-9]+")), 
+            CodeSize = structure(logical(0), tags = list(type = "long"))), 
+            tags = list(type = "structure"))), tags = list(type = "list"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }

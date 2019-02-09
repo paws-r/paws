@@ -4,9 +4,7 @@
 \alias{get_resolver_rule}
 \title{Gets information about a specified resolver rule, such as the domain name that the rule forwards DNS queries for and the ID of the outbound resolver endpoint that the rule is associated with}
 \usage{
-get_resolver_rule(
-  ResolverRuleId = "string"
-)
+get_resolver_rule(ResolverRuleId)
 }
 \arguments{
 \item{ResolverRuleId}{[required] The ID of the resolver rule that you want to get information about.}
@@ -14,6 +12,10 @@ get_resolver_rule(
 \description{
 Gets information about a specified resolver rule, such as the domain name that the rule forwards DNS queries for and the ID of the outbound resolver endpoint that the rule is associated with.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_resolver_rule(
+  ResolverRuleId = "string"
+)
 }
+}
+

@@ -7,7 +7,7 @@
 tag_resource(resourceArn, tags)
 }
 \arguments{
-\item{resourceArn}{[required] The ARN of the resource whose tags will be modified.}
+\item{resourceArn}{[required] The ARN of the resource whose tags you want to modify.}
 
 \item{tags}{[required] The new or modified tags for the resource.}
 }

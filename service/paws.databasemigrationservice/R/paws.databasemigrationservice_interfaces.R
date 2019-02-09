@@ -71,7 +71,16 @@ create_endpoint_input <- function (...)
                 tags = list(type = "string")), DocsToInvestigate = structure(logical(0), 
                 tags = list(type = "string")), AuthSource = structure(logical(0), 
                 tags = list(type = "string")), KmsKeyId = structure(logical(0), 
-                tags = list(type = "string"))), tags = list(type = "structure"))), 
+                tags = list(type = "string"))), tags = list(type = "structure")), 
+        KinesisSettings = structure(list(StreamArn = structure(logical(0), 
+            tags = list(type = "string")), MessageFormat = structure(logical(0), 
+            tags = list(type = "string", enum = "json")), ServiceAccessRoleArn = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure")), 
+        ElasticsearchSettings = structure(list(ServiceAccessRoleArn = structure(logical(0), 
+            tags = list(type = "string")), EndpointUri = structure(logical(0), 
+            tags = list(type = "string")), FullLoadErrorPercentage = structure(logical(0), 
+            tags = list(type = "integer")), ErrorRetryDuration = structure(logical(0), 
+            tags = list(type = "integer"))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -126,7 +135,16 @@ create_endpoint_output <- function (...)
                 tags = list(type = "string")), DocsToInvestigate = structure(logical(0), 
                 tags = list(type = "string")), AuthSource = structure(logical(0), 
                 tags = list(type = "string")), KmsKeyId = structure(logical(0), 
-                tags = list(type = "string"))), tags = list(type = "structure"))), 
+                tags = list(type = "string"))), tags = list(type = "structure")), 
+        KinesisSettings = structure(list(StreamArn = structure(logical(0), 
+            tags = list(type = "string")), MessageFormat = structure(logical(0), 
+            tags = list(type = "string", enum = "json")), ServiceAccessRoleArn = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure")), 
+        ElasticsearchSettings = structure(list(ServiceAccessRoleArn = structure(logical(0), 
+            tags = list(type = "string")), EndpointUri = structure(logical(0), 
+            tags = list(type = "string")), FullLoadErrorPercentage = structure(logical(0), 
+            tags = list(type = "integer")), ErrorRetryDuration = structure(logical(0), 
+            tags = list(type = "integer"))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -185,7 +203,8 @@ create_replication_instance_input <- function (...)
             tags = list(type = "string"))), tags = list(type = "structure"))), 
             tags = list(type = "list")), KmsKeyId = structure(logical(0), 
             tags = list(type = "string")), PubliclyAccessible = structure(logical(0), 
-            tags = list(type = "boolean"))), tags = list(type = "structure"))
+            tags = list(type = "boolean")), DnsNameServers = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -231,7 +250,8 @@ create_replication_instance_output <- function (...)
             tags = list(type = "string"))), tags = list(type = "list")), 
         PubliclyAccessible = structure(logical(0), tags = list(type = "boolean")), 
         SecondaryAvailabilityZone = structure(logical(0), tags = list(type = "string")), 
-        FreeUntil = structure(logical(0), tags = list(type = "timestamp"))), 
+        FreeUntil = structure(logical(0), tags = list(type = "timestamp")), 
+        DnsNameServers = structure(logical(0), tags = list(type = "string"))), 
         tags = list(type = "structure"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -402,7 +422,16 @@ delete_endpoint_output <- function (...)
                 tags = list(type = "string")), DocsToInvestigate = structure(logical(0), 
                 tags = list(type = "string")), AuthSource = structure(logical(0), 
                 tags = list(type = "string")), KmsKeyId = structure(logical(0), 
-                tags = list(type = "string"))), tags = list(type = "structure"))), 
+                tags = list(type = "string"))), tags = list(type = "structure")), 
+        KinesisSettings = structure(list(StreamArn = structure(logical(0), 
+            tags = list(type = "string")), MessageFormat = structure(logical(0), 
+            tags = list(type = "string", enum = "json")), ServiceAccessRoleArn = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure")), 
+        ElasticsearchSettings = structure(list(ServiceAccessRoleArn = structure(logical(0), 
+            tags = list(type = "string")), EndpointUri = structure(logical(0), 
+            tags = list(type = "string")), FullLoadErrorPercentage = structure(logical(0), 
+            tags = list(type = "integer")), ErrorRetryDuration = structure(logical(0), 
+            tags = list(type = "integer"))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -483,7 +512,8 @@ delete_replication_instance_output <- function (...)
             tags = list(type = "string"))), tags = list(type = "list")), 
         PubliclyAccessible = structure(logical(0), tags = list(type = "boolean")), 
         SecondaryAvailabilityZone = structure(logical(0), tags = list(type = "string")), 
-        FreeUntil = structure(logical(0), tags = list(type = "timestamp"))), 
+        FreeUntil = structure(logical(0), tags = list(type = "timestamp")), 
+        DnsNameServers = structure(logical(0), tags = list(type = "string"))), 
         tags = list(type = "structure"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -712,7 +742,17 @@ describe_endpoints_output <- function (...)
                   tags = list(type = "string")), DocsToInvestigate = structure(logical(0), 
                   tags = list(type = "string")), AuthSource = structure(logical(0), 
                   tags = list(type = "string")), KmsKeyId = structure(logical(0), 
-                  tags = list(type = "string"))), tags = list(type = "structure"))), 
+                  tags = list(type = "string"))), tags = list(type = "structure")), 
+            KinesisSettings = structure(list(StreamArn = structure(logical(0), 
+                tags = list(type = "string")), MessageFormat = structure(logical(0), 
+                tags = list(type = "string", enum = "json")), 
+                ServiceAccessRoleArn = structure(logical(0), 
+                  tags = list(type = "string"))), tags = list(type = "structure")), 
+            ElasticsearchSettings = structure(list(ServiceAccessRoleArn = structure(logical(0), 
+                tags = list(type = "string")), EndpointUri = structure(logical(0), 
+                tags = list(type = "string")), FullLoadErrorPercentage = structure(logical(0), 
+                tags = list(type = "integer")), ErrorRetryDuration = structure(logical(0), 
+                tags = list(type = "integer"))), tags = list(type = "structure"))), 
             tags = list(type = "structure"))), tags = list(type = "list"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
@@ -939,7 +979,8 @@ describe_replication_instances_output <- function (...)
             PubliclyAccessible = structure(logical(0), tags = list(type = "boolean")), 
             SecondaryAvailabilityZone = structure(logical(0), 
                 tags = list(type = "string")), FreeUntil = structure(logical(0), 
-                tags = list(type = "timestamp"))), tags = list(type = "structure"))), 
+                tags = list(type = "timestamp")), DnsNameServers = structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "structure"))), 
             tags = list(type = "list"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -1203,7 +1244,16 @@ modify_endpoint_input <- function (...)
                 tags = list(type = "string")), DocsToInvestigate = structure(logical(0), 
                 tags = list(type = "string")), AuthSource = structure(logical(0), 
                 tags = list(type = "string")), KmsKeyId = structure(logical(0), 
-                tags = list(type = "string"))), tags = list(type = "structure"))), 
+                tags = list(type = "string"))), tags = list(type = "structure")), 
+        KinesisSettings = structure(list(StreamArn = structure(logical(0), 
+            tags = list(type = "string")), MessageFormat = structure(logical(0), 
+            tags = list(type = "string", enum = "json")), ServiceAccessRoleArn = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure")), 
+        ElasticsearchSettings = structure(list(ServiceAccessRoleArn = structure(logical(0), 
+            tags = list(type = "string")), EndpointUri = structure(logical(0), 
+            tags = list(type = "string")), FullLoadErrorPercentage = structure(logical(0), 
+            tags = list(type = "integer")), ErrorRetryDuration = structure(logical(0), 
+            tags = list(type = "integer"))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -1258,7 +1308,16 @@ modify_endpoint_output <- function (...)
                 tags = list(type = "string")), DocsToInvestigate = structure(logical(0), 
                 tags = list(type = "string")), AuthSource = structure(logical(0), 
                 tags = list(type = "string")), KmsKeyId = structure(logical(0), 
-                tags = list(type = "string"))), tags = list(type = "structure"))), 
+                tags = list(type = "string"))), tags = list(type = "structure")), 
+        KinesisSettings = structure(list(StreamArn = structure(logical(0), 
+            tags = list(type = "string")), MessageFormat = structure(logical(0), 
+            tags = list(type = "string", enum = "json")), ServiceAccessRoleArn = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure")), 
+        ElasticsearchSettings = structure(list(ServiceAccessRoleArn = structure(logical(0), 
+            tags = list(type = "string")), EndpointUri = structure(logical(0), 
+            tags = list(type = "string")), FullLoadErrorPercentage = structure(logical(0), 
+            tags = list(type = "integer")), ErrorRetryDuration = structure(logical(0), 
+            tags = list(type = "integer"))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -1355,7 +1414,8 @@ modify_replication_instance_output <- function (...)
             tags = list(type = "string"))), tags = list(type = "list")), 
         PubliclyAccessible = structure(logical(0), tags = list(type = "boolean")), 
         SecondaryAvailabilityZone = structure(logical(0), tags = list(type = "string")), 
-        FreeUntil = structure(logical(0), tags = list(type = "timestamp"))), 
+        FreeUntil = structure(logical(0), tags = list(type = "timestamp")), 
+        DnsNameServers = structure(logical(0), tags = list(type = "string"))), 
         tags = list(type = "structure"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -1485,7 +1545,8 @@ reboot_replication_instance_output <- function (...)
             tags = list(type = "string"))), tags = list(type = "list")), 
         PubliclyAccessible = structure(logical(0), tags = list(type = "boolean")), 
         SecondaryAvailabilityZone = structure(logical(0), tags = list(type = "string")), 
-        FreeUntil = structure(logical(0), tags = list(type = "timestamp"))), 
+        FreeUntil = structure(logical(0), tags = list(type = "timestamp")), 
+        DnsNameServers = structure(logical(0), tags = list(type = "string"))), 
         tags = list(type = "structure"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }

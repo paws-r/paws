@@ -4,10 +4,8 @@
 \alias{put_configuration_set_delivery_options}
 \title{Associate a configuration set with a dedicated IP pool}
 \usage{
-put_configuration_set_delivery_options(
-  ConfigurationSetName = "string",
-  SendingPoolName = "string"
-)
+put_configuration_set_delivery_options(ConfigurationSetName,
+  SendingPoolName = NULL)
 }
 \arguments{
 \item{ConfigurationSetName}{[required] The name of the configuration set that you want to associate with a dedicated IP pool.}
@@ -17,6 +15,11 @@ put_configuration_set_delivery_options(
 \description{
 Associate a configuration set with a dedicated IP pool. You can use dedicated IP pools to create groups of dedicated IP addresses for sending specific types of email.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_configuration_set_delivery_options(
+  ConfigurationSetName = "string",
+  SendingPoolName = "string"
+)
 }
+}
+

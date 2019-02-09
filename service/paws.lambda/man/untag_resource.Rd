@@ -2,17 +2,17 @@
 % Please edit documentation in R/paws.lambda_operations.R
 \name{untag_resource}
 \alias{untag_resource}
-\title{Removes tags from a Lambda function}
+\title{Removes tags from a function}
 \usage{
 untag_resource(Resource, TagKeys)
 }
 \arguments{
-\item{Resource}{[required] The ARN (Amazon Resource Name) of the function. For more information, see \href{http://docs.aws.amazon.com/lambda/latest/dg/tagging.html}{Tagging Lambda Functions} in the \strong{AWS Lambda Developer Guide}.}
+\item{Resource}{[required] The function's Amazon Resource Name (ARN).}
 
-\item{TagKeys}{[required] The list of tag keys to be deleted from the function. For more information, see \href{http://docs.aws.amazon.com/lambda/latest/dg/tagging.html}{Tagging Lambda Functions} in the \strong{AWS Lambda Developer Guide}.}
+\item{TagKeys}{[required] A list of tag keys to remove from the function.}
 }
 \description{
-Removes tags from a Lambda function. Requires the function ARN (Amazon Resource Name). For more information, see \href{http://docs.aws.amazon.com/lambda/latest/dg/tagging.html}{Tagging Lambda Functions} in the \strong{AWS Lambda Developer Guide}.
+Removes \href{http://docs.aws.amazon.com/lambda/latest/dg/tagging.html}{tags} from a function.
 }
 \section{Accepted Parameters}{
 \preformatted{untag_resource(

@@ -5,7 +5,8 @@
 \title{Adds a new configuration to AWS Elemental MediaTailor}
 \usage{
 put_playback_configuration(AdDecisionServerUrl = NULL,
-  CdnConfiguration = NULL, Name = NULL, SlateAdUrl = NULL,
+  CdnConfiguration = NULL, DashConfiguration = NULL, Name = NULL,
+  SlateAdUrl = NULL, TranscodeProfileName = NULL,
   VideoContentSourceUrl = NULL)
 }
 \arguments{
@@ -13,9 +14,13 @@ put_playback_configuration(AdDecisionServerUrl = NULL,
 
 \item{CdnConfiguration}{The configuration for using a content delivery network (CDN), like Amazon CloudFront, for content and ad segment management.}
 
+\item{DashConfiguration}{The configuration object for DASH content.}
+
 \item{Name}{The identifier for the configuration.}
 
 \item{SlateAdUrl}{The URL for a high-quality video asset to transcode and use to fill in time that's not used by ads. AWS Elemental MediaTailor shows the slate to fill in gaps in media content. Configuring the slate is optional for non-VPAID configurations. For VPAID, the slate is required because AWS Elemental MediaTailor provides it in the slots that are designated for dynamic ad content. The slate must be a high-quality asset that contains both audio and video.}
+
+\item{TranscodeProfileName}{Associate this playbackConfiguration with a custom transcode profile, overriding MediaTailor's dynamic transcoding defaults. Do not include this field if you have not setup custom profiles with the MediaTailor service team.}
 
 \item{VideoContentSourceUrl}{The URL prefix for the master playlist for the stream, minus the asset ID. The maximum length is 512 characters.}
 }
@@ -29,8 +34,12 @@ Adds a new configuration to AWS Elemental MediaTailor.
     AdSegmentUrlPrefix = "string",
     ContentSegmentUrlPrefix = "string"
   ),
+  DashConfiguration = list(
+    MpdLocation = "string"
+  ),
   Name = "string",
   SlateAdUrl = "string",
+  TranscodeProfileName = "string",
   VideoContentSourceUrl = "string"
 )
 }

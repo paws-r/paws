@@ -19,10 +19,10 @@ import_volume(AvailabilityZone, Description = NULL, DryRun = NULL,
 \item{Volume}{[required] The volume size.}
 }
 \description{
-Creates an import volume task using metadata from the specified disk image.For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/importing-your-volumes-into-amazon-ebs.html}{Importing Disks to Amazon EBS}.
+Creates an import volume task using metadata from the specified disk image.For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/importing-your-volumes-into-amazon-ebs.html}{Importing Disks to Amazon EBS}.
 }
 \details{
-For information about the import manifest referenced by this API action, see \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html}{VM Import Manifest}.
+For information about the import manifest referenced by this API action, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html}{VM Import Manifest}.
 }
 \section{Accepted Parameters}{
 \preformatted{import_volume(

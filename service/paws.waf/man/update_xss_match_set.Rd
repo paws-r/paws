@@ -11,7 +11,7 @@ update_xss_match_set(XssMatchSetId, ChangeToken, Updates)
 
 \item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 
-\item{Updates}{[required] An array of \code{XssMatchSetUpdate} objects that you want to insert into or delete from a XssMatchSet. For more information, see the applicable data types:
+\item{Updates}{[required] An array of \code{XssMatchSetUpdate} objects that you want to insert into or delete from an XssMatchSet. For more information, see the applicable data types:
 \itemize{
 \item XssMatchSetUpdate: Contains \code{Action} and \code{XssMatchTuple}
 \item XssMatchTuple: Contains \code{FieldToMatch} and \code{TextTransformation}
@@ -23,14 +23,14 @@ Inserts or deletes XssMatchTuple objects (filters) in an XssMatchSet. For each \
 }
 \details{
 \itemize{
-\item \code{Action}: Whether to insert the object into or delete the object from the array. To change a \code{XssMatchTuple}, you delete the existing object and add a new one.
+\item \code{Action}: Whether to insert the object into or delete the object from the array. To change an \code{XssMatchTuple}, you delete the existing object and add a new one.
 \item \code{FieldToMatch}: The part of web requests that you want AWS WAF to inspect and, if you want AWS WAF to inspect a header or custom query parameter, the name of the header or parameter.
 \item \code{TextTransformation}: Which text transformation, if any, to perform on the web request before inspecting the request for cross-site scripting attacks.
 }
 
 You can only specify a single type of TextTransformation.
 
-You use \code{XssMatchSet} objects to specify which CloudFront requests you want to allow, block, or count. For example, if you're receiving requests that contain cross-site scripting attacks in the request body and you want to block the requests, you can create an \code{XssMatchSet} with the applicable settings, and then configure AWS WAF to block the requests.
+You use \code{XssMatchSet} objects to specify which CloudFront requests that you want to allow, block, or count. For example, if you're receiving requests that contain cross-site scripting attacks in the request body and you want to block the requests, you can create an \code{XssMatchSet} with the applicable settings, and then configure AWS WAF to block the requests.
 
 To create and configure an \code{XssMatchSet}, perform the following steps:
 \enumerate{

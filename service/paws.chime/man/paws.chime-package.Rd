@@ -6,13 +6,11 @@
 \alias{paws.chime-package}
 \title{paws.chime: Amazon Chime}
 \description{
-Amazon Chime is a communications service that
-    transforms online meetings with a secure, easy-to-use application that
-    you can trust. Amazon Chime works seamlessly across your devices so
-    that you can stay connected. You can use Amazon Chime for online
-    meetings, video conferencing, calls, and chat. You can also share
-    content, both inside and outside your organization. Amazon Chime frees
-    you to work productively from anywhere.
+The Amazon Chime API (application programming
+    interface) is designed for administrators to use to perform key tasks,
+    such as creating and managing Amazon Chime accounts and users. This
+    guide provides detailed information about the Amazon Chime API,
+    including operations, types, inputs and outputs, and error codes.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

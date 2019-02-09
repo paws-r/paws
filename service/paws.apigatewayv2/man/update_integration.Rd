@@ -4,27 +4,13 @@
 \alias{update_integration}
 \title{Updates an Integration}
 \usage{
-update_integration(
-  ApiId = "string",
-  ConnectionId = "string",
-  ConnectionType = "INTERNET"|"VPC_LINK",
-  ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-  CredentialsArn = "string",
-  Description = "string",
-  IntegrationId = "string",
-  IntegrationMethod = "string",
-  IntegrationType = "AWS"|"HTTP"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
-  IntegrationUri = "string",
-  PassthroughBehavior = "WHEN_NO_MATCH"|"NEVER"|"WHEN_NO_TEMPLATES",
-  RequestParameters = list(
-    "string"
-  ),
-  RequestTemplates = list(
-    "string"
-  ),
-  TemplateSelectionExpression = "string",
-  TimeoutInMillis = 123
-)
+update_integration(ApiId, ConnectionId = NULL, ConnectionType = NULL,
+  ContentHandlingStrategy = NULL, CredentialsArn = NULL,
+  Description = NULL, IntegrationId, IntegrationMethod = NULL,
+  IntegrationType = NULL, IntegrationUri = NULL,
+  PassthroughBehavior = NULL, RequestParameters = NULL,
+  RequestTemplates = NULL, TemplateSelectionExpression = NULL,
+  TimeoutInMillis = NULL)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -86,6 +72,28 @@ WHEN\_NO\_TEMPLATES allows pass-through when the integration has no content type
 \description{
 Updates an Integration.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_integration(
+  ApiId = "string",
+  ConnectionId = "string",
+  ConnectionType = "INTERNET"|"VPC_LINK",
+  ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
+  CredentialsArn = "string",
+  Description = "string",
+  IntegrationId = "string",
+  IntegrationMethod = "string",
+  IntegrationType = "AWS"|"HTTP"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
+  IntegrationUri = "string",
+  PassthroughBehavior = "WHEN_NO_MATCH"|"NEVER"|"WHEN_NO_TEMPLATES",
+  RequestParameters = list(
+    "string"
+  ),
+  RequestTemplates = list(
+    "string"
+  ),
+  TemplateSelectionExpression = "string",
+  TimeoutInMillis = 123
+)
 }
+}
+

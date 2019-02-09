@@ -2,15 +2,21 @@
 % Please edit documentation in R/paws.wafregional_operations.R
 \name{get_web_acl_for_resource}
 \alias{get_web_acl_for_resource}
-\title{Returns the web ACL for the specified resource}
+\title{Returns the web ACL for the specified resource, either an application load balancer or Amazon API Gateway stage}
 \usage{
 get_web_acl_for_resource(ResourceArn)
 }
 \arguments{
-\item{ResourceArn}{[required] The ARN (Amazon Resource Name) of the resource for which to get the web ACL.}
+\item{ResourceArn}{[required] The ARN (Amazon Resource Name) of the resource for which to get the web ACL, either an application load balancer or Amazon API Gateway stage.
+
+The ARN should be in one of the following formats:
+\itemize{
+\item For an Application Load Balancer: \code{arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id }
+\item For an Amazon API Gateway stage: \code{arn:aws:apigateway:region::/restapis/api-id/stages/stage-name region::/restapis/api-id/stages/stage-name }
+}}
 }
 \description{
-Returns the web ACL for the specified resource.
+Returns the web ACL for the specified resource, either an application load balancer or Amazon API Gateway stage.
 }
 \section{Accepted Parameters}{
 \preformatted{get_web_acl_for_resource(

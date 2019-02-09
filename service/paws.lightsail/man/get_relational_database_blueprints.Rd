@@ -7,7 +7,7 @@
 get_relational_database_blueprints(pageToken = NULL)
 }
 \arguments{
-\item{pageToken}{A token used for advancing to a specific page of results for your get relational database blueprints request.}
+\item{pageToken}{A token used for advancing to a specific page of results for your \code{get relational database blueprints} request.}
 }
 \description{
 Returns a list of available database blueprints in Amazon Lightsail. A blueprint describes the major engine version of a database.

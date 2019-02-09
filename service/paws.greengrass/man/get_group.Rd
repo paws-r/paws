@@ -7,7 +7,7 @@
 get_group(GroupId)
 }
 \arguments{
-\item{GroupId}{[required] The ID of the AWS Greengrass group.}
+\item{GroupId}{[required] The ID of the Greengrass group.}
 }
 \description{
 Retrieves information about a group.

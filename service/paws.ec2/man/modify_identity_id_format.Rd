@@ -21,7 +21,7 @@ Modifies the ID format of a resource for a specified IAM user, IAM role, or the 
 \details{
 This request can only be used to modify longer ID settings for resource types that are within the opt-in period. Resources currently in their opt-in period include: \code{bundle} | \code{conversion-task} | \code{customer-gateway} | \code{dhcp-options} | \code{elastic-ip-allocation} | \code{elastic-ip-association} | \code{export-task} | \code{flow-log} | \code{image} | \code{import-task} | \code{internet-gateway} | \code{network-acl} | \code{network-acl-association} | \code{network-interface} | \code{network-interface-attachment} | \code{prefix-list} | \code{route-table} | \code{route-table-association} | \code{security-group} | \code{subnet} | \code{subnet-cidr-block-association} | \code{vpc} | \code{vpc-cidr-block-association} | \code{vpc-endpoint} | \code{vpc-peering-connection} | \code{vpn-connection} | \code{vpn-gateway}.
 
-For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html}{Resource IDs} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html}{Resource IDs} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 This setting applies to the principal specified in the request; it does not apply to the principal that makes the request.
 

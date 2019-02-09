@@ -4,18 +4,8 @@
 \alias{list_deployment_jobs}
 \title{Returns a list of deployment jobs for a fleet}
 \usage{
-list_deployment_jobs(
-  filters = list(
-    list(
-      name = "string",
-      values = list(
-        "string"
-      )
-    )
-  ),
-  nextToken = "string",
-  maxResults = 123
-)
+list_deployment_jobs(filters = NULL, nextToken = NULL,
+  maxResults = NULL)
 }
 \arguments{
 \item{filters}{Optional filters to limit results.}
@@ -29,6 +19,19 @@ This token should be treated as an opaque identifier that is only used to retrie
 \description{
 Returns a list of deployment jobs for a fleet. You can optionally provide filters to retrieve specific deployment jobs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_deployment_jobs(
+  filters = list(
+    list(
+      name = "string",
+      values = list(
+        "string"
+      )
+    )
+  ),
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

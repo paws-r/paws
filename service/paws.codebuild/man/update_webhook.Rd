@@ -9,12 +9,15 @@ update_webhook(projectName, branchFilter = NULL, rotateSecret = NULL)
 \arguments{
 \item{projectName}{[required] The name of the AWS CodeBuild project.}
 
-\item{branchFilter}{A regular expression used to determine which branches in a repository are built when a webhook is triggered. If the name of a branch matches the regular expression, then it is built. If it doesn't match, then it is not. If branchFilter is empty, then all branches are built.}
+\item{branchFilter}{A regular expression used to determine which repository branches are built when a webhook is triggered. If the name of a branch matches the regular expression, then it is built. If \code{branchFilter} is empty, then all branches are built.}
 
-\item{rotateSecret}{A boolean value that specifies whether the associated repository's secret token should be updated.}
+\item{rotateSecret}{A boolean value that specifies whether the associated GitHub repository's secret token should be updated. If you use Bitbucket for your repository, \code{rotateSecret} is ignored.}
 }
 \description{
 Updates the webhook associated with an AWS CodeBuild build project.
+}
+\details{
+If you use Bitbucket for your repository, \code{rotateSecret} is ignored.
 }
 \section{Accepted Parameters}{
 \preformatted{update_webhook(

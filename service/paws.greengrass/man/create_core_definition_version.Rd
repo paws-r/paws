@@ -15,7 +15,7 @@ create_core_definition_version(AmznClientToken = NULL, CoreDefinitionId,
 \item{Cores}{A list of cores in the core definition version.}
 }
 \description{
-Creates a version of a core definition that has already been defined. AWS Greengrass groups must each contain exactly one AWS Greengrass core.
+Creates a version of a core definition that has already been defined. Greengrass groups must each contain exactly one Greengrass core.
 }
 \section{Accepted Parameters}{
 \preformatted{create_core_definition_version(

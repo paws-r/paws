@@ -14,9 +14,9 @@ AWS CodeBuild is a fully managed build service in
     popular programming languages and build tools, such as Apache Maven,
     Gradle, and more. You can also fully customize build environments in
     AWS CodeBuild to use your own build tools. AWS CodeBuild scales
-    automatically to meet peak build requests, and you pay only for the
-    build time you consume. For more information about AWS CodeBuild, see
-    the *AWS CodeBuild User Guide*.
+    automatically to meet peak build requests. You pay only for the build
+    time you consume. For more information about AWS CodeBuild, see the
+    *AWS CodeBuild User Guide*.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

@@ -4,20 +4,8 @@
 \alias{create_server}
 \title{Instantiates an autoscaling virtual server based on Secure File Transfer Protocol (SFTP) in AWS}
 \usage{
-create_server(
-  IdentityProviderDetails = list(
-    Url = "string",
-    InvocationRole = "string"
-  ),
-  IdentityProviderType = "SERVICE_MANAGED"|"API_GATEWAY",
-  LoggingRole = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_server(IdentityProviderDetails = NULL,
+  IdentityProviderType = NULL, LoggingRole = NULL, Tags = NULL)
 }
 \arguments{
 \item{IdentityProviderDetails}{An array containing all of the information required to call a customer-supplied authentication API. This parameter is not required when the \code{IdentityProviderType} value of server that is created uses the \code{SERVICE_MANAGED} authentication method.}
@@ -34,6 +22,21 @@ Instantiates an autoscaling virtual server based on Secure File Transfer Protoco
 \details{
 The response returns the \code{ServerId} value for the newly created server.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_server(
+  IdentityProviderDetails = list(
+    Url = "string",
+    InvocationRole = "string"
+  ),
+  IdentityProviderType = "SERVICE_MANAGED"|"API_GATEWAY",
+  LoggingRole = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

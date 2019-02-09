@@ -2,7 +2,7 @@
 % Please edit documentation in R/paws.appstream_operations.R
 \name{describe_users}
 \alias{describe_users}
-\title{Retrieves a list that describes one or more specified users in the user pool, if user names are provided}
+\title{Retrieves a list that describes one or more specified users in the user pool}
 \usage{
 describe_users(AuthenticationType, MaxResults = NULL, NextToken = NULL)
 }
@@ -14,7 +14,7 @@ describe_users(AuthenticationType, MaxResults = NULL, NextToken = NULL)
 \item{NextToken}{The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.}
 }
 \description{
-Retrieves a list that describes one or more specified users in the user pool, if user names are provided. Otherwise, all users in the user pool are described.
+Retrieves a list that describes one or more specified users in the user pool.
 }
 \section{Accepted Parameters}{
 \preformatted{describe_users(

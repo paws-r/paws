@@ -24,6 +24,12 @@ Update a channel schedule
       list(
         ActionName = "string",
         ScheduleActionSettings = list(
+          HlsTimedMetadataSettings = list(
+            Id3 = "string"
+          ),
+          InputSwitchSettings = list(
+            InputAttachmentNameReference = "string"
+          ),
           Scte35ReturnToNetworkSettings = list(
             SpliceEventId = 123
           ),
@@ -81,6 +87,10 @@ Update a channel schedule
         ScheduleActionStartSettings = list(
           FixedModeScheduleActionStartSettings = list(
             Time = "string"
+          ),
+          FollowModeScheduleActionStartSettings = list(
+            FollowPoint = "END"|"START",
+            ReferenceActionName = "string"
           )
         )
       )

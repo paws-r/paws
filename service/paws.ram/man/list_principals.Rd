@@ -4,19 +4,9 @@
 \alias{list_principals}
 \title{Lists the principals with access to the specified resource}
 \usage{
-list_principals(
-  resourceOwner = "SELF"|"OTHER-ACCOUNTS",
-  resourceArn = "string",
-  principals = list(
-    "string"
-  ),
-  resourceType = "string",
-  resourceShareArns = list(
-    "string"
-  ),
-  nextToken = "string",
-  maxResults = 123
-)
+list_principals(resourceOwner, resourceArn = NULL, principals = NULL,
+  resourceType = NULL, resourceShareArns = NULL, nextToken = NULL,
+  maxResults = NULL)
 }
 \arguments{
 \item{resourceOwner}{[required] The type of owner.}
@@ -36,6 +26,20 @@ list_principals(
 \description{
 Lists the principals with access to the specified resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_principals(
+  resourceOwner = "SELF"|"OTHER-ACCOUNTS",
+  resourceArn = "string",
+  principals = list(
+    "string"
+  ),
+  resourceType = "string",
+  resourceShareArns = list(
+    "string"
+  ),
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

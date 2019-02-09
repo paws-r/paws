@@ -11,15 +11,17 @@ get_cost_and_usage(TimePeriod = NULL, Granularity = NULL,
 \arguments{
 \item{TimePeriod}{Sets the start and end dates for retrieving AWS costs. The start date is inclusive, but the end date is exclusive. For example, if \code{start} is \code{2017-01-01} and \code{end} is \code{2017-05-01}, then the cost and usage data is retrieved from \code{2017-01-01} up to and including \code{2017-04-30} but not including \code{2017-05-01}.}
 
-\item{Granularity}{Sets the AWS cost granularity to \code{MONTHLY} or \code{DAILY}. If \code{Granularity} isn't set, the response object doesn't include the \code{Granularity}, either \code{MONTHLY} or \code{DAILY}.}
+\item{Granularity}{Sets the AWS cost granularity to \code{MONTHLY} or \code{DAILY}. If \code{Granularity} isn't set, the response object doesn't include the \code{Granularity}, either \code{MONTHLY} or \code{DAILY}.
+
+The \code{GetCostAndUsageRequest} operation supports only \code{DAILY} and \code{MONTHLY} granularities.}
 
 \item{Filter}{Filters AWS costs by different dimensions. For example, you can specify \code{SERVICE} and \code{LINKED_ACCOUNT} and get the costs that are associated with that account's usage of that service. You can nest \code{Expression} objects to define any combination of dimension filters. For more information, see \href{http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html}{Expression}.}
 
 \item{Metrics}{Which metrics are returned in the query. For more information about blended and unblended rates, see \href{https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/}{Why does the "blended" annotation appear on some line items in my bill?}.
 
-Valid values are \code{AmortizedCost}, \code{BlendedCost}, \code{UnblendedCost}, and \code{UsageQuantity}.
+Valid values are \code{AmortizedCost}, \code{BlendedCost}, \code{NetAmortizedCost}, \code{NetUnblendedCost}, \code{NormalizedUsageAmount}, \code{UnblendedCost}, and \code{UsageQuantity}.
 
-If you return the \code{UsageQuantity} metric, the service aggregates all usage numbers without taking into account the units. For example, if you aggregate \code{usageQuantity} across all of EC2, the results aren't meaningful because EC2 compute hours and data transfer are measured in different units (for example, hours vs. GB). To get more meaningful \code{UsageQuantity} metrics, filter by \code{UsageType} or \code{UsageTypeGroups}.
+If you return the \code{UsageQuantity} metric, the service aggregates all usage numbers without taking into account the units. For example, if you aggregate \code{usageQuantity} across all of Amazon EC2, the results aren't meaningful because Amazon EC2 compute hours and data transfer are measured in different units (for example, hours vs. GB). To get more meaningful \code{UsageQuantity} metrics, filter by \code{UsageType} or \code{UsageTypeGroups}.
 
 \code{Metrics} is required for \code{GetCostAndUsage} requests.}
 
@@ -32,7 +34,7 @@ Valid values are \code{AZ}, \code{INSTANCE_TYPE}, \code{LEGAL_ENTITY_NAME}, \cod
 \item{NextPageToken}{The token to retrieve the next set of results. AWS provides the token when the response from a previous call has more results than the maximum page size.}
 }
 \description{
-Retrieves cost and usage metrics for your account. You can specify which cost and usage-related metric, such as \code{BlendedCosts} or \code{UsageQuantity}, that you want the request to return. You can also filter and group your data by various dimensions, such as \code{SERVICE} or \code{AZ}, in a specific time range. For a complete list of valid dimensions, see the \code{GetDimensionValues GetDimensionValues} operation. Master accounts in an organization in AWS Organizations have access to all member accounts.
+Retrieves cost and usage metrics for your account. You can specify which cost and usage-related metric, such as \code{BlendedCosts} or \code{UsageQuantity}, that you want the request to return. You can also filter and group your data by various dimensions, such as \code{SERVICE} or \code{AZ}, in a specific time range. For a complete list of valid dimensions, see the \href{http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetDimensionValues.html}{GetDimensionValues} operation. Master accounts in an organization in AWS Organizations have access to all member accounts.
 }
 \section{Accepted Parameters}{
 \preformatted{get_cost_and_usage(
@@ -40,7 +42,7 @@ Retrieves cost and usage metrics for your account. You can specify which cost an
     Start = "string",
     End = "string"
   ),
-  Granularity = "DAILY"|"MONTHLY",
+  Granularity = "DAILY"|"MONTHLY"|"HOURLY",
   Filter = list(
     Or = list(
       list()
@@ -50,7 +52,7 @@ Retrieves cost and usage metrics for your account. You can specify which cost an
     ),
     Not = list(),
     Dimensions = list(
-      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY",
+      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID",
       Values = list(
         "string"
       )

@@ -4,7 +4,31 @@
 \alias{create_virtual_node}
 \title{Creates a new virtual node within a service mesh}
 \usage{
-create_virtual_node(
+create_virtual_node(clientToken = NULL, meshName, spec, virtualNodeName)
+}
+\arguments{
+\item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. Up to 36 letters, numbers, hyphens, and underscores are allowed.}
+
+\item{meshName}{[required] The name of the service mesh in which to create the virtual node.}
+
+\item{spec}{[required] The virtual node specification to apply.}
+
+\item{virtualNodeName}{[required] The name to use for the virtual node.}
+}
+\description{
+Creates a new virtual node within a service mesh.
+}
+\details{
+A virtual node acts as logical pointer to a particular task group, such as an Amazon ECS service or a Kubernetes deployment. When you create a virtual node, you must specify the DNS service discovery name for your task group.
+
+Any inbound traffic that your virtual node expects should be specified as a \code{listener}. Any outbound traffic that your virtual node expects to reach should be specified as a \code{backend}.
+
+The response metadata for your new virtual node contains the \code{arn} that is associated with the virtual node. Set this value (either the full ARN or the truncated resource name, for example, \code{mesh/default/virtualNode/simpleapp}, as the \code{APPMESH_VIRTUAL_NODE_NAME} environment variable for your task group's Envoy proxy container in your task definition or pod spec. This is then mapped to the \code{node.id} and \code{node.cluster} Envoy parameters.
+
+If you require your Envoy stats or tracing to use a different name, you can override the \code{node.cluster} value that is set by \code{APPMESH_VIRTUAL_NODE_NAME} with the \code{APPMESH_VIRTUAL_NODE_CLUSTER} environment variable.
+}
+\section{Accepted Parameters}{
+\preformatted{create_virtual_node(
   clientToken = "string",
   meshName = "string",
   spec = list(
@@ -37,27 +61,5 @@ create_virtual_node(
   virtualNodeName = "string"
 )
 }
-\arguments{
-\item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. Up to 36 letters, numbers, hyphens, and underscores are allowed.}
-
-\item{meshName}{[required] The name of the service mesh in which to create the virtual node.}
-
-\item{spec}{[required] The virtual node specification to apply.}
-
-\item{virtualNodeName}{[required] The name to use for the virtual node.}
 }
-\description{
-Creates a new virtual node within a service mesh.
-}
-\details{
-A virtual node acts as logical pointer to a particular task group, such as an Amazon ECS service or a Kubernetes deployment. When you create a virtual node, you must specify the DNS service discovery name for your task group.
 
-Any inbound traffic that your virtual node expects should be specified as a \code{listener}. Any outbound traffic that your virtual node expects to reach should be specified as a \code{backend}.
-
-The response metadata for your new virtual node contains the \code{arn} that is associated with the virtual node. Set this value (either the full ARN or the truncated resource name, for example, \code{mesh/default/virtualNode/simpleapp}, as the \code{APPMESH_VIRTUAL_NODE_NAME} environment variable for your task group's Envoy proxy container in your task definition or pod spec. This is then mapped to the \code{node.id} and \code{node.cluster} Envoy parameters.
-
-If you require your Envoy stats or tracing to use a different name, you can override the \code{node.cluster} value that is set by \code{APPMESH_VIRTUAL_NODE_NAME} with the \code{APPMESH_VIRTUAL_NODE_CLUSTER} environment variable.
-}
-\examples{
-
-}

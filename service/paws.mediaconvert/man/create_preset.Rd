@@ -133,6 +133,7 @@ Create a new preset. For information about job templates see the User Guide at h
             FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
             FontOpacity = 123,
             FontResolution = 123,
+            FontScript = "AUTOMATIC"|"HANS"|"HANT",
             FontSize = 123,
             OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
             OutlineSize = 123,
@@ -144,7 +145,7 @@ Create a new preset. For information about job templates see the User Guide at h
             XPosition = 123,
             YPosition = 123
           ),
-          DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"SCC"|"SRT"|"TELETEXT"|"TTML"|"WEBVTT",
+          DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
           DvbSubDestinationSettings = list(
             Alignment = "CENTERED"|"LEFT",
             BackgroundColor = "NONE"|"BLACK"|"WHITE",
@@ -152,6 +153,7 @@ Create a new preset. For information about job templates see the User Guide at h
             FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
             FontOpacity = 123,
             FontResolution = 123,
+            FontScript = "AUTOMATIC"|"HANS"|"HANT",
             FontSize = 123,
             OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
             OutlineSize = 123,
@@ -162,6 +164,9 @@ Create a new preset. For information about job templates see the User Guide at h
             TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
             XPosition = 123,
             YPosition = 123
+          ),
+          EmbeddedDestinationSettings = list(
+            Destination608ChannelNumber = 123
           ),
           SccDestinationSettings = list(
             Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
@@ -211,6 +216,7 @@ Create a new preset. For information about job templates see the User Guide at h
         EbpAudioInterval = "VIDEO_AND_FIXED_INTERVALS"|"VIDEO_INTERVAL",
         EbpPlacement = "VIDEO_AND_AUDIO_PIDS"|"VIDEO_PID",
         EsRateInPes = "INCLUDE"|"EXCLUDE",
+        ForceTsVideoEbpOrder = "FORCE"|"DEFAULT",
         FragmentTime = 123.0,
         MaxPcrInterval = 123,
         MinEbpInterval = 123,

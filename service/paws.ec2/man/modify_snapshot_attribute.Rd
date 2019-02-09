@@ -29,7 +29,7 @@ Adds or removes permission settings for the specified snapshot. You may add or r
 \details{
 Encrypted snapshots and snapshots with AWS Marketplace product codes cannot be made public. Snapshots encrypted with your default CMK cannot be shared with other accounts.
 
-For more information about modifying snapshot permissions, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html}{Sharing Snapshots} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information about modifying snapshot permissions, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html}{Sharing Snapshots} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{modify_snapshot_attribute(

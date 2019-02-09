@@ -15,7 +15,7 @@ create_core_definition(AmznClientToken = NULL, InitialVersion = NULL,
 \item{Name}{The name of the core definition.}
 }
 \description{
-Creates a core definition. You may provide the initial version of the core definition now or use ''CreateCoreDefinitionVersion'' at a later time. AWS Greengrass groups must each contain exactly one AWS Greengrass core.
+Creates a core definition. You may provide the initial version of the core definition now or use ''CreateCoreDefinitionVersion'' at a later time. Greengrass groups must each contain exactly one Greengrass core.
 }
 \section{Accepted Parameters}{
 \preformatted{create_core_definition(

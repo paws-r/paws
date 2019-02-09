@@ -50,12 +50,12 @@ This option is supported only for HVM AMIs. Specifying this option with a PV AMI
 Default: \code{paravirtual}}
 }
 \description{
-Registers an AMI. When you're creating an AMI, this is the final step you must complete before you can launch an instance from the AMI. For more information about creating AMIs, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami.html}{Creating Your Own AMIs} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+Registers an AMI. When you're creating an AMI, this is the final step you must complete before you can launch an instance from the AMI. For more information about creating AMIs, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami.html}{Creating Your Own AMIs} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \details{
 For Amazon EBS-backed instances, CreateImage creates and registers the AMI in a single request, so you don't have to register the AMI yourself.
 
-You can also use \code{RegisterImage} to create an Amazon EBS-backed Linux AMI from a snapshot of a root device volume. You specify the snapshot using the block device mapping. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-launch-snapshot.html}{Launching a Linux Instance from a Backup} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+You can also use \code{RegisterImage} to create an Amazon EBS-backed Linux AMI from a snapshot of a root device volume. You specify the snapshot using the block device mapping. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-launch-snapshot.html}{Launching a Linux Instance from a Backup} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 You can't register an image where a secondary (non-root) snapshot has AWS Marketplace product codes.
 
@@ -68,7 +68,7 @@ If needed, you can deregister an AMI at any time. Any modifications you make to 
 \section{Accepted Parameters}{
 \preformatted{register_image(
   ImageLocation = "string",
-  Architecture = "i386"|"x86_64",
+  Architecture = "i386"|"x86_64"|"arm64",
   BlockDeviceMappings = list(
     list(
       DeviceName = "string",

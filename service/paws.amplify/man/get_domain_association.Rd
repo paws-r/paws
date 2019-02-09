@@ -4,10 +4,7 @@
 \alias{get_domain_association}
 \title{Retrieves domain info that corresponds to an appId and domainName}
 \usage{
-get_domain_association(
-  appId = "string",
-  domainName = "string"
-)
+get_domain_association(appId, domainName)
 }
 \arguments{
 \item{appId}{[required] Unique Id for an Amplify App.}
@@ -17,6 +14,11 @@ get_domain_association(
 \description{
 Retrieves domain info that corresponds to an appId and domainName.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_domain_association(
+  appId = "string",
+  domainName = "string"
+)
 }
+}
+

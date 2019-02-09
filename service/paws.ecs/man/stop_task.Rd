@@ -14,12 +14,12 @@ stop_task(cluster = NULL, task, reason = NULL)
 \item{reason}{An optional message specified when a task is stopped. For example, if you are using a custom scheduler, you can use this parameter to specify the reason for stopping the task here, and the message appears in subsequent DescribeTasks API operations on this task. Up to 255 characters are allowed in this message.}
 }
 \description{
-Stops a running task.
+Stops a running task. Any tags associated with the task will be deleted.
 }
 \details{
-When StopTask is called on a task, the equivalent of \code{docker stop} is issued to the containers running in the task. This results in a \code{SIGTERM} and a default 30-second timeout, after which \code{SIGKILL} is sent and the containers are forcibly stopped. If the container handles the \code{SIGTERM} gracefully and exits within 30 seconds from receiving it, no \code{SIGKILL} is sent.
+When StopTask is called on a task, the equivalent of \code{docker stop} is issued to the containers running in the task. This results in a \code{SIGTERM} value and a default 30-second timeout, after which the \code{SIGKILL} value is sent and the containers are forcibly stopped. If the container handles the \code{SIGTERM} value gracefully and exits within 30 seconds from receiving it, no \code{SIGKILL} value is sent.
 
-The default 30-second timeout can be configured on the Amazon ECS container agent with the \code{ECS_CONTAINER_STOP_TIMEOUT} variable. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html}{Amazon ECS Container Agent Configuration} in the \emph{Amazon Elastic Container Service Developer Guide}.
+The default 30-second timeout can be configured on the Amazon ECS container agent with the \code{ECS_CONTAINER_STOP_TIMEOUT} variable. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html}{Amazon ECS Container Agent Configuration} in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{stop_task(

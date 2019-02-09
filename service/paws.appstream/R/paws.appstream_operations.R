@@ -201,6 +201,9 @@ create_directory_config <- function (DirectoryName, OrganizationalUnitDistinguis
 #'   DomainJoinInfo = list(
 #'     DirectoryName = "string",
 #'     OrganizationalUnitDistinguishedName = "string"
+#'   ),
+#'   Tags = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -262,17 +265,22 @@ create_directory_config <- function (DirectoryName, OrganizationalUnitDistinguis
 #' @param VpcConfig The VPC configuration for the fleet.
 #' @param MaxUserDurationInSeconds The maximum time that a streaming session can run, in seconds. Specify a value between 600 and 57600.
 #' @param DisconnectTimeoutInSeconds The time after disconnection when a session is considered to have ended, in seconds. If a user who was disconnected reconnects within this time interval, the user is connected to their previous session. Specify a value between 60 and 57600.
-#' @param Description The description for display.
-#' @param DisplayName The fleet name for display.
+#' @param Description The description to display.
+#' @param DisplayName The fleet name to display.
 #' @param EnableDefaultInternetAccess Enables or disables default internet access for the fleet.
-#' @param DomainJoinInfo The information needed to join a Microsoft Active Directory domain.
+#' @param DomainJoinInfo The name of the directory and organizational unit (OU) to use to join the fleet to a Microsoft Active Directory domain.
+#' @param Tags The tags to associate with the fleet. A tag is a key-value pair (the value is optional). For example, Environment=Test, or, if you do not specify a value, Environment=.
+#' 
+#' If you do not specify a value, we set the value to an empty string.
+#' 
+#' For more information, see [Tagging Your Resources](http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html) in the *Amazon AppStream 2.0 Developer Guide*.
 #'
 #' @export
 create_fleet <- function (Name, ImageName = NULL, ImageArn = NULL, 
     InstanceType, FleetType = NULL, ComputeCapacity, VpcConfig = NULL, 
     MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL, 
     Description = NULL, DisplayName = NULL, EnableDefaultInternetAccess = NULL, 
-    DomainJoinInfo = NULL) 
+    DomainJoinInfo = NULL, Tags = NULL) 
 {
     op <- new_operation(name = "CreateFleet", http_method = "POST", 
         http_path = "/", paginator = list())
@@ -283,7 +291,7 @@ create_fleet <- function (Name, ImageName = NULL, ImageArn = NULL,
         DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, 
         Description = Description, DisplayName = DisplayName, 
         EnableDefaultInternetAccess = EnableDefaultInternetAccess, 
-        DomainJoinInfo = DomainJoinInfo)
+        DomainJoinInfo = DomainJoinInfo, Tags = Tags)
     output <- create_fleet_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -319,33 +327,42 @@ create_fleet <- function (Name, ImageName = NULL, ImageArn = NULL,
 #'     DirectoryName = "string",
 #'     OrganizationalUnitDistinguishedName = "string"
 #'   ),
-#'   AppstreamAgentVersion = "string"
+#'   AppstreamAgentVersion = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @param Name &#91;required&#93; A unique name for the image builder.
-#' @param ImageName The name of the image used to create the builder.
+#' @param ImageName The name of the image used to create the image builder.
 #' @param ImageArn The ARN of the public, private, or shared image to use.
 #' @param InstanceType &#91;required&#93; The instance type to use when launching the image builder.
-#' @param Description The description for display.
-#' @param DisplayName The image builder name for display.
+#' @param Description The description to display.
+#' @param DisplayName The image builder name to display.
 #' @param VpcConfig The VPC configuration for the image builder. You can specify only one subnet.
 #' @param EnableDefaultInternetAccess Enables or disables default internet access for the image builder.
-#' @param DomainJoinInfo The information needed to join a Microsoft Active Directory domain.
+#' @param DomainJoinInfo The name of the directory and organizational unit (OU) to use to join the image builder to a Microsoft Active Directory domain.
 #' @param AppstreamAgentVersion The version of the AppStream 2.0 agent to use for this image builder. To use the latest version of the AppStream 2.0 agent, specify &#91;LATEST&#93;.
+#' @param Tags The tags to associate with the image builder. A tag is a key-value pair (the value is optional). For example, Environment=Test, or, if you do not specify a value, Environment=.
+#' 
+#' If you do not specify a value, we set the value to an empty string.
+#' 
+#' For more information about tags, see [Tagging Your Resources](http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html) in the *Amazon AppStream 2.0 Developer Guide*.
 #'
 #' @export
 create_image_builder <- function (Name, ImageName = NULL, ImageArn = NULL, 
     InstanceType, Description = NULL, DisplayName = NULL, VpcConfig = NULL, 
     EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, 
-    AppstreamAgentVersion = NULL) 
+    AppstreamAgentVersion = NULL, Tags = NULL) 
 {
     op <- new_operation(name = "CreateImageBuilder", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- create_image_builder_input(Name = Name, ImageName = ImageName, 
         ImageArn = ImageArn, InstanceType = InstanceType, Description = Description, 
         DisplayName = DisplayName, VpcConfig = VpcConfig, EnableDefaultInternetAccess = EnableDefaultInternetAccess, 
-        DomainJoinInfo = DomainJoinInfo, AppstreamAgentVersion = AppstreamAgentVersion)
+        DomainJoinInfo = DomainJoinInfo, AppstreamAgentVersion = AppstreamAgentVersion, 
+        Tags = Tags)
     output <- create_image_builder_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -412,30 +429,39 @@ create_image_builder_streaming_url <- function (Name, Validity = NULL)
 #'   ApplicationSettings = list(
 #'     Enabled = TRUE|FALSE,
 #'     SettingsGroup = "string"
+#'   ),
+#'   Tags = list(
+#'     "string"
 #'   )
 #' )
 #' ```
 #'
 #' @param Name &#91;required&#93; The name of the stack.
-#' @param Description The description for display.
-#' @param DisplayName The stack name for display.
+#' @param Description The description to display.
+#' @param DisplayName The stack name to display.
 #' @param StorageConnectors The storage connectors to enable.
 #' @param RedirectURL The URL that users are redirected to after their streaming session ends.
 #' @param FeedbackURL The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.
 #' @param UserSettings The actions that are enabled or disabled for users during their streaming sessions. By default, these actions are enabled.
 #' @param ApplicationSettings The persistent application settings for users of a stack. When these settings are enabled, changes that users make to applications and Windows settings are automatically saved after each session and applied to the next session.
+#' @param Tags The tags to associate with the stack. A tag is a key-value pair (the value is optional). For example, Environment=Test, or, if you do not specify a value, Environment=.
+#' 
+#' If you do not specify a value, we set the value to an empty string.
+#' 
+#' For more information about tags, see [Tagging Your Resources](http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html) in the *Amazon AppStream 2.0 Developer Guide*.
 #'
 #' @export
 create_stack <- function (Name, Description = NULL, DisplayName = NULL, 
     StorageConnectors = NULL, RedirectURL = NULL, FeedbackURL = NULL, 
-    UserSettings = NULL, ApplicationSettings = NULL) 
+    UserSettings = NULL, ApplicationSettings = NULL, Tags = NULL) 
 {
     op <- new_operation(name = "CreateStack", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- create_stack_input(Name = Name, Description = Description, 
         DisplayName = DisplayName, StorageConnectors = StorageConnectors, 
         RedirectURL = RedirectURL, FeedbackURL = FeedbackURL, 
-        UserSettings = UserSettings, ApplicationSettings = ApplicationSettings)
+        UserSettings = UserSettings, ApplicationSettings = ApplicationSettings, 
+        Tags = Tags)
     output <- create_stack_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -461,7 +487,7 @@ create_stack <- function (Name, Description = NULL, DisplayName = NULL,
 #'
 #' @param StackName &#91;required&#93; The name of the stack.
 #' @param FleetName &#91;required&#93; The name of the fleet.
-#' @param UserId &#91;required&#93; The ID of the user.
+#' @param UserId &#91;required&#93; The identifier of the user.
 #' @param ApplicationId The name of the application to launch after the session starts. This is the name that you specified as **Name** in the Image Assistant.
 #' @param Validity The time that the streaming URL will be valid, in seconds. Specify a value between 1 and 604800 seconds. The default is 60 seconds.
 #' @param SessionContext The session context. For more information, see [Session Context](http://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters) in the *Amazon AppStream 2.0 Developer Guide*.
@@ -637,7 +663,7 @@ delete_image_builder <- function (Name)
 #' ```
 #'
 #' @param Name &#91;required&#93; The name of the private image.
-#' @param SharedAccountId &#91;required&#93; The 12-digit ID of the AWS account for which to delete image permissions.
+#' @param SharedAccountId &#91;required&#93; The 12-digit identifier of the AWS account for which to delete image permissions.
 #'
 #' @export
 delete_image_permissions <- function (Name, SharedAccountId) 
@@ -824,7 +850,7 @@ describe_image_builders <- function (Names = NULL, MaxResults = NULL,
 #'
 #' @param Name &#91;required&#93; The name of the private image for which to describe permissions. The image must be one that you own.
 #' @param MaxResults The maximum size of each page of results.
-#' @param SharedAwsAccountIds The 12-digit ID of one or more AWS accounts with which the image is shared.
+#' @param SharedAwsAccountIds The 12-digit identifier of one or more AWS accounts with which the image is shared.
 #' @param NextToken The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.
 #'
 #' @export
@@ -884,7 +910,7 @@ describe_images <- function (Names = NULL, Arns = NULL, Type = NULL,
 
 #' Retrieves a list that describes the streaming sessions for a specified stack and fleet
 #'
-#' Retrieves a list that describes the streaming sessions for a specified stack and fleet. If a user ID is provided for the stack and fleet, only streaming sessions for that user are described. If an authentication type is not provided, the default is to authenticate users using a streaming URL.
+#' Retrieves a list that describes the streaming sessions for a specified stack and fleet. If a UserId is provided for the stack and fleet, only streaming sessions for that user are described. If an authentication type is not provided, the default is to authenticate users using a streaming URL.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -900,7 +926,7 @@ describe_images <- function (Names = NULL, Arns = NULL, Type = NULL,
 #'
 #' @param StackName &#91;required&#93; The name of the stack. This value is case-sensitive.
 #' @param FleetName &#91;required&#93; The name of the fleet. This value is case-sensitive.
-#' @param UserId The user ID.
+#' @param UserId The user identifier.
 #' @param NextToken The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.
 #' @param Limit The size of each page of results. The default value is 20 and the maximum value is 50.
 #' @param AuthenticationType The authentication method. Specify `API` for a user authenticated using a streaming URL or `SAML` for a SAML federated user. The default is to authenticate users using a streaming URL.
@@ -993,9 +1019,9 @@ describe_user_stack_associations <- function (StackName = NULL,
     return(response)
 }
 
-#' Retrieves a list that describes one or more specified users in the user pool, if user names are provided
+#' Retrieves a list that describes one or more specified users in the user pool
 #'
-#' Retrieves a list that describes one or more specified users in the user pool, if user names are provided. Otherwise, all users in the user pool are described.
+#' Retrieves a list that describes one or more specified users in the user pool.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1121,7 +1147,7 @@ enable_user <- function (UserName, AuthenticationType)
 #' )
 #' ```
 #'
-#' @param SessionId &#91;required&#93; The ID of the streaming session.
+#' @param SessionId &#91;required&#93; The identifier of the streaming session.
 #'
 #' @export
 expire_session <- function (SessionId) 
@@ -1528,10 +1554,10 @@ update_directory_config <- function (DirectoryName, OrganizationalUnitDistinguis
 #' @param MaxUserDurationInSeconds The maximum time that a streaming session can run, in seconds. Specify a value between 600 and 57600.
 #' @param DisconnectTimeoutInSeconds The time after disconnection when a session is considered to have ended, in seconds. If a user who was disconnected reconnects within this time interval, the user is connected to their previous session. Specify a value between 60 and 57600.
 #' @param DeleteVpcConfig Deletes the VPC association for the specified fleet.
-#' @param Description The description for display.
-#' @param DisplayName The fleet name for display.
+#' @param Description The description to display.
+#' @param DisplayName The fleet name to display.
 #' @param EnableDefaultInternetAccess Enables or disables default internet access for the fleet.
-#' @param DomainJoinInfo The information needed to join a Microsoft Active Directory domain.
+#' @param DomainJoinInfo The name of the directory and organizational unit (OU) to use to join the fleet to a Microsoft Active Directory domain.
 #' @param AttributesToDelete The fleet attributes to delete.
 #'
 #' @export
@@ -1575,7 +1601,7 @@ update_fleet <- function (ImageName = NULL, ImageArn = NULL,
 #' ```
 #'
 #' @param Name &#91;required&#93; The name of the private image.
-#' @param SharedAccountId &#91;required&#93; The 12-digit ID of the AWS account for which you want add or update image permissions.
+#' @param SharedAccountId &#91;required&#93; The 12-digit identifier of the AWS account for which you want add or update image permissions.
 #' @param ImagePermissions &#91;required&#93; The permissions for the image.
 #'
 #' @export
@@ -1631,13 +1657,13 @@ update_image_permissions <- function (Name, SharedAccountId,
 #' )
 #' ```
 #'
-#' @param DisplayName The stack name for display.
-#' @param Description The description for display.
+#' @param DisplayName The stack name to display.
+#' @param Description The description to display.
 #' @param Name &#91;required&#93; The name of the stack.
 #' @param StorageConnectors The storage connectors to enable.
 #' @param DeleteStorageConnectors Deletes the storage connectors currently enabled for the stack.
 #' @param RedirectURL The URL that users are redirected to after their streaming session ends.
-#' @param FeedbackURL The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.
+#' @param FeedbackURL The URL that users are redirected to after they choose the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.
 #' @param AttributesToDelete The stack attributes to delete.
 #' @param UserSettings The actions that are enabled or disabled for users during their streaming sessions. By default, these actions are enabled.
 #' @param ApplicationSettings The persistent application settings for users of a stack. When these settings are enabled, changes that users make to applications and Windows settings are automatically saved after each session and applied to the next session.

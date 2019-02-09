@@ -12,7 +12,9 @@ create_multipart_upload(ACL = NULL, Bucket, CacheControl = NULL,
   ServerSideEncryption = NULL, StorageClass = NULL,
   WebsiteRedirectLocation = NULL, SSECustomerAlgorithm = NULL,
   SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL,
-  SSEKMSKeyId = NULL, RequestPayer = NULL, Tagging = NULL)
+  SSEKMSKeyId = NULL, RequestPayer = NULL, Tagging = NULL,
+  ObjectLockMode = NULL, ObjectLockRetainUntilDate = NULL,
+  ObjectLockLegalHoldStatus = NULL)
 }
 \arguments{
 \item{ACL}{The canned ACL to apply to the object.}
@@ -60,6 +62,12 @@ create_multipart_upload(ACL = NULL, Bucket, CacheControl = NULL,
 \item{RequestPayer}{}
 
 \item{Tagging}{The tag-set for the object. The tag-set must be encoded as URL Query parameters}
+
+\item{ObjectLockMode}{Specifies the Object Lock mode that you want to apply to the uploaded object.}
+
+\item{ObjectLockRetainUntilDate}{Specifies the date and time when you want the Object Lock to expire.}
+
+\item{ObjectLockLegalHoldStatus}{Specifies whether you want to apply a Legal Hold to the uploaded object.}
 }
 \description{
 Initiates a multipart upload and returns an upload ID.
@@ -86,14 +94,17 @@ Initiates a multipart upload and returns an upload ID.
     "string"
   ),
   ServerSideEncryption = "AES256"|"aws:kms",
-  StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA",
+  StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER",
   WebsiteRedirectLocation = "string",
   SSECustomerAlgorithm = "string",
   SSECustomerKey = raw,
   SSECustomerKeyMD5 = "string",
   SSEKMSKeyId = "string",
   RequestPayer = "requester",
-  Tagging = "string"
+  Tagging = "string",
+  ObjectLockMode = "GOVERNANCE"|"COMPLIANCE",
+  ObjectLockRetainUntilDate = as.POSIXct("2015-01-01"),
+  ObjectLockLegalHoldStatus = "ON"|"OFF"
 )
 }
 }

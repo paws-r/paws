@@ -8,6 +8,10 @@ test_that("describe_emergency_contact_settings", {
     expect_error(describe_emergency_contact_settings(), NA)
 })
 
+test_that("describe_protection", {
+    expect_error(describe_protection(), NA)
+})
+
 test_that("describe_subscription", {
     expect_error(describe_subscription(), NA)
 })

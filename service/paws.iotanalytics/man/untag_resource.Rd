@@ -7,9 +7,9 @@
 untag_resource(resourceArn, tagKeys)
 }
 \arguments{
-\item{resourceArn}{[required] The ARN of the resource whose tags will be removed.}
+\item{resourceArn}{[required] The ARN of the resource whose tags you want to remove.}
 
-\item{tagKeys}{[required] The keys of those tags which will be removed.}
+\item{tagKeys}{[required] The keys of those tags which you want to remove.}
 }
 \description{
 Removes the given tags (metadata) from the resource.

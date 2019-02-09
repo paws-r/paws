@@ -33,11 +33,11 @@ NULL
 #' )
 #' ```
 #'
-#' @param Username &#91;required&#93; The user name in Amazon Connect for the account to create.
+#' @param Username &#91;required&#93; The user name in Amazon Connect for the account to create. If you are using SAML for identity management in your Amazon Connect, the value for `Username` can include up to 64 characters from &#91;a-zA-Z0-9\_-.\\@&#93;+.
 #' @param Password The password for the user account to create. This is required if you are using Amazon Connect for identity management. If you are using SAML for identity management and include this parameter, an `InvalidRequestException` is returned.
 #' @param IdentityInfo Information about the user, including email address, first name, and last name.
-#' @param PhoneConfig &#91;required&#93; Specifies the phone settings for the user, including AfterContactWorkTimeLimit, AutoAccept, DeskPhoneNumber, and PhoneType.
-#' @param DirectoryUserId The unique identifier for the user account in the directory service directory used for identity management. If Amazon Connect is unable to access the existing directory, you can use the `DirectoryUserId` to authenticate users. If you include the parameter, it is assumed that Amazon Connect cannot access the directory. If the parameter is not included, the UserIdentityInfo is used to authenticate users from your existing directory.
+#' @param PhoneConfig &#91;required&#93; Specifies the phone settings for the user, including `AfterContactWorkTimeLimit`, `AutoAccept`, `DeskPhoneNumber`, and `PhoneType`.
+#' @param DirectoryUserId The unique identifier for the user account in the directory service directory used for identity management. If Amazon Connect is unable to access the existing directory, you can use the `DirectoryUserId` to authenticate users. If you include the parameter, it is assumed that Amazon Connect cannot access the directory. If the parameter is not included, the `UserIdentityInfo` is used to authenticate users from your existing directory.
 #' 
 #' This parameter is required if you are using an existing directory for identity management in Amazon Connect when Amazon Connect cannot access your directory to authenticate users. If you are using SAML for identity management and include this parameter, an `InvalidRequestException` is returned.
 #' @param SecurityProfileIds &#91;required&#93; The unique identifier of the security profile to assign to the user created.
@@ -178,6 +178,36 @@ describe_user_hierarchy_structure <- function (InstanceId)
     return(response)
 }
 
+#' Retrieves the contact attributes associated with a contact
+#'
+#' Retrieves the contact attributes associated with a contact.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' get_contact_attributes(
+#'   InstanceId = "string",
+#'   InitialContactId = "string"
+#' )
+#' ```
+#'
+#' @param InstanceId &#91;required&#93; The instance ID for the instance from which to retrieve contact attributes.
+#' @param InitialContactId &#91;required&#93; The ID for the initial contact in Amazon Connect associated with the attributes to update.
+#'
+#' @export
+get_contact_attributes <- function (InstanceId, InitialContactId) 
+{
+    op <- new_operation(name = "GetContactAttributes", http_method = "GET", 
+        http_path = "/contact/attributes/{InstanceId}/{InitialContactId}", 
+        paginator = list())
+    input <- get_contact_attributes_input(InstanceId = InstanceId, 
+        InitialContactId = InitialContactId)
+    output <- get_contact_attributes_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' The GetCurrentMetricData operation retrieves current metric data from your Amazon Connect instance
 #'
 #' The `GetCurrentMetricData` operation retrieves current metric data from your Amazon Connect instance.
@@ -217,7 +247,7 @@ describe_user_hierarchy_structure <- function (InstanceId)
 #' @param Groupings The grouping applied to the metrics returned. For example, when grouped by QUEUE, the metrics returned apply to each queue rather than aggregated for all queues. If you group by CHANNEL, you should include a Channels filter. The only supported channel is VOICE.
 #' 
 #' If no `Grouping` is included in the request, a summary of `CurrentMetrics` is returned.
-#' @param CurrentMetrics &#91;required&#93; A list of `CurrentMetric` objects for the metrics to retrieve. Each `CurrentMetric` includes a name of a metric to retrieve and the unit to use for it.
+#' @param CurrentMetrics &#91;required&#93; A list of `CurrentMetric` objects for the metrics to retrieve. Each `CurrentMetric` includes a name of a metric to retrieve and the unit to use for it. You must list each metric to retrieve data for in the request.
 #' 
 #' The following metrics are available:
 #' 
@@ -365,7 +395,7 @@ get_federation_token <- function (InstanceId)
 #' 
 #' A `HistoricalMetric` object contains: `HistoricalMetricName`, `Statistic`, `Threshold`, and `Unit`.
 #' 
-#' For each historical metric you include in the request, you must include a `Unit` and a `Statistic`.
+#' You must list each metric to retrieve data for in the request. For each historical metric you include in the request, you must include a `Unit` and a `Statistic`.
 #' 
 #' The following historical metrics are available:
 #' 
@@ -682,6 +712,8 @@ list_users <- function (InstanceId, NextToken = NULL, MaxResults = NULL)
 #' The `StartOutboundVoiceContact` operation initiates a contact flow to place an outbound call to a customer.
 #' 
 #' If you are using an IAM account, it must have permission to the `connect:StartOutboundVoiceContact` action.
+#' 
+#' There is a 60 second dialing timeout for this operation. If the call is not connected after 60 seconds, the call fails.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -710,7 +742,7 @@ list_users <- function (InstanceId, NextToken = NULL, MaxResults = NULL)
 #' To find the `QueueId`, open the queue you want to use in the Amazon Connect Queue editor. The ID for the queue is displayed in the address bar as part of the URL. For example, the queue ID is the set of characters at the end of the URL, after \'queue/\' such as `queue/aeg40574-2d01-51c3-73d6-bf8624d2168c`.
 #' @param Attributes Specify a custom key-value pair using an attribute map. The attributes are standard Amazon Connect attributes, and can be accessed in contact flows just like any other contact attributes.
 #' 
-#' There can be up to 32,768 UTF-8 bytes across all key-value pairs. Attribute keys can include only alphanumeric, dash, and underscore characters.
+#' There can be up to 32,768 UTF-8 bytes across all key-value pairs per contact. Attribute keys can include only alphanumeric, dash, and underscore characters.
 #' 
 #' For example, if you want play a greeting when the customer answers the call, you can pass the customer name in attributes similar to the following:
 #'
@@ -785,7 +817,9 @@ stop_contact <- function (ContactId, InstanceId)
 #'
 #' @param InitialContactId &#91;required&#93; The unique identifier of the contact for which to update attributes. This is the identifier for the contact associated with the first interaction with the contact center.
 #' @param InstanceId &#91;required&#93; The identifier for your Amazon Connect instance. To find the ID of your instance, open the AWS console and select Amazon Connect. Select the alias of the instance in the Instance alias column. The instance ID is displayed in the Overview section of your instance settings. For example, the instance ID is the set of characters at the end of the instance ARN, after instance/, such as 10a4c4eb-f57e-4d4c-b602-bf39176ced07.
-#' @param Attributes &#91;required&#93; The key-value pairs for the attribute to update.
+#' @param Attributes &#91;required&#93; Specify a custom key-value pair using an attribute map. The attributes are standard Amazon Connect attributes, and can be accessed in contact flows just like any other contact attributes.
+#' 
+#' There can be up to 32,768 UTF-8 bytes across all key-value pairs per contact. Attribute keys can include only alphanumeric, dash, and underscore characters.
 #'
 #' @export
 update_contact_attributes <- function (InitialContactId, InstanceId, 

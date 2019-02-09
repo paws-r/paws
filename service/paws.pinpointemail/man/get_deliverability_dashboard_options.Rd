@@ -12,6 +12,8 @@ Show the status of the Deliverability dashboard. When the Deliverability dashboa
 \details{
 When you use the Deliverability dashboard, you pay a monthly charge of USD\$1,250.00, in addition to any other fees that you accrue by using Amazon Pinpoint. If you enable the Deliverability dashboard after the first day of a calendar month, AWS prorates the monthly charge based on how many days have elapsed in the current calendar month.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_deliverability_dashboard_options()
 }
+}
+

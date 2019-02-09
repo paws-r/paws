@@ -7,7 +7,7 @@
 modify_workspace_properties(WorkspaceId, WorkspaceProperties)
 }
 \arguments{
-\item{WorkspaceId}{[required] The ID of the WorkSpace.}
+\item{WorkspaceId}{[required] The identifier of the WorkSpace.}
 
 \item{WorkspaceProperties}{[required] The properties of the WorkSpace.}
 }

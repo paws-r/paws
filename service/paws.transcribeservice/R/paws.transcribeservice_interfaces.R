@@ -9,10 +9,10 @@ create_vocabulary_input <- function (...)
     shape <- structure(list(VocabularyName = structure(logical(0), 
         tags = list(type = "string", max = 200L, min = 1L, pattern = "^[0-9a-zA-Z._-]+")), 
         LanguageCode = structure(logical(0), tags = list(type = "string", 
-            enum = c("en-US", "es-US", "en-AU", "fr-CA", "en-UK"))), 
-        Phrases = structure(list(structure(logical(0), tags = list(type = "string", 
-            max = 256L, min = 0L))), tags = list(type = "list"))), 
-        tags = list(type = "structure"))
+            enum = c("en-US", "es-US", "en-AU", "fr-CA", "en-GB", 
+                "de-DE", "pt-BR", "fr-FR", "it-IT"))), Phrases = structure(list(structure(logical(0), 
+            tags = list(type = "string", max = 256L, min = 0L))), 
+            tags = list(type = "list"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -22,9 +22,10 @@ create_vocabulary_output <- function (...)
     shape <- structure(list(VocabularyName = structure(logical(0), 
         tags = list(type = "string", max = 200L, min = 1L, pattern = "^[0-9a-zA-Z._-]+")), 
         LanguageCode = structure(logical(0), tags = list(type = "string", 
-            enum = c("en-US", "es-US", "en-AU", "fr-CA", "en-UK"))), 
-        VocabularyState = structure(logical(0), tags = list(type = "string", 
-            enum = c("PENDING", "READY", "FAILED"))), LastModifiedTime = structure(logical(0), 
+            enum = c("en-US", "es-US", "en-AU", "fr-CA", "en-GB", 
+                "de-DE", "pt-BR", "fr-FR", "it-IT"))), VocabularyState = structure(logical(0), 
+            tags = list(type = "string", enum = c("PENDING", 
+                "READY", "FAILED"))), LastModifiedTime = structure(logical(0), 
             tags = list(type = "timestamp")), FailureReason = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))
     return(populate(args, shape))
@@ -75,11 +76,11 @@ get_transcription_job_output <- function (...)
         TranscriptionJobStatus = structure(logical(0), tags = list(type = "string", 
             enum = c("IN_PROGRESS", "FAILED", "COMPLETED"))), 
         LanguageCode = structure(logical(0), tags = list(type = "string", 
-            enum = c("en-US", "es-US", "en-AU", "fr-CA", "en-UK"))), 
-        MediaSampleRateHertz = structure(logical(0), tags = list(type = "integer", 
-            max = 48000L, min = 8000L)), MediaFormat = structure(logical(0), 
-            tags = list(type = "string", enum = c("mp3", "mp4", 
-                "wav", "flac"))), Media = structure(list(MediaFileUri = structure(logical(0), 
+            enum = c("en-US", "es-US", "en-AU", "fr-CA", "en-GB", 
+                "de-DE", "pt-BR", "fr-FR", "it-IT"))), MediaSampleRateHertz = structure(logical(0), 
+            tags = list(type = "integer", max = 48000L, min = 8000L)), 
+        MediaFormat = structure(logical(0), tags = list(type = "string", 
+            enum = c("mp3", "mp4", "wav", "flac"))), Media = structure(list(MediaFileUri = structure(logical(0), 
             tags = list(type = "string", max = 2000L, min = 1L))), 
             tags = list(type = "structure")), Transcript = structure(list(TranscriptFileUri = structure(logical(0), 
             tags = list(type = "string", max = 2000L, min = 1L))), 
@@ -112,9 +113,10 @@ get_vocabulary_output <- function (...)
     shape <- structure(list(VocabularyName = structure(logical(0), 
         tags = list(type = "string", max = 200L, min = 1L, pattern = "^[0-9a-zA-Z._-]+")), 
         LanguageCode = structure(logical(0), tags = list(type = "string", 
-            enum = c("en-US", "es-US", "en-AU", "fr-CA", "en-UK"))), 
-        VocabularyState = structure(logical(0), tags = list(type = "string", 
-            enum = c("PENDING", "READY", "FAILED"))), LastModifiedTime = structure(logical(0), 
+            enum = c("en-US", "es-US", "en-AU", "fr-CA", "en-GB", 
+                "de-DE", "pt-BR", "fr-FR", "it-IT"))), VocabularyState = structure(logical(0), 
+            tags = list(type = "string", enum = c("PENDING", 
+                "READY", "FAILED"))), LastModifiedTime = structure(logical(0), 
             tags = list(type = "timestamp")), FailureReason = structure(logical(0), 
             tags = list(type = "string")), DownloadUri = structure(logical(0), 
             tags = list(type = "string", max = 2000L, min = 1L))), 
@@ -145,14 +147,14 @@ list_transcription_jobs_output <- function (...)
         CreationTime = structure(logical(0), tags = list(type = "timestamp")), 
         CompletionTime = structure(logical(0), tags = list(type = "timestamp")), 
         LanguageCode = structure(logical(0), tags = list(type = "string", 
-            enum = c("en-US", "es-US", "en-AU", "fr-CA", "en-UK"))), 
-        TranscriptionJobStatus = structure(logical(0), tags = list(type = "string", 
-            enum = c("IN_PROGRESS", "FAILED", "COMPLETED"))), 
-        FailureReason = structure(logical(0), tags = list(type = "string")), 
-        OutputLocationType = structure(logical(0), tags = list(type = "string", 
-            enum = c("CUSTOMER_BUCKET", "SERVICE_BUCKET")))), 
-        tags = list(type = "structure"))), tags = list(type = "list"))), 
-        tags = list(type = "structure"))
+            enum = c("en-US", "es-US", "en-AU", "fr-CA", "en-GB", 
+                "de-DE", "pt-BR", "fr-FR", "it-IT"))), TranscriptionJobStatus = structure(logical(0), 
+            tags = list(type = "string", enum = c("IN_PROGRESS", 
+                "FAILED", "COMPLETED"))), FailureReason = structure(logical(0), 
+            tags = list(type = "string")), OutputLocationType = structure(logical(0), 
+            tags = list(type = "string", enum = c("CUSTOMER_BUCKET", 
+                "SERVICE_BUCKET")))), tags = list(type = "structure"))), 
+        tags = list(type = "list"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -177,10 +179,11 @@ list_vocabularies_output <- function (...)
         tags = list(type = "string", max = 8192L)), Vocabularies = structure(list(structure(list(VocabularyName = structure(logical(0), 
         tags = list(type = "string", max = 200L, min = 1L, pattern = "^[0-9a-zA-Z._-]+")), 
         LanguageCode = structure(logical(0), tags = list(type = "string", 
-            enum = c("en-US", "es-US", "en-AU", "fr-CA", "en-UK"))), 
-        LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), 
-        VocabularyState = structure(logical(0), tags = list(type = "string", 
-            enum = c("PENDING", "READY", "FAILED")))), tags = list(type = "structure"))), 
+            enum = c("en-US", "es-US", "en-AU", "fr-CA", "en-GB", 
+                "de-DE", "pt-BR", "fr-FR", "it-IT"))), LastModifiedTime = structure(logical(0), 
+            tags = list(type = "timestamp")), VocabularyState = structure(logical(0), 
+            tags = list(type = "string", enum = c("PENDING", 
+                "READY", "FAILED")))), tags = list(type = "structure"))), 
         tags = list(type = "list"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -191,11 +194,11 @@ start_transcription_job_input <- function (...)
     shape <- structure(list(TranscriptionJobName = structure(logical(0), 
         tags = list(type = "string", max = 200L, min = 1L, pattern = "^[0-9a-zA-Z._-]+")), 
         LanguageCode = structure(logical(0), tags = list(type = "string", 
-            enum = c("en-US", "es-US", "en-AU", "fr-CA", "en-UK"))), 
-        MediaSampleRateHertz = structure(logical(0), tags = list(type = "integer", 
-            max = 48000L, min = 8000L)), MediaFormat = structure(logical(0), 
-            tags = list(type = "string", enum = c("mp3", "mp4", 
-                "wav", "flac"))), Media = structure(list(MediaFileUri = structure(logical(0), 
+            enum = c("en-US", "es-US", "en-AU", "fr-CA", "en-GB", 
+                "de-DE", "pt-BR", "fr-FR", "it-IT"))), MediaSampleRateHertz = structure(logical(0), 
+            tags = list(type = "integer", max = 48000L, min = 8000L)), 
+        MediaFormat = structure(logical(0), tags = list(type = "string", 
+            enum = c("mp3", "mp4", "wav", "flac"))), Media = structure(list(MediaFileUri = structure(logical(0), 
             tags = list(type = "string", max = 2000L, min = 1L))), 
             tags = list(type = "structure")), OutputBucketName = structure(logical(0), 
             tags = list(type = "string", pattern = "[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9]")), 
@@ -217,11 +220,11 @@ start_transcription_job_output <- function (...)
         TranscriptionJobStatus = structure(logical(0), tags = list(type = "string", 
             enum = c("IN_PROGRESS", "FAILED", "COMPLETED"))), 
         LanguageCode = structure(logical(0), tags = list(type = "string", 
-            enum = c("en-US", "es-US", "en-AU", "fr-CA", "en-UK"))), 
-        MediaSampleRateHertz = structure(logical(0), tags = list(type = "integer", 
-            max = 48000L, min = 8000L)), MediaFormat = structure(logical(0), 
-            tags = list(type = "string", enum = c("mp3", "mp4", 
-                "wav", "flac"))), Media = structure(list(MediaFileUri = structure(logical(0), 
+            enum = c("en-US", "es-US", "en-AU", "fr-CA", "en-GB", 
+                "de-DE", "pt-BR", "fr-FR", "it-IT"))), MediaSampleRateHertz = structure(logical(0), 
+            tags = list(type = "integer", max = 48000L, min = 8000L)), 
+        MediaFormat = structure(logical(0), tags = list(type = "string", 
+            enum = c("mp3", "mp4", "wav", "flac"))), Media = structure(list(MediaFileUri = structure(logical(0), 
             tags = list(type = "string", max = 2000L, min = 1L))), 
             tags = list(type = "structure")), Transcript = structure(list(TranscriptFileUri = structure(logical(0), 
             tags = list(type = "string", max = 2000L, min = 1L))), 
@@ -245,10 +248,10 @@ update_vocabulary_input <- function (...)
     shape <- structure(list(VocabularyName = structure(logical(0), 
         tags = list(type = "string", max = 200L, min = 1L, pattern = "^[0-9a-zA-Z._-]+")), 
         LanguageCode = structure(logical(0), tags = list(type = "string", 
-            enum = c("en-US", "es-US", "en-AU", "fr-CA", "en-UK"))), 
-        Phrases = structure(list(structure(logical(0), tags = list(type = "string", 
-            max = 256L, min = 0L))), tags = list(type = "list"))), 
-        tags = list(type = "structure"))
+            enum = c("en-US", "es-US", "en-AU", "fr-CA", "en-GB", 
+                "de-DE", "pt-BR", "fr-FR", "it-IT"))), Phrases = structure(list(structure(logical(0), 
+            tags = list(type = "string", max = 256L, min = 0L))), 
+            tags = list(type = "list"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -258,9 +261,10 @@ update_vocabulary_output <- function (...)
     shape <- structure(list(VocabularyName = structure(logical(0), 
         tags = list(type = "string", max = 200L, min = 1L, pattern = "^[0-9a-zA-Z._-]+")), 
         LanguageCode = structure(logical(0), tags = list(type = "string", 
-            enum = c("en-US", "es-US", "en-AU", "fr-CA", "en-UK"))), 
-        LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), 
-        VocabularyState = structure(logical(0), tags = list(type = "string", 
-            enum = c("PENDING", "READY", "FAILED")))), tags = list(type = "structure"))
+            enum = c("en-US", "es-US", "en-AU", "fr-CA", "en-GB", 
+                "de-DE", "pt-BR", "fr-FR", "it-IT"))), LastModifiedTime = structure(logical(0), 
+            tags = list(type = "timestamp")), VocabularyState = structure(logical(0), 
+            tags = list(type = "string", enum = c("PENDING", 
+                "READY", "FAILED")))), tags = list(type = "structure"))
     return(populate(args, shape))
 }

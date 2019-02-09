@@ -4,10 +4,7 @@
 \alias{delete_deployment}
 \title{Deletes a Deployment}
 \usage{
-delete_deployment(
-  ApiId = "string",
-  DeploymentId = "string"
-)
+delete_deployment(ApiId, DeploymentId)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -17,6 +14,11 @@ delete_deployment(
 \description{
 Deletes a Deployment.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_deployment(
+  ApiId = "string",
+  DeploymentId = "string"
+)
 }
+}
+

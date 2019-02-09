@@ -11,7 +11,8 @@ restore_db_instance_from_db_snapshot(DBInstanceIdentifier,
   LicenseModel = NULL, DBName = NULL, Engine = NULL, Iops = NULL,
   OptionGroupName = NULL, Tags = NULL, StorageType = NULL,
   TdeCredentialArn = NULL, TdeCredentialPassword = NULL,
-  Domain = NULL, CopyTagsToSnapshot = NULL, DomainIAMRoleName = NULL,
+  VpcSecurityGroupIds = NULL, Domain = NULL,
+  CopyTagsToSnapshot = NULL, DomainIAMRoleName = NULL,
   EnableIAMDatabaseAuthentication = NULL,
   EnableCloudwatchLogsExports = NULL, ProcessorFeatures = NULL,
   UseDefaultProcessorFeatures = NULL, DBParameterGroupName = NULL,
@@ -124,6 +125,10 @@ Default: \code{io1} if the \code{Iops} parameter is specified, otherwise \code{s
 
 \item{TdeCredentialPassword}{The password for the given ARN from the key store in order to access the device.}
 
+\item{VpcSecurityGroupIds}{A list of EC2 VPC security groups to associate with this DB instance.
+
+Default: The default EC2 VPC security group for the DB subnet group's VPC.}
+
 \item{Domain}{Specify the Active Directory Domain to restore the instance in.}
 
 \item{CopyTagsToSnapshot}{True to copy all tags from the restored DB instance to snapshots of the DB instance, and otherwise false. The default is false.}
@@ -193,6 +198,9 @@ This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For Aurora, us
   StorageType = "string",
   TdeCredentialArn = "string",
   TdeCredentialPassword = "string",
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
   Domain = "string",
   CopyTagsToSnapshot = TRUE|FALSE,
   DomainIAMRoleName = "string",

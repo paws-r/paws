@@ -22,7 +22,7 @@ To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
 \item{Description}{[required] New description for the CMK.}
 }
 \description{
-Updates the description of a customer master key (CMK). To see the description of a CMK, use DescribeKey.
+Updates the description of a customer master key (CMK). To see the decription of a CMK, use DescribeKey.
 }
 \details{
 You cannot perform this operation on a CMK in a different AWS account.

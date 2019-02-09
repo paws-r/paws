@@ -4,9 +4,7 @@
 \alias{delete_public_access_block}
 \title{Removes the Public Access Block configuration for an Amazon Web Services account}
 \usage{
-delete_public_access_block(
-  AccountId = "string"
-)
+delete_public_access_block(AccountId)
 }
 \arguments{
 \item{AccountId}{[required] The Account ID for the Amazon Web Services account whose Public Access Block configuration you want to remove.}
@@ -14,6 +12,10 @@ delete_public_access_block(
 \description{
 Removes the Public Access Block configuration for an Amazon Web Services account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_public_access_block(
+  AccountId = "string"
+)
 }
+}
+

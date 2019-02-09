@@ -12,7 +12,9 @@ put_object(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL,
   Metadata = NULL, ServerSideEncryption = NULL, StorageClass = NULL,
   WebsiteRedirectLocation = NULL, SSECustomerAlgorithm = NULL,
   SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL,
-  SSEKMSKeyId = NULL, RequestPayer = NULL, Tagging = NULL)
+  SSEKMSKeyId = NULL, RequestPayer = NULL, Tagging = NULL,
+  ObjectLockMode = NULL, ObjectLockRetainUntilDate = NULL,
+  ObjectLockLegalHoldStatus = NULL)
 }
 \arguments{
 \item{ACL}{The canned ACL to apply to the object.}
@@ -65,7 +67,13 @@ put_object(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL,
 
 \item{RequestPayer}{}
 
-\item{Tagging}{The tag-set for the object. The tag-set must be encoded as URL Query parameters}
+\item{Tagging}{The tag-set for the object. The tag-set must be encoded as URL Query parameters. (For example, "Key1=Value1")}
+
+\item{ObjectLockMode}{The Object Lock mode that you want to apply to this object.}
+
+\item{ObjectLockRetainUntilDate}{The date and time when you want this object's Object Lock to expire.}
+
+\item{ObjectLockLegalHoldStatus}{The Legal Hold status that you want to apply to the specified object.}
 }
 \description{
 Adds an object to a bucket.
@@ -92,14 +100,17 @@ Adds an object to a bucket.
     "string"
   ),
   ServerSideEncryption = "AES256"|"aws:kms",
-  StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA",
+  StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER",
   WebsiteRedirectLocation = "string",
   SSECustomerAlgorithm = "string",
   SSECustomerKey = raw,
   SSECustomerKeyMD5 = "string",
   SSEKMSKeyId = "string",
   RequestPayer = "requester",
-  Tagging = "string"
+  Tagging = "string",
+  ObjectLockMode = "GOVERNANCE"|"COMPLIANCE",
+  ObjectLockRetainUntilDate = as.POSIXct("2015-01-01"),
+  ObjectLockLegalHoldStatus = "ON"|"OFF"
 )
 }
 }
@@ -113,28 +124,6 @@ Adds an object to a bucket.
   Key = "objectkey"
 )}
 
-# The following example uploads an object. The request specifies optional
-# request headers to directs S3 to use specific storage class and use
-# server-side encryption.
-\donttest{put_object(
-  Body = "HappyFace.jpg",
-  Bucket = "examplebucket",
-  Key = "HappyFace.jpg",
-  ServerSideEncryption = "AES256",
-  StorageClass = "STANDARD_IA"
-)}
-
-# The following example uploads and object. The request specifies optional
-# canned ACL (access control list) to all READ access to authenticated
-# users. If the bucket is versioning enabled, S3 returns version ID in
-# response.
-\donttest{put_object(
-  ACL = "authenticated-read",
-  Body = "filetoupload",
-  Bucket = "examplebucket",
-  Key = "exampleobject"
-)}
-
 # The following example uploads an object to a versioning-enabled bucket.
 # The source file is specified using Windows file syntax. S3 returns
 # VersionId of the newly created object.
@@ -142,6 +131,18 @@ Adds an object to a bucket.
   Body = "HappyFace.jpg",
   Bucket = "examplebucket",
   Key = "HappyFace.jpg"
+)}
+
+# The following example uploads and object. The request specifies the
+# optional server-side encryption option. The request also specifies
+# optional object tags. If the bucket is versioning enabled, S3 returns
+# version ID in response.
+\donttest{put_object(
+  Body = "filetoupload",
+  Bucket = "examplebucket",
+  Key = "exampleobject",
+  ServerSideEncryption = "AES256",
+  Tagging = "key1=value1&key2=value2"
 )}
 
 # The following example creates an object. The request also specifies
@@ -167,16 +168,26 @@ Adds an object to a bucket.
   Tagging = "key1=value1&key2=value2"
 )}
 
-# The following example uploads and object. The request specifies the
-# optional server-side encryption option. The request also specifies
-# optional object tags. If the bucket is versioning enabled, S3 returns
-# version ID in response.
+# The following example uploads an object. The request specifies optional
+# request headers to directs S3 to use specific storage class and use
+# server-side encryption.
 \donttest{put_object(
+  Body = "HappyFace.jpg",
+  Bucket = "examplebucket",
+  Key = "HappyFace.jpg",
+  ServerSideEncryption = "AES256",
+  StorageClass = "STANDARD_IA"
+)}
+
+# The following example uploads and object. The request specifies optional
+# canned ACL (access control list) to all READ access to authenticated
+# users. If the bucket is versioning enabled, S3 returns version ID in
+# response.
+\donttest{put_object(
+  ACL = "authenticated-read",
   Body = "filetoupload",
   Bucket = "examplebucket",
-  Key = "exampleobject",
-  ServerSideEncryption = "AES256",
-  Tagging = "key1=value1&key2=value2"
+  Key = "exampleobject"
 )}
 
 }

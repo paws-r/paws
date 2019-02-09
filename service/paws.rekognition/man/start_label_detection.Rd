@@ -28,7 +28,7 @@ Amazon Rekognition Video can detect labels in a video. Labels are instances of r
 
 The video must be stored in an Amazon S3 bucket. Use Video to specify the bucket name and the filename of the video. \code{StartLabelDetection} returns a job identifier (\code{JobId}) which you use to get the results of the operation. When label detection is finished, Amazon Rekognition Video publishes a completion status to the Amazon Simple Notification Service topic that you specify in \code{NotificationChannel}.
 
-To get the results of the label detection operation, first check that the status value published to the Amazon SNS topic is \code{SUCCEEDED}. If so, call and pass the job identifier (\code{JobId}) from the initial call to \code{StartLabelDetection}.
+To get the results of the label detection operation, first check that the status value published to the Amazon SNS topic is \code{SUCCEEDED}. If so, call GetLabelDetection and pass the job identifier (\code{JobId}) from the initial call to \code{StartLabelDetection}.
 }
 \section{Accepted Parameters}{
 \preformatted{start_label_detection(

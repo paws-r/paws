@@ -4,17 +4,9 @@
 \alias{get_resource_share_associations}
 \title{Gets the associations for the specified resource share}
 \usage{
-get_resource_share_associations(
-  associationType = "PRINCIPAL"|"RESOURCE",
-  resourceShareArns = list(
-    "string"
-  ),
-  resourceArn = "string",
-  principal = "string",
-  associationStatus = "ASSOCIATING"|"ASSOCIATED"|"FAILED"|"DISASSOCIATING"|"DISASSOCIATED",
-  nextToken = "string",
-  maxResults = 123
-)
+get_resource_share_associations(associationType,
+  resourceShareArns = NULL, resourceArn = NULL, principal = NULL,
+  associationStatus = NULL, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{associationType}{[required] The association type.}
@@ -34,6 +26,18 @@ get_resource_share_associations(
 \description{
 Gets the associations for the specified resource share.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_resource_share_associations(
+  associationType = "PRINCIPAL"|"RESOURCE",
+  resourceShareArns = list(
+    "string"
+  ),
+  resourceArn = "string",
+  principal = "string",
+  associationStatus = "ASSOCIATING"|"ASSOCIATED"|"FAILED"|"DISASSOCIATING"|"DISASSOCIATED",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

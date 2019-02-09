@@ -9,7 +9,7 @@ create_group_certificate_authority(AmznClientToken = NULL, GroupId)
 \arguments{
 \item{AmznClientToken}{A client token used to correlate requests and responses.}
 
-\item{GroupId}{[required] The ID of the AWS Greengrass group.}
+\item{GroupId}{[required] The ID of the Greengrass group.}
 }
 \description{
 Creates a CA for the group. If a CA already exists, it will rotate the existing CA.

@@ -105,7 +105,32 @@ Creates or updates a campaign.
         ),
         Schedule = list(
           EndTime = "string",
-          Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY",
+          EventFilter = list(
+            Dimensions = list(
+              Attributes = list(
+                list(
+                  AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+                  Values = list(
+                    "string"
+                  )
+                )
+              ),
+              EventType = list(
+                DimensionType = "INCLUSIVE"|"EXCLUSIVE",
+                Values = list(
+                  "string"
+                )
+              ),
+              Metrics = list(
+                list(
+                  ComparisonOperator = "string",
+                  Value = 123.0
+                )
+              )
+            ),
+            FilterType = "SYSTEM"|"ENDPOINT"
+          ),
+          Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
           IsLocalTime = TRUE|FALSE,
           QuietTime = list(
             End = "string",
@@ -219,7 +244,32 @@ Creates or updates a campaign.
     Name = "string",
     Schedule = list(
       EndTime = "string",
-      Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY",
+      EventFilter = list(
+        Dimensions = list(
+          Attributes = list(
+            list(
+              AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+              Values = list(
+                "string"
+              )
+            )
+          ),
+          EventType = list(
+            DimensionType = "INCLUSIVE"|"EXCLUSIVE",
+            Values = list(
+              "string"
+            )
+          ),
+          Metrics = list(
+            list(
+              ComparisonOperator = "string",
+              Value = 123.0
+            )
+          )
+        ),
+        FilterType = "SYSTEM"|"ENDPOINT"
+      ),
+      Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
       IsLocalTime = TRUE|FALSE,
       QuietTime = list(
         End = "string",

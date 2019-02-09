@@ -167,7 +167,7 @@ create_address <- function (Address)
 #'   AddressId = "string",
 #'   KmsKeyARN = "string",
 #'   RoleARN = "string",
-#'   SnowballType = "STANDARD"|"EDGE",
+#'   SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG",
 #'   ShippingOption = "SECOND_DAY"|"NEXT_DAY"|"EXPRESS"|"STANDARD",
 #'   Notification = list(
 #'     SnsTopicARN = "string",
@@ -186,14 +186,14 @@ create_address <- function (Address)
 #' @param AddressId &#91;required&#93; The ID for the address that you want the cluster shipped to.
 #' @param KmsKeyARN The `KmsKeyARN` value that you want to associate with this cluster. `KmsKeyARN` values are created by using the [CreateKey](http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html) API action in AWS Key Management Service (AWS KMS).
 #' @param RoleARN &#91;required&#93; The `RoleARN` that you want to associate with this cluster. `RoleArn` values are created by using the [CreateRole](http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html) API action in AWS Identity and Access Management (IAM).
-#' @param SnowballType The type of AWS Snowball device to use for this cluster. Currently, the only supported device type for cluster jobs is `EDGE`.
+#' @param SnowballType The type of AWS Snowball device to use for this cluster. The only supported device types for cluster jobs are `EDGE`, `EDGE_C`, and `EDGE_CG`.
 #' @param ShippingOption &#91;required&#93; The shipping speed for each node in this cluster. This speed doesn\'t dictate how soon you\'ll get each Snowball Edge device, rather it represents how quickly each device moves to its destination while in transit. Regional shipping speeds are as follows:
 #' 
 #' -   In Australia, you have access to express shipping. Typically, devices shipped express are delivered in about a day.
 #' 
 #' -   In the European Union (EU), you have access to express shipping. Typically, Snowball Edges shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.
 #' 
-#' -   In India, Snowball Edges are delivered in one to seven days.
+#' -   In India, devices are delivered in one to seven days.
 #' 
 #' -   In the US, you have access to one-day shipping and two-day shipping.
 #' @param Notification The Amazon Simple Notification Service (Amazon SNS) notification settings for this cluster.
@@ -287,7 +287,7 @@ create_cluster <- function (JobType, Resources, Description = NULL,
 #'   AddressId = "string",
 #'   KmsKeyARN = "string",
 #'   RoleARN = "string",
-#'   SnowballCapacityPreference = "T50"|"T80"|"T100"|"NoPreference",
+#'   SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"NoPreference",
 #'   ShippingOption = "SECOND_DAY"|"NEXT_DAY"|"EXPRESS"|"STANDARD",
 #'   Notification = list(
 #'     SnsTopicARN = "string",
@@ -297,7 +297,7 @@ create_cluster <- function (JobType, Resources, Description = NULL,
 #'     NotifyAll = TRUE|FALSE
 #'   ),
 #'   ClusterId = "string",
-#'   SnowballType = "STANDARD"|"EDGE",
+#'   SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG",
 #'   ForwardingAddressId = "string"
 #' )
 #' ```
@@ -324,7 +324,7 @@ create_cluster <- function (JobType, Resources, Description = NULL,
 #' -   In the US, you have access to one-day shipping and two-day shipping.
 #' @param Notification Defines the Amazon Simple Notification Service (Amazon SNS) notification settings for this job.
 #' @param ClusterId The ID of a cluster. If you\'re creating a job for a node in a cluster, you need to provide only this `clusterId` value. The other job attributes are inherited from the cluster.
-#' @param SnowballType The type of AWS Snowball device to use for this job. Currently, the only supported device type for cluster jobs is `EDGE`.
+#' @param SnowballType The type of AWS Snowball device to use for this job. The only supported device types for cluster jobs are `EDGE`, `EDGE_C`, and `EDGE_CG`.
 #' @param ForwardingAddressId The forwarding address ID for a job. This field is not supported in most regions.
 #'
 #' @examples
@@ -728,9 +728,9 @@ list_clusters <- function (MaxResults = NULL, NextToken = NULL)
     return(response)
 }
 
-#' This action returns a list of the different Amazon EC2 Amazon Machine Images (AMIs) that are owned by your AWS account that would be supported for use on a Snowball Edge device
+#' This action returns a list of the different Amazon EC2 Amazon Machine Images (AMIs) that are owned by your AWS account that would be supported for use on EDGE, EDGE_C, and EDGE_CG devices
 #'
-#' This action returns a list of the different Amazon EC2 Amazon Machine Images (AMIs) that are owned by your AWS account that would be supported for use on a Snowball Edge device. Currently, supported AMIs are based on the CentOS 7 (x86\_64) - with Updates HVM, Ubuntu Server 14.04 LTS (HVM), and Ubuntu 16.04 LTS - Xenial (HVM) images, available on the AWS Marketplace.
+#' This action returns a list of the different Amazon EC2 Amazon Machine Images (AMIs) that are owned by your AWS account that would be supported for use on `EDGE`, `EDGE_C`, and `EDGE_CG` devices. For more information on compatible AMIs, see [Using Amazon EC2 Compute Instances](http://docs.aws.amazon.com/snowball/latest/developer-guide/using-ec2.html) in the *AWS Snowball Developer Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -740,7 +740,7 @@ list_clusters <- function (MaxResults = NULL, NextToken = NULL)
 #' )
 #' ```
 #'
-#' @param MaxResults The maximum number of results for the list of compatible images. Currently, a Snowball Edge device can store 10 AMIs.
+#' @param MaxResults The maximum number of results for the list of compatible images. Currently, each supported device can store 10 AMIs.
 #' @param NextToken HTTP requests are stateless. To identify what object comes \"next\" in the list of compatible images, you can specify a value for `NextToken` as the starting point for your list of returned images.
 #'
 #' @export
@@ -926,7 +926,7 @@ update_cluster <- function (ClusterId, RoleARN = NULL, Description = NULL,
 #'   AddressId = "string",
 #'   ShippingOption = "SECOND_DAY"|"NEXT_DAY"|"EXPRESS"|"STANDARD",
 #'   Description = "string",
-#'   SnowballCapacityPreference = "T50"|"T80"|"T100"|"NoPreference",
+#'   SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"NoPreference",
 #'   ForwardingAddressId = "string"
 #' )
 #' ```

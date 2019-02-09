@@ -20,6 +20,7 @@ create_delivery_stream_input <- function (...)
                 pattern = "arn:.*")), BucketARN = structure(logical(0), 
             tags = list(type = "string", max = 2048L, min = 1L, 
                 pattern = "arn:.*")), Prefix = structure(logical(0), 
+            tags = list(type = "string")), ErrorOutputPrefix = structure(logical(0), 
             tags = list(type = "string")), BufferingHints = structure(list(SizeInMBs = structure(logical(0), 
             tags = list(type = "integer", max = 128L, min = 1L)), 
             IntervalInSeconds = structure(logical(0), tags = list(type = "integer", 
@@ -41,6 +42,7 @@ create_delivery_stream_input <- function (...)
                 pattern = "arn:.*")), BucketARN = structure(logical(0), 
             tags = list(type = "string", max = 2048L, min = 1L, 
                 pattern = "arn:.*")), Prefix = structure(logical(0), 
+            tags = list(type = "string")), ErrorOutputPrefix = structure(logical(0), 
             tags = list(type = "string")), BufferingHints = structure(list(SizeInMBs = structure(logical(0), 
             tags = list(type = "integer", max = 128L, min = 1L)), 
             IntervalInSeconds = structure(logical(0), tags = list(type = "integer", 
@@ -73,6 +75,7 @@ create_delivery_stream_input <- function (...)
                   pattern = "arn:.*")), BucketARN = structure(logical(0), 
                 tags = list(type = "string", max = 2048L, min = 1L, 
                   pattern = "arn:.*")), Prefix = structure(logical(0), 
+                tags = list(type = "string")), ErrorOutputPrefix = structure(logical(0), 
                 tags = list(type = "string")), BufferingHints = structure(list(SizeInMBs = structure(logical(0), 
                 tags = list(type = "integer", max = 128L, min = 1L)), 
                 IntervalInSeconds = structure(logical(0), tags = list(type = "integer", 
@@ -157,6 +160,7 @@ create_delivery_stream_input <- function (...)
                   pattern = "arn:.*")), BucketARN = structure(logical(0), 
                 tags = list(type = "string", max = 2048L, min = 1L, 
                   pattern = "arn:.*")), Prefix = structure(logical(0), 
+                tags = list(type = "string")), ErrorOutputPrefix = structure(logical(0), 
                 tags = list(type = "string")), BufferingHints = structure(list(SizeInMBs = structure(logical(0), 
                 tags = list(type = "integer", max = 128L, min = 1L)), 
                 IntervalInSeconds = structure(logical(0), tags = list(type = "integer", 
@@ -189,6 +193,7 @@ create_delivery_stream_input <- function (...)
                   pattern = "arn:.*")), BucketARN = structure(logical(0), 
                 tags = list(type = "string", max = 2048L, min = 1L, 
                   pattern = "arn:.*")), Prefix = structure(logical(0), 
+                tags = list(type = "string")), ErrorOutputPrefix = structure(logical(0), 
                 tags = list(type = "string")), BufferingHints = structure(list(SizeInMBs = structure(logical(0), 
                 tags = list(type = "integer", max = 128L, min = 1L)), 
                 IntervalInSeconds = structure(logical(0), tags = list(type = "integer", 
@@ -231,6 +236,7 @@ create_delivery_stream_input <- function (...)
                   pattern = "arn:.*")), BucketARN = structure(logical(0), 
                 tags = list(type = "string", max = 2048L, min = 1L, 
                   pattern = "arn:.*")), Prefix = structure(logical(0), 
+                tags = list(type = "string")), ErrorOutputPrefix = structure(logical(0), 
                 tags = list(type = "string")), BufferingHints = structure(list(SizeInMBs = structure(logical(0), 
                 tags = list(type = "integer", max = 128L, min = 1L)), 
                 IntervalInSeconds = structure(logical(0), tags = list(type = "integer", 
@@ -275,6 +281,7 @@ create_delivery_stream_input <- function (...)
                   pattern = "arn:.*")), BucketARN = structure(logical(0), 
                 tags = list(type = "string", max = 2048L, min = 1L, 
                   pattern = "arn:.*")), Prefix = structure(logical(0), 
+                tags = list(type = "string")), ErrorOutputPrefix = structure(logical(0), 
                 tags = list(type = "string")), BufferingHints = structure(list(SizeInMBs = structure(logical(0), 
                 tags = list(type = "integer", max = 128L, min = 1L)), 
                 IntervalInSeconds = structure(logical(0), tags = list(type = "integer", 
@@ -304,7 +311,12 @@ create_delivery_stream_input <- function (...)
                 tags = list(type = "boolean")), LogGroupName = structure(logical(0), 
                 tags = list(type = "string")), LogStreamName = structure(logical(0), 
                 tags = list(type = "string"))), tags = list(type = "structure"))), 
-            tags = list(type = "structure"))), tags = list(type = "structure"))
+            tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L)), 
+            Value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L))), tags = list(type = "structure"))), 
+            tags = list(type = "list", max = 50L, min = 1L))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -353,11 +365,13 @@ describe_delivery_stream_output <- function (...)
         DeliveryStreamARN = structure(logical(0), tags = list(type = "string", 
             max = 512L, min = 1L, pattern = "arn:.*")), DeliveryStreamStatus = structure(logical(0), 
             tags = list(type = "string", enum = c("CREATING", 
-                "DELETING", "ACTIVE"))), DeliveryStreamType = structure(logical(0), 
-            tags = list(type = "string", enum = c("DirectPut", 
-                "KinesisStreamAsSource"))), VersionId = structure(logical(0), 
-            tags = list(type = "string", max = 50L, min = 1L, 
-                pattern = "[0-9]+")), CreateTimestamp = structure(logical(0), 
+                "DELETING", "ACTIVE"))), DeliveryStreamEncryptionConfiguration = structure(list(Status = structure(logical(0), 
+            tags = list(type = "string", enum = c("ENABLED", 
+                "ENABLING", "DISABLED", "DISABLING")))), tags = list(type = "structure")), 
+        DeliveryStreamType = structure(logical(0), tags = list(type = "string", 
+            enum = c("DirectPut", "KinesisStreamAsSource"))), 
+        VersionId = structure(logical(0), tags = list(type = "string", 
+            max = 50L, min = 1L, pattern = "[0-9]+")), CreateTimestamp = structure(logical(0), 
             tags = list(type = "timestamp")), LastUpdateTimestamp = structure(logical(0), 
             tags = list(type = "timestamp")), Source = structure(list(KinesisStreamSourceDescription = structure(list(KinesisStreamARN = structure(logical(0), 
             tags = list(type = "string", max = 512L, min = 1L, 
@@ -372,6 +386,7 @@ describe_delivery_stream_output <- function (...)
                   pattern = "arn:.*")), BucketARN = structure(logical(0), 
                 tags = list(type = "string", max = 2048L, min = 1L, 
                   pattern = "arn:.*")), Prefix = structure(logical(0), 
+                tags = list(type = "string")), ErrorOutputPrefix = structure(logical(0), 
                 tags = list(type = "string")), BufferingHints = structure(list(SizeInMBs = structure(logical(0), 
                 tags = list(type = "integer", max = 128L, min = 1L)), 
                 IntervalInSeconds = structure(logical(0), tags = list(type = "integer", 
@@ -392,6 +407,7 @@ describe_delivery_stream_output <- function (...)
                   pattern = "arn:.*")), BucketARN = structure(logical(0), 
                 tags = list(type = "string", max = 2048L, min = 1L, 
                   pattern = "arn:.*")), Prefix = structure(logical(0), 
+                tags = list(type = "string")), ErrorOutputPrefix = structure(logical(0), 
                 tags = list(type = "string")), BufferingHints = structure(list(SizeInMBs = structure(logical(0), 
                 tags = list(type = "integer", max = 128L, min = 1L)), 
                 IntervalInSeconds = structure(logical(0), tags = list(type = "integer", 
@@ -424,6 +440,7 @@ describe_delivery_stream_output <- function (...)
                     pattern = "arn:.*")), BucketARN = structure(logical(0), 
                   tags = list(type = "string", max = 2048L, min = 1L, 
                     pattern = "arn:.*")), Prefix = structure(logical(0), 
+                  tags = list(type = "string")), ErrorOutputPrefix = structure(logical(0), 
                   tags = list(type = "string")), BufferingHints = structure(list(SizeInMBs = structure(logical(0), 
                   tags = list(type = "integer", max = 128L, min = 1L)), 
                   IntervalInSeconds = structure(logical(0), tags = list(type = "integer", 
@@ -508,6 +525,7 @@ describe_delivery_stream_output <- function (...)
                     pattern = "arn:.*")), BucketARN = structure(logical(0), 
                   tags = list(type = "string", max = 2048L, min = 1L, 
                     pattern = "arn:.*")), Prefix = structure(logical(0), 
+                  tags = list(type = "string")), ErrorOutputPrefix = structure(logical(0), 
                   tags = list(type = "string")), BufferingHints = structure(list(SizeInMBs = structure(logical(0), 
                   tags = list(type = "integer", max = 128L, min = 1L)), 
                   IntervalInSeconds = structure(logical(0), tags = list(type = "integer", 
@@ -540,6 +558,7 @@ describe_delivery_stream_output <- function (...)
                     pattern = "arn:.*")), BucketARN = structure(logical(0), 
                   tags = list(type = "string", max = 2048L, min = 1L, 
                     pattern = "arn:.*")), Prefix = structure(logical(0), 
+                  tags = list(type = "string")), ErrorOutputPrefix = structure(logical(0), 
                   tags = list(type = "string")), BufferingHints = structure(list(SizeInMBs = structure(logical(0), 
                   tags = list(type = "integer", max = 128L, min = 1L)), 
                   IntervalInSeconds = structure(logical(0), tags = list(type = "integer", 
@@ -583,6 +602,7 @@ describe_delivery_stream_output <- function (...)
                     pattern = "arn:.*")), BucketARN = structure(logical(0), 
                   tags = list(type = "string", max = 2048L, min = 1L, 
                     pattern = "arn:.*")), Prefix = structure(logical(0), 
+                  tags = list(type = "string")), ErrorOutputPrefix = structure(logical(0), 
                   tags = list(type = "string")), BufferingHints = structure(list(SizeInMBs = structure(logical(0), 
                   tags = list(type = "integer", max = 128L, min = 1L)), 
                   IntervalInSeconds = structure(logical(0), tags = list(type = "integer", 
@@ -629,6 +649,7 @@ describe_delivery_stream_output <- function (...)
                     pattern = "arn:.*")), BucketARN = structure(logical(0), 
                   tags = list(type = "string", max = 2048L, min = 1L, 
                     pattern = "arn:.*")), Prefix = structure(logical(0), 
+                  tags = list(type = "string")), ErrorOutputPrefix = structure(logical(0), 
                   tags = list(type = "string")), BufferingHints = structure(list(SizeInMBs = structure(logical(0), 
                   tags = list(type = "integer", max = 128L, min = 1L)), 
                   IntervalInSeconds = structure(logical(0), tags = list(type = "integer", 
@@ -727,7 +748,8 @@ put_record_output <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(RecordId = structure(logical(0), 
-        tags = list(type = "string", min = 1L))), tags = list(type = "structure"))
+        tags = list(type = "string", min = 1L)), Encrypted = structure(logical(0), 
+        tags = list(type = "boolean"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -747,11 +769,44 @@ put_record_batch_output <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(FailedPutCount = structure(logical(0), 
-        tags = list(type = "integer", min = 0L)), RequestResponses = structure(list(structure(list(RecordId = structure(logical(0), 
+        tags = list(type = "integer", min = 0L)), Encrypted = structure(logical(0), 
+        tags = list(type = "boolean")), RequestResponses = structure(list(structure(list(RecordId = structure(logical(0), 
         tags = list(type = "string", min = 1L)), ErrorCode = structure(logical(0), 
         tags = list(type = "string")), ErrorMessage = structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "structure"))), 
         tags = list(type = "list", max = 500L, min = 1L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+start_delivery_stream_encryption_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(DeliveryStreamName = structure(logical(0), 
+        tags = list(type = "string", max = 64L, min = 1L, pattern = "[a-zA-Z0-9_.-]+"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+start_delivery_stream_encryption_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+stop_delivery_stream_encryption_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(DeliveryStreamName = structure(logical(0), 
+        tags = list(type = "string", max = 64L, min = 1L, pattern = "[a-zA-Z0-9_.-]+"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+stop_delivery_stream_encryption_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -808,6 +863,7 @@ update_destination_input <- function (...)
                 pattern = "arn:.*")), BucketARN = structure(logical(0), 
             tags = list(type = "string", max = 2048L, min = 1L, 
                 pattern = "arn:.*")), Prefix = structure(logical(0), 
+            tags = list(type = "string")), ErrorOutputPrefix = structure(logical(0), 
             tags = list(type = "string")), BufferingHints = structure(list(SizeInMBs = structure(logical(0), 
             tags = list(type = "integer", max = 128L, min = 1L)), 
             IntervalInSeconds = structure(logical(0), tags = list(type = "integer", 
@@ -829,6 +885,7 @@ update_destination_input <- function (...)
                 pattern = "arn:.*")), BucketARN = structure(logical(0), 
             tags = list(type = "string", max = 2048L, min = 1L, 
                 pattern = "arn:.*")), Prefix = structure(logical(0), 
+            tags = list(type = "string")), ErrorOutputPrefix = structure(logical(0), 
             tags = list(type = "string")), BufferingHints = structure(list(SizeInMBs = structure(logical(0), 
             tags = list(type = "integer", max = 128L, min = 1L)), 
             IntervalInSeconds = structure(logical(0), tags = list(type = "integer", 
@@ -861,6 +918,7 @@ update_destination_input <- function (...)
                   pattern = "arn:.*")), BucketARN = structure(logical(0), 
                 tags = list(type = "string", max = 2048L, min = 1L, 
                   pattern = "arn:.*")), Prefix = structure(logical(0), 
+                tags = list(type = "string")), ErrorOutputPrefix = structure(logical(0), 
                 tags = list(type = "string")), BufferingHints = structure(list(SizeInMBs = structure(logical(0), 
                 tags = list(type = "integer", max = 128L, min = 1L)), 
                 IntervalInSeconds = structure(logical(0), tags = list(type = "integer", 
@@ -945,6 +1003,7 @@ update_destination_input <- function (...)
                   pattern = "arn:.*")), BucketARN = structure(logical(0), 
                 tags = list(type = "string", max = 2048L, min = 1L, 
                   pattern = "arn:.*")), Prefix = structure(logical(0), 
+                tags = list(type = "string")), ErrorOutputPrefix = structure(logical(0), 
                 tags = list(type = "string")), BufferingHints = structure(list(SizeInMBs = structure(logical(0), 
                 tags = list(type = "integer", max = 128L, min = 1L)), 
                 IntervalInSeconds = structure(logical(0), tags = list(type = "integer", 
@@ -977,6 +1036,7 @@ update_destination_input <- function (...)
                   pattern = "arn:.*")), BucketARN = structure(logical(0), 
                 tags = list(type = "string", max = 2048L, min = 1L, 
                   pattern = "arn:.*")), Prefix = structure(logical(0), 
+                tags = list(type = "string")), ErrorOutputPrefix = structure(logical(0), 
                 tags = list(type = "string")), BufferingHints = structure(list(SizeInMBs = structure(logical(0), 
                 tags = list(type = "integer", max = 128L, min = 1L)), 
                 IntervalInSeconds = structure(logical(0), tags = list(type = "integer", 
@@ -1017,6 +1077,7 @@ update_destination_input <- function (...)
                   pattern = "arn:.*")), BucketARN = structure(logical(0), 
                 tags = list(type = "string", max = 2048L, min = 1L, 
                   pattern = "arn:.*")), Prefix = structure(logical(0), 
+                tags = list(type = "string")), ErrorOutputPrefix = structure(logical(0), 
                 tags = list(type = "string")), BufferingHints = structure(list(SizeInMBs = structure(logical(0), 
                 tags = list(type = "integer", max = 128L, min = 1L)), 
                 IntervalInSeconds = structure(logical(0), tags = list(type = "integer", 
@@ -1061,6 +1122,7 @@ update_destination_input <- function (...)
                   pattern = "arn:.*")), BucketARN = structure(logical(0), 
                 tags = list(type = "string", max = 2048L, min = 1L, 
                   pattern = "arn:.*")), Prefix = structure(logical(0), 
+                tags = list(type = "string")), ErrorOutputPrefix = structure(logical(0), 
                 tags = list(type = "string")), BufferingHints = structure(list(SizeInMBs = structure(logical(0), 
                 tags = list(type = "integer", max = 128L, min = 1L)), 
                 IntervalInSeconds = structure(logical(0), tags = list(type = "integer", 

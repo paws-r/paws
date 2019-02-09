@@ -164,7 +164,7 @@ create_activation <- function (Description = NULL, DefaultInstanceName = NULL,
 #' 
 #' When you associate a document with one or more instances using instance IDs or tags, SSM Agent running on the instance processes the document and configures the instance as specified.
 #' 
-#' If you associate a document with an instance that already has an associated document, the system throws the AssociationAlreadyExists exception.
+#' If you associate a document with an instance that already has an associated document, the system returns the AssociationAlreadyExists exception.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -194,6 +194,7 @@ create_activation <- function (Description = NULL, DefaultInstanceName = NULL,
 #'     )
 #'   ),
 #'   AssociationName = "string",
+#'   AutomationTargetParameterName = "string",
 #'   MaxErrors = "string",
 #'   MaxConcurrency = "string",
 #'   ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED"
@@ -208,6 +209,7 @@ create_activation <- function (Description = NULL, DefaultInstanceName = NULL,
 #' @param ScheduleExpression A cron expression when the association will be applied to the target(s).
 #' @param OutputLocation An Amazon S3 bucket where you want to store the output details of the request.
 #' @param AssociationName Specify a descriptive name for the association.
+#' @param AutomationTargetParameterName Specify the target for the association. This target is required for associations that use an Automation document and target resources by using rate controls.
 #' @param MaxErrors The number of errors that are allowed before the system stops sending requests to run the association on additional targets. You can specify either an absolute number of errors, for example 10, or a percentage of the target set, for example 10%. If you specify 3, for example, the system stops sending requests when the fourth error is received. If you specify 0, then the system stops sending requests after the first error is returned. If you run an association on 50 instances and set MaxError to 10%, then the system stops sending the request when the sixth error is received.
 #' 
 #' Executions that are already running an association when MaxErrors is reached are allowed to complete, but some of these executions may fail as well. If you need to ensure that there won\'t be more than max-errors failed executions, set MaxConcurrency to 1 so that executions proceed one at a time.
@@ -219,16 +221,17 @@ create_activation <- function (Description = NULL, DefaultInstanceName = NULL,
 #' @export
 create_association <- function (Name, DocumentVersion = NULL, 
     InstanceId = NULL, Parameters = NULL, Targets = NULL, ScheduleExpression = NULL, 
-    OutputLocation = NULL, AssociationName = NULL, MaxErrors = NULL, 
-    MaxConcurrency = NULL, ComplianceSeverity = NULL) 
+    OutputLocation = NULL, AssociationName = NULL, AutomationTargetParameterName = NULL, 
+    MaxErrors = NULL, MaxConcurrency = NULL, ComplianceSeverity = NULL) 
 {
     op <- new_operation(name = "CreateAssociation", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- create_association_input(Name = Name, DocumentVersion = DocumentVersion, 
         InstanceId = InstanceId, Parameters = Parameters, Targets = Targets, 
         ScheduleExpression = ScheduleExpression, OutputLocation = OutputLocation, 
-        AssociationName = AssociationName, MaxErrors = MaxErrors, 
-        MaxConcurrency = MaxConcurrency, ComplianceSeverity = ComplianceSeverity)
+        AssociationName = AssociationName, AutomationTargetParameterName = AutomationTargetParameterName, 
+        MaxErrors = MaxErrors, MaxConcurrency = MaxConcurrency, 
+        ComplianceSeverity = ComplianceSeverity)
     output <- create_association_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -242,7 +245,7 @@ create_association <- function (Name, DocumentVersion = NULL,
 #' 
 #' When you associate a document with one or more instances using instance IDs or tags, SSM Agent running on the instance processes the document and configures the instance as specified.
 #' 
-#' If you associate a document with an instance that already has an associated document, the system throws the AssociationAlreadyExists exception.
+#' If you associate a document with an instance that already has an associated document, the system returns the AssociationAlreadyExists exception.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -256,6 +259,7 @@ create_association <- function (Name, DocumentVersion = NULL,
 #'           "string"
 #'         )
 #'       ),
+#'       AutomationTargetParameterName = "string",
 #'       DocumentVersion = "string",
 #'       Targets = list(
 #'         list(
@@ -307,14 +311,24 @@ create_association_batch <- function (Entries)
 #' ```
 #' create_document(
 #'   Content = "string",
+#'   Attachments = list(
+#'     list(
+#'       Key = "SourceUrl",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
 #'   Name = "string",
-#'   DocumentType = "Command"|"Policy"|"Automation"|"Session",
+#'   VersionName = "string",
+#'   DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package",
 #'   DocumentFormat = "YAML"|"JSON",
 #'   TargetType = "string"
 #' )
 #' ```
 #'
 #' @param Content &#91;required&#93; A valid JSON or YAML string.
+#' @param Attachments A list of key and value pairs that describe attachments to a version of a document.
 #' @param Name &#91;required&#93; A name for the Systems Manager document.
 #' 
 #' Do not use the following to begin the names of documents you create. They are reserved by AWS for use as document prefixes:
@@ -324,19 +338,21 @@ create_association_batch <- function (Entries)
 #' -   `amazon`
 #' 
 #' -   `amzn`
-#' @param DocumentType The type of document to create. Valid document types include: Policy, Automation, and Command.
+#' @param VersionName An optional field specifying the version of the artifact you are creating with the document. For example, \"Release 12, Update 6\". This value is unique across all versions of a document, and cannot be changed.
+#' @param DocumentType The type of document to create. Valid document types include: `Command`, `Policy`, `Automation`, `Session`, and `Package`.
 #' @param DocumentFormat Specify the document format for the request. The document format can be either JSON or YAML. JSON is the default format.
 #' @param TargetType Specify a target type to define the kinds of resources the document can run on. For example, to run a document on EC2 instances, specify the following value: /AWS::EC2::Instance. If you specify a value of \'/\' the document can run on all types of resources. If you don\'t specify a value, the document can\'t run on any resources. For a list of valid resource types, see [AWS Resource Types Reference](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html) in the *AWS CloudFormation User Guide*.
 #'
 #' @export
-create_document <- function (Content, Name, DocumentType = NULL, 
-    DocumentFormat = NULL, TargetType = NULL) 
+create_document <- function (Content, Attachments = NULL, Name, 
+    VersionName = NULL, DocumentType = NULL, DocumentFormat = NULL, 
+    TargetType = NULL) 
 {
     op <- new_operation(name = "CreateDocument", http_method = "POST", 
         http_path = "/", paginator = list())
-    input <- create_document_input(Content = Content, Name = Name, 
-        DocumentType = DocumentType, DocumentFormat = DocumentFormat, 
-        TargetType = TargetType)
+    input <- create_document_input(Content = Content, Attachments = Attachments, 
+        Name = Name, VersionName = VersionName, DocumentType = DocumentType, 
+        DocumentFormat = DocumentFormat, TargetType = TargetType)
     output <- create_document_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -1091,7 +1107,7 @@ describe_association_executions <- function (AssociationId, Filters = NULL,
 #' describe_automation_executions(
 #'   Filters = list(
 #'     list(
-#'       Key = "DocumentNamePrefix"|"ExecutionStatus"|"ExecutionId"|"ParentExecutionId"|"CurrentAction"|"StartTimeBefore"|"StartTimeAfter",
+#'       Key = "DocumentNamePrefix"|"ExecutionStatus"|"ExecutionId"|"ParentExecutionId"|"CurrentAction"|"StartTimeBefore"|"StartTimeAfter"|"AutomationType",
 #'       Values = list(
 #'         "string"
 #'       )
@@ -1212,19 +1228,23 @@ describe_available_patches <- function (Filters = NULL, MaxResults = NULL,
 #' ```
 #' describe_document(
 #'   Name = "string",
-#'   DocumentVersion = "string"
+#'   DocumentVersion = "string",
+#'   VersionName = "string"
 #' )
 #' ```
 #'
 #' @param Name &#91;required&#93; The name of the Systems Manager document.
 #' @param DocumentVersion The document version for which you want information. Can be a specific version or the default version.
+#' @param VersionName An optional field specifying the version of the artifact associated with the document. For example, \"Release 12, Update 6\". This value is unique across all versions of a document, and cannot be changed.
 #'
 #' @export
-describe_document <- function (Name, DocumentVersion = NULL) 
+describe_document <- function (Name, DocumentVersion = NULL, 
+    VersionName = NULL) 
 {
     op <- new_operation(name = "DescribeDocument", http_method = "POST", 
         http_path = "/", paginator = list())
-    input <- describe_document_input(Name = Name, DocumentVersion = DocumentVersion)
+    input <- describe_document_input(Name = Name, DocumentVersion = DocumentVersion, 
+        VersionName = VersionName)
     output <- describe_document_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -1856,7 +1876,7 @@ describe_maintenance_window_tasks <- function (WindowId, Filters = NULL,
 #' )
 #' ```
 #'
-#' @param Filters Optional filters used to narrow down the scope of the returned Maintenance Windows. Supported filter keys are Name and Enabled.
+#' @param Filters Optional filters used to narrow down the scope of the returned Maintenance Windows. Supported filter keys are **Name** and **Enabled**.
 #' @param MaxResults The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
 #' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
 #'
@@ -2264,22 +2284,25 @@ get_deployable_patch_snapshot_for_instance <- function (InstanceId,
 #' ```
 #' get_document(
 #'   Name = "string",
+#'   VersionName = "string",
 #'   DocumentVersion = "string",
 #'   DocumentFormat = "YAML"|"JSON"
 #' )
 #' ```
 #'
 #' @param Name &#91;required&#93; The name of the Systems Manager document.
+#' @param VersionName An optional field specifying the version of the artifact associated with the document. For example, \"Release 12, Update 6\". This value is unique across all versions of a document, and cannot be changed.
 #' @param DocumentVersion The document version for which you want information.
 #' @param DocumentFormat Returns the document in the specified format. The document format can be either JSON or YAML. JSON is the default format.
 #'
 #' @export
-get_document <- function (Name, DocumentVersion = NULL, DocumentFormat = NULL) 
+get_document <- function (Name, VersionName = NULL, DocumentVersion = NULL, 
+    DocumentFormat = NULL) 
 {
     op <- new_operation(name = "GetDocument", http_method = "POST", 
         http_path = "/", paginator = list())
-    input <- get_document_input(Name = Name, DocumentVersion = DocumentVersion, 
-        DocumentFormat = DocumentFormat)
+    input <- get_document_input(Name = Name, VersionName = VersionName, 
+        DocumentVersion = DocumentVersion, DocumentFormat = DocumentFormat)
     output <- get_document_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -4014,7 +4037,20 @@ start_associations_once <- function (AssociationIds)
 #'     )
 #'   ),
 #'   MaxConcurrency = "string",
-#'   MaxErrors = "string"
+#'   MaxErrors = "string",
+#'   TargetLocations = list(
+#'     list(
+#'       Accounts = list(
+#'         "string"
+#'       ),
+#'       Regions = list(
+#'         "string"
+#'       ),
+#'       TargetLocationMaxConcurrency = "string",
+#'       TargetLocationMaxErrors = "string",
+#'       ExecutionRoleName = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -4030,12 +4066,13 @@ start_associations_once <- function (AssociationIds)
 #' @param MaxErrors The number of errors that are allowed before the system stops running the automation on additional targets. You can specify either an absolute number of errors, for example 10, or a percentage of the target set, for example 10%. If you specify 3, for example, the system stops running the automation when the fourth error is received. If you specify 0, then the system stops running the automation on additional targets after the first error result is returned. If you run an automation on 50 resources and set max-errors to 10%, then the system stops running the automation on additional targets when the sixth error is received.
 #' 
 #' Executions that are already running an automation when max-errors is reached are allowed to complete, but some of these executions may fail as well. If you need to ensure that there won\'t be more than max-errors failed executions, set max-concurrency to 1 so the executions proceed one at a time.
+#' @param TargetLocations A location is a combination of AWS Regions and/or AWS accounts where you want to execute the Automation. Use this action to start an Automation in multiple Regions and multiple accounts. For more information, see [Concurrently Executing Automations in Multiple AWS Regions and Accounts](http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html) in the *AWS Systems Manager User Guide*.
 #'
 #' @export
 start_automation_execution <- function (DocumentName, DocumentVersion = NULL, 
     Parameters = NULL, ClientToken = NULL, Mode = NULL, TargetParameterName = NULL, 
     Targets = NULL, TargetMaps = NULL, MaxConcurrency = NULL, 
-    MaxErrors = NULL) 
+    MaxErrors = NULL, TargetLocations = NULL) 
 {
     op <- new_operation(name = "StartAutomationExecution", http_method = "POST", 
         http_path = "/", paginator = list())
@@ -4043,7 +4080,7 @@ start_automation_execution <- function (DocumentName, DocumentVersion = NULL,
         DocumentVersion = DocumentVersion, Parameters = Parameters, 
         ClientToken = ClientToken, Mode = Mode, TargetParameterName = TargetParameterName, 
         Targets = Targets, TargetMaps = TargetMaps, MaxConcurrency = MaxConcurrency, 
-        MaxErrors = MaxErrors)
+        MaxErrors = MaxErrors, TargetLocations = TargetLocations)
     output <- start_automation_execution_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -4177,6 +4214,7 @@ terminate_session <- function (SessionId)
 #'   ),
 #'   AssociationName = "string",
 #'   AssociationVersion = "string",
+#'   AutomationTargetParameterName = "string",
 #'   MaxErrors = "string",
 #'   MaxConcurrency = "string",
 #'   ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED"
@@ -4192,6 +4230,7 @@ terminate_session <- function (SessionId)
 #' @param Targets The targets of the association.
 #' @param AssociationName The name of the association that you want to update.
 #' @param AssociationVersion This parameter is provided for concurrency control purposes. You must specify the latest association version in the service. If you want to ensure that this request succeeds, either specify `$LATEST`, or omit this parameter.
+#' @param AutomationTargetParameterName Specify the target for the association. This target is required for associations that use an Automation document and target resources by using rate controls.
 #' @param MaxErrors The number of errors that are allowed before the system stops sending requests to run the association on additional targets. You can specify either an absolute number of errors, for example 10, or a percentage of the target set, for example 10%. If you specify 3, for example, the system stops sending requests when the fourth error is received. If you specify 0, then the system stops sending requests after the first error is returned. If you run an association on 50 instances and set MaxError to 10%, then the system stops sending the request when the sixth error is received.
 #' 
 #' Executions that are already running an association when MaxErrors is reached are allowed to complete, but some of these executions may fail as well. If you need to ensure that there won\'t be more than max-errors failed executions, set MaxConcurrency to 1 so that executions proceed one at a time.
@@ -4204,7 +4243,8 @@ terminate_session <- function (SessionId)
 update_association <- function (AssociationId, Parameters = NULL, 
     DocumentVersion = NULL, ScheduleExpression = NULL, OutputLocation = NULL, 
     Name = NULL, Targets = NULL, AssociationName = NULL, AssociationVersion = NULL, 
-    MaxErrors = NULL, MaxConcurrency = NULL, ComplianceSeverity = NULL) 
+    AutomationTargetParameterName = NULL, MaxErrors = NULL, MaxConcurrency = NULL, 
+    ComplianceSeverity = NULL) 
 {
     op <- new_operation(name = "UpdateAssociation", http_method = "POST", 
         http_path = "/", paginator = list())
@@ -4212,8 +4252,9 @@ update_association <- function (AssociationId, Parameters = NULL,
         Parameters = Parameters, DocumentVersion = DocumentVersion, 
         ScheduleExpression = ScheduleExpression, OutputLocation = OutputLocation, 
         Name = Name, Targets = Targets, AssociationName = AssociationName, 
-        AssociationVersion = AssociationVersion, MaxErrors = MaxErrors, 
-        MaxConcurrency = MaxConcurrency, ComplianceSeverity = ComplianceSeverity)
+        AssociationVersion = AssociationVersion, AutomationTargetParameterName = AutomationTargetParameterName, 
+        MaxErrors = MaxErrors, MaxConcurrency = MaxConcurrency, 
+        ComplianceSeverity = ComplianceSeverity)
     output <- update_association_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -4265,28 +4306,40 @@ update_association_status <- function (Name, InstanceId, AssociationStatus)
 #' ```
 #' update_document(
 #'   Content = "string",
+#'   Attachments = list(
+#'     list(
+#'       Key = "SourceUrl",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
 #'   Name = "string",
+#'   VersionName = "string",
 #'   DocumentVersion = "string",
 #'   DocumentFormat = "YAML"|"JSON",
 #'   TargetType = "string"
 #' )
 #' ```
 #'
-#' @param Content &#91;required&#93; The content in a document that you want to update.
+#' @param Content &#91;required&#93; A valid JSON or YAML string.
+#' @param Attachments A list of key and value pairs that describe attachments to a version of a document.
 #' @param Name &#91;required&#93; The name of the document that you want to update.
+#' @param VersionName An optional field specifying the version of the artifact you are updating with the document. For example, \"Release 12, Update 6\". This value is unique across all versions of a document, and cannot be changed.
 #' @param DocumentVersion The version of the document that you want to update.
 #' @param DocumentFormat Specify the document format for the new document version. Systems Manager supports JSON and YAML documents. JSON is the default format.
 #' @param TargetType Specify a new target type for the document.
 #'
 #' @export
-update_document <- function (Content, Name, DocumentVersion = NULL, 
-    DocumentFormat = NULL, TargetType = NULL) 
+update_document <- function (Content, Attachments = NULL, Name, 
+    VersionName = NULL, DocumentVersion = NULL, DocumentFormat = NULL, 
+    TargetType = NULL) 
 {
     op <- new_operation(name = "UpdateDocument", http_method = "POST", 
         http_path = "/", paginator = list())
-    input <- update_document_input(Content = Content, Name = Name, 
-        DocumentVersion = DocumentVersion, DocumentFormat = DocumentFormat, 
-        TargetType = TargetType)
+    input <- update_document_input(Content = Content, Attachments = Attachments, 
+        Name = Name, VersionName = VersionName, DocumentVersion = DocumentVersion, 
+        DocumentFormat = DocumentFormat, TargetType = TargetType)
     output <- update_document_output()
     svc <- service()
     request <- new_request(svc, op, input, output)

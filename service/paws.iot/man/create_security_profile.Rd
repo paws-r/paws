@@ -5,7 +5,8 @@
 \title{Creates a Device Defender security profile}
 \usage{
 create_security_profile(securityProfileName,
-  securityProfileDescription = NULL, behaviors, alertTargets = NULL)
+  securityProfileDescription = NULL, behaviors, alertTargets = NULL,
+  tags = NULL)
 }
 \arguments{
 \item{securityProfileName}{[required] The name you are giving to the security profile.}
@@ -15,6 +16,8 @@ create_security_profile(securityProfileName,
 \item{behaviors}{[required] Specifies the behaviors that, when violated by a device (thing), cause an alert.}
 
 \item{alertTargets}{Specifies the destinations to which alerts are sent. (Alerts are always sent to the console.) Alerts are generated when a device (thing) violates a behavior.}
+
+\item{tags}{Metadata which can be used to manage the security profile.}
 }
 \description{
 Creates a Device Defender security profile.
@@ -46,6 +49,12 @@ Creates a Device Defender security profile.
     list(
       alertTargetArn = "string",
       roleArn = "string"
+    )
+  ),
+  tags = list(
+    list(
+      Key = "string",
+      Value = "string"
     )
   )
 )

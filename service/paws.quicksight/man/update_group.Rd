@@ -4,12 +4,7 @@
 \alias{update_group}
 \title{Changes a group description}
 \usage{
-update_group(
-  GroupName = "string",
-  Description = "string",
-  AwsAccountId = "string",
-  Namespace = "string"
-)
+update_group(GroupName, Description = NULL, AwsAccountId, Namespace)
 }
 \arguments{
 \item{GroupName}{[required] The name of the group that you want to update.}
@@ -32,6 +27,13 @@ The response is a group object.
 
 \code{aws quicksight update-group --aws-account-id=111122223333 --namespace=default --group-name=Sales --description="Sales BI Dashboards" }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_group(
+  GroupName = "string",
+  Description = "string",
+  AwsAccountId = "string",
+  Namespace = "string"
+)
 }
+}
+

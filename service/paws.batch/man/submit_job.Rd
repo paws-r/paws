@@ -6,7 +6,7 @@
 \usage{
 submit_job(jobName, jobQueue, arrayProperties = NULL, dependsOn = NULL,
   jobDefinition, parameters = NULL, containerOverrides = NULL,
-  retryStrategy = NULL, timeout = NULL)
+  nodeOverrides = NULL, retryStrategy = NULL, timeout = NULL)
 }
 \arguments{
 \item{jobName}{[required] The name of the job. The first character must be alphanumeric, and up to 128 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.}
@@ -15,13 +15,15 @@ submit_job(jobName, jobQueue, arrayProperties = NULL, dependsOn = NULL,
 
 \item{arrayProperties}{The array properties for the submitted job, such as the size of the array. The array size can be between 2 and 10,000. If you specify array properties for a job, it becomes an array job. For more information, see \href{http://docs.aws.amazon.com/batch/latest/userguide/array_jobs.html}{Array Jobs} in the \emph{AWS Batch User Guide}.}
 
-\item{dependsOn}{A list of dependencies for the job. A job can depend upon a maximum of 20 jobs. You can specify a \code{SEQUENTIAL} type dependency without specifying a job ID for array jobs so that each child array job completes sequentially, starting at index 0. You can also specify an \code{N_TO_N} type dependency with a job ID for array jobs so that each index child of this job must wait for the corresponding index child of each dependency to complete before it can begin.}
+\item{dependsOn}{A list of dependencies for the job. A job can depend upon a maximum of 20 jobs. You can specify a \code{SEQUENTIAL} type dependency without specifying a job ID for array jobs so that each child array job completes sequentially, starting at index 0. You can also specify an \code{N_TO_N} type dependency with a job ID for array jobs. In that case, each index child of this job must wait for the corresponding index child of each dependency to complete before it can begin.}
 
 \item{jobDefinition}{[required] The job definition used by this job. This value can be either a \code{name:revision} or the Amazon Resource Name (ARN) for the job definition.}
 
 \item{parameters}{Additional parameters passed to the job that replace parameter substitution placeholders that are set in the job definition. Parameters are specified as a key and value pair mapping. Parameters in a \code{SubmitJob} request override any corresponding parameter defaults from the job definition.}
 
 \item{containerOverrides}{A list of container overrides in JSON format that specify the name of a container in the specified job definition and the overrides it should receive. You can override the default command for a container (that is specified in the job definition or the Docker image) with a \code{command} override. You can also override existing environment variables (that are specified in the job definition or Docker image) on a container or add new environment variables to it with an \code{environment} override.}
+
+\item{nodeOverrides}{A list of node overrides in JSON format that specify the node range to target and the container overrides for that node range.}
 
 \item{retryStrategy}{The retry strategy to use for failed jobs from this SubmitJob operation. When a retry strategy is specified here, it overrides the retry strategy defined in the job definition.}
 
@@ -53,10 +55,32 @@ Submits an AWS Batch job from a job definition. Parameters specified during Subm
     command = list(
       "string"
     ),
+    instanceType = "string",
     environment = list(
       list(
         name = "string",
         value = "string"
+      )
+    )
+  ),
+  nodeOverrides = list(
+    nodePropertyOverrides = list(
+      list(
+        targetNodes = "string",
+        containerOverrides = list(
+          vcpus = 123,
+          memory = 123,
+          command = list(
+            "string"
+          ),
+          instanceType = "string",
+          environment = list(
+            list(
+              name = "string",
+              value = "string"
+            )
+          )
+        )
       )
     )
   ),

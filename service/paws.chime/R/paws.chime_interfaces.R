@@ -269,11 +269,14 @@ list_users_input <- function (...)
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(AccountId = structure(logical(0), 
         tags = list(location = "uri", locationName = "accountId", 
-            type = "string", pattern = ".*\\S.*")), MaxResults = structure(logical(0), 
-        tags = list(location = "querystring", locationName = "max-results", 
-            type = "integer", max = 200L, min = 1L)), NextToken = structure(logical(0), 
-        tags = list(location = "querystring", locationName = "next-token", 
-            type = "string"))), tags = list(type = "structure"))
+            type = "string", pattern = ".*\\S.*")), UserEmail = structure(logical(0), 
+        tags = list(location = "querystring", locationName = "user-email", 
+            type = "string", pattern = ".+@.+\\..+", sensitive = TRUE)), 
+        MaxResults = structure(logical(0), tags = list(location = "querystring", 
+            locationName = "max-results", type = "integer", max = 200L, 
+            min = 1L)), NextToken = structure(logical(0), tags = list(location = "querystring", 
+            locationName = "next-token", type = "string"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 

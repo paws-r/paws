@@ -257,11 +257,11 @@ create_labels <- function (ResourceId, Labels, AuthenticationToken = NULL)
     return(response)
 }
 
-#' Configure WorkDocs to use Amazon SNS notifications
+#' Configure Amazon WorkDocs to use Amazon SNS notifications
 #'
-#' Configure WorkDocs to use Amazon SNS notifications.
+#' Configure Amazon WorkDocs to use Amazon SNS notifications. The endpoint receives a confirmation message, and must confirm the subscription.
 #' 
-#' The endpoint receives a confirmation message, and must confirm the subscription. For more information, see [Confirm the Subscription](http://docs.aws.amazon.com/sns/latest/dg/SendMessageToHttp.html#SendMessageToHttp.confirm) in the *Amazon Simple Notification Service Developer Guide*.
+#' For more information, see [Subscribe to Notifications](http://docs.aws.amazon.com/workdocs/latest/developerguide/subscribe-notifications.html) in the *Amazon WorkDocs Developer Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -643,7 +643,10 @@ delete_user <- function (AuthenticationToken = NULL, UserId)
 #'   StartTime = as.POSIXct("2015-01-01"),
 #'   EndTime = as.POSIXct("2015-01-01"),
 #'   OrganizationId = "string",
+#'   ActivityTypes = "string",
+#'   ResourceId = "string",
 #'   UserId = "string",
+#'   IncludeIndirectActivities = TRUE|FALSE,
 #'   Limit = 123,
 #'   Marker = "string"
 #' )
@@ -653,20 +656,26 @@ delete_user <- function (AuthenticationToken = NULL, UserId)
 #' @param StartTime The timestamp that determines the starting time of the activities. The response includes the activities performed after the specified timestamp.
 #' @param EndTime The timestamp that determines the end time of the activities. The response includes the activities performed before the specified timestamp.
 #' @param OrganizationId The ID of the organization. This is a mandatory parameter when using administrative API (SigV4) requests.
+#' @param ActivityTypes Specifies which activity types to include in the response. If this field is left empty, all activity types are returned.
+#' @param ResourceId The document or folder ID for which to describe activity types.
 #' @param UserId The ID of the user who performed the action. The response includes activities pertaining to this user. This is an optional parameter and is only applicable for administrative API (SigV4) requests.
+#' @param IncludeIndirectActivities Includes indirect activities. An indirect activity results from a direct activity performed on a parent resource. For example, sharing a parent folder (the direct activity) shares all of the subfolders and documents within the parent folder (the indirect activity).
 #' @param Limit The maximum number of items to return.
 #' @param Marker The marker for the next set of results.
 #'
 #' @export
 describe_activities <- function (AuthenticationToken = NULL, 
     StartTime = NULL, EndTime = NULL, OrganizationId = NULL, 
-    UserId = NULL, Limit = NULL, Marker = NULL) 
+    ActivityTypes = NULL, ResourceId = NULL, UserId = NULL, IncludeIndirectActivities = NULL, 
+    Limit = NULL, Marker = NULL) 
 {
     op <- new_operation(name = "DescribeActivities", http_method = "GET", 
         http_path = "/api/v1/activities", paginator = list())
     input <- describe_activities_input(AuthenticationToken = AuthenticationToken, 
         StartTime = StartTime, EndTime = EndTime, OrganizationId = OrganizationId, 
-        UserId = UserId, Limit = Limit, Marker = Marker)
+        ActivityTypes = ActivityTypes, ResourceId = ResourceId, 
+        UserId = UserId, IncludeIndirectActivities = IncludeIndirectActivities, 
+        Limit = Limit, Marker = Marker)
     output <- describe_activities_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -801,9 +810,9 @@ describe_folder_contents <- function (AuthenticationToken = NULL,
     return(response)
 }
 
-#' Describes the groups specified by query
+#' Describes the groups specified by the query
 #'
-#' Describes the groups specified by query.
+#' Describes the groups specified by the query. Groups are defined by the underlying Active Directory.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -912,6 +921,8 @@ describe_resource_permissions <- function (AuthenticationToken = NULL,
 #' Describes the current user's special folders; the RootFolder and the RecycleBin
 #'
 #' Describes the current user\'s special folders; the `RootFolder` and the `RecycleBin`. `RootFolder` is the root of user\'s files and folders and `RecycleBin` is the root of recycled items. This is not a valid action for SigV4 (administrative API) clients.
+#' 
+#' This action requires an authentication token. To get an authentication token, register an application with Amazon WorkDocs. For more information, see [Authentication and Access Control for User Applications](http://docs.aws.amazon.com/workdocs/latest/developerguide/wd-auth-user.html) in the *Amazon WorkDocs Developer Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1192,6 +1203,43 @@ get_folder_path <- function (AuthenticationToken = NULL, FolderId,
         FolderId = FolderId, Limit = Limit, Fields = Fields, 
         Marker = Marker)
     output <- get_folder_path_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves a collection of resources, including folders and documents
+#'
+#' Retrieves a collection of resources, including folders and documents. The only `CollectionType` supported is `SHARED_WITH_ME`.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' get_resources(
+#'   AuthenticationToken = "string",
+#'   UserId = "string",
+#'   CollectionType = "SHARED_WITH_ME",
+#'   Limit = 123,
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @param AuthenticationToken The Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API operation using AWS credentials.
+#' @param UserId The user ID for the resource collection. This is a required field for accessing the API operation using IAM credentials.
+#' @param CollectionType The collection type.
+#' @param Limit The maximum number of resources to return.
+#' @param Marker The marker for the next set of results. This marker was received from a previous call.
+#'
+#' @export
+get_resources <- function (AuthenticationToken = NULL, UserId = NULL, 
+    CollectionType = NULL, Limit = NULL, Marker = NULL) 
+{
+    op <- new_operation(name = "GetResources", http_method = "GET", 
+        http_path = "/api/v1/resources", paginator = list())
+    input <- get_resources_input(AuthenticationToken = AuthenticationToken, 
+        UserId = UserId, CollectionType = CollectionType, Limit = Limit, 
+        Marker = Marker)
+    output <- get_resources_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)

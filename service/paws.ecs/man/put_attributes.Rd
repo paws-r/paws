@@ -12,7 +12,7 @@ put_attributes(cluster = NULL, attributes)
 \item{attributes}{[required] The attributes to apply to your resource. You can specify up to 10 custom attributes per resource. You can specify up to 10 attributes in a single call.}
 }
 \description{
-Create or update an attribute on an Amazon ECS resource. If the attribute does not exist, it is created. If the attribute exists, its value is replaced with the specified value. To delete an attribute, use DeleteAttributes. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html#attributes}{Attributes} in the \emph{Amazon Elastic Container Service Developer Guide}.
+Create or update an attribute on an Amazon ECS resource. If the attribute does not exist, it is created. If the attribute exists, its value is replaced with the specified value. To delete an attribute, use DeleteAttributes. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html#attributes}{Attributes} in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{put_attributes(

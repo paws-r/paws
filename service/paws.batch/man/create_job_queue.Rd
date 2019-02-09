@@ -12,7 +12,7 @@ create_job_queue(jobQueueName, state = NULL, priority,
 
 \item{state}{The state of the job queue. If the job queue state is \code{ENABLED}, it is able to accept jobs.}
 
-\item{priority}{[required] The priority of the job queue. Job queues with a higher priority (or a higher integer value for the \code{priority} parameter) are evaluated first when associated with same compute environment. Priority is determined in descending order, for example, a job queue with a priority value of \code{10} is given scheduling preference over a job queue with a priority value of \code{1}.}
+\item{priority}{[required] The priority of the job queue. Job queues with a higher priority (or a higher integer value for the \code{priority} parameter) are evaluated first when associated with the same compute environment. Priority is determined in descending order, for example, a job queue with a priority value of \code{10} is given scheduling preference over a job queue with a priority value of \code{1}.}
 
 \item{computeEnvironmentOrder}{[required] The set of compute environments mapped to a job queue and their order relative to each other. The job scheduler uses this parameter to determine which compute environment should execute a given job. Compute environments must be in the \code{VALID} state before you can associate them with a job queue. You can associate up to three compute environments with a job queue.}
 }

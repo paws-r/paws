@@ -4,9 +4,7 @@
 \alias{get_deliverability_test_report}
 \title{Retrieve the results of a predictive inbox placement test}
 \usage{
-get_deliverability_test_report(
-  ReportId = "string"
-)
+get_deliverability_test_report(ReportId)
 }
 \arguments{
 \item{ReportId}{[required] A unique string that identifies the predictive inbox placement test.}
@@ -14,6 +12,10 @@ get_deliverability_test_report(
 \description{
 Retrieve the results of a predictive inbox placement test.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_deliverability_test_report(
+  ReportId = "string"
+)
 }
+}
+

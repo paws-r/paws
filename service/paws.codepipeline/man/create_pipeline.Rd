@@ -25,6 +25,16 @@ Creates a pipeline.
         type = "KMS"
       )
     ),
+    artifactStores = list(
+      list(
+        type = "S3",
+        location = "string",
+        encryptionKey = list(
+          id = "string",
+          type = "KMS"
+        )
+      )
+    ),
     stages = list(
       list(
         name = "string",
@@ -57,7 +67,8 @@ Creates a pipeline.
                 name = "string"
               )
             ),
-            roleArn = "string"
+            roleArn = "string",
+            region = "string"
           )
         )
       )

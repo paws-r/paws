@@ -2,7 +2,7 @@
 % Please edit documentation in R/paws.s3_operations.R
 \name{put_bucket_replication}
 \alias{put_bucket_replication}
-\title{Creates a new replication configuration (or replaces an existing one, if present)}
+\title{Creates a replication configuration or replaces an existing one}
 \usage{
 put_bucket_replication(Bucket, ContentMD5 = NULL,
   ReplicationConfiguration)
@@ -15,7 +15,7 @@ put_bucket_replication(Bucket, ContentMD5 = NULL,
 \item{ReplicationConfiguration}{[required]}
 }
 \description{
-Creates a new replication configuration (or replaces an existing one, if present). For more information, see \href{\%20https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html}{Cross-Region Replication (CRR)} in the Amazon S3 Developer Guide.
+Creates a replication configuration or replaces an existing one. For more information, see \href{\%20https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html}{Cross-Region Replication (CRR)} in the \emph{Amazon S3 Developer Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{put_bucket_replication(
@@ -53,7 +53,7 @@ Creates a new replication configuration (or replaces an existing one, if present
         Destination = list(
           Bucket = "string",
           Account = "string",
-          StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA",
+          StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER",
           AccessControlTranslation = list(
             Owner = "Destination"
           ),

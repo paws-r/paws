@@ -29,7 +29,7 @@ put_scaling_policy(Name, FleetId, ScalingAdjustment = NULL,
 
 \item{EvaluationPeriods}{Length of time (in minutes) the metric must be at or beyond the threshold before a scaling event is triggered.}
 
-\item{MetricName}{[required] Name of the Amazon GameLift-defined metric that is used to trigger a scaling adjustment. For detailed descriptions of fleet metrics, see \href{http://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html}{Monitor Amazon GameLift with Amazon CloudWatch}.
+\item{MetricName}{[required] Name of the Amazon GameLift-defined metric that is used to trigger a scaling adjustment. For detailed descriptions of fleet metrics, see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html}{Monitor Amazon GameLift with Amazon CloudWatch}.
 \itemize{
 \item \strong{ActivatingGameSessions} -- Game sessions in the process of being created.
 \item \strong{ActiveGameSessions} -- Game sessions that are currently running.
@@ -56,7 +56,7 @@ Fleets can have multiple scaling policies of each type in force at the same time
 
 You can temporarily suspend all scaling policies for a fleet by calling StopFleetActions with the fleet action AUTO\_SCALING. To resume scaling policies, call StartFleetActions with the same fleet action. To stop just one scaling policy--or to permanently remove it, you must delete the policy with DeleteScalingPolicy.
 
-Learn more about how to work with auto-scaling in \href{http://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-autoscaling.html}{Set Up Fleet Automatic Scaling}.
+Learn more about how to work with auto-scaling in \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-autoscaling.html}{Set Up Fleet Automatic Scaling}.
 
 \strong{Target-based policy}
 
@@ -81,8 +81,6 @@ To implement the example, the rule statement would look like this:
 If \code{[PercentIdleInstances]} is \code{[GreaterThanThreshold]} \code{[20]} for \code{[15]} minutes, then \code{[PercentChangeInCapacity]} to/by \code{[10]}.
 
 To create or update a scaling policy, specify a unique combination of name and fleet ID, and set the policy type to "RuleBased". Specify the parameter values for a policy rule statement. On a successful request, the policy name is returned. Scaling policies are automatically in force as soon as they're successfully created. If the fleet's auto-scaling actions are temporarily suspended, the new policy will be in force once the fleet actions are restarted.
-
-Operations related to fleet capacity scaling include:
 \itemize{
 \item DescribeFleetCapacity
 \item UpdateFleetCapacity

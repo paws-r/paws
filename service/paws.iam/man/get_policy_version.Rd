@@ -13,7 +13,7 @@ For more information about ARNs, see \href{http://docs.aws.amazon.com/general/la
 
 \item{VersionId}{[required] Identifies the policy version to retrieve.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that consists of the lowercase letter 'v' followed by one or two digits, and optionally followed by a period '.' and a string of letters and digits.}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that consists of the lowercase letter 'v' followed by one or two digits, and optionally followed by a period '.' and a string of letters and digits.}
 }
 \description{
 Retrieves information about the specified version of the specified managed policy, including the policy document.

@@ -4,10 +4,12 @@
 \alias{describe_task_definition}
 \title{Describes a task definition}
 \usage{
-describe_task_definition(taskDefinition)
+describe_task_definition(taskDefinition, include = NULL)
 }
 \arguments{
 \item{taskDefinition}{[required] The \code{family} for the latest \code{ACTIVE} revision, \code{family} and \code{revision} (\code{family:revision}) for a specific revision in the family, or full Amazon Resource Name (ARN) of the task definition to describe.}
+
+\item{include}{Specifies whether to see the resource tags for the task definition. If \code{TAGS} is specified, the tags are included in the response. If this field is omitted, tags are not included in the response.}
 }
 \description{
 Describes a task definition. You can specify a \code{family} and \code{revision} to find information about a specific task definition, or you can simply specify the family to find the latest \code{ACTIVE} revision in that family.
@@ -17,7 +19,10 @@ You can only describe \code{INACTIVE} task definitions while an active task or s
 }
 \section{Accepted Parameters}{
 \preformatted{describe_task_definition(
-  taskDefinition = "string"
+  taskDefinition = "string",
+  include = list(
+    "TAGS"
+  )
 )
 }
 }

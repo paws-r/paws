@@ -19,6 +19,9 @@ Default: \code{CURRENT}}
 \description{
 Returns the current, previous, or pending versions of the master user password for a Lightsail database.
 }
+\details{
+The \code{asdf} operation GetRelationalDatabaseMasterUserPassword supports tag-based access control via resource tags applied to the resource identified by relationalDatabaseName.
+}
 \section{Accepted Parameters}{
 \preformatted{get_relational_database_master_user_password(
   relationalDatabaseName = "string",

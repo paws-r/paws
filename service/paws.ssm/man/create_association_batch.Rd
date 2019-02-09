@@ -15,7 +15,7 @@ Associates the specified Systems Manager document with the specified instances o
 \details{
 When you associate a document with one or more instances using instance IDs or tags, SSM Agent running on the instance processes the document and configures the instance as specified.
 
-If you associate a document with an instance that already has an associated document, the system throws the AssociationAlreadyExists exception.
+If you associate a document with an instance that already has an associated document, the system returns the AssociationAlreadyExists exception.
 }
 \section{Accepted Parameters}{
 \preformatted{create_association_batch(
@@ -28,6 +28,7 @@ If you associate a document with an instance that already has an associated docu
           "string"
         )
       ),
+      AutomationTargetParameterName = "string",
       DocumentVersion = "string",
       Targets = list(
         list(

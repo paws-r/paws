@@ -4,23 +4,11 @@
 \alias{create_endpoint_group}
 \title{Create an endpoint group for the specified listener}
 \usage{
-create_endpoint_group(
-  ListenerArn = "string",
-  EndpointGroupRegion = "string",
-  EndpointConfigurations = list(
-    list(
-      EndpointId = "string",
-      Weight = 123
-    )
-  ),
-  TrafficDialPercentage = 123.0,
-  HealthCheckPort = 123,
-  HealthCheckProtocol = "TCP"|"HTTP"|"HTTPS",
-  HealthCheckPath = "string",
-  HealthCheckIntervalSeconds = 123,
-  ThresholdCount = 123,
-  IdempotencyToken = "string"
-)
+create_endpoint_group(ListenerArn, EndpointGroupRegion,
+  EndpointConfigurations = NULL, TrafficDialPercentage = NULL,
+  HealthCheckPort = NULL, HealthCheckProtocol = NULL,
+  HealthCheckPath = NULL, HealthCheckIntervalSeconds = NULL,
+  ThresholdCount = NULL, IdempotencyToken)
 }
 \arguments{
 \item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener.}
@@ -50,6 +38,24 @@ The default value is 100.}
 \description{
 Create an endpoint group for the specified listener. An endpoint group is a collection of endpoints in one AWS Region. To see an AWS CLI example of creating an endpoint group, scroll down to \strong{Example}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_endpoint_group(
+  ListenerArn = "string",
+  EndpointGroupRegion = "string",
+  EndpointConfigurations = list(
+    list(
+      EndpointId = "string",
+      Weight = 123
+    )
+  ),
+  TrafficDialPercentage = 123.0,
+  HealthCheckPort = 123,
+  HealthCheckProtocol = "TCP"|"HTTP"|"HTTPS",
+  HealthCheckPath = "string",
+  HealthCheckIntervalSeconds = 123,
+  ThresholdCount = 123,
+  IdempotencyToken = "string"
+)
 }
+}
+

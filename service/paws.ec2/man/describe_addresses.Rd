@@ -22,7 +22,7 @@ describe_addresses(Filters = NULL, PublicIps = NULL,
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 }}
 
-\item{PublicIps}{[EC2-Classic] One or more Elastic IP addresses.
+\item{PublicIps}{One or more Elastic IP addresses.
 
 Default: Describes all your Elastic IP addresses.}
 
@@ -36,7 +36,7 @@ Default: Describes all your Elastic IP addresses.}
 Describes one or more of your Elastic IP addresses.
 }
 \details{
-An Elastic IP address is for use in either the EC2-Classic platform or in a VPC. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP Addresses} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+An Elastic IP address is for use in either the EC2-Classic platform or in a VPC. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP Addresses} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{describe_addresses(

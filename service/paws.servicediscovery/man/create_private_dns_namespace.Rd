@@ -8,7 +8,7 @@ create_private_dns_namespace(Name, CreatorRequestId = NULL,
   Description = NULL, Vpc)
 }
 \arguments{
-\item{Name}{[required] The name that you want to assign to this namespace. When you create a namespace, Amazon Route 53 automatically creates a hosted zone that has the same name as the namespace.}
+\item{Name}{[required] The name that you want to assign to this namespace. When you create a private DNS namespace, AWS Cloud Map automatically creates an Amazon Route 53 private hosted zone that has the same name as the namespace.}
 
 \item{CreatorRequestId}{A unique string that identifies the request and that allows failed \code{CreatePrivateDnsNamespace} requests to be retried without the risk of executing the operation twice. \code{CreatorRequestId} can be any unique string, for example, a date/time stamp.}
 
@@ -17,7 +17,7 @@ create_private_dns_namespace(Name, CreatorRequestId = NULL,
 \item{Vpc}{[required] The ID of the Amazon VPC that you want to associate the namespace with.}
 }
 \description{
-Creates a private namespace based on DNS, which will be visible only inside a specified Amazon VPC. The namespace defines your service naming scheme. For example, if you name your namespace \code{example.com} and name your service \code{backend}, the resulting DNS name for the service will be \code{backend.example.com}. For the current limit on the number of namespaces that you can create using the same AWS account, see \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html#limits-api-entities-autonaming}{Limits on Auto Naming} in the \emph{Route 53 Developer Guide}.
+Creates a private namespace based on DNS, which will be visible only inside a specified Amazon VPC. The namespace defines your service naming scheme. For example, if you name your namespace \code{example.com} and name your service \code{backend}, the resulting DNS name for the service will be \code{backend.example.com}. For the current limit on the number of namespaces that you can create using the same AWS account, see \href{http://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html}{AWS Cloud Map Limits} in the \emph{AWS Cloud Map Developer Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{create_private_dns_namespace(

@@ -5,7 +5,8 @@
 \title{Deletes a previously provisioned cluster}
 \usage{
 delete_cluster(ClusterIdentifier, SkipFinalClusterSnapshot = NULL,
-  FinalClusterSnapshotIdentifier = NULL)
+  FinalClusterSnapshotIdentifier = NULL,
+  FinalClusterSnapshotRetentionPeriod = NULL)
 }
 \arguments{
 \item{ClusterIdentifier}{[required] The identifier of the cluster to be deleted.
@@ -32,6 +33,12 @@ Constraints:
 \item First character must be a letter.
 \item Cannot end with a hyphen or contain two consecutive hyphens.
 }}
+
+\item{FinalClusterSnapshotRetentionPeriod}{The number of days that a manual snapshot is retained. If the value is -1, the manual snapshot is retained indefinitely.
+
+The value must be either -1 or an integer between 1 and 3,653.
+
+The default value is -1.}
 }
 \description{
 Deletes a previously provisioned cluster. A successful response from the web service indicates that the request was received correctly. Use DescribeClusters to monitor the status of the deletion. The delete operation cannot be canceled or reverted once submitted. For more information about managing clusters, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html}{Amazon Redshift Clusters} in the \emph{Amazon Redshift Cluster Management Guide}.
@@ -45,7 +52,8 @@ For more information about managing clusters, go to \href{http://docs.aws.amazon
 \preformatted{delete_cluster(
   ClusterIdentifier = "string",
   SkipFinalClusterSnapshot = TRUE|FALSE,
-  FinalClusterSnapshotIdentifier = "string"
+  FinalClusterSnapshotIdentifier = "string",
+  FinalClusterSnapshotRetentionPeriod = 123
 )
 }
 }

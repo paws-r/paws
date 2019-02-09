@@ -4,7 +4,35 @@
 \alias{create_stage}
 \title{Creates a Stage for an API}
 \usage{
-create_stage(
+create_stage(AccessLogSettings = NULL, ApiId,
+  ClientCertificateId = NULL, DefaultRouteSettings = NULL,
+  DeploymentId = NULL, Description = NULL, RouteSettings = NULL,
+  StageName, StageVariables = NULL)
+}
+\arguments{
+\item{AccessLogSettings}{Settings for logging access in this stage.}
+
+\item{ApiId}{[required] The API identifier.}
+
+\item{ClientCertificateId}{The identifier of a client certificate for a Stage.}
+
+\item{DefaultRouteSettings}{The default route settings for the stage.}
+
+\item{DeploymentId}{The deployment identifier of the API stage.}
+
+\item{Description}{The description for the API stage.}
+
+\item{RouteSettings}{Route settings for the stage.}
+
+\item{StageName}{[required] The name of the stage.}
+
+\item{StageVariables}{A map that defines the stage variables for a Stage. Variable names can have alphanumeric and underscore characters, and the values must match [A-Za-z0-9-.\_~:/?#&=,]+.}
+}
+\description{
+Creates a Stage for an API.
+}
+\section{Accepted Parameters}{
+\preformatted{create_stage(
   AccessLogSettings = list(
     DestinationArn = "string",
     Format = "string"
@@ -35,28 +63,5 @@ create_stage(
   )
 )
 }
-\arguments{
-\item{AccessLogSettings}{Settings for logging access in this stage.}
-
-\item{ApiId}{[required] The API identifier.}
-
-\item{ClientCertificateId}{The identifier of a client certificate for a Stage.}
-
-\item{DefaultRouteSettings}{The default route settings for the stage.}
-
-\item{DeploymentId}{The deployment identifier of the API stage.}
-
-\item{Description}{The description for the API stage.}
-
-\item{RouteSettings}{Route settings for the stage.}
-
-\item{StageName}{[required] The name of the stage.}
-
-\item{StageVariables}{A map that defines the stage variables for a Stage. Variable names can have alphanumeric and underscore characters, and the values must match [A-Za-z0-9-.\_~:/?#&=,]+.}
 }
-\description{
-Creates a Stage for an API.
-}
-\examples{
 
-}

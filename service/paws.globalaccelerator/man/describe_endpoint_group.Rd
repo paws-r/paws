@@ -4,9 +4,7 @@
 \alias{describe_endpoint_group}
 \title{Describe an endpoint group}
 \usage{
-describe_endpoint_group(
-  EndpointGroupArn = "string"
-)
+describe_endpoint_group(EndpointGroupArn)
 }
 \arguments{
 \item{EndpointGroupArn}{[required] The Amazon Resource Name (ARN) of the endpoint group to describe.}
@@ -14,6 +12,10 @@ describe_endpoint_group(
 \description{
 Describe an endpoint group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_endpoint_group(
+  EndpointGroupArn = "string"
+)
 }
+}
+

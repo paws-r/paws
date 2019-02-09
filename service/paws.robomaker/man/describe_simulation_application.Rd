@@ -4,10 +4,7 @@
 \alias{describe_simulation_application}
 \title{Describes a simulation application}
 \usage{
-describe_simulation_application(
-  application = "string",
-  applicationVersion = "string"
-)
+describe_simulation_application(application, applicationVersion = NULL)
 }
 \arguments{
 \item{application}{[required] The application information for the simulation application.}
@@ -17,6 +14,11 @@ describe_simulation_application(
 \description{
 Describes a simulation application.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_simulation_application(
+  application = "string",
+  applicationVersion = "string"
+)
 }
+}
+

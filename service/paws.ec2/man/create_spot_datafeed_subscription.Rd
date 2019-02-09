@@ -14,7 +14,7 @@ create_spot_datafeed_subscription(Bucket, DryRun = NULL, Prefix = NULL)
 \item{Prefix}{A prefix for the data feed file names.}
 }
 \description{
-Creates a data feed for Spot Instances, enabling you to view Spot Instance usage logs. You can create one data feed per AWS account. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html}{Spot Instance Data Feed} in the \emph{Amazon EC2 User Guide for Linux Instances}.
+Creates a data feed for Spot Instances, enabling you to view Spot Instance usage logs. You can create one data feed per AWS account. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html}{Spot Instance Data Feed} in the \emph{Amazon EC2 User Guide for Linux Instances}.
 }
 \section{Accepted Parameters}{
 \preformatted{create_spot_datafeed_subscription(

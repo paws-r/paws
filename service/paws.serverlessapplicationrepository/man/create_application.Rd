@@ -30,17 +30,17 @@ Minimum length=1. Maximum length=127. Maximum number of labels: 10
 
 Pattern: "^[a-zA-Z0-9+\\-\_:\\/@]+\$";}
 
-\item{LicenseBody}{A local text file that contains the license of the app that matches the spdxLicenseID value of your application. The file is of the format file://<path>/<filename>.
+\item{LicenseBody}{A local text file that contains the license of the app that matches the spdxLicenseID value of your application. The file has the format file://<path>/<filename>.
 
 Maximum size 5 MB
 
-Note: Only one of licenseBody and licenseUrl can be specified, otherwise an error will result.}
+You can specify only one of licenseBody and licenseUrl; otherwise, an error results.}
 
 \item{LicenseUrl}{A link to the S3 object that contains the license of the app that matches the spdxLicenseID value of your application.
 
 Maximum size 5 MB
 
-Note: Only one of licenseBody and licenseUrl can be specified, otherwise an error will result.}
+You can specify only one of licenseBody and licenseUrl; otherwise, an error results.}
 
 \item{Name}{[required] The name of the application that you want to publish.
 
@@ -48,17 +48,17 @@ Minimum length=1. Maximum length=140
 
 Pattern: "[a-zA-Z0-9\\-]+";}
 
-\item{ReadmeBody}{A local text readme file in Markdown language that contains a more detailed description of the application and how it works. The file is of the format file://<path>/<filename>.
+\item{ReadmeBody}{A local text readme file in Markdown language that contains a more detailed description of the application and how it works. The file has the format file://<path>/<filename>.
 
 Maximum size 5 MB
 
-Note: Only one of readmeBody and readmeUrl can be specified, otherwise an error will result.}
+You can specify only one of readmeBody and readmeUrl; otherwise, an error results.}
 
 \item{ReadmeUrl}{A link to the S3 object in Markdown language that contains a more detailed description of the application and how it works.
 
 Maximum size 5 MB
 
-Note: Only one of readmeBody and readmeUrl can be specified, otherwise an error will result.}
+You can specify only one of readmeBody and readmeUrl; otherwise, an error results.}
 
 \item{SemanticVersion}{The semantic version of the application:
 
@@ -68,13 +68,13 @@ Note: Only one of readmeBody and readmeUrl can be specified, otherwise an error 
 
 \item{SpdxLicenseId}{A valid identifier from \url{https://spdx.org/licenses/}.}
 
-\item{TemplateBody}{The local raw packaged AWS SAM template file of your application. The file is of the format file://<path>/<filename>.
+\item{TemplateBody}{The local raw packaged AWS SAM template file of your application. The file has the format file://<path>/<filename>.
 
-Note: Only one of templateBody and templateUrl can be specified, otherwise an error will result.}
+You can specify only one of templateBody and templateUrl; otherwise an error results.}
 
-\item{TemplateUrl}{A link to the S3 object cotaining the packaged AWS SAM template of your application.
+\item{TemplateUrl}{A link to the S3 object containing the packaged AWS SAM template of your application.
 
-Note: Only one of templateBody and templateUrl can be specified, otherwise an error will result.}
+You can specify only one of templateBody and templateUrl; otherwise an error results.}
 }
 \description{
 Creates an application, optionally including an AWS SAM file to create the first application version in the same call.

@@ -4,12 +4,7 @@
 \alias{untag_resource}
 \title{Detaches a key-value pair from a resource, as identified by its Amazon Resource Name (ARN)}
 \usage{
-untag_resource(
-  Arn = "string",
-  TagKeys = list(
-    "string"
-  )
-)
+untag_resource(Arn, TagKeys)
 }
 \arguments{
 \item{Arn}{[required] This is the value of the resource that will have the tag removed. An Amazon Resource Name (ARN) is an identifier for a specific AWS resource, such as a server, user, or role.}
@@ -22,6 +17,13 @@ Detaches a key-value pair from a resource, as identified by its Amazon Resource 
 \details{
 No response is returned from this call.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{untag_resource(
+  Arn = "string",
+  TagKeys = list(
+    "string"
+  )
+)
 }
+}
+

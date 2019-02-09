@@ -4,7 +4,23 @@
 \alias{update_robot_application}
 \title{Updates a robot application}
 \usage{
-update_robot_application(
+update_robot_application(application, sources, robotSoftwareSuite,
+  currentRevisionId = NULL)
+}
+\arguments{
+\item{application}{[required] The application information for the robot application.}
+
+\item{sources}{[required] The sources of the robot application.}
+
+\item{robotSoftwareSuite}{[required] The robot software suite used by the robot application.}
+
+\item{currentRevisionId}{The revision id for the robot application.}
+}
+\description{
+Updates a robot application.
+}
+\section{Accepted Parameters}{
+\preformatted{update_robot_application(
   application = "string",
   sources = list(
     list(
@@ -20,18 +36,5 @@ update_robot_application(
   currentRevisionId = "string"
 )
 }
-\arguments{
-\item{application}{[required] The application information for the robot application.}
-
-\item{sources}{[required] The sources of the robot application.}
-
-\item{robotSoftwareSuite}{[required] The robot software suite used by the robot application.}
-
-\item{currentRevisionId}{The revision id for the robot application.}
 }
-\description{
-Updates a robot application.
-}
-\examples{
 
-}

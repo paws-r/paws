@@ -2,7 +2,7 @@
 % Please edit documentation in R/paws.lambda_operations.R
 \name{update_alias}
 \alias{update_alias}
-\title{Using this API you can update the function version to which the alias points and the alias description}
+\title{Updates the configuration of a Lambda function alias}
 \usage{
 update_alias(FunctionName, Name, FunctionVersion = NULL,
   Description = NULL, RoutingConfig = NULL, RevisionId = NULL)
@@ -19,21 +19,18 @@ update_alias(FunctionName, Name, FunctionVersion = NULL,
 
 The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
 
-\item{Name}{[required] The alias name.}
+\item{Name}{[required] The name of the alias.}
 
-\item{FunctionVersion}{Using this parameter you can change the Lambda function version to which the alias points.}
+\item{FunctionVersion}{The function version that the alias invokes.}
 
-\item{Description}{You can change the description of the alias using this parameter.}
+\item{Description}{A description of the alias.}
 
-\item{RoutingConfig}{Specifies an additional version your alias can point to, allowing you to dictate what percentage of traffic will invoke each version. For more information, see \href{http://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html}{Traffic Shifting Using Aliases}.}
+\item{RoutingConfig}{The \href{http://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html}{routing configuration} of the alias.}
 
-\item{RevisionId}{An optional value you can use to ensure you are updating the latest update of the function version or alias. If the \code{RevisionID} you pass doesn't match the latest \code{RevisionId} of the function or alias, it will fail with an error message, advising you retrieve the latest function version or alias \code{RevisionID} using either GetFunction or GetAlias.}
+\item{RevisionId}{Only update the alias if the revision ID matches the ID specified. Use this option to avoid modifying an alias that has changed since you last read it.}
 }
 \description{
-Using this API you can update the function version to which the alias points and the alias description. For more information, see \href{http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html}{Introduction to AWS Lambda Aliases}.
-}
-\details{
-This requires permission for the lambda:UpdateAlias action.
+Updates the configuration of a Lambda function \href{http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{alias}.
 }
 \section{Accepted Parameters}{
 \preformatted{update_alias(

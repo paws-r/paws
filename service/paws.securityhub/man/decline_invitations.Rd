@@ -4,11 +4,7 @@
 \alias{decline_invitations}
 \title{Declines invitations that are sent to this AWS account (invitee) by the AWS accounts (inviters) that are specified by the account IDs}
 \usage{
-decline_invitations(
-  AccountIds = list(
-    "string"
-  )
-)
+decline_invitations(AccountIds = NULL)
 }
 \arguments{
 \item{AccountIds}{A list of account IDs specifying accounts whose invitations to Security Hub you want to decline.}
@@ -16,6 +12,12 @@ decline_invitations(
 \description{
 Declines invitations that are sent to this AWS account (invitee) by the AWS accounts (inviters) that are specified by the account IDs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{decline_invitations(
+  AccountIds = list(
+    "string"
+  )
+)
 }
+}
+

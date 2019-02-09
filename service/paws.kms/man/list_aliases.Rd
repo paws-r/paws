@@ -2,7 +2,7 @@
 % Please edit documentation in R/paws.kms_operations.R
 \name{list_aliases}
 \alias{list_aliases}
-\title{Gets a list of aliases in the caller's AWS account and region}
+\title{Gets a list of all aliases in the caller's AWS account and region}
 \usage{
 list_aliases(KeyId = NULL, Limit = NULL, Marker = NULL)
 }
@@ -18,14 +18,12 @@ This value is optional. If you include a value, it must be between 1 and 100, in
 \item{Marker}{Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of \code{NextMarker} from the truncated response you just received.}
 }
 \description{
-Gets a list of aliases in the caller's AWS account and region. You cannot list aliases in other accounts. For more information about aliases, see CreateAlias.
+Gets a list of all aliases in the caller's AWS account and region. You cannot list aliases in other accounts. For more information about aliases, see CreateAlias.
 }
 \details{
-By default, the ListAliases command returns all aliases in the account and region. To get only the aliases that point to a particular customer master key (CMK), use the \code{KeyId} parameter.
+By default, the \code{ListAliases} command returns all aliases in the account and region. To get only the aliases that point to a particular customer master key (CMK), use the \code{KeyId} parameter.
 
-The \code{ListAliases} response can include aliases that you created and associated with your customer managed CMKs, and aliases that AWS created and associated with AWS managed CMKs in your account. You can recognize AWS aliases because their names have the format \code{aws/<service-name>}, such as \code{aws/dynamodb}.
-
-The response might also include aliases that have no \code{TargetKeyId} field. These are predefined aliases that AWS has created but has not yet associated with a CMK. Aliases that AWS creates in your account, including predefined aliases, do not count against your \href{http://docs.aws.amazon.com/kms/latest/developerguide/limits.html#aliases-limit}{AWS KMS aliases limit}.
+The \code{ListAliases} response might include several aliases have no \code{TargetKeyId} field. These are predefined aliases that AWS has created but has not yet associated with a CMK. Aliases that AWS creates in your account, including predefined aliases, do not count against your \href{http://docs.aws.amazon.com/kms/latest/developerguide/limits.html#aliases-limit}{AWS KMS aliases limit}.
 }
 \section{Accepted Parameters}{
 \preformatted{list_aliases(

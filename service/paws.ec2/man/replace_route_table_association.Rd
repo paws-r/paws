@@ -15,7 +15,7 @@ replace_route_table_association(AssociationId, DryRun = NULL,
 \item{RouteTableId}{[required] The ID of the new route table to associate with the subnet.}
 }
 \description{
-Changes the route table associated with a given subnet in a VPC. After the operation completes, the subnet uses the routes in the new route table it's associated with. For more information about route tables, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html}{Route Tables} in the \emph{Amazon Virtual Private Cloud User Guide}.
+Changes the route table associated with a given subnet in a VPC. After the operation completes, the subnet uses the routes in the new route table it's associated with. For more information about route tables, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html}{Route Tables} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \details{
 You can also use ReplaceRouteTableAssociation to change which table is the main route table in the VPC. You just specify the main route table's association ID and the route table to be the new main route table.

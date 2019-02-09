@@ -22,6 +22,22 @@ NULL
 #'
 #' @param channelName &#91;required&#93; The name of the channel where the messages are sent.
 #' @param messages &#91;required&#93; The list of messages to be sent. Each message has format: \'{ \"messageId\": \"string\", \"payload\": \"string\"}\'.
+#' 
+#' Note that the field names of message payloads (data) that you send to AWS IoT Analytics:
+#' 
+#' -   Must contain only alphanumeric characters and undescores (\_); no other special characters are allowed.
+#' 
+#' -   Must begin with an alphabetic character or single underscore (\_).
+#' 
+#' -   Cannot contain hyphens (-).
+#' 
+#' -   In regular expression terms: \"\^&#91;A-Za-z\_&#93;(&#91;A-Za-z0-9&#93;\*\|&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9\_&#93;\*)\$\".
+#' 
+#' -   Cannot be greater than 255 characters.
+#' 
+#' -   Are case-insensitive. (Fields named \"foo\" and \"FOO\" in the same payload are considered duplicates.)
+#' 
+#' For example, {\"temp\_01\": 29} or {\"\_temp\_01\": 29} are valid, but {\"temp-01\": 29}, {\"01\_temp\": 29} or {\"\_\_temp\_01\": 29} are invalid in message payloads.
 #'
 #' @export
 batch_put_message <- function (channelName, messages) 
@@ -162,6 +178,17 @@ create_channel <- function (channelName, retentionPeriod = NULL,
 #'       )
 #'     )
 #'   ),
+#'   contentDeliveryRules = list(
+#'     list(
+#'       entryName = "string",
+#'       destination = list(
+#'         iotEventsDestinationConfiguration = list(
+#'           inputName = "string",
+#'           roleArn = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
 #'   retentionPeriod = list(
 #'     unlimited = TRUE|FALSE,
 #'     numberOfDays = 123
@@ -178,18 +205,19 @@ create_channel <- function (channelName, retentionPeriod = NULL,
 #' @param datasetName &#91;required&#93; The name of the data set.
 #' @param actions &#91;required&#93; A list of actions that create the data set contents.
 #' @param triggers A list of triggers. A trigger causes data set contents to be populated at a specified time interval or when another data set\'s contents are created. The list of triggers can be empty or contain up to five **DataSetTrigger** objects.
+#' @param contentDeliveryRules When data set contents are created they are delivered to destinations specified here.
 #' @param retentionPeriod &#91;Optional&#93; How long, in days, message data is kept for the data set. If not given or set to null, the latest version of the dataset content plus the latest succeeded version (if they are different) are retained for at most 90 days.
 #' @param tags Metadata which can be used to manage the data set.
 #'
 #' @export
 create_dataset <- function (datasetName, actions, triggers = NULL, 
-    retentionPeriod = NULL, tags = NULL) 
+    contentDeliveryRules = NULL, retentionPeriod = NULL, tags = NULL) 
 {
     op <- new_operation(name = "CreateDataset", http_method = "POST", 
         http_path = "/datasets", paginator = list())
     input <- create_dataset_input(datasetName = datasetName, 
-        actions = actions, triggers = triggers, retentionPeriod = retentionPeriod, 
-        tags = tags)
+        actions = actions, triggers = triggers, contentDeliveryRules = contentDeliveryRules, 
+        retentionPeriod = retentionPeriod, tags = tags)
     output <- create_dataset_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -197,9 +225,9 @@ create_dataset <- function (datasetName, actions, triggers = NULL,
     return(response)
 }
 
-#' Creates the content of a data set by applying a SQL action
+#' Creates the content of a data set by applying a "queryAction" (a SQL query) or a "containerAction" (executing a containerized application)
 #'
-#' Creates the content of a data set by applying a SQL action.
+#' Creates the content of a data set by applying a \"queryAction\" (a SQL query) or a \"containerAction\" (executing a containerized application).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -701,22 +729,27 @@ list_channels <- function (nextToken = NULL, maxResults = NULL)
 #' list_dataset_contents(
 #'   datasetName = "string",
 #'   nextToken = "string",
-#'   maxResults = 123
+#'   maxResults = 123,
+#'   scheduledOnOrAfter = as.POSIXct("2015-01-01"),
+#'   scheduledBefore = as.POSIXct("2015-01-01")
 #' )
 #' ```
 #'
 #' @param datasetName &#91;required&#93; The name of the data set whose contents information you want to list.
 #' @param nextToken The token for the next set of results.
 #' @param maxResults The maximum number of results to return in this request.
+#' @param scheduledOnOrAfter A filter to limit results to those data set contents whose creation is scheduled on or after the given time. See the field `triggers.schedule` in the CreateDataset request. (timestamp)
+#' @param scheduledBefore A filter to limit results to those data set contents whose creation is scheduled before the given time. See the field `triggers.schedule` in the CreateDataset request. (timestamp)
 #'
 #' @export
 list_dataset_contents <- function (datasetName, nextToken = NULL, 
-    maxResults = NULL) 
+    maxResults = NULL, scheduledOnOrAfter = NULL, scheduledBefore = NULL) 
 {
     op <- new_operation(name = "ListDatasetContents", http_method = "GET", 
         http_path = "/datasets/{datasetName}/contents", paginator = list())
     input <- list_dataset_contents_input(datasetName = datasetName, 
-        nextToken = nextToken, maxResults = maxResults)
+        nextToken = nextToken, maxResults = maxResults, scheduledOnOrAfter = scheduledOnOrAfter, 
+        scheduledBefore = scheduledBefore)
     output <- list_dataset_contents_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -1049,7 +1082,7 @@ start_pipeline_reprocessing <- function (pipelineName, startTime = NULL,
 #' )
 #' ```
 #'
-#' @param resourceArn &#91;required&#93; The ARN of the resource whose tags will be modified.
+#' @param resourceArn &#91;required&#93; The ARN of the resource whose tags you want to modify.
 #' @param tags &#91;required&#93; The new or modified tags for the resource.
 #'
 #' @export
@@ -1079,8 +1112,8 @@ tag_resource <- function (resourceArn, tags)
 #' )
 #' ```
 #'
-#' @param resourceArn &#91;required&#93; The ARN of the resource whose tags will be removed.
-#' @param tagKeys &#91;required&#93; The keys of those tags which will be removed.
+#' @param resourceArn &#91;required&#93; The ARN of the resource whose tags you want to remove.
+#' @param tagKeys &#91;required&#93; The keys of those tags which you want to remove.
 #'
 #' @export
 untag_resource <- function (resourceArn, tagKeys) 
@@ -1183,6 +1216,17 @@ update_channel <- function (channelName, retentionPeriod = NULL)
 #'       )
 #'     )
 #'   ),
+#'   contentDeliveryRules = list(
+#'     list(
+#'       entryName = "string",
+#'       destination = list(
+#'         iotEventsDestinationConfiguration = list(
+#'           inputName = "string",
+#'           roleArn = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
 #'   retentionPeriod = list(
 #'     unlimited = TRUE|FALSE,
 #'     numberOfDays = 123
@@ -1193,16 +1237,18 @@ update_channel <- function (channelName, retentionPeriod = NULL)
 #' @param datasetName &#91;required&#93; The name of the data set to update.
 #' @param actions &#91;required&#93; A list of \"DatasetAction\" objects.
 #' @param triggers A list of \"DatasetTrigger\" objects. The list can be empty or can contain up to five **DataSetTrigger** objects.
+#' @param contentDeliveryRules When data set contents are created they are delivered to destinations specified here.
 #' @param retentionPeriod How long, in days, message data is kept for the data set.
 #'
 #' @export
 update_dataset <- function (datasetName, actions, triggers = NULL, 
-    retentionPeriod = NULL) 
+    contentDeliveryRules = NULL, retentionPeriod = NULL) 
 {
     op <- new_operation(name = "UpdateDataset", http_method = "PUT", 
         http_path = "/datasets/{datasetName}", paginator = list())
     input <- update_dataset_input(datasetName = datasetName, 
-        actions = actions, triggers = triggers, retentionPeriod = retentionPeriod)
+        actions = actions, triggers = triggers, contentDeliveryRules = contentDeliveryRules, 
+        retentionPeriod = retentionPeriod)
     output <- update_dataset_output()
     svc <- service()
     request <- new_request(svc, op, input, output)

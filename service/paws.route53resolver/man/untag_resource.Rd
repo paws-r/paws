@@ -4,12 +4,7 @@
 \alias{untag_resource}
 \title{Removes one or more tags from a specified resource}
 \usage{
-untag_resource(
-  ResourceArn = "string",
-  TagKeys = list(
-    "string"
-  )
-)
+untag_resource(ResourceArn, TagKeys)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) for the resource that you want to remove tags from. To get the ARN for a resource, use the applicable \code{Get} or \code{List} command:
@@ -27,6 +22,13 @@ untag_resource(
 \description{
 Removes one or more tags from a specified resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{untag_resource(
+  ResourceArn = "string",
+  TagKeys = list(
+    "string"
+  )
+)
 }
+}
+

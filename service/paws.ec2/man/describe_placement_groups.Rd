@@ -12,7 +12,7 @@ describe_placement_groups(Filters = NULL, DryRun = NULL,
 \itemize{
 \item \code{group-name} - The name of the placement group.
 \item \code{state} - The state of the placement group (\code{pending} | \code{available} | \code{deleting} | \code{deleted}).
-\item \code{strategy} - The strategy of the placement group (\code{cluster} | \code{spread}).
+\item \code{strategy} - The strategy of the placement group (\code{cluster} | \code{spread} | \code{partition}).
 }}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -22,7 +22,7 @@ describe_placement_groups(Filters = NULL, DryRun = NULL,
 Default: Describes all your placement groups, or only those otherwise specified.}
 }
 \description{
-Describes one or more of your placement groups. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement Groups} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+Describes one or more of your placement groups. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement Groups} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{describe_placement_groups(

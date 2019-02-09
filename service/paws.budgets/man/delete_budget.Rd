@@ -15,7 +15,7 @@ delete_budget(AccountId, BudgetName)
 Deletes a budget. You can delete your budget at any time.
 }
 \details{
-\strong{Deleting a budget also deletes the notifications and subscribers associated with that budget.}
+Deleting a budget also deletes the notifications and subscribers that are associated with that budget.
 }
 \section{Accepted Parameters}{
 \preformatted{delete_budget(

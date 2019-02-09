@@ -2,26 +2,31 @@
 % Please edit documentation in R/paws.lambda_operations.R
 \name{put_function_concurrency}
 \alias{put_function_concurrency}
-\title{Sets a limit on the number of concurrent executions available to this function}
+\title{Sets the maximum number of simultaneous executions for a function, and reserves capacity for that concurrency level}
 \usage{
 put_function_concurrency(FunctionName, ReservedConcurrentExecutions)
 }
 \arguments{
-\item{FunctionName}{[required] The name of the lambda function.
+\item{FunctionName}{[required] The name of the Lambda function.
 
 \strong{Name formats}
 \itemize{
-\item \strong{Function name} - \code{MyFunction}.
-\item \strong{Function ARN} - \code{arn:aws:lambda:us-west-2:123456789012:function:MyFunction}.
-\item \strong{Partial ARN} - \code{123456789012:function:MyFunction}.
+\item \strong{Function name} - \code{my-function}.
+\item \strong{Function ARN} - \code{arn:aws:lambda:us-west-2:123456789012:function:my-function}.
+\item \strong{Partial ARN} - \code{123456789012:function:my-function}.
 }
 
 The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
 
-\item{ReservedConcurrentExecutions}{[required] The concurrent execution limit reserved for this function.}
+\item{ReservedConcurrentExecutions}{[required] The number of simultaneous executions to reserve for the function.}
 }
 \description{
-Sets a limit on the number of concurrent executions available to this function. It is a subset of your account's total concurrent execution limit per region. Note that Lambda automatically reserves a buffer of 100 concurrent executions for functions without any reserved concurrency limit. This means if your account limit is 1000, you have a total of 900 available to allocate to individual functions. For more information, see \href{http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html}{Managing Concurrency}.
+Sets the maximum number of simultaneous executions for a function, and reserves capacity for that concurrency level.
+}
+\details{
+Concurrency settings apply to the function as a whole, including all published versions and the unpublished version. Reserving concurrency both guarantees that your function has capacity to process the specified number of events simultaneously, and prevents it from scaling beyond that level. Use GetFunction to see the current setting for a function.
+
+Use GetAccountSettings to see your regional concurrency limit. You can reserve concurrency for as many functions as you like, as long as you leave at least 100 simultaneous executions unreserved for functions that aren't configured with a per-function limit. For more information, see \href{http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html}{Managing Concurrency}.
 }
 \section{Accepted Parameters}{
 \preformatted{put_function_concurrency(

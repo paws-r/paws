@@ -33,7 +33,7 @@ create_data_source_input <- function (...)
         description = structure(logical(0), tags = list(type = "string")), 
         type = structure(logical(0), tags = list(type = "string", 
             enum = c("AWS_LAMBDA", "AMAZON_DYNAMODB", "AMAZON_ELASTICSEARCH", 
-                "NONE", "HTTP"))), serviceRoleArn = structure(logical(0), 
+                "NONE", "HTTP", "RELATIONAL_DATABASE"))), serviceRoleArn = structure(logical(0), 
             tags = list(type = "string")), dynamodbConfig = structure(list(tableName = structure(logical(0), 
             tags = list(type = "string")), awsRegion = structure(logical(0), 
             tags = list(type = "string")), useCallerCredentials = structure(logical(0), 
@@ -44,8 +44,21 @@ create_data_source_input <- function (...)
             tags = list(type = "string")), awsRegion = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure")), 
         httpConfig = structure(list(endpoint = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))), 
-        tags = list(type = "structure"))
+            tags = list(type = "string")), authorizationConfig = structure(list(authorizationType = structure(logical(0), 
+            tags = list(type = "string", enum = "AWS_IAM")), 
+            awsIamConfig = structure(list(signingRegion = structure(logical(0), 
+                tags = list(type = "string")), signingServiceName = structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure")), 
+        relationalDatabaseConfig = structure(list(relationalDatabaseSourceType = structure(logical(0), 
+            tags = list(type = "string", enum = "RDS_HTTP_ENDPOINT")), 
+            rdsHttpEndpointConfig = structure(list(awsRegion = structure(logical(0), 
+                tags = list(type = "string")), dbClusterIdentifier = structure(logical(0), 
+                tags = list(type = "string")), databaseName = structure(logical(0), 
+                tags = list(type = "string")), schema = structure(logical(0), 
+                tags = list(type = "string")), awsSecretStoreArn = structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -58,7 +71,7 @@ create_data_source_output <- function (...)
         description = structure(logical(0), tags = list(type = "string")), 
         type = structure(logical(0), tags = list(type = "string", 
             enum = c("AWS_LAMBDA", "AMAZON_DYNAMODB", "AMAZON_ELASTICSEARCH", 
-                "NONE", "HTTP"))), serviceRoleArn = structure(logical(0), 
+                "NONE", "HTTP", "RELATIONAL_DATABASE"))), serviceRoleArn = structure(logical(0), 
             tags = list(type = "string")), dynamodbConfig = structure(list(tableName = structure(logical(0), 
             tags = list(type = "string")), awsRegion = structure(logical(0), 
             tags = list(type = "string")), useCallerCredentials = structure(logical(0), 
@@ -69,8 +82,56 @@ create_data_source_output <- function (...)
             tags = list(type = "string")), awsRegion = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure")), 
         httpConfig = structure(list(endpoint = structure(logical(0), 
+            tags = list(type = "string")), authorizationConfig = structure(list(authorizationType = structure(logical(0), 
+            tags = list(type = "string", enum = "AWS_IAM")), 
+            awsIamConfig = structure(list(signingRegion = structure(logical(0), 
+                tags = list(type = "string")), signingServiceName = structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure")), 
+        relationalDatabaseConfig = structure(list(relationalDatabaseSourceType = structure(logical(0), 
+            tags = list(type = "string", enum = "RDS_HTTP_ENDPOINT")), 
+            rdsHttpEndpointConfig = structure(list(awsRegion = structure(logical(0), 
+                tags = list(type = "string")), dbClusterIdentifier = structure(logical(0), 
+                tags = list(type = "string")), databaseName = structure(logical(0), 
+                tags = list(type = "string")), schema = structure(logical(0), 
+                tags = list(type = "string")), awsSecretStoreArn = structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+create_function_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(apiId = structure(logical(0), tags = list(location = "uri", 
+        locationName = "apiId", type = "string")), name = structure(logical(0), 
+        tags = list(type = "string", pattern = "[_A-Za-z][_0-9A-Za-z]*")), 
+        description = structure(logical(0), tags = list(type = "string")), 
+        dataSourceName = structure(logical(0), tags = list(type = "string", 
+            pattern = "[_A-Za-z][_0-9A-Za-z]*")), requestMappingTemplate = structure(logical(0), 
+            tags = list(type = "string", max = 65536L, min = 1L)), 
+        responseMappingTemplate = structure(logical(0), tags = list(type = "string", 
+            max = 65536L, min = 1L)), functionVersion = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+create_function_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(functionConfiguration = structure(list(functionId = structure(logical(0), 
+        tags = list(type = "string")), functionArn = structure(logical(0), 
+        tags = list(type = "string")), name = structure(logical(0), 
+        tags = list(type = "string", pattern = "[_A-Za-z][_0-9A-Za-z]*")), 
+        description = structure(logical(0), tags = list(type = "string")), 
+        dataSourceName = structure(logical(0), tags = list(type = "string", 
+            pattern = "[_A-Za-z][_0-9A-Za-z]*")), requestMappingTemplate = structure(logical(0), 
+            tags = list(type = "string", max = 65536L, min = 1L)), 
+        responseMappingTemplate = structure(logical(0), tags = list(type = "string", 
+            max = 65536L, min = 1L)), functionVersion = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 
-        tags = list(type = "structure"))), tags = list(type = "structure"))
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -139,8 +200,11 @@ create_resolver_input <- function (...)
             tags = list(type = "string", pattern = "[_A-Za-z][_0-9A-Za-z]*")), 
         requestMappingTemplate = structure(logical(0), tags = list(type = "string", 
             max = 65536L, min = 1L)), responseMappingTemplate = structure(logical(0), 
-            tags = list(type = "string", max = 65536L, min = 1L))), 
-        tags = list(type = "structure"))
+            tags = list(type = "string", max = 65536L, min = 1L)), 
+        kind = structure(logical(0), tags = list(type = "string", 
+            enum = c("UNIT", "PIPELINE"))), pipelineConfig = structure(list(functions = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -155,8 +219,12 @@ create_resolver_output <- function (...)
         resolverArn = structure(logical(0), tags = list(type = "string")), 
         requestMappingTemplate = structure(logical(0), tags = list(type = "string", 
             max = 65536L, min = 1L)), responseMappingTemplate = structure(logical(0), 
-            tags = list(type = "string", max = 65536L, min = 1L))), 
-        tags = list(type = "structure"))), tags = list(type = "structure"))
+            tags = list(type = "string", max = 65536L, min = 1L)), 
+        kind = structure(logical(0), tags = list(type = "string", 
+            enum = c("UNIT", "PIPELINE"))), pipelineConfig = structure(list(functions = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -214,6 +282,24 @@ delete_data_source_input <- function (...)
 }
 
 delete_data_source_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_function_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(apiId = structure(logical(0), tags = list(location = "uri", 
+        locationName = "apiId", type = "string")), functionId = structure(logical(0), 
+        tags = list(location = "uri", locationName = "functionId", 
+            type = "string", pattern = "[_A-Za-z][_0-9A-Za-z]*"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_function_output <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(), tags = list(type = "structure"))
@@ -293,7 +379,7 @@ get_data_source_output <- function (...)
         description = structure(logical(0), tags = list(type = "string")), 
         type = structure(logical(0), tags = list(type = "string", 
             enum = c("AWS_LAMBDA", "AMAZON_DYNAMODB", "AMAZON_ELASTICSEARCH", 
-                "NONE", "HTTP"))), serviceRoleArn = structure(logical(0), 
+                "NONE", "HTTP", "RELATIONAL_DATABASE"))), serviceRoleArn = structure(logical(0), 
             tags = list(type = "string")), dynamodbConfig = structure(list(tableName = structure(logical(0), 
             tags = list(type = "string")), awsRegion = structure(logical(0), 
             tags = list(type = "string")), useCallerCredentials = structure(logical(0), 
@@ -304,8 +390,51 @@ get_data_source_output <- function (...)
             tags = list(type = "string")), awsRegion = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure")), 
         httpConfig = structure(list(endpoint = structure(logical(0), 
+            tags = list(type = "string")), authorizationConfig = structure(list(authorizationType = structure(logical(0), 
+            tags = list(type = "string", enum = "AWS_IAM")), 
+            awsIamConfig = structure(list(signingRegion = structure(logical(0), 
+                tags = list(type = "string")), signingServiceName = structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure")), 
+        relationalDatabaseConfig = structure(list(relationalDatabaseSourceType = structure(logical(0), 
+            tags = list(type = "string", enum = "RDS_HTTP_ENDPOINT")), 
+            rdsHttpEndpointConfig = structure(list(awsRegion = structure(logical(0), 
+                tags = list(type = "string")), dbClusterIdentifier = structure(logical(0), 
+                tags = list(type = "string")), databaseName = structure(logical(0), 
+                tags = list(type = "string")), schema = structure(logical(0), 
+                tags = list(type = "string")), awsSecretStoreArn = structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+get_function_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(apiId = structure(logical(0), tags = list(location = "uri", 
+        locationName = "apiId", type = "string")), functionId = structure(logical(0), 
+        tags = list(location = "uri", locationName = "functionId", 
+            type = "string", pattern = "[_A-Za-z][_0-9A-Za-z]*"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+get_function_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(functionConfiguration = structure(list(functionId = structure(logical(0), 
+        tags = list(type = "string")), functionArn = structure(logical(0), 
+        tags = list(type = "string")), name = structure(logical(0), 
+        tags = list(type = "string", pattern = "[_A-Za-z][_0-9A-Za-z]*")), 
+        description = structure(logical(0), tags = list(type = "string")), 
+        dataSourceName = structure(logical(0), tags = list(type = "string", 
+            pattern = "[_A-Za-z][_0-9A-Za-z]*")), requestMappingTemplate = structure(logical(0), 
+            tags = list(type = "string", max = 65536L, min = 1L)), 
+        responseMappingTemplate = structure(logical(0), tags = list(type = "string", 
+            max = 65536L, min = 1L)), functionVersion = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 
-        tags = list(type = "structure"))), tags = list(type = "structure"))
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -388,8 +517,12 @@ get_resolver_output <- function (...)
         resolverArn = structure(logical(0), tags = list(type = "string")), 
         requestMappingTemplate = structure(logical(0), tags = list(type = "string", 
             max = 65536L, min = 1L)), responseMappingTemplate = structure(logical(0), 
-            tags = list(type = "string", max = 65536L, min = 1L))), 
-        tags = list(type = "structure"))), tags = list(type = "structure"))
+            tags = list(type = "string", max = 65536L, min = 1L)), 
+        kind = structure(logical(0), tags = list(type = "string", 
+            enum = c("UNIT", "PIPELINE"))), pipelineConfig = structure(list(functions = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -483,7 +616,7 @@ list_data_sources_output <- function (...)
         description = structure(logical(0), tags = list(type = "string")), 
         type = structure(logical(0), tags = list(type = "string", 
             enum = c("AWS_LAMBDA", "AMAZON_DYNAMODB", "AMAZON_ELASTICSEARCH", 
-                "NONE", "HTTP"))), serviceRoleArn = structure(logical(0), 
+                "NONE", "HTTP", "RELATIONAL_DATABASE"))), serviceRoleArn = structure(logical(0), 
             tags = list(type = "string")), dynamodbConfig = structure(list(tableName = structure(logical(0), 
             tags = list(type = "string")), awsRegion = structure(logical(0), 
             tags = list(type = "string")), useCallerCredentials = structure(logical(0), 
@@ -494,10 +627,56 @@ list_data_sources_output <- function (...)
             tags = list(type = "string")), awsRegion = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure")), 
         httpConfig = structure(list(endpoint = structure(logical(0), 
+            tags = list(type = "string")), authorizationConfig = structure(list(authorizationType = structure(logical(0), 
+            tags = list(type = "string", enum = "AWS_IAM")), 
+            awsIamConfig = structure(list(signingRegion = structure(logical(0), 
+                tags = list(type = "string")), signingServiceName = structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure")), 
+        relationalDatabaseConfig = structure(list(relationalDatabaseSourceType = structure(logical(0), 
+            tags = list(type = "string", enum = "RDS_HTTP_ENDPOINT")), 
+            rdsHttpEndpointConfig = structure(list(awsRegion = structure(logical(0), 
+                tags = list(type = "string")), dbClusterIdentifier = structure(logical(0), 
+                tags = list(type = "string")), databaseName = structure(logical(0), 
+                tags = list(type = "string")), schema = structure(logical(0), 
+                tags = list(type = "string")), awsSecretStoreArn = structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure"))), 
+        tags = list(type = "list")), nextToken = structure(logical(0), 
+        tags = list(type = "string", pattern = "[\\\\S]+"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_functions_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(apiId = structure(logical(0), tags = list(location = "uri", 
+        locationName = "apiId", type = "string")), nextToken = structure(logical(0), 
+        tags = list(location = "querystring", locationName = "nextToken", 
+            type = "string", pattern = "[\\\\S]+")), maxResults = structure(logical(0), 
+        tags = list(location = "querystring", locationName = "maxResults", 
+            type = "integer", max = 25L, min = 0L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_functions_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(functions = structure(list(structure(list(functionId = structure(logical(0), 
+        tags = list(type = "string")), functionArn = structure(logical(0), 
+        tags = list(type = "string")), name = structure(logical(0), 
+        tags = list(type = "string", pattern = "[_A-Za-z][_0-9A-Za-z]*")), 
+        description = structure(logical(0), tags = list(type = "string")), 
+        dataSourceName = structure(logical(0), tags = list(type = "string", 
+            pattern = "[_A-Za-z][_0-9A-Za-z]*")), requestMappingTemplate = structure(logical(0), 
+            tags = list(type = "string", max = 65536L, min = 1L)), 
+        responseMappingTemplate = structure(logical(0), tags = list(type = "string", 
+            max = 65536L, min = 1L)), functionVersion = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 
-        tags = list(type = "structure"))), tags = list(type = "list")), 
-        nextToken = structure(logical(0), tags = list(type = "string", 
-            pattern = "[\\\\S]+"))), tags = list(type = "structure"))
+        tags = list(type = "list")), nextToken = structure(logical(0), 
+        tags = list(type = "string", pattern = "[\\\\S]+"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -568,10 +747,50 @@ list_resolvers_output <- function (...)
         resolverArn = structure(logical(0), tags = list(type = "string")), 
         requestMappingTemplate = structure(logical(0), tags = list(type = "string", 
             max = 65536L, min = 1L)), responseMappingTemplate = structure(logical(0), 
-            tags = list(type = "string", max = 65536L, min = 1L))), 
-        tags = list(type = "structure"))), tags = list(type = "list")), 
-        nextToken = structure(logical(0), tags = list(type = "string", 
-            pattern = "[\\\\S]+"))), tags = list(type = "structure"))
+            tags = list(type = "string", max = 65536L, min = 1L)), 
+        kind = structure(logical(0), tags = list(type = "string", 
+            enum = c("UNIT", "PIPELINE"))), pipelineConfig = structure(list(functions = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure"))), 
+        tags = list(type = "list")), nextToken = structure(logical(0), 
+        tags = list(type = "string", pattern = "[\\\\S]+"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_resolvers_by_function_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(apiId = structure(logical(0), tags = list(location = "uri", 
+        locationName = "apiId", type = "string")), functionId = structure(logical(0), 
+        tags = list(location = "uri", locationName = "functionId", 
+            type = "string")), nextToken = structure(logical(0), 
+        tags = list(location = "querystring", locationName = "nextToken", 
+            type = "string", pattern = "[\\\\S]+")), maxResults = structure(logical(0), 
+        tags = list(location = "querystring", locationName = "maxResults", 
+            type = "integer", max = 25L, min = 0L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_resolvers_by_function_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(resolvers = structure(list(structure(list(typeName = structure(logical(0), 
+        tags = list(type = "string", pattern = "[_A-Za-z][_0-9A-Za-z]*")), 
+        fieldName = structure(logical(0), tags = list(type = "string", 
+            pattern = "[_A-Za-z][_0-9A-Za-z]*")), dataSourceName = structure(logical(0), 
+            tags = list(type = "string", pattern = "[_A-Za-z][_0-9A-Za-z]*")), 
+        resolverArn = structure(logical(0), tags = list(type = "string")), 
+        requestMappingTemplate = structure(logical(0), tags = list(type = "string", 
+            max = 65536L, min = 1L)), responseMappingTemplate = structure(logical(0), 
+            tags = list(type = "string", max = 65536L, min = 1L)), 
+        kind = structure(logical(0), tags = list(type = "string", 
+            enum = c("UNIT", "PIPELINE"))), pipelineConfig = structure(list(functions = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure"))), 
+        tags = list(type = "list")), nextToken = structure(logical(0), 
+        tags = list(type = "string", pattern = "[\\\\S]+"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -655,7 +874,7 @@ update_data_source_input <- function (...)
         description = structure(logical(0), tags = list(type = "string")), 
         type = structure(logical(0), tags = list(type = "string", 
             enum = c("AWS_LAMBDA", "AMAZON_DYNAMODB", "AMAZON_ELASTICSEARCH", 
-                "NONE", "HTTP"))), serviceRoleArn = structure(logical(0), 
+                "NONE", "HTTP", "RELATIONAL_DATABASE"))), serviceRoleArn = structure(logical(0), 
             tags = list(type = "string")), dynamodbConfig = structure(list(tableName = structure(logical(0), 
             tags = list(type = "string")), awsRegion = structure(logical(0), 
             tags = list(type = "string")), useCallerCredentials = structure(logical(0), 
@@ -666,8 +885,21 @@ update_data_source_input <- function (...)
             tags = list(type = "string")), awsRegion = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure")), 
         httpConfig = structure(list(endpoint = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))), 
-        tags = list(type = "structure"))
+            tags = list(type = "string")), authorizationConfig = structure(list(authorizationType = structure(logical(0), 
+            tags = list(type = "string", enum = "AWS_IAM")), 
+            awsIamConfig = structure(list(signingRegion = structure(logical(0), 
+                tags = list(type = "string")), signingServiceName = structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure")), 
+        relationalDatabaseConfig = structure(list(relationalDatabaseSourceType = structure(logical(0), 
+            tags = list(type = "string", enum = "RDS_HTTP_ENDPOINT")), 
+            rdsHttpEndpointConfig = structure(list(awsRegion = structure(logical(0), 
+                tags = list(type = "string")), dbClusterIdentifier = structure(logical(0), 
+                tags = list(type = "string")), databaseName = structure(logical(0), 
+                tags = list(type = "string")), schema = structure(logical(0), 
+                tags = list(type = "string")), awsSecretStoreArn = structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -680,7 +912,7 @@ update_data_source_output <- function (...)
         description = structure(logical(0), tags = list(type = "string")), 
         type = structure(logical(0), tags = list(type = "string", 
             enum = c("AWS_LAMBDA", "AMAZON_DYNAMODB", "AMAZON_ELASTICSEARCH", 
-                "NONE", "HTTP"))), serviceRoleArn = structure(logical(0), 
+                "NONE", "HTTP", "RELATIONAL_DATABASE"))), serviceRoleArn = structure(logical(0), 
             tags = list(type = "string")), dynamodbConfig = structure(list(tableName = structure(logical(0), 
             tags = list(type = "string")), awsRegion = structure(logical(0), 
             tags = list(type = "string")), useCallerCredentials = structure(logical(0), 
@@ -691,8 +923,58 @@ update_data_source_output <- function (...)
             tags = list(type = "string")), awsRegion = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure")), 
         httpConfig = structure(list(endpoint = structure(logical(0), 
+            tags = list(type = "string")), authorizationConfig = structure(list(authorizationType = structure(logical(0), 
+            tags = list(type = "string", enum = "AWS_IAM")), 
+            awsIamConfig = structure(list(signingRegion = structure(logical(0), 
+                tags = list(type = "string")), signingServiceName = structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure")), 
+        relationalDatabaseConfig = structure(list(relationalDatabaseSourceType = structure(logical(0), 
+            tags = list(type = "string", enum = "RDS_HTTP_ENDPOINT")), 
+            rdsHttpEndpointConfig = structure(list(awsRegion = structure(logical(0), 
+                tags = list(type = "string")), dbClusterIdentifier = structure(logical(0), 
+                tags = list(type = "string")), databaseName = structure(logical(0), 
+                tags = list(type = "string")), schema = structure(logical(0), 
+                tags = list(type = "string")), awsSecretStoreArn = structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+update_function_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(apiId = structure(logical(0), tags = list(location = "uri", 
+        locationName = "apiId", type = "string")), name = structure(logical(0), 
+        tags = list(type = "string", pattern = "[_A-Za-z][_0-9A-Za-z]*")), 
+        description = structure(logical(0), tags = list(type = "string")), 
+        functionId = structure(logical(0), tags = list(location = "uri", 
+            locationName = "functionId", type = "string", pattern = "[_A-Za-z][_0-9A-Za-z]*")), 
+        dataSourceName = structure(logical(0), tags = list(type = "string", 
+            pattern = "[_A-Za-z][_0-9A-Za-z]*")), requestMappingTemplate = structure(logical(0), 
+            tags = list(type = "string", max = 65536L, min = 1L)), 
+        responseMappingTemplate = structure(logical(0), tags = list(type = "string", 
+            max = 65536L, min = 1L)), functionVersion = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+update_function_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(functionConfiguration = structure(list(functionId = structure(logical(0), 
+        tags = list(type = "string")), functionArn = structure(logical(0), 
+        tags = list(type = "string")), name = structure(logical(0), 
+        tags = list(type = "string", pattern = "[_A-Za-z][_0-9A-Za-z]*")), 
+        description = structure(logical(0), tags = list(type = "string")), 
+        dataSourceName = structure(logical(0), tags = list(type = "string", 
+            pattern = "[_A-Za-z][_0-9A-Za-z]*")), requestMappingTemplate = structure(logical(0), 
+            tags = list(type = "string", max = 65536L, min = 1L)), 
+        responseMappingTemplate = structure(logical(0), tags = list(type = "string", 
+            max = 65536L, min = 1L)), functionVersion = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 
-        tags = list(type = "structure"))), tags = list(type = "structure"))
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -763,7 +1045,11 @@ update_resolver_input <- function (...)
             pattern = "[_A-Za-z][_0-9A-Za-z]*")), requestMappingTemplate = structure(logical(0), 
             tags = list(type = "string", max = 65536L, min = 1L)), 
         responseMappingTemplate = structure(logical(0), tags = list(type = "string", 
-            max = 65536L, min = 1L))), tags = list(type = "structure"))
+            max = 65536L, min = 1L)), kind = structure(logical(0), 
+            tags = list(type = "string", enum = c("UNIT", "PIPELINE"))), 
+        pipelineConfig = structure(list(functions = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -778,8 +1064,12 @@ update_resolver_output <- function (...)
         resolverArn = structure(logical(0), tags = list(type = "string")), 
         requestMappingTemplate = structure(logical(0), tags = list(type = "string", 
             max = 65536L, min = 1L)), responseMappingTemplate = structure(logical(0), 
-            tags = list(type = "string", max = 65536L, min = 1L))), 
-        tags = list(type = "structure"))), tags = list(type = "structure"))
+            tags = list(type = "string", max = 65536L, min = 1L)), 
+        kind = structure(logical(0), tags = list(type = "string", 
+            enum = c("UNIT", "PIPELINE"))), pipelineConfig = structure(list(functions = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 

@@ -12,35 +12,37 @@ modify_listener(ListenerArn, Port = NULL, Protocol = NULL,
 
 \item{Port}{The port for connections from clients to the load balancer.}
 
-\item{Protocol}{The protocol for connections from clients to the load balancer. Application Load Balancers support HTTP and HTTPS and Network Load Balancers support TCP.}
+\item{Protocol}{The protocol for connections from clients to the load balancer. Application Load Balancers support the HTTP and HTTPS protocols. Network Load Balancers support the TCP and TLS protocols.}
 
-\item{SslPolicy}{[HTTPS listeners] The security policy that defines which protocols and ciphers are supported. For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies}{Security Policies} in the \emph{Application Load Balancers Guide}.}
+\item{SslPolicy}{[HTTPS and TLS listeners] The security policy that defines which protocols and ciphers are supported. For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies}{Security Policies} in the \emph{Application Load Balancers Guide}.}
 
-\item{Certificates}{[HTTPS listeners] The default SSL server certificate. You must provide exactly one default certificate. To create a certificate list, use AddListenerCertificates.}
+\item{Certificates}{[HTTPS and TLS listeners] The default SSL server certificate. You must provide exactly one certificate. Set \code{CertificateArn} to the certificate ARN but do not set \code{IsDefault}.
+
+To create a certificate list, use AddListenerCertificates.}
 
 \item{DefaultActions}{The actions for the default rule. The rule must include one forward action or one or more fixed-response actions.
 
-If the action type is \code{forward}, you can specify a single target group. The protocol of the target group must be HTTP or HTTPS for an Application Load Balancer or TCP for a Network Load Balancer.
+If the action type is \code{forward}, you specify a target group. The protocol of the target group must be HTTP or HTTPS for an Application Load Balancer. The protocol of the target group must be TCP or TLS for a Network Load Balancer.
 
-[HTTPS listener] If the action type is \code{authenticate-oidc}, you can use an identity provider that is OpenID Connect (OIDC) compliant to authenticate users as they access your application.
+[HTTPS listeners] If the action type is \code{authenticate-oidc}, you authenticate users through an identity provider that is OpenID Connect (OIDC) compliant.
 
-[HTTPS listener] If the action type is \code{authenticate-cognito}, you can use Amazon Cognito to authenticate users as they access your application.
+[HTTPS listeners] If the action type is \code{authenticate-cognito}, you authenticate users through the user pools supported by Amazon Cognito.
 
-[Application Load Balancer] If the action type is \code{redirect}, you can redirect HTTP and HTTPS requests.
+[Application Load Balancer] If the action type is \code{redirect}, you redirect specified client requests from one URL to another.
 
-[Application Load Balancer] If the action type is \code{fixed-response}, you can return a custom HTTP response.}
+[Application Load Balancer] If the action type is \code{fixed-response}, you drop specified client requests and return a custom HTTP response.}
 }
 \description{
 Modifies the specified properties of the specified listener.
 }
 \details{
-Any properties that you do not specify retain their current values. However, changing the protocol from HTTPS to HTTP removes the security policy and SSL certificate properties. If you change the protocol from HTTP to HTTPS, you must add the security policy and server certificate.
+Any properties that you do not specify retain their current values. However, changing the protocol from HTTPS to HTTP, or from TLS to TCP, removes the security policy and server certificate properties. If you change the protocol from HTTP to HTTPS, or from TCP to TLS, you must add the security policy and server certificate properties.
 }
 \section{Accepted Parameters}{
 \preformatted{modify_listener(
   ListenerArn = "string",
   Port = 123,
-  Protocol = "HTTP"|"HTTPS"|"TCP",
+  Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS",
   SslPolicy = "string",
   Certificates = list(
     list(

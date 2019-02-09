@@ -4,11 +4,7 @@
 \alias{get_authorizers}
 \title{Gets the Authorizers for an API}
 \usage{
-get_authorizers(
-  ApiId = "string",
-  MaxResults = "string",
-  NextToken = "string"
-)
+get_authorizers(ApiId, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -20,6 +16,12 @@ get_authorizers(
 \description{
 Gets the Authorizers for an API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_authorizers(
+  ApiId = "string",
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
+}
+

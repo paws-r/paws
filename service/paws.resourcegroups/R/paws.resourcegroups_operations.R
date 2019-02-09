@@ -13,7 +13,7 @@ NULL
 #'   Name = "string",
 #'   Description = "string",
 #'   ResourceQuery = list(
-#'     Type = "TAG_FILTERS_1_0",
+#'     Type = "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",
 #'     Query = "string"
 #'   ),
 #'   Tags = list(
@@ -212,7 +212,7 @@ list_group_resources <- function (GroupName, Filters = NULL,
 #'
 #' @param Filters Filters, formatted as GroupFilter objects, that you want to apply to a ListGroups operation.
 #' 
-#' -   `group-type` - Filter groups by resource type. Specify up to five group types in the format AWS::ServiceCode::ResourceType. For example, AWS::EC2::Instance, or AWS::S3::Bucket.
+#' -   `resource-type` - Filter groups by resource type. Specify up to five resource types in the format AWS::ServiceCode::ResourceType. For example, AWS::EC2::Instance, or AWS::S3::Bucket.
 #' @param MaxResults The maximum number of resource group results that are returned by ListGroups in paginated output. By default, this number is 50.
 #' @param NextToken The NextToken value that is returned in a paginated `ListGroups` request. To get the next page of results, run the call again, add the NextToken parameter, and specify the NextToken value.
 #'
@@ -238,7 +238,7 @@ list_groups <- function (Filters = NULL, MaxResults = NULL, NextToken = NULL)
 #' ```
 #' search_resources(
 #'   ResourceQuery = list(
-#'     Type = "TAG_FILTERS_1_0",
+#'     Type = "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",
 #'     Query = "string"
 #'   ),
 #'   MaxResults = 123,
@@ -362,7 +362,7 @@ update_group <- function (GroupName, Description = NULL)
 #' update_group_query(
 #'   GroupName = "string",
 #'   ResourceQuery = list(
-#'     Type = "TAG_FILTERS_1_0",
+#'     Type = "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",
 #'     Query = "string"
 #'   )
 #' )

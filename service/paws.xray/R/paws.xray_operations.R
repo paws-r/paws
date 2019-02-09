@@ -33,6 +33,34 @@ batch_get_traces <- function (TraceIds, NextToken = NULL)
     return(response)
 }
 
+#' Creates a group resource with a name and a filter expression
+#'
+#' Creates a group resource with a name and a filter expression.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' create_group(
+#'   GroupName = "string",
+#'   FilterExpression = "string"
+#' )
+#' ```
+#'
+#' @param GroupName &#91;required&#93; The case-sensitive name of the new group. Default is a reserved name and names must be unique.
+#' @param FilterExpression The filter expression defining criteria by which to group traces.
+#'
+#' @export
+create_group <- function (GroupName, FilterExpression = NULL) 
+{
+    op <- new_operation(name = "CreateGroup", http_method = "POST", 
+        http_path = "/CreateGroup", paginator = list())
+    input <- create_group_input(GroupName = GroupName, FilterExpression = FilterExpression)
+    output <- create_group_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Creates a rule to control sampling behavior for instrumented applications
 #'
 #' Creates a rule to control sampling behavior for instrumented applications. Services retrieve rules with GetSamplingRules, and evaluate each rule in ascending order of *priority* for each request. If a rule matches, the service records a trace, borrowing it from the reservoir size. After 10 seconds, the service reports back to X-Ray with GetSamplingTargets to get updated versions of each in-use rule. The updated rule contains a trace quota that the service can use instead of borrowing from the reservoir.
@@ -69,6 +97,34 @@ create_sampling_rule <- function (SamplingRule)
         http_path = "/CreateSamplingRule", paginator = list())
     input <- create_sampling_rule_input(SamplingRule = SamplingRule)
     output <- create_sampling_rule_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes a group resource
+#'
+#' Deletes a group resource.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_group(
+#'   GroupName = "string",
+#'   GroupARN = "string"
+#' )
+#' ```
+#'
+#' @param GroupName The case-sensitive name of the group.
+#' @param GroupARN The ARN of the group that was generated on creation.
+#'
+#' @export
+delete_group <- function (GroupName = NULL, GroupARN = NULL) 
+{
+    op <- new_operation(name = "DeleteGroup", http_method = "POST", 
+        http_path = "/DeleteGroup", paginator = list())
+    input <- delete_group_input(GroupName = GroupName, GroupARN = GroupARN)
+    output <- delete_group_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -120,6 +176,60 @@ get_encryption_config <- function ()
         http_path = "/EncryptionConfig", paginator = list())
     input <- get_encryption_config_input()
     output <- get_encryption_config_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves group resource details
+#'
+#' Retrieves group resource details.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' get_group(
+#'   GroupName = "string",
+#'   GroupARN = "string"
+#' )
+#' ```
+#'
+#' @param GroupName The case-sensitive name of the group.
+#' @param GroupARN The ARN of the group that was generated on creation.
+#'
+#' @export
+get_group <- function (GroupName = NULL, GroupARN = NULL) 
+{
+    op <- new_operation(name = "GetGroup", http_method = "POST", 
+        http_path = "/GetGroup", paginator = list())
+    input <- get_group_input(GroupName = GroupName, GroupARN = GroupARN)
+    output <- get_group_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves all active group details
+#'
+#' Retrieves all active group details.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' get_groups(
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @param NextToken Pagination token. Not used.
+#'
+#' @export
+get_groups <- function (NextToken = NULL) 
+{
+    op <- new_operation(name = "GetGroups", http_method = "POST", 
+        http_path = "/Groups", paginator = list())
+    input <- get_groups_input(NextToken = NextToken)
+    output <- get_groups_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -223,21 +333,26 @@ get_sampling_targets <- function (SamplingStatisticsDocuments)
 #' get_service_graph(
 #'   StartTime = as.POSIXct("2015-01-01"),
 #'   EndTime = as.POSIXct("2015-01-01"),
+#'   GroupName = "string",
+#'   GroupARN = "string",
 #'   NextToken = "string"
 #' )
 #' ```
 #'
 #' @param StartTime &#91;required&#93; The start of the time frame for which to generate a graph.
-#' @param EndTime &#91;required&#93; The end of the time frame for which to generate a graph.
+#' @param EndTime &#91;required&#93; The end of the timeframe for which to generate a graph.
+#' @param GroupName The name of a group to generate a graph based on.
+#' @param GroupARN The ARN of a group to generate a graph based on.
 #' @param NextToken Pagination token. Not used.
 #'
 #' @export
-get_service_graph <- function (StartTime, EndTime, NextToken = NULL) 
+get_service_graph <- function (StartTime, EndTime, GroupName = NULL, 
+    GroupARN = NULL, NextToken = NULL) 
 {
     op <- new_operation(name = "GetServiceGraph", http_method = "POST", 
         http_path = "/ServiceGraph", paginator = list())
     input <- get_service_graph_input(StartTime = StartTime, EndTime = EndTime, 
-        NextToken = NextToken)
+        GroupName = GroupName, GroupARN = GroupARN, NextToken = NextToken)
     output <- get_service_graph_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -456,6 +571,38 @@ put_trace_segments <- function (TraceSegmentDocuments)
         http_path = "/TraceSegments", paginator = list())
     input <- put_trace_segments_input(TraceSegmentDocuments = TraceSegmentDocuments)
     output <- put_trace_segments_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates a group resource
+#'
+#' Updates a group resource.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' update_group(
+#'   GroupName = "string",
+#'   GroupARN = "string",
+#'   FilterExpression = "string"
+#' )
+#' ```
+#'
+#' @param GroupName The case-sensitive name of the group.
+#' @param GroupARN The ARN that was generated upon creation.
+#' @param FilterExpression The updated filter expression defining criteria by which to group traces.
+#'
+#' @export
+update_group <- function (GroupName = NULL, GroupARN = NULL, 
+    FilterExpression = NULL) 
+{
+    op <- new_operation(name = "UpdateGroup", http_method = "POST", 
+        http_path = "/UpdateGroup", paginator = list())
+    input <- update_group_input(GroupName = GroupName, GroupARN = GroupARN, 
+        FilterExpression = FilterExpression)
+    output <- update_group_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)

@@ -4,10 +4,7 @@
 \alias{delete_cluster}
 \title{Deletes the MSK cluster specified by the Amazon Resource Name (ARN) in the request}
 \usage{
-delete_cluster(
-  ClusterArn = "string",
-  CurrentVersion = "string"
-)
+delete_cluster(ClusterArn, CurrentVersion = NULL)
 }
 \arguments{
 \item{ClusterArn}{[required] The Amazon Resource Name (ARN) that uniquely identifies the cluster.}
@@ -17,6 +14,11 @@ delete_cluster(
 \description{
 Deletes the MSK cluster specified by the Amazon Resource Name (ARN) in the request.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_cluster(
+  ClusterArn = "string",
+  CurrentVersion = "string"
+)
 }
+}
+

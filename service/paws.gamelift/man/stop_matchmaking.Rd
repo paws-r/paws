@@ -13,7 +13,6 @@ stop_matchmaking(TicketId)
 Cancels a matchmaking ticket that is currently being processed. To stop the matchmaking operation, specify the ticket ID. If successful, work on the ticket is stopped, and the ticket status is changed to \code{CANCELLED}.
 }
 \details{
-Matchmaking-related operations include:
 \itemize{
 \item StartMatchmaking
 \item DescribeMatchmaking

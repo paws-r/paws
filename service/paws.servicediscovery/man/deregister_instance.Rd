@@ -2,7 +2,7 @@
 % Please edit documentation in R/paws.servicediscovery_operations.R
 \name{deregister_instance}
 \alias{deregister_instance}
-\title{Deletes the records and the health check, if any, that Amazon Route 53 created for the specified instance}
+\title{Deletes the Amazon Route 53 DNS records and health check, if any, that AWS Cloud Map created for the specified instance}
 \usage{
 deregister_instance(ServiceId, InstanceId)
 }
@@ -12,7 +12,7 @@ deregister_instance(ServiceId, InstanceId)
 \item{InstanceId}{[required] The value that you specified for \code{Id} in the RegisterInstance request.}
 }
 \description{
-Deletes the records and the health check, if any, that Amazon Route 53 created for the specified instance.
+Deletes the Amazon Route 53 DNS records and health check, if any, that AWS Cloud Map created for the specified instance.
 }
 \section{Accepted Parameters}{
 \preformatted{deregister_instance(

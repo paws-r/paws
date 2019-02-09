@@ -9,7 +9,7 @@ get_deployment_status(DeploymentId, GroupId)
 \arguments{
 \item{DeploymentId}{[required] The ID of the deployment.}
 
-\item{GroupId}{[required] The ID of the AWS Greengrass group.}
+\item{GroupId}{[required] The ID of the Greengrass group.}
 }
 \description{
 Returns the status of a deployment.

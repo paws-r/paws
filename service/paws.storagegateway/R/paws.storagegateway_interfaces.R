@@ -112,6 +112,31 @@ add_working_storage_output <- function (...)
     return(populate(args, shape))
 }
 
+attach_volume_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(GatewayARN = structure(logical(0), 
+        tags = list(type = "string", max = 500L, min = 50L)), 
+        TargetName = structure(logical(0), tags = list(type = "string", 
+            max = 200L, min = 1L, pattern = "^[-\\.;a-z0-9]+$")), 
+        VolumeARN = structure(logical(0), tags = list(type = "string", 
+            max = 500L, min = 50L)), NetworkInterfaceId = structure(logical(0), 
+            tags = list(type = "string", pattern = "\\A(25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)(\\.(25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)){3}\\z")), 
+        DiskId = structure(logical(0), tags = list(type = "string", 
+            max = 300L, min = 1L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+attach_volume_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(VolumeARN = structure(logical(0), 
+        tags = list(type = "string", max = 500L, min = 50L)), 
+        TargetARN = structure(logical(0), tags = list(type = "string", 
+            max = 800L, min = 50L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 cancel_archival_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -604,10 +629,12 @@ describe_cachedi_scsi_volumes_output <- function (...)
             max = 30L, min = 12L)), VolumeType = structure(logical(0), 
             tags = list(type = "string", max = 100L, min = 3L)), 
         VolumeStatus = structure(logical(0), tags = list(type = "string", 
-            max = 50L, min = 3L)), VolumeSizeInBytes = structure(logical(0), 
-            tags = list(type = "long")), VolumeProgress = structure(logical(0), 
-            tags = list(type = "double")), SourceSnapshotId = structure(logical(0), 
-            tags = list(type = "string", pattern = "\\Asnap-([0-9A-Fa-f]{8}|[0-9A-Fa-f]{17})\\z")), 
+            max = 50L, min = 3L)), VolumeAttachmentStatus = structure(logical(0), 
+            tags = list(type = "string", max = 50L, min = 3L)), 
+        VolumeSizeInBytes = structure(logical(0), tags = list(type = "long")), 
+        VolumeProgress = structure(logical(0), tags = list(type = "double")), 
+        SourceSnapshotId = structure(logical(0), tags = list(type = "string", 
+            pattern = "\\Asnap-([0-9A-Fa-f]{8}|[0-9A-Fa-f]{17})\\z")), 
         VolumeiSCSIAttributes = structure(list(TargetARN = structure(logical(0), 
             tags = list(type = "string", max = 800L, min = 50L)), 
             NetworkInterfaceId = structure(logical(0), tags = list(type = "string", 
@@ -619,7 +646,9 @@ describe_cachedi_scsi_volumes_output <- function (...)
         CreatedDate = structure(logical(0), tags = list(type = "timestamp")), 
         VolumeUsedInBytes = structure(logical(0), tags = list(type = "long")), 
         KMSKey = structure(logical(0), tags = list(type = "string", 
-            max = 2048L, min = 20L))), tags = list(type = "structure"))), 
+            max = 2048L, min = 20L)), TargetName = structure(logical(0), 
+            tags = list(type = "string", max = 200L, min = 1L, 
+                pattern = "^[-\\.;a-z0-9]+$"))), tags = list(type = "structure"))), 
         tags = list(type = "list"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -812,7 +841,7 @@ describe_smb_settings_output <- function (...)
     shape <- structure(list(GatewayARN = structure(logical(0), 
         tags = list(type = "string", max = 500L, min = 50L)), 
         DomainName = structure(logical(0), tags = list(type = "string", 
-            pattern = "^([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}$")), 
+            max = 1024L, min = 1L, pattern = "^([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}$")), 
         SMBGuestPasswordSet = structure(logical(0), tags = list(type = "boolean"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
@@ -860,12 +889,13 @@ describe_storedi_scsi_volumes_output <- function (...)
             max = 30L, min = 12L)), VolumeType = structure(logical(0), 
             tags = list(type = "string", max = 100L, min = 3L)), 
         VolumeStatus = structure(logical(0), tags = list(type = "string", 
-            max = 50L, min = 3L)), VolumeSizeInBytes = structure(logical(0), 
-            tags = list(type = "long")), VolumeProgress = structure(logical(0), 
-            tags = list(type = "double")), VolumeDiskId = structure(logical(0), 
-            tags = list(type = "string", max = 300L, min = 1L)), 
-        SourceSnapshotId = structure(logical(0), tags = list(type = "string", 
-            pattern = "\\Asnap-([0-9A-Fa-f]{8}|[0-9A-Fa-f]{17})\\z")), 
+            max = 50L, min = 3L)), VolumeAttachmentStatus = structure(logical(0), 
+            tags = list(type = "string", max = 50L, min = 3L)), 
+        VolumeSizeInBytes = structure(logical(0), tags = list(type = "long")), 
+        VolumeProgress = structure(logical(0), tags = list(type = "double")), 
+        VolumeDiskId = structure(logical(0), tags = list(type = "string", 
+            max = 300L, min = 1L)), SourceSnapshotId = structure(logical(0), 
+            tags = list(type = "string", pattern = "\\Asnap-([0-9A-Fa-f]{8}|[0-9A-Fa-f]{17})\\z")), 
         PreservedExistingData = structure(logical(0), tags = list(type = "boolean")), 
         VolumeiSCSIAttributes = structure(list(TargetARN = structure(logical(0), 
             tags = list(type = "string", max = 800L, min = 50L)), 
@@ -878,7 +908,9 @@ describe_storedi_scsi_volumes_output <- function (...)
         CreatedDate = structure(logical(0), tags = list(type = "timestamp")), 
         VolumeUsedInBytes = structure(logical(0), tags = list(type = "long")), 
         KMSKey = structure(logical(0), tags = list(type = "string", 
-            max = 2048L, min = 20L))), tags = list(type = "structure"))), 
+            max = 2048L, min = 20L)), TargetName = structure(logical(0), 
+            tags = list(type = "string", max = 200L, min = 1L, 
+                pattern = "^[-\\.;a-z0-9]+$"))), tags = list(type = "structure"))), 
         tags = list(type = "list"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -1060,6 +1092,25 @@ describe_working_storage_output <- function (...)
     return(populate(args, shape))
 }
 
+detach_volume_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(VolumeARN = structure(logical(0), 
+        tags = list(type = "string", max = 500L, min = 50L)), 
+        ForceDetach = structure(logical(0), tags = list(type = "boolean"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+detach_volume_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(VolumeARN = structure(logical(0), 
+        tags = list(type = "string", max = 500L, min = 50L))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 disable_gateway_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -1084,11 +1135,15 @@ join_domain_input <- function (...)
     shape <- structure(list(GatewayARN = structure(logical(0), 
         tags = list(type = "string", max = 500L, min = 50L)), 
         DomainName = structure(logical(0), tags = list(type = "string", 
-            pattern = "^([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}$")), 
-        UserName = structure(logical(0), tags = list(type = "string", 
-            pattern = "^\\w[\\w\\.\\- ]*$")), Password = structure(logical(0), 
-            tags = list(type = "string", pattern = "^[ -~]+$", 
-                sensitive = TRUE))), tags = list(type = "structure"))
+            max = 1024L, min = 1L, pattern = "^([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}$")), 
+        OrganizationalUnit = structure(logical(0), tags = list(type = "string", 
+            max = 1024L, min = 1L)), DomainControllers = structure(list(structure(logical(0), 
+            tags = list(type = "string", pattern = "^(([a-zA-Z0-9\\-]*[a-zA-Z0-9])\\.)*([A-Za-z0-9\\-]*[A-Za-z0-9])(:(\\d+))?$"))), 
+            tags = list(type = "list")), UserName = structure(logical(0), 
+            tags = list(type = "string", max = 1024L, min = 1L, 
+                pattern = "^\\w[\\w\\.\\- ]*$")), Password = structure(logical(0), 
+            tags = list(type = "string", max = 1024L, min = 1L, 
+                pattern = "^[ -~]+$", sensitive = TRUE))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1179,8 +1234,11 @@ list_local_disks_output <- function (...)
             DiskSizeInBytes = structure(logical(0), tags = list(type = "long")), 
             DiskAllocationType = structure(logical(0), tags = list(type = "string", 
                 max = 100L, min = 3L)), DiskAllocationResource = structure(logical(0), 
-                tags = list(type = "string"))), tags = list(type = "structure"))), 
-            tags = list(type = "list"))), tags = list(type = "structure"))
+                tags = list(type = "string")), DiskAttributeList = structure(list(structure(logical(0), 
+                tags = list(type = "string", max = 64L, min = 1L))), 
+                tags = list(type = "list", max = 10L, min = 0L))), 
+            tags = list(type = "structure"))), tags = list(type = "list"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1305,9 +1363,10 @@ list_volumes_output <- function (...)
             GatewayId = structure(logical(0), tags = list(type = "string", 
                 max = 30L, min = 12L)), VolumeType = structure(logical(0), 
                 tags = list(type = "string", max = 100L, min = 3L)), 
-            VolumeSizeInBytes = structure(logical(0), tags = list(type = "long"))), 
-            tags = list(type = "structure"))), tags = list(type = "list"))), 
-        tags = list(type = "structure"))
+            VolumeSizeInBytes = structure(logical(0), tags = list(type = "long")), 
+            VolumeAttachmentStatus = structure(logical(0), tags = list(type = "string", 
+                max = 50L, min = 3L))), tags = list(type = "structure"))), 
+            tags = list(type = "list"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 

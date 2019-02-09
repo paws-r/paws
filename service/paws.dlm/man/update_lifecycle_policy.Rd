@@ -42,6 +42,7 @@ Updates the specified lifecycle policy.
     Schedules = list(
       list(
         Name = "string",
+        CopyTags = TRUE|FALSE,
         TagsToAdd = list(
           list(
             Key = "string",

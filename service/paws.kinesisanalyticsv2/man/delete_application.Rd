@@ -4,10 +4,7 @@
 \alias{delete_application}
 \title{Deletes the specified application}
 \usage{
-delete_application(
-  ApplicationName = "string",
-  CreateTimestamp = as.POSIXct("2015-01-01")
-)
+delete_application(ApplicationName, CreateTimestamp)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application to delete.}
@@ -17,6 +14,11 @@ delete_application(
 \description{
 Deletes the specified application. Kinesis Data Analytics halts application execution and deletes the application.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_application(
+  ApplicationName = "string",
+  CreateTimestamp = as.POSIXct("2015-01-01")
+)
 }
+}
+

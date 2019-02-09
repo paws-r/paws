@@ -19,8 +19,6 @@ Retrieves fleet properties, including metadata, status, and configuration, for o
 }
 \details{
 Some API actions may limit the number of fleet IDs allowed in one request. If a request exceeds this limit, the request fails and the error message includes the maximum allowed.
-
-Fleet-related operations include:
 \itemize{
 \item CreateFleet
 \item ListFleets

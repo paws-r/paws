@@ -4,10 +4,7 @@
 \alias{delete_robot_application}
 \title{Deletes a robot application}
 \usage{
-delete_robot_application(
-  application = "string",
-  applicationVersion = "string"
-)
+delete_robot_application(application, applicationVersion = NULL)
 }
 \arguments{
 \item{application}{[required] The Amazon Resource Name (ARN) of the the robot application.}
@@ -17,6 +14,11 @@ delete_robot_application(
 \description{
 Deletes a robot application.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_robot_application(
+  application = "string",
+  applicationVersion = "string"
+)
 }
+}
+

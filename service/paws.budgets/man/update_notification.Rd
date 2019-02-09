@@ -12,7 +12,7 @@ update_notification(AccountId, BudgetName, OldNotification,
 
 \item{BudgetName}{[required] The name of the budget whose notification you want to update.}
 
-\item{OldNotification}{[required] The previous notification associated with a budget.}
+\item{OldNotification}{[required] The previous notification that is associated with a budget.}
 
 \item{NewNotification}{[required] The updated notification to be associated with a budget.}
 }
@@ -27,13 +27,15 @@ Updates a notification.
     NotificationType = "ACTUAL"|"FORECASTED",
     ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
     Threshold = 123.0,
-    ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
+    ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
+    NotificationState = "OK"|"ALARM"
   ),
   NewNotification = list(
     NotificationType = "ACTUAL"|"FORECASTED",
     ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
     Threshold = 123.0,
-    ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
+    ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
+    NotificationState = "OK"|"ALARM"
   )
 )
 }

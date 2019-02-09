@@ -137,8 +137,8 @@ Constraints to the amount of storage for each storage type are the following:
 
 Constraints to the amount of storage for each storage type are the following:
 \itemize{
-\item General Purpose (SSD) storage (gp2): Must be an integer from 20 to 16384.
-\item Provisioned IOPS storage (io1): Must be an integer from 100 to 16384.
+\item General Purpose (SSD) storage (gp2): Must be an integer from 20 to 32768.
+\item Provisioned IOPS storage (io1): Must be an integer from 100 to 32768.
 \item Magnetic storage (standard): Must be an integer from 10 to 3072.
 }
 
@@ -272,7 +272,7 @@ Constraints: Must contain from 8 to 128 characters.}
 
 Default: The default DB security group for the database engine.}
 
-\item{VpcSecurityGroupIds}{A list of EC2 VPC security groups to associate with this DB instance.
+\item{VpcSecurityGroupIds}{A list of Amazon EC2 VPC security groups to associate with this DB instance.
 
 \strong{Amazon Aurora}
 
@@ -387,7 +387,7 @@ Valid Values: \code{1150-65535}
 
 Type: Integer}
 
-\item{MultiAZ}{Specifies if the DB instance is a Multi-AZ deployment. You can't set the AvailabilityZone parameter if the MultiAZ parameter is set to true.}
+\item{MultiAZ}{A value that specifies whether the DB instance is a Multi-AZ deployment. You can't set the AvailabilityZone parameter if the MultiAZ parameter is set to true.}
 
 \item{EngineVersion}{The version number of the database engine to use.
 

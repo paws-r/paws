@@ -4,7 +4,23 @@
 \alias{get_findings}
 \title{Lists and describes Security Hub-aggregated findings that are specified by filter attributes}
 \usage{
-get_findings(
+get_findings(Filters = NULL, SortCriteria = NULL, NextToken = NULL,
+  MaxResults = NULL)
+}
+\arguments{
+\item{Filters}{A collection of attributes that is use for querying findings.}
+
+\item{SortCriteria}{A collection of attributes used for sorting findings.}
+
+\item{NextToken}{Paginates results. Set the value of this parameter to NULL on your first call to the GetFindings operation. For subsequent calls to the operation, fill nextToken in the request with the value of nextToken from the previous response to continue listing data.}
+
+\item{MaxResults}{Indicates the maximum number of items that you want in the response.}
+}
+\description{
+Lists and describes Security Hub-aggregated findings that are specified by filter attributes.
+}
+\section{Accepted Parameters}{
+\preformatted{get_findings(
   Filters = list(
     ProductArn = list(
       list(
@@ -564,18 +580,5 @@ get_findings(
   MaxResults = 123
 )
 }
-\arguments{
-\item{Filters}{A collection of attributes that is use for querying findings.}
-
-\item{SortCriteria}{A collection of attributes used for sorting findings.}
-
-\item{NextToken}{Paginates results. Set the value of this parameter to NULL on your first call to the GetFindings operation. For subsequent calls to the operation, fill nextToken in the request with the value of nextToken from the previous response to continue listing data.}
-
-\item{MaxResults}{Indicates the maximum number of items that you want in the response.}
 }
-\description{
-Lists and describes Security Hub-aggregated findings that are specified by filter attributes.
-}
-\examples{
 
-}

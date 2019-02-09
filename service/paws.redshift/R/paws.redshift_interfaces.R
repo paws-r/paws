@@ -128,8 +128,100 @@ authorize_snapshot_access_output <- function (...)
         tags = list(locationName = "NodeType", type = "string"))), 
         tags = list(locationNameList = "NodeType", type = "list")), 
         EnhancedVpcRouting = structure(logical(0), tags = list(type = "boolean")), 
-        MaintenanceTrackName = structure(logical(0), tags = list(type = "string"))), 
-        tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure"))
+        MaintenanceTrackName = structure(logical(0), tags = list(type = "string")), 
+        ManualSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), ManualSnapshotRemainingDays = structure(logical(0), 
+            tags = list(type = "integer")), SnapshotRetentionStartTime = structure(logical(0), 
+            tags = list(type = "timestamp"))), tags = list(type = "structure", 
+        wrapper = TRUE))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+batch_delete_cluster_snapshots_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Identifiers = structure(list(structure(list(SnapshotIdentifier = structure(logical(0), 
+        tags = list(type = "string")), SnapshotClusterIdentifier = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(locationName = "DeleteClusterSnapshotMessage", 
+        type = "structure"))), tags = list(locationNameList = "DeleteClusterSnapshotMessage", 
+        type = "list"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+batch_delete_cluster_snapshots_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Resources = structure(list(structure(logical(0), 
+        tags = list(locationName = "String", type = "string"))), 
+        tags = list(locationNameList = "String", type = "list")), 
+        Errors = structure(list(structure(list(SnapshotIdentifier = structure(logical(0), 
+            tags = list(type = "string")), SnapshotClusterIdentifier = structure(logical(0), 
+            tags = list(type = "string")), FailureCode = structure(logical(0), 
+            tags = list(type = "string")), FailureReason = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(locationName = "SnapshotErrorMessage", 
+            type = "structure"))), tags = list(locationNameList = "SnapshotErrorMessage", 
+            type = "list"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+batch_modify_cluster_snapshots_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(SnapshotIdentifierList = structure(list(structure(logical(0), 
+        tags = list(locationName = "String", type = "string"))), 
+        tags = list(locationNameList = "String", type = "list")), 
+        ManualSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), Force = structure(logical(0), 
+            tags = list(type = "boolean"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+batch_modify_cluster_snapshots_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Resources = structure(list(structure(logical(0), 
+        tags = list(locationName = "String", type = "string"))), 
+        tags = list(locationNameList = "String", type = "list")), 
+        Errors = structure(list(structure(list(SnapshotIdentifier = structure(logical(0), 
+            tags = list(type = "string")), SnapshotClusterIdentifier = structure(logical(0), 
+            tags = list(type = "string")), FailureCode = structure(logical(0), 
+            tags = list(type = "string")), FailureReason = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(locationName = "SnapshotErrorMessage", 
+            type = "structure"))), tags = list(locationNameList = "SnapshotErrorMessage", 
+            type = "list"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+cancel_resize_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(ClusterIdentifier = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+cancel_resize_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(TargetNodeType = structure(logical(0), 
+        tags = list(type = "string")), TargetNumberOfNodes = structure(logical(0), 
+        tags = list(type = "integer")), TargetClusterType = structure(logical(0), 
+        tags = list(type = "string")), Status = structure(logical(0), 
+        tags = list(type = "string")), ImportTablesCompleted = structure(list(structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "list")), 
+        ImportTablesInProgress = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list")), 
+        ImportTablesNotStarted = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list")), 
+        AvgResizeRateInMegaBytesPerSecond = structure(logical(0), 
+            tags = list(type = "double")), TotalResizeDataInMegaBytes = structure(logical(0), 
+            tags = list(type = "long")), ProgressInMegaBytes = structure(logical(0), 
+            tags = list(type = "long")), ElapsedTimeInSeconds = structure(logical(0), 
+            tags = list(type = "long")), EstimatedTimeToCompletionInSeconds = structure(logical(0), 
+            tags = list(type = "long")), ResizeType = structure(logical(0), 
+            tags = list(type = "string")), Message = structure(logical(0), 
+            tags = list(type = "string")), TargetEncryptionType = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -139,7 +231,8 @@ copy_cluster_snapshot_input <- function (...)
     shape <- structure(list(SourceSnapshotIdentifier = structure(logical(0), 
         tags = list(type = "string")), SourceSnapshotClusterIdentifier = structure(logical(0), 
         tags = list(type = "string")), TargetSnapshotIdentifier = structure(logical(0), 
-        tags = list(type = "string"))), tags = list(type = "structure"))
+        tags = list(type = "string")), ManualSnapshotRetentionPeriod = structure(logical(0), 
+        tags = list(type = "integer"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -183,8 +276,12 @@ copy_cluster_snapshot_output <- function (...)
         tags = list(locationName = "NodeType", type = "string"))), 
         tags = list(locationNameList = "NodeType", type = "list")), 
         EnhancedVpcRouting = structure(logical(0), tags = list(type = "boolean")), 
-        MaintenanceTrackName = structure(logical(0), tags = list(type = "string"))), 
-        tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure"))
+        MaintenanceTrackName = structure(logical(0), tags = list(type = "string")), 
+        ManualSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), ManualSnapshotRemainingDays = structure(logical(0), 
+            tags = list(type = "integer")), SnapshotRetentionStartTime = structure(logical(0), 
+            tags = list(type = "timestamp"))), tags = list(type = "structure", 
+        wrapper = TRUE))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -208,6 +305,7 @@ create_cluster_input <- function (...)
             tags = list(type = "string")), PreferredMaintenanceWindow = structure(logical(0), 
             tags = list(type = "string")), ClusterParameterGroupName = structure(logical(0), 
             tags = list(type = "string")), AutomatedSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), ManualSnapshotRetentionPeriod = structure(logical(0), 
             tags = list(type = "integer")), Port = structure(logical(0), 
             tags = list(type = "integer")), ClusterVersion = structure(logical(0), 
             tags = list(type = "string")), AllowVersionUpgrade = structure(logical(0), 
@@ -227,7 +325,8 @@ create_cluster_input <- function (...)
             tags = list(type = "string")), IamRoles = structure(list(structure(logical(0), 
             tags = list(locationName = "IamRoleArn", type = "string"))), 
             tags = list(locationNameList = "IamRoleArn", type = "list")), 
-        MaintenanceTrackName = structure(logical(0), tags = list(type = "string"))), 
+        MaintenanceTrackName = structure(logical(0), tags = list(type = "string")), 
+        SnapshotScheduleIdentifier = structure(logical(0), tags = list(type = "string"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -246,6 +345,7 @@ create_cluster_output <- function (...)
         tags = list(type = "integer"))), tags = list(type = "structure")), 
         ClusterCreateTime = structure(logical(0), tags = list(type = "timestamp")), 
         AutomatedSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), ManualSnapshotRetentionPeriod = structure(logical(0), 
             tags = list(type = "integer")), ClusterSecurityGroups = structure(list(structure(list(ClusterSecurityGroupName = structure(logical(0), 
             tags = list(type = "string")), Status = structure(logical(0), 
             tags = list(type = "string"))), tags = list(locationName = "ClusterSecurityGroup", 
@@ -290,13 +390,21 @@ create_cluster_output <- function (...)
             tags = list(type = "long")), ElapsedTimeInSeconds = structure(logical(0), 
             tags = list(type = "long")), EstimatedTimeToCompletionInSeconds = structure(logical(0), 
             tags = list(type = "long"))), tags = list(type = "structure")), 
+        DataTransferProgress = structure(list(Status = structure(logical(0), 
+            tags = list(type = "string")), CurrentRateInMegaBytesPerSecond = structure(logical(0), 
+            tags = list(type = "double")), TotalDataInMegaBytes = structure(logical(0), 
+            tags = list(type = "long")), DataTransferredInMegaBytes = structure(logical(0), 
+            tags = list(type = "long")), EstimatedTimeToCompletionInSeconds = structure(logical(0), 
+            tags = list(type = "long")), ElapsedTimeInSeconds = structure(logical(0), 
+            tags = list(type = "long"))), tags = list(type = "structure")), 
         HsmStatus = structure(list(HsmClientCertificateIdentifier = structure(logical(0), 
             tags = list(type = "string")), HsmConfigurationIdentifier = structure(logical(0), 
             tags = list(type = "string")), Status = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure")), 
         ClusterSnapshotCopyStatus = structure(list(DestinationRegion = structure(logical(0), 
             tags = list(type = "string")), RetentionPeriod = structure(logical(0), 
-            tags = list(type = "long")), SnapshotCopyGrantName = structure(logical(0), 
+            tags = list(type = "long")), ManualSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), SnapshotCopyGrantName = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure")), 
         ClusterPublicKey = structure(logical(0), tags = list(type = "string")), 
         ClusterNodes = structure(list(structure(list(NodeRole = structure(logical(0), 
@@ -321,8 +429,18 @@ create_cluster_output <- function (...)
             tags = list(type = "string"))), tags = list(type = "list")), 
         MaintenanceTrackName = structure(logical(0), tags = list(type = "string")), 
         ElasticResizeNumberOfNodeOptions = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure", 
-        wrapper = TRUE))), tags = list(type = "structure"))
+            tags = list(type = "string")), DeferredMaintenanceWindows = structure(list(structure(list(DeferMaintenanceIdentifier = structure(logical(0), 
+            tags = list(type = "string")), DeferMaintenanceStartTime = structure(logical(0), 
+            tags = list(type = "timestamp")), DeferMaintenanceEndTime = structure(logical(0), 
+            tags = list(type = "timestamp"))), tags = list(locationName = "DeferredMaintenanceWindow", 
+            type = "structure"))), tags = list(locationNameList = "DeferredMaintenanceWindow", 
+            type = "list")), SnapshotScheduleIdentifier = structure(logical(0), 
+            tags = list(type = "string")), SnapshotScheduleState = structure(logical(0), 
+            tags = list(type = "string", enum = c("MODIFYING", 
+                "ACTIVE", "FAILED"))), ResizeInfo = structure(list(ResizeType = structure(logical(0), 
+            tags = list(type = "string")), AllowCancelResize = structure(logical(0), 
+            tags = list(type = "boolean"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -404,7 +522,8 @@ create_cluster_snapshot_input <- function (...)
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(SnapshotIdentifier = structure(logical(0), 
         tags = list(type = "string")), ClusterIdentifier = structure(logical(0), 
-        tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), 
+        tags = list(type = "string")), ManualSnapshotRetentionPeriod = structure(logical(0), 
+        tags = list(type = "integer")), Tags = structure(list(structure(list(Key = structure(logical(0), 
         tags = list(type = "string")), Value = structure(logical(0), 
         tags = list(type = "string"))), tags = list(locationName = "Tag", 
         type = "structure"))), tags = list(locationNameList = "Tag", 
@@ -452,8 +571,12 @@ create_cluster_snapshot_output <- function (...)
         tags = list(locationName = "NodeType", type = "string"))), 
         tags = list(locationNameList = "NodeType", type = "list")), 
         EnhancedVpcRouting = structure(logical(0), tags = list(type = "boolean")), 
-        MaintenanceTrackName = structure(logical(0), tags = list(type = "string"))), 
-        tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure"))
+        MaintenanceTrackName = structure(logical(0), tags = list(type = "string")), 
+        ManualSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), ManualSnapshotRemainingDays = structure(logical(0), 
+            tags = list(type = "integer")), SnapshotRetentionStartTime = structure(logical(0), 
+            tags = list(type = "timestamp"))), tags = list(type = "structure", 
+        wrapper = TRUE))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -632,6 +755,49 @@ create_snapshot_copy_grant_output <- function (...)
     return(populate(args, shape))
 }
 
+create_snapshot_schedule_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(ScheduleDefinitions = structure(list(structure(logical(0), 
+        tags = list(locationName = "ScheduleDefinition", type = "string"))), 
+        tags = list(locationNameList = "ScheduleDefinition", 
+            type = "list")), ScheduleIdentifier = structure(logical(0), 
+        tags = list(type = "string")), ScheduleDescription = structure(logical(0), 
+        tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), 
+        tags = list(type = "string")), Value = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(locationName = "Tag", 
+        type = "structure"))), tags = list(locationNameList = "Tag", 
+        type = "list")), DryRun = structure(logical(0), tags = list(type = "boolean")), 
+        NextInvocations = structure(logical(0), tags = list(type = "integer"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+create_snapshot_schedule_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(ScheduleDefinitions = structure(list(structure(logical(0), 
+        tags = list(locationName = "ScheduleDefinition", type = "string"))), 
+        tags = list(locationNameList = "ScheduleDefinition", 
+            type = "list")), ScheduleIdentifier = structure(logical(0), 
+        tags = list(type = "string")), ScheduleDescription = structure(logical(0), 
+        tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), 
+        tags = list(type = "string")), Value = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(locationName = "Tag", 
+        type = "structure"))), tags = list(locationNameList = "Tag", 
+        type = "list")), NextInvocations = structure(list(structure(logical(0), 
+        tags = list(locationName = "SnapshotTime", type = "timestamp"))), 
+        tags = list(locationNameList = "SnapshotTime", type = "list")), 
+        AssociatedClusterCount = structure(logical(0), tags = list(type = "integer")), 
+        AssociatedClusters = structure(list(structure(list(ClusterIdentifier = structure(logical(0), 
+            tags = list(type = "string")), ScheduleAssociationState = structure(logical(0), 
+            tags = list(type = "string", enum = c("MODIFYING", 
+                "ACTIVE", "FAILED")))), tags = list(locationName = "ClusterAssociatedToSchedule", 
+            type = "structure"))), tags = list(locationNameList = "ClusterAssociatedToSchedule", 
+            type = "list"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 create_tags_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -655,7 +821,8 @@ delete_cluster_input <- function (...)
     shape <- structure(list(ClusterIdentifier = structure(logical(0), 
         tags = list(type = "string")), SkipFinalClusterSnapshot = structure(logical(0), 
         tags = list(type = "boolean")), FinalClusterSnapshotIdentifier = structure(logical(0), 
-        tags = list(type = "string"))), tags = list(type = "structure"))
+        tags = list(type = "string")), FinalClusterSnapshotRetentionPeriod = structure(logical(0), 
+        tags = list(type = "integer"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -673,6 +840,7 @@ delete_cluster_output <- function (...)
         tags = list(type = "integer"))), tags = list(type = "structure")), 
         ClusterCreateTime = structure(logical(0), tags = list(type = "timestamp")), 
         AutomatedSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), ManualSnapshotRetentionPeriod = structure(logical(0), 
             tags = list(type = "integer")), ClusterSecurityGroups = structure(list(structure(list(ClusterSecurityGroupName = structure(logical(0), 
             tags = list(type = "string")), Status = structure(logical(0), 
             tags = list(type = "string"))), tags = list(locationName = "ClusterSecurityGroup", 
@@ -717,13 +885,21 @@ delete_cluster_output <- function (...)
             tags = list(type = "long")), ElapsedTimeInSeconds = structure(logical(0), 
             tags = list(type = "long")), EstimatedTimeToCompletionInSeconds = structure(logical(0), 
             tags = list(type = "long"))), tags = list(type = "structure")), 
+        DataTransferProgress = structure(list(Status = structure(logical(0), 
+            tags = list(type = "string")), CurrentRateInMegaBytesPerSecond = structure(logical(0), 
+            tags = list(type = "double")), TotalDataInMegaBytes = structure(logical(0), 
+            tags = list(type = "long")), DataTransferredInMegaBytes = structure(logical(0), 
+            tags = list(type = "long")), EstimatedTimeToCompletionInSeconds = structure(logical(0), 
+            tags = list(type = "long")), ElapsedTimeInSeconds = structure(logical(0), 
+            tags = list(type = "long"))), tags = list(type = "structure")), 
         HsmStatus = structure(list(HsmClientCertificateIdentifier = structure(logical(0), 
             tags = list(type = "string")), HsmConfigurationIdentifier = structure(logical(0), 
             tags = list(type = "string")), Status = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure")), 
         ClusterSnapshotCopyStatus = structure(list(DestinationRegion = structure(logical(0), 
             tags = list(type = "string")), RetentionPeriod = structure(logical(0), 
-            tags = list(type = "long")), SnapshotCopyGrantName = structure(logical(0), 
+            tags = list(type = "long")), ManualSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), SnapshotCopyGrantName = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure")), 
         ClusterPublicKey = structure(logical(0), tags = list(type = "string")), 
         ClusterNodes = structure(list(structure(list(NodeRole = structure(logical(0), 
@@ -748,8 +924,18 @@ delete_cluster_output <- function (...)
             tags = list(type = "string"))), tags = list(type = "list")), 
         MaintenanceTrackName = structure(logical(0), tags = list(type = "string")), 
         ElasticResizeNumberOfNodeOptions = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure", 
-        wrapper = TRUE))), tags = list(type = "structure"))
+            tags = list(type = "string")), DeferredMaintenanceWindows = structure(list(structure(list(DeferMaintenanceIdentifier = structure(logical(0), 
+            tags = list(type = "string")), DeferMaintenanceStartTime = structure(logical(0), 
+            tags = list(type = "timestamp")), DeferMaintenanceEndTime = structure(logical(0), 
+            tags = list(type = "timestamp"))), tags = list(locationName = "DeferredMaintenanceWindow", 
+            type = "structure"))), tags = list(locationNameList = "DeferredMaintenanceWindow", 
+            type = "list")), SnapshotScheduleIdentifier = structure(logical(0), 
+            tags = list(type = "string")), SnapshotScheduleState = structure(logical(0), 
+            tags = list(type = "string", enum = c("MODIFYING", 
+                "ACTIVE", "FAILED"))), ResizeInfo = structure(list(ResizeType = structure(logical(0), 
+            tags = list(type = "string")), AllowCancelResize = structure(logical(0), 
+            tags = list(type = "boolean"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -828,8 +1014,12 @@ delete_cluster_snapshot_output <- function (...)
         tags = list(locationName = "NodeType", type = "string"))), 
         tags = list(locationNameList = "NodeType", type = "list")), 
         EnhancedVpcRouting = structure(logical(0), tags = list(type = "boolean")), 
-        MaintenanceTrackName = structure(logical(0), tags = list(type = "string"))), 
-        tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure"))
+        MaintenanceTrackName = structure(logical(0), tags = list(type = "string")), 
+        ManualSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), ManualSnapshotRemainingDays = structure(logical(0), 
+            tags = list(type = "integer")), SnapshotRetentionStartTime = structure(logical(0), 
+            tags = list(type = "timestamp"))), tags = list(type = "structure", 
+        wrapper = TRUE))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -898,6 +1088,19 @@ delete_snapshot_copy_grant_output <- function ()
     return(list())
 }
 
+delete_snapshot_schedule_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(ScheduleIdentifier = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_snapshot_schedule_output <- function () 
+{
+    return(list())
+}
+
 delete_tags_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -912,6 +1115,29 @@ delete_tags_input <- function (...)
 delete_tags_output <- function () 
 {
     return(list())
+}
+
+describe_account_attributes_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(AttributeNames = structure(list(structure(logical(0), 
+        tags = list(locationName = "AttributeName", type = "string"))), 
+        tags = list(locationNameList = "AttributeName", type = "list"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_account_attributes_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(AccountAttributes = structure(list(structure(list(AttributeName = structure(logical(0), 
+        tags = list(type = "string")), AttributeValues = structure(list(structure(list(AttributeValue = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(locationName = "AttributeValueTarget", 
+        type = "structure"))), tags = list(locationNameList = "AttributeValueTarget", 
+        type = "list"))), tags = list(locationName = "AccountAttribute", 
+        type = "structure"))), tags = list(locationNameList = "AccountAttribute", 
+        type = "list"))), tags = list(type = "structure"))
+    return(populate(args, shape))
 }
 
 describe_cluster_db_revisions_input <- function (...) 
@@ -1070,7 +1296,13 @@ describe_cluster_snapshots_input <- function (...)
         TagValues = structure(list(structure(logical(0), tags = list(locationName = "TagValue", 
             type = "string"))), tags = list(locationNameList = "TagValue", 
             type = "list")), ClusterExists = structure(logical(0), 
-            tags = list(type = "boolean"))), tags = list(type = "structure"))
+            tags = list(type = "boolean")), SortingEntities = structure(list(structure(list(Attribute = structure(logical(0), 
+            tags = list(type = "string", enum = c("SOURCE_TYPE", 
+                "TOTAL_SIZE", "CREATE_TIME"))), SortOrder = structure(logical(0), 
+            tags = list(type = "string", enum = c("ASC", "DESC")))), 
+            tags = list(locationName = "SnapshotSortingEntity", 
+                type = "structure"))), tags = list(locationNameList = "SnapshotSortingEntity", 
+            type = "list"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1115,9 +1347,12 @@ describe_cluster_snapshots_output <- function (...)
             tags = list(locationName = "NodeType", type = "string"))), 
             tags = list(locationNameList = "NodeType", type = "list")), 
             EnhancedVpcRouting = structure(logical(0), tags = list(type = "boolean")), 
-            MaintenanceTrackName = structure(logical(0), tags = list(type = "string"))), 
-            tags = list(locationName = "Snapshot", type = "structure", 
-                wrapper = TRUE))), tags = list(locationNameList = "Snapshot", 
+            MaintenanceTrackName = structure(logical(0), tags = list(type = "string")), 
+            ManualSnapshotRetentionPeriod = structure(logical(0), 
+                tags = list(type = "integer")), ManualSnapshotRemainingDays = structure(logical(0), 
+                tags = list(type = "integer")), SnapshotRetentionStartTime = structure(logical(0), 
+                tags = list(type = "timestamp"))), tags = list(locationName = "Snapshot", 
+            type = "structure", wrapper = TRUE))), tags = list(locationNameList = "Snapshot", 
             type = "list"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -1181,7 +1416,10 @@ describe_cluster_tracks_output <- function (...)
         tags = list(type = "string")), DatabaseVersion = structure(logical(0), 
         tags = list(type = "string")), UpdateTargets = structure(list(structure(list(MaintenanceTrackName = structure(logical(0), 
         tags = list(type = "string")), DatabaseVersion = structure(logical(0), 
-        tags = list(type = "string"))), tags = list(locationName = "UpdateTarget", 
+        tags = list(type = "string")), SupportedOperations = structure(list(structure(list(OperationName = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(locationName = "SupportedOperation", 
+        type = "structure"))), tags = list(locationNameList = "SupportedOperation", 
+        type = "list"))), tags = list(locationName = "UpdateTarget", 
         type = "structure"))), tags = list(locationNameList = "UpdateTarget", 
         type = "list"))), tags = list(locationName = "MaintenanceTrack", 
         type = "structure"))), tags = list(locationNameList = "MaintenanceTrack", 
@@ -1244,6 +1482,7 @@ describe_clusters_output <- function (...)
             tags = list(type = "integer"))), tags = list(type = "structure")), 
             ClusterCreateTime = structure(logical(0), tags = list(type = "timestamp")), 
             AutomatedSnapshotRetentionPeriod = structure(logical(0), 
+                tags = list(type = "integer")), ManualSnapshotRetentionPeriod = structure(logical(0), 
                 tags = list(type = "integer")), ClusterSecurityGroups = structure(list(structure(list(ClusterSecurityGroupName = structure(logical(0), 
                 tags = list(type = "string")), Status = structure(logical(0), 
                 tags = list(type = "string"))), tags = list(locationName = "ClusterSecurityGroup", 
@@ -1288,13 +1527,21 @@ describe_clusters_output <- function (...)
                 tags = list(type = "long")), ElapsedTimeInSeconds = structure(logical(0), 
                 tags = list(type = "long")), EstimatedTimeToCompletionInSeconds = structure(logical(0), 
                 tags = list(type = "long"))), tags = list(type = "structure")), 
+            DataTransferProgress = structure(list(Status = structure(logical(0), 
+                tags = list(type = "string")), CurrentRateInMegaBytesPerSecond = structure(logical(0), 
+                tags = list(type = "double")), TotalDataInMegaBytes = structure(logical(0), 
+                tags = list(type = "long")), DataTransferredInMegaBytes = structure(logical(0), 
+                tags = list(type = "long")), EstimatedTimeToCompletionInSeconds = structure(logical(0), 
+                tags = list(type = "long")), ElapsedTimeInSeconds = structure(logical(0), 
+                tags = list(type = "long"))), tags = list(type = "structure")), 
             HsmStatus = structure(list(HsmClientCertificateIdentifier = structure(logical(0), 
                 tags = list(type = "string")), HsmConfigurationIdentifier = structure(logical(0), 
                 tags = list(type = "string")), Status = structure(logical(0), 
                 tags = list(type = "string"))), tags = list(type = "structure")), 
             ClusterSnapshotCopyStatus = structure(list(DestinationRegion = structure(logical(0), 
                 tags = list(type = "string")), RetentionPeriod = structure(logical(0), 
-                tags = list(type = "long")), SnapshotCopyGrantName = structure(logical(0), 
+                tags = list(type = "long")), ManualSnapshotRetentionPeriod = structure(logical(0), 
+                tags = list(type = "integer")), SnapshotCopyGrantName = structure(logical(0), 
                 tags = list(type = "string"))), tags = list(type = "structure")), 
             ClusterPublicKey = structure(logical(0), tags = list(type = "string")), 
             ClusterNodes = structure(list(structure(list(NodeRole = structure(logical(0), 
@@ -1319,8 +1566,19 @@ describe_clusters_output <- function (...)
                 tags = list(type = "string"))), tags = list(type = "list")), 
             MaintenanceTrackName = structure(logical(0), tags = list(type = "string")), 
             ElasticResizeNumberOfNodeOptions = structure(logical(0), 
-                tags = list(type = "string"))), tags = list(locationName = "Cluster", 
-            type = "structure", wrapper = TRUE))), tags = list(locationNameList = "Cluster", 
+                tags = list(type = "string")), DeferredMaintenanceWindows = structure(list(structure(list(DeferMaintenanceIdentifier = structure(logical(0), 
+                tags = list(type = "string")), DeferMaintenanceStartTime = structure(logical(0), 
+                tags = list(type = "timestamp")), DeferMaintenanceEndTime = structure(logical(0), 
+                tags = list(type = "timestamp"))), tags = list(locationName = "DeferredMaintenanceWindow", 
+                type = "structure"))), tags = list(locationNameList = "DeferredMaintenanceWindow", 
+                type = "list")), SnapshotScheduleIdentifier = structure(logical(0), 
+                tags = list(type = "string")), SnapshotScheduleState = structure(logical(0), 
+                tags = list(type = "string", enum = c("MODIFYING", 
+                  "ACTIVE", "FAILED"))), ResizeInfo = structure(list(ResizeType = structure(logical(0), 
+                tags = list(type = "string")), AllowCancelResize = structure(logical(0), 
+                tags = list(type = "boolean"))), tags = list(type = "structure"))), 
+            tags = list(locationName = "Cluster", type = "structure", 
+                wrapper = TRUE))), tags = list(locationNameList = "Cluster", 
             type = "list"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -1711,6 +1969,64 @@ describe_snapshot_copy_grants_output <- function (...)
     return(populate(args, shape))
 }
 
+describe_snapshot_schedules_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(ClusterIdentifier = structure(logical(0), 
+        tags = list(type = "string")), ScheduleIdentifier = structure(logical(0), 
+        tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), 
+        tags = list(locationName = "TagKey", type = "string"))), 
+        tags = list(locationNameList = "TagKey", type = "list")), 
+        TagValues = structure(list(structure(logical(0), tags = list(locationName = "TagValue", 
+            type = "string"))), tags = list(locationNameList = "TagValue", 
+            type = "list")), Marker = structure(logical(0), tags = list(type = "string")), 
+        MaxRecords = structure(logical(0), tags = list(type = "integer"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_snapshot_schedules_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(SnapshotSchedules = structure(list(structure(list(ScheduleDefinitions = structure(list(structure(logical(0), 
+        tags = list(locationName = "ScheduleDefinition", type = "string"))), 
+        tags = list(locationNameList = "ScheduleDefinition", 
+            type = "list")), ScheduleIdentifier = structure(logical(0), 
+        tags = list(type = "string")), ScheduleDescription = structure(logical(0), 
+        tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), 
+        tags = list(type = "string")), Value = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(locationName = "Tag", 
+        type = "structure"))), tags = list(locationNameList = "Tag", 
+        type = "list")), NextInvocations = structure(list(structure(logical(0), 
+        tags = list(locationName = "SnapshotTime", type = "timestamp"))), 
+        tags = list(locationNameList = "SnapshotTime", type = "list")), 
+        AssociatedClusterCount = structure(logical(0), tags = list(type = "integer")), 
+        AssociatedClusters = structure(list(structure(list(ClusterIdentifier = structure(logical(0), 
+            tags = list(type = "string")), ScheduleAssociationState = structure(logical(0), 
+            tags = list(type = "string", enum = c("MODIFYING", 
+                "ACTIVE", "FAILED")))), tags = list(locationName = "ClusterAssociatedToSchedule", 
+            type = "structure"))), tags = list(locationNameList = "ClusterAssociatedToSchedule", 
+            type = "list"))), tags = list(locationName = "SnapshotSchedule", 
+        type = "structure"))), tags = list(locationNameList = "SnapshotSchedule", 
+        type = "list")), Marker = structure(logical(0), tags = list(type = "string"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_storage_input <- function () 
+{
+    return(list())
+}
+
+describe_storage_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(TotalBackupSizeInMegaBytes = structure(logical(0), 
+        tags = list(type = "double")), TotalProvisionedStorageInMegaBytes = structure(logical(0), 
+        tags = list(type = "double"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 describe_table_restore_status_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -1821,6 +2137,7 @@ disable_snapshot_copy_output <- function (...)
         tags = list(type = "integer"))), tags = list(type = "structure")), 
         ClusterCreateTime = structure(logical(0), tags = list(type = "timestamp")), 
         AutomatedSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), ManualSnapshotRetentionPeriod = structure(logical(0), 
             tags = list(type = "integer")), ClusterSecurityGroups = structure(list(structure(list(ClusterSecurityGroupName = structure(logical(0), 
             tags = list(type = "string")), Status = structure(logical(0), 
             tags = list(type = "string"))), tags = list(locationName = "ClusterSecurityGroup", 
@@ -1865,13 +2182,21 @@ disable_snapshot_copy_output <- function (...)
             tags = list(type = "long")), ElapsedTimeInSeconds = structure(logical(0), 
             tags = list(type = "long")), EstimatedTimeToCompletionInSeconds = structure(logical(0), 
             tags = list(type = "long"))), tags = list(type = "structure")), 
+        DataTransferProgress = structure(list(Status = structure(logical(0), 
+            tags = list(type = "string")), CurrentRateInMegaBytesPerSecond = structure(logical(0), 
+            tags = list(type = "double")), TotalDataInMegaBytes = structure(logical(0), 
+            tags = list(type = "long")), DataTransferredInMegaBytes = structure(logical(0), 
+            tags = list(type = "long")), EstimatedTimeToCompletionInSeconds = structure(logical(0), 
+            tags = list(type = "long")), ElapsedTimeInSeconds = structure(logical(0), 
+            tags = list(type = "long"))), tags = list(type = "structure")), 
         HsmStatus = structure(list(HsmClientCertificateIdentifier = structure(logical(0), 
             tags = list(type = "string")), HsmConfigurationIdentifier = structure(logical(0), 
             tags = list(type = "string")), Status = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure")), 
         ClusterSnapshotCopyStatus = structure(list(DestinationRegion = structure(logical(0), 
             tags = list(type = "string")), RetentionPeriod = structure(logical(0), 
-            tags = list(type = "long")), SnapshotCopyGrantName = structure(logical(0), 
+            tags = list(type = "long")), ManualSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), SnapshotCopyGrantName = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure")), 
         ClusterPublicKey = structure(logical(0), tags = list(type = "string")), 
         ClusterNodes = structure(list(structure(list(NodeRole = structure(logical(0), 
@@ -1896,8 +2221,18 @@ disable_snapshot_copy_output <- function (...)
             tags = list(type = "string"))), tags = list(type = "list")), 
         MaintenanceTrackName = structure(logical(0), tags = list(type = "string")), 
         ElasticResizeNumberOfNodeOptions = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure", 
-        wrapper = TRUE))), tags = list(type = "structure"))
+            tags = list(type = "string")), DeferredMaintenanceWindows = structure(list(structure(list(DeferMaintenanceIdentifier = structure(logical(0), 
+            tags = list(type = "string")), DeferMaintenanceStartTime = structure(logical(0), 
+            tags = list(type = "timestamp")), DeferMaintenanceEndTime = structure(logical(0), 
+            tags = list(type = "timestamp"))), tags = list(locationName = "DeferredMaintenanceWindow", 
+            type = "structure"))), tags = list(locationNameList = "DeferredMaintenanceWindow", 
+            type = "list")), SnapshotScheduleIdentifier = structure(logical(0), 
+            tags = list(type = "string")), SnapshotScheduleState = structure(logical(0), 
+            tags = list(type = "string", enum = c("MODIFYING", 
+                "ACTIVE", "FAILED"))), ResizeInfo = structure(list(ResizeType = structure(logical(0), 
+            tags = list(type = "string")), AllowCancelResize = structure(logical(0), 
+            tags = list(type = "boolean"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1931,7 +2266,8 @@ enable_snapshot_copy_input <- function (...)
         tags = list(type = "string")), DestinationRegion = structure(logical(0), 
         tags = list(type = "string")), RetentionPeriod = structure(logical(0), 
         tags = list(type = "integer")), SnapshotCopyGrantName = structure(logical(0), 
-        tags = list(type = "string"))), tags = list(type = "structure"))
+        tags = list(type = "string")), ManualSnapshotRetentionPeriod = structure(logical(0), 
+        tags = list(type = "integer"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1949,6 +2285,7 @@ enable_snapshot_copy_output <- function (...)
         tags = list(type = "integer"))), tags = list(type = "structure")), 
         ClusterCreateTime = structure(logical(0), tags = list(type = "timestamp")), 
         AutomatedSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), ManualSnapshotRetentionPeriod = structure(logical(0), 
             tags = list(type = "integer")), ClusterSecurityGroups = structure(list(structure(list(ClusterSecurityGroupName = structure(logical(0), 
             tags = list(type = "string")), Status = structure(logical(0), 
             tags = list(type = "string"))), tags = list(locationName = "ClusterSecurityGroup", 
@@ -1993,13 +2330,21 @@ enable_snapshot_copy_output <- function (...)
             tags = list(type = "long")), ElapsedTimeInSeconds = structure(logical(0), 
             tags = list(type = "long")), EstimatedTimeToCompletionInSeconds = structure(logical(0), 
             tags = list(type = "long"))), tags = list(type = "structure")), 
+        DataTransferProgress = structure(list(Status = structure(logical(0), 
+            tags = list(type = "string")), CurrentRateInMegaBytesPerSecond = structure(logical(0), 
+            tags = list(type = "double")), TotalDataInMegaBytes = structure(logical(0), 
+            tags = list(type = "long")), DataTransferredInMegaBytes = structure(logical(0), 
+            tags = list(type = "long")), EstimatedTimeToCompletionInSeconds = structure(logical(0), 
+            tags = list(type = "long")), ElapsedTimeInSeconds = structure(logical(0), 
+            tags = list(type = "long"))), tags = list(type = "structure")), 
         HsmStatus = structure(list(HsmClientCertificateIdentifier = structure(logical(0), 
             tags = list(type = "string")), HsmConfigurationIdentifier = structure(logical(0), 
             tags = list(type = "string")), Status = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure")), 
         ClusterSnapshotCopyStatus = structure(list(DestinationRegion = structure(logical(0), 
             tags = list(type = "string")), RetentionPeriod = structure(logical(0), 
-            tags = list(type = "long")), SnapshotCopyGrantName = structure(logical(0), 
+            tags = list(type = "long")), ManualSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), SnapshotCopyGrantName = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure")), 
         ClusterPublicKey = structure(logical(0), tags = list(type = "string")), 
         ClusterNodes = structure(list(structure(list(NodeRole = structure(logical(0), 
@@ -2024,8 +2369,18 @@ enable_snapshot_copy_output <- function (...)
             tags = list(type = "string"))), tags = list(type = "list")), 
         MaintenanceTrackName = structure(logical(0), tags = list(type = "string")), 
         ElasticResizeNumberOfNodeOptions = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure", 
-        wrapper = TRUE))), tags = list(type = "structure"))
+            tags = list(type = "string")), DeferredMaintenanceWindows = structure(list(structure(list(DeferMaintenanceIdentifier = structure(logical(0), 
+            tags = list(type = "string")), DeferMaintenanceStartTime = structure(logical(0), 
+            tags = list(type = "timestamp")), DeferMaintenanceEndTime = structure(logical(0), 
+            tags = list(type = "timestamp"))), tags = list(locationName = "DeferredMaintenanceWindow", 
+            type = "structure"))), tags = list(locationNameList = "DeferredMaintenanceWindow", 
+            type = "list")), SnapshotScheduleIdentifier = structure(logical(0), 
+            tags = list(type = "string")), SnapshotScheduleState = structure(logical(0), 
+            tags = list(type = "string", enum = c("MODIFYING", 
+                "ACTIVE", "FAILED"))), ResizeInfo = structure(list(ResizeType = structure(logical(0), 
+            tags = list(type = "string")), AllowCancelResize = structure(logical(0), 
+            tags = list(type = "boolean"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -2102,6 +2457,7 @@ modify_cluster_input <- function (...)
             type = "list")), MasterUserPassword = structure(logical(0), 
         tags = list(type = "string")), ClusterParameterGroupName = structure(logical(0), 
         tags = list(type = "string")), AutomatedSnapshotRetentionPeriod = structure(logical(0), 
+        tags = list(type = "integer")), ManualSnapshotRetentionPeriod = structure(logical(0), 
         tags = list(type = "integer")), PreferredMaintenanceWindow = structure(logical(0), 
         tags = list(type = "string")), ClusterVersion = structure(logical(0), 
         tags = list(type = "string")), AllowVersionUpgrade = structure(logical(0), 
@@ -2132,6 +2488,7 @@ modify_cluster_output <- function (...)
         tags = list(type = "integer"))), tags = list(type = "structure")), 
         ClusterCreateTime = structure(logical(0), tags = list(type = "timestamp")), 
         AutomatedSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), ManualSnapshotRetentionPeriod = structure(logical(0), 
             tags = list(type = "integer")), ClusterSecurityGroups = structure(list(structure(list(ClusterSecurityGroupName = structure(logical(0), 
             tags = list(type = "string")), Status = structure(logical(0), 
             tags = list(type = "string"))), tags = list(locationName = "ClusterSecurityGroup", 
@@ -2176,13 +2533,21 @@ modify_cluster_output <- function (...)
             tags = list(type = "long")), ElapsedTimeInSeconds = structure(logical(0), 
             tags = list(type = "long")), EstimatedTimeToCompletionInSeconds = structure(logical(0), 
             tags = list(type = "long"))), tags = list(type = "structure")), 
+        DataTransferProgress = structure(list(Status = structure(logical(0), 
+            tags = list(type = "string")), CurrentRateInMegaBytesPerSecond = structure(logical(0), 
+            tags = list(type = "double")), TotalDataInMegaBytes = structure(logical(0), 
+            tags = list(type = "long")), DataTransferredInMegaBytes = structure(logical(0), 
+            tags = list(type = "long")), EstimatedTimeToCompletionInSeconds = structure(logical(0), 
+            tags = list(type = "long")), ElapsedTimeInSeconds = structure(logical(0), 
+            tags = list(type = "long"))), tags = list(type = "structure")), 
         HsmStatus = structure(list(HsmClientCertificateIdentifier = structure(logical(0), 
             tags = list(type = "string")), HsmConfigurationIdentifier = structure(logical(0), 
             tags = list(type = "string")), Status = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure")), 
         ClusterSnapshotCopyStatus = structure(list(DestinationRegion = structure(logical(0), 
             tags = list(type = "string")), RetentionPeriod = structure(logical(0), 
-            tags = list(type = "long")), SnapshotCopyGrantName = structure(logical(0), 
+            tags = list(type = "long")), ManualSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), SnapshotCopyGrantName = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure")), 
         ClusterPublicKey = structure(logical(0), tags = list(type = "string")), 
         ClusterNodes = structure(list(structure(list(NodeRole = structure(logical(0), 
@@ -2207,8 +2572,18 @@ modify_cluster_output <- function (...)
             tags = list(type = "string"))), tags = list(type = "list")), 
         MaintenanceTrackName = structure(logical(0), tags = list(type = "string")), 
         ElasticResizeNumberOfNodeOptions = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure", 
-        wrapper = TRUE))), tags = list(type = "structure"))
+            tags = list(type = "string")), DeferredMaintenanceWindows = structure(list(structure(list(DeferMaintenanceIdentifier = structure(logical(0), 
+            tags = list(type = "string")), DeferMaintenanceStartTime = structure(logical(0), 
+            tags = list(type = "timestamp")), DeferMaintenanceEndTime = structure(logical(0), 
+            tags = list(type = "timestamp"))), tags = list(locationName = "DeferredMaintenanceWindow", 
+            type = "structure"))), tags = list(locationNameList = "DeferredMaintenanceWindow", 
+            type = "list")), SnapshotScheduleIdentifier = structure(logical(0), 
+            tags = list(type = "string")), SnapshotScheduleState = structure(logical(0), 
+            tags = list(type = "string", enum = c("MODIFYING", 
+                "ACTIVE", "FAILED"))), ResizeInfo = structure(list(ResizeType = structure(logical(0), 
+            tags = list(type = "string")), AllowCancelResize = structure(logical(0), 
+            tags = list(type = "boolean"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -2235,6 +2610,7 @@ modify_cluster_db_revision_output <- function (...)
         tags = list(type = "integer"))), tags = list(type = "structure")), 
         ClusterCreateTime = structure(logical(0), tags = list(type = "timestamp")), 
         AutomatedSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), ManualSnapshotRetentionPeriod = structure(logical(0), 
             tags = list(type = "integer")), ClusterSecurityGroups = structure(list(structure(list(ClusterSecurityGroupName = structure(logical(0), 
             tags = list(type = "string")), Status = structure(logical(0), 
             tags = list(type = "string"))), tags = list(locationName = "ClusterSecurityGroup", 
@@ -2279,13 +2655,21 @@ modify_cluster_db_revision_output <- function (...)
             tags = list(type = "long")), ElapsedTimeInSeconds = structure(logical(0), 
             tags = list(type = "long")), EstimatedTimeToCompletionInSeconds = structure(logical(0), 
             tags = list(type = "long"))), tags = list(type = "structure")), 
+        DataTransferProgress = structure(list(Status = structure(logical(0), 
+            tags = list(type = "string")), CurrentRateInMegaBytesPerSecond = structure(logical(0), 
+            tags = list(type = "double")), TotalDataInMegaBytes = structure(logical(0), 
+            tags = list(type = "long")), DataTransferredInMegaBytes = structure(logical(0), 
+            tags = list(type = "long")), EstimatedTimeToCompletionInSeconds = structure(logical(0), 
+            tags = list(type = "long")), ElapsedTimeInSeconds = structure(logical(0), 
+            tags = list(type = "long"))), tags = list(type = "structure")), 
         HsmStatus = structure(list(HsmClientCertificateIdentifier = structure(logical(0), 
             tags = list(type = "string")), HsmConfigurationIdentifier = structure(logical(0), 
             tags = list(type = "string")), Status = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure")), 
         ClusterSnapshotCopyStatus = structure(list(DestinationRegion = structure(logical(0), 
             tags = list(type = "string")), RetentionPeriod = structure(logical(0), 
-            tags = list(type = "long")), SnapshotCopyGrantName = structure(logical(0), 
+            tags = list(type = "long")), ManualSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), SnapshotCopyGrantName = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure")), 
         ClusterPublicKey = structure(logical(0), tags = list(type = "string")), 
         ClusterNodes = structure(list(structure(list(NodeRole = structure(logical(0), 
@@ -2310,8 +2694,18 @@ modify_cluster_db_revision_output <- function (...)
             tags = list(type = "string"))), tags = list(type = "list")), 
         MaintenanceTrackName = structure(logical(0), tags = list(type = "string")), 
         ElasticResizeNumberOfNodeOptions = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure", 
-        wrapper = TRUE))), tags = list(type = "structure"))
+            tags = list(type = "string")), DeferredMaintenanceWindows = structure(list(structure(list(DeferMaintenanceIdentifier = structure(logical(0), 
+            tags = list(type = "string")), DeferMaintenanceStartTime = structure(logical(0), 
+            tags = list(type = "timestamp")), DeferMaintenanceEndTime = structure(logical(0), 
+            tags = list(type = "timestamp"))), tags = list(locationName = "DeferredMaintenanceWindow", 
+            type = "structure"))), tags = list(locationNameList = "DeferredMaintenanceWindow", 
+            type = "list")), SnapshotScheduleIdentifier = structure(logical(0), 
+            tags = list(type = "string")), SnapshotScheduleState = structure(logical(0), 
+            tags = list(type = "string", enum = c("MODIFYING", 
+                "ACTIVE", "FAILED"))), ResizeInfo = structure(list(ResizeType = structure(logical(0), 
+            tags = list(type = "string")), AllowCancelResize = structure(logical(0), 
+            tags = list(type = "boolean"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -2343,6 +2737,7 @@ modify_cluster_iam_roles_output <- function (...)
         tags = list(type = "integer"))), tags = list(type = "structure")), 
         ClusterCreateTime = structure(logical(0), tags = list(type = "timestamp")), 
         AutomatedSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), ManualSnapshotRetentionPeriod = structure(logical(0), 
             tags = list(type = "integer")), ClusterSecurityGroups = structure(list(structure(list(ClusterSecurityGroupName = structure(logical(0), 
             tags = list(type = "string")), Status = structure(logical(0), 
             tags = list(type = "string"))), tags = list(locationName = "ClusterSecurityGroup", 
@@ -2387,13 +2782,21 @@ modify_cluster_iam_roles_output <- function (...)
             tags = list(type = "long")), ElapsedTimeInSeconds = structure(logical(0), 
             tags = list(type = "long")), EstimatedTimeToCompletionInSeconds = structure(logical(0), 
             tags = list(type = "long"))), tags = list(type = "structure")), 
+        DataTransferProgress = structure(list(Status = structure(logical(0), 
+            tags = list(type = "string")), CurrentRateInMegaBytesPerSecond = structure(logical(0), 
+            tags = list(type = "double")), TotalDataInMegaBytes = structure(logical(0), 
+            tags = list(type = "long")), DataTransferredInMegaBytes = structure(logical(0), 
+            tags = list(type = "long")), EstimatedTimeToCompletionInSeconds = structure(logical(0), 
+            tags = list(type = "long")), ElapsedTimeInSeconds = structure(logical(0), 
+            tags = list(type = "long"))), tags = list(type = "structure")), 
         HsmStatus = structure(list(HsmClientCertificateIdentifier = structure(logical(0), 
             tags = list(type = "string")), HsmConfigurationIdentifier = structure(logical(0), 
             tags = list(type = "string")), Status = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure")), 
         ClusterSnapshotCopyStatus = structure(list(DestinationRegion = structure(logical(0), 
             tags = list(type = "string")), RetentionPeriod = structure(logical(0), 
-            tags = list(type = "long")), SnapshotCopyGrantName = structure(logical(0), 
+            tags = list(type = "long")), ManualSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), SnapshotCopyGrantName = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure")), 
         ClusterPublicKey = structure(logical(0), tags = list(type = "string")), 
         ClusterNodes = structure(list(structure(list(NodeRole = structure(logical(0), 
@@ -2418,8 +2821,144 @@ modify_cluster_iam_roles_output <- function (...)
             tags = list(type = "string"))), tags = list(type = "list")), 
         MaintenanceTrackName = structure(logical(0), tags = list(type = "string")), 
         ElasticResizeNumberOfNodeOptions = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure", 
-        wrapper = TRUE))), tags = list(type = "structure"))
+            tags = list(type = "string")), DeferredMaintenanceWindows = structure(list(structure(list(DeferMaintenanceIdentifier = structure(logical(0), 
+            tags = list(type = "string")), DeferMaintenanceStartTime = structure(logical(0), 
+            tags = list(type = "timestamp")), DeferMaintenanceEndTime = structure(logical(0), 
+            tags = list(type = "timestamp"))), tags = list(locationName = "DeferredMaintenanceWindow", 
+            type = "structure"))), tags = list(locationNameList = "DeferredMaintenanceWindow", 
+            type = "list")), SnapshotScheduleIdentifier = structure(logical(0), 
+            tags = list(type = "string")), SnapshotScheduleState = structure(logical(0), 
+            tags = list(type = "string", enum = c("MODIFYING", 
+                "ACTIVE", "FAILED"))), ResizeInfo = structure(list(ResizeType = structure(logical(0), 
+            tags = list(type = "string")), AllowCancelResize = structure(logical(0), 
+            tags = list(type = "boolean"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+modify_cluster_maintenance_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(ClusterIdentifier = structure(logical(0), 
+        tags = list(type = "string")), DeferMaintenance = structure(logical(0), 
+        tags = list(type = "boolean")), DeferMaintenanceIdentifier = structure(logical(0), 
+        tags = list(type = "string")), DeferMaintenanceStartTime = structure(logical(0), 
+        tags = list(type = "timestamp")), DeferMaintenanceEndTime = structure(logical(0), 
+        tags = list(type = "timestamp")), DeferMaintenanceDuration = structure(logical(0), 
+        tags = list(type = "integer"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+modify_cluster_maintenance_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Cluster = structure(list(ClusterIdentifier = structure(logical(0), 
+        tags = list(type = "string")), NodeType = structure(logical(0), 
+        tags = list(type = "string")), ClusterStatus = structure(logical(0), 
+        tags = list(type = "string")), ModifyStatus = structure(logical(0), 
+        tags = list(type = "string")), MasterUsername = structure(logical(0), 
+        tags = list(type = "string")), DBName = structure(logical(0), 
+        tags = list(type = "string")), Endpoint = structure(list(Address = structure(logical(0), 
+        tags = list(type = "string")), Port = structure(logical(0), 
+        tags = list(type = "integer"))), tags = list(type = "structure")), 
+        ClusterCreateTime = structure(logical(0), tags = list(type = "timestamp")), 
+        AutomatedSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), ManualSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), ClusterSecurityGroups = structure(list(structure(list(ClusterSecurityGroupName = structure(logical(0), 
+            tags = list(type = "string")), Status = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(locationName = "ClusterSecurityGroup", 
+            type = "structure"))), tags = list(locationNameList = "ClusterSecurityGroup", 
+            type = "list")), VpcSecurityGroups = structure(list(structure(list(VpcSecurityGroupId = structure(logical(0), 
+            tags = list(type = "string")), Status = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(locationName = "VpcSecurityGroup", 
+            type = "structure"))), tags = list(locationNameList = "VpcSecurityGroup", 
+            type = "list")), ClusterParameterGroups = structure(list(structure(list(ParameterGroupName = structure(logical(0), 
+            tags = list(type = "string")), ParameterApplyStatus = structure(logical(0), 
+            tags = list(type = "string")), ClusterParameterStatusList = structure(list(structure(list(ParameterName = structure(logical(0), 
+            tags = list(type = "string")), ParameterApplyStatus = structure(logical(0), 
+            tags = list(type = "string")), ParameterApplyErrorDescription = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "list"))), tags = list(locationName = "ClusterParameterGroup", 
+            type = "structure"))), tags = list(locationNameList = "ClusterParameterGroup", 
+            type = "list")), ClusterSubnetGroupName = structure(logical(0), 
+            tags = list(type = "string")), VpcId = structure(logical(0), 
+            tags = list(type = "string")), AvailabilityZone = structure(logical(0), 
+            tags = list(type = "string")), PreferredMaintenanceWindow = structure(logical(0), 
+            tags = list(type = "string")), PendingModifiedValues = structure(list(MasterUserPassword = structure(logical(0), 
+            tags = list(type = "string")), NodeType = structure(logical(0), 
+            tags = list(type = "string")), NumberOfNodes = structure(logical(0), 
+            tags = list(type = "integer")), ClusterType = structure(logical(0), 
+            tags = list(type = "string")), ClusterVersion = structure(logical(0), 
+            tags = list(type = "string")), AutomatedSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), ClusterIdentifier = structure(logical(0), 
+            tags = list(type = "string")), PubliclyAccessible = structure(logical(0), 
+            tags = list(type = "boolean")), EnhancedVpcRouting = structure(logical(0), 
+            tags = list(type = "boolean")), MaintenanceTrackName = structure(logical(0), 
+            tags = list(type = "string")), EncryptionType = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure")), 
+        ClusterVersion = structure(logical(0), tags = list(type = "string")), 
+        AllowVersionUpgrade = structure(logical(0), tags = list(type = "boolean")), 
+        NumberOfNodes = structure(logical(0), tags = list(type = "integer")), 
+        PubliclyAccessible = structure(logical(0), tags = list(type = "boolean")), 
+        Encrypted = structure(logical(0), tags = list(type = "boolean")), 
+        RestoreStatus = structure(list(Status = structure(logical(0), 
+            tags = list(type = "string")), CurrentRestoreRateInMegaBytesPerSecond = structure(logical(0), 
+            tags = list(type = "double")), SnapshotSizeInMegaBytes = structure(logical(0), 
+            tags = list(type = "long")), ProgressInMegaBytes = structure(logical(0), 
+            tags = list(type = "long")), ElapsedTimeInSeconds = structure(logical(0), 
+            tags = list(type = "long")), EstimatedTimeToCompletionInSeconds = structure(logical(0), 
+            tags = list(type = "long"))), tags = list(type = "structure")), 
+        DataTransferProgress = structure(list(Status = structure(logical(0), 
+            tags = list(type = "string")), CurrentRateInMegaBytesPerSecond = structure(logical(0), 
+            tags = list(type = "double")), TotalDataInMegaBytes = structure(logical(0), 
+            tags = list(type = "long")), DataTransferredInMegaBytes = structure(logical(0), 
+            tags = list(type = "long")), EstimatedTimeToCompletionInSeconds = structure(logical(0), 
+            tags = list(type = "long")), ElapsedTimeInSeconds = structure(logical(0), 
+            tags = list(type = "long"))), tags = list(type = "structure")), 
+        HsmStatus = structure(list(HsmClientCertificateIdentifier = structure(logical(0), 
+            tags = list(type = "string")), HsmConfigurationIdentifier = structure(logical(0), 
+            tags = list(type = "string")), Status = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure")), 
+        ClusterSnapshotCopyStatus = structure(list(DestinationRegion = structure(logical(0), 
+            tags = list(type = "string")), RetentionPeriod = structure(logical(0), 
+            tags = list(type = "long")), ManualSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), SnapshotCopyGrantName = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure")), 
+        ClusterPublicKey = structure(logical(0), tags = list(type = "string")), 
+        ClusterNodes = structure(list(structure(list(NodeRole = structure(logical(0), 
+            tags = list(type = "string")), PrivateIPAddress = structure(logical(0), 
+            tags = list(type = "string")), PublicIPAddress = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "list")), ElasticIpStatus = structure(list(ElasticIp = structure(logical(0), 
+            tags = list(type = "string")), Status = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure")), 
+        ClusterRevisionNumber = structure(logical(0), tags = list(type = "string")), 
+        Tags = structure(list(structure(list(Key = structure(logical(0), 
+            tags = list(type = "string")), Value = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(locationName = "Tag", 
+            type = "structure"))), tags = list(locationNameList = "Tag", 
+            type = "list")), KmsKeyId = structure(logical(0), 
+            tags = list(type = "string")), EnhancedVpcRouting = structure(logical(0), 
+            tags = list(type = "boolean")), IamRoles = structure(list(structure(list(IamRoleArn = structure(logical(0), 
+            tags = list(type = "string")), ApplyStatus = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(locationName = "ClusterIamRole", 
+            type = "structure"))), tags = list(locationNameList = "ClusterIamRole", 
+            type = "list")), PendingActions = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list")), 
+        MaintenanceTrackName = structure(logical(0), tags = list(type = "string")), 
+        ElasticResizeNumberOfNodeOptions = structure(logical(0), 
+            tags = list(type = "string")), DeferredMaintenanceWindows = structure(list(structure(list(DeferMaintenanceIdentifier = structure(logical(0), 
+            tags = list(type = "string")), DeferMaintenanceStartTime = structure(logical(0), 
+            tags = list(type = "timestamp")), DeferMaintenanceEndTime = structure(logical(0), 
+            tags = list(type = "timestamp"))), tags = list(locationName = "DeferredMaintenanceWindow", 
+            type = "structure"))), tags = list(locationNameList = "DeferredMaintenanceWindow", 
+            type = "list")), SnapshotScheduleIdentifier = structure(logical(0), 
+            tags = list(type = "string")), SnapshotScheduleState = structure(logical(0), 
+            tags = list(type = "string", enum = c("MODIFYING", 
+                "ACTIVE", "FAILED"))), ResizeInfo = structure(list(ResizeType = structure(logical(0), 
+            tags = list(type = "string")), AllowCancelResize = structure(logical(0), 
+            tags = list(type = "boolean"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -2450,6 +2989,80 @@ modify_cluster_parameter_group_output <- function (...)
         tags = list(type = "string")), ParameterGroupStatus = structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "structure"))
     return(populate(args, shape))
+}
+
+modify_cluster_snapshot_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(SnapshotIdentifier = structure(logical(0), 
+        tags = list(type = "string")), ManualSnapshotRetentionPeriod = structure(logical(0), 
+        tags = list(type = "integer")), Force = structure(logical(0), 
+        tags = list(type = "boolean"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+modify_cluster_snapshot_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Snapshot = structure(list(SnapshotIdentifier = structure(logical(0), 
+        tags = list(type = "string")), ClusterIdentifier = structure(logical(0), 
+        tags = list(type = "string")), SnapshotCreateTime = structure(logical(0), 
+        tags = list(type = "timestamp")), Status = structure(logical(0), 
+        tags = list(type = "string")), Port = structure(logical(0), 
+        tags = list(type = "integer")), AvailabilityZone = structure(logical(0), 
+        tags = list(type = "string")), ClusterCreateTime = structure(logical(0), 
+        tags = list(type = "timestamp")), MasterUsername = structure(logical(0), 
+        tags = list(type = "string")), ClusterVersion = structure(logical(0), 
+        tags = list(type = "string")), SnapshotType = structure(logical(0), 
+        tags = list(type = "string")), NodeType = structure(logical(0), 
+        tags = list(type = "string")), NumberOfNodes = structure(logical(0), 
+        tags = list(type = "integer")), DBName = structure(logical(0), 
+        tags = list(type = "string")), VpcId = structure(logical(0), 
+        tags = list(type = "string")), Encrypted = structure(logical(0), 
+        tags = list(type = "boolean")), KmsKeyId = structure(logical(0), 
+        tags = list(type = "string")), EncryptedWithHSM = structure(logical(0), 
+        tags = list(type = "boolean")), AccountsWithRestoreAccess = structure(list(structure(list(AccountId = structure(logical(0), 
+        tags = list(type = "string")), AccountAlias = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(locationName = "AccountWithRestoreAccess", 
+        type = "structure"))), tags = list(locationNameList = "AccountWithRestoreAccess", 
+        type = "list")), OwnerAccount = structure(logical(0), 
+        tags = list(type = "string")), TotalBackupSizeInMegaBytes = structure(logical(0), 
+        tags = list(type = "double")), ActualIncrementalBackupSizeInMegaBytes = structure(logical(0), 
+        tags = list(type = "double")), BackupProgressInMegaBytes = structure(logical(0), 
+        tags = list(type = "double")), CurrentBackupRateInMegaBytesPerSecond = structure(logical(0), 
+        tags = list(type = "double")), EstimatedSecondsToCompletion = structure(logical(0), 
+        tags = list(type = "long")), ElapsedTimeInSeconds = structure(logical(0), 
+        tags = list(type = "long")), SourceRegion = structure(logical(0), 
+        tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), 
+        tags = list(type = "string")), Value = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(locationName = "Tag", 
+        type = "structure"))), tags = list(locationNameList = "Tag", 
+        type = "list")), RestorableNodeTypes = structure(list(structure(logical(0), 
+        tags = list(locationName = "NodeType", type = "string"))), 
+        tags = list(locationNameList = "NodeType", type = "list")), 
+        EnhancedVpcRouting = structure(logical(0), tags = list(type = "boolean")), 
+        MaintenanceTrackName = structure(logical(0), tags = list(type = "string")), 
+        ManualSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), ManualSnapshotRemainingDays = structure(logical(0), 
+            tags = list(type = "integer")), SnapshotRetentionStartTime = structure(logical(0), 
+            tags = list(type = "timestamp"))), tags = list(type = "structure", 
+        wrapper = TRUE))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+modify_cluster_snapshot_schedule_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(ClusterIdentifier = structure(logical(0), 
+        tags = list(type = "string")), ScheduleIdentifier = structure(logical(0), 
+        tags = list(type = "string")), DisassociateSchedule = structure(logical(0), 
+        tags = list(type = "boolean"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+modify_cluster_snapshot_schedule_output <- function () 
+{
+    return(list())
 }
 
 modify_cluster_subnet_group_input <- function (...) 
@@ -2538,7 +3151,8 @@ modify_snapshot_copy_retention_period_input <- function (...)
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(ClusterIdentifier = structure(logical(0), 
         tags = list(type = "string")), RetentionPeriod = structure(logical(0), 
-        tags = list(type = "integer"))), tags = list(type = "structure"))
+        tags = list(type = "integer")), Manual = structure(logical(0), 
+        tags = list(type = "boolean"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -2556,6 +3170,7 @@ modify_snapshot_copy_retention_period_output <- function (...)
         tags = list(type = "integer"))), tags = list(type = "structure")), 
         ClusterCreateTime = structure(logical(0), tags = list(type = "timestamp")), 
         AutomatedSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), ManualSnapshotRetentionPeriod = structure(logical(0), 
             tags = list(type = "integer")), ClusterSecurityGroups = structure(list(structure(list(ClusterSecurityGroupName = structure(logical(0), 
             tags = list(type = "string")), Status = structure(logical(0), 
             tags = list(type = "string"))), tags = list(locationName = "ClusterSecurityGroup", 
@@ -2600,13 +3215,21 @@ modify_snapshot_copy_retention_period_output <- function (...)
             tags = list(type = "long")), ElapsedTimeInSeconds = structure(logical(0), 
             tags = list(type = "long")), EstimatedTimeToCompletionInSeconds = structure(logical(0), 
             tags = list(type = "long"))), tags = list(type = "structure")), 
+        DataTransferProgress = structure(list(Status = structure(logical(0), 
+            tags = list(type = "string")), CurrentRateInMegaBytesPerSecond = structure(logical(0), 
+            tags = list(type = "double")), TotalDataInMegaBytes = structure(logical(0), 
+            tags = list(type = "long")), DataTransferredInMegaBytes = structure(logical(0), 
+            tags = list(type = "long")), EstimatedTimeToCompletionInSeconds = structure(logical(0), 
+            tags = list(type = "long")), ElapsedTimeInSeconds = structure(logical(0), 
+            tags = list(type = "long"))), tags = list(type = "structure")), 
         HsmStatus = structure(list(HsmClientCertificateIdentifier = structure(logical(0), 
             tags = list(type = "string")), HsmConfigurationIdentifier = structure(logical(0), 
             tags = list(type = "string")), Status = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure")), 
         ClusterSnapshotCopyStatus = structure(list(DestinationRegion = structure(logical(0), 
             tags = list(type = "string")), RetentionPeriod = structure(logical(0), 
-            tags = list(type = "long")), SnapshotCopyGrantName = structure(logical(0), 
+            tags = list(type = "long")), ManualSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), SnapshotCopyGrantName = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure")), 
         ClusterPublicKey = structure(logical(0), tags = list(type = "string")), 
         ClusterNodes = structure(list(structure(list(NodeRole = structure(logical(0), 
@@ -2631,8 +3254,54 @@ modify_snapshot_copy_retention_period_output <- function (...)
             tags = list(type = "string"))), tags = list(type = "list")), 
         MaintenanceTrackName = structure(logical(0), tags = list(type = "string")), 
         ElasticResizeNumberOfNodeOptions = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure", 
-        wrapper = TRUE))), tags = list(type = "structure"))
+            tags = list(type = "string")), DeferredMaintenanceWindows = structure(list(structure(list(DeferMaintenanceIdentifier = structure(logical(0), 
+            tags = list(type = "string")), DeferMaintenanceStartTime = structure(logical(0), 
+            tags = list(type = "timestamp")), DeferMaintenanceEndTime = structure(logical(0), 
+            tags = list(type = "timestamp"))), tags = list(locationName = "DeferredMaintenanceWindow", 
+            type = "structure"))), tags = list(locationNameList = "DeferredMaintenanceWindow", 
+            type = "list")), SnapshotScheduleIdentifier = structure(logical(0), 
+            tags = list(type = "string")), SnapshotScheduleState = structure(logical(0), 
+            tags = list(type = "string", enum = c("MODIFYING", 
+                "ACTIVE", "FAILED"))), ResizeInfo = structure(list(ResizeType = structure(logical(0), 
+            tags = list(type = "string")), AllowCancelResize = structure(logical(0), 
+            tags = list(type = "boolean"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+modify_snapshot_schedule_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(ScheduleIdentifier = structure(logical(0), 
+        tags = list(type = "string")), ScheduleDefinitions = structure(list(structure(logical(0), 
+        tags = list(locationName = "ScheduleDefinition", type = "string"))), 
+        tags = list(locationNameList = "ScheduleDefinition", 
+            type = "list"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+modify_snapshot_schedule_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(ScheduleDefinitions = structure(list(structure(logical(0), 
+        tags = list(locationName = "ScheduleDefinition", type = "string"))), 
+        tags = list(locationNameList = "ScheduleDefinition", 
+            type = "list")), ScheduleIdentifier = structure(logical(0), 
+        tags = list(type = "string")), ScheduleDescription = structure(logical(0), 
+        tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), 
+        tags = list(type = "string")), Value = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(locationName = "Tag", 
+        type = "structure"))), tags = list(locationNameList = "Tag", 
+        type = "list")), NextInvocations = structure(list(structure(logical(0), 
+        tags = list(locationName = "SnapshotTime", type = "timestamp"))), 
+        tags = list(locationNameList = "SnapshotTime", type = "list")), 
+        AssociatedClusterCount = structure(logical(0), tags = list(type = "integer")), 
+        AssociatedClusters = structure(list(structure(list(ClusterIdentifier = structure(logical(0), 
+            tags = list(type = "string")), ScheduleAssociationState = structure(logical(0), 
+            tags = list(type = "string", enum = c("MODIFYING", 
+                "ACTIVE", "FAILED")))), tags = list(locationName = "ClusterAssociatedToSchedule", 
+            type = "structure"))), tags = list(locationNameList = "ClusterAssociatedToSchedule", 
+            type = "list"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -2691,6 +3360,7 @@ reboot_cluster_output <- function (...)
         tags = list(type = "integer"))), tags = list(type = "structure")), 
         ClusterCreateTime = structure(logical(0), tags = list(type = "timestamp")), 
         AutomatedSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), ManualSnapshotRetentionPeriod = structure(logical(0), 
             tags = list(type = "integer")), ClusterSecurityGroups = structure(list(structure(list(ClusterSecurityGroupName = structure(logical(0), 
             tags = list(type = "string")), Status = structure(logical(0), 
             tags = list(type = "string"))), tags = list(locationName = "ClusterSecurityGroup", 
@@ -2735,13 +3405,21 @@ reboot_cluster_output <- function (...)
             tags = list(type = "long")), ElapsedTimeInSeconds = structure(logical(0), 
             tags = list(type = "long")), EstimatedTimeToCompletionInSeconds = structure(logical(0), 
             tags = list(type = "long"))), tags = list(type = "structure")), 
+        DataTransferProgress = structure(list(Status = structure(logical(0), 
+            tags = list(type = "string")), CurrentRateInMegaBytesPerSecond = structure(logical(0), 
+            tags = list(type = "double")), TotalDataInMegaBytes = structure(logical(0), 
+            tags = list(type = "long")), DataTransferredInMegaBytes = structure(logical(0), 
+            tags = list(type = "long")), EstimatedTimeToCompletionInSeconds = structure(logical(0), 
+            tags = list(type = "long")), ElapsedTimeInSeconds = structure(logical(0), 
+            tags = list(type = "long"))), tags = list(type = "structure")), 
         HsmStatus = structure(list(HsmClientCertificateIdentifier = structure(logical(0), 
             tags = list(type = "string")), HsmConfigurationIdentifier = structure(logical(0), 
             tags = list(type = "string")), Status = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure")), 
         ClusterSnapshotCopyStatus = structure(list(DestinationRegion = structure(logical(0), 
             tags = list(type = "string")), RetentionPeriod = structure(logical(0), 
-            tags = list(type = "long")), SnapshotCopyGrantName = structure(logical(0), 
+            tags = list(type = "long")), ManualSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), SnapshotCopyGrantName = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure")), 
         ClusterPublicKey = structure(logical(0), tags = list(type = "string")), 
         ClusterNodes = structure(list(structure(list(NodeRole = structure(logical(0), 
@@ -2766,8 +3444,18 @@ reboot_cluster_output <- function (...)
             tags = list(type = "string"))), tags = list(type = "list")), 
         MaintenanceTrackName = structure(logical(0), tags = list(type = "string")), 
         ElasticResizeNumberOfNodeOptions = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure", 
-        wrapper = TRUE))), tags = list(type = "structure"))
+            tags = list(type = "string")), DeferredMaintenanceWindows = structure(list(structure(list(DeferMaintenanceIdentifier = structure(logical(0), 
+            tags = list(type = "string")), DeferMaintenanceStartTime = structure(logical(0), 
+            tags = list(type = "timestamp")), DeferMaintenanceEndTime = structure(logical(0), 
+            tags = list(type = "timestamp"))), tags = list(locationName = "DeferredMaintenanceWindow", 
+            type = "structure"))), tags = list(locationNameList = "DeferredMaintenanceWindow", 
+            type = "list")), SnapshotScheduleIdentifier = structure(logical(0), 
+            tags = list(type = "string")), SnapshotScheduleState = structure(logical(0), 
+            tags = list(type = "string", enum = c("MODIFYING", 
+                "ACTIVE", "FAILED"))), ResizeInfo = structure(list(ResizeType = structure(logical(0), 
+            tags = list(type = "string")), AllowCancelResize = structure(logical(0), 
+            tags = list(type = "boolean"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -2827,6 +3515,7 @@ resize_cluster_output <- function (...)
         tags = list(type = "integer"))), tags = list(type = "structure")), 
         ClusterCreateTime = structure(logical(0), tags = list(type = "timestamp")), 
         AutomatedSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), ManualSnapshotRetentionPeriod = structure(logical(0), 
             tags = list(type = "integer")), ClusterSecurityGroups = structure(list(structure(list(ClusterSecurityGroupName = structure(logical(0), 
             tags = list(type = "string")), Status = structure(logical(0), 
             tags = list(type = "string"))), tags = list(locationName = "ClusterSecurityGroup", 
@@ -2871,13 +3560,21 @@ resize_cluster_output <- function (...)
             tags = list(type = "long")), ElapsedTimeInSeconds = structure(logical(0), 
             tags = list(type = "long")), EstimatedTimeToCompletionInSeconds = structure(logical(0), 
             tags = list(type = "long"))), tags = list(type = "structure")), 
+        DataTransferProgress = structure(list(Status = structure(logical(0), 
+            tags = list(type = "string")), CurrentRateInMegaBytesPerSecond = structure(logical(0), 
+            tags = list(type = "double")), TotalDataInMegaBytes = structure(logical(0), 
+            tags = list(type = "long")), DataTransferredInMegaBytes = structure(logical(0), 
+            tags = list(type = "long")), EstimatedTimeToCompletionInSeconds = structure(logical(0), 
+            tags = list(type = "long")), ElapsedTimeInSeconds = structure(logical(0), 
+            tags = list(type = "long"))), tags = list(type = "structure")), 
         HsmStatus = structure(list(HsmClientCertificateIdentifier = structure(logical(0), 
             tags = list(type = "string")), HsmConfigurationIdentifier = structure(logical(0), 
             tags = list(type = "string")), Status = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure")), 
         ClusterSnapshotCopyStatus = structure(list(DestinationRegion = structure(logical(0), 
             tags = list(type = "string")), RetentionPeriod = structure(logical(0), 
-            tags = list(type = "long")), SnapshotCopyGrantName = structure(logical(0), 
+            tags = list(type = "long")), ManualSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), SnapshotCopyGrantName = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure")), 
         ClusterPublicKey = structure(logical(0), tags = list(type = "string")), 
         ClusterNodes = structure(list(structure(list(NodeRole = structure(logical(0), 
@@ -2902,8 +3599,18 @@ resize_cluster_output <- function (...)
             tags = list(type = "string"))), tags = list(type = "list")), 
         MaintenanceTrackName = structure(logical(0), tags = list(type = "string")), 
         ElasticResizeNumberOfNodeOptions = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure", 
-        wrapper = TRUE))), tags = list(type = "structure"))
+            tags = list(type = "string")), DeferredMaintenanceWindows = structure(list(structure(list(DeferMaintenanceIdentifier = structure(logical(0), 
+            tags = list(type = "string")), DeferMaintenanceStartTime = structure(logical(0), 
+            tags = list(type = "timestamp")), DeferMaintenanceEndTime = structure(logical(0), 
+            tags = list(type = "timestamp"))), tags = list(locationName = "DeferredMaintenanceWindow", 
+            type = "structure"))), tags = list(locationNameList = "DeferredMaintenanceWindow", 
+            type = "list")), SnapshotScheduleIdentifier = structure(logical(0), 
+            tags = list(type = "string")), SnapshotScheduleState = structure(logical(0), 
+            tags = list(type = "string", enum = c("MODIFYING", 
+                "ACTIVE", "FAILED"))), ResizeInfo = structure(list(ResizeType = structure(logical(0), 
+            tags = list(type = "string")), AllowCancelResize = structure(logical(0), 
+            tags = list(type = "boolean"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -2931,6 +3638,7 @@ restore_from_cluster_snapshot_input <- function (...)
         tags = list(locationNameList = "VpcSecurityGroupId", 
             type = "list")), PreferredMaintenanceWindow = structure(logical(0), 
         tags = list(type = "string")), AutomatedSnapshotRetentionPeriod = structure(logical(0), 
+        tags = list(type = "integer")), ManualSnapshotRetentionPeriod = structure(logical(0), 
         tags = list(type = "integer")), KmsKeyId = structure(logical(0), 
         tags = list(type = "string")), NodeType = structure(logical(0), 
         tags = list(type = "string")), EnhancedVpcRouting = structure(logical(0), 
@@ -2938,7 +3646,8 @@ restore_from_cluster_snapshot_input <- function (...)
         tags = list(type = "string")), IamRoles = structure(list(structure(logical(0), 
         tags = list(locationName = "IamRoleArn", type = "string"))), 
         tags = list(locationNameList = "IamRoleArn", type = "list")), 
-        MaintenanceTrackName = structure(logical(0), tags = list(type = "string"))), 
+        MaintenanceTrackName = structure(logical(0), tags = list(type = "string")), 
+        SnapshotScheduleIdentifier = structure(logical(0), tags = list(type = "string"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -2957,6 +3666,7 @@ restore_from_cluster_snapshot_output <- function (...)
         tags = list(type = "integer"))), tags = list(type = "structure")), 
         ClusterCreateTime = structure(logical(0), tags = list(type = "timestamp")), 
         AutomatedSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), ManualSnapshotRetentionPeriod = structure(logical(0), 
             tags = list(type = "integer")), ClusterSecurityGroups = structure(list(structure(list(ClusterSecurityGroupName = structure(logical(0), 
             tags = list(type = "string")), Status = structure(logical(0), 
             tags = list(type = "string"))), tags = list(locationName = "ClusterSecurityGroup", 
@@ -3001,13 +3711,21 @@ restore_from_cluster_snapshot_output <- function (...)
             tags = list(type = "long")), ElapsedTimeInSeconds = structure(logical(0), 
             tags = list(type = "long")), EstimatedTimeToCompletionInSeconds = structure(logical(0), 
             tags = list(type = "long"))), tags = list(type = "structure")), 
+        DataTransferProgress = structure(list(Status = structure(logical(0), 
+            tags = list(type = "string")), CurrentRateInMegaBytesPerSecond = structure(logical(0), 
+            tags = list(type = "double")), TotalDataInMegaBytes = structure(logical(0), 
+            tags = list(type = "long")), DataTransferredInMegaBytes = structure(logical(0), 
+            tags = list(type = "long")), EstimatedTimeToCompletionInSeconds = structure(logical(0), 
+            tags = list(type = "long")), ElapsedTimeInSeconds = structure(logical(0), 
+            tags = list(type = "long"))), tags = list(type = "structure")), 
         HsmStatus = structure(list(HsmClientCertificateIdentifier = structure(logical(0), 
             tags = list(type = "string")), HsmConfigurationIdentifier = structure(logical(0), 
             tags = list(type = "string")), Status = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure")), 
         ClusterSnapshotCopyStatus = structure(list(DestinationRegion = structure(logical(0), 
             tags = list(type = "string")), RetentionPeriod = structure(logical(0), 
-            tags = list(type = "long")), SnapshotCopyGrantName = structure(logical(0), 
+            tags = list(type = "long")), ManualSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), SnapshotCopyGrantName = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure")), 
         ClusterPublicKey = structure(logical(0), tags = list(type = "string")), 
         ClusterNodes = structure(list(structure(list(NodeRole = structure(logical(0), 
@@ -3032,8 +3750,18 @@ restore_from_cluster_snapshot_output <- function (...)
             tags = list(type = "string"))), tags = list(type = "list")), 
         MaintenanceTrackName = structure(logical(0), tags = list(type = "string")), 
         ElasticResizeNumberOfNodeOptions = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure", 
-        wrapper = TRUE))), tags = list(type = "structure"))
+            tags = list(type = "string")), DeferredMaintenanceWindows = structure(list(structure(list(DeferMaintenanceIdentifier = structure(logical(0), 
+            tags = list(type = "string")), DeferMaintenanceStartTime = structure(logical(0), 
+            tags = list(type = "timestamp")), DeferMaintenanceEndTime = structure(logical(0), 
+            tags = list(type = "timestamp"))), tags = list(locationName = "DeferredMaintenanceWindow", 
+            type = "structure"))), tags = list(locationNameList = "DeferredMaintenanceWindow", 
+            type = "list")), SnapshotScheduleIdentifier = structure(logical(0), 
+            tags = list(type = "string")), SnapshotScheduleState = structure(logical(0), 
+            tags = list(type = "string", enum = c("MODIFYING", 
+                "ACTIVE", "FAILED"))), ResizeInfo = structure(list(ResizeType = structure(logical(0), 
+            tags = list(type = "string")), AllowCancelResize = structure(logical(0), 
+            tags = list(type = "boolean"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -3167,8 +3895,12 @@ revoke_snapshot_access_output <- function (...)
         tags = list(locationName = "NodeType", type = "string"))), 
         tags = list(locationNameList = "NodeType", type = "list")), 
         EnhancedVpcRouting = structure(logical(0), tags = list(type = "boolean")), 
-        MaintenanceTrackName = structure(logical(0), tags = list(type = "string"))), 
-        tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure"))
+        MaintenanceTrackName = structure(logical(0), tags = list(type = "string")), 
+        ManualSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), ManualSnapshotRemainingDays = structure(logical(0), 
+            tags = list(type = "integer")), SnapshotRetentionStartTime = structure(logical(0), 
+            tags = list(type = "timestamp"))), tags = list(type = "structure", 
+        wrapper = TRUE))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -3194,6 +3926,7 @@ rotate_encryption_key_output <- function (...)
         tags = list(type = "integer"))), tags = list(type = "structure")), 
         ClusterCreateTime = structure(logical(0), tags = list(type = "timestamp")), 
         AutomatedSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), ManualSnapshotRetentionPeriod = structure(logical(0), 
             tags = list(type = "integer")), ClusterSecurityGroups = structure(list(structure(list(ClusterSecurityGroupName = structure(logical(0), 
             tags = list(type = "string")), Status = structure(logical(0), 
             tags = list(type = "string"))), tags = list(locationName = "ClusterSecurityGroup", 
@@ -3238,13 +3971,21 @@ rotate_encryption_key_output <- function (...)
             tags = list(type = "long")), ElapsedTimeInSeconds = structure(logical(0), 
             tags = list(type = "long")), EstimatedTimeToCompletionInSeconds = structure(logical(0), 
             tags = list(type = "long"))), tags = list(type = "structure")), 
+        DataTransferProgress = structure(list(Status = structure(logical(0), 
+            tags = list(type = "string")), CurrentRateInMegaBytesPerSecond = structure(logical(0), 
+            tags = list(type = "double")), TotalDataInMegaBytes = structure(logical(0), 
+            tags = list(type = "long")), DataTransferredInMegaBytes = structure(logical(0), 
+            tags = list(type = "long")), EstimatedTimeToCompletionInSeconds = structure(logical(0), 
+            tags = list(type = "long")), ElapsedTimeInSeconds = structure(logical(0), 
+            tags = list(type = "long"))), tags = list(type = "structure")), 
         HsmStatus = structure(list(HsmClientCertificateIdentifier = structure(logical(0), 
             tags = list(type = "string")), HsmConfigurationIdentifier = structure(logical(0), 
             tags = list(type = "string")), Status = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure")), 
         ClusterSnapshotCopyStatus = structure(list(DestinationRegion = structure(logical(0), 
             tags = list(type = "string")), RetentionPeriod = structure(logical(0), 
-            tags = list(type = "long")), SnapshotCopyGrantName = structure(logical(0), 
+            tags = list(type = "long")), ManualSnapshotRetentionPeriod = structure(logical(0), 
+            tags = list(type = "integer")), SnapshotCopyGrantName = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure")), 
         ClusterPublicKey = structure(logical(0), tags = list(type = "string")), 
         ClusterNodes = structure(list(structure(list(NodeRole = structure(logical(0), 
@@ -3269,7 +4010,17 @@ rotate_encryption_key_output <- function (...)
             tags = list(type = "string"))), tags = list(type = "list")), 
         MaintenanceTrackName = structure(logical(0), tags = list(type = "string")), 
         ElasticResizeNumberOfNodeOptions = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure", 
-        wrapper = TRUE))), tags = list(type = "structure"))
+            tags = list(type = "string")), DeferredMaintenanceWindows = structure(list(structure(list(DeferMaintenanceIdentifier = structure(logical(0), 
+            tags = list(type = "string")), DeferMaintenanceStartTime = structure(logical(0), 
+            tags = list(type = "timestamp")), DeferMaintenanceEndTime = structure(logical(0), 
+            tags = list(type = "timestamp"))), tags = list(locationName = "DeferredMaintenanceWindow", 
+            type = "structure"))), tags = list(locationNameList = "DeferredMaintenanceWindow", 
+            type = "list")), SnapshotScheduleIdentifier = structure(logical(0), 
+            tags = list(type = "string")), SnapshotScheduleState = structure(logical(0), 
+            tags = list(type = "string", enum = c("MODIFYING", 
+                "ACTIVE", "FAILED"))), ResizeInfo = structure(list(ResizeType = structure(logical(0), 
+            tags = list(type = "string")), AllowCancelResize = structure(logical(0), 
+            tags = list(type = "boolean"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure"))
     return(populate(args, shape))
 }

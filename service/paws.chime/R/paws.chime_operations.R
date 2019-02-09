@@ -222,6 +222,8 @@ get_account_settings <- function (AccountId)
 #' Retrieves details for the specified user ID, such as primary email address, license type, and personal meeting PIN
 #'
 #' Retrieves details for the specified user ID, such as primary email address, license type, and personal meeting PIN.
+#' 
+#' To retrieve user details with an email address instead of a user ID, use the ListUsers action, and then filter by email address.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -315,28 +317,31 @@ list_accounts <- function (Name = NULL, UserEmail = NULL, NextToken = NULL,
 
 #' Lists the users that belong to the specified Amazon Chime account
 #'
-#' Lists the users that belong to the specified Amazon Chime account.
+#' Lists the users that belong to the specified Amazon Chime account. You can specify an email address to list only the user that the email address belongs to.
 #'
 #' @section Accepted Parameters:
 #' ```
 #' list_users(
 #'   AccountId = "string",
+#'   UserEmail = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
 #' ```
 #'
 #' @param AccountId &#91;required&#93; The Amazon Chime account ID.
+#' @param UserEmail Optional. The user email address used to filter results. Maximum 1.
 #' @param MaxResults The maximum number of results to return in a single call. Defaults to 100.
 #' @param NextToken The token to use to retrieve the next page of results.
 #'
 #' @export
-list_users <- function (AccountId, MaxResults = NULL, NextToken = NULL) 
+list_users <- function (AccountId, UserEmail = NULL, MaxResults = NULL, 
+    NextToken = NULL) 
 {
     op <- new_operation(name = "ListUsers", http_method = "GET", 
         http_path = "/console/accounts/{accountId}/users", paginator = list())
-    input <- list_users_input(AccountId = AccountId, MaxResults = MaxResults, 
-        NextToken = NextToken)
+    input <- list_users_input(AccountId = AccountId, UserEmail = UserEmail, 
+        MaxResults = MaxResults, NextToken = NextToken)
     output <- list_users_output()
     svc <- service()
     request <- new_request(svc, op, input, output)

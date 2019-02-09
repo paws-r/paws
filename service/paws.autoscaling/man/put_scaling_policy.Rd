@@ -57,7 +57,7 @@ This parameter is supported if the policy type is \code{StepScaling} or \code{Ta
 This parameter is required if the policy type is \code{TargetTrackingScaling} and not supported otherwise.}
 }
 \description{
-Creates or updates a policy for an Auto Scaling group. To update an existing policy, use the existing policy name and set the parameters you want to change. Any existing parameter not changed in an update to an existing policy is not changed in this update request.
+Creates or updates a policy for an Auto Scaling group. To update an existing policy, use the existing policy name and set the parameters to change. Any existing parameter not changed in an update to an existing policy is not changed in this update request.
 }
 \details{
 If you exceed your maximum limit of step adjustments, which by default is 20 per region, the call fails. For information about updating this limit, see \href{http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html}{AWS Service Limits} in the \emph{Amazon Web Services General Reference}.

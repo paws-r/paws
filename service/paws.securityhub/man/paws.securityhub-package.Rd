@@ -6,13 +6,13 @@
 \alias{paws.securityhub-package}
 \title{paws.securityhub: AWS SecurityHub}
 \description{
-AWS Security Hub provides you with a comprehensive view of
-your security state within AWS and your compliance with the security
-industry standards and best practices. Security Hub collects security
-data from across AWS accounts, services, and supported third-party
-partners and helps you analyze your security trends and identify the
-highest priority security issues. For more information, see [AWS
-Security Hub User Guide]().
+AWS Security Hub provides you with a comprehensive
+    view of your security state within AWS and your compliance with the
+    security industry standards and best practices. Security Hub collects
+    security data from across AWS accounts, services, and supported
+    third-party partners and helps you analyze your security trends and
+    identify the highest priority security issues. For more information,
+    see [AWS Security Hub User Guide]().
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

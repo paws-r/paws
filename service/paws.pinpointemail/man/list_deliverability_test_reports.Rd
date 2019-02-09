@@ -4,10 +4,7 @@
 \alias{list_deliverability_test_reports}
 \title{Show a list of the predictive inbox placement tests that you've performed, regardless of their statuses}
 \usage{
-list_deliverability_test_reports(
-  NextToken = "string",
-  PageSize = 123
-)
+list_deliverability_test_reports(NextToken = NULL, PageSize = NULL)
 }
 \arguments{
 \item{NextToken}{A token returned from a previous call to \code{ListDeliverabilityTestReports} to indicate the position in the list of predictive inbox placement tests.}
@@ -19,6 +16,11 @@ The value you specify has to be at least 0, and can be no more than 1000.}
 \description{
 Show a list of the predictive inbox placement tests that you've performed, regardless of their statuses. For predictive inbox placement tests that are complete, you can use the \code{GetDeliverabilityTestReport} operation to view the results.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_deliverability_test_reports(
+  NextToken = "string",
+  PageSize = 123
+)
 }
+}
+

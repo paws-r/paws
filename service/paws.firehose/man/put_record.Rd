@@ -26,6 +26,8 @@ The \code{PutRecord} operation returns a \code{RecordId}, which is a unique stri
 If the \code{PutRecord} operation throws a \code{ServiceUnavailableException}, back off and retry. If the exception persists, it is possible that the throughput limits have been exceeded for the delivery stream.
 
 Data records sent to Kinesis Data Firehose are stored for 24 hours from the time they are added to a delivery stream as it tries to send the records to the destination. If the destination is unreachable for more than 24 hours, the data is no longer available.
+
+Don't concatenate two or more base64 strings to form the data fields of your records. Instead, concatenate the raw data, then perform base64 encoding.
 }
 \section{Accepted Parameters}{
 \preformatted{put_record(

@@ -7,7 +7,7 @@ create_container_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(ContainerName = structure(logical(0), 
-        tags = list(type = "string", max = 255L, min = 1L, pattern = "\\w+"))), 
+        tags = list(type = "string", max = 255L, min = 1L, pattern = "[\\w-]+"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -21,7 +21,7 @@ create_container_output <- function (...)
         ARN = structure(logical(0), tags = list(type = "string", 
             max = 1024L, min = 1L, pattern = "arn:aws:mediastore:[a-z]+-[a-z]+-\\d:\\d{12}:container/\\w{1,255}")), 
         Name = structure(logical(0), tags = list(type = "string", 
-            max = 255L, min = 1L, pattern = "\\w+")), Status = structure(logical(0), 
+            max = 255L, min = 1L, pattern = "[\\w-]+")), Status = structure(logical(0), 
             tags = list(type = "string", enum = c("ACTIVE", "CREATING", 
                 "DELETING"), max = 16L, min = 1L))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))
@@ -32,7 +32,7 @@ delete_container_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(ContainerName = structure(logical(0), 
-        tags = list(type = "string", max = 255L, min = 1L, pattern = "\\w+"))), 
+        tags = list(type = "string", max = 255L, min = 1L, pattern = "[\\w-]+"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -48,7 +48,7 @@ delete_container_policy_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(ContainerName = structure(logical(0), 
-        tags = list(type = "string", max = 255L, min = 1L, pattern = "\\w+"))), 
+        tags = list(type = "string", max = 255L, min = 1L, pattern = "[\\w-]+"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -64,7 +64,7 @@ delete_cors_policy_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(ContainerName = structure(logical(0), 
-        tags = list(type = "string", max = 255L, min = 1L, pattern = "\\w+"))), 
+        tags = list(type = "string", max = 255L, min = 1L, pattern = "[\\w-]+"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -76,11 +76,27 @@ delete_cors_policy_output <- function (...)
     return(populate(args, shape))
 }
 
+delete_lifecycle_policy_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(ContainerName = structure(logical(0), 
+        tags = list(type = "string", max = 255L, min = 1L, pattern = "[\\w-]+"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_lifecycle_policy_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 describe_container_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(ContainerName = structure(logical(0), 
-        tags = list(type = "string", max = 255L, min = 1L, pattern = "\\w+"))), 
+        tags = list(type = "string", max = 255L, min = 1L, pattern = "[\\w-]+"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -94,7 +110,7 @@ describe_container_output <- function (...)
         ARN = structure(logical(0), tags = list(type = "string", 
             max = 1024L, min = 1L, pattern = "arn:aws:mediastore:[a-z]+-[a-z]+-\\d:\\d{12}:container/\\w{1,255}")), 
         Name = structure(logical(0), tags = list(type = "string", 
-            max = 255L, min = 1L, pattern = "\\w+")), Status = structure(logical(0), 
+            max = 255L, min = 1L, pattern = "[\\w-]+")), Status = structure(logical(0), 
             tags = list(type = "string", enum = c("ACTIVE", "CREATING", 
                 "DELETING"), max = 16L, min = 1L))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))
@@ -105,7 +121,7 @@ get_container_policy_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(ContainerName = structure(logical(0), 
-        tags = list(type = "string", max = 255L, min = 1L, pattern = "\\w+"))), 
+        tags = list(type = "string", max = 255L, min = 1L, pattern = "[\\w-]+"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -123,7 +139,7 @@ get_cors_policy_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(ContainerName = structure(logical(0), 
-        tags = list(type = "string", max = 255L, min = 1L, pattern = "\\w+"))), 
+        tags = list(type = "string", max = 255L, min = 1L, pattern = "[\\w-]+"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -132,10 +148,11 @@ get_cors_policy_output <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(CorsPolicy = structure(list(structure(list(AllowedOrigins = structure(list(structure(logical(0), 
-        tags = list(type = "string", pattern = "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+"))), 
-        tags = list(type = "list")), AllowedMethods = structure(list(structure(logical(0), 
+        tags = list(type = "string", max = 2048L, min = 1L, pattern = "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+"))), 
+        tags = list(type = "list", max = 100L, min = 1L)), AllowedMethods = structure(list(structure(logical(0), 
         tags = list(type = "string", enum = c("PUT", "GET", "DELETE", 
-            "HEAD")))), tags = list(type = "list")), AllowedHeaders = structure(list(structure(logical(0), 
+            "HEAD")))), tags = list(type = "list", max = 4L, 
+        min = 1L)), AllowedHeaders = structure(list(structure(logical(0), 
         tags = list(type = "string", max = 8192L, min = 1L, pattern = "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+"))), 
         tags = list(type = "list", max = 100L, min = 0L)), MaxAgeSeconds = structure(logical(0), 
         tags = list(type = "integer", max = 2147483647L, min = 0L)), 
@@ -145,6 +162,24 @@ get_cors_policy_output <- function (...)
             tags = list(type = "list", max = 100L, min = 0L))), 
         tags = list(type = "structure"))), tags = list(type = "list", 
         max = 100L, min = 1L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+get_lifecycle_policy_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(ContainerName = structure(logical(0), 
+        tags = list(type = "string", max = 255L, min = 1L, pattern = "[\\w-]+"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+get_lifecycle_policy_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(LifecyclePolicy = structure(logical(0), 
+        tags = list(type = "string", max = 8192L, min = 0L, pattern = "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -167,7 +202,7 @@ list_containers_output <- function (...)
         ARN = structure(logical(0), tags = list(type = "string", 
             max = 1024L, min = 1L, pattern = "arn:aws:mediastore:[a-z]+-[a-z]+-\\d:\\d{12}:container/\\w{1,255}")), 
         Name = structure(logical(0), tags = list(type = "string", 
-            max = 255L, min = 1L, pattern = "\\w+")), Status = structure(logical(0), 
+            max = 255L, min = 1L, pattern = "[\\w-]+")), Status = structure(logical(0), 
             tags = list(type = "string", enum = c("ACTIVE", "CREATING", 
                 "DELETING"), max = 16L, min = 1L))), tags = list(type = "structure"))), 
         tags = list(type = "list")), NextToken = structure(logical(0), 
@@ -180,7 +215,7 @@ put_container_policy_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(ContainerName = structure(logical(0), 
-        tags = list(type = "string", max = 255L, min = 1L, pattern = "\\w+")), 
+        tags = list(type = "string", max = 255L, min = 1L, pattern = "[\\w-]+")), 
         Policy = structure(logical(0), tags = list(type = "string", 
             max = 8192L, min = 1L, pattern = "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+"))), 
         tags = list(type = "structure"))
@@ -198,13 +233,15 @@ put_cors_policy_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(ContainerName = structure(logical(0), 
-        tags = list(type = "string", max = 255L, min = 1L, pattern = "\\w+")), 
+        tags = list(type = "string", max = 255L, min = 1L, pattern = "[\\w-]+")), 
         CorsPolicy = structure(list(structure(list(AllowedOrigins = structure(list(structure(logical(0), 
-            tags = list(type = "string", pattern = "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+"))), 
-            tags = list(type = "list")), AllowedMethods = structure(list(structure(logical(0), 
-            tags = list(type = "string", enum = c("PUT", "GET", 
-                "DELETE", "HEAD")))), tags = list(type = "list")), 
-            AllowedHeaders = structure(list(structure(logical(0), 
+            tags = list(type = "string", max = 2048L, min = 1L, 
+                pattern = "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+"))), 
+            tags = list(type = "list", max = 100L, min = 1L)), 
+            AllowedMethods = structure(list(structure(logical(0), 
+                tags = list(type = "string", enum = c("PUT", 
+                  "GET", "DELETE", "HEAD")))), tags = list(type = "list", 
+                max = 4L, min = 1L)), AllowedHeaders = structure(list(structure(logical(0), 
                 tags = list(type = "string", max = 8192L, min = 1L, 
                   pattern = "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+"))), 
                 tags = list(type = "list", max = 100L, min = 0L)), 
@@ -219,6 +256,24 @@ put_cors_policy_input <- function (...)
 }
 
 put_cors_policy_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+put_lifecycle_policy_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(ContainerName = structure(logical(0), 
+        tags = list(type = "string", max = 255L, min = 1L, pattern = "[\\w-]+")), 
+        LifecyclePolicy = structure(logical(0), tags = list(type = "string", 
+            max = 8192L, min = 0L, pattern = "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+put_lifecycle_policy_output <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(), tags = list(type = "structure"))

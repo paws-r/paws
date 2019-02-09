@@ -2,15 +2,18 @@
 % Please edit documentation in R/paws.sms_operations.R
 \name{delete_replication_job}
 \alias{delete_replication_job}
-\title{The DeleteReplicationJob API is used to delete a ReplicationJob, resulting in no further ReplicationRuns}
+\title{Deletes the specified replication job}
 \usage{
 delete_replication_job(replicationJobId)
 }
 \arguments{
-\item{replicationJobId}{[required]}
+\item{replicationJobId}{[required] The identifier of the replication job.}
 }
 \description{
-The DeleteReplicationJob API is used to delete a ReplicationJob, resulting in no further ReplicationRuns. This will delete the contents of the S3 bucket used to store SMS artifacts, but will not delete any AMIs created by the SMS service.
+Deletes the specified replication job.
+}
+\details{
+After you delete a replication job, there are no further replication runs. AWS deletes the contents of the Amazon S3 bucket used to store AWS SMS artifacts. The AMIs created by the replication runs are not deleted.
 }
 \section{Accepted Parameters}{
 \preformatted{delete_replication_job(

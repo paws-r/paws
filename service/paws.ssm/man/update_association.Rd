@@ -8,7 +8,8 @@ update_association(AssociationId, Parameters = NULL,
   DocumentVersion = NULL, ScheduleExpression = NULL,
   OutputLocation = NULL, Name = NULL, Targets = NULL,
   AssociationName = NULL, AssociationVersion = NULL,
-  MaxErrors = NULL, MaxConcurrency = NULL, ComplianceSeverity = NULL)
+  AutomationTargetParameterName = NULL, MaxErrors = NULL,
+  MaxConcurrency = NULL, ComplianceSeverity = NULL)
 }
 \arguments{
 \item{AssociationId}{[required] The ID of the association you want to update.}
@@ -28,6 +29,8 @@ update_association(AssociationId, Parameters = NULL,
 \item{AssociationName}{The name of the association that you want to update.}
 
 \item{AssociationVersion}{This parameter is provided for concurrency control purposes. You must specify the latest association version in the service. If you want to ensure that this request succeeds, either specify \code{$LATEST}, or omit this parameter.}
+
+\item{AutomationTargetParameterName}{Specify the target for the association. This target is required for associations that use an Automation document and target resources by using rate controls.}
 
 \item{MaxErrors}{The number of errors that are allowed before the system stops sending requests to run the association on additional targets. You can specify either an absolute number of errors, for example 10, or a percentage of the target set, for example 10%. If you specify 3, for example, the system stops sending requests when the fourth error is received. If you specify 0, then the system stops sending requests after the first error is returned. If you run an association on 50 instances and set MaxError to 10%, then the system stops sending the request when the sixth error is received.
 
@@ -70,6 +73,7 @@ Updates an association. You can update the association name and version, the doc
   ),
   AssociationName = "string",
   AssociationVersion = "string",
+  AutomationTargetParameterName = "string",
   MaxErrors = "string",
   MaxConcurrency = "string",
   ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED"

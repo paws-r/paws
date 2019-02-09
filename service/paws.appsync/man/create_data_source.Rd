@@ -6,7 +6,8 @@
 \usage{
 create_data_source(apiId, name, description = NULL, type,
   serviceRoleArn = NULL, dynamodbConfig = NULL, lambdaConfig = NULL,
-  elasticsearchConfig = NULL, httpConfig = NULL)
+  elasticsearchConfig = NULL, httpConfig = NULL,
+  relationalDatabaseConfig = NULL)
 }
 \arguments{
 \item{apiId}{[required] The API ID for the GraphQL API for the \code{DataSource}.}
@@ -17,15 +18,17 @@ create_data_source(apiId, name, description = NULL, type,
 
 \item{type}{[required] The type of the \code{DataSource}.}
 
-\item{serviceRoleArn}{The IAM service role ARN for the data source. The system assumes this role when accessing the data source.}
+\item{serviceRoleArn}{The AWS IAM service role ARN for the data source. The system assumes this role when accessing the data source.}
 
-\item{dynamodbConfig}{DynamoDB settings.}
+\item{dynamodbConfig}{Amazon DynamoDB settings.}
 
 \item{lambdaConfig}{AWS Lambda settings.}
 
-\item{elasticsearchConfig}{Amazon Elasticsearch settings.}
+\item{elasticsearchConfig}{Amazon Elasticsearch Service settings.}
 
-\item{httpConfig}{Http endpoint settings.}
+\item{httpConfig}{HTTP endpoint settings.}
+
+\item{relationalDatabaseConfig}{Relational database settings.}
 }
 \description{
 Creates a \code{DataSource} object.
@@ -35,7 +38,7 @@ Creates a \code{DataSource} object.
   apiId = "string",
   name = "string",
   description = "string",
-  type = "AWS_LAMBDA"|"AMAZON_DYNAMODB"|"AMAZON_ELASTICSEARCH"|"NONE"|"HTTP",
+  type = "AWS_LAMBDA"|"AMAZON_DYNAMODB"|"AMAZON_ELASTICSEARCH"|"NONE"|"HTTP"|"RELATIONAL_DATABASE",
   serviceRoleArn = "string",
   dynamodbConfig = list(
     tableName = "string",
@@ -50,7 +53,24 @@ Creates a \code{DataSource} object.
     awsRegion = "string"
   ),
   httpConfig = list(
-    endpoint = "string"
+    endpoint = "string",
+    authorizationConfig = list(
+      authorizationType = "AWS_IAM",
+      awsIamConfig = list(
+        signingRegion = "string",
+        signingServiceName = "string"
+      )
+    )
+  ),
+  relationalDatabaseConfig = list(
+    relationalDatabaseSourceType = "RDS_HTTP_ENDPOINT",
+    rdsHttpEndpointConfig = list(
+      awsRegion = "string",
+      dbClusterIdentifier = "string",
+      databaseName = "string",
+      schema = "string",
+      awsSecretStoreArn = "string"
+    )
   )
 )
 }

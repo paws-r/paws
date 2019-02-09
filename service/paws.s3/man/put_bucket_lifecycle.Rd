@@ -35,11 +35,11 @@ Deprecated, see the PutBucketLifecycleConfiguration operation.
         Transition = list(
           Date = as.POSIXct("2015-01-01"),
           Days = 123,
-          StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"
+          StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"
         ),
         NoncurrentVersionTransition = list(
           NoncurrentDays = 123,
-          StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"
+          StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"
         ),
         NoncurrentVersionExpiration = list(
           NoncurrentDays = 123

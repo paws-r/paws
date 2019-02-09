@@ -21,9 +21,9 @@ Submits a request to perform the following operations:
 \item Add, update, or delete \code{HealthCheckConfig} for a specified service
 }
 
-You must specify all \code{DnsRecords} configurations (and, optionally, \code{HealthCheckConfig}) that you want to appear in the updated service. Any current configurations that don't appear in an \code{UpdateService} request are deleted.
+For public and private DNS namespaces, you must specify all \code{DnsRecords} configurations (and, optionally, \code{HealthCheckConfig}) that you want to appear in the updated service. Any current configurations that don't appear in an \code{UpdateService} request are deleted.
 
-When you update the TTL setting for a service, Amazon Route 53 also updates the corresponding settings in all the records and health checks that were created by using the specified service.
+When you update the TTL setting for a service, AWS Cloud Map also updates the corresponding settings in all the records and health checks that were created by using the specified service.
 }
 \section{Accepted Parameters}{
 \preformatted{update_service(

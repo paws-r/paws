@@ -4,12 +4,8 @@
 \alias{list_users}
 \title{Returns a list of all of the Amazon QuickSight users belonging to this account}
 \usage{
-list_users(
-  AwsAccountId = "string",
-  NextToken = "string",
-  MaxResults = 123,
-  Namespace = "string"
-)
+list_users(AwsAccountId, NextToken = NULL, MaxResults = NULL,
+  Namespace)
 }
 \arguments{
 \item{AwsAccountId}{[required] The ID for the AWS account that the user is in. Currently, you use the ID for the AWS account that contains your Amazon QuickSight account.}
@@ -32,6 +28,13 @@ The response is a list of user objects, containing each user's Amazon Resource N
 
 \code{aws quicksight list-users --aws-account-id=111122223333 --namespace=default }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_users(
+  AwsAccountId = "string",
+  NextToken = "string",
+  MaxResults = 123,
+  Namespace = "string"
+)
 }
+}
+

@@ -7,8 +7,9 @@
 create_route(DestinationCidrBlock = NULL,
   DestinationIpv6CidrBlock = NULL, DryRun = NULL,
   EgressOnlyInternetGatewayId = NULL, GatewayId = NULL,
-  InstanceId = NULL, NatGatewayId = NULL, NetworkInterfaceId = NULL,
-  RouteTableId, VpcPeeringConnectionId = NULL)
+  InstanceId = NULL, NatGatewayId = NULL, TransitGatewayId = NULL,
+  NetworkInterfaceId = NULL, RouteTableId,
+  VpcPeeringConnectionId = NULL)
 }
 \arguments{
 \item{DestinationCidrBlock}{The IPv4 CIDR address block used for the destination match. Routing decisions are based on the most specific match.}
@@ -24,6 +25,8 @@ create_route(DestinationCidrBlock = NULL,
 \item{InstanceId}{The ID of a NAT instance in your VPC. The operation fails if you specify an instance ID unless exactly one network interface is attached.}
 
 \item{NatGatewayId}{[IPv4 traffic only] The ID of a NAT gateway.}
+
+\item{TransitGatewayId}{The ID of a transit gateway.}
 
 \item{NetworkInterfaceId}{The ID of a network interface.}
 
@@ -45,7 +48,7 @@ When determining how to route traffic, we use the route with the most specific m
 
 Both routes apply to the traffic destined for \code{192.0.2.3}. However, the second route in the list covers a smaller number of IP addresses and is therefore more specific, so we use that route to determine where to target the traffic.
 
-For more information about route tables, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html}{Route Tables} in the \emph{Amazon Virtual Private Cloud User Guide}.
+For more information about route tables, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html}{Route Tables} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{create_route(
@@ -56,6 +59,7 @@ For more information about route tables, see \href{http://docs.aws.amazon.com/Am
   GatewayId = "string",
   InstanceId = "string",
   NatGatewayId = "string",
+  TransitGatewayId = "string",
   NetworkInterfaceId = "string",
   RouteTableId = "string",
   VpcPeeringConnectionId = "string"

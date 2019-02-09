@@ -99,27 +99,34 @@ list_playback_configurations <- function (MaxResults = NULL,
 #'     AdSegmentUrlPrefix = "string",
 #'     ContentSegmentUrlPrefix = "string"
 #'   ),
+#'   DashConfiguration = list(
+#'     MpdLocation = "string"
+#'   ),
 #'   Name = "string",
 #'   SlateAdUrl = "string",
+#'   TranscodeProfileName = "string",
 #'   VideoContentSourceUrl = "string"
 #' )
 #' ```
 #'
 #' @param AdDecisionServerUrl The URL for the ad decision server (ADS). This includes the specification of static parameters and placeholders for dynamic parameters. AWS Elemental MediaTailor substitutes player-specific and session-specific parameters as needed when calling the ADS. Alternately, for testing you can provide a static VAST URL. The maximum length is 25000 characters.
 #' @param CdnConfiguration The configuration for using a content delivery network (CDN), like Amazon CloudFront, for content and ad segment management.
+#' @param DashConfiguration The configuration object for DASH content.
 #' @param Name The identifier for the configuration.
 #' @param SlateAdUrl The URL for a high-quality video asset to transcode and use to fill in time that\'s not used by ads. AWS Elemental MediaTailor shows the slate to fill in gaps in media content. Configuring the slate is optional for non-VPAID configurations. For VPAID, the slate is required because AWS Elemental MediaTailor provides it in the slots that are designated for dynamic ad content. The slate must be a high-quality asset that contains both audio and video.
+#' @param TranscodeProfileName Associate this playbackConfiguration with a custom transcode profile, overriding MediaTailor\'s dynamic transcoding defaults. Do not include this field if you have not setup custom profiles with the MediaTailor service team.
 #' @param VideoContentSourceUrl The URL prefix for the master playlist for the stream, minus the asset ID. The maximum length is 512 characters.
 #'
 #' @export
 put_playback_configuration <- function (AdDecisionServerUrl = NULL, 
-    CdnConfiguration = NULL, Name = NULL, SlateAdUrl = NULL, 
-    VideoContentSourceUrl = NULL) 
+    CdnConfiguration = NULL, DashConfiguration = NULL, Name = NULL, 
+    SlateAdUrl = NULL, TranscodeProfileName = NULL, VideoContentSourceUrl = NULL) 
 {
     op <- new_operation(name = "PutPlaybackConfiguration", http_method = "PUT", 
         http_path = "/playbackConfiguration", paginator = list())
     input <- put_playback_configuration_input(AdDecisionServerUrl = AdDecisionServerUrl, 
-        CdnConfiguration = CdnConfiguration, Name = Name, SlateAdUrl = SlateAdUrl, 
+        CdnConfiguration = CdnConfiguration, DashConfiguration = DashConfiguration, 
+        Name = Name, SlateAdUrl = SlateAdUrl, TranscodeProfileName = TranscodeProfileName, 
         VideoContentSourceUrl = VideoContentSourceUrl)
     output <- put_playback_configuration_output()
     svc <- service()

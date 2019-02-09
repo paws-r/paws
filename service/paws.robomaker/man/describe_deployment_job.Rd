@@ -4,9 +4,7 @@
 \alias{describe_deployment_job}
 \title{Describes a deployment job}
 \usage{
-describe_deployment_job(
-  job = "string"
-)
+describe_deployment_job(job)
 }
 \arguments{
 \item{job}{[required] The Amazon Resource Name (ARN) of the deployment job.}
@@ -14,6 +12,10 @@ describe_deployment_job(
 \description{
 Describes a deployment job. [Does it work regardless of deployment status, e.g. Failed?]
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_deployment_job(
+  job = "string"
+)
 }
+}
+

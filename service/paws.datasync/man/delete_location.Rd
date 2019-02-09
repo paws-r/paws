@@ -4,9 +4,7 @@
 \alias{delete_location}
 \title{Deletes the configuration of a location used by AWS DataSync}
 \usage{
-delete_location(
-  LocationArn = "string"
-)
+delete_location(LocationArn)
 }
 \arguments{
 \item{LocationArn}{[required] The Amazon Resource Name (ARN) of the location to delete.}
@@ -14,6 +12,10 @@ delete_location(
 \description{
 Deletes the configuration of a location used by AWS DataSync.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_location(
+  LocationArn = "string"
+)
 }
+}
+

@@ -4,19 +4,8 @@
 \alias{list_robot_applications}
 \title{Returns a list of robot application}
 \usage{
-list_robot_applications(
-  versionQualifier = "string",
-  nextToken = "string",
-  maxResults = 123,
-  filters = list(
-    list(
-      name = "string",
-      values = list(
-        "string"
-      )
-    )
-  )
-)
+list_robot_applications(versionQualifier = NULL, nextToken = NULL,
+  maxResults = NULL, filters = NULL)
 }
 \arguments{
 \item{versionQualifier}{The version qualifier of the robot application.}
@@ -32,6 +21,20 @@ This token should be treated as an opaque identifier that is only used to retrie
 \description{
 Returns a list of robot application. You can optionally provide filters to retrieve specific robot applications.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_robot_applications(
+  versionQualifier = "string",
+  nextToken = "string",
+  maxResults = 123,
+  filters = list(
+    list(
+      name = "string",
+      values = list(
+        "string"
+      )
+    )
+  )
+)
 }
+}
+

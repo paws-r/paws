@@ -142,8 +142,11 @@ create_repository_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(repositoryName = structure(logical(0), 
-        tags = list(type = "string", max = 256L, min = 2L, pattern = "(?:[a-z0-9]+(?:[._-][a-z0-9]+)*/)*[a-z0-9]+(?:[._-][a-z0-9]+)*"))), 
-        tags = list(type = "structure"))
+        tags = list(type = "string", max = 256L, min = 2L, pattern = "(?:[a-z0-9]+(?:[._-][a-z0-9]+)*/)*[a-z0-9]+(?:[._-][a-z0-9]+)*")), 
+        tags = structure(list(structure(list(Key = structure(logical(0), 
+            tags = list(type = "string")), Value = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "list"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -180,7 +183,7 @@ delete_lifecycle_policy_output <- function (...)
         repositoryName = structure(logical(0), tags = list(type = "string", 
             max = 256L, min = 2L, pattern = "(?:[a-z0-9]+(?:[._-][a-z0-9]+)*/)*[a-z0-9]+(?:[._-][a-z0-9]+)*")), 
         lifecyclePolicyText = structure(logical(0), tags = list(type = "string", 
-            max = 10240L, min = 100L)), lastEvaluatedAt = structure(logical(0), 
+            max = 30720L, min = 100L)), lastEvaluatedAt = structure(logical(0), 
             tags = list(type = "timestamp"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -247,9 +250,10 @@ describe_images_input <- function (...)
             tags = list(type = "list", max = 100L, min = 1L)), 
         nextToken = structure(logical(0), tags = list(type = "string")), 
         maxResults = structure(logical(0), tags = list(type = "integer", 
-            max = 100L, min = 1L)), filter = structure(list(tagStatus = structure(logical(0), 
-            tags = list(type = "string", enum = c("TAGGED", "UNTAGGED")))), 
-            tags = list(type = "structure"))), tags = list(type = "structure"))
+            max = 1000L, min = 1L)), filter = structure(list(tagStatus = structure(logical(0), 
+            tags = list(type = "string", enum = c("TAGGED", "UNTAGGED", 
+                "ANY")))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -281,7 +285,7 @@ describe_repositories_input <- function (...)
             tags = list(type = "list", max = 100L, min = 1L)), 
         nextToken = structure(logical(0), tags = list(type = "string")), 
         maxResults = structure(logical(0), tags = list(type = "integer", 
-            max = 100L, min = 1L))), tags = list(type = "structure"))
+            max = 1000L, min = 1L))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -362,7 +366,7 @@ get_lifecycle_policy_output <- function (...)
         repositoryName = structure(logical(0), tags = list(type = "string", 
             max = 256L, min = 2L, pattern = "(?:[a-z0-9]+(?:[._-][a-z0-9]+)*/)*[a-z0-9]+(?:[._-][a-z0-9]+)*")), 
         lifecyclePolicyText = structure(logical(0), tags = list(type = "string", 
-            max = 10240L, min = 100L)), lastEvaluatedAt = structure(logical(0), 
+            max = 30720L, min = 100L)), lastEvaluatedAt = structure(logical(0), 
             tags = list(type = "timestamp"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -381,8 +385,9 @@ get_lifecycle_policy_preview_input <- function (...)
         nextToken = structure(logical(0), tags = list(type = "string")), 
         maxResults = structure(logical(0), tags = list(type = "integer", 
             max = 100L, min = 1L)), filter = structure(list(tagStatus = structure(logical(0), 
-            tags = list(type = "string", enum = c("TAGGED", "UNTAGGED")))), 
-            tags = list(type = "structure"))), tags = list(type = "structure"))
+            tags = list(type = "string", enum = c("TAGGED", "UNTAGGED", 
+                "ANY")))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -394,7 +399,7 @@ get_lifecycle_policy_preview_output <- function (...)
         repositoryName = structure(logical(0), tags = list(type = "string", 
             max = 256L, min = 2L, pattern = "(?:[a-z0-9]+(?:[._-][a-z0-9]+)*/)*[a-z0-9]+(?:[._-][a-z0-9]+)*")), 
         lifecyclePolicyText = structure(logical(0), tags = list(type = "string", 
-            max = 10240L, min = 100L)), status = structure(logical(0), 
+            max = 30720L, min = 100L)), status = structure(logical(0), 
             tags = list(type = "string", enum = c("IN_PROGRESS", 
                 "COMPLETE", "EXPIRED", "FAILED"))), nextToken = structure(logical(0), 
             tags = list(type = "string")), previewResults = structure(list(structure(list(imageTags = structure(list(structure(logical(0), 
@@ -464,9 +469,10 @@ list_images_input <- function (...)
             max = 256L, min = 2L, pattern = "(?:[a-z0-9]+(?:[._-][a-z0-9]+)*/)*[a-z0-9]+(?:[._-][a-z0-9]+)*")), 
         nextToken = structure(logical(0), tags = list(type = "string")), 
         maxResults = structure(logical(0), tags = list(type = "integer", 
-            max = 100L, min = 1L)), filter = structure(list(tagStatus = structure(logical(0), 
-            tags = list(type = "string", enum = c("TAGGED", "UNTAGGED")))), 
-            tags = list(type = "structure"))), tags = list(type = "structure"))
+            max = 1000L, min = 1L)), filter = structure(list(tagStatus = structure(logical(0), 
+            tags = list(type = "string", enum = c("TAGGED", "UNTAGGED", 
+                "ANY")))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -478,6 +484,24 @@ list_images_output <- function (...)
         tags = list(type = "string"))), tags = list(type = "structure"))), 
         tags = list(type = "list", max = 100L, min = 1L)), nextToken = structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_tags_for_resource_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(resourceArn = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_tags_for_resource_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(tags = structure(list(structure(list(Key = structure(logical(0), 
+        tags = list(type = "string")), Value = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))), 
+        tags = list(type = "list"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -517,7 +541,7 @@ put_lifecycle_policy_input <- function (...)
         repositoryName = structure(logical(0), tags = list(type = "string", 
             max = 256L, min = 2L, pattern = "(?:[a-z0-9]+(?:[._-][a-z0-9]+)*/)*[a-z0-9]+(?:[._-][a-z0-9]+)*")), 
         lifecyclePolicyText = structure(logical(0), tags = list(type = "string", 
-            max = 10240L, min = 100L))), tags = list(type = "structure"))
+            max = 30720L, min = 100L))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -529,7 +553,7 @@ put_lifecycle_policy_output <- function (...)
         repositoryName = structure(logical(0), tags = list(type = "string", 
             max = 256L, min = 2L, pattern = "(?:[a-z0-9]+(?:[._-][a-z0-9]+)*/)*[a-z0-9]+(?:[._-][a-z0-9]+)*")), 
         lifecyclePolicyText = structure(logical(0), tags = list(type = "string", 
-            max = 10240L, min = 100L))), tags = list(type = "structure"))
+            max = 30720L, min = 100L))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -566,7 +590,7 @@ start_lifecycle_policy_preview_input <- function (...)
         repositoryName = structure(logical(0), tags = list(type = "string", 
             max = 256L, min = 2L, pattern = "(?:[a-z0-9]+(?:[._-][a-z0-9]+)*/)*[a-z0-9]+(?:[._-][a-z0-9]+)*")), 
         lifecyclePolicyText = structure(logical(0), tags = list(type = "string", 
-            max = 10240L, min = 100L))), tags = list(type = "structure"))
+            max = 30720L, min = 100L))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -578,9 +602,44 @@ start_lifecycle_policy_preview_output <- function (...)
         repositoryName = structure(logical(0), tags = list(type = "string", 
             max = 256L, min = 2L, pattern = "(?:[a-z0-9]+(?:[._-][a-z0-9]+)*/)*[a-z0-9]+(?:[._-][a-z0-9]+)*")), 
         lifecyclePolicyText = structure(logical(0), tags = list(type = "string", 
-            max = 10240L, min = 100L)), status = structure(logical(0), 
+            max = 30720L, min = 100L)), status = structure(logical(0), 
             tags = list(type = "string", enum = c("IN_PROGRESS", 
                 "COMPLETE", "EXPIRED", "FAILED")))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+tag_resource_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(resourceArn = structure(logical(0), 
+        tags = list(type = "string")), tags = structure(list(structure(list(Key = structure(logical(0), 
+        tags = list(type = "string")), Value = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))), 
+        tags = list(type = "list"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+tag_resource_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+untag_resource_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(resourceArn = structure(logical(0), 
+        tags = list(type = "string")), tagKeys = structure(list(structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "list"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+untag_resource_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 

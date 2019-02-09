@@ -4,9 +4,7 @@
 \alias{describe_simulation_job}
 \title{Describes a simulation job}
 \usage{
-describe_simulation_job(
-  job = "string"
-)
+describe_simulation_job(job)
 }
 \arguments{
 \item{job}{[required] The Amazon Resource Name (ARN) of the simulation job to be described.}
@@ -14,6 +12,10 @@ describe_simulation_job(
 \description{
 Describes a simulation job.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_simulation_job(
+  job = "string"
+)
 }
+}
+

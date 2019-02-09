@@ -4,11 +4,7 @@
 \alias{get_route_response}
 \title{Gets a RouteResponse}
 \usage{
-get_route_response(
-  ApiId = "string",
-  RouteId = "string",
-  RouteResponseId = "string"
-)
+get_route_response(ApiId, RouteId, RouteResponseId)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -20,6 +16,12 @@ get_route_response(
 \description{
 Gets a RouteResponse.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_route_response(
+  ApiId = "string",
+  RouteId = "string",
+  RouteResponseId = "string"
+)
 }
+}
+

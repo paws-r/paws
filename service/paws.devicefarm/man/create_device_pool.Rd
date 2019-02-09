@@ -4,7 +4,8 @@
 \alias{create_device_pool}
 \title{Creates a device pool}
 \usage{
-create_device_pool(projectArn, name, description = NULL, rules)
+create_device_pool(projectArn, name, description = NULL, rules,
+  maxDevices = NULL)
 }
 \arguments{
 \item{projectArn}{[required] The ARN of the project for the device pool.}
@@ -14,6 +15,10 @@ create_device_pool(projectArn, name, description = NULL, rules)
 \item{description}{The device pool's description.}
 
 \item{rules}{[required] The device pool's rules.}
+
+\item{maxDevices}{The number of devices that Device Farm can add to your device pool. Device Farm adds devices that are available and that meet the criteria that you assign for the \code{rules} parameter. Depending on how many devices meet these constraints, your device pool might contain fewer devices than the value for this parameter.
+
+By specifying the maximum number of devices, you can control the costs that you incur by running tests.}
 }
 \description{
 Creates a device pool.
@@ -25,11 +30,12 @@ Creates a device pool.
   description = "string",
   rules = list(
     list(
-      attribute = "ARN"|"PLATFORM"|"FORM_FACTOR"|"MANUFACTURER"|"REMOTE_ACCESS_ENABLED"|"REMOTE_DEBUG_ENABLED"|"APPIUM_VERSION"|"INSTANCE_ARN"|"INSTANCE_LABELS"|"FLEET_TYPE",
-      operator = "EQUALS"|"LESS_THAN"|"GREATER_THAN"|"IN"|"NOT_IN"|"CONTAINS",
+      attribute = "ARN"|"PLATFORM"|"FORM_FACTOR"|"MANUFACTURER"|"REMOTE_ACCESS_ENABLED"|"REMOTE_DEBUG_ENABLED"|"APPIUM_VERSION"|"INSTANCE_ARN"|"INSTANCE_LABELS"|"FLEET_TYPE"|"OS_VERSION"|"MODEL"|"AVAILABILITY",
+      operator = "EQUALS"|"LESS_THAN"|"LESS_THAN_OR_EQUALS"|"GREATER_THAN"|"GREATER_THAN_OR_EQUALS"|"IN"|"NOT_IN"|"CONTAINS",
       value = "string"
     )
-  )
+  ),
+  maxDevices = 123
 )
 }
 }

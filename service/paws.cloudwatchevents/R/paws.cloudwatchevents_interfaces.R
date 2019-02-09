@@ -7,7 +7,8 @@ delete_rule_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(Name = structure(logical(0), tags = list(type = "string", 
-        max = 64L, min = 1L, pattern = "[\\.\\-_A-Za-z0-9]+"))), 
+        max = 64L, min = 1L, pattern = "[\\.\\-_A-Za-z0-9]+")), 
+        Force = structure(logical(0), tags = list(type = "boolean"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -55,8 +56,9 @@ describe_rule_output <- function (...)
             tags = list(type = "string", enum = c("ENABLED", 
                 "DISABLED"))), Description = structure(logical(0), 
             tags = list(type = "string", max = 512L)), RoleArn = structure(logical(0), 
-            tags = list(type = "string", max = 1600L, min = 1L))), 
-        tags = list(type = "structure"))
+            tags = list(type = "string", max = 1600L, min = 1L)), 
+        ManagedBy = structure(logical(0), tags = list(type = "string", 
+            max = 128L, min = 1L))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -135,10 +137,12 @@ list_rules_output <- function (...)
                 "DISABLED"))), Description = structure(logical(0), 
             tags = list(type = "string", max = 512L)), ScheduleExpression = structure(logical(0), 
             tags = list(type = "string", max = 256L)), RoleArn = structure(logical(0), 
-            tags = list(type = "string", max = 1600L, min = 1L))), 
-        tags = list(type = "structure"))), tags = list(type = "list")), 
-        NextToken = structure(logical(0), tags = list(type = "string", 
-            max = 2048L, min = 1L))), tags = list(type = "structure"))
+            tags = list(type = "string", max = 1600L, min = 1L)), 
+        ManagedBy = structure(logical(0), tags = list(type = "string", 
+            max = 128L, min = 1L))), tags = list(type = "structure"))), 
+        tags = list(type = "list")), NextToken = structure(logical(0), 
+        tags = list(type = "string", max = 2048L, min = 1L))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -365,7 +369,8 @@ remove_targets_input <- function (...)
         max = 64L, min = 1L, pattern = "[\\.\\-_A-Za-z0-9]+")), 
         Ids = structure(list(structure(logical(0), tags = list(type = "string", 
             max = 64L, min = 1L, pattern = "[\\.\\-_A-Za-z0-9]+"))), 
-            tags = list(type = "list", max = 100L, min = 1L))), 
+            tags = list(type = "list", max = 100L, min = 1L)), 
+        Force = structure(logical(0), tags = list(type = "boolean"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }

@@ -8,7 +8,8 @@ run_task(cluster = NULL, taskDefinition, overrides = NULL,
   count = NULL, startedBy = NULL, group = NULL,
   placementConstraints = NULL, placementStrategy = NULL,
   launchType = NULL, platformVersion = NULL,
-  networkConfiguration = NULL)
+  networkConfiguration = NULL, tags = NULL,
+  enableECSManagedTags = NULL, propagateTags = NULL)
 }
 \arguments{
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster on which to run your task. If you do not specify a cluster, the default cluster is assumed.}
@@ -21,31 +22,39 @@ A total of 8192 characters are allowed for overrides. This limit includes the JS
 
 \item{count}{The number of instantiations of the specified task to place on your cluster. You can specify up to 10 tasks per call.}
 
-\item{startedBy}{An optional tag specified when a task is started. For example if you automatically trigger a task to run a batch process job, you could apply a unique identifier for that job to your task with the \code{startedBy} parameter. You can then identify which tasks belong to that job by filtering the results of a ListTasks call with the \code{startedBy} value. Up to 36 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.
+\item{startedBy}{An optional tag specified when a task is started. For example, if you automatically trigger a task to run a batch process job, you could apply a unique identifier for that job to your task with the \code{startedBy} parameter. You can then identify which tasks belong to that job by filtering the results of a ListTasks call with the \code{startedBy} value. Up to 36 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.
 
 If a task is started by an Amazon ECS service, then the \code{startedBy} parameter contains the deployment ID of the service that starts it.}
 
 \item{group}{The name of the task group to associate with the task. The default value is the family name of the task definition (for example, family:my-family-name).}
 
-\item{placementConstraints}{An array of placement constraint objects to use for the task. You can specify up to 10 constraints per task (including constraints in the task definition and those specified at run time).}
+\item{placementConstraints}{An array of placement constraint objects to use for the task. You can specify up to 10 constraints per task (including constraints in the task definition and those specified at runtime).}
 
 \item{placementStrategy}{The placement strategy objects to use for the task. You can specify a maximum of five strategy rules per task.}
 
-\item{launchType}{The launch type on which to run your task.}
+\item{launchType}{The launch type on which to run your task. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html}{Amazon ECS Launch Types} in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
-\item{platformVersion}{The platform version on which to run your task. If one is not specified, the latest version is used by default.}
+\item{platformVersion}{The platform version the task should run. A platform version is only specified for tasks using the Fargate launch type. If one is not specified, the \code{LATEST} platform version is used by default. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html}{AWS Fargate Platform Versions} in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
-\item{networkConfiguration}{The network configuration for the task. This parameter is required for task definitions that use the \code{awsvpc} network mode to receive their own Elastic Network Interface, and it is not supported for other network modes. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html}{Task Networking} in the \emph{Amazon Elastic Container Service Developer Guide}.}
+\item{networkConfiguration}{The network configuration for the task. This parameter is required for task definitions that use the \code{awsvpc} network mode to receive their own elastic network interface, and it is not supported for other network modes. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html}{Task Networking} in the \emph{Amazon Elastic Container Service Developer Guide}.}
+
+\item{tags}{The metadata that you apply to the task to help you categorize and organize them. Each tag consists of a key and an optional value, both of which you define. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.}
+
+\item{enableECSManagedTags}{Specifies whether to enable Amazon ECS managed tags for the task. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html}{Tagging Your Amazon ECS Resources} in the \emph{Amazon Elastic Container Service Developer Guide}.}
+
+\item{propagateTags}{Specifies whether to propagate the tags from the task definition to the task. If no value is specified, the tags are not propagated. Tags can only be propagated to the task during task creation. To add tags to a task after task creation, use the TagResource API action.
+
+An error will be received if you specify the \code{SERVICE} option when running a task.}
 }
 \description{
 Starts a new task using the specified task definition.
 }
 \details{
-You can allow Amazon ECS to place tasks for you, or you can customize how Amazon ECS places tasks using placement constraints and placement strategies. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html}{Scheduling Tasks} in the \emph{Amazon Elastic Container Service Developer Guide}.
+You can allow Amazon ECS to place tasks for you, or you can customize how Amazon ECS places tasks using placement constraints and placement strategies. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html}{Scheduling Tasks} in the \emph{Amazon Elastic Container Service Developer Guide}.
 
 Alternatively, you can use StartTask to use your own scheduler or place tasks manually on specific container instances.
 
-The Amazon ECS API follows an eventual consistency model, due to the distributed nature of the system supporting the API. This means that the result of an API command you run that affects your Amazon ECS resources might not be immediately visible to all subsequent commands you run. You should keep this in mind when you carry out an API command that immediately follows a previous API command.
+The Amazon ECS API follows an eventual consistency model, due to the distributed nature of the system supporting the API. This means that the result of an API command you run that affects your Amazon ECS resources might not be immediately visible to all subsequent commands you run. Keep this in mind when you carry out an API command that immediately follows a previous API command.
 
 To manage eventual consistency, you can do the following:
 \itemize{
@@ -72,7 +81,13 @@ To manage eventual consistency, you can do the following:
         ),
         cpu = 123,
         memory = 123,
-        memoryReservation = 123
+        memoryReservation = 123,
+        resourceRequirements = list(
+          list(
+            value = "string",
+            type = "GPU"
+          )
+        )
       )
     ),
     taskRoleArn = "string",
@@ -105,7 +120,15 @@ To manage eventual consistency, you can do the following:
       ),
       assignPublicIp = "ENABLED"|"DISABLED"
     )
-  )
+  ),
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  ),
+  enableECSManagedTags = TRUE|FALSE,
+  propagateTags = "TASK_DEFINITION"|"SERVICE"
 )
 }
 }

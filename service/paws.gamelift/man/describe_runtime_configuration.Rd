@@ -13,7 +13,6 @@ describe_runtime_configuration(FleetId)
 Retrieves the current run-time configuration for the specified fleet. The run-time configuration tells Amazon GameLift how to launch server processes on instances in the fleet.
 }
 \details{
-Fleet-related operations include:
 \itemize{
 \item CreateFleet
 \item ListFleets

@@ -27,7 +27,7 @@ describe_tags(DryRun = NULL, Filters = NULL, MaxResults = NULL,
 Describes one or more of the tags for your EC2 resources.
 }
 \details{
-For more information about tags, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html}{Tagging Your Resources} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information about tags, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html}{Tagging Your Resources} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{describe_tags(

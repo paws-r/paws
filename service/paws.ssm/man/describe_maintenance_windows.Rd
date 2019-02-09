@@ -8,7 +8,7 @@ describe_maintenance_windows(Filters = NULL, MaxResults = NULL,
   NextToken = NULL)
 }
 \arguments{
-\item{Filters}{Optional filters used to narrow down the scope of the returned Maintenance Windows. Supported filter keys are Name and Enabled.}
+\item{Filters}{Optional filters used to narrow down the scope of the returned Maintenance Windows. Supported filter keys are \strong{Name} and \strong{Enabled}.}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 

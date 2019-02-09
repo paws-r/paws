@@ -373,9 +373,9 @@ confirm_public_virtual_interface <- function (virtualInterfaceId)
 #'
 #' Creates a BGP peer on the specified virtual interface.
 #' 
-#' The BGP peer cannot be in the same address family (IPv4/IPv6) of an existing BGP peer on the virtual interface.
+#' You must create a BGP peer for the corresponding address family (IPv4/IPv6) in order to access AWS resources that also use that address family.
 #' 
-#' You must create a BGP peer for the corresponding address family in order to access AWS resources that also use that address family.
+#' If logical redundancy is not supported by the connection, interconnect, or LAG, the BGP peer cannot be in the same address family as an existing BGP peer on the virtual interface.
 #' 
 #' When creating a IPv6 BGP peer, omit the Amazon address and customer address. IPv6 addresses are automatically assigned from the Amazon pool of IPv6 addresses; you cannot specify custom IPv6 addresses.
 #' 
@@ -683,9 +683,9 @@ create_public_virtual_interface <- function (connectionId, newPublicVirtualInter
     return(response)
 }
 
-#' Deletes the BGP peer on the specified virtual interface with the specified customer address and ASN
+#' Deletes the specified BGP peer on the specified virtual interface with the specified customer address and ASN
 #'
-#' Deletes the BGP peer on the specified virtual interface with the specified customer address and ASN.
+#' Deletes the specified BGP peer on the specified virtual interface with the specified customer address and ASN.
 #' 
 #' You cannot delete the last BGP peer from a virtual interface.
 #'
@@ -694,22 +694,24 @@ create_public_virtual_interface <- function (connectionId, newPublicVirtualInter
 #' delete_bgp_peer(
 #'   virtualInterfaceId = "string",
 #'   asn = 123,
-#'   customerAddress = "string"
+#'   customerAddress = "string",
+#'   bgpPeerId = "string"
 #' )
 #' ```
 #'
 #' @param virtualInterfaceId The ID of the virtual interface.
 #' @param asn The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
 #' @param customerAddress The IP address assigned to the customer interface.
+#' @param bgpPeerId The ID of the BGP peer.
 #'
 #' @export
 delete_bgp_peer <- function (virtualInterfaceId = NULL, asn = NULL, 
-    customerAddress = NULL) 
+    customerAddress = NULL, bgpPeerId = NULL) 
 {
     op <- new_operation(name = "DeleteBGPPeer", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- delete_bgp_peer_input(virtualInterfaceId = virtualInterfaceId, 
-        asn = asn, customerAddress = customerAddress)
+        asn = asn, customerAddress = customerAddress, bgpPeerId = bgpPeerId)
     output <- delete_bgp_peer_output()
     svc <- service()
     request <- new_request(svc, op, input, output)

@@ -6,11 +6,11 @@
 \alias{paws.appmesh-package}
 \title{paws.appmesh: AWS App Mesh}
 \description{
-AWS App Mesh is a service mesh based on the Envoy proxy that
-makes it easy to monitor and control containerized microservices. App
-Mesh standardizes how your microservices communicate, giving you
-end-to-end visibility and helping to ensure high-availability for your
-applications.
+AWS App Mesh is a service mesh based on the Envoy
+    proxy that makes it easy to monitor and control containerized
+    microservices. App Mesh standardizes how your microservices
+    communicate, giving you end-to-end visibility and helping to ensure
+    high-availability for your applications.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

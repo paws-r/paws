@@ -109,47 +109,54 @@ add_tags_to_resource <- function (ResourceArn, Tags)
 #'     DocsToInvestigate = "string",
 #'     AuthSource = "string",
 #'     KmsKeyId = "string"
+#'   ),
+#'   KinesisSettings = list(
+#'     StreamArn = "string",
+#'     MessageFormat = "json",
+#'     ServiceAccessRoleArn = "string"
+#'   ),
+#'   ElasticsearchSettings = list(
+#'     ServiceAccessRoleArn = "string",
+#'     EndpointUri = "string",
+#'     FullLoadErrorPercentage = 123,
+#'     ErrorRetryDuration = 123
 #'   )
 #' )
 #' ```
 #'
 #' @param EndpointIdentifier &#91;required&#93; The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.
 #' @param EndpointType &#91;required&#93; The type of endpoint.
-#' @param EngineName &#91;required&#93; The type of engine for the endpoint. Valid values, depending on the EndPointType, include mysql, oracle, postgres, mariadb, aurora, aurora-postgresql, redshift, s3, db2, azuredb, sybase, dynamodb, mongodb, and sqlserver.
-#' @param Username The user name to be used to login to the endpoint database.
-#' @param Password The password to be used to login to the endpoint database.
+#' @param EngineName &#91;required&#93; The type of engine for the endpoint. Valid values, depending on the `EndPointType` value, include `mysql`, `oracle`, `postgres`, `mariadb`, `aurora`, `aurora-postgresql`, `redshift`, `s3`, `db2`, `azuredb`, `sybase`, `dynamodb`, `mongodb`, and `sqlserver`.
+#' @param Username The user name to be used to log in to the endpoint database.
+#' @param Password The password to be used to log in to the endpoint database.
 #' @param ServerName The name of the server where the endpoint database resides.
 #' @param Port The port used by the endpoint database.
 #' @param DatabaseName The name of the endpoint database.
 #' @param ExtraConnectionAttributes Additional attributes associated with the connection.
-#' @param KmsKeyId The KMS key identifier that will be used to encrypt the connection parameters. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
+#' @param KmsKeyId The AWS KMS key identifier to use to encrypt the connection parameters. If you don\'t specify a value for the `KmsKeyId` parameter, then AWS DMS uses your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS Region.
 #' @param Tags Tags to be added to the endpoint.
 #' @param CertificateArn The Amazon Resource Name (ARN) for the certificate.
-#' @param SslMode The SSL mode to use for the SSL connection.
-#' 
-#' SSL mode can be one of four values: none, require, verify-ca, verify-full.
-#' 
-#' The default value is none.
-#' @param ServiceAccessRoleArn The Amazon Resource Name (ARN) for the service access role you want to use to create the endpoint.
+#' @param SslMode The Secure Sockets Layer (SSL) mode to use for the SSL connection. The SSL mode can be one of four values: `none`, `require`, `verify-ca`, `verify-full`. The default value is `none`.
+#' @param ServiceAccessRoleArn The Amazon Resource Name (ARN) for the service access role that you want to use to create the endpoint.
 #' @param ExternalTableDefinition The external table definition.
-#' @param DynamoDbSettings Settings in JSON format for the target Amazon DynamoDB endpoint. For more information about the available settings, see the **Using Object Mapping to Migrate Data to DynamoDB** section at [Using an Amazon DynamoDB Database as a Target for AWS Database Migration Service](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html).
-#' @param S3Settings Settings in JSON format for the target Amazon S3 endpoint. For more information about the available settings, see the **Extra Connection Attributes** section at [Using Amazon S3 as a Target for AWS Database Migration Service](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html).
-#' @param DmsTransferSettings The settings in JSON format for the DMS Transfer type source endpoint.
+#' @param DynamoDbSettings Settings in JSON format for the target Amazon DynamoDB endpoint. For more information about the available settings, see [Using Object Mapping to Migrate Data to DynamoDB](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html) in the *AWS Database Migration Service User Guide.*
+#' @param S3Settings Settings in JSON format for the target Amazon S3 endpoint. For more information about the available settings, see [Extra Connection Attributes When Using Amazon S3 as a Target for AWS DMS](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html#CHAP_Target.S3.Configuring) in the *AWS Database Migration Service User Guide.*
+#' @param DmsTransferSettings The settings in JSON format for the DMS transfer type of source endpoint.
 #' 
-#' Attributes include:
+#' Possible attributes include the following:
 #' 
-#' -   serviceAccessRoleArn - The IAM role that has permission to access the Amazon S3 bucket.
+#' -   `serviceAccessRoleArn` - The IAM role that has permission to access the Amazon S3 bucket.
 #' 
-#' -   bucketName - The name of the S3 bucket to use.
+#' -   `bucketName` - The name of the S3 bucket to use.
 #' 
-#' -   compressionType - An optional parameter to use GZIP to compress the target files. Set to NONE (the default) or do not use to leave the files uncompressed.
+#' -   `compressionType` - An optional parameter to use GZIP to compress the target files. To use GZIP, set this value to `NONE` (the default). To keep the files uncompressed, don\'t use this value.
 #' 
-#' Shorthand syntax: ServiceAccessRoleArn=string ,BucketName=string,CompressionType=string
+#' Shorthand syntax for these attributes is as follows: `ServiceAccessRoleArn=string,BucketName=string,CompressionType=string`
 #' 
-#' JSON syntax:
-#' 
-#' { \"ServiceAccessRoleArn\": \"string\", \"BucketName\": \"string\", \"CompressionType\": \"none\"\|\"gzip\" }
-#' @param MongoDbSettings Settings in JSON format for the source MongoDB endpoint. For more information about the available settings, see the **Configuration Properties When Using MongoDB as a Source for AWS Database Migration Service** section at [Using MongoDB as a Target for AWS Database Migration Service](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html).
+#' JSON syntax for these attributes is as follows: `{ "ServiceAccessRoleArn": "string", "BucketName": "string", "CompressionType": "none"|"gzip" } `
+#' @param MongoDbSettings Settings in JSON format for the source MongoDB endpoint. For more information about the available settings, see the configuration properties section in [Using MongoDB as a Target for AWS Database Migration Service](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html) in the *AWS Database Migration Service User Guide.*
+#' @param KinesisSettings Settings in JSON format for the target Amazon Kinesis Data Streams endpoint. For more information about the available settings, see [Using Object Mapping to Migrate Data to a Kinesis Data Stream](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping%20) in the *AWS Database Migration User Guide.*
+#' @param ElasticsearchSettings Settings in JSON format for the target Elasticsearch endpoint. For more information about the available settings, see [Extra Connection Attributes When Using Elasticsearch as a Target for AWS DMS](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Elasticsearch.html#CHAP_Target.Elasticsearch.Configuration) in the *AWS Database Migration User Guide.*
 #'
 #' @examples
 #' # Creates an endpoint using the provided settings.
@@ -181,7 +188,7 @@ create_endpoint <- function (EndpointIdentifier, EndpointType,
     KmsKeyId = NULL, Tags = NULL, CertificateArn = NULL, SslMode = NULL, 
     ServiceAccessRoleArn = NULL, ExternalTableDefinition = NULL, 
     DynamoDbSettings = NULL, S3Settings = NULL, DmsTransferSettings = NULL, 
-    MongoDbSettings = NULL) 
+    MongoDbSettings = NULL, KinesisSettings = NULL, ElasticsearchSettings = NULL) 
 {
     op <- new_operation(name = "CreateEndpoint", http_method = "POST", 
         http_path = "/", paginator = list())
@@ -193,7 +200,8 @@ create_endpoint <- function (EndpointIdentifier, EndpointType,
         SslMode = SslMode, ServiceAccessRoleArn = ServiceAccessRoleArn, 
         ExternalTableDefinition = ExternalTableDefinition, DynamoDbSettings = DynamoDbSettings, 
         S3Settings = S3Settings, DmsTransferSettings = DmsTransferSettings, 
-        MongoDbSettings = MongoDbSettings)
+        MongoDbSettings = MongoDbSettings, KinesisSettings = KinesisSettings, 
+        ElasticsearchSettings = ElasticsearchSettings)
     output <- create_endpoint_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -207,7 +215,7 @@ create_endpoint <- function (EndpointIdentifier, EndpointType,
 #' 
 #' You can specify the type of source (`SourceType`) you want to be notified of, provide a list of AWS DMS source IDs (`SourceIds`) that triggers the events, and provide a list of event categories (`EventCategories`) for events you want to be notified of. If you specify both the `SourceType` and `SourceIds`, such as `SourceType = replication-instance` and `SourceIdentifier = my-replinstance`, you will be notified of all the replication instance events for the specified source. If you specify a `SourceType` but don\'t specify a `SourceIdentifier`, you receive notice of the events for that source type for all your AWS DMS sources. If you don\'t specify either `SourceType` nor `SourceIdentifier`, you will be notified of events generated from all AWS DMS sources belonging to your customer account.
 #' 
-#' For more information about AWS DMS events, see [Working with Events and Notifications](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html) in the AWS Database MIgration Service User Guide.
+#' For more information about AWS DMS events, see [Working with Events and Notifications](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html) in the *AWS Database Migration Service User Guide.*
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -238,9 +246,9 @@ create_endpoint <- function (EndpointIdentifier, EndpointType,
 #' @param SourceType The type of AWS DMS resource that generates the events. For example, if you want to be notified of events generated by a replication instance, you set this parameter to `replication-instance`. If this value is not specified, all events are returned.
 #' 
 #' Valid values: replication-instance \| migration-task
-#' @param EventCategories A list of event categories for a source type that you want to subscribe to. You can see a list of the categories for a given source type by calling the **DescribeEventCategories** action or in the topic [Working with Events and Notifications](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html) in the AWS Database Migration Service User Guide.
+#' @param EventCategories A list of event categories for a source type that you want to subscribe to. You can see a list of the categories for a given source type by calling the `DescribeEventCategories` action or in the topic [Working with Events and Notifications](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html) in the *AWS Database Migration Service User Guide.*
 #' @param SourceIds The list of identifiers of the event sources for which events will be returned. If not specified, then all sources are included in the response. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it cannot end with a hyphen or contain two consecutive hyphens.
-#' @param Enabled A Boolean value; set to **true** to activate the subscription, or set to **false** to create the subscription but not activate it.
+#' @param Enabled A Boolean value; set to `true` to activate the subscription, or set to `false` to create the subscription but not activate it.
 #' @param Tags A tag to be attached to the event subscription.
 #'
 #' @export
@@ -286,7 +294,8 @@ create_event_subscription <- function (SubscriptionName, SnsTopicArn,
 #'     )
 #'   ),
 #'   KmsKeyId = "string",
-#'   PubliclyAccessible = TRUE|FALSE
+#'   PubliclyAccessible = TRUE|FALSE,
+#'   DnsNameServers = "string"
 #' )
 #' ```
 #'
@@ -327,8 +336,9 @@ create_event_subscription <- function (SubscriptionName, SnsTopicArn,
 #' 
 #' Default: `true`
 #' @param Tags Tags to be associated with the replication instance.
-#' @param KmsKeyId The KMS key identifier that will be used to encrypt the content on the replication instance. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
+#' @param KmsKeyId The AWS KMS key identifier that is used to encrypt the content on the replication instance. If you don\'t specify a value for the `KmsKeyId` parameter, then AWS DMS uses your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS Region.
 #' @param PubliclyAccessible Specifies the accessibility options for the replication instance. A value of `true` represents an instance with a public IP address. A value of `false` represents an instance with a private IP address. The default value is `true`.
+#' @param DnsNameServers A list of DNS name servers supported for the replication instance.
 #'
 #' @examples
 #' # Creates the replication instance using the specified parameters.
@@ -359,7 +369,7 @@ create_replication_instance <- function (ReplicationInstanceIdentifier,
     AvailabilityZone = NULL, ReplicationSubnetGroupIdentifier = NULL, 
     PreferredMaintenanceWindow = NULL, MultiAZ = NULL, EngineVersion = NULL, 
     AutoMinorVersionUpgrade = NULL, Tags = NULL, KmsKeyId = NULL, 
-    PubliclyAccessible = NULL) 
+    PubliclyAccessible = NULL, DnsNameServers = NULL) 
 {
     op <- new_operation(name = "CreateReplicationInstance", http_method = "POST", 
         http_path = "/", paginator = list())
@@ -369,7 +379,8 @@ create_replication_instance <- function (ReplicationInstanceIdentifier,
         ReplicationSubnetGroupIdentifier = ReplicationSubnetGroupIdentifier, 
         PreferredMaintenanceWindow = PreferredMaintenanceWindow, 
         MultiAZ = MultiAZ, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, 
-        Tags = Tags, KmsKeyId = KmsKeyId, PubliclyAccessible = PubliclyAccessible)
+        Tags = Tags, KmsKeyId = KmsKeyId, PubliclyAccessible = PubliclyAccessible, 
+        DnsNameServers = DnsNameServers)
     output <- create_replication_instance_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -483,7 +494,7 @@ create_replication_subnet_group <- function (ReplicationSubnetGroupIdentifier,
 #' @param TableMappings &#91;required&#93; When using the AWS CLI or boto3, provide the path of the JSON file that contains the table mappings. Precede the path with \"file://\". When working with the DMS API, provide the JSON as the parameter value.
 #' 
 #' For example, \--table-mappings file://mappingfile.json
-#' @param ReplicationTaskSettings Settings for the task, such as target metadata settings. For a complete list of task settings, see [Task Settings for AWS Database Migration Service Tasks](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html).
+#' @param ReplicationTaskSettings Settings for the task, such as target metadata settings. For a complete list of task settings, see [Task Settings for AWS Database Migration Service Tasks](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html) in the *AWS Database Migration User Guide.*
 #' @param CdcStartTime Indicates the start time for a change data capture (CDC) operation. Use either CdcStartTime or CdcStartPosition to specify when you want a CDC operation to start. Specifying both values results in an error.
 #' 
 #' Timestamp Example: \--cdc-start-time "2018-03-08T12:12:12"
@@ -1017,7 +1028,7 @@ describe_endpoints <- function (Filters = NULL, MaxRecords = NULL,
 
 #' Lists categories for all event source types, or, if specified, for a specified source type
 #'
-#' Lists categories for all event source types, or, if specified, for a specified source type. You can see a list of the event categories and source types in [Working with Events and Notifications](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html) in the AWS Database Migration Service User Guide.
+#' Lists categories for all event source types, or, if specified, for a specified source type. You can see a list of the event categories and source types in [Working with Events and Notifications](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html) in the *AWS Database Migration Service User Guide.*
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1102,7 +1113,7 @@ describe_event_subscriptions <- function (SubscriptionName = NULL,
 
 #' Lists events for a given source identifier and source type
 #'
-#' Lists events for a given source identifier and source type. You can also specify a start and end time. For more information on AWS DMS events, see [Working with Events and Notifications](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html) .
+#' Lists events for a given source identifier and source type. You can also specify a start and end time. For more information on AWS DMS events, see [Working with Events and Notifications](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html) in the *AWS Database Migration User Guide.*
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1723,6 +1734,17 @@ list_tags_for_resource <- function (ResourceArn)
 #'     DocsToInvestigate = "string",
 #'     AuthSource = "string",
 #'     KmsKeyId = "string"
+#'   ),
+#'   KinesisSettings = list(
+#'     StreamArn = "string",
+#'     MessageFormat = "json",
+#'     ServiceAccessRoleArn = "string"
+#'   ),
+#'   ElasticsearchSettings = list(
+#'     ServiceAccessRoleArn = "string",
+#'     EndpointUri = "string",
+#'     FullLoadErrorPercentage = 123,
+#'     ErrorRetryDuration = 123
 #'   )
 #' )
 #' ```
@@ -1745,11 +1767,11 @@ list_tags_for_resource <- function (ResourceArn)
 #' The default value is none.
 #' @param ServiceAccessRoleArn The Amazon Resource Name (ARN) for the service access role you want to use to modify the endpoint.
 #' @param ExternalTableDefinition The external table definition.
-#' @param DynamoDbSettings Settings in JSON format for the target Amazon DynamoDB endpoint. For more information about the available settings, see the **Using Object Mapping to Migrate Data to DynamoDB** section at [Using an Amazon DynamoDB Database as a Target for AWS Database Migration Service](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html).
-#' @param S3Settings Settings in JSON format for the target S3 endpoint. For more information about the available settings, see the **Extra Connection Attributes** section at [Using Amazon S3 as a Target for AWS Database Migration Service](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html).
-#' @param DmsTransferSettings The settings in JSON format for the DMS Transfer type source endpoint.
+#' @param DynamoDbSettings Settings in JSON format for the target Amazon DynamoDB endpoint. For more information about the available settings, see [Using Object Mapping to Migrate Data to DynamoDB](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html) in the *AWS Database Migration Service User Guide.*
+#' @param S3Settings Settings in JSON format for the target Amazon S3 endpoint. For more information about the available settings, see [Extra Connection Attributes When Using Amazon S3 as a Target for AWS DMS](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html#CHAP_Target.S3.Configuring) in the *AWS Database Migration Service User Guide.*
+#' @param DmsTransferSettings The settings in JSON format for the DMS transfer type of source endpoint.
 #' 
-#' Attributes include:
+#' Attributes include the following:
 #' 
 #' -   serviceAccessRoleArn - The IAM role that has permission to access the Amazon S3 bucket.
 #' 
@@ -1762,7 +1784,9 @@ list_tags_for_resource <- function (ResourceArn)
 #' JSON syntax:
 #' 
 #' { \"ServiceAccessRoleArn\": \"string\", \"BucketName\": \"string\", \"CompressionType\": \"none\"\|\"gzip\" }
-#' @param MongoDbSettings Settings in JSON format for the source MongoDB endpoint. For more information about the available settings, see the **Configuration Properties When Using MongoDB as a Source for AWS Database Migration Service** section at [Using Amazon S3 as a Target for AWS Database Migration Service](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html).
+#' @param MongoDbSettings Settings in JSON format for the source MongoDB endpoint. For more information about the available settings, see the configuration properties section in [Using MongoDB as a Target for AWS Database Migration Service](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html) in the *AWS Database Migration Service User Guide.*
+#' @param KinesisSettings Settings in JSON format for the target Amazon Kinesis Data Streams endpoint. For more information about the available settings, see [Using Object Mapping to Migrate Data to a Kinesis Data Stream](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping%20) in the *AWS Database Migration User Guide.*
+#' @param ElasticsearchSettings Settings in JSON format for the target Elasticsearch endpoint. For more information about the available settings, see [Extra Connection Attributes When Using Elasticsearch as a Target for AWS DMS](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Elasticsearch.html#CHAP_Target.Elasticsearch.Configuration) in the *AWS Database Migration User Guide.*
 #'
 #' @examples
 #' # Modifies the specified endpoint.
@@ -1788,7 +1812,7 @@ modify_endpoint <- function (EndpointArn, EndpointIdentifier = NULL,
     ExtraConnectionAttributes = NULL, CertificateArn = NULL, 
     SslMode = NULL, ServiceAccessRoleArn = NULL, ExternalTableDefinition = NULL, 
     DynamoDbSettings = NULL, S3Settings = NULL, DmsTransferSettings = NULL, 
-    MongoDbSettings = NULL) 
+    MongoDbSettings = NULL, KinesisSettings = NULL, ElasticsearchSettings = NULL) 
 {
     op <- new_operation(name = "ModifyEndpoint", http_method = "POST", 
         http_path = "/", paginator = list())
@@ -1800,7 +1824,8 @@ modify_endpoint <- function (EndpointArn, EndpointIdentifier = NULL,
         CertificateArn = CertificateArn, SslMode = SslMode, ServiceAccessRoleArn = ServiceAccessRoleArn, 
         ExternalTableDefinition = ExternalTableDefinition, DynamoDbSettings = DynamoDbSettings, 
         S3Settings = S3Settings, DmsTransferSettings = DmsTransferSettings, 
-        MongoDbSettings = MongoDbSettings)
+        MongoDbSettings = MongoDbSettings, KinesisSettings = KinesisSettings, 
+        ElasticsearchSettings = ElasticsearchSettings)
     output <- modify_endpoint_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -1987,7 +2012,7 @@ modify_replication_subnet_group <- function (ReplicationSubnetGroupIdentifier,
 #' 
 #' You can\'t modify the task endpoints. The task must be stopped before you can modify it.
 #' 
-#' For more information about AWS DMS tasks, see the AWS DMS user guide at [Working with Migration Tasks](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html)
+#' For more information about AWS DMS tasks, see [Working with Migration Tasks](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html) in the *AWS Database Migration Service User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -2208,7 +2233,7 @@ remove_tags_from_resource <- function (ResourceArn, TagKeys)
 #'
 #' Starts the replication task.
 #' 
-#' For more information about AWS DMS tasks, see the AWS DMS user guide at [Working with Migration Tasks](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html)
+#' For more information about AWS DMS tasks, see [Working with Migration Tasks](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html) in the *AWS Database Migration Service User Guide.*
 #'
 #' @section Accepted Parameters:
 #' ```

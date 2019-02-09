@@ -12,7 +12,7 @@ create_streaming_url(StackName, FleetName, UserId, ApplicationId = NULL,
 
 \item{FleetName}{[required] The name of the fleet.}
 
-\item{UserId}{[required] The ID of the user.}
+\item{UserId}{[required] The identifier of the user.}
 
 \item{ApplicationId}{The name of the application to launch after the session starts. This is the name that you specified as \strong{Name} in the Image Assistant.}
 

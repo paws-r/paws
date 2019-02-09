@@ -12,7 +12,7 @@ enable_vpc_classic_link(DryRun = NULL, VpcId)
 \item{VpcId}{[required] The ID of the VPC.}
 }
 \description{
-Enables a VPC for ClassicLink. You can then link EC2-Classic instances to your ClassicLink-enabled VPC to allow communication over private IP addresses. You cannot enable your VPC for ClassicLink if any of your VPC route tables have existing routes for address ranges within the \code{10.0.0.0/8} IP address range, excluding local routes for VPCs in the \code{10.0.0.0/16} and \code{10.1.0.0/16} IP address ranges. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html}{ClassicLink} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+Enables a VPC for ClassicLink. You can then link EC2-Classic instances to your ClassicLink-enabled VPC to allow communication over private IP addresses. You cannot enable your VPC for ClassicLink if any of your VPC route tables have existing routes for address ranges within the \code{10.0.0.0/8} IP address range, excluding local routes for VPCs in the \code{10.0.0.0/16} and \code{10.1.0.0/16} IP address ranges. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html}{ClassicLink} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{enable_vpc_classic_link(

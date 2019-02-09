@@ -14,7 +14,7 @@ list_services(cluster = NULL, nextToken = NULL, maxResults = NULL,
 
 This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.}
 
-\item{maxResults}{The maximum number of service results returned by \code{ListServices} in paginated output. When this parameter is used, \code{ListServices} only returns \code{maxResults} results in a single page along with a \code{nextToken} response element. The remaining results of the initial request can be seen by sending another \code{ListServices} request with the returned \code{nextToken} value. This value can be between 1 and 10. If this parameter is not used, then \code{ListServices} returns up to 10 results and a \code{nextToken} value if applicable.}
+\item{maxResults}{The maximum number of service results returned by \code{ListServices} in paginated output. When this parameter is used, \code{ListServices} only returns \code{maxResults} results in a single page along with a \code{nextToken} response element. The remaining results of the initial request can be seen by sending another \code{ListServices} request with the returned \code{nextToken} value. This value can be between 1 and 100. If this parameter is not used, then \code{ListServices} returns up to 10 results and a \code{nextToken} value if applicable.}
 
 \item{launchType}{The launch type for the services to list.}
 

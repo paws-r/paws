@@ -250,7 +250,7 @@ create_application_input <- function (...)
                 pattern = "arn:aws:iam::\\d{12}:role/?[a-zA-Z_0-9+=,.@\\-_/]+"))), 
             tags = list(type = "structure"))), tags = list(type = "list")), 
         ApplicationCode = structure(logical(0), tags = list(type = "string", 
-            max = 51200L, min = 0L))), tags = list(type = "structure"))
+            max = 102400L, min = 0L))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -483,7 +483,7 @@ describe_application_output <- function (...)
                 pattern = "arn:aws:iam::\\d{12}:role/?[a-zA-Z_0-9+=,.@\\-_/]+"))), 
             tags = list(type = "structure"))), tags = list(type = "list")), 
         ApplicationCode = structure(logical(0), tags = list(type = "string", 
-            max = 51200L, min = 0L)), ApplicationVersionId = structure(logical(0), 
+            max = 102400L, min = 0L)), ApplicationVersionId = structure(logical(0), 
             tags = list(type = "long", max = 999999999L, min = 1L))), 
         tags = list(type = "structure"))), tags = list(type = "structure"))
     return(populate(args, shape))
@@ -653,7 +653,7 @@ update_application_input <- function (...)
                 tags = list(type = "integer", max = 64L, min = 1L))), 
                 tags = list(type = "structure"))), tags = list(type = "structure"))), 
             tags = list(type = "list")), ApplicationCodeUpdate = structure(logical(0), 
-            tags = list(type = "string", max = 51200L, min = 0L)), 
+            tags = list(type = "string", max = 102400L, min = 0L)), 
             OutputUpdates = structure(list(structure(list(OutputId = structure(logical(0), 
                 tags = list(type = "string", max = 50L, min = 1L, 
                   pattern = "[a-zA-Z0-9_.-]+")), NameUpdate = structure(logical(0), 

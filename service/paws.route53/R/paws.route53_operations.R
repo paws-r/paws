@@ -16,7 +16,7 @@ NULL
 #' associate_vpc_with_hosted_zone(
 #'   HostedZoneId = "string",
 #'   VPC = list(
-#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"sa-east-1"|"ca-central-1"|"cn-north-1",
+#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1",
 #'     VPCId = "string"
 #'   ),
 #'   Comment = "string"
@@ -113,7 +113,7 @@ associate_vpc_with_hosted_zone <- function (HostedZoneId, VPC,
 #'           Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA",
 #'           SetIdentifier = "string",
 #'           Weight = 123,
-#'           Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"sa-east-1"|"cn-north-1"|"cn-northwest-1"|"ap-south-1",
+#'           Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-north-1"|"cn-northwest-1"|"ap-south-1",
 #'           GeoLocation = list(
 #'             ContinentCode = "string",
 #'             CountryCode = "string",
@@ -740,7 +740,7 @@ change_tags_for_resource <- function (ResourceType, ResourceId,
 #'       "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"
 #'     ),
 #'     AlarmIdentifier = list(
-#'       Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"sa-east-1",
+#'       Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1",
 #'       Name = "string"
 #'     ),
 #'     InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus"
@@ -798,7 +798,7 @@ create_health_check <- function (CallerReference, HealthCheckConfig)
 #' create_hosted_zone(
 #'   Name = "string",
 #'   VPC = list(
-#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"sa-east-1"|"ca-central-1"|"cn-north-1",
+#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1",
 #'     VPCId = "string"
 #'   ),
 #'   CallerReference = "string",
@@ -1108,7 +1108,7 @@ create_traffic_policy_version <- function (Id, Document, Comment = NULL)
 #' create_vpc_association_authorization(
 #'   HostedZoneId = "string",
 #'   VPC = list(
-#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"sa-east-1"|"ca-central-1"|"cn-north-1",
+#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1",
 #'     VPCId = "string"
 #'   )
 #' )
@@ -1330,7 +1330,7 @@ delete_traffic_policy_instance <- function (Id)
 #' delete_vpc_association_authorization(
 #'   HostedZoneId = "string",
 #'   VPC = list(
-#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"sa-east-1"|"ca-central-1"|"cn-north-1",
+#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1",
 #'     VPCId = "string"
 #'   )
 #' )
@@ -1370,7 +1370,7 @@ delete_vpc_association_authorization <- function (HostedZoneId,
 #' disassociate_vpc_from_hosted_zone(
 #'   HostedZoneId = "string",
 #'   VPC = list(
-#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"sa-east-1"|"ca-central-1"|"cn-north-1",
+#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1",
 #'     VPCId = "string"
 #'   ),
 #'   Comment = "string"
@@ -2660,7 +2660,7 @@ test_dns_answer <- function (HostedZoneId, RecordName, RecordType,
 #'     "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"
 #'   ),
 #'   AlarmIdentifier = list(
-#'     Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"sa-east-1",
+#'     Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1",
 #'     Name = "string"
 #'   ),
 #'   InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus",

@@ -7,7 +7,7 @@
 create_job(Name, Description = NULL, LogUri = NULL, Role,
   ExecutionProperty = NULL, Command, DefaultArguments = NULL,
   Connections = NULL, MaxRetries = NULL, AllocatedCapacity = NULL,
-  Timeout = NULL, NotificationProperty = NULL,
+  Timeout = NULL, MaxCapacity = NULL, NotificationProperty = NULL,
   SecurityConfiguration = NULL)
 }
 \arguments{
@@ -35,9 +35,13 @@ For information about the key-value pairs that AWS Glue consumes to set up your 
 
 \item{MaxRetries}{The maximum number of times to retry this job if it fails.}
 
-\item{AllocatedCapacity}{The number of AWS Glue data processing units (DPUs) to allocate to this Job. From 2 to 100 DPUs can be allocated; the default is 10. A DPU is a relative measure of processing power that consists of 4 vCPUs of compute capacity and 16 GB of memory. For more information, see the \href{https://aws.amazon.com/glue/pricing/}{AWS Glue pricing page}.}
+\item{AllocatedCapacity}{This parameter is deprecated. Use \code{MaxCapacity} instead.
+
+The number of AWS Glue data processing units (DPUs) to allocate to this Job. From 2 to 100 DPUs can be allocated; the default is 10. A DPU is a relative measure of processing power that consists of 4 vCPUs of compute capacity and 16 GB of memory. For more information, see the \href{https://aws.amazon.com/glue/pricing/}{AWS Glue pricing page}.}
 
 \item{Timeout}{The job timeout in minutes. This is the maximum time that a job run can consume resources before it is terminated and enters \code{TIMEOUT} status. The default is 2,880 minutes (48 hours).}
+
+\item{MaxCapacity}{AWS Glue supports running jobs on a \code{JobCommand.Name}="pythonshell" with allocated processing as low as 0.0625 DPU, which can be specified using \code{MaxCapacity}. Glue ETL jobs running in any other way cannot have fractional DPU allocations.}
 
 \item{NotificationProperty}{Specifies configuration properties of a job notification.}
 
@@ -70,6 +74,7 @@ Creates a new job definition.
   MaxRetries = 123,
   AllocatedCapacity = 123,
   Timeout = 123,
+  MaxCapacity = 123.0,
   NotificationProperty = list(
     NotifyDelayAfter = 123
   ),

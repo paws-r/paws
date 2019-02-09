@@ -4,11 +4,7 @@
 \alias{get_deployments}
 \title{Gets the Deployments for an API}
 \usage{
-get_deployments(
-  ApiId = "string",
-  MaxResults = "string",
-  NextToken = "string"
-)
+get_deployments(ApiId, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -20,6 +16,12 @@ get_deployments(
 \description{
 Gets the Deployments for an API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_deployments(
+  ApiId = "string",
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
+}
+

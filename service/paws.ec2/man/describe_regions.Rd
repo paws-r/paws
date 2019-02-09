@@ -21,7 +21,7 @@ describe_regions(Filters = NULL, RegionNames = NULL, DryRun = NULL)
 Describes one or more regions that are currently available to you.
 }
 \details{
-For a list of the regions supported by Amazon EC2, see \href{http://docs.aws.amazon.com/general/latest/gr/rande.html#ec2_region}{Regions and Endpoints}.
+For a list of the regions supported by Amazon EC2, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#ec2_region}{Regions and Endpoints}.
 }
 \section{Accepted Parameters}{
 \preformatted{describe_regions(

@@ -17,7 +17,6 @@ update_build(BuildId, Name = NULL, Version = NULL)
 Updates metadata in a build record, including the build name and version. To update the metadata, specify the build ID to update and provide the new values. If successful, a build object containing the updated metadata is returned.
 }
 \details{
-Build-related operations include:
 \itemize{
 \item CreateBuild
 \item ListBuilds

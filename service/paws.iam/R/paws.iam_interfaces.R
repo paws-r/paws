@@ -216,7 +216,13 @@ create_instance_profile_output <- function (...)
                 tags = list(type = "string", enum = "PermissionsBoundaryPolicy")), 
                 PermissionsBoundaryArn = structure(logical(0), 
                   tags = list(type = "string", max = 2048L, min = 20L))), 
-                tags = list(type = "structure"))), tags = list(type = "structure"))), 
+                tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), 
+                tags = list(type = "string", max = 128L, min = 1L, 
+                  pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]+")), 
+                Value = structure(logical(0), tags = list(type = "string", 
+                  max = 256L, min = 0L, pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*"))), 
+                tags = list(type = "structure"))), tags = list(type = "list", 
+                max = 50L))), tags = list(type = "structure"))), 
             tags = list(type = "list"))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
@@ -341,8 +347,14 @@ create_role_input <- function (...)
             max = 1000L, pattern = "[\\p{L}\\p{M}\\p{Z}\\p{S}\\p{N}\\p{P}]*")), 
         MaxSessionDuration = structure(logical(0), tags = list(type = "integer", 
             max = 43200L, min = 3600L)), PermissionsBoundary = structure(logical(0), 
-            tags = list(type = "string", max = 2048L, min = 20L))), 
-        tags = list(type = "structure"))
+            tags = list(type = "string", max = 2048L, min = 20L)), 
+        Tags = structure(list(structure(list(Key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]+")), 
+            Value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -365,8 +377,15 @@ create_role_output <- function (...)
             max = 43200L, min = 3600L)), PermissionsBoundary = structure(list(PermissionsBoundaryType = structure(logical(0), 
             tags = list(type = "string", enum = "PermissionsBoundaryPolicy")), 
             PermissionsBoundaryArn = structure(logical(0), tags = list(type = "string", 
-                max = 2048L, min = 20L))), tags = list(type = "structure"))), 
-        tags = list(type = "structure"))), tags = list(type = "structure"))
+                max = 2048L, min = 20L))), tags = list(type = "structure")), 
+        Tags = structure(list(structure(list(Key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]+")), 
+            Value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -421,8 +440,15 @@ create_service_linked_role_output <- function (...)
             max = 43200L, min = 3600L)), PermissionsBoundary = structure(list(PermissionsBoundaryType = structure(logical(0), 
             tags = list(type = "string", enum = "PermissionsBoundaryPolicy")), 
             PermissionsBoundaryArn = structure(logical(0), tags = list(type = "string", 
-                max = 2048L, min = 20L))), tags = list(type = "structure"))), 
-        tags = list(type = "structure"))), tags = list(type = "structure"))
+                max = 2048L, min = 20L))), tags = list(type = "structure")), 
+        Tags = structure(list(structure(list(Key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]+")), 
+            Value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -462,7 +488,13 @@ create_user_input <- function (...)
         UserName = structure(logical(0), tags = list(type = "string", 
             max = 64L, min = 1L, pattern = "[\\w+=,.@-]+")), 
         PermissionsBoundary = structure(logical(0), tags = list(type = "string", 
-            max = 2048L, min = 20L))), tags = list(type = "structure"))
+            max = 2048L, min = 20L)), Tags = structure(list(structure(list(Key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]+")), 
+            Value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -481,8 +513,15 @@ create_user_output <- function (...)
         PermissionsBoundary = structure(list(PermissionsBoundaryType = structure(logical(0), 
             tags = list(type = "string", enum = "PermissionsBoundaryPolicy")), 
             PermissionsBoundaryArn = structure(logical(0), tags = list(type = "string", 
-                max = 2048L, min = 20L))), tags = list(type = "structure"))), 
-        tags = list(type = "structure"))), tags = list(type = "structure"))
+                max = 2048L, min = 20L))), tags = list(type = "structure")), 
+        Tags = structure(list(structure(list(Key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]+")), 
+            Value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -517,7 +556,13 @@ create_virtual_mfa_device_output <- function (...)
                 tags = list(type = "string", enum = "PermissionsBoundaryPolicy")), 
                 PermissionsBoundaryArn = structure(logical(0), 
                   tags = list(type = "string", max = 2048L, min = 20L))), 
-                tags = list(type = "structure"))), tags = list(type = "structure")), 
+                tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), 
+                tags = list(type = "string", max = 128L, min = 1L, 
+                  pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]+")), 
+                Value = structure(logical(0), tags = list(type = "string", 
+                  max = 256L, min = 0L, pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*"))), 
+                tags = list(type = "structure"))), tags = list(type = "list", 
+                max = 50L))), tags = list(type = "structure")), 
         EnableDate = structure(logical(0), tags = list(type = "timestamp"))), 
         tags = list(type = "structure"))), tags = list(type = "structure"))
     return(populate(args, shape))
@@ -950,6 +995,22 @@ generate_credential_report_output <- function (...)
     return(populate(args, shape))
 }
 
+generate_service_last_accessed_details_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string", 
+        max = 2048L, min = 20L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+generate_service_last_accessed_details_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string", 
+        max = 36L, min = 36L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 get_access_key_last_used_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -1013,29 +1074,34 @@ get_account_authorization_details_output <- function (...)
         PermissionsBoundary = structure(list(PermissionsBoundaryType = structure(logical(0), 
             tags = list(type = "string", enum = "PermissionsBoundaryPolicy")), 
             PermissionsBoundaryArn = structure(logical(0), tags = list(type = "string", 
-                max = 2048L, min = 20L))), tags = list(type = "structure"))), 
-        tags = list(type = "structure"))), tags = list(type = "list")), 
-        GroupDetailList = structure(list(structure(list(Path = structure(logical(0), 
-            tags = list(type = "string", max = 512L, min = 1L, 
-                pattern = "(\\u002F)|(\\u002F[\\u0021-\\u007F]+\\u002F)")), 
-            GroupName = structure(logical(0), tags = list(type = "string", 
-                max = 128L, min = 1L, pattern = "[\\w+=,.@-]+")), 
-            GroupId = structure(logical(0), tags = list(type = "string", 
-                max = 128L, min = 16L, pattern = "[\\w]+")), 
-            Arn = structure(logical(0), tags = list(type = "string", 
-                max = 2048L, min = 20L)), CreateDate = structure(logical(0), 
-                tags = list(type = "timestamp")), GroupPolicyList = structure(list(structure(list(PolicyName = structure(logical(0), 
-                tags = list(type = "string", max = 128L, min = 1L, 
-                  pattern = "[\\w+=,.@-]+")), PolicyDocument = structure(logical(0), 
-                tags = list(type = "string", max = 131072L, min = 1L, 
-                  pattern = "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+"))), 
-                tags = list(type = "structure"))), tags = list(type = "list")), 
-            AttachedManagedPolicies = structure(list(structure(list(PolicyName = structure(logical(0), 
-                tags = list(type = "string", max = 128L, min = 1L, 
-                  pattern = "[\\w+=,.@-]+")), PolicyArn = structure(logical(0), 
-                tags = list(type = "string", max = 2048L, min = 20L))), 
-                tags = list(type = "structure"))), tags = list(type = "list"))), 
+                max = 2048L, min = 20L))), tags = list(type = "structure")), 
+        Tags = structure(list(structure(list(Key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]+")), 
+            Value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L))), tags = list(type = "structure"))), 
+        tags = list(type = "list")), GroupDetailList = structure(list(structure(list(Path = structure(logical(0), 
+        tags = list(type = "string", max = 512L, min = 1L, pattern = "(\\u002F)|(\\u002F[\\u0021-\\u007F]+\\u002F)")), 
+        GroupName = structure(logical(0), tags = list(type = "string", 
+            max = 128L, min = 1L, pattern = "[\\w+=,.@-]+")), 
+        GroupId = structure(logical(0), tags = list(type = "string", 
+            max = 128L, min = 16L, pattern = "[\\w]+")), Arn = structure(logical(0), 
+            tags = list(type = "string", max = 2048L, min = 20L)), 
+        CreateDate = structure(logical(0), tags = list(type = "timestamp")), 
+        GroupPolicyList = structure(list(structure(list(PolicyName = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "[\\w+=,.@-]+")), PolicyDocument = structure(logical(0), 
+            tags = list(type = "string", max = 131072L, min = 1L, 
+                pattern = "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+"))), 
             tags = list(type = "structure"))), tags = list(type = "list")), 
+        AttachedManagedPolicies = structure(list(structure(list(PolicyName = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "[\\w+=,.@-]+")), PolicyArn = structure(logical(0), 
+            tags = list(type = "string", max = 2048L, min = 20L))), 
+            tags = list(type = "structure"))), tags = list(type = "list"))), 
+        tags = list(type = "structure"))), tags = list(type = "list")), 
         RoleDetailList = structure(list(structure(list(Path = structure(logical(0), 
             tags = list(type = "string", max = 512L, min = 1L, 
                 pattern = "(\\u002F)|(\\u002F[\\u0021-\\u007F]+\\u002F)")), 
@@ -1077,10 +1143,16 @@ get_account_authorization_details_output <- function (...)
                     tags = list(type = "string", enum = "PermissionsBoundaryPolicy")), 
                     PermissionsBoundaryArn = structure(logical(0), 
                       tags = list(type = "string", max = 2048L, 
-                        min = 20L))), tags = list(type = "structure"))), 
-                  tags = list(type = "structure"))), tags = list(type = "list"))), 
-                tags = list(type = "structure"))), tags = list(type = "list")), 
-            RolePolicyList = structure(list(structure(list(PolicyName = structure(logical(0), 
+                        min = 20L))), tags = list(type = "structure")), 
+                  Tags = structure(list(structure(list(Key = structure(logical(0), 
+                    tags = list(type = "string", max = 128L, 
+                      min = 1L, pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]+")), 
+                    Value = structure(logical(0), tags = list(type = "string", 
+                      max = 256L, min = 0L, pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*"))), 
+                    tags = list(type = "structure"))), tags = list(type = "list", 
+                    max = 50L))), tags = list(type = "structure"))), 
+                  tags = list(type = "list"))), tags = list(type = "structure"))), 
+                tags = list(type = "list")), RolePolicyList = structure(list(structure(list(PolicyName = structure(logical(0), 
                 tags = list(type = "string", max = 128L, min = 1L, 
                   pattern = "[\\w+=,.@-]+")), PolicyDocument = structure(logical(0), 
                 tags = list(type = "string", max = 131072L, min = 1L, 
@@ -1095,7 +1167,13 @@ get_account_authorization_details_output <- function (...)
                 tags = list(type = "string", enum = "PermissionsBoundaryPolicy")), 
                 PermissionsBoundaryArn = structure(logical(0), 
                   tags = list(type = "string", max = 2048L, min = 20L))), 
-                tags = list(type = "structure"))), tags = list(type = "structure"))), 
+                tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), 
+                tags = list(type = "string", max = 128L, min = 1L, 
+                  pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]+")), 
+                Value = structure(logical(0), tags = list(type = "string", 
+                  max = 256L, min = 0L, pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*"))), 
+                tags = list(type = "structure"))), tags = list(type = "list", 
+                max = 50L))), tags = list(type = "structure"))), 
             tags = list(type = "list")), Policies = structure(list(structure(list(PolicyName = structure(logical(0), 
             tags = list(type = "string", max = 128L, min = 1L, 
                 pattern = "[\\w+=,.@-]+")), PolicyId = structure(logical(0), 
@@ -1257,11 +1335,17 @@ get_group_output <- function (...)
         PermissionsBoundary = structure(list(PermissionsBoundaryType = structure(logical(0), 
             tags = list(type = "string", enum = "PermissionsBoundaryPolicy")), 
             PermissionsBoundaryArn = structure(logical(0), tags = list(type = "string", 
-                max = 2048L, min = 20L))), tags = list(type = "structure"))), 
-        tags = list(type = "structure"))), tags = list(type = "list")), 
-        IsTruncated = structure(logical(0), tags = list(type = "boolean")), 
-        Marker = structure(logical(0), tags = list(type = "string", 
-            max = 320L, min = 1L, pattern = "[\\u0020-\\u00FF]+"))), 
+                max = 2048L, min = 20L))), tags = list(type = "structure")), 
+        Tags = structure(list(structure(list(Key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]+")), 
+            Value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L))), tags = list(type = "structure"))), 
+        tags = list(type = "list")), IsTruncated = structure(logical(0), 
+        tags = list(type = "boolean")), Marker = structure(logical(0), 
+        tags = list(type = "string", max = 320L, min = 1L, pattern = "[\\u0020-\\u00FF]+"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -1329,7 +1413,13 @@ get_instance_profile_output <- function (...)
                 tags = list(type = "string", enum = "PermissionsBoundaryPolicy")), 
                 PermissionsBoundaryArn = structure(logical(0), 
                   tags = list(type = "string", max = 2048L, min = 20L))), 
-                tags = list(type = "structure"))), tags = list(type = "structure"))), 
+                tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), 
+                tags = list(type = "string", max = 128L, min = 1L, 
+                  pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]+")), 
+                Value = structure(logical(0), tags = list(type = "string", 
+                  max = 256L, min = 0L, pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*"))), 
+                tags = list(type = "structure"))), tags = list(type = "list", 
+                max = 50L))), tags = list(type = "structure"))), 
             tags = list(type = "list"))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
@@ -1460,8 +1550,15 @@ get_role_output <- function (...)
             max = 43200L, min = 3600L)), PermissionsBoundary = structure(list(PermissionsBoundaryType = structure(logical(0), 
             tags = list(type = "string", enum = "PermissionsBoundaryPolicy")), 
             PermissionsBoundaryArn = structure(logical(0), tags = list(type = "string", 
-                max = 2048L, min = 20L))), tags = list(type = "structure"))), 
-        tags = list(type = "structure"))), tags = list(type = "structure"))
+                max = 2048L, min = 20L))), tags = list(type = "structure")), 
+        Tags = structure(list(structure(list(Key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]+")), 
+            Value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1569,6 +1666,84 @@ get_server_certificate_output <- function (...)
     return(populate(args, shape))
 }
 
+get_service_last_accessed_details_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string", 
+        max = 36L, min = 36L)), MaxItems = structure(logical(0), 
+        tags = list(type = "integer", max = 1000L, min = 1L)), 
+        Marker = structure(logical(0), tags = list(type = "string", 
+            max = 320L, min = 1L, pattern = "[\\u0020-\\u00FF]+"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+get_service_last_accessed_details_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(JobStatus = structure(logical(0), 
+        tags = list(type = "string", enum = c("IN_PROGRESS", 
+            "COMPLETED", "FAILED"))), JobCreationDate = structure(logical(0), 
+        tags = list(type = "timestamp")), ServicesLastAccessed = structure(list(structure(list(ServiceName = structure(logical(0), 
+        tags = list(type = "string")), LastAuthenticated = structure(logical(0), 
+        tags = list(type = "timestamp")), ServiceNamespace = structure(logical(0), 
+        tags = list(type = "string", max = 64L, min = 1L, pattern = "[\\w-]*")), 
+        LastAuthenticatedEntity = structure(logical(0), tags = list(type = "string", 
+            max = 2048L, min = 20L)), TotalAuthenticatedEntities = structure(logical(0), 
+            tags = list(type = "integer"))), tags = list(type = "structure"))), 
+        tags = list(type = "list")), JobCompletionDate = structure(logical(0), 
+        tags = list(type = "timestamp")), IsTruncated = structure(logical(0), 
+        tags = list(type = "boolean")), Marker = structure(logical(0), 
+        tags = list(type = "string", max = 320L, min = 1L, pattern = "[\\u0020-\\u00FF]+")), 
+        Error = structure(list(Message = structure(logical(0), 
+            tags = list(type = "string")), Code = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+get_service_last_accessed_details_with_entities_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string", 
+        max = 36L, min = 36L)), ServiceNamespace = structure(logical(0), 
+        tags = list(type = "string", max = 64L, min = 1L, pattern = "[\\w-]*")), 
+        MaxItems = structure(logical(0), tags = list(type = "integer", 
+            max = 1000L, min = 1L)), Marker = structure(logical(0), 
+            tags = list(type = "string", max = 320L, min = 1L, 
+                pattern = "[\\u0020-\\u00FF]+"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+get_service_last_accessed_details_with_entities_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(JobStatus = structure(logical(0), 
+        tags = list(type = "string", enum = c("IN_PROGRESS", 
+            "COMPLETED", "FAILED"))), JobCreationDate = structure(logical(0), 
+        tags = list(type = "timestamp")), JobCompletionDate = structure(logical(0), 
+        tags = list(type = "timestamp")), EntityDetailsList = structure(list(structure(list(EntityInfo = structure(list(Arn = structure(logical(0), 
+        tags = list(type = "string", max = 2048L, min = 20L)), 
+        Name = structure(logical(0), tags = list(type = "string", 
+            max = 64L, min = 1L, pattern = "[\\w+=,.@-]+")), 
+        Type = structure(logical(0), tags = list(type = "string", 
+            enum = c("USER", "ROLE", "GROUP"))), Id = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 16L, 
+                pattern = "[\\w]+")), Path = structure(logical(0), 
+            tags = list(type = "string", max = 512L, min = 1L, 
+                pattern = "(\\u002F)|(\\u002F[\\u0021-\\u007F]+\\u002F)"))), 
+        tags = list(type = "structure")), LastAuthenticated = structure(logical(0), 
+        tags = list(type = "timestamp"))), tags = list(type = "structure"))), 
+        tags = list(type = "list")), IsTruncated = structure(logical(0), 
+        tags = list(type = "boolean")), Marker = structure(logical(0), 
+        tags = list(type = "string", max = 320L, min = 1L, pattern = "[\\u0020-\\u00FF]+")), 
+        Error = structure(list(Message = structure(logical(0), 
+            tags = list(type = "string")), Code = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 get_service_linked_role_deletion_status_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -1618,8 +1793,15 @@ get_user_output <- function (...)
         PermissionsBoundary = structure(list(PermissionsBoundaryType = structure(logical(0), 
             tags = list(type = "string", enum = "PermissionsBoundaryPolicy")), 
             PermissionsBoundaryArn = structure(logical(0), tags = list(type = "string", 
-                max = 2048L, min = 20L))), tags = list(type = "structure"))), 
-        tags = list(type = "structure"))), tags = list(type = "structure"))
+                max = 2048L, min = 20L))), tags = list(type = "structure")), 
+        Tags = structure(list(structure(list(Key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]+")), 
+            Value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1951,7 +2133,13 @@ list_instance_profiles_output <- function (...)
                 tags = list(type = "string", enum = "PermissionsBoundaryPolicy")), 
                 PermissionsBoundaryArn = structure(logical(0), 
                   tags = list(type = "string", max = 2048L, min = 20L))), 
-                tags = list(type = "structure"))), tags = list(type = "structure"))), 
+                tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), 
+                tags = list(type = "string", max = 128L, min = 1L, 
+                  pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]+")), 
+                Value = structure(logical(0), tags = list(type = "string", 
+                  max = 256L, min = 0L, pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*"))), 
+                tags = list(type = "structure"))), tags = list(type = "list", 
+                max = 50L))), tags = list(type = "structure"))), 
             tags = list(type = "list"))), tags = list(type = "structure"))), 
         tags = list(type = "list")), IsTruncated = structure(logical(0), 
         tags = list(type = "boolean")), Marker = structure(logical(0), 
@@ -2002,7 +2190,13 @@ list_instance_profiles_for_role_output <- function (...)
                 tags = list(type = "string", enum = "PermissionsBoundaryPolicy")), 
                 PermissionsBoundaryArn = structure(logical(0), 
                   tags = list(type = "string", max = 2048L, min = 20L))), 
-                tags = list(type = "structure"))), tags = list(type = "structure"))), 
+                tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), 
+                tags = list(type = "string", max = 128L, min = 1L, 
+                  pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]+")), 
+                Value = structure(logical(0), tags = list(type = "string", 
+                  max = 256L, min = 0L, pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*"))), 
+                tags = list(type = "structure"))), tags = list(type = "list", 
+                max = 50L))), tags = list(type = "structure"))), 
             tags = list(type = "list"))), tags = list(type = "structure"))), 
         tags = list(type = "list")), IsTruncated = structure(logical(0), 
         tags = list(type = "boolean")), Marker = structure(logical(0), 
@@ -2097,6 +2291,42 @@ list_policies_output <- function (...)
     return(populate(args, shape))
 }
 
+list_policies_granting_service_access_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Marker = structure(logical(0), tags = list(type = "string", 
+        max = 320L, min = 1L, pattern = "[\\u0020-\\u00FF]+")), 
+        Arn = structure(logical(0), tags = list(type = "string", 
+            max = 2048L, min = 20L)), ServiceNamespaces = structure(list(structure(logical(0), 
+            tags = list(type = "string", max = 64L, min = 1L, 
+                pattern = "[\\w-]*"))), tags = list(type = "list", 
+            max = 200L, min = 1L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_policies_granting_service_access_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(PoliciesGrantingServiceAccess = structure(list(structure(list(ServiceNamespace = structure(logical(0), 
+        tags = list(type = "string", max = 64L, min = 1L, pattern = "[\\w-]*")), 
+        Policies = structure(list(structure(list(PolicyName = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "[\\w+=,.@-]+")), PolicyType = structure(logical(0), 
+            tags = list(type = "string", enum = c("INLINE", "MANAGED"))), 
+            PolicyArn = structure(logical(0), tags = list(type = "string", 
+                max = 2048L, min = 20L)), EntityType = structure(logical(0), 
+                tags = list(type = "string", enum = c("USER", 
+                  "ROLE", "GROUP"))), EntityName = structure(logical(0), 
+                tags = list(type = "string", max = 128L, min = 1L, 
+                  pattern = "[\\w+=,.@-]+"))), tags = list(type = "structure"))), 
+            tags = list(type = "list"))), tags = list(type = "structure"))), 
+        tags = list(type = "list")), IsTruncated = structure(logical(0), 
+        tags = list(type = "boolean")), Marker = structure(logical(0), 
+        tags = list(type = "string", max = 320L, min = 1L, pattern = "[\\u0020-\\u00FF]+"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 list_policy_versions_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -2150,6 +2380,33 @@ list_role_policies_output <- function (...)
     return(populate(args, shape))
 }
 
+list_role_tags_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(RoleName = structure(logical(0), 
+        tags = list(type = "string", max = 64L, min = 1L, pattern = "[\\w+=,.@-]+")), 
+        Marker = structure(logical(0), tags = list(type = "string", 
+            max = 320L, min = 1L, pattern = "[\\u0020-\\u00FF]+")), 
+        MaxItems = structure(logical(0), tags = list(type = "integer", 
+            max = 1000L, min = 1L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_role_tags_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), 
+        tags = list(type = "string", max = 128L, min = 1L, pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]+")), 
+        Value = structure(logical(0), tags = list(type = "string", 
+            max = 256L, min = 0L, pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*"))), 
+        tags = list(type = "structure"))), tags = list(type = "list", 
+        max = 50L)), IsTruncated = structure(logical(0), tags = list(type = "boolean")), 
+        Marker = structure(logical(0), tags = list(type = "string", 
+            max = 320L, min = 1L, pattern = "[\\u0020-\\u00FF]+"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 list_roles_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -2181,11 +2438,17 @@ list_roles_output <- function (...)
             max = 43200L, min = 3600L)), PermissionsBoundary = structure(list(PermissionsBoundaryType = structure(logical(0), 
             tags = list(type = "string", enum = "PermissionsBoundaryPolicy")), 
             PermissionsBoundaryArn = structure(logical(0), tags = list(type = "string", 
-                max = 2048L, min = 20L))), tags = list(type = "structure"))), 
-        tags = list(type = "structure"))), tags = list(type = "list")), 
-        IsTruncated = structure(logical(0), tags = list(type = "boolean")), 
-        Marker = structure(logical(0), tags = list(type = "string", 
-            max = 320L, min = 1L, pattern = "[\\u0020-\\u00FF]+"))), 
+                max = 2048L, min = 20L))), tags = list(type = "structure")), 
+        Tags = structure(list(structure(list(Key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]+")), 
+            Value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L))), tags = list(type = "structure"))), 
+        tags = list(type = "list")), IsTruncated = structure(logical(0), 
+        tags = list(type = "boolean")), Marker = structure(logical(0), 
+        tags = list(type = "string", max = 320L, min = 1L, pattern = "[\\u0020-\\u00FF]+"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -2352,6 +2615,33 @@ list_user_policies_output <- function (...)
     return(populate(args, shape))
 }
 
+list_user_tags_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(UserName = structure(logical(0), 
+        tags = list(type = "string", max = 128L, min = 1L, pattern = "[\\w+=,.@-]+")), 
+        Marker = structure(logical(0), tags = list(type = "string", 
+            max = 320L, min = 1L, pattern = "[\\u0020-\\u00FF]+")), 
+        MaxItems = structure(logical(0), tags = list(type = "integer", 
+            max = 1000L, min = 1L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_user_tags_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), 
+        tags = list(type = "string", max = 128L, min = 1L, pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]+")), 
+        Value = structure(logical(0), tags = list(type = "string", 
+            max = 256L, min = 0L, pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*"))), 
+        tags = list(type = "structure"))), tags = list(type = "list", 
+        max = 50L)), IsTruncated = structure(logical(0), tags = list(type = "boolean")), 
+        Marker = structure(logical(0), tags = list(type = "string", 
+            max = 320L, min = 1L, pattern = "[\\u0020-\\u00FF]+"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 list_users_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -2379,11 +2669,17 @@ list_users_output <- function (...)
         PermissionsBoundary = structure(list(PermissionsBoundaryType = structure(logical(0), 
             tags = list(type = "string", enum = "PermissionsBoundaryPolicy")), 
             PermissionsBoundaryArn = structure(logical(0), tags = list(type = "string", 
-                max = 2048L, min = 20L))), tags = list(type = "structure"))), 
-        tags = list(type = "structure"))), tags = list(type = "list")), 
-        IsTruncated = structure(logical(0), tags = list(type = "boolean")), 
-        Marker = structure(logical(0), tags = list(type = "string", 
-            max = 320L, min = 1L, pattern = "[\\u0020-\\u00FF]+"))), 
+                max = 2048L, min = 20L))), tags = list(type = "structure")), 
+        Tags = structure(list(structure(list(Key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]+")), 
+            Value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L))), tags = list(type = "structure"))), 
+        tags = list(type = "list")), IsTruncated = structure(logical(0), 
+        tags = list(type = "boolean")), Marker = structure(logical(0), 
+        tags = list(type = "string", max = 320L, min = 1L, pattern = "[\\u0020-\\u00FF]+"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -2421,7 +2717,13 @@ list_virtual_mfa_devices_output <- function (...)
                 tags = list(type = "string", enum = "PermissionsBoundaryPolicy")), 
                 PermissionsBoundaryArn = structure(logical(0), 
                   tags = list(type = "string", max = 2048L, min = 20L))), 
-                tags = list(type = "structure"))), tags = list(type = "structure")), 
+                tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), 
+                tags = list(type = "string", max = 128L, min = 1L, 
+                  pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]+")), 
+                Value = structure(logical(0), tags = list(type = "string", 
+                  max = 256L, min = 0L, pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*"))), 
+                tags = list(type = "structure"))), tags = list(type = "list", 
+                max = 50L))), tags = list(type = "structure")), 
         EnableDate = structure(logical(0), tags = list(type = "timestamp"))), 
         tags = list(type = "structure"))), tags = list(type = "list")), 
         IsTruncated = structure(logical(0), tags = list(type = "boolean")), 
@@ -2802,6 +3104,78 @@ simulate_principal_policy_output <- function (...)
     return(populate(args, shape))
 }
 
+tag_role_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(RoleName = structure(logical(0), 
+        tags = list(type = "string", max = 64L, min = 1L, pattern = "[\\w+=,.@-]+")), 
+        Tags = structure(list(structure(list(Key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]+")), 
+            Value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+tag_role_output <- function () 
+{
+    return(list())
+}
+
+tag_user_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(UserName = structure(logical(0), 
+        tags = list(type = "string", max = 128L, min = 1L, pattern = "[\\w+=,.@-]+")), 
+        Tags = structure(list(structure(list(Key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]+")), 
+            Value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+tag_user_output <- function () 
+{
+    return(list())
+}
+
+untag_role_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(RoleName = structure(logical(0), 
+        tags = list(type = "string", max = 64L, min = 1L, pattern = "[\\w+=,.@-]+")), 
+        TagKeys = structure(list(structure(logical(0), tags = list(type = "string", 
+            max = 128L, min = 1L, pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]+"))), 
+            tags = list(type = "list", max = 50L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+untag_role_output <- function () 
+{
+    return(list())
+}
+
+untag_user_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(UserName = structure(logical(0), 
+        tags = list(type = "string", max = 128L, min = 1L, pattern = "[\\w+=,.@-]+")), 
+        TagKeys = structure(list(structure(logical(0), tags = list(type = "string", 
+            max = 128L, min = 1L, pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]+"))), 
+            tags = list(type = "list", max = 50L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+untag_user_output <- function () 
+{
+    return(list())
+}
+
 update_access_key_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -2958,8 +3332,15 @@ update_role_description_output <- function (...)
             max = 43200L, min = 3600L)), PermissionsBoundary = structure(list(PermissionsBoundaryType = structure(logical(0), 
             tags = list(type = "string", enum = "PermissionsBoundaryPolicy")), 
             PermissionsBoundaryArn = structure(logical(0), tags = list(type = "string", 
-                max = 2048L, min = 20L))), tags = list(type = "structure"))), 
-        tags = list(type = "structure"))), tags = list(type = "structure"))
+                max = 2048L, min = 20L))), tags = list(type = "structure")), 
+        Tags = structure(list(structure(list(Key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]+")), 
+            Value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 

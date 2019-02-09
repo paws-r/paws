@@ -6,7 +6,8 @@
 \usage{
 update_data_source(apiId, name, description = NULL, type,
   serviceRoleArn = NULL, dynamodbConfig = NULL, lambdaConfig = NULL,
-  elasticsearchConfig = NULL, httpConfig = NULL)
+  elasticsearchConfig = NULL, httpConfig = NULL,
+  relationalDatabaseConfig = NULL)
 }
 \arguments{
 \item{apiId}{[required] The API ID.}
@@ -19,13 +20,15 @@ update_data_source(apiId, name, description = NULL, type,
 
 \item{serviceRoleArn}{The new service role ARN for the data source.}
 
-\item{dynamodbConfig}{The new DynamoDB configuration.}
+\item{dynamodbConfig}{The new Amazon DynamoDB configuration.}
 
-\item{lambdaConfig}{The new Lambda configuration.}
+\item{lambdaConfig}{The new AWS Lambda configuration.}
 
-\item{elasticsearchConfig}{The new Elasticsearch configuration.}
+\item{elasticsearchConfig}{The new Elasticsearch Service configuration.}
 
-\item{httpConfig}{The new http endpoint configuration}
+\item{httpConfig}{The new HTTP endpoint configuration.}
+
+\item{relationalDatabaseConfig}{The new relational database configuration.}
 }
 \description{
 Updates a \code{DataSource} object.
@@ -35,7 +38,7 @@ Updates a \code{DataSource} object.
   apiId = "string",
   name = "string",
   description = "string",
-  type = "AWS_LAMBDA"|"AMAZON_DYNAMODB"|"AMAZON_ELASTICSEARCH"|"NONE"|"HTTP",
+  type = "AWS_LAMBDA"|"AMAZON_DYNAMODB"|"AMAZON_ELASTICSEARCH"|"NONE"|"HTTP"|"RELATIONAL_DATABASE",
   serviceRoleArn = "string",
   dynamodbConfig = list(
     tableName = "string",
@@ -50,7 +53,24 @@ Updates a \code{DataSource} object.
     awsRegion = "string"
   ),
   httpConfig = list(
-    endpoint = "string"
+    endpoint = "string",
+    authorizationConfig = list(
+      authorizationType = "AWS_IAM",
+      awsIamConfig = list(
+        signingRegion = "string",
+        signingServiceName = "string"
+      )
+    )
+  ),
+  relationalDatabaseConfig = list(
+    relationalDatabaseSourceType = "RDS_HTTP_ENDPOINT",
+    rdsHttpEndpointConfig = list(
+      awsRegion = "string",
+      dbClusterIdentifier = "string",
+      databaseName = "string",
+      schema = "string",
+      awsSecretStoreArn = "string"
+    )
   )
 )
 }

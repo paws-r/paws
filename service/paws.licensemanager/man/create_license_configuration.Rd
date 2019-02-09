@@ -4,22 +4,9 @@
 \alias{create_license_configuration}
 \title{Creates a new license configuration object}
 \usage{
-create_license_configuration(
-  Name = "string",
-  Description = "string",
-  LicenseCountingType = "vCPU"|"Instance"|"Core"|"Socket",
-  LicenseCount = 123,
-  LicenseCountHardLimit = TRUE|FALSE,
-  LicenseRules = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_license_configuration(Name, Description = NULL,
+  LicenseCountingType, LicenseCount = NULL,
+  LicenseCountHardLimit = NULL, LicenseRules = NULL, Tags = NULL)
 }
 \arguments{
 \item{Name}{[required] Name of the license configuration.}
@@ -39,6 +26,23 @@ create_license_configuration(
 \description{
 Creates a new license configuration object. A license configuration is an abstraction of a customer license agreement that can be consumed and enforced by License Manager. Components include specifications for the license type (licensing by instance, socket, CPU, or VCPU), tenancy (shared tenancy, Amazon EC2 Dedicated Instance, Amazon EC2 Dedicated Host, or any of these), host affinity (how long a VM must be associated with a host), the number of licenses purchased and used.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_license_configuration(
+  Name = "string",
+  Description = "string",
+  LicenseCountingType = "vCPU"|"Instance"|"Core"|"Socket",
+  LicenseCount = 123,
+  LicenseCountHardLimit = TRUE|FALSE,
+  LicenseRules = list(
+    "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

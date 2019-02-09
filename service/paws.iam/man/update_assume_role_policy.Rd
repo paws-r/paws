@@ -9,7 +9,7 @@ update_assume_role_policy(RoleName, PolicyDocument)
 \arguments{
 \item{RoleName}{[required] The name of the role to update with the new policy.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{PolicyDocument}{[required] The policy that grants an entity permission to assume the role.
 

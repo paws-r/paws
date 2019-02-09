@@ -4,18 +4,8 @@
 \alias{list_resolver_rules}
 \title{Lists the resolver rules that were created using the current AWS account}
 \usage{
-list_resolver_rules(
-  MaxResults = 123,
-  NextToken = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  )
-)
+list_resolver_rules(MaxResults = NULL, NextToken = NULL,
+  Filters = NULL)
 }
 \arguments{
 \item{MaxResults}{The maximum number of resolver rules that you want to return in the response to a \code{ListResolverRules} request. If you don't specify a value for \code{MaxResults}, Resolver returns up to 100 resolver rules.}
@@ -31,6 +21,19 @@ If you submit a second or subsequent \code{ListResolverRules} request and specif
 \description{
 Lists the resolver rules that were created using the current AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_resolver_rules(
+  MaxResults = 123,
+  NextToken = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  )
+)
 }
+}
+

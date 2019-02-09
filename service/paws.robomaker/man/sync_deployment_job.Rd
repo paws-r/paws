@@ -4,10 +4,7 @@
 \alias{sync_deployment_job}
 \title{Syncrhonizes robots in a fleet to the latest deployment}
 \usage{
-sync_deployment_job(
-  clientRequestToken = "string",
-  fleet = "string"
-)
+sync_deployment_job(clientRequestToken, fleet)
 }
 \arguments{
 \item{clientRequestToken}{[required] Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.}
@@ -17,6 +14,11 @@ sync_deployment_job(
 \description{
 Syncrhonizes robots in a fleet to the latest deployment. This is helpful if robots were added after a deployment.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{sync_deployment_job(
+  clientRequestToken = "string",
+  fleet = "string"
+)
 }
+}
+

@@ -4,12 +4,14 @@
 \alias{get_connection}
 \title{Retrieves a connection definition from the Data Catalog}
 \usage{
-get_connection(CatalogId = NULL, Name)
+get_connection(CatalogId = NULL, Name, HidePassword = NULL)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog in which the connection resides. If none is supplied, the AWS account ID is used by default.}
 
 \item{Name}{[required] The name of the connection definition to retrieve.}
+
+\item{HidePassword}{Allow you to retrieve the connection metadata without displaying the password. For instance, the AWS Glue console uses this flag to retrieve connections, since the console does not display passwords. Set this parameter where the caller may not have permission to use the KMS key to decrypt the password, but does have permission to access the rest of the connection metadata (that is, the other connection properties).}
 }
 \description{
 Retrieves a connection definition from the Data Catalog.
@@ -17,7 +19,8 @@ Retrieves a connection definition from the Data Catalog.
 \section{Accepted Parameters}{
 \preformatted{get_connection(
   CatalogId = "string",
-  Name = "string"
+  Name = "string",
+  HidePassword = TRUE|FALSE
 )
 }
 }

@@ -4,7 +4,28 @@
 \alias{update_simulation_application}
 \title{Updates a simulation application}
 \usage{
-update_simulation_application(
+update_simulation_application(application, sources,
+  simulationSoftwareSuite, robotSoftwareSuite, renderingEngine,
+  currentRevisionId = NULL)
+}
+\arguments{
+\item{application}{[required] The application information for the simulation application.}
+
+\item{sources}{[required] The sources of the simulation application.}
+
+\item{simulationSoftwareSuite}{[required] The simulation software suite used by the simulation application.}
+
+\item{robotSoftwareSuite}{[required] Information about the robot software suite.}
+
+\item{renderingEngine}{[required] The rendering engine for the simulation application.}
+
+\item{currentRevisionId}{The revision id for the robot application.}
+}
+\description{
+Updates a simulation application.
+}
+\section{Accepted Parameters}{
+\preformatted{update_simulation_application(
   application = "string",
   sources = list(
     list(
@@ -28,22 +49,5 @@ update_simulation_application(
   currentRevisionId = "string"
 )
 }
-\arguments{
-\item{application}{[required] The application information for the simulation application.}
-
-\item{sources}{[required] The sources of the simulation application.}
-
-\item{simulationSoftwareSuite}{[required] The simulation software suite used by the simulation application.}
-
-\item{robotSoftwareSuite}{[required] Information about the robot software suite.}
-
-\item{renderingEngine}{[required] The rendering engine for the simulation application.}
-
-\item{currentRevisionId}{The revision id for the robot application.}
 }
-\description{
-Updates a simulation application.
-}
-\examples{
 
-}

@@ -23,7 +23,7 @@ Default: Describes all your key pairs.}
 Describes one or more of your key pairs.
 }
 \details{
-For more information about key pairs, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html}{Key Pairs} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information about key pairs, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html}{Key Pairs} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{describe_key_pairs(

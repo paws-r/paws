@@ -33,7 +33,7 @@ If you try to schedule your action in the past, Amazon EC2 Auto Scaling returns 
 \item{DesiredCapacity}{The number of EC2 instances that should be running in the group.}
 }
 \description{
-Creates or updates a scheduled scaling action for an Auto Scaling group. When updating a scheduled scaling action, if you leave a parameter unspecified, the corresponding value remains unchanged.
+Creates or updates a scheduled scaling action for an Auto Scaling group. If you leave a parameter unspecified when updating a scheduled scaling action, the corresponding value remains unchanged.
 }
 \details{
 For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/schedule_time.html}{Scheduled Scaling} in the \emph{Amazon EC2 Auto Scaling User Guide}.

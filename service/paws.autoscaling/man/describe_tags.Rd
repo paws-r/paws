@@ -7,7 +7,7 @@
 describe_tags(Filters = NULL, NextToken = NULL, MaxRecords = NULL)
 }
 \arguments{
-\item{Filters}{A filter used to scope the tags to return.}
+\item{Filters}{One or more filters to scope the tags to return. The maximum number of filters per filter type (for example, \code{auto-scaling-group}) is 1000.}
 
 \item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 

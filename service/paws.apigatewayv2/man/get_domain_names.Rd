@@ -4,10 +4,7 @@
 \alias{get_domain_names}
 \title{Gets the domain names for an AWS account}
 \usage{
-get_domain_names(
-  MaxResults = "string",
-  NextToken = "string"
-)
+get_domain_names(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{The maximum number of elements to be returned for this resource.}
@@ -17,6 +14,11 @@ get_domain_names(
 \description{
 Gets the domain names for an AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_domain_names(
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
+}
+

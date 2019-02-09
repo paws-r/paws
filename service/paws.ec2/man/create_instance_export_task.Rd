@@ -20,7 +20,7 @@ create_instance_export_task(Description = NULL, ExportToS3Task = NULL,
 Exports a running or stopped instance to an S3 bucket.
 }
 \details{
-For information about the supported operating systems, image formats, and known limitations for the types of instances you can export, see \href{http://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html}{Exporting an Instance as a VM Using VM Import/Export} in the \emph{VM Import/Export User Guide}.
+For information about the supported operating systems, image formats, and known limitations for the types of instances you can export, see \href{https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html}{Exporting an Instance as a VM Using VM Import/Export} in the \emph{VM Import/Export User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{create_instance_export_task(

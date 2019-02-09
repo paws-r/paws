@@ -141,8 +141,8 @@ batch_detect_syntax_output <- function (...)
         tags = list(type = "integer")), EndOffset = structure(logical(0), 
         tags = list(type = "integer")), PartOfSpeech = structure(list(Tag = structure(logical(0), 
         tags = list(type = "string", enum = c("ADJ", "ADP", "ADV", 
-            "AUX", "CONJ", "DET", "INTJ", "NOUN", "NUM", "O", 
-            "PART", "PRON", "PROPN", "PUNCT", "SCONJ", "SYM", 
+            "AUX", "CONJ", "CCONJ", "DET", "INTJ", "NOUN", "NUM", 
+            "O", "PART", "PRON", "PROPN", "PUNCT", "SCONJ", "SYM", 
             "VERB"))), Score = structure(logical(0), tags = list(type = "float"))), 
         tags = list(type = "structure"))), tags = list(type = "structure"))), 
         tags = list(type = "list"))), tags = list(type = "structure"))), 
@@ -154,11 +154,181 @@ batch_detect_syntax_output <- function (...)
     return(populate(args, shape))
 }
 
+create_document_classifier_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(DocumentClassifierName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+        DataAccessRoleArn = structure(logical(0), tags = list(type = "string", 
+            max = 2048L, min = 20L, pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+")), 
+        InputDataConfig = structure(list(S3Uri = structure(logical(0), 
+            tags = list(type = "string", max = 1024L, pattern = "s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?"))), 
+            tags = list(type = "structure")), ClientRequestToken = structure(logical(0), 
+            tags = list(idempotencyToken = TRUE, type = "string", 
+                max = 64L, min = 1L, pattern = "^[a-zA-Z0-9-]+$")), 
+        LanguageCode = structure(logical(0), tags = list(type = "string", 
+            enum = c("en", "es", "fr", "de", "it", "pt")))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+create_document_classifier_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(DocumentClassifierArn = structure(logical(0), 
+        tags = list(type = "string", max = 256L, pattern = "arn:aws:comprehend:[a-zA-Z0-9-]*:[0-9]{12}:document-classifier/[a-zA-Z0-9](-*[a-zA-Z0-9])*"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+create_entity_recognizer_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(RecognizerName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+        DataAccessRoleArn = structure(logical(0), tags = list(type = "string", 
+            max = 2048L, min = 20L, pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+")), 
+        InputDataConfig = structure(list(EntityTypes = structure(list(structure(list(Type = structure(logical(0), 
+            tags = list(type = "string", max = 64L, pattern = "[_A-Z0-9]+"))), 
+            tags = list(type = "structure"))), tags = list(type = "list")), 
+            Documents = structure(list(S3Uri = structure(logical(0), 
+                tags = list(type = "string", max = 1024L, pattern = "s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?"))), 
+                tags = list(type = "structure")), Annotations = structure(list(S3Uri = structure(logical(0), 
+                tags = list(type = "string", max = 1024L, pattern = "s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?"))), 
+                tags = list(type = "structure")), EntityList = structure(list(S3Uri = structure(logical(0), 
+                tags = list(type = "string", max = 1024L, pattern = "s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?"))), 
+                tags = list(type = "structure"))), tags = list(type = "structure")), 
+        ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, 
+            type = "string", max = 64L, min = 1L, pattern = "^[a-zA-Z0-9-]+$")), 
+        LanguageCode = structure(logical(0), tags = list(type = "string", 
+            enum = c("en", "es", "fr", "de", "it", "pt")))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+create_entity_recognizer_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(EntityRecognizerArn = structure(logical(0), 
+        tags = list(type = "string", max = 256L, pattern = "arn:aws:comprehend:[a-zA-Z0-9-]*:[0-9]{12}:entity-recognizer/[a-zA-Z0-9](-*[a-zA-Z0-9])*"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_document_classifier_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(DocumentClassifierArn = structure(logical(0), 
+        tags = list(type = "string", max = 256L, pattern = "arn:aws:comprehend:[a-zA-Z0-9-]*:[0-9]{12}:document-classifier/[a-zA-Z0-9](-*[a-zA-Z0-9])*"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_document_classifier_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_entity_recognizer_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(EntityRecognizerArn = structure(logical(0), 
+        tags = list(type = "string", max = 256L, pattern = "arn:aws:comprehend:[a-zA-Z0-9-]*:[0-9]{12}:entity-recognizer/[a-zA-Z0-9](-*[a-zA-Z0-9])*"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_entity_recognizer_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_document_classification_job_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string", 
+        max = 32L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_document_classification_job_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(DocumentClassificationJobProperties = structure(list(JobId = structure(logical(0), 
+        tags = list(type = "string", max = 32L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        JobName = structure(logical(0), tags = list(type = "string", 
+            max = 256L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        JobStatus = structure(logical(0), tags = list(type = "string", 
+            enum = c("SUBMITTED", "IN_PROGRESS", "COMPLETED", 
+                "FAILED", "STOP_REQUESTED", "STOPPED"))), Message = structure(logical(0), 
+            tags = list(type = "string")), SubmitTime = structure(logical(0), 
+            tags = list(type = "timestamp")), EndTime = structure(logical(0), 
+            tags = list(type = "timestamp")), DocumentClassifierArn = structure(logical(0), 
+            tags = list(type = "string", max = 256L, pattern = "arn:aws:comprehend:[a-zA-Z0-9-]*:[0-9]{12}:document-classifier/[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+        InputDataConfig = structure(list(S3Uri = structure(logical(0), 
+            tags = list(type = "string", max = 1024L, pattern = "s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?")), 
+            InputFormat = structure(logical(0), tags = list(type = "string", 
+                enum = c("ONE_DOC_PER_FILE", "ONE_DOC_PER_LINE")))), 
+            tags = list(type = "structure")), OutputDataConfig = structure(list(S3Uri = structure(logical(0), 
+            tags = list(type = "string", max = 1024L, pattern = "s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?"))), 
+            tags = list(type = "structure")), DataAccessRoleArn = structure(logical(0), 
+            tags = list(type = "string", max = 2048L, min = 20L, 
+                pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+"))), 
+        tags = list(type = "structure"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_document_classifier_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(DocumentClassifierArn = structure(logical(0), 
+        tags = list(type = "string", max = 256L, pattern = "arn:aws:comprehend:[a-zA-Z0-9-]*:[0-9]{12}:document-classifier/[a-zA-Z0-9](-*[a-zA-Z0-9])*"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_document_classifier_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(DocumentClassifierProperties = structure(list(DocumentClassifierArn = structure(logical(0), 
+        tags = list(type = "string", max = 256L, pattern = "arn:aws:comprehend:[a-zA-Z0-9-]*:[0-9]{12}:document-classifier/[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+        LanguageCode = structure(logical(0), tags = list(type = "string", 
+            enum = c("en", "es", "fr", "de", "it", "pt"))), Status = structure(logical(0), 
+            tags = list(type = "string", enum = c("SUBMITTED", 
+                "TRAINING", "DELETING", "STOP_REQUESTED", "STOPPED", 
+                "IN_ERROR", "TRAINED"))), Message = structure(logical(0), 
+            tags = list(type = "string")), SubmitTime = structure(logical(0), 
+            tags = list(type = "timestamp")), EndTime = structure(logical(0), 
+            tags = list(type = "timestamp")), TrainingStartTime = structure(logical(0), 
+            tags = list(type = "timestamp")), TrainingEndTime = structure(logical(0), 
+            tags = list(type = "timestamp")), InputDataConfig = structure(list(S3Uri = structure(logical(0), 
+            tags = list(type = "string", max = 1024L, pattern = "s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?"))), 
+            tags = list(type = "structure")), ClassifierMetadata = structure(list(NumberOfLabels = structure(logical(0), 
+            tags = list(type = "integer")), NumberOfTrainedDocuments = structure(logical(0), 
+            tags = list(type = "integer")), NumberOfTestDocuments = structure(logical(0), 
+            tags = list(type = "integer")), EvaluationMetrics = structure(list(Accuracy = structure(logical(0), 
+            tags = list(type = "double")), Precision = structure(logical(0), 
+            tags = list(type = "double")), Recall = structure(logical(0), 
+            tags = list(type = "double")), F1Score = structure(logical(0), 
+            tags = list(type = "double"))), tags = list(type = "structure"))), 
+            tags = list(type = "structure")), DataAccessRoleArn = structure(logical(0), 
+            tags = list(type = "string", max = 2048L, min = 20L, 
+                pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+"))), 
+        tags = list(type = "structure"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 describe_dominant_language_detection_job_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string", 
-        max = 32L, min = 1L))), tags = list(type = "structure"))
+        max = 32L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -166,8 +336,9 @@ describe_dominant_language_detection_job_output <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(DominantLanguageDetectionJobProperties = structure(list(JobId = structure(logical(0), 
-        tags = list(type = "string", max = 32L, min = 1L)), JobName = structure(logical(0), 
-        tags = list(type = "string", max = 256L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        tags = list(type = "string", max = 32L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        JobName = structure(logical(0), tags = list(type = "string", 
+            max = 256L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
         JobStatus = structure(logical(0), tags = list(type = "string", 
             enum = c("SUBMITTED", "IN_PROGRESS", "COMPLETED", 
                 "FAILED", "STOP_REQUESTED", "STOPPED"))), Message = structure(logical(0), 
@@ -180,7 +351,8 @@ describe_dominant_language_detection_job_output <- function (...)
             tags = list(type = "structure")), OutputDataConfig = structure(list(S3Uri = structure(logical(0), 
             tags = list(type = "string", max = 1024L, pattern = "s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?"))), 
             tags = list(type = "structure")), DataAccessRoleArn = structure(logical(0), 
-            tags = list(type = "string", pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+"))), 
+            tags = list(type = "string", max = 2048L, min = 20L, 
+                pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+"))), 
         tags = list(type = "structure"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -189,7 +361,8 @@ describe_entities_detection_job_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string", 
-        max = 32L, min = 1L))), tags = list(type = "structure"))
+        max = 32L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -197,14 +370,17 @@ describe_entities_detection_job_output <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(EntitiesDetectionJobProperties = structure(list(JobId = structure(logical(0), 
-        tags = list(type = "string", max = 32L, min = 1L)), JobName = structure(logical(0), 
-        tags = list(type = "string", max = 256L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        tags = list(type = "string", max = 32L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        JobName = structure(logical(0), tags = list(type = "string", 
+            max = 256L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
         JobStatus = structure(logical(0), tags = list(type = "string", 
             enum = c("SUBMITTED", "IN_PROGRESS", "COMPLETED", 
                 "FAILED", "STOP_REQUESTED", "STOPPED"))), Message = structure(logical(0), 
             tags = list(type = "string")), SubmitTime = structure(logical(0), 
             tags = list(type = "timestamp")), EndTime = structure(logical(0), 
-            tags = list(type = "timestamp")), InputDataConfig = structure(list(S3Uri = structure(logical(0), 
+            tags = list(type = "timestamp")), EntityRecognizerArn = structure(logical(0), 
+            tags = list(type = "string", max = 256L, pattern = "arn:aws:comprehend:[a-zA-Z0-9-]*:[0-9]{12}:entity-recognizer/[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+        InputDataConfig = structure(list(S3Uri = structure(logical(0), 
             tags = list(type = "string", max = 1024L, pattern = "s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?")), 
             InputFormat = structure(logical(0), tags = list(type = "string", 
                 enum = c("ONE_DOC_PER_FILE", "ONE_DOC_PER_LINE")))), 
@@ -213,7 +389,56 @@ describe_entities_detection_job_output <- function (...)
             tags = list(type = "structure")), LanguageCode = structure(logical(0), 
             tags = list(type = "string", enum = c("en", "es", 
                 "fr", "de", "it", "pt"))), DataAccessRoleArn = structure(logical(0), 
-            tags = list(type = "string", pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+"))), 
+            tags = list(type = "string", max = 2048L, min = 20L, 
+                pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+"))), 
+        tags = list(type = "structure"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_entity_recognizer_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(EntityRecognizerArn = structure(logical(0), 
+        tags = list(type = "string", max = 256L, pattern = "arn:aws:comprehend:[a-zA-Z0-9-]*:[0-9]{12}:entity-recognizer/[a-zA-Z0-9](-*[a-zA-Z0-9])*"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_entity_recognizer_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(EntityRecognizerProperties = structure(list(EntityRecognizerArn = structure(logical(0), 
+        tags = list(type = "string", max = 256L, pattern = "arn:aws:comprehend:[a-zA-Z0-9-]*:[0-9]{12}:entity-recognizer/[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+        LanguageCode = structure(logical(0), tags = list(type = "string", 
+            enum = c("en", "es", "fr", "de", "it", "pt"))), Status = structure(logical(0), 
+            tags = list(type = "string", enum = c("SUBMITTED", 
+                "TRAINING", "DELETING", "STOP_REQUESTED", "STOPPED", 
+                "IN_ERROR", "TRAINED"))), Message = structure(logical(0), 
+            tags = list(type = "string")), SubmitTime = structure(logical(0), 
+            tags = list(type = "timestamp")), EndTime = structure(logical(0), 
+            tags = list(type = "timestamp")), TrainingStartTime = structure(logical(0), 
+            tags = list(type = "timestamp")), TrainingEndTime = structure(logical(0), 
+            tags = list(type = "timestamp")), InputDataConfig = structure(list(EntityTypes = structure(list(structure(list(Type = structure(logical(0), 
+            tags = list(type = "string", max = 64L, pattern = "[_A-Z0-9]+"))), 
+            tags = list(type = "structure"))), tags = list(type = "list")), 
+            Documents = structure(list(S3Uri = structure(logical(0), 
+                tags = list(type = "string", max = 1024L, pattern = "s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?"))), 
+                tags = list(type = "structure")), Annotations = structure(list(S3Uri = structure(logical(0), 
+                tags = list(type = "string", max = 1024L, pattern = "s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?"))), 
+                tags = list(type = "structure")), EntityList = structure(list(S3Uri = structure(logical(0), 
+                tags = list(type = "string", max = 1024L, pattern = "s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?"))), 
+                tags = list(type = "structure"))), tags = list(type = "structure")), 
+        RecognizerMetadata = structure(list(NumberOfTrainedDocuments = structure(logical(0), 
+            tags = list(type = "integer")), NumberOfTestDocuments = structure(logical(0), 
+            tags = list(type = "integer")), EvaluationMetrics = structure(list(Precision = structure(logical(0), 
+            tags = list(type = "double")), Recall = structure(logical(0), 
+            tags = list(type = "double")), F1Score = structure(logical(0), 
+            tags = list(type = "double"))), tags = list(type = "structure")), 
+            EntityTypes = structure(list(structure(list(Type = structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "structure"))), 
+                tags = list(type = "list"))), tags = list(type = "structure")), 
+        DataAccessRoleArn = structure(logical(0), tags = list(type = "string", 
+            max = 2048L, min = 20L, pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+"))), 
         tags = list(type = "structure"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -222,7 +447,8 @@ describe_key_phrases_detection_job_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string", 
-        max = 32L, min = 1L))), tags = list(type = "structure"))
+        max = 32L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -230,8 +456,9 @@ describe_key_phrases_detection_job_output <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(KeyPhrasesDetectionJobProperties = structure(list(JobId = structure(logical(0), 
-        tags = list(type = "string", max = 32L, min = 1L)), JobName = structure(logical(0), 
-        tags = list(type = "string", max = 256L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        tags = list(type = "string", max = 32L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        JobName = structure(logical(0), tags = list(type = "string", 
+            max = 256L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
         JobStatus = structure(logical(0), tags = list(type = "string", 
             enum = c("SUBMITTED", "IN_PROGRESS", "COMPLETED", 
                 "FAILED", "STOP_REQUESTED", "STOPPED"))), Message = structure(logical(0), 
@@ -246,7 +473,8 @@ describe_key_phrases_detection_job_output <- function (...)
             tags = list(type = "structure")), LanguageCode = structure(logical(0), 
             tags = list(type = "string", enum = c("en", "es", 
                 "fr", "de", "it", "pt"))), DataAccessRoleArn = structure(logical(0), 
-            tags = list(type = "string", pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+"))), 
+            tags = list(type = "string", max = 2048L, min = 20L, 
+                pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+"))), 
         tags = list(type = "structure"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -255,7 +483,8 @@ describe_sentiment_detection_job_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string", 
-        max = 32L, min = 1L))), tags = list(type = "structure"))
+        max = 32L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -263,8 +492,9 @@ describe_sentiment_detection_job_output <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(SentimentDetectionJobProperties = structure(list(JobId = structure(logical(0), 
-        tags = list(type = "string", max = 32L, min = 1L)), JobName = structure(logical(0), 
-        tags = list(type = "string", max = 256L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        tags = list(type = "string", max = 32L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        JobName = structure(logical(0), tags = list(type = "string", 
+            max = 256L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
         JobStatus = structure(logical(0), tags = list(type = "string", 
             enum = c("SUBMITTED", "IN_PROGRESS", "COMPLETED", 
                 "FAILED", "STOP_REQUESTED", "STOPPED"))), Message = structure(logical(0), 
@@ -279,7 +509,8 @@ describe_sentiment_detection_job_output <- function (...)
             tags = list(type = "structure")), LanguageCode = structure(logical(0), 
             tags = list(type = "string", enum = c("en", "es", 
                 "fr", "de", "it", "pt"))), DataAccessRoleArn = structure(logical(0), 
-            tags = list(type = "string", pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+"))), 
+            tags = list(type = "string", max = 2048L, min = 20L, 
+                pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+"))), 
         tags = list(type = "structure"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -288,7 +519,8 @@ describe_topics_detection_job_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string", 
-        max = 32L, min = 1L))), tags = list(type = "structure"))
+        max = 32L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -296,8 +528,9 @@ describe_topics_detection_job_output <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(TopicsDetectionJobProperties = structure(list(JobId = structure(logical(0), 
-        tags = list(type = "string", max = 32L, min = 1L)), JobName = structure(logical(0), 
-        tags = list(type = "string", max = 256L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        tags = list(type = "string", max = 32L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        JobName = structure(logical(0), tags = list(type = "string", 
+            max = 256L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
         JobStatus = structure(logical(0), tags = list(type = "string", 
             enum = c("SUBMITTED", "IN_PROGRESS", "COMPLETED", 
                 "FAILED", "STOP_REQUESTED", "STOPPED"))), Message = structure(logical(0), 
@@ -419,11 +652,104 @@ detect_syntax_output <- function (...)
         tags = list(type = "integer")), EndOffset = structure(logical(0), 
         tags = list(type = "integer")), PartOfSpeech = structure(list(Tag = structure(logical(0), 
         tags = list(type = "string", enum = c("ADJ", "ADP", "ADV", 
-            "AUX", "CONJ", "DET", "INTJ", "NOUN", "NUM", "O", 
-            "PART", "PRON", "PROPN", "PUNCT", "SCONJ", "SYM", 
+            "AUX", "CONJ", "CCONJ", "DET", "INTJ", "NOUN", "NUM", 
+            "O", "PART", "PRON", "PROPN", "PUNCT", "SCONJ", "SYM", 
             "VERB"))), Score = structure(logical(0), tags = list(type = "float"))), 
         tags = list(type = "structure"))), tags = list(type = "structure"))), 
         tags = list(type = "list"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_document_classification_jobs_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Filter = structure(list(JobName = structure(logical(0), 
+        tags = list(type = "string", max = 256L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        JobStatus = structure(logical(0), tags = list(type = "string", 
+            enum = c("SUBMITTED", "IN_PROGRESS", "COMPLETED", 
+                "FAILED", "STOP_REQUESTED", "STOPPED"))), SubmitTimeBefore = structure(logical(0), 
+            tags = list(type = "timestamp")), SubmitTimeAfter = structure(logical(0), 
+            tags = list(type = "timestamp"))), tags = list(type = "structure")), 
+        NextToken = structure(logical(0), tags = list(type = "string", 
+            min = 1L)), MaxResults = structure(logical(0), tags = list(type = "integer", 
+            max = 500L, min = 1L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_document_classification_jobs_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(DocumentClassificationJobPropertiesList = structure(list(structure(list(JobId = structure(logical(0), 
+        tags = list(type = "string", max = 32L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        JobName = structure(logical(0), tags = list(type = "string", 
+            max = 256L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        JobStatus = structure(logical(0), tags = list(type = "string", 
+            enum = c("SUBMITTED", "IN_PROGRESS", "COMPLETED", 
+                "FAILED", "STOP_REQUESTED", "STOPPED"))), Message = structure(logical(0), 
+            tags = list(type = "string")), SubmitTime = structure(logical(0), 
+            tags = list(type = "timestamp")), EndTime = structure(logical(0), 
+            tags = list(type = "timestamp")), DocumentClassifierArn = structure(logical(0), 
+            tags = list(type = "string", max = 256L, pattern = "arn:aws:comprehend:[a-zA-Z0-9-]*:[0-9]{12}:document-classifier/[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+        InputDataConfig = structure(list(S3Uri = structure(logical(0), 
+            tags = list(type = "string", max = 1024L, pattern = "s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?")), 
+            InputFormat = structure(logical(0), tags = list(type = "string", 
+                enum = c("ONE_DOC_PER_FILE", "ONE_DOC_PER_LINE")))), 
+            tags = list(type = "structure")), OutputDataConfig = structure(list(S3Uri = structure(logical(0), 
+            tags = list(type = "string", max = 1024L, pattern = "s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?"))), 
+            tags = list(type = "structure")), DataAccessRoleArn = structure(logical(0), 
+            tags = list(type = "string", max = 2048L, min = 20L, 
+                pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+"))), 
+        tags = list(type = "structure"))), tags = list(type = "list")), 
+        NextToken = structure(logical(0), tags = list(type = "string", 
+            min = 1L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_document_classifiers_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Filter = structure(list(Status = structure(logical(0), 
+        tags = list(type = "string", enum = c("SUBMITTED", "TRAINING", 
+            "DELETING", "STOP_REQUESTED", "STOPPED", "IN_ERROR", 
+            "TRAINED"))), SubmitTimeBefore = structure(logical(0), 
+        tags = list(type = "timestamp")), SubmitTimeAfter = structure(logical(0), 
+        tags = list(type = "timestamp"))), tags = list(type = "structure")), 
+        NextToken = structure(logical(0), tags = list(type = "string", 
+            min = 1L)), MaxResults = structure(logical(0), tags = list(type = "integer", 
+            max = 500L, min = 1L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_document_classifiers_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(DocumentClassifierPropertiesList = structure(list(structure(list(DocumentClassifierArn = structure(logical(0), 
+        tags = list(type = "string", max = 256L, pattern = "arn:aws:comprehend:[a-zA-Z0-9-]*:[0-9]{12}:document-classifier/[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+        LanguageCode = structure(logical(0), tags = list(type = "string", 
+            enum = c("en", "es", "fr", "de", "it", "pt"))), Status = structure(logical(0), 
+            tags = list(type = "string", enum = c("SUBMITTED", 
+                "TRAINING", "DELETING", "STOP_REQUESTED", "STOPPED", 
+                "IN_ERROR", "TRAINED"))), Message = structure(logical(0), 
+            tags = list(type = "string")), SubmitTime = structure(logical(0), 
+            tags = list(type = "timestamp")), EndTime = structure(logical(0), 
+            tags = list(type = "timestamp")), TrainingStartTime = structure(logical(0), 
+            tags = list(type = "timestamp")), TrainingEndTime = structure(logical(0), 
+            tags = list(type = "timestamp")), InputDataConfig = structure(list(S3Uri = structure(logical(0), 
+            tags = list(type = "string", max = 1024L, pattern = "s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?"))), 
+            tags = list(type = "structure")), ClassifierMetadata = structure(list(NumberOfLabels = structure(logical(0), 
+            tags = list(type = "integer")), NumberOfTrainedDocuments = structure(logical(0), 
+            tags = list(type = "integer")), NumberOfTestDocuments = structure(logical(0), 
+            tags = list(type = "integer")), EvaluationMetrics = structure(list(Accuracy = structure(logical(0), 
+            tags = list(type = "double")), Precision = structure(logical(0), 
+            tags = list(type = "double")), Recall = structure(logical(0), 
+            tags = list(type = "double")), F1Score = structure(logical(0), 
+            tags = list(type = "double"))), tags = list(type = "structure"))), 
+            tags = list(type = "structure")), DataAccessRoleArn = structure(logical(0), 
+            tags = list(type = "string", max = 2048L, min = 20L, 
+                pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+"))), 
+        tags = list(type = "structure"))), tags = list(type = "list")), 
+        NextToken = structure(logical(0), tags = list(type = "string", 
+            min = 1L))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -447,8 +773,9 @@ list_dominant_language_detection_jobs_output <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(DominantLanguageDetectionJobPropertiesList = structure(list(structure(list(JobId = structure(logical(0), 
-        tags = list(type = "string", max = 32L, min = 1L)), JobName = structure(logical(0), 
-        tags = list(type = "string", max = 256L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        tags = list(type = "string", max = 32L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        JobName = structure(logical(0), tags = list(type = "string", 
+            max = 256L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
         JobStatus = structure(logical(0), tags = list(type = "string", 
             enum = c("SUBMITTED", "IN_PROGRESS", "COMPLETED", 
                 "FAILED", "STOP_REQUESTED", "STOPPED"))), Message = structure(logical(0), 
@@ -461,7 +788,8 @@ list_dominant_language_detection_jobs_output <- function (...)
             tags = list(type = "structure")), OutputDataConfig = structure(list(S3Uri = structure(logical(0), 
             tags = list(type = "string", max = 1024L, pattern = "s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?"))), 
             tags = list(type = "structure")), DataAccessRoleArn = structure(logical(0), 
-            tags = list(type = "string", pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+"))), 
+            tags = list(type = "string", max = 2048L, min = 20L, 
+                pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+"))), 
         tags = list(type = "structure"))), tags = list(type = "list")), 
         NextToken = structure(logical(0), tags = list(type = "string", 
             min = 1L))), tags = list(type = "structure"))
@@ -488,14 +816,17 @@ list_entities_detection_jobs_output <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(EntitiesDetectionJobPropertiesList = structure(list(structure(list(JobId = structure(logical(0), 
-        tags = list(type = "string", max = 32L, min = 1L)), JobName = structure(logical(0), 
-        tags = list(type = "string", max = 256L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        tags = list(type = "string", max = 32L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        JobName = structure(logical(0), tags = list(type = "string", 
+            max = 256L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
         JobStatus = structure(logical(0), tags = list(type = "string", 
             enum = c("SUBMITTED", "IN_PROGRESS", "COMPLETED", 
                 "FAILED", "STOP_REQUESTED", "STOPPED"))), Message = structure(logical(0), 
             tags = list(type = "string")), SubmitTime = structure(logical(0), 
             tags = list(type = "timestamp")), EndTime = structure(logical(0), 
-            tags = list(type = "timestamp")), InputDataConfig = structure(list(S3Uri = structure(logical(0), 
+            tags = list(type = "timestamp")), EntityRecognizerArn = structure(logical(0), 
+            tags = list(type = "string", max = 256L, pattern = "arn:aws:comprehend:[a-zA-Z0-9-]*:[0-9]{12}:entity-recognizer/[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+        InputDataConfig = structure(list(S3Uri = structure(logical(0), 
             tags = list(type = "string", max = 1024L, pattern = "s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?")), 
             InputFormat = structure(logical(0), tags = list(type = "string", 
                 enum = c("ONE_DOC_PER_FILE", "ONE_DOC_PER_LINE")))), 
@@ -504,7 +835,64 @@ list_entities_detection_jobs_output <- function (...)
             tags = list(type = "structure")), LanguageCode = structure(logical(0), 
             tags = list(type = "string", enum = c("en", "es", 
                 "fr", "de", "it", "pt"))), DataAccessRoleArn = structure(logical(0), 
-            tags = list(type = "string", pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+"))), 
+            tags = list(type = "string", max = 2048L, min = 20L, 
+                pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+"))), 
+        tags = list(type = "structure"))), tags = list(type = "list")), 
+        NextToken = structure(logical(0), tags = list(type = "string", 
+            min = 1L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_entity_recognizers_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Filter = structure(list(Status = structure(logical(0), 
+        tags = list(type = "string", enum = c("SUBMITTED", "TRAINING", 
+            "DELETING", "STOP_REQUESTED", "STOPPED", "IN_ERROR", 
+            "TRAINED"))), SubmitTimeBefore = structure(logical(0), 
+        tags = list(type = "timestamp")), SubmitTimeAfter = structure(logical(0), 
+        tags = list(type = "timestamp"))), tags = list(type = "structure")), 
+        NextToken = structure(logical(0), tags = list(type = "string", 
+            min = 1L)), MaxResults = structure(logical(0), tags = list(type = "integer", 
+            max = 500L, min = 1L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_entity_recognizers_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(EntityRecognizerPropertiesList = structure(list(structure(list(EntityRecognizerArn = structure(logical(0), 
+        tags = list(type = "string", max = 256L, pattern = "arn:aws:comprehend:[a-zA-Z0-9-]*:[0-9]{12}:entity-recognizer/[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+        LanguageCode = structure(logical(0), tags = list(type = "string", 
+            enum = c("en", "es", "fr", "de", "it", "pt"))), Status = structure(logical(0), 
+            tags = list(type = "string", enum = c("SUBMITTED", 
+                "TRAINING", "DELETING", "STOP_REQUESTED", "STOPPED", 
+                "IN_ERROR", "TRAINED"))), Message = structure(logical(0), 
+            tags = list(type = "string")), SubmitTime = structure(logical(0), 
+            tags = list(type = "timestamp")), EndTime = structure(logical(0), 
+            tags = list(type = "timestamp")), TrainingStartTime = structure(logical(0), 
+            tags = list(type = "timestamp")), TrainingEndTime = structure(logical(0), 
+            tags = list(type = "timestamp")), InputDataConfig = structure(list(EntityTypes = structure(list(structure(list(Type = structure(logical(0), 
+            tags = list(type = "string", max = 64L, pattern = "[_A-Z0-9]+"))), 
+            tags = list(type = "structure"))), tags = list(type = "list")), 
+            Documents = structure(list(S3Uri = structure(logical(0), 
+                tags = list(type = "string", max = 1024L, pattern = "s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?"))), 
+                tags = list(type = "structure")), Annotations = structure(list(S3Uri = structure(logical(0), 
+                tags = list(type = "string", max = 1024L, pattern = "s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?"))), 
+                tags = list(type = "structure")), EntityList = structure(list(S3Uri = structure(logical(0), 
+                tags = list(type = "string", max = 1024L, pattern = "s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?"))), 
+                tags = list(type = "structure"))), tags = list(type = "structure")), 
+        RecognizerMetadata = structure(list(NumberOfTrainedDocuments = structure(logical(0), 
+            tags = list(type = "integer")), NumberOfTestDocuments = structure(logical(0), 
+            tags = list(type = "integer")), EvaluationMetrics = structure(list(Precision = structure(logical(0), 
+            tags = list(type = "double")), Recall = structure(logical(0), 
+            tags = list(type = "double")), F1Score = structure(logical(0), 
+            tags = list(type = "double"))), tags = list(type = "structure")), 
+            EntityTypes = structure(list(structure(list(Type = structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "structure"))), 
+                tags = list(type = "list"))), tags = list(type = "structure")), 
+        DataAccessRoleArn = structure(logical(0), tags = list(type = "string", 
+            max = 2048L, min = 20L, pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+"))), 
         tags = list(type = "structure"))), tags = list(type = "list")), 
         NextToken = structure(logical(0), tags = list(type = "string", 
             min = 1L))), tags = list(type = "structure"))
@@ -531,8 +919,9 @@ list_key_phrases_detection_jobs_output <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(KeyPhrasesDetectionJobPropertiesList = structure(list(structure(list(JobId = structure(logical(0), 
-        tags = list(type = "string", max = 32L, min = 1L)), JobName = structure(logical(0), 
-        tags = list(type = "string", max = 256L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        tags = list(type = "string", max = 32L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        JobName = structure(logical(0), tags = list(type = "string", 
+            max = 256L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
         JobStatus = structure(logical(0), tags = list(type = "string", 
             enum = c("SUBMITTED", "IN_PROGRESS", "COMPLETED", 
                 "FAILED", "STOP_REQUESTED", "STOPPED"))), Message = structure(logical(0), 
@@ -547,7 +936,8 @@ list_key_phrases_detection_jobs_output <- function (...)
             tags = list(type = "structure")), LanguageCode = structure(logical(0), 
             tags = list(type = "string", enum = c("en", "es", 
                 "fr", "de", "it", "pt"))), DataAccessRoleArn = structure(logical(0), 
-            tags = list(type = "string", pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+"))), 
+            tags = list(type = "string", max = 2048L, min = 20L, 
+                pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+"))), 
         tags = list(type = "structure"))), tags = list(type = "list")), 
         NextToken = structure(logical(0), tags = list(type = "string", 
             min = 1L))), tags = list(type = "structure"))
@@ -574,8 +964,9 @@ list_sentiment_detection_jobs_output <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(SentimentDetectionJobPropertiesList = structure(list(structure(list(JobId = structure(logical(0), 
-        tags = list(type = "string", max = 32L, min = 1L)), JobName = structure(logical(0), 
-        tags = list(type = "string", max = 256L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        tags = list(type = "string", max = 32L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        JobName = structure(logical(0), tags = list(type = "string", 
+            max = 256L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
         JobStatus = structure(logical(0), tags = list(type = "string", 
             enum = c("SUBMITTED", "IN_PROGRESS", "COMPLETED", 
                 "FAILED", "STOP_REQUESTED", "STOPPED"))), Message = structure(logical(0), 
@@ -590,7 +981,8 @@ list_sentiment_detection_jobs_output <- function (...)
             tags = list(type = "structure")), LanguageCode = structure(logical(0), 
             tags = list(type = "string", enum = c("en", "es", 
                 "fr", "de", "it", "pt"))), DataAccessRoleArn = structure(logical(0), 
-            tags = list(type = "string", pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+"))), 
+            tags = list(type = "string", max = 2048L, min = 20L, 
+                pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+"))), 
         tags = list(type = "structure"))), tags = list(type = "list")), 
         NextToken = structure(logical(0), tags = list(type = "string", 
             min = 1L))), tags = list(type = "structure"))
@@ -617,8 +1009,9 @@ list_topics_detection_jobs_output <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(TopicsDetectionJobPropertiesList = structure(list(structure(list(JobId = structure(logical(0), 
-        tags = list(type = "string", max = 32L, min = 1L)), JobName = structure(logical(0), 
-        tags = list(type = "string", max = 256L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        tags = list(type = "string", max = 32L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        JobName = structure(logical(0), tags = list(type = "string", 
+            max = 256L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
         JobStatus = structure(logical(0), tags = list(type = "string", 
             enum = c("SUBMITTED", "IN_PROGRESS", "COMPLETED", 
                 "FAILED", "STOP_REQUESTED", "STOPPED"))), Message = structure(logical(0), 
@@ -637,6 +1030,39 @@ list_topics_detection_jobs_output <- function (...)
     return(populate(args, shape))
 }
 
+start_document_classification_job_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(JobName = structure(logical(0), tags = list(type = "string", 
+        max = 256L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        DocumentClassifierArn = structure(logical(0), tags = list(type = "string", 
+            max = 256L, pattern = "arn:aws:comprehend:[a-zA-Z0-9-]*:[0-9]{12}:document-classifier/[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+        InputDataConfig = structure(list(S3Uri = structure(logical(0), 
+            tags = list(type = "string", max = 1024L, pattern = "s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?")), 
+            InputFormat = structure(logical(0), tags = list(type = "string", 
+                enum = c("ONE_DOC_PER_FILE", "ONE_DOC_PER_LINE")))), 
+            tags = list(type = "structure")), OutputDataConfig = structure(list(S3Uri = structure(logical(0), 
+            tags = list(type = "string", max = 1024L, pattern = "s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?"))), 
+            tags = list(type = "structure")), DataAccessRoleArn = structure(logical(0), 
+            tags = list(type = "string", max = 2048L, min = 20L, 
+                pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+")), 
+        ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, 
+            type = "string", max = 64L, min = 1L, pattern = "^[a-zA-Z0-9-]+$"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+start_document_classification_job_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string", 
+        max = 32L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        JobStatus = structure(logical(0), tags = list(type = "string", 
+            enum = c("SUBMITTED", "IN_PROGRESS", "COMPLETED", 
+                "FAILED", "STOP_REQUESTED", "STOPPED")))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 start_dominant_language_detection_job_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -647,7 +1073,8 @@ start_dominant_language_detection_job_input <- function (...)
         tags = list(type = "structure")), OutputDataConfig = structure(list(S3Uri = structure(logical(0), 
         tags = list(type = "string", max = 1024L, pattern = "s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?"))), 
         tags = list(type = "structure")), DataAccessRoleArn = structure(logical(0), 
-        tags = list(type = "string", pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+")), 
+        tags = list(type = "string", max = 2048L, min = 20L, 
+            pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+")), 
         JobName = structure(logical(0), tags = list(type = "string", 
             max = 256L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
         ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, 
@@ -660,10 +1087,10 @@ start_dominant_language_detection_job_output <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string", 
-        max = 32L, min = 1L)), JobStatus = structure(logical(0), 
-        tags = list(type = "string", enum = c("SUBMITTED", "IN_PROGRESS", 
-            "COMPLETED", "FAILED", "STOP_REQUESTED", "STOPPED")))), 
-        tags = list(type = "structure"))
+        max = 32L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        JobStatus = structure(logical(0), tags = list(type = "string", 
+            enum = c("SUBMITTED", "IN_PROGRESS", "COMPLETED", 
+                "FAILED", "STOP_REQUESTED", "STOPPED")))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -677,9 +1104,12 @@ start_entities_detection_job_input <- function (...)
         tags = list(type = "structure")), OutputDataConfig = structure(list(S3Uri = structure(logical(0), 
         tags = list(type = "string", max = 1024L, pattern = "s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?"))), 
         tags = list(type = "structure")), DataAccessRoleArn = structure(logical(0), 
-        tags = list(type = "string", pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+")), 
+        tags = list(type = "string", max = 2048L, min = 20L, 
+            pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+")), 
         JobName = structure(logical(0), tags = list(type = "string", 
             max = 256L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        EntityRecognizerArn = structure(logical(0), tags = list(type = "string", 
+            max = 256L, pattern = "arn:aws:comprehend:[a-zA-Z0-9-]*:[0-9]{12}:entity-recognizer/[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
         LanguageCode = structure(logical(0), tags = list(type = "string", 
             enum = c("en", "es", "fr", "de", "it", "pt"))), ClientRequestToken = structure(logical(0), 
             tags = list(idempotencyToken = TRUE, type = "string", 
@@ -692,10 +1122,10 @@ start_entities_detection_job_output <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string", 
-        max = 32L, min = 1L)), JobStatus = structure(logical(0), 
-        tags = list(type = "string", enum = c("SUBMITTED", "IN_PROGRESS", 
-            "COMPLETED", "FAILED", "STOP_REQUESTED", "STOPPED")))), 
-        tags = list(type = "structure"))
+        max = 32L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        JobStatus = structure(logical(0), tags = list(type = "string", 
+            enum = c("SUBMITTED", "IN_PROGRESS", "COMPLETED", 
+                "FAILED", "STOP_REQUESTED", "STOPPED")))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -709,7 +1139,8 @@ start_key_phrases_detection_job_input <- function (...)
         tags = list(type = "structure")), OutputDataConfig = structure(list(S3Uri = structure(logical(0), 
         tags = list(type = "string", max = 1024L, pattern = "s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?"))), 
         tags = list(type = "structure")), DataAccessRoleArn = structure(logical(0), 
-        tags = list(type = "string", pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+")), 
+        tags = list(type = "string", max = 2048L, min = 20L, 
+            pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+")), 
         JobName = structure(logical(0), tags = list(type = "string", 
             max = 256L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
         LanguageCode = structure(logical(0), tags = list(type = "string", 
@@ -724,10 +1155,10 @@ start_key_phrases_detection_job_output <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string", 
-        max = 32L, min = 1L)), JobStatus = structure(logical(0), 
-        tags = list(type = "string", enum = c("SUBMITTED", "IN_PROGRESS", 
-            "COMPLETED", "FAILED", "STOP_REQUESTED", "STOPPED")))), 
-        tags = list(type = "structure"))
+        max = 32L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        JobStatus = structure(logical(0), tags = list(type = "string", 
+            enum = c("SUBMITTED", "IN_PROGRESS", "COMPLETED", 
+                "FAILED", "STOP_REQUESTED", "STOPPED")))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -741,7 +1172,8 @@ start_sentiment_detection_job_input <- function (...)
         tags = list(type = "structure")), OutputDataConfig = structure(list(S3Uri = structure(logical(0), 
         tags = list(type = "string", max = 1024L, pattern = "s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?"))), 
         tags = list(type = "structure")), DataAccessRoleArn = structure(logical(0), 
-        tags = list(type = "string", pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+")), 
+        tags = list(type = "string", max = 2048L, min = 20L, 
+            pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+")), 
         JobName = structure(logical(0), tags = list(type = "string", 
             max = 256L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
         LanguageCode = structure(logical(0), tags = list(type = "string", 
@@ -756,10 +1188,10 @@ start_sentiment_detection_job_output <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string", 
-        max = 32L, min = 1L)), JobStatus = structure(logical(0), 
-        tags = list(type = "string", enum = c("SUBMITTED", "IN_PROGRESS", 
-            "COMPLETED", "FAILED", "STOP_REQUESTED", "STOPPED")))), 
-        tags = list(type = "structure"))
+        max = 32L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        JobStatus = structure(logical(0), tags = list(type = "string", 
+            enum = c("SUBMITTED", "IN_PROGRESS", "COMPLETED", 
+                "FAILED", "STOP_REQUESTED", "STOPPED")))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -773,7 +1205,8 @@ start_topics_detection_job_input <- function (...)
         tags = list(type = "structure")), OutputDataConfig = structure(list(S3Uri = structure(logical(0), 
         tags = list(type = "string", max = 1024L, pattern = "s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?"))), 
         tags = list(type = "structure")), DataAccessRoleArn = structure(logical(0), 
-        tags = list(type = "string", pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+")), 
+        tags = list(type = "string", max = 2048L, min = 20L, 
+            pattern = "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+")), 
         JobName = structure(logical(0), tags = list(type = "string", 
             max = 256L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
         NumberOfTopics = structure(logical(0), tags = list(type = "integer", 
@@ -788,10 +1221,10 @@ start_topics_detection_job_output <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string", 
-        max = 32L, min = 1L)), JobStatus = structure(logical(0), 
-        tags = list(type = "string", enum = c("SUBMITTED", "IN_PROGRESS", 
-            "COMPLETED", "FAILED", "STOP_REQUESTED", "STOPPED")))), 
-        tags = list(type = "structure"))
+        max = 32L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        JobStatus = structure(logical(0), tags = list(type = "string", 
+            enum = c("SUBMITTED", "IN_PROGRESS", "COMPLETED", 
+                "FAILED", "STOP_REQUESTED", "STOPPED")))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -799,7 +1232,8 @@ stop_dominant_language_detection_job_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string", 
-        max = 32L, min = 1L))), tags = list(type = "structure"))
+        max = 32L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -807,10 +1241,10 @@ stop_dominant_language_detection_job_output <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string", 
-        max = 32L, min = 1L)), JobStatus = structure(logical(0), 
-        tags = list(type = "string", enum = c("SUBMITTED", "IN_PROGRESS", 
-            "COMPLETED", "FAILED", "STOP_REQUESTED", "STOPPED")))), 
-        tags = list(type = "structure"))
+        max = 32L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        JobStatus = structure(logical(0), tags = list(type = "string", 
+            enum = c("SUBMITTED", "IN_PROGRESS", "COMPLETED", 
+                "FAILED", "STOP_REQUESTED", "STOPPED")))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -818,7 +1252,8 @@ stop_entities_detection_job_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string", 
-        max = 32L, min = 1L))), tags = list(type = "structure"))
+        max = 32L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -826,10 +1261,10 @@ stop_entities_detection_job_output <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string", 
-        max = 32L, min = 1L)), JobStatus = structure(logical(0), 
-        tags = list(type = "string", enum = c("SUBMITTED", "IN_PROGRESS", 
-            "COMPLETED", "FAILED", "STOP_REQUESTED", "STOPPED")))), 
-        tags = list(type = "structure"))
+        max = 32L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        JobStatus = structure(logical(0), tags = list(type = "string", 
+            enum = c("SUBMITTED", "IN_PROGRESS", "COMPLETED", 
+                "FAILED", "STOP_REQUESTED", "STOPPED")))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -837,7 +1272,8 @@ stop_key_phrases_detection_job_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string", 
-        max = 32L, min = 1L))), tags = list(type = "structure"))
+        max = 32L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -845,10 +1281,10 @@ stop_key_phrases_detection_job_output <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string", 
-        max = 32L, min = 1L)), JobStatus = structure(logical(0), 
-        tags = list(type = "string", enum = c("SUBMITTED", "IN_PROGRESS", 
-            "COMPLETED", "FAILED", "STOP_REQUESTED", "STOPPED")))), 
-        tags = list(type = "structure"))
+        max = 32L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        JobStatus = structure(logical(0), tags = list(type = "string", 
+            enum = c("SUBMITTED", "IN_PROGRESS", "COMPLETED", 
+                "FAILED", "STOP_REQUESTED", "STOPPED")))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -856,7 +1292,8 @@ stop_sentiment_detection_job_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string", 
-        max = 32L, min = 1L))), tags = list(type = "structure"))
+        max = 32L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -864,9 +1301,41 @@ stop_sentiment_detection_job_output <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string", 
-        max = 32L, min = 1L)), JobStatus = structure(logical(0), 
-        tags = list(type = "string", enum = c("SUBMITTED", "IN_PROGRESS", 
-            "COMPLETED", "FAILED", "STOP_REQUESTED", "STOPPED")))), 
+        max = 32L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-%@]*)$")), 
+        JobStatus = structure(logical(0), tags = list(type = "string", 
+            enum = c("SUBMITTED", "IN_PROGRESS", "COMPLETED", 
+                "FAILED", "STOP_REQUESTED", "STOPPED")))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+stop_training_document_classifier_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(DocumentClassifierArn = structure(logical(0), 
+        tags = list(type = "string", max = 256L, pattern = "arn:aws:comprehend:[a-zA-Z0-9-]*:[0-9]{12}:document-classifier/[a-zA-Z0-9](-*[a-zA-Z0-9])*"))), 
         tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+stop_training_document_classifier_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+stop_training_entity_recognizer_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(EntityRecognizerArn = structure(logical(0), 
+        tags = list(type = "string", max = 256L, pattern = "arn:aws:comprehend:[a-zA-Z0-9-]*:[0-9]{12}:entity-recognizer/[a-zA-Z0-9](-*[a-zA-Z0-9])*"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+stop_training_entity_recognizer_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(), tags = list(type = "structure"))
     return(populate(args, shape))
 }

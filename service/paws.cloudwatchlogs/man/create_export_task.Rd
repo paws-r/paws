@@ -15,9 +15,9 @@ create_export_task(taskName = NULL, logGroupName,
 
 \item{logStreamNamePrefix}{Export only log streams that match the provided prefix. If you don't specify a value, no prefix filter is applied.}
 
-\item{from}{[required] The start time of the range for the request, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp earlier than this time are not exported.}
+\item{from}{[required] The start time of the range for the request, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a timestamp earlier than this time are not exported.}
 
-\item{to}{[required] The end time of the range for the request, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp later than this time are not exported.}
+\item{to}{[required] The end time of the range for the request, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time are not exported.}
 
 \item{destination}{[required] The name of S3 bucket for the exported log data. The bucket must be in the same AWS region.}
 

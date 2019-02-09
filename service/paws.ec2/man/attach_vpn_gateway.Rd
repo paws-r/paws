@@ -17,7 +17,7 @@ attach_vpn_gateway(VpcId, VpnGatewayId, DryRun = NULL)
 Attaches a virtual private gateway to a VPC. You can attach one virtual private gateway to one VPC at a time.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html}{AWS Managed VPN Connections} in the \emph{Amazon Virtual Private Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html}{AWS Site-to-Site VPN} in the \emph{AWS Site-to-Site VPN User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{attach_vpn_gateway(

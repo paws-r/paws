@@ -30,11 +30,15 @@ If the field name is \code{path-pattern}, you can specify a single path pattern.
 
 \item{Actions}{The actions.
 
-If the action type is \code{forward}, you can specify a single target group.
+If the action type is \code{forward}, you specify a target group. The protocol of the target group must be HTTP or HTTPS for an Application Load Balancer. The protocol of the target group must be TCP or TLS for a Network Load Balancer.
 
-If the action type is \code{authenticate-oidc}, you can use an identity provider that is OpenID Connect (OIDC) compliant to authenticate users as they access your application.
+[HTTPS listeners] If the action type is \code{authenticate-oidc}, you authenticate users through an identity provider that is OpenID Connect (OIDC) compliant.
 
-If the action type is \code{authenticate-cognito}, you can use Amazon Cognito to authenticate users as they access your application.}
+[HTTPS listeners] If the action type is \code{authenticate-cognito}, you authenticate users through the user pools supported by Amazon Cognito.
+
+[Application Load Balancer] If the action type is \code{redirect}, you redirect specified client requests from one URL to another.
+
+[Application Load Balancer] If the action type is \code{fixed-response}, you drop specified client requests and return a custom HTTP response.}
 }
 \description{
 Modifies the specified rule.

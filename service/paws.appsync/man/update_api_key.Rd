@@ -7,7 +7,7 @@
 update_api_key(apiId, id, description = NULL, expires = NULL)
 }
 \arguments{
-\item{apiId}{[required] The ID for the GraphQL API}
+\item{apiId}{[required] The ID for the GraphQL API.}
 
 \item{id}{[required] The API key ID.}
 

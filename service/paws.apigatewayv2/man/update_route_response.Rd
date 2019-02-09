@@ -4,21 +4,9 @@
 \alias{update_route_response}
 \title{Updates a RouteResponse}
 \usage{
-update_route_response(
-  ApiId = "string",
-  ModelSelectionExpression = "string",
-  ResponseModels = list(
-    "string"
-  ),
-  ResponseParameters = list(
-    list(
-      Required = TRUE|FALSE
-    )
-  ),
-  RouteId = "string",
-  RouteResponseId = "string",
-  RouteResponseKey = "string"
-)
+update_route_response(ApiId, ModelSelectionExpression = NULL,
+  ResponseModels = NULL, ResponseParameters = NULL, RouteId,
+  RouteResponseId, RouteResponseKey = NULL)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -38,6 +26,22 @@ update_route_response(
 \description{
 Updates a RouteResponse.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_route_response(
+  ApiId = "string",
+  ModelSelectionExpression = "string",
+  ResponseModels = list(
+    "string"
+  ),
+  ResponseParameters = list(
+    list(
+      Required = TRUE|FALSE
+    )
+  ),
+  RouteId = "string",
+  RouteResponseId = "string",
+  RouteResponseKey = "string"
+)
 }
+}
+

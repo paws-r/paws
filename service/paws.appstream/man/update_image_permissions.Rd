@@ -9,7 +9,7 @@ update_image_permissions(Name, SharedAccountId, ImagePermissions)
 \arguments{
 \item{Name}{[required] The name of the private image.}
 
-\item{SharedAccountId}{[required] The 12-digit ID of the AWS account for which you want add or update image permissions.}
+\item{SharedAccountId}{[required] The 12-digit identifier of the AWS account for which you want add or update image permissions.}
 
 \item{ImagePermissions}{[required] The permissions for the image.}
 }

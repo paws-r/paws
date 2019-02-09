@@ -4,11 +4,8 @@
 \alias{list_tags_for_resource}
 \title{Returns all the tags associated with a specified resources}
 \usage{
-list_tags_for_resource(
-  ResourceArn = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_tags_for_resource(ResourceArn, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource whose tags to list.}
@@ -20,6 +17,12 @@ list_tags_for_resource(
 \description{
 Returns all the tags associated with a specified resources.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_tags_for_resource(
+  ResourceArn = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

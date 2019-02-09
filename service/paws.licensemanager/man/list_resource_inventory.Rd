@@ -4,17 +4,8 @@
 \alias{list_resource_inventory}
 \title{Returns a detailed list of resources}
 \usage{
-list_resource_inventory(
-  MaxResults = 123,
-  NextToken = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Condition = "EQUALS"|"NOT_EQUALS"|"BEGINS_WITH"|"CONTAINS",
-      Value = "string"
-    )
-  )
-)
+list_resource_inventory(MaxResults = NULL, NextToken = NULL,
+  Filters = NULL)
 }
 \arguments{
 \item{MaxResults}{Maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned \code{NextToken} value.}
@@ -26,6 +17,18 @@ list_resource_inventory(
 \description{
 Returns a detailed list of resources.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_resource_inventory(
+  MaxResults = 123,
+  NextToken = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Condition = "EQUALS"|"NOT_EQUALS"|"BEGINS_WITH"|"CONTAINS",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

@@ -4,7 +4,22 @@
 \alias{update_virtual_node}
 \title{Updates an existing virtual node in a specified service mesh}
 \usage{
-update_virtual_node(
+update_virtual_node(clientToken = NULL, meshName, spec, virtualNodeName)
+}
+\arguments{
+\item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. Up to 36 letters, numbers, hyphens, and underscores are allowed.}
+
+\item{meshName}{[required] The name of the service mesh in which the virtual node resides.}
+
+\item{spec}{[required] The new virtual node specification to apply. This overwrites the existing data.}
+
+\item{virtualNodeName}{[required] The name of the virtual node to update.}
+}
+\description{
+Updates an existing virtual node in a specified service mesh.
+}
+\section{Accepted Parameters}{
+\preformatted{update_virtual_node(
   clientToken = "string",
   meshName = "string",
   spec = list(
@@ -37,18 +52,5 @@ update_virtual_node(
   virtualNodeName = "string"
 )
 }
-\arguments{
-\item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. Up to 36 letters, numbers, hyphens, and underscores are allowed.}
-
-\item{meshName}{[required] The name of the service mesh in which the virtual node resides.}
-
-\item{spec}{[required] The new virtual node specification to apply. This overwrites the existing data.}
-
-\item{virtualNodeName}{[required] The name of the virtual node to update.}
 }
-\description{
-Updates an existing virtual node in a specified service mesh.
-}
-\examples{
 
-}

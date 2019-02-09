@@ -8,7 +8,7 @@ register_application_revision(applicationName, description = NULL,
   revision)
 }
 \arguments{
-\item{applicationName}{[required] The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.}
+\item{applicationName}{[required] The name of an AWS CodeDeploy application associated with the IAM user or AWS account.}
 
 \item{description}{A comment about the revision.}
 
@@ -22,7 +22,7 @@ Registers with AWS CodeDeploy a revision for the specified application.
   applicationName = "string",
   description = "string",
   revision = list(
-    revisionType = "S3"|"GitHub"|"String",
+    revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
     s3Location = list(
       bucket = "string",
       key = "string",
@@ -35,6 +35,10 @@ Registers with AWS CodeDeploy a revision for the specified application.
       commitId = "string"
     ),
     string = list(
+      content = "string",
+      sha256 = "string"
+    ),
+    appSpecContent = list(
       content = "string",
       sha256 = "string"
     )

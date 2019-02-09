@@ -7,7 +7,7 @@
 list_group_versions(GroupId, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
-\item{GroupId}{[required] The ID of the AWS Greengrass group.}
+\item{GroupId}{[required] The ID of the Greengrass group.}
 
 \item{MaxResults}{The maximum number of results to be returned per request.}
 

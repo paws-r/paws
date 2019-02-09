@@ -7,7 +7,7 @@
 modify_workspace_state(WorkspaceId, WorkspaceState)
 }
 \arguments{
-\item{WorkspaceId}{[required] The ID of the WorkSpace.}
+\item{WorkspaceId}{[required] The identifier of the WorkSpace.}
 
 \item{WorkspaceState}{[required] The WorkSpace state.}
 }

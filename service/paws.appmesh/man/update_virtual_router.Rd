@@ -4,16 +4,8 @@
 \alias{update_virtual_router}
 \title{Updates an existing virtual router in a specified service mesh}
 \usage{
-update_virtual_router(
-  clientToken = "string",
-  meshName = "string",
-  spec = list(
-    serviceNames = list(
-      "string"
-    )
-  ),
-  virtualRouterName = "string"
-)
+update_virtual_router(clientToken = NULL, meshName, spec,
+  virtualRouterName)
 }
 \arguments{
 \item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. Up to 36 letters, numbers, hyphens, and underscores are allowed.}
@@ -27,6 +19,17 @@ update_virtual_router(
 \description{
 Updates an existing virtual router in a specified service mesh.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_virtual_router(
+  clientToken = "string",
+  meshName = "string",
+  spec = list(
+    serviceNames = list(
+      "string"
+    )
+  ),
+  virtualRouterName = "string"
+)
 }
+}
+

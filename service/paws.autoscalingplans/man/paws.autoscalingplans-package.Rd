@@ -8,7 +8,10 @@
 \description{
 Use AWS Auto Scaling to quickly discover all the
     scalable AWS resources for your application and configure dynamic
-    scaling for your scalable resources.
+    scaling and predictive scaling for your resources using scaling plans.
+    Use this service in conjunction with the Amazon EC2 Auto Scaling,
+    Application Auto Scaling, Amazon CloudWatch, and AWS CloudFormation
+    services.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

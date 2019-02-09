@@ -187,6 +187,8 @@ cancel_handshake <- function (HandshakeId)
 #' 
 #' -   If you get an exception that indicates that the operation failed because your organization is still initializing, wait one hour and then try again. If the error persists, contact [AWS Support](https://console.aws.amazon.com/support/home#/).
 #' 
+#' -   Using CreateAccount to create multiple temporary accounts is not recommended. You can only close an account from the Billing and Cost Management Console, and you must be signed in as the root user. For information on the requirements and process for closing an account, see [Closing an AWS Account](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html) in the *AWS Organizations User Guide*.
+#' 
 #' When you create a member account with this operation, you can choose whether to create the account with the **IAM User and Role Access to Billing Information** switch enabled. If you enable it, IAM users and roles that have appropriate permissions can view billing information for the account. If you disable it, only the account root user can access billing information. For information about how to disable this switch for an account, see [Granting Access to Your Billing Information and Tools](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html).
 #'
 #' @section Accepted Parameters:
@@ -261,7 +263,7 @@ create_account <- function (Email, AccountName, RoleName = NULL,
 #'
 #' @param FeatureSet Specifies the feature set supported by the new organization. Each feature set supports different levels of functionality.
 #' 
-#' -   *CONSOLIDATED\_BILLING*: All member accounts have their bills consolidated to and paid by the master account. For more information, see [Consolidated Billing](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only) in the *AWS Organizations User Guide*.
+#' -   *CONSOLIDATED\_BILLING*: All member accounts have their bills consolidated to and paid by the master account. For more information, see [Consolidated billing](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only) in the *AWS Organizations User Guide*.
 #' 
 #' -   *ALL*: In addition to all the features supported by the consolidated billing feature set, the master account can also apply any type of policy to any member account in the organization. For more information, see [All features](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all) in the *AWS Organizations User Guide*.
 #'

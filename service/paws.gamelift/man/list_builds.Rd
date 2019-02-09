@@ -25,8 +25,6 @@ Retrieves build records for all builds associated with the AWS account in use. Y
 }
 \details{
 Build records are not listed in any particular order.
-
-Build-related operations include:
 \itemize{
 \item CreateBuild
 \item ListBuilds

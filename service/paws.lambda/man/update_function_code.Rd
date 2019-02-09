@@ -2,45 +2,43 @@
 % Please edit documentation in R/paws.lambda_operations.R
 \name{update_function_code}
 \alias{update_function_code}
-\title{Updates the code for the specified Lambda function}
+\title{Updates a Lambda function's code}
 \usage{
 update_function_code(FunctionName, ZipFile = NULL, S3Bucket = NULL,
   S3Key = NULL, S3ObjectVersion = NULL, Publish = NULL,
   DryRun = NULL, RevisionId = NULL)
 }
 \arguments{
-\item{FunctionName}{[required] The name of the lambda function.
+\item{FunctionName}{[required] The name of the Lambda function.
 
 \strong{Name formats}
 \itemize{
-\item \strong{Function name} - \code{MyFunction}.
-\item \strong{Function ARN} - \code{arn:aws:lambda:us-west-2:123456789012:function:MyFunction}.
-\item \strong{Partial ARN} - \code{123456789012:function:MyFunction}.
+\item \strong{Function name} - \code{my-function}.
+\item \strong{Function ARN} - \code{arn:aws:lambda:us-west-2:123456789012:function:my-function}.
+\item \strong{Partial ARN} - \code{123456789012:function:my-function}.
 }
 
 The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
 
-\item{ZipFile}{The contents of your zip file containing your deployment package. If you are using the web API directly, the contents of the zip file must be base64-encoded. If you are using the AWS SDKs or the AWS CLI, the SDKs or CLI will do the encoding for you. For more information about creating a .zip file, see \href{http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html}{Execution Permissions}.}
+\item{ZipFile}{The base64-encoded contents of the deployment package. AWS SDK and AWS CLI clients handle the encoding for you.}
 
-\item{S3Bucket}{Amazon S3 bucket name where the .zip file containing your deployment package is stored. This bucket must reside in the same AWS Region where you are creating the Lambda function.}
+\item{S3Bucket}{An Amazon S3 bucket in the same region as your function. The bucket can be in a different AWS account.}
 
-\item{S3Key}{The Amazon S3 object (the deployment package) key name you want to upload.}
+\item{S3Key}{The Amazon S3 key of the deployment package.}
 
-\item{S3ObjectVersion}{The Amazon S3 object (the deployment package) version you want to upload.}
+\item{S3ObjectVersion}{For versioned objects, the version of the deployment package object to use.}
 
-\item{Publish}{This boolean parameter can be used to request AWS Lambda to update the Lambda function and publish a version as an atomic operation.}
+\item{Publish}{Set to true to publish a new version of the function after updating the code. This has the same effect as calling PublishVersion separately.}
 
-\item{DryRun}{This boolean parameter can be used to test your request to AWS Lambda to update the Lambda function and publish a version as an atomic operation. It will do all necessary computation and validation of your code but will not upload it or a publish a version. Each time this operation is invoked, the \code{CodeSha256} hash value of the provided code will also be computed and returned in the response.}
+\item{DryRun}{Set to true to validate the request parameters and access permissions without modifying the function code.}
 
-\item{RevisionId}{An optional value you can use to ensure you are updating the latest update of the function version or alias. If the \code{RevisionID} you pass doesn't match the latest \code{RevisionId} of the function or alias, it will fail with an error message, advising you to retrieve the latest function version or alias \code{RevisionID} using either using using either GetFunction or GetAlias.}
+\item{RevisionId}{Only update the function if the revision ID matches the ID specified. Use this option to avoid modifying a function that has changed since you last read it.}
 }
 \description{
-Updates the code for the specified Lambda function. This operation must only be used on an existing Lambda function and cannot be used to update the function configuration.
+Updates a Lambda function's code.
 }
 \details{
-If you are using the versioning feature, note this API will always update the \$LATEST version of your Lambda function. For information about the versioning feature, see \href{http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{AWS Lambda Function Versioning and Aliases}.
-
-This operation requires permission for the \code{lambda:UpdateFunctionCode} action.
+The function's code is locked when you publish a version. You cannot modify the code of a published version, only the unpublished version.
 }
 \section{Accepted Parameters}{
 \preformatted{update_function_code(

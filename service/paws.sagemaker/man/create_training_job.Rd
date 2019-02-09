@@ -7,7 +7,8 @@
 create_training_job(TrainingJobName, HyperParameters = NULL,
   AlgorithmSpecification, RoleArn, InputDataConfig = NULL,
   OutputDataConfig, ResourceConfig, VpcConfig = NULL, StoppingCondition,
-  Tags = NULL)
+  Tags = NULL, EnableNetworkIsolation = NULL,
+  EnableInterContainerTrafficEncryption = NULL)
 }
 \arguments{
 \item{TrainingJobName}{[required] The name of the training job. The name must be unique within an AWS Region in an AWS account.}
@@ -43,6 +44,12 @@ ML storage volumes store model artifacts and incremental states. Training algori
 When Amazon SageMaker terminates a job because the stopping condition has been met, training algorithms provided by Amazon SageMaker save the intermediate results of the job. This intermediate data is a valid model artifact. You can use it to create a model using the \code{CreateModel} API.}
 
 \item{Tags}{An array of key-value pairs. For more information, see \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags} in the \emph{AWS Billing and Cost Management User Guide}.}
+
+\item{EnableNetworkIsolation}{Isolates the training container. No inbound or outbound network calls can be made, except for calls between peers within a training cluster for distributed training. If you enable network isolation for training jobs that are configured to use a VPC, Amazon SageMaker downloads and uploads customer data and model artifacts through the specified VPC, but the training container does not have network access.
+
+The Semantic Segmentation built-in algorithm does not support network isolation.}
+
+\item{EnableInterContainerTrafficEncryption}{To encrypt all communications between ML compute instances in distributed training, choose \code{True},. Encryption provides greater security for distributed training, but training can take longer because of additional communications between ML compute instances.}
 }
 \description{
 Starts a model training job. After training completes, Amazon SageMaker saves the resulting model artifacts to an Amazon S3 location that you specify.
@@ -71,7 +78,14 @@ For more information about Amazon SageMaker, see \href{http://docs.aws.amazon.co
   ),
   AlgorithmSpecification = list(
     TrainingImage = "string",
-    TrainingInputMode = "Pipe"|"File"
+    AlgorithmName = "string",
+    TrainingInputMode = "Pipe"|"File",
+    MetricDefinitions = list(
+      list(
+        Name = "string",
+        Regex = "string"
+      )
+    )
   ),
   RoleArn = "string",
   InputDataConfig = list(
@@ -79,15 +93,21 @@ For more information about Amazon SageMaker, see \href{http://docs.aws.amazon.co
       ChannelName = "string",
       DataSource = list(
         S3DataSource = list(
-          S3DataType = "ManifestFile"|"S3Prefix",
+          S3DataType = "ManifestFile"|"S3Prefix"|"AugmentedManifestFile",
           S3Uri = "string",
-          S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key"
+          S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+          AttributeNames = list(
+            "string"
+          )
         )
       ),
       ContentType = "string",
       CompressionType = "None"|"Gzip",
       RecordWrapperType = "None"|"RecordIO",
-      InputMode = "Pipe"|"File"
+      InputMode = "Pipe"|"File",
+      ShuffleConfig = list(
+        Seed = 123
+      )
     )
   ),
   OutputDataConfig = list(
@@ -116,7 +136,9 @@ For more information about Amazon SageMaker, see \href{http://docs.aws.amazon.co
       Key = "string",
       Value = "string"
     )
-  )
+  ),
+  EnableNetworkIsolation = TRUE|FALSE,
+  EnableInterContainerTrafficEncryption = TRUE|FALSE
 )
 }
 }

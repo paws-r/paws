@@ -33,7 +33,8 @@ delete_policy_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(PolicyId = structure(logical(0), 
-        tags = list(type = "string", max = 36L, min = 36L))), 
+        tags = list(type = "string", max = 36L, min = 36L)), 
+        DeleteAllPolicyResources = structure(logical(0), tags = list(type = "boolean"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }

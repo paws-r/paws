@@ -4,15 +4,7 @@
 \alias{tag_resource}
 \title{Applies a key-value pair to an AWS resource}
 \usage{
-tag_resource(
-  ResourceArn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+tag_resource(ResourceArn, Tags)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource to apply the tag to.}
@@ -22,6 +14,16 @@ tag_resource(
 \description{
 Applies a key-value pair to an AWS resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{tag_resource(
+  ResourceArn = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

@@ -5,21 +5,30 @@
 \title{Create an input}
 \usage{
 create_input(Destinations = NULL, InputSecurityGroups = NULL,
-  Name = NULL, RequestId = NULL, Sources = NULL, Type = NULL)
+  MediaConnectFlows = NULL, Name = NULL, RequestId = NULL,
+  RoleArn = NULL, Sources = NULL, Tags = NULL, Type = NULL)
 }
 \arguments{
 \item{Destinations}{Destination settings for PUSH type inputs.}
 
 \item{InputSecurityGroups}{A list of security groups referenced by IDs to attach to the input.}
 
+\item{MediaConnectFlows}{A list of the MediaConnect Flows that you want to use in this input. You can specify as few as one
+Flow and presently, as many as two. The only requirement is when you have more than one is that each Flow is in a
+separate Availability Zone as this ensures your EML input is redundant to AZ issues.}
+
 \item{Name}{Name of the input.}
 
 \item{RequestId}{Unique identifier of the request to ensure the request is handled
 exactly once in case of retries.}
 
+\item{RoleArn}{The Amazon Resource Name (ARN) of the role this input assumes during and after creation.}
+
 \item{Sources}{The source URLs for a PULL-type input. Every PULL type input needs
 exactly two source URLs for redundancy.
 Only specify sources for PULL type Inputs. Leave Destinations empty.}
+
+\item{Tags}{A collection of key-value pairs.}
 
 \item{Type}{}
 }
@@ -36,8 +45,14 @@ Create an input
   InputSecurityGroups = list(
     "string"
   ),
+  MediaConnectFlows = list(
+    list(
+      FlowArn = "string"
+    )
+  ),
   Name = "string",
   RequestId = "string",
+  RoleArn = "string",
   Sources = list(
     list(
       PasswordParam = "string",
@@ -45,7 +60,10 @@ Create an input
       Username = "string"
     )
   ),
-  Type = "UDP_PUSH"|"RTP_PUSH"|"RTMP_PUSH"|"RTMP_PULL"|"URL_PULL"
+  Tags = list(
+    "string"
+  ),
+  Type = "UDP_PUSH"|"RTP_PUSH"|"RTMP_PUSH"|"RTMP_PULL"|"URL_PULL"|"MP4_FILE"|"MEDIACONNECT"
 )
 }
 }

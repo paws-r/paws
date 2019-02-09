@@ -7,7 +7,12 @@ create_cluster_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(clusterName = structure(logical(0), 
-        tags = list(type = "string"))), tags = list(type = "structure"))
+        tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), 
+        tags = list(type = "string", max = 128L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+        value = structure(logical(0), tags = list(type = "string", 
+            max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+        tags = list(type = "structure"))), tags = list(type = "list", 
+        max = 50L, min = 0L))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -24,7 +29,12 @@ create_cluster_output <- function (...)
         tags = list(type = "integer")), statistics = structure(list(structure(list(name = structure(logical(0), 
         tags = list(type = "string")), value = structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "structure"))), 
-        tags = list(type = "list"))), tags = list(type = "structure"))), 
+        tags = list(type = "list")), tags = structure(list(structure(list(key = structure(logical(0), 
+        tags = list(type = "string", max = 128L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+        value = structure(logical(0), tags = list(type = "string", 
+            max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+        tags = list(type = "structure"))), tags = list(type = "list", 
+        max = 50L, min = 0L))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -71,7 +81,18 @@ create_service_input <- function (...)
             tags = list(type = "structure")), healthCheckGracePeriodSeconds = structure(logical(0), 
             tags = list(type = "integer", box = TRUE)), schedulingStrategy = structure(logical(0), 
             tags = list(type = "string", enum = c("REPLICA", 
-                "DAEMON")))), tags = list(type = "structure"))
+                "DAEMON"))), deploymentController = structure(list(type = structure(logical(0), 
+            tags = list(type = "string", enum = c("ECS", "CODE_DEPLOY")))), 
+            tags = list(type = "structure")), tags = structure(list(structure(list(key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+            value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L, min = 0L)), enableECSManagedTags = structure(logical(0), 
+            tags = list(type = "boolean")), propagateTags = structure(logical(0), 
+            tags = list(type = "string", enum = c("TASK_DEFINITION", 
+                "SERVICE")))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -102,7 +123,40 @@ create_service_output <- function (...)
         deploymentConfiguration = structure(list(maximumPercent = structure(logical(0), 
             tags = list(type = "integer", box = TRUE)), minimumHealthyPercent = structure(logical(0), 
             tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), 
-        deployments = structure(list(structure(list(id = structure(logical(0), 
+        taskSets = structure(list(structure(list(id = structure(logical(0), 
+            tags = list(type = "string")), taskSetArn = structure(logical(0), 
+            tags = list(type = "string")), startedBy = structure(logical(0), 
+            tags = list(type = "string")), externalId = structure(logical(0), 
+            tags = list(type = "string")), status = structure(logical(0), 
+            tags = list(type = "string")), taskDefinition = structure(logical(0), 
+            tags = list(type = "string")), computedDesiredCount = structure(logical(0), 
+            tags = list(type = "integer")), pendingCount = structure(logical(0), 
+            tags = list(type = "integer")), runningCount = structure(logical(0), 
+            tags = list(type = "integer")), createdAt = structure(logical(0), 
+            tags = list(type = "timestamp")), updatedAt = structure(logical(0), 
+            tags = list(type = "timestamp")), launchType = structure(logical(0), 
+            tags = list(type = "string", enum = c("EC2", "FARGATE"))), 
+            platformVersion = structure(logical(0), tags = list(type = "string")), 
+            networkConfiguration = structure(list(awsvpcConfiguration = structure(list(subnets = structure(list(structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "list")), 
+                securityGroups = structure(list(structure(logical(0), 
+                  tags = list(type = "string"))), tags = list(type = "list")), 
+                assignPublicIp = structure(logical(0), tags = list(type = "string", 
+                  enum = c("ENABLED", "DISABLED")))), tags = list(type = "structure"))), 
+                tags = list(type = "structure")), loadBalancers = structure(list(structure(list(targetGroupArn = structure(logical(0), 
+                tags = list(type = "string")), loadBalancerName = structure(logical(0), 
+                tags = list(type = "string")), containerName = structure(logical(0), 
+                tags = list(type = "string")), containerPort = structure(logical(0), 
+                tags = list(type = "integer", box = TRUE))), 
+                tags = list(type = "structure"))), tags = list(type = "list")), 
+            scale = structure(list(value = structure(logical(0), 
+                tags = list(type = "double")), unit = structure(logical(0), 
+                tags = list(type = "string", enum = "PERCENT"))), 
+                tags = list(type = "structure")), stabilityStatus = structure(logical(0), 
+                tags = list(type = "string", enum = c("STEADY_STATE", 
+                  "STABILIZING"))), stabilityStatusAt = structure(logical(0), 
+                tags = list(type = "timestamp"))), tags = list(type = "structure"))), 
+            tags = list(type = "list")), deployments = structure(list(structure(list(id = structure(logical(0), 
             tags = list(type = "string")), status = structure(logical(0), 
             tags = list(type = "string")), taskDefinition = structure(logical(0), 
             tags = list(type = "string")), desiredCount = structure(logical(0), 
@@ -143,8 +197,42 @@ create_service_output <- function (...)
             tags = list(type = "structure")), healthCheckGracePeriodSeconds = structure(logical(0), 
             tags = list(type = "integer", box = TRUE)), schedulingStrategy = structure(logical(0), 
             tags = list(type = "string", enum = c("REPLICA", 
-                "DAEMON")))), tags = list(type = "structure"))), 
+                "DAEMON"))), deploymentController = structure(list(type = structure(logical(0), 
+            tags = list(type = "string", enum = c("ECS", "CODE_DEPLOY")))), 
+            tags = list(type = "structure")), tags = structure(list(structure(list(key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+            value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L, min = 0L)), createdBy = structure(logical(0), 
+            tags = list(type = "string")), enableECSManagedTags = structure(logical(0), 
+            tags = list(type = "boolean")), propagateTags = structure(logical(0), 
+            tags = list(type = "string", enum = c("TASK_DEFINITION", 
+                "SERVICE")))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_account_setting_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(name = structure(logical(0), tags = list(type = "string", 
+        enum = c("serviceLongArnFormat", "taskLongArnFormat", 
+            "containerInstanceLongArnFormat"))), principalArn = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_account_setting_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(setting = structure(list(name = structure(logical(0), 
+        tags = list(type = "string", enum = c("serviceLongArnFormat", 
+            "taskLongArnFormat", "containerInstanceLongArnFormat"))), 
+        value = structure(logical(0), tags = list(type = "string")), 
+        principalArn = structure(logical(0), tags = list(type = "string"))), 
+        tags = list(type = "structure"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -196,7 +284,12 @@ delete_cluster_output <- function (...)
         tags = list(type = "integer")), statistics = structure(list(structure(list(name = structure(logical(0), 
         tags = list(type = "string")), value = structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "structure"))), 
-        tags = list(type = "list"))), tags = list(type = "structure"))), 
+        tags = list(type = "list")), tags = structure(list(structure(list(key = structure(logical(0), 
+        tags = list(type = "string", max = 128L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+        value = structure(logical(0), tags = list(type = "string", 
+            max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+        tags = list(type = "structure"))), tags = list(type = "list", 
+        max = 50L, min = 0L))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -238,7 +331,40 @@ delete_service_output <- function (...)
         deploymentConfiguration = structure(list(maximumPercent = structure(logical(0), 
             tags = list(type = "integer", box = TRUE)), minimumHealthyPercent = structure(logical(0), 
             tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), 
-        deployments = structure(list(structure(list(id = structure(logical(0), 
+        taskSets = structure(list(structure(list(id = structure(logical(0), 
+            tags = list(type = "string")), taskSetArn = structure(logical(0), 
+            tags = list(type = "string")), startedBy = structure(logical(0), 
+            tags = list(type = "string")), externalId = structure(logical(0), 
+            tags = list(type = "string")), status = structure(logical(0), 
+            tags = list(type = "string")), taskDefinition = structure(logical(0), 
+            tags = list(type = "string")), computedDesiredCount = structure(logical(0), 
+            tags = list(type = "integer")), pendingCount = structure(logical(0), 
+            tags = list(type = "integer")), runningCount = structure(logical(0), 
+            tags = list(type = "integer")), createdAt = structure(logical(0), 
+            tags = list(type = "timestamp")), updatedAt = structure(logical(0), 
+            tags = list(type = "timestamp")), launchType = structure(logical(0), 
+            tags = list(type = "string", enum = c("EC2", "FARGATE"))), 
+            platformVersion = structure(logical(0), tags = list(type = "string")), 
+            networkConfiguration = structure(list(awsvpcConfiguration = structure(list(subnets = structure(list(structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "list")), 
+                securityGroups = structure(list(structure(logical(0), 
+                  tags = list(type = "string"))), tags = list(type = "list")), 
+                assignPublicIp = structure(logical(0), tags = list(type = "string", 
+                  enum = c("ENABLED", "DISABLED")))), tags = list(type = "structure"))), 
+                tags = list(type = "structure")), loadBalancers = structure(list(structure(list(targetGroupArn = structure(logical(0), 
+                tags = list(type = "string")), loadBalancerName = structure(logical(0), 
+                tags = list(type = "string")), containerName = structure(logical(0), 
+                tags = list(type = "string")), containerPort = structure(logical(0), 
+                tags = list(type = "integer", box = TRUE))), 
+                tags = list(type = "structure"))), tags = list(type = "list")), 
+            scale = structure(list(value = structure(logical(0), 
+                tags = list(type = "double")), unit = structure(logical(0), 
+                tags = list(type = "string", enum = "PERCENT"))), 
+                tags = list(type = "structure")), stabilityStatus = structure(logical(0), 
+                tags = list(type = "string", enum = c("STEADY_STATE", 
+                  "STABILIZING"))), stabilityStatusAt = structure(logical(0), 
+                tags = list(type = "timestamp"))), tags = list(type = "structure"))), 
+            tags = list(type = "list")), deployments = structure(list(structure(list(id = structure(logical(0), 
             tags = list(type = "string")), status = structure(logical(0), 
             tags = list(type = "string")), taskDefinition = structure(logical(0), 
             tags = list(type = "string")), desiredCount = structure(logical(0), 
@@ -279,7 +405,19 @@ delete_service_output <- function (...)
             tags = list(type = "structure")), healthCheckGracePeriodSeconds = structure(logical(0), 
             tags = list(type = "integer", box = TRUE)), schedulingStrategy = structure(logical(0), 
             tags = list(type = "string", enum = c("REPLICA", 
-                "DAEMON")))), tags = list(type = "structure"))), 
+                "DAEMON"))), deploymentController = structure(list(type = structure(logical(0), 
+            tags = list(type = "string", enum = c("ECS", "CODE_DEPLOY")))), 
+            tags = list(type = "structure")), tags = structure(list(structure(list(key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+            value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L, min = 0L)), createdBy = structure(logical(0), 
+            tags = list(type = "string")), enableECSManagedTags = structure(logical(0), 
+            tags = list(type = "boolean")), propagateTags = structure(logical(0), 
+            tags = list(type = "string", enum = c("TASK_DEFINITION", 
+                "SERVICE")))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -340,7 +478,13 @@ deregister_container_instance_output <- function (...)
             tags = list(type = "string")), value = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 
             tags = list(type = "list"))), tags = list(type = "structure"))), 
-            tags = list(type = "list"))), tags = list(type = "structure"))), 
+            tags = list(type = "list")), tags = structure(list(structure(list(key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+            value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L, min = 0L))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -402,7 +546,10 @@ deregister_task_definition_output <- function (...)
                 tags = list(type = "integer")), mountOptions = structure(list(structure(logical(0), 
                 tags = list(type = "string"))), tags = list(type = "list"))), 
                 tags = list(type = "structure"))), tags = list(type = "list"))), 
-            tags = list(type = "structure")), hostname = structure(logical(0), 
+            tags = list(type = "structure")), secrets = structure(list(structure(list(name = structure(logical(0), 
+            tags = list(type = "string")), valueFrom = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "list")), hostname = structure(logical(0), 
             tags = list(type = "string")), user = structure(logical(0), 
             tags = list(type = "string")), workingDirectory = structure(logical(0), 
             tags = list(type = "string")), disableNetworking = structure(logical(0), 
@@ -443,6 +590,9 @@ deregister_task_definition_output <- function (...)
             tags = list(type = "structure")), systemControls = structure(list(structure(list(namespace = structure(logical(0), 
             tags = list(type = "string")), value = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "list")), resourceRequirements = structure(list(structure(list(value = structure(logical(0), 
+            tags = list(type = "string")), type = structure(logical(0), 
+            tags = list(type = "string", enum = "GPU"))), tags = list(type = "structure"))), 
             tags = list(type = "list"))), tags = list(type = "structure"))), 
         tags = list(type = "list")), family = structure(logical(0), 
         tags = list(type = "string")), taskRoleArn = structure(logical(0), 
@@ -479,7 +629,10 @@ deregister_task_definition_output <- function (...)
             tags = list(type = "string", enum = c("EC2", "FARGATE")))), 
             tags = list(type = "list")), cpu = structure(logical(0), 
             tags = list(type = "string")), memory = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "string")), pidMode = structure(logical(0), 
+            tags = list(type = "string", enum = c("host", "task"))), 
+        ipcMode = structure(logical(0), tags = list(type = "string", 
+            enum = c("host", "task", "none")))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -490,7 +643,7 @@ describe_clusters_input <- function (...)
     shape <- structure(list(clusters = structure(list(structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "list")), 
         include = structure(list(structure(logical(0), tags = list(type = "string", 
-            enum = "STATISTICS"))), tags = list(type = "list"))), 
+            enum = c("STATISTICS", "TAGS")))), tags = list(type = "list"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -508,7 +661,12 @@ describe_clusters_output <- function (...)
         tags = list(type = "integer")), statistics = structure(list(structure(list(name = structure(logical(0), 
         tags = list(type = "string")), value = structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "structure"))), 
-        tags = list(type = "list"))), tags = list(type = "structure"))), 
+        tags = list(type = "list")), tags = structure(list(structure(list(key = structure(logical(0), 
+        tags = list(type = "string", max = 128L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+        value = structure(logical(0), tags = list(type = "string", 
+            max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+        tags = list(type = "structure"))), tags = list(type = "list", 
+        max = 50L, min = 0L))), tags = list(type = "structure"))), 
         tags = list(type = "list")), failures = structure(list(structure(list(arn = structure(logical(0), 
         tags = list(type = "string")), reason = structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "structure"))), 
@@ -521,8 +679,9 @@ describe_container_instances_input <- function (...)
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(cluster = structure(logical(0), tags = list(type = "string")), 
         containerInstances = structure(list(structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "list"))), 
-        tags = list(type = "structure"))
+            tags = list(type = "string"))), tags = list(type = "list")), 
+        include = structure(list(structure(logical(0), tags = list(type = "string", 
+            enum = "TAGS"))), tags = list(type = "list"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -572,7 +731,13 @@ describe_container_instances_output <- function (...)
             tags = list(type = "string")), value = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 
             tags = list(type = "list"))), tags = list(type = "structure"))), 
-            tags = list(type = "list"))), tags = list(type = "structure"))), 
+            tags = list(type = "list")), tags = structure(list(structure(list(key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+            value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L, min = 0L))), tags = list(type = "structure"))), 
         tags = list(type = "list")), failures = structure(list(structure(list(arn = structure(logical(0), 
         tags = list(type = "string")), reason = structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "structure"))), 
@@ -585,7 +750,9 @@ describe_services_input <- function (...)
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(cluster = structure(logical(0), tags = list(type = "string")), 
         services = structure(list(structure(logical(0), tags = list(type = "string"))), 
-            tags = list(type = "list"))), tags = list(type = "structure"))
+            tags = list(type = "list")), include = structure(list(structure(logical(0), 
+            tags = list(type = "string", enum = "TAGS"))), tags = list(type = "list"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -616,7 +783,40 @@ describe_services_output <- function (...)
         deploymentConfiguration = structure(list(maximumPercent = structure(logical(0), 
             tags = list(type = "integer", box = TRUE)), minimumHealthyPercent = structure(logical(0), 
             tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), 
-        deployments = structure(list(structure(list(id = structure(logical(0), 
+        taskSets = structure(list(structure(list(id = structure(logical(0), 
+            tags = list(type = "string")), taskSetArn = structure(logical(0), 
+            tags = list(type = "string")), startedBy = structure(logical(0), 
+            tags = list(type = "string")), externalId = structure(logical(0), 
+            tags = list(type = "string")), status = structure(logical(0), 
+            tags = list(type = "string")), taskDefinition = structure(logical(0), 
+            tags = list(type = "string")), computedDesiredCount = structure(logical(0), 
+            tags = list(type = "integer")), pendingCount = structure(logical(0), 
+            tags = list(type = "integer")), runningCount = structure(logical(0), 
+            tags = list(type = "integer")), createdAt = structure(logical(0), 
+            tags = list(type = "timestamp")), updatedAt = structure(logical(0), 
+            tags = list(type = "timestamp")), launchType = structure(logical(0), 
+            tags = list(type = "string", enum = c("EC2", "FARGATE"))), 
+            platformVersion = structure(logical(0), tags = list(type = "string")), 
+            networkConfiguration = structure(list(awsvpcConfiguration = structure(list(subnets = structure(list(structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "list")), 
+                securityGroups = structure(list(structure(logical(0), 
+                  tags = list(type = "string"))), tags = list(type = "list")), 
+                assignPublicIp = structure(logical(0), tags = list(type = "string", 
+                  enum = c("ENABLED", "DISABLED")))), tags = list(type = "structure"))), 
+                tags = list(type = "structure")), loadBalancers = structure(list(structure(list(targetGroupArn = structure(logical(0), 
+                tags = list(type = "string")), loadBalancerName = structure(logical(0), 
+                tags = list(type = "string")), containerName = structure(logical(0), 
+                tags = list(type = "string")), containerPort = structure(logical(0), 
+                tags = list(type = "integer", box = TRUE))), 
+                tags = list(type = "structure"))), tags = list(type = "list")), 
+            scale = structure(list(value = structure(logical(0), 
+                tags = list(type = "double")), unit = structure(logical(0), 
+                tags = list(type = "string", enum = "PERCENT"))), 
+                tags = list(type = "structure")), stabilityStatus = structure(logical(0), 
+                tags = list(type = "string", enum = c("STEADY_STATE", 
+                  "STABILIZING"))), stabilityStatusAt = structure(logical(0), 
+                tags = list(type = "timestamp"))), tags = list(type = "structure"))), 
+            tags = list(type = "list")), deployments = structure(list(structure(list(id = structure(logical(0), 
             tags = list(type = "string")), status = structure(logical(0), 
             tags = list(type = "string")), taskDefinition = structure(logical(0), 
             tags = list(type = "string")), desiredCount = structure(logical(0), 
@@ -657,7 +857,19 @@ describe_services_output <- function (...)
             tags = list(type = "structure")), healthCheckGracePeriodSeconds = structure(logical(0), 
             tags = list(type = "integer", box = TRUE)), schedulingStrategy = structure(logical(0), 
             tags = list(type = "string", enum = c("REPLICA", 
-                "DAEMON")))), tags = list(type = "structure"))), 
+                "DAEMON"))), deploymentController = structure(list(type = structure(logical(0), 
+            tags = list(type = "string", enum = c("ECS", "CODE_DEPLOY")))), 
+            tags = list(type = "structure")), tags = structure(list(structure(list(key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+            value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L, min = 0L)), createdBy = structure(logical(0), 
+            tags = list(type = "string")), enableECSManagedTags = structure(logical(0), 
+            tags = list(type = "boolean")), propagateTags = structure(logical(0), 
+            tags = list(type = "string", enum = c("TASK_DEFINITION", 
+                "SERVICE")))), tags = list(type = "structure"))), 
         tags = list(type = "list")), failures = structure(list(structure(list(arn = structure(logical(0), 
         tags = list(type = "string")), reason = structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "structure"))), 
@@ -669,7 +881,9 @@ describe_task_definition_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(taskDefinition = structure(logical(0), 
-        tags = list(type = "string"))), tags = list(type = "structure"))
+        tags = list(type = "string")), include = structure(list(structure(logical(0), 
+        tags = list(type = "string", enum = "TAGS"))), tags = list(type = "list"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -722,7 +936,10 @@ describe_task_definition_output <- function (...)
                 tags = list(type = "integer")), mountOptions = structure(list(structure(logical(0), 
                 tags = list(type = "string"))), tags = list(type = "list"))), 
                 tags = list(type = "structure"))), tags = list(type = "list"))), 
-            tags = list(type = "structure")), hostname = structure(logical(0), 
+            tags = list(type = "structure")), secrets = structure(list(structure(list(name = structure(logical(0), 
+            tags = list(type = "string")), valueFrom = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "list")), hostname = structure(logical(0), 
             tags = list(type = "string")), user = structure(logical(0), 
             tags = list(type = "string")), workingDirectory = structure(logical(0), 
             tags = list(type = "string")), disableNetworking = structure(logical(0), 
@@ -763,6 +980,9 @@ describe_task_definition_output <- function (...)
             tags = list(type = "structure")), systemControls = structure(list(structure(list(namespace = structure(logical(0), 
             tags = list(type = "string")), value = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "list")), resourceRequirements = structure(list(structure(list(value = structure(logical(0), 
+            tags = list(type = "string")), type = structure(logical(0), 
+            tags = list(type = "string", enum = "GPU"))), tags = list(type = "structure"))), 
             tags = list(type = "list"))), tags = list(type = "structure"))), 
         tags = list(type = "list")), family = structure(logical(0), 
         tags = list(type = "string")), taskRoleArn = structure(logical(0), 
@@ -799,8 +1019,17 @@ describe_task_definition_output <- function (...)
             tags = list(type = "string", enum = c("EC2", "FARGATE")))), 
             tags = list(type = "list")), cpu = structure(logical(0), 
             tags = list(type = "string")), memory = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))), 
-        tags = list(type = "structure"))
+            tags = list(type = "string")), pidMode = structure(logical(0), 
+            tags = list(type = "string", enum = c("host", "task"))), 
+        ipcMode = structure(logical(0), tags = list(type = "string", 
+            enum = c("host", "task", "none")))), tags = list(type = "structure")), 
+        tags = structure(list(structure(list(key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+            value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L, min = 0L))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -809,7 +1038,9 @@ describe_tasks_input <- function (...)
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(cluster = structure(logical(0), tags = list(type = "string")), 
         tasks = structure(list(structure(logical(0), tags = list(type = "string"))), 
-            tags = list(type = "list"))), tags = list(type = "structure"))
+            tags = list(type = "list")), include = structure(list(structure(logical(0), 
+            tags = list(type = "string", enum = "TAGS"))), tags = list(type = "list"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -829,7 +1060,10 @@ describe_tasks_output <- function (...)
             tags = list(type = "list")), cpu = structure(logical(0), 
             tags = list(type = "integer", box = TRUE)), memory = structure(logical(0), 
             tags = list(type = "integer", box = TRUE)), memoryReservation = structure(logical(0), 
-            tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), 
+            tags = list(type = "integer", box = TRUE)), resourceRequirements = structure(list(structure(list(value = structure(logical(0), 
+            tags = list(type = "string")), type = structure(logical(0), 
+            tags = list(type = "string", enum = "GPU"))), tags = list(type = "structure"))), 
+            tags = list(type = "list"))), tags = list(type = "structure"))), 
         tags = list(type = "list")), taskRoleArn = structure(logical(0), 
         tags = list(type = "string")), executionRoleArn = structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "structure")), 
@@ -855,11 +1089,18 @@ describe_tasks_output <- function (...)
                 tags = list(type = "string"))), tags = list(type = "structure"))), 
                 tags = list(type = "list")), healthStatus = structure(logical(0), 
                 tags = list(type = "string", enum = c("HEALTHY", 
-                  "UNHEALTHY", "UNKNOWN")))), tags = list(type = "structure"))), 
-            tags = list(type = "list")), startedBy = structure(logical(0), 
-            tags = list(type = "string")), version = structure(logical(0), 
-            tags = list(type = "long")), stoppedReason = structure(logical(0), 
-            tags = list(type = "string")), connectivity = structure(logical(0), 
+                  "UNHEALTHY", "UNKNOWN"))), cpu = structure(logical(0), 
+                tags = list(type = "string")), memory = structure(logical(0), 
+                tags = list(type = "string")), memoryReservation = structure(logical(0), 
+                tags = list(type = "string")), gpuIds = structure(list(structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "list"))), 
+            tags = list(type = "structure"))), tags = list(type = "list")), 
+        startedBy = structure(logical(0), tags = list(type = "string")), 
+        version = structure(logical(0), tags = list(type = "long")), 
+        stoppedReason = structure(logical(0), tags = list(type = "string")), 
+        stopCode = structure(logical(0), tags = list(type = "string", 
+            enum = c("TaskFailedToStart", "EssentialContainerExited", 
+                "UserInitiated"))), connectivity = structure(logical(0), 
             tags = list(type = "string", enum = c("CONNECTED", 
                 "DISCONNECTED"))), connectivityAt = structure(logical(0), 
             tags = list(type = "timestamp")), pullStartedAt = structure(logical(0), 
@@ -882,7 +1123,13 @@ describe_tasks_output <- function (...)
             tags = list(type = "list"))), tags = list(type = "structure"))), 
             tags = list(type = "list")), healthStatus = structure(logical(0), 
             tags = list(type = "string", enum = c("HEALTHY", 
-                "UNHEALTHY", "UNKNOWN")))), tags = list(type = "structure"))), 
+                "UNHEALTHY", "UNKNOWN"))), tags = structure(list(structure(list(key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+            value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L, min = 0L))), tags = list(type = "structure"))), 
         tags = list(type = "list")), failures = structure(list(structure(list(arn = structure(logical(0), 
         tags = list(type = "string")), reason = structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "structure"))), 
@@ -905,6 +1152,34 @@ discover_poll_endpoint_output <- function (...)
     shape <- structure(list(endpoint = structure(logical(0), 
         tags = list(type = "string")), telemetryEndpoint = structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_account_settings_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(name = structure(logical(0), tags = list(type = "string", 
+        enum = c("serviceLongArnFormat", "taskLongArnFormat", 
+            "containerInstanceLongArnFormat"))), value = structure(logical(0), 
+        tags = list(type = "string")), principalArn = structure(logical(0), 
+        tags = list(type = "string")), effectiveSettings = structure(logical(0), 
+        tags = list(type = "boolean")), nextToken = structure(logical(0), 
+        tags = list(type = "string")), maxResults = structure(logical(0), 
+        tags = list(type = "integer"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_account_settings_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(settings = structure(list(structure(list(name = structure(logical(0), 
+        tags = list(type = "string", enum = c("serviceLongArnFormat", 
+            "taskLongArnFormat", "containerInstanceLongArnFormat"))), 
+        value = structure(logical(0), tags = list(type = "string")), 
+        principalArn = structure(logical(0), tags = list(type = "string"))), 
+        tags = list(type = "structure"))), tags = list(type = "list")), 
+        nextToken = structure(logical(0), tags = list(type = "string"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -999,6 +1274,26 @@ list_services_output <- function (...)
     return(populate(args, shape))
 }
 
+list_tags_for_resource_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(resourceArn = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_tags_for_resource_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(tags = structure(list(structure(list(key = structure(logical(0), 
+        tags = list(type = "string", max = 128L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+        value = structure(logical(0), tags = list(type = "string", 
+            max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+        tags = list(type = "structure"))), tags = list(type = "list", 
+        max = 50L, min = 0L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 list_task_definition_families_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -1071,6 +1366,51 @@ list_tasks_output <- function (...)
     return(populate(args, shape))
 }
 
+put_account_setting_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(name = structure(logical(0), tags = list(type = "string", 
+        enum = c("serviceLongArnFormat", "taskLongArnFormat", 
+            "containerInstanceLongArnFormat"))), value = structure(logical(0), 
+        tags = list(type = "string")), principalArn = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+put_account_setting_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(setting = structure(list(name = structure(logical(0), 
+        tags = list(type = "string", enum = c("serviceLongArnFormat", 
+            "taskLongArnFormat", "containerInstanceLongArnFormat"))), 
+        value = structure(logical(0), tags = list(type = "string")), 
+        principalArn = structure(logical(0), tags = list(type = "string"))), 
+        tags = list(type = "structure"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+put_account_setting_default_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(name = structure(logical(0), tags = list(type = "string", 
+        enum = c("serviceLongArnFormat", "taskLongArnFormat", 
+            "containerInstanceLongArnFormat"))), value = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+put_account_setting_default_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(setting = structure(list(name = structure(logical(0), 
+        tags = list(type = "string", enum = c("serviceLongArnFormat", 
+            "taskLongArnFormat", "containerInstanceLongArnFormat"))), 
+        value = structure(logical(0), tags = list(type = "string")), 
+        principalArn = structure(logical(0), tags = list(type = "string"))), 
+        tags = list(type = "structure"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 put_attributes_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -1122,8 +1462,17 @@ register_container_instance_input <- function (...)
             tags = list(type = "string")), targetType = structure(logical(0), 
             tags = list(type = "string", enum = "container-instance")), 
             targetId = structure(logical(0), tags = list(type = "string"))), 
-            tags = list(type = "structure"))), tags = list(type = "list"))), 
-        tags = list(type = "structure"))
+            tags = list(type = "structure"))), tags = list(type = "list")), 
+        platformDevices = structure(list(structure(list(id = structure(logical(0), 
+            tags = list(type = "string")), type = structure(logical(0), 
+            tags = list(type = "string", enum = "GPU"))), tags = list(type = "structure"))), 
+            tags = list(type = "list")), tags = structure(list(structure(list(key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+            value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L, min = 0L))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1173,7 +1522,13 @@ register_container_instance_output <- function (...)
             tags = list(type = "string")), value = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 
             tags = list(type = "list"))), tags = list(type = "structure"))), 
-            tags = list(type = "list"))), tags = list(type = "structure"))), 
+            tags = list(type = "list")), tags = structure(list(structure(list(key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+            value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L, min = 0L))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -1233,7 +1588,10 @@ register_task_definition_input <- function (...)
                   tags = list(type = "integer")), mountOptions = structure(list(structure(logical(0), 
                   tags = list(type = "string"))), tags = list(type = "list"))), 
                   tags = list(type = "structure"))), tags = list(type = "list"))), 
-                tags = list(type = "structure")), hostname = structure(logical(0), 
+                tags = list(type = "structure")), secrets = structure(list(structure(list(name = structure(logical(0), 
+                tags = list(type = "string")), valueFrom = structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "structure"))), 
+                tags = list(type = "list")), hostname = structure(logical(0), 
                 tags = list(type = "string")), user = structure(logical(0), 
                 tags = list(type = "string")), workingDirectory = structure(logical(0), 
                 tags = list(type = "string")), disableNetworking = structure(logical(0), 
@@ -1276,8 +1634,12 @@ register_task_definition_input <- function (...)
                 tags = list(type = "structure")), systemControls = structure(list(structure(list(namespace = structure(logical(0), 
                 tags = list(type = "string")), value = structure(logical(0), 
                 tags = list(type = "string"))), tags = list(type = "structure"))), 
-                tags = list(type = "list"))), tags = list(type = "structure"))), 
-            tags = list(type = "list")), volumes = structure(list(structure(list(name = structure(logical(0), 
+                tags = list(type = "list")), resourceRequirements = structure(list(structure(list(value = structure(logical(0), 
+                tags = list(type = "string")), type = structure(logical(0), 
+                tags = list(type = "string", enum = "GPU"))), 
+                tags = list(type = "structure"))), tags = list(type = "list"))), 
+            tags = list(type = "structure"))), tags = list(type = "list")), 
+        volumes = structure(list(structure(list(name = structure(logical(0), 
             tags = list(type = "string")), host = structure(list(sourcePath = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure")), 
             dockerVolumeConfiguration = structure(list(scope = structure(logical(0), 
@@ -1297,7 +1659,16 @@ register_task_definition_input <- function (...)
             tags = list(type = "string", enum = c("EC2", "FARGATE")))), 
             tags = list(type = "list")), cpu = structure(logical(0), 
             tags = list(type = "string")), memory = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))
+            tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+            value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L, min = 0L)), pidMode = structure(logical(0), 
+            tags = list(type = "string", enum = c("host", "task"))), 
+        ipcMode = structure(logical(0), tags = list(type = "string", 
+            enum = c("host", "task", "none")))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1350,7 +1721,10 @@ register_task_definition_output <- function (...)
                 tags = list(type = "integer")), mountOptions = structure(list(structure(logical(0), 
                 tags = list(type = "string"))), tags = list(type = "list"))), 
                 tags = list(type = "structure"))), tags = list(type = "list"))), 
-            tags = list(type = "structure")), hostname = structure(logical(0), 
+            tags = list(type = "structure")), secrets = structure(list(structure(list(name = structure(logical(0), 
+            tags = list(type = "string")), valueFrom = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "list")), hostname = structure(logical(0), 
             tags = list(type = "string")), user = structure(logical(0), 
             tags = list(type = "string")), workingDirectory = structure(logical(0), 
             tags = list(type = "string")), disableNetworking = structure(logical(0), 
@@ -1391,6 +1765,9 @@ register_task_definition_output <- function (...)
             tags = list(type = "structure")), systemControls = structure(list(structure(list(namespace = structure(logical(0), 
             tags = list(type = "string")), value = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "list")), resourceRequirements = structure(list(structure(list(value = structure(logical(0), 
+            tags = list(type = "string")), type = structure(logical(0), 
+            tags = list(type = "string", enum = "GPU"))), tags = list(type = "structure"))), 
             tags = list(type = "list"))), tags = list(type = "structure"))), 
         tags = list(type = "list")), family = structure(logical(0), 
         tags = list(type = "string")), taskRoleArn = structure(logical(0), 
@@ -1427,8 +1804,17 @@ register_task_definition_output <- function (...)
             tags = list(type = "string", enum = c("EC2", "FARGATE")))), 
             tags = list(type = "list")), cpu = structure(logical(0), 
             tags = list(type = "string")), memory = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))), 
-        tags = list(type = "structure"))
+            tags = list(type = "string")), pidMode = structure(logical(0), 
+            tags = list(type = "string", enum = c("host", "task"))), 
+        ipcMode = structure(logical(0), tags = list(type = "string", 
+            enum = c("host", "task", "none")))), tags = list(type = "structure")), 
+        tags = structure(list(structure(list(key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+            value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L, min = 0L))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1446,7 +1832,10 @@ run_task_input <- function (...)
                 tags = list(type = "list")), cpu = structure(logical(0), 
                 tags = list(type = "integer", box = TRUE)), memory = structure(logical(0), 
                 tags = list(type = "integer", box = TRUE)), memoryReservation = structure(logical(0), 
-                tags = list(type = "integer", box = TRUE))), 
+                tags = list(type = "integer", box = TRUE)), resourceRequirements = structure(list(structure(list(value = structure(logical(0), 
+                tags = list(type = "string")), type = structure(logical(0), 
+                tags = list(type = "string", enum = "GPU"))), 
+                tags = list(type = "structure"))), tags = list(type = "list"))), 
             tags = list(type = "structure"))), tags = list(type = "list")), 
             taskRoleArn = structure(logical(0), tags = list(type = "string")), 
             executionRoleArn = structure(logical(0), tags = list(type = "string"))), 
@@ -1469,7 +1858,16 @@ run_task_input <- function (...)
                 tags = list(type = "string"))), tags = list(type = "list")), 
             assignPublicIp = structure(logical(0), tags = list(type = "string", 
                 enum = c("ENABLED", "DISABLED")))), tags = list(type = "structure"))), 
-            tags = list(type = "structure"))), tags = list(type = "structure"))
+            tags = list(type = "structure")), tags = structure(list(structure(list(key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+            value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L, min = 0L)), enableECSManagedTags = structure(logical(0), 
+            tags = list(type = "boolean")), propagateTags = structure(logical(0), 
+            tags = list(type = "string", enum = c("TASK_DEFINITION", 
+                "SERVICE")))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1489,7 +1887,10 @@ run_task_output <- function (...)
             tags = list(type = "list")), cpu = structure(logical(0), 
             tags = list(type = "integer", box = TRUE)), memory = structure(logical(0), 
             tags = list(type = "integer", box = TRUE)), memoryReservation = structure(logical(0), 
-            tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), 
+            tags = list(type = "integer", box = TRUE)), resourceRequirements = structure(list(structure(list(value = structure(logical(0), 
+            tags = list(type = "string")), type = structure(logical(0), 
+            tags = list(type = "string", enum = "GPU"))), tags = list(type = "structure"))), 
+            tags = list(type = "list"))), tags = list(type = "structure"))), 
         tags = list(type = "list")), taskRoleArn = structure(logical(0), 
         tags = list(type = "string")), executionRoleArn = structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "structure")), 
@@ -1515,11 +1916,18 @@ run_task_output <- function (...)
                 tags = list(type = "string"))), tags = list(type = "structure"))), 
                 tags = list(type = "list")), healthStatus = structure(logical(0), 
                 tags = list(type = "string", enum = c("HEALTHY", 
-                  "UNHEALTHY", "UNKNOWN")))), tags = list(type = "structure"))), 
-            tags = list(type = "list")), startedBy = structure(logical(0), 
-            tags = list(type = "string")), version = structure(logical(0), 
-            tags = list(type = "long")), stoppedReason = structure(logical(0), 
-            tags = list(type = "string")), connectivity = structure(logical(0), 
+                  "UNHEALTHY", "UNKNOWN"))), cpu = structure(logical(0), 
+                tags = list(type = "string")), memory = structure(logical(0), 
+                tags = list(type = "string")), memoryReservation = structure(logical(0), 
+                tags = list(type = "string")), gpuIds = structure(list(structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "list"))), 
+            tags = list(type = "structure"))), tags = list(type = "list")), 
+        startedBy = structure(logical(0), tags = list(type = "string")), 
+        version = structure(logical(0), tags = list(type = "long")), 
+        stoppedReason = structure(logical(0), tags = list(type = "string")), 
+        stopCode = structure(logical(0), tags = list(type = "string", 
+            enum = c("TaskFailedToStart", "EssentialContainerExited", 
+                "UserInitiated"))), connectivity = structure(logical(0), 
             tags = list(type = "string", enum = c("CONNECTED", 
                 "DISCONNECTED"))), connectivityAt = structure(logical(0), 
             tags = list(type = "timestamp")), pullStartedAt = structure(logical(0), 
@@ -1542,7 +1950,13 @@ run_task_output <- function (...)
             tags = list(type = "list"))), tags = list(type = "structure"))), 
             tags = list(type = "list")), healthStatus = structure(logical(0), 
             tags = list(type = "string", enum = c("HEALTHY", 
-                "UNHEALTHY", "UNKNOWN")))), tags = list(type = "structure"))), 
+                "UNHEALTHY", "UNKNOWN"))), tags = structure(list(structure(list(key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+            value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L, min = 0L))), tags = list(type = "structure"))), 
         tags = list(type = "list")), failures = structure(list(structure(list(arn = structure(logical(0), 
         tags = list(type = "string")), reason = structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "structure"))), 
@@ -1564,7 +1978,10 @@ start_task_input <- function (...)
                 tags = list(type = "list")), cpu = structure(logical(0), 
                 tags = list(type = "integer", box = TRUE)), memory = structure(logical(0), 
                 tags = list(type = "integer", box = TRUE)), memoryReservation = structure(logical(0), 
-                tags = list(type = "integer", box = TRUE))), 
+                tags = list(type = "integer", box = TRUE)), resourceRequirements = structure(list(structure(list(value = structure(logical(0), 
+                tags = list(type = "string")), type = structure(logical(0), 
+                tags = list(type = "string", enum = "GPU"))), 
+                tags = list(type = "structure"))), tags = list(type = "list"))), 
             tags = list(type = "structure"))), tags = list(type = "list")), 
             taskRoleArn = structure(logical(0), tags = list(type = "string")), 
             executionRoleArn = structure(logical(0), tags = list(type = "string"))), 
@@ -1578,7 +1995,16 @@ start_task_input <- function (...)
                 tags = list(type = "string"))), tags = list(type = "list")), 
             assignPublicIp = structure(logical(0), tags = list(type = "string", 
                 enum = c("ENABLED", "DISABLED")))), tags = list(type = "structure"))), 
-            tags = list(type = "structure"))), tags = list(type = "structure"))
+            tags = list(type = "structure")), tags = structure(list(structure(list(key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+            value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L, min = 0L)), enableECSManagedTags = structure(logical(0), 
+            tags = list(type = "boolean")), propagateTags = structure(logical(0), 
+            tags = list(type = "string", enum = c("TASK_DEFINITION", 
+                "SERVICE")))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1598,7 +2024,10 @@ start_task_output <- function (...)
             tags = list(type = "list")), cpu = structure(logical(0), 
             tags = list(type = "integer", box = TRUE)), memory = structure(logical(0), 
             tags = list(type = "integer", box = TRUE)), memoryReservation = structure(logical(0), 
-            tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), 
+            tags = list(type = "integer", box = TRUE)), resourceRequirements = structure(list(structure(list(value = structure(logical(0), 
+            tags = list(type = "string")), type = structure(logical(0), 
+            tags = list(type = "string", enum = "GPU"))), tags = list(type = "structure"))), 
+            tags = list(type = "list"))), tags = list(type = "structure"))), 
         tags = list(type = "list")), taskRoleArn = structure(logical(0), 
         tags = list(type = "string")), executionRoleArn = structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "structure")), 
@@ -1624,11 +2053,18 @@ start_task_output <- function (...)
                 tags = list(type = "string"))), tags = list(type = "structure"))), 
                 tags = list(type = "list")), healthStatus = structure(logical(0), 
                 tags = list(type = "string", enum = c("HEALTHY", 
-                  "UNHEALTHY", "UNKNOWN")))), tags = list(type = "structure"))), 
-            tags = list(type = "list")), startedBy = structure(logical(0), 
-            tags = list(type = "string")), version = structure(logical(0), 
-            tags = list(type = "long")), stoppedReason = structure(logical(0), 
-            tags = list(type = "string")), connectivity = structure(logical(0), 
+                  "UNHEALTHY", "UNKNOWN"))), cpu = structure(logical(0), 
+                tags = list(type = "string")), memory = structure(logical(0), 
+                tags = list(type = "string")), memoryReservation = structure(logical(0), 
+                tags = list(type = "string")), gpuIds = structure(list(structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "list"))), 
+            tags = list(type = "structure"))), tags = list(type = "list")), 
+        startedBy = structure(logical(0), tags = list(type = "string")), 
+        version = structure(logical(0), tags = list(type = "long")), 
+        stoppedReason = structure(logical(0), tags = list(type = "string")), 
+        stopCode = structure(logical(0), tags = list(type = "string", 
+            enum = c("TaskFailedToStart", "EssentialContainerExited", 
+                "UserInitiated"))), connectivity = structure(logical(0), 
             tags = list(type = "string", enum = c("CONNECTED", 
                 "DISCONNECTED"))), connectivityAt = structure(logical(0), 
             tags = list(type = "timestamp")), pullStartedAt = structure(logical(0), 
@@ -1651,7 +2087,13 @@ start_task_output <- function (...)
             tags = list(type = "list"))), tags = list(type = "structure"))), 
             tags = list(type = "list")), healthStatus = structure(logical(0), 
             tags = list(type = "string", enum = c("HEALTHY", 
-                "UNHEALTHY", "UNKNOWN")))), tags = list(type = "structure"))), 
+                "UNHEALTHY", "UNKNOWN"))), tags = structure(list(structure(list(key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+            value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L, min = 0L))), tags = list(type = "structure"))), 
         tags = list(type = "list")), failures = structure(list(structure(list(arn = structure(logical(0), 
         tags = list(type = "string")), reason = structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "structure"))), 
@@ -1685,7 +2127,10 @@ stop_task_output <- function (...)
             tags = list(type = "list")), cpu = structure(logical(0), 
             tags = list(type = "integer", box = TRUE)), memory = structure(logical(0), 
             tags = list(type = "integer", box = TRUE)), memoryReservation = structure(logical(0), 
-            tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), 
+            tags = list(type = "integer", box = TRUE)), resourceRequirements = structure(list(structure(list(value = structure(logical(0), 
+            tags = list(type = "string")), type = structure(logical(0), 
+            tags = list(type = "string", enum = "GPU"))), tags = list(type = "structure"))), 
+            tags = list(type = "list"))), tags = list(type = "structure"))), 
         tags = list(type = "list")), taskRoleArn = structure(logical(0), 
         tags = list(type = "string")), executionRoleArn = structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "structure")), 
@@ -1711,11 +2156,18 @@ stop_task_output <- function (...)
                 tags = list(type = "string"))), tags = list(type = "structure"))), 
                 tags = list(type = "list")), healthStatus = structure(logical(0), 
                 tags = list(type = "string", enum = c("HEALTHY", 
-                  "UNHEALTHY", "UNKNOWN")))), tags = list(type = "structure"))), 
-            tags = list(type = "list")), startedBy = structure(logical(0), 
-            tags = list(type = "string")), version = structure(logical(0), 
-            tags = list(type = "long")), stoppedReason = structure(logical(0), 
-            tags = list(type = "string")), connectivity = structure(logical(0), 
+                  "UNHEALTHY", "UNKNOWN"))), cpu = structure(logical(0), 
+                tags = list(type = "string")), memory = structure(logical(0), 
+                tags = list(type = "string")), memoryReservation = structure(logical(0), 
+                tags = list(type = "string")), gpuIds = structure(list(structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "list"))), 
+            tags = list(type = "structure"))), tags = list(type = "list")), 
+        startedBy = structure(logical(0), tags = list(type = "string")), 
+        version = structure(logical(0), tags = list(type = "long")), 
+        stoppedReason = structure(logical(0), tags = list(type = "string")), 
+        stopCode = structure(logical(0), tags = list(type = "string", 
+            enum = c("TaskFailedToStart", "EssentialContainerExited", 
+                "UserInitiated"))), connectivity = structure(logical(0), 
             tags = list(type = "string", enum = c("CONNECTED", 
                 "DISCONNECTED"))), connectivityAt = structure(logical(0), 
             tags = list(type = "timestamp")), pullStartedAt = structure(logical(0), 
@@ -1738,7 +2190,13 @@ stop_task_output <- function (...)
             tags = list(type = "list"))), tags = list(type = "structure"))), 
             tags = list(type = "list")), healthStatus = structure(logical(0), 
             tags = list(type = "string", enum = c("HEALTHY", 
-                "UNHEALTHY", "UNKNOWN")))), tags = list(type = "structure"))), 
+                "UNHEALTHY", "UNKNOWN"))), tags = structure(list(structure(list(key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+            value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L, min = 0L))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -1806,6 +2264,43 @@ submit_task_state_change_output <- function (...)
     return(populate(args, shape))
 }
 
+tag_resource_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(resourceArn = structure(logical(0), 
+        tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), 
+        tags = list(type = "string", max = 128L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+        value = structure(logical(0), tags = list(type = "string", 
+            max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+        tags = list(type = "structure"))), tags = list(type = "list", 
+        max = 50L, min = 0L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+tag_resource_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+untag_resource_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(resourceArn = structure(logical(0), 
+        tags = list(type = "string")), tagKeys = structure(list(structure(logical(0), 
+        tags = list(type = "string", max = 128L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+        tags = list(type = "list"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+untag_resource_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 update_container_agent_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -1861,7 +2356,13 @@ update_container_agent_output <- function (...)
             tags = list(type = "string")), value = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 
             tags = list(type = "list"))), tags = list(type = "structure"))), 
-            tags = list(type = "list"))), tags = list(type = "structure"))), 
+            tags = list(type = "list")), tags = structure(list(structure(list(key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+            value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L, min = 0L))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -1923,7 +2424,13 @@ update_container_instances_state_output <- function (...)
             tags = list(type = "string")), value = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 
             tags = list(type = "list"))), tags = list(type = "structure"))), 
-            tags = list(type = "list"))), tags = list(type = "structure"))), 
+            tags = list(type = "list")), tags = structure(list(structure(list(key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+            value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L, min = 0L))), tags = list(type = "structure"))), 
         tags = list(type = "list")), failures = structure(list(structure(list(arn = structure(logical(0), 
         tags = list(type = "string")), reason = structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "structure"))), 
@@ -1981,7 +2488,40 @@ update_service_output <- function (...)
         deploymentConfiguration = structure(list(maximumPercent = structure(logical(0), 
             tags = list(type = "integer", box = TRUE)), minimumHealthyPercent = structure(logical(0), 
             tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), 
-        deployments = structure(list(structure(list(id = structure(logical(0), 
+        taskSets = structure(list(structure(list(id = structure(logical(0), 
+            tags = list(type = "string")), taskSetArn = structure(logical(0), 
+            tags = list(type = "string")), startedBy = structure(logical(0), 
+            tags = list(type = "string")), externalId = structure(logical(0), 
+            tags = list(type = "string")), status = structure(logical(0), 
+            tags = list(type = "string")), taskDefinition = structure(logical(0), 
+            tags = list(type = "string")), computedDesiredCount = structure(logical(0), 
+            tags = list(type = "integer")), pendingCount = structure(logical(0), 
+            tags = list(type = "integer")), runningCount = structure(logical(0), 
+            tags = list(type = "integer")), createdAt = structure(logical(0), 
+            tags = list(type = "timestamp")), updatedAt = structure(logical(0), 
+            tags = list(type = "timestamp")), launchType = structure(logical(0), 
+            tags = list(type = "string", enum = c("EC2", "FARGATE"))), 
+            platformVersion = structure(logical(0), tags = list(type = "string")), 
+            networkConfiguration = structure(list(awsvpcConfiguration = structure(list(subnets = structure(list(structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "list")), 
+                securityGroups = structure(list(structure(logical(0), 
+                  tags = list(type = "string"))), tags = list(type = "list")), 
+                assignPublicIp = structure(logical(0), tags = list(type = "string", 
+                  enum = c("ENABLED", "DISABLED")))), tags = list(type = "structure"))), 
+                tags = list(type = "structure")), loadBalancers = structure(list(structure(list(targetGroupArn = structure(logical(0), 
+                tags = list(type = "string")), loadBalancerName = structure(logical(0), 
+                tags = list(type = "string")), containerName = structure(logical(0), 
+                tags = list(type = "string")), containerPort = structure(logical(0), 
+                tags = list(type = "integer", box = TRUE))), 
+                tags = list(type = "structure"))), tags = list(type = "list")), 
+            scale = structure(list(value = structure(logical(0), 
+                tags = list(type = "double")), unit = structure(logical(0), 
+                tags = list(type = "string", enum = "PERCENT"))), 
+                tags = list(type = "structure")), stabilityStatus = structure(logical(0), 
+                tags = list(type = "string", enum = c("STEADY_STATE", 
+                  "STABILIZING"))), stabilityStatusAt = structure(logical(0), 
+                tags = list(type = "timestamp"))), tags = list(type = "structure"))), 
+            tags = list(type = "list")), deployments = structure(list(structure(list(id = structure(logical(0), 
             tags = list(type = "string")), status = structure(logical(0), 
             tags = list(type = "string")), taskDefinition = structure(logical(0), 
             tags = list(type = "string")), desiredCount = structure(logical(0), 
@@ -2022,7 +2562,19 @@ update_service_output <- function (...)
             tags = list(type = "structure")), healthCheckGracePeriodSeconds = structure(logical(0), 
             tags = list(type = "integer", box = TRUE)), schedulingStrategy = structure(logical(0), 
             tags = list(type = "string", enum = c("REPLICA", 
-                "DAEMON")))), tags = list(type = "structure"))), 
+                "DAEMON"))), deploymentController = structure(list(type = structure(logical(0), 
+            tags = list(type = "string", enum = c("ECS", "CODE_DEPLOY")))), 
+            tags = list(type = "structure")), tags = structure(list(structure(list(key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+            value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L, min = 0L)), createdBy = structure(logical(0), 
+            tags = list(type = "string")), enableECSManagedTags = structure(logical(0), 
+            tags = list(type = "boolean")), propagateTags = structure(logical(0), 
+            tags = list(type = "string", enum = c("TASK_DEFINITION", 
+                "SERVICE")))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }

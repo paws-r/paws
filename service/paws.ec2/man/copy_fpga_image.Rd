@@ -18,7 +18,7 @@ copy_fpga_image(DryRun = NULL, SourceFpgaImageId, Description = NULL,
 
 \item{SourceRegion}{[required] The region that contains the source AFI.}
 
-\item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
+\item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
 }
 \description{
 Copies the specified Amazon FPGA Image (AFI) to the current region.

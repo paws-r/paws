@@ -4,13 +4,8 @@
 \alias{list_group_memberships}
 \title{Lists member users in a group}
 \usage{
-list_group_memberships(
-  GroupName = "string",
-  NextToken = "string",
-  MaxResults = 123,
-  AwsAccountId = "string",
-  Namespace = "string"
-)
+list_group_memberships(GroupName, NextToken = NULL, MaxResults = NULL,
+  AwsAccountId, Namespace)
 }
 \arguments{
 \item{GroupName}{[required] The name of the group that you want to see a membership list of.}
@@ -35,6 +30,14 @@ The response is a list of group member objects.
 
 \code{aws quicksight list-group-memberships -\-aws-account-id=111122223333 -\-namespace=default }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_group_memberships(
+  GroupName = "string",
+  NextToken = "string",
+  MaxResults = 123,
+  AwsAccountId = "string",
+  Namespace = "string"
+)
 }
+}
+

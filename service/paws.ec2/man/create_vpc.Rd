@@ -21,14 +21,14 @@ create_vpc(CidrBlock, AmazonProvidedIpv6CidrBlock = NULL,
 Default: \code{default}}
 }
 \description{
-Creates a VPC with the specified IPv4 CIDR block. The smallest VPC you can create uses a /28 netmask (16 IPv4 addresses), and the largest uses a /16 netmask (65,536 IPv4 addresses). For more information about how large to make your VPC, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html}{Your VPC and Subnets} in the \emph{Amazon Virtual Private Cloud User Guide}.
+Creates a VPC with the specified IPv4 CIDR block. The smallest VPC you can create uses a /28 netmask (16 IPv4 addresses), and the largest uses a /16 netmask (65,536 IPv4 addresses). For more information about how large to make your VPC, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html}{Your VPC and Subnets} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \details{
 You can optionally request an Amazon-provided IPv6 CIDR block for the VPC. The IPv6 CIDR block uses a /56 prefix length, and is allocated from Amazon's pool of IPv6 addresses. You cannot choose the IPv6 range for your VPC.
 
-By default, each instance you launch in the VPC has the default DHCP options, which include only a default DNS server that we provide (AmazonProvidedDNS). For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html}{DHCP Options Sets} in the \emph{Amazon Virtual Private Cloud User Guide}.
+By default, each instance you launch in the VPC has the default DHCP options, which include only a default DNS server that we provide (AmazonProvidedDNS). For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html}{DHCP Options Sets} in the \emph{Amazon Virtual Private Cloud User Guide}.
 
-You can specify the instance tenancy value for the VPC when you create it. You can't change this value for the VPC after you create it. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html}{Dedicated Instances} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+You can specify the instance tenancy value for the VPC when you create it. You can't change this value for the VPC after you create it. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html}{Dedicated Instances} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{create_vpc(

@@ -4,17 +4,8 @@
 \alias{update_listener}
 \title{Update a listener}
 \usage{
-update_listener(
-  ListenerArn = "string",
-  PortRanges = list(
-    list(
-      FromPort = 123,
-      ToPort = 123
-    )
-  ),
-  Protocol = "TCP"|"UDP",
-  ClientAffinity = "NONE"|"SOURCE_IP"
-)
+update_listener(ListenerArn, PortRanges = NULL, Protocol = NULL,
+  ClientAffinity = NULL)
 }
 \arguments{
 \item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener to update.}
@@ -34,6 +25,18 @@ The default value is \code{NONE}.}
 \description{
 Update a listener.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_listener(
+  ListenerArn = "string",
+  PortRanges = list(
+    list(
+      FromPort = 123,
+      ToPort = 123
+    )
+  ),
+  Protocol = "TCP"|"UDP",
+  ClientAffinity = "NONE"|"SOURCE_IP"
+)
 }
+}
+

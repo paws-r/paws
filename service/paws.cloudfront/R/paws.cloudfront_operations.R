@@ -23,7 +23,7 @@ NULL
 create_cloud_front_origin_access_identity <- function (CloudFrontOriginAccessIdentityConfig) 
 {
     op <- new_operation(name = "CreateCloudFrontOriginAccessIdentity", 
-        http_method = "POST", http_path = "/2018-06-18/origin-access-identity/cloudfront", 
+        http_method = "POST", http_path = "/2018-11-05/origin-access-identity/cloudfront", 
         paginator = list())
     input <- create_cloud_front_origin_access_identity_input(CloudFrontOriginAccessIdentityConfig = CloudFrontOriginAccessIdentityConfig)
     output <- create_cloud_front_origin_access_identity_output()
@@ -84,6 +84,30 @@ create_cloud_front_origin_access_identity <- function (CloudFrontOriginAccessIde
 #'             ),
 #'             OriginReadTimeout = 123,
 #'             OriginKeepaliveTimeout = 123
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     OriginGroups = list(
+#'       Quantity = 123,
+#'       Items = list(
+#'         list(
+#'           Id = "string",
+#'           FailoverCriteria = list(
+#'             StatusCodes = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 123
+#'               )
+#'             )
+#'           ),
+#'           Members = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               list(
+#'                 OriginId = "string"
+#'               )
+#'             )
 #'           )
 #'         )
 #'       )
@@ -271,7 +295,7 @@ create_cloud_front_origin_access_identity <- function (CloudFrontOriginAccessIde
 create_distribution <- function (DistributionConfig) 
 {
     op <- new_operation(name = "CreateDistribution", http_method = "POST", 
-        http_path = "/2018-06-18/distribution", paginator = list())
+        http_path = "/2018-11-05/distribution", paginator = list())
     input <- create_distribution_input(DistributionConfig = DistributionConfig)
     output <- create_distribution_output()
     svc <- service()
@@ -328,6 +352,30 @@ create_distribution <- function (DistributionConfig)
 #'               ),
 #'               OriginReadTimeout = 123,
 #'               OriginKeepaliveTimeout = 123
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       OriginGroups = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             Id = "string",
+#'             FailoverCriteria = list(
+#'               StatusCodes = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   123
+#'                 )
+#'               )
+#'             ),
+#'             Members = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 list(
+#'                   OriginId = "string"
+#'                 )
+#'               )
 #'             )
 #'           )
 #'         )
@@ -524,7 +572,7 @@ create_distribution <- function (DistributionConfig)
 create_distribution_with_tags <- function (DistributionConfigWithTags) 
 {
     op <- new_operation(name = "CreateDistributionWithTags", 
-        http_method = "POST", http_path = "/2018-06-18/distribution?WithTags", 
+        http_method = "POST", http_path = "/2018-11-05/distribution?WithTags", 
         paginator = list())
     input <- create_distribution_with_tags_input(DistributionConfigWithTags = DistributionConfigWithTags)
     output <- create_distribution_with_tags_output()
@@ -579,7 +627,7 @@ create_distribution_with_tags <- function (DistributionConfigWithTags)
 create_field_level_encryption_config <- function (FieldLevelEncryptionConfig) 
 {
     op <- new_operation(name = "CreateFieldLevelEncryptionConfig", 
-        http_method = "POST", http_path = "/2018-06-18/field-level-encryption", 
+        http_method = "POST", http_path = "/2018-11-05/field-level-encryption", 
         paginator = list())
     input <- create_field_level_encryption_config_input(FieldLevelEncryptionConfig = FieldLevelEncryptionConfig)
     output <- create_field_level_encryption_config_output()
@@ -625,7 +673,7 @@ create_field_level_encryption_config <- function (FieldLevelEncryptionConfig)
 create_field_level_encryption_profile <- function (FieldLevelEncryptionProfileConfig) 
 {
     op <- new_operation(name = "CreateFieldLevelEncryptionProfile", 
-        http_method = "POST", http_path = "/2018-06-18/field-level-encryption-profile", 
+        http_method = "POST", http_path = "/2018-11-05/field-level-encryption-profile", 
         paginator = list())
     input <- create_field_level_encryption_profile_input(FieldLevelEncryptionProfileConfig = FieldLevelEncryptionProfileConfig)
     output <- create_field_level_encryption_profile_output()
@@ -662,7 +710,7 @@ create_field_level_encryption_profile <- function (FieldLevelEncryptionProfileCo
 create_invalidation <- function (DistributionId, InvalidationBatch) 
 {
     op <- new_operation(name = "CreateInvalidation", http_method = "POST", 
-        http_path = "/2018-06-18/distribution/{DistributionId}/invalidation", 
+        http_path = "/2018-11-05/distribution/{DistributionId}/invalidation", 
         paginator = list())
     input <- create_invalidation_input(DistributionId = DistributionId, 
         InvalidationBatch = InvalidationBatch)
@@ -695,7 +743,7 @@ create_invalidation <- function (DistributionId, InvalidationBatch)
 create_public_key <- function (PublicKeyConfig) 
 {
     op <- new_operation(name = "CreatePublicKey", http_method = "POST", 
-        http_path = "/2018-06-18/public-key", paginator = list())
+        http_path = "/2018-11-05/public-key", paginator = list())
     input <- create_public_key_input(PublicKeyConfig = PublicKeyConfig)
     output <- create_public_key_output()
     svc <- service()
@@ -756,7 +804,7 @@ create_public_key <- function (PublicKeyConfig)
 create_streaming_distribution <- function (StreamingDistributionConfig) 
 {
     op <- new_operation(name = "CreateStreamingDistribution", 
-        http_method = "POST", http_path = "/2018-06-18/streaming-distribution", 
+        http_method = "POST", http_path = "/2018-11-05/streaming-distribution", 
         paginator = list())
     input <- create_streaming_distribution_input(StreamingDistributionConfig = StreamingDistributionConfig)
     output <- create_streaming_distribution_output()
@@ -820,7 +868,7 @@ create_streaming_distribution <- function (StreamingDistributionConfig)
 create_streaming_distribution_with_tags <- function (StreamingDistributionConfigWithTags) 
 {
     op <- new_operation(name = "CreateStreamingDistributionWithTags", 
-        http_method = "POST", http_path = "/2018-06-18/streaming-distribution?WithTags", 
+        http_method = "POST", http_path = "/2018-11-05/streaming-distribution?WithTags", 
         paginator = list())
     input <- create_streaming_distribution_with_tags_input(StreamingDistributionConfigWithTags = StreamingDistributionConfigWithTags)
     output <- create_streaming_distribution_with_tags_output()
@@ -849,7 +897,7 @@ create_streaming_distribution_with_tags <- function (StreamingDistributionConfig
 delete_cloud_front_origin_access_identity <- function (Id, IfMatch = NULL) 
 {
     op <- new_operation(name = "DeleteCloudFrontOriginAccessIdentity", 
-        http_method = "DELETE", http_path = "/2018-06-18/origin-access-identity/cloudfront/{Id}", 
+        http_method = "DELETE", http_path = "/2018-11-05/origin-access-identity/cloudfront/{Id}", 
         paginator = list())
     input <- delete_cloud_front_origin_access_identity_input(Id = Id, 
         IfMatch = IfMatch)
@@ -879,7 +927,7 @@ delete_cloud_front_origin_access_identity <- function (Id, IfMatch = NULL)
 delete_distribution <- function (Id, IfMatch = NULL) 
 {
     op <- new_operation(name = "DeleteDistribution", http_method = "DELETE", 
-        http_path = "/2018-06-18/distribution/{Id}", paginator = list())
+        http_path = "/2018-11-05/distribution/{Id}", paginator = list())
     input <- delete_distribution_input(Id = Id, IfMatch = IfMatch)
     output <- delete_distribution_output()
     svc <- service()
@@ -907,7 +955,7 @@ delete_distribution <- function (Id, IfMatch = NULL)
 delete_field_level_encryption_config <- function (Id, IfMatch = NULL) 
 {
     op <- new_operation(name = "DeleteFieldLevelEncryptionConfig", 
-        http_method = "DELETE", http_path = "/2018-06-18/field-level-encryption/{Id}", 
+        http_method = "DELETE", http_path = "/2018-11-05/field-level-encryption/{Id}", 
         paginator = list())
     input <- delete_field_level_encryption_config_input(Id = Id, 
         IfMatch = IfMatch)
@@ -937,7 +985,7 @@ delete_field_level_encryption_config <- function (Id, IfMatch = NULL)
 delete_field_level_encryption_profile <- function (Id, IfMatch = NULL) 
 {
     op <- new_operation(name = "DeleteFieldLevelEncryptionProfile", 
-        http_method = "DELETE", http_path = "/2018-06-18/field-level-encryption-profile/{Id}", 
+        http_method = "DELETE", http_path = "/2018-11-05/field-level-encryption-profile/{Id}", 
         paginator = list())
     input <- delete_field_level_encryption_profile_input(Id = Id, 
         IfMatch = IfMatch)
@@ -967,7 +1015,7 @@ delete_field_level_encryption_profile <- function (Id, IfMatch = NULL)
 delete_public_key <- function (Id, IfMatch = NULL) 
 {
     op <- new_operation(name = "DeletePublicKey", http_method = "DELETE", 
-        http_path = "/2018-06-18/public-key/{Id}", paginator = list())
+        http_path = "/2018-11-05/public-key/{Id}", paginator = list())
     input <- delete_public_key_input(Id = Id, IfMatch = IfMatch)
     output <- delete_public_key_output()
     svc <- service()
@@ -1015,7 +1063,7 @@ delete_public_key <- function (Id, IfMatch = NULL)
 delete_streaming_distribution <- function (Id, IfMatch = NULL) 
 {
     op <- new_operation(name = "DeleteStreamingDistribution", 
-        http_method = "DELETE", http_path = "/2018-06-18/streaming-distribution/{Id}", 
+        http_method = "DELETE", http_path = "/2018-11-05/streaming-distribution/{Id}", 
         paginator = list())
     input <- delete_streaming_distribution_input(Id = Id, IfMatch = IfMatch)
     output <- delete_streaming_distribution_output()
@@ -1042,7 +1090,7 @@ delete_streaming_distribution <- function (Id, IfMatch = NULL)
 get_cloud_front_origin_access_identity <- function (Id) 
 {
     op <- new_operation(name = "GetCloudFrontOriginAccessIdentity", 
-        http_method = "GET", http_path = "/2018-06-18/origin-access-identity/cloudfront/{Id}", 
+        http_method = "GET", http_path = "/2018-11-05/origin-access-identity/cloudfront/{Id}", 
         paginator = list())
     input <- get_cloud_front_origin_access_identity_input(Id = Id)
     output <- get_cloud_front_origin_access_identity_output()
@@ -1069,7 +1117,7 @@ get_cloud_front_origin_access_identity <- function (Id)
 get_cloud_front_origin_access_identity_config <- function (Id) 
 {
     op <- new_operation(name = "GetCloudFrontOriginAccessIdentityConfig", 
-        http_method = "GET", http_path = "/2018-06-18/origin-access-identity/cloudfront/{Id}/config", 
+        http_method = "GET", http_path = "/2018-11-05/origin-access-identity/cloudfront/{Id}/config", 
         paginator = list())
     input <- get_cloud_front_origin_access_identity_config_input(Id = Id)
     output <- get_cloud_front_origin_access_identity_config_output()
@@ -1096,7 +1144,7 @@ get_cloud_front_origin_access_identity_config <- function (Id)
 get_distribution <- function (Id) 
 {
     op <- new_operation(name = "GetDistribution", http_method = "GET", 
-        http_path = "/2018-06-18/distribution/{Id}", paginator = list())
+        http_path = "/2018-11-05/distribution/{Id}", paginator = list())
     input <- get_distribution_input(Id = Id)
     output <- get_distribution_output()
     svc <- service()
@@ -1122,7 +1170,7 @@ get_distribution <- function (Id)
 get_distribution_config <- function (Id) 
 {
     op <- new_operation(name = "GetDistributionConfig", http_method = "GET", 
-        http_path = "/2018-06-18/distribution/{Id}/config", paginator = list())
+        http_path = "/2018-11-05/distribution/{Id}/config", paginator = list())
     input <- get_distribution_config_input(Id = Id)
     output <- get_distribution_config_output()
     svc <- service()
@@ -1148,7 +1196,7 @@ get_distribution_config <- function (Id)
 get_field_level_encryption <- function (Id) 
 {
     op <- new_operation(name = "GetFieldLevelEncryption", http_method = "GET", 
-        http_path = "/2018-06-18/field-level-encryption/{Id}", 
+        http_path = "/2018-11-05/field-level-encryption/{Id}", 
         paginator = list())
     input <- get_field_level_encryption_input(Id = Id)
     output <- get_field_level_encryption_output()
@@ -1175,7 +1223,7 @@ get_field_level_encryption <- function (Id)
 get_field_level_encryption_config <- function (Id) 
 {
     op <- new_operation(name = "GetFieldLevelEncryptionConfig", 
-        http_method = "GET", http_path = "/2018-06-18/field-level-encryption/{Id}/config", 
+        http_method = "GET", http_path = "/2018-11-05/field-level-encryption/{Id}/config", 
         paginator = list())
     input <- get_field_level_encryption_config_input(Id = Id)
     output <- get_field_level_encryption_config_output()
@@ -1202,7 +1250,7 @@ get_field_level_encryption_config <- function (Id)
 get_field_level_encryption_profile <- function (Id) 
 {
     op <- new_operation(name = "GetFieldLevelEncryptionProfile", 
-        http_method = "GET", http_path = "/2018-06-18/field-level-encryption-profile/{Id}", 
+        http_method = "GET", http_path = "/2018-11-05/field-level-encryption-profile/{Id}", 
         paginator = list())
     input <- get_field_level_encryption_profile_input(Id = Id)
     output <- get_field_level_encryption_profile_output()
@@ -1229,7 +1277,7 @@ get_field_level_encryption_profile <- function (Id)
 get_field_level_encryption_profile_config <- function (Id) 
 {
     op <- new_operation(name = "GetFieldLevelEncryptionProfileConfig", 
-        http_method = "GET", http_path = "/2018-06-18/field-level-encryption-profile/{Id}/config", 
+        http_method = "GET", http_path = "/2018-11-05/field-level-encryption-profile/{Id}/config", 
         paginator = list())
     input <- get_field_level_encryption_profile_config_input(Id = Id)
     output <- get_field_level_encryption_profile_config_output()
@@ -1258,7 +1306,7 @@ get_field_level_encryption_profile_config <- function (Id)
 get_invalidation <- function (DistributionId, Id) 
 {
     op <- new_operation(name = "GetInvalidation", http_method = "GET", 
-        http_path = "/2018-06-18/distribution/{DistributionId}/invalidation/{Id}", 
+        http_path = "/2018-11-05/distribution/{DistributionId}/invalidation/{Id}", 
         paginator = list())
     input <- get_invalidation_input(DistributionId = DistributionId, 
         Id = Id)
@@ -1286,7 +1334,7 @@ get_invalidation <- function (DistributionId, Id)
 get_public_key <- function (Id) 
 {
     op <- new_operation(name = "GetPublicKey", http_method = "GET", 
-        http_path = "/2018-06-18/public-key/{Id}", paginator = list())
+        http_path = "/2018-11-05/public-key/{Id}", paginator = list())
     input <- get_public_key_input(Id = Id)
     output <- get_public_key_output()
     svc <- service()
@@ -1312,7 +1360,7 @@ get_public_key <- function (Id)
 get_public_key_config <- function (Id) 
 {
     op <- new_operation(name = "GetPublicKeyConfig", http_method = "GET", 
-        http_path = "/2018-06-18/public-key/{Id}/config", paginator = list())
+        http_path = "/2018-11-05/public-key/{Id}/config", paginator = list())
     input <- get_public_key_config_input(Id = Id)
     output <- get_public_key_config_output()
     svc <- service()
@@ -1338,7 +1386,7 @@ get_public_key_config <- function (Id)
 get_streaming_distribution <- function (Id) 
 {
     op <- new_operation(name = "GetStreamingDistribution", http_method = "GET", 
-        http_path = "/2018-06-18/streaming-distribution/{Id}", 
+        http_path = "/2018-11-05/streaming-distribution/{Id}", 
         paginator = list())
     input <- get_streaming_distribution_input(Id = Id)
     output <- get_streaming_distribution_output()
@@ -1365,7 +1413,7 @@ get_streaming_distribution <- function (Id)
 get_streaming_distribution_config <- function (Id) 
 {
     op <- new_operation(name = "GetStreamingDistributionConfig", 
-        http_method = "GET", http_path = "/2018-06-18/streaming-distribution/{Id}/config", 
+        http_method = "GET", http_path = "/2018-11-05/streaming-distribution/{Id}/config", 
         paginator = list())
     input <- get_streaming_distribution_config_input(Id = Id)
     output <- get_streaming_distribution_config_output()
@@ -1395,7 +1443,7 @@ list_cloud_front_origin_access_identities <- function (Marker = NULL,
     MaxItems = NULL) 
 {
     op <- new_operation(name = "ListCloudFrontOriginAccessIdentities", 
-        http_method = "GET", http_path = "/2018-06-18/origin-access-identity/cloudfront", 
+        http_method = "GET", http_path = "/2018-11-05/origin-access-identity/cloudfront", 
         paginator = list())
     input <- list_cloud_front_origin_access_identities_input(Marker = Marker, 
         MaxItems = MaxItems)
@@ -1425,7 +1473,7 @@ list_cloud_front_origin_access_identities <- function (Marker = NULL,
 list_distributions <- function (Marker = NULL, MaxItems = NULL) 
 {
     op <- new_operation(name = "ListDistributions", http_method = "GET", 
-        http_path = "/2018-06-18/distribution", paginator = list())
+        http_path = "/2018-11-05/distribution", paginator = list())
     input <- list_distributions_input(Marker = Marker, MaxItems = MaxItems)
     output <- list_distributions_output()
     svc <- service()
@@ -1456,7 +1504,7 @@ list_distributions_by_web_acl_id <- function (Marker = NULL,
     MaxItems = NULL, WebACLId) 
 {
     op <- new_operation(name = "ListDistributionsByWebACLId", 
-        http_method = "GET", http_path = "/2018-06-18/distributionsByWebACLId/{WebACLId}", 
+        http_method = "GET", http_path = "/2018-11-05/distributionsByWebACLId/{WebACLId}", 
         paginator = list())
     input <- list_distributions_by_web_acl_id_input(Marker = Marker, 
         MaxItems = MaxItems, WebACLId = WebACLId)
@@ -1487,7 +1535,7 @@ list_field_level_encryption_configs <- function (Marker = NULL,
     MaxItems = NULL) 
 {
     op <- new_operation(name = "ListFieldLevelEncryptionConfigs", 
-        http_method = "GET", http_path = "/2018-06-18/field-level-encryption", 
+        http_method = "GET", http_path = "/2018-11-05/field-level-encryption", 
         paginator = list())
     input <- list_field_level_encryption_configs_input(Marker = Marker, 
         MaxItems = MaxItems)
@@ -1518,7 +1566,7 @@ list_field_level_encryption_profiles <- function (Marker = NULL,
     MaxItems = NULL) 
 {
     op <- new_operation(name = "ListFieldLevelEncryptionProfiles", 
-        http_method = "GET", http_path = "/2018-06-18/field-level-encryption-profile", 
+        http_method = "GET", http_path = "/2018-11-05/field-level-encryption-profile", 
         paginator = list())
     input <- list_field_level_encryption_profiles_input(Marker = Marker, 
         MaxItems = MaxItems)
@@ -1551,7 +1599,7 @@ list_invalidations <- function (DistributionId, Marker = NULL,
     MaxItems = NULL) 
 {
     op <- new_operation(name = "ListInvalidations", http_method = "GET", 
-        http_path = "/2018-06-18/distribution/{DistributionId}/invalidation", 
+        http_path = "/2018-11-05/distribution/{DistributionId}/invalidation", 
         paginator = list())
     input <- list_invalidations_input(DistributionId = DistributionId, 
         Marker = Marker, MaxItems = MaxItems)
@@ -1581,7 +1629,7 @@ list_invalidations <- function (DistributionId, Marker = NULL,
 list_public_keys <- function (Marker = NULL, MaxItems = NULL) 
 {
     op <- new_operation(name = "ListPublicKeys", http_method = "GET", 
-        http_path = "/2018-06-18/public-key", paginator = list())
+        http_path = "/2018-11-05/public-key", paginator = list())
     input <- list_public_keys_input(Marker = Marker, MaxItems = MaxItems)
     output <- list_public_keys_output()
     svc <- service()
@@ -1609,7 +1657,7 @@ list_public_keys <- function (Marker = NULL, MaxItems = NULL)
 list_streaming_distributions <- function (Marker = NULL, MaxItems = NULL) 
 {
     op <- new_operation(name = "ListStreamingDistributions", 
-        http_method = "GET", http_path = "/2018-06-18/streaming-distribution", 
+        http_method = "GET", http_path = "/2018-11-05/streaming-distribution", 
         paginator = list())
     input <- list_streaming_distributions_input(Marker = Marker, 
         MaxItems = MaxItems)
@@ -1637,7 +1685,7 @@ list_streaming_distributions <- function (Marker = NULL, MaxItems = NULL)
 list_tags_for_resource <- function (Resource) 
 {
     op <- new_operation(name = "ListTagsForResource", http_method = "GET", 
-        http_path = "/2018-06-18/tagging", paginator = list())
+        http_path = "/2018-11-05/tagging", paginator = list())
     input <- list_tags_for_resource_input(Resource = Resource)
     output <- list_tags_for_resource_output()
     svc <- service()
@@ -1672,7 +1720,7 @@ list_tags_for_resource <- function (Resource)
 tag_resource <- function (Resource, Tags) 
 {
     op <- new_operation(name = "TagResource", http_method = "POST", 
-        http_path = "/2018-06-18/tagging?Operation=Tag", paginator = list())
+        http_path = "/2018-11-05/tagging?Operation=Tag", paginator = list())
     input <- tag_resource_input(Resource = Resource, Tags = Tags)
     output <- tag_resource_output()
     svc <- service()
@@ -1704,7 +1752,7 @@ tag_resource <- function (Resource, Tags)
 untag_resource <- function (Resource, TagKeys) 
 {
     op <- new_operation(name = "UntagResource", http_method = "POST", 
-        http_path = "/2018-06-18/tagging?Operation=Untag", paginator = list())
+        http_path = "/2018-11-05/tagging?Operation=Untag", paginator = list())
     input <- untag_resource_input(Resource = Resource, TagKeys = TagKeys)
     output <- untag_resource_output()
     svc <- service()
@@ -1738,7 +1786,7 @@ update_cloud_front_origin_access_identity <- function (CloudFrontOriginAccessIde
     Id, IfMatch = NULL) 
 {
     op <- new_operation(name = "UpdateCloudFrontOriginAccessIdentity", 
-        http_method = "PUT", http_path = "/2018-06-18/origin-access-identity/cloudfront/{Id}/config", 
+        http_method = "PUT", http_path = "/2018-11-05/origin-access-identity/cloudfront/{Id}/config", 
         paginator = list())
     input <- update_cloud_front_origin_access_identity_input(CloudFrontOriginAccessIdentityConfig = CloudFrontOriginAccessIdentityConfig, 
         Id = Id, IfMatch = IfMatch)
@@ -1830,6 +1878,30 @@ update_cloud_front_origin_access_identity <- function (CloudFrontOriginAccessIde
 #'             ),
 #'             OriginReadTimeout = 123,
 #'             OriginKeepaliveTimeout = 123
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     OriginGroups = list(
+#'       Quantity = 123,
+#'       Items = list(
+#'         list(
+#'           Id = "string",
+#'           FailoverCriteria = list(
+#'             StatusCodes = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 123
+#'               )
+#'             )
+#'           ),
+#'           Members = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               list(
+#'                 OriginId = "string"
+#'               )
+#'             )
 #'           )
 #'         )
 #'       )
@@ -2021,7 +2093,7 @@ update_cloud_front_origin_access_identity <- function (CloudFrontOriginAccessIde
 update_distribution <- function (DistributionConfig, Id, IfMatch = NULL) 
 {
     op <- new_operation(name = "UpdateDistribution", http_method = "PUT", 
-        http_path = "/2018-06-18/distribution/{Id}/config", paginator = list())
+        http_path = "/2018-11-05/distribution/{Id}/config", paginator = list())
     input <- update_distribution_input(DistributionConfig = DistributionConfig, 
         Id = Id, IfMatch = IfMatch)
     output <- update_distribution_output()
@@ -2081,7 +2153,7 @@ update_field_level_encryption_config <- function (FieldLevelEncryptionConfig,
     Id, IfMatch = NULL) 
 {
     op <- new_operation(name = "UpdateFieldLevelEncryptionConfig", 
-        http_method = "PUT", http_path = "/2018-06-18/field-level-encryption/{Id}/config", 
+        http_method = "PUT", http_path = "/2018-11-05/field-level-encryption/{Id}/config", 
         paginator = list())
     input <- update_field_level_encryption_config_input(FieldLevelEncryptionConfig = FieldLevelEncryptionConfig, 
         Id = Id, IfMatch = IfMatch)
@@ -2133,7 +2205,7 @@ update_field_level_encryption_profile <- function (FieldLevelEncryptionProfileCo
     Id, IfMatch = NULL) 
 {
     op <- new_operation(name = "UpdateFieldLevelEncryptionProfile", 
-        http_method = "PUT", http_path = "/2018-06-18/field-level-encryption-profile/{Id}/config", 
+        http_method = "PUT", http_path = "/2018-11-05/field-level-encryption-profile/{Id}/config", 
         paginator = list())
     input <- update_field_level_encryption_profile_input(FieldLevelEncryptionProfileConfig = FieldLevelEncryptionProfileConfig, 
         Id = Id, IfMatch = IfMatch)
@@ -2170,7 +2242,7 @@ update_field_level_encryption_profile <- function (FieldLevelEncryptionProfileCo
 update_public_key <- function (PublicKeyConfig, Id, IfMatch = NULL) 
 {
     op <- new_operation(name = "UpdatePublicKey", http_method = "PUT", 
-        http_path = "/2018-06-18/public-key/{Id}/config", paginator = list())
+        http_path = "/2018-11-05/public-key/{Id}/config", paginator = list())
     input <- update_public_key_input(PublicKeyConfig = PublicKeyConfig, 
         Id = Id, IfMatch = IfMatch)
     output <- update_public_key_output()
@@ -2229,7 +2301,7 @@ update_streaming_distribution <- function (StreamingDistributionConfig,
     Id, IfMatch = NULL) 
 {
     op <- new_operation(name = "UpdateStreamingDistribution", 
-        http_method = "PUT", http_path = "/2018-06-18/streaming-distribution/{Id}/config", 
+        http_method = "PUT", http_path = "/2018-11-05/streaming-distribution/{Id}/config", 
         paginator = list())
     input <- update_streaming_distribution_input(StreamingDistributionConfig = StreamingDistributionConfig, 
         Id = Id, IfMatch = IfMatch)

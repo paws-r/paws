@@ -5,13 +5,20 @@
 \title{Modifies the provisioned throughput settings, global secondary indexes, or DynamoDB Streams settings for a given table}
 \usage{
 update_table(AttributeDefinitions = NULL, TableName,
-  ProvisionedThroughput = NULL, GlobalSecondaryIndexUpdates = NULL,
-  StreamSpecification = NULL, SSESpecification = NULL)
+  BillingMode = NULL, ProvisionedThroughput = NULL,
+  GlobalSecondaryIndexUpdates = NULL, StreamSpecification = NULL,
+  SSESpecification = NULL)
 }
 \arguments{
 \item{AttributeDefinitions}{An array of attributes that describe the key schema for the table and indexes. If you are adding a new global secondary index to the table, \code{AttributeDefinitions} must include the key element(s) of the new index.}
 
 \item{TableName}{[required] The name of the table to be updated.}
+
+\item{BillingMode}{Controls how you are charged for read and write throughput and how you manage capacity. When switching from pay-per-request to provisioned capacity, initial provisioned capacity values must be set. The initial provisioned capacity values are estimated based on the consumed read and write capacity of your table and global secondary indexes over the past 30 minutes.
+\itemize{
+\item \code{PROVISIONED} - Sets the billing mode to \code{PROVISIONED}. We recommend using \code{PROVISIONED} for predictable workloads.
+\item \code{PAY_PER_REQUEST} - Sets the billing mode to \code{PAY_PER_REQUEST}. We recommend using \code{PAY_PER_REQUEST} for unpredictable workloads.
+}}
 
 \item{ProvisionedThroughput}{The new provisioned throughput settings for the specified table or index.}
 
@@ -53,6 +60,7 @@ You can only perform one of the following operations at once:
     )
   ),
   TableName = "string",
+  BillingMode = "PROVISIONED"|"PAY_PER_REQUEST",
   ProvisionedThroughput = list(
     ReadCapacityUnits = 123,
     WriteCapacityUnits = 123

@@ -4,9 +4,7 @@
 \alias{get_resolver_rule_policy}
 \title{Gets information about a resolver rule policy}
 \usage{
-get_resolver_rule_policy(
-  Arn = "string"
-)
+get_resolver_rule_policy(Arn)
 }
 \arguments{
 \item{Arn}{[required] The ID of the resolver rule policy that you want to get information about.}
@@ -14,6 +12,10 @@ get_resolver_rule_policy(
 \description{
 Gets information about a resolver rule policy. A resolver rule policy specifies the Resolver operations and resources that you want to allow another AWS account to be able to use.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_resolver_rule_policy(
+  Arn = "string"
+)
 }
+}
+

@@ -11,7 +11,7 @@ create_budget(AccountId, Budget, NotificationsWithSubscribers = NULL)
 
 \item{Budget}{[required] The budget object that you want to create.}
 
-\item{NotificationsWithSubscribers}{A notification that you want to associate with a budget. A budget can have up to five notifications, and each notification can have one SNS subscriber and up to ten email subscribers. If you include notifications and subscribers in your \code{CreateBudget} call, AWS creates the notifications and subscribers for you.}
+\item{NotificationsWithSubscribers}{A notification that you want to associate with a budget. A budget can have up to five notifications, and each notification can have one SNS subscriber and up to 10 email subscribers. If you include notifications and subscribers in your \code{CreateBudget} call, AWS creates the notifications and subscribers for you.}
 }
 \description{
 Creates a budget and, if included, notifications and subscribers.
@@ -58,7 +58,8 @@ Creates a budget and, if included, notifications and subscribers.
         Unit = "string"
       )
     ),
-    BudgetType = "USAGE"|"COST"|"RI_UTILIZATION"|"RI_COVERAGE"
+    BudgetType = "USAGE"|"COST"|"RI_UTILIZATION"|"RI_COVERAGE",
+    LastUpdatedTime = as.POSIXct("2015-01-01")
   ),
   NotificationsWithSubscribers = list(
     list(
@@ -66,7 +67,8 @@ Creates a budget and, if included, notifications and subscribers.
         NotificationType = "ACTUAL"|"FORECASTED",
         ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
         Threshold = 123.0,
-        ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
+        ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
+        NotificationState = "OK"|"ALARM"
       ),
       Subscribers = list(
         list(

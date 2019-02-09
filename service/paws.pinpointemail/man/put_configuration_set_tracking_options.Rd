@@ -4,10 +4,8 @@
 \alias{put_configuration_set_tracking_options}
 \title{Specify a custom domain to use for open and click tracking elements in email that you send using Amazon Pinpoint}
 \usage{
-put_configuration_set_tracking_options(
-  ConfigurationSetName = "string",
-  CustomRedirectDomain = "string"
-)
+put_configuration_set_tracking_options(ConfigurationSetName,
+  CustomRedirectDomain = NULL)
 }
 \arguments{
 \item{ConfigurationSetName}{[required] The name of the configuration set that you want to add a custom tracking domain to.}
@@ -17,6 +15,11 @@ put_configuration_set_tracking_options(
 \description{
 Specify a custom domain to use for open and click tracking elements in email that you send using Amazon Pinpoint.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_configuration_set_tracking_options(
+  ConfigurationSetName = "string",
+  CustomRedirectDomain = "string"
+)
 }
+}
+

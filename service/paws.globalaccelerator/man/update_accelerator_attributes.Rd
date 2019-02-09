@@ -4,12 +4,9 @@
 \alias{update_accelerator_attributes}
 \title{Update the attributes for an accelerator}
 \usage{
-update_accelerator_attributes(
-  AcceleratorArn = "string",
-  FlowLogsEnabled = TRUE|FALSE,
-  FlowLogsS3Bucket = "string",
-  FlowLogsS3Prefix = "string"
-)
+update_accelerator_attributes(AcceleratorArn = NULL,
+  FlowLogsEnabled = NULL, FlowLogsS3Bucket = NULL,
+  FlowLogsS3Prefix = NULL)
 }
 \arguments{
 \item{AcceleratorArn}{The Amazon Resource Name (ARN) of the accelerator that you want to update. Attribute is required.}
@@ -25,6 +22,13 @@ For more information, see \href{https://docs.aws.amazon.com/global-accelerator/l
 \description{
 Update the attributes for an accelerator. To see an AWS CLI example of updating an accelerator to enable flow logs, scroll down to \strong{Example}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_accelerator_attributes(
+  AcceleratorArn = "string",
+  FlowLogsEnabled = TRUE|FALSE,
+  FlowLogsS3Bucket = "string",
+  FlowLogsS3Prefix = "string"
+)
 }
+}
+

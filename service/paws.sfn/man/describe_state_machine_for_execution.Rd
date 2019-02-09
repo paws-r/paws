@@ -12,6 +12,9 @@ describe_state_machine_for_execution(executionArn)
 \description{
 Describes the state machine associated with a specific execution.
 }
+\details{
+This operation is eventually consistent. The results are best effort and may not reflect very recent updates and changes.
+}
 \section{Accepted Parameters}{
 \preformatted{describe_state_machine_for_execution(
   executionArn = "string"

@@ -4,11 +4,8 @@
 \alias{delete_application_input_processing_configuration}
 \title{Deletes an InputProcessingConfiguration from an input}
 \usage{
-delete_application_input_processing_configuration(
-  ApplicationName = "string",
-  CurrentApplicationVersionId = 123,
-  InputId = "string"
-)
+delete_application_input_processing_configuration(ApplicationName,
+  CurrentApplicationVersionId, InputId)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application.}
@@ -20,6 +17,12 @@ delete_application_input_processing_configuration(
 \description{
 Deletes an InputProcessingConfiguration from an input.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_application_input_processing_configuration(
+  ApplicationName = "string",
+  CurrentApplicationVersionId = 123,
+  InputId = "string"
+)
 }
+}
+

@@ -14,13 +14,15 @@ create_transform_job(TransformJobName, ModelName,
 
 \item{ModelName}{[required] The name of the model that you want to use for the transform job. \code{ModelName} must be the name of an existing Amazon SageMaker model within an AWS Region in an AWS account.}
 
-\item{MaxConcurrentTransforms}{The maximum number of parallel requests that can be sent to each instance in a transform job. This is good for algorithms that implement multiple workers on larger instances . The default value is \code{1}. To allow Amazon SageMaker to determine the appropriate number for \code{MaxConcurrentTransforms}, set the value to \code{0}.}
+\item{MaxConcurrentTransforms}{The maximum number of parallel requests that can be sent to an algorithm container on an instance. This is good for algorithms that implement multiple workers on larger instances . The default value is \code{1}. To allow Amazon SageMaker to determine the appropriate number for \code{MaxConcurrentTransforms}, do not set the value in the API.}
 
-\item{MaxPayloadInMB}{The maximum payload size allowed, in MB. A payload is the data portion of a record (without metadata). The value in \code{MaxPayloadInMB} must be greater or equal to the size of a single record. You can approximate the size of a record by dividing the size of your dataset by the number of records. Then multiply this value by the number of records you want in a mini-batch. It is recommended to enter a value slightly larger than this to ensure the records fit within the maximum payload size. The default value is \code{6} MB. For an unlimited payload size, set the value to \code{0}.}
+\item{MaxPayloadInMB}{The maximum payload size allowed, in MB. A payload is the data portion of a record (without metadata). The value in \code{MaxPayloadInMB} must be greater or equal to the size of a single record. You can approximate the size of a record by dividing the size of your dataset by the number of records. Then multiply this value by the number of records you want in a mini-batch. We recommend to enter a slightly larger value than this to ensure the records fit within the maximum payload size. The default value is \code{6} MB.
 
-\item{BatchStrategy}{Determines the number of records included in a single mini-batch. \code{SingleRecord} means only one record is used per mini-batch. \code{MultiRecord} means a mini-batch is set to contain as many records that can fit within the \code{MaxPayloadInMB} limit.
+For cases where the payload might be arbitrarily large and is transmitted using HTTP chunked encoding, set the value to \code{0}. This feature only works in supported algorithms. Currently, Amazon SageMaker built-in algorithms do not support this feature.}
 
-Batch transform will automatically split your input data into whatever payload size is specified if you set \code{SplitType} to \code{Line} and \code{BatchStrategy} to \code{MultiRecord}. There's no need to split the dataset into smaller files or to use larger payload sizes unless the records in your dataset are very large.}
+\item{BatchStrategy}{Determines the number of records to include in a mini-batch. If you want to include only one record in a mini-batch, specify \code{SingleRecord}.. If you want mini-batches to contain a maximum of the number of records specified in the \code{MaxPayloadInMB} parameter, specify \code{MultiRecord}.
+
+If you set \code{SplitType} to \code{Line} and \code{BatchStrategy} to \code{MultiRecord}, a batch transform automatically splits your input data into the specified payload size. There's no need to split the dataset into smaller files or to use larger payload sizes unless the records in your dataset are very large.}
 
 \item{Environment}{The environment variables to set in the Docker container. We support up to 16 key and values entries in the map.}
 
@@ -30,7 +32,7 @@ Batch transform will automatically split your input data into whatever payload s
 
 \item{TransformResources}{[required] Describes the resources, including ML instance types and ML instance count, to use for the transform job.}
 
-\item{Tags}{An array of key-value pairs. Adding tags is optional. For more information, see \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags} in the \emph{AWS Billing and Cost Management User Guide}.}
+\item{Tags}{(Optional) An array of key-value pairs. For more information, see \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags} in the \emph{AWS Billing and Cost Management User Guide}.}
 }
 \description{
 Starts a transform job. A transform job uses a trained model to get inferences on a dataset and saves these results to an Amazon S3 location that you specify.
@@ -62,13 +64,13 @@ For more information about how batch transformation works Amazon SageMaker, see 
   TransformInput = list(
     DataSource = list(
       S3DataSource = list(
-        S3DataType = "ManifestFile"|"S3Prefix",
+        S3DataType = "ManifestFile"|"S3Prefix"|"AugmentedManifestFile",
         S3Uri = "string"
       )
     ),
     ContentType = "string",
     CompressionType = "None"|"Gzip",
-    SplitType = "None"|"Line"|"RecordIO"
+    SplitType = "None"|"Line"|"RecordIO"|"TFRecord"
   ),
   TransformOutput = list(
     S3OutputPath = "string",

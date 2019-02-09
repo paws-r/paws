@@ -65,6 +65,26 @@ meter_usage_output <- function (...)
     return(populate(args, shape))
 }
 
+register_usage_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(ProductCode = structure(logical(0), 
+        tags = list(type = "string", max = 255L, min = 1L)), 
+        PublicKeyVersion = structure(logical(0), tags = list(type = "integer", 
+            min = 1L)), Nonce = structure(logical(0), tags = list(type = "string", 
+            max = 255L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+register_usage_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(PublicKeyRotationTimestamp = structure(logical(0), 
+        tags = list(type = "timestamp")), Signature = structure(logical(0), 
+        tags = list(type = "string", pattern = "\\S+"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 resolve_customer_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))

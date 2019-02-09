@@ -4,10 +4,7 @@
 \alias{describe_virtual_router}
 \title{Describes an existing virtual router}
 \usage{
-describe_virtual_router(
-  meshName = "string",
-  virtualRouterName = "string"
-)
+describe_virtual_router(meshName, virtualRouterName)
 }
 \arguments{
 \item{meshName}{[required] The name of the service mesh in which the virtual router resides.}
@@ -17,6 +14,11 @@ describe_virtual_router(
 \description{
 Describes an existing virtual router.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_virtual_router(
+  meshName = "string",
+  virtualRouterName = "string"
+)
 }
+}
+

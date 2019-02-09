@@ -4,9 +4,7 @@
 \alias{get_resolver_rule_association}
 \title{Gets information about an association between a specified resolver rule and a VPC}
 \usage{
-get_resolver_rule_association(
-  ResolverRuleAssociationId = "string"
-)
+get_resolver_rule_association(ResolverRuleAssociationId)
 }
 \arguments{
 \item{ResolverRuleAssociationId}{[required] The ID of the resolver rule association that you want to get information about.}
@@ -14,6 +12,10 @@ get_resolver_rule_association(
 \description{
 Gets information about an association between a specified resolver rule and a VPC. You associate a resolver rule and a VPC using AssociateResolverRule.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_resolver_rule_association(
+  ResolverRuleAssociationId = "string"
+)
 }
+}
+

@@ -12,8 +12,8 @@ Authors@R:
              email = "adam.banker39@gmail.com"),
       person(given = "Amazon.com, Inc.",
              role = "cph"))
-Description: Provides translation between English and one of six
-    languages, or between one of the six languages and English.
+Description: Provides translation between one source language
+    and another of the same set of languages.
 License: Apache License (>= 2.0)
 Depends: 
     R (>= 3.4.0)

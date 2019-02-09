@@ -34,7 +34,14 @@ subscribe(TopicArn, Protocol, Endpoint = NULL, Attributes = NULL,
 \item For the \code{lambda} protocol, the endpoint is the ARN of an AWS Lambda function.
 }}
 
-\item{Attributes}{Assigns attributes to the subscription as a map of key-value pairs. You can assign any attribute that is supported by the \code{SetSubscriptionAttributes} action.}
+\item{Attributes}{A map of attributes with their corresponding values.
+
+The following lists the names, descriptions, and values of the special request parameters that the \code{SetTopicAttributes} action uses:
+\itemize{
+\item \code{DeliveryPolicy} -- The policy that defines how Amazon SNS retries failed deliveries to HTTP/S endpoints.
+\item \code{FilterPolicy} -- The simple JSON object that lets your subscriber receive only a subset of messages, rather than receiving every message published to the topic.
+\item \code{RawMessageDelivery} -- When set to \code{true}, enables raw message delivery to Amazon SQS or HTTP/S endpoints. This eliminates the need for the endpoints to process JSON formatting, which is otherwise created for Amazon SNS metadata.
+}}
 
 \item{ReturnSubscriptionArn}{Sets whether the response from the \code{Subscribe} request includes the subscription ARN, even if the subscription is not yet confirmed.
 

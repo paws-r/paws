@@ -8,7 +8,7 @@ purchase_host_reservation(ClientToken = NULL, CurrencyCode = NULL,
   HostIdSet, LimitPrice = NULL, OfferingId)
 }
 \arguments{
-\item{ClientToken}{Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html}{How to Ensure Idempotency} in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+\item{ClientToken}{Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html}{How to Ensure Idempotency} in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
 \item{CurrencyCode}{The currency in which the \code{totalUpfrontPrice}, \code{LimitPrice}, and \code{totalHourlyPrice} amounts are specified. At this time, the only supported currency is \code{USD}.}
 

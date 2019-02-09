@@ -15,7 +15,7 @@ create_vpn_connection_route(DestinationCidrBlock, VpnConnectionId)
 Creates a static route associated with a VPN connection between an existing virtual private gateway and a VPN customer gateway. The static route allows traffic to be routed from the virtual private gateway to the VPN customer gateway.
 }
 \details{
-For more information about VPN connections, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html}{AWS Managed VPN Connections} in the \emph{Amazon Virtual Private Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html}{AWS Site-to-Site VPN} in the \emph{AWS Site-to-Site VPN User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{create_vpn_connection_route(

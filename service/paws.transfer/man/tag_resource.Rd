@@ -4,15 +4,7 @@
 \alias{tag_resource}
 \title{Attaches a key-value pair to a resource, as identified by its Amazon Resource Name (ARN)}
 \usage{
-tag_resource(
-  Arn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+tag_resource(Arn, Tags)
 }
 \arguments{
 \item{Arn}{[required] An Amazon Resource Name (ARN) for a specific AWS resource, such as a server, user, or role.}
@@ -25,6 +17,16 @@ Attaches a key-value pair to a resource, as identified by its Amazon Resource Na
 \details{
 There is no response returned from this call.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{tag_resource(
+  Arn = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

@@ -36,6 +36,62 @@ associate_service_role_to_account_output <- function (...)
     return(populate(args, shape))
 }
 
+create_connector_definition_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(AmznClientToken = structure(logical(0), 
+        tags = list(location = "header", locationName = "X-Amzn-Client-Token", 
+            type = "string")), InitialVersion = structure(list(Connectors = structure(list(structure(list(ConnectorArn = structure(logical(0), 
+        tags = list(type = "string")), Id = structure(logical(0), 
+        tags = list(type = "string")), Parameters = structure(list(structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "map"))), 
+        tags = list(type = "structure"))), tags = list(type = "list"))), 
+        tags = list(type = "structure")), Name = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+create_connector_definition_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), 
+        CreationTimestamp = structure(logical(0), tags = list(type = "string")), 
+        Id = structure(logical(0), tags = list(type = "string")), 
+        LastUpdatedTimestamp = structure(logical(0), tags = list(type = "string")), 
+        LatestVersion = structure(logical(0), tags = list(type = "string")), 
+        LatestVersionArn = structure(logical(0), tags = list(type = "string")), 
+        Name = structure(logical(0), tags = list(type = "string"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+create_connector_definition_version_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(AmznClientToken = structure(logical(0), 
+        tags = list(location = "header", locationName = "X-Amzn-Client-Token", 
+            type = "string")), ConnectorDefinitionId = structure(logical(0), 
+        tags = list(location = "uri", locationName = "ConnectorDefinitionId", 
+            type = "string")), Connectors = structure(list(structure(list(ConnectorArn = structure(logical(0), 
+        tags = list(type = "string")), Id = structure(logical(0), 
+        tags = list(type = "string")), Parameters = structure(list(structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "map"))), 
+        tags = list(type = "structure"))), tags = list(type = "list"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+create_connector_definition_version_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), 
+        CreationTimestamp = structure(logical(0), tags = list(type = "string")), 
+        Id = structure(logical(0), tags = list(type = "string")), 
+        Version = structure(logical(0), tags = list(type = "string"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 create_core_definition_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -179,11 +235,19 @@ create_function_definition_input <- function (...)
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(AmznClientToken = structure(logical(0), 
         tags = list(location = "header", locationName = "X-Amzn-Client-Token", 
-            type = "string")), InitialVersion = structure(list(Functions = structure(list(structure(list(FunctionArn = structure(logical(0), 
+            type = "string")), InitialVersion = structure(list(DefaultConfig = structure(list(Execution = structure(list(IsolationMode = structure(logical(0), 
+        tags = list(type = "string", enum = c("GreengrassContainer", 
+            "NoContainer")))), tags = list(type = "structure"))), 
+        tags = list(type = "structure")), Functions = structure(list(structure(list(FunctionArn = structure(logical(0), 
         tags = list(type = "string")), FunctionConfiguration = structure(list(EncodingType = structure(logical(0), 
         tags = list(type = "string", enum = c("binary", "json"))), 
         Environment = structure(list(AccessSysfs = structure(logical(0), 
-            tags = list(type = "boolean")), ResourceAccessPolicies = structure(list(structure(list(Permission = structure(logical(0), 
+            tags = list(type = "boolean")), Execution = structure(list(IsolationMode = structure(logical(0), 
+            tags = list(type = "string", enum = c("GreengrassContainer", 
+                "NoContainer"))), RunAs = structure(list(Gid = structure(logical(0), 
+            tags = list(type = "integer")), Uid = structure(logical(0), 
+            tags = list(type = "integer"))), tags = list(type = "structure"))), 
+            tags = list(type = "structure")), ResourceAccessPolicies = structure(list(structure(list(Permission = structure(logical(0), 
             tags = list(type = "string", enum = c("ro", "rw"))), 
             ResourceId = structure(logical(0), tags = list(type = "string"))), 
             tags = list(type = "structure"))), tags = list(type = "list")), 
@@ -221,13 +285,21 @@ create_function_definition_version_input <- function (...)
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(AmznClientToken = structure(logical(0), 
         tags = list(location = "header", locationName = "X-Amzn-Client-Token", 
-            type = "string")), FunctionDefinitionId = structure(logical(0), 
+            type = "string")), DefaultConfig = structure(list(Execution = structure(list(IsolationMode = structure(logical(0), 
+        tags = list(type = "string", enum = c("GreengrassContainer", 
+            "NoContainer")))), tags = list(type = "structure"))), 
+        tags = list(type = "structure")), FunctionDefinitionId = structure(logical(0), 
         tags = list(location = "uri", locationName = "FunctionDefinitionId", 
             type = "string")), Functions = structure(list(structure(list(FunctionArn = structure(logical(0), 
         tags = list(type = "string")), FunctionConfiguration = structure(list(EncodingType = structure(logical(0), 
         tags = list(type = "string", enum = c("binary", "json"))), 
         Environment = structure(list(AccessSysfs = structure(logical(0), 
-            tags = list(type = "boolean")), ResourceAccessPolicies = structure(list(structure(list(Permission = structure(logical(0), 
+            tags = list(type = "boolean")), Execution = structure(list(IsolationMode = structure(logical(0), 
+            tags = list(type = "string", enum = c("GreengrassContainer", 
+                "NoContainer"))), RunAs = structure(list(Gid = structure(logical(0), 
+            tags = list(type = "integer")), Uid = structure(logical(0), 
+            tags = list(type = "integer"))), tags = list(type = "structure"))), 
+            tags = list(type = "structure")), ResourceAccessPolicies = structure(list(structure(list(Permission = structure(logical(0), 
             tags = list(type = "string", enum = c("ro", "rw"))), 
             ResourceId = structure(logical(0), tags = list(type = "string"))), 
             tags = list(type = "structure"))), tags = list(type = "list")), 
@@ -261,7 +333,8 @@ create_group_input <- function (...)
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(AmznClientToken = structure(logical(0), 
         tags = list(location = "header", locationName = "X-Amzn-Client-Token", 
-            type = "string")), InitialVersion = structure(list(CoreDefinitionVersionArn = structure(logical(0), 
+            type = "string")), InitialVersion = structure(list(ConnectorDefinitionVersionArn = structure(logical(0), 
+        tags = list(type = "string")), CoreDefinitionVersionArn = structure(logical(0), 
         tags = list(type = "string")), DeviceDefinitionVersionArn = structure(logical(0), 
         tags = list(type = "string")), FunctionDefinitionVersionArn = structure(logical(0), 
         tags = list(type = "string")), LoggerDefinitionVersionArn = structure(logical(0), 
@@ -311,7 +384,8 @@ create_group_version_input <- function (...)
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(AmznClientToken = structure(logical(0), 
         tags = list(location = "header", locationName = "X-Amzn-Client-Token", 
-            type = "string")), CoreDefinitionVersionArn = structure(logical(0), 
+            type = "string")), ConnectorDefinitionVersionArn = structure(logical(0), 
+        tags = list(type = "string")), CoreDefinitionVersionArn = structure(logical(0), 
         tags = list(type = "string")), DeviceDefinitionVersionArn = structure(logical(0), 
         tags = list(type = "string")), FunctionDefinitionVersionArn = structure(logical(0), 
         tags = list(type = "string")), GroupId = structure(logical(0), 
@@ -418,11 +492,14 @@ create_resource_definition_input <- function (...)
         tags = list(type = "string"))), tags = list(type = "structure")), 
         SageMakerMachineLearningModelResourceData = structure(list(DestinationPath = structure(logical(0), 
             tags = list(type = "string")), SageMakerJobArn = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))), 
-        tags = list(type = "structure"))), tags = list(type = "structure"))), 
-        tags = list(type = "list"))), tags = list(type = "structure")), 
-        Name = structure(logical(0), tags = list(type = "string"))), 
-        tags = list(type = "structure"))
+            tags = list(type = "string"))), tags = list(type = "structure")), 
+        SecretsManagerSecretResourceData = structure(list(ARN = structure(logical(0), 
+            tags = list(type = "string")), AdditionalStagingLabelsToDownload = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))), tags = list(type = "list"))), 
+        tags = list(type = "structure")), Name = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -463,9 +540,13 @@ create_resource_definition_version_input <- function (...)
         tags = list(type = "string"))), tags = list(type = "structure")), 
         SageMakerMachineLearningModelResourceData = structure(list(DestinationPath = structure(logical(0), 
             tags = list(type = "string")), SageMakerJobArn = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))), 
-        tags = list(type = "structure"))), tags = list(type = "structure"))), 
-        tags = list(type = "list"))), tags = list(type = "structure"))
+            tags = list(type = "string"))), tags = list(type = "structure")), 
+        SecretsManagerSecretResourceData = structure(list(ARN = structure(logical(0), 
+            tags = list(type = "string")), AdditionalStagingLabelsToDownload = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))), tags = list(type = "list"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -562,6 +643,22 @@ create_subscription_definition_version_output <- function (...)
         Id = structure(logical(0), tags = list(type = "string")), 
         Version = structure(logical(0), tags = list(type = "string"))), 
         tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_connector_definition_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(ConnectorDefinitionId = structure(logical(0), 
+        tags = list(location = "uri", locationName = "ConnectorDefinitionId", 
+            type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_connector_definition_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -774,6 +871,59 @@ get_connectivity_info_output <- function (...)
     return(populate(args, shape))
 }
 
+get_connector_definition_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(ConnectorDefinitionId = structure(logical(0), 
+        tags = list(location = "uri", locationName = "ConnectorDefinitionId", 
+            type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+get_connector_definition_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), 
+        CreationTimestamp = structure(logical(0), tags = list(type = "string")), 
+        Id = structure(logical(0), tags = list(type = "string")), 
+        LastUpdatedTimestamp = structure(logical(0), tags = list(type = "string")), 
+        LatestVersion = structure(logical(0), tags = list(type = "string")), 
+        LatestVersionArn = structure(logical(0), tags = list(type = "string")), 
+        Name = structure(logical(0), tags = list(type = "string"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+get_connector_definition_version_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(ConnectorDefinitionId = structure(logical(0), 
+        tags = list(location = "uri", locationName = "ConnectorDefinitionId", 
+            type = "string")), ConnectorDefinitionVersionId = structure(logical(0), 
+        tags = list(location = "uri", locationName = "ConnectorDefinitionVersionId", 
+            type = "string")), NextToken = structure(logical(0), 
+        tags = list(location = "querystring", locationName = "NextToken", 
+            type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+get_connector_definition_version_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), 
+        CreationTimestamp = structure(logical(0), tags = list(type = "string")), 
+        Definition = structure(list(Connectors = structure(list(structure(list(ConnectorArn = structure(logical(0), 
+            tags = list(type = "string")), Id = structure(logical(0), 
+            tags = list(type = "string")), Parameters = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "map"))), 
+            tags = list(type = "structure"))), tags = list(type = "list"))), 
+            tags = list(type = "structure")), Id = structure(logical(0), 
+            tags = list(type = "string")), NextToken = structure(logical(0), 
+            tags = list(type = "string")), Version = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 get_core_definition_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -948,11 +1098,19 @@ get_function_definition_version_output <- function (...)
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), 
         CreationTimestamp = structure(logical(0), tags = list(type = "string")), 
-        Definition = structure(list(Functions = structure(list(structure(list(FunctionArn = structure(logical(0), 
+        Definition = structure(list(DefaultConfig = structure(list(Execution = structure(list(IsolationMode = structure(logical(0), 
+            tags = list(type = "string", enum = c("GreengrassContainer", 
+                "NoContainer")))), tags = list(type = "structure"))), 
+            tags = list(type = "structure")), Functions = structure(list(structure(list(FunctionArn = structure(logical(0), 
             tags = list(type = "string")), FunctionConfiguration = structure(list(EncodingType = structure(logical(0), 
             tags = list(type = "string", enum = c("binary", "json"))), 
             Environment = structure(list(AccessSysfs = structure(logical(0), 
-                tags = list(type = "boolean")), ResourceAccessPolicies = structure(list(structure(list(Permission = structure(logical(0), 
+                tags = list(type = "boolean")), Execution = structure(list(IsolationMode = structure(logical(0), 
+                tags = list(type = "string", enum = c("GreengrassContainer", 
+                  "NoContainer"))), RunAs = structure(list(Gid = structure(logical(0), 
+                tags = list(type = "integer")), Uid = structure(logical(0), 
+                tags = list(type = "integer"))), tags = list(type = "structure"))), 
+                tags = list(type = "structure")), ResourceAccessPolicies = structure(list(structure(list(Permission = structure(logical(0), 
                 tags = list(type = "string", enum = c("ro", "rw"))), 
                 ResourceId = structure(logical(0), tags = list(type = "string"))), 
                 tags = list(type = "structure"))), tags = list(type = "list")), 
@@ -1049,7 +1207,8 @@ get_group_version_output <- function (...)
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), 
         CreationTimestamp = structure(logical(0), tags = list(type = "string")), 
-        Definition = structure(list(CoreDefinitionVersionArn = structure(logical(0), 
+        Definition = structure(list(ConnectorDefinitionVersionArn = structure(logical(0), 
+            tags = list(type = "string")), CoreDefinitionVersionArn = structure(logical(0), 
             tags = list(type = "string")), DeviceDefinitionVersionArn = structure(logical(0), 
             tags = list(type = "string")), FunctionDefinitionVersionArn = structure(logical(0), 
             tags = list(type = "string")), LoggerDefinitionVersionArn = structure(logical(0), 
@@ -1173,12 +1332,15 @@ get_resource_definition_version_output <- function (...)
             tags = list(type = "string"))), tags = list(type = "structure")), 
             SageMakerMachineLearningModelResourceData = structure(list(DestinationPath = structure(logical(0), 
                 tags = list(type = "string")), SageMakerJobArn = structure(logical(0), 
-                tags = list(type = "string"))), tags = list(type = "structure"))), 
-            tags = list(type = "structure"))), tags = list(type = "structure"))), 
-            tags = list(type = "list"))), tags = list(type = "structure")), 
-        Id = structure(logical(0), tags = list(type = "string")), 
-        Version = structure(logical(0), tags = list(type = "string"))), 
-        tags = list(type = "structure"))
+                tags = list(type = "string"))), tags = list(type = "structure")), 
+            SecretsManagerSecretResourceData = structure(list(ARN = structure(logical(0), 
+                tags = list(type = "string")), AdditionalStagingLabelsToDownload = structure(list(structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "list"))), 
+                tags = list(type = "structure"))), tags = list(type = "structure"))), 
+            tags = list(type = "structure"))), tags = list(type = "list"))), 
+            tags = list(type = "structure")), Id = structure(logical(0), 
+            tags = list(type = "string")), Version = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1303,6 +1465,59 @@ list_bulk_deployments_output <- function (...)
     shape <- structure(list(BulkDeployments = structure(list(structure(list(BulkDeploymentArn = structure(logical(0), 
         tags = list(type = "string")), BulkDeploymentId = structure(logical(0), 
         tags = list(type = "string")), CreatedAt = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))), 
+        tags = list(type = "list")), NextToken = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_connector_definition_versions_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(ConnectorDefinitionId = structure(logical(0), 
+        tags = list(location = "uri", locationName = "ConnectorDefinitionId", 
+            type = "string")), MaxResults = structure(logical(0), 
+        tags = list(location = "querystring", locationName = "MaxResults", 
+            type = "string")), NextToken = structure(logical(0), 
+        tags = list(location = "querystring", locationName = "NextToken", 
+            type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_connector_definition_versions_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(NextToken = structure(logical(0), 
+        tags = list(type = "string")), Versions = structure(list(structure(list(Arn = structure(logical(0), 
+        tags = list(type = "string")), CreationTimestamp = structure(logical(0), 
+        tags = list(type = "string")), Id = structure(logical(0), 
+        tags = list(type = "string")), Version = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))), 
+        tags = list(type = "list"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_connector_definitions_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(MaxResults = structure(logical(0), 
+        tags = list(location = "querystring", locationName = "MaxResults", 
+            type = "string")), NextToken = structure(logical(0), 
+        tags = list(location = "querystring", locationName = "NextToken", 
+            type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_connector_definitions_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Definitions = structure(list(structure(list(Arn = structure(logical(0), 
+        tags = list(type = "string")), CreationTimestamp = structure(logical(0), 
+        tags = list(type = "string")), Id = structure(logical(0), 
+        tags = list(type = "string")), LastUpdatedTimestamp = structure(logical(0), 
+        tags = list(type = "string")), LatestVersion = structure(logical(0), 
+        tags = list(type = "string")), LatestVersionArn = structure(logical(0), 
+        tags = list(type = "string")), Name = structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "structure"))), 
         tags = list(type = "list")), NextToken = structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "structure"))
@@ -1802,6 +2017,23 @@ update_connectivity_info_output <- function (...)
     shape <- structure(list(Message = structure(logical(0), tags = list(locationName = "message", 
         type = "string")), Version = structure(logical(0), tags = list(type = "string"))), 
         tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+update_connector_definition_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(ConnectorDefinitionId = structure(logical(0), 
+        tags = list(location = "uri", locationName = "ConnectorDefinitionId", 
+            type = "string")), Name = structure(logical(0), tags = list(type = "string"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+update_connector_definition_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 

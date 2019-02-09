@@ -5,7 +5,7 @@
 \title{Removes the null version (if there is one) of an object and inserts a delete marker, which becomes the latest version of the object}
 \usage{
 delete_object(Bucket, Key, MFA = NULL, VersionId = NULL,
-  RequestPayer = NULL)
+  RequestPayer = NULL, BypassGovernanceRetention = NULL)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -17,6 +17,8 @@ delete_object(Bucket, Key, MFA = NULL, VersionId = NULL,
 \item{VersionId}{VersionId used to reference a specific version of the object.}
 
 \item{RequestPayer}{}
+
+\item{BypassGovernanceRetention}{Indicates whether S3 Object Lock should bypass Governance-mode restrictions to process this operation.}
 }
 \description{
 Removes the null version (if there is one) of an object and inserts a delete marker, which becomes the latest version of the object. If there isn't a null version, Amazon S3 does not remove any objects.
@@ -27,7 +29,8 @@ Removes the null version (if there is one) of an object and inserts a delete mar
   Key = "string",
   MFA = "string",
   VersionId = "string",
-  RequestPayer = "requester"
+  RequestPayer = "requester",
+  BypassGovernanceRetention = TRUE|FALSE
 )
 }
 }

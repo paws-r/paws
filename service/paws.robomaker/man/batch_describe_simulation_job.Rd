@@ -4,11 +4,7 @@
 \alias{batch_describe_simulation_job}
 \title{Describes one or more simulation jobs}
 \usage{
-batch_describe_simulation_job(
-  jobs = list(
-    "string"
-  )
-)
+batch_describe_simulation_job(jobs)
 }
 \arguments{
 \item{jobs}{[required] A list of Amazon Resource Names (ARNs) of simulation jobs to describe.}
@@ -16,6 +12,12 @@ batch_describe_simulation_job(
 \description{
 Describes one or more simulation jobs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{batch_describe_simulation_job(
+  jobs = list(
+    "string"
+  )
+)
 }
+}
+

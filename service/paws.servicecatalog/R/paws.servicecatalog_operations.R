@@ -375,13 +375,29 @@ copy_product <- function (AcceptLanguage = NULL, SourceProductArn,
 #' 
 #' :   Specify the `RoleArn` property as follows:
 #' 
-#'     \\\"RoleArn\\\" : \\\"arn:aws:iam::123456789012:role/LaunchRole\\\"
+#'     `{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"}`
+#' 
+#'     You cannot have both a `LAUNCH` and a `STACKSET` constraint.
+#' 
+#'     You also cannot have more than one `LAUNCH` constraint on a product and portfolio.
 #' 
 #' NOTIFICATION
 #' 
 #' :   Specify the `NotificationArns` property as follows:
 #' 
-#'     \\\"NotificationArns\\\" : &#91;\\\"arn:aws:sns:us-east-1:123456789012:Topic\\\"&#93;
+#'     `{"NotificationArns" : ["arn:aws:sns:us-east-1:123456789012:Topic"]}`
+#' 
+#' STACKSET
+#' 
+#' :   Specify the `Parameters` property as follows:
+#' 
+#'     `{"Version": "String", "Properties": {"AccountList": [ "String" ], "RegionList": [ "String" ], "AdminRole": "String", "ExecutionRole": "String"}}`
+#' 
+#'     You cannot have both a `LAUNCH` and a `STACKSET` constraint.
+#' 
+#'     You also cannot have more than one `STACKSET` constraint on a product and portfolio.
+#' 
+#'     Products with a `STACKSET` constraint will launch an AWS CloudFormation stack set.
 #' 
 #' TEMPLATE
 #' 
@@ -391,6 +407,8 @@ copy_product <- function (AcceptLanguage = NULL, SourceProductArn,
 #' -   `LAUNCH`
 #' 
 #' -   `NOTIFICATION`
+#' 
+#' -   `STACKSET`
 #' 
 #' -   `TEMPLATE`
 #' @param Description The description of the constraint.
@@ -1764,7 +1782,7 @@ disassociate_tag_option_from_resource <- function (ResourceId,
 #'
 #' Enable portfolio sharing feature through AWS Organizations. This API will allow Service Catalog to receive updates on your organization in order to sync your shares with the current structure. This API can only be called by the master account in the organization.
 #' 
-#' By calling this API Service Catalog will use FAS credentials to call organizations:EnableAWSServiceAccess so that your shares can be in sync with any changes in your AWS Organizations.
+#' By calling this API Service Catalog will make a call to organizations:EnableAWSServiceAccess on your behalf so that your shares can be in sync with any changes in your AWS Organizations structure.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -2566,6 +2584,18 @@ list_tag_options <- function (Filters = NULL, PageSize = NULL,
 #'       Value = "string"
 #'     )
 #'   ),
+#'   ProvisioningPreferences = list(
+#'     StackSetAccounts = list(
+#'       "string"
+#'     ),
+#'     StackSetRegions = list(
+#'       "string"
+#'     ),
+#'     StackSetFailureToleranceCount = 123,
+#'     StackSetFailureTolerancePercentage = 123,
+#'     StackSetMaxConcurrencyCount = 123,
+#'     StackSetMaxConcurrencyPercentage = 123
+#'   ),
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
@@ -2591,6 +2621,7 @@ list_tag_options <- function (Filters = NULL, PageSize = NULL,
 #' @param PathId The path identifier of the product. This value is optional if the product has a default path, and required if the product has more than one path. To list the paths for a product, use ListLaunchPaths.
 #' @param ProvisionedProductName &#91;required&#93; A user-friendly name for the provisioned product. This value must be unique for the AWS account and cannot be updated after the product is provisioned.
 #' @param ProvisioningParameters Parameters specified by the administrator that are required for provisioning the product.
+#' @param ProvisioningPreferences An object that contains information about the provisioning preferences for a stack set.
 #' @param Tags One or more tags.
 #' @param NotificationArns Passed to CloudFormation. The SNS topic ARNs to which to publish stack-related events.
 #' @param ProvisionToken &#91;required&#93; An idempotency token that uniquely identifies the provisioning request.
@@ -2598,16 +2629,16 @@ list_tag_options <- function (Filters = NULL, PageSize = NULL,
 #' @export
 provision_product <- function (AcceptLanguage = NULL, ProductId, 
     ProvisioningArtifactId, PathId = NULL, ProvisionedProductName, 
-    ProvisioningParameters = NULL, Tags = NULL, NotificationArns = NULL, 
-    ProvisionToken) 
+    ProvisioningParameters = NULL, ProvisioningPreferences = NULL, 
+    Tags = NULL, NotificationArns = NULL, ProvisionToken) 
 {
     op <- new_operation(name = "ProvisionProduct", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- provision_product_input(AcceptLanguage = AcceptLanguage, 
         ProductId = ProductId, ProvisioningArtifactId = ProvisioningArtifactId, 
         PathId = PathId, ProvisionedProductName = ProvisionedProductName, 
-        ProvisioningParameters = ProvisioningParameters, Tags = Tags, 
-        NotificationArns = NotificationArns, ProvisionToken = ProvisionToken)
+        ProvisioningParameters = ProvisioningParameters, ProvisioningPreferences = ProvisioningPreferences, 
+        Tags = Tags, NotificationArns = NotificationArns, ProvisionToken = ProvisionToken)
     output <- provision_product_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -3102,6 +3133,19 @@ update_product <- function (AcceptLanguage = NULL, Id, Name = NULL,
 #'       UsePreviousValue = TRUE|FALSE
 #'     )
 #'   ),
+#'   ProvisioningPreferences = list(
+#'     StackSetAccounts = list(
+#'       "string"
+#'     ),
+#'     StackSetRegions = list(
+#'       "string"
+#'     ),
+#'     StackSetFailureToleranceCount = 123,
+#'     StackSetFailureTolerancePercentage = 123,
+#'     StackSetMaxConcurrencyCount = 123,
+#'     StackSetMaxConcurrencyPercentage = 123,
+#'     StackSetOperationType = "CREATE"|"UPDATE"|"DELETE"
+#'   ),
 #'   UpdateToken = "string"
 #' )
 #' ```
@@ -3119,13 +3163,15 @@ update_product <- function (AcceptLanguage = NULL, Id, Name = NULL,
 #' @param ProvisioningArtifactId The identifier of the provisioning artifact.
 #' @param PathId The new path identifier. This value is optional if the product has a default path, and required if the product has more than one path.
 #' @param ProvisioningParameters The new parameters.
+#' @param ProvisioningPreferences An object that contains information about the provisioning preferences for a stack set.
 #' @param UpdateToken &#91;required&#93; The idempotency token that uniquely identifies the provisioning update request.
 #'
 #' @export
 update_provisioned_product <- function (AcceptLanguage = NULL, 
     ProvisionedProductName = NULL, ProvisionedProductId = NULL, 
     ProductId = NULL, ProvisioningArtifactId = NULL, PathId = NULL, 
-    ProvisioningParameters = NULL, UpdateToken) 
+    ProvisioningParameters = NULL, ProvisioningPreferences = NULL, 
+    UpdateToken) 
 {
     op <- new_operation(name = "UpdateProvisionedProduct", http_method = "POST", 
         http_path = "/", paginator = list())
@@ -3133,7 +3179,7 @@ update_provisioned_product <- function (AcceptLanguage = NULL,
         ProvisionedProductName = ProvisionedProductName, ProvisionedProductId = ProvisionedProductId, 
         ProductId = ProductId, ProvisioningArtifactId = ProvisioningArtifactId, 
         PathId = PathId, ProvisioningParameters = ProvisioningParameters, 
-        UpdateToken = UpdateToken)
+        ProvisioningPreferences = ProvisioningPreferences, UpdateToken = UpdateToken)
     output <- update_provisioned_product_output()
     svc <- service()
     request <- new_request(svc, op, input, output)

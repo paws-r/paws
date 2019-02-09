@@ -7,7 +7,7 @@
 delete_application(applicationName)
 }
 \arguments{
-\item{applicationName}{[required] The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.}
+\item{applicationName}{[required] The name of an AWS CodeDeploy application associated with the IAM user or AWS account.}
 }
 \description{
 Deletes an application.

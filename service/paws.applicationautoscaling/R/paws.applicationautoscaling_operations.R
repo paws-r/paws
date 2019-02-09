@@ -41,7 +41,7 @@ NULL
 #' 
 #' -   Amazon SageMaker endpoint variants - The resource type is `variant` and the unique identifier is the resource ID. Example: `endpoint/my-end-point/variant/KMeansClustering`.
 #' 
-#' -   Custom resources are not supported with a resource type. This parameter must specify the `OutputValue` from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider.
+#' -   Custom resources are not supported with a resource type. This parameter must specify the `OutputValue` from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider. More information is available in our [GitHub repository](https://github.com/aws/aws-auto-scaling-custom-resource).
 #' @param ScalableDimension &#91;required&#93; The scalable dimension. This string consists of the service namespace, resource type, and scaling property.
 #' 
 #' -   `ecs:service:DesiredCount` - The desired task count of an ECS service.
@@ -60,7 +60,7 @@ NULL
 #' 
 #' -   `dynamodb:index:WriteCapacityUnits` - The provisioned write capacity for a DynamoDB global secondary index.
 #' 
-#' -   `rds:cluster:ReadReplicaCount` - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+#' -   `rds:cluster:ReadReplicaCount` - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition and Aurora PostgreSQL-compatible edition.
 #' 
 #' -   `sagemaker:variant:DesiredInstanceCount` - The number of EC2 instances for an Amazon SageMaker model endpoint variant.
 #' 
@@ -126,7 +126,7 @@ delete_scaling_policy <- function (PolicyName, ServiceNamespace,
 #' 
 #' -   Amazon SageMaker endpoint variants - The resource type is `variant` and the unique identifier is the resource ID. Example: `endpoint/my-end-point/variant/KMeansClustering`.
 #' 
-#' -   Custom resources are not supported with a resource type. This parameter must specify the `OutputValue` from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider.
+#' -   Custom resources are not supported with a resource type. This parameter must specify the `OutputValue` from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider. More information is available in our [GitHub repository](https://github.com/aws/aws-auto-scaling-custom-resource).
 #' @param ScalableDimension The scalable dimension. This string consists of the service namespace, resource type, and scaling property.
 #' 
 #' -   `ecs:service:DesiredCount` - The desired task count of an ECS service.
@@ -145,7 +145,7 @@ delete_scaling_policy <- function (PolicyName, ServiceNamespace,
 #' 
 #' -   `dynamodb:index:WriteCapacityUnits` - The provisioned write capacity for a DynamoDB global secondary index.
 #' 
-#' -   `rds:cluster:ReadReplicaCount` - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+#' -   `rds:cluster:ReadReplicaCount` - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition and Aurora PostgreSQL-compatible edition.
 #' 
 #' -   `sagemaker:variant:DesiredInstanceCount` - The number of EC2 instances for an Amazon SageMaker model endpoint variant.
 #' 
@@ -203,7 +203,7 @@ delete_scheduled_action <- function (ServiceNamespace, ScheduledActionName,
 #' 
 #' -   Amazon SageMaker endpoint variants - The resource type is `variant` and the unique identifier is the resource ID. Example: `endpoint/my-end-point/variant/KMeansClustering`.
 #' 
-#' -   Custom resources are not supported with a resource type. This parameter must specify the `OutputValue` from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider.
+#' -   Custom resources are not supported with a resource type. This parameter must specify the `OutputValue` from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider. More information is available in our [GitHub repository](https://github.com/aws/aws-auto-scaling-custom-resource).
 #' @param ScalableDimension &#91;required&#93; The scalable dimension associated with the scalable target. This string consists of the service namespace, resource type, and scaling property.
 #' 
 #' -   `ecs:service:DesiredCount` - The desired task count of an ECS service.
@@ -222,7 +222,7 @@ delete_scheduled_action <- function (ServiceNamespace, ScheduledActionName,
 #' 
 #' -   `dynamodb:index:WriteCapacityUnits` - The provisioned write capacity for a DynamoDB global secondary index.
 #' 
-#' -   `rds:cluster:ReadReplicaCount` - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+#' -   `rds:cluster:ReadReplicaCount` - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition and Aurora PostgreSQL-compatible edition.
 #' 
 #' -   `sagemaker:variant:DesiredInstanceCount` - The number of EC2 instances for an Amazon SageMaker model endpoint variant.
 #' 
@@ -292,7 +292,7 @@ deregister_scalable_target <- function (ServiceNamespace, ResourceId,
 #' 
 #' -   Amazon SageMaker endpoint variants - The resource type is `variant` and the unique identifier is the resource ID. Example: `endpoint/my-end-point/variant/KMeansClustering`.
 #' 
-#' -   Custom resources are not supported with a resource type. This parameter must specify the `OutputValue` from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider.
+#' -   Custom resources are not supported with a resource type. This parameter must specify the `OutputValue` from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider. More information is available in our [GitHub repository](https://github.com/aws/aws-auto-scaling-custom-resource).
 #' @param ScalableDimension The scalable dimension associated with the scalable target. This string consists of the service namespace, resource type, and scaling property. If you specify a scalable dimension, you must also specify a resource ID.
 #' 
 #' -   `ecs:service:DesiredCount` - The desired task count of an ECS service.
@@ -311,7 +311,7 @@ deregister_scalable_target <- function (ServiceNamespace, ResourceId,
 #' 
 #' -   `dynamodb:index:WriteCapacityUnits` - The provisioned write capacity for a DynamoDB global secondary index.
 #' 
-#' -   `rds:cluster:ReadReplicaCount` - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+#' -   `rds:cluster:ReadReplicaCount` - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition and Aurora PostgreSQL-compatible edition.
 #' 
 #' -   `sagemaker:variant:DesiredInstanceCount` - The number of EC2 instances for an Amazon SageMaker model endpoint variant.
 #' 
@@ -382,7 +382,7 @@ describe_scalable_targets <- function (ServiceNamespace, ResourceIds = NULL,
 #' 
 #' -   Amazon SageMaker endpoint variants - The resource type is `variant` and the unique identifier is the resource ID. Example: `endpoint/my-end-point/variant/KMeansClustering`.
 #' 
-#' -   Custom resources are not supported with a resource type. This parameter must specify the `OutputValue` from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider.
+#' -   Custom resources are not supported with a resource type. This parameter must specify the `OutputValue` from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider. More information is available in our [GitHub repository](https://github.com/aws/aws-auto-scaling-custom-resource).
 #' @param ScalableDimension The scalable dimension. This string consists of the service namespace, resource type, and scaling property. If you specify a scalable dimension, you must also specify a resource ID.
 #' 
 #' -   `ecs:service:DesiredCount` - The desired task count of an ECS service.
@@ -401,7 +401,7 @@ describe_scalable_targets <- function (ServiceNamespace, ResourceIds = NULL,
 #' 
 #' -   `dynamodb:index:WriteCapacityUnits` - The provisioned write capacity for a DynamoDB global secondary index.
 #' 
-#' -   `rds:cluster:ReadReplicaCount` - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+#' -   `rds:cluster:ReadReplicaCount` - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition and Aurora PostgreSQL-compatible edition.
 #' 
 #' -   `sagemaker:variant:DesiredInstanceCount` - The number of EC2 instances for an Amazon SageMaker model endpoint variant.
 #' 
@@ -478,7 +478,7 @@ describe_scaling_activities <- function (ServiceNamespace, ResourceId = NULL,
 #' 
 #' -   Amazon SageMaker endpoint variants - The resource type is `variant` and the unique identifier is the resource ID. Example: `endpoint/my-end-point/variant/KMeansClustering`.
 #' 
-#' -   Custom resources are not supported with a resource type. This parameter must specify the `OutputValue` from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider.
+#' -   Custom resources are not supported with a resource type. This parameter must specify the `OutputValue` from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider. More information is available in our [GitHub repository](https://github.com/aws/aws-auto-scaling-custom-resource).
 #' @param ScalableDimension The scalable dimension. This string consists of the service namespace, resource type, and scaling property. If you specify a scalable dimension, you must also specify a resource ID.
 #' 
 #' -   `ecs:service:DesiredCount` - The desired task count of an ECS service.
@@ -497,7 +497,7 @@ describe_scaling_activities <- function (ServiceNamespace, ResourceId = NULL,
 #' 
 #' -   `dynamodb:index:WriteCapacityUnits` - The provisioned write capacity for a DynamoDB global secondary index.
 #' 
-#' -   `rds:cluster:ReadReplicaCount` - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+#' -   `rds:cluster:ReadReplicaCount` - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition and Aurora PostgreSQL-compatible edition.
 #' 
 #' -   `sagemaker:variant:DesiredInstanceCount` - The number of EC2 instances for an Amazon SageMaker model endpoint variant.
 #' 
@@ -574,7 +574,7 @@ describe_scaling_policies <- function (PolicyNames = NULL, ServiceNamespace,
 #' 
 #' -   Amazon SageMaker endpoint variants - The resource type is `variant` and the unique identifier is the resource ID. Example: `endpoint/my-end-point/variant/KMeansClustering`.
 #' 
-#' -   Custom resources are not supported with a resource type. This parameter must specify the `OutputValue` from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider.
+#' -   Custom resources are not supported with a resource type. This parameter must specify the `OutputValue` from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider. More information is available in our [GitHub repository](https://github.com/aws/aws-auto-scaling-custom-resource).
 #' @param ScalableDimension The scalable dimension. This string consists of the service namespace, resource type, and scaling property. If you specify a scalable dimension, you must also specify a resource ID.
 #' 
 #' -   `ecs:service:DesiredCount` - The desired task count of an ECS service.
@@ -593,7 +593,7 @@ describe_scaling_policies <- function (PolicyNames = NULL, ServiceNamespace,
 #' 
 #' -   `dynamodb:index:WriteCapacityUnits` - The provisioned write capacity for a DynamoDB global secondary index.
 #' 
-#' -   `rds:cluster:ReadReplicaCount` - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+#' -   `rds:cluster:ReadReplicaCount` - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition and Aurora PostgreSQL-compatible edition.
 #' 
 #' -   `sagemaker:variant:DesiredInstanceCount` - The number of EC2 instances for an Amazon SageMaker model endpoint variant.
 #' 
@@ -625,7 +625,7 @@ describe_scheduled_actions <- function (ScheduledActionNames = NULL,
 #'
 #' Creates or updates a policy for an Application Auto Scaling scalable target.
 #' 
-#' Each scalable target is identified by a service namespace, resource ID, and scalable dimension. A scaling policy applies to the scalable target identified by those three attributes. You cannot create a scaling policy until you register the scalable target using RegisterScalableTarget.
+#' Each scalable target is identified by a service namespace, resource ID, and scalable dimension. A scaling policy applies to the scalable target identified by those three attributes. You cannot create a scaling policy until you have registered the resource as a scalable target using RegisterScalableTarget.
 #' 
 #' To update a policy, specify its policy name and the parameters that you want to change. Any parameters that you don\'t specify are not changed by this update request.
 #' 
@@ -697,7 +697,7 @@ describe_scheduled_actions <- function (ScheduledActionNames = NULL,
 #' 
 #' -   Amazon SageMaker endpoint variants - The resource type is `variant` and the unique identifier is the resource ID. Example: `endpoint/my-end-point/variant/KMeansClustering`.
 #' 
-#' -   Custom resources are not supported with a resource type. This parameter must specify the `OutputValue` from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider.
+#' -   Custom resources are not supported with a resource type. This parameter must specify the `OutputValue` from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider. More information is available in our [GitHub repository](https://github.com/aws/aws-auto-scaling-custom-resource).
 #' @param ScalableDimension &#91;required&#93; The scalable dimension. This string consists of the service namespace, resource type, and scaling property.
 #' 
 #' -   `ecs:service:DesiredCount` - The desired task count of an ECS service.
@@ -716,14 +716,14 @@ describe_scheduled_actions <- function (ScheduledActionNames = NULL,
 #' 
 #' -   `dynamodb:index:WriteCapacityUnits` - The provisioned write capacity for a DynamoDB global secondary index.
 #' 
-#' -   `rds:cluster:ReadReplicaCount` - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+#' -   `rds:cluster:ReadReplicaCount` - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition and Aurora PostgreSQL-compatible edition.
 #' 
 #' -   `sagemaker:variant:DesiredInstanceCount` - The number of EC2 instances for an Amazon SageMaker model endpoint variant.
 #' 
 #' -   `custom-resource:ResourceType:Property` - The scalable dimension for a custom resource provided by your own application or service.
-#' @param PolicyType The policy type. This parameter is required if you are creating a policy.
+#' @param PolicyType The policy type. This parameter is required if you are creating a scaling policy.
 #' 
-#' For DynamoDB, only `TargetTrackingScaling` is supported. For Amazon ECS, Spot Fleet, and Amazon RDS, both `StepScaling` and `TargetTrackingScaling` are supported. For any other service, only `StepScaling` is supported.
+#' For information on which services do not support `StepScaling` or `TargetTrackingScaling`, see [Step Scaling Policies for Application Auto Scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html) and [Target Tracking Scaling Policies for Application Auto Scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html) in the *Application Auto Scaling User Guide*.
 #' @param StepScalingPolicyConfiguration A step scaling policy.
 #' 
 #' This parameter is required if you are creating a policy and the policy type is `StepScaling`.
@@ -798,7 +798,7 @@ put_scaling_policy <- function (PolicyName, ServiceNamespace,
 #'
 #' Creates or updates a scheduled action for an Application Auto Scaling scalable target.
 #' 
-#' Each scalable target is identified by a service namespace, resource ID, and scalable dimension. A scheduled action applies to the scalable target identified by those three attributes. You cannot create a scheduled action until you register the scalable target using RegisterScalableTarget.
+#' Each scalable target is identified by a service namespace, resource ID, and scalable dimension. A scheduled action applies to the scalable target identified by those three attributes. You cannot create a scheduled action until you have registered the resource as a scalable target using RegisterScalableTarget.
 #' 
 #' To update an action, specify its name and the parameters that you want to change. If you don\'t specify start and end times, the old values are deleted. Any other parameters that you don\'t specify are not changed by this update request.
 #' 
@@ -824,17 +824,17 @@ put_scaling_policy <- function (PolicyName, ServiceNamespace,
 #' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service that provides the resource or `custom-resource` for a resource provided by your own application or service. For more information, see [AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces) in the *Amazon Web Services General Reference*.
 #' @param Schedule The schedule for this action. The following formats are supported:
 #' 
-#' -   At expressions - `at(yyyy-mm-ddThh:mm:ss)yyyy-mm-ddThh:mm:ss)`
+#' -   At expressions - \"`at(yyyy-mm-ddThh:mm:ss)yyyy-mm-ddThh:mm:ss)`\"
 #' 
-#' -   Rate expressions - `rate(value unit)value unit)`
+#' -   Rate expressions - \"`rate(value unit)value unit)`\"
 #' 
-#' -   Cron expressions - `cron(fields)fields)`
+#' -   Cron expressions - \"`cron(fields)fields)`\"
 #' 
 #' At expressions are useful for one-time schedules. Specify the time, in UTC.
 #' 
 #' For rate expressions, *value* is a positive integer and *unit* is `minute` \| `minutes` \| `hour` \| `hours` \| `day` \| `days`.
 #' 
-#' For more information about cron expressions, see [Cron Expressions](http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions) in the *Amazon CloudWatch Events User Guide*.
+#' For more information about cron expressions, see [Cron Expressions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions) in the *Amazon CloudWatch Events User Guide*.
 #' @param ScheduledActionName &#91;required&#93; The name of the scheduled action.
 #' @param ResourceId &#91;required&#93; The identifier of the resource associated with the scheduled action. This string consists of the resource type and unique identifier.
 #' 
@@ -854,7 +854,7 @@ put_scaling_policy <- function (PolicyName, ServiceNamespace,
 #' 
 #' -   Amazon SageMaker endpoint variants - The resource type is `variant` and the unique identifier is the resource ID. Example: `endpoint/my-end-point/variant/KMeansClustering`.
 #' 
-#' -   Custom resources are not supported with a resource type. This parameter must specify the `OutputValue` from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider.
+#' -   Custom resources are not supported with a resource type. This parameter must specify the `OutputValue` from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider. More information is available in our [GitHub repository](https://github.com/aws/aws-auto-scaling-custom-resource).
 #' @param ScalableDimension The scalable dimension. This parameter is required if you are creating a scheduled action. This string consists of the service namespace, resource type, and scaling property.
 #' 
 #' -   `ecs:service:DesiredCount` - The desired task count of an ECS service.
@@ -873,7 +873,7 @@ put_scaling_policy <- function (PolicyName, ServiceNamespace,
 #' 
 #' -   `dynamodb:index:WriteCapacityUnits` - The provisioned write capacity for a DynamoDB global secondary index.
 #' 
-#' -   `rds:cluster:ReadReplicaCount` - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+#' -   `rds:cluster:ReadReplicaCount` - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition and Aurora PostgreSQL-compatible edition.
 #' 
 #' -   `sagemaker:variant:DesiredInstanceCount` - The number of EC2 instances for an Amazon SageMaker model endpoint variant.
 #' 
@@ -902,9 +902,11 @@ put_scheduled_action <- function (ServiceNamespace, Schedule = NULL,
 
 #' Registers or updates a scalable target
 #'
-#' Registers or updates a scalable target. A scalable target is a resource that Application Auto Scaling can scale out or scale in. After you have registered a scalable target, you can use this operation to update the minimum and maximum values for its scalable dimension.
+#' Registers or updates a scalable target. A scalable target is a resource that Application Auto Scaling can scale in and scale out. Each scalable target has a resource ID, scalable dimension, and namespace, as well as values for minimum and maximum capacity.
 #' 
-#' After you register a scalable target, you can create and apply scaling policies using PutScalingPolicy. You can view the scaling policies for a service namespace using DescribeScalableTargets. If you no longer need a scalable target, you can deregister it using DeregisterScalableTarget.
+#' After you register a scalable target, you do not need to register it again to use other Application Auto Scaling operations. To see which resources have been registered, use DescribeScalableTargets. You can also view the scaling policies for a service namespace using DescribeScalableTargets.
+#' 
+#' If you no longer need a scalable target, you can deregister it using DeregisterScalableTarget.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -937,7 +939,7 @@ put_scheduled_action <- function (ServiceNamespace, Schedule = NULL,
 #' 
 #' -   Amazon SageMaker endpoint variants - The resource type is `variant` and the unique identifier is the resource ID. Example: `endpoint/my-end-point/variant/KMeansClustering`.
 #' 
-#' -   Custom resources are not supported with a resource type. This parameter must specify the `OutputValue` from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider.
+#' -   Custom resources are not supported with a resource type. This parameter must specify the `OutputValue` from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider. More information is available in our [GitHub repository](https://github.com/aws/aws-auto-scaling-custom-resource).
 #' @param ScalableDimension &#91;required&#93; The scalable dimension associated with the scalable target. This string consists of the service namespace, resource type, and scaling property.
 #' 
 #' -   `ecs:service:DesiredCount` - The desired task count of an ECS service.
@@ -956,14 +958,14 @@ put_scheduled_action <- function (ServiceNamespace, Schedule = NULL,
 #' 
 #' -   `dynamodb:index:WriteCapacityUnits` - The provisioned write capacity for a DynamoDB global secondary index.
 #' 
-#' -   `rds:cluster:ReadReplicaCount` - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+#' -   `rds:cluster:ReadReplicaCount` - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition and Aurora PostgreSQL-compatible edition.
 #' 
 #' -   `sagemaker:variant:DesiredInstanceCount` - The number of EC2 instances for an Amazon SageMaker model endpoint variant.
 #' 
 #' -   `custom-resource:ResourceType:Property` - The scalable dimension for a custom resource provided by your own application or service.
-#' @param MinCapacity The minimum value to scale to in response to a scale in event. This parameter is required if you are registering a scalable target.
-#' @param MaxCapacity The maximum value to scale to in response to a scale out event. This parameter is required if you are registering a scalable target.
-#' @param RoleARN Application Auto Scaling creates a service-linked role that grants it permissions to modify the scalable target on your behalf. For more information, see [Service-Linked Roles for Application Auto Scaling](http://docs.aws.amazon.com/autoscaling/application/userguide/application-autoscaling-service-linked-roles.html).
+#' @param MinCapacity The minimum value to scale to in response to a scale in event. This parameter is required to register a scalable target.
+#' @param MaxCapacity The maximum value to scale to in response to a scale out event. This parameter is required to register a scalable target.
+#' @param RoleARN Application Auto Scaling creates a service-linked role that grants it permissions to modify the scalable target on your behalf. For more information, see [Service-Linked Roles for Application Auto Scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-service-linked-roles.html).
 #' 
 #' For resources that are not supported using a service-linked role, this parameter is required and must specify the ARN of an IAM role that allows Application Auto Scaling to modify the scalable target on your behalf.
 #'

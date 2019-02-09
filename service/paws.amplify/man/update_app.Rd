@@ -4,28 +4,10 @@
 \alias{update_app}
 \title{Updates an existing Amplify App}
 \usage{
-update_app(
-  appId = "string",
-  name = "string",
-  description = "string",
-  platform = "IOS"|"ANDROID"|"WEB"|"REACT_NATIVE",
-  iamServiceRoleArn = "string",
-  environmentVariables = list(
-    "string"
-  ),
-  enableBranchAutoBuild = TRUE|FALSE,
-  enableBasicAuth = TRUE|FALSE,
-  basicAuthCredentials = "string",
-  customRules = list(
-    list(
-      source = "string",
-      target = "string",
-      status = "string",
-      condition = "string"
-    )
-  ),
-  buildSpec = "string"
-)
+update_app(appId, name = NULL, description = NULL, platform = NULL,
+  iamServiceRoleArn = NULL, environmentVariables = NULL,
+  enableBranchAutoBuild = NULL, enableBasicAuth = NULL,
+  basicAuthCredentials = NULL, customRules = NULL, buildSpec = NULL)
 }
 \arguments{
 \item{appId}{[required] Unique Id for an Amplify App.}
@@ -53,6 +35,29 @@ update_app(
 \description{
 Updates an existing Amplify App.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_app(
+  appId = "string",
+  name = "string",
+  description = "string",
+  platform = "IOS"|"ANDROID"|"WEB"|"REACT_NATIVE",
+  iamServiceRoleArn = "string",
+  environmentVariables = list(
+    "string"
+  ),
+  enableBranchAutoBuild = TRUE|FALSE,
+  enableBasicAuth = TRUE|FALSE,
+  basicAuthCredentials = "string",
+  customRules = list(
+    list(
+      source = "string",
+      target = "string",
+      status = "string",
+      condition = "string"
+    )
+  ),
+  buildSpec = "string"
+)
 }
+}
+

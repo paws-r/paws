@@ -4,11 +4,8 @@
 \alias{list_task_executions}
 \title{Returns a list of executed tasks}
 \usage{
-list_task_executions(
-  TaskArn = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_task_executions(TaskArn = NULL, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{TaskArn}{The Amazon Resource Name (ARN) of the task whose tasks you want to list.}
@@ -20,6 +17,12 @@ list_task_executions(
 \description{
 Returns a list of executed tasks.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_task_executions(
+  TaskArn = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

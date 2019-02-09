@@ -4,11 +4,7 @@
 \alias{list_branches}
 \title{Lists branches for an Amplify App}
 \usage{
-list_branches(
-  appId = "string",
-  nextToken = "string",
-  maxResults = 123
-)
+list_branches(appId, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{appId}{[required] Unique Id for an Amplify App.}
@@ -20,6 +16,12 @@ list_branches(
 \description{
 Lists branches for an Amplify App.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_branches(
+  appId = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

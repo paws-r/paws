@@ -2,7 +2,7 @@
 % Please edit documentation in R/paws.s3_operations.R
 \name{delete_bucket_cors}
 \alias{delete_bucket_cors}
-\title{Deletes the cors configuration information set for the bucket}
+\title{Deletes the CORS configuration information set for the bucket}
 \usage{
 delete_bucket_cors(Bucket)
 }
@@ -10,7 +10,7 @@ delete_bucket_cors(Bucket)
 \item{Bucket}{[required]}
 }
 \description{
-Deletes the cors configuration information set for the bucket.
+Deletes the CORS configuration information set for the bucket.
 }
 \section{Accepted Parameters}{
 \preformatted{delete_bucket_cors(

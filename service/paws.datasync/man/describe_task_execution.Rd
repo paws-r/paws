@@ -4,9 +4,7 @@
 \alias{describe_task_execution}
 \title{Returns detailed metadata about a task that is being executed}
 \usage{
-describe_task_execution(
-  TaskExecutionArn = "string"
-)
+describe_task_execution(TaskExecutionArn)
 }
 \arguments{
 \item{TaskExecutionArn}{[required] The Amazon Resource Name (ARN) of the task that is being executed.}
@@ -14,6 +12,10 @@ describe_task_execution(
 \description{
 Returns detailed metadata about a task that is being executed.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_task_execution(
+  TaskExecutionArn = "string"
+)
 }
+}
+

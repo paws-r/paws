@@ -3,9 +3,76 @@
 #' @importFrom paws.common new_operation new_request send_request
 NULL
 
-#' The CreateReplicationJob API is used to create a ReplicationJob to replicate a server on AWS
+#' Creates an application
 #'
-#' The CreateReplicationJob API is used to create a ReplicationJob to replicate a server on AWS. Call this API to first create a ReplicationJob, which will then schedule periodic ReplicationRuns to replicate your server to AWS. Each ReplicationRun will result in the creation of an AWS AMI.
+#' Creates an application. An application consists of one or more server groups. Each server group contain one or more servers.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' create_app(
+#'   name = "string",
+#'   description = "string",
+#'   roleName = "string",
+#'   clientToken = "string",
+#'   serverGroups = list(
+#'     list(
+#'       serverGroupId = "string",
+#'       name = "string",
+#'       serverList = list(
+#'         list(
+#'           serverId = "string",
+#'           serverType = "VIRTUAL_MACHINE",
+#'           vmServer = list(
+#'             vmServerAddress = list(
+#'               vmManagerId = "string",
+#'               vmId = "string"
+#'             ),
+#'             vmName = "string",
+#'             vmManagerName = "string",
+#'             vmManagerType = "VSPHERE"|"SCVMM"|"HYPERV-MANAGER",
+#'             vmPath = "string"
+#'           ),
+#'           replicationJobId = "string",
+#'           replicationJobTerminated = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @param name Name of the new application.
+#' @param description Description of the new application
+#' @param roleName Name of service role in customer\'s account to be used by AWS SMS.
+#' @param clientToken A unique, case-sensitive identifier you provide to ensure idempotency of application creation.
+#' @param serverGroups List of server groups to include in the application.
+#' @param tags List of tags to be associated with the application.
+#'
+#' @export
+create_app <- function (name = NULL, description = NULL, roleName = NULL, 
+    clientToken = NULL, serverGroups = NULL, tags = NULL) 
+{
+    op <- new_operation(name = "CreateApp", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_app_input(name = name, description = description, 
+        roleName = roleName, clientToken = clientToken, serverGroups = serverGroups, 
+        tags = tags)
+    output <- create_app_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a replication job
+#'
+#' Creates a replication job. The replication job schedules periodic replication runs to replicate your server to AWS. Each replication run creates an Amazon Machine Image (AMI).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -13,28 +80,50 @@ NULL
 #'   serverId = "string",
 #'   seedReplicationTime = as.POSIXct("2015-01-01"),
 #'   frequency = 123,
+#'   runOnce = TRUE|FALSE,
 #'   licenseType = "AWS"|"BYOL",
 #'   roleName = "string",
-#'   description = "string"
+#'   description = "string",
+#'   numberOfRecentAmisToKeep = 123,
+#'   encrypted = TRUE|FALSE,
+#'   kmsKeyId = "string"
 #' )
 #' ```
 #'
-#' @param serverId &#91;required&#93; 
-#' @param seedReplicationTime &#91;required&#93; 
-#' @param frequency &#91;required&#93; 
-#' @param licenseType 
-#' @param roleName 
-#' @param description 
+#' @param serverId &#91;required&#93; The identifier of the server.
+#' @param seedReplicationTime &#91;required&#93; The seed replication time.
+#' @param frequency The time between consecutive replication runs, in hours.
+#' @param runOnce 
+#' @param licenseType The license type to be used for the AMI created by a successful replication run.
+#' @param roleName The name of the IAM role to be used by the AWS SMS.
+#' @param description The description of the replication job.
+#' @param numberOfRecentAmisToKeep The maximum number of SMS-created AMIs to retain. The oldest will be deleted once the maximum number is reached and a new AMI is created.
+#' @param encrypted When *true*, the replication job produces encrypted AMIs. See also `KmsKeyId` below.
+#' @param kmsKeyId KMS key ID for replication jobs that produce encrypted AMIs. Can be any of the following:
+#' 
+#' -   KMS key ID
+#' 
+#' -   KMS key alias
+#' 
+#' -   ARN referring to KMS key ID
+#' 
+#' -   ARN referring to KMS key alias
+#' 
+#' If encrypted is *true* but a KMS key id is not specified, the customer\'s default KMS key for EBS is used.
 #'
 #' @export
 create_replication_job <- function (serverId, seedReplicationTime, 
-    frequency, licenseType = NULL, roleName = NULL, description = NULL) 
+    frequency = NULL, runOnce = NULL, licenseType = NULL, roleName = NULL, 
+    description = NULL, numberOfRecentAmisToKeep = NULL, encrypted = NULL, 
+    kmsKeyId = NULL) 
 {
     op <- new_operation(name = "CreateReplicationJob", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- create_replication_job_input(serverId = serverId, 
         seedReplicationTime = seedReplicationTime, frequency = frequency, 
-        licenseType = licenseType, roleName = roleName, description = description)
+        runOnce = runOnce, licenseType = licenseType, roleName = roleName, 
+        description = description, numberOfRecentAmisToKeep = numberOfRecentAmisToKeep, 
+        encrypted = encrypted, kmsKeyId = kmsKeyId)
     output <- create_replication_job_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -42,9 +131,95 @@ create_replication_job <- function (serverId, seedReplicationTime,
     return(response)
 }
 
-#' The DeleteReplicationJob API is used to delete a ReplicationJob, resulting in no further ReplicationRuns
+#' Deletes an existing application
 #'
-#' The DeleteReplicationJob API is used to delete a ReplicationJob, resulting in no further ReplicationRuns. This will delete the contents of the S3 bucket used to store SMS artifacts, but will not delete any AMIs created by the SMS service.
+#' Deletes an existing application. Optionally deletes the launched stack associated with the application and all AWS SMS replication jobs for servers in the application.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_app(
+#'   appId = "string",
+#'   forceStopAppReplication = TRUE|FALSE,
+#'   forceTerminateApp = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param appId ID of the application to delete.
+#' @param forceStopAppReplication While deleting the application, stop all replication jobs corresponding to the servers in the application.
+#' @param forceTerminateApp While deleting the application, terminate the stack corresponding to the application.
+#'
+#' @export
+delete_app <- function (appId = NULL, forceStopAppReplication = NULL, 
+    forceTerminateApp = NULL) 
+{
+    op <- new_operation(name = "DeleteApp", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_app_input(appId = appId, forceStopAppReplication = forceStopAppReplication, 
+        forceTerminateApp = forceTerminateApp)
+    output <- delete_app_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes existing launch configuration for an application
+#'
+#' Deletes existing launch configuration for an application.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_app_launch_configuration(
+#'   appId = "string"
+#' )
+#' ```
+#'
+#' @param appId ID of the application associated with the launch configuration.
+#'
+#' @export
+delete_app_launch_configuration <- function (appId = NULL) 
+{
+    op <- new_operation(name = "DeleteAppLaunchConfiguration", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- delete_app_launch_configuration_input(appId = appId)
+    output <- delete_app_launch_configuration_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes existing replication configuration for an application
+#'
+#' Deletes existing replication configuration for an application.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_app_replication_configuration(
+#'   appId = "string"
+#' )
+#' ```
+#'
+#' @param appId ID of the application associated with the replication configuration.
+#'
+#' @export
+delete_app_replication_configuration <- function (appId = NULL) 
+{
+    op <- new_operation(name = "DeleteAppReplicationConfiguration", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- delete_app_replication_configuration_input(appId = appId)
+    output <- delete_app_replication_configuration_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified replication job
+#'
+#' Deletes the specified replication job.
+#' 
+#' After you delete a replication job, there are no further replication runs. AWS deletes the contents of the Amazon S3 bucket used to store AWS SMS artifacts. The AMIs created by the replication runs are not deleted.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -53,7 +228,7 @@ create_replication_job <- function (serverId, seedReplicationTime,
 #' )
 #' ```
 #'
-#' @param replicationJobId &#91;required&#93; 
+#' @param replicationJobId &#91;required&#93; The identifier of the replication job.
 #'
 #' @export
 delete_replication_job <- function (replicationJobId) 
@@ -68,9 +243,9 @@ delete_replication_job <- function (replicationJobId)
     return(response)
 }
 
-#' The DeleteServerCatalog API clears all servers from your server catalog
+#' Deletes all servers from your server catalog
 #'
-#' The DeleteServerCatalog API clears all servers from your server catalog. This means that these servers will no longer be accessible to the Server Migration Service.
+#' Deletes all servers from your server catalog.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -90,9 +265,11 @@ delete_server_catalog <- function ()
     return(response)
 }
 
-#' The DisassociateConnector API will disassociate a connector from the Server Migration Service, rendering it unavailable to support replication jobs
+#' Disassociates the specified connector from AWS SMS
 #'
-#' The DisassociateConnector API will disassociate a connector from the Server Migration Service, rendering it unavailable to support replication jobs.
+#' Disassociates the specified connector from AWS SMS.
+#' 
+#' After you disassociate a connector, it is no longer available to support replication jobs.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -101,7 +278,7 @@ delete_server_catalog <- function ()
 #' )
 #' ```
 #'
-#' @param connectorId &#91;required&#93; 
+#' @param connectorId &#91;required&#93; The identifier of the connector.
 #'
 #' @export
 disassociate_connector <- function (connectorId) 
@@ -116,9 +293,143 @@ disassociate_connector <- function (connectorId)
     return(response)
 }
 
-#' The GetConnectors API returns a list of connectors that are registered with the Server Migration Service
+#' Generates a target change set for a currently launched stack and writes it to an Amazon S3 object in the customer’s Amazon S3 bucket
 #'
-#' The GetConnectors API returns a list of connectors that are registered with the Server Migration Service.
+#' Generates a target change set for a currently launched stack and writes it to an Amazon S3 object in the customer's Amazon S3 bucket.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' generate_change_set(
+#'   appId = "string",
+#'   changesetFormat = "JSON"|"YAML"
+#' )
+#' ```
+#'
+#' @param appId ID of the application associated with the change set.
+#' @param changesetFormat Format for the change set.
+#'
+#' @export
+generate_change_set <- function (appId = NULL, changesetFormat = NULL) 
+{
+    op <- new_operation(name = "GenerateChangeSet", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- generate_change_set_input(appId = appId, changesetFormat = changesetFormat)
+    output <- generate_change_set_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Generates an Amazon CloudFormation template based on the current launch configuration and writes it to an Amazon S3 object in the customer’s Amazon S3 bucket
+#'
+#' Generates an Amazon CloudFormation template based on the current launch configuration and writes it to an Amazon S3 object in the customer's Amazon S3 bucket.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' generate_template(
+#'   appId = "string",
+#'   templateFormat = "JSON"|"YAML"
+#' )
+#' ```
+#'
+#' @param appId ID of the application associated with the Amazon CloudFormation template.
+#' @param templateFormat Format for generating the Amazon CloudFormation template.
+#'
+#' @export
+generate_template <- function (appId = NULL, templateFormat = NULL) 
+{
+    op <- new_operation(name = "GenerateTemplate", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- generate_template_input(appId = appId, templateFormat = templateFormat)
+    output <- generate_template_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieve information about an application
+#'
+#' Retrieve information about an application.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' get_app(
+#'   appId = "string"
+#' )
+#' ```
+#'
+#' @param appId ID of the application whose information is being retrieved.
+#'
+#' @export
+get_app <- function (appId = NULL) 
+{
+    op <- new_operation(name = "GetApp", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_app_input(appId = appId)
+    output <- get_app_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves the application launch configuration associated with an application
+#'
+#' Retrieves the application launch configuration associated with an application.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' get_app_launch_configuration(
+#'   appId = "string"
+#' )
+#' ```
+#'
+#' @param appId ID of the application launch configuration.
+#'
+#' @export
+get_app_launch_configuration <- function (appId = NULL) 
+{
+    op <- new_operation(name = "GetAppLaunchConfiguration", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_app_launch_configuration_input(appId = appId)
+    output <- get_app_launch_configuration_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves an application replication configuration associatd with an application
+#'
+#' Retrieves an application replication configuration associatd with an application.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' get_app_replication_configuration(
+#'   appId = "string"
+#' )
+#' ```
+#'
+#' @param appId ID of the application associated with the replication configuration.
+#'
+#' @export
+get_app_replication_configuration <- function (appId = NULL) 
+{
+    op <- new_operation(name = "GetAppReplicationConfiguration", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- get_app_replication_configuration_input(appId = appId)
+    output <- get_app_replication_configuration_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the connectors registered with the AWS SMS
+#'
+#' Describes the connectors registered with the AWS SMS.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -128,8 +439,8 @@ disassociate_connector <- function (connectorId)
 #' )
 #' ```
 #'
-#' @param nextToken 
-#' @param maxResults 
+#' @param nextToken The token for the next set of results.
+#' @param maxResults The maximum number of results to return in a single call. The default value is 50. To retrieve the remaining results, make another call with the returned `NextToken` value.
 #'
 #' @export
 get_connectors <- function (nextToken = NULL, maxResults = NULL) 
@@ -144,9 +455,9 @@ get_connectors <- function (nextToken = NULL, maxResults = NULL)
     return(response)
 }
 
-#' The GetReplicationJobs API will return all of your ReplicationJobs and their details
+#' Describes the specified replication job or all of your replication jobs
 #'
-#' The GetReplicationJobs API will return all of your ReplicationJobs and their details. This API returns a paginated list, that may be consecutively called with nextToken to retrieve all ReplicationJobs.
+#' Describes the specified replication job or all of your replication jobs.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -157,9 +468,9 @@ get_connectors <- function (nextToken = NULL, maxResults = NULL)
 #' )
 #' ```
 #'
-#' @param replicationJobId 
-#' @param nextToken 
-#' @param maxResults 
+#' @param replicationJobId The identifier of the replication job.
+#' @param nextToken The token for the next set of results.
+#' @param maxResults The maximum number of results to return in a single call. The default value is 50. To retrieve the remaining results, make another call with the returned `NextToken` value.
 #'
 #' @export
 get_replication_jobs <- function (replicationJobId = NULL, nextToken = NULL, 
@@ -176,9 +487,9 @@ get_replication_jobs <- function (replicationJobId = NULL, nextToken = NULL,
     return(response)
 }
 
-#' The GetReplicationRuns API will return all ReplicationRuns for a given ReplicationJob
+#' Describes the replication runs for the specified replication job
 #'
-#' The GetReplicationRuns API will return all ReplicationRuns for a given ReplicationJob. This API returns a paginated list, that may be consecutively called with nextToken to retrieve all ReplicationRuns for a ReplicationJob.
+#' Describes the replication runs for the specified replication job.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -189,9 +500,9 @@ get_replication_jobs <- function (replicationJobId = NULL, nextToken = NULL,
 #' )
 #' ```
 #'
-#' @param replicationJobId &#91;required&#93; 
-#' @param nextToken 
-#' @param maxResults 
+#' @param replicationJobId &#91;required&#93; The identifier of the replication job.
+#' @param nextToken The token for the next set of results.
+#' @param maxResults The maximum number of results to return in a single call. The default value is 50. To retrieve the remaining results, make another call with the returned `NextToken` value.
 #'
 #' @export
 get_replication_runs <- function (replicationJobId, nextToken = NULL, 
@@ -208,27 +519,38 @@ get_replication_runs <- function (replicationJobId, nextToken = NULL,
     return(response)
 }
 
-#' The GetServers API returns a list of all servers in your server catalog
+#' Describes the servers in your server catalog
 #'
-#' The GetServers API returns a list of all servers in your server catalog. For this call to succeed, you must previously have called ImportServerCatalog.
+#' Describes the servers in your server catalog.
+#' 
+#' Before you can describe your servers, you must import them using ImportServerCatalog.
 #'
 #' @section Accepted Parameters:
 #' ```
 #' get_servers(
 #'   nextToken = "string",
-#'   maxResults = 123
+#'   maxResults = 123,
+#'   vmServerAddressList = list(
+#'     list(
+#'       vmManagerId = "string",
+#'       vmId = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
-#' @param nextToken 
-#' @param maxResults 
+#' @param nextToken The token for the next set of results.
+#' @param maxResults The maximum number of results to return in a single call. The default value is 50. To retrieve the remaining results, make another call with the returned `NextToken` value.
+#' @param vmServerAddressList List of `VmServerAddress` objects
 #'
 #' @export
-get_servers <- function (nextToken = NULL, maxResults = NULL) 
+get_servers <- function (nextToken = NULL, maxResults = NULL, 
+    vmServerAddressList = NULL) 
 {
     op <- new_operation(name = "GetServers", http_method = "POST", 
         http_path = "/", paginator = list())
-    input <- get_servers_input(nextToken = nextToken, maxResults = maxResults)
+    input <- get_servers_input(nextToken = nextToken, maxResults = maxResults, 
+        vmServerAddressList = vmServerAddressList)
     output <- get_servers_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -236,9 +558,11 @@ get_servers <- function (nextToken = NULL, maxResults = NULL)
     return(response)
 }
 
-#' The ImportServerCatalog API is used to gather the complete list of on-premises servers on your premises
+#' Gathers a complete list of on-premises servers
 #'
-#' The ImportServerCatalog API is used to gather the complete list of on-premises servers on your premises. This API call requires connectors to be installed and monitoring all servers you would like imported. This API call returns immediately, but may take some time to retrieve all of the servers.
+#' Gathers a complete list of on-premises servers. Connectors must be installed and monitoring all servers that you want to import.
+#' 
+#' This call returns immediately, but might take additional time to retrieve all the servers.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -258,9 +582,229 @@ import_server_catalog <- function ()
     return(response)
 }
 
-#' The StartOnDemandReplicationRun API is used to start a ReplicationRun on demand (in addition to those that are scheduled based on your frequency)
+#' Launches an application stack
 #'
-#' The StartOnDemandReplicationRun API is used to start a ReplicationRun on demand (in addition to those that are scheduled based on your frequency). This ReplicationRun will start immediately. StartOnDemandReplicationRun is subject to limits on how many on demand ReplicationRuns you may call per 24-hour period.
+#' Launches an application stack.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' launch_app(
+#'   appId = "string"
+#' )
+#' ```
+#'
+#' @param appId ID of the application to launch.
+#'
+#' @export
+launch_app <- function (appId = NULL) 
+{
+    op <- new_operation(name = "LaunchApp", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- launch_app_input(appId = appId)
+    output <- launch_app_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a list of summaries for all applications
+#'
+#' Returns a list of summaries for all applications.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' list_apps(
+#'   appIds = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @param appIds 
+#' @param nextToken The token for the next set of results.
+#' @param maxResults The maximum number of results to return in a single call. The default value is 50. To retrieve the remaining results, make another call with the returned `NextToken` value.
+#'
+#' @export
+list_apps <- function (appIds = NULL, nextToken = NULL, maxResults = NULL) 
+{
+    op <- new_operation(name = "ListApps", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_apps_input(appIds = appIds, nextToken = nextToken, 
+        maxResults = maxResults)
+    output <- list_apps_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a launch configuration for an application
+#'
+#' Creates a launch configuration for an application.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' put_app_launch_configuration(
+#'   appId = "string",
+#'   roleName = "string",
+#'   serverGroupLaunchConfigurations = list(
+#'     list(
+#'       serverGroupId = "string",
+#'       launchOrder = 123,
+#'       serverLaunchConfigurations = list(
+#'         list(
+#'           server = list(
+#'             serverId = "string",
+#'             serverType = "VIRTUAL_MACHINE",
+#'             vmServer = list(
+#'               vmServerAddress = list(
+#'                 vmManagerId = "string",
+#'                 vmId = "string"
+#'               ),
+#'               vmName = "string",
+#'               vmManagerName = "string",
+#'               vmManagerType = "VSPHERE"|"SCVMM"|"HYPERV-MANAGER",
+#'               vmPath = "string"
+#'             ),
+#'             replicationJobId = "string",
+#'             replicationJobTerminated = TRUE|FALSE
+#'           ),
+#'           logicalId = "string",
+#'           vpc = "string",
+#'           subnet = "string",
+#'           securityGroup = "string",
+#'           ec2KeyName = "string",
+#'           userData = list(
+#'             s3Location = list(
+#'               bucket = "string",
+#'               key = "string"
+#'             )
+#'           ),
+#'           instanceType = "string",
+#'           associatePublicIpAddress = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @param appId ID of the application associated with the launch configuration.
+#' @param roleName Name of service role in the customer\'s account that Amazon CloudFormation uses to launch the application.
+#' @param serverGroupLaunchConfigurations Launch configurations for server groups in the application.
+#'
+#' @export
+put_app_launch_configuration <- function (appId = NULL, roleName = NULL, 
+    serverGroupLaunchConfigurations = NULL) 
+{
+    op <- new_operation(name = "PutAppLaunchConfiguration", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- put_app_launch_configuration_input(appId = appId, 
+        roleName = roleName, serverGroupLaunchConfigurations = serverGroupLaunchConfigurations)
+    output <- put_app_launch_configuration_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates or updates a replication configuration for an application
+#'
+#' Creates or updates a replication configuration for an application.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' put_app_replication_configuration(
+#'   appId = "string",
+#'   serverGroupReplicationConfigurations = list(
+#'     list(
+#'       serverGroupId = "string",
+#'       serverReplicationConfigurations = list(
+#'         list(
+#'           server = list(
+#'             serverId = "string",
+#'             serverType = "VIRTUAL_MACHINE",
+#'             vmServer = list(
+#'               vmServerAddress = list(
+#'                 vmManagerId = "string",
+#'                 vmId = "string"
+#'               ),
+#'               vmName = "string",
+#'               vmManagerName = "string",
+#'               vmManagerType = "VSPHERE"|"SCVMM"|"HYPERV-MANAGER",
+#'               vmPath = "string"
+#'             ),
+#'             replicationJobId = "string",
+#'             replicationJobTerminated = TRUE|FALSE
+#'           ),
+#'           serverReplicationParameters = list(
+#'             seedTime = as.POSIXct("2015-01-01"),
+#'             frequency = 123,
+#'             runOnce = TRUE|FALSE,
+#'             licenseType = "AWS"|"BYOL",
+#'             numberOfRecentAmisToKeep = 123,
+#'             encrypted = TRUE|FALSE,
+#'             kmsKeyId = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @param appId ID of the application tassociated with the replication configuration.
+#' @param serverGroupReplicationConfigurations Replication configurations for server groups in the application.
+#'
+#' @export
+put_app_replication_configuration <- function (appId = NULL, 
+    serverGroupReplicationConfigurations = NULL) 
+{
+    op <- new_operation(name = "PutAppReplicationConfiguration", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- put_app_replication_configuration_input(appId = appId, 
+        serverGroupReplicationConfigurations = serverGroupReplicationConfigurations)
+    output <- put_app_replication_configuration_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Starts replicating an application
+#'
+#' Starts replicating an application.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' start_app_replication(
+#'   appId = "string"
+#' )
+#' ```
+#'
+#' @param appId ID of the application to replicate.
+#'
+#' @export
+start_app_replication <- function (appId = NULL) 
+{
+    op <- new_operation(name = "StartAppReplication", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- start_app_replication_input(appId = appId)
+    output <- start_app_replication_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Starts an on-demand replication run for the specified replication job
+#'
+#' Starts an on-demand replication run for the specified replication job. This replication run starts immediately. This replication run is in addition to the ones already scheduled.
+#' 
+#' There is a limit on the number of on-demand replications runs you can request in a 24-hour period.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -270,8 +814,8 @@ import_server_catalog <- function ()
 #' )
 #' ```
 #'
-#' @param replicationJobId &#91;required&#93; 
-#' @param description 
+#' @param replicationJobId &#91;required&#93; The identifier of the replication job.
+#' @param description The description of the replication run.
 #'
 #' @export
 start_on_demand_replication_run <- function (replicationJobId, 
@@ -288,9 +832,127 @@ start_on_demand_replication_run <- function (replicationJobId,
     return(response)
 }
 
-#' The UpdateReplicationJob API is used to change the settings of your existing ReplicationJob created using CreateReplicationJob
+#' Stops replicating an application
 #'
-#' The UpdateReplicationJob API is used to change the settings of your existing ReplicationJob created using CreateReplicationJob. Calling this API will affect the next scheduled ReplicationRun.
+#' Stops replicating an application.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' stop_app_replication(
+#'   appId = "string"
+#' )
+#' ```
+#'
+#' @param appId ID of the application to stop replicating.
+#'
+#' @export
+stop_app_replication <- function (appId = NULL) 
+{
+    op <- new_operation(name = "StopAppReplication", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- stop_app_replication_input(appId = appId)
+    output <- stop_app_replication_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Terminates the stack for an application
+#'
+#' Terminates the stack for an application.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' terminate_app(
+#'   appId = "string"
+#' )
+#' ```
+#'
+#' @param appId ID of the application to terminate.
+#'
+#' @export
+terminate_app <- function (appId = NULL) 
+{
+    op <- new_operation(name = "TerminateApp", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- terminate_app_input(appId = appId)
+    output <- terminate_app_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates an application
+#'
+#' Updates an application.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' update_app(
+#'   appId = "string",
+#'   name = "string",
+#'   description = "string",
+#'   roleName = "string",
+#'   serverGroups = list(
+#'     list(
+#'       serverGroupId = "string",
+#'       name = "string",
+#'       serverList = list(
+#'         list(
+#'           serverId = "string",
+#'           serverType = "VIRTUAL_MACHINE",
+#'           vmServer = list(
+#'             vmServerAddress = list(
+#'               vmManagerId = "string",
+#'               vmId = "string"
+#'             ),
+#'             vmName = "string",
+#'             vmManagerName = "string",
+#'             vmManagerType = "VSPHERE"|"SCVMM"|"HYPERV-MANAGER",
+#'             vmPath = "string"
+#'           ),
+#'           replicationJobId = "string",
+#'           replicationJobTerminated = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @param appId ID of the application to update.
+#' @param name New name of the application.
+#' @param description New description of the application.
+#' @param roleName Name of the service role in the customer\'s account used by AWS SMS.
+#' @param serverGroups List of server groups in the application to update.
+#' @param tags List of tags to associate with the application.
+#'
+#' @export
+update_app <- function (appId = NULL, name = NULL, description = NULL, 
+    roleName = NULL, serverGroups = NULL, tags = NULL) 
+{
+    op <- new_operation(name = "UpdateApp", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_app_input(appId = appId, name = name, description = description, 
+        roleName = roleName, serverGroups = serverGroups, tags = tags)
+    output <- update_app_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates the specified settings for the specified replication job
+#'
+#' Updates the specified settings for the specified replication job.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -300,27 +962,46 @@ start_on_demand_replication_run <- function (replicationJobId,
 #'   nextReplicationRunStartTime = as.POSIXct("2015-01-01"),
 #'   licenseType = "AWS"|"BYOL",
 #'   roleName = "string",
-#'   description = "string"
+#'   description = "string",
+#'   numberOfRecentAmisToKeep = 123,
+#'   encrypted = TRUE|FALSE,
+#'   kmsKeyId = "string"
 #' )
 #' ```
 #'
-#' @param replicationJobId &#91;required&#93; 
-#' @param frequency 
-#' @param nextReplicationRunStartTime 
-#' @param licenseType 
-#' @param roleName 
-#' @param description 
+#' @param replicationJobId &#91;required&#93; The identifier of the replication job.
+#' @param frequency The time between consecutive replication runs, in hours.
+#' @param nextReplicationRunStartTime The start time of the next replication run.
+#' @param licenseType The license type to be used for the AMI created by a successful replication run.
+#' @param roleName The name of the IAM role to be used by AWS SMS.
+#' @param description The description of the replication job.
+#' @param numberOfRecentAmisToKeep The maximum number of SMS-created AMIs to retain. The oldest will be deleted once the maximum number is reached and a new AMI is created.
+#' @param encrypted When true, the replication job produces encrypted AMIs . See also `KmsKeyId` below.
+#' @param kmsKeyId KMS key ID for replication jobs that produce encrypted AMIs. Can be any of the following:
+#' 
+#' -   KMS key ID
+#' 
+#' -   KMS key alias
+#' 
+#' -   ARN referring to KMS key ID
+#' 
+#' -   ARN referring to KMS key alias
+#' 
+#' If encrypted is *true* but a KMS key id is not specified, the customer\'s default KMS key for EBS is used.
 #'
 #' @export
 update_replication_job <- function (replicationJobId, frequency = NULL, 
     nextReplicationRunStartTime = NULL, licenseType = NULL, roleName = NULL, 
-    description = NULL) 
+    description = NULL, numberOfRecentAmisToKeep = NULL, encrypted = NULL, 
+    kmsKeyId = NULL) 
 {
     op <- new_operation(name = "UpdateReplicationJob", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- update_replication_job_input(replicationJobId = replicationJobId, 
         frequency = frequency, nextReplicationRunStartTime = nextReplicationRunStartTime, 
-        licenseType = licenseType, roleName = roleName, description = description)
+        licenseType = licenseType, roleName = roleName, description = description, 
+        numberOfRecentAmisToKeep = numberOfRecentAmisToKeep, 
+        encrypted = encrypted, kmsKeyId = kmsKeyId)
     output <- update_replication_job_output()
     svc <- service()
     request <- new_request(svc, op, input, output)

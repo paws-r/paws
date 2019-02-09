@@ -7,9 +7,9 @@
 disassociate_ip_groups(DirectoryId, GroupIds)
 }
 \arguments{
-\item{DirectoryId}{[required] The ID of the directory.}
+\item{DirectoryId}{[required] The identifier of the directory.}
 
-\item{GroupIds}{[required] The IDs of one or more IP access control groups.}
+\item{GroupIds}{[required] The identifiers of one or more IP access control groups.}
 }
 \description{
 Disassociates the specified IP access control group from the specified directory.

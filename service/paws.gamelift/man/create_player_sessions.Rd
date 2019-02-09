@@ -20,8 +20,6 @@ Adds a group of players to a game session. This action is useful with a team mat
 To create player sessions, specify a game session ID, a list of player IDs, and optionally a set of player data strings. If successful, the players are added to the game session and a set of new PlayerSession objects is returned. Player sessions cannot be updated.
 
 \emph{Available in Amazon GameLift Local.}
-
-Player-session-related operations include:
 \itemize{
 \item CreatePlayerSession
 \item CreatePlayerSessions

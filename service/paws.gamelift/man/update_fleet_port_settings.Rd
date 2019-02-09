@@ -19,7 +19,6 @@ update_fleet_port_settings(FleetId,
 Updates port settings for a fleet. To update settings, specify the fleet ID to be updated and list the permissions you want to update. List the permissions you want to add in \code{InboundPermissionAuthorizations}, and permissions you want to remove in \code{InboundPermissionRevocations}. Permissions to be removed must match existing fleet permissions. If successful, the fleet ID for the updated fleet is returned.
 }
 \details{
-Fleet-related operations include:
 \itemize{
 \item CreateFleet
 \item ListFleets

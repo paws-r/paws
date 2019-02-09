@@ -4,9 +4,7 @@
 \alias{delete_app}
 \title{Delete an existing Amplify App by appId}
 \usage{
-delete_app(
-  appId = "string"
-)
+delete_app(appId)
 }
 \arguments{
 \item{appId}{[required] Unique Id for an Amplify App.}
@@ -14,6 +12,10 @@ delete_app(
 \description{
 Delete an existing Amplify App by appId.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_app(
+  appId = "string"
+)
 }
+}
+

@@ -17,7 +17,7 @@ Creates an application.
 \section{Accepted Parameters}{
 \preformatted{create_application(
   applicationName = "string",
-  computePlatform = "Server"|"Lambda"
+  computePlatform = "Server"|"Lambda"|"ECS"
 )
 }
 }

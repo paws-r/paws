@@ -15,7 +15,7 @@ discover_input_schema(ResourceARN = NULL, RoleARN = NULL,
 
 \item{InputStartingPositionConfiguration}{Point at which you want Amazon Kinesis Analytics to start reading records from the specified streaming source discovery purposes.}
 
-\item{S3Configuration}{Specify this parameter to discover a schema from data in an S3 object.}
+\item{S3Configuration}{Specify this parameter to discover a schema from data in an Amazon S3 object.}
 
 \item{InputProcessingConfiguration}{The InputProcessingConfiguration to use to preprocess the records before discovering the schema of the records.}
 }

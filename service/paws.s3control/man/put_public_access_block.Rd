@@ -4,15 +4,7 @@
 \alias{put_public_access_block}
 \title{Creates or modifies the Public Access Block configuration for an Amazon Web Services account}
 \usage{
-put_public_access_block(
-  PublicAccessBlockConfiguration = list(
-    BlockPublicAcls = TRUE|FALSE,
-    IgnorePublicAcls = TRUE|FALSE,
-    BlockPublicPolicy = TRUE|FALSE,
-    RestrictPublicBuckets = TRUE|FALSE
-  ),
-  AccountId = "string"
-)
+put_public_access_block(PublicAccessBlockConfiguration, AccountId)
 }
 \arguments{
 \item{PublicAccessBlockConfiguration}{[required] The Public Access Block configuration that you want to apply to this Amazon Web Services account.}
@@ -22,6 +14,16 @@ put_public_access_block(
 \description{
 Creates or modifies the Public Access Block configuration for an Amazon Web Services account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_public_access_block(
+  PublicAccessBlockConfiguration = list(
+    BlockPublicAcls = TRUE|FALSE,
+    IgnorePublicAcls = TRUE|FALSE,
+    BlockPublicPolicy = TRUE|FALSE,
+    RestrictPublicBuckets = TRUE|FALSE
+  ),
+  AccountId = "string"
+)
 }
+}
+

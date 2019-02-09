@@ -4,7 +4,8 @@
 \alias{list_dataset_contents}
 \title{Lists information about data set contents that have been created}
 \usage{
-list_dataset_contents(datasetName, nextToken = NULL, maxResults = NULL)
+list_dataset_contents(datasetName, nextToken = NULL, maxResults = NULL,
+  scheduledOnOrAfter = NULL, scheduledBefore = NULL)
 }
 \arguments{
 \item{datasetName}{[required] The name of the data set whose contents information you want to list.}
@@ -12,6 +13,10 @@ list_dataset_contents(datasetName, nextToken = NULL, maxResults = NULL)
 \item{nextToken}{The token for the next set of results.}
 
 \item{maxResults}{The maximum number of results to return in this request.}
+
+\item{scheduledOnOrAfter}{A filter to limit results to those data set contents whose creation is scheduled on or after the given time. See the field \code{triggers.schedule} in the CreateDataset request. (timestamp)}
+
+\item{scheduledBefore}{A filter to limit results to those data set contents whose creation is scheduled before the given time. See the field \code{triggers.schedule} in the CreateDataset request. (timestamp)}
 }
 \description{
 Lists information about data set contents that have been created.
@@ -20,7 +25,9 @@ Lists information about data set contents that have been created.
 \preformatted{list_dataset_contents(
   datasetName = "string",
   nextToken = "string",
-  maxResults = 123
+  maxResults = 123,
+  scheduledOnOrAfter = as.POSIXct("2015-01-01"),
+  scheduledBefore = as.POSIXct("2015-01-01")
 )
 }
 }

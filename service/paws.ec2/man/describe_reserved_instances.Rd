@@ -39,7 +39,7 @@ Default: Describes all your Reserved Instances, or only those otherwise specifie
 Describes one or more of the Reserved Instances that you purchased.
 }
 \details{
-For more information about Reserved Instances, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-on-demand-reserved-instances.html}{Reserved Instances} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information about Reserved Instances, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-on-demand-reserved-instances.html}{Reserved Instances} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{describe_reserved_instances(

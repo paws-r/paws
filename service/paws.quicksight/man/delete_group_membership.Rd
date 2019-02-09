@@ -4,12 +4,7 @@
 \alias{delete_group_membership}
 \title{Removes a user from a group so that the user is no longer a member of the group}
 \usage{
-delete_group_membership(
-  MemberName = "string",
-  GroupName = "string",
-  AwsAccountId = "string",
-  Namespace = "string"
-)
+delete_group_membership(MemberName, GroupName, AwsAccountId, Namespace)
 }
 \arguments{
 \item{MemberName}{[required] The name of the user that you want to delete from the group membership.}
@@ -34,6 +29,13 @@ The condition key is \code{quicksight:UserName}.
 
 \code{aws quicksight delete-group-membership --aws-account-id=111122223333 --namespace=default --group-name=Sales-Management --member-name=Charlie }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_group_membership(
+  MemberName = "string",
+  GroupName = "string",
+  AwsAccountId = "string",
+  Namespace = "string"
+)
 }
+}
+

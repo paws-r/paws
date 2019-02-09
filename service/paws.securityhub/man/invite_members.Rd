@@ -4,11 +4,7 @@
 \alias{invite_members}
 \title{Invites other AWS accounts to enable Security Hub and become Security Hub member accounts}
 \usage{
-invite_members(
-  AccountIds = list(
-    "string"
-  )
-)
+invite_members(AccountIds = NULL)
 }
 \arguments{
 \item{AccountIds}{A list of IDs of the AWS accounts that you want to invite to Security Hub as members.}
@@ -16,6 +12,12 @@ invite_members(
 \description{
 Invites other AWS accounts to enable Security Hub and become Security Hub member accounts. When an account accepts the invitation and becomes a member account, the master account can view Security Hub findings of the member account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{invite_members(
+  AccountIds = list(
+    "string"
+  )
+)
 }
+}
+

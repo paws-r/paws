@@ -9,6 +9,8 @@ enable_sharing_with_aws_organization()
 \description{
 Enables resource sharing within your organization.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{enable_sharing_with_aws_organization()
 }
+}
+

@@ -133,7 +133,15 @@ create_pipeline_input <- function (...)
             tags = list(type = "string", max = 100L, min = 1L)), 
             type = structure(logical(0), tags = list(type = "string", 
                 enum = "KMS"))), tags = list(type = "structure"))), 
-            tags = list(type = "structure")), stages = structure(list(structure(list(name = structure(logical(0), 
+            tags = list(type = "structure")), artifactStores = structure(list(structure(list(type = structure(logical(0), 
+            tags = list(type = "string", enum = "S3")), location = structure(logical(0), 
+            tags = list(type = "string", max = 63L, min = 3L, 
+                pattern = "[a-zA-Z0-9\\-\\.]+")), encryptionKey = structure(list(id = structure(logical(0), 
+            tags = list(type = "string", max = 100L, min = 1L)), 
+            type = structure(logical(0), tags = list(type = "string", 
+                enum = "KMS"))), tags = list(type = "structure"))), 
+            tags = list(type = "structure"))), tags = list(type = "map")), 
+        stages = structure(list(structure(list(name = structure(logical(0), 
             tags = list(type = "string", max = 100L, min = 1L, 
                 pattern = "[A-Za-z0-9.@\\-_]+")), blockers = structure(list(structure(list(name = structure(logical(0), 
             tags = list(type = "string", max = 100L, min = 1L)), 
@@ -160,11 +168,13 @@ create_pipeline_input <- function (...)
                 tags = list(type = "string", max = 100L, min = 1L, 
                   pattern = "[a-zA-Z0-9_\\-]+"))), tags = list(type = "structure"))), 
                 tags = list(type = "list")), roleArn = structure(logical(0), 
-                tags = list(type = "string", max = 1024L, pattern = "arn:aws(-[\\w]+)*:iam::[0-9]{12}:role/.*"))), 
-            tags = list(type = "structure"))), tags = list(type = "list"))), 
-            tags = list(type = "structure"))), tags = list(type = "list")), 
-        version = structure(logical(0), tags = list(type = "integer", 
-            min = 1L))), tags = list(type = "structure"))), tags = list(type = "structure"))
+                tags = list(type = "string", max = 1024L, pattern = "arn:aws(-[\\w]+)*:iam::[0-9]{12}:role/.*")), 
+            region = structure(logical(0), tags = list(type = "string", 
+                max = 30L, min = 4L))), tags = list(type = "structure"))), 
+            tags = list(type = "list"))), tags = list(type = "structure"))), 
+            tags = list(type = "list")), version = structure(logical(0), 
+            tags = list(type = "integer", min = 1L))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -182,7 +192,15 @@ create_pipeline_output <- function (...)
             tags = list(type = "string", max = 100L, min = 1L)), 
             type = structure(logical(0), tags = list(type = "string", 
                 enum = "KMS"))), tags = list(type = "structure"))), 
-            tags = list(type = "structure")), stages = structure(list(structure(list(name = structure(logical(0), 
+            tags = list(type = "structure")), artifactStores = structure(list(structure(list(type = structure(logical(0), 
+            tags = list(type = "string", enum = "S3")), location = structure(logical(0), 
+            tags = list(type = "string", max = 63L, min = 3L, 
+                pattern = "[a-zA-Z0-9\\-\\.]+")), encryptionKey = structure(list(id = structure(logical(0), 
+            tags = list(type = "string", max = 100L, min = 1L)), 
+            type = structure(logical(0), tags = list(type = "string", 
+                enum = "KMS"))), tags = list(type = "structure"))), 
+            tags = list(type = "structure"))), tags = list(type = "map")), 
+        stages = structure(list(structure(list(name = structure(logical(0), 
             tags = list(type = "string", max = 100L, min = 1L, 
                 pattern = "[A-Za-z0-9.@\\-_]+")), blockers = structure(list(structure(list(name = structure(logical(0), 
             tags = list(type = "string", max = 100L, min = 1L)), 
@@ -209,11 +227,13 @@ create_pipeline_output <- function (...)
                 tags = list(type = "string", max = 100L, min = 1L, 
                   pattern = "[a-zA-Z0-9_\\-]+"))), tags = list(type = "structure"))), 
                 tags = list(type = "list")), roleArn = structure(logical(0), 
-                tags = list(type = "string", max = 1024L, pattern = "arn:aws(-[\\w]+)*:iam::[0-9]{12}:role/.*"))), 
-            tags = list(type = "structure"))), tags = list(type = "list"))), 
-            tags = list(type = "structure"))), tags = list(type = "list")), 
-        version = structure(logical(0), tags = list(type = "integer", 
-            min = 1L))), tags = list(type = "structure"))), tags = list(type = "structure"))
+                tags = list(type = "string", max = 1024L, pattern = "arn:aws(-[\\w]+)*:iam::[0-9]{12}:role/.*")), 
+            region = structure(logical(0), tags = list(type = "string", 
+                max = 30L, min = 4L))), tags = list(type = "structure"))), 
+            tags = list(type = "list"))), tags = list(type = "structure"))), 
+            tags = list(type = "list")), version = structure(logical(0), 
+            tags = list(type = "integer", min = 1L))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -412,7 +432,15 @@ get_pipeline_output <- function (...)
             tags = list(type = "string", max = 100L, min = 1L)), 
             type = structure(logical(0), tags = list(type = "string", 
                 enum = "KMS"))), tags = list(type = "structure"))), 
-            tags = list(type = "structure")), stages = structure(list(structure(list(name = structure(logical(0), 
+            tags = list(type = "structure")), artifactStores = structure(list(structure(list(type = structure(logical(0), 
+            tags = list(type = "string", enum = "S3")), location = structure(logical(0), 
+            tags = list(type = "string", max = 63L, min = 3L, 
+                pattern = "[a-zA-Z0-9\\-\\.]+")), encryptionKey = structure(list(id = structure(logical(0), 
+            tags = list(type = "string", max = 100L, min = 1L)), 
+            type = structure(logical(0), tags = list(type = "string", 
+                enum = "KMS"))), tags = list(type = "structure"))), 
+            tags = list(type = "structure"))), tags = list(type = "map")), 
+        stages = structure(list(structure(list(name = structure(logical(0), 
             tags = list(type = "string", max = 100L, min = 1L, 
                 pattern = "[A-Za-z0-9.@\\-_]+")), blockers = structure(list(structure(list(name = structure(logical(0), 
             tags = list(type = "string", max = 100L, min = 1L)), 
@@ -439,15 +467,17 @@ get_pipeline_output <- function (...)
                 tags = list(type = "string", max = 100L, min = 1L, 
                   pattern = "[a-zA-Z0-9_\\-]+"))), tags = list(type = "structure"))), 
                 tags = list(type = "list")), roleArn = structure(logical(0), 
-                tags = list(type = "string", max = 1024L, pattern = "arn:aws(-[\\w]+)*:iam::[0-9]{12}:role/.*"))), 
-            tags = list(type = "structure"))), tags = list(type = "list"))), 
-            tags = list(type = "structure"))), tags = list(type = "list")), 
-        version = structure(logical(0), tags = list(type = "integer", 
-            min = 1L))), tags = list(type = "structure")), metadata = structure(list(pipelineArn = structure(logical(0), 
-        tags = list(type = "string", pattern = "arn:aws(-[\\w]+)*:codepipeline:.+:[0-9]{12}:.+")), 
-        created = structure(logical(0), tags = list(type = "timestamp")), 
-        updated = structure(logical(0), tags = list(type = "timestamp"))), 
-        tags = list(type = "structure"))), tags = list(type = "structure"))
+                tags = list(type = "string", max = 1024L, pattern = "arn:aws(-[\\w]+)*:iam::[0-9]{12}:role/.*")), 
+            region = structure(logical(0), tags = list(type = "string", 
+                max = 30L, min = 4L))), tags = list(type = "structure"))), 
+            tags = list(type = "list"))), tags = list(type = "structure"))), 
+            tags = list(type = "list")), version = structure(logical(0), 
+            tags = list(type = "integer", min = 1L))), tags = list(type = "structure")), 
+        metadata = structure(list(pipelineArn = structure(logical(0), 
+            tags = list(type = "string", pattern = "arn:aws(-[\\w]+)*:codepipeline:.+:[0-9]{12}:.+")), 
+            created = structure(logical(0), tags = list(type = "timestamp")), 
+            updated = structure(logical(0), tags = list(type = "timestamp"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1123,7 +1153,9 @@ start_pipeline_execution_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(name = structure(logical(0), tags = list(type = "string", 
-        max = 100L, min = 1L, pattern = "[A-Za-z0-9.@\\-_]+"))), 
+        max = 100L, min = 1L, pattern = "[A-Za-z0-9.@\\-_]+")), 
+        clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, 
+            type = "string", max = 128L, min = 1L, pattern = "^[a-zA-Z0-9-]+$"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -1151,7 +1183,15 @@ update_pipeline_input <- function (...)
             tags = list(type = "string", max = 100L, min = 1L)), 
             type = structure(logical(0), tags = list(type = "string", 
                 enum = "KMS"))), tags = list(type = "structure"))), 
-            tags = list(type = "structure")), stages = structure(list(structure(list(name = structure(logical(0), 
+            tags = list(type = "structure")), artifactStores = structure(list(structure(list(type = structure(logical(0), 
+            tags = list(type = "string", enum = "S3")), location = structure(logical(0), 
+            tags = list(type = "string", max = 63L, min = 3L, 
+                pattern = "[a-zA-Z0-9\\-\\.]+")), encryptionKey = structure(list(id = structure(logical(0), 
+            tags = list(type = "string", max = 100L, min = 1L)), 
+            type = structure(logical(0), tags = list(type = "string", 
+                enum = "KMS"))), tags = list(type = "structure"))), 
+            tags = list(type = "structure"))), tags = list(type = "map")), 
+        stages = structure(list(structure(list(name = structure(logical(0), 
             tags = list(type = "string", max = 100L, min = 1L, 
                 pattern = "[A-Za-z0-9.@\\-_]+")), blockers = structure(list(structure(list(name = structure(logical(0), 
             tags = list(type = "string", max = 100L, min = 1L)), 
@@ -1178,11 +1218,13 @@ update_pipeline_input <- function (...)
                 tags = list(type = "string", max = 100L, min = 1L, 
                   pattern = "[a-zA-Z0-9_\\-]+"))), tags = list(type = "structure"))), 
                 tags = list(type = "list")), roleArn = structure(logical(0), 
-                tags = list(type = "string", max = 1024L, pattern = "arn:aws(-[\\w]+)*:iam::[0-9]{12}:role/.*"))), 
-            tags = list(type = "structure"))), tags = list(type = "list"))), 
-            tags = list(type = "structure"))), tags = list(type = "list")), 
-        version = structure(logical(0), tags = list(type = "integer", 
-            min = 1L))), tags = list(type = "structure"))), tags = list(type = "structure"))
+                tags = list(type = "string", max = 1024L, pattern = "arn:aws(-[\\w]+)*:iam::[0-9]{12}:role/.*")), 
+            region = structure(logical(0), tags = list(type = "string", 
+                max = 30L, min = 4L))), tags = list(type = "structure"))), 
+            tags = list(type = "list"))), tags = list(type = "structure"))), 
+            tags = list(type = "list")), version = structure(logical(0), 
+            tags = list(type = "integer", min = 1L))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1200,7 +1242,15 @@ update_pipeline_output <- function (...)
             tags = list(type = "string", max = 100L, min = 1L)), 
             type = structure(logical(0), tags = list(type = "string", 
                 enum = "KMS"))), tags = list(type = "structure"))), 
-            tags = list(type = "structure")), stages = structure(list(structure(list(name = structure(logical(0), 
+            tags = list(type = "structure")), artifactStores = structure(list(structure(list(type = structure(logical(0), 
+            tags = list(type = "string", enum = "S3")), location = structure(logical(0), 
+            tags = list(type = "string", max = 63L, min = 3L, 
+                pattern = "[a-zA-Z0-9\\-\\.]+")), encryptionKey = structure(list(id = structure(logical(0), 
+            tags = list(type = "string", max = 100L, min = 1L)), 
+            type = structure(logical(0), tags = list(type = "string", 
+                enum = "KMS"))), tags = list(type = "structure"))), 
+            tags = list(type = "structure"))), tags = list(type = "map")), 
+        stages = structure(list(structure(list(name = structure(logical(0), 
             tags = list(type = "string", max = 100L, min = 1L, 
                 pattern = "[A-Za-z0-9.@\\-_]+")), blockers = structure(list(structure(list(name = structure(logical(0), 
             tags = list(type = "string", max = 100L, min = 1L)), 
@@ -1227,10 +1277,12 @@ update_pipeline_output <- function (...)
                 tags = list(type = "string", max = 100L, min = 1L, 
                   pattern = "[a-zA-Z0-9_\\-]+"))), tags = list(type = "structure"))), 
                 tags = list(type = "list")), roleArn = structure(logical(0), 
-                tags = list(type = "string", max = 1024L, pattern = "arn:aws(-[\\w]+)*:iam::[0-9]{12}:role/.*"))), 
-            tags = list(type = "structure"))), tags = list(type = "list"))), 
-            tags = list(type = "structure"))), tags = list(type = "list")), 
-        version = structure(logical(0), tags = list(type = "integer", 
-            min = 1L))), tags = list(type = "structure"))), tags = list(type = "structure"))
+                tags = list(type = "string", max = 1024L, pattern = "arn:aws(-[\\w]+)*:iam::[0-9]{12}:role/.*")), 
+            region = structure(logical(0), tags = list(type = "string", 
+                max = 30L, min = 4L))), tags = list(type = "structure"))), 
+            tags = list(type = "list"))), tags = list(type = "structure"))), 
+            tags = list(type = "list")), version = structure(logical(0), 
+            tags = list(type = "integer", min = 1L))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }

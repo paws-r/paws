@@ -9,7 +9,7 @@ delete_role(RoleName)
 \arguments{
 \item{RoleName}{[required] The name of the role to delete.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 }
 \description{
 Deletes the specified role. The role must not have any policies attached. For more information about roles, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html}{Working with Roles}.

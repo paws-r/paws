@@ -13,7 +13,7 @@ start_db_instance(DBInstanceIdentifier)
 Starts an Amazon RDS DB instance that was stopped using the AWS console, the stop-db-instance AWS CLI command, or the StopDBInstance action.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_StartInstance.html}{Starting an Amazon RDS DB Instance That Was Previously Stopped} in the \emph{Amazon RDS User Guide.}
+For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_StartInstance.html}{Starting an Amazon RDS DB instance That Was Previously Stopped} in the \emph{Amazon RDS User Guide.}
 
 This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For Aurora DB clusters, use StartDBCluster instead.
 }

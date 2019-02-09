@@ -29,7 +29,7 @@ describe_host_reservation_offerings(Filter = NULL, MaxDuration = NULL,
 Describes the Dedicated Host reservations that are available to purchase.
 }
 \details{
-The results describe all the Dedicated Host reservation offerings, including offerings that may not match the instance family and region of your Dedicated Hosts. When purchasing an offering, ensure that the instance family and Region of the offering matches that of the Dedicated Hosts with which it is to be associated. For more information about supported instance types, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html}{Dedicated Hosts Overview} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+The results describe all the Dedicated Host reservation offerings, including offerings that may not match the instance family and Region of your Dedicated Hosts. When purchasing an offering, ensure that the instance family and Region of the offering matches that of the Dedicated Hosts with which it is to be associated. For more information about supported instance types, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html}{Dedicated Hosts Overview} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{describe_host_reservation_offerings(

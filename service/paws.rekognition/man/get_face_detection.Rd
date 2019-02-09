@@ -2,7 +2,7 @@
 % Please edit documentation in R/paws.rekognition_operations.R
 \name{get_face_detection}
 \alias{get_face_detection}
-\title{Gets face detection results for a Amazon Rekognition Video analysis started by}
+\title{Gets face detection results for a Amazon Rekognition Video analysis started by StartFaceDetection}
 \usage{
 get_face_detection(JobId, MaxResults = NULL, NextToken = NULL)
 }
@@ -14,10 +14,10 @@ get_face_detection(JobId, MaxResults = NULL, NextToken = NULL)
 \item{NextToken}{If the previous response was incomplete (because there are more faces to retrieve), Amazon Rekognition Video returns a pagination token in the response. You can use this pagination token to retrieve the next set of faces.}
 }
 \description{
-Gets face detection results for a Amazon Rekognition Video analysis started by .
+Gets face detection results for a Amazon Rekognition Video analysis started by StartFaceDetection.
 }
 \details{
-Face detection with Amazon Rekognition Video is an asynchronous operation. You start face detection by calling which returns a job identifier (\code{JobId}). When the face detection operation finishes, Amazon Rekognition Video publishes a completion status to the Amazon Simple Notification Service topic registered in the initial call to \code{StartFaceDetection}. To get the results of the face detection operation, first check that the status value published to the Amazon SNS topic is \code{SUCCEEDED}. If so, call and pass the job identifier (\code{JobId}) from the initial call to \code{StartFaceDetection}.
+Face detection with Amazon Rekognition Video is an asynchronous operation. You start face detection by calling StartFaceDetection which returns a job identifier (\code{JobId}). When the face detection operation finishes, Amazon Rekognition Video publishes a completion status to the Amazon Simple Notification Service topic registered in the initial call to \code{StartFaceDetection}. To get the results of the face detection operation, first check that the status value published to the Amazon SNS topic is \code{SUCCEEDED}. If so, call GetFaceDetection and pass the job identifier (\code{JobId}) from the initial call to \code{StartFaceDetection}.
 
 \code{GetFaceDetection} returns an array of detected faces (\code{Faces}) sorted by the time the faces were detected.
 

@@ -4,9 +4,7 @@
 \alias{delete_flow}
 \title{Deletes a flow}
 \usage{
-delete_flow(
-  FlowArn = "string"
-)
+delete_flow(FlowArn)
 }
 \arguments{
 \item{FlowArn}{[required] The ARN of the flow that you want to delete.}
@@ -14,6 +12,10 @@ delete_flow(
 \description{
 Deletes a flow. Before you can delete a flow, you must stop the flow.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_flow(
+  FlowArn = "string"
+)
 }
+}
+

@@ -47,6 +47,7 @@ Creates a new OriginEndpoint record.
     Encryption = list(
       KeyRotationIntervalSeconds = 123,
       SpekeKeyProvider = list(
+        CertificateArn = "string",
         ResourceId = "string",
         RoleArn = "string",
         SystemIds = list(
@@ -78,6 +79,7 @@ Creates a new OriginEndpoint record.
     Encryption = list(
       KeyRotationIntervalSeconds = 123,
       SpekeKeyProvider = list(
+        CertificateArn = "string",
         ResourceId = "string",
         RoleArn = "string",
         SystemIds = list(
@@ -110,6 +112,7 @@ Creates a new OriginEndpoint record.
       KeyRotationIntervalSeconds = 123,
       RepeatExtXKey = TRUE|FALSE,
       SpekeKeyProvider = list(
+        CertificateArn = "string",
         ResourceId = "string",
         RoleArn = "string",
         SystemIds = list(
@@ -135,6 +138,7 @@ Creates a new OriginEndpoint record.
   MssPackage = list(
     Encryption = list(
       SpekeKeyProvider = list(
+        CertificateArn = "string",
         ResourceId = "string",
         RoleArn = "string",
         SystemIds = list(

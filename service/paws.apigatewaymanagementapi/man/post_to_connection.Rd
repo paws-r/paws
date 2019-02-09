@@ -4,10 +4,7 @@
 \alias{post_to_connection}
 \title{Sends the provided data to the specified connection}
 \usage{
-post_to_connection(
-  Data = raw,
-  ConnectionId = "string"
-)
+post_to_connection(Data, ConnectionId)
 }
 \arguments{
 \item{Data}{[required] The data to be sent to the client specified by its connection id.}
@@ -17,6 +14,11 @@ post_to_connection(
 \description{
 Sends the provided data to the specified connection.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{post_to_connection(
+  Data = raw,
+  ConnectionId = "string"
+)
 }
+}
+

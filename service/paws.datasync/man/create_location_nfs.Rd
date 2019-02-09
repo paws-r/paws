@@ -4,21 +4,8 @@
 \alias{create_location_nfs}
 \title{Creates an endpoint for a Network File System (NFS) file system}
 \usage{
-create_location_nfs(
-  Subdirectory = "string",
-  ServerHostname = "string",
-  OnPremConfig = list(
-    AgentArns = list(
-      "string"
-    )
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_location_nfs(Subdirectory, ServerHostname, OnPremConfig,
+  Tags = NULL)
 }
 \arguments{
 \item{Subdirectory}{[required] The subdirectory in the NFS file system that is used to read data from the NFS source location or write data to the NFS destination. The NFS path should be a path that's exported by the NFS server, or a subdirectory of that path. The path should be such that it can be mounted by other NFS clients in your network.
@@ -38,6 +25,22 @@ This name must either be DNS-compliant or must be an IP version 4 (IPv4) address
 \description{
 Creates an endpoint for a Network File System (NFS) file system.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_location_nfs(
+  Subdirectory = "string",
+  ServerHostname = "string",
+  OnPremConfig = list(
+    AgentArns = list(
+      "string"
+    )
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

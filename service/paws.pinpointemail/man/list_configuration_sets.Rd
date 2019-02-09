@@ -4,10 +4,7 @@
 \alias{list_configuration_sets}
 \title{List all of the configuration sets associated with your Amazon Pinpoint account in the current region}
 \usage{
-list_configuration_sets(
-  NextToken = "string",
-  PageSize = 123
-)
+list_configuration_sets(NextToken = NULL, PageSize = NULL)
 }
 \arguments{
 \item{NextToken}{A token returned from a previous call to \code{ListConfigurationSets} to indicate the position in the list of configuration sets.}
@@ -20,6 +17,11 @@ List all of the configuration sets associated with your Amazon Pinpoint account 
 \details{
 In Amazon Pinpoint, \emph{configuration sets} are groups of rules that you can apply to the emails you send. You apply a configuration set to an email by including a reference to the configuration set in the headers of the email. When you apply a configuration set to an email, all of the rules in that configuration set are applied to the email.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_configuration_sets(
+  NextToken = "string",
+  PageSize = 123
+)
 }
+}
+

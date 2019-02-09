@@ -21,7 +21,7 @@ Used to send a direct message.
     Addresses = list(
       list(
         BodyOverride = "string",
-        ChannelType = "GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"EMAIL"|"BAIDU"|"CUSTOM",
+        ChannelType = "GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
         Context = list(
           "string"
         ),
@@ -147,6 +147,36 @@ Used to send a direct message.
         Title = "string",
         Url = "string"
       ),
+      EmailMessage = list(
+        Body = "string",
+        FeedbackForwardingAddress = "string",
+        FromAddress = "string",
+        RawEmail = list(
+          Data = raw
+        ),
+        ReplyToAddresses = list(
+          "string"
+        ),
+        SimpleEmail = list(
+          HtmlPart = list(
+            Charset = "string",
+            Data = "string"
+          ),
+          Subject = list(
+            Charset = "string",
+            Data = "string"
+          ),
+          TextPart = list(
+            Charset = "string",
+            Data = "string"
+          )
+        ),
+        Substitutions = list(
+          list(
+            "string"
+          )
+        )
+      ),
       GCMMessage = list(
         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
         Body = "string",
@@ -183,6 +213,17 @@ Used to send a direct message.
             "string"
           )
         )
+      ),
+      VoiceMessage = list(
+        Body = "string",
+        LanguageCode = "string",
+        OriginationNumber = "string",
+        Substitutions = list(
+          list(
+            "string"
+          )
+        ),
+        VoiceId = "string"
       )
     ),
     TraceId = "string"

@@ -42,9 +42,21 @@ cancel_job <- function (jobId, reason)
 #'
 #' Creates an AWS Batch compute environment. You can create `MANAGED` or `UNMANAGED` compute environments.
 #' 
-#' In a managed compute environment, AWS Batch manages the compute resources within the environment, based on the compute resources that you specify. Instances launched into a managed compute environment use a recent, approved version of the Amazon ECS-optimized AMI. You can choose to use Amazon EC2 On-Demand Instances in your managed compute environment, or you can use Amazon EC2 Spot Instances that only launch when the Spot bid price is below a specified percentage of the On-Demand price.
+#' In a managed compute environment, AWS Batch manages the capacity and instance types of the compute resources within the environment. This is based on the compute resource specification that you define or the [launch template](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html) that you specify when you create the compute environment. You can choose to use Amazon EC2 On-Demand Instances or Spot Instances in your managed compute environment. You can optionally set a maximum price so that Spot Instances only launch when the Spot Instance price is below a specified percentage of the On-Demand price.
 #' 
-#' In an unmanaged compute environment, you can manage your own compute resources. This provides more compute resource configuration options, such as using a custom AMI, but you must ensure that your AMI meets the Amazon ECS container instance AMI specification. For more information, see [Container Instance AMIs](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/container_instance_AMIs.html) in the *Amazon Elastic Container Service Developer Guide*. After you have created your unmanaged compute environment, you can use the DescribeComputeEnvironments operation to find the Amazon ECS cluster that is associated with it and then manually launch your container instances into that Amazon ECS cluster. For more information, see [Launching an Amazon ECS Container Instance](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html) in the *Amazon Elastic Container Service Developer Guide*.
+#' Multi-node parallel jobs are not supported on Spot Instances.
+#' 
+#' In an unmanaged compute environment, you can manage your own compute resources. This provides more compute resource configuration options, such as using a custom AMI, but you must ensure that your AMI meets the Amazon ECS container instance AMI specification. For more information, see [Container Instance AMIs](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/container_instance_AMIs.html) in the *Amazon Elastic Container Service Developer Guide*. After you have created your unmanaged compute environment, you can use the DescribeComputeEnvironments operation to find the Amazon ECS cluster that is associated with it. Then, manually launch your container instances into that Amazon ECS cluster. For more information, see [Launching an Amazon ECS Container Instance](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html) in the *Amazon Elastic Container Service Developer Guide*.
+#' 
+#' AWS Batch does not upgrade the AMIs in a compute environment after it is created (for example, when a newer version of the Amazon ECS-optimized AMI is available). You are responsible for the management of the guest operating system (including updates and security patches) and any additional application software or utilities that you install on the compute resources. To use a new AMI for your AWS Batch jobs:
+#' 
+#' 1.  Create a new compute environment with the new AMI.
+#' 
+#' 2.  Add the compute environment to an existing job queue.
+#' 
+#' 3.  Remove the old compute environment from your job queue.
+#' 
+#' 4.  Delete the old compute environment.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -72,15 +84,21 @@ cancel_job <- function (jobId, reason)
 #'     tags = list(
 #'       "string"
 #'     ),
+#'     placementGroup = "string",
 #'     bidPercentage = 123,
-#'     spotIamFleetRole = "string"
+#'     spotIamFleetRole = "string",
+#'     launchTemplate = list(
+#'       launchTemplateId = "string",
+#'       launchTemplateName = "string",
+#'       version = "string"
+#'     )
 #'   ),
 #'   serviceRole = "string"
 #' )
 #' ```
 #'
 #' @param computeEnvironmentName &#91;required&#93; The name for your compute environment. Up to 128 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.
-#' @param type &#91;required&#93; The type of the compute environment.
+#' @param type &#91;required&#93; The type of the compute environment. For more information, see [Compute Environments](http://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html) in the *AWS Batch User Guide*.
 #' @param state The state of the compute environment. If the state is `ENABLED`, then the compute environment accepts jobs from a queue and can scale out automatically based on queues.
 #' @param computeResources Details of the compute resources managed by the compute environment. This parameter is required for managed compute environments.
 #' @param serviceRole &#91;required&#93; The full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch to make calls to other AWS services on your behalf.
@@ -200,7 +218,7 @@ create_compute_environment <- function (computeEnvironmentName,
 #'
 #' @param jobQueueName &#91;required&#93; The name of the job queue.
 #' @param state The state of the job queue. If the job queue state is `ENABLED`, it is able to accept jobs.
-#' @param priority &#91;required&#93; The priority of the job queue. Job queues with a higher priority (or a higher integer value for the `priority` parameter) are evaluated first when associated with same compute environment. Priority is determined in descending order, for example, a job queue with a priority value of `10` is given scheduling preference over a job queue with a priority value of `1`.
+#' @param priority &#91;required&#93; The priority of the job queue. Job queues with a higher priority (or a higher integer value for the `priority` parameter) are evaluated first when associated with the same compute environment. Priority is determined in descending order, for example, a job queue with a priority value of `10` is given scheduling preference over a job queue with a priority value of `1`.
 #' @param computeEnvironmentOrder &#91;required&#93; The set of compute environments mapped to a job queue and their order relative to each other. The job scheduler uses this parameter to determine which compute environment should execute a given job. Compute environments must be in the `VALID` state before you can associate them with a job queue. You can associate up to three compute environments with a job queue.
 #'
 #' @examples
@@ -527,15 +545,26 @@ describe_jobs <- function (jobs)
     return(response)
 }
 
-#' Returns a list of task jobs for a specified job queue
+#' Returns a list of AWS Batch jobs
 #'
-#' Returns a list of task jobs for a specified job queue. You can filter the results by job status with the `jobStatus` parameter. If you do not specify a status, only `RUNNING` jobs are returned.
+#' Returns a list of AWS Batch jobs.
+#' 
+#' You must specify only one of the following:
+#' 
+#' -   a job queue ID to return a list of jobs in that job queue
+#' 
+#' -   a multi-node parallel job ID to return a list of that job\'s nodes
+#' 
+#' -   an array job ID to return a list of that job\'s children
+#' 
+#' You can filter the results by job status with the `jobStatus` parameter. If you do not specify a status, only `RUNNING` jobs are returned.
 #'
 #' @section Accepted Parameters:
 #' ```
 #' list_jobs(
 #'   jobQueue = "string",
 #'   arrayJobId = "string",
+#'   multiNodeJobId = "string",
 #'   jobStatus = "SUBMITTED"|"PENDING"|"RUNNABLE"|"STARTING"|"RUNNING"|"SUCCEEDED"|"FAILED",
 #'   maxResults = 123,
 #'   nextToken = "string"
@@ -544,6 +573,7 @@ describe_jobs <- function (jobs)
 #'
 #' @param jobQueue The name or full Amazon Resource Name (ARN) of the job queue with which to list jobs.
 #' @param arrayJobId The job ID for an array job. Specifying an array job ID with this parameter lists all child jobs from within the specified array.
+#' @param multiNodeJobId The job ID for a multi-node parallel job. Specifying a multi-node parallel job ID with this parameter lists all nodes that are associated with the specified job.
 #' @param jobStatus The job status with which to filter jobs in the specified queue. If you do not specify a status, only `RUNNING` jobs are returned.
 #' @param maxResults The maximum number of results returned by `ListJobs` in paginated output. When this parameter is used, `ListJobs` only returns `maxResults` results in a single page along with a `nextToken` response element. The remaining results of the initial request can be seen by sending another `ListJobs` request with the returned `nextToken` value. This value can be between 1 and 100. If this parameter is not used, then `ListJobs` returns up to 100 results and a `nextToken` value if applicable.
 #' @param nextToken The `nextToken` value returned from a previous paginated `ListJobs` request where `maxResults` was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the `nextToken` value. This value is `null` when there are no more results to return.
@@ -564,13 +594,14 @@ describe_jobs <- function (jobs)
 #' )}
 #'
 #' @export
-list_jobs <- function (jobQueue = NULL, arrayJobId = NULL, jobStatus = NULL, 
-    maxResults = NULL, nextToken = NULL) 
+list_jobs <- function (jobQueue = NULL, arrayJobId = NULL, multiNodeJobId = NULL, 
+    jobStatus = NULL, maxResults = NULL, nextToken = NULL) 
 {
     op <- new_operation(name = "ListJobs", http_method = "POST", 
         http_path = "/v1/listjobs", paginator = list())
     input <- list_jobs_input(jobQueue = jobQueue, arrayJobId = arrayJobId, 
-        jobStatus = jobStatus, maxResults = maxResults, nextToken = nextToken)
+        multiNodeJobId = multiNodeJobId, jobStatus = jobStatus, 
+        maxResults = maxResults, nextToken = nextToken)
     output <- list_jobs_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -586,7 +617,7 @@ list_jobs <- function (jobQueue = NULL, arrayJobId = NULL, jobStatus = NULL,
 #' ```
 #' register_job_definition(
 #'   jobDefinitionName = "string",
-#'   type = "container",
+#'   type = "container"|"multinode",
 #'   parameters = list(
 #'     "string"
 #'   ),
@@ -628,7 +659,58 @@ list_jobs <- function (jobQueue = NULL, arrayJobId = NULL, jobStatus = NULL,
 #'         softLimit = 123
 #'       )
 #'     ),
-#'     user = "string"
+#'     user = "string",
+#'     instanceType = "string"
+#'   ),
+#'   nodeProperties = list(
+#'     numNodes = 123,
+#'     mainNode = 123,
+#'     nodeRangeProperties = list(
+#'       list(
+#'         targetNodes = "string",
+#'         container = list(
+#'           image = "string",
+#'           vcpus = 123,
+#'           memory = 123,
+#'           command = list(
+#'             "string"
+#'           ),
+#'           jobRoleArn = "string",
+#'           volumes = list(
+#'             list(
+#'               host = list(
+#'                 sourcePath = "string"
+#'               ),
+#'               name = "string"
+#'             )
+#'           ),
+#'           environment = list(
+#'             list(
+#'               name = "string",
+#'               value = "string"
+#'             )
+#'           ),
+#'           mountPoints = list(
+#'             list(
+#'               containerPath = "string",
+#'               readOnly = TRUE|FALSE,
+#'               sourceVolume = "string"
+#'             )
+#'           ),
+#'           readonlyRootFilesystem = TRUE|FALSE,
+#'           privileged = TRUE|FALSE,
+#'           ulimits = list(
+#'             list(
+#'               hardLimit = 123,
+#'               name = "string",
+#'               softLimit = 123
+#'             )
+#'           ),
+#'           user = "string",
+#'           instanceType = "string"
+#'         )
+#'       )
+#'     )
 #'   ),
 #'   retryStrategy = list(
 #'     attempts = 123
@@ -642,7 +724,8 @@ list_jobs <- function (jobQueue = NULL, arrayJobId = NULL, jobStatus = NULL,
 #' @param jobDefinitionName &#91;required&#93; The name of the job definition to register. Up to 128 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.
 #' @param type &#91;required&#93; The type of job definition.
 #' @param parameters Default parameter substitution placeholders to set in the job definition. Parameters are specified as a key-value pair mapping. Parameters in a `SubmitJob` request override any corresponding parameter defaults from the job definition.
-#' @param containerProperties An object with various properties specific for container-based jobs. This parameter is required if the `type` parameter is `container`.
+#' @param containerProperties An object with various properties specific to single-node container-based jobs. If the job definition\'s `type` parameter is `container`, then you must specify either `containerProperties` or `nodeProperties`.
+#' @param nodeProperties An object with various properties specific to multi-node parallel jobs. If you specify node properties for a job, it becomes a multi-node parallel job. For more information, see [Multi-node Parallel Jobs](http://docs.aws.amazon.com/batch/latest/userguide/multi-node-parallel-jobs.html) in the *AWS Batch User Guide*. If the job definition\'s `type` parameter is `container`, then you must specify either `containerProperties` or `nodeProperties`.
 #' @param retryStrategy The retry strategy to use for failed jobs that are submitted with this job definition. Any retry strategy that is specified during a SubmitJob operation overrides the retry strategy defined here. If a job is terminated due to a timeout, it is not retried.
 #' @param timeout The timeout configuration for jobs that are submitted with this job definition, after which AWS Batch terminates your jobs if they have not finished. If a job is terminated due to a timeout, it is not retried. The minimum value for the timeout is 60 seconds. Any timeout configuration that is specified during a SubmitJob operation overrides the timeout configuration defined here. For more information, see [Job Timeouts](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/job_timeouts.html) in the *Amazon Elastic Container Service Developer Guide*.
 #'
@@ -664,14 +747,15 @@ list_jobs <- function (jobQueue = NULL, arrayJobId = NULL, jobStatus = NULL,
 #'
 #' @export
 register_job_definition <- function (jobDefinitionName, type, 
-    parameters = NULL, containerProperties = NULL, retryStrategy = NULL, 
-    timeout = NULL) 
+    parameters = NULL, containerProperties = NULL, nodeProperties = NULL, 
+    retryStrategy = NULL, timeout = NULL) 
 {
     op <- new_operation(name = "RegisterJobDefinition", http_method = "POST", 
         http_path = "/v1/registerjobdefinition", paginator = list())
     input <- register_job_definition_input(jobDefinitionName = jobDefinitionName, 
         type = type, parameters = parameters, containerProperties = containerProperties, 
-        retryStrategy = retryStrategy, timeout = timeout)
+        nodeProperties = nodeProperties, retryStrategy = retryStrategy, 
+        timeout = timeout)
     output <- register_job_definition_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -707,10 +791,32 @@ register_job_definition <- function (jobDefinitionName, type,
 #'     command = list(
 #'       "string"
 #'     ),
+#'     instanceType = "string",
 #'     environment = list(
 #'       list(
 #'         name = "string",
 #'         value = "string"
+#'       )
+#'     )
+#'   ),
+#'   nodeOverrides = list(
+#'     nodePropertyOverrides = list(
+#'       list(
+#'         targetNodes = "string",
+#'         containerOverrides = list(
+#'           vcpus = 123,
+#'           memory = 123,
+#'           command = list(
+#'             "string"
+#'           ),
+#'           instanceType = "string",
+#'           environment = list(
+#'             list(
+#'               name = "string",
+#'               value = "string"
+#'             )
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -726,10 +832,11 @@ register_job_definition <- function (jobDefinitionName, type,
 #' @param jobName &#91;required&#93; The name of the job. The first character must be alphanumeric, and up to 128 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.
 #' @param jobQueue &#91;required&#93; The job queue into which the job is submitted. You can specify either the name or the Amazon Resource Name (ARN) of the queue.
 #' @param arrayProperties The array properties for the submitted job, such as the size of the array. The array size can be between 2 and 10,000. If you specify array properties for a job, it becomes an array job. For more information, see [Array Jobs](http://docs.aws.amazon.com/batch/latest/userguide/array_jobs.html) in the *AWS Batch User Guide*.
-#' @param dependsOn A list of dependencies for the job. A job can depend upon a maximum of 20 jobs. You can specify a `SEQUENTIAL` type dependency without specifying a job ID for array jobs so that each child array job completes sequentially, starting at index 0. You can also specify an `N_TO_N` type dependency with a job ID for array jobs so that each index child of this job must wait for the corresponding index child of each dependency to complete before it can begin.
+#' @param dependsOn A list of dependencies for the job. A job can depend upon a maximum of 20 jobs. You can specify a `SEQUENTIAL` type dependency without specifying a job ID for array jobs so that each child array job completes sequentially, starting at index 0. You can also specify an `N_TO_N` type dependency with a job ID for array jobs. In that case, each index child of this job must wait for the corresponding index child of each dependency to complete before it can begin.
 #' @param jobDefinition &#91;required&#93; The job definition used by this job. This value can be either a `name:revision` or the Amazon Resource Name (ARN) for the job definition.
 #' @param parameters Additional parameters passed to the job that replace parameter substitution placeholders that are set in the job definition. Parameters are specified as a key and value pair mapping. Parameters in a `SubmitJob` request override any corresponding parameter defaults from the job definition.
 #' @param containerOverrides A list of container overrides in JSON format that specify the name of a container in the specified job definition and the overrides it should receive. You can override the default command for a container (that is specified in the job definition or the Docker image) with a `command` override. You can also override existing environment variables (that are specified in the job definition or Docker image) on a container or add new environment variables to it with an `environment` override.
+#' @param nodeOverrides A list of node overrides in JSON format that specify the node range to target and the container overrides for that node range.
 #' @param retryStrategy The retry strategy to use for failed jobs from this SubmitJob operation. When a retry strategy is specified here, it overrides the retry strategy defined in the job definition.
 #' @param timeout The timeout configuration for this SubmitJob operation. You can specify a timeout duration after which AWS Batch terminates your jobs if they have not finished. If a job is terminated due to a timeout, it is not retried. The minimum value for the timeout is 60 seconds. This configuration overrides any timeout configuration specified in the job definition. For array jobs, child jobs have the same timeout configuration as the parent job. For more information, see [Job Timeouts](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/job_timeouts.html) in the *Amazon Elastic Container Service Developer Guide*.
 #'
@@ -745,15 +852,15 @@ register_job_definition <- function (jobDefinitionName, type,
 #' @export
 submit_job <- function (jobName, jobQueue, arrayProperties = NULL, 
     dependsOn = NULL, jobDefinition, parameters = NULL, containerOverrides = NULL, 
-    retryStrategy = NULL, timeout = NULL) 
+    nodeOverrides = NULL, retryStrategy = NULL, timeout = NULL) 
 {
     op <- new_operation(name = "SubmitJob", http_method = "POST", 
         http_path = "/v1/submitjob", paginator = list())
     input <- submit_job_input(jobName = jobName, jobQueue = jobQueue, 
         arrayProperties = arrayProperties, dependsOn = dependsOn, 
         jobDefinition = jobDefinition, parameters = parameters, 
-        containerOverrides = containerOverrides, retryStrategy = retryStrategy, 
-        timeout = timeout)
+        containerOverrides = containerOverrides, nodeOverrides = nodeOverrides, 
+        retryStrategy = retryStrategy, timeout = timeout)
     output <- submit_job_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -867,7 +974,7 @@ update_compute_environment <- function (computeEnvironment, state = NULL,
 #'
 #' @param jobQueue &#91;required&#93; The name or the Amazon Resource Name (ARN) of the job queue.
 #' @param state Describes the queue\'s ability to accept new jobs.
-#' @param priority The priority of the job queue. Job queues with a higher priority (or a higher integer value for the `priority` parameter) are evaluated first when associated with same compute environment. Priority is determined in descending order, for example, a job queue with a priority value of `10` is given scheduling preference over a job queue with a priority value of `1`.
+#' @param priority The priority of the job queue. Job queues with a higher priority (or a higher integer value for the `priority` parameter) are evaluated first when associated with the same compute environment. Priority is determined in descending order, for example, a job queue with a priority value of `10` is given scheduling preference over a job queue with a priority value of `1`.
 #' @param computeEnvironmentOrder Details the set of compute environments mapped to a job queue and their order relative to each other. This is one of the parameters used by the job scheduler to determine which compute environment should execute a given job.
 #'
 #' @examples

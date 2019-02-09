@@ -15,11 +15,12 @@ NULL
 #'   description = "string",
 #'   rules = list(
 #'     list(
-#'       attribute = "ARN"|"PLATFORM"|"FORM_FACTOR"|"MANUFACTURER"|"REMOTE_ACCESS_ENABLED"|"REMOTE_DEBUG_ENABLED"|"APPIUM_VERSION"|"INSTANCE_ARN"|"INSTANCE_LABELS"|"FLEET_TYPE",
-#'       operator = "EQUALS"|"LESS_THAN"|"GREATER_THAN"|"IN"|"NOT_IN"|"CONTAINS",
+#'       attribute = "ARN"|"PLATFORM"|"FORM_FACTOR"|"MANUFACTURER"|"REMOTE_ACCESS_ENABLED"|"REMOTE_DEBUG_ENABLED"|"APPIUM_VERSION"|"INSTANCE_ARN"|"INSTANCE_LABELS"|"FLEET_TYPE"|"OS_VERSION"|"MODEL"|"AVAILABILITY",
+#'       operator = "EQUALS"|"LESS_THAN"|"LESS_THAN_OR_EQUALS"|"GREATER_THAN"|"GREATER_THAN_OR_EQUALS"|"IN"|"NOT_IN"|"CONTAINS",
 #'       value = "string"
 #'     )
-#'   )
+#'   ),
+#'   maxDevices = 123
 #' )
 #' ```
 #'
@@ -27,6 +28,9 @@ NULL
 #' @param name &#91;required&#93; The device pool\'s name.
 #' @param description The device pool\'s description.
 #' @param rules &#91;required&#93; The device pool\'s rules.
+#' @param maxDevices The number of devices that Device Farm can add to your device pool. Device Farm adds devices that are available and that meet the criteria that you assign for the `rules` parameter. Depending on how many devices meet these constraints, your device pool might contain fewer devices than the value for this parameter.
+#' 
+#' By specifying the maximum number of devices, you can control the costs that you incur by running tests.
 #'
 #' @examples
 #' # The following example creates a new device pool named MyDevicePool
@@ -40,12 +44,13 @@ NULL
 #'
 #' @export
 create_device_pool <- function (projectArn, name, description = NULL, 
-    rules) 
+    rules, maxDevices = NULL) 
 {
     op <- new_operation(name = "CreateDevicePool", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- create_device_pool_input(projectArn = projectArn, 
-        name = name, description = description, rules = rules)
+        name = name, description = description, rules = rules, 
+        maxDevices = maxDevices)
     output <- create_device_pool_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -275,7 +280,7 @@ create_remote_access_session <- function (projectArn, deviceArn,
 #' create_upload(
 #'   projectArn = "string",
 #'   name = "string",
-#'   type = "ANDROID_APP"|"IOS_APP"|"WEB_APP"|"EXTERNAL_DATA"|"APPIUM_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_PYTHON_TEST_PACKAGE"|"APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_WEB_PYTHON_TEST_PACKAGE"|"CALABASH_TEST_PACKAGE"|"INSTRUMENTATION_TEST_PACKAGE"|"UIAUTOMATION_TEST_PACKAGE"|"UIAUTOMATOR_TEST_PACKAGE"|"XCTEST_TEST_PACKAGE"|"XCTEST_UI_TEST_PACKAGE"|"APPIUM_JAVA_JUNIT_TEST_SPEC"|"APPIUM_JAVA_TESTNG_TEST_SPEC"|"APPIUM_PYTHON_TEST_SPEC"|"APPIUM_WEB_JAVA_JUNIT_TEST_SPEC"|"APPIUM_WEB_JAVA_TESTNG_TEST_SPEC"|"APPIUM_WEB_PYTHON_TEST_SPEC"|"INSTRUMENTATION_TEST_SPEC"|"XCTEST_UI_TEST_SPEC",
+#'   type = "ANDROID_APP"|"IOS_APP"|"WEB_APP"|"EXTERNAL_DATA"|"APPIUM_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_PYTHON_TEST_PACKAGE"|"APPIUM_NODE_TEST_PACKAGE"|"APPIUM_RUBY_TEST_PACKAGE"|"APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_WEB_PYTHON_TEST_PACKAGE"|"APPIUM_WEB_NODE_TEST_PACKAGE"|"APPIUM_WEB_RUBY_TEST_PACKAGE"|"CALABASH_TEST_PACKAGE"|"INSTRUMENTATION_TEST_PACKAGE"|"UIAUTOMATION_TEST_PACKAGE"|"UIAUTOMATOR_TEST_PACKAGE"|"XCTEST_TEST_PACKAGE"|"XCTEST_UI_TEST_PACKAGE"|"APPIUM_JAVA_JUNIT_TEST_SPEC"|"APPIUM_JAVA_TESTNG_TEST_SPEC"|"APPIUM_PYTHON_TEST_SPEC"|"APPIUM_NODE_TEST_SPEC"|"APPIUM_RUBY_TEST_SPEC"|"APPIUM_WEB_JAVA_JUNIT_TEST_SPEC"|"APPIUM_WEB_JAVA_TESTNG_TEST_SPEC"|"APPIUM_WEB_PYTHON_TEST_SPEC"|"APPIUM_WEB_NODE_TEST_SPEC"|"APPIUM_WEB_RUBY_TEST_SPEC"|"INSTRUMENTATION_TEST_SPEC"|"XCTEST_UI_TEST_SPEC",
 #'   contentType = "string"
 #' )
 #' ```
@@ -300,11 +305,19 @@ create_remote_access_session <- function (projectArn, deviceArn,
 #' 
 #' -   APPIUM\_PYTHON\_TEST\_PACKAGE: An Appium Python test package upload.
 #' 
-#' -   APPIUM\_WEB\_JAVA\_JUNIT\_TEST\_PACKAGE: An Appium Java JUnit test package upload.
+#' -   APPIUM\_NODE\_TEST\_PACKAGE: An Appium Node.js test package upload.
 #' 
-#' -   APPIUM\_WEB\_JAVA\_TESTNG\_TEST\_PACKAGE: An Appium Java TestNG test package upload.
+#' -   APPIUM\_RUBY\_TEST\_PACKAGE: An Appium Ruby test package upload.
 #' 
-#' -   APPIUM\_WEB\_PYTHON\_TEST\_PACKAGE: An Appium Python test package upload.
+#' -   APPIUM\_WEB\_JAVA\_JUNIT\_TEST\_PACKAGE: An Appium Java JUnit test package upload for a web app.
+#' 
+#' -   APPIUM\_WEB\_JAVA\_TESTNG\_TEST\_PACKAGE: An Appium Java TestNG test package upload for a web app.
+#' 
+#' -   APPIUM\_WEB\_PYTHON\_TEST\_PACKAGE: An Appium Python test package upload for a web app.
+#' 
+#' -   APPIUM\_WEB\_NODE\_TEST\_PACKAGE: An Appium Node.js test package upload for a web app.
+#' 
+#' -   APPIUM\_WEB\_RUBY\_TEST\_PACKAGE: An Appium Ruby test package upload for a web app.
 #' 
 #' -   CALABASH\_TEST\_PACKAGE: A Calabash test package upload.
 #' 
@@ -317,6 +330,30 @@ create_remote_access_session <- function (projectArn, deviceArn,
 #' -   XCTEST\_TEST\_PACKAGE: An XCode test package upload.
 #' 
 #' -   XCTEST\_UI\_TEST\_PACKAGE: An XCode UI test package upload.
+#' 
+#' -   APPIUM\_JAVA\_JUNIT\_TEST\_SPEC: An Appium Java JUnit test spec upload.
+#' 
+#' -   APPIUM\_JAVA\_TESTNG\_TEST\_SPEC: An Appium Java TestNG test spec upload.
+#' 
+#' -   APPIUM\_PYTHON\_TEST\_SPEC: An Appium Python test spec upload.
+#' 
+#' -   APPIUM\_NODE\_TEST\_SPEC: An Appium Node.js test spec upload.
+#' 
+#' -   APPIUM\_RUBY\_TEST\_SPEC: An Appium Ruby test spec upload.
+#' 
+#' -   APPIUM\_WEB\_JAVA\_JUNIT\_TEST\_SPEC: An Appium Java JUnit test spec upload for a web app.
+#' 
+#' -   APPIUM\_WEB\_JAVA\_TESTNG\_TEST\_SPEC: An Appium Java TestNG test spec upload for a web app.
+#' 
+#' -   APPIUM\_WEB\_PYTHON\_TEST\_SPEC: An Appium Python test spec upload for a web app.
+#' 
+#' -   APPIUM\_WEB\_NODE\_TEST\_SPEC: An Appium Node.js test spec upload for a web app.
+#' 
+#' -   APPIUM\_WEB\_RUBY\_TEST\_SPEC: An Appium Ruby test spec upload for a web app.
+#' 
+#' -   INSTRUMENTATION\_TEST\_SPEC: An instrumentation test spec upload.
+#' 
+#' -   XCTEST\_UI\_TEST\_SPEC: An XCode UI test spec upload.
 #' 
 #' **Note** If you call `CreateUpload` with `WEB_APP` specified, AWS Device Farm throws an `ArgumentException` error.
 #' @param contentType The upload\'s content type (for example, \"application/octet-stream\").
@@ -748,9 +785,9 @@ get_device_pool <- function (arn)
 #' get_device_pool_compatibility(
 #'   devicePoolArn = "string",
 #'   appArn = "string",
-#'   testType = "BUILTIN_FUZZ"|"BUILTIN_EXPLORER"|"WEB_PERFORMANCE_PROFILE"|"APPIUM_JAVA_JUNIT"|"APPIUM_JAVA_TESTNG"|"APPIUM_PYTHON"|"APPIUM_WEB_JAVA_JUNIT"|"APPIUM_WEB_JAVA_TESTNG"|"APPIUM_WEB_PYTHON"|"CALABASH"|"INSTRUMENTATION"|"UIAUTOMATION"|"UIAUTOMATOR"|"XCTEST"|"XCTEST_UI"|"REMOTE_ACCESS_RECORD"|"REMOTE_ACCESS_REPLAY",
+#'   testType = "BUILTIN_FUZZ"|"BUILTIN_EXPLORER"|"WEB_PERFORMANCE_PROFILE"|"APPIUM_JAVA_JUNIT"|"APPIUM_JAVA_TESTNG"|"APPIUM_PYTHON"|"APPIUM_NODE"|"APPIUM_RUBY"|"APPIUM_WEB_JAVA_JUNIT"|"APPIUM_WEB_JAVA_TESTNG"|"APPIUM_WEB_PYTHON"|"APPIUM_WEB_NODE"|"APPIUM_WEB_RUBY"|"CALABASH"|"INSTRUMENTATION"|"UIAUTOMATION"|"UIAUTOMATOR"|"XCTEST"|"XCTEST_UI"|"REMOTE_ACCESS_RECORD"|"REMOTE_ACCESS_REPLAY",
 #'   test = list(
-#'     type = "BUILTIN_FUZZ"|"BUILTIN_EXPLORER"|"WEB_PERFORMANCE_PROFILE"|"APPIUM_JAVA_JUNIT"|"APPIUM_JAVA_TESTNG"|"APPIUM_PYTHON"|"APPIUM_WEB_JAVA_JUNIT"|"APPIUM_WEB_JAVA_TESTNG"|"APPIUM_WEB_PYTHON"|"CALABASH"|"INSTRUMENTATION"|"UIAUTOMATION"|"UIAUTOMATOR"|"XCTEST"|"XCTEST_UI"|"REMOTE_ACCESS_RECORD"|"REMOTE_ACCESS_REPLAY",
+#'     type = "BUILTIN_FUZZ"|"BUILTIN_EXPLORER"|"WEB_PERFORMANCE_PROFILE"|"APPIUM_JAVA_JUNIT"|"APPIUM_JAVA_TESTNG"|"APPIUM_PYTHON"|"APPIUM_NODE"|"APPIUM_RUBY"|"APPIUM_WEB_JAVA_JUNIT"|"APPIUM_WEB_JAVA_TESTNG"|"APPIUM_WEB_PYTHON"|"APPIUM_WEB_NODE"|"APPIUM_WEB_RUBY"|"CALABASH"|"INSTRUMENTATION"|"UIAUTOMATION"|"UIAUTOMATOR"|"XCTEST"|"XCTEST_UI"|"REMOTE_ACCESS_RECORD"|"REMOTE_ACCESS_REPLAY",
 #'     testPackageArn = "string",
 #'     testSpecArn = "string",
 #'     filter = "string",
@@ -810,11 +847,19 @@ get_device_pool <- function (arn)
 #' 
 #' -   APPIUM\_PYTHON: The Appium Python type.
 #' 
-#' -   APPIUM\_WEB\_JAVA\_JUNIT: The Appium Java JUnit type for Web apps.
+#' -   APPIUM\_NODE: The Appium Node.js type.
 #' 
-#' -   APPIUM\_WEB\_JAVA\_TESTNG: The Appium Java TestNG type for Web apps.
+#' -   APPIUM\_RUBY: The Appium Ruby type.
 #' 
-#' -   APPIUM\_WEB\_PYTHON: The Appium Python type for Web apps.
+#' -   APPIUM\_WEB\_JAVA\_JUNIT: The Appium Java JUnit type for web apps.
+#' 
+#' -   APPIUM\_WEB\_JAVA\_TESTNG: The Appium Java TestNG type for web apps.
+#' 
+#' -   APPIUM\_WEB\_PYTHON: The Appium Python type for web apps.
+#' 
+#' -   APPIUM\_WEB\_NODE: The Appium Node.js type for web apps.
+#' 
+#' -   APPIUM\_WEB\_RUBY: The Appium Ruby type for web apps.
 #' 
 #' -   CALABASH: The Calabash type.
 #' 
@@ -1354,12 +1399,68 @@ list_device_pools <- function (arn, type = NULL, nextToken = NULL)
 #' ```
 #' list_devices(
 #'   arn = "string",
-#'   nextToken = "string"
+#'   nextToken = "string",
+#'   filters = list(
+#'     list(
+#'       attribute = "ARN"|"PLATFORM"|"OS_VERSION"|"MODEL"|"AVAILABILITY"|"FORM_FACTOR"|"MANUFACTURER"|"REMOTE_ACCESS_ENABLED"|"REMOTE_DEBUG_ENABLED"|"INSTANCE_ARN"|"INSTANCE_LABELS"|"FLEET_TYPE",
+#'       operator = "EQUALS"|"LESS_THAN"|"LESS_THAN_OR_EQUALS"|"GREATER_THAN"|"GREATER_THAN_OR_EQUALS"|"IN"|"NOT_IN"|"CONTAINS",
+#'       values = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @param arn The Amazon Resource Name (ARN) of the project.
 #' @param nextToken An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+#' @param filters Used to select a set of devices. A filter is made up of an attribute, an operator, and one or more values.
+#' 
+#' -   Attribute: The aspect of a device such as platform or model used as the selction criteria in a device filter.
+#' 
+#'     Allowed values include:
+#' 
+#'     -   ARN: The Amazon Resource Name (ARN) of the device. For example, \"arn:aws:devicefarm:us-west-2::device:12345Example\".
+#' 
+#'     -   PLATFORM: The device platform. Valid values are \"ANDROID\" or \"IOS\".
+#' 
+#'     -   OS\_VERSION: The operating system version. For example, \"10.3.2\".
+#' 
+#'     -   MODEL: The device model. For example, \"iPad 5th Gen\".
+#' 
+#'     -   AVAILABILITY: The current availability of the device. Valid values are \"AVAILABLE\", \"HIGHLY\_AVAILABLE\", \"BUSY\", or \"TEMPORARY\_NOT\_AVAILABLE\".
+#' 
+#'     -   FORM\_FACTOR: The device form factor. Valid values are \"PHONE\" or \"TABLET\".
+#' 
+#'     -   MANUFACTURER: The device manufacturer. For example, \"Apple\".
+#' 
+#'     -   REMOTE\_ACCESS\_ENABLED: Whether the device is enabled for remote access. Valid values are \"TRUE\" or \"FALSE\".
+#' 
+#'     -   REMOTE\_DEBUG\_ENABLED: Whether the device is enabled for remote debugging. Valid values are \"TRUE\" or \"FALSE\".
+#' 
+#'     -   INSTANCE\_ARN: The Amazon Resource Name (ARN) of the device instance.
+#' 
+#'     -   INSTANCE\_LABELS: The label of the device instance.
+#' 
+#'     -   FLEET\_TYPE: The fleet type. Valid values are \"PUBLIC\" or \"PRIVATE\".
+#' 
+#' -   Operator: The filter operator.
+#' 
+#'     -   The EQUALS operator is available for every attribute except INSTANCE\_LABELS.
+#' 
+#'     -   The CONTAINS operator is available for the INSTANCE\_LABELS and MODEL attributes.
+#' 
+#'     -   The IN and NOT\_IN operators are available for the ARN, OS\_VERSION, MODEL, MANUFACTURER, and INSTANCE\_ARN attributes.
+#' 
+#'     -   The LESS\_THAN, GREATER\_THAN, LESS\_THAN\_OR\_EQUALS, and GREATER\_THAN\_OR\_EQUALS operators are also available for the OS\_VERSION attribute.
+#' 
+#' -   Values: An array of one or more filter values.
+#' 
+#'     -   The IN and NOT\_IN operators take a values array that has one or more elements.
+#' 
+#'     -   The other operators require an array with a single element.
+#' 
+#'     -   In a request, the AVAILABILITY attribute takes \"AVAILABLE\", \"HIGHLY\_AVAILABLE\", \"BUSY\", or \"TEMPORARY\_NOT\_AVAILABLE\" as values.
 #'
 #' @examples
 #' # The following example returns information about the available devices in
@@ -1369,11 +1470,12 @@ list_device_pools <- function (arn, type = NULL, nextToken = NULL)
 #' )}
 #'
 #' @export
-list_devices <- function (arn = NULL, nextToken = NULL) 
+list_devices <- function (arn = NULL, nextToken = NULL, filters = NULL) 
 {
     op <- new_operation(name = "ListDevices", http_method = "POST", 
         http_path = "/", paginator = list())
-    input <- list_devices_input(arn = arn, nextToken = nextToken)
+    input <- list_devices_input(arn = arn, nextToken = nextToken, 
+        filters = filters)
     output <- list_devices_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -1675,9 +1777,9 @@ list_runs <- function (arn, nextToken = NULL)
     return(response)
 }
 
-#' Gets information about samples, given an AWS Device Farm project ARN
+#' Gets information about samples, given an AWS Device Farm job ARN
 #'
-#' Gets information about samples, given an AWS Device Farm project ARN
+#' Gets information about samples, given an AWS Device Farm job ARN.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1687,7 +1789,7 @@ list_runs <- function (arn, nextToken = NULL)
 #' )
 #' ```
 #'
-#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the project for which you want to list samples.
+#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the job used to list samples.
 #' @param nextToken An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
 #'
 #' @examples
@@ -1827,7 +1929,7 @@ list_unique_problems <- function (arn, nextToken = NULL)
 #' ```
 #' list_uploads(
 #'   arn = "string",
-#'   type = "ANDROID_APP"|"IOS_APP"|"WEB_APP"|"EXTERNAL_DATA"|"APPIUM_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_PYTHON_TEST_PACKAGE"|"APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_WEB_PYTHON_TEST_PACKAGE"|"CALABASH_TEST_PACKAGE"|"INSTRUMENTATION_TEST_PACKAGE"|"UIAUTOMATION_TEST_PACKAGE"|"UIAUTOMATOR_TEST_PACKAGE"|"XCTEST_TEST_PACKAGE"|"XCTEST_UI_TEST_PACKAGE"|"APPIUM_JAVA_JUNIT_TEST_SPEC"|"APPIUM_JAVA_TESTNG_TEST_SPEC"|"APPIUM_PYTHON_TEST_SPEC"|"APPIUM_WEB_JAVA_JUNIT_TEST_SPEC"|"APPIUM_WEB_JAVA_TESTNG_TEST_SPEC"|"APPIUM_WEB_PYTHON_TEST_SPEC"|"INSTRUMENTATION_TEST_SPEC"|"XCTEST_UI_TEST_SPEC",
+#'   type = "ANDROID_APP"|"IOS_APP"|"WEB_APP"|"EXTERNAL_DATA"|"APPIUM_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_PYTHON_TEST_PACKAGE"|"APPIUM_NODE_TEST_PACKAGE"|"APPIUM_RUBY_TEST_PACKAGE"|"APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_WEB_PYTHON_TEST_PACKAGE"|"APPIUM_WEB_NODE_TEST_PACKAGE"|"APPIUM_WEB_RUBY_TEST_PACKAGE"|"CALABASH_TEST_PACKAGE"|"INSTRUMENTATION_TEST_PACKAGE"|"UIAUTOMATION_TEST_PACKAGE"|"UIAUTOMATOR_TEST_PACKAGE"|"XCTEST_TEST_PACKAGE"|"XCTEST_UI_TEST_PACKAGE"|"APPIUM_JAVA_JUNIT_TEST_SPEC"|"APPIUM_JAVA_TESTNG_TEST_SPEC"|"APPIUM_PYTHON_TEST_SPEC"|"APPIUM_NODE_TEST_SPEC"|"APPIUM_RUBY_TEST_SPEC"|"APPIUM_WEB_JAVA_JUNIT_TEST_SPEC"|"APPIUM_WEB_JAVA_TESTNG_TEST_SPEC"|"APPIUM_WEB_PYTHON_TEST_SPEC"|"APPIUM_WEB_NODE_TEST_SPEC"|"APPIUM_WEB_RUBY_TEST_SPEC"|"INSTRUMENTATION_TEST_SPEC"|"XCTEST_UI_TEST_SPEC",
 #'   nextToken = "string"
 #' )
 #' ```
@@ -1851,11 +1953,19 @@ list_unique_problems <- function (arn, nextToken = NULL)
 #' 
 #' -   APPIUM\_PYTHON\_TEST\_PACKAGE: An Appium Python test package upload.
 #' 
-#' -   APPIUM\_WEB\_JAVA\_JUNIT\_TEST\_PACKAGE: An Appium Java JUnit test package upload.
+#' -   APPIUM\_NODE\_TEST\_PACKAGE: An Appium Node.js test package upload.
 #' 
-#' -   APPIUM\_WEB\_JAVA\_TESTNG\_TEST\_PACKAGE: An Appium Java TestNG test package upload.
+#' -   APPIUM\_RUBY\_TEST\_PACKAGE: An Appium Ruby test package upload.
 #' 
-#' -   APPIUM\_WEB\_PYTHON\_TEST\_PACKAGE: An Appium Python test package upload.
+#' -   APPIUM\_WEB\_JAVA\_JUNIT\_TEST\_PACKAGE: An Appium Java JUnit test package upload for a web app.
+#' 
+#' -   APPIUM\_WEB\_JAVA\_TESTNG\_TEST\_PACKAGE: An Appium Java TestNG test package upload for a web app.
+#' 
+#' -   APPIUM\_WEB\_PYTHON\_TEST\_PACKAGE: An Appium Python test package upload for a web app.
+#' 
+#' -   APPIUM\_WEB\_NODE\_TEST\_PACKAGE: An Appium Node.js test package upload for a web app.
+#' 
+#' -   APPIUM\_WEB\_RUBY\_TEST\_PACKAGE: An Appium Ruby test package upload for a web app.
 #' 
 #' -   CALABASH\_TEST\_PACKAGE: A Calabash test package upload.
 #' 
@@ -1875,11 +1985,19 @@ list_unique_problems <- function (arn, nextToken = NULL)
 #' 
 #' -   APPIUM\_PYTHON\_TEST\_SPEC: An Appium Python test spec upload.
 #' 
-#' -   APPIUM\_WEB\_JAVA\_JUNIT\_TEST\_SPEC: An Appium Java JUnit test spec upload.
+#' -   APPIUM\_NODE\_TEST\_SPEC: An Appium Node.js test spec upload.
 #' 
-#' -   APPIUM\_WEB\_JAVA\_TESTNG\_TEST\_SPEC: An Appium Java TestNG test spec upload.
+#' -   APPIUM\_RUBY\_TEST\_SPEC: An Appium Ruby test spec upload.
 #' 
-#' -   APPIUM\_WEB\_PYTHON\_TEST\_SPEC: An Appium Python test spec upload.
+#' -   APPIUM\_WEB\_JAVA\_JUNIT\_TEST\_SPEC: An Appium Java JUnit test spec upload for a web app.
+#' 
+#' -   APPIUM\_WEB\_JAVA\_TESTNG\_TEST\_SPEC: An Appium Java TestNG test spec upload for a web app.
+#' 
+#' -   APPIUM\_WEB\_PYTHON\_TEST\_SPEC: An Appium Python test spec upload for a web app.
+#' 
+#' -   APPIUM\_WEB\_NODE\_TEST\_SPEC: An Appium Node.js test spec upload for a web app.
+#' 
+#' -   APPIUM\_WEB\_RUBY\_TEST\_SPEC: An Appium Ruby test spec upload for a web app.
 #' 
 #' -   INSTRUMENTATION\_TEST\_SPEC: An instrumentation test spec upload.
 #' 
@@ -2020,9 +2138,21 @@ renew_offering <- function (offeringId = NULL, quantity = NULL)
 #'   projectArn = "string",
 #'   appArn = "string",
 #'   devicePoolArn = "string",
+#'   deviceSelectionConfiguration = list(
+#'     filters = list(
+#'       list(
+#'         attribute = "ARN"|"PLATFORM"|"OS_VERSION"|"MODEL"|"AVAILABILITY"|"FORM_FACTOR"|"MANUFACTURER"|"REMOTE_ACCESS_ENABLED"|"REMOTE_DEBUG_ENABLED"|"INSTANCE_ARN"|"INSTANCE_LABELS"|"FLEET_TYPE",
+#'         operator = "EQUALS"|"LESS_THAN"|"LESS_THAN_OR_EQUALS"|"GREATER_THAN"|"GREATER_THAN_OR_EQUALS"|"IN"|"NOT_IN"|"CONTAINS",
+#'         values = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     maxDevices = 123
+#'   ),
 #'   name = "string",
 #'   test = list(
-#'     type = "BUILTIN_FUZZ"|"BUILTIN_EXPLORER"|"WEB_PERFORMANCE_PROFILE"|"APPIUM_JAVA_JUNIT"|"APPIUM_JAVA_TESTNG"|"APPIUM_PYTHON"|"APPIUM_WEB_JAVA_JUNIT"|"APPIUM_WEB_JAVA_TESTNG"|"APPIUM_WEB_PYTHON"|"CALABASH"|"INSTRUMENTATION"|"UIAUTOMATION"|"UIAUTOMATOR"|"XCTEST"|"XCTEST_UI"|"REMOTE_ACCESS_RECORD"|"REMOTE_ACCESS_REPLAY",
+#'     type = "BUILTIN_FUZZ"|"BUILTIN_EXPLORER"|"WEB_PERFORMANCE_PROFILE"|"APPIUM_JAVA_JUNIT"|"APPIUM_JAVA_TESTNG"|"APPIUM_PYTHON"|"APPIUM_NODE"|"APPIUM_RUBY"|"APPIUM_WEB_JAVA_JUNIT"|"APPIUM_WEB_JAVA_TESTNG"|"APPIUM_WEB_PYTHON"|"APPIUM_WEB_NODE"|"APPIUM_WEB_RUBY"|"CALABASH"|"INSTRUMENTATION"|"UIAUTOMATION"|"UIAUTOMATOR"|"XCTEST"|"XCTEST_UI"|"REMOTE_ACCESS_RECORD"|"REMOTE_ACCESS_REPLAY",
 #'     testPackageArn = "string",
 #'     testSpecArn = "string",
 #'     filter = "string",
@@ -2075,7 +2205,10 @@ renew_offering <- function (offeringId = NULL, quantity = NULL)
 #'
 #' @param projectArn &#91;required&#93; The ARN of the project for the run to be scheduled.
 #' @param appArn The ARN of the app to schedule a run.
-#' @param devicePoolArn &#91;required&#93; The ARN of the device pool for the run to be scheduled.
+#' @param devicePoolArn The ARN of the device pool for the run to be scheduled.
+#' @param deviceSelectionConfiguration The filter criteria used to dynamically select a set of devices for a test run, as well as the maximum number of devices to be included in the run.
+#' 
+#' Either **`devicePoolArn`** or **`deviceSelectionConfiguration`** is required in a request.
 #' @param name The name for the run to be scheduled.
 #' @param test &#91;required&#93; Information about the test for the run to be scheduled.
 #' @param configuration Information about the settings for the run to be scheduled.
@@ -2094,14 +2227,16 @@ renew_offering <- function (offeringId = NULL, quantity = NULL)
 #' )}
 #'
 #' @export
-schedule_run <- function (projectArn, appArn = NULL, devicePoolArn, 
-    name = NULL, test, configuration = NULL, executionConfiguration = NULL) 
+schedule_run <- function (projectArn, appArn = NULL, devicePoolArn = NULL, 
+    deviceSelectionConfiguration = NULL, name = NULL, test, configuration = NULL, 
+    executionConfiguration = NULL) 
 {
     op <- new_operation(name = "ScheduleRun", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- schedule_run_input(projectArn = projectArn, appArn = appArn, 
-        devicePoolArn = devicePoolArn, name = name, test = test, 
-        configuration = configuration, executionConfiguration = executionConfiguration)
+        devicePoolArn = devicePoolArn, deviceSelectionConfiguration = deviceSelectionConfiguration, 
+        name = name, test = test, configuration = configuration, 
+        executionConfiguration = executionConfiguration)
     output <- schedule_run_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -2238,11 +2373,13 @@ update_device_instance <- function (arn, profileArn = NULL, labels = NULL)
 #'   description = "string",
 #'   rules = list(
 #'     list(
-#'       attribute = "ARN"|"PLATFORM"|"FORM_FACTOR"|"MANUFACTURER"|"REMOTE_ACCESS_ENABLED"|"REMOTE_DEBUG_ENABLED"|"APPIUM_VERSION"|"INSTANCE_ARN"|"INSTANCE_LABELS"|"FLEET_TYPE",
-#'       operator = "EQUALS"|"LESS_THAN"|"GREATER_THAN"|"IN"|"NOT_IN"|"CONTAINS",
+#'       attribute = "ARN"|"PLATFORM"|"FORM_FACTOR"|"MANUFACTURER"|"REMOTE_ACCESS_ENABLED"|"REMOTE_DEBUG_ENABLED"|"APPIUM_VERSION"|"INSTANCE_ARN"|"INSTANCE_LABELS"|"FLEET_TYPE"|"OS_VERSION"|"MODEL"|"AVAILABILITY",
+#'       operator = "EQUALS"|"LESS_THAN"|"LESS_THAN_OR_EQUALS"|"GREATER_THAN"|"GREATER_THAN_OR_EQUALS"|"IN"|"NOT_IN"|"CONTAINS",
 #'       value = "string"
 #'     )
-#'   )
+#'   ),
+#'   maxDevices = 123,
+#'   clearMaxDevices = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -2250,6 +2387,14 @@ update_device_instance <- function (arn, profileArn = NULL, labels = NULL)
 #' @param name A string representing the name of the device pool you wish to update.
 #' @param description A description of the device pool you wish to update.
 #' @param rules Represents the rules you wish to modify for the device pool. Updating rules is optional; however, if you choose to update rules for your request, the update will replace the existing rules.
+#' @param maxDevices The number of devices that Device Farm can add to your device pool. Device Farm adds devices that are available and that meet the criteria that you assign for the `rules` parameter. Depending on how many devices meet these constraints, your device pool might contain fewer devices than the value for this parameter.
+#' 
+#' By specifying the maximum number of devices, you can control the costs that you incur by running tests.
+#' 
+#' If you use this parameter in your request, you cannot use the `clearMaxDevices` parameter in the same request.
+#' @param clearMaxDevices Sets whether the `maxDevices` parameter applies to your device pool. If you set this parameter to `true`, the `maxDevices` parameter does not apply, and Device Farm does not limit the number of devices that it adds to your device pool. In this case, Device Farm adds all available devices that meet the criteria that are specified for the `rules` parameter.
+#' 
+#' If you use this parameter in your request, you cannot use the `maxDevices` parameter in the same request.
 #'
 #' @examples
 #' # The following example updates the specified device pool with a new name
@@ -2270,12 +2415,13 @@ update_device_instance <- function (arn, profileArn = NULL, labels = NULL)
 #'
 #' @export
 update_device_pool <- function (arn, name = NULL, description = NULL, 
-    rules = NULL) 
+    rules = NULL, maxDevices = NULL, clearMaxDevices = NULL) 
 {
     op <- new_operation(name = "UpdateDevicePool", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- update_device_pool_input(arn = arn, name = name, 
-        description = description, rules = rules)
+        description = description, rules = rules, maxDevices = maxDevices, 
+        clearMaxDevices = clearMaxDevices)
     output <- update_device_pool_output()
     svc <- service()
     request <- new_request(svc, op, input, output)

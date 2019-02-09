@@ -4,11 +4,7 @@
 \alias{list_virtual_routers}
 \title{Returns a list of existing virtual routers in a service mesh}
 \usage{
-list_virtual_routers(
-  limit = 123,
-  meshName = "string",
-  nextToken = "string"
-)
+list_virtual_routers(limit = NULL, meshName, nextToken = NULL)
 }
 \arguments{
 \item{limit}{The maximum number of mesh results returned by \code{ListVirtualRouters} in paginated output. When this parameter is used, \code{ListVirtualRouters} only returns \code{limit} results in a single page along with a \code{nextToken} response element. The remaining results of the initial request can be seen by sending another \code{ListVirtualRouters} request with the returned \code{nextToken} value. This value can be between 1 and 100. If this parameter is not used, then \code{ListVirtualRouters} returns up to 100 results and a \code{nextToken} value if applicable.}
@@ -20,6 +16,12 @@ list_virtual_routers(
 \description{
 Returns a list of existing virtual routers in a service mesh.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_virtual_routers(
+  limit = 123,
+  meshName = "string",
+  nextToken = "string"
+)
 }
+}
+

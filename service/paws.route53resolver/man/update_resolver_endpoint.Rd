@@ -4,10 +4,7 @@
 \alias{update_resolver_endpoint}
 \title{Updates the name of an inbound or an outbound resolver endpoint}
 \usage{
-update_resolver_endpoint(
-  ResolverEndpointId = "string",
-  Name = "string"
-)
+update_resolver_endpoint(ResolverEndpointId, Name = NULL)
 }
 \arguments{
 \item{ResolverEndpointId}{[required] The ID of the resolver endpoint that you want to update.}
@@ -17,6 +14,11 @@ update_resolver_endpoint(
 \description{
 Updates the name of an inbound or an outbound resolver endpoint.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_resolver_endpoint(
+  ResolverEndpointId = "string",
+  Name = "string"
+)
 }
+}
+

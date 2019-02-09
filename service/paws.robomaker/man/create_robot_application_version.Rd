@@ -4,10 +4,7 @@
 \alias{create_robot_application_version}
 \title{Creates a version of a robot application}
 \usage{
-create_robot_application_version(
-  application = "string",
-  currentRevisionId = "string"
-)
+create_robot_application_version(application, currentRevisionId = NULL)
 }
 \arguments{
 \item{application}{[required] The application information for the robot application.}
@@ -17,6 +14,11 @@ create_robot_application_version(
 \description{
 Creates a version of a robot application.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_robot_application_version(
+  application = "string",
+  currentRevisionId = "string"
+)
 }
+}
+

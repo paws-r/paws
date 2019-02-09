@@ -4,13 +4,8 @@
 \alias{execute_sql}
 \title{Executes any SQL statement on the target database synchronously}
 \usage{
-execute_sql(
-  awsSecretStoreArn = "string",
-  database = "string",
-  dbClusterOrInstanceArn = "string",
-  schema = "string",
-  sqlStatements = "string"
-)
+execute_sql(awsSecretStoreArn, database = NULL, dbClusterOrInstanceArn,
+  schema = NULL, sqlStatements)
 }
 \arguments{
 \item{awsSecretStoreArn}{[required] ARN of the db credentials in AWS Secret Store or the friendly secret name}
@@ -26,6 +21,14 @@ execute_sql(
 \description{
 Executes any SQL statement on the target database synchronously
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{execute_sql(
+  awsSecretStoreArn = "string",
+  database = "string",
+  dbClusterOrInstanceArn = "string",
+  schema = "string",
+  sqlStatements = "string"
+)
 }
+}
+

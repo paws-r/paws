@@ -141,7 +141,7 @@ complete_multipart_upload <- function (Bucket, Key, MultipartUpload = NULL,
 #'   MetadataDirective = "COPY"|"REPLACE",
 #'   TaggingDirective = "COPY"|"REPLACE",
 #'   ServerSideEncryption = "AES256"|"aws:kms",
-#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA",
+#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER",
 #'   WebsiteRedirectLocation = "string",
 #'   SSECustomerAlgorithm = "string",
 #'   SSECustomerKey = raw,
@@ -151,7 +151,10 @@ complete_multipart_upload <- function (Bucket, Key, MultipartUpload = NULL,
 #'   CopySourceSSECustomerKey = raw,
 #'   CopySourceSSECustomerKeyMD5 = "string",
 #'   RequestPayer = "requester",
-#'   Tagging = "string"
+#'   Tagging = "string",
+#'   ObjectLockMode = "GOVERNANCE"|"COMPLIANCE",
+#'   ObjectLockRetainUntilDate = as.POSIXct("2015-01-01"),
+#'   ObjectLockLegalHoldStatus = "ON"|"OFF"
 #' )
 #' ```
 #'
@@ -188,6 +191,9 @@ complete_multipart_upload <- function (Bucket, Key, MultipartUpload = NULL,
 #' @param CopySourceSSECustomerKeyMD5 Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
 #' @param RequestPayer 
 #' @param Tagging The tag-set for the object destination object this value must be used in conjunction with the TaggingDirective. The tag-set must be encoded as URL Query parameters
+#' @param ObjectLockMode The Object Lock mode that you want to apply to the copied object.
+#' @param ObjectLockRetainUntilDate The date and time when you want the copied object\'s Object Lock to expire.
+#' @param ObjectLockLegalHoldStatus Specifies whether you want to apply a Legal Hold to the copied object.
 #'
 #' @examples
 #' # The following example copies an object from one bucket to another.
@@ -209,7 +215,8 @@ copy_object <- function (ACL = NULL, Bucket, CacheControl = NULL,
     SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, 
     SSEKMSKeyId = NULL, CopySourceSSECustomerAlgorithm = NULL, 
     CopySourceSSECustomerKey = NULL, CopySourceSSECustomerKeyMD5 = NULL, 
-    RequestPayer = NULL, Tagging = NULL) 
+    RequestPayer = NULL, Tagging = NULL, ObjectLockMode = NULL, 
+    ObjectLockRetainUntilDate = NULL, ObjectLockLegalHoldStatus = NULL) 
 {
     op <- new_operation(name = "CopyObject", http_method = "PUT", 
         http_path = "/{Bucket}/{Key+}", paginator = list())
@@ -229,7 +236,9 @@ copy_object <- function (ACL = NULL, Bucket, CacheControl = NULL,
         CopySourceSSECustomerAlgorithm = CopySourceSSECustomerAlgorithm, 
         CopySourceSSECustomerKey = CopySourceSSECustomerKey, 
         CopySourceSSECustomerKeyMD5 = CopySourceSSECustomerKeyMD5, 
-        RequestPayer = RequestPayer, Tagging = Tagging)
+        RequestPayer = RequestPayer, Tagging = Tagging, ObjectLockMode = ObjectLockMode, 
+        ObjectLockRetainUntilDate = ObjectLockRetainUntilDate, 
+        ObjectLockLegalHoldStatus = ObjectLockLegalHoldStatus)
     output <- copy_object_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -253,7 +262,8 @@ copy_object <- function (ACL = NULL, Bucket, CacheControl = NULL,
 #'   GrantRead = "string",
 #'   GrantReadACP = "string",
 #'   GrantWrite = "string",
-#'   GrantWriteACP = "string"
+#'   GrantWriteACP = "string",
+#'   ObjectLockEnabledForBucket = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -265,8 +275,14 @@ copy_object <- function (ACL = NULL, Bucket, CacheControl = NULL,
 #' @param GrantReadACP Allows grantee to read the bucket ACL.
 #' @param GrantWrite Allows grantee to create, overwrite, and delete any object in the bucket.
 #' @param GrantWriteACP Allows grantee to write the ACL for the applicable bucket.
+#' @param ObjectLockEnabledForBucket Specifies whether you want S3 Object Lock to be enabled for the new bucket.
 #'
 #' @examples
+#' # The following example creates a bucket.
+#' \donttest{create_bucket(
+#'   Bucket = "examplebucket"
+#' )}
+#' 
 #' # The following example creates a bucket. The request specifies an AWS
 #' # region where to create the bucket.
 #' \donttest{create_bucket(
@@ -275,16 +291,11 @@ copy_object <- function (ACL = NULL, Bucket, CacheControl = NULL,
 #'     LocationConstraint = "eu-west-1"
 #'   )
 #' )}
-#' 
-#' # The following example creates a bucket.
-#' \donttest{create_bucket(
-#'   Bucket = "examplebucket"
-#' )}
 #'
 #' @export
 create_bucket <- function (ACL = NULL, Bucket, CreateBucketConfiguration = NULL, 
     GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, 
-    GrantWrite = NULL, GrantWriteACP = NULL) 
+    GrantWrite = NULL, GrantWriteACP = NULL, ObjectLockEnabledForBucket = NULL) 
 {
     op <- new_operation(name = "CreateBucket", http_method = "PUT", 
         http_path = "/{Bucket}", paginator = list())
@@ -292,7 +303,7 @@ create_bucket <- function (ACL = NULL, Bucket, CreateBucketConfiguration = NULL,
         CreateBucketConfiguration = CreateBucketConfiguration, 
         GrantFullControl = GrantFullControl, GrantRead = GrantRead, 
         GrantReadACP = GrantReadACP, GrantWrite = GrantWrite, 
-        GrantWriteACP = GrantWriteACP)
+        GrantWriteACP = GrantWriteACP, ObjectLockEnabledForBucket = ObjectLockEnabledForBucket)
     output <- create_bucket_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -326,14 +337,17 @@ create_bucket <- function (ACL = NULL, Bucket, CreateBucketConfiguration = NULL,
 #'     "string"
 #'   ),
 #'   ServerSideEncryption = "AES256"|"aws:kms",
-#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA",
+#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER",
 #'   WebsiteRedirectLocation = "string",
 #'   SSECustomerAlgorithm = "string",
 #'   SSECustomerKey = raw,
 #'   SSECustomerKeyMD5 = "string",
 #'   SSEKMSKeyId = "string",
 #'   RequestPayer = "requester",
-#'   Tagging = "string"
+#'   Tagging = "string",
+#'   ObjectLockMode = "GOVERNANCE"|"COMPLIANCE",
+#'   ObjectLockRetainUntilDate = as.POSIXct("2015-01-01"),
+#'   ObjectLockLegalHoldStatus = "ON"|"OFF"
 #' )
 #' ```
 #'
@@ -360,6 +374,9 @@ create_bucket <- function (ACL = NULL, Bucket, CreateBucketConfiguration = NULL,
 #' @param SSEKMSKeyId Specifies the AWS KMS key ID to use for object encryption. All GET and PUT requests for an object protected by AWS KMS will fail if not made via SSL or using SigV4. Documentation on configuring any of the officially supported AWS SDKs and CLI can be found at http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html\#specify-signature-version
 #' @param RequestPayer 
 #' @param Tagging The tag-set for the object. The tag-set must be encoded as URL Query parameters
+#' @param ObjectLockMode Specifies the Object Lock mode that you want to apply to the uploaded object.
+#' @param ObjectLockRetainUntilDate Specifies the date and time when you want the Object Lock to expire.
+#' @param ObjectLockLegalHoldStatus Specifies whether you want to apply a Legal Hold to the uploaded object.
 #'
 #' @examples
 #' # The following example initiates a multipart upload.
@@ -376,7 +393,8 @@ create_multipart_upload <- function (ACL = NULL, Bucket, CacheControl = NULL,
     Key, Metadata = NULL, ServerSideEncryption = NULL, StorageClass = NULL, 
     WebsiteRedirectLocation = NULL, SSECustomerAlgorithm = NULL, 
     SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, SSEKMSKeyId = NULL, 
-    RequestPayer = NULL, Tagging = NULL) 
+    RequestPayer = NULL, Tagging = NULL, ObjectLockMode = NULL, 
+    ObjectLockRetainUntilDate = NULL, ObjectLockLegalHoldStatus = NULL) 
 {
     op <- new_operation(name = "CreateMultipartUpload", http_method = "POST", 
         http_path = "/{Bucket}/{Key+}?uploads", paginator = list())
@@ -389,7 +407,9 @@ create_multipart_upload <- function (ACL = NULL, Bucket, CacheControl = NULL,
         StorageClass = StorageClass, WebsiteRedirectLocation = WebsiteRedirectLocation, 
         SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, 
         SSECustomerKeyMD5 = SSECustomerKeyMD5, SSEKMSKeyId = SSEKMSKeyId, 
-        RequestPayer = RequestPayer, Tagging = Tagging)
+        RequestPayer = RequestPayer, Tagging = Tagging, ObjectLockMode = ObjectLockMode, 
+        ObjectLockRetainUntilDate = ObjectLockRetainUntilDate, 
+        ObjectLockLegalHoldStatus = ObjectLockLegalHoldStatus)
     output <- create_multipart_upload_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -459,9 +479,9 @@ delete_bucket_analytics_configuration <- function (Bucket, Id)
     return(response)
 }
 
-#' Deletes the cors configuration information set for the bucket
+#' Deletes the CORS configuration information set for the bucket
 #'
-#' Deletes the cors configuration information set for the bucket.
+#' Deletes the CORS configuration information set for the bucket.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -643,7 +663,7 @@ delete_bucket_policy <- function (Bucket)
 
 #' Deletes the replication configuration from the bucket
 #'
-#' Deletes the replication configuration from the bucket.
+#' Deletes the replication configuration from the bucket. For information about replication configuration, see [Cross-Region Replication (CRR)](\%20https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html) in the *Amazon S3 Developer Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -652,11 +672,9 @@ delete_bucket_policy <- function (Bucket)
 #' )
 #' ```
 #'
-#' @param Bucket &#91;required&#93; Deletes the replication subresource associated with the specified bucket.
+#' @param Bucket &#91;required&#93; The bucket name.
 #' 
-#' There is usually some time lag before replication configuration deletion is fully propagated to all the Amazon S3 systems.
-#' 
-#' For more information, see [Cross-Region Replication (CRR)](%20https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html) in the Amazon S3 Developer Guide.
+#' It can take a while to propagate the deletion of a replication configuration to all Amazon S3 systems.
 #'
 #' @examples
 #' # The following example deletes replication configuration set on bucket.
@@ -752,7 +770,8 @@ delete_bucket_website <- function (Bucket)
 #'   Key = "string",
 #'   MFA = "string",
 #'   VersionId = "string",
-#'   RequestPayer = "requester"
+#'   RequestPayer = "requester",
+#'   BypassGovernanceRetention = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -761,6 +780,7 @@ delete_bucket_website <- function (Bucket)
 #' @param MFA The concatenation of the authentication device\'s serial number, a space, and the value that is displayed on your authentication device.
 #' @param VersionId VersionId used to reference a specific version of the object.
 #' @param RequestPayer 
+#' @param BypassGovernanceRetention Indicates whether S3 Object Lock should bypass Governance-mode restrictions to process this operation.
 #'
 #' @examples
 #' # The following example deletes an object from an S3 bucket.
@@ -777,12 +797,13 @@ delete_bucket_website <- function (Bucket)
 #'
 #' @export
 delete_object <- function (Bucket, Key, MFA = NULL, VersionId = NULL, 
-    RequestPayer = NULL) 
+    RequestPayer = NULL, BypassGovernanceRetention = NULL) 
 {
     op <- new_operation(name = "DeleteObject", http_method = "DELETE", 
         http_path = "/{Bucket}/{Key+}", paginator = list())
     input <- delete_object_input(Bucket = Bucket, Key = Key, 
-        MFA = MFA, VersionId = VersionId, RequestPayer = RequestPayer)
+        MFA = MFA, VersionId = VersionId, RequestPayer = RequestPayer, 
+        BypassGovernanceRetention = BypassGovernanceRetention)
     output <- delete_object_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -857,7 +878,8 @@ delete_object_tagging <- function (Bucket, Key, VersionId = NULL)
 #'     Quiet = TRUE|FALSE
 #'   ),
 #'   MFA = "string",
-#'   RequestPayer = "requester"
+#'   RequestPayer = "requester",
+#'   BypassGovernanceRetention = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -865,8 +887,28 @@ delete_object_tagging <- function (Bucket, Key, VersionId = NULL)
 #' @param Delete &#91;required&#93; 
 #' @param MFA The concatenation of the authentication device\'s serial number, a space, and the value that is displayed on your authentication device.
 #' @param RequestPayer 
+#' @param BypassGovernanceRetention Specifies whether you want to delete this object even if it has a Governance-type Object Lock in place. You must have sufficient permissions to perform this operation.
 #'
 #' @examples
+#' # The following example deletes objects from a bucket. The bucket is
+#' # versioned, and the request does not specify the object version to
+#' # delete. In this case, all versions remain in the bucket and S3 adds a
+#' # delete marker.
+#' \donttest{delete_objects(
+#'   Bucket = "examplebucket",
+#'   Delete = list(
+#'     Objects = list(
+#'       list(
+#'         Key = "objectkey1"
+#'       ),
+#'       list(
+#'         Key = "objectkey2"
+#'       )
+#'     ),
+#'     Quiet = FALSE
+#'   )
+#' )}
+#' 
 #' # The following example deletes objects from a bucket. The request
 #' # specifies object versions. S3 deletes specific object versions and
 #' # returns the key and versions of deleted objects in the response.
@@ -886,34 +928,42 @@ delete_object_tagging <- function (Bucket, Key, VersionId = NULL)
 #'     Quiet = FALSE
 #'   )
 #' )}
-#' 
-#' # The following example deletes objects from a bucket. The bucket is
-#' # versioned, and the request does not specify the object version to
-#' # delete. In this case, all versions remain in the bucket and S3 adds a
-#' # delete marker.
-#' \donttest{delete_objects(
-#'   Bucket = "examplebucket",
-#'   Delete = list(
-#'     Objects = list(
-#'       list(
-#'         Key = "objectkey1"
-#'       ),
-#'       list(
-#'         Key = "objectkey2"
-#'       )
-#'     ),
-#'     Quiet = FALSE
-#'   )
-#' )}
 #'
 #' @export
-delete_objects <- function (Bucket, Delete, MFA = NULL, RequestPayer = NULL) 
+delete_objects <- function (Bucket, Delete, MFA = NULL, RequestPayer = NULL, 
+    BypassGovernanceRetention = NULL) 
 {
     op <- new_operation(name = "DeleteObjects", http_method = "POST", 
         http_path = "/{Bucket}?delete", paginator = list())
     input <- delete_objects_input(Bucket = Bucket, Delete = Delete, 
-        MFA = MFA, RequestPayer = RequestPayer)
+        MFA = MFA, RequestPayer = RequestPayer, BypassGovernanceRetention = BypassGovernanceRetention)
     output <- delete_objects_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Removes the PublicAccessBlock configuration from an Amazon S3 bucket
+#'
+#' Removes the `PublicAccessBlock` configuration from an Amazon S3 bucket.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_public_access_block(
+#'   Bucket = "string"
+#' )
+#' ```
+#'
+#' @param Bucket &#91;required&#93; The Amazon S3 bucket whose `PublicAccessBlock` configuration you want to delete.
+#'
+#' @export
+delete_public_access_block <- function (Bucket) 
+{
+    op <- new_operation(name = "DeletePublicAccessBlock", http_method = "DELETE", 
+        http_path = "/{Bucket}?publicAccessBlock", paginator = list())
+    input <- delete_public_access_block_input(Bucket = Bucket)
+    output <- delete_public_access_block_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -1003,9 +1053,9 @@ get_bucket_analytics_configuration <- function (Bucket, Id)
     return(response)
 }
 
-#' Returns the cors configuration for the bucket
+#' Returns the CORS configuration for the bucket
 #'
-#' Returns the cors configuration for the bucket.
+#' Returns the CORS configuration for the bucket.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1344,9 +1394,37 @@ get_bucket_policy <- function (Bucket)
     return(response)
 }
 
+#' Retrieves the policy status for an Amazon S3 bucket, indicating whether the bucket is public
+#'
+#' Retrieves the policy status for an Amazon S3 bucket, indicating whether the bucket is public.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' get_bucket_policy_status(
+#'   Bucket = "string"
+#' )
+#' ```
+#'
+#' @param Bucket &#91;required&#93; The name of the Amazon S3 bucket whose policy status you want to retrieve.
+#'
+#' @export
+get_bucket_policy_status <- function (Bucket) 
+{
+    op <- new_operation(name = "GetBucketPolicyStatus", http_method = "GET", 
+        http_path = "/{Bucket}?policyStatus", paginator = list())
+    input <- get_bucket_policy_status_input(Bucket = Bucket)
+    output <- get_bucket_policy_status_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Returns the replication configuration of a bucket
 #'
 #' Returns the replication configuration of a bucket.
+#' 
+#' It can take a while to propagate the put or delete a replication configuration to all Amazon S3 systems. Therefore, a get request soon after put or delete can return a wrong result.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1635,6 +1713,101 @@ get_object_acl <- function (Bucket, Key, VersionId = NULL, RequestPayer = NULL)
     return(response)
 }
 
+#' Gets an object's current Legal Hold status
+#'
+#' Gets an object\'s current Legal Hold status.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' get_object_legal_hold(
+#'   Bucket = "string",
+#'   Key = "string",
+#'   VersionId = "string",
+#'   RequestPayer = "requester"
+#' )
+#' ```
+#'
+#' @param Bucket &#91;required&#93; The bucket containing the object whose Legal Hold status you want to retrieve.
+#' @param Key &#91;required&#93; The key name for the object whose Legal Hold status you want to retrieve.
+#' @param VersionId The version ID of the object whose Legal Hold status you want to retrieve.
+#' @param RequestPayer 
+#'
+#' @export
+get_object_legal_hold <- function (Bucket, Key, VersionId = NULL, 
+    RequestPayer = NULL) 
+{
+    op <- new_operation(name = "GetObjectLegalHold", http_method = "GET", 
+        http_path = "/{Bucket}/{Key+}?legal-hold", paginator = list())
+    input <- get_object_legal_hold_input(Bucket = Bucket, Key = Key, 
+        VersionId = VersionId, RequestPayer = RequestPayer)
+    output <- get_object_legal_hold_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets the Object Lock configuration for a bucket
+#'
+#' Gets the Object Lock configuration for a bucket. The rule specified in the Object Lock configuration will be applied by default to every new object placed in the specified bucket.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' get_object_lock_configuration(
+#'   Bucket = "string"
+#' )
+#' ```
+#'
+#' @param Bucket &#91;required&#93; The bucket whose Object Lock configuration you want to retrieve.
+#'
+#' @export
+get_object_lock_configuration <- function (Bucket) 
+{
+    op <- new_operation(name = "GetObjectLockConfiguration", 
+        http_method = "GET", http_path = "/{Bucket}?object-lock", 
+        paginator = list())
+    input <- get_object_lock_configuration_input(Bucket = Bucket)
+    output <- get_object_lock_configuration_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves an object's retention settings
+#'
+#' Retrieves an object\'s retention settings.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' get_object_retention(
+#'   Bucket = "string",
+#'   Key = "string",
+#'   VersionId = "string",
+#'   RequestPayer = "requester"
+#' )
+#' ```
+#'
+#' @param Bucket &#91;required&#93; The bucket containing the object whose retention settings you want to retrieve.
+#' @param Key &#91;required&#93; The key name for the object whose retention settings you want to retrieve.
+#' @param VersionId The version ID for the object whose retention settings you want to retrieve.
+#' @param RequestPayer 
+#'
+#' @export
+get_object_retention <- function (Bucket, Key, VersionId = NULL, 
+    RequestPayer = NULL) 
+{
+    op <- new_operation(name = "GetObjectRetention", http_method = "GET", 
+        http_path = "/{Bucket}/{Key+}?retention", paginator = list())
+    input <- get_object_retention_input(Bucket = Bucket, Key = Key, 
+        VersionId = VersionId, RequestPayer = RequestPayer)
+    output <- get_object_retention_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Returns the tag-set of an object
 #'
 #' Returns the tag-set of an object.
@@ -1653,18 +1826,18 @@ get_object_acl <- function (Bucket, Key, VersionId = NULL, RequestPayer = NULL)
 #' @param VersionId 
 #'
 #' @examples
-#' # The following example retrieves tag set of an object.
-#' \donttest{get_object_tagging(
-#'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg"
-#' )}
-#' 
 #' # The following example retrieves tag set of an object. The request
 #' # specifies object version.
 #' \donttest{get_object_tagging(
 #'   Bucket = "examplebucket",
 #'   Key = "exampleobject",
 #'   VersionId = "ydlaNkwWm0SfKJR.T1b1fIdPRbldTYRI"
+#' )}
+#' 
+#' # The following example retrieves tag set of an object.
+#' \donttest{get_object_tagging(
+#'   Bucket = "examplebucket",
+#'   Key = "HappyFace.jpg"
 #' )}
 #'
 #' @export
@@ -1713,6 +1886,32 @@ get_object_torrent <- function (Bucket, Key, RequestPayer = NULL)
     input <- get_object_torrent_input(Bucket = Bucket, Key = Key, 
         RequestPayer = RequestPayer)
     output <- get_object_torrent_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves the PublicAccessBlock configuration for an Amazon S3 bucket
+#'
+#' Retrieves the `PublicAccessBlock` configuration for an Amazon S3 bucket.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' get_public_access_block(
+#'   Bucket = "string"
+#' )
+#' ```
+#'
+#' @param Bucket &#91;required&#93; The name of the Amazon S3 bucket whose `PublicAccessBlock` configuration you want to retrieve.
+#'
+#' @export
+get_public_access_block <- function (Bucket) 
+{
+    op <- new_operation(name = "GetPublicAccessBlock", http_method = "GET", 
+        http_path = "/{Bucket}?publicAccessBlock", paginator = list())
+    input <- get_public_access_block_input(Bucket = Bucket)
+    output <- get_public_access_block_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -2367,9 +2566,9 @@ put_bucket_analytics_configuration <- function (Bucket, Id, AnalyticsConfigurati
     return(response)
 }
 
-#' Sets the cors configuration for a bucket
+#' Sets the CORS configuration for a bucket
 #'
-#' Sets the cors configuration for a bucket.
+#' Sets the CORS configuration for a bucket.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -2512,7 +2711,7 @@ put_bucket_encryption <- function (Bucket, ContentMD5 = NULL,
 #'       S3BucketDestination = list(
 #'         AccountId = "string",
 #'         Bucket = "string",
-#'         Format = "CSV"|"ORC",
+#'         Format = "CSV"|"ORC"|"Parquet",
 #'         Prefix = "string",
 #'         Encryption = list(
 #'           SSES3 = list(),
@@ -2529,7 +2728,7 @@ put_bucket_encryption <- function (Bucket, ContentMD5 = NULL,
 #'     Id = "string",
 #'     IncludedObjectVersions = "All"|"Current",
 #'     OptionalFields = list(
-#'       "Size"|"LastModifiedDate"|"StorageClass"|"ETag"|"IsMultipartUploaded"|"ReplicationStatus"|"EncryptionStatus"
+#'       "Size"|"LastModifiedDate"|"StorageClass"|"ETag"|"IsMultipartUploaded"|"ReplicationStatus"|"EncryptionStatus"|"ObjectLockRetainUntilDate"|"ObjectLockMode"|"ObjectLockLegalHoldStatus"
 #'     ),
 #'     Schedule = list(
 #'       Frequency = "Daily"|"Weekly"
@@ -2580,11 +2779,11 @@ put_bucket_inventory_configuration <- function (Bucket, Id, InventoryConfigurati
 #'         Transition = list(
 #'           Date = as.POSIXct("2015-01-01"),
 #'           Days = 123,
-#'           StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"
+#'           StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"
 #'         ),
 #'         NoncurrentVersionTransition = list(
 #'           NoncurrentDays = 123,
-#'           StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"
+#'           StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"
 #'         ),
 #'         NoncurrentVersionExpiration = list(
 #'           NoncurrentDays = 123
@@ -2656,13 +2855,13 @@ put_bucket_lifecycle <- function (Bucket, ContentMD5 = NULL,
 #'           list(
 #'             Date = as.POSIXct("2015-01-01"),
 #'             Days = 123,
-#'             StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"
+#'             StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"
 #'           )
 #'         ),
 #'         NoncurrentVersionTransitions = list(
 #'           list(
 #'             NoncurrentDays = 123,
-#'             StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"
+#'             StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"
 #'           )
 #'         ),
 #'         NoncurrentVersionExpiration = list(
@@ -2857,24 +3056,24 @@ put_bucket_metrics_configuration <- function (Bucket, Id, MetricsConfiguration)
 #'     TopicConfiguration = list(
 #'       Id = "string",
 #'       Events = list(
-#'         "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"
+#'         "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"
 #'       ),
-#'       Event = "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated",
+#'       Event = "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed",
 #'       Topic = "string"
 #'     ),
 #'     QueueConfiguration = list(
 #'       Id = "string",
-#'       Event = "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated",
+#'       Event = "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed",
 #'       Events = list(
-#'         "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"
+#'         "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"
 #'       ),
 #'       Queue = "string"
 #'     ),
 #'     CloudFunctionConfiguration = list(
 #'       Id = "string",
-#'       Event = "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated",
+#'       Event = "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed",
 #'       Events = list(
-#'         "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"
+#'         "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"
 #'       ),
 #'       CloudFunction = "string",
 #'       InvocationRole = "string"
@@ -2916,7 +3115,7 @@ put_bucket_notification <- function (Bucket, ContentMD5 = NULL,
 #'         Id = "string",
 #'         TopicArn = "string",
 #'         Events = list(
-#'           "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"
+#'           "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"
 #'         ),
 #'         Filter = list(
 #'           Key = list(
@@ -2935,7 +3134,7 @@ put_bucket_notification <- function (Bucket, ContentMD5 = NULL,
 #'         Id = "string",
 #'         QueueArn = "string",
 #'         Events = list(
-#'           "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"
+#'           "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"
 #'         ),
 #'         Filter = list(
 #'           Key = list(
@@ -2954,7 +3153,7 @@ put_bucket_notification <- function (Bucket, ContentMD5 = NULL,
 #'         Id = "string",
 #'         LambdaFunctionArn = "string",
 #'         Events = list(
-#'           "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"
+#'           "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"
 #'         ),
 #'         Filter = list(
 #'           Key = list(
@@ -3049,9 +3248,9 @@ put_bucket_policy <- function (Bucket, ContentMD5 = NULL, ConfirmRemoveSelfBucke
     return(response)
 }
 
-#' Creates a new replication configuration (or replaces an existing one, if present)
+#' Creates a replication configuration or replaces an existing one
 #'
-#' Creates a new replication configuration (or replaces an existing one, if present). For more information, see [Cross-Region Replication (CRR)](\%20https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html) in the Amazon S3 Developer Guide.
+#' Creates a replication configuration or replaces an existing one. For more information, see [Cross-Region Replication (CRR)](\%20https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html) in the *Amazon S3 Developer Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -3090,7 +3289,7 @@ put_bucket_policy <- function (Bucket, ContentMD5 = NULL, ConfirmRemoveSelfBucke
 #'         Destination = list(
 #'           Bucket = "string",
 #'           Account = "string",
-#'           StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA",
+#'           StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER",
 #'           AccessControlTranslation = list(
 #'             Owner = "Destination"
 #'           ),
@@ -3393,14 +3592,17 @@ put_bucket_website <- function (Bucket, ContentMD5 = NULL, WebsiteConfiguration)
 #'     "string"
 #'   ),
 #'   ServerSideEncryption = "AES256"|"aws:kms",
-#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA",
+#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER",
 #'   WebsiteRedirectLocation = "string",
 #'   SSECustomerAlgorithm = "string",
 #'   SSECustomerKey = raw,
 #'   SSECustomerKeyMD5 = "string",
 #'   SSEKMSKeyId = "string",
 #'   RequestPayer = "requester",
-#'   Tagging = "string"
+#'   Tagging = "string",
+#'   ObjectLockMode = "GOVERNANCE"|"COMPLIANCE",
+#'   ObjectLockRetainUntilDate = as.POSIXct("2015-01-01"),
+#'   ObjectLockLegalHoldStatus = "ON"|"OFF"
 #' )
 #' ```
 #'
@@ -3429,7 +3631,10 @@ put_bucket_website <- function (Bucket, ContentMD5 = NULL, WebsiteConfiguration)
 #' @param SSECustomerKeyMD5 Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
 #' @param SSEKMSKeyId Specifies the AWS KMS key ID to use for object encryption. All GET and PUT requests for an object protected by AWS KMS will fail if not made via SSL or using SigV4. Documentation on configuring any of the officially supported AWS SDKs and CLI can be found at http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html\#specify-signature-version
 #' @param RequestPayer 
-#' @param Tagging The tag-set for the object. The tag-set must be encoded as URL Query parameters
+#' @param Tagging The tag-set for the object. The tag-set must be encoded as URL Query parameters. (For example, \"Key1=Value1\")
+#' @param ObjectLockMode The Object Lock mode that you want to apply to this object.
+#' @param ObjectLockRetainUntilDate The date and time when you want this object\'s Object Lock to expire.
+#' @param ObjectLockLegalHoldStatus The Legal Hold status that you want to apply to the specified object.
 #'
 #' @examples
 #' # The following example creates an object. If the bucket is versioning
@@ -3440,28 +3645,6 @@ put_bucket_website <- function (Bucket, ContentMD5 = NULL, WebsiteConfiguration)
 #'   Key = "objectkey"
 #' )}
 #' 
-#' # The following example uploads an object. The request specifies optional
-#' # request headers to directs S3 to use specific storage class and use
-#' # server-side encryption.
-#' \donttest{put_object(
-#'   Body = "HappyFace.jpg",
-#'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg",
-#'   ServerSideEncryption = "AES256",
-#'   StorageClass = "STANDARD_IA"
-#' )}
-#' 
-#' # The following example uploads and object. The request specifies optional
-#' # canned ACL (access control list) to all READ access to authenticated
-#' # users. If the bucket is versioning enabled, S3 returns version ID in
-#' # response.
-#' \donttest{put_object(
-#'   ACL = "authenticated-read",
-#'   Body = "filetoupload",
-#'   Bucket = "examplebucket",
-#'   Key = "exampleobject"
-#' )}
-#' 
 #' # The following example uploads an object to a versioning-enabled bucket.
 #' # The source file is specified using Windows file syntax. S3 returns
 #' # VersionId of the newly created object.
@@ -3469,6 +3652,18 @@ put_bucket_website <- function (Bucket, ContentMD5 = NULL, WebsiteConfiguration)
 #'   Body = "HappyFace.jpg",
 #'   Bucket = "examplebucket",
 #'   Key = "HappyFace.jpg"
+#' )}
+#' 
+#' # The following example uploads and object. The request specifies the
+#' # optional server-side encryption option. The request also specifies
+#' # optional object tags. If the bucket is versioning enabled, S3 returns
+#' # version ID in response.
+#' \donttest{put_object(
+#'   Body = "filetoupload",
+#'   Bucket = "examplebucket",
+#'   Key = "exampleobject",
+#'   ServerSideEncryption = "AES256",
+#'   Tagging = "key1=value1&key2=value2"
 #' )}
 #' 
 #' # The following example creates an object. The request also specifies
@@ -3494,16 +3689,26 @@ put_bucket_website <- function (Bucket, ContentMD5 = NULL, WebsiteConfiguration)
 #'   Tagging = "key1=value1&key2=value2"
 #' )}
 #' 
-#' # The following example uploads and object. The request specifies the
-#' # optional server-side encryption option. The request also specifies
-#' # optional object tags. If the bucket is versioning enabled, S3 returns
-#' # version ID in response.
+#' # The following example uploads an object. The request specifies optional
+#' # request headers to directs S3 to use specific storage class and use
+#' # server-side encryption.
 #' \donttest{put_object(
+#'   Body = "HappyFace.jpg",
+#'   Bucket = "examplebucket",
+#'   Key = "HappyFace.jpg",
+#'   ServerSideEncryption = "AES256",
+#'   StorageClass = "STANDARD_IA"
+#' )}
+#' 
+#' # The following example uploads and object. The request specifies optional
+#' # canned ACL (access control list) to all READ access to authenticated
+#' # users. If the bucket is versioning enabled, S3 returns version ID in
+#' # response.
+#' \donttest{put_object(
+#'   ACL = "authenticated-read",
 #'   Body = "filetoupload",
 #'   Bucket = "examplebucket",
-#'   Key = "exampleobject",
-#'   ServerSideEncryption = "AES256",
-#'   Tagging = "key1=value1&key2=value2"
+#'   Key = "exampleobject"
 #' )}
 #'
 #' @export
@@ -3514,7 +3719,9 @@ put_object <- function (ACL = NULL, Body = NULL, Bucket, CacheControl = NULL,
     GrantReadACP = NULL, GrantWriteACP = NULL, Key, Metadata = NULL, 
     ServerSideEncryption = NULL, StorageClass = NULL, WebsiteRedirectLocation = NULL, 
     SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, 
-    SSEKMSKeyId = NULL, RequestPayer = NULL, Tagging = NULL) 
+    SSEKMSKeyId = NULL, RequestPayer = NULL, Tagging = NULL, 
+    ObjectLockMode = NULL, ObjectLockRetainUntilDate = NULL, 
+    ObjectLockLegalHoldStatus = NULL) 
 {
     op <- new_operation(name = "PutObject", http_method = "PUT", 
         http_path = "/{Bucket}/{Key+}", paginator = list())
@@ -3528,7 +3735,9 @@ put_object <- function (ACL = NULL, Body = NULL, Bucket, CacheControl = NULL,
         StorageClass = StorageClass, WebsiteRedirectLocation = WebsiteRedirectLocation, 
         SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, 
         SSECustomerKeyMD5 = SSECustomerKeyMD5, SSEKMSKeyId = SSEKMSKeyId, 
-        RequestPayer = RequestPayer, Tagging = Tagging)
+        RequestPayer = RequestPayer, Tagging = Tagging, ObjectLockMode = ObjectLockMode, 
+        ObjectLockRetainUntilDate = ObjectLockRetainUntilDate, 
+        ObjectLockLegalHoldStatus = ObjectLockLegalHoldStatus)
     output <- put_object_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -3625,6 +3834,140 @@ put_object_acl <- function (ACL = NULL, AccessControlPolicy = NULL,
     return(response)
 }
 
+#' Applies a Legal Hold configuration to the specified object
+#'
+#' Applies a Legal Hold configuration to the specified object.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' put_object_legal_hold(
+#'   Bucket = "string",
+#'   Key = "string",
+#'   LegalHold = list(
+#'     Status = "ON"|"OFF"
+#'   ),
+#'   RequestPayer = "requester",
+#'   VersionId = "string",
+#'   ContentMD5 = "string"
+#' )
+#' ```
+#'
+#' @param Bucket &#91;required&#93; The bucket containing the object that you want to place a Legal Hold on.
+#' @param Key &#91;required&#93; The key name for the object that you want to place a Legal Hold on.
+#' @param LegalHold Container element for the Legal Hold configuration you want to apply to the specified object.
+#' @param RequestPayer 
+#' @param VersionId The version ID of the object that you want to place a Legal Hold on.
+#' @param ContentMD5 The MD5 hash for the request body.
+#'
+#' @export
+put_object_legal_hold <- function (Bucket, Key, LegalHold = NULL, 
+    RequestPayer = NULL, VersionId = NULL, ContentMD5 = NULL) 
+{
+    op <- new_operation(name = "PutObjectLegalHold", http_method = "PUT", 
+        http_path = "/{Bucket}/{Key+}?legal-hold", paginator = list())
+    input <- put_object_legal_hold_input(Bucket = Bucket, Key = Key, 
+        LegalHold = LegalHold, RequestPayer = RequestPayer, VersionId = VersionId, 
+        ContentMD5 = ContentMD5)
+    output <- put_object_legal_hold_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Places an Object Lock configuration on the specified bucket
+#'
+#' Places an Object Lock configuration on the specified bucket. The rule specified in the Object Lock configuration will be applied by default to every new object placed in the specified bucket.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' put_object_lock_configuration(
+#'   Bucket = "string",
+#'   ObjectLockConfiguration = list(
+#'     ObjectLockEnabled = "Enabled",
+#'     Rule = list(
+#'       DefaultRetention = list(
+#'         Mode = "GOVERNANCE"|"COMPLIANCE",
+#'         Days = 123,
+#'         Years = 123
+#'       )
+#'     )
+#'   ),
+#'   RequestPayer = "requester",
+#'   Token = "string",
+#'   ContentMD5 = "string"
+#' )
+#' ```
+#'
+#' @param Bucket &#91;required&#93; The bucket whose Object Lock configuration you want to create or replace.
+#' @param ObjectLockConfiguration The Object Lock configuration that you want to apply to the specified bucket.
+#' @param RequestPayer 
+#' @param Token 
+#' @param ContentMD5 The MD5 hash for the request body.
+#'
+#' @export
+put_object_lock_configuration <- function (Bucket, ObjectLockConfiguration = NULL, 
+    RequestPayer = NULL, Token = NULL, ContentMD5 = NULL) 
+{
+    op <- new_operation(name = "PutObjectLockConfiguration", 
+        http_method = "PUT", http_path = "/{Bucket}?object-lock", 
+        paginator = list())
+    input <- put_object_lock_configuration_input(Bucket = Bucket, 
+        ObjectLockConfiguration = ObjectLockConfiguration, RequestPayer = RequestPayer, 
+        Token = Token, ContentMD5 = ContentMD5)
+    output <- put_object_lock_configuration_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Places an Object Retention configuration on an object
+#'
+#' Places an Object Retention configuration on an object.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' put_object_retention(
+#'   Bucket = "string",
+#'   Key = "string",
+#'   Retention = list(
+#'     Mode = "GOVERNANCE"|"COMPLIANCE",
+#'     RetainUntilDate = as.POSIXct("2015-01-01")
+#'   ),
+#'   RequestPayer = "requester",
+#'   VersionId = "string",
+#'   BypassGovernanceRetention = TRUE|FALSE,
+#'   ContentMD5 = "string"
+#' )
+#' ```
+#'
+#' @param Bucket &#91;required&#93; The bucket that contains the object you want to apply this Object Retention configuration to.
+#' @param Key &#91;required&#93; The key name for the object that you want to apply this Object Retention configuration to.
+#' @param Retention The container element for the Object Retention configuration.
+#' @param RequestPayer 
+#' @param VersionId The version ID for the object that you want to apply this Object Retention configuration to.
+#' @param BypassGovernanceRetention Indicates whether this operation should bypass Governance-mode restrictions.j
+#' @param ContentMD5 The MD5 hash for the request body.
+#'
+#' @export
+put_object_retention <- function (Bucket, Key, Retention = NULL, 
+    RequestPayer = NULL, VersionId = NULL, BypassGovernanceRetention = NULL, 
+    ContentMD5 = NULL) 
+{
+    op <- new_operation(name = "PutObjectRetention", http_method = "PUT", 
+        http_path = "/{Bucket}/{Key+}?retention", paginator = list())
+    input <- put_object_retention_input(Bucket = Bucket, Key = Key, 
+        Retention = Retention, RequestPayer = RequestPayer, VersionId = VersionId, 
+        BypassGovernanceRetention = BypassGovernanceRetention, 
+        ContentMD5 = ContentMD5)
+    output <- put_object_retention_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Sets the supplied tag-set to an object that already exists in a bucket
 #'
 #' Sets the supplied tag-set to an object that already exists in a bucket
@@ -3681,6 +4024,43 @@ put_object_tagging <- function (Bucket, Key, VersionId = NULL,
     input <- put_object_tagging_input(Bucket = Bucket, Key = Key, 
         VersionId = VersionId, ContentMD5 = ContentMD5, Tagging = Tagging)
     output <- put_object_tagging_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates or modifies the PublicAccessBlock configuration for an Amazon S3 bucket
+#'
+#' Creates or modifies the `PublicAccessBlock` configuration for an Amazon S3 bucket.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' put_public_access_block(
+#'   Bucket = "string",
+#'   ContentMD5 = "string",
+#'   PublicAccessBlockConfiguration = list(
+#'     BlockPublicAcls = TRUE|FALSE,
+#'     IgnorePublicAcls = TRUE|FALSE,
+#'     BlockPublicPolicy = TRUE|FALSE,
+#'     RestrictPublicBuckets = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
+#' @param Bucket &#91;required&#93; The name of the Amazon S3 bucket whose `PublicAccessBlock` configuration you want to set.
+#' @param ContentMD5 The MD5 hash of the `PutPublicAccessBlock` request body.
+#' @param PublicAccessBlockConfiguration &#91;required&#93; The `PublicAccessBlock` configuration that you want to apply to this Amazon S3 bucket. You can enable the configuration options in any combination. For more information about when Amazon S3 considers a bucket or object public, see [The Meaning of \"Public\"](https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status) in the *Amazon Simple Storage Service Developer Guide*.
+#'
+#' @export
+put_public_access_block <- function (Bucket, ContentMD5 = NULL, 
+    PublicAccessBlockConfiguration) 
+{
+    op <- new_operation(name = "PutPublicAccessBlock", http_method = "PUT", 
+        http_path = "/{Bucket}?publicAccessBlock", paginator = list())
+    input <- put_public_access_block_input(Bucket = Bucket, ContentMD5 = ContentMD5, 
+        PublicAccessBlockConfiguration = PublicAccessBlockConfiguration)
+    output <- put_public_access_block_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -3773,7 +4153,7 @@ put_object_tagging <- function (Bucket, Key, VersionId = NULL,
 #'             Value = "string"
 #'           )
 #'         ),
-#'         StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"
+#'         StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"
 #'       )
 #'     )
 #'   ),
@@ -3865,13 +4245,13 @@ restore_object <- function (Bucket, Key, VersionId = NULL, RestoreRequest = NULL
 #' )
 #' ```
 #'
-#' @param Bucket &#91;required&#93; The S3 Bucket.
-#' @param Key &#91;required&#93; The Object Key.
-#' @param SSECustomerAlgorithm The SSE Algorithm used to encrypt the object. For more information, go to [Server-Side Encryption (Using Customer-Provided Encryption Keys](http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html).
-#' @param SSECustomerKey The SSE Customer Key. For more information, go to [Server-Side Encryption (Using Customer-Provided Encryption Keys](http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html).
-#' @param SSECustomerKeyMD5 The SSE Customer Key MD5. For more information, go to [Server-Side Encryption (Using Customer-Provided Encryption Keys](http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html).
+#' @param Bucket &#91;required&#93; The S3 bucket.
+#' @param Key &#91;required&#93; The object key.
+#' @param SSECustomerAlgorithm The SSE Algorithm used to encrypt the object. For more information, see [Server-Side Encryption (Using Customer-Provided Encryption Keys](http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html).
+#' @param SSECustomerKey The SSE Customer Key. For more information, see [Server-Side Encryption (Using Customer-Provided Encryption Keys](http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html).
+#' @param SSECustomerKeyMD5 The SSE Customer Key MD5. For more information, see [Server-Side Encryption (Using Customer-Provided Encryption Keys](http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html).
 #' @param Expression &#91;required&#93; The expression that is used to query the object.
-#' @param ExpressionType &#91;required&#93; The type of the provided expression (e.g., SQL).
+#' @param ExpressionType &#91;required&#93; The type of the provided expression (for example., SQL).
 #' @param RequestProgress Specifies if periodic request progress information should be enabled.
 #' @param InputSerialization &#91;required&#93; Describes the format of the data in the object that is being queried.
 #' @param OutputSerialization &#91;required&#93; Describes the format of the data that you want Amazon S3 to return in response.
@@ -4009,16 +4389,6 @@ upload_part <- function (Body = NULL, Bucket, ContentLength = NULL,
 #' @param RequestPayer 
 #'
 #' @examples
-#' # The following example uploads a part of a multipart upload by copying
-#' # data from an existing object as data source.
-#' \donttest{upload_part_copy(
-#'   Bucket = "examplebucket",
-#'   CopySource = "/bucketname/sourceobjectkey",
-#'   Key = "examplelargeobject",
-#'   PartNumber = "1",
-#'   UploadId = "exampleuoh_10OhKhT7YukE9bjzTPRiuaCotmZM_pFngJFir9OZNrSr5cWa3cq3LZSUsfjI4FI7PkP91We7Nrw--"
-#' )}
-#' 
 #' # The following example uploads a part of a multipart upload by copying a
 #' # specified byte range from an existing object as data source.
 #' \donttest{upload_part_copy(
@@ -4027,6 +4397,16 @@ upload_part <- function (Body = NULL, Bucket, ContentLength = NULL,
 #'   CopySourceRange = "bytes=1-100000",
 #'   Key = "examplelargeobject",
 #'   PartNumber = "2",
+#'   UploadId = "exampleuoh_10OhKhT7YukE9bjzTPRiuaCotmZM_pFngJFir9OZNrSr5cWa3cq3LZSUsfjI4FI7PkP91We7Nrw--"
+#' )}
+#' 
+#' # The following example uploads a part of a multipart upload by copying
+#' # data from an existing object as data source.
+#' \donttest{upload_part_copy(
+#'   Bucket = "examplebucket",
+#'   CopySource = "/bucketname/sourceobjectkey",
+#'   Key = "examplelargeobject",
+#'   PartNumber = "1",
 #'   UploadId = "exampleuoh_10OhKhT7YukE9bjzTPRiuaCotmZM_pFngJFir9OZNrSr5cWa3cq3LZSUsfjI4FI7PkP91We7Nrw--"
 #' )}
 #'

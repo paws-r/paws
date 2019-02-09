@@ -17,9 +17,6 @@ create_scaling_plan(ScalingPlanName, ApplicationSource,
 \description{
 Creates a scaling plan.
 }
-\details{
-A scaling plan contains a set of instructions used to configure dynamic scaling for the scalable resources in your application. AWS Auto Scaling creates target tracking scaling policies based on the scaling instructions in your scaling plan.
-}
 \section{Accepted Parameters}{
 \preformatted{create_scaling_plan(
   ScalingPlanName = "string",
@@ -65,7 +62,29 @@ A scaling plan contains a set of instructions used to configure dynamic scaling 
           ScaleInCooldown = 123,
           EstimatedInstanceWarmup = 123
         )
-      )
+      ),
+      PredefinedLoadMetricSpecification = list(
+        PredefinedLoadMetricType = "ASGTotalCPUUtilization"|"ASGTotalNetworkIn"|"ASGTotalNetworkOut"|"ALBTargetGroupRequestCount",
+        ResourceLabel = "string"
+      ),
+      CustomizedLoadMetricSpecification = list(
+        MetricName = "string",
+        Namespace = "string",
+        Dimensions = list(
+          list(
+            Name = "string",
+            Value = "string"
+          )
+        ),
+        Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
+        Unit = "string"
+      ),
+      ScheduledActionBufferTime = 123,
+      PredictiveScalingMaxCapacityBehavior = "SetForecastCapacityToMaxCapacity"|"SetMaxCapacityToForecastCapacity"|"SetMaxCapacityAboveForecastCapacity",
+      PredictiveScalingMaxCapacityBuffer = 123,
+      PredictiveScalingMode = "ForecastAndScale"|"ForecastOnly",
+      ScalingPolicyUpdateBehavior = "KeepExternalPolicies"|"ReplaceExternalPolicies",
+      DisableDynamicScaling = TRUE|FALSE
     )
   )
 )

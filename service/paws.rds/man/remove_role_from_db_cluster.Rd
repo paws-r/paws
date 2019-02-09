@@ -2,7 +2,7 @@
 % Please edit documentation in R/paws.rds_operations.R
 \name{remove_role_from_db_cluster}
 \alias{remove_role_from_db_cluster}
-\title{Disassociates an Identity and Access Management (IAM) role from an Aurora DB cluster}
+\title{Disassociates an AWS Identity and Access Management (IAM) role from an Amazon Aurora DB cluster}
 \usage{
 remove_role_from_db_cluster(DBClusterIdentifier, RoleArn)
 }
@@ -12,7 +12,7 @@ remove_role_from_db_cluster(DBClusterIdentifier, RoleArn)
 \item{RoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role to disassociate from the Aurora DB cluster, for example \code{arn:aws:iam::123456789012:role/AuroraAccessRole}.}
 }
 \description{
-Disassociates an Identity and Access Management (IAM) role from an Aurora DB cluster. For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Integrating.Authorizing.html}{Authorizing Amazon Aurora MySQL to Access Other AWS Services on Your Behalf} in the \emph{Amazon Aurora User Guide}.
+Disassociates an AWS Identity and Access Management (IAM) role from an Amazon Aurora DB cluster. For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Integrating.Authorizing.html}{Authorizing Amazon Aurora MySQL to Access Other AWS Services on Your Behalf} in the \emph{Amazon Aurora User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{remove_role_from_db_cluster(

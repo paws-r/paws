@@ -7,7 +7,7 @@
 get_deployment_config(deploymentConfigName)
 }
 \arguments{
-\item{deploymentConfigName}{[required] The name of a deployment configuration associated with the applicable IAM user or AWS account.}
+\item{deploymentConfigName}{[required] The name of a deployment configuration associated with the IAM user or AWS account.}
 }
 \description{
 Gets information about a deployment configuration.

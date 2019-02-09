@@ -19,7 +19,7 @@ You can only reset the following attributes: \code{kernel} | \code{ramdisk} | \c
 Resets an attribute of an instance to its default value. To reset the \code{kernel} or \code{ramdisk}, the instance must be in a stopped state. To reset the \code{sourceDestCheck}, the instance can be either running or stopped.
 }
 \details{
-The \code{sourceDestCheck} attribute controls whether source/destination checking is enabled. The default value is \code{true}, which means checking is enabled. This value must be \code{false} for a NAT instance to perform NAT. For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html}{NAT Instances} in the \emph{Amazon Virtual Private Cloud User Guide}.
+The \code{sourceDestCheck} attribute controls whether source/destination checking is enabled. The default value is \code{true}, which means checking is enabled. This value must be \code{false} for a NAT instance to perform NAT. For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html}{NAT Instances} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{reset_instance_attribute(

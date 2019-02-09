@@ -9,15 +9,15 @@ create_user(Username, Password = NULL, IdentityInfo = NULL,
   RoutingProfileId, HierarchyGroupId = NULL, InstanceId)
 }
 \arguments{
-\item{Username}{[required] The user name in Amazon Connect for the account to create.}
+\item{Username}{[required] The user name in Amazon Connect for the account to create. If you are using SAML for identity management in your Amazon Connect, the value for \code{Username} can include up to 64 characters from [a-zA-Z0-9\_-.\@]+.}
 
 \item{Password}{The password for the user account to create. This is required if you are using Amazon Connect for identity management. If you are using SAML for identity management and include this parameter, an \code{InvalidRequestException} is returned.}
 
 \item{IdentityInfo}{Information about the user, including email address, first name, and last name.}
 
-\item{PhoneConfig}{[required] Specifies the phone settings for the user, including AfterContactWorkTimeLimit, AutoAccept, DeskPhoneNumber, and PhoneType.}
+\item{PhoneConfig}{[required] Specifies the phone settings for the user, including \code{AfterContactWorkTimeLimit}, \code{AutoAccept}, \code{DeskPhoneNumber}, and \code{PhoneType}.}
 
-\item{DirectoryUserId}{The unique identifier for the user account in the directory service directory used for identity management. If Amazon Connect is unable to access the existing directory, you can use the \code{DirectoryUserId} to authenticate users. If you include the parameter, it is assumed that Amazon Connect cannot access the directory. If the parameter is not included, the UserIdentityInfo is used to authenticate users from your existing directory.
+\item{DirectoryUserId}{The unique identifier for the user account in the directory service directory used for identity management. If Amazon Connect is unable to access the existing directory, you can use the \code{DirectoryUserId} to authenticate users. If you include the parameter, it is assumed that Amazon Connect cannot access the directory. If the parameter is not included, the \code{UserIdentityInfo} is used to authenticate users from your existing directory.
 
 This parameter is required if you are using an existing directory for identity management in Amazon Connect when Amazon Connect cannot access your directory to authenticate users. If you are using SAML for identity management and include this parameter, an \code{InvalidRequestException} is returned.}
 

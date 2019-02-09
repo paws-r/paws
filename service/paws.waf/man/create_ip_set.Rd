@@ -2,7 +2,7 @@
 % Please edit documentation in R/paws.waf_operations.R
 \name{create_ip_set}
 \alias{create_ip_set}
-\title{Creates an IPSet, which you use to specify which web requests you want to allow or block based on the IP addresses that the requests originate from}
+\title{Creates an IPSet, which you use to specify which web requests that you want to allow or block based on the IP addresses that the requests originate from}
 \usage{
 create_ip_set(Name, ChangeToken)
 }
@@ -12,7 +12,7 @@ create_ip_set(Name, ChangeToken)
 \item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
-Creates an IPSet, which you use to specify which web requests you want to allow or block based on the IP addresses that the requests originate from. For example, if you're receiving a lot of requests from one or more individual IP addresses or one or more ranges of IP addresses and you want to block the requests, you can create an \code{IPSet} that contains those IP addresses and then configure AWS WAF to block the requests.
+Creates an IPSet, which you use to specify which web requests that you want to allow or block based on the IP addresses that the requests originate from. For example, if you're receiving a lot of requests from one or more individual IP addresses or one or more ranges of IP addresses and you want to block the requests, you can create an \code{IPSet} that contains those IP addresses and then configure AWS WAF to block the requests.
 }
 \details{
 To create and configure an \code{IPSet}, perform the following steps:

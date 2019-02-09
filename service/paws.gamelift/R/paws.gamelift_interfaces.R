@@ -551,6 +551,22 @@ delete_matchmaking_configuration_output <- function (...)
     return(populate(args, shape))
 }
 
+delete_matchmaking_rule_set_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Name = structure(logical(0), tags = list(type = "string", 
+        max = 128L, min = 1L, pattern = "[a-zA-Z0-9-\\.]+"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_matchmaking_rule_set_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 delete_scaling_policy_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))

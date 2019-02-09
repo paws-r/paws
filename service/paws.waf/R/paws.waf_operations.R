@@ -83,9 +83,9 @@ create_geo_match_set <- function (Name, ChangeToken)
     return(response)
 }
 
-#' Creates an IPSet, which you use to specify which web requests you want to allow or block based on the IP addresses that the requests originate from
+#' Creates an IPSet, which you use to specify which web requests that you want to allow or block based on the IP addresses that the requests originate from
 #'
-#' Creates an IPSet, which you use to specify which web requests you want to allow or block based on the IP addresses that the requests originate from. For example, if you\'re receiving a lot of requests from one or more individual IP addresses or one or more ranges of IP addresses and you want to block the requests, you can create an `IPSet` that contains those IP addresses and then configure AWS WAF to block the requests.
+#' Creates an IPSet, which you use to specify which web requests that you want to allow or block based on the IP addresses that the requests originate from. For example, if you\'re receiving a lot of requests from one or more individual IP addresses or one or more ranges of IP addresses and you want to block the requests, you can create an `IPSet` that contains those IP addresses and then configure AWS WAF to block the requests.
 #' 
 #' To create and configure an `IPSet`, perform the following steps:
 #' 
@@ -286,7 +286,7 @@ create_regex_pattern_set <- function (Name, ChangeToken)
 
 #' Creates a Rule, which contains the IPSet objects, ByteMatchSet objects, and other predicates that identify the requests that you want to block
 #'
-#' Creates a `Rule`, which contains the `IPSet` objects, `ByteMatchSet` objects, and other predicates that identify the requests that you want to block. If you add more than one predicate to a `Rule`, a request must match all of the specifications to be allowed or blocked. For example, suppose you add the following to a `Rule`:
+#' Creates a `Rule`, which contains the `IPSet` objects, `ByteMatchSet` objects, and other predicates that identify the requests that you want to block. If you add more than one predicate to a `Rule`, a request must match all of the specifications to be allowed or blocked. For example, suppose that you add the following to a `Rule`:
 #' 
 #' -   An `IPSet` that matches the IP address `192.0.2.44/32`
 #' 
@@ -320,7 +320,7 @@ create_regex_pattern_set <- function (Name, ChangeToken)
 #' ```
 #'
 #' @param Name &#91;required&#93; A friendly name or description of the Rule. You can\'t change the name of a `Rule` after you create it.
-#' @param MetricName &#91;required&#93; A friendly name or description for the metrics for this `Rule`. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can\'t contain whitespace. You can\'t change the name of the metric after you create the `Rule`.
+#' @param MetricName &#91;required&#93; A friendly name or description for the metrics for this `Rule`. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can\'t contain white space. You can\'t change the name of the metric after you create the `Rule`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
 #'
 #' @examples
@@ -518,7 +518,7 @@ create_sql_injection_match_set <- function (Name, ChangeToken)
 #' ```
 #'
 #' @param Name &#91;required&#93; A friendly name or description of the WebACL. You can\'t change `Name` after you create the `WebACL`.
-#' @param MetricName &#91;required&#93; A friendly name or description for the metrics for this `WebACL`. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can\'t contain whitespace. You can\'t change `MetricName` after you create the `WebACL`.
+#' @param MetricName &#91;required&#93; A friendly name or description for the metrics for this `WebACL`. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can\'t contain white space. You can\'t change `MetricName` after you create the `WebACL`.
 #' @param DefaultAction &#91;required&#93; The action that you want AWS WAF to take when a request doesn\'t match the criteria specified in any of the `Rule` objects that are associated with the `WebACL`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
 #'
@@ -2213,11 +2213,11 @@ list_xss_match_sets <- function (NextMarker = NULL, Limit = NULL)
 #' 
 #' You can access information about all traffic that AWS WAF inspects using the following steps:
 #' 
-#' 1.  Create an Amazon Kinesis Data Firehose delivery stream. For more information, see [Creating an Amazon Kinesis Data Firehose Delivery Stream](https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html).
+#' 1.  Create an Amazon Kinesis Data Firehose .
 #' 
-#' 2.  Associate that delivery stream to your web ACL using a `PutLoggingConfiguration` request.
+#' 2.  Associate that firehose to your web ACL using a `PutLoggingConfiguration` request.
 #' 
-#' When you successfully enable logging using a `PutLoggingConfiguration` request, AWS WAF will create a service linked role with the necessary permissions to write logs to the Amazon Kinesis Data Firehose delivery stream. For more information, see [Logging Web ACL Traffic Information](http://docs.aws.amazon.com/waf/latest/developerguide/logging.html) in the *AWS WAF Developer Guide*.
+#' When you successfully enable logging using a `PutLoggingConfiguration` request, AWS WAF will create a service linked role with the necessary permissions to write logs to the Amazon Kinesis Data Firehose. For more information, see [Logging Web ACL Traffic Information](http://docs.aws.amazon.com/waf/latest/developerguide/logging.html) in the *AWS WAF Developer Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -2237,7 +2237,7 @@ list_xss_match_sets <- function (NextMarker = NULL, Limit = NULL)
 #' )
 #' ```
 #'
-#' @param LoggingConfiguration &#91;required&#93; The Amazon Kinesis Data Firehose delivery streams that contains the inspected traffic information, the redacted fields details, and the Amazon Resource Name (ARN) of the web ACL to monitor.
+#' @param LoggingConfiguration &#91;required&#93; The Amazon Kinesis Data Firehose that contains the inspected traffic information, the redacted fields details, and the Amazon Resource Name (ARN) of the web ACL to monitor.
 #'
 #' @export
 put_logging_configuration <- function (LoggingConfiguration) 
@@ -2752,7 +2752,7 @@ update_regex_pattern_set <- function (RegexPatternSetId, Updates,
 
 #' Inserts or deletes Predicate objects in a Rule
 #'
-#' Inserts or deletes Predicate objects in a `Rule`. Each `Predicate` object identifies a predicate, such as a ByteMatchSet or an IPSet, that specifies the web requests that you want to allow, block, or count. If you add more than one predicate to a `Rule`, a request must match all of the specifications to be allowed, blocked, or counted. For example, suppose you add the following to a `Rule`:
+#' Inserts or deletes Predicate objects in a `Rule`. Each `Predicate` object identifies a predicate, such as a ByteMatchSet or an IPSet, that specifies the web requests that you want to allow, block, or count. If you add more than one predicate to a `Rule`, a request must match all of the specifications to be allowed, blocked, or counted. For example, suppose that you add the following to a `Rule`:
 #' 
 #' -   A `ByteMatchSet` that matches the value `BadBot` in the `User-Agent` header
 #' 
@@ -2874,7 +2874,12 @@ update_rule <- function (RuleId, ChangeToken, Updates)
 #'         OverrideAction = list(
 #'           Type = "NONE"|"COUNT"
 #'         ),
-#'         Type = "REGULAR"|"RATE_BASED"|"GROUP"
+#'         Type = "REGULAR"|"RATE_BASED"|"GROUP",
+#'         ExcludedRules = list(
+#'           list(
+#'             RuleId = "string"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -3013,7 +3018,7 @@ update_size_constraint_set <- function (SizeConstraintSetId,
 #' 
 #'     You can only specify a single type of TextTransformation.
 #' 
-#' You use `SqlInjectionMatchSet` objects to specify which CloudFront requests you want to allow, block, or count. For example, if you\'re receiving requests that contain snippets of SQL code in the query string and you want to block the requests, you can create a `SqlInjectionMatchSet` with the applicable settings, and then configure AWS WAF to block the requests.
+#' You use `SqlInjectionMatchSet` objects to specify which CloudFront requests that you want to allow, block, or count. For example, if you\'re receiving requests that contain snippets of SQL code in the query string and you want to block the requests, you can create a `SqlInjectionMatchSet` with the applicable settings, and then configure AWS WAF to block the requests.
 #' 
 #' To create and configure a `SqlInjectionMatchSet`, perform the following steps:
 #' 
@@ -3096,11 +3101,11 @@ update_sql_injection_match_set <- function (SqlInjectionMatchSetId,
 #' 
 #' -   A default action for the `WebACL`, either `ALLOW` or `BLOCK`. AWS WAF performs the default action if a request doesn\'t match the criteria in any of the `Rules` in a `WebACL`.
 #' 
-#' -   The `Rules` that you want to add and/or delete. If you want to replace one `Rule` with another, you delete the existing `Rule` and add the new one.
+#' -   The `Rules` that you want to add or delete. If you want to replace one `Rule` with another, you delete the existing `Rule` and add the new one.
 #' 
 #' -   For each `Rule`, whether you want AWS WAF to allow requests, block requests, or count requests that match the conditions in the `Rule`.
 #' 
-#' -   The order in which you want AWS WAF to evaluate the `Rules` in a `WebACL`. If you add more than one `Rule` to a `WebACL`, AWS WAF evaluates each request against the `Rules` in order based on the value of `Priority`. (The `Rule` that has the lowest value for `Priority` is evaluated first.) When a web request matches all of the predicates (such as `ByteMatchSets` and `IPSets`) in a `Rule`, AWS WAF immediately takes the corresponding action, allow or block, and doesn\'t evaluate the request against the remaining `Rules` in the `WebACL`, if any.
+#' -   The order in which you want AWS WAF to evaluate the `Rules` in a `WebACL`. If you add more than one `Rule` to a `WebACL`, AWS WAF evaluates each request against the `Rules` in order based on the value of `Priority`. (The `Rule` that has the lowest value for `Priority` is evaluated first.) When a web request matches all the predicates (such as `ByteMatchSets` and `IPSets`) in a `Rule`, AWS WAF immediately takes the corresponding action, allow or block, and doesn\'t evaluate the request against the remaining `Rules` in the `WebACL`, if any.
 #' 
 #' To create and configure a `WebACL`, perform the following steps:
 #' 
@@ -3113,6 +3118,10 @@ update_sql_injection_match_set <- function (SqlInjectionMatchSetId,
 #' 4.  Use `GetChangeToken` to get the change token that you provide in the `ChangeToken` parameter of an UpdateWebACL request.
 #' 
 #' 5.  Submit an `UpdateWebACL` request to specify the `Rules` that you want to include in the `WebACL`, to specify the default action, and to associate the `WebACL` with a CloudFront distribution.
+#' 
+#'     The `ActivatedRule` can be a rule group. If you specify a rule group as your `ActivatedRule`, you can exclude specific rules from that rule group.
+#' 
+#'     If you already have a rule group associated with a web ACL and want to submit an `UpdateWebACL` request to exclude certain rules from that rule group, you must first remove the rule group from the web ACL, the re-insert it again, specifying the excluded rules. For details, see ActivatedRule\$ExcludedRules.
 #' 
 #' Be aware that if you try to add a RATE\_BASED rule to a web ACL without setting the rule type when first creating the rule, the UpdateWebACL request will fail because the request tries to add a REGULAR rule (the default rule type) with the specified ID, which does not exist.
 #' 
@@ -3135,7 +3144,12 @@ update_sql_injection_match_set <- function (SqlInjectionMatchSetId,
 #'         OverrideAction = list(
 #'           Type = "NONE"|"COUNT"
 #'         ),
-#'         Type = "REGULAR"|"RATE_BASED"|"GROUP"
+#'         Type = "REGULAR"|"RATE_BASED"|"GROUP",
+#'         ExcludedRules = list(
+#'           list(
+#'             RuleId = "string"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -3153,7 +3167,7 @@ update_sql_injection_match_set <- function (SqlInjectionMatchSetId,
 #' 
 #' -   WebACLUpdate: Contains `Action` and `ActivatedRule`
 #' 
-#' -   ActivatedRule: Contains `Action`, `OverrideAction`, `Priority`, `RuleId`, and `Type`. `ActivatedRule|OverrideAction` applies only when updating or adding a `RuleGroup` to a `WebACL`. In this case you do not use `ActivatedRule|Action`. For all other update requests, `ActivatedRule|Action` is used instead of `ActivatedRule|OverrideAction`.
+#' -   ActivatedRule: Contains `Action`, `OverrideAction`, `Priority`, `RuleId`, and `Type`. `ActivatedRule|OverrideAction` applies only when updating or adding a `RuleGroup` to a `WebACL`. In this case, you do not use `ActivatedRule|Action`. For all other update requests, `ActivatedRule|Action` is used instead of `ActivatedRule|OverrideAction`.
 #' 
 #' -   WafAction: Contains `Type`
 #' @param DefaultAction A default action for the web ACL, either ALLOW or BLOCK. AWS WAF performs the default action if a request doesn\'t match the criteria in any of the rules in a web ACL.
@@ -3200,7 +3214,7 @@ update_web_acl <- function (WebACLId, ChangeToken, Updates = NULL,
 #'
 #' Inserts or deletes XssMatchTuple objects (filters) in an XssMatchSet. For each `XssMatchTuple` object, you specify the following values:
 #' 
-#' -   `Action`: Whether to insert the object into or delete the object from the array. To change a `XssMatchTuple`, you delete the existing object and add a new one.
+#' -   `Action`: Whether to insert the object into or delete the object from the array. To change an `XssMatchTuple`, you delete the existing object and add a new one.
 #' 
 #' -   `FieldToMatch`: The part of web requests that you want AWS WAF to inspect and, if you want AWS WAF to inspect a header or custom query parameter, the name of the header or parameter.
 #' 
@@ -3208,7 +3222,7 @@ update_web_acl <- function (WebACLId, ChangeToken, Updates = NULL,
 #' 
 #'     You can only specify a single type of TextTransformation.
 #' 
-#' You use `XssMatchSet` objects to specify which CloudFront requests you want to allow, block, or count. For example, if you\'re receiving requests that contain cross-site scripting attacks in the request body and you want to block the requests, you can create an `XssMatchSet` with the applicable settings, and then configure AWS WAF to block the requests.
+#' You use `XssMatchSet` objects to specify which CloudFront requests that you want to allow, block, or count. For example, if you\'re receiving requests that contain cross-site scripting attacks in the request body and you want to block the requests, you can create an `XssMatchSet` with the applicable settings, and then configure AWS WAF to block the requests.
 #' 
 #' To create and configure an `XssMatchSet`, perform the following steps:
 #' 
@@ -3242,7 +3256,7 @@ update_web_acl <- function (WebACLId, ChangeToken, Updates = NULL,
 #'
 #' @param XssMatchSetId &#91;required&#93; The `XssMatchSetId` of the `XssMatchSet` that you want to update. `XssMatchSetId` is returned by CreateXssMatchSet and by ListXssMatchSets.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
-#' @param Updates &#91;required&#93; An array of `XssMatchSetUpdate` objects that you want to insert into or delete from a XssMatchSet. For more information, see the applicable data types:
+#' @param Updates &#91;required&#93; An array of `XssMatchSetUpdate` objects that you want to insert into or delete from an XssMatchSet. For more information, see the applicable data types:
 #' 
 #' -   XssMatchSetUpdate: Contains `Action` and `XssMatchTuple`
 #' 

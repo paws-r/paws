@@ -12,7 +12,7 @@ Authors@R:
              email = "adam.banker39@gmail.com"),
       person(given = "Amazon.com, Inc.",
              role = "cph"))
-Description: The Cost Explorer API allows you to
+Description: The Cost Explorer API enables you to
     programmatically query your cost and usage data. You can query for
     aggregated data such as total monthly costs or total daily usage. You
     can also query for granular data, such as the number of daily write

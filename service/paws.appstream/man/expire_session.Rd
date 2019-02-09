@@ -7,7 +7,7 @@
 expire_session(SessionId)
 }
 \arguments{
-\item{SessionId}{[required] The ID of the streaming session.}
+\item{SessionId}{[required] The identifier of the streaming session.}
 }
 \description{
 Immediately stops the specified streaming session.

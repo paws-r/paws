@@ -16,6 +16,12 @@ NULL
 #'       list(
 #'         ActionName = "string",
 #'         ScheduleActionSettings = list(
+#'           HlsTimedMetadataSettings = list(
+#'             Id3 = "string"
+#'           ),
+#'           InputSwitchSettings = list(
+#'             InputAttachmentNameReference = "string"
+#'           ),
 #'           Scte35ReturnToNetworkSettings = list(
 #'             SpliceEventId = 123
 #'           ),
@@ -73,6 +79,10 @@ NULL
 #'         ScheduleActionStartSettings = list(
 #'           FixedModeScheduleActionStartSettings = list(
 #'             Time = "string"
+#'           ),
+#'           FollowModeScheduleActionStartSettings = list(
+#'             FollowPoint = "END"|"START",
+#'             ReferenceActionName = "string"
 #'           )
 #'         )
 #'       )
@@ -339,6 +349,11 @@ batch_update_schedule <- function (ChannelId, Creates = NULL,
 #'             ),
 #'             RolloverInterval = 123
 #'           ),
+#'           FrameCaptureGroupSettings = list(
+#'             Destination = list(
+#'               DestinationRefId = "string"
+#'             )
+#'           ),
 #'           HlsGroupSettings = list(
 #'             AdMarkers = list(
 #'               "ADOBE"|"ELEMENTAL"|"ELEMENTAL_SCTE35"
@@ -392,6 +407,7 @@ batch_update_schedule <- function (ChannelId, Creates = NULL,
 #'                 RestartDelay = 123
 #'               )
 #'             ),
+#'             IFrameOnlyPlaylists = "DISABLED"|"STANDARD",
 #'             IndexNSegments = 123,
 #'             InputLossAction = "EMIT_OUTPUT"|"PAUSE_OUTPUT",
 #'             IvInManifest = "EXCLUDE"|"INCLUDE",
@@ -416,6 +432,7 @@ batch_update_schedule <- function (ChannelId, Creates = NULL,
 #'             OutputSelection = "MANIFESTS_AND_SEGMENTS"|"SEGMENTS_ONLY",
 #'             ProgramDateTime = "EXCLUDE"|"INCLUDE",
 #'             ProgramDateTimePeriod = 123,
+#'             RedundantManifest = "DISABLED"|"ENABLED",
 #'             SegmentLength = 123,
 #'             SegmentationMode = "USE_INPUT_SEGMENTATION"|"USE_SEGMENT_DURATION",
 #'             SegmentsPerSubdirectory = 123,
@@ -453,6 +470,7 @@ batch_update_schedule <- function (ChannelId, Creates = NULL,
 #'             CacheFullBehavior = "DISCONNECT_IMMEDIATELY"|"WAIT_FOR_SERVER",
 #'             CacheLength = 123,
 #'             CaptionData = "ALL"|"FIELD1_608"|"FIELD1_AND_FIELD2_608",
+#'             InputLossAction = "EMIT_OUTPUT"|"PAUSE_OUTPUT",
 #'             RestartDelay = 123
 #'           ),
 #'           UdpGroupSettings = list(
@@ -534,6 +552,9 @@ batch_update_schedule <- function (ChannelId, Creates = NULL,
 #'                   )
 #'                 ),
 #'                 Extension = "string",
+#'                 NameModifier = "string"
+#'               ),
+#'               FrameCaptureOutputSettings = list(
 #'                 NameModifier = "string"
 #'               ),
 #'               HlsOutputSettings = list(
@@ -668,6 +689,9 @@ batch_update_schedule <- function (ChannelId, Creates = NULL,
 #'     VideoDescriptions = list(
 #'       list(
 #'         CodecSettings = list(
+#'           FrameCaptureSettings = list(
+#'             CaptureInterval = 123
+#'           ),
 #'           H264Settings = list(
 #'             AdaptiveQuantization = "HIGH"|"HIGHER"|"LOW"|"MAX"|"MEDIUM"|"OFF",
 #'             AfdSignaling = "AUTO"|"FIXED"|"NONE",
@@ -702,6 +726,7 @@ batch_update_schedule <- function (ChannelId, Creates = NULL,
 #'             Slices = 123,
 #'             Softness = 123,
 #'             SpatialAq = "DISABLED"|"ENABLED",
+#'             SubgopLength = "DYNAMIC"|"FIXED",
 #'             Syntax = "DEFAULT"|"RP2027",
 #'             TemporalAq = "DISABLED"|"ENABLED",
 #'             TimecodeInsertion = "DISABLED"|"PIC_TIMING_SEI"
@@ -718,6 +743,7 @@ batch_update_schedule <- function (ChannelId, Creates = NULL,
 #'   ),
 #'   InputAttachments = list(
 #'     list(
+#'       InputAttachmentName = "string",
 #'       InputId = "string",
 #'       InputSettings = list(
 #'         AudioSelectors = list(
@@ -800,7 +826,10 @@ batch_update_schedule <- function (ChannelId, Creates = NULL,
 #'   Name = "string",
 #'   RequestId = "string",
 #'   Reserved = "string",
-#'   RoleArn = "string"
+#'   RoleArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
@@ -814,11 +843,13 @@ batch_update_schedule <- function (ChannelId, Creates = NULL,
 #' creating multiple resources.
 #' @param Reserved Deprecated field that's only usable by whitelisted customers.
 #' @param RoleArn An optional Amazon Resource Name (ARN) of the role to assume when running the Channel.
+#' @param Tags A collection of key-value pairs.
 #'
 #' @export
 create_channel <- function (Destinations = NULL, EncoderSettings = NULL, 
     InputAttachments = NULL, InputSpecification = NULL, LogLevel = NULL, 
-    Name = NULL, RequestId = NULL, Reserved = NULL, RoleArn = NULL) 
+    Name = NULL, RequestId = NULL, Reserved = NULL, RoleArn = NULL, 
+    Tags = NULL) 
 {
     op <- new_operation(name = "CreateChannel", http_method = "POST", 
         http_path = "/prod/channels", paginator = list())
@@ -826,7 +857,7 @@ create_channel <- function (Destinations = NULL, EncoderSettings = NULL,
         EncoderSettings = EncoderSettings, InputAttachments = InputAttachments, 
         InputSpecification = InputSpecification, LogLevel = LogLevel, 
         Name = Name, RequestId = RequestId, Reserved = Reserved, 
-        RoleArn = RoleArn)
+        RoleArn = RoleArn, Tags = Tags)
     output <- create_channel_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -849,8 +880,14 @@ create_channel <- function (Destinations = NULL, EncoderSettings = NULL,
 #'   InputSecurityGroups = list(
 #'     "string"
 #'   ),
+#'   MediaConnectFlows = list(
+#'     list(
+#'       FlowArn = "string"
+#'     )
+#'   ),
 #'   Name = "string",
 #'   RequestId = "string",
+#'   RoleArn = "string",
 #'   Sources = list(
 #'     list(
 #'       PasswordParam = "string",
@@ -858,29 +895,39 @@ create_channel <- function (Destinations = NULL, EncoderSettings = NULL,
 #'       Username = "string"
 #'     )
 #'   ),
-#'   Type = "UDP_PUSH"|"RTP_PUSH"|"RTMP_PUSH"|"RTMP_PULL"|"URL_PULL"
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   Type = "UDP_PUSH"|"RTP_PUSH"|"RTMP_PUSH"|"RTMP_PULL"|"URL_PULL"|"MP4_FILE"|"MEDIACONNECT"
 #' )
 #' ```
 #'
 #' @param Destinations Destination settings for PUSH type inputs.
 #' @param InputSecurityGroups A list of security groups referenced by IDs to attach to the input.
+#' @param MediaConnectFlows A list of the MediaConnect Flows that you want to use in this input. You can specify as few as one
+#' Flow and presently, as many as two. The only requirement is when you have more than one is that each Flow is in a
+#' separate Availability Zone as this ensures your EML input is redundant to AZ issues.
 #' @param Name Name of the input.
 #' @param RequestId Unique identifier of the request to ensure the request is handled
 #' exactly once in case of retries.
+#' @param RoleArn The Amazon Resource Name (ARN) of the role this input assumes during and after creation.
 #' @param Sources The source URLs for a PULL-type input. Every PULL type input needs
 #' exactly two source URLs for redundancy.
 #' Only specify sources for PULL type Inputs. Leave Destinations empty.
+#' @param Tags A collection of key-value pairs.
 #' @param Type 
 #'
 #' @export
 create_input <- function (Destinations = NULL, InputSecurityGroups = NULL, 
-    Name = NULL, RequestId = NULL, Sources = NULL, Type = NULL) 
+    MediaConnectFlows = NULL, Name = NULL, RequestId = NULL, 
+    RoleArn = NULL, Sources = NULL, Tags = NULL, Type = NULL) 
 {
     op <- new_operation(name = "CreateInput", http_method = "POST", 
         http_path = "/prod/inputs", paginator = list())
     input <- create_input_input(Destinations = Destinations, 
-        InputSecurityGroups = InputSecurityGroups, Name = Name, 
-        RequestId = RequestId, Sources = Sources, Type = Type)
+        InputSecurityGroups = InputSecurityGroups, MediaConnectFlows = MediaConnectFlows, 
+        Name = Name, RequestId = RequestId, RoleArn = RoleArn, 
+        Sources = Sources, Tags = Tags, Type = Type)
     output <- create_input_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -895,6 +942,9 @@ create_input <- function (Destinations = NULL, InputSecurityGroups = NULL,
 #' @section Accepted Parameters:
 #' ```
 #' create_input_security_group(
+#'   Tags = list(
+#'     "string"
+#'   ),
 #'   WhitelistRules = list(
 #'     list(
 #'       Cidr = "string"
@@ -903,15 +953,46 @@ create_input <- function (Destinations = NULL, InputSecurityGroups = NULL,
 #' )
 #' ```
 #'
+#' @param Tags A collection of key-value pairs.
 #' @param WhitelistRules List of IPv4 CIDR addresses to whitelist
 #'
 #' @export
-create_input_security_group <- function (WhitelistRules = NULL) 
+create_input_security_group <- function (Tags = NULL, WhitelistRules = NULL) 
 {
     op <- new_operation(name = "CreateInputSecurityGroup", http_method = "POST", 
         http_path = "/prod/inputSecurityGroups", paginator = list())
-    input <- create_input_security_group_input(WhitelistRules = WhitelistRules)
+    input <- create_input_security_group_input(Tags = Tags, WhitelistRules = WhitelistRules)
     output <- create_input_security_group_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Create tags for a resource
+#'
+#' Create tags for a resource
+#'
+#' @section Accepted Parameters:
+#' ```
+#' create_tags(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @param ResourceArn &#91;required&#93; 
+#' @param Tags 
+#'
+#' @export
+create_tags <- function (ResourceArn, Tags = NULL) 
+{
+    op <- new_operation(name = "CreateTags", http_method = "POST", 
+        http_path = "/prod/tags/{resource-arn}", paginator = list())
+    input <- create_tags_input(ResourceArn = ResourceArn, Tags = Tags)
+    output <- create_tags_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -1017,6 +1098,36 @@ delete_reservation <- function (ReservationId)
         http_path = "/prod/reservations/{reservationId}", paginator = list())
     input <- delete_reservation_input(ReservationId = ReservationId)
     output <- delete_reservation_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Removes tags for a resource
+#'
+#' Removes tags for a resource
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_tags(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @param ResourceArn &#91;required&#93; 
+#' @param TagKeys &#91;required&#93; An array of tag keys to delete
+#'
+#' @export
+delete_tags <- function (ResourceArn, TagKeys) 
+{
+    op <- new_operation(name = "DeleteTags", http_method = "DELETE", 
+        http_path = "/prod/tags/{resource-arn}", paginator = list())
+    input <- delete_tags_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+    output <- delete_tags_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -1370,6 +1481,32 @@ list_reservations <- function (Codec = NULL, MaxResults = NULL,
     return(response)
 }
 
+#' Produces list of tags that have been created for a resource
+#'
+#' Produces list of tags that have been created for a resource
+#'
+#' @section Accepted Parameters:
+#' ```
+#' list_tags_for_resource(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @param ResourceArn &#91;required&#93; 
+#'
+#' @export
+list_tags_for_resource <- function (ResourceArn) 
+{
+    op <- new_operation(name = "ListTagsForResource", http_method = "GET", 
+        http_path = "/prod/tags/{resource-arn}", paginator = list())
+    input <- list_tags_for_resource_input(ResourceArn = ResourceArn)
+    output <- list_tags_for_resource_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Purchase an offering and create a reservation
 #'
 #' Purchase an offering and create a reservation.
@@ -1694,6 +1831,11 @@ stop_channel <- function (ChannelId)
 #'             ),
 #'             RolloverInterval = 123
 #'           ),
+#'           FrameCaptureGroupSettings = list(
+#'             Destination = list(
+#'               DestinationRefId = "string"
+#'             )
+#'           ),
 #'           HlsGroupSettings = list(
 #'             AdMarkers = list(
 #'               "ADOBE"|"ELEMENTAL"|"ELEMENTAL_SCTE35"
@@ -1747,6 +1889,7 @@ stop_channel <- function (ChannelId)
 #'                 RestartDelay = 123
 #'               )
 #'             ),
+#'             IFrameOnlyPlaylists = "DISABLED"|"STANDARD",
 #'             IndexNSegments = 123,
 #'             InputLossAction = "EMIT_OUTPUT"|"PAUSE_OUTPUT",
 #'             IvInManifest = "EXCLUDE"|"INCLUDE",
@@ -1771,6 +1914,7 @@ stop_channel <- function (ChannelId)
 #'             OutputSelection = "MANIFESTS_AND_SEGMENTS"|"SEGMENTS_ONLY",
 #'             ProgramDateTime = "EXCLUDE"|"INCLUDE",
 #'             ProgramDateTimePeriod = 123,
+#'             RedundantManifest = "DISABLED"|"ENABLED",
 #'             SegmentLength = 123,
 #'             SegmentationMode = "USE_INPUT_SEGMENTATION"|"USE_SEGMENT_DURATION",
 #'             SegmentsPerSubdirectory = 123,
@@ -1808,6 +1952,7 @@ stop_channel <- function (ChannelId)
 #'             CacheFullBehavior = "DISCONNECT_IMMEDIATELY"|"WAIT_FOR_SERVER",
 #'             CacheLength = 123,
 #'             CaptionData = "ALL"|"FIELD1_608"|"FIELD1_AND_FIELD2_608",
+#'             InputLossAction = "EMIT_OUTPUT"|"PAUSE_OUTPUT",
 #'             RestartDelay = 123
 #'           ),
 #'           UdpGroupSettings = list(
@@ -1889,6 +2034,9 @@ stop_channel <- function (ChannelId)
 #'                   )
 #'                 ),
 #'                 Extension = "string",
+#'                 NameModifier = "string"
+#'               ),
+#'               FrameCaptureOutputSettings = list(
 #'                 NameModifier = "string"
 #'               ),
 #'               HlsOutputSettings = list(
@@ -2023,6 +2171,9 @@ stop_channel <- function (ChannelId)
 #'     VideoDescriptions = list(
 #'       list(
 #'         CodecSettings = list(
+#'           FrameCaptureSettings = list(
+#'             CaptureInterval = 123
+#'           ),
 #'           H264Settings = list(
 #'             AdaptiveQuantization = "HIGH"|"HIGHER"|"LOW"|"MAX"|"MEDIUM"|"OFF",
 #'             AfdSignaling = "AUTO"|"FIXED"|"NONE",
@@ -2057,6 +2208,7 @@ stop_channel <- function (ChannelId)
 #'             Slices = 123,
 #'             Softness = 123,
 #'             SpatialAq = "DISABLED"|"ENABLED",
+#'             SubgopLength = "DYNAMIC"|"FIXED",
 #'             Syntax = "DEFAULT"|"RP2027",
 #'             TemporalAq = "DISABLED"|"ENABLED",
 #'             TimecodeInsertion = "DISABLED"|"PIC_TIMING_SEI"
@@ -2073,6 +2225,7 @@ stop_channel <- function (ChannelId)
 #'   ),
 #'   InputAttachments = list(
 #'     list(
+#'       InputAttachmentName = "string",
 #'       InputId = "string",
 #'       InputSettings = list(
 #'         AudioSelectors = list(
@@ -2200,7 +2353,13 @@ update_channel <- function (ChannelId, Destinations = NULL, EncoderSettings = NU
 #'   InputSecurityGroups = list(
 #'     "string"
 #'   ),
+#'   MediaConnectFlows = list(
+#'     list(
+#'       FlowArn = "string"
+#'     )
+#'   ),
 #'   Name = "string",
+#'   RoleArn = "string",
 #'   Sources = list(
 #'     list(
 #'       PasswordParam = "string",
@@ -2214,20 +2373,25 @@ update_channel <- function (ChannelId, Destinations = NULL, EncoderSettings = NU
 #' @param Destinations Destination settings for PUSH type inputs.
 #' @param InputId &#91;required&#93; Unique ID of the input.
 #' @param InputSecurityGroups A list of security groups referenced by IDs to attach to the input.
+#' @param MediaConnectFlows A list of the MediaConnect Flow ARNs that you want to use as the source of the input. You can specify as few as one
+#' Flow and presently, as many as two. The only requirement is when you have more than one is that each Flow is in a
+#' separate Availability Zone as this ensures your EML input is redundant to AZ issues.
 #' @param Name Name of the input.
+#' @param RoleArn The Amazon Resource Name (ARN) of the role this input assumes during and after creation.
 #' @param Sources The source URLs for a PULL-type input. Every PULL type input needs
 #' exactly two source URLs for redundancy.
 #' Only specify sources for PULL type Inputs. Leave Destinations empty.
 #'
 #' @export
 update_input <- function (Destinations = NULL, InputId, InputSecurityGroups = NULL, 
-    Name = NULL, Sources = NULL) 
+    MediaConnectFlows = NULL, Name = NULL, RoleArn = NULL, Sources = NULL) 
 {
     op <- new_operation(name = "UpdateInput", http_method = "PUT", 
         http_path = "/prod/inputs/{inputId}", paginator = list())
     input <- update_input_input(Destinations = Destinations, 
         InputId = InputId, InputSecurityGroups = InputSecurityGroups, 
-        Name = Name, Sources = Sources)
+        MediaConnectFlows = MediaConnectFlows, Name = Name, RoleArn = RoleArn, 
+        Sources = Sources)
     output <- update_input_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -2243,6 +2407,9 @@ update_input <- function (Destinations = NULL, InputId, InputSecurityGroups = NU
 #' ```
 #' update_input_security_group(
 #'   InputSecurityGroupId = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
 #'   WhitelistRules = list(
 #'     list(
 #'       Cidr = "string"
@@ -2252,17 +2419,18 @@ update_input <- function (Destinations = NULL, InputId, InputSecurityGroups = NU
 #' ```
 #'
 #' @param InputSecurityGroupId &#91;required&#93; The id of the Input Security Group to update.
+#' @param Tags A collection of key-value pairs.
 #' @param WhitelistRules List of IPv4 CIDR addresses to whitelist
 #'
 #' @export
 update_input_security_group <- function (InputSecurityGroupId, 
-    WhitelistRules = NULL) 
+    Tags = NULL, WhitelistRules = NULL) 
 {
     op <- new_operation(name = "UpdateInputSecurityGroup", http_method = "PUT", 
         http_path = "/prod/inputSecurityGroups/{inputSecurityGroupId}", 
         paginator = list())
     input <- update_input_security_group_input(InputSecurityGroupId = InputSecurityGroupId, 
-        WhitelistRules = WhitelistRules)
+        Tags = Tags, WhitelistRules = WhitelistRules)
     output <- update_input_security_group_output()
     svc <- service()
     request <- new_request(svc, op, input, output)

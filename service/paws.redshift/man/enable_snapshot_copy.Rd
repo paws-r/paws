@@ -5,16 +5,17 @@
 \title{Enables the automatic copy of snapshots from one region to another region for a specified cluster}
 \usage{
 enable_snapshot_copy(ClusterIdentifier, DestinationRegion,
-  RetentionPeriod = NULL, SnapshotCopyGrantName = NULL)
+  RetentionPeriod = NULL, SnapshotCopyGrantName = NULL,
+  ManualSnapshotRetentionPeriod = NULL)
 }
 \arguments{
 \item{ClusterIdentifier}{[required] The unique identifier of the source cluster to copy snapshots from.
 
 Constraints: Must be the valid name of an existing cluster that does not already have cross-region snapshot copy enabled.}
 
-\item{DestinationRegion}{[required] The destination region that you want to copy snapshots to.
+\item{DestinationRegion}{[required] The destination AWS Region that you want to copy snapshots to.
 
-Constraints: Must be the name of a valid region. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/rande.html#redshift_region}{Regions and Endpoints} in the Amazon Web Services General Reference.}
+Constraints: Must be the name of a valid AWS Region. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/rande.html#redshift_region}{Regions and Endpoints} in the Amazon Web Services General Reference.}
 
 \item{RetentionPeriod}{The number of days to retain automated snapshots in the destination region after they are copied from the source region.
 
@@ -23,6 +24,10 @@ Default: 7.
 Constraints: Must be at least 1 and no more than 35.}
 
 \item{SnapshotCopyGrantName}{The name of the snapshot copy grant to use when snapshots of an AWS KMS-encrypted cluster are copied to the destination region.}
+
+\item{ManualSnapshotRetentionPeriod}{The number of days to retain newly copied snapshots in the destination AWS Region after they are copied from the source AWS Region. If the value is -1, the manual snapshot is retained indefinitely.
+
+The value must be either -1 or an integer between 1 and 3,653.}
 }
 \description{
 Enables the automatic copy of snapshots from one region to another region for a specified cluster.
@@ -32,7 +37,8 @@ Enables the automatic copy of snapshots from one region to another region for a 
   ClusterIdentifier = "string",
   DestinationRegion = "string",
   RetentionPeriod = 123,
-  SnapshotCopyGrantName = "string"
+  SnapshotCopyGrantName = "string",
+  ManualSnapshotRetentionPeriod = 123
 )
 }
 }

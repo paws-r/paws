@@ -13,7 +13,6 @@ delete_alias(AliasId)
 Deletes an alias. This action removes all record of the alias. Game clients attempting to access a server process using the deleted alias receive an error. To delete an alias, specify the alias ID to be deleted.
 }
 \details{
-Alias-related operations include:
 \itemize{
 \item CreateAlias
 \item ListAliases

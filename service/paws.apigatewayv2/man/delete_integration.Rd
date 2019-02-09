@@ -4,10 +4,7 @@
 \alias{delete_integration}
 \title{Deletes an Integration}
 \usage{
-delete_integration(
-  ApiId = "string",
-  IntegrationId = "string"
-)
+delete_integration(ApiId, IntegrationId)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -17,6 +14,11 @@ delete_integration(
 \description{
 Deletes an Integration.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_integration(
+  ApiId = "string",
+  IntegrationId = "string"
+)
 }
+}
+

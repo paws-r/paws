@@ -4,11 +4,7 @@
 \alias{update_deployment}
 \title{Updates a Deployment}
 \usage{
-update_deployment(
-  ApiId = "string",
-  DeploymentId = "string",
-  Description = "string"
-)
+update_deployment(ApiId, DeploymentId, Description = NULL)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -20,6 +16,12 @@ update_deployment(
 \description{
 Updates a Deployment.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_deployment(
+  ApiId = "string",
+  DeploymentId = "string",
+  Description = "string"
+)
 }
+}
+

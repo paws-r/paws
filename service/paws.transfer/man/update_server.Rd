@@ -4,14 +4,8 @@
 \alias{update_server}
 \title{Updates the server properties after that server has been created}
 \usage{
-update_server(
-  IdentityProviderDetails = list(
-    Url = "string",
-    InvocationRole = "string"
-  ),
-  LoggingRole = "string",
-  ServerId = "string"
-)
+update_server(IdentityProviderDetails = NULL, LoggingRole = NULL,
+  ServerId)
 }
 \arguments{
 \item{IdentityProviderDetails}{This response parameter is an array containing all of the information required to call a customer's authentication API method.}
@@ -26,6 +20,15 @@ Updates the server properties after that server has been created.
 \details{
 The \code{UpdateServer} call returns the \code{ServerId} of the Secure File Transfer Protocol (SFTP) server you updated.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_server(
+  IdentityProviderDetails = list(
+    Url = "string",
+    InvocationRole = "string"
+  ),
+  LoggingRole = "string",
+  ServerId = "string"
+)
 }
+}
+

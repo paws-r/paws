@@ -4,9 +4,7 @@
 \alias{create_email_identity}
 \title{Verifies an email identity for use with Amazon Pinpoint}
 \usage{
-create_email_identity(
-  EmailIdentity = "string"
-)
+create_email_identity(EmailIdentity)
 }
 \arguments{
 \item{EmailIdentity}{[required] The email address or domain that you want to verify.}
@@ -19,6 +17,10 @@ When you verify an email address, Amazon Pinpoint sends an email to the address.
 
 When you verify a domain, this operation provides a set of DKIM tokens, which you can convert into CNAME tokens. You add these CNAME tokens to the DNS configuration for your domain. Your domain is verified when Amazon Pinpoint detects these records in the DNS configuration for your domain. It usually takes around 72 hours to complete the domain verification process.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_email_identity(
+  EmailIdentity = "string"
+)
 }
+}
+

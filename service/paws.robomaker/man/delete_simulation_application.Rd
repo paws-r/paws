@@ -4,10 +4,7 @@
 \alias{delete_simulation_application}
 \title{Deletes a simulation application}
 \usage{
-delete_simulation_application(
-  application = "string",
-  applicationVersion = "string"
-)
+delete_simulation_application(application, applicationVersion = NULL)
 }
 \arguments{
 \item{application}{[required] The application information for the simulation application to delete.}
@@ -17,6 +14,11 @@ delete_simulation_application(
 \description{
 Deletes a simulation application.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_simulation_application(
+  application = "string",
+  applicationVersion = "string"
+)
 }
+}
+

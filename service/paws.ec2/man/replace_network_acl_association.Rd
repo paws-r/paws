@@ -15,7 +15,7 @@ replace_network_acl_association(AssociationId, DryRun = NULL,
 \item{NetworkAclId}{[required] The ID of the new network ACL to associate with the subnet.}
 }
 \description{
-Changes which network ACL a subnet is associated with. By default when you create a subnet, it's automatically associated with the default network ACL. For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html}{Network ACLs} in the \emph{Amazon Virtual Private Cloud User Guide}.
+Changes which network ACL a subnet is associated with. By default when you create a subnet, it's automatically associated with the default network ACL. For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html}{Network ACLs} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \details{
 This is an idempotent operation.

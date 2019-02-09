@@ -16,6 +16,11 @@ Only use the \code{force} parameter if your instance is stuck in the \code{stopp
 \description{
 Stops a specific Amazon Lightsail instance that is currently running.
 }
+\details{
+When you start a stopped instance, Lightsail assigns a new public IP address to the instance. To use the same IP address after stopping and starting an instance, create a static IP address and attach it to the instance. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/lightsail-create-static-ip}{Lightsail Dev Guide}.
+
+The \code{stop instance} operation supports tag-based access control via resource tags applied to the resource identified by instanceName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+}
 \section{Accepted Parameters}{
 \preformatted{stop_instance(
   instanceName = "string",

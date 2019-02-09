@@ -49,18 +49,18 @@ batch_get_builds_output <- function (...)
             tags = list(type = "string", min = 1L)), projectName = structure(logical(0), 
             tags = list(type = "string", min = 1L)), phases = structure(list(structure(list(phaseType = structure(logical(0), 
             tags = list(type = "string", enum = c("SUBMITTED", 
-                "PROVISIONING", "DOWNLOAD_SOURCE", "INSTALL", 
-                "PRE_BUILD", "BUILD", "POST_BUILD", "UPLOAD_ARTIFACTS", 
-                "FINALIZING", "COMPLETED"))), phaseStatus = structure(logical(0), 
-            tags = list(type = "string", enum = c("SUCCEEDED", 
-                "FAILED", "FAULT", "TIMED_OUT", "IN_PROGRESS", 
-                "STOPPED"))), startTime = structure(logical(0), 
-            tags = list(type = "timestamp")), endTime = structure(logical(0), 
-            tags = list(type = "timestamp")), durationInSeconds = structure(logical(0), 
-            tags = list(type = "long")), contexts = structure(list(structure(list(statusCode = structure(logical(0), 
-            tags = list(type = "string")), message = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))), 
-            tags = list(type = "list"))), tags = list(type = "structure"))), 
+                "QUEUED", "PROVISIONING", "DOWNLOAD_SOURCE", 
+                "INSTALL", "PRE_BUILD", "BUILD", "POST_BUILD", 
+                "UPLOAD_ARTIFACTS", "FINALIZING", "COMPLETED"))), 
+            phaseStatus = structure(logical(0), tags = list(type = "string", 
+                enum = c("SUCCEEDED", "FAILED", "FAULT", "TIMED_OUT", 
+                  "IN_PROGRESS", "STOPPED"))), startTime = structure(logical(0), 
+                tags = list(type = "timestamp")), endTime = structure(logical(0), 
+                tags = list(type = "timestamp")), durationInSeconds = structure(logical(0), 
+                tags = list(type = "long")), contexts = structure(list(structure(list(statusCode = structure(logical(0), 
+                tags = list(type = "string")), message = structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "structure"))), 
+                tags = list(type = "list"))), tags = list(type = "structure"))), 
             tags = list(type = "list")), source = structure(list(type = structure(logical(0), 
             tags = list(type = "string", enum = c("CODECOMMIT", 
                 "CODEPIPELINE", "GITHUB", "S3", "BITBUCKET", 
@@ -121,7 +121,12 @@ batch_get_builds_output <- function (...)
                   "PARAMETER_STORE")))), tags = list(type = "structure"))), 
                 tags = list(type = "list")), privilegedMode = structure(logical(0), 
                 tags = list(type = "boolean")), certificate = structure(logical(0), 
-                tags = list(type = "string"))), tags = list(type = "structure")), 
+                tags = list(type = "string")), registryCredential = structure(list(credential = structure(logical(0), 
+                tags = list(type = "string", min = 1L)), credentialProvider = structure(logical(0), 
+                tags = list(type = "string", enum = "SECRETS_MANAGER"))), 
+                tags = list(type = "structure")), imagePullCredentialsType = structure(logical(0), 
+                tags = list(type = "string", enum = c("CODEBUILD", 
+                  "SERVICE_ROLE")))), tags = list(type = "structure")), 
         serviceRole = structure(logical(0), tags = list(type = "string", 
             min = 1L)), logs = structure(list(groupName = structure(logical(0), 
             tags = list(type = "string")), streamName = structure(logical(0), 
@@ -137,6 +142,7 @@ batch_get_builds_output <- function (...)
                   "DISABLED"))), location = structure(logical(0), 
                 tags = list(type = "string"))), tags = list(type = "structure"))), 
             tags = list(type = "structure")), timeoutInMinutes = structure(logical(0), 
+            tags = list(type = "integer")), queuedTimeoutInMinutes = structure(logical(0), 
             tags = list(type = "integer")), buildComplete = structure(logical(0), 
             tags = list(type = "boolean")), initiator = structure(logical(0), 
             tags = list(type = "string")), vpcConfig = structure(list(vpcId = structure(logical(0), 
@@ -237,12 +243,18 @@ batch_get_projects_output <- function (...)
                   "PARAMETER_STORE")))), tags = list(type = "structure"))), 
                 tags = list(type = "list")), privilegedMode = structure(logical(0), 
                 tags = list(type = "boolean")), certificate = structure(logical(0), 
-                tags = list(type = "string"))), tags = list(type = "structure")), 
+                tags = list(type = "string")), registryCredential = structure(list(credential = structure(logical(0), 
+                tags = list(type = "string", min = 1L)), credentialProvider = structure(logical(0), 
+                tags = list(type = "string", enum = "SECRETS_MANAGER"))), 
+                tags = list(type = "structure")), imagePullCredentialsType = structure(logical(0), 
+                tags = list(type = "string", enum = c("CODEBUILD", 
+                  "SERVICE_ROLE")))), tags = list(type = "structure")), 
         serviceRole = structure(logical(0), tags = list(type = "string", 
             min = 1L)), timeoutInMinutes = structure(logical(0), 
             tags = list(type = "integer", max = 480L, min = 5L)), 
-        encryptionKey = structure(logical(0), tags = list(type = "string", 
-            min = 1L)), tags = structure(list(structure(list(key = structure(logical(0), 
+        queuedTimeoutInMinutes = structure(logical(0), tags = list(type = "integer", 
+            max = 480L, min = 5L)), encryptionKey = structure(logical(0), 
+            tags = list(type = "string", min = 1L)), tags = structure(list(structure(list(key = structure(logical(0), 
             tags = list(type = "string", max = 127L, min = 1L, 
                 pattern = "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=@+\\\\-]*)$")), 
             value = structure(logical(0), tags = list(type = "string", 
@@ -352,12 +364,18 @@ create_project_input <- function (...)
                   "PARAMETER_STORE")))), tags = list(type = "structure"))), 
                 tags = list(type = "list")), privilegedMode = structure(logical(0), 
                 tags = list(type = "boolean")), certificate = structure(logical(0), 
-                tags = list(type = "string"))), tags = list(type = "structure")), 
+                tags = list(type = "string")), registryCredential = structure(list(credential = structure(logical(0), 
+                tags = list(type = "string", min = 1L)), credentialProvider = structure(logical(0), 
+                tags = list(type = "string", enum = "SECRETS_MANAGER"))), 
+                tags = list(type = "structure")), imagePullCredentialsType = structure(logical(0), 
+                tags = list(type = "string", enum = c("CODEBUILD", 
+                  "SERVICE_ROLE")))), tags = list(type = "structure")), 
         serviceRole = structure(logical(0), tags = list(type = "string", 
             min = 1L)), timeoutInMinutes = structure(logical(0), 
             tags = list(type = "integer", max = 480L, min = 5L)), 
-        encryptionKey = structure(logical(0), tags = list(type = "string", 
-            min = 1L)), tags = structure(list(structure(list(key = structure(logical(0), 
+        queuedTimeoutInMinutes = structure(logical(0), tags = list(type = "integer", 
+            max = 480L, min = 5L)), encryptionKey = structure(logical(0), 
+            tags = list(type = "string", min = 1L)), tags = structure(list(structure(list(key = structure(logical(0), 
             tags = list(type = "string", max = 127L, min = 1L, 
                 pattern = "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=@+\\\\-]*)$")), 
             value = structure(logical(0), tags = list(type = "string", 
@@ -455,12 +473,18 @@ create_project_output <- function (...)
                   "PARAMETER_STORE")))), tags = list(type = "structure"))), 
                 tags = list(type = "list")), privilegedMode = structure(logical(0), 
                 tags = list(type = "boolean")), certificate = structure(logical(0), 
-                tags = list(type = "string"))), tags = list(type = "structure")), 
+                tags = list(type = "string")), registryCredential = structure(list(credential = structure(logical(0), 
+                tags = list(type = "string", min = 1L)), credentialProvider = structure(logical(0), 
+                tags = list(type = "string", enum = "SECRETS_MANAGER"))), 
+                tags = list(type = "structure")), imagePullCredentialsType = structure(logical(0), 
+                tags = list(type = "string", enum = c("CODEBUILD", 
+                  "SERVICE_ROLE")))), tags = list(type = "structure")), 
         serviceRole = structure(logical(0), tags = list(type = "string", 
             min = 1L)), timeoutInMinutes = structure(logical(0), 
             tags = list(type = "integer", max = 480L, min = 5L)), 
-        encryptionKey = structure(logical(0), tags = list(type = "string", 
-            min = 1L)), tags = structure(list(structure(list(key = structure(logical(0), 
+        queuedTimeoutInMinutes = structure(logical(0), tags = list(type = "integer", 
+            max = 480L, min = 5L)), encryptionKey = structure(logical(0), 
+            tags = list(type = "string", min = 1L)), tags = structure(list(structure(list(key = structure(logical(0), 
             tags = list(type = "string", max = 127L, min = 1L, 
                 pattern = "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=@+\\\\-]*)$")), 
             value = structure(logical(0), tags = list(type = "string", 
@@ -534,6 +558,22 @@ delete_project_output <- function (...)
     return(populate(args, shape))
 }
 
+delete_source_credentials_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(arn = structure(logical(0), tags = list(type = "string", 
+        min = 1L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_source_credentials_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(arn = structure(logical(0), tags = list(type = "string", 
+        min = 1L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 delete_webhook_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -547,6 +587,28 @@ delete_webhook_output <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+import_source_credentials_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(username = structure(logical(0), 
+        tags = list(type = "string", min = 1L)), token = structure(logical(0), 
+        tags = list(type = "string", min = 1L, sensitive = TRUE)), 
+        serverType = structure(logical(0), tags = list(type = "string", 
+            enum = c("GITHUB", "BITBUCKET", "GITHUB_ENTERPRISE"))), 
+        authType = structure(logical(0), tags = list(type = "string", 
+            enum = c("OAUTH", "BASIC_AUTH", "PERSONAL_ACCESS_TOKEN")))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+import_source_credentials_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(arn = structure(logical(0), tags = list(type = "string", 
+        min = 1L))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -621,7 +683,7 @@ list_curated_environment_images_output <- function (...)
             "UBUNTU", "WINDOWS_SERVER"))), languages = structure(list(structure(list(language = structure(logical(0), 
         tags = list(type = "string", enum = c("JAVA", "PYTHON", 
             "NODE_JS", "RUBY", "GOLANG", "DOCKER", "ANDROID", 
-            "DOTNET", "BASE"))), images = structure(list(structure(list(name = structure(logical(0), 
+            "DOTNET", "BASE", "PHP"))), images = structure(list(structure(list(name = structure(logical(0), 
         tags = list(type = "string")), description = structure(logical(0), 
         tags = list(type = "string")), versions = structure(list(structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "list"))), 
@@ -650,6 +712,26 @@ list_projects_output <- function (...)
         tags = list(type = "string")), projects = structure(list(structure(logical(0), 
         tags = list(type = "string", min = 1L))), tags = list(type = "list", 
         max = 100L, min = 1L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_source_credentials_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_source_credentials_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(sourceCredentialsInfos = structure(list(structure(list(arn = structure(logical(0), 
+        tags = list(type = "string", min = 1L)), serverType = structure(logical(0), 
+        tags = list(type = "string", enum = c("GITHUB", "BITBUCKET", 
+            "GITHUB_ENTERPRISE"))), authType = structure(logical(0), 
+        tags = list(type = "string", enum = c("OAUTH", "BASIC_AUTH", 
+            "PERSONAL_ACCESS_TOKEN")))), tags = list(type = "structure"))), 
+        tags = list(type = "list"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -729,6 +811,8 @@ start_build_input <- function (...)
             tags = list(type = "string", min = 1L)), privilegedModeOverride = structure(logical(0), 
             tags = list(type = "boolean")), timeoutInMinutesOverride = structure(logical(0), 
             tags = list(type = "integer", max = 480L, min = 5L)), 
+        queuedTimeoutInMinutesOverride = structure(logical(0), 
+            tags = list(type = "integer", max = 480L, min = 5L)), 
         idempotencyToken = structure(logical(0), tags = list(type = "string")), 
         logsConfigOverride = structure(list(cloudWatchLogs = structure(list(status = structure(logical(0), 
             tags = list(type = "string", enum = c("ENABLED", 
@@ -739,7 +823,12 @@ start_build_input <- function (...)
                 tags = list(type = "string", enum = c("ENABLED", 
                   "DISABLED"))), location = structure(logical(0), 
                 tags = list(type = "string"))), tags = list(type = "structure"))), 
-            tags = list(type = "structure"))), tags = list(type = "structure"))
+            tags = list(type = "structure")), registryCredentialOverride = structure(list(credential = structure(logical(0), 
+            tags = list(type = "string", min = 1L)), credentialProvider = structure(logical(0), 
+            tags = list(type = "string", enum = "SECRETS_MANAGER"))), 
+            tags = list(type = "structure")), imagePullCredentialsTypeOverride = structure(logical(0), 
+            tags = list(type = "string", enum = c("CODEBUILD", 
+                "SERVICE_ROLE")))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -759,18 +848,18 @@ start_build_output <- function (...)
             tags = list(type = "string", min = 1L)), projectName = structure(logical(0), 
             tags = list(type = "string", min = 1L)), phases = structure(list(structure(list(phaseType = structure(logical(0), 
             tags = list(type = "string", enum = c("SUBMITTED", 
-                "PROVISIONING", "DOWNLOAD_SOURCE", "INSTALL", 
-                "PRE_BUILD", "BUILD", "POST_BUILD", "UPLOAD_ARTIFACTS", 
-                "FINALIZING", "COMPLETED"))), phaseStatus = structure(logical(0), 
-            tags = list(type = "string", enum = c("SUCCEEDED", 
-                "FAILED", "FAULT", "TIMED_OUT", "IN_PROGRESS", 
-                "STOPPED"))), startTime = structure(logical(0), 
-            tags = list(type = "timestamp")), endTime = structure(logical(0), 
-            tags = list(type = "timestamp")), durationInSeconds = structure(logical(0), 
-            tags = list(type = "long")), contexts = structure(list(structure(list(statusCode = structure(logical(0), 
-            tags = list(type = "string")), message = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))), 
-            tags = list(type = "list"))), tags = list(type = "structure"))), 
+                "QUEUED", "PROVISIONING", "DOWNLOAD_SOURCE", 
+                "INSTALL", "PRE_BUILD", "BUILD", "POST_BUILD", 
+                "UPLOAD_ARTIFACTS", "FINALIZING", "COMPLETED"))), 
+            phaseStatus = structure(logical(0), tags = list(type = "string", 
+                enum = c("SUCCEEDED", "FAILED", "FAULT", "TIMED_OUT", 
+                  "IN_PROGRESS", "STOPPED"))), startTime = structure(logical(0), 
+                tags = list(type = "timestamp")), endTime = structure(logical(0), 
+                tags = list(type = "timestamp")), durationInSeconds = structure(logical(0), 
+                tags = list(type = "long")), contexts = structure(list(structure(list(statusCode = structure(logical(0), 
+                tags = list(type = "string")), message = structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "structure"))), 
+                tags = list(type = "list"))), tags = list(type = "structure"))), 
             tags = list(type = "list")), source = structure(list(type = structure(logical(0), 
             tags = list(type = "string", enum = c("CODECOMMIT", 
                 "CODEPIPELINE", "GITHUB", "S3", "BITBUCKET", 
@@ -831,7 +920,12 @@ start_build_output <- function (...)
                   "PARAMETER_STORE")))), tags = list(type = "structure"))), 
                 tags = list(type = "list")), privilegedMode = structure(logical(0), 
                 tags = list(type = "boolean")), certificate = structure(logical(0), 
-                tags = list(type = "string"))), tags = list(type = "structure")), 
+                tags = list(type = "string")), registryCredential = structure(list(credential = structure(logical(0), 
+                tags = list(type = "string", min = 1L)), credentialProvider = structure(logical(0), 
+                tags = list(type = "string", enum = "SECRETS_MANAGER"))), 
+                tags = list(type = "structure")), imagePullCredentialsType = structure(logical(0), 
+                tags = list(type = "string", enum = c("CODEBUILD", 
+                  "SERVICE_ROLE")))), tags = list(type = "structure")), 
         serviceRole = structure(logical(0), tags = list(type = "string", 
             min = 1L)), logs = structure(list(groupName = structure(logical(0), 
             tags = list(type = "string")), streamName = structure(logical(0), 
@@ -847,6 +941,7 @@ start_build_output <- function (...)
                   "DISABLED"))), location = structure(logical(0), 
                 tags = list(type = "string"))), tags = list(type = "structure"))), 
             tags = list(type = "structure")), timeoutInMinutes = structure(logical(0), 
+            tags = list(type = "integer")), queuedTimeoutInMinutes = structure(logical(0), 
             tags = list(type = "integer")), buildComplete = structure(logical(0), 
             tags = list(type = "boolean")), initiator = structure(logical(0), 
             tags = list(type = "string")), vpcConfig = structure(list(vpcId = structure(logical(0), 
@@ -886,18 +981,18 @@ stop_build_output <- function (...)
             tags = list(type = "string", min = 1L)), projectName = structure(logical(0), 
             tags = list(type = "string", min = 1L)), phases = structure(list(structure(list(phaseType = structure(logical(0), 
             tags = list(type = "string", enum = c("SUBMITTED", 
-                "PROVISIONING", "DOWNLOAD_SOURCE", "INSTALL", 
-                "PRE_BUILD", "BUILD", "POST_BUILD", "UPLOAD_ARTIFACTS", 
-                "FINALIZING", "COMPLETED"))), phaseStatus = structure(logical(0), 
-            tags = list(type = "string", enum = c("SUCCEEDED", 
-                "FAILED", "FAULT", "TIMED_OUT", "IN_PROGRESS", 
-                "STOPPED"))), startTime = structure(logical(0), 
-            tags = list(type = "timestamp")), endTime = structure(logical(0), 
-            tags = list(type = "timestamp")), durationInSeconds = structure(logical(0), 
-            tags = list(type = "long")), contexts = structure(list(structure(list(statusCode = structure(logical(0), 
-            tags = list(type = "string")), message = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))), 
-            tags = list(type = "list"))), tags = list(type = "structure"))), 
+                "QUEUED", "PROVISIONING", "DOWNLOAD_SOURCE", 
+                "INSTALL", "PRE_BUILD", "BUILD", "POST_BUILD", 
+                "UPLOAD_ARTIFACTS", "FINALIZING", "COMPLETED"))), 
+            phaseStatus = structure(logical(0), tags = list(type = "string", 
+                enum = c("SUCCEEDED", "FAILED", "FAULT", "TIMED_OUT", 
+                  "IN_PROGRESS", "STOPPED"))), startTime = structure(logical(0), 
+                tags = list(type = "timestamp")), endTime = structure(logical(0), 
+                tags = list(type = "timestamp")), durationInSeconds = structure(logical(0), 
+                tags = list(type = "long")), contexts = structure(list(structure(list(statusCode = structure(logical(0), 
+                tags = list(type = "string")), message = structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "structure"))), 
+                tags = list(type = "list"))), tags = list(type = "structure"))), 
             tags = list(type = "list")), source = structure(list(type = structure(logical(0), 
             tags = list(type = "string", enum = c("CODECOMMIT", 
                 "CODEPIPELINE", "GITHUB", "S3", "BITBUCKET", 
@@ -958,7 +1053,12 @@ stop_build_output <- function (...)
                   "PARAMETER_STORE")))), tags = list(type = "structure"))), 
                 tags = list(type = "list")), privilegedMode = structure(logical(0), 
                 tags = list(type = "boolean")), certificate = structure(logical(0), 
-                tags = list(type = "string"))), tags = list(type = "structure")), 
+                tags = list(type = "string")), registryCredential = structure(list(credential = structure(logical(0), 
+                tags = list(type = "string", min = 1L)), credentialProvider = structure(logical(0), 
+                tags = list(type = "string", enum = "SECRETS_MANAGER"))), 
+                tags = list(type = "structure")), imagePullCredentialsType = structure(logical(0), 
+                tags = list(type = "string", enum = c("CODEBUILD", 
+                  "SERVICE_ROLE")))), tags = list(type = "structure")), 
         serviceRole = structure(logical(0), tags = list(type = "string", 
             min = 1L)), logs = structure(list(groupName = structure(logical(0), 
             tags = list(type = "string")), streamName = structure(logical(0), 
@@ -974,6 +1074,7 @@ stop_build_output <- function (...)
                   "DISABLED"))), location = structure(logical(0), 
                 tags = list(type = "string"))), tags = list(type = "structure"))), 
             tags = list(type = "structure")), timeoutInMinutes = structure(logical(0), 
+            tags = list(type = "integer")), queuedTimeoutInMinutes = structure(logical(0), 
             tags = list(type = "integer")), buildComplete = structure(logical(0), 
             tags = list(type = "boolean")), initiator = structure(logical(0), 
             tags = list(type = "string")), vpcConfig = structure(list(vpcId = structure(logical(0), 
@@ -1060,12 +1161,18 @@ update_project_input <- function (...)
                   "PARAMETER_STORE")))), tags = list(type = "structure"))), 
                 tags = list(type = "list")), privilegedMode = structure(logical(0), 
                 tags = list(type = "boolean")), certificate = structure(logical(0), 
-                tags = list(type = "string"))), tags = list(type = "structure")), 
+                tags = list(type = "string")), registryCredential = structure(list(credential = structure(logical(0), 
+                tags = list(type = "string", min = 1L)), credentialProvider = structure(logical(0), 
+                tags = list(type = "string", enum = "SECRETS_MANAGER"))), 
+                tags = list(type = "structure")), imagePullCredentialsType = structure(logical(0), 
+                tags = list(type = "string", enum = c("CODEBUILD", 
+                  "SERVICE_ROLE")))), tags = list(type = "structure")), 
         serviceRole = structure(logical(0), tags = list(type = "string", 
             min = 1L)), timeoutInMinutes = structure(logical(0), 
             tags = list(type = "integer", max = 480L, min = 5L)), 
-        encryptionKey = structure(logical(0), tags = list(type = "string", 
-            min = 1L)), tags = structure(list(structure(list(key = structure(logical(0), 
+        queuedTimeoutInMinutes = structure(logical(0), tags = list(type = "integer", 
+            max = 480L, min = 5L)), encryptionKey = structure(logical(0), 
+            tags = list(type = "string", min = 1L)), tags = structure(list(structure(list(key = structure(logical(0), 
             tags = list(type = "string", max = 127L, min = 1L, 
                 pattern = "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=@+\\\\-]*)$")), 
             value = structure(logical(0), tags = list(type = "string", 
@@ -1163,12 +1270,18 @@ update_project_output <- function (...)
                   "PARAMETER_STORE")))), tags = list(type = "structure"))), 
                 tags = list(type = "list")), privilegedMode = structure(logical(0), 
                 tags = list(type = "boolean")), certificate = structure(logical(0), 
-                tags = list(type = "string"))), tags = list(type = "structure")), 
+                tags = list(type = "string")), registryCredential = structure(list(credential = structure(logical(0), 
+                tags = list(type = "string", min = 1L)), credentialProvider = structure(logical(0), 
+                tags = list(type = "string", enum = "SECRETS_MANAGER"))), 
+                tags = list(type = "structure")), imagePullCredentialsType = structure(logical(0), 
+                tags = list(type = "string", enum = c("CODEBUILD", 
+                  "SERVICE_ROLE")))), tags = list(type = "structure")), 
         serviceRole = structure(logical(0), tags = list(type = "string", 
             min = 1L)), timeoutInMinutes = structure(logical(0), 
             tags = list(type = "integer", max = 480L, min = 5L)), 
-        encryptionKey = structure(logical(0), tags = list(type = "string", 
-            min = 1L)), tags = structure(list(structure(list(key = structure(logical(0), 
+        queuedTimeoutInMinutes = structure(logical(0), tags = list(type = "integer", 
+            max = 480L, min = 5L)), encryptionKey = structure(logical(0), 
+            tags = list(type = "string", min = 1L)), tags = structure(list(structure(list(key = structure(logical(0), 
             tags = list(type = "string", max = 127L, min = 1L, 
                 pattern = "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=@+\\\\-]*)$")), 
             value = structure(logical(0), tags = list(type = "string", 

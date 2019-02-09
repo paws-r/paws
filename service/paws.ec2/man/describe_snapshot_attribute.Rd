@@ -17,7 +17,7 @@ describe_snapshot_attribute(Attribute, SnapshotId, DryRun = NULL)
 Describes the specified attribute of the specified snapshot. You can specify only one attribute at a time.
 }
 \details{
-For more information about EBS snapshots, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html}{Amazon EBS Snapshots} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information about EBS snapshots, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html}{Amazon EBS Snapshots} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{describe_snapshot_attribute(

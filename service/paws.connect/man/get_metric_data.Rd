@@ -33,7 +33,7 @@ If no \code{Grouping} is included in the request, a summary of \code{HistoricalM
 
 A \code{HistoricalMetric} object contains: \code{HistoricalMetricName}, \code{Statistic}, \code{Threshold}, and \code{Unit}.
 
-For each historical metric you include in the request, you must include a \code{Unit} and a \code{Statistic}.
+You must list each metric to retrieve data for in the request. For each historical metric you include in the request, you must include a \code{Unit} and a \code{Statistic}.
 
 The following historical metrics are available:
 

@@ -6,8 +6,8 @@
 \usage{
 provision_product(AcceptLanguage = NULL, ProductId,
   ProvisioningArtifactId, PathId = NULL, ProvisionedProductName,
-  ProvisioningParameters = NULL, Tags = NULL,
-  NotificationArns = NULL, ProvisionToken)
+  ProvisioningParameters = NULL, ProvisioningPreferences = NULL,
+  Tags = NULL, NotificationArns = NULL, ProvisionToken)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -26,6 +26,8 @@ provision_product(AcceptLanguage = NULL, ProductId,
 \item{ProvisionedProductName}{[required] A user-friendly name for the provisioned product. This value must be unique for the AWS account and cannot be updated after the product is provisioned.}
 
 \item{ProvisioningParameters}{Parameters specified by the administrator that are required for provisioning the product.}
+
+\item{ProvisioningPreferences}{An object that contains information about the provisioning preferences for a stack set.}
 
 \item{Tags}{One or more tags.}
 
@@ -53,6 +55,18 @@ If the request contains a tag key with an empty list of values, there is a tag c
       Key = "string",
       Value = "string"
     )
+  ),
+  ProvisioningPreferences = list(
+    StackSetAccounts = list(
+      "string"
+    ),
+    StackSetRegions = list(
+      "string"
+    ),
+    StackSetFailureToleranceCount = 123,
+    StackSetFailureTolerancePercentage = 123,
+    StackSetMaxConcurrencyCount = 123,
+    StackSetMaxConcurrencyPercentage = 123
   ),
   Tags = list(
     list(

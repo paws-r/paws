@@ -9,7 +9,7 @@ delete_instance_profile(InstanceProfileName)
 \arguments{
 \item{InstanceProfileName}{[required] The name of the instance profile to delete.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 }
 \description{
 Deletes the specified instance profile. The instance profile must not have an associated role.

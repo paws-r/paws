@@ -4,9 +4,7 @@
 \alias{delete_accelerator}
 \title{Delete an accelerator}
 \usage{
-delete_accelerator(
-  AcceleratorArn = "string"
-)
+delete_accelerator(AcceleratorArn)
 }
 \arguments{
 \item{AcceleratorArn}{[required] The Amazon Resource Name (ARN) of an accelerator.}
@@ -14,6 +12,10 @@ delete_accelerator(
 \description{
 Delete an accelerator. Note: before you can delete an accelerator, you must disable it and remove all dependent resources (listeners and endpoint groups).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_accelerator(
+  AcceleratorArn = "string"
+)
 }
+}
+

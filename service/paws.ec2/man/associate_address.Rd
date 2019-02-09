@@ -27,7 +27,7 @@ associate_address(AllocationId = NULL, InstanceId = NULL,
 Associates an Elastic IP address with an instance or a network interface. Before you can use an Elastic IP address, you must allocate it to your account.
 }
 \details{
-An Elastic IP address is for use in either the EC2-Classic platform or in a VPC. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP Addresses} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+An Elastic IP address is for use in either the EC2-Classic platform or in a VPC. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP Addresses} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 [EC2-Classic, VPC in an EC2-VPC-only account] If the Elastic IP address is already associated with a different instance, it is disassociated from that instance and associated with the specified instance. If you associate an Elastic IP address with an instance that has an existing Elastic IP address, the existing address is disassociated from the instance, but remains allocated to your account.
 

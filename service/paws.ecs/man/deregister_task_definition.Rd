@@ -13,9 +13,9 @@ deregister_task_definition(taskDefinition)
 Deregisters the specified task definition by family and revision. Upon deregistration, the task definition is marked as \code{INACTIVE}. Existing tasks and services that reference an \code{INACTIVE} task definition continue to run without disruption. Existing services that reference an \code{INACTIVE} task definition can still scale up or down by modifying the service's desired count.
 }
 \details{
-You cannot use an \code{INACTIVE} task definition to run new tasks or create new services, and you cannot update an existing service to reference an \code{INACTIVE} task definition (although there may be up to a 10-minute window following deregistration where these restrictions have not yet taken effect).
+You cannot use an \code{INACTIVE} task definition to run new tasks or create new services, and you cannot update an existing service to reference an \code{INACTIVE} task definition. However, there may be up to a 10-minute window following deregistration where these restrictions have not yet taken effect.
 
-At this time, \code{INACTIVE} task definitions remain discoverable in your account indefinitely; however, this behavior is subject to change in the future, so you should not rely on \code{INACTIVE} task definitions persisting beyond the lifecycle of any associated tasks and services.
+At this time, \code{INACTIVE} task definitions remain discoverable in your account indefinitely. However, this behavior is subject to change in the future, so you should not rely on \code{INACTIVE} task definitions persisting beyond the lifecycle of any associated tasks and services.
 }
 \section{Accepted Parameters}{
 \preformatted{deregister_task_definition(

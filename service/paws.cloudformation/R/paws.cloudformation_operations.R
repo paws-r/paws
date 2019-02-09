@@ -109,7 +109,7 @@ continue_update_rollback <- function (StackName, RoleARN = NULL,
 #'     )
 #'   ),
 #'   Capabilities = list(
-#'     "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"
+#'     "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"
 #'   ),
 #'   ResourceTypes = list(
 #'     "string"
@@ -148,14 +148,48 @@ continue_update_rollback <- function (StackName, RoleARN = NULL,
 #' 
 #' Conditional: You must specify only `TemplateBody` or `TemplateURL`.
 #' @param UsePreviousTemplate Whether to reuse the template that is associated with the stack to create the change set.
-#' @param Parameters A list of `Parameter` structures that specify input parameters for the change set. For more information, see the [Parameter](http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html) data type.
-#' @param Capabilities A list of values that you must specify before AWS CloudFormation can update certain stacks. Some stack templates might include resources that can affect permissions in your AWS account, for example, by creating new AWS Identity and Access Management (IAM) users. For those stacks, you must explicitly acknowledge their capabilities by specifying this parameter.
+#' @param Parameters A list of `Parameter` structures that specify input parameters for the change set. For more information, see the Parameter data type.
+#' @param Capabilities In some cases, you must explicity acknowledge that your stack template contains certain capabilities in order for AWS CloudFormation to create the stack.
 #' 
-#' The only valid values are `CAPABILITY_IAM` and `CAPABILITY_NAMED_IAM`. The following resources require you to specify this parameter: [AWS::IAM::AccessKey](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html), [AWS::IAM::Group](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html), [AWS::IAM::InstanceProfile](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html), [AWS::IAM::Policy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html), [AWS::IAM::Role](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html), [AWS::IAM::User](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html), and [AWS::IAM::UserToGroupAddition](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html). If your stack template contains these resources, we recommend that you review all permissions associated with them and edit their permissions if necessary.
+#' -   `CAPABILITY_IAM` and `CAPABILITY_NAMED_IAM`
 #' 
-#' If you have IAM resources, you can specify either capability. If you have IAM resources with custom names, you must specify `CAPABILITY_NAMED_IAM`. If you don\'t specify this parameter, this action returns an `InsufficientCapabilities` error.
+#'     Some stack templates might include resources that can affect permissions in your AWS account; for example, by creating new AWS Identity and Access Management (IAM) users. For those stacks, you must explicitly acknowledge this by specifying one of these capabilities.
 #' 
-#' For more information, see [Acknowledging IAM Resources in AWS CloudFormation Templates](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
+#'     The following IAM resources require you to specify either the `CAPABILITY_IAM` or `CAPABILITY_NAMED_IAM` capability.
+#' 
+#'     -   If you have IAM resources, you can specify either capability.
+#' 
+#'     -   If you have IAM resources with custom names, you *must* specify `CAPABILITY_NAMED_IAM`.
+#' 
+#'     -   If you don\'t specify either of these capabilities, AWS CloudFormation returns an `InsufficientCapabilities` error.
+#' 
+#'     If your stack template contains these resources, we recommend that you review all permissions associated with them and edit their permissions if necessary.
+#' 
+#'     -   [AWS::IAM::AccessKey](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html)
+#' 
+#'     -   [AWS::IAM::Group](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html)
+#' 
+#'     -   [AWS::IAM::InstanceProfile](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
+#' 
+#'     -   [AWS::IAM::Policy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html)
+#' 
+#'     -   [AWS::IAM::Role](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
+#' 
+#'     -   [AWS::IAM::User](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html)
+#' 
+#'     -   [AWS::IAM::UserToGroupAddition](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html)
+#' 
+#'     For more information, see [Acknowledging IAM Resources in AWS CloudFormation Templates](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
+#' 
+#' -   `CAPABILITY_AUTO_EXPAND`
+#' 
+#'     Some template contain macros. Macros perform custom processing on templates; this can include simple actions like find-and-replace operations, all the way to extensive transformations of entire templates. Because of this, users typically create a change set from the processed template, so that they can review the changes resulting from the macros before actually creating the stack. If your stack template contains one or more macros, and you choose to create a stack directly from the processed template, without first reviewing the resulting changes in a change set, you must acknowledge this capability. This includes the [AWS::Include](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html) and [AWS::Serverless](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html) transforms, which are macros hosted by AWS CloudFormation.
+#' 
+#'     This capacity does not apply to creating change sets, and specifying it when creating change sets has no effect.
+#' 
+#'     Also, change sets do not currently support nested stacks. If you want to create a stack from a stack template that contains macros *and* nested stacks, you must create or update the stack directly from the template using the CreateStack or UpdateStack action, and specifying this capability.
+#' 
+#'     For more information on macros, see [Using AWS CloudFormation Macros to Perform Custom Processing on Templates](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
 #' @param ResourceTypes The template resource types that you have permissions to work with if you execute this change set, such as `AWS::EC2::Instance`, `AWS::EC2::*`, or `Custom::MyCustomInstance`.
 #' 
 #' If the list of resource types doesn\'t include a resource type that you\'re updating, the stack update fails. By default, AWS CloudFormation grants permissions to all resource types. AWS Identity and Access Management (IAM) uses this parameter for condition keys in IAM policies for AWS CloudFormation. For more information, see [Controlling Access with AWS Identity and Access Management](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html) in the AWS CloudFormation User Guide.
@@ -232,7 +266,7 @@ create_change_set <- function (StackName, TemplateBody = NULL,
 #'     "string"
 #'   ),
 #'   Capabilities = list(
-#'     "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"
+#'     "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"
 #'   ),
 #'   ResourceTypes = list(
 #'     "string"
@@ -268,13 +302,49 @@ create_change_set <- function (StackName, TemplateBody = NULL,
 #' @param RollbackConfiguration The rollback triggers for AWS CloudFormation to monitor during stack creation and updating operations, and for the specified monitoring period afterwards.
 #' @param TimeoutInMinutes The amount of time that can pass before the stack status becomes CREATE\_FAILED; if `DisableRollback` is not set or is set to `false`, the stack will be rolled back.
 #' @param NotificationARNs The Simple Notification Service (SNS) topic ARNs to publish stack related events. You can find your SNS topic ARNs using the SNS console or your Command Line Interface (CLI).
-#' @param Capabilities A list of values that you must specify before AWS CloudFormation can create certain stacks. Some stack templates might include resources that can affect permissions in your AWS account, for example, by creating new AWS Identity and Access Management (IAM) users. For those stacks, you must explicitly acknowledge their capabilities by specifying this parameter.
+#' @param Capabilities In some cases, you must explicity acknowledge that your stack template contains certain capabilities in order for AWS CloudFormation to create the stack.
 #' 
-#' The only valid values are `CAPABILITY_IAM` and `CAPABILITY_NAMED_IAM`. The following resources require you to specify this parameter: [AWS::IAM::AccessKey](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html), [AWS::IAM::Group](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html), [AWS::IAM::InstanceProfile](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html), [AWS::IAM::Policy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html), [AWS::IAM::Role](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html), [AWS::IAM::User](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html), and [AWS::IAM::UserToGroupAddition](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html). If your stack template contains these resources, we recommend that you review all permissions associated with them and edit their permissions if necessary.
+#' -   `CAPABILITY_IAM` and `CAPABILITY_NAMED_IAM`
 #' 
-#' If you have IAM resources, you can specify either capability. If you have IAM resources with custom names, you must specify `CAPABILITY_NAMED_IAM`. If you don\'t specify this parameter, this action returns an `InsufficientCapabilities` error.
+#'     Some stack templates might include resources that can affect permissions in your AWS account; for example, by creating new AWS Identity and Access Management (IAM) users. For those stacks, you must explicitly acknowledge this by specifying one of these capabilities.
 #' 
-#' For more information, see [Acknowledging IAM Resources in AWS CloudFormation Templates](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
+#'     The following IAM resources require you to specify either the `CAPABILITY_IAM` or `CAPABILITY_NAMED_IAM` capability.
+#' 
+#'     -   If you have IAM resources, you can specify either capability.
+#' 
+#'     -   If you have IAM resources with custom names, you *must* specify `CAPABILITY_NAMED_IAM`.
+#' 
+#'     -   If you don\'t specify either of these capabilities, AWS CloudFormation returns an `InsufficientCapabilities` error.
+#' 
+#'     If your stack template contains these resources, we recommend that you review all permissions associated with them and edit their permissions if necessary.
+#' 
+#'     -   [AWS::IAM::AccessKey](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html)
+#' 
+#'     -   [AWS::IAM::Group](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html)
+#' 
+#'     -   [AWS::IAM::InstanceProfile](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
+#' 
+#'     -   [AWS::IAM::Policy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html)
+#' 
+#'     -   [AWS::IAM::Role](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
+#' 
+#'     -   [AWS::IAM::User](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html)
+#' 
+#'     -   [AWS::IAM::UserToGroupAddition](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html)
+#' 
+#'     For more information, see [Acknowledging IAM Resources in AWS CloudFormation Templates](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
+#' 
+#' -   `CAPABILITY_AUTO_EXPAND`
+#' 
+#'     Some template contain macros. Macros perform custom processing on templates; this can include simple actions like find-and-replace operations, all the way to extensive transformations of entire templates. Because of this, users typically create a change set from the processed template, so that they can review the changes resulting from the macros before actually creating the stack. If your stack template contains one or more macros, and you choose to create a stack directly from the processed template, without first reviewing the resulting changes in a change set, you must acknowledge this capability. This includes the [AWS::Include](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html) and [AWS::Serverless](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html) transforms, which are macros hosted by AWS CloudFormation.
+#' 
+#'     Change sets do not currently support nested stacks. If you want to create a stack from a stack template that contains macros *and* nested stacks, you must create the stack directly from the template using this capability.
+#' 
+#'     You should only create stacks directly from a stack template that contains macros if you know what processing the macro performs.
+#' 
+#'     Each macro relies on an underlying Lambda service function for processing stack templates. Be aware that the Lambda function owner can update the function operation without AWS CloudFormation being notified.
+#' 
+#'     For more information, see [Using AWS CloudFormation Macros to Perform Custom Processing on Templates](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
 #' @param ResourceTypes The template resource types that you have permissions to work with for this create stack action, such as `AWS::EC2::Instance`, `AWS::EC2::*`, or `Custom::MyCustomInstance`. Use the following syntax to describe template resource types: `AWS::*` (for all AWS resource), `Custom::*` (for all custom resources), `Custom::logical_ID logical_ID ` (for a specific custom resource), `AWS::service_name::*service_name::*` (for all resources of a particular AWS service), and `AWS::service_name::resource_logical_ID service_name::resource_logical_ID ` (for a specific AWS resource).
 #' 
 #' If the list of resource types doesn\'t include a resource that you\'re creating, the stack creation fails. By default, AWS CloudFormation grants permissions to all resource types. AWS Identity and Access Management (IAM) uses this parameter for AWS CloudFormation-specific condition keys in IAM policies. For more information, see [Controlling Access with AWS Identity and Access Management](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html).
@@ -423,7 +493,7 @@ create_stack_instances <- function (StackSetName, Accounts, Regions,
 #'     )
 #'   ),
 #'   Capabilities = list(
-#'     "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"
+#'     "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"
 #'   ),
 #'   Tags = list(
 #'     list(
@@ -448,29 +518,43 @@ create_stack_instances <- function (StackSetName, Accounts, Regions,
 #' 
 #' Conditional: You must specify either the TemplateBody or the TemplateURL parameter, but not both.
 #' @param Parameters The input parameters for the stack set template.
-#' @param Capabilities A list of values that you must specify before AWS CloudFormation can create certain stack sets. Some stack set templates might include resources that can affect permissions in your AWS account---for example, by creating new AWS Identity and Access Management (IAM) users. For those stack sets, you must explicitly acknowledge their capabilities by specifying this parameter.
+#' @param Capabilities In some cases, you must explicity acknowledge that your stack set template contains certain capabilities in order for AWS CloudFormation to create the stack set and related stack instances.
 #' 
-#' The only valid values are CAPABILITY\_IAM and CAPABILITY\_NAMED\_IAM. The following resources require you to specify this parameter:
+#' -   `CAPABILITY_IAM` and `CAPABILITY_NAMED_IAM`
 #' 
-#' -   AWS::IAM::AccessKey
+#'     Some stack templates might include resources that can affect permissions in your AWS account; for example, by creating new AWS Identity and Access Management (IAM) users. For those stack sets, you must explicitly acknowledge this by specifying one of these capabilities.
 #' 
-#' -   AWS::IAM::Group
+#'     The following IAM resources require you to specify either the `CAPABILITY_IAM` or `CAPABILITY_NAMED_IAM` capability.
 #' 
-#' -   AWS::IAM::InstanceProfile
+#'     -   If you have IAM resources, you can specify either capability.
 #' 
-#' -   AWS::IAM::Policy
+#'     -   If you have IAM resources with custom names, you *must* specify `CAPABILITY_NAMED_IAM`.
 #' 
-#' -   AWS::IAM::Role
+#'     -   If you don\'t specify either of these capabilities, AWS CloudFormation returns an `InsufficientCapabilities` error.
 #' 
-#' -   AWS::IAM::User
+#'     If your stack template contains these resources, we recommend that you review all permissions associated with them and edit their permissions if necessary.
 #' 
-#' -   AWS::IAM::UserToGroupAddition
+#'     -   [AWS::IAM::AccessKey](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html)
 #' 
-#' If your stack template contains these resources, we recommend that you review all permissions that are associated with them and edit their permissions if necessary.
+#'     -   [AWS::IAM::Group](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html)
 #' 
-#' If you have IAM resources, you can specify either capability. If you have IAM resources with custom names, you must specify CAPABILITY\_NAMED\_IAM. If you don\'t specify this parameter, this action returns an `InsufficientCapabilities` error.
+#'     -   [AWS::IAM::InstanceProfile](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
 #' 
-#' For more information, see [Acknowledging IAM Resources in AWS CloudFormation Templates.](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities)
+#'     -   [AWS::IAM::Policy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html)
+#' 
+#'     -   [AWS::IAM::Role](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
+#' 
+#'     -   [AWS::IAM::User](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html)
+#' 
+#'     -   [AWS::IAM::UserToGroupAddition](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html)
+#' 
+#'     For more information, see [Acknowledging IAM Resources in AWS CloudFormation Templates](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
+#' 
+#' -   `CAPABILITY_AUTO_EXPAND`
+#' 
+#'     Some templates contain macros. If your stack template contains one or more macros, and you choose to create a stack directly from the processed template, without first reviewing the resulting changes in a change set, you must acknowledge this capability. For more information, see [Using AWS CloudFormation Macros to Perform Custom Processing on Templates](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
+#' 
+#'     Stack sets do not currently support macros in stack templates. (This includes the [AWS::Include](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html) and [AWS::Serverless](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html) transforms, which are macros hosted by AWS CloudFormation.) Even if you specify this capability, if you include a macro in your template the stack set operation will fail.
 #' @param Tags The key-value pairs to associate with this stack set and the stacks created from it. AWS CloudFormation also propagates these tags to supported resources that are created in the stacks. A maximum number of 50 tags can be specified.
 #' 
 #' If you specify tags as part of a `CreateStackSet` action, AWS CloudFormation checks to see if you have the required IAM permission to tag resources. If you don\'t, the entire `CreateStackSet` action fails with an `access denied` error, and the stack set is not created.
@@ -722,6 +806,36 @@ describe_change_set <- function (ChangeSetName, StackName = NULL,
     return(response)
 }
 
+#' Returns information about a stack drift detection operation
+#'
+#' Returns information about a stack drift detection operation. A stack drift detection operation detects whether a stack\'s actual configuration differs, or has *drifted*, from it\'s expected configuration, as defined in the stack template and any values specified as template parameters. A stack is considered to have drifted if one or more of its resources have drifted. For more information on stack and resource drift, see [Detecting Unregulated Configuration Changes to Stacks and Resources](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
+#' 
+#' Use DetectStackDrift to initiate a stack drift detection operation. `DetectStackDrift` returns a `StackDriftDetectionId` you can use to monitor the progress of the operation using `DescribeStackDriftDetectionStatus`. Once the drift detection operation has completed, use DescribeStackResourceDrifts to return drift information about the stack and its resources.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_stack_drift_detection_status(
+#'   StackDriftDetectionId = "string"
+#' )
+#' ```
+#'
+#' @param StackDriftDetectionId &#91;required&#93; The ID of the drift detection results of this operation.
+#' 
+#' AWS CloudFormation generates new results, with a new drift detection ID, each time this operation is run. However, the number of drift results AWS CloudFormation retains for any given stack, and for how long, may vary.
+#'
+#' @export
+describe_stack_drift_detection_status <- function (StackDriftDetectionId) 
+{
+    op <- new_operation(name = "DescribeStackDriftDetectionStatus", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_stack_drift_detection_status_input(StackDriftDetectionId = StackDriftDetectionId)
+    output <- describe_stack_drift_detection_status_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Returns all stack related events for a specified stack in reverse chronological order
 #'
 #' Returns all stack related events for a specified stack in reverse chronological order. For more information about a stack\'s event history, go to [Stacks](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/concept-stack.html) in the AWS CloudFormation User Guide.
@@ -826,6 +940,55 @@ describe_stack_resource <- function (StackName, LogicalResourceId)
     input <- describe_stack_resource_input(StackName = StackName, 
         LogicalResourceId = LogicalResourceId)
     output <- describe_stack_resource_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns drift information for the resources that have been checked for drift in the specified stack
+#'
+#' Returns drift information for the resources that have been checked for drift in the specified stack. This includes actual and expected configuration values for resources where AWS CloudFormation detects configuration drift.
+#' 
+#' For a given stack, there will be one `StackResourceDrift` for each stack resource that has been checked for drift. Resources that have not yet been checked for drift are not included. Resources that do not currently support drift detection are not checked, and so not included. For a list of resources that support drift detection, see [Resources that Support Drift Detection](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html).
+#' 
+#' Use DetectStackResourceDrift to detect drift on individual resources, or DetectStackDrift to detect drift on all supported resources for a given stack.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_stack_resource_drifts(
+#'   StackName = "string",
+#'   StackResourceDriftStatusFilters = list(
+#'     "IN_SYNC"|"MODIFIED"|"DELETED"|"NOT_CHECKED"
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @param StackName &#91;required&#93; The name of the stack for which you want drift information.
+#' @param StackResourceDriftStatusFilters The resource drift status values to use as filters for the resource drift results returned.
+#' 
+#' -   `DELETED`: The resource differs from its expected template configuration in that the resource has been deleted.
+#' 
+#' -   `MODIFIED`: One or more resource properties differ from their expected template values.
+#' 
+#' -   `IN_SYNC`: The resources\'s actual configuration matches its expected template configuration.
+#' 
+#' -   `NOT_CHECKED`: AWS CloudFormation does not currently return this value.
+#' @param NextToken A string that identifies the next page of stack resource drift results.
+#' @param MaxResults The maximum number of results to be returned with a single call. If the number of available results exceeds this maximum, the response includes a `NextToken` value that you can assign to the `NextToken` request parameter to get the next set of results.
+#'
+#' @export
+describe_stack_resource_drifts <- function (StackName, StackResourceDriftStatusFilters = NULL, 
+    NextToken = NULL, MaxResults = NULL) 
+{
+    op <- new_operation(name = "DescribeStackResourceDrifts", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_stack_resource_drifts_input(StackName = StackName, 
+        StackResourceDriftStatusFilters = StackResourceDriftStatusFilters, 
+        NextToken = NextToken, MaxResults = MaxResults)
+    output <- describe_stack_resource_drifts_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -973,6 +1136,78 @@ describe_stacks <- function (StackName = NULL, NextToken = NULL)
         http_path = "/", paginator = list())
     input <- describe_stacks_input(StackName = StackName, NextToken = NextToken)
     output <- describe_stacks_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Detects whether a stack's actual configuration differs, or has _drifted_, from it's expected configuration, as defined in the stack template and any values specified as template parameters
+#'
+#' Detects whether a stack\'s actual configuration differs, or has *drifted*, from it\'s expected configuration, as defined in the stack template and any values specified as template parameters. For each resource in the stack that supports drift detection, AWS CloudFormation compares the actual configuration of the resource with its expected template configuration. Only resource properties explicitly defined in the stack template are checked for drift. A stack is considered to have drifted if one or more of its resources differ from their expected template configurations. For more information, see [Detecting Unregulated Configuration Changes to Stacks and Resources](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
+#' 
+#' Use `DetectStackDrift` to detect drift on all supported resources for a given stack, or DetectStackResourceDrift to detect drift on individual resources.
+#' 
+#' For a list of stack resources that currently support drift detection, see [Resources that Support Drift Detection](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html).
+#' 
+#' `DetectStackDrift` can take up to several minutes, depending on the number of resources contained within the stack. Use DescribeStackDriftDetectionStatus to monitor the progress of a detect stack drift operation. Once the drift detection operation has completed, use DescribeStackResourceDrifts to return drift information about the stack and its resources.
+#' 
+#' When detecting drift on a stack, AWS CloudFormation does not detect drift on any nested stacks belonging to that stack. Perform `DetectStackDrift` directly on the nested stack itself.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' detect_stack_drift(
+#'   StackName = "string",
+#'   LogicalResourceIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @param StackName &#91;required&#93; The name of the stack for which you want to detect drift.
+#' @param LogicalResourceIds The logical names of any resources you want to use as filters.
+#'
+#' @export
+detect_stack_drift <- function (StackName, LogicalResourceIds = NULL) 
+{
+    op <- new_operation(name = "DetectStackDrift", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- detect_stack_drift_input(StackName = StackName, 
+        LogicalResourceIds = LogicalResourceIds)
+    output <- detect_stack_drift_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns information about whether a resource's actual configuration differs, or has _drifted_, from it's expected configuration, as defined in the stack template and any values specified as template parameters
+#'
+#' Returns information about whether a resource\'s actual configuration differs, or has *drifted*, from it\'s expected configuration, as defined in the stack template and any values specified as template parameters. This information includes actual and expected property values for resources in which AWS CloudFormation detects drift. Only resource properties explicitly defined in the stack template are checked for drift. For more information about stack and resource drift, see [Detecting Unregulated Configuration Changes to Stacks and Resources](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
+#' 
+#' Use `DetectStackResourceDrift` to detect drift on individual resources, or DetectStackDrift to detect drift on all resources in a given stack that support drift detection.
+#' 
+#' Resources that do not currently support drift detection cannot be checked. For a list of resources that support drift detection, see [Resources that Support Drift Detection](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html).
+#'
+#' @section Accepted Parameters:
+#' ```
+#' detect_stack_resource_drift(
+#'   StackName = "string",
+#'   LogicalResourceId = "string"
+#' )
+#' ```
+#'
+#' @param StackName &#91;required&#93; The name of the stack to which the resource belongs.
+#' @param LogicalResourceId &#91;required&#93; The logical name of the resource for which to return drift information.
+#'
+#' @export
+detect_stack_resource_drift <- function (StackName, LogicalResourceId) 
+{
+    op <- new_operation(name = "DetectStackResourceDrift", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- detect_stack_resource_drift_input(StackName = StackName, 
+        LogicalResourceId = LogicalResourceId)
+    output <- detect_stack_resource_drift_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -1583,7 +1818,7 @@ stop_stack_set_operation <- function (StackSetName, OperationId)
 #'     )
 #'   ),
 #'   Capabilities = list(
-#'     "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"
+#'     "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"
 #'   ),
 #'   ResourceTypes = list(
 #'     "string"
@@ -1630,13 +1865,49 @@ stop_stack_set_operation <- function (StackSetName, OperationId)
 #' 
 #' If you want to update protected resources, specify a temporary overriding stack policy during this update. If you do not specify a stack policy, the current policy that is associated with the stack will be used.
 #' @param Parameters A list of `Parameter` structures that specify input parameters for the stack. For more information, see the [Parameter](http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html) data type.
-#' @param Capabilities A list of values that you must specify before AWS CloudFormation can update certain stacks. Some stack templates might include resources that can affect permissions in your AWS account, for example, by creating new AWS Identity and Access Management (IAM) users. For those stacks, you must explicitly acknowledge their capabilities by specifying this parameter.
+#' @param Capabilities In some cases, you must explicity acknowledge that your stack template contains certain capabilities in order for AWS CloudFormation to update the stack.
 #' 
-#' The only valid values are `CAPABILITY_IAM` and `CAPABILITY_NAMED_IAM`. The following resources require you to specify this parameter: [AWS::IAM::AccessKey](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html), [AWS::IAM::Group](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html), [AWS::IAM::InstanceProfile](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html), [AWS::IAM::Policy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html), [AWS::IAM::Role](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html), [AWS::IAM::User](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html), and [AWS::IAM::UserToGroupAddition](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html). If your stack template contains these resources, we recommend that you review all permissions associated with them and edit their permissions if necessary.
+#' -   `CAPABILITY_IAM` and `CAPABILITY_NAMED_IAM`
 #' 
-#' If you have IAM resources, you can specify either capability. If you have IAM resources with custom names, you must specify `CAPABILITY_NAMED_IAM`. If you don\'t specify this parameter, this action returns an `InsufficientCapabilities` error.
+#'     Some stack templates might include resources that can affect permissions in your AWS account; for example, by creating new AWS Identity and Access Management (IAM) users. For those stacks, you must explicitly acknowledge this by specifying one of these capabilities.
 #' 
-#' For more information, see [Acknowledging IAM Resources in AWS CloudFormation Templates](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
+#'     The following IAM resources require you to specify either the `CAPABILITY_IAM` or `CAPABILITY_NAMED_IAM` capability.
+#' 
+#'     -   If you have IAM resources, you can specify either capability.
+#' 
+#'     -   If you have IAM resources with custom names, you *must* specify `CAPABILITY_NAMED_IAM`.
+#' 
+#'     -   If you don\'t specify either of these capabilities, AWS CloudFormation returns an `InsufficientCapabilities` error.
+#' 
+#'     If your stack template contains these resources, we recommend that you review all permissions associated with them and edit their permissions if necessary.
+#' 
+#'     -   [AWS::IAM::AccessKey](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html)
+#' 
+#'     -   [AWS::IAM::Group](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html)
+#' 
+#'     -   [AWS::IAM::InstanceProfile](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
+#' 
+#'     -   [AWS::IAM::Policy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html)
+#' 
+#'     -   [AWS::IAM::Role](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
+#' 
+#'     -   [AWS::IAM::User](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html)
+#' 
+#'     -   [AWS::IAM::UserToGroupAddition](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html)
+#' 
+#'     For more information, see [Acknowledging IAM Resources in AWS CloudFormation Templates](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
+#' 
+#' -   `CAPABILITY_AUTO_EXPAND`
+#' 
+#'     Some template contain macros. Macros perform custom processing on templates; this can include simple actions like find-and-replace operations, all the way to extensive transformations of entire templates. Because of this, users typically create a change set from the processed template, so that they can review the changes resulting from the macros before actually updating the stack. If your stack template contains one or more macros, and you choose to update a stack directly from the processed template, without first reviewing the resulting changes in a change set, you must acknowledge this capability. This includes the [AWS::Include](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html) and [AWS::Serverless](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html) transforms, which are macros hosted by AWS CloudFormation.
+#' 
+#'     Change sets do not currently support nested stacks. If you want to update a stack from a stack template that contains macros *and* nested stacks, you must update the stack directly from the template using this capability.
+#' 
+#'     You should only update stacks directly from a stack template that contains macros if you know what processing the macro performs.
+#' 
+#'     Each macro relies on an underlying Lambda service function for processing stack templates. Be aware that the Lambda function owner can update the function operation without AWS CloudFormation being notified.
+#' 
+#'     For more information, see [Using AWS CloudFormation Macros to Perform Custom Processing on Templates](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
 #' @param ResourceTypes The template resource types that you have permissions to work with for this update stack action, such as `AWS::EC2::Instance`, `AWS::EC2::*`, or `Custom::MyCustomInstance`.
 #' 
 #' If the list of resource types doesn\'t include a resource that you\'re updating, the stack update fails. By default, AWS CloudFormation grants permissions to all resource types. AWS Identity and Access Management (IAM) uses this parameter for AWS CloudFormation-specific condition keys in IAM policies. For more information, see [Controlling Access with AWS Identity and Access Management](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html).
@@ -1794,7 +2065,7 @@ update_stack_instances <- function (StackSetName, Accounts, Regions,
 #'     )
 #'   ),
 #'   Capabilities = list(
-#'     "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"
+#'     "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"
 #'   ),
 #'   Tags = list(
 #'     list(
@@ -1835,29 +2106,43 @@ update_stack_instances <- function (StackSetName, Accounts, Regions,
 #' 
 #' Conditional: You must specify only one of the following parameters: `TemplateBody` or `TemplateURL`---or set `UsePreviousTemplate` to true.
 #' @param Parameters A list of input parameters for the stack set template.
-#' @param Capabilities A list of values that you must specify before AWS CloudFormation can create certain stack sets. Some stack set templates might include resources that can affect permissions in your AWS account---for example, by creating new AWS Identity and Access Management (IAM) users. For those stack sets, you must explicitly acknowledge their capabilities by specifying this parameter.
+#' @param Capabilities In some cases, you must explicity acknowledge that your stack template contains certain capabilities in order for AWS CloudFormation to update the stack set and its associated stack instances.
 #' 
-#' The only valid values are CAPABILITY\_IAM and CAPABILITY\_NAMED\_IAM. The following resources require you to specify this parameter:
+#' -   `CAPABILITY_IAM` and `CAPABILITY_NAMED_IAM`
 #' 
-#' -   AWS::IAM::AccessKey
+#'     Some stack templates might include resources that can affect permissions in your AWS account; for example, by creating new AWS Identity and Access Management (IAM) users. For those stacks sets, you must explicitly acknowledge this by specifying one of these capabilities.
 #' 
-#' -   AWS::IAM::Group
+#'     The following IAM resources require you to specify either the `CAPABILITY_IAM` or `CAPABILITY_NAMED_IAM` capability.
 #' 
-#' -   AWS::IAM::InstanceProfile
+#'     -   If you have IAM resources, you can specify either capability.
 #' 
-#' -   AWS::IAM::Policy
+#'     -   If you have IAM resources with custom names, you *must* specify `CAPABILITY_NAMED_IAM`.
 #' 
-#' -   AWS::IAM::Role
+#'     -   If you don\'t specify either of these capabilities, AWS CloudFormation returns an `InsufficientCapabilities` error.
 #' 
-#' -   AWS::IAM::User
+#'     If your stack template contains these resources, we recommend that you review all permissions associated with them and edit their permissions if necessary.
 #' 
-#' -   AWS::IAM::UserToGroupAddition
+#'     -   [AWS::IAM::AccessKey](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html)
 #' 
-#' If your stack template contains these resources, we recommend that you review all permissions that are associated with them and edit their permissions if necessary.
+#'     -   [AWS::IAM::Group](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html)
 #' 
-#' If you have IAM resources, you can specify either capability. If you have IAM resources with custom names, you must specify CAPABILITY\_NAMED\_IAM. If you don\'t specify this parameter, this action returns an `InsufficientCapabilities` error.
+#'     -   [AWS::IAM::InstanceProfile](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
 #' 
-#' For more information, see [Acknowledging IAM Resources in AWS CloudFormation Templates.](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities)
+#'     -   [AWS::IAM::Policy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html)
+#' 
+#'     -   [AWS::IAM::Role](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
+#' 
+#'     -   [AWS::IAM::User](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html)
+#' 
+#'     -   [AWS::IAM::UserToGroupAddition](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html)
+#' 
+#'     For more information, see [Acknowledging IAM Resources in AWS CloudFormation Templates](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
+#' 
+#' -   `CAPABILITY_AUTO_EXPAND`
+#' 
+#'     Some templates contain macros. If your stack template contains one or more macros, and you choose to update a stack directly from the processed template, without first reviewing the resulting changes in a change set, you must acknowledge this capability. For more information, see [Using AWS CloudFormation Macros to Perform Custom Processing on Templates](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
+#' 
+#'     Stack sets do not currently support macros in stack templates. (This includes the [AWS::Include](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html) and [AWS::Serverless](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html) transforms, which are macros hosted by AWS CloudFormation.) Even if you specify this capability, if you include a macro in your template the stack set operation will fail.
 #' @param Tags The key-value pairs to associate with this stack set and the stacks created from it. AWS CloudFormation also propagates these tags to supported resources that are created in the stacks. You can specify a maximum number of 50 tags.
 #' 
 #' If you specify tags for this parameter, those tags replace any list of tags that are currently associated with this stack set. This means:
@@ -1923,9 +2208,9 @@ update_stack_set <- function (StackSetName, Description = NULL,
 
 #' Updates termination protection for the specified stack
 #'
-#' Updates termination protection for the specified stack. If a user attempts to delete a stack with termination protection enabled, the operation fails and the stack remains unchanged. For more information, see [Protecting a Stack From Being Deleted](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-protect-stacks.html) in the *AWS CloudFormation User Guide*.
+#' Updates termination protection for the specified stack. If a user attempts to delete a stack with termination protection enabled, the operation fails and the stack remains unchanged. For more information, see [Protecting a Stack From Being Deleted](AWSCloudFormation/latest/UserGuide/using-cfn-protect-stacks.html) in the *AWS CloudFormation User Guide*.
 #' 
-#' For [nested stacks](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html), termination protection is set on the root stack and cannot be changed directly on the nested stack.
+#' For [nested stacks](AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html), termination protection is set on the root stack and cannot be changed directly on the nested stack.
 #'
 #' @section Accepted Parameters:
 #' ```

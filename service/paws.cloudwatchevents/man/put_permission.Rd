@@ -29,6 +29,8 @@ For another account to send events to your account, that external account must h
 
 To enable multiple AWS accounts to put events to your default event bus, run \code{PutPermission} once for each of these accounts. Or, if all the accounts are members of the same AWS organization, you can run \code{PutPermission} once specifying \code{Principal} as "*" and specifying the AWS organization ID in \code{Condition}, to grant permissions to all accounts in that organization.
 
+If you grant permissions using an organization, then accounts in that organization must specify a \code{RoleArn} with proper permissions when they use \code{PutTarget} to add your account's event bus as a target. For more information, see \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEvents-CrossAccountEventDelivery.html}{Sending and Receiving Events Between AWS Accounts} in the \emph{Amazon CloudWatch Events User Guide}.
+
 The permission policy on the default event bus cannot exceed 10 KB in size.
 }
 \section{Accepted Parameters}{

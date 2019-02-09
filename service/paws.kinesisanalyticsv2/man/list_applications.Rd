@@ -4,10 +4,7 @@
 \alias{list_applications}
 \title{Returns a list of Amazon Kinesis Data Analytics applications in your account}
 \usage{
-list_applications(
-  Limit = 123,
-  NextToken = "string"
-)
+list_applications(Limit = NULL, NextToken = NULL)
 }
 \arguments{
 \item{Limit}{The maximum number of applications to list.}
@@ -20,6 +17,11 @@ Returns a list of Amazon Kinesis Data Analytics applications in your account. Fo
 \details{
 If you want detailed information about a specific application, use DescribeApplication.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_applications(
+  Limit = 123,
+  NextToken = "string"
+)
 }
+}
+

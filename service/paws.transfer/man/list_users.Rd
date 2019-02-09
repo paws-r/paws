@@ -2,13 +2,9 @@
 % Please edit documentation in R/paws.transfer_operations.R
 \name{list_users}
 \alias{list_users}
-\title{Lists the users for the server that you specify by passing the \code{ServerId} parameter}
+\title{Lists the users for the server that you specify by passing the ServerId parameter}
 \usage{
-list_users(
-  MaxResults = 123,
-  NextToken = "string",
-  ServerId = "string"
-)
+list_users(MaxResults = NULL, NextToken = NULL, ServerId)
 }
 \arguments{
 \item{MaxResults}{Specifies the number of users to return as a response to the \code{ListUsers} request.}
@@ -20,6 +16,12 @@ list_users(
 \description{
 Lists the users for the server that you specify by passing the \code{ServerId} parameter.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_users(
+  MaxResults = 123,
+  NextToken = "string",
+  ServerId = "string"
+)
 }
+}
+

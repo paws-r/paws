@@ -4,20 +4,25 @@
 \alias{create_user}
 \title{Creates a new IAM user for your AWS account}
 \usage{
-create_user(Path = NULL, UserName, PermissionsBoundary = NULL)
+create_user(Path = NULL, UserName, PermissionsBoundary = NULL,
+  Tags = NULL)
 }
 \arguments{
 \item{Path}{The path for the user name. For more information about paths, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{IAM Identifiers} in the \emph{IAM User Guide}.
 
 This parameter is optional. If it is not included, it defaults to a slash (/).
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.}
 
 \item{UserName}{[required] The name of the user to create.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-. User names are not distinguished by case. For example, you cannot create users named both "TESTUSER" and "testuser".}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-. User names are not distinguished by case. For example, you cannot create users named both "TESTUSER" and "testuser".}
 
 \item{PermissionsBoundary}{The ARN of the policy that is used to set the permissions boundary for the user.}
+
+\item{Tags}{A list of tags that you want to attach to the newly created user. Each tag consists of a key name and an associated value. For more information about tagging, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM Identities} in the \emph{IAM User Guide}.
+
+If any one of the tags is invalid or if you exceed the allowed number of tags per user, then the entire request fails and the user is not created.}
 }
 \description{
 Creates a new IAM user for your AWS account.
@@ -29,7 +34,13 @@ For information about limitations on the number of IAM users you can create, see
 \preformatted{create_user(
   Path = "string",
   UserName = "string",
-  PermissionsBoundary = "string"
+  PermissionsBoundary = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

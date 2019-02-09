@@ -11,7 +11,7 @@
 \arguments{
 \item{CertificateExpiryInMilliseconds}{The amount of time remaining before the certificate expires, in milliseconds.}
 
-\item{GroupId}{[required] The ID of the AWS Greengrass group.}
+\item{GroupId}{[required] The ID of the Greengrass group.}
 }
 \description{
 Updates the Certificate expiry time for a group.

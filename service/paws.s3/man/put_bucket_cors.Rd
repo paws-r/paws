@@ -2,7 +2,7 @@
 % Please edit documentation in R/paws.s3_operations.R
 \name{put_bucket_cors}
 \alias{put_bucket_cors}
-\title{Sets the cors configuration for a bucket}
+\title{Sets the CORS configuration for a bucket}
 \usage{
 put_bucket_cors(Bucket, CORSConfiguration, ContentMD5 = NULL)
 }
@@ -14,7 +14,7 @@ put_bucket_cors(Bucket, CORSConfiguration, ContentMD5 = NULL)
 \item{ContentMD5}{}
 }
 \description{
-Sets the cors configuration for a bucket.
+Sets the CORS configuration for a bucket.
 }
 \section{Accepted Parameters}{
 \preformatted{put_bucket_cors(

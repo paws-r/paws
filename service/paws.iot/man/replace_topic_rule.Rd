@@ -103,6 +103,11 @@ Replaces the rule. You must specify all parameters for the new rule. Creating ru
           channelName = "string",
           roleArn = "string"
         ),
+        iotEvents = list(
+          inputName = "string",
+          messageId = "string",
+          roleArn = "string"
+        ),
         stepFunctions = list(
           executionNamePrefix = "string",
           stateMachineName = "string",
@@ -192,6 +197,11 @@ Replaces the rule. You must specify all parameters for the new rule. Creating ru
       iotAnalytics = list(
         channelArn = "string",
         channelName = "string",
+        roleArn = "string"
+      ),
+      iotEvents = list(
+        inputName = "string",
+        messageId = "string",
         roleArn = "string"
       ),
       stepFunctions = list(

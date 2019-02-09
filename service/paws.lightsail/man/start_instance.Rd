@@ -10,7 +10,12 @@ start_instance(instanceName)
 \item{instanceName}{[required] The name of the instance (a virtual private server) to start.}
 }
 \description{
-Starts a specific Amazon Lightsail instance from a stopped state. To restart an instance, use the reboot instance operation.
+Starts a specific Amazon Lightsail instance from a stopped state. To restart an instance, use the \code{reboot instance} operation.
+}
+\details{
+When you start a stopped instance, Lightsail assigns a new public IP address to the instance. To use the same IP address after stopping and starting an instance, create a static IP address and attach it to the instance. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/lightsail-create-static-ip}{Lightsail Dev Guide}.
+
+The \code{start instance} operation supports tag-based access control via resource tags applied to the resource identified by instanceName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{start_instance(

@@ -11,23 +11,23 @@ create_deployment(applicationName, deploymentGroupName = NULL,
   fileExistsBehavior = NULL)
 }
 \arguments{
-\item{applicationName}{[required] The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.}
+\item{applicationName}{[required] The name of an AWS CodeDeploy application associated with the IAM user or AWS account.}
 
 \item{deploymentGroupName}{The name of the deployment group.}
 
 \item{revision}{The type and location of the revision to deploy.}
 
-\item{deploymentConfigName}{The name of a deployment configuration associated with the applicable IAM user or AWS account.
+\item{deploymentConfigName}{The name of a deployment configuration associated with the IAM user or AWS account.
 
-If not specified, the value configured in the deployment group will be used as the default. If the deployment group does not have a deployment configuration associated with it, then CodeDeployDefault.OneAtATime will be used by default.}
+If not specified, the value configured in the deployment group is used as the default. If the deployment group does not have a deployment configuration associated with it, CodeDeployDefault.OneAtATime is used by default.}
 
 \item{description}{A comment about the deployment.}
 
-\item{ignoreApplicationStopFailures}{If set to true, then if the deployment causes the ApplicationStop deployment lifecycle event to an instance to fail, the deployment to that instance will not be considered to have failed at that point and will continue on to the BeforeInstall deployment lifecycle event.
+\item{ignoreApplicationStopFailures}{If set to true, then if the deployment causes the ApplicationStop deployment lifecycle event to an instance to fail, the deployment to that instance is considered to have failed at that point and continues on to the BeforeInstall deployment lifecycle event.
 
-If set to false or not specified, then if the deployment causes the ApplicationStop deployment lifecycle event to fail to an instance, the deployment to that instance will stop, and the deployment to that instance will be considered to have failed.}
+If set to false or not specified, then if the deployment causes the ApplicationStop deployment lifecycle event to fail to an instance, the deployment to that instance stops, and the deployment to that instance is considered to have failed.}
 
-\item{targetInstances}{Information about the instances that will belong to the replacement environment in a blue/green deployment.}
+\item{targetInstances}{Information about the instances that belong to the replacement environment in a blue/green deployment.}
 
 \item{autoRollbackConfiguration}{Configuration information for an automatic rollback that is added when a deployment is created.}
 
@@ -50,7 +50,7 @@ Deploys an application revision through the specified deployment group.
   applicationName = "string",
   deploymentGroupName = "string",
   revision = list(
-    revisionType = "S3"|"GitHub"|"String",
+    revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
     s3Location = list(
       bucket = "string",
       key = "string",
@@ -63,6 +63,10 @@ Deploys an application revision through the specified deployment group.
       commitId = "string"
     ),
     string = list(
+      content = "string",
+      sha256 = "string"
+    ),
+    appSpecContent = list(
       content = "string",
       sha256 = "string"
     )

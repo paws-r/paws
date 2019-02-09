@@ -12,7 +12,7 @@ update_queue(Description = NULL, Name, ReservationPlanSettings = NULL,
 
 \item{Name}{[required] The name of the queue that you are modifying.}
 
-\item{ReservationPlanSettings}{Details about the pricing plan for your reserved queue. Required for reserved queues and not applicable to on-demand queues.}
+\item{ReservationPlanSettings}{The new details of your pricing plan for your reserved queue. When you set up a new pricing plan to replace an expired one, you enter into another 12-month commitment. When you add capacity to your queue by increasing the number of RTS, you extend the term of your commitment to 12 months from when you add capacity. After you make these commitments, you can't cancel them.}
 
 \item{Status}{Pause or activate a queue by changing its status between ACTIVE and PAUSED. If you pause a queue, jobs in that queue won't begin. Jobs that are running when you pause the queue continue to run until they finish or result in an error.}
 }

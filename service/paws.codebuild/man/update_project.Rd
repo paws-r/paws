@@ -7,9 +7,9 @@
 update_project(name, description = NULL, source = NULL,
   secondarySources = NULL, artifacts = NULL,
   secondaryArtifacts = NULL, cache = NULL, environment = NULL,
-  serviceRole = NULL, timeoutInMinutes = NULL, encryptionKey = NULL,
-  tags = NULL, vpcConfig = NULL, badgeEnabled = NULL,
-  logsConfig = NULL)
+  serviceRole = NULL, timeoutInMinutes = NULL,
+  queuedTimeoutInMinutes = NULL, encryptionKey = NULL, tags = NULL,
+  vpcConfig = NULL, badgeEnabled = NULL, logsConfig = NULL)
 }
 \arguments{
 \item{name}{[required] The name of the build project.
@@ -34,9 +34,11 @@ You cannot change a build project's name.}
 
 \item{timeoutInMinutes}{The replacement value in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait before timing out any related build that did not get marked as completed.}
 
+\item{queuedTimeoutInMinutes}{The number of minutes a build is allowed to be queued before it times out.}
+
 \item{encryptionKey}{The replacement AWS Key Management Service (AWS KMS) customer master key (CMK) to be used for encrypting the build output artifacts.
 
-You can specify either the CMK's Amazon Resource Name (ARN) or, if available, the CMK's alias (using the format \code{alias/alias-name alias-name }).}
+You can specify either the Amazon Resource Name (ARN)of the CMK or, if available, the CMK's alias (using the format \code{alias/alias-name alias-name }).}
 
 \item{tags}{The replacement set of tags for this build project.
 
@@ -44,9 +46,9 @@ These tags are available for use by AWS services that support AWS CodeBuild buil
 
 \item{vpcConfig}{VpcConfig enables AWS CodeBuild to access resources in an Amazon VPC.}
 
-\item{badgeEnabled}{Set this to true to generate a publicly-accessible URL for your project's build badge.}
+\item{badgeEnabled}{Set this to true to generate a publicly accessible URL for your project's build badge.}
 
-\item{logsConfig}{Information about logs for the build project. A project can create Amazon CloudWatch Logs, logs in an S3 bucket, or both.}
+\item{logsConfig}{Information about logs for the build project. A project can create logs in Amazon CloudWatch Logs, logs in an S3 bucket, or both.}
 }
 \description{
 Changes the settings of a build project.
@@ -123,10 +125,16 @@ Changes the settings of a build project.
       )
     ),
     privilegedMode = TRUE|FALSE,
-    certificate = "string"
+    certificate = "string",
+    registryCredential = list(
+      credential = "string",
+      credentialProvider = "SECRETS_MANAGER"
+    ),
+    imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
   ),
   serviceRole = "string",
   timeoutInMinutes = 123,
+  queuedTimeoutInMinutes = 123,
   encryptionKey = "string",
   tags = list(
     list(

@@ -6,7 +6,7 @@
 \usage{
 create_certificate_authority(CertificateAuthorityConfiguration,
   RevocationConfiguration = NULL, CertificateAuthorityType,
-  IdempotencyToken = NULL)
+  IdempotencyToken = NULL, Tags = NULL)
 }
 \arguments{
 \item{CertificateAuthorityConfiguration}{[required] Name and bit size of the private key algorithm, the name of the signing algorithm, and X.500 certificate subject information.}
@@ -16,6 +16,8 @@ create_certificate_authority(CertificateAuthorityConfiguration,
 \item{CertificateAuthorityType}{[required] The type of the certificate authority. Currently, this must be \strong{SUBORDINATE}.}
 
 \item{IdempotencyToken}{Alphanumeric string that can be used to distinguish between calls to \strong{CreateCertificateAuthority}. Idempotency tokens time out after five minutes. Therefore, if you call \strong{CreateCertificateAuthority} multiple times with the same idempotency token within a five minute period, ACM PCA recognizes that you are requesting only one certificate. As a result, ACM PCA issues only one. If you change the idempotency token for each call, however, ACM PCA recognizes that you are requesting multiple certificates.}
+
+\item{Tags}{Key-value pairs that will be attached to the new private CA. You can associate up to 50 tags with a private CA.}
 }
 \description{
 Creates a private subordinate certificate authority (CA). You must specify the CA configuration, the revocation configuration, the CA type, and an optional idempotency token. The CA configuration specifies the name of the algorithm and key size to be used to create the CA private key, the type of signing algorithm that the CA uses to sign, and X.500 subject information. The CRL (certificate revocation list) configuration specifies the CRL expiration period in days (the validity period of the CRL), the Amazon S3 bucket that will contain the CRL, and a CNAME alias for the S3 bucket that is included in certificates issued by the CA. If successful, this operation returns the Amazon Resource Name (ARN) of the CA.
@@ -51,7 +53,13 @@ Creates a private subordinate certificate authority (CA). You must specify the C
     )
   ),
   CertificateAuthorityType = "SUBORDINATE",
-  IdempotencyToken = "string"
+  IdempotencyToken = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

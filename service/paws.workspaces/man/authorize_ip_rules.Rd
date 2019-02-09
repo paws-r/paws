@@ -7,7 +7,7 @@
 authorize_ip_rules(GroupId, UserRules)
 }
 \arguments{
-\item{GroupId}{[required] The ID of the group.}
+\item{GroupId}{[required] The identifier of the group.}
 
 \item{UserRules}{[required] The rules to add to the group.}
 }

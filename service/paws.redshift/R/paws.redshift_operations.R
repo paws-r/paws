@@ -36,7 +36,7 @@ accept_reserved_node_exchange <- function (ReservedNodeId, TargetReservedNodeOff
 #'
 #' Adds an inbound (ingress) rule to an Amazon Redshift security group. Depending on whether the application accessing your cluster is running on the Internet or an Amazon EC2 instance, you can authorize inbound access to either a Classless Interdomain Routing (CIDR)/Internet Protocol (IP) range or to an Amazon EC2 security group. You can add as many as 20 ingress rules to an Amazon Redshift security group.
 #' 
-#' If you authorize access to an Amazon EC2 security group, specify *EC2SecurityGroupName* and *EC2SecurityGroupOwnerId*. The Amazon EC2 security group and Amazon Redshift cluster must be in the same AWS region.
+#' If you authorize access to an Amazon EC2 security group, specify *EC2SecurityGroupName* and *EC2SecurityGroupOwnerId*. The Amazon EC2 security group and Amazon Redshift cluster must be in the same AWS Region.
 #' 
 #' If you authorize access to a CIDR/IP address range, specify *CIDRIP*. For an overview of CIDR blocks, see the Wikipedia article on [Classless Inter-Domain Routing](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 #' 
@@ -112,6 +112,102 @@ authorize_snapshot_access <- function (SnapshotIdentifier, SnapshotClusterIdenti
     return(response)
 }
 
+#' Deletes a set of cluster snapshots
+#'
+#' Deletes a set of cluster snapshots.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' batch_delete_cluster_snapshots(
+#'   Identifiers = list(
+#'     list(
+#'       SnapshotIdentifier = "string",
+#'       SnapshotClusterIdentifier = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @param Identifiers &#91;required&#93; A list of identifiers for the snapshots that you want to delete.
+#'
+#' @export
+batch_delete_cluster_snapshots <- function (Identifiers) 
+{
+    op <- new_operation(name = "BatchDeleteClusterSnapshots", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- batch_delete_cluster_snapshots_input(Identifiers = Identifiers)
+    output <- batch_delete_cluster_snapshots_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Modifies the settings for a list of snapshots
+#'
+#' Modifies the settings for a list of snapshots.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' batch_modify_cluster_snapshots(
+#'   SnapshotIdentifierList = list(
+#'     "string"
+#'   ),
+#'   ManualSnapshotRetentionPeriod = 123,
+#'   Force = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param SnapshotIdentifierList &#91;required&#93; A list of snapshot identifiers you want to modify.
+#' @param ManualSnapshotRetentionPeriod The number of days that a manual snapshot is retained. If you specify the value -1, the manual snapshot is retained indefinitely.
+#' 
+#' The number must be either -1 or an integer between 1 and 3,653.
+#' 
+#' If you decrease the manual snapshot retention period from its current value, existing manual snapshots that fall outside of the new retention period will return an error. If you want to suppress the errors and delete the snapshots, use the force option.
+#' @param Force A boolean value indicating whether to override an exception if the retention period has passed.
+#'
+#' @export
+batch_modify_cluster_snapshots <- function (SnapshotIdentifierList, 
+    ManualSnapshotRetentionPeriod = NULL, Force = NULL) 
+{
+    op <- new_operation(name = "BatchModifyClusterSnapshots", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- batch_modify_cluster_snapshots_input(SnapshotIdentifierList = SnapshotIdentifierList, 
+        ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, 
+        Force = Force)
+    output <- batch_modify_cluster_snapshots_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Cancels a resize operation
+#'
+#' Cancels a resize operation.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' cancel_resize(
+#'   ClusterIdentifier = "string"
+#' )
+#' ```
+#'
+#' @param ClusterIdentifier &#91;required&#93; The unique identifier for the cluster that you want to cancel a resize operation for.
+#'
+#' @export
+cancel_resize <- function (ClusterIdentifier) 
+{
+    op <- new_operation(name = "CancelResize", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- cancel_resize_input(ClusterIdentifier = ClusterIdentifier)
+    output <- cancel_resize_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Copies the specified automated cluster snapshot to a new manual cluster snapshot
 #'
 #' Copies the specified automated cluster snapshot to a new manual cluster snapshot. The source must be an automated snapshot and it must be in the available state.
@@ -125,7 +221,8 @@ authorize_snapshot_access <- function (SnapshotIdentifier, SnapshotClusterIdenti
 #' copy_cluster_snapshot(
 #'   SourceSnapshotIdentifier = "string",
 #'   SourceSnapshotClusterIdentifier = "string",
-#'   TargetSnapshotIdentifier = "string"
+#'   TargetSnapshotIdentifier = "string",
+#'   ManualSnapshotRetentionPeriod = 123
 #' )
 #' ```
 #'
@@ -152,16 +249,23 @@ authorize_snapshot_access <- function (SnapshotIdentifier, SnapshotClusterIdenti
 #' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
 #' -   Must be unique for the AWS account that is making the request.
+#' @param ManualSnapshotRetentionPeriod The number of days that a manual snapshot is retained. If the value is -1, the manual snapshot is retained indefinitely.
+#' 
+#' The value must be either -1 or an integer between 1 and 3,653.
+#' 
+#' The default value is -1.
 #'
 #' @export
 copy_cluster_snapshot <- function (SourceSnapshotIdentifier, 
-    SourceSnapshotClusterIdentifier = NULL, TargetSnapshotIdentifier) 
+    SourceSnapshotClusterIdentifier = NULL, TargetSnapshotIdentifier, 
+    ManualSnapshotRetentionPeriod = NULL) 
 {
     op <- new_operation(name = "CopyClusterSnapshot", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- copy_cluster_snapshot_input(SourceSnapshotIdentifier = SourceSnapshotIdentifier, 
         SourceSnapshotClusterIdentifier = SourceSnapshotClusterIdentifier, 
-        TargetSnapshotIdentifier = TargetSnapshotIdentifier)
+        TargetSnapshotIdentifier = TargetSnapshotIdentifier, 
+        ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod)
     output <- copy_cluster_snapshot_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -195,6 +299,7 @@ copy_cluster_snapshot <- function (SourceSnapshotIdentifier,
 #'   PreferredMaintenanceWindow = "string",
 #'   ClusterParameterGroupName = "string",
 #'   AutomatedSnapshotRetentionPeriod = 123,
+#'   ManualSnapshotRetentionPeriod = 123,
 #'   Port = 123,
 #'   ClusterVersion = "string",
 #'   AllowVersionUpgrade = TRUE|FALSE,
@@ -216,7 +321,8 @@ copy_cluster_snapshot <- function (SourceSnapshotIdentifier,
 #'   IamRoles = list(
 #'     "string"
 #'   ),
-#'   MaintenanceTrackName = "string"
+#'   MaintenanceTrackName = "string",
+#'   SnapshotScheduleIdentifier = "string"
 #' )
 #' ```
 #'
@@ -323,6 +429,9 @@ copy_cluster_snapshot <- function (SourceSnapshotIdentifier,
 #' Default: `1`
 #' 
 #' Constraints: Must be a value from 0 to 35.
+#' @param ManualSnapshotRetentionPeriod The default number of days to retain a manual snapshot. If the value is -1, the snapshot is retained indefinitely. This setting doesn\'t change the retention period of existing snapshots.
+#' 
+#' The value must be either -1 or an integer between 1 and 3,653.
 #' @param Port The port number on which the cluster accepts incoming connections.
 #' 
 #' The cluster is accessible only via the JDBC and ODBC connection strings. Part of the connection string requires the port on which the cluster will listen for incoming connections.
@@ -372,6 +481,7 @@ copy_cluster_snapshot <- function (SourceSnapshotIdentifier,
 #' 
 #' A cluster can have up to 10 IAM roles associated with it at any time.
 #' @param MaintenanceTrackName An optional parameter for the name of the maintenance track for the cluster. If you don\'t provide a maintenance track name, the cluster is assigned to the `current` track.
+#' @param SnapshotScheduleIdentifier A unique identifier for the snapshot schedule.
 #'
 #' @export
 create_cluster <- function (DBName = NULL, ClusterIdentifier, 
@@ -379,11 +489,12 @@ create_cluster <- function (DBName = NULL, ClusterIdentifier,
     ClusterSecurityGroups = NULL, VpcSecurityGroupIds = NULL, 
     ClusterSubnetGroupName = NULL, AvailabilityZone = NULL, PreferredMaintenanceWindow = NULL, 
     ClusterParameterGroupName = NULL, AutomatedSnapshotRetentionPeriod = NULL, 
-    Port = NULL, ClusterVersion = NULL, AllowVersionUpgrade = NULL, 
-    NumberOfNodes = NULL, PubliclyAccessible = NULL, Encrypted = NULL, 
-    HsmClientCertificateIdentifier = NULL, HsmConfigurationIdentifier = NULL, 
-    ElasticIp = NULL, Tags = NULL, KmsKeyId = NULL, EnhancedVpcRouting = NULL, 
-    AdditionalInfo = NULL, IamRoles = NULL, MaintenanceTrackName = NULL) 
+    ManualSnapshotRetentionPeriod = NULL, Port = NULL, ClusterVersion = NULL, 
+    AllowVersionUpgrade = NULL, NumberOfNodes = NULL, PubliclyAccessible = NULL, 
+    Encrypted = NULL, HsmClientCertificateIdentifier = NULL, 
+    HsmConfigurationIdentifier = NULL, ElasticIp = NULL, Tags = NULL, 
+    KmsKeyId = NULL, EnhancedVpcRouting = NULL, AdditionalInfo = NULL, 
+    IamRoles = NULL, MaintenanceTrackName = NULL, SnapshotScheduleIdentifier = NULL) 
 {
     op <- new_operation(name = "CreateCluster", http_method = "POST", 
         http_path = "/", paginator = list())
@@ -394,13 +505,15 @@ create_cluster <- function (DBName = NULL, ClusterIdentifier,
         AvailabilityZone = AvailabilityZone, PreferredMaintenanceWindow = PreferredMaintenanceWindow, 
         ClusterParameterGroupName = ClusterParameterGroupName, 
         AutomatedSnapshotRetentionPeriod = AutomatedSnapshotRetentionPeriod, 
+        ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, 
         Port = Port, ClusterVersion = ClusterVersion, AllowVersionUpgrade = AllowVersionUpgrade, 
         NumberOfNodes = NumberOfNodes, PubliclyAccessible = PubliclyAccessible, 
         Encrypted = Encrypted, HsmClientCertificateIdentifier = HsmClientCertificateIdentifier, 
         HsmConfigurationIdentifier = HsmConfigurationIdentifier, 
         ElasticIp = ElasticIp, Tags = Tags, KmsKeyId = KmsKeyId, 
         EnhancedVpcRouting = EnhancedVpcRouting, AdditionalInfo = AdditionalInfo, 
-        IamRoles = IamRoles, MaintenanceTrackName = MaintenanceTrackName)
+        IamRoles = IamRoles, MaintenanceTrackName = MaintenanceTrackName, 
+        SnapshotScheduleIdentifier = SnapshotScheduleIdentifier)
     output <- create_cluster_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -526,6 +639,7 @@ create_cluster_security_group <- function (ClusterSecurityGroupName,
 #' create_cluster_snapshot(
 #'   SnapshotIdentifier = "string",
 #'   ClusterIdentifier = "string",
+#'   ManualSnapshotRetentionPeriod = 123,
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
@@ -549,16 +663,22 @@ create_cluster_security_group <- function (ClusterSecurityGroupName,
 #' 
 #' Example: `my-snapshot-id`
 #' @param ClusterIdentifier &#91;required&#93; The cluster identifier for which you want a snapshot.
+#' @param ManualSnapshotRetentionPeriod The number of days that a manual snapshot is retained. If the value is -1, the manual snapshot is retained indefinitely.
+#' 
+#' The value must be either -1 or an integer between 1 and 3,653.
+#' 
+#' The default value is -1.
 #' @param Tags A list of tag instances.
 #'
 #' @export
 create_cluster_snapshot <- function (SnapshotIdentifier, ClusterIdentifier, 
-    Tags = NULL) 
+    ManualSnapshotRetentionPeriod = NULL, Tags = NULL) 
 {
     op <- new_operation(name = "CreateClusterSnapshot", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- create_cluster_snapshot_input(SnapshotIdentifier = SnapshotIdentifier, 
-        ClusterIdentifier = ClusterIdentifier, Tags = Tags)
+        ClusterIdentifier = ClusterIdentifier, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, 
+        Tags = Tags)
     output <- create_cluster_snapshot_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -672,11 +792,11 @@ create_cluster_subnet_group <- function (ClusterSubnetGroupName,
 #' Example: my-snapshot-20131010
 #' @param EventCategories Specifies the Amazon Redshift event categories to be published by the event notification subscription.
 #' 
-#' Values: Configuration, Management, Monitoring, Security
+#' Values: configuration, management, monitoring, security
 #' @param Severity Specifies the Amazon Redshift event severity to be published by the event notification subscription.
 #' 
 #' Values: ERROR, INFO
-#' @param Enabled A Boolean value; set to `true` to activate the subscription, set to `false` to create the subscription but not active it.
+#' @param Enabled A boolean value; set to `true` to activate the subscription, and set to `false` to create the subscription but not activate it.
 #' @param Tags A list of tag instances.
 #'
 #' @export
@@ -836,6 +956,53 @@ create_snapshot_copy_grant <- function (SnapshotCopyGrantName,
     return(response)
 }
 
+#' Creates a new snapshot schedule
+#'
+#' Creates a new snapshot schedule.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' create_snapshot_schedule(
+#'   ScheduleDefinitions = list(
+#'     "string"
+#'   ),
+#'   ScheduleIdentifier = "string",
+#'   ScheduleDescription = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   DryRun = TRUE|FALSE,
+#'   NextInvocations = 123
+#' )
+#' ```
+#'
+#' @param ScheduleDefinitions The definition of the snapshot schedule. The definition is made up of schedule expressions, for example \"cron(30 12 \*)\" or \"rate(12 hours)\".
+#' @param ScheduleIdentifier A unique identifier for a snapshot schedule. Only alphanumeric characters are allowed for the identifier.
+#' @param ScheduleDescription The description of the snapshot schedule.
+#' @param Tags 
+#' @param DryRun 
+#' @param NextInvocations 
+#'
+#' @export
+create_snapshot_schedule <- function (ScheduleDefinitions = NULL, 
+    ScheduleIdentifier = NULL, ScheduleDescription = NULL, Tags = NULL, 
+    DryRun = NULL, NextInvocations = NULL) 
+{
+    op <- new_operation(name = "CreateSnapshotSchedule", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_snapshot_schedule_input(ScheduleDefinitions = ScheduleDefinitions, 
+        ScheduleIdentifier = ScheduleIdentifier, ScheduleDescription = ScheduleDescription, 
+        Tags = Tags, DryRun = DryRun, NextInvocations = NextInvocations)
+    output <- create_snapshot_schedule_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Adds one or more tags to a specified resource
 #'
 #' Adds one or more tags to a specified resource.
@@ -886,7 +1053,8 @@ create_tags <- function (ResourceName, Tags)
 #' delete_cluster(
 #'   ClusterIdentifier = "string",
 #'   SkipFinalClusterSnapshot = TRUE|FALSE,
-#'   FinalClusterSnapshotIdentifier = "string"
+#'   FinalClusterSnapshotIdentifier = "string",
+#'   FinalClusterSnapshotRetentionPeriod = 123
 #' )
 #' ```
 #'
@@ -915,16 +1083,22 @@ create_tags <- function (ResourceName, Tags)
 #' -   First character must be a letter.
 #' 
 #' -   Cannot end with a hyphen or contain two consecutive hyphens.
+#' @param FinalClusterSnapshotRetentionPeriod The number of days that a manual snapshot is retained. If the value is -1, the manual snapshot is retained indefinitely.
+#' 
+#' The value must be either -1 or an integer between 1 and 3,653.
+#' 
+#' The default value is -1.
 #'
 #' @export
 delete_cluster <- function (ClusterIdentifier, SkipFinalClusterSnapshot = NULL, 
-    FinalClusterSnapshotIdentifier = NULL) 
+    FinalClusterSnapshotIdentifier = NULL, FinalClusterSnapshotRetentionPeriod = NULL) 
 {
     op <- new_operation(name = "DeleteCluster", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- delete_cluster_input(ClusterIdentifier = ClusterIdentifier, 
         SkipFinalClusterSnapshot = SkipFinalClusterSnapshot, 
-        FinalClusterSnapshotIdentifier = FinalClusterSnapshotIdentifier)
+        FinalClusterSnapshotIdentifier = FinalClusterSnapshotIdentifier, 
+        FinalClusterSnapshotRetentionPeriod = FinalClusterSnapshotRetentionPeriod)
     output <- delete_cluster_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -1012,7 +1186,7 @@ delete_cluster_security_group <- function (ClusterSecurityGroupName)
 #'
 #' @param SnapshotIdentifier &#91;required&#93; The unique identifier of the manual snapshot to be deleted.
 #' 
-#' Constraints: Must be the name of an existing snapshot that is in the `available` state.
+#' Constraints: Must be the name of an existing snapshot that is in the `available`, `failed`, or `cancelled` state.
 #' @param SnapshotClusterIdentifier The unique identifier of the cluster the snapshot was created from. This parameter is required if your IAM user has a policy containing a snapshot resource element that specifies anything other than \* for the cluster name.
 #' 
 #' Constraints: Must be the name of valid cluster.
@@ -1161,6 +1335,32 @@ delete_snapshot_copy_grant <- function (SnapshotCopyGrantName)
     return(response)
 }
 
+#' Deletes a snapshot schedule
+#'
+#' Deletes a snapshot schedule.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_snapshot_schedule(
+#'   ScheduleIdentifier = "string"
+#' )
+#' ```
+#'
+#' @param ScheduleIdentifier &#91;required&#93; A unique identifier of the snapshot schedule to delete.
+#'
+#' @export
+delete_snapshot_schedule <- function (ScheduleIdentifier) 
+{
+    op <- new_operation(name = "DeleteSnapshotSchedule", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_snapshot_schedule_input(ScheduleIdentifier = ScheduleIdentifier)
+    output <- delete_snapshot_schedule_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Deletes a tag or tags from a resource
 #'
 #' Deletes a tag or tags from a resource. You must provide the ARN of the resource from which you want to delete the tag or tags.
@@ -1185,6 +1385,34 @@ delete_tags <- function (ResourceName, TagKeys)
         http_path = "/", paginator = list())
     input <- delete_tags_input(ResourceName = ResourceName, TagKeys = TagKeys)
     output <- delete_tags_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a list of attributes attached to an account
+#'
+#' Returns a list of attributes attached to an account
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_account_attributes(
+#'   AttributeNames = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @param AttributeNames A list of attribute names.
+#'
+#' @export
+describe_account_attributes <- function (AttributeNames = NULL) 
+{
+    op <- new_operation(name = "DescribeAccountAttributes", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_account_attributes_input(AttributeNames = AttributeNames)
+    output <- describe_account_attributes_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -1406,7 +1634,13 @@ describe_cluster_security_groups <- function (ClusterSecurityGroupName = NULL,
 #'   TagValues = list(
 #'     "string"
 #'   ),
-#'   ClusterExists = TRUE|FALSE
+#'   ClusterExists = TRUE|FALSE,
+#'   SortingEntities = list(
+#'     list(
+#'       Attribute = "SOURCE_TYPE"|"TOTAL_SIZE"|"CREATE_TIME",
+#'       SortOrder = "ASC"|"DESC"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -1431,12 +1665,13 @@ describe_cluster_security_groups <- function (ClusterSecurityGroupName = NULL,
 #' @param TagKeys A tag key or keys for which you want to return all matching cluster snapshots that are associated with the specified key or keys. For example, suppose that you have snapshots that are tagged with keys called `owner` and `environment`. If you specify both of these tag keys in the request, Amazon Redshift returns a response with the snapshots that have either or both of these tag keys associated with them.
 #' @param TagValues A tag value or values for which you want to return all matching cluster snapshots that are associated with the specified tag value or values. For example, suppose that you have snapshots that are tagged with values called `admin` and `test`. If you specify both of these tag values in the request, Amazon Redshift returns a response with the snapshots that have either or both of these tag values associated with them.
 #' @param ClusterExists A value that indicates whether to return snapshots only for an existing cluster. Table-level restore can be performed only using a snapshot of an existing cluster, that is, a cluster that has not been deleted. If `ClusterExists` is set to `true`, `ClusterIdentifier` is required.
+#' @param SortingEntities 
 #'
 #' @export
 describe_cluster_snapshots <- function (ClusterIdentifier = NULL, 
     SnapshotIdentifier = NULL, SnapshotType = NULL, StartTime = NULL, 
     EndTime = NULL, MaxRecords = NULL, Marker = NULL, OwnerAccount = NULL, 
-    TagKeys = NULL, TagValues = NULL, ClusterExists = NULL) 
+    TagKeys = NULL, TagValues = NULL, ClusterExists = NULL, SortingEntities = NULL) 
 {
     op <- new_operation(name = "DescribeClusterSnapshots", http_method = "POST", 
         http_path = "/", paginator = list())
@@ -1444,7 +1679,8 @@ describe_cluster_snapshots <- function (ClusterIdentifier = NULL,
         SnapshotIdentifier = SnapshotIdentifier, SnapshotType = SnapshotType, 
         StartTime = StartTime, EndTime = EndTime, MaxRecords = MaxRecords, 
         Marker = Marker, OwnerAccount = OwnerAccount, TagKeys = TagKeys, 
-        TagValues = TagValues, ClusterExists = ClusterExists)
+        TagValues = TagValues, ClusterExists = ClusterExists, 
+        SortingEntities = SortingEntities)
     output <- describe_cluster_snapshots_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -1954,7 +2190,7 @@ describe_logging_status <- function (ClusterIdentifier)
 
 #' Returns a list of orderable cluster options
 #'
-#' Returns a list of orderable cluster options. Before you create a new cluster you can use this operation to find what options are available, such as the EC2 Availability Zones (AZ) in the specific AWS region that you can specify, and the node types you can request. The node types differ by available storage, memory, CPU and price. With the cost involved you might want to obtain a list of cluster options in the specific region and specify values when creating a cluster. For more information about managing clusters, go to [Amazon Redshift Clusters](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html) in the *Amazon Redshift Cluster Management Guide*.
+#' Returns a list of orderable cluster options. Before you create a new cluster you can use this operation to find what options are available, such as the EC2 Availability Zones (AZ) in the specific AWS Region that you can specify, and the node types you can request. The node types differ by available storage, memory, CPU and price. With the cost involved you might want to obtain a list of cluster options in the specific region and specify values when creating a cluster. For more information about managing clusters, go to [Amazon Redshift Clusters](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html) in the *Amazon Redshift Cluster Management Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -2141,6 +2377,71 @@ describe_snapshot_copy_grants <- function (SnapshotCopyGrantName = NULL,
         MaxRecords = MaxRecords, Marker = Marker, TagKeys = TagKeys, 
         TagValues = TagValues)
     output <- describe_snapshot_copy_grants_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a list of snapshot schedules
+#'
+#' Returns a list of snapshot schedules.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_snapshot_schedules(
+#'   ClusterIdentifier = "string",
+#'   ScheduleIdentifier = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   ),
+#'   TagValues = list(
+#'     "string"
+#'   ),
+#'   Marker = "string",
+#'   MaxRecords = 123
+#' )
+#' ```
+#'
+#' @param ClusterIdentifier The unique identifier for the cluster whose snapshot schedules you want to view.
+#' @param ScheduleIdentifier A unique identifier for a snapshot schedule.
+#' @param TagKeys The key value for a snapshot schedule tag.
+#' @param TagValues The value corresponding to the key of the snapshot schedule tag.
+#' @param Marker A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the `marker` parameter and retrying the command. If the `marker` field is empty, all response records have been retrieved for the request.
+#' @param MaxRecords The maximum number or response records to return in each call. If the number of remaining response records exceeds the specified `MaxRecords` value, a value is returned in a `marker` field of the response. You can retrieve the next set of records by retrying the command with the returned `marker` value.
+#'
+#' @export
+describe_snapshot_schedules <- function (ClusterIdentifier = NULL, 
+    ScheduleIdentifier = NULL, TagKeys = NULL, TagValues = NULL, 
+    Marker = NULL, MaxRecords = NULL) 
+{
+    op <- new_operation(name = "DescribeSnapshotSchedules", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_snapshot_schedules_input(ClusterIdentifier = ClusterIdentifier, 
+        ScheduleIdentifier = ScheduleIdentifier, TagKeys = TagKeys, 
+        TagValues = TagValues, Marker = Marker, MaxRecords = MaxRecords)
+    output <- describe_snapshot_schedules_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns the total amount of snapshot usage and provisioned storage for a user in megabytes
+#'
+#' Returns the total amount of snapshot usage and provisioned storage for a user in megabytes.
+#'
+
+#'
+
+#'
+#' @export
+describe_storage <- function () 
+{
+    op <- new_operation(name = "DescribeStorage", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_storage_input()
+    output <- describe_storage_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -2382,32 +2683,36 @@ enable_logging <- function (ClusterIdentifier, BucketName, S3KeyPrefix = NULL)
 #'   ClusterIdentifier = "string",
 #'   DestinationRegion = "string",
 #'   RetentionPeriod = 123,
-#'   SnapshotCopyGrantName = "string"
+#'   SnapshotCopyGrantName = "string",
+#'   ManualSnapshotRetentionPeriod = 123
 #' )
 #' ```
 #'
 #' @param ClusterIdentifier &#91;required&#93; The unique identifier of the source cluster to copy snapshots from.
 #' 
 #' Constraints: Must be the valid name of an existing cluster that does not already have cross-region snapshot copy enabled.
-#' @param DestinationRegion &#91;required&#93; The destination region that you want to copy snapshots to.
+#' @param DestinationRegion &#91;required&#93; The destination AWS Region that you want to copy snapshots to.
 #' 
-#' Constraints: Must be the name of a valid region. For more information, see [Regions and Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html#redshift_region) in the Amazon Web Services General Reference.
+#' Constraints: Must be the name of a valid AWS Region. For more information, see [Regions and Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html#redshift_region) in the Amazon Web Services General Reference.
 #' @param RetentionPeriod The number of days to retain automated snapshots in the destination region after they are copied from the source region.
 #' 
 #' Default: 7.
 #' 
 #' Constraints: Must be at least 1 and no more than 35.
 #' @param SnapshotCopyGrantName The name of the snapshot copy grant to use when snapshots of an AWS KMS-encrypted cluster are copied to the destination region.
+#' @param ManualSnapshotRetentionPeriod The number of days to retain newly copied snapshots in the destination AWS Region after they are copied from the source AWS Region. If the value is -1, the manual snapshot is retained indefinitely.
+#' 
+#' The value must be either -1 or an integer between 1 and 3,653.
 #'
 #' @export
 enable_snapshot_copy <- function (ClusterIdentifier, DestinationRegion, 
-    RetentionPeriod = NULL, SnapshotCopyGrantName = NULL) 
+    RetentionPeriod = NULL, SnapshotCopyGrantName = NULL, ManualSnapshotRetentionPeriod = NULL) 
 {
     op <- new_operation(name = "EnableSnapshotCopy", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- enable_snapshot_copy_input(ClusterIdentifier = ClusterIdentifier, 
         DestinationRegion = DestinationRegion, RetentionPeriod = RetentionPeriod, 
-        SnapshotCopyGrantName = SnapshotCopyGrantName)
+        SnapshotCopyGrantName = SnapshotCopyGrantName, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod)
     output <- enable_snapshot_copy_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -2560,6 +2865,7 @@ get_reserved_node_exchange_offerings <- function (ReservedNodeId,
 #'   MasterUserPassword = "string",
 #'   ClusterParameterGroupName = "string",
 #'   AutomatedSnapshotRetentionPeriod = 123,
+#'   ManualSnapshotRetentionPeriod = 123,
 #'   PreferredMaintenanceWindow = "string",
 #'   ClusterVersion = "string",
 #'   AllowVersionUpgrade = TRUE|FALSE,
@@ -2634,6 +2940,11 @@ get_reserved_node_exchange_offerings <- function (ReservedNodeId,
 #' Default: Uses existing setting.
 #' 
 #' Constraints: Must be a value from 0 to 35.
+#' @param ManualSnapshotRetentionPeriod The default for number of days that a newly created manual snapshot is retained. If the value is -1, the manual snapshot is retained indefinitely. This value doesn\'t retroactively change the retention periods of existing manual snapshots.
+#' 
+#' The value must be either -1 or an integer between 1 and 3,653.
+#' 
+#' The default value is -1.
 #' @param PreferredMaintenanceWindow The weekly time range (in UTC) during which system maintenance can occur, if necessary. If system maintenance is necessary during the window, it may result in an outage.
 #' 
 #' This maintenance window change is made immediately. If the new maintenance window indicates the current time, there must be at least 120 minutes between the current time and end of the window in order to ensure that pending changes are applied.
@@ -2687,8 +2998,9 @@ get_reserved_node_exchange_offerings <- function (ReservedNodeId,
 modify_cluster <- function (ClusterIdentifier, ClusterType = NULL, 
     NodeType = NULL, NumberOfNodes = NULL, ClusterSecurityGroups = NULL, 
     VpcSecurityGroupIds = NULL, MasterUserPassword = NULL, ClusterParameterGroupName = NULL, 
-    AutomatedSnapshotRetentionPeriod = NULL, PreferredMaintenanceWindow = NULL, 
-    ClusterVersion = NULL, AllowVersionUpgrade = NULL, HsmClientCertificateIdentifier = NULL, 
+    AutomatedSnapshotRetentionPeriod = NULL, ManualSnapshotRetentionPeriod = NULL, 
+    PreferredMaintenanceWindow = NULL, ClusterVersion = NULL, 
+    AllowVersionUpgrade = NULL, HsmClientCertificateIdentifier = NULL, 
     HsmConfigurationIdentifier = NULL, NewClusterIdentifier = NULL, 
     PubliclyAccessible = NULL, ElasticIp = NULL, EnhancedVpcRouting = NULL, 
     MaintenanceTrackName = NULL, Encrypted = NULL, KmsKeyId = NULL) 
@@ -2700,6 +3012,7 @@ modify_cluster <- function (ClusterIdentifier, ClusterType = NULL,
         ClusterSecurityGroups = ClusterSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, 
         MasterUserPassword = MasterUserPassword, ClusterParameterGroupName = ClusterParameterGroupName, 
         AutomatedSnapshotRetentionPeriod = AutomatedSnapshotRetentionPeriod, 
+        ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, 
         PreferredMaintenanceWindow = PreferredMaintenanceWindow, 
         ClusterVersion = ClusterVersion, AllowVersionUpgrade = AllowVersionUpgrade, 
         HsmClientCertificateIdentifier = HsmClientCertificateIdentifier, 
@@ -2784,6 +3097,47 @@ modify_cluster_iam_roles <- function (ClusterIdentifier, AddIamRoles = NULL,
     return(response)
 }
 
+#' Modifies the maintenance settings of a cluster
+#'
+#' Modifies the maintenance settings of a cluster. For example, you can defer a maintenance window. You can also update or cancel a deferment.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' modify_cluster_maintenance(
+#'   ClusterIdentifier = "string",
+#'   DeferMaintenance = TRUE|FALSE,
+#'   DeferMaintenanceIdentifier = "string",
+#'   DeferMaintenanceStartTime = as.POSIXct("2015-01-01"),
+#'   DeferMaintenanceEndTime = as.POSIXct("2015-01-01"),
+#'   DeferMaintenanceDuration = 123
+#' )
+#' ```
+#'
+#' @param ClusterIdentifier &#91;required&#93; A unique identifier for the cluster.
+#' @param DeferMaintenance A boolean indicating whether to enable the deferred maintenance window.
+#' @param DeferMaintenanceIdentifier A unique identifier for the deferred maintenance window.
+#' @param DeferMaintenanceStartTime A timestamp indicating the start time for the deferred maintenance window.
+#' @param DeferMaintenanceEndTime A timestamp indicating end time for the deferred maintenance window. If you specify an end time, you can\'t specify a duration.
+#' @param DeferMaintenanceDuration An integer indicating the duration of the maintenance window in days. If you specify a duration, you can\'t specify an end time. The duration must be 14 days or less.
+#'
+#' @export
+modify_cluster_maintenance <- function (ClusterIdentifier, DeferMaintenance = NULL, 
+    DeferMaintenanceIdentifier = NULL, DeferMaintenanceStartTime = NULL, 
+    DeferMaintenanceEndTime = NULL, DeferMaintenanceDuration = NULL) 
+{
+    op <- new_operation(name = "ModifyClusterMaintenance", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- modify_cluster_maintenance_input(ClusterIdentifier = ClusterIdentifier, 
+        DeferMaintenance = DeferMaintenance, DeferMaintenanceIdentifier = DeferMaintenanceIdentifier, 
+        DeferMaintenanceStartTime = DeferMaintenanceStartTime, 
+        DeferMaintenanceEndTime = DeferMaintenanceEndTime, DeferMaintenanceDuration = DeferMaintenanceDuration)
+    output <- modify_cluster_maintenance_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Modifies the parameters of a parameter group
 #'
 #' Modifies the parameters of a parameter group.
@@ -2826,6 +3180,75 @@ modify_cluster_parameter_group <- function (ParameterGroupName,
     input <- modify_cluster_parameter_group_input(ParameterGroupName = ParameterGroupName, 
         Parameters = Parameters)
     output <- modify_cluster_parameter_group_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Modifies the settings for a snapshot
+#'
+#' Modifies the settings for a snapshot.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' modify_cluster_snapshot(
+#'   SnapshotIdentifier = "string",
+#'   ManualSnapshotRetentionPeriod = 123,
+#'   Force = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param SnapshotIdentifier &#91;required&#93; The identifier of the snapshot whose setting you want to modify.
+#' @param ManualSnapshotRetentionPeriod The number of days that a manual snapshot is retained. If the value is -1, the manual snapshot is retained indefinitely.
+#' 
+#' If the manual snapshot falls outside of the new retention period, you can specify the force option to immediately delete the snapshot.
+#' 
+#' The value must be either -1 or an integer between 1 and 3,653.
+#' @param Force A Boolean option to override an exception if the retention period has already passed.
+#'
+#' @export
+modify_cluster_snapshot <- function (SnapshotIdentifier, ManualSnapshotRetentionPeriod = NULL, 
+    Force = NULL) 
+{
+    op <- new_operation(name = "ModifyClusterSnapshot", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- modify_cluster_snapshot_input(SnapshotIdentifier = SnapshotIdentifier, 
+        ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, 
+        Force = Force)
+    output <- modify_cluster_snapshot_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Modifies a snapshot schedule for a cluster
+#'
+#' Modifies a snapshot schedule for a cluster.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' modify_cluster_snapshot_schedule(
+#'   ClusterIdentifier = "string",
+#'   ScheduleIdentifier = "string",
+#'   DisassociateSchedule = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param ClusterIdentifier &#91;required&#93; A unique identifier for the cluster whose snapshot schedule you want to modify.
+#' @param ScheduleIdentifier A unique alphanumeric identifier for the schedule that you want to associate with the cluster.
+#' @param DisassociateSchedule A boolean to indicate whether to remove the assoiciation between the cluster and the schedule.
+#'
+#' @export
+modify_cluster_snapshot_schedule <- function (ClusterIdentifier, 
+    ScheduleIdentifier = NULL, DisassociateSchedule = NULL) 
+{
+    op <- new_operation(name = "ModifyClusterSnapshotSchedule", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- modify_cluster_snapshot_schedule_input(ClusterIdentifier = ClusterIdentifier, 
+        ScheduleIdentifier = ScheduleIdentifier, DisassociateSchedule = DisassociateSchedule)
+    output <- modify_cluster_snapshot_schedule_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -2899,7 +3322,7 @@ modify_cluster_subnet_group <- function (ClusterSubnetGroupName,
 #' Example: my-snapshot-20131010
 #' @param EventCategories Specifies the Amazon Redshift event categories to be published by the event notification subscription.
 #' 
-#' Values: Configuration, Management, Monitoring, Security
+#' Values: configuration, management, monitoring, security
 #' @param Severity Specifies the Amazon Redshift event severity to be published by the event notification subscription.
 #' 
 #' Values: ERROR, INFO
@@ -2923,36 +3346,77 @@ modify_event_subscription <- function (SubscriptionName, SnsTopicArn = NULL,
     return(response)
 }
 
-#' Modifies the number of days to retain automated snapshots in the destination region after they are copied from the source region
+#' Modifies the number of days to retain snapshots in the destination AWS Region after they are copied from the source AWS Region
 #'
-#' Modifies the number of days to retain automated snapshots in the destination region after they are copied from the source region.
+#' Modifies the number of days to retain snapshots in the destination AWS Region after they are copied from the source AWS Region. By default, this operation only changes the retention period of copied automated snapshots. The retention periods for both new and existing copied automated snapshots are updated with the new retention period. You can set the manual option to change only the retention periods of copied manual snapshots. If you set this option, only newly copied manual snapshots have the new retention period.
 #'
 #' @section Accepted Parameters:
 #' ```
 #' modify_snapshot_copy_retention_period(
 #'   ClusterIdentifier = "string",
-#'   RetentionPeriod = 123
+#'   RetentionPeriod = 123,
+#'   Manual = TRUE|FALSE
 #' )
 #' ```
 #'
-#' @param ClusterIdentifier &#91;required&#93; The unique identifier of the cluster for which you want to change the retention period for automated snapshots that are copied to a destination region.
+#' @param ClusterIdentifier &#91;required&#93; The unique identifier of the cluster for which you want to change the retention period for either automated or manual snapshots that are copied to a destination AWS Region.
 #' 
 #' Constraints: Must be the valid name of an existing cluster that has cross-region snapshot copy enabled.
-#' @param RetentionPeriod &#91;required&#93; The number of days to retain automated snapshots in the destination region after they are copied from the source region.
+#' @param RetentionPeriod &#91;required&#93; The number of days to retain automated snapshots in the destination AWS Region after they are copied from the source AWS Region.
 #' 
-#' If you decrease the retention period for automated snapshots that are copied to a destination region, Amazon Redshift will delete any existing automated snapshots that were copied to the destination region and that fall outside of the new retention period.
+#' By default, this only changes the retention period of copied automated snapshots.
 #' 
-#' Constraints: Must be at least 1 and no more than 35.
+#' If you decrease the retention period for automated snapshots that are copied to a destination AWS Region, Amazon Redshift deletes any existing automated snapshots that were copied to the destination AWS Region and that fall outside of the new retention period.
+#' 
+#' Constraints: Must be at least 1 and no more than 35 for automated snapshots.
+#' 
+#' If you specify the `manual` option, only newly copied manual snapshots will have the new retention period.
+#' 
+#' If you specify the value of -1 newly copied manual snapshots are retained indefinitely.
+#' 
+#' Constraints: The number of days must be either -1 or an integer between 1 and 3,653 for manual snapshots.
+#' @param Manual Indicates whether to apply the snapshot retention period to newly copied manual snapshots instead of automated snapshots.
 #'
 #' @export
 modify_snapshot_copy_retention_period <- function (ClusterIdentifier, 
-    RetentionPeriod) 
+    RetentionPeriod, Manual = NULL) 
 {
     op <- new_operation(name = "ModifySnapshotCopyRetentionPeriod", 
         http_method = "POST", http_path = "/", paginator = list())
     input <- modify_snapshot_copy_retention_period_input(ClusterIdentifier = ClusterIdentifier, 
-        RetentionPeriod = RetentionPeriod)
+        RetentionPeriod = RetentionPeriod, Manual = Manual)
     output <- modify_snapshot_copy_retention_period_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Modifies a snapshot schedule
+#'
+#' Modifies a snapshot schedule. Any schedule associated with a cluster is modified asynchronously.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' modify_snapshot_schedule(
+#'   ScheduleIdentifier = "string",
+#'   ScheduleDefinitions = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @param ScheduleIdentifier &#91;required&#93; A unique alphanumeric identifier of the schedule to modify.
+#' @param ScheduleDefinitions &#91;required&#93; An updated list of schedule definitions. A schedule definition is made up of schedule expressions, for example, \"cron(30 12 \*)\" or \"rate(12 hours)\".
+#'
+#' @export
+modify_snapshot_schedule <- function (ScheduleIdentifier, ScheduleDefinitions) 
+{
+    op <- new_operation(name = "ModifySnapshotSchedule", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- modify_snapshot_schedule_input(ScheduleIdentifier = ScheduleIdentifier, 
+        ScheduleDefinitions = ScheduleDefinitions)
+    output <- modify_snapshot_schedule_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -3069,7 +3533,7 @@ reset_cluster_parameter_group <- function (ParameterGroupName,
 
 #' Changes the size of the cluster
 #'
-#' Changes the size of the cluster. You can change the cluster\'s type, or change the number or type of nodes. The default behavior is to use the elastic resize method. With an elastic resize your cluster is avaialble for read and write operations more quickly than with the classic resize method.
+#' Changes the size of the cluster. You can change the cluster\'s type, or change the number or type of nodes. The default behavior is to use the elastic resize method. With an elastic resize, your cluster is available for read and write operations more quickly than with the classic resize method.
 #' 
 #' Elastic resize operations have the following restrictions:
 #' 
@@ -3083,7 +3547,7 @@ reset_cluster_parameter_group <- function (ParameterGroupName,
 #' 
 #'     -   ds2.8xlarge
 #' 
-#' -   The type of nodes you add must match the node type for the cluster.
+#' -   The type of nodes that you add must match the node type for the cluster.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -3100,7 +3564,7 @@ reset_cluster_parameter_group <- function (ParameterGroupName,
 #' @param ClusterType The new cluster type for the specified cluster.
 #' @param NodeType The new node type for the nodes you are adding.
 #' @param NumberOfNodes &#91;required&#93; The new number of nodes for the cluster.
-#' @param Classic A boolean value indicating whether the resize operation is using the classic resize process. If you don\'t provide this parameter or set the value to `false` the resize type is elastic.
+#' @param Classic A boolean value indicating whether the resize operation is using the classic resize process. If you don\'t provide this parameter or set the value to `false`, the resize type is elastic.
 #'
 #' @export
 resize_cluster <- function (ClusterIdentifier, ClusterType = NULL, 
@@ -3150,6 +3614,7 @@ resize_cluster <- function (ClusterIdentifier, ClusterType = NULL,
 #'   ),
 #'   PreferredMaintenanceWindow = "string",
 #'   AutomatedSnapshotRetentionPeriod = 123,
+#'   ManualSnapshotRetentionPeriod = 123,
 #'   KmsKeyId = "string",
 #'   NodeType = "string",
 #'   EnhancedVpcRouting = TRUE|FALSE,
@@ -3157,7 +3622,8 @@ resize_cluster <- function (ClusterIdentifier, ClusterType = NULL,
 #'   IamRoles = list(
 #'     "string"
 #'   ),
-#'   MaintenanceTrackName = "string"
+#'   MaintenanceTrackName = "string",
+#'   SnapshotScheduleIdentifier = "string"
 #' )
 #' ```
 #'
@@ -3234,6 +3700,7 @@ resize_cluster <- function (ClusterIdentifier, ClusterType = NULL,
 #' Default: The value selected for the cluster from which the snapshot was taken.
 #' 
 #' Constraints: Must be a value from 0 to 35.
+#' @param ManualSnapshotRetentionPeriod 
 #' @param KmsKeyId The AWS Key Management Service (KMS) key ID of the encryption key that you want to use to encrypt data in the cluster that you restore from a shared snapshot.
 #' @param NodeType The node type that the restored cluster will be provisioned with.
 #' 
@@ -3248,6 +3715,7 @@ resize_cluster <- function (ClusterIdentifier, ClusterType = NULL,
 #' 
 #' A cluster can have up to 10 IAM roles associated at any time.
 #' @param MaintenanceTrackName The name of the maintenance track for the restored cluster. When you take a snapshot, the snapshot inherits the `MaintenanceTrack` value from the cluster. The snapshot might be on a different track than the cluster that was the source for the snapshot. For example, suppose that you take a snapshot of a cluster that is on the current track and then change the cluster to be on the trailing track. In this case, the snapshot and the source cluster are on different tracks.
+#' @param SnapshotScheduleIdentifier A unique identifier for the snapshot schedule.
 #'
 #' @export
 restore_from_cluster_snapshot <- function (ClusterIdentifier, 
@@ -3257,8 +3725,9 @@ restore_from_cluster_snapshot <- function (ClusterIdentifier,
     HsmConfigurationIdentifier = NULL, ElasticIp = NULL, ClusterParameterGroupName = NULL, 
     ClusterSecurityGroups = NULL, VpcSecurityGroupIds = NULL, 
     PreferredMaintenanceWindow = NULL, AutomatedSnapshotRetentionPeriod = NULL, 
-    KmsKeyId = NULL, NodeType = NULL, EnhancedVpcRouting = NULL, 
-    AdditionalInfo = NULL, IamRoles = NULL, MaintenanceTrackName = NULL) 
+    ManualSnapshotRetentionPeriod = NULL, KmsKeyId = NULL, NodeType = NULL, 
+    EnhancedVpcRouting = NULL, AdditionalInfo = NULL, IamRoles = NULL, 
+    MaintenanceTrackName = NULL, SnapshotScheduleIdentifier = NULL) 
 {
     op <- new_operation(name = "RestoreFromClusterSnapshot", 
         http_method = "POST", http_path = "/", paginator = list())
@@ -3272,9 +3741,10 @@ restore_from_cluster_snapshot <- function (ClusterIdentifier,
         ClusterSecurityGroups = ClusterSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, 
         PreferredMaintenanceWindow = PreferredMaintenanceWindow, 
         AutomatedSnapshotRetentionPeriod = AutomatedSnapshotRetentionPeriod, 
+        ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, 
         KmsKeyId = KmsKeyId, NodeType = NodeType, EnhancedVpcRouting = EnhancedVpcRouting, 
         AdditionalInfo = AdditionalInfo, IamRoles = IamRoles, 
-        MaintenanceTrackName = MaintenanceTrackName)
+        MaintenanceTrackName = MaintenanceTrackName, SnapshotScheduleIdentifier = SnapshotScheduleIdentifier)
     output <- restore_from_cluster_snapshot_output()
     svc <- service()
     request <- new_request(svc, op, input, output)

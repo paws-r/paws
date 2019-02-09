@@ -2,7 +2,7 @@
 % Please edit documentation in R/paws.budgets_operations.R
 \name{describe_notifications_for_budget}
 \alias{describe_notifications_for_budget}
-\title{Lists the notifications associated with a budget}
+\title{Lists the notifications that are associated with a budget}
 \usage{
 describe_notifications_for_budget(AccountId, BudgetName,
   MaxResults = NULL, NextToken = NULL)
@@ -12,12 +12,12 @@ describe_notifications_for_budget(AccountId, BudgetName,
 
 \item{BudgetName}{[required] The name of the budget whose notifications you want descriptions of.}
 
-\item{MaxResults}{Optional integer. Specifies the maximum number of results to return in response.}
+\item{MaxResults}{An optional integer that represents how many entries a paginated response contains. The maximum is 100.}
 
-\item{NextToken}{The pagination token that indicates the next set of results to retrieve.}
+\item{NextToken}{The pagination token that you include in your request to indicate the next set of results that you want to retrieve.}
 }
 \description{
-Lists the notifications associated with a budget.
+Lists the notifications that are associated with a budget.
 }
 \section{Accepted Parameters}{
 \preformatted{describe_notifications_for_budget(

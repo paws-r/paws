@@ -35,7 +35,7 @@ Constraints: Minimum 20, maximum 100.}
 \item{Marker}{An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by \code{MaxRecords}.}
 }
 \description{
-Lists events for a given source identifier and source type. You can also specify a start and end time. For more information on AWS DMS events, see \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html}{Working with Events and Notifications} .
+Lists events for a given source identifier and source type. You can also specify a start and end time. For more information on AWS DMS events, see \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html}{Working with Events and Notifications} in the \emph{AWS Database Migration User Guide.}
 }
 \section{Accepted Parameters}{
 \preformatted{describe_events(

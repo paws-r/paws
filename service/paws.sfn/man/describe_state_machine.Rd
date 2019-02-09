@@ -12,6 +12,9 @@ describe_state_machine(stateMachineArn)
 \description{
 Describes a state machine.
 }
+\details{
+This operation is eventually consistent. The results are best effort and may not reflect very recent updates and changes.
+}
 \section{Accepted Parameters}{
 \preformatted{describe_state_machine(
   stateMachineArn = "string"

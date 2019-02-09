@@ -8,6 +8,10 @@ test_that("list_deployment_configs", {
     expect_error(list_deployment_configs(), NA)
 })
 
+test_that("list_deployment_targets", {
+    expect_error(list_deployment_targets(), NA)
+})
+
 test_that("list_deployments", {
     expect_error(list_deployments(), NA)
 })

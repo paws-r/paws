@@ -14,6 +14,8 @@ Deletes the specified block storage disk. The disk must be in the \code{availabl
 }
 \details{
 The disk may remain in the \code{deleting} state for several minutes.
+
+The \code{delete disk} operation supports tag-based access control via resource tags applied to the resource identified by diskName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{delete_disk(

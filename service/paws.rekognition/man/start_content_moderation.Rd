@@ -25,7 +25,7 @@ Starts asynchronous detection of explicit or suggestive adult content in a store
 \details{
 Amazon Rekognition Video can moderate content in a video stored in an Amazon S3 bucket. Use Video to specify the bucket name and the filename of the video. \code{StartContentModeration} returns a job identifier (\code{JobId}) which you use to get the results of the analysis. When content moderation analysis is finished, Amazon Rekognition Video publishes a completion status to the Amazon Simple Notification Service topic that you specify in \code{NotificationChannel}.
 
-To get the results of the content moderation analysis, first check that the status value published to the Amazon SNS topic is \code{SUCCEEDED}. If so, call and pass the job identifier (\code{JobId}) from the initial call to \code{StartContentModeration}.
+To get the results of the content moderation analysis, first check that the status value published to the Amazon SNS topic is \code{SUCCEEDED}. If so, call GetContentModeration and pass the job identifier (\code{JobId}) from the initial call to \code{StartContentModeration}.
 
 For more information, see Detecting Unsafe Content in the Amazon Rekognition Developer Guide.
 }

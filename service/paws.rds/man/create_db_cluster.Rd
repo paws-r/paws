@@ -17,7 +17,7 @@ create_db_cluster(AvailabilityZones = NULL,
   EnableIAMDatabaseAuthentication = NULL, BacktrackWindow = NULL,
   EnableCloudwatchLogsExports = NULL, EngineMode = NULL,
   ScalingConfiguration = NULL, DeletionProtection = NULL,
-  SourceRegion = NULL)
+  GlobalClusterIdentifier = NULL, SourceRegion = NULL)
 }
 \arguments{
 \item{AvailabilityZones}{A list of EC2 Availability Zones that instances in the DB cluster can be created in. For information on AWS Regions and Availability Zones, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.RegionsAndAvailabilityZones.html}{Choosing the Regions and Availability Zones} in the \emph{Amazon Aurora User Guide}.}
@@ -168,11 +168,13 @@ Constraints:
 
 \item{EnableCloudwatchLogsExports}{The list of log types that need to be enabled for exporting to CloudWatch Logs. The values in the list depend on the DB engine being used. For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs} in the \emph{Amazon Aurora User Guide}.}
 
-\item{EngineMode}{The DB engine mode of the DB cluster, either \code{provisioned}, \code{serverless}, or \code{parallelquery}.}
+\item{EngineMode}{The DB engine mode of the DB cluster, either \code{provisioned}, \code{serverless}, \code{parallelquery}, or \code{global}.}
 
 \item{ScalingConfiguration}{For DB clusters in \code{serverless} DB engine mode, the scaling properties of the DB cluster.}
 
 \item{DeletionProtection}{Indicates if the DB cluster should have deletion protection enabled. The database can't be deleted when this value is set to true. The default is false.}
+
+\item{GlobalClusterIdentifier}{The global cluster ID of an Aurora cluster that becomes the primary cluster in the new global database cluster.}
 
 \item{SourceRegion}{The ID of the region that contains the source for the read replica.}
 }
@@ -229,6 +231,7 @@ For more information on Amazon Aurora, see \href{http://docs.aws.amazon.com/Amaz
     SecondsUntilAutoPause = 123
   ),
   DeletionProtection = TRUE|FALSE,
+  GlobalClusterIdentifier = "string",
   SourceRegion = "string"
 )
 }

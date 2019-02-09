@@ -4,7 +4,26 @@
 \alias{create_configuration_set}
 \title{Create a configuration set}
 \usage{
-create_configuration_set(
+create_configuration_set(ConfigurationSetName = NULL,
+  TrackingOptions = NULL, DeliveryOptions = NULL,
+  ReputationOptions = NULL, SendingOptions = NULL)
+}
+\arguments{
+\item{ConfigurationSetName}{The name of the configuration set.}
+
+\item{TrackingOptions}{An object that defines the open and click tracking options for emails that you send using the configuration set.}
+
+\item{DeliveryOptions}{An object that defines the dedicated IP pool that is used to send emails that you send using the configuration set.}
+
+\item{ReputationOptions}{An object that defines whether or not Amazon Pinpoint collects reputation metrics for the emails that you send that use the configuration set.}
+
+\item{SendingOptions}{An object that defines whether or not Amazon Pinpoint can send email that you send using the configuration set.}
+}
+\description{
+Create a configuration set. \emph{Configuration sets} are groups of rules that you can apply to the emails you send using Amazon Pinpoint. You apply a configuration set to an email by including a reference to the configuration set in the headers of the email. When you apply a configuration set to an email, all of the rules in that configuration set are applied to the email.
+}
+\section{Accepted Parameters}{
+\preformatted{create_configuration_set(
   ConfigurationSetName = "string",
   TrackingOptions = list(
     CustomRedirectDomain = "string"
@@ -21,20 +40,5 @@ create_configuration_set(
   )
 )
 }
-\arguments{
-\item{ConfigurationSetName}{The name of the configuration set.}
-
-\item{TrackingOptions}{An object that defines the open and click tracking options for emails that you send using the configuration set.}
-
-\item{DeliveryOptions}{An object that defines the dedicated IP pool that is used to send emails that you send using the configuration set.}
-
-\item{ReputationOptions}{An object that defines whether or not Amazon Pinpoint collects reputation metrics for the emails that you send that use the configuration set.}
-
-\item{SendingOptions}{An object that defines whether or not Amazon Pinpoint can send email that you send using the configuration set.}
 }
-\description{
-Create a configuration set. \emph{Configuration sets} are groups of rules that you can apply to the emails you send using Amazon Pinpoint. You apply a configuration set to an email by including a reference to the configuration set in the headers of the email. When you apply a configuration set to an email, all of the rules in that configuration set are applied to the email.
-}
-\examples{
 
-}

@@ -49,15 +49,55 @@ cancel_key_deletion <- function (KeyId)
     return(response)
 }
 
-#' Creates a display name for a customer-managed customer master key (CMK)
+#' Connects or reconnects a custom key store to its associated AWS CloudHSM cluster
 #'
-#' Creates a display name for a customer-managed customer master key (CMK). You can use an alias to identify a CMK in selected operations, such as Encrypt and GenerateDataKey.
+#' Connects or reconnects a [custom key store](http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html) to its associated AWS CloudHSM cluster.
+#' 
+#' The custom key store must be connected before you can create customer master keys (CMKs) in the key store or use the CMKs it contains. You can disconnect and reconnect a custom key store at any time.
+#' 
+#' To connect a custom key store, its associated AWS CloudHSM cluster must have at least one active HSM. To get the number of active HSMs in a cluster, use the [DescribeClusters](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters) operation. To add HSMs to the cluster, use the [CreateHsm](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_CreateHsm) operation.
+#' 
+#' The connection process can take an extended amount of time to complete; up to 20 minutes. This operation starts the connection process, but it does not wait for it to complete. When it succeeds, this operation quickly returns an HTTP 200 response and a JSON object with no properties. However, this response does not indicate that the custom key store is connected. To get the connection state of the custom key store, use the DescribeCustomKeyStores operation.
+#' 
+#' During the connection process, AWS KMS finds the AWS CloudHSM cluster that is associated with the custom key store, creates the connection infrastructure, connects to the cluster, logs into the AWS CloudHSM client as the [`kmsuser` crypto user](http://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser) (CU), and rotates its password.
+#' 
+#' The `ConnectCustomKeyStore` operation might fail for various reasons. To find the reason, use the DescribeCustomKeyStores operation and see the `ConnectionErrorCode` in the response. For help interpreting the `ConnectionErrorCode`, see CustomKeyStoresListEntry.
+#' 
+#' To fix the failure, use the DisconnectCustomKeyStore operation to disconnect the custom key store, correct the error, use the UpdateCustomKeyStore operation if necessary, and then use `ConnectCustomKeyStore` again.
+#' 
+#' If you are having trouble connecting or disconnecting a custom key store, see [Troubleshooting a Custom Key Store](http://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html) in the *AWS Key Management Service Developer Guide*.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' connect_custom_key_store(
+#'   CustomKeyStoreId = "string"
+#' )
+#' ```
+#'
+#' @param CustomKeyStoreId &#91;required&#93; Enter the key store ID of the custom key store that you want to connect. To find the ID of a custom key store, use the DescribeCustomKeyStores operation.
+#'
+#' @export
+connect_custom_key_store <- function (CustomKeyStoreId) 
+{
+    op <- new_operation(name = "ConnectCustomKeyStore", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- connect_custom_key_store_input(CustomKeyStoreId = CustomKeyStoreId)
+    output <- connect_custom_key_store_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a display name for a customer master key (CMK)
+#'
+#' Creates a display name for a customer master key (CMK). You can use an alias to identify a CMK in selected operations, such as Encrypt and GenerateDataKey.
 #' 
 #' Each CMK can have multiple aliases, but each alias points to only one CMK. The alias name must be unique in the AWS account and region. To simplify code that runs in multiple regions, use the same alias name, but point it to a different CMK in each region.
 #' 
 #' Because an alias is not a property of a CMK, you can delete and change the aliases of a CMK without affecting the CMK. Also, aliases do not appear in the response from the DescribeKey operation. To get the aliases of all CMKs, use the ListAliases operation.
 #' 
-#' The alias name can contain only alphanumeric characters, forward slashes (/), underscores (\_), and dashes (-). Alias names cannot begin with **aws/**. That alias name prefix is reserved for AWS managed CMKs.
+#' An alias must start with the word `alias` followed by a forward slash (`alias/`). The alias name can contain only alphanumeric characters, forward slashes (/), underscores (\_), and dashes (-). Alias names cannot begin with `aws`; that alias name prefix is reserved by Amazon Web Services (AWS).
 #' 
 #' The alias and the CMK it is mapped to must be in the same AWS account and the same region. You cannot perform this operation on an alias in a different AWS account.
 #' 
@@ -73,7 +113,7 @@ cancel_key_deletion <- function (KeyId)
 #' )
 #' ```
 #'
-#' @param AliasName &#91;required&#93; Specifies the alias name. This value must begin with `alias/` followed by the alias name, such as `alias/ExampleAlias`. The alias name cannot begin with `aws/`. The `alias/aws/` prefix is reserved for AWS managed CMKs.
+#' @param AliasName &#91;required&#93; String that contains the display name. The name must start with the word \"alias\" followed by a forward slash (alias/). Aliases that begin with \"alias/AWS\" are reserved.
 #' @param TargetKeyId &#91;required&#93; Identifies the CMK for which you are creating the alias. This value cannot be an alias.
 #' 
 #' Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
@@ -101,6 +141,71 @@ create_alias <- function (AliasName, TargetKeyId)
         http_path = "/", paginator = list())
     input <- create_alias_input(AliasName = AliasName, TargetKeyId = TargetKeyId)
     output <- create_alias_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a custom key store that is associated with an AWS CloudHSM cluster that you own and manage
+#'
+#' Creates a [custom key store](http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html) that is associated with an [AWS CloudHSM cluster](http://docs.aws.amazon.com/cloudhsm/latest/userguide/clusters.html) that you own and manage.
+#' 
+#' This operation is part of the [Custom Key Store feature](http://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html) feature in AWS KMS, which combines the convenience and extensive integration of AWS KMS with the isolation and control of a single-tenant key store.
+#' 
+#' When the operation completes successfully, it returns the ID of the new custom key store. Before you can use your new custom key store, you need to use the ConnectCustomKeyStore operation to connect the new key store to its AWS CloudHSM cluster.
+#' 
+#' The `CreateCustomKeyStore` operation requires the following elements.
+#' 
+#' -   You must specify an active AWS CloudHSM cluster in the same account and AWS Region as the custom key store. You can use an existing cluster or [create and activate a new AWS CloudHSM cluster](http://docs.aws.amazon.com/cloudhsm/latest/userguide/create-cluster.html) for the key store. AWS KMS does not require exclusive use of the cluster.
+#' 
+#' -   You must include the content of the *trust anchor certificate* for the cluster. You created this certificate, and saved it in the `customerCA.crt` file, when you [initialized the cluster](http://docs.aws.amazon.com/cloudhsm/latest/userguide/initialize-cluster.html#sign-csr).
+#' 
+#' -   You must provide the password of the dedicated [`kmsuser` crypto user](http://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser) (CU) account in the cluster.
+#' 
+#'     Before you create the custom key store, use the [createUser](http://docs.aws.amazon.com/cloudhsm/latest/userguide/cloudhsm_mgmt_util-createUser.html) command in `cloudhsm_mgmt_util` to create [a crypto user (CU) named `kmsuser`](http://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser) in specified AWS CloudHSM cluster. AWS KMS uses the `kmsuser` CU account to create and manage key material on your behalf. For instructions, see [Create the kmsuser Crypto User](http://docs.aws.amazon.com/kms/latest/developerguide/create-keystore.html#before-keystore) in the *AWS Key Management Service Developer Guide*.
+#' 
+#' The AWS CloudHSM cluster that you specify must meet the following requirements.
+#' 
+#' -   The cluster must be active and be in the same AWS account and Region as the custom key store.
+#' 
+#' -   Each custom key store must be associated with a different AWS CloudHSM cluster. The cluster cannot be associated with another custom key store or have the same cluster certificate as a cluster that is associated with another custom key store. To view the cluster certificate, use the AWS CloudHSM [DescribeClusters](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html) operation. Clusters that share a backup history have the same cluster certificate.
+#' 
+#' -   The cluster must be configured with subnets in at least two different Availability Zones in the Region. Because AWS CloudHSM is not supported in all Availability Zones, we recommend that the cluster have subnets in all Availability Zones in the Region.
+#' 
+#' -   The cluster must contain at least two active HSMs, each in a different Availability Zone.
+#' 
+#' New custom key stores are not automatically connected. After you create your custom key store, use the ConnectCustomKeyStore operation to connect the custom key store to its associated AWS CloudHSM cluster. Even if you are not going to use your custom key store immediately, you might want to connect it to verify that all settings are correct and then disconnect it until you are ready to use it.
+#' 
+#' If this operation succeeds, it returns the ID of the new custom key store. For help with failures, see [Troubleshoot a Custom Key Store](http://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html) in the *AWS KMS Developer Guide*.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' create_custom_key_store(
+#'   CustomKeyStoreName = "string",
+#'   CloudHsmClusterId = "string",
+#'   TrustAnchorCertificate = "string",
+#'   KeyStorePassword = "string"
+#' )
+#' ```
+#'
+#' @param CustomKeyStoreName &#91;required&#93; Specifies a friendly name for the custom key store. The name must be unique in your AWS account.
+#' @param CloudHsmClusterId &#91;required&#93; Identifies the AWS CloudHSM cluster for the custom key store. Enter the cluster ID of any active AWS CloudHSM cluster that is not already associated with a custom key store. To find the cluster ID, use the [DescribeClusters](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html) operation.
+#' @param TrustAnchorCertificate &#91;required&#93; Enter the content of the trust anchor certificate for the cluster. This is the content of the `customerCA.crt` file that you created when you [initialized the cluster](http://docs.aws.amazon.com/cloudhsm/latest/userguide/initialize-cluster.html).
+#' @param KeyStorePassword &#91;required&#93; Enter the password of the [`kmsuser` crypto user (CU) account](http://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser) in the specified AWS CloudHSM cluster. AWS KMS logs into the cluster as this user to manage key material on your behalf.
+#' 
+#' This parameter tells AWS KMS the `kmsuser` account password; it does not change the password in the AWS CloudHSM cluster.
+#'
+#' @export
+create_custom_key_store <- function (CustomKeyStoreName, CloudHsmClusterId, 
+    TrustAnchorCertificate, KeyStorePassword) 
+{
+    op <- new_operation(name = "CreateCustomKeyStore", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_custom_key_store_input(CustomKeyStoreName = CustomKeyStoreName, 
+        CloudHsmClusterId = CloudHsmClusterId, TrustAnchorCertificate = TrustAnchorCertificate, 
+        KeyStorePassword = KeyStorePassword)
+    output <- create_custom_key_store_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -161,7 +266,7 @@ create_alias <- function (AliasName, TargetKeyId)
 #' @param GrantTokens A list of grant tokens.
 #' 
 #' For more information, see [Grant Tokens](http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token) in the *AWS Key Management Service Developer Guide*.
-#' @param Name A friendly name for identifying the grant. Use this value to prevent the unintended creation of duplicate grants when retrying this request.
+#' @param Name A friendly name for identifying the grant. Use this value to prevent unintended creation of duplicate grants when retrying this request.
 #' 
 #' When this value is absent, all `CreateGrant` requests result in a new grant with a unique `GrantId` even if all the supplied parameters are identical. This can result in unintended duplicates when you retry the `CreateGrant` request.
 #' 
@@ -200,11 +305,15 @@ create_grant <- function (KeyId, GranteePrincipal, RetiringPrincipal = NULL,
 #'
 #' Creates a customer master key (CMK) in the caller\'s AWS account.
 #' 
-#' You can use a CMK to encrypt small amounts of data (4 KiB or less) directly. But CMKs are more commonly used to encrypt data encryption keys (DEKs), which are used to encrypt raw data. For more information about DEKs and the difference between CMKs and DEKs, see the following:
+#' You can use a CMK to encrypt small amounts of data (4 KiB or less) directly, but CMKs are more commonly used to encrypt data keys, which are used to encrypt raw data. For more information about data keys and the difference between CMKs and data keys, see the following:
 #' 
 #' -   The GenerateDataKey operation
 #' 
 #' -   [AWS Key Management Service Concepts](http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html) in the *AWS Key Management Service Developer Guide*
+#' 
+#' If you plan to [import key material](http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html), use the `Origin` parameter with a value of `EXTERNAL` to create a CMK with no key material.
+#' 
+#' To create a CMK in a [custom key store](http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html), use `CustomKeyStoreId` parameter to specify the custom key store. You must also use the `Origin` parameter with a value of `AWS_CLOUDHSM`. The AWS CloudHSM cluster that is associated with the custom key store must have at least two active HSMs, each in a different Availability Zone in the Region.
 #' 
 #' You cannot use this operation to create a CMK in a different AWS account.
 #'
@@ -214,7 +323,8 @@ create_grant <- function (KeyId, GranteePrincipal, RetiringPrincipal = NULL,
 #'   Policy = "string",
 #'   Description = "string",
 #'   KeyUsage = "ENCRYPT_DECRYPT",
-#'   Origin = "AWS_KMS"|"EXTERNAL",
+#'   Origin = "AWS_KMS"|"EXTERNAL"|"AWS_CLOUDHSM",
+#'   CustomKeyStoreId = "string",
 #'   BypassPolicyLockoutSafetyCheck = TRUE|FALSE,
 #'   Tags = list(
 #'     list(
@@ -231,7 +341,7 @@ create_grant <- function (KeyId, GranteePrincipal, RetiringPrincipal = NULL,
 #' 
 #' -   If you don\'t set `BypassPolicyLockoutSafetyCheck` to true, the key policy must allow the principal that is making the `CreateKey` request to make a subsequent PutKeyPolicy request on the CMK. This reduces the risk that the CMK becomes unmanageable. For more information, refer to the scenario in the [Default Key Policy](http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam) section of the *AWS Key Management Service Developer Guide*.
 #' 
-#' -   Each statement in the key policy must contain one or more principals. The principals in the key policy must exist and be visible to AWS KMS. When you create a new AWS principal (for example, an IAM user or role), you might need to enforce a delay before including the new principal in a key policy. The reason for this is that the new principal might not be immediately visible to AWS KMS. For more information, see [Changes that I make are not always immediately visible](http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency) in the *AWS Identity and Access Management User Guide*.
+#' -   Each statement in the key policy must contain one or more principals. The principals in the key policy must exist and be visible to AWS KMS. When you create a new AWS principal (for example, an IAM user or role), you might need to enforce a delay before including the new principal in a key policy because the new principal might not be immediately visible to AWS KMS. For more information, see [Changes that I make are not always immediately visible](http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency) in the *AWS Identity and Access Management User Guide*.
 #' 
 #' If you do not provide a key policy, AWS KMS attaches a default key policy to the CMK. For more information, see [Default Key Policy](http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default) in the *AWS Key Management Service Developer Guide*.
 #' 
@@ -242,11 +352,20 @@ create_grant <- function (KeyId, GranteePrincipal, RetiringPrincipal = NULL,
 #' @param KeyUsage The intended use of the CMK.
 #' 
 #' You can use CMKs only for symmetric encryption and decryption.
-#' @param Origin The source of the CMK\'s key material.
+#' @param Origin The source of the CMK\'s key material. You cannot change the origin after you create the CMK.
 #' 
-#' The default is `AWS_KMS`, which means AWS KMS creates the key material. When this parameter is set to `EXTERNAL`, the request creates a CMK without key material so that you can import key material from your existing key management infrastructure. For more information about importing key material into AWS KMS, see [Importing Key Material](http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html) in the *AWS Key Management Service Developer Guide*.
+#' The default is `AWS_KMS`, which means AWS KMS creates the key material in its own key store.
 #' 
-#' The CMK\'s `Origin` is immutable and is set when the CMK is created.
+#' When the parameter value is `EXTERNAL`, AWS KMS creates a CMK without key material so that you can import key material from your existing key management infrastructure. For more information about importing key material into AWS KMS, see [Importing Key Material](http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html) in the *AWS Key Management Service Developer Guide*.
+#' 
+#' When the parameter value is `AWS_CLOUDHSM`, AWS KMS creates the CMK in a AWS KMS [custom key store](http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html) and creates its key material in the associated AWS CloudHSM cluster. You must also use the `CustomKeyStoreId` parameter to identify the custom key store.
+#' @param CustomKeyStoreId Creates the CMK in the specified [custom key store](http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html) and the key material in its associated AWS CloudHSM cluster. To create a CMK in a custom key store, you must also specify the `Origin` parameter with a value of `AWS_CLOUDHSM`. The AWS CloudHSM cluster that is associated with the custom key store must have at least two active HSMs, each in a different Availability Zone in the Region.
+#' 
+#' To find the ID of a custom key store, use the DescribeCustomKeyStores operation.
+#' 
+#' The response includes the custom key store ID and the ID of the AWS CloudHSM cluster.
+#' 
+#' This operation is part of the [Custom Key Store feature](http://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html) feature in AWS KMS, which combines the convenience and extensive integration of AWS KMS with the isolation and control of a single-tenant key store.
 #' @param BypassPolicyLockoutSafetyCheck A flag to indicate whether to bypass the key policy lockout safety check.
 #' 
 #' Setting this value to true increases the risk that the CMK becomes unmanageable. Do not set this value to true indiscriminately.
@@ -273,12 +392,14 @@ create_grant <- function (KeyId, GranteePrincipal, RetiringPrincipal = NULL,
 #'
 #' @export
 create_key <- function (Policy = NULL, Description = NULL, KeyUsage = NULL, 
-    Origin = NULL, BypassPolicyLockoutSafetyCheck = NULL, Tags = NULL) 
+    Origin = NULL, CustomKeyStoreId = NULL, BypassPolicyLockoutSafetyCheck = NULL, 
+    Tags = NULL) 
 {
     op <- new_operation(name = "CreateKey", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- create_key_input(Policy = Policy, Description = Description, 
-        KeyUsage = KeyUsage, Origin = Origin, BypassPolicyLockoutSafetyCheck = BypassPolicyLockoutSafetyCheck, 
+        KeyUsage = KeyUsage, Origin = Origin, CustomKeyStoreId = CustomKeyStoreId, 
+        BypassPolicyLockoutSafetyCheck = BypassPolicyLockoutSafetyCheck, 
         Tags = Tags)
     output <- create_key_output()
     svc <- service()
@@ -297,7 +418,7 @@ create_key <- function (Policy = NULL, Description = NULL, KeyUsage = NULL,
 #' 
 #' -   Encrypt
 #' 
-#' Whenever possible, use key policies to give users permission to call the Decrypt operation on the CMK, instead of IAM policies. Otherwise, you might create an IAM user policy that gives the user Decrypt permission on all CMKs. This user could decrypt ciphertext that was encrypted by CMKs in other accounts if the key policy for the cross-account CMK permits it. If you must use an IAM policy for `Decrypt` permissions, limit the user to particular CMKs or particular trusted accounts.
+#' Note that if a caller has been granted access permissions to all keys (through, for example, IAM user policies that grant `Decrypt` permission on all resources), then ciphertext encrypted by using keys in other accounts where the key grants access to the caller can be decrypted. To remedy this, we recommend that you do not grant `Decrypt` access in an IAM user policy. Instead grant `Decrypt` access only in key policies. If you must grant `Decrypt` access in an IAM user policy, you should scope the resource to specific keys or to specific trusted accounts.
 #' 
 #' The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
 #'
@@ -378,6 +499,42 @@ delete_alias <- function (AliasName)
     return(response)
 }
 
+#' Deletes a custom key store
+#'
+#' Deletes a [custom key store](http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html). This operation does not delete the AWS CloudHSM cluster that is associated with the custom key store, or affect any users or keys in the cluster.
+#' 
+#' The custom key store that you delete cannot contain any AWS KMS [customer master keys (CMKs)](http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys). Before deleting the key store, verify that you will never need to use any of the CMKs in the key store for any cryptographic operations. Then, use ScheduleKeyDeletion to delete the AWS KMS customer master keys (CMKs) from the key store. When the scheduled waiting period expires, the `ScheduleKeyDeletion` operation deletes the CMKs. Then it makes a best effort to delete the key material from the associated cluster. However, you might need to manually [delete the orphaned key material](http://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html#fix-keystore-orphaned-key) from the cluster and its backups.
+#' 
+#' After all CMKs are deleted from AWS KMS, use DisconnectCustomKeyStore to disconnect the key store from AWS KMS. Then, you can delete the custom key store.
+#' 
+#' Instead of deleting the custom key store, consider using DisconnectCustomKeyStore to disconnect it from AWS KMS. While the key store is disconnected, you cannot create or use the CMKs in the key store. But, you do not need to delete CMKs and you can reconnect a disconnected custom key store at any time.
+#' 
+#' If the operation succeeds, it returns a JSON object with no properties.
+#' 
+#' This operation is part of the [Custom Key Store feature](http://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html) feature in AWS KMS, which combines the convenience and extensive integration of AWS KMS with the isolation and control of a single-tenant key store.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_custom_key_store(
+#'   CustomKeyStoreId = "string"
+#' )
+#' ```
+#'
+#' @param CustomKeyStoreId &#91;required&#93; Enter the ID of the custom key store you want to delete. To find the ID of a custom key store, use the DescribeCustomKeyStores operation.
+#'
+#' @export
+delete_custom_key_store <- function (CustomKeyStoreId) 
+{
+    op <- new_operation(name = "DeleteCustomKeyStore", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_custom_key_store_input(CustomKeyStoreId = CustomKeyStoreId)
+    output <- delete_custom_key_store_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Deletes key material that you previously imported
 #'
 #' Deletes key material that you previously imported. This operation makes the specified customer master key (CMK) unusable. For more information about importing key material into AWS KMS, see [Importing Key Material](http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html) in the *AWS Key Management Service Developer Guide*. You cannot perform this operation on a CMK in a different AWS account.
@@ -427,11 +584,60 @@ delete_imported_key_material <- function (KeyId)
     return(response)
 }
 
+#' Gets information about custom key stores in the account and region
+#'
+#' Gets information about [custom key stores](http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html) in the account and region.
+#' 
+#' This operation is part of the [Custom Key Store feature](http://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html) feature in AWS KMS, which combines the convenience and extensive integration of AWS KMS with the isolation and control of a single-tenant key store.
+#' 
+#' By default, this operation returns information about all custom key stores in the account and region. To get only information about a particular custom key store, use either the `CustomKeyStoreName` or `CustomKeyStoreId` parameter (but not both).
+#' 
+#' To determine whether the custom key store is connected to its AWS CloudHSM cluster, use the `ConnectionState` element in the response. If an attempt to connect the custom key store failed, the `ConnectionState` value is `FAILED` and the `ConnectionErrorCode` element in the response indicates the cause of the failure. For help interpreting the `ConnectionErrorCode`, see CustomKeyStoresListEntry.
+#' 
+#' Custom key stores have a `DISCONNECTED` connection state if the key store has never been connected or you use the DisconnectCustomKeyStore operation to disconnect it. If your custom key store state is `CONNECTED` but you are having trouble using it, make sure that its associated AWS CloudHSM cluster is active and contains the minimum number of HSMs required for the operation, if any.
+#' 
+#' For help repairing your custom key store, see the [Troubleshooting Custom Key Stores](http://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore-html) topic in the *AWS Key Management Service Developer Guide*.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_custom_key_stores(
+#'   CustomKeyStoreId = "string",
+#'   CustomKeyStoreName = "string",
+#'   Limit = 123,
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @param CustomKeyStoreId Gets only information about the specified custom key store. Enter the key store ID.
+#' 
+#' By default, this operation gets information about all custom key stores in the account and region. To limit the output to a particular custom key store, you can use either the `CustomKeyStoreId` or `CustomKeyStoreName` parameter, but not both.
+#' @param CustomKeyStoreName Gets only information about the specified custom key store. Enter the friendly name of the custom key store.
+#' 
+#' By default, this operation gets information about all custom key stores in the account and region. To limit the output to a particular custom key store, you can use either the `CustomKeyStoreId` or `CustomKeyStoreName` parameter, but not both.
+#' @param Limit Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not return more than the specified number of items, but it might return fewer.
+#' @param Marker Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of `NextMarker` from the truncated response you just received.
+#'
+#' @export
+describe_custom_key_stores <- function (CustomKeyStoreId = NULL, 
+    CustomKeyStoreName = NULL, Limit = NULL, Marker = NULL) 
+{
+    op <- new_operation(name = "DescribeCustomKeyStores", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_custom_key_stores_input(CustomKeyStoreId = CustomKeyStoreId, 
+        CustomKeyStoreName = CustomKeyStoreName, Limit = Limit, 
+        Marker = Marker)
+    output <- describe_custom_key_stores_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Provides detailed information about the specified customer master key (CMK)
 #'
 #' Provides detailed information about the specified customer master key (CMK).
 #' 
-#' You can use `DescribeKey` on a predefined AWS alias, that is, an AWS alias with no key ID. When you do, AWS KMS associates the alias with an [AWS managed CMK](http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys) and returns its `KeyId` and `Arn` in the response.
+#' If you use `DescribeKey` on a predefined AWS alias, that is, an AWS alias with no key ID, AWS KMS associates the alias with an [AWS managed CMK](http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys) and returns its `KeyId` and `Arn` in the response.
 #' 
 #' To perform this operation on a CMK in a different AWS account, specify the key ARN or alias ARN in the value of the KeyId parameter.
 #'
@@ -449,7 +655,7 @@ delete_imported_key_material <- function (KeyId)
 #' 
 #' If you specify a predefined AWS alias (an AWS alias with no key ID), KMS associates the alias with an [AWS managed CMK](http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys) and returns its `KeyId` and `Arn` in the response.
 #' 
-#' To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with `"alias/"`. To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.
+#' To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with \"alias/\". To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.
 #' 
 #' For example:
 #' 
@@ -577,9 +783,43 @@ disable_key_rotation <- function (KeyId)
     return(response)
 }
 
-#' Sets the state of a customer master key (CMK) to enabled, thereby permitting its use for cryptographic operations
+#' Disconnects the custom key store from its associated AWS CloudHSM cluster
 #'
-#' Sets the state of a customer master key (CMK) to enabled, thereby permitting its use for cryptographic operations. You cannot perform this operation on a CMK in a different AWS account.
+#' Disconnects the [custom key store](http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html) from its associated AWS CloudHSM cluster. While a custom key store is disconnected, you can manage the custom key store and its customer master keys (CMKs), but you cannot create or use CMKs in the custom key store. You can reconnect the custom key store at any time.
+#' 
+#' While a custom key store is disconnected, all attempts to create customer master keys (CMKs) in the custom key store or to use existing CMKs in cryptographic operations will fail. This action can prevent users from storing and accessing sensitive data.
+#' 
+#' To find the connection state of a custom key store, use the DescribeCustomKeyStores operation. To reconnect a custom key store, use the ConnectCustomKeyStore operation.
+#' 
+#' If the operation succeeds, it returns a JSON object with no properties.
+#' 
+#' This operation is part of the [Custom Key Store feature](http://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html) feature in AWS KMS, which combines the convenience and extensive integration of AWS KMS with the isolation and control of a single-tenant key store.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' disconnect_custom_key_store(
+#'   CustomKeyStoreId = "string"
+#' )
+#' ```
+#'
+#' @param CustomKeyStoreId &#91;required&#93; Enter the ID of the custom key store you want to disconnect. To find the ID of a custom key store, use the DescribeCustomKeyStores operation.
+#'
+#' @export
+disconnect_custom_key_store <- function (CustomKeyStoreId) 
+{
+    op <- new_operation(name = "DisconnectCustomKeyStore", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- disconnect_custom_key_store_input(CustomKeyStoreId = CustomKeyStoreId)
+    output <- disconnect_custom_key_store_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Sets the key state of a customer master key (CMK) to enabled
+#'
+#' Sets the key state of a customer master key (CMK) to enabled. This allows you to use the CMK for cryptographic operations. You cannot perform this operation on a CMK in a different AWS account.
 #' 
 #' The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
 #'
@@ -624,6 +864,8 @@ enable_key <- function (KeyId)
 #' Enables automatic rotation of the key material for the specified customer master key (CMK)
 #'
 #' Enables [automatic rotation of the key material](http://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html) for the specified customer master key (CMK). You cannot perform this operation on a CMK in a different AWS account.
+#' 
+#' You cannot enable automatic rotation of CMKs with imported key material or CMKs in a [custom key store](http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html).
 #' 
 #' The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
 #'
@@ -672,15 +914,15 @@ enable_key_rotation <- function (KeyId)
 #' 
 #' -   You can encrypt up to 4 kilobytes (4096 bytes) of arbitrary data such as an RSA key, a database password, or other sensitive information.
 #' 
-#' -   You can use the `Encrypt` operation to move encrypted data from one AWS region to another. In the first region, generate a data key and use the plaintext key to encrypt the data. Then, in the new region, call the `Encrypt` method on same plaintext data key. Now, you can safely move the encrypted data and encrypted data key to the new region, and decrypt in the new region when necessary.
-#' 
-#' You don\'t need use this operation to encrypt a data key within a region. The GenerateDataKey and GenerateDataKeyWithoutPlaintext operations return an encrypted data key.
-#' 
-#' Also, you don\'t need to use this operation to encrypt data in your application. You can use the plaintext and encrypted data keys that the `GenerateDataKey` operation returns.
-#' 
-#' The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
+#' -   To move encrypted data from one AWS region to another, you can use this operation to encrypt in the new region the plaintext data key that was used to encrypt the data in the original region. This provides you with an encrypted copy of the data key that can be decrypted in the new region and used there to decrypt the encrypted data.
 #' 
 #' To perform this operation on a CMK in a different AWS account, specify the key ARN or alias ARN in the value of the KeyId parameter.
+#' 
+#' Unless you are moving encrypted data from one region to another, you don\'t use this operation to encrypt a generated data key within a region. To get data keys that are already encrypted, call the GenerateDataKey or GenerateDataKeyWithoutPlaintext operation. Data keys don\'t need to be encrypted again by calling `Encrypt`.
+#' 
+#' To encrypt data locally in your application, use the GenerateDataKey operation to return a plaintext data encryption key and a copy of the key encrypted under the CMK of your choosing.
+#' 
+#' The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -698,7 +940,7 @@ enable_key_rotation <- function (KeyId)
 #'
 #' @param KeyId &#91;required&#93; A unique identifier for the customer master key (CMK).
 #' 
-#' To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with `"alias/"`. To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.
+#' To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with \"alias/\". To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.
 #' 
 #' For example:
 #' 
@@ -785,7 +1027,7 @@ encrypt <- function (KeyId, Plaintext, EncryptionContext = NULL,
 #'
 #' @param KeyId &#91;required&#93; The identifier of the CMK under which to generate and encrypt the data encryption key.
 #' 
-#' To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with `"alias/"`. To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.
+#' To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with \"alias/\". To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.
 #' 
 #' For example:
 #' 
@@ -838,7 +1080,7 @@ generate_data_key <- function (KeyId, EncryptionContext = NULL,
 #' 
 #' To perform this operation on a CMK in a different AWS account, specify the key ARN or alias ARN in the value of the KeyId parameter.
 #' 
-#' This operation is useful in a system that has multiple components with different degrees of trust. For example, consider a system that stores encrypted data in containers. Each container stores the encrypted data and an encrypted copy of the data key. One component of the system, called the *control plane*, creates new containers. When it creates a new container, it uses this operation (`GenerateDataKeyWithoutPlaintext`) to get an encrypted data key and then stores it in the container. Later, a different component of the system, called the *data plane*, puts encrypted data into the containers. To do this, it passes the encrypted data key to the Decrypt operation. It then uses the returned plaintext data key to encrypt data and finally stores the encrypted data in the container. In this system, the control plane never sees the plaintext data key.
+#' This operation is useful in a system that has multiple components with different degrees of trust. For example, consider a system that stores encrypted data in containers. Each container stores the encrypted data and an encrypted copy of the data key. One component of the system, called the *control plane*, creates new containers. When it creates a new container, it uses this operation (`GenerateDataKeyWithoutPlaintext`) to get an encrypted data key and then stores it in the container. Later, a different component of the system, called the *data plane*, puts encrypted data into the containers. To do this, it passes the encrypted data key to the Decrypt operation, then uses the returned plaintext data key to encrypt data, and finally stores the encrypted data in the container. In this system, the control plane never sees the plaintext data key.
 #' 
 #' The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
 #'
@@ -859,7 +1101,7 @@ generate_data_key <- function (KeyId, EncryptionContext = NULL,
 #'
 #' @param KeyId &#91;required&#93; The identifier of the customer master key (CMK) under which to generate and encrypt the data encryption key.
 #' 
-#' To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with `"alias/"`. To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.
+#' To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with \"alias/\". To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.
 #' 
 #' For example:
 #' 
@@ -910,16 +1152,20 @@ generate_data_key_without_plaintext <- function (KeyId, EncryptionContext = NULL
 #'
 #' Returns a random byte string that is cryptographically secure.
 #' 
+#' By default, the random byte string is generated in AWS KMS. To generate the byte string in the AWS CloudHSM cluster that is associated with a [custom key store](http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html), specify the custom key store ID.
+#' 
 #' For more information about entropy and random number generation, see the [AWS Key Management Service Cryptographic Details](https://d0.awsstatic.com/whitepapers/KMS-Cryptographic-Details.pdf) whitepaper.
 #'
 #' @section Accepted Parameters:
 #' ```
 #' generate_random(
-#'   NumberOfBytes = 123
+#'   NumberOfBytes = 123,
+#'   CustomKeyStoreId = "string"
 #' )
 #' ```
 #'
 #' @param NumberOfBytes The length of the byte string.
+#' @param CustomKeyStoreId Generates the random byte string in the AWS CloudHSM cluster that is associated with the specified [custom key store](http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html). To find the ID of a custom key store, use the DescribeCustomKeyStores operation.
 #'
 #' @examples
 #' # The following example uses AWS KMS to generate 32 bytes of random data.
@@ -928,11 +1174,12 @@ generate_data_key_without_plaintext <- function (KeyId, EncryptionContext = NULL
 #' )}
 #'
 #' @export
-generate_random <- function (NumberOfBytes = NULL) 
+generate_random <- function (NumberOfBytes = NULL, CustomKeyStoreId = NULL) 
 {
     op <- new_operation(name = "GenerateRandom", http_method = "POST", 
         http_path = "/", paginator = list())
-    input <- generate_random_input(NumberOfBytes = NumberOfBytes)
+    input <- generate_random_input(NumberOfBytes = NumberOfBytes, 
+        CustomKeyStoreId = CustomKeyStoreId)
     output <- generate_random_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -1067,7 +1314,7 @@ get_key_rotation_status <- function (KeyId)
 #' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
-#' @param WrappingAlgorithm &#91;required&#93; The algorithm you use to encrypt the key material before importing it with ImportKeyMaterial. For more information, see [Encrypt the Key Material](http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-encrypt-key-material.html) in the *AWS Key Management Service Developer Guide*.
+#' @param WrappingAlgorithm &#91;required&#93; The algorithm you will use to encrypt the key material before importing it with ImportKeyMaterial. For more information, see [Encrypt the Key Material](http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-encrypt-key-material.html) in the *AWS Key Management Service Developer Guide*.
 #' @param WrappingKeySpec &#91;required&#93; The type of wrapping key (public key) to return in the response. Only 2048-bit RSA public keys are supported.
 #'
 #' @examples
@@ -1112,7 +1359,7 @@ get_parameters_for_import <- function (KeyId, WrappingAlgorithm,
 #' 
 #' -   Whether the key material expires and if so, when. If you set an expiration date, you can change it only by reimporting the same key material and specifying a new expiration date. If the key material expires, AWS KMS deletes the key material and the CMK becomes unusable. To use the CMK again, you must reimport the same key material.
 #' 
-#' When this operation is successful, the CMK\'s key state changes from `PendingImport` to `Enabled`, and you can use the CMK. After you successfully import key material into a CMK, you can reimport the same key material into that CMK, but you cannot import different key material.
+#' When this operation is successful, the key state of the CMK changes from `PendingImport` to `Enabled`, and you can use the CMK. After you successfully import key material into a CMK, you can reimport the same key material into that CMK, but you cannot import different key material.
 #' 
 #' The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
 #'
@@ -1168,15 +1415,13 @@ import_key_material <- function (KeyId, ImportToken, EncryptedKeyMaterial,
     return(response)
 }
 
-#' Gets a list of aliases in the caller's AWS account and region
+#' Gets a list of all aliases in the caller's AWS account and region
 #'
-#' Gets a list of aliases in the caller\'s AWS account and region. You cannot list aliases in other accounts. For more information about aliases, see CreateAlias.
+#' Gets a list of all aliases in the caller\'s AWS account and region. You cannot list aliases in other accounts. For more information about aliases, see CreateAlias.
 #' 
-#' By default, the ListAliases command returns all aliases in the account and region. To get only the aliases that point to a particular customer master key (CMK), use the `KeyId` parameter.
+#' By default, the `ListAliases` command returns all aliases in the account and region. To get only the aliases that point to a particular customer master key (CMK), use the `KeyId` parameter.
 #' 
-#' The `ListAliases` response can include aliases that you created and associated with your customer managed CMKs, and aliases that AWS created and associated with AWS managed CMKs in your account. You can recognize AWS aliases because their names have the format `aws/<service-name>`, such as `aws/dynamodb`.
-#' 
-#' The response might also include aliases that have no `TargetKeyId` field. These are predefined aliases that AWS has created but has not yet associated with a CMK. Aliases that AWS creates in your account, including predefined aliases, do not count against your [AWS KMS aliases limit](http://docs.aws.amazon.com/kms/latest/developerguide/limits.html#aliases-limit).
+#' The `ListAliases` response might include several aliases have no `TargetKeyId` field. These are predefined aliases that AWS has created but has not yet associated with a CMK. Aliases that AWS creates in your account, including predefined aliases, do not count against your [AWS KMS aliases limit](http://docs.aws.amazon.com/kms/latest/developerguide/limits.html#aliases-limit).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1481,7 +1726,7 @@ list_retirable_grants <- function (Limit = NULL, Marker = NULL,
 #' 
 #' -   If you don\'t set `BypassPolicyLockoutSafetyCheck` to true, the key policy must allow the principal that is making the `PutKeyPolicy` request to make a subsequent `PutKeyPolicy` request on the CMK. This reduces the risk that the CMK becomes unmanageable. For more information, refer to the scenario in the [Default Key Policy](http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam) section of the *AWS Key Management Service Developer Guide*.
 #' 
-#' -   Each statement in the key policy must contain one or more principals. The principals in the key policy must exist and be visible to AWS KMS. When you create a new AWS principal (for example, an IAM user or role), you might need to enforce a delay before including the new principal in a key policy. The reason for this is that the new principal might not be immediately visible to AWS KMS. For more information, see [Changes that I make are not always immediately visible](http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency) in the *AWS Identity and Access Management User Guide*.
+#' -   Each statement in the key policy must contain one or more principals. The principals in the key policy must exist and be visible to AWS KMS. When you create a new AWS principal (for example, an IAM user or role), you might need to enforce a delay before including the new principal in a key policy because the new principal might not be immediately visible to AWS KMS. For more information, see [Changes that I make are not always immediately visible](http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency) in the *AWS Identity and Access Management User Guide*.
 #' 
 #' The key policy size limit is 32 kilobytes (32768 bytes).
 #' @param BypassPolicyLockoutSafetyCheck A flag to indicate whether to bypass the key policy lockout safety check.
@@ -1522,7 +1767,7 @@ put_key_policy <- function (KeyId, PolicyName, Policy, BypassPolicyLockoutSafety
 #' 
 #' You can reencrypt data using CMKs in different AWS accounts.
 #' 
-#' Unlike other operations, `ReEncrypt` is authorized twice, once as `ReEncryptFrom` on the source CMK and once as `ReEncryptTo` on the destination CMK. We recommend that you include the `"kms:ReEncrypt*"` permission in your [key policies](http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html) to permit reencryption from or to the CMK. This permission is automatically included in the key policy when you create a CMK through the console. But you must include it manually when you create a CMK programmatically or when you set a key policy with the PutKeyPolicy operation.
+#' Unlike other operations, `ReEncrypt` is authorized twice, once as `ReEncryptFrom` on the source CMK and once as `ReEncryptTo` on the destination CMK. We recommend that you include the `"kms:ReEncrypt*"` permission in your [key policies](http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html) to permit reencryption from or to the CMK. This permission is automatically included in the key policy when you create a CMK through the console, but you must include it manually when you create a CMK programmatically or when you set a key policy with the PutKeyPolicy operation.
 #' 
 #' The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
 #'
@@ -1547,7 +1792,7 @@ put_key_policy <- function (KeyId, PolicyName, Policy, BypassPolicyLockoutSafety
 #' @param SourceEncryptionContext Encryption context used to encrypt and decrypt the data specified in the `CiphertextBlob` parameter.
 #' @param DestinationKeyId &#91;required&#93; A unique identifier for the CMK that is used to reencrypt the data.
 #' 
-#' To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with `"alias/"`. To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.
+#' To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with \"alias/\". To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.
 #' 
 #' For example:
 #' 
@@ -1688,11 +1933,13 @@ revoke_grant <- function (KeyId, GrantId)
 
 #' Schedules the deletion of a customer master key (CMK)
 #'
-#' Schedules the deletion of a customer master key (CMK). You may provide a waiting period, specified in days, before deletion occurs. If you do not provide a waiting period, the default period of 30 days is used. When this operation is successful, the state of the CMK changes to `PendingDeletion`. Before the waiting period ends, you can use CancelKeyDeletion to cancel the deletion of the CMK. After the waiting period ends, AWS KMS deletes the CMK and all AWS KMS data associated with it, including all aliases that refer to it.
+#' Schedules the deletion of a customer master key (CMK). You may provide a waiting period, specified in days, before deletion occurs. If you do not provide a waiting period, the default period of 30 days is used. When this operation is successful, the key state of the CMK changes to `PendingDeletion`. Before the waiting period ends, you can use CancelKeyDeletion to cancel the deletion of the CMK. After the waiting period ends, AWS KMS deletes the CMK and all AWS KMS data associated with it, including all aliases that refer to it.
+#' 
+#' Deleting a CMK is a destructive and potentially dangerous operation. When a CMK is deleted, all data that was encrypted under the CMK is unrecoverable. To prevent the use of a CMK without deleting it, use DisableKey.
+#' 
+#' If you schedule deletion of a CMK from a [custom key store](http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html), when the waiting period expires, `ScheduleKeyDeletion` deletes the CMK from AWS KMS. Then AWS KMS makes a best effort to delete the key material from the associated AWS CloudHSM cluster. However, you might need to manually [delete the orphaned key material](http://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html#fix-keystore-orphaned-key) from the cluster and its backups.
 #' 
 #' You cannot perform this operation on a CMK in a different AWS account.
-#' 
-#' Deleting a CMK is a destructive and potentially dangerous operation. When a CMK is deleted, all data that was encrypted under the CMK is rendered unrecoverable. To restrict the use of a CMK without deleting it, use DisableKey.
 #' 
 #' For more information about scheduling a CMK for deletion, see [Deleting Customer Master Keys](http://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html) in the *AWS Key Management Service Developer Guide*.
 #' 
@@ -1914,9 +2161,72 @@ update_alias <- function (AliasName, TargetKeyId)
     return(response)
 }
 
+#' Changes the properties of a custom key store
+#'
+#' Changes the properties of a custom key store. Use the `CustomKeyStoreId` parameter to identify the custom key store you want to edit. Use the remaining parameters to change the properties of the custom key store.
+#' 
+#' You can only update a custom key store that is disconnected. To disconnect the custom key store, use DisconnectCustomKeyStore. To reconnect the custom key store after the update completes, use ConnectCustomKeyStore. To find the connection state of a custom key store, use the DescribeCustomKeyStores operation.
+#' 
+#' Use the `NewCustomKeyStoreName` parameter to change the friendly name of the custom key store to the value that you specify.
+#' 
+#' Use the `KeyStorePassword` parameter tell AWS KMS the current password of the [`kmsuser` crypto user (CU)](http://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser) in the associated AWS CloudHSM cluster. You can use this parameter to fix connection failures that occur when AWS KMS cannot log into the associated cluster because the `kmsuser` password has changed. This value does not change the password in the AWS CloudHSM cluster.
+#' 
+#' Use the `CloudHsmClusterId` parameter to associate the custom key store with a related AWS CloudHSM cluster, that is, a cluster that shares a backup history with the original cluster. You can use this parameter to repair a custom key store if its AWS CloudHSM cluster becomes corrupted or is deleted, or when you need to create or restore a cluster from a backup.
+#' 
+#' The cluster ID must identify a AWS CloudHSM cluster with the following requirements.
+#' 
+#' -   The cluster must be active and be in the same AWS account and Region as the custom key store.
+#' 
+#' -   The cluster must have the same cluster certificate as the original cluster. You cannot use this parameter to associate the custom key store with an unrelated cluster. To view the cluster certificate, use the AWS CloudHSM [DescribeClusters](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html) operation. Clusters that share a backup history have the same cluster certificate.
+#' 
+#' -   The cluster must be configured with subnets in at least two different Availability Zones in the Region. Because AWS CloudHSM is not supported in all Availability Zones, we recommend that the cluster have subnets in all Availability Zones in the Region.
+#' 
+#' -   The cluster must contain at least two active HSMs, each in a different Availability Zone.
+#' 
+#' If the operation succeeds, it returns a JSON object with no properties.
+#' 
+#' This operation is part of the [Custom Key Store feature](http://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html) feature in AWS KMS, which combines the convenience and extensive integration of AWS KMS with the isolation and control of a single-tenant key store.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' update_custom_key_store(
+#'   CustomKeyStoreId = "string",
+#'   NewCustomKeyStoreName = "string",
+#'   KeyStorePassword = "string",
+#'   CloudHsmClusterId = "string"
+#' )
+#' ```
+#'
+#' @param CustomKeyStoreId &#91;required&#93; Identifies the custom key store that you want to update. Enter the ID of the custom key store. To find the ID of a custom key store, use the DescribeCustomKeyStores operation.
+#' @param NewCustomKeyStoreName Changes the friendly name of the custom key store to the value that you specify. The custom key store name must be unique in the AWS account.
+#' @param KeyStorePassword Enter the current password of the `kmsuser` crypto user (CU) in the AWS CloudHSM cluster that is associated with the custom key store.
+#' 
+#' This parameter tells AWS KMS the current password of the `kmsuser` crypto user (CU). It does not set or change the password of any users in the AWS CloudHSM cluster.
+#' @param CloudHsmClusterId Associates the custom key store with a related AWS CloudHSM cluster.
+#' 
+#' Enter the cluster ID of the cluster that you used to create the custom key store or a cluster that shares a backup history with the original cluster. You cannot use this parameter to associate a custom key store with a different cluster.
+#' 
+#' Clusters that share a backup history have the same cluster certificate. To view the cluster certificate of a cluster, use the [DescribeClusters](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html) operation.
+#'
+#' @export
+update_custom_key_store <- function (CustomKeyStoreId, NewCustomKeyStoreName = NULL, 
+    KeyStorePassword = NULL, CloudHsmClusterId = NULL) 
+{
+    op <- new_operation(name = "UpdateCustomKeyStore", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- update_custom_key_store_input(CustomKeyStoreId = CustomKeyStoreId, 
+        NewCustomKeyStoreName = NewCustomKeyStoreName, KeyStorePassword = KeyStorePassword, 
+        CloudHsmClusterId = CloudHsmClusterId)
+    output <- update_custom_key_store_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Updates the description of a customer master key (CMK)
 #'
-#' Updates the description of a customer master key (CMK). To see the description of a CMK, use DescribeKey.
+#' Updates the description of a customer master key (CMK). To see the decription of a CMK, use DescribeKey.
 #' 
 #' You cannot perform this operation on a CMK in a different AWS account.
 #' 

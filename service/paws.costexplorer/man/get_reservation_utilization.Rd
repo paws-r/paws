@@ -8,11 +8,13 @@ get_reservation_utilization(TimePeriod, GroupBy = NULL,
   Granularity = NULL, Filter = NULL, NextPageToken = NULL)
 }
 \arguments{
-\item{TimePeriod}{[required] Sets the start and end dates for retrieving Reserved Instance (RI) utilization. The start date is inclusive, but the end date is exclusive. For example, if \code{start} is \code{2017-01-01} and \code{end} is \code{2017-05-01}, then the cost and usage data is retrieved from \code{2017-01-01} up to and including \code{2017-04-30} but not including \code{2017-05-01}.}
+\item{TimePeriod}{[required] Sets the start and end dates for retrieving RI utilization. The start date is inclusive, but the end date is exclusive. For example, if \code{start} is \code{2017-01-01} and \code{end} is \code{2017-05-01}, then the cost and usage data is retrieved from \code{2017-01-01} up to and including \code{2017-04-30} but not including \code{2017-05-01}.}
 
 \item{GroupBy}{Groups only by \code{SUBSCRIPTION_ID}. Metadata is included.}
 
-\item{Granularity}{If \code{GroupBy} is set, \code{Granularity} can't be set. If \code{Granularity} isn't set, the response object doesn't include \code{Granularity}, either \code{MONTHLY} or \code{DAILY}. If both \code{GroupBy} and \code{Granularity} aren't set, \code{GetReservationUtilization} defaults to \code{DAILY}.}
+\item{Granularity}{If \code{GroupBy} is set, \code{Granularity} can't be set. If \code{Granularity} isn't set, the response object doesn't include \code{Granularity}, either \code{MONTHLY} or \code{DAILY}. If both \code{GroupBy} and \code{Granularity} aren't set, \code{GetReservationUtilization} defaults to \code{DAILY}.
+
+The \code{GetReservationUtilization} operation supports only \code{DAILY} and \code{MONTHLY} granularities.}
 
 \item{Filter}{Filters utilization data by dimensions. You can filter by the following dimensions:
 \itemize{
@@ -30,7 +32,7 @@ get_reservation_utilization(TimePeriod, GroupBy = NULL,
 \item TENANCY
 }
 
-\code{GetReservationUtilization} uses the same \code{Expression Expression} object as the other operations, but only \code{AND} is supported among each dimension, and nesting is supported up to only one level deep. If there are multiple values for a dimension, they are OR'd together.}
+\code{GetReservationUtilization} uses the same \href{http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html}{Expression} object as the other operations, but only \code{AND} is supported among each dimension, and nesting is supported up to only one level deep. If there are multiple values for a dimension, they are OR'd together.}
 
 \item{NextPageToken}{The token to retrieve the next set of results. AWS provides the token when the response from a previous call has more results than the maximum page size.}
 }
@@ -49,7 +51,7 @@ Retrieves the reservation utilization for your account. Master accounts in an or
       Key = "string"
     )
   ),
-  Granularity = "DAILY"|"MONTHLY",
+  Granularity = "DAILY"|"MONTHLY"|"HOURLY",
   Filter = list(
     Or = list(
       list()
@@ -59,7 +61,7 @@ Retrieves the reservation utilization for your account. Master accounts in an or
     ),
     Not = list(),
     Dimensions = list(
-      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY",
+      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID",
       Values = list(
         "string"
       )

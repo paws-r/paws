@@ -18,7 +18,7 @@ describe_load_balancers(AutoScalingGroupName, NextToken = NULL,
 Describes the load balancers for the specified Auto Scaling group.
 }
 \details{
-Note that this operation describes only Classic Load Balancers. If you have Application Load Balancers, use DescribeLoadBalancerTargetGroups instead.
+This operation describes only Classic Load Balancers. If you have Application Load Balancers, use DescribeLoadBalancerTargetGroups instead.
 }
 \section{Accepted Parameters}{
 \preformatted{describe_load_balancers(

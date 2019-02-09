@@ -17,7 +17,7 @@ associate_route_table(DryRun = NULL, RouteTableId, SubnetId)
 Associates a subnet with a route table. The subnet and route table must be in the same VPC. This association causes traffic originating from the subnet to be routed according to the routes in the route table. The action returns an association ID, which you need in order to disassociate the route table from the subnet later. A route table can be associated with multiple subnets.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html}{Route Tables} in the \emph{Amazon Virtual Private Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html}{Route Tables} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{associate_route_table(

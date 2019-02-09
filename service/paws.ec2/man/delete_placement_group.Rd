@@ -12,7 +12,7 @@ delete_placement_group(DryRun = NULL, GroupName)
 \item{GroupName}{[required] The name of the placement group.}
 }
 \description{
-Deletes the specified placement group. You must terminate all instances in the placement group before you can delete the placement group. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement Groups} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+Deletes the specified placement group. You must terminate all instances in the placement group before you can delete the placement group. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement Groups} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{delete_placement_group(

@@ -13,13 +13,13 @@ NULL
 #' 
 #' A Kinesis Data Firehose delivery stream can be configured to receive records directly from providers using PutRecord or PutRecordBatch, or it can be configured to use an existing Kinesis stream as its source. To specify a Kinesis data stream as input, set the `DeliveryStreamType` parameter to `KinesisStreamAsSource`, and provide the Kinesis stream Amazon Resource Name (ARN) and role ARN in the `KinesisStreamSourceConfiguration` parameter.
 #' 
-#' A delivery stream is configured with a single destination: Amazon S3, Amazon ES, Amazon Redshift, or Splunk. You must specify only one of the following destination configuration parameters: **ExtendedS3DestinationConfiguration**, **S3DestinationConfiguration**, **ElasticsearchDestinationConfiguration**, **RedshiftDestinationConfiguration**, or **SplunkDestinationConfiguration**.
+#' A delivery stream is configured with a single destination: Amazon S3, Amazon ES, Amazon Redshift, or Splunk. You must specify only one of the following destination configuration parameters: `ExtendedS3DestinationConfiguration`, `S3DestinationConfiguration`, `ElasticsearchDestinationConfiguration`, `RedshiftDestinationConfiguration`, or `SplunkDestinationConfiguration`.
 #' 
-#' When you specify **S3DestinationConfiguration**, you can also provide the following optional values: **BufferingHints**, **EncryptionConfiguration**, and **CompressionFormat**. By default, if no **BufferingHints** value is provided, Kinesis Data Firehose buffers data up to 5 MB or for 5 minutes, whichever condition is satisfied first. **BufferingHints** is a hint, so there are some cases where the service cannot adhere to these conditions strictly. For example, record boundaries might be such that the size is a little over or under the configured buffering size. By default, no encryption is performed. We strongly recommend that you enable encryption to ensure secure data storage in Amazon S3.
+#' When you specify `S3DestinationConfiguration`, you can also provide the following optional values: BufferingHints, `EncryptionConfiguration`, and `CompressionFormat`. By default, if no `BufferingHints` value is provided, Kinesis Data Firehose buffers data up to 5 MB or for 5 minutes, whichever condition is satisfied first. `BufferingHints` is a hint, so there are some cases where the service cannot adhere to these conditions strictly. For example, record boundaries might be such that the size is a little over or under the configured buffering size. By default, no encryption is performed. We strongly recommend that you enable encryption to ensure secure data storage in Amazon S3.
 #' 
 #' A few notes about Amazon Redshift as a destination:
 #' 
-#' -   An Amazon Redshift destination requires an S3 bucket as intermediate location. Kinesis Data Firehose first delivers data to Amazon S3 and then uses `COPY` syntax to load data into an Amazon Redshift table. This is specified in the **RedshiftDestinationConfiguration.S3Configuration** parameter.
+#' -   An Amazon Redshift destination requires an S3 bucket as intermediate location. Kinesis Data Firehose first delivers data to Amazon S3 and then uses `COPY` syntax to load data into an Amazon Redshift table. This is specified in the `RedshiftDestinationConfiguration.S3Configuration` parameter.
 #' 
 #' -   The compression formats `SNAPPY` or `ZIP` cannot be specified in `RedshiftDestinationConfiguration.S3Configuration` because the Amazon Redshift `COPY` operation that reads from the S3 bucket doesn\'t support these compression formats.
 #' 
@@ -40,6 +40,7 @@ NULL
 #'     RoleARN = "string",
 #'     BucketARN = "string",
 #'     Prefix = "string",
+#'     ErrorOutputPrefix = "string",
 #'     BufferingHints = list(
 #'       SizeInMBs = 123,
 #'       IntervalInSeconds = 123
@@ -61,6 +62,7 @@ NULL
 #'     RoleARN = "string",
 #'     BucketARN = "string",
 #'     Prefix = "string",
+#'     ErrorOutputPrefix = "string",
 #'     BufferingHints = list(
 #'       SizeInMBs = 123,
 #'       IntervalInSeconds = 123
@@ -96,6 +98,7 @@ NULL
 #'       RoleARN = "string",
 #'       BucketARN = "string",
 #'       Prefix = "string",
+#'       ErrorOutputPrefix = "string",
 #'       BufferingHints = list(
 #'         SizeInMBs = 123,
 #'         IntervalInSeconds = 123
@@ -184,6 +187,7 @@ NULL
 #'       RoleARN = "string",
 #'       BucketARN = "string",
 #'       Prefix = "string",
+#'       ErrorOutputPrefix = "string",
 #'       BufferingHints = list(
 #'         SizeInMBs = 123,
 #'         IntervalInSeconds = 123
@@ -220,6 +224,7 @@ NULL
 #'       RoleARN = "string",
 #'       BucketARN = "string",
 #'       Prefix = "string",
+#'       ErrorOutputPrefix = "string",
 #'       BufferingHints = list(
 #'         SizeInMBs = 123,
 #'         IntervalInSeconds = 123
@@ -261,6 +266,7 @@ NULL
 #'       RoleARN = "string",
 #'       BucketARN = "string",
 #'       Prefix = "string",
+#'       ErrorOutputPrefix = "string",
 #'       BufferingHints = list(
 #'         SizeInMBs = 123,
 #'         IntervalInSeconds = 123
@@ -311,6 +317,7 @@ NULL
 #'       RoleARN = "string",
 #'       BucketARN = "string",
 #'       Prefix = "string",
+#'       ErrorOutputPrefix = "string",
 #'       BufferingHints = list(
 #'         SizeInMBs = 123,
 #'         IntervalInSeconds = 123
@@ -347,6 +354,12 @@ NULL
 #'       LogGroupName = "string",
 #'       LogStreamName = "string"
 #'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -363,12 +376,16 @@ NULL
 #' @param RedshiftDestinationConfiguration The destination in Amazon Redshift. You can specify only one destination.
 #' @param ElasticsearchDestinationConfiguration The destination in Amazon ES. You can specify only one destination.
 #' @param SplunkDestinationConfiguration The destination in Splunk. You can specify only one destination.
+#' @param Tags A set of tags to assign to the delivery stream. A tag is a key-value pair that you can define and assign to AWS resources. Tags are metadata. For example, you can add friendly names and descriptions or other types of information that can help you distinguish the delivery stream. For more information about tags, see [Using Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html) in the AWS Billing and Cost Management User Guide.
+#' 
+#' You can specify up to 50 tags when creating a delivery stream.
 #'
 #' @export
 create_delivery_stream <- function (DeliveryStreamName, DeliveryStreamType = NULL, 
     KinesisStreamSourceConfiguration = NULL, S3DestinationConfiguration = NULL, 
     ExtendedS3DestinationConfiguration = NULL, RedshiftDestinationConfiguration = NULL, 
-    ElasticsearchDestinationConfiguration = NULL, SplunkDestinationConfiguration = NULL) 
+    ElasticsearchDestinationConfiguration = NULL, SplunkDestinationConfiguration = NULL, 
+    Tags = NULL) 
 {
     op <- new_operation(name = "CreateDeliveryStream", http_method = "POST", 
         http_path = "/", paginator = list())
@@ -378,7 +395,8 @@ create_delivery_stream <- function (DeliveryStreamName, DeliveryStreamType = NUL
         ExtendedS3DestinationConfiguration = ExtendedS3DestinationConfiguration, 
         RedshiftDestinationConfiguration = RedshiftDestinationConfiguration, 
         ElasticsearchDestinationConfiguration = ElasticsearchDestinationConfiguration, 
-        SplunkDestinationConfiguration = SplunkDestinationConfiguration)
+        SplunkDestinationConfiguration = SplunkDestinationConfiguration, 
+        Tags = Tags)
     output <- create_delivery_stream_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -450,11 +468,11 @@ describe_delivery_stream <- function (DeliveryStreamName, Limit = NULL,
     return(response)
 }
 
-#' Lists your delivery streams
+#' Lists your delivery streams in alphabetical order of their names
 #'
-#' Lists your delivery streams.
+#' Lists your delivery streams in alphabetical order of their names.
 #' 
-#' The number of delivery streams might be too large to return using a single call to `ListDeliveryStreams`. You can limit the number of delivery streams returned, using the **Limit** parameter. To determine whether there are more delivery streams to list, check the value of `HasMoreDeliveryStreams` in the output. If there are more delivery streams to list, you can request them by specifying the name of the last delivery stream returned in the call in the `ExclusiveStartDeliveryStreamName` parameter of a subsequent call.
+#' The number of delivery streams might be too large to return using a single call to `ListDeliveryStreams`. You can limit the number of delivery streams returned, using the `Limit` parameter. To determine whether there are more delivery streams to list, check the value of `HasMoreDeliveryStreams` in the output. If there are more delivery streams to list, you can request them by calling this operation again and setting the `ExclusiveStartDeliveryStreamName` parameter to the name of the last delivery stream returned in the last call.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -473,7 +491,7 @@ describe_delivery_stream <- function (DeliveryStreamName, Limit = NULL,
 #' -   `KinesisStreamAsSource`: The delivery stream uses a Kinesis data stream as a source.
 #' 
 #' This parameter is optional. If this parameter is omitted, delivery streams of all types are returned.
-#' @param ExclusiveStartDeliveryStreamName The name of the delivery stream to start the list with.
+#' @param ExclusiveStartDeliveryStreamName The list of delivery streams returned by this call to `ListDeliveryStreams` will start with the delivery stream whose name comes alphabetically immediately after the name you specify in `ExclusiveStartDeliveryStreamName`.
 #'
 #' @export
 list_delivery_streams <- function (Limit = NULL, DeliveryStreamType = NULL, 
@@ -537,6 +555,8 @@ list_tags_for_delivery_stream <- function (DeliveryStreamName,
 #' If the `PutRecord` operation throws a `ServiceUnavailableException`, back off and retry. If the exception persists, it is possible that the throughput limits have been exceeded for the delivery stream.
 #' 
 #' Data records sent to Kinesis Data Firehose are stored for 24 hours from the time they are added to a delivery stream as it tries to send the records to the destination. If the destination is unreachable for more than 24 hours, the data is no longer available.
+#' 
+#' Don\'t concatenate two or more base64 strings to form the data fields of your records. Instead, concatenate the raw data, then perform base64 encoding.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -577,15 +597,17 @@ put_record <- function (DeliveryStreamName, Record)
 #' 
 #' Kinesis Data Firehose buffers records before delivering them to the destination. To disambiguate the data blobs at the destination, a common solution is to use delimiters in the data, such as a newline (`\n`) or some other character unique within the data. This allows the consumer application to parse individual data items when reading the data from the destination.
 #' 
-#' The PutRecordBatch response includes a count of failed records, **FailedPutCount**, and an array of responses, **RequestResponses**. Each entry in the **RequestResponses** array provides additional information about the processed record. It directly correlates with a record in the request array using the same ordering, from the top to the bottom. The response array always includes the same number of records as the request array. **RequestResponses** includes both successfully and unsuccessfully processed records. Kinesis Data Firehose tries to process all records in each PutRecordBatch request. A single record failure does not stop the processing of subsequent records.
+#' The PutRecordBatch response includes a count of failed records, `FailedPutCount`, and an array of responses, `RequestResponses`. Even if the PutRecordBatch call succeeds, the value of `FailedPutCount` may be greater than 0, indicating that there are records for which the operation didn\'t succeed. Each entry in the `RequestResponses` array provides additional information about the processed record. It directly correlates with a record in the request array using the same ordering, from the top to the bottom. The response array always includes the same number of records as the request array. `RequestResponses` includes both successfully and unsuccessfully processed records. Kinesis Data Firehose tries to process all records in each PutRecordBatch request. A single record failure does not stop the processing of subsequent records.
 #' 
-#' A successfully processed record includes a **RecordId** value, which is unique for the record. An unsuccessfully processed record includes **ErrorCode** and **ErrorMessage** values. **ErrorCode** reflects the type of error, and is one of the following values: `ServiceUnavailable` or `InternalFailure`. **ErrorMessage** provides more detailed information about the error.
+#' A successfully processed record includes a `RecordId` value, which is unique for the record. An unsuccessfully processed record includes `ErrorCode` and `ErrorMessage` values. `ErrorCode` reflects the type of error, and is one of the following values: `ServiceUnavailableException` or `InternalFailure`. `ErrorMessage` provides more detailed information about the error.
 #' 
-#' If there is an internal server error or a timeout, the write might have completed or it might have failed. If **FailedPutCount** is greater than 0, retry the request, resending only those records that might have failed processing. This minimizes the possible duplicate records and also reduces the total bytes sent (and corresponding charges). We recommend that you handle any duplicates at the destination.
+#' If there is an internal server error or a timeout, the write might have completed or it might have failed. If `FailedPutCount` is greater than 0, retry the request, resending only those records that might have failed processing. This minimizes the possible duplicate records and also reduces the total bytes sent (and corresponding charges). We recommend that you handle any duplicates at the destination.
 #' 
-#' If PutRecordBatch throws **ServiceUnavailableException**, back off and retry. If the exception persists, it is possible that the throughput limits have been exceeded for the delivery stream.
+#' If PutRecordBatch throws `ServiceUnavailableException`, back off and retry. If the exception persists, it is possible that the throughput limits have been exceeded for the delivery stream.
 #' 
 #' Data records sent to Kinesis Data Firehose are stored for 24 hours from the time they are added to a delivery stream as it attempts to send the records to the destination. If the destination is unreachable for more than 24 hours, the data is no longer available.
+#' 
+#' Don\'t concatenate two or more base64 strings to form the data fields of your records. Instead, concatenate the raw data, then perform base64 encoding.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -616,9 +638,75 @@ put_record_batch <- function (DeliveryStreamName, Records)
     return(response)
 }
 
+#' Enables server-side encryption (SSE) for the delivery stream
+#'
+#' Enables server-side encryption (SSE) for the delivery stream.
+#' 
+#' This operation is asynchronous. It returns immediately. When you invoke it, Kinesis Data Firehose first sets the status of the stream to `ENABLING`, and then to `ENABLED`. You can continue to read and write data to your stream while its status is `ENABLING`, but the data is not encrypted. It can take up to 5 seconds after the encryption status changes to `ENABLED` before all records written to the delivery stream are encrypted. To find out whether a record or a batch of records was encrypted, check the response elements PutRecordOutput\$Encrypted and PutRecordBatchOutput\$Encrypted, respectively.
+#' 
+#' To check the encryption state of a delivery stream, use DescribeDeliveryStream.
+#' 
+#' You can only enable SSE for a delivery stream that uses `DirectPut` as its source.
+#' 
+#' The `StartDeliveryStreamEncryption` and `StopDeliveryStreamEncryption` operations have a combined limit of 25 calls per delivery stream per 24 hours. For example, you reach the limit if you call `StartDeliveryStreamEncryption` 13 times and `StopDeliveryStreamEncryption` 12 times for the same delivery stream in a 24-hour period.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' start_delivery_stream_encryption(
+#'   DeliveryStreamName = "string"
+#' )
+#' ```
+#'
+#' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream for which you want to enable server-side encryption (SSE).
+#'
+#' @export
+start_delivery_stream_encryption <- function (DeliveryStreamName) 
+{
+    op <- new_operation(name = "StartDeliveryStreamEncryption", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- start_delivery_stream_encryption_input(DeliveryStreamName = DeliveryStreamName)
+    output <- start_delivery_stream_encryption_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Disables server-side encryption (SSE) for the delivery stream
+#'
+#' Disables server-side encryption (SSE) for the delivery stream.
+#' 
+#' This operation is asynchronous. It returns immediately. When you invoke it, Kinesis Data Firehose first sets the status of the stream to `DISABLING`, and then to `DISABLED`. You can continue to read and write data to your stream while its status is `DISABLING`. It can take up to 5 seconds after the encryption status changes to `DISABLED` before all records written to the delivery stream are no longer subject to encryption. To find out whether a record or a batch of records was encrypted, check the response elements PutRecordOutput\$Encrypted and PutRecordBatchOutput\$Encrypted, respectively.
+#' 
+#' To check the encryption state of a delivery stream, use DescribeDeliveryStream.
+#' 
+#' The `StartDeliveryStreamEncryption` and `StopDeliveryStreamEncryption` operations have a combined limit of 25 calls per delivery stream per 24 hours. For example, you reach the limit if you call `StartDeliveryStreamEncryption` 13 times and `StopDeliveryStreamEncryption` 12 times for the same delivery stream in a 24-hour period.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' stop_delivery_stream_encryption(
+#'   DeliveryStreamName = "string"
+#' )
+#' ```
+#'
+#' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream for which you want to disable server-side encryption (SSE).
+#'
+#' @export
+stop_delivery_stream_encryption <- function (DeliveryStreamName) 
+{
+    op <- new_operation(name = "StopDeliveryStreamEncryption", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- stop_delivery_stream_encryption_input(DeliveryStreamName = DeliveryStreamName)
+    output <- stop_delivery_stream_encryption_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Adds or updates tags for the specified delivery stream
 #'
-#' Adds or updates tags for the specified delivery stream. A tag is a key-value pair (the value is optional) that you can define and assign to AWS resources. If you specify a tag that already exists, the tag value is replaced with the value that you specify in the request. Tags are metadata. For example, you can add friendly names and descriptions or other types of information that can help you distinguish the delivery stream. For more information about tags, see [Using Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html) in the *AWS Billing and Cost Management User Guide*.
+#' Adds or updates tags for the specified delivery stream. A tag is a key-value pair that you can define and assign to AWS resources. If you specify a tag that already exists, the tag value is replaced with the value that you specify in the request. Tags are metadata. For example, you can add friendly names and descriptions or other types of information that can help you distinguish the delivery stream. For more information about tags, see [Using Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html) in the *AWS Billing and Cost Management User Guide*.
 #' 
 #' Each delivery stream can have up to 50 tags.
 #' 
@@ -701,7 +789,7 @@ untag_delivery_stream <- function (DeliveryStreamName, TagKeys)
 #' 
 #' If the destination type is not the same, for example, changing the destination from Amazon S3 to Amazon Redshift, Kinesis Data Firehose does not merge any parameters. In this case, all parameters must be specified.
 #' 
-#' Kinesis Data Firehose uses **CurrentDeliveryStreamVersionId** to avoid race conditions and conflicting merges. This is a required field, and the service updates the configuration only if the existing configuration has a version ID that matches. After the update is applied successfully, the version ID is updated, and can be retrieved using DescribeDeliveryStream. Use the new version ID to set **CurrentDeliveryStreamVersionId** in the next call.
+#' Kinesis Data Firehose uses `CurrentDeliveryStreamVersionId` to avoid race conditions and conflicting merges. This is a required field, and the service updates the configuration only if the existing configuration has a version ID that matches. After the update is applied successfully, the version ID is updated, and can be retrieved using DescribeDeliveryStream. Use the new version ID to set `CurrentDeliveryStreamVersionId` in the next call.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -713,6 +801,7 @@ untag_delivery_stream <- function (DeliveryStreamName, TagKeys)
 #'     RoleARN = "string",
 #'     BucketARN = "string",
 #'     Prefix = "string",
+#'     ErrorOutputPrefix = "string",
 #'     BufferingHints = list(
 #'       SizeInMBs = 123,
 #'       IntervalInSeconds = 123
@@ -734,6 +823,7 @@ untag_delivery_stream <- function (DeliveryStreamName, TagKeys)
 #'     RoleARN = "string",
 #'     BucketARN = "string",
 #'     Prefix = "string",
+#'     ErrorOutputPrefix = "string",
 #'     BufferingHints = list(
 #'       SizeInMBs = 123,
 #'       IntervalInSeconds = 123
@@ -769,6 +859,7 @@ untag_delivery_stream <- function (DeliveryStreamName, TagKeys)
 #'       RoleARN = "string",
 #'       BucketARN = "string",
 #'       Prefix = "string",
+#'       ErrorOutputPrefix = "string",
 #'       BufferingHints = list(
 #'         SizeInMBs = 123,
 #'         IntervalInSeconds = 123
@@ -857,6 +948,7 @@ untag_delivery_stream <- function (DeliveryStreamName, TagKeys)
 #'       RoleARN = "string",
 #'       BucketARN = "string",
 #'       Prefix = "string",
+#'       ErrorOutputPrefix = "string",
 #'       BufferingHints = list(
 #'         SizeInMBs = 123,
 #'         IntervalInSeconds = 123
@@ -893,6 +985,7 @@ untag_delivery_stream <- function (DeliveryStreamName, TagKeys)
 #'       RoleARN = "string",
 #'       BucketARN = "string",
 #'       Prefix = "string",
+#'       ErrorOutputPrefix = "string",
 #'       BufferingHints = list(
 #'         SizeInMBs = 123,
 #'         IntervalInSeconds = 123
@@ -933,6 +1026,7 @@ untag_delivery_stream <- function (DeliveryStreamName, TagKeys)
 #'       RoleARN = "string",
 #'       BucketARN = "string",
 #'       Prefix = "string",
+#'       ErrorOutputPrefix = "string",
 #'       BufferingHints = list(
 #'         SizeInMBs = 123,
 #'         IntervalInSeconds = 123
@@ -983,6 +1077,7 @@ untag_delivery_stream <- function (DeliveryStreamName, TagKeys)
 #'       RoleARN = "string",
 #'       BucketARN = "string",
 #'       Prefix = "string",
+#'       ErrorOutputPrefix = "string",
 #'       BufferingHints = list(
 #'         SizeInMBs = 123,
 #'         IntervalInSeconds = 123
@@ -1024,7 +1119,7 @@ untag_delivery_stream <- function (DeliveryStreamName, TagKeys)
 #' ```
 #'
 #' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream.
-#' @param CurrentDeliveryStreamVersionId &#91;required&#93; Obtain this value from the **VersionId** result of DeliveryStreamDescription. This value is required, and helps the service perform conditional operations. For example, if there is an interleaving update and this value is null, then the update destination fails. After the update is successful, the `VersionId` value is updated. The service then performs a merge of the old configuration with the new configuration.
+#' @param CurrentDeliveryStreamVersionId &#91;required&#93; Obtain this value from the `VersionId` result of DeliveryStreamDescription. This value is required, and helps the service perform conditional operations. For example, if there is an interleaving update and this value is null, then the update destination fails. After the update is successful, the `VersionId` value is updated. The service then performs a merge of the old configuration with the new configuration.
 #' @param DestinationId &#91;required&#93; The ID of the destination.
 #' @param S3DestinationUpdate &#91;Deprecated&#93; Describes an update for a destination in Amazon S3.
 #' @param ExtendedS3DestinationUpdate Describes an update for a destination in Amazon S3.

@@ -4,11 +4,7 @@
 \alias{create_robot}
 \title{Creates a robot}
 \usage{
-create_robot(
-  name = "string",
-  architecture = "X86_64"|"ARM64"|"ARMHF",
-  greengrassGroupId = "string"
-)
+create_robot(name, architecture, greengrassGroupId, tags = NULL)
 }
 \arguments{
 \item{name}{[required] The name for the robot.}
@@ -16,10 +12,21 @@ create_robot(
 \item{architecture}{[required] The target architecture of the robot.}
 
 \item{greengrassGroupId}{[required] The Greengrass group id.}
+
+\item{tags}{A map that contains tag keys and tag values that are attached to the robot.}
 }
 \description{
 Creates a robot.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_robot(
+  name = "string",
+  architecture = "X86_64"|"ARM64"|"ARMHF",
+  greengrassGroupId = "string",
+  tags = list(
+    "string"
+  )
+)
 }
+}
+

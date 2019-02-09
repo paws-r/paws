@@ -19,7 +19,7 @@ modify_network_interface_attribute(Attachment = NULL,
 
 \item{NetworkInterfaceId}{[required] The ID of the network interface.}
 
-\item{SourceDestCheck}{Indicates whether source/destination checking is enabled. A value of \code{true} means checking is enabled, and \code{false} means checking is disabled. This value must be \code{false} for a NAT instance to perform NAT. For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html}{NAT Instances} in the \emph{Amazon Virtual Private Cloud User Guide}.}
+\item{SourceDestCheck}{Indicates whether source/destination checking is enabled. A value of \code{true} means checking is enabled, and \code{false} means checking is disabled. This value must be \code{false} for a NAT instance to perform NAT. For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html}{NAT Instances} in the \emph{Amazon Virtual Private Cloud User Guide}.}
 }
 \description{
 Modifies the specified network interface attribute. You can specify only one attribute at a time.

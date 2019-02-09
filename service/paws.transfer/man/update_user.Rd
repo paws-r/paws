@@ -4,13 +4,8 @@
 \alias{update_user}
 \title{Assigns new properties to a user}
 \usage{
-update_user(
-  HomeDirectory = "string",
-  Policy = "string",
-  Role = "string",
-  ServerId = "string",
-  UserName = "string"
-)
+update_user(HomeDirectory = NULL, Policy = NULL, Role = NULL,
+  ServerId, UserName)
 }
 \arguments{
 \item{HomeDirectory}{The HomeDirectory parameter specifies the landing directory (folder) for a user when they log in to the server using their client. An example would be: \code{/home/username username }.}
@@ -29,6 +24,14 @@ Assigns new properties to a user. Parameters you pass modify any or all of the f
 \details{
 The response returns the \code{ServerId} and the \code{UserName} for the updated user.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_user(
+  HomeDirectory = "string",
+  Policy = "string",
+  Role = "string",
+  ServerId = "string",
+  UserName = "string"
+)
 }
+}
+

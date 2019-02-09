@@ -32,15 +32,15 @@ If the field name is \code{path-pattern}, you can specify a single path pattern.
 
 \item{Actions}{[required] The actions. Each rule must include exactly one of the following types of actions: \code{forward}, \code{fixed-response}, or \code{redirect}.
 
-If the action type is \code{forward}, you can specify a single target group.
+If the action type is \code{forward}, you specify a target group. The protocol of the target group must be HTTP or HTTPS for an Application Load Balancer. The protocol of the target group must be TCP or TLS for a Network Load Balancer.
 
-[HTTPS listener] If the action type is \code{authenticate-oidc}, you can use an identity provider that is OpenID Connect (OIDC) compliant to authenticate users as they access your application.
+[HTTPS listeners] If the action type is \code{authenticate-oidc}, you authenticate users through an identity provider that is OpenID Connect (OIDC) compliant.
 
-[HTTPS listener] If the action type is \code{authenticate-cognito}, you can use Amazon Cognito to authenticate users as they access your application.
+[HTTPS listeners] If the action type is \code{authenticate-cognito}, you authenticate users through the user pools supported by Amazon Cognito.
 
-[Application Load Balancer] If the action type is \code{redirect}, you can redirect HTTP and HTTPS requests.
+[Application Load Balancer] If the action type is \code{redirect}, you redirect specified client requests from one URL to another.
 
-[Application Load Balancer] If the action type is \code{fixed-response}, you can return a custom HTTP response.}
+[Application Load Balancer] If the action type is \code{fixed-response}, you drop specified client requests and return a custom HTTP response.}
 }
 \description{
 Creates a rule for the specified listener. The listener must be associated with an Application Load Balancer.

@@ -14,6 +14,9 @@ update_domain_entry(domainName, domainEntry)
 \description{
 Updates a domain recordset after it is created.
 }
+\details{
+The \code{update domain entry} operation supports tag-based access control via resource tags applied to the resource identified by domainName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+}
 \section{Accepted Parameters}{
 \preformatted{update_domain_entry(
   domainName = "string",

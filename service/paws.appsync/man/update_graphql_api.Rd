@@ -13,13 +13,13 @@ update_graphql_api(apiId, name, logConfig = NULL,
 
 \item{name}{[required] The new name for the \code{GraphqlApi} object.}
 
-\item{logConfig}{The Amazon CloudWatch logs configuration for the \code{GraphqlApi} object.}
+\item{logConfig}{The Amazon CloudWatch Logs configuration for the \code{GraphqlApi} object.}
 
 \item{authenticationType}{The new authentication type for the \code{GraphqlApi} object.}
 
-\item{userPoolConfig}{The new Amazon Cognito User Pool configuration for the \code{GraphqlApi} object.}
+\item{userPoolConfig}{The new Amazon Cognito user pool configuration for the \code{GraphqlApi} object.}
 
-\item{openIDConnectConfig}{The Open Id Connect configuration configuration for the \code{GraphqlApi} object.}
+\item{openIDConnectConfig}{The OpenID Connect configuration for the \code{GraphqlApi} object.}
 }
 \description{
 Updates a \code{GraphqlApi} object.

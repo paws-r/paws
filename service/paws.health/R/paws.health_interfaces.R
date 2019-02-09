@@ -7,7 +7,7 @@ describe_affected_entities_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(filter = structure(list(eventArns = structure(list(structure(logical(0), 
-        tags = list(type = "string", max = 1600L, pattern = "arn:aws:health:[^:]*:[^:]*:event(?:/[\\w-]+){1}((?:/[\\w-]+){2})?"))), 
+        tags = list(type = "string", max = 1600L, pattern = "arn:aws:health:[^:]*:[^:]*:event(?:/[\\w-]+){3}"))), 
         tags = list(type = "list", max = 10L, min = 1L)), entityArns = structure(list(structure(logical(0), 
         tags = list(type = "string", max = 1600L))), tags = list(type = "list", 
         max = 100L, min = 1L)), entityValues = structure(list(structure(logical(0), 
@@ -35,18 +35,20 @@ describe_affected_entities_output <- function (...)
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(entities = structure(list(structure(list(entityArn = structure(logical(0), 
         tags = list(type = "string", max = 1600L)), eventArn = structure(logical(0), 
-        tags = list(type = "string", max = 1600L, pattern = "arn:aws:health:[^:]*:[^:]*:event(?:/[\\w-]+){1}((?:/[\\w-]+){2})?")), 
+        tags = list(type = "string", max = 1600L, pattern = "arn:aws:health:[^:]*:[^:]*:event(?:/[\\w-]+){3}")), 
         entityValue = structure(logical(0), tags = list(type = "string", 
-            max = 256L)), awsAccountId = structure(logical(0), 
-            tags = list(type = "string", pattern = "[0-9]{12}")), 
-        lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), 
-        statusCode = structure(logical(0), tags = list(type = "string", 
-            enum = c("IMPAIRED", "UNIMPAIRED", "UNKNOWN"))), 
-        tags = structure(list(structure(logical(0), tags = list(type = "string", 
-            max = 255L))), tags = list(type = "map", max = 50L))), 
-        tags = list(type = "structure"))), tags = list(type = "list")), 
-        nextToken = structure(logical(0), tags = list(type = "string", 
-            pattern = "[a-zA-Z0-9=/+_.-]{4,512}"))), tags = list(type = "structure"))
+            max = 256L)), entityUrl = structure(logical(0), tags = list(type = "string", 
+            pattern = "https?://.+\\.(amazon\\.com|amazonaws\\.com|amazonaws\\.cn|c2s\\.ic\\.gov|sc2s\\.sgov\\.gov|amazonaws-us-gov.com)/.*")), 
+        awsAccountId = structure(logical(0), tags = list(type = "string", 
+            pattern = "[0-9]{12}")), lastUpdatedTime = structure(logical(0), 
+            tags = list(type = "timestamp")), statusCode = structure(logical(0), 
+            tags = list(type = "string", enum = c("IMPAIRED", 
+                "UNIMPAIRED", "UNKNOWN"))), tags = structure(list(structure(logical(0), 
+            tags = list(type = "string", max = 255L))), tags = list(type = "map", 
+            max = 50L))), tags = list(type = "structure"))), 
+        tags = list(type = "list")), nextToken = structure(logical(0), 
+        tags = list(type = "string", pattern = "[a-zA-Z0-9=/+_.-]{4,512}"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -54,7 +56,7 @@ describe_entity_aggregates_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(eventArns = structure(list(structure(logical(0), 
-        tags = list(type = "string", max = 1600L, pattern = "arn:aws:health:[^:]*:[^:]*:event(?:/[\\w-]+){1}((?:/[\\w-]+){2})?"))), 
+        tags = list(type = "string", max = 1600L, pattern = "arn:aws:health:[^:]*:[^:]*:event(?:/[\\w-]+){3}"))), 
         tags = list(type = "list", max = 50L, min = 1L))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -63,7 +65,7 @@ describe_entity_aggregates_output <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(entityAggregates = structure(list(structure(list(eventArn = structure(logical(0), 
-        tags = list(type = "string", max = 1600L, pattern = "arn:aws:health:[^:]*:[^:]*:event(?:/[\\w-]+){1}((?:/[\\w-]+){2})?")), 
+        tags = list(type = "string", max = 1600L, pattern = "arn:aws:health:[^:]*:[^:]*:event(?:/[\\w-]+){3}")), 
         count = structure(logical(0), tags = list(type = "integer"))), 
         tags = list(type = "structure"))), tags = list(type = "list"))), 
         tags = list(type = "structure"))
@@ -74,7 +76,7 @@ describe_event_aggregates_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(filter = structure(list(eventArns = structure(list(structure(logical(0), 
-        tags = list(type = "string", max = 1600L, pattern = "arn:aws:health:[^:]*:[^:]*:event(?:/[\\w-]+){1}((?:/[\\w-]+){2})?"))), 
+        tags = list(type = "string", max = 1600L, pattern = "arn:aws:health:[^:]*:[^:]*:event(?:/[\\w-]+){3}"))), 
         tags = list(type = "list", max = 10L, min = 1L)), eventTypeCodes = structure(list(structure(logical(0), 
         tags = list(type = "string", max = 100L, min = 3L))), 
         tags = list(type = "list", max = 10L, min = 1L)), services = structure(list(structure(logical(0), 
@@ -130,7 +132,7 @@ describe_event_details_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(eventArns = structure(list(structure(logical(0), 
-        tags = list(type = "string", max = 1600L, pattern = "arn:aws:health:[^:]*:[^:]*:event(?:/[\\w-]+){1}((?:/[\\w-]+){2})?"))), 
+        tags = list(type = "string", max = 1600L, pattern = "arn:aws:health:[^:]*:[^:]*:event(?:/[\\w-]+){3}"))), 
         tags = list(type = "list", max = 10L, min = 1L)), locale = structure(logical(0), 
         tags = list(type = "string", max = 256L, min = 2L))), 
         tags = list(type = "structure"))
@@ -141,7 +143,7 @@ describe_event_details_output <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(successfulSet = structure(list(structure(list(event = structure(list(arn = structure(logical(0), 
-        tags = list(type = "string", max = 1600L, pattern = "arn:aws:health:[^:]*:[^:]*:event(?:/[\\w-]+){1}((?:/[\\w-]+){2})?")), 
+        tags = list(type = "string", max = 1600L, pattern = "arn:aws:health:[^:]*:[^:]*:event(?:/[\\w-]+){3}")), 
         service = structure(logical(0), tags = list(type = "string", 
             max = 30L, min = 2L)), eventTypeCode = structure(logical(0), 
             tags = list(type = "string", max = 100L, min = 3L)), 
@@ -162,7 +164,7 @@ describe_event_details_output <- function (...)
             tags = list(type = "string", max = 10240L))), tags = list(type = "map"))), 
         tags = list(type = "structure"))), tags = list(type = "list")), 
         failedSet = structure(list(structure(list(eventArn = structure(logical(0), 
-            tags = list(type = "string", max = 1600L, pattern = "arn:aws:health:[^:]*:[^:]*:event(?:/[\\w-]+){1}((?:/[\\w-]+){2})?")), 
+            tags = list(type = "string", max = 1600L, pattern = "arn:aws:health:[^:]*:[^:]*:event(?:/[\\w-]+){3}")), 
             errorName = structure(logical(0), tags = list(type = "string")), 
             errorMessage = structure(logical(0), tags = list(type = "string"))), 
             tags = list(type = "structure"))), tags = list(type = "list"))), 
@@ -208,7 +210,7 @@ describe_events_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(filter = structure(list(eventArns = structure(list(structure(logical(0), 
-        tags = list(type = "string", max = 1600L, pattern = "arn:aws:health:[^:]*:[^:]*:event(?:/[\\w-]+){1}((?:/[\\w-]+){2})?"))), 
+        tags = list(type = "string", max = 1600L, pattern = "arn:aws:health:[^:]*:[^:]*:event(?:/[\\w-]+){3}"))), 
         tags = list(type = "list", max = 10L, min = 1L)), eventTypeCodes = structure(list(structure(logical(0), 
         tags = list(type = "string", max = 100L, min = 3L))), 
         tags = list(type = "list", max = 10L, min = 1L)), services = structure(list(structure(logical(0), 
@@ -252,7 +254,7 @@ describe_events_output <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(events = structure(list(structure(list(arn = structure(logical(0), 
-        tags = list(type = "string", max = 1600L, pattern = "arn:aws:health:[^:]*:[^:]*:event(?:/[\\w-]+){1}((?:/[\\w-]+){2})?")), 
+        tags = list(type = "string", max = 1600L, pattern = "arn:aws:health:[^:]*:[^:]*:event(?:/[\\w-]+){3}")), 
         service = structure(logical(0), tags = list(type = "string", 
             max = 30L, min = 2L)), eventTypeCode = structure(logical(0), 
             tags = list(type = "string", max = 100L, min = 3L)), 

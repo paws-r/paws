@@ -6,8 +6,8 @@
 \alias{paws.rdsdataservice-package}
 \title{paws.rdsdataservice: AWS RDS DataService}
 \description{
-AWS RDS DataService provides Http Endpoint to query RDS
-databases.
+AWS RDS DataService provides Http Endpoint to query
+    RDS databases.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

@@ -72,7 +72,7 @@ While a job's \code{JobState} value is \code{New}, you can update some of the in
   AddressId = "string",
   ShippingOption = "SECOND_DAY"|"NEXT_DAY"|"EXPRESS"|"STANDARD",
   Description = "string",
-  SnowballCapacityPreference = "T50"|"T80"|"T100"|"NoPreference",
+  SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"NoPreference",
   ForwardingAddressId = "string"
 )
 }

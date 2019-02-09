@@ -4,28 +4,11 @@
 \alias{create_route}
 \title{Creates a Route for an API}
 \usage{
-create_route(
-  ApiId = "string",
-  ApiKeyRequired = TRUE|FALSE,
-  AuthorizationScopes = list(
-    "string"
-  ),
-  AuthorizationType = "NONE"|"AWS_IAM"|"CUSTOM",
-  AuthorizerId = "string",
-  ModelSelectionExpression = "string",
-  OperationName = "string",
-  RequestModels = list(
-    "string"
-  ),
-  RequestParameters = list(
-    list(
-      Required = TRUE|FALSE
-    )
-  ),
-  RouteKey = "string",
-  RouteResponseSelectionExpression = "string",
-  Target = "string"
-)
+create_route(ApiId, ApiKeyRequired = NULL, AuthorizationScopes = NULL,
+  AuthorizationType = NULL, AuthorizerId = NULL,
+  ModelSelectionExpression = NULL, OperationName = NULL,
+  RequestModels = NULL, RequestParameters = NULL, RouteKey,
+  RouteResponseSelectionExpression = NULL, Target = NULL)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -55,6 +38,29 @@ create_route(
 \description{
 Creates a Route for an API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_route(
+  ApiId = "string",
+  ApiKeyRequired = TRUE|FALSE,
+  AuthorizationScopes = list(
+    "string"
+  ),
+  AuthorizationType = "NONE"|"AWS_IAM"|"CUSTOM",
+  AuthorizerId = "string",
+  ModelSelectionExpression = "string",
+  OperationName = "string",
+  RequestModels = list(
+    "string"
+  ),
+  RequestParameters = list(
+    list(
+      Required = TRUE|FALSE
+    )
+  ),
+  RouteKey = "string",
+  RouteResponseSelectionExpression = "string",
+  Target = "string"
+)
 }
+}
+

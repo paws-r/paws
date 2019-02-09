@@ -10,7 +10,7 @@ delete_stream_processor(Name)
 \item{Name}{[required] The name of the stream processor you want to delete.}
 }
 \description{
-Deletes the stream processor identified by \code{Name}. You assign the value for \code{Name} when you create the stream processor with . You might not be able to use the same name for a stream processor for a few seconds after calling \code{DeleteStreamProcessor}.
+Deletes the stream processor identified by \code{Name}. You assign the value for \code{Name} when you create the stream processor with CreateStreamProcessor. You might not be able to use the same name for a stream processor for a few seconds after calling \code{DeleteStreamProcessor}.
 }
 \section{Accepted Parameters}{
 \preformatted{delete_stream_processor(

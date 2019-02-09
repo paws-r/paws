@@ -8,7 +8,7 @@ describe_cluster_snapshots(ClusterIdentifier = NULL,
   SnapshotIdentifier = NULL, SnapshotType = NULL, StartTime = NULL,
   EndTime = NULL, MaxRecords = NULL, Marker = NULL,
   OwnerAccount = NULL, TagKeys = NULL, TagValues = NULL,
-  ClusterExists = NULL)
+  ClusterExists = NULL, SortingEntities = NULL)
 }
 \arguments{
 \item{ClusterIdentifier}{The identifier of the cluster for which information about snapshots is requested.}
@@ -42,6 +42,8 @@ Constraints: minimum 20, maximum 100.}
 \item{TagValues}{A tag value or values for which you want to return all matching cluster snapshots that are associated with the specified tag value or values. For example, suppose that you have snapshots that are tagged with values called \code{admin} and \code{test}. If you specify both of these tag values in the request, Amazon Redshift returns a response with the snapshots that have either or both of these tag values associated with them.}
 
 \item{ClusterExists}{A value that indicates whether to return snapshots only for an existing cluster. Table-level restore can be performed only using a snapshot of an existing cluster, that is, a cluster that has not been deleted. If \code{ClusterExists} is set to \code{true}, \code{ClusterIdentifier} is required.}
+
+\item{SortingEntities}{}
 }
 \description{
 Returns one or more snapshot objects, which contain metadata about your cluster snapshots. By default, this operation returns information about all snapshots of all clusters that are owned by you AWS customer account. No information is returned for snapshots owned by inactive AWS customer accounts.
@@ -67,7 +69,13 @@ If both tag keys and values are omitted from the request, snapshots are returned
   TagValues = list(
     "string"
   ),
-  ClusterExists = TRUE|FALSE
+  ClusterExists = TRUE|FALSE,
+  SortingEntities = list(
+    list(
+      Attribute = "SOURCE_TYPE"|"TOTAL_SIZE"|"CREATE_TIME",
+      SortOrder = "ASC"|"DESC"
+    )
+  )
 )
 }
 }

@@ -46,7 +46,7 @@ To create a CMK with no key material, call CreateKey and set the value of its \c
 \item Whether the key material expires and if so, when. If you set an expiration date, you can change it only by reimporting the same key material and specifying a new expiration date. If the key material expires, AWS KMS deletes the key material and the CMK becomes unusable. To use the CMK again, you must reimport the same key material.
 }
 
-When this operation is successful, the CMK's key state changes from \code{PendingImport} to \code{Enabled}, and you can use the CMK. After you successfully import key material into a CMK, you can reimport the same key material into that CMK, but you cannot import different key material.
+When this operation is successful, the key state of the CMK changes from \code{PendingImport} to \code{Enabled}, and you can use the CMK. After you successfully import key material into a CMK, you can reimport the same key material into that CMK, but you cannot import different key material.
 
 The result of this operation varies with the key state of the CMK. For details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key} in the \emph{AWS Key Management Service Developer Guide}.
 }

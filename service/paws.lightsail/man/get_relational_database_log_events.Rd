@@ -39,7 +39,7 @@ For example, if you wish to use an end time of October 1, 2018, at 8 PM UTC, the
 
 Default: \code{false}}
 
-\item{pageToken}{A token used for advancing to a specific page of results for your get relational database log events request.}
+\item{pageToken}{A token used for advancing to a specific page of results for your \code{get relational database log events} request.}
 }
 \description{
 Returns a list of log events for a database in Amazon Lightsail.

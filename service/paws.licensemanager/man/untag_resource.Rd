@@ -4,12 +4,7 @@
 \alias{untag_resource}
 \title{Remove tags from a resource}
 \usage{
-untag_resource(
-  ResourceArn = "string",
-  TagKeys = list(
-    "string"
-  )
-)
+untag_resource(ResourceArn, TagKeys)
 }
 \arguments{
 \item{ResourceArn}{[required] ARN of the resource.}
@@ -19,6 +14,13 @@ untag_resource(
 \description{
 Remove tags from a resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{untag_resource(
+  ResourceArn = "string",
+  TagKeys = list(
+    "string"
+  )
+)
 }
+}
+

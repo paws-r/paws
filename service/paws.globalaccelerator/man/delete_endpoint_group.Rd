@@ -4,9 +4,7 @@
 \alias{delete_endpoint_group}
 \title{Delete an endpoint group from a listener}
 \usage{
-delete_endpoint_group(
-  EndpointGroupArn = "string"
-)
+delete_endpoint_group(EndpointGroupArn)
 }
 \arguments{
 \item{EndpointGroupArn}{[required] The Amazon Resource Name (ARN) of the endpoint group to delete.}
@@ -14,6 +12,10 @@ delete_endpoint_group(
 \description{
 Delete an endpoint group from a listener.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_endpoint_group(
+  EndpointGroupArn = "string"
+)
 }
+}
+

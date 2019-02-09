@@ -7,15 +7,17 @@ create_budget_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(AccountId = structure(logical(0), 
-        tags = list(type = "string", max = 12L, min = 12L)), 
+        tags = list(type = "string", max = 12L, min = 12L, pattern = "\\d{12}")), 
         Budget = structure(list(BudgetName = structure(logical(0), 
-            tags = list(type = "string", max = 100L, pattern = "[^:\\\\]+")), 
-            BudgetLimit = structure(list(Amount = structure(logical(0), 
-                tags = list(type = "string", pattern = "([0-9]*\\.)?[0-9]+")), 
-                Unit = structure(logical(0), tags = list(type = "string", 
-                  min = 1L))), tags = list(type = "structure")), 
+            tags = list(type = "string", max = 100L, min = 1L, 
+                pattern = "[^:\\\\]+")), BudgetLimit = structure(list(Amount = structure(logical(0), 
+            tags = list(type = "string", max = 2147483647L, min = 1L, 
+                pattern = "([0-9]*\\.)?[0-9]+")), Unit = structure(logical(0), 
+            tags = list(type = "string", max = 2147483647L, min = 1L, 
+                pattern = ".*"))), tags = list(type = "structure")), 
             CostFilters = structure(list(structure(list(structure(logical(0), 
-                tags = list(type = "string"))), tags = list(type = "list"))), 
+                tags = list(type = "string", max = 2147483647L, 
+                  min = 0L, pattern = ".*"))), tags = list(type = "list"))), 
                 tags = list(type = "map")), CostTypes = structure(list(IncludeTax = structure(logical(0), 
                 tags = list(type = "boolean", box = TRUE)), IncludeSubscription = structure(logical(0), 
                 tags = list(type = "boolean", box = TRUE)), UseBlended = structure(logical(0), 
@@ -34,29 +36,34 @@ create_budget_input <- function (...)
                 tags = list(type = "timestamp")), End = structure(logical(0), 
                 tags = list(type = "timestamp"))), tags = list(type = "structure")), 
             CalculatedSpend = structure(list(ActualSpend = structure(list(Amount = structure(logical(0), 
-                tags = list(type = "string", pattern = "([0-9]*\\.)?[0-9]+")), 
+                tags = list(type = "string", max = 2147483647L, 
+                  min = 1L, pattern = "([0-9]*\\.)?[0-9]+")), 
                 Unit = structure(logical(0), tags = list(type = "string", 
-                  min = 1L))), tags = list(type = "structure")), 
-                ForecastedSpend = structure(list(Amount = structure(logical(0), 
-                  tags = list(type = "string", pattern = "([0-9]*\\.)?[0-9]+")), 
-                  Unit = structure(logical(0), tags = list(type = "string", 
-                    min = 1L))), tags = list(type = "structure"))), 
-                tags = list(type = "structure")), BudgetType = structure(logical(0), 
-                tags = list(type = "string", enum = c("USAGE", 
-                  "COST", "RI_UTILIZATION", "RI_COVERAGE")))), 
+                  max = 2147483647L, min = 1L, pattern = ".*"))), 
+                tags = list(type = "structure")), ForecastedSpend = structure(list(Amount = structure(logical(0), 
+                tags = list(type = "string", max = 2147483647L, 
+                  min = 1L, pattern = "([0-9]*\\.)?[0-9]+")), 
+                Unit = structure(logical(0), tags = list(type = "string", 
+                  max = 2147483647L, min = 1L, pattern = ".*"))), 
+                tags = list(type = "structure"))), tags = list(type = "structure")), 
+            BudgetType = structure(logical(0), tags = list(type = "string", 
+                enum = c("USAGE", "COST", "RI_UTILIZATION", "RI_COVERAGE"))), 
+            LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), 
             tags = list(type = "structure")), NotificationsWithSubscribers = structure(list(structure(list(Notification = structure(list(NotificationType = structure(logical(0), 
             tags = list(type = "string", enum = c("ACTUAL", "FORECASTED"))), 
             ComparisonOperator = structure(logical(0), tags = list(type = "string", 
                 enum = c("GREATER_THAN", "LESS_THAN", "EQUAL_TO"))), 
             Threshold = structure(logical(0), tags = list(type = "double", 
-                max = 1000000000L, min = 0.1)), ThresholdType = structure(logical(0), 
+                max = 1000000000L, min = 0L)), ThresholdType = structure(logical(0), 
                 tags = list(type = "string", enum = c("PERCENTAGE", 
-                  "ABSOLUTE_VALUE")))), tags = list(type = "structure")), 
-            Subscribers = structure(list(structure(list(SubscriptionType = structure(logical(0), 
-                tags = list(type = "string", enum = c("SNS", 
-                  "EMAIL"))), Address = structure(logical(0), 
-                tags = list(type = "string", min = 1L))), tags = list(type = "structure"))), 
-                tags = list(type = "list", max = 11L, min = 1L))), 
+                  "ABSOLUTE_VALUE"))), NotificationState = structure(logical(0), 
+                tags = list(type = "string", enum = c("OK", "ALARM")))), 
+            tags = list(type = "structure")), Subscribers = structure(list(structure(list(SubscriptionType = structure(logical(0), 
+            tags = list(type = "string", enum = c("SNS", "EMAIL"))), 
+            Address = structure(logical(0), tags = list(type = "string", 
+                max = 2147483647L, min = 1L, pattern = ".*", 
+                sensitive = TRUE))), tags = list(type = "structure"))), 
+            tags = list(type = "list", max = 11L, min = 1L))), 
             tags = list(type = "structure"))), tags = list(type = "list", 
             max = 5L))), tags = list(type = "structure"))
     return(populate(args, shape))
@@ -73,20 +80,22 @@ create_notification_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(AccountId = structure(logical(0), 
-        tags = list(type = "string", max = 12L, min = 12L)), 
+        tags = list(type = "string", max = 12L, min = 12L, pattern = "\\d{12}")), 
         BudgetName = structure(logical(0), tags = list(type = "string", 
-            max = 100L, pattern = "[^:\\\\]+")), Notification = structure(list(NotificationType = structure(logical(0), 
+            max = 100L, min = 1L, pattern = "[^:\\\\]+")), Notification = structure(list(NotificationType = structure(logical(0), 
             tags = list(type = "string", enum = c("ACTUAL", "FORECASTED"))), 
             ComparisonOperator = structure(logical(0), tags = list(type = "string", 
                 enum = c("GREATER_THAN", "LESS_THAN", "EQUAL_TO"))), 
             Threshold = structure(logical(0), tags = list(type = "double", 
-                max = 1000000000L, min = 0.1)), ThresholdType = structure(logical(0), 
+                max = 1000000000L, min = 0L)), ThresholdType = structure(logical(0), 
                 tags = list(type = "string", enum = c("PERCENTAGE", 
-                  "ABSOLUTE_VALUE")))), tags = list(type = "structure")), 
-        Subscribers = structure(list(structure(list(SubscriptionType = structure(logical(0), 
+                  "ABSOLUTE_VALUE"))), NotificationState = structure(logical(0), 
+                tags = list(type = "string", enum = c("OK", "ALARM")))), 
+            tags = list(type = "structure")), Subscribers = structure(list(structure(list(SubscriptionType = structure(logical(0), 
             tags = list(type = "string", enum = c("SNS", "EMAIL"))), 
             Address = structure(logical(0), tags = list(type = "string", 
-                min = 1L))), tags = list(type = "structure"))), 
+                max = 2147483647L, min = 1L, pattern = ".*", 
+                sensitive = TRUE))), tags = list(type = "structure"))), 
             tags = list(type = "list", max = 11L, min = 1L))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
@@ -103,20 +112,22 @@ create_subscriber_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(AccountId = structure(logical(0), 
-        tags = list(type = "string", max = 12L, min = 12L)), 
+        tags = list(type = "string", max = 12L, min = 12L, pattern = "\\d{12}")), 
         BudgetName = structure(logical(0), tags = list(type = "string", 
-            max = 100L, pattern = "[^:\\\\]+")), Notification = structure(list(NotificationType = structure(logical(0), 
+            max = 100L, min = 1L, pattern = "[^:\\\\]+")), Notification = structure(list(NotificationType = structure(logical(0), 
             tags = list(type = "string", enum = c("ACTUAL", "FORECASTED"))), 
             ComparisonOperator = structure(logical(0), tags = list(type = "string", 
                 enum = c("GREATER_THAN", "LESS_THAN", "EQUAL_TO"))), 
             Threshold = structure(logical(0), tags = list(type = "double", 
-                max = 1000000000L, min = 0.1)), ThresholdType = structure(logical(0), 
+                max = 1000000000L, min = 0L)), ThresholdType = structure(logical(0), 
                 tags = list(type = "string", enum = c("PERCENTAGE", 
-                  "ABSOLUTE_VALUE")))), tags = list(type = "structure")), 
-        Subscriber = structure(list(SubscriptionType = structure(logical(0), 
+                  "ABSOLUTE_VALUE"))), NotificationState = structure(logical(0), 
+                tags = list(type = "string", enum = c("OK", "ALARM")))), 
+            tags = list(type = "structure")), Subscriber = structure(list(SubscriptionType = structure(logical(0), 
             tags = list(type = "string", enum = c("SNS", "EMAIL"))), 
             Address = structure(logical(0), tags = list(type = "string", 
-                min = 1L))), tags = list(type = "structure"))), 
+                max = 2147483647L, min = 1L, pattern = ".*", 
+                sensitive = TRUE))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -132,9 +143,9 @@ delete_budget_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(AccountId = structure(logical(0), 
-        tags = list(type = "string", max = 12L, min = 12L)), 
+        tags = list(type = "string", max = 12L, min = 12L, pattern = "\\d{12}")), 
         BudgetName = structure(logical(0), tags = list(type = "string", 
-            max = 100L, pattern = "[^:\\\\]+"))), tags = list(type = "structure"))
+            max = 100L, min = 1L, pattern = "[^:\\\\]+"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -149,17 +160,18 @@ delete_notification_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(AccountId = structure(logical(0), 
-        tags = list(type = "string", max = 12L, min = 12L)), 
+        tags = list(type = "string", max = 12L, min = 12L, pattern = "\\d{12}")), 
         BudgetName = structure(logical(0), tags = list(type = "string", 
-            max = 100L, pattern = "[^:\\\\]+")), Notification = structure(list(NotificationType = structure(logical(0), 
+            max = 100L, min = 1L, pattern = "[^:\\\\]+")), Notification = structure(list(NotificationType = structure(logical(0), 
             tags = list(type = "string", enum = c("ACTUAL", "FORECASTED"))), 
             ComparisonOperator = structure(logical(0), tags = list(type = "string", 
                 enum = c("GREATER_THAN", "LESS_THAN", "EQUAL_TO"))), 
             Threshold = structure(logical(0), tags = list(type = "double", 
-                max = 1000000000L, min = 0.1)), ThresholdType = structure(logical(0), 
+                max = 1000000000L, min = 0L)), ThresholdType = structure(logical(0), 
                 tags = list(type = "string", enum = c("PERCENTAGE", 
-                  "ABSOLUTE_VALUE")))), tags = list(type = "structure"))), 
-        tags = list(type = "structure"))
+                  "ABSOLUTE_VALUE"))), NotificationState = structure(logical(0), 
+                tags = list(type = "string", enum = c("OK", "ALARM")))), 
+            tags = list(type = "structure"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -174,20 +186,22 @@ delete_subscriber_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(AccountId = structure(logical(0), 
-        tags = list(type = "string", max = 12L, min = 12L)), 
+        tags = list(type = "string", max = 12L, min = 12L, pattern = "\\d{12}")), 
         BudgetName = structure(logical(0), tags = list(type = "string", 
-            max = 100L, pattern = "[^:\\\\]+")), Notification = structure(list(NotificationType = structure(logical(0), 
+            max = 100L, min = 1L, pattern = "[^:\\\\]+")), Notification = structure(list(NotificationType = structure(logical(0), 
             tags = list(type = "string", enum = c("ACTUAL", "FORECASTED"))), 
             ComparisonOperator = structure(logical(0), tags = list(type = "string", 
                 enum = c("GREATER_THAN", "LESS_THAN", "EQUAL_TO"))), 
             Threshold = structure(logical(0), tags = list(type = "double", 
-                max = 1000000000L, min = 0.1)), ThresholdType = structure(logical(0), 
+                max = 1000000000L, min = 0L)), ThresholdType = structure(logical(0), 
                 tags = list(type = "string", enum = c("PERCENTAGE", 
-                  "ABSOLUTE_VALUE")))), tags = list(type = "structure")), 
-        Subscriber = structure(list(SubscriptionType = structure(logical(0), 
+                  "ABSOLUTE_VALUE"))), NotificationState = structure(logical(0), 
+                tags = list(type = "string", enum = c("OK", "ALARM")))), 
+            tags = list(type = "structure")), Subscriber = structure(list(SubscriptionType = structure(logical(0), 
             tags = list(type = "string", enum = c("SNS", "EMAIL"))), 
             Address = structure(logical(0), tags = list(type = "string", 
-                min = 1L))), tags = list(type = "structure"))), 
+                max = 2147483647L, min = 1L, pattern = ".*", 
+                sensitive = TRUE))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -203,9 +217,9 @@ describe_budget_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(AccountId = structure(logical(0), 
-        tags = list(type = "string", max = 12L, min = 12L)), 
+        tags = list(type = "string", max = 12L, min = 12L, pattern = "\\d{12}")), 
         BudgetName = structure(logical(0), tags = list(type = "string", 
-            max = 100L, pattern = "[^:\\\\]+"))), tags = list(type = "structure"))
+            max = 100L, min = 1L, pattern = "[^:\\\\]+"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -213,13 +227,15 @@ describe_budget_output <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(Budget = structure(list(BudgetName = structure(logical(0), 
-        tags = list(type = "string", max = 100L, pattern = "[^:\\\\]+")), 
+        tags = list(type = "string", max = 100L, min = 1L, pattern = "[^:\\\\]+")), 
         BudgetLimit = structure(list(Amount = structure(logical(0), 
-            tags = list(type = "string", pattern = "([0-9]*\\.)?[0-9]+")), 
-            Unit = structure(logical(0), tags = list(type = "string", 
-                min = 1L))), tags = list(type = "structure")), 
+            tags = list(type = "string", max = 2147483647L, min = 1L, 
+                pattern = "([0-9]*\\.)?[0-9]+")), Unit = structure(logical(0), 
+            tags = list(type = "string", max = 2147483647L, min = 1L, 
+                pattern = ".*"))), tags = list(type = "structure")), 
         CostFilters = structure(list(structure(list(structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "list"))), 
+            tags = list(type = "string", max = 2147483647L, min = 0L, 
+                pattern = ".*"))), tags = list(type = "list"))), 
             tags = list(type = "map")), CostTypes = structure(list(IncludeTax = structure(logical(0), 
             tags = list(type = "boolean", box = TRUE)), IncludeSubscription = structure(logical(0), 
             tags = list(type = "boolean", box = TRUE)), UseBlended = structure(logical(0), 
@@ -238,17 +254,80 @@ describe_budget_output <- function (...)
             tags = list(type = "timestamp")), End = structure(logical(0), 
             tags = list(type = "timestamp"))), tags = list(type = "structure")), 
         CalculatedSpend = structure(list(ActualSpend = structure(list(Amount = structure(logical(0), 
-            tags = list(type = "string", pattern = "([0-9]*\\.)?[0-9]+")), 
-            Unit = structure(logical(0), tags = list(type = "string", 
-                min = 1L))), tags = list(type = "structure")), 
+            tags = list(type = "string", max = 2147483647L, min = 1L, 
+                pattern = "([0-9]*\\.)?[0-9]+")), Unit = structure(logical(0), 
+            tags = list(type = "string", max = 2147483647L, min = 1L, 
+                pattern = ".*"))), tags = list(type = "structure")), 
             ForecastedSpend = structure(list(Amount = structure(logical(0), 
-                tags = list(type = "string", pattern = "([0-9]*\\.)?[0-9]+")), 
+                tags = list(type = "string", max = 2147483647L, 
+                  min = 1L, pattern = "([0-9]*\\.)?[0-9]+")), 
                 Unit = structure(logical(0), tags = list(type = "string", 
-                  min = 1L))), tags = list(type = "structure"))), 
-            tags = list(type = "structure")), BudgetType = structure(logical(0), 
-            tags = list(type = "string", enum = c("USAGE", "COST", 
-                "RI_UTILIZATION", "RI_COVERAGE")))), tags = list(type = "structure"))), 
-        tags = list(type = "structure"))
+                  max = 2147483647L, min = 1L, pattern = ".*"))), 
+                tags = list(type = "structure"))), tags = list(type = "structure")), 
+        BudgetType = structure(logical(0), tags = list(type = "string", 
+            enum = c("USAGE", "COST", "RI_UTILIZATION", "RI_COVERAGE"))), 
+        LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), 
+        tags = list(type = "structure"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_budget_performance_history_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(AccountId = structure(logical(0), 
+        tags = list(type = "string", max = 12L, min = 12L, pattern = "\\d{12}")), 
+        BudgetName = structure(logical(0), tags = list(type = "string", 
+            max = 100L, min = 1L, pattern = "[^:\\\\]+")), TimePeriod = structure(list(Start = structure(logical(0), 
+            tags = list(type = "timestamp")), End = structure(logical(0), 
+            tags = list(type = "timestamp"))), tags = list(type = "structure")), 
+        MaxResults = structure(logical(0), tags = list(type = "integer", 
+            box = TRUE, max = 100L, min = 1L)), NextToken = structure(logical(0), 
+            tags = list(type = "string", max = 2147483647L, min = 0L, 
+                pattern = ".*"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_budget_performance_history_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(BudgetPerformanceHistory = structure(list(BudgetName = structure(logical(0), 
+        tags = list(type = "string", max = 100L, min = 1L, pattern = "[^:\\\\]+")), 
+        BudgetType = structure(logical(0), tags = list(type = "string", 
+            enum = c("USAGE", "COST", "RI_UTILIZATION", "RI_COVERAGE"))), 
+        CostFilters = structure(list(structure(list(structure(logical(0), 
+            tags = list(type = "string", max = 2147483647L, min = 0L, 
+                pattern = ".*"))), tags = list(type = "list"))), 
+            tags = list(type = "map")), CostTypes = structure(list(IncludeTax = structure(logical(0), 
+            tags = list(type = "boolean", box = TRUE)), IncludeSubscription = structure(logical(0), 
+            tags = list(type = "boolean", box = TRUE)), UseBlended = structure(logical(0), 
+            tags = list(type = "boolean", box = TRUE)), IncludeRefund = structure(logical(0), 
+            tags = list(type = "boolean", box = TRUE)), IncludeCredit = structure(logical(0), 
+            tags = list(type = "boolean", box = TRUE)), IncludeUpfront = structure(logical(0), 
+            tags = list(type = "boolean", box = TRUE)), IncludeRecurring = structure(logical(0), 
+            tags = list(type = "boolean", box = TRUE)), IncludeOtherSubscription = structure(logical(0), 
+            tags = list(type = "boolean", box = TRUE)), IncludeSupport = structure(logical(0), 
+            tags = list(type = "boolean", box = TRUE)), IncludeDiscount = structure(logical(0), 
+            tags = list(type = "boolean", box = TRUE)), UseAmortized = structure(logical(0), 
+            tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), 
+        TimeUnit = structure(logical(0), tags = list(type = "string", 
+            enum = c("DAILY", "MONTHLY", "QUARTERLY", "ANNUALLY"))), 
+        BudgetedAndActualAmountsList = structure(list(structure(list(BudgetedAmount = structure(list(Amount = structure(logical(0), 
+            tags = list(type = "string", max = 2147483647L, min = 1L, 
+                pattern = "([0-9]*\\.)?[0-9]+")), Unit = structure(logical(0), 
+            tags = list(type = "string", max = 2147483647L, min = 1L, 
+                pattern = ".*"))), tags = list(type = "structure")), 
+            ActualAmount = structure(list(Amount = structure(logical(0), 
+                tags = list(type = "string", max = 2147483647L, 
+                  min = 1L, pattern = "([0-9]*\\.)?[0-9]+")), 
+                Unit = structure(logical(0), tags = list(type = "string", 
+                  max = 2147483647L, min = 1L, pattern = ".*"))), 
+                tags = list(type = "structure")), TimePeriod = structure(list(Start = structure(logical(0), 
+                tags = list(type = "timestamp")), End = structure(logical(0), 
+                tags = list(type = "timestamp"))), tags = list(type = "structure"))), 
+            tags = list(type = "structure"))), tags = list(type = "list"))), 
+        tags = list(type = "structure")), NextToken = structure(logical(0), 
+        tags = list(type = "string", max = 2147483647L, min = 0L, 
+            pattern = ".*"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -256,10 +335,11 @@ describe_budgets_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(AccountId = structure(logical(0), 
-        tags = list(type = "string", max = 12L, min = 12L)), 
+        tags = list(type = "string", max = 12L, min = 12L, pattern = "\\d{12}")), 
         MaxResults = structure(logical(0), tags = list(type = "integer", 
             box = TRUE, max = 100L, min = 1L)), NextToken = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))
+            tags = list(type = "string", max = 2147483647L, min = 0L, 
+                pattern = ".*"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -267,13 +347,15 @@ describe_budgets_output <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(Budgets = structure(list(structure(list(BudgetName = structure(logical(0), 
-        tags = list(type = "string", max = 100L, pattern = "[^:\\\\]+")), 
+        tags = list(type = "string", max = 100L, min = 1L, pattern = "[^:\\\\]+")), 
         BudgetLimit = structure(list(Amount = structure(logical(0), 
-            tags = list(type = "string", pattern = "([0-9]*\\.)?[0-9]+")), 
-            Unit = structure(logical(0), tags = list(type = "string", 
-                min = 1L))), tags = list(type = "structure")), 
+            tags = list(type = "string", max = 2147483647L, min = 1L, 
+                pattern = "([0-9]*\\.)?[0-9]+")), Unit = structure(logical(0), 
+            tags = list(type = "string", max = 2147483647L, min = 1L, 
+                pattern = ".*"))), tags = list(type = "structure")), 
         CostFilters = structure(list(structure(list(structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "list"))), 
+            tags = list(type = "string", max = 2147483647L, min = 0L, 
+                pattern = ".*"))), tags = list(type = "list"))), 
             tags = list(type = "map")), CostTypes = structure(list(IncludeTax = structure(logical(0), 
             tags = list(type = "boolean", box = TRUE)), IncludeSubscription = structure(logical(0), 
             tags = list(type = "boolean", box = TRUE)), UseBlended = structure(logical(0), 
@@ -292,18 +374,22 @@ describe_budgets_output <- function (...)
             tags = list(type = "timestamp")), End = structure(logical(0), 
             tags = list(type = "timestamp"))), tags = list(type = "structure")), 
         CalculatedSpend = structure(list(ActualSpend = structure(list(Amount = structure(logical(0), 
-            tags = list(type = "string", pattern = "([0-9]*\\.)?[0-9]+")), 
-            Unit = structure(logical(0), tags = list(type = "string", 
-                min = 1L))), tags = list(type = "structure")), 
+            tags = list(type = "string", max = 2147483647L, min = 1L, 
+                pattern = "([0-9]*\\.)?[0-9]+")), Unit = structure(logical(0), 
+            tags = list(type = "string", max = 2147483647L, min = 1L, 
+                pattern = ".*"))), tags = list(type = "structure")), 
             ForecastedSpend = structure(list(Amount = structure(logical(0), 
-                tags = list(type = "string", pattern = "([0-9]*\\.)?[0-9]+")), 
+                tags = list(type = "string", max = 2147483647L, 
+                  min = 1L, pattern = "([0-9]*\\.)?[0-9]+")), 
                 Unit = structure(logical(0), tags = list(type = "string", 
-                  min = 1L))), tags = list(type = "structure"))), 
-            tags = list(type = "structure")), BudgetType = structure(logical(0), 
-            tags = list(type = "string", enum = c("USAGE", "COST", 
-                "RI_UTILIZATION", "RI_COVERAGE")))), tags = list(type = "structure"))), 
-        tags = list(type = "list")), NextToken = structure(logical(0), 
-        tags = list(type = "string"))), tags = list(type = "structure"))
+                  max = 2147483647L, min = 1L, pattern = ".*"))), 
+                tags = list(type = "structure"))), tags = list(type = "structure")), 
+        BudgetType = structure(logical(0), tags = list(type = "string", 
+            enum = c("USAGE", "COST", "RI_UTILIZATION", "RI_COVERAGE"))), 
+        LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), 
+        tags = list(type = "structure"))), tags = list(type = "list")), 
+        NextToken = structure(logical(0), tags = list(type = "string", 
+            max = 2147483647L, min = 0L, pattern = ".*"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -311,12 +397,13 @@ describe_notifications_for_budget_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(AccountId = structure(logical(0), 
-        tags = list(type = "string", max = 12L, min = 12L)), 
+        tags = list(type = "string", max = 12L, min = 12L, pattern = "\\d{12}")), 
         BudgetName = structure(logical(0), tags = list(type = "string", 
-            max = 100L, pattern = "[^:\\\\]+")), MaxResults = structure(logical(0), 
+            max = 100L, min = 1L, pattern = "[^:\\\\]+")), MaxResults = structure(logical(0), 
             tags = list(type = "integer", box = TRUE, max = 100L, 
                 min = 1L)), NextToken = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))
+            tags = list(type = "string", max = 2147483647L, min = 0L, 
+                pattern = ".*"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -328,11 +415,13 @@ describe_notifications_for_budget_output <- function (...)
         ComparisonOperator = structure(logical(0), tags = list(type = "string", 
             enum = c("GREATER_THAN", "LESS_THAN", "EQUAL_TO"))), 
         Threshold = structure(logical(0), tags = list(type = "double", 
-            max = 1000000000L, min = 0.1)), ThresholdType = structure(logical(0), 
+            max = 1000000000L, min = 0L)), ThresholdType = structure(logical(0), 
             tags = list(type = "string", enum = c("PERCENTAGE", 
-                "ABSOLUTE_VALUE")))), tags = list(type = "structure"))), 
-        tags = list(type = "list")), NextToken = structure(logical(0), 
-        tags = list(type = "string"))), tags = list(type = "structure"))
+                "ABSOLUTE_VALUE"))), NotificationState = structure(logical(0), 
+            tags = list(type = "string", enum = c("OK", "ALARM")))), 
+        tags = list(type = "structure"))), tags = list(type = "list")), 
+        NextToken = structure(logical(0), tags = list(type = "string", 
+            max = 2147483647L, min = 0L, pattern = ".*"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -340,19 +429,22 @@ describe_subscribers_for_notification_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(AccountId = structure(logical(0), 
-        tags = list(type = "string", max = 12L, min = 12L)), 
+        tags = list(type = "string", max = 12L, min = 12L, pattern = "\\d{12}")), 
         BudgetName = structure(logical(0), tags = list(type = "string", 
-            max = 100L, pattern = "[^:\\\\]+")), Notification = structure(list(NotificationType = structure(logical(0), 
+            max = 100L, min = 1L, pattern = "[^:\\\\]+")), Notification = structure(list(NotificationType = structure(logical(0), 
             tags = list(type = "string", enum = c("ACTUAL", "FORECASTED"))), 
             ComparisonOperator = structure(logical(0), tags = list(type = "string", 
                 enum = c("GREATER_THAN", "LESS_THAN", "EQUAL_TO"))), 
             Threshold = structure(logical(0), tags = list(type = "double", 
-                max = 1000000000L, min = 0.1)), ThresholdType = structure(logical(0), 
+                max = 1000000000L, min = 0L)), ThresholdType = structure(logical(0), 
                 tags = list(type = "string", enum = c("PERCENTAGE", 
-                  "ABSOLUTE_VALUE")))), tags = list(type = "structure")), 
-        MaxResults = structure(logical(0), tags = list(type = "integer", 
-            box = TRUE, max = 100L, min = 1L)), NextToken = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))
+                  "ABSOLUTE_VALUE"))), NotificationState = structure(logical(0), 
+                tags = list(type = "string", enum = c("OK", "ALARM")))), 
+            tags = list(type = "structure")), MaxResults = structure(logical(0), 
+            tags = list(type = "integer", box = TRUE, max = 100L, 
+                min = 1L)), NextToken = structure(logical(0), 
+            tags = list(type = "string", max = 2147483647L, min = 0L, 
+                pattern = ".*"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -362,9 +454,11 @@ describe_subscribers_for_notification_output <- function (...)
     shape <- structure(list(Subscribers = structure(list(structure(list(SubscriptionType = structure(logical(0), 
         tags = list(type = "string", enum = c("SNS", "EMAIL"))), 
         Address = structure(logical(0), tags = list(type = "string", 
-            min = 1L))), tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 2147483647L, min = 1L, pattern = ".*", sensitive = TRUE))), 
+        tags = list(type = "structure"))), tags = list(type = "list", 
         max = 11L, min = 1L)), NextToken = structure(logical(0), 
-        tags = list(type = "string"))), tags = list(type = "structure"))
+        tags = list(type = "string", max = 2147483647L, min = 0L, 
+            pattern = ".*"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -372,15 +466,17 @@ update_budget_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(AccountId = structure(logical(0), 
-        tags = list(type = "string", max = 12L, min = 12L)), 
+        tags = list(type = "string", max = 12L, min = 12L, pattern = "\\d{12}")), 
         NewBudget = structure(list(BudgetName = structure(logical(0), 
-            tags = list(type = "string", max = 100L, pattern = "[^:\\\\]+")), 
-            BudgetLimit = structure(list(Amount = structure(logical(0), 
-                tags = list(type = "string", pattern = "([0-9]*\\.)?[0-9]+")), 
-                Unit = structure(logical(0), tags = list(type = "string", 
-                  min = 1L))), tags = list(type = "structure")), 
+            tags = list(type = "string", max = 100L, min = 1L, 
+                pattern = "[^:\\\\]+")), BudgetLimit = structure(list(Amount = structure(logical(0), 
+            tags = list(type = "string", max = 2147483647L, min = 1L, 
+                pattern = "([0-9]*\\.)?[0-9]+")), Unit = structure(logical(0), 
+            tags = list(type = "string", max = 2147483647L, min = 1L, 
+                pattern = ".*"))), tags = list(type = "structure")), 
             CostFilters = structure(list(structure(list(structure(logical(0), 
-                tags = list(type = "string"))), tags = list(type = "list"))), 
+                tags = list(type = "string", max = 2147483647L, 
+                  min = 0L, pattern = ".*"))), tags = list(type = "list"))), 
                 tags = list(type = "map")), CostTypes = structure(list(IncludeTax = structure(logical(0), 
                 tags = list(type = "boolean", box = TRUE)), IncludeSubscription = structure(logical(0), 
                 tags = list(type = "boolean", box = TRUE)), UseBlended = structure(logical(0), 
@@ -399,16 +495,19 @@ update_budget_input <- function (...)
                 tags = list(type = "timestamp")), End = structure(logical(0), 
                 tags = list(type = "timestamp"))), tags = list(type = "structure")), 
             CalculatedSpend = structure(list(ActualSpend = structure(list(Amount = structure(logical(0), 
-                tags = list(type = "string", pattern = "([0-9]*\\.)?[0-9]+")), 
+                tags = list(type = "string", max = 2147483647L, 
+                  min = 1L, pattern = "([0-9]*\\.)?[0-9]+")), 
                 Unit = structure(logical(0), tags = list(type = "string", 
-                  min = 1L))), tags = list(type = "structure")), 
-                ForecastedSpend = structure(list(Amount = structure(logical(0), 
-                  tags = list(type = "string", pattern = "([0-9]*\\.)?[0-9]+")), 
-                  Unit = structure(logical(0), tags = list(type = "string", 
-                    min = 1L))), tags = list(type = "structure"))), 
-                tags = list(type = "structure")), BudgetType = structure(logical(0), 
-                tags = list(type = "string", enum = c("USAGE", 
-                  "COST", "RI_UTILIZATION", "RI_COVERAGE")))), 
+                  max = 2147483647L, min = 1L, pattern = ".*"))), 
+                tags = list(type = "structure")), ForecastedSpend = structure(list(Amount = structure(logical(0), 
+                tags = list(type = "string", max = 2147483647L, 
+                  min = 1L, pattern = "([0-9]*\\.)?[0-9]+")), 
+                Unit = structure(logical(0), tags = list(type = "string", 
+                  max = 2147483647L, min = 1L, pattern = ".*"))), 
+                tags = list(type = "structure"))), tags = list(type = "structure")), 
+            BudgetType = structure(logical(0), tags = list(type = "string", 
+                enum = c("USAGE", "COST", "RI_UTILIZATION", "RI_COVERAGE"))), 
+            LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), 
             tags = list(type = "structure"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -424,25 +523,27 @@ update_notification_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(AccountId = structure(logical(0), 
-        tags = list(type = "string", max = 12L, min = 12L)), 
+        tags = list(type = "string", max = 12L, min = 12L, pattern = "\\d{12}")), 
         BudgetName = structure(logical(0), tags = list(type = "string", 
-            max = 100L, pattern = "[^:\\\\]+")), OldNotification = structure(list(NotificationType = structure(logical(0), 
+            max = 100L, min = 1L, pattern = "[^:\\\\]+")), OldNotification = structure(list(NotificationType = structure(logical(0), 
             tags = list(type = "string", enum = c("ACTUAL", "FORECASTED"))), 
             ComparisonOperator = structure(logical(0), tags = list(type = "string", 
                 enum = c("GREATER_THAN", "LESS_THAN", "EQUAL_TO"))), 
             Threshold = structure(logical(0), tags = list(type = "double", 
-                max = 1000000000L, min = 0.1)), ThresholdType = structure(logical(0), 
+                max = 1000000000L, min = 0L)), ThresholdType = structure(logical(0), 
                 tags = list(type = "string", enum = c("PERCENTAGE", 
-                  "ABSOLUTE_VALUE")))), tags = list(type = "structure")), 
-        NewNotification = structure(list(NotificationType = structure(logical(0), 
+                  "ABSOLUTE_VALUE"))), NotificationState = structure(logical(0), 
+                tags = list(type = "string", enum = c("OK", "ALARM")))), 
+            tags = list(type = "structure")), NewNotification = structure(list(NotificationType = structure(logical(0), 
             tags = list(type = "string", enum = c("ACTUAL", "FORECASTED"))), 
             ComparisonOperator = structure(logical(0), tags = list(type = "string", 
                 enum = c("GREATER_THAN", "LESS_THAN", "EQUAL_TO"))), 
             Threshold = structure(logical(0), tags = list(type = "double", 
-                max = 1000000000L, min = 0.1)), ThresholdType = structure(logical(0), 
+                max = 1000000000L, min = 0L)), ThresholdType = structure(logical(0), 
                 tags = list(type = "string", enum = c("PERCENTAGE", 
-                  "ABSOLUTE_VALUE")))), tags = list(type = "structure"))), 
-        tags = list(type = "structure"))
+                  "ABSOLUTE_VALUE"))), NotificationState = structure(logical(0), 
+                tags = list(type = "string", enum = c("OK", "ALARM")))), 
+            tags = list(type = "structure"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -457,24 +558,27 @@ update_subscriber_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(AccountId = structure(logical(0), 
-        tags = list(type = "string", max = 12L, min = 12L)), 
+        tags = list(type = "string", max = 12L, min = 12L, pattern = "\\d{12}")), 
         BudgetName = structure(logical(0), tags = list(type = "string", 
-            max = 100L, pattern = "[^:\\\\]+")), Notification = structure(list(NotificationType = structure(logical(0), 
+            max = 100L, min = 1L, pattern = "[^:\\\\]+")), Notification = structure(list(NotificationType = structure(logical(0), 
             tags = list(type = "string", enum = c("ACTUAL", "FORECASTED"))), 
             ComparisonOperator = structure(logical(0), tags = list(type = "string", 
                 enum = c("GREATER_THAN", "LESS_THAN", "EQUAL_TO"))), 
             Threshold = structure(logical(0), tags = list(type = "double", 
-                max = 1000000000L, min = 0.1)), ThresholdType = structure(logical(0), 
+                max = 1000000000L, min = 0L)), ThresholdType = structure(logical(0), 
                 tags = list(type = "string", enum = c("PERCENTAGE", 
-                  "ABSOLUTE_VALUE")))), tags = list(type = "structure")), 
-        OldSubscriber = structure(list(SubscriptionType = structure(logical(0), 
+                  "ABSOLUTE_VALUE"))), NotificationState = structure(logical(0), 
+                tags = list(type = "string", enum = c("OK", "ALARM")))), 
+            tags = list(type = "structure")), OldSubscriber = structure(list(SubscriptionType = structure(logical(0), 
             tags = list(type = "string", enum = c("SNS", "EMAIL"))), 
             Address = structure(logical(0), tags = list(type = "string", 
-                min = 1L))), tags = list(type = "structure")), 
+                max = 2147483647L, min = 1L, pattern = ".*", 
+                sensitive = TRUE))), tags = list(type = "structure")), 
         NewSubscriber = structure(list(SubscriptionType = structure(logical(0), 
             tags = list(type = "string", enum = c("SNS", "EMAIL"))), 
             Address = structure(logical(0), tags = list(type = "string", 
-                min = 1L))), tags = list(type = "structure"))), 
+                max = 2147483647L, min = 1L, pattern = ".*", 
+                sensitive = TRUE))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }

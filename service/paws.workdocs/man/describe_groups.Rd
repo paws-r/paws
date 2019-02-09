@@ -2,7 +2,7 @@
 % Please edit documentation in R/paws.workdocs_operations.R
 \name{describe_groups}
 \alias{describe_groups}
-\title{Describes the groups specified by query}
+\title{Describes the groups specified by the query}
 \usage{
 describe_groups(AuthenticationToken = NULL, SearchQuery,
   OrganizationId = NULL, Marker = NULL, Limit = NULL)
@@ -19,7 +19,7 @@ describe_groups(AuthenticationToken = NULL, SearchQuery,
 \item{Limit}{The maximum number of items to return with this call.}
 }
 \description{
-Describes the groups specified by query.
+Describes the groups specified by the query. Groups are defined by the underlying Active Directory.
 }
 \section{Accepted Parameters}{
 \preformatted{describe_groups(

@@ -20,7 +20,6 @@ update_game_session_queue(Name, TimeoutInSeconds = NULL,
 Updates settings for a game session queue, which determines how new game session requests in the queue are processed. To update settings, specify the queue name to be updated and provide the new settings. When updating destinations, provide a complete list of destinations.
 }
 \details{
-Queue-related operations include:
 \itemize{
 \item CreateGameSessionQueue
 \item DescribeGameSessionQueues

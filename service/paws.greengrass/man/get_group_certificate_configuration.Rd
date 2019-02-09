@@ -7,7 +7,7 @@
 get_group_certificate_configuration(GroupId)
 }
 \arguments{
-\item{GroupId}{[required] The ID of the AWS Greengrass group.}
+\item{GroupId}{[required] The ID of the Greengrass group.}
 }
 \description{
 Retrieves the current configuration for the CA used by the group.

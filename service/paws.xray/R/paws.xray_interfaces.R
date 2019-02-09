@@ -29,6 +29,27 @@ batch_get_traces_output <- function (...)
     return(populate(args, shape))
 }
 
+create_group_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(GroupName = structure(logical(0), 
+        tags = list(type = "string", max = 32L, min = 1L)), FilterExpression = structure(logical(0), 
+        tags = list(type = "string", max = 2000L, min = 1L))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+create_group_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Group = structure(list(GroupName = structure(logical(0), 
+        tags = list(type = "string")), GroupARN = structure(logical(0), 
+        tags = list(type = "string")), FilterExpression = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 create_sampling_rule_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -74,6 +95,23 @@ create_sampling_rule_output <- function (...)
         CreatedAt = structure(logical(0), tags = list(type = "timestamp")), 
         ModifiedAt = structure(logical(0), tags = list(type = "timestamp"))), 
         tags = list(type = "structure"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_group_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(GroupName = structure(logical(0), 
+        tags = list(type = "string", max = 32L, min = 1L)), GroupARN = structure(logical(0), 
+        tags = list(type = "string", max = 400L, min = 1L))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_group_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -127,6 +165,48 @@ get_encryption_config_output <- function (...)
         Type = structure(logical(0), tags = list(type = "string", 
             enum = c("NONE", "KMS")))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+get_group_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(GroupName = structure(logical(0), 
+        tags = list(type = "string", max = 32L, min = 1L)), GroupARN = structure(logical(0), 
+        tags = list(type = "string", max = 400L, min = 1L))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+get_group_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Group = structure(list(GroupName = structure(logical(0), 
+        tags = list(type = "string")), GroupARN = structure(logical(0), 
+        tags = list(type = "string")), FilterExpression = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+get_groups_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(NextToken = structure(logical(0), 
+        tags = list(type = "string", max = 100L, min = 1L))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+get_groups_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Groups = structure(list(structure(list(GroupName = structure(logical(0), 
+        tags = list(type = "string")), GroupARN = structure(logical(0), 
+        tags = list(type = "string")), FilterExpression = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))), 
+        tags = list(type = "list")), NextToken = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -225,8 +305,11 @@ get_service_graph_input <- function (...)
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(StartTime = structure(logical(0), 
         tags = list(type = "timestamp")), EndTime = structure(logical(0), 
-        tags = list(type = "timestamp")), NextToken = structure(logical(0), 
-        tags = list(type = "string"))), tags = list(type = "structure"))
+        tags = list(type = "timestamp")), GroupName = structure(logical(0), 
+        tags = list(type = "string", max = 32L, min = 1L)), GroupARN = structure(logical(0), 
+        tags = list(type = "string", max = 400L, min = 1L)), 
+        NextToken = structure(logical(0), tags = list(type = "string"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -284,7 +367,8 @@ get_service_graph_output <- function (...)
             tags = list(type = "double")), Count = structure(logical(0), 
             tags = list(type = "integer"))), tags = list(type = "structure"))), 
             tags = list(type = "list"))), tags = list(type = "structure"))), 
-        tags = list(type = "list")), NextToken = structure(logical(0), 
+        tags = list(type = "list")), ContainsOldGroupVersions = structure(logical(0), 
+        tags = list(type = "boolean")), NextToken = structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -409,12 +493,64 @@ get_trace_summaries_output <- function (...)
             tags = list(type = "string"))), tags = list(type = "list")), 
             AccountId = structure(logical(0), tags = list(type = "string")), 
             Type = structure(logical(0), tags = list(type = "string"))), 
-            tags = list(type = "structure"))), tags = list(type = "list"))), 
-        tags = list(type = "structure"))), tags = list(type = "list")), 
-        ApproximateTime = structure(logical(0), tags = list(type = "timestamp")), 
-        TracesProcessedCount = structure(logical(0), tags = list(type = "long")), 
-        NextToken = structure(logical(0), tags = list(type = "string"))), 
-        tags = list(type = "structure"))
+            tags = list(type = "structure"))), tags = list(type = "list")), 
+        ResourceARNs = structure(list(structure(list(ARN = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "list")), InstanceIds = structure(list(structure(list(Id = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "list")), AvailabilityZones = structure(list(structure(list(Name = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "list")), EntryPoint = structure(list(Name = structure(logical(0), 
+            tags = list(type = "string")), Names = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list")), 
+            AccountId = structure(logical(0), tags = list(type = "string")), 
+            Type = structure(logical(0), tags = list(type = "string"))), 
+            tags = list(type = "structure")), FaultRootCauses = structure(list(structure(list(Services = structure(list(structure(list(Name = structure(logical(0), 
+            tags = list(type = "string")), Names = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list")), 
+            Type = structure(logical(0), tags = list(type = "string")), 
+            AccountId = structure(logical(0), tags = list(type = "string")), 
+            EntityPath = structure(list(structure(list(Name = structure(logical(0), 
+                tags = list(type = "string")), Exceptions = structure(list(structure(list(Name = structure(logical(0), 
+                tags = list(type = "string")), Message = structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "structure"))), 
+                tags = list(type = "list")), Remote = structure(logical(0), 
+                tags = list(type = "boolean"))), tags = list(type = "structure"))), 
+                tags = list(type = "list")), Inferred = structure(logical(0), 
+                tags = list(type = "boolean"))), tags = list(type = "structure"))), 
+            tags = list(type = "list"))), tags = list(type = "structure"))), 
+            tags = list(type = "list")), ErrorRootCauses = structure(list(structure(list(Services = structure(list(structure(list(Name = structure(logical(0), 
+            tags = list(type = "string")), Names = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list")), 
+            Type = structure(logical(0), tags = list(type = "string")), 
+            AccountId = structure(logical(0), tags = list(type = "string")), 
+            EntityPath = structure(list(structure(list(Name = structure(logical(0), 
+                tags = list(type = "string")), Exceptions = structure(list(structure(list(Name = structure(logical(0), 
+                tags = list(type = "string")), Message = structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "structure"))), 
+                tags = list(type = "list")), Remote = structure(logical(0), 
+                tags = list(type = "boolean"))), tags = list(type = "structure"))), 
+                tags = list(type = "list")), Inferred = structure(logical(0), 
+                tags = list(type = "boolean"))), tags = list(type = "structure"))), 
+            tags = list(type = "list"))), tags = list(type = "structure"))), 
+            tags = list(type = "list")), ResponseTimeRootCauses = structure(list(structure(list(Services = structure(list(structure(list(Name = structure(logical(0), 
+            tags = list(type = "string")), Names = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list")), 
+            Type = structure(logical(0), tags = list(type = "string")), 
+            AccountId = structure(logical(0), tags = list(type = "string")), 
+            EntityPath = structure(list(structure(list(Name = structure(logical(0), 
+                tags = list(type = "string")), Coverage = structure(logical(0), 
+                tags = list(type = "double")), Remote = structure(logical(0), 
+                tags = list(type = "boolean"))), tags = list(type = "structure"))), 
+                tags = list(type = "list")), Inferred = structure(logical(0), 
+                tags = list(type = "boolean"))), tags = list(type = "structure"))), 
+            tags = list(type = "list"))), tags = list(type = "structure"))), 
+            tags = list(type = "list")), Revision = structure(logical(0), 
+            tags = list(type = "integer"))), tags = list(type = "structure"))), 
+        tags = list(type = "list")), ApproximateTime = structure(logical(0), 
+        tags = list(type = "timestamp")), TracesProcessedCount = structure(logical(0), 
+        tags = list(type = "long")), NextToken = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -487,6 +623,28 @@ put_trace_segments_output <- function (...)
         tags = list(type = "string")), Message = structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "structure"))), 
         tags = list(type = "list"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+update_group_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(GroupName = structure(logical(0), 
+        tags = list(type = "string", max = 32L, min = 1L)), GroupARN = structure(logical(0), 
+        tags = list(type = "string", max = 400L, min = 1L)), 
+        FilterExpression = structure(logical(0), tags = list(type = "string", 
+            max = 2000L, min = 1L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+update_group_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Group = structure(list(GroupName = structure(logical(0), 
+        tags = list(type = "string")), GroupARN = structure(logical(0), 
+        tags = list(type = "string")), FilterExpression = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 

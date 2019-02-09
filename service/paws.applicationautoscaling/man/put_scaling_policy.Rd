@@ -24,7 +24,7 @@ put_scaling_policy(PolicyName, ServiceNamespace, ResourceId,
 \item DynamoDB global secondary index - The resource type is \code{index} and the unique identifier is the resource ID. Example: \code{table/my-table/index/my-table-index}.
 \item Aurora DB cluster - The resource type is \code{cluster} and the unique identifier is the cluster name. Example: \code{cluster:my-db-cluster}.
 \item Amazon SageMaker endpoint variants - The resource type is \code{variant} and the unique identifier is the resource ID. Example: \code{endpoint/my-end-point/variant/KMeansClustering}.
-\item Custom resources are not supported with a resource type. This parameter must specify the \code{OutputValue} from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider.
+\item Custom resources are not supported with a resource type. This parameter must specify the \code{OutputValue} from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider. More information is available in our \href{https://github.com/aws/aws-auto-scaling-custom-resource}{GitHub repository}.
 }}
 
 \item{ScalableDimension}{[required] The scalable dimension. This string consists of the service namespace, resource type, and scaling property.
@@ -37,14 +37,14 @@ put_scaling_policy(PolicyName, ServiceNamespace, ResourceId,
 \item \code{dynamodb:table:WriteCapacityUnits} - The provisioned write capacity for a DynamoDB table.
 \item \code{dynamodb:index:ReadCapacityUnits} - The provisioned read capacity for a DynamoDB global secondary index.
 \item \code{dynamodb:index:WriteCapacityUnits} - The provisioned write capacity for a DynamoDB global secondary index.
-\item \code{rds:cluster:ReadReplicaCount} - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+\item \code{rds:cluster:ReadReplicaCount} - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition and Aurora PostgreSQL-compatible edition.
 \item \code{sagemaker:variant:DesiredInstanceCount} - The number of EC2 instances for an Amazon SageMaker model endpoint variant.
 \item \code{custom-resource:ResourceType:Property} - The scalable dimension for a custom resource provided by your own application or service.
 }}
 
-\item{PolicyType}{The policy type. This parameter is required if you are creating a policy.
+\item{PolicyType}{The policy type. This parameter is required if you are creating a scaling policy.
 
-For DynamoDB, only \code{TargetTrackingScaling} is supported. For Amazon ECS, Spot Fleet, and Amazon RDS, both \code{StepScaling} and \code{TargetTrackingScaling} are supported. For any other service, only \code{StepScaling} is supported.}
+For information on which services do not support \code{StepScaling} or \code{TargetTrackingScaling}, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html}{Step Scaling Policies for Application Auto Scaling} and \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html}{Target Tracking Scaling Policies for Application Auto Scaling} in the \emph{Application Auto Scaling User Guide}.}
 
 \item{StepScalingPolicyConfiguration}{A step scaling policy.
 
@@ -58,7 +58,7 @@ This parameter is required if you are creating a policy and the policy type is \
 Creates or updates a policy for an Application Auto Scaling scalable target.
 }
 \details{
-Each scalable target is identified by a service namespace, resource ID, and scalable dimension. A scaling policy applies to the scalable target identified by those three attributes. You cannot create a scaling policy until you register the scalable target using RegisterScalableTarget.
+Each scalable target is identified by a service namespace, resource ID, and scalable dimension. A scaling policy applies to the scalable target identified by those three attributes. You cannot create a scaling policy until you have registered the resource as a scalable target using RegisterScalableTarget.
 
 To update a policy, specify its policy name and the parameters that you want to change. Any parameters that you don't specify are not changed by this update request.
 

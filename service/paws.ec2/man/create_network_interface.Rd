@@ -26,7 +26,7 @@ create_network_interface(Description = NULL, DryRun = NULL,
 
 \item{SecondaryPrivateIpAddressCount}{The number of secondary private IPv4 addresses to assign to a network interface. When you specify a number of secondary IPv4 addresses, Amazon EC2 selects these IP addresses within the subnet's IPv4 CIDR range. You can't specify this option and specify more than one private IP address using \code{privateIpAddresses}.
 
-The number of IP addresses you can assign to a network interface varies by instance type. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI}{IP Addresses Per ENI Per Instance Type} in the \emph{Amazon Virtual Private Cloud User Guide}.}
+The number of IP addresses you can assign to a network interface varies by instance type. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI}{IP Addresses Per ENI Per Instance Type} in the \emph{Amazon Virtual Private Cloud User Guide}.}
 
 \item{SubnetId}{[required] The ID of the subnet to associate with the network interface.}
 }
@@ -34,7 +34,7 @@ The number of IP addresses you can assign to a network interface varies by insta
 Creates a network interface in the specified subnet.
 }
 \details{
-For more information about network interfaces, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html}{Elastic Network Interfaces} in the \emph{Amazon Virtual Private Cloud User Guide}.
+For more information about network interfaces, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html}{Elastic Network Interfaces} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{create_network_interface(

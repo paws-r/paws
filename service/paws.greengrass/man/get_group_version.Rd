@@ -7,7 +7,7 @@
 get_group_version(GroupId, GroupVersionId)
 }
 \arguments{
-\item{GroupId}{[required] The ID of the AWS Greengrass group.}
+\item{GroupId}{[required] The ID of the Greengrass group.}
 
 \item{GroupVersionId}{[required] The ID of the group version.}
 }

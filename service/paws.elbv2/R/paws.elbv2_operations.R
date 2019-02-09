@@ -3,13 +3,13 @@
 #' @importFrom paws.common new_operation new_request send_request
 NULL
 
-#' Adds the specified certificate to the specified secure listener
+#' Adds the specified certificate to the specified HTTPS listener
 #'
-#' Adds the specified certificate to the specified secure listener.
+#' Adds the specified certificate to the specified HTTPS listener.
 #' 
 #' If the certificate was already added, the call is successful but the certificate is not added again.
 #' 
-#' To list the certificates for your listener, use DescribeListenerCertificates. To remove certificates from your listener, use RemoveListenerCertificates.
+#' To list the certificates for your listener, use DescribeListenerCertificates. To remove certificates from your listener, use RemoveListenerCertificates. To specify the default SSL server certificate, use ModifyListener.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -25,7 +25,7 @@ NULL
 #' ```
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener.
-#' @param Certificates &#91;required&#93; The certificate to add. You can specify one certificate per call.
+#' @param Certificates &#91;required&#93; The certificate to add. You can specify one certificate per call. Set `CertificateArn` to the certificate ARN but do not set `IsDefault`.
 #'
 #' @export
 add_listener_certificates <- function (ListenerArn, Certificates) 
@@ -112,7 +112,7 @@ add_tags <- function (ResourceArns, Tags)
 #' ```
 #' create_listener(
 #'   LoadBalancerArn = "string",
-#'   Protocol = "HTTP"|"HTTPS"|"TCP",
+#'   Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS",
 #'   Port = 123,
 #'   SslPolicy = "string",
 #'   Certificates = list(
@@ -172,21 +172,23 @@ add_tags <- function (ResourceArns, Tags)
 #' ```
 #'
 #' @param LoadBalancerArn &#91;required&#93; The Amazon Resource Name (ARN) of the load balancer.
-#' @param Protocol &#91;required&#93; The protocol for connections from clients to the load balancer. For Application Load Balancers, the supported protocols are HTTP and HTTPS. For Network Load Balancers, the supported protocol is TCP.
+#' @param Protocol &#91;required&#93; The protocol for connections from clients to the load balancer. For Application Load Balancers, the supported protocols are HTTP and HTTPS. For Network Load Balancers, the supported protocols are TCP and TLS.
 #' @param Port &#91;required&#93; The port on which the load balancer is listening.
-#' @param SslPolicy &#91;HTTPS listeners&#93; The security policy that defines which ciphers and protocols are supported. The default is the current predefined security policy.
-#' @param Certificates &#91;HTTPS listeners&#93; The default SSL server certificate. You must provide exactly one default certificate. To create a certificate list, use AddListenerCertificates.
+#' @param SslPolicy &#91;HTTPS and TLS listeners&#93; The security policy that defines which ciphers and protocols are supported. The default is the current predefined security policy.
+#' @param Certificates &#91;HTTPS and TLS listeners&#93; The default SSL server certificate. You must provide exactly one certificate. Set `CertificateArn` to the certificate ARN but do not set `IsDefault`.
+#' 
+#' To create a certificate list, use AddListenerCertificates.
 #' @param DefaultActions &#91;required&#93; The actions for the default rule. The rule must include one forward action or one or more fixed-response actions.
 #' 
-#' If the action type is `forward`, you can specify a single target group. The protocol of the target group must be HTTP or HTTPS for an Application Load Balancer or TCP for a Network Load Balancer.
+#' If the action type is `forward`, you specify a target group. The protocol of the target group must be HTTP or HTTPS for an Application Load Balancer. The protocol of the target group must be TCP or TLS for a Network Load Balancer.
 #' 
-#' &#91;HTTPS listener&#93; If the action type is `authenticate-oidc`, you can use an identity provider that is OpenID Connect (OIDC) compliant to authenticate users as they access your application.
+#' &#91;HTTPS listeners&#93; If the action type is `authenticate-oidc`, you authenticate users through an identity provider that is OpenID Connect (OIDC) compliant.
 #' 
-#' &#91;HTTPS listener&#93; If the action type is `authenticate-cognito`, you can use Amazon Cognito to authenticate users as they access your application.
+#' &#91;HTTPS listeners&#93; If the action type is `authenticate-cognito`, you authenticate users through the user pools supported by Amazon Cognito.
 #' 
-#' &#91;Application Load Balancer&#93; If the action type is `redirect`, you can redirect HTTP and HTTPS requests.
+#' &#91;Application Load Balancer&#93; If the action type is `redirect`, you redirect specified client requests from one URL to another.
 #' 
-#' &#91;Application Load Balancer&#93; If the action type is `fixed-response`, you can return a custom HTTP response.
+#' &#91;Application Load Balancer&#93; If the action type is `fixed-response`, you drop specified client requests and return a custom HTTP response.
 #'
 #' @examples
 #' # This example creates an HTTP listener for the specified load balancer
@@ -447,15 +449,15 @@ create_load_balancer <- function (Name, Subnets = NULL, SubnetMappings = NULL,
 #' @param Priority &#91;required&#93; The rule priority. A listener can\'t have multiple rules with the same priority.
 #' @param Actions &#91;required&#93; The actions. Each rule must include exactly one of the following types of actions: `forward`, `fixed-response`, or `redirect`.
 #' 
-#' If the action type is `forward`, you can specify a single target group.
+#' If the action type is `forward`, you specify a target group. The protocol of the target group must be HTTP or HTTPS for an Application Load Balancer. The protocol of the target group must be TCP or TLS for a Network Load Balancer.
 #' 
-#' &#91;HTTPS listener&#93; If the action type is `authenticate-oidc`, you can use an identity provider that is OpenID Connect (OIDC) compliant to authenticate users as they access your application.
+#' &#91;HTTPS listeners&#93; If the action type is `authenticate-oidc`, you authenticate users through an identity provider that is OpenID Connect (OIDC) compliant.
 #' 
-#' &#91;HTTPS listener&#93; If the action type is `authenticate-cognito`, you can use Amazon Cognito to authenticate users as they access your application.
+#' &#91;HTTPS listeners&#93; If the action type is `authenticate-cognito`, you authenticate users through the user pools supported by Amazon Cognito.
 #' 
-#' &#91;Application Load Balancer&#93; If the action type is `redirect`, you can redirect HTTP and HTTPS requests.
+#' &#91;Application Load Balancer&#93; If the action type is `redirect`, you redirect specified client requests from one URL to another.
 #' 
-#' &#91;Application Load Balancer&#93; If the action type is `fixed-response`, you can return a custom HTTP response.
+#' &#91;Application Load Balancer&#93; If the action type is `fixed-response`, you drop specified client requests and return a custom HTTP response.
 #'
 #' @examples
 #' # This example creates a rule that forwards requests to the specified
@@ -512,11 +514,12 @@ create_rule <- function (ListenerArn, Conditions, Priority, Actions)
 #' ```
 #' create_target_group(
 #'   Name = "string",
-#'   Protocol = "HTTP"|"HTTPS"|"TCP",
+#'   Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS",
 #'   Port = 123,
 #'   VpcId = "string",
-#'   HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP",
+#'   HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS",
 #'   HealthCheckPort = "string",
+#'   HealthCheckEnabled = TRUE|FALSE,
 #'   HealthCheckPath = "string",
 #'   HealthCheckIntervalSeconds = 123,
 #'   HealthCheckTimeoutSeconds = 123,
@@ -525,27 +528,32 @@ create_rule <- function (ListenerArn, Conditions, Priority, Actions)
 #'   Matcher = list(
 #'     HttpCode = "string"
 #'   ),
-#'   TargetType = "instance"|"ip"
+#'   TargetType = "instance"|"ip"|"lambda"
 #' )
 #' ```
 #'
 #' @param Name &#91;required&#93; The name of the target group.
 #' 
 #' This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-#' @param Protocol &#91;required&#93; The protocol to use for routing traffic to the targets. For Application Load Balancers, the supported protocols are HTTP and HTTPS. For Network Load Balancers, the supported protocol is TCP.
-#' @param Port &#91;required&#93; The port on which the targets receive traffic. This port is used unless you specify a port override when registering the target.
-#' @param VpcId &#91;required&#93; The identifier of the virtual private cloud (VPC).
-#' @param HealthCheckProtocol The protocol the load balancer uses when performing health checks on targets. The TCP protocol is supported only if the protocol of the target group is TCP. For Application Load Balancers, the default is HTTP. For Network Load Balancers, the default is TCP.
+#' @param Protocol The protocol to use for routing traffic to the targets. For Application Load Balancers, the supported protocols are HTTP and HTTPS. For Network Load Balancers, the supported protocols are TCP and TLS. If the target is a Lambda function, this parameter does not apply.
+#' @param Port The port on which the targets receive traffic. This port is used unless you specify a port override when registering the target. If the target is a Lambda function, this parameter does not apply.
+#' @param VpcId The identifier of the virtual private cloud (VPC). If the target is a Lambda function, this parameter does not apply.
+#' @param HealthCheckProtocol The protocol the load balancer uses when performing health checks on targets. For Application Load Balancers, the default is HTTP. For Network Load Balancers, the default is TCP. The TCP protocol is supported for health checks only if the protocol of the target group is TCP or TLS. The TLS protocol is not supported for health checks.
 #' @param HealthCheckPort The port the load balancer uses when performing health checks on targets. The default is `traffic-port`, which is the port on which each target receives traffic from the load balancer.
+#' @param HealthCheckEnabled Indicates whether health checks are enabled. If the target type is `instance` or `ip`, the default is `true`. If the target type is `lambda`, the default is `false`.
 #' @param HealthCheckPath &#91;HTTP/HTTPS health checks&#93; The ping path that is the destination on the targets for health checks. The default is /.
-#' @param HealthCheckIntervalSeconds The approximate amount of time, in seconds, between health checks of an individual target. For Application Load Balancers, the range is 5--300 seconds. For Network Load Balancers, the supported values are 10 or 30 seconds. The default is 30 seconds.
-#' @param HealthCheckTimeoutSeconds The amount of time, in seconds, during which no response from a target means a failed health check. For Application Load Balancers, the range is 2--60 seconds and the default is 5 seconds. For Network Load Balancers, this is 10 seconds for TCP and HTTPS health checks and 6 seconds for HTTP health checks.
+#' @param HealthCheckIntervalSeconds The approximate amount of time, in seconds, between health checks of an individual target. For Application Load Balancers, the range is 5--300 seconds. For Network Load Balancers, the supported values are 10 or 30 seconds. If the target type is `instance` or `ip`, the default is 30 seconds. If the target type is `lambda`, the default is 35 seconds.
+#' @param HealthCheckTimeoutSeconds The amount of time, in seconds, during which no response from a target means a failed health check. For Application Load Balancers, the range is 2--120 seconds and the default is 5 seconds if the target type is `instance` or `ip` and 30 seconds if the target type is `lambda`. For Network Load Balancers, this is 10 seconds for TCP and HTTPS health checks and 6 seconds for HTTP health checks.
 #' @param HealthyThresholdCount The number of consecutive health checks successes required before considering an unhealthy target healthy. For Application Load Balancers, the default is 5. For Network Load Balancers, the default is 3.
 #' @param UnhealthyThresholdCount The number of consecutive health check failures required before considering a target unhealthy. For Application Load Balancers, the default is 2. For Network Load Balancers, this value must be the same as the healthy threshold count.
 #' @param Matcher &#91;HTTP/HTTPS health checks&#93; The HTTP codes to use when checking for a successful response from a target.
-#' @param TargetType The type of target that you must specify when registering targets with this target group. The possible values are `instance` (targets are specified by instance ID) or `ip` (targets are specified by IP address). The default is `instance`. You can\'t specify targets for a target group using both instance IDs and IP addresses.
+#' @param TargetType The type of target that you must specify when registering targets with this target group. You can\'t specify targets for a target group using more than one target type.
 #' 
-#' If the target type is `ip`, specify IP addresses from the subnets of the virtual private cloud (VPC) for the target group, the RFC 1918 range (10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16), and the RFC 6598 range (100.64.0.0/10). You can\'t specify publicly routable IP addresses.
+#' -   `instance` - Targets are specified by instance ID. This is the default value.
+#' 
+#' -   `ip` - Targets are specified by IP address. You can specify IP addresses from the subnets of the virtual private cloud (VPC) for the target group, the RFC 1918 range (10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16), and the RFC 6598 range (100.64.0.0/10). You can\'t specify publicly routable IP addresses.
+#' 
+#' -   `lambda` - The target groups contains a single Lambda function.
 #'
 #' @examples
 #' # This example creates a target group that you can use to route traffic to
@@ -559,18 +567,18 @@ create_rule <- function (ListenerArn, Conditions, Priority, Actions)
 #' )}
 #'
 #' @export
-create_target_group <- function (Name, Protocol, Port, VpcId, 
-    HealthCheckProtocol = NULL, HealthCheckPort = NULL, HealthCheckPath = NULL, 
-    HealthCheckIntervalSeconds = NULL, HealthCheckTimeoutSeconds = NULL, 
-    HealthyThresholdCount = NULL, UnhealthyThresholdCount = NULL, 
-    Matcher = NULL, TargetType = NULL) 
+create_target_group <- function (Name, Protocol = NULL, Port = NULL, 
+    VpcId = NULL, HealthCheckProtocol = NULL, HealthCheckPort = NULL, 
+    HealthCheckEnabled = NULL, HealthCheckPath = NULL, HealthCheckIntervalSeconds = NULL, 
+    HealthCheckTimeoutSeconds = NULL, HealthyThresholdCount = NULL, 
+    UnhealthyThresholdCount = NULL, Matcher = NULL, TargetType = NULL) 
 {
     op <- new_operation(name = "CreateTargetGroup", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- create_target_group_input(Name = Name, Protocol = Protocol, 
         Port = Port, VpcId = VpcId, HealthCheckProtocol = HealthCheckProtocol, 
-        HealthCheckPort = HealthCheckPort, HealthCheckPath = HealthCheckPath, 
-        HealthCheckIntervalSeconds = HealthCheckIntervalSeconds, 
+        HealthCheckPort = HealthCheckPort, HealthCheckEnabled = HealthCheckEnabled, 
+        HealthCheckPath = HealthCheckPath, HealthCheckIntervalSeconds = HealthCheckIntervalSeconds, 
         HealthCheckTimeoutSeconds = HealthCheckTimeoutSeconds, 
         HealthyThresholdCount = HealthyThresholdCount, UnhealthyThresholdCount = UnhealthyThresholdCount, 
         Matcher = Matcher, TargetType = TargetType)
@@ -794,9 +802,9 @@ describe_account_limits <- function (Marker = NULL, PageSize = NULL)
     return(response)
 }
 
-#' Describes the certificates for the specified secure listener
+#' Describes the certificates for the specified HTTPS listener
 #'
-#' Describes the certificates for the specified secure listener.
+#' Describes the certificates for the specified HTTPS listener.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1220,14 +1228,14 @@ describe_target_health <- function (TargetGroupArn, Targets = NULL)
 #'
 #' Modifies the specified properties of the specified listener.
 #' 
-#' Any properties that you do not specify retain their current values. However, changing the protocol from HTTPS to HTTP removes the security policy and SSL certificate properties. If you change the protocol from HTTP to HTTPS, you must add the security policy and server certificate.
+#' Any properties that you do not specify retain their current values. However, changing the protocol from HTTPS to HTTP, or from TLS to TCP, removes the security policy and server certificate properties. If you change the protocol from HTTP to HTTPS, or from TCP to TLS, you must add the security policy and server certificate properties.
 #'
 #' @section Accepted Parameters:
 #' ```
 #' modify_listener(
 #'   ListenerArn = "string",
 #'   Port = 123,
-#'   Protocol = "HTTP"|"HTTPS"|"TCP",
+#'   Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS",
 #'   SslPolicy = "string",
 #'   Certificates = list(
 #'     list(
@@ -1287,20 +1295,22 @@ describe_target_health <- function (TargetGroupArn, Targets = NULL)
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener.
 #' @param Port The port for connections from clients to the load balancer.
-#' @param Protocol The protocol for connections from clients to the load balancer. Application Load Balancers support HTTP and HTTPS and Network Load Balancers support TCP.
-#' @param SslPolicy &#91;HTTPS listeners&#93; The security policy that defines which protocols and ciphers are supported. For more information, see [Security Policies](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies) in the *Application Load Balancers Guide*.
-#' @param Certificates &#91;HTTPS listeners&#93; The default SSL server certificate. You must provide exactly one default certificate. To create a certificate list, use AddListenerCertificates.
+#' @param Protocol The protocol for connections from clients to the load balancer. Application Load Balancers support the HTTP and HTTPS protocols. Network Load Balancers support the TCP and TLS protocols.
+#' @param SslPolicy &#91;HTTPS and TLS listeners&#93; The security policy that defines which protocols and ciphers are supported. For more information, see [Security Policies](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies) in the *Application Load Balancers Guide*.
+#' @param Certificates &#91;HTTPS and TLS listeners&#93; The default SSL server certificate. You must provide exactly one certificate. Set `CertificateArn` to the certificate ARN but do not set `IsDefault`.
+#' 
+#' To create a certificate list, use AddListenerCertificates.
 #' @param DefaultActions The actions for the default rule. The rule must include one forward action or one or more fixed-response actions.
 #' 
-#' If the action type is `forward`, you can specify a single target group. The protocol of the target group must be HTTP or HTTPS for an Application Load Balancer or TCP for a Network Load Balancer.
+#' If the action type is `forward`, you specify a target group. The protocol of the target group must be HTTP or HTTPS for an Application Load Balancer. The protocol of the target group must be TCP or TLS for a Network Load Balancer.
 #' 
-#' &#91;HTTPS listener&#93; If the action type is `authenticate-oidc`, you can use an identity provider that is OpenID Connect (OIDC) compliant to authenticate users as they access your application.
+#' &#91;HTTPS listeners&#93; If the action type is `authenticate-oidc`, you authenticate users through an identity provider that is OpenID Connect (OIDC) compliant.
 #' 
-#' &#91;HTTPS listener&#93; If the action type is `authenticate-cognito`, you can use Amazon Cognito to authenticate users as they access your application.
+#' &#91;HTTPS listeners&#93; If the action type is `authenticate-cognito`, you authenticate users through the user pools supported by Amazon Cognito.
 #' 
-#' &#91;Application Load Balancer&#93; If the action type is `redirect`, you can redirect HTTP and HTTPS requests.
+#' &#91;Application Load Balancer&#93; If the action type is `redirect`, you redirect specified client requests from one URL to another.
 #' 
-#' &#91;Application Load Balancer&#93; If the action type is `fixed-response`, you can return a custom HTTP response.
+#' &#91;Application Load Balancer&#93; If the action type is `fixed-response`, you drop specified client requests and return a custom HTTP response.
 #'
 #' @examples
 #' # This example changes the default action for the specified listener.
@@ -1521,11 +1531,15 @@ modify_load_balancer_attributes <- function (LoadBalancerArn,
 #' -   ? (matches exactly 1 character)
 #' @param Actions The actions.
 #' 
-#' If the action type is `forward`, you can specify a single target group.
+#' If the action type is `forward`, you specify a target group. The protocol of the target group must be HTTP or HTTPS for an Application Load Balancer. The protocol of the target group must be TCP or TLS for a Network Load Balancer.
 #' 
-#' If the action type is `authenticate-oidc`, you can use an identity provider that is OpenID Connect (OIDC) compliant to authenticate users as they access your application.
+#' &#91;HTTPS listeners&#93; If the action type is `authenticate-oidc`, you authenticate users through an identity provider that is OpenID Connect (OIDC) compliant.
 #' 
-#' If the action type is `authenticate-cognito`, you can use Amazon Cognito to authenticate users as they access your application.
+#' &#91;HTTPS listeners&#93; If the action type is `authenticate-cognito`, you authenticate users through the user pools supported by Amazon Cognito.
+#' 
+#' &#91;Application Load Balancer&#93; If the action type is `redirect`, you redirect specified client requests from one URL to another.
+#' 
+#' &#91;Application Load Balancer&#93; If the action type is `fixed-response`, you drop specified client requests and return a custom HTTP response.
 #'
 #' @examples
 #' # This example modifies the condition for the specified rule.
@@ -1565,9 +1579,10 @@ modify_rule <- function (RuleArn, Conditions = NULL, Actions = NULL)
 #' ```
 #' modify_target_group(
 #'   TargetGroupArn = "string",
-#'   HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP",
+#'   HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS",
 #'   HealthCheckPort = "string",
 #'   HealthCheckPath = "string",
+#'   HealthCheckEnabled = TRUE|FALSE,
 #'   HealthCheckIntervalSeconds = 123,
 #'   HealthCheckTimeoutSeconds = 123,
 #'   HealthyThresholdCount = 123,
@@ -1579,14 +1594,23 @@ modify_rule <- function (RuleArn, Conditions = NULL, Actions = NULL)
 #' ```
 #'
 #' @param TargetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the target group.
-#' @param HealthCheckProtocol The protocol the load balancer uses when performing health checks on targets. The TCP protocol is supported only if the protocol of the target group is TCP.
+#' @param HealthCheckProtocol The protocol the load balancer uses when performing health checks on targets. The TCP protocol is supported for health checks only if the protocol of the target group is TCP or TLS. The TLS protocol is not supported for health checks.
+#' 
+#' If the protocol of the target group is TCP, you can\'t modify this setting.
 #' @param HealthCheckPort The port the load balancer uses when performing health checks on targets.
 #' @param HealthCheckPath &#91;HTTP/HTTPS health checks&#93; The ping path that is the destination for the health check request.
+#' @param HealthCheckEnabled Indicates whether health checks are enabled.
 #' @param HealthCheckIntervalSeconds The approximate amount of time, in seconds, between health checks of an individual target. For Application Load Balancers, the range is 5--300 seconds. For Network Load Balancers, the supported values are 10 or 30 seconds.
+#' 
+#' If the protocol of the target group is TCP, you can\'t modify this setting.
 #' @param HealthCheckTimeoutSeconds &#91;HTTP/HTTPS health checks&#93; The amount of time, in seconds, during which no response means a failed health check.
+#' 
+#' If the protocol of the target group is TCP, you can\'t modify this setting.
 #' @param HealthyThresholdCount The number of consecutive health checks successes required before considering an unhealthy target healthy.
 #' @param UnhealthyThresholdCount The number of consecutive health check failures required before considering the target unhealthy. For Network Load Balancers, this value must be the same as the healthy threshold count.
 #' @param Matcher &#91;HTTP/HTTPS health checks&#93; The HTTP codes to use when checking for a successful response from a target.
+#' 
+#' If the protocol of the target group is TCP, you can\'t modify this setting.
 #'
 #' @examples
 #' # This example changes the configuration of the health checks used to
@@ -1599,15 +1623,17 @@ modify_rule <- function (RuleArn, Conditions = NULL, Actions = NULL)
 #'
 #' @export
 modify_target_group <- function (TargetGroupArn, HealthCheckProtocol = NULL, 
-    HealthCheckPort = NULL, HealthCheckPath = NULL, HealthCheckIntervalSeconds = NULL, 
-    HealthCheckTimeoutSeconds = NULL, HealthyThresholdCount = NULL, 
-    UnhealthyThresholdCount = NULL, Matcher = NULL) 
+    HealthCheckPort = NULL, HealthCheckPath = NULL, HealthCheckEnabled = NULL, 
+    HealthCheckIntervalSeconds = NULL, HealthCheckTimeoutSeconds = NULL, 
+    HealthyThresholdCount = NULL, UnhealthyThresholdCount = NULL, 
+    Matcher = NULL) 
 {
     op <- new_operation(name = "ModifyTargetGroup", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- modify_target_group_input(TargetGroupArn = TargetGroupArn, 
         HealthCheckProtocol = HealthCheckProtocol, HealthCheckPort = HealthCheckPort, 
-        HealthCheckPath = HealthCheckPath, HealthCheckIntervalSeconds = HealthCheckIntervalSeconds, 
+        HealthCheckPath = HealthCheckPath, HealthCheckEnabled = HealthCheckEnabled, 
+        HealthCheckIntervalSeconds = HealthCheckIntervalSeconds, 
         HealthCheckTimeoutSeconds = HealthCheckTimeoutSeconds, 
         HealthyThresholdCount = HealthyThresholdCount, UnhealthyThresholdCount = UnhealthyThresholdCount, 
         Matcher = Matcher)
@@ -1669,7 +1695,7 @@ modify_target_group_attributes <- function (TargetGroupArn, Attributes)
 #'
 #' Registers the specified targets with the specified target group.
 #' 
-#' You can register targets by instance ID or by IP address. If the target is an EC2 instance, it must be in the `running` state when you register it.
+#' If the target is an EC2 instance, it must be in the `running` state when you register it.
 #' 
 #' By default, the load balancer routes requests to registered targets using the protocol and port for the target group. Alternatively, you can override the port for a target when you register it. You can register each EC2 instance or IP address with the same target group multiple times using different ports.
 #' 
@@ -1693,6 +1719,8 @@ modify_target_group_attributes <- function (TargetGroupArn, Attributes)
 #'
 #' @param TargetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the target group.
 #' @param Targets &#91;required&#93; The targets.
+#' 
+#' To register a target by instance ID, specify the instance ID. To register a target by IP address, specify the IP address. To register a Lambda function, specify the ARN of the Lambda function.
 #'
 #' @examples
 #' # This example registers the specified instances with the specified target
@@ -1740,9 +1768,9 @@ register_targets <- function (TargetGroupArn, Targets)
     return(response)
 }
 
-#' Removes the specified certificate from the specified secure listener
+#' Removes the specified certificate from the specified HTTPS listener
 #'
-#' Removes the specified certificate from the specified secure listener.
+#' Removes the specified certificate from the specified HTTPS listener.
 #' 
 #' You can\'t remove the default certificate for a listener. To replace the default certificate, call ModifyListener.
 #' 
@@ -1762,7 +1790,7 @@ register_targets <- function (TargetGroupArn, Targets)
 #' ```
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener.
-#' @param Certificates &#91;required&#93; The certificate to remove. You can specify one certificate per call.
+#' @param Certificates &#91;required&#93; The certificate to remove. You can specify one certificate per call. Set `CertificateArn` to the certificate ARN but do not set `IsDefault`.
 #'
 #' @export
 remove_listener_certificates <- function (ListenerArn, Certificates) 

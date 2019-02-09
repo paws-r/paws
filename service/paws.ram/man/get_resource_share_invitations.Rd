@@ -4,16 +4,8 @@
 \alias{get_resource_share_invitations}
 \title{Gets the specified invitations for resource sharing}
 \usage{
-get_resource_share_invitations(
-  resourceShareInvitationArns = list(
-    "string"
-  ),
-  resourceShareArns = list(
-    "string"
-  ),
-  nextToken = "string",
-  maxResults = 123
-)
+get_resource_share_invitations(resourceShareInvitationArns = NULL,
+  resourceShareArns = NULL, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{resourceShareInvitationArns}{The Amazon Resource Names (ARN) of the invitations.}
@@ -27,6 +19,17 @@ get_resource_share_invitations(
 \description{
 Gets the specified invitations for resource sharing.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_resource_share_invitations(
+  resourceShareInvitationArns = list(
+    "string"
+  ),
+  resourceShareArns = list(
+    "string"
+  ),
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

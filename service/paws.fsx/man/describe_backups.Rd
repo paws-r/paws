@@ -2,23 +2,10 @@
 % Please edit documentation in R/paws.fsx_operations.R
 \name{describe_backups}
 \alias{describe_backups}
-\title{Returns the description of specific Amazon FSx for Windows File Server backups, if a \code{BackupIds} value is provided for that backup}
+\title{Returns the description of specific Amazon FSx for Windows File Server backups, if a BackupIds value is provided for that backup}
 \usage{
-describe_backups(
-  BackupIds = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "file-system-id"|"backup-type",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_backups(BackupIds = NULL, Filters = NULL, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{BackupIds}{(Optional) IDs of the backups you want to retrieve (String). This overrides any filters. If any IDs are not found, BackupNotFound will be thrown.}
@@ -43,8 +30,27 @@ When using this action, keep the following in mind:
 \item The order of backups returned in the response of one \code{DescribeBackups} call and the order of backups returned across the responses of a multi-call iteration is unspecified.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{describe_backups(
+  BackupIds = list(
+    "string"
+  ),
+  Filters = list(
+    list(
+      Name = "file-system-id"|"backup-type",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
+}
+}
+
 \examples{
 # This operation describes all of the Amazon FSx backups in an account.
-describe_backups()
+\donttest{describe_backups()}
 
 }

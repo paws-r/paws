@@ -23,7 +23,7 @@ Example: \code{111122223333}}
 Adds an inbound (ingress) rule to an Amazon Redshift security group. Depending on whether the application accessing your cluster is running on the Internet or an Amazon EC2 instance, you can authorize inbound access to either a Classless Interdomain Routing (CIDR)/Internet Protocol (IP) range or to an Amazon EC2 security group. You can add as many as 20 ingress rules to an Amazon Redshift security group.
 }
 \details{
-If you authorize access to an Amazon EC2 security group, specify \emph{EC2SecurityGroupName} and \emph{EC2SecurityGroupOwnerId}. The Amazon EC2 security group and Amazon Redshift cluster must be in the same AWS region.
+If you authorize access to an Amazon EC2 security group, specify \emph{EC2SecurityGroupName} and \emph{EC2SecurityGroupOwnerId}. The Amazon EC2 security group and Amazon Redshift cluster must be in the same AWS Region.
 
 If you authorize access to a CIDR/IP address range, specify \emph{CIDRIP}. For an overview of CIDR blocks, see the Wikipedia article on \href{http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing}{Classless Inter-Domain Routing}.
 

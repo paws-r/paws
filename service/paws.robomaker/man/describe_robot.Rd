@@ -4,9 +4,7 @@
 \alias{describe_robot}
 \title{Describes a robot}
 \usage{
-describe_robot(
-  robot = "string"
-)
+describe_robot(robot)
 }
 \arguments{
 \item{robot}{[required] The Amazon Resource Name (ARN) of the robot to be described.}
@@ -14,6 +12,10 @@ describe_robot(
 \description{
 Describes a robot.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_robot(
+  robot = "string"
+)
 }
+}
+

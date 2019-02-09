@@ -4,10 +4,8 @@
 \alias{put_configuration_set_sending_options}
 \title{Enable or disable email sending for messages that use a particular configuration set in a specific AWS Region}
 \usage{
-put_configuration_set_sending_options(
-  ConfigurationSetName = "string",
-  SendingEnabled = TRUE|FALSE
-)
+put_configuration_set_sending_options(ConfigurationSetName,
+  SendingEnabled = NULL)
 }
 \arguments{
 \item{ConfigurationSetName}{[required] The name of the configuration set that you want to enable or disable email sending for.}
@@ -17,6 +15,11 @@ put_configuration_set_sending_options(
 \description{
 Enable or disable email sending for messages that use a particular configuration set in a specific AWS Region.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_configuration_set_sending_options(
+  ConfigurationSetName = "string",
+  SendingEnabled = TRUE|FALSE
+)
 }
+}
+

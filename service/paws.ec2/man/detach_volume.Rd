@@ -24,7 +24,7 @@ Detaches an EBS volume from an instance. Make sure to unmount any file systems o
 \details{
 When a volume with an AWS Marketplace product code is detached from an instance, the product code is no longer associated with the instance.
 
-For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-detaching-volume.html}{Detaching an Amazon EBS Volume} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-detaching-volume.html}{Detaching an Amazon EBS Volume} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{detach_volume(

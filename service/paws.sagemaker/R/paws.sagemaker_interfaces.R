@@ -8,7 +8,7 @@ add_tags_input <- function (...)
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(ResourceArn = structure(logical(0), 
         tags = list(type = "string", max = 256L)), Tags = structure(list(structure(list(Key = structure(logical(0), 
-        tags = list(type = "string", max = 128L, min = 1L, pattern = "^((?!aws:)[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+        tags = list(type = "string", max = 128L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
         Value = structure(logical(0), tags = list(type = "string", 
             max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
         tags = list(type = "structure"))), tags = list(type = "list", 
@@ -20,11 +20,287 @@ add_tags_output <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), 
-        tags = list(type = "string", max = 128L, min = 1L, pattern = "^((?!aws:)[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+        tags = list(type = "string", max = 128L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
         Value = structure(logical(0), tags = list(type = "string", 
             max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
         tags = list(type = "structure"))), tags = list(type = "list", 
         max = 50L, min = 0L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+create_algorithm_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(AlgorithmName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*$")), 
+        AlgorithmDescription = structure(logical(0), tags = list(type = "string", 
+            max = 1024L, pattern = "[\\p{L}\\p{M}\\p{Z}\\p{S}\\p{N}\\p{P}]*")), 
+        TrainingSpecification = structure(list(TrainingImage = structure(logical(0), 
+            tags = list(type = "string", max = 255L, pattern = "[\\S]+")), 
+            TrainingImageDigest = structure(logical(0), tags = list(type = "string", 
+                max = 72L, pattern = "^[Ss][Hh][Aa]256:[0-9a-fA-F]{64}$")), 
+            SupportedHyperParameters = structure(list(structure(list(Name = structure(logical(0), 
+                tags = list(type = "string", max = 256L)), Description = structure(logical(0), 
+                tags = list(type = "string", max = 1024L, pattern = "[\\p{L}\\p{M}\\p{Z}\\p{S}\\p{N}\\p{P}]*")), 
+                Type = structure(logical(0), tags = list(type = "string", 
+                  enum = c("Integer", "Continuous", "Categorical", 
+                    "FreeText"))), Range = structure(list(IntegerParameterRangeSpecification = structure(list(MinValue = structure(logical(0), 
+                  tags = list(type = "string", max = 256L)), 
+                  MaxValue = structure(logical(0), tags = list(type = "string", 
+                    max = 256L))), tags = list(type = "structure")), 
+                  ContinuousParameterRangeSpecification = structure(list(MinValue = structure(logical(0), 
+                    tags = list(type = "string", max = 256L)), 
+                    MaxValue = structure(logical(0), tags = list(type = "string", 
+                      max = 256L))), tags = list(type = "structure")), 
+                  CategoricalParameterRangeSpecification = structure(list(Values = structure(list(structure(logical(0), 
+                    tags = list(type = "string", max = 256L))), 
+                    tags = list(type = "list", max = 20L, min = 1L))), 
+                    tags = list(type = "structure"))), tags = list(type = "structure")), 
+                IsTunable = structure(logical(0), tags = list(type = "boolean")), 
+                IsRequired = structure(logical(0), tags = list(type = "boolean")), 
+                DefaultValue = structure(logical(0), tags = list(type = "string", 
+                  max = 256L))), tags = list(type = "structure"))), 
+                tags = list(type = "list", max = 100L, min = 0L)), 
+            SupportedTrainingInstanceTypes = structure(list(structure(logical(0), 
+                tags = list(type = "string", enum = c("ml.m4.xlarge", 
+                  "ml.m4.2xlarge", "ml.m4.4xlarge", "ml.m4.10xlarge", 
+                  "ml.m4.16xlarge", "ml.m5.large", "ml.m5.xlarge", 
+                  "ml.m5.2xlarge", "ml.m5.4xlarge", "ml.m5.12xlarge", 
+                  "ml.m5.24xlarge", "ml.c4.xlarge", "ml.c4.2xlarge", 
+                  "ml.c4.4xlarge", "ml.c4.8xlarge", "ml.p2.xlarge", 
+                  "ml.p2.8xlarge", "ml.p2.16xlarge", "ml.p3.2xlarge", 
+                  "ml.p3.8xlarge", "ml.p3.16xlarge", "ml.c5.xlarge", 
+                  "ml.c5.2xlarge", "ml.c5.4xlarge", "ml.c5.9xlarge", 
+                  "ml.c5.18xlarge")))), tags = list(type = "list")), 
+            SupportsDistributedTraining = structure(logical(0), 
+                tags = list(type = "boolean")), MetricDefinitions = structure(list(structure(list(Name = structure(logical(0), 
+                tags = list(type = "string", max = 255L, min = 1L)), 
+                Regex = structure(logical(0), tags = list(type = "string", 
+                  max = 500L, min = 1L))), tags = list(type = "structure"))), 
+                tags = list(type = "list", max = 20L, min = 0L)), 
+            TrainingChannels = structure(list(structure(list(Name = structure(logical(0), 
+                tags = list(type = "string", max = 64L, min = 1L, 
+                  pattern = "[A-Za-z0-9\\.\\-_]+")), Description = structure(logical(0), 
+                tags = list(type = "string", max = 1024L, pattern = "[\\p{L}\\p{M}\\p{Z}\\p{S}\\p{N}\\p{P}]*")), 
+                IsRequired = structure(logical(0), tags = list(type = "boolean")), 
+                SupportedContentTypes = structure(list(structure(logical(0), 
+                  tags = list(type = "string", max = 256L))), 
+                  tags = list(type = "list")), SupportedCompressionTypes = structure(list(structure(logical(0), 
+                  tags = list(type = "string", enum = c("None", 
+                    "Gzip")))), tags = list(type = "list")), 
+                SupportedInputModes = structure(list(structure(logical(0), 
+                  tags = list(type = "string", enum = c("Pipe", 
+                    "File")))), tags = list(type = "list", min = 1L))), 
+                tags = list(type = "structure"))), tags = list(type = "list", 
+                max = 8L, min = 1L)), SupportedTuningJobObjectiveMetrics = structure(list(structure(list(Type = structure(logical(0), 
+                tags = list(type = "string", enum = c("Maximize", 
+                  "Minimize"))), MetricName = structure(logical(0), 
+                tags = list(type = "string", max = 255L, min = 1L))), 
+                tags = list(type = "structure"))), tags = list(type = "list"))), 
+            tags = list(type = "structure")), InferenceSpecification = structure(list(Containers = structure(list(structure(list(ContainerHostname = structure(logical(0), 
+            tags = list(type = "string", max = 63L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+            Image = structure(logical(0), tags = list(type = "string", 
+                max = 255L, pattern = "[\\S]+")), ImageDigest = structure(logical(0), 
+                tags = list(type = "string", max = 72L, pattern = "^[Ss][Hh][Aa]256:[0-9a-fA-F]{64}$")), 
+            ModelDataUrl = structure(logical(0), tags = list(type = "string", 
+                max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$")), 
+            ProductId = structure(logical(0), tags = list(type = "string"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 1L, min = 1L)), SupportedTransformInstanceTypes = structure(list(structure(logical(0), 
+            tags = list(type = "string", enum = c("ml.m4.xlarge", 
+                "ml.m4.2xlarge", "ml.m4.4xlarge", "ml.m4.10xlarge", 
+                "ml.m4.16xlarge", "ml.c4.xlarge", "ml.c4.2xlarge", 
+                "ml.c4.4xlarge", "ml.c4.8xlarge", "ml.p2.xlarge", 
+                "ml.p2.8xlarge", "ml.p2.16xlarge", "ml.p3.2xlarge", 
+                "ml.p3.8xlarge", "ml.p3.16xlarge", "ml.c5.xlarge", 
+                "ml.c5.2xlarge", "ml.c5.4xlarge", "ml.c5.9xlarge", 
+                "ml.c5.18xlarge", "ml.m5.large", "ml.m5.xlarge", 
+                "ml.m5.2xlarge", "ml.m5.4xlarge", "ml.m5.12xlarge", 
+                "ml.m5.24xlarge")))), tags = list(type = "list", 
+            min = 1L)), SupportedRealtimeInferenceInstanceTypes = structure(list(structure(logical(0), 
+            tags = list(type = "string", enum = c("ml.t2.medium", 
+                "ml.t2.large", "ml.t2.xlarge", "ml.t2.2xlarge", 
+                "ml.m4.xlarge", "ml.m4.2xlarge", "ml.m4.4xlarge", 
+                "ml.m4.10xlarge", "ml.m4.16xlarge", "ml.m5.large", 
+                "ml.m5.xlarge", "ml.m5.2xlarge", "ml.m5.4xlarge", 
+                "ml.m5.12xlarge", "ml.m5.24xlarge", "ml.c4.large", 
+                "ml.c4.xlarge", "ml.c4.2xlarge", "ml.c4.4xlarge", 
+                "ml.c4.8xlarge", "ml.p2.xlarge", "ml.p2.8xlarge", 
+                "ml.p2.16xlarge", "ml.p3.2xlarge", "ml.p3.8xlarge", 
+                "ml.p3.16xlarge", "ml.c5.large", "ml.c5.xlarge", 
+                "ml.c5.2xlarge", "ml.c5.4xlarge", "ml.c5.9xlarge", 
+                "ml.c5.18xlarge")))), tags = list(type = "list")), 
+            SupportedContentTypes = structure(list(structure(logical(0), 
+                tags = list(type = "string", max = 256L))), tags = list(type = "list")), 
+            SupportedResponseMIMETypes = structure(list(structure(logical(0), 
+                tags = list(type = "string", max = 1024L))), 
+                tags = list(type = "list"))), tags = list(type = "structure")), 
+        ValidationSpecification = structure(list(ValidationRole = structure(logical(0), 
+            tags = list(type = "string", max = 2048L, min = 20L, 
+                pattern = "^arn:aws[a-z\\-]*:iam::\\d{12}:role/?[a-zA-Z_0-9+=,.@\\-_/]+$")), 
+            ValidationProfiles = structure(list(structure(list(ProfileName = structure(logical(0), 
+                tags = list(type = "string", max = 63L, min = 1L, 
+                  pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*$")), 
+                TrainingJobDefinition = structure(list(TrainingInputMode = structure(logical(0), 
+                  tags = list(type = "string", enum = c("Pipe", 
+                    "File"))), HyperParameters = structure(list(structure(logical(0), 
+                  tags = list(type = "string", max = 256L))), 
+                  tags = list(type = "map", max = 100L, min = 0L)), 
+                  InputDataConfig = structure(list(structure(list(ChannelName = structure(logical(0), 
+                    tags = list(type = "string", max = 64L, min = 1L, 
+                      pattern = "[A-Za-z0-9\\.\\-_]+")), DataSource = structure(list(S3DataSource = structure(list(S3DataType = structure(logical(0), 
+                    tags = list(type = "string", enum = c("ManifestFile", 
+                      "S3Prefix", "AugmentedManifestFile"))), 
+                    S3Uri = structure(logical(0), tags = list(type = "string", 
+                      max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$")), 
+                    S3DataDistributionType = structure(logical(0), 
+                      tags = list(type = "string", enum = c("FullyReplicated", 
+                        "ShardedByS3Key"))), AttributeNames = structure(list(structure(logical(0), 
+                      tags = list(type = "string", max = 256L, 
+                        min = 1L))), tags = list(type = "list", 
+                      max = 16L))), tags = list(type = "structure"))), 
+                    tags = list(type = "structure")), ContentType = structure(logical(0), 
+                    tags = list(type = "string", max = 256L)), 
+                    CompressionType = structure(logical(0), tags = list(type = "string", 
+                      enum = c("None", "Gzip"))), RecordWrapperType = structure(logical(0), 
+                      tags = list(type = "string", enum = c("None", 
+                        "RecordIO"))), InputMode = structure(logical(0), 
+                      tags = list(type = "string", enum = c("Pipe", 
+                        "File"))), ShuffleConfig = structure(list(Seed = structure(logical(0), 
+                      tags = list(type = "long"))), tags = list(type = "structure"))), 
+                    tags = list(type = "structure"))), tags = list(type = "list", 
+                    max = 8L, min = 1L)), OutputDataConfig = structure(list(KmsKeyId = structure(logical(0), 
+                    tags = list(type = "string", max = 2048L)), 
+                    S3OutputPath = structure(logical(0), tags = list(type = "string", 
+                      max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$"))), 
+                    tags = list(type = "structure")), ResourceConfig = structure(list(InstanceType = structure(logical(0), 
+                    tags = list(type = "string", enum = c("ml.m4.xlarge", 
+                      "ml.m4.2xlarge", "ml.m4.4xlarge", "ml.m4.10xlarge", 
+                      "ml.m4.16xlarge", "ml.m5.large", "ml.m5.xlarge", 
+                      "ml.m5.2xlarge", "ml.m5.4xlarge", "ml.m5.12xlarge", 
+                      "ml.m5.24xlarge", "ml.c4.xlarge", "ml.c4.2xlarge", 
+                      "ml.c4.4xlarge", "ml.c4.8xlarge", "ml.p2.xlarge", 
+                      "ml.p2.8xlarge", "ml.p2.16xlarge", "ml.p3.2xlarge", 
+                      "ml.p3.8xlarge", "ml.p3.16xlarge", "ml.c5.xlarge", 
+                      "ml.c5.2xlarge", "ml.c5.4xlarge", "ml.c5.9xlarge", 
+                      "ml.c5.18xlarge"))), InstanceCount = structure(logical(0), 
+                    tags = list(type = "integer", min = 1L)), 
+                    VolumeSizeInGB = structure(logical(0), tags = list(type = "integer", 
+                      min = 1L)), VolumeKmsKeyId = structure(logical(0), 
+                      tags = list(type = "string", max = 2048L))), 
+                    tags = list(type = "structure")), StoppingCondition = structure(list(MaxRuntimeInSeconds = structure(logical(0), 
+                    tags = list(type = "integer", min = 1L))), 
+                    tags = list(type = "structure"))), tags = list(type = "structure")), 
+                TransformJobDefinition = structure(list(MaxConcurrentTransforms = structure(logical(0), 
+                  tags = list(type = "integer", min = 0L)), MaxPayloadInMB = structure(logical(0), 
+                  tags = list(type = "integer", min = 0L)), BatchStrategy = structure(logical(0), 
+                  tags = list(type = "string", enum = c("MultiRecord", 
+                    "SingleRecord"))), Environment = structure(list(structure(logical(0), 
+                  tags = list(type = "string", max = 10240L))), 
+                  tags = list(type = "map", max = 16L)), TransformInput = structure(list(DataSource = structure(list(S3DataSource = structure(list(S3DataType = structure(logical(0), 
+                  tags = list(type = "string", enum = c("ManifestFile", 
+                    "S3Prefix", "AugmentedManifestFile"))), S3Uri = structure(logical(0), 
+                  tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$"))), 
+                  tags = list(type = "structure"))), tags = list(type = "structure")), 
+                  ContentType = structure(logical(0), tags = list(type = "string", 
+                    max = 256L)), CompressionType = structure(logical(0), 
+                    tags = list(type = "string", enum = c("None", 
+                      "Gzip"))), SplitType = structure(logical(0), 
+                    tags = list(type = "string", enum = c("None", 
+                      "Line", "RecordIO", "TFRecord")))), tags = list(type = "structure")), 
+                  TransformOutput = structure(list(S3OutputPath = structure(logical(0), 
+                    tags = list(type = "string", max = 1024L, 
+                      pattern = "^(https|s3)://([^/]+)/?(.*)$")), 
+                    Accept = structure(logical(0), tags = list(type = "string", 
+                      max = 256L)), AssembleWith = structure(logical(0), 
+                      tags = list(type = "string", enum = c("None", 
+                        "Line"))), KmsKeyId = structure(logical(0), 
+                      tags = list(type = "string", max = 2048L))), 
+                    tags = list(type = "structure")), TransformResources = structure(list(InstanceType = structure(logical(0), 
+                    tags = list(type = "string", enum = c("ml.m4.xlarge", 
+                      "ml.m4.2xlarge", "ml.m4.4xlarge", "ml.m4.10xlarge", 
+                      "ml.m4.16xlarge", "ml.c4.xlarge", "ml.c4.2xlarge", 
+                      "ml.c4.4xlarge", "ml.c4.8xlarge", "ml.p2.xlarge", 
+                      "ml.p2.8xlarge", "ml.p2.16xlarge", "ml.p3.2xlarge", 
+                      "ml.p3.8xlarge", "ml.p3.16xlarge", "ml.c5.xlarge", 
+                      "ml.c5.2xlarge", "ml.c5.4xlarge", "ml.c5.9xlarge", 
+                      "ml.c5.18xlarge", "ml.m5.large", "ml.m5.xlarge", 
+                      "ml.m5.2xlarge", "ml.m5.4xlarge", "ml.m5.12xlarge", 
+                      "ml.m5.24xlarge"))), InstanceCount = structure(logical(0), 
+                    tags = list(type = "integer", min = 1L)), 
+                    VolumeKmsKeyId = structure(logical(0), tags = list(type = "string", 
+                      max = 2048L))), tags = list(type = "structure"))), 
+                  tags = list(type = "structure"))), tags = list(type = "structure"))), 
+                tags = list(type = "list", max = 1L, min = 1L))), 
+            tags = list(type = "structure")), CertifyForMarketplace = structure(logical(0), 
+            tags = list(type = "boolean"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+create_algorithm_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(AlgorithmArn = structure(logical(0), 
+        tags = list(type = "string", max = 2048L, min = 1L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:algorithm/.*"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+create_code_repository_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(CodeRepositoryName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*$")), 
+        GitConfig = structure(list(RepositoryUrl = structure(logical(0), 
+            tags = list(type = "string", pattern = "^https://([^/]+)/?(.*)$")), 
+            Branch = structure(logical(0), tags = list(type = "string", 
+                max = 1024L, min = 1L)), SecretArn = structure(logical(0), 
+                tags = list(type = "string", max = 2048L, min = 1L, 
+                  pattern = "arn:aws[a-z\\-]*:secretsmanager:[a-z0-9\\-]*:[0-9]{12}:secret:.*"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+create_code_repository_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(CodeRepositoryArn = structure(logical(0), 
+        tags = list(type = "string", max = 2048L, min = 1L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:code-repository/.*"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+create_compilation_job_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(CompilationJobName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*$")), 
+        RoleArn = structure(logical(0), tags = list(type = "string", 
+            max = 2048L, min = 20L, pattern = "^arn:aws[a-z\\-]*:iam::\\d{12}:role/?[a-zA-Z_0-9+=,.@\\-_/]+$")), 
+        InputConfig = structure(list(S3Uri = structure(logical(0), 
+            tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$")), 
+            DataInputConfig = structure(logical(0), tags = list(type = "string", 
+                max = 1024L, min = 1L)), Framework = structure(logical(0), 
+                tags = list(type = "string", enum = c("TENSORFLOW", 
+                  "MXNET", "ONNX", "PYTORCH", "XGBOOST")))), 
+            tags = list(type = "structure")), OutputConfig = structure(list(S3OutputLocation = structure(logical(0), 
+            tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$")), 
+            TargetDevice = structure(logical(0), tags = list(type = "string", 
+                enum = c("ml_m4", "ml_m5", "ml_c4", "ml_c5", 
+                  "ml_p2", "ml_p3", "jetson_tx1", "jetson_tx2", 
+                  "rasp3b", "deeplens")))), tags = list(type = "structure")), 
+        StoppingCondition = structure(list(MaxRuntimeInSeconds = structure(logical(0), 
+            tags = list(type = "integer", min = 1L))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+create_compilation_job_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(CompilationJobArn = structure(logical(0), 
+        tags = list(type = "string", max = 256L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:compilation-job/.*"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -37,7 +313,7 @@ create_endpoint_input <- function (...)
             max = 63L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
         Tags = structure(list(structure(list(Key = structure(logical(0), 
             tags = list(type = "string", max = 128L, min = 1L, 
-                pattern = "^((?!aws:)[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+                pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
             Value = structure(logical(0), tags = list(type = "string", 
                 max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
             tags = list(type = "structure"))), tags = list(type = "list", 
@@ -77,10 +353,12 @@ create_endpoint_config_input <- function (...)
                   "ml.p3.16xlarge", "ml.c5.large", "ml.c5.xlarge", 
                   "ml.c5.2xlarge", "ml.c5.4xlarge", "ml.c5.9xlarge", 
                   "ml.c5.18xlarge"))), InitialVariantWeight = structure(logical(0), 
-                tags = list(type = "float", min = 0L))), tags = list(type = "structure"))), 
+                tags = list(type = "float", min = 0L)), AcceleratorType = structure(logical(0), 
+                tags = list(type = "string", enum = c("ml.eia1.medium", 
+                  "ml.eia1.large", "ml.eia1.xlarge")))), tags = list(type = "structure"))), 
             tags = list(type = "list", min = 1L)), Tags = structure(list(structure(list(Key = structure(logical(0), 
             tags = list(type = "string", max = 128L, min = 1L, 
-                pattern = "^((?!aws:)[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+                pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
             Value = structure(logical(0), tags = list(type = "string", 
                 max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
             tags = list(type = "structure"))), tags = list(type = "list", 
@@ -129,12 +407,17 @@ create_hyper_parameter_tuning_job_input <- function (...)
                     tags = list(type = "string", max = 256L))), 
                     tags = list(type = "list", max = 20L, min = 1L))), 
                   tags = list(type = "structure"))), tags = list(type = "list", 
-                  max = 20L, min = 0L))), tags = list(type = "structure"))), 
-            tags = list(type = "structure")), TrainingJobDefinition = structure(list(StaticHyperParameters = structure(list(structure(logical(0), 
+                  max = 20L, min = 0L))), tags = list(type = "structure")), 
+            TrainingJobEarlyStoppingType = structure(logical(0), 
+                tags = list(type = "string", enum = c("Off", 
+                  "Auto")))), tags = list(type = "structure")), 
+        TrainingJobDefinition = structure(list(StaticHyperParameters = structure(list(structure(logical(0), 
             tags = list(type = "string", max = 256L))), tags = list(type = "map", 
             max = 100L, min = 0L)), AlgorithmSpecification = structure(list(TrainingImage = structure(logical(0), 
             tags = list(type = "string", max = 255L)), TrainingInputMode = structure(logical(0), 
             tags = list(type = "string", enum = c("Pipe", "File"))), 
+            AlgorithmName = structure(logical(0), tags = list(type = "string", 
+                max = 170L, min = 1L, pattern = "(arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:[a-z\\-]*\\/)?([a-zA-Z0-9]([a-zA-Z0-9-]){0,62})(?<!-)$")), 
             MetricDefinitions = structure(list(structure(list(Name = structure(logical(0), 
                 tags = list(type = "string", max = 255L, min = 1L)), 
                 Regex = structure(logical(0), tags = list(type = "string", 
@@ -147,11 +430,13 @@ create_hyper_parameter_tuning_job_input <- function (...)
                 tags = list(type = "string", max = 64L, min = 1L, 
                   pattern = "[A-Za-z0-9\\.\\-_]+")), DataSource = structure(list(S3DataSource = structure(list(S3DataType = structure(logical(0), 
                 tags = list(type = "string", enum = c("ManifestFile", 
-                  "S3Prefix"))), S3Uri = structure(logical(0), 
+                  "S3Prefix", "AugmentedManifestFile"))), S3Uri = structure(logical(0), 
                 tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$")), 
                 S3DataDistributionType = structure(logical(0), 
                   tags = list(type = "string", enum = c("FullyReplicated", 
-                    "ShardedByS3Key")))), tags = list(type = "structure"))), 
+                    "ShardedByS3Key"))), AttributeNames = structure(list(structure(logical(0), 
+                  tags = list(type = "string", max = 256L, min = 1L))), 
+                  tags = list(type = "list", max = 16L))), tags = list(type = "structure"))), 
                 tags = list(type = "structure")), ContentType = structure(logical(0), 
                 tags = list(type = "string", max = 256L)), CompressionType = structure(logical(0), 
                 tags = list(type = "string", enum = c("None", 
@@ -159,9 +444,10 @@ create_hyper_parameter_tuning_job_input <- function (...)
                 tags = list(type = "string", enum = c("None", 
                   "RecordIO"))), InputMode = structure(logical(0), 
                 tags = list(type = "string", enum = c("Pipe", 
-                  "File")))), tags = list(type = "structure"))), 
-                tags = list(type = "list", max = 8L, min = 1L)), 
-            VpcConfig = structure(list(SecurityGroupIds = structure(list(structure(logical(0), 
+                  "File"))), ShuffleConfig = structure(list(Seed = structure(logical(0), 
+                tags = list(type = "long"))), tags = list(type = "structure"))), 
+                tags = list(type = "structure"))), tags = list(type = "list", 
+                max = 8L, min = 1L)), VpcConfig = structure(list(SecurityGroupIds = structure(list(structure(logical(0), 
                 tags = list(type = "string", max = 32L))), tags = list(type = "list", 
                 max = 5L, min = 1L)), Subnets = structure(list(structure(logical(0), 
                 tags = list(type = "string", max = 32L))), tags = list(type = "list", 
@@ -184,10 +470,20 @@ create_hyper_parameter_tuning_job_input <- function (...)
                 tags = list(type = "integer", min = 1L)), VolumeKmsKeyId = structure(logical(0), 
                 tags = list(type = "string", max = 2048L))), 
                 tags = list(type = "structure")), StoppingCondition = structure(list(MaxRuntimeInSeconds = structure(logical(0), 
-                tags = list(type = "integer", min = 1L))), tags = list(type = "structure"))), 
-            tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), 
+                tags = list(type = "integer", min = 1L))), tags = list(type = "structure")), 
+            EnableNetworkIsolation = structure(logical(0), tags = list(type = "boolean")), 
+            EnableInterContainerTrafficEncryption = structure(logical(0), 
+                tags = list(type = "boolean"))), tags = list(type = "structure")), 
+        WarmStartConfig = structure(list(ParentHyperParameterTuningJobs = structure(list(structure(list(HyperParameterTuningJobName = structure(logical(0), 
+            tags = list(type = "string", max = 32L, min = 1L, 
+                pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 5L, min = 1L)), WarmStartType = structure(logical(0), 
+            tags = list(type = "string", enum = c("IdenticalDataAndAlgorithm", 
+                "TransferLearning")))), tags = list(type = "structure")), 
+        Tags = structure(list(structure(list(Key = structure(logical(0), 
             tags = list(type = "string", max = 128L, min = 1L, 
-                pattern = "^((?!aws:)[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+                pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
             Value = structure(logical(0), tags = list(type = "string", 
                 max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
             tags = list(type = "structure"))), tags = list(type = "list", 
@@ -204,6 +500,84 @@ create_hyper_parameter_tuning_job_output <- function (...)
     return(populate(args, shape))
 }
 
+create_labeling_job_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(LabelingJobName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+        LabelAttributeName = structure(logical(0), tags = list(type = "string", 
+            max = 127L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+        InputConfig = structure(list(DataSource = structure(list(S3DataSource = structure(list(ManifestS3Uri = structure(logical(0), 
+            tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure")), 
+            DataAttributes = structure(list(ContentClassifiers = structure(list(structure(logical(0), 
+                tags = list(type = "string", enum = c("FreeOfPersonallyIdentifiableInformation", 
+                  "FreeOfAdultContent")))), tags = list(type = "list", 
+                max = 256L))), tags = list(type = "structure"))), 
+            tags = list(type = "structure")), OutputConfig = structure(list(S3OutputPath = structure(logical(0), 
+            tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$")), 
+            KmsKeyId = structure(logical(0), tags = list(type = "string", 
+                max = 2048L))), tags = list(type = "structure")), 
+        RoleArn = structure(logical(0), tags = list(type = "string", 
+            max = 2048L, min = 20L, pattern = "^arn:aws[a-z\\-]*:iam::\\d{12}:role/?[a-zA-Z_0-9+=,.@\\-_/]+$")), 
+        LabelCategoryConfigS3Uri = structure(logical(0), tags = list(type = "string", 
+            max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$")), 
+        StoppingConditions = structure(list(MaxHumanLabeledObjectCount = structure(logical(0), 
+            tags = list(type = "integer", min = 1L)), MaxPercentageOfInputDatasetLabeled = structure(logical(0), 
+            tags = list(type = "integer", max = 100L, min = 1L))), 
+            tags = list(type = "structure")), LabelingJobAlgorithmsConfig = structure(list(LabelingJobAlgorithmSpecificationArn = structure(logical(0), 
+            tags = list(type = "string", max = 2048L)), InitialActiveLearningModelArn = structure(logical(0), 
+            tags = list(type = "string", max = 2048L, min = 20L)), 
+            LabelingJobResourceConfig = structure(list(VolumeKmsKeyId = structure(logical(0), 
+                tags = list(type = "string", max = 2048L))), 
+                tags = list(type = "structure"))), tags = list(type = "structure")), 
+        HumanTaskConfig = structure(list(WorkteamArn = structure(logical(0), 
+            tags = list(type = "string", max = 256L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:workteam/.*")), 
+            UiConfig = structure(list(UiTemplateS3Uri = structure(logical(0), 
+                tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$"))), 
+                tags = list(type = "structure")), PreHumanTaskLambdaArn = structure(logical(0), 
+                tags = list(type = "string", max = 2048L, pattern = "arn:aws[a-z\\-]*:lambda:[a-z]{2}-[a-z]+-\\d{1}:\\d{12}:function:[a-zA-Z0-9-_\\.]+(:(\\$LATEST|[a-zA-Z0-9-_]+))?")), 
+            TaskKeywords = structure(list(structure(logical(0), 
+                tags = list(type = "string", max = 30L, min = 1L, 
+                  pattern = "^[A-Za-z0-9]+( [A-Za-z0-9]+)*$"))), 
+                tags = list(type = "list", max = 5L, min = 1L)), 
+            TaskTitle = structure(logical(0), tags = list(type = "string", 
+                max = 128L, min = 1L, pattern = "^[\\t\\n\\r -\\uD7FF\\uE000-\\uFFFD]*$")), 
+            TaskDescription = structure(logical(0), tags = list(type = "string", 
+                max = 255L, min = 1L)), NumberOfHumanWorkersPerDataObject = structure(logical(0), 
+                tags = list(type = "integer", max = 9L, min = 1L)), 
+            TaskTimeLimitInSeconds = structure(logical(0), tags = list(type = "integer", 
+                max = 3600L, min = 1L)), TaskAvailabilityLifetimeInSeconds = structure(logical(0), 
+                tags = list(type = "integer", max = 345600L, 
+                  min = 1L)), MaxConcurrentTaskCount = structure(logical(0), 
+                tags = list(type = "integer", max = 1000L, min = 1L)), 
+            AnnotationConsolidationConfig = structure(list(AnnotationConsolidationLambdaArn = structure(logical(0), 
+                tags = list(type = "string", max = 2048L, pattern = "arn:aws[a-z\\-]*:lambda:[a-z]{2}-[a-z]+-\\d{1}:\\d{12}:function:[a-zA-Z0-9-_\\.]+(:(\\$LATEST|[a-zA-Z0-9-_]+))?"))), 
+                tags = list(type = "structure")), PublicWorkforceTaskPrice = structure(list(AmountInUsd = structure(list(Dollars = structure(logical(0), 
+                tags = list(type = "integer", max = 1L, min = 0L)), 
+                Cents = structure(logical(0), tags = list(type = "integer", 
+                  max = 99L, min = 0L)), TenthFractionsOfACent = structure(logical(0), 
+                  tags = list(type = "integer", max = 9L, min = 0L))), 
+                tags = list(type = "structure"))), tags = list(type = "structure"))), 
+            tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+            Value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L, min = 0L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+create_labeling_job_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(LabelingJobArn = structure(logical(0), 
+        tags = list(type = "string", max = 2048L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:labeling-job/.*"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 create_model_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -216,12 +590,26 @@ create_model_input <- function (...)
                 tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$")), 
             Environment = structure(list(structure(logical(0), 
                 tags = list(type = "string", max = 1024L))), 
-                tags = list(type = "map", max = 16L))), tags = list(type = "structure")), 
-        ExecutionRoleArn = structure(logical(0), tags = list(type = "string", 
-            max = 2048L, min = 20L, pattern = "^arn:aws[a-z\\-]*:iam::\\d{12}:role/?[a-zA-Z_0-9+=,.@\\-_/]+$")), 
+                tags = list(type = "map", max = 16L)), ModelPackageName = structure(logical(0), 
+                tags = list(type = "string", max = 170L, min = 1L, 
+                  pattern = "(arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:[a-z\\-]*\\/)?([a-zA-Z0-9]([a-zA-Z0-9-]){0,62})(?<!-)$"))), 
+            tags = list(type = "structure")), Containers = structure(list(structure(list(ContainerHostname = structure(logical(0), 
+            tags = list(type = "string", max = 63L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+            Image = structure(logical(0), tags = list(type = "string", 
+                max = 255L, pattern = "[\\S]+")), ModelDataUrl = structure(logical(0), 
+                tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$")), 
+            Environment = structure(list(structure(logical(0), 
+                tags = list(type = "string", max = 1024L))), 
+                tags = list(type = "map", max = 16L)), ModelPackageName = structure(logical(0), 
+                tags = list(type = "string", max = 170L, min = 1L, 
+                  pattern = "(arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:[a-z\\-]*\\/)?([a-zA-Z0-9]([a-zA-Z0-9-]){0,62})(?<!-)$"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 5L)), ExecutionRoleArn = structure(logical(0), 
+            tags = list(type = "string", max = 2048L, min = 20L, 
+                pattern = "^arn:aws[a-z\\-]*:iam::\\d{12}:role/?[a-zA-Z_0-9+=,.@\\-_/]+$")), 
         Tags = structure(list(structure(list(Key = structure(logical(0), 
             tags = list(type = "string", max = 128L, min = 1L, 
-                pattern = "^((?!aws:)[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+                pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
             Value = structure(logical(0), tags = list(type = "string", 
                 max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
             tags = list(type = "structure"))), tags = list(type = "list", 
@@ -229,7 +617,8 @@ create_model_input <- function (...)
             tags = list(type = "string", max = 32L))), tags = list(type = "list", 
             max = 5L, min = 1L)), Subnets = structure(list(structure(logical(0), 
             tags = list(type = "string", max = 32L))), tags = list(type = "list", 
-            max = 16L, min = 1L))), tags = list(type = "structure"))), 
+            max = 16L, min = 1L))), tags = list(type = "structure")), 
+        EnableNetworkIsolation = structure(logical(0), tags = list(type = "boolean"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -243,6 +632,118 @@ create_model_output <- function (...)
     return(populate(args, shape))
 }
 
+create_model_package_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(ModelPackageName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*$")), 
+        ModelPackageDescription = structure(logical(0), tags = list(type = "string", 
+            max = 1024L, pattern = "[\\p{L}\\p{M}\\p{Z}\\p{S}\\p{N}\\p{P}]*")), 
+        InferenceSpecification = structure(list(Containers = structure(list(structure(list(ContainerHostname = structure(logical(0), 
+            tags = list(type = "string", max = 63L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+            Image = structure(logical(0), tags = list(type = "string", 
+                max = 255L, pattern = "[\\S]+")), ImageDigest = structure(logical(0), 
+                tags = list(type = "string", max = 72L, pattern = "^[Ss][Hh][Aa]256:[0-9a-fA-F]{64}$")), 
+            ModelDataUrl = structure(logical(0), tags = list(type = "string", 
+                max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$")), 
+            ProductId = structure(logical(0), tags = list(type = "string"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 1L, min = 1L)), SupportedTransformInstanceTypes = structure(list(structure(logical(0), 
+            tags = list(type = "string", enum = c("ml.m4.xlarge", 
+                "ml.m4.2xlarge", "ml.m4.4xlarge", "ml.m4.10xlarge", 
+                "ml.m4.16xlarge", "ml.c4.xlarge", "ml.c4.2xlarge", 
+                "ml.c4.4xlarge", "ml.c4.8xlarge", "ml.p2.xlarge", 
+                "ml.p2.8xlarge", "ml.p2.16xlarge", "ml.p3.2xlarge", 
+                "ml.p3.8xlarge", "ml.p3.16xlarge", "ml.c5.xlarge", 
+                "ml.c5.2xlarge", "ml.c5.4xlarge", "ml.c5.9xlarge", 
+                "ml.c5.18xlarge", "ml.m5.large", "ml.m5.xlarge", 
+                "ml.m5.2xlarge", "ml.m5.4xlarge", "ml.m5.12xlarge", 
+                "ml.m5.24xlarge")))), tags = list(type = "list", 
+            min = 1L)), SupportedRealtimeInferenceInstanceTypes = structure(list(structure(logical(0), 
+            tags = list(type = "string", enum = c("ml.t2.medium", 
+                "ml.t2.large", "ml.t2.xlarge", "ml.t2.2xlarge", 
+                "ml.m4.xlarge", "ml.m4.2xlarge", "ml.m4.4xlarge", 
+                "ml.m4.10xlarge", "ml.m4.16xlarge", "ml.m5.large", 
+                "ml.m5.xlarge", "ml.m5.2xlarge", "ml.m5.4xlarge", 
+                "ml.m5.12xlarge", "ml.m5.24xlarge", "ml.c4.large", 
+                "ml.c4.xlarge", "ml.c4.2xlarge", "ml.c4.4xlarge", 
+                "ml.c4.8xlarge", "ml.p2.xlarge", "ml.p2.8xlarge", 
+                "ml.p2.16xlarge", "ml.p3.2xlarge", "ml.p3.8xlarge", 
+                "ml.p3.16xlarge", "ml.c5.large", "ml.c5.xlarge", 
+                "ml.c5.2xlarge", "ml.c5.4xlarge", "ml.c5.9xlarge", 
+                "ml.c5.18xlarge")))), tags = list(type = "list")), 
+            SupportedContentTypes = structure(list(structure(logical(0), 
+                tags = list(type = "string", max = 256L))), tags = list(type = "list")), 
+            SupportedResponseMIMETypes = structure(list(structure(logical(0), 
+                tags = list(type = "string", max = 1024L))), 
+                tags = list(type = "list"))), tags = list(type = "structure")), 
+        ValidationSpecification = structure(list(ValidationRole = structure(logical(0), 
+            tags = list(type = "string", max = 2048L, min = 20L, 
+                pattern = "^arn:aws[a-z\\-]*:iam::\\d{12}:role/?[a-zA-Z_0-9+=,.@\\-_/]+$")), 
+            ValidationProfiles = structure(list(structure(list(ProfileName = structure(logical(0), 
+                tags = list(type = "string", max = 63L, min = 1L, 
+                  pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*$")), 
+                TransformJobDefinition = structure(list(MaxConcurrentTransforms = structure(logical(0), 
+                  tags = list(type = "integer", min = 0L)), MaxPayloadInMB = structure(logical(0), 
+                  tags = list(type = "integer", min = 0L)), BatchStrategy = structure(logical(0), 
+                  tags = list(type = "string", enum = c("MultiRecord", 
+                    "SingleRecord"))), Environment = structure(list(structure(logical(0), 
+                  tags = list(type = "string", max = 10240L))), 
+                  tags = list(type = "map", max = 16L)), TransformInput = structure(list(DataSource = structure(list(S3DataSource = structure(list(S3DataType = structure(logical(0), 
+                  tags = list(type = "string", enum = c("ManifestFile", 
+                    "S3Prefix", "AugmentedManifestFile"))), S3Uri = structure(logical(0), 
+                  tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$"))), 
+                  tags = list(type = "structure"))), tags = list(type = "structure")), 
+                  ContentType = structure(logical(0), tags = list(type = "string", 
+                    max = 256L)), CompressionType = structure(logical(0), 
+                    tags = list(type = "string", enum = c("None", 
+                      "Gzip"))), SplitType = structure(logical(0), 
+                    tags = list(type = "string", enum = c("None", 
+                      "Line", "RecordIO", "TFRecord")))), tags = list(type = "structure")), 
+                  TransformOutput = structure(list(S3OutputPath = structure(logical(0), 
+                    tags = list(type = "string", max = 1024L, 
+                      pattern = "^(https|s3)://([^/]+)/?(.*)$")), 
+                    Accept = structure(logical(0), tags = list(type = "string", 
+                      max = 256L)), AssembleWith = structure(logical(0), 
+                      tags = list(type = "string", enum = c("None", 
+                        "Line"))), KmsKeyId = structure(logical(0), 
+                      tags = list(type = "string", max = 2048L))), 
+                    tags = list(type = "structure")), TransformResources = structure(list(InstanceType = structure(logical(0), 
+                    tags = list(type = "string", enum = c("ml.m4.xlarge", 
+                      "ml.m4.2xlarge", "ml.m4.4xlarge", "ml.m4.10xlarge", 
+                      "ml.m4.16xlarge", "ml.c4.xlarge", "ml.c4.2xlarge", 
+                      "ml.c4.4xlarge", "ml.c4.8xlarge", "ml.p2.xlarge", 
+                      "ml.p2.8xlarge", "ml.p2.16xlarge", "ml.p3.2xlarge", 
+                      "ml.p3.8xlarge", "ml.p3.16xlarge", "ml.c5.xlarge", 
+                      "ml.c5.2xlarge", "ml.c5.4xlarge", "ml.c5.9xlarge", 
+                      "ml.c5.18xlarge", "ml.m5.large", "ml.m5.xlarge", 
+                      "ml.m5.2xlarge", "ml.m5.4xlarge", "ml.m5.12xlarge", 
+                      "ml.m5.24xlarge"))), InstanceCount = structure(logical(0), 
+                    tags = list(type = "integer", min = 1L)), 
+                    VolumeKmsKeyId = structure(logical(0), tags = list(type = "string", 
+                      max = 2048L))), tags = list(type = "structure"))), 
+                  tags = list(type = "structure"))), tags = list(type = "structure"))), 
+                tags = list(type = "list", max = 1L, min = 1L))), 
+            tags = list(type = "structure")), SourceAlgorithmSpecification = structure(list(SourceAlgorithms = structure(list(structure(list(ModelDataUrl = structure(logical(0), 
+            tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$")), 
+            AlgorithmName = structure(logical(0), tags = list(type = "string", 
+                max = 170L, min = 1L, pattern = "(arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:[a-z\\-]*\\/)?([a-zA-Z0-9]([a-zA-Z0-9-]){0,62})(?<!-)$"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 1L, min = 1L))), tags = list(type = "structure")), 
+        CertifyForMarketplace = structure(logical(0), tags = list(type = "boolean"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+create_model_package_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(ModelPackageArn = structure(logical(0), 
+        tags = list(type = "string", max = 2048L, min = 1L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:model-package/.*"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 create_notebook_instance_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -250,19 +751,26 @@ create_notebook_instance_input <- function (...)
         tags = list(type = "string", max = 63L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
         InstanceType = structure(logical(0), tags = list(type = "string", 
             enum = c("ml.t2.medium", "ml.t2.large", "ml.t2.xlarge", 
-                "ml.t2.2xlarge", "ml.m4.xlarge", "ml.m4.2xlarge", 
-                "ml.m4.4xlarge", "ml.m4.10xlarge", "ml.m4.16xlarge", 
-                "ml.p2.xlarge", "ml.p2.8xlarge", "ml.p2.16xlarge", 
-                "ml.p3.2xlarge", "ml.p3.8xlarge", "ml.p3.16xlarge"))), 
-        SubnetId = structure(logical(0), tags = list(type = "string", 
-            max = 32L)), SecurityGroupIds = structure(list(structure(logical(0), 
+                "ml.t2.2xlarge", "ml.t3.medium", "ml.t3.large", 
+                "ml.t3.xlarge", "ml.t3.2xlarge", "ml.m4.xlarge", 
+                "ml.m4.2xlarge", "ml.m4.4xlarge", "ml.m4.10xlarge", 
+                "ml.m4.16xlarge", "ml.m5.xlarge", "ml.m5.2xlarge", 
+                "ml.m5.4xlarge", "ml.m5.12xlarge", "ml.m5.24xlarge", 
+                "ml.c4.xlarge", "ml.c4.2xlarge", "ml.c4.4xlarge", 
+                "ml.c4.8xlarge", "ml.c5.xlarge", "ml.c5.2xlarge", 
+                "ml.c5.4xlarge", "ml.c5.9xlarge", "ml.c5.18xlarge", 
+                "ml.c5d.xlarge", "ml.c5d.2xlarge", "ml.c5d.4xlarge", 
+                "ml.c5d.9xlarge", "ml.c5d.18xlarge", "ml.p2.xlarge", 
+                "ml.p2.8xlarge", "ml.p2.16xlarge", "ml.p3.2xlarge", 
+                "ml.p3.8xlarge", "ml.p3.16xlarge"))), SubnetId = structure(logical(0), 
+            tags = list(type = "string", max = 32L)), SecurityGroupIds = structure(list(structure(logical(0), 
             tags = list(type = "string", max = 32L))), tags = list(type = "list", 
             max = 5L)), RoleArn = structure(logical(0), tags = list(type = "string", 
             max = 2048L, min = 20L, pattern = "^arn:aws[a-z\\-]*:iam::\\d{12}:role/?[a-zA-Z_0-9+=,.@\\-_/]+$")), 
         KmsKeyId = structure(logical(0), tags = list(type = "string", 
             max = 2048L)), Tags = structure(list(structure(list(Key = structure(logical(0), 
             tags = list(type = "string", max = 128L, min = 1L, 
-                pattern = "^((?!aws:)[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+                pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
             Value = structure(logical(0), tags = list(type = "string", 
                 max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
             tags = list(type = "structure"))), tags = list(type = "list", 
@@ -270,8 +778,16 @@ create_notebook_instance_input <- function (...)
             tags = list(type = "string", max = 63L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
         DirectInternetAccess = structure(logical(0), tags = list(type = "string", 
             enum = c("Enabled", "Disabled"))), VolumeSizeInGB = structure(logical(0), 
-            tags = list(type = "integer", max = 16384L, min = 5L))), 
-        tags = list(type = "structure"))
+            tags = list(type = "integer", max = 16384L, min = 5L)), 
+        AcceleratorTypes = structure(list(structure(logical(0), 
+            tags = list(type = "string", enum = c("ml.eia1.medium", 
+                "ml.eia1.large", "ml.eia1.xlarge")))), tags = list(type = "list")), 
+        DefaultCodeRepository = structure(logical(0), tags = list(type = "string", 
+            max = 1024L, min = 1L, pattern = "^https://([^/]+)/?(.*)$|^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+        AdditionalCodeRepositories = structure(list(structure(logical(0), 
+            tags = list(type = "string", max = 1024L, min = 1L, 
+                pattern = "^https://([^/]+)/?(.*)$|^[a-zA-Z0-9](-*[a-zA-Z0-9])*"))), 
+            tags = list(type = "list", max = 3L))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -333,8 +849,15 @@ create_training_job_input <- function (...)
         HyperParameters = structure(list(structure(logical(0), 
             tags = list(type = "string", max = 256L))), tags = list(type = "map", 
             max = 100L, min = 0L)), AlgorithmSpecification = structure(list(TrainingImage = structure(logical(0), 
-            tags = list(type = "string", max = 255L)), TrainingInputMode = structure(logical(0), 
-            tags = list(type = "string", enum = c("Pipe", "File")))), 
+            tags = list(type = "string", max = 255L)), AlgorithmName = structure(logical(0), 
+            tags = list(type = "string", max = 170L, min = 1L, 
+                pattern = "(arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:[a-z\\-]*\\/)?([a-zA-Z0-9]([a-zA-Z0-9-]){0,62})(?<!-)$")), 
+            TrainingInputMode = structure(logical(0), tags = list(type = "string", 
+                enum = c("Pipe", "File"))), MetricDefinitions = structure(list(structure(list(Name = structure(logical(0), 
+                tags = list(type = "string", max = 255L, min = 1L)), 
+                Regex = structure(logical(0), tags = list(type = "string", 
+                  max = 500L, min = 1L))), tags = list(type = "structure"))), 
+                tags = list(type = "list", max = 20L, min = 0L))), 
             tags = list(type = "structure")), RoleArn = structure(logical(0), 
             tags = list(type = "string", max = 2048L, min = 20L, 
                 pattern = "^arn:aws[a-z\\-]*:iam::\\d{12}:role/?[a-zA-Z_0-9+=,.@\\-_/]+$")), 
@@ -342,21 +865,23 @@ create_training_job_input <- function (...)
             tags = list(type = "string", max = 64L, min = 1L, 
                 pattern = "[A-Za-z0-9\\.\\-_]+")), DataSource = structure(list(S3DataSource = structure(list(S3DataType = structure(logical(0), 
             tags = list(type = "string", enum = c("ManifestFile", 
-                "S3Prefix"))), S3Uri = structure(logical(0), 
+                "S3Prefix", "AugmentedManifestFile"))), S3Uri = structure(logical(0), 
             tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$")), 
             S3DataDistributionType = structure(logical(0), tags = list(type = "string", 
-                enum = c("FullyReplicated", "ShardedByS3Key")))), 
-            tags = list(type = "structure"))), tags = list(type = "structure")), 
-            ContentType = structure(logical(0), tags = list(type = "string", 
-                max = 256L)), CompressionType = structure(logical(0), 
-                tags = list(type = "string", enum = c("None", 
-                  "Gzip"))), RecordWrapperType = structure(logical(0), 
-                tags = list(type = "string", enum = c("None", 
-                  "RecordIO"))), InputMode = structure(logical(0), 
+                enum = c("FullyReplicated", "ShardedByS3Key"))), 
+            AttributeNames = structure(list(structure(logical(0), 
+                tags = list(type = "string", max = 256L, min = 1L))), 
+                tags = list(type = "list", max = 16L))), tags = list(type = "structure"))), 
+            tags = list(type = "structure")), ContentType = structure(logical(0), 
+            tags = list(type = "string", max = 256L)), CompressionType = structure(logical(0), 
+            tags = list(type = "string", enum = c("None", "Gzip"))), 
+            RecordWrapperType = structure(logical(0), tags = list(type = "string", 
+                enum = c("None", "RecordIO"))), InputMode = structure(logical(0), 
                 tags = list(type = "string", enum = c("Pipe", 
-                  "File")))), tags = list(type = "structure"))), 
-            tags = list(type = "list", max = 8L, min = 1L)), 
-        OutputDataConfig = structure(list(KmsKeyId = structure(logical(0), 
+                  "File"))), ShuffleConfig = structure(list(Seed = structure(logical(0), 
+                tags = list(type = "long"))), tags = list(type = "structure"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 8L, min = 1L)), OutputDataConfig = structure(list(KmsKeyId = structure(logical(0), 
             tags = list(type = "string", max = 2048L)), S3OutputPath = structure(logical(0), 
             tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$"))), 
             tags = list(type = "structure")), ResourceConfig = structure(list(InstanceType = structure(logical(0), 
@@ -382,11 +907,13 @@ create_training_job_input <- function (...)
             tags = list(type = "integer", min = 1L))), tags = list(type = "structure")), 
         Tags = structure(list(structure(list(Key = structure(logical(0), 
             tags = list(type = "string", max = 128L, min = 1L, 
-                pattern = "^((?!aws:)[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+                pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
             Value = structure(logical(0), tags = list(type = "string", 
                 max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
             tags = list(type = "structure"))), tags = list(type = "list", 
-            max = 50L, min = 0L))), tags = list(type = "structure"))
+            max = 50L, min = 0L)), EnableNetworkIsolation = structure(logical(0), 
+            tags = list(type = "boolean")), EnableInterContainerTrafficEncryption = structure(logical(0), 
+            tags = list(type = "boolean"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -414,7 +941,7 @@ create_transform_job_input <- function (...)
             tags = list(type = "string", max = 10240L))), tags = list(type = "map", 
             max = 16L)), TransformInput = structure(list(DataSource = structure(list(S3DataSource = structure(list(S3DataType = structure(logical(0), 
             tags = list(type = "string", enum = c("ManifestFile", 
-                "S3Prefix"))), S3Uri = structure(logical(0), 
+                "S3Prefix", "AugmentedManifestFile"))), S3Uri = structure(logical(0), 
             tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$"))), 
             tags = list(type = "structure"))), tags = list(type = "structure")), 
             ContentType = structure(logical(0), tags = list(type = "string", 
@@ -422,7 +949,7 @@ create_transform_job_input <- function (...)
                 tags = list(type = "string", enum = c("None", 
                   "Gzip"))), SplitType = structure(logical(0), 
                 tags = list(type = "string", enum = c("None", 
-                  "Line", "RecordIO")))), tags = list(type = "structure")), 
+                  "Line", "RecordIO", "TFRecord")))), tags = list(type = "structure")), 
         TransformOutput = structure(list(S3OutputPath = structure(logical(0), 
             tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$")), 
             Accept = structure(logical(0), tags = list(type = "string", 
@@ -445,7 +972,7 @@ create_transform_job_input <- function (...)
             tags = list(type = "string", max = 2048L))), tags = list(type = "structure")), 
         Tags = structure(list(structure(list(Key = structure(logical(0), 
             tags = list(type = "string", max = 128L, min = 1L, 
-                pattern = "^((?!aws:)[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+                pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
             Value = structure(logical(0), tags = list(type = "string", 
                 max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
             tags = list(type = "structure"))), tags = list(type = "list", 
@@ -460,6 +987,68 @@ create_transform_job_output <- function (...)
         tags = list(type = "string", max = 256L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:transform-job/.*"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
+}
+
+create_workteam_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(WorkteamName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+        MemberDefinitions = structure(list(structure(list(CognitoMemberDefinition = structure(list(UserPool = structure(logical(0), 
+            tags = list(type = "string", max = 55L, min = 1L, 
+                pattern = "[\\w-]+_[0-9a-zA-Z]+")), UserGroup = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "[\\p{L}\\p{M}\\p{S}\\p{N}\\p{P}]+")), 
+            ClientId = structure(logical(0), tags = list(type = "string", 
+                max = 128L, min = 1L, pattern = "[\\w+]+"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure"))), 
+            tags = list(type = "list", max = 10L, min = 1L)), 
+        Description = structure(logical(0), tags = list(type = "string", 
+            max = 200L, min = 1L)), Tags = structure(list(structure(list(Key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+            Value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L, min = 0L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+create_workteam_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(WorkteamArn = structure(logical(0), 
+        tags = list(type = "string", max = 256L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:workteam/.*"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_algorithm_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(AlgorithmName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*$"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_algorithm_output <- function () 
+{
+    return(list())
+}
+
+delete_code_repository_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(CodeRepositoryName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*$"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_code_repository_output <- function () 
+{
+    return(list())
 }
 
 delete_endpoint_input <- function (...) 
@@ -504,6 +1093,20 @@ delete_model_output <- function ()
     return(list())
 }
 
+delete_model_package_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(ModelPackageName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*$"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_model_package_output <- function () 
+{
+    return(list())
+}
+
 delete_notebook_instance_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -537,7 +1140,7 @@ delete_tags_input <- function (...)
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(ResourceArn = structure(logical(0), 
         tags = list(type = "string", max = 256L)), TagKeys = structure(list(structure(logical(0), 
-        tags = list(type = "string", max = 128L, min = 1L, pattern = "^((?!aws:)[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+        tags = list(type = "string", max = 128L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
         tags = list(type = "list", max = 50L, min = 1L))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -546,6 +1149,337 @@ delete_tags_output <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_workteam_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(WorkteamName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_workteam_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Success = structure(logical(0), tags = list(type = "boolean"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_algorithm_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(AlgorithmName = structure(logical(0), 
+        tags = list(type = "string", max = 170L, min = 1L, pattern = "(arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:[a-z\\-]*\\/)?([a-zA-Z0-9]([a-zA-Z0-9-]){0,62})(?<!-)$"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_algorithm_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(AlgorithmName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*$")), 
+        AlgorithmArn = structure(logical(0), tags = list(type = "string", 
+            max = 2048L, min = 1L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:algorithm/.*")), 
+        AlgorithmDescription = structure(logical(0), tags = list(type = "string", 
+            max = 1024L, pattern = "[\\p{L}\\p{M}\\p{Z}\\p{S}\\p{N}\\p{P}]*")), 
+        CreationTime = structure(logical(0), tags = list(type = "timestamp")), 
+        TrainingSpecification = structure(list(TrainingImage = structure(logical(0), 
+            tags = list(type = "string", max = 255L, pattern = "[\\S]+")), 
+            TrainingImageDigest = structure(logical(0), tags = list(type = "string", 
+                max = 72L, pattern = "^[Ss][Hh][Aa]256:[0-9a-fA-F]{64}$")), 
+            SupportedHyperParameters = structure(list(structure(list(Name = structure(logical(0), 
+                tags = list(type = "string", max = 256L)), Description = structure(logical(0), 
+                tags = list(type = "string", max = 1024L, pattern = "[\\p{L}\\p{M}\\p{Z}\\p{S}\\p{N}\\p{P}]*")), 
+                Type = structure(logical(0), tags = list(type = "string", 
+                  enum = c("Integer", "Continuous", "Categorical", 
+                    "FreeText"))), Range = structure(list(IntegerParameterRangeSpecification = structure(list(MinValue = structure(logical(0), 
+                  tags = list(type = "string", max = 256L)), 
+                  MaxValue = structure(logical(0), tags = list(type = "string", 
+                    max = 256L))), tags = list(type = "structure")), 
+                  ContinuousParameterRangeSpecification = structure(list(MinValue = structure(logical(0), 
+                    tags = list(type = "string", max = 256L)), 
+                    MaxValue = structure(logical(0), tags = list(type = "string", 
+                      max = 256L))), tags = list(type = "structure")), 
+                  CategoricalParameterRangeSpecification = structure(list(Values = structure(list(structure(logical(0), 
+                    tags = list(type = "string", max = 256L))), 
+                    tags = list(type = "list", max = 20L, min = 1L))), 
+                    tags = list(type = "structure"))), tags = list(type = "structure")), 
+                IsTunable = structure(logical(0), tags = list(type = "boolean")), 
+                IsRequired = structure(logical(0), tags = list(type = "boolean")), 
+                DefaultValue = structure(logical(0), tags = list(type = "string", 
+                  max = 256L))), tags = list(type = "structure"))), 
+                tags = list(type = "list", max = 100L, min = 0L)), 
+            SupportedTrainingInstanceTypes = structure(list(structure(logical(0), 
+                tags = list(type = "string", enum = c("ml.m4.xlarge", 
+                  "ml.m4.2xlarge", "ml.m4.4xlarge", "ml.m4.10xlarge", 
+                  "ml.m4.16xlarge", "ml.m5.large", "ml.m5.xlarge", 
+                  "ml.m5.2xlarge", "ml.m5.4xlarge", "ml.m5.12xlarge", 
+                  "ml.m5.24xlarge", "ml.c4.xlarge", "ml.c4.2xlarge", 
+                  "ml.c4.4xlarge", "ml.c4.8xlarge", "ml.p2.xlarge", 
+                  "ml.p2.8xlarge", "ml.p2.16xlarge", "ml.p3.2xlarge", 
+                  "ml.p3.8xlarge", "ml.p3.16xlarge", "ml.c5.xlarge", 
+                  "ml.c5.2xlarge", "ml.c5.4xlarge", "ml.c5.9xlarge", 
+                  "ml.c5.18xlarge")))), tags = list(type = "list")), 
+            SupportsDistributedTraining = structure(logical(0), 
+                tags = list(type = "boolean")), MetricDefinitions = structure(list(structure(list(Name = structure(logical(0), 
+                tags = list(type = "string", max = 255L, min = 1L)), 
+                Regex = structure(logical(0), tags = list(type = "string", 
+                  max = 500L, min = 1L))), tags = list(type = "structure"))), 
+                tags = list(type = "list", max = 20L, min = 0L)), 
+            TrainingChannels = structure(list(structure(list(Name = structure(logical(0), 
+                tags = list(type = "string", max = 64L, min = 1L, 
+                  pattern = "[A-Za-z0-9\\.\\-_]+")), Description = structure(logical(0), 
+                tags = list(type = "string", max = 1024L, pattern = "[\\p{L}\\p{M}\\p{Z}\\p{S}\\p{N}\\p{P}]*")), 
+                IsRequired = structure(logical(0), tags = list(type = "boolean")), 
+                SupportedContentTypes = structure(list(structure(logical(0), 
+                  tags = list(type = "string", max = 256L))), 
+                  tags = list(type = "list")), SupportedCompressionTypes = structure(list(structure(logical(0), 
+                  tags = list(type = "string", enum = c("None", 
+                    "Gzip")))), tags = list(type = "list")), 
+                SupportedInputModes = structure(list(structure(logical(0), 
+                  tags = list(type = "string", enum = c("Pipe", 
+                    "File")))), tags = list(type = "list", min = 1L))), 
+                tags = list(type = "structure"))), tags = list(type = "list", 
+                max = 8L, min = 1L)), SupportedTuningJobObjectiveMetrics = structure(list(structure(list(Type = structure(logical(0), 
+                tags = list(type = "string", enum = c("Maximize", 
+                  "Minimize"))), MetricName = structure(logical(0), 
+                tags = list(type = "string", max = 255L, min = 1L))), 
+                tags = list(type = "structure"))), tags = list(type = "list"))), 
+            tags = list(type = "structure")), InferenceSpecification = structure(list(Containers = structure(list(structure(list(ContainerHostname = structure(logical(0), 
+            tags = list(type = "string", max = 63L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+            Image = structure(logical(0), tags = list(type = "string", 
+                max = 255L, pattern = "[\\S]+")), ImageDigest = structure(logical(0), 
+                tags = list(type = "string", max = 72L, pattern = "^[Ss][Hh][Aa]256:[0-9a-fA-F]{64}$")), 
+            ModelDataUrl = structure(logical(0), tags = list(type = "string", 
+                max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$")), 
+            ProductId = structure(logical(0), tags = list(type = "string"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 1L, min = 1L)), SupportedTransformInstanceTypes = structure(list(structure(logical(0), 
+            tags = list(type = "string", enum = c("ml.m4.xlarge", 
+                "ml.m4.2xlarge", "ml.m4.4xlarge", "ml.m4.10xlarge", 
+                "ml.m4.16xlarge", "ml.c4.xlarge", "ml.c4.2xlarge", 
+                "ml.c4.4xlarge", "ml.c4.8xlarge", "ml.p2.xlarge", 
+                "ml.p2.8xlarge", "ml.p2.16xlarge", "ml.p3.2xlarge", 
+                "ml.p3.8xlarge", "ml.p3.16xlarge", "ml.c5.xlarge", 
+                "ml.c5.2xlarge", "ml.c5.4xlarge", "ml.c5.9xlarge", 
+                "ml.c5.18xlarge", "ml.m5.large", "ml.m5.xlarge", 
+                "ml.m5.2xlarge", "ml.m5.4xlarge", "ml.m5.12xlarge", 
+                "ml.m5.24xlarge")))), tags = list(type = "list", 
+            min = 1L)), SupportedRealtimeInferenceInstanceTypes = structure(list(structure(logical(0), 
+            tags = list(type = "string", enum = c("ml.t2.medium", 
+                "ml.t2.large", "ml.t2.xlarge", "ml.t2.2xlarge", 
+                "ml.m4.xlarge", "ml.m4.2xlarge", "ml.m4.4xlarge", 
+                "ml.m4.10xlarge", "ml.m4.16xlarge", "ml.m5.large", 
+                "ml.m5.xlarge", "ml.m5.2xlarge", "ml.m5.4xlarge", 
+                "ml.m5.12xlarge", "ml.m5.24xlarge", "ml.c4.large", 
+                "ml.c4.xlarge", "ml.c4.2xlarge", "ml.c4.4xlarge", 
+                "ml.c4.8xlarge", "ml.p2.xlarge", "ml.p2.8xlarge", 
+                "ml.p2.16xlarge", "ml.p3.2xlarge", "ml.p3.8xlarge", 
+                "ml.p3.16xlarge", "ml.c5.large", "ml.c5.xlarge", 
+                "ml.c5.2xlarge", "ml.c5.4xlarge", "ml.c5.9xlarge", 
+                "ml.c5.18xlarge")))), tags = list(type = "list")), 
+            SupportedContentTypes = structure(list(structure(logical(0), 
+                tags = list(type = "string", max = 256L))), tags = list(type = "list")), 
+            SupportedResponseMIMETypes = structure(list(structure(logical(0), 
+                tags = list(type = "string", max = 1024L))), 
+                tags = list(type = "list"))), tags = list(type = "structure")), 
+        ValidationSpecification = structure(list(ValidationRole = structure(logical(0), 
+            tags = list(type = "string", max = 2048L, min = 20L, 
+                pattern = "^arn:aws[a-z\\-]*:iam::\\d{12}:role/?[a-zA-Z_0-9+=,.@\\-_/]+$")), 
+            ValidationProfiles = structure(list(structure(list(ProfileName = structure(logical(0), 
+                tags = list(type = "string", max = 63L, min = 1L, 
+                  pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*$")), 
+                TrainingJobDefinition = structure(list(TrainingInputMode = structure(logical(0), 
+                  tags = list(type = "string", enum = c("Pipe", 
+                    "File"))), HyperParameters = structure(list(structure(logical(0), 
+                  tags = list(type = "string", max = 256L))), 
+                  tags = list(type = "map", max = 100L, min = 0L)), 
+                  InputDataConfig = structure(list(structure(list(ChannelName = structure(logical(0), 
+                    tags = list(type = "string", max = 64L, min = 1L, 
+                      pattern = "[A-Za-z0-9\\.\\-_]+")), DataSource = structure(list(S3DataSource = structure(list(S3DataType = structure(logical(0), 
+                    tags = list(type = "string", enum = c("ManifestFile", 
+                      "S3Prefix", "AugmentedManifestFile"))), 
+                    S3Uri = structure(logical(0), tags = list(type = "string", 
+                      max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$")), 
+                    S3DataDistributionType = structure(logical(0), 
+                      tags = list(type = "string", enum = c("FullyReplicated", 
+                        "ShardedByS3Key"))), AttributeNames = structure(list(structure(logical(0), 
+                      tags = list(type = "string", max = 256L, 
+                        min = 1L))), tags = list(type = "list", 
+                      max = 16L))), tags = list(type = "structure"))), 
+                    tags = list(type = "structure")), ContentType = structure(logical(0), 
+                    tags = list(type = "string", max = 256L)), 
+                    CompressionType = structure(logical(0), tags = list(type = "string", 
+                      enum = c("None", "Gzip"))), RecordWrapperType = structure(logical(0), 
+                      tags = list(type = "string", enum = c("None", 
+                        "RecordIO"))), InputMode = structure(logical(0), 
+                      tags = list(type = "string", enum = c("Pipe", 
+                        "File"))), ShuffleConfig = structure(list(Seed = structure(logical(0), 
+                      tags = list(type = "long"))), tags = list(type = "structure"))), 
+                    tags = list(type = "structure"))), tags = list(type = "list", 
+                    max = 8L, min = 1L)), OutputDataConfig = structure(list(KmsKeyId = structure(logical(0), 
+                    tags = list(type = "string", max = 2048L)), 
+                    S3OutputPath = structure(logical(0), tags = list(type = "string", 
+                      max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$"))), 
+                    tags = list(type = "structure")), ResourceConfig = structure(list(InstanceType = structure(logical(0), 
+                    tags = list(type = "string", enum = c("ml.m4.xlarge", 
+                      "ml.m4.2xlarge", "ml.m4.4xlarge", "ml.m4.10xlarge", 
+                      "ml.m4.16xlarge", "ml.m5.large", "ml.m5.xlarge", 
+                      "ml.m5.2xlarge", "ml.m5.4xlarge", "ml.m5.12xlarge", 
+                      "ml.m5.24xlarge", "ml.c4.xlarge", "ml.c4.2xlarge", 
+                      "ml.c4.4xlarge", "ml.c4.8xlarge", "ml.p2.xlarge", 
+                      "ml.p2.8xlarge", "ml.p2.16xlarge", "ml.p3.2xlarge", 
+                      "ml.p3.8xlarge", "ml.p3.16xlarge", "ml.c5.xlarge", 
+                      "ml.c5.2xlarge", "ml.c5.4xlarge", "ml.c5.9xlarge", 
+                      "ml.c5.18xlarge"))), InstanceCount = structure(logical(0), 
+                    tags = list(type = "integer", min = 1L)), 
+                    VolumeSizeInGB = structure(logical(0), tags = list(type = "integer", 
+                      min = 1L)), VolumeKmsKeyId = structure(logical(0), 
+                      tags = list(type = "string", max = 2048L))), 
+                    tags = list(type = "structure")), StoppingCondition = structure(list(MaxRuntimeInSeconds = structure(logical(0), 
+                    tags = list(type = "integer", min = 1L))), 
+                    tags = list(type = "structure"))), tags = list(type = "structure")), 
+                TransformJobDefinition = structure(list(MaxConcurrentTransforms = structure(logical(0), 
+                  tags = list(type = "integer", min = 0L)), MaxPayloadInMB = structure(logical(0), 
+                  tags = list(type = "integer", min = 0L)), BatchStrategy = structure(logical(0), 
+                  tags = list(type = "string", enum = c("MultiRecord", 
+                    "SingleRecord"))), Environment = structure(list(structure(logical(0), 
+                  tags = list(type = "string", max = 10240L))), 
+                  tags = list(type = "map", max = 16L)), TransformInput = structure(list(DataSource = structure(list(S3DataSource = structure(list(S3DataType = structure(logical(0), 
+                  tags = list(type = "string", enum = c("ManifestFile", 
+                    "S3Prefix", "AugmentedManifestFile"))), S3Uri = structure(logical(0), 
+                  tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$"))), 
+                  tags = list(type = "structure"))), tags = list(type = "structure")), 
+                  ContentType = structure(logical(0), tags = list(type = "string", 
+                    max = 256L)), CompressionType = structure(logical(0), 
+                    tags = list(type = "string", enum = c("None", 
+                      "Gzip"))), SplitType = structure(logical(0), 
+                    tags = list(type = "string", enum = c("None", 
+                      "Line", "RecordIO", "TFRecord")))), tags = list(type = "structure")), 
+                  TransformOutput = structure(list(S3OutputPath = structure(logical(0), 
+                    tags = list(type = "string", max = 1024L, 
+                      pattern = "^(https|s3)://([^/]+)/?(.*)$")), 
+                    Accept = structure(logical(0), tags = list(type = "string", 
+                      max = 256L)), AssembleWith = structure(logical(0), 
+                      tags = list(type = "string", enum = c("None", 
+                        "Line"))), KmsKeyId = structure(logical(0), 
+                      tags = list(type = "string", max = 2048L))), 
+                    tags = list(type = "structure")), TransformResources = structure(list(InstanceType = structure(logical(0), 
+                    tags = list(type = "string", enum = c("ml.m4.xlarge", 
+                      "ml.m4.2xlarge", "ml.m4.4xlarge", "ml.m4.10xlarge", 
+                      "ml.m4.16xlarge", "ml.c4.xlarge", "ml.c4.2xlarge", 
+                      "ml.c4.4xlarge", "ml.c4.8xlarge", "ml.p2.xlarge", 
+                      "ml.p2.8xlarge", "ml.p2.16xlarge", "ml.p3.2xlarge", 
+                      "ml.p3.8xlarge", "ml.p3.16xlarge", "ml.c5.xlarge", 
+                      "ml.c5.2xlarge", "ml.c5.4xlarge", "ml.c5.9xlarge", 
+                      "ml.c5.18xlarge", "ml.m5.large", "ml.m5.xlarge", 
+                      "ml.m5.2xlarge", "ml.m5.4xlarge", "ml.m5.12xlarge", 
+                      "ml.m5.24xlarge"))), InstanceCount = structure(logical(0), 
+                    tags = list(type = "integer", min = 1L)), 
+                    VolumeKmsKeyId = structure(logical(0), tags = list(type = "string", 
+                      max = 2048L))), tags = list(type = "structure"))), 
+                  tags = list(type = "structure"))), tags = list(type = "structure"))), 
+                tags = list(type = "list", max = 1L, min = 1L))), 
+            tags = list(type = "structure")), AlgorithmStatus = structure(logical(0), 
+            tags = list(type = "string", enum = c("Pending", 
+                "InProgress", "Completed", "Failed", "Deleting"))), 
+        AlgorithmStatusDetails = structure(list(ValidationStatuses = structure(list(structure(list(Name = structure(logical(0), 
+            tags = list(type = "string", max = 63L, min = 1L, 
+                pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*$")), 
+            Status = structure(logical(0), tags = list(type = "string", 
+                enum = c("NotStarted", "InProgress", "Completed", 
+                  "Failed"))), FailureReason = structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "list")), ImageScanStatuses = structure(list(structure(list(Name = structure(logical(0), 
+            tags = list(type = "string", max = 63L, min = 1L, 
+                pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*$")), 
+            Status = structure(logical(0), tags = list(type = "string", 
+                enum = c("NotStarted", "InProgress", "Completed", 
+                  "Failed"))), FailureReason = structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "list"))), tags = list(type = "structure")), 
+        ProductId = structure(logical(0), tags = list(type = "string")), 
+        CertifyForMarketplace = structure(logical(0), tags = list(type = "boolean"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_code_repository_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(CodeRepositoryName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*$"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_code_repository_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(CodeRepositoryName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*$")), 
+        CodeRepositoryArn = structure(logical(0), tags = list(type = "string", 
+            max = 2048L, min = 1L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:code-repository/.*")), 
+        CreationTime = structure(logical(0), tags = list(type = "timestamp")), 
+        LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), 
+        GitConfig = structure(list(RepositoryUrl = structure(logical(0), 
+            tags = list(type = "string", pattern = "^https://([^/]+)/?(.*)$")), 
+            Branch = structure(logical(0), tags = list(type = "string", 
+                max = 1024L, min = 1L)), SecretArn = structure(logical(0), 
+                tags = list(type = "string", max = 2048L, min = 1L, 
+                  pattern = "arn:aws[a-z\\-]*:secretsmanager:[a-z0-9\\-]*:[0-9]{12}:secret:.*"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_compilation_job_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(CompilationJobName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*$"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_compilation_job_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(CompilationJobName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*$")), 
+        CompilationJobArn = structure(logical(0), tags = list(type = "string", 
+            max = 256L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:compilation-job/.*")), 
+        CompilationJobStatus = structure(logical(0), tags = list(type = "string", 
+            enum = c("INPROGRESS", "COMPLETED", "FAILED", "STARTING", 
+                "STOPPING", "STOPPED"))), CompilationStartTime = structure(logical(0), 
+            tags = list(type = "timestamp")), CompilationEndTime = structure(logical(0), 
+            tags = list(type = "timestamp")), StoppingCondition = structure(list(MaxRuntimeInSeconds = structure(logical(0), 
+            tags = list(type = "integer", min = 1L))), tags = list(type = "structure")), 
+        CreationTime = structure(logical(0), tags = list(type = "timestamp")), 
+        LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), 
+        FailureReason = structure(logical(0), tags = list(type = "string", 
+            max = 1024L)), ModelArtifacts = structure(list(S3ModelArtifacts = structure(logical(0), 
+            tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$"))), 
+            tags = list(type = "structure")), RoleArn = structure(logical(0), 
+            tags = list(type = "string", max = 2048L, min = 20L, 
+                pattern = "^arn:aws[a-z\\-]*:iam::\\d{12}:role/?[a-zA-Z_0-9+=,.@\\-_/]+$")), 
+        InputConfig = structure(list(S3Uri = structure(logical(0), 
+            tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$")), 
+            DataInputConfig = structure(logical(0), tags = list(type = "string", 
+                max = 1024L, min = 1L)), Framework = structure(logical(0), 
+                tags = list(type = "string", enum = c("TENSORFLOW", 
+                  "MXNET", "ONNX", "PYTORCH", "XGBOOST")))), 
+            tags = list(type = "structure")), OutputConfig = structure(list(S3OutputLocation = structure(logical(0), 
+            tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$")), 
+            TargetDevice = structure(logical(0), tags = list(type = "string", 
+                enum = c("ml_m4", "ml_m5", "ml_c4", "ml_c5", 
+                  "ml_p2", "ml_p3", "jetson_tx1", "jetson_tx2", 
+                  "rasp3b", "deeplens")))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -621,7 +1555,9 @@ describe_endpoint_config_output <- function (...)
                   "ml.p3.16xlarge", "ml.c5.large", "ml.c5.xlarge", 
                   "ml.c5.2xlarge", "ml.c5.4xlarge", "ml.c5.9xlarge", 
                   "ml.c5.18xlarge"))), InitialVariantWeight = structure(logical(0), 
-                tags = list(type = "float", min = 0L))), tags = list(type = "structure"))), 
+                tags = list(type = "float", min = 0L)), AcceleratorType = structure(logical(0), 
+                tags = list(type = "string", enum = c("ml.eia1.medium", 
+                  "ml.eia1.large", "ml.eia1.xlarge")))), tags = list(type = "structure"))), 
             tags = list(type = "list", min = 1L)), KmsKeyId = structure(logical(0), 
             tags = list(type = "string", max = 2048L)), CreationTime = structure(logical(0), 
             tags = list(type = "timestamp"))), tags = list(type = "structure"))
@@ -670,12 +1606,17 @@ describe_hyper_parameter_tuning_job_output <- function (...)
                     tags = list(type = "string", max = 256L))), 
                     tags = list(type = "list", max = 20L, min = 1L))), 
                   tags = list(type = "structure"))), tags = list(type = "list", 
-                  max = 20L, min = 0L))), tags = list(type = "structure"))), 
-            tags = list(type = "structure")), TrainingJobDefinition = structure(list(StaticHyperParameters = structure(list(structure(logical(0), 
+                  max = 20L, min = 0L))), tags = list(type = "structure")), 
+            TrainingJobEarlyStoppingType = structure(logical(0), 
+                tags = list(type = "string", enum = c("Off", 
+                  "Auto")))), tags = list(type = "structure")), 
+        TrainingJobDefinition = structure(list(StaticHyperParameters = structure(list(structure(logical(0), 
             tags = list(type = "string", max = 256L))), tags = list(type = "map", 
             max = 100L, min = 0L)), AlgorithmSpecification = structure(list(TrainingImage = structure(logical(0), 
             tags = list(type = "string", max = 255L)), TrainingInputMode = structure(logical(0), 
             tags = list(type = "string", enum = c("Pipe", "File"))), 
+            AlgorithmName = structure(logical(0), tags = list(type = "string", 
+                max = 170L, min = 1L, pattern = "(arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:[a-z\\-]*\\/)?([a-zA-Z0-9]([a-zA-Z0-9-]){0,62})(?<!-)$")), 
             MetricDefinitions = structure(list(structure(list(Name = structure(logical(0), 
                 tags = list(type = "string", max = 255L, min = 1L)), 
                 Regex = structure(logical(0), tags = list(type = "string", 
@@ -688,11 +1629,13 @@ describe_hyper_parameter_tuning_job_output <- function (...)
                 tags = list(type = "string", max = 64L, min = 1L, 
                   pattern = "[A-Za-z0-9\\.\\-_]+")), DataSource = structure(list(S3DataSource = structure(list(S3DataType = structure(logical(0), 
                 tags = list(type = "string", enum = c("ManifestFile", 
-                  "S3Prefix"))), S3Uri = structure(logical(0), 
+                  "S3Prefix", "AugmentedManifestFile"))), S3Uri = structure(logical(0), 
                 tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$")), 
                 S3DataDistributionType = structure(logical(0), 
                   tags = list(type = "string", enum = c("FullyReplicated", 
-                    "ShardedByS3Key")))), tags = list(type = "structure"))), 
+                    "ShardedByS3Key"))), AttributeNames = structure(list(structure(logical(0), 
+                  tags = list(type = "string", max = 256L, min = 1L))), 
+                  tags = list(type = "list", max = 16L))), tags = list(type = "structure"))), 
                 tags = list(type = "structure")), ContentType = structure(logical(0), 
                 tags = list(type = "string", max = 256L)), CompressionType = structure(logical(0), 
                 tags = list(type = "string", enum = c("None", 
@@ -700,9 +1643,10 @@ describe_hyper_parameter_tuning_job_output <- function (...)
                 tags = list(type = "string", enum = c("None", 
                   "RecordIO"))), InputMode = structure(logical(0), 
                 tags = list(type = "string", enum = c("Pipe", 
-                  "File")))), tags = list(type = "structure"))), 
-                tags = list(type = "list", max = 8L, min = 1L)), 
-            VpcConfig = structure(list(SecurityGroupIds = structure(list(structure(logical(0), 
+                  "File"))), ShuffleConfig = structure(list(Seed = structure(logical(0), 
+                tags = list(type = "long"))), tags = list(type = "structure"))), 
+                tags = list(type = "structure"))), tags = list(type = "list", 
+                max = 8L, min = 1L)), VpcConfig = structure(list(SecurityGroupIds = structure(list(structure(logical(0), 
                 tags = list(type = "string", max = 32L))), tags = list(type = "list", 
                 max = 5L, min = 1L)), Subnets = structure(list(structure(logical(0), 
                 tags = list(type = "string", max = 32L))), tags = list(type = "list", 
@@ -725,8 +1669,11 @@ describe_hyper_parameter_tuning_job_output <- function (...)
                 tags = list(type = "integer", min = 1L)), VolumeKmsKeyId = structure(logical(0), 
                 tags = list(type = "string", max = 2048L))), 
                 tags = list(type = "structure")), StoppingCondition = structure(list(MaxRuntimeInSeconds = structure(logical(0), 
-                tags = list(type = "integer", min = 1L))), tags = list(type = "structure"))), 
-            tags = list(type = "structure")), HyperParameterTuningJobStatus = structure(logical(0), 
+                tags = list(type = "integer", min = 1L))), tags = list(type = "structure")), 
+            EnableNetworkIsolation = structure(logical(0), tags = list(type = "boolean")), 
+            EnableInterContainerTrafficEncryption = structure(logical(0), 
+                tags = list(type = "boolean"))), tags = list(type = "structure")), 
+        HyperParameterTuningJobStatus = structure(logical(0), 
             tags = list(type = "string", enum = c("Completed", 
                 "InProgress", "Failed", "Stopped", "Stopping"))), 
         CreationTime = structure(logical(0), tags = list(type = "timestamp")), 
@@ -746,6 +1693,8 @@ describe_hyper_parameter_tuning_job_output <- function (...)
             tags = list(type = "string", max = 63L, min = 1L, 
                 pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), TrainingJobArn = structure(logical(0), 
             tags = list(type = "string", max = 256L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:training-job/.*")), 
+            TuningJobName = structure(logical(0), tags = list(type = "string", 
+                max = 32L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
             CreationTime = structure(logical(0), tags = list(type = "timestamp")), 
             TrainingStartTime = structure(logical(0), tags = list(type = "timestamp")), 
             TrainingEndTime = structure(logical(0), tags = list(type = "timestamp")), 
@@ -762,8 +1711,133 @@ describe_hyper_parameter_tuning_job_output <- function (...)
                 tags = list(type = "structure")), ObjectiveStatus = structure(logical(0), 
                 tags = list(type = "string", enum = c("Succeeded", 
                   "Pending", "Failed")))), tags = list(type = "structure")), 
+        OverallBestTrainingJob = structure(list(TrainingJobName = structure(logical(0), 
+            tags = list(type = "string", max = 63L, min = 1L, 
+                pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), TrainingJobArn = structure(logical(0), 
+            tags = list(type = "string", max = 256L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:training-job/.*")), 
+            TuningJobName = structure(logical(0), tags = list(type = "string", 
+                max = 32L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+            CreationTime = structure(logical(0), tags = list(type = "timestamp")), 
+            TrainingStartTime = structure(logical(0), tags = list(type = "timestamp")), 
+            TrainingEndTime = structure(logical(0), tags = list(type = "timestamp")), 
+            TrainingJobStatus = structure(logical(0), tags = list(type = "string", 
+                enum = c("InProgress", "Completed", "Failed", 
+                  "Stopping", "Stopped"))), TunedHyperParameters = structure(list(structure(logical(0), 
+                tags = list(type = "string", max = 256L))), tags = list(type = "map", 
+                max = 100L, min = 0L)), FailureReason = structure(logical(0), 
+                tags = list(type = "string", max = 1024L)), FinalHyperParameterTuningJobObjectiveMetric = structure(list(Type = structure(logical(0), 
+                tags = list(type = "string", enum = c("Maximize", 
+                  "Minimize"))), MetricName = structure(logical(0), 
+                tags = list(type = "string", max = 255L, min = 1L)), 
+                Value = structure(logical(0), tags = list(type = "float"))), 
+                tags = list(type = "structure")), ObjectiveStatus = structure(logical(0), 
+                tags = list(type = "string", enum = c("Succeeded", 
+                  "Pending", "Failed")))), tags = list(type = "structure")), 
+        WarmStartConfig = structure(list(ParentHyperParameterTuningJobs = structure(list(structure(list(HyperParameterTuningJobName = structure(logical(0), 
+            tags = list(type = "string", max = 32L, min = 1L, 
+                pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 5L, min = 1L)), WarmStartType = structure(logical(0), 
+            tags = list(type = "string", enum = c("IdenticalDataAndAlgorithm", 
+                "TransferLearning")))), tags = list(type = "structure")), 
         FailureReason = structure(logical(0), tags = list(type = "string", 
             max = 1024L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_labeling_job_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(LabelingJobName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_labeling_job_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(LabelingJobStatus = structure(logical(0), 
+        tags = list(type = "string", enum = c("InProgress", "Completed", 
+            "Failed", "Stopping", "Stopped"))), LabelCounters = structure(list(TotalLabeled = structure(logical(0), 
+        tags = list(type = "integer", min = 0L)), HumanLabeled = structure(logical(0), 
+        tags = list(type = "integer", min = 0L)), MachineLabeled = structure(logical(0), 
+        tags = list(type = "integer", min = 0L)), FailedNonRetryableError = structure(logical(0), 
+        tags = list(type = "integer", min = 0L)), Unlabeled = structure(logical(0), 
+        tags = list(type = "integer", min = 0L))), tags = list(type = "structure")), 
+        FailureReason = structure(logical(0), tags = list(type = "string", 
+            max = 1024L)), CreationTime = structure(logical(0), 
+            tags = list(type = "timestamp")), LastModifiedTime = structure(logical(0), 
+            tags = list(type = "timestamp")), JobReferenceCode = structure(logical(0), 
+            tags = list(type = "string", min = 1L)), LabelingJobName = structure(logical(0), 
+            tags = list(type = "string", max = 63L, min = 1L, 
+                pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), LabelingJobArn = structure(logical(0), 
+            tags = list(type = "string", max = 2048L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:labeling-job/.*")), 
+        LabelAttributeName = structure(logical(0), tags = list(type = "string", 
+            max = 127L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+        InputConfig = structure(list(DataSource = structure(list(S3DataSource = structure(list(ManifestS3Uri = structure(logical(0), 
+            tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure")), 
+            DataAttributes = structure(list(ContentClassifiers = structure(list(structure(logical(0), 
+                tags = list(type = "string", enum = c("FreeOfPersonallyIdentifiableInformation", 
+                  "FreeOfAdultContent")))), tags = list(type = "list", 
+                max = 256L))), tags = list(type = "structure"))), 
+            tags = list(type = "structure")), OutputConfig = structure(list(S3OutputPath = structure(logical(0), 
+            tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$")), 
+            KmsKeyId = structure(logical(0), tags = list(type = "string", 
+                max = 2048L))), tags = list(type = "structure")), 
+        RoleArn = structure(logical(0), tags = list(type = "string", 
+            max = 2048L, min = 20L, pattern = "^arn:aws[a-z\\-]*:iam::\\d{12}:role/?[a-zA-Z_0-9+=,.@\\-_/]+$")), 
+        LabelCategoryConfigS3Uri = structure(logical(0), tags = list(type = "string", 
+            max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$")), 
+        StoppingConditions = structure(list(MaxHumanLabeledObjectCount = structure(logical(0), 
+            tags = list(type = "integer", min = 1L)), MaxPercentageOfInputDatasetLabeled = structure(logical(0), 
+            tags = list(type = "integer", max = 100L, min = 1L))), 
+            tags = list(type = "structure")), LabelingJobAlgorithmsConfig = structure(list(LabelingJobAlgorithmSpecificationArn = structure(logical(0), 
+            tags = list(type = "string", max = 2048L)), InitialActiveLearningModelArn = structure(logical(0), 
+            tags = list(type = "string", max = 2048L, min = 20L)), 
+            LabelingJobResourceConfig = structure(list(VolumeKmsKeyId = structure(logical(0), 
+                tags = list(type = "string", max = 2048L))), 
+                tags = list(type = "structure"))), tags = list(type = "structure")), 
+        HumanTaskConfig = structure(list(WorkteamArn = structure(logical(0), 
+            tags = list(type = "string", max = 256L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:workteam/.*")), 
+            UiConfig = structure(list(UiTemplateS3Uri = structure(logical(0), 
+                tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$"))), 
+                tags = list(type = "structure")), PreHumanTaskLambdaArn = structure(logical(0), 
+                tags = list(type = "string", max = 2048L, pattern = "arn:aws[a-z\\-]*:lambda:[a-z]{2}-[a-z]+-\\d{1}:\\d{12}:function:[a-zA-Z0-9-_\\.]+(:(\\$LATEST|[a-zA-Z0-9-_]+))?")), 
+            TaskKeywords = structure(list(structure(logical(0), 
+                tags = list(type = "string", max = 30L, min = 1L, 
+                  pattern = "^[A-Za-z0-9]+( [A-Za-z0-9]+)*$"))), 
+                tags = list(type = "list", max = 5L, min = 1L)), 
+            TaskTitle = structure(logical(0), tags = list(type = "string", 
+                max = 128L, min = 1L, pattern = "^[\\t\\n\\r -\\uD7FF\\uE000-\\uFFFD]*$")), 
+            TaskDescription = structure(logical(0), tags = list(type = "string", 
+                max = 255L, min = 1L)), NumberOfHumanWorkersPerDataObject = structure(logical(0), 
+                tags = list(type = "integer", max = 9L, min = 1L)), 
+            TaskTimeLimitInSeconds = structure(logical(0), tags = list(type = "integer", 
+                max = 3600L, min = 1L)), TaskAvailabilityLifetimeInSeconds = structure(logical(0), 
+                tags = list(type = "integer", max = 345600L, 
+                  min = 1L)), MaxConcurrentTaskCount = structure(logical(0), 
+                tags = list(type = "integer", max = 1000L, min = 1L)), 
+            AnnotationConsolidationConfig = structure(list(AnnotationConsolidationLambdaArn = structure(logical(0), 
+                tags = list(type = "string", max = 2048L, pattern = "arn:aws[a-z\\-]*:lambda:[a-z]{2}-[a-z]+-\\d{1}:\\d{12}:function:[a-zA-Z0-9-_\\.]+(:(\\$LATEST|[a-zA-Z0-9-_]+))?"))), 
+                tags = list(type = "structure")), PublicWorkforceTaskPrice = structure(list(AmountInUsd = structure(list(Dollars = structure(logical(0), 
+                tags = list(type = "integer", max = 1L, min = 0L)), 
+                Cents = structure(logical(0), tags = list(type = "integer", 
+                  max = 99L, min = 0L)), TenthFractionsOfACent = structure(logical(0), 
+                  tags = list(type = "integer", max = 9L, min = 0L))), 
+                tags = list(type = "structure"))), tags = list(type = "structure"))), 
+            tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+            Value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L, min = 0L)), LabelingJobOutput = structure(list(OutputDatasetS3Uri = structure(logical(0), 
+            tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$")), 
+            FinalActiveLearningModelArn = structure(logical(0), 
+                tags = list(type = "string", max = 2048L, min = 20L))), 
+            tags = list(type = "structure"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -788,9 +1862,23 @@ describe_model_output <- function (...)
                 tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$")), 
             Environment = structure(list(structure(logical(0), 
                 tags = list(type = "string", max = 1024L))), 
-                tags = list(type = "map", max = 16L))), tags = list(type = "structure")), 
-        ExecutionRoleArn = structure(logical(0), tags = list(type = "string", 
-            max = 2048L, min = 20L, pattern = "^arn:aws[a-z\\-]*:iam::\\d{12}:role/?[a-zA-Z_0-9+=,.@\\-_/]+$")), 
+                tags = list(type = "map", max = 16L)), ModelPackageName = structure(logical(0), 
+                tags = list(type = "string", max = 170L, min = 1L, 
+                  pattern = "(arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:[a-z\\-]*\\/)?([a-zA-Z0-9]([a-zA-Z0-9-]){0,62})(?<!-)$"))), 
+            tags = list(type = "structure")), Containers = structure(list(structure(list(ContainerHostname = structure(logical(0), 
+            tags = list(type = "string", max = 63L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+            Image = structure(logical(0), tags = list(type = "string", 
+                max = 255L, pattern = "[\\S]+")), ModelDataUrl = structure(logical(0), 
+                tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$")), 
+            Environment = structure(list(structure(logical(0), 
+                tags = list(type = "string", max = 1024L))), 
+                tags = list(type = "map", max = 16L)), ModelPackageName = structure(logical(0), 
+                tags = list(type = "string", max = 170L, min = 1L, 
+                  pattern = "(arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:[a-z\\-]*\\/)?([a-zA-Z0-9]([a-zA-Z0-9-]){0,62})(?<!-)$"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 5L)), ExecutionRoleArn = structure(logical(0), 
+            tags = list(type = "string", max = 2048L, min = 20L, 
+                pattern = "^arn:aws[a-z\\-]*:iam::\\d{12}:role/?[a-zA-Z_0-9+=,.@\\-_/]+$")), 
         VpcConfig = structure(list(SecurityGroupIds = structure(list(structure(logical(0), 
             tags = list(type = "string", max = 32L))), tags = list(type = "list", 
             max = 5L, min = 1L)), Subnets = structure(list(structure(logical(0), 
@@ -798,7 +1886,141 @@ describe_model_output <- function (...)
             max = 16L, min = 1L))), tags = list(type = "structure")), 
         CreationTime = structure(logical(0), tags = list(type = "timestamp")), 
         ModelArn = structure(logical(0), tags = list(type = "string", 
-            max = 2048L, min = 20L))), tags = list(type = "structure"))
+            max = 2048L, min = 20L)), EnableNetworkIsolation = structure(logical(0), 
+            tags = list(type = "boolean"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_model_package_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(ModelPackageName = structure(logical(0), 
+        tags = list(type = "string", max = 170L, min = 1L, pattern = "(arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:[a-z\\-]*\\/)?([a-zA-Z0-9]([a-zA-Z0-9-]){0,62})(?<!-)$"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_model_package_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(ModelPackageName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*$")), 
+        ModelPackageArn = structure(logical(0), tags = list(type = "string", 
+            max = 2048L, min = 1L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:model-package/.*")), 
+        ModelPackageDescription = structure(logical(0), tags = list(type = "string", 
+            max = 1024L, pattern = "[\\p{L}\\p{M}\\p{Z}\\p{S}\\p{N}\\p{P}]*")), 
+        CreationTime = structure(logical(0), tags = list(type = "timestamp")), 
+        InferenceSpecification = structure(list(Containers = structure(list(structure(list(ContainerHostname = structure(logical(0), 
+            tags = list(type = "string", max = 63L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+            Image = structure(logical(0), tags = list(type = "string", 
+                max = 255L, pattern = "[\\S]+")), ImageDigest = structure(logical(0), 
+                tags = list(type = "string", max = 72L, pattern = "^[Ss][Hh][Aa]256:[0-9a-fA-F]{64}$")), 
+            ModelDataUrl = structure(logical(0), tags = list(type = "string", 
+                max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$")), 
+            ProductId = structure(logical(0), tags = list(type = "string"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 1L, min = 1L)), SupportedTransformInstanceTypes = structure(list(structure(logical(0), 
+            tags = list(type = "string", enum = c("ml.m4.xlarge", 
+                "ml.m4.2xlarge", "ml.m4.4xlarge", "ml.m4.10xlarge", 
+                "ml.m4.16xlarge", "ml.c4.xlarge", "ml.c4.2xlarge", 
+                "ml.c4.4xlarge", "ml.c4.8xlarge", "ml.p2.xlarge", 
+                "ml.p2.8xlarge", "ml.p2.16xlarge", "ml.p3.2xlarge", 
+                "ml.p3.8xlarge", "ml.p3.16xlarge", "ml.c5.xlarge", 
+                "ml.c5.2xlarge", "ml.c5.4xlarge", "ml.c5.9xlarge", 
+                "ml.c5.18xlarge", "ml.m5.large", "ml.m5.xlarge", 
+                "ml.m5.2xlarge", "ml.m5.4xlarge", "ml.m5.12xlarge", 
+                "ml.m5.24xlarge")))), tags = list(type = "list", 
+            min = 1L)), SupportedRealtimeInferenceInstanceTypes = structure(list(structure(logical(0), 
+            tags = list(type = "string", enum = c("ml.t2.medium", 
+                "ml.t2.large", "ml.t2.xlarge", "ml.t2.2xlarge", 
+                "ml.m4.xlarge", "ml.m4.2xlarge", "ml.m4.4xlarge", 
+                "ml.m4.10xlarge", "ml.m4.16xlarge", "ml.m5.large", 
+                "ml.m5.xlarge", "ml.m5.2xlarge", "ml.m5.4xlarge", 
+                "ml.m5.12xlarge", "ml.m5.24xlarge", "ml.c4.large", 
+                "ml.c4.xlarge", "ml.c4.2xlarge", "ml.c4.4xlarge", 
+                "ml.c4.8xlarge", "ml.p2.xlarge", "ml.p2.8xlarge", 
+                "ml.p2.16xlarge", "ml.p3.2xlarge", "ml.p3.8xlarge", 
+                "ml.p3.16xlarge", "ml.c5.large", "ml.c5.xlarge", 
+                "ml.c5.2xlarge", "ml.c5.4xlarge", "ml.c5.9xlarge", 
+                "ml.c5.18xlarge")))), tags = list(type = "list")), 
+            SupportedContentTypes = structure(list(structure(logical(0), 
+                tags = list(type = "string", max = 256L))), tags = list(type = "list")), 
+            SupportedResponseMIMETypes = structure(list(structure(logical(0), 
+                tags = list(type = "string", max = 1024L))), 
+                tags = list(type = "list"))), tags = list(type = "structure")), 
+        SourceAlgorithmSpecification = structure(list(SourceAlgorithms = structure(list(structure(list(ModelDataUrl = structure(logical(0), 
+            tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$")), 
+            AlgorithmName = structure(logical(0), tags = list(type = "string", 
+                max = 170L, min = 1L, pattern = "(arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:[a-z\\-]*\\/)?([a-zA-Z0-9]([a-zA-Z0-9-]){0,62})(?<!-)$"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 1L, min = 1L))), tags = list(type = "structure")), 
+        ValidationSpecification = structure(list(ValidationRole = structure(logical(0), 
+            tags = list(type = "string", max = 2048L, min = 20L, 
+                pattern = "^arn:aws[a-z\\-]*:iam::\\d{12}:role/?[a-zA-Z_0-9+=,.@\\-_/]+$")), 
+            ValidationProfiles = structure(list(structure(list(ProfileName = structure(logical(0), 
+                tags = list(type = "string", max = 63L, min = 1L, 
+                  pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*$")), 
+                TransformJobDefinition = structure(list(MaxConcurrentTransforms = structure(logical(0), 
+                  tags = list(type = "integer", min = 0L)), MaxPayloadInMB = structure(logical(0), 
+                  tags = list(type = "integer", min = 0L)), BatchStrategy = structure(logical(0), 
+                  tags = list(type = "string", enum = c("MultiRecord", 
+                    "SingleRecord"))), Environment = structure(list(structure(logical(0), 
+                  tags = list(type = "string", max = 10240L))), 
+                  tags = list(type = "map", max = 16L)), TransformInput = structure(list(DataSource = structure(list(S3DataSource = structure(list(S3DataType = structure(logical(0), 
+                  tags = list(type = "string", enum = c("ManifestFile", 
+                    "S3Prefix", "AugmentedManifestFile"))), S3Uri = structure(logical(0), 
+                  tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$"))), 
+                  tags = list(type = "structure"))), tags = list(type = "structure")), 
+                  ContentType = structure(logical(0), tags = list(type = "string", 
+                    max = 256L)), CompressionType = structure(logical(0), 
+                    tags = list(type = "string", enum = c("None", 
+                      "Gzip"))), SplitType = structure(logical(0), 
+                    tags = list(type = "string", enum = c("None", 
+                      "Line", "RecordIO", "TFRecord")))), tags = list(type = "structure")), 
+                  TransformOutput = structure(list(S3OutputPath = structure(logical(0), 
+                    tags = list(type = "string", max = 1024L, 
+                      pattern = "^(https|s3)://([^/]+)/?(.*)$")), 
+                    Accept = structure(logical(0), tags = list(type = "string", 
+                      max = 256L)), AssembleWith = structure(logical(0), 
+                      tags = list(type = "string", enum = c("None", 
+                        "Line"))), KmsKeyId = structure(logical(0), 
+                      tags = list(type = "string", max = 2048L))), 
+                    tags = list(type = "structure")), TransformResources = structure(list(InstanceType = structure(logical(0), 
+                    tags = list(type = "string", enum = c("ml.m4.xlarge", 
+                      "ml.m4.2xlarge", "ml.m4.4xlarge", "ml.m4.10xlarge", 
+                      "ml.m4.16xlarge", "ml.c4.xlarge", "ml.c4.2xlarge", 
+                      "ml.c4.4xlarge", "ml.c4.8xlarge", "ml.p2.xlarge", 
+                      "ml.p2.8xlarge", "ml.p2.16xlarge", "ml.p3.2xlarge", 
+                      "ml.p3.8xlarge", "ml.p3.16xlarge", "ml.c5.xlarge", 
+                      "ml.c5.2xlarge", "ml.c5.4xlarge", "ml.c5.9xlarge", 
+                      "ml.c5.18xlarge", "ml.m5.large", "ml.m5.xlarge", 
+                      "ml.m5.2xlarge", "ml.m5.4xlarge", "ml.m5.12xlarge", 
+                      "ml.m5.24xlarge"))), InstanceCount = structure(logical(0), 
+                    tags = list(type = "integer", min = 1L)), 
+                    VolumeKmsKeyId = structure(logical(0), tags = list(type = "string", 
+                      max = 2048L))), tags = list(type = "structure"))), 
+                  tags = list(type = "structure"))), tags = list(type = "structure"))), 
+                tags = list(type = "list", max = 1L, min = 1L))), 
+            tags = list(type = "structure")), ModelPackageStatus = structure(logical(0), 
+            tags = list(type = "string", enum = c("Pending", 
+                "InProgress", "Completed", "Failed", "Deleting"))), 
+        ModelPackageStatusDetails = structure(list(ValidationStatuses = structure(list(structure(list(Name = structure(logical(0), 
+            tags = list(type = "string", max = 63L, min = 1L, 
+                pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*$")), 
+            Status = structure(logical(0), tags = list(type = "string", 
+                enum = c("NotStarted", "InProgress", "Completed", 
+                  "Failed"))), FailureReason = structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "list")), ImageScanStatuses = structure(list(structure(list(Name = structure(logical(0), 
+            tags = list(type = "string", max = 63L, min = 1L, 
+                pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*$")), 
+            Status = structure(logical(0), tags = list(type = "string", 
+                enum = c("NotStarted", "InProgress", "Completed", 
+                  "Failed"))), FailureReason = structure(logical(0), 
+                tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "list"))), tags = list(type = "structure")), 
+        CertifyForMarketplace = structure(logical(0), tags = list(type = "boolean"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -824,10 +2046,18 @@ describe_notebook_instance_output <- function (...)
             tags = list(type = "string")), InstanceType = structure(logical(0), 
             tags = list(type = "string", enum = c("ml.t2.medium", 
                 "ml.t2.large", "ml.t2.xlarge", "ml.t2.2xlarge", 
-                "ml.m4.xlarge", "ml.m4.2xlarge", "ml.m4.4xlarge", 
-                "ml.m4.10xlarge", "ml.m4.16xlarge", "ml.p2.xlarge", 
-                "ml.p2.8xlarge", "ml.p2.16xlarge", "ml.p3.2xlarge", 
-                "ml.p3.8xlarge", "ml.p3.16xlarge"))), SubnetId = structure(logical(0), 
+                "ml.t3.medium", "ml.t3.large", "ml.t3.xlarge", 
+                "ml.t3.2xlarge", "ml.m4.xlarge", "ml.m4.2xlarge", 
+                "ml.m4.4xlarge", "ml.m4.10xlarge", "ml.m4.16xlarge", 
+                "ml.m5.xlarge", "ml.m5.2xlarge", "ml.m5.4xlarge", 
+                "ml.m5.12xlarge", "ml.m5.24xlarge", "ml.c4.xlarge", 
+                "ml.c4.2xlarge", "ml.c4.4xlarge", "ml.c4.8xlarge", 
+                "ml.c5.xlarge", "ml.c5.2xlarge", "ml.c5.4xlarge", 
+                "ml.c5.9xlarge", "ml.c5.18xlarge", "ml.c5d.xlarge", 
+                "ml.c5d.2xlarge", "ml.c5d.4xlarge", "ml.c5d.9xlarge", 
+                "ml.c5d.18xlarge", "ml.p2.xlarge", "ml.p2.8xlarge", 
+                "ml.p2.16xlarge", "ml.p3.2xlarge", "ml.p3.8xlarge", 
+                "ml.p3.16xlarge"))), SubnetId = structure(logical(0), 
             tags = list(type = "string", max = 32L)), SecurityGroups = structure(list(structure(logical(0), 
             tags = list(type = "string", max = 32L))), tags = list(type = "list", 
             max = 5L)), RoleArn = structure(logical(0), tags = list(type = "string", 
@@ -840,8 +2070,16 @@ describe_notebook_instance_output <- function (...)
             tags = list(type = "string", max = 63L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
         DirectInternetAccess = structure(logical(0), tags = list(type = "string", 
             enum = c("Enabled", "Disabled"))), VolumeSizeInGB = structure(logical(0), 
-            tags = list(type = "integer", max = 16384L, min = 5L))), 
-        tags = list(type = "structure"))
+            tags = list(type = "integer", max = 16384L, min = 5L)), 
+        AcceleratorTypes = structure(list(structure(logical(0), 
+            tags = list(type = "string", enum = c("ml.eia1.medium", 
+                "ml.eia1.large", "ml.eia1.xlarge")))), tags = list(type = "list")), 
+        DefaultCodeRepository = structure(logical(0), tags = list(type = "string", 
+            max = 1024L, min = 1L, pattern = "^https://([^/]+)/?(.*)$|^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+        AdditionalCodeRepositories = structure(list(structure(logical(0), 
+            tags = list(type = "string", max = 1024L, min = 1L, 
+                pattern = "^https://([^/]+)/?(.*)$|^[a-zA-Z0-9](-*[a-zA-Z0-9])*"))), 
+            tags = list(type = "list", max = 3L))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -872,6 +2110,29 @@ describe_notebook_instance_lifecycle_config_output <- function (...)
     return(populate(args, shape))
 }
 
+describe_subscribed_workteam_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(WorkteamArn = structure(logical(0), 
+        tags = list(type = "string", max = 256L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:workteam/.*"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_subscribed_workteam_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(SubscribedWorkteam = structure(list(WorkteamArn = structure(logical(0), 
+        tags = list(type = "string", max = 256L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:workteam/.*")), 
+        MarketplaceTitle = structure(logical(0), tags = list(type = "string", 
+            max = 200L, min = 1L)), SellerName = structure(logical(0), 
+            tags = list(type = "string")), MarketplaceDescription = structure(logical(0), 
+            tags = list(type = "string", max = 200L, min = 1L)), 
+        ListingId = structure(logical(0), tags = list(type = "string"))), 
+        tags = list(type = "structure"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 describe_training_job_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -890,6 +2151,8 @@ describe_training_job_output <- function (...)
             max = 256L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:training-job/.*")), 
         TuningJobArn = structure(logical(0), tags = list(type = "string", 
             max = 256L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:hyper-parameter-tuning-job/.*")), 
+        LabelingJobArn = structure(logical(0), tags = list(type = "string", 
+            max = 2048L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:labeling-job/.*")), 
         ModelArtifacts = structure(list(S3ModelArtifacts = structure(logical(0), 
             tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$"))), 
             tags = list(type = "structure")), TrainingJobStatus = structure(logical(0), 
@@ -903,8 +2166,15 @@ describe_training_job_output <- function (...)
             tags = list(type = "string", max = 1024L)), HyperParameters = structure(list(structure(logical(0), 
             tags = list(type = "string", max = 256L))), tags = list(type = "map", 
             max = 100L, min = 0L)), AlgorithmSpecification = structure(list(TrainingImage = structure(logical(0), 
-            tags = list(type = "string", max = 255L)), TrainingInputMode = structure(logical(0), 
-            tags = list(type = "string", enum = c("Pipe", "File")))), 
+            tags = list(type = "string", max = 255L)), AlgorithmName = structure(logical(0), 
+            tags = list(type = "string", max = 170L, min = 1L, 
+                pattern = "(arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:[a-z\\-]*\\/)?([a-zA-Z0-9]([a-zA-Z0-9-]){0,62})(?<!-)$")), 
+            TrainingInputMode = structure(logical(0), tags = list(type = "string", 
+                enum = c("Pipe", "File"))), MetricDefinitions = structure(list(structure(list(Name = structure(logical(0), 
+                tags = list(type = "string", max = 255L, min = 1L)), 
+                Regex = structure(logical(0), tags = list(type = "string", 
+                  max = 500L, min = 1L))), tags = list(type = "structure"))), 
+                tags = list(type = "list", max = 20L, min = 0L))), 
             tags = list(type = "structure")), RoleArn = structure(logical(0), 
             tags = list(type = "string", max = 2048L, min = 20L, 
                 pattern = "^arn:aws[a-z\\-]*:iam::\\d{12}:role/?[a-zA-Z_0-9+=,.@\\-_/]+$")), 
@@ -912,21 +2182,23 @@ describe_training_job_output <- function (...)
             tags = list(type = "string", max = 64L, min = 1L, 
                 pattern = "[A-Za-z0-9\\.\\-_]+")), DataSource = structure(list(S3DataSource = structure(list(S3DataType = structure(logical(0), 
             tags = list(type = "string", enum = c("ManifestFile", 
-                "S3Prefix"))), S3Uri = structure(logical(0), 
+                "S3Prefix", "AugmentedManifestFile"))), S3Uri = structure(logical(0), 
             tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$")), 
             S3DataDistributionType = structure(logical(0), tags = list(type = "string", 
-                enum = c("FullyReplicated", "ShardedByS3Key")))), 
-            tags = list(type = "structure"))), tags = list(type = "structure")), 
-            ContentType = structure(logical(0), tags = list(type = "string", 
-                max = 256L)), CompressionType = structure(logical(0), 
-                tags = list(type = "string", enum = c("None", 
-                  "Gzip"))), RecordWrapperType = structure(logical(0), 
-                tags = list(type = "string", enum = c("None", 
-                  "RecordIO"))), InputMode = structure(logical(0), 
+                enum = c("FullyReplicated", "ShardedByS3Key"))), 
+            AttributeNames = structure(list(structure(logical(0), 
+                tags = list(type = "string", max = 256L, min = 1L))), 
+                tags = list(type = "list", max = 16L))), tags = list(type = "structure"))), 
+            tags = list(type = "structure")), ContentType = structure(logical(0), 
+            tags = list(type = "string", max = 256L)), CompressionType = structure(logical(0), 
+            tags = list(type = "string", enum = c("None", "Gzip"))), 
+            RecordWrapperType = structure(logical(0), tags = list(type = "string", 
+                enum = c("None", "RecordIO"))), InputMode = structure(logical(0), 
                 tags = list(type = "string", enum = c("Pipe", 
-                  "File")))), tags = list(type = "structure"))), 
-            tags = list(type = "list", max = 8L, min = 1L)), 
-        OutputDataConfig = structure(list(KmsKeyId = structure(logical(0), 
+                  "File"))), ShuffleConfig = structure(list(Seed = structure(logical(0), 
+                tags = list(type = "long"))), tags = list(type = "structure"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 8L, min = 1L)), OutputDataConfig = structure(list(KmsKeyId = structure(logical(0), 
             tags = list(type = "string", max = 2048L)), S3OutputPath = structure(logical(0), 
             tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$"))), 
             tags = list(type = "structure")), ResourceConfig = structure(list(InstanceType = structure(logical(0), 
@@ -963,7 +2235,14 @@ describe_training_job_output <- function (...)
             tags = list(type = "timestamp")), EndTime = structure(logical(0), 
             tags = list(type = "timestamp")), StatusMessage = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 
-            tags = list(type = "list"))), tags = list(type = "structure"))
+            tags = list(type = "list")), FinalMetricDataList = structure(list(structure(list(MetricName = structure(logical(0), 
+            tags = list(type = "string", max = 255L, min = 1L)), 
+            Value = structure(logical(0), tags = list(type = "float")), 
+            Timestamp = structure(logical(0), tags = list(type = "timestamp"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 20L, min = 0L)), EnableNetworkIsolation = structure(logical(0), 
+            tags = list(type = "boolean")), EnableInterContainerTrafficEncryption = structure(logical(0), 
+            tags = list(type = "boolean"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -996,7 +2275,7 @@ describe_transform_job_output <- function (...)
             tags = list(type = "string", max = 10240L))), tags = list(type = "map", 
             max = 16L)), TransformInput = structure(list(DataSource = structure(list(S3DataSource = structure(list(S3DataType = structure(logical(0), 
             tags = list(type = "string", enum = c("ManifestFile", 
-                "S3Prefix"))), S3Uri = structure(logical(0), 
+                "S3Prefix", "AugmentedManifestFile"))), S3Uri = structure(logical(0), 
             tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$"))), 
             tags = list(type = "structure"))), tags = list(type = "structure")), 
             ContentType = structure(logical(0), tags = list(type = "string", 
@@ -1004,7 +2283,7 @@ describe_transform_job_output <- function (...)
                 tags = list(type = "string", enum = c("None", 
                   "Gzip"))), SplitType = structure(logical(0), 
                 tags = list(type = "string", enum = c("None", 
-                  "Line", "RecordIO")))), tags = list(type = "structure")), 
+                  "Line", "RecordIO", "TFRecord")))), tags = list(type = "structure")), 
         TransformOutput = structure(list(S3OutputPath = structure(logical(0), 
             tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$")), 
             Accept = structure(logical(0), tags = list(type = "string", 
@@ -1027,8 +2306,187 @@ describe_transform_job_output <- function (...)
             tags = list(type = "string", max = 2048L))), tags = list(type = "structure")), 
         CreationTime = structure(logical(0), tags = list(type = "timestamp")), 
         TransformStartTime = structure(logical(0), tags = list(type = "timestamp")), 
-        TransformEndTime = structure(logical(0), tags = list(type = "timestamp"))), 
+        TransformEndTime = structure(logical(0), tags = list(type = "timestamp")), 
+        LabelingJobArn = structure(logical(0), tags = list(type = "string", 
+            max = 2048L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:labeling-job/.*"))), 
         tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_workteam_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(WorkteamName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_workteam_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Workteam = structure(list(WorkteamName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+        MemberDefinitions = structure(list(structure(list(CognitoMemberDefinition = structure(list(UserPool = structure(logical(0), 
+            tags = list(type = "string", max = 55L, min = 1L, 
+                pattern = "[\\w-]+_[0-9a-zA-Z]+")), UserGroup = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "[\\p{L}\\p{M}\\p{S}\\p{N}\\p{P}]+")), 
+            ClientId = structure(logical(0), tags = list(type = "string", 
+                max = 128L, min = 1L, pattern = "[\\w+]+"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure"))), 
+            tags = list(type = "list", max = 10L, min = 1L)), 
+        WorkteamArn = structure(logical(0), tags = list(type = "string", 
+            max = 256L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:workteam/.*")), 
+        ProductListingIds = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list")), 
+        Description = structure(logical(0), tags = list(type = "string", 
+            max = 200L, min = 1L)), SubDomain = structure(logical(0), 
+            tags = list(type = "string")), CreateDate = structure(logical(0), 
+            tags = list(type = "timestamp")), LastUpdatedDate = structure(logical(0), 
+            tags = list(type = "timestamp"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+get_search_suggestions_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Resource = structure(logical(0), 
+        tags = list(type = "string", enum = "TrainingJob")), 
+        SuggestionQuery = structure(list(PropertyNameQuery = structure(list(PropertyNameHint = structure(logical(0), 
+            tags = list(type = "string", max = 100L, min = 0L))), 
+            tags = list(type = "structure"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+get_search_suggestions_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(PropertyNameSuggestions = structure(list(structure(list(PropertyName = structure(logical(0), 
+        tags = list(type = "string", max = 255L, min = 1L))), 
+        tags = list(type = "structure"))), tags = list(type = "list"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_algorithms_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(CreationTimeAfter = structure(logical(0), 
+        tags = list(type = "timestamp")), CreationTimeBefore = structure(logical(0), 
+        tags = list(type = "timestamp")), MaxResults = structure(logical(0), 
+        tags = list(type = "integer", max = 100L, min = 1L)), 
+        NameContains = structure(logical(0), tags = list(type = "string", 
+            max = 63L, pattern = "[a-zA-Z0-9\\-]+")), NextToken = structure(logical(0), 
+            tags = list(type = "string", max = 8192L)), SortBy = structure(logical(0), 
+            tags = list(type = "string", enum = c("Name", "CreationTime"))), 
+        SortOrder = structure(logical(0), tags = list(type = "string", 
+            enum = c("Ascending", "Descending")))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_algorithms_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(AlgorithmSummaryList = structure(list(structure(list(AlgorithmName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*$")), 
+        AlgorithmArn = structure(logical(0), tags = list(type = "string", 
+            max = 2048L, min = 1L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:algorithm/.*")), 
+        AlgorithmDescription = structure(logical(0), tags = list(type = "string", 
+            max = 1024L, pattern = "[\\p{L}\\p{M}\\p{Z}\\p{S}\\p{N}\\p{P}]*")), 
+        CreationTime = structure(logical(0), tags = list(type = "timestamp")), 
+        AlgorithmStatus = structure(logical(0), tags = list(type = "string", 
+            enum = c("Pending", "InProgress", "Completed", "Failed", 
+                "Deleting")))), tags = list(type = "structure"))), 
+        tags = list(type = "list")), NextToken = structure(logical(0), 
+        tags = list(type = "string", max = 8192L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_code_repositories_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(CreationTimeAfter = structure(logical(0), 
+        tags = list(type = "timestamp")), CreationTimeBefore = structure(logical(0), 
+        tags = list(type = "timestamp")), LastModifiedTimeAfter = structure(logical(0), 
+        tags = list(type = "timestamp")), LastModifiedTimeBefore = structure(logical(0), 
+        tags = list(type = "timestamp")), MaxResults = structure(logical(0), 
+        tags = list(type = "integer", max = 100L, min = 1L)), 
+        NameContains = structure(logical(0), tags = list(type = "string", 
+            max = 63L, pattern = "[a-zA-Z0-9-]+")), NextToken = structure(logical(0), 
+            tags = list(type = "string", max = 8192L)), SortBy = structure(logical(0), 
+            tags = list(type = "string", enum = c("Name", "CreationTime", 
+                "LastModifiedTime"))), SortOrder = structure(logical(0), 
+            tags = list(type = "string", enum = c("Ascending", 
+                "Descending")))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_code_repositories_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(CodeRepositorySummaryList = structure(list(structure(list(CodeRepositoryName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*$")), 
+        CodeRepositoryArn = structure(logical(0), tags = list(type = "string", 
+            max = 2048L, min = 1L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:code-repository/.*")), 
+        CreationTime = structure(logical(0), tags = list(type = "timestamp")), 
+        LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), 
+        GitConfig = structure(list(RepositoryUrl = structure(logical(0), 
+            tags = list(type = "string", pattern = "^https://([^/]+)/?(.*)$")), 
+            Branch = structure(logical(0), tags = list(type = "string", 
+                max = 1024L, min = 1L)), SecretArn = structure(logical(0), 
+                tags = list(type = "string", max = 2048L, min = 1L, 
+                  pattern = "arn:aws[a-z\\-]*:secretsmanager:[a-z0-9\\-]*:[0-9]{12}:secret:.*"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure"))), 
+        tags = list(type = "list")), NextToken = structure(logical(0), 
+        tags = list(type = "string", max = 8192L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_compilation_jobs_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(NextToken = structure(logical(0), 
+        tags = list(type = "string", max = 8192L)), MaxResults = structure(logical(0), 
+        tags = list(box = TRUE, type = "integer", max = 100L, 
+            min = 1L)), CreationTimeAfter = structure(logical(0), 
+        tags = list(type = "timestamp")), CreationTimeBefore = structure(logical(0), 
+        tags = list(type = "timestamp")), LastModifiedTimeAfter = structure(logical(0), 
+        tags = list(type = "timestamp")), LastModifiedTimeBefore = structure(logical(0), 
+        tags = list(type = "timestamp")), NameContains = structure(logical(0), 
+        tags = list(type = "string", max = 63L, pattern = "[a-zA-Z0-9\\-]+")), 
+        StatusEquals = structure(logical(0), tags = list(type = "string", 
+            enum = c("INPROGRESS", "COMPLETED", "FAILED", "STARTING", 
+                "STOPPING", "STOPPED"))), SortBy = structure(logical(0), 
+            tags = list(type = "string", enum = c("Name", "CreationTime", 
+                "Status"))), SortOrder = structure(logical(0), 
+            tags = list(type = "string", enum = c("Ascending", 
+                "Descending")))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_compilation_jobs_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(CompilationJobSummaries = structure(list(structure(list(CompilationJobName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*$")), 
+        CompilationJobArn = structure(logical(0), tags = list(type = "string", 
+            max = 256L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:compilation-job/.*")), 
+        CreationTime = structure(logical(0), tags = list(type = "timestamp")), 
+        CompilationStartTime = structure(logical(0), tags = list(type = "timestamp")), 
+        CompilationEndTime = structure(logical(0), tags = list(type = "timestamp")), 
+        CompilationTargetDevice = structure(logical(0), tags = list(type = "string", 
+            enum = c("ml_m4", "ml_m5", "ml_c4", "ml_c5", "ml_p2", 
+                "ml_p3", "jetson_tx1", "jetson_tx2", "rasp3b", 
+                "deeplens"))), LastModifiedTime = structure(logical(0), 
+            tags = list(type = "timestamp")), CompilationJobStatus = structure(logical(0), 
+            tags = list(type = "string", enum = c("INPROGRESS", 
+                "COMPLETED", "FAILED", "STARTING", "STOPPING", 
+                "STOPPED")))), tags = list(type = "structure"))), 
+        tags = list(type = "list")), NextToken = structure(logical(0), 
+        tags = list(type = "string", max = 8192L))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1042,7 +2500,7 @@ list_endpoint_configs_input <- function (...)
             max = 8192L)), MaxResults = structure(logical(0), 
             tags = list(type = "integer", max = 100L, min = 1L)), 
         NameContains = structure(logical(0), tags = list(type = "string", 
-            pattern = "[a-zA-Z0-9-]+")), CreationTimeBefore = structure(logical(0), 
+            max = 63L, pattern = "[a-zA-Z0-9-]+")), CreationTimeBefore = structure(logical(0), 
             tags = list(type = "timestamp")), CreationTimeAfter = structure(logical(0), 
             tags = list(type = "timestamp"))), tags = list(type = "structure"))
     return(populate(args, shape))
@@ -1071,7 +2529,7 @@ list_endpoints_input <- function (...)
             max = 8192L)), MaxResults = structure(logical(0), 
             tags = list(type = "integer", max = 100L, min = 1L)), 
         NameContains = structure(logical(0), tags = list(type = "string", 
-            pattern = "[a-zA-Z0-9-]+")), CreationTimeBefore = structure(logical(0), 
+            max = 63L, pattern = "[a-zA-Z0-9-]+")), CreationTimeBefore = structure(logical(0), 
             tags = list(type = "timestamp")), CreationTimeAfter = structure(logical(0), 
             tags = list(type = "timestamp")), LastModifiedTimeBefore = structure(logical(0), 
             tags = list(type = "timestamp")), LastModifiedTimeAfter = structure(logical(0), 
@@ -1153,6 +2611,140 @@ list_hyper_parameter_tuning_jobs_output <- function (...)
     return(populate(args, shape))
 }
 
+list_labeling_jobs_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(CreationTimeAfter = structure(logical(0), 
+        tags = list(type = "timestamp")), CreationTimeBefore = structure(logical(0), 
+        tags = list(type = "timestamp")), LastModifiedTimeAfter = structure(logical(0), 
+        tags = list(type = "timestamp")), LastModifiedTimeBefore = structure(logical(0), 
+        tags = list(type = "timestamp")), MaxResults = structure(logical(0), 
+        tags = list(type = "integer", max = 100L, min = 1L)), 
+        NextToken = structure(logical(0), tags = list(type = "string", 
+            max = 8192L)), NameContains = structure(logical(0), 
+            tags = list(type = "string", max = 63L, pattern = "[a-zA-Z0-9\\-]+")), 
+        SortBy = structure(logical(0), tags = list(type = "string", 
+            enum = c("Name", "CreationTime", "Status"))), SortOrder = structure(logical(0), 
+            tags = list(type = "string", enum = c("Ascending", 
+                "Descending"))), StatusEquals = structure(logical(0), 
+            tags = list(type = "string", enum = c("InProgress", 
+                "Completed", "Failed", "Stopping", "Stopped")))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_labeling_jobs_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(LabelingJobSummaryList = structure(list(structure(list(LabelingJobName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+        LabelingJobArn = structure(logical(0), tags = list(type = "string", 
+            max = 2048L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:labeling-job/.*")), 
+        CreationTime = structure(logical(0), tags = list(type = "timestamp")), 
+        LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), 
+        LabelingJobStatus = structure(logical(0), tags = list(type = "string", 
+            enum = c("InProgress", "Completed", "Failed", "Stopping", 
+                "Stopped"))), LabelCounters = structure(list(TotalLabeled = structure(logical(0), 
+            tags = list(type = "integer", min = 0L)), HumanLabeled = structure(logical(0), 
+            tags = list(type = "integer", min = 0L)), MachineLabeled = structure(logical(0), 
+            tags = list(type = "integer", min = 0L)), FailedNonRetryableError = structure(logical(0), 
+            tags = list(type = "integer", min = 0L)), Unlabeled = structure(logical(0), 
+            tags = list(type = "integer", min = 0L))), tags = list(type = "structure")), 
+        WorkteamArn = structure(logical(0), tags = list(type = "string", 
+            max = 256L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:workteam/.*")), 
+        PreHumanTaskLambdaArn = structure(logical(0), tags = list(type = "string", 
+            max = 2048L, pattern = "arn:aws[a-z\\-]*:lambda:[a-z]{2}-[a-z]+-\\d{1}:\\d{12}:function:[a-zA-Z0-9-_\\.]+(:(\\$LATEST|[a-zA-Z0-9-_]+))?")), 
+        AnnotationConsolidationLambdaArn = structure(logical(0), 
+            tags = list(type = "string", max = 2048L, pattern = "arn:aws[a-z\\-]*:lambda:[a-z]{2}-[a-z]+-\\d{1}:\\d{12}:function:[a-zA-Z0-9-_\\.]+(:(\\$LATEST|[a-zA-Z0-9-_]+))?")), 
+        FailureReason = structure(logical(0), tags = list(type = "string", 
+            max = 1024L)), LabelingJobOutput = structure(list(OutputDatasetS3Uri = structure(logical(0), 
+            tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$")), 
+            FinalActiveLearningModelArn = structure(logical(0), 
+                tags = list(type = "string", max = 2048L, min = 20L))), 
+            tags = list(type = "structure")), InputConfig = structure(list(DataSource = structure(list(S3DataSource = structure(list(ManifestS3Uri = structure(logical(0), 
+            tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure")), 
+            DataAttributes = structure(list(ContentClassifiers = structure(list(structure(logical(0), 
+                tags = list(type = "string", enum = c("FreeOfPersonallyIdentifiableInformation", 
+                  "FreeOfAdultContent")))), tags = list(type = "list", 
+                max = 256L))), tags = list(type = "structure"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure"))), 
+        tags = list(type = "list")), NextToken = structure(logical(0), 
+        tags = list(type = "string", max = 8192L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_labeling_jobs_for_workteam_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(WorkteamArn = structure(logical(0), 
+        tags = list(type = "string", max = 256L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:workteam/.*")), 
+        MaxResults = structure(logical(0), tags = list(type = "integer", 
+            max = 100L, min = 1L)), NextToken = structure(logical(0), 
+            tags = list(type = "string", max = 8192L)), CreationTimeAfter = structure(logical(0), 
+            tags = list(type = "timestamp")), CreationTimeBefore = structure(logical(0), 
+            tags = list(type = "timestamp")), JobReferenceCodeContains = structure(logical(0), 
+            tags = list(type = "string", max = 255L, min = 1L)), 
+        SortBy = structure(logical(0), tags = list(type = "string", 
+            enum = "CreationTime")), SortOrder = structure(logical(0), 
+            tags = list(type = "string", enum = c("Ascending", 
+                "Descending")))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_labeling_jobs_for_workteam_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(LabelingJobSummaryList = structure(list(structure(list(LabelingJobName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+        JobReferenceCode = structure(logical(0), tags = list(type = "string", 
+            min = 1L)), WorkRequesterAccountId = structure(logical(0), 
+            tags = list(type = "string", pattern = "^\\d+$")), 
+        CreationTime = structure(logical(0), tags = list(type = "timestamp")), 
+        LabelCounters = structure(list(HumanLabeled = structure(logical(0), 
+            tags = list(type = "integer", min = 0L)), PendingHuman = structure(logical(0), 
+            tags = list(type = "integer", min = 0L)), Total = structure(logical(0), 
+            tags = list(type = "integer", min = 0L))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))), tags = list(type = "list")), 
+        NextToken = structure(logical(0), tags = list(type = "string", 
+            max = 8192L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_model_packages_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(CreationTimeAfter = structure(logical(0), 
+        tags = list(type = "timestamp")), CreationTimeBefore = structure(logical(0), 
+        tags = list(type = "timestamp")), MaxResults = structure(logical(0), 
+        tags = list(type = "integer", max = 100L, min = 1L)), 
+        NameContains = structure(logical(0), tags = list(type = "string", 
+            max = 63L, pattern = "[a-zA-Z0-9\\-]+")), NextToken = structure(logical(0), 
+            tags = list(type = "string", max = 8192L)), SortBy = structure(logical(0), 
+            tags = list(type = "string", enum = c("Name", "CreationTime"))), 
+        SortOrder = structure(logical(0), tags = list(type = "string", 
+            enum = c("Ascending", "Descending")))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_model_packages_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(ModelPackageSummaryList = structure(list(structure(list(ModelPackageName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*$")), 
+        ModelPackageArn = structure(logical(0), tags = list(type = "string", 
+            max = 2048L, min = 1L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:model-package/.*")), 
+        ModelPackageDescription = structure(logical(0), tags = list(type = "string", 
+            max = 1024L, pattern = "[\\p{L}\\p{M}\\p{Z}\\p{S}\\p{N}\\p{P}]*")), 
+        CreationTime = structure(logical(0), tags = list(type = "timestamp")), 
+        ModelPackageStatus = structure(logical(0), tags = list(type = "string", 
+            enum = c("Pending", "InProgress", "Completed", "Failed", 
+                "Deleting")))), tags = list(type = "structure"))), 
+        tags = list(type = "list")), NextToken = structure(logical(0), 
+        tags = list(type = "string", max = 8192L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 list_models_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -1163,7 +2755,7 @@ list_models_input <- function (...)
             max = 8192L)), MaxResults = structure(logical(0), 
             tags = list(type = "integer", max = 100L, min = 1L)), 
         NameContains = structure(logical(0), tags = list(type = "string", 
-            pattern = "[a-zA-Z0-9-]+")), CreationTimeBefore = structure(logical(0), 
+            max = 63L, pattern = "[a-zA-Z0-9-]+")), CreationTimeBefore = structure(logical(0), 
             tags = list(type = "timestamp")), CreationTimeAfter = structure(logical(0), 
             tags = list(type = "timestamp"))), tags = list(type = "structure"))
     return(populate(args, shape))
@@ -1192,7 +2784,7 @@ list_notebook_instance_lifecycle_configs_input <- function (...)
             enum = c("Name", "CreationTime", "LastModifiedTime"))), 
         SortOrder = structure(logical(0), tags = list(type = "string", 
             enum = c("Ascending", "Descending"))), NameContains = structure(logical(0), 
-            tags = list(type = "string", pattern = "[a-zA-Z0-9-]+")), 
+            tags = list(type = "string", max = 63L, pattern = "[a-zA-Z0-9-]+")), 
         CreationTimeBefore = structure(logical(0), tags = list(type = "timestamp")), 
         CreationTimeAfter = structure(logical(0), tags = list(type = "timestamp")), 
         LastModifiedTimeBefore = structure(logical(0), tags = list(type = "timestamp")), 
@@ -1225,7 +2817,7 @@ list_notebook_instances_input <- function (...)
             enum = c("Name", "CreationTime", "Status"))), SortOrder = structure(logical(0), 
             tags = list(type = "string", enum = c("Ascending", 
                 "Descending"))), NameContains = structure(logical(0), 
-            tags = list(type = "string", pattern = "[a-zA-Z0-9-]+")), 
+            tags = list(type = "string", max = 63L, pattern = "[a-zA-Z0-9-]+")), 
         CreationTimeBefore = structure(logical(0), tags = list(type = "timestamp")), 
         CreationTimeAfter = structure(logical(0), tags = list(type = "timestamp")), 
         LastModifiedTimeBefore = structure(logical(0), tags = list(type = "timestamp")), 
@@ -1233,7 +2825,12 @@ list_notebook_instances_input <- function (...)
         StatusEquals = structure(logical(0), tags = list(type = "string", 
             enum = c("Pending", "InService", "Stopping", "Stopped", 
                 "Failed", "Deleting", "Updating"))), NotebookInstanceLifecycleConfigNameContains = structure(logical(0), 
-            tags = list(type = "string", max = 63L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*"))), 
+            tags = list(type = "string", max = 63L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+        DefaultCodeRepositoryContains = structure(logical(0), 
+            tags = list(type = "string", max = 1024L, pattern = "[a-zA-Z0-9-]+")), 
+        AdditionalCodeRepositoryEquals = structure(logical(0), 
+            tags = list(type = "string", max = 1024L, min = 1L, 
+                pattern = "^https://([^/]+)/?(.*)$|^[a-zA-Z0-9](-*[a-zA-Z0-9])*"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -1252,15 +2849,56 @@ list_notebook_instances_output <- function (...)
             tags = list(type = "string")), InstanceType = structure(logical(0), 
             tags = list(type = "string", enum = c("ml.t2.medium", 
                 "ml.t2.large", "ml.t2.xlarge", "ml.t2.2xlarge", 
-                "ml.m4.xlarge", "ml.m4.2xlarge", "ml.m4.4xlarge", 
-                "ml.m4.10xlarge", "ml.m4.16xlarge", "ml.p2.xlarge", 
-                "ml.p2.8xlarge", "ml.p2.16xlarge", "ml.p3.2xlarge", 
-                "ml.p3.8xlarge", "ml.p3.16xlarge"))), CreationTime = structure(logical(0), 
+                "ml.t3.medium", "ml.t3.large", "ml.t3.xlarge", 
+                "ml.t3.2xlarge", "ml.m4.xlarge", "ml.m4.2xlarge", 
+                "ml.m4.4xlarge", "ml.m4.10xlarge", "ml.m4.16xlarge", 
+                "ml.m5.xlarge", "ml.m5.2xlarge", "ml.m5.4xlarge", 
+                "ml.m5.12xlarge", "ml.m5.24xlarge", "ml.c4.xlarge", 
+                "ml.c4.2xlarge", "ml.c4.4xlarge", "ml.c4.8xlarge", 
+                "ml.c5.xlarge", "ml.c5.2xlarge", "ml.c5.4xlarge", 
+                "ml.c5.9xlarge", "ml.c5.18xlarge", "ml.c5d.xlarge", 
+                "ml.c5d.2xlarge", "ml.c5d.4xlarge", "ml.c5d.9xlarge", 
+                "ml.c5d.18xlarge", "ml.p2.xlarge", "ml.p2.8xlarge", 
+                "ml.p2.16xlarge", "ml.p3.2xlarge", "ml.p3.8xlarge", 
+                "ml.p3.16xlarge"))), CreationTime = structure(logical(0), 
             tags = list(type = "timestamp")), LastModifiedTime = structure(logical(0), 
             tags = list(type = "timestamp")), NotebookInstanceLifecycleConfigName = structure(logical(0), 
-            tags = list(type = "string", max = 63L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*"))), 
-        tags = list(type = "structure"))), tags = list(type = "list"))), 
-        tags = list(type = "structure"))
+            tags = list(type = "string", max = 63L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+        DefaultCodeRepository = structure(logical(0), tags = list(type = "string", 
+            max = 1024L, min = 1L, pattern = "^https://([^/]+)/?(.*)$|^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+        AdditionalCodeRepositories = structure(list(structure(logical(0), 
+            tags = list(type = "string", max = 1024L, min = 1L, 
+                pattern = "^https://([^/]+)/?(.*)$|^[a-zA-Z0-9](-*[a-zA-Z0-9])*"))), 
+            tags = list(type = "list", max = 3L))), tags = list(type = "structure"))), 
+        tags = list(type = "list"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_subscribed_workteams_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(NameContains = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+        NextToken = structure(logical(0), tags = list(type = "string", 
+            max = 8192L)), MaxResults = structure(logical(0), 
+            tags = list(box = TRUE, type = "integer", max = 100L, 
+                min = 1L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_subscribed_workteams_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(SubscribedWorkteams = structure(list(structure(list(WorkteamArn = structure(logical(0), 
+        tags = list(type = "string", max = 256L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:workteam/.*")), 
+        MarketplaceTitle = structure(logical(0), tags = list(type = "string", 
+            max = 200L, min = 1L)), SellerName = structure(logical(0), 
+            tags = list(type = "string")), MarketplaceDescription = structure(logical(0), 
+            tags = list(type = "string", max = 200L, min = 1L)), 
+        ListingId = structure(logical(0), tags = list(type = "string"))), 
+        tags = list(type = "structure"))), tags = list(type = "list")), 
+        NextToken = structure(logical(0), tags = list(type = "string", 
+            max = 8192L))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1278,7 +2916,7 @@ list_tags_output <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), 
-        tags = list(type = "string", max = 128L, min = 1L, pattern = "^((?!aws:)[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+        tags = list(type = "string", max = 128L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
         Value = structure(logical(0), tags = list(type = "string", 
             max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
         tags = list(type = "structure"))), tags = list(type = "list", 
@@ -1352,6 +2990,8 @@ list_training_jobs_for_hyper_parameter_tuning_job_output <- function (...)
         tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
         TrainingJobArn = structure(logical(0), tags = list(type = "string", 
             max = 256L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:training-job/.*")), 
+        TuningJobName = structure(logical(0), tags = list(type = "string", 
+            max = 32L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
         CreationTime = structure(logical(0), tags = list(type = "timestamp")), 
         TrainingStartTime = structure(logical(0), tags = list(type = "timestamp")), 
         TrainingEndTime = structure(logical(0), tags = list(type = "timestamp")), 
@@ -1414,6 +3054,226 @@ list_transform_jobs_output <- function (...)
     return(populate(args, shape))
 }
 
+list_workteams_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(SortBy = structure(logical(0), tags = list(type = "string", 
+        enum = c("Name", "CreateDate"))), SortOrder = structure(logical(0), 
+        tags = list(type = "string", enum = c("Ascending", "Descending"))), 
+        NameContains = structure(logical(0), tags = list(type = "string", 
+            max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+        NextToken = structure(logical(0), tags = list(type = "string", 
+            max = 8192L)), MaxResults = structure(logical(0), 
+            tags = list(box = TRUE, type = "integer", max = 100L, 
+                min = 1L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_workteams_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Workteams = structure(list(structure(list(WorkteamName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+        MemberDefinitions = structure(list(structure(list(CognitoMemberDefinition = structure(list(UserPool = structure(logical(0), 
+            tags = list(type = "string", max = 55L, min = 1L, 
+                pattern = "[\\w-]+_[0-9a-zA-Z]+")), UserGroup = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "[\\p{L}\\p{M}\\p{S}\\p{N}\\p{P}]+")), 
+            ClientId = structure(logical(0), tags = list(type = "string", 
+                max = 128L, min = 1L, pattern = "[\\w+]+"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure"))), 
+            tags = list(type = "list", max = 10L, min = 1L)), 
+        WorkteamArn = structure(logical(0), tags = list(type = "string", 
+            max = 256L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:workteam/.*")), 
+        ProductListingIds = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list")), 
+        Description = structure(logical(0), tags = list(type = "string", 
+            max = 200L, min = 1L)), SubDomain = structure(logical(0), 
+            tags = list(type = "string")), CreateDate = structure(logical(0), 
+            tags = list(type = "timestamp")), LastUpdatedDate = structure(logical(0), 
+            tags = list(type = "timestamp"))), tags = list(type = "structure"))), 
+        tags = list(type = "list")), NextToken = structure(logical(0), 
+        tags = list(type = "string", max = 8192L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+render_ui_template_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(UiTemplate = structure(list(Content = structure(logical(0), 
+        tags = list(type = "string", max = 128000L, min = 1L))), 
+        tags = list(type = "structure")), Task = structure(list(Input = structure(logical(0), 
+        tags = list(type = "string", max = 128000L, min = 2L))), 
+        tags = list(type = "structure")), RoleArn = structure(logical(0), 
+        tags = list(type = "string", max = 2048L, min = 20L, 
+            pattern = "^arn:aws[a-z\\-]*:iam::\\d{12}:role/?[a-zA-Z_0-9+=,.@\\-_/]+$"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+render_ui_template_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(RenderedContent = structure(logical(0), 
+        tags = list(type = "string")), Errors = structure(list(structure(list(Code = structure(logical(0), 
+        tags = list(type = "string")), Message = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))), 
+        tags = list(type = "list"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+search_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Resource = structure(logical(0), 
+        tags = list(type = "string", enum = "TrainingJob")), 
+        SearchExpression = structure(list(Filters = structure(list(structure(list(Name = structure(logical(0), 
+            tags = list(type = "string", max = 255L, min = 1L)), 
+            Operator = structure(logical(0), tags = list(type = "string", 
+                enum = c("Equals", "NotEquals", "GreaterThan", 
+                  "GreaterThanOrEqualTo", "LessThan", "LessThanOrEqualTo", 
+                  "Contains"))), Value = structure(logical(0), 
+                tags = list(type = "string", max = 1024L, min = 1L))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 20L, min = 1L)), NestedFilters = structure(list(structure(list(NestedPropertyName = structure(logical(0), 
+            tags = list(type = "string", max = 255L, min = 1L)), 
+            Filters = structure(list(structure(list(Name = structure(logical(0), 
+                tags = list(type = "string", max = 255L, min = 1L)), 
+                Operator = structure(logical(0), tags = list(type = "string", 
+                  enum = c("Equals", "NotEquals", "GreaterThan", 
+                    "GreaterThanOrEqualTo", "LessThan", "LessThanOrEqualTo", 
+                    "Contains"))), Value = structure(logical(0), 
+                  tags = list(type = "string", max = 1024L, min = 1L))), 
+                tags = list(type = "structure"))), tags = list(type = "list", 
+                max = 20L, min = 1L))), tags = list(type = "structure"))), 
+            tags = list(type = "list", max = 20L, min = 1L)), 
+            SubExpressions = structure(list(structure(logical(0), 
+                tags = list(type = "structure"))), tags = list(type = "list", 
+                max = 20L, min = 1L)), Operator = structure(logical(0), 
+                tags = list(type = "string", enum = c("And", 
+                  "Or")))), tags = list(type = "structure")), 
+        SortBy = structure(logical(0), tags = list(type = "string", 
+            max = 255L, min = 1L)), SortOrder = structure(logical(0), 
+            tags = list(type = "string", enum = c("Ascending", 
+                "Descending"))), NextToken = structure(logical(0), 
+            tags = list(type = "string", max = 8192L)), MaxResults = structure(logical(0), 
+            tags = list(box = TRUE, type = "integer", max = 100L, 
+                min = 1L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+search_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Results = structure(list(structure(list(TrainingJob = structure(list(TrainingJobName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+        TrainingJobArn = structure(logical(0), tags = list(type = "string", 
+            max = 256L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:training-job/.*")), 
+        TuningJobArn = structure(logical(0), tags = list(type = "string", 
+            max = 256L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:hyper-parameter-tuning-job/.*")), 
+        LabelingJobArn = structure(logical(0), tags = list(type = "string", 
+            max = 2048L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:labeling-job/.*")), 
+        ModelArtifacts = structure(list(S3ModelArtifacts = structure(logical(0), 
+            tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$"))), 
+            tags = list(type = "structure")), TrainingJobStatus = structure(logical(0), 
+            tags = list(type = "string", enum = c("InProgress", 
+                "Completed", "Failed", "Stopping", "Stopped"))), 
+        SecondaryStatus = structure(logical(0), tags = list(type = "string", 
+            enum = c("Starting", "LaunchingMLInstances", "PreparingTrainingStack", 
+                "Downloading", "DownloadingTrainingImage", "Training", 
+                "Uploading", "Stopping", "Stopped", "MaxRuntimeExceeded", 
+                "Completed", "Failed"))), FailureReason = structure(logical(0), 
+            tags = list(type = "string", max = 1024L)), HyperParameters = structure(list(structure(logical(0), 
+            tags = list(type = "string", max = 256L))), tags = list(type = "map", 
+            max = 100L, min = 0L)), AlgorithmSpecification = structure(list(TrainingImage = structure(logical(0), 
+            tags = list(type = "string", max = 255L)), AlgorithmName = structure(logical(0), 
+            tags = list(type = "string", max = 170L, min = 1L, 
+                pattern = "(arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:[a-z\\-]*\\/)?([a-zA-Z0-9]([a-zA-Z0-9-]){0,62})(?<!-)$")), 
+            TrainingInputMode = structure(logical(0), tags = list(type = "string", 
+                enum = c("Pipe", "File"))), MetricDefinitions = structure(list(structure(list(Name = structure(logical(0), 
+                tags = list(type = "string", max = 255L, min = 1L)), 
+                Regex = structure(logical(0), tags = list(type = "string", 
+                  max = 500L, min = 1L))), tags = list(type = "structure"))), 
+                tags = list(type = "list", max = 20L, min = 0L))), 
+            tags = list(type = "structure")), RoleArn = structure(logical(0), 
+            tags = list(type = "string", max = 2048L, min = 20L, 
+                pattern = "^arn:aws[a-z\\-]*:iam::\\d{12}:role/?[a-zA-Z_0-9+=,.@\\-_/]+$")), 
+        InputDataConfig = structure(list(structure(list(ChannelName = structure(logical(0), 
+            tags = list(type = "string", max = 64L, min = 1L, 
+                pattern = "[A-Za-z0-9\\.\\-_]+")), DataSource = structure(list(S3DataSource = structure(list(S3DataType = structure(logical(0), 
+            tags = list(type = "string", enum = c("ManifestFile", 
+                "S3Prefix", "AugmentedManifestFile"))), S3Uri = structure(logical(0), 
+            tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$")), 
+            S3DataDistributionType = structure(logical(0), tags = list(type = "string", 
+                enum = c("FullyReplicated", "ShardedByS3Key"))), 
+            AttributeNames = structure(list(structure(logical(0), 
+                tags = list(type = "string", max = 256L, min = 1L))), 
+                tags = list(type = "list", max = 16L))), tags = list(type = "structure"))), 
+            tags = list(type = "structure")), ContentType = structure(logical(0), 
+            tags = list(type = "string", max = 256L)), CompressionType = structure(logical(0), 
+            tags = list(type = "string", enum = c("None", "Gzip"))), 
+            RecordWrapperType = structure(logical(0), tags = list(type = "string", 
+                enum = c("None", "RecordIO"))), InputMode = structure(logical(0), 
+                tags = list(type = "string", enum = c("Pipe", 
+                  "File"))), ShuffleConfig = structure(list(Seed = structure(logical(0), 
+                tags = list(type = "long"))), tags = list(type = "structure"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 8L, min = 1L)), OutputDataConfig = structure(list(KmsKeyId = structure(logical(0), 
+            tags = list(type = "string", max = 2048L)), S3OutputPath = structure(logical(0), 
+            tags = list(type = "string", max = 1024L, pattern = "^(https|s3)://([^/]+)/?(.*)$"))), 
+            tags = list(type = "structure")), ResourceConfig = structure(list(InstanceType = structure(logical(0), 
+            tags = list(type = "string", enum = c("ml.m4.xlarge", 
+                "ml.m4.2xlarge", "ml.m4.4xlarge", "ml.m4.10xlarge", 
+                "ml.m4.16xlarge", "ml.m5.large", "ml.m5.xlarge", 
+                "ml.m5.2xlarge", "ml.m5.4xlarge", "ml.m5.12xlarge", 
+                "ml.m5.24xlarge", "ml.c4.xlarge", "ml.c4.2xlarge", 
+                "ml.c4.4xlarge", "ml.c4.8xlarge", "ml.p2.xlarge", 
+                "ml.p2.8xlarge", "ml.p2.16xlarge", "ml.p3.2xlarge", 
+                "ml.p3.8xlarge", "ml.p3.16xlarge", "ml.c5.xlarge", 
+                "ml.c5.2xlarge", "ml.c5.4xlarge", "ml.c5.9xlarge", 
+                "ml.c5.18xlarge"))), InstanceCount = structure(logical(0), 
+            tags = list(type = "integer", min = 1L)), VolumeSizeInGB = structure(logical(0), 
+            tags = list(type = "integer", min = 1L)), VolumeKmsKeyId = structure(logical(0), 
+            tags = list(type = "string", max = 2048L))), tags = list(type = "structure")), 
+        VpcConfig = structure(list(SecurityGroupIds = structure(list(structure(logical(0), 
+            tags = list(type = "string", max = 32L))), tags = list(type = "list", 
+            max = 5L, min = 1L)), Subnets = structure(list(structure(logical(0), 
+            tags = list(type = "string", max = 32L))), tags = list(type = "list", 
+            max = 16L, min = 1L))), tags = list(type = "structure")), 
+        StoppingCondition = structure(list(MaxRuntimeInSeconds = structure(logical(0), 
+            tags = list(type = "integer", min = 1L))), tags = list(type = "structure")), 
+        CreationTime = structure(logical(0), tags = list(type = "timestamp")), 
+        TrainingStartTime = structure(logical(0), tags = list(type = "timestamp")), 
+        TrainingEndTime = structure(logical(0), tags = list(type = "timestamp")), 
+        LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), 
+        SecondaryStatusTransitions = structure(list(structure(list(Status = structure(logical(0), 
+            tags = list(type = "string", enum = c("Starting", 
+                "LaunchingMLInstances", "PreparingTrainingStack", 
+                "Downloading", "DownloadingTrainingImage", "Training", 
+                "Uploading", "Stopping", "Stopped", "MaxRuntimeExceeded", 
+                "Completed", "Failed"))), StartTime = structure(logical(0), 
+            tags = list(type = "timestamp")), EndTime = structure(logical(0), 
+            tags = list(type = "timestamp")), StatusMessage = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "list")), FinalMetricDataList = structure(list(structure(list(MetricName = structure(logical(0), 
+            tags = list(type = "string", max = 255L, min = 1L)), 
+            Value = structure(logical(0), tags = list(type = "float")), 
+            Timestamp = structure(logical(0), tags = list(type = "timestamp"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 20L, min = 0L)), EnableNetworkIsolation = structure(logical(0), 
+            tags = list(type = "boolean")), Tags = structure(list(structure(list(Key = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
+            Value = structure(logical(0), tags = list(type = "string", 
+                max = 256L, min = 0L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
+            tags = list(type = "structure"))), tags = list(type = "list", 
+            max = 50L, min = 0L))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))), tags = list(type = "list")), 
+        NextToken = structure(logical(0), tags = list(type = "string", 
+            max = 8192L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 start_notebook_instance_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -1428,6 +3288,20 @@ start_notebook_instance_output <- function ()
     return(list())
 }
 
+stop_compilation_job_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(CompilationJobName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*$"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+stop_compilation_job_output <- function () 
+{
+    return(list())
+}
+
 stop_hyper_parameter_tuning_job_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -1438,6 +3312,20 @@ stop_hyper_parameter_tuning_job_input <- function (...)
 }
 
 stop_hyper_parameter_tuning_job_output <- function () 
+{
+    return(list())
+}
+
+stop_labeling_job_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(LabelingJobName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+stop_labeling_job_output <- function () 
 {
     return(list())
 }
@@ -1482,6 +3370,27 @@ stop_transform_job_input <- function (...)
 stop_transform_job_output <- function () 
 {
     return(list())
+}
+
+update_code_repository_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(CodeRepositoryName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*$")), 
+        GitConfig = structure(list(SecretArn = structure(logical(0), 
+            tags = list(type = "string", max = 2048L, min = 1L, 
+                pattern = "arn:aws[a-z\\-]*:secretsmanager:[a-z0-9\\-]*:[0-9]{12}:secret:.*"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+update_code_repository_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(CodeRepositoryArn = structure(logical(0), 
+        tags = list(type = "string", max = 2048L, min = 1L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:code-repository/.*"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
 }
 
 update_endpoint_input <- function (...) 
@@ -1534,17 +3443,37 @@ update_notebook_instance_input <- function (...)
         tags = list(type = "string", max = 63L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
         InstanceType = structure(logical(0), tags = list(type = "string", 
             enum = c("ml.t2.medium", "ml.t2.large", "ml.t2.xlarge", 
-                "ml.t2.2xlarge", "ml.m4.xlarge", "ml.m4.2xlarge", 
-                "ml.m4.4xlarge", "ml.m4.10xlarge", "ml.m4.16xlarge", 
-                "ml.p2.xlarge", "ml.p2.8xlarge", "ml.p2.16xlarge", 
-                "ml.p3.2xlarge", "ml.p3.8xlarge", "ml.p3.16xlarge"))), 
-        RoleArn = structure(logical(0), tags = list(type = "string", 
-            max = 2048L, min = 20L, pattern = "^arn:aws[a-z\\-]*:iam::\\d{12}:role/?[a-zA-Z_0-9+=,.@\\-_/]+$")), 
+                "ml.t2.2xlarge", "ml.t3.medium", "ml.t3.large", 
+                "ml.t3.xlarge", "ml.t3.2xlarge", "ml.m4.xlarge", 
+                "ml.m4.2xlarge", "ml.m4.4xlarge", "ml.m4.10xlarge", 
+                "ml.m4.16xlarge", "ml.m5.xlarge", "ml.m5.2xlarge", 
+                "ml.m5.4xlarge", "ml.m5.12xlarge", "ml.m5.24xlarge", 
+                "ml.c4.xlarge", "ml.c4.2xlarge", "ml.c4.4xlarge", 
+                "ml.c4.8xlarge", "ml.c5.xlarge", "ml.c5.2xlarge", 
+                "ml.c5.4xlarge", "ml.c5.9xlarge", "ml.c5.18xlarge", 
+                "ml.c5d.xlarge", "ml.c5d.2xlarge", "ml.c5d.4xlarge", 
+                "ml.c5d.9xlarge", "ml.c5d.18xlarge", "ml.p2.xlarge", 
+                "ml.p2.8xlarge", "ml.p2.16xlarge", "ml.p3.2xlarge", 
+                "ml.p3.8xlarge", "ml.p3.16xlarge"))), RoleArn = structure(logical(0), 
+            tags = list(type = "string", max = 2048L, min = 20L, 
+                pattern = "^arn:aws[a-z\\-]*:iam::\\d{12}:role/?[a-zA-Z_0-9+=,.@\\-_/]+$")), 
         LifecycleConfigName = structure(logical(0), tags = list(type = "string", 
             max = 63L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
         DisassociateLifecycleConfig = structure(logical(0), tags = list(type = "boolean")), 
         VolumeSizeInGB = structure(logical(0), tags = list(type = "integer", 
-            max = 16384L, min = 5L))), tags = list(type = "structure"))
+            max = 16384L, min = 5L)), DefaultCodeRepository = structure(logical(0), 
+            tags = list(type = "string", max = 1024L, min = 1L, 
+                pattern = "^https://([^/]+)/?(.*)$|^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+        AdditionalCodeRepositories = structure(list(structure(logical(0), 
+            tags = list(type = "string", max = 1024L, min = 1L, 
+                pattern = "^https://([^/]+)/?(.*)$|^[a-zA-Z0-9](-*[a-zA-Z0-9])*"))), 
+            tags = list(type = "list", max = 3L)), AcceleratorTypes = structure(list(structure(logical(0), 
+            tags = list(type = "string", enum = c("ml.eia1.medium", 
+                "ml.eia1.large", "ml.eia1.xlarge")))), tags = list(type = "list")), 
+        DisassociateAcceleratorTypes = structure(logical(0), 
+            tags = list(type = "boolean")), DisassociateDefaultCodeRepository = structure(logical(0), 
+            tags = list(type = "boolean")), DisassociateAdditionalCodeRepositories = structure(logical(0), 
+            tags = list(type = "boolean"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1574,5 +3503,51 @@ update_notebook_instance_lifecycle_config_output <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+update_workteam_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(WorkteamName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+        MemberDefinitions = structure(list(structure(list(CognitoMemberDefinition = structure(list(UserPool = structure(logical(0), 
+            tags = list(type = "string", max = 55L, min = 1L, 
+                pattern = "[\\w-]+_[0-9a-zA-Z]+")), UserGroup = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "[\\p{L}\\p{M}\\p{S}\\p{N}\\p{P}]+")), 
+            ClientId = structure(logical(0), tags = list(type = "string", 
+                max = 128L, min = 1L, pattern = "[\\w+]+"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure"))), 
+            tags = list(type = "list", max = 10L, min = 1L)), 
+        Description = structure(logical(0), tags = list(type = "string", 
+            max = 200L, min = 1L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+update_workteam_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Workteam = structure(list(WorkteamName = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-zA-Z0-9](-*[a-zA-Z0-9])*")), 
+        MemberDefinitions = structure(list(structure(list(CognitoMemberDefinition = structure(list(UserPool = structure(logical(0), 
+            tags = list(type = "string", max = 55L, min = 1L, 
+                pattern = "[\\w-]+_[0-9a-zA-Z]+")), UserGroup = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L, 
+                pattern = "[\\p{L}\\p{M}\\p{S}\\p{N}\\p{P}]+")), 
+            ClientId = structure(logical(0), tags = list(type = "string", 
+                max = 128L, min = 1L, pattern = "[\\w+]+"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure"))), 
+            tags = list(type = "list", max = 10L, min = 1L)), 
+        WorkteamArn = structure(logical(0), tags = list(type = "string", 
+            max = 256L, pattern = "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:workteam/.*")), 
+        ProductListingIds = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list")), 
+        Description = structure(logical(0), tags = list(type = "string", 
+            max = 200L, min = 1L)), SubDomain = structure(logical(0), 
+            tags = list(type = "string")), CreateDate = structure(logical(0), 
+            tags = list(type = "timestamp")), LastUpdatedDate = structure(logical(0), 
+            tags = list(type = "timestamp"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }

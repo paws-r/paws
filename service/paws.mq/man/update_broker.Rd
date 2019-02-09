@@ -14,7 +14,7 @@ update_broker(AutoMinorVersionUpgrade = NULL, BrokerId,
 
 \item{Configuration}{A list of information about the configuration.}
 
-\item{EngineVersion}{The version of the broker engine. Note: Currently, Amazon MQ supports only 5.15.6 and 5.15.0.}
+\item{EngineVersion}{The version of the broker engine. For a list of supported engine versions, see https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html}
 
 \item{Logs}{Enables Amazon CloudWatch logging for brokers.}
 }

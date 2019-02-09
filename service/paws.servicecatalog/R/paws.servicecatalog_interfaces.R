@@ -1094,7 +1094,11 @@ describe_provisioning_parameters_output <- function (...)
         Values = structure(list(structure(logical(0), tags = list(type = "string", 
             max = 256L, min = 1L, pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$"))), 
             tags = list(type = "list"))), tags = list(type = "structure"))), 
-        tags = list(type = "list"))), tags = list(type = "structure"))
+        tags = list(type = "list")), ProvisioningArtifactPreferences = structure(list(StackSetAccounts = structure(list(structure(logical(0), 
+        tags = list(type = "string", pattern = "^[0-9]{12}$"))), 
+        tags = list(type = "list")), StackSetRegions = structure(list(structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "list"))), 
+        tags = list(type = "structure"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1953,7 +1957,17 @@ provision_product_input <- function (...)
             tags = list(type = "string", max = 1000L, min = 1L)), 
             Value = structure(logical(0), tags = list(type = "string", 
                 max = 4096L))), tags = list(type = "structure"))), 
-            tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), 
+            tags = list(type = "list")), ProvisioningPreferences = structure(list(StackSetAccounts = structure(list(structure(logical(0), 
+            tags = list(type = "string", pattern = "^[0-9]{12}$"))), 
+            tags = list(type = "list")), StackSetRegions = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list")), 
+            StackSetFailureToleranceCount = structure(logical(0), 
+                tags = list(type = "integer", min = 0L)), StackSetFailureTolerancePercentage = structure(logical(0), 
+                tags = list(type = "integer", max = 100L, min = 0L)), 
+            StackSetMaxConcurrencyCount = structure(logical(0), 
+                tags = list(type = "integer", min = 1L)), StackSetMaxConcurrencyPercentage = structure(logical(0), 
+                tags = list(type = "integer", max = 100L, min = 1L))), 
+            tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), 
             tags = list(type = "string", max = 128L, min = 1L, 
                 pattern = "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$")), 
             Value = structure(logical(0), tags = list(type = "string", 
@@ -2415,9 +2429,20 @@ update_provisioned_product_input <- function (...)
             Value = structure(logical(0), tags = list(type = "string", 
                 max = 4096L)), UsePreviousValue = structure(logical(0), 
                 tags = list(type = "boolean"))), tags = list(type = "structure"))), 
-            tags = list(type = "list")), UpdateToken = structure(logical(0), 
-            tags = list(idempotencyToken = TRUE, type = "string", 
-                max = 128L, min = 1L, pattern = "[a-zA-Z0-9][a-zA-Z0-9_-]*"))), 
+            tags = list(type = "list")), ProvisioningPreferences = structure(list(StackSetAccounts = structure(list(structure(logical(0), 
+            tags = list(type = "string", pattern = "^[0-9]{12}$"))), 
+            tags = list(type = "list")), StackSetRegions = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list")), 
+            StackSetFailureToleranceCount = structure(logical(0), 
+                tags = list(type = "integer", min = 0L)), StackSetFailureTolerancePercentage = structure(logical(0), 
+                tags = list(type = "integer", max = 100L, min = 0L)), 
+            StackSetMaxConcurrencyCount = structure(logical(0), 
+                tags = list(type = "integer", min = 1L)), StackSetMaxConcurrencyPercentage = structure(logical(0), 
+                tags = list(type = "integer", max = 100L, min = 1L)), 
+            StackSetOperationType = structure(logical(0), tags = list(type = "string", 
+                enum = c("CREATE", "UPDATE", "DELETE")))), tags = list(type = "structure")), 
+        UpdateToken = structure(logical(0), tags = list(idempotencyToken = TRUE, 
+            type = "string", max = 128L, min = 1L, pattern = "[a-zA-Z0-9][a-zA-Z0-9_-]*"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }

@@ -2,36 +2,31 @@
 % Please edit documentation in R/paws.lambda_operations.R
 \name{remove_permission}
 \alias{remove_permission}
-\title{Removes permissions from a function}
+\title{Revokes function use permission from an AWS service or another account}
 \usage{
 remove_permission(FunctionName, StatementId, Qualifier = NULL,
   RevisionId = NULL)
 }
 \arguments{
-\item{FunctionName}{[required] The name of the lambda function.
+\item{FunctionName}{[required] The name of the Lambda function, version, or alias.
 
 \strong{Name formats}
 \itemize{
-\item \strong{Function name} - \code{MyFunction}.
-\item \strong{Function ARN} - \code{arn:aws:lambda:us-west-2:123456789012:function:MyFunction}.
-\item \strong{Partial ARN} - \code{123456789012:function:MyFunction}.
+\item \strong{Function name} - \code{my-function} (name-only), \code{my-function:v1} (with alias).
+\item \strong{Function ARN} - \code{arn:aws:lambda:us-west-2:123456789012:function:my-function}.
+\item \strong{Partial ARN} - \code{123456789012:function:my-function}.
 }
 
-The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
+You can append a version number or alias to any of the formats. The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
 
 \item{StatementId}{[required] Statement ID of the permission to remove.}
 
 \item{Qualifier}{Specify a version or alias to remove permissions from a published version of the function.}
 
-\item{RevisionId}{An optional value you can use to ensure you are updating the latest update of the function version or alias. If the \code{RevisionID} you pass doesn't match the latest \code{RevisionId} of the function or alias, it will fail with an error message, advising you to retrieve the latest function version or alias \code{RevisionID} using either GetFunction or GetAlias.}
+\item{RevisionId}{Only update the policy if the revision ID matches the ID specified. Use this option to avoid modifying a policy that has changed since you last read it.}
 }
 \description{
-Removes permissions from a function. You can remove individual permissions from an resource policy associated with a Lambda function by providing a statement ID that you provided when you added the permission. When you remove permissions, disable the event source mapping or trigger configuration first to avoid errors.
-}
-\details{
-Permissions apply to the Amazon Resource Name (ARN) used to invoke the function, which can be unqualified (the unpublished version of the function), or include a version or alias. If a client uses a version or alias to invoke a function, use the \code{Qualifier} parameter to apply permissions to that ARN. For more information about versioning, see \href{http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{AWS Lambda Function Versioning and Aliases}.
-
-You need permission for the \code{lambda:RemovePermission} action.
+Revokes function use permission from an AWS service or another account. You can get the ID of the statement from the output of GetPolicy.
 }
 \section{Accepted Parameters}{
 \preformatted{remove_permission(

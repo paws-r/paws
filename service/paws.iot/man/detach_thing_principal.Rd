@@ -14,6 +14,9 @@ detach_thing_principal(thingName, principal)
 \description{
 Detaches the specified principal from the specified thing.
 }
+\details{
+This call is asynchronous. It might take several seconds for the detachment to propagate.
+}
 \section{Accepted Parameters}{
 \preformatted{detach_thing_principal(
   thingName = "string",

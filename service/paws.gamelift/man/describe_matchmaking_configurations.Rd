@@ -20,7 +20,6 @@ describe_matchmaking_configurations(Names = NULL, RuleSetName = NULL,
 Retrieves the details of FlexMatch matchmaking configurations. with this operation, you have the following options: (1) retrieve all existing configurations, (2) provide the names of one or more configurations to retrieve, or (3) retrieve all configurations that use a specified rule set name. When requesting multiple items, use the pagination parameters to retrieve results as a set of sequential pages. If successful, a configuration is returned for each requested name. When specifying a list of names, only configurations that currently exist are returned.
 }
 \details{
-Operations related to match configurations and rule sets include:
 \itemize{
 \item CreateMatchmakingConfiguration
 \item DescribeMatchmakingConfigurations
@@ -29,6 +28,7 @@ Operations related to match configurations and rule sets include:
 \item CreateMatchmakingRuleSet
 \item DescribeMatchmakingRuleSets
 \item ValidateMatchmakingRuleSet
+\item DeleteMatchmakingRuleSet
 }
 }
 \section{Accepted Parameters}{

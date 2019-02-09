@@ -14,7 +14,7 @@ start_game_session_placement(PlacementId, GameSessionQueueName,
 
 \item{GameSessionQueueName}{[required] Name of the queue to use to place the new game session.}
 
-\item{GameProperties}{Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to a game server process in the GameSession object with a request to start a new game session (see \href{http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession}{Start a Game Session}).}
+\item{GameProperties}{Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to a game server process in the GameSession object with a request to start a new game session (see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession}{Start a Game Session}).}
 
 \item{MaximumPlayerSessionCount}{[required] Maximum number of players that can be connected simultaneously to the game session.}
 
@@ -24,7 +24,7 @@ start_game_session_placement(PlacementId, GameSessionQueueName,
 
 \item{DesiredPlayerSessions}{Set of information on each player to create a player session for.}
 
-\item{GameSessionData}{Set of custom game session properties, formatted as a single string value. This data is passed to a game server process in the GameSession object with a request to start a new game session (see \href{http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession}{Start a Game Session}).}
+\item{GameSessionData}{Set of custom game session properties, formatted as a single string value. This data is passed to a game server process in the GameSession object with a request to start a new game session (see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession}{Start a Game Session}).}
 }
 \description{
 Places a request for a new game session in a queue (see CreateGameSessionQueue). When processing a placement request, Amazon GameLift searches for available resources on the queue's destinations, scanning each until it finds resources or the placement request times out.
@@ -40,15 +40,13 @@ To place a new game session request, specify the following:
 \itemize{
 \item The queue name and a set of game session properties and settings
 \item A unique ID (such as a UUID) for the placement. You use this ID to track the status of the placement request
-\item (Optional) A set of IDs and player data for each player you want to join to the new game session
+\item (Optional) A set of player data and a unique player ID for each player that you are joining to the new game session (player data is optional, but if you include it, you must also provide a unique ID for each player)
 \item Latency data for all players (if you want to optimize game play for the players)
 }
 
 If successful, a new game session placement is created.
 
 To track the status of a placement request, call DescribeGameSessionPlacement and check the request's status. If the status is \code{FULFILLED}, a new game session has been created and a game session ARN and region are referenced. If the placement request times out, you can resubmit the request or retry it with a different queue.
-
-Game-session-related operations include:
 \itemize{
 \item CreateGameSession
 \item DescribeGameSessions

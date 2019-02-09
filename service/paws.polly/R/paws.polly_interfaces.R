@@ -26,14 +26,15 @@ describe_voices_input <- function (...)
         tags = list(location = "querystring", locationName = "LanguageCode", 
             type = "string", enum = c("cmn-CN", "cy-GB", "da-DK", 
                 "de-DE", "en-AU", "en-GB", "en-GB-WLS", "en-IN", 
-                "en-US", "es-ES", "es-US", "fr-CA", "fr-FR", 
-                "is-IS", "it-IT", "ja-JP", "hi-IN", "ko-KR", 
-                "nb-NO", "nl-NL", "pl-PL", "pt-BR", "pt-PT", 
-                "ro-RO", "ru-RU", "sv-SE", "tr-TR"))), IncludeAdditionalLanguageCodes = structure(logical(0), 
-        tags = list(location = "querystring", locationName = "IncludeAdditionalLanguageCodes", 
-            type = "boolean")), NextToken = structure(logical(0), 
-        tags = list(location = "querystring", locationName = "NextToken", 
-            type = "string"))), tags = list(type = "structure"))
+                "en-US", "es-ES", "es-MX", "es-US", "fr-CA", 
+                "fr-FR", "is-IS", "it-IT", "ja-JP", "hi-IN", 
+                "ko-KR", "nb-NO", "nl-NL", "pl-PL", "pt-BR", 
+                "pt-PT", "ro-RO", "ru-RU", "sv-SE", "tr-TR"))), 
+        IncludeAdditionalLanguageCodes = structure(logical(0), 
+            tags = list(location = "querystring", locationName = "IncludeAdditionalLanguageCodes", 
+                type = "boolean")), NextToken = structure(logical(0), 
+            tags = list(location = "querystring", locationName = "NextToken", 
+                type = "string"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -53,23 +54,23 @@ describe_voices_output <- function (...)
                 "Jan", "Maja", "Ricardo", "Vitoria", "Cristiano", 
                 "Ines", "Carmen", "Maxim", "Tatyana", "Astrid", 
                 "Filiz", "Vicki", "Takumi", "Seoyeon", "Aditi", 
-                "Zhiyu"))), LanguageCode = structure(logical(0), 
+                "Zhiyu", "Bianca", "Lucia", "Mia"))), LanguageCode = structure(logical(0), 
             tags = list(type = "string", enum = c("cmn-CN", "cy-GB", 
                 "da-DK", "de-DE", "en-AU", "en-GB", "en-GB-WLS", 
-                "en-IN", "en-US", "es-ES", "es-US", "fr-CA", 
-                "fr-FR", "is-IS", "it-IT", "ja-JP", "hi-IN", 
-                "ko-KR", "nb-NO", "nl-NL", "pl-PL", "pt-BR", 
-                "pt-PT", "ro-RO", "ru-RU", "sv-SE", "tr-TR"))), 
-        LanguageName = structure(logical(0), tags = list(type = "string")), 
-        Name = structure(logical(0), tags = list(type = "string")), 
-        AdditionalLanguageCodes = structure(list(structure(logical(0), 
+                "en-IN", "en-US", "es-ES", "es-MX", "es-US", 
+                "fr-CA", "fr-FR", "is-IS", "it-IT", "ja-JP", 
+                "hi-IN", "ko-KR", "nb-NO", "nl-NL", "pl-PL", 
+                "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sv-SE", 
+                "tr-TR"))), LanguageName = structure(logical(0), 
+            tags = list(type = "string")), Name = structure(logical(0), 
+            tags = list(type = "string")), AdditionalLanguageCodes = structure(list(structure(logical(0), 
             tags = list(type = "string", enum = c("cmn-CN", "cy-GB", 
                 "da-DK", "de-DE", "en-AU", "en-GB", "en-GB-WLS", 
-                "en-IN", "en-US", "es-ES", "es-US", "fr-CA", 
-                "fr-FR", "is-IS", "it-IT", "ja-JP", "hi-IN", 
-                "ko-KR", "nb-NO", "nl-NL", "pl-PL", "pt-BR", 
-                "pt-PT", "ro-RO", "ru-RU", "sv-SE", "tr-TR")))), 
-            tags = list(type = "list"))), tags = list(type = "structure"))), 
+                "en-IN", "en-US", "es-ES", "es-MX", "es-US", 
+                "fr-CA", "fr-FR", "is-IS", "it-IT", "ja-JP", 
+                "hi-IN", "ko-KR", "nb-NO", "nl-NL", "pl-PL", 
+                "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sv-SE", 
+                "tr-TR")))), tags = list(type = "list"))), tags = list(type = "structure"))), 
         tags = list(type = "list")), NextToken = structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "structure"))
     return(populate(args, shape))
@@ -95,15 +96,16 @@ get_lexicon_output <- function (...)
             tags = list(type = "string")), LanguageCode = structure(logical(0), 
             tags = list(type = "string", enum = c("cmn-CN", "cy-GB", 
                 "da-DK", "de-DE", "en-AU", "en-GB", "en-GB-WLS", 
-                "en-IN", "en-US", "es-ES", "es-US", "fr-CA", 
-                "fr-FR", "is-IS", "it-IT", "ja-JP", "hi-IN", 
-                "ko-KR", "nb-NO", "nl-NL", "pl-PL", "pt-BR", 
-                "pt-PT", "ro-RO", "ru-RU", "sv-SE", "tr-TR"))), 
-            LastModified = structure(logical(0), tags = list(type = "timestamp")), 
-            LexiconArn = structure(logical(0), tags = list(type = "string")), 
-            LexemesCount = structure(logical(0), tags = list(type = "integer")), 
-            Size = structure(logical(0), tags = list(type = "integer"))), 
-            tags = list(type = "structure"))), tags = list(type = "structure"))
+                "en-IN", "en-US", "es-ES", "es-MX", "es-US", 
+                "fr-CA", "fr-FR", "is-IS", "it-IT", "ja-JP", 
+                "hi-IN", "ko-KR", "nb-NO", "nl-NL", "pl-PL", 
+                "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sv-SE", 
+                "tr-TR"))), LastModified = structure(logical(0), 
+            tags = list(type = "timestamp")), LexiconArn = structure(logical(0), 
+            tags = list(type = "string")), LexemesCount = structure(logical(0), 
+            tags = list(type = "integer")), Size = structure(logical(0), 
+            tags = list(type = "integer"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -150,14 +152,15 @@ get_speech_synthesis_task_output <- function (...)
                 "Jan", "Maja", "Ricardo", "Vitoria", "Cristiano", 
                 "Ines", "Carmen", "Maxim", "Tatyana", "Astrid", 
                 "Filiz", "Vicki", "Takumi", "Seoyeon", "Aditi", 
-                "Zhiyu"))), LanguageCode = structure(logical(0), 
+                "Zhiyu", "Bianca", "Lucia", "Mia"))), LanguageCode = structure(logical(0), 
             tags = list(type = "string", enum = c("cmn-CN", "cy-GB", 
                 "da-DK", "de-DE", "en-AU", "en-GB", "en-GB-WLS", 
-                "en-IN", "en-US", "es-ES", "es-US", "fr-CA", 
-                "fr-FR", "is-IS", "it-IT", "ja-JP", "hi-IN", 
-                "ko-KR", "nb-NO", "nl-NL", "pl-PL", "pt-BR", 
-                "pt-PT", "ro-RO", "ru-RU", "sv-SE", "tr-TR")))), 
-        tags = list(type = "structure"))), tags = list(type = "structure"))
+                "en-IN", "en-US", "es-ES", "es-MX", "es-US", 
+                "fr-CA", "fr-FR", "is-IS", "it-IT", "ja-JP", 
+                "hi-IN", "ko-KR", "nb-NO", "nl-NL", "pl-PL", 
+                "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sv-SE", 
+                "tr-TR")))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -179,10 +182,10 @@ list_lexicons_output <- function (...)
         tags = list(type = "string")), LanguageCode = structure(logical(0), 
         tags = list(type = "string", enum = c("cmn-CN", "cy-GB", 
             "da-DK", "de-DE", "en-AU", "en-GB", "en-GB-WLS", 
-            "en-IN", "en-US", "es-ES", "es-US", "fr-CA", "fr-FR", 
-            "is-IS", "it-IT", "ja-JP", "hi-IN", "ko-KR", "nb-NO", 
-            "nl-NL", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", 
-            "sv-SE", "tr-TR"))), LastModified = structure(logical(0), 
+            "en-IN", "en-US", "es-ES", "es-MX", "es-US", "fr-CA", 
+            "fr-FR", "is-IS", "it-IT", "ja-JP", "hi-IN", "ko-KR", 
+            "nb-NO", "nl-NL", "pl-PL", "pt-BR", "pt-PT", "ro-RO", 
+            "ru-RU", "sv-SE", "tr-TR"))), LastModified = structure(logical(0), 
         tags = list(type = "timestamp")), LexiconArn = structure(logical(0), 
         tags = list(type = "string")), LexemesCount = structure(logical(0), 
         tags = list(type = "integer")), Size = structure(logical(0), 
@@ -242,15 +245,15 @@ list_speech_synthesis_tasks_output <- function (...)
                 "Jan", "Maja", "Ricardo", "Vitoria", "Cristiano", 
                 "Ines", "Carmen", "Maxim", "Tatyana", "Astrid", 
                 "Filiz", "Vicki", "Takumi", "Seoyeon", "Aditi", 
-                "Zhiyu"))), LanguageCode = structure(logical(0), 
+                "Zhiyu", "Bianca", "Lucia", "Mia"))), LanguageCode = structure(logical(0), 
             tags = list(type = "string", enum = c("cmn-CN", "cy-GB", 
                 "da-DK", "de-DE", "en-AU", "en-GB", "en-GB-WLS", 
-                "en-IN", "en-US", "es-ES", "es-US", "fr-CA", 
-                "fr-FR", "is-IS", "it-IT", "ja-JP", "hi-IN", 
-                "ko-KR", "nb-NO", "nl-NL", "pl-PL", "pt-BR", 
-                "pt-PT", "ro-RO", "ru-RU", "sv-SE", "tr-TR")))), 
-        tags = list(type = "structure"))), tags = list(type = "list"))), 
-        tags = list(type = "structure"))
+                "en-IN", "en-US", "es-ES", "es-MX", "es-US", 
+                "fr-CA", "fr-FR", "is-IS", "it-IT", "ja-JP", 
+                "hi-IN", "ko-KR", "nb-NO", "nl-NL", "pl-PL", 
+                "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sv-SE", 
+                "tr-TR")))), tags = list(type = "structure"))), 
+        tags = list(type = "list"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -302,14 +305,14 @@ start_speech_synthesis_task_input <- function (...)
                 "Jan", "Maja", "Ricardo", "Vitoria", "Cristiano", 
                 "Ines", "Carmen", "Maxim", "Tatyana", "Astrid", 
                 "Filiz", "Vicki", "Takumi", "Seoyeon", "Aditi", 
-                "Zhiyu"))), LanguageCode = structure(logical(0), 
+                "Zhiyu", "Bianca", "Lucia", "Mia"))), LanguageCode = structure(logical(0), 
             tags = list(type = "string", enum = c("cmn-CN", "cy-GB", 
                 "da-DK", "de-DE", "en-AU", "en-GB", "en-GB-WLS", 
-                "en-IN", "en-US", "es-ES", "es-US", "fr-CA", 
-                "fr-FR", "is-IS", "it-IT", "ja-JP", "hi-IN", 
-                "ko-KR", "nb-NO", "nl-NL", "pl-PL", "pt-BR", 
-                "pt-PT", "ro-RO", "ru-RU", "sv-SE", "tr-TR")))), 
-        tags = list(type = "structure"))
+                "en-IN", "en-US", "es-ES", "es-MX", "es-US", 
+                "fr-CA", "fr-FR", "is-IS", "it-IT", "ja-JP", 
+                "hi-IN", "ko-KR", "nb-NO", "nl-NL", "pl-PL", 
+                "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sv-SE", 
+                "tr-TR")))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -347,14 +350,15 @@ start_speech_synthesis_task_output <- function (...)
                 "Jan", "Maja", "Ricardo", "Vitoria", "Cristiano", 
                 "Ines", "Carmen", "Maxim", "Tatyana", "Astrid", 
                 "Filiz", "Vicki", "Takumi", "Seoyeon", "Aditi", 
-                "Zhiyu"))), LanguageCode = structure(logical(0), 
+                "Zhiyu", "Bianca", "Lucia", "Mia"))), LanguageCode = structure(logical(0), 
             tags = list(type = "string", enum = c("cmn-CN", "cy-GB", 
                 "da-DK", "de-DE", "en-AU", "en-GB", "en-GB-WLS", 
-                "en-IN", "en-US", "es-ES", "es-US", "fr-CA", 
-                "fr-FR", "is-IS", "it-IT", "ja-JP", "hi-IN", 
-                "ko-KR", "nb-NO", "nl-NL", "pl-PL", "pt-BR", 
-                "pt-PT", "ro-RO", "ru-RU", "sv-SE", "tr-TR")))), 
-        tags = list(type = "structure"))), tags = list(type = "structure"))
+                "en-IN", "en-US", "es-ES", "es-MX", "es-US", 
+                "fr-CA", "fr-FR", "is-IS", "it-IT", "ja-JP", 
+                "hi-IN", "ko-KR", "nb-NO", "nl-NL", "pl-PL", 
+                "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sv-SE", 
+                "tr-TR")))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -383,14 +387,14 @@ synthesize_speech_input <- function (...)
                 "Jan", "Maja", "Ricardo", "Vitoria", "Cristiano", 
                 "Ines", "Carmen", "Maxim", "Tatyana", "Astrid", 
                 "Filiz", "Vicki", "Takumi", "Seoyeon", "Aditi", 
-                "Zhiyu"))), LanguageCode = structure(logical(0), 
+                "Zhiyu", "Bianca", "Lucia", "Mia"))), LanguageCode = structure(logical(0), 
             tags = list(type = "string", enum = c("cmn-CN", "cy-GB", 
                 "da-DK", "de-DE", "en-AU", "en-GB", "en-GB-WLS", 
-                "en-IN", "en-US", "es-ES", "es-US", "fr-CA", 
-                "fr-FR", "is-IS", "it-IT", "ja-JP", "hi-IN", 
-                "ko-KR", "nb-NO", "nl-NL", "pl-PL", "pt-BR", 
-                "pt-PT", "ro-RO", "ru-RU", "sv-SE", "tr-TR")))), 
-        tags = list(type = "structure"))
+                "en-IN", "en-US", "es-ES", "es-MX", "es-US", 
+                "fr-CA", "fr-FR", "is-IS", "it-IT", "ja-JP", 
+                "hi-IN", "ko-KR", "nb-NO", "nl-NL", "pl-PL", 
+                "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sv-SE", 
+                "tr-TR")))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 

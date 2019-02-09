@@ -7,7 +7,7 @@ METADATA <- list(
   service_name = "cloudfront",
   endpoints = list("*" = "https://cloudfront.amazonaws.com"),
   service_id = "CloudFront",
-  api_version = "2018-06-18",
+  api_version = "2018-11-05",
   signing_name = NULL,
   json_version = "",
   target_prefix = ""

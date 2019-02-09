@@ -4,6 +4,10 @@ test_that("describe_clusters", {
     expect_error(describe_clusters(), NA)
 })
 
+test_that("list_account_settings", {
+    expect_error(list_account_settings(), NA)
+})
+
 test_that("list_clusters", {
     expect_error(list_clusters(), NA)
 })

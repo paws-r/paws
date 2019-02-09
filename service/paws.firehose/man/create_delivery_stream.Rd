@@ -10,7 +10,7 @@ create_delivery_stream(DeliveryStreamName, DeliveryStreamType = NULL,
   ExtendedS3DestinationConfiguration = NULL,
   RedshiftDestinationConfiguration = NULL,
   ElasticsearchDestinationConfiguration = NULL,
-  SplunkDestinationConfiguration = NULL)
+  SplunkDestinationConfiguration = NULL, Tags = NULL)
 }
 \arguments{
 \item{DeliveryStreamName}{[required] The name of the delivery stream. This name must be unique per AWS account in the same AWS Region. If the delivery streams are in different accounts or different Regions, you can have multiple delivery streams with the same name.}
@@ -32,6 +32,10 @@ create_delivery_stream(DeliveryStreamName, DeliveryStreamType = NULL,
 \item{ElasticsearchDestinationConfiguration}{The destination in Amazon ES. You can specify only one destination.}
 
 \item{SplunkDestinationConfiguration}{The destination in Splunk. You can specify only one destination.}
+
+\item{Tags}{A set of tags to assign to the delivery stream. A tag is a key-value pair that you can define and assign to AWS resources. Tags are metadata. For example, you can add friendly names and descriptions or other types of information that can help you distinguish the delivery stream. For more information about tags, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Using Cost Allocation Tags} in the AWS Billing and Cost Management User Guide.
+
+You can specify up to 50 tags when creating a delivery stream.}
 }
 \description{
 Creates a Kinesis Data Firehose delivery stream.
@@ -43,13 +47,13 @@ This is an asynchronous operation that immediately returns. The initial status o
 
 A Kinesis Data Firehose delivery stream can be configured to receive records directly from providers using PutRecord or PutRecordBatch, or it can be configured to use an existing Kinesis stream as its source. To specify a Kinesis data stream as input, set the \code{DeliveryStreamType} parameter to \code{KinesisStreamAsSource}, and provide the Kinesis stream Amazon Resource Name (ARN) and role ARN in the \code{KinesisStreamSourceConfiguration} parameter.
 
-A delivery stream is configured with a single destination: Amazon S3, Amazon ES, Amazon Redshift, or Splunk. You must specify only one of the following destination configuration parameters: \strong{ExtendedS3DestinationConfiguration}, \strong{S3DestinationConfiguration}, \strong{ElasticsearchDestinationConfiguration}, \strong{RedshiftDestinationConfiguration}, or \strong{SplunkDestinationConfiguration}.
+A delivery stream is configured with a single destination: Amazon S3, Amazon ES, Amazon Redshift, or Splunk. You must specify only one of the following destination configuration parameters: \code{ExtendedS3DestinationConfiguration}, \code{S3DestinationConfiguration}, \code{ElasticsearchDestinationConfiguration}, \code{RedshiftDestinationConfiguration}, or \code{SplunkDestinationConfiguration}.
 
-When you specify \strong{S3DestinationConfiguration}, you can also provide the following optional values: \strong{BufferingHints}, \strong{EncryptionConfiguration}, and \strong{CompressionFormat}. By default, if no \strong{BufferingHints} value is provided, Kinesis Data Firehose buffers data up to 5 MB or for 5 minutes, whichever condition is satisfied first. \strong{BufferingHints} is a hint, so there are some cases where the service cannot adhere to these conditions strictly. For example, record boundaries might be such that the size is a little over or under the configured buffering size. By default, no encryption is performed. We strongly recommend that you enable encryption to ensure secure data storage in Amazon S3.
+When you specify \code{S3DestinationConfiguration}, you can also provide the following optional values: BufferingHints, \code{EncryptionConfiguration}, and \code{CompressionFormat}. By default, if no \code{BufferingHints} value is provided, Kinesis Data Firehose buffers data up to 5 MB or for 5 minutes, whichever condition is satisfied first. \code{BufferingHints} is a hint, so there are some cases where the service cannot adhere to these conditions strictly. For example, record boundaries might be such that the size is a little over or under the configured buffering size. By default, no encryption is performed. We strongly recommend that you enable encryption to ensure secure data storage in Amazon S3.
 
 A few notes about Amazon Redshift as a destination:
 \itemize{
-\item An Amazon Redshift destination requires an S3 bucket as intermediate location. Kinesis Data Firehose first delivers data to Amazon S3 and then uses \code{COPY} syntax to load data into an Amazon Redshift table. This is specified in the \strong{RedshiftDestinationConfiguration.S3Configuration} parameter.
+\item An Amazon Redshift destination requires an S3 bucket as intermediate location. Kinesis Data Firehose first delivers data to Amazon S3 and then uses \code{COPY} syntax to load data into an Amazon Redshift table. This is specified in the \code{RedshiftDestinationConfiguration.S3Configuration} parameter.
 \item The compression formats \code{SNAPPY} or \code{ZIP} cannot be specified in \code{RedshiftDestinationConfiguration.S3Configuration} because the Amazon Redshift \code{COPY} operation that reads from the S3 bucket doesn't support these compression formats.
 \item We strongly recommend that you use the user name and password you provide exclusively with Kinesis Data Firehose, and that the permissions for the account are restricted for Amazon Redshift \code{INSERT} permissions.
 }
@@ -68,6 +72,7 @@ Kinesis Data Firehose assumes the IAM role that is configured as part of the des
     RoleARN = "string",
     BucketARN = "string",
     Prefix = "string",
+    ErrorOutputPrefix = "string",
     BufferingHints = list(
       SizeInMBs = 123,
       IntervalInSeconds = 123
@@ -89,6 +94,7 @@ Kinesis Data Firehose assumes the IAM role that is configured as part of the des
     RoleARN = "string",
     BucketARN = "string",
     Prefix = "string",
+    ErrorOutputPrefix = "string",
     BufferingHints = list(
       SizeInMBs = 123,
       IntervalInSeconds = 123
@@ -124,6 +130,7 @@ Kinesis Data Firehose assumes the IAM role that is configured as part of the des
       RoleARN = "string",
       BucketARN = "string",
       Prefix = "string",
+      ErrorOutputPrefix = "string",
       BufferingHints = list(
         SizeInMBs = 123,
         IntervalInSeconds = 123
@@ -212,6 +219,7 @@ Kinesis Data Firehose assumes the IAM role that is configured as part of the des
       RoleARN = "string",
       BucketARN = "string",
       Prefix = "string",
+      ErrorOutputPrefix = "string",
       BufferingHints = list(
         SizeInMBs = 123,
         IntervalInSeconds = 123
@@ -248,6 +256,7 @@ Kinesis Data Firehose assumes the IAM role that is configured as part of the des
       RoleARN = "string",
       BucketARN = "string",
       Prefix = "string",
+      ErrorOutputPrefix = "string",
       BufferingHints = list(
         SizeInMBs = 123,
         IntervalInSeconds = 123
@@ -289,6 +298,7 @@ Kinesis Data Firehose assumes the IAM role that is configured as part of the des
       RoleARN = "string",
       BucketARN = "string",
       Prefix = "string",
+      ErrorOutputPrefix = "string",
       BufferingHints = list(
         SizeInMBs = 123,
         IntervalInSeconds = 123
@@ -339,6 +349,7 @@ Kinesis Data Firehose assumes the IAM role that is configured as part of the des
       RoleARN = "string",
       BucketARN = "string",
       Prefix = "string",
+      ErrorOutputPrefix = "string",
       BufferingHints = list(
         SizeInMBs = 123,
         IntervalInSeconds = 123
@@ -374,6 +385,12 @@ Kinesis Data Firehose assumes the IAM role that is configured as part of the des
       Enabled = TRUE|FALSE,
       LogGroupName = "string",
       LogStreamName = "string"
+    )
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
     )
   )
 )

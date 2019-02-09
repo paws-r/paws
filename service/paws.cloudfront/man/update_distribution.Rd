@@ -98,6 +98,30 @@ When you edit the XML file, be aware of the following:
         )
       )
     ),
+    OriginGroups = list(
+      Quantity = 123,
+      Items = list(
+        list(
+          Id = "string",
+          FailoverCriteria = list(
+            StatusCodes = list(
+              Quantity = 123,
+              Items = list(
+                123
+              )
+            )
+          ),
+          Members = list(
+            Quantity = 123,
+            Items = list(
+              list(
+                OriginId = "string"
+              )
+            )
+          )
+        )
+      )
+    ),
     DefaultCacheBehavior = list(
       TargetOriginId = "string",
       ForwardedValues = list(

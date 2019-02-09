@@ -2,7 +2,7 @@
 % Please edit documentation in R/paws.iotanalytics_operations.R
 \name{create_dataset_content}
 \alias{create_dataset_content}
-\title{Creates the content of a data set by applying a SQL action}
+\title{Creates the content of a data set by applying a "queryAction" (a SQL query) or a "containerAction" (executing a containerized application)}
 \usage{
 create_dataset_content(datasetName)
 }
@@ -10,7 +10,7 @@ create_dataset_content(datasetName)
 \item{datasetName}{[required] The name of the data set.}
 }
 \description{
-Creates the content of a data set by applying a SQL action.
+Creates the content of a data set by applying a "queryAction" (a SQL query) or a "containerAction" (executing a containerized application).
 }
 \section{Accepted Parameters}{
 \preformatted{create_dataset_content(

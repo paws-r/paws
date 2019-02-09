@@ -18,7 +18,7 @@ modify_instance_attribute(SourceDestCheck = NULL, Attribute = NULL,
 
 \item{BlockDeviceMappings}{Modifies the \code{DeleteOnTermination} attribute for volumes that are currently attached. The volume must be owned by the caller. If no value is specified for \code{DeleteOnTermination}, the default is \code{true} and the volume is deleted when the instance is terminated.
 
-To add instance store volumes to an Amazon EBS-backed instance, you must add them when you launch the instance. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html#Using_OverridingAMIBDM}{Updating the Block Device Mapping when Launching an Instance} in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+To add instance store volumes to an Amazon EBS-backed instance, you must add them when you launch the instance. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html#Using_OverridingAMIBDM}{Updating the Block Device Mapping when Launching an Instance} in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
 \item{DisableApiTermination}{If the value is \code{true}, you can't terminate the instance using the Amazon EC2 console, CLI, or API; otherwise, you can. You cannot use this parameter for Spot Instances.}
 
@@ -36,11 +36,11 @@ This option is supported only for HVM instances. Specifying this option with a P
 
 \item{InstanceInitiatedShutdownBehavior}{Specifies whether an instance stops or terminates when you initiate shutdown from the instance (using the operating system command for system shutdown).}
 
-\item{InstanceType}{Changes the instance type to the specified value. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance Types}. If the instance type is not valid, the error returned is \code{InvalidInstanceAttributeValue}.}
+\item{InstanceType}{Changes the instance type to the specified value. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance Types}. If the instance type is not valid, the error returned is \code{InvalidInstanceAttributeValue}.}
 
-\item{Kernel}{Changes the instance's kernel to the specified value. We recommend that you use PV-GRUB instead of kernels and RAM disks. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html}{PV-GRUB}.}
+\item{Kernel}{Changes the instance's kernel to the specified value. We recommend that you use PV-GRUB instead of kernels and RAM disks. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html}{PV-GRUB}.}
 
-\item{Ramdisk}{Changes the instance's RAM disk to the specified value. We recommend that you use PV-GRUB instead of kernels and RAM disks. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html}{PV-GRUB}.}
+\item{Ramdisk}{Changes the instance's RAM disk to the specified value. We recommend that you use PV-GRUB instead of kernels and RAM disks. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html}{PV-GRUB}.}
 
 \item{SriovNetSupport}{Set to \code{simple} to enable enhanced networking with the Intel 82599 Virtual Function interface for the instance.
 
@@ -58,7 +58,7 @@ Modifies the specified attribute of the specified instance. You can specify only
 \details{
 \strong{Note:} Using this action to change the security groups associated with an elastic network interface (ENI) attached to an instance in a VPC can result in an error if the instance has more than one ENI. To change the security groups associated with an ENI attached to an instance that has multiple ENIs, we recommend that you use the ModifyNetworkInterfaceAttribute action.
 
-To modify some attributes, the instance must be stopped. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_ChangingAttributesWhileInstanceStopped.html}{Modifying Attributes of a Stopped Instance} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+To modify some attributes, the instance must be stopped. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_ChangingAttributesWhileInstanceStopped.html}{Modifying Attributes of a Stopped Instance} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{modify_instance_attribute(

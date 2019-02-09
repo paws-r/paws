@@ -9,6 +9,7 @@ modify_cluster(ClusterIdentifier, ClusterType = NULL, NodeType = NULL,
   VpcSecurityGroupIds = NULL, MasterUserPassword = NULL,
   ClusterParameterGroupName = NULL,
   AutomatedSnapshotRetentionPeriod = NULL,
+  ManualSnapshotRetentionPeriod = NULL,
   PreferredMaintenanceWindow = NULL, ClusterVersion = NULL,
   AllowVersionUpgrade = NULL, HsmClientCertificateIdentifier = NULL,
   HsmConfigurationIdentifier = NULL, NewClusterIdentifier = NULL,
@@ -80,6 +81,12 @@ If you decrease the automated snapshot retention period from its current value, 
 Default: Uses existing setting.
 
 Constraints: Must be a value from 0 to 35.}
+
+\item{ManualSnapshotRetentionPeriod}{The default for number of days that a newly created manual snapshot is retained. If the value is -1, the manual snapshot is retained indefinitely. This value doesn't retroactively change the retention periods of existing manual snapshots.
+
+The value must be either -1 or an integer between 1 and 3,653.
+
+The default value is -1.}
 
 \item{PreferredMaintenanceWindow}{The weekly time range (in UTC) during which system maintenance can occur, if necessary. If system maintenance is necessary during the window, it may result in an outage.
 
@@ -159,6 +166,7 @@ You can also change node type and the number of nodes to scale up or down the cl
   MasterUserPassword = "string",
   ClusterParameterGroupName = "string",
   AutomatedSnapshotRetentionPeriod = 123,
+  ManualSnapshotRetentionPeriod = 123,
   PreferredMaintenanceWindow = "string",
   ClusterVersion = "string",
   AllowVersionUpgrade = TRUE|FALSE,

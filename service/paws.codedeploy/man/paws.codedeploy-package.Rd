@@ -8,8 +8,8 @@
 \description{
 AWS CodeDeploy is a deployment service that
     automates application deployments to Amazon EC2 instances, on-premises
-    instances running in your own facility, or serverless AWS Lambda
-    functions.
+    instances running in your own facility, serverless AWS Lambda
+    functions, or applications in an Amazon ECS service.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

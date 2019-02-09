@@ -35,6 +35,36 @@ associate_configuration_items_to_application <- function (applicationConfigurati
     return(response)
 }
 
+#' Deletes one or more import tasks, each identified by their import ID
+#'
+#' Deletes one or more import tasks, each identified by their import ID. Each import task has a number of records that can identify servers or applications.
+#' 
+#' AWS Application Discovery Service has built-in matching logic that will identify when discovered servers match existing entries that you\'ve previously discovered, the information for the already-existing discovered server is updated. When you delete an import task that contains records that were used to match, the information in those matched records that comes from the deleted records will also be deleted.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' batch_delete_import_data(
+#'   importTaskIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @param importTaskIds &#91;required&#93; The IDs for the import tasks that you want to delete.
+#'
+#' @export
+batch_delete_import_data <- function (importTaskIds) 
+{
+    op <- new_operation(name = "BatchDeleteImportData", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- batch_delete_import_data_input(importTaskIds = importTaskIds)
+    output <- batch_delete_import_data_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Creates an application with the given name and description
 #'
 #' Creates an application with the given name and description.
@@ -217,7 +247,7 @@ describe_agents <- function (agentIds = NULL, filters = NULL,
 #'
 #' Retrieves attributes for a list of configuration item IDs.
 #' 
-#' All of the supplied IDs must be for the same asset type from one of the follwoing:
+#' All of the supplied IDs must be for the same asset type from one of the following:
 #' 
 #' -   server
 #' 
@@ -365,6 +395,45 @@ describe_export_tasks <- function (exportIds = NULL, filters = NULL,
     input <- describe_export_tasks_input(exportIds = exportIds, 
         filters = filters, maxResults = maxResults, nextToken = nextToken)
     output <- describe_export_tasks_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns an array of import tasks for your account, including status information, times, IDs, the Amazon S3 Object URL for the import file, and more
+#'
+#' Returns an array of import tasks for your account, including status information, times, IDs, the Amazon S3 Object URL for the import file, and more.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_import_tasks(
+#'   filters = list(
+#'     list(
+#'       name = "IMPORT_TASK_ID"|"STATUS"|"NAME",
+#'       values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @param filters An array of name-value pairs that you provide to filter the results for the `DescribeImportTask` request to a specific subset of results. Currently, wildcard values aren\'t supported for filters.
+#' @param maxResults The maximum number of results that you want this request to return, up to 100.
+#' @param nextToken The token to request a specific page of results.
+#'
+#' @export
+describe_import_tasks <- function (filters = NULL, maxResults = NULL, 
+    nextToken = NULL) 
+{
+    op <- new_operation(name = "DescribeImportTasks", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_import_tasks_input(filters = filters, maxResults = maxResults, 
+        nextToken = nextToken)
+    output <- describe_import_tasks_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -684,6 +753,56 @@ start_export_task <- function (exportDataFormat = NULL, filters = NULL,
     input <- start_export_task_input(exportDataFormat = exportDataFormat, 
         filters = filters, startTime = startTime, endTime = endTime)
     output <- start_export_task_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Starts an import task, which allows you to import details of your on-premises environment directly into AWS without having to use the Application Discovery Service (ADS) tools such as the Discovery Connector or Discovery Agent
+#'
+#' Starts an import task, which allows you to import details of your on-premises environment directly into AWS without having to use the Application Discovery Service (ADS) tools such as the Discovery Connector or Discovery Agent. This gives you the option to perform migration assessment and planning directly from your imported data, including the ability to group your devices as applications and track their migration status.
+#' 
+#' To start an import request, do this:
+#' 
+#' 1.  Download the specially formatted comma separated value (CSV) import template, which you can find here: <https://s3-us-west-2.amazonaws.com/templates-7cffcf56-bd96-4b1c-b45b-a5b42f282e46/import_template.csv>.
+#' 
+#' 2.  Fill out the template with your server and application data.
+#' 
+#' 3.  Upload your import file to an Amazon S3 bucket, and make a note of it\'s Object URL. Your import file must be in the CSV format.
+#' 
+#' 4.  Use the console or the `StartImportTask` command with the AWS CLI or one of the AWS SDKs to import the records from your file.
+#' 
+#' For more information, including step-by-step procedures, see [Migration Hub Import](https://docs.aws.amazon.com/application-discovery/latest/userguide/discovery-import.html) in the *AWS Application Discovery Service User Guide*.
+#' 
+#' There are limits to the number of import tasks you can create (and delete) in an AWS account. For more information, see [AWS Application Discovery Service Limits](https://docs.aws.amazon.com/application-discovery/latest/userguide/ads_service_limits.html) in the *AWS Application Discovery Service User Guide*.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' start_import_task(
+#'   clientRequestToken = "string",
+#'   name = "string",
+#'   importUrl = "string"
+#' )
+#' ```
+#'
+#' @param clientRequestToken Optional. A unique token that you can provide to prevent the same import request from occurring more than once. If you don\'t provide a token, a token is automatically generated.
+#' 
+#' Sending more than one `StartImportTask` request with the same client request token will return information about the original import task with that client request token.
+#' @param name &#91;required&#93; A descriptive name for this request. You can use this name to filter future requests related to this import task, such as identifying applications and servers that were included in this import task. We recommend that you use a meaningful name for each import task.
+#' @param importUrl &#91;required&#93; The URL for your import file that you\'ve uploaded to Amazon S3.
+#' 
+#' If you\'re using the AWS CLI, this URL is structured as follows: `s3://BucketName/ImportFileName.CSV`
+#'
+#' @export
+start_import_task <- function (clientRequestToken = NULL, name, 
+    importUrl) 
+{
+    op <- new_operation(name = "StartImportTask", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- start_import_task_input(clientRequestToken = clientRequestToken, 
+        name = name, importUrl = importUrl)
+    output <- start_import_task_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)

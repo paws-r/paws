@@ -52,13 +52,13 @@ update_fleet(ImageName = NULL, ImageArn = NULL, Name = NULL,
 
 \item{DeleteVpcConfig}{Deletes the VPC association for the specified fleet.}
 
-\item{Description}{The description for display.}
+\item{Description}{The description to display.}
 
-\item{DisplayName}{The fleet name for display.}
+\item{DisplayName}{The fleet name to display.}
 
 \item{EnableDefaultInternetAccess}{Enables or disables default internet access for the fleet.}
 
-\item{DomainJoinInfo}{The information needed to join a Microsoft Active Directory domain.}
+\item{DomainJoinInfo}{The name of the directory and organizational unit (OU) to use to join the fleet to a Microsoft Active Directory domain.}
 
 \item{AttributesToDelete}{The fleet attributes to delete.}
 }

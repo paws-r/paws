@@ -36,6 +36,14 @@ test_that("describe_classic_link_instances", {
     expect_error(describe_classic_link_instances(MaxResults = 20), NA)
 })
 
+test_that("describe_client_vpn_endpoints", {
+    expect_error(describe_client_vpn_endpoints(), NA)
+})
+
+test_that("describe_client_vpn_endpoints", {
+    expect_error(describe_client_vpn_endpoints(MaxResults = 20), NA)
+})
+
 test_that("describe_conversion_tasks", {
     expect_error(describe_conversion_tasks(), NA)
 })
@@ -312,6 +320,10 @@ test_that("describe_spot_instance_requests", {
     expect_error(describe_spot_instance_requests(), NA)
 })
 
+test_that("describe_spot_instance_requests", {
+    expect_error(describe_spot_instance_requests(MaxResults = 20), NA)
+})
+
 test_that("describe_spot_price_history", {
     expect_error(describe_spot_price_history(), NA)
 })
@@ -330,6 +342,38 @@ test_that("describe_tags", {
 
 test_that("describe_tags", {
     expect_error(describe_tags(MaxResults = 20), NA)
+})
+
+test_that("describe_transit_gateway_attachments", {
+    expect_error(describe_transit_gateway_attachments(), NA)
+})
+
+test_that("describe_transit_gateway_attachments", {
+    expect_error(describe_transit_gateway_attachments(MaxResults = 20), NA)
+})
+
+test_that("describe_transit_gateway_route_tables", {
+    expect_error(describe_transit_gateway_route_tables(), NA)
+})
+
+test_that("describe_transit_gateway_route_tables", {
+    expect_error(describe_transit_gateway_route_tables(MaxResults = 20), NA)
+})
+
+test_that("describe_transit_gateway_vpc_attachments", {
+    expect_error(describe_transit_gateway_vpc_attachments(), NA)
+})
+
+test_that("describe_transit_gateway_vpc_attachments", {
+    expect_error(describe_transit_gateway_vpc_attachments(MaxResults = 20), NA)
+})
+
+test_that("describe_transit_gateways", {
+    expect_error(describe_transit_gateways(), NA)
+})
+
+test_that("describe_transit_gateways", {
+    expect_error(describe_transit_gateways(MaxResults = 20), NA)
 })
 
 test_that("describe_volume_status", {
@@ -410,6 +454,10 @@ test_that("describe_vpc_endpoints", {
 
 test_that("describe_vpc_peering_connections", {
     expect_error(describe_vpc_peering_connections(), NA)
+})
+
+test_that("describe_vpc_peering_connections", {
+    expect_error(describe_vpc_peering_connections(MaxResults = 20), NA)
 })
 
 test_that("describe_vpcs", {

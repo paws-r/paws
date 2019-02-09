@@ -5,7 +5,7 @@
 \title{Create a thing group}
 \usage{
 create_thing_group(thingGroupName, parentGroupName = NULL,
-  thingGroupProperties = NULL)
+  thingGroupProperties = NULL, tags = NULL)
 }
 \arguments{
 \item{thingGroupName}{[required] The thing group name to create.}
@@ -13,6 +13,8 @@ create_thing_group(thingGroupName, parentGroupName = NULL,
 \item{parentGroupName}{The name of the parent thing group.}
 
 \item{thingGroupProperties}{The thing group properties.}
+
+\item{tags}{Metadata which can be used to manage the thing group.}
 }
 \description{
 Create a thing group.
@@ -31,6 +33,12 @@ This is a control plane operation. See \href{http://docs.aws.amazon.com/iot/late
         "string"
       ),
       merge = TRUE|FALSE
+    )
+  ),
+  tags = list(
+    list(
+      Key = "string",
+      Value = "string"
     )
   )
 )

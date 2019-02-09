@@ -39,6 +39,7 @@ Creates a policy to manage the lifecycle of the specified AWS resources. You can
     Schedules = list(
       list(
         Name = "string",
+        CopyTags = TRUE|FALSE,
         TagsToAdd = list(
           list(
             Key = "string",

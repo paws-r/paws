@@ -25,8 +25,6 @@ Establishes a new queue for processing requests to place new game sessions. A qu
 \strong{Player latency policies.} For placement requests containing player latency information, use player latency policies to protect individual players from very high latencies. With a latency cap, even when a destination can deliver a low latency for most players, the game is not placed where any individual player is reporting latency higher than a policy's maximum. A queue can have multiple latency policies, which are enforced consecutively starting with the policy with the lowest latency cap. Use multiple policies to gradually relax latency controls; for example, you might set a policy with a low latency cap for the first 60 seconds, a second policy with a higher cap for the next 60 seconds, etc.
 
 To create a new queue, provide a name, timeout value, a list of destinations and, if desired, a set of latency policies. If successful, a new queue object is returned.
-
-Queue-related operations include:
 \itemize{
 \item CreateGameSessionQueue
 \item DescribeGameSessionQueues

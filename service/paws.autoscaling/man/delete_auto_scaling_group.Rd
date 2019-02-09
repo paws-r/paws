@@ -9,7 +9,7 @@ delete_auto_scaling_group(AutoScalingGroupName, ForceDelete = NULL)
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{ForceDelete}{Specifies that the group will be deleted along with all instances associated with the group, without waiting for all instances to be terminated. This parameter also deletes any lifecycle actions associated with the group.}
+\item{ForceDelete}{Specifies that the group is to be deleted along with all instances associated with the group, without waiting for all instances to be terminated. This parameter also deletes any lifecycle actions associated with the group.}
 }
 \description{
 Deletes the specified Auto Scaling group.
@@ -19,7 +19,7 @@ If the group has instances or scaling activities in progress, you must specify t
 
 If the group has policies, deleting the group deletes the policies, the underlying alarm actions, and any alarm that no longer has an associated action.
 
-To remove instances from the Auto Scaling group before deleting it, call DetachInstances with the list of instances and the option to decrement the desired capacity so that Amazon EC2 Auto Scaling does not launch replacement instances.
+To remove instances from the Auto Scaling group before deleting it, call DetachInstances with the list of instances and the option to decrement the desired capacity. This ensures that Amazon EC2 Auto Scaling does not launch replacement instances.
 
 To terminate all instances before deleting the Auto Scaling group, call UpdateAutoScalingGroup and set the minimum size and desired capacity of the Auto Scaling group to zero.
 }

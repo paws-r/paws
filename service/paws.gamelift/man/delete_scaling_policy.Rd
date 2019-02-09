@@ -16,8 +16,6 @@ Deletes a fleet scaling policy. This action means that the policy is no longer i
 }
 \details{
 To temporarily suspend scaling policies, call StopFleetActions. This operation suspends all policies for the fleet.
-
-Operations related to fleet capacity scaling include:
 \itemize{
 \item DescribeFleetCapacity
 \item UpdateFleetCapacity

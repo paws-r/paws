@@ -5,7 +5,8 @@
 \title{Describes one or more of your VPC peering connections}
 \usage{
 describe_vpc_peering_connections(Filters = NULL, DryRun = NULL,
-  VpcPeeringConnectionIds = NULL)
+  VpcPeeringConnectionIds = NULL, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -29,6 +30,10 @@ describe_vpc_peering_connections(Filters = NULL, DryRun = NULL,
 \item{VpcPeeringConnectionIds}{One or more VPC peering connection IDs.
 
 Default: Describes all your VPC peering connections.}
+
+\item{NextToken}{The token to request the next page of results. (You received this token from a prior call.)}
+
+\item{MaxResults}{The maximum number of results to return for this request. The request returns a token that you can specify in a subsequent call to get the next set of results.}
 }
 \description{
 Describes one or more of your VPC peering connections.
@@ -46,7 +51,9 @@ Describes one or more of your VPC peering connections.
   DryRun = TRUE|FALSE,
   VpcPeeringConnectionIds = list(
     "string"
-  )
+  ),
+  NextToken = "string",
+  MaxResults = 123
 )
 }
 }

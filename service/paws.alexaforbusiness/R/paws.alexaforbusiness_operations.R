@@ -148,6 +148,36 @@ associate_skill_with_skill_group <- function (SkillGroupArn = NULL,
     return(response)
 }
 
+#' Makes a private skill available for enrolled users to enable on their devices
+#'
+#' Makes a private skill available for enrolled users to enable on their devices.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' associate_skill_with_users(
+#'   OrganizationArn = "string",
+#'   SkillId = "string"
+#' )
+#' ```
+#'
+#' @param OrganizationArn The ARN of the organization.
+#' @param SkillId &#91;required&#93; The private skill ID you want to make available to enrolled users.\>
+#'
+#' @export
+associate_skill_with_users <- function (OrganizationArn = NULL, 
+    SkillId) 
+{
+    op <- new_operation(name = "AssociateSkillWithUsers", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- associate_skill_with_users_input(OrganizationArn = OrganizationArn, 
+        SkillId = SkillId)
+    output <- associate_skill_with_users_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Creates an address book with the specified details
 #'
 #' Creates an address book with the specified details.
@@ -173,6 +203,53 @@ create_address_book <- function (Name, Description = NULL, ClientRequestToken = 
     input <- create_address_book_input(Name = Name, Description = Description, 
         ClientRequestToken = ClientRequestToken)
     output <- create_address_book_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a recurring schedule for usage reports to deliver to the specified S3 location with a specified daily or weekly interval
+#'
+#' Creates a recurring schedule for usage reports to deliver to the specified S3 location with a specified daily or weekly interval.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' create_business_report_schedule(
+#'   ScheduleName = "string",
+#'   S3BucketName = "string",
+#'   S3KeyPrefix = "string",
+#'   Format = "CSV"|"CSV_ZIP",
+#'   ContentRange = list(
+#'     Interval = "ONE_DAY"|"ONE_WEEK"
+#'   ),
+#'   Recurrence = list(
+#'     StartDate = "string"
+#'   ),
+#'   ClientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @param ScheduleName The name identifier of the schedule.
+#' @param S3BucketName The S3 bucket name of the output reports.
+#' @param S3KeyPrefix The S3 key where the report is delivered.
+#' @param Format &#91;required&#93; The format of the generated report (individual CSV files or zipped files of individual files).
+#' @param ContentRange &#91;required&#93; The content range of the reports.
+#' @param Recurrence The recurrence of the reports.
+#' @param ClientRequestToken The client request token.
+#'
+#' @export
+create_business_report_schedule <- function (ScheduleName = NULL, 
+    S3BucketName = NULL, S3KeyPrefix = NULL, Format, ContentRange, 
+    Recurrence = NULL, ClientRequestToken = NULL) 
+{
+    op <- new_operation(name = "CreateBusinessReportSchedule", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- create_business_report_schedule_input(ScheduleName = ScheduleName, 
+        S3BucketName = S3BucketName, S3KeyPrefix = S3KeyPrefix, 
+        Format = Format, ContentRange = ContentRange, Recurrence = Recurrence, 
+        ClientRequestToken = ClientRequestToken)
+    output <- create_business_report_schedule_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -248,12 +325,12 @@ create_conference_provider <- function (ConferenceProviderName,
 #' @param DisplayName The name of the contact to display on the console.
 #' @param FirstName &#91;required&#93; The first name of the contact that is used to call the contact on the device.
 #' @param LastName The last name of the contact that is used to call the contact on the device.
-#' @param PhoneNumber &#91;required&#93; The phone number of the contact in E.164 format.
+#' @param PhoneNumber The phone number of the contact in E.164 format.
 #' @param ClientRequestToken A unique, user-specified identifier for this request that ensures idempotency.
 #'
 #' @export
 create_contact <- function (DisplayName = NULL, FirstName, LastName = NULL, 
-    PhoneNumber, ClientRequestToken = NULL) 
+    PhoneNumber = NULL, ClientRequestToken = NULL) 
 {
     op <- new_operation(name = "CreateContact", http_method = "POST", 
         http_path = "/", paginator = list())
@@ -457,6 +534,32 @@ delete_address_book <- function (AddressBookArn)
         http_path = "/", paginator = list())
     input <- delete_address_book_input(AddressBookArn = AddressBookArn)
     output <- delete_address_book_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the recurring report delivery schedule with the specified schedule ARN
+#'
+#' Deletes the recurring report delivery schedule with the specified schedule ARN.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_business_report_schedule(
+#'   ScheduleArn = "string"
+#' )
+#' ```
+#'
+#' @param ScheduleArn &#91;required&#93; The ARN of the business report schedule.
+#'
+#' @export
+delete_business_report_schedule <- function (ScheduleArn) 
+{
+    op <- new_operation(name = "DeleteBusinessReportSchedule", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- delete_business_report_schedule_input(ScheduleArn = ScheduleArn)
+    output <- delete_business_report_schedule_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -794,6 +897,36 @@ disassociate_skill_from_skill_group <- function (SkillGroupArn = NULL,
     return(response)
 }
 
+#' Makes a private skill unavailable for enrolled users and prevents them from enabling it on their devices
+#'
+#' Makes a private skill unavailable for enrolled users and prevents them from enabling it on their devices.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' disassociate_skill_from_users(
+#'   OrganizationArn = "string",
+#'   SkillId = "string"
+#' )
+#' ```
+#'
+#' @param OrganizationArn The ARN of the organization.
+#' @param SkillId &#91;required&#93; The private skill ID you want to make unavailable for enrolled users.
+#'
+#' @export
+disassociate_skill_from_users <- function (OrganizationArn = NULL, 
+    SkillId) 
+{
+    op <- new_operation(name = "DisassociateSkillFromUsers", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- disassociate_skill_from_users_input(OrganizationArn = OrganizationArn, 
+        SkillId = SkillId)
+    output <- disassociate_skill_from_users_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Disassociates a skill group from a specified room
 #'
 #' Disassociates a skill group from a specified room. This disables all skills in the skill group on all devices in the room.
@@ -1086,6 +1219,36 @@ get_skill_group <- function (SkillGroupArn = NULL)
     return(response)
 }
 
+#' Lists the details of the schedules that a user configured
+#'
+#' Lists the details of the schedules that a user configured.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' list_business_report_schedules(
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @param NextToken The token used to list the remaining schedules from the previous API call.
+#' @param MaxResults The maximum number of schedules listed in the call.
+#'
+#' @export
+list_business_report_schedules <- function (NextToken = NULL, 
+    MaxResults = NULL) 
+{
+    op <- new_operation(name = "ListBusinessReportSchedules", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- list_business_report_schedules_input(NextToken = NextToken, 
+        MaxResults = MaxResults)
+    output <- list_business_report_schedules_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Lists conference providers under a specific AWS account
 #'
 #' Lists conference providers under a specific AWS account.
@@ -1164,11 +1327,11 @@ list_device_events <- function (DeviceArn, EventType = NULL,
 #' )
 #' ```
 #'
-#' @param SkillGroupArn The ARN of the skill group for which to list enabled skills. Required.
+#' @param SkillGroupArn The ARN of the skill group for which to list enabled skills.
 #' @param EnablementType Whether the skill is enabled under the user\'s account, or if it requires linking to be used.
 #' @param SkillType Whether the skill is publicly available or is a private skill.
-#' @param NextToken An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by `MaxResults`. Required.
-#' @param MaxResults The maximum number of results to include in the response. If more results exist than the specified `MaxResults` value, a token is included in the response so that the remaining results can be retrieved. Required.
+#' @param NextToken An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by `MaxResults`.
+#' @param MaxResults The maximum number of results to include in the response. If more results exist than the specified `MaxResults` value, a token is included in the response so that the remaining results can be retrieved.
 #'
 #' @export
 list_skills <- function (SkillGroupArn = NULL, EnablementType = NULL, 
@@ -2023,6 +2186,47 @@ update_address_book <- function (AddressBookArn, Name = NULL,
     input <- update_address_book_input(AddressBookArn = AddressBookArn, 
         Name = Name, Description = Description)
     output <- update_address_book_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates the configuration of the report delivery schedule with the specified schedule ARN
+#'
+#' Updates the configuration of the report delivery schedule with the specified schedule ARN.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' update_business_report_schedule(
+#'   ScheduleArn = "string",
+#'   S3BucketName = "string",
+#'   S3KeyPrefix = "string",
+#'   Format = "CSV"|"CSV_ZIP",
+#'   ScheduleName = "string",
+#'   Recurrence = list(
+#'     StartDate = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @param ScheduleArn &#91;required&#93; The ARN of the business report schedule.
+#' @param S3BucketName The S3 location of the output reports.
+#' @param S3KeyPrefix The S3 key where the report is delivered.
+#' @param Format The format of the generated report (individual CSV files or zipped files of individual files).
+#' @param ScheduleName The name identifier of the schedule.
+#' @param Recurrence The recurrence of the reports.
+#'
+#' @export
+update_business_report_schedule <- function (ScheduleArn, S3BucketName = NULL, 
+    S3KeyPrefix = NULL, Format = NULL, ScheduleName = NULL, Recurrence = NULL) 
+{
+    op <- new_operation(name = "UpdateBusinessReportSchedule", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- update_business_report_schedule_input(ScheduleArn = ScheduleArn, 
+        S3BucketName = S3BucketName, S3KeyPrefix = S3KeyPrefix, 
+        Format = Format, ScheduleName = ScheduleName, Recurrence = Recurrence)
+    output <- update_business_report_schedule_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)

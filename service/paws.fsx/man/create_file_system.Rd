@@ -4,37 +4,10 @@
 \alias{create_file_system}
 \title{Creates a new, empty Amazon FSx file system}
 \usage{
-create_file_system(
-  ClientRequestToken = "string",
-  FileSystemType = "WINDOWS"|"LUSTRE",
-  StorageCapacity = 123,
-  SubnetIds = list(
-    "string"
-  ),
-  SecurityGroupIds = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  KmsKeyId = "string",
-  WindowsConfiguration = list(
-    ActiveDirectoryId = "string",
-    ThroughputCapacity = 123,
-    WeeklyMaintenanceStartTime = "string",
-    DailyAutomaticBackupStartTime = "string",
-    AutomaticBackupRetentionDays = 123,
-    CopyTagsToBackups = TRUE|FALSE
-  ),
-  LustreConfiguration = list(
-    WeeklyMaintenanceStartTime = "string",
-    ImportPath = "string",
-    ImportedFileChunkSize = 123
-  )
-)
+create_file_system(ClientRequestToken = NULL, FileSystemType,
+  StorageCapacity, SubnetIds, SecurityGroupIds = NULL, Tags = NULL,
+  KmsKeyId = NULL, WindowsConfiguration = NULL,
+  LustreConfiguration = NULL)
 }
 \arguments{
 \item{ClientRequestToken}{(Optional) A string of up to 64 ASCII characters that Amazon FSx uses to ensure idempotent creation. This string is automatically filled on your behalf when you use the AWS Command Line Interface (AWS CLI) or an AWS SDK.}
@@ -73,9 +46,45 @@ This operation requires a client request token in the request that Amazon FSx us
 
 The \code{CreateFileSystem} call returns while the file system's lifecycle state is still \code{CREATING}. You can check the file-system creation status by calling the DescribeFileSystems operation, which returns the file system state along with other information.
 }
+\section{Accepted Parameters}{
+\preformatted{create_file_system(
+  ClientRequestToken = "string",
+  FileSystemType = "WINDOWS"|"LUSTRE",
+  StorageCapacity = 123,
+  SubnetIds = list(
+    "string"
+  ),
+  SecurityGroupIds = list(
+    "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  KmsKeyId = "string",
+  WindowsConfiguration = list(
+    ActiveDirectoryId = "string",
+    ThroughputCapacity = 123,
+    WeeklyMaintenanceStartTime = "string",
+    DailyAutomaticBackupStartTime = "string",
+    AutomaticBackupRetentionDays = 123,
+    CopyTagsToBackups = TRUE|FALSE
+  ),
+  LustreConfiguration = list(
+    WeeklyMaintenanceStartTime = "string",
+    ImportPath = "string",
+    ExportPath = "string",
+    ImportedFileChunkSize = 123
+  )
+)
+}
+}
+
 \examples{
 # This operation creates a new file system.
-create_file_system(
+\donttest{create_file_system(
   ClientRequestToken = "a8ca07e4-61ec-4399-99f4-19853801bcd5",
   FileSystemType = "WINDOWS",
   KmsKeyId = "arn:aws:kms:us-east-1:012345678912:key/0ff3ea8d-130e-4133-877f-93908b6fdbd6",
@@ -99,6 +108,6 @@ create_file_system(
     ThroughputCapacity = 8L,
     WeeklyMaintenanceStartTime = "1:05:00"
   )
-)
+)}
 
 }

@@ -11,10 +11,10 @@ update_deployment_group(applicationName, currentDeploymentGroupName,
   triggerConfigurations = NULL, alarmConfiguration = NULL,
   autoRollbackConfiguration = NULL, deploymentStyle = NULL,
   blueGreenDeploymentConfiguration = NULL, loadBalancerInfo = NULL,
-  ec2TagSet = NULL, onPremisesTagSet = NULL)
+  ec2TagSet = NULL, ecsServices = NULL, onPremisesTagSet = NULL)
 }
 \arguments{
-\item{applicationName}{[required] The application name corresponding to the deployment group to update.}
+\item{applicationName}{[required] The application name that corresponds to the deployment group to update.}
 
 \item{currentDeploymentGroupName}{[required] The current name of the deployment group.}
 
@@ -42,9 +42,11 @@ update_deployment_group(applicationName, currentDeploymentGroupName,
 
 \item{loadBalancerInfo}{Information about the load balancer used in a deployment.}
 
-\item{ec2TagSet}{Information about groups of tags applied to on-premises instances. The deployment group will include only EC2 instances identified by all the tag groups.}
+\item{ec2TagSet}{Information about groups of tags applied to on-premises instances. The deployment group includes only EC2 instances identified by all the tag groups.}
 
-\item{onPremisesTagSet}{Information about an on-premises instance tag set. The deployment group will include only on-premises instances identified by all the tag groups.}
+\item{ecsServices}{The target Amazon ECS services in the deployment group. This applies only to deployment groups that use the Amazon ECS compute platform. A target Amazon ECS service is specified as an Amazon ECS cluster and service name pair using the format \code{<clustername>:<servicename>}.}
+
+\item{onPremisesTagSet}{Information about an on-premises instance tag set. The deployment group includes only on-premises instances identified by all the tag groups.}
 }
 \description{
 Changes information about a deployment group.
@@ -124,6 +126,25 @@ Changes information about a deployment group.
       list(
         name = "string"
       )
+    ),
+    targetGroupPairInfoList = list(
+      list(
+        targetGroups = list(
+          list(
+            name = "string"
+          )
+        ),
+        prodTrafficRoute = list(
+          listenerArns = list(
+            "string"
+          )
+        ),
+        testTrafficRoute = list(
+          listenerArns = list(
+            "string"
+          )
+        )
+      )
     )
   ),
   ec2TagSet = list(
@@ -135,6 +156,12 @@ Changes information about a deployment group.
           Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
         )
       )
+    )
+  ),
+  ecsServices = list(
+    list(
+      serviceName = "string",
+      clusterName = "string"
     )
   ),
   onPremisesTagSet = list(

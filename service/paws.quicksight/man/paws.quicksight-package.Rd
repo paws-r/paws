@@ -6,11 +6,11 @@
 \alias{paws.quicksight-package}
 \title{paws.quicksight: Amazon QuickSight}
 \description{
-Amazon QuickSight is a fully managed, serverless, cloud
-business intelligence service that makes it easy to extend data and
-insights to every user in your organization. This API interface
-reference contains documentation for a programming interface that you
-can use to manage Amazon QuickSight.
+Amazon QuickSight is a fully managed, serverless,
+    cloud business intelligence service that makes it easy to extend data
+    and insights to every user in your organization. This API interface
+    reference contains documentation for a programming interface that you
+    can use to manage Amazon QuickSight.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

@@ -15,7 +15,7 @@ put_user_permissions_boundary(UserName, PermissionsBoundary)
 Adds or updates the policy that is specified as the IAM user's permissions boundary. You can use an AWS managed policy or a customer managed policy to set the boundary for a user. Use the boundary to control the maximum permissions that the user can have. Setting a permissions boundary is an advanced feature that can affect the permissions for the user.
 }
 \details{
-Policies that are used as permissions boundaries do not provide permissions. You must also attach a permissions policy to the user. To learn how the effective permissions for a user are evaluated, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html}{IAM JSON Policy Evaluation Logic} in the IAM User Guide.
+Policies that are used as permissions boundaries do not provide permissions. You must also attach a permissions policy to the user. To learn how the effective permissions for a user are evaluated, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html}{IAM JSON Policy Evaluation Logic} in the IAM User Guide.
 }
 \section{Accepted Parameters}{
 \preformatted{put_user_permissions_boundary(

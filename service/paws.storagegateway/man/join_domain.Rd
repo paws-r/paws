@@ -4,12 +4,17 @@
 \alias{join_domain}
 \title{Adds a file gateway to an Active Directory domain}
 \usage{
-join_domain(GatewayARN, DomainName, UserName, Password)
+join_domain(GatewayARN, DomainName, OrganizationalUnit = NULL,
+  DomainControllers = NULL, UserName, Password)
 }
 \arguments{
-\item{GatewayARN}{[required] The unique Amazon Resource Name (ARN) of the file gateway you want to add to the Active Directory domain.}
+\item{GatewayARN}{[required] The Amazon Resource Name (ARN) of the gateway. Use the \code{ListGateways} operation to return a list of gateways for your account and region.}
 
 \item{DomainName}{[required] The name of the domain that you want the gateway to join.}
+
+\item{OrganizationalUnit}{The organizational unit (OU) is a container with an Active Directory that can hold users, groups, computers, and other OUs and this parameter specifies the OU that the gateway will join within the AD domain.}
+
+\item{DomainControllers}{List of IPv4 addresses, NetBIOS names, or host names of your domain server. If you need to specify the port number include it after the colon (":"). For example, \code{mydc.mydomain.com:389}.}
 
 \item{UserName}{[required] Sets the user name of user who has permission to add the gateway to the Active Directory domain.}
 
@@ -22,6 +27,10 @@ Adds a file gateway to an Active Directory domain. This operation is only suppor
 \preformatted{join_domain(
   GatewayARN = "string",
   DomainName = "string",
+  OrganizationalUnit = "string",
+  DomainControllers = list(
+    "string"
+  ),
   UserName = "string",
   Password = "string"
 )

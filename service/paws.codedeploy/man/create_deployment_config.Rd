@@ -23,7 +23,7 @@ The value parameter takes an integer.
 
 For example, to set a minimum of 95% healthy instance, specify a type of FLEET\_PERCENT and a value of 95.}
 
-\item{trafficRoutingConfig}{The configuration that specifies how the deployment traffic will be routed.}
+\item{trafficRoutingConfig}{The configuration that specifies how the deployment traffic is routed.}
 
 \item{computePlatform}{The destination platform type for the deployment (\code{Lambda} or \code{Server}>).}
 }
@@ -48,7 +48,7 @@ Creates a deployment configuration.
       linearInterval = 123
     )
   ),
-  computePlatform = "Server"|"Lambda"
+  computePlatform = "Server"|"Lambda"|"ECS"
 )
 }
 }

@@ -54,7 +54,8 @@ add_tags <- function (ResourceId, TagsList = NULL)
 #'   EnableLogFileValidation = TRUE|FALSE,
 #'   CloudWatchLogsLogGroupArn = "string",
 #'   CloudWatchLogsRoleArn = "string",
-#'   KmsKeyId = "string"
+#'   KmsKeyId = "string",
+#'   IsOrganizationTrail = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -90,12 +91,13 @@ add_tags <- function (ResourceId, TagsList = NULL)
 #' -   arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012
 #' 
 #' -   12345678-1234-1234-1234-123456789012
+#' @param IsOrganizationTrail Specifies whether the trail is created for all accounts in an organization in AWS Organizations, or only for the current AWS account. The default is false, and cannot be true unless the call is made on behalf of an AWS account that is the master account for an organization in AWS Organizations.
 #'
 #' @export
 create_trail <- function (Name, S3BucketName, S3KeyPrefix = NULL, 
     SnsTopicName = NULL, IncludeGlobalServiceEvents = NULL, IsMultiRegionTrail = NULL, 
     EnableLogFileValidation = NULL, CloudWatchLogsLogGroupArn = NULL, 
-    CloudWatchLogsRoleArn = NULL, KmsKeyId = NULL) 
+    CloudWatchLogsRoleArn = NULL, KmsKeyId = NULL, IsOrganizationTrail = NULL) 
 {
     op <- new_operation(name = "CreateTrail", http_method = "POST", 
         http_path = "/", paginator = list())
@@ -104,7 +106,8 @@ create_trail <- function (Name, S3BucketName, S3KeyPrefix = NULL,
         IncludeGlobalServiceEvents = IncludeGlobalServiceEvents, 
         IsMultiRegionTrail = IsMultiRegionTrail, EnableLogFileValidation = EnableLogFileValidation, 
         CloudWatchLogsLogGroupArn = CloudWatchLogsLogGroupArn, 
-        CloudWatchLogsRoleArn = CloudWatchLogsRoleArn, KmsKeyId = KmsKeyId)
+        CloudWatchLogsRoleArn = CloudWatchLogsRoleArn, KmsKeyId = KmsKeyId, 
+        IsOrganizationTrail = IsOrganizationTrail)
     output <- create_trail_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -163,7 +166,7 @@ delete_trail <- function (Name)
 #' -   If an empty list is specified and IncludeShadowTrails is null or true, then information for all trails in the current region and any associated shadow trails in other regions is returned.
 #' 
 #' If one or more trail names are specified, information is returned only if the names match the names of trails belonging only to the current region. To return information about a trail in another region, you must specify its trail ARN.
-#' @param includeShadowTrails Specifies whether to include shadow trails in the response. A shadow trail is the replication in a region of a trail that was created in a different region. The default is true.
+#' @param includeShadowTrails Specifies whether to include shadow trails in the response. A shadow trail is the replication in a region of a trail that was created in a different region, or in the case of an organization trail, the replication of an organization trail in member accounts. If you do not include shadow trails, organization trails in a member account and region replication trails will not be returned. The default is true.
 #'
 #' @export
 describe_trails <- function (trailNameList = NULL, includeShadowTrails = NULL) 
@@ -567,7 +570,8 @@ stop_logging <- function (Name)
 #'   EnableLogFileValidation = TRUE|FALSE,
 #'   CloudWatchLogsLogGroupArn = "string",
 #'   CloudWatchLogsRoleArn = "string",
-#'   KmsKeyId = "string"
+#'   KmsKeyId = "string",
+#'   IsOrganizationTrail = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -607,12 +611,13 @@ stop_logging <- function (Name)
 #' -   arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012
 #' 
 #' -   12345678-1234-1234-1234-123456789012
+#' @param IsOrganizationTrail Specifies whether the trail is applied to all accounts in an organization in AWS Organizations, or only for the current AWS account. The default is false, and cannot be true unless the call is made on behalf of an AWS account that is the master account for an organization in AWS Organizations. If the trail is not an organization trail and this is set to true, the trail will be created in all AWS accounts that belong to the organization. If the trail is an organization trail and this is set to false, the trail will remain in the current AWS account but be deleted from all member accounts in the organization.
 #'
 #' @export
 update_trail <- function (Name, S3BucketName = NULL, S3KeyPrefix = NULL, 
     SnsTopicName = NULL, IncludeGlobalServiceEvents = NULL, IsMultiRegionTrail = NULL, 
     EnableLogFileValidation = NULL, CloudWatchLogsLogGroupArn = NULL, 
-    CloudWatchLogsRoleArn = NULL, KmsKeyId = NULL) 
+    CloudWatchLogsRoleArn = NULL, KmsKeyId = NULL, IsOrganizationTrail = NULL) 
 {
     op <- new_operation(name = "UpdateTrail", http_method = "POST", 
         http_path = "/", paginator = list())
@@ -621,7 +626,8 @@ update_trail <- function (Name, S3BucketName = NULL, S3KeyPrefix = NULL,
         IncludeGlobalServiceEvents = IncludeGlobalServiceEvents, 
         IsMultiRegionTrail = IsMultiRegionTrail, EnableLogFileValidation = EnableLogFileValidation, 
         CloudWatchLogsLogGroupArn = CloudWatchLogsLogGroupArn, 
-        CloudWatchLogsRoleArn = CloudWatchLogsRoleArn, KmsKeyId = KmsKeyId)
+        CloudWatchLogsRoleArn = CloudWatchLogsRoleArn, KmsKeyId = KmsKeyId, 
+        IsOrganizationTrail = IsOrganizationTrail)
     output <- update_trail_output()
     svc <- service()
     request <- new_request(svc, op, input, output)

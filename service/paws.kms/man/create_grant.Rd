@@ -36,7 +36,7 @@ To specify the principal, use the \href{http://docs.aws.amazon.com/general/lates
 
 For more information, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token}{Grant Tokens} in the \emph{AWS Key Management Service Developer Guide}.}
 
-\item{Name}{A friendly name for identifying the grant. Use this value to prevent the unintended creation of duplicate grants when retrying this request.
+\item{Name}{A friendly name for identifying the grant. Use this value to prevent unintended creation of duplicate grants when retrying this request.
 
 When this value is absent, all \code{CreateGrant} requests result in a new grant with a unique \code{GrantId} even if all the supplied parameters are identical. This can result in unintended duplicates when you retry the \code{CreateGrant} request.
 

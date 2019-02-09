@@ -90,8 +90,8 @@ cancel_export_task <- function (taskId)
 #' @param taskName The name of the export task.
 #' @param logGroupName &#91;required&#93; The name of the log group.
 #' @param logStreamNamePrefix Export only log streams that match the provided prefix. If you don\'t specify a value, no prefix filter is applied.
-#' @param from &#91;required&#93; The start time of the range for the request, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp earlier than this time are not exported.
-#' @param to &#91;required&#93; The end time of the range for the request, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp later than this time are not exported.
+#' @param from &#91;required&#93; The start time of the range for the request, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a timestamp earlier than this time are not exported.
+#' @param to &#91;required&#93; The end time of the range for the request, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time are not exported.
 #' @param destination &#91;required&#93; The name of S3 bucket for the exported log data. The bucket must be in the same AWS region.
 #' @param destinationPrefix The prefix used as the start of the key for every object exported. If you don\'t specify a value, the default is `exportedlogs`.
 #'
@@ -575,6 +575,40 @@ describe_metric_filters <- function (logGroupName = NULL, filterNamePrefix = NUL
     return(response)
 }
 
+#' Returns a list of CloudWatch Logs Insights queries that are scheduled, executing, or have been executed recently in this account
+#'
+#' Returns a list of CloudWatch Logs Insights queries that are scheduled, executing, or have been executed recently in this account. You can request all queries, or limit it to queries of a specific log group or queries with a certain status.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_queries(
+#'   logGroupName = "string",
+#'   status = "Scheduled"|"Running"|"Complete"|"Failed"|"Cancelled",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @param logGroupName Limits the returned queries to only those for the specified log group.
+#' @param status Limits the returned queries to only those that have the specified status. Valid values are `Cancelled`, `Complete`, `Failed`, `Running`, and `Scheduled`.
+#' @param maxResults Limits the number of returned queries to the specified number.
+#' @param nextToken 
+#'
+#' @export
+describe_queries <- function (logGroupName = NULL, status = NULL, 
+    maxResults = NULL, nextToken = NULL) 
+{
+    op <- new_operation(name = "DescribeQueries", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_queries_input(logGroupName = logGroupName, 
+        status = status, maxResults = maxResults, nextToken = nextToken)
+    output <- describe_queries_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Lists the resource policies in this account
 #'
 #' Lists the resource policies in this account.
@@ -695,12 +729,12 @@ disassociate_kms_key <- function (logGroupName)
 #' @param logGroupName &#91;required&#93; The name of the log group to search.
 #' @param logStreamNames Filters the results to only logs from the log streams in this list.
 #' 
-#' If you specify a value for both `logStreamNamePrefix` and `logStreamNames`, but the value for `logStreamNamePrefix` does not match any log stream names specified in `logStreamNames`, the action returns an `InvalidParameterException` error.
+#' If you specify a value for both `logStreamNamePrefix` and `logStreamNames`, the action returns an `InvalidParameterException` error.
 #' @param logStreamNamePrefix Filters the results to include only events from log streams that have names starting with this prefix.
 #' 
 #' If you specify a value for both `logStreamNamePrefix` and `logStreamNames`, but the value for `logStreamNamePrefix` does not match any log stream names specified in `logStreamNames`, the action returns an `InvalidParameterException` error.
-#' @param startTime The start of the time range, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp before this time are not returned.
-#' @param endTime The end of the time range, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp later than this time are not returned.
+#' @param startTime The start of the time range, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a timestamp before this time are not returned.
+#' @param endTime The end of the time range, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time are not returned.
 #' @param filterPattern The filter pattern to use. For more information, see [Filter and Pattern Syntax](http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html).
 #' 
 #' If not provided, all the events are matched.
@@ -747,8 +781,8 @@ filter_log_events <- function (logGroupName, logStreamNames = NULL,
 #'
 #' @param logGroupName &#91;required&#93; The name of the log group.
 #' @param logStreamName &#91;required&#93; The name of the log stream.
-#' @param startTime The start of the time range, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp equal to this time or later than this time are included. Events with a time stamp earlier than this time are not included.
-#' @param endTime The end of the time range, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp equal to or later than this time are not included.
+#' @param startTime The start of the time range, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a timestamp equal to this time or later than this time are included. Events with a timestamp earlier than this time are not included.
+#' @param endTime The end of the time range, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a timestamp equal to or later than this time are not included.
 #' @param nextToken The token for the next set of items to return. (You received this token from a previous call.)
 #' @param limit The maximum number of log events returned. If you don\'t specify a value, the maximum is as many log events as can fit in a response size of 1 MB, up to 10,000 log events.
 #' @param startFromHead If the value is true, the earliest log events are returned first. If the value is false, the latest log events are returned first. The default value is false.
@@ -764,6 +798,97 @@ get_log_events <- function (logGroupName, logStreamName, startTime = NULL,
         endTime = endTime, nextToken = nextToken, limit = limit, 
         startFromHead = startFromHead)
     output <- get_log_events_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a list of the fields that are included in log events in the specified log group, along with the percentage of log events that contain each field
+#'
+#' Returns a list of the fields that are included in log events in the specified log group, along with the percentage of log events that contain each field. The search is limited to a time period that you specify.
+#' 
+#' In the results, fields that start with @ are fields generated by CloudWatch Logs. For example, `@timestamp` is the timestamp of each log event.
+#' 
+#' The response results are sorted by the frequency percentage, starting with the highest percentage.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' get_log_group_fields(
+#'   logGroupName = "string",
+#'   time = 123
+#' )
+#' ```
+#'
+#' @param logGroupName &#91;required&#93; The name of the log group to search.
+#' @param time The time to set as the center of the query. If you specify `time`, the 8 minutes before and 8 minutes after this time are searched. If you omit `time`, the past 15 minutes are queried.
+#' 
+#' The `time` value is specified as epoch time, the number of seconds since January 1, 1970, 00:00:00 UTC.
+#'
+#' @export
+get_log_group_fields <- function (logGroupName, time = NULL) 
+{
+    op <- new_operation(name = "GetLogGroupFields", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_log_group_fields_input(logGroupName = logGroupName, 
+        time = time)
+    output <- get_log_group_fields_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves all the fields and values of a single log event
+#'
+#' Retrieves all the fields and values of a single log event. All fields are retrieved, even if the original query that produced the `logRecordPointer` retrieved only a subset of fields. Fields are returned as field name/field value pairs.
+#' 
+#' Additionally, the entire unparsed log event is returned within `@message`.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' get_log_record(
+#'   logRecordPointer = "string"
+#' )
+#' ```
+#'
+#' @param logRecordPointer &#91;required&#93; The pointer corresponding to the log event record you want to retrieve. You get this from the response of a `GetQueryResults` operation. In that response, the value of the `@ptr` field for a log event is the value to use as `logRecordPointer` to retrieve that complete log event record.
+#'
+#' @export
+get_log_record <- function (logRecordPointer) 
+{
+    op <- new_operation(name = "GetLogRecord", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_log_record_input(logRecordPointer = logRecordPointer)
+    output <- get_log_record_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns the results from the specified query
+#'
+#' Returns the results from the specified query. If the query is in progress, partial results of that current execution are returned. Only the fields requested in the query are returned.
+#' 
+#' `GetQueryResults` does not start a query execution. To run a query, use .
+#'
+#' @section Accepted Parameters:
+#' ```
+#' get_query_results(
+#'   queryId = "string"
+#' )
+#' ```
+#'
+#' @param queryId &#91;required&#93; The ID number of the query.
+#'
+#' @export
+get_query_results <- function (queryId) 
+{
+    op <- new_operation(name = "GetQueryResults", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_query_results_input(queryId = queryId)
+    output <- get_query_results_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -872,7 +997,7 @@ put_destination_policy <- function (destinationName, accessPolicy)
 #' 
 #' -   None of the log events in the batch can be older than 14 days or the retention period of the log group.
 #' 
-#' -   The log events in the batch must be in chronological ordered by their time stamp. The time stamp is the time the event occurred, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. (In AWS Tools for PowerShell and the AWS SDK for .NET, the timestamp is specified in .NET format: yyyy-mm-ddThh:mm:ss. For example, 2017-09-15T13:45:30.)
+#' -   The log events in the batch must be in chronological ordered by their timestamp. The timestamp is the time the event occurred, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. (In AWS Tools for PowerShell and the AWS SDK for .NET, the timestamp is specified in .NET format: yyyy-mm-ddThh:mm:ss. For example, 2017-09-15T13:45:30.)
 #' 
 #' -   The maximum number of log events in a batch is 10,000.
 #' 
@@ -1073,6 +1198,70 @@ put_subscription_filter <- function (logGroupName, filterName,
         filterName = filterName, filterPattern = filterPattern, 
         destinationArn = destinationArn, roleArn = roleArn, distribution = distribution)
     output <- put_subscription_filter_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Schedules a query of a log group using CloudWatch Logs Insights
+#'
+#' Schedules a query of a log group using CloudWatch Logs Insights. You specify the log group and time range to query, and the query string to use.
+#' 
+#' For more information, see [CloudWatch Logs Insights Query Syntax](http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html).
+#'
+#' @section Accepted Parameters:
+#' ```
+#' start_query(
+#'   logGroupName = "string",
+#'   startTime = 123,
+#'   endTime = 123,
+#'   queryString = "string",
+#'   limit = 123
+#' )
+#' ```
+#'
+#' @param logGroupName &#91;required&#93; The log group on which to perform the query.
+#' @param startTime &#91;required&#93; The beginning of the time range to query. Specified as epoch time, the number of seconds since January 1, 1970, 00:00:00 UTC.
+#' @param endTime &#91;required&#93; The end of the time range to query. Specified as epoch time, the number of seconds since January 1, 1970, 00:00:00 UTC.
+#' @param queryString &#91;required&#93; The query string to use. For more information, see [CloudWatch Logs Insights Query Syntax](http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html).
+#' @param limit The maximum number of log events to return in the query. If the query string uses the `fields` command, only the specified fields and their values are returned.
+#'
+#' @export
+start_query <- function (logGroupName, startTime, endTime, queryString, 
+    limit = NULL) 
+{
+    op <- new_operation(name = "StartQuery", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- start_query_input(logGroupName = logGroupName, startTime = startTime, 
+        endTime = endTime, queryString = queryString, limit = limit)
+    output <- start_query_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Stops a CloudWatch Logs Insights query that is in progress
+#'
+#' Stops a CloudWatch Logs Insights query that is in progress. If the query has already ended, the operation returns an error indicating that the specified query is not running.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' stop_query(
+#'   queryId = "string"
+#' )
+#' ```
+#'
+#' @param queryId &#91;required&#93; The ID number of the query to stop. If necessary, you can use `DescribeQueries` to find this ID number.
+#'
+#' @export
+stop_query <- function (queryId) 
+{
+    op <- new_operation(name = "StopQuery", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- stop_query_input(queryId = queryId)
+    output <- stop_query_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)

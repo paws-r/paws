@@ -12,7 +12,7 @@ create_flow_logs(DryRun = NULL, ClientToken = NULL,
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
+\item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
 
 \item{DeliverLogsPermissionArn}{The ARN for the IAM role that's used to post flow logs to a log group.}
 
@@ -40,11 +40,11 @@ If LogDestinationType is \code{s3}, specify the ARN of the Amazon S3 bucket. You
 Creates one or more flow logs to capture information about IP traffic for a specific network interface, subnet, or VPC.
 }
 \details{
-Flow log data for a monitored network interface is recorded as flow log records, which are log events consisting of fields that describe the traffic flow. For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html#flow-log-records}{Flow Log Records} in the \emph{Amazon Virtual Private Cloud User Guide}.
+Flow log data for a monitored network interface is recorded as flow log records, which are log events consisting of fields that describe the traffic flow. For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html#flow-log-records}{Flow Log Records} in the \emph{Amazon Virtual Private Cloud User Guide}.
 
 When publishing to CloudWatch Logs, flow log records are published to a log group, and each network interface has a unique log stream in the log group. When publishing to Amazon S3, flow log records for all of the monitored network interfaces are published to a single log file object that is stored in the specified bucket.
 
-For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html}{VPC Flow Logs} in the \emph{Amazon Virtual Private Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html}{VPC Flow Logs} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{create_flow_logs(

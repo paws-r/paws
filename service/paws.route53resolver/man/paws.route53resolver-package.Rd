@@ -6,8 +6,8 @@
 \alias{paws.route53resolver-package}
 \title{paws.route53resolver: Amazon Route 53 Resolver}
 \description{
-1.  Connect your network to a VPC using AWS Direct Connect or
-a VPN.
+1.  Connect your network to a VPC using AWS
+    Direct Connect or a VPN.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

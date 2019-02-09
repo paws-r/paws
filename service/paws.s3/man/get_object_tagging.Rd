@@ -26,18 +26,18 @@ Returns the tag-set of an object.
 }
 
 \examples{
-# The following example retrieves tag set of an object.
-\donttest{get_object_tagging(
-  Bucket = "examplebucket",
-  Key = "HappyFace.jpg"
-)}
-
 # The following example retrieves tag set of an object. The request
 # specifies object version.
 \donttest{get_object_tagging(
   Bucket = "examplebucket",
   Key = "exampleobject",
   VersionId = "ydlaNkwWm0SfKJR.T1b1fIdPRbldTYRI"
+)}
+
+# The following example retrieves tag set of an object.
+\donttest{get_object_tagging(
+  Bucket = "examplebucket",
+  Key = "HappyFace.jpg"
 )}
 
 }

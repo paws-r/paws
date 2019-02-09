@@ -5,13 +5,13 @@ NULL
 
 #' Creates a new custom vocabulary that you can use to change the way Amazon Transcribe handles transcription of an audio file
 #'
-#' Creates a new custom vocabulary that you can use to change the way Amazon Transcribe handles transcription of an audio file. Note that vocabularies for en-AU, en-UK, and fr-CA languages that are in preview are not available. In the console, the vocabulary section will be greyed-out and SDK will return error message.
+#' Creates a new custom vocabulary that you can use to change the way Amazon Transcribe handles transcription of an audio file.
 #'
 #' @section Accepted Parameters:
 #' ```
 #' create_vocabulary(
 #'   VocabularyName = "string",
-#'   LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-UK",
+#'   LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT",
 #'   Phrases = list(
 #'     "string"
 #'   )
@@ -37,9 +37,9 @@ create_vocabulary <- function (VocabularyName, LanguageCode,
     return(response)
 }
 
-#' Deletes a previously submitted transcription job as well as any other generated results such as the transcription, models, and so on
+#' Deletes a previously submitted transcription job along with any other generated results such as the transcription, models, and so on
 #'
-#' Deletes a previously submitted transcription job as well as any other generated results such as the transcription, models, and so on.
+#' Deletes a previously submitted transcription job along with any other generated results such as the transcription, models, and so on.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -117,7 +117,7 @@ get_transcription_job <- function (TranscriptionJobName)
 
 #' Gets information about a vocabulary
 #'
-#' Gets information about a vocabulary. Note that vocabularies for en-AU, en-UK, and fr-CA languages that are in preview are not available. In the console, the vocabulary section will be greyed-out and SDK will return error message.
+#' Gets information about a vocabulary.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -155,7 +155,7 @@ get_vocabulary <- function (VocabularyName)
 #' )
 #' ```
 #'
-#' @param Status When specified, returns only transcription jobs with the specified status.
+#' @param Status When specified, returns only transcription jobs with the specified status. Jobs are ordered by creation date, with the newest jobs returned first. If you don't specify a status, Amazon Transcribe returns all transcription jobs ordered by creation date.
 #' @param JobNameContains When specified, the jobs returned in the list are limited to jobs whose name contains the specified string.
 #' @param NextToken If the result of the previous request to `ListTranscriptionJobs` was truncated, include the `NextToken` to fetch the next set of jobs.
 #' @param MaxResults The maximum number of jobs to return in the response. If there are fewer results in the list, this response contains only the actual results.
@@ -211,13 +211,13 @@ list_vocabularies <- function (NextToken = NULL, MaxResults = NULL,
 
 #' Starts an asynchronous job to transcribe speech to text
 #'
-#' Starts an asynchronous job to transcribe speech to text. Note that en-AU, en-UK, and fr-CA languages are in preview and are only available to whitelisted customers.
+#' Starts an asynchronous job to transcribe speech to text.
 #'
 #' @section Accepted Parameters:
 #' ```
 #' start_transcription_job(
 #'   TranscriptionJobName = "string",
-#'   LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-UK",
+#'   LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT",
 #'   MediaSampleRateHertz = 123,
 #'   MediaFormat = "mp3"|"mp4"|"wav"|"flac",
 #'   Media = list(
@@ -233,7 +233,7 @@ list_vocabularies <- function (NextToken = NULL, MaxResults = NULL,
 #' )
 #' ```
 #'
-#' @param TranscriptionJobName &#91;required&#93; The name of the job. You can\'t use the strings \".\" or \"..\" in the job name. The name must be unique within an AWS account.
+#' @param TranscriptionJobName &#91;required&#93; The name of the job. Note that you can\'t use the strings \".\" or \"..\" by themselves as the job name. The name must also be unique within an AWS account.
 #' @param LanguageCode &#91;required&#93; The language code for the language used in the input media file.
 #' @param MediaSampleRateHertz The sample rate, in Hertz, of the audio track in the input media file.
 #' @param MediaFormat &#91;required&#93; The format of the input media file.
@@ -265,13 +265,13 @@ start_transcription_job <- function (TranscriptionJobName, LanguageCode,
 
 #' Updates an existing vocabulary with new values
 #'
-#' Updates an existing vocabulary with new values. The `UpdateVocabulary` operation overwrites all of the existing information with the values that you provide in the request. Note that vocabularies for en-AU, en-UK, and fr-CA languages that are in preview are not available. In the console, the vocabulary section will be greyed-out and SDK will return error message.
+#' Updates an existing vocabulary with new values. The `UpdateVocabulary` operation overwrites all of the existing information with the values that you provide in the request.
 #'
 #' @section Accepted Parameters:
 #' ```
 #' update_vocabulary(
 #'   VocabularyName = "string",
-#'   LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-UK",
+#'   LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT",
 #'   Phrases = list(
 #'     "string"
 #'   )

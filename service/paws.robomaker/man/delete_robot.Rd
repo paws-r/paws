@@ -4,9 +4,7 @@
 \alias{delete_robot}
 \title{Deletes a robot}
 \usage{
-delete_robot(
-  robot = "string"
-)
+delete_robot(robot)
 }
 \arguments{
 \item{robot}{[required] The Amazon Resource Name (ARN) of the robot.}
@@ -14,6 +12,10 @@ delete_robot(
 \description{
 Deletes a robot.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_robot(
+  robot = "string"
+)
 }
+}
+

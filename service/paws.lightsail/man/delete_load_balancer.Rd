@@ -12,6 +12,9 @@ delete_load_balancer(loadBalancerName)
 \description{
 Deletes a Lightsail load balancer and all its associated SSL/TLS certificates. Once the load balancer is deleted, you will need to create a new load balancer, create a new certificate, and verify domain ownership again.
 }
+\details{
+The \code{delete load balancer} operation supports tag-based access control via resource tags applied to the resource identified by loadBalancerName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+}
 \section{Accepted Parameters}{
 \preformatted{delete_load_balancer(
   loadBalancerName = "string"

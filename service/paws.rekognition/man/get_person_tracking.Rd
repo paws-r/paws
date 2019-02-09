@@ -2,7 +2,7 @@
 % Please edit documentation in R/paws.rekognition_operations.R
 \name{get_person_tracking}
 \alias{get_person_tracking}
-\title{Gets the path tracking results of a Amazon Rekognition Video analysis started by}
+\title{Gets the path tracking results of a Amazon Rekognition Video analysis started by StartPersonTracking}
 \usage{
 get_person_tracking(JobId, MaxResults = NULL, NextToken = NULL,
   SortBy = NULL)
@@ -17,12 +17,12 @@ get_person_tracking(JobId, MaxResults = NULL, NextToken = NULL,
 \item{SortBy}{Sort to use for elements in the \code{Persons} array. Use \code{TIMESTAMP} to sort array elements by the time persons are detected. Use \code{INDEX} to sort by the tracked persons. If you sort by \code{INDEX}, the array elements for each person are sorted by detection confidence. The default sort is by \code{TIMESTAMP}.}
 }
 \description{
-Gets the path tracking results of a Amazon Rekognition Video analysis started by .
+Gets the path tracking results of a Amazon Rekognition Video analysis started by StartPersonTracking.
 }
 \details{
 The person path tracking operation is started by a call to \code{StartPersonTracking} which returns a job identifier (\code{JobId}). When the operation finishes, Amazon Rekognition Video publishes a completion status to the Amazon Simple Notification Service topic registered in the initial call to \code{StartPersonTracking}.
 
-To get the results of the person path tracking operation, first check that the status value published to the Amazon SNS topic is \code{SUCCEEDED}. If so, call and pass the job identifier (\code{JobId}) from the initial call to \code{StartPersonTracking}.
+To get the results of the person path tracking operation, first check that the status value published to the Amazon SNS topic is \code{SUCCEEDED}. If so, call GetPersonTracking and pass the job identifier (\code{JobId}) from the initial call to \code{StartPersonTracking}.
 
 \code{GetPersonTracking} returns an array, \code{Persons}, of tracked persons and the time(s) their paths were tracked in the video.
 

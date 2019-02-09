@@ -4,18 +4,8 @@
 \alias{update_file_system}
 \title{Updates a file system configuration}
 \usage{
-update_file_system(
-  FileSystemId = "string",
-  ClientRequestToken = "string",
-  WindowsConfiguration = list(
-    WeeklyMaintenanceStartTime = "string",
-    DailyAutomaticBackupStartTime = "string",
-    AutomaticBackupRetentionDays = 123
-  ),
-  LustreConfiguration = list(
-    WeeklyMaintenanceStartTime = "string"
-  )
-)
+update_file_system(FileSystemId, ClientRequestToken = NULL,
+  WindowsConfiguration = NULL, LustreConfiguration = NULL)
 }
 \arguments{
 \item{FileSystemId}{[required]}
@@ -29,15 +19,31 @@ update_file_system(
 \description{
 Updates a file system configuration.
 }
+\section{Accepted Parameters}{
+\preformatted{update_file_system(
+  FileSystemId = "string",
+  ClientRequestToken = "string",
+  WindowsConfiguration = list(
+    WeeklyMaintenanceStartTime = "string",
+    DailyAutomaticBackupStartTime = "string",
+    AutomaticBackupRetentionDays = 123
+  ),
+  LustreConfiguration = list(
+    WeeklyMaintenanceStartTime = "string"
+  )
+)
+}
+}
+
 \examples{
 # This operation updates an existing file system.
-update_file_system(
+\donttest{update_file_system(
   FileSystemId = "fs-0498eed5fe91001ec",
   WindowsConfiguration = list(
     AutomaticBackupRetentionDays = 10L,
     DailyAutomaticBackupStartTime = "06:00",
     WeeklyMaintenanceStartTime = "3:06:00"
   )
-)
+)}
 
 }

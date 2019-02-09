@@ -33,7 +33,8 @@ create_trail_input <- function (...)
         EnableLogFileValidation = structure(logical(0), tags = list(type = "boolean")), 
         CloudWatchLogsLogGroupArn = structure(logical(0), tags = list(type = "string")), 
         CloudWatchLogsRoleArn = structure(logical(0), tags = list(type = "string")), 
-        KmsKeyId = structure(logical(0), tags = list(type = "string"))), 
+        KmsKeyId = structure(logical(0), tags = list(type = "string")), 
+        IsOrganizationTrail = structure(logical(0), tags = list(type = "boolean"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -53,7 +54,8 @@ create_trail_output <- function (...)
             tags = list(type = "boolean")), CloudWatchLogsLogGroupArn = structure(logical(0), 
             tags = list(type = "string")), CloudWatchLogsRoleArn = structure(logical(0), 
             tags = list(type = "string")), KmsKeyId = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))
+            tags = list(type = "string")), IsOrganizationTrail = structure(logical(0), 
+            tags = list(type = "boolean"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -99,6 +101,7 @@ describe_trails_output <- function (...)
         tags = list(type = "string")), CloudWatchLogsRoleArn = structure(logical(0), 
         tags = list(type = "string")), KmsKeyId = structure(logical(0), 
         tags = list(type = "string")), HasCustomEventSelectors = structure(logical(0), 
+        tags = list(type = "boolean")), IsOrganizationTrail = structure(logical(0), 
         tags = list(type = "boolean"))), tags = list(type = "structure"))), 
         tags = list(type = "list"))), tags = list(type = "structure"))
     return(populate(args, shape))
@@ -335,7 +338,8 @@ update_trail_input <- function (...)
         EnableLogFileValidation = structure(logical(0), tags = list(type = "boolean")), 
         CloudWatchLogsLogGroupArn = structure(logical(0), tags = list(type = "string")), 
         CloudWatchLogsRoleArn = structure(logical(0), tags = list(type = "string")), 
-        KmsKeyId = structure(logical(0), tags = list(type = "string"))), 
+        KmsKeyId = structure(logical(0), tags = list(type = "string")), 
+        IsOrganizationTrail = structure(logical(0), tags = list(type = "boolean"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -355,6 +359,7 @@ update_trail_output <- function (...)
             tags = list(type = "boolean")), CloudWatchLogsLogGroupArn = structure(logical(0), 
             tags = list(type = "string")), CloudWatchLogsRoleArn = structure(logical(0), 
             tags = list(type = "string")), KmsKeyId = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))
+            tags = list(type = "string")), IsOrganizationTrail = structure(logical(0), 
+            tags = list(type = "boolean"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }

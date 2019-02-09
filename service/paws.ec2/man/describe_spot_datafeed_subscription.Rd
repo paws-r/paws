@@ -10,7 +10,7 @@ describe_spot_datafeed_subscription(DryRun = NULL)
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Describes the data feed for Spot Instances. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html}{Spot Instance Data Feed} in the \emph{Amazon EC2 User Guide for Linux Instances}.
+Describes the data feed for Spot Instances. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html}{Spot Instance Data Feed} in the \emph{Amazon EC2 User Guide for Linux Instances}.
 }
 \section{Accepted Parameters}{
 \preformatted{describe_spot_datafeed_subscription(

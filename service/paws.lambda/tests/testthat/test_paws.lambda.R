@@ -7,3 +7,7 @@ test_that("list_event_source_mappings", {
 test_that("list_functions", {
     expect_error(list_functions(), NA)
 })
+
+test_that("list_layers", {
+    expect_error(list_layers(), NA)
+})

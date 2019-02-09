@@ -5,6 +5,7 @@
 \title{Creates a version of a group which has already been defined}
 \usage{
 create_group_version(AmznClientToken = NULL,
+  ConnectorDefinitionVersionArn = NULL,
   CoreDefinitionVersionArn = NULL, DeviceDefinitionVersionArn = NULL,
   FunctionDefinitionVersionArn = NULL, GroupId,
   LoggerDefinitionVersionArn = NULL,
@@ -14,17 +15,19 @@ create_group_version(AmznClientToken = NULL,
 \arguments{
 \item{AmznClientToken}{A client token used to correlate requests and responses.}
 
+\item{ConnectorDefinitionVersionArn}{The ARN of the connector definition version for this group.}
+
 \item{CoreDefinitionVersionArn}{The ARN of the core definition version for this group.}
 
 \item{DeviceDefinitionVersionArn}{The ARN of the device definition version for this group.}
 
 \item{FunctionDefinitionVersionArn}{The ARN of the function definition version for this group.}
 
-\item{GroupId}{[required] The ID of the AWS Greengrass group.}
+\item{GroupId}{[required] The ID of the Greengrass group.}
 
 \item{LoggerDefinitionVersionArn}{The ARN of the logger definition version for this group.}
 
-\item{ResourceDefinitionVersionArn}{The resource definition version ARN for this group.}
+\item{ResourceDefinitionVersionArn}{The ARN of the resource definition version for this group.}
 
 \item{SubscriptionDefinitionVersionArn}{The ARN of the subscription definition version for this group.}
 }
@@ -34,6 +37,7 @@ Creates a version of a group which has already been defined.
 \section{Accepted Parameters}{
 \preformatted{create_group_version(
   AmznClientToken = "string",
+  ConnectorDefinitionVersionArn = "string",
   CoreDefinitionVersionArn = "string",
   DeviceDefinitionVersionArn = "string",
   FunctionDefinitionVersionArn = "string",

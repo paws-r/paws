@@ -7,7 +7,7 @@
 get_associated_role(GroupId)
 }
 \arguments{
-\item{GroupId}{[required] The ID of the AWS Greengrass group.}
+\item{GroupId}{[required] The ID of the Greengrass group.}
 }
 \description{
 Retrieves the role associated with a particular group.

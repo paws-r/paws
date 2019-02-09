@@ -60,18 +60,20 @@ delete_notification_channel <- function ()
 #' @section Accepted Parameters:
 #' ```
 #' delete_policy(
-#'   PolicyId = "string"
+#'   PolicyId = "string",
+#'   DeleteAllPolicyResources = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @param PolicyId &#91;required&#93; The ID of the policy that you want to delete. `PolicyId` is returned by `PutPolicy` and by `ListPolicies`.
+#' @param DeleteAllPolicyResources If `True`, the request will also delete all web ACLs in this policy. Associated resources will no longer be protected by web ACLs in this policy.
 #'
 #' @export
-delete_policy <- function (PolicyId) 
+delete_policy <- function (PolicyId, DeleteAllPolicyResources = NULL) 
 {
     op <- new_operation(name = "DeletePolicy", http_method = "POST", 
         http_path = "/", paginator = list())
-    input <- delete_policy_input(PolicyId = PolicyId)
+    input <- delete_policy_input(PolicyId = PolicyId, DeleteAllPolicyResources = DeleteAllPolicyResources)
     output <- delete_policy_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -81,7 +83,7 @@ delete_policy <- function (PolicyId)
 
 #' Disassociates the account that has been set as the AWS Firewall Manager administrator account
 #'
-#' Disassociates the account that has been set as the AWS Firewall Manager administrator account. You will need to submit an `AssociateAdminAccount` request to set a new account as the AWS Firewall administrator.
+#' Disassociates the account that has been set as the AWS Firewall Manager administrator account. To set a different account as the administrator account, you must submit an `AssociateAdminAccount` request .
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -247,7 +249,7 @@ list_compliance_status <- function (PolicyId, NextToken = NULL,
 #' ```
 #'
 #' @param NextToken If you specify a value for `MaxResults` and you have more account IDs than the number that you specify for `MaxResults`, AWS Firewall Manager returns a `NextToken` value in the response that allows you to list another group of IDs. For the second and subsequent `ListMemberAccountsRequest` requests, specify the value of `NextToken` from the previous response to get information about another batch of member account IDs.
-#' @param MaxResults Specifies the number of member account IDs that you want AWS Firewall Manager to return for this request. If you have more IDs than the number that you specify for `MaxResults`, the response includes a `NextToken` value that you can use to get another batch of member account IDs. The maximum value for `MaxResults` is 100.
+#' @param MaxResults Specifies the number of member account IDs that you want AWS Firewall Manager to return for this request. If you have more IDs than the number that you specify for `MaxResults`, the response includes a `NextToken` value that you can use to get another batch of member account IDs.
 #'
 #' @export
 list_member_accounts <- function (NextToken = NULL, MaxResults = NULL) 

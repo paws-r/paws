@@ -21,7 +21,7 @@ Provides details about all active and terminated Automation executions.
 \preformatted{describe_automation_executions(
   Filters = list(
     list(
-      Key = "DocumentNamePrefix"|"ExecutionStatus"|"ExecutionId"|"ParentExecutionId"|"CurrentAction"|"StartTimeBefore"|"StartTimeAfter",
+      Key = "DocumentNamePrefix"|"ExecutionStatus"|"ExecutionId"|"ParentExecutionId"|"CurrentAction"|"StartTimeBefore"|"StartTimeAfter"|"AutomationType",
       Values = list(
         "string"
       )

@@ -10,7 +10,7 @@ describe_workspaces_connection_status(WorkspaceIds = NULL,
 \arguments{
 \item{WorkspaceIds}{The identifiers of the WorkSpaces. You can specify up to 25 WorkSpaces.}
 
-\item{NextToken}{The token for the next set of results. (You received this token from a previous call.)}
+\item{NextToken}{If you received a \code{NextToken} from a previous call that was paginated, provide this token to receive the next set of results.}
 }
 \description{
 Describes the connection status of the specified WorkSpaces.

@@ -4,16 +4,8 @@
 \alias{disassociate_resource_share}
 \title{Disassociates the specified principals or resources from the specified resource share}
 \usage{
-disassociate_resource_share(
-  resourceShareArn = "string",
-  resourceArns = list(
-    "string"
-  ),
-  principals = list(
-    "string"
-  ),
-  clientToken = "string"
-)
+disassociate_resource_share(resourceShareArn, resourceArns = NULL,
+  principals = NULL, clientToken = NULL)
 }
 \arguments{
 \item{resourceShareArn}{[required] The Amazon Resource Name (ARN) of the resource share.}
@@ -27,6 +19,17 @@ disassociate_resource_share(
 \description{
 Disassociates the specified principals or resources from the specified resource share.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disassociate_resource_share(
+  resourceShareArn = "string",
+  resourceArns = list(
+    "string"
+  ),
+  principals = list(
+    "string"
+  ),
+  clientToken = "string"
+)
 }
+}
+

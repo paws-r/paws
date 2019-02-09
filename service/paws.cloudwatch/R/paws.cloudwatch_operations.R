@@ -634,15 +634,15 @@ put_dashboard <- function (DashboardName, DashboardBody)
     return(response)
 }
 
-#' Creates or updates an alarm and associates it with the specified metric
+#' Creates or updates an alarm and associates it with the specified metric or metric math expression
 #'
-#' Creates or updates an alarm and associates it with the specified metric. Optionally, this operation can associate one or more Amazon SNS resources with the alarm.
+#' Creates or updates an alarm and associates it with the specified metric or metric math expression.
 #' 
-#' When this operation creates an alarm, the alarm state is immediately set to `INSUFFICIENT_DATA`. The alarm is evaluated and its state is set appropriately. Any actions associated with the state are then executed.
+#' When this operation creates an alarm, the alarm state is immediately set to `INSUFFICIENT_DATA`. The alarm is then evaluated and its state is set appropriately. Any actions associated with the new state are then executed.
 #' 
 #' When you update an existing alarm, its state is left unchanged, but the update completely overwrites the previous configuration of the alarm.
 #' 
-#' If you are an IAM user, you must have Amazon EC2 permissions for some operations:
+#' If you are an IAM user, you must have Amazon EC2 permissions for some alarm operations:
 #' 
 #' -   `iam:CreateServiceLinkedRole` for all alarms with EC2 actions
 #' 
@@ -660,7 +660,7 @@ put_dashboard <- function (DashboardName, DashboardBody)
 #' 
 #' If you are using temporary security credentials granted using AWS STS, you cannot stop or terminate an EC2 instance using alarm actions.
 #' 
-#' The first time you create an alarm in the AWS Management Console, the CLI, or by using the PutMetricAlarm API, CloudWatch creates the necessary service-linked role for you. The service-linked role is called `AWSServiceRoleForCloudWatchEvents`. For more information about service-linked roles, see [AWS service-linked role](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role).
+#' The first time you create an alarm in the AWS Management Console, the CLI, or by using the PutMetricAlarm API, CloudWatch creates the necessary service-linked role for you. The service-linked role is called `AWSServiceRoleForCloudWatchEvents`. For more information, see [AWS service-linked role](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -694,16 +694,39 @@ put_dashboard <- function (DashboardName, DashboardBody)
 #'   Threshold = 123.0,
 #'   ComparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold",
 #'   TreatMissingData = "string",
-#'   EvaluateLowSampleCountPercentile = "string"
+#'   EvaluateLowSampleCountPercentile = "string",
+#'   Metrics = list(
+#'     list(
+#'       Id = "string",
+#'       MetricStat = list(
+#'         Metric = list(
+#'           Namespace = "string",
+#'           MetricName = "string",
+#'           Dimensions = list(
+#'             list(
+#'               Name = "string",
+#'               Value = "string"
+#'             )
+#'           )
+#'         ),
+#'         Period = 123,
+#'         Stat = "string",
+#'         Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
+#'       ),
+#'       Expression = "string",
+#'       Label = "string",
+#'       ReturnData = TRUE|FALSE
+#'     )
+#'   )
 #' )
 #' ```
 #'
-#' @param AlarmName &#91;required&#93; The name for the alarm. This name must be unique within the AWS account.
+#' @param AlarmName &#91;required&#93; The name for the alarm. This name must be unique within your AWS account.
 #' @param AlarmDescription The description for the alarm.
-#' @param ActionsEnabled Indicates whether actions should be executed during any changes to the alarm state.
+#' @param ActionsEnabled Indicates whether actions should be executed during any changes to the alarm state. The default is TRUE.
 #' @param OKActions The actions to execute when this alarm transitions to an `OK` state from any other state. Each action is specified as an Amazon Resource Name (ARN).
 #' 
-#' Valid Values: `arn:aws:automate:region:ec2:stopregion:ec2:stop` \| `arn:aws:automate:region:ec2:terminateregion:ec2:terminate` \| `arn:aws:automate:region:ec2:recoverregion:ec2:recover` \| `arn:aws:sns:region:account-id:sns-topic-name region:account-id:sns-topic-name ` \| `arn:aws:autoscaling:region:account-id:scalingPolicy:policy-idautoScalingGroupName/group-friendly-name:policyName/policy-friendly-name region:account-id:scalingPolicy:policy-idautoScalingGroupName/group-friendly-name:policyName/policy-friendly-name `
+#' Valid Values: `arn:aws:automate:region:ec2:stopregion:ec2:stop` \| `arn:aws:automate:region:ec2:terminateregion:ec2:terminate` \| `arn:aws:automate:region:ec2:recoverregion:ec2:recover` \| `arn:aws:automate:region:ec2:rebootregion:ec2:reboot` \| `arn:aws:sns:region:account-id:sns-topic-name region:account-id:sns-topic-name ` \| `arn:aws:autoscaling:region:account-id:scalingPolicy:policy-idautoScalingGroupName/group-friendly-name:policyName/policy-friendly-name region:account-id:scalingPolicy:policy-idautoScalingGroupName/group-friendly-name:policyName/policy-friendly-name `
 #' 
 #' Valid Values (for use with IAM roles): `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Stop/1.0region:account-id:action/actions/AWS_EC2.InstanceId.Stop/1.0` \| `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Terminate/1.0region:account-id:action/actions/AWS_EC2.InstanceId.Terminate/1.0` \| `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Reboot/1.0region:account-id:action/actions/AWS_EC2.InstanceId.Reboot/1.0`
 #' @param AlarmActions The actions to execute when this alarm transitions to the `ALARM` state from any other state. Each action is specified as an Amazon Resource Name (ARN).
@@ -716,12 +739,14 @@ put_dashboard <- function (DashboardName, DashboardBody)
 #' Valid Values: `arn:aws:automate:region:ec2:stopregion:ec2:stop` \| `arn:aws:automate:region:ec2:terminateregion:ec2:terminate` \| `arn:aws:automate:region:ec2:recoverregion:ec2:recover` \| `arn:aws:sns:region:account-id:sns-topic-name region:account-id:sns-topic-name ` \| `arn:aws:autoscaling:region:account-id:scalingPolicy:policy-idautoScalingGroupName/group-friendly-name:policyName/policy-friendly-name region:account-id:scalingPolicy:policy-idautoScalingGroupName/group-friendly-name:policyName/policy-friendly-name `
 #' 
 #' Valid Values (for use with IAM roles): `>arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Stop/1.0region:account-id:action/actions/AWS_EC2.InstanceId.Stop/1.0` \| `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Terminate/1.0region:account-id:action/actions/AWS_EC2.InstanceId.Terminate/1.0` \| `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Reboot/1.0region:account-id:action/actions/AWS_EC2.InstanceId.Reboot/1.0`
-#' @param MetricName &#91;required&#93; The name for the metric associated with the alarm.
-#' @param Namespace &#91;required&#93; The namespace for the metric associated with the alarm.
-#' @param Statistic The statistic for the metric associated with the alarm, other than percentile. For percentile statistics, use `ExtendedStatistic`. When you call `PutMetricAlarm`, you must specify either `Statistic` or `ExtendedStatistic,` but not both.
-#' @param ExtendedStatistic The percentile statistic for the metric associated with the alarm. Specify a value between p0.0 and p100. When you call `PutMetricAlarm`, you must specify either `Statistic` or `ExtendedStatistic,` but not both.
-#' @param Dimensions The dimensions for the metric associated with the alarm.
-#' @param Period &#91;required&#93; The period, in seconds, over which the specified statistic is applied. Valid values are 10, 30, and any multiple of 60.
+#' @param MetricName The name for the metric associated with the alarm.
+#' 
+#' If you are creating an alarm based on a math expression, you cannot specify this parameter, or any of the `Dimensions`, `Period`, `Namespace`, `Statistic`, or `ExtendedStatistic` parameters. Instead, you specify all this information in the `Metrics` array.
+#' @param Namespace The namespace for the metric associated specified in `MetricName`.
+#' @param Statistic The statistic for the metric specified in `MetricName`, other than percentile. For percentile statistics, use `ExtendedStatistic`. When you call `PutMetricAlarm` and specify a `MetricName`, you must specify either `Statistic` or `ExtendedStatistic,` but not both.
+#' @param ExtendedStatistic The percentile statistic for the metric specified in `MetricName`. Specify a value between p0.0 and p100. When you call `PutMetricAlarm` and specify a `MetricName`, you must specify either `Statistic` or `ExtendedStatistic,` but not both.
+#' @param Dimensions The dimensions for the metric specified in `MetricName`.
+#' @param Period The length, in seconds, used each time the metric specified in `MetricName` is evaluated. Valid values are 10, 30, and any multiple of 60.
 #' 
 #' Be sure to specify 10 or 30 only for metrics that are stored by a `PutMetricData` call with a `StorageResolution` of 1. If you specify a period of 10 or 30 for a metric that does not have sub-minute resolution, the alarm still attempts to gather data at the period rate that you specify. In this case, it does not receive data for the attempts that do not correspond to a one-minute data resolution, and the alarm may often lapse into INSUFFICENT\_DATA status. Specifying 10 or 30 also sets this alarm as a high-resolution alarm, which has a higher charge than other alarms. For more information about pricing, see [Amazon CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/).
 #' 
@@ -729,7 +754,7 @@ put_dashboard <- function (DashboardName, DashboardBody)
 #' @param Unit The unit of measure for the statistic. For example, the units for the Amazon EC2 NetworkIn metric are Bytes because NetworkIn tracks the number of bytes that an instance receives on all network interfaces. You can also specify a unit when you create a custom metric. Units help provide conceptual meaning to your data. Metric data points that specify a unit of measure, such as Percent, are aggregated separately.
 #' 
 #' If you specify a unit, you must use a unit that is appropriate for the metric. Otherwise, the CloudWatch alarm can get stuck in the `INSUFFICIENT DATA` state.
-#' @param EvaluationPeriods &#91;required&#93; The number of periods over which data is compared to the specified threshold. If you are setting an alarm which requires that a number of consecutive data points be breaching to trigger the alarm, this value specifies that number. If you are setting an \"M out of N\" alarm, this value is the N.
+#' @param EvaluationPeriods &#91;required&#93; The number of periods over which data is compared to the specified threshold. If you are setting an alarm that requires that a number of consecutive data points be breaching to trigger the alarm, this value specifies that number. If you are setting an \"M out of N\" alarm, this value is the N.
 #' 
 #' An alarm\'s total current evaluation period can be no longer than one day, so this number multiplied by `Period` cannot be more than 86,400 seconds.
 #' @param DatapointsToAlarm The number of datapoints that must be breaching to trigger the alarm. This is used only if you are setting an \"M out of N\" alarm. In that case, this value is the M. For more information, see [Evaluating an Alarm](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarm-evaluation) in the *Amazon CloudWatch User Guide*.
@@ -741,14 +766,18 @@ put_dashboard <- function (DashboardName, DashboardBody)
 #' @param EvaluateLowSampleCountPercentile Used only for alarms based on percentiles. If you specify `ignore`, the alarm state does not change during periods with too few data points to be statistically significant. If you specify `evaluate` or omit this parameter, the alarm is always evaluated and possibly changes state no matter how many data points are available. For more information, see [Percentile-Based CloudWatch Alarms and Low Data Samples](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#percentiles-with-low-samples).
 #' 
 #' Valid Values: `evaluate | ignore`
+#' @param Metrics An array of `MetricDataQuery` structures that enable you to create an alarm based on the result of a metric math expression. Each item in the `Metrics` array either retrieves a metric or performs a math expression.
+#' 
+#' If you use the `Metrics` parameter, you cannot include the `MetricName`, `Dimensions`, `Period`, `Namespace`, `Statistic`, or `ExtendedStatistic` parameters of `PutMetricAlarm` in the same operation. Instead, you retrieve the metrics you are using in your math expression as part of the `Metrics` array.
 #'
 #' @export
 put_metric_alarm <- function (AlarmName, AlarmDescription = NULL, 
     ActionsEnabled = NULL, OKActions = NULL, AlarmActions = NULL, 
-    InsufficientDataActions = NULL, MetricName, Namespace, Statistic = NULL, 
-    ExtendedStatistic = NULL, Dimensions = NULL, Period, Unit = NULL, 
-    EvaluationPeriods, DatapointsToAlarm = NULL, Threshold, ComparisonOperator, 
-    TreatMissingData = NULL, EvaluateLowSampleCountPercentile = NULL) 
+    InsufficientDataActions = NULL, MetricName = NULL, Namespace = NULL, 
+    Statistic = NULL, ExtendedStatistic = NULL, Dimensions = NULL, 
+    Period = NULL, Unit = NULL, EvaluationPeriods, DatapointsToAlarm = NULL, 
+    Threshold, ComparisonOperator, TreatMissingData = NULL, EvaluateLowSampleCountPercentile = NULL, 
+    Metrics = NULL) 
 {
     op <- new_operation(name = "PutMetricAlarm", http_method = "POST", 
         http_path = "/", paginator = list())
@@ -760,7 +789,8 @@ put_metric_alarm <- function (AlarmName, AlarmDescription = NULL,
         Period = Period, Unit = Unit, EvaluationPeriods = EvaluationPeriods, 
         DatapointsToAlarm = DatapointsToAlarm, Threshold = Threshold, 
         ComparisonOperator = ComparisonOperator, TreatMissingData = TreatMissingData, 
-        EvaluateLowSampleCountPercentile = EvaluateLowSampleCountPercentile)
+        EvaluateLowSampleCountPercentile = EvaluateLowSampleCountPercentile, 
+        Metrics = Metrics)
     output <- put_metric_alarm_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -768,9 +798,9 @@ put_metric_alarm <- function (AlarmName, AlarmDescription = NULL,
     return(response)
 }
 
-#' Publishes metric data to Amazon CloudWatch
+#' Publishes metric data points to Amazon CloudWatch
 #'
-#' Publishes metric data to Amazon CloudWatch. CloudWatch associates the data with the specified metric. If the specified metric does not exist, CloudWatch creates the metric. When CloudWatch creates a metric, it can take up to fifteen minutes for the metric to appear in calls to ListMetrics.
+#' Publishes metric data points to Amazon CloudWatch. CloudWatch associates the data points with the specified metric. If the specified metric does not exist, CloudWatch creates the metric. When CloudWatch creates a metric, it can take up to fifteen minutes for the metric to appear in calls to ListMetrics.
 #' 
 #' You can publish either individual data points in the `Value` field, or arrays of values and the number of times each value occurred during the period by using the `Values` and `Counts` fields in the `MetricDatum` structure. Using the `Values` and `Counts` method enables you to publish up to 150 values per metric with one `PutMetricData` request, and supports retrieving percentile statistics on this data.
 #' 
@@ -782,7 +812,7 @@ put_metric_alarm <- function (AlarmName, AlarmDescription = NULL,
 #' 
 #' Data points with time stamps from 24 hours ago or longer can take at least 48 hours to become available for GetMetricData or GetMetricStatistics from the time they are submitted.
 #' 
-#' CloudWatch needs raw data points to calculate percentile statistics. These raw data points could be published individually or as part of `Values` and `Counts` arrays. If you publish data using statistic sets in the `StatisticValues` field instead, you can only retrieve percentile statistics for this data if one of the following conditions is true:
+#' CloudWatch needs raw data points to calculate percentile statistics. If you publish data using a statistic set instead, you can only retrieve percentile statistics for this data if one of the following conditions is true:
 #' 
 #' -   The `SampleCount` value of the statistic set is 1 and `Min`, `Max`, and `Sum` are all equal.
 #' 

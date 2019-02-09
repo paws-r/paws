@@ -9,11 +9,11 @@ delete_ssh_public_key(UserName, SSHPublicKeyId)
 \arguments{
 \item{UserName}{[required] The name of the IAM user associated with the SSH public key.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{SSHPublicKeyId}{[required] The unique identifier for the SSH public key.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that can consist of any upper or lowercased letter or digit.}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that can consist of any upper or lowercased letter or digit.}
 }
 \description{
 Deletes the specified SSH public key.

@@ -42,6 +42,38 @@ accept_reserved_instances_exchange_quote <- function (DryRun = NULL,
     return(response)
 }
 
+#' Accepts a request to attach a VPC to a transit gateway
+#'
+#' Accepts a request to attach a VPC to a transit gateway.
+#' 
+#' The VPC attachment must be in the `pendingAcceptance` state. Use DescribeTransitGatewayVpcAttachments to view your pending VPC attachment requests. Use RejectTransitGatewayVpcAttachment to reject a VPC attachment request.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' accept_transit_gateway_vpc_attachment(
+#'   TransitGatewayAttachmentId = "string",
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param TransitGatewayAttachmentId &#91;required&#93; The ID of the attachment.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+accept_transit_gateway_vpc_attachment <- function (TransitGatewayAttachmentId, 
+    DryRun = NULL) 
+{
+    op <- new_operation(name = "AcceptTransitGatewayVpcAttachment", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- accept_transit_gateway_vpc_attachment_input(TransitGatewayAttachmentId = TransitGatewayAttachmentId, 
+        DryRun = DryRun)
+    output <- accept_transit_gateway_vpc_attachment_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Accepts one or more interface VPC endpoint connection requests to your VPC endpoint service
 #'
 #' Accepts one or more interface VPC endpoint connection requests to your VPC endpoint service.
@@ -127,7 +159,7 @@ accept_vpc_peering_connection <- function (DryRun = NULL, VpcPeeringConnectionId
 #' )
 #' ```
 #'
-#' @param Cidr &#91;required&#93; The IPv4 address range, in CIDR notation.
+#' @param Cidr &#91;required&#93; The IPv4 address range, in CIDR notation. This must be the exact range that you provisioned. You can\'t advertise only a portion of the provisioned range.
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
 #'
 #' @export
@@ -147,13 +179,13 @@ advertise_byoip_cidr <- function (Cidr, DryRun = NULL)
 #'
 #' Allocates an Elastic IP address to your AWS account. After you allocate the Elastic IP address you can associate it with an instance or network interface. After you release an Elastic IP address, it is released to the IP address pool and can be allocated to a different AWS account.
 #' 
-#' You can allocate an Elastic IP address from an address pool owned by AWS or from an address pool created from a public IPv4 address range that you have brought to AWS for use with your AWS resources using bring your own IP addresses (BYOIP). For more information, see [Bring Your Own IP Addresses (BYOIP)](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' You can allocate an Elastic IP address from an address pool owned by AWS or from an address pool created from a public IPv4 address range that you have brought to AWS for use with your AWS resources using bring your own IP addresses (BYOIP). For more information, see [Bring Your Own IP Addresses (BYOIP)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' 
 #' &#91;EC2-VPC&#93; If you release an Elastic IP address, you might be able to recover it. You cannot recover an Elastic IP address that you released after it is allocated to another AWS account. You cannot recover an Elastic IP address for EC2-Classic. To attempt to recover an Elastic IP address that you released, specify it in this operation.
 #' 
 #' An Elastic IP address is for use either in the EC2-Classic platform or in a VPC. By default, you can allocate 5 Elastic IP addresses for EC2-Classic per region and 5 Elastic IP addresses for EC2-VPC per region.
 #' 
-#' For more information, see [Elastic IP Addresses](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information, see [Elastic IP Addresses](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -212,7 +244,7 @@ allocate_address <- function (Domain = NULL, Address = NULL,
 #'   Quantity = 123,
 #'   TagSpecifications = list(
 #'     list(
-#'       ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"image"|"instance"|"internet-gateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"snapshot"|"spot-instances-request"|"subnet"|"security-group"|"volume"|"vpc"|"vpn-connection"|"vpn-gateway",
+#'       ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-instances-request"|"subnet"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
 #'       Tags = list(
 #'         list(
 #'           Key = "string",
@@ -228,7 +260,7 @@ allocate_address <- function (Domain = NULL, Address = NULL,
 #' 
 #' Default: Enabled
 #' @param AvailabilityZone &#91;required&#93; The Availability Zone for the Dedicated Hosts.
-#' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see [How to Ensure Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see [How to Ensure Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' @param InstanceType &#91;required&#93; Specify the instance type for which to configure your Dedicated Hosts. When you specify the instance type, that is the only instance type that you can launch onto that host.
 #' @param Quantity &#91;required&#93; The number of Dedicated Hosts to allocate to your account with these parameters.
 #' @param TagSpecifications The tags to apply to the Dedicated Host during creation.
@@ -249,9 +281,45 @@ allocate_hosts <- function (AutoPlacement = NULL, AvailabilityZone,
     return(response)
 }
 
+#' Applies a security group to the association between the target network and the Client VPN endpoint
+#'
+#' Applies a security group to the association between the target network and the Client VPN endpoint. This action replaces the existing security groups with the specified security groups.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' apply_security_groups_to_client_vpn_target_network(
+#'   ClientVpnEndpointId = "string",
+#'   VpcId = "string",
+#'   SecurityGroupIds = list(
+#'     "string"
+#'   ),
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param ClientVpnEndpointId &#91;required&#93; The ID of the Client VPN endpoint.
+#' @param VpcId &#91;required&#93; The ID of the VPC in which the associated target network is located.
+#' @param SecurityGroupIds &#91;required&#93; The IDs of the security groups to apply to the associated target network. Up to 5 security groups can be applied to an associated target network.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+apply_security_groups_to_client_vpn_target_network <- function (ClientVpnEndpointId, 
+    VpcId, SecurityGroupIds, DryRun = NULL) 
+{
+    op <- new_operation(name = "ApplySecurityGroupsToClientVpnTargetNetwork", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- apply_security_groups_to_client_vpn_target_network_input(ClientVpnEndpointId = ClientVpnEndpointId, 
+        VpcId = VpcId, SecurityGroupIds = SecurityGroupIds, DryRun = DryRun)
+    output <- apply_security_groups_to_client_vpn_target_network_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Assigns one or more IPv6 addresses to the specified network interface
 #'
-#' Assigns one or more IPv6 addresses to the specified network interface. You can specify one or more specific IPv6 addresses, or you can specify the number of IPv6 addresses to be automatically assigned from within the subnet\'s IPv6 CIDR block range. You can assign as many IPv6 addresses to a network interface as you can assign private IPv4 addresses, and the limit varies per instance type. For information, see [IP Addresses Per Network Interface Per Instance Type](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI) in the *Amazon Elastic Compute Cloud User Guide*.
+#' Assigns one or more IPv6 addresses to the specified network interface. You can specify one or more specific IPv6 addresses, or you can specify the number of IPv6 addresses to be automatically assigned from within the subnet\'s IPv6 CIDR block range. You can assign as many IPv6 addresses to a network interface as you can assign private IPv4 addresses, and the limit varies per instance type. For information, see [IP Addresses Per Network Interface Per Instance Type](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -287,7 +355,7 @@ assign_ipv_6_addresses <- function (Ipv6AddressCount = NULL,
 #'
 #' Assigns one or more secondary private IP addresses to the specified network interface.
 #' 
-#' You can specify one or more specific secondary IP addresses, or you can specify the number of secondary IP addresses to be automatically assigned within the subnet\'s CIDR block range. The number of secondary IP addresses that you can assign to an instance varies by instance type. For information about instance types, see [Instance Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) in the *Amazon Elastic Compute Cloud User Guide*. For more information about Elastic IP addresses, see [Elastic IP Addresses](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' You can specify one or more specific secondary IP addresses, or you can specify the number of secondary IP addresses to be automatically assigned within the subnet\'s CIDR block range. The number of secondary IP addresses that you can assign to an instance varies by instance type. For information about instance types, see [Instance Types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) in the *Amazon Elastic Compute Cloud User Guide*. For more information about Elastic IP addresses, see [Elastic IP Addresses](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' 
 #' When you move a secondary private IP address to another network interface, any Elastic IP address that is associated with the IP address is also moved.
 #' 
@@ -351,7 +419,7 @@ assign_private_ip_addresses <- function (AllowReassignment = NULL,
 #'
 #' Associates an Elastic IP address with an instance or a network interface. Before you can use an Elastic IP address, you must allocate it to your account.
 #' 
-#' An Elastic IP address is for use in either the EC2-Classic platform or in a VPC. For more information, see [Elastic IP Addresses](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' An Elastic IP address is for use in either the EC2-Classic platform or in a VPC. For more information, see [Elastic IP Addresses](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' 
 #' &#91;EC2-Classic, VPC in an EC2-VPC-only account&#93; If the Elastic IP address is already associated with a different instance, it is disassociated from that instance and associated with the specified instance. If you associate an Elastic IP address with an instance that has an existing Elastic IP address, the existing address is disassociated from the instance, but remains allocated to your account.
 #' 
@@ -420,13 +488,45 @@ associate_address <- function (AllocationId = NULL, InstanceId = NULL,
     return(response)
 }
 
+#' Associates a target network with a Client VPN endpoint
+#'
+#' Associates a target network with a Client VPN endpoint. A target network is a subnet in a VPC. You can associate multiple subnets from the same VPC with a Client VPN endpoint. You can associate only one subnet in each Availability Zone. We recommend that you associate at least two subnets to provide Availability Zone redundancy.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' associate_client_vpn_target_network(
+#'   ClientVpnEndpointId = "string",
+#'   SubnetId = "string",
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param ClientVpnEndpointId &#91;required&#93; The ID of the Client VPN endpoint.
+#' @param SubnetId &#91;required&#93; The ID of the subnet to associate with the Client VPN endpoint.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+associate_client_vpn_target_network <- function (ClientVpnEndpointId, 
+    SubnetId, DryRun = NULL) 
+{
+    op <- new_operation(name = "AssociateClientVpnTargetNetwork", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- associate_client_vpn_target_network_input(ClientVpnEndpointId = ClientVpnEndpointId, 
+        SubnetId = SubnetId, DryRun = DryRun)
+    output <- associate_client_vpn_target_network_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Associates a set of DHCP options (that you've previously created) with the specified VPC, or associates no DHCP options with the VPC
 #'
 #' Associates a set of DHCP options (that you\'ve previously created) with the specified VPC, or associates no DHCP options with the VPC.
 #' 
 #' After you associate the options with the VPC, any existing instances and all new instances that you launch in that VPC use the options. You don\'t need to restart or relaunch the instances. They automatically pick up the changes within a few hours, depending on how frequently the instance renews its DHCP lease. You can explicitly renew the lease using the operating system on the instance.
 #' 
-#' For more information, see [DHCP Options Sets](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' For more information, see [DHCP Options Sets](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html) in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -517,7 +617,7 @@ associate_iam_instance_profile <- function (IamInstanceProfile,
 #'
 #' Associates a subnet with a route table. The subnet and route table must be in the same VPC. This association causes traffic originating from the subnet to be routed according to the routes in the route table. The action returns an association ID, which you need in order to disassociate the route table from the subnet later. A route table can be associated with multiple subnets.
 #' 
-#' For more information, see [Route Tables](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' For more information, see [Route Tables](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html) in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -584,11 +684,44 @@ associate_subnet_cidr_block <- function (Ipv6CidrBlock, SubnetId)
     return(response)
 }
 
+#' Associates the specified attachment with the specified transit gateway route table
+#'
+#' Associates the specified attachment with the specified transit gateway route table. You can associate only one route table with an attachment.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' associate_transit_gateway_route_table(
+#'   TransitGatewayRouteTableId = "string",
+#'   TransitGatewayAttachmentId = "string",
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param TransitGatewayRouteTableId &#91;required&#93; The ID of the transit gateway route table.
+#' @param TransitGatewayAttachmentId &#91;required&#93; The ID of the attachment.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+associate_transit_gateway_route_table <- function (TransitGatewayRouteTableId, 
+    TransitGatewayAttachmentId, DryRun = NULL) 
+{
+    op <- new_operation(name = "AssociateTransitGatewayRouteTable", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- associate_transit_gateway_route_table_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, 
+        TransitGatewayAttachmentId = TransitGatewayAttachmentId, 
+        DryRun = DryRun)
+    output <- associate_transit_gateway_route_table_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Associates a CIDR block with your VPC
 #'
 #' Associates a CIDR block with your VPC. You can associate a secondary IPv4 CIDR block, or you can associate an Amazon-provided IPv6 CIDR block. The IPv6 CIDR block size is fixed at /56.
 #' 
-#' For more information about associating CIDR blocks with your VPC and applicable restrictions, see [VPC and Subnet Sizing](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html#VPC_Sizing) in the *Amazon Virtual Private Cloud User Guide*.
+#' For more information about associating CIDR blocks with your VPC and applicable restrictions, see [VPC and Subnet Sizing](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html#VPC_Sizing) in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -660,7 +793,7 @@ attach_classic_link_vpc <- function (DryRun = NULL, Groups, InstanceId,
 
 #' Attaches an internet gateway to a VPC, enabling connectivity between the internet and the VPC
 #'
-#' Attaches an internet gateway to a VPC, enabling connectivity between the internet and the VPC. For more information about your VPC and internet gateway, see the [Amazon Virtual Private Cloud User Guide](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/).
+#' Attaches an internet gateway to a VPC, enabling connectivity between the internet and the VPC. For more information about your VPC and internet gateway, see the [Amazon Virtual Private Cloud User Guide](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -745,9 +878,9 @@ attach_network_interface <- function (DeviceIndex, DryRun = NULL,
 #'
 #' Attaches an EBS volume to a running or stopped instance and exposes it to the instance with the specified device name.
 #' 
-#' Encrypted EBS volumes may only be attached to instances that support Amazon EBS encryption. For more information, see [Amazon EBS Encryption](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' Encrypted EBS volumes may only be attached to instances that support Amazon EBS encryption. For more information, see [Amazon EBS Encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' 
-#' For a list of supported device names, see [Attaching an EBS Volume to an Instance](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-attaching-volume.html). Any device names that aren\'t reserved for instance store volumes can be used for EBS volumes. For more information, see [Amazon EC2 Instance Store](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For a list of supported device names, see [Attaching an EBS Volume to an Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-attaching-volume.html). Any device names that aren\'t reserved for instance store volumes can be used for EBS volumes. For more information, see [Amazon EC2 Instance Store](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' 
 #' If a volume has an AWS Marketplace product code:
 #' 
@@ -759,7 +892,7 @@ attach_network_interface <- function (DeviceIndex, DryRun = NULL,
 #' 
 #' -   The instance type and operating system of the instance must support the product. For example, you can\'t detach a volume from a Windows instance and attach it to a Linux instance.
 #' 
-#' For more information about EBS volumes, see [Attaching Amazon EBS Volumes](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-attaching-volume.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information about EBS volumes, see [Attaching Amazon EBS Volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-attaching-volume.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -803,7 +936,7 @@ attach_volume <- function (Device, InstanceId, VolumeId, DryRun = NULL)
 #'
 #' Attaches a virtual private gateway to a VPC. You can attach one virtual private gateway to one VPC at a time.
 #' 
-#' For more information, see [AWS Managed VPN Connections](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' For more information, see [AWS Site-to-Site VPN](https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html) in the *AWS Site-to-Site VPN User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -832,9 +965,50 @@ attach_vpn_gateway <- function (VpcId, VpnGatewayId, DryRun = NULL)
     return(response)
 }
 
+#' Adds an ingress authorization rule to a Client VPN endpoint
+#'
+#' Adds an ingress authorization rule to a Client VPN endpoint. Ingress authorization rules act as firewall rules that grant access to networks. You must configure ingress authorization rules to enable clients to access resources in AWS or on-premises networks.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' authorize_client_vpn_ingress(
+#'   ClientVpnEndpointId = "string",
+#'   TargetNetworkCidr = "string",
+#'   AccessGroupId = "string",
+#'   AuthorizeAllGroups = TRUE|FALSE,
+#'   Description = "string",
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param ClientVpnEndpointId &#91;required&#93; The ID of the Client VPN endpoint.
+#' @param TargetNetworkCidr &#91;required&#93; The IPv4 address range, in CIDR notation, of the network for which access is being authorized.
+#' @param AccessGroupId The ID of the Active Directory group to grant access.
+#' @param AuthorizeAllGroups Indicates whether to grant access to all clients. Use `true` to grant all clients who successfully establish a VPN connection access to the network.
+#' @param Description A brief description of the authorization rule.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+authorize_client_vpn_ingress <- function (ClientVpnEndpointId, 
+    TargetNetworkCidr, AccessGroupId = NULL, AuthorizeAllGroups = NULL, 
+    Description = NULL, DryRun = NULL) 
+{
+    op <- new_operation(name = "AuthorizeClientVpnIngress", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- authorize_client_vpn_ingress_input(ClientVpnEndpointId = ClientVpnEndpointId, 
+        TargetNetworkCidr = TargetNetworkCidr, AccessGroupId = AccessGroupId, 
+        AuthorizeAllGroups = AuthorizeAllGroups, Description = Description, 
+        DryRun = DryRun)
+    output <- authorize_client_vpn_ingress_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' &#91;EC2-VPC only&#93; Adds one or more egress rules to a security group for use with a VPC
 #'
-#' &#91;EC2-VPC only&#93; Adds one or more egress rules to a security group for use with a VPC. Specifically, this action permits instances to send traffic to one or more destination IPv4 or IPv6 CIDR address ranges, or to one or more destination security groups for the same VPC. This action doesn\'t apply to security groups for use in EC2-Classic. For more information, see [Security Groups for Your VPC](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html) in the *Amazon Virtual Private Cloud User Guide*. For more information about security group limits, see [Amazon VPC Limits](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html).
+#' &#91;EC2-VPC only&#93; Adds one or more egress rules to a security group for use with a VPC. Specifically, this action permits instances to send traffic to one or more destination IPv4 or IPv6 CIDR address ranges, or to one or more destination security groups for the same VPC. This action doesn\'t apply to security groups for use in EC2-Classic. For more information, see [Security Groups for Your VPC](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html) in the *Amazon Virtual Private Cloud User Guide*. For more information about security group limits, see [Amazon VPC Limits](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html).
 #' 
 #' Each rule consists of the protocol (for example, TCP), plus either a CIDR range or a source group. For the TCP and UDP protocols, you must also specify the destination port or port range. For the ICMP protocol, you must also specify the ICMP type and code. You can use -1 for the type or code to mean all types or all codes. You can optionally specify a description for the rule.
 #' 
@@ -963,7 +1137,7 @@ authorize_security_group_egress <- function (DryRun = NULL, GroupId,
 #' 
 #' &#91;EC2-Classic&#93; This action gives one or more IPv4 CIDR address ranges permission to access a security group in your account, or gives one or more security groups (called the *source groups*) permission to access a security group for your account. A source group can be for your own AWS account, or another. You can have up to 100 rules per group.
 #' 
-#' &#91;EC2-VPC&#93; This action gives one or more IPv4 or IPv6 CIDR address ranges permission to access a security group in your VPC, or gives one or more other security groups (called the *source groups*) permission to access a security group for your VPC. The security groups must all be for the same VPC or a peer VPC in a VPC peering connection. For more information about VPC security group limits, see [Amazon VPC Limits](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html).
+#' &#91;EC2-VPC&#93; This action gives one or more IPv4 or IPv6 CIDR address ranges permission to access a security group in your VPC, or gives one or more other security groups (called the *source groups*) permission to access a security group for your VPC. The security groups must all be for the same VPC or a peer VPC in a VPC peering connection. For more information about VPC security group limits, see [Amazon VPC Limits](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html).
 #' 
 #' You can optionally specify a description for the security group rule.
 #'
@@ -1025,7 +1199,7 @@ authorize_security_group_egress <- function (DryRun = NULL, GroupId,
 #' @param IpPermissions One or more sets of IP permissions. Can be used to specify multiple rules in a single command.
 #' @param IpProtocol The IP protocol name (`tcp`, `udp`, `icmp`) or number (see [Protocol Numbers](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)). (VPC only) Use `-1` to specify all protocols. If you specify `-1`, or a protocol number other than `tcp`, `udp`, `icmp`, or `58` (ICMPv6), traffic on all ports is allowed, regardless of any ports you specify. For `tcp`, `udp`, and `icmp`, you must specify a port range. For protocol `58` (ICMPv6), you can optionally specify a port range; if you don\'t, traffic for all types and codes is allowed.
 #' @param SourceSecurityGroupName &#91;EC2-Classic, default VPC&#93; The name of the source security group. You can\'t specify this parameter in combination with the following parameters: the CIDR IP address range, the start of the port range, the IP protocol, and the end of the port range. Creates rules that grant full ICMP, UDP, and TCP access. To create a rule with a specific IP protocol and port range, use a set of IP permissions instead. For EC2-VPC, the source security group must be in the same VPC.
-#' @param SourceSecurityGroupOwnerId &#91;EC2-Classic&#93; The AWS account ID for the source security group, if the source security group is in a different account. You can\'t specify this parameter in combination with the following parameters: the CIDR IP address range, the IP protocol, the start of the port range, and the end of the port range. Creates rules that grant full ICMP, UDP, and TCP access. To create a rule with a specific IP protocol and port range, use a set of IP permissions instead.
+#' @param SourceSecurityGroupOwnerId &#91;nondefault VPC&#93; The AWS account ID for the source security group, if the source security group is in a different account. You can\'t specify this parameter in combination with the following parameters: the CIDR IP address range, the IP protocol, the start of the port range, and the end of the port range. Creates rules that grant full ICMP, UDP, and TCP access. To create a rule with a specific IP protocol and port range, use a set of IP permissions instead.
 #' @param ToPort The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 code number. For the ICMP/ICMPv6 code number, use `-1` to specify all codes. If you specify all ICMP/ICMPv6 types, you must specify all codes.
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
 #'
@@ -1223,7 +1397,7 @@ cancel_capacity_reservation <- function (CapacityReservationId,
 #'
 #' Cancels an active conversion task. The task can be the import of an instance or volume. The action removes all artifacts of the conversion, including a partially uploaded volume or instance. If the conversion is complete or is in the process of transferring the final disk image, the command fails and returns an exception.
 #' 
-#' For more information, see [Importing a Virtual Machine Using the Amazon EC2 CLI](http://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/ec2-cli-vmimport-export.html).
+#' For more information, see [Importing a Virtual Machine Using the Amazon EC2 CLI](https://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/ec2-cli-vmimport-export.html).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1315,7 +1489,7 @@ cancel_import_task <- function (CancelReason = NULL, DryRun = NULL,
 #'
 #' Cancels the specified Reserved Instance listing in the Reserved Instance Marketplace.
 #' 
-#' For more information, see [Reserved Instance Marketplace](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information, see [Reserved Instance Marketplace](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1496,7 +1670,7 @@ confirm_product_instance <- function (InstanceId, ProductCode,
 #' @param Description The description for the new AFI.
 #' @param Name The name for the new AFI. The default is the name of the source AFI.
 #' @param SourceRegion &#91;required&#93; The region that contains the source AFI.
-#' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see [Ensuring Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html).
+#' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see [Ensuring Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html).
 #'
 #' @export
 copy_fpga_image <- function (DryRun = NULL, SourceFpgaImageId, 
@@ -1520,7 +1694,7 @@ copy_fpga_image <- function (DryRun = NULL, SourceFpgaImageId,
 #' 
 #' Copies of encrypted backing snapshots for the AMI are encrypted. Copies of unencrypted backing snapshots remain unencrypted, unless you set `Encrypted` during the copy operation. You cannot create an unencrypted copy of an encrypted backing snapshot.
 #' 
-#' For more information about the prerequisites and limits when copying an AMI, see [Copying an AMI](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information about the prerequisites and limits when copying an AMI, see [Copying an AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1536,9 +1710,9 @@ copy_fpga_image <- function (DryRun = NULL, SourceFpgaImageId,
 #' )
 #' ```
 #'
-#' @param ClientToken Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see [How to Ensure Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' @param ClientToken Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see [How to Ensure Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' @param Description A description for the new AMI in the destination region.
-#' @param Encrypted Specifies whether the destination snapshots of the copied image should be encrypted. You can encrypt a copy of an unencrypted snapshot, but you cannot create an unencrypted copy of an encrypted snapshot. The default CMK for EBS is used unless you specify a non-default AWS Key Management Service (AWS KMS) CMK using `KmsKeyId`. For more information, see [Amazon EBS Encryption](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' @param Encrypted Specifies whether the destination snapshots of the copied image should be encrypted. You can encrypt a copy of an unencrypted snapshot, but you cannot create an unencrypted copy of an encrypted snapshot. The default CMK for EBS is used unless you specify a non-default AWS Key Management Service (AWS KMS) CMK using `KmsKeyId`. For more information, see [Amazon EBS Encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' @param KmsKeyId An identifier for the AWS Key Management Service (AWS KMS) customer master key (CMK) to use when creating the encrypted volume. This parameter is only required if you want to use a non-default CMK; if this parameter is not specified, the default CMK for EBS is used. If a `KmsKeyId` is specified, the `Encrypted` flag must also be set.
 #' 
 #' The CMK identifier may be provided in any of the following formats:
@@ -1597,7 +1771,7 @@ copy_image <- function (ClientToken = NULL, Description = NULL,
 #' 
 #' Snapshots created by copying another snapshot have an arbitrary volume ID that should not be used for any purpose.
 #' 
-#' For more information, see [Copying an Amazon EBS Snapshot](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-copy-snapshot.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information, see [Copying an Amazon EBS Snapshot](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-copy-snapshot.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1617,7 +1791,7 @@ copy_image <- function (ClientToken = NULL, Description = NULL,
 #' @param DestinationRegion The destination region to use in the `PresignedUrl` parameter of a snapshot copy operation. This parameter is only valid for specifying the destination region in a `PresignedUrl` parameter, where it is required.
 #' 
 #' The snapshot copy is sent to the regional endpoint that you sent the HTTP request to (for example, `ec2.us-east-1.amazonaws.com`). With the AWS CLI, this is specified using the `--region` parameter or the default region in your AWS configuration file.
-#' @param Encrypted Specifies whether the destination snapshot should be encrypted. You can encrypt a copy of an unencrypted snapshot, but you cannot use it to create an unencrypted copy of an encrypted snapshot. Your default CMK for EBS is used unless you specify a non-default AWS Key Management Service (AWS KMS) CMK using `KmsKeyId`. For more information, see [Amazon EBS Encryption](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' @param Encrypted Specifies whether the destination snapshot should be encrypted. You can encrypt a copy of an unencrypted snapshot, but you cannot use it to create an unencrypted copy of an encrypted snapshot. Your default CMK for EBS is used unless you specify a non-default AWS Key Management Service (AWS KMS) CMK using `KmsKeyId`. For more information, see [Amazon EBS Encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' @param KmsKeyId An identifier for the AWS Key Management Service (AWS KMS) customer master key (CMK) to use when creating the encrypted volume. This parameter is only required if you want to use a non-default CMK; if this parameter is not specified, the default CMK for EBS is used. If a `KmsKeyId` is specified, the `Encrypted` flag must also be set.
 #' 
 #' The CMK identifier may be provided in any of the following formats:
@@ -1631,9 +1805,9 @@ copy_image <- function (ClientToken = NULL, Description = NULL,
 #' -   ARN using key alias. The alias ARN contains the `arn:aws:kms` namespace, followed by the region of the CMK, the AWS account ID of the CMK owner, the `alias` namespace, and then the CMK alias. For example, arn:aws:kms:*us-east-1*:*012345678910*:alias/*ExampleAlias*.
 #' 
 #' AWS parses `KmsKeyId` asynchronously, meaning that the action you call may appear to complete even though you provided an invalid identifier. The action will eventually fail.
-#' @param PresignedUrl When you copy an encrypted source snapshot using the Amazon EC2 Query API, you must supply a pre-signed URL. This parameter is optional for unencrypted snapshots. For more information, see [Query Requests](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html).
+#' @param PresignedUrl When you copy an encrypted source snapshot using the Amazon EC2 Query API, you must supply a pre-signed URL. This parameter is optional for unencrypted snapshots. For more information, see [Query Requests](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html).
 #' 
-#' The `PresignedUrl` should use the snapshot source endpoint, the `CopySnapshot` action, and include the `SourceRegion`, `SourceSnapshotId`, and `DestinationRegion` parameters. The `PresignedUrl` must be signed using AWS Signature Version 4. Because EBS snapshots are stored in Amazon S3, the signing algorithm for this parameter uses the same logic that is described in [Authenticating Requests by Using Query Parameters (AWS Signature Version 4)](http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html) in the *Amazon Simple Storage Service API Reference*. An invalid or improperly signed `PresignedUrl` will cause the copy operation to fail asynchronously, and the snapshot will move to an `error` state.
+#' The `PresignedUrl` should use the snapshot source endpoint, the `CopySnapshot` action, and include the `SourceRegion`, `SourceSnapshotId`, and `DestinationRegion` parameters. The `PresignedUrl` must be signed using AWS Signature Version 4. Because EBS snapshots are stored in Amazon S3, the signing algorithm for this parameter uses the same logic that is described in [Authenticating Requests by Using Query Parameters (AWS Signature Version 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html) in the *Amazon Simple Storage Service API Reference*. An invalid or improperly signed `PresignedUrl` will cause the copy operation to fail asynchronously, and the snapshot will move to an `error` state.
 #' @param SourceRegion &#91;required&#93; The ID of the region that contains the snapshot to be copied.
 #' @param SourceSnapshotId &#91;required&#93; The ID of the EBS snapshot to copy.
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
@@ -1672,18 +1846,18 @@ copy_snapshot <- function (Description = NULL, DestinationRegion = NULL,
 #'
 #' Creates a new Capacity Reservation with the specified attributes.
 #' 
-#' Capacity Reservations enable you to reserve capacity for your Amazon EC2 instances in a specific Availability Zone for any duration. This gives you the flexibility to selectively add capacity reservations and still get the Regional RI discounts for that usage. By creating Capacity Reservations, you ensure that you always have access to Amazon EC2 capacity when you need it, for as long as you need it. For more information, see [Capacity Reservations](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-reservations.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' Capacity Reservations enable you to reserve capacity for your Amazon EC2 instances in a specific Availability Zone for any duration. This gives you the flexibility to selectively add capacity reservations and still get the Regional RI discounts for that usage. By creating Capacity Reservations, you ensure that you always have access to Amazon EC2 capacity when you need it, for as long as you need it. For more information, see [Capacity Reservations](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-reservations.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' 
 #' Your request to create a Capacity Reservation could fail if Amazon EC2 does not have sufficient capacity to fulfill the request. If your request fails due to Amazon EC2 capacity constraints, either try again at a later time, try in a different Availability Zone, or request a smaller capacity reservation. If your application is flexible across instance types and sizes, try to create a Capacity Reservation with different instance attributes.
 #' 
-#' Your request could also fail if the requested quantity exceeds your On-Demand Instance limit for the selected instance type. If your request fails due to limit constraints, increase your On-Demand Instance limit for the required instance type and try again. For more information about increasing your instance limits, see [Amazon EC2 Service Limits](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' Your request could also fail if the requested quantity exceeds your On-Demand Instance limit for the selected instance type. If your request fails due to limit constraints, increase your On-Demand Instance limit for the required instance type and try again. For more information about increasing your instance limits, see [Amazon EC2 Service Limits](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
 #' create_capacity_reservation(
 #'   ClientToken = "string",
 #'   InstanceType = "string",
-#'   InstancePlatform = "Linux/UNIX"|"Red Hat Enterprise Linux"|"SUSE Linux"|"Windows"|"Windows with SQL Server"|"Windows with SQL Server Enterprise"|"Windows with SQL Server Standard"|"Windows with SQL Server Web",
+#'   InstancePlatform = "Linux/UNIX"|"Red Hat Enterprise Linux"|"SUSE Linux"|"Windows"|"Windows with SQL Server"|"Windows with SQL Server Enterprise"|"Windows with SQL Server Standard"|"Windows with SQL Server Web"|"Linux with SQL Server Standard"|"Linux with SQL Server Web"|"Linux with SQL Server Enterprise",
 #'   AvailabilityZone = "string",
 #'   Tenancy = "default"|"dedicated",
 #'   InstanceCount = 123,
@@ -1694,7 +1868,7 @@ copy_snapshot <- function (Description = NULL, DestinationRegion = NULL,
 #'   InstanceMatchCriteria = "open"|"targeted",
 #'   TagSpecifications = list(
 #'     list(
-#'       ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"image"|"instance"|"internet-gateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"snapshot"|"spot-instances-request"|"subnet"|"security-group"|"volume"|"vpc"|"vpn-connection"|"vpn-gateway",
+#'       ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-instances-request"|"subnet"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
 #'       Tags = list(
 #'         list(
 #'           Key = "string",
@@ -1707,10 +1881,10 @@ copy_snapshot <- function (Description = NULL, DestinationRegion = NULL,
 #' )
 #' ```
 #'
-#' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see [How to Ensure Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see [How to Ensure Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' 
 #' Constraint: Maximum 64 ASCII characters.
-#' @param InstanceType &#91;required&#93; The instance type for which to reserve capacity. For more information, see [Instance Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' @param InstanceType &#91;required&#93; The instance type for which to reserve capacity. For more information, see [Instance Types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' @param InstancePlatform &#91;required&#93; The type of operating system for which to reserve capacity.
 #' @param AvailabilityZone &#91;required&#93; The Availability Zone in which to create the Capacity Reservation.
 #' @param Tenancy Indicates the tenancy of the Capacity Reservation. A Capacity Reservation can have one of the following tenancy settings:
@@ -1764,6 +1938,128 @@ create_capacity_reservation <- function (ClientToken = NULL,
     return(response)
 }
 
+#' Creates a Client VPN endpoint
+#'
+#' Creates a Client VPN endpoint. A Client VPN endpoint is the resource you create and configure to enable and manage client VPN sessions. It is the destination endpoint at which all client VPN sessions are terminated.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' create_client_vpn_endpoint(
+#'   ClientCidrBlock = "string",
+#'   ServerCertificateArn = "string",
+#'   AuthenticationOptions = list(
+#'     list(
+#'       Type = "certificate-authentication"|"directory-service-authentication",
+#'       ActiveDirectory = list(
+#'         DirectoryId = "string"
+#'       ),
+#'       MutualAuthentication = list(
+#'         ClientRootCertificateChainArn = "string"
+#'       )
+#'     )
+#'   ),
+#'   ConnectionLogOptions = list(
+#'     Enabled = TRUE|FALSE,
+#'     CloudwatchLogGroup = "string",
+#'     CloudwatchLogStream = "string"
+#'   ),
+#'   DnsServers = list(
+#'     "string"
+#'   ),
+#'   TransportProtocol = "tcp"|"udp",
+#'   Description = "string",
+#'   DryRun = TRUE|FALSE,
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @param ClientCidrBlock &#91;required&#93; The IPv4 address range, in CIDR notation, from which to assign client IP addresses. The address range cannot overlap with the local CIDR of the VPC in which the associated subnet is located, or the routes that you add manually. The address range cannot be changed after the Client VPN endpoint has been created. The CIDR block should be /22 or greater.
+#' @param ServerCertificateArn &#91;required&#93; The ARN of the server certificate. For more information, see the [AWS Certificate Manager User Guide](acm/latest/userguide/acm-overview.html) .
+#' @param AuthenticationOptions &#91;required&#93; Information about the authentication method to be used to authenticate clients.
+#' @param ConnectionLogOptions &#91;required&#93; Information about the client connection logging options.
+#' 
+#' If you enable client connection logging, data about client connections is sent to a Cloudwatch Logs log stream. The following information is logged:
+#' 
+#' -   Client connection requests
+#' 
+#' -   Client connection results (successful and unsuccessful)
+#' 
+#' -   Reasons for unsuccessful client connection requests
+#' 
+#' -   Client connection termination time
+#' @param DnsServers Information about the DNS servers to be used for DNS resolution. A Client VPN endpoint can have up to two DNS servers. If no DNS server is specified, the DNS address of the VPC that is to be associated with Client VPN endpoint is used as the DNS server.
+#' @param TransportProtocol The transport protocol to be used by the VPN session.
+#' 
+#' Default value: `udp`
+#' @param Description A brief description of the Client VPN endpoint.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#' @param ClientToken Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see [How to Ensure Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html).
+#'
+#' @export
+create_client_vpn_endpoint <- function (ClientCidrBlock, ServerCertificateArn, 
+    AuthenticationOptions, ConnectionLogOptions, DnsServers = NULL, 
+    TransportProtocol = NULL, Description = NULL, DryRun = NULL, 
+    ClientToken = NULL) 
+{
+    op <- new_operation(name = "CreateClientVpnEndpoint", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_client_vpn_endpoint_input(ClientCidrBlock = ClientCidrBlock, 
+        ServerCertificateArn = ServerCertificateArn, AuthenticationOptions = AuthenticationOptions, 
+        ConnectionLogOptions = ConnectionLogOptions, DnsServers = DnsServers, 
+        TransportProtocol = TransportProtocol, Description = Description, 
+        DryRun = DryRun, ClientToken = ClientToken)
+    output <- create_client_vpn_endpoint_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Adds a route to a network to a Client VPN endpoint
+#'
+#' Adds a route to a network to a Client VPN endpoint. Each Client VPN endpoint has a route table that describes the available destination network routes. Each route in the route table specifies the path for traﬃc to speciﬁc resources or networks.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' create_client_vpn_route(
+#'   ClientVpnEndpointId = "string",
+#'   DestinationCidrBlock = "string",
+#'   TargetVpcSubnetId = "string",
+#'   Description = "string",
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param ClientVpnEndpointId &#91;required&#93; The ID of the Client VPN endpoint to which to add the route.
+#' @param DestinationCidrBlock &#91;required&#93; The IPv4 address range, in CIDR notation, of the route destination. For example:
+#' 
+#' -   To add a route for Internet access, enter `0.0.0.0/0`
+#' 
+#' -   To add a route for a peered VPC, enter the peered VPC\'s IPv4 CIDR range
+#' 
+#' -   To add a route for an on-premises network, enter the AWS Site-to-Site VPN connection\'s IPv4 CIDR range
+#' 
+#' Route address ranges cannot overlap with the CIDR range specified for client allocation.
+#' @param TargetVpcSubnetId &#91;required&#93; The ID of the subnet through which you want to route traffic. The specified subnet must be an existing target network of the Client VPN endpoint.
+#' @param Description A brief description of the route.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+create_client_vpn_route <- function (ClientVpnEndpointId, DestinationCidrBlock, 
+    TargetVpcSubnetId, Description = NULL, DryRun = NULL) 
+{
+    op <- new_operation(name = "CreateClientVpnRoute", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_client_vpn_route_input(ClientVpnEndpointId = ClientVpnEndpointId, 
+        DestinationCidrBlock = DestinationCidrBlock, TargetVpcSubnetId = TargetVpcSubnetId, 
+        Description = Description, DryRun = DryRun)
+    output <- create_client_vpn_route_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Provides information to AWS about your VPN customer gateway device
 #'
 #' Provides information to AWS about your VPN customer gateway device. The customer gateway is the appliance at your end of the VPN connection. (The device on the AWS side of the VPN connection is the virtual private gateway.) You must provide the Internet-routable IP address of the customer gateway\'s external interface. The IP address must be static and may be behind a device performing network address translation (NAT).
@@ -1772,7 +2068,7 @@ create_capacity_reservation <- function (ClientToken = NULL,
 #' 
 #' Amazon EC2 supports all 2-byte ASN numbers in the range of 1 - 65534, with the exception of 7224, which is reserved in the `us-east-1` region, and 9059, which is reserved in the `eu-west-1` region.
 #' 
-#' For more information about VPN customer gateways, see [AWS Managed VPN Connections](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' For more information, see [AWS Site-to-Site VPN](https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html) in the *AWS Site-to-Site VPN User Guide*.
 #' 
 #' You cannot create more than one customer gateway with the same VPN type, IP address, and BGP ASN parameter values. If you run an identical request more than one time, the first request creates the customer gateway, and subsequent requests return information about the existing customer gateway. The subsequent requests do not create new customer gateway resources.
 #'
@@ -1819,7 +2115,7 @@ create_customer_gateway <- function (BgpAsn, PublicIp, Type,
 
 #' Creates a default subnet with a size /20 IPv4 CIDR block in the specified Availability Zone in your default VPC
 #'
-#' Creates a default subnet with a size `/20` IPv4 CIDR block in the specified Availability Zone in your default VPC. You can have only one default subnet per Availability Zone. For more information, see [Creating a Default Subnet](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/default-vpc.html#create-default-subnet) in the *Amazon Virtual Private Cloud User Guide*.
+#' Creates a default subnet with a size `/20` IPv4 CIDR block in the specified Availability Zone in your default VPC. You can have only one default subnet per Availability Zone. For more information, see [Creating a Default Subnet](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/default-vpc.html#create-default-subnet) in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1848,7 +2144,7 @@ create_default_subnet <- function (AvailabilityZone, DryRun = NULL)
 
 #' Creates a default VPC with a size /16 IPv4 CIDR block and a default subnet in each Availability Zone
 #'
-#' Creates a default VPC with a size `/16` IPv4 CIDR block and a default subnet in each Availability Zone. For more information about the components of a default VPC, see [Default VPC and Default Subnets](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/default-vpc.html) in the *Amazon Virtual Private Cloud User Guide*. You cannot specify the components of the default VPC yourself.
+#' Creates a default VPC with a size `/16` IPv4 CIDR block and a default subnet in each Availability Zone. For more information about the components of a default VPC, see [Default VPC and Default Subnets](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/default-vpc.html) in the *Amazon Virtual Private Cloud User Guide*. You cannot specify the components of the default VPC yourself.
 #' 
 #' If you deleted your previous default VPC, you can create a default VPC. You cannot have more than one default VPC per Region.
 #' 
@@ -1890,7 +2186,7 @@ create_default_vpc <- function (DryRun = NULL)
 #' 
 #' -   `netbios-node-type` - The NetBIOS node type (1, 2, 4, or 8). We recommend that you specify 2 (broadcast and multicast are not currently supported). For more information about these node types, see [RFC 2132](http://www.ietf.org/rfc/rfc2132.txt).
 #' 
-#' Your VPC automatically starts out with a set of DHCP options that includes only a DNS server that we provide (AmazonProvidedDNS). If you create a set of options, and if your VPC has an internet gateway, make sure to set the `domain-name-servers` option either to `AmazonProvidedDNS` or to a domain name server of your choice. For more information, see [DHCP Options Sets](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' Your VPC automatically starts out with a set of DHCP options that includes only a DNS server that we provide (AmazonProvidedDNS). If you create a set of options, and if your VPC has an internet gateway, make sure to set the `domain-name-servers` option either to `AmazonProvidedDNS` or to a domain name server of your choice. For more information, see [DHCP Options Sets](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html) in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1951,7 +2247,7 @@ create_dhcp_options <- function (DhcpConfigurations, DryRun = NULL)
 #' )
 #' ```
 #'
-#' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see [How to Ensure Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html).
+#' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see [How to Ensure Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html).
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
 #' @param VpcId &#91;required&#93; The ID of the VPC for which to create the egress-only internet gateway.
 #'
@@ -1976,7 +2272,7 @@ create_egress_only_internet_gateway <- function (ClientToken = NULL,
 #' 
 #' You can create a single EC2 Fleet that includes multiple launch specifications that vary by instance type, AMI, Availability Zone, or subnet.
 #' 
-#' For more information, see [Launching an EC2 Fleet](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information, see [Launching an EC2 Fleet](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1986,10 +2282,16 @@ create_egress_only_internet_gateway <- function (ClientToken = NULL,
 #'   SpotOptions = list(
 #'     AllocationStrategy = "lowest-price"|"diversified",
 #'     InstanceInterruptionBehavior = "hibernate"|"stop"|"terminate",
-#'     InstancePoolsToUseCount = 123
+#'     InstancePoolsToUseCount = 123,
+#'     SingleInstanceType = TRUE|FALSE,
+#'     SingleAvailabilityZone = TRUE|FALSE,
+#'     MinTargetCapacity = 123
 #'   ),
 #'   OnDemandOptions = list(
-#'     AllocationStrategy = "lowest-price"|"prioritized"
+#'     AllocationStrategy = "lowest-price"|"prioritized",
+#'     SingleInstanceType = TRUE|FALSE,
+#'     SingleAvailabilityZone = TRUE|FALSE,
+#'     MinTargetCapacity = 123
 #'   ),
 #'   ExcessCapacityTerminationPolicy = "no-termination"|"termination",
 #'   LaunchTemplateConfigs = list(
@@ -2001,12 +2303,21 @@ create_egress_only_internet_gateway <- function (ClientToken = NULL,
 #'       ),
 #'       Overrides = list(
 #'         list(
-#'           InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.18xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.18xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.12xlarge"|"m5.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.12xlarge"|"m5d.24xlarge"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal",
+#'           InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.12xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.12xlarge"|"r5a.24xlarge"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.12xlarge"|"r5d.24xlarge"|"r5d.metal"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.18xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.18xlarge"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.12xlarge"|"m5.24xlarge"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.12xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.12xlarge"|"m5d.24xlarge"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge",
 #'           MaxPrice = "string",
 #'           SubnetId = "string",
 #'           AvailabilityZone = "string",
 #'           WeightedCapacity = 123.0,
-#'           Priority = 123.0
+#'           Priority = 123.0,
+#'           Placement = list(
+#'             AvailabilityZone = "string",
+#'             Affinity = "string",
+#'             GroupName = "string",
+#'             PartitionNumber = 123,
+#'             HostId = "string",
+#'             Tenancy = "default"|"dedicated"|"host",
+#'             SpreadDomain = "string"
+#'           )
 #'         )
 #'       )
 #'     )
@@ -2018,13 +2329,13 @@ create_egress_only_internet_gateway <- function (ClientToken = NULL,
 #'     DefaultTargetCapacityType = "spot"|"on-demand"
 #'   ),
 #'   TerminateInstancesWithExpiration = TRUE|FALSE,
-#'   Type = "request"|"maintain",
+#'   Type = "request"|"maintain"|"instant",
 #'   ValidFrom = as.POSIXct("2015-01-01"),
 #'   ValidUntil = as.POSIXct("2015-01-01"),
 #'   ReplaceUnhealthyInstances = TRUE|FALSE,
 #'   TagSpecifications = list(
 #'     list(
-#'       ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"image"|"instance"|"internet-gateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"snapshot"|"spot-instances-request"|"subnet"|"security-group"|"volume"|"vpc"|"vpn-connection"|"vpn-gateway",
+#'       ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-instances-request"|"subnet"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
 #'       Tags = list(
 #'         list(
 #'           Key = "string",
@@ -2037,18 +2348,18 @@ create_egress_only_internet_gateway <- function (ClientToken = NULL,
 #' ```
 #'
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
-#' @param ClientToken Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see [Ensuring Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' @param ClientToken Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see [Ensuring Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' @param SpotOptions Describes the configuration of Spot Instances in an EC2 Fleet.
 #' @param OnDemandOptions The allocation strategy of On-Demand Instances in an EC2 Fleet.
 #' @param ExcessCapacityTerminationPolicy Indicates whether running instances should be terminated if the total target capacity of the EC2 Fleet is decreased below the current size of the EC2 Fleet.
 #' @param LaunchTemplateConfigs &#91;required&#93; The configuration for the EC2 Fleet.
 #' @param TargetCapacitySpecification &#91;required&#93; The `TotalTargetCapacity`, `OnDemandTargetCapacity`, `SpotTargetCapacity`, and `DefaultCapacityType` structure.
 #' @param TerminateInstancesWithExpiration Indicates whether running instances should be terminated when the EC2 Fleet expires.
-#' @param Type The type of request. Indicates whether the EC2 Fleet only `requests` the target capacity, or also attempts to `maintain` it. If you request a certain target capacity, EC2 Fleet only places the required requests. It does not attempt to replenish instances if capacity is diminished, and does not submit requests in alternative capacity pools if capacity is unavailable. To maintain a certain target capacity, EC2 Fleet places the required requests to meet this target capacity. It also automatically replenishes any interrupted Spot Instances. Default: `maintain`.
+#' @param Type The type of the request. By default, the EC2 Fleet places an asynchronous request for your desired capacity, and maintains it by replenishing interrupted Spot Instances (`maintain`). A value of `instant` places a synchronous one-time request, and returns errors for any instances that could not be launched. A value of `request` places an asynchronous one-time request without maintaining capacity or submitting requests in alternative capacity pools if capacity is unavailable. For more information, see [EC2 Fleet Request Types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet-configuration-strategies.html#ec2-fleet-request-type) in the *Amazon Elastic Compute Cloud User Guide*.
 #' @param ValidFrom The start date and time of the request, in UTC format (for example, *YYYY*-*MM*-*DD*T*HH*:*MM*:*SS*Z). The default is to start fulfilling the request immediately.
 #' @param ValidUntil The end date and time of the request, in UTC format (for example, *YYYY*-*MM*-*DD*T*HH*:*MM*:*SS*Z). At this point, no new EC2 Fleet requests are placed or able to fulfill the request. The default end date is 7 days from the current date.
 #' @param ReplaceUnhealthyInstances Indicates whether EC2 Fleet should replace unhealthy instances.
-#' @param TagSpecifications The key-value pair for tagging the EC2 Fleet request on creation. The value for `ResourceType` must be `fleet`, otherwise the fleet request fails. To tag instances at launch, specify the tags in the [launch template](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template). For information about tagging after launch, see [Tagging Your Resources](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources).
+#' @param TagSpecifications The key-value pair for tagging the EC2 Fleet request on creation. The value for `ResourceType` must be `fleet`, otherwise the fleet request fails. To tag instances at launch, specify the tags in the [launch template](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template). For information about tagging after launch, see [Tagging Your Resources](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources).
 #'
 #' @export
 create_fleet <- function (DryRun = NULL, ClientToken = NULL, 
@@ -2078,11 +2389,11 @@ create_fleet <- function (DryRun = NULL, ClientToken = NULL,
 #'
 #' Creates one or more flow logs to capture information about IP traffic for a specific network interface, subnet, or VPC.
 #' 
-#' Flow log data for a monitored network interface is recorded as flow log records, which are log events consisting of fields that describe the traffic flow. For more information, see [Flow Log Records](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html#flow-log-records) in the *Amazon Virtual Private Cloud User Guide*.
+#' Flow log data for a monitored network interface is recorded as flow log records, which are log events consisting of fields that describe the traffic flow. For more information, see [Flow Log Records](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html#flow-log-records) in the *Amazon Virtual Private Cloud User Guide*.
 #' 
 #' When publishing to CloudWatch Logs, flow log records are published to a log group, and each network interface has a unique log stream in the log group. When publishing to Amazon S3, flow log records for all of the monitored network interfaces are published to a single log file object that is stored in the specified bucket.
 #' 
-#' For more information, see [VPC Flow Logs](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' For more information, see [VPC Flow Logs](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html) in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -2102,7 +2413,7 @@ create_fleet <- function (DryRun = NULL, ClientToken = NULL,
 #' ```
 #'
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
-#' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see [How to Ensure Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html).
+#' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see [How to Ensure Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html).
 #' @param DeliverLogsPermissionArn The ARN for the IAM role that\'s used to post flow logs to a log group.
 #' @param LogGroupName The name of the log group.
 #' @param ResourceIds &#91;required&#93; One or more subnet, network interface, or VPC IDs.
@@ -2169,7 +2480,7 @@ create_flow_logs <- function (DryRun = NULL, ClientToken = NULL,
 #' @param LogsStorageLocation The location in Amazon S3 for the output logs.
 #' @param Description A description for the AFI.
 #' @param Name A name for the AFI.
-#' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see [Ensuring Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html).
+#' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see [Ensuring Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html).
 #'
 #' @export
 create_fpga_image <- function (DryRun = NULL, InputStorageLocation, 
@@ -2194,7 +2505,7 @@ create_fpga_image <- function (DryRun = NULL, InputStorageLocation,
 #' 
 #' If you customized your instance with instance store volumes or EBS volumes in addition to the root device volume, the new AMI contains block device mapping information for those volumes. When you launch an instance from this new AMI, the instance automatically launches with those additional volumes.
 #' 
-#' For more information, see [Creating Amazon EBS-Backed Linux AMIs](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information, see [Creating Amazon EBS-Backed Linux AMIs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -2275,7 +2586,7 @@ create_image <- function (BlockDeviceMappings = NULL, Description = NULL,
 #'
 #' Exports a running or stopped instance to an S3 bucket.
 #' 
-#' For information about the supported operating systems, image formats, and known limitations for the types of instances you can export, see [Exporting an Instance as a VM Using VM Import/Export](http://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html) in the *VM Import/Export User Guide*.
+#' For information about the supported operating systems, image formats, and known limitations for the types of instances you can export, see [Exporting an Instance as a VM Using VM Import/Export](https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html) in the *VM Import/Export User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -2317,7 +2628,7 @@ create_instance_export_task <- function (Description = NULL,
 #'
 #' Creates an internet gateway for use with a VPC. After creating the internet gateway, you attach it to a VPC using AttachInternetGateway.
 #' 
-#' For more information about your VPC and internet gateway, see the [Amazon Virtual Private Cloud User Guide](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/).
+#' For more information about your VPC and internet gateway, see the [Amazon Virtual Private Cloud User Guide](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -2353,7 +2664,7 @@ create_internet_gateway <- function (DryRun = NULL)
 #' 
 #' The key pair returned to you is available only in the region in which you create it. If you prefer, you can create your own key pair using a third-party tool and upload it to any region using ImportKeyPair.
 #' 
-#' For more information, see [Key Pairs](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information, see [Key Pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -2449,7 +2760,7 @@ create_key_pair <- function (KeyName, DryRun = NULL)
 #'       )
 #'     ),
 #'     ImageId = "string",
-#'     InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.18xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.18xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.12xlarge"|"m5.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.12xlarge"|"m5d.24xlarge"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal",
+#'     InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.12xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.12xlarge"|"r5a.24xlarge"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.12xlarge"|"r5d.24xlarge"|"r5d.metal"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.18xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.18xlarge"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.12xlarge"|"m5.24xlarge"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.12xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.12xlarge"|"m5d.24xlarge"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge",
 #'     KeyName = "string",
 #'     Monitoring = list(
 #'       Enabled = TRUE|FALSE
@@ -2468,7 +2779,7 @@ create_key_pair <- function (KeyName, DryRun = NULL)
 #'     UserData = "string",
 #'     TagSpecifications = list(
 #'       list(
-#'         ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"image"|"instance"|"internet-gateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"snapshot"|"spot-instances-request"|"subnet"|"security-group"|"volume"|"vpc"|"vpn-connection"|"vpn-gateway",
+#'         ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-instances-request"|"subnet"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
 #'         Tags = list(
 #'           list(
 #'             Key = "string",
@@ -2478,6 +2789,11 @@ create_key_pair <- function (KeyName, DryRun = NULL)
 #'       )
 #'     ),
 #'     ElasticGpuSpecifications = list(
+#'       list(
+#'         Type = "string"
+#'       )
+#'     ),
+#'     ElasticInferenceAccelerators = list(
 #'       list(
 #'         Type = "string"
 #'       )
@@ -2510,13 +2826,21 @@ create_key_pair <- function (KeyName, DryRun = NULL)
 #'       CapacityReservationTarget = list(
 #'         CapacityReservationId = "string"
 #'       )
+#'     ),
+#'     HibernationOptions = list(
+#'       Configured = TRUE|FALSE
+#'     ),
+#'     LicenseSpecifications = list(
+#'       list(
+#'         LicenseConfigurationArn = "string"
+#'       )
 #'     )
 #'   )
 #' )
 #' ```
 #'
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
-#' @param ClientToken Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see [Ensuring Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' @param ClientToken Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see [Ensuring Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' @param LaunchTemplateName &#91;required&#93; A name for the launch template.
 #' @param VersionDescription A description for the first version of the launch template.
 #' @param LaunchTemplateData &#91;required&#93; The information for the launch template.
@@ -2635,7 +2959,7 @@ create_launch_template <- function (DryRun = NULL, ClientToken = NULL,
 #'       )
 #'     ),
 #'     ImageId = "string",
-#'     InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.18xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.18xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.12xlarge"|"m5.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.12xlarge"|"m5d.24xlarge"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal",
+#'     InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.12xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.12xlarge"|"r5a.24xlarge"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.12xlarge"|"r5d.24xlarge"|"r5d.metal"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.18xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.18xlarge"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.12xlarge"|"m5.24xlarge"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.12xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.12xlarge"|"m5d.24xlarge"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge",
 #'     KeyName = "string",
 #'     Monitoring = list(
 #'       Enabled = TRUE|FALSE
@@ -2654,7 +2978,7 @@ create_launch_template <- function (DryRun = NULL, ClientToken = NULL,
 #'     UserData = "string",
 #'     TagSpecifications = list(
 #'       list(
-#'         ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"image"|"instance"|"internet-gateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"snapshot"|"spot-instances-request"|"subnet"|"security-group"|"volume"|"vpc"|"vpn-connection"|"vpn-gateway",
+#'         ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-instances-request"|"subnet"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
 #'         Tags = list(
 #'           list(
 #'             Key = "string",
@@ -2664,6 +2988,11 @@ create_launch_template <- function (DryRun = NULL, ClientToken = NULL,
 #'       )
 #'     ),
 #'     ElasticGpuSpecifications = list(
+#'       list(
+#'         Type = "string"
+#'       )
+#'     ),
+#'     ElasticInferenceAccelerators = list(
 #'       list(
 #'         Type = "string"
 #'       )
@@ -2696,13 +3025,21 @@ create_launch_template <- function (DryRun = NULL, ClientToken = NULL,
 #'       CapacityReservationTarget = list(
 #'         CapacityReservationId = "string"
 #'       )
+#'     ),
+#'     HibernationOptions = list(
+#'       Configured = TRUE|FALSE
+#'     ),
+#'     LicenseSpecifications = list(
+#'       list(
+#'         LicenseConfigurationArn = "string"
+#'       )
 #'     )
 #'   )
 #' )
 #' ```
 #'
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
-#' @param ClientToken Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see [Ensuring Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' @param ClientToken Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see [Ensuring Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' @param LaunchTemplateId The ID of the launch template. You must specify either the launch template ID or launch template name in the request.
 #' @param LaunchTemplateName The name of the launch template. You must specify either the launch template ID or launch template name in the request.
 #' @param SourceVersion The version number of the launch template version on which to base the new version. The new version inherits the same launch parameters as the source version, except for parameters that you specify in LaunchTemplateData.
@@ -2741,7 +3078,7 @@ create_launch_template_version <- function (DryRun = NULL, ClientToken = NULL,
 
 #' Creates a NAT gateway in the specified public subnet
 #'
-#' Creates a NAT gateway in the specified public subnet. This action creates a network interface in the specified subnet with a private IP address from the IP address range of the subnet. Internet-bound traffic from a private subnet can be routed to the NAT gateway, therefore enabling instances in the private subnet to connect to the internet. For more information, see [NAT Gateways](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' Creates a NAT gateway in the specified public subnet. This action creates a network interface in the specified subnet with a private IP address from the IP address range of the subnet. Internet-bound traffic from a private subnet can be routed to the NAT gateway, therefore enabling instances in the private subnet to connect to the internet. For more information, see [NAT Gateways](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html) in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -2753,7 +3090,7 @@ create_launch_template_version <- function (DryRun = NULL, ClientToken = NULL,
 #' ```
 #'
 #' @param AllocationId &#91;required&#93; The allocation ID of an Elastic IP address to associate with the NAT gateway. If the Elastic IP address is associated with another resource, you must first disassociate it.
-#' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see [How to Ensure Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see [How to Ensure Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' 
 #' Constraint: Maximum 64 ASCII characters.
 #' @param SubnetId &#91;required&#93; The subnet in which to create the NAT gateway.
@@ -2786,7 +3123,7 @@ create_nat_gateway <- function (AllocationId, ClientToken = NULL,
 #'
 #' Creates a network ACL in a VPC. Network ACLs provide an optional layer of security (in addition to security groups) for the instances in your VPC.
 #' 
-#' For more information, see [Network ACLs](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' For more information, see [Network ACLs](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html) in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -2826,7 +3163,7 @@ create_network_acl <- function (DryRun = NULL, VpcId)
 #' 
 #' After you add an entry, you can\'t modify it; you must either replace it, or create an entry and delete the old one.
 #' 
-#' For more information about network ACLs, see [Network ACLs](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' For more information about network ACLs, see [Network ACLs](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html) in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -2903,7 +3240,7 @@ create_network_acl_entry <- function (CidrBlock = NULL, DryRun = NULL,
 #'
 #' Creates a network interface in the specified subnet.
 #' 
-#' For more information about network interfaces, see [Elastic Network Interfaces](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' For more information about network interfaces, see [Elastic Network Interfaces](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html) in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -2940,7 +3277,7 @@ create_network_acl_entry <- function (CidrBlock = NULL, DryRun = NULL,
 #' @param PrivateIpAddresses One or more private IPv4 addresses.
 #' @param SecondaryPrivateIpAddressCount The number of secondary private IPv4 addresses to assign to a network interface. When you specify a number of secondary IPv4 addresses, Amazon EC2 selects these IP addresses within the subnet\'s IPv4 CIDR range. You can\'t specify this option and specify more than one private IP address using `privateIpAddresses`.
 #' 
-#' The number of IP addresses you can assign to a network interface varies by instance type. For more information, see [IP Addresses Per ENI Per Instance Type](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI) in the *Amazon Virtual Private Cloud User Guide*.
+#' The number of IP addresses you can assign to a network interface varies by instance type. For more information, see [IP Addresses Per ENI Per Instance Type](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI) in the *Amazon Virtual Private Cloud User Guide*.
 #' @param SubnetId &#91;required&#93; The ID of the subnet to associate with the network interface.
 #'
 #' @examples
@@ -3017,24 +3354,26 @@ create_network_interface_permission <- function (NetworkInterfaceId,
 #'
 #' Creates a placement group in which to launch instances. The strategy of the placement group determines how the instances are organized within the group.
 #' 
-#' A `cluster` placement group is a logical grouping of instances within a single Availability Zone that benefit from low network latency, high network throughput. A `spread` placement group places instances on distinct hardware.
+#' A `cluster` placement group is a logical grouping of instances within a single Availability Zone that benefit from low network latency, high network throughput. A `spread` placement group places instances on distinct hardware. A `partition` placement group places groups of instances in different partitions, where instances in one partition do not share the same hardware with instances in another partition.
 #' 
-#' For more information, see [Placement Groups](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information, see [Placement Groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
 #' create_placement_group(
 #'   DryRun = TRUE|FALSE,
 #'   GroupName = "string",
-#'   Strategy = "cluster"|"spread"
+#'   Strategy = "cluster"|"spread"|"partition",
+#'   PartitionCount = 123
 #' )
 #' ```
 #'
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
-#' @param GroupName &#91;required&#93; A name for the placement group. Must be unique within the scope of your account for the region.
+#' @param GroupName A name for the placement group. Must be unique within the scope of your account for the Region.
 #' 
 #' Constraints: Up to 255 ASCII characters
-#' @param Strategy &#91;required&#93; The placement strategy.
+#' @param Strategy The placement strategy.
+#' @param PartitionCount The number of partitions. Valid only when **Strategy** is set to `partition`.
 #'
 #' @examples
 #' # This example creates a placement group with the specified name.
@@ -3044,13 +3383,13 @@ create_network_interface_permission <- function (NetworkInterfaceId,
 #' )}
 #'
 #' @export
-create_placement_group <- function (DryRun = NULL, GroupName, 
-    Strategy) 
+create_placement_group <- function (DryRun = NULL, GroupName = NULL, 
+    Strategy = NULL, PartitionCount = NULL) 
 {
     op <- new_operation(name = "CreatePlacementGroup", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- create_placement_group_input(DryRun = DryRun, GroupName = GroupName, 
-        Strategy = Strategy)
+        Strategy = Strategy, PartitionCount = PartitionCount)
     output <- create_placement_group_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -3068,7 +3407,7 @@ create_placement_group <- function (DryRun = NULL, GroupName,
 #' 
 #' To sell your Standard Reserved Instances, you must first register as a seller in the Reserved Instance Marketplace. After completing the registration process, you can create a Reserved Instance Marketplace listing of some or all of your Standard Reserved Instances, and specify the upfront price to receive for them. Your Standard Reserved Instance listings then become available for purchase. To view the details of your Standard Reserved Instance listing, you can use the DescribeReservedInstancesListings operation.
 #' 
-#' For more information, see [Reserved Instance Marketplace](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information, see [Reserved Instance Marketplace](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -3086,7 +3425,7 @@ create_placement_group <- function (DryRun = NULL, GroupName,
 #' )
 #' ```
 #'
-#' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of your listings. This helps avoid duplicate listings. For more information, see [Ensuring Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of your listings. This helps avoid duplicate listings. For more information, see [Ensuring Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' @param InstanceCount &#91;required&#93; The number of instances that are a part of a Reserved Instance account to be listed in the Reserved Instance Marketplace. This number should be less than or equal to the instance count associated with the Reserved Instance ID specified in this call.
 #' @param PriceSchedules &#91;required&#93; A list specifying the price of the Standard Reserved Instance for each month remaining in the Reserved Instance term.
 #' @param ReservedInstancesId &#91;required&#93; The ID of the active Standard Reserved Instance.
@@ -3121,7 +3460,7 @@ create_reserved_instances_listing <- function (ClientToken, InstanceCount,
 #' 
 #' Both routes apply to the traffic destined for `192.0.2.3`. However, the second route in the list covers a smaller number of IP addresses and is therefore more specific, so we use that route to determine where to target the traffic.
 #' 
-#' For more information about route tables, see [Route Tables](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' For more information about route tables, see [Route Tables](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html) in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -3133,6 +3472,7 @@ create_reserved_instances_listing <- function (ClientToken, InstanceCount,
 #'   GatewayId = "string",
 #'   InstanceId = "string",
 #'   NatGatewayId = "string",
+#'   TransitGatewayId = "string",
 #'   NetworkInterfaceId = "string",
 #'   RouteTableId = "string",
 #'   VpcPeeringConnectionId = "string"
@@ -3146,6 +3486,7 @@ create_reserved_instances_listing <- function (ClientToken, InstanceCount,
 #' @param GatewayId The ID of an internet gateway or virtual private gateway attached to your VPC.
 #' @param InstanceId The ID of a NAT instance in your VPC. The operation fails if you specify an instance ID unless exactly one network interface is attached.
 #' @param NatGatewayId &#91;IPv4 traffic only&#93; The ID of a NAT gateway.
+#' @param TransitGatewayId The ID of a transit gateway.
 #' @param NetworkInterfaceId The ID of a network interface.
 #' @param RouteTableId &#91;required&#93; The ID of the route table for the route.
 #' @param VpcPeeringConnectionId The ID of a VPC peering connection.
@@ -3163,8 +3504,8 @@ create_reserved_instances_listing <- function (ClientToken, InstanceCount,
 #' @export
 create_route <- function (DestinationCidrBlock = NULL, DestinationIpv6CidrBlock = NULL, 
     DryRun = NULL, EgressOnlyInternetGatewayId = NULL, GatewayId = NULL, 
-    InstanceId = NULL, NatGatewayId = NULL, NetworkInterfaceId = NULL, 
-    RouteTableId, VpcPeeringConnectionId = NULL) 
+    InstanceId = NULL, NatGatewayId = NULL, TransitGatewayId = NULL, 
+    NetworkInterfaceId = NULL, RouteTableId, VpcPeeringConnectionId = NULL) 
 {
     op <- new_operation(name = "CreateRoute", http_method = "POST", 
         http_path = "/", paginator = list())
@@ -3172,8 +3513,8 @@ create_route <- function (DestinationCidrBlock = NULL, DestinationIpv6CidrBlock 
         DestinationIpv6CidrBlock = DestinationIpv6CidrBlock, 
         DryRun = DryRun, EgressOnlyInternetGatewayId = EgressOnlyInternetGatewayId, 
         GatewayId = GatewayId, InstanceId = InstanceId, NatGatewayId = NatGatewayId, 
-        NetworkInterfaceId = NetworkInterfaceId, RouteTableId = RouteTableId, 
-        VpcPeeringConnectionId = VpcPeeringConnectionId)
+        TransitGatewayId = TransitGatewayId, NetworkInterfaceId = NetworkInterfaceId, 
+        RouteTableId = RouteTableId, VpcPeeringConnectionId = VpcPeeringConnectionId)
     output <- create_route_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -3185,7 +3526,7 @@ create_route <- function (DestinationCidrBlock = NULL, DestinationIpv6CidrBlock 
 #'
 #' Creates a route table for the specified VPC. After you create a route table, you can add routes and associate the table with a subnet.
 #' 
-#' For more information, see [Route Tables](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' For more information, see [Route Tables](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html) in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -3221,7 +3562,7 @@ create_route_table <- function (DryRun = NULL, VpcId)
 #'
 #' Creates a security group.
 #' 
-#' A security group is for use with instances either in the EC2-Classic platform or in a specific VPC. For more information, see [Amazon EC2 Security Groups](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html) in the *Amazon Elastic Compute Cloud User Guide* and [Security Groups for Your VPC](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' A security group is for use with instances either in the EC2-Classic platform or in a specific VPC. For more information, see [Amazon EC2 Security Groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html) in the *Amazon Elastic Compute Cloud User Guide* and [Security Groups for Your VPC](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html) in the *Amazon Virtual Private Cloud User Guide*.
 #' 
 #' EC2-Classic: You can have up to 500 security groups.
 #' 
@@ -3295,9 +3636,9 @@ create_security_group <- function (Description, GroupName, VpcId = NULL,
 #' 
 #' Snapshots that are taken from encrypted volumes are automatically encrypted. Volumes that are created from encrypted snapshots are also automatically encrypted. Your encrypted volumes and any associated snapshots always remain protected.
 #' 
-#' You can tag your snapshots during creation. For more information, see [Tagging Your Amazon EC2 Resources](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' You can tag your snapshots during creation. For more information, see [Tagging Your Amazon EC2 Resources](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' 
-#' For more information, see [Amazon Elastic Block Store](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html) and [Amazon EBS Encryption](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information, see [Amazon Elastic Block Store](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html) and [Amazon EBS Encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -3306,7 +3647,7 @@ create_security_group <- function (Description, GroupName, VpcId = NULL,
 #'   VolumeId = "string",
 #'   TagSpecifications = list(
 #'     list(
-#'       ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"image"|"instance"|"internet-gateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"snapshot"|"spot-instances-request"|"subnet"|"security-group"|"volume"|"vpc"|"vpn-connection"|"vpn-gateway",
+#'       ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-instances-request"|"subnet"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
 #'       Tags = list(
 #'         list(
 #'           Key = "string",
@@ -3351,7 +3692,7 @@ create_snapshot <- function (Description = NULL, VolumeId, TagSpecifications = N
 
 #' Creates a data feed for Spot Instances, enabling you to view Spot Instance usage logs
 #'
-#' Creates a data feed for Spot Instances, enabling you to view Spot Instance usage logs. You can create one data feed per AWS account. For more information, see [Spot Instance Data Feed](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html) in the *Amazon EC2 User Guide for Linux Instances*.
+#' Creates a data feed for Spot Instances, enabling you to view Spot Instance usage logs. You can create one data feed per AWS account. For more information, see [Spot Instance Data Feed](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html) in the *Amazon EC2 User Guide for Linux Instances*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -3402,12 +3743,13 @@ create_spot_datafeed_subscription <- function (Bucket, DryRun = NULL,
 #' 
 #' If you launch an instance in a VPC using an Amazon EBS-backed AMI, the IP address doesn\'t change if you stop and restart the instance (unlike a similar instance launched outside a VPC, which gets a new IP address when restarted). It\'s therefore possible to have a subnet with no running instances (they\'re all stopped), but no remaining IP addresses available.
 #' 
-#' For more information about subnets, see [Your VPC and Subnets](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' For more information about subnets, see [Your VPC and Subnets](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html) in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
 #' create_subnet(
 #'   AvailabilityZone = "string",
+#'   AvailabilityZoneId = "string",
 #'   CidrBlock = "string",
 #'   Ipv6CidrBlock = "string",
 #'   VpcId = "string",
@@ -3418,6 +3760,7 @@ create_spot_datafeed_subscription <- function (Bucket, DryRun = NULL,
 #' @param AvailabilityZone The Availability Zone for the subnet.
 #' 
 #' Default: AWS selects one for you. If you create more than one subnet in your VPC, we may not necessarily select a different zone for each subnet.
+#' @param AvailabilityZoneId The AZ ID of the subnet.
 #' @param CidrBlock &#91;required&#93; The IPv4 network range for the subnet, in CIDR notation. For example, `10.0.0.0/24`.
 #' @param Ipv6CidrBlock The IPv6 network range for the subnet, in CIDR notation. The subnet size must use a /64 prefix length.
 #' @param VpcId &#91;required&#93; The ID of the VPC.
@@ -3433,14 +3776,14 @@ create_spot_datafeed_subscription <- function (Bucket, DryRun = NULL,
 #' )}
 #'
 #' @export
-create_subnet <- function (AvailabilityZone = NULL, CidrBlock, 
-    Ipv6CidrBlock = NULL, VpcId, DryRun = NULL) 
+create_subnet <- function (AvailabilityZone = NULL, AvailabilityZoneId = NULL, 
+    CidrBlock, Ipv6CidrBlock = NULL, VpcId, DryRun = NULL) 
 {
     op <- new_operation(name = "CreateSubnet", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- create_subnet_input(AvailabilityZone = AvailabilityZone, 
-        CidrBlock = CidrBlock, Ipv6CidrBlock = Ipv6CidrBlock, 
-        VpcId = VpcId, DryRun = DryRun)
+        AvailabilityZoneId = AvailabilityZoneId, CidrBlock = CidrBlock, 
+        Ipv6CidrBlock = Ipv6CidrBlock, VpcId = VpcId, DryRun = DryRun)
     output <- create_subnet_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -3452,7 +3795,7 @@ create_subnet <- function (AvailabilityZone = NULL, CidrBlock,
 #'
 #' Adds or overwrites one or more tags for the specified Amazon EC2 resource or resources. Each resource can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys must be unique per resource.
 #' 
-#' For more information about tags, see [Tagging Your Resources](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) in the *Amazon Elastic Compute Cloud User Guide*. For more information about creating IAM policies that control users\' access to resources based on tags, see [Supported Resource-Level Permissions for Amazon EC2 API Actions](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-iam-actions-resources.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information about tags, see [Tagging Your Resources](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) in the *Amazon Elastic Compute Cloud User Guide*. For more information about creating IAM policies that control users\' access to resources based on tags, see [Supported Resource-Level Permissions for Amazon EC2 API Actions](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-iam-actions-resources.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -3472,6 +3815,8 @@ create_subnet <- function (AvailabilityZone = NULL, CidrBlock,
 #'
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
 #' @param Resources &#91;required&#93; The IDs of one or more resources, separated by spaces.
+#' 
+#' Constraints: Up to 1000 resource IDs. We recommend breaking up this request into smaller batches.
 #' @param Tags &#91;required&#93; One or more tags. The `value` parameter is required, but if you don\'t want the tag to have a value, specify the parameter with no value, and we set the value to an empty string.
 #'
 #' @examples
@@ -3503,17 +3848,217 @@ create_tags <- function (DryRun = NULL, Resources, Tags)
     return(response)
 }
 
+#' Creates a transit gateway
+#'
+#' Creates a transit gateway.
+#' 
+#' You can use a transit gateway to interconnect your virtual private clouds (VPC) and on-premises networks. After the transit gateway enters the `available` state, you can attach your VPCs and VPN connections to the transit gateway.
+#' 
+#' To attach your VPCs, use CreateTransitGatewayVpcAttachment.
+#' 
+#' To attach a VPN connection, use CreateCustomerGateway to create a customer gateway and specify the ID of the customer gateway and the ID of the transit gateway in a call to CreateVpnConnection.
+#' 
+#' When you create a transit gateway, we create a default transit gateway route table and use it as the default association route table and the default propagation route table. You can use CreateTransitGatewayRouteTable to create additional transit gateway route tables. If you disable automatic route propagation, we do not create a default transit gateway route table. You can use EnableTransitGatewayRouteTablePropagation to propagate routes from a resource attachment to a transit gateway route table. If you disable automatic associations, you can use AssociateTransitGatewayRouteTable to associate a resource attachment with a transit gateway route table.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' create_transit_gateway(
+#'   Description = "string",
+#'   Options = list(
+#'     AmazonSideAsn = 123,
+#'     AutoAcceptSharedAttachments = "enable"|"disable",
+#'     DefaultRouteTableAssociation = "enable"|"disable",
+#'     DefaultRouteTablePropagation = "enable"|"disable",
+#'     VpnEcmpSupport = "enable"|"disable",
+#'     DnsSupport = "enable"|"disable"
+#'   ),
+#'   TagSpecifications = list(
+#'     list(
+#'       ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-instances-request"|"subnet"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param Description A description of the transit gateway.
+#' @param Options The transit gateway options.
+#' @param TagSpecifications The tags to apply to the transit gateway.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+create_transit_gateway <- function (Description = NULL, Options = NULL, 
+    TagSpecifications = NULL, DryRun = NULL) 
+{
+    op <- new_operation(name = "CreateTransitGateway", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_transit_gateway_input(Description = Description, 
+        Options = Options, TagSpecifications = TagSpecifications, 
+        DryRun = DryRun)
+    output <- create_transit_gateway_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a static route for the specified transit gateway route table
+#'
+#' Creates a static route for the specified transit gateway route table.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' create_transit_gateway_route(
+#'   DestinationCidrBlock = "string",
+#'   TransitGatewayRouteTableId = "string",
+#'   TransitGatewayAttachmentId = "string",
+#'   Blackhole = TRUE|FALSE,
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param DestinationCidrBlock &#91;required&#93; The CIDR range used for destination matches. Routing decisions are based on the most specific match.
+#' @param TransitGatewayRouteTableId &#91;required&#93; The ID of the transit gateway route table.
+#' @param TransitGatewayAttachmentId The ID of the attachment.
+#' @param Blackhole Indicates whether traffic matching this route is to be dropped.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+create_transit_gateway_route <- function (DestinationCidrBlock, 
+    TransitGatewayRouteTableId, TransitGatewayAttachmentId = NULL, 
+    Blackhole = NULL, DryRun = NULL) 
+{
+    op <- new_operation(name = "CreateTransitGatewayRoute", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_transit_gateway_route_input(DestinationCidrBlock = DestinationCidrBlock, 
+        TransitGatewayRouteTableId = TransitGatewayRouteTableId, 
+        TransitGatewayAttachmentId = TransitGatewayAttachmentId, 
+        Blackhole = Blackhole, DryRun = DryRun)
+    output <- create_transit_gateway_route_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a route table for the specified transit gateway
+#'
+#' Creates a route table for the specified transit gateway.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' create_transit_gateway_route_table(
+#'   TransitGatewayId = "string",
+#'   TagSpecifications = list(
+#'     list(
+#'       ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-instances-request"|"subnet"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param TransitGatewayId &#91;required&#93; The ID of the transit gateway.
+#' @param TagSpecifications The tags to apply to the transit gateway route table.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+create_transit_gateway_route_table <- function (TransitGatewayId, 
+    TagSpecifications = NULL, DryRun = NULL) 
+{
+    op <- new_operation(name = "CreateTransitGatewayRouteTable", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- create_transit_gateway_route_table_input(TransitGatewayId = TransitGatewayId, 
+        TagSpecifications = TagSpecifications, DryRun = DryRun)
+    output <- create_transit_gateway_route_table_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Attaches the specified VPC to the specified transit gateway
+#'
+#' Attaches the specified VPC to the specified transit gateway.
+#' 
+#' If you attach a VPC with a CIDR range that overlaps the CIDR range of a VPC that is already attached, the new VPC CIDR range is not propagated to the default propagation route table.
+#' 
+#' To send VPC traffic to an attached transit gateway, add a route to the VPC route table using CreateRoute.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' create_transit_gateway_vpc_attachment(
+#'   TransitGatewayId = "string",
+#'   VpcId = "string",
+#'   SubnetIds = list(
+#'     "string"
+#'   ),
+#'   Options = list(
+#'     DnsSupport = "enable"|"disable",
+#'     Ipv6Support = "enable"|"disable"
+#'   ),
+#'   TagSpecifications = list(
+#'     list(
+#'       ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-instances-request"|"subnet"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param TransitGatewayId &#91;required&#93; The ID of the transit gateway.
+#' @param VpcId &#91;required&#93; The ID of the VPC.
+#' @param SubnetIds &#91;required&#93; The IDs of one or more subnets. You can specify only one subnet per Availability Zone. You must specify at least one subnet, but we recommend that you specify two subnets for better availability. The transit gateway uses one IP address from each specified subnet.
+#' @param Options The VPC attachment options.
+#' @param TagSpecifications The tags to apply to the VPC attachment.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+create_transit_gateway_vpc_attachment <- function (TransitGatewayId, 
+    VpcId, SubnetIds, Options = NULL, TagSpecifications = NULL, 
+    DryRun = NULL) 
+{
+    op <- new_operation(name = "CreateTransitGatewayVpcAttachment", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- create_transit_gateway_vpc_attachment_input(TransitGatewayId = TransitGatewayId, 
+        VpcId = VpcId, SubnetIds = SubnetIds, Options = Options, 
+        TagSpecifications = TagSpecifications, DryRun = DryRun)
+    output <- create_transit_gateway_vpc_attachment_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Creates an EBS volume that can be attached to an instance in the same Availability Zone
 #'
-#' Creates an EBS volume that can be attached to an instance in the same Availability Zone. The volume is created in the regional endpoint that you send the HTTP request to. For more information see [Regions and Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html).
+#' Creates an EBS volume that can be attached to an instance in the same Availability Zone. The volume is created in the regional endpoint that you send the HTTP request to. For more information see [Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html).
 #' 
 #' You can create a new empty volume or restore a volume from an EBS snapshot. Any AWS Marketplace product codes from the snapshot are propagated to the volume.
 #' 
-#' You can create encrypted volumes with the `Encrypted` parameter. Encrypted volumes may only be attached to instances that support Amazon EBS encryption. Volumes that are created from encrypted snapshots are also automatically encrypted. For more information, see [Amazon EBS Encryption](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' You can create encrypted volumes with the `Encrypted` parameter. Encrypted volumes may only be attached to instances that support Amazon EBS encryption. Volumes that are created from encrypted snapshots are also automatically encrypted. For more information, see [Amazon EBS Encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' 
-#' You can tag your volumes during creation. For more information, see [Tagging Your Amazon EC2 Resources](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' You can tag your volumes during creation. For more information, see [Tagging Your Amazon EC2 Resources](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' 
-#' For more information, see [Creating an Amazon EBS Volume](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-volume.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information, see [Creating an Amazon EBS Volume](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-volume.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -3528,7 +4073,7 @@ create_tags <- function (DryRun = NULL, Resources, Tags)
 #'   DryRun = TRUE|FALSE,
 #'   TagSpecifications = list(
 #'     list(
-#'       ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"image"|"instance"|"internet-gateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"snapshot"|"spot-instances-request"|"subnet"|"security-group"|"volume"|"vpc"|"vpn-connection"|"vpn-gateway",
+#'       ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-instances-request"|"subnet"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
 #'       Tags = list(
 #'         list(
 #'           Key = "string",
@@ -3541,8 +4086,8 @@ create_tags <- function (DryRun = NULL, Resources, Tags)
 #' ```
 #'
 #' @param AvailabilityZone &#91;required&#93; The Availability Zone in which to create the volume. Use DescribeAvailabilityZones to list the Availability Zones that are currently available to you.
-#' @param Encrypted Specifies whether the volume should be encrypted. Encrypted Amazon EBS volumes may only be attached to instances that support Amazon EBS encryption. Volumes that are created from encrypted snapshots are automatically encrypted. There is no way to create an encrypted volume from an unencrypted snapshot or vice versa. If your AMI uses encrypted volumes, you can only launch it on supported instance types. For more information, see [Amazon EBS Encryption](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) in the *Amazon Elastic Compute Cloud User Guide*.
-#' @param Iops The number of I/O operations per second (IOPS) to provision for the volume, with a maximum ratio of 50 IOPS/GiB. Range is 100 to 32000 IOPS for volumes in most regions. For exceptions, see [Amazon EBS Volume Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' @param Encrypted Specifies whether the volume should be encrypted. Encrypted Amazon EBS volumes may only be attached to instances that support Amazon EBS encryption. Volumes that are created from encrypted snapshots are automatically encrypted. There is no way to create an encrypted volume from an unencrypted snapshot or vice versa. If your AMI uses encrypted volumes, you can only launch it on supported instance types. For more information, see [Amazon EBS Encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' @param Iops The number of I/O operations per second (IOPS) to provision for the volume, with a maximum ratio of 50 IOPS/GiB. Range is 100 to 64,000 IOPS for volumes in most regions. Maximum IOPS of 64,000 is guaranteed only on [Nitro-based instances](AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances). Other instance families guarantee performance up to 32,000 IOPS. For more information, see [Amazon EBS Volume Types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' 
 #' This parameter is valid only for Provisioned IOPS SSD (io1) volumes.
 #' @param KmsKeyId An identifier for the AWS Key Management Service (AWS KMS) customer master key (CMK) to use when creating the encrypted volume. This parameter is only required if you want to use a non-default CMK; if this parameter is not specified, the default CMK for EBS is used. If a `KmsKeyId` is specified, the `Encrypted` flag must also be set.
@@ -3560,10 +4105,14 @@ create_tags <- function (DryRun = NULL, Resources, Tags)
 #' AWS parses `KmsKeyId` asynchronously, meaning that the action you call may appear to complete even though you provided an invalid identifier. The action will eventually fail.
 #' @param Size The size of the volume, in GiBs.
 #' 
-#' Constraints: 1-16384 for `gp2`, 4-16384 for `io1`, 500-16384 for `st1`, 500-16384 for `sc1`, and 1-1024 for `standard`. If you specify a snapshot, the volume size must be equal to or larger than the snapshot size.
+#' Constraints: 1-16,384 for `gp2`, 4-16,384 for `io1`, 500-16,384 for `st1`, 500-16,384 for `sc1`, and 1-1,024 for `standard`. If you specify a snapshot, the volume size must be equal to or larger than the snapshot size.
 #' 
 #' Default: If you\'re creating the volume from a snapshot and don\'t specify a volume size, the default is the snapshot size.
+#' 
+#' At least one of Size or SnapshotId are required.
 #' @param SnapshotId The snapshot from which to create the volume.
+#' 
+#' At least one of Size or SnapshotId are required.
 #' @param VolumeType The volume type. This can be `gp2` for General Purpose SSD, `io1` for Provisioned IOPS SSD, `st1` for Throughput Optimized HDD, `sc1` for Cold HDD, or `standard` for Magnetic volumes.
 #' 
 #' Defaults: If no volume type is specified, the default is `standard` in us-east-1, eu-west-1, eu-central-1, us-west-2, us-west-1, sa-east-1, ap-northeast-1, ap-northeast-2, ap-southeast-1, ap-southeast-2, ap-south-1, us-gov-west-1, and cn-north-1. In all other regions, EBS defaults to `gp2`.
@@ -3609,13 +4158,13 @@ create_volume <- function (AvailabilityZone, Encrypted = NULL,
 
 #' Creates a VPC with the specified IPv4 CIDR block
 #'
-#' Creates a VPC with the specified IPv4 CIDR block. The smallest VPC you can create uses a /28 netmask (16 IPv4 addresses), and the largest uses a /16 netmask (65,536 IPv4 addresses). For more information about how large to make your VPC, see [Your VPC and Subnets](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' Creates a VPC with the specified IPv4 CIDR block. The smallest VPC you can create uses a /28 netmask (16 IPv4 addresses), and the largest uses a /16 netmask (65,536 IPv4 addresses). For more information about how large to make your VPC, see [Your VPC and Subnets](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html) in the *Amazon Virtual Private Cloud User Guide*.
 #' 
 #' You can optionally request an Amazon-provided IPv6 CIDR block for the VPC. The IPv6 CIDR block uses a /56 prefix length, and is allocated from Amazon\'s pool of IPv6 addresses. You cannot choose the IPv6 range for your VPC.
 #' 
-#' By default, each instance you launch in the VPC has the default DHCP options, which include only a default DNS server that we provide (AmazonProvidedDNS). For more information, see [DHCP Options Sets](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' By default, each instance you launch in the VPC has the default DHCP options, which include only a default DNS server that we provide (AmazonProvidedDNS). For more information, see [DHCP Options Sets](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html) in the *Amazon Virtual Private Cloud User Guide*.
 #' 
-#' You can specify the instance tenancy value for the VPC when you create it. You can\'t change this value for the VPC after you create it. For more information, see [Dedicated Instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' You can specify the instance tenancy value for the VPC when you create it. You can\'t change this value for the VPC after you create it. For more information, see [Dedicated Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -3659,7 +4208,7 @@ create_vpc <- function (CidrBlock, AmazonProvidedIpv6CidrBlock = NULL,
 
 #' Creates a VPC endpoint for a specified service
 #'
-#' Creates a VPC endpoint for a specified service. An endpoint enables you to create a private connection between your VPC and the service. The service may be provided by AWS, an AWS Marketplace partner, or another AWS account. For more information, see [VPC Endpoints](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-endpoints.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' Creates a VPC endpoint for a specified service. An endpoint enables you to create a private connection between your VPC and the service. The service may be provided by AWS, an AWS Marketplace partner, or another AWS account. For more information, see [VPC Endpoints](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-endpoints.html) in the *Amazon Virtual Private Cloud User Guide*.
 #' 
 #' A `gateway` endpoint serves as a target for a route in your route table for traffic destined for the AWS service. You can specify an endpoint policy to attach to the endpoint that will control access to the service from your VPC. You can also specify the VPC route tables that use the endpoint.
 #' 
@@ -3699,7 +4248,7 @@ create_vpc <- function (CidrBlock, AmazonProvidedIpv6CidrBlock = NULL,
 #' @param RouteTableIds (Gateway endpoint) One or more route table IDs.
 #' @param SubnetIds (Interface endpoint) The ID of one or more subnets in which to create an endpoint network interface.
 #' @param SecurityGroupIds (Interface endpoint) The ID of one or more security groups to associate with the endpoint network interface.
-#' @param ClientToken Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see [How to Ensure Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' @param ClientToken Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see [How to Ensure Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' @param PrivateDnsEnabled (Interface endpoint) Indicate whether to associate a private hosted zone with the specified VPC. The private hosted zone contains a record set for the default public DNS name for the service for the region (for example, `kinesis.us-east-1.amazonaws.com`) which resolves to the private IP addresses of the endpoint network interfaces in the VPC. This enables you to make requests to the default public DNS name for the service instead of the public DNS names that are automatically generated by the VPC endpoint service.
 #' 
 #' To use a private hosted zone, you must set the following VPC attributes to `true`: `enableDnsHostnames` and `enableDnsSupport`. Use ModifyVpcAttribute to set the VPC attributes.
@@ -3728,7 +4277,7 @@ create_vpc_endpoint <- function (DryRun = NULL, VpcEndpointType = NULL,
 
 #' Creates a connection notification for a specified VPC endpoint or VPC endpoint service
 #'
-#' Creates a connection notification for a specified VPC endpoint or VPC endpoint service. A connection notification notifies you of specific endpoint events. You must create an SNS topic to receive notifications. For more information, see [Create a Topic](http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html) in the *Amazon Simple Notification Service Developer Guide*.
+#' Creates a connection notification for a specified VPC endpoint or VPC endpoint service. A connection notification notifies you of specific endpoint events. You must create an SNS topic to receive notifications. For more information, see [Create a Topic](https://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html) in the *Amazon Simple Notification Service Developer Guide*.
 #' 
 #' You can create a connection notification for interface endpoints only.
 #'
@@ -3751,7 +4300,7 @@ create_vpc_endpoint <- function (DryRun = NULL, VpcEndpointType = NULL,
 #' @param VpcEndpointId The ID of the endpoint.
 #' @param ConnectionNotificationArn &#91;required&#93; The ARN of the SNS topic for the notifications.
 #' @param ConnectionEvents &#91;required&#93; One or more endpoint events for which to receive notifications. Valid values are `Accept`, `Connect`, `Delete`, and `Reject`.
-#' @param ClientToken Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see [How to Ensure Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' @param ClientToken Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see [How to Ensure Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #'
 #' @export
 create_vpc_endpoint_connection_notification <- function (DryRun = NULL, 
@@ -3775,7 +4324,7 @@ create_vpc_endpoint_connection_notification <- function (DryRun = NULL,
 #'
 #' Creates a VPC endpoint service configuration to which service consumers (AWS accounts, IAM users, and IAM roles) can connect. Service consumers can create an interface VPC endpoint to connect to your service.
 #' 
-#' To create an endpoint service configuration, you must first create a Network Load Balancer for your service. For more information, see [VPC Endpoint Services](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/endpoint-service.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' To create an endpoint service configuration, you must first create a Network Load Balancer for your service. For more information, see [VPC Endpoint Services](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/endpoint-service.html) in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -3792,7 +4341,7 @@ create_vpc_endpoint_connection_notification <- function (DryRun = NULL,
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
 #' @param AcceptanceRequired Indicate whether requests from service consumers to create an endpoint to your service must be accepted. To accept a request, use AcceptVpcEndpointConnections.
 #' @param NetworkLoadBalancerArns &#91;required&#93; The Amazon Resource Names (ARNs) of one or more Network Load Balancers for your service.
-#' @param ClientToken Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see [How to Ensure Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html).
+#' @param ClientToken Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see [How to Ensure Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html).
 #'
 #' @export
 create_vpc_endpoint_service_configuration <- function (DryRun = NULL, 
@@ -3814,7 +4363,7 @@ create_vpc_endpoint_service_configuration <- function (DryRun = NULL,
 #'
 #' Requests a VPC peering connection between two VPCs: a requester VPC that you own and an accepter VPC with which to create the connection. The accepter VPC can belong to another AWS account and can be in a different Region to the requester VPC. The requester VPC and accepter VPC cannot have overlapping CIDR blocks.
 #' 
-#' Limitations and rules apply to a VPC peering connection. For more information, see the [limitations](http://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide/vpc-peering-basics.html#vpc-peering-limitations) section in the *VPC Peering Guide*.
+#' Limitations and rules apply to a VPC peering connection. For more information, see the [limitations](https://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide/vpc-peering-basics.html#vpc-peering-limitations) section in the *VPC Peering Guide*.
 #' 
 #' The owner of the accepter VPC must accept the peering request to activate the peering connection. The VPC peering connection request expires after 7 days, after which it cannot be accepted or rejected.
 #' 
@@ -3869,7 +4418,7 @@ create_vpc_peering_connection <- function (DryRun = NULL, PeerOwnerId = NULL,
 #' 
 #' This is an idempotent operation. If you perform the operation more than once, Amazon EC2 doesn\'t return an error.
 #' 
-#' For more information, see [AWS Managed VPN Connections](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' For more information, see [AWS Site-to-Site VPN](https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html) in the *AWS Site-to-Site VPN User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -3877,6 +4426,7 @@ create_vpc_peering_connection <- function (DryRun = NULL, PeerOwnerId = NULL,
 #'   CustomerGatewayId = "string",
 #'   Type = "string",
 #'   VpnGatewayId = "string",
+#'   TransitGatewayId = "string",
 #'   DryRun = TRUE|FALSE,
 #'   Options = list(
 #'     StaticRoutesOnly = TRUE|FALSE,
@@ -3892,19 +4442,20 @@ create_vpc_peering_connection <- function (DryRun = NULL, PeerOwnerId = NULL,
 #'
 #' @param CustomerGatewayId &#91;required&#93; The ID of the customer gateway.
 #' @param Type &#91;required&#93; The type of VPN connection (`ipsec.1`).
-#' @param VpnGatewayId &#91;required&#93; The ID of the virtual private gateway.
+#' @param VpnGatewayId The ID of the virtual private gateway. If you specify a virtual private gateway, you cannot specify a transit gateway.
+#' @param TransitGatewayId The ID of the transit gateway. If you specify a transit gateway, you cannot specify a virtual private gateway.
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
 #' @param Options The options for the VPN connection.
 #'
 #' @export
-create_vpn_connection <- function (CustomerGatewayId, Type, VpnGatewayId, 
-    DryRun = NULL, Options = NULL) 
+create_vpn_connection <- function (CustomerGatewayId, Type, VpnGatewayId = NULL, 
+    TransitGatewayId = NULL, DryRun = NULL, Options = NULL) 
 {
     op <- new_operation(name = "CreateVpnConnection", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- create_vpn_connection_input(CustomerGatewayId = CustomerGatewayId, 
-        Type = Type, VpnGatewayId = VpnGatewayId, DryRun = DryRun, 
-        Options = Options)
+        Type = Type, VpnGatewayId = VpnGatewayId, TransitGatewayId = TransitGatewayId, 
+        DryRun = DryRun, Options = Options)
     output <- create_vpn_connection_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -3916,7 +4467,7 @@ create_vpn_connection <- function (CustomerGatewayId, Type, VpnGatewayId,
 #'
 #' Creates a static route associated with a VPN connection between an existing virtual private gateway and a VPN customer gateway. The static route allows traffic to be routed from the virtual private gateway to the VPN customer gateway.
 #' 
-#' For more information about VPN connections, see [AWS Managed VPN Connections](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' For more information, see [AWS Site-to-Site VPN](https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html) in the *AWS Site-to-Site VPN User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -3948,7 +4499,7 @@ create_vpn_connection_route <- function (DestinationCidrBlock,
 #'
 #' Creates a virtual private gateway. A virtual private gateway is the endpoint on the VPC side of your VPN connection. You can create a virtual private gateway before creating the VPC itself.
 #' 
-#' For more information about virtual private gateways, see [AWS Managed VPN Connections](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' For more information, see [AWS Site-to-Site VPN](https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html) in the *AWS Site-to-Site VPN User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -3976,6 +4527,71 @@ create_vpn_gateway <- function (AvailabilityZone = NULL, Type,
     input <- create_vpn_gateway_input(AvailabilityZone = AvailabilityZone, 
         Type = Type, AmazonSideAsn = AmazonSideAsn, DryRun = DryRun)
     output <- create_vpn_gateway_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified Client VPN endpoint
+#'
+#' Deletes the specified Client VPN endpoint. You must disassociate all target networks before you can delete a Client VPN endpoint.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_client_vpn_endpoint(
+#'   ClientVpnEndpointId = "string",
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param ClientVpnEndpointId &#91;required&#93; The ID of the Client VPN to be deleted.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+delete_client_vpn_endpoint <- function (ClientVpnEndpointId, 
+    DryRun = NULL) 
+{
+    op <- new_operation(name = "DeleteClientVpnEndpoint", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_client_vpn_endpoint_input(ClientVpnEndpointId = ClientVpnEndpointId, 
+        DryRun = DryRun)
+    output <- delete_client_vpn_endpoint_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes a route from a Client VPN endpoint
+#'
+#' Deletes a route from a Client VPN endpoint. You can only delete routes that you manually added using the **CreateClientVpnRoute** action. You cannot delete routes that were automatically added when associating a subnet. To remove routes that have been automatically added, disassociate the target subnet from the Client VPN endpoint.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_client_vpn_route(
+#'   ClientVpnEndpointId = "string",
+#'   TargetVpcSubnetId = "string",
+#'   DestinationCidrBlock = "string",
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param ClientVpnEndpointId &#91;required&#93; The ID of the Client VPN endpoint from which the route is to be deleted.
+#' @param TargetVpcSubnetId The ID of the target subnet used by the route.
+#' @param DestinationCidrBlock &#91;required&#93; The IPv4 address range, in CIDR notation, of the route to be deleted.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+delete_client_vpn_route <- function (ClientVpnEndpointId, TargetVpcSubnetId = NULL, 
+    DestinationCidrBlock, DryRun = NULL) 
+{
+    op <- new_operation(name = "DeleteClientVpnRoute", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_client_vpn_route_input(ClientVpnEndpointId = ClientVpnEndpointId, 
+        TargetVpcSubnetId = TargetVpcSubnetId, DestinationCidrBlock = DestinationCidrBlock, 
+        DryRun = DryRun)
+    output <- delete_client_vpn_route_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -4505,7 +5121,7 @@ delete_network_interface_permission <- function (NetworkInterfacePermissionId,
 
 #' Deletes the specified placement group
 #'
-#' Deletes the specified placement group. You must terminate all instances in the placement group before you can delete the placement group. For more information, see [Placement Groups](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' Deletes the specified placement group. You must terminate all instances in the placement group before you can delete the placement group. For more information, see [Placement Groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -4662,7 +5278,7 @@ delete_security_group <- function (GroupId = NULL, GroupName = NULL,
 #' 
 #' You cannot delete a snapshot of the root device of an EBS volume used by a registered AMI. You must first de-register the AMI before you can delete the snapshot.
 #' 
-#' For more information, see [Deleting an Amazon EBS Snapshot](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-snapshot.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information, see [Deleting an Amazon EBS Snapshot](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-snapshot.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -4764,7 +5380,7 @@ delete_subnet <- function (SubnetId, DryRun = NULL)
 #'
 #' Deletes the specified set of tags from the specified set of resources.
 #' 
-#' To list the current tags, use DescribeTags. For more information about tags, see [Tagging Your Resources](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' To list the current tags, use DescribeTags. For more information about tags, see [Tagging Your Resources](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -4784,6 +5400,8 @@ delete_subnet <- function (SubnetId, DryRun = NULL)
 #'
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
 #' @param Resources &#91;required&#93; The IDs of one or more resources, separated by spaces.
+#' 
+#' Constraints: Up to 1000 resource IDs. We recommend breaking up this request into smaller batches.
 #' @param Tags One or more tags to delete. Specify a tag key and an optional tag value to delete specific tags. If you specify a tag key without a tag value, we delete any tag with this key regardless of its value. If you specify a tag key with an empty string as the tag value, we delete the tag only if its value is an empty string.
 #' 
 #' If you omit this parameter, we delete all user-defined tags for the specified resources. We do not delete AWS-generated tags (tags that have the `aws:` prefix).
@@ -4816,13 +5434,134 @@ delete_tags <- function (DryRun = NULL, Resources, Tags = NULL)
     return(response)
 }
 
+#' Deletes the specified transit gateway
+#'
+#' Deletes the specified transit gateway.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_transit_gateway(
+#'   TransitGatewayId = "string",
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param TransitGatewayId &#91;required&#93; The ID of the transit gateway.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+delete_transit_gateway <- function (TransitGatewayId, DryRun = NULL) 
+{
+    op <- new_operation(name = "DeleteTransitGateway", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_transit_gateway_input(TransitGatewayId = TransitGatewayId, 
+        DryRun = DryRun)
+    output <- delete_transit_gateway_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified route from the specified transit gateway route table
+#'
+#' Deletes the specified route from the specified transit gateway route table.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_transit_gateway_route(
+#'   TransitGatewayRouteTableId = "string",
+#'   DestinationCidrBlock = "string",
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param TransitGatewayRouteTableId &#91;required&#93; The ID of the transit gateway route table.
+#' @param DestinationCidrBlock &#91;required&#93; The CIDR range for the route. This must match the CIDR for the route exactly.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+delete_transit_gateway_route <- function (TransitGatewayRouteTableId, 
+    DestinationCidrBlock, DryRun = NULL) 
+{
+    op <- new_operation(name = "DeleteTransitGatewayRoute", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_transit_gateway_route_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, 
+        DestinationCidrBlock = DestinationCidrBlock, DryRun = DryRun)
+    output <- delete_transit_gateway_route_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified transit gateway route table
+#'
+#' Deletes the specified transit gateway route table. You must disassociate the route table from any transit gateway route tables before you can delete it.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_transit_gateway_route_table(
+#'   TransitGatewayRouteTableId = "string",
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param TransitGatewayRouteTableId &#91;required&#93; The ID of the transit gateway route table.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+delete_transit_gateway_route_table <- function (TransitGatewayRouteTableId, 
+    DryRun = NULL) 
+{
+    op <- new_operation(name = "DeleteTransitGatewayRouteTable", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- delete_transit_gateway_route_table_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, 
+        DryRun = DryRun)
+    output <- delete_transit_gateway_route_table_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified VPC attachment
+#'
+#' Deletes the specified VPC attachment.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_transit_gateway_vpc_attachment(
+#'   TransitGatewayAttachmentId = "string",
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param TransitGatewayAttachmentId &#91;required&#93; The ID of the attachment.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+delete_transit_gateway_vpc_attachment <- function (TransitGatewayAttachmentId, 
+    DryRun = NULL) 
+{
+    op <- new_operation(name = "DeleteTransitGatewayVpcAttachment", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- delete_transit_gateway_vpc_attachment_input(TransitGatewayAttachmentId = TransitGatewayAttachmentId, 
+        DryRun = DryRun)
+    output <- delete_transit_gateway_vpc_attachment_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Deletes the specified EBS volume
 #'
 #' Deletes the specified EBS volume. The volume must be in the `available` state (not attached to an instance).
 #' 
 #' The volume can remain in the `deleting` state for several minutes.
 #' 
-#' For more information, see [Deleting an Amazon EBS Volume](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-volume.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information, see [Deleting an Amazon EBS Volume](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-volume.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -5223,7 +5962,7 @@ describe_account_attributes <- function (AttributeNames = NULL,
 #'
 #' Describes one or more of your Elastic IP addresses.
 #' 
-#' An Elastic IP address is for use in either the EC2-Classic platform or in a VPC. For more information, see [Elastic IP Addresses](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' An Elastic IP address is for use in either the EC2-Classic platform or in a VPC. For more information, see [Elastic IP Addresses](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -5267,7 +6006,7 @@ describe_account_attributes <- function (AttributeNames = NULL,
 #' -   `tag`:\<key\> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key `Owner` and the value `TeamA`, specify `tag:Owner` for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
-#' @param PublicIps &#91;EC2-Classic&#93; One or more Elastic IP addresses.
+#' @param PublicIps One or more Elastic IP addresses.
 #' 
 #' Default: Describes all your Elastic IP addresses.
 #' @param AllocationIds &#91;EC2-VPC&#93; One or more allocation IDs.
@@ -5354,7 +6093,7 @@ describe_aggregate_id_format <- function (DryRun = NULL)
 #'
 #' Describes one or more of the Availability Zones that are available to you. The results include zones only for the region you\'re currently using. If there is an event impacting an Availability Zone, you can use this request to view the state and any provided message for that Availability Zone.
 #' 
-#' For more information, see [Regions and Availability Zones](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information, see [Regions and Availability Zones](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -5370,6 +6109,9 @@ describe_aggregate_id_format <- function (DryRun = NULL)
 #'   ZoneNames = list(
 #'     "string"
 #'   ),
+#'   ZoneIds = list(
+#'     "string"
+#'   ),
 #'   DryRun = TRUE|FALSE
 #' )
 #' ```
@@ -5382,8 +6124,11 @@ describe_aggregate_id_format <- function (DryRun = NULL)
 #' 
 #' -   `state` - The state of the Availability Zone (`available` \| `information` \| `impaired` \| `unavailable`).
 #' 
+#' -   `zone-id` - The ID of the Availability Zone (for example, `use1-az1`).
+#' 
 #' -   `zone-name` - The name of the Availability Zone (for example, `us-east-1a`).
 #' @param ZoneNames The names of one or more Availability Zones.
+#' @param ZoneIds The IDs of one or more Availability Zones.
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
 #'
 #' @examples
@@ -5393,12 +6138,12 @@ describe_aggregate_id_format <- function (DryRun = NULL)
 #'
 #' @export
 describe_availability_zones <- function (Filters = NULL, ZoneNames = NULL, 
-    DryRun = NULL) 
+    ZoneIds = NULL, DryRun = NULL) 
 {
     op <- new_operation(name = "DescribeAvailabilityZones", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- describe_availability_zones_input(Filters = Filters, 
-        ZoneNames = ZoneNames, DryRun = DryRun)
+        ZoneNames = ZoneNames, ZoneIds = ZoneIds, DryRun = DryRun)
     output <- describe_availability_zones_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -5611,11 +6356,238 @@ describe_classic_link_instances <- function (Filters = NULL,
     return(response)
 }
 
+#' Describes the authorization rules for a specified Client VPN endpoint
+#'
+#' Describes the authorization rules for a specified Client VPN endpoint.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_client_vpn_authorization_rules(
+#'   ClientVpnEndpointId = "string",
+#'   DryRun = TRUE|FALSE,
+#'   NextToken = "string",
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @param ClientVpnEndpointId &#91;required&#93; The ID of the Client VPN endpoint.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#' @param NextToken The token to retrieve the next page of results.
+#' @param Filters One or more filters. Filter names and values are case-sensitive.
+#' @param MaxResults The maximum number of results to return for the request in a single page. The remaining results can be seen by sending another request with the nextToken value.
+#'
+#' @export
+describe_client_vpn_authorization_rules <- function (ClientVpnEndpointId, 
+    DryRun = NULL, NextToken = NULL, Filters = NULL, MaxResults = NULL) 
+{
+    op <- new_operation(name = "DescribeClientVpnAuthorizationRules", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_client_vpn_authorization_rules_input(ClientVpnEndpointId = ClientVpnEndpointId, 
+        DryRun = DryRun, NextToken = NextToken, Filters = Filters, 
+        MaxResults = MaxResults)
+    output <- describe_client_vpn_authorization_rules_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes active client connections and connections that have been terminated within the last 60 minutes for the specified Client VPN endpoint
+#'
+#' Describes active client connections and connections that have been terminated within the last 60 minutes for the specified Client VPN endpoint.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_client_vpn_connections(
+#'   ClientVpnEndpointId = "string",
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param ClientVpnEndpointId &#91;required&#93; The ID of the Client VPN endpoint.
+#' @param Filters One or more filters. Filter names and values are case-sensitive.
+#' @param NextToken The token to retrieve the next page of results.
+#' @param MaxResults The maximum number of results to return for the request in a single page. The remaining results can be seen by sending another request with the nextToken value.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+describe_client_vpn_connections <- function (ClientVpnEndpointId, 
+    Filters = NULL, NextToken = NULL, MaxResults = NULL, DryRun = NULL) 
+{
+    op <- new_operation(name = "DescribeClientVpnConnections", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_client_vpn_connections_input(ClientVpnEndpointId = ClientVpnEndpointId, 
+        Filters = Filters, NextToken = NextToken, MaxResults = MaxResults, 
+        DryRun = DryRun)
+    output <- describe_client_vpn_connections_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes one or more Client VPN endpoints in the account
+#'
+#' Describes one or more Client VPN endpoints in the account.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_client_vpn_endpoints(
+#'   ClientVpnEndpointIds = list(
+#'     "string"
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param ClientVpnEndpointIds The ID of the Client VPN endpoint.
+#' @param MaxResults The maximum number of results to return for the request in a single page. The remaining results can be seen by sending another request with the nextToken value.
+#' @param NextToken The token to retrieve the next page of results.
+#' @param Filters One or more filters. Filter names and values are case-sensitive.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+describe_client_vpn_endpoints <- function (ClientVpnEndpointIds = NULL, 
+    MaxResults = NULL, NextToken = NULL, Filters = NULL, DryRun = NULL) 
+{
+    op <- new_operation(name = "DescribeClientVpnEndpoints", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_client_vpn_endpoints_input(ClientVpnEndpointIds = ClientVpnEndpointIds, 
+        MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, 
+        DryRun = DryRun)
+    output <- describe_client_vpn_endpoints_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the routes for the specified Client VPN endpoint
+#'
+#' Describes the routes for the specified Client VPN endpoint.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_client_vpn_routes(
+#'   ClientVpnEndpointId = "string",
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param ClientVpnEndpointId &#91;required&#93; The ID of the Client VPN endpoint.
+#' @param Filters One or more filters. Filter names and values are case-sensitive.
+#' @param MaxResults The maximum number of results to return for the request in a single page. The remaining results can be seen by sending another request with the nextToken value.
+#' @param NextToken The token to retrieve the next page of results.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+describe_client_vpn_routes <- function (ClientVpnEndpointId, 
+    Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) 
+{
+    op <- new_operation(name = "DescribeClientVpnRoutes", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_client_vpn_routes_input(ClientVpnEndpointId = ClientVpnEndpointId, 
+        Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, 
+        DryRun = DryRun)
+    output <- describe_client_vpn_routes_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes the target networks associated with the specified Client VPN endpoint
+#'
+#' Describes the target networks associated with the specified Client VPN endpoint.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_client_vpn_target_networks(
+#'   ClientVpnEndpointId = "string",
+#'   AssociationIds = list(
+#'     "string"
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param ClientVpnEndpointId &#91;required&#93; The ID of the Client VPN endpoint.
+#' @param AssociationIds The IDs of the target network associations.
+#' @param MaxResults The maximum number of results to return for the request in a single page. The remaining results can be seen by sending another request with the nextToken value.
+#' @param NextToken The token to retrieve the next page of results.
+#' @param Filters One or more filters. Filter names and values are case-sensitive.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+describe_client_vpn_target_networks <- function (ClientVpnEndpointId, 
+    AssociationIds = NULL, MaxResults = NULL, NextToken = NULL, 
+    Filters = NULL, DryRun = NULL) 
+{
+    op <- new_operation(name = "DescribeClientVpnTargetNetworks", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_client_vpn_target_networks_input(ClientVpnEndpointId = ClientVpnEndpointId, 
+        AssociationIds = AssociationIds, MaxResults = MaxResults, 
+        NextToken = NextToken, Filters = Filters, DryRun = DryRun)
+    output <- describe_client_vpn_target_networks_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Describes one or more of your conversion tasks
 #'
-#' Describes one or more of your conversion tasks. For more information, see the [VM Import/Export User Guide](http://docs.aws.amazon.com/vm-import/latest/userguide/).
+#' Describes one or more of your conversion tasks. For more information, see the [VM Import/Export User Guide](https://docs.aws.amazon.com/vm-import/latest/userguide/).
 #' 
-#' For information about the import manifest referenced by this API action, see [VM Import Manifest](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html).
+#' For information about the import manifest referenced by this API action, see [VM Import Manifest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -5649,7 +6621,7 @@ describe_conversion_tasks <- function (ConversionTaskIds = NULL,
 #'
 #' Describes one or more of your VPN customer gateways.
 #' 
-#' For more information about VPN customer gateways, see [AWS Managed VPN Connections](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' For more information, see [AWS Site-to-Site VPN](https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html) in the *AWS Site-to-Site VPN User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -5716,7 +6688,7 @@ describe_customer_gateways <- function (CustomerGatewayIds = NULL,
 #'
 #' Describes one or more of your DHCP options sets.
 #' 
-#' For more information, see [DHCP Options Sets](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' For more information, see [DHCP Options Sets](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html) in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -5741,11 +6713,13 @@ describe_customer_gateways <- function (CustomerGatewayIds = NULL,
 #' Default: Describes all your DHCP options sets.
 #' @param Filters One or more filters.
 #' 
-#' -   `dhcp-options-id` - The ID of a set of DHCP options.
+#' -   `dhcp-options-id` - The ID of a DHCP options set.
 #' 
 #' -   `key` - The key for one of the options (for example, `domain-name`).
 #' 
 #' -   `value` - The value for one of the options.
+#' 
+#' -   `owner-id` - The ID of the AWS account that owns the DHCP options set.
 #' 
 #' -   `tag`:\<key\> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key `Owner` and the value `TeamA`, specify `tag:Owner` for the filter name and `TeamA` for the filter value.
 #' 
@@ -5812,9 +6786,9 @@ describe_egress_only_internet_gateways <- function (DryRun = NULL,
     return(response)
 }
 
-#' Describes the Elastic GPUs associated with your instances
+#' Describes the Elastic Graphics accelerator associated with your instances
 #'
-#' Describes the Elastic GPUs associated with your instances. For more information about Elastic GPUs, see [Amazon EC2 Elastic GPUs](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-gpus.html).
+#' Describes the Elastic Graphics accelerator associated with your instances. For more information about Elastic Graphics, see [Amazon Elastic Graphics](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-graphics.html).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -5836,19 +6810,19 @@ describe_egress_only_internet_gateways <- function (DryRun = NULL,
 #' )
 #' ```
 #'
-#' @param ElasticGpuIds One or more Elastic GPU IDs.
+#' @param ElasticGpuIds One or more Elastic Graphics accelerator IDs.
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
 #' @param Filters One or more filters.
 #' 
-#' -   `availability-zone` - The Availability Zone in which the Elastic GPU resides.
+#' -   `availability-zone` - The Availability Zone in which the Elastic Graphics accelerator resides.
 #' 
-#' -   `elastic-gpu-health` - The status of the Elastic GPU (`OK` \| `IMPAIRED`).
+#' -   `elastic-gpu-health` - The status of the Elastic Graphics accelerator (`OK` \| `IMPAIRED`).
 #' 
-#' -   `elastic-gpu-state` - The state of the Elastic GPU (`ATTACHED`).
+#' -   `elastic-gpu-state` - The state of the Elastic Graphics accelerator (`ATTACHED`).
 #' 
-#' -   `elastic-gpu-type` - The type of Elastic GPU; for example, `eg1.medium`.
+#' -   `elastic-gpu-type` - The type of Elastic Graphics accelerator; for example, `eg1.medium`.
 #' 
-#' -   `instance-id` - The ID of the instance to which the Elastic GPU is associated.
+#' -   `instance-id` - The ID of the instance to which the Elastic Graphics accelerator is associated.
 #' @param MaxResults The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned `NextToken` value. This value can be between 5 and 1000.
 #' @param NextToken The token to request the next page of results.
 #'
@@ -5981,9 +6955,9 @@ describe_fleet_instances <- function (DryRun = NULL, MaxResults = NULL,
     return(response)
 }
 
-#' Describes one or more of your EC2 Fleet
+#' Describes one or more of your EC2 Fleets
 #'
-#' Describes one or more of your EC2 Fleet.
+#' Describes one or more of your EC2 Fleets.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -6019,7 +6993,7 @@ describe_fleet_instances <- function (DryRun = NULL, MaxResults = NULL,
 #' 
 #' -   `replace-unhealthy-instances` - Indicates whether EC2 Fleet should replace unhealthy instances (`true` \| `false`).
 #' 
-#' -   `type` - The type of request (`request` \| `maintain`).
+#' -   `type` - The type of request (`instant` \| `request` \| `maintain`).
 #'
 #' @export
 describe_fleets <- function (DryRun = NULL, MaxResults = NULL, 
@@ -6201,7 +7175,7 @@ describe_fpga_images <- function (DryRun = NULL, FpgaImageIds = NULL,
 #'
 #' Describes the Dedicated Host reservations that are available to purchase.
 #' 
-#' The results describe all the Dedicated Host reservation offerings, including offerings that may not match the instance family and region of your Dedicated Hosts. When purchasing an offering, ensure that the instance family and Region of the offering matches that of the Dedicated Hosts with which it is to be associated. For more information about supported instance types, see [Dedicated Hosts Overview](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' The results describe all the Dedicated Host reservation offerings, including offerings that may not match the instance family and Region of your Dedicated Hosts. When purchasing an offering, ensure that the instance family and Region of the offering matches that of the Dedicated Hosts with which it is to be associated. For more information about supported instance types, see [Dedicated Hosts Overview](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -6304,7 +7278,7 @@ describe_host_reservations <- function (Filter = NULL, HostReservationIdSet = NU
 #'
 #' Describes one or more of your Dedicated Hosts.
 #' 
-#' The results describe only the Dedicated Hosts in the region you\'re currently using. All listed instances consume capacity on your Dedicated Host. Dedicated Hosts that have recently been released are listed with the state `released`.
+#' The results describe only the Dedicated Hosts in the Region you\'re currently using. All listed instances consume capacity on your Dedicated Host. Dedicated Hosts that have recently been released are listed with the state `released`.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -6446,7 +7420,7 @@ describe_id_format <- function (Resource = NULL)
 
 #' Describes the ID format settings for resources for the specified IAM user, IAM role, or root user
 #'
-#' Describes the ID format settings for resources for the specified IAM user, IAM role, or root user. For example, you can view the resource types that are enabled for longer IDs. This request only returns information about resource types whose ID formats can be modified; it does not return information about other resource types. For more information, see [Resource IDs](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' Describes the ID format settings for resources for the specified IAM user, IAM role, or root user. For example, you can view the resource types that are enabled for longer IDs. This request only returns information about resource types whose ID formats can be modified; it does not return information about other resource types. For more information, see [Resource IDs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' 
 #' The following resource types support longer IDs: `bundle` \| `conversion-task` \| `customer-gateway` \| `dhcp-options` \| `elastic-ip-allocation` \| `elastic-ip-association` \| `export-task` \| `flow-log` \| `image` \| `import-task` \| `instance` \| `internet-gateway` \| `network-acl` \| `network-acl-association` \| `network-interface` \| `network-interface-attachment` \| `prefix-list` \| `reservation` \| `route-table` \| `route-table-association` \| `security-group` \| `snapshot` \| `subnet` \| `subnet-cidr-block-association` \| `volume` \| `vpc` \| `vpc-cidr-block-association` \| `vpc-endpoint` \| `vpc-peering-connection` \| `vpn-connection` \| `vpn-gateway`.
 #' 
@@ -6801,7 +7775,7 @@ describe_instance_attribute <- function (Attribute, DryRun = NULL,
 #' 
 #' If an Availability Zone is experiencing a service disruption and you specify instance IDs in the affected zone, or do not specify any instance IDs at all, the call fails. If you specify only instance IDs in an unaffected zone, the call works normally.
 #' 
-#' For more information, see [Burstable Performance Instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information, see [Burstable Performance Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -6857,11 +7831,11 @@ describe_instance_credit_specifications <- function (DryRun = NULL,
 #' 
 #' Instance status includes the following components:
 #' 
-#' -   **Status checks** - Amazon EC2 performs status checks on running EC2 instances to identify hardware and software issues. For more information, see [Status Checks for Your Instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html) and [Troubleshooting Instances with Failed Status Checks](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstances.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' -   **Status checks** - Amazon EC2 performs status checks on running EC2 instances to identify hardware and software issues. For more information, see [Status Checks for Your Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html) and [Troubleshooting Instances with Failed Status Checks](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstances.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' 
-#' -   **Scheduled events** - Amazon EC2 can schedule events (such as reboot, stop, or terminate) for your instances related to hardware issues, software updates, or system maintenance. For more information, see [Scheduled Events for Your Instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-instances-status-check_sched.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' -   **Scheduled events** - Amazon EC2 can schedule events (such as reboot, stop, or terminate) for your instances related to hardware issues, software updates, or system maintenance. For more information, see [Scheduled Events for Your Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-instances-status-check_sched.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' 
-#' -   **Instance state** - You can manage your instances from the moment you launch them through their termination. For more information, see [Instance Lifecycle](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' -   **Instance state** - You can manage your instances from the moment you launch them through their termination. For more information, see [Instance Lifecycle](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -6999,6 +7973,8 @@ describe_instance_status <- function (Filters = NULL, InstanceIds = NULL,
 #' 
 #' -   `group-name` - The name of the security group for the instance. EC2-Classic only.
 #' 
+#' -   `hibernation-options.configured` - A Boolean that indicates whether the instance is enabled for hibernation. A value of `true` means that the instance is enabled for hibernation.
+#' 
 #' -   `host-id` - The ID of the Dedicated Host on which the instance is running, if applicable.
 #' 
 #' -   `hypervisor` - The hypervisor type of the instance (`ovm` \| `xen`).
@@ -7096,6 +8072,8 @@ describe_instance_status <- function (Filters = NULL, InstanceIds = NULL,
 #' -   `owner-id` - The AWS account ID of the instance owner.
 #' 
 #' -   `placement-group-name` - The name of the placement group for the instance.
+#' 
+#' -   `placement-partition-number` - The partition in which the instance is located.
 #' 
 #' -   `platform` - The platform. Use `windows` if you have Windows instances; otherwise, leave blank.
 #' 
@@ -7222,6 +8200,8 @@ describe_instances <- function (Filters = NULL, InstanceIds = NULL,
 #' 
 #' -   `internet-gateway-id` - The ID of the Internet gateway.
 #' 
+#' -   `owner-id` - The ID of the AWS account that owns the internet gateway.
+#' 
 #' -   `tag`:\<key\> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key `Owner` and the value `TeamA`, specify `tag:Owner` for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
@@ -7262,7 +8242,7 @@ describe_internet_gateways <- function (Filters = NULL, DryRun = NULL,
 #'
 #' Describes one or more of your key pairs.
 #' 
-#' For more information about key pairs, see [Key Pairs](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information about key pairs, see [Key Pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -7434,7 +8414,7 @@ describe_launch_template_versions <- function (DryRun = NULL,
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 #' @param NextToken The token to request the next page of results.
-#' @param MaxResults The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned `NextToken` value. This value can be between 5 and 1000.
+#' @param MaxResults The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned `NextToken` value. This value can be between 1 and 200.
 #'
 #' @examples
 #' # This example describes the specified launch template.
@@ -7589,7 +8569,7 @@ describe_nat_gateways <- function (Filter = NULL, MaxResults = NULL,
 #'
 #' Describes one or more of your network ACLs.
 #' 
-#' For more information, see [Network ACLs](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' For more information, see [Network ACLs](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html) in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -7638,6 +8618,8 @@ describe_nat_gateways <- function (Filter = NULL, MaxResults = NULL,
 #' -   `entry.rule-number` - The number of an entry (in other words, rule) in the set of ACL entries.
 #' 
 #' -   `network-acl-id` - The ID of the network ACL.
+#' 
+#' -   `owner-id` - The ID of the AWS account that owns the network ACL.
 #' 
 #' -   `tag`:\<key\> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key `Owner` and the value `TeamA`, specify `tag:Owner` for the filter name and `TeamA` for the filter value.
 #' 
@@ -7914,7 +8896,7 @@ describe_network_interfaces <- function (Filters = NULL, DryRun = NULL,
 
 #' Describes one or more of your placement groups
 #'
-#' Describes one or more of your placement groups. For more information, see [Placement Groups](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' Describes one or more of your placement groups. For more information, see [Placement Groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -7940,7 +8922,7 @@ describe_network_interfaces <- function (Filters = NULL, DryRun = NULL,
 #' 
 #' -   `state` - The state of the placement group (`pending` \| `available` \| `deleting` \| `deleted`).
 #' 
-#' -   `strategy` - The strategy of the placement group (`cluster` \| `spread`).
+#' -   `strategy` - The strategy of the placement group (`cluster` \| `spread` \| `partition`).
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
 #' @param GroupNames One or more placement group names.
 #' 
@@ -8090,7 +9072,7 @@ describe_public_ipv_4_pools <- function (PoolIds = NULL, NextToken = NULL,
 #'
 #' Describes one or more regions that are currently available to you.
 #' 
-#' For a list of the regions supported by Amazon EC2, see [Regions and Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html#ec2_region).
+#' For a list of the regions supported by Amazon EC2, see [Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#ec2_region).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -8141,7 +9123,7 @@ describe_regions <- function (Filters = NULL, RegionNames = NULL,
 #'
 #' Describes one or more of the Reserved Instances that you purchased.
 #' 
-#' For more information about Reserved Instances, see [Reserved Instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-on-demand-reserved-instances.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information about Reserved Instances, see [Reserved Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-on-demand-reserved-instances.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -8223,7 +9205,7 @@ describe_reserved_instances <- function (Filters = NULL, OfferingClass = NULL,
 #' 
 #' As a buyer, you specify the configuration of the Reserved Instance to purchase, and the Marketplace matches what you\'re searching for with what\'s available. The Marketplace first sells the lowest priced Reserved Instances to you, and continues to sell available Reserved Instance listings to you until your demand is met. You are charged based on the total price of all of the listings that you purchase.
 #' 
-#' For more information, see [Reserved Instance Marketplace](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information, see [Reserved Instance Marketplace](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -8272,7 +9254,7 @@ describe_reserved_instances_listings <- function (Filters = NULL,
 #'
 #' Describes the modifications made to your Reserved Instances. If no parameter is specified, information about all your Reserved Instances modification requests is returned. If a modification ID is specified, only information about the specific modification is returned.
 #' 
-#' For more information, see [Modifying Reserved Instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html) in the Amazon Elastic Compute Cloud User Guide.
+#' For more information, see [Modifying Reserved Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html) in the Amazon Elastic Compute Cloud User Guide.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -8344,7 +9326,7 @@ describe_reserved_instances_modifications <- function (Filters = NULL,
 #' 
 #' If you have listed your own Reserved Instances for sale in the Reserved Instance Marketplace, they will be excluded from these results. This is to ensure that you do not purchase your own Reserved Instances.
 #' 
-#' For more information, see [Reserved Instance Marketplace](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information, see [Reserved Instance Marketplace](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -8359,7 +9341,7 @@ describe_reserved_instances_modifications <- function (Filters = NULL,
 #'     )
 #'   ),
 #'   IncludeMarketplace = TRUE|FALSE,
-#'   InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.18xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.18xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.12xlarge"|"m5.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.12xlarge"|"m5d.24xlarge"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal",
+#'   InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.12xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.12xlarge"|"r5a.24xlarge"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.12xlarge"|"r5d.24xlarge"|"r5d.metal"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.18xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.18xlarge"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.12xlarge"|"m5.24xlarge"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.12xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.12xlarge"|"m5d.24xlarge"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge",
 #'   MaxDuration = 123,
 #'   MaxInstanceCount = 123,
 #'   MinDuration = 123,
@@ -8397,7 +9379,7 @@ describe_reserved_instances_modifications <- function (Filters = NULL,
 #' 
 #' -   `usage-price` - The usage price of the Reserved Instance, per hour (for example, 0.84).
 #' @param IncludeMarketplace Include Reserved Instance Marketplace offerings in the response.
-#' @param InstanceType The instance type that the reservation will cover (for example, `m1.small`). For more information, see [Instance Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' @param InstanceType The instance type that the reservation will cover (for example, `m1.small`). For more information, see [Instance Types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' @param MaxDuration The maximum duration (in seconds) to filter when searching for offerings.
 #' 
 #' Default: 94608000 (3 years)
@@ -8453,7 +9435,7 @@ describe_reserved_instances_offerings <- function (AvailabilityZone = NULL,
 #' 
 #' Each subnet in your VPC must be associated with a route table. If a subnet is not explicitly associated with any route table, it is implicitly associated with the main route table. This command does not return the subnet ID for implicit associations.
 #' 
-#' For more information, see [Route Tables](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' For more information, see [Route Tables](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html) in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -8485,6 +9467,8 @@ describe_reserved_instances_offerings <- function (AvailabilityZone = NULL,
 #' 
 #' -   `association.main` - Indicates whether the route table is the main route table for the VPC (`true` \| `false`). Route tables that do not have an association ID are not returned in the response.
 #' 
+#' -   `owner-id` - The ID of the AWS account that owns the route table.
+#' 
 #' -   `route-table-id` - The ID of the route table.
 #' 
 #' -   `route.destination-cidr-block` - The IPv4 CIDR range specified in a route in the table.
@@ -8501,6 +9485,8 @@ describe_reserved_instances_offerings <- function (AvailabilityZone = NULL,
 #' 
 #' -   `route.nat-gateway-id` - The ID of a NAT gateway.
 #' 
+#' -   `route.transit-gateway-id` - The ID of a transit gateway.
+#' 
 #' -   `route.origin` - Describes how the route was created. `CreateRouteTable` indicates that the route was automatically created when the route table was created; `CreateRoute` indicates that the route was manually added to the route table; `EnableVgwRoutePropagation` indicates that the route was propagated by route propagation.
 #' 
 #' -   `route.state` - The state of a route in the route table (`active` \| `blackhole`). The blackhole state indicates that the route\'s target isn\'t available (for example, the specified gateway isn\'t attached to the VPC, the specified NAT instance has been terminated, and so on).
@@ -8510,6 +9496,8 @@ describe_reserved_instances_offerings <- function (AvailabilityZone = NULL,
 #' -   `tag`:\<key\> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key `Owner` and the value `TeamA`, specify `tag:Owner` for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
+#' 
+#' -   `transit-gateway-id` - The ID of a transit gateway.
 #' 
 #' -   `vpc-id` - The ID of the VPC for the route table.
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
@@ -8751,7 +9739,7 @@ describe_security_group_references <- function (DryRun = NULL,
 #'
 #' Describes one or more of your security groups.
 #' 
-#' A security group is for use with instances either in the EC2-Classic platform or in a specific VPC. For more information, see [Amazon EC2 Security Groups](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html) in the *Amazon Elastic Compute Cloud User Guide* and [Security Groups for Your VPC](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' A security group is for use with instances either in the EC2-Classic platform or in a specific VPC. For more information, see [Amazon EC2 Security Groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html) in the *Amazon Elastic Compute Cloud User Guide* and [Security Groups for Your VPC](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html) in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -8878,7 +9866,7 @@ describe_security_groups <- function (Filters = NULL, GroupIds = NULL,
 #'
 #' Describes the specified attribute of the specified snapshot. You can specify only one attribute at a time.
 #' 
-#' For more information about EBS snapshots, see [Amazon EBS Snapshots](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information about EBS snapshots, see [Amazon EBS Snapshots](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -8938,7 +9926,7 @@ describe_snapshot_attribute <- function (Attribute, SnapshotId,
 #' 
 #' If you are describing a long list of snapshots, you can paginate the output to make the list more manageable. The `MaxResults` parameter sets the maximum number of results returned in a single page. If the list of results exceeds your `MaxResults` value, then that number of results is returned along with a `NextToken` value that can be passed to a subsequent `DescribeSnapshots` request to retrieve the remaining results.
 #' 
-#' For more information about EBS snapshots, see [Amazon EBS Snapshots](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information about EBS snapshots, see [Amazon EBS Snapshots](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -9042,7 +10030,7 @@ describe_snapshots <- function (Filters = NULL, MaxResults = NULL,
 
 #' Describes the data feed for Spot Instances
 #'
-#' Describes the data feed for Spot Instances. For more information, see [Spot Instance Data Feed](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html) in the *Amazon EC2 User Guide for Linux Instances*.
+#' Describes the data feed for Spot Instances. For more information, see [Spot Instance Data Feed](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html) in the *Amazon EC2 User Guide for Linux Instances*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -9214,6 +10202,8 @@ describe_spot_fleet_requests <- function (DryRun = NULL, MaxResults = NULL,
 #' 
 #' You can use `DescribeSpotInstanceRequests` to find a running Spot Instance by examining the response. If the status of the Spot Instance is `fulfilled`, the instance ID appears in the response and contains the identifier of the instance. Alternatively, you can use DescribeInstances with a filter to look for instances where the instance lifecycle is `spot`.
 #' 
+#' We recommend that you set `MaxResults` to a value between 5 and 1000 to limit the number of results returned. This paginates the output, which makes the list more manageable and returns the results faster. If the list of results exceeds your `MaxResults` value, then that number of results is returned along with a `NextToken` value that can be passed to a subsequent `DescribeSpotInstanceRequests` request to retrieve the remaining results.
+#' 
 #' Spot Instance requests are deleted four hours after they are canceled and their instances are terminated.
 #'
 #' @section Accepted Parameters:
@@ -9230,7 +10220,9 @@ describe_spot_fleet_requests <- function (DryRun = NULL, MaxResults = NULL,
 #'   DryRun = TRUE|FALSE,
 #'   SpotInstanceRequestIds = list(
 #'     "string"
-#'   )
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
 #' )
 #' ```
 #'
@@ -9298,7 +10290,7 @@ describe_spot_fleet_requests <- function (DryRun = NULL, MaxResults = NULL,
 #' 
 #' -   `spot-price` - The maximum hourly price for any Spot Instance launched to fulfill the request.
 #' 
-#' -   `state` - The state of the Spot Instance request (`open` \| `active` \| `closed` \| `cancelled` \| `failed`). Spot request status information can help you track your Amazon EC2 Spot Instance requests. For more information, see [Spot Request Status](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html) in the *Amazon EC2 User Guide for Linux Instances*.
+#' -   `state` - The state of the Spot Instance request (`open` \| `active` \| `closed` \| `cancelled` \| `failed`). Spot request status information can help you track your Amazon EC2 Spot Instance requests. For more information, see [Spot Request Status](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html) in the *Amazon EC2 User Guide for Linux Instances*.
 #' 
 #' -   `status-code` - The short code describing the most recent evaluation of your Spot Instance request.
 #' 
@@ -9315,6 +10307,8 @@ describe_spot_fleet_requests <- function (DryRun = NULL, MaxResults = NULL,
 #' -   `valid-until` - The end date of the request.
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
 #' @param SpotInstanceRequestIds One or more Spot Instance request IDs.
+#' @param NextToken The token to request the next set of results. This value is `null` when there are no more results to return.
+#' @param MaxResults The maximum number of results to return in a single call. Specify a value between 5 and 1000. To retrieve the remaining results, make another call with the returned `NextToken` value.
 #'
 #' @examples
 #' # This example describes the specified Spot Instance request.
@@ -9326,12 +10320,14 @@ describe_spot_fleet_requests <- function (DryRun = NULL, MaxResults = NULL,
 #'
 #' @export
 describe_spot_instance_requests <- function (Filters = NULL, 
-    DryRun = NULL, SpotInstanceRequestIds = NULL) 
+    DryRun = NULL, SpotInstanceRequestIds = NULL, NextToken = NULL, 
+    MaxResults = NULL) 
 {
     op <- new_operation(name = "DescribeSpotInstanceRequests", 
         http_method = "POST", http_path = "/", paginator = list())
     input <- describe_spot_instance_requests_input(Filters = Filters, 
-        DryRun = DryRun, SpotInstanceRequestIds = SpotInstanceRequestIds)
+        DryRun = DryRun, SpotInstanceRequestIds = SpotInstanceRequestIds, 
+        NextToken = NextToken, MaxResults = MaxResults)
     output <- describe_spot_instance_requests_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -9341,7 +10337,7 @@ describe_spot_instance_requests <- function (Filters = NULL,
 
 #' Describes the Spot price history
 #'
-#' Describes the Spot price history. For more information, see [Spot Instance Pricing History](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html) in the *Amazon EC2 User Guide for Linux Instances*.
+#' Describes the Spot price history. For more information, see [Spot Instance Pricing History](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html) in the *Amazon EC2 User Guide for Linux Instances*.
 #' 
 #' When you specify a start and end time, this operation returns the prices of the instance types within the time range that you specified and the time when the price changed. The price is valid within the time period that you specified; the response merely indicates the last time that the price changed.
 #'
@@ -9360,7 +10356,7 @@ describe_spot_instance_requests <- function (Filters = NULL,
 #'   DryRun = TRUE|FALSE,
 #'   EndTime = as.POSIXct("2015-01-01"),
 #'   InstanceTypes = list(
-#'     "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.18xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.18xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.12xlarge"|"m5.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.12xlarge"|"m5d.24xlarge"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"
+#'     "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.12xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.12xlarge"|"r5a.24xlarge"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.12xlarge"|"r5d.24xlarge"|"r5d.metal"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.18xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.18xlarge"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.12xlarge"|"m5.24xlarge"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.12xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.12xlarge"|"m5d.24xlarge"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge"
 #'   ),
 #'   MaxResults = 123,
 #'   NextToken = "string",
@@ -9462,7 +10458,7 @@ describe_stale_security_groups <- function (DryRun = NULL, MaxResults = NULL,
 #'
 #' Describes one or more of your subnets.
 #' 
-#' For more information, see [Your VPC and Subnets](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' For more information, see [Your VPC and Subnets](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html) in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -9484,13 +10480,15 @@ describe_stale_security_groups <- function (DryRun = NULL, MaxResults = NULL,
 #'
 #' @param Filters One or more filters.
 #' 
-#' -   `availabilityZone` - The Availability Zone for the subnet. You can also use `availability-zone` as the filter name.
+#' -   `availability-zone` - The Availability Zone for the subnet. You can also use `availabilityZone` as the filter name.
+#' 
+#' -   `availability-zone-id` - The ID of the Availability Zone for the subnet. You can also use `availabilityZoneId` as the filter name.
 #' 
 #' -   `available-ip-address-count` - The number of IPv4 addresses in the subnet that are available.
 #' 
-#' -   `cidrBlock` - The IPv4 CIDR block of the subnet. The CIDR block you specify must exactly match the subnet\'s CIDR block for information to be returned for the subnet. You can also use `cidr` or `cidr-block` as the filter names.
+#' -   `cidr-block` - The IPv4 CIDR block of the subnet. The CIDR block you specify must exactly match the subnet\'s CIDR block for information to be returned for the subnet. You can also use `cidr` or `cidrBlock` as the filter names.
 #' 
-#' -   `defaultForAz` - Indicates whether this is the default subnet for the Availability Zone. You can also use `default-for-az` as the filter name.
+#' -   `default-for-az` - Indicates whether this is the default subnet for the Availability Zone. You can also use `defaultForAz` as the filter name.
 #' 
 #' -   `ipv6-cidr-block-association.ipv6-cidr-block` - An IPv6 CIDR block associated with the subnet.
 #' 
@@ -9498,7 +10496,11 @@ describe_stale_security_groups <- function (DryRun = NULL, MaxResults = NULL,
 #' 
 #' -   `ipv6-cidr-block-association.state` - The state of an IPv6 CIDR block associated with the subnet.
 #' 
+#' -   `owner-id` - The ID of the AWS account that owns the subnet.
+#' 
 #' -   `state` - The state of the subnet (`pending` \| `available`).
+#' 
+#' -   `subnet-arn` - The Amazon Resource Name (ARN) of the subnet.
 #' 
 #' -   `subnet-id` - The ID of the subnet.
 #' 
@@ -9544,7 +10546,7 @@ describe_subnets <- function (Filters = NULL, SubnetIds = NULL,
 #'
 #' Describes one or more of the tags for your EC2 resources.
 #' 
-#' For more information about tags, see [Tagging Your Resources](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information about tags, see [Tagging Your Resources](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -9606,11 +10608,253 @@ describe_tags <- function (DryRun = NULL, Filters = NULL, MaxResults = NULL,
     return(response)
 }
 
+#' Describes one or more attachments between resources and transit gateways
+#'
+#' Describes one or more attachments between resources and transit gateways. By default, all attachments are described. Alternatively, you can filter the results by attachment ID, attachment state, resource ID, or resource owner.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_transit_gateway_attachments(
+#'   TransitGatewayAttachmentIds = list(
+#'     "string"
+#'   ),
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param TransitGatewayAttachmentIds The IDs of the attachments.
+#' @param Filters One or more filters. The possible values are:
+#' 
+#' -   `association.state` - The state of the association (`associating` \| `associated` \| `disassociating`).
+#' 
+#' -   `association.transit-gateway-route-table-id` - The ID of the route table for the transit gateway.
+#' 
+#' -   `resource-id` - The ID of the resource.
+#' 
+#' -   `resource-owner-id` - The ID of the AWS account that owns the resource.
+#' 
+#' -   `resource-type` - The resource type (`vpc` \| `vpn`).
+#' 
+#' -   `state` - The state of the attachment (`available` \| `deleted` \| `deleting` \| `failed` \| `modifying` \| `pendingAcceptance` \| `pending` \| `rollingBack` \| `rejected` \| `rejecting`).
+#' 
+#' -   `transit-gateway-attachment-id` - The ID of the attachment.
+#' 
+#' -   `transit-gateway-id` - The ID of the transit gateway.
+#' 
+#' -   `transit-gateway-owner-id` - The ID of the AWS account that owns the transit gateway.
+#' @param MaxResults The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned `nextToken` value.
+#' @param NextToken The token for the next page of results.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+describe_transit_gateway_attachments <- function (TransitGatewayAttachmentIds = NULL, 
+    Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) 
+{
+    op <- new_operation(name = "DescribeTransitGatewayAttachments", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_transit_gateway_attachments_input(TransitGatewayAttachmentIds = TransitGatewayAttachmentIds, 
+        Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, 
+        DryRun = DryRun)
+    output <- describe_transit_gateway_attachments_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes one or more transit gateway route tables
+#'
+#' Describes one or more transit gateway route tables. By default, all transit gateway route tables are described. Alternatively, you can filter the results.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_transit_gateway_route_tables(
+#'   TransitGatewayRouteTableIds = list(
+#'     "string"
+#'   ),
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param TransitGatewayRouteTableIds The IDs of the transit gateway route tables.
+#' @param Filters One or more filters. The possible values are:
+#' 
+#' -   `default-association-route-table` - Indicates whether this is the default association route table for the transit gateway (`true` \| `false`).
+#' 
+#' -   `default-propagation-route-table` - Indicates whether this is the default propagation route table for the transit gateway (`true` \| `false`).
+#' 
+#' -   `state` - The state of the attachment (`available` \| `deleted` \| `deleting` \| `failed` \| `modifying` \| `pendingAcceptance` \| `pending` \| `rollingBack` \| `rejected` \| `rejecting`).
+#' 
+#' -   `transit-gateway-id` - The ID of the transit gateway.
+#' 
+#' -   `transit-gateway-route-table-id` - The ID of the transit gateway route table.
+#' @param MaxResults The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned `nextToken` value.
+#' @param NextToken The token for the next page of results.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+describe_transit_gateway_route_tables <- function (TransitGatewayRouteTableIds = NULL, 
+    Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) 
+{
+    op <- new_operation(name = "DescribeTransitGatewayRouteTables", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_transit_gateway_route_tables_input(TransitGatewayRouteTableIds = TransitGatewayRouteTableIds, 
+        Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, 
+        DryRun = DryRun)
+    output <- describe_transit_gateway_route_tables_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes one or more VPC attachments
+#'
+#' Describes one or more VPC attachments. By default, all VPC attachments are described. Alternatively, you can filter the results.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_transit_gateway_vpc_attachments(
+#'   TransitGatewayAttachmentIds = list(
+#'     "string"
+#'   ),
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param TransitGatewayAttachmentIds The IDs of the attachments.
+#' @param Filters One or more filters. The possible values are:
+#' 
+#' -   `state` - The state of the attachment (`available` \| `deleted` \| `deleting` \| `failed` \| `modifying` \| `pendingAcceptance` \| `pending` \| `rollingBack` \| `rejected` \| `rejecting`).
+#' 
+#' -   `transit-gateway-attachment-id` - The ID of the attachment.
+#' 
+#' -   `transit-gateway-id` - The ID of the transit gateway.
+#' 
+#' -   `vpc-id` - The ID of the VPC.
+#' @param MaxResults The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned `nextToken` value.
+#' @param NextToken The token for the next page of results.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+describe_transit_gateway_vpc_attachments <- function (TransitGatewayAttachmentIds = NULL, 
+    Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) 
+{
+    op <- new_operation(name = "DescribeTransitGatewayVpcAttachments", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_transit_gateway_vpc_attachments_input(TransitGatewayAttachmentIds = TransitGatewayAttachmentIds, 
+        Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, 
+        DryRun = DryRun)
+    output <- describe_transit_gateway_vpc_attachments_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Describes one or more transit gateways
+#'
+#' Describes one or more transit gateways. By default, all transit gateways are described. Alternatively, you can filter the results.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_transit_gateways(
+#'   TransitGatewayIds = list(
+#'     "string"
+#'   ),
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param TransitGatewayIds The IDs of the transit gateways.
+#' @param Filters One or more filters. The possible values are:
+#' 
+#' -   `options.propagation-default-route-table-id` - The ID of the default propagation route table.
+#' 
+#' -   `options.amazon-side-asn` - The private ASN for the Amazon side of a BGP session.
+#' 
+#' -   `options.association-default-route-table-id` - The ID of the default association route table.
+#' 
+#' -   `options.auto-accept-shared-attachments` - Indicates whether there is automatic acceptance of attachment requests (`enable` \| `disable`).
+#' 
+#' -   `options.default-route-table-association` - Indicates whether resource attachments are automatically associated with the default association route table (`enable` \| `disable`).
+#' 
+#' -   `options.default-route-table-propagation` - Indicates whether resource attachments automatically propagate routes to the default propagation route table (`enable` \| `disable`).
+#' 
+#' -   `options.dns-support` - Indicates whether DNS support is enabled (`enable` \| `disable`).
+#' 
+#' -   `options.vpn-ecmp-support` - Indicates whether Equal Cost Multipath Protocol support is enabled (`enable` \| `disable`).
+#' 
+#' -   `owner-id` - The ID of the AWS account that owns the transit gateway.
+#' 
+#' -   `state` - The state of the attachment (`available` \| `deleted` \| `deleting` \| `failed` \| `modifying` \| `pendingAcceptance` \| `pending` \| `rollingBack` \| `rejected` \| `rejecting`).
+#' 
+#' -   `transit-gateway-id` - The ID of the transit gateway.
+#' @param MaxResults The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned `nextToken` value.
+#' @param NextToken The token for the next page of results.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+describe_transit_gateways <- function (TransitGatewayIds = NULL, 
+    Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) 
+{
+    op <- new_operation(name = "DescribeTransitGateways", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_transit_gateways_input(TransitGatewayIds = TransitGatewayIds, 
+        Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, 
+        DryRun = DryRun)
+    output <- describe_transit_gateways_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Describes the specified attribute of the specified volume
 #'
 #' Describes the specified attribute of the specified volume. You can specify only one attribute at a time.
 #' 
-#' For more information about EBS volumes, see [Amazon EBS Volumes](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumes.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information about EBS volumes, see [Amazon EBS Volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumes.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -9653,7 +10897,7 @@ describe_volume_attribute <- function (Attribute, VolumeId, DryRun = NULL)
 #' 
 #' The `DescribeVolumeStatus` operation provides the following information about the specified volumes:
 #' 
-#' *Status*: Reflects the current status of the volume. The possible values are `ok`, `impaired` , `warning`, or `insufficient-data`. If all checks pass, the overall status of the volume is `ok`. If the check fails, the overall status is `impaired`. If the status is `insufficient-data`, then the checks may still be taking place on your volume at the time. We recommend that you retry the request. For more information about volume status, see [Monitoring the Status of Your Volumes](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-volume-status.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' *Status*: Reflects the current status of the volume. The possible values are `ok`, `impaired` , `warning`, or `insufficient-data`. If all checks pass, the overall status of the volume is `ok`. If the check fails, the overall status is `impaired`. If the status is `insufficient-data`, then the checks may still be taking place on your volume at the time. We recommend that you retry the request. For more information about volume status, see [Monitoring the Status of Your Volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-volume-status.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' 
 #' *Events*: Reflect the cause of a volume status and may require you to take action. For example, if your volume returns an `impaired` status, then the volume event might be `potential-data-inconsistency`. This means that your volume has been affected by an issue with the underlying host, has all I/O operations disabled, and may have inconsistent data.
 #' 
@@ -9757,7 +11001,7 @@ describe_volume_status <- function (Filters = NULL, MaxResults = NULL,
 #' 
 #' If you are describing a long list of volumes, you can paginate the output to make the list more manageable. The `MaxResults` parameter sets the maximum number of results returned in a single page. If the list of results exceeds your `MaxResults` value, then that number of results is returned along with a `NextToken` value that can be passed to a subsequent `DescribeVolumes` request to retrieve the remaining results.
 #' 
-#' For more information about EBS volumes, see [Amazon EBS Volumes](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumes.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information about EBS volumes, see [Amazon EBS Volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumes.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -9860,7 +11104,7 @@ describe_volumes <- function (Filters = NULL, VolumeIds = NULL,
 #' 
 #' Current-generation EBS volumes support modification of attributes including type, size, and (for `io1` volumes) IOPS provisioning while either attached to or detached from an instance. Following an action from the API or the console to modify a volume, the status of the modification may be `modifying`, `optimizing`, `completed`, or `failed`. If a volume has never been modified, then certain elements of the returned `VolumeModification` objects are null.
 #' 
-#' You can also use CloudWatch Events to check the status of a modification to an EBS volume. For information about CloudWatch Events, see the [Amazon CloudWatch Events User Guide](http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/). For more information, see [Monitoring Volume Modifications\"](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#monitoring_mods) in the *Amazon Elastic Compute Cloud User Guide*.
+#' You can also use CloudWatch Events to check the status of a modification to an EBS volume. For information about CloudWatch Events, see the [Amazon CloudWatch Events User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/). For more information, see [Monitoring Volume Modifications\"](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#monitoring_mods) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -10003,7 +11247,7 @@ describe_vpc_classic_link <- function (Filters = NULL, DryRun = NULL,
 
 #' Describes the ClassicLink DNS support status of one or more VPCs
 #'
-#' Describes the ClassicLink DNS support status of one or more VPCs. If enabled, the DNS hostname of a linked EC2-Classic instance resolves to its private IP address when addressed from an instance in the VPC to which it\'s linked. Similarly, the DNS hostname of an instance in a VPC resolves to its private IP address when addressed from a linked EC2-Classic instance. For more information, see [ClassicLink](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' Describes the ClassicLink DNS support status of one or more VPCs. If enabled, the DNS hostname of a linked EC2-Classic instance resolves to its private IP address when addressed from an instance in the VPC to which it\'s linked. Similarly, the DNS hostname of an instance in a VPC resolves to its private IP address when addressed from a linked EC2-Classic instance. For more information, see [ClassicLink](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -10364,7 +11608,9 @@ describe_vpc_endpoints <- function (DryRun = NULL, VpcEndpointIds = NULL,
 #'   DryRun = TRUE|FALSE,
 #'   VpcPeeringConnectionIds = list(
 #'     "string"
-#'   )
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
 #' )
 #' ```
 #'
@@ -10397,15 +11643,19 @@ describe_vpc_endpoints <- function (DryRun = NULL, VpcEndpointIds = NULL,
 #' @param VpcPeeringConnectionIds One or more VPC peering connection IDs.
 #' 
 #' Default: Describes all your VPC peering connections.
+#' @param NextToken The token to request the next page of results. (You received this token from a prior call.)
+#' @param MaxResults The maximum number of results to return for this request. The request returns a token that you can specify in a subsequent call to get the next set of results.
 #'
 #' @export
 describe_vpc_peering_connections <- function (Filters = NULL, 
-    DryRun = NULL, VpcPeeringConnectionIds = NULL) 
+    DryRun = NULL, VpcPeeringConnectionIds = NULL, NextToken = NULL, 
+    MaxResults = NULL) 
 {
     op <- new_operation(name = "DescribeVpcPeeringConnections", 
         http_method = "POST", http_path = "/", paginator = list())
     input <- describe_vpc_peering_connections_input(Filters = Filters, 
-        DryRun = DryRun, VpcPeeringConnectionIds = VpcPeeringConnectionIds)
+        DryRun = DryRun, VpcPeeringConnectionIds = VpcPeeringConnectionIds, 
+        NextToken = NextToken, MaxResults = MaxResults)
     output <- describe_vpc_peering_connections_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -10455,6 +11705,8 @@ describe_vpc_peering_connections <- function (Filters = NULL,
 #' 
 #' -   `isDefault` - Indicates whether the VPC is the default VPC.
 #' 
+#' -   `owner-id` - The ID of the AWS account that owns the VPC.
+#' 
 #' -   `state` - The state of the VPC (`pending` \| `available`).
 #' 
 #' -   `tag`:\<key\> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key `Owner` and the value `TeamA`, specify `tag:Owner` for the filter name and `TeamA` for the filter value.
@@ -10493,7 +11745,7 @@ describe_vpcs <- function (Filters = NULL, VpcIds = NULL, DryRun = NULL)
 #'
 #' Describes one or more of your VPN connections.
 #' 
-#' For more information about VPN connections, see [AWS Managed VPN Connections](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' For more information, see [AWS Site-to-Site VPN](https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html) in the *AWS Site-to-Site VPN User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -10560,7 +11812,7 @@ describe_vpn_connections <- function (Filters = NULL, VpnConnectionIds = NULL,
 #'
 #' Describes one or more of your virtual private gateways.
 #' 
-#' For more information about virtual private gateways, see [AWS Managed VPN Connections](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' For more information, see [AWS Site-to-Site VPN](https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html) in the *AWS Site-to-Site VPN User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -10736,7 +11988,7 @@ detach_network_interface <- function (AttachmentId, DryRun = NULL,
 #' 
 #' When a volume with an AWS Marketplace product code is detached from an instance, the product code is no longer associated with the instance.
 #' 
-#' For more information, see [Detaching an Amazon EBS Volume](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-detaching-volume.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information, see [Detaching an Amazon EBS Volume](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-detaching-volume.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -10804,6 +12056,39 @@ detach_vpn_gateway <- function (VpcId, VpnGatewayId, DryRun = NULL)
     input <- detach_vpn_gateway_input(VpcId = VpcId, VpnGatewayId = VpnGatewayId, 
         DryRun = DryRun)
     output <- detach_vpn_gateway_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Disables the specified resource attachment from propagating routes to the specified propagation route table
+#'
+#' Disables the specified resource attachment from propagating routes to the specified propagation route table.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' disable_transit_gateway_route_table_propagation(
+#'   TransitGatewayRouteTableId = "string",
+#'   TransitGatewayAttachmentId = "string",
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param TransitGatewayRouteTableId &#91;required&#93; The ID of the propagation route table.
+#' @param TransitGatewayAttachmentId &#91;required&#93; The ID of the attachment.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+disable_transit_gateway_route_table_propagation <- function (TransitGatewayRouteTableId, 
+    TransitGatewayAttachmentId, DryRun = NULL) 
+{
+    op <- new_operation(name = "DisableTransitGatewayRouteTablePropagation", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- disable_transit_gateway_route_table_propagation_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, 
+        TransitGatewayAttachmentId = TransitGatewayAttachmentId, 
+        DryRun = DryRun)
+    output <- disable_transit_gateway_route_table_propagation_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -10878,7 +12163,7 @@ disable_vpc_classic_link <- function (DryRun = NULL, VpcId)
 
 #' Disables ClassicLink DNS support for a VPC
 #'
-#' Disables ClassicLink DNS support for a VPC. If disabled, DNS hostnames resolve to public IP addresses when addressed between a linked EC2-Classic instance and instances in the VPC to which it\'s linked. For more information, see [ClassicLink](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' Disables ClassicLink DNS support for a VPC. If disabled, DNS hostnames resolve to public IP addresses when addressed between a linked EC2-Classic instance and instances in the VPC to which it\'s linked. For more information, see [ClassicLink](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -10906,7 +12191,7 @@ disable_vpc_classic_link_dns_support <- function (VpcId = NULL)
 #'
 #' Disassociates an Elastic IP address from the instance or network interface it\'s associated with.
 #' 
-#' An Elastic IP address is for use in either the EC2-Classic platform or in a VPC. For more information, see [Elastic IP Addresses](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' An Elastic IP address is for use in either the EC2-Classic platform or in a VPC. For more information, see [Elastic IP Addresses](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' 
 #' This is an idempotent operation. If you perform the operation more than once, Amazon EC2 doesn\'t return an error.
 #'
@@ -10945,6 +12230,46 @@ disassociate_address <- function (AssociationId = NULL, PublicIp = NULL,
     input <- disassociate_address_input(AssociationId = AssociationId, 
         PublicIp = PublicIp, DryRun = DryRun)
     output <- disassociate_address_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Disassociates a target network from the specified Client VPN endpoint
+#'
+#' Disassociates a target network from the specified Client VPN endpoint. When you disassociate the last target network from a Client VPN, the following happens:
+#' 
+#' -   The route that was automatically added for the VPC is deleted
+#' 
+#' -   All active client connections are terminated
+#' 
+#' -   New client connections are disallowed
+#' 
+#' -   The Client VPN endpoint\'s status changes to `pending-associate`
+#'
+#' @section Accepted Parameters:
+#' ```
+#' disassociate_client_vpn_target_network(
+#'   ClientVpnEndpointId = "string",
+#'   AssociationId = "string",
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param ClientVpnEndpointId &#91;required&#93; The ID of the Client VPN endpoint from which to disassociate the target network.
+#' @param AssociationId &#91;required&#93; The ID of the target network association.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+disassociate_client_vpn_target_network <- function (ClientVpnEndpointId, 
+    AssociationId, DryRun = NULL) 
+{
+    op <- new_operation(name = "DisassociateClientVpnTargetNetwork", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- disassociate_client_vpn_target_network_input(ClientVpnEndpointId = ClientVpnEndpointId, 
+        AssociationId = AssociationId, DryRun = DryRun)
+    output <- disassociate_client_vpn_target_network_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -10990,7 +12315,7 @@ disassociate_iam_instance_profile <- function (AssociationId)
 #'
 #' Disassociates a subnet from a route table.
 #' 
-#' After you perform this action, the subnet no longer uses the routes in the route table. Instead, it uses the routes in the VPC\'s main route table. For more information about route tables, see [Route Tables](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' After you perform this action, the subnet no longer uses the routes in the route table. Instead, it uses the routes in the VPC\'s main route table. For more information about route tables, see [Route Tables](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html) in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -11050,6 +12375,39 @@ disassociate_subnet_cidr_block <- function (AssociationId)
     return(response)
 }
 
+#' Disassociates a resource attachment from a transit gateway route table
+#'
+#' Disassociates a resource attachment from a transit gateway route table.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' disassociate_transit_gateway_route_table(
+#'   TransitGatewayRouteTableId = "string",
+#'   TransitGatewayAttachmentId = "string",
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param TransitGatewayRouteTableId &#91;required&#93; The ID of the transit gateway route table.
+#' @param TransitGatewayAttachmentId &#91;required&#93; The ID of the attachment.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+disassociate_transit_gateway_route_table <- function (TransitGatewayRouteTableId, 
+    TransitGatewayAttachmentId, DryRun = NULL) 
+{
+    op <- new_operation(name = "DisassociateTransitGatewayRouteTable", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- disassociate_transit_gateway_route_table_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, 
+        TransitGatewayAttachmentId = TransitGatewayAttachmentId, 
+        DryRun = DryRun)
+    output <- disassociate_transit_gateway_route_table_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Disassociates a CIDR block from a VPC
 #'
 #' Disassociates a CIDR block from a VPC. To disassociate the CIDR block, you must specify its association ID. You can get the association ID by using DescribeVpcs. You must detach or delete all gateways and resources that are associated with the CIDR block before you can disassociate it.
@@ -11072,6 +12430,39 @@ disassociate_vpc_cidr_block <- function (AssociationId)
         http_path = "/", paginator = list())
     input <- disassociate_vpc_cidr_block_input(AssociationId = AssociationId)
     output <- disassociate_vpc_cidr_block_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Enables the specified attachment to propagate routes to the specified propagation route table
+#'
+#' Enables the specified attachment to propagate routes to the specified propagation route table.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' enable_transit_gateway_route_table_propagation(
+#'   TransitGatewayRouteTableId = "string",
+#'   TransitGatewayAttachmentId = "string",
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param TransitGatewayRouteTableId &#91;required&#93; The ID of the propagation route table.
+#' @param TransitGatewayAttachmentId &#91;required&#93; The ID of the attachment.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+enable_transit_gateway_route_table_propagation <- function (TransitGatewayRouteTableId, 
+    TransitGatewayAttachmentId, DryRun = NULL) 
+{
+    op <- new_operation(name = "EnableTransitGatewayRouteTablePropagation", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- enable_transit_gateway_route_table_propagation_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, 
+        TransitGatewayAttachmentId = TransitGatewayAttachmentId, 
+        DryRun = DryRun)
+    output <- enable_transit_gateway_route_table_propagation_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -11151,7 +12542,7 @@ enable_volume_io <- function (DryRun = NULL, VolumeId)
 
 #' Enables a VPC for ClassicLink
 #'
-#' Enables a VPC for ClassicLink. You can then link EC2-Classic instances to your ClassicLink-enabled VPC to allow communication over private IP addresses. You cannot enable your VPC for ClassicLink if any of your VPC route tables have existing routes for address ranges within the `10.0.0.0/8` IP address range, excluding local routes for VPCs in the `10.0.0.0/16` and `10.1.0.0/16` IP address ranges. For more information, see [ClassicLink](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' Enables a VPC for ClassicLink. You can then link EC2-Classic instances to your ClassicLink-enabled VPC to allow communication over private IP addresses. You cannot enable your VPC for ClassicLink if any of your VPC route tables have existing routes for address ranges within the `10.0.0.0/8` IP address range, excluding local routes for VPCs in the `10.0.0.0/16` and `10.1.0.0/16` IP address ranges. For more information, see [ClassicLink](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -11179,7 +12570,7 @@ enable_vpc_classic_link <- function (DryRun = NULL, VpcId)
 
 #' Enables a VPC to support DNS hostname resolution for ClassicLink
 #'
-#' Enables a VPC to support DNS hostname resolution for ClassicLink. If enabled, the DNS hostname of a linked EC2-Classic instance resolves to its private IP address when addressed from an instance in the VPC to which it\'s linked. Similarly, the DNS hostname of an instance in a VPC resolves to its private IP address when addressed from a linked EC2-Classic instance. For more information, see [ClassicLink](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' Enables a VPC to support DNS hostname resolution for ClassicLink. If enabled, the DNS hostname of a linked EC2-Classic instance resolves to its private IP address when addressed from an instance in the VPC to which it\'s linked. Similarly, the DNS hostname of an instance in a VPC resolves to its private IP address when addressed from a linked EC2-Classic instance. For more information, see [ClassicLink](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -11203,6 +12594,125 @@ enable_vpc_classic_link_dns_support <- function (VpcId = NULL)
     return(response)
 }
 
+#' Downloads the client certificate revocation list for the specified Client VPN endpoint
+#'
+#' Downloads the client certificate revocation list for the specified Client VPN endpoint.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' export_client_vpn_client_certificate_revocation_list(
+#'   ClientVpnEndpointId = "string",
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param ClientVpnEndpointId &#91;required&#93; The ID of the Client VPN endpoint.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+export_client_vpn_client_certificate_revocation_list <- function (ClientVpnEndpointId, 
+    DryRun = NULL) 
+{
+    op <- new_operation(name = "ExportClientVpnClientCertificateRevocationList", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- export_client_vpn_client_certificate_revocation_list_input(ClientVpnEndpointId = ClientVpnEndpointId, 
+        DryRun = DryRun)
+    output <- export_client_vpn_client_certificate_revocation_list_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Downloads the contents of the Client VPN endpoint configuration file for the specified Client VPN endpoint
+#'
+#' Downloads the contents of the Client VPN endpoint configuration file for the specified Client VPN endpoint. The Client VPN endpoint configuration file includes the Client VPN endpoint and certificate information clients need to establish a connection with the Client VPN endpoint.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' export_client_vpn_client_configuration(
+#'   ClientVpnEndpointId = "string",
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param ClientVpnEndpointId &#91;required&#93; The ID of the Client VPN endpoint.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+export_client_vpn_client_configuration <- function (ClientVpnEndpointId, 
+    DryRun = NULL) 
+{
+    op <- new_operation(name = "ExportClientVpnClientConfiguration", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- export_client_vpn_client_configuration_input(ClientVpnEndpointId = ClientVpnEndpointId, 
+        DryRun = DryRun)
+    output <- export_client_vpn_client_configuration_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Exports routes from the specified transit gateway route table to the specified S3 bucket
+#'
+#' Exports routes from the specified transit gateway route table to the specified S3 bucket. By default, all routes are exported. Alternatively, you can filter by CIDR range.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' export_transit_gateway_routes(
+#'   TransitGatewayRouteTableId = "string",
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   S3Bucket = "string",
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param TransitGatewayRouteTableId &#91;required&#93; The ID of the route table.
+#' @param Filters One or more filters. The possible values are:
+#' 
+#' -   `attachment.transit-gateway-attachment-id`- The id of the transit gateway attachment.
+#' 
+#' -   `attachment.resource-id` - The resource id of the transit gateway attachment.
+#' 
+#' -   `route-search.exact-match` - The exact match of the specified filter.
+#' 
+#' -   `route-search.longest-prefix-match` - The longest prefix that matches the route.
+#' 
+#' -   `route-search.subnet-of-match` - The routes with a subnet that match the specified CIDR filter.
+#' 
+#' -   `route-search.supernet-of-match` - The routes with a CIDR that encompass the CIDR filter. For example, if you have 10.0.1.0/29 and 10.0.1.0/31 routes in your route table and you specify supernet-of-match as 10.0.1.0/30, then the result returns 10.0.1.0/29.
+#' 
+#' -   `state` - The state of the attachment (`available` \| `deleted` \| `deleting` \| `failed` \| `modifying` \| `pendingAcceptance` \| `pending` \| `rollingBack` \| `rejected` \| `rejecting`).
+#' 
+#' -   `transit-gateway-route-destination-cidr-block` - The CIDR range.
+#' 
+#' -   `type` - The type of roue (`active` \| `blackhole`).
+#' @param S3Bucket &#91;required&#93; The name of the S3 bucket.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+export_transit_gateway_routes <- function (TransitGatewayRouteTableId, 
+    Filters = NULL, S3Bucket, DryRun = NULL) 
+{
+    op <- new_operation(name = "ExportTransitGatewayRoutes", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- export_transit_gateway_routes_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, 
+        Filters = Filters, S3Bucket = S3Bucket, DryRun = DryRun)
+    output <- export_transit_gateway_routes_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Gets the console output for the specified instance
 #'
 #' Gets the console output for the specified instance. For Linux instances, the instance console output displays the exact console output that would normally be displayed on a physical monitor attached to a computer. For Windows instances, the instance console output includes the last three system event log errors.
@@ -11211,7 +12721,7 @@ enable_vpc_classic_link_dns_support <- function (VpcId = NULL)
 #' 
 #' You can optionally retrieve the latest serial console output at any time during the instance lifecycle. This option is supported on instance types that use the Nitro hypervisor.
 #' 
-#' For more information, see [Instance Console Output](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-console.html#instance-console-console-output) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information, see [Instance Console Output](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-console.html#instance-console-console-output) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -11355,7 +12865,7 @@ get_launch_template_data <- function (DryRun = NULL, InstanceId)
 #'
 #' Retrieves the encrypted administrator password for a running Windows instance.
 #' 
-#' The Windows password is generated at boot by the `EC2Config` service or `EC2Launch` scripts (Windows Server 2016 and later). This usually only happens the first time an instance is launched. For more information, see [EC2Config](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/UsingConfig_WinAMI.html) and [EC2Launch](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch.html) in the Amazon Elastic Compute Cloud User Guide.
+#' The Windows password is generated at boot by the `EC2Config` service or `EC2Launch` scripts (Windows Server 2016 and later). This usually only happens the first time an instance is launched. For more information, see [EC2Config](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/UsingConfig_WinAMI.html) and [EC2Launch](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch.html) in the Amazon Elastic Compute Cloud User Guide.
 #' 
 #' For the `EC2Config` service, the password is not generated for rebundled AMIs unless `Ec2SetPassword` is enabled before bundling.
 #' 
@@ -11427,9 +12937,190 @@ get_reserved_instances_exchange_quote <- function (DryRun = NULL,
     return(response)
 }
 
+#' Lists the route tables to which the specified resource attachment propagates routes
+#'
+#' Lists the route tables to which the specified resource attachment propagates routes.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' get_transit_gateway_attachment_propagations(
+#'   TransitGatewayAttachmentId = "string",
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param TransitGatewayAttachmentId &#91;required&#93; The ID of the attachment.
+#' @param Filters One or more filters. The possible values are:
+#' 
+#' -   `transit-gateway-route-table-id` - The ID of the transit gateway route table.
+#' @param MaxResults The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned `nextToken` value.
+#' @param NextToken The token for the next page of results.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+get_transit_gateway_attachment_propagations <- function (TransitGatewayAttachmentId, 
+    Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) 
+{
+    op <- new_operation(name = "GetTransitGatewayAttachmentPropagations", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- get_transit_gateway_attachment_propagations_input(TransitGatewayAttachmentId = TransitGatewayAttachmentId, 
+        Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, 
+        DryRun = DryRun)
+    output <- get_transit_gateway_attachment_propagations_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets information about the associations for the specified transit gateway route table
+#'
+#' Gets information about the associations for the specified transit gateway route table.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' get_transit_gateway_route_table_associations(
+#'   TransitGatewayRouteTableId = "string",
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param TransitGatewayRouteTableId &#91;required&#93; The ID of the transit gateway route table.
+#' @param Filters One or more filters. The possible values are:
+#' 
+#' -   `resource-id` - The ID of the resource.
+#' 
+#' -   `resource-type` - The resource type (`vpc` \| `vpn`).
+#' 
+#' -   `transit-gateway-attachment-id` - The ID of the attachment.
+#' @param MaxResults The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned `nextToken` value.
+#' @param NextToken The token for the next page of results.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+get_transit_gateway_route_table_associations <- function (TransitGatewayRouteTableId, 
+    Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) 
+{
+    op <- new_operation(name = "GetTransitGatewayRouteTableAssociations", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- get_transit_gateway_route_table_associations_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, 
+        Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, 
+        DryRun = DryRun)
+    output <- get_transit_gateway_route_table_associations_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets information about the route table propagations for the specified transit gateway route table
+#'
+#' Gets information about the route table propagations for the specified transit gateway route table.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' get_transit_gateway_route_table_propagations(
+#'   TransitGatewayRouteTableId = "string",
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param TransitGatewayRouteTableId &#91;required&#93; The ID of the transit gateway route table.
+#' @param Filters One or more filters. The possible values are:
+#' 
+#' -   `resource-id` - The ID of the resource.
+#' 
+#' -   `resource-type` - The resource type (`vpc` \| `vpn`).
+#' 
+#' -   `transit-gateway-attachment-id` - The ID of the attachment.
+#' @param MaxResults The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned `nextToken` value.
+#' @param NextToken The token for the next page of results.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+get_transit_gateway_route_table_propagations <- function (TransitGatewayRouteTableId, 
+    Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) 
+{
+    op <- new_operation(name = "GetTransitGatewayRouteTablePropagations", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- get_transit_gateway_route_table_propagations_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, 
+        Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, 
+        DryRun = DryRun)
+    output <- get_transit_gateway_route_table_propagations_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Uploads a client certificate revocation list to the specified Client VPN endpoint
+#'
+#' Uploads a client certificate revocation list to the specified Client VPN endpoint. Uploading a client certificate revocation list overwrites the existing client certificate revocation list.
+#' 
+#' Uploading a client certificate revocation list resets existing client connections.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' import_client_vpn_client_certificate_revocation_list(
+#'   ClientVpnEndpointId = "string",
+#'   CertificateRevocationList = "string",
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param ClientVpnEndpointId &#91;required&#93; The ID of the Client VPN endpoint to which the client certificate revocation list applies.
+#' @param CertificateRevocationList &#91;required&#93; The client certificate revocation list file. For more information, see [Generate a Client Certificate Revocation List](vpn/latest/clientvpn-admin/cvpn-working-certificates.html#cvpn-working-certificates-generate) in the *AWS Client VPN Admin Guide*.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+import_client_vpn_client_certificate_revocation_list <- function (ClientVpnEndpointId, 
+    CertificateRevocationList, DryRun = NULL) 
+{
+    op <- new_operation(name = "ImportClientVpnClientCertificateRevocationList", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- import_client_vpn_client_certificate_revocation_list_input(ClientVpnEndpointId = ClientVpnEndpointId, 
+        CertificateRevocationList = CertificateRevocationList, 
+        DryRun = DryRun)
+    output <- import_client_vpn_client_certificate_revocation_list_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Import single or multi-volume disk images or EBS snapshots into an Amazon Machine Image (AMI)
 #'
-#' Import single or multi-volume disk images or EBS snapshots into an Amazon Machine Image (AMI). For more information, see [Importing a VM as an Image Using VM Import/Export](http://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html) in the *VM Import/Export User Guide*.
+#' Import single or multi-volume disk images or EBS snapshots into an Amazon Machine Image (AMI). For more information, see [Importing a VM as an Image Using VM Import/Export](https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html) in the *VM Import/Export User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -11457,7 +13148,9 @@ get_reserved_instances_exchange_quote <- function (DryRun = NULL,
 #'     )
 #'   ),
 #'   DryRun = TRUE|FALSE,
+#'   Encrypted = TRUE|FALSE,
 #'   Hypervisor = "string",
+#'   KmsKeyId = "string",
 #'   LicenseType = "string",
 #'   Platform = "string",
 #'   RoleName = "string"
@@ -11472,12 +13165,28 @@ get_reserved_instances_exchange_quote <- function (DryRun = NULL,
 #' @param Description A description string for the import image task.
 #' @param DiskContainers Information about the disk containers.
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#' @param Encrypted Specifies whether the destination AMI of the imported image should be encrypted. The default CMK for EBS is used unless you specify a non-default AWS Key Management Service (AWS KMS) CMK using `KmsKeyId`. For more information, see [Amazon EBS Encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' @param Hypervisor The target hypervisor platform.
 #' 
 #' Valid values: `xen`
+#' @param KmsKeyId An identifier for the AWS Key Management Service (AWS KMS) customer master key (CMK) to use when creating the encrypted AMI. This parameter is only required if you want to use a non-default CMK; if this parameter is not specified, the default CMK for EBS is used. If a `KmsKeyId` is specified, the `Encrypted` flag must also be set.
+#' 
+#' The CMK identifier may be provided in any of the following formats:
+#' 
+#' -   Key ID
+#' 
+#' -   Key alias, in the form `alias/ExampleAlias ExampleAlias `
+#' 
+#' -   ARN using key ID. The ID ARN contains the `arn:aws:kms` namespace, followed by the region of the CMK, the AWS account ID of the CMK owner, the `key` namespace, and then the CMK ID. For example, arn:aws:kms:*us-east-1*:*012345678910*:key/*abcd1234-a123-456a-a12b-a123b4cd56ef*.
+#' 
+#' -   ARN using key alias. The alias ARN contains the `arn:aws:kms` namespace, followed by the region of the CMK, the AWS account ID of the CMK owner, the `alias` namespace, and then the CMK alias. For example, arn:aws:kms:*us-east-1*:*012345678910*:alias/*ExampleAlias*.
+#' 
+#' AWS parses `KmsKeyId` asynchronously, meaning that the action you call may appear to complete even though you provided an invalid identifier. This action will eventually report failure.
+#' 
+#' The specified CMK must exist in the region that the AMI is being copied to.
 #' @param LicenseType The license type to be used for the Amazon Machine Image (AMI) after importing.
 #' 
-#' **Note:** You may only use BYOL if you have existing licenses with rights to use these licenses in a third party cloud like AWS. For more information, see [Prerequisites](http://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#prerequisites-image) in the VM Import/Export User Guide.
+#' **Note:** You may only use BYOL if you have existing licenses with rights to use these licenses in a third party cloud like AWS. For more information, see [Prerequisites](https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#prerequisites-image) in the VM Import/Export User Guide.
 #' 
 #' Valid values: `AWS` \| `BYOL`
 #' @param Platform The operating system of the virtual machine.
@@ -11488,15 +13197,16 @@ get_reserved_instances_exchange_quote <- function (DryRun = NULL,
 #' @export
 import_image <- function (Architecture = NULL, ClientData = NULL, 
     ClientToken = NULL, Description = NULL, DiskContainers = NULL, 
-    DryRun = NULL, Hypervisor = NULL, LicenseType = NULL, Platform = NULL, 
-    RoleName = NULL) 
+    DryRun = NULL, Encrypted = NULL, Hypervisor = NULL, KmsKeyId = NULL, 
+    LicenseType = NULL, Platform = NULL, RoleName = NULL) 
 {
     op <- new_operation(name = "ImportImage", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- import_image_input(Architecture = Architecture, 
         ClientData = ClientData, ClientToken = ClientToken, Description = Description, 
-        DiskContainers = DiskContainers, DryRun = DryRun, Hypervisor = Hypervisor, 
-        LicenseType = LicenseType, Platform = Platform, RoleName = RoleName)
+        DiskContainers = DiskContainers, DryRun = DryRun, Encrypted = Encrypted, 
+        Hypervisor = Hypervisor, KmsKeyId = KmsKeyId, LicenseType = LicenseType, 
+        Platform = Platform, RoleName = RoleName)
     output <- import_image_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -11506,9 +13216,9 @@ import_image <- function (Architecture = NULL, ClientData = NULL,
 
 #' Creates an import instance task using metadata from the specified disk image
 #'
-#' Creates an import instance task using metadata from the specified disk image. `ImportInstance` only supports single-volume VMs. To import multi-volume VMs, use ImportImage. For more information, see [Importing a Virtual Machine Using the Amazon EC2 CLI](http://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/ec2-cli-vmimport-export.html).
+#' Creates an import instance task using metadata from the specified disk image. `ImportInstance` only supports single-volume VMs. To import multi-volume VMs, use ImportImage. For more information, see [Importing a Virtual Machine Using the Amazon EC2 CLI](https://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/ec2-cli-vmimport-export.html).
 #' 
-#' For information about the import manifest referenced by this API action, see [VM Import Manifest](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html).
+#' For information about the import manifest referenced by this API action, see [VM Import Manifest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -11530,7 +13240,7 @@ import_image <- function (Architecture = NULL, ClientData = NULL,
 #'   DryRun = TRUE|FALSE,
 #'   LaunchSpecification = list(
 #'     AdditionalInfo = "string",
-#'     Architecture = "i386"|"x86_64",
+#'     Architecture = "i386"|"x86_64"|"arm64",
 #'     GroupIds = list(
 #'       "string"
 #'     ),
@@ -11538,12 +13248,13 @@ import_image <- function (Architecture = NULL, ClientData = NULL,
 #'       "string"
 #'     ),
 #'     InstanceInitiatedShutdownBehavior = "stop"|"terminate",
-#'     InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.18xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.18xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.12xlarge"|"m5.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.12xlarge"|"m5d.24xlarge"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal",
+#'     InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.12xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.12xlarge"|"r5a.24xlarge"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.12xlarge"|"r5d.24xlarge"|"r5d.metal"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.18xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.18xlarge"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.12xlarge"|"m5.24xlarge"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.12xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.12xlarge"|"m5d.24xlarge"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge",
 #'     Monitoring = TRUE|FALSE,
 #'     Placement = list(
 #'       AvailabilityZone = "string",
 #'       Affinity = "string",
 #'       GroupName = "string",
+#'       PartitionNumber = 123,
 #'       HostId = "string",
 #'       Tenancy = "default"|"dedicated"|"host",
 #'       SpreadDomain = "string"
@@ -11584,7 +13295,7 @@ import_instance <- function (Description = NULL, DiskImages = NULL,
 #'
 #' Imports the public key from an RSA key pair that you created with a third-party tool. Compare this with CreateKeyPair, in which AWS creates the key pair and gives the keys to you (AWS keeps a copy of the public key). With ImportKeyPair, you create the key pair and give AWS just the public key. The private key is never transferred between you and AWS.
 #' 
-#' For more information about key pairs, see [Key Pairs](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information about key pairs, see [Key Pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -11638,6 +13349,8 @@ import_key_pair <- function (DryRun = NULL, KeyName, PublicKeyMaterial)
 #'     )
 #'   ),
 #'   DryRun = TRUE|FALSE,
+#'   Encrypted = TRUE|FALSE,
+#'   KmsKeyId = "string",
 #'   RoleName = "string"
 #' )
 #' ```
@@ -11647,18 +13360,35 @@ import_key_pair <- function (DryRun = NULL, KeyName, PublicKeyMaterial)
 #' @param Description The description string for the import snapshot task.
 #' @param DiskContainer Information about the disk container.
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#' @param Encrypted Specifies whether the destination snapshot of the imported image should be encrypted. The default CMK for EBS is used unless you specify a non-default AWS Key Management Service (AWS KMS) CMK using `KmsKeyId`. For more information, see [Amazon EBS Encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' @param KmsKeyId An identifier for the AWS Key Management Service (AWS KMS) customer master key (CMK) to use when creating the encrypted snapshot. This parameter is only required if you want to use a non-default CMK; if this parameter is not specified, the default CMK for EBS is used. If a `KmsKeyId` is specified, the `Encrypted` flag must also be set.
+#' 
+#' The CMK identifier may be provided in any of the following formats:
+#' 
+#' -   Key ID
+#' 
+#' -   Key alias, in the form `alias/ExampleAlias ExampleAlias `
+#' 
+#' -   ARN using key ID. The ID ARN contains the `arn:aws:kms` namespace, followed by the region of the CMK, the AWS account ID of the CMK owner, the `key` namespace, and then the CMK ID. For example, arn:aws:kms:*us-east-1*:*012345678910*:key/*abcd1234-a123-456a-a12b-a123b4cd56ef*.
+#' 
+#' -   ARN using key alias. The alias ARN contains the `arn:aws:kms` namespace, followed by the region of the CMK, the AWS account ID of the CMK owner, the `alias` namespace, and then the CMK alias. For example, arn:aws:kms:*us-east-1*:*012345678910*:alias/*ExampleAlias*.
+#' 
+#' AWS parses `KmsKeyId` asynchronously, meaning that the action you call may appear to complete even though you provided an invalid identifier. This action will eventually report failure.
+#' 
+#' The specified CMK must exist in the region that the snapshot is being copied to.
 #' @param RoleName The name of the role to use when not using the default role, \'vmimport\'.
 #'
 #' @export
 import_snapshot <- function (ClientData = NULL, ClientToken = NULL, 
     Description = NULL, DiskContainer = NULL, DryRun = NULL, 
-    RoleName = NULL) 
+    Encrypted = NULL, KmsKeyId = NULL, RoleName = NULL) 
 {
     op <- new_operation(name = "ImportSnapshot", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- import_snapshot_input(ClientData = ClientData, ClientToken = ClientToken, 
         Description = Description, DiskContainer = DiskContainer, 
-        DryRun = DryRun, RoleName = RoleName)
+        DryRun = DryRun, Encrypted = Encrypted, KmsKeyId = KmsKeyId, 
+        RoleName = RoleName)
     output <- import_snapshot_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -11668,9 +13398,9 @@ import_snapshot <- function (ClientData = NULL, ClientToken = NULL,
 
 #' Creates an import volume task using metadata from the specified disk image
 #'
-#' Creates an import volume task using metadata from the specified disk image.For more information, see [Importing Disks to Amazon EBS](http://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/importing-your-volumes-into-amazon-ebs.html).
+#' Creates an import volume task using metadata from the specified disk image.For more information, see [Importing Disks to Amazon EBS](https://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/importing-your-volumes-into-amazon-ebs.html).
 #' 
-#' For information about the import manifest referenced by this API action, see [VM Import Manifest](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html).
+#' For information about the import manifest referenced by this API action, see [VM Import Manifest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -11751,6 +13481,65 @@ modify_capacity_reservation <- function (CapacityReservationId,
         InstanceCount = InstanceCount, EndDate = EndDate, EndDateType = EndDateType, 
         DryRun = DryRun)
     output <- modify_capacity_reservation_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Modifies the specified Client VPN endpoint
+#'
+#' Modifies the specified Client VPN endpoint. You can only modify an endpoint\'s server certificate information, client connection logging information, DNS server, and description. Modifying the DNS server resets existing client connections.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' modify_client_vpn_endpoint(
+#'   ClientVpnEndpointId = "string",
+#'   ServerCertificateArn = "string",
+#'   ConnectionLogOptions = list(
+#'     Enabled = TRUE|FALSE,
+#'     CloudwatchLogGroup = "string",
+#'     CloudwatchLogStream = "string"
+#'   ),
+#'   DnsServers = list(
+#'     CustomDnsServers = list(
+#'       "string"
+#'     ),
+#'     Enabled = TRUE|FALSE
+#'   ),
+#'   Description = "string",
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param ClientVpnEndpointId &#91;required&#93; The ID of the Client VPN endpoint to modify.
+#' @param ServerCertificateArn The ARN of the server certificate to be used. The server certificate must be provisioned in AWS Certificate Manager (ACM).
+#' @param ConnectionLogOptions Information about the client connection logging options.
+#' 
+#' If you enable client connection logging, data about client connections is sent to a Cloudwatch Logs log stream. The following information is logged:
+#' 
+#' -   Client connection requests
+#' 
+#' -   Client connection results (successful and unsuccessful)
+#' 
+#' -   Reasons for unsuccessful client connection requests
+#' 
+#' -   Client connection termination time
+#' @param DnsServers Information about the DNS servers to be used by Client VPN connections. A Client VPN endpoint can have up to two DNS servers.
+#' @param Description A brief description of the Client VPN endpoint.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+modify_client_vpn_endpoint <- function (ClientVpnEndpointId, 
+    ServerCertificateArn = NULL, ConnectionLogOptions = NULL, 
+    DnsServers = NULL, Description = NULL, DryRun = NULL) 
+{
+    op <- new_operation(name = "ModifyClientVpnEndpoint", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- modify_client_vpn_endpoint_input(ClientVpnEndpointId = ClientVpnEndpointId, 
+        ServerCertificateArn = ServerCertificateArn, ConnectionLogOptions = ConnectionLogOptions, 
+        DnsServers = DnsServers, Description = Description, DryRun = DryRun)
+    output <- modify_client_vpn_endpoint_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -11905,7 +13694,7 @@ modify_hosts <- function (AutoPlacement, HostIds)
 #' 
 #' This request can only be used to modify longer ID settings for resource types that are within the opt-in period. Resources currently in their opt-in period include: `bundle` \| `conversion-task` \| `customer-gateway` \| `dhcp-options` \| `elastic-ip-allocation` \| `elastic-ip-association` \| `export-task` \| `flow-log` \| `image` \| `import-task` \| `internet-gateway` \| `network-acl` \| `network-acl-association` \| `network-interface` \| `network-interface-attachment` \| `prefix-list` \| `route-table` \| `route-table-association` \| `security-group` \| `subnet` \| `subnet-cidr-block-association` \| `vpc` \| `vpc-cidr-block-association` \| `vpc-endpoint` \| `vpc-peering-connection` \| `vpn-connection` \| `vpn-gateway`.
 #' 
-#' This setting applies to the IAM user who makes the request; it does not apply to the entire AWS account. By default, an IAM user defaults to the same settings as the root user. If you\'re using this action as the root user, then these settings apply to the entire account, unless an IAM user explicitly overrides these settings for themselves. For more information, see [Resource IDs](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' This setting applies to the IAM user who makes the request; it does not apply to the entire AWS account. By default, an IAM user defaults to the same settings as the root user. If you\'re using this action as the root user, then these settings apply to the entire account, unless an IAM user explicitly overrides these settings for themselves. For more information, see [Resource IDs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' 
 #' Resources created with longer IDs are visible to all IAM roles and users, regardless of these settings and provided that they have permission to use the relevant `Describe` command for the resource type.
 #'
@@ -11941,7 +13730,7 @@ modify_id_format <- function (Resource, UseLongIds)
 #' 
 #' This request can only be used to modify longer ID settings for resource types that are within the opt-in period. Resources currently in their opt-in period include: `bundle` \| `conversion-task` \| `customer-gateway` \| `dhcp-options` \| `elastic-ip-allocation` \| `elastic-ip-association` \| `export-task` \| `flow-log` \| `image` \| `import-task` \| `internet-gateway` \| `network-acl` \| `network-acl-association` \| `network-interface` \| `network-interface-attachment` \| `prefix-list` \| `route-table` \| `route-table-association` \| `security-group` \| `subnet` \| `subnet-cidr-block-association` \| `vpc` \| `vpc-cidr-block-association` \| `vpc-endpoint` \| `vpc-peering-connection` \| `vpn-connection` \| `vpn-gateway`.
 #' 
-#' For more information, see [Resource IDs](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information, see [Resource IDs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' 
 #' This setting applies to the principal specified in the request; it does not apply to the principal that makes the request.
 #' 
@@ -12084,7 +13873,7 @@ modify_image_attribute <- function (Attribute = NULL, Description = NULL,
 #' 
 #' **Note:** Using this action to change the security groups associated with an elastic network interface (ENI) attached to an instance in a VPC can result in an error if the instance has more than one ENI. To change the security groups associated with an ENI attached to an instance that has multiple ENIs, we recommend that you use the ModifyNetworkInterfaceAttribute action.
 #' 
-#' To modify some attributes, the instance must be stopped. For more information, see [Modifying Attributes of a Stopped Instance](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_ChangingAttributesWhileInstanceStopped.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' To modify some attributes, the instance must be stopped. For more information, see [Modifying Attributes of a Stopped Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_ChangingAttributesWhileInstanceStopped.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -12144,7 +13933,7 @@ modify_image_attribute <- function (Attribute = NULL, Description = NULL,
 #' @param Attribute The name of the attribute.
 #' @param BlockDeviceMappings Modifies the `DeleteOnTermination` attribute for volumes that are currently attached. The volume must be owned by the caller. If no value is specified for `DeleteOnTermination`, the default is `true` and the volume is deleted when the instance is terminated.
 #' 
-#' To add instance store volumes to an Amazon EBS-backed instance, you must add them when you launch the instance. For more information, see [Updating the Block Device Mapping when Launching an Instance](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html#Using_OverridingAMIBDM) in the *Amazon Elastic Compute Cloud User Guide*.
+#' To add instance store volumes to an Amazon EBS-backed instance, you must add them when you launch the instance. For more information, see [Updating the Block Device Mapping when Launching an Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html#Using_OverridingAMIBDM) in the *Amazon Elastic Compute Cloud User Guide*.
 #' @param DisableApiTermination If the value is `true`, you can\'t terminate the instance using the Amazon EC2 console, CLI, or API; otherwise, you can. You cannot use this parameter for Spot Instances.
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
 #' @param EbsOptimized Specifies whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance. This optimization isn\'t available with all instance types. Additional usage charges apply when using an EBS Optimized instance.
@@ -12154,9 +13943,9 @@ modify_image_attribute <- function (Attribute = NULL, Description = NULL,
 #' @param Groups &#91;EC2-VPC&#93; Changes the security groups of the instance. You must specify at least one security group, even if it\'s just the default security group for the VPC. You must specify the security group ID, not the security group name.
 #' @param InstanceId &#91;required&#93; The ID of the instance.
 #' @param InstanceInitiatedShutdownBehavior Specifies whether an instance stops or terminates when you initiate shutdown from the instance (using the operating system command for system shutdown).
-#' @param InstanceType Changes the instance type to the specified value. For more information, see [Instance Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html). If the instance type is not valid, the error returned is `InvalidInstanceAttributeValue`.
-#' @param Kernel Changes the instance\'s kernel to the specified value. We recommend that you use PV-GRUB instead of kernels and RAM disks. For more information, see [PV-GRUB](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html).
-#' @param Ramdisk Changes the instance\'s RAM disk to the specified value. We recommend that you use PV-GRUB instead of kernels and RAM disks. For more information, see [PV-GRUB](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html).
+#' @param InstanceType Changes the instance type to the specified value. For more information, see [Instance Types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html). If the instance type is not valid, the error returned is `InvalidInstanceAttributeValue`.
+#' @param Kernel Changes the instance\'s kernel to the specified value. We recommend that you use PV-GRUB instead of kernels and RAM disks. For more information, see [PV-GRUB](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html).
+#' @param Ramdisk Changes the instance\'s RAM disk to the specified value. We recommend that you use PV-GRUB instead of kernels and RAM disks. For more information, see [PV-GRUB](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html).
 #' @param SriovNetSupport Set to `simple` to enable enhanced networking with the Intel 82599 Virtual Function interface for the instance.
 #' 
 #' There is no way to disable enhanced networking with the Intel 82599 Virtual Function interface at this time.
@@ -12251,7 +14040,7 @@ modify_instance_capacity_reservation_attributes <- function (InstanceId,
 #'
 #' Modifies the credit option for CPU usage on a running or stopped T2 or T3 instance. The credit options are `standard` and `unlimited`.
 #' 
-#' For more information, see [Burstable Performance Instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information, see [Burstable Performance Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -12268,7 +14057,7 @@ modify_instance_capacity_reservation_attributes <- function (InstanceId,
 #' ```
 #'
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
-#' @param ClientToken A unique, case-sensitive token that you provide to ensure idempotency of your modification request. For more information, see [Ensuring Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' @param ClientToken A unique, case-sensitive token that you provide to ensure idempotency of your modification request. For more information, see [Ensuring Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' @param InstanceCreditSpecifications &#91;required&#93; Information about the credit option for CPU usage.
 #'
 #' @export
@@ -12290,17 +14079,17 @@ modify_instance_credit_specification <- function (DryRun = NULL,
 #'
 #' Modifies the placement attributes for a specified instance. You can do the following:
 #' 
-#' -   Modify the affinity between an instance and a [Dedicated Host](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html). When affinity is set to `host` and the instance is not associated with a specific Dedicated Host, the next time the instance is launched, it is automatically associated with the host on which it lands. If the instance is restarted or rebooted, this relationship persists.
+#' -   Modify the affinity between an instance and a [Dedicated Host](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html). When affinity is set to `host` and the instance is not associated with a specific Dedicated Host, the next time the instance is launched, it is automatically associated with the host on which it lands. If the instance is restarted or rebooted, this relationship persists.
 #' 
 #' -   Change the Dedicated Host with which an instance is associated.
 #' 
 #' -   Change the instance tenancy of an instance from `host` to `dedicated`, or from `dedicated` to `host`.
 #' 
-#' -   Move an instance to or from a [placement group](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html).
+#' -   Move an instance to or from a [placement group](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html).
 #' 
 #' At least one attribute for affinity, host ID, tenancy, or placement group name must be specified in the request. Affinity and tenancy can be modified in the same request.
 #' 
-#' To modify the host ID, tenancy, or placement group for an instance, the instance must be in the `stopped` state.
+#' To modify the host ID, tenancy, placement group, or partition for an instance, the instance must be in the `stopped` state.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -12309,27 +14098,29 @@ modify_instance_credit_specification <- function (DryRun = NULL,
 #'   GroupName = "string",
 #'   HostId = "string",
 #'   InstanceId = "string",
-#'   Tenancy = "dedicated"|"host"
+#'   Tenancy = "dedicated"|"host",
+#'   PartitionNumber = 123
 #' )
 #' ```
 #'
 #' @param Affinity The affinity setting for the instance.
-#' @param GroupName The name of the placement group in which to place the instance. For spread placement groups, the instance must have a tenancy of `default`. For cluster placement groups, the instance must have a tenancy of `default` or `dedicated`.
+#' @param GroupName The name of the placement group in which to place the instance. For spread placement groups, the instance must have a tenancy of `default`. For cluster and partition placement groups, the instance must have a tenancy of `default` or `dedicated`.
 #' 
 #' To remove an instance from a placement group, specify an empty string (\"\").
 #' @param HostId The ID of the Dedicated Host with which to associate the instance.
 #' @param InstanceId &#91;required&#93; The ID of the instance that you are modifying.
 #' @param Tenancy The tenancy for the instance.
+#' @param PartitionNumber Reserved for future use.
 #'
 #' @export
 modify_instance_placement <- function (Affinity = NULL, GroupName = NULL, 
-    HostId = NULL, InstanceId, Tenancy = NULL) 
+    HostId = NULL, InstanceId, Tenancy = NULL, PartitionNumber = NULL) 
 {
     op <- new_operation(name = "ModifyInstancePlacement", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- modify_instance_placement_input(Affinity = Affinity, 
         GroupName = GroupName, HostId = HostId, InstanceId = InstanceId, 
-        Tenancy = Tenancy)
+        Tenancy = Tenancy, PartitionNumber = PartitionNumber)
     output <- modify_instance_placement_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -12353,7 +14144,7 @@ modify_instance_placement <- function (Affinity = NULL, GroupName = NULL,
 #' ```
 #'
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
-#' @param ClientToken Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see [Ensuring Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' @param ClientToken Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see [Ensuring Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' @param LaunchTemplateId The ID of the launch template. You must specify either the launch template ID or launch template name in the request.
 #' @param LaunchTemplateName The name of the launch template. You must specify either the launch template ID or launch template name in the request.
 #' @param DefaultVersion The version number of the launch template to set as the default version.
@@ -12412,7 +14203,7 @@ modify_launch_template <- function (DryRun = NULL, ClientToken = NULL,
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
 #' @param Groups Changes the security groups for the network interface. The new set of groups you specify replaces the current set. You must specify at least one group, even if it\'s just the default security group in the VPC. You must specify the ID of the security group, not the name.
 #' @param NetworkInterfaceId &#91;required&#93; The ID of the network interface.
-#' @param SourceDestCheck Indicates whether source/destination checking is enabled. A value of `true` means checking is enabled, and `false` means checking is disabled. This value must be `false` for a NAT instance to perform NAT. For more information, see [NAT Instances](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' @param SourceDestCheck Indicates whether source/destination checking is enabled. A value of `true` means checking is enabled, and `false` means checking is disabled. This value must be `false` for a NAT instance to perform NAT. For more information, see [NAT Instances](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html) in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @examples
 #' # This example modifies the attachment attribute of the specified network
@@ -12474,7 +14265,7 @@ modify_network_interface_attribute <- function (Attachment = NULL,
 #'
 #' Modifies the Availability Zone, instance count, instance type, or network platform (EC2-Classic or EC2-VPC) of your Reserved Instances. The Reserved Instances to be modified must be identical, except for Availability Zone, network platform, and instance type.
 #' 
-#' For more information, see [Modifying Reserved Instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html) in the Amazon Elastic Compute Cloud User Guide.
+#' For more information, see [Modifying Reserved Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html) in the Amazon Elastic Compute Cloud User Guide.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -12487,7 +14278,7 @@ modify_network_interface_attribute <- function (Attachment = NULL,
 #'     list(
 #'       AvailabilityZone = "string",
 #'       InstanceCount = 123,
-#'       InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.18xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.18xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.12xlarge"|"m5.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.12xlarge"|"m5d.24xlarge"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal",
+#'       InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.12xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.12xlarge"|"r5a.24xlarge"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.12xlarge"|"r5d.24xlarge"|"r5d.metal"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.18xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.18xlarge"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.12xlarge"|"m5.24xlarge"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.12xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.12xlarge"|"m5d.24xlarge"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge",
 #'       Platform = "string",
 #'       Scope = "Availability Zone"|"Region"
 #'     )
@@ -12496,7 +14287,7 @@ modify_network_interface_attribute <- function (Attachment = NULL,
 #' ```
 #'
 #' @param ReservedInstancesIds &#91;required&#93; The IDs of the Reserved Instances to modify.
-#' @param ClientToken A unique, case-sensitive token you provide to ensure idempotency of your modification request. For more information, see [Ensuring Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' @param ClientToken A unique, case-sensitive token you provide to ensure idempotency of your modification request. For more information, see [Ensuring Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' @param TargetConfigurations &#91;required&#93; The configuration settings for the Reserved Instances to modify.
 #'
 #' @export
@@ -12520,7 +14311,7 @@ modify_reserved_instances <- function (ReservedInstancesIds,
 #' 
 #' Encrypted snapshots and snapshots with AWS Marketplace product codes cannot be made public. Snapshots encrypted with your default CMK cannot be shared with other accounts.
 #' 
-#' For more information about modifying snapshot permissions, see [Sharing Snapshots](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information about modifying snapshot permissions, see [Sharing Snapshots](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -12705,15 +14496,60 @@ modify_subnet_attribute <- function (AssignIpv6AddressOnCreation = NULL,
     return(response)
 }
 
+#' Modifies the specified VPC attachment
+#'
+#' Modifies the specified VPC attachment.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' modify_transit_gateway_vpc_attachment(
+#'   TransitGatewayAttachmentId = "string",
+#'   AddSubnetIds = list(
+#'     "string"
+#'   ),
+#'   RemoveSubnetIds = list(
+#'     "string"
+#'   ),
+#'   Options = list(
+#'     DnsSupport = "enable"|"disable",
+#'     Ipv6Support = "enable"|"disable"
+#'   ),
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param TransitGatewayAttachmentId &#91;required&#93; The ID of the attachment.
+#' @param AddSubnetIds The IDs of one or more subnets to add. You can specify at most one subnet per Availability Zone.
+#' @param RemoveSubnetIds The IDs of one or more subnets to remove.
+#' @param Options The new VPC attachment options.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+modify_transit_gateway_vpc_attachment <- function (TransitGatewayAttachmentId, 
+    AddSubnetIds = NULL, RemoveSubnetIds = NULL, Options = NULL, 
+    DryRun = NULL) 
+{
+    op <- new_operation(name = "ModifyTransitGatewayVpcAttachment", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- modify_transit_gateway_vpc_attachment_input(TransitGatewayAttachmentId = TransitGatewayAttachmentId, 
+        AddSubnetIds = AddSubnetIds, RemoveSubnetIds = RemoveSubnetIds, 
+        Options = Options, DryRun = DryRun)
+    output <- modify_transit_gateway_vpc_attachment_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' You can modify several parameters of an existing EBS volume, including volume size, volume type, and IOPS capacity
 #'
-#' You can modify several parameters of an existing EBS volume, including volume size, volume type, and IOPS capacity. If your EBS volume is attached to a current-generation EC2 instance type, you may be able to apply these changes without stopping the instance or detaching the volume from it. For more information about modifying an EBS volume running Linux, see [Modifying the Size, IOPS, or Type of an EBS Volume on Linux](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html). For more information about modifying an EBS volume running Windows, see [Modifying the Size, IOPS, or Type of an EBS Volume on Windows](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html).
+#' You can modify several parameters of an existing EBS volume, including volume size, volume type, and IOPS capacity. If your EBS volume is attached to a current-generation EC2 instance type, you may be able to apply these changes without stopping the instance or detaching the volume from it. For more information about modifying an EBS volume running Linux, see [Modifying the Size, IOPS, or Type of an EBS Volume on Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html). For more information about modifying an EBS volume running Windows, see [Modifying the Size, IOPS, or Type of an EBS Volume on Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html).
 #' 
-#' When you complete a resize operation on your volume, you need to extend the volume\'s file-system size to take advantage of the new storage capacity. For information about extending a Linux file system, see [Extending a Linux File System](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#recognize-expanded-volume-linux). For information about extending a Windows file system, see [Extending a Windows File System](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html#recognize-expanded-volume-windows).
+#' When you complete a resize operation on your volume, you need to extend the volume\'s file-system size to take advantage of the new storage capacity. For information about extending a Linux file system, see [Extending a Linux File System](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#recognize-expanded-volume-linux). For information about extending a Windows file system, see [Extending a Windows File System](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html#recognize-expanded-volume-windows).
 #' 
-#' You can use CloudWatch Events to check the status of a modification to an EBS volume. For information about CloudWatch Events, see the [Amazon CloudWatch Events User Guide](http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/). You can also track the status of a modification using the DescribeVolumesModifications API. For information about tracking status changes using either method, see [Monitoring Volume Modifications](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#monitoring_mods).
+#' You can use CloudWatch Events to check the status of a modification to an EBS volume. For information about CloudWatch Events, see the [Amazon CloudWatch Events User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/). You can also track the status of a modification using the DescribeVolumesModifications API. For information about tracking status changes using either method, see [Monitoring Volume Modifications](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#monitoring_mods).
 #' 
-#' With previous-generation instance types, resizing an EBS volume may require detaching and reattaching the volume or stopping and restarting the instance. For more information, see [Modifying the Size, IOPS, or Type of an EBS Volume on Linux](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html) and [Modifying the Size, IOPS, or Type of an EBS Volume on Windows](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html).
+#' With previous-generation instance types, resizing an EBS volume may require detaching and reattaching the volume or stopping and restarting the instance. For more information, see [Modifying the Size, IOPS, or Type of an EBS Volume on Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html) and [Modifying the Size, IOPS, or Type of an EBS Volume on Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html).
 #' 
 #' If you reach the maximum volume modification rate per volume limit, you will need to wait at least six hours before applying further modifications to the affected EBS volume.
 #'
@@ -12730,7 +14566,7 @@ modify_subnet_attribute <- function (AssignIpv6AddressOnCreation = NULL,
 #'
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
 #' @param VolumeId &#91;required&#93; The ID of the volume.
-#' @param Size The target size of the volume, in GiB. The target volume size must be greater than or equal to than the existing size of the volume. For information about available EBS volume sizes, see [Amazon EBS Volume Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html).
+#' @param Size The target size of the volume, in GiB. The target volume size must be greater than or equal to than the existing size of the volume. For information about available EBS volume sizes, see [Amazon EBS Volume Types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html).
 #' 
 #' Default: If no size is specified, the existing size is retained.
 #' @param VolumeType The target EBS volume type of the volume.
@@ -12738,7 +14574,7 @@ modify_subnet_attribute <- function (AssignIpv6AddressOnCreation = NULL,
 #' Default: If no type is specified, the existing type is retained.
 #' @param Iops The target IOPS rate of the volume.
 #' 
-#' This is only valid for Provisioned IOPS SSD (`io1`) volumes. For more information, see [Provisioned IOPS SSD (io1) Volumes](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html#EBSVolumeTypes_piops).
+#' This is only valid for Provisioned IOPS SSD (`io1`) volumes. For more information, see [Provisioned IOPS SSD (io1) Volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html#EBSVolumeTypes_piops).
 #' 
 #' Default: If no IOPS value is specified, the existing value is retained.
 #'
@@ -12873,7 +14709,7 @@ modify_vpc_attribute <- function (EnableDnsHostnames = NULL,
 
 #' Modifies attributes of a specified VPC endpoint
 #'
-#' Modifies attributes of a specified VPC endpoint. The attributes that you can modify depend on the type of VPC endpoint (interface or gateway). For more information, see [VPC Endpoints](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-endpoints.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' Modifies attributes of a specified VPC endpoint. The attributes that you can modify depend on the type of VPC endpoint (interface or gateway). For more information, see [VPC Endpoints](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-endpoints.html) in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -13022,7 +14858,7 @@ modify_vpc_endpoint_service_configuration <- function (DryRun = NULL,
 
 #' Modifies the permissions for your VPC endpoint service
 #'
-#' Modifies the permissions for your [VPC endpoint service](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/endpoint-service.html). You can add or remove permissions for service consumers (IAM users, IAM roles, and AWS accounts) to connect to your endpoint service.
+#' Modifies the permissions for your [VPC endpoint service](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/endpoint-service.html). You can add or remove permissions for service consumers (IAM users, IAM roles, and AWS accounts) to connect to your endpoint service.
 #' 
 #' If you grant permissions to all principals, the service is public. Any users who know the name of a public service can send a request to attach an endpoint. If the service does not require manual approval, attachments are automatically approved.
 #'
@@ -13071,7 +14907,7 @@ modify_vpc_endpoint_service_permissions <- function (DryRun = NULL,
 #' 
 #' -   Enable/disable the ability to resolve public DNS hostnames to private IP addresses when queried from instances in the peer VPC.
 #' 
-#' If the peered VPCs are in different accounts, each owner must initiate a separate request to modify the peering connection options, depending on whether their VPC was the requester or accepter for the VPC peering connection. If the peered VPCs are in the same account, you can modify the requester and accepter options in the same request. To confirm which VPC is the accepter and requester for a VPC peering connection, use the DescribeVpcPeeringConnections command.
+#' If the peered VPCs are in the same AWS account, you can enable DNS resolution for queries from the local VPC. This ensures that queries from the local VPC resolve to private IP addresses in the peer VPC. This option is not available if the peered VPCs are in different AWS accounts or different regions. For peered VPCs in different AWS accounts, each AWS account owner must initiate a separate request to modify the peering connection options. For inter-region peering connections, you must use the region for the requester VPC to modify the requester VPC peering options and the region for the accepter VPC to modify the accepter VPC peering options. To verify which VPCs are the accepter and the requester for a VPC peering connection, use the DescribeVpcPeeringConnections command.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -13119,7 +14955,7 @@ modify_vpc_peering_connection_options <- function (AccepterPeeringConnectionOpti
 #' 
 #' After you modify the tenancy of the VPC, any new instances that you launch into the VPC have a tenancy of `default`, unless you specify otherwise during launch. The tenancy of any existing instances in the VPC is not affected.
 #' 
-#' For more information, see [Dedicated Instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information, see [Dedicated Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -13150,7 +14986,7 @@ modify_vpc_tenancy <- function (VpcId, InstanceTenancy, DryRun = NULL)
 
 #' Enables detailed monitoring for a running instance
 #'
-#' Enables detailed monitoring for a running instance. Otherwise, basic monitoring is enabled. For more information, see [Monitoring Your Instances and Volumes](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' Enables detailed monitoring for a running instance. Otherwise, basic monitoring is enabled. For more information, see [Monitoring Your Instances and Volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' 
 #' To disable detailed monitoring, see .
 #'
@@ -13220,7 +15056,7 @@ move_address_to_vpc <- function (DryRun = NULL, PublicIp)
 #'
 #' Provisions an address range for use with your AWS resources through bring your own IP addresses (BYOIP) and creates a corresponding address pool. After the address range is provisioned, it is ready to be advertised using AdvertiseByoipCidr.
 #' 
-#' AWS verifies that you own the address range and are authorized to advertise it. You must ensure that the address range is registered to you and that you created an RPKI ROA to authorize Amazon ASNs 16509 and 14618 to advertise the address range. For more information, see [Bring Your Own IP Addresses (BYOIP)](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' AWS verifies that you own the address range and are authorized to advertise it. You must ensure that the address range is registered to you and that you created an RPKI ROA to authorize Amazon ASNs 16509 and 14618 to advertise the address range. For more information, see [Bring Your Own IP Addresses (BYOIP)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' 
 #' Provisioning an address range is an asynchronous operation, so the call returns immediately, but the address range is not ready to use until its status changes from `pending-provision` to `provisioned`. To monitor the status of an address range, use DescribeByoipCidrs. To allocate an Elastic IP address from your address pool, use AllocateAddress with either the specific address from the address pool or the ID of the address pool.
 #'
@@ -13274,7 +15110,7 @@ provision_byoip_cidr <- function (Cidr, CidrAuthorizationContext = NULL,
 #' )
 #' ```
 #'
-#' @param ClientToken Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see [How to Ensure Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' @param ClientToken Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see [How to Ensure Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' @param CurrencyCode The currency in which the `totalUpfrontPrice`, `LimitPrice`, and `totalHourlyPrice` amounts are specified. At this time, the only supported currency is `USD`.
 #' @param HostIdSet &#91;required&#93; The IDs of the Dedicated Hosts with which the reservation will be associated.
 #' @param LimitPrice The specified limit is checked against the total upfront cost of the reservation (calculated as the offering\'s upfront cost multiplied by the host count). If the total upfront cost is greater than the specified price limit, the request fails. This is used to ensure that the purchase does not exceed the expected upfront cost of the purchase. At this time, the only supported currency is `USD`. For example, to indicate a limit price of USD 100, specify 100.00.
@@ -13302,7 +15138,7 @@ purchase_host_reservation <- function (ClientToken = NULL, CurrencyCode = NULL,
 #' 
 #' Use DescribeReservedInstancesOfferings to get a list of Reserved Instance offerings that match your specifications. After you\'ve purchased a Reserved Instance, you can check for your new Reserved Instance with DescribeReservedInstances.
 #' 
-#' For more information, see [Reserved Instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-on-demand-reserved-instances.html) and [Reserved Instance Marketplace](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information, see [Reserved Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-on-demand-reserved-instances.html) and [Reserved Instance Marketplace](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -13360,7 +15196,7 @@ purchase_reserved_instances_offering <- function (InstanceCount,
 #' )
 #' ```
 #'
-#' @param ClientToken Unique, case-sensitive identifier that ensures the idempotency of the request. For more information, see [Ensuring Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' @param ClientToken Unique, case-sensitive identifier that ensures the idempotency of the request. For more information, see [Ensuring Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
 #' @param PurchaseRequests &#91;required&#93; One or more purchase requests.
 #'
@@ -13396,7 +15232,7 @@ purchase_scheduled_instances <- function (ClientToken = NULL,
 #' 
 #' If an instance does not cleanly shut down within four minutes, Amazon EC2 performs a hard reboot.
 #' 
-#' For more information about troubleshooting, see [Getting Console Output and Rebooting Instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-console.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information about troubleshooting, see [Getting Console Output and Rebooting Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-console.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -13435,11 +15271,11 @@ reboot_instances <- function (InstanceIds, DryRun = NULL)
 
 #' Registers an AMI
 #'
-#' Registers an AMI. When you\'re creating an AMI, this is the final step you must complete before you can launch an instance from the AMI. For more information about creating AMIs, see [Creating Your Own AMIs](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' Registers an AMI. When you\'re creating an AMI, this is the final step you must complete before you can launch an instance from the AMI. For more information about creating AMIs, see [Creating Your Own AMIs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' 
 #' For Amazon EBS-backed instances, CreateImage creates and registers the AMI in a single request, so you don\'t have to register the AMI yourself.
 #' 
-#' You can also use `RegisterImage` to create an Amazon EBS-backed Linux AMI from a snapshot of a root device volume. You specify the snapshot using the block device mapping. For more information, see [Launching a Linux Instance from a Backup](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-launch-snapshot.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' You can also use `RegisterImage` to create an Amazon EBS-backed Linux AMI from a snapshot of a root device volume. You specify the snapshot using the block device mapping. For more information, see [Launching a Linux Instance from a Backup](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-launch-snapshot.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' 
 #' You can\'t register an image where a secondary (non-root) snapshot has AWS Marketplace product codes.
 #' 
@@ -13453,7 +15289,7 @@ reboot_instances <- function (InstanceIds, DryRun = NULL)
 #' ```
 #' register_image(
 #'   ImageLocation = "string",
-#'   Architecture = "i386"|"x86_64",
+#'   Architecture = "i386"|"x86_64"|"arm64",
 #'   BlockDeviceMappings = list(
 #'     list(
 #'       DeviceName = "string",
@@ -13527,6 +15363,38 @@ register_image <- function (ImageLocation = NULL, Architecture = NULL,
         RamdiskId = RamdiskId, RootDeviceName = RootDeviceName, 
         SriovNetSupport = SriovNetSupport, VirtualizationType = VirtualizationType)
     output <- register_image_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Rejects a request to attach a VPC to a transit gateway
+#'
+#' Rejects a request to attach a VPC to a transit gateway.
+#' 
+#' The VPC attachment must be in the `pendingAcceptance` state. Use DescribeTransitGatewayVpcAttachments to view your pending VPC attachment requests. Use AcceptTransitGatewayVpcAttachment to accept a VPC attachment request.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' reject_transit_gateway_vpc_attachment(
+#'   TransitGatewayAttachmentId = "string",
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param TransitGatewayAttachmentId &#91;required&#93; The ID of the attachment.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+reject_transit_gateway_vpc_attachment <- function (TransitGatewayAttachmentId, 
+    DryRun = NULL) 
+{
+    op <- new_operation(name = "RejectTransitGatewayVpcAttachment", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- reject_transit_gateway_vpc_attachment_input(TransitGatewayAttachmentId = TransitGatewayAttachmentId, 
+        DryRun = DryRun)
+    output <- reject_transit_gateway_vpc_attachment_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -13718,7 +15586,7 @@ replace_iam_instance_profile_association <- function (IamInstanceProfile,
 
 #' Changes which network ACL a subnet is associated with
 #'
-#' Changes which network ACL a subnet is associated with. By default when you create a subnet, it\'s automatically associated with the default network ACL. For more information, see [Network ACLs](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' Changes which network ACL a subnet is associated with. By default when you create a subnet, it\'s automatically associated with the default network ACL. For more information, see [Network ACLs](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html) in the *Amazon Virtual Private Cloud User Guide*.
 #' 
 #' This is an idempotent operation.
 #'
@@ -13760,7 +15628,7 @@ replace_network_acl_association <- function (AssociationId, DryRun = NULL,
 
 #' Replaces an entry (rule) in a network ACL
 #'
-#' Replaces an entry (rule) in a network ACL. For more information, see [Network ACLs](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' Replaces an entry (rule) in a network ACL. For more information, see [Network ACLs](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html) in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -13837,7 +15705,7 @@ replace_network_acl_entry <- function (CidrBlock = NULL, DryRun = NULL,
 #'
 #' Replaces an existing route within a route table in a VPC. You must provide only one of the following: internet gateway or virtual private gateway, NAT instance, NAT gateway, VPC peering connection, network interface, or egress-only internet gateway.
 #' 
-#' For more information, see [Route Tables](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' For more information, see [Route Tables](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html) in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -13849,6 +15717,7 @@ replace_network_acl_entry <- function (CidrBlock = NULL, DryRun = NULL,
 #'   GatewayId = "string",
 #'   InstanceId = "string",
 #'   NatGatewayId = "string",
+#'   TransitGatewayId = "string",
 #'   NetworkInterfaceId = "string",
 #'   RouteTableId = "string",
 #'   VpcPeeringConnectionId = "string"
@@ -13862,6 +15731,7 @@ replace_network_acl_entry <- function (CidrBlock = NULL, DryRun = NULL,
 #' @param GatewayId The ID of an internet gateway or virtual private gateway.
 #' @param InstanceId The ID of a NAT instance in your VPC.
 #' @param NatGatewayId &#91;IPv4 traffic only&#93; The ID of a NAT gateway.
+#' @param TransitGatewayId The ID of a transit gateway.
 #' @param NetworkInterfaceId The ID of a network interface.
 #' @param RouteTableId &#91;required&#93; The ID of the route table.
 #' @param VpcPeeringConnectionId The ID of a VPC peering connection.
@@ -13879,8 +15749,8 @@ replace_network_acl_entry <- function (CidrBlock = NULL, DryRun = NULL,
 #' @export
 replace_route <- function (DestinationCidrBlock = NULL, DestinationIpv6CidrBlock = NULL, 
     DryRun = NULL, EgressOnlyInternetGatewayId = NULL, GatewayId = NULL, 
-    InstanceId = NULL, NatGatewayId = NULL, NetworkInterfaceId = NULL, 
-    RouteTableId, VpcPeeringConnectionId = NULL) 
+    InstanceId = NULL, NatGatewayId = NULL, TransitGatewayId = NULL, 
+    NetworkInterfaceId = NULL, RouteTableId, VpcPeeringConnectionId = NULL) 
 {
     op <- new_operation(name = "ReplaceRoute", http_method = "POST", 
         http_path = "/", paginator = list())
@@ -13888,8 +15758,8 @@ replace_route <- function (DestinationCidrBlock = NULL, DestinationIpv6CidrBlock
         DestinationIpv6CidrBlock = DestinationIpv6CidrBlock, 
         DryRun = DryRun, EgressOnlyInternetGatewayId = EgressOnlyInternetGatewayId, 
         GatewayId = GatewayId, InstanceId = InstanceId, NatGatewayId = NatGatewayId, 
-        NetworkInterfaceId = NetworkInterfaceId, RouteTableId = RouteTableId, 
-        VpcPeeringConnectionId = VpcPeeringConnectionId)
+        TransitGatewayId = TransitGatewayId, NetworkInterfaceId = NetworkInterfaceId, 
+        RouteTableId = RouteTableId, VpcPeeringConnectionId = VpcPeeringConnectionId)
     output <- replace_route_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -13899,7 +15769,7 @@ replace_route <- function (DestinationCidrBlock = NULL, DestinationIpv6CidrBlock
 
 #' Changes the route table associated with a given subnet in a VPC
 #'
-#' Changes the route table associated with a given subnet in a VPC. After the operation completes, the subnet uses the routes in the new route table it\'s associated with. For more information about route tables, see [Route Tables](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' Changes the route table associated with a given subnet in a VPC. After the operation completes, the subnet uses the routes in the new route table it\'s associated with. For more information about route tables, see [Route Tables](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html) in the *Amazon Virtual Private Cloud User Guide*.
 #' 
 #' You can also use ReplaceRouteTableAssociation to change which table is the main route table in the VPC. You just specify the main route table\'s association ID and the route table to be the new main route table.
 #'
@@ -13933,6 +15803,45 @@ replace_route_table_association <- function (AssociationId, DryRun = NULL,
     input <- replace_route_table_association_input(AssociationId = AssociationId, 
         DryRun = DryRun, RouteTableId = RouteTableId)
     output <- replace_route_table_association_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Replaces the specified route in the specified transit gateway route table
+#'
+#' Replaces the specified route in the specified transit gateway route table.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' replace_transit_gateway_route(
+#'   DestinationCidrBlock = "string",
+#'   TransitGatewayRouteTableId = "string",
+#'   TransitGatewayAttachmentId = "string",
+#'   Blackhole = TRUE|FALSE,
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param DestinationCidrBlock &#91;required&#93; The CIDR range used for the destination match. Routing decisions are based on the most specific match.
+#' @param TransitGatewayRouteTableId &#91;required&#93; The ID of the route table.
+#' @param TransitGatewayAttachmentId The ID of the attachment.
+#' @param Blackhole Indicates whether traffic matching this route is to be dropped.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+replace_transit_gateway_route <- function (DestinationCidrBlock, 
+    TransitGatewayRouteTableId, TransitGatewayAttachmentId = NULL, 
+    Blackhole = NULL, DryRun = NULL) 
+{
+    op <- new_operation(name = "ReplaceTransitGatewayRoute", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- replace_transit_gateway_route_input(DestinationCidrBlock = DestinationCidrBlock, 
+        TransitGatewayRouteTableId = TransitGatewayRouteTableId, 
+        TransitGatewayAttachmentId = TransitGatewayAttachmentId, 
+        Blackhole = Blackhole, DryRun = DryRun)
+    output <- replace_transit_gateway_route_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -14019,7 +15928,7 @@ report_instance_status <- function (Description = NULL, DryRun = NULL,
 #' 
 #' You can specify tags for the Spot Instances. You cannot tag other resource types in a Spot Fleet request because only the `instance` resource type is supported.
 #' 
-#' For more information, see [Spot Fleet Requests](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html) in the *Amazon EC2 User Guide for Linux Instances*.
+#' For more information, see [Spot Fleet Requests](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html) in the *Amazon EC2 User Guide for Linux Instances*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -14064,7 +15973,7 @@ report_instance_status <- function (Description = NULL, DryRun = NULL,
 #'           Name = "string"
 #'         ),
 #'         ImageId = "string",
-#'         InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.18xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.18xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.12xlarge"|"m5.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.12xlarge"|"m5d.24xlarge"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal",
+#'         InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.12xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.12xlarge"|"r5a.24xlarge"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.12xlarge"|"r5d.24xlarge"|"r5d.metal"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.18xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.18xlarge"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.12xlarge"|"m5.24xlarge"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.12xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.12xlarge"|"m5d.24xlarge"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge",
 #'         KernelId = "string",
 #'         KeyName = "string",
 #'         Monitoring = list(
@@ -14109,7 +16018,7 @@ report_instance_status <- function (Description = NULL, DryRun = NULL,
 #'         WeightedCapacity = 123.0,
 #'         TagSpecifications = list(
 #'           list(
-#'             ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"image"|"instance"|"internet-gateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"snapshot"|"spot-instances-request"|"subnet"|"security-group"|"volume"|"vpc"|"vpn-connection"|"vpn-gateway",
+#'             ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-instances-request"|"subnet"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
 #'             Tags = list(
 #'               list(
 #'                 Key = "string",
@@ -14129,7 +16038,7 @@ report_instance_status <- function (Description = NULL, DryRun = NULL,
 #'         ),
 #'         Overrides = list(
 #'           list(
-#'             InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.18xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.18xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.12xlarge"|"m5.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.12xlarge"|"m5d.24xlarge"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal",
+#'             InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.12xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.12xlarge"|"r5a.24xlarge"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.12xlarge"|"r5d.24xlarge"|"r5d.metal"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.18xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.18xlarge"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.12xlarge"|"m5.24xlarge"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.12xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.12xlarge"|"m5d.24xlarge"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge",
 #'             SpotPrice = "string",
 #'             SubnetId = "string",
 #'             AvailabilityZone = "string",
@@ -14143,7 +16052,7 @@ report_instance_status <- function (Description = NULL, DryRun = NULL,
 #'     TargetCapacity = 123,
 #'     OnDemandTargetCapacity = 123,
 #'     TerminateInstancesWithExpiration = TRUE|FALSE,
-#'     Type = "request"|"maintain",
+#'     Type = "request"|"maintain"|"instant",
 #'     ValidFrom = as.POSIXct("2015-01-01"),
 #'     ValidUntil = as.POSIXct("2015-01-01"),
 #'     ReplaceUnhealthyInstances = TRUE|FALSE,
@@ -14315,7 +16224,7 @@ request_spot_fleet <- function (DryRun = NULL, SpotFleetRequestConfig)
 #'
 #' Creates a Spot Instance request.
 #' 
-#' For more information, see [Spot Instance Requests](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html) in the *Amazon EC2 User Guide for Linux Instances*.
+#' For more information, see [Spot Instance Requests](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html) in the *Amazon EC2 User Guide for Linux Instances*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -14356,7 +16265,7 @@ request_spot_fleet <- function (DryRun = NULL, SpotFleetRequestConfig)
 #'       Name = "string"
 #'     ),
 #'     ImageId = "string",
-#'     InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.18xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.18xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.12xlarge"|"m5.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.12xlarge"|"m5d.24xlarge"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal",
+#'     InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.12xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.12xlarge"|"r5a.24xlarge"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.12xlarge"|"r5d.24xlarge"|"r5d.metal"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.18xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.18xlarge"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.12xlarge"|"m5.24xlarge"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.12xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.12xlarge"|"m5d.24xlarge"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge",
 #'     KernelId = "string",
 #'     KeyName = "string",
 #'     Monitoring = list(
@@ -14418,7 +16327,7 @@ request_spot_fleet <- function (DryRun = NULL, SpotFleetRequestConfig)
 #' The duration period starts as soon as your Spot Instance receives its instance ID. At the end of the duration period, Amazon EC2 marks the Spot Instance for termination and provides a Spot Instance termination notice, which gives the instance a two-minute warning before it terminates.
 #' 
 #' You can\'t specify an Availability Zone group or a launch group if you specify a duration.
-#' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see [How to Ensure Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html) in the *Amazon EC2 User Guide for Linux Instances*.
+#' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see [How to Ensure Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html) in the *Amazon EC2 User Guide for Linux Instances*.
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
 #' @param InstanceCount The maximum number of Spot Instances to launch.
 #' 
@@ -14582,7 +16491,7 @@ reset_image_attribute <- function (Attribute, ImageId, DryRun = NULL)
 #'
 #' Resets an attribute of an instance to its default value. To reset the `kernel` or `ramdisk`, the instance must be in a stopped state. To reset the `sourceDestCheck`, the instance can be either running or stopped.
 #' 
-#' The `sourceDestCheck` attribute controls whether source/destination checking is enabled. The default value is `true`, which means checking is enabled. This value must be `false` for a NAT instance to perform NAT. For more information, see [NAT Instances](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' The `sourceDestCheck` attribute controls whether source/destination checking is enabled. The default value is `true`, which means checking is enabled. This value must be `false` for a NAT instance to perform NAT. For more information, see [NAT Instances](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html) in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -14658,7 +16567,7 @@ reset_network_interface_attribute <- function (DryRun = NULL,
 #'
 #' Resets permission settings for the specified snapshot.
 #' 
-#' For more information about modifying snapshot permissions, see [Sharing Snapshots](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information about modifying snapshot permissions, see [Sharing Snapshots](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -14727,6 +16636,43 @@ restore_address_to_classic <- function (DryRun = NULL, PublicIp)
     input <- restore_address_to_classic_input(DryRun = DryRun, 
         PublicIp = PublicIp)
     output <- restore_address_to_classic_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Removes an ingress authorization rule from a Client VPN endpoint
+#'
+#' Removes an ingress authorization rule from a Client VPN endpoint.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' revoke_client_vpn_ingress(
+#'   ClientVpnEndpointId = "string",
+#'   TargetNetworkCidr = "string",
+#'   AccessGroupId = "string",
+#'   RevokeAllGroups = TRUE|FALSE,
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param ClientVpnEndpointId &#91;required&#93; The ID of the Client VPN endpoint with which the authorization rule is associated.
+#' @param TargetNetworkCidr &#91;required&#93; The IPv4 address range, in CIDR notation, of the network for which access is being removed.
+#' @param AccessGroupId The ID of the Active Directory group for which to revoke access.
+#' @param RevokeAllGroups Indicates whether access should be revoked for all clients.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+revoke_client_vpn_ingress <- function (ClientVpnEndpointId, TargetNetworkCidr, 
+    AccessGroupId = NULL, RevokeAllGroups = NULL, DryRun = NULL) 
+{
+    op <- new_operation(name = "RevokeClientVpnIngress", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- revoke_client_vpn_ingress_input(ClientVpnEndpointId = ClientVpnEndpointId, 
+        TargetNetworkCidr = TargetNetworkCidr, AccessGroupId = AccessGroupId, 
+        RevokeAllGroups = RevokeAllGroups, DryRun = DryRun)
+    output <- revoke_client_vpn_ingress_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -14921,25 +16867,25 @@ revoke_security_group_ingress <- function (CidrIp = NULL, FromPort = NULL,
 #' 
 #' -   &#91;EC2-Classic&#93; If don\'t specify an Availability Zone, we choose one for you.
 #' 
-#' -   Some instance types must be launched into a VPC. If you do not have a default VPC, or if you do not specify a subnet ID, the request fails. For more information, see [Instance Types Available Only in a VPC](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-vpc.html#vpc-only-instance-types).
+#' -   Some instance types must be launched into a VPC. If you do not have a default VPC, or if you do not specify a subnet ID, the request fails. For more information, see [Instance Types Available Only in a VPC](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-vpc.html#vpc-only-instance-types).
 #' 
 #' -   &#91;EC2-VPC&#93; All instances have a network interface with a primary private IPv4 address. If you don\'t specify this address, we choose one from the IPv4 range of your subnet.
 #' 
-#' -   Not all instance types support IPv6 addresses. For more information, see [Instance Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html).
+#' -   Not all instance types support IPv6 addresses. For more information, see [Instance Types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html).
 #' 
-#' -   If you don\'t specify a security group ID, we use the default security group. For more information, see [Security Groups](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html).
+#' -   If you don\'t specify a security group ID, we use the default security group. For more information, see [Security Groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html).
 #' 
 #' -   If any of the AMIs have a product code attached for which the user has not subscribed, the request fails.
 #' 
-#' You can create a [launch template](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html), which is a resource that contains the parameters to launch an instance. When you launch an instance using RunInstances, you can specify the launch template instead of specifying the launch parameters.
+#' You can create a [launch template](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html), which is a resource that contains the parameters to launch an instance. When you launch an instance using RunInstances, you can specify the launch template instead of specifying the launch parameters.
 #' 
 #' To ensure faster instance launches, break up large requests into smaller batches. For example, create five separate launch requests for 100 instances each instead of one launch request for 500 instances.
 #' 
-#' An instance is ready for you to use when it\'s in the `running` state. You can check the state of your instance using DescribeInstances. You can tag instances and EBS volumes during launch, after launch, or both. For more information, see CreateTags and [Tagging Your Amazon EC2 Resources](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html).
+#' An instance is ready for you to use when it\'s in the `running` state. You can check the state of your instance using DescribeInstances. You can tag instances and EBS volumes during launch, after launch, or both. For more information, see CreateTags and [Tagging Your Amazon EC2 Resources](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html).
 #' 
-#' Linux instances have access to the public key of the key pair at boot. You can use this key to provide secure access to the instance. Amazon EC2 public images use this feature to provide secure access without passwords. For more information, see [Key Pairs](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' Linux instances have access to the public key of the key pair at boot. You can use this key to provide secure access to the instance. Amazon EC2 public images use this feature to provide secure access without passwords. For more information, see [Key Pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' 
-#' For troubleshooting, see [What To Do If An Instance Immediately Terminates](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_InstanceStraightToTerminated.html), and [Troubleshooting Connecting to Your Instance](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesConnecting.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For troubleshooting, see [What To Do If An Instance Immediately Terminates](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_InstanceStraightToTerminated.html), and [Troubleshooting Connecting to Your Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesConnecting.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -14961,7 +16907,7 @@ revoke_security_group_ingress <- function (CidrIp = NULL, FromPort = NULL,
 #'     )
 #'   ),
 #'   ImageId = "string",
-#'   InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.18xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.18xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.12xlarge"|"m5.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.12xlarge"|"m5d.24xlarge"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal",
+#'   InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.12xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.12xlarge"|"r5a.24xlarge"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.12xlarge"|"r5d.24xlarge"|"r5d.metal"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.18xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.18xlarge"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.12xlarge"|"m5.24xlarge"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.12xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.12xlarge"|"m5d.24xlarge"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge",
 #'   Ipv6AddressCount = 123,
 #'   Ipv6Addresses = list(
 #'     list(
@@ -14979,6 +16925,7 @@ revoke_security_group_ingress <- function (CidrIp = NULL, FromPort = NULL,
 #'     AvailabilityZone = "string",
 #'     Affinity = "string",
 #'     GroupName = "string",
+#'     PartitionNumber = 123,
 #'     HostId = "string",
 #'     Tenancy = "default"|"dedicated"|"host",
 #'     SpreadDomain = "string"
@@ -15035,9 +16982,14 @@ revoke_security_group_ingress <- function (CidrIp = NULL, FromPort = NULL,
 #'       Type = "string"
 #'     )
 #'   ),
+#'   ElasticInferenceAccelerators = list(
+#'     list(
+#'       Type = "string"
+#'     )
+#'   ),
 #'   TagSpecifications = list(
 #'     list(
-#'       ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"image"|"instance"|"internet-gateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"snapshot"|"spot-instances-request"|"subnet"|"security-group"|"volume"|"vpc"|"vpn-connection"|"vpn-gateway",
+#'       ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-instances-request"|"subnet"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
 #'       Tags = list(
 #'         list(
 #'           Key = "string",
@@ -15073,20 +17025,28 @@ revoke_security_group_ingress <- function (CidrIp = NULL, FromPort = NULL,
 #'     CapacityReservationTarget = list(
 #'       CapacityReservationId = "string"
 #'     )
+#'   ),
+#'   HibernationOptions = list(
+#'     Configured = TRUE|FALSE
+#'   ),
+#'   LicenseSpecifications = list(
+#'     list(
+#'       LicenseConfigurationArn = "string"
+#'     )
 #'   )
 #' )
 #' ```
 #'
 #' @param BlockDeviceMappings One or more block device mapping entries. You can\'t specify both a snapshot ID and an encryption value. This is because only blank volumes can be encrypted on creation. If a snapshot is the basis for a volume, it is not blank and its encryption status is used for the volume encryption status.
 #' @param ImageId The ID of the AMI, which you can get by calling DescribeImages. An AMI is required to launch an instance and must be specified here or in a launch template.
-#' @param InstanceType The instance type. For more information, see [Instance Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' @param InstanceType The instance type. For more information, see [Instance Types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' 
 #' Default: `m1.small`
 #' @param Ipv6AddressCount &#91;EC2-VPC&#93; A number of IPv6 addresses to associate with the primary network interface. Amazon EC2 chooses the IPv6 addresses from the range of your subnet. You cannot specify this option and the option to assign specific IPv6 addresses in the same request. You can specify this option if you\'ve specified a minimum number of instances to launch.
 #' @param Ipv6Addresses &#91;EC2-VPC&#93; Specify one or more IPv6 addresses from the range of the subnet to associate with the primary network interface. You cannot specify this option and the option to assign a number of IPv6 addresses in the same request. You cannot specify this option if you\'ve specified a minimum number of instances to launch.
 #' @param KernelId The ID of the kernel.
 #' 
-#' We recommend that you use PV-GRUB instead of kernels and RAM disks. For more information, see [PV-GRUB](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' We recommend that you use PV-GRUB instead of kernels and RAM disks. For more information, see [PV-GRUB](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' @param KeyName The name of the key pair. You can create a key pair using CreateKeyPair or ImportKeyPair.
 #' 
 #' If you do not specify a key pair, you can\'t connect to the instance unless you choose an AMI that is configured to allow users another way to log in.
@@ -15100,7 +17060,7 @@ revoke_security_group_ingress <- function (CidrIp = NULL, FromPort = NULL,
 #' @param Placement The placement for the instance.
 #' @param RamdiskId The ID of the RAM disk.
 #' 
-#' We recommend that you use PV-GRUB instead of kernels and RAM disks. For more information, see [PV-GRUB](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' We recommend that you use PV-GRUB instead of kernels and RAM disks. For more information, see [PV-GRUB](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' @param SecurityGroupIds One or more security group IDs. You can create a security group using CreateSecurityGroup.
 #' 
 #' Default: Amazon EC2 uses the default security group.
@@ -15108,9 +17068,9 @@ revoke_security_group_ingress <- function (CidrIp = NULL, FromPort = NULL,
 #' 
 #' Default: Amazon EC2 uses the default security group.
 #' @param SubnetId &#91;EC2-VPC&#93; The ID of the subnet to launch the instance into.
-#' @param UserData The user data to make available to the instance. For more information, see [Running Commands on Your Linux Instance at Launch](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html) (Linux) and [Adding User Data](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data) (Windows). If you are using a command line tool, base64-encoding is performed for you, and you can load the text from a file. Otherwise, you must provide base64-encoded text.
+#' @param UserData The user data to make available to the instance. For more information, see [Running Commands on Your Linux Instance at Launch](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html) (Linux) and [Adding User Data](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data) (Windows). If you are using a command line tool, base64-encoding is performed for you, and you can load the text from a file. Otherwise, you must provide base64-encoded text.
 #' @param AdditionalInfo Reserved.
-#' @param ClientToken Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see [Ensuring Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' @param ClientToken Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see [Ensuring Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' 
 #' Constraints: Maximum 64 ASCII characters
 #' @param DisableApiTermination If you set this parameter to `true`, you can\'t terminate the instance using the Amazon EC2 console, CLI, or API; otherwise, you can. To change this attribute to `false` after launch, use ModifyInstanceAttribute. Alternatively, if you set `InstanceInitiatedShutdownBehavior` to `terminate`, you can terminate the instance by running the shutdown command from the instance.
@@ -15129,16 +17089,19 @@ revoke_security_group_ingress <- function (CidrIp = NULL, FromPort = NULL,
 #' 
 #' Only one private IP address can be designated as primary. You can\'t specify this option if you\'ve specified the option to designate a private IP address as the primary IP address in a network interface specification. You cannot specify this option if you\'re launching more than one instance in the request.
 #' @param ElasticGpuSpecification An elastic GPU to associate with the instance.
+#' @param ElasticInferenceAccelerators An elastic inference accelerator.
 #' @param TagSpecifications The tags to apply to the resources during launch. You can only tag instances and volumes on launch. The specified tags are applied to all instances or volumes that are created during launch. To tag a resource after it has been created, see CreateTags.
 #' @param LaunchTemplate The launch template to use to launch the instances. Any parameters that you specify in RunInstances override the same parameters in the launch template. You can specify either the name or ID of a launch template, but not both.
 #' @param InstanceMarketOptions The market (purchasing) option for the instances.
 #' 
 #' For RunInstances, persistent Spot Instance requests are only supported when **InstanceInterruptionBehavior** is set to either `hibernate` or `stop`.
-#' @param CreditSpecification The credit option for CPU usage of the instance. Valid values are `standard` and `unlimited`. To change this attribute after launch, use ModifyInstanceCreditSpecification. For more information, see [Burstable Performance Instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' @param CreditSpecification The credit option for CPU usage of the instance. Valid values are `standard` and `unlimited`. To change this attribute after launch, use ModifyInstanceCreditSpecification. For more information, see [Burstable Performance Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' 
 #' Default: `standard` (T2 instances) or `unlimited` (T3 instances)
-#' @param CpuOptions The CPU options for the instance. For more information, see [Optimizing CPU Options](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html) in the *Amazon Elastic Compute Cloud User Guide*.
-#' @param CapacityReservationSpecification Information about the Capacity Reservation targeting option.
+#' @param CpuOptions The CPU options for the instance. For more information, see [Optimizing CPU Options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' @param CapacityReservationSpecification Information about the Capacity Reservation targeting option. If you do not specify this parameter, the instance\'s Capacity Reservation preference defaults to `open`, which enables it to run in any open Capacity Reservation that has matching attributes (instance type, platform, Availability Zone).
+#' @param HibernationOptions Indicates whether an instance is enabled for hibernation. For more information, see [Hibernate Your Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' @param LicenseSpecifications The license configurations.
 #'
 #' @examples
 #' # This example launches an instance using the specified AMI, instance
@@ -15184,8 +17147,10 @@ run_instances <- function (BlockDeviceMappings = NULL, ImageId = NULL,
     DryRun = NULL, EbsOptimized = NULL, IamInstanceProfile = NULL, 
     InstanceInitiatedShutdownBehavior = NULL, NetworkInterfaces = NULL, 
     PrivateIpAddress = NULL, ElasticGpuSpecification = NULL, 
-    TagSpecifications = NULL, LaunchTemplate = NULL, InstanceMarketOptions = NULL, 
-    CreditSpecification = NULL, CpuOptions = NULL, CapacityReservationSpecification = NULL) 
+    ElasticInferenceAccelerators = NULL, TagSpecifications = NULL, 
+    LaunchTemplate = NULL, InstanceMarketOptions = NULL, CreditSpecification = NULL, 
+    CpuOptions = NULL, CapacityReservationSpecification = NULL, 
+    HibernationOptions = NULL, LicenseSpecifications = NULL) 
 {
     op <- new_operation(name = "RunInstances", http_method = "POST", 
         http_path = "/", paginator = list())
@@ -15200,10 +17165,11 @@ run_instances <- function (BlockDeviceMappings = NULL, ImageId = NULL,
         DryRun = DryRun, EbsOptimized = EbsOptimized, IamInstanceProfile = IamInstanceProfile, 
         InstanceInitiatedShutdownBehavior = InstanceInitiatedShutdownBehavior, 
         NetworkInterfaces = NetworkInterfaces, PrivateIpAddress = PrivateIpAddress, 
-        ElasticGpuSpecification = ElasticGpuSpecification, TagSpecifications = TagSpecifications, 
-        LaunchTemplate = LaunchTemplate, InstanceMarketOptions = InstanceMarketOptions, 
-        CreditSpecification = CreditSpecification, CpuOptions = CpuOptions, 
-        CapacityReservationSpecification = CapacityReservationSpecification)
+        ElasticGpuSpecification = ElasticGpuSpecification, ElasticInferenceAccelerators = ElasticInferenceAccelerators, 
+        TagSpecifications = TagSpecifications, LaunchTemplate = LaunchTemplate, 
+        InstanceMarketOptions = InstanceMarketOptions, CreditSpecification = CreditSpecification, 
+        CpuOptions = CpuOptions, CapacityReservationSpecification = CapacityReservationSpecification, 
+        HibernationOptions = HibernationOptions, LicenseSpecifications = LicenseSpecifications)
     output <- run_instances_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -15217,7 +17183,7 @@ run_instances <- function (BlockDeviceMappings = NULL, ImageId = NULL,
 #' 
 #' Before you can launch a Scheduled Instance, you must purchase it and obtain an identifier using PurchaseScheduledInstances.
 #' 
-#' You must launch a Scheduled Instance during its scheduled time period. You can\'t stop or reboot a Scheduled Instance, but you can terminate it as needed. If you terminate a Scheduled Instance before the current scheduled time period ends, you can launch it again after a few minutes. For more information, see [Scheduled Instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-scheduled-instances.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' You must launch a Scheduled Instance during its scheduled time period. You can\'t stop or reboot a Scheduled Instance, but you can terminate it as needed. If you terminate a Scheduled Instance before the current scheduled time period ends, you can launch it again after a few minutes. For more information, see [Scheduled Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-scheduled-instances.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -15295,7 +17261,7 @@ run_instances <- function (BlockDeviceMappings = NULL, ImageId = NULL,
 #' )
 #' ```
 #'
-#' @param ClientToken Unique, case-sensitive identifier that ensures the idempotency of the request. For more information, see [Ensuring Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' @param ClientToken Unique, case-sensitive identifier that ensures the idempotency of the request. For more information, see [Ensuring Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
 #' @param InstanceCount The number of instances.
 #' 
@@ -15364,6 +17330,65 @@ run_scheduled_instances <- function (ClientToken = NULL, DryRun = NULL,
     return(response)
 }
 
+#' Searches for routes in the specified transit gateway route table
+#'
+#' Searches for routes in the specified transit gateway route table.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' search_transit_gateway_routes(
+#'   TransitGatewayRouteTableId = "string",
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param TransitGatewayRouteTableId &#91;required&#93; The ID of the transit gateway route table.
+#' @param Filters &#91;required&#93; One or more filters. The possible values are:
+#' 
+#' -   `attachment.transit-gateway-attachment-id`- The id of the transit gateway attachment.
+#' 
+#' -   `attachment.resource-id` - The resource id of the transit gateway attachment.
+#' 
+#' -   `attachment.resource-type` - The attachment resource type (`vpc` \| `vpn`).
+#' 
+#' -   `route-search.exact-match` - The exact match of the specified filter.
+#' 
+#' -   `route-search.longest-prefix-match` - The longest prefix that matches the route.
+#' 
+#' -   `route-search.subnet-of-match` - The routes with a subnet that match the specified CIDR filter.
+#' 
+#' -   `route-search.supernet-of-match` - The routes with a CIDR that encompass the CIDR filter. For example, if you have 10.0.1.0/29 and 10.0.1.0/31 routes in your route table and you specify supernet-of-match as 10.0.1.0/30, then the result returns 10.0.1.0/29.
+#' 
+#' -   `state` - The state of the attachment (`available` \| `deleted` \| `deleting` \| `failed` \| `modifying` \| `pendingAcceptance` \| `pending` \| `rollingBack` \| `rejected` \| `rejecting`).
+#' 
+#' -   `type` - The type of roue (`active` \| `blackhole`).
+#' @param MaxResults The maximum number of routes to return.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+search_transit_gateway_routes <- function (TransitGatewayRouteTableId, 
+    Filters, MaxResults = NULL, DryRun = NULL) 
+{
+    op <- new_operation(name = "SearchTransitGatewayRoutes", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- search_transit_gateway_routes_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, 
+        Filters = Filters, MaxResults = MaxResults, DryRun = DryRun)
+    output <- search_transit_gateway_routes_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Starts an Amazon EBS-backed instance that you've previously stopped
 #'
 #' Starts an Amazon EBS-backed instance that you\'ve previously stopped.
@@ -15374,7 +17399,7 @@ run_scheduled_instances <- function (ClientToken = NULL, DryRun = NULL,
 #' 
 #' Performing this operation on an instance that uses an instance store as its root device returns an error.
 #' 
-#' For more information, see [Stopping Instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information, see [Stopping Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -15418,15 +17443,17 @@ start_instances <- function (InstanceIds, AdditionalInfo = NULL,
 #'
 #' Stops an Amazon EBS-backed instance.
 #' 
+#' You can use the Stop action to hibernate an instance if the instance is [enabled for hibernation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#enabling-hibernation) and it meets the [hibernation prerequisites](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#hibernating-prerequisites). For more information, see [Hibernate Your Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' 
 #' We don\'t charge usage for a stopped instance, or data transfer fees; however, your root partition Amazon EBS volume remains and continues to persist your data, and you are charged for Amazon EBS volume usage. Every time you start your Windows instance, Amazon EC2 charges you for a full instance hour. If you stop and restart your Windows instance, a new instance hour begins and Amazon EC2 charges you for another full instance hour even if you are still within the same 60-minute period when it was stopped. Every time you start your Linux instance, Amazon EC2 charges a one-minute minimum for instance usage, and thereafter charges per second for instance usage.
 #' 
-#' You can\'t start or stop Spot Instances, and you can\'t stop instance store-backed instances.
+#' You can\'t start, stop, or hibernate Spot Instances, and you can\'t stop or hibernate instance store-backed instances. For information about using hibernation for Spot Instances, see [Hibernating Interrupted Spot Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-interruptions.html#hibernate-spot-instances) in the *Amazon Elastic Compute Cloud User Guide*.
 #' 
-#' When you stop an instance, we shut it down. You can restart your instance at any time. Before stopping an instance, make sure it is in a state from which it can be restarted. Stopping an instance does not preserve data stored in RAM.
+#' When you stop or hibernate an instance, we shut it down. You can restart your instance at any time. Before stopping or hibernating an instance, make sure it is in a state from which it can be restarted. Stopping an instance does not preserve data stored in RAM, but hibernating an instance does preserve data stored in RAM. If an instance cannot hibernate successfully, a normal shutdown occurs.
 #' 
-#' Stopping an instance is different to rebooting or terminating it. For example, when you stop an instance, the root device and any other devices attached to the instance persist. When you terminate an instance, the root device and any other devices attached during the instance launch are automatically deleted. For more information about the differences between rebooting, stopping, and terminating instances, see [Instance Lifecycle](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' Stopping and hibernating an instance is different to rebooting or terminating it. For example, when you stop or hibernate an instance, the root device and any other devices attached to the instance persist. When you terminate an instance, the root device and any other devices attached during the instance launch are automatically deleted. For more information about the differences between rebooting, stopping, hibernating, and terminating instances, see [Instance Lifecycle](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' 
-#' When you stop an instance, we attempt to shut it down forcibly after a short while. If your instance appears stuck in the stopping state after a period of time, there may be an issue with the underlying host computer. For more information, see [Troubleshooting Stopping Your Instance](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesStopping.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' When you stop an instance, we attempt to shut it down forcibly after a short while. If your instance appears stuck in the stopping state after a period of time, there may be an issue with the underlying host computer. For more information, see [Troubleshooting Stopping Your Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesStopping.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -15434,12 +17461,16 @@ start_instances <- function (InstanceIds, AdditionalInfo = NULL,
 #'   InstanceIds = list(
 #'     "string"
 #'   ),
+#'   Hibernate = TRUE|FALSE,
 #'   DryRun = TRUE|FALSE,
 #'   Force = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @param InstanceIds &#91;required&#93; One or more instance IDs.
+#' @param Hibernate Hibernates the instance if the instance was enabled for hibernation at launch. If the instance cannot hibernate successfully, a normal shutdown occurs. For more information, see [Hibernate Your Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' 
+#' Default: `false`
 #' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
 #' @param Force Forces the instances to stop. The instances do not have an opportunity to flush file system caches or file system metadata. If you use this option, you must perform file system check and repair procedures. This option is not recommended for Windows instances.
 #' 
@@ -15454,13 +17485,48 @@ start_instances <- function (InstanceIds, AdditionalInfo = NULL,
 #' )}
 #'
 #' @export
-stop_instances <- function (InstanceIds, DryRun = NULL, Force = NULL) 
+stop_instances <- function (InstanceIds, Hibernate = NULL, DryRun = NULL, 
+    Force = NULL) 
 {
     op <- new_operation(name = "StopInstances", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- stop_instances_input(InstanceIds = InstanceIds, 
-        DryRun = DryRun, Force = Force)
+        Hibernate = Hibernate, DryRun = DryRun, Force = Force)
     output <- stop_instances_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Terminates active Client VPN endpoint connections
+#'
+#' Terminates active Client VPN endpoint connections. This action can be used to terminate a specific client connection, or up to five connections established by a specific user.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' terminate_client_vpn_connections(
+#'   ClientVpnEndpointId = "string",
+#'   ConnectionId = "string",
+#'   Username = "string",
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param ClientVpnEndpointId &#91;required&#93; The ID of the Client VPN endpoint to which the client is connected.
+#' @param ConnectionId The ID of the client connection to be terminated.
+#' @param Username The name of the user who initiated the connection. Use this option to terminate all active connections for the specified user. This option can only be used if the user has established up to five connections.
+#' @param DryRun Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @export
+terminate_client_vpn_connections <- function (ClientVpnEndpointId, 
+    ConnectionId = NULL, Username = NULL, DryRun = NULL) 
+{
+    op <- new_operation(name = "TerminateClientVpnConnections", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- terminate_client_vpn_connections_input(ClientVpnEndpointId = ClientVpnEndpointId, 
+        ConnectionId = ConnectionId, Username = Username, DryRun = DryRun)
+    output <- terminate_client_vpn_connections_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -15477,9 +17543,9 @@ stop_instances <- function (InstanceIds, DryRun = NULL, Force = NULL)
 #' 
 #' By default, Amazon EC2 deletes all EBS volumes that were attached when the instance launched. Volumes attached after instance launch continue running.
 #' 
-#' You can stop, start, and terminate EBS-backed instances. You can only terminate instance store-backed instances. What happens to an instance differs if you stop it or terminate it. For example, when you stop an instance, the root device and any other devices attached to the instance persist. When you terminate an instance, any attached EBS volumes with the `DeleteOnTermination` block device mapping parameter set to `true` are automatically deleted. For more information about the differences between stopping and terminating instances, see [Instance Lifecycle](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' You can stop, start, and terminate EBS-backed instances. You can only terminate instance store-backed instances. What happens to an instance differs if you stop it or terminate it. For example, when you stop an instance, the root device and any other devices attached to the instance persist. When you terminate an instance, any attached EBS volumes with the `DeleteOnTermination` block device mapping parameter set to `true` are automatically deleted. For more information about the differences between stopping and terminating instances, see [Instance Lifecycle](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #' 
-#' For more information about troubleshooting, see [Troubleshooting Terminating Your Instance](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesShuttingDown.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information about troubleshooting, see [Troubleshooting Terminating Your Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesShuttingDown.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -15593,7 +17659,7 @@ unassign_private_ip_addresses <- function (NetworkInterfaceId,
 
 #' Disables detailed monitoring for a running instance
 #'
-#' Disables detailed monitoring for a running instance. For more information, see [Monitoring Your Instances and Volumes](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' Disables detailed monitoring for a running instance. For more information, see [Monitoring Your Instances and Volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```

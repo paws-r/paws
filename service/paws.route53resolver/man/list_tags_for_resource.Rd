@@ -4,11 +4,8 @@
 \alias{list_tags_for_resource}
 \title{Lists the tags that you associated with the specified resource}
 \usage{
-list_tags_for_resource(
-  ResourceArn = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_tags_for_resource(ResourceArn, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) for the resource that you want to list tags for.}
@@ -22,6 +19,12 @@ If you have more than \code{MaxResults} tags, you can submit another \code{ListT
 \description{
 Lists the tags that you associated with the specified resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_tags_for_resource(
+  ResourceArn = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

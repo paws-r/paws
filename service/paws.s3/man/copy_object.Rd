@@ -17,7 +17,8 @@ copy_object(ACL = NULL, Bucket, CacheControl = NULL,
   SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL,
   SSEKMSKeyId = NULL, CopySourceSSECustomerAlgorithm = NULL,
   CopySourceSSECustomerKey = NULL, CopySourceSSECustomerKeyMD5 = NULL,
-  RequestPayer = NULL, Tagging = NULL)
+  RequestPayer = NULL, Tagging = NULL, ObjectLockMode = NULL,
+  ObjectLockRetainUntilDate = NULL, ObjectLockLegalHoldStatus = NULL)
 }
 \arguments{
 \item{ACL}{The canned ACL to apply to the object.}
@@ -85,6 +86,12 @@ copy_object(ACL = NULL, Bucket, CacheControl = NULL,
 \item{RequestPayer}{}
 
 \item{Tagging}{The tag-set for the object destination object this value must be used in conjunction with the TaggingDirective. The tag-set must be encoded as URL Query parameters}
+
+\item{ObjectLockMode}{The Object Lock mode that you want to apply to the copied object.}
+
+\item{ObjectLockRetainUntilDate}{The date and time when you want the copied object's Object Lock to expire.}
+
+\item{ObjectLockLegalHoldStatus}{Specifies whether you want to apply a Legal Hold to the copied object.}
 }
 \description{
 Creates a copy of an object that is already stored in Amazon S3.
@@ -115,7 +122,7 @@ Creates a copy of an object that is already stored in Amazon S3.
   MetadataDirective = "COPY"|"REPLACE",
   TaggingDirective = "COPY"|"REPLACE",
   ServerSideEncryption = "AES256"|"aws:kms",
-  StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA",
+  StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER",
   WebsiteRedirectLocation = "string",
   SSECustomerAlgorithm = "string",
   SSECustomerKey = raw,
@@ -125,7 +132,10 @@ Creates a copy of an object that is already stored in Amazon S3.
   CopySourceSSECustomerKey = raw,
   CopySourceSSECustomerKeyMD5 = "string",
   RequestPayer = "requester",
-  Tagging = "string"
+  Tagging = "string",
+  ObjectLockMode = "GOVERNANCE"|"COMPLIANCE",
+  ObjectLockRetainUntilDate = as.POSIXct("2015-01-01"),
+  ObjectLockLegalHoldStatus = "ON"|"OFF"
 )
 }
 }

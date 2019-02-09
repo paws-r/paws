@@ -4,7 +4,16 @@
 \alias{batch_enable_standards}
 \title{Enables the standards specified by the standards ARNs}
 \usage{
-batch_enable_standards(
+batch_enable_standards(StandardsSubscriptionRequests)
+}
+\arguments{
+\item{StandardsSubscriptionRequests}{[required] The list of standards that you want to enable.}
+}
+\description{
+Enables the standards specified by the standards ARNs. In the context of Security Hub, supported standards (for example, CIS AWS Foundations) are automated and continuous checks that help determine your compliance status against security industry (including AWS) best practices.
+}
+\section{Accepted Parameters}{
+\preformatted{batch_enable_standards(
   StandardsSubscriptionRequests = list(
     list(
       StandardsArn = "string",
@@ -15,12 +24,5 @@ batch_enable_standards(
   )
 )
 }
-\arguments{
-\item{StandardsSubscriptionRequests}{[required] The list of standards that you want to enable.}
 }
-\description{
-Enables the standards specified by the standards ARNs. In the context of Security Hub, supported standards (for example, CIS AWS Foundations) are automated and continuous checks that help determine your compliance status against security industry (including AWS) best practices.
-}
-\examples{
 
-}

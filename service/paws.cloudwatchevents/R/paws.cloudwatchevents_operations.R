@@ -10,22 +10,26 @@ NULL
 #' Before you can delete the rule, you must remove all targets, using RemoveTargets.
 #' 
 #' When you delete a rule, incoming events might continue to match to the deleted rule. Allow a short period of time for changes to take effect.
+#' 
+#' Managed rules are rules created and managed by another AWS service on your behalf. These rules are created by those other AWS services to support functionality in those services. You can delete these rules using the `Force` option, but you should do so only if you are sure the other service is not still using that rule.
 #'
 #' @section Accepted Parameters:
 #' ```
 #' delete_rule(
-#'   Name = "string"
+#'   Name = "string",
+#'   Force = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @param Name &#91;required&#93; The name of the rule.
+#' @param Force If this is a managed rule, created by an AWS service on your behalf, you must specify `Force` as `True` to delete the rule. This parameter is ignored for rules that are not managed rules. You can check whether a rule is a managed rule by using `DescribeRule` or `ListRules` and checking the `ManagedBy` field of the response.
 #'
 #' @export
-delete_rule <- function (Name) 
+delete_rule <- function (Name, Force = NULL) 
 {
     op <- new_operation(name = "DeleteRule", http_method = "POST", 
         http_path = "/", paginator = list())
-    input <- delete_rule_input(Name = Name)
+    input <- delete_rule_input(Name = Name, Force = Force)
     output <- delete_rule_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -280,6 +284,8 @@ put_events <- function (Entries)
 #' 
 #' To enable multiple AWS accounts to put events to your default event bus, run `PutPermission` once for each of these accounts. Or, if all the accounts are members of the same AWS organization, you can run `PutPermission` once specifying `Principal` as \"\*\" and specifying the AWS organization ID in `Condition`, to grant permissions to all accounts in that organization.
 #' 
+#' If you grant permissions using an organization, then accounts in that organization must specify a `RoleArn` with proper permissions when they use `PutTarget` to add your account\'s event bus as a target. For more information, see [Sending and Receiving Events Between AWS Accounts](http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEvents-CrossAccountEventDelivery.html) in the *Amazon CloudWatch Events User Guide*.
+#' 
 #' The permission policy on the default event bus cannot exceed 10 KB in size.
 #'
 #' @section Accepted Parameters:
@@ -332,6 +338,12 @@ put_permission <- function (Action, Principal, StatementId, Condition = NULL)
 #' A rule must contain at least an EventPattern or ScheduleExpression. Rules with EventPatterns are triggered when a matching event is observed. Rules with ScheduleExpressions self-trigger based on the given schedule. A rule can have both an EventPattern and a ScheduleExpression, in which case the rule triggers on matching events as well as on a schedule.
 #' 
 #' Most services in AWS treat : or / as the same character in Amazon Resource Names (ARNs). However, CloudWatch Events uses an exact match in event patterns and rules. Be sure to use the correct ARN characters when creating event patterns so that they match the ARN syntax in the event you want to match.
+#' 
+#' In CloudWatch Events, it is possible to create rules that lead to infinite loops, where a rule is fired repeatedly. For example, a rule might detect that ACLs have changed on an S3 bucket, and trigger software to change them to the desired state. If the rule is not written carefully, the subsequent change to the ACLs fires the rule again, creating an infinite loop.
+#' 
+#' To prevent this, write the rules so that the triggered actions do not re-fire the same rule. For example, your rule could fire only if ACLs are found to be in a bad state, instead of after any change.
+#' 
+#' An infinite loop can quickly cause higher than expected charges. We recommend that you use budgeting, which alerts you when charges exceed your specified limit. For more information, see [Managing Your Costs with Budgets](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/budgets-managing-costs.html).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -413,6 +425,8 @@ put_rule <- function (Name, ScheduleExpression = NULL, EventPattern = NULL,
 #' To be able to make API calls against the resources that you own, Amazon CloudWatch Events needs the appropriate permissions. For AWS Lambda and Amazon SNS resources, CloudWatch Events relies on resource-based policies. For EC2 instances, Kinesis data streams, and AWS Step Functions state machines, CloudWatch Events relies on IAM roles that you specify in the `RoleARN` argument in `PutTargets`. For more information, see [Authentication and Access Control](http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/auth-and-access-control-cwe.html) in the *Amazon CloudWatch Events User Guide*.
 #' 
 #' If another AWS account is in the same region and has granted you permission (using `PutPermission`), you can send events to that account. Set that account\'s event bus as a target of the rules in your account. To send the matched events to the other account, specify that account\'s event bus as the `Arn` value when you run `PutTargets`. If your account sends events to another account, your account is charged for each sent event. Each event sent to another account is charged as a custom event. The account receiving the event is not charged. For more information, see [Amazon CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/).
+#' 
+#' If you are setting the event bus of another account as the target, and that account granted permission to your account through an organization instead of directly by the account ID, then you must specify a `RoleArn` with proper permissions in the `Target` structure. For more information, see [Sending and Receiving Events Between AWS Accounts](http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEvents-CrossAccountEventDelivery.html) in the *Amazon CloudWatch Events User Guide*.
 #' 
 #' For more information about enabling cross-account events, see PutPermission.
 #' 
@@ -554,19 +568,21 @@ remove_permission <- function (StatementId)
 #'   Rule = "string",
 #'   Ids = list(
 #'     "string"
-#'   )
+#'   ),
+#'   Force = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @param Rule &#91;required&#93; The name of the rule.
 #' @param Ids &#91;required&#93; The IDs of the targets to remove from the rule.
+#' @param Force If this is a managed rule, created by an AWS service on your behalf, you must specify `Force` as `True` to remove targets. This parameter is ignored for rules that are not managed rules. You can check whether a rule is a managed rule by using `DescribeRule` or `ListRules` and checking the `ManagedBy` field of the response.
 #'
 #' @export
-remove_targets <- function (Rule, Ids) 
+remove_targets <- function (Rule, Ids, Force = NULL) 
 {
     op <- new_operation(name = "RemoveTargets", http_method = "POST", 
         http_path = "/", paginator = list())
-    input <- remove_targets_input(Rule = Rule, Ids = Ids)
+    input <- remove_targets_input(Rule = Rule, Ids = Ids, Force = Force)
     output <- remove_targets_output()
     svc <- service()
     request <- new_request(svc, op, input, output)

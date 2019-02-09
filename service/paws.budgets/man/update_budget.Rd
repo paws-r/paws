@@ -12,7 +12,7 @@ update_budget(AccountId, NewBudget)
 \item{NewBudget}{[required] The budget that you want to update your budget to.}
 }
 \description{
-Updates a budget. You can change every part of a budget except for the \code{budgetName} and the \code{calculatedSpend}. When a budget is modified, the \code{calculatedSpend} drops to zero until AWS has new usage data to use for forecasting.
+Updates a budget. You can change every part of a budget except for the \code{budgetName} and the \code{calculatedSpend}. When you modify a budget, the \code{calculatedSpend} drops to zero until AWS has new usage data to use for forecasting.
 }
 \section{Accepted Parameters}{
 \preformatted{update_budget(
@@ -56,7 +56,8 @@ Updates a budget. You can change every part of a budget except for the \code{bud
         Unit = "string"
       )
     ),
-    BudgetType = "USAGE"|"COST"|"RI_UTILIZATION"|"RI_COVERAGE"
+    BudgetType = "USAGE"|"COST"|"RI_UTILIZATION"|"RI_COVERAGE",
+    LastUpdatedTime = as.POSIXct("2015-01-01")
   )
 )
 }

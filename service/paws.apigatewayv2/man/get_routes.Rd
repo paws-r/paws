@@ -4,11 +4,7 @@
 \alias{get_routes}
 \title{Gets the Routes for an API}
 \usage{
-get_routes(
-  ApiId = "string",
-  MaxResults = "string",
-  NextToken = "string"
-)
+get_routes(ApiId, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -20,6 +16,12 @@ get_routes(
 \description{
 Gets the Routes for an API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_routes(
+  ApiId = "string",
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
+}
+

@@ -4,20 +4,8 @@
 \alias{update_flow_entitlement}
 \title{You can change an entitlement's description, subscribers, and encryption}
 \usage{
-update_flow_entitlement(
-  Description = "string",
-  Encryption = list(
-    Algorithm = "aes128"|"aes192"|"aes256",
-    KeyType = "static-key",
-    RoleArn = "string",
-    SecretArn = "string"
-  ),
-  EntitlementArn = "string",
-  FlowArn = "string",
-  Subscribers = list(
-    "string"
-  )
-)
+update_flow_entitlement(Description = NULL, Encryption = NULL,
+  EntitlementArn, FlowArn, Subscribers = NULL)
 }
 \arguments{
 \item{Description}{A description of the entitlement. This description appears only on the AWS Elemental MediaConnect console and will not be seen by the subscriber or end user.}
@@ -33,6 +21,21 @@ update_flow_entitlement(
 \description{
 You can change an entitlement's description, subscribers, and encryption. If you change the subscribers, the service will remove the outputs that are are used by the subscribers that are removed.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_flow_entitlement(
+  Description = "string",
+  Encryption = list(
+    Algorithm = "aes128"|"aes192"|"aes256",
+    KeyType = "static-key",
+    RoleArn = "string",
+    SecretArn = "string"
+  ),
+  EntitlementArn = "string",
+  FlowArn = "string",
+  Subscribers = list(
+    "string"
+  )
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{delete_authorizer}
 \title{Deletes an Authorizer}
 \usage{
-delete_authorizer(
-  ApiId = "string",
-  AuthorizerId = "string"
-)
+delete_authorizer(ApiId, AuthorizerId)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -17,6 +14,11 @@ delete_authorizer(
 \description{
 Deletes an Authorizer.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_authorizer(
+  ApiId = "string",
+  AuthorizerId = "string"
+)
 }
+}
+

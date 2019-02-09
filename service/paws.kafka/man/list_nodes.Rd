@@ -4,11 +4,7 @@
 \alias{list_nodes}
 \title{Returns a list of the broker nodes in the cluster}
 \usage{
-list_nodes(
-  ClusterArn = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_nodes(ClusterArn, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ClusterArn}{[required] The Amazon Resource Name (ARN) that uniquely identifies the cluster.}
@@ -20,6 +16,12 @@ list_nodes(
 \description{
 Returns a list of the broker nodes in the cluster.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_nodes(
+  ClusterArn = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

@@ -20,7 +20,7 @@ start_celebrity_recognition(Video, ClientRequestToken = NULL,
 Starts asynchronous recognition of celebrities in a stored video.
 }
 \details{
-Amazon Rekognition Video can detect celebrities in a video must be stored in an Amazon S3 bucket. Use Video to specify the bucket name and the filename of the video. \code{StartCelebrityRecognition} returns a job identifier (\code{JobId}) which you use to get the results of the analysis. When celebrity recognition analysis is finished, Amazon Rekognition Video publishes a completion status to the Amazon Simple Notification Service topic that you specify in \code{NotificationChannel}. To get the results of the celebrity recognition analysis, first check that the status value published to the Amazon SNS topic is \code{SUCCEEDED}. If so, call and pass the job identifier (\code{JobId}) from the initial call to \code{StartCelebrityRecognition}.
+Amazon Rekognition Video can detect celebrities in a video must be stored in an Amazon S3 bucket. Use Video to specify the bucket name and the filename of the video. \code{StartCelebrityRecognition} returns a job identifier (\code{JobId}) which you use to get the results of the analysis. When celebrity recognition analysis is finished, Amazon Rekognition Video publishes a completion status to the Amazon Simple Notification Service topic that you specify in \code{NotificationChannel}. To get the results of the celebrity recognition analysis, first check that the status value published to the Amazon SNS topic is \code{SUCCEEDED}. If so, call GetCelebrityRecognition and pass the job identifier (\code{JobId}) from the initial call to \code{StartCelebrityRecognition}.
 
 For more information, see Recognizing Celebrities in the Amazon Rekognition Developer Guide.
 }

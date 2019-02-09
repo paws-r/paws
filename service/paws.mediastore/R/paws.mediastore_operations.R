@@ -109,6 +109,32 @@ delete_cors_policy <- function (ContainerName)
     return(response)
 }
 
+#' Removes an object lifecycle policy from a container
+#'
+#' Removes an object lifecycle policy from a container.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_lifecycle_policy(
+#'   ContainerName = "string"
+#' )
+#' ```
+#'
+#' @param ContainerName &#91;required&#93; The name of the container that holds the object lifecycle policy.
+#'
+#' @export
+delete_lifecycle_policy <- function (ContainerName) 
+{
+    op <- new_operation(name = "DeleteLifecyclePolicy", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_lifecycle_policy_input(ContainerName = ContainerName)
+    output <- delete_lifecycle_policy_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Retrieves the properties of the requested container
 #'
 #' Retrieves the properties of the requested container. This request is commonly used to retrieve the endpoint of a container. An endpoint is a value assigned by the service when a new container is created. A container\'s endpoint does not change after it has been assigned. The `DescribeContainer` request returns a single `Container` object based on `ContainerName`. To return all `Container` objects that are associated with a specified AWS account, use ListContainers.
@@ -183,6 +209,32 @@ get_cors_policy <- function (ContainerName)
         http_path = "/", paginator = list())
     input <- get_cors_policy_input(ContainerName = ContainerName)
     output <- get_cors_policy_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves the object lifecycle policy that is assigned to a container
+#'
+#' Retrieves the object lifecycle policy that is assigned to a container.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' get_lifecycle_policy(
+#'   ContainerName = "string"
+#' )
+#' ```
+#'
+#' @param ContainerName &#91;required&#93; The name of the container that the object lifecycle policy is assigned to.
+#'
+#' @export
+get_lifecycle_policy <- function (ContainerName) 
+{
+    op <- new_operation(name = "GetLifecyclePolicy", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_lifecycle_policy_input(ContainerName = ContainerName)
+    output <- get_lifecycle_policy_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -297,6 +349,35 @@ put_cors_policy <- function (ContainerName, CorsPolicy)
     input <- put_cors_policy_input(ContainerName = ContainerName, 
         CorsPolicy = CorsPolicy)
     output <- put_cors_policy_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Writes an object lifecycle policy to a container
+#'
+#' Writes an object lifecycle policy to a container. If the container already has an object lifecycle policy, the service replaces the existing policy with the new policy.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' put_lifecycle_policy(
+#'   ContainerName = "string",
+#'   LifecyclePolicy = "string"
+#' )
+#' ```
+#'
+#' @param ContainerName &#91;required&#93; The name of the container that you want to assign the object lifecycle policy to.
+#' @param LifecyclePolicy &#91;required&#93; The object lifecycle policy to apply to the container.
+#'
+#' @export
+put_lifecycle_policy <- function (ContainerName, LifecyclePolicy) 
+{
+    op <- new_operation(name = "PutLifecyclePolicy", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- put_lifecycle_policy_input(ContainerName = ContainerName, 
+        LifecyclePolicy = LifecyclePolicy)
+    output <- put_lifecycle_policy_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)

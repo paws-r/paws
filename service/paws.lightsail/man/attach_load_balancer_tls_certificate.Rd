@@ -16,6 +16,8 @@ Attaches a Transport Layer Security (TLS) certificate to your load balancer. TLS
 }
 \details{
 Once you create and validate your certificate, you can attach it to your load balancer. You can also use this API to rotate the certificates on your account. Use the \code{AttachLoadBalancerTlsCertificate} operation with the non-attached certificate, and it will replace the existing one and become the attached certificate.
+
+The \code{attach load balancer tls certificate} operation supports tag-based access control via resource tags applied to the resource identified by loadBalancerName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{attach_load_balancer_tls_certificate(

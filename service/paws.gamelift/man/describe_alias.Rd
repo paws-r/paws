@@ -14,8 +14,6 @@ Retrieves properties for an alias. This operation returns all alias metadata and
 }
 \details{
 To get alias properties, specify the alias ID. If successful, the requested alias record is returned.
-
-Alias-related operations include:
 \itemize{
 \item CreateAlias
 \item ListAliases

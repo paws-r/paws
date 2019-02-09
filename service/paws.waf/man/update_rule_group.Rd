@@ -52,7 +52,12 @@ For more information about how to use the AWS WAF API to allow or block HTTP req
         OverrideAction = list(
           Type = "NONE"|"COUNT"
         ),
-        Type = "REGULAR"|"RATE_BASED"|"GROUP"
+        Type = "REGULAR"|"RATE_BASED"|"GROUP",
+        ExcludedRules = list(
+          list(
+            RuleId = "string"
+          )
+        )
       )
     )
   ),

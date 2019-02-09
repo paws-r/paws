@@ -4,10 +4,7 @@
 \alias{delete_virtual_router}
 \title{Deletes an existing virtual router}
 \usage{
-delete_virtual_router(
-  meshName = "string",
-  virtualRouterName = "string"
-)
+delete_virtual_router(meshName, virtualRouterName)
 }
 \arguments{
 \item{meshName}{[required] The name of the service mesh in which to delete the virtual router.}
@@ -20,6 +17,11 @@ Deletes an existing virtual router.
 \details{
 You must delete any routes associated with the virtual router before you can delete the router itself.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_virtual_router(
+  meshName = "string",
+  virtualRouterName = "string"
+)
 }
+}
+

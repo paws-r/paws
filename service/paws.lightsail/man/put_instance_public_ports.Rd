@@ -14,6 +14,9 @@ put_instance_public_ports(portInfos, instanceName)
 \description{
 Sets the specified open ports for an Amazon Lightsail instance, and closes all ports for every protocol not included in the current request.
 }
+\details{
+The \code{put instance public ports} operation supports tag-based access control via resource tags applied to the resource identified by instanceName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+}
 \section{Accepted Parameters}{
 \preformatted{put_instance_public_ports(
   portInfos = list(

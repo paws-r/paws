@@ -4,12 +4,17 @@
 \alias{get_service_graph}
 \title{Retrieves a document that describes services that process incoming requests, and downstream services that they call as a result}
 \usage{
-get_service_graph(StartTime, EndTime, NextToken = NULL)
+get_service_graph(StartTime, EndTime, GroupName = NULL,
+  GroupARN = NULL, NextToken = NULL)
 }
 \arguments{
 \item{StartTime}{[required] The start of the time frame for which to generate a graph.}
 
-\item{EndTime}{[required] The end of the time frame for which to generate a graph.}
+\item{EndTime}{[required] The end of the timeframe for which to generate a graph.}
+
+\item{GroupName}{The name of a group to generate a graph based on.}
+
+\item{GroupARN}{The ARN of a group to generate a graph based on.}
 
 \item{NextToken}{Pagination token. Not used.}
 }
@@ -20,6 +25,8 @@ Retrieves a document that describes services that process incoming requests, and
 \preformatted{get_service_graph(
   StartTime = as.POSIXct("2015-01-01"),
   EndTime = as.POSIXct("2015-01-01"),
+  GroupName = "string",
+  GroupARN = "string",
   NextToken = "string"
 )
 }

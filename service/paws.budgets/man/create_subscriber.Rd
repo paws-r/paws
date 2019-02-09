@@ -7,7 +7,7 @@
 create_subscriber(AccountId, BudgetName, Notification, Subscriber)
 }
 \arguments{
-\item{AccountId}{[required] The \code{accountId} associated with the budget that you want to create a subscriber for.}
+\item{AccountId}{[required] The \code{accountId} that is associated with the budget that you want to create a subscriber for.}
 
 \item{BudgetName}{[required] The name of the budget that you want to subscribe to. Budget names must be unique within an account.}
 
@@ -26,7 +26,8 @@ Creates a subscriber. You must create the associated budget and notification bef
     NotificationType = "ACTUAL"|"FORECASTED",
     ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
     Threshold = 123.0,
-    ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
+    ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
+    NotificationState = "OK"|"ALARM"
   ),
   Subscriber = list(
     SubscriptionType = "SNS"|"EMAIL",

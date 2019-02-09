@@ -4,16 +4,8 @@
 \alias{start_job}
 \title{Starts a new job for a branch, part of an Amplify App}
 \usage{
-start_job(
-  appId = "string",
-  branchName = "string",
-  jobId = "string",
-  jobType = "RELEASE"|"RETRY"|"WEB_HOOK",
-  jobReason = "string",
-  commitId = "string",
-  commitMessage = "string",
-  commitTime = as.POSIXct("2015-01-01")
-)
+start_job(appId, branchName, jobId = NULL, jobType, jobReason = NULL,
+  commitId = NULL, commitMessage = NULL, commitTime = NULL)
 }
 \arguments{
 \item{appId}{[required] Unique Id for an Amplify App.}
@@ -35,6 +27,17 @@ start_job(
 \description{
 Starts a new job for a branch, part of an Amplify App.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_job(
+  appId = "string",
+  branchName = "string",
+  jobId = "string",
+  jobType = "RELEASE"|"RETRY"|"WEB_HOOK",
+  jobReason = "string",
+  commitId = "string",
+  commitMessage = "string",
+  commitTime = as.POSIXct("2015-01-01")
+)
 }
+}
+

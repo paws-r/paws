@@ -39,6 +39,7 @@ Updates an existing job definition.
     MaxRetries = 123,
     AllocatedCapacity = 123,
     Timeout = 123,
+    MaxCapacity = 123.0,
     NotificationProperty = list(
       NotifyDelayAfter = 123
     ),

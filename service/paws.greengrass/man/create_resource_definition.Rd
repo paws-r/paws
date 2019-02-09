@@ -48,6 +48,12 @@ Creates a resource definition which contains a list of resources to be used in a
           SageMakerMachineLearningModelResourceData = list(
             DestinationPath = "string",
             SageMakerJobArn = "string"
+          ),
+          SecretsManagerSecretResourceData = list(
+            ARN = "string",
+            AdditionalStagingLabelsToDownload = list(
+              "string"
+            )
           )
         )
       )

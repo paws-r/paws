@@ -4,9 +4,7 @@
 \alias{describe_task}
 \title{Returns metadata about a task}
 \usage{
-describe_task(
-  TaskArn = "string"
-)
+describe_task(TaskArn)
 }
 \arguments{
 \item{TaskArn}{[required] The Amazon Resource Name (ARN) of the task to describe.}
@@ -14,6 +12,10 @@ describe_task(
 \description{
 Returns metadata about a task.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_task(
+  TaskArn = "string"
+)
 }
+}
+

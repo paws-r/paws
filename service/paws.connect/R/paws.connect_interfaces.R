@@ -174,6 +174,26 @@ describe_user_hierarchy_structure_output <- function (...)
     return(populate(args, shape))
 }
 
+get_contact_attributes_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(InstanceId = structure(logical(0), 
+        tags = list(location = "uri", locationName = "InstanceId", 
+            type = "string", max = 100L, min = 1L)), InitialContactId = structure(logical(0), 
+        tags = list(location = "uri", locationName = "InitialContactId", 
+            type = "string", max = 256L, min = 1L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+get_contact_attributes_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Attributes = structure(list(structure(logical(0), 
+        tags = list(type = "string", max = 32767L, min = 0L))), 
+        tags = list(type = "map"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 get_current_metric_data_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))

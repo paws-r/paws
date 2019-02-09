@@ -4,11 +4,8 @@
 \alias{list_members}
 \title{Lists details about all member accounts for the current Security Hub master account}
 \usage{
-list_members(
-  OnlyAssociated = TRUE|FALSE,
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_members(OnlyAssociated = NULL, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{OnlyAssociated}{Specifies what member accounts the response includes based on their relationship status with the master account. The default value is TRUE. If onlyAssociated is set to TRUE, the response includes member accounts whose relationship status with the master is set to ENABLED or DISABLED. If onlyAssociated is set to FALSE, the response includes all existing member accounts.}
@@ -20,6 +17,12 @@ list_members(
 \description{
 Lists details about all member accounts for the current Security Hub master account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_members(
+  OnlyAssociated = TRUE|FALSE,
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

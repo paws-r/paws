@@ -18,7 +18,7 @@ associate_vpc_cidr_block(AmazonProvidedIpv6CidrBlock = NULL,
 Associates a CIDR block with your VPC. You can associate a secondary IPv4 CIDR block, or you can associate an Amazon-provided IPv6 CIDR block. The IPv6 CIDR block size is fixed at /56.
 }
 \details{
-For more information about associating CIDR blocks with your VPC and applicable restrictions, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html#VPC_Sizing}{VPC and Subnet Sizing} in the \emph{Amazon Virtual Private Cloud User Guide}.
+For more information about associating CIDR blocks with your VPC and applicable restrictions, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html#VPC_Sizing}{VPC and Subnet Sizing} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{associate_vpc_cidr_block(

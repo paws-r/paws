@@ -4,10 +4,7 @@
 \alias{get_integration}
 \title{Gets an Integration}
 \usage{
-get_integration(
-  ApiId = "string",
-  IntegrationId = "string"
-)
+get_integration(ApiId, IntegrationId)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -17,6 +14,11 @@ get_integration(
 \description{
 Gets an Integration.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_integration(
+  ApiId = "string",
+  IntegrationId = "string"
+)
 }
+}
+

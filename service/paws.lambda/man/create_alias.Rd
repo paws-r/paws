@@ -2,7 +2,7 @@
 % Please edit documentation in R/paws.lambda_operations.R
 \name{create_alias}
 \alias{create_alias}
-\title{Creates an alias that points to the specified Lambda function version}
+\title{Creates an alias for a Lambda function version}
 \usage{
 create_alias(FunctionName, Name, FunctionVersion, Description = NULL,
   RoutingConfig = NULL)
@@ -19,19 +19,19 @@ create_alias(FunctionName, Name, FunctionVersion, Description = NULL,
 
 The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
 
-\item{Name}{[required] Name for the alias you are creating.}
+\item{Name}{[required] The name of the alias.}
 
-\item{FunctionVersion}{[required] Lambda function version for which you are creating the alias.}
+\item{FunctionVersion}{[required] The function version that the alias invokes.}
 
-\item{Description}{Description of the alias.}
+\item{Description}{A description of the alias.}
 
-\item{RoutingConfig}{Specifies an additional version your alias can point to, allowing you to dictate what percentage of traffic will invoke each version. For more information, see \href{http://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html}{Traffic Shifting Using Aliases}.}
+\item{RoutingConfig}{The \href{http://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html}{routing configuration} of the alias.}
 }
 \description{
-Creates an alias that points to the specified Lambda function version. For more information, see \href{http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html}{Introduction to AWS Lambda Aliases}.
+Creates an \href{http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{alias} for a Lambda function version. Use aliases to provide clients with a function identifier that you can update to invoke a different version.
 }
 \details{
-Alias names are unique for a given function. This requires permission for the lambda:CreateAlias action.
+You can also map an alias to split invocation requests between two versions. Use the \code{RoutingConfig} parameter to specify a second version and the percentage of invocation requests that it receives.
 }
 \section{Accepted Parameters}{
 \preformatted{create_alias(

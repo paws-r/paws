@@ -18,7 +18,7 @@ Updates the resource query of a group.
 \preformatted{update_group_query(
   GroupName = "string",
   ResourceQuery = list(
-    Type = "TAG_FILTERS_1_0",
+    Type = "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",
     Query = "string"
   )
 )

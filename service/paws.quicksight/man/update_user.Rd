@@ -4,13 +4,7 @@
 \alias{update_user}
 \title{Updates an Amazon QuickSight user}
 \usage{
-update_user(
-  UserName = "string",
-  AwsAccountId = "string",
-  Namespace = "string",
-  Email = "string",
-  Role = "ADMIN"|"AUTHOR"|"READER"|"RESTRICTED_AUTHOR"|"RESTRICTED_READER"
-)
+update_user(UserName, AwsAccountId, Namespace, Email, Role)
 }
 \arguments{
 \item{UserName}{[required] The Amazon QuickSight user name that you want to update.}
@@ -40,6 +34,14 @@ The response is a user object that contains the user's Amazon QuickSight user na
 
 \code{aws quicksight update-user --user-name=Pat --role=ADMIN --email=new_address@amazon.com --aws-account-id=111122223333 --namespace=default --region=us-east-1 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_user(
+  UserName = "string",
+  AwsAccountId = "string",
+  Namespace = "string",
+  Email = "string",
+  Role = "ADMIN"|"AUTHOR"|"READER"|"RESTRICTED_AUTHOR"|"RESTRICTED_READER"
+)
 }
+}
+

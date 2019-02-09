@@ -2,7 +2,7 @@
 % Please edit documentation in R/paws.elbv2_operations.R
 \name{describe_listener_certificates}
 \alias{describe_listener_certificates}
-\title{Describes the certificates for the specified secure listener}
+\title{Describes the certificates for the specified HTTPS listener}
 \usage{
 describe_listener_certificates(ListenerArn, Marker = NULL,
   PageSize = NULL)
@@ -15,7 +15,7 @@ describe_listener_certificates(ListenerArn, Marker = NULL,
 \item{PageSize}{The maximum number of results to return with this call.}
 }
 \description{
-Describes the certificates for the specified secure listener.
+Describes the certificates for the specified HTTPS listener.
 }
 \section{Accepted Parameters}{
 \preformatted{describe_listener_certificates(

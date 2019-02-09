@@ -7,7 +7,7 @@
 create_channel(Destinations = NULL, EncoderSettings = NULL,
   InputAttachments = NULL, InputSpecification = NULL,
   LogLevel = NULL, Name = NULL, RequestId = NULL, Reserved = NULL,
-  RoleArn = NULL)
+  RoleArn = NULL, Tags = NULL)
 }
 \arguments{
 \item{Destinations}{}
@@ -28,6 +28,8 @@ creating multiple resources.}
 \item{Reserved}{Deprecated field that's only usable by whitelisted customers.}
 
 \item{RoleArn}{An optional Amazon Resource Name (ARN) of the role to assume when running the Channel.}
+
+\item{Tags}{A collection of key-value pairs.}
 }
 \description{
 Creates a new channel
@@ -261,6 +263,11 @@ Creates a new channel
             ),
             RolloverInterval = 123
           ),
+          FrameCaptureGroupSettings = list(
+            Destination = list(
+              DestinationRefId = "string"
+            )
+          ),
           HlsGroupSettings = list(
             AdMarkers = list(
               "ADOBE"|"ELEMENTAL"|"ELEMENTAL_SCTE35"
@@ -314,6 +321,7 @@ Creates a new channel
                 RestartDelay = 123
               )
             ),
+            IFrameOnlyPlaylists = "DISABLED"|"STANDARD",
             IndexNSegments = 123,
             InputLossAction = "EMIT_OUTPUT"|"PAUSE_OUTPUT",
             IvInManifest = "EXCLUDE"|"INCLUDE",
@@ -338,6 +346,7 @@ Creates a new channel
             OutputSelection = "MANIFESTS_AND_SEGMENTS"|"SEGMENTS_ONLY",
             ProgramDateTime = "EXCLUDE"|"INCLUDE",
             ProgramDateTimePeriod = 123,
+            RedundantManifest = "DISABLED"|"ENABLED",
             SegmentLength = 123,
             SegmentationMode = "USE_INPUT_SEGMENTATION"|"USE_SEGMENT_DURATION",
             SegmentsPerSubdirectory = 123,
@@ -375,6 +384,7 @@ Creates a new channel
             CacheFullBehavior = "DISCONNECT_IMMEDIATELY"|"WAIT_FOR_SERVER",
             CacheLength = 123,
             CaptionData = "ALL"|"FIELD1_608"|"FIELD1_AND_FIELD2_608",
+            InputLossAction = "EMIT_OUTPUT"|"PAUSE_OUTPUT",
             RestartDelay = 123
           ),
           UdpGroupSettings = list(
@@ -456,6 +466,9 @@ Creates a new channel
                   )
                 ),
                 Extension = "string",
+                NameModifier = "string"
+              ),
+              FrameCaptureOutputSettings = list(
                 NameModifier = "string"
               ),
               HlsOutputSettings = list(
@@ -590,6 +603,9 @@ Creates a new channel
     VideoDescriptions = list(
       list(
         CodecSettings = list(
+          FrameCaptureSettings = list(
+            CaptureInterval = 123
+          ),
           H264Settings = list(
             AdaptiveQuantization = "HIGH"|"HIGHER"|"LOW"|"MAX"|"MEDIUM"|"OFF",
             AfdSignaling = "AUTO"|"FIXED"|"NONE",
@@ -624,6 +640,7 @@ Creates a new channel
             Slices = 123,
             Softness = 123,
             SpatialAq = "DISABLED"|"ENABLED",
+            SubgopLength = "DYNAMIC"|"FIXED",
             Syntax = "DEFAULT"|"RP2027",
             TemporalAq = "DISABLED"|"ENABLED",
             TimecodeInsertion = "DISABLED"|"PIC_TIMING_SEI"
@@ -640,6 +657,7 @@ Creates a new channel
   ),
   InputAttachments = list(
     list(
+      InputAttachmentName = "string",
       InputId = "string",
       InputSettings = list(
         AudioSelectors = list(
@@ -722,7 +740,10 @@ Creates a new channel
   Name = "string",
   RequestId = "string",
   Reserved = "string",
-  RoleArn = "string"
+  RoleArn = "string",
+  Tags = list(
+    "string"
+  )
 )
 }
 }

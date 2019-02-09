@@ -4,12 +4,8 @@
 \alias{get_integration_responses}
 \title{Gets the IntegrationResponses for an Integration}
 \usage{
-get_integration_responses(
-  ApiId = "string",
-  IntegrationId = "string",
-  MaxResults = "string",
-  NextToken = "string"
-)
+get_integration_responses(ApiId, IntegrationId, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -23,6 +19,13 @@ get_integration_responses(
 \description{
 Gets the IntegrationResponses for an Integration.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_integration_responses(
+  ApiId = "string",
+  IntegrationId = "string",
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
+}
+

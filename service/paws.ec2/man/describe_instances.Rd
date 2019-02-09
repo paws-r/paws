@@ -22,6 +22,7 @@ describe_instances(Filters = NULL, InstanceIds = NULL, DryRun = NULL,
 \item \code{dns-name} - The public DNS name of the instance.
 \item \code{group-id} - The ID of the security group for the instance. EC2-Classic only.
 \item \code{group-name} - The name of the security group for the instance. EC2-Classic only.
+\item \code{hibernation-options.configured} - A Boolean that indicates whether the instance is enabled for hibernation. A value of \code{true} means that the instance is enabled for hibernation.
 \item \code{host-id} - The ID of the Dedicated Host on which the instance is running, if applicable.
 \item \code{hypervisor} - The hypervisor type of the instance (\code{ovm} | \code{xen}).
 \item \code{iam-instance-profile.arn} - The instance profile associated with the instance. Specified as an ARN.
@@ -71,6 +72,7 @@ describe_instances(Filters = NULL, InstanceIds = NULL, DryRun = NULL,
 \item \code{network-interface.vpc-id} - The ID of the VPC for the network interface.
 \item \code{owner-id} - The AWS account ID of the instance owner.
 \item \code{placement-group-name} - The name of the placement group for the instance.
+\item \code{placement-partition-number} - The partition in which the instance is located.
 \item \code{platform} - The platform. Use \code{windows} if you have Windows instances; otherwise, leave blank.
 \item \code{private-dns-name} - The private IPv4 DNS name of the instance.
 \item \code{private-ip-address} - The private IPv4 address of the instance.

@@ -4,9 +4,7 @@
 \alias{describe_accelerator_attributes}
 \title{Describe the attributes of an accelerator}
 \usage{
-describe_accelerator_attributes(
-  AcceleratorArn = "string"
-)
+describe_accelerator_attributes(AcceleratorArn = NULL)
 }
 \arguments{
 \item{AcceleratorArn}{The Amazon Resource Name (ARN) of the accelerator with the attributes that you want to describe. Value is required.}
@@ -14,6 +12,10 @@ describe_accelerator_attributes(
 \description{
 Describe the attributes of an accelerator.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_accelerator_attributes(
+  AcceleratorArn = "string"
+)
 }
+}
+

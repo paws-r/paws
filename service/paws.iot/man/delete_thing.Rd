@@ -12,7 +12,7 @@ delete_thing(thingName, expectedVersion = NULL)
 \item{expectedVersion}{The expected version of the thing record in the registry. If the version of the record in the registry does not match the expected version specified in the request, the \code{DeleteThing} request is rejected with a \code{VersionConflictException}.}
 }
 \description{
-Deletes the specified thing.
+Deletes the specified thing. Returns successfully with no error if the deletion is successful or you specify a thing that doesn't exist.
 }
 \section{Accepted Parameters}{
 \preformatted{delete_thing(

@@ -4,7 +4,8 @@
 \alias{create_thing}
 \title{Creates a thing record in the registry}
 \usage{
-create_thing(thingName, thingTypeName = NULL, attributePayload = NULL)
+create_thing(thingName, thingTypeName = NULL, attributePayload = NULL,
+  billingGroupName = NULL)
 }
 \arguments{
 \item{thingName}{[required] The name of the thing to create.}
@@ -14,6 +15,8 @@ create_thing(thingName, thingTypeName = NULL, attributePayload = NULL)
 \item{attributePayload}{The attribute payload, which consists of up to three name/value pairs in a JSON document. For example:
 
 \code{{\"attributes\":{\"string1\":\"string2\"}}}}
+
+\item{billingGroupName}{The name of the billing group the thing will be added to.}
 }
 \description{
 Creates a thing record in the registry.
@@ -30,7 +33,8 @@ This is a control plane operation. See \href{http://docs.aws.amazon.com/iot/late
       "string"
     ),
     merge = TRUE|FALSE
-  )
+  ),
+  billingGroupName = "string"
 )
 }
 }

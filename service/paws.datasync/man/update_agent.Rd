@@ -4,10 +4,7 @@
 \alias{update_agent}
 \title{Updates the name of an agent}
 \usage{
-update_agent(
-  AgentArn = "string",
-  Name = "string"
-)
+update_agent(AgentArn, Name = NULL)
 }
 \arguments{
 \item{AgentArn}{[required] The Amazon Resource Name (ARN) of the agent to update.}
@@ -17,6 +14,11 @@ update_agent(
 \description{
 Updates the name of an agent.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_agent(
+  AgentArn = "string",
+  Name = "string"
+)
 }
+}
+

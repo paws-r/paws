@@ -4,11 +4,8 @@
 \alias{list_license_specifications_for_resource}
 \title{Returns the license configuration for a resource}
 \usage{
-list_license_specifications_for_resource(
-  ResourceArn = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_license_specifications_for_resource(ResourceArn, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{ResourceArn}{[required] ARN of an AMI or Amazon EC2 instance that has an associated license configuration.}
@@ -20,6 +17,12 @@ list_license_specifications_for_resource(
 \description{
 Returns the license configuration for a resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_license_specifications_for_resource(
+  ResourceArn = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

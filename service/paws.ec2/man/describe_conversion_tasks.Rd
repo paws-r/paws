@@ -12,10 +12,10 @@ describe_conversion_tasks(ConversionTaskIds = NULL, DryRun = NULL)
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Describes one or more of your conversion tasks. For more information, see the \href{http://docs.aws.amazon.com/vm-import/latest/userguide/}{VM Import/Export User Guide}.
+Describes one or more of your conversion tasks. For more information, see the \href{https://docs.aws.amazon.com/vm-import/latest/userguide/}{VM Import/Export User Guide}.
 }
 \details{
-For information about the import manifest referenced by this API action, see \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html}{VM Import Manifest}.
+For information about the import manifest referenced by this API action, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html}{VM Import Manifest}.
 }
 \section{Accepted Parameters}{
 \preformatted{describe_conversion_tasks(

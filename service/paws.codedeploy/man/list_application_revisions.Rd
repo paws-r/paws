@@ -9,7 +9,7 @@ list_application_revisions(applicationName, sortBy = NULL,
   deployed = NULL, nextToken = NULL)
 }
 \arguments{
-\item{applicationName}{[required] The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.}
+\item{applicationName}{[required] The name of an AWS CodeDeploy application associated with the IAM user or AWS account.}
 
 \item{sortBy}{The column name to use to sort the list results:
 \itemize{
@@ -18,7 +18,7 @@ list_application_revisions(applicationName, sortBy = NULL,
 \item lastUsedTime: Sort by the time the revisions were last used in a deployment.
 }
 
-If not specified or set to null, the results will be returned in an arbitrary order.}
+If not specified or set to null, the results are returned in an arbitrary order.}
 
 \item{sortOrder}{The order in which to sort the list results:
 \itemize{
@@ -26,13 +26,13 @@ If not specified or set to null, the results will be returned in an arbitrary or
 \item descending: descending order.
 }
 
-If not specified, the results will be sorted in ascending order.
+If not specified, the results are sorted in ascending order.
 
-If set to null, the results will be sorted in an arbitrary order.}
+If set to null, the results are sorted in an arbitrary order.}
 
 \item{s3Bucket}{An Amazon S3 bucket name to limit the search for revisions.
 
-If set to null, all of the user's buckets will be searched.}
+If set to null, all of the user's buckets are searched.}
 
 \item{s3KeyPrefix}{A key prefix for the set of Amazon S3 objects to limit the search for revisions.}
 
@@ -43,7 +43,7 @@ If set to null, all of the user's buckets will be searched.}
 \item ignore: List all revisions.
 }}
 
-\item{nextToken}{An identifier returned from the previous list application revisions call. It can be used to return the next set of applications in the list.}
+\item{nextToken}{An identifier returned from the previous \code{ListApplicationRevisions} call. It can be used to return the next set of applications in the list.}
 }
 \description{
 Lists information about revisions for an application.

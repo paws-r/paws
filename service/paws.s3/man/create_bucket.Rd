@@ -6,7 +6,8 @@
 \usage{
 create_bucket(ACL = NULL, Bucket, CreateBucketConfiguration = NULL,
   GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL,
-  GrantWrite = NULL, GrantWriteACP = NULL)
+  GrantWrite = NULL, GrantWriteACP = NULL,
+  ObjectLockEnabledForBucket = NULL)
 }
 \arguments{
 \item{ACL}{The canned ACL to apply to the bucket.}
@@ -24,6 +25,8 @@ create_bucket(ACL = NULL, Bucket, CreateBucketConfiguration = NULL,
 \item{GrantWrite}{Allows grantee to create, overwrite, and delete any object in the bucket.}
 
 \item{GrantWriteACP}{Allows grantee to write the ACL for the applicable bucket.}
+
+\item{ObjectLockEnabledForBucket}{Specifies whether you want S3 Object Lock to be enabled for the new bucket.}
 }
 \description{
 Creates a new bucket.
@@ -39,12 +42,18 @@ Creates a new bucket.
   GrantRead = "string",
   GrantReadACP = "string",
   GrantWrite = "string",
-  GrantWriteACP = "string"
+  GrantWriteACP = "string",
+  ObjectLockEnabledForBucket = TRUE|FALSE
 )
 }
 }
 
 \examples{
+# The following example creates a bucket.
+\donttest{create_bucket(
+  Bucket = "examplebucket"
+)}
+
 # The following example creates a bucket. The request specifies an AWS
 # region where to create the bucket.
 \donttest{create_bucket(
@@ -52,11 +61,6 @@ Creates a new bucket.
   CreateBucketConfiguration = list(
     LocationConstraint = "eu-west-1"
   )
-)}
-
-# The following example creates a bucket.
-\donttest{create_bucket(
-  Bucket = "examplebucket"
 )}
 
 }

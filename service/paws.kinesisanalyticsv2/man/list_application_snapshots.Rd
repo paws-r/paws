@@ -4,11 +4,8 @@
 \alias{list_application_snapshots}
 \title{Lists information about the current application snapshots}
 \usage{
-list_application_snapshots(
-  ApplicationName = "string",
-  Limit = 123,
-  NextToken = "string"
-)
+list_application_snapshots(ApplicationName, Limit = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of an existing application.}
@@ -20,6 +17,12 @@ list_application_snapshots(
 \description{
 Lists information about the current application snapshots.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_application_snapshots(
+  ApplicationName = "string",
+  Limit = 123,
+  NextToken = "string"
+)
 }
+}
+

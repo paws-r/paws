@@ -13,7 +13,7 @@ create_user_pool_domain(Domain, UserPoolId, CustomDomainConfig = NULL)
 
 \item{CustomDomainConfig}{The configuration for a custom domain that hosts the sign-up and sign-in webpages for your application.
 
-Provide this parameter only if you want to use own custom domain for your user pool. Otherwise, you can exclude this parameter and use the Amazon Cognito hosted domain instead.
+Provide this parameter only if you want to use a custom domain for your user pool. Otherwise, you can exclude this parameter and use the Amazon Cognito hosted domain instead.
 
 For more information about the hosted domain and custom domains, see \href{http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-assign-domain.html}{Configuring a User Pool Domain}.}
 }

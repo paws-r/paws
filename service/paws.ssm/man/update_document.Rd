@@ -4,13 +4,17 @@
 \alias{update_document}
 \title{The document you want to update}
 \usage{
-update_document(Content, Name, DocumentVersion = NULL,
-  DocumentFormat = NULL, TargetType = NULL)
+update_document(Content, Attachments = NULL, Name, VersionName = NULL,
+  DocumentVersion = NULL, DocumentFormat = NULL, TargetType = NULL)
 }
 \arguments{
-\item{Content}{[required] The content in a document that you want to update.}
+\item{Content}{[required] A valid JSON or YAML string.}
+
+\item{Attachments}{A list of key and value pairs that describe attachments to a version of a document.}
 
 \item{Name}{[required] The name of the document that you want to update.}
+
+\item{VersionName}{An optional field specifying the version of the artifact you are updating with the document. For example, "Release 12, Update 6". This value is unique across all versions of a document, and cannot be changed.}
 
 \item{DocumentVersion}{The version of the document that you want to update.}
 
@@ -24,7 +28,16 @@ The document you want to update.
 \section{Accepted Parameters}{
 \preformatted{update_document(
   Content = "string",
+  Attachments = list(
+    list(
+      Key = "SourceUrl",
+      Values = list(
+        "string"
+      )
+    )
+  ),
   Name = "string",
+  VersionName = "string",
   DocumentVersion = "string",
   DocumentFormat = "YAML"|"JSON",
   TargetType = "string"

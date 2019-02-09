@@ -4,9 +4,7 @@
 \alias{put_deliverability_dashboard_option}
 \title{Enable or disable the Deliverability dashboard}
 \usage{
-put_deliverability_dashboard_option(
-  DashboardEnabled = TRUE|FALSE
-)
+put_deliverability_dashboard_option(DashboardEnabled)
 }
 \arguments{
 \item{DashboardEnabled}{[required] Indicates whether the Deliverability dashboard is enabled. If the value is \code{true}, then the dashboard is enabled.}
@@ -17,6 +15,10 @@ Enable or disable the Deliverability dashboard. When you enable the Deliverabili
 \details{
 When you use the Deliverability dashboard, you pay a monthly charge of USD\$1,250.00, in addition to any other fees that you accrue by using Amazon Pinpoint. If you enable the Deliverability dashboard after the first day of a calendar month, we prorate the monthly charge based on how many days have elapsed in the current calendar month.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_deliverability_dashboard_option(
+  DashboardEnabled = TRUE|FALSE
+)
 }
+}
+

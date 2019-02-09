@@ -9,7 +9,7 @@ get_user(UserName = NULL)
 \arguments{
 \item{UserName}{The name of the user to get information about.
 
-This parameter is optional. If it is not included, it defaults to the user making the request. This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter is optional. If it is not included, it defaults to the user making the request. This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 }
 \description{
 Retrieves information about the specified IAM user, including the user's creation date, path, unique ID, and ARN.

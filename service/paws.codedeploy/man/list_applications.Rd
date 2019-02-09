@@ -2,7 +2,7 @@
 % Please edit documentation in R/paws.codedeploy_operations.R
 \name{list_applications}
 \alias{list_applications}
-\title{Lists the applications registered with the applicable IAM user or AWS account}
+\title{Lists the applications registered with the IAM user or AWS account}
 \usage{
 list_applications(nextToken = NULL)
 }
@@ -10,7 +10,7 @@ list_applications(nextToken = NULL)
 \item{nextToken}{An identifier returned from the previous list applications call. It can be used to return the next set of applications in the list.}
 }
 \description{
-Lists the applications registered with the applicable IAM user or AWS account.
+Lists the applications registered with the IAM user or AWS account.
 }
 \section{Accepted Parameters}{
 \preformatted{list_applications(

@@ -27,7 +27,7 @@ Use to record events for endpoints. This method creates events and creates or up
               "string"
             )
           ),
-          ChannelType = "GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"EMAIL"|"BAIDU"|"CUSTOM",
+          ChannelType = "GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
           Demographic = list(
             AppVersion = "string",
             Locale = "string",
@@ -64,6 +64,9 @@ Use to record events for endpoints. This method creates events and creates or up
         ),
         Events = list(
           list(
+            AppPackageName = "string",
+            AppTitle = "string",
+            AppVersionCode = "string",
             Attributes = list(
               "string"
             ),
@@ -72,6 +75,7 @@ Use to record events for endpoints. This method creates events and creates or up
             Metrics = list(
               123.0
             ),
+            SdkName = "string",
             Session = list(
               Duration = 123,
               Id = "string",

@@ -43,7 +43,7 @@ You can call \code{ListBackups} a maximum of 5 times per second.
   TimeRangeLowerBound = as.POSIXct("2015-01-01"),
   TimeRangeUpperBound = as.POSIXct("2015-01-01"),
   ExclusiveStartBackupArn = "string",
-  BackupType = "USER"|"SYSTEM"|"ALL"
+  BackupType = "USER"|"SYSTEM"|"AWS_BACKUP"|"ALL"
 )
 }
 }

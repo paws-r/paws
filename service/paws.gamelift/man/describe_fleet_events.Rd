@@ -22,7 +22,6 @@ describe_fleet_events(FleetId, StartTime = NULL, EndTime = NULL,
 Retrieves entries from the specified fleet's event log. You can specify a time range to limit the result set. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, a collection of event log entries matching the request are returned.
 }
 \details{
-Fleet-related operations include:
 \itemize{
 \item CreateFleet
 \item ListFleets

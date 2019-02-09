@@ -163,11 +163,11 @@ add_application_input_processing_configuration <- function (ApplicationName,
 #'
 #' Adds an external destination to your Amazon Kinesis Analytics application.
 #' 
-#' If you want Amazon Kinesis Analytics to deliver data from an in-application stream within your application to an external destination (such as an Amazon Kinesis stream, an Amazon Kinesis Firehose delivery stream, or an Amazon Lambda function), you add the relevant configuration to your application using this operation. You can configure one or more outputs for your application. Each output configuration maps an in-application stream and an external destination.
+#' If you want Amazon Kinesis Analytics to deliver data from an in-application stream within your application to an external destination (such as an Amazon Kinesis stream, an Amazon Kinesis Firehose delivery stream, or an AWS Lambda function), you add the relevant configuration to your application using this operation. You can configure one or more outputs for your application. Each output configuration maps an in-application stream and an external destination.
 #' 
-#' You can use one of the output configurations to deliver data from your in-application error stream to an external destination so that you can analyze the errors. For conceptual information, see [Understanding Application Output (Destination)](http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html).
+#' You can use one of the output configurations to deliver data from your in-application error stream to an external destination so that you can analyze the errors. For more information, see [Understanding Application Output (Destination)](http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html).
 #' 
-#' Note that any configuration update, including adding a streaming source using this operation, results in a new version of the application. You can use the DescribeApplication operation to find the current application version.
+#' Any configuration update, including adding a streaming source using this operation, results in a new version of the application. You can use the DescribeApplication operation to find the current application version.
 #' 
 #' For the limits on the number of application inputs and outputs you can configure, see [Limits](http://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html).
 #' 
@@ -201,7 +201,7 @@ add_application_input_processing_configuration <- function (ApplicationName,
 #'
 #' @param ApplicationName &#91;required&#93; Name of the application to which you want to add the output configuration.
 #' @param CurrentApplicationVersionId &#91;required&#93; Version of the application to which you want to add the output configuration. You can use the DescribeApplication operation to get the current application version. If the version specified is not the current version, the `ConcurrentModificationException` is returned.
-#' @param Output &#91;required&#93; An array of objects, each describing one output configuration. In the output configuration, you specify the name of an in-application stream, a destination (that is, an Amazon Kinesis stream, an Amazon Kinesis Firehose delivery stream, or an Amazon Lambda function), and record the formation to use when writing to the destination.
+#' @param Output &#91;required&#93; An array of objects, each describing one output configuration. In the output configuration, you specify the name of an in-application stream, a destination (that is, an Amazon Kinesis stream, an Amazon Kinesis Firehose delivery stream, or an AWS Lambda function), and record the formation to use when writing to the destination.
 #'
 #' @export
 add_application_output <- function (ApplicationName, CurrentApplicationVersionId, 
@@ -391,7 +391,7 @@ add_application_reference_data_source <- function (ApplicationName,
 #' To create the in-application stream, you need to specify a schema to transform your data into a schematized version used in SQL. In the schema, you provide the necessary mapping of the data elements in the streaming source to record columns in the in-app stream.
 #' @param Outputs You can configure application output to write data from any of the in-application streams to up to three destinations.
 #' 
-#' These destinations can be Amazon Kinesis streams, Amazon Kinesis Firehose delivery streams, Amazon Lambda destinations, or any combination of the three.
+#' These destinations can be Amazon Kinesis streams, Amazon Kinesis Firehose delivery streams, AWS Lambda destinations, or any combination of the three.
 #' 
 #' In the configuration, you specify the in-application stream name, the destination stream or Lambda function Amazon Resource Name (ARN), and the format to use when writing data. You must also provide an IAM role that Amazon Kinesis Analytics can assume to write to the destination stream or Lambda function on your behalf.
 #' 
@@ -653,7 +653,7 @@ describe_application <- function (ApplicationName)
 #' @param ResourceARN Amazon Resource Name (ARN) of the streaming source.
 #' @param RoleARN ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf.
 #' @param InputStartingPositionConfiguration Point at which you want Amazon Kinesis Analytics to start reading records from the specified streaming source discovery purposes.
-#' @param S3Configuration Specify this parameter to discover a schema from data in an S3 object.
+#' @param S3Configuration Specify this parameter to discover a schema from data in an Amazon S3 object.
 #' @param InputProcessingConfiguration The InputProcessingConfiguration to use to preprocess the records before discovering the schema of the records.
 #'
 #' @export

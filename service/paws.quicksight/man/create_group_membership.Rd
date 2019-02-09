@@ -4,12 +4,7 @@
 \alias{create_group_membership}
 \title{Adds an Amazon QuickSight user to an Amazon QuickSight group}
 \usage{
-create_group_membership(
-  MemberName = "string",
-  GroupName = "string",
-  AwsAccountId = "string",
-  Namespace = "string"
-)
+create_group_membership(MemberName, GroupName, AwsAccountId, Namespace)
 }
 \arguments{
 \item{MemberName}{[required] The name of the user that you want to add to the group membership.}
@@ -36,6 +31,13 @@ The response is the group member object.
 
 \code{aws quicksight create-group-membership --aws-account-id=111122223333 --namespace=default --group-name=Sales --member-name=Pat }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_group_membership(
+  MemberName = "string",
+  GroupName = "string",
+  AwsAccountId = "string",
+  Namespace = "string"
+)
 }
+}
+

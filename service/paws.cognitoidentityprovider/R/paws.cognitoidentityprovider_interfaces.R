@@ -3363,6 +3363,29 @@ update_user_pool_client_output <- function (...)
     return(populate(args, shape))
 }
 
+update_user_pool_domain_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Domain = structure(logical(0), tags = list(type = "string", 
+        max = 63L, min = 1L, pattern = "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$")), 
+        UserPoolId = structure(logical(0), tags = list(type = "string", 
+            max = 55L, min = 1L, pattern = "[\\w-]+_[0-9a-zA-Z]+")), 
+        CustomDomainConfig = structure(list(CertificateArn = structure(logical(0), 
+            tags = list(type = "string", max = 2048L, min = 20L, 
+                pattern = "arn:[\\w+=/,.@-]+:[\\w+=/,.@-]+:([\\w+=/,.@-]*)?:[0-9]+:[\\w+=/,.@-]+(:[\\w+=/,.@-]+)?(:[\\w+=/,.@-]+)?"))), 
+            tags = list(type = "structure"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+update_user_pool_domain_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(CloudFrontDomain = structure(logical(0), 
+        tags = list(type = "string", max = 63L, min = 1L, pattern = "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 verify_software_token_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))

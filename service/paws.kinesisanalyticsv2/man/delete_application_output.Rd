@@ -4,11 +4,8 @@
 \alias{delete_application_output}
 \title{Deletes the output destination configuration from your SQL-based Amazon Kinesis Data Analytics application's configuration}
 \usage{
-delete_application_output(
-  ApplicationName = "string",
-  CurrentApplicationVersionId = 123,
-  OutputId = "string"
-)
+delete_application_output(ApplicationName, CurrentApplicationVersionId,
+  OutputId)
 }
 \arguments{
 \item{ApplicationName}{[required] The application name.}
@@ -20,6 +17,12 @@ delete_application_output(
 \description{
 Deletes the output destination configuration from your SQL-based Amazon Kinesis Data Analytics application's configuration. Kinesis Data Analytics will no longer write data from the corresponding in-application stream to the external output destination.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_application_output(
+  ApplicationName = "string",
+  CurrentApplicationVersionId = 123,
+  OutputId = "string"
+)
 }
+}
+

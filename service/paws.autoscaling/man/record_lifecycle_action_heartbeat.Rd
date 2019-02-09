@@ -12,7 +12,7 @@ record_lifecycle_action_heartbeat(LifecycleHookName, AutoScalingGroupName,
 
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{LifecycleActionToken}{A token that uniquely identifies a specific lifecycle action associated with an instance. Amazon EC2 Auto Scaling sends this token to the notification target you specified when you created the lifecycle hook.}
+\item{LifecycleActionToken}{A token that uniquely identifies a specific lifecycle action associated with an instance. Amazon EC2 Auto Scaling sends this token to the notification target that you specified when you created the lifecycle hook.}
 
 \item{InstanceId}{The ID of the instance.}
 }

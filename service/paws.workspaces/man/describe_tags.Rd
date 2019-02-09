@@ -7,7 +7,7 @@
 describe_tags(ResourceId)
 }
 \arguments{
-\item{ResourceId}{[required] The ID of the WorkSpace. To find this ID, use DescribeWorkspaces.}
+\item{ResourceId}{[required] The identifier of the WorkSpace. To find this ID, use DescribeWorkspaces.}
 }
 \description{
 Describes the specified tags for the specified WorkSpace.

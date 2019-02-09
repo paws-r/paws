@@ -7,7 +7,7 @@
 update_rules_of_ip_group(GroupId, UserRules)
 }
 \arguments{
-\item{GroupId}{[required] The ID of the group.}
+\item{GroupId}{[required] The identifier of the group.}
 
 \item{UserRules}{[required] One or more rules.}
 }

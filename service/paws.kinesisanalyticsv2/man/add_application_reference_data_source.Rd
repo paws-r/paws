@@ -4,7 +4,24 @@
 \alias{add_application_reference_data_source}
 \title{Adds a reference data source to an existing SQL-based Amazon Kinesis Data Analytics application}
 \usage{
-add_application_reference_data_source(
+add_application_reference_data_source(ApplicationName,
+  CurrentApplicationVersionId, ReferenceDataSource)
+}
+\arguments{
+\item{ApplicationName}{[required] The name of an existing application.}
+
+\item{CurrentApplicationVersionId}{[required] The version of the application for which you are adding the reference data source. You can use the DescribeApplication operation to get the current application version. If the version specified is not the current version, the \code{ConcurrentModificationException} is returned.}
+
+\item{ReferenceDataSource}{[required] The reference data source can be an object in your Amazon S3 bucket. Kinesis Data Analytics reads the object and copies the data into the in-application table that is created. You provide an S3 bucket, object key name, and the resulting in-application table that is created.}
+}
+\description{
+Adds a reference data source to an existing SQL-based Amazon Kinesis Data Analytics application.
+}
+\details{
+Kinesis Data Analytics reads reference data (that is, an Amazon S3 object) and creates an in-application table within your application. In the request, you provide the source (S3 bucket name and object key name), name of the in-application table to create, and the necessary mapping information that describes how data in an Amazon S3 object maps to columns in the resulting in-application table.
+}
+\section{Accepted Parameters}{
+\preformatted{add_application_reference_data_source(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   ReferenceDataSource = list(
@@ -38,19 +55,5 @@ add_application_reference_data_source(
   )
 )
 }
-\arguments{
-\item{ApplicationName}{[required] The name of an existing application.}
+}
 
-\item{CurrentApplicationVersionId}{[required] The version of the application for which you are adding the reference data source. You can use the DescribeApplication operation to get the current application version. If the version specified is not the current version, the \code{ConcurrentModificationException} is returned.}
-
-\item{ReferenceDataSource}{[required] The reference data source can be an object in your Amazon S3 bucket. Kinesis Data Analytics reads the object and copies the data into the in-application table that is created. You provide an S3 bucket, object key name, and the resulting in-application table that is created.}
-}
-\description{
-Adds a reference data source to an existing SQL-based Amazon Kinesis Data Analytics application.
-}
-\details{
-Kinesis Data Analytics reads reference data (that is, an Amazon S3 object) and creates an in-application table within your application. In the request, you provide the source (S3 bucket name and object key name), name of the in-application table to create, and the necessary mapping information that describes how data in an Amazon S3 object maps to columns in the resulting in-application table.
-}
-\examples{
-
-}

@@ -258,6 +258,11 @@ Updates a channel.
             ),
             RolloverInterval = 123
           ),
+          FrameCaptureGroupSettings = list(
+            Destination = list(
+              DestinationRefId = "string"
+            )
+          ),
           HlsGroupSettings = list(
             AdMarkers = list(
               "ADOBE"|"ELEMENTAL"|"ELEMENTAL_SCTE35"
@@ -311,6 +316,7 @@ Updates a channel.
                 RestartDelay = 123
               )
             ),
+            IFrameOnlyPlaylists = "DISABLED"|"STANDARD",
             IndexNSegments = 123,
             InputLossAction = "EMIT_OUTPUT"|"PAUSE_OUTPUT",
             IvInManifest = "EXCLUDE"|"INCLUDE",
@@ -335,6 +341,7 @@ Updates a channel.
             OutputSelection = "MANIFESTS_AND_SEGMENTS"|"SEGMENTS_ONLY",
             ProgramDateTime = "EXCLUDE"|"INCLUDE",
             ProgramDateTimePeriod = 123,
+            RedundantManifest = "DISABLED"|"ENABLED",
             SegmentLength = 123,
             SegmentationMode = "USE_INPUT_SEGMENTATION"|"USE_SEGMENT_DURATION",
             SegmentsPerSubdirectory = 123,
@@ -372,6 +379,7 @@ Updates a channel.
             CacheFullBehavior = "DISCONNECT_IMMEDIATELY"|"WAIT_FOR_SERVER",
             CacheLength = 123,
             CaptionData = "ALL"|"FIELD1_608"|"FIELD1_AND_FIELD2_608",
+            InputLossAction = "EMIT_OUTPUT"|"PAUSE_OUTPUT",
             RestartDelay = 123
           ),
           UdpGroupSettings = list(
@@ -453,6 +461,9 @@ Updates a channel.
                   )
                 ),
                 Extension = "string",
+                NameModifier = "string"
+              ),
+              FrameCaptureOutputSettings = list(
                 NameModifier = "string"
               ),
               HlsOutputSettings = list(
@@ -587,6 +598,9 @@ Updates a channel.
     VideoDescriptions = list(
       list(
         CodecSettings = list(
+          FrameCaptureSettings = list(
+            CaptureInterval = 123
+          ),
           H264Settings = list(
             AdaptiveQuantization = "HIGH"|"HIGHER"|"LOW"|"MAX"|"MEDIUM"|"OFF",
             AfdSignaling = "AUTO"|"FIXED"|"NONE",
@@ -621,6 +635,7 @@ Updates a channel.
             Slices = 123,
             Softness = 123,
             SpatialAq = "DISABLED"|"ENABLED",
+            SubgopLength = "DYNAMIC"|"FIXED",
             Syntax = "DEFAULT"|"RP2027",
             TemporalAq = "DISABLED"|"ENABLED",
             TimecodeInsertion = "DISABLED"|"PIC_TIMING_SEI"
@@ -637,6 +652,7 @@ Updates a channel.
   ),
   InputAttachments = list(
     list(
+      InputAttachmentName = "string",
       InputId = "string",
       InputSettings = list(
         AudioSelectors = list(

@@ -18,7 +18,7 @@ Gets information about an application revision.
 \preformatted{get_application_revision(
   applicationName = "string",
   revision = list(
-    revisionType = "S3"|"GitHub"|"String",
+    revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
     s3Location = list(
       bucket = "string",
       key = "string",
@@ -31,6 +31,10 @@ Gets information about an application revision.
       commitId = "string"
     ),
     string = list(
+      content = "string",
+      sha256 = "string"
+    ),
+    appSpecContent = list(
       content = "string",
       sha256 = "string"
     )

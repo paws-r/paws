@@ -2,15 +2,15 @@
 % Please edit documentation in R/paws.lambda_operations.R
 \name{update_event_source_mapping}
 \alias{update_event_source_mapping}
-\title{You can update an event source mapping}
+\title{Updates an event source mapping}
 \usage{
 update_event_source_mapping(UUID, FunctionName = NULL, Enabled = NULL,
   BatchSize = NULL)
 }
 \arguments{
-\item{UUID}{[required] The event source mapping identifier.}
+\item{UUID}{[required] The identifier of the event source mapping.}
 
-\item{FunctionName}{The name of the lambda function.
+\item{FunctionName}{The name of the Lambda function.
 
 \strong{Name formats}
 \itemize{
@@ -20,19 +20,19 @@ update_event_source_mapping(UUID, FunctionName = NULL, Enabled = NULL,
 \item \strong{Partial ARN} - \code{123456789012:function:MyFunction}.
 }
 
-The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
+The length constraint applies only to the full ARN. If you specify only the function name, it's limited to 64 characters in length.}
 
-\item{Enabled}{Specifies whether AWS Lambda should actively poll the stream or not. If disabled, AWS Lambda will not poll the stream.}
+\item{Enabled}{Disables the event source mapping to pause polling and invocation.}
 
-\item{BatchSize}{The largest number of records that AWS Lambda will retrieve from your event source at the time of invoking your function. Your function receives an event with all the retrieved records.}
+\item{BatchSize}{The maximum number of items to retrieve in a single batch.
+\itemize{
+\item \strong{Amazon Kinesis} - Default 100. Max 10,000.
+\item \strong{Amazon DynamoDB Streams} - Default 100. Max 1,000.
+\item \strong{Amazon Simple Queue Service} - Default 10. Max 10.
+}}
 }
 \description{
-You can update an event source mapping. This is useful if you want to change the parameters of the existing mapping without losing your position in the stream. You can change which function will receive the stream records, but to change the stream itself, you must create a new mapping.
-}
-\details{
-If you disable the event source mapping, AWS Lambda stops polling. If you enable again, it will resume polling from the time it had stopped polling, so you don't lose processing of any records. However, if you delete event source mapping and create it again, it will reset.
-
-This operation requires permission for the \code{lambda:UpdateEventSourceMapping} action.
+Updates an event source mapping. You can change the function that AWS Lambda invokes, or pause invocation and resume later from the same location.
 }
 \section{Accepted Parameters}{
 \preformatted{update_event_source_mapping(

@@ -26,7 +26,7 @@ Use to update a batch of endpoints.
             "string"
           )
         ),
-        ChannelType = "GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"EMAIL"|"BAIDU"|"CUSTOM",
+        ChannelType = "GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
         Demographic = list(
           AppVersion = "string",
           Locale = "string",

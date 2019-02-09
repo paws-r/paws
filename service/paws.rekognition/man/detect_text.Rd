@@ -15,7 +15,7 @@ Detects text in the input image and converts it into machine-readable text.
 \details{
 Pass the input image as base64-encoded image bytes or as a reference to an image in an Amazon S3 bucket. If you use the AWS CLI to call Amazon Rekognition operations, you must pass it as a reference to an image in an Amazon S3 bucket. For the AWS CLI, passing image bytes is not supported. The image must be either a .png or .jpeg formatted file.
 
-The \code{DetectText} operation returns text in an array of elements, \code{TextDetections}. Each \code{TextDetection} element provides information about a single word or line of text that was detected in the image.
+The \code{DetectText} operation returns text in an array of TextDetection elements, \code{TextDetections}. Each \code{TextDetection} element provides information about a single word or line of text that was detected in the image.
 
 A word is one or more ISO basic latin script characters that are not separated by spaces. \code{DetectText} can detect up to 50 words in an image.
 

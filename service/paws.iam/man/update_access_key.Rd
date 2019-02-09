@@ -9,11 +9,11 @@ update_access_key(UserName = NULL, AccessKeyId, Status)
 \arguments{
 \item{UserName}{The name of the user whose key you want to update.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{AccessKeyId}{[required] The access key ID of the secret access key you want to update.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that can consist of any upper or lowercased letter or digit.}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that can consist of any upper or lowercased letter or digit.}
 
 \item{Status}{[required] The status you want to assign to the secret access key. \code{Active} means that the key can be used for API calls to AWS, while \code{Inactive} means that the key cannot be used.}
 }
@@ -21,7 +21,7 @@ This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex patt
 Changes the status of the specified access key from Active to Inactive, or vice versa. This operation can be used to disable a user's key as part of a key rotation workflow.
 }
 \details{
-If the \code{UserName} field is not specified, the user name is determined implicitly based on the AWS access key ID used to sign the request. Because this operation works for access keys under the AWS account, you can use this operation to manage AWS account root user credentials even if the AWS account has no associated users.
+If the \code{UserName} field is not specified, the user name is determined implicitly based on the AWS access key ID used to sign the request. This operation works for access keys under the AWS account. Consequently, you can use this operation to manage AWS account root user credentials even if the AWS account has no associated users.
 
 For information about rotating keys, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/ManagingCredentials.html}{Managing Keys and Certificates} in the \emph{IAM User Guide}.
 }

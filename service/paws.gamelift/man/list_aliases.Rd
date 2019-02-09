@@ -27,8 +27,6 @@ Retrieves all aliases for this AWS account. You can filter the result set by ali
 }
 \details{
 Returned aliases are not listed in any particular order.
-
-Alias-related operations include:
 \itemize{
 \item CreateAlias
 \item ListAliases

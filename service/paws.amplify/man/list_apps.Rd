@@ -4,10 +4,7 @@
 \alias{list_apps}
 \title{Lists existing Amplify Apps}
 \usage{
-list_apps(
-  nextToken = "string",
-  maxResults = 123
-)
+list_apps(nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{nextToken}{Pagination token. If non-null pagination token is returned in a result, then pass its value in another request to fetch more entries.}
@@ -17,6 +14,11 @@ list_apps(
 \description{
 Lists existing Amplify Apps.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_apps(
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

@@ -71,7 +71,7 @@ associate_drt_role <- function (RoleArn)
 
 #' Enables AWS Shield Advanced for a specific AWS resource
 #'
-#' Enables AWS Shield Advanced for a specific AWS resource. The resource can be an Amazon CloudFront distribution, Elastic Load Balancing load balancer, Elastic IP Address, or an Amazon Route 53 hosted zone.
+#' Enables AWS Shield Advanced for a specific AWS resource. The resource can be an Amazon CloudFront distribution, Elastic Load Balancing load balancer, AWS Global Accelerator accelerator, Elastic IP Address, or an Amazon Route 53 hosted zone.
 #' 
 #' You can add protection to only a single resource with each CreateProtection request. If you want to add protection to multiple resources at once, use the [AWS WAF console](https://console.aws.amazon.com/waf/). For more information see [Getting Started with AWS Shield Advanced](https://docs.aws.amazon.com/waf/latest/developerguide/getting-started-ddos.html) and [Add AWS Shield Advanced Protection to more AWS Resources](https://docs.aws.amazon.com/waf/latest/developerguide/configure-new-protection.html).
 #'
@@ -92,7 +92,9 @@ associate_drt_role <- function (RoleArn)
 #' 
 #' -   For an Elastic Load Balancer (Classic Load Balancer): `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/load-balancer-name region:account-id:loadbalancer/load-balancer-name `
 #' 
-#' -   For AWS CloudFront distribution: `arn:aws:cloudfront::account-id:distribution/distribution-id account-id:distribution/distribution-id `
+#' -   For an AWS CloudFront distribution: `arn:aws:cloudfront::account-id:distribution/distribution-id account-id:distribution/distribution-id `
+#' 
+#' -   For an AWS Global Accelerator accelerator: `arn:aws:globalaccelerator::account-id:accelerator/accelerator-id account-id:accelerator/accelerator-id `
 #' 
 #' -   For Amazon Route 53: `arn:aws:route53:::hostedzone/hosted-zone-id hosted-zone-id `
 #' 
@@ -262,18 +264,21 @@ describe_emergency_contact_settings <- function ()
 #' @section Accepted Parameters:
 #' ```
 #' describe_protection(
-#'   ProtectionId = "string"
+#'   ProtectionId = "string",
+#'   ResourceArn = "string"
 #' )
 #' ```
 #'
-#' @param ProtectionId &#91;required&#93; The unique identifier (ID) for the Protection object that is described.
+#' @param ProtectionId The unique identifier (ID) for the Protection object that is described. When submitting the `DescribeProtection` request you must provide either the `ResourceArn` or the `ProtectionID`, but not both.
+#' @param ResourceArn The ARN (Amazon Resource Name) of the AWS resource for the Protection object that is described. When submitting the `DescribeProtection` request you must provide either the `ResourceArn` or the `ProtectionID`, but not both.
 #'
 #' @export
-describe_protection <- function (ProtectionId) 
+describe_protection <- function (ProtectionId = NULL, ResourceArn = NULL) 
 {
     op <- new_operation(name = "DescribeProtection", http_method = "POST", 
         http_path = "/", paginator = list())
-    input <- describe_protection_input(ProtectionId = ProtectionId)
+    input <- describe_protection_input(ProtectionId = ProtectionId, 
+        ResourceArn = ResourceArn)
     output <- describe_protection_output()
     svc <- service()
     request <- new_request(svc, op, input, output)

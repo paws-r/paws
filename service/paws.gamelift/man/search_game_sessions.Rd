@@ -66,8 +66,6 @@ Returned values for \code{playerSessionCount} and \code{hasAvailablePlayerSessio
 To search or sort, specify either a fleet ID or an alias ID, and provide a search filter expression, a sort expression, or both. If successful, a collection of GameSession objects matching the request is returned. Use the pagination parameters to retrieve results as a set of sequential pages.
 
 You can search for game sessions one fleet at a time only. To find game sessions across multiple fleets, you must search each fleet separately and combine the results. This search feature finds only game sessions that are in \code{ACTIVE} status. To locate games in statuses other than active, use DescribeGameSessionDetails.
-
-Game-session-related operations include:
 \itemize{
 \item CreateGameSession
 \item DescribeGameSessions

@@ -59,7 +59,7 @@ If you specify a list of restorable users, only snapshots with create snapshot p
 
 If you are describing a long list of snapshots, you can paginate the output to make the list more manageable. The \code{MaxResults} parameter sets the maximum number of results returned in a single page. If the list of results exceeds your \code{MaxResults} value, then that number of results is returned along with a \code{NextToken} value that can be passed to a subsequent \code{DescribeSnapshots} request to retrieve the remaining results.
 
-For more information about EBS snapshots, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html}{Amazon EBS Snapshots} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information about EBS snapshots, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html}{Amazon EBS Snapshots} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{describe_snapshots(

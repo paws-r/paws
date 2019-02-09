@@ -148,6 +148,16 @@ create_custom_action_type <- function (category, provider, version,
 #'         type = "KMS"
 #'       )
 #'     ),
+#'     artifactStores = list(
+#'       list(
+#'         type = "S3",
+#'         location = "string",
+#'         encryptionKey = list(
+#'           id = "string",
+#'           type = "KMS"
+#'         )
+#'       )
+#'     ),
 #'     stages = list(
 #'       list(
 #'         name = "string",
@@ -180,7 +190,8 @@ create_custom_action_type <- function (category, provider, version,
 #'                 name = "string"
 #'               )
 #'             ),
-#'             roleArn = "string"
+#'             roleArn = "string",
+#'             region = "string"
 #'           )
 #'         )
 #'       )
@@ -1061,18 +1072,20 @@ retry_stage_execution <- function (pipelineName, stageName, pipelineExecutionId,
 #' @section Accepted Parameters:
 #' ```
 #' start_pipeline_execution(
-#'   name = "string"
+#'   name = "string",
+#'   clientRequestToken = "string"
 #' )
 #' ```
 #'
 #' @param name &#91;required&#93; The name of the pipeline to start.
+#' @param clientRequestToken The system-generated unique ID used to identify a unique execution request.
 #'
 #' @export
-start_pipeline_execution <- function (name) 
+start_pipeline_execution <- function (name, clientRequestToken = NULL) 
 {
     op <- new_operation(name = "StartPipelineExecution", http_method = "POST", 
         http_path = "/", paginator = list())
-    input <- start_pipeline_execution_input(name = name)
+    input <- start_pipeline_execution_input(name = name, clientRequestToken = clientRequestToken)
     output <- start_pipeline_execution_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -1096,6 +1109,16 @@ start_pipeline_execution <- function (name)
 #'       encryptionKey = list(
 #'         id = "string",
 #'         type = "KMS"
+#'       )
+#'     ),
+#'     artifactStores = list(
+#'       list(
+#'         type = "S3",
+#'         location = "string",
+#'         encryptionKey = list(
+#'           id = "string",
+#'           type = "KMS"
+#'         )
 #'       )
 #'     ),
 #'     stages = list(
@@ -1130,7 +1153,8 @@ start_pipeline_execution <- function (name)
 #'                 name = "string"
 #'               )
 #'             ),
-#'             roleArn = "string"
+#'             roleArn = "string",
+#'             region = "string"
 #'           )
 #'         )
 #'       )

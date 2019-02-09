@@ -4,10 +4,7 @@
 \alias{delete_user}
 \title{Deletes the user belonging to the server you specify}
 \usage{
-delete_user(
-  ServerId = "string",
-  UserName = "string"
-)
+delete_user(ServerId, UserName)
 }
 \arguments{
 \item{ServerId}{[required] A system-assigned unique identifier for an SFTP server instance that has the user assigned to it.}
@@ -22,6 +19,11 @@ No response returns from this call.
 
 When you delete a user from a server, the user's information is lost.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_user(
+  ServerId = "string",
+  UserName = "string"
+)
 }
+}
+

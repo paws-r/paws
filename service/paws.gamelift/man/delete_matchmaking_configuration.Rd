@@ -13,7 +13,6 @@ delete_matchmaking_configuration(Name)
 Permanently removes a FlexMatch matchmaking configuration. To delete, specify the configuration name. A matchmaking configuration cannot be deleted if it is being used in any active matchmaking tickets.
 }
 \details{
-Operations related to match configurations and rule sets include:
 \itemize{
 \item CreateMatchmakingConfiguration
 \item DescribeMatchmakingConfigurations
@@ -22,6 +21,7 @@ Operations related to match configurations and rule sets include:
 \item CreateMatchmakingRuleSet
 \item DescribeMatchmakingRuleSets
 \item ValidateMatchmakingRuleSet
+\item DeleteMatchmakingRuleSet
 }
 }
 \section{Accepted Parameters}{

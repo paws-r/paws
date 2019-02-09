@@ -51,7 +51,7 @@ add_tags_to_on_premises_instances <- function (tags, instanceNames)
 #'   applicationName = "string",
 #'   revisions = list(
 #'     list(
-#'       revisionType = "S3"|"GitHub"|"String",
+#'       revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
 #'       s3Location = list(
 #'         bucket = "string",
 #'         key = "string",
@@ -64,6 +64,10 @@ add_tags_to_on_premises_instances <- function (tags, instanceNames)
 #'         commitId = "string"
 #'       ),
 #'       string = list(
+#'         content = "string",
+#'         sha256 = "string"
+#'       ),
+#'       appSpecContent = list(
 #'         content = "string",
 #'         sha256 = "string"
 #'       )
@@ -133,7 +137,7 @@ batch_get_applications <- function (applicationNames)
 #' ```
 #'
 #' @param applicationName &#91;required&#93; The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.
-#' @param deploymentGroupNames &#91;required&#93; The deployment groups\' names.
+#' @param deploymentGroupNames &#91;required&#93; The names of the deployment groups.
 #'
 #' @export
 batch_get_deployment_groups <- function (applicationName, deploymentGroupNames) 
@@ -149,9 +153,11 @@ batch_get_deployment_groups <- function (applicationName, deploymentGroupNames)
     return(response)
 }
 
-#' Gets information about one or more instance that are part of a deployment group
+#' This method works, but is deprecated
 #'
-#' Gets information about one or more instance that are part of a deployment group.
+#' This method works, but is deprecated. Use `BatchGetDeploymentTargets` instead.
+#' 
+#' Returns an array of instances associated with a deployment. This method works with EC2/On-premises and AWS Lambda compute platforms. The newer `BatchGetDeploymentTargets` works with all compute platforms.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -164,7 +170,7 @@ batch_get_deployment_groups <- function (applicationName, deploymentGroupNames)
 #' ```
 #'
 #' @param deploymentId &#91;required&#93; The unique ID of a deployment.
-#' @param instanceIds &#91;required&#93; The unique IDs of instances in the deployment group.
+#' @param instanceIds &#91;required&#93; The unique IDs of instances used in the deployment.
 #'
 #' @export
 batch_get_deployment_instances <- function (deploymentId, instanceIds) 
@@ -174,6 +180,52 @@ batch_get_deployment_instances <- function (deploymentId, instanceIds)
     input <- batch_get_deployment_instances_input(deploymentId = deploymentId, 
         instanceIds = instanceIds)
     output <- batch_get_deployment_instances_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns an array of targets associated with a deployment
+#'
+#' Returns an array of targets associated with a deployment. This method works with all compute types and should be used instead of the deprecated `BatchGetDeploymentInstances`.
+#' 
+#' The type of targets returned depends on the deployment\'s compute platform:
+#' 
+#' -   **EC2/On-premises**: Information about EC2 instance targets.
+#' 
+#' -   **AWS Lambda**: Information about Lambda functions targets.
+#' 
+#' -   **Amazon ECS**: Information about Amazon ECS service targets.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' batch_get_deployment_targets(
+#'   deploymentId = "string",
+#'   targetIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @param deploymentId The unique ID of a deployment.
+#' @param targetIds The unique IDs of the deployment targets. The compute platform of the deployment determines the type of the targets and their formats.
+#' 
+#' -   For deployments that use the EC2/On-premises compute platform, the target IDs are EC2 or on-premises instances IDs, and their target type is `instanceTarget`.
+#' 
+#' -   For deployments that use the AWS Lambda compute platform, the target IDs are the names of Lambda functions, and their target type is `instanceTarget`.
+#' 
+#' -   For deployments that use the Amazon ECS compute platform, the target IDs are pairs of Amazon ECS clusters and services specified using the format `<clustername>:<servicename>`. Their target type is `ecsTarget`.
+#'
+#' @export
+batch_get_deployment_targets <- function (deploymentId = NULL, 
+    targetIds = NULL) 
+{
+    op <- new_operation(name = "BatchGetDeploymentTargets", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- batch_get_deployment_targets_input(deploymentId = deploymentId, 
+        targetIds = targetIds)
+    output <- batch_get_deployment_targets_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -243,18 +295,21 @@ batch_get_on_premises_instances <- function (instanceNames)
 #' @section Accepted Parameters:
 #' ```
 #' continue_deployment(
-#'   deploymentId = "string"
+#'   deploymentId = "string",
+#'   deploymentWaitType = "READY_WAIT"|"TERMINATION_WAIT"
 #' )
 #' ```
 #'
-#' @param deploymentId The deployment ID of the blue/green deployment for which you want to start rerouting traffic to the replacement environment.
+#' @param deploymentId The unique ID of a blue/green deployment for which you want to start rerouting traffic to the replacement environment.
+#' @param deploymentWaitType The status of the deployment\'s waiting period. READY\_WAIT indicates the deployment is ready to start shifting traffic. TERMINATION\_WAIT indicates the traffic is shifted, but the original target is not terminated.
 #'
 #' @export
-continue_deployment <- function (deploymentId = NULL) 
+continue_deployment <- function (deploymentId = NULL, deploymentWaitType = NULL) 
 {
     op <- new_operation(name = "ContinueDeployment", http_method = "POST", 
         http_path = "/", paginator = list())
-    input <- continue_deployment_input(deploymentId = deploymentId)
+    input <- continue_deployment_input(deploymentId = deploymentId, 
+        deploymentWaitType = deploymentWaitType)
     output <- continue_deployment_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -270,7 +325,7 @@ continue_deployment <- function (deploymentId = NULL)
 #' ```
 #' create_application(
 #'   applicationName = "string",
-#'   computePlatform = "Server"|"Lambda"
+#'   computePlatform = "Server"|"Lambda"|"ECS"
 #' )
 #' ```
 #'
@@ -301,7 +356,7 @@ create_application <- function (applicationName, computePlatform = NULL)
 #'   applicationName = "string",
 #'   deploymentGroupName = "string",
 #'   revision = list(
-#'     revisionType = "S3"|"GitHub"|"String",
+#'     revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
 #'     s3Location = list(
 #'       bucket = "string",
 #'       key = "string",
@@ -314,6 +369,10 @@ create_application <- function (applicationName, computePlatform = NULL)
 #'       commitId = "string"
 #'     ),
 #'     string = list(
+#'       content = "string",
+#'       sha256 = "string"
+#'     ),
+#'     appSpecContent = list(
 #'       content = "string",
 #'       sha256 = "string"
 #'     )
@@ -355,17 +414,17 @@ create_application <- function (applicationName, computePlatform = NULL)
 #' )
 #' ```
 #'
-#' @param applicationName &#91;required&#93; The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.
+#' @param applicationName &#91;required&#93; The name of an AWS CodeDeploy application associated with the IAM user or AWS account.
 #' @param deploymentGroupName The name of the deployment group.
 #' @param revision The type and location of the revision to deploy.
-#' @param deploymentConfigName The name of a deployment configuration associated with the applicable IAM user or AWS account.
+#' @param deploymentConfigName The name of a deployment configuration associated with the IAM user or AWS account.
 #' 
-#' If not specified, the value configured in the deployment group will be used as the default. If the deployment group does not have a deployment configuration associated with it, then CodeDeployDefault.OneAtATime will be used by default.
+#' If not specified, the value configured in the deployment group is used as the default. If the deployment group does not have a deployment configuration associated with it, CodeDeployDefault.OneAtATime is used by default.
 #' @param description A comment about the deployment.
-#' @param ignoreApplicationStopFailures If set to true, then if the deployment causes the ApplicationStop deployment lifecycle event to an instance to fail, the deployment to that instance will not be considered to have failed at that point and will continue on to the BeforeInstall deployment lifecycle event.
+#' @param ignoreApplicationStopFailures If set to true, then if the deployment causes the ApplicationStop deployment lifecycle event to an instance to fail, the deployment to that instance is considered to have failed at that point and continues on to the BeforeInstall deployment lifecycle event.
 #' 
-#' If set to false or not specified, then if the deployment causes the ApplicationStop deployment lifecycle event to fail to an instance, the deployment to that instance will stop, and the deployment to that instance will be considered to have failed.
-#' @param targetInstances Information about the instances that will belong to the replacement environment in a blue/green deployment.
+#' If set to false or not specified, then if the deployment causes the ApplicationStop deployment lifecycle event to fail to an instance, the deployment to that instance stops, and the deployment to that instance is considered to have failed.
+#' @param targetInstances Information about the instances that belong to the replacement environment in a blue/green deployment.
 #' @param autoRollbackConfiguration Configuration information for an automatic rollback that is added when a deployment is created.
 #' @param updateOutdatedInstancesOnly Indicates whether to deploy to all instances or only to instances that are not running the latest application revision.
 #' @param fileExistsBehavior Information about how AWS CodeDeploy handles files that already exist in a deployment target location but weren\'t part of the previous successful deployment.
@@ -424,7 +483,7 @@ create_deployment <- function (applicationName, deploymentGroupName = NULL,
 #'       linearInterval = 123
 #'     )
 #'   ),
-#'   computePlatform = "Server"|"Lambda"
+#'   computePlatform = "Server"|"Lambda"|"ECS"
 #' )
 #' ```
 #'
@@ -440,7 +499,7 @@ create_deployment <- function (applicationName, deploymentGroupName = NULL,
 #' The value parameter takes an integer.
 #' 
 #' For example, to set a minimum of 95% healthy instance, specify a type of FLEET\_PERCENT and a value of 95.
-#' @param trafficRoutingConfig The configuration that specifies how the deployment traffic will be routed.
+#' @param trafficRoutingConfig The configuration that specifies how the deployment traffic is routed.
 #' @param computePlatform The destination platform type for the deployment (`Lambda` or `Server`\>).
 #'
 #' @export
@@ -459,9 +518,9 @@ create_deployment_config <- function (deploymentConfigName, minimumHealthyHosts 
     return(response)
 }
 
-#' Creates a deployment group to which application revisions will be deployed
+#' Creates a deployment group to which application revisions are deployed
 #'
-#' Creates a deployment group to which application revisions will be deployed.
+#' Creates a deployment group to which application revisions are deployed.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -538,6 +597,25 @@ create_deployment_config <- function (deploymentConfigName, minimumHealthyHosts 
 #'       list(
 #'         name = "string"
 #'       )
+#'     ),
+#'     targetGroupPairInfoList = list(
+#'       list(
+#'         targetGroups = list(
+#'           list(
+#'             name = "string"
+#'           )
+#'         ),
+#'         prodTrafficRoute = list(
+#'           listenerArns = list(
+#'             "string"
+#'           )
+#'         ),
+#'         testTrafficRoute = list(
+#'           listenerArns = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   ec2TagSet = list(
@@ -549,6 +627,12 @@ create_deployment_config <- function (deploymentConfigName, minimumHealthyHosts 
 #'           Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
 #'         )
 #'       )
+#'     )
+#'   ),
+#'   ecsServices = list(
+#'     list(
+#'       serviceName = "string",
+#'       clusterName = "string"
 #'     )
 #'   ),
 #'   onPremisesTagSet = list(
@@ -565,16 +649,16 @@ create_deployment_config <- function (deploymentConfigName, minimumHealthyHosts 
 #' )
 #' ```
 #'
-#' @param applicationName &#91;required&#93; The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.
+#' @param applicationName &#91;required&#93; The name of an AWS CodeDeploy application associated with the IAM user or AWS account.
 #' @param deploymentGroupName &#91;required&#93; The name of a new deployment group for the specified application.
 #' @param deploymentConfigName If specified, the deployment configuration name can be either one of the predefined configurations provided with AWS CodeDeploy or a custom deployment configuration that you create by calling the create deployment configuration operation.
 #' 
-#' CodeDeployDefault.OneAtATime is the default deployment configuration. It is used if a configuration isn\'t specified for the deployment or the deployment group.
+#' CodeDeployDefault.OneAtATime is the default deployment configuration. It is used if a configuration isn\'t specified for the deployment or deployment group.
 #' 
 #' For more information about the predefined deployment configurations in AWS CodeDeploy, see [Working with Deployment Groups in AWS CodeDeploy](http://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html) in the AWS CodeDeploy User Guide.
-#' @param ec2TagFilters The Amazon EC2 tags on which to filter. The deployment group will include EC2 instances with any of the specified tags. Cannot be used in the same call as ec2TagSet.
-#' @param onPremisesInstanceTagFilters The on-premises instance tags on which to filter. The deployment group will include on-premises instances with any of the specified tags. Cannot be used in the same call as OnPremisesTagSet.
-#' @param autoScalingGroups A list of associated Auto Scaling groups.
+#' @param ec2TagFilters The Amazon EC2 tags on which to filter. The deployment group includes EC2 instances with any of the specified tags. Cannot be used in the same call as ec2TagSet.
+#' @param onPremisesInstanceTagFilters The on-premises instance tags on which to filter. The deployment group includes on-premises instances with any of the specified tags. Cannot be used in the same call as OnPremisesTagSet.
+#' @param autoScalingGroups A list of associated Amazon EC2 Auto Scaling groups.
 #' @param serviceRoleArn &#91;required&#93; A service role ARN that allows AWS CodeDeploy to act on the user\'s behalf when interacting with AWS services.
 #' @param triggerConfigurations Information about triggers to create when the deployment group is created. For examples, see [Create a Trigger for an AWS CodeDeploy Event](http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html) in the AWS CodeDeploy User Guide.
 #' @param alarmConfiguration Information to add about Amazon CloudWatch alarms when the deployment group is created.
@@ -582,8 +666,9 @@ create_deployment_config <- function (deploymentConfigName, minimumHealthyHosts 
 #' @param deploymentStyle Information about the type of deployment, in-place or blue/green, that you want to run and whether to route deployment traffic behind a load balancer.
 #' @param blueGreenDeploymentConfiguration Information about blue/green deployment options for a deployment group.
 #' @param loadBalancerInfo Information about the load balancer used in a deployment.
-#' @param ec2TagSet Information about groups of tags applied to EC2 instances. The deployment group will include only EC2 instances identified by all the tag groups. Cannot be used in the same call as ec2TagFilters.
-#' @param onPremisesTagSet Information about groups of tags applied to on-premises instances. The deployment group will include only on-premises instances identified by all the tag groups. Cannot be used in the same call as onPremisesInstanceTagFilters.
+#' @param ec2TagSet Information about groups of tags applied to EC2 instances. The deployment group includes only EC2 instances identified by all the tag groups. Cannot be used in the same call as ec2TagFilters.
+#' @param ecsServices The target Amazon ECS services in the deployment group. This applies only to deployment groups that use the Amazon ECS compute platform. A target Amazon ECS service is specified as an Amazon ECS cluster and service name pair using the format `<clustername>:<servicename>`.
+#' @param onPremisesTagSet Information about groups of tags applied to on-premises instances. The deployment group includes only on-premises instances identified by all of the tag groups. Cannot be used in the same call as onPremisesInstanceTagFilters.
 #'
 #' @export
 create_deployment_group <- function (applicationName, deploymentGroupName, 
@@ -591,7 +676,8 @@ create_deployment_group <- function (applicationName, deploymentGroupName,
     autoScalingGroups = NULL, serviceRoleArn, triggerConfigurations = NULL, 
     alarmConfiguration = NULL, autoRollbackConfiguration = NULL, 
     deploymentStyle = NULL, blueGreenDeploymentConfiguration = NULL, 
-    loadBalancerInfo = NULL, ec2TagSet = NULL, onPremisesTagSet = NULL) 
+    loadBalancerInfo = NULL, ec2TagSet = NULL, ecsServices = NULL, 
+    onPremisesTagSet = NULL) 
 {
     op <- new_operation(name = "CreateDeploymentGroup", http_method = "POST", 
         http_path = "/", paginator = list())
@@ -603,7 +689,7 @@ create_deployment_group <- function (applicationName, deploymentGroupName,
         autoRollbackConfiguration = autoRollbackConfiguration, 
         deploymentStyle = deploymentStyle, blueGreenDeploymentConfiguration = blueGreenDeploymentConfiguration, 
         loadBalancerInfo = loadBalancerInfo, ec2TagSet = ec2TagSet, 
-        onPremisesTagSet = onPremisesTagSet)
+        ecsServices = ecsServices, onPremisesTagSet = onPremisesTagSet)
     output <- create_deployment_group_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -622,7 +708,7 @@ create_deployment_group <- function (applicationName, deploymentGroupName,
 #' )
 #' ```
 #'
-#' @param applicationName &#91;required&#93; The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.
+#' @param applicationName &#91;required&#93; The name of an AWS CodeDeploy application associated with the IAM user or AWS account.
 #'
 #' @export
 delete_application <- function (applicationName) 
@@ -650,7 +736,7 @@ delete_application <- function (applicationName)
 #' )
 #' ```
 #'
-#' @param deploymentConfigName &#91;required&#93; The name of a deployment configuration associated with the applicable IAM user or AWS account.
+#' @param deploymentConfigName &#91;required&#93; The name of a deployment configuration associated with the IAM user or AWS account.
 #'
 #' @export
 delete_deployment_config <- function (deploymentConfigName) 
@@ -677,8 +763,8 @@ delete_deployment_config <- function (deploymentConfigName)
 #' )
 #' ```
 #'
-#' @param applicationName &#91;required&#93; The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.
-#' @param deploymentGroupName &#91;required&#93; The name of an existing deployment group for the specified application.
+#' @param applicationName &#91;required&#93; The name of an AWS CodeDeploy application associated with the IAM user or AWS account.
+#' @param deploymentGroupName &#91;required&#93; The name of a deployment group for the specified application.
 #'
 #' @export
 delete_deployment_group <- function (applicationName, deploymentGroupName) 
@@ -757,7 +843,7 @@ deregister_on_premises_instance <- function (instanceName)
 #' )
 #' ```
 #'
-#' @param applicationName &#91;required&#93; The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.
+#' @param applicationName &#91;required&#93; The name of an AWS CodeDeploy application associated with the IAM user or AWS account.
 #'
 #' @export
 get_application <- function (applicationName) 
@@ -781,7 +867,7 @@ get_application <- function (applicationName)
 #' get_application_revision(
 #'   applicationName = "string",
 #'   revision = list(
-#'     revisionType = "S3"|"GitHub"|"String",
+#'     revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
 #'     s3Location = list(
 #'       bucket = "string",
 #'       key = "string",
@@ -794,6 +880,10 @@ get_application <- function (applicationName)
 #'       commitId = "string"
 #'     ),
 #'     string = list(
+#'       content = "string",
+#'       sha256 = "string"
+#'     ),
+#'     appSpecContent = list(
 #'       content = "string",
 #'       sha256 = "string"
 #'     )
@@ -829,7 +919,7 @@ get_application_revision <- function (applicationName, revision)
 #' )
 #' ```
 #'
-#' @param deploymentId &#91;required&#93; A deployment ID associated with the applicable IAM user or AWS account.
+#' @param deploymentId &#91;required&#93; The unique ID of a deployment associated with the IAM user or AWS account.
 #'
 #' @export
 get_deployment <- function (deploymentId) 
@@ -855,7 +945,7 @@ get_deployment <- function (deploymentId)
 #' )
 #' ```
 #'
-#' @param deploymentConfigName &#91;required&#93; The name of a deployment configuration associated with the applicable IAM user or AWS account.
+#' @param deploymentConfigName &#91;required&#93; The name of a deployment configuration associated with the IAM user or AWS account.
 #'
 #' @export
 get_deployment_config <- function (deploymentConfigName) 
@@ -882,8 +972,8 @@ get_deployment_config <- function (deploymentConfigName)
 #' )
 #' ```
 #'
-#' @param applicationName &#91;required&#93; The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.
-#' @param deploymentGroupName &#91;required&#93; The name of an existing deployment group for the specified application.
+#' @param applicationName &#91;required&#93; The name of an AWS CodeDeploy application associated with the IAM user or AWS account.
+#' @param deploymentGroupName &#91;required&#93; The name of a deployment group for the specified application.
 #'
 #' @export
 get_deployment_group <- function (applicationName, deploymentGroupName) 
@@ -922,6 +1012,35 @@ get_deployment_instance <- function (deploymentId, instanceId)
     input <- get_deployment_instance_input(deploymentId = deploymentId, 
         instanceId = instanceId)
     output <- get_deployment_instance_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns information about a deployment target
+#'
+#' Returns information about a deployment target.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' get_deployment_target(
+#'   deploymentId = "string",
+#'   targetId = "string"
+#' )
+#' ```
+#'
+#' @param deploymentId The unique ID of a deployment.
+#' @param targetId The unique ID of a deployment target.
+#'
+#' @export
+get_deployment_target <- function (deploymentId = NULL, targetId = NULL) 
+{
+    op <- new_operation(name = "GetDeploymentTarget", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_deployment_target_input(deploymentId = deploymentId, 
+        targetId = targetId)
+    output <- get_deployment_target_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -971,7 +1090,7 @@ get_on_premises_instance <- function (instanceName)
 #' )
 #' ```
 #'
-#' @param applicationName &#91;required&#93; The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.
+#' @param applicationName &#91;required&#93; The name of an AWS CodeDeploy application associated with the IAM user or AWS account.
 #' @param sortBy The column name to use to sort the list results:
 #' 
 #' -   registerTime: Sort by the time the revisions were registered with AWS CodeDeploy.
@@ -980,19 +1099,19 @@ get_on_premises_instance <- function (instanceName)
 #' 
 #' -   lastUsedTime: Sort by the time the revisions were last used in a deployment.
 #' 
-#' If not specified or set to null, the results will be returned in an arbitrary order.
+#' If not specified or set to null, the results are returned in an arbitrary order.
 #' @param sortOrder The order in which to sort the list results:
 #' 
 #' -   ascending: ascending order.
 #' 
 #' -   descending: descending order.
 #' 
-#' If not specified, the results will be sorted in ascending order.
+#' If not specified, the results are sorted in ascending order.
 #' 
-#' If set to null, the results will be sorted in an arbitrary order.
+#' If set to null, the results are sorted in an arbitrary order.
 #' @param s3Bucket An Amazon S3 bucket name to limit the search for revisions.
 #' 
-#' If set to null, all of the user\'s buckets will be searched.
+#' If set to null, all of the user\'s buckets are searched.
 #' @param s3KeyPrefix A key prefix for the set of Amazon S3 objects to limit the search for revisions.
 #' @param deployed Whether to list revisions based on whether the revision is the target revision of an deployment group:
 #' 
@@ -1001,7 +1120,7 @@ get_on_premises_instance <- function (instanceName)
 #' -   exclude: Do not list revisions that are target revisions of a deployment group.
 #' 
 #' -   ignore: List all revisions.
-#' @param nextToken An identifier returned from the previous list application revisions call. It can be used to return the next set of applications in the list.
+#' @param nextToken An identifier returned from the previous `ListApplicationRevisions` call. It can be used to return the next set of applications in the list.
 #'
 #' @export
 list_application_revisions <- function (applicationName, sortBy = NULL, 
@@ -1020,9 +1139,9 @@ list_application_revisions <- function (applicationName, sortBy = NULL,
     return(response)
 }
 
-#' Lists the applications registered with the applicable IAM user or AWS account
+#' Lists the applications registered with the IAM user or AWS account
 #'
-#' Lists the applications registered with the applicable IAM user or AWS account.
+#' Lists the applications registered with the IAM user or AWS account.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1046,9 +1165,9 @@ list_applications <- function (nextToken = NULL)
     return(response)
 }
 
-#' Lists the deployment configurations with the applicable IAM user or AWS account
+#' Lists the deployment configurations with the IAM user or AWS account
 #'
-#' Lists the deployment configurations with the applicable IAM user or AWS account.
+#' Lists the deployment configurations with the IAM user or AWS account.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1057,7 +1176,7 @@ list_applications <- function (nextToken = NULL)
 #' )
 #' ```
 #'
-#' @param nextToken An identifier returned from the previous list deployment configurations call. It can be used to return the next set of deployment configurations in the list.
+#' @param nextToken An identifier returned from the previous `ListDeploymentConfigs` call. It can be used to return the next set of deployment configurations in the list.
 #'
 #' @export
 list_deployment_configs <- function (nextToken = NULL) 
@@ -1072,9 +1191,9 @@ list_deployment_configs <- function (nextToken = NULL)
     return(response)
 }
 
-#' Lists the deployment groups for an application registered with the applicable IAM user or AWS account
+#' Lists the deployment groups for an application registered with the IAM user or AWS account
 #'
-#' Lists the deployment groups for an application registered with the applicable IAM user or AWS account.
+#' Lists the deployment groups for an application registered with the IAM user or AWS account.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1084,7 +1203,7 @@ list_deployment_configs <- function (nextToken = NULL)
 #' )
 #' ```
 #'
-#' @param applicationName &#91;required&#93; The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.
+#' @param applicationName &#91;required&#93; The name of an AWS CodeDeploy application associated with the IAM user or AWS account.
 #' @param nextToken An identifier returned from the previous list deployment groups call. It can be used to return the next set of deployment groups in the list.
 #'
 #' @export
@@ -1101,9 +1220,11 @@ list_deployment_groups <- function (applicationName, nextToken = NULL)
     return(response)
 }
 
-#' Lists the instance for a deployment associated with the applicable IAM user or AWS account
+#' The newer BatchGetDeploymentTargets should be used instead because it works with all compute types
 #'
-#' Lists the instance for a deployment associated with the applicable IAM user or AWS account.
+#' The newer BatchGetDeploymentTargets should be used instead because it works with all compute types. `ListDeploymentInstances` throws an exception if it is used with a compute platform other than EC2/On-premises or AWS Lambda.
+#' 
+#' Lists the instance for a deployment associated with the IAM user or AWS account.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1123,17 +1244,17 @@ list_deployment_groups <- function (applicationName, nextToken = NULL)
 #' @param nextToken An identifier returned from the previous list deployment instances call. It can be used to return the next set of deployment instances in the list.
 #' @param instanceStatusFilter A subset of instances to list by status:
 #' 
-#' -   Pending: Include those instance with pending deployments.
+#' -   Pending: Include those instances with pending deployments.
 #' 
-#' -   InProgress: Include those instance where deployments are still in progress.
+#' -   InProgress: Include those instances where deployments are still in progress.
 #' 
 #' -   Succeeded: Include those instances with successful deployments.
 #' 
-#' -   Failed: Include those instance with failed deployments.
+#' -   Failed: Include those instances with failed deployments.
 #' 
-#' -   Skipped: Include those instance with skipped deployments.
+#' -   Skipped: Include those instances with skipped deployments.
 #' 
-#' -   Unknown: Include those instance with deployments in an unknown state.
+#' -   Unknown: Include those instances with deployments in an unknown state.
 #' @param instanceTypeFilter The set of instances in a blue/green deployment, either those in the original environment (\"BLUE\") or those in the replacement environment (\"GREEN\"), for which you want to view instance information.
 #'
 #' @export
@@ -1152,9 +1273,45 @@ list_deployment_instances <- function (deploymentId, nextToken = NULL,
     return(response)
 }
 
-#' Lists the deployments in a deployment group for an application registered with the applicable IAM user or AWS account
+#' Returns an array of target IDs that are associated a deployment
 #'
-#' Lists the deployments in a deployment group for an application registered with the applicable IAM user or AWS account.
+#' Returns an array of target IDs that are associated a deployment.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' list_deployment_targets(
+#'   deploymentId = "string",
+#'   nextToken = "string",
+#'   targetFilters = list(
+#'     list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @param deploymentId The unique ID of a deployment.
+#' @param nextToken A token identifier returned from the previous `ListDeploymentTargets` call. It can be used to return the next set of deployment targets in the list.
+#' @param targetFilters A key used to filter the returned targets.
+#'
+#' @export
+list_deployment_targets <- function (deploymentId = NULL, nextToken = NULL, 
+    targetFilters = NULL) 
+{
+    op <- new_operation(name = "ListDeploymentTargets", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_deployment_targets_input(deploymentId = deploymentId, 
+        nextToken = nextToken, targetFilters = targetFilters)
+    output <- list_deployment_targets_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the deployments in a deployment group for an application registered with the IAM user or AWS account
+#'
+#' Lists the deployments in a deployment group for an application registered with the IAM user or AWS account.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1172,8 +1329,8 @@ list_deployment_instances <- function (deploymentId, nextToken = NULL,
 #' )
 #' ```
 #'
-#' @param applicationName The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.
-#' @param deploymentGroupName The name of an existing deployment group for the specified application.
+#' @param applicationName The name of an AWS CodeDeploy application associated with the IAM user or AWS account.
+#' @param deploymentGroupName The name of a deployment group for the specified application.
 #' @param includeOnlyStatuses A subset of deployments to list by status:
 #' 
 #' -   Created: Include created deployments in the resulting list.
@@ -1236,7 +1393,7 @@ list_git_hub_account_token_names <- function (nextToken = NULL)
 #'
 #' Gets a list of names for one or more on-premises instances.
 #' 
-#' Unless otherwise specified, both registered and deregistered on-premises instance names will be listed. To list only registered or deregistered on-premises instance names, use the registration status parameter.
+#' Unless otherwise specified, both registered and deregistered on-premises instance names are listed. To list only registered or deregistered on-premises instance names, use the registration status parameter.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1258,7 +1415,7 @@ list_git_hub_account_token_names <- function (nextToken = NULL)
 #' -   Deregistered: Include deregistered on-premises instances in the resulting list.
 #' 
 #' -   Registered: Include registered on-premises instances in the resulting list.
-#' @param tagFilters The on-premises instance tags that will be used to restrict the corresponding on-premises instance names returned.
+#' @param tagFilters The on-premises instance tags that are used to restrict the on-premises instance names returned.
 #' @param nextToken An identifier returned from the previous list on-premises instances call. It can be used to return the next set of on-premises instances in the list.
 #'
 #' @export
@@ -1289,7 +1446,7 @@ list_on_premises_instances <- function (registrationStatus = NULL,
 #' )
 #' ```
 #'
-#' @param deploymentId The ID of the deployment. Pass this ID to a Lambda function that validates a deployment lifecycle event.
+#' @param deploymentId The unique ID of a deployment. Pass this ID to a Lambda function that validates a deployment lifecycle event.
 #' @param lifecycleEventHookExecutionId The execution ID of a deployment\'s lifecycle hook. A deployment lifecycle hook is specified in the `hooks` section of the AppSpec file.
 #' @param status The result of a Lambda function that validates a deployment lifecycle event (`Succeeded` or `Failed`).
 #'
@@ -1319,7 +1476,7 @@ put_lifecycle_event_hook_execution_status <- function (deploymentId = NULL,
 #'   applicationName = "string",
 #'   description = "string",
 #'   revision = list(
-#'     revisionType = "S3"|"GitHub"|"String",
+#'     revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
 #'     s3Location = list(
 #'       bucket = "string",
 #'       key = "string",
@@ -1334,12 +1491,16 @@ put_lifecycle_event_hook_execution_status <- function (deploymentId = NULL,
 #'     string = list(
 #'       content = "string",
 #'       sha256 = "string"
+#'     ),
+#'     appSpecContent = list(
+#'       content = "string",
+#'       sha256 = "string"
 #'     )
 #'   )
 #' )
 #' ```
 #'
-#' @param applicationName &#91;required&#93; The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.
+#' @param applicationName &#91;required&#93; The name of an AWS CodeDeploy application associated with the IAM user or AWS account.
 #' @param description A comment about the revision.
 #' @param revision &#91;required&#93; Information about the application revision to register, including type and location.
 #'
@@ -1428,9 +1589,9 @@ remove_tags_from_on_premises_instances <- function (tags, instanceNames)
     return(response)
 }
 
-#' In a blue/green deployment, overrides any specified wait time and starts terminating instances immediately after the traffic routing is completed
+#' In a blue/green deployment, overrides any specified wait time and starts terminating instances immediately after the traffic routing is complete
 #'
-#' In a blue/green deployment, overrides any specified wait time and starts terminating instances immediately after the traffic routing is completed.
+#' In a blue/green deployment, overrides any specified wait time and starts terminating instances immediately after the traffic routing is complete.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1439,7 +1600,7 @@ remove_tags_from_on_premises_instances <- function (tags, instanceNames)
 #' )
 #' ```
 #'
-#' @param deploymentId The ID of the blue/green deployment for which you want to skip the instance termination wait time.
+#' @param deploymentId The unique ID of a blue/green deployment for which you want to skip the instance termination wait time.
 #'
 #' @export
 skip_wait_time_for_instance_termination <- function (deploymentId = NULL) 
@@ -1592,6 +1753,25 @@ update_application <- function (applicationName = NULL, newApplicationName = NUL
 #'       list(
 #'         name = "string"
 #'       )
+#'     ),
+#'     targetGroupPairInfoList = list(
+#'       list(
+#'         targetGroups = list(
+#'           list(
+#'             name = "string"
+#'           )
+#'         ),
+#'         prodTrafficRoute = list(
+#'           listenerArns = list(
+#'             "string"
+#'           )
+#'         ),
+#'         testTrafficRoute = list(
+#'           listenerArns = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   ec2TagSet = list(
@@ -1603,6 +1783,12 @@ update_application <- function (applicationName = NULL, newApplicationName = NUL
 #'           Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
 #'         )
 #'       )
+#'     )
+#'   ),
+#'   ecsServices = list(
+#'     list(
+#'       serviceName = "string",
+#'       clusterName = "string"
 #'     )
 #'   ),
 #'   onPremisesTagSet = list(
@@ -1619,7 +1805,7 @@ update_application <- function (applicationName = NULL, newApplicationName = NUL
 #' )
 #' ```
 #'
-#' @param applicationName &#91;required&#93; The application name corresponding to the deployment group to update.
+#' @param applicationName &#91;required&#93; The application name that corresponds to the deployment group to update.
 #' @param currentDeploymentGroupName &#91;required&#93; The current name of the deployment group.
 #' @param newDeploymentGroupName The new name of the deployment group, if you want to change it.
 #' @param deploymentConfigName The replacement deployment configuration name to use, if you want to change it.
@@ -1633,8 +1819,9 @@ update_application <- function (applicationName = NULL, newApplicationName = NUL
 #' @param deploymentStyle Information about the type of deployment, either in-place or blue/green, you want to run and whether to route deployment traffic behind a load balancer.
 #' @param blueGreenDeploymentConfiguration Information about blue/green deployment options for a deployment group.
 #' @param loadBalancerInfo Information about the load balancer used in a deployment.
-#' @param ec2TagSet Information about groups of tags applied to on-premises instances. The deployment group will include only EC2 instances identified by all the tag groups.
-#' @param onPremisesTagSet Information about an on-premises instance tag set. The deployment group will include only on-premises instances identified by all the tag groups.
+#' @param ec2TagSet Information about groups of tags applied to on-premises instances. The deployment group includes only EC2 instances identified by all the tag groups.
+#' @param ecsServices The target Amazon ECS services in the deployment group. This applies only to deployment groups that use the Amazon ECS compute platform. A target Amazon ECS service is specified as an Amazon ECS cluster and service name pair using the format `<clustername>:<servicename>`.
+#' @param onPremisesTagSet Information about an on-premises instance tag set. The deployment group includes only on-premises instances identified by all the tag groups.
 #'
 #' @export
 update_deployment_group <- function (applicationName, currentDeploymentGroupName, 
@@ -1643,7 +1830,8 @@ update_deployment_group <- function (applicationName, currentDeploymentGroupName
     autoScalingGroups = NULL, serviceRoleArn = NULL, triggerConfigurations = NULL, 
     alarmConfiguration = NULL, autoRollbackConfiguration = NULL, 
     deploymentStyle = NULL, blueGreenDeploymentConfiguration = NULL, 
-    loadBalancerInfo = NULL, ec2TagSet = NULL, onPremisesTagSet = NULL) 
+    loadBalancerInfo = NULL, ec2TagSet = NULL, ecsServices = NULL, 
+    onPremisesTagSet = NULL) 
 {
     op <- new_operation(name = "UpdateDeploymentGroup", http_method = "POST", 
         http_path = "/", paginator = list())
@@ -1656,7 +1844,7 @@ update_deployment_group <- function (applicationName, currentDeploymentGroupName
         autoRollbackConfiguration = autoRollbackConfiguration, 
         deploymentStyle = deploymentStyle, blueGreenDeploymentConfiguration = blueGreenDeploymentConfiguration, 
         loadBalancerInfo = loadBalancerInfo, ec2TagSet = ec2TagSet, 
-        onPremisesTagSet = onPremisesTagSet)
+        ecsServices = ecsServices, onPremisesTagSet = onPremisesTagSet)
     output <- update_deployment_group_output()
     svc <- service()
     request <- new_request(svc, op, input, output)

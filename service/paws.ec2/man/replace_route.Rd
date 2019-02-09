@@ -7,8 +7,9 @@
 replace_route(DestinationCidrBlock = NULL,
   DestinationIpv6CidrBlock = NULL, DryRun = NULL,
   EgressOnlyInternetGatewayId = NULL, GatewayId = NULL,
-  InstanceId = NULL, NatGatewayId = NULL, NetworkInterfaceId = NULL,
-  RouteTableId, VpcPeeringConnectionId = NULL)
+  InstanceId = NULL, NatGatewayId = NULL, TransitGatewayId = NULL,
+  NetworkInterfaceId = NULL, RouteTableId,
+  VpcPeeringConnectionId = NULL)
 }
 \arguments{
 \item{DestinationCidrBlock}{The IPv4 CIDR address block used for the destination match. The value that you provide must match the CIDR of an existing route in the table.}
@@ -25,6 +26,8 @@ replace_route(DestinationCidrBlock = NULL,
 
 \item{NatGatewayId}{[IPv4 traffic only] The ID of a NAT gateway.}
 
+\item{TransitGatewayId}{The ID of a transit gateway.}
+
 \item{NetworkInterfaceId}{The ID of a network interface.}
 
 \item{RouteTableId}{[required] The ID of the route table.}
@@ -35,7 +38,7 @@ replace_route(DestinationCidrBlock = NULL,
 Replaces an existing route within a route table in a VPC. You must provide only one of the following: internet gateway or virtual private gateway, NAT instance, NAT gateway, VPC peering connection, network interface, or egress-only internet gateway.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html}{Route Tables} in the \emph{Amazon Virtual Private Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html}{Route Tables} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{replace_route(
@@ -46,6 +49,7 @@ For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/User
   GatewayId = "string",
   InstanceId = "string",
   NatGatewayId = "string",
+  TransitGatewayId = "string",
   NetworkInterfaceId = "string",
   RouteTableId = "string",
   VpcPeeringConnectionId = "string"

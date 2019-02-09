@@ -23,7 +23,7 @@ Creates a group with a specified name, description, and resource query.
   Name = "string",
   Description = "string",
   ResourceQuery = list(
-    Type = "TAG_FILTERS_1_0",
+    Type = "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",
     Query = "string"
   ),
   Tags = list(

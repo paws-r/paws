@@ -2,20 +2,20 @@
 % Please edit documentation in R/paws.rds_operations.R
 \name{delete_db_snapshot}
 \alias{delete_db_snapshot}
-\title{Deletes a DBSnapshot}
+\title{Deletes a DB snapshot}
 \usage{
 delete_db_snapshot(DBSnapshotIdentifier)
 }
 \arguments{
-\item{DBSnapshotIdentifier}{[required] The DBSnapshot identifier.
+\item{DBSnapshotIdentifier}{[required] The DB snapshot identifier.
 
 Constraints: Must be the name of an existing DB snapshot in the \code{available} state.}
 }
 \description{
-Deletes a DBSnapshot. If the snapshot is being copied, the copy operation is terminated.
+Deletes a DB snapshot. If the snapshot is being copied, the copy operation is terminated.
 }
 \details{
-The DBSnapshot must be in the \code{available} state to be deleted.
+The DB snapshot must be in the \code{available} state to be deleted.
 }
 \section{Accepted Parameters}{
 \preformatted{delete_db_snapshot(

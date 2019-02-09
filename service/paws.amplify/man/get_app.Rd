@@ -4,9 +4,7 @@
 \alias{get_app}
 \title{Retrieves an existing Amplify App by appId}
 \usage{
-get_app(
-  appId = "string"
-)
+get_app(appId)
 }
 \arguments{
 \item{appId}{[required] Unique Id for an Amplify App.}
@@ -14,6 +12,10 @@ get_app(
 \description{
 Retrieves an existing Amplify App by appId.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_app(
+  appId = "string"
+)
 }
+}
+

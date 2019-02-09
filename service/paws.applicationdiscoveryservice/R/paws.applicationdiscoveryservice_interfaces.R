@@ -20,6 +20,27 @@ associate_configuration_items_to_application_output <- function (...)
     return(populate(args, shape))
 }
 
+batch_delete_import_data_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(importTaskIds = structure(list(structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "list", 
+        max = 10L, min = 1L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+batch_delete_import_data_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(errors = structure(list(structure(list(importTaskId = structure(logical(0), 
+        tags = list(type = "string")), errorCode = structure(logical(0), 
+        tags = list(type = "string", enum = c("NOT_FOUND", "INTERNAL_SERVER_ERROR"))), 
+        errorDescription = structure(logical(0), tags = list(type = "string"))), 
+        tags = list(type = "structure"))), tags = list(type = "list"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 create_application_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -243,6 +264,49 @@ describe_export_tasks_output <- function (...)
     return(populate(args, shape))
 }
 
+describe_import_tasks_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(filters = structure(list(structure(list(name = structure(logical(0), 
+        tags = list(type = "string", enum = c("IMPORT_TASK_ID", 
+            "STATUS", "NAME"))), values = structure(list(structure(logical(0), 
+        tags = list(type = "string", max = 100L, min = 1L))), 
+        tags = list(type = "list", max = 100L, min = 1L))), tags = list(type = "structure"))), 
+        tags = list(type = "list")), maxResults = structure(logical(0), 
+        tags = list(type = "integer", box = TRUE, max = 100L, 
+            min = 1L)), nextToken = structure(logical(0), tags = list(type = "string"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_import_tasks_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(nextToken = structure(logical(0), 
+        tags = list(type = "string")), tasks = structure(list(structure(list(importTaskId = structure(logical(0), 
+        tags = list(type = "string")), clientRequestToken = structure(logical(0), 
+        tags = list(type = "string", max = 100L, min = 1L)), 
+        name = structure(logical(0), tags = list(type = "string", 
+            max = 100L, min = 1L)), importUrl = structure(logical(0), 
+            tags = list(type = "string", max = 4000L, min = 1L)), 
+        status = structure(logical(0), tags = list(type = "string", 
+            enum = c("IMPORT_IN_PROGRESS", "IMPORT_COMPLETE", 
+                "IMPORT_FAILED", "IMPORT_FAILED_SERVER_LIMIT_EXCEEDED", 
+                "IMPORT_FAILED_RECORD_LIMIT_EXCEEDED", "DELETE_IN_PROGRESS", 
+                "DELETE_COMPLETE", "DELETE_FAILED", "DELETE_FAILED_LIMIT_EXCEEDED"))), 
+        importRequestTime = structure(logical(0), tags = list(type = "timestamp")), 
+        importCompletionTime = structure(logical(0), tags = list(type = "timestamp")), 
+        importDeletedTime = structure(logical(0), tags = list(type = "timestamp")), 
+        serverImportSuccess = structure(logical(0), tags = list(type = "integer")), 
+        serverImportFailure = structure(logical(0), tags = list(type = "integer")), 
+        applicationImportSuccess = structure(logical(0), tags = list(type = "integer")), 
+        applicationImportFailure = structure(logical(0), tags = list(type = "integer")), 
+        errorsAndFailedEntriesZip = structure(logical(0), tags = list(type = "string"))), 
+        tags = list(type = "structure"))), tags = list(type = "list"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 describe_tags_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -454,6 +518,44 @@ start_export_task_output <- function (...)
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(exportId = structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+start_import_task_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(clientRequestToken = structure(logical(0), 
+        tags = list(idempotencyToken = TRUE, type = "string", 
+            max = 100L, min = 1L)), name = structure(logical(0), 
+        tags = list(type = "string", max = 100L, min = 1L)), 
+        importUrl = structure(logical(0), tags = list(type = "string", 
+            max = 4000L, min = 1L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+start_import_task_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(task = structure(list(importTaskId = structure(logical(0), 
+        tags = list(type = "string")), clientRequestToken = structure(logical(0), 
+        tags = list(type = "string", max = 100L, min = 1L)), 
+        name = structure(logical(0), tags = list(type = "string", 
+            max = 100L, min = 1L)), importUrl = structure(logical(0), 
+            tags = list(type = "string", max = 4000L, min = 1L)), 
+        status = structure(logical(0), tags = list(type = "string", 
+            enum = c("IMPORT_IN_PROGRESS", "IMPORT_COMPLETE", 
+                "IMPORT_FAILED", "IMPORT_FAILED_SERVER_LIMIT_EXCEEDED", 
+                "IMPORT_FAILED_RECORD_LIMIT_EXCEEDED", "DELETE_IN_PROGRESS", 
+                "DELETE_COMPLETE", "DELETE_FAILED", "DELETE_FAILED_LIMIT_EXCEEDED"))), 
+        importRequestTime = structure(logical(0), tags = list(type = "timestamp")), 
+        importCompletionTime = structure(logical(0), tags = list(type = "timestamp")), 
+        importDeletedTime = structure(logical(0), tags = list(type = "timestamp")), 
+        serverImportSuccess = structure(logical(0), tags = list(type = "integer")), 
+        serverImportFailure = structure(logical(0), tags = list(type = "integer")), 
+        applicationImportSuccess = structure(logical(0), tags = list(type = "integer")), 
+        applicationImportFailure = structure(logical(0), tags = list(type = "integer")), 
+        errorsAndFailedEntriesZip = structure(logical(0), tags = list(type = "string"))), 
+        tags = list(type = "structure"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 

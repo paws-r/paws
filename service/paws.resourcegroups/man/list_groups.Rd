@@ -9,7 +9,7 @@ list_groups(Filters = NULL, MaxResults = NULL, NextToken = NULL)
 \arguments{
 \item{Filters}{Filters, formatted as GroupFilter objects, that you want to apply to a ListGroups operation.
 \itemize{
-\item \code{group-type} - Filter groups by resource type. Specify up to five group types in the format AWS::ServiceCode::ResourceType. For example, AWS::EC2::Instance, or AWS::S3::Bucket.
+\item \code{resource-type} - Filter groups by resource type. Specify up to five resource types in the format AWS::ServiceCode::ResourceType. For example, AWS::EC2::Instance, or AWS::S3::Bucket.
 }}
 
 \item{MaxResults}{The maximum number of resource group results that are returned by ListGroups in paginated output. By default, this number is 50.}

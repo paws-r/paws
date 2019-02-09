@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.transfer_operations.R
 \name{stop_server}
 \alias{stop_server}
-\title{Changes the state of an SFTP server from \code{ONLINE} to \code{OFFLINE}}
+\title{Changes the state of an SFTP server from ONLINE to OFFLINE}
 \usage{
-stop_server(
-  ServerId = "string"
-)
+stop_server(ServerId)
 }
 \arguments{
 \item{ServerId}{[required] A system-assigned unique identifier for an SFTP server that you stopped.}
@@ -19,6 +17,10 @@ The states of \code{STOPPING} indicates that the server is in an intermediate st
 
 No response is returned from this call.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{stop_server(
+  ServerId = "string"
+)
 }
+}
+

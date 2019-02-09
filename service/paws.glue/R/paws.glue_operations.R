@@ -599,6 +599,7 @@ create_dev_endpoint <- function (EndpointName, RoleArn, SecurityGroupIds = NULL,
 #'   MaxRetries = 123,
 #'   AllocatedCapacity = 123,
 #'   Timeout = 123,
+#'   MaxCapacity = 123.0,
 #'   NotificationProperty = list(
 #'     NotifyDelayAfter = 123
 #'   ),
@@ -621,8 +622,11 @@ create_dev_endpoint <- function (EndpointName, RoleArn, SecurityGroupIds = NULL,
 #' For information about the key-value pairs that AWS Glue consumes to set up your job, see the [Special Parameters Used by AWS Glue](http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html) topic in the developer guide.
 #' @param Connections The connections used for this job.
 #' @param MaxRetries The maximum number of times to retry this job if it fails.
-#' @param AllocatedCapacity The number of AWS Glue data processing units (DPUs) to allocate to this Job. From 2 to 100 DPUs can be allocated; the default is 10. A DPU is a relative measure of processing power that consists of 4 vCPUs of compute capacity and 16 GB of memory. For more information, see the [AWS Glue pricing page](https://aws.amazon.com/glue/pricing/).
+#' @param AllocatedCapacity This parameter is deprecated. Use `MaxCapacity` instead.
+#' 
+#' The number of AWS Glue data processing units (DPUs) to allocate to this Job. From 2 to 100 DPUs can be allocated; the default is 10. A DPU is a relative measure of processing power that consists of 4 vCPUs of compute capacity and 16 GB of memory. For more information, see the [AWS Glue pricing page](https://aws.amazon.com/glue/pricing/).
 #' @param Timeout The job timeout in minutes. This is the maximum time that a job run can consume resources before it is terminated and enters `TIMEOUT` status. The default is 2,880 minutes (48 hours).
+#' @param MaxCapacity AWS Glue supports running jobs on a `JobCommand.Name`=\"pythonshell\" with allocated processing as low as 0.0625 DPU, which can be specified using `MaxCapacity`. Glue ETL jobs running in any other way cannot have fractional DPU allocations.
 #' @param NotificationProperty Specifies configuration properties of a job notification.
 #' @param SecurityConfiguration The name of the SecurityConfiguration structure to be used with this job.
 #'
@@ -630,7 +634,8 @@ create_dev_endpoint <- function (EndpointName, RoleArn, SecurityGroupIds = NULL,
 create_job <- function (Name, Description = NULL, LogUri = NULL, 
     Role, ExecutionProperty = NULL, Command, DefaultArguments = NULL, 
     Connections = NULL, MaxRetries = NULL, AllocatedCapacity = NULL, 
-    Timeout = NULL, NotificationProperty = NULL, SecurityConfiguration = NULL) 
+    Timeout = NULL, MaxCapacity = NULL, NotificationProperty = NULL, 
+    SecurityConfiguration = NULL) 
 {
     op <- new_operation(name = "CreateJob", http_method = "POST", 
         http_path = "/", paginator = list())
@@ -638,7 +643,7 @@ create_job <- function (Name, Description = NULL, LogUri = NULL,
         LogUri = LogUri, Role = Role, ExecutionProperty = ExecutionProperty, 
         Command = Command, DefaultArguments = DefaultArguments, 
         Connections = Connections, MaxRetries = MaxRetries, AllocatedCapacity = AllocatedCapacity, 
-        Timeout = Timeout, NotificationProperty = NotificationProperty, 
+        Timeout = Timeout, MaxCapacity = MaxCapacity, NotificationProperty = NotificationProperty, 
         SecurityConfiguration = SecurityConfiguration)
     output <- create_job_output()
     svc <- service()
@@ -1502,19 +1507,22 @@ get_classifiers <- function (MaxResults = NULL, NextToken = NULL)
 #' ```
 #' get_connection(
 #'   CatalogId = "string",
-#'   Name = "string"
+#'   Name = "string",
+#'   HidePassword = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @param CatalogId The ID of the Data Catalog in which the connection resides. If none is supplied, the AWS account ID is used by default.
 #' @param Name &#91;required&#93; The name of the connection definition to retrieve.
+#' @param HidePassword Allow you to retrieve the connection metadata without displaying the password. For instance, the AWS Glue console uses this flag to retrieve connections, since the console does not display passwords. Set this parameter where the caller may not have permission to use the KMS key to decrypt the password, but does have permission to access the rest of the connection metadata (that is, the other connection properties).
 #'
 #' @export
-get_connection <- function (CatalogId = NULL, Name) 
+get_connection <- function (CatalogId = NULL, Name, HidePassword = NULL) 
 {
     op <- new_operation(name = "GetConnection", http_method = "POST", 
         http_path = "/", paginator = list())
-    input <- get_connection_input(CatalogId = CatalogId, Name = Name)
+    input <- get_connection_input(CatalogId = CatalogId, Name = Name, 
+        HidePassword = HidePassword)
     output <- get_connection_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -1536,6 +1544,7 @@ get_connection <- function (CatalogId = NULL, Name)
 #'     ),
 #'     ConnectionType = "JDBC"|"SFTP"
 #'   ),
+#'   HidePassword = TRUE|FALSE,
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -1543,17 +1552,18 @@ get_connection <- function (CatalogId = NULL, Name)
 #'
 #' @param CatalogId The ID of the Data Catalog in which the connections reside. If none is supplied, the AWS account ID is used by default.
 #' @param Filter A filter that controls which connections will be returned.
+#' @param HidePassword Allow you to retrieve the connection metadata without displaying the password. For instance, the AWS Glue console uses this flag to retrieve connections, since the console does not display passwords. Set this parameter where the caller may not have permission to use the KMS key to decrypt the password, but does have permission to access the rest of the connection metadata (that is, the other connection properties).
 #' @param NextToken A continuation token, if this is a continuation call.
 #' @param MaxResults The maximum number of connections to return in one response.
 #'
 #' @export
 get_connections <- function (CatalogId = NULL, Filter = NULL, 
-    NextToken = NULL, MaxResults = NULL) 
+    HidePassword = NULL, NextToken = NULL, MaxResults = NULL) 
 {
     op <- new_operation(name = "GetConnections", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- get_connections_input(CatalogId = CatalogId, Filter = Filter, 
-        NextToken = NextToken, MaxResults = MaxResults)
+        HidePassword = HidePassword, NextToken = NextToken, MaxResults = MaxResults)
     output <- get_connections_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -2604,6 +2614,10 @@ import_catalog_to_glue <- function (CatalogId = NULL)
 #'     EncryptionAtRest = list(
 #'       CatalogEncryptionMode = "DISABLED"|"SSE-KMS",
 #'       SseAwsKmsKeyId = "string"
+#'     ),
+#'     ConnectionPasswordEncryption = list(
+#'       ReturnConnectionPasswordEncrypted = TRUE|FALSE,
+#'       AwsKmsKeyId = "string"
 #'     )
 #'   )
 #' )
@@ -2751,6 +2765,7 @@ start_crawler_schedule <- function (CrawlerName)
 #'   ),
 #'   AllocatedCapacity = 123,
 #'   Timeout = 123,
+#'   MaxCapacity = 123.0,
 #'   NotificationProperty = list(
 #'     NotifyDelayAfter = 123
 #'   ),
@@ -2767,21 +2782,24 @@ start_crawler_schedule <- function (CrawlerName)
 #' For information about how to specify and consume your own Job arguments, see the [Calling AWS Glue APIs in Python](http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html) topic in the developer guide.
 #' 
 #' For information about the key-value pairs that AWS Glue consumes to set up your job, see the [Special Parameters Used by AWS Glue](http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html) topic in the developer guide.
-#' @param AllocatedCapacity The number of AWS Glue data processing units (DPUs) to allocate to this JobRun. From 2 to 100 DPUs can be allocated; the default is 10. A DPU is a relative measure of processing power that consists of 4 vCPUs of compute capacity and 16 GB of memory. For more information, see the [AWS Glue pricing page](https://aws.amazon.com/glue/pricing/).
+#' @param AllocatedCapacity This field is deprecated, use `MaxCapacity` instead.
+#' 
+#' The number of AWS Glue data processing units (DPUs) to allocate to this JobRun. From 2 to 100 DPUs can be allocated; the default is 10. A DPU is a relative measure of processing power that consists of 4 vCPUs of compute capacity and 16 GB of memory. For more information, see the [AWS Glue pricing page](https://aws.amazon.com/glue/pricing/).
 #' @param Timeout The JobRun timeout in minutes. This is the maximum time that a job run can consume resources before it is terminated and enters `TIMEOUT` status. The default is 2,880 minutes (48 hours). This overrides the timeout value set in the parent job.
+#' @param MaxCapacity AWS Glue supports running jobs on a `JobCommand.Name`=\"pythonshell\" with allocated processing as low as 0.0625 DPU, which can be specified using `MaxCapacity`. Glue ETL jobs running in any other way cannot have fractional DPU allocations.
 #' @param NotificationProperty Specifies configuration properties of a job run notification.
 #' @param SecurityConfiguration The name of the SecurityConfiguration structure to be used with this job run.
 #'
 #' @export
 start_job_run <- function (JobName, JobRunId = NULL, Arguments = NULL, 
-    AllocatedCapacity = NULL, Timeout = NULL, NotificationProperty = NULL, 
-    SecurityConfiguration = NULL) 
+    AllocatedCapacity = NULL, Timeout = NULL, MaxCapacity = NULL, 
+    NotificationProperty = NULL, SecurityConfiguration = NULL) 
 {
     op <- new_operation(name = "StartJobRun", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- start_job_run_input(JobName = JobName, JobRunId = JobRunId, 
         Arguments = Arguments, AllocatedCapacity = AllocatedCapacity, 
-        Timeout = Timeout, NotificationProperty = NotificationProperty, 
+        Timeout = Timeout, MaxCapacity = MaxCapacity, NotificationProperty = NotificationProperty, 
         SecurityConfiguration = SecurityConfiguration)
     output <- start_job_run_output()
     svc <- service()
@@ -3212,6 +3230,7 @@ update_dev_endpoint <- function (EndpointName, PublicKey = NULL,
 #'     MaxRetries = 123,
 #'     AllocatedCapacity = 123,
 #'     Timeout = 123,
+#'     MaxCapacity = 123.0,
 #'     NotificationProperty = list(
 #'       NotifyDelayAfter = 123
 #'     ),

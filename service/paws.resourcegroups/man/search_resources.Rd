@@ -19,7 +19,7 @@ Returns a list of AWS resource identifiers that matches a specified query. The q
 \section{Accepted Parameters}{
 \preformatted{search_resources(
   ResourceQuery = list(
-    Type = "TAG_FILTERS_1_0",
+    Type = "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",
     Query = "string"
   ),
   MaxResults = 123,

@@ -12,6 +12,9 @@ describe_execution(executionArn)
 \description{
 Describes an execution.
 }
+\details{
+This operation is eventually consistent. The results are best effort and may not reflect very recent updates and changes.
+}
 \section{Accepted Parameters}{
 \preformatted{describe_execution(
   executionArn = "string"

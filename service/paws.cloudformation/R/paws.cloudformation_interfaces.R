@@ -54,8 +54,8 @@ create_change_set_input <- function (...)
             tags = list(type = "string"))), tags = list(type = "structure"))), 
             tags = list(type = "list")), Capabilities = structure(list(structure(logical(0), 
             tags = list(type = "string", enum = c("CAPABILITY_IAM", 
-                "CAPABILITY_NAMED_IAM")))), tags = list(type = "list")), 
-        ResourceTypes = structure(list(structure(logical(0), 
+                "CAPABILITY_NAMED_IAM", "CAPABILITY_AUTO_EXPAND")))), 
+            tags = list(type = "list")), ResourceTypes = structure(list(structure(logical(0), 
             tags = list(type = "string", max = 256L, min = 1L))), 
             tags = list(type = "list")), RoleARN = structure(logical(0), 
             tags = list(type = "string", max = 2048L, min = 20L)), 
@@ -113,8 +113,8 @@ create_stack_input <- function (...)
             tags = list(type = "string"))), tags = list(type = "list", 
             max = 5L)), Capabilities = structure(list(structure(logical(0), 
             tags = list(type = "string", enum = c("CAPABILITY_IAM", 
-                "CAPABILITY_NAMED_IAM")))), tags = list(type = "list")), 
-        ResourceTypes = structure(list(structure(logical(0), 
+                "CAPABILITY_NAMED_IAM", "CAPABILITY_AUTO_EXPAND")))), 
+            tags = list(type = "list")), ResourceTypes = structure(list(structure(logical(0), 
             tags = list(type = "string", max = 256L, min = 1L))), 
             tags = list(type = "list")), RoleARN = structure(logical(0), 
             tags = list(type = "string", max = 2048L, min = 20L)), 
@@ -193,8 +193,8 @@ create_stack_set_input <- function (...)
             tags = list(type = "string"))), tags = list(type = "structure"))), 
             tags = list(type = "list")), Capabilities = structure(list(structure(logical(0), 
             tags = list(type = "string", enum = c("CAPABILITY_IAM", 
-                "CAPABILITY_NAMED_IAM")))), tags = list(type = "list")), 
-        Tags = structure(list(structure(list(Key = structure(logical(0), 
+                "CAPABILITY_NAMED_IAM", "CAPABILITY_AUTO_EXPAND")))), 
+            tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), 
             tags = list(type = "string", max = 128L, min = 1L)), 
             Value = structure(logical(0), tags = list(type = "string", 
                 max = 256L, min = 1L))), tags = list(type = "structure"))), 
@@ -365,8 +365,8 @@ describe_change_set_output <- function (...)
             tags = list(type = "integer", max = 180L, min = 0L))), 
             tags = list(type = "structure")), Capabilities = structure(list(structure(logical(0), 
             tags = list(type = "string", enum = c("CAPABILITY_IAM", 
-                "CAPABILITY_NAMED_IAM")))), tags = list(type = "list")), 
-        Tags = structure(list(structure(list(Key = structure(logical(0), 
+                "CAPABILITY_NAMED_IAM", "CAPABILITY_AUTO_EXPAND")))), 
+            tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), 
             tags = list(type = "string", max = 128L, min = 1L)), 
             Value = structure(logical(0), tags = list(type = "string", 
                 max = 256L, min = 1L))), tags = list(type = "structure"))), 
@@ -401,6 +401,32 @@ describe_change_set_output <- function (...)
             tags = list(type = "structure"))), tags = list(type = "list")), 
         NextToken = structure(logical(0), tags = list(type = "string", 
             max = 1024L, min = 1L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_stack_drift_detection_status_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(StackDriftDetectionId = structure(logical(0), 
+        tags = list(type = "string", max = 36L, min = 1L))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_stack_drift_detection_status_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(StackId = structure(logical(0), tags = list(type = "string")), 
+        StackDriftDetectionId = structure(logical(0), tags = list(type = "string", 
+            max = 36L, min = 1L)), StackDriftStatus = structure(logical(0), 
+            tags = list(type = "string", enum = c("DRIFTED", 
+                "IN_SYNC", "UNKNOWN", "NOT_CHECKED"))), DetectionStatus = structure(logical(0), 
+            tags = list(type = "string", enum = c("DETECTION_IN_PROGRESS", 
+                "DETECTION_FAILED", "DETECTION_COMPLETE"))), 
+        DetectionStatusReason = structure(logical(0), tags = list(type = "string")), 
+        DriftedStackResourceCount = structure(logical(0), tags = list(type = "integer", 
+            box = TRUE)), Timestamp = structure(logical(0), tags = list(type = "timestamp"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -498,8 +524,56 @@ describe_stack_resource_output <- function (...)
                 "UPDATE_COMPLETE"))), ResourceStatusReason = structure(logical(0), 
             tags = list(type = "string")), Description = structure(logical(0), 
             tags = list(type = "string", max = 1024L, min = 1L)), 
-        Metadata = structure(logical(0), tags = list(type = "string"))), 
+        Metadata = structure(logical(0), tags = list(type = "string")), 
+        DriftInformation = structure(list(StackResourceDriftStatus = structure(logical(0), 
+            tags = list(type = "string", enum = c("IN_SYNC", 
+                "MODIFIED", "DELETED", "NOT_CHECKED"))), LastCheckTimestamp = structure(logical(0), 
+            tags = list(type = "timestamp"))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_stack_resource_drifts_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(StackName = structure(logical(0), 
+        tags = list(type = "string", min = 1L, pattern = "([a-zA-Z][-a-zA-Z0-9]*)|(arn:\\b(aws|aws-us-gov|aws-cn)\\b:[-a-zA-Z0-9:/._+]*)")), 
+        StackResourceDriftStatusFilters = structure(list(structure(logical(0), 
+            tags = list(type = "string", enum = c("IN_SYNC", 
+                "MODIFIED", "DELETED", "NOT_CHECKED")))), tags = list(type = "list", 
+            max = 4L, min = 1L)), NextToken = structure(logical(0), 
+            tags = list(type = "string", max = 1024L, min = 1L)), 
+        MaxResults = structure(logical(0), tags = list(type = "integer", 
+            box = TRUE, max = 100L, min = 1L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+describe_stack_resource_drifts_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(StackResourceDrifts = structure(list(structure(list(StackId = structure(logical(0), 
+        tags = list(type = "string")), LogicalResourceId = structure(logical(0), 
+        tags = list(type = "string")), PhysicalResourceId = structure(logical(0), 
+        tags = list(type = "string")), PhysicalResourceIdContext = structure(list(structure(list(Key = structure(logical(0), 
+        tags = list(type = "string")), Value = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))), 
+        tags = list(type = "list", max = 5L)), ResourceType = structure(logical(0), 
+        tags = list(type = "string", max = 256L, min = 1L)), 
+        ExpectedProperties = structure(logical(0), tags = list(type = "string")), 
+        ActualProperties = structure(logical(0), tags = list(type = "string")), 
+        PropertyDifferences = structure(list(structure(list(PropertyPath = structure(logical(0), 
+            tags = list(type = "string")), ExpectedValue = structure(logical(0), 
+            tags = list(type = "string")), ActualValue = structure(logical(0), 
+            tags = list(type = "string")), DifferenceType = structure(logical(0), 
+            tags = list(type = "string", enum = c("ADD", "REMOVE", 
+                "NOT_EQUAL")))), tags = list(type = "structure"))), 
+            tags = list(type = "list")), StackResourceDriftStatus = structure(logical(0), 
+            tags = list(type = "string", enum = c("IN_SYNC", 
+                "MODIFIED", "DELETED", "NOT_CHECKED"))), Timestamp = structure(logical(0), 
+            tags = list(type = "timestamp"))), tags = list(type = "structure"))), 
+        tags = list(type = "list")), NextToken = structure(logical(0), 
+        tags = list(type = "string", max = 1024L, min = 1L))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -529,7 +603,11 @@ describe_stack_resources_output <- function (...)
                 "DELETE_SKIPPED", "UPDATE_IN_PROGRESS", "UPDATE_FAILED", 
                 "UPDATE_COMPLETE"))), ResourceStatusReason = structure(logical(0), 
             tags = list(type = "string")), Description = structure(logical(0), 
-            tags = list(type = "string", max = 1024L, min = 1L))), 
+            tags = list(type = "string", max = 1024L, min = 1L)), 
+        DriftInformation = structure(list(StackResourceDriftStatus = structure(logical(0), 
+            tags = list(type = "string", enum = c("IN_SYNC", 
+                "MODIFIED", "DELETED", "NOT_CHECKED"))), LastCheckTimestamp = structure(logical(0), 
+            tags = list(type = "timestamp"))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))), tags = list(type = "list"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
@@ -559,8 +637,8 @@ describe_stack_set_output <- function (...)
             tags = list(type = "string"))), tags = list(type = "structure"))), 
             tags = list(type = "list")), Capabilities = structure(list(structure(logical(0), 
             tags = list(type = "string", enum = c("CAPABILITY_IAM", 
-                "CAPABILITY_NAMED_IAM")))), tags = list(type = "list")), 
-        Tags = structure(list(structure(list(Key = structure(logical(0), 
+                "CAPABILITY_NAMED_IAM", "CAPABILITY_AUTO_EXPAND")))), 
+            tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), 
             tags = list(type = "string", max = 128L, min = 1L)), 
             Value = structure(logical(0), tags = list(type = "string", 
                 max = 256L, min = 1L))), tags = list(type = "structure"))), 
@@ -659,8 +737,8 @@ describe_stacks_output <- function (...)
             max = 5L)), TimeoutInMinutes = structure(logical(0), 
             tags = list(type = "integer", min = 1L)), Capabilities = structure(list(structure(logical(0), 
             tags = list(type = "string", enum = c("CAPABILITY_IAM", 
-                "CAPABILITY_NAMED_IAM")))), tags = list(type = "list")), 
-        Outputs = structure(list(structure(list(OutputKey = structure(logical(0), 
+                "CAPABILITY_NAMED_IAM", "CAPABILITY_AUTO_EXPAND")))), 
+            tags = list(type = "list")), Outputs = structure(list(structure(list(OutputKey = structure(logical(0), 
             tags = list(type = "string")), OutputValue = structure(logical(0), 
             tags = list(type = "string")), Description = structure(logical(0), 
             tags = list(type = "string", max = 1024L, min = 1L)), 
@@ -674,9 +752,69 @@ describe_stacks_output <- function (...)
             tags = list(type = "list", max = 50L)), EnableTerminationProtection = structure(logical(0), 
             tags = list(type = "boolean")), ParentId = structure(logical(0), 
             tags = list(type = "string")), RootId = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))), 
-        tags = list(type = "list")), NextToken = structure(logical(0), 
-        tags = list(type = "string", max = 1024L, min = 1L))), 
+            tags = list(type = "string")), DriftInformation = structure(list(StackDriftStatus = structure(logical(0), 
+            tags = list(type = "string", enum = c("DRIFTED", 
+                "IN_SYNC", "UNKNOWN", "NOT_CHECKED"))), LastCheckTimestamp = structure(logical(0), 
+            tags = list(type = "timestamp"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))), tags = list(type = "list")), 
+        NextToken = structure(logical(0), tags = list(type = "string", 
+            max = 1024L, min = 1L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+detect_stack_drift_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(StackName = structure(logical(0), 
+        tags = list(type = "string", min = 1L, pattern = "([a-zA-Z][-a-zA-Z0-9]*)|(arn:\\b(aws|aws-us-gov|aws-cn)\\b:[-a-zA-Z0-9:/._+]*)")), 
+        LogicalResourceIds = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "list", 
+            max = 200L, min = 1L))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+detect_stack_drift_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(StackDriftDetectionId = structure(logical(0), 
+        tags = list(type = "string", max = 36L, min = 1L))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+detect_stack_resource_drift_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(StackName = structure(logical(0), 
+        tags = list(type = "string", min = 1L, pattern = "([a-zA-Z][-a-zA-Z0-9]*)|(arn:\\b(aws|aws-us-gov|aws-cn)\\b:[-a-zA-Z0-9:/._+]*)")), 
+        LogicalResourceId = structure(logical(0), tags = list(type = "string"))), 
+        tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+detect_stack_resource_drift_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(StackResourceDrift = structure(list(StackId = structure(logical(0), 
+        tags = list(type = "string")), LogicalResourceId = structure(logical(0), 
+        tags = list(type = "string")), PhysicalResourceId = structure(logical(0), 
+        tags = list(type = "string")), PhysicalResourceIdContext = structure(list(structure(list(Key = structure(logical(0), 
+        tags = list(type = "string")), Value = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))), 
+        tags = list(type = "list", max = 5L)), ResourceType = structure(logical(0), 
+        tags = list(type = "string", max = 256L, min = 1L)), 
+        ExpectedProperties = structure(logical(0), tags = list(type = "string")), 
+        ActualProperties = structure(logical(0), tags = list(type = "string")), 
+        PropertyDifferences = structure(list(structure(list(PropertyPath = structure(logical(0), 
+            tags = list(type = "string")), ExpectedValue = structure(logical(0), 
+            tags = list(type = "string")), ActualValue = structure(logical(0), 
+            tags = list(type = "string")), DifferenceType = structure(logical(0), 
+            tags = list(type = "string", enum = c("ADD", "REMOVE", 
+                "NOT_EQUAL")))), tags = list(type = "structure"))), 
+            tags = list(type = "list")), StackResourceDriftStatus = structure(logical(0), 
+            tags = list(type = "string", enum = c("IN_SYNC", 
+                "MODIFIED", "DELETED", "NOT_CHECKED"))), Timestamp = structure(logical(0), 
+            tags = list(type = "timestamp"))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -791,9 +929,10 @@ get_template_summary_output <- function (...)
         tags = list(type = "list")), Description = structure(logical(0), 
         tags = list(type = "string", max = 1024L, min = 1L)), 
         Capabilities = structure(list(structure(logical(0), tags = list(type = "string", 
-            enum = c("CAPABILITY_IAM", "CAPABILITY_NAMED_IAM")))), 
-            tags = list(type = "list")), CapabilitiesReason = structure(logical(0), 
-            tags = list(type = "string")), ResourceTypes = structure(list(structure(logical(0), 
+            enum = c("CAPABILITY_IAM", "CAPABILITY_NAMED_IAM", 
+                "CAPABILITY_AUTO_EXPAND")))), tags = list(type = "list")), 
+        CapabilitiesReason = structure(logical(0), tags = list(type = "string")), 
+        ResourceTypes = structure(list(structure(logical(0), 
             tags = list(type = "string", max = 256L, min = 1L))), 
             tags = list(type = "list")), Version = structure(logical(0), 
             tags = list(type = "string")), Metadata = structure(logical(0), 
@@ -934,10 +1073,13 @@ list_stack_resources_output <- function (...)
                 "DELETE_IN_PROGRESS", "DELETE_FAILED", "DELETE_COMPLETE", 
                 "DELETE_SKIPPED", "UPDATE_IN_PROGRESS", "UPDATE_FAILED", 
                 "UPDATE_COMPLETE"))), ResourceStatusReason = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))), 
-        tags = list(type = "list")), NextToken = structure(logical(0), 
-        tags = list(type = "string", max = 1024L, min = 1L))), 
-        tags = list(type = "structure"))
+            tags = list(type = "string")), DriftInformation = structure(list(StackResourceDriftStatus = structure(logical(0), 
+            tags = list(type = "string", enum = c("IN_SYNC", 
+                "MODIFIED", "DELETED", "NOT_CHECKED"))), LastCheckTimestamp = structure(logical(0), 
+            tags = list(type = "timestamp"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))), tags = list(type = "list")), 
+        NextToken = structure(logical(0), tags = list(type = "string", 
+            max = 1024L, min = 1L))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1066,10 +1208,13 @@ list_stacks_output <- function (...)
             "REVIEW_IN_PROGRESS"))), StackStatusReason = structure(logical(0), 
         tags = list(type = "string")), ParentId = structure(logical(0), 
         tags = list(type = "string")), RootId = structure(logical(0), 
-        tags = list(type = "string"))), tags = list(type = "structure"))), 
-        tags = list(type = "list")), NextToken = structure(logical(0), 
-        tags = list(type = "string", max = 1024L, min = 1L))), 
-        tags = list(type = "structure"))
+        tags = list(type = "string")), DriftInformation = structure(list(StackDriftStatus = structure(logical(0), 
+        tags = list(type = "string", enum = c("DRIFTED", "IN_SYNC", 
+            "UNKNOWN", "NOT_CHECKED"))), LastCheckTimestamp = structure(logical(0), 
+        tags = list(type = "timestamp"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))), tags = list(type = "list")), 
+        NextToken = structure(logical(0), tags = list(type = "string", 
+            max = 1024L, min = 1L))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1142,8 +1287,8 @@ update_stack_input <- function (...)
             tags = list(type = "string"))), tags = list(type = "structure"))), 
             tags = list(type = "list")), Capabilities = structure(list(structure(logical(0), 
             tags = list(type = "string", enum = c("CAPABILITY_IAM", 
-                "CAPABILITY_NAMED_IAM")))), tags = list(type = "list")), 
-        ResourceTypes = structure(list(structure(logical(0), 
+                "CAPABILITY_NAMED_IAM", "CAPABILITY_AUTO_EXPAND")))), 
+            tags = list(type = "list")), ResourceTypes = structure(list(structure(logical(0), 
             tags = list(type = "string", max = 256L, min = 1L))), 
             tags = list(type = "list")), RoleARN = structure(logical(0), 
             tags = list(type = "string", max = 2048L, min = 20L)), 
@@ -1228,8 +1373,8 @@ update_stack_set_input <- function (...)
             tags = list(type = "string"))), tags = list(type = "structure"))), 
             tags = list(type = "list")), Capabilities = structure(list(structure(logical(0), 
             tags = list(type = "string", enum = c("CAPABILITY_IAM", 
-                "CAPABILITY_NAMED_IAM")))), tags = list(type = "list")), 
-        Tags = structure(list(structure(list(Key = structure(logical(0), 
+                "CAPABILITY_NAMED_IAM", "CAPABILITY_AUTO_EXPAND")))), 
+            tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), 
             tags = list(type = "string", max = 128L, min = 1L)), 
             Value = structure(logical(0), tags = list(type = "string", 
                 max = 256L, min = 1L))), tags = list(type = "structure"))), 
@@ -1303,9 +1448,9 @@ validate_template_output <- function (...)
         Description = structure(logical(0), tags = list(type = "string", 
             max = 1024L, min = 1L)), Capabilities = structure(list(structure(logical(0), 
             tags = list(type = "string", enum = c("CAPABILITY_IAM", 
-                "CAPABILITY_NAMED_IAM")))), tags = list(type = "list")), 
-        CapabilitiesReason = structure(logical(0), tags = list(type = "string")), 
-        DeclaredTransforms = structure(list(structure(logical(0), 
+                "CAPABILITY_NAMED_IAM", "CAPABILITY_AUTO_EXPAND")))), 
+            tags = list(type = "list")), CapabilitiesReason = structure(logical(0), 
+            tags = list(type = "string")), DeclaredTransforms = structure(list(structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "list"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))

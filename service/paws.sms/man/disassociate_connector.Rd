@@ -2,15 +2,18 @@
 % Please edit documentation in R/paws.sms_operations.R
 \name{disassociate_connector}
 \alias{disassociate_connector}
-\title{The DisassociateConnector API will disassociate a connector from the Server Migration Service, rendering it unavailable to support replication jobs}
+\title{Disassociates the specified connector from AWS SMS}
 \usage{
 disassociate_connector(connectorId)
 }
 \arguments{
-\item{connectorId}{[required]}
+\item{connectorId}{[required] The identifier of the connector.}
 }
 \description{
-The DisassociateConnector API will disassociate a connector from the Server Migration Service, rendering it unavailable to support replication jobs.
+Disassociates the specified connector from AWS SMS.
+}
+\details{
+After you disassociate a connector, it is no longer available to support replication jobs.
 }
 \section{Accepted Parameters}{
 \preformatted{disassociate_connector(

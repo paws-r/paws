@@ -5,7 +5,7 @@
 \title{Creates a data set}
 \usage{
 create_dataset(datasetName, actions, triggers = NULL,
-  retentionPeriod = NULL, tags = NULL)
+  contentDeliveryRules = NULL, retentionPeriod = NULL, tags = NULL)
 }
 \arguments{
 \item{datasetName}{[required] The name of the data set.}
@@ -13,6 +13,8 @@ create_dataset(datasetName, actions, triggers = NULL,
 \item{actions}{[required] A list of actions that create the data set contents.}
 
 \item{triggers}{A list of triggers. A trigger causes data set contents to be populated at a specified time interval or when another data set's contents are created. The list of triggers can be empty or contain up to five \strong{DataSetTrigger} objects.}
+
+\item{contentDeliveryRules}{When data set contents are created they are delivered to destinations specified here.}
 
 \item{retentionPeriod}{[Optional] How long, in days, message data is kept for the data set. If not given or set to null, the latest version of the dataset content plus the latest succeeded version (if they are different) are retained for at most 90 days.}
 
@@ -68,6 +70,17 @@ Creates a data set. A data set stores data retrieved from a data store by applyi
       ),
       dataset = list(
         name = "string"
+      )
+    )
+  ),
+  contentDeliveryRules = list(
+    list(
+      entryName = "string",
+      destination = list(
+        iotEventsDestinationConfiguration = list(
+          inputName = "string",
+          roleArn = "string"
+        )
       )
     )
   ),

@@ -9,17 +9,17 @@ delete_access_key(UserName = NULL, AccessKeyId)
 \arguments{
 \item{UserName}{The name of the user whose access key pair you want to delete.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{AccessKeyId}{[required] The access key ID for the access key ID and secret access key you want to delete.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that can consist of any upper or lowercased letter or digit.}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that can consist of any upper or lowercased letter or digit.}
 }
 \description{
 Deletes the access key pair associated with the specified IAM user.
 }
 \details{
-If you do not specify a user name, IAM determines the user name implicitly based on the AWS access key ID signing the request. Because this operation works for access keys under the AWS account, you can use this operation to manage AWS account root user credentials even if the AWS account has no associated users.
+If you do not specify a user name, IAM determines the user name implicitly based on the AWS access key ID signing the request. This operation works for access keys under the AWS account. Consequently, you can use this operation to manage AWS account root user credentials even if the AWS account has no associated users.
 }
 \section{Accepted Parameters}{
 \preformatted{delete_access_key(

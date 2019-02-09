@@ -6,14 +6,14 @@
 \usage{
 create_stack(Name, Description = NULL, DisplayName = NULL,
   StorageConnectors = NULL, RedirectURL = NULL, FeedbackURL = NULL,
-  UserSettings = NULL, ApplicationSettings = NULL)
+  UserSettings = NULL, ApplicationSettings = NULL, Tags = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the stack.}
 
-\item{Description}{The description for display.}
+\item{Description}{The description to display.}
 
-\item{DisplayName}{The stack name for display.}
+\item{DisplayName}{The stack name to display.}
 
 \item{StorageConnectors}{The storage connectors to enable.}
 
@@ -24,6 +24,12 @@ create_stack(Name, Description = NULL, DisplayName = NULL,
 \item{UserSettings}{The actions that are enabled or disabled for users during their streaming sessions. By default, these actions are enabled.}
 
 \item{ApplicationSettings}{The persistent application settings for users of a stack. When these settings are enabled, changes that users make to applications and Windows settings are automatically saved after each session and applied to the next session.}
+
+\item{Tags}{The tags to associate with the stack. A tag is a key-value pair (the value is optional). For example, Environment=Test, or, if you do not specify a value, Environment=.
+
+If you do not specify a value, we set the value to an empty string.
+
+For more information about tags, see \href{http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html}{Tagging Your Resources} in the \emph{Amazon AppStream 2.0 Developer Guide}.}
 }
 \description{
 Creates a stack to start streaming applications to users. A stack consists of an associated fleet, user access policies, and storage configurations.
@@ -53,6 +59,9 @@ Creates a stack to start streaming applications to users. A stack consists of an
   ApplicationSettings = list(
     Enabled = TRUE|FALSE,
     SettingsGroup = "string"
+  ),
+  Tags = list(
+    "string"
   )
 )
 }

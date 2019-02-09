@@ -22,7 +22,7 @@ Starts the asynchronous tracking of a person's path in a stored video.
 \details{
 Amazon Rekognition Video can track the path of people in a video stored in an Amazon S3 bucket. Use Video to specify the bucket name and the filename of the video. \code{StartPersonTracking} returns a job identifier (\code{JobId}) which you use to get the results of the operation. When label detection is finished, Amazon Rekognition publishes a completion status to the Amazon Simple Notification Service topic that you specify in \code{NotificationChannel}.
 
-To get the results of the person detection operation, first check that the status value published to the Amazon SNS topic is \code{SUCCEEDED}. If so, call and pass the job identifier (\code{JobId}) from the initial call to \code{StartPersonTracking}.
+To get the results of the person detection operation, first check that the status value published to the Amazon SNS topic is \code{SUCCEEDED}. If so, call GetPersonTracking and pass the job identifier (\code{JobId}) from the initial call to \code{StartPersonTracking}.
 }
 \section{Accepted Parameters}{
 \preformatted{start_person_tracking(

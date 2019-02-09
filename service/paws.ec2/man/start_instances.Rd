@@ -23,7 +23,7 @@ Before stopping an instance, make sure it is in a state from which it can be res
 
 Performing this operation on an instance that uses an instance store as its root device returns an error.
 
-For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html}{Stopping Instances} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html}{Stopping Instances} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{start_instances(

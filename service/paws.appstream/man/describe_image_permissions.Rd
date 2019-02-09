@@ -12,7 +12,7 @@ describe_image_permissions(Name, MaxResults = NULL,
 
 \item{MaxResults}{The maximum size of each page of results.}
 
-\item{SharedAwsAccountIds}{The 12-digit ID of one or more AWS accounts with which the image is shared.}
+\item{SharedAwsAccountIds}{The 12-digit identifier of one or more AWS accounts with which the image is shared.}
 
 \item{NextToken}{The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.}
 }

@@ -13,8 +13,6 @@ NULL
 #' 
 #' If any player rejects the match, or if acceptances are not received before a specified timeout, the proposed match is dropped. The matchmaking tickets are then handled in one of two ways: For tickets where all players accepted the match, the ticket status is returned to `SEARCHING` to find a new match. For tickets where one or more players failed to accept the match, the ticket status is set to `FAILED`, and processing is terminated. A new matchmaking request for these players can be submitted as needed.
 #' 
-#' Matchmaking-related operations include:
-#' 
 #' -   StartMatchmaking
 #' 
 #' -   DescribeMatchmaking
@@ -61,8 +59,6 @@ accept_match <- function (TicketId, PlayerIds, AcceptanceType)
 #' Amazon GameLift supports two types of routing strategies for aliases: simple and terminal. A simple alias points to an active fleet. A terminal alias is used to display messaging or link to a URL instead of routing players to an active fleet. For example, you might use a terminal alias when a game version is no longer supported and you want to direct players to an upgrade site.
 #' 
 #' To create a fleet alias, specify an alias name, routing strategy, and optional description. Each simple alias can point to only one fleet, but a fleet can have multiple aliases. If successful, a new alias record is returned, including an alias ID, which you can reference when creating a game session. You can reassign an alias to another fleet by calling `UpdateAlias`.
-#' 
-#' Alias-related operations include:
 #' 
 #' -   CreateAlias
 #' 
@@ -111,19 +107,17 @@ create_alias <- function (Name, Description = NULL, RoutingStrategy)
 #'
 #' Creates a new Amazon GameLift build record for your game server binary files and points to the location of your game server build files in an Amazon Simple Storage Service (Amazon S3) location.
 #' 
-#' Game server binaries must be combined into a `.zip` file for use with Amazon GameLift. See [Uploading Your Game](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html) for more information.
+#' Game server binaries must be combined into a `.zip` file for use with Amazon GameLift. See [Uploading Your Game](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html) for more information.
 #' 
-#' To create new builds quickly and easily, use the AWS CLI command **[upload-build](http://docs.aws.amazon.com/cli/latest/reference/gamelift/upload-build.html)** . This helper command uploads your build and creates a new build record in one step, and automatically handles the necessary permissions. See [Upload Build Files to Amazon GameLift](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html) for more help.
+#' To create new builds quickly and easily, use the AWS CLI command **[upload-build](https://docs.aws.amazon.com/cli/latest/reference/gamelift/upload-build.html)** . This helper command uploads your build and creates a new build record in one step, and automatically handles the necessary permissions. See [Upload Build Files to Amazon GameLift](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html) for more help.
 #' 
 #' The `CreateBuild` operation should be used only when you need to manually upload your build files, as in the following scenarios:
 #' 
-#' -   Store a build file in an Amazon S3 bucket under your own AWS account. To use this option, you must first give Amazon GameLift access to that Amazon S3 bucket. See [Create a Build with Files in Amazon S3](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build) for detailed help. To create a new build record using files in your Amazon S3 bucket, call `CreateBuild` and specify a build name, operating system, and the storage location of your game build.
+#' -   Store a build file in an Amazon S3 bucket under your own AWS account. To use this option, you must first give Amazon GameLift access to that Amazon S3 bucket. See [Create a Build with Files in Amazon S3](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build) for detailed help. To create a new build record using files in your Amazon S3 bucket, call `CreateBuild` and specify a build name, operating system, and the storage location of your game build.
 #' 
-#' -   Upload a build file directly to Amazon GameLift\'s Amazon S3 account. To use this option, you first call `CreateBuild` with a build name and operating system. This action creates a new build record and returns an Amazon S3 storage location (bucket and key only) and temporary access credentials. Use the credentials to manually upload your build file to the storage location (see the Amazon S3 topic [Uploading Objects](http://docs.aws.amazon.com/AmazonS3/latest/dev/UploadingObjects.html)). You can upload files to a location only once.
+#' -   Upload a build file directly to Amazon GameLift\'s Amazon S3 account. To use this option, you first call `CreateBuild` with a build name and operating system. This action creates a new build record and returns an Amazon S3 storage location (bucket and key only) and temporary access credentials. Use the credentials to manually upload your build file to the storage location (see the Amazon S3 topic [Uploading Objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/UploadingObjects.html)). You can upload files to a location only once.
 #' 
 #' If successful, this operation creates a new build record with a unique build ID and places it in `INITIALIZED` status. You can use DescribeBuild to check the status of your build. A build must be in `READY` status before it can be used to create fleets.
-#' 
-#' Build-related operations include:
 #' 
 #' -   CreateBuild
 #' 
@@ -171,24 +165,9 @@ create_build <- function (Name = NULL, Version = NULL, StorageLocation = NULL,
 
 #' Creates a new fleet to run your game servers
 #'
-#' Creates a new fleet to run your game servers. A fleet is a set of Amazon Elastic Compute Cloud (Amazon EC2) instances, each of which can run multiple server processes to host game sessions. You set up a fleet to use instances with certain hardware specifications (see [Amazon EC2 Instance Types](http://aws.amazon.com/ec2/instance-types/) for more information), and deploy your game build to run on each instance.
+#' Creates a new fleet to run your game servers. A fleet is a set of Amazon Elastic Compute Cloud (Amazon EC2) instances, each of which can run multiple server processes to host game sessions. You set up a fleet to use instances with certain hardware specifications (see [Amazon EC2 Instance Types](http://aws.amazon.com/ec2/instance-types/)), and deploy your game build to the fleet.
 #' 
-#' To create a new fleet, you must specify the following: (1) a fleet name, (2) the build ID of a successfully uploaded game build, (3) an EC2 instance type, and (4) a run-time configuration, which describes the server processes to run on each instance in the fleet. If you don\'t specify a fleet type (on-demand or spot), the new fleet uses on-demand instances by default.
-#' 
-#' You can also configure the new fleet with the following settings:
-#' 
-#' -   Fleet description
-#' 
-#' -   Access permissions for inbound traffic
-#' 
-#' -   Fleet-wide game session protection
-#' 
-#' -   Resource usage limits
-#' 
-#' 
-#' -   VPC peering connection (see [VPC Peering with Amazon GameLift Fleets](http://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html))
-#' 
-#' If you use Amazon CloudWatch for metrics, you can add the new fleet to a metric group. By adding multiple fleets to a metric group, you can view aggregated metrics for all the fleets in the group.
+#' To create a new fleet, you must provide the following: (1) a fleet name, (2) an EC2 instance type, (3) the build ID for your game build, and (4) a run-time configuration, which specifies the server processes to run on each instance in the fleet. If fleet type is not set, the new fleet will use on-demand instances by default.
 #' 
 #' If the `CreateFleet` call is successful, Amazon GameLift performs the following tasks. You can track the process of a fleet by checking the fleet status or by monitoring fleet creation events:
 #' 
@@ -204,7 +183,11 @@ create_build <- function (Name = NULL, Version = NULL, StorageLocation = NULL,
 #' 
 #' -   Sets the fleet\'s status to `ACTIVE` as soon as one server process is ready to host a game session.
 #' 
-#' Fleet-related operations include:
+#' **Learn more**
+#' 
+#' See Amazon GameLift Developer Guide topics in [Working with Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
+#' 
+#' **Related operations**
 #' 
 #' -   CreateFleet
 #' 
@@ -294,7 +277,7 @@ create_build <- function (Name = NULL, Version = NULL, StorageLocation = NULL,
 #' @param BuildId &#91;required&#93; Unique identifier for a build to be deployed on the new fleet. The build must have been successfully uploaded to Amazon GameLift and be in a `READY` status. This fleet setting cannot be changed once the fleet is created.
 #' @param ServerLaunchPath This parameter is no longer used. Instead, specify a server launch path using the `RuntimeConfiguration` parameter. (Requests that specify a server launch path and launch parameters instead of a run-time configuration will continue to work.)
 #' @param ServerLaunchParameters This parameter is no longer used. Instead, specify server launch parameters in the `RuntimeConfiguration` parameter. (Requests that specify a server launch path and launch parameters instead of a run-time configuration will continue to work.)
-#' @param LogPaths This parameter is no longer used. Instead, to specify where Amazon GameLift should store log files once a server process shuts down, use the Amazon GameLift server API `ProcessReady()` and specify one or more directory paths in `logParameters`. See more information in the [Server API Reference](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api-ref.html#gamelift-sdk-server-api-ref-dataypes-process).
+#' @param LogPaths This parameter is no longer used. Instead, to specify where Amazon GameLift should store log files once a server process shuts down, use the Amazon GameLift server API `ProcessReady()` and specify one or more directory paths in `logParameters`. See more information in the [Server API Reference](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api-ref.html#gamelift-sdk-server-api-ref-dataypes-process).
 #' @param EC2InstanceType &#91;required&#93; Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift supports the following EC2 instance types. See [Amazon EC2 Instance Types](http://aws.amazon.com/ec2/instance-types/) for detailed descriptions.
 #' @param EC2InboundPermissions Range of IP addresses and port settings that permit inbound traffic to access server processes running on the fleet. If no inbound permissions are set, including both IP address range and port range, the server processes in the fleet cannot accept connections. You can specify one or more sets of permissions for a fleet.
 #' @param NewGameSessionProtectionPolicy Game session protection policy to apply to all instances in this fleet. If this parameter is not set, instances in this fleet default to no protection. You can change a fleet\'s protection policy using UpdateFleetAttributes, but this change will only affect sessions created after the policy change. You can also set protection for individual instances using UpdateGameSession.
@@ -304,10 +287,10 @@ create_build <- function (Name = NULL, Version = NULL, StorageLocation = NULL,
 #' -   **FullProtection** \-- If the game session is in an `ACTIVE` status, it cannot be terminated during a scale-down event.
 #' @param RuntimeConfiguration Instructions for launching server processes on each instance in the fleet. The run-time configuration for a fleet has a collection of server process configurations, one for each type of server process to run on an instance. A server process configuration specifies the location of the server executable, launch parameters, and the number of concurrent processes with that configuration to maintain on each instance. A CreateFleet request must include a run-time configuration with at least one server process configuration; otherwise the request fails with an invalid request exception. (This parameter replaces the parameters `ServerLaunchPath` and `ServerLaunchParameters`; requests that contain values for these parameters instead of a run-time configuration will continue to work.)
 #' @param ResourceCreationLimitPolicy Policy that limits the number of game sessions an individual player can create over a span of time for this fleet.
-#' @param MetricGroups Name of a metric group to add this fleet to. A metric group tracks metrics across all fleets in the group. Use an existing metric group name to add this fleet to the group, or use a new name to create a new metric group. A fleet can only be included in one metric group at a time.
+#' @param MetricGroups Name of an Amazon CloudWatch metric group to add this fleet to. A metric group aggregates the metrics for all fleets in the group. Specify an existing metric group name, or provide a new name to create a new metric group. A fleet can only be included in one metric group at a time.
 #' @param PeerVpcAwsAccountId Unique identifier for the AWS account with the VPC that you want to peer your Amazon GameLift fleet with. You can find your Account ID in the AWS Management Console under account settings.
-#' @param PeerVpcId Unique identifier for a VPC with resources to be accessed by your Amazon GameLift fleet. The VPC must be in the same region where your fleet is deployed. To get VPC information, including IDs, use the Virtual Private Cloud service tools, including the VPC Dashboard in the AWS Management Console.
-#' @param FleetType Indicates whether to use on-demand instances or spot instances for this fleet. If empty, the default is ON\_DEMAND. Both categories of instances use identical hardware and configurations, based on the instance type selected for this fleet. You can acquire on-demand instances at any time for a fixed price and keep them as long as you need them. Spot instances have lower prices, but spot pricing is variable, and while in use they can be interrupted (with a two-minute notification). Learn more about Amazon GameLift spot instances with at [Choose Computing Resources](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-ec2-instances.html).
+#' @param PeerVpcId Unique identifier for a VPC with resources to be accessed by your Amazon GameLift fleet. The VPC must be in the same region where your fleet is deployed. Look up a VPC ID using the [VPC Dashboard](https://console.aws.amazon.com/vpc/) in the AWS Management Console. Learn more about VPC peering in [VPC Peering with Amazon GameLift Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
+#' @param FleetType Indicates whether to use on-demand instances or spot instances for this fleet. If empty, the default is ON\_DEMAND. Both categories of instances use identical hardware and configurations, based on the instance type selected for this fleet. You can acquire on-demand instances at any time for a fixed price and keep them as long as you need them. Spot instances have lower prices, but spot pricing is variable, and while in use they can be interrupted (with a two-minute notification). Learn more about Amazon GameLift spot instances with at [Set up Access to External Services](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-credentials.html).
 #'
 #' @export
 create_fleet <- function (Name, Description = NULL, BuildId, 
@@ -349,8 +332,6 @@ create_fleet <- function (Name, Description = NULL, BuildId,
 #' **Game session logs.** Logs are retained for all active game sessions for 14 days. To access the logs, call GetGameSessionLogUrl to download the log files.
 #' 
 #' *Available in Amazon GameLift Local.*
-#' 
-#' Game-session-related operations include:
 #' 
 #' -   CreateGameSession
 #' 
@@ -396,11 +377,11 @@ create_fleet <- function (Name, Description = NULL, BuildId,
 #' @param AliasId Unique identifier for an alias associated with the fleet to create a game session in. Each request must reference either a fleet ID or alias ID, but not both.
 #' @param MaximumPlayerSessionCount &#91;required&#93; Maximum number of players that can be connected simultaneously to the game session.
 #' @param Name Descriptive label that is associated with a game session. Session names do not need to be unique.
-#' @param GameProperties Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to a game server process in the GameSession object with a request to start a new game session (see [Start a Game Session](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
+#' @param GameProperties Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to a game server process in the GameSession object with a request to start a new game session (see [Start a Game Session](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 #' @param CreatorId Unique identifier for a player or entity creating the game session. This ID is used to enforce a resource protection policy (if one exists) that limits the number of concurrent active game sessions one player can have.
 #' @param GameSessionId *This parameter is no longer preferred. Please use `IdempotencyToken` instead.* Custom string that uniquely identifies a request for a new game session. Maximum token length is 48 characters. If provided, this string is included in the new game session\'s ID. (A game session ARN has the following format: `arn:aws:gamelift:<region>::gamesession/<fleet ID>/<custom ID string or idempotency token>`.)
 #' @param IdempotencyToken Custom string that uniquely identifies a request for a new game session. Maximum token length is 48 characters. If provided, this string is included in the new game session\'s ID. (A game session ARN has the following format: `arn:aws:gamelift:<region>::gamesession/<fleet ID>/<custom ID string or idempotency token>`.) Idempotency tokens remain in use for 30 days after a game session has ended; game session objects are retained for this time period and then deleted.
-#' @param GameSessionData Set of custom game session properties, formatted as a single string value. This data is passed to a game server process in the GameSession object with a request to start a new game session (see [Start a Game Session](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
+#' @param GameSessionData Set of custom game session properties, formatted as a single string value. This data is passed to a game server process in the GameSession object with a request to start a new game session (see [Start a Game Session](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 #'
 #' @export
 create_game_session <- function (FleetId = NULL, AliasId = NULL, 
@@ -431,8 +412,6 @@ create_game_session <- function (FleetId = NULL, AliasId = NULL,
 #' **Player latency policies.** For placement requests containing player latency information, use player latency policies to protect individual players from very high latencies. With a latency cap, even when a destination can deliver a low latency for most players, the game is not placed where any individual player is reporting latency higher than a policy\'s maximum. A queue can have multiple latency policies, which are enforced consecutively starting with the policy with the lowest latency cap. Use multiple policies to gradually relax latency controls; for example, you might set a policy with a low latency cap for the first 60 seconds, a second policy with a higher cap for the next 60 seconds, etc.
 #' 
 #' To create a new queue, provide a name, timeout value, a list of destinations and, if desired, a set of latency policies. If successful, a new queue object is returned.
-#' 
-#' Queue-related operations include:
 #' 
 #' -   CreateGameSessionQueue
 #' 
@@ -489,9 +468,7 @@ create_game_session_queue <- function (Name, TimeoutInSeconds = NULL,
 #' 
 #' **Player acceptance** \-- In each configuration, you have the option to require that all players accept participation in a proposed match. To enable this feature, set *AcceptanceRequired* to true and specify a time limit for player acceptance. Players have the option to accept or reject a proposed match, and a match does not move ahead to game session placement unless all matched players accept.
 #' 
-#' **Matchmaking status notification** \-- There are two ways to track the progress of matchmaking tickets: (1) polling ticket status with DescribeMatchmaking; or (2) receiving notifications with Amazon Simple Notification Service (SNS). To use notifications, you first need to set up an SNS topic to receive the notifications, and provide the topic ARN in the matchmaking configuration (see [Setting up Notifications for Matchmaking](http://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html)). Since notifications promise only \"best effort\" delivery, we recommend calling `DescribeMatchmaking` if no notifications are received within 30 seconds.
-#' 
-#' Operations related to match configurations and rule sets include:
+#' **Matchmaking status notification** \-- There are two ways to track the progress of matchmaking tickets: (1) polling ticket status with DescribeMatchmaking; or (2) receiving notifications with Amazon Simple Notification Service (SNS). To use notifications, you first need to set up an SNS topic to receive the notifications, and provide the topic ARN in the matchmaking configuration (see [Setting up Notifications for Matchmaking](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html)). Since notifications promise only \"best effort\" delivery, we recommend calling `DescribeMatchmaking` if no notifications are received within 30 seconds.
 #' 
 #' -   CreateMatchmakingConfiguration
 #' 
@@ -506,6 +483,8 @@ create_game_session_queue <- function (Name, TimeoutInSeconds = NULL,
 #' -   DescribeMatchmakingRuleSets
 #' 
 #' -   ValidateMatchmakingRuleSet
+#' 
+#' -   DeleteMatchmakingRuleSet
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -534,7 +513,7 @@ create_game_session_queue <- function (Name, TimeoutInSeconds = NULL,
 #'
 #' @param Name &#91;required&#93; Unique identifier for a matchmaking configuration. This name is used to identify the configuration associated with a matchmaking request or ticket.
 #' @param Description Meaningful description of the matchmaking configuration.
-#' @param GameSessionQueueArns &#91;required&#93; Amazon Resource Name ([ARN](http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html)) that is assigned to a game session queue and uniquely identifies it. Format is `arn:aws:gamelift:<region>::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912`. These queues are used when placing game sessions for matches that are created with this matchmaking configuration. Queues can be located in any region.
+#' @param GameSessionQueueArns &#91;required&#93; Amazon Resource Name ([ARN](https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html)) that is assigned to a game session queue and uniquely identifies it. Format is `arn:aws:gamelift:<region>::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912`. These queues are used when placing game sessions for matches that are created with this matchmaking configuration. Queues can be located in any region.
 #' @param RequestTimeoutSeconds &#91;required&#93; Maximum duration, in seconds, that a matchmaking ticket can remain in process before timing out. Requests that time out can be resubmitted as needed.
 #' @param AcceptanceTimeoutSeconds Length of time (in seconds) to wait for players to accept a proposed match. If any player rejects the match or fails to accept before the timeout, the ticket continues to look for an acceptable match.
 #' @param AcceptanceRequired &#91;required&#93; Flag that determines whether or not a match that was created with this configuration must be accepted by the matched players. To require acceptance, set to TRUE.
@@ -542,8 +521,8 @@ create_game_session_queue <- function (Name, TimeoutInSeconds = NULL,
 #' @param NotificationTarget SNS topic ARN that is set up to receive matchmaking notifications.
 #' @param AdditionalPlayerCount Number of player slots in a match to keep open for future players. For example, if the configuration\'s rule set specifies a match for a single 12-person team, and the additional player count is set to 2, only 10 players are selected for the match.
 #' @param CustomEventData Information to attached to all events related to the matchmaking configuration.
-#' @param GameProperties Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to a game server process in the GameSession object with a request to start a new game session (see [Start a Game Session](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)). This information is added to the new GameSession object that is created for a successful match.
-#' @param GameSessionData Set of custom game session properties, formatted as a single string value. This data is passed to a game server process in the GameSession object with a request to start a new game session (see [Start a Game Session](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)). This information is added to the new GameSession object that is created for a successful match.
+#' @param GameProperties Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to a game server process in the GameSession object with a request to start a new game session (see [Start a Game Session](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)). This information is added to the new GameSession object that is created for a successful match.
+#' @param GameSessionData Set of custom game session properties, formatted as a single string value. This data is passed to a game server process in the GameSession object with a request to start a new game session (see [Start a Game Session](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)). This information is added to the new GameSession object that is created for a successful match.
 #'
 #' @export
 create_matchmaking_configuration <- function (Name, Description = NULL, 
@@ -570,13 +549,21 @@ create_matchmaking_configuration <- function (Name, Description = NULL,
 
 #' Creates a new rule set for FlexMatch matchmaking
 #'
-#' Creates a new rule set for FlexMatch matchmaking. A rule set describes the type of match to create, such as the number and size of teams, and sets the parameters for acceptable player matches, such as minimum skill level or character type. Rule sets are used in matchmaking configurations, which define how matchmaking requests are handled. Each MatchmakingConfiguration uses one rule set; you can set up multiple rule sets to handle the scenarios that suit your game (such as for different game modes), and create a separate matchmaking configuration for each rule set. See additional information on rule set content in the MatchmakingRuleSet structure. For help creating rule sets, including useful examples, see the topic [Adding FlexMatch to Your Game](http://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html).
+#' Creates a new rule set for FlexMatch matchmaking. A rule set describes the type of match to create, such as the number and size of teams, and sets the parameters for acceptable player matches, such as minimum skill level or character type. A rule set is used by a MatchmakingConfiguration.
 #' 
-#' Once created, matchmaking rule sets cannot be changed or deleted, so we recommend checking the rule set syntax using ValidateMatchmakingRuleSet before creating the rule set.
+#' To create a matchmaking rule set, provide unique rule set name and the rule set body in JSON format. Rule sets must be defined in the same region as the matchmaking configuration they will be used with.
 #' 
-#' To create a matchmaking rule set, provide the set of rules and a unique name. Rule sets must be defined in the same region as the matchmaking configuration they will be used with. Rule sets cannot be edited or deleted. If you need to change a rule set, create a new one with the necessary edits and then update matchmaking configurations to use the new rule set.
+#' Since matchmaking rule sets cannot be edited, it is a good idea to check the rule set syntax using ValidateMatchmakingRuleSet before creating a new rule set.
 #' 
-#' Operations related to match configurations and rule sets include:
+#' **Learn more**
+#' 
+#' -   [Build a Rule Set](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-rulesets.html)
+#' 
+#' -   [Design a Matchmaker](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-configuration.html)
+#' 
+#' -   [Matchmaking with FlexMatch](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html)
+#' 
+#' **Related operations**
 #' 
 #' -   CreateMatchmakingConfiguration
 #' 
@@ -591,6 +578,8 @@ create_matchmaking_configuration <- function (Name, Description = NULL,
 #' -   DescribeMatchmakingRuleSets
 #' 
 #' -   ValidateMatchmakingRuleSet
+#' 
+#' -   DeleteMatchmakingRuleSet
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -600,8 +589,8 @@ create_matchmaking_configuration <- function (Name, Description = NULL,
 #' )
 #' ```
 #'
-#' @param Name &#91;required&#93; Unique identifier for a matchmaking rule set. This name is used to identify the rule set associated with a matchmaking configuration.
-#' @param RuleSetBody &#91;required&#93; Collection of matchmaking rules, formatted as a JSON string. (Note that comments are not allowed in JSON, but most elements support a description field.)
+#' @param Name &#91;required&#93; Unique identifier for a matchmaking rule set. A matchmaking configuration identifies the rule set it uses by this name value. (Note: The rule set name is different from the optional \"name\" field in the rule set body.)
+#' @param RuleSetBody &#91;required&#93; Collection of matchmaking rules, formatted as a JSON string. Note that comments are not allowed in JSON, but most elements support a description field.
 #'
 #' @export
 create_matchmaking_rule_set <- function (Name, RuleSetBody) 
@@ -623,8 +612,6 @@ create_matchmaking_rule_set <- function (Name, RuleSetBody)
 #' To create a player session, specify a game session ID, player ID, and optionally a string of player data. If successful, the player is added to the game session and a new PlayerSession object is returned. Player sessions cannot be updated.
 #' 
 #' *Available in Amazon GameLift Local.*
-#' 
-#' Player-session-related operations include:
 #' 
 #' -   CreatePlayerSession
 #' 
@@ -675,8 +662,6 @@ create_player_session <- function (GameSessionId, PlayerId, PlayerData = NULL)
 #' 
 #' *Available in Amazon GameLift Local.*
 #' 
-#' Player-session-related operations include:
-#' 
 #' -   CreatePlayerSession
 #' 
 #' -   CreatePlayerSessions
@@ -725,7 +710,7 @@ create_player_sessions <- function (GameSessionId, PlayerIds,
 
 #' Requests authorization to create or delete a peer connection between the VPC for your Amazon GameLift fleet and a virtual private cloud (VPC) in your AWS account
 #'
-#' Requests authorization to create or delete a peer connection between the VPC for your Amazon GameLift fleet and a virtual private cloud (VPC) in your AWS account. VPC peering enables the game servers on your fleet to communicate directly with other AWS resources. Once you\'ve received authorization, call CreateVpcPeeringConnection to establish the peering connection. For more information, see [VPC Peering with Amazon GameLift Fleets](http://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
+#' Requests authorization to create or delete a peer connection between the VPC for your Amazon GameLift fleet and a virtual private cloud (VPC) in your AWS account. VPC peering enables the game servers on your fleet to communicate directly with other AWS resources. Once you\'ve received authorization, call CreateVpcPeeringConnection to establish the peering connection. For more information, see [VPC Peering with Amazon GameLift Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
 #' 
 #' You can peer with VPCs that are owned by any AWS account you have access to, including the account that you use to manage your Amazon GameLift fleets. You cannot peer with VPCs that are in different regions.
 #' 
@@ -734,8 +719,6 @@ create_player_sessions <- function (GameSessionId, PlayerIds,
 #' To request authorization to delete a connection, call this operation from the AWS account with the VPC that is peered with your Amazon GameLift fleet. Identify the following values: (1) VPC ID that you want to delete the peering connection for, and (2) ID of the AWS account that you use to manage Amazon GameLift.
 #' 
 #' The authorization remains valid for 24 hours unless it is canceled by a call to DeleteVpcPeeringAuthorization. You must create or delete the peering connection while the authorization is valid.
-#' 
-#' VPC peering connection operations include:
 #' 
 #' -   CreateVpcPeeringAuthorization
 #' 
@@ -758,7 +741,7 @@ create_player_sessions <- function (GameSessionId, PlayerIds,
 #' ```
 #'
 #' @param GameLiftAwsAccountId &#91;required&#93; Unique identifier for the AWS account that you use to manage your Amazon GameLift fleet. You can find your Account ID in the AWS Management Console under account settings.
-#' @param PeerVpcId &#91;required&#93; Unique identifier for a VPC with resources to be accessed by your Amazon GameLift fleet. The VPC must be in the same region where your fleet is deployed. To get VPC information, including IDs, use the Virtual Private Cloud service tools, including the VPC Dashboard in the AWS Management Console.
+#' @param PeerVpcId &#91;required&#93; Unique identifier for a VPC with resources to be accessed by your Amazon GameLift fleet. The VPC must be in the same region where your fleet is deployed. Look up a VPC ID using the [VPC Dashboard](https://console.aws.amazon.com/vpc/) in the AWS Management Console. Learn more about VPC peering in [VPC Peering with Amazon GameLift Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
 #'
 #' @export
 create_vpc_peering_authorization <- function (GameLiftAwsAccountId, 
@@ -777,13 +760,11 @@ create_vpc_peering_authorization <- function (GameLiftAwsAccountId,
 
 #' Establishes a VPC peering connection between a virtual private cloud (VPC) in an AWS account with the VPC for your Amazon GameLift fleet
 #'
-#' Establishes a VPC peering connection between a virtual private cloud (VPC) in an AWS account with the VPC for your Amazon GameLift fleet. VPC peering enables the game servers on your fleet to communicate directly with other AWS resources. You can peer with VPCs in any AWS account that you have access to, including the account that you use to manage your Amazon GameLift fleets. You cannot peer with VPCs that are in different regions. For more information, see [VPC Peering with Amazon GameLift Fleets](http://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
+#' Establishes a VPC peering connection between a virtual private cloud (VPC) in an AWS account with the VPC for your Amazon GameLift fleet. VPC peering enables the game servers on your fleet to communicate directly with other AWS resources. You can peer with VPCs in any AWS account that you have access to, including the account that you use to manage your Amazon GameLift fleets. You cannot peer with VPCs that are in different regions. For more information, see [VPC Peering with Amazon GameLift Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
 #' 
 #' Before calling this operation to establish the peering connection, you first need to call CreateVpcPeeringAuthorization and identify the VPC you want to peer with. Once the authorization for the specified VPC is issued, you have 24 hours to establish the connection. These two operations handle all tasks necessary to peer the two VPCs, including acceptance, updating routing tables, etc.
 #' 
 #' To establish the connection, call this operation from the AWS account that is used to manage the Amazon GameLift fleets. Identify the following values: (1) The ID of the fleet you want to be enable a VPC peering connection for; (2) The AWS account with the VPC that you want to peer with; and (3) The ID of the VPC you want to peer with. This operation is asynchronous. If successful, a VpcPeeringConnection request is created. You can use continuous polling to track the request\'s status using DescribeVpcPeeringConnections, or by monitoring fleet events for success or failure using DescribeFleetEvents.
-#' 
-#' VPC peering connection operations include:
 #' 
 #' -   CreateVpcPeeringAuthorization
 #' 
@@ -808,7 +789,7 @@ create_vpc_peering_authorization <- function (GameLiftAwsAccountId,
 #'
 #' @param FleetId &#91;required&#93; Unique identifier for a fleet. This tells Amazon GameLift which GameLift VPC to peer with.
 #' @param PeerVpcAwsAccountId &#91;required&#93; Unique identifier for the AWS account with the VPC that you want to peer your Amazon GameLift fleet with. You can find your Account ID in the AWS Management Console under account settings.
-#' @param PeerVpcId &#91;required&#93; Unique identifier for a VPC with resources to be accessed by your Amazon GameLift fleet. The VPC must be in the same region where your fleet is deployed. To get VPC information, including IDs, use the Virtual Private Cloud service tools, including the VPC Dashboard in the AWS Management Console.
+#' @param PeerVpcId &#91;required&#93; Unique identifier for a VPC with resources to be accessed by your Amazon GameLift fleet. The VPC must be in the same region where your fleet is deployed. Look up a VPC ID using the [VPC Dashboard](https://console.aws.amazon.com/vpc/) in the AWS Management Console. Learn more about VPC peering in [VPC Peering with Amazon GameLift Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
 #'
 #' @export
 create_vpc_peering_connection <- function (FleetId, PeerVpcAwsAccountId, 
@@ -828,8 +809,6 @@ create_vpc_peering_connection <- function (FleetId, PeerVpcAwsAccountId,
 #' Deletes an alias
 #'
 #' Deletes an alias. This action removes all record of the alias. Game clients attempting to access a server process using the deleted alias receive an error. To delete an alias, specify the alias ID to be deleted.
-#' 
-#' Alias-related operations include:
 #' 
 #' -   CreateAlias
 #' 
@@ -871,8 +850,6 @@ delete_alias <- function (AliasId)
 #' 
 #' To delete a build, specify its ID. Deleting a build does not affect the status of any active fleets using the build, but you can no longer create new fleets with the deleted build.
 #' 
-#' Build-related operations include:
-#' 
 #' -   CreateBuild
 #' 
 #' -   ListBuilds
@@ -910,8 +887,6 @@ delete_build <- function (BuildId)
 #' Deletes everything related to a fleet. Before deleting a fleet, you must set the fleet\'s desired capacity to zero. See UpdateFleetCapacity.
 #' 
 #' This action removes the fleet\'s resources and the fleet record. Once a fleet is deleted, you can no longer use that fleet.
-#' 
-#' Fleet-related operations include:
 #' 
 #' -   CreateFleet
 #' 
@@ -977,8 +952,6 @@ delete_fleet <- function (FleetId)
 #'
 #' Deletes a game session queue. This action means that any StartGameSessionPlacement requests that reference this queue will fail. To delete a queue, specify the queue name.
 #' 
-#' Queue-related operations include:
-#' 
 #' -   CreateGameSessionQueue
 #' 
 #' -   DescribeGameSessionQueues
@@ -1013,8 +986,6 @@ delete_game_session_queue <- function (Name)
 #'
 #' Permanently removes a FlexMatch matchmaking configuration. To delete, specify the configuration name. A matchmaking configuration cannot be deleted if it is being used in any active matchmaking tickets.
 #' 
-#' Operations related to match configurations and rule sets include:
-#' 
 #' -   CreateMatchmakingConfiguration
 #' 
 #' -   DescribeMatchmakingConfigurations
@@ -1028,6 +999,8 @@ delete_game_session_queue <- function (Name)
 #' -   DescribeMatchmakingRuleSets
 #' 
 #' -   ValidateMatchmakingRuleSet
+#' 
+#' -   DeleteMatchmakingRuleSet
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1051,13 +1024,59 @@ delete_matchmaking_configuration <- function (Name)
     return(response)
 }
 
+#' Deletes an existing matchmaking rule set
+#'
+#' Deletes an existing matchmaking rule set. To delete the rule set, provide the rule set name. Rule sets cannot be deleted if they are currently being used by a matchmaking configuration.
+#' 
+#' **Learn more**
+#' 
+#' -   [Build a Rule Set](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-rulesets.html)
+#' 
+#' **Related operations**
+#' 
+#' -   CreateMatchmakingConfiguration
+#' 
+#' -   DescribeMatchmakingConfigurations
+#' 
+#' -   UpdateMatchmakingConfiguration
+#' 
+#' -   DeleteMatchmakingConfiguration
+#' 
+#' -   CreateMatchmakingRuleSet
+#' 
+#' -   DescribeMatchmakingRuleSets
+#' 
+#' -   ValidateMatchmakingRuleSet
+#' 
+#' -   DeleteMatchmakingRuleSet
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_matchmaking_rule_set(
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @param Name &#91;required&#93; Unique identifier for a matchmaking rule set to be deleted. (Note: The rule set name is different from the optional \"name\" field in the rule set body.)
+#'
+#' @export
+delete_matchmaking_rule_set <- function (Name) 
+{
+    op <- new_operation(name = "DeleteMatchmakingRuleSet", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_matchmaking_rule_set_input(Name = Name)
+    output <- delete_matchmaking_rule_set_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Deletes a fleet scaling policy
 #'
 #' Deletes a fleet scaling policy. This action means that the policy is no longer in force and removes all record of it. To delete a scaling policy, specify both the scaling policy name and the fleet ID it is associated with.
 #' 
 #' To temporarily suspend scaling policies, call StopFleetActions. This operation suspends all policies for the fleet.
-#' 
-#' Operations related to fleet capacity scaling include:
 #' 
 #' -   DescribeFleetCapacity
 #' 
@@ -1107,8 +1126,6 @@ delete_scaling_policy <- function (Name, FleetId)
 #'
 #' Cancels a pending VPC peering authorization for the specified VPC. If the authorization has already been used to create a peering connection, call DeleteVpcPeeringConnection to remove the connection.
 #' 
-#' VPC peering connection operations include:
-#' 
 #' -   CreateVpcPeeringAuthorization
 #' 
 #' -   DescribeVpcPeeringAuthorizations
@@ -1130,7 +1147,7 @@ delete_scaling_policy <- function (Name, FleetId)
 #' ```
 #'
 #' @param GameLiftAwsAccountId &#91;required&#93; Unique identifier for the AWS account that you use to manage your Amazon GameLift fleet. You can find your Account ID in the AWS Management Console under account settings.
-#' @param PeerVpcId &#91;required&#93; Unique identifier for a VPC with resources to be accessed by your Amazon GameLift fleet. The VPC must be in the same region where your fleet is deployed. To get VPC information, including IDs, use the Virtual Private Cloud service tools, including the VPC Dashboard in the AWS Management Console.
+#' @param PeerVpcId &#91;required&#93; Unique identifier for a VPC with resources to be accessed by your Amazon GameLift fleet. The VPC must be in the same region where your fleet is deployed. Look up a VPC ID using the [VPC Dashboard](https://console.aws.amazon.com/vpc/) in the AWS Management Console. Learn more about VPC peering in [VPC Peering with Amazon GameLift Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
 #'
 #' @export
 delete_vpc_peering_authorization <- function (GameLiftAwsAccountId, 
@@ -1152,8 +1169,6 @@ delete_vpc_peering_authorization <- function (GameLiftAwsAccountId,
 #' Removes a VPC peering connection. To delete the connection, you must have a valid authorization for the VPC peering connection that you want to delete. You can check for an authorization by calling DescribeVpcPeeringAuthorizations or request a new one using CreateVpcPeeringAuthorization.
 #' 
 #' Once a valid authorization exists, call this operation from the AWS account that is used to manage the Amazon GameLift fleets. Identify the connection to delete by the connection ID and fleet ID. If successful, the connection is removed.
-#' 
-#' VPC peering connection operations include:
 #' 
 #' -   CreateVpcPeeringAuthorization
 #' 
@@ -1198,8 +1213,6 @@ delete_vpc_peering_connection <- function (FleetId, VpcPeeringConnectionId)
 #' 
 #' To get alias properties, specify the alias ID. If successful, the requested alias record is returned.
 #' 
-#' Alias-related operations include:
-#' 
 #' -   CreateAlias
 #' 
 #' -   ListAliases
@@ -1237,8 +1250,6 @@ describe_alias <- function (AliasId)
 #' Retrieves properties for a build
 #'
 #' Retrieves properties for a build. To request a build record, specify a build ID. If successful, an object containing the build properties is returned.
-#' 
-#' Build-related operations include:
 #' 
 #' -   CreateBuild
 #' 
@@ -1281,8 +1292,6 @@ describe_build <- function (BuildId)
 #' -   current usage level for the AWS account
 #' 
 #' Service limits vary depending on region. Available regions for Amazon GameLift can be found in the AWS Management Console for Amazon GameLift (see the drop-down list in the upper right corner).
-#' 
-#' Fleet-related operations include:
 #' 
 #' -   CreateFleet
 #' 
@@ -1349,8 +1358,6 @@ describe_ec2_instance_limits <- function (EC2InstanceType = NULL)
 #' Retrieves fleet properties, including metadata, status, and configuration, for one or more fleets. You can request attributes for all fleets, or specify a list of one or more fleet IDs. When requesting multiple fleets, use the pagination parameters to retrieve results as a set of sequential pages. If successful, a FleetAttributes object is returned for each requested fleet ID. When specifying a list of fleet IDs, attribute objects are returned only for fleets that currently exist.
 #' 
 #' Some API actions may limit the number of fleet IDs allowed in one request. If a request exceeds this limit, the request fails and the error message includes the maximum allowed.
-#' 
-#' Fleet-related operations include:
 #' 
 #' -   CreateFleet
 #' 
@@ -1426,8 +1433,6 @@ describe_fleet_attributes <- function (FleetIds = NULL, Limit = NULL,
 #' 
 #' Some API actions may limit the number of fleet IDs allowed in one request. If a request exceeds this limit, the request fails and the error message includes the maximum allowed.
 #' 
-#' Fleet-related operations include:
-#' 
 #' -   CreateFleet
 #' 
 #' -   ListFleets
@@ -1499,8 +1504,6 @@ describe_fleet_capacity <- function (FleetIds = NULL, Limit = NULL,
 #' Retrieves entries from the specified fleet's event log
 #'
 #' Retrieves entries from the specified fleet\'s event log. You can specify a time range to limit the result set. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, a collection of event log entries matching the request are returned.
-#' 
-#' Fleet-related operations include:
 #' 
 #' -   CreateFleet
 #' 
@@ -1576,8 +1579,6 @@ describe_fleet_events <- function (FleetId, StartTime = NULL,
 #'
 #' Retrieves the inbound connection permissions for a fleet. Connection permissions include a range of IP addresses and port settings that incoming traffic can use to access server processes in the fleet. To get a fleet\'s inbound connection permissions, specify a fleet ID. If successful, a collection of IpPermission objects is returned for the requested fleet ID. If the requested fleet has been deleted, the result set is empty.
 #' 
-#' Fleet-related operations include:
-#' 
 #' -   CreateFleet
 #' 
 #' -   ListFleets
@@ -1643,8 +1644,6 @@ describe_fleet_port_settings <- function (FleetId)
 #' Retrieves utilization statistics for one or more fleets. You can request utilization data for all fleets, or specify a list of one or more fleet IDs. When requesting multiple fleets, use the pagination parameters to retrieve results as a set of sequential pages. If successful, a FleetUtilization object is returned for each requested fleet ID. When specifying a list of fleet IDs, utilization objects are returned only for fleets that currently exist.
 #' 
 #' Some API actions may limit the number of fleet IDs allowed in one request. If a request exceeds this limit, the request fails and the error message includes the maximum allowed.
-#' 
-#' Fleet-related operations include:
 #' 
 #' -   CreateFleet
 #' 
@@ -1720,8 +1719,6 @@ describe_fleet_utilization <- function (FleetIds = NULL, Limit = NULL,
 #' 
 #' To get game session record(s), specify just one of the following: game session ID, fleet ID, or alias ID. You can filter this request by game session status. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, a GameSessionDetail object is returned for each session matching the request.
 #' 
-#' Game-session-related operations include:
-#' 
 #' -   CreateGameSession
 #' 
 #' -   DescribeGameSessions
@@ -1781,8 +1778,6 @@ describe_game_session_details <- function (FleetId = NULL, GameSessionId = NULL,
 #'
 #' Retrieves properties and current status of a game session placement request. To get game session placement details, specify the placement ID. If successful, a GameSessionPlacement object is returned.
 #' 
-#' Game-session-related operations include:
-#' 
 #' -   CreateGameSession
 #' 
 #' -   DescribeGameSessions
@@ -1829,8 +1824,6 @@ describe_game_session_placement <- function (PlacementId)
 #'
 #' Retrieves the properties for one or more game session queues. When requesting multiple queues, use the pagination parameters to retrieve results as a set of sequential pages. If successful, a GameSessionQueue object is returned for each requested queue. When specifying a list of queues, objects are returned only for queues that currently exist in the region.
 #' 
-#' Queue-related operations include:
-#' 
 #' -   CreateGameSessionQueue
 #' 
 #' -   DescribeGameSessionQueues
@@ -1876,8 +1869,6 @@ describe_game_session_queues <- function (Names = NULL, Limit = NULL,
 #' To get game sessions, specify one of the following: game session ID, fleet ID, or alias ID. You can filter this request by game session status. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, a GameSession object is returned for each game session matching the request.
 #' 
 #' *Available in Amazon GameLift Local.*
-#' 
-#' Game-session-related operations include:
 #' 
 #' -   CreateGameSession
 #' 
@@ -1978,8 +1969,6 @@ describe_instances <- function (FleetId, InstanceId = NULL, Limit = NULL,
 #' 
 #' To request matchmaking tickets, provide a list of up to 10 ticket IDs. If the request is successful, a ticket object is returned for each requested ID that currently exists.
 #' 
-#' Matchmaking-related operations include:
-#' 
 #' -   StartMatchmaking
 #' 
 #' -   DescribeMatchmaking
@@ -2018,8 +2007,6 @@ describe_matchmaking <- function (TicketIds)
 #'
 #' Retrieves the details of FlexMatch matchmaking configurations. with this operation, you have the following options: (1) retrieve all existing configurations, (2) provide the names of one or more configurations to retrieve, or (3) retrieve all configurations that use a specified rule set name. When requesting multiple items, use the pagination parameters to retrieve results as a set of sequential pages. If successful, a configuration is returned for each requested name. When specifying a list of names, only configurations that currently exist are returned.
 #' 
-#' Operations related to match configurations and rule sets include:
-#' 
 #' -   CreateMatchmakingConfiguration
 #' 
 #' -   DescribeMatchmakingConfigurations
@@ -2033,6 +2020,8 @@ describe_matchmaking <- function (TicketIds)
 #' -   DescribeMatchmakingRuleSets
 #' 
 #' -   ValidateMatchmakingRuleSet
+#' 
+#' -   DeleteMatchmakingRuleSet
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -2070,7 +2059,11 @@ describe_matchmaking_configurations <- function (Names = NULL,
 #'
 #' Retrieves the details for FlexMatch matchmaking rule sets. You can request all existing rule sets for the region, or provide a list of one or more rule set names. When requesting multiple items, use the pagination parameters to retrieve results as a set of sequential pages. If successful, a rule set is returned for each requested name.
 #' 
-#' Operations related to match configurations and rule sets include:
+#' **Learn more**
+#' 
+#' -   [Build a Rule Set](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-rulesets.html)
+#' 
+#' **Related operations**
 #' 
 #' -   CreateMatchmakingConfiguration
 #' 
@@ -2085,6 +2078,8 @@ describe_matchmaking_configurations <- function (Names = NULL,
 #' -   DescribeMatchmakingRuleSets
 #' 
 #' -   ValidateMatchmakingRuleSet
+#' 
+#' -   DeleteMatchmakingRuleSet
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -2097,7 +2092,7 @@ describe_matchmaking_configurations <- function (Names = NULL,
 #' )
 #' ```
 #'
-#' @param Names Unique identifier for a matchmaking rule set. This name is used to identify the rule set associated with a matchmaking configuration.
+#' @param Names List of one or more matchmaking rule set names to retrieve details for. (Note: The rule set name is different from the optional \"name\" field in the rule set body.)
 #' @param Limit Maximum number of results to return. Use this parameter with `NextToken` to get results as a set of sequential pages.
 #' @param NextToken Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To start at the beginning of the result set, do not specify a value.
 #'
@@ -2123,8 +2118,6 @@ describe_matchmaking_rule_sets <- function (Names = NULL, Limit = NULL,
 #' To get game session record(s), specify only one of the following: a player session ID, a game session ID, or a player ID. You can filter this request by player session status. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, a PlayerSession object is returned for each session matching the request.
 #' 
 #' *Available in Amazon GameLift Local.*
-#' 
-#' Player-session-related operations include:
 #' 
 #' -   CreatePlayerSession
 #' 
@@ -2190,8 +2183,6 @@ describe_player_sessions <- function (GameSessionId = NULL, PlayerId = NULL,
 #' Retrieves the current run-time configuration for the specified fleet
 #'
 #' Retrieves the current run-time configuration for the specified fleet. The run-time configuration tells Amazon GameLift how to launch server processes on instances in the fleet.
-#' 
-#' Fleet-related operations include:
 #' 
 #' -   CreateFleet
 #' 
@@ -2261,8 +2252,6 @@ describe_runtime_configuration <- function (FleetId)
 #' 
 #' A fleet may have all of its scaling policies suspended (StopFleetActions). This action does not affect the status of the scaling policies, which remains ACTIVE. To see whether a fleet\'s scaling policies are in force or suspended, call DescribeFleetAttributes and check the stopped actions.
 #' 
-#' Operations related to fleet capacity scaling include:
-#' 
 #' -   DescribeFleetCapacity
 #' 
 #' -   UpdateFleetCapacity
@@ -2331,8 +2320,6 @@ describe_scaling_policies <- function (FleetId, StatusFilter = NULL,
 #'
 #' Retrieves valid VPC peering authorizations that are pending for the AWS account. This operation returns all VPC peering authorizations and requests for peering. This includes those initiated and received by this account.
 #' 
-#' VPC peering connection operations include:
-#' 
 #' -   CreateVpcPeeringAuthorization
 #' 
 #' -   DescribeVpcPeeringAuthorizations
@@ -2368,8 +2355,6 @@ describe_vpc_peering_authorizations <- function ()
 #' Retrieves information on VPC peering connections. Use this operation to get peering information for all fleets or for one specific fleet ID.
 #' 
 #' To retrieve connection information, call this operation from the AWS account that is used to manage the Amazon GameLift fleets. Specify a fleet ID or leave the parameter empty to retrieve all connection records. If successful, the retrieved information includes both active and pending connections. Active connections identify the IpV4 CIDR block that the VPC uses to connect.
-#' 
-#' VPC peering connection operations include:
 #' 
 #' -   CreateVpcPeeringAuthorization
 #' 
@@ -2409,9 +2394,7 @@ describe_vpc_peering_connections <- function (FleetId = NULL)
 #'
 #' Retrieves the location of stored game session logs for a specified game session. When a game session is terminated, Amazon GameLift automatically stores the logs in Amazon S3 and retains them for 14 days. Use this URL to download the logs.
 #' 
-#' See the [AWS Service Limits](http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_gamelift) page for maximum log file sizes. Log files that exceed this limit are not saved.
-#' 
-#' Game-session-related operations include:
+#' See the [AWS Service Limits](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_gamelift) page for maximum log file sizes. Log files that exceed this limit are not saved.
 #' 
 #' -   CreateGameSession
 #' 
@@ -2459,9 +2442,9 @@ get_game_session_log_url <- function (GameSessionId)
 #'
 #' Requests remote access to a fleet instance. Remote access is useful for debugging, gathering benchmarking data, or watching activity in real time.
 #' 
-#' Access requires credentials that match the operating system of the instance. For a Windows instance, Amazon GameLift returns a user name and password as strings for use with a Windows Remote Desktop client. For a Linux instance, Amazon GameLift returns a user name and RSA private key, also as strings, for use with an SSH client. The private key must be saved in the proper format to a `.pem` file before using. If you\'re making this request using the AWS CLI, saving the secret can be handled as part of the GetInstanceAccess request. (See the example later in this topic). For more information on remote access, see [Remotely Accessing an Instance](http://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-remote-access.html).
+#' Access requires credentials that match the operating system of the instance. For a Windows instance, Amazon GameLift returns a user name and password as strings for use with a Windows Remote Desktop client. For a Linux instance, Amazon GameLift returns a user name and RSA private key, also as strings, for use with an SSH client. The private key must be saved in the proper format to a `.pem` file before using. If you\'re making this request using the AWS CLI, saving the secret can be handled as part of the GetInstanceAccess request. (See the example later in this topic). For more information on remote access, see [Remotely Accessing an Instance](https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-remote-access.html).
 #' 
-#' To request access to a specific instance, specify the IDs of the instance and the fleet it belongs to. If successful, an InstanceAccess object is returned containing the instance\'s IP address and a set of credentials.
+#' To request access to a specific instance, specify the IDs of both the instance and the fleet it belongs to. You can retrieve a fleet\'s instance IDs by calling DescribeInstances. If successful, an InstanceAccess object is returned containing the instance\'s IP address and a set of credentials.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -2492,8 +2475,6 @@ get_instance_access <- function (FleetId, InstanceId)
 #' Retrieves all aliases for this AWS account. You can filter the result set by alias name and/or routing strategy type. Use the pagination parameters to retrieve results in sequential pages.
 #' 
 #' Returned aliases are not listed in any particular order.
-#' 
-#' Alias-related operations include:
 #' 
 #' -   CreateAlias
 #' 
@@ -2549,8 +2530,6 @@ list_aliases <- function (RoutingStrategyType = NULL, Name = NULL,
 #' 
 #' Build records are not listed in any particular order.
 #' 
-#' Build-related operations include:
-#' 
 #' -   CreateBuild
 #' 
 #' -   ListBuilds
@@ -2601,8 +2580,6 @@ list_builds <- function (Status = NULL, Limit = NULL, NextToken = NULL)
 #' Retrieves a collection of fleet records for this AWS account. You can filter the result set by build ID. Use the pagination parameters to retrieve results in sequential pages.
 #' 
 #' Fleet records are not listed in any particular order.
-#' 
-#' Fleet-related operations include:
 #' 
 #' -   CreateFleet
 #' 
@@ -2677,7 +2654,7 @@ list_fleets <- function (BuildId = NULL, Limit = NULL, NextToken = NULL)
 #' 
 #' You can temporarily suspend all scaling policies for a fleet by calling StopFleetActions with the fleet action AUTO\_SCALING. To resume scaling policies, call StartFleetActions with the same fleet action. To stop just one scaling policy\--or to permanently remove it, you must delete the policy with DeleteScalingPolicy.
 #' 
-#' Learn more about how to work with auto-scaling in [Set Up Fleet Automatic Scaling](http://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-autoscaling.html).
+#' Learn more about how to work with auto-scaling in [Set Up Fleet Automatic Scaling](https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-autoscaling.html).
 #' 
 #' **Target-based policy**
 #' 
@@ -2702,8 +2679,6 @@ list_fleets <- function (BuildId = NULL, Limit = NULL, NextToken = NULL)
 #' If `[PercentIdleInstances]` is `[GreaterThanThreshold]` `[20]` for `[15]` minutes, then `[PercentChangeInCapacity]` to/by `[10]`.
 #' 
 #' To create or update a scaling policy, specify a unique combination of name and fleet ID, and set the policy type to \"RuleBased\". Specify the parameter values for a policy rule statement. On a successful request, the policy name is returned. Scaling policies are automatically in force as soon as they\'re successfully created. If the fleet\'s auto-scaling actions are temporarily suspended, the new policy will be in force once the fleet actions are restarted.
-#' 
-#' Operations related to fleet capacity scaling include:
 #' 
 #' -   DescribeFleetCapacity
 #' 
@@ -2756,7 +2731,7 @@ list_fleets <- function (BuildId = NULL, Limit = NULL, NextToken = NULL)
 #' @param Threshold Metric value used to trigger a scaling event.
 #' @param ComparisonOperator Comparison operator to use when measuring the metric against the threshold value.
 #' @param EvaluationPeriods Length of time (in minutes) the metric must be at or beyond the threshold before a scaling event is triggered.
-#' @param MetricName &#91;required&#93; Name of the Amazon GameLift-defined metric that is used to trigger a scaling adjustment. For detailed descriptions of fleet metrics, see [Monitor Amazon GameLift with Amazon CloudWatch](http://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html).
+#' @param MetricName &#91;required&#93; Name of the Amazon GameLift-defined metric that is used to trigger a scaling adjustment. For detailed descriptions of fleet metrics, see [Monitor Amazon GameLift with Amazon CloudWatch](https://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html).
 #' 
 #' -   **ActivatingGameSessions** \-- Game sessions in the process of being created.
 #' 
@@ -2834,8 +2809,6 @@ request_upload_credentials <- function (BuildId)
 #'
 #' Retrieves the fleet ID that a specified alias is currently pointing to.
 #' 
-#' Alias-related operations include:
-#' 
 #' -   CreateAlias
 #' 
 #' -   ListAliases
@@ -2893,8 +2866,6 @@ resolve_alias <- function (AliasId)
 #' To search or sort, specify either a fleet ID or an alias ID, and provide a search filter expression, a sort expression, or both. If successful, a collection of GameSession objects matching the request is returned. Use the pagination parameters to retrieve results as a set of sequential pages.
 #' 
 #' You can search for game sessions one fleet at a time only. To find game sessions across multiple fleets, you must search each fleet separately and combine the results. This search feature finds only game sessions that are in `ACTIVE` status. To locate games in statuses other than active, use DescribeGameSessionDetails.
-#' 
-#' Game-session-related operations include:
 #' 
 #' -   CreateGameSession
 #' 
@@ -2988,8 +2959,6 @@ search_game_sessions <- function (FleetId = NULL, AliasId = NULL,
 #' 
 #' To start fleet actions, specify the fleet ID and the type of actions to restart. When auto-scaling fleet actions are restarted, Amazon GameLift once again initiates scaling events as triggered by the fleet\'s scaling policies. If actions on the fleet were never stopped, this operation will have no effect. You can view a fleet\'s stopped actions using DescribeFleetAttributes.
 #' 
-#' Operations related to fleet capacity scaling include:
-#' 
 #' -   DescribeFleetCapacity
 #' 
 #' -   UpdateFleetCapacity
@@ -3052,15 +3021,13 @@ start_fleet_actions <- function (FleetId, Actions)
 #' 
 #' -   A unique ID (such as a UUID) for the placement. You use this ID to track the status of the placement request
 #' 
-#' -   (Optional) A set of IDs and player data for each player you want to join to the new game session
+#' -   (Optional) A set of player data and a unique player ID for each player that you are joining to the new game session (player data is optional, but if you include it, you must also provide a unique ID for each player)
 #' 
 #' -   Latency data for all players (if you want to optimize game play for the players)
 #' 
 #' If successful, a new game session placement is created.
 #' 
 #' To track the status of a placement request, call DescribeGameSessionPlacement and check the request\'s status. If the status is `FULFILLED`, a new game session has been created and a game session ARN and region are referenced. If the placement request times out, you can resubmit the request or retry it with a different queue.
-#' 
-#' Game-session-related operations include:
 #' 
 #' -   CreateGameSession
 #' 
@@ -3114,12 +3081,12 @@ start_fleet_actions <- function (FleetId, Actions)
 #'
 #' @param PlacementId &#91;required&#93; Unique identifier to assign to the new game session placement. This value is developer-defined. The value must be unique across all regions and cannot be reused unless you are resubmitting a canceled or timed-out placement request.
 #' @param GameSessionQueueName &#91;required&#93; Name of the queue to use to place the new game session.
-#' @param GameProperties Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to a game server process in the GameSession object with a request to start a new game session (see [Start a Game Session](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
+#' @param GameProperties Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to a game server process in the GameSession object with a request to start a new game session (see [Start a Game Session](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 #' @param MaximumPlayerSessionCount &#91;required&#93; Maximum number of players that can be connected simultaneously to the game session.
 #' @param GameSessionName Descriptive label that is associated with a game session. Session names do not need to be unique.
 #' @param PlayerLatencies Set of values, expressed in milliseconds, indicating the amount of latency that a player experiences when connected to AWS regions. This information is used to try to place the new game session where it can offer the best possible gameplay experience for the players.
 #' @param DesiredPlayerSessions Set of information on each player to create a player session for.
-#' @param GameSessionData Set of custom game session properties, formatted as a single string value. This data is passed to a game server process in the GameSession object with a request to start a new game session (see [Start a Game Session](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
+#' @param GameSessionData Set of custom game session properties, formatted as a single string value. This data is passed to a game server process in the GameSession object with a request to start a new game session (see [Start a Game Session](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 #'
 #' @export
 start_game_session_placement <- function (PlacementId, GameSessionQueueName, 
@@ -3144,11 +3111,9 @@ start_game_session_placement <- function (PlacementId, GameSessionQueueName,
 #'
 #' Finds new players to fill open slots in an existing game session. This operation can be used to add players to matched games that start with fewer than the maximum number of players or to replace players when they drop out. By backfilling with the same matchmaker used to create the original match, you ensure that new players meet the match criteria and maintain a consistent experience throughout the game session. You can backfill a match anytime after a game session has been created.
 #' 
-#' To request a match backfill, specify a unique ticket ID, the existing game session\'s ARN, a matchmaking configuration, and a set of data that describes all current players in the game session. If successful, a match backfill ticket is created and returned with status set to QUEUED. The ticket is placed in the matchmaker\'s ticket pool and processed. Track the status of the ticket to respond as needed. For more detail how to set up backfilling, see [Backfill Existing Games with FlexMatch](http://docs.aws.amazon.com/gamelift/latest/developerguide/match-backfill.html).
+#' To request a match backfill, specify a unique ticket ID, the existing game session\'s ARN, a matchmaking configuration, and a set of data that describes all current players in the game session. If successful, a match backfill ticket is created and returned with status set to QUEUED. The ticket is placed in the matchmaker\'s ticket pool and processed. Track the status of the ticket to respond as needed. For more detail how to set up backfilling, see [Backfill Existing Games with FlexMatch](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-backfill.html).
 #' 
-#' The process of finding backfill matches is essentially identical to the initial matchmaking process. The matchmaker searches the pool and groups tickets together to form potential matches, allowing only one backfill ticket per potential match. Once the a match is formed, the matchmaker creates player sessions for the new players. All tickets in the match are updated with the game session\'s connection information, and the GameSession object is updated to include matchmaker data on the new players. For more detail on how match backfill requests are processed, see [How Amazon GameLift FlexMatch Works](http://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html).
-#' 
-#' Matchmaking-related operations include:
+#' The process of finding backfill matches is essentially identical to the initial matchmaking process. The matchmaker searches the pool and groups tickets together to form potential matches, allowing only one backfill ticket per potential match. Once the a match is formed, the matchmaker creates player sessions for the new players. All tickets in the match are updated with the game session\'s connection information, and the GameSession object is updated to include matchmaker data on the new players. For more detail on how match backfill requests are processed, see [How Amazon GameLift FlexMatch Works](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html).
 #' 
 #' -   StartMatchmaking
 #' 
@@ -3192,10 +3157,10 @@ start_game_session_placement <- function (PlacementId, GameSessionQueueName,
 #'
 #' @param TicketId Unique identifier for a matchmaking ticket. If no ticket ID is specified here, Amazon GameLift will generate one in the form of a UUID. Use this identifier to track the match backfill ticket status and retrieve match results.
 #' @param ConfigurationName &#91;required&#93; Name of the matchmaker to use for this request. The name of the matchmaker that was used with the original game session is listed in the GameSession object, `MatchmakerData` property. This property contains a matchmaking configuration ARN value, which includes the matchmaker name. (In the ARN value \"arn:aws:gamelift:us-west-2:111122223333:matchmakingconfiguration/MM-4v4\", the matchmaking configuration name is \"MM-4v4\".) Use only the name for this parameter.
-#' @param GameSessionArn &#91;required&#93; Amazon Resource Name ([ARN](http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html)) that is assigned to a game session and uniquely identifies it.
+#' @param GameSessionArn &#91;required&#93; Amazon Resource Name ([ARN](https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html)) that is assigned to a game session and uniquely identifies it.
 #' @param Players &#91;required&#93; Match information on all players that are currently assigned to the game session. This information is used by the matchmaker to find new players and add them to the existing game.
 #' 
-#' -   PlayerID, PlayerAttributes, Team -\\\\- This information is maintained in the GameSession object, `MatchmakerData` property, for all players who are currently assigned to the game session. The matchmaker data is in JSON syntax, formatted as a string. For more details, see [Match Data](http://docs.aws.amazon.com/gamelift/latest/developerguide/match-server.html#match-server-data).
+#' -   PlayerID, PlayerAttributes, Team -\\\\- This information is maintained in the GameSession object, `MatchmakerData` property, for all players who are currently assigned to the game session. The matchmaker data is in JSON syntax, formatted as a string. For more details, see [Match Data](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-server.html#match-server-data).
 #' 
 #' -   LatencyInMs -\\\\- If the matchmaker uses player latency, include a latency value, in milliseconds, for the region that the game session is currently in. Do not include latency values for any other region.
 #'
@@ -3217,7 +3182,7 @@ start_match_backfill <- function (TicketId = NULL, ConfigurationName,
 
 #' Uses FlexMatch to create a game match for a group of players based on custom matchmaking rules, and starts a new game for the matched players
 #'
-#' Uses FlexMatch to create a game match for a group of players based on custom matchmaking rules, and starts a new game for the matched players. Each matchmaking request specifies the type of match to build (team configuration, rules for an acceptable match, etc.). The request also specifies the players to find a match for and where to host the new game session for optimal performance. A matchmaking request might start with a single player or a group of players who want to play together. FlexMatch finds additional players as needed to fill the match. Match type, rules, and the queue used to place a new game session are defined in a `MatchmakingConfiguration`. For complete information on setting up and using FlexMatch, see the topic [Adding FlexMatch to Your Game](http://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html).
+#' Uses FlexMatch to create a game match for a group of players based on custom matchmaking rules, and starts a new game for the matched players. Each matchmaking request specifies the type of match to build (team configuration, rules for an acceptable match, etc.). The request also specifies the players to find a match for and where to host the new game session for optimal performance. A matchmaking request might start with a single player or a group of players who want to play together. FlexMatch finds additional players as needed to fill the match. Match type, rules, and the queue used to place a new game session are defined in a `MatchmakingConfiguration`. For complete information on setting up and using FlexMatch, see the topic [Adding FlexMatch to Your Game](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html).
 #' 
 #' To start matchmaking, provide a unique ticket ID, specify a matchmaking configuration, and include the players to be matched. You must also include a set of player attributes relevant for the matchmaking configuration. If successful, a matchmaking ticket is returned with status set to `QUEUED`. Track the status of the ticket to respond as needed and acquire game session connection information for successfully completed matches.
 #' 
@@ -3238,8 +3203,6 @@ start_match_backfill <- function (TicketId = NULL, ConfigurationName,
 #' 4.  Once a match is proposed and accepted, the matchmaking tickets move into status `PLACING`. FlexMatch locates resources for a new game session using the game session queue (set in the matchmaking configuration) and creates the game session based on the match data.
 #' 
 #' 5.  When the match is successfully placed, the matchmaking tickets move into `COMPLETED` status. Connection information (including game session endpoint and player session) is added to the matchmaking tickets. Matched players can use the connection information to join the game.
-#' 
-#' Matchmaking-related operations include:
 #' 
 #' -   StartMatchmaking
 #' 
@@ -3335,8 +3298,6 @@ stop_fleet_actions <- function (FleetId, Actions)
 #'
 #' Cancels a game session placement that is in `PENDING` status. To stop a placement, provide the placement ID values. If successful, the placement is moved to `CANCELLED` status.
 #' 
-#' Game-session-related operations include:
-#' 
 #' -   CreateGameSession
 #' 
 #' -   DescribeGameSessions
@@ -3383,8 +3344,6 @@ stop_game_session_placement <- function (PlacementId)
 #'
 #' Cancels a matchmaking ticket that is currently being processed. To stop the matchmaking operation, specify the ticket ID. If successful, work on the ticket is stopped, and the ticket status is changed to `CANCELLED`.
 #' 
-#' Matchmaking-related operations include:
-#' 
 #' -   StartMatchmaking
 #' 
 #' -   DescribeMatchmaking
@@ -3420,8 +3379,6 @@ stop_matchmaking <- function (TicketId)
 #' Updates properties for an alias
 #'
 #' Updates properties for an alias. To update properties, specify the alias ID to be updated and provide the information to be changed. To reassign an alias to another fleet, provide an updated routing strategy. If successful, the updated alias record is returned.
-#' 
-#' Alias-related operations include:
 #' 
 #' -   CreateAlias
 #' 
@@ -3473,8 +3430,6 @@ update_alias <- function (AliasId, Name = NULL, Description = NULL,
 #'
 #' Updates metadata in a build record, including the build name and version. To update the metadata, specify the build ID to update and provide the new values. If successful, a build object containing the updated metadata is returned.
 #' 
-#' Build-related operations include:
-#' 
 #' -   CreateBuild
 #' 
 #' -   ListBuilds
@@ -3515,8 +3470,6 @@ update_build <- function (BuildId, Name = NULL, Version = NULL)
 #' Updates fleet properties, including name and description, for a fleet
 #'
 #' Updates fleet properties, including name and description, for a fleet. To update metadata, specify the fleet ID and the property values that you want to change. If successful, the fleet ID for the updated fleet is returned.
-#' 
-#' Fleet-related operations include:
 #' 
 #' -   CreateFleet
 #' 
@@ -3610,8 +3563,6 @@ update_fleet_attributes <- function (FleetId, Name = NULL, Description = NULL,
 #' 
 #' To update fleet capacity, specify the fleet ID and the number of instances you want the fleet to host. If successful, Amazon GameLift starts or terminates instances so that the fleet\'s active instance count matches the desired instance count. You can view a fleet\'s current capacity information by calling DescribeFleetCapacity. If the desired instance count is higher than the instance type\'s limit, the \"Limit Exceeded\" exception occurs.
 #' 
-#' Fleet-related operations include:
-#' 
 #' -   CreateFleet
 #' 
 #' -   ListFleets
@@ -3683,8 +3634,6 @@ update_fleet_capacity <- function (FleetId, DesiredInstances = NULL,
 #' Updates port settings for a fleet
 #'
 #' Updates port settings for a fleet. To update settings, specify the fleet ID to be updated and list the permissions you want to update. List the permissions you want to add in `InboundPermissionAuthorizations`, and permissions you want to remove in `InboundPermissionRevocations`. Permissions to be removed must match existing fleet permissions. If successful, the fleet ID for the updated fleet is returned.
-#' 
-#' Fleet-related operations include:
 #' 
 #' -   CreateFleet
 #' 
@@ -3771,8 +3720,6 @@ update_fleet_port_settings <- function (FleetId, InboundPermissionAuthorizations
 #'
 #' Updates game session properties. This includes the session name, maximum player count, protection policy, which controls whether or not an active game session can be terminated during a scale-down event, and the player session creation policy, which controls whether or not new players can join the session. To update a game session, specify the game session ID and the values you want to change. If successful, an updated GameSession object is returned.
 #' 
-#' Game-session-related operations include:
-#' 
 #' -   CreateGameSession
 #' 
 #' -   DescribeGameSessions
@@ -3835,8 +3782,6 @@ update_game_session <- function (GameSessionId, MaximumPlayerSessionCount = NULL
 #'
 #' Updates settings for a game session queue, which determines how new game session requests in the queue are processed. To update settings, specify the queue name to be updated and provide the new settings. When updating destinations, provide a complete list of destinations.
 #' 
-#' Queue-related operations include:
-#' 
 #' -   CreateGameSessionQueue
 #' 
 #' -   DescribeGameSessionQueues
@@ -3888,8 +3833,6 @@ update_game_session_queue <- function (Name, TimeoutInSeconds = NULL,
 #'
 #' Updates settings for a FlexMatch matchmaking configuration. To update settings, specify the configuration name to be updated and provide the new settings.
 #' 
-#' Operations related to match configurations and rule sets include:
-#' 
 #' -   CreateMatchmakingConfiguration
 #' 
 #' -   DescribeMatchmakingConfigurations
@@ -3903,6 +3846,8 @@ update_game_session_queue <- function (Name, TimeoutInSeconds = NULL,
 #' -   DescribeMatchmakingRuleSets
 #' 
 #' -   ValidateMatchmakingRuleSet
+#' 
+#' -   DeleteMatchmakingRuleSet
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -3931,16 +3876,16 @@ update_game_session_queue <- function (Name, TimeoutInSeconds = NULL,
 #'
 #' @param Name &#91;required&#93; Unique identifier for a matchmaking configuration to update.
 #' @param Description Descriptive label that is associated with matchmaking configuration.
-#' @param GameSessionQueueArns Amazon Resource Name ([ARN](http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html)) that is assigned to a game session queue and uniquely identifies it. Format is `arn:aws:gamelift:<region>::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912`. These queues are used when placing game sessions for matches that are created with this matchmaking configuration. Queues can be located in any region.
+#' @param GameSessionQueueArns Amazon Resource Name ([ARN](https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html)) that is assigned to a game session queue and uniquely identifies it. Format is `arn:aws:gamelift:<region>::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912`. These queues are used when placing game sessions for matches that are created with this matchmaking configuration. Queues can be located in any region.
 #' @param RequestTimeoutSeconds Maximum duration, in seconds, that a matchmaking ticket can remain in process before timing out. Requests that time out can be resubmitted as needed.
 #' @param AcceptanceTimeoutSeconds Length of time (in seconds) to wait for players to accept a proposed match. If any player rejects the match or fails to accept before the timeout, the ticket continues to look for an acceptable match.
 #' @param AcceptanceRequired Flag that determines whether or not a match that was created with this configuration must be accepted by the matched players. To require acceptance, set to TRUE.
 #' @param RuleSetName Unique identifier for a matchmaking rule set to use with this configuration. A matchmaking configuration can only use rule sets that are defined in the same region.
-#' @param NotificationTarget SNS topic ARN that is set up to receive matchmaking notifications. See [Setting up Notifications for Matchmaking](http://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html) for more information.
+#' @param NotificationTarget SNS topic ARN that is set up to receive matchmaking notifications. See [Setting up Notifications for Matchmaking](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html) for more information.
 #' @param AdditionalPlayerCount Number of player slots in a match to keep open for future players. For example, if the configuration\'s rule set specifies a match for a single 12-person team, and the additional player count is set to 2, only 10 players are selected for the match.
 #' @param CustomEventData Information to attached to all events related to the matchmaking configuration.
-#' @param GameProperties Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to a game server process in the GameSession object with a request to start a new game session (see [Start a Game Session](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)). This information is added to the new GameSession object that is created for a successful match.
-#' @param GameSessionData Set of custom game session properties, formatted as a single string value. This data is passed to a game server process in the GameSession object with a request to start a new game session (see [Start a Game Session](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)). This information is added to the new GameSession object that is created for a successful match.
+#' @param GameProperties Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to a game server process in the GameSession object with a request to start a new game session (see [Start a Game Session](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)). This information is added to the new GameSession object that is created for a successful match.
+#' @param GameSessionData Set of custom game session properties, formatted as a single string value. This data is passed to a game server process in the GameSession object with a request to start a new game session (see [Start a Game Session](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)). This information is added to the new GameSession object that is created for a successful match.
 #'
 #' @export
 update_matchmaking_configuration <- function (Name, Description = NULL, 
@@ -3972,8 +3917,6 @@ update_matchmaking_configuration <- function (Name, Description = NULL,
 #' To update run-time configuration, specify the fleet ID and provide a `RuntimeConfiguration` object with the updated collection of server process configurations.
 #' 
 #' Each instance in a Amazon GameLift fleet checks regularly for an updated run-time configuration and changes how it launches server processes to comply with the latest version. Existing server processes are not affected by the update; they continue to run until they end, while Amazon GameLift simply adds new server processes to fit the current run-time configuration. As a result, the run-time configuration changes are applied gradually as existing processes shut down and new processes are launched in Amazon GameLift\'s normal process recycling activity.
-#' 
-#' Fleet-related operations include:
 #' 
 #' -   CreateFleet
 #' 
@@ -4050,9 +3993,13 @@ update_runtime_configuration <- function (FleetId, RuntimeConfiguration)
 
 #' Validates the syntax of a matchmaking rule or rule set
 #'
-#' Validates the syntax of a matchmaking rule or rule set. This operation checks that the rule set uses syntactically correct JSON and that it conforms to allowed property expressions. To validate syntax, provide a rule set string.
+#' Validates the syntax of a matchmaking rule or rule set. This operation checks that the rule set is using syntactically correct JSON and that it conforms to allowed property expressions. To validate syntax, provide a rule set JSON string.
 #' 
-#' Operations related to match configurations and rule sets include:
+#' **Learn more**
+#' 
+#' -   [Build a Rule Set](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-rulesets.html)
+#' 
+#' **Related operations**
 #' 
 #' -   CreateMatchmakingConfiguration
 #' 
@@ -4067,6 +4014,8 @@ update_runtime_configuration <- function (FleetId, RuntimeConfiguration)
 #' -   DescribeMatchmakingRuleSets
 #' 
 #' -   ValidateMatchmakingRuleSet
+#' 
+#' -   DeleteMatchmakingRuleSet
 #'
 #' @section Accepted Parameters:
 #' ```

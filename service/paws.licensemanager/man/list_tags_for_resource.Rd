@@ -4,9 +4,7 @@
 \alias{list_tags_for_resource}
 \title{Lists tags attached to a resource}
 \usage{
-list_tags_for_resource(
-  ResourceArn = "string"
-)
+list_tags_for_resource(ResourceArn)
 }
 \arguments{
 \item{ResourceArn}{[required] ARN for the resource.}
@@ -14,6 +12,10 @@ list_tags_for_resource(
 \description{
 Lists tags attached to a resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_tags_for_resource(
+  ResourceArn = "string"
+)
 }
+}
+

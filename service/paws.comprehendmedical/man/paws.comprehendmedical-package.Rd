@@ -6,9 +6,9 @@
 \alias{paws.comprehendmedical-package}
 \title{paws.comprehendmedical: AWS Comprehend Medical}
 \description{
-Comprehend Medical extracts structured information from
-unstructured clinical text. Use these actions to gain insight in your
-documents.
+Comprehend Medical extracts structured information
+    from unstructured clinical text. Use these actions to gain insight in
+    your documents.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

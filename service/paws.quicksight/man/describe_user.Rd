@@ -4,11 +4,7 @@
 \alias{describe_user}
 \title{Returns information about a user, given the user name}
 \usage{
-describe_user(
-  UserName = "string",
-  AwsAccountId = "string",
-  Namespace = "string"
-)
+describe_user(UserName, AwsAccountId, Namespace)
 }
 \arguments{
 \item{UserName}{[required] The name of the user that you want to describe.}
@@ -29,6 +25,12 @@ The response is a user object that contains the user's Amazon Resource Name (ARN
 
 \code{aws quicksight describe-user --aws-account-id=111122223333 --namespace=default --user-name=Pat }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_user(
+  UserName = "string",
+  AwsAccountId = "string",
+  Namespace = "string"
+)
 }
+}
+

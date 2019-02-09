@@ -34,7 +34,9 @@ allocate_connection_on_interconnect_output <- function (...)
         awsDevice = structure(logical(0), tags = list(type = "string", 
             deprecated = TRUE)), jumboFrameCapable = structure(logical(0), 
             tags = list(type = "boolean")), awsDeviceV2 = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))
+            tags = list(type = "string")), hasLogicalRedundancy = structure(logical(0), 
+            tags = list(type = "string", enum = c("unknown", 
+                "yes", "no")))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -69,7 +71,9 @@ allocate_hosted_connection_output <- function (...)
         awsDevice = structure(logical(0), tags = list(type = "string", 
             deprecated = TRUE)), jumboFrameCapable = structure(logical(0), 
             tags = list(type = "boolean")), awsDeviceV2 = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))
+            tags = list(type = "string")), hasLogicalRedundancy = structure(logical(0), 
+            tags = list(type = "string", enum = c("unknown", 
+                "yes", "no")))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -118,7 +122,8 @@ allocate_private_virtual_interface_output <- function (...)
         directConnectGatewayId = structure(logical(0), tags = list(type = "string")), 
         routeFilterPrefixes = structure(list(structure(list(cidr = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 
-            tags = list(type = "list")), bgpPeers = structure(list(structure(list(asn = structure(logical(0), 
+            tags = list(type = "list")), bgpPeers = structure(list(structure(list(bgpPeerId = structure(logical(0), 
+            tags = list(type = "string")), asn = structure(logical(0), 
             tags = list(type = "integer")), authKey = structure(logical(0), 
             tags = list(type = "string")), addressFamily = structure(logical(0), 
             tags = list(type = "string", enum = c("ipv4", "ipv6"))), 
@@ -183,7 +188,8 @@ allocate_public_virtual_interface_output <- function (...)
         directConnectGatewayId = structure(logical(0), tags = list(type = "string")), 
         routeFilterPrefixes = structure(list(structure(list(cidr = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 
-            tags = list(type = "list")), bgpPeers = structure(list(structure(list(asn = structure(logical(0), 
+            tags = list(type = "list")), bgpPeers = structure(list(structure(list(bgpPeerId = structure(logical(0), 
+            tags = list(type = "string")), asn = structure(logical(0), 
             tags = list(type = "integer")), authKey = structure(logical(0), 
             tags = list(type = "string")), addressFamily = structure(logical(0), 
             tags = list(type = "string", enum = c("ipv4", "ipv6"))), 
@@ -229,7 +235,9 @@ associate_connection_with_lag_output <- function (...)
         awsDevice = structure(logical(0), tags = list(type = "string", 
             deprecated = TRUE)), jumboFrameCapable = structure(logical(0), 
             tags = list(type = "boolean")), awsDeviceV2 = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))
+            tags = list(type = "string")), hasLogicalRedundancy = structure(logical(0), 
+            tags = list(type = "string", enum = c("unknown", 
+                "yes", "no")))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -261,7 +269,9 @@ associate_hosted_connection_output <- function (...)
         awsDevice = structure(logical(0), tags = list(type = "string", 
             deprecated = TRUE)), jumboFrameCapable = structure(logical(0), 
             tags = list(type = "boolean")), awsDeviceV2 = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))
+            tags = list(type = "string")), hasLogicalRedundancy = structure(logical(0), 
+            tags = list(type = "string", enum = c("unknown", 
+                "yes", "no")))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -301,7 +311,8 @@ associate_virtual_interface_output <- function (...)
         directConnectGatewayId = structure(logical(0), tags = list(type = "string")), 
         routeFilterPrefixes = structure(list(structure(list(cidr = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 
-            tags = list(type = "list")), bgpPeers = structure(list(structure(list(asn = structure(logical(0), 
+            tags = list(type = "list")), bgpPeers = structure(list(structure(list(bgpPeerId = structure(logical(0), 
+            tags = list(type = "string")), asn = structure(logical(0), 
             tags = list(type = "integer")), authKey = structure(logical(0), 
             tags = list(type = "string")), addressFamily = structure(logical(0), 
             tags = list(type = "string", enum = c("ipv4", "ipv6"))), 
@@ -416,7 +427,8 @@ create_bgp_peer_output <- function (...)
         directConnectGatewayId = structure(logical(0), tags = list(type = "string")), 
         routeFilterPrefixes = structure(list(structure(list(cidr = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 
-            tags = list(type = "list")), bgpPeers = structure(list(structure(list(asn = structure(logical(0), 
+            tags = list(type = "list")), bgpPeers = structure(list(structure(list(bgpPeerId = structure(logical(0), 
+            tags = list(type = "string")), asn = structure(logical(0), 
             tags = list(type = "integer")), authKey = structure(logical(0), 
             tags = list(type = "string")), addressFamily = structure(logical(0), 
             tags = list(type = "string", enum = c("ipv4", "ipv6"))), 
@@ -464,7 +476,9 @@ create_connection_output <- function (...)
         awsDevice = structure(logical(0), tags = list(type = "string", 
             deprecated = TRUE)), jumboFrameCapable = structure(logical(0), 
             tags = list(type = "boolean")), awsDeviceV2 = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))
+            tags = list(type = "string")), hasLogicalRedundancy = structure(logical(0), 
+            tags = list(type = "string", enum = c("unknown", 
+                "yes", "no")))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -542,7 +556,9 @@ create_interconnect_output <- function (...)
         tags = list(type = "string")), awsDevice = structure(logical(0), 
         tags = list(type = "string", deprecated = TRUE)), jumboFrameCapable = structure(logical(0), 
         tags = list(type = "boolean")), awsDeviceV2 = structure(logical(0), 
-        tags = list(type = "string"))), tags = list(type = "structure"))
+        tags = list(type = "string")), hasLogicalRedundancy = structure(logical(0), 
+        tags = list(type = "string", enum = c("unknown", "yes", 
+            "no")))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -589,10 +605,14 @@ create_lag_output <- function (...)
         awsDevice = structure(logical(0), tags = list(type = "string", 
             deprecated = TRUE)), jumboFrameCapable = structure(logical(0), 
             tags = list(type = "boolean")), awsDeviceV2 = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "string")), hasLogicalRedundancy = structure(logical(0), 
+            tags = list(type = "string", enum = c("unknown", 
+                "yes", "no")))), tags = list(type = "structure"))), 
         tags = list(type = "list")), allowsHostedConnections = structure(logical(0), 
         tags = list(type = "boolean")), jumboFrameCapable = structure(logical(0), 
-        tags = list(type = "boolean"))), tags = list(type = "structure"))
+        tags = list(type = "boolean")), hasLogicalRedundancy = structure(logical(0), 
+        tags = list(type = "string", enum = c("unknown", "yes", 
+            "no")))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -642,7 +662,8 @@ create_private_virtual_interface_output <- function (...)
         directConnectGatewayId = structure(logical(0), tags = list(type = "string")), 
         routeFilterPrefixes = structure(list(structure(list(cidr = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 
-            tags = list(type = "list")), bgpPeers = structure(list(structure(list(asn = structure(logical(0), 
+            tags = list(type = "list")), bgpPeers = structure(list(structure(list(bgpPeerId = structure(logical(0), 
+            tags = list(type = "string")), asn = structure(logical(0), 
             tags = list(type = "integer")), authKey = structure(logical(0), 
             tags = list(type = "string")), addressFamily = structure(logical(0), 
             tags = list(type = "string", enum = c("ipv4", "ipv6"))), 
@@ -706,7 +727,8 @@ create_public_virtual_interface_output <- function (...)
         directConnectGatewayId = structure(logical(0), tags = list(type = "string")), 
         routeFilterPrefixes = structure(list(structure(list(cidr = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 
-            tags = list(type = "list")), bgpPeers = structure(list(structure(list(asn = structure(logical(0), 
+            tags = list(type = "list")), bgpPeers = structure(list(structure(list(bgpPeerId = structure(logical(0), 
+            tags = list(type = "string")), asn = structure(logical(0), 
             tags = list(type = "integer")), authKey = structure(logical(0), 
             tags = list(type = "string")), addressFamily = structure(logical(0), 
             tags = list(type = "string", enum = c("ipv4", "ipv6"))), 
@@ -730,6 +752,7 @@ delete_bgp_peer_input <- function (...)
     shape <- structure(list(virtualInterfaceId = structure(logical(0), 
         tags = list(type = "string")), asn = structure(logical(0), 
         tags = list(type = "integer")), customerAddress = structure(logical(0), 
+        tags = list(type = "string")), bgpPeerId = structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -761,7 +784,8 @@ delete_bgp_peer_output <- function (...)
         directConnectGatewayId = structure(logical(0), tags = list(type = "string")), 
         routeFilterPrefixes = structure(list(structure(list(cidr = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 
-            tags = list(type = "list")), bgpPeers = structure(list(structure(list(asn = structure(logical(0), 
+            tags = list(type = "list")), bgpPeers = structure(list(structure(list(bgpPeerId = structure(logical(0), 
+            tags = list(type = "string")), asn = structure(logical(0), 
             tags = list(type = "integer")), authKey = structure(logical(0), 
             tags = list(type = "string")), addressFamily = structure(logical(0), 
             tags = list(type = "string", enum = c("ipv4", "ipv6"))), 
@@ -806,7 +830,9 @@ delete_connection_output <- function (...)
         awsDevice = structure(logical(0), tags = list(type = "string", 
             deprecated = TRUE)), jumboFrameCapable = structure(logical(0), 
             tags = list(type = "boolean")), awsDeviceV2 = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))
+            tags = list(type = "string")), hasLogicalRedundancy = structure(logical(0), 
+            tags = list(type = "string", enum = c("unknown", 
+                "yes", "no")))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -913,10 +939,14 @@ delete_lag_output <- function (...)
         awsDevice = structure(logical(0), tags = list(type = "string", 
             deprecated = TRUE)), jumboFrameCapable = structure(logical(0), 
             tags = list(type = "boolean")), awsDeviceV2 = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "string")), hasLogicalRedundancy = structure(logical(0), 
+            tags = list(type = "string", enum = c("unknown", 
+                "yes", "no")))), tags = list(type = "structure"))), 
         tags = list(type = "list")), allowsHostedConnections = structure(logical(0), 
         tags = list(type = "boolean")), jumboFrameCapable = structure(logical(0), 
-        tags = list(type = "boolean"))), tags = list(type = "structure"))
+        tags = list(type = "boolean")), hasLogicalRedundancy = structure(logical(0), 
+        tags = list(type = "string", enum = c("unknown", "yes", 
+            "no")))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -986,7 +1016,9 @@ describe_connections_output <- function (...)
         awsDevice = structure(logical(0), tags = list(type = "string", 
             deprecated = TRUE)), jumboFrameCapable = structure(logical(0), 
             tags = list(type = "boolean")), awsDeviceV2 = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "string")), hasLogicalRedundancy = structure(logical(0), 
+            tags = list(type = "string", enum = c("unknown", 
+                "yes", "no")))), tags = list(type = "structure"))), 
         tags = list(type = "list"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -1018,7 +1050,9 @@ describe_connections_on_interconnect_output <- function (...)
         awsDevice = structure(logical(0), tags = list(type = "string", 
             deprecated = TRUE)), jumboFrameCapable = structure(logical(0), 
             tags = list(type = "boolean")), awsDeviceV2 = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "string")), hasLogicalRedundancy = structure(logical(0), 
+            tags = list(type = "string", enum = c("unknown", 
+                "yes", "no")))), tags = list(type = "structure"))), 
         tags = list(type = "list"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -1131,7 +1165,9 @@ describe_hosted_connections_output <- function (...)
         awsDevice = structure(logical(0), tags = list(type = "string", 
             deprecated = TRUE)), jumboFrameCapable = structure(logical(0), 
             tags = list(type = "boolean")), awsDeviceV2 = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "string")), hasLogicalRedundancy = structure(logical(0), 
+            tags = list(type = "string", enum = c("unknown", 
+                "yes", "no")))), tags = list(type = "structure"))), 
         tags = list(type = "list"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -1180,8 +1216,10 @@ describe_interconnects_output <- function (...)
         tags = list(type = "string")), awsDevice = structure(logical(0), 
         tags = list(type = "string", deprecated = TRUE)), jumboFrameCapable = structure(logical(0), 
         tags = list(type = "boolean")), awsDeviceV2 = structure(logical(0), 
-        tags = list(type = "string"))), tags = list(type = "structure"))), 
-        tags = list(type = "list"))), tags = list(type = "structure"))
+        tags = list(type = "string")), hasLogicalRedundancy = structure(logical(0), 
+        tags = list(type = "string", enum = c("unknown", "yes", 
+            "no")))), tags = list(type = "structure"))), tags = list(type = "list"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1224,11 +1262,15 @@ describe_lags_output <- function (...)
         awsDevice = structure(logical(0), tags = list(type = "string", 
             deprecated = TRUE)), jumboFrameCapable = structure(logical(0), 
             tags = list(type = "boolean")), awsDeviceV2 = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "string")), hasLogicalRedundancy = structure(logical(0), 
+            tags = list(type = "string", enum = c("unknown", 
+                "yes", "no")))), tags = list(type = "structure"))), 
         tags = list(type = "list")), allowsHostedConnections = structure(logical(0), 
         tags = list(type = "boolean")), jumboFrameCapable = structure(logical(0), 
-        tags = list(type = "boolean"))), tags = list(type = "structure"))), 
-        tags = list(type = "list"))), tags = list(type = "structure"))
+        tags = list(type = "boolean")), hasLogicalRedundancy = structure(logical(0), 
+        tags = list(type = "string", enum = c("unknown", "yes", 
+            "no")))), tags = list(type = "structure"))), tags = list(type = "list"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1343,7 +1385,8 @@ describe_virtual_interfaces_output <- function (...)
         directConnectGatewayId = structure(logical(0), tags = list(type = "string")), 
         routeFilterPrefixes = structure(list(structure(list(cidr = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 
-            tags = list(type = "list")), bgpPeers = structure(list(structure(list(asn = structure(logical(0), 
+            tags = list(type = "list")), bgpPeers = structure(list(structure(list(bgpPeerId = structure(logical(0), 
+            tags = list(type = "string")), asn = structure(logical(0), 
             tags = list(type = "integer")), authKey = structure(logical(0), 
             tags = list(type = "string")), addressFamily = structure(logical(0), 
             tags = list(type = "string", enum = c("ipv4", "ipv6"))), 
@@ -1390,7 +1433,9 @@ disassociate_connection_from_lag_output <- function (...)
         awsDevice = structure(logical(0), tags = list(type = "string", 
             deprecated = TRUE)), jumboFrameCapable = structure(logical(0), 
             tags = list(type = "boolean")), awsDeviceV2 = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))
+            tags = list(type = "string")), hasLogicalRedundancy = structure(logical(0), 
+            tags = list(type = "string", enum = c("unknown", 
+                "yes", "no")))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1472,10 +1517,14 @@ update_lag_output <- function (...)
         awsDevice = structure(logical(0), tags = list(type = "string", 
             deprecated = TRUE)), jumboFrameCapable = structure(logical(0), 
             tags = list(type = "boolean")), awsDeviceV2 = structure(logical(0), 
-            tags = list(type = "string"))), tags = list(type = "structure"))), 
+            tags = list(type = "string")), hasLogicalRedundancy = structure(logical(0), 
+            tags = list(type = "string", enum = c("unknown", 
+                "yes", "no")))), tags = list(type = "structure"))), 
         tags = list(type = "list")), allowsHostedConnections = structure(logical(0), 
         tags = list(type = "boolean")), jumboFrameCapable = structure(logical(0), 
-        tags = list(type = "boolean"))), tags = list(type = "structure"))
+        tags = list(type = "boolean")), hasLogicalRedundancy = structure(logical(0), 
+        tags = list(type = "string", enum = c("unknown", "yes", 
+            "no")))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1515,7 +1564,8 @@ update_virtual_interface_attributes_output <- function (...)
         directConnectGatewayId = structure(logical(0), tags = list(type = "string")), 
         routeFilterPrefixes = structure(list(structure(list(cidr = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))), 
-            tags = list(type = "list")), bgpPeers = structure(list(structure(list(asn = structure(logical(0), 
+            tags = list(type = "list")), bgpPeers = structure(list(structure(list(bgpPeerId = structure(logical(0), 
+            tags = list(type = "string")), asn = structure(logical(0), 
             tags = list(type = "integer")), authKey = structure(logical(0), 
             tags = list(type = "string")), addressFamily = structure(logical(0), 
             tags = list(type = "string", enum = c("ipv4", "ipv6"))), 

@@ -19,7 +19,7 @@ delete_subscriber(AccountId, BudgetName, Notification, Subscriber)
 Deletes a subscriber.
 }
 \details{
-\strong{Deleting the last subscriber to a notification also deletes the notification.}
+Deleting the last subscriber to a notification also deletes the notification.
 }
 \section{Accepted Parameters}{
 \preformatted{delete_subscriber(
@@ -29,7 +29,8 @@ Deletes a subscriber.
     NotificationType = "ACTUAL"|"FORECASTED",
     ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
     Threshold = 123.0,
-    ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
+    ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
+    NotificationState = "OK"|"ALARM"
   ),
   Subscriber = list(
     SubscriptionType = "SNS"|"EMAIL",

@@ -10,7 +10,7 @@ create_compute_environment(computeEnvironmentName, type, state = NULL,
 \arguments{
 \item{computeEnvironmentName}{[required] The name for your compute environment. Up to 128 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.}
 
-\item{type}{[required] The type of the compute environment.}
+\item{type}{[required] The type of the compute environment. For more information, see \href{http://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html}{Compute Environments} in the \emph{AWS Batch User Guide}.}
 
 \item{state}{The state of the compute environment. If the state is \code{ENABLED}, then the compute environment accepts jobs from a queue and can scale out automatically based on queues.}
 
@@ -26,9 +26,19 @@ Depending on how you created your AWS Batch service role, its ARN may contain th
 Creates an AWS Batch compute environment. You can create \code{MANAGED} or \code{UNMANAGED} compute environments.
 }
 \details{
-In a managed compute environment, AWS Batch manages the compute resources within the environment, based on the compute resources that you specify. Instances launched into a managed compute environment use a recent, approved version of the Amazon ECS-optimized AMI. You can choose to use Amazon EC2 On-Demand Instances in your managed compute environment, or you can use Amazon EC2 Spot Instances that only launch when the Spot bid price is below a specified percentage of the On-Demand price.
+In a managed compute environment, AWS Batch manages the capacity and instance types of the compute resources within the environment. This is based on the compute resource specification that you define or the \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html}{launch template} that you specify when you create the compute environment. You can choose to use Amazon EC2 On-Demand Instances or Spot Instances in your managed compute environment. You can optionally set a maximum price so that Spot Instances only launch when the Spot Instance price is below a specified percentage of the On-Demand price.
 
-In an unmanaged compute environment, you can manage your own compute resources. This provides more compute resource configuration options, such as using a custom AMI, but you must ensure that your AMI meets the Amazon ECS container instance AMI specification. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/container_instance_AMIs.html}{Container Instance AMIs} in the \emph{Amazon Elastic Container Service Developer Guide}. After you have created your unmanaged compute environment, you can use the DescribeComputeEnvironments operation to find the Amazon ECS cluster that is associated with it and then manually launch your container instances into that Amazon ECS cluster. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html}{Launching an Amazon ECS Container Instance} in the \emph{Amazon Elastic Container Service Developer Guide}.
+Multi-node parallel jobs are not supported on Spot Instances.
+
+In an unmanaged compute environment, you can manage your own compute resources. This provides more compute resource configuration options, such as using a custom AMI, but you must ensure that your AMI meets the Amazon ECS container instance AMI specification. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/container_instance_AMIs.html}{Container Instance AMIs} in the \emph{Amazon Elastic Container Service Developer Guide}. After you have created your unmanaged compute environment, you can use the DescribeComputeEnvironments operation to find the Amazon ECS cluster that is associated with it. Then, manually launch your container instances into that Amazon ECS cluster. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html}{Launching an Amazon ECS Container Instance} in the \emph{Amazon Elastic Container Service Developer Guide}.
+
+AWS Batch does not upgrade the AMIs in a compute environment after it is created (for example, when a newer version of the Amazon ECS-optimized AMI is available). You are responsible for the management of the guest operating system (including updates and security patches) and any additional application software or utilities that you install on the compute resources. To use a new AMI for your AWS Batch jobs:
+\enumerate{
+\item Create a new compute environment with the new AMI.
+\item Add the compute environment to an existing job queue.
+\item Remove the old compute environment from your job queue.
+\item Delete the old compute environment.
+}
 }
 \section{Accepted Parameters}{
 \preformatted{create_compute_environment(
@@ -55,8 +65,14 @@ In an unmanaged compute environment, you can manage your own compute resources. 
     tags = list(
       "string"
     ),
+    placementGroup = "string",
     bidPercentage = 123,
-    spotIamFleetRole = "string"
+    spotIamFleetRole = "string",
+    launchTemplate = list(
+      launchTemplateId = "string",
+      launchTemplateName = "string",
+      version = "string"
+    )
   ),
   serviceRole = "string"
 )

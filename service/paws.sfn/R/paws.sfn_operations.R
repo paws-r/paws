@@ -5,7 +5,7 @@ NULL
 
 #' Creates an activity
 #'
-#' Creates an activity. An activity is a task which you write in any programming language and host on any machine which has access to AWS Step Functions. Activities must poll Step Functions using the `GetActivityTask` API action and respond using `SendTask*` API actions. This function lets Step Functions know the existence of your activity and returns an identifier for use in a state machine and when polling from the activity.
+#' Creates an activity. An activity is a task that you write in any programming language and host on any machine that has access to AWS Step Functions. Activities must poll Step Functions using the `GetActivityTask` API action and respond using `SendTask*` API actions. This function lets Step Functions know the existence of your activity and returns an identifier for use in a state machine and when polling from the activity.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -54,7 +54,7 @@ create_activity <- function (name)
 #' )
 #' ```
 #'
-#' @param name &#91;required&#93; The name of the state machine. This name must be unique for your AWS account and region for 90 days. For more information, see [Limits Related to State Machine Executions](http://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions) in the *AWS Step Functions Developer Guide*.
+#' @param name &#91;required&#93; The name of the state machine.
 #' 
 #' A name must *not* contain:
 #' 
@@ -67,7 +67,7 @@ create_activity <- function (name)
 #' -   special characters `` \" # % \ ^ | ~ ` $ & , ; : / ``
 #' 
 #' -   control characters (`U+0000-001F`, `U+007F-009F`)
-#' @param definition &#91;required&#93; The Amazon States Language definition of the state machine.
+#' @param definition &#91;required&#93; The Amazon States Language definition of the state machine. See [Amazon States Language](http://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html).
 #' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role to use for this state machine.
 #'
 #' @export
@@ -141,6 +141,8 @@ delete_state_machine <- function (stateMachineArn)
 #' Describes an activity
 #'
 #' Describes an activity.
+#' 
+#' This operation is eventually consistent. The results are best effort and may not reflect very recent updates and changes.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -167,6 +169,8 @@ describe_activity <- function (activityArn)
 #' Describes an execution
 #'
 #' Describes an execution.
+#' 
+#' This operation is eventually consistent. The results are best effort and may not reflect very recent updates and changes.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -193,6 +197,8 @@ describe_execution <- function (executionArn)
 #' Describes a state machine
 #'
 #' Describes a state machine.
+#' 
+#' This operation is eventually consistent. The results are best effort and may not reflect very recent updates and changes.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -219,6 +225,8 @@ describe_state_machine <- function (stateMachineArn)
 #' Describes the state machine associated with a specific execution
 #'
 #' Describes the state machine associated with a specific execution.
+#' 
+#' This operation is eventually consistent. The results are best effort and may not reflect very recent updates and changes.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -247,6 +255,8 @@ describe_state_machine_for_execution <- function (executionArn)
 #' Used by workers to retrieve a task (with the specified activity ARN) which has been scheduled for execution by a running state machine. This initiates a long poll, where the service holds the HTTP connection open and responds as soon as a task becomes available (i.e. an execution of a task of this type is needed.) The maximum time the service holds on to the request before responding is 60 seconds. If no task is available within 60 seconds, the poll returns a `taskToken` with a null string.
 #' 
 #' Workers should set their client side socket timeout to at least 65 seconds (5 seconds higher than the maximum time the service may hold the poll request).
+#' 
+#' Polling with `GetActivityTask` can cause latency in some implementations. See [Avoid Latency When Polling for Activity Tasks](http://docs.aws.amazon.com/step-functions/latest/dg/bp-activity-pollers.html) in the Step Functions Developer Guide.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -277,7 +287,7 @@ get_activity_task <- function (activityArn, workerName = NULL)
 #'
 #' Returns the history of the specified execution as a list of events. By default, the results are returned in ascending order of the `timeStamp` of the events. Use the `reverseOrder` parameter to get the latest events first.
 #' 
-#' If a `nextToken` is returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in `nextToken`. Keep all other arguments unchanged.
+#' If `nextToken` is returned, there are more results available. The value of `nextToken` is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an expired pagination token will return an *HTTP 400 InvalidToken* error.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -290,13 +300,11 @@ get_activity_task <- function (activityArn, workerName = NULL)
 #' ```
 #'
 #' @param executionArn &#91;required&#93; The Amazon Resource Name (ARN) of the execution.
-#' @param maxResults The maximum number of results that are returned per call. You can use `nextToken` to obtain further pages of results. The default is 100 and the maximum allowed page size is 100. A value of 0 uses the default.
+#' @param maxResults The maximum number of results that are returned per call. You can use `nextToken` to obtain further pages of results. The default is 100 and the maximum allowed page size is 1000. A value of 0 uses the default.
 #' 
 #' This is only an upper limit. The actual number of results returned per call might be fewer than the specified maximum.
 #' @param reverseOrder Lists events in descending order of their `timeStamp`.
-#' @param nextToken If a `nextToken` is returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in `nextToken`. Keep all other arguments unchanged.
-#' 
-#' The configured `maxResults` determines how many results can be returned in a single call.
+#' @param nextToken If `nextToken` is returned, there are more results available. The value of `nextToken` is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an expired pagination token will return an *HTTP 400 InvalidToken* error.
 #'
 #' @export
 get_execution_history <- function (executionArn, maxResults = NULL, 
@@ -318,7 +326,9 @@ get_execution_history <- function (executionArn, maxResults = NULL,
 #'
 #' Lists the existing activities.
 #' 
-#' If a `nextToken` is returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in `nextToken`. Keep all other arguments unchanged.
+#' If `nextToken` is returned, there are more results available. The value of `nextToken` is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an expired pagination token will return an *HTTP 400 InvalidToken* error.
+#' 
+#' This operation is eventually consistent. The results are best effort and may not reflect very recent updates and changes.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -328,12 +338,10 @@ get_execution_history <- function (executionArn, maxResults = NULL,
 #' )
 #' ```
 #'
-#' @param maxResults The maximum number of results that are returned per call. You can use `nextToken` to obtain further pages of results. The default is 100 and the maximum allowed page size is 100. A value of 0 uses the default.
+#' @param maxResults The maximum number of results that are returned per call. You can use `nextToken` to obtain further pages of results. The default is 100 and the maximum allowed page size is 1000. A value of 0 uses the default.
 #' 
 #' This is only an upper limit. The actual number of results returned per call might be fewer than the specified maximum.
-#' @param nextToken If a `nextToken` is returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in `nextToken`. Keep all other arguments unchanged.
-#' 
-#' The configured `maxResults` determines how many results can be returned in a single call.
+#' @param nextToken If `nextToken` is returned, there are more results available. The value of `nextToken` is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an expired pagination token will return an *HTTP 400 InvalidToken* error.
 #'
 #' @export
 list_activities <- function (maxResults = NULL, nextToken = NULL) 
@@ -350,9 +358,11 @@ list_activities <- function (maxResults = NULL, nextToken = NULL)
 
 #' Lists the executions of a state machine that meet the filtering criteria
 #'
-#' Lists the executions of a state machine that meet the filtering criteria.
+#' Lists the executions of a state machine that meet the filtering criteria. Results are sorted by time, with the most recent execution first.
 #' 
-#' If a `nextToken` is returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in `nextToken`. Keep all other arguments unchanged.
+#' If `nextToken` is returned, there are more results available. The value of `nextToken` is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an expired pagination token will return an *HTTP 400 InvalidToken* error.
+#' 
+#' This operation is eventually consistent. The results are best effort and may not reflect very recent updates and changes.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -366,12 +376,10 @@ list_activities <- function (maxResults = NULL, nextToken = NULL)
 #'
 #' @param stateMachineArn &#91;required&#93; The Amazon Resource Name (ARN) of the state machine whose executions is listed.
 #' @param statusFilter If specified, only list the executions whose current execution status matches the given filter.
-#' @param maxResults The maximum number of results that are returned per call. You can use `nextToken` to obtain further pages of results. The default is 100 and the maximum allowed page size is 100. A value of 0 uses the default.
+#' @param maxResults The maximum number of results that are returned per call. You can use `nextToken` to obtain further pages of results. The default is 100 and the maximum allowed page size is 1000. A value of 0 uses the default.
 #' 
 #' This is only an upper limit. The actual number of results returned per call might be fewer than the specified maximum.
-#' @param nextToken If a `nextToken` is returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in `nextToken`. Keep all other arguments unchanged.
-#' 
-#' The configured `maxResults` determines how many results can be returned in a single call.
+#' @param nextToken If `nextToken` is returned, there are more results available. The value of `nextToken` is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an expired pagination token will return an *HTTP 400 InvalidToken* error.
 #'
 #' @export
 list_executions <- function (stateMachineArn, statusFilter = NULL, 
@@ -393,7 +401,9 @@ list_executions <- function (stateMachineArn, statusFilter = NULL,
 #'
 #' Lists the existing state machines.
 #' 
-#' If a `nextToken` is returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in `nextToken`. Keep all other arguments unchanged.
+#' If `nextToken` is returned, there are more results available. The value of `nextToken` is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an expired pagination token will return an *HTTP 400 InvalidToken* error.
+#' 
+#' This operation is eventually consistent. The results are best effort and may not reflect very recent updates and changes.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -403,12 +413,10 @@ list_executions <- function (stateMachineArn, statusFilter = NULL,
 #' )
 #' ```
 #'
-#' @param maxResults The maximum number of results that are returned per call. You can use `nextToken` to obtain further pages of results. The default is 100 and the maximum allowed page size is 100. A value of 0 uses the default.
+#' @param maxResults The maximum number of results that are returned per call. You can use `nextToken` to obtain further pages of results. The default is 100 and the maximum allowed page size is 1000. A value of 0 uses the default.
 #' 
 #' This is only an upper limit. The actual number of results returned per call might be fewer than the specified maximum.
-#' @param nextToken If a `nextToken` is returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in `nextToken`. Keep all other arguments unchanged.
-#' 
-#' The configured `maxResults` determines how many results can be returned in a single call.
+#' @param nextToken If `nextToken` is returned, there are more results available. The value of `nextToken` is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an expired pagination token will return an *HTTP 400 InvalidToken* error.
 #'
 #' @export
 list_state_machines <- function (maxResults = NULL, nextToken = NULL) 
@@ -418,6 +426,32 @@ list_state_machines <- function (maxResults = NULL, nextToken = NULL)
     input <- list_state_machines_input(maxResults = maxResults, 
         nextToken = nextToken)
     output <- list_state_machines_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' List tags for a given resource
+#'
+#' List tags for a given resource.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' list_tags_for_resource(
+#'   resourceArn = "string"
+#' )
+#' ```
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the Step Functions state machine or activity.
+#'
+#' @export
+list_tags_for_resource <- function (resourceArn) 
+{
+    op <- new_operation(name = "ListTagsForResource", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_tags_for_resource_input(resourceArn = resourceArn)
+    output <- list_tags_for_resource_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -438,7 +472,7 @@ list_state_machines <- function (maxResults = NULL, nextToken = NULL)
 #' ```
 #'
 #' @param taskToken &#91;required&#93; The token that represents this task. Task tokens are generated by the service when the tasks are assigned to a worker (see GetActivityTask::taskToken).
-#' @param error An arbitrary error code that identifies the cause of the failure.
+#' @param error The error code of the failure.
 #' @param cause A more detailed explanation of the cause of the failure.
 #'
 #' @export
@@ -516,6 +550,8 @@ send_task_success <- function (taskToken, output)
 #' Starts a state machine execution
 #'
 #' Starts a state machine execution.
+#' 
+#' `StartExecution` is idempotent. If `StartExecution` is called with the same name and input as a running execution, the call will succeed and return the same response as the original request. If the execution is closed or if the input is different, it will return a 400 `ExecutionAlreadyExists` error. Names can be reused after 90 days.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -528,16 +564,6 @@ send_task_success <- function (taskToken, output)
 #'
 #' @param stateMachineArn &#91;required&#93; The Amazon Resource Name (ARN) of the state machine to execute.
 #' @param name The name of the execution. This name must be unique for your AWS account and region for 90 days. For more information, see [Limits Related to State Machine Executions](http://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions) in the *AWS Step Functions Developer Guide*.
-#' 
-#' An execution can\'t use the name of another execution for 90 days.
-#' 
-#' When you make multiple `StartExecution` calls with the same name, the new execution doesn\'t run and the following rules apply:
-#' 
-#' -   When the original execution is open and the execution input from the new call is *different*, the `ExecutionAlreadyExists` message is returned.
-#' 
-#' -   When the original execution is open and the execution input from the new call is *identical*, the `Success` message is returned.
-#' 
-#' -   When the original execution is closed, the `ExecutionAlreadyExists` message is returned regardless of input.
 #' 
 #' A name must *not* contain:
 #' 
@@ -584,8 +610,8 @@ start_execution <- function (stateMachineArn, name = NULL, input = NULL)
 #' ```
 #'
 #' @param executionArn &#91;required&#93; The Amazon Resource Name (ARN) of the execution to stop.
-#' @param error An arbitrary error code that identifies the cause of the termination.
-#' @param cause A more detailed explanation of the cause of the termination.
+#' @param error The error code of the failure.
+#' @param cause A more detailed explanation of the cause of the failure.
 #'
 #' @export
 stop_execution <- function (executionArn, error = NULL, cause = NULL) 
@@ -601,11 +627,77 @@ stop_execution <- function (executionArn, error = NULL, cause = NULL)
     return(response)
 }
 
+#' Add a tag to a Step Functions resource
+#'
+#' Add a tag to a Step Functions resource.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' tag_resource(
+#'   resourceArn = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the Step Functions state machine or activity.
+#' @param tags &#91;required&#93; The list of tags to add to a resource.
+#' 
+#' Tags may only contain unicode letters, digits, whitespace, or these symbols: `_ . : / = + - @`.
+#'
+#' @export
+tag_resource <- function (resourceArn, tags) 
+{
+    op <- new_operation(name = "TagResource", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- tag_resource_input(resourceArn = resourceArn, tags = tags)
+    output <- tag_resource_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Remove a tag from a Step Functions resource
+#'
+#' Remove a tag from a Step Functions resource
+#'
+#' @section Accepted Parameters:
+#' ```
+#' untag_resource(
+#'   resourceArn = "string",
+#'   tagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the Step Functions state machine or activity.
+#' @param tagKeys &#91;required&#93; The list of tags to remove from the resource.
+#'
+#' @export
+untag_resource <- function (resourceArn, tagKeys) 
+{
+    op <- new_operation(name = "UntagResource", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- untag_resource_input(resourceArn = resourceArn, 
+        tagKeys = tagKeys)
+    output <- untag_resource_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Updates an existing state machine by modifying its definition and/or roleArn
 #'
-#' Updates an existing state machine by modifying its `definition` and/or `roleArn`. Running executions will continue to use the previous `definition` and `roleArn`.
+#' Updates an existing state machine by modifying its `definition` and/or `roleArn`. Running executions will continue to use the previous `definition` and `roleArn`. You must include at least one of `definition` or `roleArn` or you will receive a `MissingRequiredParameter` error.
 #' 
-#' All `StartExecution` calls within a few seconds will use the updated `definition` and `roleArn`. Executions started immediately after calling `UpdateStateMachine` may use the previous state machine `definition` and `roleArn`. You must include at least one of `definition` or `roleArn` or you will receive a `MissingRequiredParameter` error.
+#' All `StartExecution` calls within a few seconds will use the updated `definition` and `roleArn`. Executions started immediately after calling `UpdateStateMachine` may use the previous state machine `definition` and `roleArn`.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -617,7 +709,7 @@ stop_execution <- function (executionArn, error = NULL, cause = NULL)
 #' ```
 #'
 #' @param stateMachineArn &#91;required&#93; The Amazon Resource Name (ARN) of the state machine.
-#' @param definition The Amazon States Language definition of the state machine.
+#' @param definition The Amazon States Language definition of the state machine. See [Amazon States Language](http://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html).
 #' @param roleArn The Amazon Resource Name (ARN) of the IAM role of the state machine.
 #'
 #' @export

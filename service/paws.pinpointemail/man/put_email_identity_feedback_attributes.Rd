@@ -4,10 +4,8 @@
 \alias{put_email_identity_feedback_attributes}
 \title{Used to enable or disable feedback forwarding for an identity}
 \usage{
-put_email_identity_feedback_attributes(
-  EmailIdentity = "string",
-  EmailForwardingEnabled = TRUE|FALSE
-)
+put_email_identity_feedback_attributes(EmailIdentity,
+  EmailForwardingEnabled = NULL)
 }
 \arguments{
 \item{EmailIdentity}{[required] The email identity that you want to configure bounce and complaint feedback forwarding for.}
@@ -26,6 +24,11 @@ When you enable feedback forwarding, Amazon Pinpoint sends you email notificatio
 
 When you disable feedback forwarding, Amazon Pinpoint sends notifications through other mechanisms, such as by notifying an Amazon SNS topic. You're required to have a method of tracking bounces and complaints. If you haven't set up another mechanism for receiving bounce or complaint notifications, Amazon Pinpoint sends an email notification when these events occur (even if this setting is disabled).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_email_identity_feedback_attributes(
+  EmailIdentity = "string",
+  EmailForwardingEnabled = TRUE|FALSE
+)
 }
+}
+

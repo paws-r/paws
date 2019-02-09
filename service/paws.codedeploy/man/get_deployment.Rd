@@ -7,7 +7,7 @@
 get_deployment(deploymentId)
 }
 \arguments{
-\item{deploymentId}{[required] A deployment ID associated with the applicable IAM user or AWS account.}
+\item{deploymentId}{[required] The unique ID of a deployment associated with the IAM user or AWS account.}
 }
 \description{
 Gets information about a deployment.

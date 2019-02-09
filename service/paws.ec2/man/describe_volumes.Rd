@@ -41,7 +41,7 @@ Describes the specified EBS volumes.
 \details{
 If you are describing a long list of volumes, you can paginate the output to make the list more manageable. The \code{MaxResults} parameter sets the maximum number of results returned in a single page. If the list of results exceeds your \code{MaxResults} value, then that number of results is returned along with a \code{NextToken} value that can be passed to a subsequent \code{DescribeVolumes} request to retrieve the remaining results.
 
-For more information about EBS volumes, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumes.html}{Amazon EBS Volumes} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information about EBS volumes, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumes.html}{Amazon EBS Volumes} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{describe_volumes(

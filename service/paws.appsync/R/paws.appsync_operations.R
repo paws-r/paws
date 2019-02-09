@@ -44,7 +44,7 @@ create_api_key <- function (apiId, description = NULL, expires = NULL)
 #'   apiId = "string",
 #'   name = "string",
 #'   description = "string",
-#'   type = "AWS_LAMBDA"|"AMAZON_DYNAMODB"|"AMAZON_ELASTICSEARCH"|"NONE"|"HTTP",
+#'   type = "AWS_LAMBDA"|"AMAZON_DYNAMODB"|"AMAZON_ELASTICSEARCH"|"NONE"|"HTTP"|"RELATIONAL_DATABASE",
 #'   serviceRoleArn = "string",
 #'   dynamodbConfig = list(
 #'     tableName = "string",
@@ -59,7 +59,24 @@ create_api_key <- function (apiId, description = NULL, expires = NULL)
 #'     awsRegion = "string"
 #'   ),
 #'   httpConfig = list(
-#'     endpoint = "string"
+#'     endpoint = "string",
+#'     authorizationConfig = list(
+#'       authorizationType = "AWS_IAM",
+#'       awsIamConfig = list(
+#'         signingRegion = "string",
+#'         signingServiceName = "string"
+#'       )
+#'     )
+#'   ),
+#'   relationalDatabaseConfig = list(
+#'     relationalDatabaseSourceType = "RDS_HTTP_ENDPOINT",
+#'     rdsHttpEndpointConfig = list(
+#'       awsRegion = "string",
+#'       dbClusterIdentifier = "string",
+#'       databaseName = "string",
+#'       schema = "string",
+#'       awsSecretStoreArn = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -68,24 +85,71 @@ create_api_key <- function (apiId, description = NULL, expires = NULL)
 #' @param name &#91;required&#93; A user-supplied name for the `DataSource`.
 #' @param description A description of the `DataSource`.
 #' @param type &#91;required&#93; The type of the `DataSource`.
-#' @param serviceRoleArn The IAM service role ARN for the data source. The system assumes this role when accessing the data source.
-#' @param dynamodbConfig DynamoDB settings.
+#' @param serviceRoleArn The AWS IAM service role ARN for the data source. The system assumes this role when accessing the data source.
+#' @param dynamodbConfig Amazon DynamoDB settings.
 #' @param lambdaConfig AWS Lambda settings.
-#' @param elasticsearchConfig Amazon Elasticsearch settings.
-#' @param httpConfig Http endpoint settings.
+#' @param elasticsearchConfig Amazon Elasticsearch Service settings.
+#' @param httpConfig HTTP endpoint settings.
+#' @param relationalDatabaseConfig Relational database settings.
 #'
 #' @export
 create_data_source <- function (apiId, name, description = NULL, 
     type, serviceRoleArn = NULL, dynamodbConfig = NULL, lambdaConfig = NULL, 
-    elasticsearchConfig = NULL, httpConfig = NULL) 
+    elasticsearchConfig = NULL, httpConfig = NULL, relationalDatabaseConfig = NULL) 
 {
     op <- new_operation(name = "CreateDataSource", http_method = "POST", 
         http_path = "/v1/apis/{apiId}/datasources", paginator = list())
     input <- create_data_source_input(apiId = apiId, name = name, 
         description = description, type = type, serviceRoleArn = serviceRoleArn, 
         dynamodbConfig = dynamodbConfig, lambdaConfig = lambdaConfig, 
-        elasticsearchConfig = elasticsearchConfig, httpConfig = httpConfig)
+        elasticsearchConfig = elasticsearchConfig, httpConfig = httpConfig, 
+        relationalDatabaseConfig = relationalDatabaseConfig)
     output <- create_data_source_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a Function object
+#'
+#' Creates a `Function` object.
+#' 
+#' A function is a reusable entity. Multiple functions can be used to compose the resolver logic.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' create_function(
+#'   apiId = "string",
+#'   name = "string",
+#'   description = "string",
+#'   dataSourceName = "string",
+#'   requestMappingTemplate = "string",
+#'   responseMappingTemplate = "string",
+#'   functionVersion = "string"
+#' )
+#' ```
+#'
+#' @param apiId &#91;required&#93; The GraphQL API ID.
+#' @param name &#91;required&#93; The `Function` name. The function name does not have to be unique.
+#' @param description The `Function` description.
+#' @param dataSourceName &#91;required&#93; The `Function` `DataSource` name.
+#' @param requestMappingTemplate &#91;required&#93; The `Function` request mapping template. Functions support only the 2018-05-29 version of the request mapping template.
+#' @param responseMappingTemplate The `Function` response mapping template.
+#' @param functionVersion &#91;required&#93; The `version` of the request mapping template. Currently the supported value is 2018-05-29.
+#'
+#' @export
+create_function <- function (apiId, name, description = NULL, 
+    dataSourceName, requestMappingTemplate, responseMappingTemplate = NULL, 
+    functionVersion) 
+{
+    op <- new_operation(name = "CreateFunction", http_method = "POST", 
+        http_path = "/v1/apis/{apiId}/functions", paginator = list())
+    input <- create_function_input(apiId = apiId, name = name, 
+        description = description, dataSourceName = dataSourceName, 
+        requestMappingTemplate = requestMappingTemplate, responseMappingTemplate = responseMappingTemplate, 
+        functionVersion = functionVersion)
+    output <- create_function_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -121,10 +185,10 @@ create_data_source <- function (apiId, name, description = NULL,
 #' ```
 #'
 #' @param name &#91;required&#93; A user-supplied name for the `GraphqlApi`.
-#' @param logConfig The Amazon CloudWatch logs configuration.
-#' @param authenticationType &#91;required&#93; The authentication type: API key, IAM, or Amazon Cognito User Pools.
-#' @param userPoolConfig The Amazon Cognito User Pool configuration.
-#' @param openIDConnectConfig The Open Id Connect configuration configuration.
+#' @param logConfig The Amazon CloudWatch Logs configuration.
+#' @param authenticationType &#91;required&#93; The authentication type: API key, AWS IAM, or Amazon Cognito user pools.
+#' @param userPoolConfig The Amazon Cognito user pool configuration.
+#' @param openIDConnectConfig The OpenID Connect configuration.
 #'
 #' @export
 create_graphql_api <- function (name, logConfig = NULL, authenticationType, 
@@ -156,29 +220,43 @@ create_graphql_api <- function (name, logConfig = NULL, authenticationType,
 #'   fieldName = "string",
 #'   dataSourceName = "string",
 #'   requestMappingTemplate = "string",
-#'   responseMappingTemplate = "string"
+#'   responseMappingTemplate = "string",
+#'   kind = "UNIT"|"PIPELINE",
+#'   pipelineConfig = list(
+#'     functions = list(
+#'       "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @param apiId &#91;required&#93; The ID for the GraphQL API for which the resolver is being created.
 #' @param typeName &#91;required&#93; The name of the `Type`.
 #' @param fieldName &#91;required&#93; The name of the field to attach the resolver to.
-#' @param dataSourceName &#91;required&#93; The name of the data source for which the resolver is being created.
+#' @param dataSourceName The name of the data source for which the resolver is being created.
 #' @param requestMappingTemplate &#91;required&#93; The mapping template to be used for requests.
 #' 
 #' A resolver uses a request mapping template to convert a GraphQL expression into a format that a data source can understand. Mapping templates are written in Apache Velocity Template Language (VTL).
 #' @param responseMappingTemplate The mapping template to be used for responses from the data source.
+#' @param kind The resolver type.
+#' 
+#' -   **UNIT**: A UNIT resolver type. A UNIT resolver is the default resolver type. A UNIT resolver enables you to execute a GraphQL query against a single data source.
+#' 
+#' -   **PIPELINE**: A PIPELINE resolver type. A PIPELINE resolver enables you to execute a series of `Function` in a serial manner. You can use a pipeline resolver to execute a GraphQL query against multiple data sources.
+#' @param pipelineConfig The `PipelineConfig`.
 #'
 #' @export
-create_resolver <- function (apiId, typeName, fieldName, dataSourceName, 
-    requestMappingTemplate, responseMappingTemplate = NULL) 
+create_resolver <- function (apiId, typeName, fieldName, dataSourceName = NULL, 
+    requestMappingTemplate, responseMappingTemplate = NULL, kind = NULL, 
+    pipelineConfig = NULL) 
 {
     op <- new_operation(name = "CreateResolver", http_method = "POST", 
         http_path = "/v1/apis/{apiId}/types/{typeName}/resolvers", 
         paginator = list())
     input <- create_resolver_input(apiId = apiId, typeName = typeName, 
         fieldName = fieldName, dataSourceName = dataSourceName, 
-        requestMappingTemplate = requestMappingTemplate, responseMappingTemplate = responseMappingTemplate)
+        requestMappingTemplate = requestMappingTemplate, responseMappingTemplate = responseMappingTemplate, 
+        kind = kind, pipelineConfig = pipelineConfig)
     output <- create_resolver_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -269,6 +347,35 @@ delete_data_source <- function (apiId, name)
         http_path = "/v1/apis/{apiId}/datasources/{name}", paginator = list())
     input <- delete_data_source_input(apiId = apiId, name = name)
     output <- delete_data_source_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes a Function
+#'
+#' Deletes a `Function`.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_function(
+#'   apiId = "string",
+#'   functionId = "string"
+#' )
+#' ```
+#'
+#' @param apiId &#91;required&#93; The GraphQL API ID.
+#' @param functionId &#91;required&#93; The `Function` ID.
+#'
+#' @export
+delete_function <- function (apiId, functionId) 
+{
+    op <- new_operation(name = "DeleteFunction", http_method = "DELETE", 
+        http_path = "/v1/apis/{apiId}/functions/{functionId}", 
+        paginator = list())
+    input <- delete_function_input(apiId = apiId, functionId = functionId)
+    output <- delete_function_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -383,6 +490,35 @@ get_data_source <- function (apiId, name)
         http_path = "/v1/apis/{apiId}/datasources/{name}", paginator = list())
     input <- get_data_source_input(apiId = apiId, name = name)
     output <- get_data_source_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Get a Function
+#'
+#' Get a `Function`.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' get_function(
+#'   apiId = "string",
+#'   functionId = "string"
+#' )
+#' ```
+#'
+#' @param apiId &#91;required&#93; The GraphQL API ID.
+#' @param functionId &#91;required&#93; The `Function` ID.
+#'
+#' @export
+get_function <- function (apiId, functionId) 
+{
+    op <- new_operation(name = "GetFunction", http_method = "GET", 
+        http_path = "/v1/apis/{apiId}/functions/{functionId}", 
+        paginator = list())
+    input <- get_function_input(apiId = apiId, functionId = functionId)
+    output <- get_function_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -596,6 +732,37 @@ list_data_sources <- function (apiId, nextToken = NULL, maxResults = NULL)
     return(response)
 }
 
+#' List multiple functions
+#'
+#' List multiple functions.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' list_functions(
+#'   apiId = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @param apiId &#91;required&#93; The GraphQL API ID.
+#' @param nextToken An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+#' @param maxResults The maximum number of results you want the request to return.
+#'
+#' @export
+list_functions <- function (apiId, nextToken = NULL, maxResults = NULL) 
+{
+    op <- new_operation(name = "ListFunctions", http_method = "GET", 
+        http_path = "/v1/apis/{apiId}/functions", paginator = list())
+    input <- list_functions_input(apiId = apiId, nextToken = nextToken, 
+        maxResults = maxResults)
+    output <- list_functions_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Lists your GraphQL APIs
 #'
 #' Lists your GraphQL APIs.
@@ -653,6 +820,41 @@ list_resolvers <- function (apiId, typeName, nextToken = NULL,
     input <- list_resolvers_input(apiId = apiId, typeName = typeName, 
         nextToken = nextToken, maxResults = maxResults)
     output <- list_resolvers_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' List the resolvers that are associated with a specific function
+#'
+#' List the resolvers that are associated with a specific function.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' list_resolvers_by_function(
+#'   apiId = "string",
+#'   functionId = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @param apiId &#91;required&#93; The API ID.
+#' @param functionId &#91;required&#93; The Function ID.
+#' @param nextToken An identifier that was returned from the previous call to this operation, which you can use to return the next set of items in the list.
+#' @param maxResults The maximum number of results you want the request to return.
+#'
+#' @export
+list_resolvers_by_function <- function (apiId, functionId, nextToken = NULL, 
+    maxResults = NULL) 
+{
+    op <- new_operation(name = "ListResolversByFunction", http_method = "GET", 
+        http_path = "/v1/apis/{apiId}/functions/{functionId}/resolvers", 
+        paginator = list())
+    input <- list_resolvers_by_function_input(apiId = apiId, 
+        functionId = functionId, nextToken = nextToken, maxResults = maxResults)
+    output <- list_resolvers_by_function_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -736,7 +938,7 @@ start_schema_creation <- function (apiId, definition)
 #' )
 #' ```
 #'
-#' @param apiId &#91;required&#93; The ID for the GraphQL API
+#' @param apiId &#91;required&#93; The ID for the GraphQL API.
 #' @param id &#91;required&#93; The API key ID.
 #' @param description A description of the purpose of the API key.
 #' @param expires The time from update time after which the API key expires. The date is represented as seconds since the epoch. For more information, see .
@@ -765,7 +967,7 @@ update_api_key <- function (apiId, id, description = NULL, expires = NULL)
 #'   apiId = "string",
 #'   name = "string",
 #'   description = "string",
-#'   type = "AWS_LAMBDA"|"AMAZON_DYNAMODB"|"AMAZON_ELASTICSEARCH"|"NONE"|"HTTP",
+#'   type = "AWS_LAMBDA"|"AMAZON_DYNAMODB"|"AMAZON_ELASTICSEARCH"|"NONE"|"HTTP"|"RELATIONAL_DATABASE",
 #'   serviceRoleArn = "string",
 #'   dynamodbConfig = list(
 #'     tableName = "string",
@@ -780,7 +982,24 @@ update_api_key <- function (apiId, id, description = NULL, expires = NULL)
 #'     awsRegion = "string"
 #'   ),
 #'   httpConfig = list(
-#'     endpoint = "string"
+#'     endpoint = "string",
+#'     authorizationConfig = list(
+#'       authorizationType = "AWS_IAM",
+#'       awsIamConfig = list(
+#'         signingRegion = "string",
+#'         signingServiceName = "string"
+#'       )
+#'     )
+#'   ),
+#'   relationalDatabaseConfig = list(
+#'     relationalDatabaseSourceType = "RDS_HTTP_ENDPOINT",
+#'     rdsHttpEndpointConfig = list(
+#'       awsRegion = "string",
+#'       dbClusterIdentifier = "string",
+#'       databaseName = "string",
+#'       schema = "string",
+#'       awsSecretStoreArn = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -790,23 +1009,71 @@ update_api_key <- function (apiId, id, description = NULL, expires = NULL)
 #' @param description The new description for the data source.
 #' @param type &#91;required&#93; The new data source type.
 #' @param serviceRoleArn The new service role ARN for the data source.
-#' @param dynamodbConfig The new DynamoDB configuration.
-#' @param lambdaConfig The new Lambda configuration.
-#' @param elasticsearchConfig The new Elasticsearch configuration.
-#' @param httpConfig The new http endpoint configuration
+#' @param dynamodbConfig The new Amazon DynamoDB configuration.
+#' @param lambdaConfig The new AWS Lambda configuration.
+#' @param elasticsearchConfig The new Elasticsearch Service configuration.
+#' @param httpConfig The new HTTP endpoint configuration.
+#' @param relationalDatabaseConfig The new relational database configuration.
 #'
 #' @export
 update_data_source <- function (apiId, name, description = NULL, 
     type, serviceRoleArn = NULL, dynamodbConfig = NULL, lambdaConfig = NULL, 
-    elasticsearchConfig = NULL, httpConfig = NULL) 
+    elasticsearchConfig = NULL, httpConfig = NULL, relationalDatabaseConfig = NULL) 
 {
     op <- new_operation(name = "UpdateDataSource", http_method = "POST", 
         http_path = "/v1/apis/{apiId}/datasources/{name}", paginator = list())
     input <- update_data_source_input(apiId = apiId, name = name, 
         description = description, type = type, serviceRoleArn = serviceRoleArn, 
         dynamodbConfig = dynamodbConfig, lambdaConfig = lambdaConfig, 
-        elasticsearchConfig = elasticsearchConfig, httpConfig = httpConfig)
+        elasticsearchConfig = elasticsearchConfig, httpConfig = httpConfig, 
+        relationalDatabaseConfig = relationalDatabaseConfig)
     output <- update_data_source_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates a Function object
+#'
+#' Updates a `Function` object.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' update_function(
+#'   apiId = "string",
+#'   name = "string",
+#'   description = "string",
+#'   functionId = "string",
+#'   dataSourceName = "string",
+#'   requestMappingTemplate = "string",
+#'   responseMappingTemplate = "string",
+#'   functionVersion = "string"
+#' )
+#' ```
+#'
+#' @param apiId &#91;required&#93; The GraphQL API ID.
+#' @param name &#91;required&#93; The `Function` name.
+#' @param description The `Function` description.
+#' @param functionId &#91;required&#93; The function ID.
+#' @param dataSourceName &#91;required&#93; The `Function` `DataSource` name.
+#' @param requestMappingTemplate &#91;required&#93; The `Function` request mapping template. Functions support only the 2018-05-29 version of the request mapping template.
+#' @param responseMappingTemplate The `Function` request mapping template.
+#' @param functionVersion &#91;required&#93; The `version` of the request mapping template. Currently the supported value is 2018-05-29.
+#'
+#' @export
+update_function <- function (apiId, name, description = NULL, 
+    functionId, dataSourceName, requestMappingTemplate, responseMappingTemplate = NULL, 
+    functionVersion) 
+{
+    op <- new_operation(name = "UpdateFunction", http_method = "POST", 
+        http_path = "/v1/apis/{apiId}/functions/{functionId}", 
+        paginator = list())
+    input <- update_function_input(apiId = apiId, name = name, 
+        description = description, functionId = functionId, dataSourceName = dataSourceName, 
+        requestMappingTemplate = requestMappingTemplate, responseMappingTemplate = responseMappingTemplate, 
+        functionVersion = functionVersion)
+    output <- update_function_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -844,10 +1111,10 @@ update_data_source <- function (apiId, name, description = NULL,
 #'
 #' @param apiId &#91;required&#93; The API ID.
 #' @param name &#91;required&#93; The new name for the `GraphqlApi` object.
-#' @param logConfig The Amazon CloudWatch logs configuration for the `GraphqlApi` object.
+#' @param logConfig The Amazon CloudWatch Logs configuration for the `GraphqlApi` object.
 #' @param authenticationType The new authentication type for the `GraphqlApi` object.
-#' @param userPoolConfig The new Amazon Cognito User Pool configuration for the `GraphqlApi` object.
-#' @param openIDConnectConfig The Open Id Connect configuration configuration for the `GraphqlApi` object.
+#' @param userPoolConfig The new Amazon Cognito user pool configuration for the `GraphqlApi` object.
+#' @param openIDConnectConfig The OpenID Connect configuration for the `GraphqlApi` object.
 #'
 #' @export
 update_graphql_api <- function (apiId, name, logConfig = NULL, 
@@ -877,27 +1144,41 @@ update_graphql_api <- function (apiId, name, logConfig = NULL,
 #'   fieldName = "string",
 #'   dataSourceName = "string",
 #'   requestMappingTemplate = "string",
-#'   responseMappingTemplate = "string"
+#'   responseMappingTemplate = "string",
+#'   kind = "UNIT"|"PIPELINE",
+#'   pipelineConfig = list(
+#'     functions = list(
+#'       "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @param apiId &#91;required&#93; The API ID.
 #' @param typeName &#91;required&#93; The new type name.
 #' @param fieldName &#91;required&#93; The new field name.
-#' @param dataSourceName &#91;required&#93; The new data source name.
+#' @param dataSourceName The new data source name.
 #' @param requestMappingTemplate &#91;required&#93; The new request mapping template.
 #' @param responseMappingTemplate The new response mapping template.
+#' @param kind The resolver type.
+#' 
+#' -   **UNIT**: A UNIT resolver type. A UNIT resolver is the default resolver type. A UNIT resolver enables you to execute a GraphQL query against a single data source.
+#' 
+#' -   **PIPELINE**: A PIPELINE resolver type. A PIPELINE resolver enables you to execute a series of `Function` in a serial manner. You can use a pipeline resolver to execute a GraphQL query against multiple data sources.
+#' @param pipelineConfig The `PipelineConfig`.
 #'
 #' @export
-update_resolver <- function (apiId, typeName, fieldName, dataSourceName, 
-    requestMappingTemplate, responseMappingTemplate = NULL) 
+update_resolver <- function (apiId, typeName, fieldName, dataSourceName = NULL, 
+    requestMappingTemplate, responseMappingTemplate = NULL, kind = NULL, 
+    pipelineConfig = NULL) 
 {
     op <- new_operation(name = "UpdateResolver", http_method = "POST", 
         http_path = "/v1/apis/{apiId}/types/{typeName}/resolvers/{fieldName}", 
         paginator = list())
     input <- update_resolver_input(apiId = apiId, typeName = typeName, 
         fieldName = fieldName, dataSourceName = dataSourceName, 
-        requestMappingTemplate = requestMappingTemplate, responseMappingTemplate = responseMappingTemplate)
+        requestMappingTemplate = requestMappingTemplate, responseMappingTemplate = responseMappingTemplate, 
+        kind = kind, pipelineConfig = pipelineConfig)
     output <- update_resolver_output()
     svc <- service()
     request <- new_request(svc, op, input, output)

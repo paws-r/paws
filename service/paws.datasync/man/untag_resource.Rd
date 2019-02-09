@@ -4,12 +4,7 @@
 \alias{untag_resource}
 \title{Removes a tag from an AWS resource}
 \usage{
-untag_resource(
-  ResourceArn = "string",
-  Keys = list(
-    "string"
-  )
-)
+untag_resource(ResourceArn, Keys)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource to remove the tag from.}
@@ -19,6 +14,13 @@ untag_resource(
 \description{
 Removes a tag from an AWS resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{untag_resource(
+  ResourceArn = "string",
+  Keys = list(
+    "string"
+  )
+)
 }
+}
+

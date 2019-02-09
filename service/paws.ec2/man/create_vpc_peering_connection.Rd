@@ -26,7 +26,7 @@ Default: The region in which you make the request.}
 Requests a VPC peering connection between two VPCs: a requester VPC that you own and an accepter VPC with which to create the connection. The accepter VPC can belong to another AWS account and can be in a different Region to the requester VPC. The requester VPC and accepter VPC cannot have overlapping CIDR blocks.
 }
 \details{
-Limitations and rules apply to a VPC peering connection. For more information, see the \href{http://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide/vpc-peering-basics.html#vpc-peering-limitations}{limitations} section in the \emph{VPC Peering Guide}.
+Limitations and rules apply to a VPC peering connection. For more information, see the \href{https://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide/vpc-peering-basics.html#vpc-peering-limitations}{limitations} section in the \emph{VPC Peering Guide}.
 
 The owner of the accepter VPC must accept the peering request to activate the peering connection. The VPC peering connection request expires after 7 days, after which it cannot be accepted or rejected.
 

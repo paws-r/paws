@@ -4,10 +4,7 @@
 \alias{delete_branch}
 \title{Deletes a branch for an Amplify App}
 \usage{
-delete_branch(
-  appId = "string",
-  branchName = "string"
-)
+delete_branch(appId, branchName)
 }
 \arguments{
 \item{appId}{[required] Unique Id for an Amplify App.}
@@ -17,6 +14,11 @@ delete_branch(
 \description{
 Deletes a branch for an Amplify App.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_branch(
+  appId = "string",
+  branchName = "string"
+)
 }
+}
+

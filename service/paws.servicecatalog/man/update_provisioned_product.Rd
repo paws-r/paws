@@ -7,7 +7,8 @@
 update_provisioned_product(AcceptLanguage = NULL,
   ProvisionedProductName = NULL, ProvisionedProductId = NULL,
   ProductId = NULL, ProvisioningArtifactId = NULL, PathId = NULL,
-  ProvisioningParameters = NULL, UpdateToken)
+  ProvisioningParameters = NULL, ProvisioningPreferences = NULL,
+  UpdateToken)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -28,6 +29,8 @@ update_provisioned_product(AcceptLanguage = NULL,
 \item{PathId}{The new path identifier. This value is optional if the product has a default path, and required if the product has more than one path.}
 
 \item{ProvisioningParameters}{The new parameters.}
+
+\item{ProvisioningPreferences}{An object that contains information about the provisioning preferences for a stack set.}
 
 \item{UpdateToken}{[required] The idempotency token that uniquely identifies the provisioning update request.}
 }
@@ -53,6 +56,19 @@ You can check the status of this request using DescribeRecord.
       Value = "string",
       UsePreviousValue = TRUE|FALSE
     )
+  ),
+  ProvisioningPreferences = list(
+    StackSetAccounts = list(
+      "string"
+    ),
+    StackSetRegions = list(
+      "string"
+    ),
+    StackSetFailureToleranceCount = 123,
+    StackSetFailureTolerancePercentage = 123,
+    StackSetMaxConcurrencyCount = 123,
+    StackSetMaxConcurrencyPercentage = 123,
+    StackSetOperationType = "CREATE"|"UPDATE"|"DELETE"
   ),
   UpdateToken = "string"
 )

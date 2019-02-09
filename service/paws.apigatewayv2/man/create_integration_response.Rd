@@ -4,19 +4,9 @@
 \alias{create_integration_response}
 \title{Creates an IntegrationResponses}
 \usage{
-create_integration_response(
-  ApiId = "string",
-  ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-  IntegrationId = "string",
-  IntegrationResponseKey = "string",
-  ResponseParameters = list(
-    "string"
-  ),
-  ResponseTemplates = list(
-    "string"
-  ),
-  TemplateSelectionExpression = "string"
-)
+create_integration_response(ApiId, ContentHandlingStrategy = NULL,
+  IntegrationId, IntegrationResponseKey, ResponseParameters = NULL,
+  ResponseTemplates = NULL, TemplateSelectionExpression = NULL)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -42,6 +32,20 @@ If this property is not defined, the response payload will be passed through fro
 \description{
 Creates an IntegrationResponses.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_integration_response(
+  ApiId = "string",
+  ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
+  IntegrationId = "string",
+  IntegrationResponseKey = "string",
+  ResponseParameters = list(
+    "string"
+  ),
+  ResponseTemplates = list(
+    "string"
+  ),
+  TemplateSelectionExpression = "string"
+)
 }
+}
+

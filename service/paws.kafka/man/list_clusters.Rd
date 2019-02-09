@@ -4,11 +4,8 @@
 \alias{list_clusters}
 \title{Returns a list of clusters in an account}
 \usage{
-list_clusters(
-  ClusterNameFilter = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_clusters(ClusterNameFilter = NULL, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{ClusterNameFilter}{Specify a prefix of the name of the clusters that you want to list. The service lists all the clusters whose names start with this prefix.}
@@ -20,6 +17,12 @@ list_clusters(
 \description{
 Returns a list of clusters in an account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_clusters(
+  ClusterNameFilter = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

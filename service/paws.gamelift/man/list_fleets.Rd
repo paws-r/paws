@@ -18,8 +18,6 @@ Retrieves a collection of fleet records for this AWS account. You can filter the
 }
 \details{
 Fleet records are not listed in any particular order.
-
-Fleet-related operations include:
 \itemize{
 \item CreateFleet
 \item ListFleets

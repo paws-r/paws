@@ -2,17 +2,17 @@
 % Please edit documentation in R/paws.elbv2_operations.R
 \name{remove_listener_certificates}
 \alias{remove_listener_certificates}
-\title{Removes the specified certificate from the specified secure listener}
+\title{Removes the specified certificate from the specified HTTPS listener}
 \usage{
 remove_listener_certificates(ListenerArn, Certificates)
 }
 \arguments{
 \item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener.}
 
-\item{Certificates}{[required] The certificate to remove. You can specify one certificate per call.}
+\item{Certificates}{[required] The certificate to remove. You can specify one certificate per call. Set \code{CertificateArn} to the certificate ARN but do not set \code{IsDefault}.}
 }
 \description{
-Removes the specified certificate from the specified secure listener.
+Removes the specified certificate from the specified HTTPS listener.
 }
 \details{
 You can't remove the default certificate for a listener. To replace the default certificate, call ModifyListener.

@@ -15,7 +15,7 @@ create_route_table(DryRun = NULL, VpcId)
 Creates a route table for the specified VPC. After you create a route table, you can add routes and associate the table with a subnet.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html}{Route Tables} in the \emph{Amazon Virtual Private Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html}{Route Tables} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{create_route_table(

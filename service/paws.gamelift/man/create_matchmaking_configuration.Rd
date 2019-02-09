@@ -16,7 +16,7 @@ create_matchmaking_configuration(Name, Description = NULL,
 
 \item{Description}{Meaningful description of the matchmaking configuration.}
 
-\item{GameSessionQueueArns}{[required] Amazon Resource Name (\href{http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html}{ARN}) that is assigned to a game session queue and uniquely identifies it. Format is \code{arn:aws:gamelift:<region>::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912}. These queues are used when placing game sessions for matches that are created with this matchmaking configuration. Queues can be located in any region.}
+\item{GameSessionQueueArns}{[required] Amazon Resource Name (\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html}{ARN}) that is assigned to a game session queue and uniquely identifies it. Format is \code{arn:aws:gamelift:<region>::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912}. These queues are used when placing game sessions for matches that are created with this matchmaking configuration. Queues can be located in any region.}
 
 \item{RequestTimeoutSeconds}{[required] Maximum duration, in seconds, that a matchmaking ticket can remain in process before timing out. Requests that time out can be resubmitted as needed.}
 
@@ -32,9 +32,9 @@ create_matchmaking_configuration(Name, Description = NULL,
 
 \item{CustomEventData}{Information to attached to all events related to the matchmaking configuration.}
 
-\item{GameProperties}{Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to a game server process in the GameSession object with a request to start a new game session (see \href{http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession}{Start a Game Session}). This information is added to the new GameSession object that is created for a successful match.}
+\item{GameProperties}{Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to a game server process in the GameSession object with a request to start a new game session (see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession}{Start a Game Session}). This information is added to the new GameSession object that is created for a successful match.}
 
-\item{GameSessionData}{Set of custom game session properties, formatted as a single string value. This data is passed to a game server process in the GameSession object with a request to start a new game session (see \href{http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession}{Start a Game Session}). This information is added to the new GameSession object that is created for a successful match.}
+\item{GameSessionData}{Set of custom game session properties, formatted as a single string value. This data is passed to a game server process in the GameSession object with a request to start a new game session (see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession}{Start a Game Session}). This information is added to the new GameSession object that is created for a successful match.}
 }
 \description{
 Defines a new matchmaking configuration for use with FlexMatch. A matchmaking configuration sets out guidelines for matching players and getting the matches into games. You can set up multiple matchmaking configurations to handle the scenarios needed for your game. Each matchmaking ticket (StartMatchmaking or StartMatchBackfill) specifies a configuration for the match and provides player attributes to support the configuration being used.
@@ -44,9 +44,7 @@ To create a matchmaking configuration, at a minimum you must specify the followi
 
 \strong{Player acceptance} -- In each configuration, you have the option to require that all players accept participation in a proposed match. To enable this feature, set \emph{AcceptanceRequired} to true and specify a time limit for player acceptance. Players have the option to accept or reject a proposed match, and a match does not move ahead to game session placement unless all matched players accept.
 
-\strong{Matchmaking status notification} -- There are two ways to track the progress of matchmaking tickets: (1) polling ticket status with DescribeMatchmaking; or (2) receiving notifications with Amazon Simple Notification Service (SNS). To use notifications, you first need to set up an SNS topic to receive the notifications, and provide the topic ARN in the matchmaking configuration (see \href{http://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html}{Setting up Notifications for Matchmaking}). Since notifications promise only "best effort" delivery, we recommend calling \code{DescribeMatchmaking} if no notifications are received within 30 seconds.
-
-Operations related to match configurations and rule sets include:
+\strong{Matchmaking status notification} -- There are two ways to track the progress of matchmaking tickets: (1) polling ticket status with DescribeMatchmaking; or (2) receiving notifications with Amazon Simple Notification Service (SNS). To use notifications, you first need to set up an SNS topic to receive the notifications, and provide the topic ARN in the matchmaking configuration (see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html}{Setting up Notifications for Matchmaking}). Since notifications promise only "best effort" delivery, we recommend calling \code{DescribeMatchmaking} if no notifications are received within 30 seconds.
 \itemize{
 \item CreateMatchmakingConfiguration
 \item DescribeMatchmakingConfigurations
@@ -55,6 +53,7 @@ Operations related to match configurations and rule sets include:
 \item CreateMatchmakingRuleSet
 \item DescribeMatchmakingRuleSets
 \item ValidateMatchmakingRuleSet
+\item DeleteMatchmakingRuleSet
 }
 }
 \section{Accepted Parameters}{

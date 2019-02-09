@@ -35,6 +35,42 @@ accept_certificate_transfer <- function (certificateId, setAsActive = NULL)
     return(response)
 }
 
+#' Adds a thing to a billing group
+#'
+#' Adds a thing to a billing group.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' add_thing_to_billing_group(
+#'   billingGroupName = "string",
+#'   billingGroupArn = "string",
+#'   thingName = "string",
+#'   thingArn = "string"
+#' )
+#' ```
+#'
+#' @param billingGroupName The name of the billing group.
+#' @param billingGroupArn The ARN of the billing group.
+#' @param thingName The name of the thing to be added to the billing group.
+#' @param thingArn The ARN of the thing to be added to the billing group.
+#'
+#' @export
+add_thing_to_billing_group <- function (billingGroupName = NULL, 
+    billingGroupArn = NULL, thingName = NULL, thingArn = NULL) 
+{
+    op <- new_operation(name = "AddThingToBillingGroup", http_method = "PUT", 
+        http_path = "/billing-groups/addThingToBillingGroup", 
+        paginator = list())
+    input <- add_thing_to_billing_group_input(billingGroupName = billingGroupName, 
+        billingGroupArn = billingGroupArn, thingName = thingName, 
+        thingArn = thingArn)
+    output <- add_thing_to_billing_group_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Adds a thing to a thing group
 #'
 #' Adds a thing to a thing group.
@@ -45,7 +81,8 @@ accept_certificate_transfer <- function (certificateId, setAsActive = NULL)
 #'   thingGroupName = "string",
 #'   thingGroupArn = "string",
 #'   thingName = "string",
-#'   thingArn = "string"
+#'   thingArn = "string",
+#'   overrideDynamicGroups = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -53,16 +90,18 @@ accept_certificate_transfer <- function (certificateId, setAsActive = NULL)
 #' @param thingGroupArn The ARN of the group to which you are adding a thing.
 #' @param thingName The name of the thing to add to a group.
 #' @param thingArn The ARN of the thing to add to a group.
+#' @param overrideDynamicGroups Override dynamic thing groups with static thing groups when 10-group limit is reached. If a thing belongs to 10 thing groups, and one or more of those groups are dynamic thing groups, adding a thing to a static group removes the thing from the last dynamic group.
 #'
 #' @export
 add_thing_to_thing_group <- function (thingGroupName = NULL, 
-    thingGroupArn = NULL, thingName = NULL, thingArn = NULL) 
+    thingGroupArn = NULL, thingName = NULL, thingArn = NULL, 
+    overrideDynamicGroups = NULL) 
 {
     op <- new_operation(name = "AddThingToThingGroup", http_method = "PUT", 
         http_path = "/thing-groups/addThingToThingGroup", paginator = list())
     input <- add_thing_to_thing_group_input(thingGroupName = thingGroupName, 
         thingGroupArn = thingGroupArn, thingName = thingName, 
-        thingArn = thingArn)
+        thingArn = thingArn, overrideDynamicGroups = overrideDynamicGroups)
     output <- add_thing_to_thing_group_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -122,7 +161,7 @@ associate_targets_with_job <- function (targets, jobId, comment = NULL)
 #' ```
 #'
 #' @param policyName &#91;required&#93; The name of the policy to attach.
-#' @param target &#91;required&#93; The identity to which the policy is attached.
+#' @param target &#91;required&#93; The [identity](https://docs.aws.amazon.com/iot/latest/developerguide/iot-security-identity.html) to which the policy is attached.
 #'
 #' @export
 attach_policy <- function (policyName, target) 
@@ -292,24 +331,27 @@ cancel_certificate_transfer <- function (certificateId)
 #' ```
 #' cancel_job(
 #'   jobId = "string",
+#'   reasonCode = "string",
 #'   comment = "string",
 #'   force = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @param jobId &#91;required&#93; The unique identifier you assigned to this job when it was created.
+#' @param reasonCode (Optional)A reason code string that explains why the job was canceled.
 #' @param comment An optional comment string describing why the job was canceled.
 #' @param force (Optional) If `true` job executions with status \"IN\_PROGRESS\" and \"QUEUED\" are canceled, otherwise only job executions with status \"QUEUED\" are canceled. The default is `false`.
 #' 
 #' Canceling a job which is \"IN\_PROGRESS\", will cause a device which is executing the job to be unable to update the job execution status. Use caution and ensure that each device executing a job which is canceled is able to recover to a valid state.
 #'
 #' @export
-cancel_job <- function (jobId, comment = NULL, force = NULL) 
+cancel_job <- function (jobId, reasonCode = NULL, comment = NULL, 
+    force = NULL) 
 {
     op <- new_operation(name = "CancelJob", http_method = "PUT", 
         http_path = "/jobs/{jobId}/cancel", paginator = list())
-    input <- cancel_job_input(jobId = jobId, comment = comment, 
-        force = force)
+    input <- cancel_job_input(jobId = jobId, reasonCode = reasonCode, 
+        comment = comment, force = force)
     output <- cancel_job_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -419,6 +461,45 @@ create_authorizer <- function (authorizerName, authorizerFunctionArn,
     return(response)
 }
 
+#' Creates a billing group
+#'
+#' Creates a billing group.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' create_billing_group(
+#'   billingGroupName = "string",
+#'   billingGroupProperties = list(
+#'     billingGroupDescription = "string"
+#'   ),
+#'   tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @param billingGroupName &#91;required&#93; The name you wish to give to the billing group.
+#' @param billingGroupProperties The properties of the billing group.
+#' @param tags Metadata which can be used to manage the billing group.
+#'
+#' @export
+create_billing_group <- function (billingGroupName, billingGroupProperties = NULL, 
+    tags = NULL) 
+{
+    op <- new_operation(name = "CreateBillingGroup", http_method = "POST", 
+        http_path = "/billing-groups/{billingGroupName}", paginator = list())
+    input <- create_billing_group_input(billingGroupName = billingGroupName, 
+        billingGroupProperties = billingGroupProperties, tags = tags)
+    output <- create_billing_group_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Creates an X
 #'
 #' Creates an X.509 certificate using the specified certificate signing request.
@@ -475,6 +556,66 @@ create_certificate_from_csr <- function (certificateSigningRequest,
     return(response)
 }
 
+#' Creates a dynamic thing group
+#'
+#' Creates a dynamic thing group.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' create_dynamic_thing_group(
+#'   thingGroupName = "string",
+#'   thingGroupProperties = list(
+#'     thingGroupDescription = "string",
+#'     attributePayload = list(
+#'       attributes = list(
+#'         "string"
+#'       ),
+#'       merge = TRUE|FALSE
+#'     )
+#'   ),
+#'   indexName = "string",
+#'   queryString = "string",
+#'   queryVersion = "string",
+#'   tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @param thingGroupName &#91;required&#93; The dynamic thing group name to create.
+#' @param thingGroupProperties The dynamic thing group properties.
+#' @param indexName The dynamic thing group index name.
+#' 
+#' Currently one index is supported: \"AWS\_Things\".
+#' @param queryString &#91;required&#93; The dynamic thing group search query string.
+#' 
+#' See [Query Syntax](http://docs.aws.amazon.com/iot/latest/developerguide/query-syntax.html) for information about query string syntax.
+#' @param queryVersion The dynamic thing group query version.
+#' 
+#' Currently one query version is supported: \"2017-09-30\". If not specified, the query version defaults to this value.
+#' @param tags Metadata which can be used to manage the dynamic thing group.
+#'
+#' @export
+create_dynamic_thing_group <- function (thingGroupName, thingGroupProperties = NULL, 
+    indexName = NULL, queryString, queryVersion = NULL, tags = NULL) 
+{
+    op <- new_operation(name = "CreateDynamicThingGroup", http_method = "POST", 
+        http_path = "/dynamic-thing-groups/{thingGroupName}", 
+        paginator = list())
+    input <- create_dynamic_thing_group_input(thingGroupName = thingGroupName, 
+        thingGroupProperties = thingGroupProperties, indexName = indexName, 
+        queryString = queryString, queryVersion = queryVersion, 
+        tags = tags)
+    output <- create_dynamic_thing_group_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Creates a job
 #'
 #' Creates a job.
@@ -495,10 +636,34 @@ create_certificate_from_csr <- function (certificateSigningRequest,
 #'   ),
 #'   targetSelection = "CONTINUOUS"|"SNAPSHOT",
 #'   jobExecutionsRolloutConfig = list(
-#'     maximumPerMinute = 123
+#'     maximumPerMinute = 123,
+#'     exponentialRate = list(
+#'       baseRatePerMinute = 123,
+#'       incrementFactor = 123.0,
+#'       rateIncreaseCriteria = list(
+#'         numberOfNotifiedThings = 123,
+#'         numberOfSucceededThings = 123
+#'       )
+#'     )
+#'   ),
+#'   abortConfig = list(
+#'     criteriaList = list(
+#'       list(
+#'         failureType = "FAILED"|"REJECTED"|"TIMED_OUT"|"ALL",
+#'         action = "CANCEL",
+#'         thresholdPercentage = 123.0,
+#'         minNumberOfExecutedThings = 123
+#'       )
+#'     )
 #'   ),
 #'   timeoutConfig = list(
 #'     inProgressTimeoutInMinutes = 123
+#'   ),
+#'   tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -507,17 +672,27 @@ create_certificate_from_csr <- function (certificateSigningRequest,
 #' @param targets &#91;required&#93; A list of things and thing groups to which the job should be sent.
 #' @param documentSource An S3 link to the job document.
 #' @param document The job document.
+#' 
+#' If the job document resides in an S3 bucket, you must use a placeholder link when specifying the document.
+#' 
+#' The placeholder link is of the following form:
+#' 
+#' `${aws:iot:s3-presigned-url:https://s3.amazonaws.com/bucket/key}bucket/key}`
+#' 
+#' where *bucket* is your bucket name and *key* is the object in the bucket to which you are linking.
 #' @param description A short text description of the job.
 #' @param presignedUrlConfig Configuration information for pre-signed S3 URLs.
 #' @param targetSelection Specifies whether the job will continue to run (CONTINUOUS), or will be complete after all those things specified as targets have completed the job (SNAPSHOT). If continuous, the job may also be run on a thing when a change is detected in a target. For example, a job will run on a thing when the thing is added to a target group, even after the job was completed by all things originally in the group.
 #' @param jobExecutionsRolloutConfig Allows you to create a staged rollout of the job.
+#' @param abortConfig Allows you to create criteria to abort a job.
 #' @param timeoutConfig Specifies the amount of time each device has to finish its execution of the job. The timer is started when the job execution status is set to `IN_PROGRESS`. If the job execution status is not set to another terminal state before the time expires, it will be automatically set to `TIMED_OUT`.
+#' @param tags Metadata which can be used to manage the job.
 #'
 #' @export
 create_job <- function (jobId, targets, documentSource = NULL, 
     document = NULL, description = NULL, presignedUrlConfig = NULL, 
     targetSelection = NULL, jobExecutionsRolloutConfig = NULL, 
-    timeoutConfig = NULL) 
+    abortConfig = NULL, timeoutConfig = NULL, tags = NULL) 
 {
     op <- new_operation(name = "CreateJob", http_method = "PUT", 
         http_path = "/jobs/{jobId}", paginator = list())
@@ -525,7 +700,8 @@ create_job <- function (jobId, targets, documentSource = NULL,
         documentSource = documentSource, document = document, 
         description = description, presignedUrlConfig = presignedUrlConfig, 
         targetSelection = targetSelection, jobExecutionsRolloutConfig = jobExecutionsRolloutConfig, 
-        timeoutConfig = timeoutConfig)
+        abortConfig = abortConfig, timeoutConfig = timeoutConfig, 
+        tags = tags)
     output <- create_job_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -827,6 +1003,12 @@ create_scheduled_audit <- function (frequency, dayOfMonth = NULL,
 #'       alertTargetArn = "string",
 #'       roleArn = "string"
 #'     )
+#'   ),
+#'   tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -835,17 +1017,18 @@ create_scheduled_audit <- function (frequency, dayOfMonth = NULL,
 #' @param securityProfileDescription A description of the security profile.
 #' @param behaviors &#91;required&#93; Specifies the behaviors that, when violated by a device (thing), cause an alert.
 #' @param alertTargets Specifies the destinations to which alerts are sent. (Alerts are always sent to the console.) Alerts are generated when a device (thing) violates a behavior.
+#' @param tags Metadata which can be used to manage the security profile.
 #'
 #' @export
 create_security_profile <- function (securityProfileName, securityProfileDescription = NULL, 
-    behaviors, alertTargets = NULL) 
+    behaviors, alertTargets = NULL, tags = NULL) 
 {
     op <- new_operation(name = "CreateSecurityProfile", http_method = "POST", 
         http_path = "/security-profiles/{securityProfileName}", 
         paginator = list())
     input <- create_security_profile_input(securityProfileName = securityProfileName, 
         securityProfileDescription = securityProfileDescription, 
-        behaviors = behaviors, alertTargets = alertTargets)
+        behaviors = behaviors, alertTargets = alertTargets, tags = tags)
     output <- create_security_profile_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -912,7 +1095,8 @@ create_stream <- function (streamId, description = NULL, files,
 #'       "string"
 #'     ),
 #'     merge = TRUE|FALSE
-#'   )
+#'   ),
+#'   billingGroupName = "string"
 #' )
 #' ```
 #'
@@ -921,14 +1105,16 @@ create_stream <- function (streamId, description = NULL, files,
 #' @param attributePayload The attribute payload, which consists of up to three name/value pairs in a JSON document. For example:
 #' 
 #' `{\"attributes\":{\"string1\":\"string2\"}}`
+#' @param billingGroupName The name of the billing group the thing will be added to.
 #'
 #' @export
-create_thing <- function (thingName, thingTypeName = NULL, attributePayload = NULL) 
+create_thing <- function (thingName, thingTypeName = NULL, attributePayload = NULL, 
+    billingGroupName = NULL) 
 {
     op <- new_operation(name = "CreateThing", http_method = "POST", 
         http_path = "/things/{thingName}", paginator = list())
     input <- create_thing_input(thingName = thingName, thingTypeName = thingTypeName, 
-        attributePayload = attributePayload)
+        attributePayload = attributePayload, billingGroupName = billingGroupName)
     output <- create_thing_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -955,6 +1141,12 @@ create_thing <- function (thingName, thingTypeName = NULL, attributePayload = NU
 #'       ),
 #'       merge = TRUE|FALSE
 #'     )
+#'   ),
+#'   tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -962,15 +1154,17 @@ create_thing <- function (thingName, thingTypeName = NULL, attributePayload = NU
 #' @param thingGroupName &#91;required&#93; The thing group name to create.
 #' @param parentGroupName The name of the parent thing group.
 #' @param thingGroupProperties The thing group properties.
+#' @param tags Metadata which can be used to manage the thing group.
 #'
 #' @export
 create_thing_group <- function (thingGroupName, parentGroupName = NULL, 
-    thingGroupProperties = NULL) 
+    thingGroupProperties = NULL, tags = NULL) 
 {
     op <- new_operation(name = "CreateThingGroup", http_method = "POST", 
         http_path = "/thing-groups/{thingGroupName}", paginator = list())
     input <- create_thing_group_input(thingGroupName = thingGroupName, 
-        parentGroupName = parentGroupName, thingGroupProperties = thingGroupProperties)
+        parentGroupName = parentGroupName, thingGroupProperties = thingGroupProperties, 
+        tags = tags)
     output <- create_thing_group_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -991,20 +1185,28 @@ create_thing_group <- function (thingGroupName, parentGroupName = NULL,
 #'     searchableAttributes = list(
 #'       "string"
 #'     )
+#'   ),
+#'   tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
 #'
 #' @param thingTypeName &#91;required&#93; The name of the thing type.
 #' @param thingTypeProperties The ThingTypeProperties for the thing type to create. It contains information about the new thing type including a description, and a list of searchable thing attribute names.
+#' @param tags Metadata which can be used to manage the thing type.
 #'
 #' @export
-create_thing_type <- function (thingTypeName, thingTypeProperties = NULL) 
+create_thing_type <- function (thingTypeName, thingTypeProperties = NULL, 
+    tags = NULL) 
 {
     op <- new_operation(name = "CreateThingType", http_method = "POST", 
         http_path = "/thing-types/{thingTypeName}", paginator = list())
     input <- create_thing_type_input(thingTypeName = thingTypeName, 
-        thingTypeProperties = thingTypeProperties)
+        thingTypeProperties = thingTypeProperties, tags = tags)
     output <- create_thing_type_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -1106,6 +1308,11 @@ create_thing_type <- function (thingTypeName, thingTypeProperties = NULL)
 #'           channelName = "string",
 #'           roleArn = "string"
 #'         ),
+#'         iotEvents = list(
+#'           inputName = "string",
+#'           messageId = "string",
+#'           roleArn = "string"
+#'         ),
 #'         stepFunctions = list(
 #'           executionNamePrefix = "string",
 #'           stateMachineName = "string",
@@ -1197,25 +1404,39 @@ create_thing_type <- function (thingTypeName, thingTypeProperties = NULL)
 #'         channelName = "string",
 #'         roleArn = "string"
 #'       ),
+#'       iotEvents = list(
+#'         inputName = "string",
+#'         messageId = "string",
+#'         roleArn = "string"
+#'       ),
 #'       stepFunctions = list(
 #'         executionNamePrefix = "string",
 #'         stateMachineName = "string",
 #'         roleArn = "string"
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   tags = "string"
 #' )
 #' ```
 #'
 #' @param ruleName &#91;required&#93; The name of the rule.
 #' @param topicRulePayload &#91;required&#93; The rule payload.
+#' @param tags Metadata which can be used to manage the topic rule.
+#' 
+#' For URI Request parameters use format: \...key1=value1&key2=value2\...
+#' 
+#' For the CLI command-line parameter use format: \--tags \"key1=value1&key2=value2\...\"
+#' 
+#' For the cli-input-json file use format: \"tags\": \"key1=value1&key2=value2\...\"
 #'
 #' @export
-create_topic_rule <- function (ruleName, topicRulePayload) 
+create_topic_rule <- function (ruleName, topicRulePayload, tags = NULL) 
 {
     op <- new_operation(name = "CreateTopicRule", http_method = "POST", 
         http_path = "/rules/{ruleName}", paginator = list())
-    input <- create_topic_rule_input(ruleName = ruleName, topicRulePayload = topicRulePayload)
+    input <- create_topic_rule_input(ruleName = ruleName, topicRulePayload = topicRulePayload, 
+        tags = tags)
     output <- create_topic_rule_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -1276,6 +1497,35 @@ delete_authorizer <- function (authorizerName)
     return(response)
 }
 
+#' Deletes the billing group
+#'
+#' Deletes the billing group.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_billing_group(
+#'   billingGroupName = "string",
+#'   expectedVersion = 123
+#' )
+#' ```
+#'
+#' @param billingGroupName &#91;required&#93; The name of the billing group.
+#' @param expectedVersion The expected version of the billing group. If the version of the billing group does not match the expected version specified in the request, the `DeleteBillingGroup` request is rejected with a `VersionConflictException`.
+#'
+#' @export
+delete_billing_group <- function (billingGroupName, expectedVersion = NULL) 
+{
+    op <- new_operation(name = "DeleteBillingGroup", http_method = "DELETE", 
+        http_path = "/billing-groups/{billingGroupName}", paginator = list())
+    input <- delete_billing_group_input(billingGroupName = billingGroupName, 
+        expectedVersion = expectedVersion)
+    output <- delete_billing_group_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Deletes a registered CA certificate
 #'
 #' Deletes a registered CA certificate.
@@ -1327,6 +1577,36 @@ delete_certificate <- function (certificateId, forceDelete = NULL)
     input <- delete_certificate_input(certificateId = certificateId, 
         forceDelete = forceDelete)
     output <- delete_certificate_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes a dynamic thing group
+#'
+#' Deletes a dynamic thing group.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_dynamic_thing_group(
+#'   thingGroupName = "string",
+#'   expectedVersion = 123
+#' )
+#' ```
+#'
+#' @param thingGroupName &#91;required&#93; The name of the dynamic thing group to delete.
+#' @param expectedVersion The expected version of the dynamic thing group to delete.
+#'
+#' @export
+delete_dynamic_thing_group <- function (thingGroupName, expectedVersion = NULL) 
+{
+    op <- new_operation(name = "DeleteDynamicThingGroup", http_method = "DELETE", 
+        http_path = "/dynamic-thing-groups/{thingGroupName}", 
+        paginator = list())
+    input <- delete_dynamic_thing_group_input(thingGroupName = thingGroupName, 
+        expectedVersion = expectedVersion)
+    output <- delete_dynamic_thing_group_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -1635,7 +1915,7 @@ delete_stream <- function (streamId)
 
 #' Deletes the specified thing
 #'
-#' Deletes the specified thing.
+#' Deletes the specified thing. Returns successfully with no error if the deletion is successful or you specify a thing that doesn\'t exist.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1690,9 +1970,9 @@ delete_thing_group <- function (thingGroupName, expectedVersion = NULL)
     return(response)
 }
 
-#' Deletes the specified thing type 
+#' Deletes the specified thing type
 #'
-#' Deletes the specified thing type . You cannot delete a thing type if it has things associated with it. To delete a thing type, first mark it as deprecated by calling DeprecateThingType, then remove any associated things by calling UpdateThing to change the thing type on any associated thing, and finally use DeleteThingType to delete the thing type.
+#' Deletes the specified thing type. You cannot delete a thing type if it has things associated with it. To delete a thing type, first mark it as deprecated by calling DeprecateThingType, then remove any associated things by calling UpdateThing to change the thing type on any associated thing, and finally use DeleteThingType to delete the thing type.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1870,6 +2150,32 @@ describe_authorizer <- function (authorizerName)
         http_path = "/authorizer/{authorizerName}", paginator = list())
     input <- describe_authorizer_input(authorizerName = authorizerName)
     output <- describe_authorizer_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns information about a billing group
+#'
+#' Returns information about a billing group.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_billing_group(
+#'   billingGroupName = "string"
+#' )
+#' ```
+#'
+#' @param billingGroupName &#91;required&#93; The name of the billing group.
+#'
+#' @export
+describe_billing_group <- function (billingGroupName) 
+{
+    op <- new_operation(name = "DescribeBillingGroup", http_method = "GET", 
+        http_path = "/billing-groups/{billingGroupName}", paginator = list())
+    input <- describe_billing_group_input(billingGroupName = billingGroupName)
+    output <- describe_billing_group_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -2398,6 +2704,8 @@ detach_security_profile <- function (securityProfileName, securityProfileTargetA
 #' Detaches the specified principal from the specified thing
 #'
 #' Detaches the specified principal from the specified thing.
+#' 
+#' This call is asynchronous. It might take several seconds for the detachment to propagate.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -2920,6 +3228,38 @@ list_authorizers <- function (pageSize = NULL, marker = NULL,
     input <- list_authorizers_input(pageSize = pageSize, marker = marker, 
         ascendingOrder = ascendingOrder, status = status)
     output <- list_authorizers_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the billing groups you have created
+#'
+#' Lists the billing groups you have created.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' list_billing_groups(
+#'   nextToken = "string",
+#'   maxResults = 123,
+#'   namePrefixFilter = "string"
+#' )
+#' ```
+#'
+#' @param nextToken The token to retrieve the next set of results.
+#' @param maxResults The maximum number of results to return per request.
+#' @param namePrefixFilter Limit the results to billing groups whose names have the given prefix.
+#'
+#' @export
+list_billing_groups <- function (nextToken = NULL, maxResults = NULL, 
+    namePrefixFilter = NULL) 
+{
+    op <- new_operation(name = "ListBillingGroups", http_method = "GET", 
+        http_path = "/billing-groups", paginator = list())
+    input <- list_billing_groups_input(nextToken = nextToken, 
+        maxResults = maxResults, namePrefixFilter = namePrefixFilter)
+    output <- list_billing_groups_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -3547,6 +3887,35 @@ list_streams <- function (maxResults = NULL, nextToken = NULL,
     return(response)
 }
 
+#' Lists the tags (metadata) you have assigned to the resource
+#'
+#' Lists the tags (metadata) you have assigned to the resource.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' list_tags_for_resource(
+#'   resourceArn = "string",
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @param resourceArn &#91;required&#93; The ARN of the resource.
+#' @param nextToken The token to retrieve the next set of results.
+#'
+#' @export
+list_tags_for_resource <- function (resourceArn, nextToken = NULL) 
+{
+    op <- new_operation(name = "ListTagsForResource", http_method = "GET", 
+        http_path = "/tags", paginator = list())
+    input <- list_tags_for_resource_input(resourceArn = resourceArn, 
+        nextToken = nextToken)
+    output <- list_tags_for_resource_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' List targets for the specified policy
 #'
 #' List targets for the specified policy.
@@ -3844,6 +4213,39 @@ list_things <- function (nextToken = NULL, maxResults = NULL,
     return(response)
 }
 
+#' Lists the things you have added to the given billing group
+#'
+#' Lists the things you have added to the given billing group.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' list_things_in_billing_group(
+#'   billingGroupName = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @param billingGroupName &#91;required&#93; The name of the billing group.
+#' @param nextToken The token to retrieve the next set of results.
+#' @param maxResults The maximum number of results to return per request.
+#'
+#' @export
+list_things_in_billing_group <- function (billingGroupName, nextToken = NULL, 
+    maxResults = NULL) 
+{
+    op <- new_operation(name = "ListThingsInBillingGroup", http_method = "GET", 
+        http_path = "/billing-groups/{billingGroupName}/things", 
+        paginator = list())
+    input <- list_things_in_billing_group_input(billingGroupName = billingGroupName, 
+        nextToken = nextToken, maxResults = maxResults)
+    output <- list_things_in_billing_group_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Lists the things in the specified group
 #'
 #' Lists the things in the specified group.
@@ -4124,6 +4526,42 @@ reject_certificate_transfer <- function (certificateId, rejectReason = NULL)
     return(response)
 }
 
+#' Removes the given thing from the billing group
+#'
+#' Removes the given thing from the billing group.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' remove_thing_from_billing_group(
+#'   billingGroupName = "string",
+#'   billingGroupArn = "string",
+#'   thingName = "string",
+#'   thingArn = "string"
+#' )
+#' ```
+#'
+#' @param billingGroupName The name of the billing group.
+#' @param billingGroupArn The ARN of the billing group.
+#' @param thingName The name of the thing to be removed from the billing group.
+#' @param thingArn The ARN of the thing to be removed from the billing group.
+#'
+#' @export
+remove_thing_from_billing_group <- function (billingGroupName = NULL, 
+    billingGroupArn = NULL, thingName = NULL, thingArn = NULL) 
+{
+    op <- new_operation(name = "RemoveThingFromBillingGroup", 
+        http_method = "PUT", http_path = "/billing-groups/removeThingFromBillingGroup", 
+        paginator = list())
+    input <- remove_thing_from_billing_group_input(billingGroupName = billingGroupName, 
+        billingGroupArn = billingGroupArn, thingName = thingName, 
+        thingArn = thingArn)
+    output <- remove_thing_from_billing_group_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Remove the specified thing from the specified group
 #'
 #' Remove the specified thing from the specified group.
@@ -4254,6 +4692,11 @@ remove_thing_from_thing_group <- function (thingGroupName = NULL,
 #'           channelName = "string",
 #'           roleArn = "string"
 #'         ),
+#'         iotEvents = list(
+#'           inputName = "string",
+#'           messageId = "string",
+#'           roleArn = "string"
+#'         ),
 #'         stepFunctions = list(
 #'           executionNamePrefix = "string",
 #'           stateMachineName = "string",
@@ -4343,6 +4786,11 @@ remove_thing_from_thing_group <- function (thingGroupName = NULL,
 #'       iotAnalytics = list(
 #'         channelArn = "string",
 #'         channelName = "string",
+#'         roleArn = "string"
+#'       ),
+#'       iotEvents = list(
+#'         inputName = "string",
+#'         messageId = "string",
 #'         roleArn = "string"
 #'       ),
 #'       stepFunctions = list(
@@ -4649,6 +5097,39 @@ stop_thing_registration_task <- function (taskId)
     return(response)
 }
 
+#' Adds to or modifies the tags of the given resource
+#'
+#' Adds to or modifies the tags of the given resource. Tags are metadata which can be used to manage a resource.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' tag_resource(
+#'   resourceArn = "string",
+#'   tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @param resourceArn &#91;required&#93; The ARN of the resource.
+#' @param tags &#91;required&#93; The new or modified tags for the resource.
+#'
+#' @export
+tag_resource <- function (resourceArn, tags) 
+{
+    op <- new_operation(name = "TagResource", http_method = "POST", 
+        http_path = "/tags", paginator = list())
+    input <- tag_resource_input(resourceArn = resourceArn, tags = tags)
+    output <- tag_resource_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Tests if a specified principal is authorized to perform an AWS IoT action on a specified resource
 #'
 #' Tests if a specified principal is authorized to perform an AWS IoT action on a specified resource. Use this to test and debug the authorization behavior of devices that connect to the AWS IoT device gateway.
@@ -4772,6 +5253,37 @@ transfer_certificate <- function (certificateId, targetAwsAccount,
     return(response)
 }
 
+#' Removes the given tags (metadata) from the resource
+#'
+#' Removes the given tags (metadata) from the resource.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' untag_resource(
+#'   resourceArn = "string",
+#'   tagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @param resourceArn &#91;required&#93; The ARN of the resource.
+#' @param tagKeys &#91;required&#93; A list of the keys of the tags to be removed from the resource.
+#'
+#' @export
+untag_resource <- function (resourceArn, tagKeys) 
+{
+    op <- new_operation(name = "UntagResource", http_method = "POST", 
+        http_path = "/untag", paginator = list())
+    input <- untag_resource_input(resourceArn = resourceArn, 
+        tagKeys = tagKeys)
+    output <- untag_resource_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Configures or reconfigures the Device Defender audit settings for this account
 #'
 #' Configures or reconfigures the Device Defender audit settings for this account. Settings include how audit notifications are sent and which audit checks are enabled or disabled.
@@ -4861,6 +5373,40 @@ update_authorizer <- function (authorizerName, authorizerFunctionArn = NULL,
     return(response)
 }
 
+#' Updates information about the billing group
+#'
+#' Updates information about the billing group.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' update_billing_group(
+#'   billingGroupName = "string",
+#'   billingGroupProperties = list(
+#'     billingGroupDescription = "string"
+#'   ),
+#'   expectedVersion = 123
+#' )
+#' ```
+#'
+#' @param billingGroupName &#91;required&#93; The name of the billing group.
+#' @param billingGroupProperties &#91;required&#93; The properties of the billing group.
+#' @param expectedVersion The expected version of the billing group. If the version of the billing group does not match the expected version specified in the request, the `UpdateBillingGroup` request is rejected with a `VersionConflictException`.
+#'
+#' @export
+update_billing_group <- function (billingGroupName, billingGroupProperties, 
+    expectedVersion = NULL) 
+{
+    op <- new_operation(name = "UpdateBillingGroup", http_method = "PATCH", 
+        http_path = "/billing-groups/{billingGroupName}", paginator = list())
+    input <- update_billing_group_input(billingGroupName = billingGroupName, 
+        billingGroupProperties = billingGroupProperties, expectedVersion = expectedVersion)
+    output <- update_billing_group_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Updates a registered CA certificate
 #'
 #' Updates a registered CA certificate.
@@ -4941,6 +5487,59 @@ update_certificate <- function (certificateId, newStatus)
     return(response)
 }
 
+#' Updates a dynamic thing group
+#'
+#' Updates a dynamic thing group.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' update_dynamic_thing_group(
+#'   thingGroupName = "string",
+#'   thingGroupProperties = list(
+#'     thingGroupDescription = "string",
+#'     attributePayload = list(
+#'       attributes = list(
+#'         "string"
+#'       ),
+#'       merge = TRUE|FALSE
+#'     )
+#'   ),
+#'   expectedVersion = 123,
+#'   indexName = "string",
+#'   queryString = "string",
+#'   queryVersion = "string"
+#' )
+#' ```
+#'
+#' @param thingGroupName &#91;required&#93; The name of the dynamic thing group to update.
+#' @param thingGroupProperties &#91;required&#93; The dynamic thing group properties to update.
+#' @param expectedVersion The expected version of the dynamic thing group to update.
+#' @param indexName The dynamic thing group index to update.
+#' 
+#' Currently one index is supported: \'AWS\_Things\'.
+#' @param queryString The dynamic thing group search query string to update.
+#' @param queryVersion The dynamic thing group query version to update.
+#' 
+#' Currently one query version is supported: \"2017-09-30\". If not specified, the query version defaults to this value.
+#'
+#' @export
+update_dynamic_thing_group <- function (thingGroupName, thingGroupProperties, 
+    expectedVersion = NULL, indexName = NULL, queryString = NULL, 
+    queryVersion = NULL) 
+{
+    op <- new_operation(name = "UpdateDynamicThingGroup", http_method = "PATCH", 
+        http_path = "/dynamic-thing-groups/{thingGroupName}", 
+        paginator = list())
+    input <- update_dynamic_thing_group_input(thingGroupName = thingGroupName, 
+        thingGroupProperties = thingGroupProperties, expectedVersion = expectedVersion, 
+        indexName = indexName, queryString = queryString, queryVersion = queryVersion)
+    output <- update_dynamic_thing_group_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Updates the event configurations
 #'
 #' Updates the event configurations.
@@ -4979,7 +5578,8 @@ update_event_configurations <- function (eventConfigurations = NULL)
 #' ```
 #' update_indexing_configuration(
 #'   thingIndexingConfiguration = list(
-#'     thingIndexingMode = "OFF"|"REGISTRY"|"REGISTRY_AND_SHADOW"
+#'     thingIndexingMode = "OFF"|"REGISTRY"|"REGISTRY_AND_SHADOW",
+#'     thingConnectivityIndexingMode = "OFF"|"STATUS"
 #'   ),
 #'   thingGroupIndexingConfiguration = list(
 #'     thingGroupIndexingMode = "OFF"|"ON"
@@ -5000,6 +5600,69 @@ update_indexing_configuration <- function (thingIndexingConfiguration = NULL,
     input <- update_indexing_configuration_input(thingIndexingConfiguration = thingIndexingConfiguration, 
         thingGroupIndexingConfiguration = thingGroupIndexingConfiguration)
     output <- update_indexing_configuration_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates supported fields of the specified job
+#'
+#' Updates supported fields of the specified job.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' update_job(
+#'   jobId = "string",
+#'   description = "string",
+#'   presignedUrlConfig = list(
+#'     roleArn = "string",
+#'     expiresInSec = 123
+#'   ),
+#'   jobExecutionsRolloutConfig = list(
+#'     maximumPerMinute = 123,
+#'     exponentialRate = list(
+#'       baseRatePerMinute = 123,
+#'       incrementFactor = 123.0,
+#'       rateIncreaseCriteria = list(
+#'         numberOfNotifiedThings = 123,
+#'         numberOfSucceededThings = 123
+#'       )
+#'     )
+#'   ),
+#'   abortConfig = list(
+#'     criteriaList = list(
+#'       list(
+#'         failureType = "FAILED"|"REJECTED"|"TIMED_OUT"|"ALL",
+#'         action = "CANCEL",
+#'         thresholdPercentage = 123.0,
+#'         minNumberOfExecutedThings = 123
+#'       )
+#'     )
+#'   ),
+#'   timeoutConfig = list(
+#'     inProgressTimeoutInMinutes = 123
+#'   )
+#' )
+#' ```
+#'
+#' @param jobId &#91;required&#93; The ID of the job to be updated.
+#' @param description A short text description of the job.
+#' @param presignedUrlConfig Configuration information for pre-signed S3 URLs.
+#' @param jobExecutionsRolloutConfig Allows you to create a staged rollout of the job.
+#' @param abortConfig Allows you to create criteria to abort a job.
+#' @param timeoutConfig Specifies the amount of time each device has to finish its execution of the job. The timer is started when the job execution status is set to `IN_PROGRESS`. If the job execution status is not set to another terminal state before the time expires, it will be automatically set to `TIMED_OUT`.
+#'
+#' @export
+update_job <- function (jobId, description = NULL, presignedUrlConfig = NULL, 
+    jobExecutionsRolloutConfig = NULL, abortConfig = NULL, timeoutConfig = NULL) 
+{
+    op <- new_operation(name = "UpdateJob", http_method = "PATCH", 
+        http_path = "/jobs/{jobId}", paginator = list())
+    input <- update_job_input(jobId = jobId, description = description, 
+        presignedUrlConfig = presignedUrlConfig, jobExecutionsRolloutConfig = jobExecutionsRolloutConfig, 
+        abortConfig = abortConfig, timeoutConfig = timeoutConfig)
+    output <- update_job_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -5280,23 +5943,26 @@ update_thing_group <- function (thingGroupName, thingGroupProperties,
 #'   ),
 #'   thingGroupsToRemove = list(
 #'     "string"
-#'   )
+#'   ),
+#'   overrideDynamicGroups = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @param thingName The thing whose group memberships will be updated.
 #' @param thingGroupsToAdd The groups to which the thing will be added.
 #' @param thingGroupsToRemove The groups from which the thing will be removed.
+#' @param overrideDynamicGroups Override dynamic thing groups with static thing groups when 10-group limit is reached. If a thing belongs to 10 thing groups, and one or more of those groups are dynamic thing groups, adding a thing to a static group removes the thing from the last dynamic group.
 #'
 #' @export
 update_thing_groups_for_thing <- function (thingName = NULL, 
-    thingGroupsToAdd = NULL, thingGroupsToRemove = NULL) 
+    thingGroupsToAdd = NULL, thingGroupsToRemove = NULL, overrideDynamicGroups = NULL) 
 {
     op <- new_operation(name = "UpdateThingGroupsForThing", http_method = "PUT", 
         http_path = "/thing-groups/updateThingGroupsForThing", 
         paginator = list())
     input <- update_thing_groups_for_thing_input(thingName = thingName, 
-        thingGroupsToAdd = thingGroupsToAdd, thingGroupsToRemove = thingGroupsToRemove)
+        thingGroupsToAdd = thingGroupsToAdd, thingGroupsToRemove = thingGroupsToRemove, 
+        overrideDynamicGroups = overrideDynamicGroups)
     output <- update_thing_groups_for_thing_output()
     svc <- service()
     request <- new_request(svc, op, input, output)

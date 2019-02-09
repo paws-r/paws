@@ -4,10 +4,8 @@
 \alias{put_configuration_set_reputation_options}
 \title{Enable or disable collection of reputation metrics for emails that you send using a particular configuration set in a specific AWS Region}
 \usage{
-put_configuration_set_reputation_options(
-  ConfigurationSetName = "string",
-  ReputationMetricsEnabled = TRUE|FALSE
-)
+put_configuration_set_reputation_options(ConfigurationSetName,
+  ReputationMetricsEnabled = NULL)
 }
 \arguments{
 \item{ConfigurationSetName}{[required] The name of the configuration set that you want to enable or disable reputation metric tracking for.}
@@ -17,6 +15,11 @@ put_configuration_set_reputation_options(
 \description{
 Enable or disable collection of reputation metrics for emails that you send using a particular configuration set in a specific AWS Region.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_configuration_set_reputation_options(
+  ConfigurationSetName = "string",
+  ReputationMetricsEnabled = TRUE|FALSE
+)
 }
+}
+

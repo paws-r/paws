@@ -4,16 +4,23 @@
 \alias{create_fleet}
 \title{Creates a fleet, a logical group of robots running the same robot application}
 \usage{
-create_fleet(
-  name = "string"
-)
+create_fleet(name, tags = NULL)
 }
 \arguments{
 \item{name}{[required] The name of the fleet.}
+
+\item{tags}{A map that contains tag keys and tag values that are attached to the fleet.}
 }
 \description{
 Creates a fleet, a logical group of robots running the same robot application.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_fleet(
+  name = "string",
+  tags = list(
+    "string"
+  )
+)
 }
+}
+

@@ -18,6 +18,7 @@ Update an email channel.
 \preformatted{update_email_channel(
   ApplicationId = "string",
   EmailChannelRequest = list(
+    ConfigurationSet = "string",
     Enabled = TRUE|FALSE,
     FromAddress = "string",
     Identity = "string",

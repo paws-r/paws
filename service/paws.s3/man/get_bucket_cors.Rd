@@ -2,7 +2,7 @@
 % Please edit documentation in R/paws.s3_operations.R
 \name{get_bucket_cors}
 \alias{get_bucket_cors}
-\title{Returns the cors configuration for the bucket}
+\title{Returns the CORS configuration for the bucket}
 \usage{
 get_bucket_cors(Bucket)
 }
@@ -10,7 +10,7 @@ get_bucket_cors(Bucket)
 \item{Bucket}{[required]}
 }
 \description{
-Returns the cors configuration for the bucket.
+Returns the CORS configuration for the bucket.
 }
 \section{Accepted Parameters}{
 \preformatted{get_bucket_cors(

@@ -4,7 +4,16 @@
 \alias{create_members}
 \title{Creates member Security Hub accounts in the current AWS account (which becomes the master Security Hub account) that has Security Hub enabled}
 \usage{
-create_members(
+create_members(AccountDetails = NULL)
+}
+\arguments{
+\item{AccountDetails}{A list of account ID and email address pairs of the accounts that you want to associate with the master Security Hub account.}
+}
+\description{
+Creates member Security Hub accounts in the current AWS account (which becomes the master Security Hub account) that has Security Hub enabled.
+}
+\section{Accepted Parameters}{
+\preformatted{create_members(
   AccountDetails = list(
     list(
       AccountId = "string",
@@ -13,12 +22,5 @@ create_members(
   )
 )
 }
-\arguments{
-\item{AccountDetails}{A list of account ID and email address pairs of the accounts that you want to associate with the master Security Hub account.}
 }
-\description{
-Creates member Security Hub accounts in the current AWS account (which becomes the master Security Hub account) that has Security Hub enabled.
-}
-\examples{
 
-}

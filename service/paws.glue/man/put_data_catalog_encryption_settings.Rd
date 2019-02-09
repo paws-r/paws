@@ -22,6 +22,10 @@ Sets the security configuration for a specified catalog. Once the configuration 
     EncryptionAtRest = list(
       CatalogEncryptionMode = "DISABLED"|"SSE-KMS",
       SseAwsKmsKeyId = "string"
+    ),
+    ConnectionPasswordEncryption = list(
+      ReturnConnectionPasswordEncrypted = TRUE|FALSE,
+      AwsKmsKeyId = "string"
     )
   )
 )

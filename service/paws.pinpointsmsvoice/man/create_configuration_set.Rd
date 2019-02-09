@@ -4,9 +4,7 @@
 \alias{create_configuration_set}
 \title{Create a new configuration set}
 \usage{
-create_configuration_set(
-  ConfigurationSetName = "string"
-)
+create_configuration_set(ConfigurationSetName = NULL)
 }
 \arguments{
 \item{ConfigurationSetName}{The name that you want to give the configuration set.}
@@ -14,6 +12,10 @@ create_configuration_set(
 \description{
 Create a new configuration set. After you create the configuration set, you can add one or more event destinations to it.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_configuration_set(
+  ConfigurationSetName = "string"
+)
 }
+}
+

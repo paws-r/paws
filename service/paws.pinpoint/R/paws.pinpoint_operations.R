@@ -127,7 +127,32 @@ create_app <- function (CreateApplicationRequest)
 #'         ),
 #'         Schedule = list(
 #'           EndTime = "string",
-#'           Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY",
+#'           EventFilter = list(
+#'             Dimensions = list(
+#'               Attributes = list(
+#'                 list(
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               EventType = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               Metrics = list(
+#'                 list(
+#'                   ComparisonOperator = "string",
+#'                   Value = 123.0
+#'                 )
+#'               )
+#'             ),
+#'             FilterType = "SYSTEM"|"ENDPOINT"
+#'           ),
+#'           Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
 #'           IsLocalTime = TRUE|FALSE,
 #'           QuietTime = list(
 #'             End = "string",
@@ -241,7 +266,32 @@ create_app <- function (CreateApplicationRequest)
 #'     Name = "string",
 #'     Schedule = list(
 #'       EndTime = "string",
-#'       Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY",
+#'       EventFilter = list(
+#'         Dimensions = list(
+#'           Attributes = list(
+#'             list(
+#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'               Values = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           EventType = list(
+#'             DimensionType = "INCLUSIVE"|"EXCLUSIVE",
+#'             Values = list(
+#'               "string"
+#'             )
+#'           ),
+#'           Metrics = list(
+#'             list(
+#'               ComparisonOperator = "string",
+#'               Value = 123.0
+#'             )
+#'           )
+#'         ),
+#'         FilterType = "SYSTEM"|"ENDPOINT"
+#'       ),
+#'       Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
 #'       IsLocalTime = TRUE|FALSE,
 #'       QuietTime = list(
 #'         End = "string",
@@ -973,6 +1023,33 @@ delete_user_endpoints <- function (ApplicationId, UserId)
     input <- delete_user_endpoints_input(ApplicationId = ApplicationId, 
         UserId = UserId)
     output <- delete_user_endpoints_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Delete an Voice channel
+#'
+#' Delete an Voice channel
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_voice_channel(
+#'   ApplicationId = "string"
+#' )
+#' ```
+#'
+#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#'
+#' @export
+delete_voice_channel <- function (ApplicationId) 
+{
+    op <- new_operation(name = "DeleteVoiceChannel", http_method = "DELETE", 
+        http_path = "/v1/apps/{application-id}/channels/voice", 
+        paginator = list())
+    input <- delete_voice_channel_input(ApplicationId = ApplicationId)
+    output <- delete_voice_channel_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -1903,6 +1980,33 @@ get_user_endpoints <- function (ApplicationId, UserId)
     return(response)
 }
 
+#' Get a Voice Channel
+#'
+#' Get a Voice Channel
+#'
+#' @section Accepted Parameters:
+#' ```
+#' get_voice_channel(
+#'   ApplicationId = "string"
+#' )
+#' ```
+#'
+#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#'
+#' @export
+get_voice_channel <- function (ApplicationId) 
+{
+    op <- new_operation(name = "GetVoiceChannel", http_method = "GET", 
+        http_path = "/v1/apps/{application-id}/channels/voice", 
+        paginator = list())
+    input <- get_voice_channel_input(ApplicationId = ApplicationId)
+    output <- get_voice_channel_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Returns information about the specified phone number
 #'
 #' Returns information about the specified phone number.
@@ -1983,7 +2087,7 @@ put_event_stream <- function (ApplicationId, WriteEventStream)
 #'               "string"
 #'             )
 #'           ),
-#'           ChannelType = "GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"EMAIL"|"BAIDU"|"CUSTOM",
+#'           ChannelType = "GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
 #'           Demographic = list(
 #'             AppVersion = "string",
 #'             Locale = "string",
@@ -2020,6 +2124,9 @@ put_event_stream <- function (ApplicationId, WriteEventStream)
 #'         ),
 #'         Events = list(
 #'           list(
+#'             AppPackageName = "string",
+#'             AppTitle = "string",
+#'             AppVersionCode = "string",
 #'             Attributes = list(
 #'               "string"
 #'             ),
@@ -2028,6 +2135,7 @@ put_event_stream <- function (ApplicationId, WriteEventStream)
 #'             Metrics = list(
 #'               123.0
 #'             ),
+#'             SdkName = "string",
 #'             Session = list(
 #'               Duration = 123,
 #'               Id = "string",
@@ -2109,7 +2217,7 @@ remove_attributes <- function (ApplicationId, AttributeType,
 #'     Addresses = list(
 #'       list(
 #'         BodyOverride = "string",
-#'         ChannelType = "GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"EMAIL"|"BAIDU"|"CUSTOM",
+#'         ChannelType = "GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
 #'         Context = list(
 #'           "string"
 #'         ),
@@ -2235,6 +2343,36 @@ remove_attributes <- function (ApplicationId, AttributeType,
 #'         Title = "string",
 #'         Url = "string"
 #'       ),
+#'       EmailMessage = list(
+#'         Body = "string",
+#'         FeedbackForwardingAddress = "string",
+#'         FromAddress = "string",
+#'         RawEmail = list(
+#'           Data = raw
+#'         ),
+#'         ReplyToAddresses = list(
+#'           "string"
+#'         ),
+#'         SimpleEmail = list(
+#'           HtmlPart = list(
+#'             Charset = "string",
+#'             Data = "string"
+#'           ),
+#'           Subject = list(
+#'             Charset = "string",
+#'             Data = "string"
+#'           ),
+#'           TextPart = list(
+#'             Charset = "string",
+#'             Data = "string"
+#'           )
+#'         ),
+#'         Substitutions = list(
+#'           list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
 #'       GCMMessage = list(
 #'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
 #'         Body = "string",
@@ -2271,6 +2409,17 @@ remove_attributes <- function (ApplicationId, AttributeType,
 #'             "string"
 #'           )
 #'         )
+#'       ),
+#'       VoiceMessage = list(
+#'         Body = "string",
+#'         LanguageCode = "string",
+#'         OriginationNumber = "string",
+#'         Substitutions = list(
+#'           list(
+#'             "string"
+#'           )
+#'         ),
+#'         VoiceId = "string"
 #'       )
 #'     ),
 #'     TraceId = "string"
@@ -2402,6 +2551,36 @@ send_messages <- function (ApplicationId, MessageRequest)
 #'         Title = "string",
 #'         Url = "string"
 #'       ),
+#'       EmailMessage = list(
+#'         Body = "string",
+#'         FeedbackForwardingAddress = "string",
+#'         FromAddress = "string",
+#'         RawEmail = list(
+#'           Data = raw
+#'         ),
+#'         ReplyToAddresses = list(
+#'           "string"
+#'         ),
+#'         SimpleEmail = list(
+#'           HtmlPart = list(
+#'             Charset = "string",
+#'             Data = "string"
+#'           ),
+#'           Subject = list(
+#'             Charset = "string",
+#'             Data = "string"
+#'           ),
+#'           TextPart = list(
+#'             Charset = "string",
+#'             Data = "string"
+#'           )
+#'         ),
+#'         Substitutions = list(
+#'           list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
 #'       GCMMessage = list(
 #'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
 #'         Body = "string",
@@ -2438,6 +2617,17 @@ send_messages <- function (ApplicationId, MessageRequest)
 #'             "string"
 #'           )
 #'         )
+#'       ),
+#'       VoiceMessage = list(
+#'         Body = "string",
+#'         LanguageCode = "string",
+#'         OriginationNumber = "string",
+#'         Substitutions = list(
+#'           list(
+#'             "string"
+#'           )
+#'         ),
+#'         VoiceId = "string"
 #'       )
 #'     ),
 #'     TraceId = "string",
@@ -2848,7 +3038,32 @@ update_baidu_channel <- function (ApplicationId, BaiduChannelRequest)
 #'         ),
 #'         Schedule = list(
 #'           EndTime = "string",
-#'           Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY",
+#'           EventFilter = list(
+#'             Dimensions = list(
+#'               Attributes = list(
+#'                 list(
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               EventType = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               Metrics = list(
+#'                 list(
+#'                   ComparisonOperator = "string",
+#'                   Value = 123.0
+#'                 )
+#'               )
+#'             ),
+#'             FilterType = "SYSTEM"|"ENDPOINT"
+#'           ),
+#'           Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
 #'           IsLocalTime = TRUE|FALSE,
 #'           QuietTime = list(
 #'             End = "string",
@@ -2962,7 +3177,32 @@ update_baidu_channel <- function (ApplicationId, BaiduChannelRequest)
 #'     Name = "string",
 #'     Schedule = list(
 #'       EndTime = "string",
-#'       Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY",
+#'       EventFilter = list(
+#'         Dimensions = list(
+#'           Attributes = list(
+#'             list(
+#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'               Values = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           EventType = list(
+#'             DimensionType = "INCLUSIVE"|"EXCLUSIVE",
+#'             Values = list(
+#'               "string"
+#'             )
+#'           ),
+#'           Metrics = list(
+#'             list(
+#'               ComparisonOperator = "string",
+#'               Value = 123.0
+#'             )
+#'           )
+#'         ),
+#'         FilterType = "SYSTEM"|"ENDPOINT"
+#'       ),
+#'       Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
 #'       IsLocalTime = TRUE|FALSE,
 #'       QuietTime = list(
 #'         End = "string",
@@ -3007,6 +3247,7 @@ update_campaign <- function (ApplicationId, CampaignId, WriteCampaignRequest)
 #' update_email_channel(
 #'   ApplicationId = "string",
 #'   EmailChannelRequest = list(
+#'     ConfigurationSet = "string",
 #'     Enabled = TRUE|FALSE,
 #'     FromAddress = "string",
 #'     Identity = "string",
@@ -3049,7 +3290,7 @@ update_email_channel <- function (ApplicationId, EmailChannelRequest)
 #'         "string"
 #'       )
 #'     ),
-#'     ChannelType = "GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"EMAIL"|"BAIDU"|"CUSTOM",
+#'     ChannelType = "GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
 #'     Demographic = list(
 #'       AppVersion = "string",
 #'       Locale = "string",
@@ -3123,7 +3364,7 @@ update_endpoint <- function (ApplicationId, EndpointId, EndpointRequest)
 #'             "string"
 #'           )
 #'         ),
-#'         ChannelType = "GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"EMAIL"|"BAIDU"|"CUSTOM",
+#'         ChannelType = "GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
 #'         Demographic = list(
 #'           AppVersion = "string",
 #'           Locale = "string",
@@ -3459,6 +3700,38 @@ update_sms_channel <- function (ApplicationId, SMSChannelRequest)
     input <- update_sms_channel_input(ApplicationId = ApplicationId, 
         SMSChannelRequest = SMSChannelRequest)
     output <- update_sms_channel_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Update an Voice channel
+#'
+#' Update an Voice channel
+#'
+#' @section Accepted Parameters:
+#' ```
+#' update_voice_channel(
+#'   ApplicationId = "string",
+#'   VoiceChannelRequest = list(
+#'     Enabled = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
+#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param VoiceChannelRequest &#91;required&#93; 
+#'
+#' @export
+update_voice_channel <- function (ApplicationId, VoiceChannelRequest) 
+{
+    op <- new_operation(name = "UpdateVoiceChannel", http_method = "PUT", 
+        http_path = "/v1/apps/{application-id}/channels/voice", 
+        paginator = list())
+    input <- update_voice_channel_input(ApplicationId = ApplicationId, 
+        VoiceChannelRequest = VoiceChannelRequest)
+    output <- update_voice_channel_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)

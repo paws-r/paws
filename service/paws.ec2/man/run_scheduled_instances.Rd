@@ -8,7 +8,7 @@ run_scheduled_instances(ClientToken = NULL, DryRun = NULL,
   InstanceCount = NULL, LaunchSpecification, ScheduledInstanceId)
 }
 \arguments{
-\item{ClientToken}{Unique, case-sensitive identifier that ensures the idempotency of the request. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
+\item{ClientToken}{Unique, case-sensitive identifier that ensures the idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 
@@ -26,7 +26,7 @@ Launches the specified Scheduled Instances.
 \details{
 Before you can launch a Scheduled Instance, you must purchase it and obtain an identifier using PurchaseScheduledInstances.
 
-You must launch a Scheduled Instance during its scheduled time period. You can't stop or reboot a Scheduled Instance, but you can terminate it as needed. If you terminate a Scheduled Instance before the current scheduled time period ends, you can launch it again after a few minutes. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-scheduled-instances.html}{Scheduled Instances} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+You must launch a Scheduled Instance during its scheduled time period. You can't stop or reboot a Scheduled Instance, but you can terminate it as needed. If you terminate a Scheduled Instance before the current scheduled time period ends, you can launch it again after a few minutes. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-scheduled-instances.html}{Scheduled Instances} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{run_scheduled_instances(

@@ -10,7 +10,7 @@ start_stream_processor(Name)
 \item{Name}{[required] The name of the stream processor to start processing.}
 }
 \description{
-Starts processing a stream processor. You create a stream processor by calling . To tell \code{StartStreamProcessor} which stream processor to start, use the value of the \code{Name} field specified in the call to \code{CreateStreamProcessor}.
+Starts processing a stream processor. You create a stream processor by calling CreateStreamProcessor. To tell \code{StartStreamProcessor} which stream processor to start, use the value of the \code{Name} field specified in the call to \code{CreateStreamProcessor}.
 }
 \section{Accepted Parameters}{
 \preformatted{start_stream_processor(

@@ -2,7 +2,7 @@
 % Please edit documentation in R/paws.rds_operations.R
 \name{add_role_to_db_cluster}
 \alias{add_role_to_db_cluster}
-\title{Associates an Identity and Access Management (IAM) role from an Aurora DB cluster}
+\title{Associates an Identity and Access Management (IAM) role from an Amazon Aurora DB cluster}
 \usage{
 add_role_to_db_cluster(DBClusterIdentifier, RoleArn)
 }
@@ -12,7 +12,7 @@ add_role_to_db_cluster(DBClusterIdentifier, RoleArn)
 \item{RoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role to associate with the Aurora DB cluster, for example \code{arn:aws:iam::123456789012:role/AuroraAccessRole}.}
 }
 \description{
-Associates an Identity and Access Management (IAM) role from an Aurora DB cluster. For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Integrating.Authorizing.html}{Authorizing Amazon Aurora MySQL to Access Other AWS Services on Your Behalf} in the \emph{Amazon Aurora User Guide}.
+Associates an Identity and Access Management (IAM) role from an Amazon Aurora DB cluster. For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Integrating.Authorizing.html}{Authorizing Amazon Aurora MySQL to Access Other AWS Services on Your Behalf} in the \emph{Amazon Aurora User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{add_role_to_db_cluster(

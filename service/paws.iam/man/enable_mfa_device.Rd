@@ -10,11 +10,11 @@ enable_mfa_device(UserName, SerialNumber, AuthenticationCode1,
 \arguments{
 \item{UserName}{[required] The name of the IAM user for whom you want to enable the MFA device.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{SerialNumber}{[required] The serial number that uniquely identifies the MFA device. For virtual MFA devices, the serial number is the device ARN.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@:/-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@:/-}
 
 \item{AuthenticationCode1}{[required] An authentication code emitted by the device.
 

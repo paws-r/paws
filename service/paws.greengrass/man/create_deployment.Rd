@@ -14,7 +14,7 @@ create_deployment(AmznClientToken = NULL, DeploymentId = NULL,
 
 \item{DeploymentType}{The type of deployment. When used in ''CreateDeployment'', only ''NewDeployment'' and ''Redeployment'' are valid.}
 
-\item{GroupId}{[required] The ID of the AWS Greengrass group.}
+\item{GroupId}{[required] The ID of the Greengrass group.}
 
 \item{GroupVersionId}{The ID of the group version to be deployed.}
 }

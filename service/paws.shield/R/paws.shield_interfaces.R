@@ -206,7 +206,9 @@ describe_protection_input <- function (...)
 {
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(ProtectionId = structure(logical(0), 
-        tags = list(type = "string", max = 36L, min = 1L, pattern = "[a-zA-Z0-9\\\\-]*"))), 
+        tags = list(type = "string", max = 36L, min = 1L, pattern = "[a-zA-Z0-9\\\\-]*")), 
+        ResourceArn = structure(logical(0), tags = list(type = "string", 
+            max = 2048L, min = 1L, pattern = "^arn:aws.*"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }

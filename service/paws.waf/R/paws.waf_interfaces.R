@@ -349,10 +349,15 @@ create_web_acl_output <- function (...)
                 tags = list(type = "string", enum = c("NONE", 
                   "COUNT")))), tags = list(type = "structure")), 
             Type = structure(logical(0), tags = list(type = "string", 
-                enum = c("REGULAR", "RATE_BASED", "GROUP")))), 
-            tags = list(type = "structure"))), tags = list(type = "list"))), 
-        tags = list(type = "structure")), ChangeToken = structure(logical(0), 
-        tags = list(type = "string", min = 1L))), tags = list(type = "structure"))
+                enum = c("REGULAR", "RATE_BASED", "GROUP"))), 
+            ExcludedRules = structure(list(structure(list(RuleId = structure(logical(0), 
+                tags = list(type = "string", max = 128L, min = 1L))), 
+                tags = list(type = "structure"))), tags = list(type = "list"))), 
+            tags = list(type = "structure"))), tags = list(type = "list")), 
+        WebACLArn = structure(logical(0), tags = list(type = "string", 
+            max = 1224L, min = 1L))), tags = list(type = "structure")), 
+        ChangeToken = structure(logical(0), tags = list(type = "string", 
+            min = 1L))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1089,9 +1094,14 @@ get_web_acl_output <- function (...)
                 tags = list(type = "string", enum = c("NONE", 
                   "COUNT")))), tags = list(type = "structure")), 
             Type = structure(logical(0), tags = list(type = "string", 
-                enum = c("REGULAR", "RATE_BASED", "GROUP")))), 
-            tags = list(type = "structure"))), tags = list(type = "list"))), 
-        tags = list(type = "structure"))), tags = list(type = "structure"))
+                enum = c("REGULAR", "RATE_BASED", "GROUP"))), 
+            ExcludedRules = structure(list(structure(list(RuleId = structure(logical(0), 
+                tags = list(type = "string", max = 128L, min = 1L))), 
+                tags = list(type = "structure"))), tags = list(type = "list"))), 
+            tags = list(type = "structure"))), tags = list(type = "list")), 
+        WebACLArn = structure(logical(0), tags = list(type = "string", 
+            max = 1224L, min = 1L))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1148,8 +1158,11 @@ list_activated_rules_in_rule_group_output <- function (...)
             tags = list(type = "string", enum = c("NONE", "COUNT")))), 
             tags = list(type = "structure")), Type = structure(logical(0), 
             tags = list(type = "string", enum = c("REGULAR", 
-                "RATE_BASED", "GROUP")))), tags = list(type = "structure"))), 
-        tags = list(type = "list"))), tags = list(type = "structure"))
+                "RATE_BASED", "GROUP"))), ExcludedRules = structure(list(structure(list(RuleId = structure(logical(0), 
+            tags = list(type = "string", max = 128L, min = 1L))), 
+            tags = list(type = "structure"))), tags = list(type = "list"))), 
+        tags = list(type = "structure"))), tags = list(type = "list"))), 
+        tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1763,7 +1776,10 @@ update_rule_group_input <- function (...)
                   tags = list(type = "string", enum = c("NONE", 
                     "COUNT")))), tags = list(type = "structure")), 
                 Type = structure(logical(0), tags = list(type = "string", 
-                  enum = c("REGULAR", "RATE_BASED", "GROUP")))), 
+                  enum = c("REGULAR", "RATE_BASED", "GROUP"))), 
+                ExcludedRules = structure(list(structure(list(RuleId = structure(logical(0), 
+                  tags = list(type = "string", max = 128L, min = 1L))), 
+                  tags = list(type = "structure"))), tags = list(type = "list"))), 
                 tags = list(type = "structure"))), tags = list(type = "structure"))), 
             tags = list(type = "list", min = 1L)), ChangeToken = structure(logical(0), 
             tags = list(type = "string", min = 1L))), tags = list(type = "structure"))
@@ -1858,7 +1874,10 @@ update_web_acl_input <- function (...)
                   tags = list(type = "string", enum = c("NONE", 
                     "COUNT")))), tags = list(type = "structure")), 
                 Type = structure(logical(0), tags = list(type = "string", 
-                  enum = c("REGULAR", "RATE_BASED", "GROUP")))), 
+                  enum = c("REGULAR", "RATE_BASED", "GROUP"))), 
+                ExcludedRules = structure(list(structure(list(RuleId = structure(logical(0), 
+                  tags = list(type = "string", max = 128L, min = 1L))), 
+                  tags = list(type = "structure"))), tags = list(type = "list"))), 
                 tags = list(type = "structure"))), tags = list(type = "structure"))), 
             tags = list(type = "list")), DefaultAction = structure(list(Type = structure(logical(0), 
             tags = list(type = "string", enum = c("BLOCK", "ALLOW", 

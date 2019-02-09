@@ -11,7 +11,8 @@ modify_db_cluster(DBClusterIdentifier, NewDBClusterIdentifier = NULL,
   PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL,
   EnableIAMDatabaseAuthentication = NULL, BacktrackWindow = NULL,
   CloudwatchLogsExportConfiguration = NULL, EngineVersion = NULL,
-  ScalingConfiguration = NULL, DeletionProtection = NULL)
+  ScalingConfiguration = NULL, DeletionProtection = NULL,
+  EnableHttpEndpoint = NULL)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The DB cluster identifier for the cluster being modified. This parameter is not case-sensitive.
@@ -109,6 +110,14 @@ For a list of valid engine versions, see CreateDBCluster, or call DescribeDBEngi
 \item{ScalingConfiguration}{The scaling properties of the DB cluster. You can only modify scaling properties for DB clusters in \code{serverless} DB engine mode.}
 
 \item{DeletionProtection}{Indicates if the DB cluster has deletion protection enabled. The database can't be deleted when this value is set to true.}
+
+\item{EnableHttpEndpoint}{HTTP endpoint functionality is in beta for Aurora Serverless and is subject to change.
+
+A value that indicates whether to enable the HTTP endpoint for an Aurora Serverless DB cluster. By default, the HTTP endpoint is disabled.
+
+When enabled, the HTTP endpoint provides a connectionless web service API for running SQL queries on the Aurora Serverless DB cluster. You can also query your database from inside the RDS console with the query editor.
+
+For more information about Aurora Serverless, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html}{Using Amazon Aurora Serverless} in the \emph{Amazon Aurora User Guide}.}
 }
 \description{
 Modify a setting for an Amazon Aurora DB cluster. You can change one or more database configuration parameters by specifying these parameters and the new values in the request. For more information on Amazon Aurora, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?} in the \emph{Amazon Aurora User Guide.}
@@ -145,7 +154,8 @@ Modify a setting for an Amazon Aurora DB cluster. You can change one or more dat
     AutoPause = TRUE|FALSE,
     SecondsUntilAutoPause = 123
   ),
-  DeletionProtection = TRUE|FALSE
+  DeletionProtection = TRUE|FALSE,
+  EnableHttpEndpoint = TRUE|FALSE
 )
 }
 }

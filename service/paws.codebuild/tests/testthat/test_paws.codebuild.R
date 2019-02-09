@@ -11,3 +11,7 @@ test_that("list_curated_environment_images", {
 test_that("list_projects", {
     expect_error(list_projects(), NA)
 })
+
+test_that("list_source_credentials", {
+    expect_error(list_source_credentials(), NA)
+})

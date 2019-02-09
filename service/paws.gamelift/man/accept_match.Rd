@@ -22,8 +22,6 @@ When FlexMatch builds a match, all the matchmaking tickets involved in the propo
 To register acceptance, specify the ticket ID, a response, and one or more players. Once all players have registered acceptance, the matchmaking tickets advance to status \code{PLACING}, where a new game session is created for the match.
 
 If any player rejects the match, or if acceptances are not received before a specified timeout, the proposed match is dropped. The matchmaking tickets are then handled in one of two ways: For tickets where all players accepted the match, the ticket status is returned to \code{SEARCHING} to find a new match. For tickets where one or more players failed to accept the match, the ticket status is set to \code{FAILED}, and processing is terminated. A new matchmaking request for these players can be submitted as needed.
-
-Matchmaking-related operations include:
 \itemize{
 \item StartMatchmaking
 \item DescribeMatchmaking

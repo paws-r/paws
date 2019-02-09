@@ -2,15 +2,15 @@
 % Please edit documentation in R/paws.lambda_operations.R
 \name{list_tags}
 \alias{list_tags}
-\title{Returns a list of tags assigned to a function when supplied the function ARN (Amazon Resource Name)}
+\title{Returns a function's tags}
 \usage{
 list_tags(Resource)
 }
 \arguments{
-\item{Resource}{[required] The ARN (Amazon Resource Name) of the function. For more information, see \href{http://docs.aws.amazon.com/lambda/latest/dg/tagging.html}{Tagging Lambda Functions} in the \strong{AWS Lambda Developer Guide}.}
+\item{Resource}{[required] The function's Amazon Resource Name (ARN).}
 }
 \description{
-Returns a list of tags assigned to a function when supplied the function ARN (Amazon Resource Name). For more information on Tagging, see \href{http://docs.aws.amazon.com/lambda/latest/dg/tagging.html}{Tagging Lambda Functions} in the \strong{AWS Lambda Developer Guide}.
+Returns a function's \href{http://docs.aws.amazon.com/lambda/latest/dg/tagging.html}{tags}. You can also view tags with GetFunction.
 }
 \section{Accepted Parameters}{
 \preformatted{list_tags(

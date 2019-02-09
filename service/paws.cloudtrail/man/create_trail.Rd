@@ -8,7 +8,7 @@ create_trail(Name, S3BucketName, S3KeyPrefix = NULL,
   SnsTopicName = NULL, IncludeGlobalServiceEvents = NULL,
   IsMultiRegionTrail = NULL, EnableLogFileValidation = NULL,
   CloudWatchLogsLogGroupArn = NULL, CloudWatchLogsRoleArn = NULL,
-  KmsKeyId = NULL)
+  KmsKeyId = NULL, IsOrganizationTrail = NULL)
 }
 \arguments{
 \item{Name}{[required] Specifies the name of the trail. The name must meet the following requirements:
@@ -47,6 +47,8 @@ Examples:
 \item arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012
 \item 12345678-1234-1234-1234-123456789012
 }}
+
+\item{IsOrganizationTrail}{Specifies whether the trail is created for all accounts in an organization in AWS Organizations, or only for the current AWS account. The default is false, and cannot be true unless the call is made on behalf of an AWS account that is the master account for an organization in AWS Organizations.}
 }
 \description{
 Creates a trail that specifies the settings for delivery of log data to an Amazon S3 bucket. A maximum of five trails can exist in a region, irrespective of the region in which they were created.
@@ -62,7 +64,8 @@ Creates a trail that specifies the settings for delivery of log data to an Amazo
   EnableLogFileValidation = TRUE|FALSE,
   CloudWatchLogsLogGroupArn = "string",
   CloudWatchLogsRoleArn = "string",
-  KmsKeyId = "string"
+  KmsKeyId = "string",
+  IsOrganizationTrail = TRUE|FALSE
 )
 }
 }

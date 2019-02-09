@@ -56,7 +56,7 @@ Default: Describes all your security groups.}
 Describes one or more of your security groups.
 }
 \details{
-A security group is for use with instances either in the EC2-Classic platform or in a specific VPC. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html}{Amazon EC2 Security Groups} in the \emph{Amazon Elastic Compute Cloud User Guide} and \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html}{Security Groups for Your VPC} in the \emph{Amazon Virtual Private Cloud User Guide}.
+A security group is for use with instances either in the EC2-Classic platform or in a specific VPC. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html}{Amazon EC2 Security Groups} in the \emph{Amazon Elastic Compute Cloud User Guide} and \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html}{Security Groups for Your VPC} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{describe_security_groups(

@@ -41,6 +41,7 @@ Updates an existing OriginEndpoint.
     Encryption = list(
       KeyRotationIntervalSeconds = 123,
       SpekeKeyProvider = list(
+        CertificateArn = "string",
         ResourceId = "string",
         RoleArn = "string",
         SystemIds = list(
@@ -72,6 +73,7 @@ Updates an existing OriginEndpoint.
     Encryption = list(
       KeyRotationIntervalSeconds = 123,
       SpekeKeyProvider = list(
+        CertificateArn = "string",
         ResourceId = "string",
         RoleArn = "string",
         SystemIds = list(
@@ -104,6 +106,7 @@ Updates an existing OriginEndpoint.
       KeyRotationIntervalSeconds = 123,
       RepeatExtXKey = TRUE|FALSE,
       SpekeKeyProvider = list(
+        CertificateArn = "string",
         ResourceId = "string",
         RoleArn = "string",
         SystemIds = list(
@@ -129,6 +132,7 @@ Updates an existing OriginEndpoint.
   MssPackage = list(
     Encryption = list(
       SpekeKeyProvider = list(
+        CertificateArn = "string",
         ResourceId = "string",
         RoleArn = "string",
         SystemIds = list(

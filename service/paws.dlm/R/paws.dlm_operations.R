@@ -26,6 +26,7 @@ NULL
 #'     Schedules = list(
 #'       list(
 #'         Name = "string",
+#'         CopyTags = TRUE|FALSE,
 #'         TagsToAdd = list(
 #'           list(
 #'             Key = "string",
@@ -199,6 +200,7 @@ get_lifecycle_policy <- function (PolicyId)
 #'     Schedules = list(
 #'       list(
 #'         Name = "string",
+#'         CopyTags = TRUE|FALSE,
 #'         TagsToAdd = list(
 #'           list(
 #'             Key = "string",

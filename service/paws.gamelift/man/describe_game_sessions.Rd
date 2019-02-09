@@ -28,8 +28,6 @@ Retrieves a set of one or more game sessions. Request a specific game session or
 To get game sessions, specify one of the following: game session ID, fleet ID, or alias ID. You can filter this request by game session status. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, a GameSession object is returned for each game session matching the request.
 
 \emph{Available in Amazon GameLift Local.}
-
-Game-session-related operations include:
 \itemize{
 \item CreateGameSession
 \item DescribeGameSessions

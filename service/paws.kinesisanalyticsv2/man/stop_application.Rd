@@ -4,9 +4,7 @@
 \alias{stop_application}
 \title{Stops the application from processing data}
 \usage{
-stop_application(
-  ApplicationName = "string"
-)
+stop_application(ApplicationName)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the running application to stop.}
@@ -14,6 +12,10 @@ stop_application(
 \description{
 Stops the application from processing data. You can stop an application only if it is in the running state. You can use the DescribeApplication operation to find the application state.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{stop_application(
+  ApplicationName = "string"
+)
 }
+}
+

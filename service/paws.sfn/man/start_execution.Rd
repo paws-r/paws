@@ -11,15 +11,6 @@ start_execution(stateMachineArn, name = NULL, input = NULL)
 
 \item{name}{The name of the execution. This name must be unique for your AWS account and region for 90 days. For more information, see \href{http://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions}{Limits Related to State Machine Executions} in the \emph{AWS Step Functions Developer Guide}.
 
-An execution can't use the name of another execution for 90 days.
-
-When you make multiple \code{StartExecution} calls with the same name, the new execution doesn't run and the following rules apply:
-\itemize{
-\item When the original execution is open and the execution input from the new call is \emph{different}, the \code{ExecutionAlreadyExists} message is returned.
-\item When the original execution is open and the execution input from the new call is \emph{identical}, the \code{Success} message is returned.
-\item When the original execution is closed, the \code{ExecutionAlreadyExists} message is returned regardless of input.
-}
-
 A name must \emph{not} contain:
 \itemize{
 \item whitespace
@@ -39,6 +30,9 @@ If you don't include any JSON input data, you still must include the two braces,
 }
 \description{
 Starts a state machine execution.
+}
+\details{
+\code{StartExecution} is idempotent. If \code{StartExecution} is called with the same name and input as a running execution, the call will succeed and return the same response as the original request. If the execution is closed or if the input is different, it will return a 400 \code{ExecutionAlreadyExists} error. Names can be reused after 90 days.
 }
 \section{Accepted Parameters}{
 \preformatted{start_execution(

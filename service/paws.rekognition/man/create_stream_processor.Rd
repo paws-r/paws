@@ -11,7 +11,7 @@ create_stream_processor(Input, Output, Name, Settings, RoleArn)
 
 \item{Output}{[required] Kinesis data stream stream to which Amazon Rekognition Video puts the analysis results. If you are using the AWS CLI, the parameter name is \code{StreamProcessorOutput}.}
 
-\item{Name}{[required] An identifier you assign to the stream processor. You can use \code{Name} to manage the stream processor. For example, you can get the current status of the stream processor by calling . \code{Name} is idempotent.}
+\item{Name}{[required] An identifier you assign to the stream processor. You can use \code{Name} to manage the stream processor. For example, you can get the current status of the stream processor by calling DescribeStreamProcessor. \code{Name} is idempotent.}
 
 \item{Settings}{[required] Face recognition input parameters to be used by the stream processor. Includes the collection to use for face recognition and the face attributes to detect.}
 
@@ -23,9 +23,9 @@ Creates an Amazon Rekognition stream processor that you can use to detect and re
 \details{
 Amazon Rekognition Video is a consumer of live video from Amazon Kinesis Video Streams. Amazon Rekognition Video sends analysis results to Amazon Kinesis Data Streams.
 
-You provide as input a Kinesis video stream (\code{Input}) and a Kinesis data stream (\code{Output}) stream. You also specify the face recognition criteria in \code{Settings}. For example, the collection containing faces that you want to recognize. Use \code{Name} to assign an identifier for the stream processor. You use \code{Name} to manage the stream processor. For example, you can start processing the source video by calling with the \code{Name} field.
+You provide as input a Kinesis video stream (\code{Input}) and a Kinesis data stream (\code{Output}) stream. You also specify the face recognition criteria in \code{Settings}. For example, the collection containing faces that you want to recognize. Use \code{Name} to assign an identifier for the stream processor. You use \code{Name} to manage the stream processor. For example, you can start processing the source video by calling StartStreamProcessor with the \code{Name} field.
 
-After you have finished analyzing a streaming video, use to stop processing. You can delete the stream processor by calling .
+After you have finished analyzing a streaming video, use StopStreamProcessor to stop processing. You can delete the stream processor by calling DeleteStreamProcessor.
 }
 \section{Accepted Parameters}{
 \preformatted{create_stream_processor(

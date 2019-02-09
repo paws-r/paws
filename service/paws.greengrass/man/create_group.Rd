@@ -15,12 +15,13 @@ create_group(AmznClientToken = NULL, InitialVersion = NULL,
 \item{Name}{The name of the group.}
 }
 \description{
-Creates a group. You may provide the initial version of the group or use ''CreateGroupVersion'' at a later time.
+Creates a group. You may provide the initial version of the group or use ''CreateGroupVersion'' at a later time. Tip: You can use the ''gg_group_setup'' package (https://github.com/awslabs/aws-greengrass-group-setup) as a library or command-line application to create and deploy Greengrass groups.
 }
 \section{Accepted Parameters}{
 \preformatted{create_group(
   AmznClientToken = "string",
   InitialVersion = list(
+    ConnectorDefinitionVersionArn = "string",
     CoreDefinitionVersionArn = "string",
     DeviceDefinitionVersionArn = "string",
     FunctionDefinitionVersionArn = "string",

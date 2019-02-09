@@ -19,7 +19,7 @@ Gets information about one or more application revisions.
   applicationName = "string",
   revisions = list(
     list(
-      revisionType = "S3"|"GitHub"|"String",
+      revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
       s3Location = list(
         bucket = "string",
         key = "string",
@@ -32,6 +32,10 @@ Gets information about one or more application revisions.
         commitId = "string"
       ),
       string = list(
+        content = "string",
+        sha256 = "string"
+      ),
+      appSpecContent = list(
         content = "string",
         sha256 = "string"
       )

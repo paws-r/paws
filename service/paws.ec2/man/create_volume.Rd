@@ -11,9 +11,9 @@ create_volume(AvailabilityZone, Encrypted = NULL, Iops = NULL,
 \arguments{
 \item{AvailabilityZone}{[required] The Availability Zone in which to create the volume. Use DescribeAvailabilityZones to list the Availability Zones that are currently available to you.}
 
-\item{Encrypted}{Specifies whether the volume should be encrypted. Encrypted Amazon EBS volumes may only be attached to instances that support Amazon EBS encryption. Volumes that are created from encrypted snapshots are automatically encrypted. There is no way to create an encrypted volume from an unencrypted snapshot or vice versa. If your AMI uses encrypted volumes, you can only launch it on supported instance types. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS Encryption} in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+\item{Encrypted}{Specifies whether the volume should be encrypted. Encrypted Amazon EBS volumes may only be attached to instances that support Amazon EBS encryption. Volumes that are created from encrypted snapshots are automatically encrypted. There is no way to create an encrypted volume from an unencrypted snapshot or vice versa. If your AMI uses encrypted volumes, you can only launch it on supported instance types. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS Encryption} in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
-\item{Iops}{The number of I/O operations per second (IOPS) to provision for the volume, with a maximum ratio of 50 IOPS/GiB. Range is 100 to 32000 IOPS for volumes in most regions. For exceptions, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html}{Amazon EBS Volume Types} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+\item{Iops}{The number of I/O operations per second (IOPS) to provision for the volume, with a maximum ratio of 50 IOPS/GiB. Range is 100 to 64,000 IOPS for volumes in most regions. Maximum IOPS of 64,000 is guaranteed only on \href{AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances}{Nitro-based instances}. Other instance families guarantee performance up to 32,000 IOPS. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html}{Amazon EBS Volume Types} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 This parameter is valid only for Provisioned IOPS SSD (io1) volumes.}
 
@@ -31,11 +31,15 @@ AWS parses \code{KmsKeyId} asynchronously, meaning that the action you call may 
 
 \item{Size}{The size of the volume, in GiBs.
 
-Constraints: 1-16384 for \code{gp2}, 4-16384 for \code{io1}, 500-16384 for \code{st1}, 500-16384 for \code{sc1}, and 1-1024 for \code{standard}. If you specify a snapshot, the volume size must be equal to or larger than the snapshot size.
+Constraints: 1-16,384 for \code{gp2}, 4-16,384 for \code{io1}, 500-16,384 for \code{st1}, 500-16,384 for \code{sc1}, and 1-1,024 for \code{standard}. If you specify a snapshot, the volume size must be equal to or larger than the snapshot size.
 
-Default: If you're creating the volume from a snapshot and don't specify a volume size, the default is the snapshot size.}
+Default: If you're creating the volume from a snapshot and don't specify a volume size, the default is the snapshot size.
 
-\item{SnapshotId}{The snapshot from which to create the volume.}
+At least one of Size or SnapshotId are required.}
+
+\item{SnapshotId}{The snapshot from which to create the volume.
+
+At least one of Size or SnapshotId are required.}
 
 \item{VolumeType}{The volume type. This can be \code{gp2} for General Purpose SSD, \code{io1} for Provisioned IOPS SSD, \code{st1} for Throughput Optimized HDD, \code{sc1} for Cold HDD, or \code{standard} for Magnetic volumes.
 
@@ -46,16 +50,16 @@ Defaults: If no volume type is specified, the default is \code{standard} in us-e
 \item{TagSpecifications}{The tags to apply to the volume during creation.}
 }
 \description{
-Creates an EBS volume that can be attached to an instance in the same Availability Zone. The volume is created in the regional endpoint that you send the HTTP request to. For more information see \href{http://docs.aws.amazon.com/general/latest/gr/rande.html}{Regions and Endpoints}.
+Creates an EBS volume that can be attached to an instance in the same Availability Zone. The volume is created in the regional endpoint that you send the HTTP request to. For more information see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html}{Regions and Endpoints}.
 }
 \details{
 You can create a new empty volume or restore a volume from an EBS snapshot. Any AWS Marketplace product codes from the snapshot are propagated to the volume.
 
-You can create encrypted volumes with the \code{Encrypted} parameter. Encrypted volumes may only be attached to instances that support Amazon EBS encryption. Volumes that are created from encrypted snapshots are also automatically encrypted. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS Encryption} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+You can create encrypted volumes with the \code{Encrypted} parameter. Encrypted volumes may only be attached to instances that support Amazon EBS encryption. Volumes that are created from encrypted snapshots are also automatically encrypted. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS Encryption} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
-You can tag your volumes during creation. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html}{Tagging Your Amazon EC2 Resources} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+You can tag your volumes during creation. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html}{Tagging Your Amazon EC2 Resources} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
-For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-volume.html}{Creating an Amazon EBS Volume} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-volume.html}{Creating an Amazon EBS Volume} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{create_volume(
@@ -69,7 +73,7 @@ For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGui
   DryRun = TRUE|FALSE,
   TagSpecifications = list(
     list(
-      ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"image"|"instance"|"internet-gateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"snapshot"|"spot-instances-request"|"subnet"|"security-group"|"volume"|"vpc"|"vpn-connection"|"vpn-gateway",
+      ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-instances-request"|"subnet"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
       Tags = list(
         list(
           Key = "string",

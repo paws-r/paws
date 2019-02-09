@@ -14,7 +14,7 @@ attach_internet_gateway(DryRun = NULL, InternetGatewayId, VpcId)
 \item{VpcId}{[required] The ID of the VPC.}
 }
 \description{
-Attaches an internet gateway to a VPC, enabling connectivity between the internet and the VPC. For more information about your VPC and internet gateway, see the \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/}{Amazon Virtual Private Cloud User Guide}.
+Attaches an internet gateway to a VPC, enabling connectivity between the internet and the VPC. For more information about your VPC and internet gateway, see the \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/}{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{attach_internet_gateway(

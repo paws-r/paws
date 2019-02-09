@@ -174,10 +174,16 @@ batch_get_projects <- function (names)
 #'       )
 #'     ),
 #'     privilegedMode = TRUE|FALSE,
-#'     certificate = "string"
+#'     certificate = "string",
+#'     registryCredential = list(
+#'       credential = "string",
+#'       credentialProvider = "SECRETS_MANAGER"
+#'     ),
+#'     imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
 #'   ),
 #'   serviceRole = "string",
 #'   timeoutInMinutes = 123,
+#'   queuedTimeoutInMinutes = 123,
 #'   encryptionKey = "string",
 #'   tags = list(
 #'     list(
@@ -218,23 +224,24 @@ batch_get_projects <- function (names)
 #' @param cache Stores recently used information so that it can be quickly accessed at a later time.
 #' @param environment &#91;required&#93; Information about the build environment for the build project.
 #' @param serviceRole &#91;required&#93; The ARN of the AWS Identity and Access Management (IAM) role that enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.
-#' @param timeoutInMinutes How long, in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait until timing out any build that has not been marked as completed. The default is 60 minutes.
+#' @param timeoutInMinutes How long, in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait before it times out any build that has not been marked as completed. The default is 60 minutes.
+#' @param queuedTimeoutInMinutes The number of minutes a build is allowed to be queued before it times out.
 #' @param encryptionKey The AWS Key Management Service (AWS KMS) customer master key (CMK) to be used for encrypting the build output artifacts.
 #' 
-#' You can specify either the CMK\'s Amazon Resource Name (ARN) or, if available, the CMK\'s alias (using the format `alias/alias-name alias-name `).
+#' You can specify either the Amazon Resource Name (ARN) of the CMK or, if available, the CMK\'s alias (using the format `alias/alias-name alias-name `).
 #' @param tags A set of tags for this build project.
 #' 
 #' These tags are available for use by AWS services that support AWS CodeBuild build project tags.
 #' @param vpcConfig VpcConfig enables AWS CodeBuild to access resources in an Amazon VPC.
-#' @param badgeEnabled Set this to true to generate a publicly-accessible URL for your project\'s build badge.
-#' @param logsConfig Information about logs for the build project. Logs can be Amazon CloudWatch Logs, uploaded to a specified S3 bucket, or both.
+#' @param badgeEnabled Set this to true to generate a publicly accessible URL for your project\'s build badge.
+#' @param logsConfig Information about logs for the build project. These can be logs in Amazon CloudWatch Logs, logs uploaded to a specified S3 bucket, or both.
 #'
 #' @export
 create_project <- function (name, description = NULL, source, 
     secondarySources = NULL, artifacts, secondaryArtifacts = NULL, 
     cache = NULL, environment, serviceRole, timeoutInMinutes = NULL, 
-    encryptionKey = NULL, tags = NULL, vpcConfig = NULL, badgeEnabled = NULL, 
-    logsConfig = NULL) 
+    queuedTimeoutInMinutes = NULL, encryptionKey = NULL, tags = NULL, 
+    vpcConfig = NULL, badgeEnabled = NULL, logsConfig = NULL) 
 {
     op <- new_operation(name = "CreateProject", http_method = "POST", 
         http_path = "/", paginator = list())
@@ -242,9 +249,9 @@ create_project <- function (name, description = NULL, source,
         source = source, secondarySources = secondarySources, 
         artifacts = artifacts, secondaryArtifacts = secondaryArtifacts, 
         cache = cache, environment = environment, serviceRole = serviceRole, 
-        timeoutInMinutes = timeoutInMinutes, encryptionKey = encryptionKey, 
-        tags = tags, vpcConfig = vpcConfig, badgeEnabled = badgeEnabled, 
-        logsConfig = logsConfig)
+        timeoutInMinutes = timeoutInMinutes, queuedTimeoutInMinutes = queuedTimeoutInMinutes, 
+        encryptionKey = encryptionKey, tags = tags, vpcConfig = vpcConfig, 
+        badgeEnabled = badgeEnabled, logsConfig = logsConfig)
     output <- create_project_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -252,11 +259,11 @@ create_project <- function (name, description = NULL, source,
     return(response)
 }
 
-#' For an existing AWS CodeBuild build project that has its source code stored in a GitHub repository, enables AWS CodeBuild to begin automatically rebuilding the source code every time a code change is pushed to the repository
+#' For an existing AWS CodeBuild build project that has its source code stored in a GitHub or Bitbucket repository, enables AWS CodeBuild to start rebuilding the source code every time a code change is pushed to the repository
 #'
-#' For an existing AWS CodeBuild build project that has its source code stored in a GitHub repository, enables AWS CodeBuild to begin automatically rebuilding the source code every time a code change is pushed to the repository.
+#' For an existing AWS CodeBuild build project that has its source code stored in a GitHub or Bitbucket repository, enables AWS CodeBuild to start rebuilding the source code every time a code change is pushed to the repository.
 #' 
-#' If you enable webhooks for an AWS CodeBuild project, and the project is used as a build step in AWS CodePipeline, then two identical builds will be created for each commit. One build is triggered through webhooks, and one through AWS CodePipeline. Because billing is on a per-build basis, you will be billed for both builds. Therefore, if you are using AWS CodePipeline, we recommend that you disable webhooks in CodeBuild. In the AWS CodeBuild console, clear the Webhook box. For more information, see step 5 in [Change a Build Project\'s Settings](http://docs.aws.amazon.com/codebuild/latest/userguide/change-project.html#change-project-console).
+#' If you enable webhooks for an AWS CodeBuild project, and the project is used as a build step in AWS CodePipeline, then two identical builds are created for each commit. One build is triggered through webhooks, and one through AWS CodePipeline. Because billing is on a per-build basis, you are billed for both builds. Therefore, if you are using AWS CodePipeline, we recommend that you disable webhooks in AWS CodeBuild. In the AWS CodeBuild console, clear the Webhook box. For more information, see step 5 in [Change a Build Project\'s Settings](http://docs.aws.amazon.com/codebuild/latest/userguide/change-project.html#change-project-console).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -267,7 +274,7 @@ create_project <- function (name, description = NULL, source,
 #' ```
 #'
 #' @param projectName &#91;required&#93; The name of the AWS CodeBuild project.
-#' @param branchFilter A regular expression used to determine which branches in a repository are built when a webhook is triggered. If the name of a branch matches the regular expression, then it is built. If it doesn\'t match, then it is not. If branchFilter is empty, then all branches are built.
+#' @param branchFilter A regular expression used to determine which repository branches are built when a webhook is triggered. If the name of a branch matches the regular expression, then it is built. If `branchFilter` is empty, then all branches are built.
 #'
 #' @export
 create_webhook <- function (projectName, branchFilter = NULL) 
@@ -309,9 +316,35 @@ delete_project <- function (name)
     return(response)
 }
 
-#' For an existing AWS CodeBuild build project that has its source code stored in a GitHub repository, stops AWS CodeBuild from automatically rebuilding the source code every time a code change is pushed to the repository
+#' Deletes a set of GitHub, GitHub Enterprise, or Bitbucket source credentials
 #'
-#' For an existing AWS CodeBuild build project that has its source code stored in a GitHub repository, stops AWS CodeBuild from automatically rebuilding the source code every time a code change is pushed to the repository.
+#' Deletes a set of GitHub, GitHub Enterprise, or Bitbucket source credentials.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_source_credentials(
+#'   arn = "string"
+#' )
+#' ```
+#'
+#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the token.
+#'
+#' @export
+delete_source_credentials <- function (arn) 
+{
+    op <- new_operation(name = "DeleteSourceCredentials", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_source_credentials_input(arn = arn)
+    output <- delete_source_credentials_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' For an existing AWS CodeBuild build project that has its source code stored in a GitHub or Bitbucket repository, stops AWS CodeBuild from rebuilding the source code every time a code change is pushed to the repository
+#'
+#' For an existing AWS CodeBuild build project that has its source code stored in a GitHub or Bitbucket repository, stops AWS CodeBuild from rebuilding the source code every time a code change is pushed to the repository.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -335,6 +368,40 @@ delete_webhook <- function (projectName)
     return(response)
 }
 
+#' Imports the source repository credentials for an AWS CodeBuild project that has its source code stored in a GitHub, GitHub Enterprise, or Bitbucket repository
+#'
+#' Imports the source repository credentials for an AWS CodeBuild project that has its source code stored in a GitHub, GitHub Enterprise, or Bitbucket repository.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' import_source_credentials(
+#'   username = "string",
+#'   token = "string",
+#'   serverType = "GITHUB"|"BITBUCKET"|"GITHUB_ENTERPRISE",
+#'   authType = "OAUTH"|"BASIC_AUTH"|"PERSONAL_ACCESS_TOKEN"
+#' )
+#' ```
+#'
+#' @param username The Bitbucket username when the `authType` is BASIC\_AUTH. This parameter is not valid for other types of source providers or connections.
+#' @param token &#91;required&#93; For GitHub or GitHub Enterprise, this is the personal access token. For Bitbucket, this is the app password.
+#' @param serverType &#91;required&#93; The source provider used for this project.
+#' @param authType &#91;required&#93; The type of authentication used to connect to a GitHub, GitHub Enterprise, or Bitbucket repository. An OAUTH connection is not supported by the API and must be created using the AWS CodeBuild console.
+#'
+#' @export
+import_source_credentials <- function (username = NULL, token, 
+    serverType, authType) 
+{
+    op <- new_operation(name = "ImportSourceCredentials", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- import_source_credentials_input(username = username, 
+        token = token, serverType = serverType, authType = authType)
+    output <- import_source_credentials_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Resets the cache for a project
 #'
 #' Resets the cache for a project.
@@ -346,7 +413,7 @@ delete_webhook <- function (projectName)
 #' )
 #' ```
 #'
-#' @param projectName &#91;required&#93; The name of the AWS CodeBuild build project that the cache will be reset for.
+#' @param projectName &#91;required&#93; The name of the AWS CodeBuild build project that the cache is reset for.
 #'
 #' @export
 invalidate_project_cache <- function (projectName) 
@@ -466,18 +533,18 @@ list_curated_environment_images <- function ()
 #'
 #' @param sortBy The criterion to be used to list build project names. Valid values include:
 #' 
-#' -   `CREATED_TIME`: List the build project names based on when each build project was created.
+#' -   `CREATED_TIME`: List based on when each build project was created.
 #' 
-#' -   `LAST_MODIFIED_TIME`: List the build project names based on when information about each build project was last changed.
+#' -   `LAST_MODIFIED_TIME`: List based on when information about each build project was last changed.
 #' 
-#' -   `NAME`: List the build project names based on each build project\'s name.
+#' -   `NAME`: List based on each build project\'s name.
 #' 
 #' Use `sortOrder` to specify in what order to list the build project names based on the preceding criteria.
 #' @param sortOrder The order in which to list build projects. Valid values include:
 #' 
-#' -   `ASCENDING`: List the build project names in ascending order.
+#' -   `ASCENDING`: List in ascending order.
 #' 
-#' -   `DESCENDING`: List the build project names in descending order.
+#' -   `DESCENDING`: List in descending order.
 #' 
 #' Use `sortBy` to specify the criterion to be used to list build project names.
 #' @param nextToken During a previous call, if there are more than 100 items in the list, only the first 100 items are returned, along with a unique string called a *next token*. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned.
@@ -490,6 +557,28 @@ list_projects <- function (sortBy = NULL, sortOrder = NULL, nextToken = NULL)
     input <- list_projects_input(sortBy = sortBy, sortOrder = sortOrder, 
         nextToken = nextToken)
     output <- list_projects_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns a list of SourceCredentialsInfo objects
+#'
+#' Returns a list of `SourceCredentialsInfo` objects.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' list_source_credentials()
+#' ```
+#'
+#' @export
+list_source_credentials <- function () 
+{
+    op <- new_operation(name = "ListSourceCredentials", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_source_credentials_input()
+    output <- list_source_credentials_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -578,6 +667,7 @@ list_projects <- function (sortBy = NULL, sortOrder = NULL, nextToken = NULL)
 #'   serviceRoleOverride = "string",
 #'   privilegedModeOverride = TRUE|FALSE,
 #'   timeoutInMinutesOverride = 123,
+#'   queuedTimeoutInMinutesOverride = 123,
 #'   idempotencyToken = "string",
 #'   logsConfigOverride = list(
 #'     cloudWatchLogs = list(
@@ -589,32 +679,37 @@ list_projects <- function (sortBy = NULL, sortOrder = NULL, nextToken = NULL)
 #'       status = "ENABLED"|"DISABLED",
 #'       location = "string"
 #'     )
-#'   )
+#'   ),
+#'   registryCredentialOverride = list(
+#'     credential = "string",
+#'     credentialProvider = "SECRETS_MANAGER"
+#'   ),
+#'   imagePullCredentialsTypeOverride = "CODEBUILD"|"SERVICE_ROLE"
 #' )
 #' ```
 #'
 #' @param projectName &#91;required&#93; The name of the AWS CodeBuild build project to start running a build.
 #' @param secondarySourcesOverride An array of `ProjectSource` objects.
 #' @param secondarySourcesVersionOverride An array of `ProjectSourceVersion` objects that specify one or more versions of the project\'s secondary sources to be used for this build only.
-#' @param sourceVersion A version of the build input to be built, for this build only. If not specified, the latest version will be used. If specified, must be one of:
+#' @param sourceVersion A version of the build input to be built, for this build only. If not specified, the latest version is used. If specified, must be one of:
 #' 
 #' -   For AWS CodeCommit: the commit ID to use.
 #' 
-#' -   For GitHub: the commit ID, pull request ID, branch name, or tag name that corresponds to the version of the source code you want to build. If a pull request ID is specified, it must use the format `pr/pull-request-ID` (for example `pr/25`). If a branch name is specified, the branch\'s HEAD commit ID will be used. If not specified, the default branch\'s HEAD commit ID will be used.
+#' -   For GitHub: the commit ID, pull request ID, branch name, or tag name that corresponds to the version of the source code you want to build. If a pull request ID is specified, it must use the format `pr/pull-request-ID` (for example `pr/25`). If a branch name is specified, the branch\'s HEAD commit ID is used. If not specified, the default branch\'s HEAD commit ID is used.
 #' 
-#' -   For Bitbucket: the commit ID, branch name, or tag name that corresponds to the version of the source code you want to build. If a branch name is specified, the branch\'s HEAD commit ID will be used. If not specified, the default branch\'s HEAD commit ID will be used.
+#' -   For Bitbucket: the commit ID, branch name, or tag name that corresponds to the version of the source code you want to build. If a branch name is specified, the branch\'s HEAD commit ID is used. If not specified, the default branch\'s HEAD commit ID is used.
 #' 
-#' -   For Amazon Simple Storage Service (Amazon S3): the version ID of the object representing the build input ZIP file to use.
+#' -   For Amazon Simple Storage Service (Amazon S3): the version ID of the object that represents the build input ZIP file to use.
 #' @param artifactsOverride Build output artifact settings that override, for this build only, the latest ones already defined in the build project.
 #' @param secondaryArtifactsOverride An array of `ProjectArtifacts` objects.
 #' @param environmentVariablesOverride A set of environment variables that overrides, for this build only, the latest ones already defined in the build project.
-#' @param sourceTypeOverride A source input type for this build that overrides the source input defined in the build project.
-#' @param sourceLocationOverride A location that overrides for this build the source location for the one defined in the build project.
+#' @param sourceTypeOverride A source input type, for this build, that overrides the source input defined in the build project.
+#' @param sourceLocationOverride A location that overrides, for this build, the source location for the one defined in the build project.
 #' @param sourceAuthOverride An authorization type for this build that overrides the one defined in the build project. This override applies only if the build project\'s source is BitBucket or GitHub.
 #' @param gitCloneDepthOverride The user-defined depth of history, with a minimum value of 0, that overrides, for this build only, any previous depth of history defined in the build project.
 #' @param buildspecOverride A build spec declaration that overrides, for this build only, the latest one already defined in the build project.
 #' @param insecureSslOverride Enable this flag to override the insecure SSL setting that is specified in the build project. The insecure SSL setting determines whether to ignore SSL warnings while connecting to the project source code. This override applies only if the build\'s source is GitHub Enterprise.
-#' @param reportBuildStatusOverride Set to true to report to your source provider the status of a build\'s start and completion. If you use this option with a source provider other than GitHub, an invalidInputException is thrown.
+#' @param reportBuildStatusOverride Set to true to report to your source provider the status of a build\'s start and completion. If you use this option with a source provider other than GitHub, GitHub Enterprise, or Bitbucket, an invalidInputException is thrown.
 #' @param environmentTypeOverride A container type for this build that overrides the one specified in the build project.
 #' @param imageOverride The name of an image for this build that overrides the one specified in the build project.
 #' @param computeTypeOverride The name of a compute type for this build that overrides the one specified in the build project.
@@ -623,8 +718,17 @@ list_projects <- function (sortBy = NULL, sortOrder = NULL, nextToken = NULL)
 #' @param serviceRoleOverride The name of a service role for this build that overrides the one specified in the build project.
 #' @param privilegedModeOverride Enable this flag to override privileged mode in the build project.
 #' @param timeoutInMinutesOverride The number of build timeout minutes, from 5 to 480 (8 hours), that overrides, for this build only, the latest setting already defined in the build project.
+#' @param queuedTimeoutInMinutesOverride The number of minutes a build is allowed to be queued before it times out.
 #' @param idempotencyToken A unique, case sensitive identifier you provide to ensure the idempotency of the StartBuild request. The token is included in the StartBuild request and is valid for 12 hours. If you repeat the StartBuild request with the same token, but change a parameter, AWS CodeBuild returns a parameter mismatch error.
 #' @param logsConfigOverride Log settings for this build that override the log settings defined in the build project.
+#' @param registryCredentialOverride The credentials for access to a private registry.
+#' @param imagePullCredentialsTypeOverride The type of credentials AWS CodeBuild uses to pull images in your build. There are two valid values:
+#' 
+#' -   `CODEBUILD` specifies that AWS CodeBuild uses its own credentials. This requires that you modify your ECR repository policy to trust AWS CodeBuild\'s service principal.
+#' 
+#' -   `SERVICE_ROLE` specifies that AWS CodeBuild uses your build project\'s service role.
+#' 
+#' When using a cross-account or private registry image, you must use SERVICE\_ROLE credentials. When using an AWS CodeBuild curated image, you must use CODEBUILD credentials.
 #'
 #' @export
 start_build <- function (projectName, secondarySourcesOverride = NULL, 
@@ -636,8 +740,9 @@ start_build <- function (projectName, secondarySourcesOverride = NULL,
     reportBuildStatusOverride = NULL, environmentTypeOverride = NULL, 
     imageOverride = NULL, computeTypeOverride = NULL, certificateOverride = NULL, 
     cacheOverride = NULL, serviceRoleOverride = NULL, privilegedModeOverride = NULL, 
-    timeoutInMinutesOverride = NULL, idempotencyToken = NULL, 
-    logsConfigOverride = NULL) 
+    timeoutInMinutesOverride = NULL, queuedTimeoutInMinutesOverride = NULL, 
+    idempotencyToken = NULL, logsConfigOverride = NULL, registryCredentialOverride = NULL, 
+    imagePullCredentialsTypeOverride = NULL) 
 {
     op <- new_operation(name = "StartBuild", http_method = "POST", 
         http_path = "/", paginator = list())
@@ -654,7 +759,10 @@ start_build <- function (projectName, secondarySourcesOverride = NULL,
         computeTypeOverride = computeTypeOverride, certificateOverride = certificateOverride, 
         cacheOverride = cacheOverride, serviceRoleOverride = serviceRoleOverride, 
         privilegedModeOverride = privilegedModeOverride, timeoutInMinutesOverride = timeoutInMinutesOverride, 
-        idempotencyToken = idempotencyToken, logsConfigOverride = logsConfigOverride)
+        queuedTimeoutInMinutesOverride = queuedTimeoutInMinutesOverride, 
+        idempotencyToken = idempotencyToken, logsConfigOverride = logsConfigOverride, 
+        registryCredentialOverride = registryCredentialOverride, 
+        imagePullCredentialsTypeOverride = imagePullCredentialsTypeOverride)
     output <- start_build_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -765,10 +873,16 @@ stop_build <- function (id)
 #'       )
 #'     ),
 #'     privilegedMode = TRUE|FALSE,
-#'     certificate = "string"
+#'     certificate = "string",
+#'     registryCredential = list(
+#'       credential = "string",
+#'       credentialProvider = "SECRETS_MANAGER"
+#'     ),
+#'     imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
 #'   ),
 #'   serviceRole = "string",
 #'   timeoutInMinutes = 123,
+#'   queuedTimeoutInMinutes = 123,
 #'   encryptionKey = "string",
 #'   tags = list(
 #'     list(
@@ -812,22 +926,23 @@ stop_build <- function (id)
 #' @param environment Information to be changed about the build environment for the build project.
 #' @param serviceRole The replacement ARN of the AWS Identity and Access Management (IAM) role that enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.
 #' @param timeoutInMinutes The replacement value in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait before timing out any related build that did not get marked as completed.
+#' @param queuedTimeoutInMinutes The number of minutes a build is allowed to be queued before it times out.
 #' @param encryptionKey The replacement AWS Key Management Service (AWS KMS) customer master key (CMK) to be used for encrypting the build output artifacts.
 #' 
-#' You can specify either the CMK\'s Amazon Resource Name (ARN) or, if available, the CMK\'s alias (using the format `alias/alias-name alias-name `).
+#' You can specify either the Amazon Resource Name (ARN)of the CMK or, if available, the CMK\'s alias (using the format `alias/alias-name alias-name `).
 #' @param tags The replacement set of tags for this build project.
 #' 
 #' These tags are available for use by AWS services that support AWS CodeBuild build project tags.
 #' @param vpcConfig VpcConfig enables AWS CodeBuild to access resources in an Amazon VPC.
-#' @param badgeEnabled Set this to true to generate a publicly-accessible URL for your project\'s build badge.
-#' @param logsConfig Information about logs for the build project. A project can create Amazon CloudWatch Logs, logs in an S3 bucket, or both.
+#' @param badgeEnabled Set this to true to generate a publicly accessible URL for your project\'s build badge.
+#' @param logsConfig Information about logs for the build project. A project can create logs in Amazon CloudWatch Logs, logs in an S3 bucket, or both.
 #'
 #' @export
 update_project <- function (name, description = NULL, source = NULL, 
     secondarySources = NULL, artifacts = NULL, secondaryArtifacts = NULL, 
     cache = NULL, environment = NULL, serviceRole = NULL, timeoutInMinutes = NULL, 
-    encryptionKey = NULL, tags = NULL, vpcConfig = NULL, badgeEnabled = NULL, 
-    logsConfig = NULL) 
+    queuedTimeoutInMinutes = NULL, encryptionKey = NULL, tags = NULL, 
+    vpcConfig = NULL, badgeEnabled = NULL, logsConfig = NULL) 
 {
     op <- new_operation(name = "UpdateProject", http_method = "POST", 
         http_path = "/", paginator = list())
@@ -835,9 +950,9 @@ update_project <- function (name, description = NULL, source = NULL,
         source = source, secondarySources = secondarySources, 
         artifacts = artifacts, secondaryArtifacts = secondaryArtifacts, 
         cache = cache, environment = environment, serviceRole = serviceRole, 
-        timeoutInMinutes = timeoutInMinutes, encryptionKey = encryptionKey, 
-        tags = tags, vpcConfig = vpcConfig, badgeEnabled = badgeEnabled, 
-        logsConfig = logsConfig)
+        timeoutInMinutes = timeoutInMinutes, queuedTimeoutInMinutes = queuedTimeoutInMinutes, 
+        encryptionKey = encryptionKey, tags = tags, vpcConfig = vpcConfig, 
+        badgeEnabled = badgeEnabled, logsConfig = logsConfig)
     output <- update_project_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -848,6 +963,8 @@ update_project <- function (name, description = NULL, source = NULL,
 #' Updates the webhook associated with an AWS CodeBuild build project
 #'
 #' Updates the webhook associated with an AWS CodeBuild build project.
+#' 
+#' If you use Bitbucket for your repository, `rotateSecret` is ignored.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -859,8 +976,8 @@ update_project <- function (name, description = NULL, source = NULL,
 #' ```
 #'
 #' @param projectName &#91;required&#93; The name of the AWS CodeBuild project.
-#' @param branchFilter A regular expression used to determine which branches in a repository are built when a webhook is triggered. If the name of a branch matches the regular expression, then it is built. If it doesn\'t match, then it is not. If branchFilter is empty, then all branches are built.
-#' @param rotateSecret A boolean value that specifies whether the associated repository\'s secret token should be updated.
+#' @param branchFilter A regular expression used to determine which repository branches are built when a webhook is triggered. If the name of a branch matches the regular expression, then it is built. If `branchFilter` is empty, then all branches are built.
+#' @param rotateSecret A boolean value that specifies whether the associated GitHub repository\'s secret token should be updated. If you use Bitbucket for your repository, `rotateSecret` is ignored.
 #'
 #' @export
 update_webhook <- function (projectName, branchFilter = NULL, 

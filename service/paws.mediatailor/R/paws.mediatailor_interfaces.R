@@ -33,12 +33,16 @@ get_playback_configuration_output <- function (...)
         tags = list(type = "string")), CdnConfiguration = structure(list(AdSegmentUrlPrefix = structure(logical(0), 
         tags = list(type = "string")), ContentSegmentUrlPrefix = structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "structure")), 
+        DashConfiguration = structure(list(ManifestEndpointPrefix = structure(logical(0), 
+            tags = list(type = "string")), MpdLocation = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure")), 
         HlsConfiguration = structure(list(ManifestEndpointPrefix = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure")), 
         Name = structure(logical(0), tags = list(type = "string")), 
         PlaybackEndpointPrefix = structure(logical(0), tags = list(type = "string")), 
         SessionInitializationEndpointPrefix = structure(logical(0), 
             tags = list(type = "string")), SlateAdUrl = structure(logical(0), 
+            tags = list(type = "string")), TranscodeProfileName = structure(logical(0), 
             tags = list(type = "string")), VideoContentSourceUrl = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))
     return(populate(args, shape))
@@ -78,8 +82,11 @@ put_playback_configuration_input <- function (...)
         tags = list(type = "string")), CdnConfiguration = structure(list(AdSegmentUrlPrefix = structure(logical(0), 
         tags = list(type = "string")), ContentSegmentUrlPrefix = structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "structure")), 
+        DashConfiguration = structure(list(MpdLocation = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure")), 
         Name = structure(logical(0), tags = list(type = "string")), 
         SlateAdUrl = structure(logical(0), tags = list(type = "string")), 
+        TranscodeProfileName = structure(logical(0), tags = list(type = "string")), 
         VideoContentSourceUrl = structure(logical(0), tags = list(type = "string"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
@@ -92,12 +99,16 @@ put_playback_configuration_output <- function (...)
         tags = list(type = "string")), CdnConfiguration = structure(list(AdSegmentUrlPrefix = structure(logical(0), 
         tags = list(type = "string")), ContentSegmentUrlPrefix = structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "structure")), 
+        DashConfiguration = structure(list(ManifestEndpointPrefix = structure(logical(0), 
+            tags = list(type = "string")), MpdLocation = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure")), 
         HlsConfiguration = structure(list(ManifestEndpointPrefix = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure")), 
         Name = structure(logical(0), tags = list(type = "string")), 
         PlaybackEndpointPrefix = structure(logical(0), tags = list(type = "string")), 
         SessionInitializationEndpointPrefix = structure(logical(0), 
             tags = list(type = "string")), SlateAdUrl = structure(logical(0), 
+            tags = list(type = "string")), TranscodeProfileName = structure(logical(0), 
             tags = list(type = "string")), VideoContentSourceUrl = structure(logical(0), 
             tags = list(type = "string"))), tags = list(type = "structure"))
     return(populate(args, shape))

@@ -102,7 +102,7 @@ Restores an archived copy of an object back into Amazon S3
             Value = "string"
           )
         ),
-        StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"
+        StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"
       )
     )
   ),

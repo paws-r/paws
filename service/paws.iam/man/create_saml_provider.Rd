@@ -13,7 +13,7 @@ For more information, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/
 
 \item{Name}{[required] The name of the provider to create.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 }
 \description{
 Creates an IAM resource that describes an identity provider (IdP) that supports SAML 2.0.

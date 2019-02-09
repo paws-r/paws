@@ -22,7 +22,7 @@ If you don't specify an IP address, Amazon EC2 automatically selects an IP addre
 Assigns one or more secondary private IP addresses to the specified network interface.
 }
 \details{
-You can specify one or more specific secondary IP addresses, or you can specify the number of secondary IP addresses to be automatically assigned within the subnet's CIDR block range. The number of secondary IP addresses that you can assign to an instance varies by instance type. For information about instance types, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance Types} in the \emph{Amazon Elastic Compute Cloud User Guide}. For more information about Elastic IP addresses, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP Addresses} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+You can specify one or more specific secondary IP addresses, or you can specify the number of secondary IP addresses to be automatically assigned within the subnet's CIDR block range. The number of secondary IP addresses that you can assign to an instance varies by instance type. For information about instance types, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance Types} in the \emph{Amazon Elastic Compute Cloud User Guide}. For more information about Elastic IP addresses, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP Addresses} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 When you move a secondary private IP address to another network interface, any Elastic IP address that is associated with the IP address is also moved.
 

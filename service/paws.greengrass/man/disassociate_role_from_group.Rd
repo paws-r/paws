@@ -7,7 +7,7 @@
 disassociate_role_from_group(GroupId)
 }
 \arguments{
-\item{GroupId}{[required] The ID of the AWS Greengrass group.}
+\item{GroupId}{[required] The ID of the Greengrass group.}
 }
 \description{
 Disassociates the role from a group.

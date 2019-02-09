@@ -128,7 +128,7 @@ Default: Uses existing setting
 Constraints:
 \itemize{
 \item Must be a value from 0 to 35
-\item Can be specified for a MySQL Read Replica only if the source is running MySQL 5.6
+\item Can be specified for a MySQL Read Replica only if the source is running MySQL 5.6 or later
 \item Can be specified for a PostgreSQL Read Replica only if the source is running PostgreSQL 9.3.5
 \item Can't be set to 0 if the DB instance is a source to Read Replicas
 }}
@@ -314,7 +314,9 @@ For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/User
 
 \item{PerformanceInsightsRetentionPeriod}{The amount of time, in days, to retain Performance Insights data. Valid values are 7 or 731 (2 years).}
 
-\item{CloudwatchLogsExportConfiguration}{The configuration setting for the log types to be enabled for export to CloudWatch Logs for a specific DB instance.}
+\item{CloudwatchLogsExportConfiguration}{The configuration setting for the log types to be enabled for export to CloudWatch Logs for a specific DB instance.
+
+A change to the \code{CloudwatchLogsExportConfiguration} parameter is always applied to the DB instance immediately. Therefore, the \code{ApplyImmediately} parameter has no effect.}
 
 \item{ProcessorFeatures}{The number of CPU cores and the number of threads per core for the DB instance class of the DB instance.}
 

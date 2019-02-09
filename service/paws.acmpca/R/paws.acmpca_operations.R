@@ -39,7 +39,13 @@ NULL
 #'     )
 #'   ),
 #'   CertificateAuthorityType = "SUBORDINATE",
-#'   IdempotencyToken = "string"
+#'   IdempotencyToken = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -47,17 +53,18 @@ NULL
 #' @param RevocationConfiguration Contains a Boolean value that you can use to enable a certification revocation list (CRL) for the CA, the name of the S3 bucket to which ACM PCA will write the CRL, and an optional CNAME alias that you can use to hide the name of your bucket in the **CRL Distribution Points** extension of your CA certificate. For more information, see the CrlConfiguration structure.
 #' @param CertificateAuthorityType &#91;required&#93; The type of the certificate authority. Currently, this must be **SUBORDINATE**.
 #' @param IdempotencyToken Alphanumeric string that can be used to distinguish between calls to **CreateCertificateAuthority**. Idempotency tokens time out after five minutes. Therefore, if you call **CreateCertificateAuthority** multiple times with the same idempotency token within a five minute period, ACM PCA recognizes that you are requesting only one certificate. As a result, ACM PCA issues only one. If you change the idempotency token for each call, however, ACM PCA recognizes that you are requesting multiple certificates.
+#' @param Tags Key-value pairs that will be attached to the new private CA. You can associate up to 50 tags with a private CA.
 #'
 #' @export
 create_certificate_authority <- function (CertificateAuthorityConfiguration, 
     RevocationConfiguration = NULL, CertificateAuthorityType, 
-    IdempotencyToken = NULL) 
+    IdempotencyToken = NULL, Tags = NULL) 
 {
     op <- new_operation(name = "CreateCertificateAuthority", 
         http_method = "POST", http_path = "/", paginator = list())
     input <- create_certificate_authority_input(CertificateAuthorityConfiguration = CertificateAuthorityConfiguration, 
         RevocationConfiguration = RevocationConfiguration, CertificateAuthorityType = CertificateAuthorityType, 
-        IdempotencyToken = IdempotencyToken)
+        IdempotencyToken = IdempotencyToken, Tags = Tags)
     output <- create_certificate_authority_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -151,7 +158,7 @@ delete_certificate_authority <- function (CertificateAuthorityArn,
 #' 
 #' -   `FAILED` - Your private CA has failed. Your CA can fail because of problems such a network outage or backend AWS failure or other errors. A failed CA can never return to the pending state. You must create a new CA.
 #' 
-#' -   `DELETED` - Your private CA is within the restoration period, after which it will be permanently deleted. The length of time remaining in the CA\'s restoration period will also be included in this operation\'s output.
+#' -   `DELETED` - Your private CA is within the restoration period, after which it is permanently deleted. The length of time remaining in the CA\'s restoration period is also included in this operation\'s output.
 #'
 #' @section Accepted Parameters:
 #' ```

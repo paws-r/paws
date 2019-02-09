@@ -9,11 +9,11 @@ update_ssh_public_key(UserName, SSHPublicKeyId, Status)
 \arguments{
 \item{UserName}{[required] The name of the IAM user associated with the SSH public key.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{SSHPublicKeyId}{[required] The unique identifier for the SSH public key.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that can consist of any upper or lowercased letter or digit.}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that can consist of any upper or lowercased letter or digit.}
 
 \item{Status}{[required] The status to assign to the SSH public key. \code{Active} means that the key can be used for authentication with an AWS CodeCommit repository. \code{Inactive} means that the key cannot be used.}
 }

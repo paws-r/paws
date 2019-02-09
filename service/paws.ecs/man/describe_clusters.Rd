@@ -30,7 +30,7 @@ Describes one or more of your clusters.
     "string"
   ),
   include = list(
-    "STATISTICS"
+    "STATISTICS"|"TAGS"
   )
 )
 }

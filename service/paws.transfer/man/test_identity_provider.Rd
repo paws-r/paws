@@ -2,13 +2,9 @@
 % Please edit documentation in R/paws.transfer_operations.R
 \name{test_identity_provider}
 \alias{test_identity_provider}
-\title{If the \code{IdentityProviderType} of the server is \code{API_Gateway}, tests whether your API Gateway is set up successfully}
+\title{If the IdentityProviderType of the server is API_Gateway, tests whether your API Gateway is set up successfully}
 \usage{
-test_identity_provider(
-  ServerId = "string",
-  UserName = "string",
-  UserPassword = "string"
-)
+test_identity_provider(ServerId, UserName, UserPassword = NULL)
 }
 \arguments{
 \item{ServerId}{[required] A system assigned identifier for a specific server. That server's user authentication method is tested with a user name and password.}
@@ -20,6 +16,12 @@ test_identity_provider(
 \description{
 If the \code{IdentityProviderType} of the server is \code{API_Gateway}, tests whether your API Gateway is set up successfully. We highly recommend that you call this method to test your authentication method as soon as you create your server. By doing so, you can troubleshoot issues with the API Gateway integration to ensure that your users can successfully use the service.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{test_identity_provider(
+  ServerId = "string",
+  UserName = "string",
+  UserPassword = "string"
+)
 }
+}
+

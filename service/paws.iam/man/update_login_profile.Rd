@@ -10,7 +10,7 @@ update_login_profile(UserName, Password = NULL,
 \arguments{
 \item{UserName}{[required] The name of the user whose password you want to update.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{Password}{The new password for the specified IAM user.
 

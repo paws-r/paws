@@ -13,7 +13,6 @@ stop_game_session_placement(PlacementId)
 Cancels a game session placement that is in \code{PENDING} status. To stop a placement, provide the placement ID values. If successful, the placement is moved to \code{CANCELLED} status.
 }
 \details{
-Game-session-related operations include:
 \itemize{
 \item CreateGameSession
 \item DescribeGameSessions

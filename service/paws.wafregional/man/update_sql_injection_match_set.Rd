@@ -31,7 +31,7 @@ Inserts or deletes SqlInjectionMatchTuple objects (filters) in a SqlInjectionMat
 
 You can only specify a single type of TextTransformation.
 
-You use \code{SqlInjectionMatchSet} objects to specify which CloudFront requests you want to allow, block, or count. For example, if you're receiving requests that contain snippets of SQL code in the query string and you want to block the requests, you can create a \code{SqlInjectionMatchSet} with the applicable settings, and then configure AWS WAF to block the requests.
+You use \code{SqlInjectionMatchSet} objects to specify which CloudFront requests that you want to allow, block, or count. For example, if you're receiving requests that contain snippets of SQL code in the query string and you want to block the requests, you can create a \code{SqlInjectionMatchSet} with the applicable settings, and then configure AWS WAF to block the requests.
 
 To create and configure a \code{SqlInjectionMatchSet}, perform the following steps:
 \enumerate{

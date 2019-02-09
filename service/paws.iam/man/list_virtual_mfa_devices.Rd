@@ -8,13 +8,13 @@ list_virtual_mfa_devices(AssignmentStatus = NULL, Marker = NULL,
   MaxItems = NULL)
 }
 \arguments{
-\item{AssignmentStatus}{The status (\code{Unassigned} or \code{Assigned}) of the devices to list. If you do not specify an \code{AssignmentStatus}, the operation defaults to \code{Any} which lists both assigned and unassigned virtual MFA devices.}
+\item{AssignmentStatus}{The status (\code{Unassigned} or \code{Assigned}) of the devices to list. If you do not specify an \code{AssignmentStatus}, the operation defaults to \code{Any}, which lists both assigned and unassigned virtual MFA devices.,}
 
 \item{Marker}{Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the \code{Marker} element in the response that you received to indicate where the next call should start.}
 
-\item{MaxItems}{(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the \code{IsTruncated} response element is \code{true}.
+\item{MaxItems}{Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the \code{IsTruncated} response element is \code{true}.
 
-If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the \code{IsTruncated} response element returns \code{true} and \code{Marker} contains a value to include in the subsequent call that tells the service where to continue from.}
+If you do not include this parameter, the number of items defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the \code{IsTruncated} response element returns \code{true}, and \code{Marker} contains a value to include in the subsequent call that tells the service where to continue from.}
 }
 \description{
 Lists the virtual MFA devices defined in the AWS account by assignment status. If you do not specify an assignment status, the operation returns a list of all virtual MFA devices. Assignment status can be \code{Assigned}, \code{Unassigned}, or \code{Any}.

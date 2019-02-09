@@ -10,7 +10,7 @@ get_vocabulary(VocabularyName)
 \item{VocabularyName}{[required] The name of the vocabulary to return information about. The name is case-sensitive.}
 }
 \description{
-Gets information about a vocabulary. Note that vocabularies for en-AU, en-UK, and fr-CA languages that are in preview are not available. In the console, the vocabulary section will be greyed-out and SDK will return error message.
+Gets information about a vocabulary.
 }
 \section{Accepted Parameters}{
 \preformatted{get_vocabulary(

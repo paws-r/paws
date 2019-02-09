@@ -8,49 +8,43 @@ invoke(FunctionName, InvocationType = NULL, LogType = NULL,
   ClientContext = NULL, Payload = NULL, Qualifier = NULL)
 }
 \arguments{
-\item{FunctionName}{[required] The name of the lambda function.
+\item{FunctionName}{[required] The name of the Lambda function, version, or alias.
 
 \strong{Name formats}
 \itemize{
-\item \strong{Function name} - \code{MyFunction}.
-\item \strong{Function ARN} - \code{arn:aws:lambda:us-west-2:123456789012:function:MyFunction}.
-\item \strong{Partial ARN} - \code{123456789012:function:MyFunction}.
+\item \strong{Function name} - \code{my-function} (name-only), \code{my-function:v1} (with alias).
+\item \strong{Function ARN} - \code{arn:aws:lambda:us-west-2:123456789012:function:my-function}.
+\item \strong{Partial ARN} - \code{123456789012:function:my-function}.
 }
 
-The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
+You can append a version number or alias to any of the formats. The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
 
 \item{InvocationType}{Choose from the following options.
 \itemize{
-\item \code{RequestResponse} (default) - Invoke the function synchronously. Keep the connection open until the function returns a response or times out.
-\item \code{Event} - Invoke the function asynchronously. Send events that fail multiple times to the function's dead-letter queue (if configured).
+\item \code{RequestResponse} (default) - Invoke the function synchronously. Keep the connection open until the function returns a response or times out. The API response includes the function response and additional data.
+\item \code{Event} - Invoke the function asynchronously. Send events that fail multiple times to the function's dead-letter queue (if configured). The API response only includes a status code.
 \item \code{DryRun} - Validate parameter values and verify that the user or role has permission to invoke the function.
 }}
 
-\item{LogType}{You can set this optional parameter to \code{Tail} in the request only if you specify the \code{InvocationType} parameter with value \code{RequestResponse}. In this case, AWS Lambda returns the base64-encoded last 4 KB of log data produced by your Lambda function in the \code{x-amz-log-result} header.}
+\item{LogType}{Set to \code{Tail} to include the execution log in the response.}
 
-\item{ClientContext}{Using the \code{ClientContext} you can pass client-specific information to the Lambda function you are invoking. You can then process the client information in your Lambda function as you choose through the context variable. For an example of a \code{ClientContext} JSON, see \href{http://docs.aws.amazon.com/mobileanalytics/latest/ug/PutEvents.html}{PutEvents} in the \emph{Amazon Mobile Analytics API Reference and User Guide}.
-
-The ClientContext JSON must be base64-encoded and has a maximum size of 3583 bytes.
-
-\code{ClientContext} information is returned only if you use the synchronous (\code{RequestResponse}) invocation type.}
+\item{ClientContext}{Up to 3583 bytes of base64-encoded data about the invoking client to pass to the function in the context object.}
 
 \item{Payload}{JSON that you want to provide to your Lambda function as input.}
 
 \item{Qualifier}{Specify a version or alias to invoke a published version of the function.}
 }
 \description{
-Invokes a Lambda function. For an example, see \href{http://docs.aws.amazon.com/lambda/latest/dg/with-dynamodb-create-function.html#with-dbb-invoke-manually}{Create the Lambda Function and Test It Manually}.
+Invokes a Lambda function. You can invoke a function synchronously and wait for the response, or asynchronously. To invoke a function asynchronously, set \code{InvocationType} to \code{Event}.
 }
 \details{
-Specify just a function name to invoke the latest version of the function. To invoke a published version, use the \code{Qualifier} parameter to specify a \href{http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{version or alias}.
+For synchronous invocation, details about the function response, including errors, are included in the response body and headers. For either invocation type, you can find more information in the \href{http://docs.aws.amazon.com/lambda/latest/dg/monitoring-functions.html}{execution log} and \href{http://docs.aws.amazon.com/lambda/latest/dg/dlq.html}{trace}. To record function errors for asynchronous invocations, configure your function with a \href{http://docs.aws.amazon.com/lambda/latest/dg/dlq.html}{dead letter queue}.
 
-If you use the \code{RequestResponse} (synchronous) invocation option, the function will be invoked only once. If you use the \code{Event} (asynchronous) invocation option, the function will be invoked at least once in response to an event and the function must be idempotent to handle this.
+The status code in the API response does not reflect function errors. Error codes are reserved for errors that prevent your function from executing, such as permissions errors, \href{http://docs.aws.amazon.com/lambda/latest/dg/limits.html}{limit errors}, or issues with your function's code and configuration. For example, Lambda returns \code{TooManyRequestsException} if executing the function would cause you to exceed a concurrency limit at either the account level (\code{ConcurrentInvocationLimitExceeded}) or function level (\code{ReservedFunctionConcurrentInvocationLimitExceeded}).
 
 For functions with a long timeout, your client may be disconnected during synchronous invocation while it waits for a response. Configure your HTTP client, SDK, firewall, proxy, or operating system to allow for long connections with timeout or keep-alive settings.
 
 This operation requires permission for the \code{lambda:InvokeFunction} action.
-
-The \code{TooManyRequestsException} noted below will return the following: \code{ConcurrentInvocationLimitExceeded} will be returned if you have no functions with reserved concurrency and have exceeded your account concurrent limit or if a function without reserved concurrency exceeds the account's unreserved concurrency limit. \code{ReservedFunctionConcurrentInvocationLimitExceeded} will be returned when a function with reserved concurrency exceeds its configured concurrency limit.
 }
 \section{Accepted Parameters}{
 \preformatted{invoke(

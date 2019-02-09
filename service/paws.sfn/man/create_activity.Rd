@@ -21,7 +21,7 @@ A name must \emph{not} contain:
 [ ]: R:%20}
 }
 \description{
-Creates an activity. An activity is a task which you write in any programming language and host on any machine which has access to AWS Step Functions. Activities must poll Step Functions using the \code{GetActivityTask} API action and respond using \code{SendTask*} API actions. This function lets Step Functions know the existence of your activity and returns an identifier for use in a state machine and when polling from the activity.
+Creates an activity. An activity is a task that you write in any programming language and host on any machine that has access to AWS Step Functions. Activities must poll Step Functions using the \code{GetActivityTask} API action and respond using \code{SendTask*} API actions. This function lets Step Functions know the existence of your activity and returns an identifier for use in a state machine and when polling from the activity.
 }
 \section{Accepted Parameters}{
 \preformatted{create_activity(

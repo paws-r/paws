@@ -4,10 +4,7 @@
 \alias{describe_application_snapshot}
 \title{Returns information about a snapshot of application state data}
 \usage{
-describe_application_snapshot(
-  ApplicationName = "string",
-  SnapshotName = "string"
-)
+describe_application_snapshot(ApplicationName, SnapshotName)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of an existing application.}
@@ -17,6 +14,11 @@ describe_application_snapshot(
 \description{
 Returns information about a snapshot of application state data.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_application_snapshot(
+  ApplicationName = "string",
+  SnapshotName = "string"
+)
 }
+}
+

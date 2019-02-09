@@ -10,13 +10,13 @@ create_graphql_api(name, logConfig = NULL, authenticationType,
 \arguments{
 \item{name}{[required] A user-supplied name for the \code{GraphqlApi}.}
 
-\item{logConfig}{The Amazon CloudWatch logs configuration.}
+\item{logConfig}{The Amazon CloudWatch Logs configuration.}
 
-\item{authenticationType}{[required] The authentication type: API key, IAM, or Amazon Cognito User Pools.}
+\item{authenticationType}{[required] The authentication type: API key, AWS IAM, or Amazon Cognito user pools.}
 
-\item{userPoolConfig}{The Amazon Cognito User Pool configuration.}
+\item{userPoolConfig}{The Amazon Cognito user pool configuration.}
 
-\item{openIDConnectConfig}{The Open Id Connect configuration configuration.}
+\item{openIDConnectConfig}{The OpenID Connect configuration.}
 }
 \description{
 Creates a \code{GraphqlApi} object.

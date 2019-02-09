@@ -4,12 +4,14 @@
 \alias{describe_document}
 \title{Describes the specified Systems Manager document}
 \usage{
-describe_document(Name, DocumentVersion = NULL)
+describe_document(Name, DocumentVersion = NULL, VersionName = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the Systems Manager document.}
 
 \item{DocumentVersion}{The document version for which you want information. Can be a specific version or the default version.}
+
+\item{VersionName}{An optional field specifying the version of the artifact associated with the document. For example, "Release 12, Update 6". This value is unique across all versions of a document, and cannot be changed.}
 }
 \description{
 Describes the specified Systems Manager document.
@@ -17,7 +19,8 @@ Describes the specified Systems Manager document.
 \section{Accepted Parameters}{
 \preformatted{describe_document(
   Name = "string",
-  DocumentVersion = "string"
+  DocumentVersion = "string",
+  VersionName = "string"
 )
 }
 }

@@ -10,11 +10,11 @@ update_service_specific_credential(UserName = NULL,
 \arguments{
 \item{UserName}{The name of the IAM user associated with the service-specific credential. If you do not specify this value, then the operation assumes the user whose credentials are used to call the operation.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{ServiceSpecificCredentialId}{[required] The unique identifier of the service-specific credential.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that can consist of any upper or lowercased letter or digit.}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that can consist of any upper or lowercased letter or digit.}
 
 \item{Status}{[required] The status to be assigned to the service-specific credential.}
 }

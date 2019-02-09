@@ -10,9 +10,9 @@ put_notification_configuration(AutoScalingGroupName, TopicARN,
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{TopicARN}{[required] The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) topic.}
+\item{TopicARN}{[required] The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (Amazon SNS) topic.}
 
-\item{NotificationTypes}{[required] The type of event that will cause the notification to be sent. For details about notification types supported by Amazon EC2 Auto Scaling, see DescribeAutoScalingNotificationTypes.}
+\item{NotificationTypes}{[required] The type of event that causes the notification to be sent. For more information about notification types supported by Amazon EC2 Auto Scaling, see DescribeAutoScalingNotificationTypes.}
 }
 \description{
 Configures an Auto Scaling group to send notifications when specified events take place. Subscribers to the specified topic can have messages delivered to an endpoint such as a web server or an email address.
@@ -20,7 +20,7 @@ Configures an Auto Scaling group to send notifications when specified events tak
 \details{
 This configuration overwrites any existing configuration.
 
-For more information see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/ASGettingNotifications.html}{Getting SNS Notifications When Your Auto Scaling Group Scales} in the \emph{Auto Scaling User Guide}.
+For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/ASGettingNotifications.html}{Getting SNS Notifications When Your Auto Scaling Group Scales} in the \emph{Auto Scaling User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{put_notification_configuration(

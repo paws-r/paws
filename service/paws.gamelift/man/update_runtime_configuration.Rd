@@ -18,8 +18,6 @@ Updates the current run-time configuration for the specified fleet, which tells 
 To update run-time configuration, specify the fleet ID and provide a \code{RuntimeConfiguration} object with the updated collection of server process configurations.
 
 Each instance in a Amazon GameLift fleet checks regularly for an updated run-time configuration and changes how it launches server processes to comply with the latest version. Existing server processes are not affected by the update; they continue to run until they end, while Amazon GameLift simply adds new server processes to fit the current run-time configuration. As a result, the run-time configuration changes are applied gradually as existing processes shut down and new processes are launched in Amazon GameLift's normal process recycling activity.
-
-Fleet-related operations include:
 \itemize{
 \item CreateFleet
 \item ListFleets

@@ -13,7 +13,7 @@ update_destination(DeliveryStreamName, CurrentDeliveryStreamVersionId,
 \arguments{
 \item{DeliveryStreamName}{[required] The name of the delivery stream.}
 
-\item{CurrentDeliveryStreamVersionId}{[required] Obtain this value from the \strong{VersionId} result of DeliveryStreamDescription. This value is required, and helps the service perform conditional operations. For example, if there is an interleaving update and this value is null, then the update destination fails. After the update is successful, the \code{VersionId} value is updated. The service then performs a merge of the old configuration with the new configuration.}
+\item{CurrentDeliveryStreamVersionId}{[required] Obtain this value from the \code{VersionId} result of DeliveryStreamDescription. This value is required, and helps the service perform conditional operations. For example, if there is an interleaving update and this value is null, then the update destination fails. After the update is successful, the \code{VersionId} value is updated. The service then performs a merge of the old configuration with the new configuration.}
 
 \item{DestinationId}{[required] The ID of the destination.}
 
@@ -39,7 +39,7 @@ If the destination type is the same, Kinesis Data Firehose merges the configurat
 
 If the destination type is not the same, for example, changing the destination from Amazon S3 to Amazon Redshift, Kinesis Data Firehose does not merge any parameters. In this case, all parameters must be specified.
 
-Kinesis Data Firehose uses \strong{CurrentDeliveryStreamVersionId} to avoid race conditions and conflicting merges. This is a required field, and the service updates the configuration only if the existing configuration has a version ID that matches. After the update is applied successfully, the version ID is updated, and can be retrieved using DescribeDeliveryStream. Use the new version ID to set \strong{CurrentDeliveryStreamVersionId} in the next call.
+Kinesis Data Firehose uses \code{CurrentDeliveryStreamVersionId} to avoid race conditions and conflicting merges. This is a required field, and the service updates the configuration only if the existing configuration has a version ID that matches. After the update is applied successfully, the version ID is updated, and can be retrieved using DescribeDeliveryStream. Use the new version ID to set \code{CurrentDeliveryStreamVersionId} in the next call.
 }
 \section{Accepted Parameters}{
 \preformatted{update_destination(
@@ -50,6 +50,7 @@ Kinesis Data Firehose uses \strong{CurrentDeliveryStreamVersionId} to avoid race
     RoleARN = "string",
     BucketARN = "string",
     Prefix = "string",
+    ErrorOutputPrefix = "string",
     BufferingHints = list(
       SizeInMBs = 123,
       IntervalInSeconds = 123
@@ -71,6 +72,7 @@ Kinesis Data Firehose uses \strong{CurrentDeliveryStreamVersionId} to avoid race
     RoleARN = "string",
     BucketARN = "string",
     Prefix = "string",
+    ErrorOutputPrefix = "string",
     BufferingHints = list(
       SizeInMBs = 123,
       IntervalInSeconds = 123
@@ -106,6 +108,7 @@ Kinesis Data Firehose uses \strong{CurrentDeliveryStreamVersionId} to avoid race
       RoleARN = "string",
       BucketARN = "string",
       Prefix = "string",
+      ErrorOutputPrefix = "string",
       BufferingHints = list(
         SizeInMBs = 123,
         IntervalInSeconds = 123
@@ -194,6 +197,7 @@ Kinesis Data Firehose uses \strong{CurrentDeliveryStreamVersionId} to avoid race
       RoleARN = "string",
       BucketARN = "string",
       Prefix = "string",
+      ErrorOutputPrefix = "string",
       BufferingHints = list(
         SizeInMBs = 123,
         IntervalInSeconds = 123
@@ -230,6 +234,7 @@ Kinesis Data Firehose uses \strong{CurrentDeliveryStreamVersionId} to avoid race
       RoleARN = "string",
       BucketARN = "string",
       Prefix = "string",
+      ErrorOutputPrefix = "string",
       BufferingHints = list(
         SizeInMBs = 123,
         IntervalInSeconds = 123
@@ -270,6 +275,7 @@ Kinesis Data Firehose uses \strong{CurrentDeliveryStreamVersionId} to avoid race
       RoleARN = "string",
       BucketARN = "string",
       Prefix = "string",
+      ErrorOutputPrefix = "string",
       BufferingHints = list(
         SizeInMBs = 123,
         IntervalInSeconds = 123
@@ -320,6 +326,7 @@ Kinesis Data Firehose uses \strong{CurrentDeliveryStreamVersionId} to avoid race
       RoleARN = "string",
       BucketARN = "string",
       Prefix = "string",
+      ErrorOutputPrefix = "string",
       BufferingHints = list(
         SizeInMBs = 123,
         IntervalInSeconds = 123

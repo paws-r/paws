@@ -4,11 +4,7 @@
 \alias{describe_group}
 \title{Returns an Amazon QuickSight group's description and Amazon Resource Name (ARN)}
 \usage{
-describe_group(
-  GroupName = "string",
-  AwsAccountId = "string",
-  Namespace = "string"
-)
+describe_group(GroupName, AwsAccountId, Namespace)
 }
 \arguments{
 \item{GroupName}{[required] The name of the group that you want to describe.}
@@ -29,6 +25,12 @@ The response is the group object.
 
 \code{aws quicksight describe-group -\-aws-account-id=11112222333 -\-namespace=default -\-group-name=Sales }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_group(
+  GroupName = "string",
+  AwsAccountId = "string",
+  Namespace = "string"
+)
 }
+}
+

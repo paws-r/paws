@@ -4,9 +4,7 @@
 \alias{delete_domain_name}
 \title{Deletes a domain name}
 \usage{
-delete_domain_name(
-  DomainName = "string"
-)
+delete_domain_name(DomainName)
 }
 \arguments{
 \item{DomainName}{[required] The domain name.}
@@ -14,6 +12,10 @@ delete_domain_name(
 \description{
 Deletes a domain name.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_domain_name(
+  DomainName = "string"
+)
 }
+}
+

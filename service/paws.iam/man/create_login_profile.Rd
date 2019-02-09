@@ -9,7 +9,7 @@ create_login_profile(UserName, Password, PasswordResetRequired = NULL)
 \arguments{
 \item{UserName}{[required] The name of the IAM user to create a password for. The user must already exist.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{Password}{[required] The new password for the user.
 

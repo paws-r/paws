@@ -9,7 +9,7 @@ create_relational_database_from_snapshot(relationalDatabaseName,
   relationalDatabaseSnapshotName = NULL,
   relationalDatabaseBundleId = NULL,
   sourceRelationalDatabaseName = NULL, restoreTime = NULL,
-  useLatestRestorableTime = NULL)
+  useLatestRestorableTime = NULL, tags = NULL)
 }
 \arguments{
 \item{relationalDatabaseName}{[required] The name to use for your new database.
@@ -53,12 +53,18 @@ For example, if you wish to use a restore time of October 1, 2018, at 8 PM UTC, 
 Default: \code{false}
 
 Constraints: Cannot be specified if the \code{restore time} parameter is provided.}
+
+\item{tags}{The tag keys and optional values to add to the resource during create.
+
+To tag a resource after it has been created, see the \code{tag resource} operation.}
 }
 \description{
 Creates a new database from an existing database snapshot in Amazon Lightsail.
 }
 \details{
 You can create a new database from a snapshot in if something goes wrong with your original database, or to change it to a different plan, such as a high availability or standard plan.
+
+The \code{create relational database from snapshot} operation supports tag-based access control via request tags and resource tags applied to the resource identified by relationalDatabaseSnapshotName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{create_relational_database_from_snapshot(
@@ -69,7 +75,13 @@ You can create a new database from a snapshot in if something goes wrong with yo
   relationalDatabaseBundleId = "string",
   sourceRelationalDatabaseName = "string",
   restoreTime = as.POSIXct("2015-01-01"),
-  useLatestRestorableTime = TRUE|FALSE
+  useLatestRestorableTime = TRUE|FALSE,
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
 )
 }
 }

@@ -4,20 +4,8 @@
 \alias{create_user}
 \title{Adds a user and associate them with an existing Secure File Transfer Protocol (SFTP) server}
 \usage{
-create_user(
-  HomeDirectory = "string",
-  Policy = "string",
-  Role = "string",
-  ServerId = "string",
-  SshPublicKeyBody = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  UserName = "string"
-)
+create_user(HomeDirectory = NULL, Policy = NULL, Role, ServerId,
+  SshPublicKeyBody = NULL, Tags = NULL, UserName)
 }
 \arguments{
 \item{HomeDirectory}{The landing directory (folder) for a user when they log in to the server using their SFTP client. An example is \code{/home/username username }.}
@@ -40,6 +28,21 @@ Adds a user and associate them with an existing Secure File Transfer Protocol (S
 \details{
 The response returns the \code{UserName} and \code{ServerId} values of the new user for that server.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_user(
+  HomeDirectory = "string",
+  Policy = "string",
+  Role = "string",
+  ServerId = "string",
+  SshPublicKeyBody = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  UserName = "string"
+)
 }
+}
+

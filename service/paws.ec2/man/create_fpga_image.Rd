@@ -19,7 +19,7 @@ create_fpga_image(DryRun = NULL, InputStorageLocation,
 
 \item{Name}{A name for the AFI.}
 
-\item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
+\item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
 }
 \description{
 Creates an Amazon FPGA Image (AFI) from the specified design checkpoint (DCP).

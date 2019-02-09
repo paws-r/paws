@@ -9,6 +9,8 @@ get_account()
 \description{
 Obtain information about the email-sending status and capabilities of your Amazon Pinpoint account in the current AWS Region.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_account()
 }
+}
+

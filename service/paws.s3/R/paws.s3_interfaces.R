@@ -119,9 +119,10 @@ copy_object_input <- function (...)
         StorageClass = structure(logical(0), tags = list(location = "header", 
             locationName = "x-amz-storage-class", type = "string", 
             enum = c("STANDARD", "REDUCED_REDUNDANCY", "STANDARD_IA", 
-                "ONEZONE_IA"))), WebsiteRedirectLocation = structure(logical(0), 
-            tags = list(location = "header", locationName = "x-amz-website-redirect-location", 
-                type = "string")), SSECustomerAlgorithm = structure(logical(0), 
+                "ONEZONE_IA", "INTELLIGENT_TIERING", "GLACIER"))), 
+        WebsiteRedirectLocation = structure(logical(0), tags = list(location = "header", 
+            locationName = "x-amz-website-redirect-location", 
+            type = "string")), SSECustomerAlgorithm = structure(logical(0), 
             tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-algorithm", 
                 type = "string")), SSECustomerKey = structure(logical(0), 
             tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-key", 
@@ -139,7 +140,15 @@ copy_object_input <- function (...)
             tags = list(location = "header", locationName = "x-amz-request-payer", 
                 type = "string", enum = "requester")), Tagging = structure(logical(0), 
             tags = list(location = "header", locationName = "x-amz-tagging", 
-                type = "string"))), tags = list(type = "structure"))
+                type = "string")), ObjectLockMode = structure(logical(0), 
+            tags = list(location = "header", locationName = "x-amz-object-lock-mode", 
+                type = "string", enum = c("GOVERNANCE", "COMPLIANCE"))), 
+        ObjectLockRetainUntilDate = structure(logical(0), tags = list(location = "header", 
+            locationName = "x-amz-object-lock-retain-until-date", 
+            type = "timestamp", timestampFormat = "iso8601")), 
+        ObjectLockLegalHoldStatus = structure(logical(0), tags = list(location = "header", 
+            locationName = "x-amz-object-lock-legal-hold", type = "string", 
+            enum = c("ON", "OFF")))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -192,7 +201,9 @@ create_bucket_input <- function (...)
             tags = list(location = "header", locationName = "x-amz-grant-write", 
                 type = "string")), GrantWriteACP = structure(logical(0), 
             tags = list(location = "header", locationName = "x-amz-grant-write-acp", 
-                type = "string"))), tags = list(type = "structure", 
+                type = "string")), ObjectLockEnabledForBucket = structure(logical(0), 
+            tags = list(location = "header", locationName = "x-amz-bucket-object-lock-enabled", 
+                type = "boolean"))), tags = list(type = "structure", 
         payload = "CreateBucketConfiguration"))
     return(populate(args, shape))
 }
@@ -244,9 +255,10 @@ create_multipart_upload_input <- function (...)
         StorageClass = structure(logical(0), tags = list(location = "header", 
             locationName = "x-amz-storage-class", type = "string", 
             enum = c("STANDARD", "REDUCED_REDUNDANCY", "STANDARD_IA", 
-                "ONEZONE_IA"))), WebsiteRedirectLocation = structure(logical(0), 
-            tags = list(location = "header", locationName = "x-amz-website-redirect-location", 
-                type = "string")), SSECustomerAlgorithm = structure(logical(0), 
+                "ONEZONE_IA", "INTELLIGENT_TIERING", "GLACIER"))), 
+        WebsiteRedirectLocation = structure(logical(0), tags = list(location = "header", 
+            locationName = "x-amz-website-redirect-location", 
+            type = "string")), SSECustomerAlgorithm = structure(logical(0), 
             tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-algorithm", 
                 type = "string")), SSECustomerKey = structure(logical(0), 
             tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-key", 
@@ -258,7 +270,15 @@ create_multipart_upload_input <- function (...)
             tags = list(location = "header", locationName = "x-amz-request-payer", 
                 type = "string", enum = "requester")), Tagging = structure(logical(0), 
             tags = list(location = "header", locationName = "x-amz-tagging", 
-                type = "string"))), tags = list(type = "structure"))
+                type = "string")), ObjectLockMode = structure(logical(0), 
+            tags = list(location = "header", locationName = "x-amz-object-lock-mode", 
+                type = "string", enum = c("GOVERNANCE", "COMPLIANCE"))), 
+        ObjectLockRetainUntilDate = structure(logical(0), tags = list(location = "header", 
+            locationName = "x-amz-object-lock-retain-until-date", 
+            type = "timestamp", timestampFormat = "iso8601")), 
+        ObjectLockLegalHoldStatus = structure(logical(0), tags = list(location = "header", 
+            locationName = "x-amz-object-lock-legal-hold", type = "string", 
+            enum = c("ON", "OFF")))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -447,7 +467,9 @@ delete_object_input <- function (...)
         tags = list(location = "querystring", locationName = "versionId", 
             type = "string")), RequestPayer = structure(logical(0), 
         tags = list(location = "header", locationName = "x-amz-request-payer", 
-            type = "string", enum = "requester"))), tags = list(type = "structure"))
+            type = "string", enum = "requester")), BypassGovernanceRetention = structure(logical(0), 
+        tags = list(location = "header", locationName = "x-amz-bypass-governance-retention", 
+            type = "boolean"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -497,7 +519,9 @@ delete_objects_input <- function (...)
         MFA = structure(logical(0), tags = list(location = "header", 
             locationName = "x-amz-mfa", type = "string")), RequestPayer = structure(logical(0), 
             tags = list(location = "header", locationName = "x-amz-request-payer", 
-                type = "string", enum = "requester"))), tags = list(type = "structure", 
+                type = "string", enum = "requester")), BypassGovernanceRetention = structure(logical(0), 
+            tags = list(location = "header", locationName = "x-amz-bypass-governance-retention", 
+                type = "boolean"))), tags = list(type = "structure", 
         payload = "Delete"))
     return(populate(args, shape))
 }
@@ -520,6 +544,19 @@ delete_objects_output <- function (...)
         tags = list(locationName = "Error", type = "list", flattened = TRUE))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
+}
+
+delete_public_access_block_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", 
+        locationName = "Bucket", type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_public_access_block_output <- function () 
+{
+    return(list())
 }
 
 get_bucket_accelerate_configuration_input <- function (...) 
@@ -668,7 +705,7 @@ get_bucket_inventory_configuration_output <- function (...)
     shape <- structure(list(InventoryConfiguration = structure(list(Destination = structure(list(S3BucketDestination = structure(list(AccountId = structure(logical(0), 
         tags = list(type = "string")), Bucket = structure(logical(0), 
         tags = list(type = "string")), Format = structure(logical(0), 
-        tags = list(type = "string", enum = c("CSV", "ORC"))), 
+        tags = list(type = "string", enum = c("CSV", "ORC", "Parquet"))), 
         Prefix = structure(logical(0), tags = list(type = "string")), 
         Encryption = structure(list(SSES3 = structure(list(), 
             tags = list(type = "structure", locationName = "SSE-S3")), 
@@ -685,8 +722,10 @@ get_bucket_inventory_configuration_output <- function (...)
             tags = list(locationName = "Field", type = "string", 
                 enum = c("Size", "LastModifiedDate", "StorageClass", 
                   "ETag", "IsMultipartUploaded", "ReplicationStatus", 
-                  "EncryptionStatus")))), tags = list(locationNameList = "Field", 
-            type = "list")), Schedule = structure(list(Frequency = structure(logical(0), 
+                  "EncryptionStatus", "ObjectLockRetainUntilDate", 
+                  "ObjectLockMode", "ObjectLockLegalHoldStatus")))), 
+            tags = list(locationNameList = "Field", type = "list")), 
+        Schedule = structure(list(Frequency = structure(logical(0), 
             tags = list(type = "string", enum = c("Daily", "Weekly")))), 
             tags = list(type = "structure"))), tags = list(type = "structure"))), 
         tags = list(type = "structure", payload = "InventoryConfiguration"))
@@ -716,12 +755,13 @@ get_bucket_lifecycle_output <- function (...)
             tags = list(type = "timestamp", timestampFormat = "iso8601")), 
             Days = structure(logical(0), tags = list(type = "integer")), 
             StorageClass = structure(logical(0), tags = list(type = "string", 
-                enum = c("GLACIER", "STANDARD_IA", "ONEZONE_IA")))), 
-            tags = list(type = "structure")), NoncurrentVersionTransition = structure(list(NoncurrentDays = structure(logical(0), 
+                enum = c("GLACIER", "STANDARD_IA", "ONEZONE_IA", 
+                  "INTELLIGENT_TIERING")))), tags = list(type = "structure")), 
+        NoncurrentVersionTransition = structure(list(NoncurrentDays = structure(logical(0), 
             tags = list(type = "integer")), StorageClass = structure(logical(0), 
             tags = list(type = "string", enum = c("GLACIER", 
-                "STANDARD_IA", "ONEZONE_IA")))), tags = list(type = "structure")), 
-        NoncurrentVersionExpiration = structure(list(NoncurrentDays = structure(logical(0), 
+                "STANDARD_IA", "ONEZONE_IA", "INTELLIGENT_TIERING")))), 
+            tags = list(type = "structure")), NoncurrentVersionExpiration = structure(list(NoncurrentDays = structure(logical(0), 
             tags = list(type = "integer"))), tags = list(type = "structure")), 
         AbortIncompleteMultipartUpload = structure(list(DaysAfterInitiation = structure(logical(0), 
             tags = list(type = "integer"))), tags = list(type = "structure"))), 
@@ -763,14 +803,15 @@ get_bucket_lifecycle_configuration_output <- function (...)
             tags = list(type = "timestamp", timestampFormat = "iso8601")), 
             Days = structure(logical(0), tags = list(type = "integer")), 
             StorageClass = structure(logical(0), tags = list(type = "string", 
-                enum = c("GLACIER", "STANDARD_IA", "ONEZONE_IA")))), 
-            tags = list(type = "structure"))), tags = list(locationName = "Transition", 
-            type = "list", flattened = TRUE)), NoncurrentVersionTransitions = structure(list(structure(list(NoncurrentDays = structure(logical(0), 
+                enum = c("GLACIER", "STANDARD_IA", "ONEZONE_IA", 
+                  "INTELLIGENT_TIERING")))), tags = list(type = "structure"))), 
+            tags = list(locationName = "Transition", type = "list", 
+                flattened = TRUE)), NoncurrentVersionTransitions = structure(list(structure(list(NoncurrentDays = structure(logical(0), 
             tags = list(type = "integer")), StorageClass = structure(logical(0), 
             tags = list(type = "string", enum = c("GLACIER", 
-                "STANDARD_IA", "ONEZONE_IA")))), tags = list(type = "structure"))), 
-            tags = list(locationName = "NoncurrentVersionTransition", 
-                type = "list", flattened = TRUE)), NoncurrentVersionExpiration = structure(list(NoncurrentDays = structure(logical(0), 
+                "STANDARD_IA", "ONEZONE_IA", "INTELLIGENT_TIERING")))), 
+            tags = list(type = "structure"))), tags = list(locationName = "NoncurrentVersionTransition", 
+            type = "list", flattened = TRUE)), NoncurrentVersionExpiration = structure(list(NoncurrentDays = structure(logical(0), 
             tags = list(type = "integer"))), tags = list(type = "structure")), 
         AbortIncompleteMultipartUpload = structure(list(DaysAfterInitiation = structure(logical(0), 
             tags = list(type = "integer"))), tags = list(type = "structure"))), 
@@ -874,13 +915,15 @@ get_bucket_notification_output <- function (...)
             "s3:ObjectCreated:*", "s3:ObjectCreated:Put", "s3:ObjectCreated:Post", 
             "s3:ObjectCreated:Copy", "s3:ObjectCreated:CompleteMultipartUpload", 
             "s3:ObjectRemoved:*", "s3:ObjectRemoved:Delete", 
-            "s3:ObjectRemoved:DeleteMarkerCreated")))), tags = list(locationName = "Event", 
+            "s3:ObjectRemoved:DeleteMarkerCreated", "s3:ObjectRestore:Post", 
+            "s3:ObjectRestore:Completed")))), tags = list(locationName = "Event", 
         type = "list", flattened = TRUE)), Event = structure(logical(0), 
         tags = list(deprecated = TRUE, type = "string", enum = c("s3:ReducedRedundancyLostObject", 
             "s3:ObjectCreated:*", "s3:ObjectCreated:Put", "s3:ObjectCreated:Post", 
             "s3:ObjectCreated:Copy", "s3:ObjectCreated:CompleteMultipartUpload", 
             "s3:ObjectRemoved:*", "s3:ObjectRemoved:Delete", 
-            "s3:ObjectRemoved:DeleteMarkerCreated"))), Topic = structure(logical(0), 
+            "s3:ObjectRemoved:DeleteMarkerCreated", "s3:ObjectRestore:Post", 
+            "s3:ObjectRestore:Completed"))), Topic = structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "structure")), 
         QueueConfiguration = structure(list(Id = structure(logical(0), 
             tags = list(type = "string")), Event = structure(logical(0), 
@@ -888,15 +931,16 @@ get_bucket_notification_output <- function (...)
                 "s3:ObjectCreated:*", "s3:ObjectCreated:Put", 
                 "s3:ObjectCreated:Post", "s3:ObjectCreated:Copy", 
                 "s3:ObjectCreated:CompleteMultipartUpload", "s3:ObjectRemoved:*", 
-                "s3:ObjectRemoved:Delete", "s3:ObjectRemoved:DeleteMarkerCreated"))), 
+                "s3:ObjectRemoved:Delete", "s3:ObjectRemoved:DeleteMarkerCreated", 
+                "s3:ObjectRestore:Post", "s3:ObjectRestore:Completed"))), 
             Events = structure(list(structure(logical(0), tags = list(type = "string", 
                 enum = c("s3:ReducedRedundancyLostObject", "s3:ObjectCreated:*", 
                   "s3:ObjectCreated:Put", "s3:ObjectCreated:Post", 
                   "s3:ObjectCreated:Copy", "s3:ObjectCreated:CompleteMultipartUpload", 
                   "s3:ObjectRemoved:*", "s3:ObjectRemoved:Delete", 
-                  "s3:ObjectRemoved:DeleteMarkerCreated")))), 
-                tags = list(locationName = "Event", type = "list", 
-                  flattened = TRUE)), Queue = structure(logical(0), 
+                  "s3:ObjectRemoved:DeleteMarkerCreated", "s3:ObjectRestore:Post", 
+                  "s3:ObjectRestore:Completed")))), tags = list(locationName = "Event", 
+                type = "list", flattened = TRUE)), Queue = structure(logical(0), 
                 tags = list(type = "string"))), tags = list(type = "structure")), 
         CloudFunctionConfiguration = structure(list(Id = structure(logical(0), 
             tags = list(type = "string")), Event = structure(logical(0), 
@@ -904,15 +948,16 @@ get_bucket_notification_output <- function (...)
                 "s3:ObjectCreated:*", "s3:ObjectCreated:Put", 
                 "s3:ObjectCreated:Post", "s3:ObjectCreated:Copy", 
                 "s3:ObjectCreated:CompleteMultipartUpload", "s3:ObjectRemoved:*", 
-                "s3:ObjectRemoved:Delete", "s3:ObjectRemoved:DeleteMarkerCreated"))), 
+                "s3:ObjectRemoved:Delete", "s3:ObjectRemoved:DeleteMarkerCreated", 
+                "s3:ObjectRestore:Post", "s3:ObjectRestore:Completed"))), 
             Events = structure(list(structure(logical(0), tags = list(type = "string", 
                 enum = c("s3:ReducedRedundancyLostObject", "s3:ObjectCreated:*", 
                   "s3:ObjectCreated:Put", "s3:ObjectCreated:Post", 
                   "s3:ObjectCreated:Copy", "s3:ObjectCreated:CompleteMultipartUpload", 
                   "s3:ObjectRemoved:*", "s3:ObjectRemoved:Delete", 
-                  "s3:ObjectRemoved:DeleteMarkerCreated")))), 
-                tags = list(locationName = "Event", type = "list", 
-                  flattened = TRUE)), CloudFunction = structure(logical(0), 
+                  "s3:ObjectRemoved:DeleteMarkerCreated", "s3:ObjectRestore:Post", 
+                  "s3:ObjectRestore:Completed")))), tags = list(locationName = "Event", 
+                type = "list", flattened = TRUE)), CloudFunction = structure(logical(0), 
                 tags = list(type = "string")), InvocationRole = structure(logical(0), 
                 tags = list(type = "string"))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))
@@ -938,7 +983,8 @@ get_bucket_notification_configuration_output <- function (...)
                 "s3:ObjectCreated:Put", "s3:ObjectCreated:Post", 
                 "s3:ObjectCreated:Copy", "s3:ObjectCreated:CompleteMultipartUpload", 
                 "s3:ObjectRemoved:*", "s3:ObjectRemoved:Delete", 
-                "s3:ObjectRemoved:DeleteMarkerCreated")))), tags = list(locationName = "Event", 
+                "s3:ObjectRemoved:DeleteMarkerCreated", "s3:ObjectRestore:Post", 
+                "s3:ObjectRestore:Completed")))), tags = list(locationName = "Event", 
             type = "list", flattened = TRUE)), Filter = structure(list(Key = structure(list(FilterRules = structure(list(structure(list(Name = structure(logical(0), 
             tags = list(type = "string", enum = c("prefix", "suffix"))), 
             Value = structure(logical(0), tags = list(type = "string"))), 
@@ -954,7 +1000,8 @@ get_bucket_notification_configuration_output <- function (...)
                 "s3:ObjectCreated:Put", "s3:ObjectCreated:Post", 
                 "s3:ObjectCreated:Copy", "s3:ObjectCreated:CompleteMultipartUpload", 
                 "s3:ObjectRemoved:*", "s3:ObjectRemoved:Delete", 
-                "s3:ObjectRemoved:DeleteMarkerCreated")))), tags = list(locationName = "Event", 
+                "s3:ObjectRemoved:DeleteMarkerCreated", "s3:ObjectRestore:Post", 
+                "s3:ObjectRestore:Completed")))), tags = list(locationName = "Event", 
             type = "list", flattened = TRUE)), Filter = structure(list(Key = structure(list(FilterRules = structure(list(structure(list(Name = structure(logical(0), 
             tags = list(type = "string", enum = c("prefix", "suffix"))), 
             Value = structure(logical(0), tags = list(type = "string"))), 
@@ -970,7 +1017,8 @@ get_bucket_notification_configuration_output <- function (...)
                 "s3:ObjectCreated:Put", "s3:ObjectCreated:Post", 
                 "s3:ObjectCreated:Copy", "s3:ObjectCreated:CompleteMultipartUpload", 
                 "s3:ObjectRemoved:*", "s3:ObjectRemoved:Delete", 
-                "s3:ObjectRemoved:DeleteMarkerCreated")))), tags = list(locationName = "Event", 
+                "s3:ObjectRemoved:DeleteMarkerCreated", "s3:ObjectRestore:Post", 
+                "s3:ObjectRestore:Completed")))), tags = list(locationName = "Event", 
             type = "list", flattened = TRUE)), Filter = structure(list(Key = structure(list(FilterRules = structure(list(structure(list(Name = structure(logical(0), 
             tags = list(type = "string", enum = c("prefix", "suffix"))), 
             Value = structure(logical(0), tags = list(type = "string"))), 
@@ -995,6 +1043,24 @@ get_bucket_policy_output <- function (...)
     args <- c(as.list(environment()), list(...))
     shape <- structure(list(Policy = structure(logical(0), tags = list(type = "string"))), 
         tags = list(type = "structure", payload = "Policy"))
+    return(populate(args, shape))
+}
+
+get_bucket_policy_status_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", 
+        locationName = "Bucket", type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+get_bucket_policy_status_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(PolicyStatus = structure(list(IsPublic = structure(logical(0), 
+        tags = list(locationName = "IsPublic", type = "boolean"))), 
+        tags = list(type = "structure"))), tags = list(type = "structure", 
+        payload = "PolicyStatus"))
     return(populate(args, shape))
 }
 
@@ -1032,11 +1098,11 @@ get_bucket_replication_output <- function (...)
             tags = list(type = "string")), Account = structure(logical(0), 
             tags = list(type = "string")), StorageClass = structure(logical(0), 
             tags = list(type = "string", enum = c("STANDARD", 
-                "REDUCED_REDUNDANCY", "STANDARD_IA", "ONEZONE_IA"))), 
-            AccessControlTranslation = structure(list(Owner = structure(logical(0), 
-                tags = list(type = "string", enum = "Destination"))), 
-                tags = list(type = "structure")), EncryptionConfiguration = structure(list(ReplicaKmsKeyID = structure(logical(0), 
-                tags = list(type = "string"))), tags = list(type = "structure"))), 
+                "REDUCED_REDUNDANCY", "STANDARD_IA", "ONEZONE_IA", 
+                "INTELLIGENT_TIERING", "GLACIER"))), AccessControlTranslation = structure(list(Owner = structure(logical(0), 
+            tags = list(type = "string", enum = "Destination"))), 
+            tags = list(type = "structure")), EncryptionConfiguration = structure(list(ReplicaKmsKeyID = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure"))), 
             tags = list(type = "structure")), DeleteMarkerReplication = structure(list(Status = structure(logical(0), 
             tags = list(type = "string", enum = c("Enabled", 
                 "Disabled")))), tags = list(type = "structure"))), 
@@ -1227,7 +1293,8 @@ get_object_output <- function (...)
                 type = "string", sensitive = TRUE)), StorageClass = structure(logical(0), 
             tags = list(location = "header", locationName = "x-amz-storage-class", 
                 type = "string", enum = c("STANDARD", "REDUCED_REDUNDANCY", 
-                  "STANDARD_IA", "ONEZONE_IA"))), RequestCharged = structure(logical(0), 
+                  "STANDARD_IA", "ONEZONE_IA", "INTELLIGENT_TIERING", 
+                  "GLACIER"))), RequestCharged = structure(logical(0), 
             tags = list(location = "header", locationName = "x-amz-request-charged", 
                 type = "string", enum = "requester")), ReplicationStatus = structure(logical(0), 
             tags = list(location = "header", locationName = "x-amz-replication-status", 
@@ -1236,7 +1303,15 @@ get_object_output <- function (...)
             tags = list(location = "header", locationName = "x-amz-mp-parts-count", 
                 type = "integer")), TagCount = structure(logical(0), 
             tags = list(location = "header", locationName = "x-amz-tagging-count", 
-                type = "integer"))), tags = list(type = "structure", 
+                type = "integer")), ObjectLockMode = structure(logical(0), 
+            tags = list(location = "header", locationName = "x-amz-object-lock-mode", 
+                type = "string", enum = c("GOVERNANCE", "COMPLIANCE"))), 
+        ObjectLockRetainUntilDate = structure(logical(0), tags = list(location = "header", 
+            locationName = "x-amz-object-lock-retain-until-date", 
+            type = "timestamp", timestampFormat = "iso8601")), 
+        ObjectLockLegalHoldStatus = structure(logical(0), tags = list(location = "header", 
+            locationName = "x-amz-object-lock-legal-hold", type = "string", 
+            enum = c("ON", "OFF")))), tags = list(type = "structure", 
         payload = "Body"))
     return(populate(args, shape))
 }
@@ -1275,6 +1350,75 @@ get_object_acl_output <- function (...)
                 type = "list")), RequestCharged = structure(logical(0), 
             tags = list(location = "header", locationName = "x-amz-request-charged", 
                 type = "string", enum = "requester"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+get_object_legal_hold_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", 
+        locationName = "Bucket", type = "string")), Key = structure(logical(0), 
+        tags = list(location = "uri", locationName = "Key", type = "string", 
+            min = 1L)), VersionId = structure(logical(0), tags = list(location = "querystring", 
+        locationName = "versionId", type = "string")), RequestPayer = structure(logical(0), 
+        tags = list(location = "header", locationName = "x-amz-request-payer", 
+            type = "string", enum = "requester"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+get_object_legal_hold_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(LegalHold = structure(list(Status = structure(logical(0), 
+        tags = list(type = "string", enum = c("ON", "OFF")))), 
+        tags = list(type = "structure"))), tags = list(type = "structure", 
+        payload = "LegalHold"))
+    return(populate(args, shape))
+}
+
+get_object_lock_configuration_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", 
+        locationName = "Bucket", type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+get_object_lock_configuration_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(ObjectLockConfiguration = structure(list(ObjectLockEnabled = structure(logical(0), 
+        tags = list(type = "string", enum = "Enabled")), Rule = structure(list(DefaultRetention = structure(list(Mode = structure(logical(0), 
+        tags = list(type = "string", enum = c("GOVERNANCE", "COMPLIANCE"))), 
+        Days = structure(logical(0), tags = list(type = "integer")), 
+        Years = structure(logical(0), tags = list(type = "integer"))), 
+        tags = list(type = "structure"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure"))), tags = list(type = "structure", 
+        payload = "ObjectLockConfiguration"))
+    return(populate(args, shape))
+}
+
+get_object_retention_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", 
+        locationName = "Bucket", type = "string")), Key = structure(logical(0), 
+        tags = list(location = "uri", locationName = "Key", type = "string", 
+            min = 1L)), VersionId = structure(logical(0), tags = list(location = "querystring", 
+        locationName = "versionId", type = "string")), RequestPayer = structure(logical(0), 
+        tags = list(location = "header", locationName = "x-amz-request-payer", 
+            type = "string", enum = "requester"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+get_object_retention_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Retention = structure(list(Mode = structure(logical(0), 
+        tags = list(type = "string", enum = c("GOVERNANCE", "COMPLIANCE"))), 
+        RetainUntilDate = structure(logical(0), tags = list(type = "timestamp", 
+            timestampFormat = "iso8601"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure", payload = "Retention"))
     return(populate(args, shape))
 }
 
@@ -1322,6 +1466,28 @@ get_object_torrent_output <- function (...)
         tags = list(location = "header", locationName = "x-amz-request-charged", 
             type = "string", enum = "requester"))), tags = list(type = "structure", 
         payload = "Body"))
+    return(populate(args, shape))
+}
+
+get_public_access_block_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", 
+        locationName = "Bucket", type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+get_public_access_block_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(PublicAccessBlockConfiguration = structure(list(BlockPublicAcls = structure(logical(0), 
+        tags = list(locationName = "BlockPublicAcls", type = "boolean")), 
+        IgnorePublicAcls = structure(logical(0), tags = list(locationName = "IgnorePublicAcls", 
+            type = "boolean")), BlockPublicPolicy = structure(logical(0), 
+            tags = list(locationName = "BlockPublicPolicy", type = "boolean")), 
+        RestrictPublicBuckets = structure(logical(0), tags = list(locationName = "RestrictPublicBuckets", 
+            type = "boolean"))), tags = list(type = "structure"))), 
+        tags = list(type = "structure", payload = "PublicAccessBlockConfiguration"))
     return(populate(args, shape))
 }
 
@@ -1417,14 +1583,23 @@ head_object_output <- function (...)
                 type = "string", sensitive = TRUE)), StorageClass = structure(logical(0), 
             tags = list(location = "header", locationName = "x-amz-storage-class", 
                 type = "string", enum = c("STANDARD", "REDUCED_REDUNDANCY", 
-                  "STANDARD_IA", "ONEZONE_IA"))), RequestCharged = structure(logical(0), 
+                  "STANDARD_IA", "ONEZONE_IA", "INTELLIGENT_TIERING", 
+                  "GLACIER"))), RequestCharged = structure(logical(0), 
             tags = list(location = "header", locationName = "x-amz-request-charged", 
                 type = "string", enum = "requester")), ReplicationStatus = structure(logical(0), 
             tags = list(location = "header", locationName = "x-amz-replication-status", 
                 type = "string", enum = c("COMPLETE", "PENDING", 
                   "FAILED", "REPLICA"))), PartsCount = structure(logical(0), 
             tags = list(location = "header", locationName = "x-amz-mp-parts-count", 
-                type = "integer"))), tags = list(type = "structure"))
+                type = "integer")), ObjectLockMode = structure(logical(0), 
+            tags = list(location = "header", locationName = "x-amz-object-lock-mode", 
+                type = "string", enum = c("GOVERNANCE", "COMPLIANCE"))), 
+        ObjectLockRetainUntilDate = structure(logical(0), tags = list(location = "header", 
+            locationName = "x-amz-object-lock-retain-until-date", 
+            type = "timestamp", timestampFormat = "iso8601")), 
+        ObjectLockLegalHoldStatus = structure(logical(0), tags = list(location = "header", 
+            locationName = "x-amz-object-lock-legal-hold", type = "string", 
+            enum = c("ON", "OFF")))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1486,7 +1661,7 @@ list_bucket_inventory_configurations_output <- function (...)
         tags = list(type = "string")), InventoryConfigurationList = structure(list(structure(list(Destination = structure(list(S3BucketDestination = structure(list(AccountId = structure(logical(0), 
         tags = list(type = "string")), Bucket = structure(logical(0), 
         tags = list(type = "string")), Format = structure(logical(0), 
-        tags = list(type = "string", enum = c("CSV", "ORC"))), 
+        tags = list(type = "string", enum = c("CSV", "ORC", "Parquet"))), 
         Prefix = structure(logical(0), tags = list(type = "string")), 
         Encryption = structure(list(SSES3 = structure(list(), 
             tags = list(type = "structure", locationName = "SSE-S3")), 
@@ -1503,8 +1678,10 @@ list_bucket_inventory_configurations_output <- function (...)
             tags = list(locationName = "Field", type = "string", 
                 enum = c("Size", "LastModifiedDate", "StorageClass", 
                   "ETag", "IsMultipartUploaded", "ReplicationStatus", 
-                  "EncryptionStatus")))), tags = list(locationNameList = "Field", 
-            type = "list")), Schedule = structure(list(Frequency = structure(logical(0), 
+                  "EncryptionStatus", "ObjectLockRetainUntilDate", 
+                  "ObjectLockMode", "ObjectLockLegalHoldStatus")))), 
+            tags = list(locationNameList = "Field", type = "list")), 
+        Schedule = structure(list(Frequency = structure(logical(0), 
             tags = list(type = "string", enum = c("Daily", "Weekly")))), 
             tags = list(type = "structure"))), tags = list(type = "structure"))), 
         tags = list(locationName = "InventoryConfiguration", 
@@ -1603,10 +1780,10 @@ list_multipart_uploads_output <- function (...)
             tags = list(type = "string", min = 1L)), Initiated = structure(logical(0), 
             tags = list(type = "timestamp")), StorageClass = structure(logical(0), 
             tags = list(type = "string", enum = c("STANDARD", 
-                "REDUCED_REDUNDANCY", "STANDARD_IA", "ONEZONE_IA"))), 
-            Owner = structure(list(DisplayName = structure(logical(0), 
-                tags = list(type = "string")), ID = structure(logical(0), 
-                tags = list(type = "string"))), tags = list(type = "structure")), 
+                "REDUCED_REDUNDANCY", "STANDARD_IA", "ONEZONE_IA", 
+                "INTELLIGENT_TIERING", "GLACIER"))), Owner = structure(list(DisplayName = structure(logical(0), 
+            tags = list(type = "string")), ID = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure")), 
             Initiator = structure(list(ID = structure(logical(0), 
                 tags = list(type = "string")), DisplayName = structure(logical(0), 
                 tags = list(type = "string"))), tags = list(type = "structure"))), 
@@ -1708,9 +1885,10 @@ list_objects_output <- function (...)
         tags = list(type = "string")), Size = structure(logical(0), 
         tags = list(type = "integer")), StorageClass = structure(logical(0), 
         tags = list(type = "string", enum = c("STANDARD", "REDUCED_REDUNDANCY", 
-            "GLACIER", "STANDARD_IA", "ONEZONE_IA"))), Owner = structure(list(DisplayName = structure(logical(0), 
-        tags = list(type = "string")), ID = structure(logical(0), 
-        tags = list(type = "string"))), tags = list(type = "structure"))), 
+            "GLACIER", "STANDARD_IA", "ONEZONE_IA", "INTELLIGENT_TIERING"))), 
+        Owner = structure(list(DisplayName = structure(logical(0), 
+            tags = list(type = "string")), ID = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))), tags = list(type = "list", 
         flattened = TRUE)), Name = structure(logical(0), tags = list(type = "string")), 
         Prefix = structure(logical(0), tags = list(type = "string")), 
@@ -1757,9 +1935,10 @@ list_objects_v2_output <- function (...)
         tags = list(type = "string")), Size = structure(logical(0), 
         tags = list(type = "integer")), StorageClass = structure(logical(0), 
         tags = list(type = "string", enum = c("STANDARD", "REDUCED_REDUNDANCY", 
-            "GLACIER", "STANDARD_IA", "ONEZONE_IA"))), Owner = structure(list(DisplayName = structure(logical(0), 
-        tags = list(type = "string")), ID = structure(logical(0), 
-        tags = list(type = "string"))), tags = list(type = "structure"))), 
+            "GLACIER", "STANDARD_IA", "ONEZONE_IA", "INTELLIGENT_TIERING"))), 
+        Owner = structure(list(DisplayName = structure(logical(0), 
+            tags = list(type = "string")), ID = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure"))), 
         tags = list(type = "structure"))), tags = list(type = "list", 
         flattened = TRUE)), Name = structure(logical(0), tags = list(type = "string")), 
         Prefix = structure(logical(0), tags = list(type = "string")), 
@@ -1821,9 +2000,10 @@ list_parts_output <- function (...)
             tags = list(type = "string"))), tags = list(type = "structure")), 
         StorageClass = structure(logical(0), tags = list(type = "string", 
             enum = c("STANDARD", "REDUCED_REDUNDANCY", "STANDARD_IA", 
-                "ONEZONE_IA"))), RequestCharged = structure(logical(0), 
-            tags = list(location = "header", locationName = "x-amz-request-charged", 
-                type = "string", enum = "requester"))), tags = list(type = "structure"))
+                "ONEZONE_IA", "INTELLIGENT_TIERING", "GLACIER"))), 
+        RequestCharged = structure(logical(0), tags = list(location = "header", 
+            locationName = "x-amz-request-charged", type = "string", 
+            enum = "requester"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -1985,7 +2165,7 @@ put_bucket_inventory_configuration_input <- function (...)
             type = "string")), InventoryConfiguration = structure(list(Destination = structure(list(S3BucketDestination = structure(list(AccountId = structure(logical(0), 
         tags = list(type = "string")), Bucket = structure(logical(0), 
         tags = list(type = "string")), Format = structure(logical(0), 
-        tags = list(type = "string", enum = c("CSV", "ORC"))), 
+        tags = list(type = "string", enum = c("CSV", "ORC", "Parquet"))), 
         Prefix = structure(logical(0), tags = list(type = "string")), 
         Encryption = structure(list(SSES3 = structure(list(), 
             tags = list(type = "structure", locationName = "SSE-S3")), 
@@ -2002,8 +2182,10 @@ put_bucket_inventory_configuration_input <- function (...)
             tags = list(locationName = "Field", type = "string", 
                 enum = c("Size", "LastModifiedDate", "StorageClass", 
                   "ETag", "IsMultipartUploaded", "ReplicationStatus", 
-                  "EncryptionStatus")))), tags = list(locationNameList = "Field", 
-            type = "list")), Schedule = structure(list(Frequency = structure(logical(0), 
+                  "EncryptionStatus", "ObjectLockRetainUntilDate", 
+                  "ObjectLockMode", "ObjectLockLegalHoldStatus")))), 
+            tags = list(locationNameList = "Field", type = "list")), 
+        Schedule = structure(list(Frequency = structure(logical(0), 
             tags = list(type = "string", enum = c("Daily", "Weekly")))), 
             tags = list(type = "structure"))), tags = list(locationName = "InventoryConfiguration", 
         type = "structure"))), tags = list(type = "structure", 
@@ -2034,12 +2216,13 @@ put_bucket_lifecycle_input <- function (...)
             tags = list(type = "timestamp", timestampFormat = "iso8601")), 
             Days = structure(logical(0), tags = list(type = "integer")), 
             StorageClass = structure(logical(0), tags = list(type = "string", 
-                enum = c("GLACIER", "STANDARD_IA", "ONEZONE_IA")))), 
-            tags = list(type = "structure")), NoncurrentVersionTransition = structure(list(NoncurrentDays = structure(logical(0), 
+                enum = c("GLACIER", "STANDARD_IA", "ONEZONE_IA", 
+                  "INTELLIGENT_TIERING")))), tags = list(type = "structure")), 
+        NoncurrentVersionTransition = structure(list(NoncurrentDays = structure(logical(0), 
             tags = list(type = "integer")), StorageClass = structure(logical(0), 
             tags = list(type = "string", enum = c("GLACIER", 
-                "STANDARD_IA", "ONEZONE_IA")))), tags = list(type = "structure")), 
-        NoncurrentVersionExpiration = structure(list(NoncurrentDays = structure(logical(0), 
+                "STANDARD_IA", "ONEZONE_IA", "INTELLIGENT_TIERING")))), 
+            tags = list(type = "structure")), NoncurrentVersionExpiration = structure(list(NoncurrentDays = structure(logical(0), 
             tags = list(type = "integer"))), tags = list(type = "structure")), 
         AbortIncompleteMultipartUpload = structure(list(DaysAfterInitiation = structure(logical(0), 
             tags = list(type = "integer"))), tags = list(type = "structure"))), 
@@ -2081,14 +2264,15 @@ put_bucket_lifecycle_configuration_input <- function (...)
             tags = list(type = "timestamp", timestampFormat = "iso8601")), 
             Days = structure(logical(0), tags = list(type = "integer")), 
             StorageClass = structure(logical(0), tags = list(type = "string", 
-                enum = c("GLACIER", "STANDARD_IA", "ONEZONE_IA")))), 
-            tags = list(type = "structure"))), tags = list(locationName = "Transition", 
-            type = "list", flattened = TRUE)), NoncurrentVersionTransitions = structure(list(structure(list(NoncurrentDays = structure(logical(0), 
+                enum = c("GLACIER", "STANDARD_IA", "ONEZONE_IA", 
+                  "INTELLIGENT_TIERING")))), tags = list(type = "structure"))), 
+            tags = list(locationName = "Transition", type = "list", 
+                flattened = TRUE)), NoncurrentVersionTransitions = structure(list(structure(list(NoncurrentDays = structure(logical(0), 
             tags = list(type = "integer")), StorageClass = structure(logical(0), 
             tags = list(type = "string", enum = c("GLACIER", 
-                "STANDARD_IA", "ONEZONE_IA")))), tags = list(type = "structure"))), 
-            tags = list(locationName = "NoncurrentVersionTransition", 
-                type = "list", flattened = TRUE)), NoncurrentVersionExpiration = structure(list(NoncurrentDays = structure(logical(0), 
+                "STANDARD_IA", "ONEZONE_IA", "INTELLIGENT_TIERING")))), 
+            tags = list(type = "structure"))), tags = list(locationName = "NoncurrentVersionTransition", 
+            type = "list", flattened = TRUE)), NoncurrentVersionExpiration = structure(list(NoncurrentDays = structure(logical(0), 
             tags = list(type = "integer"))), tags = list(type = "structure")), 
         AbortIncompleteMultipartUpload = structure(list(DaysAfterInitiation = structure(logical(0), 
             tags = list(type = "integer"))), tags = list(type = "structure"))), 
@@ -2174,13 +2358,15 @@ put_bucket_notification_input <- function (...)
             "s3:ObjectCreated:*", "s3:ObjectCreated:Put", "s3:ObjectCreated:Post", 
             "s3:ObjectCreated:Copy", "s3:ObjectCreated:CompleteMultipartUpload", 
             "s3:ObjectRemoved:*", "s3:ObjectRemoved:Delete", 
-            "s3:ObjectRemoved:DeleteMarkerCreated")))), tags = list(locationName = "Event", 
+            "s3:ObjectRemoved:DeleteMarkerCreated", "s3:ObjectRestore:Post", 
+            "s3:ObjectRestore:Completed")))), tags = list(locationName = "Event", 
         type = "list", flattened = TRUE)), Event = structure(logical(0), 
         tags = list(deprecated = TRUE, type = "string", enum = c("s3:ReducedRedundancyLostObject", 
             "s3:ObjectCreated:*", "s3:ObjectCreated:Put", "s3:ObjectCreated:Post", 
             "s3:ObjectCreated:Copy", "s3:ObjectCreated:CompleteMultipartUpload", 
             "s3:ObjectRemoved:*", "s3:ObjectRemoved:Delete", 
-            "s3:ObjectRemoved:DeleteMarkerCreated"))), Topic = structure(logical(0), 
+            "s3:ObjectRemoved:DeleteMarkerCreated", "s3:ObjectRestore:Post", 
+            "s3:ObjectRestore:Completed"))), Topic = structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "structure")), 
         QueueConfiguration = structure(list(Id = structure(logical(0), 
             tags = list(type = "string")), Event = structure(logical(0), 
@@ -2188,15 +2374,16 @@ put_bucket_notification_input <- function (...)
                 "s3:ObjectCreated:*", "s3:ObjectCreated:Put", 
                 "s3:ObjectCreated:Post", "s3:ObjectCreated:Copy", 
                 "s3:ObjectCreated:CompleteMultipartUpload", "s3:ObjectRemoved:*", 
-                "s3:ObjectRemoved:Delete", "s3:ObjectRemoved:DeleteMarkerCreated"))), 
+                "s3:ObjectRemoved:Delete", "s3:ObjectRemoved:DeleteMarkerCreated", 
+                "s3:ObjectRestore:Post", "s3:ObjectRestore:Completed"))), 
             Events = structure(list(structure(logical(0), tags = list(type = "string", 
                 enum = c("s3:ReducedRedundancyLostObject", "s3:ObjectCreated:*", 
                   "s3:ObjectCreated:Put", "s3:ObjectCreated:Post", 
                   "s3:ObjectCreated:Copy", "s3:ObjectCreated:CompleteMultipartUpload", 
                   "s3:ObjectRemoved:*", "s3:ObjectRemoved:Delete", 
-                  "s3:ObjectRemoved:DeleteMarkerCreated")))), 
-                tags = list(locationName = "Event", type = "list", 
-                  flattened = TRUE)), Queue = structure(logical(0), 
+                  "s3:ObjectRemoved:DeleteMarkerCreated", "s3:ObjectRestore:Post", 
+                  "s3:ObjectRestore:Completed")))), tags = list(locationName = "Event", 
+                type = "list", flattened = TRUE)), Queue = structure(logical(0), 
                 tags = list(type = "string"))), tags = list(type = "structure")), 
         CloudFunctionConfiguration = structure(list(Id = structure(logical(0), 
             tags = list(type = "string")), Event = structure(logical(0), 
@@ -2204,15 +2391,16 @@ put_bucket_notification_input <- function (...)
                 "s3:ObjectCreated:*", "s3:ObjectCreated:Put", 
                 "s3:ObjectCreated:Post", "s3:ObjectCreated:Copy", 
                 "s3:ObjectCreated:CompleteMultipartUpload", "s3:ObjectRemoved:*", 
-                "s3:ObjectRemoved:Delete", "s3:ObjectRemoved:DeleteMarkerCreated"))), 
+                "s3:ObjectRemoved:Delete", "s3:ObjectRemoved:DeleteMarkerCreated", 
+                "s3:ObjectRestore:Post", "s3:ObjectRestore:Completed"))), 
             Events = structure(list(structure(logical(0), tags = list(type = "string", 
                 enum = c("s3:ReducedRedundancyLostObject", "s3:ObjectCreated:*", 
                   "s3:ObjectCreated:Put", "s3:ObjectCreated:Post", 
                   "s3:ObjectCreated:Copy", "s3:ObjectCreated:CompleteMultipartUpload", 
                   "s3:ObjectRemoved:*", "s3:ObjectRemoved:Delete", 
-                  "s3:ObjectRemoved:DeleteMarkerCreated")))), 
-                tags = list(locationName = "Event", type = "list", 
-                  flattened = TRUE)), CloudFunction = structure(logical(0), 
+                  "s3:ObjectRemoved:DeleteMarkerCreated", "s3:ObjectRestore:Post", 
+                  "s3:ObjectRestore:Completed")))), tags = list(locationName = "Event", 
+                type = "list", flattened = TRUE)), CloudFunction = structure(logical(0), 
                 tags = list(type = "string")), InvocationRole = structure(logical(0), 
                 tags = list(type = "string"))), tags = list(type = "structure"))), 
         tags = list(locationName = "NotificationConfiguration", 
@@ -2238,7 +2426,8 @@ put_bucket_notification_configuration_input <- function (...)
                 "s3:ObjectCreated:Put", "s3:ObjectCreated:Post", 
                 "s3:ObjectCreated:Copy", "s3:ObjectCreated:CompleteMultipartUpload", 
                 "s3:ObjectRemoved:*", "s3:ObjectRemoved:Delete", 
-                "s3:ObjectRemoved:DeleteMarkerCreated")))), tags = list(locationName = "Event", 
+                "s3:ObjectRemoved:DeleteMarkerCreated", "s3:ObjectRestore:Post", 
+                "s3:ObjectRestore:Completed")))), tags = list(locationName = "Event", 
             type = "list", flattened = TRUE)), Filter = structure(list(Key = structure(list(FilterRules = structure(list(structure(list(Name = structure(logical(0), 
             tags = list(type = "string", enum = c("prefix", "suffix"))), 
             Value = structure(logical(0), tags = list(type = "string"))), 
@@ -2254,7 +2443,8 @@ put_bucket_notification_configuration_input <- function (...)
                 "s3:ObjectCreated:Put", "s3:ObjectCreated:Post", 
                 "s3:ObjectCreated:Copy", "s3:ObjectCreated:CompleteMultipartUpload", 
                 "s3:ObjectRemoved:*", "s3:ObjectRemoved:Delete", 
-                "s3:ObjectRemoved:DeleteMarkerCreated")))), tags = list(locationName = "Event", 
+                "s3:ObjectRemoved:DeleteMarkerCreated", "s3:ObjectRestore:Post", 
+                "s3:ObjectRestore:Completed")))), tags = list(locationName = "Event", 
             type = "list", flattened = TRUE)), Filter = structure(list(Key = structure(list(FilterRules = structure(list(structure(list(Name = structure(logical(0), 
             tags = list(type = "string", enum = c("prefix", "suffix"))), 
             Value = structure(logical(0), tags = list(type = "string"))), 
@@ -2270,7 +2460,8 @@ put_bucket_notification_configuration_input <- function (...)
                 "s3:ObjectCreated:Put", "s3:ObjectCreated:Post", 
                 "s3:ObjectCreated:Copy", "s3:ObjectCreated:CompleteMultipartUpload", 
                 "s3:ObjectRemoved:*", "s3:ObjectRemoved:Delete", 
-                "s3:ObjectRemoved:DeleteMarkerCreated")))), tags = list(locationName = "Event", 
+                "s3:ObjectRemoved:DeleteMarkerCreated", "s3:ObjectRestore:Post", 
+                "s3:ObjectRestore:Completed")))), tags = list(locationName = "Event", 
             type = "list", flattened = TRUE)), Filter = structure(list(Key = structure(list(FilterRules = structure(list(structure(list(Name = structure(logical(0), 
             tags = list(type = "string", enum = c("prefix", "suffix"))), 
             Value = structure(logical(0), tags = list(type = "string"))), 
@@ -2337,11 +2528,11 @@ put_bucket_replication_input <- function (...)
             tags = list(type = "string")), Account = structure(logical(0), 
             tags = list(type = "string")), StorageClass = structure(logical(0), 
             tags = list(type = "string", enum = c("STANDARD", 
-                "REDUCED_REDUNDANCY", "STANDARD_IA", "ONEZONE_IA"))), 
-            AccessControlTranslation = structure(list(Owner = structure(logical(0), 
-                tags = list(type = "string", enum = "Destination"))), 
-                tags = list(type = "structure")), EncryptionConfiguration = structure(list(ReplicaKmsKeyID = structure(logical(0), 
-                tags = list(type = "string"))), tags = list(type = "structure"))), 
+                "REDUCED_REDUNDANCY", "STANDARD_IA", "ONEZONE_IA", 
+                "INTELLIGENT_TIERING", "GLACIER"))), AccessControlTranslation = structure(list(Owner = structure(logical(0), 
+            tags = list(type = "string", enum = "Destination"))), 
+            tags = list(type = "structure")), EncryptionConfiguration = structure(list(ReplicaKmsKeyID = structure(logical(0), 
+            tags = list(type = "string"))), tags = list(type = "structure"))), 
             tags = list(type = "structure")), DeleteMarkerReplication = structure(list(Status = structure(logical(0), 
             tags = list(type = "string", enum = c("Enabled", 
                 "Disabled")))), tags = list(type = "structure"))), 
@@ -2497,9 +2688,10 @@ put_object_input <- function (...)
         StorageClass = structure(logical(0), tags = list(location = "header", 
             locationName = "x-amz-storage-class", type = "string", 
             enum = c("STANDARD", "REDUCED_REDUNDANCY", "STANDARD_IA", 
-                "ONEZONE_IA"))), WebsiteRedirectLocation = structure(logical(0), 
-            tags = list(location = "header", locationName = "x-amz-website-redirect-location", 
-                type = "string")), SSECustomerAlgorithm = structure(logical(0), 
+                "ONEZONE_IA", "INTELLIGENT_TIERING", "GLACIER"))), 
+        WebsiteRedirectLocation = structure(logical(0), tags = list(location = "header", 
+            locationName = "x-amz-website-redirect-location", 
+            type = "string")), SSECustomerAlgorithm = structure(logical(0), 
             tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-algorithm", 
                 type = "string")), SSECustomerKey = structure(logical(0), 
             tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-key", 
@@ -2511,7 +2703,15 @@ put_object_input <- function (...)
             tags = list(location = "header", locationName = "x-amz-request-payer", 
                 type = "string", enum = "requester")), Tagging = structure(logical(0), 
             tags = list(location = "header", locationName = "x-amz-tagging", 
-                type = "string"))), tags = list(type = "structure", 
+                type = "string")), ObjectLockMode = structure(logical(0), 
+            tags = list(location = "header", locationName = "x-amz-object-lock-mode", 
+                type = "string", enum = c("GOVERNANCE", "COMPLIANCE"))), 
+        ObjectLockRetainUntilDate = structure(logical(0), tags = list(location = "header", 
+            locationName = "x-amz-object-lock-retain-until-date", 
+            type = "timestamp", timestampFormat = "iso8601")), 
+        ObjectLockLegalHoldStatus = structure(logical(0), tags = list(location = "header", 
+            locationName = "x-amz-object-lock-legal-hold", type = "string", 
+            enum = c("ON", "OFF")))), tags = list(type = "structure", 
         payload = "Body"))
     return(populate(args, shape))
 }
@@ -2596,6 +2796,98 @@ put_object_acl_output <- function (...)
     return(populate(args, shape))
 }
 
+put_object_legal_hold_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", 
+        locationName = "Bucket", type = "string")), Key = structure(logical(0), 
+        tags = list(location = "uri", locationName = "Key", type = "string", 
+            min = 1L)), LegalHold = structure(list(Status = structure(logical(0), 
+        tags = list(type = "string", enum = c("ON", "OFF")))), 
+        tags = list(locationName = "LegalHold", type = "structure")), 
+        RequestPayer = structure(logical(0), tags = list(location = "header", 
+            locationName = "x-amz-request-payer", type = "string", 
+            enum = "requester")), VersionId = structure(logical(0), 
+            tags = list(location = "querystring", locationName = "versionId", 
+                type = "string")), ContentMD5 = structure(logical(0), 
+            tags = list(location = "header", locationName = "Content-MD5", 
+                type = "string"))), tags = list(type = "structure", 
+        payload = "LegalHold"))
+    return(populate(args, shape))
+}
+
+put_object_legal_hold_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(RequestCharged = structure(logical(0), 
+        tags = list(location = "header", locationName = "x-amz-request-charged", 
+            type = "string", enum = "requester"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+put_object_lock_configuration_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", 
+        locationName = "Bucket", type = "string")), ObjectLockConfiguration = structure(list(ObjectLockEnabled = structure(logical(0), 
+        tags = list(type = "string", enum = "Enabled")), Rule = structure(list(DefaultRetention = structure(list(Mode = structure(logical(0), 
+        tags = list(type = "string", enum = c("GOVERNANCE", "COMPLIANCE"))), 
+        Days = structure(logical(0), tags = list(type = "integer")), 
+        Years = structure(logical(0), tags = list(type = "integer"))), 
+        tags = list(type = "structure"))), tags = list(type = "structure"))), 
+        tags = list(locationName = "ObjectLockConfiguration", 
+            type = "structure")), RequestPayer = structure(logical(0), 
+        tags = list(location = "header", locationName = "x-amz-request-payer", 
+            type = "string", enum = "requester")), Token = structure(logical(0), 
+        tags = list(location = "header", locationName = "x-amz-bucket-object-lock-token", 
+            type = "string")), ContentMD5 = structure(logical(0), 
+        tags = list(location = "header", locationName = "Content-MD5", 
+            type = "string"))), tags = list(type = "structure", 
+        payload = "ObjectLockConfiguration"))
+    return(populate(args, shape))
+}
+
+put_object_lock_configuration_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(RequestCharged = structure(logical(0), 
+        tags = list(location = "header", locationName = "x-amz-request-charged", 
+            type = "string", enum = "requester"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+put_object_retention_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", 
+        locationName = "Bucket", type = "string")), Key = structure(logical(0), 
+        tags = list(location = "uri", locationName = "Key", type = "string", 
+            min = 1L)), Retention = structure(list(Mode = structure(logical(0), 
+        tags = list(type = "string", enum = c("GOVERNANCE", "COMPLIANCE"))), 
+        RetainUntilDate = structure(logical(0), tags = list(type = "timestamp", 
+            timestampFormat = "iso8601"))), tags = list(locationName = "Retention", 
+        type = "structure")), RequestPayer = structure(logical(0), 
+        tags = list(location = "header", locationName = "x-amz-request-payer", 
+            type = "string", enum = "requester")), VersionId = structure(logical(0), 
+        tags = list(location = "querystring", locationName = "versionId", 
+            type = "string")), BypassGovernanceRetention = structure(logical(0), 
+        tags = list(location = "header", locationName = "x-amz-bypass-governance-retention", 
+            type = "boolean")), ContentMD5 = structure(logical(0), 
+        tags = list(location = "header", locationName = "Content-MD5", 
+            type = "string"))), tags = list(type = "structure", 
+        payload = "Retention"))
+    return(populate(args, shape))
+}
+
+put_object_retention_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(RequestCharged = structure(logical(0), 
+        tags = list(location = "header", locationName = "x-amz-request-charged", 
+            type = "string", enum = "requester"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
 put_object_tagging_input <- function (...) 
 {
     args <- c(as.list(environment()), list(...))
@@ -2622,6 +2914,29 @@ put_object_tagging_output <- function (...)
         tags = list(location = "header", locationName = "x-amz-version-id", 
             type = "string"))), tags = list(type = "structure"))
     return(populate(args, shape))
+}
+
+put_public_access_block_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", 
+        locationName = "Bucket", type = "string")), ContentMD5 = structure(logical(0), 
+        tags = list(location = "header", locationName = "Content-MD5", 
+            type = "string")), PublicAccessBlockConfiguration = structure(list(BlockPublicAcls = structure(logical(0), 
+        tags = list(locationName = "BlockPublicAcls", type = "boolean")), 
+        IgnorePublicAcls = structure(logical(0), tags = list(locationName = "IgnorePublicAcls", 
+            type = "boolean")), BlockPublicPolicy = structure(logical(0), 
+            tags = list(locationName = "BlockPublicPolicy", type = "boolean")), 
+        RestrictPublicBuckets = structure(logical(0), tags = list(locationName = "RestrictPublicBuckets", 
+            type = "boolean"))), tags = list(locationName = "PublicAccessBlockConfiguration", 
+        type = "structure"))), tags = list(type = "structure", 
+        payload = "PublicAccessBlockConfiguration"))
+    return(populate(args, shape))
+}
+
+put_public_access_block_output <- function () 
+{
+    return(list())
 }
 
 restore_object_input <- function (...) 
@@ -2696,12 +3011,12 @@ restore_object_input <- function (...)
                 type = "structure"))), tags = list(locationNameList = "MetadataEntry", 
                 type = "list")), StorageClass = structure(logical(0), 
                 tags = list(type = "string", enum = c("STANDARD", 
-                  "REDUCED_REDUNDANCY", "STANDARD_IA", "ONEZONE_IA")))), 
-            tags = list(type = "structure"))), tags = list(type = "structure"))), 
-        tags = list(locationName = "RestoreRequest", type = "structure")), 
-        RequestPayer = structure(logical(0), tags = list(location = "header", 
-            locationName = "x-amz-request-payer", type = "string", 
-            enum = "requester"))), tags = list(type = "structure", 
+                  "REDUCED_REDUNDANCY", "STANDARD_IA", "ONEZONE_IA", 
+                  "INTELLIGENT_TIERING", "GLACIER")))), tags = list(type = "structure"))), 
+            tags = list(type = "structure"))), tags = list(locationName = "RestoreRequest", 
+        type = "structure")), RequestPayer = structure(logical(0), 
+        tags = list(location = "header", locationName = "x-amz-request-payer", 
+            type = "string", enum = "requester"))), tags = list(type = "structure", 
         payload = "RestoreRequest"))
     return(populate(args, shape))
 }

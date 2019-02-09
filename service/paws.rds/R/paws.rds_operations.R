@@ -3,9 +3,9 @@
 #' @importFrom paws.common new_operation new_request send_request
 NULL
 
-#' Associates an Identity and Access Management (IAM) role from an Aurora DB cluster
+#' Associates an Identity and Access Management (IAM) role from an Amazon Aurora DB cluster
 #'
-#' Associates an Identity and Access Management (IAM) role from an Aurora DB cluster. For more information, see [Authorizing Amazon Aurora MySQL to Access Other AWS Services on Your Behalf](http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Integrating.Authorizing.html) in the *Amazon Aurora User Guide*.
+#' Associates an Identity and Access Management (IAM) role from an Amazon Aurora DB cluster. For more information, see [Authorizing Amazon Aurora MySQL to Access Other AWS Services on Your Behalf](http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Integrating.Authorizing.html) in the *Amazon Aurora User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -26,6 +26,38 @@ add_role_to_db_cluster <- function (DBClusterIdentifier, RoleArn)
     input <- add_role_to_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, 
         RoleArn = RoleArn)
     output <- add_role_to_db_cluster_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Associates an AWS Identity and Access Management (IAM) role with a DB instance
+#'
+#' Associates an AWS Identity and Access Management (IAM) role with a DB instance.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' add_role_to_db_instance(
+#'   DBInstanceIdentifier = "string",
+#'   RoleArn = "string",
+#'   FeatureName = "string"
+#' )
+#' ```
+#'
+#' @param DBInstanceIdentifier &#91;required&#93; The name of the DB instance to associate the IAM role with.
+#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role to associate with the DB instance, for example `arn:aws:iam::123456789012:role/AccessRole`.
+#' @param FeatureName &#91;required&#93; The name of the feature for the DB instance that the IAM role is to be associated with. For the list of supported feature names, see DBEngineVersion.
+#'
+#' @export
+add_role_to_db_instance <- function (DBInstanceIdentifier, RoleArn, 
+    FeatureName) 
+{
+    op <- new_operation(name = "AddRoleToDBInstance", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- add_role_to_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, 
+        RoleArn = RoleArn, FeatureName = FeatureName)
+    output <- add_role_to_db_instance_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -712,6 +744,7 @@ copy_option_group <- function (SourceOptionGroupIdentifier, TargetOptionGroupIde
 #'     SecondsUntilAutoPause = 123
 #'   ),
 #'   DeletionProtection = TRUE|FALSE,
+#'   GlobalClusterIdentifier = "string",
 #'   SourceRegion = "string"
 #' )
 #' ```
@@ -842,9 +875,10 @@ copy_option_group <- function (SourceOptionGroupIdentifier, TargetOptionGroupIde
 #' 
 #' -   If specified, this value must be set to a number from 0 to 259,200 (72 hours).
 #' @param EnableCloudwatchLogsExports The list of log types that need to be enabled for exporting to CloudWatch Logs. The values in the list depend on the DB engine being used. For more information, see [Publishing Database Logs to Amazon CloudWatch Logs](http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch) in the *Amazon Aurora User Guide*.
-#' @param EngineMode The DB engine mode of the DB cluster, either `provisioned`, `serverless`, or `parallelquery`.
+#' @param EngineMode The DB engine mode of the DB cluster, either `provisioned`, `serverless`, `parallelquery`, or `global`.
 #' @param ScalingConfiguration For DB clusters in `serverless` DB engine mode, the scaling properties of the DB cluster.
 #' @param DeletionProtection Indicates if the DB cluster should have deletion protection enabled. The database can\'t be deleted when this value is set to true. The default is false.
+#' @param GlobalClusterIdentifier The global cluster ID of an Aurora cluster that becomes the primary cluster in the new global database cluster.
 #' @param SourceRegion The ID of the region that contains the source for the read replica.
 #'
 #' @export
@@ -858,7 +892,7 @@ create_db_cluster <- function (AvailabilityZones = NULL, BackupRetentionPeriod =
     KmsKeyId = NULL, PreSignedUrl = NULL, EnableIAMDatabaseAuthentication = NULL, 
     BacktrackWindow = NULL, EnableCloudwatchLogsExports = NULL, 
     EngineMode = NULL, ScalingConfiguration = NULL, DeletionProtection = NULL, 
-    SourceRegion = NULL) 
+    GlobalClusterIdentifier = NULL, SourceRegion = NULL) 
 {
     op <- new_operation(name = "CreateDBCluster", http_method = "POST", 
         http_path = "/", paginator = list())
@@ -876,8 +910,52 @@ create_db_cluster <- function (AvailabilityZones = NULL, BackupRetentionPeriod =
         PreSignedUrl = PreSignedUrl, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, 
         BacktrackWindow = BacktrackWindow, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, 
         EngineMode = EngineMode, ScalingConfiguration = ScalingConfiguration, 
-        DeletionProtection = DeletionProtection, SourceRegion = SourceRegion)
+        DeletionProtection = DeletionProtection, GlobalClusterIdentifier = GlobalClusterIdentifier, 
+        SourceRegion = SourceRegion)
     output <- create_db_cluster_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a new custom endpoint and associates it with an Amazon Aurora DB cluster
+#'
+#' Creates a new custom endpoint and associates it with an Amazon Aurora DB cluster.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' create_db_cluster_endpoint(
+#'   DBClusterIdentifier = "string",
+#'   DBClusterEndpointIdentifier = "string",
+#'   EndpointType = "string",
+#'   StaticMembers = list(
+#'     "string"
+#'   ),
+#'   ExcludedMembers = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @param DBClusterIdentifier &#91;required&#93; The DB cluster identifier of the DB cluster associated with the endpoint. This parameter is stored as a lowercase string.
+#' @param DBClusterEndpointIdentifier &#91;required&#93; The identifier to use for the new endpoint. This parameter is stored as a lowercase string.
+#' @param EndpointType &#91;required&#93; The type of the endpoint. One of: `READER`, `ANY`.
+#' @param StaticMembers List of DB instance identifiers that are part of the custom endpoint group.
+#' @param ExcludedMembers List of DB instance identifiers that aren\'t part of the custom endpoint group. All other eligible instances are reachable through the custom endpoint. Only relevant if the list of static members is empty.
+#'
+#' @export
+create_db_cluster_endpoint <- function (DBClusterIdentifier, 
+    DBClusterEndpointIdentifier, EndpointType, StaticMembers = NULL, 
+    ExcludedMembers = NULL) 
+{
+    op <- new_operation(name = "CreateDBClusterEndpoint", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_db_cluster_endpoint_input(DBClusterIdentifier = DBClusterIdentifier, 
+        DBClusterEndpointIdentifier = DBClusterEndpointIdentifier, 
+        EndpointType = EndpointType, StaticMembers = StaticMembers, 
+        ExcludedMembers = ExcludedMembers)
+    output <- create_db_cluster_endpoint_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -1182,9 +1260,9 @@ create_db_cluster_snapshot <- function (DBClusterSnapshotIdentifier,
 #' 
 #' Constraints to the amount of storage for each storage type are the following:
 #' 
-#' -   General Purpose (SSD) storage (gp2): Must be an integer from 20 to 16384.
+#' -   General Purpose (SSD) storage (gp2): Must be an integer from 20 to 32768.
 #' 
-#' -   Provisioned IOPS storage (io1): Must be an integer from 100 to 16384.
+#' -   Provisioned IOPS storage (io1): Must be an integer from 100 to 32768.
 #' 
 #' -   Magnetic storage (standard): Must be an integer from 10 to 3072.
 #' 
@@ -1334,7 +1412,7 @@ create_db_cluster_snapshot <- function (DBClusterSnapshotIdentifier,
 #' @param DBSecurityGroups A list of DB security groups to associate with this DB instance.
 #' 
 #' Default: The default DB security group for the database engine.
-#' @param VpcSecurityGroupIds A list of EC2 VPC security groups to associate with this DB instance.
+#' @param VpcSecurityGroupIds A list of Amazon EC2 VPC security groups to associate with this DB instance.
 #' 
 #' **Amazon Aurora**
 #' 
@@ -1444,7 +1522,7 @@ create_db_cluster_snapshot <- function (DBClusterSnapshotIdentifier,
 #' Valid Values: `1150-65535`
 #' 
 #' Type: Integer
-#' @param MultiAZ Specifies if the DB instance is a Multi-AZ deployment. You can\'t set the AvailabilityZone parameter if the MultiAZ parameter is set to true.
+#' @param MultiAZ A value that specifies whether the DB instance is a Multi-AZ deployment. You can\'t set the AvailabilityZone parameter if the MultiAZ parameter is set to true.
 #' @param EngineVersion The version number of the database engine to use.
 #' 
 #' For a list of valid engine versions, call DescribeDBEngineVersions.
@@ -1659,6 +1737,9 @@ create_db_instance <- function (DBName = NULL, DBInstanceIdentifier,
 #'     )
 #'   ),
 #'   DBSubnetGroupName = "string",
+#'   VpcSecurityGroupIds = list(
+#'     "string"
+#'   ),
 #'   StorageType = "string",
 #'   CopyTagsToSnapshot = TRUE|FALSE,
 #'   MonitoringInterval = 123,
@@ -1691,7 +1772,7 @@ create_db_instance <- function (DBName = NULL, DBInstanceIdentifier,
 #' 
 #' -   Must be the identifier of an existing MySQL, MariaDB, or PostgreSQL DB instance.
 #' 
-#' -   Can specify a DB instance that is a MySQL Read Replica only if the source is running MySQL 5.6.
+#' -   Can specify a DB instance that is a MySQL Read Replica only if the source is running MySQL 5.6 or later.
 #' 
 #' -   Can specify a DB instance that is a PostgreSQL DB instance only if the source is running PostgreSQL 9.3.5 or later (9.4.7 and higher for cross-region replication).
 #' 
@@ -1740,6 +1821,9 @@ create_db_instance <- function (DBName = NULL, DBInstanceIdentifier,
 #'     -   Not specify a DB subnet group. All these Read Replicas are created outside of any VPC.
 #' 
 #' Example: `mySubnetgroup`
+#' @param VpcSecurityGroupIds A list of EC2 VPC security groups to associate with the Read Replica.
+#' 
+#' Default: The default EC2 VPC security group for the DB subnet group\'s VPC.
 #' @param StorageType Specifies the storage type to be associated with the Read Replica.
 #' 
 #' Valid values: `standard | gp2 | io1`
@@ -1758,11 +1842,11 @@ create_db_instance <- function (DBName = NULL, DBInstanceIdentifier,
 #' If `MonitoringInterval` is set to a value other than 0, then you must supply a `MonitoringRoleArn` value.
 #' @param KmsKeyId The AWS KMS key ID for an encrypted Read Replica. The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key.
 #' 
-#' If you specify this parameter when you create a Read Replica from an unencrypted DB instance, the Read Replica is encrypted.
-#' 
 #' If you create an encrypted Read Replica in the same AWS Region as the source DB instance, then you do not have to specify a value for this parameter. The Read Replica is encrypted with the same KMS key as the source DB instance.
 #' 
 #' If you create an encrypted Read Replica in a different AWS Region, then you must specify a KMS key for the destination AWS Region. KMS encryption keys are specific to the AWS Region that they are created in, and you can\'t use encryption keys from one AWS Region in another AWS Region.
+#' 
+#' You can\'t create an encrypted Read Replica from an unencrypted DB instance.
 #' @param PreSignedUrl The URL that contains a Signature Version 4 signed request for the `CreateDBInstanceReadReplica` API action in the source AWS Region that contains the source DB instance.
 #' 
 #' You must specify this parameter when you create an encrypted Read Replica from another AWS Region by using the Amazon RDS API. You can specify the `--source-region` option instead of this parameter when you create an encrypted Read Replica from another AWS Region by using the AWS CLI.
@@ -1788,7 +1872,7 @@ create_db_instance <- function (DBName = NULL, DBInstanceIdentifier,
 #' 
 #' -   For MySQL 5.7, minor version 5.7.16 or higher
 #' 
-#' -   Aurora 5.6 or higher.
+#' -   Aurora MySQL 5.6 or higher
 #' 
 #' Default: `false`
 #' @param EnablePerformanceInsights True to enable Performance Insights for the read replica, and otherwise false.
@@ -1807,13 +1891,14 @@ create_db_instance_read_replica <- function (DBInstanceIdentifier,
     SourceDBInstanceIdentifier, DBInstanceClass = NULL, AvailabilityZone = NULL, 
     Port = NULL, MultiAZ = NULL, AutoMinorVersionUpgrade = NULL, 
     Iops = NULL, OptionGroupName = NULL, PubliclyAccessible = NULL, 
-    Tags = NULL, DBSubnetGroupName = NULL, StorageType = NULL, 
-    CopyTagsToSnapshot = NULL, MonitoringInterval = NULL, MonitoringRoleArn = NULL, 
-    KmsKeyId = NULL, PreSignedUrl = NULL, EnableIAMDatabaseAuthentication = NULL, 
-    EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL, 
-    PerformanceInsightsRetentionPeriod = NULL, EnableCloudwatchLogsExports = NULL, 
-    ProcessorFeatures = NULL, UseDefaultProcessorFeatures = NULL, 
-    DeletionProtection = NULL, SourceRegion = NULL) 
+    Tags = NULL, DBSubnetGroupName = NULL, VpcSecurityGroupIds = NULL, 
+    StorageType = NULL, CopyTagsToSnapshot = NULL, MonitoringInterval = NULL, 
+    MonitoringRoleArn = NULL, KmsKeyId = NULL, PreSignedUrl = NULL, 
+    EnableIAMDatabaseAuthentication = NULL, EnablePerformanceInsights = NULL, 
+    PerformanceInsightsKMSKeyId = NULL, PerformanceInsightsRetentionPeriod = NULL, 
+    EnableCloudwatchLogsExports = NULL, ProcessorFeatures = NULL, 
+    UseDefaultProcessorFeatures = NULL, DeletionProtection = NULL, 
+    SourceRegion = NULL) 
 {
     op <- new_operation(name = "CreateDBInstanceReadReplica", 
         http_method = "POST", http_path = "/", paginator = list())
@@ -1822,10 +1907,10 @@ create_db_instance_read_replica <- function (DBInstanceIdentifier,
         DBInstanceClass = DBInstanceClass, AvailabilityZone = AvailabilityZone, 
         Port = Port, MultiAZ = MultiAZ, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, 
         Iops = Iops, OptionGroupName = OptionGroupName, PubliclyAccessible = PubliclyAccessible, 
-        Tags = Tags, DBSubnetGroupName = DBSubnetGroupName, StorageType = StorageType, 
-        CopyTagsToSnapshot = CopyTagsToSnapshot, MonitoringInterval = MonitoringInterval, 
-        MonitoringRoleArn = MonitoringRoleArn, KmsKeyId = KmsKeyId, 
-        PreSignedUrl = PreSignedUrl, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, 
+        Tags = Tags, DBSubnetGroupName = DBSubnetGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, 
+        StorageType = StorageType, CopyTagsToSnapshot = CopyTagsToSnapshot, 
+        MonitoringInterval = MonitoringInterval, MonitoringRoleArn = MonitoringRoleArn, 
+        KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, 
         EnablePerformanceInsights = EnablePerformanceInsights, 
         PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, 
         PerformanceInsightsRetentionPeriod = PerformanceInsightsRetentionPeriod, 
@@ -2121,6 +2206,51 @@ create_event_subscription <- function (SubscriptionName, SnsTopicArn,
     return(response)
 }
 
+#' Creates an Aurora global database spread across multiple regions
+#'
+#' Creates an Aurora global database spread across multiple regions. The global database contains a single primary cluster with read-write capability, and a read-only secondary cluster that receives data from the primary cluster through high-speed replication performed by the Aurora storage subsystem.
+#' 
+#' You can create a global database that is initially empty, and then add a primary cluster and a secondary cluster to it. Or you can specify an existing Aurora cluster during the create operation, and this cluster becomes the primary cluster of the global database.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' create_global_cluster(
+#'   GlobalClusterIdentifier = "string",
+#'   SourceDBClusterIdentifier = "string",
+#'   Engine = "string",
+#'   EngineVersion = "string",
+#'   DeletionProtection = TRUE|FALSE,
+#'   DatabaseName = "string",
+#'   StorageEncrypted = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param GlobalClusterIdentifier The cluster identifier of the new global database cluster.
+#' @param SourceDBClusterIdentifier The Amazon Resource Name (ARN) to use as the primary cluster of the global database. This parameter is optional.
+#' @param Engine Provides the name of the database engine to be used for this DB cluster.
+#' @param EngineVersion The engine version of the Aurora global database.
+#' @param DeletionProtection The deletion protection setting for the new global database. The global database can\'t be deleted when this value is set to true.
+#' @param DatabaseName The name for your database of up to 64 alpha-numeric characters. If you do not provide a name, Amazon Aurora will not create a database in the global database cluster you are creating.
+#' @param StorageEncrypted The storage encryption setting for the new global database cluster.
+#'
+#' @export
+create_global_cluster <- function (GlobalClusterIdentifier = NULL, 
+    SourceDBClusterIdentifier = NULL, Engine = NULL, EngineVersion = NULL, 
+    DeletionProtection = NULL, DatabaseName = NULL, StorageEncrypted = NULL) 
+{
+    op <- new_operation(name = "CreateGlobalCluster", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, 
+        SourceDBClusterIdentifier = SourceDBClusterIdentifier, 
+        Engine = Engine, EngineVersion = EngineVersion, DeletionProtection = DeletionProtection, 
+        DatabaseName = DatabaseName, StorageEncrypted = StorageEncrypted)
+    output <- create_global_cluster_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Creates a new option group
 #'
 #' Creates a new option group. You can create up to 20 option groups.
@@ -2225,6 +2355,32 @@ delete_db_cluster <- function (DBClusterIdentifier, SkipFinalSnapshot = NULL,
     return(response)
 }
 
+#' Deletes a custom endpoint and removes it from an Amazon Aurora DB cluster
+#'
+#' Deletes a custom endpoint and removes it from an Amazon Aurora DB cluster.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_db_cluster_endpoint(
+#'   DBClusterEndpointIdentifier = "string"
+#' )
+#' ```
+#'
+#' @param DBClusterEndpointIdentifier &#91;required&#93; The identifier associated with the custom endpoint. This parameter is stored as a lowercase string.
+#'
+#' @export
+delete_db_cluster_endpoint <- function (DBClusterEndpointIdentifier) 
+{
+    op <- new_operation(name = "DeleteDBClusterEndpoint", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_db_cluster_endpoint_input(DBClusterEndpointIdentifier = DBClusterEndpointIdentifier)
+    output <- delete_db_cluster_endpoint_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Deletes a specified DB cluster parameter group
 #'
 #' Deletes a specified DB cluster parameter group. The DB cluster parameter group to be deleted can\'t be associated with any DB clusters.
@@ -2314,7 +2470,8 @@ delete_db_cluster_snapshot <- function (DBClusterSnapshotIdentifier)
 #' delete_db_instance(
 #'   DBInstanceIdentifier = "string",
 #'   SkipFinalSnapshot = TRUE|FALSE,
-#'   FinalDBSnapshotIdentifier = "string"
+#'   FinalDBSnapshotIdentifier = "string",
+#'   DeleteAutomatedBackups = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -2323,37 +2480,39 @@ delete_db_cluster_snapshot <- function (DBClusterSnapshotIdentifier)
 #' Constraints:
 #' 
 #' -   Must match the name of an existing DB instance.
-#' @param SkipFinalSnapshot Determines whether a final DB snapshot is created before the DB instance is deleted. If `true` is specified, no DBSnapshot is created. If `false` is specified, a DB snapshot is created before the DB instance is deleted.
+#' @param SkipFinalSnapshot A value that indicates whether a final DB snapshot is created before the DB instance is deleted. If `true` is specified, no DB snapshot is created. If `false` is specified, a DB snapshot is created before the DB instance is deleted.
 #' 
-#' Note that when a DB instance is in a failure state and has a status of \'failed\', \'incompatible-restore\', or \'incompatible-network\', it can only be deleted when the SkipFinalSnapshot parameter is set to \"true\".
+#' When a DB instance is in a failure state and has a status of `failed`, `incompatible-restore`, or `incompatible-network`, you can only delete it when the `SkipFinalSnapshot` parameter is set to `true`.
 #' 
 #' Specify `true` when deleting a Read Replica.
 #' 
-#' The FinalDBSnapshotIdentifier parameter must be specified if SkipFinalSnapshot is `false`.
+#' The `FinalDBSnapshotIdentifier` parameter must be specified if `SkipFinalSnapshot` is `false`.
 #' 
 #' Default: `false`
-#' @param FinalDBSnapshotIdentifier The DBSnapshotIdentifier of the new DBSnapshot created when SkipFinalSnapshot is set to `false`.
+#' @param FinalDBSnapshotIdentifier The `DBSnapshotIdentifier` of the new DB snapshot created when `SkipFinalSnapshot` is set to `false`.
 #' 
-#' Specifying this parameter and also setting the SkipFinalShapshot parameter to true results in an error.
+#' Specifying this parameter and also setting the `SkipFinalShapshot` parameter to `true` results in an error.
 #' 
 #' Constraints:
 #' 
 #' -   Must be 1 to 255 letters or numbers.
 #' 
-#' -   First character must be a letter
+#' -   First character must be a letter.
 #' 
-#' -   Can\'t end with a hyphen or contain two consecutive hyphens
+#' -   Can\'t end with a hyphen or contain two consecutive hyphens.
 #' 
 #' -   Can\'t be specified when deleting a Read Replica.
+#' @param DeleteAutomatedBackups A value that indicates whether to remove automated backups immediately after the DB instance is deleted. This parameter isn\'t case-sensitive. This parameter defaults to `true`.
 #'
 #' @export
 delete_db_instance <- function (DBInstanceIdentifier, SkipFinalSnapshot = NULL, 
-    FinalDBSnapshotIdentifier = NULL) 
+    FinalDBSnapshotIdentifier = NULL, DeleteAutomatedBackups = NULL) 
 {
     op <- new_operation(name = "DeleteDBInstance", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- delete_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, 
-        SkipFinalSnapshot = SkipFinalSnapshot, FinalDBSnapshotIdentifier = FinalDBSnapshotIdentifier)
+        SkipFinalSnapshot = SkipFinalSnapshot, FinalDBSnapshotIdentifier = FinalDBSnapshotIdentifier, 
+        DeleteAutomatedBackups = DeleteAutomatedBackups)
     output <- delete_db_instance_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -2361,9 +2520,35 @@ delete_db_instance <- function (DBInstanceIdentifier, SkipFinalSnapshot = NULL,
     return(response)
 }
 
-#' Deletes a specified DBParameterGroup
+#' Deletes automated backups based on the source instance's DbiResourceId value or the restorable instance's resource ID
 #'
-#' Deletes a specified DBParameterGroup. The DBParameterGroup to be deleted can\'t be associated with any DB instances.
+#' Deletes automated backups based on the source instance\'s `DbiResourceId` value or the restorable instance\'s resource ID.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_db_instance_automated_backup(
+#'   DbiResourceId = "string"
+#' )
+#' ```
+#'
+#' @param DbiResourceId &#91;required&#93; The identifier for the source DB instance, which can\'t be changed and which is unique to an AWS Region.
+#'
+#' @export
+delete_db_instance_automated_backup <- function (DbiResourceId) 
+{
+    op <- new_operation(name = "DeleteDBInstanceAutomatedBackup", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- delete_db_instance_automated_backup_input(DbiResourceId = DbiResourceId)
+    output <- delete_db_instance_automated_backup_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes a specified DB parameter group
+#'
+#' Deletes a specified DB parameter group. The DB parameter group to be deleted can\'t be associated with any DB instances.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -2435,11 +2620,11 @@ delete_db_security_group <- function (DBSecurityGroupName)
     return(response)
 }
 
-#' Deletes a DBSnapshot
+#' Deletes a DB snapshot
 #'
-#' Deletes a DBSnapshot. If the snapshot is being copied, the copy operation is terminated.
+#' Deletes a DB snapshot. If the snapshot is being copied, the copy operation is terminated.
 #' 
-#' The DBSnapshot must be in the `available` state to be deleted.
+#' The DB snapshot must be in the `available` state to be deleted.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -2448,7 +2633,7 @@ delete_db_security_group <- function (DBSecurityGroupName)
 #' )
 #' ```
 #'
-#' @param DBSnapshotIdentifier &#91;required&#93; The DBSnapshot identifier.
+#' @param DBSnapshotIdentifier &#91;required&#93; The DB snapshot identifier.
 #' 
 #' Constraints: Must be the name of an existing DB snapshot in the `available` state.
 #'
@@ -2521,6 +2706,32 @@ delete_event_subscription <- function (SubscriptionName)
         http_path = "/", paginator = list())
     input <- delete_event_subscription_input(SubscriptionName = SubscriptionName)
     output <- delete_event_subscription_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes a global database cluster
+#'
+#' Deletes a global database cluster. The primary and secondary clusters must already be detached or destroyed first.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_global_cluster(
+#'   GlobalClusterIdentifier = "string"
+#' )
+#' ```
+#'
+#' @param GlobalClusterIdentifier &#91;required&#93; The cluster identifier of the global database cluster being deleted.
+#'
+#' @export
+delete_global_cluster <- function (GlobalClusterIdentifier) 
+{
+    op <- new_operation(name = "DeleteGlobalCluster", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier)
+    output <- delete_global_cluster_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -2703,6 +2914,55 @@ describe_db_cluster_backtracks <- function (DBClusterIdentifier,
         BacktrackIdentifier = BacktrackIdentifier, Filters = Filters, 
         MaxRecords = MaxRecords, Marker = Marker)
     output <- describe_db_cluster_backtracks_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns information about endpoints for an Amazon Aurora DB cluster
+#'
+#' Returns information about endpoints for an Amazon Aurora DB cluster.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_db_cluster_endpoints(
+#'   DBClusterIdentifier = "string",
+#'   DBClusterEndpointIdentifier = "string",
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   MaxRecords = 123,
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @param DBClusterIdentifier The DB cluster identifier of the DB cluster associated with the endpoint. This parameter is stored as a lowercase string.
+#' @param DBClusterEndpointIdentifier The identifier of the endpoint to describe. This parameter is stored as a lowercase string.
+#' @param Filters A set of name-value pairs that define which endpoints to include in the output. The filters are specified as name-value pairs, in the format `Name=endpoint_type,Values=endpoint_type1,endpoint_type2,...endpoint_type,Values=endpoint_type1,endpoint_type2,...`. `Name` can be one of: `db-cluster-endpoint-type`, `db-cluster-endpoint-custom-type`, `db-cluster-endpoint-id`, `db-cluster-endpoint-status`. `Values` for the ` db-cluster-endpoint-type` filter can be one or more of: `reader`, `writer`, `custom`. `Values` for the `db-cluster-endpoint-custom-type` filter can be one or more of: `reader`, `any`. `Values` for the `db-cluster-endpoint-status` filter can be one or more of: `available`, `creating`, `deleting`, `modifying`.
+#' @param MaxRecords The maximum number of records to include in the response. If more records exist than the specified `MaxRecords` value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.
+#' 
+#' Default: 100
+#' 
+#' Constraints: Minimum 20, maximum 100.
+#' @param Marker An optional pagination token provided by a previous DescribeDBClusterEndpoints request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by `MaxRecords`.
+#'
+#' @export
+describe_db_cluster_endpoints <- function (DBClusterIdentifier = NULL, 
+    DBClusterEndpointIdentifier = NULL, Filters = NULL, MaxRecords = NULL, 
+    Marker = NULL) 
+{
+    op <- new_operation(name = "DescribeDBClusterEndpoints", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_db_cluster_endpoints_input(DBClusterIdentifier = DBClusterIdentifier, 
+        DBClusterEndpointIdentifier = DBClusterEndpointIdentifier, 
+        Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
+    output <- describe_db_cluster_endpoints_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -3050,6 +3310,69 @@ describe_db_engine_versions <- function (Engine = NULL, EngineVersion = NULL,
     return(response)
 }
 
+#' Displays backups for both current and deleted instances
+#'
+#' Displays backups for both current and deleted instances. For example, use this operation to find details about automated backups for previously deleted instances. Current instances with retention periods greater than zero (0) are returned for both the `DescribeDBInstanceAutomatedBackups` and `DescribeDBInstances` operations.
+#' 
+#' All parameters are optional.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_db_instance_automated_backups(
+#'   DbiResourceId = "string",
+#'   DBInstanceIdentifier = "string",
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   MaxRecords = 123,
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @param DbiResourceId The resource ID of the DB instance that is the source of the automated backup. This parameter isn\'t case-sensitive.
+#' @param DBInstanceIdentifier (Optional) The user-supplied instance identifier. If this parameter is specified, it must match the identifier of an existing DB instance. It returns information from the specific DB instance\' automated backup. This parameter isn\'t case-sensitive.
+#' @param Filters A filter that specifies which resources to return based on status.
+#' 
+#' Supported filters are the following:
+#' 
+#' -   `status`
+#' 
+#'     -   `active` - automated backups for current instances
+#' 
+#'     -   `retained` - automated backups for deleted instances
+#' 
+#'     -   `creating` - automated backups that are waiting for the first automated snapshot to be available
+#' 
+#' -   `db-instance-id` - Accepts DB instance identifiers and Amazon Resource Names (ARNs) for DB instances. The results list includes only information about the DB instance automated backupss identified by these ARNs.
+#' 
+#' -   `dbi-resource-id` - Accepts DB instance resource identifiers and DB Amazon Resource Names (ARNs) for DB instances. The results list includes only information about the DB instance resources identified by these ARNs.
+#' 
+#' Returns all resources by default. The status for each resource is specified in the response.
+#' @param MaxRecords The maximum number of records to include in the response. If more records exist than the specified `MaxRecords` value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.
+#' @param Marker The pagination token provided in the previous request. If this parameter is specified the response includes only records beyond the marker, up to `MaxRecords`.
+#'
+#' @export
+describe_db_instance_automated_backups <- function (DbiResourceId = NULL, 
+    DBInstanceIdentifier = NULL, Filters = NULL, MaxRecords = NULL, 
+    Marker = NULL) 
+{
+    op <- new_operation(name = "DescribeDBInstanceAutomatedBackups", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_db_instance_automated_backups_input(DbiResourceId = DbiResourceId, 
+        DBInstanceIdentifier = DBInstanceIdentifier, Filters = Filters, 
+        MaxRecords = MaxRecords, Marker = Marker)
+    output <- describe_db_instance_automated_backups_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Returns information about provisioned RDS instances
 #'
 #' Returns information about provisioned RDS instances. This API supports pagination.
@@ -3360,7 +3683,8 @@ describe_db_snapshot_attributes <- function (DBSnapshotIdentifier)
 #'   MaxRecords = 123,
 #'   Marker = "string",
 #'   IncludeShared = TRUE|FALSE,
-#'   IncludePublic = TRUE|FALSE
+#'   IncludePublic = TRUE|FALSE,
+#'   DbiResourceId = "string"
 #' )
 #' ```
 #'
@@ -3402,18 +3726,21 @@ describe_db_snapshot_attributes <- function (DBSnapshotIdentifier)
 #' @param IncludePublic True to include manual DB snapshots that are public and can be copied or restored by any AWS account, and otherwise false. The default is false.
 #' 
 #' You can share a manual DB snapshot as public by using the ModifyDBSnapshotAttribute API.
+#' @param DbiResourceId A specific DB resource ID to describe.
 #'
 #' @export
 describe_db_snapshots <- function (DBInstanceIdentifier = NULL, 
     DBSnapshotIdentifier = NULL, SnapshotType = NULL, Filters = NULL, 
-    MaxRecords = NULL, Marker = NULL, IncludeShared = NULL, IncludePublic = NULL) 
+    MaxRecords = NULL, Marker = NULL, IncludeShared = NULL, IncludePublic = NULL, 
+    DbiResourceId = NULL) 
 {
     op <- new_operation(name = "DescribeDBSnapshots", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- describe_db_snapshots_input(DBInstanceIdentifier = DBInstanceIdentifier, 
         DBSnapshotIdentifier = DBSnapshotIdentifier, SnapshotType = SnapshotType, 
         Filters = Filters, MaxRecords = MaxRecords, Marker = Marker, 
-        IncludeShared = IncludeShared, IncludePublic = IncludePublic)
+        IncludeShared = IncludeShared, IncludePublic = IncludePublic, 
+        DbiResourceId = DbiResourceId)
     output <- describe_db_snapshots_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -3719,6 +4046,61 @@ describe_events <- function (SourceIdentifier = NULL, SourceType = NULL,
         Duration = Duration, EventCategories = EventCategories, 
         Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
     output <- describe_events_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns information about Aurora global database clusters
+#'
+#' Returns information about Aurora global database clusters. This API supports pagination.
+#' 
+#' For more information on Amazon Aurora, see [What Is Amazon Aurora?](http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html) in the *Amazon Aurora User Guide.*
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_global_clusters(
+#'   GlobalClusterIdentifier = "string",
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   MaxRecords = 123,
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @param GlobalClusterIdentifier The user-supplied DB cluster identifier. If this parameter is specified, information from only the specific DB cluster is returned. This parameter isn\'t case-sensitive.
+#' 
+#' Constraints:
+#' 
+#' -   If supplied, must match an existing DBClusterIdentifier.
+#' @param Filters A filter that specifies one or more global DB clusters to describe.
+#' 
+#' Supported filters:
+#' 
+#' -   `db-cluster-id` - Accepts DB cluster identifiers and DB cluster Amazon Resource Names (ARNs). The results list will only include information about the DB clusters identified by these ARNs.
+#' @param MaxRecords The maximum number of records to include in the response. If more records exist than the specified `MaxRecords` value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.
+#' 
+#' Default: 100
+#' 
+#' Constraints: Minimum 20, maximum 100.
+#' @param Marker An optional pagination token provided by a previous DescribeGlobalClusters request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by `MaxRecords`.
+#'
+#' @export
+describe_global_clusters <- function (GlobalClusterIdentifier = NULL, 
+    Filters = NULL, MaxRecords = NULL, Marker = NULL) 
+{
+    op <- new_operation(name = "DescribeGlobalClusters", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_global_clusters_input(GlobalClusterIdentifier = GlobalClusterIdentifier, 
+        Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
+    output <- describe_global_clusters_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -4206,7 +4588,7 @@ download_db_log_file_portion <- function (DBInstanceIdentifier,
 #' )
 #' ```
 #'
-#' @param DBClusterIdentifier A DB cluster identifier to force a failover for. This parameter is not case-sensitive.
+#' @param DBClusterIdentifier &#91;required&#93; A DB cluster identifier to force a failover for. This parameter is not case-sensitive.
 #' 
 #' Constraints:
 #' 
@@ -4216,8 +4598,7 @@ download_db_log_file_portion <- function (DBInstanceIdentifier,
 #' You must specify the instance identifier for an Aurora Replica in the DB cluster. For example, `mydbcluster-replica1`.
 #'
 #' @export
-failover_db_cluster <- function (DBClusterIdentifier = NULL, 
-    TargetDBInstanceIdentifier = NULL) 
+failover_db_cluster <- function (DBClusterIdentifier, TargetDBInstanceIdentifier = NULL) 
 {
     op <- new_operation(name = "FailoverDBCluster", http_method = "POST", 
         http_path = "/", paginator = list())
@@ -4362,7 +4743,8 @@ modify_current_db_cluster_capacity <- function (DBClusterIdentifier,
 #'     AutoPause = TRUE|FALSE,
 #'     SecondsUntilAutoPause = 123
 #'   ),
-#'   DeletionProtection = TRUE|FALSE
+#'   DeletionProtection = TRUE|FALSE,
+#'   EnableHttpEndpoint = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -4445,6 +4827,13 @@ modify_current_db_cluster_capacity <- function (DBClusterIdentifier,
 #' For a list of valid engine versions, see CreateDBCluster, or call DescribeDBEngineVersions.
 #' @param ScalingConfiguration The scaling properties of the DB cluster. You can only modify scaling properties for DB clusters in `serverless` DB engine mode.
 #' @param DeletionProtection Indicates if the DB cluster has deletion protection enabled. The database can\'t be deleted when this value is set to true.
+#' @param EnableHttpEndpoint HTTP endpoint functionality is in beta for Aurora Serverless and is subject to change.
+#' 
+#' A value that indicates whether to enable the HTTP endpoint for an Aurora Serverless DB cluster. By default, the HTTP endpoint is disabled.
+#' 
+#' When enabled, the HTTP endpoint provides a connectionless web service API for running SQL queries on the Aurora Serverless DB cluster. You can also query your database from inside the RDS console with the query editor.
+#' 
+#' For more information about Aurora Serverless, see [Using Amazon Aurora Serverless](http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html) in the *Amazon Aurora User Guide*.
 #'
 #' @export
 modify_db_cluster <- function (DBClusterIdentifier, NewDBClusterIdentifier = NULL, 
@@ -4453,7 +4842,7 @@ modify_db_cluster <- function (DBClusterIdentifier, NewDBClusterIdentifier = NUL
     OptionGroupName = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, 
     EnableIAMDatabaseAuthentication = NULL, BacktrackWindow = NULL, 
     CloudwatchLogsExportConfiguration = NULL, EngineVersion = NULL, 
-    ScalingConfiguration = NULL, DeletionProtection = NULL) 
+    ScalingConfiguration = NULL, DeletionProtection = NULL, EnableHttpEndpoint = NULL) 
 {
     op <- new_operation(name = "ModifyDBCluster", http_method = "POST", 
         http_path = "/", paginator = list())
@@ -4466,8 +4855,47 @@ modify_db_cluster <- function (DBClusterIdentifier, NewDBClusterIdentifier = NUL
         EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, 
         BacktrackWindow = BacktrackWindow, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, 
         EngineVersion = EngineVersion, ScalingConfiguration = ScalingConfiguration, 
-        DeletionProtection = DeletionProtection)
+        DeletionProtection = DeletionProtection, EnableHttpEndpoint = EnableHttpEndpoint)
     output <- modify_db_cluster_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Modifies the properties of an endpoint in an Amazon Aurora DB cluster
+#'
+#' Modifies the properties of an endpoint in an Amazon Aurora DB cluster.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' modify_db_cluster_endpoint(
+#'   DBClusterEndpointIdentifier = "string",
+#'   EndpointType = "string",
+#'   StaticMembers = list(
+#'     "string"
+#'   ),
+#'   ExcludedMembers = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @param DBClusterEndpointIdentifier &#91;required&#93; The identifier of the endpoint to modify. This parameter is stored as a lowercase string.
+#' @param EndpointType The type of the endpoint. One of: `READER`, `ANY`.
+#' @param StaticMembers List of DB instance identifiers that are part of the custom endpoint group.
+#' @param ExcludedMembers List of DB instance identifiers that aren\'t part of the custom endpoint group. All other eligible instances are reachable through the custom endpoint. Only relevant if the list of static members is empty.
+#'
+#' @export
+modify_db_cluster_endpoint <- function (DBClusterEndpointIdentifier, 
+    EndpointType = NULL, StaticMembers = NULL, ExcludedMembers = NULL) 
+{
+    op <- new_operation(name = "ModifyDBClusterEndpoint", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- modify_db_cluster_endpoint_input(DBClusterEndpointIdentifier = DBClusterEndpointIdentifier, 
+        EndpointType = EndpointType, StaticMembers = StaticMembers, 
+        ExcludedMembers = ExcludedMembers)
+    output <- modify_db_cluster_endpoint_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -4732,7 +5160,7 @@ modify_db_cluster_snapshot_attribute <- function (DBClusterSnapshotIdentifier,
 #' 
 #' -   Must be a value from 0 to 35
 #' 
-#' -   Can be specified for a MySQL Read Replica only if the source is running MySQL 5.6
+#' -   Can be specified for a MySQL Read Replica only if the source is running MySQL 5.6 or later
 #' 
 #' -   Can be specified for a PostgreSQL Read Replica only if the source is running PostgreSQL 9.3.5
 #' 
@@ -4896,6 +5324,8 @@ modify_db_cluster_snapshot_attribute <- function (DBClusterSnapshotIdentifier,
 #' @param PerformanceInsightsKMSKeyId The AWS KMS key identifier for encryption of Performance Insights data. The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key.
 #' @param PerformanceInsightsRetentionPeriod The amount of time, in days, to retain Performance Insights data. Valid values are 7 or 731 (2 years).
 #' @param CloudwatchLogsExportConfiguration The configuration setting for the log types to be enabled for export to CloudWatch Logs for a specific DB instance.
+#' 
+#' A change to the `CloudwatchLogsExportConfiguration` parameter is always applied to the DB instance immediately. Therefore, the `ApplyImmediately` parameter has no effect.
 #' @param ProcessorFeatures The number of CPU cores and the number of threads per core for the DB instance class of the DB instance.
 #' @param UseDefaultProcessorFeatures A value that specifies that the DB instance class of the DB instance uses its default processor features.
 #' @param DeletionProtection Indicates if the DB instance has deletion protection enabled. The database can\'t be deleted when this value is set to true. For more information, see [Deleting a DB Instance](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
@@ -5189,6 +5619,53 @@ modify_event_subscription <- function (SubscriptionName, SnsTopicArn = NULL,
     return(response)
 }
 
+#' Modify a setting for an Amazon Aurora global cluster
+#'
+#' Modify a setting for an Amazon Aurora global cluster. You can change one or more database configuration parameters by specifying these parameters and the new values in the request. For more information on Amazon Aurora, see [What Is Amazon Aurora?](http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html) in the *Amazon Aurora User Guide.*
+#'
+#' @section Accepted Parameters:
+#' ```
+#' modify_global_cluster(
+#'   GlobalClusterIdentifier = "string",
+#'   NewGlobalClusterIdentifier = "string",
+#'   DeletionProtection = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param GlobalClusterIdentifier The DB cluster identifier for the global cluster being modified. This parameter is not case-sensitive.
+#' 
+#' Constraints:
+#' 
+#' -   Must match the identifier of an existing global database cluster.
+#' @param NewGlobalClusterIdentifier The new cluster identifier for the global database cluster when modifying a global database cluster. This value is stored as a lowercase string.
+#' 
+#' Constraints:
+#' 
+#' -   Must contain from 1 to 63 letters, numbers, or hyphens
+#' 
+#' -   The first character must be a letter
+#' 
+#' -   Can\'t end with a hyphen or contain two consecutive hyphens
+#' 
+#' Example: `my-cluster2`
+#' @param DeletionProtection Indicates if the global database cluster has deletion protection enabled. The global database cluster can\'t be deleted when this value is set to true.
+#'
+#' @export
+modify_global_cluster <- function (GlobalClusterIdentifier = NULL, 
+    NewGlobalClusterIdentifier = NULL, DeletionProtection = NULL) 
+{
+    op <- new_operation(name = "ModifyGlobalCluster", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- modify_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, 
+        NewGlobalClusterIdentifier = NewGlobalClusterIdentifier, 
+        DeletionProtection = DeletionProtection)
+    output <- modify_global_cluster_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Modifies an existing option group
 #'
 #' Modifies an existing option group.
@@ -5430,9 +5907,39 @@ reboot_db_instance <- function (DBInstanceIdentifier, ForceFailover = NULL)
     return(response)
 }
 
-#' Disassociates an Identity and Access Management (IAM) role from an Aurora DB cluster
+#' Detaches an Aurora secondary cluster from an Aurora global database cluster
 #'
-#' Disassociates an Identity and Access Management (IAM) role from an Aurora DB cluster. For more information, see [Authorizing Amazon Aurora MySQL to Access Other AWS Services on Your Behalf](http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Integrating.Authorizing.html) in the *Amazon Aurora User Guide*.
+#' Detaches an Aurora secondary cluster from an Aurora global database cluster. The cluster becomes a standalone cluster with read-write capability instead of being read-only and receiving data from a primary cluster in a different region.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' remove_from_global_cluster(
+#'   GlobalClusterIdentifier = "string",
+#'   DbClusterIdentifier = "string"
+#' )
+#' ```
+#'
+#' @param GlobalClusterIdentifier The cluster identifier to detach from the Aurora global database cluster.
+#' @param DbClusterIdentifier The Amazon Resource Name (ARN) identifying the cluster that was detached from the Aurora global database cluster.
+#'
+#' @export
+remove_from_global_cluster <- function (GlobalClusterIdentifier = NULL, 
+    DbClusterIdentifier = NULL) 
+{
+    op <- new_operation(name = "RemoveFromGlobalCluster", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- remove_from_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, 
+        DbClusterIdentifier = DbClusterIdentifier)
+    output <- remove_from_global_cluster_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Disassociates an AWS Identity and Access Management (IAM) role from an Amazon Aurora DB cluster
+#'
+#' Disassociates an AWS Identity and Access Management (IAM) role from an Amazon Aurora DB cluster. For more information, see [Authorizing Amazon Aurora MySQL to Access Other AWS Services on Your Behalf](http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Integrating.Authorizing.html) in the *Amazon Aurora User Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -5454,6 +5961,38 @@ remove_role_from_db_cluster <- function (DBClusterIdentifier,
     input <- remove_role_from_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, 
         RoleArn = RoleArn)
     output <- remove_role_from_db_cluster_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Disassociates an AWS Identity and Access Management (IAM) role from a DB instance
+#'
+#' Disassociates an AWS Identity and Access Management (IAM) role from a DB instance.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' remove_role_from_db_instance(
+#'   DBInstanceIdentifier = "string",
+#'   RoleArn = "string",
+#'   FeatureName = "string"
+#' )
+#' ```
+#'
+#' @param DBInstanceIdentifier &#91;required&#93; The name of the DB instance to disassociate the IAM role from.
+#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role to disassociate from the DB instance, for example `arn:aws:iam::123456789012:role/AccessRole`.
+#' @param FeatureName &#91;required&#93; The name of the feature for the DB instance that the IAM role is to be disassociated from. For the list of supported feature names, see DBEngineVersion.
+#'
+#' @export
+remove_role_from_db_instance <- function (DBInstanceIdentifier, 
+    RoleArn, FeatureName) 
+{
+    op <- new_operation(name = "RemoveRoleFromDBInstance", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- remove_role_from_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, 
+        RoleArn = RoleArn, FeatureName = FeatureName)
+    output <- remove_role_from_db_instance_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -6194,6 +6733,9 @@ restore_db_cluster_to_point_in_time <- function (DBClusterIdentifier,
 #'   StorageType = "string",
 #'   TdeCredentialArn = "string",
 #'   TdeCredentialPassword = "string",
+#'   VpcSecurityGroupIds = list(
+#'     "string"
+#'   ),
 #'   Domain = "string",
 #'   CopyTagsToSnapshot = TRUE|FALSE,
 #'   DomainIAMRoleName = "string",
@@ -6311,6 +6853,9 @@ restore_db_cluster_to_point_in_time <- function (DBClusterIdentifier,
 #' Default: `io1` if the `Iops` parameter is specified, otherwise `standard`
 #' @param TdeCredentialArn The ARN from the key store with which to associate the instance for TDE encryption.
 #' @param TdeCredentialPassword The password for the given ARN from the key store in order to access the device.
+#' @param VpcSecurityGroupIds A list of EC2 VPC security groups to associate with this DB instance.
+#' 
+#' Default: The default EC2 VPC security group for the DB subnet group\'s VPC.
 #' @param Domain Specify the Active Directory Domain to restore the instance in.
 #' @param CopyTagsToSnapshot True to copy all tags from the restored DB instance to snapshots of the DB instance, and otherwise false. The default is false.
 #' @param DomainIAMRoleName Specify the name of the IAM role to be used when making API calls to the Directory Service.
@@ -6346,11 +6891,11 @@ restore_db_instance_from_db_snapshot <- function (DBInstanceIdentifier,
     PubliclyAccessible = NULL, AutoMinorVersionUpgrade = NULL, 
     LicenseModel = NULL, DBName = NULL, Engine = NULL, Iops = NULL, 
     OptionGroupName = NULL, Tags = NULL, StorageType = NULL, 
-    TdeCredentialArn = NULL, TdeCredentialPassword = NULL, Domain = NULL, 
-    CopyTagsToSnapshot = NULL, DomainIAMRoleName = NULL, EnableIAMDatabaseAuthentication = NULL, 
-    EnableCloudwatchLogsExports = NULL, ProcessorFeatures = NULL, 
-    UseDefaultProcessorFeatures = NULL, DBParameterGroupName = NULL, 
-    DeletionProtection = NULL) 
+    TdeCredentialArn = NULL, TdeCredentialPassword = NULL, VpcSecurityGroupIds = NULL, 
+    Domain = NULL, CopyTagsToSnapshot = NULL, DomainIAMRoleName = NULL, 
+    EnableIAMDatabaseAuthentication = NULL, EnableCloudwatchLogsExports = NULL, 
+    ProcessorFeatures = NULL, UseDefaultProcessorFeatures = NULL, 
+    DBParameterGroupName = NULL, DeletionProtection = NULL) 
 {
     op <- new_operation(name = "RestoreDBInstanceFromDBSnapshot", 
         http_method = "POST", http_path = "/", paginator = list())
@@ -6361,9 +6906,9 @@ restore_db_instance_from_db_snapshot <- function (DBInstanceIdentifier,
         AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, LicenseModel = LicenseModel, 
         DBName = DBName, Engine = Engine, Iops = Iops, OptionGroupName = OptionGroupName, 
         Tags = Tags, StorageType = StorageType, TdeCredentialArn = TdeCredentialArn, 
-        TdeCredentialPassword = TdeCredentialPassword, Domain = Domain, 
-        CopyTagsToSnapshot = CopyTagsToSnapshot, DomainIAMRoleName = DomainIAMRoleName, 
-        EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, 
+        TdeCredentialPassword = TdeCredentialPassword, VpcSecurityGroupIds = VpcSecurityGroupIds, 
+        Domain = Domain, CopyTagsToSnapshot = CopyTagsToSnapshot, 
+        DomainIAMRoleName = DomainIAMRoleName, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, 
         EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, 
         ProcessorFeatures = ProcessorFeatures, UseDefaultProcessorFeatures = UseDefaultProcessorFeatures, 
         DBParameterGroupName = DBParameterGroupName, DeletionProtection = DeletionProtection)
@@ -6666,6 +7211,9 @@ restore_db_instance_from_s3 <- function (DBName = NULL, DBInstanceIdentifier,
 #'   StorageType = "string",
 #'   TdeCredentialArn = "string",
 #'   TdeCredentialPassword = "string",
+#'   VpcSecurityGroupIds = list(
+#'     "string"
+#'   ),
 #'   Domain = "string",
 #'   DomainIAMRoleName = "string",
 #'   EnableIAMDatabaseAuthentication = TRUE|FALSE,
@@ -6680,11 +7228,12 @@ restore_db_instance_from_s3 <- function (DBName = NULL, DBInstanceIdentifier,
 #'   ),
 #'   UseDefaultProcessorFeatures = TRUE|FALSE,
 #'   DBParameterGroupName = "string",
-#'   DeletionProtection = TRUE|FALSE
+#'   DeletionProtection = TRUE|FALSE,
+#'   SourceDbiResourceId = "string"
 #' )
 #' ```
 #'
-#' @param SourceDBInstanceIdentifier &#91;required&#93; The identifier of the source DB instance from which to restore.
+#' @param SourceDBInstanceIdentifier The identifier of the source DB instance from which to restore.
 #' 
 #' Constraints:
 #' 
@@ -6797,6 +7346,9 @@ restore_db_instance_from_s3 <- function (DBName = NULL, DBInstanceIdentifier,
 #' Default: `io1` if the `Iops` parameter is specified, otherwise `standard`
 #' @param TdeCredentialArn The ARN from the key store with which to associate the instance for TDE encryption.
 #' @param TdeCredentialPassword The password for the given ARN from the key store in order to access the device.
+#' @param VpcSecurityGroupIds A list of EC2 VPC security groups to associate with this DB instance.
+#' 
+#' Default: The default EC2 VPC security group for the DB subnet group\'s VPC.
 #' @param Domain Specify the Active Directory Domain to restore the instance in.
 #' @param DomainIAMRoleName Specify the name of the IAM role to be used when making API calls to the Directory Service.
 #' @param EnableIAMDatabaseAuthentication True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false.
@@ -6823,19 +7375,21 @@ restore_db_instance_from_s3 <- function (DBName = NULL, DBInstanceIdentifier,
 #' 
 #' -   Can\'t end with a hyphen or contain two consecutive hyphens.
 #' @param DeletionProtection Indicates if the DB instance should have deletion protection enabled. The database can\'t be deleted when this value is set to true. The default is false. For more information, see [Deleting a DB Instance](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
+#' @param SourceDbiResourceId The resource ID of the source DB instance from which to restore.
 #'
 #' @export
-restore_db_instance_to_point_in_time <- function (SourceDBInstanceIdentifier, 
+restore_db_instance_to_point_in_time <- function (SourceDBInstanceIdentifier = NULL, 
     TargetDBInstanceIdentifier, RestoreTime = NULL, UseLatestRestorableTime = NULL, 
     DBInstanceClass = NULL, Port = NULL, AvailabilityZone = NULL, 
     DBSubnetGroupName = NULL, MultiAZ = NULL, PubliclyAccessible = NULL, 
     AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, DBName = NULL, 
     Engine = NULL, Iops = NULL, OptionGroupName = NULL, CopyTagsToSnapshot = NULL, 
     Tags = NULL, StorageType = NULL, TdeCredentialArn = NULL, 
-    TdeCredentialPassword = NULL, Domain = NULL, DomainIAMRoleName = NULL, 
-    EnableIAMDatabaseAuthentication = NULL, EnableCloudwatchLogsExports = NULL, 
-    ProcessorFeatures = NULL, UseDefaultProcessorFeatures = NULL, 
-    DBParameterGroupName = NULL, DeletionProtection = NULL) 
+    TdeCredentialPassword = NULL, VpcSecurityGroupIds = NULL, 
+    Domain = NULL, DomainIAMRoleName = NULL, EnableIAMDatabaseAuthentication = NULL, 
+    EnableCloudwatchLogsExports = NULL, ProcessorFeatures = NULL, 
+    UseDefaultProcessorFeatures = NULL, DBParameterGroupName = NULL, 
+    DeletionProtection = NULL, SourceDbiResourceId = NULL) 
 {
     op <- new_operation(name = "RestoreDBInstanceToPointInTime", 
         http_method = "POST", http_path = "/", paginator = list())
@@ -6848,11 +7402,13 @@ restore_db_instance_to_point_in_time <- function (SourceDBInstanceIdentifier,
         LicenseModel = LicenseModel, DBName = DBName, Engine = Engine, 
         Iops = Iops, OptionGroupName = OptionGroupName, CopyTagsToSnapshot = CopyTagsToSnapshot, 
         Tags = Tags, StorageType = StorageType, TdeCredentialArn = TdeCredentialArn, 
-        TdeCredentialPassword = TdeCredentialPassword, Domain = Domain, 
-        DomainIAMRoleName = DomainIAMRoleName, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, 
+        TdeCredentialPassword = TdeCredentialPassword, VpcSecurityGroupIds = VpcSecurityGroupIds, 
+        Domain = Domain, DomainIAMRoleName = DomainIAMRoleName, 
+        EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, 
         EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, 
         ProcessorFeatures = ProcessorFeatures, UseDefaultProcessorFeatures = UseDefaultProcessorFeatures, 
-        DBParameterGroupName = DBParameterGroupName, DeletionProtection = DeletionProtection)
+        DBParameterGroupName = DBParameterGroupName, DeletionProtection = DeletionProtection, 
+        SourceDbiResourceId = SourceDbiResourceId)
     output <- restore_db_instance_to_point_in_time_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -6930,7 +7486,7 @@ start_db_cluster <- function (DBClusterIdentifier)
 #'
 #' Starts an Amazon RDS DB instance that was stopped using the AWS console, the stop-db-instance AWS CLI command, or the StopDBInstance action.
 #' 
-#' For more information, see [Starting an Amazon RDS DB Instance That Was Previously Stopped](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_StartInstance.html) in the *Amazon RDS User Guide.*
+#' For more information, see [Starting an Amazon RDS DB instance That Was Previously Stopped](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_StartInstance.html) in the *Amazon RDS User Guide.*
 #' 
 #' This command doesn\'t apply to Aurora MySQL and Aurora PostgreSQL. For Aurora DB clusters, use StartDBCluster instead.
 #'

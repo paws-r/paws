@@ -22,11 +22,11 @@ submit_task_state_change(cluster = NULL, task = NULL, status = NULL,
 
 \item{attachments}{Any attachments associated with the state change request.}
 
-\item{pullStartedAt}{The Unix time stamp for when the container image pull began.}
+\item{pullStartedAt}{The Unix timestamp for when the container image pull began.}
 
-\item{pullStoppedAt}{The Unix time stamp for when the container image pull completed.}
+\item{pullStoppedAt}{The Unix timestamp for when the container image pull completed.}
 
-\item{executionStoppedAt}{The Unix time stamp for when the task execution stopped.}
+\item{executionStoppedAt}{The Unix timestamp for when the task execution stopped.}
 }
 \description{
 This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent.

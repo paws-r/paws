@@ -4,9 +4,7 @@
 \alias{start_flow}
 \title{Starts a flow}
 \usage{
-start_flow(
-  FlowArn = "string"
-)
+start_flow(FlowArn)
 }
 \arguments{
 \item{FlowArn}{[required] The ARN of the flow that you want to start.}
@@ -14,6 +12,10 @@ start_flow(
 \description{
 Starts a flow.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_flow(
+  FlowArn = "string"
+)
 }
+}
+

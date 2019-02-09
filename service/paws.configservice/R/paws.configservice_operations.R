@@ -3,6 +3,48 @@
 #' @importFrom paws.common new_operation new_request send_request
 NULL
 
+#' Returns the current configuration items for resources that are present in your AWS Config aggregator
+#'
+#' Returns the current configuration items for resources that are present in your AWS Config aggregator. The operation also returns a list of resources that are not processed in the current request. If there are no unprocessed resources, the operation returns an empty `unprocessedResourceIdentifiers` list.
+#' 
+#' -   The API does not return results for deleted resources.
+#' 
+#' -   The API does not return tags and relationships.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' batch_get_aggregate_resource_config(
+#'   ConfigurationAggregatorName = "string",
+#'   ResourceIdentifiers = list(
+#'     list(
+#'       SourceAccountId = "string",
+#'       SourceRegion = "string",
+#'       ResourceId = "string",
+#'       ResourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::EventSubscription"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::S3::Bucket"|"AWS::SSM::ManagedInstanceInventory"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::DynamoDB::Table"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::WAF::RuleGroup"|"AWS::WAFRegional::RuleGroup"|"AWS::Lambda::Function"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::CodePipeline::Pipeline",
+#'       ResourceName = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
+#' @param ResourceIdentifiers &#91;required&#93; A list of aggregate ResourceIdentifiers objects.
+#'
+#' @export
+batch_get_aggregate_resource_config <- function (ConfigurationAggregatorName, 
+    ResourceIdentifiers) 
+{
+    op <- new_operation(name = "BatchGetAggregateResourceConfig", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- batch_get_aggregate_resource_config_input(ConfigurationAggregatorName = ConfigurationAggregatorName, 
+        ResourceIdentifiers = ResourceIdentifiers)
+    output <- batch_get_aggregate_resource_config_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Returns the current configuration for one or more requested resources
 #'
 #' Returns the current configuration for one or more requested resources. The operation also returns a list of resources that are not processed in the current request. If there are no unprocessed resources, the operation returns an empty unprocessedResourceKeys list.
@@ -887,6 +929,85 @@ get_aggregate_config_rule_compliance_summary <- function (ConfigurationAggregato
     return(response)
 }
 
+#' Returns the resource counts across accounts and regions that are present in your AWS Config aggregator
+#'
+#' Returns the resource counts across accounts and regions that are present in your AWS Config aggregator. You can request the resource counts by providing filters and GroupByKey.
+#' 
+#' For example, if the input contains accountID 12345678910 and region us-east-1 in filters, the API returns the count of resources in account ID 12345678910 and region us-east-1. If the input contains ACCOUNT\_ID as a GroupByKey, the API returns resource counts for all source accounts that are present in your aggregator.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' get_aggregate_discovered_resource_counts(
+#'   ConfigurationAggregatorName = "string",
+#'   Filters = list(
+#'     ResourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::EventSubscription"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::S3::Bucket"|"AWS::SSM::ManagedInstanceInventory"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::DynamoDB::Table"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::WAF::RuleGroup"|"AWS::WAFRegional::RuleGroup"|"AWS::Lambda::Function"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::CodePipeline::Pipeline",
+#'     AccountId = "string",
+#'     Region = "string"
+#'   ),
+#'   GroupByKey = "RESOURCE_TYPE"|"ACCOUNT_ID"|"AWS_REGION",
+#'   Limit = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
+#' @param Filters Filters the results based on the `ResourceCountFilters` object.
+#' @param GroupByKey The key to group the resource counts.
+#' @param Limit The maximum number of GroupedResourceCount objects returned on each page. The default is 1000. You cannot specify a number greater than 1000. If you specify 0, AWS Config uses the default.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
+#'
+#' @export
+get_aggregate_discovered_resource_counts <- function (ConfigurationAggregatorName, 
+    Filters = NULL, GroupByKey = NULL, Limit = NULL, NextToken = NULL) 
+{
+    op <- new_operation(name = "GetAggregateDiscoveredResourceCounts", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- get_aggregate_discovered_resource_counts_input(ConfigurationAggregatorName = ConfigurationAggregatorName, 
+        Filters = Filters, GroupByKey = GroupByKey, Limit = Limit, 
+        NextToken = NextToken)
+    output <- get_aggregate_discovered_resource_counts_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns configuration item that is aggregated for your specific resource in a specific source account and region
+#'
+#' Returns configuration item that is aggregated for your specific resource in a specific source account and region.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' get_aggregate_resource_config(
+#'   ConfigurationAggregatorName = "string",
+#'   ResourceIdentifier = list(
+#'     SourceAccountId = "string",
+#'     SourceRegion = "string",
+#'     ResourceId = "string",
+#'     ResourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::EventSubscription"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::S3::Bucket"|"AWS::SSM::ManagedInstanceInventory"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::DynamoDB::Table"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::WAF::RuleGroup"|"AWS::WAFRegional::RuleGroup"|"AWS::Lambda::Function"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::CodePipeline::Pipeline",
+#'     ResourceName = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
+#' @param ResourceIdentifier &#91;required&#93; An object that identifies aggregate resource.
+#'
+#' @export
+get_aggregate_resource_config <- function (ConfigurationAggregatorName, 
+    ResourceIdentifier) 
+{
+    op <- new_operation(name = "GetAggregateResourceConfig", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- get_aggregate_resource_config_input(ConfigurationAggregatorName = ConfigurationAggregatorName, 
+        ResourceIdentifier = ResourceIdentifier)
+    output <- get_aggregate_resource_config_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Returns the evaluation results for the specified AWS Config rule
 #'
 #' Returns the evaluation results for the specified AWS Config rule. The results indicate which AWS resources were evaluated by the rule, when each resource was last evaluated, and whether each resource complies with the rule.
@@ -1118,6 +1239,50 @@ get_resource_config_history <- function (resourceType, resourceId,
         chronologicalOrder = chronologicalOrder, limit = limit, 
         nextToken = nextToken)
     output <- get_resource_config_history_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Accepts a resource type and returns a list of resource identifiers that are aggregated for a specific resource type across accounts and regions
+#'
+#' Accepts a resource type and returns a list of resource identifiers that are aggregated for a specific resource type across accounts and regions. A resource identifier includes the resource type, ID, (if available) the custom resource name, source account, and source region. You can narrow the results to include only resources that have specific resource IDs, or a resource name, or source account ID, or source region.
+#' 
+#' For example, if the input consists of accountID 12345678910 and the region is us-east-1 for resource type `AWS::EC2::Instance` then the API returns all the EC2 instance identifiers of accountID 12345678910 and region us-east-1.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' list_aggregate_discovered_resources(
+#'   ConfigurationAggregatorName = "string",
+#'   ResourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::EventSubscription"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::S3::Bucket"|"AWS::SSM::ManagedInstanceInventory"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::DynamoDB::Table"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::WAF::RuleGroup"|"AWS::WAFRegional::RuleGroup"|"AWS::Lambda::Function"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::CodePipeline::Pipeline",
+#'   Filters = list(
+#'     AccountId = "string",
+#'     ResourceId = "string",
+#'     ResourceName = "string",
+#'     Region = "string"
+#'   ),
+#'   Limit = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
+#' @param ResourceType &#91;required&#93; The type of resources that you want AWS Config to list in the response.
+#' @param Filters Filters the results based on the `ResourceFilters` object.
+#' @param Limit The maximum number of resource identifiers returned on each page. The default is 100. You cannot specify a number greater than 100. If you specify 0, AWS Config uses the default.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
+#'
+#' @export
+list_aggregate_discovered_resources <- function (ConfigurationAggregatorName, 
+    ResourceType, Filters = NULL, Limit = NULL, NextToken = NULL) 
+{
+    op <- new_operation(name = "ListAggregateDiscoveredResources", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- list_aggregate_discovered_resources_input(ConfigurationAggregatorName = ConfigurationAggregatorName, 
+        ResourceType = ResourceType, Filters = Filters, Limit = Limit, 
+        NextToken = NextToken)
+    output <- list_aggregate_discovered_resources_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)

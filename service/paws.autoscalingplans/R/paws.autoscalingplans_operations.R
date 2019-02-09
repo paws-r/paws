@@ -6,8 +6,6 @@ NULL
 #' Creates a scaling plan
 #'
 #' Creates a scaling plan.
-#' 
-#' A scaling plan contains a set of instructions used to configure dynamic scaling for the scalable resources in your application. AWS Auto Scaling creates target tracking scaling policies based on the scaling instructions in your scaling plan.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -55,7 +53,29 @@ NULL
 #'           ScaleInCooldown = 123,
 #'           EstimatedInstanceWarmup = 123
 #'         )
-#'       )
+#'       ),
+#'       PredefinedLoadMetricSpecification = list(
+#'         PredefinedLoadMetricType = "ASGTotalCPUUtilization"|"ASGTotalNetworkIn"|"ASGTotalNetworkOut"|"ALBTargetGroupRequestCount",
+#'         ResourceLabel = "string"
+#'       ),
+#'       CustomizedLoadMetricSpecification = list(
+#'         MetricName = "string",
+#'         Namespace = "string",
+#'         Dimensions = list(
+#'           list(
+#'             Name = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
+#'         Unit = "string"
+#'       ),
+#'       ScheduledActionBufferTime = 123,
+#'       PredictiveScalingMaxCapacityBehavior = "SetForecastCapacityToMaxCapacity"|"SetMaxCapacityToForecastCapacity"|"SetMaxCapacityAboveForecastCapacity",
+#'       PredictiveScalingMaxCapacityBuffer = 123,
+#'       PredictiveScalingMode = "ForecastAndScale"|"ForecastOnly",
+#'       ScalingPolicyUpdateBehavior = "KeepExternalPolicies"|"ReplaceExternalPolicies",
+#'       DisableDynamicScaling = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -83,6 +103,10 @@ create_scaling_plan <- function (ScalingPlanName, ApplicationSource,
 #' Deletes the specified scaling plan
 #'
 #' Deletes the specified scaling plan.
+#' 
+#' Deleting a scaling plan deletes the underlying ScalingInstruction for all of the scalable resources that are covered by the plan.
+#' 
+#' If the plan has launched resources or has scaling activities in progress, you must delete those resources separately.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -93,7 +117,7 @@ create_scaling_plan <- function (ScalingPlanName, ApplicationSource,
 #' ```
 #'
 #' @param ScalingPlanName &#91;required&#93; The name of the scaling plan.
-#' @param ScalingPlanVersion &#91;required&#93; The version of the scaling plan.
+#' @param ScalingPlanVersion &#91;required&#93; The version number of the scaling plan.
 #'
 #' @export
 delete_scaling_plan <- function (ScalingPlanName, ScalingPlanVersion) 
@@ -124,8 +148,8 @@ delete_scaling_plan <- function (ScalingPlanName, ScalingPlanVersion)
 #' ```
 #'
 #' @param ScalingPlanName &#91;required&#93; The name of the scaling plan.
-#' @param ScalingPlanVersion &#91;required&#93; The version of the scaling plan.
-#' @param MaxResults The maximum number of scalable resources to return. This value can be between 1 and 50. The default value is 50.
+#' @param ScalingPlanVersion &#91;required&#93; The version number of the scaling plan.
+#' @param MaxResults The maximum number of scalable resources to return. The value must be between 1 and 50. The default value is 50.
 #' @param NextToken The token for the next set of results.
 #'
 #' @export
@@ -144,9 +168,9 @@ describe_scaling_plan_resources <- function (ScalingPlanName,
     return(response)
 }
 
-#' Describes the specified scaling plans or all of your scaling plans
+#' Describes one or more of your scaling plans
 #'
-#' Describes the specified scaling plans or all of your scaling plans.
+#' Describes one or more of your scaling plans.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -174,7 +198,7 @@ describe_scaling_plan_resources <- function (ScalingPlanName,
 #' ```
 #'
 #' @param ScalingPlanNames The names of the scaling plans (up to 10). If you specify application sources, you cannot specify scaling plan names.
-#' @param ScalingPlanVersion The version of the scaling plan. If you specify a scaling plan version, you must also specify a scaling plan name.
+#' @param ScalingPlanVersion The version number of the scaling plan. If you specify a scaling plan version, you must also specify a scaling plan name.
 #' @param ApplicationSources The sources for the applications (up to 10). If you specify scaling plan names, you cannot specify application sources.
 #' @param MaxResults The maximum number of scalable resources to return. This value can be between 1 and 50. The default value is 50.
 #' @param NextToken The token for the next set of results.
@@ -196,15 +220,87 @@ describe_scaling_plans <- function (ScalingPlanNames = NULL,
     return(response)
 }
 
-#' Updates the scaling plan for the specified scaling plan
+#' Retrieves the forecast data for a scalable resource
 #'
-#' Updates the scaling plan for the specified scaling plan.
+#' Retrieves the forecast data for a scalable resource.
+#' 
+#' Capacity forecasts are represented as predicted values, or data points, that are calculated using historical data points from a specified CloudWatch load metric. Data points are available for up to 56 days.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' get_scaling_plan_resource_forecast_data(
+#'   ScalingPlanName = "string",
+#'   ScalingPlanVersion = 123,
+#'   ServiceNamespace = "autoscaling"|"ecs"|"ec2"|"rds"|"dynamodb",
+#'   ResourceId = "string",
+#'   ScalableDimension = "autoscaling:autoScalingGroup:DesiredCapacity"|"ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"rds:cluster:ReadReplicaCount"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits",
+#'   ForecastDataType = "CapacityForecast"|"LoadForecast"|"ScheduledActionMinCapacity"|"ScheduledActionMaxCapacity",
+#'   StartTime = as.POSIXct("2015-01-01"),
+#'   EndTime = as.POSIXct("2015-01-01")
+#' )
+#' ```
+#'
+#' @param ScalingPlanName &#91;required&#93; The name of the scaling plan.
+#' @param ScalingPlanVersion &#91;required&#93; The version number of the scaling plan.
+#' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service.
+#' @param ResourceId &#91;required&#93; The ID of the resource. This string consists of the resource type and unique identifier.
+#' 
+#' -   Auto Scaling group - The resource type is `autoScalingGroup` and the unique identifier is the name of the Auto Scaling group. Example: `autoScalingGroup/my-asg`.
+#' 
+#' -   ECS service - The resource type is `service` and the unique identifier is the cluster name and service name. Example: `service/default/sample-webapp`.
+#' 
+#' -   Spot Fleet request - The resource type is `spot-fleet-request` and the unique identifier is the Spot Fleet request ID. Example: `spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE`.
+#' 
+#' -   DynamoDB table - The resource type is `table` and the unique identifier is the resource ID. Example: `table/my-table`.
+#' 
+#' -   DynamoDB global secondary index - The resource type is `index` and the unique identifier is the resource ID. Example: `table/my-table/index/my-table-index`.
+#' 
+#' -   Aurora DB cluster - The resource type is `cluster` and the unique identifier is the cluster name. Example: `cluster:my-db-cluster`.
+#' @param ScalableDimension &#91;required&#93; The scalable dimension for the resource.
+#' @param ForecastDataType &#91;required&#93; The type of forecast data to get.
+#' 
+#' -   `LoadForecast`: The load metric forecast.
+#' 
+#' -   `CapacityForecast`: The capacity forecast.
+#' 
+#' -   `ScheduledActionMinCapacity`: The minimum capacity for each scheduled scaling action. This data is calculated as the larger of two values: the capacity forecast or the minimum capacity in the scaling instruction.
+#' 
+#' -   `ScheduledActionMaxCapacity`: The maximum capacity for each scheduled scaling action. The calculation used is determined by the predictive scaling maximum capacity behavior setting in the scaling instruction.
+#' @param StartTime &#91;required&#93; The inclusive start time of the time range for the forecast data to get. The date and time can be at most 56 days before the current date and time.
+#' @param EndTime &#91;required&#93; The exclusive end time of the time range for the forecast data to get. The maximum time duration between the start and end time is seven days.
+#' 
+#' Although this parameter can accept a date and time that is more than two days in the future, the availability of forecast data has limits. AWS Auto Scaling only issues forecasts for periods of two days in advance.
+#'
+#' @export
+get_scaling_plan_resource_forecast_data <- function (ScalingPlanName, 
+    ScalingPlanVersion, ServiceNamespace, ResourceId, ScalableDimension, 
+    ForecastDataType, StartTime, EndTime) 
+{
+    op <- new_operation(name = "GetScalingPlanResourceForecastData", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- get_scaling_plan_resource_forecast_data_input(ScalingPlanName = ScalingPlanName, 
+        ScalingPlanVersion = ScalingPlanVersion, ServiceNamespace = ServiceNamespace, 
+        ResourceId = ResourceId, ScalableDimension = ScalableDimension, 
+        ForecastDataType = ForecastDataType, StartTime = StartTime, 
+        EndTime = EndTime)
+    output <- get_scaling_plan_resource_forecast_data_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates the specified scaling plan
+#'
+#' Updates the specified scaling plan.
 #' 
 #' You cannot update a scaling plan if it is in the process of being created, updated, or deleted.
 #'
 #' @section Accepted Parameters:
 #' ```
 #' update_scaling_plan(
+#'   ScalingPlanName = "string",
+#'   ScalingPlanVersion = 123,
 #'   ApplicationSource = list(
 #'     CloudFormationStackARN = "string",
 #'     TagFilters = list(
@@ -216,7 +312,6 @@ describe_scaling_plans <- function (ScalingPlanNames = NULL,
 #'       )
 #'     )
 #'   ),
-#'   ScalingPlanName = "string",
 #'   ScalingInstructions = list(
 #'     list(
 #'       ServiceNamespace = "autoscaling"|"ecs"|"ec2"|"rds"|"dynamodb",
@@ -248,27 +343,48 @@ describe_scaling_plans <- function (ScalingPlanNames = NULL,
 #'           ScaleInCooldown = 123,
 #'           EstimatedInstanceWarmup = 123
 #'         )
-#'       )
+#'       ),
+#'       PredefinedLoadMetricSpecification = list(
+#'         PredefinedLoadMetricType = "ASGTotalCPUUtilization"|"ASGTotalNetworkIn"|"ASGTotalNetworkOut"|"ALBTargetGroupRequestCount",
+#'         ResourceLabel = "string"
+#'       ),
+#'       CustomizedLoadMetricSpecification = list(
+#'         MetricName = "string",
+#'         Namespace = "string",
+#'         Dimensions = list(
+#'           list(
+#'             Name = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
+#'         Unit = "string"
+#'       ),
+#'       ScheduledActionBufferTime = 123,
+#'       PredictiveScalingMaxCapacityBehavior = "SetForecastCapacityToMaxCapacity"|"SetMaxCapacityToForecastCapacity"|"SetMaxCapacityAboveForecastCapacity",
+#'       PredictiveScalingMaxCapacityBuffer = 123,
+#'       PredictiveScalingMode = "ForecastAndScale"|"ForecastOnly",
+#'       ScalingPolicyUpdateBehavior = "KeepExternalPolicies"|"ReplaceExternalPolicies",
+#'       DisableDynamicScaling = TRUE|FALSE
 #'     )
-#'   ),
-#'   ScalingPlanVersion = 123
+#'   )
 #' )
 #' ```
 #'
-#' @param ApplicationSource A CloudFormation stack or set of tags.
 #' @param ScalingPlanName &#91;required&#93; The name of the scaling plan.
+#' @param ScalingPlanVersion &#91;required&#93; The version number of the scaling plan.
+#' @param ApplicationSource A CloudFormation stack or set of tags.
 #' @param ScalingInstructions The scaling instructions.
-#' @param ScalingPlanVersion &#91;required&#93; The version number.
 #'
 #' @export
-update_scaling_plan <- function (ApplicationSource = NULL, ScalingPlanName, 
-    ScalingInstructions = NULL, ScalingPlanVersion) 
+update_scaling_plan <- function (ScalingPlanName, ScalingPlanVersion, 
+    ApplicationSource = NULL, ScalingInstructions = NULL) 
 {
     op <- new_operation(name = "UpdateScalingPlan", http_method = "POST", 
         http_path = "/", paginator = list())
-    input <- update_scaling_plan_input(ApplicationSource = ApplicationSource, 
-        ScalingPlanName = ScalingPlanName, ScalingInstructions = ScalingInstructions, 
-        ScalingPlanVersion = ScalingPlanVersion)
+    input <- update_scaling_plan_input(ScalingPlanName = ScalingPlanName, 
+        ScalingPlanVersion = ScalingPlanVersion, ApplicationSource = ApplicationSource, 
+        ScalingInstructions = ScalingInstructions)
     output <- update_scaling_plan_output()
     svc <- service()
     request <- new_request(svc, op, input, output)

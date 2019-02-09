@@ -2,22 +2,22 @@
 % Please edit documentation in R/paws.lambda_operations.R
 \name{update_function_configuration}
 \alias{update_function_configuration}
-\title{Updates the configuration parameters for the specified Lambda function by using the values provided in the request}
+\title{Modify the version-specifc settings of a Lambda function}
 \usage{
 update_function_configuration(FunctionName, Role = NULL,
   Handler = NULL, Description = NULL, Timeout = NULL,
   MemorySize = NULL, VpcConfig = NULL, Environment = NULL,
   Runtime = NULL, DeadLetterConfig = NULL, KMSKeyArn = NULL,
-  TracingConfig = NULL, RevisionId = NULL)
+  TracingConfig = NULL, RevisionId = NULL, Layers = NULL)
 }
 \arguments{
-\item{FunctionName}{[required] The name of the lambda function.
+\item{FunctionName}{[required] The name of the Lambda function.
 
 \strong{Name formats}
 \itemize{
-\item \strong{Function name} - \code{MyFunction}.
-\item \strong{Function ARN} - \code{arn:aws:lambda:us-west-2:123456789012:function:MyFunction}.
-\item \strong{Partial ARN} - \code{123456789012:function:MyFunction}.
+\item \strong{Function name} - \code{my-function}.
+\item \strong{Function ARN} - \code{arn:aws:lambda:us-west-2:123456789012:function:my-function}.
+\item \strong{Partial ARN} - \code{123456789012:function:my-function}.
 }
 
 The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
@@ -44,15 +44,17 @@ The length constraint applies only to the full ARN. If you specify only the func
 
 \item{TracingConfig}{Set \code{Mode} to \code{Active} to sample and trace a subset of incoming requests with AWS X-Ray.}
 
-\item{RevisionId}{An optional value you can use to ensure you are updating the latest update of the function version or alias. If the \code{RevisionID} you pass doesn't match the latest \code{RevisionId} of the function or alias, it will fail with an error message, advising you to retrieve the latest function version or alias \code{RevisionID} using either GetFunction or GetAlias.}
+\item{RevisionId}{Only update the function if the revision ID matches the ID specified. Use this option to avoid modifying a function that has changed since you last read it.}
+
+\item{Layers}{A list of \href{http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{function layers} to add to the function's execution environment.}
 }
 \description{
-Updates the configuration parameters for the specified Lambda function by using the values provided in the request. You provide only the parameters you want to change. This operation must only be used on an existing Lambda function and cannot be used to update the function's code.
+Modify the version-specifc settings of a Lambda function.
 }
 \details{
-If you are using the versioning feature, note this API will always update the \$LATEST version of your Lambda function. For information about the versioning feature, see \href{http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{AWS Lambda Function Versioning and Aliases}.
+These settings can vary between versions of a function and are locked when you publish a version. You cannot modify the configuration of a published version, only the unpublished version.
 
-This operation requires permission for the \code{lambda:UpdateFunctionConfiguration} action.
+To configure function concurrency, use PutFunctionConcurrency. To grant invoke permissions to an account or AWS service, use AddPermission.
 }
 \section{Accepted Parameters}{
 \preformatted{update_function_configuration(
@@ -75,7 +77,7 @@ This operation requires permission for the \code{lambda:UpdateFunctionConfigurat
       "string"
     )
   ),
-  Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"java8"|"python2.7"|"python3.6"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x",
+  Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"java8"|"python2.7"|"python3.6"|"python3.7"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided",
   DeadLetterConfig = list(
     TargetArn = "string"
   ),
@@ -83,7 +85,10 @@ This operation requires permission for the \code{lambda:UpdateFunctionConfigurat
   TracingConfig = list(
     Mode = "Active"|"PassThrough"
   ),
-  RevisionId = "string"
+  RevisionId = "string",
+  Layers = list(
+    "string"
+  )
 )
 }
 }

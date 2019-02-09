@@ -7,7 +7,7 @@
 get_relational_databases(pageToken = NULL)
 }
 \arguments{
-\item{pageToken}{A token used for advancing to a specific page of results for your get relational database request.}
+\item{pageToken}{A token used for advancing to a specific page of results for your \code{get relational database} request.}
 }
 \description{
 Returns information about all of your databases in Amazon Lightsail.

@@ -4,29 +4,9 @@
 \alias{create_task}
 \title{Creates a task}
 \usage{
-create_task(
-  SourceLocationArn = "string",
-  DestinationLocationArn = "string",
-  CloudWatchLogGroupArn = "string",
-  Name = "string",
-  Options = list(
-    VerifyMode = "POINT_IN_TIME_CONSISTENT"|"NONE",
-    Atime = "NONE"|"BEST_EFFORT",
-    Mtime = "NONE"|"PRESERVE",
-    Uid = "NONE"|"INT_VALUE"|"NAME"|"BOTH",
-    Gid = "NONE"|"INT_VALUE"|"NAME"|"BOTH",
-    PreserveDeletedFiles = "PRESERVE"|"REMOVE",
-    PreserveDevices = "NONE"|"PRESERVE",
-    PosixPermissions = "NONE"|"BEST_EFFORT"|"PRESERVE",
-    BytesPerSecond = 123
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_task(SourceLocationArn, DestinationLocationArn,
+  CloudWatchLogGroupArn = NULL, Name = NULL, Options = NULL,
+  Tags = NULL)
 }
 \arguments{
 \item{SourceLocationArn}{[required] The Amazon Resource Name (ARN) of the source location for the task.}
@@ -53,6 +33,30 @@ When you initially create a task, it enters the INITIALIZING status and then the
 
 If an agent that is associated with a source (NFS) location goes offline, the task transitions to the UNAVAILABLE status. If the status of the task remains in the CREATING status for more than a few minutes, it means that your agent might be having trouble mounting the source NFS file system. Check the task's \code{ErrorCode} and \code{ErrorDetail}. Mount issues are often caused by either a misconfigured firewall or a mistyped NFS server host name.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_task(
+  SourceLocationArn = "string",
+  DestinationLocationArn = "string",
+  CloudWatchLogGroupArn = "string",
+  Name = "string",
+  Options = list(
+    VerifyMode = "POINT_IN_TIME_CONSISTENT"|"NONE",
+    Atime = "NONE"|"BEST_EFFORT",
+    Mtime = "NONE"|"PRESERVE",
+    Uid = "NONE"|"INT_VALUE"|"NAME"|"BOTH",
+    Gid = "NONE"|"INT_VALUE"|"NAME"|"BOTH",
+    PreserveDeletedFiles = "PRESERVE"|"REMOVE",
+    PreserveDevices = "NONE"|"PRESERVE",
+    PosixPermissions = "NONE"|"BEST_EFFORT"|"PRESERVE",
+    BytesPerSecond = 123
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

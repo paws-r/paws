@@ -6,8 +6,8 @@
 \usage{
 create_table(AttributeDefinitions, TableName, KeySchema,
   LocalSecondaryIndexes = NULL, GlobalSecondaryIndexes = NULL,
-  ProvisionedThroughput, StreamSpecification = NULL,
-  SSESpecification = NULL)
+  BillingMode = NULL, ProvisionedThroughput = NULL,
+  StreamSpecification = NULL, SSESpecification = NULL)
 }
 \arguments{
 \item{AttributeDefinitions}{[required] An array of attributes that describe the key schema for the table and indexes.}
@@ -36,7 +36,7 @@ For a composite primary key (partition key and sort key), you must provide exact
 
 For more information, see \href{http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#WorkingWithTables.primary.key}{Specifying the Primary Key} in the \emph{Amazon DynamoDB Developer Guide}.}
 
-\item{LocalSecondaryIndexes}{One or more local secondary indexes (the maximum is five) to be created on the table. Each index is scoped to a given partition key value. There is a 10 GB size limit per partition key value; otherwise, the size of a local secondary index is unconstrained.
+\item{LocalSecondaryIndexes}{One or more local secondary indexes (the maximum is 5) to be created on the table. Each index is scoped to a given partition key value. There is a 10 GB size limit per partition key value; otherwise, the size of a local secondary index is unconstrained.
 
 Each local secondary index in the array includes the following:
 \itemize{
@@ -50,11 +50,11 @@ Each local secondary index in the array includes the following:
 \item \code{INCLUDE} - Only the specified table attributes are projected into the index. The list of projected attributes are in \code{NonKeyAttributes}.
 \item \code{ALL} - All of the table attributes are projected into the index.
 }
-\item \code{NonKeyAttributes} - A list of one or more non-key attribute names that are projected into the secondary index. The total count of attributes provided in \code{NonKeyAttributes}, summed across all of the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes, this counts as two distinct attributes when determining the total.
+\item \code{NonKeyAttributes} - A list of one or more non-key attribute names that are projected into the secondary index. The total count of attributes provided in \code{NonKeyAttributes}, summed across all of the secondary indexes, must not exceed 100. If you project the same attribute into two different indexes, this counts as two distinct attributes when determining the total.
 }
 }}
 
-\item{GlobalSecondaryIndexes}{One or more global secondary indexes (the maximum is five) to be created on the table. Each global secondary index in the array includes the following:
+\item{GlobalSecondaryIndexes}{One or more global secondary indexes (the maximum is 20) to be created on the table. Each global secondary index in the array includes the following:
 \itemize{
 \item \code{IndexName} - The name of the global secondary index. Must be unique only for this table.
 \item \code{KeySchema} - Specifies the key schema for the global secondary index.
@@ -66,12 +66,20 @@ Each local secondary index in the array includes the following:
 \item \code{INCLUDE} - Only the specified table attributes are projected into the index. The list of projected attributes are in \code{NonKeyAttributes}.
 \item \code{ALL} - All of the table attributes are projected into the index.
 }
-\item \code{NonKeyAttributes} - A list of one or more non-key attribute names that are projected into the secondary index. The total count of attributes provided in \code{NonKeyAttributes}, summed across all of the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes, this counts as two distinct attributes when determining the total.
+\item \code{NonKeyAttributes} - A list of one or more non-key attribute names that are projected into the secondary index. The total count of attributes provided in \code{NonKeyAttributes}, summed across all of the secondary indexes, must not exceed 100. If you project the same attribute into two different indexes, this counts as two distinct attributes when determining the total.
 }
 \item \code{ProvisionedThroughput} - The provisioned throughput settings for the global secondary index, consisting of read and write capacity units.
 }}
 
-\item{ProvisionedThroughput}{[required] Represents the provisioned throughput settings for a specified table or index. The settings can be modified using the \code{UpdateTable} operation.
+\item{BillingMode}{Controls how you are charged for read and write throughput and how you manage capacity. This setting can be changed later.
+\itemize{
+\item \code{PROVISIONED} - Sets the billing mode to \code{PROVISIONED}. We recommend using \code{PROVISIONED} for predictable workloads.
+\item \code{PAY_PER_REQUEST} - Sets the billing mode to \code{PAY_PER_REQUEST}. We recommend using \code{PAY_PER_REQUEST} for unpredictable workloads.
+}}
+
+\item{ProvisionedThroughput}{Represents the provisioned throughput settings for a specified table or index. The settings can be modified using the \code{UpdateTable} operation.
+
+If you set BillingMode as \code{PROVISIONED}, you must specify this property. If you set BillingMode as \code{PAY_PER_REQUEST}, you cannot specify this property.
 
 For current minimum and maximum provisioned throughput values, see \href{http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html}{Limits} in the \emph{Amazon DynamoDB Developer Guide}.}
 
@@ -152,6 +160,7 @@ You can use the \code{DescribeTable} action to check the table status.
       )
     )
   ),
+  BillingMode = "PROVISIONED"|"PAY_PER_REQUEST",
   ProvisionedThroughput = list(
     ReadCapacityUnits = 123,
     WriteCapacityUnits = 123

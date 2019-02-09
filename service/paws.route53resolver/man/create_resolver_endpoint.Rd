@@ -4,26 +4,8 @@
 \alias{create_resolver_endpoint}
 \title{Creates a resolver endpoint}
 \usage{
-create_resolver_endpoint(
-  CreatorRequestId = "string",
-  Name = "string",
-  SecurityGroupIds = list(
-    "string"
-  ),
-  Direction = "INBOUND"|"OUTBOUND",
-  IpAddresses = list(
-    list(
-      SubnetId = "string",
-      Ip = "string"
-    )
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_resolver_endpoint(CreatorRequestId, Name = NULL, SecurityGroupIds,
+  Direction, IpAddresses, Tags = NULL)
 }
 \arguments{
 \item{CreatorRequestId}{[required] A unique string that identifies the request and that allows failed requests to be retried without the risk of executing the operation twice. \code{CreatorRequestId} can be any unique string, for example, a date/time stamp.}
@@ -51,6 +33,27 @@ Creates a resolver endpoint. There are two types of resolver endpoints, inbound 
 \item An \emph{outbound resolver endpoint} forwards DNS queries from the DNS service for a VPC to your network or another VPC.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_resolver_endpoint(
+  CreatorRequestId = "string",
+  Name = "string",
+  SecurityGroupIds = list(
+    "string"
+  ),
+  Direction = "INBOUND"|"OUTBOUND",
+  IpAddresses = list(
+    list(
+      SubnetId = "string",
+      Ip = "string"
+    )
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

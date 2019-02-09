@@ -4,7 +4,23 @@
 \alias{list_license_configurations}
 \title{Lists license configuration objects for an account, each containing the name, description, license type, and other license terms modeled from a license agreement}
 \usage{
-list_license_configurations(
+list_license_configurations(LicenseConfigurationArns = NULL,
+  MaxResults = NULL, NextToken = NULL, Filters = NULL)
+}
+\arguments{
+\item{LicenseConfigurationArns}{An array of ARNs for the calling account's license configurations.}
+
+\item{MaxResults}{Maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned \code{NextToken} value.}
+
+\item{NextToken}{Token for the next set of results.}
+
+\item{Filters}{One or more filters.}
+}
+\description{
+Lists license configuration objects for an account, each containing the name, description, license type, and other license terms modeled from a license agreement.
+}
+\section{Accepted Parameters}{
+\preformatted{list_license_configurations(
   LicenseConfigurationArns = list(
     "string"
   ),
@@ -20,18 +36,5 @@ list_license_configurations(
   )
 )
 }
-\arguments{
-\item{LicenseConfigurationArns}{An array of ARNs for the calling account's license configurations.}
-
-\item{MaxResults}{Maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned \code{NextToken} value.}
-
-\item{NextToken}{Token for the next set of results.}
-
-\item{Filters}{One or more filters.}
 }
-\description{
-Lists license configuration objects for an account, each containing the name, description, license type, and other license terms modeled from a license agreement.
-}
-\examples{
 
-}

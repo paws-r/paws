@@ -261,6 +261,47 @@ add_working_storage <- function (GatewayARN, DiskIds)
     return(response)
 }
 
+#' Connects a volume to an iSCSI connection and then attaches the volume to the specified gateway
+#'
+#' Connects a volume to an iSCSI connection and then attaches the volume to the specified gateway. Detaching and attaching a volume enables you to recover your data from one gateway to a different gateway without creating a snapshot. It also makes it easier to move your volumes from an on-premises gateway to a gateway hosted on an Amazon EC2 instance.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' attach_volume(
+#'   GatewayARN = "string",
+#'   TargetName = "string",
+#'   VolumeARN = "string",
+#'   NetworkInterfaceId = "string",
+#'   DiskId = "string"
+#' )
+#' ```
+#'
+#' @param GatewayARN &#91;required&#93; The Amazon Resource Name (ARN) of the gateway that you want to attach the volume to.
+#' @param TargetName The name of the iSCSI target used by an initiator to connect to a volume and used as a suffix for the target ARN. For example, specifying `TargetName` as *myvolume* results in the target ARN of `arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume`. The target name must be unique across all volumes on a gateway.
+#' 
+#' If you don\'t specify a value, Storage Gateway uses the value that was previously used for this volume as the new target name.
+#' @param VolumeARN &#91;required&#93; The Amazon Resource Name (ARN) of the volume to attach to the specified gateway.
+#' @param NetworkInterfaceId &#91;required&#93; The network interface of the gateway on which to expose the iSCSI target. Only IPv4 addresses are accepted. Use DescribeGatewayInformation to get a list of the network interfaces available on a gateway.
+#' 
+#' Valid Values: A valid IP address.
+#' @param DiskId The unique device ID or other distinguishing data that identifies the local disk used to create the volume. This value is only required when you are attaching a stored volume.
+#'
+#' @export
+attach_volume <- function (GatewayARN, TargetName = NULL, VolumeARN, 
+    NetworkInterfaceId, DiskId = NULL) 
+{
+    op <- new_operation(name = "AttachVolume", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- attach_volume_input(GatewayARN = GatewayARN, TargetName = TargetName, 
+        VolumeARN = VolumeARN, NetworkInterfaceId = NetworkInterfaceId, 
+        DiskId = DiskId)
+    output <- attach_volume_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Cancels archiving of a virtual tape to the virtual tape shelf (VTS) after the archiving process is initiated
 #'
 #' Cancels archiving of a virtual tape to the virtual tape shelf (VTS) after the archiving process is initiated. This operation is only supported in the tape gateway type.
@@ -1731,6 +1772,34 @@ describe_working_storage <- function (GatewayARN)
     return(response)
 }
 
+#' Disconnects a volume from an iSCSI connection and then detaches the volume from the specified gateway
+#'
+#' Disconnects a volume from an iSCSI connection and then detaches the volume from the specified gateway. Detaching and attaching a volume enables you to recover your data from one gateway to a different gateway without creating a snapshot. It also makes it easier to move your volumes from an on-premises gateway to a gateway hosted on an Amazon EC2 instance.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' detach_volume(
+#'   VolumeARN = "string",
+#'   ForceDetach = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @param VolumeARN &#91;required&#93; The Amazon Resource Name (ARN) of the volume to detach from the gateway.
+#' @param ForceDetach Set to `true` to forcibly remove the iSCSI connection of the target volume and detach the volume. The default is `false`. If this value is set to `false`, you must manually disconnect the iSCSI connection from the target volume.
+#'
+#' @export
+detach_volume <- function (VolumeARN, ForceDetach = NULL) 
+{
+    op <- new_operation(name = "DetachVolume", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- detach_volume_input(VolumeARN = VolumeARN, ForceDetach = ForceDetach)
+    output <- detach_volume_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Disables a tape gateway when the gateway is no longer functioning
 #'
 #' Disables a tape gateway when the gateway is no longer functioning. For example, if your gateway VM is damaged, you can disable the gateway so you can recover virtual tapes.
@@ -1777,22 +1846,30 @@ disable_gateway <- function (GatewayARN)
 #' join_domain(
 #'   GatewayARN = "string",
 #'   DomainName = "string",
+#'   OrganizationalUnit = "string",
+#'   DomainControllers = list(
+#'     "string"
+#'   ),
 #'   UserName = "string",
 #'   Password = "string"
 #' )
 #' ```
 #'
-#' @param GatewayARN &#91;required&#93; The unique Amazon Resource Name (ARN) of the file gateway you want to add to the Active Directory domain.
+#' @param GatewayARN &#91;required&#93; The Amazon Resource Name (ARN) of the gateway. Use the `ListGateways` operation to return a list of gateways for your account and region.
 #' @param DomainName &#91;required&#93; The name of the domain that you want the gateway to join.
+#' @param OrganizationalUnit The organizational unit (OU) is a container with an Active Directory that can hold users, groups, computers, and other OUs and this parameter specifies the OU that the gateway will join within the AD domain.
+#' @param DomainControllers List of IPv4 addresses, NetBIOS names, or host names of your domain server. If you need to specify the port number include it after the colon (":"). For example, `mydc.mydomain.com:389`.
 #' @param UserName &#91;required&#93; Sets the user name of user who has permission to add the gateway to the Active Directory domain.
 #' @param Password &#91;required&#93; Sets the password of the user who has permission to add the gateway to the Active Directory domain.
 #'
 #' @export
-join_domain <- function (GatewayARN, DomainName, UserName, Password) 
+join_domain <- function (GatewayARN, DomainName, OrganizationalUnit = NULL, 
+    DomainControllers = NULL, UserName, Password) 
 {
     op <- new_operation(name = "JoinDomain", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- join_domain_input(GatewayARN = GatewayARN, DomainName = DomainName, 
+        OrganizationalUnit = OrganizationalUnit, DomainControllers = DomainControllers, 
         UserName = UserName, Password = Password)
     output <- join_domain_output()
     svc <- service()
@@ -2133,8 +2210,8 @@ notify_when_uploaded <- function (FileShareARN)
 #' )
 #' ```
 #'
-#' @param FileShareARN &#91;required&#93; 
-#' @param FolderList 
+#' @param FileShareARN &#91;required&#93; The Amazon Resource Name (ARN) of the file share you want to refresh.
+#' @param FolderList A comma-separated list of the paths of folders to refresh in the cache. The default is &#91;`"/"`&#93;. The default refreshes objects and folders at the root of the Amazon S3 bucket. If `Recursive` is set to \"true\", the entire S3 bucket that the file share has access to is refreshed.
 #' @param Recursive A value that specifies whether to recursively refresh folders in the cache. The refresh includes folders that were in the cache the last time the gateway listed the folder\'s contents. If this value set to \"true\", each folder that is listed in `FolderList` is recursively updated. Otherwise, subfolders listed in `FolderList` are not refreshed. Only objects that are in folders listed directly under `FolderList` are found and used for the update. The default is \"true\".
 #'
 #' @export

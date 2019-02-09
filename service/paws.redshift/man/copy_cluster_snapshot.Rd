@@ -5,7 +5,8 @@
 \title{Copies the specified automated cluster snapshot to a new manual cluster snapshot}
 \usage{
 copy_cluster_snapshot(SourceSnapshotIdentifier,
-  SourceSnapshotClusterIdentifier = NULL, TargetSnapshotIdentifier)
+  SourceSnapshotClusterIdentifier = NULL, TargetSnapshotIdentifier,
+  ManualSnapshotRetentionPeriod = NULL)
 }
 \arguments{
 \item{SourceSnapshotIdentifier}{[required] The identifier for the source snapshot.
@@ -32,6 +33,12 @@ Constraints:
 \item Cannot end with a hyphen or contain two consecutive hyphens.
 \item Must be unique for the AWS account that is making the request.
 }}
+
+\item{ManualSnapshotRetentionPeriod}{The number of days that a manual snapshot is retained. If the value is -1, the manual snapshot is retained indefinitely.
+
+The value must be either -1 or an integer between 1 and 3,653.
+
+The default value is -1.}
 }
 \description{
 Copies the specified automated cluster snapshot to a new manual cluster snapshot. The source must be an automated snapshot and it must be in the available state.
@@ -45,7 +52,8 @@ For more information about working with snapshots, go to \href{http://docs.aws.a
 \preformatted{copy_cluster_snapshot(
   SourceSnapshotIdentifier = "string",
   SourceSnapshotClusterIdentifier = "string",
-  TargetSnapshotIdentifier = "string"
+  TargetSnapshotIdentifier = "string",
+  ManualSnapshotRetentionPeriod = 123
 )
 }
 }

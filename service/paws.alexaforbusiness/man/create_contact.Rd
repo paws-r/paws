@@ -5,7 +5,7 @@
 \title{Creates a contact with the specified details}
 \usage{
 create_contact(DisplayName = NULL, FirstName, LastName = NULL,
-  PhoneNumber, ClientRequestToken = NULL)
+  PhoneNumber = NULL, ClientRequestToken = NULL)
 }
 \arguments{
 \item{DisplayName}{The name of the contact to display on the console.}
@@ -14,7 +14,7 @@ create_contact(DisplayName = NULL, FirstName, LastName = NULL,
 
 \item{LastName}{The last name of the contact that is used to call the contact on the device.}
 
-\item{PhoneNumber}{[required] The phone number of the contact in E.164 format.}
+\item{PhoneNumber}{The phone number of the contact in E.164 format.}
 
 \item{ClientRequestToken}{A unique, user-specified identifier for this request that ensures idempotency.}
 }

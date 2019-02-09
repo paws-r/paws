@@ -13,7 +13,7 @@ create_internet_gateway(DryRun = NULL)
 Creates an internet gateway for use with a VPC. After creating the internet gateway, you attach it to a VPC using AttachInternetGateway.
 }
 \details{
-For more information about your VPC and internet gateway, see the \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/}{Amazon Virtual Private Cloud User Guide}.
+For more information about your VPC and internet gateway, see the \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/}{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{create_internet_gateway(

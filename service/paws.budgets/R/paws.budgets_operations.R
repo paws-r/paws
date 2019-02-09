@@ -50,7 +50,8 @@ NULL
 #'         Unit = "string"
 #'       )
 #'     ),
-#'     BudgetType = "USAGE"|"COST"|"RI_UTILIZATION"|"RI_COVERAGE"
+#'     BudgetType = "USAGE"|"COST"|"RI_UTILIZATION"|"RI_COVERAGE",
+#'     LastUpdatedTime = as.POSIXct("2015-01-01")
 #'   ),
 #'   NotificationsWithSubscribers = list(
 #'     list(
@@ -58,7 +59,8 @@ NULL
 #'         NotificationType = "ACTUAL"|"FORECASTED",
 #'         ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
 #'         Threshold = 123.0,
-#'         ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
+#'         ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
+#'         NotificationState = "OK"|"ALARM"
 #'       ),
 #'       Subscribers = list(
 #'         list(
@@ -73,7 +75,7 @@ NULL
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget.
 #' @param Budget &#91;required&#93; The budget object that you want to create.
-#' @param NotificationsWithSubscribers A notification that you want to associate with a budget. A budget can have up to five notifications, and each notification can have one SNS subscriber and up to ten email subscribers. If you include notifications and subscribers in your `CreateBudget` call, AWS creates the notifications and subscribers for you.
+#' @param NotificationsWithSubscribers A notification that you want to associate with a budget. A budget can have up to five notifications, and each notification can have one SNS subscriber and up to 10 email subscribers. If you include notifications and subscribers in your `CreateBudget` call, AWS creates the notifications and subscribers for you.
 #'
 #' @export
 create_budget <- function (AccountId, Budget, NotificationsWithSubscribers = NULL) 
@@ -102,7 +104,8 @@ create_budget <- function (AccountId, Budget, NotificationsWithSubscribers = NUL
 #'     NotificationType = "ACTUAL"|"FORECASTED",
 #'     ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
 #'     Threshold = 123.0,
-#'     ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
+#'     ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
+#'     NotificationState = "OK"|"ALARM"
 #'   ),
 #'   Subscribers = list(
 #'     list(
@@ -114,9 +117,9 @@ create_budget <- function (AccountId, Budget, NotificationsWithSubscribers = NUL
 #' ```
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget that you want to create a notification for.
-#' @param BudgetName &#91;required&#93; The name of the budget that you want AWS to notified you about. Budget names must be unique within an account.
+#' @param BudgetName &#91;required&#93; The name of the budget that you want AWS to notify you about. Budget names must be unique within an account.
 #' @param Notification &#91;required&#93; The notification that you want to create.
-#' @param Subscribers &#91;required&#93; A list of subscribers that you want to associate with the notification. Each notification can have one SNS subscriber and up to ten email subscribers.
+#' @param Subscribers &#91;required&#93; A list of subscribers that you want to associate with the notification. Each notification can have one SNS subscriber and up to 10 email subscribers.
 #'
 #' @export
 create_notification <- function (AccountId, BudgetName, Notification, 
@@ -147,7 +150,8 @@ create_notification <- function (AccountId, BudgetName, Notification,
 #'     NotificationType = "ACTUAL"|"FORECASTED",
 #'     ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
 #'     Threshold = 123.0,
-#'     ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
+#'     ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
+#'     NotificationState = "OK"|"ALARM"
 #'   ),
 #'   Subscriber = list(
 #'     SubscriptionType = "SNS"|"EMAIL",
@@ -156,7 +160,7 @@ create_notification <- function (AccountId, BudgetName, Notification,
 #' )
 #' ```
 #'
-#' @param AccountId &#91;required&#93; The `accountId` associated with the budget that you want to create a subscriber for.
+#' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget that you want to create a subscriber for.
 #' @param BudgetName &#91;required&#93; The name of the budget that you want to subscribe to. Budget names must be unique within an account.
 #' @param Notification &#91;required&#93; The notification that you want to create a subscriber for.
 #' @param Subscriber &#91;required&#93; The subscriber that you want to associate with a budget notification.
@@ -180,7 +184,7 @@ create_subscriber <- function (AccountId, BudgetName, Notification,
 #'
 #' Deletes a budget. You can delete your budget at any time.
 #' 
-#' **Deleting a budget also deletes the notifications and subscribers associated with that budget.**
+#' Deleting a budget also deletes the notifications and subscribers that are associated with that budget.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -210,7 +214,7 @@ delete_budget <- function (AccountId, BudgetName)
 #'
 #' Deletes a notification.
 #' 
-#' **Deleting a notification also deletes the subscribers associated with the notification.**
+#' Deleting a notification also deletes the subscribers that are associated with the notification.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -221,7 +225,8 @@ delete_budget <- function (AccountId, BudgetName)
 #'     NotificationType = "ACTUAL"|"FORECASTED",
 #'     ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
 #'     Threshold = 123.0,
-#'     ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
+#'     ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
+#'     NotificationState = "OK"|"ALARM"
 #'   )
 #' )
 #' ```
@@ -248,7 +253,7 @@ delete_notification <- function (AccountId, BudgetName, Notification)
 #'
 #' Deletes a subscriber.
 #' 
-#' **Deleting the last subscriber to a notification also deletes the notification.**
+#' Deleting the last subscriber to a notification also deletes the notification.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -259,7 +264,8 @@ delete_notification <- function (AccountId, BudgetName, Notification)
 #'     NotificationType = "ACTUAL"|"FORECASTED",
 #'     ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
 #'     Threshold = 123.0,
-#'     ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
+#'     ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
+#'     NotificationState = "OK"|"ALARM"
 #'   ),
 #'   Subscriber = list(
 #'     SubscriptionType = "SNS"|"EMAIL",
@@ -316,9 +322,49 @@ describe_budget <- function (AccountId, BudgetName)
     return(response)
 }
 
-#' Lists the budgets associated with an account
+#' Describes the history for DAILY, MONTHLY, and QUARTERLY budgets
 #'
-#' Lists the budgets associated with an account.
+#' Describes the history for `DAILY`, `MONTHLY`, and `QUARTERLY` budgets. Budget history isn\'t available for `ANNUAL` budgets.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_budget_performance_history(
+#'   AccountId = "string",
+#'   BudgetName = "string",
+#'   TimePeriod = list(
+#'     Start = as.POSIXct("2015-01-01"),
+#'     End = as.POSIXct("2015-01-01")
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @param AccountId &#91;required&#93; 
+#' @param BudgetName &#91;required&#93; 
+#' @param TimePeriod Retrieves how often the budget went into an `ALARM` state for the specified time period.
+#' @param MaxResults 
+#' @param NextToken 
+#'
+#' @export
+describe_budget_performance_history <- function (AccountId, BudgetName, 
+    TimePeriod = NULL, MaxResults = NULL, NextToken = NULL) 
+{
+    op <- new_operation(name = "DescribeBudgetPerformanceHistory", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_budget_performance_history_input(AccountId = AccountId, 
+        BudgetName = BudgetName, TimePeriod = TimePeriod, MaxResults = MaxResults, 
+        NextToken = NextToken)
+    output <- describe_budget_performance_history_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Lists the budgets that are associated with an account
+#'
+#' Lists the budgets that are associated with an account.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -330,8 +376,8 @@ describe_budget <- function (AccountId, BudgetName)
 #' ```
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budgets that you want descriptions of.
-#' @param MaxResults Optional integer. Specifies the maximum number of results to return in response.
-#' @param NextToken The pagination token that indicates the next set of results to retrieve.
+#' @param MaxResults An optional integer that represents how many entries a paginated response contains. The maximum is 100.
+#' @param NextToken The pagination token that you include in your request to indicate the next set of results that you want to retrieve.
 #'
 #' @export
 describe_budgets <- function (AccountId, MaxResults = NULL, NextToken = NULL) 
@@ -347,9 +393,9 @@ describe_budgets <- function (AccountId, MaxResults = NULL, NextToken = NULL)
     return(response)
 }
 
-#' Lists the notifications associated with a budget
+#' Lists the notifications that are associated with a budget
 #'
-#' Lists the notifications associated with a budget.
+#' Lists the notifications that are associated with a budget.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -363,8 +409,8 @@ describe_budgets <- function (AccountId, MaxResults = NULL, NextToken = NULL)
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget whose notifications you want descriptions of.
 #' @param BudgetName &#91;required&#93; The name of the budget whose notifications you want descriptions of.
-#' @param MaxResults Optional integer. Specifies the maximum number of results to return in response.
-#' @param NextToken The pagination token that indicates the next set of results to retrieve.
+#' @param MaxResults An optional integer that represents how many entries a paginated response contains. The maximum is 100.
+#' @param NextToken The pagination token that you include in your request to indicate the next set of results that you want to retrieve.
 #'
 #' @export
 describe_notifications_for_budget <- function (AccountId, BudgetName, 
@@ -381,9 +427,9 @@ describe_notifications_for_budget <- function (AccountId, BudgetName,
     return(response)
 }
 
-#' Lists the subscribers associated with a notification
+#' Lists the subscribers that are associated with a notification
 #'
-#' Lists the subscribers associated with a notification.
+#' Lists the subscribers that are associated with a notification.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -394,7 +440,8 @@ describe_notifications_for_budget <- function (AccountId, BudgetName,
 #'     NotificationType = "ACTUAL"|"FORECASTED",
 #'     ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
 #'     Threshold = 123.0,
-#'     ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
+#'     ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
+#'     NotificationState = "OK"|"ALARM"
 #'   ),
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -404,8 +451,8 @@ describe_notifications_for_budget <- function (AccountId, BudgetName,
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget whose subscribers you want descriptions of.
 #' @param BudgetName &#91;required&#93; The name of the budget whose subscribers you want descriptions of.
 #' @param Notification &#91;required&#93; The notification whose subscribers you want to list.
-#' @param MaxResults Optional integer. Specifies the maximum number of results to return in response.
-#' @param NextToken The pagination token that indicates the next set of results to retrieve.
+#' @param MaxResults An optional integer that represents how many entries a paginated response contains. The maximum is 100.
+#' @param NextToken The pagination token that you include in your request to indicate the next set of results that you want to retrieve.
 #'
 #' @export
 describe_subscribers_for_notification <- function (AccountId, 
@@ -425,7 +472,7 @@ describe_subscribers_for_notification <- function (AccountId,
 
 #' Updates a budget
 #'
-#' Updates a budget. You can change every part of a budget except for the `budgetName` and the `calculatedSpend`. When a budget is modified, the `calculatedSpend` drops to zero until AWS has new usage data to use for forecasting.
+#' Updates a budget. You can change every part of a budget except for the `budgetName` and the `calculatedSpend`. When you modify a budget, the `calculatedSpend` drops to zero until AWS has new usage data to use for forecasting.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -470,7 +517,8 @@ describe_subscribers_for_notification <- function (AccountId,
 #'         Unit = "string"
 #'       )
 #'     ),
-#'     BudgetType = "USAGE"|"COST"|"RI_UTILIZATION"|"RI_COVERAGE"
+#'     BudgetType = "USAGE"|"COST"|"RI_UTILIZATION"|"RI_COVERAGE",
+#'     LastUpdatedTime = as.POSIXct("2015-01-01")
 #'   )
 #' )
 #' ```
@@ -504,20 +552,22 @@ update_budget <- function (AccountId, NewBudget)
 #'     NotificationType = "ACTUAL"|"FORECASTED",
 #'     ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
 #'     Threshold = 123.0,
-#'     ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
+#'     ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
+#'     NotificationState = "OK"|"ALARM"
 #'   ),
 #'   NewNotification = list(
 #'     NotificationType = "ACTUAL"|"FORECASTED",
 #'     ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
 #'     Threshold = 123.0,
-#'     ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
+#'     ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
+#'     NotificationState = "OK"|"ALARM"
 #'   )
 #' )
 #' ```
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget whose notification you want to update.
 #' @param BudgetName &#91;required&#93; The name of the budget whose notification you want to update.
-#' @param OldNotification &#91;required&#93; The previous notification associated with a budget.
+#' @param OldNotification &#91;required&#93; The previous notification that is associated with a budget.
 #' @param NewNotification &#91;required&#93; The updated notification to be associated with a budget.
 #'
 #' @export
@@ -549,7 +599,8 @@ update_notification <- function (AccountId, BudgetName, OldNotification,
 #'     NotificationType = "ACTUAL"|"FORECASTED",
 #'     ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
 #'     Threshold = 123.0,
-#'     ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
+#'     ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
+#'     NotificationState = "OK"|"ALARM"
 #'   ),
 #'   OldSubscriber = list(
 #'     SubscriptionType = "SNS"|"EMAIL",
@@ -565,8 +616,8 @@ update_notification <- function (AccountId, BudgetName, OldNotification,
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget whose subscriber you want to update.
 #' @param BudgetName &#91;required&#93; The name of the budget whose subscriber you want to update.
 #' @param Notification &#91;required&#93; The notification whose subscriber you want to update.
-#' @param OldSubscriber &#91;required&#93; The previous subscriber associated with a budget notification.
-#' @param NewSubscriber &#91;required&#93; The updated subscriber associated with a budget notification.
+#' @param OldSubscriber &#91;required&#93; The previous subscriber that is associated with a budget notification.
+#' @param NewSubscriber &#91;required&#93; The updated subscriber that is associated with a budget notification.
 #'
 #' @export
 update_subscriber <- function (AccountId, BudgetName, Notification, 

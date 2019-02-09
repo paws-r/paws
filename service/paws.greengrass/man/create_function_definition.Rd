@@ -21,6 +21,11 @@ Creates a Lambda function definition which contains a list of Lambda functions a
 \preformatted{create_function_definition(
   AmznClientToken = "string",
   InitialVersion = list(
+    DefaultConfig = list(
+      Execution = list(
+        IsolationMode = "GreengrassContainer"|"NoContainer"
+      )
+    ),
     Functions = list(
       list(
         FunctionArn = "string",
@@ -28,6 +33,13 @@ Creates a Lambda function definition which contains a list of Lambda functions a
           EncodingType = "binary"|"json",
           Environment = list(
             AccessSysfs = TRUE|FALSE,
+            Execution = list(
+              IsolationMode = "GreengrassContainer"|"NoContainer",
+              RunAs = list(
+                Gid = 123,
+                Uid = 123
+              )
+            ),
             ResourceAccessPolicies = list(
               list(
                 Permission = "ro"|"rw",

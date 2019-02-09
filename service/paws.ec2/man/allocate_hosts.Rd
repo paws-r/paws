@@ -14,7 +14,7 @@ Default: Enabled}
 
 \item{AvailabilityZone}{[required] The Availability Zone for the Dedicated Hosts.}
 
-\item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html}{How to Ensure Idempotency} in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+\item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html}{How to Ensure Idempotency} in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
 \item{InstanceType}{[required] Specify the instance type for which to configure your Dedicated Hosts. When you specify the instance type, that is the only instance type that you can launch onto that host.}
 
@@ -34,7 +34,7 @@ Allocates a Dedicated Host to your account. At a minimum, specify the instance s
   Quantity = 123,
   TagSpecifications = list(
     list(
-      ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"image"|"instance"|"internet-gateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"snapshot"|"spot-instances-request"|"subnet"|"security-group"|"volume"|"vpc"|"vpn-connection"|"vpn-gateway",
+      ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-instances-request"|"subnet"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
       Tags = list(
         list(
           Key = "string",

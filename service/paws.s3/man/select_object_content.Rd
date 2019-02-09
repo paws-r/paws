@@ -10,19 +10,19 @@ select_object_content(Bucket, Key, SSECustomerAlgorithm = NULL,
   OutputSerialization)
 }
 \arguments{
-\item{Bucket}{[required] The S3 Bucket.}
+\item{Bucket}{[required] The S3 bucket.}
 
-\item{Key}{[required] The Object Key.}
+\item{Key}{[required] The object key.}
 
-\item{SSECustomerAlgorithm}{The SSE Algorithm used to encrypt the object. For more information, go to \href{http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html}{Server-Side Encryption (Using Customer-Provided Encryption Keys}.}
+\item{SSECustomerAlgorithm}{The SSE Algorithm used to encrypt the object. For more information, see \href{http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html}{Server-Side Encryption (Using Customer-Provided Encryption Keys}.}
 
-\item{SSECustomerKey}{The SSE Customer Key. For more information, go to \href{http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html}{Server-Side Encryption (Using Customer-Provided Encryption Keys}.}
+\item{SSECustomerKey}{The SSE Customer Key. For more information, see \href{http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html}{Server-Side Encryption (Using Customer-Provided Encryption Keys}.}
 
-\item{SSECustomerKeyMD5}{The SSE Customer Key MD5. For more information, go to \href{http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html}{Server-Side Encryption (Using Customer-Provided Encryption Keys}.}
+\item{SSECustomerKeyMD5}{The SSE Customer Key MD5. For more information, see \href{http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html}{Server-Side Encryption (Using Customer-Provided Encryption Keys}.}
 
 \item{Expression}{[required] The expression that is used to query the object.}
 
-\item{ExpressionType}{[required] The type of the provided expression (e.g., SQL).}
+\item{ExpressionType}{[required] The type of the provided expression (for example., SQL).}
 
 \item{RequestProgress}{Specifies if periodic request progress information should be enabled.}
 

@@ -2,15 +2,10 @@
 % Please edit documentation in R/paws.fsx_operations.R
 \name{describe_file_systems}
 \alias{describe_file_systems}
-\title{Returns the description of specific Amazon FSx file systems, if a \code{FileSystemIds} value is provided for that file system}
+\title{Returns the description of specific Amazon FSx file systems, if a FileSystemIds value is provided for that file system}
 \usage{
-describe_file_systems(
-  FileSystemIds = list(
-    "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_file_systems(FileSystemIds = NULL, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{FileSystemIds}{(Optional) IDs of the file systems whose descriptions you want to retrieve (String).}
@@ -33,9 +28,20 @@ When using this action, keep the following in mind:
 \item The order of file systems returned in the response of one \code{DescribeFileSystems} call and the order of file systems returned across the responses of a multicall iteration is unspecified.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{describe_file_systems(
+  FileSystemIds = list(
+    "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
+}
+}
+
 \examples{
 # This operation describes all of the Amazon FSx file systems in an
 # account.
-describe_file_systems()
+\donttest{describe_file_systems()}
 
 }

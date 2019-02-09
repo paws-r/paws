@@ -32,6 +32,8 @@ allocate_static_ip <- function (staticIpName)
 #' Attaches a block storage disk to a running or stopped Lightsail instance and exposes it to the instance with the specified disk name
 #'
 #' Attaches a block storage disk to a running or stopped Lightsail instance and exposes it to the instance with the specified disk name.
+#' 
+#' The `attach disk` operation supports tag-based access control via resource tags applied to the resource identified by diskName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -65,6 +67,8 @@ attach_disk <- function (diskName, instanceName, diskPath)
 #' Attaches one or more Lightsail instances to a load balancer.
 #' 
 #' After some time, the instances are attached to the load balancer and the health check status is available.
+#' 
+#' The `attach instances to load balancer` operation supports tag-based access control via resource tags applied to the resource identified by loadBalancerName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -103,6 +107,8 @@ attach_instances_to_load_balancer <- function (loadBalancerName,
 #' Attaches a Transport Layer Security (TLS) certificate to your load balancer. TLS is just an updated, more secure version of Secure Socket Layer (SSL).
 #' 
 #' Once you create and validate your certificate, you can attach it to your load balancer. You can also use this API to rotate the certificates on your account. Use the `AttachLoadBalancerTlsCertificate` operation with the non-attached certificate, and it will replace the existing one and become the attached certificate.
+#' 
+#' The `attach load balancer tls certificate` operation supports tag-based access control via resource tags applied to the resource identified by loadBalancerName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -162,6 +168,8 @@ attach_static_ip <- function (staticIpName, instanceName)
 #' Closes the public ports on a specific Amazon Lightsail instance
 #'
 #' Closes the public ports on a specific Amazon Lightsail instance.
+#' 
+#' The `close instance public ports` operation supports tag-based access control via resource tags applied to the resource identified by instanceName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -192,16 +200,92 @@ close_instance_public_ports <- function (portInfo, instanceName)
     return(response)
 }
 
+#' Copies an instance or disk snapshot from one AWS Region to another in Amazon Lightsail
+#'
+#' Copies an instance or disk snapshot from one AWS Region to another in Amazon Lightsail.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' copy_snapshot(
+#'   sourceSnapshotName = "string",
+#'   targetSnapshotName = "string",
+#'   sourceRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
+#' )
+#' ```
+#'
+#' @param sourceSnapshotName &#91;required&#93; The name of the source instance or disk snapshot to be copied.
+#' @param targetSnapshotName &#91;required&#93; The name of the new instance or disk snapshot to be created as a copy.
+#' @param sourceRegion &#91;required&#93; The AWS Region where the source snapshot is located.
+#'
+#' @export
+copy_snapshot <- function (sourceSnapshotName, targetSnapshotName, 
+    sourceRegion) 
+{
+    op <- new_operation(name = "CopySnapshot", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- copy_snapshot_input(sourceSnapshotName = sourceSnapshotName, 
+        targetSnapshotName = targetSnapshotName, sourceRegion = sourceRegion)
+    output <- copy_snapshot_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates an AWS CloudFormation stack, which creates a new Amazon EC2 instance from an exported Amazon Lightsail snapshot
+#'
+#' Creates an AWS CloudFormation stack, which creates a new Amazon EC2 instance from an exported Amazon Lightsail snapshot. This operation results in a CloudFormation stack record that can be used to track the AWS CloudFormation stack created. Use the `get cloud formation stack records` operation to get a list of the CloudFormation stacks created.
+#' 
+#' Wait until after your new Amazon EC2 instance is created before running the `create cloud formation stack` operation again with the same export snapshot record.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' create_cloud_formation_stack(
+#'   instances = list(
+#'     list(
+#'       sourceName = "string",
+#'       instanceType = "string",
+#'       portInfoSource = "DEFAULT"|"INSTANCE"|"NONE"|"CLOSED",
+#'       userData = "string",
+#'       availabilityZone = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @param instances &#91;required&#93; An array of parameters that will be used to create the new Amazon EC2 instance. You can only pass one instance entry at a time in this array. You will get an invalid parameter error if you pass more than one instance entry in this array.
+#'
+#' @export
+create_cloud_formation_stack <- function (instances) 
+{
+    op <- new_operation(name = "CreateCloudFormationStack", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_cloud_formation_stack_input(instances = instances)
+    output <- create_cloud_formation_stack_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Creates a block storage disk that can be attached to a Lightsail instance in the same Availability Zone (e
 #'
 #' Creates a block storage disk that can be attached to a Lightsail instance in the same Availability Zone (e.g., `us-east-2a`). The disk is created in the regional endpoint that you send the HTTP request to. For more information, see [Regions and Availability Zones in Lightsail](https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail).
+#' 
+#' The `create disk` operation supports tag-based access control via request tags. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
 #' create_disk(
 #'   diskName = "string",
 #'   availabilityZone = "string",
-#'   sizeInGb = 123
+#'   sizeInGb = 123,
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -210,14 +294,18 @@ close_instance_public_ports <- function (portInfo, instanceName)
 #' 
 #' Use the GetRegions operation to list the Availability Zones where Lightsail is currently available.
 #' @param sizeInGb &#91;required&#93; The size of the disk in GB (e.g., `32`).
+#' @param tags The tag keys and optional values to add to the resource during create.
+#' 
+#' To tag a resource after it has been created, see the `tag resource` operation.
 #'
 #' @export
-create_disk <- function (diskName, availabilityZone, sizeInGb) 
+create_disk <- function (diskName, availabilityZone, sizeInGb, 
+    tags = NULL) 
 {
     op <- new_operation(name = "CreateDisk", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- create_disk_input(diskName = diskName, availabilityZone = availabilityZone, 
-        sizeInGb = sizeInGb)
+        sizeInGb = sizeInGb, tags = tags)
     output <- create_disk_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -228,6 +316,8 @@ create_disk <- function (diskName, availabilityZone, sizeInGb)
 #' Creates a block storage disk from a disk snapshot that can be attached to a Lightsail instance in the same Availability Zone (e
 #'
 #' Creates a block storage disk from a disk snapshot that can be attached to a Lightsail instance in the same Availability Zone (e.g., `us-east-2a`). The disk is created in the regional endpoint that you send the HTTP request to. For more information, see [Regions and Availability Zones in Lightsail](https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail).
+#' 
+#' The `create disk from snapshot` operation supports tag-based access control via request tags and resource tags applied to the resource identified by diskSnapshotName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -235,7 +325,13 @@ create_disk <- function (diskName, availabilityZone, sizeInGb)
 #'   diskName = "string",
 #'   diskSnapshotName = "string",
 #'   availabilityZone = "string",
-#'   sizeInGb = 123
+#'   sizeInGb = 123,
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -245,16 +341,19 @@ create_disk <- function (diskName, availabilityZone, sizeInGb)
 #' 
 #' Use the GetRegions operation to list the Availability Zones where Lightsail is currently available.
 #' @param sizeInGb &#91;required&#93; The size of the disk in GB (e.g., `32`).
+#' @param tags The tag keys and optional values to add to the resource during create.
+#' 
+#' To tag a resource after it has been created, see the `tag resource` operation.
 #'
 #' @export
 create_disk_from_snapshot <- function (diskName, diskSnapshotName, 
-    availabilityZone, sizeInGb) 
+    availabilityZone, sizeInGb, tags = NULL) 
 {
     op <- new_operation(name = "CreateDiskFromSnapshot", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- create_disk_from_snapshot_input(diskName = diskName, 
         diskSnapshotName = diskSnapshotName, availabilityZone = availabilityZone, 
-        sizeInGb = sizeInGb)
+        sizeInGb = sizeInGb, tags = tags)
     output <- create_disk_from_snapshot_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -267,25 +366,46 @@ create_disk_from_snapshot <- function (diskName, diskSnapshotName,
 #' Creates a snapshot of a block storage disk. You can use snapshots for backups, to make copies of disks, and to save data before shutting down a Lightsail instance.
 #' 
 #' You can take a snapshot of an attached disk that is in use; however, snapshots only capture data that has been written to your disk at the time the snapshot command is issued. This may exclude any data that has been cached by any applications or the operating system. If you can pause any file systems on the disk long enough to take a snapshot, your snapshot should be complete. Nevertheless, if you cannot pause all file writes to the disk, you should unmount the disk from within the Lightsail instance, issue the create disk snapshot command, and then remount the disk to ensure a consistent and complete snapshot. You may remount and use your disk while the snapshot status is pending.
+#' 
+#' You can also use this operation to create a snapshot of an instance\'s system volume. You might want to do this, for example, to recover data from the system volume of a botched instance or to create a backup of the system volume like you would for a block storage disk. To create a snapshot of a system volume, just define the `instance name` parameter when issuing the snapshot command, and a snapshot of the defined instance\'s system volume will be created. After the snapshot is available, you can create a block storage disk from the snapshot and attach it to a running instance to access the data on the disk.
+#' 
+#' The `create disk snapshot` operation supports tag-based access control via request tags. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
 #' create_disk_snapshot(
 #'   diskName = "string",
-#'   diskSnapshotName = "string"
+#'   diskSnapshotName = "string",
+#'   instanceName = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
-#' @param diskName &#91;required&#93; The unique name of the source disk (e.g., `my-source-disk`).
+#' @param diskName The unique name of the source disk (e.g., `Disk-Virginia-1`).
+#' 
+#' This parameter cannot be defined together with the `instance name` parameter. The `disk name` and `instance name` parameters are mutually exclusive.
 #' @param diskSnapshotName &#91;required&#93; The name of the destination disk snapshot (e.g., `my-disk-snapshot`) based on the source disk.
+#' @param instanceName The unique name of the source instance (e.g., `Amazon_Linux-512MB-Virginia-1`). When this is defined, a snapshot of the instance\'s system volume is created.
+#' 
+#' This parameter cannot be defined together with the `disk name` parameter. The `instance name` and `disk name` parameters are mutually exclusive.
+#' @param tags The tag keys and optional values to add to the resource during create.
+#' 
+#' To tag a resource after it has been created, see the `tag resource` operation.
 #'
 #' @export
-create_disk_snapshot <- function (diskName, diskSnapshotName) 
+create_disk_snapshot <- function (diskName = NULL, diskSnapshotName, 
+    instanceName = NULL, tags = NULL) 
 {
     op <- new_operation(name = "CreateDiskSnapshot", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- create_disk_snapshot_input(diskName = diskName, 
-        diskSnapshotName = diskSnapshotName)
+        diskSnapshotName = diskSnapshotName, instanceName = instanceName, 
+        tags = tags)
     output <- create_disk_snapshot_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -296,24 +416,35 @@ create_disk_snapshot <- function (diskName, diskSnapshotName)
 #' Creates a domain resource for the specified domain (e
 #'
 #' Creates a domain resource for the specified domain (e.g., example.com).
+#' 
+#' The `create domain` operation supports tag-based access control via request tags. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
 #' create_domain(
-#'   domainName = "string"
+#'   domainName = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @param domainName &#91;required&#93; The domain name to manage (e.g., `example.com`).
 #' 
 #' You cannot register a new domain name using Lightsail. You must register a domain name using Amazon Route 53 or another domain name registrar. If you have already registered your domain, you can enter its name in this parameter to manage the DNS records for that domain.
+#' @param tags The tag keys and optional values to add to the resource during create.
+#' 
+#' To tag a resource after it has been created, see the `tag resource` operation.
 #'
 #' @export
-create_domain <- function (domainName) 
+create_domain <- function (domainName, tags = NULL) 
 {
     op <- new_operation(name = "CreateDomain", http_method = "POST", 
         http_path = "/", paginator = list())
-    input <- create_domain_input(domainName = domainName)
+    input <- create_domain_input(domainName = domainName, tags = tags)
     output <- create_domain_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -324,6 +455,8 @@ create_domain <- function (domainName)
 #' Creates one of the following entry records associated with the domain: A record, CNAME record, TXT record, or MX record
 #'
 #' Creates one of the following entry records associated with the domain: A record, CNAME record, TXT record, or MX record.
+#' 
+#' The `create domain entry` operation supports tag-based access control via resource tags applied to the resource identified by domainName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -362,25 +495,37 @@ create_domain_entry <- function (domainName, domainEntry)
 #' Creates a snapshot of a specific virtual private server, or _instance_
 #'
 #' Creates a snapshot of a specific virtual private server, or *instance*. You can use a snapshot to create a new instance that is based on that snapshot.
+#' 
+#' The `create instance snapshot` operation supports tag-based access control via request tags. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
 #' create_instance_snapshot(
 #'   instanceSnapshotName = "string",
-#'   instanceName = "string"
+#'   instanceName = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @param instanceSnapshotName &#91;required&#93; The name for your new snapshot.
 #' @param instanceName &#91;required&#93; The Lightsail instance on which to base your snapshot.
+#' @param tags The tag keys and optional values to add to the resource during create.
+#' 
+#' To tag a resource after it has been created, see the `tag resource` operation.
 #'
 #' @export
-create_instance_snapshot <- function (instanceSnapshotName, instanceName) 
+create_instance_snapshot <- function (instanceSnapshotName, instanceName, 
+    tags = NULL) 
 {
     op <- new_operation(name = "CreateInstanceSnapshot", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- create_instance_snapshot_input(instanceSnapshotName = instanceSnapshotName, 
-        instanceName = instanceName)
+        instanceName = instanceName, tags = tags)
     output <- create_instance_snapshot_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -391,6 +536,8 @@ create_instance_snapshot <- function (instanceSnapshotName, instanceName)
 #' Creates one or more Amazon Lightsail virtual private servers, or _instances_
 #'
 #' Creates one or more Amazon Lightsail virtual private servers, or *instances*. Create instances using active blueprints. Inactive blueprints are listed to support customers with existing instances but are not necessarily available for launch of new instances. Blueprints are marked inactive when they become outdated due to operating system updates or new application releases. Use the get blueprints operation to return a list of available blueprints.
+#' 
+#' The `create instances` operation supports tag-based access control via request tags. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -403,7 +550,13 @@ create_instance_snapshot <- function (instanceSnapshotName, instanceName)
 #'   blueprintId = "string",
 #'   bundleId = "string",
 #'   userData = "string",
-#'   keyPairName = "string"
+#'   keyPairName = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -418,18 +571,21 @@ create_instance_snapshot <- function (instanceSnapshotName, instanceName)
 #' 
 #' Depending on the machine image you choose, the command to get software on your instance varies. Amazon Linux and CentOS use `yum`, Debian and Ubuntu use `apt-get`, and FreeBSD uses `pkg`. For a complete list, see the [Dev Guide](https://lightsail.aws.amazon.com/ls/docs/getting-started/article/compare-options-choose-lightsail-instance-image).
 #' @param keyPairName The name of your key pair.
+#' @param tags The tag keys and optional values to add to the resource during create.
+#' 
+#' To tag a resource after it has been created, see the `tag resource` operation.
 #'
 #' @export
 create_instances <- function (instanceNames, availabilityZone, 
     customImageName = NULL, blueprintId, bundleId, userData = NULL, 
-    keyPairName = NULL) 
+    keyPairName = NULL, tags = NULL) 
 {
     op <- new_operation(name = "CreateInstances", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- create_instances_input(instanceNames = instanceNames, 
         availabilityZone = availabilityZone, customImageName = customImageName, 
         blueprintId = blueprintId, bundleId = bundleId, userData = userData, 
-        keyPairName = keyPairName)
+        keyPairName = keyPairName, tags = tags)
     output <- create_instances_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -440,6 +596,8 @@ create_instances <- function (instanceNames, availabilityZone,
 #' Uses a specific snapshot as a blueprint for creating one or more new instances that are based on that identical configuration
 #'
 #' Uses a specific snapshot as a blueprint for creating one or more new instances that are based on that identical configuration.
+#' 
+#' The `create instances from snapshot` operation supports tag-based access control via request tags and resource tags applied to the resource identified by instanceSnapshotName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -459,7 +617,13 @@ create_instances <- function (instanceNames, availabilityZone,
 #'   instanceSnapshotName = "string",
 #'   bundleId = "string",
 #'   userData = "string",
-#'   keyPairName = "string"
+#'   keyPairName = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -472,18 +636,21 @@ create_instances <- function (instanceNames, availabilityZone,
 #' 
 #' Depending on the machine image you choose, the command to get software on your instance varies. Amazon Linux and CentOS use `yum`, Debian and Ubuntu use `apt-get`, and FreeBSD uses `pkg`. For a complete list, see the [Dev Guide](https://lightsail.aws.amazon.com/ls/docs/getting-started/article/compare-options-choose-lightsail-instance-image).
 #' @param keyPairName The name for your key pair.
+#' @param tags The tag keys and optional values to add to the resource during create.
+#' 
+#' To tag a resource after it has been created, see the `tag resource` operation.
 #'
 #' @export
 create_instances_from_snapshot <- function (instanceNames, attachedDiskMapping = NULL, 
     availabilityZone, instanceSnapshotName, bundleId, userData = NULL, 
-    keyPairName = NULL) 
+    keyPairName = NULL, tags = NULL) 
 {
     op <- new_operation(name = "CreateInstancesFromSnapshot", 
         http_method = "POST", http_path = "/", paginator = list())
     input <- create_instances_from_snapshot_input(instanceNames = instanceNames, 
         attachedDiskMapping = attachedDiskMapping, availabilityZone = availabilityZone, 
         instanceSnapshotName = instanceSnapshotName, bundleId = bundleId, 
-        userData = userData, keyPairName = keyPairName)
+        userData = userData, keyPairName = keyPairName, tags = tags)
     output <- create_instances_from_snapshot_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -494,22 +661,34 @@ create_instances_from_snapshot <- function (instanceNames, attachedDiskMapping =
 #' Creates an SSH key pair
 #'
 #' Creates an SSH key pair.
+#' 
+#' The `create key pair` operation supports tag-based access control via request tags. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
 #' create_key_pair(
-#'   keyPairName = "string"
+#'   keyPairName = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @param keyPairName &#91;required&#93; The name for your new key pair.
+#' @param tags The tag keys and optional values to add to the resource during create.
+#' 
+#' To tag a resource after it has been created, see the `tag resource` operation.
 #'
 #' @export
-create_key_pair <- function (keyPairName) 
+create_key_pair <- function (keyPairName, tags = NULL) 
 {
     op <- new_operation(name = "CreateKeyPair", http_method = "POST", 
         http_path = "/", paginator = list())
-    input <- create_key_pair_input(keyPairName = keyPairName)
+    input <- create_key_pair_input(keyPairName = keyPairName, 
+        tags = tags)
     output <- create_key_pair_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -522,6 +701,8 @@ create_key_pair <- function (keyPairName)
 #' Creates a Lightsail load balancer. To learn more about deciding whether to load balance your application, see [Configure your Lightsail instances for load balancing](https://lightsail.aws.amazon.com/ls/docs/how-to/article/configure-lightsail-instances-for-load-balancing). You can create up to 5 load balancers per AWS Region in your account.
 #' 
 #' When you create a load balancer, you can specify a unique name and port settings. To change additional load balancer settings, use the `UpdateLoadBalancerAttribute` operation.
+#' 
+#' The `create load balancer` operation supports tag-based access control via request tags. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -533,6 +714,12 @@ create_key_pair <- function (keyPairName)
 #'   certificateDomainName = "string",
 #'   certificateAlternativeNames = list(
 #'     "string"
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -549,18 +736,22 @@ create_key_pair <- function (keyPairName)
 #' 
 #' If you specify `certificateDomainName`, then `certificateName` is required (and vice-versa).
 #' @param certificateAlternativeNames The optional alternative domains and subdomains to use with your SSL/TLS certificate (e.g., `www.example.com`, `example.com`, `m.example.com`, `blog.example.com`).
+#' @param tags The tag keys and optional values to add to the resource during create.
+#' 
+#' To tag a resource after it has been created, see the `tag resource` operation.
 #'
 #' @export
 create_load_balancer <- function (loadBalancerName, instancePort, 
     healthCheckPath = NULL, certificateName = NULL, certificateDomainName = NULL, 
-    certificateAlternativeNames = NULL) 
+    certificateAlternativeNames = NULL, tags = NULL) 
 {
     op <- new_operation(name = "CreateLoadBalancer", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- create_load_balancer_input(loadBalancerName = loadBalancerName, 
         instancePort = instancePort, healthCheckPath = healthCheckPath, 
         certificateName = certificateName, certificateDomainName = certificateDomainName, 
-        certificateAlternativeNames = certificateAlternativeNames)
+        certificateAlternativeNames = certificateAlternativeNames, 
+        tags = tags)
     output <- create_load_balancer_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -573,6 +764,8 @@ create_load_balancer <- function (loadBalancerName, instancePort,
 #' Creates a Lightsail load balancer TLS certificate.
 #' 
 #' TLS is just an updated, more secure version of Secure Socket Layer (SSL).
+#' 
+#' The `create load balancer tls certificate` operation supports tag-based access control via resource tags applied to the resource identified by loadBalancerName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -582,6 +775,12 @@ create_load_balancer <- function (loadBalancerName, instancePort,
 #'   certificateDomainName = "string",
 #'   certificateAlternativeNames = list(
 #'     "string"
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -592,16 +791,21 @@ create_load_balancer <- function (loadBalancerName, instancePort,
 #' You can have up to 10 certificates in your account at one time. Each Lightsail load balancer can have up to 2 certificates associated with it at one time. There is also an overall limit to the number of certificates that can be issue in a 365-day period. For more information, see [Limits](http://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html).
 #' @param certificateDomainName &#91;required&#93; The domain name (e.g., `example.com`) for your SSL/TLS certificate.
 #' @param certificateAlternativeNames An array of strings listing alternative domains and subdomains for your SSL/TLS certificate. Lightsail will de-dupe the names for you. You can have a maximum of 9 alternative names (in addition to the 1 primary domain). We do not support wildcards (e.g., `*.example.com`).
+#' @param tags The tag keys and optional values to add to the resource during create.
+#' 
+#' To tag a resource after it has been created, see the `tag resource` operation.
 #'
 #' @export
 create_load_balancer_tls_certificate <- function (loadBalancerName, 
-    certificateName, certificateDomainName, certificateAlternativeNames = NULL) 
+    certificateName, certificateDomainName, certificateAlternativeNames = NULL, 
+    tags = NULL) 
 {
     op <- new_operation(name = "CreateLoadBalancerTlsCertificate", 
         http_method = "POST", http_path = "/", paginator = list())
     input <- create_load_balancer_tls_certificate_input(loadBalancerName = loadBalancerName, 
         certificateName = certificateName, certificateDomainName = certificateDomainName, 
-        certificateAlternativeNames = certificateAlternativeNames)
+        certificateAlternativeNames = certificateAlternativeNames, 
+        tags = tags)
     output <- create_load_balancer_tls_certificate_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -612,6 +816,8 @@ create_load_balancer_tls_certificate <- function (loadBalancerName,
 #' Creates a new database in Amazon Lightsail
 #'
 #' Creates a new database in Amazon Lightsail.
+#' 
+#' The `create relational database` operation supports tag-based access control via request tags. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -625,7 +831,13 @@ create_load_balancer_tls_certificate <- function (loadBalancerName,
 #'   masterUserPassword = "string",
 #'   preferredBackupWindow = "string",
 #'   preferredMaintenanceWindow = "string",
-#'   publiclyAccessible = TRUE|FALSE
+#'   publiclyAccessible = TRUE|FALSE,
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -699,13 +911,16 @@ create_load_balancer_tls_certificate <- function (loadBalancerName,
 #' 
 #' -   Example: `Tue:17:00-Tue:17:30`
 #' @param publiclyAccessible Specifies the accessibility options for your new database. A value of `true` specifies a database that is available to resources outside of your Lightsail account. A value of `false` specifies a database that is available only to your Lightsail resources in the same region as your database.
+#' @param tags The tag keys and optional values to add to the resource during create.
+#' 
+#' To tag a resource after it has been created, see the `tag resource` operation.
 #'
 #' @export
 create_relational_database <- function (relationalDatabaseName, 
     availabilityZone = NULL, relationalDatabaseBlueprintId, relationalDatabaseBundleId, 
     masterDatabaseName, masterUsername, masterUserPassword = NULL, 
     preferredBackupWindow = NULL, preferredMaintenanceWindow = NULL, 
-    publiclyAccessible = NULL) 
+    publiclyAccessible = NULL, tags = NULL) 
 {
     op <- new_operation(name = "CreateRelationalDatabase", http_method = "POST", 
         http_path = "/", paginator = list())
@@ -715,7 +930,7 @@ create_relational_database <- function (relationalDatabaseName,
         masterDatabaseName = masterDatabaseName, masterUsername = masterUsername, 
         masterUserPassword = masterUserPassword, preferredBackupWindow = preferredBackupWindow, 
         preferredMaintenanceWindow = preferredMaintenanceWindow, 
-        publiclyAccessible = publiclyAccessible)
+        publiclyAccessible = publiclyAccessible, tags = tags)
     output <- create_relational_database_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -728,6 +943,8 @@ create_relational_database <- function (relationalDatabaseName,
 #' Creates a new database from an existing database snapshot in Amazon Lightsail.
 #' 
 #' You can create a new database from a snapshot in if something goes wrong with your original database, or to change it to a different plan, such as a high availability or standard plan.
+#' 
+#' The `create relational database from snapshot` operation supports tag-based access control via request tags and resource tags applied to the resource identified by relationalDatabaseSnapshotName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -739,7 +956,13 @@ create_relational_database <- function (relationalDatabaseName,
 #'   relationalDatabaseBundleId = "string",
 #'   sourceRelationalDatabaseName = "string",
 #'   restoreTime = as.POSIXct("2015-01-01"),
-#'   useLatestRestorableTime = TRUE|FALSE
+#'   useLatestRestorableTime = TRUE|FALSE,
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -779,12 +1002,15 @@ create_relational_database <- function (relationalDatabaseName,
 #' Default: `false`
 #' 
 #' Constraints: Cannot be specified if the `restore time` parameter is provided.
+#' @param tags The tag keys and optional values to add to the resource during create.
+#' 
+#' To tag a resource after it has been created, see the `tag resource` operation.
 #'
 #' @export
 create_relational_database_from_snapshot <- function (relationalDatabaseName, 
     availabilityZone = NULL, publiclyAccessible = NULL, relationalDatabaseSnapshotName = NULL, 
     relationalDatabaseBundleId = NULL, sourceRelationalDatabaseName = NULL, 
-    restoreTime = NULL, useLatestRestorableTime = NULL) 
+    restoreTime = NULL, useLatestRestorableTime = NULL, tags = NULL) 
 {
     op <- new_operation(name = "CreateRelationalDatabaseFromSnapshot", 
         http_method = "POST", http_path = "/", paginator = list())
@@ -793,7 +1019,8 @@ create_relational_database_from_snapshot <- function (relationalDatabaseName,
         relationalDatabaseSnapshotName = relationalDatabaseSnapshotName, 
         relationalDatabaseBundleId = relationalDatabaseBundleId, 
         sourceRelationalDatabaseName = sourceRelationalDatabaseName, 
-        restoreTime = restoreTime, useLatestRestorableTime = useLatestRestorableTime)
+        restoreTime = restoreTime, useLatestRestorableTime = useLatestRestorableTime, 
+        tags = tags)
     output <- create_relational_database_from_snapshot_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -804,12 +1031,20 @@ create_relational_database_from_snapshot <- function (relationalDatabaseName,
 #' Creates a snapshot of your database in Amazon Lightsail
 #'
 #' Creates a snapshot of your database in Amazon Lightsail. You can use snapshots for backups, to make copies of a database, and to save data before deleting a database.
+#' 
+#' The `create relational database snapshot` operation supports tag-based access control via request tags. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
 #' create_relational_database_snapshot(
 #'   relationalDatabaseName = "string",
-#'   relationalDatabaseSnapshotName = "string"
+#'   relationalDatabaseSnapshotName = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -821,15 +1056,19 @@ create_relational_database_from_snapshot <- function (relationalDatabaseName,
 #' -   Must contain from 2 to 255 alphanumeric characters, or hyphens.
 #' 
 #' -   The first and last character must be a letter or number.
+#' @param tags The tag keys and optional values to add to the resource during create.
+#' 
+#' To tag a resource after it has been created, see the `tag resource` operation.
 #'
 #' @export
 create_relational_database_snapshot <- function (relationalDatabaseName, 
-    relationalDatabaseSnapshotName) 
+    relationalDatabaseSnapshotName, tags = NULL) 
 {
     op <- new_operation(name = "CreateRelationalDatabaseSnapshot", 
         http_method = "POST", http_path = "/", paginator = list())
     input <- create_relational_database_snapshot_input(relationalDatabaseName = relationalDatabaseName, 
-        relationalDatabaseSnapshotName = relationalDatabaseSnapshotName)
+        relationalDatabaseSnapshotName = relationalDatabaseSnapshotName, 
+        tags = tags)
     output <- create_relational_database_snapshot_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -842,6 +1081,8 @@ create_relational_database_snapshot <- function (relationalDatabaseName,
 #' Deletes the specified block storage disk. The disk must be in the `available` state (not attached to a Lightsail instance).
 #' 
 #' The disk may remain in the `deleting` state for several minutes.
+#' 
+#' The `delete disk` operation supports tag-based access control via resource tags applied to the resource identified by diskName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -870,6 +1111,8 @@ delete_disk <- function (diskName)
 #' Deletes the specified disk snapshot.
 #' 
 #' When you make periodic snapshots of a disk, the snapshots are incremental, and only the blocks on the device that have changed since your last snapshot are saved in the new snapshot. When you delete a snapshot, only the data not needed for any other snapshot is removed. So regardless of which prior snapshots have been deleted, all active snapshots will have access to all the information needed to restore the disk.
+#' 
+#' The `delete disk snapshot` operation supports tag-based access control via resource tags applied to the resource identified by diskSnapshotName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -896,6 +1139,8 @@ delete_disk_snapshot <- function (diskSnapshotName)
 #' Deletes the specified domain recordset and all of its domain records
 #'
 #' Deletes the specified domain recordset and all of its domain records.
+#' 
+#' The `delete domain` operation supports tag-based access control via resource tags applied to the resource identified by domainName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -922,6 +1167,8 @@ delete_domain <- function (domainName)
 #' Deletes a specific domain entry
 #'
 #' Deletes a specific domain entry.
+#' 
+#' The `delete domain entry` operation supports tag-based access control via resource tags applied to the resource identified by domainName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -960,6 +1207,8 @@ delete_domain_entry <- function (domainName, domainEntry)
 #' Deletes a specific Amazon Lightsail virtual private server, or _instance_
 #'
 #' Deletes a specific Amazon Lightsail virtual private server, or *instance*.
+#' 
+#' The `delete instance` operation supports tag-based access control via resource tags applied to the resource identified by instanceName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -986,6 +1235,8 @@ delete_instance <- function (instanceName)
 #' Deletes a specific snapshot of a virtual private server (or _instance_)
 #'
 #' Deletes a specific snapshot of a virtual private server (or *instance*).
+#' 
+#' The `delete instance snapshot` operation supports tag-based access control via resource tags applied to the resource identified by instanceSnapshotName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1012,6 +1263,8 @@ delete_instance_snapshot <- function (instanceSnapshotName)
 #' Deletes a specific SSH key pair
 #'
 #' Deletes a specific SSH key pair.
+#' 
+#' The `delete key pair` operation supports tag-based access control via resource tags applied to the resource identified by keyPairName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1038,6 +1291,8 @@ delete_key_pair <- function (keyPairName)
 #' Deletes a Lightsail load balancer and all its associated SSL/TLS certificates
 #'
 #' Deletes a Lightsail load balancer and all its associated SSL/TLS certificates. Once the load balancer is deleted, you will need to create a new load balancer, create a new certificate, and verify domain ownership again.
+#' 
+#' The `delete load balancer` operation supports tag-based access control via resource tags applied to the resource identified by loadBalancerName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1064,6 +1319,8 @@ delete_load_balancer <- function (loadBalancerName)
 #' Deletes an SSL/TLS certificate associated with a Lightsail load balancer
 #'
 #' Deletes an SSL/TLS certificate associated with a Lightsail load balancer.
+#' 
+#' The `delete load balancer tls certificate` operation supports tag-based access control via resource tags applied to the resource identified by loadBalancerName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1098,6 +1355,8 @@ delete_load_balancer_tls_certificate <- function (loadBalancerName,
 #' Deletes a database in Amazon Lightsail
 #'
 #' Deletes a database in Amazon Lightsail.
+#' 
+#' The `delete relational database` operation supports tag-based access control via resource tags applied to the resource identified by relationalDatabaseName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1142,6 +1401,8 @@ delete_relational_database <- function (relationalDatabaseName,
 #' Deletes a database snapshot in Amazon Lightsail
 #'
 #' Deletes a database snapshot in Amazon Lightsail.
+#' 
+#' The `delete relational database snapshot` operation supports tag-based access control via resource tags applied to the resource identified by relationalDatabaseName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1168,6 +1429,8 @@ delete_relational_database_snapshot <- function (relationalDatabaseSnapshotName)
 #' Detaches a stopped block storage disk from a Lightsail instance
 #'
 #' Detaches a stopped block storage disk from a Lightsail instance. Make sure to unmount any file systems on the device within your operating system before stopping the instance and detaching the disk.
+#' 
+#' The `detach disk` operation supports tag-based access control via resource tags applied to the resource identified by diskName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1196,6 +1459,8 @@ detach_disk <- function (diskName)
 #' Detaches the specified instances from a Lightsail load balancer.
 #' 
 #' This operation waits until the instances are no longer needed before they are detached from the load balancer.
+#' 
+#' The `detach instances from load balancer` operation supports tag-based access control via resource tags applied to the resource identified by loadBalancerName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -1267,6 +1532,38 @@ download_default_key_pair <- function ()
         http_path = "/", paginator = list())
     input <- download_default_key_pair_input()
     output <- download_default_key_pair_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Exports an Amazon Lightsail instance or block storage disk snapshot to Amazon Elastic Compute Cloud (Amazon EC2)
+#'
+#' Exports an Amazon Lightsail instance or block storage disk snapshot to Amazon Elastic Compute Cloud (Amazon EC2). This operation results in an export snapshot record that can be used with the `create cloud formation stack` operation to create new Amazon EC2 instances.
+#' 
+#' Exported instance snapshots appear in Amazon EC2 as Amazon Machine Images (AMIs), and the instance system disk appears as an Amazon Elastic Block Store (Amazon EBS) volume. Exported disk snapshots appear in Amazon EC2 as Amazon EBS volumes. Snapshots are exported to the same Amazon Web Services Region in Amazon EC2 as the source Lightsail snapshot.
+#' 
+#' The `export snapshot` operation supports tag-based access control via resource tags applied to the resource identified by sourceSnapshotName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' 
+#' Use the `get instance snapshots` or `get disk snapshots` operations to get a list of snapshots that you can export to Amazon EC2.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' export_snapshot(
+#'   sourceSnapshotName = "string"
+#' )
+#' ```
+#'
+#' @param sourceSnapshotName &#91;required&#93; The name of the instance or disk snapshot to be exported to Amazon EC2.
+#'
+#' @export
+export_snapshot <- function (sourceSnapshotName) 
+{
+    op <- new_operation(name = "ExportSnapshot", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- export_snapshot_input(sourceSnapshotName = sourceSnapshotName)
+    output <- export_snapshot_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -1351,6 +1648,34 @@ get_bundles <- function (includeInactive = NULL, pageToken = NULL)
     input <- get_bundles_input(includeInactive = includeInactive, 
         pageToken = pageToken)
     output <- get_bundles_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Returns the CloudFormation stack record created as a result of the create cloud formation stack operation
+#'
+#' Returns the CloudFormation stack record created as a result of the `create cloud formation stack` operation.
+#' 
+#' An AWS CloudFormation stack is used to create a new Amazon EC2 instance from an exported Lightsail snapshot.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' get_cloud_formation_stack_records(
+#'   pageToken = "string"
+#' )
+#' ```
+#'
+#' @param pageToken A token used for advancing to a specific page of results for your `get cloud formation stack records` request.
+#'
+#' @export
+get_cloud_formation_stack_records <- function (pageToken = NULL) 
+{
+    op <- new_operation(name = "GetCloudFormationStackRecords", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- get_cloud_formation_stack_records_input(pageToken = pageToken)
+    output <- get_cloud_formation_stack_records_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -1517,6 +1842,34 @@ get_domains <- function (pageToken = NULL)
     return(response)
 }
 
+#' Returns the export snapshot record created as a result of the export snapshot operation
+#'
+#' Returns the export snapshot record created as a result of the `export snapshot` operation.
+#' 
+#' An export snapshot record can be used to create a new Amazon EC2 instance and its related resources with the `create cloud formation stack` operation.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' get_export_snapshot_records(
+#'   pageToken = "string"
+#' )
+#' ```
+#'
+#' @param pageToken A token used for advancing to a specific page of results for your `get export snapshot records` request.
+#'
+#' @export
+get_export_snapshot_records <- function (pageToken = NULL) 
+{
+    op <- new_operation(name = "GetExportSnapshotRecords", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- get_export_snapshot_records_input(pageToken = pageToken)
+    output <- get_export_snapshot_records_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Returns information about a specific Amazon Lightsail instance, which is a virtual private server
 #'
 #' Returns information about a specific Amazon Lightsail instance, which is a virtual private server.
@@ -1546,6 +1899,8 @@ get_instance <- function (instanceName)
 #' Returns temporary SSH keys you can use to connect to a specific virtual private server, or _instance_
 #'
 #' Returns temporary SSH keys you can use to connect to a specific virtual private server, or *instance*.
+#' 
+#' The `get instance access details` operation supports tag-based access control via resource tags applied to the resource identified by instanceName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -2133,7 +2488,7 @@ get_relational_database <- function (relationalDatabaseName)
 #' )
 #' ```
 #'
-#' @param pageToken A token used for advancing to a specific page of results for your get relational database blueprints request.
+#' @param pageToken A token used for advancing to a specific page of results for your `get relational database blueprints` request.
 #'
 #' @export
 get_relational_database_blueprints <- function (pageToken = NULL) 
@@ -2161,7 +2516,7 @@ get_relational_database_blueprints <- function (pageToken = NULL)
 #' )
 #' ```
 #'
-#' @param pageToken A token used for advancing to a specific page of results for your get relational database bundles request.
+#' @param pageToken A token used for advancing to a specific page of results for your `get relational database bundles` request.
 #'
 #' @export
 get_relational_database_bundles <- function (pageToken = NULL) 
@@ -2253,7 +2608,7 @@ get_relational_database_events <- function (relationalDatabaseName,
 #' @param startFromHead Parameter to specify if the log should start from head or tail. If `true` is specified, the log event starts from the head of the log. If `false` is specified, the log event starts from the tail of the log.
 #' 
 #' Default: `false`
-#' @param pageToken A token used for advancing to a specific page of results for your get relational database log events request.
+#' @param pageToken A token used for advancing to a specific page of results for your `get relational database log events` request.
 #'
 #' @export
 get_relational_database_log_events <- function (relationalDatabaseName, 
@@ -2301,6 +2656,8 @@ get_relational_database_log_streams <- function (relationalDatabaseName)
 #' Returns the current, previous, or pending versions of the master user password for a Lightsail database
 #'
 #' Returns the current, previous, or pending versions of the master user password for a Lightsail database.
+#' 
+#' The `asdf` operation GetRelationalDatabaseMasterUserPassword supports tag-based access control via resource tags applied to the resource identified by relationalDatabaseName.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -2406,7 +2763,7 @@ get_relational_database_metric_data <- function (relationalDatabaseName,
 #' ```
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name of your database for which to get parameters.
-#' @param pageToken A token used for advancing to a specific page of results for your get relational database parameters request.
+#' @param pageToken A token used for advancing to a specific page of results for your `get relational database parameters` request.
 #'
 #' @export
 get_relational_database_parameters <- function (relationalDatabaseName, 
@@ -2460,7 +2817,7 @@ get_relational_database_snapshot <- function (relationalDatabaseSnapshotName)
 #' )
 #' ```
 #'
-#' @param pageToken A token used for advancing to a specific page of results for your get relational database snapshots request.
+#' @param pageToken A token used for advancing to a specific page of results for your `get relational database snapshots` request.
 #'
 #' @export
 get_relational_database_snapshots <- function (pageToken = NULL) 
@@ -2486,7 +2843,7 @@ get_relational_database_snapshots <- function (pageToken = NULL)
 #' )
 #' ```
 #'
-#' @param pageToken A token used for advancing to a specific page of results for your get relational database request.
+#' @param pageToken A token used for advancing to a specific page of results for your `get relational database` request.
 #'
 #' @export
 get_relational_databases <- function (pageToken = NULL) 
@@ -2607,6 +2964,8 @@ is_vpc_peered <- function ()
 #' Adds public ports to an Amazon Lightsail instance
 #'
 #' Adds public ports to an Amazon Lightsail instance.
+#' 
+#' The `open instance public ports` operation supports tag-based access control via resource tags applied to the resource identified by instanceName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -2662,6 +3021,8 @@ peer_vpc <- function ()
 #' Sets the specified open ports for an Amazon Lightsail instance, and closes all ports for every protocol not included in the current request
 #'
 #' Sets the specified open ports for an Amazon Lightsail instance, and closes all ports for every protocol not included in the current request.
+#' 
+#' The `put instance public ports` operation supports tag-based access control via resource tags applied to the resource identified by instanceName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -2696,7 +3057,9 @@ put_instance_public_ports <- function (portInfos, instanceName)
 
 #' Restarts a specific instance
 #'
-#' Restarts a specific instance. When your Amazon Lightsail instance is finished rebooting, Lightsail assigns a new public IP address. To use the same IP address after restarting, create a static IP address and attach it to the instance.
+#' Restarts a specific instance.
+#' 
+#' The `reboot instance` operation supports tag-based access control via resource tags applied to the resource identified by instanceName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -2723,6 +3086,8 @@ reboot_instance <- function (instanceName)
 #' Restarts a specific database in Amazon Lightsail
 #'
 #' Restarts a specific database in Amazon Lightsail.
+#' 
+#' The `reboot relational database` operation supports tag-based access control via resource tags applied to the resource identified by relationalDatabaseName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -2774,7 +3139,11 @@ release_static_ip <- function (staticIpName)
 
 #' Starts a specific Amazon Lightsail instance from a stopped state
 #'
-#' Starts a specific Amazon Lightsail instance from a stopped state. To restart an instance, use the reboot instance operation.
+#' Starts a specific Amazon Lightsail instance from a stopped state. To restart an instance, use the `reboot instance` operation.
+#' 
+#' When you start a stopped instance, Lightsail assigns a new public IP address to the instance. To use the same IP address after stopping and starting an instance, create a static IP address and attach it to the instance. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/lightsail-create-static-ip).
+#' 
+#' The `start instance` operation supports tag-based access control via resource tags applied to the resource identified by instanceName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -2801,6 +3170,8 @@ start_instance <- function (instanceName)
 #' Starts a specific database from a stopped state in Amazon Lightsail
 #'
 #' Starts a specific database from a stopped state in Amazon Lightsail. To restart a database, use the `reboot relational database` operation.
+#' 
+#' The `start relational database` operation supports tag-based access control via resource tags applied to the resource identified by relationalDatabaseName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -2827,6 +3198,10 @@ start_relational_database <- function (relationalDatabaseName)
 #' Stops a specific Amazon Lightsail instance that is currently running
 #'
 #' Stops a specific Amazon Lightsail instance that is currently running.
+#' 
+#' When you start a stopped instance, Lightsail assigns a new public IP address to the instance. To use the same IP address after stopping and starting an instance, create a static IP address and attach it to the instance. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/lightsail-create-static-ip).
+#' 
+#' The `stop instance` operation supports tag-based access control via resource tags applied to the resource identified by instanceName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -2858,6 +3233,8 @@ stop_instance <- function (instanceName, force = NULL)
 #' Stops a specific database that is currently running in Amazon Lightsail
 #'
 #' Stops a specific database that is currently running in Amazon Lightsail.
+#' 
+#' The `stop relational database` operation supports tag-based access control via resource tags applied to the resource identified by relationalDatabaseName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -2879,6 +3256,42 @@ stop_relational_database <- function (relationalDatabaseName,
     input <- stop_relational_database_input(relationalDatabaseName = relationalDatabaseName, 
         relationalDatabaseSnapshotName = relationalDatabaseSnapshotName)
     output <- stop_relational_database_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Adds one or more tags to the specified Amazon Lightsail resource
+#'
+#' Adds one or more tags to the specified Amazon Lightsail resource. Each resource can have a maximum of 50 tags. Each tag consists of a key and an optional value. Tag keys must be unique per resource. For more information about tags, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-tags).
+#' 
+#' The `tag resource` operation supports tag-based access control via request tags and resource tags applied to the resource identified by resourceName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#'
+#' @section Accepted Parameters:
+#' ```
+#' tag_resource(
+#'   resourceName = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @param resourceName &#91;required&#93; The name of the resource to which you are adding tags.
+#' @param tags &#91;required&#93; The tag key and optional value.
+#'
+#' @export
+tag_resource <- function (resourceName, tags) 
+{
+    op <- new_operation(name = "TagResource", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- tag_resource_input(resourceName = resourceName, 
+        tags = tags)
+    output <- tag_resource_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -2907,9 +3320,44 @@ unpeer_vpc <- function ()
     return(response)
 }
 
+#' Deletes the specified set of tag keys and their values from the specified Amazon Lightsail resource
+#'
+#' Deletes the specified set of tag keys and their values from the specified Amazon Lightsail resource.
+#' 
+#' The `untag resource` operation supports tag-based access control via request tags and resource tags applied to the resource identified by resourceName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#'
+#' @section Accepted Parameters:
+#' ```
+#' untag_resource(
+#'   resourceName = "string",
+#'   tagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @param resourceName &#91;required&#93; The name of the resource from which you are removing a tag.
+#' @param tagKeys &#91;required&#93; The tag keys to delete from the specified resource.
+#'
+#' @export
+untag_resource <- function (resourceName, tagKeys) 
+{
+    op <- new_operation(name = "UntagResource", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- untag_resource_input(resourceName = resourceName, 
+        tagKeys = tagKeys)
+    output <- untag_resource_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Updates a domain recordset after it is created
 #'
 #' Updates a domain recordset after it is created.
+#' 
+#' The `update domain entry` operation supports tag-based access control via resource tags applied to the resource identified by domainName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -2948,6 +3396,8 @@ update_domain_entry <- function (domainName, domainEntry)
 #' Updates the specified attribute for a load balancer
 #'
 #' Updates the specified attribute for a load balancer. You can only update one attribute at a time.
+#' 
+#' The `update load balancer attribute` operation supports tag-based access control via resource tags applied to the resource identified by loadBalancerName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -2982,6 +3432,8 @@ update_load_balancer_attribute <- function (loadBalancerName,
 #' Allows the update of one or more attributes of a database in Amazon Lightsail.
 #' 
 #' Updates are applied immediately, or in cases where the updates could result in an outage, are applied during the database\'s predefined maintenance window.
+#' 
+#' The `update relational database` operation supports tag-based access control via resource tags applied to the resource identified by relationalDatabaseName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -3072,6 +3524,8 @@ update_relational_database <- function (relationalDatabaseName,
 #' Allows the update of one or more parameters of a database in Amazon Lightsail.
 #' 
 #' Parameter updates don\'t cause outages; therefore, their application is not subject to the preferred maintenance window. However, there are two ways in which paramater updates are applied: `dynamic` or `pending-reboot`. Parameters marked with a `dynamic` apply type are applied immediately. Parameters marked with a `pending-reboot` apply type are applied only after the database is rebooted using the `reboot relational database` operation.
+#' 
+#' The `update relational database parameters` operation supports tag-based access control via resource tags applied to the resource identified by relationalDatabaseName. For more information, see the [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @section Accepted Parameters:
 #' ```

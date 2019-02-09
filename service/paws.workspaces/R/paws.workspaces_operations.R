@@ -17,8 +17,8 @@ NULL
 #' )
 #' ```
 #'
-#' @param DirectoryId &#91;required&#93; The ID of the directory.
-#' @param GroupIds &#91;required&#93; The IDs of one or more IP access control groups.
+#' @param DirectoryId &#91;required&#93; The identifier of the directory.
+#' @param GroupIds &#91;required&#93; The identifiers of one or more IP access control groups.
 #'
 #' @export
 associate_ip_groups <- function (DirectoryId, GroupIds) 
@@ -53,7 +53,7 @@ associate_ip_groups <- function (DirectoryId, GroupIds)
 #' )
 #' ```
 #'
-#' @param GroupId &#91;required&#93; The ID of the group.
+#' @param GroupId &#91;required&#93; The identifier of the group.
 #' @param UserRules &#91;required&#93; The rules to add to the group.
 #'
 #' @export
@@ -126,7 +126,7 @@ create_ip_group <- function (GroupName, GroupDesc = NULL, UserRules = NULL)
 #' )
 #' ```
 #'
-#' @param ResourceId &#91;required&#93; The ID of the WorkSpace. To find this ID, use DescribeWorkspaces.
+#' @param ResourceId &#91;required&#93; The identifier of the WorkSpace. To find this ID, use DescribeWorkspaces.
 #' @param Tags &#91;required&#93; The tags. Each WorkSpace can have a maximum of 50 tags.
 #'
 #' @export
@@ -205,7 +205,7 @@ create_workspaces <- function (Workspaces)
 #' )
 #' ```
 #'
-#' @param GroupId &#91;required&#93; The ID of the IP access control group.
+#' @param GroupId &#91;required&#93; The identifier of the IP access control group.
 #'
 #' @export
 delete_ip_group <- function (GroupId) 
@@ -234,7 +234,7 @@ delete_ip_group <- function (GroupId)
 #' )
 #' ```
 #'
-#' @param ResourceId &#91;required&#93; The ID of the WorkSpace. To find this ID, use DescribeWorkspaces.
+#' @param ResourceId &#91;required&#93; The identifier of the WorkSpace. To find this ID, use DescribeWorkspaces.
 #' @param TagKeys &#91;required&#93; The tag keys.
 #'
 #' @export
@@ -244,6 +244,108 @@ delete_tags <- function (ResourceId, TagKeys)
         http_path = "/", paginator = list())
     input <- delete_tags_input(ResourceId = ResourceId, TagKeys = TagKeys)
     output <- delete_tags_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes the specified image from your account
+#'
+#' Deletes the specified image from your account. To delete an image, you must first delete any bundles that are associated with the image.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_workspace_image(
+#'   ImageId = "string"
+#' )
+#' ```
+#'
+#' @param ImageId &#91;required&#93; The identifier of the image.
+#'
+#' @export
+delete_workspace_image <- function (ImageId) 
+{
+    op <- new_operation(name = "DeleteWorkspaceImage", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_workspace_image_input(ImageId = ImageId)
+    output <- delete_workspace_image_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves a list that describes the configuration of bring your own license (BYOL) for the specified account
+#'
+#' Retrieves a list that describes the configuration of bring your own license (BYOL) for the specified account.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_account()
+#' ```
+#'
+#' @export
+describe_account <- function () 
+{
+    op <- new_operation(name = "DescribeAccount", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_account_input()
+    output <- describe_account_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves a list that describes modifications to the configuration of bring your own license (BYOL) for the specified account
+#'
+#' Retrieves a list that describes modifications to the configuration of bring your own license (BYOL) for the specified account.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_account_modifications(
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @param NextToken If you received a `NextToken` from a previous call that was paginated, provide this token to receive the next set of results.
+#'
+#' @export
+describe_account_modifications <- function (NextToken = NULL) 
+{
+    op <- new_operation(name = "DescribeAccountModifications", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_account_modifications_input(NextToken = NextToken)
+    output <- describe_account_modifications_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves a list that describes one or more specified Amazon WorkSpaces clients
+#'
+#' Retrieves a list that describes one or more specified Amazon WorkSpaces clients.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_client_properties(
+#'   ResourceIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @param ResourceIds &#91;required&#93; The resource identifiers, in the form of directory IDs.
+#'
+#' @export
+describe_client_properties <- function (ResourceIds) 
+{
+    op <- new_operation(name = "DescribeClientProperties", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_client_properties_input(ResourceIds = ResourceIds)
+    output <- describe_client_properties_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -265,8 +367,8 @@ delete_tags <- function (ResourceId, TagKeys)
 #' )
 #' ```
 #'
-#' @param GroupIds The IDs of one or more IP access control groups.
-#' @param NextToken The token for the next set of results. (You received this token from a previous call.)
+#' @param GroupIds The identifiers of one or more IP access control groups.
+#' @param NextToken If you received a `NextToken` from a previous call that was paginated, provide this token to receive the next set of results.
 #' @param MaxResults The maximum number of items to return.
 #'
 #' @export
@@ -295,7 +397,7 @@ describe_ip_groups <- function (GroupIds = NULL, NextToken = NULL,
 #' )
 #' ```
 #'
-#' @param ResourceId &#91;required&#93; The ID of the WorkSpace. To find this ID, use DescribeWorkspaces.
+#' @param ResourceId &#91;required&#93; The identifier of the WorkSpace. To find this ID, use DescribeWorkspaces.
 #'
 #' @export
 describe_tags <- function (ResourceId) 
@@ -310,9 +412,9 @@ describe_tags <- function (ResourceId)
     return(response)
 }
 
-#' Describes the available WorkSpace bundles
+#' Retrieves a list that describes the available WorkSpace bundles
 #'
-#' Describes the available WorkSpace bundles.
+#' Retrieves a list that describes the available WorkSpace bundles.
 #' 
 #' You can filter the results using either bundle ID or owner, but not both.
 #'
@@ -327,8 +429,8 @@ describe_tags <- function (ResourceId)
 #' )
 #' ```
 #'
-#' @param BundleIds The IDs of the bundles. This parameter cannot be combined with any other filter.
-#' @param Owner The owner of the bundles. This parameter cannot be combined with any other filter.
+#' @param BundleIds The identifiers of the bundles. You cannot combine this parameter with any other filter.
+#' @param Owner The owner of the bundles. You cannot combine this parameter with any other filter.
 #' 
 #' Specify `AMAZON` to describe the bundles provided by AWS or null to describe the bundles that belong to your account.
 #' @param NextToken The token for the next set of results. (You received this token from a previous call.)
@@ -363,7 +465,7 @@ describe_workspace_bundles <- function (BundleIds = NULL, Owner = NULL,
 #' ```
 #'
 #' @param DirectoryIds The identifiers of the directories. If the value is null, all directories are retrieved.
-#' @param NextToken The token for the next set of results. (You received this token from a previous call.)
+#' @param NextToken If you received a `NextToken` from a previous call that was paginated, provide this token to receive the next set of results.
 #'
 #' @export
 describe_workspace_directories <- function (DirectoryIds = NULL, 
@@ -380,11 +482,45 @@ describe_workspace_directories <- function (DirectoryIds = NULL,
     return(response)
 }
 
+#' Retrieves a list that describes one or more specified images, if the image identifiers are provided
+#'
+#' Retrieves a list that describes one or more specified images, if the image identifiers are provided. Otherwise, all images in the account are described.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_workspace_images(
+#'   ImageIds = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @param ImageIds The identifier of the image.
+#' @param NextToken If you received a `NextToken` from a previous call that was paginated, provide this token to receive the next set of results.
+#' @param MaxResults The maximum number of items to return.
+#'
+#' @export
+describe_workspace_images <- function (ImageIds = NULL, NextToken = NULL, 
+    MaxResults = NULL) 
+{
+    op <- new_operation(name = "DescribeWorkspaceImages", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_workspace_images_input(ImageIds = ImageIds, 
+        NextToken = NextToken, MaxResults = MaxResults)
+    output <- describe_workspace_images_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Describes the specified WorkSpaces
 #'
 #' Describes the specified WorkSpaces.
 #' 
-#' You can filter the results using bundle ID, directory ID, or owner, but you can specify only one filter at a time.
+#' You can filter the results by using the bundle identifier, directory identifier, or owner, but you can specify only one filter at a time.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -400,14 +536,14 @@ describe_workspace_directories <- function (DirectoryIds = NULL,
 #' )
 #' ```
 #'
-#' @param WorkspaceIds The IDs of the WorkSpaces. This parameter cannot be combined with any other filter.
+#' @param WorkspaceIds The identifiers of the WorkSpaces. You cannot combine this parameter with any other filter.
 #' 
 #' Because the CreateWorkspaces operation is asynchronous, the identifier it returns is not immediately available. If you immediately call DescribeWorkspaces with this identifier, no information is returned.
-#' @param DirectoryId The ID of the directory. In addition, you can optionally specify a specific directory user (see `UserName`). This parameter cannot be combined with any other filter.
+#' @param DirectoryId The identifier of the directory. In addition, you can optionally specify a specific directory user (see `UserName`). You cannot combine this parameter with any other filter.
 #' @param UserName The name of the directory user. You must specify this parameter with `DirectoryId`.
-#' @param BundleId The ID of the bundle. All WorkSpaces that are created from this bundle are retrieved. This parameter cannot be combined with any other filter.
+#' @param BundleId The identifier of the bundle. All WorkSpaces that are created from this bundle are retrieved. You cannot combine this parameter with any other filter.
 #' @param Limit The maximum number of items to return.
-#' @param NextToken The token for the next set of results. (You received this token from a previous call.)
+#' @param NextToken If you received a `NextToken` from a previous call that was paginated, provide this token to receive the next set of results.
 #'
 #' @export
 describe_workspaces <- function (WorkspaceIds = NULL, DirectoryId = NULL, 
@@ -440,7 +576,7 @@ describe_workspaces <- function (WorkspaceIds = NULL, DirectoryId = NULL,
 #' ```
 #'
 #' @param WorkspaceIds The identifiers of the WorkSpaces. You can specify up to 25 WorkSpaces.
-#' @param NextToken The token for the next set of results. (You received this token from a previous call.)
+#' @param NextToken If you received a `NextToken` from a previous call that was paginated, provide this token to receive the next set of results.
 #'
 #' @export
 describe_workspaces_connection_status <- function (WorkspaceIds = NULL, 
@@ -471,8 +607,8 @@ describe_workspaces_connection_status <- function (WorkspaceIds = NULL,
 #' )
 #' ```
 #'
-#' @param DirectoryId &#91;required&#93; The ID of the directory.
-#' @param GroupIds &#91;required&#93; The IDs of one or more IP access control groups.
+#' @param DirectoryId &#91;required&#93; The identifier of the directory.
+#' @param GroupIds &#91;required&#93; The identifiers of one or more IP access control groups.
 #'
 #' @export
 disassociate_ip_groups <- function (DirectoryId, GroupIds) 
@@ -482,6 +618,135 @@ disassociate_ip_groups <- function (DirectoryId, GroupIds)
     input <- disassociate_ip_groups_input(DirectoryId = DirectoryId, 
         GroupIds = GroupIds)
     output <- disassociate_ip_groups_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Imports the specified Windows 7 or Windows 10 bring your own license (BYOL) image into Amazon WorkSpaces
+#'
+#' Imports the specified Windows 7 or Windows 10 bring your own license (BYOL) image into Amazon WorkSpaces. The image must be an already licensed EC2 image that is in your AWS account, and you must own the image.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' import_workspace_image(
+#'   Ec2ImageId = "string",
+#'   IngestionProcess = "BYOL_REGULAR"|"BYOL_GRAPHICS"|"BYOL_GRAPHICSPRO",
+#'   ImageName = "string",
+#'   ImageDescription = "string"
+#' )
+#' ```
+#'
+#' @param Ec2ImageId &#91;required&#93; The identifier of the EC2 image.
+#' @param IngestionProcess &#91;required&#93; The ingestion process to be used when importing the image.
+#' @param ImageName &#91;required&#93; The name of the WorkSpace image.
+#' @param ImageDescription &#91;required&#93; The description of the WorkSpace image.
+#'
+#' @export
+import_workspace_image <- function (Ec2ImageId, IngestionProcess, 
+    ImageName, ImageDescription) 
+{
+    op <- new_operation(name = "ImportWorkspaceImage", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- import_workspace_image_input(Ec2ImageId = Ec2ImageId, 
+        IngestionProcess = IngestionProcess, ImageName = ImageName, 
+        ImageDescription = ImageDescription)
+    output <- import_workspace_image_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks, that you can use for the network management interface when you enable bring your own license (BYOL)
+#'
+#' Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks, that you can use for the network management interface when you enable bring your own license (BYOL).
+#' 
+#' The management network interface is connected to a secure Amazon WorkSpaces management network. It is used for interactive streaming of the WorkSpace desktop to Amazon WorkSpaces clients, and to allow Amazon WorkSpaces to manage the WorkSpace.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' list_available_management_cidr_ranges(
+#'   ManagementCidrRangeConstraint = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @param ManagementCidrRangeConstraint &#91;required&#93; The IP address range to search. Specify an IP address range that is compatible with your network and in CIDR notation (that is, specify the range as an IPv4 CIDR block).
+#' @param MaxResults The maximum number of items to return.
+#' @param NextToken If you received a `NextToken` from a previous call that was paginated, provide this token to receive the next set of results.
+#'
+#' @export
+list_available_management_cidr_ranges <- function (ManagementCidrRangeConstraint, 
+    MaxResults = NULL, NextToken = NULL) 
+{
+    op <- new_operation(name = "ListAvailableManagementCidrRanges", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- list_available_management_cidr_ranges_input(ManagementCidrRangeConstraint = ManagementCidrRangeConstraint, 
+        MaxResults = MaxResults, NextToken = NextToken)
+    output <- list_available_management_cidr_ranges_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Modifies the configuration of bring your own license (BYOL) for the specified account
+#'
+#' Modifies the configuration of bring your own license (BYOL) for the specified account.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' modify_account(
+#'   DedicatedTenancySupport = "ENABLED",
+#'   DedicatedTenancyManagementCidrRange = "string"
+#' )
+#' ```
+#'
+#' @param DedicatedTenancySupport The status of BYOL.
+#' @param DedicatedTenancyManagementCidrRange The IP address range, specified as an IPv4 CIDR block, for the management network interface. Specify an IP address range that is compatible with your network and in CIDR notation (that is, specify the range as an IPv4 CIDR block). The CIDR block size must be /16 (for example, 203.0.113.25/16). It must also be specified as available by the `ListAvailableManagementCidrRanges` operation.
+#'
+#' @export
+modify_account <- function (DedicatedTenancySupport = NULL, DedicatedTenancyManagementCidrRange = NULL) 
+{
+    op <- new_operation(name = "ModifyAccount", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- modify_account_input(DedicatedTenancySupport = DedicatedTenancySupport, 
+        DedicatedTenancyManagementCidrRange = DedicatedTenancyManagementCidrRange)
+    output <- modify_account_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Modifies the properties of the specified Amazon WorkSpaces client
+#'
+#' Modifies the properties of the specified Amazon WorkSpaces client.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' modify_client_properties(
+#'   ResourceId = "string",
+#'   ClientProperties = list(
+#'     ReconnectEnabled = "ENABLED"|"DISABLED"
+#'   )
+#' )
+#' ```
+#'
+#' @param ResourceId &#91;required&#93; The resource identifiers, in the form of directory IDs.
+#' @param ClientProperties &#91;required&#93; Information about the Amazon WorkSpaces client.
+#'
+#' @export
+modify_client_properties <- function (ResourceId, ClientProperties) 
+{
+    op <- new_operation(name = "ModifyClientProperties", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- modify_client_properties_input(ResourceId = ResourceId, 
+        ClientProperties = ClientProperties)
+    output <- modify_client_properties_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -506,7 +771,7 @@ disassociate_ip_groups <- function (DirectoryId, GroupIds)
 #' )
 #' ```
 #'
-#' @param WorkspaceId &#91;required&#93; The ID of the WorkSpace.
+#' @param WorkspaceId &#91;required&#93; The identifier of the WorkSpace.
 #' @param WorkspaceProperties &#91;required&#93; The properties of the WorkSpace.
 #'
 #' @export
@@ -537,7 +802,7 @@ modify_workspace_properties <- function (WorkspaceId, WorkspaceProperties)
 #' )
 #' ```
 #'
-#' @param WorkspaceId &#91;required&#93; The ID of the WorkSpace.
+#' @param WorkspaceId &#91;required&#93; The identifier of the WorkSpace.
 #' @param WorkspaceState &#91;required&#93; The WorkSpace state.
 #'
 #' @export
@@ -638,7 +903,7 @@ rebuild_workspaces <- function (RebuildWorkspaceRequests)
 #' )
 #' ```
 #'
-#' @param GroupId &#91;required&#93; The ID of the group.
+#' @param GroupId &#91;required&#93; The identifier of the group.
 #' @param UserRules &#91;required&#93; The rules to remove from the group.
 #'
 #' @export
@@ -771,7 +1036,7 @@ terminate_workspaces <- function (TerminateWorkspaceRequests)
 #' )
 #' ```
 #'
-#' @param GroupId &#91;required&#93; The ID of the group.
+#' @param GroupId &#91;required&#93; The identifier of the group.
 #' @param UserRules &#91;required&#93; One or more rules.
 #'
 #' @export

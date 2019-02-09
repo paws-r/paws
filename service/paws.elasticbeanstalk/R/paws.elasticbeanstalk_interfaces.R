@@ -804,6 +804,8 @@ describe_environment_resources_output <- function (...)
         tags = list(type = "string"))), tags = list(type = "structure"))), 
         tags = list(type = "list")), LaunchConfigurations = structure(list(structure(list(Name = structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "structure"))), 
+        tags = list(type = "list")), LaunchTemplates = structure(list(structure(list(Id = structure(logical(0), 
+        tags = list(type = "string"))), tags = list(type = "structure"))), 
         tags = list(type = "list")), LoadBalancers = structure(list(structure(list(Name = structure(logical(0), 
         tags = list(type = "string"))), tags = list(type = "structure"))), 
         tags = list(type = "list")), Triggers = structure(list(structure(list(Name = structure(logical(0), 

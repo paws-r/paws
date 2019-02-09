@@ -4,14 +4,8 @@
 \alias{get_resource_policies}
 \title{Gets the policies for the specifies resources}
 \usage{
-get_resource_policies(
-  resourceArns = list(
-    "string"
-  ),
-  principal = "string",
-  nextToken = "string",
-  maxResults = 123
-)
+get_resource_policies(resourceArns, principal = NULL, nextToken = NULL,
+  maxResults = NULL)
 }
 \arguments{
 \item{resourceArns}{[required] The Amazon Resource Names (ARN) of the resources.}
@@ -25,6 +19,15 @@ get_resource_policies(
 \description{
 Gets the policies for the specifies resources.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_resource_policies(
+  resourceArns = list(
+    "string"
+  ),
+  principal = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

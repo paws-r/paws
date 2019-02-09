@@ -4,19 +4,8 @@
 \alias{list_usage_for_license_configuration}
 \title{Lists all license usage records for a license configuration, displaying license consumption details by resource at a selected point in time}
 \usage{
-list_usage_for_license_configuration(
-  LicenseConfigurationArn = "string",
-  MaxResults = 123,
-  NextToken = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  )
-)
+list_usage_for_license_configuration(LicenseConfigurationArn,
+  MaxResults = NULL, NextToken = NULL, Filters = NULL)
 }
 \arguments{
 \item{LicenseConfigurationArn}{[required] ARN of the targeted \code{LicenseConfiguration} object.}
@@ -30,6 +19,20 @@ list_usage_for_license_configuration(
 \description{
 Lists all license usage records for a license configuration, displaying license consumption details by resource at a selected point in time. Use this action to audit the current license consumption for any license inventory and configuration.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_usage_for_license_configuration(
+  LicenseConfigurationArn = "string",
+  MaxResults = 123,
+  NextToken = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  )
+)
 }
+}
+

@@ -12,6 +12,9 @@ get_bucket_replication(Bucket)
 \description{
 Returns the replication configuration of a bucket.
 }
+\details{
+It can take a while to propagate the put or delete a replication configuration to all Amazon S3 systems. Therefore, a get request soon after put or delete can return a wrong result.
+}
 \section{Accepted Parameters}{
 \preformatted{get_bucket_replication(
   Bucket = "string"

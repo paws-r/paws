@@ -8,7 +8,7 @@ METADATA <- list(
   endpoints = list("*" = "ecr.{region}.amazonaws.com", "cn-*" = "ecr.{region}.amazonaws.com.cn"),
   service_id = "ECR",
   api_version = "2015-09-21",
-  signing_name = NULL,
+  signing_name = "ecr",
   json_version = "1.1",
   target_prefix = "AmazonEC2ContainerRegistry_V20150921"
 )

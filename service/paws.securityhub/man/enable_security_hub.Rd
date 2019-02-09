@@ -9,6 +9,8 @@ enable_security_hub()
 \description{
 Enables the AWS Security Hub service.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{enable_security_hub()
 }
+}
+

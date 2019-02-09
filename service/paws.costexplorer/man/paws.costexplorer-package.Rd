@@ -6,7 +6,7 @@
 \alias{paws.costexplorer-package}
 \title{paws.costexplorer: AWS Cost Explorer Service}
 \description{
-The Cost Explorer API allows you to
+The Cost Explorer API enables you to
     programmatically query your cost and usage data. You can query for
     aggregated data such as total monthly costs or total daily usage. You
     can also query for granular data, such as the number of daily write

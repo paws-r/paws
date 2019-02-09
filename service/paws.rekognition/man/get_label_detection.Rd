@@ -2,7 +2,7 @@
 % Please edit documentation in R/paws.rekognition_operations.R
 \name{get_label_detection}
 \alias{get_label_detection}
-\title{Gets the label detection results of a Amazon Rekognition Video analysis started by}
+\title{Gets the label detection results of a Amazon Rekognition Video analysis started by StartLabelDetection}
 \usage{
 get_label_detection(JobId, MaxResults = NULL, NextToken = NULL,
   SortBy = NULL)
@@ -17,18 +17,18 @@ get_label_detection(JobId, MaxResults = NULL, NextToken = NULL,
 \item{SortBy}{Sort to use for elements in the \code{Labels} array. Use \code{TIMESTAMP} to sort array elements by the time labels are detected. Use \code{NAME} to alphabetically group elements for a label together. Within each label group, the array element are sorted by detection confidence. The default sort is by \code{TIMESTAMP}.}
 }
 \description{
-Gets the label detection results of a Amazon Rekognition Video analysis started by .
+Gets the label detection results of a Amazon Rekognition Video analysis started by StartLabelDetection.
 }
 \details{
-The label detection operation is started by a call to which returns a job identifier (\code{JobId}). When the label detection operation finishes, Amazon Rekognition publishes a completion status to the Amazon Simple Notification Service topic registered in the initial call to \code{StartlabelDetection}. To get the results of the label detection operation, first check that the status value published to the Amazon SNS topic is \code{SUCCEEDED}. If so, call and pass the job identifier (\code{JobId}) from the initial call to \code{StartLabelDetection}.
+The label detection operation is started by a call to StartLabelDetection which returns a job identifier (\code{JobId}). When the label detection operation finishes, Amazon Rekognition publishes a completion status to the Amazon Simple Notification Service topic registered in the initial call to \code{StartlabelDetection}. To get the results of the label detection operation, first check that the status value published to the Amazon SNS topic is \code{SUCCEEDED}. If so, call GetLabelDetection and pass the job identifier (\code{JobId}) from the initial call to \code{StartLabelDetection}.
 
 \code{GetLabelDetection} returns an array of detected labels (\code{Labels}) sorted by the time the labels were detected. You can also sort by the label name by specifying \code{NAME} for the \code{SortBy} input parameter.
 
 The labels returned include the label name, the percentage confidence in the accuracy of the detected label, and the time the label was detected in the video.
 
-Use MaxResults parameter to limit the number of labels returned. If there are more results than specified in \code{MaxResults}, the value of \code{NextToken} in the operation response contains a pagination token for getting the next set of results. To get the next page of results, call \code{GetlabelDetection} and populate the \code{NextToken} request parameter with the token value returned from the previous call to \code{GetLabelDetection}.
+The returned labels also include bounding box information for common objects, a hierarchical taxonomy of detected labels, and the version of the label model used for detection.
 
-\code{GetLabelDetection} doesn't return a hierarchical taxonomy, or bounding box information, for detected labels. \code{GetLabelDetection} returns \code{null} for the \code{Parents} and \code{Instances} attributes of the object which is returned in the \code{Labels} array.
+Use MaxResults parameter to limit the number of labels returned. If there are more results than specified in \code{MaxResults}, the value of \code{NextToken} in the operation response contains a pagination token for getting the next set of results. To get the next page of results, call \code{GetlabelDetection} and populate the \code{NextToken} request parameter with the token value returned from the previous call to \code{GetLabelDetection}.
 }
 \section{Accepted Parameters}{
 \preformatted{get_label_detection(

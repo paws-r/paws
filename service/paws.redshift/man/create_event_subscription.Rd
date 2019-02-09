@@ -33,13 +33,13 @@ Example: my-snapshot-20131010}
 
 \item{EventCategories}{Specifies the Amazon Redshift event categories to be published by the event notification subscription.
 
-Values: Configuration, Management, Monitoring, Security}
+Values: configuration, management, monitoring, security}
 
 \item{Severity}{Specifies the Amazon Redshift event severity to be published by the event notification subscription.
 
 Values: ERROR, INFO}
 
-\item{Enabled}{A Boolean value; set to \code{true} to activate the subscription, set to \code{false} to create the subscription but not active it.}
+\item{Enabled}{A boolean value; set to \code{true} to activate the subscription, and set to \code{false} to create the subscription but not activate it.}
 
 \item{Tags}{A list of tag instances.}
 }

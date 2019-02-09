@@ -19,7 +19,7 @@ update_rule(RuleId, ChangeToken, Updates)
 }}
 }
 \description{
-Inserts or deletes Predicate objects in a \code{Rule}. Each \code{Predicate} object identifies a predicate, such as a ByteMatchSet or an IPSet, that specifies the web requests that you want to allow, block, or count. If you add more than one predicate to a \code{Rule}, a request must match all of the specifications to be allowed, blocked, or counted. For example, suppose you add the following to a \code{Rule}:
+Inserts or deletes Predicate objects in a \code{Rule}. Each \code{Predicate} object identifies a predicate, such as a ByteMatchSet or an IPSet, that specifies the web requests that you want to allow, block, or count. If you add more than one predicate to a \code{Rule}, a request must match all of the specifications to be allowed, blocked, or counted. For example, suppose that you add the following to a \code{Rule}:
 }
 \details{
 \itemize{

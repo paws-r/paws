@@ -4,17 +4,20 @@
 \alias{delete_policy}
 \title{Permanently deletes an AWS Firewall Manager policy}
 \usage{
-delete_policy(PolicyId)
+delete_policy(PolicyId, DeleteAllPolicyResources = NULL)
 }
 \arguments{
 \item{PolicyId}{[required] The ID of the policy that you want to delete. \code{PolicyId} is returned by \code{PutPolicy} and by \code{ListPolicies}.}
+
+\item{DeleteAllPolicyResources}{If \code{True}, the request will also delete all web ACLs in this policy. Associated resources will no longer be protected by web ACLs in this policy.}
 }
 \description{
 Permanently deletes an AWS Firewall Manager policy.
 }
 \section{Accepted Parameters}{
 \preformatted{delete_policy(
-  PolicyId = "string"
+  PolicyId = "string",
+  DeleteAllPolicyResources = TRUE|FALSE
 )
 }
 }

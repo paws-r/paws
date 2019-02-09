@@ -154,6 +154,210 @@ batch_detect_syntax <- function (TextList, LanguageCode)
     return(response)
 }
 
+#' Creates a new document classifier that you can use to categorize documents
+#'
+#' Creates a new document classifier that you can use to categorize documents. To create a classifier you provide a set of training documents that labeled with the categories that you want to use. After the classifier is trained you can use it to categorize a set of labeled documents into the categories. For more information, see how-document-classification.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' create_document_classifier(
+#'   DocumentClassifierName = "string",
+#'   DataAccessRoleArn = "string",
+#'   InputDataConfig = list(
+#'     S3Uri = "string"
+#'   ),
+#'   ClientRequestToken = "string",
+#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
+#' )
+#' ```
+#'
+#' @param DocumentClassifierName &#91;required&#93; The name of the document classifier.
+#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Management (IAM) role that grants Amazon Comprehend read access to your input data.
+#' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
+#' @param ClientRequestToken A unique identifier for the request. If you don\'t set the client request token, Amazon Comprehend generates one.
+#' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify English (\"en\") or Spanish (\"es\"). All documents must be in the same language.
+#'
+#' @export
+create_document_classifier <- function (DocumentClassifierName, 
+    DataAccessRoleArn, InputDataConfig, ClientRequestToken = NULL, 
+    LanguageCode) 
+{
+    op <- new_operation(name = "CreateDocumentClassifier", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_document_classifier_input(DocumentClassifierName = DocumentClassifierName, 
+        DataAccessRoleArn = DataAccessRoleArn, InputDataConfig = InputDataConfig, 
+        ClientRequestToken = ClientRequestToken, LanguageCode = LanguageCode)
+    output <- create_document_classifier_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates an entity recognizer using submitted files
+#'
+#' Creates an entity recognizer using submitted files. After your `CreateEntityRecognizer` request is submitted, you can check job status using the API.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' create_entity_recognizer(
+#'   RecognizerName = "string",
+#'   DataAccessRoleArn = "string",
+#'   InputDataConfig = list(
+#'     EntityTypes = list(
+#'       list(
+#'         Type = "string"
+#'       )
+#'     ),
+#'     Documents = list(
+#'       S3Uri = "string"
+#'     ),
+#'     Annotations = list(
+#'       S3Uri = "string"
+#'     ),
+#'     EntityList = list(
+#'       S3Uri = "string"
+#'     )
+#'   ),
+#'   ClientRequestToken = "string",
+#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
+#' )
+#' ```
+#'
+#' @param RecognizerName &#91;required&#93; The name given to the newly created recognizer. Recognizer names can be a maximum of 256 characters. Alphanumeric characters, hyphens (-) and underscores (\_) are allowed. The name must be unique in the account/region.
+#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Management (IAM) role that grants Amazon Comprehend read access to your input data.
+#' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data. The S3 bucket containing the input data must be located in the same region as the entity recognizer being created.
+#' @param ClientRequestToken A unique identifier for the request. If you don\'t set the client request token, Amazon Comprehend generates one.
+#' @param LanguageCode &#91;required&#93; The language of the input documents. All documents must be in the same language. Only English (\"en\") is currently supported.
+#'
+#' @export
+create_entity_recognizer <- function (RecognizerName, DataAccessRoleArn, 
+    InputDataConfig, ClientRequestToken = NULL, LanguageCode) 
+{
+    op <- new_operation(name = "CreateEntityRecognizer", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_entity_recognizer_input(RecognizerName = RecognizerName, 
+        DataAccessRoleArn = DataAccessRoleArn, InputDataConfig = InputDataConfig, 
+        ClientRequestToken = ClientRequestToken, LanguageCode = LanguageCode)
+    output <- create_entity_recognizer_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes a previously created document classifier
+#'
+#' Deletes a previously created document classifier
+#' 
+#' Only those classifiers that are in terminated states (IN\_ERROR, TRAINED) will be deleted. If an active inference job is using the model, a `ResourceInUseException` will be returned.
+#' 
+#' This is an asynchronous action that puts the classifier into a DELETING state, and it is then removed by a background job. Once removed, the classifier disappears from your account and is no longer available for use.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_document_classifier(
+#'   DocumentClassifierArn = "string"
+#' )
+#' ```
+#'
+#' @param DocumentClassifierArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the document classifier.
+#'
+#' @export
+delete_document_classifier <- function (DocumentClassifierArn) 
+{
+    op <- new_operation(name = "DeleteDocumentClassifier", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_document_classifier_input(DocumentClassifierArn = DocumentClassifierArn)
+    output <- delete_document_classifier_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Deletes an entity recognizer
+#'
+#' Deletes an entity recognizer.
+#' 
+#' Only those recognizers that are in terminated states (IN\_ERROR, TRAINED) will be deleted. If an active inference job is using the model, a `ResourceInUseException` will be returned.
+#' 
+#' This is an asynchronous action that puts the recognizer into a DELETING state, and it is then removed by a background job. Once removed, the recognizer disappears from your account and is no longer available for use.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_entity_recognizer(
+#'   EntityRecognizerArn = "string"
+#' )
+#' ```
+#'
+#' @param EntityRecognizerArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the entity recognizer.
+#'
+#' @export
+delete_entity_recognizer <- function (EntityRecognizerArn) 
+{
+    op <- new_operation(name = "DeleteEntityRecognizer", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- delete_entity_recognizer_input(EntityRecognizerArn = EntityRecognizerArn)
+    output <- delete_entity_recognizer_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets the properties associated with a document classification job
+#'
+#' Gets the properties associated with a document classification job. Use this operation to get the status of a classification job.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_document_classification_job(
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @param JobId &#91;required&#93; The identifier that Amazon Comprehend generated for the job. The operation returns this identifier in its response.
+#'
+#' @export
+describe_document_classification_job <- function (JobId) 
+{
+    op <- new_operation(name = "DescribeDocumentClassificationJob", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_document_classification_job_input(JobId = JobId)
+    output <- describe_document_classification_job_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets the properties associated with a document classifier
+#'
+#' Gets the properties associated with a document classifier.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_document_classifier(
+#'   DocumentClassifierArn = "string"
+#' )
+#' ```
+#'
+#' @param DocumentClassifierArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the document classifier. The operation returns this identifier in its response.
+#'
+#' @export
+describe_document_classifier <- function (DocumentClassifierArn) 
+{
+    op <- new_operation(name = "DescribeDocumentClassifier", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- describe_document_classifier_input(DocumentClassifierArn = DocumentClassifierArn)
+    output <- describe_document_classifier_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Gets the properties associated with a dominant language detection job
 #'
 #' Gets the properties associated with a dominant language detection job. Use this operation to get the status of a detection job.
@@ -200,6 +404,32 @@ describe_entities_detection_job <- function (JobId)
         http_method = "POST", http_path = "/", paginator = list())
     input <- describe_entities_detection_job_input(JobId = JobId)
     output <- describe_entities_detection_job_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Provides details about an entity recognizer including status, S3 buckets containing training data, recognizer metadata, metrics, and so on
+#'
+#' Provides details about an entity recognizer including status, S3 buckets containing training data, recognizer metadata, metrics, and so on.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' describe_entity_recognizer(
+#'   EntityRecognizerArn = "string"
+#' )
+#' ```
+#'
+#' @param EntityRecognizerArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the entity recognizer.
+#'
+#' @export
+describe_entity_recognizer <- function (EntityRecognizerArn) 
+{
+    op <- new_operation(name = "DescribeEntityRecognizer", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- describe_entity_recognizer_input(EntityRecognizerArn = EntityRecognizerArn)
+    output <- describe_entity_recognizer_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -422,6 +652,79 @@ detect_syntax <- function (Text, LanguageCode)
     return(response)
 }
 
+#' Gets a list of the documentation classification jobs that you have submitted
+#'
+#' Gets a list of the documentation classification jobs that you have submitted.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' list_document_classification_jobs(
+#'   Filter = list(
+#'     JobName = "string",
+#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
+#'     SubmitTimeBefore = as.POSIXct("2015-01-01"),
+#'     SubmitTimeAfter = as.POSIXct("2015-01-01")
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @param Filter Filters the jobs that are returned. You can filter jobs on their names, status, or the date and time that they were submitted. You can only set one filter at a time.
+#' @param NextToken Identifies the next page of results to return.
+#' @param MaxResults The maximum number of results to return in each page. The default is 100.
+#'
+#' @export
+list_document_classification_jobs <- function (Filter = NULL, 
+    NextToken = NULL, MaxResults = NULL) 
+{
+    op <- new_operation(name = "ListDocumentClassificationJobs", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- list_document_classification_jobs_input(Filter = Filter, 
+        NextToken = NextToken, MaxResults = MaxResults)
+    output <- list_document_classification_jobs_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets a list of the document classifiers that you have created
+#'
+#' Gets a list of the document classifiers that you have created.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' list_document_classifiers(
+#'   Filter = list(
+#'     Status = "SUBMITTED"|"TRAINING"|"DELETING"|"STOP_REQUESTED"|"STOPPED"|"IN_ERROR"|"TRAINED",
+#'     SubmitTimeBefore = as.POSIXct("2015-01-01"),
+#'     SubmitTimeAfter = as.POSIXct("2015-01-01")
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @param Filter Filters the jobs that are returned. You can filter jobs on their name, status, or the date and time that they were submitted. You can only set one filter at a time.
+#' @param NextToken Identifies the next page of results to return.
+#' @param MaxResults The maximum number of results to return in each page. The default is 100.
+#'
+#' @export
+list_document_classifiers <- function (Filter = NULL, NextToken = NULL, 
+    MaxResults = NULL) 
+{
+    op <- new_operation(name = "ListDocumentClassifiers", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_document_classifiers_input(Filter = Filter, 
+        NextToken = NextToken, MaxResults = MaxResults)
+    output <- list_document_classifiers_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Gets a list of the dominant language detection jobs that you have submitted
 #'
 #' Gets a list of the dominant language detection jobs that you have submitted.
@@ -490,6 +793,44 @@ list_entities_detection_jobs <- function (Filter = NULL, NextToken = NULL,
     input <- list_entities_detection_jobs_input(Filter = Filter, 
         NextToken = NextToken, MaxResults = MaxResults)
     output <- list_entities_detection_jobs_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Gets a list of the properties of all entity recognizers that you created, including recognizers currently in training
+#'
+#' Gets a list of the properties of all entity recognizers that you created, including recognizers currently in training. Allows you to filter the list of recognizers based on criteria such as status and submission time. This call returns up to 500 entity recognizers in the list, with a default number of 100 recognizers in the list.
+#' 
+#' The results of this list are not in any particular order. Please get the list and sort locally if needed.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' list_entity_recognizers(
+#'   Filter = list(
+#'     Status = "SUBMITTED"|"TRAINING"|"DELETING"|"STOP_REQUESTED"|"STOPPED"|"IN_ERROR"|"TRAINED",
+#'     SubmitTimeBefore = as.POSIXct("2015-01-01"),
+#'     SubmitTimeAfter = as.POSIXct("2015-01-01")
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @param Filter Filters the list of entities returned. You can filter on `Status`, `SubmitTimeBefore`, or `SubmitTimeAfter`. You can only set one filter at a time.
+#' @param NextToken Identifies the next page of results to return.
+#' @param MaxResults The maximum number of results to return on each page. The default is 100.
+#'
+#' @export
+list_entity_recognizers <- function (Filter = NULL, NextToken = NULL, 
+    MaxResults = NULL) 
+{
+    op <- new_operation(name = "ListEntityRecognizers", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- list_entity_recognizers_input(Filter = Filter, NextToken = NextToken, 
+        MaxResults = MaxResults)
+    output <- list_entity_recognizers_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -607,6 +948,52 @@ list_topics_detection_jobs <- function (Filter = NULL, NextToken = NULL,
     return(response)
 }
 
+#' Starts an asynchronous document classification job
+#'
+#' Starts an asynchronous document classification job. Use the operation to track the progress of the job.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' start_document_classification_job(
+#'   JobName = "string",
+#'   DocumentClassifierArn = "string",
+#'   InputDataConfig = list(
+#'     S3Uri = "string",
+#'     InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
+#'   ),
+#'   OutputDataConfig = list(
+#'     S3Uri = "string"
+#'   ),
+#'   DataAccessRoleArn = "string",
+#'   ClientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @param JobName The identifier of the job.
+#' @param DocumentClassifierArn &#91;required&#93; The Amazon Resource Name (ARN) of the document classifier to use to process the job.
+#' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
+#' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
+#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that grants Amazon Comprehend read access to your input data.
+#' @param ClientRequestToken A unique identifier for the request. If you do not set the client request token, Amazon Comprehend generates one.
+#'
+#' @export
+start_document_classification_job <- function (JobName = NULL, 
+    DocumentClassifierArn, InputDataConfig, OutputDataConfig, 
+    DataAccessRoleArn, ClientRequestToken = NULL) 
+{
+    op <- new_operation(name = "StartDocumentClassificationJob", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- start_document_classification_job_input(JobName = JobName, 
+        DocumentClassifierArn = DocumentClassifierArn, InputDataConfig = InputDataConfig, 
+        OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, 
+        ClientRequestToken = ClientRequestToken)
+    output <- start_document_classification_job_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Starts an asynchronous dominant language detection job for a collection of documents
 #'
 #' Starts an asynchronous dominant language detection job for a collection of documents. Use the operation to track the status of a job.
@@ -652,6 +1039,8 @@ start_dominant_language_detection_job <- function (InputDataConfig,
 #' Starts an asynchronous entity detection job for a collection of documents
 #'
 #' Starts an asynchronous entity detection job for a collection of documents. Use the operation to track the status of a job.
+#' 
+#' This API can be used for either standard entity detection or custom entity recognition. In order to be used for custom entity recognition, the optional `EntityRecognizerArn` must be used in order to provide access to the recognizer being used to detect the custom entity.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -665,6 +1054,7 @@ start_dominant_language_detection_job <- function (InputDataConfig,
 #'   ),
 #'   DataAccessRoleArn = "string",
 #'   JobName = "string",
+#'   EntityRecognizerArn = "string",
 #'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt",
 #'   ClientRequestToken = "string"
 #' )
@@ -674,18 +1064,21 @@ start_dominant_language_detection_job <- function (InputDataConfig,
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that grants Amazon Comprehend read access to your input data. For more information, see <https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions>.
 #' @param JobName The identifier of the job.
-#' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify English (\"en\") or Spanish (\"es\"). All documents must be in the same language.
+#' @param EntityRecognizerArn The Amazon Resource Name (ARN) that identifies the specific entity recognizer to be used by the `StartEntitiesDetectionJob`. This ARN is optional and is only used for a custom entity recognition job.
+#' @param LanguageCode &#91;required&#93; The language of the input documents. All documents must be in the same language. You can specify any of the languages supported by Amazon Comprehend: English (\"en\"), Spanish (\"es\"), French (\"fr\"), German (\"de\"), Italian (\"it\"), or Portuguese (\"pt\"). If custom entities recognition is used, this parameter is ignored and the language used for training the model is used instead.
 #' @param ClientRequestToken A unique identifier for the request. If you don\'t set the client request token, Amazon Comprehend generates one.
 #'
 #' @export
 start_entities_detection_job <- function (InputDataConfig, OutputDataConfig, 
-    DataAccessRoleArn, JobName = NULL, LanguageCode, ClientRequestToken = NULL) 
+    DataAccessRoleArn, JobName = NULL, EntityRecognizerArn = NULL, 
+    LanguageCode, ClientRequestToken = NULL) 
 {
     op <- new_operation(name = "StartEntitiesDetectionJob", http_method = "POST", 
         http_path = "/", paginator = list())
     input <- start_entities_detection_job_input(InputDataConfig = InputDataConfig, 
         OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, 
-        JobName = JobName, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken)
+        JobName = JobName, EntityRecognizerArn = EntityRecognizerArn, 
+        LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken)
     output <- start_entities_detection_job_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -949,6 +1342,62 @@ stop_sentiment_detection_job <- function (JobId)
         http_path = "/", paginator = list())
     input <- stop_sentiment_detection_job_input(JobId = JobId)
     output <- stop_sentiment_detection_job_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Stops a document classifier training job while in progress
+#'
+#' Stops a document classifier training job while in progress.
+#' 
+#' If the training job state is `TRAINING`, the job is marked for termination and put into the `STOP_REQUESTED` state. If the training job completes before it can be stopped, it is put into the `TRAINED`; otherwise the training job is stopped and put into the `STOPPED` state and the service sends back an HTTP 200 response with an empty HTTP body.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' stop_training_document_classifier(
+#'   DocumentClassifierArn = "string"
+#' )
+#' ```
+#'
+#' @param DocumentClassifierArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the document classifier currently being trained.
+#'
+#' @export
+stop_training_document_classifier <- function (DocumentClassifierArn) 
+{
+    op <- new_operation(name = "StopTrainingDocumentClassifier", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- stop_training_document_classifier_input(DocumentClassifierArn = DocumentClassifierArn)
+    output <- stop_training_document_classifier_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Stops an entity recognizer training job while in progress
+#'
+#' Stops an entity recognizer training job while in progress.
+#' 
+#' If the training job state is `TRAINING`, the job is marked for termination and put into the `STOP_REQUESTED` state. If the training job completes before it can be stopped, it is put into the `TRAINED`; otherwise the training job is stopped and putted into the `STOPPED` state and the service sends back an HTTP 200 response with an empty HTTP body.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' stop_training_entity_recognizer(
+#'   EntityRecognizerArn = "string"
+#' )
+#' ```
+#'
+#' @param EntityRecognizerArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the entity recognizer currently being trained.
+#'
+#' @export
+stop_training_entity_recognizer <- function (EntityRecognizerArn) 
+{
+    op <- new_operation(name = "StopTrainingEntityRecognizer", 
+        http_method = "POST", http_path = "/", paginator = list())
+    input <- stop_training_entity_recognizer_input(EntityRecognizerArn = EntityRecognizerArn)
+    output <- stop_training_entity_recognizer_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)

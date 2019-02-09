@@ -9,13 +9,15 @@ register_targets(TargetGroupArn, Targets)
 \arguments{
 \item{TargetGroupArn}{[required] The Amazon Resource Name (ARN) of the target group.}
 
-\item{Targets}{[required] The targets.}
+\item{Targets}{[required] The targets.
+
+To register a target by instance ID, specify the instance ID. To register a target by IP address, specify the IP address. To register a Lambda function, specify the ARN of the Lambda function.}
 }
 \description{
 Registers the specified targets with the specified target group.
 }
 \details{
-You can register targets by instance ID or by IP address. If the target is an EC2 instance, it must be in the \code{running} state when you register it.
+If the target is an EC2 instance, it must be in the \code{running} state when you register it.
 
 By default, the load balancer routes requests to registered targets using the protocol and port for the target group. Alternatively, you can override the port for a target when you register it. You can register each EC2 instance or IP address with the same target group multiple times using different ports.
 

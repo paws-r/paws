@@ -9,7 +9,7 @@ delete_signing_certificate(UserName = NULL, CertificateId)
 \arguments{
 \item{UserName}{The name of the user the signing certificate belongs to.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{CertificateId}{[required] The ID of the signing certificate to delete.
 
@@ -19,7 +19,7 @@ The format of this parameter, as described by its \href{http://wikipedia.org/wik
 Deletes a signing certificate associated with the specified IAM user.
 }
 \details{
-If you do not specify a user name, IAM determines the user name implicitly based on the AWS access key ID signing the request. Because this operation works for access keys under the AWS account, you can use this operation to manage AWS account root user credentials even if the AWS account has no associated IAM users.
+If you do not specify a user name, IAM determines the user name implicitly based on the AWS access key ID signing the request. This operation works for access keys under the AWS account. Consequently, you can use this operation to manage AWS account root user credentials even if the AWS account has no associated IAM users.
 }
 \section{Accepted Parameters}{
 \preformatted{delete_signing_certificate(

@@ -5,7 +5,7 @@ NULL
 
 #' Associates a role with a group
 #'
-#' Associates a role with a group. Your AWS Greengrass core will use the role to access AWS cloud services. The role's permissions should allow Greengrass core Lambda functions to perform actions against the cloud.
+#' Associates a role with a group. Your Greengrass core will use the role to access AWS cloud services. The role's permissions should allow Greengrass core Lambda functions to perform actions against the cloud.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -15,7 +15,7 @@ NULL
 #' )
 #' ```
 #'
-#' @param GroupId &#91;required&#93; The ID of the AWS Greengrass group.
+#' @param GroupId &#91;required&#93; The ID of the Greengrass group.
 #' @param RoleArn The ARN of the role you wish to associate with this group.
 #'
 #' @export
@@ -34,7 +34,7 @@ associate_role_to_group <- function (GroupId, RoleArn = NULL)
 
 #' Associates a role with your account
 #'
-#' Associates a role with your account. AWS Greengrass will use the role to access your Lambda functions and AWS IoT resources. This is necessary for deployments to succeed. The role must have at least minimum permissions in the policy ''AWSGreengrassResourceAccessRolePolicy''.
+#' Associates a role with your account. AWS IoT Greengrass will use the role to access your Lambda functions and AWS IoT resources. This is necessary for deployments to succeed. The role must have at least minimum permissions in the policy ''AWSGreengrassResourceAccessRolePolicy''.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -59,9 +59,92 @@ associate_service_role_to_account <- function (RoleArn = NULL)
     return(response)
 }
 
+#' Creates a connector definition
+#'
+#' Creates a connector definition. You may provide the initial version of the connector definition now or use ''CreateConnectorDefinitionVersion'' at a later time.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' create_connector_definition(
+#'   AmznClientToken = "string",
+#'   InitialVersion = list(
+#'     Connectors = list(
+#'       list(
+#'         ConnectorArn = "string",
+#'         Id = "string",
+#'         Parameters = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @param AmznClientToken A client token used to correlate requests and responses.
+#' @param InitialVersion Information about the initial version of the connector definition.
+#' @param Name The name of the connector definition.
+#'
+#' @export
+create_connector_definition <- function (AmznClientToken = NULL, 
+    InitialVersion = NULL, Name = NULL) 
+{
+    op <- new_operation(name = "CreateConnectorDefinition", http_method = "POST", 
+        http_path = "/greengrass/definition/connectors", paginator = list())
+    input <- create_connector_definition_input(AmznClientToken = AmznClientToken, 
+        InitialVersion = InitialVersion, Name = Name)
+    output <- create_connector_definition_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Creates a version of a connector definition which has already been defined
+#'
+#' Creates a version of a connector definition which has already been defined.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' create_connector_definition_version(
+#'   AmznClientToken = "string",
+#'   ConnectorDefinitionId = "string",
+#'   Connectors = list(
+#'     list(
+#'       ConnectorArn = "string",
+#'       Id = "string",
+#'       Parameters = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @param AmznClientToken A client token used to correlate requests and responses.
+#' @param ConnectorDefinitionId &#91;required&#93; The ID of the connector definition.
+#' @param Connectors A list of references to connectors in this version, with their corresponding configuration settings.
+#'
+#' @export
+create_connector_definition_version <- function (AmznClientToken = NULL, 
+    ConnectorDefinitionId, Connectors = NULL) 
+{
+    op <- new_operation(name = "CreateConnectorDefinitionVersion", 
+        http_method = "POST", http_path = "/greengrass/definition/connectors/{ConnectorDefinitionId}/versions", 
+        paginator = list())
+    input <- create_connector_definition_version_input(AmznClientToken = AmznClientToken, 
+        ConnectorDefinitionId = ConnectorDefinitionId, Connectors = Connectors)
+    output <- create_connector_definition_version_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Creates a core definition
 #'
-#' Creates a core definition. You may provide the initial version of the core definition now or use ''CreateCoreDefinitionVersion'' at a later time. AWS Greengrass groups must each contain exactly one AWS Greengrass core.
+#' Creates a core definition. You may provide the initial version of the core definition now or use ''CreateCoreDefinitionVersion'' at a later time. Greengrass groups must each contain exactly one Greengrass core.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -102,7 +185,7 @@ create_core_definition <- function (AmznClientToken = NULL, InitialVersion = NUL
 
 #' Creates a version of a core definition that has already been defined
 #'
-#' Creates a version of a core definition that has already been defined. AWS Greengrass groups must each contain exactly one AWS Greengrass core.
+#' Creates a version of a core definition that has already been defined. Greengrass groups must each contain exactly one Greengrass core.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -158,7 +241,7 @@ create_core_definition_version <- function (AmznClientToken = NULL,
 #' @param AmznClientToken A client token used to correlate requests and responses.
 #' @param DeploymentId The ID of the deployment if you wish to redeploy a previous deployment.
 #' @param DeploymentType The type of deployment. When used in ''CreateDeployment'', only ''NewDeployment'' and ''Redeployment'' are valid.
-#' @param GroupId &#91;required&#93; The ID of the AWS Greengrass group.
+#' @param GroupId &#91;required&#93; The ID of the Greengrass group.
 #' @param GroupVersionId The ID of the group version to be deployed.
 #'
 #' @export
@@ -268,6 +351,11 @@ create_device_definition_version <- function (AmznClientToken = NULL,
 #' create_function_definition(
 #'   AmznClientToken = "string",
 #'   InitialVersion = list(
+#'     DefaultConfig = list(
+#'       Execution = list(
+#'         IsolationMode = "GreengrassContainer"|"NoContainer"
+#'       )
+#'     ),
 #'     Functions = list(
 #'       list(
 #'         FunctionArn = "string",
@@ -275,6 +363,13 @@ create_device_definition_version <- function (AmznClientToken = NULL,
 #'           EncodingType = "binary"|"json",
 #'           Environment = list(
 #'             AccessSysfs = TRUE|FALSE,
+#'             Execution = list(
+#'               IsolationMode = "GreengrassContainer"|"NoContainer",
+#'               RunAs = list(
+#'                 Gid = 123,
+#'                 Uid = 123
+#'               )
+#'             ),
 #'             ResourceAccessPolicies = list(
 #'               list(
 #'                 Permission = "ro"|"rw",
@@ -326,6 +421,11 @@ create_function_definition <- function (AmznClientToken = NULL,
 #' ```
 #' create_function_definition_version(
 #'   AmznClientToken = "string",
+#'   DefaultConfig = list(
+#'     Execution = list(
+#'       IsolationMode = "GreengrassContainer"|"NoContainer"
+#'     )
+#'   ),
 #'   FunctionDefinitionId = "string",
 #'   Functions = list(
 #'     list(
@@ -334,6 +434,13 @@ create_function_definition <- function (AmznClientToken = NULL,
 #'         EncodingType = "binary"|"json",
 #'         Environment = list(
 #'           AccessSysfs = TRUE|FALSE,
+#'           Execution = list(
+#'             IsolationMode = "GreengrassContainer"|"NoContainer",
+#'             RunAs = list(
+#'               Gid = 123,
+#'               Uid = 123
+#'             )
+#'           ),
 #'           ResourceAccessPolicies = list(
 #'             list(
 #'               Permission = "ro"|"rw",
@@ -357,18 +464,20 @@ create_function_definition <- function (AmznClientToken = NULL,
 #' ```
 #'
 #' @param AmznClientToken A client token used to correlate requests and responses.
+#' @param DefaultConfig Default configuration that will apply to all Lambda functions in this function definition version
 #' @param FunctionDefinitionId &#91;required&#93; The ID of the Lambda function definition.
 #' @param Functions A list of Lambda functions in this function definition version.
 #'
 #' @export
 create_function_definition_version <- function (AmznClientToken = NULL, 
-    FunctionDefinitionId, Functions = NULL) 
+    DefaultConfig = NULL, FunctionDefinitionId, Functions = NULL) 
 {
     op <- new_operation(name = "CreateFunctionDefinitionVersion", 
         http_method = "POST", http_path = "/greengrass/definition/functions/{FunctionDefinitionId}/versions", 
         paginator = list())
     input <- create_function_definition_version_input(AmznClientToken = AmznClientToken, 
-        FunctionDefinitionId = FunctionDefinitionId, Functions = Functions)
+        DefaultConfig = DefaultConfig, FunctionDefinitionId = FunctionDefinitionId, 
+        Functions = Functions)
     output <- create_function_definition_version_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
@@ -378,13 +487,14 @@ create_function_definition_version <- function (AmznClientToken = NULL,
 
 #' Creates a group
 #'
-#' Creates a group. You may provide the initial version of the group or use ''CreateGroupVersion'' at a later time.
+#' Creates a group. You may provide the initial version of the group or use ''CreateGroupVersion'' at a later time. Tip: You can use the ''gg_group_setup'' package (https://github.com/awslabs/aws-greengrass-group-setup) as a library or command-line application to create and deploy Greengrass groups.
 #'
 #' @section Accepted Parameters:
 #' ```
 #' create_group(
 #'   AmznClientToken = "string",
 #'   InitialVersion = list(
+#'     ConnectorDefinitionVersionArn = "string",
 #'     CoreDefinitionVersionArn = "string",
 #'     DeviceDefinitionVersionArn = "string",
 #'     FunctionDefinitionVersionArn = "string",
@@ -428,7 +538,7 @@ create_group <- function (AmznClientToken = NULL, InitialVersion = NULL,
 #' ```
 #'
 #' @param AmznClientToken A client token used to correlate requests and responses.
-#' @param GroupId &#91;required&#93; The ID of the AWS Greengrass group.
+#' @param GroupId &#91;required&#93; The ID of the Greengrass group.
 #'
 #' @export
 create_group_certificate_authority <- function (AmznClientToken = NULL, 
@@ -454,6 +564,7 @@ create_group_certificate_authority <- function (AmznClientToken = NULL,
 #' ```
 #' create_group_version(
 #'   AmznClientToken = "string",
+#'   ConnectorDefinitionVersionArn = "string",
 #'   CoreDefinitionVersionArn = "string",
 #'   DeviceDefinitionVersionArn = "string",
 #'   FunctionDefinitionVersionArn = "string",
@@ -465,24 +576,26 @@ create_group_certificate_authority <- function (AmznClientToken = NULL,
 #' ```
 #'
 #' @param AmznClientToken A client token used to correlate requests and responses.
+#' @param ConnectorDefinitionVersionArn The ARN of the connector definition version for this group.
 #' @param CoreDefinitionVersionArn The ARN of the core definition version for this group.
 #' @param DeviceDefinitionVersionArn The ARN of the device definition version for this group.
 #' @param FunctionDefinitionVersionArn The ARN of the function definition version for this group.
-#' @param GroupId &#91;required&#93; The ID of the AWS Greengrass group.
+#' @param GroupId &#91;required&#93; The ID of the Greengrass group.
 #' @param LoggerDefinitionVersionArn The ARN of the logger definition version for this group.
-#' @param ResourceDefinitionVersionArn The resource definition version ARN for this group.
+#' @param ResourceDefinitionVersionArn The ARN of the resource definition version for this group.
 #' @param SubscriptionDefinitionVersionArn The ARN of the subscription definition version for this group.
 #'
 #' @export
-create_group_version <- function (AmznClientToken = NULL, CoreDefinitionVersionArn = NULL, 
-    DeviceDefinitionVersionArn = NULL, FunctionDefinitionVersionArn = NULL, 
-    GroupId, LoggerDefinitionVersionArn = NULL, ResourceDefinitionVersionArn = NULL, 
-    SubscriptionDefinitionVersionArn = NULL) 
+create_group_version <- function (AmznClientToken = NULL, ConnectorDefinitionVersionArn = NULL, 
+    CoreDefinitionVersionArn = NULL, DeviceDefinitionVersionArn = NULL, 
+    FunctionDefinitionVersionArn = NULL, GroupId, LoggerDefinitionVersionArn = NULL, 
+    ResourceDefinitionVersionArn = NULL, SubscriptionDefinitionVersionArn = NULL) 
 {
     op <- new_operation(name = "CreateGroupVersion", http_method = "POST", 
         http_path = "/greengrass/groups/{GroupId}/versions", 
         paginator = list())
     input <- create_group_version_input(AmznClientToken = AmznClientToken, 
+        ConnectorDefinitionVersionArn = ConnectorDefinitionVersionArn, 
         CoreDefinitionVersionArn = CoreDefinitionVersionArn, 
         DeviceDefinitionVersionArn = DeviceDefinitionVersionArn, 
         FunctionDefinitionVersionArn = FunctionDefinitionVersionArn, 
@@ -615,6 +728,12 @@ create_logger_definition_version <- function (AmznClientToken = NULL,
 #'           SageMakerMachineLearningModelResourceData = list(
 #'             DestinationPath = "string",
 #'             SageMakerJobArn = "string"
+#'           ),
+#'           SecretsManagerSecretResourceData = list(
+#'             ARN = "string",
+#'             AdditionalStagingLabelsToDownload = list(
+#'               "string"
+#'             )
 #'           )
 #'         )
 #'       )
@@ -679,6 +798,12 @@ create_resource_definition <- function (AmznClientToken = NULL,
 #'         SageMakerMachineLearningModelResourceData = list(
 #'           DestinationPath = "string",
 #'           SageMakerJobArn = "string"
+#'         ),
+#'         SecretsManagerSecretResourceData = list(
+#'           ARN = "string",
+#'           AdditionalStagingLabelsToDownload = list(
+#'             "string"
+#'           )
 #'         )
 #'       )
 #'     )
@@ -835,6 +960,33 @@ create_subscription_definition_version <- function (AmznClientToken = NULL,
     return(response)
 }
 
+#' Deletes a connector definition
+#'
+#' Deletes a connector definition.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' delete_connector_definition(
+#'   ConnectorDefinitionId = "string"
+#' )
+#' ```
+#'
+#' @param ConnectorDefinitionId &#91;required&#93; The ID of the connector definition.
+#'
+#' @export
+delete_connector_definition <- function (ConnectorDefinitionId) 
+{
+    op <- new_operation(name = "DeleteConnectorDefinition", http_method = "DELETE", 
+        http_path = "/greengrass/definition/connectors/{ConnectorDefinitionId}", 
+        paginator = list())
+    input <- delete_connector_definition_input(ConnectorDefinitionId = ConnectorDefinitionId)
+    output <- delete_connector_definition_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Deletes a core definition
 #'
 #' Deletes a core definition.
@@ -927,7 +1079,7 @@ delete_function_definition <- function (FunctionDefinitionId)
 #' )
 #' ```
 #'
-#' @param GroupId &#91;required&#93; The ID of the AWS Greengrass group.
+#' @param GroupId &#91;required&#93; The ID of the Greengrass group.
 #'
 #' @export
 delete_group <- function (GroupId) 
@@ -1034,7 +1186,7 @@ delete_subscription_definition <- function (SubscriptionDefinitionId)
 #' )
 #' ```
 #'
-#' @param GroupId &#91;required&#93; The ID of the AWS Greengrass group.
+#' @param GroupId &#91;required&#93; The ID of the Greengrass group.
 #'
 #' @export
 disassociate_role_from_group <- function (GroupId) 
@@ -1083,7 +1235,7 @@ disassociate_service_role_from_account <- function ()
 #' )
 #' ```
 #'
-#' @param GroupId &#91;required&#93; The ID of the AWS Greengrass group.
+#' @param GroupId &#91;required&#93; The ID of the Greengrass group.
 #'
 #' @export
 get_associated_role <- function (GroupId) 
@@ -1146,6 +1298,67 @@ get_connectivity_info <- function (ThingName)
         paginator = list())
     input <- get_connectivity_info_input(ThingName = ThingName)
     output <- get_connectivity_info_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves information about a connector definition
+#'
+#' Retrieves information about a connector definition.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' get_connector_definition(
+#'   ConnectorDefinitionId = "string"
+#' )
+#' ```
+#'
+#' @param ConnectorDefinitionId &#91;required&#93; The ID of the connector definition.
+#'
+#' @export
+get_connector_definition <- function (ConnectorDefinitionId) 
+{
+    op <- new_operation(name = "GetConnectorDefinition", http_method = "GET", 
+        http_path = "/greengrass/definition/connectors/{ConnectorDefinitionId}", 
+        paginator = list())
+    input <- get_connector_definition_input(ConnectorDefinitionId = ConnectorDefinitionId)
+    output <- get_connector_definition_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves information about a connector definition version, including the connectors that the version contains
+#'
+#' Retrieves information about a connector definition version, including the connectors that the version contains. Connectors are prebuilt modules that interact with local infrastructure, device protocols, AWS, and other cloud services.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' get_connector_definition_version(
+#'   ConnectorDefinitionId = "string",
+#'   ConnectorDefinitionVersionId = "string",
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @param ConnectorDefinitionId &#91;required&#93; The ID of the connector definition.
+#' @param ConnectorDefinitionVersionId &#91;required&#93; The ID of the connector definition version.
+#' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
+#'
+#' @export
+get_connector_definition_version <- function (ConnectorDefinitionId, 
+    ConnectorDefinitionVersionId, NextToken = NULL) 
+{
+    op <- new_operation(name = "GetConnectorDefinitionVersion", 
+        http_method = "GET", http_path = "/greengrass/definition/connectors/{ConnectorDefinitionId}/versions/{ConnectorDefinitionVersionId}", 
+        paginator = list())
+    input <- get_connector_definition_version_input(ConnectorDefinitionId = ConnectorDefinitionId, 
+        ConnectorDefinitionVersionId = ConnectorDefinitionVersionId, 
+        NextToken = NextToken)
+    output <- get_connector_definition_version_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -1222,7 +1435,7 @@ get_core_definition_version <- function (CoreDefinitionId, CoreDefinitionVersion
 #' ```
 #'
 #' @param DeploymentId &#91;required&#93; The ID of the deployment.
-#' @param GroupId &#91;required&#93; The ID of the AWS Greengrass group.
+#' @param GroupId &#91;required&#93; The ID of the Greengrass group.
 #'
 #' @export
 get_deployment_status <- function (DeploymentId, GroupId) 
@@ -1372,7 +1585,7 @@ get_function_definition_version <- function (FunctionDefinitionId,
 #' )
 #' ```
 #'
-#' @param GroupId &#91;required&#93; The ID of the AWS Greengrass group.
+#' @param GroupId &#91;required&#93; The ID of the Greengrass group.
 #'
 #' @export
 get_group <- function (GroupId) 
@@ -1400,7 +1613,7 @@ get_group <- function (GroupId)
 #' ```
 #'
 #' @param CertificateAuthorityId &#91;required&#93; The ID of the certificate authority.
-#' @param GroupId &#91;required&#93; The ID of the AWS Greengrass group.
+#' @param GroupId &#91;required&#93; The ID of the Greengrass group.
 #'
 #' @export
 get_group_certificate_authority <- function (CertificateAuthorityId, 
@@ -1429,7 +1642,7 @@ get_group_certificate_authority <- function (CertificateAuthorityId,
 #' )
 #' ```
 #'
-#' @param GroupId &#91;required&#93; The ID of the AWS Greengrass group.
+#' @param GroupId &#91;required&#93; The ID of the Greengrass group.
 #'
 #' @export
 get_group_certificate_configuration <- function (GroupId) 
@@ -1457,7 +1670,7 @@ get_group_certificate_configuration <- function (GroupId)
 #' )
 #' ```
 #'
-#' @param GroupId &#91;required&#93; The ID of the AWS Greengrass group.
+#' @param GroupId &#91;required&#93; The ID of the Greengrass group.
 #' @param GroupVersionId &#91;required&#93; The ID of the group version.
 #'
 #' @export
@@ -1738,6 +1951,68 @@ list_bulk_deployments <- function (MaxResults = NULL, NextToken = NULL)
     return(response)
 }
 
+#' Lists the versions of a connector definition, which are containers for connectors
+#'
+#' Lists the versions of a connector definition, which are containers for connectors. Connectors run on the Greengrass core and contain built-in integration with local infrastructure, device protocols, AWS, and other cloud services.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' list_connector_definition_versions(
+#'   ConnectorDefinitionId = "string",
+#'   MaxResults = "string",
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @param ConnectorDefinitionId &#91;required&#93; The ID of the connector definition.
+#' @param MaxResults The maximum number of results to be returned per request.
+#' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
+#'
+#' @export
+list_connector_definition_versions <- function (ConnectorDefinitionId, 
+    MaxResults = NULL, NextToken = NULL) 
+{
+    op <- new_operation(name = "ListConnectorDefinitionVersions", 
+        http_method = "GET", http_path = "/greengrass/definition/connectors/{ConnectorDefinitionId}/versions", 
+        paginator = list())
+    input <- list_connector_definition_versions_input(ConnectorDefinitionId = ConnectorDefinitionId, 
+        MaxResults = MaxResults, NextToken = NextToken)
+    output <- list_connector_definition_versions_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Retrieves a list of connector definitions
+#'
+#' Retrieves a list of connector definitions.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' list_connector_definitions(
+#'   MaxResults = "string",
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @param MaxResults The maximum number of results to be returned per request.
+#' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
+#'
+#' @export
+list_connector_definitions <- function (MaxResults = NULL, NextToken = NULL) 
+{
+    op <- new_operation(name = "ListConnectorDefinitions", http_method = "GET", 
+        http_path = "/greengrass/definition/connectors", paginator = list())
+    input <- list_connector_definitions_input(MaxResults = MaxResults, 
+        NextToken = NextToken)
+    output <- list_connector_definitions_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Lists the versions of a core definition
 #'
 #' Lists the versions of a core definition.
@@ -1813,7 +2088,7 @@ list_core_definitions <- function (MaxResults = NULL, NextToken = NULL)
 #' )
 #' ```
 #'
-#' @param GroupId &#91;required&#93; The ID of the AWS Greengrass group.
+#' @param GroupId &#91;required&#93; The ID of the Greengrass group.
 #' @param MaxResults The maximum number of results to be returned per request.
 #' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
 #'
@@ -1967,7 +2242,7 @@ list_function_definitions <- function (MaxResults = NULL, NextToken = NULL)
 #' )
 #' ```
 #'
-#' @param GroupId &#91;required&#93; The ID of the AWS Greengrass group.
+#' @param GroupId &#91;required&#93; The ID of the Greengrass group.
 #'
 #' @export
 list_group_certificate_authorities <- function (GroupId) 
@@ -1996,7 +2271,7 @@ list_group_certificate_authorities <- function (GroupId)
 #' )
 #' ```
 #'
-#' @param GroupId &#91;required&#93; The ID of the AWS Greengrass group.
+#' @param GroupId &#91;required&#93; The ID of the Greengrass group.
 #' @param MaxResults The maximum number of results to be returned per request.
 #' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
 #'
@@ -2247,7 +2522,7 @@ list_subscription_definitions <- function (MaxResults = NULL,
 #'
 #' @param AmznClientToken A client token used to correlate requests and responses.
 #' @param Force If true, performs a best-effort only core reset.
-#' @param GroupId &#91;required&#93; The ID of the AWS Greengrass group.
+#' @param GroupId &#91;required&#93; The ID of the Greengrass group.
 #'
 #' @export
 reset_deployments <- function (AmznClientToken = NULL, Force = NULL, 
@@ -2280,7 +2555,7 @@ reset_deployments <- function (AmznClientToken = NULL, Force = NULL,
 #'
 #' @param AmznClientToken A client token used to correlate requests and responses.
 #' @param ExecutionRoleArn The ARN of the execution role to associate with the bulk deployment operation. This IAM role must allow the ''greengrass:CreateDeployment'' action for all group versions that are listed in the input file. This IAM role must have access to the S3 bucket containing the input file.
-#' @param InputFileUri The URI of the input file contained in the S3 bucket. The execution role must have ''getObject'' permissions on this bucket to access the input file. The input file is a JSON-serialized, line delimited file with UTF-8 encoding that provides a list of group and version IDs and the deployment type. This file must be less than 100MB. Currently, Greengrass; supports only ''NewDeployment'' deployment types.
+#' @param InputFileUri The URI of the input file contained in the S3 bucket. The execution role must have ''getObject'' permissions on this bucket to access the input file. The input file is a JSON-serialized, line delimited file with UTF-8 encoding that provides a list of group and version IDs and the deployment type. This file must be less than 100 MB. Currently, AWS IoT Greengrass supports only ''NewDeployment'' deployment types.
 #'
 #' @export
 start_bulk_deployment <- function (AmznClientToken = NULL, ExecutionRoleArn = NULL, 
@@ -2356,6 +2631,37 @@ update_connectivity_info <- function (ConnectivityInfo = NULL,
     input <- update_connectivity_info_input(ConnectivityInfo = ConnectivityInfo, 
         ThingName = ThingName)
     output <- update_connectivity_info_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Updates a connector definition
+#'
+#' Updates a connector definition.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' update_connector_definition(
+#'   ConnectorDefinitionId = "string",
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @param ConnectorDefinitionId &#91;required&#93; The ID of the connector definition.
+#' @param Name The name of the definition.
+#'
+#' @export
+update_connector_definition <- function (ConnectorDefinitionId, 
+    Name = NULL) 
+{
+    op <- new_operation(name = "UpdateConnectorDefinition", http_method = "PUT", 
+        http_path = "/greengrass/definition/connectors/{ConnectorDefinitionId}", 
+        paginator = list())
+    input <- update_connector_definition_input(ConnectorDefinitionId = ConnectorDefinitionId, 
+        Name = Name)
+    output <- update_connector_definition_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -2465,7 +2771,7 @@ update_function_definition <- function (FunctionDefinitionId,
 #' )
 #' ```
 #'
-#' @param GroupId &#91;required&#93; The ID of the AWS Greengrass group.
+#' @param GroupId &#91;required&#93; The ID of the Greengrass group.
 #' @param Name The name of the definition.
 #'
 #' @export
@@ -2494,7 +2800,7 @@ update_group <- function (GroupId, Name = NULL)
 #' ```
 #'
 #' @param CertificateExpiryInMilliseconds The amount of time remaining before the certificate expires, in milliseconds.
-#' @param GroupId &#91;required&#93; The ID of the AWS Greengrass group.
+#' @param GroupId &#91;required&#93; The ID of the Greengrass group.
 #'
 #' @export
 update_group_certificate_configuration <- function (CertificateExpiryInMilliseconds = NULL, 

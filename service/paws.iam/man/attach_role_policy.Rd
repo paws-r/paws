@@ -9,7 +9,7 @@ attach_role_policy(RoleName, PolicyArn)
 \arguments{
 \item{RoleName}{[required] The name (friendly name, not ARN) of the role to attach the policy to.
 
-This parameter allows (per its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy you want to attach.
 

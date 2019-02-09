@@ -13,7 +13,7 @@ cancel_reserved_instances_listing(ReservedInstancesListingId)
 Cancels the specified Reserved Instance listing in the Reserved Instance Marketplace.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html}{Reserved Instance Marketplace} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html}{Reserved Instance Marketplace} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{cancel_reserved_instances_listing(

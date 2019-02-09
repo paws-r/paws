@@ -3,9 +3,43 @@
 #' @importFrom paws.common new_operation new_request send_request
 NULL
 
+#' Creates an HTTP namespace
+#'
+#' Creates an HTTP namespace. Service instances that you register using an HTTP namespace can be discovered using a `DiscoverInstances` request but can\'t be discovered using DNS.
+#' 
+#' For the current limit on the number of namespaces that you can create using the same AWS account, see [AWS Cloud Map Limits](http://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html) in the *AWS Cloud Map Developer Guide*.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' create_http_namespace(
+#'   Name = "string",
+#'   CreatorRequestId = "string",
+#'   Description = "string"
+#' )
+#' ```
+#'
+#' @param Name &#91;required&#93; The name that you want to assign to this namespace.
+#' @param CreatorRequestId A unique string that identifies the request and that allows failed `CreateHttpNamespace` requests to be retried without the risk of executing the operation twice. `CreatorRequestId` can be any unique string, for example, a date/time stamp.
+#' @param Description A description for the namespace.
+#'
+#' @export
+create_http_namespace <- function (Name, CreatorRequestId = NULL, 
+    Description = NULL) 
+{
+    op <- new_operation(name = "CreateHttpNamespace", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- create_http_namespace_input(Name = Name, CreatorRequestId = CreatorRequestId, 
+        Description = Description)
+    output <- create_http_namespace_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
 #' Creates a private namespace based on DNS, which will be visible only inside a specified Amazon VPC
 #'
-#' Creates a private namespace based on DNS, which will be visible only inside a specified Amazon VPC. The namespace defines your service naming scheme. For example, if you name your namespace `example.com` and name your service `backend`, the resulting DNS name for the service will be `backend.example.com`. For the current limit on the number of namespaces that you can create using the same AWS account, see [Limits on Auto Naming](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html#limits-api-entities-autonaming) in the *Route 53 Developer Guide*.
+#' Creates a private namespace based on DNS, which will be visible only inside a specified Amazon VPC. The namespace defines your service naming scheme. For example, if you name your namespace `example.com` and name your service `backend`, the resulting DNS name for the service will be `backend.example.com`. For the current limit on the number of namespaces that you can create using the same AWS account, see [AWS Cloud Map Limits](http://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html) in the *AWS Cloud Map Developer Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -17,7 +51,7 @@ NULL
 #' )
 #' ```
 #'
-#' @param Name &#91;required&#93; The name that you want to assign to this namespace. When you create a namespace, Amazon Route 53 automatically creates a hosted zone that has the same name as the namespace.
+#' @param Name &#91;required&#93; The name that you want to assign to this namespace. When you create a private DNS namespace, AWS Cloud Map automatically creates an Amazon Route 53 private hosted zone that has the same name as the namespace.
 #' @param CreatorRequestId A unique string that identifies the request and that allows failed `CreatePrivateDnsNamespace` requests to be retried without the risk of executing the operation twice. `CreatorRequestId` can be any unique string, for example, a date/time stamp.
 #' @param Description A description for the namespace.
 #' @param Vpc &#91;required&#93; The ID of the Amazon VPC that you want to associate the namespace with.
@@ -40,7 +74,7 @@ create_private_dns_namespace <- function (Name, CreatorRequestId = NULL,
 
 #' Creates a public namespace based on DNS, which will be visible on the internet
 #'
-#' Creates a public namespace based on DNS, which will be visible on the internet. The namespace defines your service naming scheme. For example, if you name your namespace `example.com` and name your service `backend`, the resulting DNS name for the service will be `backend.example.com`. For the current limit on the number of namespaces that you can create using the same AWS account, see [Limits on Auto Naming](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html#limits-api-entities-autonaming) in the *Route 53 Developer Guide*.
+#' Creates a public namespace based on DNS, which will be visible on the internet. The namespace defines your service naming scheme. For example, if you name your namespace `example.com` and name your service `backend`, the resulting DNS name for the service will be `backend.example.com`. For the current limit on the number of namespaces that you can create using the same AWS account, see [AWS Cloud Map Limits](http://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html) in the *AWS Cloud Map Developer Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -74,18 +108,29 @@ create_public_dns_namespace <- function (Name, CreatorRequestId = NULL,
 #'
 #' Creates a service, which defines the configuration for the following entities:
 #' 
-#' -   Up to three records (A, AAAA, and SRV) or one CNAME record
+#' -   For public and private DNS namespaces, one of the following combinations of DNS records in Amazon Route 53:
+#' 
+#'     -   A
+#' 
+#'     -   AAAA
+#' 
+#'     -   A and AAAA
+#' 
+#'     -   SRV
+#' 
+#'     -   CNAME
 #' 
 #' -   Optionally, a health check
 #' 
-#' After you create the service, you can submit a RegisterInstance request, and Amazon Route 53 uses the values in the configuration to create the specified entities.
+#' After you create the service, you can submit a RegisterInstance request, and AWS Cloud Map uses the values in the configuration to create the specified entities.
 #' 
-#' For the current limit on the number of instances that you can register using the same namespace and using the same service, see [Limits on Auto Naming](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html#limits-api-entities-autonaming) in the *Route 53 Developer Guide*.
+#' For the current limit on the number of instances that you can register using the same namespace and using the same service, see [AWS Cloud Map Limits](http://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html) in the *AWS Cloud Map Developer Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
 #' create_service(
 #'   Name = "string",
+#'   NamespaceId = "string",
 #'   CreatorRequestId = "string",
 #'   Description = "string",
 #'   DnsConfig = list(
@@ -110,22 +155,29 @@ create_public_dns_namespace <- function (Name, CreatorRequestId = NULL,
 #' ```
 #'
 #' @param Name &#91;required&#93; The name that you want to assign to the service.
+#' @param NamespaceId The ID of the namespace that you want to use to create the service.
 #' @param CreatorRequestId A unique string that identifies the request and that allows failed `CreateService` requests to be retried without the risk of executing the operation twice. `CreatorRequestId` can be any unique string, for example, a date/time stamp.
 #' @param Description A description for the service.
-#' @param DnsConfig &#91;required&#93; A complex type that contains information about the records that you want Route 53 to create when you register an instance.
-#' @param HealthCheckConfig *Public DNS namespaces only.* A complex type that contains settings for an optional health check. If you specify settings for a health check, Route 53 associates the health check with all the records that you specify in `DnsConfig`.
+#' @param DnsConfig A complex type that contains information about the Amazon Route 53 records that you want AWS Cloud Map to create when you register an instance.
+#' @param HealthCheckConfig *Public DNS namespaces only.* A complex type that contains settings for an optional Route 53 health check. If you specify settings for a health check, AWS Cloud Map associates the health check with all the Route 53 DNS records that you specify in `DnsConfig`.
 #' 
-#' For information about the charges for health checks, see [Route 53 Pricing](http://aws.amazon.com/route53/pricing).
-#' @param HealthCheckCustomConfig 
+#' If you specify a health check configuration, you can specify either `HealthCheckCustomConfig` or `HealthCheckConfig` but not both.
+#' 
+#' For information about the charges for health checks, see [AWS Cloud Map Pricing](http://aws.amazon.com/cloud-map/pricing/).
+#' @param HealthCheckCustomConfig A complex type that contains information about an optional custom health check.
+#' 
+#' If you specify a health check configuration, you can specify either `HealthCheckCustomConfig` or `HealthCheckConfig` but not both.
 #'
 #' @export
-create_service <- function (Name, CreatorRequestId = NULL, Description = NULL, 
-    DnsConfig, HealthCheckConfig = NULL, HealthCheckCustomConfig = NULL) 
+create_service <- function (Name, NamespaceId = NULL, CreatorRequestId = NULL, 
+    Description = NULL, DnsConfig = NULL, HealthCheckConfig = NULL, 
+    HealthCheckCustomConfig = NULL) 
 {
     op <- new_operation(name = "CreateService", http_method = "POST", 
         http_path = "/", paginator = list())
-    input <- create_service_input(Name = Name, CreatorRequestId = CreatorRequestId, 
-        Description = Description, DnsConfig = DnsConfig, HealthCheckConfig = HealthCheckConfig, 
+    input <- create_service_input(Name = Name, NamespaceId = NamespaceId, 
+        CreatorRequestId = CreatorRequestId, Description = Description, 
+        DnsConfig = DnsConfig, HealthCheckConfig = HealthCheckConfig, 
         HealthCheckCustomConfig = HealthCheckCustomConfig)
     output <- create_service_output()
     svc <- service()
@@ -186,9 +238,9 @@ delete_service <- function (Id)
     return(response)
 }
 
-#' Deletes the records and the health check, if any, that Amazon Route 53 created for the specified instance
+#' Deletes the Amazon Route 53 DNS records and health check, if any, that AWS Cloud Map created for the specified instance
 #'
-#' Deletes the records and the health check, if any, that Amazon Route 53 created for the specified instance.
+#' Deletes the Amazon Route 53 DNS records and health check, if any, that AWS Cloud Map created for the specified instance.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -209,6 +261,45 @@ deregister_instance <- function (ServiceId, InstanceId)
     input <- deregister_instance_input(ServiceId = ServiceId, 
         InstanceId = InstanceId)
     output <- deregister_instance_output()
+    svc <- service()
+    request <- new_request(svc, op, input, output)
+    response <- send_request(request)
+    return(response)
+}
+
+#' Discovers registered instances for a specified namespace and service
+#'
+#' Discovers registered instances for a specified namespace and service.
+#'
+#' @section Accepted Parameters:
+#' ```
+#' discover_instances(
+#'   NamespaceName = "string",
+#'   ServiceName = "string",
+#'   MaxResults = 123,
+#'   QueryParameters = list(
+#'     "string"
+#'   ),
+#'   HealthStatus = "HEALTHY"|"UNHEALTHY"|"ALL"
+#' )
+#' ```
+#'
+#' @param NamespaceName &#91;required&#93; The name of the namespace that you specified when you registered the instance.
+#' @param ServiceName &#91;required&#93; The name of the service that you specified when you registered the instance.
+#' @param MaxResults The maximum number of instances that you want Cloud Map to return in the response to a `DiscoverInstances` request. If you don\'t specify a value for `MaxResults`, Cloud Map returns up to 100 instances.
+#' @param QueryParameters A string map that contains attributes with values that you can use to filter instances by any custom attribute that you specified when you registered the instance. Only instances that match all the specified key/value pairs will be returned.
+#' @param HealthStatus The health status of the instances that you want to discover.
+#'
+#' @export
+discover_instances <- function (NamespaceName, ServiceName, MaxResults = NULL, 
+    QueryParameters = NULL, HealthStatus = NULL) 
+{
+    op <- new_operation(name = "DiscoverInstances", http_method = "POST", 
+        http_path = "/", paginator = list())
+    input <- discover_instances_input(NamespaceName = NamespaceName, 
+        ServiceName = ServiceName, MaxResults = MaxResults, QueryParameters = QueryParameters, 
+        HealthStatus = HealthStatus)
+    output <- discover_instances_output()
     svc <- service()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
@@ -264,10 +355,10 @@ get_instance <- function (ServiceId, InstanceId)
 #' @param ServiceId &#91;required&#93; The ID of the service that the instance is associated with.
 #' @param Instances An array that contains the IDs of all the instances that you want to get the health status for.
 #' 
-#' If you omit `Instances`, Amazon Route 53 returns the health status for all the instances that are associated with the specified service.
+#' If you omit `Instances`, AWS Cloud Map returns the health status for all the instances that are associated with the specified service.
 #' 
 #' To get the IDs for the instances that you\'ve registered by using a specified service, submit a ListInstances request.
-#' @param MaxResults The maximum number of instances that you want Route 53 to return in the response to a `GetInstancesHealthStatus` request. If you don\'t specify a value for `MaxResults`, Route 53 returns up to 100 instances.
+#' @param MaxResults The maximum number of instances that you want AWS Cloud Map to return in the response to a `GetInstancesHealthStatus` request. If you don\'t specify a value for `MaxResults`, AWS Cloud Map returns up to 100 instances.
 #' @param NextToken For the first `GetInstancesHealthStatus` request, omit this value.
 #' 
 #' If more than `MaxResults` instances match the specified criteria, you can submit another `GetInstancesHealthStatus` request to get the next group of results. Specify the value of `NextToken` from the previous response in the next request.
@@ -384,7 +475,7 @@ get_service <- function (Id)
 #' @param NextToken For the first `ListInstances` request, omit this value.
 #' 
 #' If more than `MaxResults` instances match the specified criteria, you can submit another `ListInstances` request to get the next group of results. Specify the value of `NextToken` from the previous response in the next request.
-#' @param MaxResults The maximum number of instances that you want Amazon Route 53 to return in the response to a `ListInstances` request. If you don\'t specify a value for `MaxResults`, Route 53 returns up to 100 instances.
+#' @param MaxResults The maximum number of instances that you want AWS Cloud Map to return in the response to a `ListInstances` request. If you don\'t specify a value for `MaxResults`, AWS Cloud Map returns up to 100 instances.
 #'
 #' @export
 list_instances <- function (ServiceId, NextToken = NULL, MaxResults = NULL) 
@@ -425,8 +516,8 @@ list_instances <- function (ServiceId, NextToken = NULL, MaxResults = NULL)
 #' 
 #' If the response contains `NextToken`, submit another `ListNamespaces` request to get the next group of results. Specify the value of `NextToken` from the previous response in the next request.
 #' 
-#' Route 53 gets `MaxResults` namespaces and then filters them based on the specified criteria. It\'s possible that no namespaces in the first `MaxResults` namespaces matched the specified criteria but that subsequent groups of `MaxResults` namespaces do contain namespaces that match the criteria.
-#' @param MaxResults The maximum number of namespaces that you want Amazon Route 53 to return in the response to a `ListNamespaces` request. If you don\'t specify a value for `MaxResults`, Route 53 returns up to 100 namespaces.
+#' AWS Cloud Map gets `MaxResults` namespaces and then filters them based on the specified criteria. It\'s possible that no namespaces in the first `MaxResults` namespaces matched the specified criteria but that subsequent groups of `MaxResults` namespaces do contain namespaces that match the criteria.
+#' @param MaxResults The maximum number of namespaces that you want AWS Cloud Map to return in the response to a `ListNamespaces` request. If you don\'t specify a value for `MaxResults`, AWS Cloud Map returns up to 100 namespaces.
 #' @param Filters A complex type that contains specifications for the namespaces that you want to list.
 #' 
 #' If you specify more than one filter, a namespace must match all filters to be returned by `ListNamespaces`.
@@ -471,8 +562,8 @@ list_namespaces <- function (NextToken = NULL, MaxResults = NULL,
 #' 
 #' If the response contains `NextToken`, submit another `ListOperations` request to get the next group of results. Specify the value of `NextToken` from the previous response in the next request.
 #' 
-#' Route 53 gets `MaxResults` operations and then filters them based on the specified criteria. It\'s possible that no operations in the first `MaxResults` operations matched the specified criteria but that subsequent groups of `MaxResults` operations do contain operations that match the criteria.
-#' @param MaxResults The maximum number of items that you want Amazon Route 53 to return in the response to a `ListOperations` request. If you don\'t specify a value for `MaxResults`, Route 53 returns up to 100 operations.
+#' AWS Cloud Map gets `MaxResults` operations and then filters them based on the specified criteria. It\'s possible that no operations in the first `MaxResults` operations matched the specified criteria but that subsequent groups of `MaxResults` operations do contain operations that match the criteria.
+#' @param MaxResults The maximum number of items that you want AWS Cloud Map to return in the response to a `ListOperations` request. If you don\'t specify a value for `MaxResults`, AWS Cloud Map returns up to 100 operations.
 #' @param Filters A complex type that contains specifications for the operations that you want to list, for example, operations that you started between a specified start date and end date.
 #' 
 #' If you specify more than one filter, an operation must match all filters to be returned by `ListOperations`.
@@ -517,8 +608,8 @@ list_operations <- function (NextToken = NULL, MaxResults = NULL,
 #' 
 #' If the response contains `NextToken`, submit another `ListServices` request to get the next group of results. Specify the value of `NextToken` from the previous response in the next request.
 #' 
-#' Route 53 gets `MaxResults` services and then filters them based on the specified criteria. It\'s possible that no services in the first `MaxResults` services matched the specified criteria but that subsequent groups of `MaxResults` services do contain services that match the criteria.
-#' @param MaxResults The maximum number of services that you want Amazon Route 53 to return in the response to a `ListServices` request. If you don\'t specify a value for `MaxResults`, Route 53 returns up to 100 services.
+#' AWS Cloud Map gets `MaxResults` services and then filters them based on the specified criteria. It\'s possible that no services in the first `MaxResults` services matched the specified criteria but that subsequent groups of `MaxResults` services do contain services that match the criteria.
+#' @param MaxResults The maximum number of services that you want AWS Cloud Map to return in the response to a `ListServices` request. If you don\'t specify a value for `MaxResults`, AWS Cloud Map returns up to 100 services.
 #' @param Filters A complex type that contains specifications for the namespaces that you want to list services for.
 #' 
 #' If you specify more than one filter, an operation must match all filters to be returned by `ListServices`.
@@ -538,21 +629,21 @@ list_services <- function (NextToken = NULL, MaxResults = NULL,
     return(response)
 }
 
-#' Creates or updates one or more records and optionally a health check based on the settings in a specified service
+#' Creates or updates one or more records and, optionally, creates a health check based on the settings in a specified service
 #'
-#' Creates or updates one or more records and optionally a health check based on the settings in a specified service. When you submit a `RegisterInstance` request, Amazon Route 53 does the following:
+#' Creates or updates one or more records and, optionally, creates a health check based on the settings in a specified service. When you submit a `RegisterInstance` request, the following occurs:
 #' 
-#' -   For each DNS record that you define in the service specified by `ServiceId`, creates or updates a record in the hosted zone that is associated with the corresponding namespace
+#' -   For each DNS record that you define in the service that is specified by `ServiceId`, a record is created or updated in the hosted zone that is associated with the corresponding namespace.
 #' 
-#' -   If the service includes `HealthCheckConfig`, creates or updates a health check based on the settings in the health check configuration
+#' -   If the service includes `HealthCheckConfig`, a health check is created based on the settings in the health check configuration.
 #' 
-#' -   Associates the health check, if any, with each of the records
+#' -   The health check, if any, is associated with each of the new or updated records.
 #' 
 #' One `RegisterInstance` request must complete before you can submit another request and specify the same service ID and instance ID.
 #' 
 #' For more information, see CreateService.
 #' 
-#' When Route 53 receives a DNS query for the specified DNS name, it returns the applicable value:
+#' When AWS Cloud Map receives a DNS query for the specified DNS name, it returns the applicable value:
 #' 
 #' -   **If the health check is healthy**: returns all the records
 #' 
@@ -560,7 +651,7 @@ list_services <- function (NextToken = NULL, MaxResults = NULL,
 #' 
 #' -   **If you didn\'t specify a health check configuration**: returns all the records
 #' 
-#' For the current limit on the number of instances that you can register using the same namespace and using the same service, see [Limits on Auto Naming](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html#limits-api-entities-autonaming) in the *Route 53 Developer Guide*.
+#' For the current limit on the number of instances that you can register using the same namespace and using the same service, see [AWS Cloud Map Limits](http://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html) in the *AWS Cloud Map Developer Guide*.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -574,7 +665,7 @@ list_services <- function (NextToken = NULL, MaxResults = NULL,
 #' )
 #' ```
 #'
-#' @param ServiceId &#91;required&#93; The ID of the service that you want to use for settings for the records and health check that Route 53 will create.
+#' @param ServiceId &#91;required&#93; The ID of the service that you want to use for settings for the instance.
 #' @param InstanceId &#91;required&#93; An identifier that you want to associate with the instance. Note the following:
 #' 
 #' -   If the service that is specified by `ServiceId` includes settings for an SRV record, the value of `InstanceId` is automatically included as part of the value for the SRV record. For more information, see DnsRecord\$Type.
@@ -583,7 +674,7 @@ list_services <- function (NextToken = NULL, MaxResults = NULL,
 #' 
 #' -   To register a new instance, you must specify a value that is unique among instances that you register by using the same service.
 #' 
-#' -   If you specify an existing `InstanceId` and `ServiceId`, Route 53 updates the existing records. If there\'s also an existing health check, Route 53 deletes the old health check and creates a new one.
+#' -   If you specify an existing `InstanceId` and `ServiceId`, AWS Cloud Map updates the existing DNS records, if any. If there\'s also an existing health check, AWS Cloud Map deletes the old health check and creates a new one.
 #' 
 #'     The health check isn\'t deleted immediately, so it will still appear for a while if you submit a `ListHealthChecks` request, for example.
 #' @param CreatorRequestId A unique string that identifies the request and that allows failed `RegisterInstance` requests to be retried without the risk of executing the operation twice. You must use a unique `CreatorRequestId` string every time you submit a `RegisterInstance` request if you\'re registering additional instances for the same namespace and service. `CreatorRequestId` can be any unique string, for example, a date/time stamp.
@@ -597,7 +688,7 @@ list_services <- function (NextToken = NULL, MaxResults = NULL,
 #' 
 #' **AWS\_ALIAS\_DNS\_NAME**
 #' 
-#' If you want Route 53 to create an alias record that routes traffic to an Elastic Load Balancing load balancer, specify the DNS name that is associated with the load balancer. For information about how to get the DNS name, see \"DNSName\" in the topic [AliasTarget](http://docs.aws.amazon.com/http:/docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html).
+#' If you want AWS Cloud Map to create an Amazon Route 53 alias record that routes traffic to an Elastic Load Balancing load balancer, specify the DNS name that is associated with the load balancer. For information about how to get the DNS name, see \"DNSName\" in the topic [AliasTarget](http://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html) in the *Route 53 API Reference*.
 #' 
 #' Note the following:
 #' 
@@ -605,11 +696,15 @@ list_services <- function (NextToken = NULL, MaxResults = NULL,
 #' 
 #' -   In the service that is specified by `ServiceId`, the value of `RoutingPolicy` must be `WEIGHTED`.
 #' 
-#' -   If the service that is specified by `ServiceId` includes `HealthCheckConfig` settings, Route 53 will create the health check, but it won\'t associate the health check with the alias record.
+#' -   If the service that is specified by `ServiceId` includes `HealthCheckConfig` settings, AWS Cloud Map will create the Route 53 health check, but it won\'t associate the health check with the alias record.
 #' 
 #' -   Auto naming currently doesn\'t support creating alias records that route traffic to AWS resources other than ELB load balancers.
 #' 
 #' -   If you specify a value for `AWS_ALIAS_DNS_NAME`, don\'t specify values for any of the `AWS_INSTANCE` attributes.
+#' 
+#' **AWS\_INIT\_HEALTH\_STATUS**
+#' 
+#' If the service configuration includes `HealthCheckCustomConfig`, you can optionally use `AWS_INIT_HEALTH_STATUS` to specify the initial status of the custom health check, `HEALTHY` or `UNHEALTHY`. If you don\'t specify a value for `AWS_INIT_HEALTH_STATUS`, the initial status is `HEALTHY`.
 #' 
 #' **AWS\_INSTANCE\_CNAME**
 #' 
@@ -636,6 +731,10 @@ list_services <- function (NextToken = NULL, MaxResults = NULL,
 #' If the service includes `HealthCheckConfig`, the port on the endpoint that you want Route 53 to send requests to.
 #' 
 #' This value is required if you specified settings for an SRV record when you created the service.
+#' 
+#' **Custom attributes**
+#' 
+#' You can add up to 30 custom attributes. For each key-value pair, the maximum length of the attribute name is 255 characters, and the maximum length of the attribute value is 1,024 characters.
 #'
 #' @export
 register_instance <- function (ServiceId, InstanceId, CreatorRequestId = NULL, 
@@ -652,9 +751,13 @@ register_instance <- function (ServiceId, InstanceId, CreatorRequestId = NULL,
     return(response)
 }
 
-#' 
+#' Submits a request to change the health status of a custom health check to healthy or unhealthy
 #'
+#' Submits a request to change the health status of a custom health check to healthy or unhealthy.
 #' 
+#' You can use `UpdateInstanceCustomHealthStatus` to change the status only for custom health checks, which you define using `HealthCheckCustomConfig` when you create a service. You can\'t use it to change the status for Route 53 health checks, which you define using `HealthCheckConfig`.
+#' 
+#' For more information, see HealthCheckCustomConfig.
 #'
 #' @section Accepted Parameters:
 #' ```
@@ -665,9 +768,9 @@ register_instance <- function (ServiceId, InstanceId, CreatorRequestId = NULL,
 #' )
 #' ```
 #'
-#' @param ServiceId &#91;required&#93; 
-#' @param InstanceId &#91;required&#93; 
-#' @param Status &#91;required&#93; 
+#' @param ServiceId &#91;required&#93; The ID of the service that includes the configuration for the custom health check that you want to change the status for.
+#' @param InstanceId &#91;required&#93; The ID of the instance that you want to change the health status for.
+#' @param Status &#91;required&#93; The new status of the instance, `HEALTHY` or `UNHEALTHY`.
 #'
 #' @export
 update_instance_custom_health_status <- function (ServiceId, 
@@ -694,9 +797,9 @@ update_instance_custom_health_status <- function (ServiceId,
 #' 
 #' -   Add, update, or delete `HealthCheckConfig` for a specified service
 #' 
-#' You must specify all `DnsRecords` configurations (and, optionally, `HealthCheckConfig`) that you want to appear in the updated service. Any current configurations that don\'t appear in an `UpdateService` request are deleted.
+#' For public and private DNS namespaces, you must specify all `DnsRecords` configurations (and, optionally, `HealthCheckConfig`) that you want to appear in the updated service. Any current configurations that don\'t appear in an `UpdateService` request are deleted.
 #' 
-#' When you update the TTL setting for a service, Amazon Route 53 also updates the corresponding settings in all the records and health checks that were created by using the specified service.
+#' When you update the TTL setting for a service, AWS Cloud Map also updates the corresponding settings in all the records and health checks that were created by using the specified service.
 #'
 #' @section Accepted Parameters:
 #' ```

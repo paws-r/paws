@@ -25,9 +25,9 @@ This token should be treated as an opaque identifier that is only used to retrie
 
 \item{serviceName}{The name of the service with which to filter the \code{ListTasks} results. Specifying a \code{serviceName} limits the results to tasks that belong to that service.}
 
-\item{desiredStatus}{The task desired status with which to filter the \code{ListTasks} results. Specifying a \code{desiredStatus} of \code{STOPPED} limits the results to tasks that Amazon ECS has set the desired status to \code{STOPPED}, which can be useful for debugging tasks that are not starting properly or have died or finished. The default status filter is \code{RUNNING}, which shows tasks that Amazon ECS has set the desired status to \code{RUNNING}.
+\item{desiredStatus}{The task desired status with which to filter the \code{ListTasks} results. Specifying a \code{desiredStatus} of \code{STOPPED} limits the results to tasks that Amazon ECS has set the desired status to \code{STOPPED}. This can be useful for debugging tasks that are not starting properly or have died or finished. The default status filter is \code{RUNNING}, which shows tasks that Amazon ECS has set the desired status to \code{RUNNING}.
 
-Although you can filter results based on a desired status of \code{PENDING}, this does not return any results because Amazon ECS never sets the desired status of a task to that value (only a task's \code{lastStatus} may have a value of \code{PENDING}).}
+Although you can filter results based on a desired status of \code{PENDING}, this does not return any results. Amazon ECS never sets the desired status of a task to that value (only a task's \code{lastStatus} may have a value of \code{PENDING}).}
 
 \item{launchType}{The launch type for services to list.}
 }

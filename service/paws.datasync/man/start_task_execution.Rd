@@ -4,20 +4,7 @@
 \alias{start_task_execution}
 \title{Starts a specific invocation of a task}
 \usage{
-start_task_execution(
-  TaskArn = "string",
-  OverrideOptions = list(
-    VerifyMode = "POINT_IN_TIME_CONSISTENT"|"NONE",
-    Atime = "NONE"|"BEST_EFFORT",
-    Mtime = "NONE"|"PRESERVE",
-    Uid = "NONE"|"INT_VALUE"|"NAME"|"BOTH",
-    Gid = "NONE"|"INT_VALUE"|"NAME"|"BOTH",
-    PreserveDeletedFiles = "PRESERVE"|"REMOVE",
-    PreserveDevices = "NONE"|"PRESERVE",
-    PosixPermissions = "NONE"|"BEST_EFFORT"|"PRESERVE",
-    BytesPerSecond = 123
-  )
-)
+start_task_execution(TaskArn, OverrideOptions = NULL)
 }
 \arguments{
 \item{TaskArn}{[required] The Amazon Resource Name (ARN) of the task to start.}
@@ -32,6 +19,21 @@ Starts a specific invocation of a task. A \code{TaskExecution} value represents 
 
 For detailed information, see \emph{Task Execution} in \href{https://docs.aws.amazon.com/sync-service/latest/userguide/how-awssync-works.html#terminology}{Components and Terminology} in the \emph{AWS DataSync User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_task_execution(
+  TaskArn = "string",
+  OverrideOptions = list(
+    VerifyMode = "POINT_IN_TIME_CONSISTENT"|"NONE",
+    Atime = "NONE"|"BEST_EFFORT",
+    Mtime = "NONE"|"PRESERVE",
+    Uid = "NONE"|"INT_VALUE"|"NAME"|"BOTH",
+    Gid = "NONE"|"INT_VALUE"|"NAME"|"BOTH",
+    PreserveDeletedFiles = "PRESERVE"|"REMOVE",
+    PreserveDevices = "NONE"|"PRESERVE",
+    PosixPermissions = "NONE"|"BEST_EFFORT"|"PRESERVE",
+    BytesPerSecond = 123
+  )
+)
 }
+}
+

@@ -19,7 +19,7 @@ For example:
 
 To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
 
-\item{WrappingAlgorithm}{[required] The algorithm you use to encrypt the key material before importing it with ImportKeyMaterial. For more information, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-encrypt-key-material.html}{Encrypt the Key Material} in the \emph{AWS Key Management Service Developer Guide}.}
+\item{WrappingAlgorithm}{[required] The algorithm you will use to encrypt the key material before importing it with ImportKeyMaterial. For more information, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-encrypt-key-material.html}{Encrypt the Key Material} in the \emph{AWS Key Management Service Developer Guide}.}
 
 \item{WrappingKeySpec}{[required] The type of wrapping key (public key) to return in the response. Only 2048-bit RSA public keys are supported.}
 }

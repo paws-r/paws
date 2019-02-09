@@ -7,7 +7,7 @@
 get_relational_database_snapshots(pageToken = NULL)
 }
 \arguments{
-\item{pageToken}{A token used for advancing to a specific page of results for your get relational database snapshots request.}
+\item{pageToken}{A token used for advancing to a specific page of results for your \code{get relational database snapshots} request.}
 }
 \description{
 Returns information about all of your database snapshots in Amazon Lightsail.

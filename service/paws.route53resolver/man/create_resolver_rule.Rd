@@ -4,25 +4,8 @@
 \alias{create_resolver_rule}
 \title{For DNS queries that originate in your VPCs, specifies which resolver endpoint the queries pass through, one domain name that you want to forward to your network, and the IP addresses of the DNS resolvers in your network}
 \usage{
-create_resolver_rule(
-  CreatorRequestId = "string",
-  Name = "string",
-  RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE",
-  DomainName = "string",
-  TargetIps = list(
-    list(
-      Ip = "string",
-      Port = 123
-    )
-  ),
-  ResolverEndpointId = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_resolver_rule(CreatorRequestId, Name = NULL, RuleType, DomainName,
+  TargetIps = NULL, ResolverEndpointId = NULL, Tags = NULL)
 }
 \arguments{
 \item{CreatorRequestId}{[required] A unique string that identifies the request and that allows failed requests to be retried without the risk of executing the operation twice. \code{CreatorRequestId} can be any unique string, for example, a date/time stamp.}
@@ -42,6 +25,26 @@ create_resolver_rule(
 \description{
 For DNS queries that originate in your VPCs, specifies which resolver endpoint the queries pass through, one domain name that you want to forward to your network, and the IP addresses of the DNS resolvers in your network.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_resolver_rule(
+  CreatorRequestId = "string",
+  Name = "string",
+  RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE",
+  DomainName = "string",
+  TargetIps = list(
+    list(
+      Ip = "string",
+      Port = 123
+    )
+  ),
+  ResolverEndpointId = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

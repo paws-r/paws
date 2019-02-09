@@ -40,7 +40,9 @@ create_broker_input <- function (...)
             tags = list(type = "string"))), tags = list(locationName = "securityGroups", 
             type = "list")), SubnetIds = structure(list(structure(logical(0), 
             tags = list(type = "string"))), tags = list(locationName = "subnetIds", 
-            type = "list")), Users = structure(list(structure(list(ConsoleAccess = structure(logical(0), 
+            type = "list")), Tags = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(locationName = "tags", 
+            type = "map")), Users = structure(list(structure(list(ConsoleAccess = structure(logical(0), 
             tags = list(locationName = "consoleAccess", type = "boolean")), 
             Groups = structure(list(structure(logical(0), tags = list(type = "string"))), 
                 tags = list(locationName = "groups", type = "list")), 
@@ -70,7 +72,9 @@ create_configuration_input <- function (...)
             enum = "ACTIVEMQ")), EngineVersion = structure(logical(0), 
         tags = list(locationName = "engineVersion", type = "string")), 
         Name = structure(logical(0), tags = list(locationName = "name", 
-            type = "string"))), tags = list(type = "structure"))
+            type = "string")), Tags = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(locationName = "tags", 
+            type = "map"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 
@@ -89,6 +93,22 @@ create_configuration_output <- function (...)
         type = "structure")), Name = structure(logical(0), tags = list(locationName = "name", 
         type = "string"))), tags = list(type = "structure"))
     return(populate(args, shape))
+}
+
+create_tags_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(ResourceArn = structure(logical(0), 
+        tags = list(location = "uri", locationName = "resource-arn", 
+            type = "string")), Tags = structure(list(structure(logical(0), 
+        tags = list(type = "string"))), tags = list(locationName = "tags", 
+        type = "map"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+create_tags_output <- function () 
+{
+    return(list())
 }
 
 create_user_input <- function (...) 
@@ -130,6 +150,22 @@ delete_broker_output <- function (...)
         tags = list(locationName = "brokerId", type = "string"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
+}
+
+delete_tags_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(ResourceArn = structure(logical(0), 
+        tags = list(location = "uri", locationName = "resource-arn", 
+            type = "string")), TagKeys = structure(list(structure(logical(0), 
+        tags = list(type = "string"))), tags = list(location = "querystring", 
+        locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+delete_tags_output <- function () 
+{
+    return(list())
 }
 
 delete_user_input <- function (...) 
@@ -228,7 +264,9 @@ describe_broker_output <- function (...)
             tags = list(type = "string"))), tags = list(locationName = "securityGroups", 
             type = "list")), SubnetIds = structure(list(structure(logical(0), 
             tags = list(type = "string"))), tags = list(locationName = "subnetIds", 
-            type = "list")), Users = structure(list(structure(list(PendingChange = structure(logical(0), 
+            type = "list")), Tags = structure(list(structure(logical(0), 
+            tags = list(type = "string"))), tags = list(locationName = "tags", 
+            type = "map")), Users = structure(list(structure(list(PendingChange = structure(logical(0), 
             tags = list(locationName = "pendingChange", type = "string", 
                 enum = c("CREATE", "UPDATE", "DELETE"))), Username = structure(logical(0), 
             tags = list(locationName = "username", type = "string"))), 
@@ -264,7 +302,9 @@ describe_configuration_output <- function (...)
             Revision = structure(logical(0), tags = list(locationName = "revision", 
                 type = "integer"))), tags = list(locationName = "latestRevision", 
             type = "structure")), Name = structure(logical(0), 
-            tags = list(locationName = "name", type = "string"))), 
+            tags = list(locationName = "name", type = "string")), 
+        Tags = structure(list(structure(logical(0), tags = list(type = "string"))), 
+            tags = list(locationName = "tags", type = "map"))), 
         tags = list(type = "structure"))
     return(populate(args, shape))
 }
@@ -424,12 +464,32 @@ list_configurations_output <- function (...)
             Revision = structure(logical(0), tags = list(locationName = "revision", 
                 type = "integer"))), tags = list(locationName = "latestRevision", 
             type = "structure")), Name = structure(logical(0), 
-            tags = list(locationName = "name", type = "string"))), 
+            tags = list(locationName = "name", type = "string")), 
+        Tags = structure(list(structure(logical(0), tags = list(type = "string"))), 
+            tags = list(locationName = "tags", type = "map"))), 
         tags = list(type = "structure"))), tags = list(locationName = "configurations", 
         type = "list")), MaxResults = structure(logical(0), tags = list(locationName = "maxResults", 
         type = "integer")), NextToken = structure(logical(0), 
         tags = list(locationName = "nextToken", type = "string"))), 
         tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_tags_input <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(ResourceArn = structure(logical(0), 
+        tags = list(location = "uri", locationName = "resource-arn", 
+            type = "string"))), tags = list(type = "structure"))
+    return(populate(args, shape))
+}
+
+list_tags_output <- function (...) 
+{
+    args <- c(as.list(environment()), list(...))
+    shape <- structure(list(Tags = structure(list(structure(logical(0), 
+        tags = list(type = "string"))), tags = list(locationName = "tags", 
+        type = "map"))), tags = list(type = "structure"))
     return(populate(args, shape))
 }
 

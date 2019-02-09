@@ -8,7 +8,7 @@ create_reserved_instances_listing(ClientToken, InstanceCount,
   PriceSchedules, ReservedInstancesId)
 }
 \arguments{
-\item{ClientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of your listings. This helps avoid duplicate listings. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
+\item{ClientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of your listings. This helps avoid duplicate listings. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
 
 \item{InstanceCount}{[required] The number of instances that are a part of a Reserved Instance account to be listed in the Reserved Instance Marketplace. This number should be less than or equal to the instance count associated with the Reserved Instance ID specified in this call.}
 
@@ -26,7 +26,7 @@ The Reserved Instance Marketplace matches sellers who want to resell Standard Re
 
 To sell your Standard Reserved Instances, you must first register as a seller in the Reserved Instance Marketplace. After completing the registration process, you can create a Reserved Instance Marketplace listing of some or all of your Standard Reserved Instances, and specify the upfront price to receive for them. Your Standard Reserved Instance listings then become available for purchase. To view the details of your Standard Reserved Instance listing, you can use the DescribeReservedInstancesListings operation.
 
-For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html}{Reserved Instance Marketplace} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html}{Reserved Instance Marketplace} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Accepted Parameters}{
 \preformatted{create_reserved_instances_listing(
