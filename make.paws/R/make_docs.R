@@ -353,6 +353,7 @@ postprocess <- function(markdown) {
 
 # Convert HTML to markdown
 html_to_markdown <- function(html, wrap = TRUE) {
+  if (is.null(html)) return("")
   preprocessed <- preprocess(html)
   temp_in <- tempfile()
   write_utf8(preprocessed, temp_in)
@@ -371,6 +372,7 @@ html_to_markdown <- function(html, wrap = TRUE) {
 }
 
 html_to_text <- function(html) {
+  if (is.null(html)) return("")
   temp_in <- tempfile()
   write_utf8(html, temp_in)
   temp_out <- tempfile()
