@@ -4,26 +4,10 @@
 \alias{create_configuration_template}
 \title{Creates a configuration template}
 \usage{
-create_configuration_template(
-  ApplicationName = "string",
-  TemplateName = "string",
-  SolutionStackName = "string",
-  PlatformArn = "string",
-  SourceConfiguration = list(
-    ApplicationName = "string",
-    TemplateName = "string"
-  ),
-  EnvironmentId = "string",
-  Description = "string",
-  OptionSettings = list(
-    list(
-      ResourceName = "string",
-      Namespace = "string",
-      OptionName = "string",
-      Value = "string"
-    )
-  )
-)
+create_configuration_template(ApplicationName, TemplateName,
+  SolutionStackName = NULL, PlatformArn = NULL,
+  SourceConfiguration = NULL, EnvironmentId = NULL,
+  Description = NULL, OptionSettings = NULL)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application to associate with this configuration template. If no application is found with this name, AWS Elastic Beanstalk returns an \code{InvalidParameterValue} error.}
@@ -71,13 +55,37 @@ Related Topics
 \item ListAvailableSolutionStacks
 }
 }
+\section{Accepted Parameters}{
+\preformatted{create_configuration_template(
+  ApplicationName = "string",
+  TemplateName = "string",
+  SolutionStackName = "string",
+  PlatformArn = "string",
+  SourceConfiguration = list(
+    ApplicationName = "string",
+    TemplateName = "string"
+  ),
+  EnvironmentId = "string",
+  Description = "string",
+  OptionSettings = list(
+    list(
+      ResourceName = "string",
+      Namespace = "string",
+      OptionName = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # The following operation creates a configuration template named my-app-v1
 # from the settings applied to an environment with the id e-rpqsewtp2j:
-create_configuration_template(
+\donttest{create_configuration_template(
   ApplicationName = "my-app",
   EnvironmentId = "e-rpqsewtp2j",
   TemplateName = "my-app-v1"
-)
+)}
 
 }

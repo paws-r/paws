@@ -4,12 +4,8 @@
 \alias{describe_job_execution}
 \title{Gets details of a job execution}
 \usage{
-describe_job_execution(
-  jobId = "string",
-  thingName = "string",
-  includeJobDocument = TRUE|FALSE,
-  executionNumber = 123
-)
+describe_job_execution(jobId, thingName, includeJobDocument = NULL,
+  executionNumber = NULL)
 }
 \arguments{
 \item{jobId}{[required] The unique identifier assigned to this job when it was created.}
@@ -23,6 +19,13 @@ describe_job_execution(
 \description{
 Gets details of a job execution.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_job_execution(
+  jobId = "string",
+  thingName = "string",
+  includeJobDocument = TRUE|FALSE,
+  executionNumber = 123
+)
 }
+}
+

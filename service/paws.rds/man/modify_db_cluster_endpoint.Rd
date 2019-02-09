@@ -4,16 +4,8 @@
 \alias{modify_db_cluster_endpoint}
 \title{Modifies the properties of an endpoint in an Amazon Aurora DB cluster}
 \usage{
-modify_db_cluster_endpoint(
-  DBClusterEndpointIdentifier = "string",
-  EndpointType = "string",
-  StaticMembers = list(
-    "string"
-  ),
-  ExcludedMembers = list(
-    "string"
-  )
-)
+modify_db_cluster_endpoint(DBClusterEndpointIdentifier,
+  EndpointType = NULL, StaticMembers = NULL, ExcludedMembers = NULL)
 }
 \arguments{
 \item{DBClusterEndpointIdentifier}{[required] The identifier of the endpoint to modify. This parameter is stored as a lowercase string.}
@@ -27,6 +19,17 @@ modify_db_cluster_endpoint(
 \description{
 Modifies the properties of an endpoint in an Amazon Aurora DB cluster.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_db_cluster_endpoint(
+  DBClusterEndpointIdentifier = "string",
+  EndpointType = "string",
+  StaticMembers = list(
+    "string"
+  ),
+  ExcludedMembers = list(
+    "string"
+  )
+)
 }
+}
+

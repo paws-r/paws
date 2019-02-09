@@ -4,13 +4,8 @@
 \alias{batch_modify_cluster_snapshots}
 \title{Modifies the settings for a list of snapshots}
 \usage{
-batch_modify_cluster_snapshots(
-  SnapshotIdentifierList = list(
-    "string"
-  ),
-  ManualSnapshotRetentionPeriod = 123,
-  Force = TRUE|FALSE
-)
+batch_modify_cluster_snapshots(SnapshotIdentifierList,
+  ManualSnapshotRetentionPeriod = NULL, Force = NULL)
 }
 \arguments{
 \item{SnapshotIdentifierList}{[required] A list of snapshot identifiers you want to modify.}
@@ -26,6 +21,14 @@ If you decrease the manual snapshot retention period from its current value, exi
 \description{
 Modifies the settings for a list of snapshots.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{batch_modify_cluster_snapshots(
+  SnapshotIdentifierList = list(
+    "string"
+  ),
+  ManualSnapshotRetentionPeriod = 123,
+  Force = TRUE|FALSE
+)
 }
+}
+

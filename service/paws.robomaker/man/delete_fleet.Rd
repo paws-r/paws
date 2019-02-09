@@ -4,9 +4,7 @@
 \alias{delete_fleet}
 \title{Deletes a fleet}
 \usage{
-delete_fleet(
-  fleet = "string"
-)
+delete_fleet(fleet)
 }
 \arguments{
 \item{fleet}{[required] The Amazon Resource Name (ARN) of the fleet.}
@@ -14,6 +12,10 @@ delete_fleet(
 \description{
 Deletes a fleet.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_fleet(
+  fleet = "string"
+)
 }
+}
+

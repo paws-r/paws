@@ -4,7 +4,30 @@
 \alias{search}
 \title{Finds Amazon SageMaker resources that match a search query}
 \usage{
-search(
+search(Resource, SearchExpression = NULL, SortBy = NULL,
+  SortOrder = NULL, NextToken = NULL, MaxResults = NULL)
+}
+\arguments{
+\item{Resource}{[required] The name of the Amazon SageMaker resource to search for. Currently, the only valid \code{Resource} value is \code{TrainingJob}.}
+
+\item{SearchExpression}{A Boolean conditional statement. Resource objects must satisfy this condition to be included in search results. You must provide at least one subexpression, filter, or nested filter. The maximum number of recursive \code{SubExpressions}, \code{NestedFilters}, and \code{Filters} that can be included in a \code{SearchExpression} object is 50.}
+
+\item{SortBy}{The name of the resource property used to sort the \code{SearchResults}. The default is \code{LastModifiedTime}.}
+
+\item{SortOrder}{How \code{SearchResults} are ordered. Valid values are \code{Ascending} or \code{Descending}. The default is \code{Descending}.}
+
+\item{NextToken}{If more than \code{MaxResults} resource objects match the specified \code{SearchExpression}, the \code{SearchResponse} includes a \code{NextToken}. The \code{NextToken} can be passed to the next \code{SearchRequest} to continue retrieving results for the specified \code{SearchExpression} and \code{Sort} parameters.}
+
+\item{MaxResults}{The maximum number of results to return in a \code{SearchResponse}.}
+}
+\description{
+Finds Amazon SageMaker resources that match a search query. Matching resource objects are returned as a list of \code{SearchResult} objects in the response. You can sort the search results by any resource property in a ascending or descending order.
+}
+\details{
+You can query against the following value types: numerical, text, Booleans, and timestamps.
+}
+\section{Accepted Parameters}{
+\preformatted{search(
   Resource = "TrainingJob",
   SearchExpression = list(
     Filters = list(
@@ -37,25 +60,5 @@ search(
   MaxResults = 123
 )
 }
-\arguments{
-\item{Resource}{[required] The name of the Amazon SageMaker resource to search for. Currently, the only valid \code{Resource} value is \code{TrainingJob}.}
-
-\item{SearchExpression}{A Boolean conditional statement. Resource objects must satisfy this condition to be included in search results. You must provide at least one subexpression, filter, or nested filter. The maximum number of recursive \code{SubExpressions}, \code{NestedFilters}, and \code{Filters} that can be included in a \code{SearchExpression} object is 50.}
-
-\item{SortBy}{The name of the resource property used to sort the \code{SearchResults}. The default is \code{LastModifiedTime}.}
-
-\item{SortOrder}{How \code{SearchResults} are ordered. Valid values are \code{Ascending} or \code{Descending}. The default is \code{Descending}.}
-
-\item{NextToken}{If more than \code{MaxResults} resource objects match the specified \code{SearchExpression}, the \code{SearchResponse} includes a \code{NextToken}. The \code{NextToken} can be passed to the next \code{SearchRequest} to continue retrieving results for the specified \code{SearchExpression} and \code{Sort} parameters.}
-
-\item{MaxResults}{The maximum number of results to return in a \code{SearchResponse}.}
 }
-\description{
-Finds Amazon SageMaker resources that match a search query. Matching resource objects are returned as a list of \code{SearchResult} objects in the response. You can sort the search results by any resource property in a ascending or descending order.
-}
-\details{
-You can query against the following value types: numerical, text, Booleans, and timestamps.
-}
-\examples{
 
-}

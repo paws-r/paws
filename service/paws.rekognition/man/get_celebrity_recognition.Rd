@@ -2,14 +2,10 @@
 % Please edit documentation in R/paws.rekognition_operations.R
 \name{get_celebrity_recognition}
 \alias{get_celebrity_recognition}
-\title{Gets the celebrity recognition results for a Amazon Rekognition Video analysis started by}
+\title{Gets the celebrity recognition results for a Amazon Rekognition Video analysis started by StartCelebrityRecognition}
 \usage{
-get_celebrity_recognition(
-  JobId = "string",
-  MaxResults = 123,
-  NextToken = "string",
-  SortBy = "ID"|"TIMESTAMP"
-)
+get_celebrity_recognition(JobId, MaxResults = NULL, NextToken = NULL,
+  SortBy = NULL)
 }
 \arguments{
 \item{JobId}{[required] Job identifier for the required celebrity recognition analysis. You can get the job identifer from a call to \code{StartCelebrityRecognition}.}
@@ -21,25 +17,32 @@ get_celebrity_recognition(
 \item{SortBy}{Sort to use for celebrities returned in \code{Celebrities} field. Specify \code{ID} to sort by the celebrity identifier, specify \code{TIMESTAMP} to sort by the time the celebrity was recognized.}
 }
 \description{
-Gets the celebrity recognition results for a Amazon Rekognition Video analysis started by .
+Gets the celebrity recognition results for a Amazon Rekognition Video analysis started by StartCelebrityRecognition.
 }
 \details{
-Celebrity recognition in a video is an asynchronous operation. Analysis is started by a call to which returns a job identifier (\code{JobId}). When the celebrity recognition operation finishes, Amazon Rekognition Video publishes a completion status to the Amazon Simple Notification Service topic registered in the initial call to \code{StartCelebrityRecognition}. To get the results of the celebrity recognition analysis, first check that the status value published to the Amazon SNS topic is \code{SUCCEEDED}. If so, call \code{GetCelebrityDetection} and pass the job identifier (\code{JobId}) from the initial call to \code{StartCelebrityDetection}.
+Celebrity recognition in a video is an asynchronous operation. Analysis is started by a call to StartCelebrityRecognition which returns a job identifier (\code{JobId}). When the celebrity recognition operation finishes, Amazon Rekognition Video publishes a completion status to the Amazon Simple Notification Service topic registered in the initial call to \code{StartCelebrityRecognition}. To get the results of the celebrity recognition analysis, first check that the status value published to the Amazon SNS topic is \code{SUCCEEDED}. If so, call \code{GetCelebrityDetection} and pass the job identifier (\code{JobId}) from the initial call to \code{StartCelebrityDetection}.
 
 For more information, see Working With Stored Videos in the Amazon Rekognition Developer Guide.
 
-\code{GetCelebrityRecognition} returns detected celebrities and the time(s) they are detected in an array (\code{Celebrities}) of objects. Each \code{CelebrityRecognition} contains information about the celebrity in a object and the time, \code{Timestamp}, the celebrity was detected.
+\code{GetCelebrityRecognition} returns detected celebrities and the time(s) they are detected in an array (\code{Celebrities}) of CelebrityRecognition objects. Each \code{CelebrityRecognition} contains information about the celebrity in a CelebrityDetail object and the time, \code{Timestamp}, the celebrity was detected.
 
 \code{GetCelebrityRecognition} only returns the default facial attributes (\code{BoundingBox}, \code{Confidence}, \code{Landmarks}, \code{Pose}, and \code{Quality}). The other facial attributes listed in the \code{Face} object of the following response syntax are not returned. For more information, see FaceDetail in the Amazon Rekognition Developer Guide.
 
 By default, the \code{Celebrities} array is sorted by time (milliseconds from the start of the video). You can also sort the array by celebrity by specifying the value \code{ID} in the \code{SortBy} input parameter.
 
-The \code{CelebrityDetail} object includes the celebrity identifer and additional information urls. If you don't store the additional information urls, you can get them later by calling with the celebrity identifer.
+The \code{CelebrityDetail} object includes the celebrity identifer and additional information urls. If you don't store the additional information urls, you can get them later by calling GetCelebrityInfo with the celebrity identifer.
 
 No information is returned for faces not recognized as celebrities.
 
 Use MaxResults parameter to limit the number of labels returned. If there are more results than specified in \code{MaxResults}, the value of \code{NextToken} in the operation response contains a pagination token for getting the next set of results. To get the next page of results, call \code{GetCelebrityDetection} and populate the \code{NextToken} request parameter with the token value returned from the previous call to \code{GetCelebrityRecognition}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_celebrity_recognition(
+  JobId = "string",
+  MaxResults = 123,
+  NextToken = "string",
+  SortBy = "ID"|"TIMESTAMP"
+)
 }
+}
+

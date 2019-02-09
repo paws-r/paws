@@ -4,10 +4,7 @@
 \alias{describe_application}
 \title{Returns information about a specific Amazon Kinesis Data Analytics application}
 \usage{
-describe_application(
-  ApplicationName = "string",
-  IncludeAdditionalDetails = TRUE|FALSE
-)
+describe_application(ApplicationName, IncludeAdditionalDetails = NULL)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application.}
@@ -20,6 +17,11 @@ Returns information about a specific Amazon Kinesis Data Analytics application.
 \details{
 If you want to retrieve a list of all applications in your account, use the ListApplications operation.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_application(
+  ApplicationName = "string",
+  IncludeAdditionalDetails = TRUE|FALSE
+)
 }
+}
+

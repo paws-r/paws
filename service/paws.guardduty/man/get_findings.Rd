@@ -4,16 +4,7 @@
 \alias{get_findings}
 \title{Describes Amazon GuardDuty findings specified by finding IDs}
 \usage{
-get_findings(
-  DetectorId = "string",
-  FindingIds = list(
-    "string"
-  ),
-  SortCriteria = list(
-    AttributeName = "string",
-    OrderBy = "ASC"|"DESC"
-  )
-)
+get_findings(DetectorId, FindingIds, SortCriteria = NULL)
 }
 \arguments{
 \item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose findings you want to retrieve.}
@@ -25,6 +16,17 @@ get_findings(
 \description{
 Describes Amazon GuardDuty findings specified by finding IDs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_findings(
+  DetectorId = "string",
+  FindingIds = list(
+    "string"
+  ),
+  SortCriteria = list(
+    AttributeName = "string",
+    OrderBy = "ASC"|"DESC"
+  )
+)
 }
+}
+

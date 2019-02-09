@@ -4,10 +4,7 @@
 \alias{list_keys}
 \title{Gets a list of all customer master keys (CMKs) in the caller's AWS account and region}
 \usage{
-list_keys(
-  Limit = 123,
-  Marker = "string"
-)
+list_keys(Limit = NULL, Marker = NULL)
 }
 \arguments{
 \item{Limit}{Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not return more than the specified number of items, but it might return fewer.
@@ -19,8 +16,16 @@ This value is optional. If you include a value, it must be between 1 and 1000, i
 \description{
 Gets a list of all customer master keys (CMKs) in the caller's AWS account and region.
 }
+\section{Accepted Parameters}{
+\preformatted{list_keys(
+  Limit = 123,
+  Marker = "string"
+)
+}
+}
+
 \examples{
 # The following example lists CMKs.
-list_keys()
+\donttest{list_keys()}
 
 }

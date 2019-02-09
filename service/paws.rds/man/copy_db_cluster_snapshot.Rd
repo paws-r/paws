@@ -4,20 +4,10 @@
 \alias{copy_db_cluster_snapshot}
 \title{Copies a snapshot of a DB cluster}
 \usage{
-copy_db_cluster_snapshot(
-  SourceDBClusterSnapshotIdentifier = "string",
-  TargetDBClusterSnapshotIdentifier = "string",
-  KmsKeyId = "string",
-  PreSignedUrl = "string",
-  CopyTags = TRUE|FALSE,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  SourceRegion = "string"
-)
+copy_db_cluster_snapshot(SourceDBClusterSnapshotIdentifier,
+  TargetDBClusterSnapshotIdentifier, KmsKeyId = NULL,
+  PreSignedUrl = NULL, CopyTags = NULL, Tags = NULL,
+  SourceRegion = NULL)
 }
 \arguments{
 \item{SourceDBClusterSnapshotIdentifier}{[required] The identifier of the DB cluster snapshot to copy. This parameter is not case-sensitive.
@@ -104,6 +94,21 @@ For more information on copying encrypted DB cluster snapshots from one AWS Regi
 
 For more information on Amazon Aurora, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?} in the \emph{Amazon Aurora User Guide.}
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{copy_db_cluster_snapshot(
+  SourceDBClusterSnapshotIdentifier = "string",
+  TargetDBClusterSnapshotIdentifier = "string",
+  KmsKeyId = "string",
+  PreSignedUrl = "string",
+  CopyTags = TRUE|FALSE,
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  SourceRegion = "string"
+)
 }
+}
+

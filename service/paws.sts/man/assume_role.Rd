@@ -4,15 +4,9 @@
 \alias{assume_role}
 \title{Returns a set of temporary security credentials (consisting of an access key ID, a secret access key, and a security token) that you can use to access AWS resources that you might not normally have access to}
 \usage{
-assume_role(
-  RoleArn = "string",
-  RoleSessionName = "string",
-  Policy = "string",
-  DurationSeconds = 123,
-  ExternalId = "string",
-  SerialNumber = "string",
-  TokenCode = "string"
-)
+assume_role(RoleArn, RoleSessionName, Policy = NULL,
+  DurationSeconds = NULL, ExternalId = NULL, SerialNumber = NULL,
+  TokenCode = NULL)
 }
 \arguments{
 \item{RoleArn}{[required] The Amazon Resource Name (ARN) of the role to assume.}
@@ -79,14 +73,27 @@ For more information, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/
 
 To use MFA with \code{AssumeRole}, you pass values for the \code{SerialNumber} and \code{TokenCode} parameters. The \code{SerialNumber} value identifies the user's hardware or virtual MFA device. The \code{TokenCode} is the time-based one-time password (TOTP) that the MFA devices produces.
 }
+\section{Accepted Parameters}{
+\preformatted{assume_role(
+  RoleArn = "string",
+  RoleSessionName = "string",
+  Policy = "string",
+  DurationSeconds = 123,
+  ExternalId = "string",
+  SerialNumber = "string",
+  TokenCode = "string"
+)
+}
+}
+
 \examples{
 # 
-assume_role(
+\donttest{assume_role(
   DurationSeconds = 3600L,
   ExternalId = "123ABC",
   Policy = "{\\"Version\\":\\"2012-10-17\\",\\"Statement\\":[{\\"Sid\\":\\"Stmt1\\",\\"Effect\\":\\"Allow\\",\\"Action\\":\\"s3:*\\",\\"Resource\\":\\"*\\"}]}",
   RoleArn = "arn:aws:iam::123456789012:role/demo",
   RoleSessionName = "Bob"
-)
+)}
 
 }

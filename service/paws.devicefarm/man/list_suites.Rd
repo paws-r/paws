@@ -4,10 +4,7 @@
 \alias{list_suites}
 \title{Gets information about test suites for a given job}
 \usage{
-list_suites(
-  arn = "string",
-  nextToken = "string"
-)
+list_suites(arn, nextToken = NULL)
 }
 \arguments{
 \item{arn}{[required] The job's Amazon Resource Name (ARN).}
@@ -17,12 +14,20 @@ list_suites(
 \description{
 Gets information about test suites for a given job.
 }
+\section{Accepted Parameters}{
+\preformatted{list_suites(
+  arn = "string",
+  nextToken = "string"
+)
+}
+}
+
 \examples{
 # The following example returns information about suites, given a specific
 # Device Farm project.
-list_suites(
+\donttest{list_suites(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
-)
+)}
 
 }

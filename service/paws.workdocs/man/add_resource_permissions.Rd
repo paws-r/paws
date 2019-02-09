@@ -4,7 +4,23 @@
 \alias{add_resource_permissions}
 \title{Creates a set of permissions for the specified folder or document}
 \usage{
-add_resource_permissions(
+add_resource_permissions(AuthenticationToken = NULL, ResourceId,
+  Principals, NotificationOptions = NULL)
+}
+\arguments{
+\item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
+
+\item{ResourceId}{[required] The ID of the resource.}
+
+\item{Principals}{[required] The users, groups, or organization being granted permission.}
+
+\item{NotificationOptions}{The notification options.}
+}
+\description{
+Creates a set of permissions for the specified folder or document. The resource permissions are overwritten if the principals already have different permissions.
+}
+\section{Accepted Parameters}{
+\preformatted{add_resource_permissions(
   AuthenticationToken = "string",
   ResourceId = "string",
   Principals = list(
@@ -20,18 +36,5 @@ add_resource_permissions(
   )
 )
 }
-\arguments{
-\item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
-
-\item{ResourceId}{[required] The ID of the resource.}
-
-\item{Principals}{[required] The users, groups, or organization being granted permission.}
-
-\item{NotificationOptions}{The notification options.}
 }
-\description{
-Creates a set of permissions for the specified folder or document. The resource permissions are overwritten if the principals already have different permissions.
-}
-\examples{
 
-}

@@ -4,20 +4,12 @@
 \alias{create_network_profile}
 \title{Creates a network profile}
 \usage{
-create_network_profile(
-  projectArn = "string",
-  name = "string",
-  description = "string",
-  type = "CURATED"|"PRIVATE",
-  uplinkBandwidthBits = 123,
-  downlinkBandwidthBits = 123,
-  uplinkDelayMs = 123,
-  downlinkDelayMs = 123,
-  uplinkJitterMs = 123,
-  downlinkJitterMs = 123,
-  uplinkLossPercent = 123,
-  downlinkLossPercent = 123
-)
+create_network_profile(projectArn, name, description = NULL,
+  type = NULL, uplinkBandwidthBits = NULL,
+  downlinkBandwidthBits = NULL, uplinkDelayMs = NULL,
+  downlinkDelayMs = NULL, uplinkJitterMs = NULL,
+  downlinkJitterMs = NULL, uplinkLossPercent = NULL,
+  downlinkLossPercent = NULL)
 }
 \arguments{
 \item{projectArn}{[required] The Amazon Resource Name (ARN) of the project for which you want to create a network profile.}
@@ -47,6 +39,21 @@ create_network_profile(
 \description{
 Creates a network profile.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_network_profile(
+  projectArn = "string",
+  name = "string",
+  description = "string",
+  type = "CURATED"|"PRIVATE",
+  uplinkBandwidthBits = 123,
+  downlinkBandwidthBits = 123,
+  uplinkDelayMs = 123,
+  downlinkDelayMs = 123,
+  uplinkJitterMs = 123,
+  downlinkJitterMs = 123,
+  uplinkLossPercent = 123,
+  downlinkLossPercent = 123
+)
 }
+}
+

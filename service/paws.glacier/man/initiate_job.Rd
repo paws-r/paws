@@ -4,7 +4,20 @@
 \alias{initiate_job}
 \title{This operation initiates a job of the specified type, which can be a select, an archival retrieval, or a vault retrieval}
 \usage{
-initiate_job(
+initiate_job(accountId, vaultName, jobParameters = NULL)
+}
+\arguments{
+\item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
+
+\item{vaultName}{[required] The name of the vault.}
+
+\item{jobParameters}{Provides options for specifying job information.}
+}
+\description{
+This operation initiates a job of the specified type, which can be a select, an archival retrieval, or a vault retrieval. For more information about using this operation, see the documentation for the underlying REST API \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html}{Initiate a Job}.
+}
+\section{Accepted Parameters}{
+\preformatted{initiate_job(
   accountId = "string",
   vaultName = "string",
   jobParameters = list(
@@ -78,20 +91,12 @@ initiate_job(
   )
 )
 }
-\arguments{
-\item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
-
-\item{vaultName}{[required] The name of the vault.}
-
-\item{jobParameters}{Provides options for specifying job information.}
 }
-\description{
-This operation initiates a job of the specified type, which can be a select, an archival retrieval, or a vault retrieval. For more information about using this operation, see the documentation for the underlying REST API \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html}{Initiate a Job}.
-}
+
 \examples{
 # The example initiates an inventory-retrieval job for the vault named
 # examplevault.
-initiate_job(
+\donttest{initiate_job(
   accountId = "-",
   jobParameters = list(
     Description = "My inventory job",
@@ -100,6 +105,6 @@ initiate_job(
     Type = "inventory-retrieval"
   ),
   vaultName = "examplevault"
-)
+)}
 
 }

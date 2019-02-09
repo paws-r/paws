@@ -4,22 +4,10 @@
 \alias{create_load_balancer}
 \title{Creates a Lightsail load balancer}
 \usage{
-create_load_balancer(
-  loadBalancerName = "string",
-  instancePort = 123,
-  healthCheckPath = "string",
-  certificateName = "string",
-  certificateDomainName = "string",
-  certificateAlternativeNames = list(
-    "string"
-  ),
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
+create_load_balancer(loadBalancerName, instancePort,
+  healthCheckPath = NULL, certificateName = NULL,
+  certificateDomainName = NULL, certificateAlternativeNames = NULL,
+  tags = NULL)
 }
 \arguments{
 \item{loadBalancerName}{[required] The name of your load balancer.}
@@ -52,6 +40,23 @@ When you create a load balancer, you can specify a unique name and port settings
 
 The \code{create load balancer} operation supports tag-based access control via request tags. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_load_balancer(
+  loadBalancerName = "string",
+  instancePort = 123,
+  healthCheckPath = "string",
+  certificateName = "string",
+  certificateDomainName = "string",
+  certificateAlternativeNames = list(
+    "string"
+  ),
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
 }
+}
+

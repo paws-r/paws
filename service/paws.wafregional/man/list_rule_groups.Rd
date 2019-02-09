@@ -4,10 +4,7 @@
 \alias{list_rule_groups}
 \title{Returns an array of RuleGroup objects}
 \usage{
-list_rule_groups(
-  NextMarker = "string",
-  Limit = 123
-)
+list_rule_groups(NextMarker = NULL, Limit = NULL)
 }
 \arguments{
 \item{NextMarker}{If you specify a value for \code{Limit} and you have more \code{RuleGroups} than the value of \code{Limit}, AWS WAF returns a \code{NextMarker} value in the response that allows you to list another group of \code{RuleGroups}. For the second and subsequent \code{ListRuleGroups} requests, specify the value of \code{NextMarker} from the previous response to get information about another batch of \code{RuleGroups}.}
@@ -17,6 +14,11 @@ list_rule_groups(
 \description{
 Returns an array of RuleGroup objects.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_rule_groups(
+  NextMarker = "string",
+  Limit = 123
+)
 }
+}
+

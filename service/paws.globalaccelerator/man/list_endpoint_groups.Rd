@@ -4,11 +4,7 @@
 \alias{list_endpoint_groups}
 \title{List the endpoint groups that are associated with a listener}
 \usage{
-list_endpoint_groups(
-  ListenerArn = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_endpoint_groups(ListenerArn, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener.}
@@ -20,6 +16,12 @@ list_endpoint_groups(
 \description{
 List the endpoint groups that are associated with a listener.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_endpoint_groups(
+  ListenerArn = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{set_ip_address_type}
 \title{Sets the type of IP addresses used by the subnets of the specified Application Load Balancer or Network Load Balancer}
 \usage{
-set_ip_address_type(
-  LoadBalancerArn = "string",
-  IpAddressType = "ipv4"|"dualstack"
-)
+set_ip_address_type(LoadBalancerArn, IpAddressType)
 }
 \arguments{
 \item{LoadBalancerArn}{[required] The Amazon Resource Name (ARN) of the load balancer.}
@@ -20,6 +17,11 @@ Sets the type of IP addresses used by the subnets of the specified Application L
 \details{
 Network Load Balancers must use \code{ipv4}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{set_ip_address_type(
+  LoadBalancerArn = "string",
+  IpAddressType = "ipv4"|"dualstack"
+)
 }
+}
+

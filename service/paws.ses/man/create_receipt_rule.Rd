@@ -4,7 +4,25 @@
 \alias{create_receipt_rule}
 \title{Creates a receipt rule}
 \usage{
-create_receipt_rule(
+create_receipt_rule(RuleSetName, After = NULL, Rule)
+}
+\arguments{
+\item{RuleSetName}{[required] The name of the rule set that the receipt rule will be added to.}
+
+\item{After}{The name of an existing rule after which the new rule will be placed. If this parameter is null, the new rule will be inserted at the beginning of the rule list.}
+
+\item{Rule}{[required] A data structure that contains the specified rule's name, actions, recipients, domains, enabled status, scan status, and TLS policy.}
+}
+\description{
+Creates a receipt rule.
+}
+\details{
+For information about setting up receipt rules, see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html}{Amazon SES Developer Guide}.
+
+You can execute this operation no more than once per second.
+}
+\section{Accepted Parameters}{
+\preformatted{create_receipt_rule(
   RuleSetName = "string",
   After = "string",
   Rule = list(
@@ -56,24 +74,11 @@ create_receipt_rule(
   )
 )
 }
-\arguments{
-\item{RuleSetName}{[required] The name of the rule set that the receipt rule will be added to.}
-
-\item{After}{The name of an existing rule after which the new rule will be placed. If this parameter is null, the new rule will be inserted at the beginning of the rule list.}
-
-\item{Rule}{[required] A data structure that contains the specified rule's name, actions, recipients, domains, enabled status, scan status, and TLS policy.}
 }
-\description{
-Creates a receipt rule.
-}
-\details{
-For information about setting up receipt rules, see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html}{Amazon SES Developer Guide}.
 
-You can execute this operation no more than once per second.
-}
 \examples{
 # The following example creates a new receipt rule:
-create_receipt_rule(
+\donttest{create_receipt_rule(
   After = "",
   Rule = list(
     Actions = list(
@@ -90,6 +95,6 @@ create_receipt_rule(
     TlsPolicy = "Optional"
   ),
   RuleSetName = "MyRuleSet"
-)
+)}
 
 }

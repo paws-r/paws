@@ -4,10 +4,7 @@
 \alias{delete_pending_aggregation_request}
 \title{Deletes pending authorization requests for a specified aggregator account in a specified region}
 \usage{
-delete_pending_aggregation_request(
-  RequesterAccountId = "string",
-  RequesterAwsRegion = "string"
-)
+delete_pending_aggregation_request(RequesterAccountId, RequesterAwsRegion)
 }
 \arguments{
 \item{RequesterAccountId}{[required] The 12-digit account ID of the account requesting to aggregate data.}
@@ -17,6 +14,11 @@ delete_pending_aggregation_request(
 \description{
 Deletes pending authorization requests for a specified aggregator account in a specified region.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_pending_aggregation_request(
+  RequesterAccountId = "string",
+  RequesterAwsRegion = "string"
+)
 }
+}
+

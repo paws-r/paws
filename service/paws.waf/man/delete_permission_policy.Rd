@@ -4,9 +4,7 @@
 \alias{delete_permission_policy}
 \title{Permanently deletes an IAM policy from the specified RuleGroup}
 \usage{
-delete_permission_policy(
-  ResourceArn = "string"
-)
+delete_permission_policy(ResourceArn)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the RuleGroup from which you want to delete the policy.
@@ -19,6 +17,10 @@ Permanently deletes an IAM policy from the specified RuleGroup.
 \details{
 The user making the request must be the owner of the RuleGroup.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_permission_policy(
+  ResourceArn = "string"
+)
 }
+}
+

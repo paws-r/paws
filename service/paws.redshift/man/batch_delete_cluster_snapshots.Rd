@@ -4,7 +4,16 @@
 \alias{batch_delete_cluster_snapshots}
 \title{Deletes a set of cluster snapshots}
 \usage{
-batch_delete_cluster_snapshots(
+batch_delete_cluster_snapshots(Identifiers)
+}
+\arguments{
+\item{Identifiers}{[required] A list of identifiers for the snapshots that you want to delete.}
+}
+\description{
+Deletes a set of cluster snapshots.
+}
+\section{Accepted Parameters}{
+\preformatted{batch_delete_cluster_snapshots(
   Identifiers = list(
     list(
       SnapshotIdentifier = "string",
@@ -13,12 +22,5 @@ batch_delete_cluster_snapshots(
   )
 )
 }
-\arguments{
-\item{Identifiers}{[required] A list of identifiers for the snapshots that you want to delete.}
 }
-\description{
-Deletes a set of cluster snapshots.
-}
-\examples{
 
-}

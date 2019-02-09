@@ -4,12 +4,9 @@
 \alias{authorize_cluster_security_group_ingress}
 \title{Adds an inbound (ingress) rule to an Amazon Redshift security group}
 \usage{
-authorize_cluster_security_group_ingress(
-  ClusterSecurityGroupName = "string",
-  CIDRIP = "string",
-  EC2SecurityGroupName = "string",
-  EC2SecurityGroupOwnerId = "string"
-)
+authorize_cluster_security_group_ingress(ClusterSecurityGroupName,
+  CIDRIP = NULL, EC2SecurityGroupName = NULL,
+  EC2SecurityGroupOwnerId = NULL)
 }
 \arguments{
 \item{ClusterSecurityGroupName}{[required] The name of the security group to which the ingress rule is added.}
@@ -32,6 +29,13 @@ If you authorize access to a CIDR/IP address range, specify \emph{CIDRIP}. For a
 
 You must also associate the security group with a cluster so that clients running on these IP addresses or the EC2 instance are authorized to connect to the cluster. For information about managing security groups, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html}{Working with Security Groups} in the \emph{Amazon Redshift Cluster Management Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{authorize_cluster_security_group_ingress(
+  ClusterSecurityGroupName = "string",
+  CIDRIP = "string",
+  EC2SecurityGroupName = "string",
+  EC2SecurityGroupOwnerId = "string"
+)
 }
+}
+

@@ -4,11 +4,8 @@
 \alias{confirm_private_virtual_interface}
 \title{Accepts ownership of a private virtual interface created by another AWS account}
 \usage{
-confirm_private_virtual_interface(
-  virtualInterfaceId = "string",
-  virtualGatewayId = "string",
-  directConnectGatewayId = "string"
-)
+confirm_private_virtual_interface(virtualInterfaceId,
+  virtualGatewayId = NULL, directConnectGatewayId = NULL)
 }
 \arguments{
 \item{virtualInterfaceId}{[required] The ID of the virtual interface.}
@@ -23,6 +20,12 @@ Accepts ownership of a private virtual interface created by another AWS account.
 \details{
 After the virtual interface owner makes this call, the virtual interface is created and attached to the specified virtual private gateway or Direct Connect gateway, and is made available to handle traffic.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{confirm_private_virtual_interface(
+  virtualInterfaceId = "string",
+  virtualGatewayId = "string",
+  directConnectGatewayId = "string"
+)
 }
+}
+

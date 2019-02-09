@@ -4,9 +4,7 @@
 \alias{get_domain_detail}
 \title{This operation returns detailed information about a specified domain that is associated with the current AWS account}
 \usage{
-get_domain_detail(
-  DomainName = "string"
-)
+get_domain_detail(DomainName)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain that you want to get detailed information about.}
@@ -14,6 +12,10 @@ get_domain_detail(
 \description{
 This operation returns detailed information about a specified domain that is associated with the current AWS account. Contact information for the domain is also returned as part of the output.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_domain_detail(
+  DomainName = "string"
+)
 }
+}
+

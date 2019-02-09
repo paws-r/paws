@@ -4,9 +4,7 @@
 \alias{describe_agent}
 \title{Returns metadata such as the name, the network interfaces, and the status (that is, whether the agent is running or not) for an agent}
 \usage{
-describe_agent(
-  AgentArn = "string"
-)
+describe_agent(AgentArn)
 }
 \arguments{
 \item{AgentArn}{[required] The Amazon Resource Name (ARN) of the agent to describe.}
@@ -14,6 +12,10 @@ describe_agent(
 \description{
 Returns metadata such as the name, the network interfaces, and the status (that is, whether the agent is running or not) for an agent. To specify which agent to describe, use the Amazon Resource Name (ARN) of the agent in your request.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_agent(
+  AgentArn = "string"
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{get_apis}
 \title{Gets a collection of Api resources}
 \usage{
-get_apis(
-  MaxResults = "string",
-  NextToken = "string"
-)
+get_apis(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{The maximum number of elements to be returned for this resource.}
@@ -17,6 +14,11 @@ get_apis(
 \description{
 Gets a collection of Api resources.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_apis(
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
+}
+

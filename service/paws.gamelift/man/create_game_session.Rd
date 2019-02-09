@@ -4,22 +4,10 @@
 \alias{create_game_session}
 \title{Creates a multiplayer game session for players}
 \usage{
-create_game_session(
-  FleetId = "string",
-  AliasId = "string",
-  MaximumPlayerSessionCount = 123,
-  Name = "string",
-  GameProperties = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  CreatorId = "string",
-  GameSessionId = "string",
-  IdempotencyToken = "string",
-  GameSessionData = "string"
-)
+create_game_session(FleetId = NULL, AliasId = NULL,
+  MaximumPlayerSessionCount, Name = NULL, GameProperties = NULL,
+  CreatorId = NULL, GameSessionId = NULL, IdempotencyToken = NULL,
+  GameSessionData = NULL)
 }
 \arguments{
 \item{FleetId}{Unique identifier for a fleet to create a game session in. Each request must reference either a fleet ID or alias ID, but not both.}
@@ -30,7 +18,7 @@ create_game_session(
 
 \item{Name}{Descriptive label that is associated with a game session. Session names do not need to be unique.}
 
-\item{GameProperties}{Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to a game server process in the GameSession object with a request to start a new game session (see \href{http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession}{Start a Game Session}).}
+\item{GameProperties}{Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to a game server process in the GameSession object with a request to start a new game session (see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession}{Start a Game Session}).}
 
 \item{CreatorId}{Unique identifier for a player or entity creating the game session. This ID is used to enforce a resource protection policy (if one exists) that limits the number of concurrent active game sessions one player can have.}
 
@@ -38,7 +26,7 @@ create_game_session(
 
 \item{IdempotencyToken}{Custom string that uniquely identifies a request for a new game session. Maximum token length is 48 characters. If provided, this string is included in the new game session's ID. (A game session ARN has the following format: \code{arn:aws:gamelift:<region>::gamesession/<fleet ID>/<custom ID string or idempotency token>}.) Idempotency tokens remain in use for 30 days after a game session has ended; game session objects are retained for this time period and then deleted.}
 
-\item{GameSessionData}{Set of custom game session properties, formatted as a single string value. This data is passed to a game server process in the GameSession object with a request to start a new game session (see \href{http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession}{Start a Game Session}).}
+\item{GameSessionData}{Set of custom game session properties, formatted as a single string value. This data is passed to a game server process in the GameSession object with a request to start a new game session (see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession}{Start a Game Session}).}
 }
 \description{
 Creates a multiplayer game session for players. This action creates a game session record and assigns an available server process in the specified fleet to host the game session. A fleet must have an \code{ACTIVE} status before a game session can be created in it.
@@ -55,8 +43,6 @@ To create a game session, specify either fleet ID or alias ID and indicate a max
 \strong{Game session logs.} Logs are retained for all active game sessions for 14 days. To access the logs, call GetGameSessionLogUrl to download the log files.
 
 \emph{Available in Amazon GameLift Local.}
-
-Game-session-related operations include:
 \itemize{
 \item CreateGameSession
 \item DescribeGameSessions
@@ -70,6 +56,23 @@ Game-session-related operations include:
 \item StopGameSessionPlacement
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_game_session(
+  FleetId = "string",
+  AliasId = "string",
+  MaximumPlayerSessionCount = 123,
+  Name = "string",
+  GameProperties = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  CreatorId = "string",
+  GameSessionId = "string",
+  IdempotencyToken = "string",
+  GameSessionData = "string"
+)
 }
+}
+

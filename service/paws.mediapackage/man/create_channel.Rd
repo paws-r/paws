@@ -4,10 +4,7 @@
 \alias{create_channel}
 \title{Creates a new Channel}
 \usage{
-create_channel(
-  Description = "string",
-  Id = "string"
-)
+create_channel(Description = NULL, Id)
 }
 \arguments{
 \item{Description}{A short text description of the Channel.}
@@ -18,6 +15,11 @@ cannot be changed after a Channel is created.}
 \description{
 Creates a new Channel.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_channel(
+  Description = "string",
+  Id = "string"
+)
 }
+}
+

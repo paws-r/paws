@@ -5,13 +5,8 @@
 \alias{create_application_version}
 \title{Creates an application version}
 \usage{
-create_application_version(
-  ApplicationId = "string",
-  SemanticVersion = "string",
-  SourceCodeUrl = "string",
-  TemplateBody = "string",
-  TemplateUrl = "string"
-)
+create_application_version(ApplicationId, SemanticVersion,
+  SourceCodeUrl = NULL, TemplateBody = NULL, TemplateUrl = NULL)
 }
 \arguments{
 \item{ApplicationId}{[required] The Amazon Resource Name (ARN) of the application.}
@@ -27,6 +22,14 @@ create_application_version(
 \description{
 Creates an application version.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_application_version(
+  ApplicationId = "string",
+  SemanticVersion = "string",
+  SourceCodeUrl = "string",
+  TemplateBody = "string",
+  TemplateUrl = "string"
+)
 }
+}
+

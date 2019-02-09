@@ -4,15 +4,7 @@
 \alias{modify_target_group_attributes}
 \title{Modifies the specified attributes of the specified target group}
 \usage{
-modify_target_group_attributes(
-  TargetGroupArn = "string",
-  Attributes = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+modify_target_group_attributes(TargetGroupArn, Attributes)
 }
 \arguments{
 \item{TargetGroupArn}{[required] The Amazon Resource Name (ARN) of the target group.}
@@ -22,10 +14,23 @@ modify_target_group_attributes(
 \description{
 Modifies the specified attributes of the specified target group.
 }
+\section{Accepted Parameters}{
+\preformatted{modify_target_group_attributes(
+  TargetGroupArn = "string",
+  Attributes = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # This example sets the deregistration delay timeout to the specified
 # value for the specified target group.
-modify_target_group_attributes(
+\donttest{modify_target_group_attributes(
   Attributes = list(
     list(
       Key = "deregistration_delay.timeout_seconds",
@@ -33,6 +38,6 @@ modify_target_group_attributes(
     )
   ),
   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067"
-)
+)}
 
 }

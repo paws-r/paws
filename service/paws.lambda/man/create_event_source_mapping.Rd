@@ -4,14 +4,9 @@
 \alias{create_event_source_mapping}
 \title{Creates a mapping between an event source and an AWS Lambda function}
 \usage{
-create_event_source_mapping(
-  EventSourceArn = "string",
-  FunctionName = "string",
-  Enabled = TRUE|FALSE,
-  BatchSize = 123,
-  StartingPosition = "TRIM_HORIZON"|"LATEST"|"AT_TIMESTAMP",
-  StartingPositionTimestamp = as.POSIXct("2015-01-01")
-)
+create_event_source_mapping(EventSourceArn, FunctionName, Enabled = NULL,
+  BatchSize = NULL, StartingPosition = NULL,
+  StartingPositionTimestamp = NULL)
 }
 \arguments{
 \item{EventSourceArn}{[required] The Amazon Resource Name (ARN) of the event source.
@@ -44,7 +39,7 @@ The length constraint applies only to the full ARN. If you specify only the func
 
 \item{StartingPosition}{The position in a stream from which to start reading. Required for Amazon Kinesis and Amazon DynamoDB Streams sources. \code{AT_TIMESTAMP} is only supported for Amazon Kinesis streams.}
 
-\item{StartingPositionTimestamp}{With \code{StartingPosition} set to \code{AT_TIMESTAMP}, the Unix time in seconds from which to start reading.}
+\item{StartingPositionTimestamp}{With \code{StartingPosition} set to \code{AT_TIMESTAMP}, the time from which to start reading.}
 }
 \description{
 Creates a mapping between an event source and an AWS Lambda function. Lambda reads items from the event source and triggers the function.
@@ -57,6 +52,15 @@ For details about each event source type, see the following topics.
 \item \href{http://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html}{Using AWS Lambda with Amazon DynamoDB}
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_event_source_mapping(
+  EventSourceArn = "string",
+  FunctionName = "string",
+  Enabled = TRUE|FALSE,
+  BatchSize = 123,
+  StartingPosition = "TRIM_HORIZON"|"LATEST"|"AT_TIMESTAMP",
+  StartingPositionTimestamp = as.POSIXct("2015-01-01")
+)
 }
+}
+

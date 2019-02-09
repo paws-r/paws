@@ -4,11 +4,8 @@
 \alias{list_core_definition_versions}
 \title{Lists the versions of a core definition}
 \usage{
-list_core_definition_versions(
-  CoreDefinitionId = "string",
-  MaxResults = "string",
-  NextToken = "string"
-)
+list_core_definition_versions(CoreDefinitionId, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{CoreDefinitionId}{[required] The ID of the core definition.}
@@ -20,6 +17,12 @@ list_core_definition_versions(
 \description{
 Lists the versions of a core definition.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_core_definition_versions(
+  CoreDefinitionId = "string",
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
+}
+

@@ -4,11 +4,8 @@
 \alias{list_things_in_billing_group}
 \title{Lists the things you have added to the given billing group}
 \usage{
-list_things_in_billing_group(
-  billingGroupName = "string",
-  nextToken = "string",
-  maxResults = 123
-)
+list_things_in_billing_group(billingGroupName, nextToken = NULL,
+  maxResults = NULL)
 }
 \arguments{
 \item{billingGroupName}{[required] The name of the billing group.}
@@ -20,6 +17,12 @@ list_things_in_billing_group(
 \description{
 Lists the things you have added to the given billing group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_things_in_billing_group(
+  billingGroupName = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

@@ -4,10 +4,8 @@
 \alias{remove_from_global_cluster}
 \title{Detaches an Aurora secondary cluster from an Aurora global database cluster}
 \usage{
-remove_from_global_cluster(
-  GlobalClusterIdentifier = "string",
-  DbClusterIdentifier = "string"
-)
+remove_from_global_cluster(GlobalClusterIdentifier = NULL,
+  DbClusterIdentifier = NULL)
 }
 \arguments{
 \item{GlobalClusterIdentifier}{The cluster identifier to detach from the Aurora global database cluster.}
@@ -17,6 +15,11 @@ remove_from_global_cluster(
 \description{
 Detaches an Aurora secondary cluster from an Aurora global database cluster. The cluster becomes a standalone cluster with read-write capability instead of being read-only and receiving data from a primary cluster in a different region.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{remove_from_global_cluster(
+  GlobalClusterIdentifier = "string",
+  DbClusterIdentifier = "string"
+)
 }
+}
+

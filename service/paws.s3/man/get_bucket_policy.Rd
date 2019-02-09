@@ -4,9 +4,7 @@
 \alias{get_bucket_policy}
 \title{Returns the policy of a specified bucket}
 \usage{
-get_bucket_policy(
-  Bucket = "string"
-)
+get_bucket_policy(Bucket)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -14,10 +12,17 @@ get_bucket_policy(
 \description{
 Returns the policy of a specified bucket.
 }
+\section{Accepted Parameters}{
+\preformatted{get_bucket_policy(
+  Bucket = "string"
+)
+}
+}
+
 \examples{
 # The following example returns bucket policy associated with a bucket.
-get_bucket_policy(
+\donttest{get_bucket_policy(
   Bucket = "examplebucket"
-)
+)}
 
 }

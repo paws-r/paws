@@ -4,16 +4,8 @@
 \alias{list_key_phrases_detection_jobs}
 \title{Get a list of key phrase detection jobs that you have submitted}
 \usage{
-list_key_phrases_detection_jobs(
-  Filter = list(
-    JobName = "string",
-    JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-    SubmitTimeBefore = as.POSIXct("2015-01-01"),
-    SubmitTimeAfter = as.POSIXct("2015-01-01")
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
+list_key_phrases_detection_jobs(Filter = NULL, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{Filter}{Filters the jobs that are returned. You can filter jobs on their name, status, or the date and time that they were submitted. You can only set one filter at a time.}
@@ -25,6 +17,17 @@ list_key_phrases_detection_jobs(
 \description{
 Get a list of key phrase detection jobs that you have submitted.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_key_phrases_detection_jobs(
+  Filter = list(
+    JobName = "string",
+    JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
+    SubmitTimeBefore = as.POSIXct("2015-01-01"),
+    SubmitTimeAfter = as.POSIXct("2015-01-01")
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

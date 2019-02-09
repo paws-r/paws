@@ -4,9 +4,7 @@
 \alias{delete_api}
 \title{Deletes an Api resource}
 \usage{
-delete_api(
-  ApiId = "string"
-)
+delete_api(ApiId)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -14,6 +12,10 @@ delete_api(
 \description{
 Deletes an Api resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_api(
+  ApiId = "string"
+)
 }
+}
+

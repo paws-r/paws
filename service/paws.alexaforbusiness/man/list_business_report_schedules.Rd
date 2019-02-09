@@ -4,10 +4,7 @@
 \alias{list_business_report_schedules}
 \title{Lists the details of the schedules that a user configured}
 \usage{
-list_business_report_schedules(
-  NextToken = "string",
-  MaxResults = 123
-)
+list_business_report_schedules(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{The token used to list the remaining schedules from the previous API call.}
@@ -17,6 +14,11 @@ list_business_report_schedules(
 \description{
 Lists the details of the schedules that a user configured.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_business_report_schedules(
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

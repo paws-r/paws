@@ -2,21 +2,23 @@
 % Please edit documentation in R/paws.lambda_operations.R
 \name{delete_layer_version}
 \alias{delete_layer_version}
-\title{Deletes a version of a function layer}
+\title{Deletes a version of an AWS Lambda layer}
 \usage{
-delete_layer_version(
-  LayerName = "string",
-  VersionNumber = 123
-)
+delete_layer_version(LayerName, VersionNumber)
 }
 \arguments{
-\item{LayerName}{[required] The name of the layer.}
+\item{LayerName}{[required] The name or Amazon Resource Name (ARN) of the layer.}
 
 \item{VersionNumber}{[required] The version number.}
 }
 \description{
-Deletes a version of a function layer. Deleted versions can no longer be viewed or added to functions. However, a copy of the version remains in Lambda until no functions refer to it.
+Deletes a version of an \href{http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layer}. Deleted versions can no longer be viewed or added to functions. To avoid breaking functions, a copy of the version remains in Lambda until no functions refer to it.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{delete_layer_version(
+  LayerName = "string",
+  VersionNumber = 123
+)
+}
+}
 
-}

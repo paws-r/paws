@@ -4,22 +4,8 @@
 \alias{create_document}
 \title{Creates a Systems Manager document}
 \usage{
-create_document(
-  Content = "string",
-  Attachments = list(
-    list(
-      Key = "SourceUrl",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  Name = "string",
-  VersionName = "string",
-  DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package",
-  DocumentFormat = "YAML"|"JSON",
-  TargetType = "string"
-)
+create_document(Content, Attachments = NULL, Name, VersionName = NULL,
+  DocumentType = NULL, DocumentFormat = NULL, TargetType = NULL)
 }
 \arguments{
 \item{Content}{[required] A valid JSON or YAML string.}
@@ -49,6 +35,23 @@ Creates a Systems Manager document.
 \details{
 After you create a document, you can use CreateAssociation to associate it with one or more running instances.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_document(
+  Content = "string",
+  Attachments = list(
+    list(
+      Key = "SourceUrl",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  Name = "string",
+  VersionName = "string",
+  DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package",
+  DocumentFormat = "YAML"|"JSON",
+  TargetType = "string"
+)
 }
+}
+

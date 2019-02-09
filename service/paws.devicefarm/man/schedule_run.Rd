@@ -4,7 +4,34 @@
 \alias{schedule_run}
 \title{Schedules a run}
 \usage{
-schedule_run(
+schedule_run(projectArn, appArn = NULL, devicePoolArn = NULL,
+  deviceSelectionConfiguration = NULL, name = NULL, test,
+  configuration = NULL, executionConfiguration = NULL)
+}
+\arguments{
+\item{projectArn}{[required] The ARN of the project for the run to be scheduled.}
+
+\item{appArn}{The ARN of the app to schedule a run.}
+
+\item{devicePoolArn}{The ARN of the device pool for the run to be scheduled.}
+
+\item{deviceSelectionConfiguration}{The filter criteria used to dynamically select a set of devices for a test run, as well as the maximum number of devices to be included in the run.
+
+Either \strong{\code{devicePoolArn}} or \strong{\code{deviceSelectionConfiguration}} is required in a request.}
+
+\item{name}{The name for the run to be scheduled.}
+
+\item{test}{[required] Information about the test for the run to be scheduled.}
+
+\item{configuration}{Information about the settings for the run to be scheduled.}
+
+\item{executionConfiguration}{Specifies configuration information about a test run, such as the execution timeout (in minutes).}
+}
+\description{
+Schedules a run.
+}
+\section{Accepted Parameters}{
+\preformatted{schedule_run(
   projectArn = "string",
   appArn = "string",
   devicePoolArn = "string",
@@ -22,7 +49,7 @@ schedule_run(
   ),
   name = "string",
   test = list(
-    type = "BUILTIN_FUZZ"|"BUILTIN_EXPLORER"|"WEB_PERFORMANCE_PROFILE"|"APPIUM_JAVA_JUNIT"|"APPIUM_JAVA_TESTNG"|"APPIUM_PYTHON"|"APPIUM_WEB_JAVA_JUNIT"|"APPIUM_WEB_JAVA_TESTNG"|"APPIUM_WEB_PYTHON"|"CALABASH"|"INSTRUMENTATION"|"UIAUTOMATION"|"UIAUTOMATOR"|"XCTEST"|"XCTEST_UI"|"REMOTE_ACCESS_RECORD"|"REMOTE_ACCESS_REPLAY",
+    type = "BUILTIN_FUZZ"|"BUILTIN_EXPLORER"|"WEB_PERFORMANCE_PROFILE"|"APPIUM_JAVA_JUNIT"|"APPIUM_JAVA_TESTNG"|"APPIUM_PYTHON"|"APPIUM_NODE"|"APPIUM_RUBY"|"APPIUM_WEB_JAVA_JUNIT"|"APPIUM_WEB_JAVA_TESTNG"|"APPIUM_WEB_PYTHON"|"APPIUM_WEB_NODE"|"APPIUM_WEB_RUBY"|"CALABASH"|"INSTRUMENTATION"|"UIAUTOMATION"|"UIAUTOMATOR"|"XCTEST"|"XCTEST_UI"|"REMOTE_ACCESS_RECORD"|"REMOTE_ACCESS_REPLAY",
     testPackageArn = "string",
     testSpecArn = "string",
     filter = "string",
@@ -72,33 +99,11 @@ schedule_run(
   )
 )
 }
-\arguments{
-\item{projectArn}{[required] The ARN of the project for the run to be scheduled.}
-
-\item{appArn}{The ARN of the app to schedule a run.}
-
-\item{devicePoolArn}{The ARN of the device pool for the run to be scheduled.
-
-Either \strong{\code{devicePoolArn}} or \strong{\code{deviceSelectionConfiguration}} are required in a request.}
-
-\item{deviceSelectionConfiguration}{The filter criteria used to dynamically select a set of devices for a test run, as well as the maximum number of devices to be included in the run.
-
-Either \strong{\code{devicePoolArn}} or \strong{\code{deviceSelectionConfiguration}} are required in a request.}
-
-\item{name}{The name for the run to be scheduled.}
-
-\item{test}{[required] Information about the test for the run to be scheduled.}
-
-\item{configuration}{Information about the settings for the run to be scheduled.}
-
-\item{executionConfiguration}{Specifies configuration information about a test run, such as the execution timeout (in minutes).}
 }
-\description{
-Schedules a run.
-}
+
 \examples{
 # The following example schedules a test run named MyRun.
-schedule_run(
+\donttest{schedule_run(
   name = "MyRun",
   devicePoolArn = "arn:aws:devicefarm:us-west-2:123456789101:pool:EXAMPLE-GUID-123-456",
   projectArn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
@@ -106,6 +111,6 @@ schedule_run(
     type = "APPIUM_JAVA_JUNIT",
     testPackageArn = "arn:aws:devicefarm:us-west-2:123456789101:test:EXAMPLE-GUID-123-456"
   )
-)
+)}
 
 }

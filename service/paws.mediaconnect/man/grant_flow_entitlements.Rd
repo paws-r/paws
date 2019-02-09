@@ -4,7 +4,18 @@
 \alias{grant_flow_entitlements}
 \title{Grants entitlements to an existing flow}
 \usage{
-grant_flow_entitlements(
+grant_flow_entitlements(Entitlements, FlowArn)
+}
+\arguments{
+\item{Entitlements}{[required] The list of entitlements that you want to grant.}
+
+\item{FlowArn}{[required] The flow that you want to grant entitlements on.}
+}
+\description{
+Grants entitlements to an existing flow.
+}
+\section{Accepted Parameters}{
+\preformatted{grant_flow_entitlements(
   Entitlements = list(
     list(
       Description = "string",
@@ -23,14 +34,5 @@ grant_flow_entitlements(
   FlowArn = "string"
 )
 }
-\arguments{
-\item{Entitlements}{[required] The list of entitlements that you want to grant.}
+}
 
-\item{FlowArn}{[required] The flow that you want to grant entitlements on.}
-}
-\description{
-Grants entitlements to an existing flow.
-}
-\examples{
-
-}

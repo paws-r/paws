@@ -4,12 +4,7 @@
 \alias{create_topic}
 \title{Creates a topic to which notifications can be published}
 \usage{
-create_topic(
-  Name = "string",
-  Attributes = list(
-    "string"
-  )
-)
+create_topic(Name, Attributes = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the topic you want to create.
@@ -28,6 +23,13 @@ The following lists the names, descriptions, and values of the special request p
 \description{
 Creates a topic to which notifications can be published. Users can create at most 100,000 topics. For more information, see \href{http://aws.amazon.com/sns/}{http://aws.amazon.com/sns}. This action is idempotent, so if the requester already owns a topic with the specified name, that topic's ARN is returned without creating a new topic.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_topic(
+  Name = "string",
+  Attributes = list(
+    "string"
+  )
+)
 }
+}
+

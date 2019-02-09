@@ -4,18 +4,9 @@
 \alias{create_maintenance_window}
 \title{Creates a new Maintenance Window}
 \usage{
-create_maintenance_window(
-  Name = "string",
-  Description = "string",
-  StartDate = "string",
-  EndDate = "string",
-  Schedule = "string",
-  ScheduleTimezone = "string",
-  Duration = 123,
-  Cutoff = 123,
-  AllowUnassociatedTargets = TRUE|FALSE,
-  ClientToken = "string"
-)
+create_maintenance_window(Name, Description = NULL, StartDate = NULL,
+  EndDate = NULL, Schedule, ScheduleTimezone = NULL, Duration, Cutoff,
+  AllowUnassociatedTargets, ClientToken = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the Maintenance Window.}
@@ -43,6 +34,19 @@ If you don't enable this option, then you must specify previously-registered tar
 \description{
 Creates a new Maintenance Window.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_maintenance_window(
+  Name = "string",
+  Description = "string",
+  StartDate = "string",
+  EndDate = "string",
+  Schedule = "string",
+  ScheduleTimezone = "string",
+  Duration = 123,
+  Cutoff = 123,
+  AllowUnassociatedTargets = TRUE|FALSE,
+  ClientToken = "string"
+)
 }
+}
+

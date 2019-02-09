@@ -4,10 +4,7 @@
 \alias{delete_customer_gateway}
 \title{Deletes the specified customer gateway}
 \usage{
-delete_customer_gateway(
-  CustomerGatewayId = "string",
-  DryRun = TRUE|FALSE
-)
+delete_customer_gateway(CustomerGatewayId, DryRun = NULL)
 }
 \arguments{
 \item{CustomerGatewayId}{[required] The ID of the customer gateway.}
@@ -17,10 +14,18 @@ delete_customer_gateway(
 \description{
 Deletes the specified customer gateway. You must delete the VPN connection before you can delete the customer gateway.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_customer_gateway(
+  CustomerGatewayId = "string",
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example deletes the specified customer gateway.
-delete_customer_gateway(
+\donttest{delete_customer_gateway(
   CustomerGatewayId = "cgw-0e11f167"
-)
+)}
 
 }

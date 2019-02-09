@@ -4,7 +4,36 @@
 \alias{get_cost_forecast}
 \title{Retrieves a forecast for how much Amazon Web Services predicts that you will spend over the forecast time period that you select, based on your past costs}
 \usage{
-get_cost_forecast(
+get_cost_forecast(TimePeriod, Metric, Granularity, Filter = NULL,
+  PredictionIntervalLevel = NULL)
+}
+\arguments{
+\item{TimePeriod}{[required] The period of time that you want the forecast to cover.}
+
+\item{Metric}{[required] Which metric Cost Explorer uses to create your forecast. For more information about blended and unblended rates, see \href{https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/}{Why does the "blended" annotation appear on some line items in my bill?}.
+
+Valid values for a \code{GetCostForecast} call are the following:
+\itemize{
+\item AmortizedCost
+\item BlendedCost
+\item NetAmortizedCost
+\item NetUnblendedCost
+\item UnblendedCost
+}}
+
+\item{Granularity}{[required] How granular you want the forecast to be. You can get 3 months of \code{DAILY} forecasts or 12 months of \code{MONTHLY} forecasts.
+
+The \code{GetCostForecast} operation supports only \code{DAILY} and \code{MONTHLY} granularities.}
+
+\item{Filter}{The filters that you want to use to filter your forecast. Cost Explorer API supports all of the Cost Explorer filters.}
+
+\item{PredictionIntervalLevel}{Cost Explorer always returns the mean forecast as a single point. You can request a prediction interval around the mean by specifying a confidence level. The higher the confidence level, the more confident Cost Explorer is about the actual value falling in the prediction interval. Higher confidence levels result in wider prediction intervals.}
+}
+\description{
+Retrieves a forecast for how much Amazon Web Services predicts that you will spend over the forecast time period that you select, based on your past costs.
+}
+\section{Accepted Parameters}{
+\preformatted{get_cost_forecast(
   TimePeriod = list(
     Start = "string",
     End = "string"
@@ -35,31 +64,5 @@ get_cost_forecast(
   PredictionIntervalLevel = 123
 )
 }
-\arguments{
-\item{TimePeriod}{[required] The period of time that you want the forecast to cover.}
-
-\item{Metric}{[required] Which metric Cost Explorer uses to create your forecast. For more information about blended and unblended rates, see \href{https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/}{Why does the "blended" annotation appear on some line items in my bill?}.
-
-Valid values for a \code{GetCostForecast} call are the following:
-\itemize{
-\item AmortizedCost
-\item BlendedCost
-\item NetAmortizedCost
-\item NetUnblendedCost
-\item UnblendedCost
-}}
-
-\item{Granularity}{[required] How granular you want the forecast to be. You can get 3 months of \code{DAILY} forecasts or 12 months of \code{MONTHLY} forecasts.
-
-The \code{GetCostForecast} operation supports only \code{DAILY} and \code{MONTHLY} granularities.}
-
-\item{Filter}{The filters that you want to use to filter your forecast. Cost Explorer API supports all of the Cost Explorer filters.}
-
-\item{PredictionIntervalLevel}{Cost Explorer always returns the mean forecast as a single point. You can request a prediction interval around the mean by specifying a confidence level. The higher the confidence level, the more confident Cost Explorer is about the actual value falling in the prediction interval. Higher confidence levels result in wider prediction intervals.}
 }
-\description{
-Retrieves a forecast for how much Amazon Web Services predicts that you will spend over the forecast time period that you select, based on your past costs.
-}
-\examples{
 
-}

@@ -4,11 +4,7 @@
 \alias{list_directories}
 \title{Lists directories created within an account}
 \usage{
-list_directories(
-  NextToken = "string",
-  MaxResults = 123,
-  state = "ENABLED"|"DISABLED"|"DELETED"
-)
+list_directories(NextToken = NULL, MaxResults = NULL, state = NULL)
 }
 \arguments{
 \item{NextToken}{The pagination token.}
@@ -20,6 +16,12 @@ list_directories(
 \description{
 Lists directories created within an account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_directories(
+  NextToken = "string",
+  MaxResults = 123,
+  state = "ENABLED"|"DISABLED"|"DELETED"
+)
 }
+}
+

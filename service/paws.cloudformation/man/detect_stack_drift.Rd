@@ -4,12 +4,7 @@
 \alias{detect_stack_drift}
 \title{Detects whether a stack's actual configuration differs, or has \emph{drifted}, from it's expected configuration, as defined in the stack template and any values specified as template parameters}
 \usage{
-detect_stack_drift(
-  StackName = "string",
-  LogicalResourceIds = list(
-    "string"
-  )
-)
+detect_stack_drift(StackName, LogicalResourceIds = NULL)
 }
 \arguments{
 \item{StackName}{[required] The name of the stack for which you want to detect drift.}
@@ -28,6 +23,13 @@ For a list of stack resources that currently support drift detection, see \href{
 
 When detecting drift on a stack, AWS CloudFormation does not detect drift on any nested stacks belonging to that stack. Perform \code{DetectStackDrift} directly on the nested stack itself.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{detect_stack_drift(
+  StackName = "string",
+  LogicalResourceIds = list(
+    "string"
+  )
+)
 }
+}
+

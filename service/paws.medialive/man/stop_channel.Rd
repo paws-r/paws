@@ -4,9 +4,7 @@
 \alias{stop_channel}
 \title{Stops a running channel}
 \usage{
-stop_channel(
-  ChannelId = "string"
-)
+stop_channel(ChannelId)
 }
 \arguments{
 \item{ChannelId}{[required] A request to stop a running channel}
@@ -14,6 +12,10 @@ stop_channel(
 \description{
 Stops a running channel
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{stop_channel(
+  ChannelId = "string"
+)
 }
+}
+

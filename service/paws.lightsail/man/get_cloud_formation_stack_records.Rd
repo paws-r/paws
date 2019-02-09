@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.lightsail_operations.R
 \name{get_cloud_formation_stack_records}
 \alias{get_cloud_formation_stack_records}
-\title{Returns the CloudFormation stack record created as a result of the \code{create cloud formation stack} operation}
+\title{Returns the CloudFormation stack record created as a result of the create cloud formation stack operation}
 \usage{
-get_cloud_formation_stack_records(
-  pageToken = "string"
-)
+get_cloud_formation_stack_records(pageToken = NULL)
 }
 \arguments{
 \item{pageToken}{A token used for advancing to a specific page of results for your \code{get cloud formation stack records} request.}
@@ -17,6 +15,10 @@ Returns the CloudFormation stack record created as a result of the \code{create 
 \details{
 An AWS CloudFormation stack is used to create a new Amazon EC2 instance from an exported Lightsail snapshot.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_cloud_formation_stack_records(
+  pageToken = "string"
+)
 }
+}
+

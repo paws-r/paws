@@ -4,7 +4,23 @@
 \alias{set_user_pool_mfa_config}
 \title{Set the user pool MFA configuration}
 \usage{
-set_user_pool_mfa_config(
+set_user_pool_mfa_config(UserPoolId, SmsMfaConfiguration = NULL,
+  SoftwareTokenMfaConfiguration = NULL, MfaConfiguration = NULL)
+}
+\arguments{
+\item{UserPoolId}{[required] The user pool ID.}
+
+\item{SmsMfaConfiguration}{The SMS text message MFA configuration.}
+
+\item{SoftwareTokenMfaConfiguration}{The software token MFA configuration.}
+
+\item{MfaConfiguration}{The MFA configuration.}
+}
+\description{
+Set the user pool MFA configuration.
+}
+\section{Accepted Parameters}{
+\preformatted{set_user_pool_mfa_config(
   UserPoolId = "string",
   SmsMfaConfiguration = list(
     SmsAuthenticationMessage = "string",
@@ -19,18 +35,5 @@ set_user_pool_mfa_config(
   MfaConfiguration = "OFF"|"ON"|"OPTIONAL"
 )
 }
-\arguments{
-\item{UserPoolId}{[required] The user pool ID.}
-
-\item{SmsMfaConfiguration}{The SMS text message MFA configuration.}
-
-\item{SoftwareTokenMfaConfiguration}{The software token MFA configuration.}
-
-\item{MfaConfiguration}{The MFA configuration.}
 }
-\description{
-Set the user pool MFA configuration.
-}
-\examples{
 
-}

@@ -9,6 +9,8 @@ peer_vpc()
 \description{
 Tries to peer the Lightsail VPC with the user's default VPC.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{peer_vpc()
 }
+}
+

@@ -4,21 +4,15 @@
 \alias{describe_sessions}
 \title{Retrieves a list that describes the streaming sessions for a specified stack and fleet}
 \usage{
-describe_sessions(
-  StackName = "string",
-  FleetName = "string",
-  UserId = "string",
-  NextToken = "string",
-  Limit = 123,
-  AuthenticationType = "API"|"SAML"|"USERPOOL"
-)
+describe_sessions(StackName, FleetName, UserId = NULL,
+  NextToken = NULL, Limit = NULL, AuthenticationType = NULL)
 }
 \arguments{
 \item{StackName}{[required] The name of the stack. This value is case-sensitive.}
 
 \item{FleetName}{[required] The name of the fleet. This value is case-sensitive.}
 
-\item{UserId}{The user ID.}
+\item{UserId}{The user identifier.}
 
 \item{NextToken}{The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.}
 
@@ -27,8 +21,17 @@ describe_sessions(
 \item{AuthenticationType}{The authentication method. Specify \code{API} for a user authenticated using a streaming URL or \code{SAML} for a SAML federated user. The default is to authenticate users using a streaming URL.}
 }
 \description{
-Retrieves a list that describes the streaming sessions for a specified stack and fleet. If a user ID is provided for the stack and fleet, only streaming sessions for that user are described. If an authentication type is not provided, the default is to authenticate users using a streaming URL.
+Retrieves a list that describes the streaming sessions for a specified stack and fleet. If a UserId is provided for the stack and fleet, only streaming sessions for that user are described. If an authentication type is not provided, the default is to authenticate users using a streaming URL.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{describe_sessions(
+  StackName = "string",
+  FleetName = "string",
+  UserId = "string",
+  NextToken = "string",
+  Limit = 123,
+  AuthenticationType = "API"|"SAML"|"USERPOOL"
+)
+}
+}
 
-}

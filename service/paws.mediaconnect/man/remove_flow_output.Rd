@@ -4,10 +4,7 @@
 \alias{remove_flow_output}
 \title{Removes an output from an existing flow}
 \usage{
-remove_flow_output(
-  FlowArn = "string",
-  OutputArn = "string"
-)
+remove_flow_output(FlowArn, OutputArn)
 }
 \arguments{
 \item{FlowArn}{[required] The flow that you want to remove an output from.}
@@ -17,6 +14,11 @@ remove_flow_output(
 \description{
 Removes an output from an existing flow. This request can be made only on an output that does not have an entitlement associated with it. If the output has an entitlement, you must revoke the entitlement instead. When an entitlement is revoked from a flow, the service automatically removes the associated output.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{remove_flow_output(
+  FlowArn = "string",
+  OutputArn = "string"
+)
 }
+}
+

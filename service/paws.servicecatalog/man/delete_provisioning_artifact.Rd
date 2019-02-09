@@ -4,11 +4,8 @@
 \alias{delete_provisioning_artifact}
 \title{Deletes the specified provisioning artifact (also known as a version) for the specified product}
 \usage{
-delete_provisioning_artifact(
-  AcceptLanguage = "string",
-  ProductId = "string",
-  ProvisioningArtifactId = "string"
-)
+delete_provisioning_artifact(AcceptLanguage = NULL, ProductId,
+  ProvisioningArtifactId)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -28,6 +25,12 @@ Deletes the specified provisioning artifact (also known as a version) for the sp
 \details{
 You cannot delete a provisioning artifact associated with a product that was shared with you. You cannot delete the last provisioning artifact for a product, because a product must have at least one provisioning artifact.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_provisioning_artifact(
+  AcceptLanguage = "string",
+  ProductId = "string",
+  ProvisioningArtifactId = "string"
+)
 }
+}
+

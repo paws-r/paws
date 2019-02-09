@@ -4,13 +4,8 @@
 \alias{create_model}
 \title{Adds a new Model resource to an existing RestApi resource}
 \usage{
-create_model(
-  restApiId = "string",
-  name = "string",
-  description = "string",
-  schema = "string",
-  contentType = "string"
-)
+create_model(restApiId, name, description = NULL, schema = NULL,
+  contentType)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The RestApi identifier under which the Model will be created.}
@@ -26,6 +21,14 @@ create_model(
 \description{
 Adds a new Model resource to an existing RestApi resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_model(
+  restApiId = "string",
+  name = "string",
+  description = "string",
+  schema = "string",
+  contentType = "string"
+)
 }
+}
+

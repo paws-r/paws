@@ -4,9 +4,7 @@
 \alias{get_insight_results}
 \title{Lists the results of the Security Hub insight specified by the insight ARN}
 \usage{
-get_insight_results(
-  InsightArn = "string"
-)
+get_insight_results(InsightArn)
 }
 \arguments{
 \item{InsightArn}{[required] The ARN of the insight whose results you want to see.}
@@ -14,6 +12,10 @@ get_insight_results(
 \description{
 Lists the results of the Security Hub insight specified by the insight ARN.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_insight_results(
+  InsightArn = "string"
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{create_route_table}
 \title{Creates a route table for the specified VPC}
 \usage{
-create_route_table(
-  DryRun = TRUE|FALSE,
-  VpcId = "string"
-)
+create_route_table(DryRun = NULL, VpcId)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -18,12 +15,20 @@ create_route_table(
 Creates a route table for the specified VPC. After you create a route table, you can add routes and associate the table with a subnet.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html}{Route Tables} in the \emph{Amazon Virtual Private Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html}{Route Tables} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_route_table(
+  DryRun = TRUE|FALSE,
+  VpcId = "string"
+)
+}
+}
+
 \examples{
 # This example creates a route table for the specified VPC.
-create_route_table(
+\donttest{create_route_table(
   VpcId = "vpc-a01106c2"
-)
+)}
 
 }

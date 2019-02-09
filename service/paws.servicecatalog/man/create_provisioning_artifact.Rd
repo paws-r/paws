@@ -4,19 +4,8 @@
 \alias{create_provisioning_artifact}
 \title{Creates a provisioning artifact (also known as a version) for the specified product}
 \usage{
-create_provisioning_artifact(
-  AcceptLanguage = "string",
-  ProductId = "string",
-  Parameters = list(
-    Name = "string",
-    Description = "string",
-    Info = list(
-      "string"
-    ),
-    Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR"
-  ),
-  IdempotencyToken = "string"
-)
+create_provisioning_artifact(AcceptLanguage = NULL, ProductId,
+  Parameters, IdempotencyToken)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -38,6 +27,20 @@ Creates a provisioning artifact (also known as a version) for the specified prod
 \details{
 You cannot create a provisioning artifact for a product that was shared with you.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_provisioning_artifact(
+  AcceptLanguage = "string",
+  ProductId = "string",
+  Parameters = list(
+    Name = "string",
+    Description = "string",
+    Info = list(
+      "string"
+    ),
+    Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR"
+  ),
+  IdempotencyToken = "string"
+)
 }
+}
+

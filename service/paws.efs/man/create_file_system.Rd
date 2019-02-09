@@ -4,14 +4,9 @@
 \alias{create_file_system}
 \title{Creates a new, empty file system}
 \usage{
-create_file_system(
-  CreationToken = "string",
-  PerformanceMode = "generalPurpose"|"maxIO",
-  Encrypted = TRUE|FALSE,
-  KmsKeyId = "string",
-  ThroughputMode = "bursting"|"provisioned",
-  ProvisionedThroughputInMibps = 123.0
-)
+create_file_system(CreationToken, PerformanceMode = NULL,
+  Encrypted = NULL, KmsKeyId = NULL, ThroughputMode = NULL,
+  ProvisionedThroughputInMibps = NULL)
 }
 \arguments{
 \item{CreationToken}{[required] String of up to 64 ASCII characters. Amazon EFS uses this to ensure idempotent creation.}
@@ -57,12 +52,24 @@ After the file system is fully created, Amazon EFS sets its lifecycle state to \
 
 This operation requires permissions for the \code{elasticfilesystem:CreateFileSystem} action.
 }
+\section{Accepted Parameters}{
+\preformatted{create_file_system(
+  CreationToken = "string",
+  PerformanceMode = "generalPurpose"|"maxIO",
+  Encrypted = TRUE|FALSE,
+  KmsKeyId = "string",
+  ThroughputMode = "bursting"|"provisioned",
+  ProvisionedThroughputInMibps = 123.0
+)
+}
+}
+
 \examples{
 # This operation creates a new file system with the default generalpurpose
 # performance mode.
-create_file_system(
+\donttest{create_file_system(
   CreationToken = "tokenstring",
   PerformanceMode = "generalPurpose"
-)
+)}
 
 }

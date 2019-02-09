@@ -4,17 +4,11 @@
 \alias{list_notebook_instance_lifecycle_configs}
 \title{Lists notebook instance lifestyle configurations created with the CreateNotebookInstanceLifecycleConfig API}
 \usage{
-list_notebook_instance_lifecycle_configs(
-  NextToken = "string",
-  MaxResults = 123,
-  SortBy = "Name"|"CreationTime"|"LastModifiedTime",
-  SortOrder = "Ascending"|"Descending",
-  NameContains = "string",
-  CreationTimeBefore = as.POSIXct("2015-01-01"),
-  CreationTimeAfter = as.POSIXct("2015-01-01"),
-  LastModifiedTimeBefore = as.POSIXct("2015-01-01"),
-  LastModifiedTimeAfter = as.POSIXct("2015-01-01")
-)
+list_notebook_instance_lifecycle_configs(NextToken = NULL,
+  MaxResults = NULL, SortBy = NULL, SortOrder = NULL,
+  NameContains = NULL, CreationTimeBefore = NULL,
+  CreationTimeAfter = NULL, LastModifiedTimeBefore = NULL,
+  LastModifiedTimeAfter = NULL)
 }
 \arguments{
 \item{NextToken}{If the result of a \code{ListNotebookInstanceLifecycleConfigs} request was truncated, the response includes a \code{NextToken}. To get the next set of lifecycle configurations, use the token in the next request.}
@@ -38,6 +32,18 @@ list_notebook_instance_lifecycle_configs(
 \description{
 Lists notebook instance lifestyle configurations created with the CreateNotebookInstanceLifecycleConfig API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_notebook_instance_lifecycle_configs(
+  NextToken = "string",
+  MaxResults = 123,
+  SortBy = "Name"|"CreationTime"|"LastModifiedTime",
+  SortOrder = "Ascending"|"Descending",
+  NameContains = "string",
+  CreationTimeBefore = as.POSIXct("2015-01-01"),
+  CreationTimeAfter = as.POSIXct("2015-01-01"),
+  LastModifiedTimeBefore = as.POSIXct("2015-01-01"),
+  LastModifiedTimeAfter = as.POSIXct("2015-01-01")
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{get_reusable_delegation_set}
 \title{Retrieves information about a specified reusable delegation set, including the four name servers that are assigned to the delegation set}
 \usage{
-get_reusable_delegation_set(
-  Id = "string"
-)
+get_reusable_delegation_set(Id)
 }
 \arguments{
 \item{Id}{[required] The ID of the reusable delegation set that you want to get a list of name servers for.}
@@ -14,6 +12,10 @@ get_reusable_delegation_set(
 \description{
 Retrieves information about a specified reusable delegation set, including the four name servers that are assigned to the delegation set.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_reusable_delegation_set(
+  Id = "string"
+)
 }
+}
+

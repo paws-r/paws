@@ -4,9 +4,7 @@
 \alias{stop_db_cluster}
 \title{Stops an Amazon Aurora DB cluster}
 \usage{
-stop_db_cluster(
-  DBClusterIdentifier = "string"
-)
+stop_db_cluster(DBClusterIdentifier)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The DB cluster identifier of the Amazon Aurora DB cluster to be stopped. This parameter is stored as a lowercase string.}
@@ -17,6 +15,10 @@ Stops an Amazon Aurora DB cluster. When you stop a DB cluster, Aurora retains th
 \details{
 For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-cluster-stop-start.html}{Stopping and Starting an Aurora Cluster} in the \emph{Amazon Aurora User Guide.}
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{stop_db_cluster(
+  DBClusterIdentifier = "string"
+)
 }
+}
+

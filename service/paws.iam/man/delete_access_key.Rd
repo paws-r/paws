@@ -4,10 +4,7 @@
 \alias{delete_access_key}
 \title{Deletes the access key pair associated with the specified IAM user}
 \usage{
-delete_access_key(
-  UserName = "string",
-  AccessKeyId = "string"
-)
+delete_access_key(UserName = NULL, AccessKeyId)
 }
 \arguments{
 \item{UserName}{The name of the user whose access key pair you want to delete.
@@ -24,12 +21,20 @@ Deletes the access key pair associated with the specified IAM user.
 \details{
 If you do not specify a user name, IAM determines the user name implicitly based on the AWS access key ID signing the request. This operation works for access keys under the AWS account. Consequently, you can use this operation to manage AWS account root user credentials even if the AWS account has no associated users.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_access_key(
+  UserName = "string",
+  AccessKeyId = "string"
+)
+}
+}
+
 \examples{
 # The following command deletes one access key (access key ID and secret
 # access key) assigned to the IAM user named Bob.
-delete_access_key(
+\donttest{delete_access_key(
   AccessKeyId = "AKIDPMS9RO4H3FEXAMPLE",
   UserName = "Bob"
-)
+)}
 
 }

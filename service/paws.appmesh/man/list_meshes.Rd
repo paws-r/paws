@@ -4,10 +4,7 @@
 \alias{list_meshes}
 \title{Returns a list of existing service meshes}
 \usage{
-list_meshes(
-  limit = 123,
-  nextToken = "string"
-)
+list_meshes(limit = NULL, nextToken = NULL)
 }
 \arguments{
 \item{limit}{The maximum number of mesh results returned by \code{ListMeshes} in paginated output. When this parameter is used, \code{ListMeshes} only returns \code{limit} results in a single page along with a \code{nextToken} response element. The remaining results of the initial request can be seen by sending another \code{ListMeshes} request with the returned \code{nextToken} value. This value can be between 1 and 100. If this parameter is not used, then \code{ListMeshes} returns up to 100 results and a \code{nextToken} value if applicable.}
@@ -19,6 +16,11 @@ This token should be treated as an opaque identifier that is only used to retrie
 \description{
 Returns a list of existing service meshes.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_meshes(
+  limit = 123,
+  nextToken = "string"
+)
 }
+}
+

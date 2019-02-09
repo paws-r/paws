@@ -2,16 +2,10 @@
 % Please edit documentation in R/paws.cloudhsm_operations.R
 \name{modify_hsm}
 \alias{modify_hsm}
-\title{This is documentation for \strong{AWS CloudHSM Classic}}
+\title{This is documentation for AWS CLOUDHSM CLASSIC}
 \usage{
-modify_hsm(
-  HsmArn = "string",
-  SubnetId = "string",
-  EniIp = "string",
-  IamRoleArn = "string",
-  ExternalId = "string",
-  SyslogIp = "string"
-)
+modify_hsm(HsmArn, SubnetId = NULL, EniIp = NULL, IamRoleArn = NULL,
+  ExternalId = NULL, SyslogIp = NULL)
 }
 \arguments{
 \item{HsmArn}{[required] The ARN of the HSM to modify.}
@@ -38,6 +32,15 @@ Modifies an HSM.
 
 This operation can result in the HSM being offline for up to 15 minutes while the AWS CloudHSM service is reconfigured. If you are modifying a production HSM, you should ensure that your AWS CloudHSM service is configured for high availability, and consider executing this operation during a maintenance window.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_hsm(
+  HsmArn = "string",
+  SubnetId = "string",
+  EniIp = "string",
+  IamRoleArn = "string",
+  ExternalId = "string",
+  SyslogIp = "string"
+)
 }
+}
+

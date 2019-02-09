@@ -4,13 +4,8 @@
 \alias{create_named_query}
 \title{Creates a named query}
 \usage{
-create_named_query(
-  Name = "string",
-  Description = "string",
-  Database = "string",
-  QueryString = "string",
-  ClientRequestToken = "string"
-)
+create_named_query(Name, Description = NULL, Database, QueryString,
+  ClientRequestToken = NULL)
 }
 \arguments{
 \item{Name}{[required] The plain language name for the query.}
@@ -31,6 +26,14 @@ Creates a named query.
 \details{
 For code samples using the AWS SDK for Java, see \href{http://docs.aws.amazon.com/athena/latest/ug/code-samples.html}{Examples and Code Samples} in the \emph{Amazon Athena User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_named_query(
+  Name = "string",
+  Description = "string",
+  Database = "string",
+  QueryString = "string",
+  ClientRequestToken = "string"
+)
 }
+}
+

@@ -4,12 +4,7 @@
 \alias{describe_rules_packages}
 \title{Describes the rules packages that are specified by the ARNs of the rules packages}
 \usage{
-describe_rules_packages(
-  rulesPackageArns = list(
-    "string"
-  ),
-  locale = "EN_US"
-)
+describe_rules_packages(rulesPackageArns, locale = NULL)
 }
 \arguments{
 \item{rulesPackageArns}{[required] The ARN that specifies the rules package that you want to describe.}
@@ -19,13 +14,23 @@ describe_rules_packages(
 \description{
 Describes the rules packages that are specified by the ARNs of the rules packages.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_rules_packages(
+  rulesPackageArns = list(
+    "string"
+  ),
+  locale = "EN_US"
+)
+}
+}
+
 \examples{
 # Describes the rules packages that are specified by the ARNs of the rules
 # packages.
-describe_rules_packages(
+\donttest{describe_rules_packages(
   rulesPackageArns = list(
     "arn:aws:inspector:us-west-2:758058086616:rulespackage/0-JJOtZiqQ"
   )
-)
+)}
 
 }

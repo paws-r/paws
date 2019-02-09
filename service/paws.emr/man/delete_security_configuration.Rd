@@ -4,9 +4,7 @@
 \alias{delete_security_configuration}
 \title{Deletes a security configuration}
 \usage{
-delete_security_configuration(
-  Name = "string"
-)
+delete_security_configuration(Name)
 }
 \arguments{
 \item{Name}{[required] The name of the security configuration.}
@@ -14,6 +12,10 @@ delete_security_configuration(
 \description{
 Deletes a security configuration.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_security_configuration(
+  Name = "string"
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{remove_user_from_group}
 \title{Removes the specified user from the specified group}
 \usage{
-remove_user_from_group(
-  GroupName = "string",
-  UserName = "string"
-)
+remove_user_from_group(GroupName, UserName)
 }
 \arguments{
 \item{GroupName}{[required] The name of the group to update.
@@ -21,12 +18,20 @@ This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex 
 \description{
 Removes the specified user from the specified group.
 }
+\section{Accepted Parameters}{
+\preformatted{remove_user_from_group(
+  GroupName = "string",
+  UserName = "string"
+)
+}
+}
+
 \examples{
 # The following command removes the user named Bob from the IAM group
 # named Admins.
-remove_user_from_group(
+\donttest{remove_user_from_group(
   GroupName = "Admins",
   UserName = "Bob"
-)
+)}
 
 }

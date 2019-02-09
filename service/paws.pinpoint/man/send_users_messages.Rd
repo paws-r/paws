@@ -4,7 +4,18 @@
 \alias{send_users_messages}
 \title{Used to send a message to a list of users}
 \usage{
-send_users_messages(
+send_users_messages(ApplicationId, SendUsersMessageRequest)
+}
+\arguments{
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+
+\item{SendUsersMessageRequest}{[required]}
+}
+\description{
+Used to send a message to a list of users.
+}
+\section{Accepted Parameters}{
+\preformatted{send_users_messages(
   ApplicationId = "string",
   SendUsersMessageRequest = list(
     Context = list(
@@ -203,14 +214,5 @@ send_users_messages(
   )
 )
 }
-\arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+}
 
-\item{SendUsersMessageRequest}{[required]}
-}
-\description{
-Used to send a message to a list of users.
-}
-\examples{
-
-}

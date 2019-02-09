@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.organizations_operations.R
 \name{disable_aws_service_access}
 \alias{disable_aws_service_access}
-\title{Disables the integration of an AWS service (the service that is specified by \code{ServicePrincipal}) with AWS Organizations}
+\title{Disables the integration of an AWS service (the service that is specified by ServicePrincipal) with AWS Organizations}
 \usage{
-disable_aws_service_access(
-  ServicePrincipal = "string"
-)
+disable_aws_service_access(ServicePrincipal)
 }
 \arguments{
 \item{ServicePrincipal}{[required] The service principal name of the AWS service for which you want to disable integration with your organization. This is typically in the form of a URL, such as \code{ service-abbreviation.amazonaws.comservice-abbreviation.amazonaws.com}.}
@@ -23,6 +21,10 @@ For more information about integrating other services with AWS Organizations, in
 
 This operation can be called only from the organization's master account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disable_aws_service_access(
+  ServicePrincipal = "string"
+)
 }
+}
+

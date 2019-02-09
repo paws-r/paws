@@ -4,10 +4,7 @@
 \alias{associate_web_acl}
 \title{Associates a web ACL with a resource, either an application load balancer or Amazon API Gateway stage}
 \usage{
-associate_web_acl(
-  WebACLId = "string",
-  ResourceArn = "string"
-)
+associate_web_acl(WebACLId, ResourceArn)
 }
 \arguments{
 \item{WebACLId}{[required] A unique identifier (ID) for the web ACL.}
@@ -23,6 +20,11 @@ The ARN should be in one of the following formats:
 \description{
 Associates a web ACL with a resource, either an application load balancer or Amazon API Gateway stage.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_web_acl(
+  WebACLId = "string",
+  ResourceArn = "string"
+)
 }
+}
+

@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.appsync_operations.R
 \name{get_function}
 \alias{get_function}
-\title{Get a \code{Function}}
+\title{Get a Function}
 \usage{
-get_function(
-  apiId = "string",
-  functionId = "string"
-)
+get_function(apiId, functionId)
 }
 \arguments{
 \item{apiId}{[required] The GraphQL API ID.}
@@ -17,6 +14,11 @@ get_function(
 \description{
 Get a \code{Function}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_function(
+  apiId = "string",
+  functionId = "string"
+)
 }
+}
+

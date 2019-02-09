@@ -4,15 +4,8 @@
 \alias{update_service_action}
 \title{Updates a self-service action}
 \usage{
-update_service_action(
-  Id = "string",
-  Name = "string",
-  Definition = list(
-    "string"
-  ),
-  Description = "string",
-  AcceptLanguage = "string"
-)
+update_service_action(Id, Name = NULL, Definition = NULL,
+  Description = NULL, AcceptLanguage = NULL)
 }
 \arguments{
 \item{Id}{[required] The self-service action identifier.}
@@ -33,6 +26,16 @@ update_service_action(
 \description{
 Updates a self-service action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_service_action(
+  Id = "string",
+  Name = "string",
+  Definition = list(
+    "string"
+  ),
+  Description = "string",
+  AcceptLanguage = "string"
+)
 }
+}
+

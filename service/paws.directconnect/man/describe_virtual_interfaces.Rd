@@ -4,10 +4,8 @@
 \alias{describe_virtual_interfaces}
 \title{Displays all virtual interfaces for an AWS account}
 \usage{
-describe_virtual_interfaces(
-  connectionId = "string",
-  virtualInterfaceId = "string"
-)
+describe_virtual_interfaces(connectionId = NULL,
+  virtualInterfaceId = NULL)
 }
 \arguments{
 \item{connectionId}{The ID of the connection.}
@@ -20,6 +18,11 @@ Displays all virtual interfaces for an AWS account. Virtual interfaces deleted f
 \details{
 A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer network.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_virtual_interfaces(
+  connectionId = "string",
+  virtualInterfaceId = "string"
+)
 }
+}
+

@@ -4,11 +4,7 @@
 \alias{delete_job}
 \title{Delete a job, for an Amplify branch, part of Amplify App}
 \usage{
-delete_job(
-  appId = "string",
-  branchName = "string",
-  jobId = "string"
-)
+delete_job(appId, branchName, jobId)
 }
 \arguments{
 \item{appId}{[required] Unique Id for an Amplify App.}
@@ -20,6 +16,12 @@ delete_job(
 \description{
 Delete a job, for an Amplify branch, part of Amplify App.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_job(
+  appId = "string",
+  branchName = "string",
+  jobId = "string"
+)
 }
+}
+

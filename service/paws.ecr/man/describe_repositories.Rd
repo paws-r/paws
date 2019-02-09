@@ -4,14 +4,8 @@
 \alias{describe_repositories}
 \title{Describes image repositories in a registry}
 \usage{
-describe_repositories(
-  registryId = "string",
-  repositoryNames = list(
-    "string"
-  ),
-  nextToken = "string",
-  maxResults = 123
-)
+describe_repositories(registryId = NULL, repositoryNames = NULL,
+  nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{registryId}{The AWS account ID associated with the registry that contains the repositories to be described. If you do not specify a registry, the default registry is assumed.}
@@ -27,9 +21,21 @@ This token should be treated as an opaque identifier that is only used to retrie
 \description{
 Describes image repositories in a registry.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_repositories(
+  registryId = "string",
+  repositoryNames = list(
+    "string"
+  ),
+  nextToken = "string",
+  maxResults = 123
+)
+}
+}
+
 \examples{
 # The following example obtains a list and description of all repositories
 # in the default registry to which the current user has access.
-describe_repositories()
+\donttest{describe_repositories()}
 
 }

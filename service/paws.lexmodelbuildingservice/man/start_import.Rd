@@ -4,11 +4,7 @@
 \alias{start_import}
 \title{Starts a job to import a resource to Amazon Lex}
 \usage{
-start_import(
-  payload = raw,
-  resourceType = "BOT"|"INTENT"|"SLOT_TYPE",
-  mergeStrategy = "OVERWRITE_LATEST"|"FAIL_ON_CONFLICT"
-)
+start_import(payload, resourceType, mergeStrategy)
 }
 \arguments{
 \item{payload}{[required] A zip archive in binary format. The archive should contain one file, a JSON file containing the resource to import. The resource should match the type specified in the \code{resourceType} field.}
@@ -29,6 +25,12 @@ OVERWRITE\_LATEST - The import operation proceeds even if there is a conflict wi
 \description{
 Starts a job to import a resource to Amazon Lex.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_import(
+  payload = raw,
+  resourceType = "BOT"|"INTENT"|"SLOT_TYPE",
+  mergeStrategy = "OVERWRITE_LATEST"|"FAIL_ON_CONFLICT"
+)
 }
+}
+

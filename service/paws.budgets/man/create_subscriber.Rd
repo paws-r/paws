@@ -4,7 +4,22 @@
 \alias{create_subscriber}
 \title{Creates a subscriber}
 \usage{
-create_subscriber(
+create_subscriber(AccountId, BudgetName, Notification, Subscriber)
+}
+\arguments{
+\item{AccountId}{[required] The \code{accountId} that is associated with the budget that you want to create a subscriber for.}
+
+\item{BudgetName}{[required] The name of the budget that you want to subscribe to. Budget names must be unique within an account.}
+
+\item{Notification}{[required] The notification that you want to create a subscriber for.}
+
+\item{Subscriber}{[required] The subscriber that you want to associate with a budget notification.}
+}
+\description{
+Creates a subscriber. You must create the associated budget and notification before you create the subscriber.
+}
+\section{Accepted Parameters}{
+\preformatted{create_subscriber(
   AccountId = "string",
   BudgetName = "string",
   Notification = list(
@@ -20,18 +35,5 @@ create_subscriber(
   )
 )
 }
-\arguments{
-\item{AccountId}{[required] The \code{accountId} that is associated with the budget that you want to create a subscriber for.}
-
-\item{BudgetName}{[required] The name of the budget that you want to subscribe to. Budget names must be unique within an account.}
-
-\item{Notification}{[required] The notification that you want to create a subscriber for.}
-
-\item{Subscriber}{[required] The subscriber that you want to associate with a budget notification.}
 }
-\description{
-Creates a subscriber. You must create the associated budget and notification before you create the subscriber.
-}
-\examples{
 
-}

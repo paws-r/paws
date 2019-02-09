@@ -12,6 +12,8 @@ Enable portfolio sharing feature through AWS Organizations. This API will allow 
 \details{
 By calling this API Service Catalog will make a call to organizations:EnableAWSServiceAccess on your behalf so that your shares can be in sync with any changes in your AWS Organizations structure.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{enable_aws_organizations_access()
 }
+}
+

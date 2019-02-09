@@ -4,11 +4,8 @@
 \alias{list_event_subscriptions}
 \title{Lists all the event subscriptions for the assessment template that is specified by the ARN of the assessment template}
 \usage{
-list_event_subscriptions(
-  resourceArn = "string",
-  nextToken = "string",
-  maxResults = 123
-)
+list_event_subscriptions(resourceArn = NULL, nextToken = NULL,
+  maxResults = NULL)
 }
 \arguments{
 \item{resourceArn}{The ARN of the assessment template for which you want to list the existing event subscriptions.}
@@ -20,12 +17,21 @@ list_event_subscriptions(
 \description{
 Lists all the event subscriptions for the assessment template that is specified by the ARN of the assessment template. For more information, see SubscribeToEvent and UnsubscribeFromEvent.
 }
+\section{Accepted Parameters}{
+\preformatted{list_event_subscriptions(
+  resourceArn = "string",
+  nextToken = "string",
+  maxResults = 123
+)
+}
+}
+
 \examples{
 # Lists all the event subscriptions for the assessment template that is
 # specified by the ARN of the assessment template. 
-list_event_subscriptions(
+\donttest{list_event_subscriptions(
   maxResults = 123L,
   resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-7sbz2Kz0"
-)
+)}
 
 }

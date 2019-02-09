@@ -4,12 +4,8 @@
 \alias{list_geo_locations}
 \title{Retrieves a list of supported geographic locations}
 \usage{
-list_geo_locations(
-  StartContinentCode = "string",
-  StartCountryCode = "string",
-  StartSubdivisionCode = "string",
-  MaxItems = "string"
-)
+list_geo_locations(StartContinentCode = NULL, StartCountryCode = NULL,
+  StartSubdivisionCode = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{StartContinentCode}{The code for the continent with which you want to start listing locations that Amazon Route 53 supports for geolocation. If Route 53 has already returned a page or more of results, if \code{IsTruncated} is true, and if \code{NextContinentCode} from the previous response has a value, enter that value in \code{startcontinentcode} to return the next page of results.
@@ -32,6 +28,13 @@ Retrieves a list of supported geographic locations.
 \details{
 Countries are listed first, and continents are listed last. If Amazon Route 53 supports subdivisions for a country (for example, states or provinces), the subdivisions for that country are listed in alphabetical order immediately after the corresponding country.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_geo_locations(
+  StartContinentCode = "string",
+  StartCountryCode = "string",
+  StartSubdivisionCode = "string",
+  MaxItems = "string"
+)
 }
+}
+

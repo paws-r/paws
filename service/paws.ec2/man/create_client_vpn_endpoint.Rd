@@ -4,33 +4,10 @@
 \alias{create_client_vpn_endpoint}
 \title{Creates a Client VPN endpoint}
 \usage{
-create_client_vpn_endpoint(
-  ClientCidrBlock = "string",
-  ServerCertificateArn = "string",
-  AuthenticationOptions = list(
-    list(
-      Type = "certificate-authentication"|"directory-service-authentication",
-      ActiveDirectory = list(
-        DirectoryId = "string"
-      ),
-      MutualAuthentication = list(
-        ClientRootCertificateChainArn = "string"
-      )
-    )
-  ),
-  ConnectionLogOptions = list(
-    Enabled = TRUE|FALSE,
-    CloudwatchLogGroup = "string",
-    CloudwatchLogStream = "string"
-  ),
-  DnsServers = list(
-    "string"
-  ),
-  TransportProtocol = "tcp"|"udp",
-  Description = "string",
-  DryRun = TRUE|FALSE,
-  ClientToken = "string"
-)
+create_client_vpn_endpoint(ClientCidrBlock, ServerCertificateArn,
+  AuthenticationOptions, ConnectionLogOptions, DnsServers = NULL,
+  TransportProtocol = NULL, Description = NULL, DryRun = NULL,
+  ClientToken = NULL)
 }
 \arguments{
 \item{ClientCidrBlock}{[required] The IPv4 address range, in CIDR notation, from which to assign client IP addresses. The address range cannot overlap with the local CIDR of the VPC in which the associated subnet is located, or the routes that you add manually. The address range cannot be changed after the Client VPN endpoint has been created. The CIDR block should be /22 or greater.}
@@ -59,11 +36,39 @@ Default value: \code{udp}}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{ClientToken}{Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
+\item{ClientToken}{Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
 }
 \description{
 Creates a Client VPN endpoint. A Client VPN endpoint is the resource you create and configure to enable and manage client VPN sessions. It is the destination endpoint at which all client VPN sessions are terminated.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_client_vpn_endpoint(
+  ClientCidrBlock = "string",
+  ServerCertificateArn = "string",
+  AuthenticationOptions = list(
+    list(
+      Type = "certificate-authentication"|"directory-service-authentication",
+      ActiveDirectory = list(
+        DirectoryId = "string"
+      ),
+      MutualAuthentication = list(
+        ClientRootCertificateChainArn = "string"
+      )
+    )
+  ),
+  ConnectionLogOptions = list(
+    Enabled = TRUE|FALSE,
+    CloudwatchLogGroup = "string",
+    CloudwatchLogStream = "string"
+  ),
+  DnsServers = list(
+    "string"
+  ),
+  TransportProtocol = "tcp"|"udp",
+  Description = "string",
+  DryRun = TRUE|FALSE,
+  ClientToken = "string"
+)
 }
+}
+

@@ -4,31 +4,11 @@
 \alias{modify_vpc_endpoint}
 \title{Modifies attributes of a specified VPC endpoint}
 \usage{
-modify_vpc_endpoint(
-  DryRun = TRUE|FALSE,
-  VpcEndpointId = "string",
-  ResetPolicy = TRUE|FALSE,
-  PolicyDocument = "string",
-  AddRouteTableIds = list(
-    "string"
-  ),
-  RemoveRouteTableIds = list(
-    "string"
-  ),
-  AddSubnetIds = list(
-    "string"
-  ),
-  RemoveSubnetIds = list(
-    "string"
-  ),
-  AddSecurityGroupIds = list(
-    "string"
-  ),
-  RemoveSecurityGroupIds = list(
-    "string"
-  ),
-  PrivateDnsEnabled = TRUE|FALSE
-)
+modify_vpc_endpoint(DryRun = NULL, VpcEndpointId, ResetPolicy = NULL,
+  PolicyDocument = NULL, AddRouteTableIds = NULL,
+  RemoveRouteTableIds = NULL, AddSubnetIds = NULL,
+  RemoveSubnetIds = NULL, AddSecurityGroupIds = NULL,
+  RemoveSecurityGroupIds = NULL, PrivateDnsEnabled = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -54,8 +34,34 @@ modify_vpc_endpoint(
 \item{PrivateDnsEnabled}{(Interface endpoint) Indicate whether a private hosted zone is associated with the VPC.}
 }
 \description{
-Modifies attributes of a specified VPC endpoint. The attributes that you can modify depend on the type of VPC endpoint (interface or gateway). For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-endpoints.html}{VPC Endpoints} in the \emph{Amazon Virtual Private Cloud User Guide}.
+Modifies attributes of a specified VPC endpoint. The attributes that you can modify depend on the type of VPC endpoint (interface or gateway). For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-endpoints.html}{VPC Endpoints} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{modify_vpc_endpoint(
+  DryRun = TRUE|FALSE,
+  VpcEndpointId = "string",
+  ResetPolicy = TRUE|FALSE,
+  PolicyDocument = "string",
+  AddRouteTableIds = list(
+    "string"
+  ),
+  RemoveRouteTableIds = list(
+    "string"
+  ),
+  AddSubnetIds = list(
+    "string"
+  ),
+  RemoveSubnetIds = list(
+    "string"
+  ),
+  AddSecurityGroupIds = list(
+    "string"
+  ),
+  RemoveSecurityGroupIds = list(
+    "string"
+  ),
+  PrivateDnsEnabled = TRUE|FALSE
+)
+}
+}
 
-}

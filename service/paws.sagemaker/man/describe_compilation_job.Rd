@@ -4,9 +4,7 @@
 \alias{describe_compilation_job}
 \title{Returns information about a model compilation job}
 \usage{
-describe_compilation_job(
-  CompilationJobName = "string"
-)
+describe_compilation_job(CompilationJobName)
 }
 \arguments{
 \item{CompilationJobName}{[required] The name of the model compilation job that you want information about.}
@@ -17,6 +15,10 @@ Returns information about a model compilation job.
 \details{
 To create a model compilation job, use CreateCompilationJob. To get information about multiple model compilation jobs, use ListCompilationJobs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_compilation_job(
+  CompilationJobName = "string"
+)
 }
+}
+

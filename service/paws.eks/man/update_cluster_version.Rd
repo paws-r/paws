@@ -4,11 +4,7 @@
 \alias{update_cluster_version}
 \title{Updates an Amazon EKS cluster to the specified Kubernetes version}
 \usage{
-update_cluster_version(
-  name = "string",
-  version = "string",
-  clientRequestToken = "string"
-)
+update_cluster_version(name, version, clientRequestToken = NULL)
 }
 \arguments{
 \item{name}{[required] The name of the Amazon EKS cluster to update.}
@@ -23,6 +19,12 @@ Updates an Amazon EKS cluster to the specified Kubernetes version. Your cluster 
 \details{
 Cluster updates are asynchronous, and they should finish within a few minutes. During an update, the cluster status moves to \code{UPDATING} (this status transition is eventually consistent). When the update is complete (either \code{Failed} or \code{Successful}), the cluster status moves to \code{Active}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_cluster_version(
+  name = "string",
+  version = "string",
+  clientRequestToken = "string"
+)
 }
+}
+

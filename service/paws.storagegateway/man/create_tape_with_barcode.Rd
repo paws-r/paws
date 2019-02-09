@@ -4,13 +4,8 @@
 \alias{create_tape_with_barcode}
 \title{Creates a virtual tape by using your own barcode}
 \usage{
-create_tape_with_barcode(
-  GatewayARN = "string",
-  TapeSizeInBytes = 123,
-  TapeBarcode = "string",
-  KMSEncrypted = TRUE|FALSE,
-  KMSKey = "string"
-)
+create_tape_with_barcode(GatewayARN, TapeSizeInBytes, TapeBarcode,
+  KMSEncrypted = NULL, KMSKey = NULL)
 }
 \arguments{
 \item{GatewayARN}{[required] The unique Amazon Resource Name (ARN) that represents the gateway to associate the virtual tape with. Use the ListGateways operation to return a list of gateways for your account and region.}
@@ -33,12 +28,23 @@ Creates a virtual tape by using your own barcode. You write data to the virtual 
 \details{
 Cache storage must be allocated to the gateway before you can create a virtual tape. Use the AddCache operation to add cache storage to a gateway.
 }
+\section{Accepted Parameters}{
+\preformatted{create_tape_with_barcode(
+  GatewayARN = "string",
+  TapeSizeInBytes = 123,
+  TapeBarcode = "string",
+  KMSEncrypted = TRUE|FALSE,
+  KMSKey = "string"
+)
+}
+}
+
 \examples{
 # Creates a virtual tape by using your own barcode.
-create_tape_with_barcode(
+\donttest{create_tape_with_barcode(
   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B",
   TapeBarcode = "TEST12345",
   TapeSizeInBytes = 107374182400
-)
+)}
 
 }

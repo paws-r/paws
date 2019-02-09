@@ -4,46 +4,14 @@
 \alias{create_launch_configuration}
 \title{Creates a launch configuration}
 \usage{
-create_launch_configuration(
-  LaunchConfigurationName = "string",
-  ImageId = "string",
-  KeyName = "string",
-  SecurityGroups = list(
-    "string"
-  ),
-  ClassicLinkVPCId = "string",
-  ClassicLinkVPCSecurityGroups = list(
-    "string"
-  ),
-  UserData = "string",
-  InstanceId = "string",
-  InstanceType = "string",
-  KernelId = "string",
-  RamdiskId = "string",
-  BlockDeviceMappings = list(
-    list(
-      VirtualName = "string",
-      DeviceName = "string",
-      Ebs = list(
-        SnapshotId = "string",
-        VolumeSize = 123,
-        VolumeType = "string",
-        DeleteOnTermination = TRUE|FALSE,
-        Iops = 123,
-        Encrypted = TRUE|FALSE
-      ),
-      NoDevice = TRUE|FALSE
-    )
-  ),
-  InstanceMonitoring = list(
-    Enabled = TRUE|FALSE
-  ),
-  SpotPrice = "string",
-  IamInstanceProfile = "string",
-  EbsOptimized = TRUE|FALSE,
-  AssociatePublicIpAddress = TRUE|FALSE,
-  PlacementTenancy = "string"
-)
+create_launch_configuration(LaunchConfigurationName, ImageId = NULL,
+  KeyName = NULL, SecurityGroups = NULL, ClassicLinkVPCId = NULL,
+  ClassicLinkVPCSecurityGroups = NULL, UserData = NULL,
+  InstanceId = NULL, InstanceType = NULL, KernelId = NULL,
+  RamdiskId = NULL, BlockDeviceMappings = NULL,
+  InstanceMonitoring = NULL, SpotPrice = NULL,
+  IamInstanceProfile = NULL, EbsOptimized = NULL,
+  AssociatePublicIpAddress = NULL, PlacementTenancy = NULL)
 }
 \arguments{
 \item{LaunchConfigurationName}{[required] The name of the launch configuration. This name must be unique within the scope of your AWS account.}
@@ -122,9 +90,53 @@ If you exceed your maximum limit of launch configurations, the call fails. For i
 
 For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchConfiguration.html}{Launch Configurations} in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_launch_configuration(
+  LaunchConfigurationName = "string",
+  ImageId = "string",
+  KeyName = "string",
+  SecurityGroups = list(
+    "string"
+  ),
+  ClassicLinkVPCId = "string",
+  ClassicLinkVPCSecurityGroups = list(
+    "string"
+  ),
+  UserData = "string",
+  InstanceId = "string",
+  InstanceType = "string",
+  KernelId = "string",
+  RamdiskId = "string",
+  BlockDeviceMappings = list(
+    list(
+      VirtualName = "string",
+      DeviceName = "string",
+      Ebs = list(
+        SnapshotId = "string",
+        VolumeSize = 123,
+        VolumeType = "string",
+        DeleteOnTermination = TRUE|FALSE,
+        Iops = 123,
+        Encrypted = TRUE|FALSE
+      ),
+      NoDevice = TRUE|FALSE
+    )
+  ),
+  InstanceMonitoring = list(
+    Enabled = TRUE|FALSE
+  ),
+  SpotPrice = "string",
+  IamInstanceProfile = "string",
+  EbsOptimized = TRUE|FALSE,
+  AssociatePublicIpAddress = TRUE|FALSE,
+  PlacementTenancy = "string"
+)
+}
+}
+
 \examples{
 # This example creates a launch configuration.
-create_launch_configuration(
+\donttest{create_launch_configuration(
   IamInstanceProfile = "my-iam-role",
   ImageId = "ami-12345678",
   InstanceType = "m3.medium",
@@ -132,6 +144,6 @@ create_launch_configuration(
   SecurityGroups = list(
     "sg-eb2af88e"
   )
-)
+)}
 
 }

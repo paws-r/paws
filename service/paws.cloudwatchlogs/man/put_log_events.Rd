@@ -4,17 +4,8 @@
 \alias{put_log_events}
 \title{Uploads a batch of log events to the specified log stream}
 \usage{
-put_log_events(
-  logGroupName = "string",
-  logStreamName = "string",
-  logEvents = list(
-    list(
-      timestamp = 123,
-      message = "string"
-    )
-  ),
-  sequenceToken = "string"
-)
+put_log_events(logGroupName, logStreamName, logEvents,
+  sequenceToken = NULL)
 }
 \arguments{
 \item{logGroupName}{[required] The name of the log group.}
@@ -43,6 +34,18 @@ The batch of events must satisfy the following constraints:
 
 If a call to PutLogEvents returns "UnrecognizedClientException" the most likely cause is an invalid AWS access key ID or secret key.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_log_events(
+  logGroupName = "string",
+  logStreamName = "string",
+  logEvents = list(
+    list(
+      timestamp = 123,
+      message = "string"
+    )
+  ),
+  sequenceToken = "string"
+)
 }
+}
+

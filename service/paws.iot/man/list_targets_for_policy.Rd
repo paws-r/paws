@@ -4,11 +4,7 @@
 \alias{list_targets_for_policy}
 \title{List targets for the specified policy}
 \usage{
-list_targets_for_policy(
-  policyName = "string",
-  marker = "string",
-  pageSize = 123
-)
+list_targets_for_policy(policyName, marker = NULL, pageSize = NULL)
 }
 \arguments{
 \item{policyName}{[required] The policy name.}
@@ -20,6 +16,12 @@ list_targets_for_policy(
 \description{
 List targets for the specified policy.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_targets_for_policy(
+  policyName = "string",
+  marker = "string",
+  pageSize = 123
+)
 }
+}
+

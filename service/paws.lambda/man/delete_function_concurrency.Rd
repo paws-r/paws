@@ -2,27 +2,29 @@
 % Please edit documentation in R/paws.lambda_operations.R
 \name{delete_function_concurrency}
 \alias{delete_function_concurrency}
-\title{Removes concurrent execution limits from this function}
+\title{Removes a concurrent execution limit from a function}
 \usage{
-delete_function_concurrency(
-  FunctionName = "string"
-)
+delete_function_concurrency(FunctionName)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the Lambda function.
 
 \strong{Name formats}
 \itemize{
-\item \strong{Function name} - \code{MyFunction}.
-\item \strong{Function ARN} - \code{arn:aws:lambda:us-west-2:123456789012:function:MyFunction}.
-\item \strong{Partial ARN} - \code{123456789012:function:MyFunction}.
+\item \strong{Function name} - \code{my-function}.
+\item \strong{Function ARN} - \code{arn:aws:lambda:us-west-2:123456789012:function:my-function}.
+\item \strong{Partial ARN} - \code{123456789012:function:my-function}.
 }
 
 The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
 }
 \description{
-Removes concurrent execution limits from this function. For more information, see \href{http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html}{Managing Concurrency}.
+Removes a concurrent execution limit from a function.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{delete_function_concurrency(
+  FunctionName = "string"
+)
+}
+}
 
-}

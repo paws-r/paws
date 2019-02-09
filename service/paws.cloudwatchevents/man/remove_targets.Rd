@@ -4,13 +4,7 @@
 \alias{remove_targets}
 \title{Removes the specified targets from the specified rule}
 \usage{
-remove_targets(
-  Rule = "string",
-  Ids = list(
-    "string"
-  ),
-  Force = TRUE|FALSE
-)
+remove_targets(Rule, Ids, Force = NULL)
 }
 \arguments{
 \item{Rule}{[required] The name of the rule.}
@@ -27,6 +21,14 @@ When you remove a target, when the associated rule triggers, removed targets mig
 
 This action can partially fail if too many requests are made at the same time. If that happens, \code{FailedEntryCount} is non-zero in the response and each entry in \code{FailedEntries} provides the ID of the failed target and the error code.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{remove_targets(
+  Rule = "string",
+  Ids = list(
+    "string"
+  ),
+  Force = TRUE|FALSE
+)
 }
+}
+

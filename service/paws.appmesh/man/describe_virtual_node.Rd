@@ -4,10 +4,7 @@
 \alias{describe_virtual_node}
 \title{Describes an existing virtual node}
 \usage{
-describe_virtual_node(
-  meshName = "string",
-  virtualNodeName = "string"
-)
+describe_virtual_node(meshName, virtualNodeName)
 }
 \arguments{
 \item{meshName}{[required] The name of the service mesh in which the virtual node resides.}
@@ -17,6 +14,11 @@ describe_virtual_node(
 \description{
 Describes an existing virtual node.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_virtual_node(
+  meshName = "string",
+  virtualNodeName = "string"
+)
 }
+}
+

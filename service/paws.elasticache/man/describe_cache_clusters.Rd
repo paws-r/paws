@@ -4,13 +4,9 @@
 \alias{describe_cache_clusters}
 \title{Returns information about all provisioned clusters if no cluster identifier is specified, or about a specific cache cluster if a cluster identifier is supplied}
 \usage{
-describe_cache_clusters(
-  CacheClusterId = "string",
-  MaxRecords = 123,
-  Marker = "string",
-  ShowCacheNodeInfo = TRUE|FALSE,
-  ShowCacheClustersNotInReplicationGroups = TRUE|FALSE
-)
+describe_cache_clusters(CacheClusterId = NULL, MaxRecords = NULL,
+  Marker = NULL, ShowCacheNodeInfo = NULL,
+  ShowCacheClustersNotInReplicationGroups = NULL)
 }
 \arguments{
 \item{CacheClusterId}{The user-supplied cluster identifier. If this parameter is specified, only information about that specific cluster is returned. This parameter isn't case sensitive.}
@@ -41,6 +37,14 @@ If cache nodes are currently being added to the cluster, node endpoint informati
 
 If cache nodes are currently being removed from the cluster, no endpoint information for the removed nodes is displayed.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_cache_clusters(
+  CacheClusterId = "string",
+  MaxRecords = 123,
+  Marker = "string",
+  ShowCacheNodeInfo = TRUE|FALSE,
+  ShowCacheClustersNotInReplicationGroups = TRUE|FALSE
+)
 }
+}
+

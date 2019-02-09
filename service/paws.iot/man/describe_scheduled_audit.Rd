@@ -4,9 +4,7 @@
 \alias{describe_scheduled_audit}
 \title{Gets information about a scheduled audit}
 \usage{
-describe_scheduled_audit(
-  scheduledAuditName = "string"
-)
+describe_scheduled_audit(scheduledAuditName)
 }
 \arguments{
 \item{scheduledAuditName}{[required] The name of the scheduled audit whose information you want to get.}
@@ -14,6 +12,10 @@ describe_scheduled_audit(
 \description{
 Gets information about a scheduled audit.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_scheduled_audit(
+  scheduledAuditName = "string"
+)
 }
+}
+

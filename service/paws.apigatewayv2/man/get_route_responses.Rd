@@ -4,12 +4,8 @@
 \alias{get_route_responses}
 \title{Gets the RouteResponses for a Route}
 \usage{
-get_route_responses(
-  ApiId = "string",
-  MaxResults = "string",
-  NextToken = "string",
-  RouteId = "string"
-)
+get_route_responses(ApiId, MaxResults = NULL, NextToken = NULL,
+  RouteId)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -23,6 +19,13 @@ get_route_responses(
 \description{
 Gets the RouteResponses for a Route.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_route_responses(
+  ApiId = "string",
+  MaxResults = "string",
+  NextToken = "string",
+  RouteId = "string"
+)
 }
+}
+

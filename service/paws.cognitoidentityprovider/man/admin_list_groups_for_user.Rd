@@ -4,12 +4,8 @@
 \alias{admin_list_groups_for_user}
 \title{Lists the groups that the user belongs to}
 \usage{
-admin_list_groups_for_user(
-  Username = "string",
-  UserPoolId = "string",
-  Limit = 123,
-  NextToken = "string"
-)
+admin_list_groups_for_user(Username, UserPoolId, Limit = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{Username}{[required] The username for the user.}
@@ -26,6 +22,13 @@ Lists the groups that the user belongs to.
 \details{
 Requires developer credentials.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{admin_list_groups_for_user(
+  Username = "string",
+  UserPoolId = "string",
+  Limit = 123,
+  NextToken = "string"
+)
 }
+}
+

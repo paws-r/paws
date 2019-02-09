@@ -4,15 +4,8 @@
 \alias{describe_compliance_by_resource}
 \title{Indicates whether the specified AWS resources are compliant}
 \usage{
-describe_compliance_by_resource(
-  ResourceType = "string",
-  ResourceId = "string",
-  ComplianceTypes = list(
-    "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA"
-  ),
-  Limit = 123,
-  NextToken = "string"
-)
+describe_compliance_by_resource(ResourceType = NULL, ResourceId = NULL,
+  ComplianceTypes = NULL, Limit = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ResourceType}{The types of AWS resources for which you want compliance information (for example, \code{AWS::EC2::Instance}). For this action, you can specify that the resource type is an AWS account by specifying \code{AWS::::Account}.}
@@ -40,6 +33,16 @@ If AWS Config has no current evaluation results for the resource, it returns \co
 \item The rule's AWS Lambda function has returned \code{NOT_APPLICABLE} for all evaluation results. This can occur if the resources were deleted or removed from the rule's scope.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_compliance_by_resource(
+  ResourceType = "string",
+  ResourceId = "string",
+  ComplianceTypes = list(
+    "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA"
+  ),
+  Limit = 123,
+  NextToken = "string"
+)
 }
+}
+

@@ -4,11 +4,7 @@
 \alias{start_config_rules_evaluation}
 \title{Runs an on-demand evaluation for the specified AWS Config rules against the last known configuration state of the resources}
 \usage{
-start_config_rules_evaluation(
-  ConfigRuleNames = list(
-    "string"
-  )
-)
+start_config_rules_evaluation(ConfigRuleNames = NULL)
 }
 \arguments{
 \item{ConfigRuleNames}{The list of names of AWS Config rules that you want to run evaluations for.}
@@ -32,6 +28,12 @@ The \code{StartConfigRulesEvaluation} API is useful if you want to run on-demand
 \item Your custom rule will still run periodic evaluations every 24 hours.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_config_rules_evaluation(
+  ConfigRuleNames = list(
+    "string"
+  )
+)
 }
+}
+

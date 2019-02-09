@@ -4,10 +4,7 @@
 \alias{list_containers}
 \title{Lists the properties of all containers in AWS Elemental MediaStore}
 \usage{
-list_containers(
-  NextToken = "string",
-  MaxResults = 123
-)
+list_containers(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{Only if you used \code{MaxResults} in the first command, enter the token (which was included in the previous response) to obtain the next set of containers. This token is included in a response only if there actually are more containers to list.}
@@ -22,6 +19,11 @@ You can query to receive all the containers in one response. Or you can include 
 
 See also DescribeContainer, which gets the properties of one container.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_containers(
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

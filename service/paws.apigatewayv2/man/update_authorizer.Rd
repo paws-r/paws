@@ -4,22 +4,11 @@
 \alias{update_authorizer}
 \title{Updates an Authorizer}
 \usage{
-update_authorizer(
-  ApiId = "string",
-  AuthorizerCredentialsArn = "string",
-  AuthorizerId = "string",
-  AuthorizerResultTtlInSeconds = 123,
-  AuthorizerType = "REQUEST",
-  AuthorizerUri = "string",
-  IdentitySource = list(
-    "string"
-  ),
-  IdentityValidationExpression = "string",
-  Name = "string",
-  ProviderArns = list(
-    "string"
-  )
-)
+update_authorizer(ApiId, AuthorizerCredentialsArn = NULL, AuthorizerId,
+  AuthorizerResultTtlInSeconds = NULL, AuthorizerType = NULL,
+  AuthorizerUri = NULL, IdentitySource = NULL,
+  IdentityValidationExpression = NULL, Name = NULL,
+  ProviderArns = NULL)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -47,6 +36,23 @@ For the REQUEST authorizer, this is required when authorization caching is enabl
 \description{
 Updates an Authorizer.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_authorizer(
+  ApiId = "string",
+  AuthorizerCredentialsArn = "string",
+  AuthorizerId = "string",
+  AuthorizerResultTtlInSeconds = 123,
+  AuthorizerType = "REQUEST",
+  AuthorizerUri = "string",
+  IdentitySource = list(
+    "string"
+  ),
+  IdentityValidationExpression = "string",
+  Name = "string",
+  ProviderArns = list(
+    "string"
+  )
+)
 }
+}
+

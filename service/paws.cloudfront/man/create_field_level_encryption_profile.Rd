@@ -4,7 +4,16 @@
 \alias{create_field_level_encryption_profile}
 \title{Create a field-level encryption profile}
 \usage{
-create_field_level_encryption_profile(
+create_field_level_encryption_profile(FieldLevelEncryptionProfileConfig)
+}
+\arguments{
+\item{FieldLevelEncryptionProfileConfig}{[required] The request to create a field-level encryption profile.}
+}
+\description{
+Create a field-level encryption profile.
+}
+\section{Accepted Parameters}{
+\preformatted{create_field_level_encryption_profile(
   FieldLevelEncryptionProfileConfig = list(
     Name = "string",
     CallerReference = "string",
@@ -27,12 +36,5 @@ create_field_level_encryption_profile(
   )
 )
 }
-\arguments{
-\item{FieldLevelEncryptionProfileConfig}{[required] The request to create a field-level encryption profile.}
 }
-\description{
-Create a field-level encryption profile.
-}
-\examples{
 
-}

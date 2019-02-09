@@ -4,10 +4,7 @@
 \alias{deactivate_user}
 \title{Deactivates the specified user, which revokes the user's access to Amazon WorkDocs}
 \usage{
-deactivate_user(
-  UserId = "string",
-  AuthenticationToken = "string"
-)
+deactivate_user(UserId, AuthenticationToken = NULL)
 }
 \arguments{
 \item{UserId}{[required] The ID of the user.}
@@ -17,6 +14,11 @@ deactivate_user(
 \description{
 Deactivates the specified user, which revokes the user's access to Amazon WorkDocs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{deactivate_user(
+  UserId = "string",
+  AuthenticationToken = "string"
+)
 }
+}
+

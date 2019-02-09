@@ -4,11 +4,8 @@
 \alias{describe_interconnect_loa}
 \title{Deprecated}
 \usage{
-describe_interconnect_loa(
-  interconnectId = "string",
-  providerName = "string",
-  loaContentType = "application/pdf"
-)
+describe_interconnect_loa(interconnectId, providerName = NULL,
+  loaContentType = NULL)
 }
 \arguments{
 \item{interconnectId}{[required] The ID of the interconnect.}
@@ -25,6 +22,12 @@ Gets the LOA-CFA for the specified interconnect.
 
 The Letter of Authorization - Connecting Facility Assignment (LOA-CFA) is a document that is used when establishing your cross connect to AWS at the colocation facility. For more information, see \href{http://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html}{Requesting Cross Connects at AWS Direct Connect Locations} in the \emph{AWS Direct Connect User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_interconnect_loa(
+  interconnectId = "string",
+  providerName = "string",
+  loaContentType = "application/pdf"
+)
 }
+}
+

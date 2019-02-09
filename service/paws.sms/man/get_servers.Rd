@@ -4,16 +4,8 @@
 \alias{get_servers}
 \title{Describes the servers in your server catalog}
 \usage{
-get_servers(
-  nextToken = "string",
-  maxResults = 123,
-  vmServerAddressList = list(
-    list(
-      vmManagerId = "string",
-      vmId = "string"
-    )
-  )
-)
+get_servers(nextToken = NULL, maxResults = NULL,
+  vmServerAddressList = NULL)
 }
 \arguments{
 \item{nextToken}{The token for the next set of results.}
@@ -28,6 +20,17 @@ Describes the servers in your server catalog.
 \details{
 Before you can describe your servers, you must import them using ImportServerCatalog.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_servers(
+  nextToken = "string",
+  maxResults = 123,
+  vmServerAddressList = list(
+    list(
+      vmManagerId = "string",
+      vmId = "string"
+    )
+  )
+)
 }
+}
+

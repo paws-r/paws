@@ -4,11 +4,8 @@
 \alias{cancel_import_task}
 \title{Cancels an in-process import virtual machine or import snapshot task}
 \usage{
-cancel_import_task(
-  CancelReason = "string",
-  DryRun = TRUE|FALSE,
-  ImportTaskId = "string"
-)
+cancel_import_task(CancelReason = NULL, DryRun = NULL,
+  ImportTaskId = NULL)
 }
 \arguments{
 \item{CancelReason}{The reason for canceling the task.}
@@ -20,6 +17,12 @@ cancel_import_task(
 \description{
 Cancels an in-process import virtual machine or import snapshot task.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{cancel_import_task(
+  CancelReason = "string",
+  DryRun = TRUE|FALSE,
+  ImportTaskId = "string"
+)
 }
+}
+

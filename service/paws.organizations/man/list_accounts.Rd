@@ -4,10 +4,7 @@
 \alias{list_accounts}
 \title{Lists all the accounts in the organization}
 \usage{
-list_accounts(
-  NextToken = "string",
-  MaxResults = 123
-)
+list_accounts(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{Use this parameter if you receive a \code{NextToken} response in a previous request that indicates that there is more output available. Set it to the value of the previous call's \code{NextToken} response to indicate where the output should continue from.}
@@ -22,9 +19,17 @@ Always check the \code{NextToken} response parameter for a \code{null} value whe
 
 This operation can be called only from the organization's master account.
 }
+\section{Accepted Parameters}{
+\preformatted{list_accounts(
+  NextToken = "string",
+  MaxResults = 123
+)
+}
+}
+
 \examples{
 # The following example shows you how to request a list of the accounts in
 # an organization:
-list_accounts()
+\donttest{list_accounts()}
 
 }

@@ -4,22 +4,8 @@
 \alias{create_compilation_job}
 \title{Starts a model compilation job}
 \usage{
-create_compilation_job(
-  CompilationJobName = "string",
-  RoleArn = "string",
-  InputConfig = list(
-    S3Uri = "string",
-    DataInputConfig = "string",
-    Framework = "TENSORFLOW"|"MXNET"|"ONNX"|"PYTORCH"|"XGBOOST"
-  ),
-  OutputConfig = list(
-    S3OutputLocation = "string",
-    TargetDevice = "ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"jetson_tx1"|"jetson_tx2"|"rasp3b"|"deeplens"
-  ),
-  StoppingCondition = list(
-    MaxRuntimeInSeconds = 123
-  )
-)
+create_compilation_job(CompilationJobName, RoleArn, InputConfig,
+  OutputConfig, StoppingCondition)
 }
 \arguments{
 \item{CompilationJobName}{[required] A name for the model compilation job. The name must be unique within the AWS Region and within your AWS account.}
@@ -60,6 +46,23 @@ You can also provide a \code{Tag} to track the model compilation job's resource 
 
 To stop a model compilation job, use StopCompilationJob. To get information about a particular model compilation job, use DescribeCompilationJob. To get information about multiple model compilation jobs, use ListCompilationJobs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_compilation_job(
+  CompilationJobName = "string",
+  RoleArn = "string",
+  InputConfig = list(
+    S3Uri = "string",
+    DataInputConfig = "string",
+    Framework = "TENSORFLOW"|"MXNET"|"ONNX"|"PYTORCH"|"XGBOOST"
+  ),
+  OutputConfig = list(
+    S3OutputLocation = "string",
+    TargetDevice = "ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"jetson_tx1"|"jetson_tx2"|"rasp3b"|"deeplens"
+  ),
+  StoppingCondition = list(
+    MaxRuntimeInSeconds = 123
+  )
+)
 }
+}
+

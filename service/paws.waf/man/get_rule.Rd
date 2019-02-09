@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.waf_operations.R
 \name{get_rule}
 \alias{get_rule}
-\title{Returns the Rule that is specified by the \code{RuleId} that you included in the \code{GetRule} request}
+\title{Returns the Rule that is specified by the RuleId that you included in the GetRule request}
 \usage{
-get_rule(
-  RuleId = "string"
-)
+get_rule(RuleId)
 }
 \arguments{
 \item{RuleId}{[required] The \code{RuleId} of the Rule that you want to get. \code{RuleId} is returned by CreateRule and by ListRules.}
@@ -14,11 +12,18 @@ get_rule(
 \description{
 Returns the Rule that is specified by the \code{RuleId} that you included in the \code{GetRule} request.
 }
+\section{Accepted Parameters}{
+\preformatted{get_rule(
+  RuleId = "string"
+)
+}
+}
+
 \examples{
 # The following example returns the details of a rule with the ID
 # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-get_rule(
+\donttest{get_rule(
   RuleId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-)
+)}
 
 }

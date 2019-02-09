@@ -4,9 +4,7 @@
 \alias{delete_business_report_schedule}
 \title{Deletes the recurring report delivery schedule with the specified schedule ARN}
 \usage{
-delete_business_report_schedule(
-  ScheduleArn = "string"
-)
+delete_business_report_schedule(ScheduleArn)
 }
 \arguments{
 \item{ScheduleArn}{[required] The ARN of the business report schedule.}
@@ -14,6 +12,10 @@ delete_business_report_schedule(
 \description{
 Deletes the recurring report delivery schedule with the specified schedule ARN.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_business_report_schedule(
+  ScheduleArn = "string"
+)
 }
+}
+

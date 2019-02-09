@@ -4,20 +4,9 @@
 \alias{describe_client_vpn_authorization_rules}
 \title{Describes the authorization rules for a specified Client VPN endpoint}
 \usage{
-describe_client_vpn_authorization_rules(
-  ClientVpnEndpointId = "string",
-  DryRun = TRUE|FALSE,
-  NextToken = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123
-)
+describe_client_vpn_authorization_rules(ClientVpnEndpointId,
+  DryRun = NULL, NextToken = NULL, Filters = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint.}
@@ -33,6 +22,21 @@ describe_client_vpn_authorization_rules(
 \description{
 Describes the authorization rules for a specified Client VPN endpoint.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_client_vpn_authorization_rules(
+  ClientVpnEndpointId = "string",
+  DryRun = TRUE|FALSE,
+  NextToken = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123
+)
 }
+}
+

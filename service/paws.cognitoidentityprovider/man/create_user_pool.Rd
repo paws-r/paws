@@ -4,7 +4,66 @@
 \alias{create_user_pool}
 \title{Creates a new Amazon Cognito user pool and sets the password policy for the pool}
 \usage{
-create_user_pool(
+create_user_pool(PoolName, Policies = NULL, LambdaConfig = NULL,
+  AutoVerifiedAttributes = NULL, AliasAttributes = NULL,
+  UsernameAttributes = NULL, SmsVerificationMessage = NULL,
+  EmailVerificationMessage = NULL, EmailVerificationSubject = NULL,
+  VerificationMessageTemplate = NULL, SmsAuthenticationMessage = NULL,
+  MfaConfiguration = NULL, DeviceConfiguration = NULL,
+  EmailConfiguration = NULL, SmsConfiguration = NULL,
+  UserPoolTags = NULL, AdminCreateUserConfig = NULL, Schema = NULL,
+  UserPoolAddOns = NULL)
+}
+\arguments{
+\item{PoolName}{[required] A string used to name the user pool.}
+
+\item{Policies}{The policies associated with the new user pool.}
+
+\item{LambdaConfig}{The Lambda trigger configuration information for the new user pool.
+
+In a push model, event sources (such as Amazon S3 and custom applications) need permission to invoke a function. So you will need to make an extra call to add permission for these event sources to invoke your Lambda function.
+
+For more information on using the Lambda API to add permission, see \href{https://docs.aws.amazon.com/lambda/latest/dg/API_AddPermission.html}{AddPermission} .
+
+For adding permission using the AWS CLI, see \href{https://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html}{add-permission} .}
+
+\item{AutoVerifiedAttributes}{The attributes to be auto-verified. Possible values: \strong{email}, \strong{phone\_number}.}
+
+\item{AliasAttributes}{Attributes supported as an alias for this user pool. Possible values: \strong{phone\_number}, \strong{email}, or \strong{preferred\_username}.}
+
+\item{UsernameAttributes}{Specifies whether email addresses or phone numbers can be specified as usernames when a user signs up.}
+
+\item{SmsVerificationMessage}{A string representing the SMS verification message.}
+
+\item{EmailVerificationMessage}{A string representing the email verification message.}
+
+\item{EmailVerificationSubject}{A string representing the email verification subject.}
+
+\item{VerificationMessageTemplate}{The template for the verification message that the user sees when the app requests permission to access the user's information.}
+
+\item{SmsAuthenticationMessage}{A string representing the SMS authentication message.}
+
+\item{MfaConfiguration}{Specifies MFA configuration details.}
+
+\item{DeviceConfiguration}{The device configuration.}
+
+\item{EmailConfiguration}{The email configuration.}
+
+\item{SmsConfiguration}{The SMS configuration.}
+
+\item{UserPoolTags}{The cost allocation tags for the user pool. For more information, see \href{http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html}{Adding Cost Allocation Tags to Your User Pool}}
+
+\item{AdminCreateUserConfig}{The configuration for \code{AdminCreateUser} requests.}
+
+\item{Schema}{An array of schema attributes for the new user pool. These attributes can be standard or custom attributes.}
+
+\item{UserPoolAddOns}{Used to enable advanced security risk detection. Set the key \code{AdvancedSecurityMode} to the value "AUDIT".}
+}
+\description{
+Creates a new Amazon Cognito user pool and sets the password policy for the pool.
+}
+\section{Accepted Parameters}{
+\preformatted{create_user_pool(
   PoolName = "string",
   Policies = list(
     PasswordPolicy = list(
@@ -95,54 +154,5 @@ create_user_pool(
   )
 )
 }
-\arguments{
-\item{PoolName}{[required] A string used to name the user pool.}
-
-\item{Policies}{The policies associated with the new user pool.}
-
-\item{LambdaConfig}{The Lambda trigger configuration information for the new user pool.
-
-In a push model, event sources (such as Amazon S3 and custom applications) need permission to invoke a function. So you will need to make an extra call to add permission for these event sources to invoke your Lambda function.
-
-For more information on using the Lambda API to add permission, see \href{https://docs.aws.amazon.com/lambda/latest/dg/API_AddPermission.html}{AddPermission}.
-
-For adding permission using the AWS CLI, see \href{https://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html}{add-permission}.}
-
-\item{AutoVerifiedAttributes}{The attributes to be auto-verified. Possible values: \strong{email}, \strong{phone\_number}.}
-
-\item{AliasAttributes}{Attributes supported as an alias for this user pool. Possible values: \strong{phone\_number}, \strong{email}, or \strong{preferred\_username}.}
-
-\item{UsernameAttributes}{Specifies whether email addresses or phone numbers can be specified as usernames when a user signs up.}
-
-\item{SmsVerificationMessage}{A string representing the SMS verification message.}
-
-\item{EmailVerificationMessage}{A string representing the email verification message.}
-
-\item{EmailVerificationSubject}{A string representing the email verification subject.}
-
-\item{VerificationMessageTemplate}{The template for the verification message that the user sees when the app requests permission to access the user's information.}
-
-\item{SmsAuthenticationMessage}{A string representing the SMS authentication message.}
-
-\item{MfaConfiguration}{Specifies MFA configuration details.}
-
-\item{DeviceConfiguration}{The device configuration.}
-
-\item{EmailConfiguration}{The email configuration.}
-
-\item{SmsConfiguration}{The SMS configuration.}
-
-\item{UserPoolTags}{The cost allocation tags for the user pool. For more information, see \href{http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html}{Adding Cost Allocation Tags to Your User Pool}}
-
-\item{AdminCreateUserConfig}{The configuration for \code{AdminCreateUser} requests.}
-
-\item{Schema}{An array of schema attributes for the new user pool. These attributes can be standard or custom attributes.}
-
-\item{UserPoolAddOns}{Used to enable advanced security risk detection. Set the key \code{AdvancedSecurityMode} to the value "AUDIT".}
 }
-\description{
-Creates a new Amazon Cognito user pool and sets the password policy for the pool.
-}
-\examples{
 
-}

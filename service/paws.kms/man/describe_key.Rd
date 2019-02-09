@@ -4,12 +4,7 @@
 \alias{describe_key}
 \title{Provides detailed information about the specified customer master key (CMK)}
 \usage{
-describe_key(
-  KeyId = "string",
-  GrantTokens = list(
-    "string"
-  )
-)
+describe_key(KeyId, GrantTokens = NULL)
 }
 \arguments{
 \item{KeyId}{[required] Describes the specified customer master key (CMK).
@@ -40,11 +35,21 @@ If you use \code{DescribeKey} on a predefined AWS alias, that is, an AWS alias w
 
 To perform this operation on a CMK in a different AWS account, specify the key ARN or alias ARN in the value of the KeyId parameter.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_key(
+  KeyId = "string",
+  GrantTokens = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # The following example returns information (metadata) about the specified
 # CMK.
-describe_key(
+\donttest{describe_key(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)
+)}
 
 }

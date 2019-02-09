@@ -4,12 +4,8 @@
 \alias{delete_client_vpn_route}
 \title{Deletes a route from a Client VPN endpoint}
 \usage{
-delete_client_vpn_route(
-  ClientVpnEndpointId = "string",
-  TargetVpcSubnetId = "string",
-  DestinationCidrBlock = "string",
-  DryRun = TRUE|FALSE
-)
+delete_client_vpn_route(ClientVpnEndpointId, TargetVpcSubnetId = NULL,
+  DestinationCidrBlock, DryRun = NULL)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint from which the route is to be deleted.}
@@ -23,6 +19,13 @@ delete_client_vpn_route(
 \description{
 Deletes a route from a Client VPN endpoint. You can only delete routes that you manually added using the \strong{CreateClientVpnRoute} action. You cannot delete routes that were automatically added when associating a subnet. To remove routes that have been automatically added, disassociate the target subnet from the Client VPN endpoint.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_client_vpn_route(
+  ClientVpnEndpointId = "string",
+  TargetVpcSubnetId = "string",
+  DestinationCidrBlock = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

@@ -4,14 +4,9 @@
 \alias{get_relational_database_log_events}
 \title{Returns a list of log events for a database in Amazon Lightsail}
 \usage{
-get_relational_database_log_events(
-  relationalDatabaseName = "string",
-  logStreamName = "string",
-  startTime = as.POSIXct("2015-01-01"),
-  endTime = as.POSIXct("2015-01-01"),
-  startFromHead = TRUE|FALSE,
-  pageToken = "string"
-)
+get_relational_database_log_events(relationalDatabaseName, logStreamName,
+  startTime = NULL, endTime = NULL, startFromHead = NULL,
+  pageToken = NULL)
 }
 \arguments{
 \item{relationalDatabaseName}{[required] The name of your database for which to get log events.}
@@ -49,6 +44,15 @@ Default: \code{false}}
 \description{
 Returns a list of log events for a database in Amazon Lightsail.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_relational_database_log_events(
+  relationalDatabaseName = "string",
+  logStreamName = "string",
+  startTime = as.POSIXct("2015-01-01"),
+  endTime = as.POSIXct("2015-01-01"),
+  startFromHead = TRUE|FALSE,
+  pageToken = "string"
+)
 }
+}
+

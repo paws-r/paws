@@ -4,15 +4,7 @@
 \alias{tag_role}
 \title{Adds one or more tags to an IAM role}
 \usage{
-tag_role(
-  RoleName = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+tag_role(RoleName, Tags)
 }
 \arguments{
 \item{RoleName}{[required] The name of the role that you want to add tags to.
@@ -36,9 +28,22 @@ A tag consists of a key name and an associated value. By assigning tags to your 
 
 For more information about tagging, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM Identities} in the \emph{IAM User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{tag_role(
+  RoleName = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # The following example shows how to add tags to an existing role.
-tag_role(
+\donttest{tag_role(
   RoleName = "taggedrole",
   Tags = list(
     list(
@@ -50,6 +55,6 @@ tag_role(
       Value = "12345"
     )
   )
-)
+)}
 
 }

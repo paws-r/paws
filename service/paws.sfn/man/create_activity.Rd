@@ -4,9 +4,7 @@
 \alias{create_activity}
 \title{Creates an activity}
 \usage{
-create_activity(
-  name = "string"
-)
+create_activity(name)
 }
 \arguments{
 \item{name}{[required] The name of the activity to create. This name must be unique for your AWS account and region for 90 days. For more information, see \href{http://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions}{Limits Related to State Machine Executions} in the \emph{AWS Step Functions Developer Guide}.
@@ -16,7 +14,7 @@ A name must \emph{not} contain:
 \item whitespace
 \item brackets \code{< > { } [ ]}
 \item wildcard characters \code{? *}
-\item special characters \code{\" # % \ ^ | ~ ` $ & , ; : /}
+\item special characters \code{\" # \% \ ^ | ~ ` $ & , ; : /}
 \item control characters (\code{U+0000-001F}, \code{U+007F-009F})
 }
 
@@ -25,6 +23,10 @@ A name must \emph{not} contain:
 \description{
 Creates an activity. An activity is a task that you write in any programming language and host on any machine that has access to AWS Step Functions. Activities must poll Step Functions using the \code{GetActivityTask} API action and respond using \code{SendTask*} API actions. This function lets Step Functions know the existence of your activity and returns an identifier for use in a state machine and when polling from the activity.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_activity(
+  name = "string"
+)
 }
+}
+

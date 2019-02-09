@@ -4,17 +4,8 @@
 \alias{create_db_cluster_parameter_group}
 \title{Creates a new DB cluster parameter group}
 \usage{
-create_db_cluster_parameter_group(
-  DBClusterParameterGroupName = "string",
-  DBParameterGroupFamily = "string",
-  Description = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_db_cluster_parameter_group(DBClusterParameterGroupName,
+  DBParameterGroupFamily, Description, Tags = NULL)
 }
 \arguments{
 \item{DBClusterParameterGroupName}{[required] The name of the DB cluster parameter group.
@@ -52,6 +43,18 @@ After you create a DB cluster parameter group, you should wait at least 5 minute
 
 For more information on Amazon Aurora, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?} in the \emph{Amazon Aurora User Guide.}
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_db_cluster_parameter_group(
+  DBClusterParameterGroupName = "string",
+  DBParameterGroupFamily = "string",
+  Description = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

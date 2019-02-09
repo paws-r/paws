@@ -4,12 +4,7 @@
 \alias{list_jobs}
 \title{List Jobs for a branch, part of an Amplify App}
 \usage{
-list_jobs(
-  appId = "string",
-  branchName = "string",
-  nextToken = "string",
-  maxResults = 123
-)
+list_jobs(appId, branchName, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{appId}{[required] Unique Id for an Amplify App.}
@@ -23,6 +18,13 @@ list_jobs(
 \description{
 List Jobs for a branch, part of an Amplify App.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_jobs(
+  appId = "string",
+  branchName = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

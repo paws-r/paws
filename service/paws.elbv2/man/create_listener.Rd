@@ -4,9 +4,48 @@
 \alias{create_listener}
 \title{Creates a listener for the specified Application Load Balancer or Network Load Balancer}
 \usage{
-create_listener(
+create_listener(LoadBalancerArn, Protocol, Port, SslPolicy = NULL,
+  Certificates = NULL, DefaultActions)
+}
+\arguments{
+\item{LoadBalancerArn}{[required] The Amazon Resource Name (ARN) of the load balancer.}
+
+\item{Protocol}{[required] The protocol for connections from clients to the load balancer. For Application Load Balancers, the supported protocols are HTTP and HTTPS. For Network Load Balancers, the supported protocols are TCP and TLS.}
+
+\item{Port}{[required] The port on which the load balancer is listening.}
+
+\item{SslPolicy}{[HTTPS and TLS listeners] The security policy that defines which ciphers and protocols are supported. The default is the current predefined security policy.}
+
+\item{Certificates}{[HTTPS and TLS listeners] The default SSL server certificate. You must provide exactly one certificate. Set \code{CertificateArn} to the certificate ARN but do not set \code{IsDefault}.
+
+To create a certificate list, use AddListenerCertificates.}
+
+\item{DefaultActions}{[required] The actions for the default rule. The rule must include one forward action or one or more fixed-response actions.
+
+If the action type is \code{forward}, you specify a target group. The protocol of the target group must be HTTP or HTTPS for an Application Load Balancer. The protocol of the target group must be TCP or TLS for a Network Load Balancer.
+
+[HTTPS listeners] If the action type is \code{authenticate-oidc}, you authenticate users through an identity provider that is OpenID Connect (OIDC) compliant.
+
+[HTTPS listeners] If the action type is \code{authenticate-cognito}, you authenticate users through the user pools supported by Amazon Cognito.
+
+[Application Load Balancer] If the action type is \code{redirect}, you redirect specified client requests from one URL to another.
+
+[Application Load Balancer] If the action type is \code{fixed-response}, you drop specified client requests and return a custom HTTP response.}
+}
+\description{
+Creates a listener for the specified Application Load Balancer or Network Load Balancer.
+}
+\details{
+To update a listener, use ModifyListener. When you are finished with a listener, you can delete it using DeleteListener. If you are finished with both the listener and the load balancer, you can delete them both using DeleteLoadBalancer.
+
+This operation is idempotent, which means that it completes at most one time. If you attempt to create multiple listeners with the same settings, each call succeeds.
+
+For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html}{Listeners for Your Application Load Balancers} in the \emph{Application Load Balancers Guide} and \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html}{Listeners for Your Network Load Balancers} in the \emph{Network Load Balancers Guide}.
+}
+\section{Accepted Parameters}{
+\preformatted{create_listener(
   LoadBalancerArn = "string",
-  Protocol = "HTTP"|"HTTPS"|"TCP",
+  Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS",
   Port = 123,
   SslPolicy = "string",
   Certificates = list(
@@ -64,45 +103,12 @@ create_listener(
   )
 )
 }
-\arguments{
-\item{LoadBalancerArn}{[required] The Amazon Resource Name (ARN) of the load balancer.}
-
-\item{Protocol}{[required] The protocol for connections from clients to the load balancer. For Application Load Balancers, the supported protocols are HTTP and HTTPS. For Network Load Balancers, the supported protocol is TCP.}
-
-\item{Port}{[required] The port on which the load balancer is listening.}
-
-\item{SslPolicy}{[HTTPS listeners] The security policy that defines which ciphers and protocols are supported. The default is the current predefined security policy.}
-
-\item{Certificates}{[HTTPS listeners] The default SSL server certificate. You must provide exactly one certificate. Set \code{CertificateArn} to the certificate ARN but do not set \code{IsDefault}.
-
-To create a certificate list, use AddListenerCertificates.}
-
-\item{DefaultActions}{[required] The actions for the default rule. The rule must include one forward action or one or more fixed-response actions.
-
-If the action type is \code{forward}, you specify a target group. The protocol of the target group must be HTTP or HTTPS for an Application Load Balancer or TCP for a Network Load Balancer.
-
-[HTTPS listener] If the action type is \code{authenticate-oidc}, you authenticate users through an identity provider that is OpenID Connect (OIDC) compliant.
-
-[HTTPS listener] If the action type is \code{authenticate-cognito}, you authenticate users through the user pools supported by Amazon Cognito.
-
-[Application Load Balancer] If the action type is \code{redirect}, you redirect specified client requests from one URL to another.
-
-[Application Load Balancer] If the action type is \code{fixed-response}, you drop specified client requests and return a custom HTTP response.}
 }
-\description{
-Creates a listener for the specified Application Load Balancer or Network Load Balancer.
-}
-\details{
-To update a listener, use ModifyListener. When you are finished with a listener, you can delete it using DeleteListener. If you are finished with both the listener and the load balancer, you can delete them both using DeleteLoadBalancer.
 
-This operation is idempotent, which means that it completes at most one time. If you attempt to create multiple listeners with the same settings, each call succeeds.
-
-For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html}{Listeners for Your Application Load Balancers} in the \emph{Application Load Balancers Guide} and \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html}{Listeners for Your Network Load Balancers} in the \emph{Network Load Balancers Guide}.
-}
 \examples{
 # This example creates an HTTP listener for the specified load balancer
 # that forwards requests to the specified target group.
-create_listener(
+\donttest{create_listener(
   DefaultActions = list(
     list(
       TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067",
@@ -112,7 +118,7 @@ create_listener(
   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188",
   Port = 80L,
   Protocol = "HTTP"
-)
+)}
 
 # This example creates an HTTPS listener for the specified load balancer
 # that forwards requests to the specified target group. Note that you must
@@ -121,7 +127,7 @@ create_listener(
 # you can create a certificate using SSL/TLS tools, get the certificate
 # signed by a certificate authority (CA), and upload the certificate to
 # AWS Identity and Access Management (IAM).
-create_listener(
+\donttest{create_listener(
   Certificates = list(
     list(
       CertificateArn = "arn:aws:iam::123456789012:server-certificate/my-server-cert"
@@ -137,6 +143,6 @@ create_listener(
   Port = 443L,
   Protocol = "HTTPS",
   SslPolicy = "ELBSecurityPolicy-2015-05"
-)
+)}
 
 }

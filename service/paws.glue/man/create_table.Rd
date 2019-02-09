@@ -4,7 +4,20 @@
 \alias{create_table}
 \title{Creates a new table definition in the Data Catalog}
 \usage{
-create_table(
+create_table(CatalogId = NULL, DatabaseName, TableInput)
+}
+\arguments{
+\item{CatalogId}{The ID of the Data Catalog in which to create the \code{Table}. If none is supplied, the AWS account ID is used by default.}
+
+\item{DatabaseName}{[required] The catalog database in which to create the new table. For Hive compatibility, this name is entirely lowercase.}
+
+\item{TableInput}{[required] The \code{TableInput} object that defines the metadata table to create in the catalog.}
+}
+\description{
+Creates a new table definition in the Data Catalog.
+}
+\section{Accepted Parameters}{
+\preformatted{create_table(
   CatalogId = "string",
   DatabaseName = "string",
   TableInput = list(
@@ -75,16 +88,5 @@ create_table(
   )
 )
 }
-\arguments{
-\item{CatalogId}{The ID of the Data Catalog in which to create the \code{Table}. If none is supplied, the AWS account ID is used by default.}
-
-\item{DatabaseName}{[required] The catalog database in which to create the new table. For Hive compatibility, this name is entirely lowercase.}
-
-\item{TableInput}{[required] The \code{TableInput} object that defines the metadata table to create in the catalog.}
 }
-\description{
-Creates a new table definition in the Data Catalog.
-}
-\examples{
 
-}

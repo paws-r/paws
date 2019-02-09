@@ -4,18 +4,9 @@
 \alias{put_object_retention}
 \title{Places an Object Retention configuration on an object}
 \usage{
-put_object_retention(
-  Bucket = "string",
-  Key = "string",
-  Retention = list(
-    Mode = "GOVERNANCE"|"COMPLIANCE",
-    RetainUntilDate = as.POSIXct("2015-01-01")
-  ),
-  RequestPayer = "requester",
-  VersionId = "string",
-  BypassGovernanceRetention = TRUE|FALSE,
-  ContentMD5 = "string"
-)
+put_object_retention(Bucket, Key, Retention = NULL,
+  RequestPayer = NULL, VersionId = NULL,
+  BypassGovernanceRetention = NULL, ContentMD5 = NULL)
 }
 \arguments{
 \item{Bucket}{[required] The bucket that contains the object you want to apply this Object Retention configuration to.}
@@ -35,6 +26,19 @@ put_object_retention(
 \description{
 Places an Object Retention configuration on an object.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_object_retention(
+  Bucket = "string",
+  Key = "string",
+  Retention = list(
+    Mode = "GOVERNANCE"|"COMPLIANCE",
+    RetainUntilDate = as.POSIXct("2015-01-01")
+  ),
+  RequestPayer = "requester",
+  VersionId = "string",
+  BypassGovernanceRetention = TRUE|FALSE,
+  ContentMD5 = "string"
+)
 }
+}
+

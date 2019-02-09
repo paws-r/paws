@@ -9,6 +9,8 @@ get_service_role_for_account()
 \description{
 Retrieves the service role that is attached to your account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_service_role_for_account()
 }
+}
+

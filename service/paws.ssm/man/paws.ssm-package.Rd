@@ -6,15 +6,15 @@
 \alias{paws.ssm-package}
 \title{paws.ssm: Amazon Simple Systems Manager (SSM)}
 \description{
-AWS Systems Manager is a collection of capabilities that
-helps you automate management tasks such as collecting system
-inventory, applying operating system (OS) patches, automating the
-creation of Amazon Machine Images (AMIs), and configuring operating
-systems (OSs) and applications at scale. Systems Manager lets you
-remotely and securely manage the configuration of your managed
-instances. A *managed instance* is any Amazon EC2 instance or
-on-premises machine in your hybrid environment that has been
-configured for Systems Manager.
+AWS Systems Manager is a collection of capabilities
+    that helps you automate management tasks such as collecting system
+    inventory, applying operating system (OS) patches, automating the
+    creation of Amazon Machine Images (AMIs), and configuring operating
+    systems (OSs) and applications at scale. Systems Manager lets you
+    remotely and securely manage the configuration of your managed
+    instances. A *managed instance* is any Amazon EC2 instance or
+    on-premises machine in your hybrid environment that has been
+    configured for Systems Manager.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

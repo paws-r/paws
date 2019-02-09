@@ -4,13 +4,8 @@
 \alias{update_container_instances_state}
 \title{Modifies the status of an Amazon ECS container instance}
 \usage{
-update_container_instances_state(
-  cluster = "string",
-  containerInstances = list(
-    "string"
-  ),
-  status = "ACTIVE"|"DRAINING"
-)
+update_container_instances_state(cluster = NULL, containerInstances,
+  status)
 }
 \arguments{
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that hosts the container instance to update. If you do not specify a cluster, the default cluster is assumed.}
@@ -39,6 +34,14 @@ A container instance has completed draining when it has no more \code{RUNNING} t
 
 When you set a container instance to \code{ACTIVE}, the Amazon ECS scheduler can begin scheduling tasks on the instance again.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_container_instances_state(
+  cluster = "string",
+  containerInstances = list(
+    "string"
+  ),
+  status = "ACTIVE"|"DRAINING"
+)
 }
+}
+

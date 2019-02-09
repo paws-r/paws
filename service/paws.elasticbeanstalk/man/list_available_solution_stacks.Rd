@@ -13,6 +13,6 @@ Returns a list of the available solution stack names, with the public version fi
 # The following operation lists solution stacks for all currently
 # available platform configurations and any that you have used in the
 # past:
-list_available_solution_stacks()
+\donttest{list_available_solution_stacks()}
 
 }

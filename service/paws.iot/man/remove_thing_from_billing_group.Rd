@@ -4,12 +4,8 @@
 \alias{remove_thing_from_billing_group}
 \title{Removes the given thing from the billing group}
 \usage{
-remove_thing_from_billing_group(
-  billingGroupName = "string",
-  billingGroupArn = "string",
-  thingName = "string",
-  thingArn = "string"
-)
+remove_thing_from_billing_group(billingGroupName = NULL,
+  billingGroupArn = NULL, thingName = NULL, thingArn = NULL)
 }
 \arguments{
 \item{billingGroupName}{The name of the billing group.}
@@ -23,6 +19,13 @@ remove_thing_from_billing_group(
 \description{
 Removes the given thing from the billing group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{remove_thing_from_billing_group(
+  billingGroupName = "string",
+  billingGroupArn = "string",
+  thingName = "string",
+  thingArn = "string"
+)
 }
+}
+

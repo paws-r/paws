@@ -4,11 +4,8 @@
 \alias{describe_voices}
 \title{Returns the list of voices that are available for use when requesting speech synthesis}
 \usage{
-describe_voices(
-  LanguageCode = "cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR",
-  IncludeAdditionalLanguageCodes = TRUE|FALSE,
-  NextToken = "string"
-)
+describe_voices(LanguageCode = NULL,
+  IncludeAdditionalLanguageCodes = NULL, NextToken = NULL)
 }
 \arguments{
 \item{LanguageCode}{The language identification tag (ISO 639 code for the language name-ISO 3166 country code) for filtering the list of voices returned. If you don't specify this optional parameter, all available voices are returned.}
@@ -29,13 +26,22 @@ You can optionally specify a language code to filter the available voices. For e
 
 This operation requires permissions to perform the \code{polly:DescribeVoices} action.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_voices(
+  LanguageCode = "cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR",
+  IncludeAdditionalLanguageCodes = TRUE|FALSE,
+  NextToken = "string"
+)
+}
+}
+
 \examples{
 # Returns the list of voices that are available for use when requesting
 # speech synthesis. Displayed languages are those within the specified
 # language code. If no language code is specified, voices for all
 # available languages are displayed.
-describe_voices(
+\donttest{describe_voices(
   LanguageCode = "en-GB"
-)
+)}
 
 }

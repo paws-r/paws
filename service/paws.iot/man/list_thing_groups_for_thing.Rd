@@ -4,11 +4,8 @@
 \alias{list_thing_groups_for_thing}
 \title{List the thing groups to which the specified thing belongs}
 \usage{
-list_thing_groups_for_thing(
-  thingName = "string",
-  nextToken = "string",
-  maxResults = 123
-)
+list_thing_groups_for_thing(thingName, nextToken = NULL,
+  maxResults = NULL)
 }
 \arguments{
 \item{thingName}{[required] The thing name.}
@@ -20,6 +17,12 @@ list_thing_groups_for_thing(
 \description{
 List the thing groups to which the specified thing belongs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_thing_groups_for_thing(
+  thingName = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

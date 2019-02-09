@@ -6,11 +6,11 @@
 \alias{paws.chime-package}
 \title{paws.chime: Amazon Chime}
 \description{
-The Amazon Chime API (application programming interface) is
-designed for administrators to use to perform key tasks, such as
-creating and managing Amazon Chime accounts and users. This guide
-provides detailed information about the Amazon Chime API, including
-operations, types, inputs and outputs, and error codes.
+The Amazon Chime API (application programming
+    interface) is designed for administrators to use to perform key tasks,
+    such as creating and managing Amazon Chime accounts and users. This
+    guide provides detailed information about the Amazon Chime API,
+    including operations, types, inputs and outputs, and error codes.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

@@ -4,9 +4,7 @@
 \alias{delete_source_credentials}
 \title{Deletes a set of GitHub, GitHub Enterprise, or Bitbucket source credentials}
 \usage{
-delete_source_credentials(
-  arn = "string"
-)
+delete_source_credentials(arn)
 }
 \arguments{
 \item{arn}{[required] The Amazon Resource Name (ARN) of the token.}
@@ -14,6 +12,10 @@ delete_source_credentials(
 \description{
 Deletes a set of GitHub, GitHub Enterprise, or Bitbucket source credentials.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_source_credentials(
+  arn = "string"
+)
 }
+}
+

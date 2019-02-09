@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.cloudhsm_operations.R
 \name{describe_hsm}
 \alias{describe_hsm}
-\title{This is documentation for \strong{AWS CloudHSM Classic}}
+\title{This is documentation for AWS CLOUDHSM CLASSIC}
 \usage{
-describe_hsm(
-  HsmArn = "string",
-  HsmSerialNumber = "string"
-)
+describe_hsm(HsmArn = NULL, HsmSerialNumber = NULL)
 }
 \arguments{
 \item{HsmArn}{The ARN of the HSM. Either the \code{HsmArn} or the \code{SerialNumber} parameter must be specified.}
@@ -22,6 +19,11 @@ This is documentation for \strong{AWS CloudHSM Classic}. For more information, s
 
 Retrieves information about an HSM. You can identify the HSM by its ARN or its serial number.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_hsm(
+  HsmArn = "string",
+  HsmSerialNumber = "string"
+)
 }
+}
+

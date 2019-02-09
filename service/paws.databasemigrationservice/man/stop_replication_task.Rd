@@ -4,9 +4,7 @@
 \alias{stop_replication_task}
 \title{Stops the replication task}
 \usage{
-stop_replication_task(
-  ReplicationTaskArn = "string"
-)
+stop_replication_task(ReplicationTaskArn)
 }
 \arguments{
 \item{ReplicationTaskArn}{[required] The Amazon Resource Name(ARN) of the replication task to be stopped.}
@@ -14,10 +12,17 @@ stop_replication_task(
 \description{
 Stops the replication task.
 }
+\section{Accepted Parameters}{
+\preformatted{stop_replication_task(
+  ReplicationTaskArn = "string"
+)
+}
+}
+
 \examples{
 # Stops the replication task.
-stop_replication_task(
+\donttest{stop_replication_task(
   ReplicationTaskArn = "arn:aws:dms:us-east-1:123456789012:endpoint:ASXWXJZLNWNT5HTWCGV2BUJQ7E"
-)
+)}
 
 }

@@ -4,10 +4,7 @@
 \alias{describe_aggregation_authorizations}
 \title{Returns a list of authorizations granted to various aggregator accounts and regions}
 \usage{
-describe_aggregation_authorizations(
-  Limit = 123,
-  NextToken = "string"
-)
+describe_aggregation_authorizations(Limit = NULL, NextToken = NULL)
 }
 \arguments{
 \item{Limit}{The maximum number of AggregationAuthorizations returned on each page. The default is maximum. If you specify 0, AWS Config uses the default.}
@@ -17,6 +14,11 @@ describe_aggregation_authorizations(
 \description{
 Returns a list of authorizations granted to various aggregator accounts and regions.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_aggregation_authorizations(
+  Limit = 123,
+  NextToken = "string"
+)
 }
+}
+

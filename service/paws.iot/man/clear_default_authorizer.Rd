@@ -9,6 +9,8 @@ clear_default_authorizer()
 \description{
 Clears the default authorizer.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{clear_default_authorizer()
 }
+}
+

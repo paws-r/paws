@@ -4,14 +4,7 @@
 \alias{put_record_batch}
 \title{Writes multiple data records into a delivery stream in a single call, which can achieve higher throughput per producer than when writing single records}
 \usage{
-put_record_batch(
-  DeliveryStreamName = "string",
-  Records = list(
-    list(
-      Data = raw
-    )
-  )
-)
+put_record_batch(DeliveryStreamName, Records)
 }
 \arguments{
 \item{DeliveryStreamName}{[required] The name of the delivery stream.}
@@ -42,6 +35,15 @@ Data records sent to Kinesis Data Firehose are stored for 24 hours from the time
 
 Don't concatenate two or more base64 strings to form the data fields of your records. Instead, concatenate the raw data, then perform base64 encoding.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_record_batch(
+  DeliveryStreamName = "string",
+  Records = list(
+    list(
+      Data = raw
+    )
+  )
+)
 }
+}
+

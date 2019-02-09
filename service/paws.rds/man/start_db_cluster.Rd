@@ -4,9 +4,7 @@
 \alias{start_db_cluster}
 \title{Starts an Amazon Aurora DB cluster that was stopped using the AWS console, the stop-db-cluster AWS CLI command, or the StopDBCluster action}
 \usage{
-start_db_cluster(
-  DBClusterIdentifier = "string"
-)
+start_db_cluster(DBClusterIdentifier)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The DB cluster identifier of the Amazon Aurora DB cluster to be started. This parameter is stored as a lowercase string.}
@@ -17,6 +15,10 @@ Starts an Amazon Aurora DB cluster that was stopped using the AWS console, the s
 \details{
 For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-cluster-stop-start.html}{Stopping and Starting an Aurora Cluster} in the \emph{Amazon Aurora User Guide.}
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_db_cluster(
+  DBClusterIdentifier = "string"
+)
 }
+}
+

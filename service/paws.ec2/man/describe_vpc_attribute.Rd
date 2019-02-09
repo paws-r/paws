@@ -4,11 +4,7 @@
 \alias{describe_vpc_attribute}
 \title{Describes the specified attribute of the specified VPC}
 \usage{
-describe_vpc_attribute(
-  Attribute = "enableDnsSupport"|"enableDnsHostnames",
-  VpcId = "string",
-  DryRun = TRUE|FALSE
-)
+describe_vpc_attribute(Attribute, VpcId, DryRun = NULL)
 }
 \arguments{
 \item{Attribute}{[required] The VPC attribute.}
@@ -20,23 +16,32 @@ describe_vpc_attribute(
 \description{
 Describes the specified attribute of the specified VPC. You can specify only one attribute at a time.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_vpc_attribute(
+  Attribute = "enableDnsSupport"|"enableDnsHostnames",
+  VpcId = "string",
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example describes the enableDnsSupport attribute. This attribute
 # indicates whether DNS resolution is enabled for the VPC. If this
 # attribute is true, the Amazon DNS server resolves DNS hostnames for your
 # instances to their corresponding IP addresses; otherwise, it does not.
-describe_vpc_attribute(
+\donttest{describe_vpc_attribute(
   Attribute = "enableDnsSupport",
   VpcId = "vpc-a01106c2"
-)
+)}
 
 # This example describes the enableDnsHostnames attribute. This attribute
 # indicates whether the instances launched in the VPC get DNS hostnames.
 # If this attribute is true, instances in the VPC get DNS hostnames;
 # otherwise, they do not.
-describe_vpc_attribute(
+\donttest{describe_vpc_attribute(
   Attribute = "enableDnsHostnames",
   VpcId = "vpc-a01106c2"
-)
+)}
 
 }

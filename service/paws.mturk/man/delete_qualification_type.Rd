@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.mturk_operations.R
 \name{delete_qualification_type}
 \alias{delete_qualification_type}
-\title{The \code{DeleteQualificationType} deletes a Qualification type and deletes any HIT types that are associated with the Qualification type}
+\title{The DeleteQualificationType deletes a Qualification type and deletes any HIT types that are associated with the Qualification type}
 \usage{
-delete_qualification_type(
-  QualificationTypeId = "string"
-)
+delete_qualification_type(QualificationTypeId)
 }
 \arguments{
 \item{QualificationTypeId}{[required] The ID of the QualificationType to dispose.}
@@ -19,6 +17,10 @@ This operation does not revoke Qualifications already assigned to Workers becaus
 
 DeleteQualificationType must wait for all the HITs that use the deleted Qualification type to be deleted before completing. It may take up to 48 hours before DeleteQualificationType completes and the unique name of the Qualification type is available for reuse with CreateQualificationType.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_qualification_type(
+  QualificationTypeId = "string"
+)
 }
+}
+

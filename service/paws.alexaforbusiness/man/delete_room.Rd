@@ -4,9 +4,7 @@
 \alias{delete_room}
 \title{Deletes a room by the room ARN}
 \usage{
-delete_room(
-  RoomArn = "string"
-)
+delete_room(RoomArn = NULL)
 }
 \arguments{
 \item{RoomArn}{The ARN of the room to delete. Required.}
@@ -14,6 +12,10 @@ delete_room(
 \description{
 Deletes a room by the room ARN.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_room(
+  RoomArn = "string"
+)
 }
+}
+

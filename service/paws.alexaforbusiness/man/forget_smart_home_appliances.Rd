@@ -4,9 +4,7 @@
 \alias{forget_smart_home_appliances}
 \title{Forgets smart home appliances associated to a room}
 \usage{
-forget_smart_home_appliances(
-  RoomArn = "string"
-)
+forget_smart_home_appliances(RoomArn)
 }
 \arguments{
 \item{RoomArn}{[required] The room that the appliances are associated with.}
@@ -14,6 +12,10 @@ forget_smart_home_appliances(
 \description{
 Forgets smart home appliances associated to a room.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{forget_smart_home_appliances(
+  RoomArn = "string"
+)
 }
+}
+

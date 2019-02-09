@@ -4,9 +4,7 @@
 \alias{delete_endpoint_config}
 \title{Deletes an endpoint configuration}
 \usage{
-delete_endpoint_config(
-  EndpointConfigName = "string"
-)
+delete_endpoint_config(EndpointConfigName)
 }
 \arguments{
 \item{EndpointConfigName}{[required] The name of the endpoint configuration that you want to delete.}
@@ -14,6 +12,10 @@ delete_endpoint_config(
 \description{
 Deletes an endpoint configuration. The \code{DeleteEndpointConfig} API deletes only the specified configuration. It does not delete endpoints created using the configuration.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_endpoint_config(
+  EndpointConfigName = "string"
+)
 }
+}
+

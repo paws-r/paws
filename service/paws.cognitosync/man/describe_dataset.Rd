@@ -4,11 +4,7 @@
 \alias{describe_dataset}
 \title{Gets meta data about a dataset by identity and dataset name}
 \usage{
-describe_dataset(
-  IdentityPoolId = "string",
-  IdentityId = "string",
-  DatasetName = "string"
-)
+describe_dataset(IdentityPoolId, IdentityId, DatasetName)
 }
 \arguments{
 \item{IdentityPoolId}{[required] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.}
@@ -23,6 +19,12 @@ Gets meta data about a dataset by identity and dataset name. With Amazon Cognito
 \details{
 This API can be called with temporary user credentials provided by Cognito Identity or with developer credentials. You should use Cognito Identity credentials to make this API call.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_dataset(
+  IdentityPoolId = "string",
+  IdentityId = "string",
+  DatasetName = "string"
+)
 }
+}
+

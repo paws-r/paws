@@ -4,24 +4,10 @@
 \alias{update_flow_source}
 \title{Updates the source of a flow}
 \usage{
-update_flow_source(
-  Decryption = list(
-    Algorithm = "aes128"|"aes192"|"aes256",
-    KeyType = "static-key",
-    RoleArn = "string",
-    SecretArn = "string"
-  ),
-  Description = "string",
-  EntitlementArn = "string",
-  FlowArn = "string",
-  IngestPort = 123,
-  MaxBitrate = 123,
-  MaxLatency = 123,
-  Protocol = "zixi-push"|"rtp-fec"|"rtp",
-  SourceArn = "string",
-  StreamId = "string",
-  WhitelistCidr = "string"
-)
+update_flow_source(Decryption = NULL, Description = NULL,
+  EntitlementArn = NULL, FlowArn, IngestPort = NULL,
+  MaxBitrate = NULL, MaxLatency = NULL, Protocol = NULL, SourceArn,
+  StreamId = NULL, WhitelistCidr = NULL)
 }
 \arguments{
 \item{Decryption}{The type of encryption used on the content ingested from this source.}
@@ -49,6 +35,25 @@ update_flow_source(
 \description{
 Updates the source of a flow.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_flow_source(
+  Decryption = list(
+    Algorithm = "aes128"|"aes192"|"aes256",
+    KeyType = "static-key",
+    RoleArn = "string",
+    SecretArn = "string"
+  ),
+  Description = "string",
+  EntitlementArn = "string",
+  FlowArn = "string",
+  IngestPort = 123,
+  MaxBitrate = 123,
+  MaxLatency = 123,
+  Protocol = "zixi-push"|"rtp-fec"|"rtp",
+  SourceArn = "string",
+  StreamId = "string",
+  WhitelistCidr = "string"
+)
 }
+}
+

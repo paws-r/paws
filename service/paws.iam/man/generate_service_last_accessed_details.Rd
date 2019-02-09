@@ -4,9 +4,7 @@
 \alias{generate_service_last_accessed_details}
 \title{Generates a request for a report that includes details about when an IAM resource (user, group, role, or policy) was last used in an attempt to access AWS services}
 \usage{
-generate_service_last_accessed_details(
-  Arn = "string"
-)
+generate_service_last_accessed_details(Arn)
 }
 \arguments{
 \item{Arn}{[required] The ARN of the IAM resource (user, group, role, or managed policy) used to generate information about when the resource was last used in an attempt to access an AWS service.}
@@ -15,7 +13,7 @@ generate_service_last_accessed_details(
 Generates a request for a report that includes details about when an IAM resource (user, group, role, or policy) was last used in an attempt to access AWS services. Recent activity usually appears within four hours. IAM reports activity for the last 365 days, or less if your region began supporting this feature within the last year. For more information, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period}{Regions Where Data Is Tracked}.
 }
 \details{
-The service last accessed data includesÂ allÂ attempts to access an AWS API, not just the successful ones. This includes all attempts that were made using the AWS Management Console, the AWS API through any of the SDKs, or any of the command line tools. An unexpected entry in the service last accessed data does not mean that your account has been compromised, because the request might have been denied. Refer to your CloudTrail logs as the authoritative source for information about all API calls and whether they were successful or denied access. For more information, seeÂ \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/cloudtrail-integration.html}{Logging IAM Events with CloudTrail} in the \emph{IAM User Guide}.
+The service last accessed data includes all attempts to access an AWS API, not just the successful ones. This includes all attempts that were made using the AWS Management Console, the AWS API through any of the SDKs, or any of the command line tools. An unexpected entry in the service last accessed data does not mean that your account has been compromised, because the request might have been denied. Refer to your CloudTrail logs as the authoritative source for information about all API calls and whether they were successful or denied access. For more information, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/cloudtrail-integration.html}{Logging IAM Events with CloudTrail} in the \emph{IAM User Guide}.
 
 The \code{GenerateServiceLastAccessedDetails} operation returns a \code{JobId}. Use this parameter in the following operations to retrieve the following details from your report:
 \itemize{
@@ -31,11 +29,18 @@ Service last accessed data does not use other policy types when determining whet
 
 For more information about service last accessed data, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html}{Reducing Policy Scope by Viewing User Activity} in the \emph{IAM User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{generate_service_last_accessed_details(
+  Arn = "string"
+)
+}
+}
+
 \examples{
 # The following operation generates a report for the policy:
 # ExamplePolicy1
-generate_service_last_accessed_details(
+\donttest{generate_service_last_accessed_details(
   Arn = "arn:aws:iam::123456789012:policy/ExamplePolicy1"
-)
+)}
 
 }

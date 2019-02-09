@@ -4,11 +4,7 @@
 \alias{describe_schemas}
 \title{Returns information about the schema for the specified endpoint}
 \usage{
-describe_schemas(
-  EndpointArn = "string",
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_schemas(EndpointArn, MaxRecords = NULL, Marker = NULL)
 }
 \arguments{
 \item{EndpointArn}{[required] The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.}
@@ -24,12 +20,21 @@ Constraints: Minimum 20, maximum 100.}
 \description{
 Returns information about the schema for the specified endpoint.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_schemas(
+  EndpointArn = "string",
+  MaxRecords = 123,
+  Marker = "string"
+)
+}
+}
+
 \examples{
 # Returns information about the schema for the specified endpoint.
-describe_schemas(
+\donttest{describe_schemas(
   EndpointArn = "",
   Marker = "",
   MaxRecords = 123L
-)
+)}
 
 }

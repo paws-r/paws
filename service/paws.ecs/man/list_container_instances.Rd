@@ -4,18 +4,13 @@
 \alias{list_container_instances}
 \title{Returns a list of container instances in a specified cluster}
 \usage{
-list_container_instances(
-  cluster = "string",
-  filter = "string",
-  nextToken = "string",
-  maxResults = 123,
-  status = "ACTIVE"|"DRAINING"
-)
+list_container_instances(cluster = NULL, filter = NULL,
+  nextToken = NULL, maxResults = NULL, status = NULL)
 }
 \arguments{
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that hosts the container instances to list. If you do not specify a cluster, the default cluster is assumed.}
 
-\item{filter}{You can filter the results of a \code{ListContainerInstances} operation with cluster query language statements. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html}{Cluster Query Language} in the \emph{Amazon Elastic Container Service Developer Guide}.}
+\item{filter}{You can filter the results of a \code{ListContainerInstances} operation with cluster query language statements. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html}{Cluster Query Language} in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated \code{ListContainerInstances} request where \code{maxResults} was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the \code{nextToken} value.
 
@@ -26,13 +21,24 @@ This token should be treated as an opaque identifier that is only used to retrie
 \item{status}{Filters the container instances by status. For example, if you specify the \code{DRAINING} status, the results include only container instances that have been set to \code{DRAINING} using UpdateContainerInstancesState. If you do not specify this parameter, the default is to include container instances set to \code{ACTIVE} and \code{DRAINING}.}
 }
 \description{
-Returns a list of container instances in a specified cluster. You can filter the results of a \code{ListContainerInstances} operation with cluster query language statements inside the \code{filter} parameter. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html}{Cluster Query Language} in the \emph{Amazon Elastic Container Service Developer Guide}.
+Returns a list of container instances in a specified cluster. You can filter the results of a \code{ListContainerInstances} operation with cluster query language statements inside the \code{filter} parameter. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html}{Cluster Query Language} in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{list_container_instances(
+  cluster = "string",
+  filter = "string",
+  nextToken = "string",
+  maxResults = 123,
+  status = "ACTIVE"|"DRAINING"
+)
+}
+}
+
 \examples{
 # This example lists all of your available container instances in the
 # specified cluster in your default region.
-list_container_instances(
+\donttest{list_container_instances(
   cluster = "default"
-)
+)}
 
 }

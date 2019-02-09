@@ -4,34 +4,10 @@
 \alias{describe_scheduled_instance_availability}
 \title{Finds available schedules that meet the specified criteria}
 \usage{
-describe_scheduled_instance_availability(
-  DryRun = TRUE|FALSE,
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  FirstSlotStartTimeRange = list(
-    EarliestTime = as.POSIXct("2015-01-01"),
-    LatestTime = as.POSIXct("2015-01-01")
-  ),
-  MaxResults = 123,
-  MaxSlotDurationInHours = 123,
-  MinSlotDurationInHours = 123,
-  NextToken = "string",
-  Recurrence = list(
-    Frequency = "string",
-    Interval = 123,
-    OccurrenceDays = list(
-      123
-    ),
-    OccurrenceRelativeToEnd = TRUE|FALSE,
-    OccurrenceUnit = "string"
-  )
-)
+describe_scheduled_instance_availability(DryRun = NULL, Filters = NULL,
+  FirstSlotStartTimeRange, MaxResults = NULL,
+  MaxSlotDurationInHours = NULL, MinSlotDurationInHours = NULL,
+  NextToken = NULL, Recurrence)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -64,11 +40,43 @@ You can search for an available schedule no more than 3 months in advance. You m
 
 After you find a schedule that meets your needs, call PurchaseScheduledInstances to purchase Scheduled Instances with that schedule.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_scheduled_instance_availability(
+  DryRun = TRUE|FALSE,
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  FirstSlotStartTimeRange = list(
+    EarliestTime = as.POSIXct("2015-01-01"),
+    LatestTime = as.POSIXct("2015-01-01")
+  ),
+  MaxResults = 123,
+  MaxSlotDurationInHours = 123,
+  MinSlotDurationInHours = 123,
+  NextToken = "string",
+  Recurrence = list(
+    Frequency = "string",
+    Interval = 123,
+    OccurrenceDays = list(
+      123
+    ),
+    OccurrenceRelativeToEnd = TRUE|FALSE,
+    OccurrenceUnit = "string"
+  )
+)
+}
+}
+
 \examples{
 # This example describes a schedule that occurs every week on Sunday,
 # starting on the specified date. Note that the output contains a single
 # schedule as an example.
-describe_scheduled_instance_availability(
+\donttest{describe_scheduled_instance_availability(
   FirstSlotStartTimeRange = list(
     EarliestTime = "2016-01-31T00:00:00Z",
     LatestTime = "2016-01-31T04:00:00Z"
@@ -80,6 +88,6 @@ describe_scheduled_instance_availability(
       1L
     )
   )
-)
+)}
 
 }

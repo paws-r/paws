@@ -4,9 +4,7 @@
 \alias{describe_organization}
 \title{Provides more information regarding a given organization based on its identifier}
 \usage{
-describe_organization(
-  OrganizationId = "string"
-)
+describe_organization(OrganizationId)
 }
 \arguments{
 \item{OrganizationId}{[required] The identifier for the organization to be described.}
@@ -14,6 +12,10 @@ describe_organization(
 \description{
 Provides more information regarding a given organization based on its identifier.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_organization(
+  OrganizationId = "string"
+)
 }
+}
+

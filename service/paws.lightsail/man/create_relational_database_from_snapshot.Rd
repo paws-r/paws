@@ -4,22 +4,12 @@
 \alias{create_relational_database_from_snapshot}
 \title{Creates a new database from an existing database snapshot in Amazon Lightsail}
 \usage{
-create_relational_database_from_snapshot(
-  relationalDatabaseName = "string",
-  availabilityZone = "string",
-  publiclyAccessible = TRUE|FALSE,
-  relationalDatabaseSnapshotName = "string",
-  relationalDatabaseBundleId = "string",
-  sourceRelationalDatabaseName = "string",
-  restoreTime = as.POSIXct("2015-01-01"),
-  useLatestRestorableTime = TRUE|FALSE,
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
+create_relational_database_from_snapshot(relationalDatabaseName,
+  availabilityZone = NULL, publiclyAccessible = NULL,
+  relationalDatabaseSnapshotName = NULL,
+  relationalDatabaseBundleId = NULL,
+  sourceRelationalDatabaseName = NULL, restoreTime = NULL,
+  useLatestRestorableTime = NULL, tags = NULL)
 }
 \arguments{
 \item{relationalDatabaseName}{[required] The name to use for your new database.
@@ -76,6 +66,23 @@ You can create a new database from a snapshot in if something goes wrong with yo
 
 The \code{create relational database from snapshot} operation supports tag-based access control via request tags and resource tags applied to the resource identified by relationalDatabaseSnapshotName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_relational_database_from_snapshot(
+  relationalDatabaseName = "string",
+  availabilityZone = "string",
+  publiclyAccessible = TRUE|FALSE,
+  relationalDatabaseSnapshotName = "string",
+  relationalDatabaseBundleId = "string",
+  sourceRelationalDatabaseName = "string",
+  restoreTime = as.POSIXct("2015-01-01"),
+  useLatestRestorableTime = TRUE|FALSE,
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
 }
+}
+

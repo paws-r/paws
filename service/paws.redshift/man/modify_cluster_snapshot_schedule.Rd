@@ -4,11 +4,8 @@
 \alias{modify_cluster_snapshot_schedule}
 \title{Modifies a snapshot schedule for a cluster}
 \usage{
-modify_cluster_snapshot_schedule(
-  ClusterIdentifier = "string",
-  ScheduleIdentifier = "string",
-  DisassociateSchedule = TRUE|FALSE
-)
+modify_cluster_snapshot_schedule(ClusterIdentifier,
+  ScheduleIdentifier = NULL, DisassociateSchedule = NULL)
 }
 \arguments{
 \item{ClusterIdentifier}{[required] A unique identifier for the cluster whose snapshot schedule you want to modify.}
@@ -20,6 +17,12 @@ modify_cluster_snapshot_schedule(
 \description{
 Modifies a snapshot schedule for a cluster.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_cluster_snapshot_schedule(
+  ClusterIdentifier = "string",
+  ScheduleIdentifier = "string",
+  DisassociateSchedule = TRUE|FALSE
+)
 }
+}
+

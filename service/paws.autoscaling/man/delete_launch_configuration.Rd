@@ -4,9 +4,7 @@
 \alias{delete_launch_configuration}
 \title{Deletes the specified launch configuration}
 \usage{
-delete_launch_configuration(
-  LaunchConfigurationName = "string"
-)
+delete_launch_configuration(LaunchConfigurationName)
 }
 \arguments{
 \item{LaunchConfigurationName}{[required] The name of the launch configuration.}
@@ -17,10 +15,17 @@ Deletes the specified launch configuration.
 \details{
 The launch configuration must not be attached to an Auto Scaling group. When this call completes, the launch configuration is no longer available for use.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_launch_configuration(
+  LaunchConfigurationName = "string"
+)
+}
+}
+
 \examples{
 # This example deletes the specified launch configuration.
-delete_launch_configuration(
+\donttest{delete_launch_configuration(
   LaunchConfigurationName = "my-launch-config"
-)
+)}
 
 }

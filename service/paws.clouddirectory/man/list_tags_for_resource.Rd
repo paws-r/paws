@@ -4,11 +4,8 @@
 \alias{list_tags_for_resource}
 \title{Returns tags for a resource}
 \usage{
-list_tags_for_resource(
-  ResourceArn = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_tags_for_resource(ResourceArn, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource. Tagging is only supported for directories.}
@@ -20,6 +17,12 @@ list_tags_for_resource(
 \description{
 Returns tags for a resource. Tagging is currently supported only for directories with a limit of 50 tags per directory. All 50 tags are returned for a given directory with this API call.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_tags_for_resource(
+  ResourceArn = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

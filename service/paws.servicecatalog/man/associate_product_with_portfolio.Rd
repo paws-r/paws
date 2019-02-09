@@ -4,12 +4,8 @@
 \alias{associate_product_with_portfolio}
 \title{Associates the specified product with the specified portfolio}
 \usage{
-associate_product_with_portfolio(
-  AcceptLanguage = "string",
-  ProductId = "string",
-  PortfolioId = "string",
-  SourcePortfolioId = "string"
-)
+associate_product_with_portfolio(AcceptLanguage = NULL, ProductId,
+  PortfolioId, SourcePortfolioId = NULL)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -28,6 +24,13 @@ associate_product_with_portfolio(
 \description{
 Associates the specified product with the specified portfolio.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_product_with_portfolio(
+  AcceptLanguage = "string",
+  ProductId = "string",
+  PortfolioId = "string",
+  SourcePortfolioId = "string"
+)
 }
+}
+

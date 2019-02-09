@@ -4,10 +4,7 @@
 \alias{create_log_stream}
 \title{Creates a log stream for the specified log group}
 \usage{
-create_log_stream(
-  logGroupName = "string",
-  logStreamName = "string"
-)
+create_log_stream(logGroupName, logStreamName)
 }
 \arguments{
 \item{logGroupName}{[required] The name of the log group.}
@@ -27,6 +24,11 @@ You must use the following guidelines when naming a log stream:
 \item The ':' (colon) and '*' (asterisk) characters are not allowed.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_log_stream(
+  logGroupName = "string",
+  logStreamName = "string"
+)
 }
+}
+

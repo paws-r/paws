@@ -6,15 +6,15 @@
 \alias{paws.signer-package}
 \title{paws.signer: AWS Signer}
 \description{
-You can use Code Signing for Amazon FreeRTOS (AWS Signer) to
-sign code that you created for any of the IoT devices that Amazon Web
-Services supports. AWS Signer is integrated with Amazon FreeRTOS, AWS
-Certificate Manager, and AWS CloudTrail. Amazon FreeRTOS customers can
-use AWS Signer to sign code images before making them available for
-microcontrollers. You can use ACM to import third-party certificates
-to be used by AWS Signer. For general information about using AWS
-Signer, see the [Code Signing for Amazon FreeRTOS Developer
-Guide](http://docs.aws.amazon.com/signer/latest/developerguide/Welcome.html).
+You can use Code Signing for Amazon FreeRTOS (AWS
+    Signer) to sign code that you created for any of the IoT devices that
+    Amazon Web Services supports. AWS Signer is integrated with Amazon
+    FreeRTOS, AWS Certificate Manager, and AWS CloudTrail. Amazon FreeRTOS
+    customers can use AWS Signer to sign code images before making them
+    available for microcontrollers. You can use ACM to import third-party
+    certificates to be used by AWS Signer. For general information about
+    using AWS Signer, see the [Code Signing for Amazon FreeRTOS Developer
+    Guide](http://docs.aws.amazon.com/signer/latest/developerguide/Welcome.html).
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

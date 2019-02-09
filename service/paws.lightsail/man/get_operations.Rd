@@ -4,9 +4,7 @@
 \alias{get_operations}
 \title{Returns information about all operations}
 \usage{
-get_operations(
-  pageToken = "string"
-)
+get_operations(pageToken = NULL)
 }
 \arguments{
 \item{pageToken}{A token used for advancing to the next page of results from your get operations request.}
@@ -17,6 +15,10 @@ Returns information about all operations.
 \details{
 Results are returned from oldest to newest, up to a maximum of 200. Results can be paged by making each subsequent call to \code{GetOperations} use the maximum (last) \code{statusChangedAt} value from the previous request.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_operations(
+  pageToken = "string"
+)
 }
+}
+

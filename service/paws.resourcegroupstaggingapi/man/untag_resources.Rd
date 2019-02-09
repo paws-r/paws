@@ -4,14 +4,7 @@
 \alias{untag_resources}
 \title{Removes the specified tags from the specified resources}
 \usage{
-untag_resources(
-  ResourceARNList = list(
-    "string"
-  ),
-  TagKeys = list(
-    "string"
-  )
-)
+untag_resources(ResourceARNList, TagKeys)
 }
 \arguments{
 \item{ResourceARNList}{[required] A list of ARNs. An ARN (Amazon Resource Name) uniquely identifies a resource. You can specify a minimum of 1 and a maximum of 20 ARNs (resources) to untag. An ARN can be set to a maximum of 1600 characters. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces} in the \emph{AWS General Reference}.}
@@ -27,6 +20,15 @@ Removes the specified tags from the specified resources. When you specify a tag 
 \item You can only tag resources that are located in the specified region for the AWS account.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{untag_resources(
+  ResourceARNList = list(
+    "string"
+  ),
+  TagKeys = list(
+    "string"
+  )
+)
 }
+}
+

@@ -2,17 +2,9 @@
 % Please edit documentation in R/paws.directoryservice_operations.R
 \name{share_directory}
 \alias{share_directory}
-\title{Shares a specified directory (\code{DirectoryId}) in your AWS account (directory owner) with another AWS account (directory consumer)}
+\title{Shares a specified directory (DirectoryId) in your AWS account (directory owner) with another AWS account (directory consumer)}
 \usage{
-share_directory(
-  DirectoryId = "string",
-  ShareNotes = "string",
-  ShareTarget = list(
-    Id = "string",
-    Type = "ACCOUNT"
-  ),
-  ShareMethod = "ORGANIZATIONS"|"HANDSHAKE"
-)
+share_directory(DirectoryId, ShareNotes = NULL, ShareTarget, ShareMethod)
 }
 \arguments{
 \item{DirectoryId}{[required] Identifier of the AWS Managed Microsoft AD directory that you want to share with other AWS accounts.}
@@ -33,6 +25,16 @@ The \code{ShareMethod} parameter determines whether the specified directory can 
 
 The \code{ShareNotes} parameter is only used when \code{HANDSHAKE} is called, which sends a directory sharing request to the directory consumer.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{share_directory(
+  DirectoryId = "string",
+  ShareNotes = "string",
+  ShareTarget = list(
+    Id = "string",
+    Type = "ACCOUNT"
+  ),
+  ShareMethod = "ORGANIZATIONS"|"HANDSHAKE"
+)
 }
+}
+

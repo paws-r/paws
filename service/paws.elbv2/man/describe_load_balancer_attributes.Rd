@@ -4,9 +4,7 @@
 \alias{describe_load_balancer_attributes}
 \title{Describes the attributes for the specified Application Load Balancer or Network Load Balancer}
 \usage{
-describe_load_balancer_attributes(
-  LoadBalancerArn = "string"
-)
+describe_load_balancer_attributes(LoadBalancerArn)
 }
 \arguments{
 \item{LoadBalancerArn}{[required] The Amazon Resource Name (ARN) of the load balancer.}
@@ -17,10 +15,17 @@ Describes the attributes for the specified Application Load Balancer or Network 
 \details{
 For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html#load-balancer-attributes}{Load Balancer Attributes} in the \emph{Application Load Balancers Guide} or \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html#load-balancer-attributes}{Load Balancer Attributes} in the \emph{Network Load Balancers Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_load_balancer_attributes(
+  LoadBalancerArn = "string"
+)
+}
+}
+
 \examples{
 # This example describes the attributes of the specified load balancer.
-describe_load_balancer_attributes(
+\donttest{describe_load_balancer_attributes(
   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188"
-)
+)}
 
 }

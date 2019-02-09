@@ -4,9 +4,7 @@
 \alias{delete_assessment_run}
 \title{Deletes the assessment run that is specified by the ARN of the assessment run}
 \usage{
-delete_assessment_run(
-  assessmentRunArn = "string"
-)
+delete_assessment_run(assessmentRunArn)
 }
 \arguments{
 \item{assessmentRunArn}{[required] The ARN that specifies the assessment run that you want to delete.}
@@ -14,11 +12,18 @@ delete_assessment_run(
 \description{
 Deletes the assessment run that is specified by the ARN of the assessment run.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_assessment_run(
+  assessmentRunArn = "string"
+)
+}
+}
+
 \examples{
 # Deletes the assessment run that is specified by the ARN of the
 # assessment run.
-delete_assessment_run(
+\donttest{delete_assessment_run(
   assessmentRunArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-it5r2S4T/run/0-11LMTAVe"
-)
+)}
 
 }

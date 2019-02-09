@@ -4,9 +4,7 @@
 \alias{delete_hsm_configuration}
 \title{Deletes the specified Amazon Redshift HSM configuration}
 \usage{
-delete_hsm_configuration(
-  HsmConfigurationIdentifier = "string"
-)
+delete_hsm_configuration(HsmConfigurationIdentifier)
 }
 \arguments{
 \item{HsmConfigurationIdentifier}{[required] The identifier of the Amazon Redshift HSM configuration to be deleted.}
@@ -14,6 +12,10 @@ delete_hsm_configuration(
 \description{
 Deletes the specified Amazon Redshift HSM configuration.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_hsm_configuration(
+  HsmConfigurationIdentifier = "string"
+)
 }
+}
+

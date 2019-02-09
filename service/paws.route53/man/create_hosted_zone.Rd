@@ -4,19 +4,8 @@
 \alias{create_hosted_zone}
 \title{Creates a new public or private hosted zone}
 \usage{
-create_hosted_zone(
-  Name = "string",
-  VPC = list(
-    VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1",
-    VPCId = "string"
-  ),
-  CallerReference = "string",
-  HostedZoneConfig = list(
-    Comment = "string",
-    PrivateZone = TRUE|FALSE
-  ),
-  DelegationSetId = "string"
-)
+create_hosted_zone(Name, VPC = NULL, CallerReference,
+  HostedZoneConfig = NULL, DelegationSetId = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the domain. Specify a fully qualified domain name, for example, \emph{www.example.com}. The trailing dot is optional; Amazon Route 53 assumes that the domain name is fully qualified. This means that Route 53 treats \emph{www.example.com} (without a trailing dot) and \emph{www.example.com.} (with a trailing dot) as identical.
@@ -60,6 +49,20 @@ If you want to use the same name servers for multiple public hosted zones, you c
 
 When you submit a \code{CreateHostedZone} request, the initial status of the hosted zone is \code{PENDING}. For public hosted zones, this means that the NS and SOA records are not yet available on all Route 53 DNS servers. When the NS and SOA records are available, the status of the zone changes to \code{INSYNC}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_hosted_zone(
+  Name = "string",
+  VPC = list(
+    VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1",
+    VPCId = "string"
+  ),
+  CallerReference = "string",
+  HostedZoneConfig = list(
+    Comment = "string",
+    PrivateZone = TRUE|FALSE
+  ),
+  DelegationSetId = "string"
+)
 }
+}
+

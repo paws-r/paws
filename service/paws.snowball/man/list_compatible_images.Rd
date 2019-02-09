@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.snowball_operations.R
 \name{list_compatible_images}
 \alias{list_compatible_images}
-\title{This action returns a list of the different Amazon EC2 Amazon Machine Images (AMIs) that are owned by your AWS account that would be supported for use on \code{EDGE}, \code{EDGE_C}, and \code{EDGE_CG} devices}
+\title{This action returns a list of the different Amazon EC2 Amazon Machine Images (AMIs) that are owned by your AWS account that would be supported for use on EDGE, EDGE_C, and EDGE_CG devices}
 \usage{
-list_compatible_images(
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_compatible_images(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{The maximum number of results for the list of compatible images. Currently, each supported device can store 10 AMIs.}
@@ -17,6 +14,11 @@ list_compatible_images(
 \description{
 This action returns a list of the different Amazon EC2 Amazon Machine Images (AMIs) that are owned by your AWS account that would be supported for use on \code{EDGE}, \code{EDGE_C}, and \code{EDGE_CG} devices. For more information on compatible AMIs, see \href{http://docs.aws.amazon.com/snowball/latest/developer-guide/using-ec2.html}{Using Amazon EC2 Compute Instances} in the \emph{AWS Snowball Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_compatible_images(
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

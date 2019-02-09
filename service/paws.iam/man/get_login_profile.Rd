@@ -4,9 +4,7 @@
 \alias{get_login_profile}
 \title{Retrieves the user name and password-creation date for the specified IAM user}
 \usage{
-get_login_profile(
-  UserName = "string"
-)
+get_login_profile(UserName)
 }
 \arguments{
 \item{UserName}{[required] The name of the user whose login profile you want to retrieve.
@@ -16,11 +14,18 @@ This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex 
 \description{
 Retrieves the user name and password-creation date for the specified IAM user. If the user has not been assigned a password, the operation returns a 404 (\code{NoSuchEntity}) error.
 }
+\section{Accepted Parameters}{
+\preformatted{get_login_profile(
+  UserName = "string"
+)
+}
+}
+
 \examples{
 # The following command gets information about the password for the IAM
 # user named Anika.
-get_login_profile(
+\donttest{get_login_profile(
   UserName = "Anika"
-)
+)}
 
 }

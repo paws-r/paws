@@ -4,9 +4,7 @@
 \alias{list_tags_for_resource}
 \title{Retrieve the tags for a MediaConvert resource}
 \usage{
-list_tags_for_resource(
-  Arn = "string"
-)
+list_tags_for_resource(Arn)
 }
 \arguments{
 \item{Arn}{[required] The Amazon Resource Name (ARN) of the resource that you want to list tags for. To get the ARN, send a GET request with the resource name.}
@@ -14,6 +12,10 @@ list_tags_for_resource(
 \description{
 Retrieve the tags for a MediaConvert resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_tags_for_resource(
+  Arn = "string"
+)
 }
+}
+

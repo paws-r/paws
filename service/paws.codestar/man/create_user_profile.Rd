@@ -4,12 +4,8 @@
 \alias{create_user_profile}
 \title{Creates a profile for a user that includes user preferences, such as the display name and email address assocciated with the user, in AWS CodeStar}
 \usage{
-create_user_profile(
-  userArn = "string",
-  displayName = "string",
-  emailAddress = "string",
-  sshPublicKey = "string"
-)
+create_user_profile(userArn, displayName, emailAddress,
+  sshPublicKey = NULL)
 }
 \arguments{
 \item{userArn}{[required] The Amazon Resource Name (ARN) of the user in IAM.}
@@ -23,6 +19,13 @@ create_user_profile(
 \description{
 Creates a profile for a user that includes user preferences, such as the display name and email address assocciated with the user, in AWS CodeStar. The user profile is not project-specific. Information in the user profile is displayed wherever the user's information appears to other users in AWS CodeStar.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_user_profile(
+  userArn = "string",
+  displayName = "string",
+  emailAddress = "string",
+  sshPublicKey = "string"
+)
 }
+}
+

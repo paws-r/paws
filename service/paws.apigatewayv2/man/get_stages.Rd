@@ -4,11 +4,7 @@
 \alias{get_stages}
 \title{Gets the Stages for an API}
 \usage{
-get_stages(
-  ApiId = "string",
-  MaxResults = "string",
-  NextToken = "string"
-)
+get_stages(ApiId, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -20,6 +16,12 @@ get_stages(
 \description{
 Gets the Stages for an API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_stages(
+  ApiId = "string",
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
+}
+

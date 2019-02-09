@@ -4,53 +4,20 @@
 \alias{create_db_cluster}
 \title{Creates a new Amazon Aurora DB cluster}
 \usage{
-create_db_cluster(
-  AvailabilityZones = list(
-    "string"
-  ),
-  BackupRetentionPeriod = 123,
-  CharacterSetName = "string",
-  DatabaseName = "string",
-  DBClusterIdentifier = "string",
-  DBClusterParameterGroupName = "string",
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  DBSubnetGroupName = "string",
-  Engine = "string",
-  EngineVersion = "string",
-  Port = 123,
-  MasterUsername = "string",
-  MasterUserPassword = "string",
-  OptionGroupName = "string",
-  PreferredBackupWindow = "string",
-  PreferredMaintenanceWindow = "string",
-  ReplicationSourceIdentifier = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  StorageEncrypted = TRUE|FALSE,
-  KmsKeyId = "string",
-  PreSignedUrl = "string",
-  EnableIAMDatabaseAuthentication = TRUE|FALSE,
-  BacktrackWindow = 123,
-  EnableCloudwatchLogsExports = list(
-    "string"
-  ),
-  EngineMode = "string",
-  ScalingConfiguration = list(
-    MinCapacity = 123,
-    MaxCapacity = 123,
-    AutoPause = TRUE|FALSE,
-    SecondsUntilAutoPause = 123
-  ),
-  DeletionProtection = TRUE|FALSE,
-  GlobalClusterIdentifier = "string",
-  SourceRegion = "string"
-)
+create_db_cluster(AvailabilityZones = NULL,
+  BackupRetentionPeriod = NULL, CharacterSetName = NULL,
+  DatabaseName = NULL, DBClusterIdentifier,
+  DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL,
+  DBSubnetGroupName = NULL, Engine, EngineVersion = NULL,
+  Port = NULL, MasterUsername = NULL, MasterUserPassword = NULL,
+  OptionGroupName = NULL, PreferredBackupWindow = NULL,
+  PreferredMaintenanceWindow = NULL,
+  ReplicationSourceIdentifier = NULL, Tags = NULL,
+  StorageEncrypted = NULL, KmsKeyId = NULL, PreSignedUrl = NULL,
+  EnableIAMDatabaseAuthentication = NULL, BacktrackWindow = NULL,
+  EnableCloudwatchLogsExports = NULL, EngineMode = NULL,
+  ScalingConfiguration = NULL, DeletionProtection = NULL,
+  GlobalClusterIdentifier = NULL, SourceRegion = NULL)
 }
 \arguments{
 \item{AvailabilityZones}{A list of EC2 Availability Zones that instances in the DB cluster can be created in. For information on AWS Regions and Availability Zones, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.RegionsAndAvailabilityZones.html}{Choosing the Regions and Availability Zones} in the \emph{Amazon Aurora User Guide}.}
@@ -219,6 +186,54 @@ You can use the \code{ReplicationSourceIdentifier} parameter to create the DB cl
 
 For more information on Amazon Aurora, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?} in the \emph{Amazon Aurora User Guide.}
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_db_cluster(
+  AvailabilityZones = list(
+    "string"
+  ),
+  BackupRetentionPeriod = 123,
+  CharacterSetName = "string",
+  DatabaseName = "string",
+  DBClusterIdentifier = "string",
+  DBClusterParameterGroupName = "string",
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
+  DBSubnetGroupName = "string",
+  Engine = "string",
+  EngineVersion = "string",
+  Port = 123,
+  MasterUsername = "string",
+  MasterUserPassword = "string",
+  OptionGroupName = "string",
+  PreferredBackupWindow = "string",
+  PreferredMaintenanceWindow = "string",
+  ReplicationSourceIdentifier = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  StorageEncrypted = TRUE|FALSE,
+  KmsKeyId = "string",
+  PreSignedUrl = "string",
+  EnableIAMDatabaseAuthentication = TRUE|FALSE,
+  BacktrackWindow = 123,
+  EnableCloudwatchLogsExports = list(
+    "string"
+  ),
+  EngineMode = "string",
+  ScalingConfiguration = list(
+    MinCapacity = 123,
+    MaxCapacity = 123,
+    AutoPause = TRUE|FALSE,
+    SecondsUntilAutoPause = 123
+  ),
+  DeletionProtection = TRUE|FALSE,
+  GlobalClusterIdentifier = "string",
+  SourceRegion = "string"
+)
 }
+}
+

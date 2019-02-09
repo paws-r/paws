@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.cloudhsm_operations.R
 \name{describe_hapg}
 \alias{describe_hapg}
-\title{This is documentation for \strong{AWS CloudHSM Classic}}
+\title{This is documentation for AWS CLOUDHSM CLASSIC}
 \usage{
-describe_hapg(
-  HapgArn = "string"
-)
+describe_hapg(HapgArn)
 }
 \arguments{
 \item{HapgArn}{[required] The ARN of the high-availability partition group to describe.}
@@ -19,6 +17,10 @@ This is documentation for \strong{AWS CloudHSM Classic}. For more information, s
 
 Retrieves information about a high-availability partition group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_hapg(
+  HapgArn = "string"
+)
 }
+}
+

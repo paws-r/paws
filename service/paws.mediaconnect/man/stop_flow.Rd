@@ -4,9 +4,7 @@
 \alias{stop_flow}
 \title{Stops a flow}
 \usage{
-stop_flow(
-  FlowArn = "string"
-)
+stop_flow(FlowArn)
 }
 \arguments{
 \item{FlowArn}{[required] The ARN of the flow that you want to stop.}
@@ -14,6 +12,10 @@ stop_flow(
 \description{
 Stops a flow.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{stop_flow(
+  FlowArn = "string"
+)
 }
+}
+

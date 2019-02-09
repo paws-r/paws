@@ -4,17 +4,9 @@
 \alias{describe_cluster_subnet_groups}
 \title{Returns one or more cluster subnet group objects, which contain metadata about your cluster subnet groups}
 \usage{
-describe_cluster_subnet_groups(
-  ClusterSubnetGroupName = "string",
-  MaxRecords = 123,
-  Marker = "string",
-  TagKeys = list(
-    "string"
-  ),
-  TagValues = list(
-    "string"
-  )
-)
+describe_cluster_subnet_groups(ClusterSubnetGroupName = NULL,
+  MaxRecords = NULL, Marker = NULL, TagKeys = NULL,
+  TagValues = NULL)
 }
 \arguments{
 \item{ClusterSubnetGroupName}{The name of the cluster subnet group for which information is requested.}
@@ -39,6 +31,18 @@ If you specify both tag keys and tag values in the same request, Amazon Redshift
 
 If both tag keys and values are omitted from the request, subnet groups are returned regardless of whether they have tag keys or values associated with them.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_cluster_subnet_groups(
+  ClusterSubnetGroupName = "string",
+  MaxRecords = 123,
+  Marker = "string",
+  TagKeys = list(
+    "string"
+  ),
+  TagValues = list(
+    "string"
+  )
+)
 }
+}
+

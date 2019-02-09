@@ -4,20 +4,9 @@
 \alias{describe_db_instance_automated_backups}
 \title{Displays backups for both current and deleted instances}
 \usage{
-describe_db_instance_automated_backups(
-  DbiResourceId = "string",
-  DBInstanceIdentifier = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_db_instance_automated_backups(DbiResourceId = NULL,
+  DBInstanceIdentifier = NULL, Filters = NULL, MaxRecords = NULL,
+  Marker = NULL)
 }
 \arguments{
 \item{DbiResourceId}{The resource ID of the DB instance that is the source of the automated backup. This parameter isn't case-sensitive.}
@@ -50,6 +39,21 @@ Displays backups for both current and deleted instances. For example, use this o
 \details{
 All parameters are optional.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_db_instance_automated_backups(
+  DbiResourceId = "string",
+  DBInstanceIdentifier = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
+}
+

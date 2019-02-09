@@ -4,20 +4,9 @@
 \alias{create_user}
 \title{Creates a user in a Simple AD or Microsoft AD directory}
 \usage{
-create_user(
-  OrganizationId = "string",
-  Username = "string",
-  EmailAddress = "string",
-  GivenName = "string",
-  Surname = "string",
-  Password = "string",
-  TimeZoneId = "string",
-  StorageRule = list(
-    StorageAllocatedInBytes = 123,
-    StorageType = "UNLIMITED"|"QUOTA"
-  ),
-  AuthenticationToken = "string"
-)
+create_user(OrganizationId = NULL, Username, EmailAddress = NULL,
+  GivenName, Surname, Password, TimeZoneId = NULL, StorageRule = NULL,
+  AuthenticationToken = NULL)
 }
 \arguments{
 \item{OrganizationId}{The ID of the organization.}
@@ -41,6 +30,21 @@ create_user(
 \description{
 Creates a user in a Simple AD or Microsoft AD directory. The status of a newly created user is "ACTIVE". New users can access Amazon WorkDocs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_user(
+  OrganizationId = "string",
+  Username = "string",
+  EmailAddress = "string",
+  GivenName = "string",
+  Surname = "string",
+  Password = "string",
+  TimeZoneId = "string",
+  StorageRule = list(
+    StorageAllocatedInBytes = 123,
+    StorageType = "UNLIMITED"|"QUOTA"
+  ),
+  AuthenticationToken = "string"
+)
 }
+}
+

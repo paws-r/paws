@@ -2,14 +2,10 @@
 % Please edit documentation in R/paws.lambda_operations.R
 \name{list_aliases}
 \alias{list_aliases}
-\title{Returns list of aliases created for a Lambda function}
+\title{Returns a list of aliases for a Lambda function}
 \usage{
-list_aliases(
-  FunctionName = "string",
-  FunctionVersion = "string",
-  Marker = "string",
-  MaxItems = 123
-)
+list_aliases(FunctionName, FunctionVersion = NULL, Marker = NULL,
+  MaxItems = NULL)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the lambda function.
@@ -23,25 +19,32 @@ list_aliases(
 
 The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
 
-\item{FunctionVersion}{If you specify this optional parameter, the API returns only the aliases that are pointing to the specific Lambda function version, otherwise the API returns all of the aliases created for the Lambda function.}
+\item{FunctionVersion}{Specify a function version to only list aliases that invoke that version.}
 
-\item{Marker}{Optional string. An opaque pagination token returned from a previous \code{ListAliases} operation. If present, indicates where to continue the listing.}
+\item{Marker}{Specify the pagination token returned by a previous request to retrieve the next page of results.}
 
-\item{MaxItems}{Optional integer. Specifies the maximum number of aliases to return in response. This parameter value must be greater than 0.}
+\item{MaxItems}{Limit the number of aliases returned.}
 }
 \description{
-Returns list of aliases created for a Lambda function. For each alias, the response includes information such as the alias ARN, description, alias name, and the function version to which it points. For more information, see \href{http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html}{Introduction to AWS Lambda Aliases}.
+Returns a list of \href{http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{aliases} for a Lambda function.
 }
-\details{
-This requires permission for the lambda:ListAliases action.
+\section{Accepted Parameters}{
+\preformatted{list_aliases(
+  FunctionName = "string",
+  FunctionVersion = "string",
+  Marker = "string",
+  MaxItems = 123
+)
 }
+}
+
 \examples{
 # This operation retrieves a Lambda function's aliases
-list_aliases(
+\donttest{list_aliases(
   FunctionName = "myFunction",
   FunctionVersion = "1",
   Marker = "",
   MaxItems = 123L
-)
+)}
 
 }

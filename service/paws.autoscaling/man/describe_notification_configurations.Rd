@@ -4,13 +4,8 @@
 \alias{describe_notification_configurations}
 \title{Describes the notification actions associated with the specified Auto Scaling group}
 \usage{
-describe_notification_configurations(
-  AutoScalingGroupNames = list(
-    "string"
-  ),
-  NextToken = "string",
-  MaxRecords = 123
-)
+describe_notification_configurations(AutoScalingGroupNames = NULL,
+  NextToken = NULL, MaxRecords = NULL)
 }
 \arguments{
 \item{AutoScalingGroupNames}{The name of the Auto Scaling group.}
@@ -22,13 +17,24 @@ describe_notification_configurations(
 \description{
 Describes the notification actions associated with the specified Auto Scaling group.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_notification_configurations(
+  AutoScalingGroupNames = list(
+    "string"
+  ),
+  NextToken = "string",
+  MaxRecords = 123
+)
+}
+}
+
 \examples{
 # This example describes the notification configurations for the specified
 # Auto Scaling group.
-describe_notification_configurations(
+\donttest{describe_notification_configurations(
   AutoScalingGroupNames = list(
     "my-auto-scaling-group"
   )
-)
+)}
 
 }

@@ -4,13 +4,8 @@
 \alias{describe_public_ipv_4_pools}
 \title{Describes the specified IPv4 address pools}
 \usage{
-describe_public_ipv_4_pools(
-  PoolIds = list(
-    "string"
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
+describe_public_ipv_4_pools(PoolIds = NULL, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{PoolIds}{The IDs of the address pools.}
@@ -22,6 +17,14 @@ describe_public_ipv_4_pools(
 \description{
 Describes the specified IPv4 address pools.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_public_ipv_4_pools(
+  PoolIds = list(
+    "string"
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{list_queues}
 \title{Returns a list of your queues}
 \usage{
-list_queues(
-  QueueNamePrefix = "string"
-)
+list_queues(QueueNamePrefix = NULL)
 }
 \arguments{
 \item{QueueNamePrefix}{A string to use for filtering the list results. Only those queues whose name begins with the specified string are returned.
@@ -19,6 +17,10 @@ Returns a list of your queues. The maximum number of queues that can be returned
 \details{
 Cross-account permissions don't apply to this action. For more information, see see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name}{Grant Cross-Account Permissions to a Role and a User Name} in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_queues(
+  QueueNamePrefix = "string"
+)
 }
+}
+

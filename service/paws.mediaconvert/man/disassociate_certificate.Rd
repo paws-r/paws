@@ -4,9 +4,7 @@
 \alias{disassociate_certificate}
 \title{Removes an association between the Amazon Resource Name (ARN) of an AWS Certificate Manager (ACM) certificate and an AWS Elemental MediaConvert resource}
 \usage{
-disassociate_certificate(
-  Arn = "string"
-)
+disassociate_certificate(Arn)
 }
 \arguments{
 \item{Arn}{[required] The ARN of the ACM certificate that you want to disassociate from your MediaConvert resource.}
@@ -14,6 +12,10 @@ disassociate_certificate(
 \description{
 Removes an association between the Amazon Resource Name (ARN) of an AWS Certificate Manager (ACM) certificate and an AWS Elemental MediaConvert resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disassociate_certificate(
+  Arn = "string"
+)
 }
+}
+

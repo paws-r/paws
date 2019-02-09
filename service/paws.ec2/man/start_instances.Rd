@@ -4,13 +4,7 @@
 \alias{start_instances}
 \title{Starts an Amazon EBS-backed instance that you've previously stopped}
 \usage{
-start_instances(
-  InstanceIds = list(
-    "string"
-  ),
-  AdditionalInfo = "string",
-  DryRun = TRUE|FALSE
-)
+start_instances(InstanceIds, AdditionalInfo = NULL, DryRun = NULL)
 }
 \arguments{
 \item{InstanceIds}{[required] One or more instance IDs.}
@@ -29,14 +23,25 @@ Before stopping an instance, make sure it is in a state from which it can be res
 
 Performing this operation on an instance that uses an instance store as its root device returns an error.
 
-For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html}{Stopping Instances} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html}{Stopping Instances} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{start_instances(
+  InstanceIds = list(
+    "string"
+  ),
+  AdditionalInfo = "string",
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example starts the specified EC2 instance.
-start_instances(
+\donttest{start_instances(
   InstanceIds = list(
     "i-1234567890abcdef0"
   )
-)
+)}
 
 }

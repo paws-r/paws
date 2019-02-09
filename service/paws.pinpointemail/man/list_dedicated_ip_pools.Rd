@@ -4,10 +4,7 @@
 \alias{list_dedicated_ip_pools}
 \title{List all of the dedicated IP pools that exist in your Amazon Pinpoint account in the current AWS Region}
 \usage{
-list_dedicated_ip_pools(
-  NextToken = "string",
-  PageSize = 123
-)
+list_dedicated_ip_pools(NextToken = NULL, PageSize = NULL)
 }
 \arguments{
 \item{NextToken}{A token returned from a previous call to \code{ListDedicatedIpPools} to indicate the position in the list of dedicated IP pools.}
@@ -17,6 +14,11 @@ list_dedicated_ip_pools(
 \description{
 List all of the dedicated IP pools that exist in your Amazon Pinpoint account in the current AWS Region.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_dedicated_ip_pools(
+  NextToken = "string",
+  PageSize = 123
+)
 }
+}
+

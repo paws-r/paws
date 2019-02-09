@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.cloudhsm_operations.R
 \name{modify_luna_client}
 \alias{modify_luna_client}
-\title{This is documentation for \strong{AWS CloudHSM Classic}}
+\title{This is documentation for AWS CLOUDHSM CLASSIC}
 \usage{
-modify_luna_client(
-  ClientArn = "string",
-  Certificate = "string"
-)
+modify_luna_client(ClientArn, Certificate)
 }
 \arguments{
 \item{ClientArn}{[required] The ARN of the client.}
@@ -24,6 +21,11 @@ Modifies the certificate used by the client.
 
 This action can potentially start a workflow to install the new certificate on the client's HSMs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_luna_client(
+  ClientArn = "string",
+  Certificate = "string"
+)
 }
+}
+

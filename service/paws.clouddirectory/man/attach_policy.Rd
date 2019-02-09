@@ -4,15 +4,7 @@
 \alias{attach_policy}
 \title{Attaches a policy object to a regular object}
 \usage{
-attach_policy(
-  DirectoryArn = "string",
-  PolicyReference = list(
-    Selector = "string"
-  ),
-  ObjectReference = list(
-    Selector = "string"
-  )
-)
+attach_policy(DirectoryArn, PolicyReference, ObjectReference)
 }
 \arguments{
 \item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory where both objects reside. For more information, see arns.}
@@ -24,6 +16,16 @@ attach_policy(
 \description{
 Attaches a policy object to a regular object. An object can have a limited number of attached policies.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{attach_policy(
+  DirectoryArn = "string",
+  PolicyReference = list(
+    Selector = "string"
+  ),
+  ObjectReference = list(
+    Selector = "string"
+  )
+)
 }
+}
+

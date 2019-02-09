@@ -4,10 +4,7 @@
 \alias{restore_table_from_backup}
 \title{Creates a new table from an existing backup}
 \usage{
-restore_table_from_backup(
-  TargetTableName = "string",
-  BackupArn = "string"
-)
+restore_table_from_backup(TargetTableName, BackupArn)
 }
 \arguments{
 \item{TargetTableName}{[required] The name of the new table to which the backup must be restored.}
@@ -30,6 +27,11 @@ You must manually set up the following on the restored table:
 \item Time to Live (TTL) settings
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{restore_table_from_backup(
+  TargetTableName = "string",
+  BackupArn = "string"
+)
 }
+}
+

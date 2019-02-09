@@ -4,11 +4,8 @@
 \alias{get_subscription_definition_version}
 \title{Retrieves information about a subscription definition version}
 \usage{
-get_subscription_definition_version(
-  NextToken = "string",
-  SubscriptionDefinitionId = "string",
-  SubscriptionDefinitionVersionId = "string"
-)
+get_subscription_definition_version(NextToken = NULL,
+  SubscriptionDefinitionId, SubscriptionDefinitionVersionId)
 }
 \arguments{
 \item{NextToken}{The token for the next set of results, or ''null'' if there are no additional results.}
@@ -20,6 +17,12 @@ get_subscription_definition_version(
 \description{
 Retrieves information about a subscription definition version.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_subscription_definition_version(
+  NextToken = "string",
+  SubscriptionDefinitionId = "string",
+  SubscriptionDefinitionVersionId = "string"
+)
 }
+}
+

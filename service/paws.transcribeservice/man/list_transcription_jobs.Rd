@@ -4,12 +4,8 @@
 \alias{list_transcription_jobs}
 \title{Lists transcription jobs with the specified status}
 \usage{
-list_transcription_jobs(
-  Status = "IN_PROGRESS"|"FAILED"|"COMPLETED",
-  JobNameContains = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_transcription_jobs(Status = NULL, JobNameContains = NULL,
+  NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{Status}{When specified, returns only transcription jobs with the specified status. Jobs are ordered by creation date, with the newest jobs returned first. If you don't specify a status, Amazon Transcribe returns all transcription jobs ordered by creation date.}
@@ -23,6 +19,13 @@ list_transcription_jobs(
 \description{
 Lists transcription jobs with the specified status.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_transcription_jobs(
+  Status = "IN_PROGRESS"|"FAILED"|"COMPLETED",
+  JobNameContains = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

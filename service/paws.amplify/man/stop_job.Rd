@@ -4,11 +4,7 @@
 \alias{stop_job}
 \title{Stop a job that is in progress, for an Amplify branch, part of Amplify App}
 \usage{
-stop_job(
-  appId = "string",
-  branchName = "string",
-  jobId = "string"
-)
+stop_job(appId, branchName, jobId)
 }
 \arguments{
 \item{appId}{[required] Unique Id for an Amplify App.}
@@ -20,6 +16,12 @@ stop_job(
 \description{
 Stop a job that is in progress, for an Amplify branch, part of Amplify App.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{stop_job(
+  appId = "string",
+  branchName = "string",
+  jobId = "string"
+)
 }
+}
+

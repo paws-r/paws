@@ -4,13 +4,8 @@
 \alias{list_skills}
 \title{Lists all enabled skills in a specific skill group}
 \usage{
-list_skills(
-  SkillGroupArn = "string",
-  EnablementType = "ENABLED"|"PENDING",
-  SkillType = "PUBLIC"|"PRIVATE"|"ALL",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_skills(SkillGroupArn = NULL, EnablementType = NULL,
+  SkillType = NULL, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{SkillGroupArn}{The ARN of the skill group for which to list enabled skills.}
@@ -26,6 +21,14 @@ list_skills(
 \description{
 Lists all enabled skills in a specific skill group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_skills(
+  SkillGroupArn = "string",
+  EnablementType = "ENABLED"|"PENDING",
+  SkillType = "PUBLIC"|"PRIVATE"|"ALL",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

@@ -4,22 +4,8 @@
 \alias{update_document}
 \title{The document you want to update}
 \usage{
-update_document(
-  Content = "string",
-  Attachments = list(
-    list(
-      Key = "SourceUrl",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  Name = "string",
-  VersionName = "string",
-  DocumentVersion = "string",
-  DocumentFormat = "YAML"|"JSON",
-  TargetType = "string"
-)
+update_document(Content, Attachments = NULL, Name, VersionName = NULL,
+  DocumentVersion = NULL, DocumentFormat = NULL, TargetType = NULL)
 }
 \arguments{
 \item{Content}{[required] A valid JSON or YAML string.}
@@ -39,6 +25,23 @@ update_document(
 \description{
 The document you want to update.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_document(
+  Content = "string",
+  Attachments = list(
+    list(
+      Key = "SourceUrl",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  Name = "string",
+  VersionName = "string",
+  DocumentVersion = "string",
+  DocumentFormat = "YAML"|"JSON",
+  TargetType = "string"
+)
 }
+}
+

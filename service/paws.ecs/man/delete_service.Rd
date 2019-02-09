@@ -4,11 +4,7 @@
 \alias{delete_service}
 \title{Deletes a specified service within a cluster}
 \usage{
-delete_service(
-  cluster = "string",
-  service = "string",
-  force = TRUE|FALSE
-)
+delete_service(cluster = NULL, service, force = NULL)
 }
 \arguments{
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that hosts the service to delete. If you do not specify a cluster, the default cluster is assumed.}
@@ -25,11 +21,20 @@ When you delete a service, if there are still running tasks that require cleanup
 
 If you attempt to create a new service with the same name as an existing service in either \code{ACTIVE} or \code{DRAINING} status, you receive an error.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_service(
+  cluster = "string",
+  service = "string",
+  force = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example deletes the my-http-service service. The service must have
 # a desired count and running count of 0 before you can delete it.
-delete_service(
+\donttest{delete_service(
   service = "my-http-service"
-)
+)}
 
 }

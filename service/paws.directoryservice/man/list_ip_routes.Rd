@@ -4,11 +4,7 @@
 \alias{list_ip_routes}
 \title{Lists the address blocks that you have added to a directory}
 \usage{
-list_ip_routes(
-  DirectoryId = "string",
-  NextToken = "string",
-  Limit = 123
-)
+list_ip_routes(DirectoryId, NextToken = NULL, Limit = NULL)
 }
 \arguments{
 \item{DirectoryId}{[required] Identifier (ID) of the directory for which you want to retrieve the IP addresses.}
@@ -20,6 +16,12 @@ list_ip_routes(
 \description{
 Lists the address blocks that you have added to a directory.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_ip_routes(
+  DirectoryId = "string",
+  NextToken = "string",
+  Limit = 123
+)
 }
+}
+

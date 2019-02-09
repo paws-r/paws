@@ -6,8 +6,8 @@
 \alias{paws.s3control-package}
 \title{paws.s3control: AWS S3 Control}
 \description{
-AWS S3 Control provides access to Amazon S3 control plane
-operations.
+AWS S3 Control provides access to Amazon S3 control
+    plane operations.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

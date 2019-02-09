@@ -4,11 +4,8 @@
 \alias{import_client_vpn_client_certificate_revocation_list}
 \title{Uploads a client certificate revocation list to the specified Client VPN endpoint}
 \usage{
-import_client_vpn_client_certificate_revocation_list(
-  ClientVpnEndpointId = "string",
-  CertificateRevocationList = "string",
-  DryRun = TRUE|FALSE
-)
+import_client_vpn_client_certificate_revocation_list(ClientVpnEndpointId,
+  CertificateRevocationList, DryRun = NULL)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint to which the client certificate revocation list applies.}
@@ -23,6 +20,12 @@ Uploads a client certificate revocation list to the specified Client VPN endpoin
 \details{
 Uploading a client certificate revocation list resets existing client connections.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{import_client_vpn_client_certificate_revocation_list(
+  ClientVpnEndpointId = "string",
+  CertificateRevocationList = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

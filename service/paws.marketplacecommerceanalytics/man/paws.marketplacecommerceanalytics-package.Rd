@@ -7,7 +7,7 @@
 \title{paws.marketplacecommerceanalytics: AWS Marketplace Commerce Analytics}
 \description{
 Provides AWS Marketplace business intelligence data
-on-demand.
+    on-demand.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

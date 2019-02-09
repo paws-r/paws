@@ -4,9 +4,7 @@
 \alias{delete_agent}
 \title{Deletes an agent}
 \usage{
-delete_agent(
-  AgentArn = "string"
-)
+delete_agent(AgentArn)
 }
 \arguments{
 \item{AgentArn}{[required] The Amazon Resource Name (ARN) of the agent to delete. Use the \code{ListAgents} operation to return a list of agents for your account and AWS Region.}
@@ -17,6 +15,10 @@ Deletes an agent. To specify which agent to delete, use the Amazon Resource Name
 \details{
 After you delete an agent, you can't reactivate it and you longer pay software charges for it.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_agent(
+  AgentArn = "string"
+)
 }
+}
+

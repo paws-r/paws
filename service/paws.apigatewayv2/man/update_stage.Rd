@@ -4,7 +4,35 @@
 \alias{update_stage}
 \title{Updates a Stage}
 \usage{
-update_stage(
+update_stage(AccessLogSettings = NULL, ApiId,
+  ClientCertificateId = NULL, DefaultRouteSettings = NULL,
+  DeploymentId = NULL, Description = NULL, RouteSettings = NULL,
+  StageName, StageVariables = NULL)
+}
+\arguments{
+\item{AccessLogSettings}{Settings for logging access in this stage.}
+
+\item{ApiId}{[required] The API identifier.}
+
+\item{ClientCertificateId}{The identifier of a client certificate for a Stage.}
+
+\item{DefaultRouteSettings}{The default route settings for the stage.}
+
+\item{DeploymentId}{The deployment identifier for the API stage.}
+
+\item{Description}{The description for the API stage.}
+
+\item{RouteSettings}{Route settings for the stage.}
+
+\item{StageName}{[required] The stage name.}
+
+\item{StageVariables}{A map that defines the stage variables for a Stage. Variable names can have alphanumeric and underscore characters, and the values must match [A-Za-z0-9-.\_~:/?#&=,]+.}
+}
+\description{
+Updates a Stage.
+}
+\section{Accepted Parameters}{
+\preformatted{update_stage(
   AccessLogSettings = list(
     DestinationArn = "string",
     Format = "string"
@@ -35,28 +63,5 @@ update_stage(
   )
 )
 }
-\arguments{
-\item{AccessLogSettings}{Settings for logging access in this stage.}
-
-\item{ApiId}{[required] The API identifier.}
-
-\item{ClientCertificateId}{The identifier of a client certificate for a Stage.}
-
-\item{DefaultRouteSettings}{The default route settings for the stage.}
-
-\item{DeploymentId}{The deployment identifier for the API stage.}
-
-\item{Description}{The description for the API stage.}
-
-\item{RouteSettings}{Route settings for the stage.}
-
-\item{StageName}{[required] The stage name.}
-
-\item{StageVariables}{A map that defines the stage variables for a Stage. Variable names can have alphanumeric and underscore characters, and the values must match [A-Za-z0-9-.\_~:/?#&=,]+.}
 }
-\description{
-Updates a Stage.
-}
-\examples{
 
-}

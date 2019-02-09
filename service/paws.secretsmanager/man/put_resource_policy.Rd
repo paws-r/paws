@@ -4,10 +4,7 @@
 \alias{put_resource_policy}
 \title{Attaches the contents of the specified resource-based permission policy to a secret}
 \usage{
-put_resource_policy(
-  SecretId = "string",
-  ResourcePolicy = "string"
-)
+put_resource_policy(SecretId, ResourcePolicy)
 }
 \arguments{
 \item{SecretId}{[required] Specifies the secret that you want to attach the resource-based policy to. You can specify either the ARN or the friendly name of the secret.
@@ -34,12 +31,20 @@ To run this command, you must have the following permissions:
 \item To list all of the currently available secrets, use ListSecrets.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{put_resource_policy(
+  SecretId = "string",
+  ResourcePolicy = "string"
+)
+}
+}
+
 \examples{
 # The following example shows how to add a resource-based policy to a
 # secret.
-put_resource_policy(
+\donttest{put_resource_policy(
   ResourcePolicy = "{\\n\\"Version\\":\\"2012-10-17\\",\\n\\"Statement\\":[{\\n\\"Effect\\":\\"Allow\\",\\n\\"Principal\\":{\\n\\"AWS\\":\\"arn:aws:iam::123456789012:root\\"\\n},\\n\\"Action\\":\\"secretsmanager:GetSecretValue\\",\\n\\"Resource\\":\\"*\\"\\n}]\\n}",
   SecretId = "MyTestDatabaseSecret"
-)
+)}
 
 }

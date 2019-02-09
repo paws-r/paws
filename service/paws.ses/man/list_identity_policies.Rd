@@ -4,9 +4,7 @@
 \alias{list_identity_policies}
 \title{Returns a list of sending authorization policies that are attached to the given identity (an email address or a domain)}
 \usage{
-list_identity_policies(
-  Identity = "string"
-)
+list_identity_policies(Identity)
 }
 \arguments{
 \item{Identity}{[required] The identity that is associated with the policy for which the policies will be listed. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: \code{user@example.com}, \code{example.com}, \code{arn:aws:ses:us-east-1:123456789012:identity/example.com}.
@@ -23,11 +21,18 @@ Sending authorization is a feature that enables an identity owner to authorize o
 
 You can execute this operation no more than once per second.
 }
+\section{Accepted Parameters}{
+\preformatted{list_identity_policies(
+  Identity = "string"
+)
+}
+}
+
 \examples{
 # The following example returns a list of sending authorization policies
 # that are attached to an identity:
-list_identity_policies(
+\donttest{list_identity_policies(
   Identity = "example.com"
-)
+)}
 
 }

@@ -4,12 +4,7 @@
 \alias{untag_role}
 \title{Removes the specified tags from the role}
 \usage{
-untag_role(
-  RoleName = "string",
-  TagKeys = list(
-    "string"
-  )
-)
+untag_role(RoleName, TagKeys)
 }
 \arguments{
 \item{RoleName}{[required] The name of the IAM role from which you want to remove tags.
@@ -21,14 +16,24 @@ This parameter accepts (through its \href{http://wikipedia.org/wiki/regex}{regex
 \description{
 Removes the specified tags from the role. For more information about tagging, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM Identities} in the \emph{IAM User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{untag_role(
+  RoleName = "string",
+  TagKeys = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # The following example shows how to remove a tag with the key 'Dept' from
 # a role named 'taggedrole'.
-untag_role(
+\donttest{untag_role(
   RoleName = "taggedrole",
   TagKeys = list(
     "Dept"
   )
-)
+)}
 
 }

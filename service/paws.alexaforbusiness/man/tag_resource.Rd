@@ -4,15 +4,7 @@
 \alias{tag_resource}
 \title{Adds metadata tags to a specified resource}
 \usage{
-tag_resource(
-  Arn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+tag_resource(Arn, Tags)
 }
 \arguments{
 \item{Arn}{[required] The ARN of the resource to which to add metadata tags. Required.}
@@ -22,6 +14,16 @@ tag_resource(
 \description{
 Adds metadata tags to a specified resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{tag_resource(
+  Arn = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

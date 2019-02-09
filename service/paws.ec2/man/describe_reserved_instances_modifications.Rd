@@ -4,20 +4,8 @@
 \alias{describe_reserved_instances_modifications}
 \title{Describes the modifications made to your Reserved Instances}
 \usage{
-describe_reserved_instances_modifications(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  ReservedInstancesModificationIds = list(
-    "string"
-  ),
-  NextToken = "string"
-)
+describe_reserved_instances_modifications(Filters = NULL,
+  ReservedInstancesModificationIds = NULL, NextToken = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -45,8 +33,23 @@ describe_reserved_instances_modifications(
 Describes the modifications made to your Reserved Instances. If no parameter is specified, information about all your Reserved Instances modification requests is returned. If a modification ID is specified, only information about the specific modification is returned.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html}{Modifying Reserved Instances} in the Amazon Elastic Compute Cloud User Guide.
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html}{Modifying Reserved Instances} in the Amazon Elastic Compute Cloud User Guide.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{describe_reserved_instances_modifications(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  ReservedInstancesModificationIds = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 
-}

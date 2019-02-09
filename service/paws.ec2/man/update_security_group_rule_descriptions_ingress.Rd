@@ -4,7 +4,26 @@
 \alias{update_security_group_rule_descriptions_ingress}
 \title{Updates the description of an ingress (inbound) security group rule}
 \usage{
-update_security_group_rule_descriptions_ingress(
+update_security_group_rule_descriptions_ingress(DryRun = NULL,
+  GroupId = NULL, GroupName = NULL, IpPermissions)
+}
+\arguments{
+\item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{GroupId}{The ID of the security group. You must specify either the security group ID or the security group name in the request. For security groups in a nondefault VPC, you must specify the security group ID.}
+
+\item{GroupName}{[EC2-Classic, default VPC] The name of the security group. You must specify either the security group ID or the security group name in the request.}
+
+\item{IpPermissions}{[required] The IP permissions for the security group rule.}
+}
+\description{
+Updates the description of an ingress (inbound) security group rule. You can replace an existing description, or add a description to a rule that did not have one previously.
+}
+\details{
+You specify the description as part of the IP permissions structure. You can remove a description for a security group rule by omitting the description parameter in the request.
+}
+\section{Accepted Parameters}{
+\preformatted{update_security_group_rule_descriptions_ingress(
   DryRun = TRUE|FALSE,
   GroupId = "string",
   GroupName = "string",
@@ -46,25 +65,12 @@ update_security_group_rule_descriptions_ingress(
   )
 )
 }
-\arguments{
-\item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
-
-\item{GroupId}{The ID of the security group. You must specify either the security group ID or the security group name in the request. For security groups in a nondefault VPC, you must specify the security group ID.}
-
-\item{GroupName}{[EC2-Classic, default VPC] The name of the security group. You must specify either the security group ID or the security group name in the request.}
-
-\item{IpPermissions}{[required] The IP permissions for the security group rule.}
 }
-\description{
-Updates the description of an ingress (inbound) security group rule. You can replace an existing description, or add a description to a rule that did not have one previously.
-}
-\details{
-You specify the description as part of the IP permissions structure. You can remove a description for a security group rule by omitting the description parameter in the request.
-}
+
 \examples{
 # This example updates the description for the specified security group
 # rule.
-update_security_group_rule_descriptions_ingress(
+\donttest{update_security_group_rule_descriptions_ingress(
   GroupId = "sg-123abc12",
   IpPermissions = list(
     list(
@@ -79,6 +85,6 @@ update_security_group_rule_descriptions_ingress(
       ToPort = 22L
     )
   )
-)
+)}
 
 }

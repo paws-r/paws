@@ -4,11 +4,7 @@
 \alias{describe_load_balancer_policy_types}
 \title{Describes the specified load balancer policy types or all load balancer policy types}
 \usage{
-describe_load_balancer_policy_types(
-  PolicyTypeNames = list(
-    "string"
-  )
-)
+describe_load_balancer_policy_types(PolicyTypeNames = NULL)
 }
 \arguments{
 \item{PolicyTypeNames}{The names of the policy types. If no names are specified, describes all policy types defined by Elastic Load Balancing.}
@@ -21,12 +17,21 @@ The description of each type indicates how it can be used. For example, some pol
 
 You can use CreateLoadBalancerPolicy to create a policy configuration for any of these policy types. Then, depending on the policy type, use either SetLoadBalancerPoliciesOfListener or SetLoadBalancerPoliciesForBackendServer to set the policy.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_load_balancer_policy_types(
+  PolicyTypeNames = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # This example describes the specified load balancer policy type.
-describe_load_balancer_policy_types(
+\donttest{describe_load_balancer_policy_types(
   PolicyTypeNames = list(
     "ProxyProtocolPolicyType"
   )
-)
+)}
 
 }

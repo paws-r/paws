@@ -4,9 +4,7 @@
 \alias{list_tags_for_resource}
 \title{List the tags for an Amazon ECS resource}
 \usage{
-list_tags_for_resource(
-  resourceArn = "string"
-)
+list_tags_for_resource(resourceArn)
 }
 \arguments{
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) that identifies the resource for which to list the tags. Currently, the supported resources are Amazon ECS tasks, services, task definitions, clusters, and container instances.}
@@ -14,10 +12,17 @@ list_tags_for_resource(
 \description{
 List the tags for an Amazon ECS resource.
 }
+\section{Accepted Parameters}{
+\preformatted{list_tags_for_resource(
+  resourceArn = "string"
+)
+}
+}
+
 \examples{
 # This example lists the tags for the 'dev' cluster.
-list_tags_for_resource(
+\donttest{list_tags_for_resource(
   resourceArn = "arn:aws:ecs:region:aws_account_id:cluster/dev"
-)
+)}
 
 }

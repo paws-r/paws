@@ -4,11 +4,8 @@
 \alias{start_bulk_deployment}
 \title{Deploys multiple groups in one operation}
 \usage{
-start_bulk_deployment(
-  AmznClientToken = "string",
-  ExecutionRoleArn = "string",
-  InputFileUri = "string"
-)
+start_bulk_deployment(AmznClientToken = NULL, ExecutionRoleArn = NULL,
+  InputFileUri = NULL)
 }
 \arguments{
 \item{AmznClientToken}{A client token used to correlate requests and responses.}
@@ -20,6 +17,12 @@ start_bulk_deployment(
 \description{
 Deploys multiple groups in one operation. This action starts the bulk deployment of a specified set of group versions. Each group version deployment will be triggered with an adaptive rate that has a fixed upper limit. We recommend that you include an ''X-Amzn-Client-Token'' token in every ''StartBulkDeployment'' request. These requests are idempotent with respect to the token and the request parameters.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_bulk_deployment(
+  AmznClientToken = "string",
+  ExecutionRoleArn = "string",
+  InputFileUri = "string"
+)
 }
+}
+

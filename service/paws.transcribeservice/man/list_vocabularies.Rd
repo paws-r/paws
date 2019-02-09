@@ -4,12 +4,8 @@
 \alias{list_vocabularies}
 \title{Returns a list of vocabularies that match the specified criteria}
 \usage{
-list_vocabularies(
-  NextToken = "string",
-  MaxResults = 123,
-  StateEquals = "PENDING"|"READY"|"FAILED",
-  NameContains = "string"
-)
+list_vocabularies(NextToken = NULL, MaxResults = NULL,
+  StateEquals = NULL, NameContains = NULL)
 }
 \arguments{
 \item{NextToken}{If the result of the previous request to \code{ListVocabularies} was truncated, include the \code{NextToken} to fetch the next set of jobs.}
@@ -23,6 +19,13 @@ list_vocabularies(
 \description{
 Returns a list of vocabularies that match the specified criteria. If no criteria are specified, returns the entire list of vocabularies.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_vocabularies(
+  NextToken = "string",
+  MaxResults = 123,
+  StateEquals = "PENDING"|"READY"|"FAILED",
+  NameContains = "string"
+)
 }
+}
+

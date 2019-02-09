@@ -6,8 +6,8 @@
 \alias{paws.route53domains-package}
 \title{paws.route53domains: Amazon Route 53 Domains}
 \description{
-Amazon Route 53 API actions let you register domain names and
-perform related operations.
+Amazon Route 53 API actions let you register domain
+    names and perform related operations.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

@@ -4,9 +4,7 @@
 \alias{delete_configuration_set_tracking_options}
 \title{Deletes an association between a configuration set and a custom domain for open and click event tracking}
 \usage{
-delete_configuration_set_tracking_options(
-  ConfigurationSetName = "string"
-)
+delete_configuration_set_tracking_options(ConfigurationSetName)
 }
 \arguments{
 \item{ConfigurationSetName}{[required] The name of the configuration set from which you want to delete the tracking options.}
@@ -19,6 +17,10 @@ By default, images and links used for tracking open and click events are hosted 
 
 Deleting this kind of association will result in emails sent using the specified configuration set to capture open and click events using the standard, Amazon SES-operated domains.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_configuration_set_tracking_options(
+  ConfigurationSetName = "string"
+)
 }
+}
+

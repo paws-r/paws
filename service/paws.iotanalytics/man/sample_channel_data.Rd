@@ -4,12 +4,8 @@
 \alias{sample_channel_data}
 \title{Retrieves a sample of messages from the specified channel ingested during the specified timeframe}
 \usage{
-sample_channel_data(
-  channelName = "string",
-  maxMessages = 123,
-  startTime = as.POSIXct("2015-01-01"),
-  endTime = as.POSIXct("2015-01-01")
-)
+sample_channel_data(channelName, maxMessages = NULL, startTime = NULL,
+  endTime = NULL)
 }
 \arguments{
 \item{channelName}{[required] The name of the channel whose message samples are retrieved.}
@@ -23,6 +19,13 @@ sample_channel_data(
 \description{
 Retrieves a sample of messages from the specified channel ingested during the specified timeframe. Up to 10 messages can be retrieved.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{sample_channel_data(
+  channelName = "string",
+  maxMessages = 123,
+  startTime = as.POSIXct("2015-01-01"),
+  endTime = as.POSIXct("2015-01-01")
+)
 }
+}
+

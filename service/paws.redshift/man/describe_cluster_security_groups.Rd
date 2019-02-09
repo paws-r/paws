@@ -4,17 +4,9 @@
 \alias{describe_cluster_security_groups}
 \title{Returns information about Amazon Redshift security groups}
 \usage{
-describe_cluster_security_groups(
-  ClusterSecurityGroupName = "string",
-  MaxRecords = 123,
-  Marker = "string",
-  TagKeys = list(
-    "string"
-  ),
-  TagValues = list(
-    "string"
-  )
-)
+describe_cluster_security_groups(ClusterSecurityGroupName = NULL,
+  MaxRecords = NULL, Marker = NULL, TagKeys = NULL,
+  TagValues = NULL)
 }
 \arguments{
 \item{ClusterSecurityGroupName}{The name of a cluster security group for which you are requesting details. You can specify either the \strong{Marker} parameter or a \strong{ClusterSecurityGroupName} parameter, but not both.
@@ -45,6 +37,18 @@ If you specify both tag keys and tag values in the same request, Amazon Redshift
 
 If both tag keys and values are omitted from the request, security groups are returned regardless of whether they have tag keys or values associated with them.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_cluster_security_groups(
+  ClusterSecurityGroupName = "string",
+  MaxRecords = 123,
+  Marker = "string",
+  TagKeys = list(
+    "string"
+  ),
+  TagValues = list(
+    "string"
+  )
+)
 }
+}
+

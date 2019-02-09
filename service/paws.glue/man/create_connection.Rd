@@ -4,7 +4,18 @@
 \alias{create_connection}
 \title{Creates a connection definition in the Data Catalog}
 \usage{
-create_connection(
+create_connection(CatalogId = NULL, ConnectionInput)
+}
+\arguments{
+\item{CatalogId}{The ID of the Data Catalog in which to create the connection. If none is supplied, the AWS account ID is used by default.}
+
+\item{ConnectionInput}{[required] A \code{ConnectionInput} object defining the connection to create.}
+}
+\description{
+Creates a connection definition in the Data Catalog.
+}
+\section{Accepted Parameters}{
+\preformatted{create_connection(
   CatalogId = "string",
   ConnectionInput = list(
     Name = "string",
@@ -26,14 +37,5 @@ create_connection(
   )
 )
 }
-\arguments{
-\item{CatalogId}{The ID of the Data Catalog in which to create the connection. If none is supplied, the AWS account ID is used by default.}
+}
 
-\item{ConnectionInput}{[required] A \code{ConnectionInput} object defining the connection to create.}
-}
-\description{
-Creates a connection definition in the Data Catalog.
-}
-\examples{
-
-}

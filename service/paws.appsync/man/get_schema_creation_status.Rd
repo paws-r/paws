@@ -4,9 +4,7 @@
 \alias{get_schema_creation_status}
 \title{Retrieves the current status of a schema creation operation}
 \usage{
-get_schema_creation_status(
-  apiId = "string"
-)
+get_schema_creation_status(apiId)
 }
 \arguments{
 \item{apiId}{[required] The API ID.}
@@ -14,6 +12,10 @@ get_schema_creation_status(
 \description{
 Retrieves the current status of a schema creation operation.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_schema_creation_status(
+  apiId = "string"
+)
 }
+}
+

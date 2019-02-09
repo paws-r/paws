@@ -4,14 +4,8 @@
 \alias{list_jobs}
 \title{Returns a list of AWS Batch jobs}
 \usage{
-list_jobs(
-  jobQueue = "string",
-  arrayJobId = "string",
-  multiNodeJobId = "string",
-  jobStatus = "SUBMITTED"|"PENDING"|"RUNNABLE"|"STARTING"|"RUNNING"|"SUCCEEDED"|"FAILED",
-  maxResults = 123,
-  nextToken = "string"
-)
+list_jobs(jobQueue = NULL, arrayJobId = NULL, multiNodeJobId = NULL,
+  jobStatus = NULL, maxResults = NULL, nextToken = NULL)
 }
 \arguments{
 \item{jobQueue}{The name or full Amazon Resource Name (ARN) of the job queue with which to list jobs.}
@@ -41,17 +35,29 @@ You must specify only one of the following:
 
 You can filter the results by job status with the \code{jobStatus} parameter. If you do not specify a status, only \code{RUNNING} jobs are returned.
 }
+\section{Accepted Parameters}{
+\preformatted{list_jobs(
+  jobQueue = "string",
+  arrayJobId = "string",
+  multiNodeJobId = "string",
+  jobStatus = "SUBMITTED"|"PENDING"|"RUNNABLE"|"STARTING"|"RUNNING"|"SUCCEEDED"|"FAILED",
+  maxResults = 123,
+  nextToken = "string"
+)
+}
+}
+
 \examples{
 # This example lists the running jobs in the HighPriority job queue.
-list_jobs(
+\donttest{list_jobs(
   jobQueue = "HighPriority"
-)
+)}
 
 # This example lists jobs in the HighPriority job queue that are in the
 # SUBMITTED job status.
-list_jobs(
+\donttest{list_jobs(
   jobQueue = "HighPriority",
   jobStatus = "SUBMITTED"
-)
+)}
 
 }

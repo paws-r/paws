@@ -4,7 +4,20 @@
 \alias{update_pipeline}
 \title{Updates the settings of a pipeline}
 \usage{
-update_pipeline(
+update_pipeline(pipelineName, pipelineActivities)
+}
+\arguments{
+\item{pipelineName}{[required] The name of the pipeline to update.}
+
+\item{pipelineActivities}{[required] A list of "PipelineActivity" objects.
+
+The list can be 1-25 \strong{PipelineActivity} objects. Activities perform transformations on your messages, such as removing, renaming or adding message attributes; filtering messages based on attribute values; invoking your Lambda functions on messages for advanced processing; or performing mathematical transformations to normalize device data.}
+}
+\description{
+Updates the settings of a pipeline.
+}
+\section{Accepted Parameters}{
+\preformatted{update_pipeline(
   pipelineName = "string",
   pipelineActivities = list(
     list(
@@ -73,16 +86,5 @@ update_pipeline(
   )
 )
 }
-\arguments{
-\item{pipelineName}{[required] The name of the pipeline to update.}
-
-\item{pipelineActivities}{[required] A list of "PipelineActivity" objects.
-
-The list can be 1-25 \strong{PipelineActivity} objects. Activities perform transformations on your messages, such as removing, renaming or adding message attributes; filtering messages based on attribute values; invoking your Lambda functions on messages for advanced processing; or performing mathematical transformations to normalize device data.}
 }
-\description{
-Updates the settings of a pipeline.
-}
-\examples{
 
-}

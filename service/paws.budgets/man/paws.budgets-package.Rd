@@ -6,10 +6,10 @@
 \alias{paws.budgets-package}
 \title{paws.budgets: AWS Budgets}
 \description{
-The AWS Budgets API enables you to use AWS Budgets to plan
-your service usage, service costs, and instance reservations. The API
-reference provides descriptions, syntax, and usage examples for each
-of the actions and data types for AWS Budgets.
+The AWS Budgets API enables you to use AWS Budgets
+    to plan your service usage, service costs, and instance reservations.
+    The API reference provides descriptions, syntax, and usage examples
+    for each of the actions and data types for AWS Budgets.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

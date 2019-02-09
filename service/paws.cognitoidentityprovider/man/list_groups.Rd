@@ -4,11 +4,7 @@
 \alias{list_groups}
 \title{Lists the groups associated with a user pool}
 \usage{
-list_groups(
-  UserPoolId = "string",
-  Limit = 123,
-  NextToken = "string"
-)
+list_groups(UserPoolId, Limit = NULL, NextToken = NULL)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool.}
@@ -23,6 +19,12 @@ Lists the groups associated with a user pool.
 \details{
 Requires developer credentials.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_groups(
+  UserPoolId = "string",
+  Limit = 123,
+  NextToken = "string"
+)
 }
+}
+

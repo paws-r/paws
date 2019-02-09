@@ -4,10 +4,7 @@
 \alias{get_commit}
 \title{Returns information about a commit, including commit message and committer information}
 \usage{
-get_commit(
-  repositoryName = "string",
-  commitId = "string"
-)
+get_commit(repositoryName, commitId)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository to which the commit was made.}
@@ -17,6 +14,11 @@ get_commit(
 \description{
 Returns information about a commit, including commit message and committer information.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_commit(
+  repositoryName = "string",
+  commitId = "string"
+)
 }
+}
+

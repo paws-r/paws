@@ -4,33 +4,15 @@
 \alias{modify_cache_cluster}
 \title{Modifies the settings for a cluster}
 \usage{
-modify_cache_cluster(
-  CacheClusterId = "string",
-  NumCacheNodes = 123,
-  CacheNodeIdsToRemove = list(
-    "string"
-  ),
-  AZMode = "single-az"|"cross-az",
-  NewAvailabilityZones = list(
-    "string"
-  ),
-  CacheSecurityGroupNames = list(
-    "string"
-  ),
-  SecurityGroupIds = list(
-    "string"
-  ),
-  PreferredMaintenanceWindow = "string",
-  NotificationTopicArn = "string",
-  CacheParameterGroupName = "string",
-  NotificationTopicStatus = "string",
-  ApplyImmediately = TRUE|FALSE,
-  EngineVersion = "string",
-  AutoMinorVersionUpgrade = TRUE|FALSE,
-  SnapshotRetentionLimit = 123,
-  SnapshotWindow = "string",
-  CacheNodeType = "string"
-)
+modify_cache_cluster(CacheClusterId, NumCacheNodes = NULL,
+  CacheNodeIdsToRemove = NULL, AZMode = NULL,
+  NewAvailabilityZones = NULL, CacheSecurityGroupNames = NULL,
+  SecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL,
+  NotificationTopicArn = NULL, CacheParameterGroupName = NULL,
+  NotificationTopicStatus = NULL, ApplyImmediately = NULL,
+  EngineVersion = NULL, AutoMinorVersionUpgrade = NULL,
+  SnapshotRetentionLimit = NULL, SnapshotWindow = NULL,
+  CacheNodeType = NULL)
 }
 \arguments{
 \item{CacheClusterId}{[required] The cluster identifier. This value is stored as a lowercase string.}
@@ -168,6 +150,34 @@ If the value of \code{SnapshotRetentionLimit} is set to zero (0), backups are tu
 \description{
 Modifies the settings for a cluster. You can use this operation to change one or more cluster configuration parameters by specifying the parameters and the new values.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_cache_cluster(
+  CacheClusterId = "string",
+  NumCacheNodes = 123,
+  CacheNodeIdsToRemove = list(
+    "string"
+  ),
+  AZMode = "single-az"|"cross-az",
+  NewAvailabilityZones = list(
+    "string"
+  ),
+  CacheSecurityGroupNames = list(
+    "string"
+  ),
+  SecurityGroupIds = list(
+    "string"
+  ),
+  PreferredMaintenanceWindow = "string",
+  NotificationTopicArn = "string",
+  CacheParameterGroupName = "string",
+  NotificationTopicStatus = "string",
+  ApplyImmediately = TRUE|FALSE,
+  EngineVersion = "string",
+  AutoMinorVersionUpgrade = TRUE|FALSE,
+  SnapshotRetentionLimit = 123,
+  SnapshotWindow = "string",
+  CacheNodeType = "string"
+)
 }
+}
+

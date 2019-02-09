@@ -4,9 +4,7 @@
 \alias{get_email_channel}
 \title{Get an email channel}
 \usage{
-get_email_channel(
-  ApplicationId = "string"
-)
+get_email_channel(ApplicationId)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
@@ -14,6 +12,10 @@ get_email_channel(
 \description{
 Get an email channel.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_email_channel(
+  ApplicationId = "string"
+)
 }
+}
+

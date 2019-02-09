@@ -4,9 +4,7 @@
 \alias{delete_authorizer}
 \title{Deletes an authorizer}
 \usage{
-delete_authorizer(
-  authorizerName = "string"
-)
+delete_authorizer(authorizerName)
 }
 \arguments{
 \item{authorizerName}{[required] The name of the authorizer to delete.}
@@ -14,6 +12,10 @@ delete_authorizer(
 \description{
 Deletes an authorizer.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_authorizer(
+  authorizerName = "string"
+)
 }
+}
+

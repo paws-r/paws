@@ -4,10 +4,7 @@
 \alias{get_stage}
 \title{Gets a Stage}
 \usage{
-get_stage(
-  ApiId = "string",
-  StageName = "string"
-)
+get_stage(ApiId, StageName)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -17,6 +14,11 @@ get_stage(
 \description{
 Gets a Stage.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_stage(
+  ApiId = "string",
+  StageName = "string"
+)
 }
+}
+

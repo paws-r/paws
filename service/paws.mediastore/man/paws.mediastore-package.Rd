@@ -6,9 +6,9 @@
 \alias{paws.mediastore-package}
 \title{paws.mediastore: AWS Elemental MediaStore}
 \description{
-An AWS Elemental MediaStore container is a namespace that
-holds folders and objects. You use a container endpoint to create,
-read, and delete objects.
+An AWS Elemental MediaStore container is a
+    namespace that holds folders and objects. You use a container endpoint
+    to create, read, and delete objects.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

@@ -5,9 +5,7 @@
 \alias{get_application_policy}
 \title{Retrieves the policy for the application}
 \usage{
-get_application_policy(
-  ApplicationId = "string"
-)
+get_application_policy(ApplicationId)
 }
 \arguments{
 \item{ApplicationId}{[required] The Amazon Resource Name (ARN) of the application.}
@@ -15,6 +13,10 @@ get_application_policy(
 \description{
 Retrieves the policy for the application.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_application_policy(
+  ApplicationId = "string"
+)
 }
+}
+

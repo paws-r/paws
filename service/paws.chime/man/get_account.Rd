@@ -4,9 +4,7 @@
 \alias{get_account}
 \title{Retrieves details for the specified Amazon Chime account, such as account type and supported licenses}
 \usage{
-get_account(
-  AccountId = "string"
-)
+get_account(AccountId)
 }
 \arguments{
 \item{AccountId}{[required] The Amazon Chime account ID.}
@@ -14,6 +12,10 @@ get_account(
 \description{
 Retrieves details for the specified Amazon Chime account, such as account type and supported licenses.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_account(
+  AccountId = "string"
+)
 }
+}
+

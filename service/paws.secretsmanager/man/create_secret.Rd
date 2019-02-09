@@ -4,20 +4,9 @@
 \alias{create_secret}
 \title{Creates a new secret}
 \usage{
-create_secret(
-  Name = "string",
-  ClientRequestToken = "string",
-  Description = "string",
-  KmsKeyId = "string",
-  SecretBinary = raw,
-  SecretString = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_secret(Name, ClientRequestToken = NULL, Description = NULL,
+  KmsKeyId = NULL, SecretBinary = NULL, SecretString = NULL,
+  Tags = NULL)
 }
 \arguments{
 \item{Name}{[required] Specifies the friendly name of the new secret.
@@ -121,15 +110,33 @@ To run this command, you must have the following permissions:
 \item To retrieve the list of secret versions associated with the current secret, use DescribeSecret and examine the \code{SecretVersionsToStages} response value.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{create_secret(
+  Name = "string",
+  ClientRequestToken = "string",
+  Description = "string",
+  KmsKeyId = "string",
+  SecretBinary = raw,
+  SecretString = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # The following example shows how to create a secret. The credentials
 # stored in the encrypted secret value are retrieved from a file on disk
 # named mycreds.json.
-create_secret(
+\donttest{create_secret(
   ClientRequestToken = "EXAMPLE1-90ab-cdef-fedc-ba987SECRET1",
   Description = "My test database secret created with the CLI",
   Name = "MyTestDatabaseSecret",
   SecretString = "{\\"username\\":\\"david\\",\\"password\\":\\"BnQw!XDWgaEeT9XGTT29\\"}"
-)
+)}
 
 }

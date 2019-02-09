@@ -4,9 +4,7 @@
 \alias{delete_directory}
 \title{Deletes an AWS Directory Service directory}
 \usage{
-delete_directory(
-  DirectoryId = "string"
-)
+delete_directory(DirectoryId)
 }
 \arguments{
 \item{DirectoryId}{[required] The identifier of the directory to delete.}
@@ -17,6 +15,10 @@ Deletes an AWS Directory Service directory.
 \details{
 Before you call \code{DeleteDirectory}, ensure that all of the required permissions have been explicitly granted through a policy. For details about what permissions are required to run the \code{DeleteDirectory} operation, see \href{http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html}{AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_directory(
+  DirectoryId = "string"
+)
 }
+}
+

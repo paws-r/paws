@@ -4,18 +4,7 @@
 \alias{list_robots}
 \title{Returns a list of robots}
 \usage{
-list_robots(
-  nextToken = "string",
-  maxResults = 123,
-  filters = list(
-    list(
-      name = "string",
-      values = list(
-        "string"
-      )
-    )
-  )
-)
+list_robots(nextToken = NULL, maxResults = NULL, filters = NULL)
 }
 \arguments{
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated \code{ListRobots} request where \code{maxResults} was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the \code{nextToken} value.
@@ -29,6 +18,19 @@ This token should be treated as an opaque identifier that is only used to retrie
 \description{
 Returns a list of robots. You can optionally provide filters to retrieve specific robots.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_robots(
+  nextToken = "string",
+  maxResults = 123,
+  filters = list(
+    list(
+      name = "string",
+      values = list(
+        "string"
+      )
+    )
+  )
+)
 }
+}
+

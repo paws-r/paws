@@ -4,9 +4,7 @@
 \alias{delete_fleet}
 \title{Deletes the specified fleet}
 \usage{
-delete_fleet(
-  Name = "string"
-)
+delete_fleet(Name)
 }
 \arguments{
 \item{Name}{[required] The name of the fleet.}
@@ -14,6 +12,10 @@ delete_fleet(
 \description{
 Deletes the specified fleet.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_fleet(
+  Name = "string"
+)
 }
+}
+

@@ -4,14 +4,9 @@
 \alias{modify_cluster_maintenance}
 \title{Modifies the maintenance settings of a cluster}
 \usage{
-modify_cluster_maintenance(
-  ClusterIdentifier = "string",
-  DeferMaintenance = TRUE|FALSE,
-  DeferMaintenanceIdentifier = "string",
-  DeferMaintenanceStartTime = as.POSIXct("2015-01-01"),
-  DeferMaintenanceEndTime = as.POSIXct("2015-01-01"),
-  DeferMaintenanceDuration = 123
-)
+modify_cluster_maintenance(ClusterIdentifier, DeferMaintenance = NULL,
+  DeferMaintenanceIdentifier = NULL, DeferMaintenanceStartTime = NULL,
+  DeferMaintenanceEndTime = NULL, DeferMaintenanceDuration = NULL)
 }
 \arguments{
 \item{ClusterIdentifier}{[required] A unique identifier for the cluster.}
@@ -29,6 +24,15 @@ modify_cluster_maintenance(
 \description{
 Modifies the maintenance settings of a cluster. For example, you can defer a maintenance window. You can also update or cancel a deferment.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_cluster_maintenance(
+  ClusterIdentifier = "string",
+  DeferMaintenance = TRUE|FALSE,
+  DeferMaintenanceIdentifier = "string",
+  DeferMaintenanceStartTime = as.POSIXct("2015-01-01"),
+  DeferMaintenanceEndTime = as.POSIXct("2015-01-01"),
+  DeferMaintenanceDuration = 123
+)
 }
+}
+

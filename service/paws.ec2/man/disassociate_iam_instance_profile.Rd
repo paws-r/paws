@@ -4,9 +4,7 @@
 \alias{disassociate_iam_instance_profile}
 \title{Disassociates an IAM instance profile from a running or stopped instance}
 \usage{
-disassociate_iam_instance_profile(
-  AssociationId = "string"
-)
+disassociate_iam_instance_profile(AssociationId)
 }
 \arguments{
 \item{AssociationId}{[required] The ID of the IAM instance profile association.}
@@ -17,11 +15,18 @@ Disassociates an IAM instance profile from a running or stopped instance.
 \details{
 Use DescribeIamInstanceProfileAssociations to get the association ID.
 }
+\section{Accepted Parameters}{
+\preformatted{disassociate_iam_instance_profile(
+  AssociationId = "string"
+)
+}
+}
+
 \examples{
 # This example disassociates the specified IAM instance profile from an
 # instance.
-disassociate_iam_instance_profile(
+\donttest{disassociate_iam_instance_profile(
   AssociationId = "iip-assoc-05020b59952902f5f"
-)
+)}
 
 }

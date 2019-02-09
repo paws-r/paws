@@ -4,9 +4,7 @@
 \alias{get_apns_sandbox_channel}
 \title{Get an APNS sandbox channel}
 \usage{
-get_apns_sandbox_channel(
-  ApplicationId = "string"
-)
+get_apns_sandbox_channel(ApplicationId)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
@@ -14,6 +12,10 @@ get_apns_sandbox_channel(
 \description{
 Get an APNS sandbox channel.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_apns_sandbox_channel(
+  ApplicationId = "string"
+)
 }
+}
+

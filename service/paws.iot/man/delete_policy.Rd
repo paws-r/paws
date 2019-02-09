@@ -4,9 +4,7 @@
 \alias{delete_policy}
 \title{Deletes the specified policy}
 \usage{
-delete_policy(
-  policyName = "string"
-)
+delete_policy(policyName)
 }
 \arguments{
 \item{policyName}{[required] The name of the policy to delete.}
@@ -21,6 +19,10 @@ To delete a policy, use the DeletePolicyVersion API to delete all non-default ve
 
 When a policy is deleted using DeletePolicy, its default version is deleted with it.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_policy(
+  policyName = "string"
+)
 }
+}
+

@@ -6,8 +6,8 @@
 \alias{paws.applicationautoscaling-package}
 \title{paws.applicationautoscaling: Application Auto Scaling}
 \description{
-With Application Auto Scaling, you can configure automatic
-scaling for your scalable resources.
+With Application Auto Scaling, you can configure
+    automatic scaling for your scalable resources.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

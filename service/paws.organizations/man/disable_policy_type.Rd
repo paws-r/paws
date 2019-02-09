@@ -4,10 +4,7 @@
 \alias{disable_policy_type}
 \title{Disables an organizational control policy type in a root}
 \usage{
-disable_policy_type(
-  RootId = "string",
-  PolicyType = "SERVICE_CONTROL_POLICY"
-)
+disable_policy_type(RootId, PolicyType)
 }
 \arguments{
 \item{RootId}{[required] The unique identifier (ID) of the root in which you want to disable a policy type. You can get the ID from the ListRoots operation.
@@ -24,13 +21,21 @@ This operation can be called only from the organization's master account.
 
 If you disable a policy type for a root, it still shows as enabled for the organization if all features are enabled in that organization. Use ListRoots to see the status of policy types for a specified root. Use DescribeOrganization to see the status of policy types in the organization.
 }
+\section{Accepted Parameters}{
+\preformatted{disable_policy_type(
+  RootId = "string",
+  PolicyType = "SERVICE_CONTROL_POLICY"
+)
+}
+}
+
 \examples{
 # The following example shows how to disable the service control policy
 # (SCP) policy type in a root. The response shows that the PolicyTypes
 # response element no longer includes SERVICE_CONTROL_POLICY:/n/n
-disable_policy_type(
+\donttest{disable_policy_type(
   PolicyType = "SERVICE_CONTROL_POLICY",
   RootId = "r-examplerootid111"
-)
+)}
 
 }

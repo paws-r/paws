@@ -4,7 +4,16 @@
 \alias{create_field_level_encryption_config}
 \title{Create a new field-level encryption configuration}
 \usage{
-create_field_level_encryption_config(
+create_field_level_encryption_config(FieldLevelEncryptionConfig)
+}
+\arguments{
+\item{FieldLevelEncryptionConfig}{[required] The request to create a new field-level encryption configuration.}
+}
+\description{
+Create a new field-level encryption configuration.
+}
+\section{Accepted Parameters}{
+\preformatted{create_field_level_encryption_config(
   FieldLevelEncryptionConfig = list(
     CallerReference = "string",
     Comment = "string",
@@ -36,12 +45,5 @@ create_field_level_encryption_config(
   )
 )
 }
-\arguments{
-\item{FieldLevelEncryptionConfig}{[required] The request to create a new field-level encryption configuration.}
 }
-\description{
-Create a new field-level encryption configuration.
-}
-\examples{
 
-}

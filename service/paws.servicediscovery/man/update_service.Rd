@@ -4,25 +4,7 @@
 \alias{update_service}
 \title{Submits a request to perform the following operations:}
 \usage{
-update_service(
-  Id = "string",
-  Service = list(
-    Description = "string",
-    DnsConfig = list(
-      DnsRecords = list(
-        list(
-          Type = "SRV"|"A"|"AAAA"|"CNAME",
-          TTL = 123
-        )
-      )
-    ),
-    HealthCheckConfig = list(
-      Type = "HTTP"|"HTTPS"|"TCP",
-      ResourcePath = "string",
-      FailureThreshold = 123
-    )
-  )
-)
+update_service(Id, Service)
 }
 \arguments{
 \item{Id}{[required] The ID of the service that you want to update.}
@@ -43,6 +25,26 @@ For public and private DNS namespaces, you must specify all \code{DnsRecords} co
 
 When you update the TTL setting for a service, AWS Cloud Map also updates the corresponding settings in all the records and health checks that were created by using the specified service.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_service(
+  Id = "string",
+  Service = list(
+    Description = "string",
+    DnsConfig = list(
+      DnsRecords = list(
+        list(
+          Type = "SRV"|"A"|"AAAA"|"CNAME",
+          TTL = 123
+        )
+      )
+    ),
+    HealthCheckConfig = list(
+      Type = "HTTP"|"HTTPS"|"TCP",
+      ResourcePath = "string",
+      FailureThreshold = 123
+    )
+  )
+)
 }
+}
+

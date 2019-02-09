@@ -4,13 +4,8 @@
 \alias{get_api_keys}
 \title{Gets information about the current ApiKeys resource}
 \usage{
-get_api_keys(
-  position = "string",
-  limit = 123,
-  nameQuery = "string",
-  customerId = "string",
-  includeValues = TRUE|FALSE
-)
+get_api_keys(position = NULL, limit = NULL, nameQuery = NULL,
+  customerId = NULL, includeValues = NULL)
 }
 \arguments{
 \item{position}{The current pagination position in the paged result set.}
@@ -26,6 +21,14 @@ get_api_keys(
 \description{
 Gets information about the current ApiKeys resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_api_keys(
+  position = "string",
+  limit = 123,
+  nameQuery = "string",
+  customerId = "string",
+  includeValues = TRUE|FALSE
+)
 }
+}
+

@@ -2,15 +2,9 @@
 % Please edit documentation in R/paws.route53_operations.R
 \name{create_vpc_association_authorization}
 \alias{create_vpc_association_authorization}
-\title{Authorizes the AWS account that created a specified VPC to submit an \code{AssociateVPCWithHostedZone} request to associate the VPC with a specified hosted zone that was created by a different account}
+\title{Authorizes the AWS account that created a specified VPC to submit an AssociateVPCWithHostedZone request to associate the VPC with a specified hosted zone that was created by a different account}
 \usage{
-create_vpc_association_authorization(
-  HostedZoneId = "string",
-  VPC = list(
-    VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1",
-    VPCId = "string"
-  )
-)
+create_vpc_association_authorization(HostedZoneId, VPC)
 }
 \arguments{
 \item{HostedZoneId}{[required] The ID of the private hosted zone that you want to authorize associating a VPC with.}
@@ -23,6 +17,14 @@ Authorizes the AWS account that created a specified VPC to submit an \code{Assoc
 \details{
 If you want to associate multiple VPCs that you created by using one account with a hosted zone that you created by using a different account, you must submit one authorization request for each VPC.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_vpc_association_authorization(
+  HostedZoneId = "string",
+  VPC = list(
+    VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1",
+    VPCId = "string"
+  )
+)
 }
+}
+

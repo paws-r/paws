@@ -4,11 +4,8 @@
 \alias{associate_client_vpn_target_network}
 \title{Associates a target network with a Client VPN endpoint}
 \usage{
-associate_client_vpn_target_network(
-  ClientVpnEndpointId = "string",
-  SubnetId = "string",
-  DryRun = TRUE|FALSE
-)
+associate_client_vpn_target_network(ClientVpnEndpointId, SubnetId,
+  DryRun = NULL)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint.}
@@ -20,6 +17,12 @@ associate_client_vpn_target_network(
 \description{
 Associates a target network with a Client VPN endpoint. A target network is a subnet in a VPC. You can associate multiple subnets from the same VPC with a Client VPN endpoint. You can associate only one subnet in each Availability Zone. We recommend that you associate at least two subnets to provide Availability Zone redundancy.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_client_vpn_target_network(
+  ClientVpnEndpointId = "string",
+  SubnetId = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

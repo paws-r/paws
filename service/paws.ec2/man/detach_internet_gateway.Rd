@@ -4,11 +4,7 @@
 \alias{detach_internet_gateway}
 \title{Detaches an internet gateway from a VPC, disabling connectivity between the internet and the VPC}
 \usage{
-detach_internet_gateway(
-  DryRun = TRUE|FALSE,
-  InternetGatewayId = "string",
-  VpcId = "string"
-)
+detach_internet_gateway(DryRun = NULL, InternetGatewayId, VpcId)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -20,12 +16,21 @@ detach_internet_gateway(
 \description{
 Detaches an internet gateway from a VPC, disabling connectivity between the internet and the VPC. The VPC must not contain any running instances with Elastic IP addresses or public IPv4 addresses.
 }
+\section{Accepted Parameters}{
+\preformatted{detach_internet_gateway(
+  DryRun = TRUE|FALSE,
+  InternetGatewayId = "string",
+  VpcId = "string"
+)
+}
+}
+
 \examples{
 # This example detaches the specified Internet gateway from the specified
 # VPC.
-detach_internet_gateway(
+\donttest{detach_internet_gateway(
   InternetGatewayId = "igw-c0a643a9",
   VpcId = "vpc-a01106c2"
-)
+)}
 
 }

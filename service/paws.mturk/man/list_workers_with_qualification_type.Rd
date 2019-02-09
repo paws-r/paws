@@ -2,14 +2,10 @@
 % Please edit documentation in R/paws.mturk_operations.R
 \name{list_workers_with_qualification_type}
 \alias{list_workers_with_qualification_type}
-\title{The \code{ListWorkersWithQualificationType} operation returns all of the Workers that have been associated with a given Qualification type}
+\title{The ListWorkersWithQualificationType operation returns all of the Workers that have been associated with a given Qualification type}
 \usage{
-list_workers_with_qualification_type(
-  QualificationTypeId = "string",
-  Status = "Granted"|"Revoked",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_workers_with_qualification_type(QualificationTypeId, Status = NULL,
+  NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{QualificationTypeId}{[required] The ID of the Qualification type of the Qualifications to return.}
@@ -23,6 +19,13 @@ list_workers_with_qualification_type(
 \description{
 The \code{ListWorkersWithQualificationType} operation returns all of the Workers that have been associated with a given Qualification type.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_workers_with_qualification_type(
+  QualificationTypeId = "string",
+  Status = "Granted"|"Revoked",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

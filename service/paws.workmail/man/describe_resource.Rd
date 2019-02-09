@@ -4,10 +4,7 @@
 \alias{describe_resource}
 \title{Returns the data available for the resource}
 \usage{
-describe_resource(
-  OrganizationId = "string",
-  ResourceId = "string"
-)
+describe_resource(OrganizationId, ResourceId)
 }
 \arguments{
 \item{OrganizationId}{[required] The identifier associated with the organization for which the resource is described.}
@@ -17,6 +14,11 @@ describe_resource(
 \description{
 Returns the data available for the resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_resource(
+  OrganizationId = "string",
+  ResourceId = "string"
+)
 }
+}
+

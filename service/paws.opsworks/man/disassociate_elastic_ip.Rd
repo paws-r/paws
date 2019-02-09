@@ -4,9 +4,7 @@
 \alias{disassociate_elastic_ip}
 \title{Disassociates an Elastic IP address from its instance}
 \usage{
-disassociate_elastic_ip(
-  ElasticIp = "string"
-)
+disassociate_elastic_ip(ElasticIp)
 }
 \arguments{
 \item{ElasticIp}{[required] The Elastic IP address.}
@@ -17,6 +15,10 @@ Disassociates an Elastic IP address from its instance. The address remains regis
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disassociate_elastic_ip(
+  ElasticIp = "string"
+)
 }
+}
+

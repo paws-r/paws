@@ -4,11 +4,7 @@
 \alias{associate_member_to_group}
 \title{Adds a member to the group's set}
 \usage{
-associate_member_to_group(
-  OrganizationId = "string",
-  GroupId = "string",
-  MemberId = "string"
-)
+associate_member_to_group(OrganizationId, GroupId, MemberId)
 }
 \arguments{
 \item{OrganizationId}{[required] The organization under which the group exists.}
@@ -20,6 +16,12 @@ associate_member_to_group(
 \description{
 Adds a member to the group's set.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_member_to_group(
+  OrganizationId = "string",
+  GroupId = "string",
+  MemberId = "string"
+)
 }
+}
+

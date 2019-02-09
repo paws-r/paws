@@ -4,20 +4,8 @@
 \alias{put_object_tagging}
 \title{Sets the supplied tag-set to an object that already exists in a bucket}
 \usage{
-put_object_tagging(
-  Bucket = "string",
-  Key = "string",
-  VersionId = "string",
-  ContentMD5 = "string",
-  Tagging = list(
-    TagSet = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
+put_object_tagging(Bucket, Key, VersionId = NULL, ContentMD5 = NULL,
+  Tagging)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -33,9 +21,27 @@ put_object_tagging(
 \description{
 Sets the supplied tag-set to an object that already exists in a bucket
 }
+\section{Accepted Parameters}{
+\preformatted{put_object_tagging(
+  Bucket = "string",
+  Key = "string",
+  VersionId = "string",
+  ContentMD5 = "string",
+  Tagging = list(
+    TagSet = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
+
 \examples{
 # The following example adds tags to an existing object.
-put_object_tagging(
+\donttest{put_object_tagging(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg",
   Tagging = list(
@@ -50,6 +56,6 @@ put_object_tagging(
       )
     )
   )
-)
+)}
 
 }

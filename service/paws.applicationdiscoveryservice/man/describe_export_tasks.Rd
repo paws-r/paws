@@ -4,22 +4,8 @@
 \alias{describe_export_tasks}
 \title{Retrieve status of one or more export tasks}
 \usage{
-describe_export_tasks(
-  exportIds = list(
-    "string"
-  ),
-  filters = list(
-    list(
-      name = "string",
-      values = list(
-        "string"
-      ),
-      condition = "string"
-    )
-  ),
-  maxResults = 123,
-  nextToken = "string"
-)
+describe_export_tasks(exportIds = NULL, filters = NULL,
+  maxResults = NULL, nextToken = NULL)
 }
 \arguments{
 \item{exportIds}{One or more unique identifiers used to query the status of an export request.}
@@ -36,6 +22,23 @@ describe_export_tasks(
 \description{
 Retrieve status of one or more export tasks. You can retrieve the status of up to 100 export tasks.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_export_tasks(
+  exportIds = list(
+    "string"
+  ),
+  filters = list(
+    list(
+      name = "string",
+      values = list(
+        "string"
+      ),
+      condition = "string"
+    )
+  ),
+  maxResults = 123,
+  nextToken = "string"
+)
 }
+}
+

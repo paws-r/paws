@@ -4,14 +4,7 @@
 \alias{tag_resources}
 \title{Applies one or more tags to the specified resources}
 \usage{
-tag_resources(
-  ResourceARNList = list(
-    "string"
-  ),
-  Tags = list(
-    "string"
-  )
-)
+tag_resources(ResourceARNList, Tags)
 }
 \arguments{
 \item{ResourceARNList}{[required] A list of ARNs. An ARN (Amazon Resource Name) uniquely identifies a resource. You can specify a minimum of 1 and a maximum of 20 ARNs (resources) to tag. An ARN can be set to a maximum of 1600 characters. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces} in the \emph{AWS General Reference}.}
@@ -29,6 +22,15 @@ Applies one or more tags to the specified resources. Note the following:
 \item To add tags to a resource, you need the necessary permissions for the service that the resource belongs to as well as permissions for adding tags. For more information, see \href{http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-tagging.html}{Obtaining Permissions for Tagging} in the \emph{AWS Resource Groups and Tag Editor User Guide}.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{tag_resources(
+  ResourceARNList = list(
+    "string"
+  ),
+  Tags = list(
+    "string"
+  )
+)
 }
+}
+

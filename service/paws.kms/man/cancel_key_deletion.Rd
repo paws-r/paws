@@ -4,9 +4,7 @@
 \alias{cancel_key_deletion}
 \title{Cancels the deletion of a customer master key (CMK)}
 \usage{
-cancel_key_deletion(
-  KeyId = "string"
-)
+cancel_key_deletion(KeyId)
 }
 \arguments{
 \item{KeyId}{[required] The unique identifier for the customer master key (CMK) for which to cancel deletion.
@@ -29,10 +27,17 @@ For more information about scheduling and canceling deletion of a CMK, see \href
 
 The result of this operation varies with the key state of the CMK. For details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key} in the \emph{AWS Key Management Service Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{cancel_key_deletion(
+  KeyId = "string"
+)
+}
+}
+
 \examples{
 # The following example cancels deletion of the specified CMK.
-cancel_key_deletion(
+\donttest{cancel_key_deletion(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)
+)}
 
 }

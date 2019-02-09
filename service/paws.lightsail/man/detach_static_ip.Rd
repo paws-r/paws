@@ -4,9 +4,7 @@
 \alias{detach_static_ip}
 \title{Detaches a static IP from the Amazon Lightsail instance to which it is attached}
 \usage{
-detach_static_ip(
-  staticIpName = "string"
-)
+detach_static_ip(staticIpName)
 }
 \arguments{
 \item{staticIpName}{[required] The name of the static IP to detach from the instance.}
@@ -14,6 +12,10 @@ detach_static_ip(
 \description{
 Detaches a static IP from the Amazon Lightsail instance to which it is attached.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{detach_static_ip(
+  staticIpName = "string"
+)
 }
+}
+

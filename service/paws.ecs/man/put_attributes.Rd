@@ -4,7 +4,18 @@
 \alias{put_attributes}
 \title{Create or update an attribute on an Amazon ECS resource}
 \usage{
-put_attributes(
+put_attributes(cluster = NULL, attributes)
+}
+\arguments{
+\item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that contains the resource to apply attributes. If you do not specify a cluster, the default cluster is assumed.}
+
+\item{attributes}{[required] The attributes to apply to your resource. You can specify up to 10 custom attributes per resource. You can specify up to 10 attributes in a single call.}
+}
+\description{
+Create or update an attribute on an Amazon ECS resource. If the attribute does not exist, it is created. If the attribute exists, its value is replaced with the specified value. To delete an attribute, use DeleteAttributes. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html#attributes}{Attributes} in the \emph{Amazon Elastic Container Service Developer Guide}.
+}
+\section{Accepted Parameters}{
+\preformatted{put_attributes(
   cluster = "string",
   attributes = list(
     list(
@@ -16,14 +27,5 @@ put_attributes(
   )
 )
 }
-\arguments{
-\item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that contains the resource to apply attributes. If you do not specify a cluster, the default cluster is assumed.}
+}
 
-\item{attributes}{[required] The attributes to apply to your resource. You can specify up to 10 custom attributes per resource. You can specify up to 10 attributes in a single call.}
-}
-\description{
-Create or update an attribute on an Amazon ECS resource. If the attribute does not exist, it is created. If the attribute exists, its value is replaced with the specified value. To delete an attribute, use DeleteAttributes. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html#attributes}{Attributes} in the \emph{Amazon Elastic Container Service Developer Guide}.
-}
-\examples{
-
-}

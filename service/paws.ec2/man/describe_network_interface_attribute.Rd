@@ -4,11 +4,8 @@
 \alias{describe_network_interface_attribute}
 \title{Describes a network interface attribute}
 \usage{
-describe_network_interface_attribute(
-  Attribute = "description"|"groupSet"|"sourceDestCheck"|"attachment",
-  DryRun = TRUE|FALSE,
-  NetworkInterfaceId = "string"
-)
+describe_network_interface_attribute(Attribute = NULL, DryRun = NULL,
+  NetworkInterfaceId)
 }
 \arguments{
 \item{Attribute}{The attribute of the network interface. This parameter is required.}
@@ -20,33 +17,42 @@ describe_network_interface_attribute(
 \description{
 Describes a network interface attribute. You can specify only one attribute at a time.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_network_interface_attribute(
+  Attribute = "description"|"groupSet"|"sourceDestCheck"|"attachment",
+  DryRun = TRUE|FALSE,
+  NetworkInterfaceId = "string"
+)
+}
+}
+
 \examples{
 # This example describes the attachment attribute of the specified network
 # interface.
-describe_network_interface_attribute(
+\donttest{describe_network_interface_attribute(
   Attribute = "attachment",
   NetworkInterfaceId = "eni-686ea200"
-)
+)}
 
 # This example describes the description attribute of the specified
 # network interface.
-describe_network_interface_attribute(
+\donttest{describe_network_interface_attribute(
   Attribute = "description",
   NetworkInterfaceId = "eni-686ea200"
-)
+)}
 
 # This example describes the groupSet attribute of the specified network
 # interface.
-describe_network_interface_attribute(
+\donttest{describe_network_interface_attribute(
   Attribute = "groupSet",
   NetworkInterfaceId = "eni-686ea200"
-)
+)}
 
 # This example describes the sourceDestCheck attribute of the specified
 # network interface.
-describe_network_interface_attribute(
+\donttest{describe_network_interface_attribute(
   Attribute = "sourceDestCheck",
   NetworkInterfaceId = "eni-686ea200"
-)
+)}
 
 }

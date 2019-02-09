@@ -4,11 +4,7 @@
 \alias{delete_api_mapping}
 \title{Deletes an API mapping}
 \usage{
-delete_api_mapping(
-  ApiId = "string",
-  ApiMappingId = "string",
-  DomainName = "string"
-)
+delete_api_mapping(ApiId, ApiMappingId, DomainName)
 }
 \arguments{
 \item{ApiId}{[required] The identifier of the API.}
@@ -20,6 +16,12 @@ delete_api_mapping(
 \description{
 Deletes an API mapping.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_api_mapping(
+  ApiId = "string",
+  ApiMappingId = "string",
+  DomainName = "string"
+)
 }
+}
+

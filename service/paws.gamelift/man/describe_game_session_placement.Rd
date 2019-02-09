@@ -4,9 +4,7 @@
 \alias{describe_game_session_placement}
 \title{Retrieves properties and current status of a game session placement request}
 \usage{
-describe_game_session_placement(
-  PlacementId = "string"
-)
+describe_game_session_placement(PlacementId)
 }
 \arguments{
 \item{PlacementId}{[required] Unique identifier for a game session placement to retrieve.}
@@ -15,7 +13,6 @@ describe_game_session_placement(
 Retrieves properties and current status of a game session placement request. To get game session placement details, specify the placement ID. If successful, a GameSessionPlacement object is returned.
 }
 \details{
-Game-session-related operations include:
 \itemize{
 \item CreateGameSession
 \item DescribeGameSessions
@@ -29,6 +26,10 @@ Game-session-related operations include:
 \item StopGameSessionPlacement
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_game_session_placement(
+  PlacementId = "string"
+)
 }
+}
+

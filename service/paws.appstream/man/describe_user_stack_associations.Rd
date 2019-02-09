@@ -4,13 +4,8 @@
 \alias{describe_user_stack_associations}
 \title{Retrieves a list that describes the UserStackAssociation objects}
 \usage{
-describe_user_stack_associations(
-  StackName = "string",
-  UserName = "string",
-  AuthenticationType = "API"|"SAML"|"USERPOOL",
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_user_stack_associations(StackName = NULL, UserName = NULL,
+  AuthenticationType = NULL, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{StackName}{The name of the stack that is associated with the user.}
@@ -32,6 +27,14 @@ Retrieves a list that describes the UserStackAssociation objects. You must speci
 \item The user name (email address of the user associated with the stack) and the authentication type for the user
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_user_stack_associations(
+  StackName = "string",
+  UserName = "string",
+  AuthenticationType = "API"|"SAML"|"USERPOOL",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

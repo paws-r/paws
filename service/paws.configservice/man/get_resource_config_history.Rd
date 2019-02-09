@@ -4,15 +4,9 @@
 \alias{get_resource_config_history}
 \title{Returns a list of configuration items for the specified resource}
 \usage{
-get_resource_config_history(
-  resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::EventSubscription"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::S3::Bucket"|"AWS::SSM::ManagedInstanceInventory"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::DynamoDB::Table"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::WAF::RuleGroup"|"AWS::WAFRegional::RuleGroup"|"AWS::Lambda::Function"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::CodePipeline::Pipeline",
-  resourceId = "string",
-  laterTime = as.POSIXct("2015-01-01"),
-  earlierTime = as.POSIXct("2015-01-01"),
-  chronologicalOrder = "Reverse"|"Forward",
-  limit = 123,
-  nextToken = "string"
-)
+get_resource_config_history(resourceType, resourceId, laterTime = NULL,
+  earlierTime = NULL, chronologicalOrder = NULL, limit = NULL,
+  nextToken = NULL)
 }
 \arguments{
 \item{resourceType}{[required] The resource type.}
@@ -37,6 +31,16 @@ The response is paginated. By default, AWS Config returns a limit of 10 configur
 
 Each call to the API is limited to span a duration of seven days. It is likely that the number of records returned is smaller than the specified \code{limit}. In such cases, you can make another call, using the \code{nextToken}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_resource_config_history(
+  resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::EventSubscription"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::S3::Bucket"|"AWS::SSM::ManagedInstanceInventory"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::DynamoDB::Table"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::WAF::RuleGroup"|"AWS::WAFRegional::RuleGroup"|"AWS::Lambda::Function"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::CodePipeline::Pipeline",
+  resourceId = "string",
+  laterTime = as.POSIXct("2015-01-01"),
+  earlierTime = as.POSIXct("2015-01-01"),
+  chronologicalOrder = "Reverse"|"Forward",
+  limit = 123,
+  nextToken = "string"
+)
 }
+}
+

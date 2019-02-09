@@ -4,11 +4,7 @@
 \alias{list_tags}
 \title{Lists all tags for the specified resource}
 \usage{
-list_tags(
-  Arn = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_tags(Arn, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{Arn}{[required] The ARN of the specified resource for which to list tags.}
@@ -20,6 +16,12 @@ list_tags(
 \description{
 Lists all tags for the specified resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_tags(
+  Arn = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

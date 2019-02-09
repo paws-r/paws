@@ -4,9 +4,7 @@
 \alias{get_groups}
 \title{Retrieves all active group details}
 \usage{
-get_groups(
-  NextToken = "string"
-)
+get_groups(NextToken = NULL)
 }
 \arguments{
 \item{NextToken}{Pagination token. Not used.}
@@ -14,6 +12,10 @@ get_groups(
 \description{
 Retrieves all active group details.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_groups(
+  NextToken = "string"
+)
 }
+}
+

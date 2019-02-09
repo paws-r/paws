@@ -4,20 +4,9 @@
 \alias{describe_vpc_endpoint_connection_notifications}
 \title{Describes the connection notifications for VPC endpoints and VPC endpoint services}
 \usage{
-describe_vpc_endpoint_connection_notifications(
-  DryRun = TRUE|FALSE,
-  ConnectionNotificationId = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_vpc_endpoint_connection_notifications(DryRun = NULL,
+  ConnectionNotificationId = NULL, Filters = NULL, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -41,6 +30,21 @@ describe_vpc_endpoint_connection_notifications(
 \description{
 Describes the connection notifications for VPC endpoints and VPC endpoint services.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_vpc_endpoint_connection_notifications(
+  DryRun = TRUE|FALSE,
+  ConnectionNotificationId = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

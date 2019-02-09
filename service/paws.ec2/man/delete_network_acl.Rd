@@ -4,10 +4,7 @@
 \alias{delete_network_acl}
 \title{Deletes the specified network ACL}
 \usage{
-delete_network_acl(
-  DryRun = TRUE|FALSE,
-  NetworkAclId = "string"
-)
+delete_network_acl(DryRun = NULL, NetworkAclId)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -17,10 +14,18 @@ delete_network_acl(
 \description{
 Deletes the specified network ACL. You can't delete the ACL if it's associated with any subnets. You can't delete the default network ACL.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_network_acl(
+  DryRun = TRUE|FALSE,
+  NetworkAclId = "string"
+)
+}
+}
+
 \examples{
 # This example deletes the specified network ACL.
-delete_network_acl(
+\donttest{delete_network_acl(
   NetworkAclId = "acl-5fb85d36"
-)
+)}
 
 }

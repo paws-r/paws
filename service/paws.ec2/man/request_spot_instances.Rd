@@ -4,7 +4,62 @@
 \alias{request_spot_instances}
 \title{Creates a Spot Instance request}
 \usage{
-request_spot_instances(
+request_spot_instances(AvailabilityZoneGroup = NULL,
+  BlockDurationMinutes = NULL, ClientToken = NULL, DryRun = NULL,
+  InstanceCount = NULL, LaunchGroup = NULL,
+  LaunchSpecification = NULL, SpotPrice = NULL, Type = NULL,
+  ValidFrom = NULL, ValidUntil = NULL,
+  InstanceInterruptionBehavior = NULL)
+}
+\arguments{
+\item{AvailabilityZoneGroup}{The user-specified name for a logical grouping of requests.
+
+When you specify an Availability Zone group in a Spot Instance request, all Spot Instances in the request are launched in the same Availability Zone. Instance proximity is maintained with this parameter, but the choice of Availability Zone is not. The group applies only to requests for Spot Instances of the same instance type. Any additional Spot Instance requests that are specified with the same Availability Zone group name are launched in that same Availability Zone, as long as at least one instance from the group is still active.
+
+If there is no active instance running in the Availability Zone group that you specify for a new Spot Instance request (all instances are terminated, the request is expired, or the maximum price you specified falls below current Spot price), then Amazon EC2 launches the instance in any Availability Zone where the constraint can be met. Consequently, the subsequent set of Spot Instances could be placed in a different zone from the original request, even if you specified the same Availability Zone group.
+
+Default: Instances are launched in any available Availability Zone.}
+
+\item{BlockDurationMinutes}{The required duration for the Spot Instances (also known as Spot blocks), in minutes. This value must be a multiple of 60 (60, 120, 180, 240, 300, or 360).
+
+The duration period starts as soon as your Spot Instance receives its instance ID. At the end of the duration period, Amazon EC2 marks the Spot Instance for termination and provides a Spot Instance termination notice, which gives the instance a two-minute warning before it terminates.
+
+You can't specify an Availability Zone group or a launch group if you specify a duration.}
+
+\item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html}{How to Ensure Idempotency} in the \emph{Amazon EC2 User Guide for Linux Instances}.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{InstanceCount}{The maximum number of Spot Instances to launch.
+
+Default: 1}
+
+\item{LaunchGroup}{The instance launch group. Launch groups are Spot Instances that launch together and terminate together.
+
+Default: Instances are launched and terminated individually}
+
+\item{LaunchSpecification}{The launch specification.}
+
+\item{SpotPrice}{The maximum price per hour that you are willing to pay for a Spot Instance. The default is the On-Demand price.}
+
+\item{Type}{The Spot Instance request type.
+
+Default: \code{one-time}}
+
+\item{ValidFrom}{The start date of the request. If this is a one-time request, the request becomes active at this date and time and remains active until all instances launch, the request expires, or the request is canceled. If the request is persistent, the request becomes active at this date and time and remains active until it expires or is canceled.}
+
+\item{ValidUntil}{The end date of the request. If this is a one-time request, the request remains active until all instances launch, the request is canceled, or this date is reached. If the request is persistent, it remains active until it is canceled or this date is reached. The default end date is 7 days from the current date.}
+
+\item{InstanceInterruptionBehavior}{The behavior when a Spot Instance is interrupted. The default is \code{terminate}.}
+}
+\description{
+Creates a Spot Instance request.
+}
+\details{
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html}{Spot Instance Requests} in the \emph{Amazon EC2 User Guide for Linux Instances}.
+}
+\section{Accepted Parameters}{
+\preformatted{request_spot_instances(
   AvailabilityZoneGroup = "string",
   BlockDurationMinutes = 123,
   ClientToken = "string",
@@ -41,7 +96,7 @@ request_spot_instances(
       Name = "string"
     ),
     ImageId = "string",
-    InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.12xlarge"|"r5a.24xlarge"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.18xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.18xlarge"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.12xlarge"|"m5.24xlarge"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.12xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.12xlarge"|"m5d.24xlarge"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge",
+    InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.12xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.12xlarge"|"r5a.24xlarge"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.12xlarge"|"r5d.24xlarge"|"r5d.metal"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.18xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.18xlarge"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.12xlarge"|"m5.24xlarge"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.12xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.12xlarge"|"m5d.24xlarge"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge",
     KernelId = "string",
     KeyName = "string",
     Monitoring = list(
@@ -90,53 +145,8 @@ request_spot_instances(
   InstanceInterruptionBehavior = "hibernate"|"stop"|"terminate"
 )
 }
-\arguments{
-\item{AvailabilityZoneGroup}{The user-specified name for a logical grouping of requests.
-
-When you specify an Availability Zone group in a Spot Instance request, all Spot Instances in the request are launched in the same Availability Zone. Instance proximity is maintained with this parameter, but the choice of Availability Zone is not. The group applies only to requests for Spot Instances of the same instance type. Any additional Spot Instance requests that are specified with the same Availability Zone group name are launched in that same Availability Zone, as long as at least one instance from the group is still active.
-
-If there is no active instance running in the Availability Zone group that you specify for a new Spot Instance request (all instances are terminated, the request is expired, or the maximum price you specified falls below current Spot price), then Amazon EC2 launches the instance in any Availability Zone where the constraint can be met. Consequently, the subsequent set of Spot Instances could be placed in a different zone from the original request, even if you specified the same Availability Zone group.
-
-Default: Instances are launched in any available Availability Zone.}
-
-\item{BlockDurationMinutes}{The required duration for the Spot Instances (also known as Spot blocks), in minutes. This value must be a multiple of 60 (60, 120, 180, 240, 300, or 360).
-
-The duration period starts as soon as your Spot Instance receives its instance ID. At the end of the duration period, Amazon EC2 marks the Spot Instance for termination and provides a Spot Instance termination notice, which gives the instance a two-minute warning before it terminates.
-
-You can't specify an Availability Zone group or a launch group if you specify a duration.}
-
-\item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html}{How to Ensure Idempotency} in the \emph{Amazon EC2 User Guide for Linux Instances}.}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
-
-\item{InstanceCount}{The maximum number of Spot Instances to launch.
-
-Default: 1}
-
-\item{LaunchGroup}{The instance launch group. Launch groups are Spot Instances that launch together and terminate together.
-
-Default: Instances are launched and terminated individually}
-
-\item{LaunchSpecification}{The launch specification.}
-
-\item{SpotPrice}{The maximum price per hour that you are willing to pay for a Spot Instance. The default is the On-Demand price.}
-
-\item{Type}{The Spot Instance request type.
-
-Default: \code{one-time}}
-
-\item{ValidFrom}{The start date of the request. If this is a one-time request, the request becomes active at this date and time and remains active until all instances launch, the request expires, or the request is canceled. If the request is persistent, the request becomes active at this date and time and remains active until it expires or is canceled.}
-
-\item{ValidUntil}{The end date of the request. If this is a one-time request, the request remains active until all instances launch, the request is canceled, or this date is reached. If the request is persistent, it remains active until it is canceled or this date is reached. The default end date is 7 days from the current date.}
-
-\item{InstanceInterruptionBehavior}{The behavior when a Spot Instance is interrupted. The default is \code{terminate}.}
 }
-\description{
-Creates a Spot Instance request.
-}
-\details{
-For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html}{Spot Instance Requests} in the \emph{Amazon EC2 User Guide for Linux Instances}.
-}
+
 \examples{
 # This example creates a one-time Spot Instance request for five instances
 # in the specified Availability Zone. If your account supports EC2-VPC
@@ -144,7 +154,7 @@ For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGui
 # specified Availability Zone. If your account supports EC2-Classic,
 # Amazon EC2 launches the instances in EC2-Classic in the specified
 # Availability Zone.
-request_spot_instances(
+\donttest{request_spot_instances(
   InstanceCount = 5L,
   LaunchSpecification = list(
     IamInstanceProfile = list(
@@ -162,13 +172,13 @@ request_spot_instances(
   ),
   SpotPrice = "0.03",
   Type = "one-time"
-)
+)}
 
 # This example command creates a one-time Spot Instance request for five
 # instances in the specified subnet. Amazon EC2 launches the instances in
 # the specified subnet. If the VPC is a nondefault VPC, the instances do
 # not receive a public IP address by default.
-request_spot_instances(
+\donttest{request_spot_instances(
   InstanceCount = 5L,
   LaunchSpecification = list(
     IamInstanceProfile = list(
@@ -183,6 +193,6 @@ request_spot_instances(
   ),
   SpotPrice = "0.050",
   Type = "one-time"
-)
+)}
 
 }

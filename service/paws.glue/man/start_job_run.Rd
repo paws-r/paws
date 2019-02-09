@@ -4,19 +4,9 @@
 \alias{start_job_run}
 \title{Starts a job run using a job definition}
 \usage{
-start_job_run(
-  JobName = "string",
-  JobRunId = "string",
-  Arguments = list(
-    "string"
-  ),
-  AllocatedCapacity = 123,
-  Timeout = 123,
-  NotificationProperty = list(
-    NotifyDelayAfter = 123
-  ),
-  SecurityConfiguration = "string"
-)
+start_job_run(JobName, JobRunId = NULL, Arguments = NULL,
+  AllocatedCapacity = NULL, Timeout = NULL, MaxCapacity = NULL,
+  NotificationProperty = NULL, SecurityConfiguration = NULL)
 }
 \arguments{
 \item{JobName}{[required] The name of the job definition to use.}
@@ -31,9 +21,13 @@ For information about how to specify and consume your own Job arguments, see the
 
 For information about the key-value pairs that AWS Glue consumes to set up your job, see the \href{http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html}{Special Parameters Used by AWS Glue} topic in the developer guide.}
 
-\item{AllocatedCapacity}{The number of AWS Glue data processing units (DPUs) to allocate to this JobRun. From 2 to 100 DPUs can be allocated; the default is 10. A DPU is a relative measure of processing power that consists of 4 vCPUs of compute capacity and 16 GB of memory. For more information, see the \href{https://aws.amazon.com/glue/pricing/}{AWS Glue pricing page}.}
+\item{AllocatedCapacity}{This field is deprecated, use \code{MaxCapacity} instead.
+
+The number of AWS Glue data processing units (DPUs) to allocate to this JobRun. From 2 to 100 DPUs can be allocated; the default is 10. A DPU is a relative measure of processing power that consists of 4 vCPUs of compute capacity and 16 GB of memory. For more information, see the \href{https://aws.amazon.com/glue/pricing/}{AWS Glue pricing page}.}
 
 \item{Timeout}{The JobRun timeout in minutes. This is the maximum time that a job run can consume resources before it is terminated and enters \code{TIMEOUT} status. The default is 2,880 minutes (48 hours). This overrides the timeout value set in the parent job.}
+
+\item{MaxCapacity}{AWS Glue supports running jobs on a \code{JobCommand.Name}="pythonshell" with allocated processing as low as 0.0625 DPU, which can be specified using \code{MaxCapacity}. Glue ETL jobs running in any other way cannot have fractional DPU allocations.}
 
 \item{NotificationProperty}{Specifies configuration properties of a job run notification.}
 
@@ -42,6 +36,21 @@ For information about the key-value pairs that AWS Glue consumes to set up your 
 \description{
 Starts a job run using a job definition.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_job_run(
+  JobName = "string",
+  JobRunId = "string",
+  Arguments = list(
+    "string"
+  ),
+  AllocatedCapacity = 123,
+  Timeout = 123,
+  MaxCapacity = 123.0,
+  NotificationProperty = list(
+    NotifyDelayAfter = 123
+  ),
+  SecurityConfiguration = "string"
+)
 }
+}
+

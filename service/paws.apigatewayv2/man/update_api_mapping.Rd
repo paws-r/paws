@@ -4,13 +4,8 @@
 \alias{update_api_mapping}
 \title{The API mapping}
 \usage{
-update_api_mapping(
-  ApiId = "string",
-  ApiMappingId = "string",
-  ApiMappingKey = "string",
-  DomainName = "string",
-  Stage = "string"
-)
+update_api_mapping(ApiId, ApiMappingId, ApiMappingKey = NULL, DomainName,
+  Stage = NULL)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -26,6 +21,14 @@ update_api_mapping(
 \description{
 The API mapping.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_api_mapping(
+  ApiId = "string",
+  ApiMappingId = "string",
+  ApiMappingKey = "string",
+  DomainName = "string",
+  Stage = "string"
+)
 }
+}
+

@@ -9,6 +9,3 @@ list_domain_names()
 \description{
 Returns the name of all Elasticsearch domains owned by the current user's account.
 }
-\examples{
-
-}

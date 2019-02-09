@@ -4,13 +4,8 @@
 \alias{describe_fleet_utilization}
 \title{Retrieves utilization statistics for one or more fleets}
 \usage{
-describe_fleet_utilization(
-  FleetIds = list(
-    "string"
-  ),
-  Limit = 123,
-  NextToken = "string"
-)
+describe_fleet_utilization(FleetIds = NULL, Limit = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{FleetIds}{Unique identifier for a fleet(s) to retrieve utilization data for. To request utilization data for all fleets, leave this parameter empty.}
@@ -24,8 +19,6 @@ Retrieves utilization statistics for one or more fleets. You can request utiliza
 }
 \details{
 Some API actions may limit the number of fleet IDs allowed in one request. If a request exceeds this limit, the request fails and the error message includes the maximum allowed.
-
-Fleet-related operations include:
 \itemize{
 \item CreateFleet
 \item ListFleets
@@ -48,6 +41,14 @@ Fleet-related operations include:
 \item StopFleetActions
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_fleet_utilization(
+  FleetIds = list(
+    "string"
+  ),
+  Limit = 123,
+  NextToken = "string"
+)
 }
+}
+

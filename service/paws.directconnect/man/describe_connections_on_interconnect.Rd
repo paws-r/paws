@@ -4,9 +4,7 @@
 \alias{describe_connections_on_interconnect}
 \title{Deprecated}
 \usage{
-describe_connections_on_interconnect(
-  interconnectId = "string"
-)
+describe_connections_on_interconnect(interconnectId)
 }
 \arguments{
 \item{interconnectId}{[required] The ID of the interconnect.}
@@ -19,6 +17,10 @@ Lists the connections that have been provisioned on the specified interconnect.
 
 Intended for use by AWS Direct Connect partners only.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_connections_on_interconnect(
+  interconnectId = "string"
+)
 }
+}
+

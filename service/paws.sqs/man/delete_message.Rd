@@ -4,10 +4,7 @@
 \alias{delete_message}
 \title{Deletes the specified message from the specified queue}
 \usage{
-delete_message(
-  QueueUrl = "string",
-  ReceiptHandle = "string"
-)
+delete_message(QueueUrl, ReceiptHandle)
 }
 \arguments{
 \item{QueueUrl}{[required] The URL of the Amazon SQS queue from which messages are deleted.
@@ -24,6 +21,11 @@ The \code{ReceiptHandle} is associated with a \emph{specific instance} of receiv
 
 For standard queues, it is possible to receive a message even after you delete it. This might happen on rare occasions if one of the servers which stores a copy of the message is unavailable when you send the request to delete the message. The copy remains on the server and might be returned to you during a subsequent receive request. You should ensure that your application is idempotent, so that receiving a message more than once does not cause issues.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_message(
+  QueueUrl = "string",
+  ReceiptHandle = "string"
+)
 }
+}
+

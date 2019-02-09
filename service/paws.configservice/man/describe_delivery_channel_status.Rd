@@ -4,11 +4,7 @@
 \alias{describe_delivery_channel_status}
 \title{Returns the current status of the specified delivery channel}
 \usage{
-describe_delivery_channel_status(
-  DeliveryChannelNames = list(
-    "string"
-  )
-)
+describe_delivery_channel_status(DeliveryChannelNames = NULL)
 }
 \arguments{
 \item{DeliveryChannelNames}{A list of delivery channel names.}
@@ -19,6 +15,12 @@ Returns the current status of the specified delivery channel. If a delivery chan
 \details{
 Currently, you can specify only one delivery channel per region in your account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_delivery_channel_status(
+  DeliveryChannelNames = list(
+    "string"
+  )
+)
 }
+}
+

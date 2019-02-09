@@ -4,18 +4,7 @@
 \alias{describe_endpoints}
 \title{Returns information about the endpoints for your account in the current region}
 \usage{
-describe_endpoints(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_endpoints(Filters = NULL, MaxRecords = NULL, Marker = NULL)
 }
 \arguments{
 \item{Filters}{Filters applied to the describe action.
@@ -33,10 +22,26 @@ Constraints: Minimum 20, maximum 100.}
 \description{
 Returns information about the endpoints for your account in the current region.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_endpoints(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
+}
+}
+
 \examples{
 # Returns information about the endpoints for your account in the current
 # region.
-describe_endpoints(
+\donttest{describe_endpoints(
   Filters = list(
     list(
       Name = "string",
@@ -48,6 +53,6 @@ describe_endpoints(
   ),
   Marker = "",
   MaxRecords = 123L
-)
+)}
 
 }

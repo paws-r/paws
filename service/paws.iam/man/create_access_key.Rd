@@ -4,9 +4,7 @@
 \alias{create_access_key}
 \title{Creates a new AWS secret access key and corresponding AWS access key ID for the specified user}
 \usage{
-create_access_key(
-  UserName = "string"
-)
+create_access_key(UserName = NULL)
 }
 \arguments{
 \item{UserName}{The name of the IAM user that the new key will belong to.
@@ -23,11 +21,18 @@ For information about limits on the number of keys you can create, see \href{htt
 
 To ensure the security of your AWS account, the secret access key is accessible only during key and user creation. You must save the key (for example, in a text file) if you want to be able to access it again. If a secret key is lost, you can delete the access keys for the associated user and then create new keys.
 }
+\section{Accepted Parameters}{
+\preformatted{create_access_key(
+  UserName = "string"
+)
+}
+}
+
 \examples{
 # The following command creates an access key (access key ID and secret
 # access key) for the IAM user named Bob.
-create_access_key(
+\donttest{create_access_key(
   UserName = "Bob"
-)
+)}
 
 }

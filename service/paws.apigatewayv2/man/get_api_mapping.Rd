@@ -4,11 +4,7 @@
 \alias{get_api_mapping}
 \title{The API mapping}
 \usage{
-get_api_mapping(
-  ApiId = "string",
-  ApiMappingId = "string",
-  DomainName = "string"
-)
+get_api_mapping(ApiId, ApiMappingId, DomainName)
 }
 \arguments{
 \item{ApiId}{[required] The identifier of the API.}
@@ -20,6 +16,12 @@ get_api_mapping(
 \description{
 The API mapping.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_api_mapping(
+  ApiId = "string",
+  ApiMappingId = "string",
+  DomainName = "string"
+)
 }
+}
+

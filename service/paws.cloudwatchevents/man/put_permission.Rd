@@ -2,18 +2,9 @@
 % Please edit documentation in R/paws.cloudwatchevents_operations.R
 \name{put_permission}
 \alias{put_permission}
-\title{Running \code{PutPermission} permits the specified AWS account or AWS organization to put events to your account's default \emph{event bus}}
+\title{Running PutPermission permits the specified AWS account or AWS organization to put events to your account's default \emph{event bus}}
 \usage{
-put_permission(
-  Action = "string",
-  Principal = "string",
-  StatementId = "string",
-  Condition = list(
-    Type = "string",
-    Key = "string",
-    Value = "string"
-  )
-)
+put_permission(Action, Principal, StatementId, Condition = NULL)
 }
 \arguments{
 \item{Action}{[required] The action that you are enabling the other account to perform. Currently, this must be \code{events:PutEvents}.}
@@ -42,6 +33,17 @@ If you grant permissions using an organization, then accounts in that organizati
 
 The permission policy on the default event bus cannot exceed 10 KB in size.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_permission(
+  Action = "string",
+  Principal = "string",
+  StatementId = "string",
+  Condition = list(
+    Type = "string",
+    Key = "string",
+    Value = "string"
+  )
+)
 }
+}
+

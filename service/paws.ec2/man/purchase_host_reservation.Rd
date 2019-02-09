@@ -4,18 +4,11 @@
 \alias{purchase_host_reservation}
 \title{Purchase a reservation with configurations that match those of your Dedicated Host}
 \usage{
-purchase_host_reservation(
-  ClientToken = "string",
-  CurrencyCode = "USD",
-  HostIdSet = list(
-    "string"
-  ),
-  LimitPrice = "string",
-  OfferingId = "string"
-)
+purchase_host_reservation(ClientToken = NULL, CurrencyCode = NULL,
+  HostIdSet, LimitPrice = NULL, OfferingId)
 }
 \arguments{
-\item{ClientToken}{Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html}{How to Ensure Idempotency} in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+\item{ClientToken}{Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html}{How to Ensure Idempotency} in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
 \item{CurrencyCode}{The currency in which the \code{totalUpfrontPrice}, \code{LimitPrice}, and \code{totalHourlyPrice} amounts are specified. At this time, the only supported currency is \code{USD}.}
 
@@ -28,6 +21,16 @@ purchase_host_reservation(
 \description{
 Purchase a reservation with configurations that match those of your Dedicated Host. You must have active Dedicated Hosts in your account before you purchase a reservation. This action results in the specified reservation being purchased and charged to your account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{purchase_host_reservation(
+  ClientToken = "string",
+  CurrencyCode = "USD",
+  HostIdSet = list(
+    "string"
+  ),
+  LimitPrice = "string",
+  OfferingId = "string"
+)
 }
+}
+

@@ -4,11 +4,7 @@
 \alias{describe_schedule}
 \title{Get a channel schedule}
 \usage{
-describe_schedule(
-  ChannelId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_schedule(ChannelId, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ChannelId}{[required] Id of the channel whose schedule is being updated.}
@@ -20,6 +16,12 @@ describe_schedule(
 \description{
 Get a channel schedule
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_schedule(
+  ChannelId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

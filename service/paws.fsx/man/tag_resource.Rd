@@ -4,15 +4,7 @@
 \alias{tag_resource}
 \title{Tags an Amazon FSx resource}
 \usage{
-tag_resource(
-  ResourceARN = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+tag_resource(ResourceARN, Tags)
 }
 \arguments{
 \item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the Amazon FSx resource that you want to tag.}
@@ -22,9 +14,22 @@ tag_resource(
 \description{
 Tags an Amazon FSx resource.
 }
+\section{Accepted Parameters}{
+\preformatted{tag_resource(
+  ResourceARN = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # This operation tags an Amazon FSx resource.
-tag_resource(
+\donttest{tag_resource(
   ResourceARN = "arn:aws:fsx:us-east-1:012345678912:file-system/fs-0498eed5fe91001ec",
   Tags = list(
     list(
@@ -32,6 +37,6 @@ tag_resource(
       Value = "MyFileSystem"
     )
   )
-)
+)}
 
 }

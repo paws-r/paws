@@ -4,10 +4,7 @@
 \alias{cancel_update_stack}
 \title{Cancels an update on the specified stack}
 \usage{
-cancel_update_stack(
-  StackName = "string",
-  ClientRequestToken = "string"
-)
+cancel_update_stack(StackName, ClientRequestToken = NULL)
 }
 \arguments{
 \item{StackName}{[required] The name or the unique stack ID that is associated with the stack.}
@@ -20,6 +17,11 @@ Cancels an update on the specified stack. If the call completes successfully, th
 \details{
 You can cancel only stacks that are in the UPDATE\_IN\_PROGRESS state.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{cancel_update_stack(
+  StackName = "string",
+  ClientRequestToken = "string"
+)
 }
+}
+

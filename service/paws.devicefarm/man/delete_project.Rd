@@ -4,9 +4,7 @@
 \alias{delete_project}
 \title{Deletes an AWS Device Farm project, given the project ARN}
 \usage{
-delete_project(
-  arn = "string"
-)
+delete_project(arn)
 }
 \arguments{
 \item{arn}{[required] Represents the Amazon Resource Name (ARN) of the Device Farm project you wish to delete.}
@@ -17,10 +15,17 @@ Deletes an AWS Device Farm project, given the project ARN.
 \details{
 \strong{Note} Deleting this resource does not stop an in-progress run.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_project(
+  arn = "string"
+)
+}
+}
+
 \examples{
 # The following example deletes a specific project.
-delete_project(
+\donttest{delete_project(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
-)
+)}
 
 }

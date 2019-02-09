@@ -4,7 +4,23 @@
 \alias{search_skill_groups}
 \title{Searches skill groups and lists the ones that meet a set of filter and sort criteria}
 \usage{
-search_skill_groups(
+search_skill_groups(NextToken = NULL, MaxResults = NULL,
+  Filters = NULL, SortCriteria = NULL)
+}
+\arguments{
+\item{NextToken}{An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by \code{MaxResults}. Required.}
+
+\item{MaxResults}{The maximum number of results to include in the response. If more results exist than the specified \code{MaxResults} value, a token is included in the response so that the remaining results can be retrieved.}
+
+\item{Filters}{The filters to use to list a specified set of skill groups. The supported filter key is SkillGroupName.}
+
+\item{SortCriteria}{The sort order to use in listing the specified set of skill groups. The supported sort key is SkillGroupName.}
+}
+\description{
+Searches skill groups and lists the ones that meet a set of filter and sort criteria.
+}
+\section{Accepted Parameters}{
+\preformatted{search_skill_groups(
   NextToken = "string",
   MaxResults = 123,
   Filters = list(
@@ -23,18 +39,5 @@ search_skill_groups(
   )
 )
 }
-\arguments{
-\item{NextToken}{An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by \code{MaxResults}. Required.}
-
-\item{MaxResults}{The maximum number of results to include in the response. If more results exist than the specified \code{MaxResults} value, a token is included in the response so that the remaining results can be retrieved.}
-
-\item{Filters}{The filters to use to list a specified set of skill groups. The supported filter key is SkillGroupName.}
-
-\item{SortCriteria}{The sort order to use in listing the specified set of skill groups. The supported sort key is SkillGroupName.}
 }
-\description{
-Searches skill groups and lists the ones that meet a set of filter and sort criteria.
-}
-\examples{
 
-}

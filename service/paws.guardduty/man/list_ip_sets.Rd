@@ -4,11 +4,7 @@
 \alias{list_ip_sets}
 \title{Lists the IPSets of the GuardDuty service specified by the detector ID}
 \usage{
-list_ip_sets(
-  DetectorId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_ip_sets(DetectorId, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector that you want to retrieve.}
@@ -20,6 +16,12 @@ list_ip_sets(
 \description{
 Lists the IPSets of the GuardDuty service specified by the detector ID.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_ip_sets(
+  DetectorId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

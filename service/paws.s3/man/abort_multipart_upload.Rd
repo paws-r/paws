@@ -4,12 +4,7 @@
 \alias{abort_multipart_upload}
 \title{Aborts a multipart upload}
 \usage{
-abort_multipart_upload(
-  Bucket = "string",
-  Key = "string",
-  UploadId = "string",
-  RequestPayer = "requester"
-)
+abort_multipart_upload(Bucket, Key, UploadId, RequestPayer = NULL)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -26,12 +21,22 @@ Aborts a multipart upload.
 \details{
 To verify that all parts have been removed, so you don't get charged for the part storage, you should call the List Parts operation and ensure the parts list is empty.
 }
+\section{Accepted Parameters}{
+\preformatted{abort_multipart_upload(
+  Bucket = "string",
+  Key = "string",
+  UploadId = "string",
+  RequestPayer = "requester"
+)
+}
+}
+
 \examples{
 # The following example aborts a multipart upload.
-abort_multipart_upload(
+\donttest{abort_multipart_upload(
   Bucket = "examplebucket",
   Key = "bigobject",
   UploadId = "xadcOB_7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOmrEQHDsP3WA60CEg--"
-)
+)}
 
 }

@@ -4,12 +4,8 @@
 \alias{list_multipart_uploads}
 \title{This operation lists in-progress multipart uploads for the specified vault}
 \usage{
-list_multipart_uploads(
-  accountId = "string",
-  vaultName = "string",
-  marker = "string",
-  limit = "string"
-)
+list_multipart_uploads(accountId, vaultName, marker = NULL,
+  limit = NULL)
 }
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
@@ -32,12 +28,22 @@ An AWS account has full permission to perform all operations (actions). However,
 
 For conceptual information and the underlying REST API, see \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-archives.html}{Working with Archives in Amazon Glacier} and \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-list-uploads.html}{List Multipart Uploads} in the \emph{Amazon Glacier Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{list_multipart_uploads(
+  accountId = "string",
+  vaultName = "string",
+  marker = "string",
+  limit = "string"
+)
+}
+}
+
 \examples{
 # The example lists all the in-progress multipart uploads for the vault
 # named examplevault.
-list_multipart_uploads(
+\donttest{list_multipart_uploads(
   accountId = "-",
   vaultName = "examplevault"
-)
+)}
 
 }

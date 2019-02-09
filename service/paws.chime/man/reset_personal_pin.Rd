@@ -4,10 +4,7 @@
 \alias{reset_personal_pin}
 \title{Resets the personal meeting PIN for the specified user on an Amazon Chime account}
 \usage{
-reset_personal_pin(
-  AccountId = "string",
-  UserId = "string"
-)
+reset_personal_pin(AccountId, UserId)
 }
 \arguments{
 \item{AccountId}{[required] The Amazon Chime account ID.}
@@ -17,6 +14,11 @@ reset_personal_pin(
 \description{
 Resets the personal meeting PIN for the specified user on an Amazon Chime account. Returns the User object with the updated personal meeting PIN.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{reset_personal_pin(
+  AccountId = "string",
+  UserId = "string"
+)
 }
+}
+

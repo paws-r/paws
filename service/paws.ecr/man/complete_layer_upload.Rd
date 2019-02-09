@@ -4,14 +4,8 @@
 \alias{complete_layer_upload}
 \title{Informs Amazon ECR that the image layer upload has completed for a specified registry, repository name, and upload ID}
 \usage{
-complete_layer_upload(
-  registryId = "string",
-  repositoryName = "string",
-  uploadId = "string",
-  layerDigests = list(
-    "string"
-  )
-)
+complete_layer_upload(registryId = NULL, repositoryName, uploadId,
+  layerDigests)
 }
 \arguments{
 \item{registryId}{The AWS account ID associated with the registry to which to upload layers. If you do not specify a registry, the default registry is assumed.}
@@ -28,6 +22,15 @@ Informs Amazon ECR that the image layer upload has completed for a specified reg
 \details{
 This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers for pulling and pushing images. In most cases, you should use the \code{docker} CLI to pull, tag, and push images.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{complete_layer_upload(
+  registryId = "string",
+  repositoryName = "string",
+  uploadId = "string",
+  layerDigests = list(
+    "string"
+  )
+)
 }
+}
+

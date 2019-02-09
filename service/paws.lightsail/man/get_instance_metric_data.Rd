@@ -4,17 +4,8 @@
 \alias{get_instance_metric_data}
 \title{Returns the data points for the specified Amazon Lightsail instance metric, given an instance name}
 \usage{
-get_instance_metric_data(
-  instanceName = "string",
-  metricName = "CPUUtilization"|"NetworkIn"|"NetworkOut"|"StatusCheckFailed"|"StatusCheckFailed_Instance"|"StatusCheckFailed_System",
-  period = 123,
-  startTime = as.POSIXct("2015-01-01"),
-  endTime = as.POSIXct("2015-01-01"),
-  unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None",
-  statistics = list(
-    "Minimum"|"Maximum"|"Sum"|"Average"|"SampleCount"
-  )
-)
+get_instance_metric_data(instanceName, metricName, period, startTime,
+  endTime, unit, statistics)
 }
 \arguments{
 \item{instanceName}{[required] The name of the instance for which you want to get metrics data.}
@@ -34,6 +25,18 @@ get_instance_metric_data(
 \description{
 Returns the data points for the specified Amazon Lightsail instance metric, given an instance name.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_instance_metric_data(
+  instanceName = "string",
+  metricName = "CPUUtilization"|"NetworkIn"|"NetworkOut"|"StatusCheckFailed"|"StatusCheckFailed_Instance"|"StatusCheckFailed_System",
+  period = 123,
+  startTime = as.POSIXct("2015-01-01"),
+  endTime = as.POSIXct("2015-01-01"),
+  unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None",
+  statistics = list(
+    "Minimum"|"Maximum"|"Sum"|"Average"|"SampleCount"
+  )
+)
 }
+}
+

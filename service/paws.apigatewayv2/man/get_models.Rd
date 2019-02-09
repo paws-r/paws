@@ -4,11 +4,7 @@
 \alias{get_models}
 \title{Gets the Models for an API}
 \usage{
-get_models(
-  ApiId = "string",
-  MaxResults = "string",
-  NextToken = "string"
-)
+get_models(ApiId, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -20,6 +16,12 @@ get_models(
 \description{
 Gets the Models for an API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_models(
+  ApiId = "string",
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
+}
+

@@ -4,25 +4,9 @@
 \alias{describe_launch_templates}
 \title{Describes one or more launch templates}
 \usage{
-describe_launch_templates(
-  DryRun = TRUE|FALSE,
-  LaunchTemplateIds = list(
-    "string"
-  ),
-  LaunchTemplateNames = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
+describe_launch_templates(DryRun = NULL, LaunchTemplateIds = NULL,
+  LaunchTemplateNames = NULL, Filters = NULL, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -46,12 +30,35 @@ describe_launch_templates(
 \description{
 Describes one or more launch templates.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_launch_templates(
+  DryRun = TRUE|FALSE,
+  LaunchTemplateIds = list(
+    "string"
+  ),
+  LaunchTemplateNames = list(
+    "string"
+  ),
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
+}
+}
+
 \examples{
 # This example describes the specified launch template.
-describe_launch_templates(
+\donttest{describe_launch_templates(
   LaunchTemplateIds = list(
     "lt-01238c059e3466abc"
   )
-)
+)}
 
 }

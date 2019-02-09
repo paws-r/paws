@@ -4,10 +4,7 @@
 \alias{update_termination_protection}
 \title{Updates termination protection for the specified stack}
 \usage{
-update_termination_protection(
-  EnableTerminationProtection = TRUE|FALSE,
-  StackName = "string"
-)
+update_termination_protection(EnableTerminationProtection, StackName)
 }
 \arguments{
 \item{EnableTerminationProtection}{[required] Whether to enable termination protection on the specified stack.}
@@ -20,6 +17,11 @@ Updates termination protection for the specified stack. If a user attempts to de
 \details{
 For \href{AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html}{nested stacks}, termination protection is set on the root stack and cannot be changed directly on the nested stack.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_termination_protection(
+  EnableTerminationProtection = TRUE|FALSE,
+  StackName = "string"
+)
 }
+}
+

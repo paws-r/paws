@@ -4,19 +4,11 @@
 \alias{update_profile}
 \title{Updates an existing room profile by room profile ARN}
 \usage{
-update_profile(
-  ProfileArn = "string",
-  ProfileName = "string",
-  IsDefault = TRUE|FALSE,
-  Timezone = "string",
-  Address = "string",
-  DistanceUnit = "METRIC"|"IMPERIAL",
-  TemperatureUnit = "FAHRENHEIT"|"CELSIUS",
-  WakeWord = "ALEXA"|"AMAZON"|"ECHO"|"COMPUTER",
-  SetupModeDisabled = TRUE|FALSE,
-  MaxVolumeLimit = 123,
-  PSTNEnabled = TRUE|FALSE
-)
+update_profile(ProfileArn = NULL, ProfileName = NULL,
+  IsDefault = NULL, Timezone = NULL, Address = NULL,
+  DistanceUnit = NULL, TemperatureUnit = NULL, WakeWord = NULL,
+  SetupModeDisabled = NULL, MaxVolumeLimit = NULL,
+  PSTNEnabled = NULL)
 }
 \arguments{
 \item{ProfileArn}{The ARN of the room profile to update. Required.}
@@ -44,6 +36,20 @@ update_profile(
 \description{
 Updates an existing room profile by room profile ARN.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_profile(
+  ProfileArn = "string",
+  ProfileName = "string",
+  IsDefault = TRUE|FALSE,
+  Timezone = "string",
+  Address = "string",
+  DistanceUnit = "METRIC"|"IMPERIAL",
+  TemperatureUnit = "FAHRENHEIT"|"CELSIUS",
+  WakeWord = "ALEXA"|"AMAZON"|"ECHO"|"COMPUTER",
+  SetupModeDisabled = TRUE|FALSE,
+  MaxVolumeLimit = 123,
+  PSTNEnabled = TRUE|FALSE
+)
 }
+}
+

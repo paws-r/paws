@@ -4,11 +4,7 @@
 \alias{update_primary_email_address}
 \title{Updates the primary email for an entity}
 \usage{
-update_primary_email_address(
-  OrganizationId = "string",
-  EntityId = "string",
-  Email = "string"
-)
+update_primary_email_address(OrganizationId, EntityId, Email)
 }
 \arguments{
 \item{OrganizationId}{[required] The organization that contains the entity to update.}
@@ -20,6 +16,12 @@ update_primary_email_address(
 \description{
 Updates the primary email for an entity. The current email is moved into the list of aliases (or swapped between an existing alias and the current primary email) and the email provided in the input is promoted as the primary.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_primary_email_address(
+  OrganizationId = "string",
+  EntityId = "string",
+  Email = "string"
+)
 }
+}
+

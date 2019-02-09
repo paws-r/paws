@@ -4,20 +4,9 @@
 \alias{update_user}
 \title{Updates the specified attributes of the specified user, and grants or revokes administrative privileges to the Amazon WorkDocs site}
 \usage{
-update_user(
-  AuthenticationToken = "string",
-  UserId = "string",
-  GivenName = "string",
-  Surname = "string",
-  Type = "USER"|"ADMIN"|"POWERUSER"|"MINIMALUSER"|"WORKSPACESUSER",
-  StorageRule = list(
-    StorageAllocatedInBytes = 123,
-    StorageType = "UNLIMITED"|"QUOTA"
-  ),
-  TimeZoneId = "string",
-  Locale = "en"|"fr"|"ko"|"de"|"es"|"ja"|"ru"|"zh_CN"|"zh_TW"|"pt_BR"|"default",
-  GrantPoweruserPrivileges = "TRUE"|"FALSE"
-)
+update_user(AuthenticationToken = NULL, UserId, GivenName = NULL,
+  Surname = NULL, Type = NULL, StorageRule = NULL,
+  TimeZoneId = NULL, Locale = NULL, GrantPoweruserPrivileges = NULL)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
@@ -41,6 +30,21 @@ update_user(
 \description{
 Updates the specified attributes of the specified user, and grants or revokes administrative privileges to the Amazon WorkDocs site.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_user(
+  AuthenticationToken = "string",
+  UserId = "string",
+  GivenName = "string",
+  Surname = "string",
+  Type = "USER"|"ADMIN"|"POWERUSER"|"MINIMALUSER"|"WORKSPACESUSER",
+  StorageRule = list(
+    StorageAllocatedInBytes = 123,
+    StorageType = "UNLIMITED"|"QUOTA"
+  ),
+  TimeZoneId = "string",
+  Locale = "en"|"fr"|"ko"|"de"|"es"|"ja"|"ru"|"zh_CN"|"zh_TW"|"pt_BR"|"default",
+  GrantPoweruserPrivileges = "TRUE"|"FALSE"
+)
 }
+}
+

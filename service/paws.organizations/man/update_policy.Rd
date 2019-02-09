@@ -4,12 +4,8 @@
 \alias{update_policy}
 \title{Updates an existing policy with a new name, description, or content}
 \usage{
-update_policy(
-  PolicyId = "string",
-  Name = "string",
-  Description = "string",
-  Content = "string"
-)
+update_policy(PolicyId, Name = NULL, Description = NULL,
+  Content = NULL)
 }
 \arguments{
 \item{PolicyId}{[required] The unique identifier (ID) of the policy that you want to update.
@@ -30,22 +26,32 @@ Updates an existing policy with a new name, description, or content. If any para
 \details{
 This operation can be called only from the organization's master account.
 }
+\section{Accepted Parameters}{
+\preformatted{update_policy(
+  PolicyId = "string",
+  Name = "string",
+  Description = "string",
+  Content = "string"
+)
+}
+}
+
 \examples{
 # The following example shows how to rename a policy and give it a new
 # description and new content. The output confirms the new name and
 # description text:/n/n
-update_policy(
+\donttest{update_policy(
   Description = "This description replaces the original.",
   Name = "Renamed-Policy",
   PolicyId = "p-examplepolicyid111"
-)
+)}
 
 # The following example shows how to replace the JSON text of the SCP from
 # the preceding example with a new JSON policy text string that allows S3
 # actions instead of EC2 actions:/n/n
-update_policy(
+\donttest{update_policy(
   Content = "{ \\\\\\"Version\\\\\\": \\\\\\"2012-10-17\\\\\\", \\\\\\"Statement\\\\\\": {\\\\\\"Effect\\\\\\": \\\\\\"Allow\\\\\\", \\\\\\"Action\\\\\\": \\\\\\"s3:*\\\\\\", \\\\\\"Resource\\\\\\": \\\\\\"*\\\\\\" } }",
   PolicyId = "p-examplepolicyid111"
-)
+)}
 
 }

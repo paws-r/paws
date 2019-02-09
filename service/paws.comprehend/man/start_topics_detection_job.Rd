@@ -4,19 +4,9 @@
 \alias{start_topics_detection_job}
 \title{Starts an asynchronous topic detection job}
 \usage{
-start_topics_detection_job(
-  InputDataConfig = list(
-    S3Uri = "string",
-    InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-  ),
-  OutputDataConfig = list(
-    S3Uri = "string"
-  ),
-  DataAccessRoleArn = "string",
-  JobName = "string",
-  NumberOfTopics = 123,
-  ClientRequestToken = "string"
-)
+start_topics_detection_job(InputDataConfig, OutputDataConfig,
+  DataAccessRoleArn, JobName = NULL, NumberOfTopics = NULL,
+  ClientRequestToken = NULL)
 }
 \arguments{
 \item{InputDataConfig}{[required] Specifies the format and location of the input data for the job.}
@@ -34,6 +24,20 @@ start_topics_detection_job(
 \description{
 Starts an asynchronous topic detection job. Use the \code{DescribeTopicDetectionJob} operation to track the status of a job.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_topics_detection_job(
+  InputDataConfig = list(
+    S3Uri = "string",
+    InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
+  ),
+  OutputDataConfig = list(
+    S3Uri = "string"
+  ),
+  DataAccessRoleArn = "string",
+  JobName = "string",
+  NumberOfTopics = 123,
+  ClientRequestToken = "string"
+)
 }
+}
+

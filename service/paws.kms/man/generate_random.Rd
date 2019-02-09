@@ -4,10 +4,7 @@
 \alias{generate_random}
 \title{Returns a random byte string that is cryptographically secure}
 \usage{
-generate_random(
-  NumberOfBytes = 123,
-  CustomKeyStoreId = "string"
-)
+generate_random(NumberOfBytes = NULL, CustomKeyStoreId = NULL)
 }
 \arguments{
 \item{NumberOfBytes}{The length of the byte string.}
@@ -22,10 +19,18 @@ By default, the random byte string is generated in AWS KMS. To generate the byte
 
 For more information about entropy and random number generation, see the \href{https://d0.awsstatic.com/whitepapers/KMS-Cryptographic-Details.pdf}{AWS Key Management Service Cryptographic Details} whitepaper.
 }
+\section{Accepted Parameters}{
+\preformatted{generate_random(
+  NumberOfBytes = 123,
+  CustomKeyStoreId = "string"
+)
+}
+}
+
 \examples{
 # The following example uses AWS KMS to generate 32 bytes of random data.
-generate_random(
+\donttest{generate_random(
   NumberOfBytes = 32L
-)
+)}
 
 }

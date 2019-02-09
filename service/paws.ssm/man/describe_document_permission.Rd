@@ -4,10 +4,7 @@
 \alias{describe_document_permission}
 \title{Describes the permissions for a Systems Manager document}
 \usage{
-describe_document_permission(
-  Name = "string",
-  PermissionType = "Share"
-)
+describe_document_permission(Name, PermissionType)
 }
 \arguments{
 \item{Name}{[required] The name of the document for which you are the owner.}
@@ -17,6 +14,11 @@ describe_document_permission(
 \description{
 Describes the permissions for a Systems Manager document. If you created the document, you are the owner. If a document is shared, it can either be shared privately (by specifying a user's AWS account ID) or publicly (\emph{All}).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_document_permission(
+  Name = "string",
+  PermissionType = "Share"
+)
 }
+}
+

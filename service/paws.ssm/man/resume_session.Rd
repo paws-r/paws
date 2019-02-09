@@ -4,9 +4,7 @@
 \alias{resume_session}
 \title{Reconnects a session to an instance after it has been disconnected}
 \usage{
-resume_session(
-  SessionId = "string"
-)
+resume_session(SessionId)
 }
 \arguments{
 \item{SessionId}{[required] The ID of the disconnected session to resume.}
@@ -17,6 +15,10 @@ Reconnects a session to an instance after it has been disconnected. Connections 
 \details{
 This command is primarily for use by client machines to automatically reconnect during intermittent network issues. It is not intended for any other use.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{resume_session(
+  SessionId = "string"
+)
 }
+}
+

@@ -4,36 +4,41 @@
 \alias{delete_function}
 \title{Deletes a Lambda function}
 \usage{
-delete_function(
-  FunctionName = "string",
-  Qualifier = "string"
-)
+delete_function(FunctionName, Qualifier = NULL)
 }
 \arguments{
-\item{FunctionName}{[required] The name of the Lambda function.
+\item{FunctionName}{[required] The name of the Lambda function or version.
 
 \strong{Name formats}
 \itemize{
-\item \strong{Function name} - \code{MyFunction}.
-\item \strong{Function ARN} - \code{arn:aws:lambda:us-west-2:123456789012:function:MyFunction}.
-\item \strong{Partial ARN} - \code{123456789012:function:MyFunction}.
+\item \strong{Function name} - \code{my-function} (name-only), \code{my-function:1} (with version).
+\item \strong{Function ARN} - \code{arn:aws:lambda:us-west-2:123456789012:function:my-function}.
+\item \strong{Partial ARN} - \code{123456789012:function:my-function}.
 }
 
-The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
+You can append a version number or alias to any of the formats. The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
 
 \item{Qualifier}{Specify a version to delete. You cannot delete a version that is referenced by an alias.}
 }
 \description{
-Deletes a Lambda function. To delete a specific function version, use the \code{Qualifier} parameter. Otherwise, all versions and aliases are deleted. Event source mappings are not deleted.
+Deletes a Lambda function. To delete a specific function version, use the \code{Qualifier} parameter. Otherwise, all versions and aliases are deleted.
 }
 \details{
-This operation requires permission for the \code{lambda:DeleteFunction} action.
+To delete Lambda event source mappings that invoke a function, use DeleteEventSourceMapping. For AWS services and resources that invoke your function directly, delete the trigger in the service where you originally configured it.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_function(
+  FunctionName = "string",
+  Qualifier = "string"
+)
+}
+}
+
 \examples{
 # This operation deletes a Lambda function
-delete_function(
+\donttest{delete_function(
   FunctionName = "myFunction",
   Qualifier = "1"
-)
+)}
 
 }

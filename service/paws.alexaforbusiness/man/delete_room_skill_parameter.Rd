@@ -4,11 +4,7 @@
 \alias{delete_room_skill_parameter}
 \title{Deletes room skill parameter details by room, skill, and parameter key ID}
 \usage{
-delete_room_skill_parameter(
-  RoomArn = "string",
-  SkillId = "string",
-  ParameterKey = "string"
-)
+delete_room_skill_parameter(RoomArn = NULL, SkillId, ParameterKey)
 }
 \arguments{
 \item{RoomArn}{The ARN of the room from which to remove the room skill parameter details.}
@@ -20,6 +16,12 @@ delete_room_skill_parameter(
 \description{
 Deletes room skill parameter details by room, skill, and parameter key ID.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_room_skill_parameter(
+  RoomArn = "string",
+  SkillId = "string",
+  ParameterKey = "string"
+)
 }
+}
+

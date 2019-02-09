@@ -4,9 +4,7 @@
 \alias{delete_schema}
 \title{Deletes a given schema}
 \usage{
-delete_schema(
-  SchemaArn = "string"
-)
+delete_schema(SchemaArn)
 }
 \arguments{
 \item{SchemaArn}{[required] The Amazon Resource Name (ARN) of the development schema. For more information, see arns.}
@@ -14,6 +12,10 @@ delete_schema(
 \description{
 Deletes a given schema. Schemas in a development and published state can only be deleted.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_schema(
+  SchemaArn = "string"
+)
 }
+}
+

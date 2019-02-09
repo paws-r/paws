@@ -4,12 +4,7 @@
 \alias{cancel_command}
 \title{Attempts to cancel the command specified by the Command ID}
 \usage{
-cancel_command(
-  CommandId = "string",
-  InstanceIds = list(
-    "string"
-  )
-)
+cancel_command(CommandId, InstanceIds = NULL)
 }
 \arguments{
 \item{CommandId}{[required] The ID of the command you want to cancel.}
@@ -19,6 +14,13 @@ cancel_command(
 \description{
 Attempts to cancel the command specified by the Command ID. There is no guarantee that the command will be terminated and the underlying process stopped.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{cancel_command(
+  CommandId = "string",
+  InstanceIds = list(
+    "string"
+  )
+)
 }
+}
+

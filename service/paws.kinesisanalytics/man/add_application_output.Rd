@@ -4,28 +4,8 @@
 \alias{add_application_output}
 \title{Adds an external destination to your Amazon Kinesis Analytics application}
 \usage{
-add_application_output(
-  ApplicationName = "string",
-  CurrentApplicationVersionId = 123,
-  Output = list(
-    Name = "string",
-    KinesisStreamsOutput = list(
-      ResourceARN = "string",
-      RoleARN = "string"
-    ),
-    KinesisFirehoseOutput = list(
-      ResourceARN = "string",
-      RoleARN = "string"
-    ),
-    LambdaOutput = list(
-      ResourceARN = "string",
-      RoleARN = "string"
-    ),
-    DestinationSchema = list(
-      RecordFormatType = "JSON"|"CSV"
-    )
-  )
-)
+add_application_output(ApplicationName, CurrentApplicationVersionId,
+  Output)
 }
 \arguments{
 \item{ApplicationName}{[required] Name of the application to which you want to add the output configuration.}
@@ -48,6 +28,29 @@ For the limits on the number of application inputs and outputs you can configure
 
 This operation requires permissions to perform the \code{kinesisanalytics:AddApplicationOutput} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{add_application_output(
+  ApplicationName = "string",
+  CurrentApplicationVersionId = 123,
+  Output = list(
+    Name = "string",
+    KinesisStreamsOutput = list(
+      ResourceARN = "string",
+      RoleARN = "string"
+    ),
+    KinesisFirehoseOutput = list(
+      ResourceARN = "string",
+      RoleARN = "string"
+    ),
+    LambdaOutput = list(
+      ResourceARN = "string",
+      RoleARN = "string"
+    ),
+    DestinationSchema = list(
+      RecordFormatType = "JSON"|"CSV"
+    )
+  )
+)
 }
+}
+

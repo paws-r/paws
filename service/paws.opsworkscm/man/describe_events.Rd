@@ -4,11 +4,7 @@
 \alias{describe_events}
 \title{Describes events for a specified server}
 \usage{
-describe_events(
-  ServerName = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+describe_events(ServerName, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{ServerName}{[required] The name of the server for which you want to view events.}
@@ -25,6 +21,12 @@ This operation is synchronous.
 
 A \code{ResourceNotFoundException} is thrown when the server does not exist. A \code{ValidationException} is raised when parameters of the request are not valid.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_events(
+  ServerName = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

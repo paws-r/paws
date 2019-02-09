@@ -2,16 +2,10 @@
 % Please edit documentation in R/paws.cognitoidentity_operations.R
 \name{get_open_id_token_for_developer_identity}
 \alias{get_open_id_token_for_developer_identity}
-\title{Registers (or retrieves) a Cognito \code{IdentityId} and an OpenID Connect token for a user authenticated by your backend authentication process}
+\title{Registers (or retrieves) a Cognito IdentityId and an OpenID Connect token for a user authenticated by your backend authentication process}
 \usage{
-get_open_id_token_for_developer_identity(
-  IdentityPoolId = "string",
-  IdentityId = "string",
-  Logins = list(
-    "string"
-  ),
-  TokenDuration = 123
-)
+get_open_id_token_for_developer_identity(IdentityPoolId,
+  IdentityId = NULL, Logins, TokenDuration = NULL)
 }
 \arguments{
 \item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
@@ -30,6 +24,15 @@ You can use \code{GetOpenIdTokenForDeveloperIdentity} to create a new identity a
 
 You must use AWS Developer credentials to call this API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_open_id_token_for_developer_identity(
+  IdentityPoolId = "string",
+  IdentityId = "string",
+  Logins = list(
+    "string"
+  ),
+  TokenDuration = 123
+)
 }
+}
+

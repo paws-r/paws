@@ -4,12 +4,7 @@
 \alias{untag_resource}
 \title{Removes metadata tags from a specified resource}
 \usage{
-untag_resource(
-  Arn = "string",
-  TagKeys = list(
-    "string"
-  )
-)
+untag_resource(Arn, TagKeys)
 }
 \arguments{
 \item{Arn}{[required] The ARN of the resource from which to remove metadata tags. Required.}
@@ -19,6 +14,13 @@ untag_resource(
 \description{
 Removes metadata tags from a specified resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{untag_resource(
+  Arn = "string",
+  TagKeys = list(
+    "string"
+  )
+)
 }
+}
+

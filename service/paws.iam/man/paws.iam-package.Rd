@@ -6,13 +6,13 @@
 \alias{paws.iam-package}
 \title{paws.iam: AWS Identity and Access Management}
 \description{
-AWS Identity and Access Management (IAM) is a web service
-that you can use to manage users and user permissions under your AWS
-account. This guide provides descriptions of IAM actions that you can
-call programmatically. For general information about IAM, see [AWS
-Identity and Access Management (IAM)](http://aws.amazon.com/iam/). For
-the user guide for IAM, see [Using
-IAM](http://docs.aws.amazon.com/IAM/latest/UserGuide/).
+AWS Identity and Access Management (IAM) is a web
+    service that you can use to manage users and user permissions under
+    your AWS account. This guide provides descriptions of IAM actions that
+    you can call programmatically. For general information about IAM, see
+    [AWS Identity and Access Management
+    (IAM)](http://aws.amazon.com/iam/). For the user guide for IAM, see
+    [Using IAM](http://docs.aws.amazon.com/IAM/latest/UserGuide/).
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

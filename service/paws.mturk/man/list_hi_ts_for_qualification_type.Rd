@@ -2,13 +2,10 @@
 % Please edit documentation in R/paws.mturk_operations.R
 \name{list_hi_ts_for_qualification_type}
 \alias{list_hi_ts_for_qualification_type}
-\title{The \code{ListHITsForQualificationType} operation returns the HITs that use the given Qualification type for a Qualification requirement}
+\title{The ListHITsForQualificationType operation returns the HITs that use the given Qualification type for a Qualification requirement}
 \usage{
-list_hi_ts_for_qualification_type(
-  QualificationTypeId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_hi_ts_for_qualification_type(QualificationTypeId, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{QualificationTypeId}{[required] The ID of the Qualification type to use when querying HITs.}
@@ -20,6 +17,12 @@ list_hi_ts_for_qualification_type(
 \description{
 The \code{ListHITsForQualificationType} operation returns the HITs that use the given Qualification type for a Qualification requirement. The operation returns HITs of any status, except for HITs that have been deleted with the \code{DeleteHIT} operation or that have been auto-deleted.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_hi_ts_for_qualification_type(
+  QualificationTypeId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{delete_product}
 \title{Deletes the specified product}
 \usage{
-delete_product(
-  AcceptLanguage = "string",
-  Id = "string"
-)
+delete_product(AcceptLanguage = NULL, Id)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -25,6 +22,11 @@ Deletes the specified product.
 \details{
 You cannot delete a product if it was shared with you or is associated with a portfolio.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_product(
+  AcceptLanguage = "string",
+  Id = "string"
+)
 }
+}
+

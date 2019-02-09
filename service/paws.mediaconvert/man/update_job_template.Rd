@@ -4,7 +4,30 @@
 \alias{update_job_template}
 \title{Modify one of your existing job templates}
 \usage{
-update_job_template(
+update_job_template(AccelerationSettings = NULL, Category = NULL,
+  Description = NULL, Name, Queue = NULL, Settings = NULL)
+}
+\arguments{
+\item{AccelerationSettings}{This is a beta feature. If you are interested in using this feature, please contact AWS customer support.}
+
+\item{Category}{The new category for the job template, if you are changing it.}
+
+\item{Description}{The new description for the job template, if you are changing it.}
+
+\item{Name}{[required] The name of the job template you are modifying}
+
+\item{Queue}{The new queue for the job template, if you are changing it.}
+
+\item{Settings}{}
+}
+\description{
+Modify one of your existing job templates.
+}
+\section{Accepted Parameters}{
+\preformatted{update_job_template(
+  AccelerationSettings = list(
+    Mode = "DISABLED"|"ENABLED"
+  ),
   Category = "string",
   Description = "string",
   Name = "string",
@@ -74,9 +97,12 @@ update_job_template(
                 SourceFile = "string",
                 TimeDelta = 123
               ),
-              SourceType = "ANCILLARY"|"DVB_SUB"|"EMBEDDED"|"SCTE20"|"SCC"|"TTML"|"STL"|"SRT"|"SMI"|"TELETEXT"|"NULL_SOURCE",
+              SourceType = "ANCILLARY"|"DVB_SUB"|"EMBEDDED"|"SCTE20"|"SCC"|"TTML"|"STL"|"SRT"|"SMI"|"TELETEXT"|"NULL_SOURCE"|"IMSC",
               TeletextSourceSettings = list(
                 PageNumber = "string"
+              ),
+              TrackSourceSettings = list(
+                TrackNumber = 123
               )
             )
           )
@@ -387,6 +413,7 @@ update_job_template(
                     FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
                     FontOpacity = 123,
                     FontResolution = 123,
+                    FontScript = "AUTOMATIC"|"HANS"|"HANT",
                     FontSize = 123,
                     OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
                     OutlineSize = 123,
@@ -406,6 +433,7 @@ update_job_template(
                     FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
                     FontOpacity = 123,
                     FontResolution = 123,
+                    FontScript = "AUTOMATIC"|"HANS"|"HANT",
                     FontSize = 123,
                     OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
                     OutlineSize = 123,
@@ -416,6 +444,9 @@ update_job_template(
                     TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
                     XPosition = 123,
                     YPosition = 123
+                  ),
+                  EmbeddedDestinationSettings = list(
+                    Destination608ChannelNumber = 123
                   ),
                   SccDestinationSettings = list(
                     Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
@@ -465,6 +496,7 @@ update_job_template(
                 EbpAudioInterval = "VIDEO_AND_FIXED_INTERVALS"|"VIDEO_INTERVAL",
                 EbpPlacement = "VIDEO_AND_AUDIO_PIDS"|"VIDEO_PID",
                 EsRateInPes = "INCLUDE"|"EXCLUDE",
+                ForceTsVideoEbpOrder = "FORCE"|"DEFAULT",
                 FragmentTime = 123.0,
                 MaxPcrInterval = 123,
                 MinEbpInterval = 123,
@@ -783,20 +815,5 @@ update_job_template(
   )
 )
 }
-\arguments{
-\item{Category}{The new category for the job template, if you are changing it.}
-
-\item{Description}{The new description for the job template, if you are changing it.}
-
-\item{Name}{[required] The name of the job template you are modifying}
-
-\item{Queue}{The new queue for the job template, if you are changing it.}
-
-\item{Settings}{}
 }
-\description{
-Modify one of your existing job templates.
-}
-\examples{
 
-}

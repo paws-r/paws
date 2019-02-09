@@ -4,18 +4,8 @@
 \alias{describe_reserved_instances_listings}
 \title{Describes your account's Reserved Instance listings in the Reserved Instance Marketplace}
 \usage{
-describe_reserved_instances_listings(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  ReservedInstancesId = "string",
-  ReservedInstancesListingId = "string"
-)
+describe_reserved_instances_listings(Filters = NULL,
+  ReservedInstancesId = NULL, ReservedInstancesListingId = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -40,8 +30,21 @@ As a seller, you choose to list some or all of your Reserved Instances, and you 
 
 As a buyer, you specify the configuration of the Reserved Instance to purchase, and the Marketplace matches what you're searching for with what's available. The Marketplace first sells the lowest priced Reserved Instances to you, and continues to sell available Reserved Instance listings to you until your demand is met. You are charged based on the total price of all of the listings that you purchase.
 
-For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html}{Reserved Instance Marketplace} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html}{Reserved Instance Marketplace} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{describe_reserved_instances_listings(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  ReservedInstancesId = "string",
+  ReservedInstancesListingId = "string"
+)
+}
+}
 
-}

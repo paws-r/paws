@@ -4,11 +4,7 @@
 \alias{describe_job_execution}
 \title{Describes a job execution}
 \usage{
-describe_job_execution(
-  jobId = "string",
-  thingName = "string",
-  executionNumber = 123
-)
+describe_job_execution(jobId, thingName, executionNumber = NULL)
 }
 \arguments{
 \item{jobId}{[required] The unique identifier you assigned to this job when it was created.}
@@ -20,6 +16,12 @@ describe_job_execution(
 \description{
 Describes a job execution.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_job_execution(
+  jobId = "string",
+  thingName = "string",
+  executionNumber = 123
+)
 }
+}
+

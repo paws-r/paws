@@ -4,12 +4,7 @@
 \alias{start_monitoring_members}
 \title{Re-enables GuardDuty to monitor findings of the member accounts specified by the account IDs}
 \usage{
-start_monitoring_members(
-  AccountIds = list(
-    "string"
-  ),
-  DetectorId = "string"
-)
+start_monitoring_members(AccountIds, DetectorId)
 }
 \arguments{
 \item{AccountIds}{[required] A list of account IDs of the GuardDuty member accounts whose findings you want the master account to monitor.}
@@ -19,6 +14,13 @@ start_monitoring_members(
 \description{
 Re-enables GuardDuty to monitor findings of the member accounts specified by the account IDs. A master GuardDuty account can run this command after disabling GuardDuty from monitoring these members' findings by running StopMonitoringMembers.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_monitoring_members(
+  AccountIds = list(
+    "string"
+  ),
+  DetectorId = "string"
+)
 }
+}
+

@@ -4,11 +4,8 @@
 \alias{get_slot_types}
 \title{Returns slot type information as follows:}
 \usage{
-get_slot_types(
-  nextToken = "string",
-  maxResults = 123,
-  nameContains = "string"
-)
+get_slot_types(nextToken = NULL, maxResults = NULL,
+  nameContains = NULL)
 }
 \arguments{
 \item{nextToken}{A pagination token that fetches the next page of slot types. If the response to this API call is truncated, Amazon Lex returns a pagination token in the response. To fetch next page of slot types, specify the pagination token in the next request.}
@@ -28,12 +25,21 @@ Returns slot type information as follows:
 
 The operation requires permission for the \code{lex:GetSlotTypes} action.
 }
+\section{Accepted Parameters}{
+\preformatted{get_slot_types(
+  nextToken = "string",
+  maxResults = 123,
+  nameContains = "string"
+)
+}
+}
+
 \examples{
 # This example shows how to get a list of all of the slot types in your
 # account.
-get_slot_types(
+\donttest{get_slot_types(
   maxResults = 10L,
   nextToken = ""
-)
+)}
 
 }

@@ -4,12 +4,7 @@
 \alias{untag_resource}
 \title{Deletes specified tags from a resource}
 \usage{
-untag_resource(
-  resourceArn = "string",
-  tagKeys = list(
-    "string"
-  )
-)
+untag_resource(resourceArn, tagKeys)
 }
 \arguments{
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource from which to remove tags. Currently, the only supported resource is an Amazon ECR repository.}
@@ -19,6 +14,13 @@ untag_resource(
 \description{
 Deletes specified tags from a resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{untag_resource(
+  resourceArn = "string",
+  tagKeys = list(
+    "string"
+  )
+)
 }
+}
+

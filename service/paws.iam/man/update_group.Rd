@@ -4,11 +4,7 @@
 \alias{update_group}
 \title{Updates the name and/or the path of the specified IAM group}
 \usage{
-update_group(
-  GroupName = "string",
-  NewPath = "string",
-  NewGroupName = "string"
-)
+update_group(GroupName, NewPath = NULL, NewGroupName = NULL)
 }
 \arguments{
 \item{GroupName}{[required] Name of the IAM group to update. If you're changing the name of the group, this is the original name.
@@ -31,11 +27,20 @@ You should understand the implications of changing a group's path or name. For m
 
 The person making the request (the principal), must have permission to change the role group with the old name and the new name. For example, to change the group named \code{Managers} to \code{MGRs}, the principal must have a policy that allows them to update both groups. If the principal has permission to update the \code{Managers} group, but not the \code{MGRs} group, then the update fails. For more information about permissions, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/access.html}{Access Management}.
 }
+\section{Accepted Parameters}{
+\preformatted{update_group(
+  GroupName = "string",
+  NewPath = "string",
+  NewGroupName = "string"
+)
+}
+}
+
 \examples{
 # The following command changes the name of the IAM group Test to Test-1.
-update_group(
+\donttest{update_group(
   GroupName = "Test",
   NewGroupName = "Test-1"
-)
+)}
 
 }

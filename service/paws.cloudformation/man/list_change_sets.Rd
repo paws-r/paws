@@ -4,10 +4,7 @@
 \alias{list_change_sets}
 \title{Returns the ID and status of each active change set for a stack}
 \usage{
-list_change_sets(
-  StackName = "string",
-  NextToken = "string"
-)
+list_change_sets(StackName, NextToken = NULL)
 }
 \arguments{
 \item{StackName}{[required] The name or the Amazon Resource Name (ARN) of the stack for which you want to list change sets.}
@@ -17,6 +14,11 @@ list_change_sets(
 \description{
 Returns the ID and status of each active change set for a stack. For example, AWS CloudFormation lists change sets that are in the \code{CREATE_IN_PROGRESS} or \code{CREATE_PENDING} state.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_change_sets(
+  StackName = "string",
+  NextToken = "string"
+)
 }
+}
+

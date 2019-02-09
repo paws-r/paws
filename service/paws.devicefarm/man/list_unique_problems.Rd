@@ -4,10 +4,7 @@
 \alias{list_unique_problems}
 \title{Gets information about unique problems}
 \usage{
-list_unique_problems(
-  arn = "string",
-  nextToken = "string"
-)
+list_unique_problems(arn, nextToken = NULL)
 }
 \arguments{
 \item{arn}{[required] The unique problems' ARNs.}
@@ -17,12 +14,20 @@ list_unique_problems(
 \description{
 Gets information about unique problems.
 }
+\section{Accepted Parameters}{
+\preformatted{list_unique_problems(
+  arn = "string",
+  nextToken = "string"
+)
+}
+}
+
 \examples{
 # The following example returns information about unique problems, given a
 # specific Device Farm project.
-list_unique_problems(
+\donttest{list_unique_problems(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
-)
+)}
 
 }

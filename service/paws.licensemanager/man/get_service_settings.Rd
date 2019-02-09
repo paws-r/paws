@@ -9,6 +9,8 @@ get_service_settings()
 \description{
 Gets License Manager settings for a region. Exposes the configured S3 bucket, SNS topic, etc., for inspection.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_service_settings()
 }
+}
+

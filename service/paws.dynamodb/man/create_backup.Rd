@@ -4,10 +4,7 @@
 \alias{create_backup}
 \title{Creates a backup for an existing table}
 \usage{
-create_backup(
-  TableName = "string",
-  BackupName = "string"
-)
+create_backup(TableName, BackupName)
 }
 \arguments{
 \item{TableName}{[required] The name of the table.}
@@ -36,6 +33,11 @@ Along with data, the following are also included on the backups:
 \item Provisioned read and write capacity
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_backup(
+  TableName = "string",
+  BackupName = "string"
+)
 }
+}
+

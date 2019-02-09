@@ -4,12 +4,8 @@
 \alias{list_aliases}
 \title{Creates a paginated call to list the aliases associated with a given entity}
 \usage{
-list_aliases(
-  OrganizationId = "string",
-  EntityId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_aliases(OrganizationId, EntityId, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{OrganizationId}{[required] The identifier for the organization under which the entity exists.}
@@ -23,6 +19,13 @@ list_aliases(
 \description{
 Creates a paginated call to list the aliases associated with a given entity.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_aliases(
+  OrganizationId = "string",
+  EntityId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

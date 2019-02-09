@@ -4,25 +4,16 @@
 \alias{modify_target_group}
 \title{Modifies the health checks used when evaluating the health state of the targets in the specified target group}
 \usage{
-modify_target_group(
-  TargetGroupArn = "string",
-  HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP",
-  HealthCheckPort = "string",
-  HealthCheckPath = "string",
-  HealthCheckEnabled = TRUE|FALSE,
-  HealthCheckIntervalSeconds = 123,
-  HealthCheckTimeoutSeconds = 123,
-  HealthyThresholdCount = 123,
-  UnhealthyThresholdCount = 123,
-  Matcher = list(
-    HttpCode = "string"
-  )
-)
+modify_target_group(TargetGroupArn, HealthCheckProtocol = NULL,
+  HealthCheckPort = NULL, HealthCheckPath = NULL,
+  HealthCheckEnabled = NULL, HealthCheckIntervalSeconds = NULL,
+  HealthCheckTimeoutSeconds = NULL, HealthyThresholdCount = NULL,
+  UnhealthyThresholdCount = NULL, Matcher = NULL)
 }
 \arguments{
 \item{TargetGroupArn}{[required] The Amazon Resource Name (ARN) of the target group.}
 
-\item{HealthCheckProtocol}{The protocol the load balancer uses when performing health checks on targets. The TCP protocol is supported only if the protocol of the target group is TCP.
+\item{HealthCheckProtocol}{The protocol the load balancer uses when performing health checks on targets. The TCP protocol is supported for health checks only if the protocol of the target group is TCP or TLS. The TLS protocol is not supported for health checks.
 
 If the protocol of the target group is TCP, you can't modify this setting.}
 
@@ -54,13 +45,31 @@ Modifies the health checks used when evaluating the health state of the targets 
 \details{
 To monitor the health of the targets, use DescribeTargetHealth.
 }
+\section{Accepted Parameters}{
+\preformatted{modify_target_group(
+  TargetGroupArn = "string",
+  HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS",
+  HealthCheckPort = "string",
+  HealthCheckPath = "string",
+  HealthCheckEnabled = TRUE|FALSE,
+  HealthCheckIntervalSeconds = 123,
+  HealthCheckTimeoutSeconds = 123,
+  HealthyThresholdCount = 123,
+  UnhealthyThresholdCount = 123,
+  Matcher = list(
+    HttpCode = "string"
+  )
+)
+}
+}
+
 \examples{
 # This example changes the configuration of the health checks used to
 # evaluate the health of the targets for the specified target group.
-modify_target_group(
+\donttest{modify_target_group(
   HealthCheckPort = "443",
   HealthCheckProtocol = "HTTPS",
   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-https-targets/2453ed029918f21f"
-)
+)}
 
 }

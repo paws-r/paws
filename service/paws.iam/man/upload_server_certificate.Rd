@@ -4,13 +4,8 @@
 \alias{upload_server_certificate}
 \title{Uploads a server certificate entity for the AWS account}
 \usage{
-upload_server_certificate(
-  Path = "string",
-  ServerCertificateName = "string",
-  CertificateBody = "string",
-  PrivateKey = "string",
-  CertificateChain = "string"
-)
+upload_server_certificate(Path = NULL, ServerCertificateName,
+  CertificateBody, PrivateKey, CertificateChain = NULL)
 }
 \arguments{
 \item{Path}{The path for the server certificate. For more information about paths, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{IAM Identifiers} in the \emph{IAM User Guide}.
@@ -62,14 +57,25 @@ For information about the number of server certificates you can upload, see \hre
 
 Because the body of the public key certificate, private key, and the certificate chain can be large, you should use POST rather than GET when calling \code{UploadServerCertificate}. For information about setting up signatures and authorization through the API, go to \href{http://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html}{Signing AWS API Requests} in the \emph{AWS General Reference}. For general information about using the Query API with IAM, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/programming.html}{Calling the API by Making HTTP Query Requests} in the \emph{IAM User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{upload_server_certificate(
+  Path = "string",
+  ServerCertificateName = "string",
+  CertificateBody = "string",
+  PrivateKey = "string",
+  CertificateChain = "string"
+)
+}
+}
+
 \examples{
 # The following upload-server-certificate command uploads a server
 # certificate to your AWS account:
-upload_server_certificate(
+\donttest{upload_server_certificate(
   CertificateBody = "-----BEGIN CERTIFICATE-----<a very long certificate text string>-----END CERTIFICATE-----",
   Path = "/company/servercerts/",
   PrivateKey = "-----BEGIN DSA PRIVATE KEY-----<a very long private key string>-----END DSA PRIVATE KEY-----",
   ServerCertificateName = "ProdServerCert"
-)
+)}
 
 }

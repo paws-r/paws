@@ -2,3 +2,9 @@
 
 export(generate_data_set)
 export(start_support_data_export)
+importFrom(paws.common,new_handlers)
+importFrom(paws.common,new_operation)
+importFrom(paws.common,new_request)
+importFrom(paws.common,new_service)
+importFrom(paws.common,populate)
+importFrom(paws.common,send_request)

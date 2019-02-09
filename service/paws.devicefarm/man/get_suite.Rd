@@ -4,9 +4,7 @@
 \alias{get_suite}
 \title{Gets information about a suite}
 \usage{
-get_suite(
-  arn = "string"
-)
+get_suite(arn)
 }
 \arguments{
 \item{arn}{[required] The suite's ARN.}
@@ -14,10 +12,17 @@ get_suite(
 \description{
 Gets information about a suite.
 }
+\section{Accepted Parameters}{
+\preformatted{get_suite(
+  arn = "string"
+)
+}
+}
+
 \examples{
 # The following example gets information about a specific test suite.
-get_suite(
+\donttest{get_suite(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:suite:EXAMPLE-GUID-123-456"
-)
+)}
 
 }

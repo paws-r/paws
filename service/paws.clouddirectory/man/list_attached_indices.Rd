@@ -4,15 +4,8 @@
 \alias{list_attached_indices}
 \title{Lists indices attached to the specified object}
 \usage{
-list_attached_indices(
-  DirectoryArn = "string",
-  TargetReference = list(
-    Selector = "string"
-  ),
-  NextToken = "string",
-  MaxResults = 123,
-  ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL"
-)
+list_attached_indices(DirectoryArn, TargetReference, NextToken = NULL,
+  MaxResults = NULL, ConsistencyLevel = NULL)
 }
 \arguments{
 \item{DirectoryArn}{[required] The ARN of the directory.}
@@ -28,6 +21,16 @@ list_attached_indices(
 \description{
 Lists indices attached to the specified object.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_attached_indices(
+  DirectoryArn = "string",
+  TargetReference = list(
+    Selector = "string"
+  ),
+  NextToken = "string",
+  MaxResults = 123,
+  ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL"
+)
 }
+}
+

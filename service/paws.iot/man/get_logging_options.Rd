@@ -12,6 +12,8 @@ Gets the logging options.
 \details{
 NOTE: use of this command is not recommended. Use \code{GetV2LoggingOptions} instead.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_logging_options()
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{describe_backup}
 \title{Describes an existing backup of a table}
 \usage{
-describe_backup(
-  BackupArn = "string"
-)
+describe_backup(BackupArn)
 }
 \arguments{
 \item{BackupArn}{[required] The ARN associated with the backup.}
@@ -17,6 +15,10 @@ Describes an existing backup of a table.
 \details{
 You can call \code{DescribeBackup} at a maximum rate of 10 times per second.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_backup(
+  BackupArn = "string"
+)
 }
+}
+

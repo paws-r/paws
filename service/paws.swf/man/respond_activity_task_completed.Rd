@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.swf_operations.R
 \name{respond_activity_task_completed}
 \alias{respond_activity_task_completed}
-\title{Used by workers to tell the service that the ActivityTask identified by the \code{taskToken} completed successfully with a \code{result} (if provided)}
+\title{Used by workers to tell the service that the ActivityTask identified by the taskToken completed successfully with a result (if provided)}
 \usage{
-respond_activity_task_completed(
-  taskToken = "string",
-  result = "string"
-)
+respond_activity_task_completed(taskToken, result = NULL)
 }
 \arguments{
 \item{taskToken}{[required] The \code{taskToken} of the ActivityTask.
@@ -35,6 +32,11 @@ You can use IAM policies to control this action's access to Amazon SWF resources
 
 If the caller doesn't have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action fails. The associated event attribute's \code{cause} parameter is set to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see \href{http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows} in the \emph{Amazon SWF Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{respond_activity_task_completed(
+  taskToken = "string",
+  result = "string"
+)
 }
+}
+

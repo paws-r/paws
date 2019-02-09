@@ -2,13 +2,10 @@
 % Please edit documentation in R/paws.mturk_operations.R
 \name{disassociate_qualification_from_worker}
 \alias{disassociate_qualification_from_worker}
-\title{The \code{DisassociateQualificationFromWorker} revokes a previously granted Qualification from a user}
+\title{The DisassociateQualificationFromWorker revokes a previously granted Qualification from a user}
 \usage{
-disassociate_qualification_from_worker(
-  WorkerId = "string",
-  QualificationTypeId = "string",
-  Reason = "string"
-)
+disassociate_qualification_from_worker(WorkerId, QualificationTypeId,
+  Reason = NULL)
 }
 \arguments{
 \item{WorkerId}{[required] The ID of the Worker who possesses the Qualification to be revoked.}
@@ -23,6 +20,12 @@ The \code{DisassociateQualificationFromWorker} revokes a previously granted Qual
 \details{
 You can provide a text message explaining why the Qualification was revoked. The user who had the Qualification can see this message.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disassociate_qualification_from_worker(
+  WorkerId = "string",
+  QualificationTypeId = "string",
+  Reason = "string"
+)
 }
+}
+

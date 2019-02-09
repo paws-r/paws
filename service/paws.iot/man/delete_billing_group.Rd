@@ -4,10 +4,7 @@
 \alias{delete_billing_group}
 \title{Deletes the billing group}
 \usage{
-delete_billing_group(
-  billingGroupName = "string",
-  expectedVersion = 123
-)
+delete_billing_group(billingGroupName, expectedVersion = NULL)
 }
 \arguments{
 \item{billingGroupName}{[required] The name of the billing group.}
@@ -17,6 +14,11 @@ delete_billing_group(
 \description{
 Deletes the billing group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_billing_group(
+  billingGroupName = "string",
+  expectedVersion = 123
+)
 }
+}
+

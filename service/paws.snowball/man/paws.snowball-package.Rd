@@ -6,15 +6,15 @@
 \alias{paws.snowball-package}
 \title{paws.snowball: Amazon Import/Export Snowball}
 \description{
-AWS Snowball is a petabyte-scale data transport solution that
-uses secure devices to transfer large amounts of data between your
-on-premises data centers and Amazon Simple Storage Service (Amazon
-S3). The commands described here provide access to the same
-functionality that is available in the AWS Snowball Management
-Console, which enables you to create and manage jobs for Snowball and
-Snowball Edge devices. To transfer data locally with a device, you\'ll
-need to use the Snowball client or the Amazon S3 API adapter for
-Snowball.
+AWS Snowball is a petabyte-scale data transport
+    solution that uses secure devices to transfer large amounts of data
+    between your on-premises data centers and Amazon Simple Storage
+    Service (Amazon S3). The commands described here provide access to the
+    same functionality that is available in the AWS Snowball Management
+    Console, which enables you to create and manage jobs for Snowball and
+    Snowball Edge devices. To transfer data locally with a device, you\'ll
+    need to use the Snowball client or the Amazon S3 API adapter for
+    Snowball.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

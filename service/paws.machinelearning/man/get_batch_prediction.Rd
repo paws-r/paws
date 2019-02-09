@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.machinelearning_operations.R
 \name{get_batch_prediction}
 \alias{get_batch_prediction}
-\title{Returns a \code{BatchPrediction} that includes detailed metadata, status, and data file information for a \code{Batch Prediction} request}
+\title{Returns a BatchPrediction that includes detailed metadata, status, and data file information for a Batch Prediction request}
 \usage{
-get_batch_prediction(
-  BatchPredictionId = "string"
-)
+get_batch_prediction(BatchPredictionId)
 }
 \arguments{
 \item{BatchPredictionId}{[required] An ID assigned to the \code{BatchPrediction} at creation.}
@@ -14,6 +12,10 @@ get_batch_prediction(
 \description{
 Returns a \code{BatchPrediction} that includes detailed metadata, status, and data file information for a \code{Batch Prediction} request.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_batch_prediction(
+  BatchPredictionId = "string"
+)
 }
+}
+

@@ -4,18 +4,10 @@
 \alias{list_labeling_jobs}
 \title{Gets a list of labeling jobs}
 \usage{
-list_labeling_jobs(
-  CreationTimeAfter = as.POSIXct("2015-01-01"),
-  CreationTimeBefore = as.POSIXct("2015-01-01"),
-  LastModifiedTimeAfter = as.POSIXct("2015-01-01"),
-  LastModifiedTimeBefore = as.POSIXct("2015-01-01"),
-  MaxResults = 123,
-  NextToken = "string",
-  NameContains = "string",
-  SortBy = "Name"|"CreationTime"|"Status",
-  SortOrder = "Ascending"|"Descending",
-  StatusEquals = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped"
-)
+list_labeling_jobs(CreationTimeAfter = NULL, CreationTimeBefore = NULL,
+  LastModifiedTimeAfter = NULL, LastModifiedTimeBefore = NULL,
+  MaxResults = NULL, NextToken = NULL, NameContains = NULL,
+  SortBy = NULL, SortOrder = NULL, StatusEquals = NULL)
 }
 \arguments{
 \item{CreationTimeAfter}{A filter that returns only labeling jobs created after the specified time (timestamp).}
@@ -41,6 +33,19 @@ list_labeling_jobs(
 \description{
 Gets a list of labeling jobs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_labeling_jobs(
+  CreationTimeAfter = as.POSIXct("2015-01-01"),
+  CreationTimeBefore = as.POSIXct("2015-01-01"),
+  LastModifiedTimeAfter = as.POSIXct("2015-01-01"),
+  LastModifiedTimeBefore = as.POSIXct("2015-01-01"),
+  MaxResults = 123,
+  NextToken = "string",
+  NameContains = "string",
+  SortBy = "Name"|"CreationTime"|"Status",
+  SortOrder = "Ascending"|"Descending",
+  StatusEquals = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped"
+)
 }
+}
+

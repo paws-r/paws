@@ -4,13 +4,8 @@
 \alias{describe_service_errors}
 \title{Describes AWS OpsWorks Stacks service errors}
 \usage{
-describe_service_errors(
-  StackId = "string",
-  InstanceId = "string",
-  ServiceErrorIds = list(
-    "string"
-  )
-)
+describe_service_errors(StackId = NULL, InstanceId = NULL,
+  ServiceErrorIds = NULL)
 }
 \arguments{
 \item{StackId}{The stack ID. If you use this parameter, \code{DescribeServiceErrors} returns descriptions of the errors associated with the specified stack.}
@@ -27,6 +22,14 @@ Describes AWS OpsWorks Stacks service errors.
 
 This call accepts only one resource-identifying parameter.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_service_errors(
+  StackId = "string",
+  InstanceId = "string",
+  ServiceErrorIds = list(
+    "string"
+  )
+)
 }
+}
+

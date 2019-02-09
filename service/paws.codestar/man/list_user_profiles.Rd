@@ -4,10 +4,7 @@
 \alias{list_user_profiles}
 \title{Lists all the user profiles configured for your AWS account in AWS CodeStar}
 \usage{
-list_user_profiles(
-  nextToken = "string",
-  maxResults = 123
-)
+list_user_profiles(nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{nextToken}{The continuation token for the next set of results, if the results cannot be returned in one response.}
@@ -17,6 +14,11 @@ list_user_profiles(
 \description{
 Lists all the user profiles configured for your AWS account in AWS CodeStar.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_user_profiles(
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

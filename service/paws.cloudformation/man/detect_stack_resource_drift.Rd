@@ -4,10 +4,7 @@
 \alias{detect_stack_resource_drift}
 \title{Returns information about whether a resource's actual configuration differs, or has \emph{drifted}, from it's expected configuration, as defined in the stack template and any values specified as template parameters}
 \usage{
-detect_stack_resource_drift(
-  StackName = "string",
-  LogicalResourceId = "string"
-)
+detect_stack_resource_drift(StackName, LogicalResourceId)
 }
 \arguments{
 \item{StackName}{[required] The name of the stack to which the resource belongs.}
@@ -22,6 +19,11 @@ Use \code{DetectStackResourceDrift} to detect drift on individual resources, or 
 
 Resources that do not currently support drift detection cannot be checked. For a list of resources that support drift detection, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html}{Resources that Support Drift Detection}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{detect_stack_resource_drift(
+  StackName = "string",
+  LogicalResourceId = "string"
+)
 }
+}
+

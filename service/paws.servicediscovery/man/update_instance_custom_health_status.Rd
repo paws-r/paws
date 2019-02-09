@@ -4,11 +4,7 @@
 \alias{update_instance_custom_health_status}
 \title{Submits a request to change the health status of a custom health check to healthy or unhealthy}
 \usage{
-update_instance_custom_health_status(
-  ServiceId = "string",
-  InstanceId = "string",
-  Status = "HEALTHY"|"UNHEALTHY"
-)
+update_instance_custom_health_status(ServiceId, InstanceId, Status)
 }
 \arguments{
 \item{ServiceId}{[required] The ID of the service that includes the configuration for the custom health check that you want to change the status for.}
@@ -25,6 +21,12 @@ You can use \code{UpdateInstanceCustomHealthStatus} to change the status only fo
 
 For more information, see HealthCheckCustomConfig.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_instance_custom_health_status(
+  ServiceId = "string",
+  InstanceId = "string",
+  Status = "HEALTHY"|"UNHEALTHY"
+)
 }
+}
+

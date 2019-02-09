@@ -4,9 +4,7 @@
 \alias{delete_playback_configuration}
 \title{Deletes the configuration for the specified name}
 \usage{
-delete_playback_configuration(
-  Name = "string"
-)
+delete_playback_configuration(Name)
 }
 \arguments{
 \item{Name}{[required] The identifier for the configuration.}
@@ -14,6 +12,10 @@ delete_playback_configuration(
 \description{
 Deletes the configuration for the specified name.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_playback_configuration(
+  Name = "string"
+)
 }
+}
+

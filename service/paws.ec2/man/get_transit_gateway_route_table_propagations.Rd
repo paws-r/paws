@@ -4,20 +4,9 @@
 \alias{get_transit_gateway_route_table_propagations}
 \title{Gets information about the route table propagations for the specified transit gateway route table}
 \usage{
-get_transit_gateway_route_table_propagations(
-  TransitGatewayRouteTableId = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  DryRun = TRUE|FALSE
-)
+get_transit_gateway_route_table_propagations(TransitGatewayRouteTableId,
+  Filters = NULL, MaxResults = NULL, NextToken = NULL,
+  DryRun = NULL)
 }
 \arguments{
 \item{TransitGatewayRouteTableId}{[required] The ID of the transit gateway route table.}
@@ -38,6 +27,21 @@ get_transit_gateway_route_table_propagations(
 \description{
 Gets information about the route table propagations for the specified transit gateway route table.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_transit_gateway_route_table_propagations(
+  TransitGatewayRouteTableId = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

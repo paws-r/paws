@@ -4,10 +4,7 @@
 \alias{create_webhook}
 \title{For an existing AWS CodeBuild build project that has its source code stored in a GitHub or Bitbucket repository, enables AWS CodeBuild to start rebuilding the source code every time a code change is pushed to the repository}
 \usage{
-create_webhook(
-  projectName = "string",
-  branchFilter = "string"
-)
+create_webhook(projectName, branchFilter = NULL)
 }
 \arguments{
 \item{projectName}{[required] The name of the AWS CodeBuild project.}
@@ -20,6 +17,11 @@ For an existing AWS CodeBuild build project that has its source code stored in a
 \details{
 If you enable webhooks for an AWS CodeBuild project, and the project is used as a build step in AWS CodePipeline, then two identical builds are created for each commit. One build is triggered through webhooks, and one through AWS CodePipeline. Because billing is on a per-build basis, you are billed for both builds. Therefore, if you are using AWS CodePipeline, we recommend that you disable webhooks in AWS CodeBuild. In the AWS CodeBuild console, clear the Webhook box. For more information, see step 5 in \href{http://docs.aws.amazon.com/codebuild/latest/userguide/change-project.html#change-project-console}{Change a Build Project's Settings}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_webhook(
+  projectName = "string",
+  branchFilter = "string"
+)
 }
+}
+

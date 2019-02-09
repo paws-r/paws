@@ -9,6 +9,8 @@ describe_event_bus()
 \description{
 Displays the external AWS accounts that are permitted to write events to your account using your account's event bus, and the associated policy. To enable your account to receive events from other accounts, use PutPermission.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_event_bus()
 }
+}
+

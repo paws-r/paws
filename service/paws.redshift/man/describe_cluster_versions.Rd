@@ -4,12 +4,9 @@
 \alias{describe_cluster_versions}
 \title{Returns descriptions of the available Amazon Redshift cluster versions}
 \usage{
-describe_cluster_versions(
-  ClusterVersion = "string",
-  ClusterParameterGroupFamily = "string",
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_cluster_versions(ClusterVersion = NULL,
+  ClusterParameterGroupFamily = NULL, MaxRecords = NULL,
+  Marker = NULL)
 }
 \arguments{
 \item{ClusterVersion}{The specific cluster version to return.
@@ -36,6 +33,13 @@ Constraints: minimum 20, maximum 100.}
 \description{
 Returns descriptions of the available Amazon Redshift cluster versions. You can call this operation even before creating any clusters to learn more about the Amazon Redshift versions. For more information about managing clusters, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html}{Amazon Redshift Clusters} in the \emph{Amazon Redshift Cluster Management Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_cluster_versions(
+  ClusterVersion = "string",
+  ClusterParameterGroupFamily = "string",
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
+}
+

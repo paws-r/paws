@@ -4,7 +4,22 @@
 \alias{create_robot_application}
 \title{Creates a robot application}
 \usage{
-create_robot_application(
+create_robot_application(name, sources, robotSoftwareSuite, tags = NULL)
+}
+\arguments{
+\item{name}{[required] The name of the robot application.}
+
+\item{sources}{[required] The sources of the robot application.}
+
+\item{robotSoftwareSuite}{[required] The robot software suite used by the robot application.}
+
+\item{tags}{A map that contains tag keys and tag values that are attached to the robot application.}
+}
+\description{
+Creates a robot application.
+}
+\section{Accepted Parameters}{
+\preformatted{create_robot_application(
   name = "string",
   sources = list(
     list(
@@ -16,19 +31,11 @@ create_robot_application(
   robotSoftwareSuite = list(
     name = "ROS",
     version = "Kinetic"
+  ),
+  tags = list(
+    "string"
   )
 )
 }
-\arguments{
-\item{name}{[required] The name of the robot application.}
-
-\item{sources}{[required] The sources of the robot application.}
-
-\item{robotSoftwareSuite}{[required] The robot software suite used by the robot application.}
 }
-\description{
-Creates a robot application.
-}
-\examples{
 
-}

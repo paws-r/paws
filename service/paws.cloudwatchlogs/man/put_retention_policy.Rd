@@ -4,10 +4,7 @@
 \alias{put_retention_policy}
 \title{Sets the retention of the specified log group}
 \usage{
-put_retention_policy(
-  logGroupName = "string",
-  retentionInDays = 123
-)
+put_retention_policy(logGroupName, retentionInDays)
 }
 \arguments{
 \item{logGroupName}{[required] The name of the log group.}
@@ -17,6 +14,11 @@ put_retention_policy(
 \description{
 Sets the retention of the specified log group. A retention policy allows you to configure the number of days for which to retain log events in the specified log group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_retention_policy(
+  logGroupName = "string",
+  retentionInDays = 123
+)
 }
+}
+

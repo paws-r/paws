@@ -4,9 +4,7 @@
 \alias{describe_vpc_peering_connections}
 \title{Retrieves information on VPC peering connections}
 \usage{
-describe_vpc_peering_connections(
-  FleetId = "string"
-)
+describe_vpc_peering_connections(FleetId = NULL)
 }
 \arguments{
 \item{FleetId}{Unique identifier for a fleet.}
@@ -16,8 +14,6 @@ Retrieves information on VPC peering connections. Use this operation to get peer
 }
 \details{
 To retrieve connection information, call this operation from the AWS account that is used to manage the Amazon GameLift fleets. Specify a fleet ID or leave the parameter empty to retrieve all connection records. If successful, the retrieved information includes both active and pending connections. Active connections identify the IpV4 CIDR block that the VPC uses to connect.
-
-VPC peering connection operations include:
 \itemize{
 \item CreateVpcPeeringAuthorization
 \item DescribeVpcPeeringAuthorizations
@@ -27,6 +23,10 @@ VPC peering connection operations include:
 \item DeleteVpcPeeringConnection
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_vpc_peering_connections(
+  FleetId = "string"
+)
 }
+}
+

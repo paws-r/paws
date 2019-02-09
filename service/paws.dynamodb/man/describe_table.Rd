@@ -4,9 +4,7 @@
 \alias{describe_table}
 \title{Returns information about the table, including the current status of the table, when it was created, the primary key schema, and any indexes on the table}
 \usage{
-describe_table(
-  TableName = "string"
-)
+describe_table(TableName)
 }
 \arguments{
 \item{TableName}{[required] The name of the table to describe.}
@@ -17,10 +15,17 @@ Returns information about the table, including the current status of the table, 
 \details{
 If you issue a \code{DescribeTable} request immediately after a \code{CreateTable} request, DynamoDB might return a \code{ResourceNotFoundException}. This is because \code{DescribeTable} uses an eventually consistent query, and the metadata for your table might not be available at that moment. Wait for a few seconds, and then try the \code{DescribeTable} request again.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_table(
+  TableName = "string"
+)
+}
+}
+
 \examples{
 # This example describes the Music table.
-describe_table(
+\donttest{describe_table(
   TableName = "Music"
-)
+)}
 
 }

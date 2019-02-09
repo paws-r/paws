@@ -4,10 +4,7 @@
 \alias{list_invitations}
 \title{Lists all GuardDuty membership invitations that were sent to the current AWS account}
 \usage{
-list_invitations(
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_invitations(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{You can use this parameter to indicate the maximum number of invitations you want in the response. The default value is 50. The maximum value is 50.}
@@ -17,6 +14,11 @@ list_invitations(
 \description{
 Lists all GuardDuty membership invitations that were sent to the current AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_invitations(
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

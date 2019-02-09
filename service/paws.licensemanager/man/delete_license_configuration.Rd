@@ -4,9 +4,7 @@
 \alias{delete_license_configuration}
 \title{Deletes an existing license configuration}
 \usage{
-delete_license_configuration(
-  LicenseConfigurationArn = "string"
-)
+delete_license_configuration(LicenseConfigurationArn)
 }
 \arguments{
 \item{LicenseConfigurationArn}{[required] Unique ID of the configuration object to delete.}
@@ -14,6 +12,10 @@ delete_license_configuration(
 \description{
 Deletes an existing license configuration. This action fails if the configuration is in use.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_license_configuration(
+  LicenseConfigurationArn = "string"
+)
 }
+}
+

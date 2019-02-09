@@ -4,9 +4,7 @@
 \alias{get_telemetry_metadata}
 \title{Information about the data that is collected for the specified assessment run}
 \usage{
-get_telemetry_metadata(
-  assessmentRunArn = "string"
-)
+get_telemetry_metadata(assessmentRunArn)
 }
 \arguments{
 \item{assessmentRunArn}{[required] The ARN that specifies the assessment run that has the telemetry data that you want to obtain.}
@@ -14,11 +12,18 @@ get_telemetry_metadata(
 \description{
 Information about the data that is collected for the specified assessment run.
 }
+\section{Accepted Parameters}{
+\preformatted{get_telemetry_metadata(
+  assessmentRunArn = "string"
+)
+}
+}
+
 \examples{
 # Information about the data that is collected for the specified
 # assessment run.
-get_telemetry_metadata(
+\donttest{get_telemetry_metadata(
   assessmentRunArn = "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-4r1V2mAw/run/0-MKkpXXPE"
-)
+)}
 
 }

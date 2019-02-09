@@ -4,11 +4,8 @@
 \alias{revoke_certificate}
 \title{Revokes a certificate that you issued by calling the IssueCertificate operation}
 \usage{
-revoke_certificate(
-  CertificateAuthorityArn = "string",
-  CertificateSerial = "string",
-  RevocationReason = "UNSPECIFIED"|"KEY_COMPROMISE"|"CERTIFICATE_AUTHORITY_COMPROMISE"|"AFFILIATION_CHANGED"|"SUPERSEDED"|"CESSATION_OF_OPERATION"|"PRIVILEGE_WITHDRAWN"|"A_A_COMPROMISE"
-)
+revoke_certificate(CertificateAuthorityArn, CertificateSerial,
+  RevocationReason)
 }
 \arguments{
 \item{CertificateAuthorityArn}{[required] Amazon Resource Name (ARN) of the private CA that issued the certificate to be revoked. This must be of the form:
@@ -26,6 +23,12 @@ You can also copy the serial number from the console or use the \href{https://do
 \description{
 Revokes a certificate that you issued by calling the IssueCertificate operation. If you enable a certificate revocation list (CRL) when you create or update your private CA, information about the revoked certificates will be included in the CRL. ACM PCA writes the CRL to an S3 bucket that you specify. For more information about revocation, see the CrlConfiguration structure. ACM PCA also writes revocation information to the audit report. For more information, see CreateCertificateAuthorityAuditReport.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{revoke_certificate(
+  CertificateAuthorityArn = "string",
+  CertificateSerial = "string",
+  RevocationReason = "UNSPECIFIED"|"KEY_COMPROMISE"|"CERTIFICATE_AUTHORITY_COMPROMISE"|"AFFILIATION_CHANGED"|"SUPERSEDED"|"CESSATION_OF_OPERATION"|"PRIVILEGE_WITHDRAWN"|"A_A_COMPROMISE"
+)
 }
+}
+

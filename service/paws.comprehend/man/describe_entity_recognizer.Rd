@@ -4,9 +4,7 @@
 \alias{describe_entity_recognizer}
 \title{Provides details about an entity recognizer including status, S3 buckets containing training data, recognizer metadata, metrics, and so on}
 \usage{
-describe_entity_recognizer(
-  EntityRecognizerArn = "string"
-)
+describe_entity_recognizer(EntityRecognizerArn)
 }
 \arguments{
 \item{EntityRecognizerArn}{[required] The Amazon Resource Name (ARN) that identifies the entity recognizer.}
@@ -14,6 +12,10 @@ describe_entity_recognizer(
 \description{
 Provides details about an entity recognizer including status, S3 buckets containing training data, recognizer metadata, metrics, and so on.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_entity_recognizer(
+  EntityRecognizerArn = "string"
+)
 }
+}
+

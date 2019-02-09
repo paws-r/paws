@@ -4,26 +4,7 @@
 \alias{modify_db_parameter_group}
 \title{Modifies the parameters of a DB parameter group}
 \usage{
-modify_db_parameter_group(
-  DBParameterGroupName = "string",
-  Parameters = list(
-    list(
-      ParameterName = "string",
-      ParameterValue = "string",
-      Description = "string",
-      Source = "string",
-      ApplyType = "string",
-      DataType = "string",
-      AllowedValues = "string",
-      IsModifiable = TRUE|FALSE,
-      MinimumEngineVersion = "string",
-      ApplyMethod = "immediate"|"pending-reboot",
-      SupportedEngineModes = list(
-        "string"
-      )
-    )
-  )
-)
+modify_db_parameter_group(DBParameterGroupName, Parameters)
 }
 \arguments{
 \item{DBParameterGroupName}{[required] The name of the DB parameter group.
@@ -47,6 +28,27 @@ Changes to dynamic parameters are applied immediately. Changes to static paramet
 
 After you modify a DB parameter group, you should wait at least 5 minutes before creating your first DB instance that uses that DB parameter group as the default parameter group. This allows Amazon RDS to fully complete the modify action before the parameter group is used as the default for a new DB instance. This is especially important for parameters that are critical when creating the default database for a DB instance, such as the character set for the default database defined by the \code{character_set_database} parameter. You can use the \emph{Parameter Groups} option of the \href{https://console.aws.amazon.com/rds/}{Amazon RDS console} or the \emph{DescribeDBParameters} command to verify that your DB parameter group has been created or modified.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_db_parameter_group(
+  DBParameterGroupName = "string",
+  Parameters = list(
+    list(
+      ParameterName = "string",
+      ParameterValue = "string",
+      Description = "string",
+      Source = "string",
+      ApplyType = "string",
+      DataType = "string",
+      AllowedValues = "string",
+      IsModifiable = TRUE|FALSE,
+      MinimumEngineVersion = "string",
+      ApplyMethod = "immediate"|"pending-reboot",
+      SupportedEngineModes = list(
+        "string"
+      )
+    )
+  )
+)
 }
+}
+

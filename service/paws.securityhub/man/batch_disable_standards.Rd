@@ -4,11 +4,7 @@
 \alias{batch_disable_standards}
 \title{Disables the standards specified by the standards subscription ARNs}
 \usage{
-batch_disable_standards(
-  StandardsSubscriptionArns = list(
-    "string"
-  )
-)
+batch_disable_standards(StandardsSubscriptionArns)
 }
 \arguments{
 \item{StandardsSubscriptionArns}{[required] The ARNS of the standards subscriptions that you want to disable.}
@@ -16,6 +12,12 @@ batch_disable_standards(
 \description{
 Disables the standards specified by the standards subscription ARNs. In the context of Security Hub, supported standards (for example, CIS AWS Foundations) are automated and continuous checks that help determine your compliance status against security industry (including AWS) best practices.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{batch_disable_standards(
+  StandardsSubscriptionArns = list(
+    "string"
+  )
+)
 }
+}
+

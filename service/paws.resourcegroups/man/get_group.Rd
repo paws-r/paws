@@ -4,9 +4,7 @@
 \alias{get_group}
 \title{Returns information about a specified resource group}
 \usage{
-get_group(
-  GroupName = "string"
-)
+get_group(GroupName)
 }
 \arguments{
 \item{GroupName}{[required] The name of the resource group.}
@@ -14,6 +12,10 @@ get_group(
 \description{
 Returns information about a specified resource group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_group(
+  GroupName = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{describe_event_categories}
 \title{Displays a list of event categories for all event source types, or for a specified source type}
 \usage{
-describe_event_categories(
-  SourceType = "string"
-)
+describe_event_categories(SourceType = NULL)
 }
 \arguments{
 \item{SourceType}{The source type, such as cluster or parameter group, to which the described event categories apply.
@@ -16,6 +14,10 @@ Valid values: cluster, cluster-snapshot, cluster-parameter-group, and cluster-se
 \description{
 Displays a list of event categories for all event source types, or for a specified source type. For a list of the event categories and source types, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-event-notifications.html}{Amazon Redshift Event Notifications}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_event_categories(
+  SourceType = "string"
+)
 }
+}
+

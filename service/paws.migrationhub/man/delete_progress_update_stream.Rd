@@ -4,10 +4,7 @@
 \alias{delete_progress_update_stream}
 \title{Deletes a progress update stream, including all of its tasks, which was previously created as an AWS resource used for access control}
 \usage{
-delete_progress_update_stream(
-  ProgressUpdateStreamName = "string",
-  DryRun = TRUE|FALSE
-)
+delete_progress_update_stream(ProgressUpdateStreamName, DryRun = NULL)
 }
 \arguments{
 \item{ProgressUpdateStreamName}{[required] The name of the ProgressUpdateStream.}
@@ -26,6 +23,11 @@ Deletes a progress update stream, including all of its tasks, which was previous
 \item Once the stream and all of its resources are deleted, \code{CreateProgressUpdateStream} for a stream of the same name will succeed, and that stream will be an entirely new logical resource (without any resources associated with the old stream).
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_progress_update_stream(
+  ProgressUpdateStreamName = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

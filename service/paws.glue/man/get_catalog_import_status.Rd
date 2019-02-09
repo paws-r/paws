@@ -4,9 +4,7 @@
 \alias{get_catalog_import_status}
 \title{Retrieves the status of a migration operation}
 \usage{
-get_catalog_import_status(
-  CatalogId = "string"
-)
+get_catalog_import_status(CatalogId = NULL)
 }
 \arguments{
 \item{CatalogId}{The ID of the catalog to migrate. Currently, this should be the AWS account ID.}
@@ -14,6 +12,10 @@ get_catalog_import_status(
 \description{
 Retrieves the status of a migration operation.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_catalog_import_status(
+  CatalogId = "string"
+)
 }
+}
+

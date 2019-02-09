@@ -4,16 +4,9 @@
 \alias{update_thing_groups_for_thing}
 \title{Updates the groups to which the thing belongs}
 \usage{
-update_thing_groups_for_thing(
-  thingName = "string",
-  thingGroupsToAdd = list(
-    "string"
-  ),
-  thingGroupsToRemove = list(
-    "string"
-  ),
-  overrideDynamicGroups = TRUE|FALSE
-)
+update_thing_groups_for_thing(thingName = NULL,
+  thingGroupsToAdd = NULL, thingGroupsToRemove = NULL,
+  overrideDynamicGroups = NULL)
 }
 \arguments{
 \item{thingName}{The thing whose group memberships will be updated.}
@@ -27,6 +20,17 @@ update_thing_groups_for_thing(
 \description{
 Updates the groups to which the thing belongs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_thing_groups_for_thing(
+  thingName = "string",
+  thingGroupsToAdd = list(
+    "string"
+  ),
+  thingGroupsToRemove = list(
+    "string"
+  ),
+  overrideDynamicGroups = TRUE|FALSE
+)
 }
+}
+

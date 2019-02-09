@@ -4,10 +4,7 @@
 \alias{list_query_executions}
 \title{Provides a list of all available query execution IDs}
 \usage{
-list_query_executions(
-  NextToken = "string",
-  MaxResults = 123
-)
+list_query_executions(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{The token that specifies where to start pagination if a previous request was truncated.}
@@ -20,6 +17,11 @@ Provides a list of all available query execution IDs.
 \details{
 For code samples using the AWS SDK for Java, see \href{http://docs.aws.amazon.com/athena/latest/ug/code-samples.html}{Examples and Code Samples} in the \emph{Amazon Athena User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_query_executions(
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

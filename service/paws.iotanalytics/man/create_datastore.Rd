@@ -4,7 +4,20 @@
 \alias{create_datastore}
 \title{Creates a data store, which is a repository for messages}
 \usage{
-create_datastore(
+create_datastore(datastoreName, retentionPeriod = NULL, tags = NULL)
+}
+\arguments{
+\item{datastoreName}{[required] The name of the data store.}
+
+\item{retentionPeriod}{How long, in days, message data is kept for the data store.}
+
+\item{tags}{Metadata which can be used to manage the data store.}
+}
+\description{
+Creates a data store, which is a repository for messages.
+}
+\section{Accepted Parameters}{
+\preformatted{create_datastore(
   datastoreName = "string",
   retentionPeriod = list(
     unlimited = TRUE|FALSE,
@@ -18,16 +31,5 @@ create_datastore(
   )
 )
 }
-\arguments{
-\item{datastoreName}{[required] The name of the data store.}
-
-\item{retentionPeriod}{How long, in days, message data is kept for the data store.}
-
-\item{tags}{Metadata which can be used to manage the data store.}
 }
-\description{
-Creates a data store, which is a repository for messages.
-}
-\examples{
 
-}

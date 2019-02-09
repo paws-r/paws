@@ -4,25 +4,9 @@
 \alias{describe_security_groups}
 \title{Describes one or more of your security groups}
 \usage{
-describe_security_groups(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  GroupIds = list(
-    "string"
-  ),
-  GroupNames = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE,
-  NextToken = "string",
-  MaxResults = 123
-)
+describe_security_groups(Filters = NULL, GroupIds = NULL,
+  GroupNames = NULL, DryRun = NULL, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters. If using multiple filters for rules, the results include security groups for which any combination of rules - not necessarily a single rule - match all filters.
@@ -72,19 +56,42 @@ Default: Describes all your security groups.}
 Describes one or more of your security groups.
 }
 \details{
-A security group is for use with instances either in the EC2-Classic platform or in a specific VPC. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html}{Amazon EC2 Security Groups} in the \emph{Amazon Elastic Compute Cloud User Guide} and \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html}{Security Groups for Your VPC} in the \emph{Amazon Virtual Private Cloud User Guide}.
+A security group is for use with instances either in the EC2-Classic platform or in a specific VPC. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html}{Amazon EC2 Security Groups} in the \emph{Amazon Elastic Compute Cloud User Guide} and \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html}{Security Groups for Your VPC} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_security_groups(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  GroupIds = list(
+    "string"
+  ),
+  GroupNames = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE,
+  NextToken = "string",
+  MaxResults = 123
+)
+}
+}
+
 \examples{
 # This example describes the specified security group.
-describe_security_groups(
+\donttest{describe_security_groups(
   GroupIds = list(
     "sg-903004f8"
   )
-)
+)}
 
 # This example describes the security groups that include the specified
 # tag (Purpose=test).
-describe_security_groups(
+\donttest{describe_security_groups(
   Filters = list(
     list(
       Name = "tag:Purpose",
@@ -93,6 +100,6 @@ describe_security_groups(
       )
     )
   )
-)
+)}
 
 }

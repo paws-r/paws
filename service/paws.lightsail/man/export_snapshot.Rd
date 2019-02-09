@@ -2,17 +2,15 @@
 % Please edit documentation in R/paws.lightsail_operations.R
 \name{export_snapshot}
 \alias{export_snapshot}
-\title{Exports a Amazon Lightsail instance or block storage disk snapshot to Amazon Elastic Compute Cloud (Amazon EC2)}
+\title{Exports an Amazon Lightsail instance or block storage disk snapshot to Amazon Elastic Compute Cloud (Amazon EC2)}
 \usage{
-export_snapshot(
-  sourceSnapshotName = "string"
-)
+export_snapshot(sourceSnapshotName)
 }
 \arguments{
 \item{sourceSnapshotName}{[required] The name of the instance or disk snapshot to be exported to Amazon EC2.}
 }
 \description{
-Exports a Amazon Lightsail instance or block storage disk snapshot to Amazon Elastic Compute Cloud (Amazon EC2). This operation results in an export snapshot record that can be used with the \code{create cloud formation stack} operation to create new Amazon EC2 instances.
+Exports an Amazon Lightsail instance or block storage disk snapshot to Amazon Elastic Compute Cloud (Amazon EC2). This operation results in an export snapshot record that can be used with the \code{create cloud formation stack} operation to create new Amazon EC2 instances.
 }
 \details{
 Exported instance snapshots appear in Amazon EC2 as Amazon Machine Images (AMIs), and the instance system disk appears as an Amazon Elastic Block Store (Amazon EBS) volume. Exported disk snapshots appear in Amazon EC2 as Amazon EBS volumes. Snapshots are exported to the same Amazon Web Services Region in Amazon EC2 as the source Lightsail snapshot.
@@ -21,6 +19,10 @@ The \code{export snapshot} operation supports tag-based access control via resou
 
 Use the \code{get instance snapshots} or \code{get disk snapshots} operations to get a list of snapshots that you can export to Amazon EC2.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{export_snapshot(
+  sourceSnapshotName = "string"
+)
 }
+}
+

@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.waf_operations.R
 \name{create_size_constraint_set}
 \alias{create_size_constraint_set}
-\title{Creates a \code{SizeConstraintSet}}
+\title{Creates a SizeConstraintSet}
 \usage{
-create_size_constraint_set(
-  Name = "string",
-  ChangeToken = "string"
-)
+create_size_constraint_set(Name, ChangeToken)
 }
 \arguments{
 \item{Name}{[required] A friendly name or description of the SizeConstraintSet. You can't change \code{Name} after you create a \code{SizeConstraintSet}.}
@@ -28,12 +25,20 @@ To create and configure a \code{SizeConstraintSet}, perform the following steps:
 
 For more information about how to use the AWS WAF API to allow or block HTTP requests, see the \href{http://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_size_constraint_set(
+  Name = "string",
+  ChangeToken = "string"
+)
+}
+}
+
 \examples{
 # The following example creates size constraint set named
 # MySampleSizeConstraintSet.
-create_size_constraint_set(
+\donttest{create_size_constraint_set(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   Name = "MySampleSizeConstraintSet"
-)
+)}
 
 }

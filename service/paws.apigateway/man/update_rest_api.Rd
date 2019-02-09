@@ -4,7 +4,18 @@
 \alias{update_rest_api}
 \title{Changes information about the specified API}
 \usage{
-update_rest_api(
+update_rest_api(restApiId, patchOperations = NULL)
+}
+\arguments{
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+
+\item{patchOperations}{A list of update operations to be applied to the specified resource and in the order specified in this list.}
+}
+\description{
+Changes information about the specified API.
+}
+\section{Accepted Parameters}{
+\preformatted{update_rest_api(
   restApiId = "string",
   patchOperations = list(
     list(
@@ -16,14 +27,5 @@ update_rest_api(
   )
 )
 }
-\arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+}
 
-\item{patchOperations}{A list of update operations to be applied to the specified resource and in the order specified in this list.}
-}
-\description{
-Changes information about the specified API.
-}
-\examples{
-
-}

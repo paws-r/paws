@@ -4,7 +4,18 @@
 \alias{put_bucket_lifecycle_configuration}
 \title{Sets lifecycle configuration for your bucket}
 \usage{
-put_bucket_lifecycle_configuration(
+put_bucket_lifecycle_configuration(Bucket, LifecycleConfiguration = NULL)
+}
+\arguments{
+\item{Bucket}{[required]}
+
+\item{LifecycleConfiguration}{}
+}
+\description{
+Sets lifecycle configuration for your bucket. If a lifecycle configuration exists, it replaces it.
+}
+\section{Accepted Parameters}{
+\preformatted{put_bucket_lifecycle_configuration(
   Bucket = "string",
   LifecycleConfiguration = list(
     Rules = list(
@@ -57,18 +68,12 @@ put_bucket_lifecycle_configuration(
   )
 )
 }
-\arguments{
-\item{Bucket}{[required]}
+}
 
-\item{LifecycleConfiguration}{}
-}
-\description{
-Sets lifecycle configuration for your bucket. If a lifecycle configuration exists, it replaces it.
-}
 \examples{
 # The following example replaces existing lifecycle configuration, if any,
 # on the specified bucket. 
-put_bucket_lifecycle_configuration(
+\donttest{put_bucket_lifecycle_configuration(
   Bucket = "examplebucket",
   LifecycleConfiguration = list(
     Rules = list(
@@ -90,6 +95,6 @@ put_bucket_lifecycle_configuration(
       )
     )
   )
-)
+)}
 
 }

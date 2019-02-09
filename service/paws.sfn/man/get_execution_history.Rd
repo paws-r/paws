@@ -4,12 +4,8 @@
 \alias{get_execution_history}
 \title{Returns the history of the specified execution as a list of events}
 \usage{
-get_execution_history(
-  executionArn = "string",
-  maxResults = 123,
-  reverseOrder = TRUE|FALSE,
-  nextToken = "string"
-)
+get_execution_history(executionArn, maxResults = NULL,
+  reverseOrder = NULL, nextToken = NULL)
 }
 \arguments{
 \item{executionArn}{[required] The Amazon Resource Name (ARN) of the execution.}
@@ -20,14 +16,21 @@ This is only an upper limit. The actual number of results returned per call migh
 
 \item{reverseOrder}{Lists events in descending order of their \code{timeStamp}.}
 
-\item{nextToken}{If \code{nextToken} is returned, there are more results available. The value of \code{nextToken} is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 60 seconds. Using an expired pagination token will return an \emph{HTTP 400 InvalidToken} error.}
+\item{nextToken}{If \code{nextToken} is returned, there are more results available. The value of \code{nextToken} is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an expired pagination token will return an \emph{HTTP 400 InvalidToken} error.}
 }
 \description{
 Returns the history of the specified execution as a list of events. By default, the results are returned in ascending order of the \code{timeStamp} of the events. Use the \code{reverseOrder} parameter to get the latest events first.
 }
 \details{
-If \code{nextToken} is returned, there are more results available. The value of \code{nextToken} is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 60 seconds. Using an expired pagination token will return an \emph{HTTP 400 InvalidToken} error.
+If \code{nextToken} is returned, there are more results available. The value of \code{nextToken} is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an expired pagination token will return an \emph{HTTP 400 InvalidToken} error.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{get_execution_history(
+  executionArn = "string",
+  maxResults = 123,
+  reverseOrder = TRUE|FALSE,
+  nextToken = "string"
+)
+}
+}
 
-}

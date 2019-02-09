@@ -4,12 +4,7 @@
 \alias{modify_hosts}
 \title{Modify the auto-placement setting of a Dedicated Host}
 \usage{
-modify_hosts(
-  AutoPlacement = "on"|"off",
-  HostIds = list(
-    "string"
-  )
-)
+modify_hosts(AutoPlacement, HostIds)
 }
 \arguments{
 \item{AutoPlacement}{[required] Specify whether to enable or disable auto-placement.}
@@ -19,6 +14,13 @@ modify_hosts(
 \description{
 Modify the auto-placement setting of a Dedicated Host. When auto-placement is enabled, any instances that you launch with a tenancy of \code{host} but without a specific host ID are placed onto any available Dedicated Host in your account that has auto-placement enabled. When auto-placement is disabled, you need to provide a host ID to have the instance launch onto a specific host. If no host ID is provided, the instance is launched onto a suitable host with auto-placement enabled.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_hosts(
+  AutoPlacement = "on"|"off",
+  HostIds = list(
+    "string"
+  )
+)
 }
+}
+

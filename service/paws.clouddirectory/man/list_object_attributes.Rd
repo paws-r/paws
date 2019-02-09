@@ -4,19 +4,8 @@
 \alias{list_object_attributes}
 \title{Lists all attributes that are associated with an object}
 \usage{
-list_object_attributes(
-  DirectoryArn = "string",
-  ObjectReference = list(
-    Selector = "string"
-  ),
-  NextToken = "string",
-  MaxResults = 123,
-  ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL",
-  FacetFilter = list(
-    SchemaArn = "string",
-    FacetName = "string"
-  )
-)
+list_object_attributes(DirectoryArn, ObjectReference, NextToken = NULL,
+  MaxResults = NULL, ConsistencyLevel = NULL, FacetFilter = NULL)
 }
 \arguments{
 \item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory where the object resides. For more information, see arns.}
@@ -34,6 +23,20 @@ list_object_attributes(
 \description{
 Lists all attributes that are associated with an object.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_object_attributes(
+  DirectoryArn = "string",
+  ObjectReference = list(
+    Selector = "string"
+  ),
+  NextToken = "string",
+  MaxResults = 123,
+  ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL",
+  FacetFilter = list(
+    SchemaArn = "string",
+    FacetName = "string"
+  )
+)
 }
+}
+

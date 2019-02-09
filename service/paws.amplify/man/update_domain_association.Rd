@@ -4,17 +4,8 @@
 \alias{update_domain_association}
 \title{Create a new DomainAssociation on an App}
 \usage{
-update_domain_association(
-  appId = "string",
-  domainName = "string",
-  enableAutoSubDomain = TRUE|FALSE,
-  subDomainSettings = list(
-    list(
-      prefix = "string",
-      branchName = "string"
-    )
-  )
-)
+update_domain_association(appId, domainName, enableAutoSubDomain = NULL,
+  subDomainSettings)
 }
 \arguments{
 \item{appId}{[required] Unique Id for an Amplify App.}
@@ -28,6 +19,18 @@ update_domain_association(
 \description{
 Create a new DomainAssociation on an App
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_domain_association(
+  appId = "string",
+  domainName = "string",
+  enableAutoSubDomain = TRUE|FALSE,
+  subDomainSettings = list(
+    list(
+      prefix = "string",
+      branchName = "string"
+    )
+  )
+)
 }
+}
+

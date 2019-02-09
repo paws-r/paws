@@ -6,8 +6,8 @@
 \alias{paws.elasticache-package}
 \title{paws.elasticache: Amazon ElastiCache}
 \description{
-Amazon ElastiCache is a web service that makes it easier to
-set up, operate, and scale a distributed cache in the cloud.
+Amazon ElastiCache is a web service that makes it
+    easier to set up, operate, and scale a distributed cache in the cloud.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

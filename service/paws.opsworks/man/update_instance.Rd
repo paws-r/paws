@@ -4,22 +4,11 @@
 \alias{update_instance}
 \title{Updates a specified instance}
 \usage{
-update_instance(
-  InstanceId = "string",
-  LayerIds = list(
-    "string"
-  ),
-  InstanceType = "string",
-  AutoScalingType = "load"|"timer",
-  Hostname = "string",
-  Os = "string",
-  AmiId = "string",
-  SshKeyName = "string",
-  Architecture = "x86_64"|"i386",
-  InstallUpdatesOnBoot = TRUE|FALSE,
-  EbsOptimized = TRUE|FALSE,
-  AgentVersion = "string"
-)
+update_instance(InstanceId, LayerIds = NULL, InstanceType = NULL,
+  AutoScalingType = NULL, Hostname = NULL, Os = NULL, AmiId = NULL,
+  SshKeyName = NULL, Architecture = NULL,
+  InstallUpdatesOnBoot = NULL, EbsOptimized = NULL,
+  AgentVersion = NULL)
 }
 \arguments{
 \item{InstanceId}{[required] The instance ID.}
@@ -75,6 +64,23 @@ Updates a specified instance.
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_instance(
+  InstanceId = "string",
+  LayerIds = list(
+    "string"
+  ),
+  InstanceType = "string",
+  AutoScalingType = "load"|"timer",
+  Hostname = "string",
+  Os = "string",
+  AmiId = "string",
+  SshKeyName = "string",
+  Architecture = "x86_64"|"i386",
+  InstallUpdatesOnBoot = TRUE|FALSE,
+  EbsOptimized = TRUE|FALSE,
+  AgentVersion = "string"
+)
 }
+}
+

@@ -4,18 +4,8 @@
 \alias{start_dominant_language_detection_job}
 \title{Starts an asynchronous dominant language detection job for a collection of documents}
 \usage{
-start_dominant_language_detection_job(
-  InputDataConfig = list(
-    S3Uri = "string",
-    InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-  ),
-  OutputDataConfig = list(
-    S3Uri = "string"
-  ),
-  DataAccessRoleArn = "string",
-  JobName = "string",
-  ClientRequestToken = "string"
-)
+start_dominant_language_detection_job(InputDataConfig, OutputDataConfig,
+  DataAccessRoleArn, JobName = NULL, ClientRequestToken = NULL)
 }
 \arguments{
 \item{InputDataConfig}{[required] Specifies the format and location of the input data for the job.}
@@ -31,6 +21,19 @@ start_dominant_language_detection_job(
 \description{
 Starts an asynchronous dominant language detection job for a collection of documents. Use the operation to track the status of a job.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_dominant_language_detection_job(
+  InputDataConfig = list(
+    S3Uri = "string",
+    InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
+  ),
+  OutputDataConfig = list(
+    S3Uri = "string"
+  ),
+  DataAccessRoleArn = "string",
+  JobName = "string",
+  ClientRequestToken = "string"
+)
 }
+}
+

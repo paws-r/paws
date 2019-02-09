@@ -4,10 +4,7 @@
 \alias{stop_assessment_run}
 \title{Stops the assessment run that is specified by the ARN of the assessment run}
 \usage{
-stop_assessment_run(
-  assessmentRunArn = "string",
-  stopAction = "START_EVALUATION"|"SKIP_EVALUATION"
-)
+stop_assessment_run(assessmentRunArn, stopAction = NULL)
 }
 \arguments{
 \item{assessmentRunArn}{[required] The ARN of the assessment run that you want to stop.}
@@ -17,11 +14,19 @@ stop_assessment_run(
 \description{
 Stops the assessment run that is specified by the ARN of the assessment run.
 }
+\section{Accepted Parameters}{
+\preformatted{stop_assessment_run(
+  assessmentRunArn = "string",
+  stopAction = "START_EVALUATION"|"SKIP_EVALUATION"
+)
+}
+}
+
 \examples{
 # Stops the assessment run that is specified by the ARN of the assessment
 # run.
-stop_assessment_run(
+\donttest{stop_assessment_run(
   assessmentRunArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-it5r2S4T/run/0-11LMTAVe"
-)
+)}
 
 }

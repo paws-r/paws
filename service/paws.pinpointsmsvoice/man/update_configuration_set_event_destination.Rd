@@ -4,7 +4,21 @@
 \alias{update_configuration_set_event_destination}
 \title{Update an event destination in a configuration set}
 \usage{
-update_configuration_set_event_destination(
+update_configuration_set_event_destination(ConfigurationSetName,
+  EventDestination = NULL, EventDestinationName)
+}
+\arguments{
+\item{ConfigurationSetName}{[required] ConfigurationSetName}
+
+\item{EventDestination}{}
+
+\item{EventDestinationName}{[required] EventDestinationName}
+}
+\description{
+Update an event destination in a configuration set. An event destination is a location that you publish information about your voice calls to. For example, you can log an event to an Amazon CloudWatch destination when a call fails.
+}
+\section{Accepted Parameters}{
+\preformatted{update_configuration_set_event_destination(
   ConfigurationSetName = "string",
   EventDestination = list(
     CloudWatchLogsDestination = list(
@@ -18,21 +32,13 @@ update_configuration_set_event_destination(
     ),
     MatchingEventTypes = list(
       "INITIATED_CALL"|"RINGING"|"ANSWERED"|"COMPLETED_CALL"|"BUSY"|"FAILED"|"NO_ANSWER"
+    ),
+    SnsDestination = list(
+      TopicArn = "string"
     )
   ),
   EventDestinationName = "string"
 )
 }
-\arguments{
-\item{ConfigurationSetName}{[required] ConfigurationSetName}
-
-\item{EventDestination}{}
-
-\item{EventDestinationName}{[required] EventDestinationName}
 }
-\description{
-Update an event destination in a configuration set. An event destination is a location that you publish information about your voice calls to. For example, you can log an event to an Amazon CloudWatch destination when a call fails.
-}
-\examples{
 
-}

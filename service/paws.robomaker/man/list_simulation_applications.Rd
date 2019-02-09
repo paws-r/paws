@@ -4,19 +4,8 @@
 \alias{list_simulation_applications}
 \title{Returns a list of simulation applications}
 \usage{
-list_simulation_applications(
-  versionQualifier = "string",
-  nextToken = "string",
-  maxResults = 123,
-  filters = list(
-    list(
-      name = "string",
-      values = list(
-        "string"
-      )
-    )
-  )
-)
+list_simulation_applications(versionQualifier = NULL, nextToken = NULL,
+  maxResults = NULL, filters = NULL)
 }
 \arguments{
 \item{versionQualifier}{The version qualifier of the simulation application.}
@@ -32,6 +21,20 @@ This token should be treated as an opaque identifier that is only used to retrie
 \description{
 Returns a list of simulation applications. You can optionally provide filters to retrieve specific simulation applications.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_simulation_applications(
+  versionQualifier = "string",
+  nextToken = "string",
+  maxResults = 123,
+  filters = list(
+    list(
+      name = "string",
+      values = list(
+        "string"
+      )
+    )
+  )
+)
 }
+}
+

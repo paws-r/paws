@@ -4,20 +4,8 @@
 \alias{describe_spot_instance_requests}
 \title{Describes the specified Spot Instance requests}
 \usage{
-describe_spot_instance_requests(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE,
-  SpotInstanceRequestIds = list(
-    "string"
-  )
-)
+describe_spot_instance_requests(Filters = NULL, DryRun = NULL,
+  SpotInstanceRequestIds = NULL, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -53,7 +41,7 @@ describe_spot_instance_requests(
 \item \code{product-description} - The product description associated with the instance (\code{Linux/UNIX} | \code{Windows}).
 \item \code{spot-instance-request-id} - The Spot Instance request ID.
 \item \code{spot-price} - The maximum hourly price for any Spot Instance launched to fulfill the request.
-\item \code{state} - The state of the Spot Instance request (\code{open} | \code{active} | \code{closed} | \code{cancelled} | \code{failed}). Spot request status information can help you track your Amazon EC2 Spot Instance requests. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html}{Spot Request Status} in the \emph{Amazon EC2 User Guide for Linux Instances}.
+\item \code{state} - The state of the Spot Instance request (\code{open} | \code{active} | \code{closed} | \code{cancelled} | \code{failed}). Spot request status information can help you track your Amazon EC2 Spot Instance requests. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html}{Spot Request Status} in the \emph{Amazon EC2 User Guide for Linux Instances}.
 \item \code{status-code} - The short code describing the most recent evaluation of your Spot Instance request.
 \item \code{status-message} - The message explaining the status of the Spot Instance request.
 \item \code{tag}:<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for the filter name and \code{TeamA} for the filter value.
@@ -66,6 +54,10 @@ describe_spot_instance_requests(
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{SpotInstanceRequestIds}{One or more Spot Instance request IDs.}
+
+\item{NextToken}{The token to request the next set of results. This value is \code{null} when there are no more results to return.}
+
+\item{MaxResults}{The maximum number of results to return in a single call. Specify a value between 5 and 1000. To retrieve the remaining results, make another call with the returned \code{NextToken} value.}
 }
 \description{
 Describes the specified Spot Instance requests.
@@ -73,14 +65,36 @@ Describes the specified Spot Instance requests.
 \details{
 You can use \code{DescribeSpotInstanceRequests} to find a running Spot Instance by examining the response. If the status of the Spot Instance is \code{fulfilled}, the instance ID appears in the response and contains the identifier of the instance. Alternatively, you can use DescribeInstances with a filter to look for instances where the instance lifecycle is \code{spot}.
 
+We recommend that you set \code{MaxResults} to a value between 5 and 1000 to limit the number of results returned. This paginates the output, which makes the list more manageable and returns the results faster. If the list of results exceeds your \code{MaxResults} value, then that number of results is returned along with a \code{NextToken} value that can be passed to a subsequent \code{DescribeSpotInstanceRequests} request to retrieve the remaining results.
+
 Spot Instance requests are deleted four hours after they are canceled and their instances are terminated.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_spot_instance_requests(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  DryRun = TRUE|FALSE,
+  SpotInstanceRequestIds = list(
+    "string"
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
+}
+}
+
 \examples{
 # This example describes the specified Spot Instance request.
-describe_spot_instance_requests(
+\donttest{describe_spot_instance_requests(
   SpotInstanceRequestIds = list(
     "sir-08b93456"
   )
-)
+)}
 
 }

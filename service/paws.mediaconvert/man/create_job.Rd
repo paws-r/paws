@@ -4,7 +4,35 @@
 \alias{create_job}
 \title{Create a new transcoding job}
 \usage{
-create_job(
+create_job(AccelerationSettings = NULL, BillingTagsSource = NULL,
+  ClientRequestToken = NULL, JobTemplate = NULL, Queue = NULL, Role,
+  Settings, UserMetadata = NULL)
+}
+\arguments{
+\item{AccelerationSettings}{This is a beta feature. If you are interested in using this feature, please contact AWS customer support.}
+
+\item{BillingTagsSource}{}
+
+\item{ClientRequestToken}{Idempotency token for CreateJob operation.}
+
+\item{JobTemplate}{When you create a job, you can either specify a job template or specify the transcoding settings individually}
+
+\item{Queue}{Optional. When you create a job, you can specify a queue to send it to. If you don't specify, the job will go to the default queue. For more about queues, see the User Guide topic at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html.}
+
+\item{Role}{[required] Required. The IAM role you use for creating this job. For details about permissions, see the User Guide topic at the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/iam-role.html.}
+
+\item{Settings}{[required]}
+
+\item{UserMetadata}{User-defined metadata that you want to associate with an MediaConvert job. You specify metadata in key/value pairs.}
+}
+\description{
+Create a new transcoding job. For information about jobs and job settings, see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
+}
+\section{Accepted Parameters}{
+\preformatted{create_job(
+  AccelerationSettings = list(
+    Mode = "DISABLED"|"ENABLED"
+  ),
   BillingTagsSource = "QUEUE"|"PRESET"|"JOB_TEMPLATE",
   ClientRequestToken = "string",
   JobTemplate = "string",
@@ -75,9 +103,12 @@ create_job(
                 SourceFile = "string",
                 TimeDelta = 123
               ),
-              SourceType = "ANCILLARY"|"DVB_SUB"|"EMBEDDED"|"SCTE20"|"SCC"|"TTML"|"STL"|"SRT"|"SMI"|"TELETEXT"|"NULL_SOURCE",
+              SourceType = "ANCILLARY"|"DVB_SUB"|"EMBEDDED"|"SCTE20"|"SCC"|"TTML"|"STL"|"SRT"|"SMI"|"TELETEXT"|"NULL_SOURCE"|"IMSC",
               TeletextSourceSettings = list(
                 PageNumber = "string"
+              ),
+              TrackSourceSettings = list(
+                TrackNumber = 123
               )
             )
           )
@@ -118,6 +149,9 @@ create_job(
         ),
         ProgramNumber = 123,
         PsiControl = "IGNORE_PSI"|"USE_PSI",
+        SupplementalImps = list(
+          "string"
+        ),
         TimecodeSource = "EMBEDDED"|"ZEROBASED"|"SPECIFIEDSTART",
         VideoSelector = list(
           ColorSpace = "FOLLOW"|"REC_601"|"REC_709"|"HDR10"|"HLG_2020",
@@ -395,6 +429,7 @@ create_job(
                     FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
                     FontOpacity = 123,
                     FontResolution = 123,
+                    FontScript = "AUTOMATIC"|"HANS"|"HANT",
                     FontSize = 123,
                     OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
                     OutlineSize = 123,
@@ -414,6 +449,7 @@ create_job(
                     FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
                     FontOpacity = 123,
                     FontResolution = 123,
+                    FontScript = "AUTOMATIC"|"HANS"|"HANT",
                     FontSize = 123,
                     OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
                     OutlineSize = 123,
@@ -424,6 +460,9 @@ create_job(
                     TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
                     XPosition = 123,
                     YPosition = 123
+                  ),
+                  EmbeddedDestinationSettings = list(
+                    Destination608ChannelNumber = 123
                   ),
                   SccDestinationSettings = list(
                     Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
@@ -473,6 +512,7 @@ create_job(
                 EbpAudioInterval = "VIDEO_AND_FIXED_INTERVALS"|"VIDEO_INTERVAL",
                 EbpPlacement = "VIDEO_AND_AUDIO_PIDS"|"VIDEO_PID",
                 EsRateInPes = "INCLUDE"|"EXCLUDE",
+                ForceTsVideoEbpOrder = "FORCE"|"DEFAULT",
                 FragmentTime = 123.0,
                 MaxPcrInterval = 123,
                 MinEbpInterval = 123,
@@ -794,24 +834,5 @@ create_job(
   )
 )
 }
-\arguments{
-\item{BillingTagsSource}{}
-
-\item{ClientRequestToken}{Idempotency token for CreateJob operation.}
-
-\item{JobTemplate}{When you create a job, you can either specify a job template or specify the transcoding settings individually}
-
-\item{Queue}{Optional. When you create a job, you can specify a queue to send it to. If you don't specify, the job will go to the default queue. For more about queues, see the User Guide topic at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html.}
-
-\item{Role}{[required] Required. The IAM role you use for creating this job. For details about permissions, see the User Guide topic at the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/iam-role.html.}
-
-\item{Settings}{[required]}
-
-\item{UserMetadata}{User-defined metadata that you want to associate with an MediaConvert job. You specify metadata in key/value pairs.}
 }
-\description{
-Create a new transcoding job. For information about jobs and job settings, see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
-}
-\examples{
 
-}

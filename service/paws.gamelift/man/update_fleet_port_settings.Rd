@@ -4,25 +4,9 @@
 \alias{update_fleet_port_settings}
 \title{Updates port settings for a fleet}
 \usage{
-update_fleet_port_settings(
-  FleetId = "string",
-  InboundPermissionAuthorizations = list(
-    list(
-      FromPort = 123,
-      ToPort = 123,
-      IpRange = "string",
-      Protocol = "TCP"|"UDP"
-    )
-  ),
-  InboundPermissionRevocations = list(
-    list(
-      FromPort = 123,
-      ToPort = 123,
-      IpRange = "string",
-      Protocol = "TCP"|"UDP"
-    )
-  )
-)
+update_fleet_port_settings(FleetId,
+  InboundPermissionAuthorizations = NULL,
+  InboundPermissionRevocations = NULL)
 }
 \arguments{
 \item{FleetId}{[required] Unique identifier for a fleet to update port settings for.}
@@ -35,7 +19,6 @@ update_fleet_port_settings(
 Updates port settings for a fleet. To update settings, specify the fleet ID to be updated and list the permissions you want to update. List the permissions you want to add in \code{InboundPermissionAuthorizations}, and permissions you want to remove in \code{InboundPermissionRevocations}. Permissions to be removed must match existing fleet permissions. If successful, the fleet ID for the updated fleet is returned.
 }
 \details{
-Fleet-related operations include:
 \itemize{
 \item CreateFleet
 \item ListFleets
@@ -58,6 +41,26 @@ Fleet-related operations include:
 \item StopFleetActions
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_fleet_port_settings(
+  FleetId = "string",
+  InboundPermissionAuthorizations = list(
+    list(
+      FromPort = 123,
+      ToPort = 123,
+      IpRange = "string",
+      Protocol = "TCP"|"UDP"
+    )
+  ),
+  InboundPermissionRevocations = list(
+    list(
+      FromPort = 123,
+      ToPort = 123,
+      IpRange = "string",
+      Protocol = "TCP"|"UDP"
+    )
+  )
+)
 }
+}
+

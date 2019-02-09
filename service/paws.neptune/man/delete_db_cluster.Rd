@@ -4,11 +4,8 @@
 \alias{delete_db_cluster}
 \title{The DeleteDBCluster action deletes a previously provisioned DB cluster}
 \usage{
-delete_db_cluster(
-  DBClusterIdentifier = "string",
-  SkipFinalSnapshot = TRUE|FALSE,
-  FinalDBSnapshotIdentifier = "string"
-)
+delete_db_cluster(DBClusterIdentifier, SkipFinalSnapshot = NULL,
+  FinalDBSnapshotIdentifier = NULL)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The DB cluster identifier for the DB cluster to be deleted. This parameter isn't case-sensitive.
@@ -38,6 +35,12 @@ Constraints:
 \description{
 The DeleteDBCluster action deletes a previously provisioned DB cluster. When you delete a DB cluster, all automated backups for that DB cluster are deleted and can't be recovered. Manual DB cluster snapshots of the specified DB cluster are not deleted.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_db_cluster(
+  DBClusterIdentifier = "string",
+  SkipFinalSnapshot = TRUE|FALSE,
+  FinalDBSnapshotIdentifier = "string"
+)
 }
+}
+

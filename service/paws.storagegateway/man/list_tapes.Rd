@@ -4,13 +4,7 @@
 \alias{list_tapes}
 \title{Lists virtual tapes in your virtual tape library (VTL) and your virtual tape shelf (VTS)}
 \usage{
-list_tapes(
-  TapeARNs = list(
-    "string"
-  ),
-  Marker = "string",
-  Limit = 123
-)
+list_tapes(TapeARNs = NULL, Marker = NULL, Limit = NULL)
 }
 \arguments{
 \item{TapeARNs}{}
@@ -25,6 +19,14 @@ Lists virtual tapes in your virtual tape library (VTL) and your virtual tape she
 \details{
 This operation supports pagination. By default, the operation returns a maximum of up to 100 tapes. You can optionally specify the \code{Limit} parameter in the body to limit the number of tapes in the response. If the number of tapes returned in the response is truncated, the response includes a \code{Marker} element that you can use in your subsequent request to retrieve the next set of tapes. This operation is only supported in the tape gateway type.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_tapes(
+  TapeARNs = list(
+    "string"
+  ),
+  Marker = "string",
+  Limit = 123
+)
 }
+}
+

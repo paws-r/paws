@@ -4,10 +4,7 @@
 \alias{describe_placement}
 \title{Describes a placement in a project}
 \usage{
-describe_placement(
-  placementName = "string",
-  projectName = "string"
-)
+describe_placement(placementName, projectName)
 }
 \arguments{
 \item{placementName}{[required] The name of the placement within a project.}
@@ -17,6 +14,11 @@ describe_placement(
 \description{
 Describes a placement in a project.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_placement(
+  placementName = "string",
+  projectName = "string"
+)
 }
+}
+

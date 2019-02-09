@@ -4,36 +4,17 @@
 \alias{create_multipart_upload}
 \title{Initiates a multipart upload and returns an upload ID}
 \usage{
-create_multipart_upload(
-  ACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"aws-exec-read"|"bucket-owner-read"|"bucket-owner-full-control",
-  Bucket = "string",
-  CacheControl = "string",
-  ContentDisposition = "string",
-  ContentEncoding = "string",
-  ContentLanguage = "string",
-  ContentType = "string",
-  Expires = as.POSIXct("2015-01-01"),
-  GrantFullControl = "string",
-  GrantRead = "string",
-  GrantReadACP = "string",
-  GrantWriteACP = "string",
-  Key = "string",
-  Metadata = list(
-    "string"
-  ),
-  ServerSideEncryption = "AES256"|"aws:kms",
-  StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER",
-  WebsiteRedirectLocation = "string",
-  SSECustomerAlgorithm = "string",
-  SSECustomerKey = raw,
-  SSECustomerKeyMD5 = "string",
-  SSEKMSKeyId = "string",
-  RequestPayer = "requester",
-  Tagging = "string",
-  ObjectLockMode = "GOVERNANCE"|"COMPLIANCE",
-  ObjectLockRetainUntilDate = as.POSIXct("2015-01-01"),
-  ObjectLockLegalHoldStatus = "ON"|"OFF"
-)
+create_multipart_upload(ACL = NULL, Bucket, CacheControl = NULL,
+  ContentDisposition = NULL, ContentEncoding = NULL,
+  ContentLanguage = NULL, ContentType = NULL, Expires = NULL,
+  GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL,
+  GrantWriteACP = NULL, Key, Metadata = NULL,
+  ServerSideEncryption = NULL, StorageClass = NULL,
+  WebsiteRedirectLocation = NULL, SSECustomerAlgorithm = NULL,
+  SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL,
+  SSEKMSKeyId = NULL, RequestPayer = NULL, Tagging = NULL,
+  ObjectLockMode = NULL, ObjectLockRetainUntilDate = NULL,
+  ObjectLockLegalHoldStatus = NULL)
 }
 \arguments{
 \item{ACL}{The canned ACL to apply to the object.}
@@ -72,7 +53,7 @@ create_multipart_upload(
 
 \item{SSECustomerAlgorithm}{Specifies the algorithm to use to when encrypting the object (e.g., AES256).}
 
-\item{SSECustomerKey}{Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm header.}
+\item{SSECustomerKey}{Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-side​-encryption​-customer-algorithm header.}
 
 \item{SSECustomerKeyMD5}{Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.}
 
@@ -94,11 +75,45 @@ Initiates a multipart upload and returns an upload ID.
 \details{
 \strong{Note:} After you initiate multipart upload and upload one or more parts, you must either complete or abort multipart upload in order to stop getting charged for storage of the uploaded parts. Only after you either complete or abort multipart upload, Amazon S3 frees up the parts storage and stops charging you for the parts storage.
 }
+\section{Accepted Parameters}{
+\preformatted{create_multipart_upload(
+  ACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"aws-exec-read"|"bucket-owner-read"|"bucket-owner-full-control",
+  Bucket = "string",
+  CacheControl = "string",
+  ContentDisposition = "string",
+  ContentEncoding = "string",
+  ContentLanguage = "string",
+  ContentType = "string",
+  Expires = as.POSIXct("2015-01-01"),
+  GrantFullControl = "string",
+  GrantRead = "string",
+  GrantReadACP = "string",
+  GrantWriteACP = "string",
+  Key = "string",
+  Metadata = list(
+    "string"
+  ),
+  ServerSideEncryption = "AES256"|"aws:kms",
+  StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER",
+  WebsiteRedirectLocation = "string",
+  SSECustomerAlgorithm = "string",
+  SSECustomerKey = raw,
+  SSECustomerKeyMD5 = "string",
+  SSEKMSKeyId = "string",
+  RequestPayer = "requester",
+  Tagging = "string",
+  ObjectLockMode = "GOVERNANCE"|"COMPLIANCE",
+  ObjectLockRetainUntilDate = as.POSIXct("2015-01-01"),
+  ObjectLockLegalHoldStatus = "ON"|"OFF"
+)
+}
+}
+
 \examples{
 # The following example initiates a multipart upload.
-create_multipart_upload(
+\donttest{create_multipart_upload(
   Bucket = "examplebucket",
   Key = "largeobject"
-)
+)}
 
 }

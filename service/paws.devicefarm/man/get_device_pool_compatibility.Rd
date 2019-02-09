@@ -4,12 +4,52 @@
 \alias{get_device_pool_compatibility}
 \title{Gets information about compatibility with a device pool}
 \usage{
-get_device_pool_compatibility(
+get_device_pool_compatibility(devicePoolArn, appArn = NULL,
+  testType = NULL, test = NULL, configuration = NULL)
+}
+\arguments{
+\item{devicePoolArn}{[required] The device pool's ARN.}
+
+\item{appArn}{The ARN of the app that is associated with the specified device pool.}
+
+\item{testType}{The test type for the specified device pool.
+
+Allowed values include the following:
+\itemize{
+\item BUILTIN\_FUZZ: The built-in fuzz type.
+\item BUILTIN\_EXPLORER: For Android, an app explorer that will traverse an Android app, interacting with it and capturing screenshots at the same time.
+\item APPIUM\_JAVA\_JUNIT: The Appium Java JUnit type.
+\item APPIUM\_JAVA\_TESTNG: The Appium Java TestNG type.
+\item APPIUM\_PYTHON: The Appium Python type.
+\item APPIUM\_NODE: The Appium Node.js type.
+\item APPIUM\_RUBY: The Appium Ruby type.
+\item APPIUM\_WEB\_JAVA\_JUNIT: The Appium Java JUnit type for web apps.
+\item APPIUM\_WEB\_JAVA\_TESTNG: The Appium Java TestNG type for web apps.
+\item APPIUM\_WEB\_PYTHON: The Appium Python type for web apps.
+\item APPIUM\_WEB\_NODE: The Appium Node.js type for web apps.
+\item APPIUM\_WEB\_RUBY: The Appium Ruby type for web apps.
+\item CALABASH: The Calabash type.
+\item INSTRUMENTATION: The Instrumentation type.
+\item UIAUTOMATION: The uiautomation type.
+\item UIAUTOMATOR: The uiautomator type.
+\item XCTEST: The XCode test type.
+\item XCTEST\_UI: The XCode UI test type.
+}}
+
+\item{test}{Information about the uploaded test to be run against the device pool.}
+
+\item{configuration}{An object containing information about the settings for a run.}
+}
+\description{
+Gets information about compatibility with a device pool.
+}
+\section{Accepted Parameters}{
+\preformatted{get_device_pool_compatibility(
   devicePoolArn = "string",
   appArn = "string",
-  testType = "BUILTIN_FUZZ"|"BUILTIN_EXPLORER"|"WEB_PERFORMANCE_PROFILE"|"APPIUM_JAVA_JUNIT"|"APPIUM_JAVA_TESTNG"|"APPIUM_PYTHON"|"APPIUM_WEB_JAVA_JUNIT"|"APPIUM_WEB_JAVA_TESTNG"|"APPIUM_WEB_PYTHON"|"CALABASH"|"INSTRUMENTATION"|"UIAUTOMATION"|"UIAUTOMATOR"|"XCTEST"|"XCTEST_UI"|"REMOTE_ACCESS_RECORD"|"REMOTE_ACCESS_REPLAY",
+  testType = "BUILTIN_FUZZ"|"BUILTIN_EXPLORER"|"WEB_PERFORMANCE_PROFILE"|"APPIUM_JAVA_JUNIT"|"APPIUM_JAVA_TESTNG"|"APPIUM_PYTHON"|"APPIUM_NODE"|"APPIUM_RUBY"|"APPIUM_WEB_JAVA_JUNIT"|"APPIUM_WEB_JAVA_TESTNG"|"APPIUM_WEB_PYTHON"|"APPIUM_WEB_NODE"|"APPIUM_WEB_RUBY"|"CALABASH"|"INSTRUMENTATION"|"UIAUTOMATION"|"UIAUTOMATOR"|"XCTEST"|"XCTEST_UI"|"REMOTE_ACCESS_RECORD"|"REMOTE_ACCESS_REPLAY",
   test = list(
-    type = "BUILTIN_FUZZ"|"BUILTIN_EXPLORER"|"WEB_PERFORMANCE_PROFILE"|"APPIUM_JAVA_JUNIT"|"APPIUM_JAVA_TESTNG"|"APPIUM_PYTHON"|"APPIUM_WEB_JAVA_JUNIT"|"APPIUM_WEB_JAVA_TESTNG"|"APPIUM_WEB_PYTHON"|"CALABASH"|"INSTRUMENTATION"|"UIAUTOMATION"|"UIAUTOMATOR"|"XCTEST"|"XCTEST_UI"|"REMOTE_ACCESS_RECORD"|"REMOTE_ACCESS_REPLAY",
+    type = "BUILTIN_FUZZ"|"BUILTIN_EXPLORER"|"WEB_PERFORMANCE_PROFILE"|"APPIUM_JAVA_JUNIT"|"APPIUM_JAVA_TESTNG"|"APPIUM_PYTHON"|"APPIUM_NODE"|"APPIUM_RUBY"|"APPIUM_WEB_JAVA_JUNIT"|"APPIUM_WEB_JAVA_TESTNG"|"APPIUM_WEB_PYTHON"|"APPIUM_WEB_NODE"|"APPIUM_WEB_RUBY"|"CALABASH"|"INSTRUMENTATION"|"UIAUTOMATION"|"UIAUTOMATOR"|"XCTEST"|"XCTEST_UI"|"REMOTE_ACCESS_RECORD"|"REMOTE_ACCESS_REPLAY",
     testPackageArn = "string",
     testSpecArn = "string",
     filter = "string",
@@ -52,45 +92,15 @@ get_device_pool_compatibility(
   )
 )
 }
-\arguments{
-\item{devicePoolArn}{[required] The device pool's ARN.}
-
-\item{appArn}{The ARN of the app that is associated with the specified device pool.}
-
-\item{testType}{The test type for the specified device pool.
-
-Allowed values include the following:
-\itemize{
-\item BUILTIN\_FUZZ: The built-in fuzz type.
-\item BUILTIN\_EXPLORER: For Android, an app explorer that will traverse an Android app, interacting with it and capturing screenshots at the same time.
-\item APPIUM\_JAVA\_JUNIT: The Appium Java JUnit type.
-\item APPIUM\_JAVA\_TESTNG: The Appium Java TestNG type.
-\item APPIUM\_PYTHON: The Appium Python type.
-\item APPIUM\_WEB\_JAVA\_JUNIT: The Appium Java JUnit type for Web apps.
-\item APPIUM\_WEB\_JAVA\_TESTNG: The Appium Java TestNG type for Web apps.
-\item APPIUM\_WEB\_PYTHON: The Appium Python type for Web apps.
-\item CALABASH: The Calabash type.
-\item INSTRUMENTATION: The Instrumentation type.
-\item UIAUTOMATION: The uiautomation type.
-\item UIAUTOMATOR: The uiautomator type.
-\item XCTEST: The XCode test type.
-\item XCTEST\_UI: The XCode UI test type.
-}}
-
-\item{test}{Information about the uploaded test to be run against the device pool.}
-
-\item{configuration}{An object containing information about the settings for a run.}
 }
-\description{
-Gets information about compatibility with a device pool.
-}
+
 \examples{
 # The following example returns information about the compatibility of a
 # specific device pool, given its ARN.
-get_device_pool_compatibility(
+\donttest{get_device_pool_compatibility(
   appArn = "arn:aws:devicefarm:us-west-2::app:123-456-EXAMPLE-GUID",
   devicePoolArn = "arn:aws:devicefarm:us-west-2::devicepool:123-456-EXAMPLE-GUID",
   testType = "APPIUM_PYTHON"
-)
+)}
 
 }

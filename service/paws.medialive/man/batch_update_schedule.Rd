@@ -4,7 +4,20 @@
 \alias{batch_update_schedule}
 \title{Update a channel schedule}
 \usage{
-batch_update_schedule(
+batch_update_schedule(ChannelId, Creates = NULL, Deletes = NULL)
+}
+\arguments{
+\item{ChannelId}{[required] Id of the channel whose schedule is being updated.}
+
+\item{Creates}{Schedule actions to create in the schedule.}
+
+\item{Deletes}{Schedule actions to delete from the schedule.}
+}
+\description{
+Update a channel schedule
+}
+\section{Accepted Parameters}{
+\preformatted{batch_update_schedule(
   ChannelId = "string",
   Creates = list(
     ScheduleActions = list(
@@ -90,16 +103,5 @@ batch_update_schedule(
   )
 )
 }
-\arguments{
-\item{ChannelId}{[required] Id of the channel whose schedule is being updated.}
-
-\item{Creates}{Schedule actions to create in the schedule.}
-
-\item{Deletes}{Schedule actions to delete from the schedule.}
 }
-\description{
-Update a channel schedule
-}
-\examples{
 
-}

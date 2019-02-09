@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.kms_operations.R
 \name{connect_custom_key_store}
 \alias{connect_custom_key_store}
-\title{Connects or reconnects a \link{custom key store}(http://docs}
+\title{Connects or reconnects a custom key store to its associated AWS CloudHSM cluster}
 \usage{
-connect_custom_key_store(
-  CustomKeyStoreId = "string"
-)
+connect_custom_key_store(CustomKeyStoreId)
 }
 \arguments{
 \item{CustomKeyStoreId}{[required] Enter the key store ID of the custom key store that you want to connect. To find the ID of a custom key store, use the DescribeCustomKeyStores operation.}
@@ -29,6 +27,10 @@ To fix the failure, use the DisconnectCustomKeyStore operation to disconnect the
 
 If you are having trouble connecting or disconnecting a custom key store, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html}{Troubleshooting a Custom Key Store} in the \emph{AWS Key Management Service Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{connect_custom_key_store(
+  CustomKeyStoreId = "string"
+)
 }
+}
+

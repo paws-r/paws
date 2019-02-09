@@ -9,6 +9,8 @@ download_default_key_pair()
 \description{
 Downloads the default SSH key pair from the user's account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{download_default_key_pair()
 }
+}
+

@@ -4,12 +4,7 @@
 \alias{set_platform_application_attributes}
 \title{Sets the attributes of the platform application object for the supported push notification services, such as APNS and GCM}
 \usage{
-set_platform_application_attributes(
-  PlatformApplicationArn = "string",
-  Attributes = list(
-    "string"
-  )
-)
+set_platform_application_attributes(PlatformApplicationArn, Attributes)
 }
 \arguments{
 \item{PlatformApplicationArn}{[required] PlatformApplicationArn for SetPlatformApplicationAttributes action.}
@@ -30,6 +25,13 @@ set_platform_application_attributes(
 \description{
 Sets the attributes of the platform application object for the supported push notification services, such as APNS and GCM. For more information, see \href{http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html}{Using Amazon SNS Mobile Push Notifications}. For information on configuring attributes for message delivery status, see \href{http://docs.aws.amazon.com/sns/latest/dg/sns-msg-status.html}{Using Amazon SNS Application Attributes for Message Delivery Status}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{set_platform_application_attributes(
+  PlatformApplicationArn = "string",
+  Attributes = list(
+    "string"
+  )
+)
 }
+}
+

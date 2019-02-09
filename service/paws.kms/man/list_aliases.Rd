@@ -4,11 +4,7 @@
 \alias{list_aliases}
 \title{Gets a list of all aliases in the caller's AWS account and region}
 \usage{
-list_aliases(
-  KeyId = "string",
-  Limit = 123,
-  Marker = "string"
-)
+list_aliases(KeyId = NULL, Limit = NULL, Marker = NULL)
 }
 \arguments{
 \item{KeyId}{Lists only aliases that refer to the specified CMK. The value of this parameter can be the ID or Amazon Resource Name (ARN) of a CMK in the caller's account and region. You cannot use an alias name or alias ARN in this value.
@@ -29,8 +25,17 @@ By default, the \code{ListAliases} command returns all aliases in the account an
 
 The \code{ListAliases} response might include several aliases have no \code{TargetKeyId} field. These are predefined aliases that AWS has created but has not yet associated with a CMK. Aliases that AWS creates in your account, including predefined aliases, do not count against your \href{http://docs.aws.amazon.com/kms/latest/developerguide/limits.html#aliases-limit}{AWS KMS aliases limit}.
 }
+\section{Accepted Parameters}{
+\preformatted{list_aliases(
+  KeyId = "string",
+  Limit = 123,
+  Marker = "string"
+)
+}
+}
+
 \examples{
 # The following example lists aliases.
-list_aliases()
+\donttest{list_aliases()}
 
 }

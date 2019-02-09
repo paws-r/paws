@@ -4,14 +4,9 @@
 \alias{describe_stack_resource_drifts}
 \title{Returns drift information for the resources that have been checked for drift in the specified stack}
 \usage{
-describe_stack_resource_drifts(
-  StackName = "string",
-  StackResourceDriftStatusFilters = list(
-    "IN_SYNC"|"MODIFIED"|"DELETED"|"NOT_CHECKED"
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
+describe_stack_resource_drifts(StackName,
+  StackResourceDriftStatusFilters = NULL, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{StackName}{[required] The name of the stack for which you want drift information.}
@@ -36,6 +31,15 @@ For a given stack, there will be one \code{StackResourceDrift} for each stack re
 
 Use DetectStackResourceDrift to detect drift on individual resources, or DetectStackDrift to detect drift on all supported resources for a given stack.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_stack_resource_drifts(
+  StackName = "string",
+  StackResourceDriftStatusFilters = list(
+    "IN_SYNC"|"MODIFIED"|"DELETED"|"NOT_CHECKED"
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

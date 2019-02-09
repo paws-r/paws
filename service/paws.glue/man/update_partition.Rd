@@ -4,7 +4,25 @@
 \alias{update_partition}
 \title{Updates a partition}
 \usage{
-update_partition(
+update_partition(CatalogId = NULL, DatabaseName, TableName,
+  PartitionValueList, PartitionInput)
+}
+\arguments{
+\item{CatalogId}{The ID of the Data Catalog where the partition to be updated resides. If none is supplied, the AWS account ID is used by default.}
+
+\item{DatabaseName}{[required] The name of the catalog database in which the table in question resides.}
+
+\item{TableName}{[required] The name of the table where the partition to be updated is located.}
+
+\item{PartitionValueList}{[required] A list of the values defining the partition.}
+
+\item{PartitionInput}{[required] The new partition object to which to update the partition.}
+}
+\description{
+Updates a partition.
+}
+\section{Accepted Parameters}{
+\preformatted{update_partition(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",
@@ -68,20 +86,5 @@ update_partition(
   )
 )
 }
-\arguments{
-\item{CatalogId}{The ID of the Data Catalog where the partition to be updated resides. If none is supplied, the AWS account ID is used by default.}
-
-\item{DatabaseName}{[required] The name of the catalog database in which the table in question resides.}
-
-\item{TableName}{[required] The name of the table where the partition to be updated is located.}
-
-\item{PartitionValueList}{[required] A list of the values defining the partition.}
-
-\item{PartitionInput}{[required] The new partition object to which to update the partition.}
 }
-\description{
-Updates a partition.
-}
-\examples{
 
-}

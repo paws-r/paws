@@ -4,16 +4,7 @@
 \alias{admin_set_user_settings}
 \title{Sets all the user settings for a specified user name}
 \usage{
-admin_set_user_settings(
-  UserPoolId = "string",
-  Username = "string",
-  MFAOptions = list(
-    list(
-      DeliveryMedium = "SMS"|"EMAIL",
-      AttributeName = "string"
-    )
-  )
-)
+admin_set_user_settings(UserPoolId, Username, MFAOptions)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool where you want to set the user's settings, such as MFA options.}
@@ -28,6 +19,17 @@ Sets all the user settings for a specified user name. Works on any user.
 \details{
 Requires developer credentials.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{admin_set_user_settings(
+  UserPoolId = "string",
+  Username = "string",
+  MFAOptions = list(
+    list(
+      DeliveryMedium = "SMS"|"EMAIL",
+      AttributeName = "string"
+    )
+  )
+)
 }
+}
+

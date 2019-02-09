@@ -4,12 +4,8 @@
 \alias{describe_subscription_filters}
 \title{Lists the subscription filters for the specified log group}
 \usage{
-describe_subscription_filters(
-  logGroupName = "string",
-  filterNamePrefix = "string",
-  nextToken = "string",
-  limit = 123
-)
+describe_subscription_filters(logGroupName, filterNamePrefix = NULL,
+  nextToken = NULL, limit = NULL)
 }
 \arguments{
 \item{logGroupName}{[required] The name of the log group.}
@@ -23,6 +19,13 @@ describe_subscription_filters(
 \description{
 Lists the subscription filters for the specified log group. You can list all the subscription filters or filter the results by prefix. The results are ASCII-sorted by filter name.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_subscription_filters(
+  logGroupName = "string",
+  filterNamePrefix = "string",
+  nextToken = "string",
+  limit = 123
+)
 }
+}
+

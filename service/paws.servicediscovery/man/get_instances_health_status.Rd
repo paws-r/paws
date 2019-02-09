@@ -2,16 +2,10 @@
 % Please edit documentation in R/paws.servicediscovery_operations.R
 \name{get_instances_health_status}
 \alias{get_instances_health_status}
-\title{Gets the current health status (\code{Healthy}, \code{Unhealthy}, or \code{Unknown}) of one or more instances that are associated with a specified service}
+\title{Gets the current health status (Healthy, Unhealthy, or Unknown) of one or more instances that are associated with a specified service}
 \usage{
-get_instances_health_status(
-  ServiceId = "string",
-  Instances = list(
-    "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
+get_instances_health_status(ServiceId, Instances = NULL,
+  MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ServiceId}{[required] The ID of the service that the instance is associated with.}
@@ -34,6 +28,15 @@ Gets the current health status (\code{Healthy}, \code{Unhealthy}, or \code{Unkno
 \details{
 There is a brief delay between when you register an instance and when the health status for the instance is available.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_instances_health_status(
+  ServiceId = "string",
+  Instances = list(
+    "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

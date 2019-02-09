@@ -4,13 +4,7 @@
 \alias{create_subnet_group}
 \title{Creates a new subnet group}
 \usage{
-create_subnet_group(
-  SubnetGroupName = "string",
-  Description = "string",
-  SubnetIds = list(
-    "string"
-  )
-)
+create_subnet_group(SubnetGroupName, Description = NULL, SubnetIds)
 }
 \arguments{
 \item{SubnetGroupName}{[required] A name for the subnet group. This value is stored as a lowercase string.}
@@ -22,6 +16,14 @@ create_subnet_group(
 \description{
 Creates a new subnet group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_subnet_group(
+  SubnetGroupName = "string",
+  Description = "string",
+  SubnetIds = list(
+    "string"
+  )
+)
 }
+}
+

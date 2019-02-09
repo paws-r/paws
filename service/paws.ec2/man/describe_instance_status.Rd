@@ -4,23 +4,9 @@
 \alias{describe_instance_status}
 \title{Describes the status of one or more instances}
 \usage{
-describe_instance_status(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  InstanceIds = list(
-    "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  DryRun = TRUE|FALSE,
-  IncludeAllInstances = TRUE|FALSE
-)
+describe_instance_status(Filters = NULL, InstanceIds = NULL,
+  MaxResults = NULL, NextToken = NULL, DryRun = NULL,
+  IncludeAllInstances = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -60,17 +46,38 @@ Describes the status of one or more instances. By default, only running instance
 \details{
 Instance status includes the following components:
 \itemize{
-\item \strong{Status checks} - Amazon EC2 performs status checks on running EC2 instances to identify hardware and software issues. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html}{Status Checks for Your Instances} and \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstances.html}{Troubleshooting Instances with Failed Status Checks} in the \emph{Amazon Elastic Compute Cloud User Guide}.
-\item \strong{Scheduled events} - Amazon EC2 can schedule events (such as reboot, stop, or terminate) for your instances related to hardware issues, software updates, or system maintenance. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-instances-status-check_sched.html}{Scheduled Events for Your Instances} in the \emph{Amazon Elastic Compute Cloud User Guide}.
-\item \strong{Instance state} - You can manage your instances from the moment you launch them through their termination. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html}{Instance Lifecycle} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+\item \strong{Status checks} - Amazon EC2 performs status checks on running EC2 instances to identify hardware and software issues. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html}{Status Checks for Your Instances} and \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstances.html}{Troubleshooting Instances with Failed Status Checks} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+\item \strong{Scheduled events} - Amazon EC2 can schedule events (such as reboot, stop, or terminate) for your instances related to hardware issues, software updates, or system maintenance. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-instances-status-check_sched.html}{Scheduled Events for Your Instances} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+\item \strong{Instance state} - You can manage your instances from the moment you launch them through their termination. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html}{Instance Lifecycle} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{describe_instance_status(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  InstanceIds = list(
+    "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string",
+  DryRun = TRUE|FALSE,
+  IncludeAllInstances = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example describes the current status of the specified instance.
-describe_instance_status(
+\donttest{describe_instance_status(
   InstanceIds = list(
     "i-1234567890abcdef0"
   )
-)
+)}
 
 }

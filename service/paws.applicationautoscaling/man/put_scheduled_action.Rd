@@ -4,35 +4,25 @@
 \alias{put_scheduled_action}
 \title{Creates or updates a scheduled action for an Application Auto Scaling scalable target}
 \usage{
-put_scheduled_action(
-  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
-  Schedule = "string",
-  ScheduledActionName = "string",
-  ResourceId = "string",
-  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property",
-  StartTime = as.POSIXct("2015-01-01"),
-  EndTime = as.POSIXct("2015-01-01"),
-  ScalableTargetAction = list(
-    MinCapacity = 123,
-    MaxCapacity = 123
-  )
-)
+put_scheduled_action(ServiceNamespace, Schedule = NULL,
+  ScheduledActionName, ResourceId, ScalableDimension = NULL,
+  StartTime = NULL, EndTime = NULL, ScalableTargetAction = NULL)
 }
 \arguments{
 \item{ServiceNamespace}{[required] The namespace of the AWS service that provides the resource or \code{custom-resource} for a resource provided by your own application or service. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces} in the \emph{Amazon Web Services General Reference}.}
 
 \item{Schedule}{The schedule for this action. The following formats are supported:
 \itemize{
-\item At expressions - \code{at(yyyy-mm-ddThh:mm:ss)yyyy-mm-ddThh:mm:ss)}
-\item Rate expressions - \code{rate(value unit)value unit)}
-\item Cron expressions - \code{cron(fields)fields)}
+\item At expressions - "\code{at(yyyy-mm-ddThh:mm:ss)yyyy-mm-ddThh:mm:ss)}"
+\item Rate expressions - "\code{rate(value unit)value unit)}"
+\item Cron expressions - "\code{cron(fields)fields)}"
 }
 
 At expressions are useful for one-time schedules. Specify the time, in UTC.
 
 For rate expressions, \emph{value} is a positive integer and \emph{unit} is \code{minute} | \code{minutes} | \code{hour} | \code{hours} | \code{day} | \code{days}.
 
-For more information about cron expressions, see \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions}{Cron Expressions} in the \emph{Amazon CloudWatch Events User Guide}.}
+For more information about cron expressions, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions}{Cron Expressions} in the \emph{Amazon CloudWatch Events User Guide}.}
 
 \item{ScheduledActionName}{[required] The name of the scheduled action.}
 
@@ -46,7 +36,7 @@ For more information about cron expressions, see \href{http://docs.aws.amazon.co
 \item DynamoDB global secondary index - The resource type is \code{index} and the unique identifier is the resource ID. Example: \code{table/my-table/index/my-table-index}.
 \item Aurora DB cluster - The resource type is \code{cluster} and the unique identifier is the cluster name. Example: \code{cluster:my-db-cluster}.
 \item Amazon SageMaker endpoint variants - The resource type is \code{variant} and the unique identifier is the resource ID. Example: \code{endpoint/my-end-point/variant/KMeansClustering}.
-\item Custom resources are not supported with a resource type. This parameter must specify the \code{OutputValue} from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider.
+\item Custom resources are not supported with a resource type. This parameter must specify the \code{OutputValue} from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider. More information is available in our \href{https://github.com/aws/aws-auto-scaling-custom-resource}{GitHub repository}.
 }}
 
 \item{ScalableDimension}{The scalable dimension. This parameter is required if you are creating a scheduled action. This string consists of the service namespace, resource type, and scaling property.
@@ -59,7 +49,7 @@ For more information about cron expressions, see \href{http://docs.aws.amazon.co
 \item \code{dynamodb:table:WriteCapacityUnits} - The provisioned write capacity for a DynamoDB table.
 \item \code{dynamodb:index:ReadCapacityUnits} - The provisioned read capacity for a DynamoDB global secondary index.
 \item \code{dynamodb:index:WriteCapacityUnits} - The provisioned write capacity for a DynamoDB global secondary index.
-\item \code{rds:cluster:ReadReplicaCount} - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+\item \code{rds:cluster:ReadReplicaCount} - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition and Aurora PostgreSQL-compatible edition.
 \item \code{sagemaker:variant:DesiredInstanceCount} - The number of EC2 instances for an Amazon SageMaker model endpoint variant.
 \item \code{custom-resource:ResourceType:Property} - The scalable dimension for a custom resource provided by your own application or service.
 }}
@@ -74,12 +64,26 @@ For more information about cron expressions, see \href{http://docs.aws.amazon.co
 Creates or updates a scheduled action for an Application Auto Scaling scalable target.
 }
 \details{
-Each scalable target is identified by a service namespace, resource ID, and scalable dimension. A scheduled action applies to the scalable target identified by those three attributes. You cannot create a scheduled action until you register the scalable target using RegisterScalableTarget.
+Each scalable target is identified by a service namespace, resource ID, and scalable dimension. A scheduled action applies to the scalable target identified by those three attributes. You cannot create a scheduled action until you have registered the resource as a scalable target using RegisterScalableTarget.
 
 To update an action, specify its name and the parameters that you want to change. If you don't specify start and end times, the old values are deleted. Any other parameters that you don't specify are not changed by this update request.
 
 You can view the scheduled actions using DescribeScheduledActions. If you are no longer using a scheduled action, you can delete it using DeleteScheduledAction.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_scheduled_action(
+  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
+  Schedule = "string",
+  ScheduledActionName = "string",
+  ResourceId = "string",
+  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property",
+  StartTime = as.POSIXct("2015-01-01"),
+  EndTime = as.POSIXct("2015-01-01"),
+  ScalableTargetAction = list(
+    MinCapacity = 123,
+    MaxCapacity = 123
+  )
+)
 }
+}
+

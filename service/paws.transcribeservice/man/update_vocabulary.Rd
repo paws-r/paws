@@ -4,13 +4,7 @@
 \alias{update_vocabulary}
 \title{Updates an existing vocabulary with new values}
 \usage{
-update_vocabulary(
-  VocabularyName = "string",
-  LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT",
-  Phrases = list(
-    "string"
-  )
-)
+update_vocabulary(VocabularyName, LanguageCode, Phrases)
 }
 \arguments{
 \item{VocabularyName}{[required] The name of the vocabulary to update. The name is case-sensitive.}
@@ -22,6 +16,14 @@ update_vocabulary(
 \description{
 Updates an existing vocabulary with new values. The \code{UpdateVocabulary} operation overwrites all of the existing information with the values that you provide in the request.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_vocabulary(
+  VocabularyName = "string",
+  LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT",
+  Phrases = list(
+    "string"
+  )
+)
 }
+}
+

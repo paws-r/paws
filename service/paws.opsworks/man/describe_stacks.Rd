@@ -4,11 +4,7 @@
 \alias{describe_stacks}
 \title{Requests a description of one or more stacks}
 \usage{
-describe_stacks(
-  StackIds = list(
-    "string"
-  )
-)
+describe_stacks(StackIds = NULL)
 }
 \arguments{
 \item{StackIds}{An array of stack IDs that specify the stacks to be described. If you omit this parameter, \code{DescribeStacks} returns a description of every stack.}
@@ -19,6 +15,12 @@ Requests a description of one or more stacks.
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_stacks(
+  StackIds = list(
+    "string"
+  )
+)
 }
+}
+

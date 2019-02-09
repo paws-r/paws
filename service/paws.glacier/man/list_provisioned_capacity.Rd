@@ -4,9 +4,7 @@
 \alias{list_provisioned_capacity}
 \title{This operation lists the provisioned capacity units for the specified AWS account}
 \usage{
-list_provisioned_capacity(
-  accountId = "string"
-)
+list_provisioned_capacity(accountId)
 }
 \arguments{
 \item{accountId}{[required] The AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '-' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, don't include any hyphens ('-') in the ID.}
@@ -14,10 +12,17 @@ list_provisioned_capacity(
 \description{
 This operation lists the provisioned capacity units for the specified AWS account.
 }
+\section{Accepted Parameters}{
+\preformatted{list_provisioned_capacity(
+  accountId = "string"
+)
+}
+}
+
 \examples{
 # The example lists the provisioned capacity units for an account.
-list_provisioned_capacity(
+\donttest{list_provisioned_capacity(
   accountId = "-"
-)
+)}
 
 }

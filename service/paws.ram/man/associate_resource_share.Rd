@@ -4,16 +4,8 @@
 \alias{associate_resource_share}
 \title{Associates the specified resource share with the specified principals and resources}
 \usage{
-associate_resource_share(
-  resourceShareArn = "string",
-  resourceArns = list(
-    "string"
-  ),
-  principals = list(
-    "string"
-  ),
-  clientToken = "string"
-)
+associate_resource_share(resourceShareArn, resourceArns = NULL,
+  principals = NULL, clientToken = NULL)
 }
 \arguments{
 \item{resourceShareArn}{[required] The Amazon Resource Name (ARN) of the resource share.}
@@ -27,6 +19,17 @@ associate_resource_share(
 \description{
 Associates the specified resource share with the specified principals and resources.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_resource_share(
+  resourceShareArn = "string",
+  resourceArns = list(
+    "string"
+  ),
+  principals = list(
+    "string"
+  ),
+  clientToken = "string"
+)
 }
+}
+

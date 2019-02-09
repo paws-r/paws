@@ -4,9 +4,7 @@
 \alias{describe_authorizer}
 \title{Describes an authorizer}
 \usage{
-describe_authorizer(
-  authorizerName = "string"
-)
+describe_authorizer(authorizerName)
 }
 \arguments{
 \item{authorizerName}{[required] The name of the authorizer to describe.}
@@ -14,6 +12,10 @@ describe_authorizer(
 \description{
 Describes an authorizer.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_authorizer(
+  authorizerName = "string"
+)
 }
+}
+

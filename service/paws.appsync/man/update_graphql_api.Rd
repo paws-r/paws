@@ -2,9 +2,30 @@
 % Please edit documentation in R/paws.appsync_operations.R
 \name{update_graphql_api}
 \alias{update_graphql_api}
-\title{Updates a \code{GraphqlApi} object}
+\title{Updates a GraphqlApi object}
 \usage{
-update_graphql_api(
+update_graphql_api(apiId, name, logConfig = NULL,
+  authenticationType = NULL, userPoolConfig = NULL,
+  openIDConnectConfig = NULL)
+}
+\arguments{
+\item{apiId}{[required] The API ID.}
+
+\item{name}{[required] The new name for the \code{GraphqlApi} object.}
+
+\item{logConfig}{The Amazon CloudWatch Logs configuration for the \code{GraphqlApi} object.}
+
+\item{authenticationType}{The new authentication type for the \code{GraphqlApi} object.}
+
+\item{userPoolConfig}{The new Amazon Cognito user pool configuration for the \code{GraphqlApi} object.}
+
+\item{openIDConnectConfig}{The OpenID Connect configuration for the \code{GraphqlApi} object.}
+}
+\description{
+Updates a \code{GraphqlApi} object.
+}
+\section{Accepted Parameters}{
+\preformatted{update_graphql_api(
   apiId = "string",
   name = "string",
   logConfig = list(
@@ -26,22 +47,5 @@ update_graphql_api(
   )
 )
 }
-\arguments{
-\item{apiId}{[required] The API ID.}
-
-\item{name}{[required] The new name for the \code{GraphqlApi} object.}
-
-\item{logConfig}{The Amazon CloudWatch Logs configuration for the \code{GraphqlApi} object.}
-
-\item{authenticationType}{The new authentication type for the \code{GraphqlApi} object.}
-
-\item{userPoolConfig}{The new Amazon Cognito user pool configuration for the \code{GraphqlApi} object.}
-
-\item{openIDConnectConfig}{The OpenID Connect configuration for the \code{GraphqlApi} object.}
 }
-\description{
-Updates a \code{GraphqlApi} object.
-}
-\examples{
 
-}

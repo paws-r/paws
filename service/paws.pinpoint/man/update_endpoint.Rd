@@ -4,7 +4,20 @@
 \alias{update_endpoint}
 \title{Creates or updates an endpoint}
 \usage{
-update_endpoint(
+update_endpoint(ApplicationId, EndpointId, EndpointRequest)
+}
+\arguments{
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+
+\item{EndpointId}{[required] The unique ID of the endpoint.}
+
+\item{EndpointRequest}{[required]}
+}
+\description{
+Creates or updates an endpoint.
+}
+\section{Accepted Parameters}{
+\preformatted{update_endpoint(
   ApplicationId = "string",
   EndpointId = "string",
   EndpointRequest = list(
@@ -51,16 +64,5 @@ update_endpoint(
   )
 )
 }
-\arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
-
-\item{EndpointId}{[required] The unique ID of the endpoint.}
-
-\item{EndpointRequest}{[required]}
 }
-\description{
-Creates or updates an endpoint.
-}
-\examples{
 
-}

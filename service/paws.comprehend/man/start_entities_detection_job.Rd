@@ -4,20 +4,9 @@
 \alias{start_entities_detection_job}
 \title{Starts an asynchronous entity detection job for a collection of documents}
 \usage{
-start_entities_detection_job(
-  InputDataConfig = list(
-    S3Uri = "string",
-    InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-  ),
-  OutputDataConfig = list(
-    S3Uri = "string"
-  ),
-  DataAccessRoleArn = "string",
-  JobName = "string",
-  EntityRecognizerArn = "string",
-  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt",
-  ClientRequestToken = "string"
-)
+start_entities_detection_job(InputDataConfig, OutputDataConfig,
+  DataAccessRoleArn, JobName = NULL, EntityRecognizerArn = NULL,
+  LanguageCode, ClientRequestToken = NULL)
 }
 \arguments{
 \item{InputDataConfig}{[required] Specifies the format and location of the input data for the job.}
@@ -40,6 +29,21 @@ Starts an asynchronous entity detection job for a collection of documents. Use t
 \details{
 This API can be used for either standard entity detection or custom entity recognition. In order to be used for custom entity recognition, the optional \code{EntityRecognizerArn} must be used in order to provide access to the recognizer being used to detect the custom entity.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_entities_detection_job(
+  InputDataConfig = list(
+    S3Uri = "string",
+    InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
+  ),
+  OutputDataConfig = list(
+    S3Uri = "string"
+  ),
+  DataAccessRoleArn = "string",
+  JobName = "string",
+  EntityRecognizerArn = "string",
+  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt",
+  ClientRequestToken = "string"
+)
 }
+}
+

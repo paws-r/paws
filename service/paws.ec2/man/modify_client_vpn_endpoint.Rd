@@ -4,23 +4,9 @@
 \alias{modify_client_vpn_endpoint}
 \title{Modifies the specified Client VPN endpoint}
 \usage{
-modify_client_vpn_endpoint(
-  ClientVpnEndpointId = "string",
-  ServerCertificateArn = "string",
-  ConnectionLogOptions = list(
-    Enabled = TRUE|FALSE,
-    CloudwatchLogGroup = "string",
-    CloudwatchLogStream = "string"
-  ),
-  DnsServers = list(
-    CustomDnsServers = list(
-      "string"
-    ),
-    Enabled = TRUE|FALSE
-  ),
-  Description = "string",
-  DryRun = TRUE|FALSE
-)
+modify_client_vpn_endpoint(ClientVpnEndpointId,
+  ServerCertificateArn = NULL, ConnectionLogOptions = NULL,
+  DnsServers = NULL, Description = NULL, DryRun = NULL)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint to modify.}
@@ -46,6 +32,24 @@ If you enable client connection logging, data about client connections is sent t
 \description{
 Modifies the specified Client VPN endpoint. You can only modify an endpoint's server certificate information, client connection logging information, DNS server, and description. Modifying the DNS server resets existing client connections.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_client_vpn_endpoint(
+  ClientVpnEndpointId = "string",
+  ServerCertificateArn = "string",
+  ConnectionLogOptions = list(
+    Enabled = TRUE|FALSE,
+    CloudwatchLogGroup = "string",
+    CloudwatchLogStream = "string"
+  ),
+  DnsServers = list(
+    CustomDnsServers = list(
+      "string"
+    ),
+    Enabled = TRUE|FALSE
+  ),
+  Description = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

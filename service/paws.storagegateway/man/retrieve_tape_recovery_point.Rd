@@ -4,10 +4,7 @@
 \alias{retrieve_tape_recovery_point}
 \title{Retrieves the recovery point for the specified virtual tape}
 \usage{
-retrieve_tape_recovery_point(
-  TapeARN = "string",
-  GatewayARN = "string"
-)
+retrieve_tape_recovery_point(TapeARN, GatewayARN)
 }
 \arguments{
 \item{TapeARN}{[required] The Amazon Resource Name (ARN) of the virtual tape for which you want to retrieve the recovery point.}
@@ -22,11 +19,19 @@ A recovery point is a point in time view of a virtual tape at which all the data
 
 The virtual tape can be retrieved to only one gateway. The retrieved tape is read-only. The virtual tape can be retrieved to only a tape gateway. There is no charge for retrieving recovery points.
 }
+\section{Accepted Parameters}{
+\preformatted{retrieve_tape_recovery_point(
+  TapeARN = "string",
+  GatewayARN = "string"
+)
+}
+}
+
 \examples{
 # Retrieves the recovery point for the specified virtual tape.
-retrieve_tape_recovery_point(
+\donttest{retrieve_tape_recovery_point(
   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B",
   TapeARN = "arn:aws:storagegateway:us-east-1:999999999999:tape/TEST0AA2AF"
-)
+)}
 
 }

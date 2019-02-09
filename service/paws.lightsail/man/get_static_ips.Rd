@@ -4,9 +4,7 @@
 \alias{get_static_ips}
 \title{Returns information about all static IPs in the user's account}
 \usage{
-get_static_ips(
-  pageToken = "string"
-)
+get_static_ips(pageToken = NULL)
 }
 \arguments{
 \item{pageToken}{A token used for advancing to the next page of results from your get static IPs request.}
@@ -14,6 +12,10 @@ get_static_ips(
 \description{
 Returns information about all static IPs in the user's account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_static_ips(
+  pageToken = "string"
+)
 }
+}
+

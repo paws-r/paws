@@ -2,19 +2,12 @@
 % Please edit documentation in R/paws.mturk_operations.R
 \name{update_qualification_type}
 \alias{update_qualification_type}
-\title{The \code{UpdateQualificationType} operation modifies the attributes of an existing Qualification type, which is represented by a QualificationType data structure}
+\title{The UpdateQualificationType operation modifies the attributes of an existing Qualification type, which is represented by a QualificationType data structure}
 \usage{
-update_qualification_type(
-  QualificationTypeId = "string",
-  Description = "string",
-  QualificationTypeStatus = "Active"|"Inactive",
-  Test = "string",
-  AnswerKey = "string",
-  TestDurationInSeconds = 123,
-  RetryDelayInSeconds = 123,
-  AutoGranted = TRUE|FALSE,
-  AutoGrantedValue = 123
-)
+update_qualification_type(QualificationTypeId, Description = NULL,
+  QualificationTypeStatus = NULL, Test = NULL, AnswerKey = NULL,
+  TestDurationInSeconds = NULL, RetryDelayInSeconds = NULL,
+  AutoGranted = NULL, AutoGrantedValue = NULL)
 }
 \arguments{
 \item{QualificationTypeId}{[required] The ID of the Qualification type to update.}
@@ -57,6 +50,18 @@ If you provide an updated Test but no AnswerKey, the new test will not have an a
 
 You can also update the AutoGranted and AutoGrantedValue attributes of the Qualification type.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_qualification_type(
+  QualificationTypeId = "string",
+  Description = "string",
+  QualificationTypeStatus = "Active"|"Inactive",
+  Test = "string",
+  AnswerKey = "string",
+  TestDurationInSeconds = 123,
+  RetryDelayInSeconds = 123,
+  AutoGranted = TRUE|FALSE,
+  AutoGrantedValue = 123
+)
 }
+}
+

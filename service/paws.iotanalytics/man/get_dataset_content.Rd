@@ -4,10 +4,7 @@
 \alias{get_dataset_content}
 \title{Retrieves the contents of a data set as pre-signed URIs}
 \usage{
-get_dataset_content(
-  datasetName = "string",
-  versionId = "string"
-)
+get_dataset_content(datasetName, versionId = NULL)
 }
 \arguments{
 \item{datasetName}{[required] The name of the data set whose contents are retrieved.}
@@ -17,6 +14,11 @@ get_dataset_content(
 \description{
 Retrieves the contents of a data set as pre-signed URIs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_dataset_content(
+  datasetName = "string",
+  versionId = "string"
+)
 }
+}
+

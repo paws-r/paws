@@ -4,19 +4,7 @@
 \alias{list_services}
 \title{Lists summary information for all the services that are associated with one or more specified namespaces}
 \usage{
-list_services(
-  NextToken = "string",
-  MaxResults = 123,
-  Filters = list(
-    list(
-      Name = "NAMESPACE_ID",
-      Values = list(
-        "string"
-      ),
-      Condition = "EQ"|"IN"|"BETWEEN"
-    )
-  )
-)
+list_services(NextToken = NULL, MaxResults = NULL, Filters = NULL)
 }
 \arguments{
 \item{NextToken}{For the first \code{ListServices} request, omit this value.
@@ -34,6 +22,20 @@ If you specify more than one filter, an operation must match all filters to be r
 \description{
 Lists summary information for all the services that are associated with one or more specified namespaces.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_services(
+  NextToken = "string",
+  MaxResults = 123,
+  Filters = list(
+    list(
+      Name = "NAMESPACE_ID",
+      Values = list(
+        "string"
+      ),
+      Condition = "EQ"|"IN"|"BETWEEN"
+    )
+  )
+)
 }
+}
+

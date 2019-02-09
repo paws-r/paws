@@ -4,12 +4,8 @@
 \alias{import_workspace_image}
 \title{Imports the specified Windows 7 or Windows 10 bring your own license (BYOL) image into Amazon WorkSpaces}
 \usage{
-import_workspace_image(
-  Ec2ImageId = "string",
-  IngestionProcess = "BYOL_REGULAR"|"BYOL_GRAPHICS"|"BYOL_GRAPHICSPRO",
-  ImageName = "string",
-  ImageDescription = "string"
-)
+import_workspace_image(Ec2ImageId, IngestionProcess, ImageName,
+  ImageDescription)
 }
 \arguments{
 \item{Ec2ImageId}{[required] The identifier of the EC2 image.}
@@ -23,6 +19,13 @@ import_workspace_image(
 \description{
 Imports the specified Windows 7 or Windows 10 bring your own license (BYOL) image into Amazon WorkSpaces. The image must be an already licensed EC2 image that is in your AWS account, and you must own the image.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{import_workspace_image(
+  Ec2ImageId = "string",
+  IngestionProcess = "BYOL_REGULAR"|"BYOL_GRAPHICS"|"BYOL_GRAPHICSPRO",
+  ImageName = "string",
+  ImageDescription = "string"
+)
 }
+}
+

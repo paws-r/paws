@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.lambda_operations.R
 \name{get_alias}
 \alias{get_alias}
-\title{Returns the specified alias information such as the alias ARN, description, and function version it is pointing to}
+\title{Returns details about a Lambda function alias}
 \usage{
-get_alias(
-  FunctionName = "string",
-  Name = "string"
-)
+get_alias(FunctionName, Name)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the lambda function.
@@ -21,19 +18,24 @@ get_alias(
 
 The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
 
-\item{Name}{[required] Name of the alias for which you want to retrieve information.}
+\item{Name}{[required] The name of the alias.}
 }
 \description{
-Returns the specified alias information such as the alias ARN, description, and function version it is pointing to. For more information, see \href{http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html}{Introduction to AWS Lambda Aliases}.
+Returns details about a Lambda function \href{http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{alias}.
 }
-\details{
-This requires permission for the \code{lambda:GetAlias} action.
+\section{Accepted Parameters}{
+\preformatted{get_alias(
+  FunctionName = "string",
+  Name = "string"
+)
 }
+}
+
 \examples{
 # This operation retrieves a Lambda function alias
-get_alias(
+\donttest{get_alias(
   FunctionName = "myFunction",
   Name = "myFunctionAlias"
-)
+)}
 
 }

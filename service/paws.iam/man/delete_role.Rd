@@ -4,9 +4,7 @@
 \alias{delete_role}
 \title{Deletes the specified role}
 \usage{
-delete_role(
-  RoleName = "string"
-)
+delete_role(RoleName)
 }
 \arguments{
 \item{RoleName}{[required] The name of the role to delete.
@@ -19,10 +17,17 @@ Deletes the specified role. The role must not have any policies attached. For mo
 \details{
 Make sure that you do not have any Amazon EC2 instances running with the role you are about to delete. Deleting a role or instance profile that is associated with a running instance will break any applications running on the instance.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_role(
+  RoleName = "string"
+)
+}
+}
+
 \examples{
 # The following command removes the role named Test-Role.
-delete_role(
+\donttest{delete_role(
   RoleName = "Test-Role"
-)
+)}
 
 }

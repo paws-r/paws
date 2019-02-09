@@ -4,10 +4,7 @@
 \alias{get_key_policy}
 \title{Gets a key policy attached to the specified customer master key (CMK)}
 \usage{
-get_key_policy(
-  KeyId = "string",
-  PolicyName = "string"
-)
+get_key_policy(KeyId, PolicyName)
 }
 \arguments{
 \item{KeyId}{[required] A unique identifier for the customer master key (CMK).
@@ -27,12 +24,20 @@ To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
 \description{
 Gets a key policy attached to the specified customer master key (CMK). You cannot perform this operation on a CMK in a different AWS account.
 }
+\section{Accepted Parameters}{
+\preformatted{get_key_policy(
+  KeyId = "string",
+  PolicyName = "string"
+)
+}
+}
+
 \examples{
 # The following example retrieves the key policy for the specified
 # customer master key (CMK).
-get_key_policy(
+\donttest{get_key_policy(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
   PolicyName = "default"
-)
+)}
 
 }

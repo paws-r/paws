@@ -4,11 +4,7 @@
 \alias{get_request_validators}
 \title{Gets the RequestValidators collection of a given RestApi}
 \usage{
-get_request_validators(
-  restApiId = "string",
-  position = "string",
-  limit = 123
-)
+get_request_validators(restApiId, position = NULL, limit = NULL)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -20,6 +16,12 @@ get_request_validators(
 \description{
 Gets the RequestValidators collection of a given RestApi.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_request_validators(
+  restApiId = "string",
+  position = "string",
+  limit = 123
+)
 }
+}
+

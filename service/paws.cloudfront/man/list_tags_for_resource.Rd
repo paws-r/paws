@@ -4,9 +4,7 @@
 \alias{list_tags_for_resource}
 \title{List tags for a CloudFront resource}
 \usage{
-list_tags_for_resource(
-  Resource = "string"
-)
+list_tags_for_resource(Resource)
 }
 \arguments{
 \item{Resource}{[required] An ARN of a CloudFront resource.}
@@ -14,6 +12,10 @@ list_tags_for_resource(
 \description{
 List tags for a CloudFront resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_tags_for_resource(
+  Resource = "string"
+)
 }
+}
+

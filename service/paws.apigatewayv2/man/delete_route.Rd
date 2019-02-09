@@ -4,10 +4,7 @@
 \alias{delete_route}
 \title{Deletes a Route}
 \usage{
-delete_route(
-  ApiId = "string",
-  RouteId = "string"
-)
+delete_route(ApiId, RouteId)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -17,6 +14,11 @@ delete_route(
 \description{
 Deletes a Route.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_route(
+  ApiId = "string",
+  RouteId = "string"
+)
 }
+}
+

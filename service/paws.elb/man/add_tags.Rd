@@ -4,17 +4,7 @@
 \alias{add_tags}
 \title{Adds the specified tags to the specified load balancer}
 \usage{
-add_tags(
-  LoadBalancerNames = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+add_tags(LoadBalancerNames, Tags)
 }
 \arguments{
 \item{LoadBalancerNames}{[required] The name of the load balancer. You can specify one load balancer only.}
@@ -29,9 +19,24 @@ Each tag consists of a key and an optional value. If a tag with the same key is 
 
 For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/add-remove-tags.html}{Tag Your Classic Load Balancer} in the \emph{Classic Load Balancers Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{add_tags(
+  LoadBalancerNames = list(
+    "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # This example adds two tags to the specified load balancer.
-add_tags(
+\donttest{add_tags(
   LoadBalancerNames = list(
     "my-load-balancer"
   ),
@@ -45,6 +50,6 @@ add_tags(
       Value = "digital-media"
     )
   )
-)
+)}
 
 }

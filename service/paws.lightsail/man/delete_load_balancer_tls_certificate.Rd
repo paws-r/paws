@@ -4,11 +4,8 @@
 \alias{delete_load_balancer_tls_certificate}
 \title{Deletes an SSL/TLS certificate associated with a Lightsail load balancer}
 \usage{
-delete_load_balancer_tls_certificate(
-  loadBalancerName = "string",
-  certificateName = "string",
-  force = TRUE|FALSE
-)
+delete_load_balancer_tls_certificate(loadBalancerName, certificateName,
+  force = NULL)
 }
 \arguments{
 \item{loadBalancerName}{[required] The load balancer name.}
@@ -25,6 +22,12 @@ Deletes an SSL/TLS certificate associated with a Lightsail load balancer.
 \details{
 The \code{delete load balancer tls certificate} operation supports tag-based access control via resource tags applied to the resource identified by loadBalancerName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_load_balancer_tls_certificate(
+  loadBalancerName = "string",
+  certificateName = "string",
+  force = TRUE|FALSE
+)
 }
+}
+

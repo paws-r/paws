@@ -4,10 +4,7 @@
 \alias{delete_metric_filter}
 \title{Deletes the specified metric filter}
 \usage{
-delete_metric_filter(
-  logGroupName = "string",
-  filterName = "string"
-)
+delete_metric_filter(logGroupName, filterName)
 }
 \arguments{
 \item{logGroupName}{[required] The name of the log group.}
@@ -17,6 +14,11 @@ delete_metric_filter(
 \description{
 Deletes the specified metric filter.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_metric_filter(
+  logGroupName = "string",
+  filterName = "string"
+)
 }
+}
+

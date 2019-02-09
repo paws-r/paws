@@ -4,12 +4,7 @@
 \alias{add_working_storage}
 \title{Configures one or more gateway local disks as working storage for a gateway}
 \usage{
-add_working_storage(
-  GatewayARN = "string",
-  DiskIds = list(
-    "string"
-  )
-)
+add_working_storage(GatewayARN, DiskIds)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -24,15 +19,25 @@ Working storage is also referred to as upload buffer. You can also use the AddUp
 
 In the request, you specify the gateway Amazon Resource Name (ARN) to which you want to add working storage, and one or more disk IDs that you want to configure as working storage.
 }
+\section{Accepted Parameters}{
+\preformatted{add_working_storage(
+  GatewayARN = "string",
+  DiskIds = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # Configures one or more gateway local disks as working storage for a
 # gateway. (Working storage is also referred to as upload buffer.)
-add_working_storage(
+\donttest{add_working_storage(
   DiskIds = list(
     "pci-0000:03:00.0-scsi-0:0:0:0",
     "pci-0000:03:00.0-scsi-0:0:1:0"
   ),
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)
+)}
 
 }

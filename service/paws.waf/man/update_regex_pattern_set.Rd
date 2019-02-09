@@ -2,18 +2,9 @@
 % Please edit documentation in R/paws.waf_operations.R
 \name{update_regex_pattern_set}
 \alias{update_regex_pattern_set}
-\title{Inserts or deletes \code{RegexPatternString} objects in a RegexPatternSet}
+\title{Inserts or deletes RegexPatternString objects in a RegexPatternSet}
 \usage{
-update_regex_pattern_set(
-  RegexPatternSetId = "string",
-  Updates = list(
-    list(
-      Action = "INSERT"|"DELETE",
-      RegexPatternString = "string"
-    )
-  ),
-  ChangeToken = "string"
-)
+update_regex_pattern_set(RegexPatternSetId, Updates, ChangeToken)
 }
 \arguments{
 \item{RegexPatternSetId}{[required] The \code{RegexPatternSetId} of the RegexPatternSet that you want to update. \code{RegexPatternSetId} is returned by CreateRegexPatternSet and by ListRegexPatternSets.}
@@ -48,6 +39,17 @@ To create and configure a \code{RegexPatternSet}, perform the following steps:
 
 For more information about how to use the AWS WAF API to allow or block HTTP requests, see the \href{http://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_regex_pattern_set(
+  RegexPatternSetId = "string",
+  Updates = list(
+    list(
+      Action = "INSERT"|"DELETE",
+      RegexPatternString = "string"
+    )
+  ),
+  ChangeToken = "string"
+)
 }
+}
+

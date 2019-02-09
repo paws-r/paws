@@ -4,18 +4,8 @@
 \alias{list_simulation_jobs}
 \title{Returns a list of simulation jobs}
 \usage{
-list_simulation_jobs(
-  nextToken = "string",
-  maxResults = 123,
-  filters = list(
-    list(
-      name = "string",
-      values = list(
-        "string"
-      )
-    )
-  )
-)
+list_simulation_jobs(nextToken = NULL, maxResults = NULL,
+  filters = NULL)
 }
 \arguments{
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated \code{ListSimulationJobs} request where \code{maxResults} was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the \code{nextToken} value.
@@ -29,6 +19,19 @@ This token should be treated as an opaque identifier that is only used to retrie
 \description{
 Returns a list of simulation jobs. You can optionally provide filters to retrieve specific simulation jobs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_simulation_jobs(
+  nextToken = "string",
+  maxResults = 123,
+  filters = list(
+    list(
+      name = "string",
+      values = list(
+        "string"
+      )
+    )
+  )
+)
 }
+}
+

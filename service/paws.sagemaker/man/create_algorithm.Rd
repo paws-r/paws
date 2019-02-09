@@ -4,7 +4,42 @@
 \alias{create_algorithm}
 \title{Create a machine learning algorithm that you can use in Amazon SageMaker and list in the AWS Marketplace}
 \usage{
-create_algorithm(
+create_algorithm(AlgorithmName, AlgorithmDescription = NULL,
+  TrainingSpecification, InferenceSpecification = NULL,
+  ValidationSpecification = NULL, CertifyForMarketplace = NULL)
+}
+\arguments{
+\item{AlgorithmName}{[required] The name of the algorithm.}
+
+\item{AlgorithmDescription}{A description of the algorithm.}
+
+\item{TrainingSpecification}{[required] Specifies details about training jobs run by this algorithm, including the following:
+\itemize{
+\item The Amazon ECR path of the container and the version digest of the algorithm.
+\item The hyperparameters that the algorithm supports.
+\item The instance types that the algorithm supports for training.
+\item Whether the algorithm supports distributed training.
+\item The metrics that the algorithm emits to Amazon CloudWatch.
+\item Which metrics that the algorithm emits can be used as the objective metric for hyperparameter tuning jobs.
+\item The input channels that the algorithm supports for training data. For example, an algorithm might support \code{train}, \code{validation}, and \code{test} channels.
+}}
+
+\item{InferenceSpecification}{Specifies details about inference jobs that the algorithm runs, including the following:
+\itemize{
+\item The Amazon ECR paths of containers that contain the inference code and model artifacts.
+\item The instance types that the algorithm supports for transform jobs and real-time endpoints used for inference.
+\item The input and output content formats that the algorithm supports for inference.
+}}
+
+\item{ValidationSpecification}{Specifies configurations for one or more training jobs and that Amazon SageMaker runs to test the algorithm's training code and, optionally, one or more batch transform jobs that Amazon SageMaker runs to test the algorithm's inference code.}
+
+\item{CertifyForMarketplace}{Whether to certify the algorithm so that it can be listed in AWS Marketplace.}
+}
+\description{
+Create a machine learning algorithm that you can use in Amazon SageMaker and list in the AWS Marketplace.
+}
+\section{Accepted Parameters}{
+\preformatted{create_algorithm(
   AlgorithmName = "string",
   AlgorithmDescription = "string",
   TrainingSpecification = list(
@@ -173,36 +208,5 @@ create_algorithm(
   CertifyForMarketplace = TRUE|FALSE
 )
 }
-\arguments{
-\item{AlgorithmName}{[required] The name of the algorithm.}
-
-\item{AlgorithmDescription}{A description of the algorithm.}
-
-\item{TrainingSpecification}{[required] Specifies details about training jobs run by this algorithm, including the following:
-\itemize{
-\item The Amazon ECR path of the container and the version digest of the algorithm.
-\item The hyperparameters that the algorithm supports.
-\item The instance types that the algorithm supports for training.
-\item Whether the algorithm supports distributed training.
-\item The metrics that the algorithm emits to Amazon CloudWatch.
-\item Which metrics that the algorithm emits can be used as the objective metric for hyperparameter tuning jobs.
-\item The input channels that the algorithm supports for training data. For example, an algorithm might support \code{train}, \code{validation}, and \code{test} channels.
-}}
-
-\item{InferenceSpecification}{Specifies details about inference jobs that the algorithm runs, including the following:
-\itemize{
-\item The Amazon ECR paths of containers that contain the inference code and model artifacts.
-\item The instance types that the algorithm supports for transform jobs and real-time endpoints used for inference.
-\item The input and output content formats that the algorithm supports for inference.
-}}
-
-\item{ValidationSpecification}{Specifies configurations for one or more training jobs and that Amazon SageMaker runs to test the algorithm's training code and, optionally, one or more batch transform jobs that Amazon SageMaker runs to test the algorithm's inference code.}
-
-\item{CertifyForMarketplace}{Whether to certify the algorithm so that it can be listed in AWS Marektplace.}
 }
-\description{
-Create a machine learning algorithm that you can use in Amazon SageMaker and list in the AWS Marketplace.
-}
-\examples{
 
-}

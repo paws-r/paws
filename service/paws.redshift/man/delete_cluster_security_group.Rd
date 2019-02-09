@@ -4,9 +4,7 @@
 \alias{delete_cluster_security_group}
 \title{Deletes an Amazon Redshift security group}
 \usage{
-delete_cluster_security_group(
-  ClusterSecurityGroupName = "string"
-)
+delete_cluster_security_group(ClusterSecurityGroupName)
 }
 \arguments{
 \item{ClusterSecurityGroupName}{[required] The name of the cluster security group to be deleted.}
@@ -19,6 +17,10 @@ You cannot delete a security group that is associated with any clusters. You can
 
 For information about managing security groups, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html}{Amazon Redshift Cluster Security Groups} in the \emph{Amazon Redshift Cluster Management Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_cluster_security_group(
+  ClusterSecurityGroupName = "string"
+)
 }
+}
+

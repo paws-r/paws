@@ -4,7 +4,21 @@
 \alias{create_project}
 \title{Creates an empty project with a placement template}
 \usage{
-create_project(
+create_project(projectName, description = NULL,
+  placementTemplate = NULL)
+}
+\arguments{
+\item{projectName}{[required] The name of the project to create.}
+
+\item{description}{An optional description for the project.}
+
+\item{placementTemplate}{The schema defining the placement to be created. A placement template defines placement default attributes and device templates. You cannot add or remove device templates after the project has been created. However, you can update \code{callbackOverrides} for the device templates using the \code{UpdateProject} API.}
+}
+\description{
+Creates an empty project with a placement template. A project contains zero or more placements that adhere to the placement template defined in the project.
+}
+\section{Accepted Parameters}{
+\preformatted{create_project(
   projectName = "string",
   description = "string",
   placementTemplate = list(
@@ -22,16 +36,5 @@ create_project(
   )
 )
 }
-\arguments{
-\item{projectName}{[required] The name of the project to create.}
-
-\item{description}{An optional description for the project.}
-
-\item{placementTemplate}{The schema defining the placement to be created. A placement template defines placement default attributes and device templates. You cannot add or remove device templates after the project has been created. However, you can update \code{callbackOverrides} for the device templates using the \code{UpdateProject} API.}
 }
-\description{
-Creates an empty project with a placement template. A project contains zero or more placements that adhere to the placement template defined in the project.
-}
-\examples{
 
-}

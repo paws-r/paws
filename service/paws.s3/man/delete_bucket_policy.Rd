@@ -4,9 +4,7 @@
 \alias{delete_bucket_policy}
 \title{Deletes the policy from the bucket}
 \usage{
-delete_bucket_policy(
-  Bucket = "string"
-)
+delete_bucket_policy(Bucket)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -14,10 +12,17 @@ delete_bucket_policy(
 \description{
 Deletes the policy from the bucket.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_bucket_policy(
+  Bucket = "string"
+)
+}
+}
+
 \examples{
 # The following example deletes bucket policy on the specified bucket.
-delete_bucket_policy(
+\donttest{delete_bucket_policy(
   Bucket = "examplebucket"
-)
+)}
 
 }

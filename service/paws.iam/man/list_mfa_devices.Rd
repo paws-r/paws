@@ -4,11 +4,7 @@
 \alias{list_mfa_devices}
 \title{Lists the MFA devices for an IAM user}
 \usage{
-list_mfa_devices(
-  UserName = "string",
-  Marker = "string",
-  MaxItems = 123
-)
+list_mfa_devices(UserName = NULL, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{UserName}{The name of the user whose MFA devices you want to list.
@@ -27,6 +23,12 @@ Lists the MFA devices for an IAM user. If the request includes a IAM user name, 
 \details{
 You can paginate the results using the \code{MaxItems} and \code{Marker} parameters.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_mfa_devices(
+  UserName = "string",
+  Marker = "string",
+  MaxItems = 123
+)
 }
+}
+

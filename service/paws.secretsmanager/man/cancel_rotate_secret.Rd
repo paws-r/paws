@@ -4,9 +4,7 @@
 \alias{cancel_rotate_secret}
 \title{Disables automatic scheduled rotation and cancels the rotation of a secret if one is currently in progress}
 \usage{
-cancel_rotate_secret(
-  SecretId = "string"
-)
+cancel_rotate_secret(SecretId)
 }
 \arguments{
 \item{SecretId}{[required] Specifies the secret for which you want to cancel a rotation request. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.
@@ -44,13 +42,20 @@ To run this command, you must have the following permissions:
 \item To list all of the versions currently associated with a secret, use ListSecretVersionIds.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{cancel_rotate_secret(
+  SecretId = "string"
+)
+}
+}
+
 \examples{
 # The following example shows how to cancel rotation for a secret. The
 # operation sets the RotationEnabled field to false and cancels all
 # scheduled rotations. To resume scheduled rotations, you must re-enable
 # rotation by calling the rotate-secret operation.
-cancel_rotate_secret(
+\donttest{cancel_rotate_secret(
   SecretId = "MyTestDatabaseSecret"
-)
+)}
 
 }

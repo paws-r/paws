@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.cloudhsm_operations.R
 \name{delete_hsm}
 \alias{delete_hsm}
-\title{This is documentation for \strong{AWS CloudHSM Classic}}
+\title{This is documentation for AWS CLOUDHSM CLASSIC}
 \usage{
-delete_hsm(
-  HsmArn = "string"
-)
+delete_hsm(HsmArn)
 }
 \arguments{
 \item{HsmArn}{[required] The ARN of the HSM to delete.}
@@ -19,6 +17,10 @@ This is documentation for \strong{AWS CloudHSM Classic}. For more information, s
 
 Deletes an HSM. After completion, this operation cannot be undone and your key material cannot be recovered.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_hsm(
+  HsmArn = "string"
+)
 }
+}
+

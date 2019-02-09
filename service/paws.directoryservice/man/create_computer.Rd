@@ -4,18 +4,9 @@
 \alias{create_computer}
 \title{Creates a computer account in the specified directory, and joins the computer to the directory}
 \usage{
-create_computer(
-  DirectoryId = "string",
-  ComputerName = "string",
-  Password = "string",
-  OrganizationalUnitDistinguishedName = "string",
-  ComputerAttributes = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  )
-)
+create_computer(DirectoryId, ComputerName, Password,
+  OrganizationalUnitDistinguishedName = NULL,
+  ComputerAttributes = NULL)
 }
 \arguments{
 \item{DirectoryId}{[required] The identifier of the directory in which to create the computer account.}
@@ -31,6 +22,19 @@ create_computer(
 \description{
 Creates a computer account in the specified directory, and joins the computer to the directory.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_computer(
+  DirectoryId = "string",
+  ComputerName = "string",
+  Password = "string",
+  OrganizationalUnitDistinguishedName = "string",
+  ComputerAttributes = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

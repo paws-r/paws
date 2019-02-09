@@ -4,9 +4,7 @@
 \alias{list_thing_principals}
 \title{Lists the principals associated with the specified thing}
 \usage{
-list_thing_principals(
-  thingName = "string"
-)
+list_thing_principals(thingName)
 }
 \arguments{
 \item{thingName}{[required] The name of the thing.}
@@ -14,6 +12,10 @@ list_thing_principals(
 \description{
 Lists the principals associated with the specified thing.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_thing_principals(
+  thingName = "string"
+)
 }
+}
+

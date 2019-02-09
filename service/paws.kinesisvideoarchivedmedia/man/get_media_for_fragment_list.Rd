@@ -4,12 +4,7 @@
 \alias{get_media_for_fragment_list}
 \title{Gets media for a list of fragments (specified by fragment number) from the archived data in an Amazon Kinesis video stream}
 \usage{
-get_media_for_fragment_list(
-  StreamName = "string",
-  Fragments = list(
-    "string"
-  )
-)
+get_media_for_fragment_list(StreamName, Fragments)
 }
 \arguments{
 \item{StreamName}{[required] The name of the stream from which to retrieve fragment media.}
@@ -26,6 +21,13 @@ The following limits apply when using the \code{GetMediaForFragmentList} API:
 \item Kinesis Video Streams sends media data at a rate of up to 25 megabytes per second (or 200 megabits per second) during a \code{GetMediaForFragmentList} session.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_media_for_fragment_list(
+  StreamName = "string",
+  Fragments = list(
+    "string"
+  )
+)
 }
+}
+

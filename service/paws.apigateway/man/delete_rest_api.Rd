@@ -4,9 +4,7 @@
 \alias{delete_rest_api}
 \title{Deletes the specified API}
 \usage{
-delete_rest_api(
-  restApiId = "string"
-)
+delete_rest_api(restApiId)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -14,6 +12,10 @@ delete_rest_api(
 \description{
 Deletes the specified API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_rest_api(
+  restApiId = "string"
+)
 }
+}
+

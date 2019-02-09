@@ -2,13 +2,9 @@
 % Please edit documentation in R/paws.waf_operations.R
 \name{create_rule}
 \alias{create_rule}
-\title{Creates a \code{Rule}, which contains the \code{IPSet} objects, \code{ByteMatchSet} objects, and other predicates that identify the requests that you want to block}
+\title{Creates a Rule, which contains the IPSet objects, ByteMatchSet objects, and other predicates that identify the requests that you want to block}
 \usage{
-create_rule(
-  Name = "string",
-  MetricName = "string",
-  ChangeToken = "string"
-)
+create_rule(Name, MetricName, ChangeToken)
 }
 \arguments{
 \item{Name}{[required] A friendly name or description of the Rule. You can't change the name of a \code{Rule} after you create it.}
@@ -40,12 +36,21 @@ To create and configure a \code{Rule}, perform the following steps:
 
 For more information about how to use the AWS WAF API to allow or block HTTP requests, see the \href{http://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_rule(
+  Name = "string",
+  MetricName = "string",
+  ChangeToken = "string"
+)
+}
+}
+
 \examples{
 # The following example creates a rule named WAFByteHeaderRule.
-create_rule(
+\donttest{create_rule(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   MetricName = "WAFByteHeaderRule",
   Name = "WAFByteHeaderRule"
-)
+)}
 
 }

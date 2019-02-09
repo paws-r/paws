@@ -4,18 +4,8 @@
 \alias{describe_replication_subnet_groups}
 \title{Returns information about the replication subnet groups}
 \usage{
-describe_replication_subnet_groups(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_replication_subnet_groups(Filters = NULL, MaxRecords = NULL,
+  Marker = NULL)
 }
 \arguments{
 \item{Filters}{Filters applied to the describe action.}
@@ -31,9 +21,25 @@ Constraints: Minimum 20, maximum 100.}
 \description{
 Returns information about the replication subnet groups.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_replication_subnet_groups(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
+}
+}
+
 \examples{
 # Returns information about the replication subnet groups.
-describe_replication_subnet_groups(
+\donttest{describe_replication_subnet_groups(
   Filters = list(
     list(
       Name = "string",
@@ -45,6 +51,6 @@ describe_replication_subnet_groups(
   ),
   Marker = "",
   MaxRecords = 123L
-)
+)}
 
 }

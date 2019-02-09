@@ -4,9 +4,7 @@
 \alias{get_named_query}
 \title{Returns information about a single query}
 \usage{
-get_named_query(
-  NamedQueryId = "string"
-)
+get_named_query(NamedQueryId)
 }
 \arguments{
 \item{NamedQueryId}{[required] The unique ID of the query. Use ListNamedQueries to get query IDs.}
@@ -14,6 +12,10 @@ get_named_query(
 \description{
 Returns information about a single query.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_named_query(
+  NamedQueryId = "string"
+)
 }
+}
+

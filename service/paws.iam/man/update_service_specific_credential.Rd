@@ -2,13 +2,10 @@
 % Please edit documentation in R/paws.iam_operations.R
 \name{update_service_specific_credential}
 \alias{update_service_specific_credential}
-\title{Sets the status of a service-specific credential to \code{Active} or \code{Inactive}}
+\title{Sets the status of a service-specific credential to Active or Inactive}
 \usage{
-update_service_specific_credential(
-  UserName = "string",
-  ServiceSpecificCredentialId = "string",
-  Status = "Active"|"Inactive"
-)
+update_service_specific_credential(UserName = NULL,
+  ServiceSpecificCredentialId, Status)
 }
 \arguments{
 \item{UserName}{The name of the IAM user associated with the service-specific credential. If you do not specify this value, then the operation assumes the user whose credentials are used to call the operation.
@@ -24,6 +21,12 @@ This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex 
 \description{
 Sets the status of a service-specific credential to \code{Active} or \code{Inactive}. Service-specific credentials that are inactive cannot be used for authentication to the service. This operation can be used to disable a user's service-specific credential as part of a credential rotation work flow.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_service_specific_credential(
+  UserName = "string",
+  ServiceSpecificCredentialId = "string",
+  Status = "Active"|"Inactive"
+)
 }
+}
+

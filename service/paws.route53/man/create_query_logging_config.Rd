@@ -4,10 +4,7 @@
 \alias{create_query_logging_config}
 \title{Creates a configuration for DNS query logging}
 \usage{
-create_query_logging_config(
-  HostedZoneId = "string",
-  CloudWatchLogsLogGroupArn = "string"
-)
+create_query_logging_config(HostedZoneId, CloudWatchLogsLogGroupArn)
 }
 \arguments{
 \item{HostedZoneId}{[required] The ID of the hosted zone that you want to log queries for. You can log queries only for public hosted zones.}
@@ -85,6 +82,11 @@ How to Stop Logging
 
 :   If you want Route 53 to stop sending query logs to CloudWatch Logs, delete the query logging configuration. For more information, see DeleteQueryLoggingConfig.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_query_logging_config(
+  HostedZoneId = "string",
+  CloudWatchLogsLogGroupArn = "string"
+)
 }
+}
+

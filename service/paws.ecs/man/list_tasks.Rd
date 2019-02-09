@@ -4,17 +4,9 @@
 \alias{list_tasks}
 \title{Returns a list of tasks for a specified cluster}
 \usage{
-list_tasks(
-  cluster = "string",
-  containerInstance = "string",
-  family = "string",
-  nextToken = "string",
-  maxResults = 123,
-  startedBy = "string",
-  serviceName = "string",
-  desiredStatus = "RUNNING"|"PENDING"|"STOPPED",
-  launchType = "EC2"|"FARGATE"
-)
+list_tasks(cluster = NULL, containerInstance = NULL, family = NULL,
+  nextToken = NULL, maxResults = NULL, startedBy = NULL,
+  serviceName = NULL, desiredStatus = NULL, launchType = NULL)
 }
 \arguments{
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that hosts the tasks to list. If you do not specify a cluster, the default cluster is assumed.}
@@ -45,18 +37,33 @@ Returns a list of tasks for a specified cluster. You can filter the results by f
 \details{
 Recently stopped tasks might appear in the returned results. Currently, stopped tasks appear in the returned results for at least one hour.
 }
+\section{Accepted Parameters}{
+\preformatted{list_tasks(
+  cluster = "string",
+  containerInstance = "string",
+  family = "string",
+  nextToken = "string",
+  maxResults = 123,
+  startedBy = "string",
+  serviceName = "string",
+  desiredStatus = "RUNNING"|"PENDING"|"STOPPED",
+  launchType = "EC2"|"FARGATE"
+)
+}
+}
+
 \examples{
 # This example lists all of the tasks in a cluster.
-list_tasks(
+\donttest{list_tasks(
   cluster = "default"
-)
+)}
 
 # This example lists the tasks of a specified container instance.
 # Specifying a ``containerInstance`` value limits  the  results  to  tasks
 #  that belong to that container instance.
-list_tasks(
+\donttest{list_tasks(
   cluster = "default",
   containerInstance = "f6bbb147-5370-4ace-8c73-c7181ded911f"
-)
+)}
 
 }

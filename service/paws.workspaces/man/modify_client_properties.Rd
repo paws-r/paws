@@ -4,21 +4,23 @@
 \alias{modify_client_properties}
 \title{Modifies the properties of the specified Amazon WorkSpaces client}
 \usage{
-modify_client_properties(
+modify_client_properties(ResourceId, ClientProperties)
+}
+\arguments{
+\item{ResourceId}{[required] The resource identifiers, in the form of directory IDs.}
+
+\item{ClientProperties}{[required] Information about the Amazon WorkSpaces client.}
+}
+\description{
+Modifies the properties of the specified Amazon WorkSpaces client.
+}
+\section{Accepted Parameters}{
+\preformatted{modify_client_properties(
   ResourceId = "string",
   ClientProperties = list(
     ReconnectEnabled = "ENABLED"|"DISABLED"
   )
 )
 }
-\arguments{
-\item{ResourceId}{[required] The resource identifiers, in the form of directory IDs.}
+}
 
-\item{ClientProperties}{Information about the Amazon WorkSpaces client.}
-}
-\description{
-Modifies the properties of the specified Amazon WorkSpaces client.
-}
-\examples{
-
-}

@@ -4,10 +4,7 @@
 \alias{list_instance_groups}
 \title{Provides all available details about the instance groups in a cluster}
 \usage{
-list_instance_groups(
-  ClusterId = "string",
-  Marker = "string"
-)
+list_instance_groups(ClusterId, Marker = NULL)
 }
 \arguments{
 \item{ClusterId}{[required] The identifier of the cluster for which to list the instance groups.}
@@ -17,6 +14,11 @@ list_instance_groups(
 \description{
 Provides all available details about the instance groups in a cluster.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_instance_groups(
+  ClusterId = "string",
+  Marker = "string"
+)
 }
+}
+

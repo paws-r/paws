@@ -4,9 +4,7 @@
 \alias{get_account_settings}
 \title{Retrieves account settings for the specified Amazon Chime account ID, such as remote control and dial out settings}
 \usage{
-get_account_settings(
-  AccountId = "string"
-)
+get_account_settings(AccountId)
 }
 \arguments{
 \item{AccountId}{[required] The Amazon Chime account ID.}
@@ -14,6 +12,10 @@ get_account_settings(
 \description{
 Retrieves account settings for the specified Amazon Chime account ID, such as remote control and dial out settings. For more information about these settings, see \href{http://docs.aws.amazon.com/chime/latest/ag/policies.html}{Use the Policies Page} in the \emph{Amazon Chime Administration Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_account_settings(
+  AccountId = "string"
+)
 }
+}
+

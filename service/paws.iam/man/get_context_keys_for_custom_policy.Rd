@@ -4,11 +4,7 @@
 \alias{get_context_keys_for_custom_policy}
 \title{Gets a list of all of the context keys referenced in the input policies}
 \usage{
-get_context_keys_for_custom_policy(
-  PolicyInputList = list(
-    "string"
-  )
-)
+get_context_keys_for_custom_policy(PolicyInputList)
 }
 \arguments{
 \item{PolicyInputList}{[required] A list of policies for which you want the list of context keys referenced in those policies. Each document is specified as a string containing the complete, valid JSON text of an IAM policy.
@@ -26,6 +22,12 @@ Gets a list of all of the context keys referenced in the input policies. The pol
 \details{
 Context keys are variables maintained by AWS and its services that provide details about the context of an API query request. Context keys can be evaluated by testing against a value specified in an IAM policy. Use \code{GetContextKeysForCustomPolicy} to understand what key names and values you must supply when you call SimulateCustomPolicy. Note that all parameters are shown in unencoded form here for clarity but must be URL encoded to be included as a part of a real HTML request.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_context_keys_for_custom_policy(
+  PolicyInputList = list(
+    "string"
+  )
+)
 }
+}
+

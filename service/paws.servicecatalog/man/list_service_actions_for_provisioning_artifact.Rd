@@ -4,13 +4,9 @@
 \alias{list_service_actions_for_provisioning_artifact}
 \title{Returns a paginated list of self-service actions associated with the specified Product ID and Provisioning Artifact ID}
 \usage{
-list_service_actions_for_provisioning_artifact(
-  ProductId = "string",
-  ProvisioningArtifactId = "string",
-  PageSize = 123,
-  PageToken = "string",
-  AcceptLanguage = "string"
-)
+list_service_actions_for_provisioning_artifact(ProductId,
+  ProvisioningArtifactId, PageSize = NULL, PageToken = NULL,
+  AcceptLanguage = NULL)
 }
 \arguments{
 \item{ProductId}{[required] The product identifier. For example, \code{prod-abcdzk7xy33qa}.}
@@ -31,6 +27,14 @@ list_service_actions_for_provisioning_artifact(
 \description{
 Returns a paginated list of self-service actions associated with the specified Product ID and Provisioning Artifact ID.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_service_actions_for_provisioning_artifact(
+  ProductId = "string",
+  ProvisioningArtifactId = "string",
+  PageSize = 123,
+  PageToken = "string",
+  AcceptLanguage = "string"
+)
 }
+}
+

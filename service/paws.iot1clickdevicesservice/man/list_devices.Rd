@@ -4,11 +4,7 @@
 \alias{list_devices}
 \title{Lists the 1-Click compatible devices associated with your AWS account}
 \usage{
-list_devices(
-  DeviceType = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_devices(DeviceType = NULL, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{DeviceType}{The type of the device, such as "button".}
@@ -20,6 +16,12 @@ list_devices(
 \description{
 Lists the 1-Click compatible devices associated with your AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_devices(
+  DeviceType = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

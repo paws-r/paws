@@ -4,17 +4,7 @@
 \alias{put_delivery_channel}
 \title{Creates a delivery channel object to deliver configuration information to an Amazon S3 bucket and Amazon SNS topic}
 \usage{
-put_delivery_channel(
-  DeliveryChannel = list(
-    name = "string",
-    s3BucketName = "string",
-    s3KeyPrefix = "string",
-    snsTopicARN = "string",
-    configSnapshotDeliveryProperties = list(
-      deliveryFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours"
-    )
-  )
-)
+put_delivery_channel(DeliveryChannel)
 }
 \arguments{
 \item{DeliveryChannel}{[required] The configuration delivery channel object that delivers the configuration information to an Amazon S3 bucket and to an Amazon SNS topic.}
@@ -29,6 +19,18 @@ You can use this action to change the Amazon S3 bucket or an Amazon SNS topic of
 
 You can have only one delivery channel per region in your account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_delivery_channel(
+  DeliveryChannel = list(
+    name = "string",
+    s3BucketName = "string",
+    s3KeyPrefix = "string",
+    snsTopicARN = "string",
+    configSnapshotDeliveryProperties = list(
+      deliveryFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours"
+    )
+  )
+)
 }
+}
+

@@ -9,6 +9,8 @@ list_curated_environment_images()
 \description{
 Gets information about Docker images that are managed by AWS CodeBuild.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_curated_environment_images()
 }
+}
+

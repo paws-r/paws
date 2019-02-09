@@ -4,11 +4,7 @@
 \alias{delete_integration_response}
 \title{Deletes an IntegrationResponses}
 \usage{
-delete_integration_response(
-  ApiId = "string",
-  IntegrationId = "string",
-  IntegrationResponseId = "string"
-)
+delete_integration_response(ApiId, IntegrationId, IntegrationResponseId)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -20,6 +16,12 @@ delete_integration_response(
 \description{
 Deletes an IntegrationResponses.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_integration_response(
+  ApiId = "string",
+  IntegrationId = "string",
+  IntegrationResponseId = "string"
+)
 }
+}
+

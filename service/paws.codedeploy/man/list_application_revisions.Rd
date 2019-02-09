@@ -4,18 +4,12 @@
 \alias{list_application_revisions}
 \title{Lists information about revisions for an application}
 \usage{
-list_application_revisions(
-  applicationName = "string",
-  sortBy = "registerTime"|"firstUsedTime"|"lastUsedTime",
-  sortOrder = "ascending"|"descending",
-  s3Bucket = "string",
-  s3KeyPrefix = "string",
-  deployed = "include"|"exclude"|"ignore",
-  nextToken = "string"
-)
+list_application_revisions(applicationName, sortBy = NULL,
+  sortOrder = NULL, s3Bucket = NULL, s3KeyPrefix = NULL,
+  deployed = NULL, nextToken = NULL)
 }
 \arguments{
-\item{applicationName}{[required] The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.}
+\item{applicationName}{[required] The name of an AWS CodeDeploy application associated with the IAM user or AWS account.}
 
 \item{sortBy}{The column name to use to sort the list results:
 \itemize{
@@ -24,7 +18,7 @@ list_application_revisions(
 \item lastUsedTime: Sort by the time the revisions were last used in a deployment.
 }
 
-If not specified or set to null, the results will be returned in an arbitrary order.}
+If not specified or set to null, the results are returned in an arbitrary order.}
 
 \item{sortOrder}{The order in which to sort the list results:
 \itemize{
@@ -32,9 +26,9 @@ If not specified or set to null, the results will be returned in an arbitrary or
 \item descending: descending order.
 }
 
-If not specified, the results will be sorted in ascending order.
+If not specified, the results are sorted in ascending order.
 
-If set to null, the results will be sorted in an arbitrary order.}
+If set to null, the results are sorted in an arbitrary order.}
 
 \item{s3Bucket}{An Amazon S3 bucket name to limit the search for revisions.
 
@@ -54,6 +48,16 @@ If set to null, all of the user's buckets are searched.}
 \description{
 Lists information about revisions for an application.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_application_revisions(
+  applicationName = "string",
+  sortBy = "registerTime"|"firstUsedTime"|"lastUsedTime",
+  sortOrder = "ascending"|"descending",
+  s3Bucket = "string",
+  s3KeyPrefix = "string",
+  deployed = "include"|"exclude"|"ignore",
+  nextToken = "string"
+)
 }
+}
+

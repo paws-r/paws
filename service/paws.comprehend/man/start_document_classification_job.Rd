@@ -4,19 +4,9 @@
 \alias{start_document_classification_job}
 \title{Starts an asynchronous document classification job}
 \usage{
-start_document_classification_job(
-  JobName = "string",
-  DocumentClassifierArn = "string",
-  InputDataConfig = list(
-    S3Uri = "string",
-    InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-  ),
-  OutputDataConfig = list(
-    S3Uri = "string"
-  ),
-  DataAccessRoleArn = "string",
-  ClientRequestToken = "string"
-)
+start_document_classification_job(JobName = NULL, DocumentClassifierArn,
+  InputDataConfig, OutputDataConfig, DataAccessRoleArn,
+  ClientRequestToken = NULL)
 }
 \arguments{
 \item{JobName}{The identifier of the job.}
@@ -34,6 +24,20 @@ start_document_classification_job(
 \description{
 Starts an asynchronous document classification job. Use the operation to track the progress of the job.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_document_classification_job(
+  JobName = "string",
+  DocumentClassifierArn = "string",
+  InputDataConfig = list(
+    S3Uri = "string",
+    InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
+  ),
+  OutputDataConfig = list(
+    S3Uri = "string"
+  ),
+  DataAccessRoleArn = "string",
+  ClientRequestToken = "string"
+)
 }
+}
+

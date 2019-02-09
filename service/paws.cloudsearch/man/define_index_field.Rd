@@ -2,9 +2,20 @@
 % Please edit documentation in R/paws.cloudsearch_operations.R
 \name{define_index_field}
 \alias{define_index_field}
-\title{Configures an \code{IndexField} for the search domain}
+\title{Configures an IndexField for the search domain}
 \usage{
-define_index_field(
+define_index_field(DomainName, IndexField)
+}
+\arguments{
+\item{DomainName}{[required]}
+
+\item{IndexField}{[required] The index field and field options you want to configure.}
+}
+\description{
+Configures an \code{IndexField} for the search domain. Used to create new fields and modify existing ones. You must specify the name of the domain you are configuring and an index field configuration. The index field configuration specifies a unique name, the index field type, and the options you want to configure for the field. The options you can specify depend on the \code{IndexFieldType}. If the field exists, the new configuration replaces the old one. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html}{Configuring Index Fields} in the \emph{Amazon CloudSearch Developer Guide}.
+}
+\section{Accepted Parameters}{
+\preformatted{define_index_field(
   DomainName = "string",
   IndexField = list(
     IndexFieldName = "string",
@@ -95,14 +106,5 @@ define_index_field(
   )
 )
 }
-\arguments{
-\item{DomainName}{[required]}
+}
 
-\item{IndexField}{[required] The index field and field options you want to configure.}
-}
-\description{
-Configures an \code{IndexField} for the search domain. Used to create new fields and modify existing ones. You must specify the name of the domain you are configuring and an index field configuration. The index field configuration specifies a unique name, the index field type, and the options you want to configure for the field. The options you can specify depend on the \code{IndexFieldType}. If the field exists, the new configuration replaces the old one. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html}{Configuring Index Fields} in the \emph{Amazon CloudSearch Developer Guide}.
-}
-\examples{
-
-}

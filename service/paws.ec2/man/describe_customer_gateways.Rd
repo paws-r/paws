@@ -4,20 +4,8 @@
 \alias{describe_customer_gateways}
 \title{Describes one or more of your VPN customer gateways}
 \usage{
-describe_customer_gateways(
-  CustomerGatewayIds = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE
-)
+describe_customer_gateways(CustomerGatewayIds = NULL, Filters = NULL,
+  DryRun = NULL)
 }
 \arguments{
 \item{CustomerGatewayIds}{One or more customer gateway IDs.
@@ -41,14 +29,32 @@ Default: Describes all your customer gateways.}
 Describes one or more of your VPN customer gateways.
 }
 \details{
-For more information about VPN customer gateways, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html}{AWS Managed VPN Connections} in the \emph{Amazon Virtual Private Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html}{AWS Site-to-Site VPN} in the \emph{AWS Site-to-Site VPN User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_customer_gateways(
+  CustomerGatewayIds = list(
+    "string"
+  ),
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example describes the specified customer gateway.
-describe_customer_gateways(
+\donttest{describe_customer_gateways(
   CustomerGatewayIds = list(
     "cgw-0e11f167"
   )
-)
+)}
 
 }

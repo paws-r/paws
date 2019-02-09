@@ -4,7 +4,32 @@
 \alias{create_ota_update}
 \title{Creates an AWS IoT OTAUpdate on a target group of things or groups}
 \usage{
-create_ota_update(
+create_ota_update(otaUpdateId, description = NULL, targets,
+  targetSelection = NULL, awsJobExecutionsRolloutConfig = NULL, files,
+  roleArn, additionalParameters = NULL)
+}
+\arguments{
+\item{otaUpdateId}{[required] The ID of the OTA update to be created.}
+
+\item{description}{The description of the OTA update.}
+
+\item{targets}{[required] The targeted devices to receive OTA updates.}
+
+\item{targetSelection}{Specifies whether the update will continue to run (CONTINUOUS), or will be complete after all the things specified as targets have completed the update (SNAPSHOT). If continuous, the update may also be run on a thing when a change is detected in a target. For example, an update will run on a thing when the thing is added to a target group, even after the update was completed by all things originally in the group. Valid values: CONTINUOUS | SNAPSHOT.}
+
+\item{awsJobExecutionsRolloutConfig}{Configuration for the rollout of OTA updates.}
+
+\item{files}{[required] The files to be streamed by the OTA update.}
+
+\item{roleArn}{[required] The IAM role that allows access to the AWS IoT Jobs service.}
+
+\item{additionalParameters}{A list of additional OTA update parameters which are name-value pairs.}
+}
+\description{
+Creates an AWS IoT OTAUpdate on a target group of things or groups.
+}
+\section{Accepted Parameters}{
+\preformatted{create_ota_update(
   otaUpdateId = "string",
   description = "string",
   targets = list(
@@ -68,26 +93,5 @@ create_ota_update(
   )
 )
 }
-\arguments{
-\item{otaUpdateId}{[required] The ID of the OTA update to be created.}
-
-\item{description}{The description of the OTA update.}
-
-\item{targets}{[required] The targeted devices to receive OTA updates.}
-
-\item{targetSelection}{Specifies whether the update will continue to run (CONTINUOUS), or will be complete after all the things specified as targets have completed the update (SNAPSHOT). If continuous, the update may also be run on a thing when a change is detected in a target. For example, an update will run on a thing when the thing is added to a target group, even after the update was completed by all things originally in the group. Valid values: CONTINUOUS | SNAPSHOT.}
-
-\item{awsJobExecutionsRolloutConfig}{Configuration for the rollout of OTA updates.}
-
-\item{files}{[required] The files to be streamed by the OTA update.}
-
-\item{roleArn}{[required] The IAM role that allows access to the AWS IoT Jobs service.}
-
-\item{additionalParameters}{A list of additional OTA update parameters which are name-value pairs.}
 }
-\description{
-Creates an AWS IoT OTAUpdate on a target group of things or groups.
-}
-\examples{
 
-}

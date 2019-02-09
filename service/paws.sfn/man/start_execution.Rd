@@ -4,11 +4,7 @@
 \alias{start_execution}
 \title{Starts a state machine execution}
 \usage{
-start_execution(
-  stateMachineArn = "string",
-  name = "string",
-  input = "string"
-)
+start_execution(stateMachineArn, name = NULL, input = NULL)
 }
 \arguments{
 \item{stateMachineArn}{[required] The Amazon Resource Name (ARN) of the state machine to execute.}
@@ -20,7 +16,7 @@ A name must \emph{not} contain:
 \item whitespace
 \item brackets \code{< > { } [ ]}
 \item wildcard characters \code{? *}
-\item special characters \code{\" # % \ ^ | ~ ` $ & , ; : /}
+\item special characters \code{\" # \% \ ^ | ~ ` $ & , ; : /}
 \item control characters (\code{U+0000-001F}, \code{U+007F-009F})
 }
 
@@ -38,6 +34,12 @@ Starts a state machine execution.
 \details{
 \code{StartExecution} is idempotent. If \code{StartExecution} is called with the same name and input as a running execution, the call will succeed and return the same response as the original request. If the execution is closed or if the input is different, it will return a 400 \code{ExecutionAlreadyExists} error. Names can be reused after 90 days.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_execution(
+  stateMachineArn = "string",
+  name = "string",
+  input = "string"
+)
 }
+}
+

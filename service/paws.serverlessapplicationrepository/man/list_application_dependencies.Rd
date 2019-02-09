@@ -5,12 +5,8 @@
 \alias{list_application_dependencies}
 \title{Retrieves the list of applications nested in the containing application}
 \usage{
-list_application_dependencies(
-  ApplicationId = "string",
-  MaxItems = 123,
-  NextToken = "string",
-  SemanticVersion = "string"
-)
+list_application_dependencies(ApplicationId, MaxItems = NULL,
+  NextToken = NULL, SemanticVersion = NULL)
 }
 \arguments{
 \item{ApplicationId}{[required] The Amazon Resource Name (ARN) of the application.}
@@ -24,6 +20,13 @@ list_application_dependencies(
 \description{
 Retrieves the list of applications nested in the containing application.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_application_dependencies(
+  ApplicationId = "string",
+  MaxItems = 123,
+  NextToken = "string",
+  SemanticVersion = "string"
+)
 }
+}
+

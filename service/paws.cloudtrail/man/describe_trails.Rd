@@ -4,12 +4,7 @@
 \alias{describe_trails}
 \title{Retrieves settings for the trail associated with the current region for your account}
 \usage{
-describe_trails(
-  trailNameList = list(
-    "string"
-  ),
-  includeShadowTrails = TRUE|FALSE
-)
+describe_trails(trailNameList = NULL, includeShadowTrails = NULL)
 }
 \arguments{
 \item{trailNameList}{Specifies a list of trail names, trail ARNs, or both, of the trails to describe. The format of a trail ARN is:
@@ -29,6 +24,13 @@ If one or more trail names are specified, information is returned only if the na
 \description{
 Retrieves settings for the trail associated with the current region for your account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_trails(
+  trailNameList = list(
+    "string"
+  ),
+  includeShadowTrails = TRUE|FALSE
+)
 }
+}
+

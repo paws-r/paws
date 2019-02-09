@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.transfer_operations.R
 \name{describe_server}
 \alias{describe_server}
-\title{Describes the server that you specify by passing the \code{ServerId} parameter}
+\title{Describes the server that you specify by passing the ServerId parameter}
 \usage{
-describe_server(
-  ServerId = "string"
-)
+describe_server(ServerId)
 }
 \arguments{
 \item{ServerId}{[required] A system-assigned unique identifier for an SFTP server.}
@@ -17,6 +15,10 @@ Describes the server that you specify by passing the \code{ServerId} parameter.
 \details{
 The response contains a description of the server's properties.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_server(
+  ServerId = "string"
+)
 }
+}
+

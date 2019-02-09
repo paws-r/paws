@@ -4,12 +4,8 @@
 \alias{terminate_environment}
 \title{Terminates the specified environment}
 \usage{
-terminate_environment(
-  EnvironmentId = "string",
-  EnvironmentName = "string",
-  TerminateResources = TRUE|FALSE,
-  ForceTerminate = TRUE|FALSE
-)
+terminate_environment(EnvironmentId = NULL, EnvironmentName = NULL,
+  TerminateResources = NULL, ForceTerminate = NULL)
 }
 \arguments{
 \item{EnvironmentId}{The ID of the environment to terminate.
@@ -37,11 +33,21 @@ Valid Values: \code{true} | \code{false}}
 \description{
 Terminates the specified environment.
 }
+\section{Accepted Parameters}{
+\preformatted{terminate_environment(
+  EnvironmentId = "string",
+  EnvironmentName = "string",
+  TerminateResources = TRUE|FALSE,
+  ForceTerminate = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # The following operation terminates an Elastic Beanstalk environment
 # named my-env:
-terminate_environment(
+\donttest{terminate_environment(
   EnvironmentName = "my-env"
-)
+)}
 
 }

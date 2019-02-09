@@ -4,9 +4,7 @@
 \alias{describe_device}
 \title{Given a device ID, returns a DescribeDeviceResponse object describing the details of the device}
 \usage{
-describe_device(
-  DeviceId = "string"
-)
+describe_device(DeviceId)
 }
 \arguments{
 \item{DeviceId}{[required] The unique identifier of the device.}
@@ -14,6 +12,10 @@ describe_device(
 \description{
 Given a device ID, returns a DescribeDeviceResponse object describing the details of the device.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_device(
+  DeviceId = "string"
+)
 }
+}
+

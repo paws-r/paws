@@ -4,9 +4,7 @@
 \alias{cancel_task_execution}
 \title{Cancels execution of a task}
 \usage{
-cancel_task_execution(
-  TaskExecutionArn = "string"
-)
+cancel_task_execution(TaskExecutionArn)
 }
 \arguments{
 \item{TaskExecutionArn}{[required] The Amazon Resource Name (ARN) of the task execution to cancel.}
@@ -17,6 +15,10 @@ Cancels execution of a task.
 \details{
 When you cancel a task execution, the transfer of some files are abruptly interrupted. The contents of files that are transferred to the destination might be incomplete or inconsistent with the source files. However, if you start a new task execution on the same task and you allow the task execution to complete, file content on the destination is complete and consistent. This applies to other unexpected failures that interrupt a task execution. In all of these cases, AWS DataSync successfully complete the transfer when you start the next task execution.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{cancel_task_execution(
+  TaskExecutionArn = "string"
+)
 }
+}
+

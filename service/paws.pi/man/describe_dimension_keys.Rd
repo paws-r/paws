@@ -2,35 +2,11 @@
 % Please edit documentation in R/paws.pi_operations.R
 \name{describe_dimension_keys}
 \alias{describe_dimension_keys}
-\title{For a specific time period, retrieve the top \code{N} dimension keys for a metric}
+\title{For a specific time period, retrieve the top N dimension keys for a metric}
 \usage{
-describe_dimension_keys(
-  ServiceType = "RDS",
-  Identifier = "string",
-  StartTime = as.POSIXct("2015-01-01"),
-  EndTime = as.POSIXct("2015-01-01"),
-  Metric = "string",
-  PeriodInSeconds = 123,
-  GroupBy = list(
-    Group = "string",
-    Dimensions = list(
-      "string"
-    ),
-    Limit = 123
-  ),
-  PartitionBy = list(
-    Group = "string",
-    Dimensions = list(
-      "string"
-    ),
-    Limit = 123
-  ),
-  Filter = list(
-    "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_dimension_keys(ServiceType, Identifier, StartTime, EndTime,
+  Metric, PeriodInSeconds = NULL, GroupBy, PartitionBy = NULL,
+  Filter = NULL, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ServiceType}{[required] The AWS service for which Performance Insights will return metrics. The only valid value for \emph{ServiceType} is: \code{RDS}}
@@ -83,6 +59,34 @@ If you don't specify \code{PeriodInSeconds}, then Performance Insights will choo
 \description{
 For a specific time period, retrieve the top \code{N} dimension keys for a metric.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_dimension_keys(
+  ServiceType = "RDS",
+  Identifier = "string",
+  StartTime = as.POSIXct("2015-01-01"),
+  EndTime = as.POSIXct("2015-01-01"),
+  Metric = "string",
+  PeriodInSeconds = 123,
+  GroupBy = list(
+    Group = "string",
+    Dimensions = list(
+      "string"
+    ),
+    Limit = 123
+  ),
+  PartitionBy = list(
+    Group = "string",
+    Dimensions = list(
+      "string"
+    ),
+    Limit = 123
+  ),
+  Filter = list(
+    "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

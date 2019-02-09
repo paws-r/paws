@@ -4,15 +4,7 @@
 \alias{create_cluster}
 \title{Creates a new Amazon ECS cluster}
 \usage{
-create_cluster(
-  clusterName = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
+create_cluster(clusterName = NULL, tags = NULL)
 }
 \arguments{
 \item{clusterName}{The name of your cluster. If you do not specify a name for your cluster, you create a cluster named \code{default}. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.}
@@ -25,10 +17,23 @@ Creates a new Amazon ECS cluster. By default, your account receives a \code{defa
 \details{
 When you call the CreateCluster API operation, Amazon ECS attempts to create the service-linked role for your account so that required resources in other AWS services can be managed on your behalf. However, if the IAM user that makes the call does not have permissions to create the service-linked role, it is not created. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html}{Using Service-Linked Roles for Amazon ECS} in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_cluster(
+  clusterName = "string",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # This example creates a cluster in your default region.
-create_cluster(
+\donttest{create_cluster(
   clusterName = "my_cluster"
-)
+)}
 
 }

@@ -2,18 +2,20 @@
 % Please edit documentation in R/paws.appmesh_operations.R
 \name{describe_mesh}
 \alias{describe_mesh}
-\title{Describes an existing cluster}
+\title{Describes an existing service mesh}
 \usage{
-describe_mesh(
-  meshName = "string"
-)
+describe_mesh(meshName)
 }
 \arguments{
 \item{meshName}{[required] The name of the service mesh to describe.}
 }
 \description{
-Describes an existing cluster.
+Describes an existing service mesh.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{describe_mesh(
+  meshName = "string"
+)
+}
+}
 
-}

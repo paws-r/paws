@@ -4,18 +4,9 @@
 \alias{describe_snapshot_schedules}
 \title{Returns a list of snapshot schedules}
 \usage{
-describe_snapshot_schedules(
-  ClusterIdentifier = "string",
-  ScheduleIdentifier = "string",
-  TagKeys = list(
-    "string"
-  ),
-  TagValues = list(
-    "string"
-  ),
-  Marker = "string",
-  MaxRecords = 123
-)
+describe_snapshot_schedules(ClusterIdentifier = NULL,
+  ScheduleIdentifier = NULL, TagKeys = NULL, TagValues = NULL,
+  Marker = NULL, MaxRecords = NULL)
 }
 \arguments{
 \item{ClusterIdentifier}{The unique identifier for the cluster whose snapshot schedules you want to view.}
@@ -33,6 +24,19 @@ describe_snapshot_schedules(
 \description{
 Returns a list of snapshot schedules.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_snapshot_schedules(
+  ClusterIdentifier = "string",
+  ScheduleIdentifier = "string",
+  TagKeys = list(
+    "string"
+  ),
+  TagValues = list(
+    "string"
+  ),
+  Marker = "string",
+  MaxRecords = 123
+)
 }
+}
+

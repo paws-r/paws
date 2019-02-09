@@ -4,11 +4,7 @@
 \alias{get_base_path_mappings}
 \title{Represents a collection of BasePathMapping resources}
 \usage{
-get_base_path_mappings(
-  domainName = "string",
-  position = "string",
-  limit = 123
-)
+get_base_path_mappings(domainName, position = NULL, limit = NULL)
 }
 \arguments{
 \item{domainName}{[required] [Required] The domain name of a BasePathMapping resource.}
@@ -20,6 +16,12 @@ get_base_path_mappings(
 \description{
 Represents a collection of BasePathMapping resources.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_base_path_mappings(
+  domainName = "string",
+  position = "string",
+  limit = 123
+)
 }
+}
+

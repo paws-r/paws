@@ -4,16 +4,10 @@
 \alias{put_lifecycle_hook}
 \title{Creates or updates a lifecycle hook for the specified Auto Scaling group}
 \usage{
-put_lifecycle_hook(
-  LifecycleHookName = "string",
-  AutoScalingGroupName = "string",
-  LifecycleTransition = "string",
-  RoleARN = "string",
-  NotificationTargetARN = "string",
-  NotificationMetadata = "string",
-  HeartbeatTimeout = 123,
-  DefaultResult = "string"
-)
+put_lifecycle_hook(LifecycleHookName, AutoScalingGroupName,
+  LifecycleTransition = NULL, RoleARN = NULL,
+  NotificationTargetARN = NULL, NotificationMetadata = NULL,
+  HeartbeatTimeout = NULL, DefaultResult = NULL)
 }
 \arguments{
 \item{LifecycleHookName}{[required] The name of the lifecycle hook.}
@@ -65,14 +59,28 @@ For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userg
 
 If you exceed your maximum limit of lifecycle hooks, which by default is 50 per Auto Scaling group, the call fails. For information about updating this limit, see \href{http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html}{AWS Service Limits} in the \emph{Amazon Web Services General Reference}.
 }
+\section{Accepted Parameters}{
+\preformatted{put_lifecycle_hook(
+  LifecycleHookName = "string",
+  AutoScalingGroupName = "string",
+  LifecycleTransition = "string",
+  RoleARN = "string",
+  NotificationTargetARN = "string",
+  NotificationMetadata = "string",
+  HeartbeatTimeout = 123,
+  DefaultResult = "string"
+)
+}
+}
+
 \examples{
 # This example creates a lifecycle hook.
-put_lifecycle_hook(
+\donttest{put_lifecycle_hook(
   AutoScalingGroupName = "my-auto-scaling-group",
   LifecycleHookName = "my-lifecycle-hook",
   LifecycleTransition = "autoscaling:EC2_INSTANCE_LAUNCHING",
   NotificationTargetARN = "arn:aws:sns:us-west-2:123456789012:my-sns-topic --role-arn",
   RoleARN = "arn:aws:iam::123456789012:role/my-auto-scaling-role"
-)
+)}
 
 }

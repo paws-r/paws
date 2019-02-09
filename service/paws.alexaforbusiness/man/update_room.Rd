@@ -4,13 +4,8 @@
 \alias{update_room}
 \title{Updates room details by room ARN}
 \usage{
-update_room(
-  RoomArn = "string",
-  RoomName = "string",
-  Description = "string",
-  ProviderCalendarId = "string",
-  ProfileArn = "string"
-)
+update_room(RoomArn = NULL, RoomName = NULL, Description = NULL,
+  ProviderCalendarId = NULL, ProfileArn = NULL)
 }
 \arguments{
 \item{RoomArn}{The ARN of the room to update.}
@@ -26,6 +21,14 @@ update_room(
 \description{
 Updates room details by room ARN.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_room(
+  RoomArn = "string",
+  RoomName = "string",
+  Description = "string",
+  ProviderCalendarId = "string",
+  ProfileArn = "string"
+)
 }
+}
+

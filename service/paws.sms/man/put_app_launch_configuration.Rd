@@ -4,7 +4,21 @@
 \alias{put_app_launch_configuration}
 \title{Creates a launch configuration for an application}
 \usage{
-put_app_launch_configuration(
+put_app_launch_configuration(appId = NULL, roleName = NULL,
+  serverGroupLaunchConfigurations = NULL)
+}
+\arguments{
+\item{appId}{ID of the application associated with the launch configuration.}
+
+\item{roleName}{Name of service role in the customer's account that Amazon CloudFormation uses to launch the application.}
+
+\item{serverGroupLaunchConfigurations}{Launch configurations for server groups in the application.}
+}
+\description{
+Creates a launch configuration for an application.
+}
+\section{Accepted Parameters}{
+\preformatted{put_app_launch_configuration(
   appId = "string",
   roleName = "string",
   serverGroupLaunchConfigurations = list(
@@ -48,16 +62,5 @@ put_app_launch_configuration(
   )
 )
 }
-\arguments{
-\item{appId}{ID of the application associated with the launch configuration.}
-
-\item{roleName}{Name of service role in the customer's account that Amazon CloudFormation uses to launch the application.}
-
-\item{serverGroupLaunchConfigurations}{Launch configurations for server groups in the application.}
 }
-\description{
-Creates a launch configuration for an application.
-}
-\examples{
 
-}

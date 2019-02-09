@@ -4,7 +4,41 @@
 \alias{modify_image_attribute}
 \title{Modifies the specified attribute of the specified AMI}
 \usage{
-modify_image_attribute(
+modify_image_attribute(Attribute = NULL, Description = NULL, ImageId,
+  LaunchPermission = NULL, OperationType = NULL, ProductCodes = NULL,
+  UserGroups = NULL, UserIds = NULL, Value = NULL, DryRun = NULL)
+}
+\arguments{
+\item{Attribute}{The name of the attribute to modify. The valid values are \code{description}, \code{launchPermission}, and \code{productCodes}.}
+
+\item{Description}{A new description for the AMI.}
+
+\item{ImageId}{[required] The ID of the AMI.}
+
+\item{LaunchPermission}{A new launch permission for the AMI.}
+
+\item{OperationType}{The operation type. This parameter can be used only when the \code{Attribute} parameter is \code{launchPermission}.}
+
+\item{ProductCodes}{One or more DevPay product codes. After you add a product code to an AMI, it can't be removed.}
+
+\item{UserGroups}{One or more user groups. This parameter can be used only when the \code{Attribute} parameter is \code{launchPermission}.}
+
+\item{UserIds}{One or more AWS account IDs. This parameter can be used only when the \code{Attribute} parameter is \code{launchPermission}.}
+
+\item{Value}{The value of the attribute being modified. This parameter can be used only when the \code{Attribute} parameter is \code{description} or \code{productCodes}.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+}
+\description{
+Modifies the specified attribute of the specified AMI. You can specify only one attribute at a time. You can use the \code{Attribute} parameter to specify the attribute or one of the following parameters: \code{Description}, \code{LaunchPermission}, or \code{ProductCode}.
+}
+\details{
+AWS Marketplace product codes cannot be modified. Images with an AWS Marketplace product code cannot be made public.
+
+To enable the SriovNetSupport enhanced networking attribute of an image, enable SriovNetSupport on an instance and create an AMI from the instance.
+}
+\section{Accepted Parameters}{
+\preformatted{modify_image_attribute(
   Attribute = "string",
   Description = list(
     Value = "string"
@@ -38,38 +72,11 @@ modify_image_attribute(
   DryRun = TRUE|FALSE
 )
 }
-\arguments{
-\item{Attribute}{The name of the attribute to modify. The valid values are \code{description}, \code{launchPermission}, and \code{productCodes}.}
-
-\item{Description}{A new description for the AMI.}
-
-\item{ImageId}{[required] The ID of the AMI.}
-
-\item{LaunchPermission}{A new launch permission for the AMI.}
-
-\item{OperationType}{The operation type. This parameter can be used only when the \code{Attribute} parameter is \code{launchPermission}.}
-
-\item{ProductCodes}{One or more DevPay product codes. After you add a product code to an AMI, it can't be removed.}
-
-\item{UserGroups}{One or more user groups. This parameter can be used only when the \code{Attribute} parameter is \code{launchPermission}.}
-
-\item{UserIds}{One or more AWS account IDs. This parameter can be used only when the \code{Attribute} parameter is \code{launchPermission}.}
-
-\item{Value}{The value of the attribute being modified. This parameter can be used only when the \code{Attribute} parameter is \code{description} or \code{productCodes}.}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\description{
-Modifies the specified attribute of the specified AMI. You can specify only one attribute at a time. You can use the \code{Attribute} parameter to specify the attribute or one of the following parameters: \code{Description}, \code{LaunchPermission}, or \code{ProductCode}.
-}
-\details{
-AWS Marketplace product codes cannot be modified. Images with an AWS Marketplace product code cannot be made public.
 
-To enable the SriovNetSupport enhanced networking attribute of an image, enable SriovNetSupport on an instance and create an AMI from the instance.
-}
 \examples{
 # This example makes the specified AMI public.
-modify_image_attribute(
+\donttest{modify_image_attribute(
   ImageId = "ami-5731123e",
   LaunchPermission = list(
     Add = list(
@@ -78,11 +85,11 @@ modify_image_attribute(
       )
     )
   )
-)
+)}
 
 # This example grants launch permissions for the specified AMI to the
 # specified AWS account.
-modify_image_attribute(
+\donttest{modify_image_attribute(
   ImageId = "ami-5731123e",
   LaunchPermission = list(
     Add = list(
@@ -91,6 +98,6 @@ modify_image_attribute(
       )
     )
   )
-)
+)}
 
 }

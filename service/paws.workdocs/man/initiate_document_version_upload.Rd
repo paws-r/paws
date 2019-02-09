@@ -4,16 +4,10 @@
 \alias{initiate_document_version_upload}
 \title{Creates a new document object and version object}
 \usage{
-initiate_document_version_upload(
-  AuthenticationToken = "string",
-  Id = "string",
-  Name = "string",
-  ContentCreatedTimestamp = as.POSIXct("2015-01-01"),
-  ContentModifiedTimestamp = as.POSIXct("2015-01-01"),
-  ContentType = "string",
-  DocumentSizeInBytes = 123,
-  ParentFolderId = "string"
-)
+initiate_document_version_upload(AuthenticationToken = NULL, Id = NULL,
+  Name = NULL, ContentCreatedTimestamp = NULL,
+  ContentModifiedTimestamp = NULL, ContentType = NULL,
+  DocumentSizeInBytes = NULL, ParentFolderId)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
@@ -40,6 +34,17 @@ The client specifies the parent folder ID and name of the document to upload. Th
 
 To cancel the document upload, call AbortDocumentVersionUpload.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{initiate_document_version_upload(
+  AuthenticationToken = "string",
+  Id = "string",
+  Name = "string",
+  ContentCreatedTimestamp = as.POSIXct("2015-01-01"),
+  ContentModifiedTimestamp = as.POSIXct("2015-01-01"),
+  ContentType = "string",
+  DocumentSizeInBytes = 123,
+  ParentFolderId = "string"
+)
 }
+}
+

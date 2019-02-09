@@ -4,9 +4,7 @@
 \alias{delete_db_snapshot}
 \title{Deletes a DB snapshot}
 \usage{
-delete_db_snapshot(
-  DBSnapshotIdentifier = "string"
-)
+delete_db_snapshot(DBSnapshotIdentifier)
 }
 \arguments{
 \item{DBSnapshotIdentifier}{[required] The DB snapshot identifier.
@@ -19,6 +17,10 @@ Deletes a DB snapshot. If the snapshot is being copied, the copy operation is te
 \details{
 The DB snapshot must be in the \code{available} state to be deleted.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_db_snapshot(
+  DBSnapshotIdentifier = "string"
+)
 }
+}
+

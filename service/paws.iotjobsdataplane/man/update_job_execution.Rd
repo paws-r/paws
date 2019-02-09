@@ -4,19 +4,10 @@
 \alias{update_job_execution}
 \title{Updates the status of a job execution}
 \usage{
-update_job_execution(
-  jobId = "string",
-  thingName = "string",
-  status = "QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"REJECTED"|"REMOVED"|"CANCELED",
-  statusDetails = list(
-    "string"
-  ),
-  stepTimeoutInMinutes = 123,
-  expectedVersion = 123,
-  includeJobExecutionState = TRUE|FALSE,
-  includeJobDocument = TRUE|FALSE,
-  executionNumber = 123
-)
+update_job_execution(jobId, thingName, status, statusDetails = NULL,
+  stepTimeoutInMinutes = NULL, expectedVersion = NULL,
+  includeJobExecutionState = NULL, includeJobDocument = NULL,
+  executionNumber = NULL)
 }
 \arguments{
 \item{jobId}{[required] The unique identifier assigned to this job when it was created.}
@@ -40,6 +31,20 @@ update_job_execution(
 \description{
 Updates the status of a job execution.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_job_execution(
+  jobId = "string",
+  thingName = "string",
+  status = "QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"REJECTED"|"REMOVED"|"CANCELED",
+  statusDetails = list(
+    "string"
+  ),
+  stepTimeoutInMinutes = 123,
+  expectedVersion = 123,
+  includeJobExecutionState = TRUE|FALSE,
+  includeJobDocument = TRUE|FALSE,
+  executionNumber = 123
+)
 }
+}
+

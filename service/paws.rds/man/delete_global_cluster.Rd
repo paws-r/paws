@@ -4,9 +4,7 @@
 \alias{delete_global_cluster}
 \title{Deletes a global database cluster}
 \usage{
-delete_global_cluster(
-  GlobalClusterIdentifier = "string"
-)
+delete_global_cluster(GlobalClusterIdentifier)
 }
 \arguments{
 \item{GlobalClusterIdentifier}{[required] The cluster identifier of the global database cluster being deleted.}
@@ -14,6 +12,10 @@ delete_global_cluster(
 \description{
 Deletes a global database cluster. The primary and secondary clusters must already be detached or destroyed first.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_global_cluster(
+  GlobalClusterIdentifier = "string"
+)
 }
+}
+

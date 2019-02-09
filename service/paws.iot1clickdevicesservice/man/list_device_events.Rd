@@ -4,13 +4,8 @@
 \alias{list_device_events}
 \title{Using a device ID, returns a DeviceEventsResponse object containing an array of events for the device}
 \usage{
-list_device_events(
-  DeviceId = "string",
-  FromTimeStamp = as.POSIXct("2015-01-01"),
-  MaxResults = 123,
-  NextToken = "string",
-  ToTimeStamp = as.POSIXct("2015-01-01")
-)
+list_device_events(DeviceId, FromTimeStamp, MaxResults = NULL,
+  NextToken = NULL, ToTimeStamp)
 }
 \arguments{
 \item{DeviceId}{[required] The unique identifier of the device.}
@@ -26,6 +21,14 @@ list_device_events(
 \description{
 Using a device ID, returns a DeviceEventsResponse object containing an array of events for the device.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_device_events(
+  DeviceId = "string",
+  FromTimeStamp = as.POSIXct("2015-01-01"),
+  MaxResults = 123,
+  NextToken = "string",
+  ToTimeStamp = as.POSIXct("2015-01-01")
+)
 }
+}
+

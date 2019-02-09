@@ -4,11 +4,7 @@
 \alias{get_model}
 \title{Describes an existing model defined for a RestApi resource}
 \usage{
-get_model(
-  restApiId = "string",
-  modelName = "string",
-  flatten = TRUE|FALSE
-)
+get_model(restApiId, modelName, flatten = NULL)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The RestApi identifier under which the Model exists.}
@@ -20,6 +16,12 @@ get_model(
 \description{
 Describes an existing model defined for a RestApi resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_model(
+  restApiId = "string",
+  modelName = "string",
+  flatten = TRUE|FALSE
+)
 }
+}
+

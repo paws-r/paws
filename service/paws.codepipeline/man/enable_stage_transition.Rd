@@ -4,11 +4,7 @@
 \alias{enable_stage_transition}
 \title{Enables artifacts in a pipeline to transition to a stage in a pipeline}
 \usage{
-enable_stage_transition(
-  pipelineName = "string",
-  stageName = "string",
-  transitionType = "Inbound"|"Outbound"
-)
+enable_stage_transition(pipelineName, stageName, transitionType)
 }
 \arguments{
 \item{pipelineName}{[required] The name of the pipeline in which you want to enable the flow of artifacts from one stage to another.}
@@ -20,6 +16,12 @@ enable_stage_transition(
 \description{
 Enables artifacts in a pipeline to transition to a stage in a pipeline.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{enable_stage_transition(
+  pipelineName = "string",
+  stageName = "string",
+  transitionType = "Inbound"|"Outbound"
+)
 }
+}
+

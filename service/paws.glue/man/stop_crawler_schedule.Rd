@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.glue_operations.R
 \name{stop_crawler_schedule}
 \alias{stop_crawler_schedule}
-\title{Sets the schedule state of the specified crawler to \code{NOT_SCHEDULED}, but does not stop the crawler if it is already running}
+\title{Sets the schedule state of the specified crawler to NOT_SCHEDULED, but does not stop the crawler if it is already running}
 \usage{
-stop_crawler_schedule(
-  CrawlerName = "string"
-)
+stop_crawler_schedule(CrawlerName)
 }
 \arguments{
 \item{CrawlerName}{[required] Name of the crawler whose schedule state to set.}
@@ -14,6 +12,10 @@ stop_crawler_schedule(
 \description{
 Sets the schedule state of the specified crawler to \code{NOT_SCHEDULED}, but does not stop the crawler if it is already running.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{stop_crawler_schedule(
+  CrawlerName = "string"
+)
 }
+}
+

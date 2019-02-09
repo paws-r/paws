@@ -4,11 +4,8 @@
 \alias{replace_route_table_association}
 \title{Changes the route table associated with a given subnet in a VPC}
 \usage{
-replace_route_table_association(
-  AssociationId = "string",
-  DryRun = TRUE|FALSE,
-  RouteTableId = "string"
-)
+replace_route_table_association(AssociationId, DryRun = NULL,
+  RouteTableId)
 }
 \arguments{
 \item{AssociationId}{[required] The association ID.}
@@ -18,17 +15,26 @@ replace_route_table_association(
 \item{RouteTableId}{[required] The ID of the new route table to associate with the subnet.}
 }
 \description{
-Changes the route table associated with a given subnet in a VPC. After the operation completes, the subnet uses the routes in the new route table it's associated with. For more information about route tables, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html}{Route Tables} in the \emph{Amazon Virtual Private Cloud User Guide}.
+Changes the route table associated with a given subnet in a VPC. After the operation completes, the subnet uses the routes in the new route table it's associated with. For more information about route tables, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html}{Route Tables} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \details{
 You can also use ReplaceRouteTableAssociation to change which table is the main route table in the VPC. You just specify the main route table's association ID and the route table to be the new main route table.
 }
+\section{Accepted Parameters}{
+\preformatted{replace_route_table_association(
+  AssociationId = "string",
+  DryRun = TRUE|FALSE,
+  RouteTableId = "string"
+)
+}
+}
+
 \examples{
 # This example associates the specified route table with the subnet for
 # the specified route table association.
-replace_route_table_association(
+\donttest{replace_route_table_association(
   AssociationId = "rtbassoc-781d0d1a",
   RouteTableId = "rtb-22574640"
-)
+)}
 
 }

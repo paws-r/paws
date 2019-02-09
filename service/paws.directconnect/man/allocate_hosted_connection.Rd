@@ -4,13 +4,8 @@
 \alias{allocate_hosted_connection}
 \title{Creates a hosted connection on the specified interconnect or a link aggregation group (LAG)}
 \usage{
-allocate_hosted_connection(
-  connectionId = "string",
-  ownerAccount = "string",
-  bandwidth = "string",
-  connectionName = "string",
-  vlan = 123
-)
+allocate_hosted_connection(connectionId, ownerAccount, bandwidth,
+  connectionName, vlan)
 }
 \arguments{
 \item{connectionId}{[required] The ID of the interconnect or LAG.}
@@ -31,6 +26,14 @@ Allocates a VLAN number and a specified amount of bandwidth for use by a hosted 
 
 Intended for use by AWS Direct Connect partners only.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{allocate_hosted_connection(
+  connectionId = "string",
+  ownerAccount = "string",
+  bandwidth = "string",
+  connectionName = "string",
+  vlan = 123
+)
 }
+}
+

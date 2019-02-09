@@ -2,13 +2,10 @@
 % Please edit documentation in R/paws.sfn_operations.R
 \name{update_state_machine}
 \alias{update_state_machine}
-\title{Updates an existing state machine by modifying its \code{definition} and/or \code{roleArn}}
+\title{Updates an existing state machine by modifying its definition and/or roleArn}
 \usage{
-update_state_machine(
-  stateMachineArn = "string",
-  definition = "string",
-  roleArn = "string"
-)
+update_state_machine(stateMachineArn, definition = NULL,
+  roleArn = NULL)
 }
 \arguments{
 \item{stateMachineArn}{[required] The Amazon Resource Name (ARN) of the state machine.}
@@ -23,6 +20,12 @@ Updates an existing state machine by modifying its \code{definition} and/or \cod
 \details{
 All \code{StartExecution} calls within a few seconds will use the updated \code{definition} and \code{roleArn}. Executions started immediately after calling \code{UpdateStateMachine} may use the previous state machine \code{definition} and \code{roleArn}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_state_machine(
+  stateMachineArn = "string",
+  definition = "string",
+  roleArn = "string"
+)
 }
+}
+

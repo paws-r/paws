@@ -4,9 +4,7 @@
 \alias{create_keys_and_certificate}
 \title{Creates a 2048-bit RSA key pair and issues an X}
 \usage{
-create_keys_and_certificate(
-  setAsActive = TRUE|FALSE
-)
+create_keys_and_certificate(setAsActive = NULL)
 }
 \arguments{
 \item{setAsActive}{Specifies whether the certificate is active.}
@@ -17,6 +15,10 @@ Creates a 2048-bit RSA key pair and issues an X.509 certificate using the issued
 \details{
 \strong{Note} This is the only time AWS IoT issues the private key for this certificate, so it is important to keep it in a secure location.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_keys_and_certificate(
+  setAsActive = TRUE|FALSE
+)
 }
+}
+

@@ -4,13 +4,9 @@
 \alias{replace_transit_gateway_route}
 \title{Replaces the specified route in the specified transit gateway route table}
 \usage{
-replace_transit_gateway_route(
-  DestinationCidrBlock = "string",
-  TransitGatewayRouteTableId = "string",
-  TransitGatewayAttachmentId = "string",
-  Blackhole = TRUE|FALSE,
-  DryRun = TRUE|FALSE
-)
+replace_transit_gateway_route(DestinationCidrBlock,
+  TransitGatewayRouteTableId, TransitGatewayAttachmentId = NULL,
+  Blackhole = NULL, DryRun = NULL)
 }
 \arguments{
 \item{DestinationCidrBlock}{[required] The CIDR range used for the destination match. Routing decisions are based on the most specific match.}
@@ -26,6 +22,14 @@ replace_transit_gateway_route(
 \description{
 Replaces the specified route in the specified transit gateway route table.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{replace_transit_gateway_route(
+  DestinationCidrBlock = "string",
+  TransitGatewayRouteTableId = "string",
+  TransitGatewayAttachmentId = "string",
+  Blackhole = TRUE|FALSE,
+  DryRun = TRUE|FALSE
+)
 }
+}
+

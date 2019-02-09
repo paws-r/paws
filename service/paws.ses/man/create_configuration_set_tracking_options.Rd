@@ -4,12 +4,8 @@
 \alias{create_configuration_set_tracking_options}
 \title{Creates an association between a configuration set and a custom domain for open and click event tracking}
 \usage{
-create_configuration_set_tracking_options(
-  ConfigurationSetName = "string",
-  TrackingOptions = list(
-    CustomRedirectDomain = "string"
-  )
-)
+create_configuration_set_tracking_options(ConfigurationSetName,
+  TrackingOptions)
 }
 \arguments{
 \item{ConfigurationSetName}{[required] The name of the configuration set that the tracking options should be associated with.}
@@ -22,6 +18,13 @@ Creates an association between a configuration set and a custom domain for open 
 \details{
 By default, images and links used for tracking open and click events are hosted on domains operated by Amazon SES. You can configure a subdomain of your own to handle these events. For information about using custom domains, see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html}{Amazon SES Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_configuration_set_tracking_options(
+  ConfigurationSetName = "string",
+  TrackingOptions = list(
+    CustomRedirectDomain = "string"
+  )
+)
 }
+}
+

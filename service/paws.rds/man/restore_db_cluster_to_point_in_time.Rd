@@ -4,33 +4,14 @@
 \alias{restore_db_cluster_to_point_in_time}
 \title{Restores a DB cluster to an arbitrary point in time}
 \usage{
-restore_db_cluster_to_point_in_time(
-  DBClusterIdentifier = "string",
-  RestoreType = "string",
-  SourceDBClusterIdentifier = "string",
-  RestoreToTime = as.POSIXct("2015-01-01"),
-  UseLatestRestorableTime = TRUE|FALSE,
-  Port = 123,
-  DBSubnetGroupName = "string",
-  OptionGroupName = "string",
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  KmsKeyId = "string",
-  EnableIAMDatabaseAuthentication = TRUE|FALSE,
-  BacktrackWindow = 123,
-  EnableCloudwatchLogsExports = list(
-    "string"
-  ),
-  DBClusterParameterGroupName = "string",
-  DeletionProtection = TRUE|FALSE
-)
+restore_db_cluster_to_point_in_time(DBClusterIdentifier,
+  RestoreType = NULL, SourceDBClusterIdentifier, RestoreToTime = NULL,
+  UseLatestRestorableTime = NULL, Port = NULL,
+  DBSubnetGroupName = NULL, OptionGroupName = NULL,
+  VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL,
+  EnableIAMDatabaseAuthentication = NULL, BacktrackWindow = NULL,
+  EnableCloudwatchLogsExports = NULL,
+  DBClusterParameterGroupName = NULL, DeletionProtection = NULL)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The name of the new DB cluster to be created.
@@ -146,6 +127,34 @@ This action only restores the DB cluster, not the DB instances for that DB clust
 
 For more information on Amazon Aurora, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?} in the \emph{Amazon Aurora User Guide.}
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{restore_db_cluster_to_point_in_time(
+  DBClusterIdentifier = "string",
+  RestoreType = "string",
+  SourceDBClusterIdentifier = "string",
+  RestoreToTime = as.POSIXct("2015-01-01"),
+  UseLatestRestorableTime = TRUE|FALSE,
+  Port = 123,
+  DBSubnetGroupName = "string",
+  OptionGroupName = "string",
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  KmsKeyId = "string",
+  EnableIAMDatabaseAuthentication = TRUE|FALSE,
+  BacktrackWindow = 123,
+  EnableCloudwatchLogsExports = list(
+    "string"
+  ),
+  DBClusterParameterGroupName = "string",
+  DeletionProtection = TRUE|FALSE
+)
 }
+}
+

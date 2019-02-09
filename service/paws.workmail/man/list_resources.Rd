@@ -4,11 +4,7 @@
 \alias{list_resources}
 \title{Returns summaries of the organization's resources}
 \usage{
-list_resources(
-  OrganizationId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_resources(OrganizationId, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{OrganizationId}{[required] The identifier for the organization under which the resources exist.}
@@ -20,6 +16,12 @@ list_resources(
 \description{
 Returns summaries of the organization's resources.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_resources(
+  OrganizationId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

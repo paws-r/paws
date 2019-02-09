@@ -4,15 +4,10 @@
 \alias{create_global_cluster}
 \title{Creates an Aurora global database spread across multiple regions}
 \usage{
-create_global_cluster(
-  GlobalClusterIdentifier = "string",
-  SourceDBClusterIdentifier = "string",
-  Engine = "string",
-  EngineVersion = "string",
-  DeletionProtection = TRUE|FALSE,
-  DatabaseName = "string",
-  StorageEncrypted = TRUE|FALSE
-)
+create_global_cluster(GlobalClusterIdentifier = NULL,
+  SourceDBClusterIdentifier = NULL, Engine = NULL,
+  EngineVersion = NULL, DeletionProtection = NULL,
+  DatabaseName = NULL, StorageEncrypted = NULL)
 }
 \arguments{
 \item{GlobalClusterIdentifier}{The cluster identifier of the new global database cluster.}
@@ -35,6 +30,16 @@ Creates an Aurora global database spread across multiple regions. The global dat
 \details{
 You can create a global database that is initially empty, and then add a primary cluster and a secondary cluster to it. Or you can specify an existing Aurora cluster during the create operation, and this cluster becomes the primary cluster of the global database.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_global_cluster(
+  GlobalClusterIdentifier = "string",
+  SourceDBClusterIdentifier = "string",
+  Engine = "string",
+  EngineVersion = "string",
+  DeletionProtection = TRUE|FALSE,
+  DatabaseName = "string",
+  StorageEncrypted = TRUE|FALSE
+)
 }
+}
+

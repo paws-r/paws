@@ -4,13 +4,8 @@
 \alias{describe_continuous_exports}
 \title{Lists exports as specified by ID}
 \usage{
-describe_continuous_exports(
-  exportIds = list(
-    "string"
-  ),
-  maxResults = 123,
-  nextToken = "string"
-)
+describe_continuous_exports(exportIds = NULL, maxResults = NULL,
+  nextToken = NULL)
 }
 \arguments{
 \item{exportIds}{The unique IDs assigned to the exports.}
@@ -22,6 +17,14 @@ describe_continuous_exports(
 \description{
 Lists exports as specified by ID. All continuous exports associated with your user account can be listed if you call \code{DescribeContinuousExports} as is without passing any parameters.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_continuous_exports(
+  exportIds = list(
+    "string"
+  ),
+  maxResults = 123,
+  nextToken = "string"
+)
 }
+}
+

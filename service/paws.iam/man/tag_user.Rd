@@ -4,15 +4,7 @@
 \alias{tag_user}
 \title{Adds one or more tags to an IAM user}
 \usage{
-tag_user(
-  UserName = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+tag_user(UserName, Tags)
 }
 \arguments{
 \item{UserName}{[required] The name of the user that you want to add tags to.
@@ -36,9 +28,22 @@ A tag consists of a key name and an associated value. By assigning tags to your 
 
 For more information about tagging, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM Identities} in the \emph{IAM User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{tag_user(
+  UserName = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # The following example shows how to add tags to an existing user.
-tag_user(
+\donttest{tag_user(
   Tags = list(
     list(
       Key = "Dept",
@@ -50,6 +55,6 @@ tag_user(
     )
   ),
   UserName = "anika"
-)
+)}
 
 }

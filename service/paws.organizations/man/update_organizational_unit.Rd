@@ -4,10 +4,7 @@
 \alias{update_organizational_unit}
 \title{Renames the specified organizational unit (OU)}
 \usage{
-update_organizational_unit(
-  OrganizationalUnitId = "string",
-  Name = "string"
-)
+update_organizational_unit(OrganizationalUnitId, Name = NULL)
 }
 \arguments{
 \item{OrganizationalUnitId}{[required] The unique identifier (ID) of the OU that you want to rename. You can get the ID from the ListOrganizationalUnitsForParent operation.
@@ -24,12 +21,20 @@ Renames the specified organizational unit (OU). The ID and ARN do not change. Th
 \details{
 This operation can be called only from the organization's master account.
 }
+\section{Accepted Parameters}{
+\preformatted{update_organizational_unit(
+  OrganizationalUnitId = "string",
+  Name = "string"
+)
+}
+}
+
 \examples{
 # The following example shows how to rename an OU. The output confirms the
 # new name:/n/n
-update_organizational_unit(
+\donttest{update_organizational_unit(
   Name = "AccountingOU",
   OrganizationalUnitId = "ou-examplerootid111-exampleouid111"
-)
+)}
 
 }

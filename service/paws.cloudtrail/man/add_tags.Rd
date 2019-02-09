@@ -4,15 +4,7 @@
 \alias{add_tags}
 \title{Adds one or more tags to a trail, up to a limit of 50}
 \usage{
-add_tags(
-  ResourceId = "string",
-  TagsList = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+add_tags(ResourceId, TagsList = NULL)
 }
 \arguments{
 \item{ResourceId}{[required] Specifies the ARN of the trail to which one or more tags will be added. The format of a trail ARN is:
@@ -24,6 +16,16 @@ add_tags(
 \description{
 Adds one or more tags to a trail, up to a limit of 50. Tags must be unique per trail. Overwrites an existing tag's value when a new value is specified for an existing tag key. If you specify a key without a value, the tag will be created with the specified key and a value of null. You can tag a trail that applies to all regions only from the region in which the trail was created (that is, from its home region).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{add_tags(
+  ResourceId = "string",
+  TagsList = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

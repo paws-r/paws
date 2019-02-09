@@ -2,21 +2,23 @@
 % Please edit documentation in R/paws.lambda_operations.R
 \name{get_layer_version}
 \alias{get_layer_version}
-\title{Returns information about a version of a function layer, with a link to download the layer archive that's valid for 10 minutes}
+\title{Returns information about a version of an AWS Lambda layer, with a link to download the layer archive that's valid for 10 minutes}
 \usage{
-get_layer_version(
-  LayerName = "string",
-  VersionNumber = 123
-)
+get_layer_version(LayerName, VersionNumber)
 }
 \arguments{
-\item{LayerName}{[required] The name of the layer.}
+\item{LayerName}{[required] The name or Amazon Resource Name (ARN) of the layer.}
 
 \item{VersionNumber}{[required] The version number.}
 }
 \description{
-Returns information about a version of a function layer, with a link to download the layer archive that's valid for 10 minutes.
+Returns information about a version of an \href{http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layer}, with a link to download the layer archive that's valid for 10 minutes.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{get_layer_version(
+  LayerName = "string",
+  VersionNumber = 123
+)
+}
+}
 
-}

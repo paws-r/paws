@@ -4,7 +4,16 @@
 \alias{put_report_definition}
 \title{Create a new report definition}
 \usage{
-put_report_definition(
+put_report_definition(ReportDefinition)
+}
+\arguments{
+\item{ReportDefinition}{[required]}
+}
+\description{
+Create a new report definition
+}
+\section{Accepted Parameters}{
+\preformatted{put_report_definition(
   ReportDefinition = list(
     ReportName = "string",
     TimeUnit = "HOURLY"|"DAILY",
@@ -22,12 +31,5 @@ put_report_definition(
   )
 )
 }
-\arguments{
-\item{ReportDefinition}{[required]}
 }
-\description{
-Create a new report definition
-}
-\examples{
 
-}

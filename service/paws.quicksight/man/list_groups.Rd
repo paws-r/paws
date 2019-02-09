@@ -4,12 +4,8 @@
 \alias{list_groups}
 \title{Lists all user groups in Amazon QuickSight}
 \usage{
-list_groups(
-  AwsAccountId = "string",
-  NextToken = "string",
-  MaxResults = 123,
-  Namespace = "string"
-)
+list_groups(AwsAccountId, NextToken = NULL, MaxResults = NULL,
+  Namespace)
 }
 \arguments{
 \item{AwsAccountId}{[required] The ID for the AWS account that the group is in. Currently, you use the ID for the AWS account that contains your Amazon QuickSight account.}
@@ -32,6 +28,13 @@ The response is a list of group objects.
 
 \code{aws quicksight list-groups -\-aws-account-id=111122223333 -\-namespace=default }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_groups(
+  AwsAccountId = "string",
+  NextToken = "string",
+  MaxResults = 123,
+  Namespace = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{delete_cluster}
 \title{Deletes the Amazon EKS cluster control plane}
 \usage{
-delete_cluster(
-  name = "string"
-)
+delete_cluster(name)
 }
 \arguments{
 \item{name}{[required] The name of the cluster to delete.}
@@ -17,11 +15,18 @@ Deletes the Amazon EKS cluster control plane.
 \details{
 If you have active services in your cluster that are associated with a load balancer, you must delete those services before deleting the cluster so that the load balancers are deleted properly. Otherwise, you can have orphaned resources in your VPC that prevent you from being able to delete the VPC. For more information, see \href{http://docs.aws.amazon.com/eks/latest/userguide/delete-cluster.html}{Deleting a Cluster} in the \emph{Amazon EKS User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_cluster(
+  name = "string"
+)
+}
+}
+
 \examples{
 # This example command deletes a cluster named `devel` in your default
 # region.
-delete_cluster(
+\donttest{delete_cluster(
   name = "devel"
-)
+)}
 
 }

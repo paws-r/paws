@@ -4,10 +4,7 @@
 \alias{deregister_robot}
 \title{Deregisters a robot}
 \usage{
-deregister_robot(
-  fleet = "string",
-  robot = "string"
-)
+deregister_robot(fleet, robot)
 }
 \arguments{
 \item{fleet}{[required] The Amazon Resource Name (ARN) of the fleet.}
@@ -17,6 +14,11 @@ deregister_robot(
 \description{
 Deregisters a robot.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{deregister_robot(
+  fleet = "string",
+  robot = "string"
+)
 }
+}
+

@@ -4,12 +4,9 @@
 \alias{delete_cluster}
 \title{Deletes a previously provisioned cluster}
 \usage{
-delete_cluster(
-  ClusterIdentifier = "string",
-  SkipFinalClusterSnapshot = TRUE|FALSE,
-  FinalClusterSnapshotIdentifier = "string",
-  FinalClusterSnapshotRetentionPeriod = 123
-)
+delete_cluster(ClusterIdentifier, SkipFinalClusterSnapshot = NULL,
+  FinalClusterSnapshotIdentifier = NULL,
+  FinalClusterSnapshotRetentionPeriod = NULL)
 }
 \arguments{
 \item{ClusterIdentifier}{[required] The identifier of the cluster to be deleted.
@@ -51,6 +48,13 @@ If you want to shut down the cluster and retain it for future use, set \emph{Ski
 
 For more information about managing clusters, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html}{Amazon Redshift Clusters} in the \emph{Amazon Redshift Cluster Management Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_cluster(
+  ClusterIdentifier = "string",
+  SkipFinalClusterSnapshot = TRUE|FALSE,
+  FinalClusterSnapshotIdentifier = "string",
+  FinalClusterSnapshotRetentionPeriod = 123
+)
 }
+}
+

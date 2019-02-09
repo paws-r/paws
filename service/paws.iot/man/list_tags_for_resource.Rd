@@ -4,10 +4,7 @@
 \alias{list_tags_for_resource}
 \title{Lists the tags (metadata) you have assigned to the resource}
 \usage{
-list_tags_for_resource(
-  resourceArn = "string",
-  nextToken = "string"
-)
+list_tags_for_resource(resourceArn, nextToken = NULL)
 }
 \arguments{
 \item{resourceArn}{[required] The ARN of the resource.}
@@ -17,6 +14,11 @@ list_tags_for_resource(
 \description{
 Lists the tags (metadata) you have assigned to the resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_tags_for_resource(
+  resourceArn = "string",
+  nextToken = "string"
+)
 }
+}
+

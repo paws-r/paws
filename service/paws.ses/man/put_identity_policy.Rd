@@ -4,11 +4,7 @@
 \alias{put_identity_policy}
 \title{Adds or updates a sending authorization policy for the specified identity (an email address or a domain)}
 \usage{
-put_identity_policy(
-  Identity = "string",
-  PolicyName = "string",
-  Policy = "string"
-)
+put_identity_policy(Identity, PolicyName, Policy)
 }
 \arguments{
 \item{Identity}{[required] The identity that the policy will apply to. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: \code{user@example.com}, \code{example.com}, \code{arn:aws:ses:us-east-1:123456789012:identity/example.com}.
@@ -33,13 +29,22 @@ Sending authorization is a feature that enables an identity owner to authorize o
 
 You can execute this operation no more than once per second.
 }
+\section{Accepted Parameters}{
+\preformatted{put_identity_policy(
+  Identity = "string",
+  PolicyName = "string",
+  Policy = "string"
+)
+}
+}
+
 \examples{
 # The following example adds a sending authorization policy to an
 # identity:
-put_identity_policy(
+\donttest{put_identity_policy(
   Identity = "example.com",
   Policy = "{\\"Version\\":\\"2008-10-17\\",\\"Statement\\":[{\\"Sid\\":\\"stmt1469123904194\\",\\"Effect\\":\\"Allow\\",\\"Principal\\":{\\"AWS\\":\\"arn:aws:iam::123456789012:root\\"},\\"Action\\":[\\"ses:SendEmail\\",\\"ses:SendRawEmail\\"],\\"Resource\\":\\"arn:aws:ses:us-east-1:EXAMPLE65304:identity/example.com\\"}]}",
   PolicyName = "MyPolicy"
-)
+)}
 
 }

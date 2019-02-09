@@ -4,33 +4,9 @@
 \alias{update_stack_instances}
 \title{Updates the parameter values for stack instances for the specified accounts, within the specified regions}
 \usage{
-update_stack_instances(
-  StackSetName = "string",
-  Accounts = list(
-    "string"
-  ),
-  Regions = list(
-    "string"
-  ),
-  ParameterOverrides = list(
-    list(
-      ParameterKey = "string",
-      ParameterValue = "string",
-      UsePreviousValue = TRUE|FALSE,
-      ResolvedValue = "string"
-    )
-  ),
-  OperationPreferences = list(
-    RegionOrder = list(
-      "string"
-    ),
-    FailureToleranceCount = 123,
-    FailureTolerancePercentage = 123,
-    MaxConcurrentCount = 123,
-    MaxConcurrentPercentage = 123
-  ),
-  OperationId = "string"
-)
+update_stack_instances(StackSetName, Accounts, Regions,
+  ParameterOverrides = NULL, OperationPreferences = NULL,
+  OperationId = NULL)
 }
 \arguments{
 \item{StackSetName}{[required] The name or unique ID of the stack set associated with the stack instances.}
@@ -75,6 +51,34 @@ During stack set updates, any parameters overridden for a stack instance are not
 
 You can only update the parameter \emph{values} that are specified in the stack set; to add or delete a parameter itself, use \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html}{UpdateStackSet} to update the stack set template. If you add a parameter to a template, before you can override the parameter value specified in the stack set you must first use \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html}{UpdateStackSet} to update all stack instances with the updated template and parameter value specified in the stack set. Once a stack instance has been updated with the new parameter, you can then override the parameter value using \code{UpdateStackInstances}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_stack_instances(
+  StackSetName = "string",
+  Accounts = list(
+    "string"
+  ),
+  Regions = list(
+    "string"
+  ),
+  ParameterOverrides = list(
+    list(
+      ParameterKey = "string",
+      ParameterValue = "string",
+      UsePreviousValue = TRUE|FALSE,
+      ResolvedValue = "string"
+    )
+  ),
+  OperationPreferences = list(
+    RegionOrder = list(
+      "string"
+    ),
+    FailureToleranceCount = 123,
+    FailureTolerancePercentage = 123,
+    MaxConcurrentCount = 123,
+    MaxConcurrentPercentage = 123
+  ),
+  OperationId = "string"
+)
 }
+}
+

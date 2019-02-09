@@ -4,26 +4,10 @@
 \alias{describe_events}
 \title{Returns events related to DB instances, DB security groups, DB snapshots, and DB parameter groups for the past 14 days}
 \usage{
-describe_events(
-  SourceIdentifier = "string",
-  SourceType = "db-instance"|"db-parameter-group"|"db-security-group"|"db-snapshot"|"db-cluster"|"db-cluster-snapshot",
-  StartTime = as.POSIXct("2015-01-01"),
-  EndTime = as.POSIXct("2015-01-01"),
-  Duration = 123,
-  EventCategories = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_events(SourceIdentifier = NULL, SourceType = NULL,
+  StartTime = NULL, EndTime = NULL, Duration = NULL,
+  EventCategories = NULL, Filters = NULL, MaxRecords = NULL,
+  Marker = NULL)
 }
 \arguments{
 \item{SourceIdentifier}{The identifier of the event source for which events are returned. If not specified, then all sources are included in the response.
@@ -67,6 +51,27 @@ Constraints: Minimum 20, maximum 100.}
 \description{
 Returns events related to DB instances, DB security groups, DB snapshots, and DB parameter groups for the past 14 days. Events specific to a particular DB instance, DB security group, database snapshot, or DB parameter group can be obtained by providing the name as a parameter. By default, the past hour of events are returned.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_events(
+  SourceIdentifier = "string",
+  SourceType = "db-instance"|"db-parameter-group"|"db-security-group"|"db-snapshot"|"db-cluster"|"db-cluster-snapshot",
+  StartTime = as.POSIXct("2015-01-01"),
+  EndTime = as.POSIXct("2015-01-01"),
+  Duration = 123,
+  EventCategories = list(
+    "string"
+  ),
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
+}
+

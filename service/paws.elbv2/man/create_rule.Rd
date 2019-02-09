@@ -4,7 +4,54 @@
 \alias{create_rule}
 \title{Creates a rule for the specified listener}
 \usage{
-create_rule(
+create_rule(ListenerArn, Conditions, Priority, Actions)
+}
+\arguments{
+\item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener.}
+
+\item{Conditions}{[required] The conditions. Each condition specifies a field name and a single value.
+
+If the field name is \code{host-header}, you can specify a single host name (for example, my.example.com). A host name is case insensitive, can be up to 128 characters in length, and can contain any of the following characters. You can include up to three wildcard characters.
+\itemize{
+\item A-Z, a-z, 0-9
+\item - .
+\item * (matches 0 or more characters)
+\item ? (matches exactly 1 character)
+}
+
+If the field name is \code{path-pattern}, you can specify a single path pattern. A path pattern is case-sensitive, can be up to 128 characters in length, and can contain any of the following characters. You can include up to three wildcard characters.
+\itemize{
+\item A-Z, a-z, 0-9
+\item \_ - . \$ / ~ " ' @ : +
+\item & (using &)
+\item * (matches 0 or more characters)
+\item ? (matches exactly 1 character)
+}}
+
+\item{Priority}{[required] The rule priority. A listener can't have multiple rules with the same priority.}
+
+\item{Actions}{[required] The actions. Each rule must include exactly one of the following types of actions: \code{forward}, \code{fixed-response}, or \code{redirect}.
+
+If the action type is \code{forward}, you specify a target group. The protocol of the target group must be HTTP or HTTPS for an Application Load Balancer. The protocol of the target group must be TCP or TLS for a Network Load Balancer.
+
+[HTTPS listeners] If the action type is \code{authenticate-oidc}, you authenticate users through an identity provider that is OpenID Connect (OIDC) compliant.
+
+[HTTPS listeners] If the action type is \code{authenticate-cognito}, you authenticate users through the user pools supported by Amazon Cognito.
+
+[Application Load Balancer] If the action type is \code{redirect}, you redirect specified client requests from one URL to another.
+
+[Application Load Balancer] If the action type is \code{fixed-response}, you drop specified client requests and return a custom HTTP response.}
+}
+\description{
+Creates a rule for the specified listener. The listener must be associated with an Application Load Balancer.
+}
+\details{
+Rules are evaluated in priority order, from the lowest value to the highest value. When the conditions for a rule are met, its actions are performed. If the conditions for no rules are met, the actions for the default rule are performed. For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules}{Listener Rules} in the \emph{Application Load Balancers Guide}.
+
+To view your current rules, use DescribeRules. To update a rule, use ModifyRule. To set the priorities of your rules, use SetRulePriorities. To delete a rule, use DeleteRule.
+}
+\section{Accepted Parameters}{
+\preformatted{create_rule(
   ListenerArn = "string",
   Conditions = list(
     list(
@@ -64,55 +111,13 @@ create_rule(
   )
 )
 }
-\arguments{
-\item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener.}
-
-\item{Conditions}{[required] The conditions. Each condition specifies a field name and a single value.
-
-If the field name is \code{host-header}, you can specify a single host name (for example, my.example.com). A host name is case insensitive, can be up to 128 characters in length, and can contain any of the following characters. You can include up to three wildcard characters.
-\itemize{
-\item A-Z, a-z, 0-9
-\item - .
-\item * (matches 0 or more characters)
-\item ? (matches exactly 1 character)
 }
 
-If the field name is \code{path-pattern}, you can specify a single path pattern. A path pattern is case-sensitive, can be up to 128 characters in length, and can contain any of the following characters. You can include up to three wildcard characters.
-\itemize{
-\item A-Z, a-z, 0-9
-\item \_ - . \$ / ~ " ' @ : +
-\item & (using &)
-\item * (matches 0 or more characters)
-\item ? (matches exactly 1 character)
-}}
-
-\item{Priority}{[required] The rule priority. A listener can't have multiple rules with the same priority.}
-
-\item{Actions}{[required] The actions. Each rule must include exactly one of the following types of actions: \code{forward}, \code{fixed-response}, or \code{redirect}.
-
-If the action type is \code{forward}, you specify a target group. The protocol of the target group must be HTTP or HTTPS for an Application Load Balancer or TCP for a Network Load Balancer.
-
-[HTTPS listener] If the action type is \code{authenticate-oidc}, you authenticate users through an identity provider that is OpenID Connect (OIDC) compliant.
-
-[HTTPS listener] If the action type is \code{authenticate-cognito}, you authenticate users through the user pools supported by Amazon Cognito.
-
-[Application Load Balancer] If the action type is \code{redirect}, you redirect specified client requests from one URL to another.
-
-[Application Load Balancer] If the action type is \code{fixed-response}, you drop specified client requests and return a custom HTTP response.}
-}
-\description{
-Creates a rule for the specified listener. The listener must be associated with an Application Load Balancer.
-}
-\details{
-Rules are evaluated in priority order, from the lowest value to the highest value. When the conditions for a rule are met, its actions are performed. If the conditions for no rules are met, the actions for the default rule are performed. For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules}{Listener Rules} in the \emph{Application Load Balancers Guide}.
-
-To view your current rules, use DescribeRules. To update a rule, use ModifyRule. To set the priorities of your rules, use SetRulePriorities. To delete a rule, use DeleteRule.
-}
 \examples{
 # This example creates a rule that forwards requests to the specified
 # target group if the URL contains the specified pattern (for example,
 # /img/*).
-create_rule(
+\donttest{create_rule(
   Actions = list(
     list(
       TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067",
@@ -129,6 +134,6 @@ create_rule(
   ),
   ListenerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-load-balancer/50dc6c495c0c9188/f2f7dc8efc522ab2",
   Priority = 10L
-)
+)}
 
 }

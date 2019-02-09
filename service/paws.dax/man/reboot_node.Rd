@@ -4,10 +4,7 @@
 \alias{reboot_node}
 \title{Reboots a single node of a DAX cluster}
 \usage{
-reboot_node(
-  ClusterName = "string",
-  NodeId = "string"
-)
+reboot_node(ClusterName, NodeId)
 }
 \arguments{
 \item{ClusterName}{[required] The name of the DAX cluster containing the node to be rebooted.}
@@ -17,6 +14,11 @@ reboot_node(
 \description{
 Reboots a single node of a DAX cluster. The reboot action takes place as soon as possible. During the reboot, the node status is set to REBOOTING.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{reboot_node(
+  ClusterName = "string",
+  NodeId = "string"
+)
 }
+}
+

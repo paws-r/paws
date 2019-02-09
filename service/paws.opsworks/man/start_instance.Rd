@@ -4,9 +4,7 @@
 \alias{start_instance}
 \title{Starts a specified instance}
 \usage{
-start_instance(
-  InstanceId = "string"
-)
+start_instance(InstanceId)
 }
 \arguments{
 \item{InstanceId}{[required] The instance ID.}
@@ -17,6 +15,10 @@ Starts a specified instance. For more information, see \href{http://docs.aws.ama
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_instance(
+  InstanceId = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{disable_rule}
 \title{Disables the specified rule}
 \usage{
-disable_rule(
-  Name = "string"
-)
+disable_rule(Name)
 }
 \arguments{
 \item{Name}{[required] The name of the rule.}
@@ -17,6 +15,10 @@ Disables the specified rule. A disabled rule won't match any events, and won't s
 \details{
 When you disable a rule, incoming events might continue to match to the disabled rule. Allow a short period of time for changes to take effect.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disable_rule(
+  Name = "string"
+)
 }
+}
+

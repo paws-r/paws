@@ -4,7 +4,28 @@
 \alias{test_authorization}
 \title{Tests if a specified principal is authorized to perform an AWS IoT action on a specified resource}
 \usage{
-test_authorization(
+test_authorization(principal = NULL, cognitoIdentityPoolId = NULL,
+  authInfos, clientId = NULL, policyNamesToAdd = NULL,
+  policyNamesToSkip = NULL)
+}
+\arguments{
+\item{principal}{The principal.}
+
+\item{cognitoIdentityPoolId}{The Cognito identity pool ID.}
+
+\item{authInfos}{[required] A list of authorization info objects. Simulating authorization will create a response for each \code{authInfo} object in the list.}
+
+\item{clientId}{The MQTT client ID.}
+
+\item{policyNamesToAdd}{When testing custom authorization, the policies specified here are treated as if they are attached to the principal being authorized.}
+
+\item{policyNamesToSkip}{When testing custom authorization, the policies specified here are treated as if they are not attached to the principal being authorized.}
+}
+\description{
+Tests if a specified principal is authorized to perform an AWS IoT action on a specified resource. Use this to test and debug the authorization behavior of devices that connect to the AWS IoT device gateway.
+}
+\section{Accepted Parameters}{
+\preformatted{test_authorization(
   principal = "string",
   cognitoIdentityPoolId = "string",
   authInfos = list(
@@ -24,22 +45,5 @@ test_authorization(
   )
 )
 }
-\arguments{
-\item{principal}{The principal.}
-
-\item{cognitoIdentityPoolId}{The Cognito identity pool ID.}
-
-\item{authInfos}{[required] A list of authorization info objects. Simulating authorization will create a response for each \code{authInfo} object in the list.}
-
-\item{clientId}{The MQTT client ID.}
-
-\item{policyNamesToAdd}{When testing custom authorization, the policies specified here are treated as if they are attached to the principal being authorized.}
-
-\item{policyNamesToSkip}{When testing custom authorization, the policies specified here are treated as if they are not attached to the principal being authorized.}
 }
-\description{
-Tests if a specified principal is authorized to perform an AWS IoT action on a specified resource. Use this to test and debug the authorization behavior of devices that connect to the AWS IoT device gateway.
-}
-\examples{
 
-}

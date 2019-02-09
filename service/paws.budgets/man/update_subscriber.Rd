@@ -4,7 +4,25 @@
 \alias{update_subscriber}
 \title{Updates a subscriber}
 \usage{
-update_subscriber(
+update_subscriber(AccountId, BudgetName, Notification, OldSubscriber,
+  NewSubscriber)
+}
+\arguments{
+\item{AccountId}{[required] The \code{accountId} that is associated with the budget whose subscriber you want to update.}
+
+\item{BudgetName}{[required] The name of the budget whose subscriber you want to update.}
+
+\item{Notification}{[required] The notification whose subscriber you want to update.}
+
+\item{OldSubscriber}{[required] The previous subscriber that is associated with a budget notification.}
+
+\item{NewSubscriber}{[required] The updated subscriber that is associated with a budget notification.}
+}
+\description{
+Updates a subscriber.
+}
+\section{Accepted Parameters}{
+\preformatted{update_subscriber(
   AccountId = "string",
   BudgetName = "string",
   Notification = list(
@@ -24,20 +42,5 @@ update_subscriber(
   )
 )
 }
-\arguments{
-\item{AccountId}{[required] The \code{accountId} that is associated with the budget whose subscriber you want to update.}
-
-\item{BudgetName}{[required] The name of the budget whose subscriber you want to update.}
-
-\item{Notification}{[required] The notification whose subscriber you want to update.}
-
-\item{OldSubscriber}{[required] The previous subscriber that is associated with a budget notification.}
-
-\item{NewSubscriber}{[required] The updated subscriber that is associated with a budget notification.}
 }
-\description{
-Updates a subscriber.
-}
-\examples{
 
-}

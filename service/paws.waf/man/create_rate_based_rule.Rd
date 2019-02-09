@@ -4,13 +4,7 @@
 \alias{create_rate_based_rule}
 \title{Creates a RateBasedRule}
 \usage{
-create_rate_based_rule(
-  Name = "string",
-  MetricName = "string",
-  RateKey = "IP",
-  RateLimit = 123,
-  ChangeToken = "string"
-)
+create_rate_based_rule(Name, MetricName, RateKey, RateLimit, ChangeToken)
 }
 \arguments{
 \item{Name}{[required] A friendly name or description of the RateBasedRule. You can't change the name of a \code{RateBasedRule} after you create it.}
@@ -60,6 +54,14 @@ To create and configure a \code{RateBasedRule}, perform the following steps:
 
 For more information about how to use the AWS WAF API to allow or block HTTP requests, see the \href{http://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_rate_based_rule(
+  Name = "string",
+  MetricName = "string",
+  RateKey = "IP",
+  RateLimit = 123,
+  ChangeToken = "string"
+)
 }
+}
+

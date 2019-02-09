@@ -4,12 +4,7 @@
 \alias{tag_log_group}
 \title{Adds or updates the specified tags for the specified log group}
 \usage{
-tag_log_group(
-  logGroupName = "string",
-  tags = list(
-    "string"
-  )
-)
+tag_log_group(logGroupName, tags)
 }
 \arguments{
 \item{logGroupName}{[required] The name of the log group.}
@@ -24,6 +19,13 @@ To list the tags for a log group, use ListTagsLogGroup. To remove tags, use Unta
 
 For more information about tags, see \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/log-group-tagging.html}{Tag Log Groups in Amazon CloudWatch Logs} in the \emph{Amazon CloudWatch Logs User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{tag_log_group(
+  logGroupName = "string",
+  tags = list(
+    "string"
+  )
+)
 }
+}
+

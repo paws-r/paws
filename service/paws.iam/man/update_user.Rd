@@ -4,11 +4,7 @@
 \alias{update_user}
 \title{Updates the name and/or the path of the specified IAM user}
 \usage{
-update_user(
-  UserName = "string",
-  NewPath = "string",
-  NewUserName = "string"
-)
+update_user(UserName, NewPath = NULL, NewUserName = NULL)
 }
 \arguments{
 \item{UserName}{[required] Name of the user to update. If you're changing the name of the user, this is the original user name.
@@ -31,12 +27,21 @@ You should understand the implications of changing an IAM user's path or name. F
 
 To change a user name, the requester must have appropriate permissions on both the source object and the target object. For example, to change Bob to Robert, the entity making the request must have permission on Bob and Robert, or must have permission on all (*). For more information about permissions, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/PermissionsAndPolicies.html}{Permissions and Policies}.
 }
+\section{Accepted Parameters}{
+\preformatted{update_user(
+  UserName = "string",
+  NewPath = "string",
+  NewUserName = "string"
+)
+}
+}
+
 \examples{
 # The following command changes the name of the IAM user Bob to Robert. It
 # does not change the user's path.
-update_user(
+\donttest{update_user(
   NewUserName = "Robert",
   UserName = "Bob"
-)
+)}
 
 }

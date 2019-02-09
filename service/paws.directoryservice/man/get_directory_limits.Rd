@@ -9,6 +9,8 @@ get_directory_limits()
 \description{
 Obtains directory limit information for the current region.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_directory_limits()
 }
+}
+

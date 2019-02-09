@@ -4,12 +4,7 @@
 \alias{describe_elastic_load_balancers}
 \title{Describes a stack's Elastic Load Balancing instances}
 \usage{
-describe_elastic_load_balancers(
-  StackId = "string",
-  LayerIds = list(
-    "string"
-  )
-)
+describe_elastic_load_balancers(StackId = NULL, LayerIds = NULL)
 }
 \arguments{
 \item{StackId}{A stack ID. The action describes the stack's Elastic Load Balancing instances.}
@@ -24,6 +19,13 @@ This call accepts only one resource-identifying parameter.
 
 \strong{Required Permissions}: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_elastic_load_balancers(
+  StackId = "string",
+  LayerIds = list(
+    "string"
+  )
+)
 }
+}
+

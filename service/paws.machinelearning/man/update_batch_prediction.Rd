@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.machinelearning_operations.R
 \name{update_batch_prediction}
 \alias{update_batch_prediction}
-\title{Updates the \code{BatchPredictionName} of a \code{BatchPrediction}}
+\title{Updates the BatchPredictionName of a BatchPrediction}
 \usage{
-update_batch_prediction(
-  BatchPredictionId = "string",
-  BatchPredictionName = "string"
-)
+update_batch_prediction(BatchPredictionId, BatchPredictionName)
 }
 \arguments{
 \item{BatchPredictionId}{[required] The ID assigned to the \code{BatchPrediction} during creation.}
@@ -20,6 +17,11 @@ Updates the \code{BatchPredictionName} of a \code{BatchPrediction}.
 \details{
 You can use the \code{GetBatchPrediction} operation to view the contents of the updated data element.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_batch_prediction(
+  BatchPredictionId = "string",
+  BatchPredictionName = "string"
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{upload_documents}
 \title{Posts a batch of documents to a search domain for indexing}
 \usage{
-upload_documents(
-  documents = raw,
-  contentType = "application/json"|"application/xml"
-)
+upload_documents(documents, contentType)
 }
 \arguments{
 \item{documents}{[required] A batch of documents formatted in JSON or HTML.}
@@ -26,6 +23,11 @@ The endpoint for submitting \code{UploadDocuments} requests is domain-specific. 
 
 For more information about formatting your data for Amazon CloudSearch, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/preparing-data.html}{Preparing Your Data} in the \emph{Amazon CloudSearch Developer Guide}. For more information about uploading data for indexing, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/uploading-data.html}{Uploading Data} in the \emph{Amazon CloudSearch Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{upload_documents(
+  documents = raw,
+  contentType = "application/json"|"application/xml"
+)
 }
+}
+

@@ -4,19 +4,9 @@
 \alias{copy_db_cluster_snapshot}
 \title{Copies a snapshot of a DB cluster}
 \usage{
-copy_db_cluster_snapshot(
-  SourceDBClusterSnapshotIdentifier = "string",
-  TargetDBClusterSnapshotIdentifier = "string",
-  KmsKeyId = "string",
-  PreSignedUrl = "string",
-  CopyTags = TRUE|FALSE,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+copy_db_cluster_snapshot(SourceDBClusterSnapshotIdentifier,
+  TargetDBClusterSnapshotIdentifier, KmsKeyId = NULL,
+  PreSignedUrl = NULL, CopyTags = NULL, Tags = NULL)
 }
 \arguments{
 \item{SourceDBClusterSnapshotIdentifier}{[required] The identifier of the DB cluster snapshot to copy. This parameter is not case-sensitive.
@@ -95,6 +85,20 @@ To learn how to generate a Signature Version 4 signed request, see \href{http://
 
 To cancel the copy operation once it is in progress, delete the target DB cluster snapshot identified by \code{TargetDBClusterSnapshotIdentifier} while that DB cluster snapshot is in "copying" status.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{copy_db_cluster_snapshot(
+  SourceDBClusterSnapshotIdentifier = "string",
+  TargetDBClusterSnapshotIdentifier = "string",
+  KmsKeyId = "string",
+  PreSignedUrl = "string",
+  CopyTags = TRUE|FALSE,
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

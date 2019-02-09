@@ -4,10 +4,7 @@
 \alias{delete_ip_set}
 \title{Permanently deletes an IPSet}
 \usage{
-delete_ip_set(
-  IPSetId = "string",
-  ChangeToken = "string"
-)
+delete_ip_set(IPSetId, ChangeToken)
 }
 \arguments{
 \item{IPSetId}{[required] The \code{IPSetId} of the IPSet that you want to delete. \code{IPSetId} is returned by CreateIPSet and by ListIPSets.}
@@ -27,12 +24,20 @@ To permanently delete an \code{IPSet} from AWS WAF, perform the following steps:
 \item Submit a \code{DeleteIPSet} request.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{delete_ip_set(
+  IPSetId = "string",
+  ChangeToken = "string"
+)
+}
+}
+
 \examples{
 # The following example deletes an IP match set  with the ID
 # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-delete_ip_set(
+\donttest{delete_ip_set(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   IPSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-)
+)}
 
 }

@@ -4,12 +4,8 @@
 \alias{update_team_member}
 \title{Updates a team member's attributes in an AWS CodeStar project}
 \usage{
-update_team_member(
-  projectId = "string",
-  userArn = "string",
-  projectRole = "string",
-  remoteAccessAllowed = TRUE|FALSE
-)
+update_team_member(projectId, userArn, projectRole = NULL,
+  remoteAccessAllowed = NULL)
 }
 \arguments{
 \item{projectId}{[required] The ID of the project.}
@@ -23,6 +19,13 @@ update_team_member(
 \description{
 Updates a team member's attributes in an AWS CodeStar project. For example, you can change a team member's role in the project, or change whether they have remote access to project resources.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_team_member(
+  projectId = "string",
+  userArn = "string",
+  projectRole = "string",
+  remoteAccessAllowed = TRUE|FALSE
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{delete_tape_archive}
 \title{Deletes the specified virtual tape from the virtual tape shelf (VTS)}
 \usage{
-delete_tape_archive(
-  TapeARN = "string"
-)
+delete_tape_archive(TapeARN)
 }
 \arguments{
 \item{TapeARN}{[required] The Amazon Resource Name (ARN) of the virtual tape to delete from the virtual tape shelf (VTS).}
@@ -14,10 +12,17 @@ delete_tape_archive(
 \description{
 Deletes the specified virtual tape from the virtual tape shelf (VTS). This operation is only supported in the tape gateway type.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_tape_archive(
+  TapeARN = "string"
+)
+}
+}
+
 \examples{
 # Deletes the specified virtual tape from the virtual tape shelf (VTS).
-delete_tape_archive(
+\donttest{delete_tape_archive(
   TapeARN = "arn:aws:storagegateway:us-east-1:204469490176:tape/TEST05A2A0"
-)
+)}
 
 }

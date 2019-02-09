@@ -4,9 +4,7 @@
 \alias{delete_pipeline}
 \title{Deletes a pipeline, its pipeline definition, and its run history}
 \usage{
-delete_pipeline(
-  pipelineId = "string"
-)
+delete_pipeline(pipelineId)
 }
 \arguments{
 \item{pipelineId}{[required] The ID of the pipeline.}
@@ -17,6 +15,10 @@ Deletes a pipeline, its pipeline definition, and its run history. AWS Data Pipel
 \details{
 Deleting a pipeline cannot be undone. You cannot query or restore a deleted pipeline. To temporarily pause a pipeline instead of deleting it, call SetStatus with the status set to \code{PAUSE} on individual components. Components that are paused by SetStatus can be resumed.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_pipeline(
+  pipelineId = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{get_public_key_config}
 \title{Return public key configuration informaation}
 \usage{
-get_public_key_config(
-  Id = "string"
-)
+get_public_key_config(Id)
 }
 \arguments{
 \item{Id}{[required] Request the ID for the public key configuration.}
@@ -14,6 +12,10 @@ get_public_key_config(
 \description{
 Return public key configuration informaation
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_public_key_config(
+  Id = "string"
+)
 }
+}
+

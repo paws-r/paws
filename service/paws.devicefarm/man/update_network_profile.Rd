@@ -4,20 +4,12 @@
 \alias{update_network_profile}
 \title{Updates the network profile with specific settings}
 \usage{
-update_network_profile(
-  arn = "string",
-  name = "string",
-  description = "string",
-  type = "CURATED"|"PRIVATE",
-  uplinkBandwidthBits = 123,
-  downlinkBandwidthBits = 123,
-  uplinkDelayMs = 123,
-  downlinkDelayMs = 123,
-  uplinkJitterMs = 123,
-  downlinkJitterMs = 123,
-  uplinkLossPercent = 123,
-  downlinkLossPercent = 123
-)
+update_network_profile(arn, name = NULL, description = NULL,
+  type = NULL, uplinkBandwidthBits = NULL,
+  downlinkBandwidthBits = NULL, uplinkDelayMs = NULL,
+  downlinkDelayMs = NULL, uplinkJitterMs = NULL,
+  downlinkJitterMs = NULL, uplinkLossPercent = NULL,
+  downlinkLossPercent = NULL)
 }
 \arguments{
 \item{arn}{[required] The Amazon Resource Name (ARN) of the project for which you want to update network profile settings.}
@@ -47,6 +39,21 @@ update_network_profile(
 \description{
 Updates the network profile with specific settings.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_network_profile(
+  arn = "string",
+  name = "string",
+  description = "string",
+  type = "CURATED"|"PRIVATE",
+  uplinkBandwidthBits = 123,
+  downlinkBandwidthBits = 123,
+  uplinkDelayMs = 123,
+  downlinkDelayMs = 123,
+  uplinkJitterMs = 123,
+  downlinkJitterMs = 123,
+  uplinkLossPercent = 123,
+  downlinkLossPercent = 123
+)
 }
+}
+

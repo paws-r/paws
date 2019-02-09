@@ -4,41 +4,12 @@
 \alias{create_instance}
 \title{Creates an instance in a specified stack}
 \usage{
-create_instance(
-  StackId = "string",
-  LayerIds = list(
-    "string"
-  ),
-  InstanceType = "string",
-  AutoScalingType = "load"|"timer",
-  Hostname = "string",
-  Os = "string",
-  AmiId = "string",
-  SshKeyName = "string",
-  AvailabilityZone = "string",
-  VirtualizationType = "string",
-  SubnetId = "string",
-  Architecture = "x86_64"|"i386",
-  RootDeviceType = "ebs"|"instance-store",
-  BlockDeviceMappings = list(
-    list(
-      DeviceName = "string",
-      NoDevice = "string",
-      VirtualName = "string",
-      Ebs = list(
-        SnapshotId = "string",
-        Iops = 123,
-        VolumeSize = 123,
-        VolumeType = "gp2"|"io1"|"standard",
-        DeleteOnTermination = TRUE|FALSE
-      )
-    )
-  ),
-  InstallUpdatesOnBoot = TRUE|FALSE,
-  EbsOptimized = TRUE|FALSE,
-  AgentVersion = "string",
-  Tenancy = "string"
-)
+create_instance(StackId, LayerIds, InstanceType, AutoScalingType = NULL,
+  Hostname = NULL, Os = NULL, AmiId = NULL, SshKeyName = NULL,
+  AvailabilityZone = NULL, VirtualizationType = NULL,
+  SubnetId = NULL, Architecture = NULL, RootDeviceType = NULL,
+  BlockDeviceMappings = NULL, InstallUpdatesOnBoot = NULL,
+  EbsOptimized = NULL, AgentVersion = NULL, Tenancy = NULL)
 }
 \arguments{
 \item{StackId}{[required] The stack ID.}
@@ -105,6 +76,42 @@ Creates an instance in a specified stack. For more information, see \href{http:/
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_instance(
+  StackId = "string",
+  LayerIds = list(
+    "string"
+  ),
+  InstanceType = "string",
+  AutoScalingType = "load"|"timer",
+  Hostname = "string",
+  Os = "string",
+  AmiId = "string",
+  SshKeyName = "string",
+  AvailabilityZone = "string",
+  VirtualizationType = "string",
+  SubnetId = "string",
+  Architecture = "x86_64"|"i386",
+  RootDeviceType = "ebs"|"instance-store",
+  BlockDeviceMappings = list(
+    list(
+      DeviceName = "string",
+      NoDevice = "string",
+      VirtualName = "string",
+      Ebs = list(
+        SnapshotId = "string",
+        Iops = 123,
+        VolumeSize = 123,
+        VolumeType = "gp2"|"io1"|"standard",
+        DeleteOnTermination = TRUE|FALSE
+      )
+    )
+  ),
+  InstallUpdatesOnBoot = TRUE|FALSE,
+  EbsOptimized = TRUE|FALSE,
+  AgentVersion = "string",
+  Tenancy = "string"
+)
 }
+}
+

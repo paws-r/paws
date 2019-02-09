@@ -4,19 +4,9 @@
 \alias{create_case}
 \title{Creates a new case in the AWS Support Center}
 \usage{
-create_case(
-  subject = "string",
-  serviceCode = "string",
-  severityCode = "string",
-  categoryCode = "string",
-  communicationBody = "string",
-  ccEmailAddresses = list(
-    "string"
-  ),
-  language = "string",
-  issueType = "string",
-  attachmentSetId = "string"
-)
+create_case(subject, serviceCode = NULL, severityCode = NULL,
+  categoryCode = NULL, communicationBody, ccEmailAddresses = NULL,
+  language = NULL, issueType = NULL, attachmentSetId = NULL)
 }
 \arguments{
 \item{subject}{[required] The title of the AWS Support case.}
@@ -59,6 +49,20 @@ To add additional communication or attachments to an existing case, use AddCommu
 
 A successful CreateCase request returns an AWS Support case number. Case numbers are used by the DescribeCases operation to retrieve existing AWS Support cases.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_case(
+  subject = "string",
+  serviceCode = "string",
+  severityCode = "string",
+  categoryCode = "string",
+  communicationBody = "string",
+  ccEmailAddresses = list(
+    "string"
+  ),
+  language = "string",
+  issueType = "string",
+  attachmentSetId = "string"
+)
 }
+}
+

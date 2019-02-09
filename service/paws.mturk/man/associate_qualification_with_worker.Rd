@@ -2,14 +2,10 @@
 % Please edit documentation in R/paws.mturk_operations.R
 \name{associate_qualification_with_worker}
 \alias{associate_qualification_with_worker}
-\title{The \code{AssociateQualificationWithWorker} operation gives a Worker a Qualification}
+\title{The AssociateQualificationWithWorker operation gives a Worker a Qualification}
 \usage{
-associate_qualification_with_worker(
-  QualificationTypeId = "string",
-  WorkerId = "string",
-  IntegerValue = 123,
-  SendNotification = TRUE|FALSE
-)
+associate_qualification_with_worker(QualificationTypeId, WorkerId,
+  IntegerValue = NULL, SendNotification = NULL)
 }
 \arguments{
 \item{QualificationTypeId}{[required] The ID of the Qualification type to use for the assigned Qualification.}
@@ -28,6 +24,13 @@ You can only assign a Qualification of a Qualification type that you created (us
 
 Note: \code{AssociateQualificationWithWorker} does not affect any pending Qualification requests for the Qualification by the Worker. If you assign a Qualification to a Worker, then later grant a Qualification request made by the Worker, the granting of the request may modify the Qualification score. To resolve a pending Qualification request without affecting the Qualification the Worker already has, reject the request with the \code{RejectQualificationRequest} operation.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_qualification_with_worker(
+  QualificationTypeId = "string",
+  WorkerId = "string",
+  IntegerValue = 123,
+  SendNotification = TRUE|FALSE
+)
 }
+}
+

@@ -4,7 +4,28 @@
 \alias{create_conference_provider}
 \title{Adds a new conference provider under the user's AWS account}
 \usage{
-create_conference_provider(
+create_conference_provider(ConferenceProviderName, ConferenceProviderType,
+  IPDialIn = NULL, PSTNDialIn = NULL, MeetingSetting,
+  ClientRequestToken = NULL)
+}
+\arguments{
+\item{ConferenceProviderName}{[required] The name of the conference provider.}
+
+\item{ConferenceProviderType}{[required] Represents a type within a list of predefined types.}
+
+\item{IPDialIn}{The IP endpoint and protocol for calling.}
+
+\item{PSTNDialIn}{The information for PSTN conferencing.}
+
+\item{MeetingSetting}{[required] The meeting settings for the conference provider.}
+
+\item{ClientRequestToken}{The request token of the client.}
+}
+\description{
+Adds a new conference provider under the user's AWS account.
+}
+\section{Accepted Parameters}{
+\preformatted{create_conference_provider(
   ConferenceProviderName = "string",
   ConferenceProviderType = "CHIME"|"BLUEJEANS"|"FUZE"|"GOOGLE_HANGOUTS"|"POLYCOM"|"RINGCENTRAL"|"SKYPE_FOR_BUSINESS"|"WEBEX"|"ZOOM"|"CUSTOM",
   IPDialIn = list(
@@ -23,22 +44,5 @@ create_conference_provider(
   ClientRequestToken = "string"
 )
 }
-\arguments{
-\item{ConferenceProviderName}{[required] The name of the conference provider.}
-
-\item{ConferenceProviderType}{[required] Represents a type within a list of predefined types.}
-
-\item{IPDialIn}{The IP endpoint and protocol for calling.}
-
-\item{PSTNDialIn}{The information for PSTN conferencing.}
-
-\item{MeetingSetting}{[required] The meeting settings for the conference provider.}
-
-\item{ClientRequestToken}{The request token of the client.}
 }
-\description{
-Adds a new conference provider under the user's AWS account.
-}
-\examples{
 
-}

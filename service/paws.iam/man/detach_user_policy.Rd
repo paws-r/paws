@@ -4,10 +4,7 @@
 \alias{detach_user_policy}
 \title{Removes the specified managed policy from the specified user}
 \usage{
-detach_user_policy(
-  UserName = "string",
-  PolicyArn = "string"
-)
+detach_user_policy(UserName, PolicyArn)
 }
 \arguments{
 \item{UserName}{[required] The name (friendly name, not ARN) of the IAM user to detach the policy from.
@@ -24,6 +21,11 @@ Removes the specified managed policy from the specified user.
 \details{
 A user can also have inline policies embedded with it. To delete an inline policy, use the DeleteUserPolicy API. For information about policies, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies} in the \emph{IAM User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{detach_user_policy(
+  UserName = "string",
+  PolicyArn = "string"
+)
 }
+}
+

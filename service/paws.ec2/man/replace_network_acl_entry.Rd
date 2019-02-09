@@ -4,24 +4,9 @@
 \alias{replace_network_acl_entry}
 \title{Replaces an entry (rule) in a network ACL}
 \usage{
-replace_network_acl_entry(
-  CidrBlock = "string",
-  DryRun = TRUE|FALSE,
-  Egress = TRUE|FALSE,
-  IcmpTypeCode = list(
-    Code = 123,
-    Type = 123
-  ),
-  Ipv6CidrBlock = "string",
-  NetworkAclId = "string",
-  PortRange = list(
-    From = 123,
-    To = 123
-  ),
-  Protocol = "string",
-  RuleAction = "allow"|"deny",
-  RuleNumber = 123
-)
+replace_network_acl_entry(CidrBlock = NULL, DryRun = NULL, Egress,
+  IcmpTypeCode = NULL, Ipv6CidrBlock = NULL, NetworkAclId,
+  PortRange = NULL, Protocol, RuleAction, RuleNumber)
 }
 \arguments{
 \item{CidrBlock}{The IPv4 network range to allow or deny, in CIDR notation (for example \code{172.16.0.0/24}).}
@@ -47,13 +32,35 @@ Default: If no value is specified, we replace the ingress rule.}
 \item{RuleNumber}{[required] The rule number of the entry to replace.}
 }
 \description{
-Replaces an entry (rule) in a network ACL. For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html}{Network ACLs} in the \emph{Amazon Virtual Private Cloud User Guide}.
+Replaces an entry (rule) in a network ACL. For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html}{Network ACLs} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{replace_network_acl_entry(
+  CidrBlock = "string",
+  DryRun = TRUE|FALSE,
+  Egress = TRUE|FALSE,
+  IcmpTypeCode = list(
+    Code = 123,
+    Type = 123
+  ),
+  Ipv6CidrBlock = "string",
+  NetworkAclId = "string",
+  PortRange = list(
+    From = 123,
+    To = 123
+  ),
+  Protocol = "string",
+  RuleAction = "allow"|"deny",
+  RuleNumber = 123
+)
+}
+}
+
 \examples{
 # This example replaces an entry for the specified network ACL. The new
 # rule 100 allows ingress traffic from 203.0.113.12/24 on UDP port 53
 # (DNS) into any associated subnet.
-replace_network_acl_entry(
+\donttest{replace_network_acl_entry(
   CidrBlock = "203.0.113.12/24",
   Egress = FALSE,
   NetworkAclId = "acl-5fb85d36",
@@ -64,6 +71,6 @@ replace_network_acl_entry(
   Protocol = "17",
   RuleAction = "allow",
   RuleNumber = 100L
-)
+)}
 
 }

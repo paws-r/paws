@@ -4,13 +4,7 @@
 \alias{update_channel}
 \title{Updates the settings of a channel}
 \usage{
-update_channel(
-  channelName = "string",
-  retentionPeriod = list(
-    unlimited = TRUE|FALSE,
-    numberOfDays = 123
-  )
-)
+update_channel(channelName, retentionPeriod = NULL)
 }
 \arguments{
 \item{channelName}{[required] The name of the channel to be updated.}
@@ -20,6 +14,14 @@ update_channel(
 \description{
 Updates the settings of a channel.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_channel(
+  channelName = "string",
+  retentionPeriod = list(
+    unlimited = TRUE|FALSE,
+    numberOfDays = 123
+  )
+)
 }
+}
+

@@ -4,20 +4,10 @@
 \alias{update_maintenance_window}
 \title{Updates an existing Maintenance Window}
 \usage{
-update_maintenance_window(
-  WindowId = "string",
-  Name = "string",
-  Description = "string",
-  StartDate = "string",
-  EndDate = "string",
-  Schedule = "string",
-  ScheduleTimezone = "string",
-  Duration = 123,
-  Cutoff = 123,
-  AllowUnassociatedTargets = TRUE|FALSE,
-  Enabled = TRUE|FALSE,
-  Replace = TRUE|FALSE
-)
+update_maintenance_window(WindowId, Name = NULL, Description = NULL,
+  StartDate = NULL, EndDate = NULL, Schedule = NULL,
+  ScheduleTimezone = NULL, Duration = NULL, Cutoff = NULL,
+  AllowUnassociatedTargets = NULL, Enabled = NULL, Replace = NULL)
 }
 \arguments{
 \item{WindowId}{[required] The ID of the Maintenance Window to update.}
@@ -47,6 +37,21 @@ update_maintenance_window(
 \description{
 Updates an existing Maintenance Window. Only specified parameters are modified.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_maintenance_window(
+  WindowId = "string",
+  Name = "string",
+  Description = "string",
+  StartDate = "string",
+  EndDate = "string",
+  Schedule = "string",
+  ScheduleTimezone = "string",
+  Duration = 123,
+  Cutoff = 123,
+  AllowUnassociatedTargets = TRUE|FALSE,
+  Enabled = TRUE|FALSE,
+  Replace = TRUE|FALSE
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{get_model_template}
 \title{Gets a model template}
 \usage{
-get_model_template(
-  ApiId = "string",
-  ModelId = "string"
-)
+get_model_template(ApiId, ModelId)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -17,6 +14,11 @@ get_model_template(
 \description{
 Gets a model template.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_model_template(
+  ApiId = "string",
+  ModelId = "string"
+)
 }
+}
+

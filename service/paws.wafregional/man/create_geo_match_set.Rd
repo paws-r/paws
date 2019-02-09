@@ -4,10 +4,7 @@
 \alias{create_geo_match_set}
 \title{Creates an GeoMatchSet, which you use to specify which web requests you want to allow or block based on the country that the requests originate from}
 \usage{
-create_geo_match_set(
-  Name = "string",
-  ChangeToken = "string"
-)
+create_geo_match_set(Name, ChangeToken)
 }
 \arguments{
 \item{Name}{[required] A friendly name or description of the GeoMatchSet. You can't change \code{Name} after you create the \code{GeoMatchSet}.}
@@ -28,6 +25,11 @@ To create and configure a \code{GeoMatchSet}, perform the following steps:
 
 For more information about how to use the AWS WAF API to allow or block HTTP requests, see the \href{http://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_geo_match_set(
+  Name = "string",
+  ChangeToken = "string"
+)
 }
+}
+

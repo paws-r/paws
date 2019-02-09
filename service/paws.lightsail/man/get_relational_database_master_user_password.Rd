@@ -4,10 +4,8 @@
 \alias{get_relational_database_master_user_password}
 \title{Returns the current, previous, or pending versions of the master user password for a Lightsail database}
 \usage{
-get_relational_database_master_user_password(
-  relationalDatabaseName = "string",
-  passwordVersion = "CURRENT"|"PREVIOUS"|"PENDING"
-)
+get_relational_database_master_user_password(relationalDatabaseName,
+  passwordVersion = NULL)
 }
 \arguments{
 \item{relationalDatabaseName}{[required] The name of your database for which to get the master user password.}
@@ -24,6 +22,11 @@ Returns the current, previous, or pending versions of the master user password f
 \details{
 The \code{asdf} operation GetRelationalDatabaseMasterUserPassword supports tag-based access control via resource tags applied to the resource identified by relationalDatabaseName.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_relational_database_master_user_password(
+  relationalDatabaseName = "string",
+  passwordVersion = "CURRENT"|"PREVIOUS"|"PENDING"
+)
 }
+}
+

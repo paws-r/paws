@@ -4,16 +4,7 @@
 \alias{put_approval_result}
 \title{Provides the response to a manual approval request to AWS CodePipeline}
 \usage{
-put_approval_result(
-  pipelineName = "string",
-  stageName = "string",
-  actionName = "string",
-  result = list(
-    summary = "string",
-    status = "Approved"|"Rejected"
-  ),
-  token = "string"
-)
+put_approval_result(pipelineName, stageName, actionName, result, token)
 }
 \arguments{
 \item{pipelineName}{[required] The name of the pipeline that contains the action.}
@@ -29,6 +20,17 @@ put_approval_result(
 \description{
 Provides the response to a manual approval request to AWS CodePipeline. Valid responses include Approved and Rejected.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_approval_result(
+  pipelineName = "string",
+  stageName = "string",
+  actionName = "string",
+  result = list(
+    summary = "string",
+    status = "Approved"|"Rejected"
+  ),
+  token = "string"
+)
 }
+}
+

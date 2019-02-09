@@ -4,9 +4,7 @@
 \alias{notify_when_uploaded}
 \title{Sends you notification through CloudWatch Events when all files written to your NFS file share have been uploaded to Amazon S3}
 \usage{
-notify_when_uploaded(
-  FileShareARN = "string"
-)
+notify_when_uploaded(FileShareARN)
 }
 \arguments{
 \item{FileShareARN}{[required]}
@@ -19,6 +17,10 @@ AWS Storage Gateway can send a notification through Amazon CloudWatch Events whe
 
 For more information, see Getting File Upload Notification in the Storage Gateway User Guide (https://docs.aws.amazon.com/storagegateway/latest/userguide/monitoring-file-gateway.html#get-upload-notification).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{notify_when_uploaded(
+  FileShareARN = "string"
+)
 }
+}
+

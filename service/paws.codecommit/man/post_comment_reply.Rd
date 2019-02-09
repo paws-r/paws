@@ -4,11 +4,7 @@
 \alias{post_comment_reply}
 \title{Posts a comment in reply to an existing comment on a comparison between commits or a pull request}
 \usage{
-post_comment_reply(
-  inReplyTo = "string",
-  clientRequestToken = "string",
-  content = "string"
-)
+post_comment_reply(inReplyTo, clientRequestToken = NULL, content)
 }
 \arguments{
 \item{inReplyTo}{[required] The system-generated ID of the comment to which you want to reply. To get this ID, use GetCommentsForComparedCommit or GetCommentsForPullRequest.}
@@ -20,6 +16,12 @@ post_comment_reply(
 \description{
 Posts a comment in reply to an existing comment on a comparison between commits or a pull request.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{post_comment_reply(
+  inReplyTo = "string",
+  clientRequestToken = "string",
+  content = "string"
+)
 }
+}
+

@@ -4,11 +4,8 @@
 \alias{list_function_definition_versions}
 \title{Lists the versions of a Lambda function definition}
 \usage{
-list_function_definition_versions(
-  FunctionDefinitionId = "string",
-  MaxResults = "string",
-  NextToken = "string"
-)
+list_function_definition_versions(FunctionDefinitionId,
+  MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{FunctionDefinitionId}{[required] The ID of the Lambda function definition.}
@@ -20,6 +17,12 @@ list_function_definition_versions(
 \description{
 Lists the versions of a Lambda function definition.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_function_definition_versions(
+  FunctionDefinitionId = "string",
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
+}
+

@@ -4,11 +4,8 @@
 \alias{list_server_certificates}
 \title{Lists the server certificates stored in IAM that have the specified path prefix}
 \usage{
-list_server_certificates(
-  PathPrefix = "string",
-  Marker = "string",
-  MaxItems = 123
-)
+list_server_certificates(PathPrefix = NULL, Marker = NULL,
+  MaxItems = NULL)
 }
 \arguments{
 \item{PathPrefix}{The path prefix for filtering the results. For example: \code{/company/servercerts} would get all server certificates for which the path starts with \code{/company/servercerts}.
@@ -29,6 +26,12 @@ You can paginate the results using the \code{MaxItems} and \code{Marker} paramet
 
 For more information about working with server certificates, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html}{Working with Server Certificates} in the \emph{IAM User Guide}. This topic also includes a list of AWS services that can use the server certificates that you manage with IAM.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_server_certificates(
+  PathPrefix = "string",
+  Marker = "string",
+  MaxItems = 123
+)
 }
+}
+

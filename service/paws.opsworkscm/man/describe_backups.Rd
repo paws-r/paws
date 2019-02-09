@@ -4,12 +4,8 @@
 \alias{describe_backups}
 \title{Describes backups}
 \usage{
-describe_backups(
-  BackupId = "string",
-  ServerName = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+describe_backups(BackupId = NULL, ServerName = NULL,
+  NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{BackupId}{Describes a single backup.}
@@ -28,6 +24,13 @@ This operation is synchronous.
 
 A \code{ResourceNotFoundException} is thrown when the backup does not exist. A \code{ValidationException} is raised when parameters of the request are not valid.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_backups(
+  BackupId = "string",
+  ServerName = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

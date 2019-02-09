@@ -4,14 +4,9 @@
 \alias{describe_player_sessions}
 \title{Retrieves properties for one or more player sessions}
 \usage{
-describe_player_sessions(
-  GameSessionId = "string",
-  PlayerId = "string",
-  PlayerSessionId = "string",
-  PlayerSessionStatusFilter = "string",
-  Limit = 123,
-  NextToken = "string"
-)
+describe_player_sessions(GameSessionId = NULL, PlayerId = NULL,
+  PlayerSessionId = NULL, PlayerSessionStatusFilter = NULL,
+  Limit = NULL, NextToken = NULL)
 }
 \arguments{
 \item{GameSessionId}{Unique identifier for the game session to retrieve player sessions for.}
@@ -41,8 +36,6 @@ Retrieves properties for one or more player sessions. This action can be used in
 To get game session record(s), specify only one of the following: a player session ID, a game session ID, or a player ID. You can filter this request by player session status. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, a PlayerSession object is returned for each session matching the request.
 
 \emph{Available in Amazon GameLift Local.}
-
-Player-session-related operations include:
 \itemize{
 \item CreatePlayerSession
 \item CreatePlayerSessions
@@ -53,6 +46,15 @@ Player-session-related operations include:
 \item StopGameSessionPlacement
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_player_sessions(
+  GameSessionId = "string",
+  PlayerId = "string",
+  PlayerSessionId = "string",
+  PlayerSessionStatusFilter = "string",
+  Limit = 123,
+  NextToken = "string"
+)
 }
+}
+

@@ -4,22 +4,8 @@
 \alias{describe_flow_logs}
 \title{Describes one or more flow logs}
 \usage{
-describe_flow_logs(
-  DryRun = TRUE|FALSE,
-  Filter = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  FlowLogIds = list(
-    "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_flow_logs(DryRun = NULL, Filter = NULL, FlowLogIds = NULL,
+  MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -43,6 +29,23 @@ describe_flow_logs(
 \description{
 Describes one or more flow logs. To view the information in your flow logs (the log streams for the network interfaces), you must use the CloudWatch Logs console or the CloudWatch Logs API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_flow_logs(
+  DryRun = TRUE|FALSE,
+  Filter = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  FlowLogIds = list(
+    "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

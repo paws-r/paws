@@ -4,10 +4,8 @@
 \alias{modify_account}
 \title{Modifies the configuration of bring your own license (BYOL) for the specified account}
 \usage{
-modify_account(
-  DedicatedTenancySupport = "ENABLED",
-  DedicatedTenancyManagementCidrRange = "string"
-)
+modify_account(DedicatedTenancySupport = NULL,
+  DedicatedTenancyManagementCidrRange = NULL)
 }
 \arguments{
 \item{DedicatedTenancySupport}{The status of BYOL.}
@@ -17,6 +15,11 @@ modify_account(
 \description{
 Modifies the configuration of bring your own license (BYOL) for the specified account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_account(
+  DedicatedTenancySupport = "ENABLED",
+  DedicatedTenancyManagementCidrRange = "string"
+)
 }
+}
+

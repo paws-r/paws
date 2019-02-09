@@ -4,19 +4,8 @@
 \alias{describe_source_regions}
 \title{Returns a list of the source AWS Regions where the current AWS Region can create a Read Replica or copy a DB snapshot from}
 \usage{
-describe_source_regions(
-  RegionName = "string",
-  MaxRecords = 123,
-  Marker = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  )
-)
+describe_source_regions(RegionName = NULL, MaxRecords = NULL,
+  Marker = NULL, Filters = NULL)
 }
 \arguments{
 \item{RegionName}{The source AWS Region name. For example, \code{us-east-1}.
@@ -39,6 +28,20 @@ Constraints: Minimum 20, maximum 100.}
 \description{
 Returns a list of the source AWS Regions where the current AWS Region can create a Read Replica or copy a DB snapshot from. This API action supports pagination.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_source_regions(
+  RegionName = "string",
+  MaxRecords = 123,
+  Marker = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  )
+)
 }
+}
+

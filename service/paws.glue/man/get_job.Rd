@@ -4,9 +4,7 @@
 \alias{get_job}
 \title{Retrieves an existing job definition}
 \usage{
-get_job(
-  JobName = "string"
-)
+get_job(JobName)
 }
 \arguments{
 \item{JobName}{[required] The name of the job definition to retrieve.}
@@ -14,6 +12,10 @@ get_job(
 \description{
 Retrieves an existing job definition.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_job(
+  JobName = "string"
+)
 }
+}
+

@@ -4,24 +4,11 @@
 \alias{describe_reserved_db_instances_offerings}
 \title{Lists available reserved DB instance offerings}
 \usage{
-describe_reserved_db_instances_offerings(
-  ReservedDBInstancesOfferingId = "string",
-  DBInstanceClass = "string",
-  Duration = "string",
-  ProductDescription = "string",
-  OfferingType = "string",
-  MultiAZ = TRUE|FALSE,
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
+
+  describe_reserved_db_instances_offerings(ReservedDBInstancesOfferingId = NULL,
+  DBInstanceClass = NULL, Duration = NULL, ProductDescription = NULL,
+  OfferingType = NULL, MultiAZ = NULL, Filters = NULL,
+  MaxRecords = NULL, Marker = NULL)
 }
 \arguments{
 \item{ReservedDBInstancesOfferingId}{The offering identifier filter value. Specify this parameter to show only the available offering that matches the specified reservation identifier.
@@ -57,6 +44,25 @@ Constraints: Minimum 20, maximum 100.}
 \description{
 Lists available reserved DB instance offerings.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_reserved_db_instances_offerings(
+  ReservedDBInstancesOfferingId = "string",
+  DBInstanceClass = "string",
+  Duration = "string",
+  ProductDescription = "string",
+  OfferingType = "string",
+  MultiAZ = TRUE|FALSE,
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
+}
+

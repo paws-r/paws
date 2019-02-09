@@ -4,12 +4,8 @@
 \alias{list_queues}
 \title{Retrieve a JSON array of up to twenty of your queues}
 \usage{
-list_queues(
-  ListBy = "NAME"|"CREATION_DATE",
-  MaxResults = 123,
-  NextToken = "string",
-  Order = "ASCENDING"|"DESCENDING"
-)
+list_queues(ListBy = NULL, MaxResults = NULL, NextToken = NULL,
+  Order = NULL)
 }
 \arguments{
 \item{ListBy}{}
@@ -23,6 +19,13 @@ list_queues(
 \description{
 Retrieve a JSON array of up to twenty of your queues. This will return the queues themselves, not just a list of them. To retrieve the next twenty queues, use the nextToken string returned with the array.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_queues(
+  ListBy = "NAME"|"CREATION_DATE",
+  MaxResults = 123,
+  NextToken = "string",
+  Order = "ASCENDING"|"DESCENDING"
+)
 }
+}
+

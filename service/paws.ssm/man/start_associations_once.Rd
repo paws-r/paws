@@ -4,11 +4,7 @@
 \alias{start_associations_once}
 \title{Use this API action to execute an association immediately and only one time}
 \usage{
-start_associations_once(
-  AssociationIds = list(
-    "string"
-  )
-)
+start_associations_once(AssociationIds)
 }
 \arguments{
 \item{AssociationIds}{[required] The association IDs that you want to execute immediately and only one time.}
@@ -16,6 +12,12 @@ start_associations_once(
 \description{
 Use this API action to execute an association immediately and only one time. This action can be helpful when troubleshooting associations.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_associations_once(
+  AssociationIds = list(
+    "string"
+  )
+)
 }
+}
+

@@ -4,11 +4,7 @@
 \alias{stop_execution}
 \title{Stops an execution}
 \usage{
-stop_execution(
-  executionArn = "string",
-  error = "string",
-  cause = "string"
-)
+stop_execution(executionArn, error = NULL, cause = NULL)
 }
 \arguments{
 \item{executionArn}{[required] The Amazon Resource Name (ARN) of the execution to stop.}
@@ -20,6 +16,12 @@ stop_execution(
 \description{
 Stops an execution.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{stop_execution(
+  executionArn = "string",
+  error = "string",
+  cause = "string"
+)
 }
+}
+

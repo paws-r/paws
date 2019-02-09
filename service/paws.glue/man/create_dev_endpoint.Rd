@@ -4,22 +4,10 @@
 \alias{create_dev_endpoint}
 \title{Creates a new DevEndpoint}
 \usage{
-create_dev_endpoint(
-  EndpointName = "string",
-  RoleArn = "string",
-  SecurityGroupIds = list(
-    "string"
-  ),
-  SubnetId = "string",
-  PublicKey = "string",
-  PublicKeys = list(
-    "string"
-  ),
-  NumberOfNodes = 123,
-  ExtraPythonLibsS3Path = "string",
-  ExtraJarsS3Path = "string",
-  SecurityConfiguration = "string"
-)
+create_dev_endpoint(EndpointName, RoleArn, SecurityGroupIds = NULL,
+  SubnetId = NULL, PublicKey = NULL, PublicKeys = NULL,
+  NumberOfNodes = NULL, ExtraPythonLibsS3Path = NULL,
+  ExtraJarsS3Path = NULL, SecurityConfiguration = NULL)
 }
 \arguments{
 \item{EndpointName}{[required] The name to be assigned to the new DevEndpoint.}
@@ -49,6 +37,23 @@ Please note that only pure Python libraries can currently be used on a DevEndpoi
 \description{
 Creates a new DevEndpoint.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_dev_endpoint(
+  EndpointName = "string",
+  RoleArn = "string",
+  SecurityGroupIds = list(
+    "string"
+  ),
+  SubnetId = "string",
+  PublicKey = "string",
+  PublicKeys = list(
+    "string"
+  ),
+  NumberOfNodes = 123,
+  ExtraPythonLibsS3Path = "string",
+  ExtraJarsS3Path = "string",
+  SecurityConfiguration = "string"
+)
 }
+}
+

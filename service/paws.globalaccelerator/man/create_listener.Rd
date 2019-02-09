@@ -4,18 +4,8 @@
 \alias{create_listener}
 \title{Create a listener to process inbound connections from clients to an accelerator}
 \usage{
-create_listener(
-  AcceleratorArn = "string",
-  PortRanges = list(
-    list(
-      FromPort = 123,
-      ToPort = 123
-    )
-  ),
-  Protocol = "TCP"|"UDP",
-  ClientAffinity = "NONE"|"SOURCE_IP",
-  IdempotencyToken = "string"
-)
+create_listener(AcceleratorArn, PortRanges, Protocol,
+  ClientAffinity = NULL, IdempotencyToken)
 }
 \arguments{
 \item{AcceleratorArn}{[required] The Amazon Resource Name (ARN) of your accelerator.}
@@ -37,6 +27,19 @@ The default value is \code{NONE}.}
 \description{
 Create a listener to process inbound connections from clients to an accelerator. Connections arrive to assigned static IP addresses on a port, port range, or list of port ranges that you specify. To see an AWS CLI example of creating a listener, scroll down to \strong{Example}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_listener(
+  AcceleratorArn = "string",
+  PortRanges = list(
+    list(
+      FromPort = 123,
+      ToPort = 123
+    )
+  ),
+  Protocol = "TCP"|"UDP",
+  ClientAffinity = "NONE"|"SOURCE_IP",
+  IdempotencyToken = "string"
+)
 }
+}
+

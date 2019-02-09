@@ -4,13 +4,8 @@
 \alias{put_bucket_request_payment}
 \title{Sets the request payment configuration for a bucket}
 \usage{
-put_bucket_request_payment(
-  Bucket = "string",
-  ContentMD5 = "string",
-  RequestPaymentConfiguration = list(
-    Payer = "Requester"|"BucketOwner"
-  )
-)
+put_bucket_request_payment(Bucket, ContentMD5 = NULL,
+  RequestPaymentConfiguration)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -22,14 +17,25 @@ put_bucket_request_payment(
 \description{
 Sets the request payment configuration for a bucket. By default, the bucket owner pays for downloads from the bucket. This configuration parameter enables the bucket owner (only) to specify that the person requesting the download will be charged for the download. Documentation on requester pays buckets can be found at http://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html
 }
+\section{Accepted Parameters}{
+\preformatted{put_bucket_request_payment(
+  Bucket = "string",
+  ContentMD5 = "string",
+  RequestPaymentConfiguration = list(
+    Payer = "Requester"|"BucketOwner"
+  )
+)
+}
+}
+
 \examples{
 # The following example sets request payment configuration on a bucket so
 # that person requesting the download is charged.
-put_bucket_request_payment(
+\donttest{put_bucket_request_payment(
   Bucket = "examplebucket",
   RequestPaymentConfiguration = list(
     Payer = "Requester"
   )
-)
+)}
 
 }

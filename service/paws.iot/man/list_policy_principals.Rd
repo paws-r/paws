@@ -4,12 +4,8 @@
 \alias{list_policy_principals}
 \title{Lists the principals associated with the specified policy}
 \usage{
-list_policy_principals(
-  policyName = "string",
-  marker = "string",
-  pageSize = 123,
-  ascendingOrder = TRUE|FALSE
-)
+list_policy_principals(policyName, marker = NULL, pageSize = NULL,
+  ascendingOrder = NULL)
 }
 \arguments{
 \item{policyName}{[required] The policy name.}
@@ -26,6 +22,13 @@ Lists the principals associated with the specified policy.
 \details{
 \strong{Note:} This API is deprecated. Please use ListTargetsForPolicy instead.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_policy_principals(
+  policyName = "string",
+  marker = "string",
+  pageSize = 123,
+  ascendingOrder = TRUE|FALSE
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{upload_signing_certificate}
 \title{Uploads an X}
 \usage{
-upload_signing_certificate(
-  UserName = "string",
-  CertificateBody = "string"
-)
+upload_signing_certificate(UserName = NULL, CertificateBody)
 }
 \arguments{
 \item{UserName}{The name of the user the signing certificate is for.
@@ -31,12 +28,20 @@ If the \code{UserName} field is not specified, the IAM user name is determined i
 
 Because the body of an X.509 certificate can be large, you should use POST rather than GET when calling \code{UploadSigningCertificate}. For information about setting up signatures and authorization through the API, go to \href{http://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html}{Signing AWS API Requests} in the \emph{AWS General Reference}. For general information about using the Query API with IAM, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_UsingQueryAPI.html}{Making Query Requests} in the \emph{IAM User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{upload_signing_certificate(
+  UserName = "string",
+  CertificateBody = "string"
+)
+}
+}
+
 \examples{
 # The following command uploads a signing certificate for the IAM user
 # named Bob.
-upload_signing_certificate(
+\donttest{upload_signing_certificate(
   CertificateBody = "-----BEGIN CERTIFICATE-----<certificate-body>-----END CERTIFICATE-----",
   UserName = "Bob"
-)
+)}
 
 }

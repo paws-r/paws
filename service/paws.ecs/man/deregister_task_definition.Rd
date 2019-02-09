@@ -4,9 +4,7 @@
 \alias{deregister_task_definition}
 \title{Deregisters the specified task definition by family and revision}
 \usage{
-deregister_task_definition(
-  taskDefinition = "string"
-)
+deregister_task_definition(taskDefinition)
 }
 \arguments{
 \item{taskDefinition}{[required] The \code{family} and \code{revision} (\code{family:revision}) or full Amazon Resource Name (ARN) of the task definition to deregister. You must specify a \code{revision}.}
@@ -19,6 +17,10 @@ You cannot use an \code{INACTIVE} task definition to run new tasks or create new
 
 At this time, \code{INACTIVE} task definitions remain discoverable in your account indefinitely. However, this behavior is subject to change in the future, so you should not rely on \code{INACTIVE} task definitions persisting beyond the lifecycle of any associated tasks and services.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{deregister_task_definition(
+  taskDefinition = "string"
+)
 }
+}
+

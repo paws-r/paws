@@ -4,13 +4,8 @@
 \alias{get_account_authorization_details}
 \title{Retrieves information about all IAM users, groups, roles, and policies in your AWS account, including their relationships to one another}
 \usage{
-get_account_authorization_details(
-  Filter = list(
-    "User"|"Role"|"Group"|"LocalManagedPolicy"|"AWSManagedPolicy"
-  ),
-  MaxItems = 123,
-  Marker = "string"
-)
+get_account_authorization_details(Filter = NULL, MaxItems = NULL,
+  Marker = NULL)
 }
 \arguments{
 \item{Filter}{A list of entity types used to filter the results. Only the entities that match the types you specify are included in the output. Use the value \code{LocalManagedPolicy} to include customer managed policies.
@@ -31,6 +26,14 @@ Policies returned by this API are URL-encoded compliant with \href{https://tools
 
 You can optionally filter the results using the \code{Filter} parameter. You can paginate the results using the \code{MaxItems} and \code{Marker} parameters.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_account_authorization_details(
+  Filter = list(
+    "User"|"Role"|"Group"|"LocalManagedPolicy"|"AWSManagedPolicy"
+  ),
+  MaxItems = 123,
+  Marker = "string"
+)
 }
+}
+

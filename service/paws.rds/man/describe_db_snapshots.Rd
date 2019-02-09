@@ -4,24 +4,10 @@
 \alias{describe_db_snapshots}
 \title{Returns information about DB snapshots}
 \usage{
-describe_db_snapshots(
-  DBInstanceIdentifier = "string",
-  DBSnapshotIdentifier = "string",
-  SnapshotType = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string",
-  IncludeShared = TRUE|FALSE,
-  IncludePublic = TRUE|FALSE,
-  DbiResourceId = "string"
-)
+describe_db_snapshots(DBInstanceIdentifier = NULL,
+  DBSnapshotIdentifier = NULL, SnapshotType = NULL, Filters = NULL,
+  MaxRecords = NULL, Marker = NULL, IncludeShared = NULL,
+  IncludePublic = NULL, DbiResourceId = NULL)
 }
 \arguments{
 \item{DBInstanceIdentifier}{The ID of the DB instance to retrieve the list of DB snapshots for. This parameter can't be used in conjunction with \code{DBSnapshotIdentifier}. This parameter is not case-sensitive.
@@ -74,6 +60,25 @@ You can share a manual DB snapshot as public by using the ModifyDBSnapshotAttrib
 \description{
 Returns information about DB snapshots. This API action supports pagination.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_db_snapshots(
+  DBInstanceIdentifier = "string",
+  DBSnapshotIdentifier = "string",
+  SnapshotType = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string",
+  IncludeShared = TRUE|FALSE,
+  IncludePublic = TRUE|FALSE,
+  DbiResourceId = "string"
+)
 }
+}
+

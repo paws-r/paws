@@ -4,7 +4,19 @@
 \alias{get_aggregate_resource_config}
 \title{Returns configuration item that is aggregated for your specific resource in a specific source account and region}
 \usage{
-get_aggregate_resource_config(
+get_aggregate_resource_config(ConfigurationAggregatorName,
+  ResourceIdentifier)
+}
+\arguments{
+\item{ConfigurationAggregatorName}{[required] The name of the configuration aggregator.}
+
+\item{ResourceIdentifier}{[required] An object that identifies aggregate resource.}
+}
+\description{
+Returns configuration item that is aggregated for your specific resource in a specific source account and region.
+}
+\section{Accepted Parameters}{
+\preformatted{get_aggregate_resource_config(
   ConfigurationAggregatorName = "string",
   ResourceIdentifier = list(
     SourceAccountId = "string",
@@ -15,14 +27,5 @@ get_aggregate_resource_config(
   )
 )
 }
-\arguments{
-\item{ConfigurationAggregatorName}{[required] The name of the configuration aggregator.}
+}
 
-\item{ResourceIdentifier}{[required] An object that identifies aggregate resource.}
-}
-\description{
-Returns configuration item that is aggregated for your specific resource in a specific source account and region.
-}
-\examples{
-
-}

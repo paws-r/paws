@@ -4,12 +4,8 @@
 \alias{list_things_in_thing_group}
 \title{Lists the things in the specified group}
 \usage{
-list_things_in_thing_group(
-  thingGroupName = "string",
-  recursive = TRUE|FALSE,
-  nextToken = "string",
-  maxResults = 123
-)
+list_things_in_thing_group(thingGroupName, recursive = NULL,
+  nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{thingGroupName}{[required] The thing group name.}
@@ -23,6 +19,13 @@ list_things_in_thing_group(
 \description{
 Lists the things in the specified group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_things_in_thing_group(
+  thingGroupName = "string",
+  recursive = TRUE|FALSE,
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

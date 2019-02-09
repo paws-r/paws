@@ -4,12 +4,8 @@
 \alias{create_notification_subscription}
 \title{Configure Amazon WorkDocs to use Amazon SNS notifications}
 \usage{
-create_notification_subscription(
-  OrganizationId = "string",
-  Endpoint = "string",
-  Protocol = "HTTPS",
-  SubscriptionType = "ALL"
-)
+create_notification_subscription(OrganizationId, Endpoint, Protocol,
+  SubscriptionType)
 }
 \arguments{
 \item{OrganizationId}{[required] The ID of the organization.}
@@ -26,6 +22,13 @@ Configure Amazon WorkDocs to use Amazon SNS notifications. The endpoint receives
 \details{
 For more information, see \href{http://docs.aws.amazon.com/workdocs/latest/developerguide/subscribe-notifications.html}{Subscribe to Notifications} in the \emph{Amazon WorkDocs Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_notification_subscription(
+  OrganizationId = "string",
+  Endpoint = "string",
+  Protocol = "HTTPS",
+  SubscriptionType = "ALL"
+)
 }
+}
+

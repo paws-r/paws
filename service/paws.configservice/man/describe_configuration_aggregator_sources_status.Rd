@@ -4,14 +4,9 @@
 \alias{describe_configuration_aggregator_sources_status}
 \title{Returns status information for sources within an aggregator}
 \usage{
-describe_configuration_aggregator_sources_status(
-  ConfigurationAggregatorName = "string",
-  UpdateStatus = list(
-    "FAILED"|"SUCCEEDED"|"OUTDATED"
-  ),
-  NextToken = "string",
-  Limit = 123
-)
+
+  describe_configuration_aggregator_sources_status(ConfigurationAggregatorName,
+  UpdateStatus = NULL, NextToken = NULL, Limit = NULL)
 }
 \arguments{
 \item{ConfigurationAggregatorName}{[required] The name of the configuration aggregator.}
@@ -30,6 +25,15 @@ describe_configuration_aggregator_sources_status(
 \description{
 Returns status information for sources within an aggregator. The status includes information about the last time AWS Config aggregated data from source accounts or AWS Config failed to aggregate data from source accounts with the related error code or message.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_configuration_aggregator_sources_status(
+  ConfigurationAggregatorName = "string",
+  UpdateStatus = list(
+    "FAILED"|"SUCCEEDED"|"OUTDATED"
+  ),
+  NextToken = "string",
+  Limit = 123
+)
 }
+}
+

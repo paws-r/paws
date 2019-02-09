@@ -4,9 +4,7 @@
 \alias{set_default_authorizer}
 \title{Sets the default authorizer}
 \usage{
-set_default_authorizer(
-  authorizerName = "string"
-)
+set_default_authorizer(authorizerName)
 }
 \arguments{
 \item{authorizerName}{[required] The authorizer name.}
@@ -14,6 +12,10 @@ set_default_authorizer(
 \description{
 Sets the default authorizer. This will be used if a websocket connection is made without specifying an authorizer.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{set_default_authorizer(
+  authorizerName = "string"
+)
 }
+}
+

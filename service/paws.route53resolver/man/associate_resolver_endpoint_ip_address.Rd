@@ -4,14 +4,7 @@
 \alias{associate_resolver_endpoint_ip_address}
 \title{Adds IP addresses to an inbound or an outbound resolver endpoint}
 \usage{
-associate_resolver_endpoint_ip_address(
-  ResolverEndpointId = "string",
-  IpAddress = list(
-    IpId = "string",
-    SubnetId = "string",
-    Ip = "string"
-  )
-)
+associate_resolver_endpoint_ip_address(ResolverEndpointId, IpAddress)
 }
 \arguments{
 \item{ResolverEndpointId}{[required] The ID of the resolver endpoint that you want to associate IP addresses with.}
@@ -24,6 +17,15 @@ Adds IP addresses to an inbound or an outbound resolver endpoint. If you want to
 \details{
 To remove an IP address from an endpoint, see DisassociateResolverEndpointIpAddress.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_resolver_endpoint_ip_address(
+  ResolverEndpointId = "string",
+  IpAddress = list(
+    IpId = "string",
+    SubnetId = "string",
+    Ip = "string"
+  )
+)
 }
+}
+

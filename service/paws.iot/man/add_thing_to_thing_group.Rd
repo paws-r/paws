@@ -4,13 +4,8 @@
 \alias{add_thing_to_thing_group}
 \title{Adds a thing to a thing group}
 \usage{
-add_thing_to_thing_group(
-  thingGroupName = "string",
-  thingGroupArn = "string",
-  thingName = "string",
-  thingArn = "string",
-  overrideDynamicGroups = TRUE|FALSE
-)
+add_thing_to_thing_group(thingGroupName = NULL, thingGroupArn = NULL,
+  thingName = NULL, thingArn = NULL, overrideDynamicGroups = NULL)
 }
 \arguments{
 \item{thingGroupName}{The name of the group to which you are adding a thing.}
@@ -26,6 +21,14 @@ add_thing_to_thing_group(
 \description{
 Adds a thing to a thing group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{add_thing_to_thing_group(
+  thingGroupName = "string",
+  thingGroupArn = "string",
+  thingName = "string",
+  thingArn = "string",
+  overrideDynamicGroups = TRUE|FALSE
+)
 }
+}
+

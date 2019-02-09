@@ -4,9 +4,7 @@
 \alias{delete_endpoint}
 \title{Deletes the endpoint for a device and mobile app from Amazon SNS}
 \usage{
-delete_endpoint(
-  EndpointArn = "string"
-)
+delete_endpoint(EndpointArn)
 }
 \arguments{
 \item{EndpointArn}{[required] EndpointArn of endpoint to delete.}
@@ -17,6 +15,10 @@ Deletes the endpoint for a device and mobile app from Amazon SNS. This action is
 \details{
 When you delete an endpoint that is also subscribed to a topic, then you must also unsubscribe the endpoint from the topic.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_endpoint(
+  EndpointArn = "string"
+)
 }
+}
+

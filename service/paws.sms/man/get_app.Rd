@@ -4,9 +4,7 @@
 \alias{get_app}
 \title{Retrieve information about an application}
 \usage{
-get_app(
-  appId = "string"
-)
+get_app(appId = NULL)
 }
 \arguments{
 \item{appId}{ID of the application whose information is being retrieved.}
@@ -14,6 +12,10 @@ get_app(
 \description{
 Retrieve information about an application.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_app(
+  appId = "string"
+)
 }
+}
+

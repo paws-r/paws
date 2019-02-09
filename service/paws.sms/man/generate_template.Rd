@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.sms_operations.R
 \name{generate_template}
 \alias{generate_template}
-\title{Generates an Amazon CloudFormation template based on the current launch configuration and writes it to an Amazon S3 object in the customer's Amazon S3 bucket}
+\title{Generates an Amazon CloudFormation template based on the current launch configuration and writes it to an Amazon S3 object in the customer’s Amazon S3 bucket}
 \usage{
-generate_template(
-  appId = "string",
-  templateFormat = "JSON"|"YAML"
-)
+generate_template(appId = NULL, templateFormat = NULL)
 }
 \arguments{
 \item{appId}{ID of the application associated with the Amazon CloudFormation template.}
@@ -17,6 +14,11 @@ generate_template(
 \description{
 Generates an Amazon CloudFormation template based on the current launch configuration and writes it to an Amazon S3 object in the customer's Amazon S3 bucket.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{generate_template(
+  appId = "string",
+  templateFormat = "JSON"|"YAML"
+)
 }
+}
+

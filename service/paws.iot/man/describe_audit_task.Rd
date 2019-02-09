@@ -4,9 +4,7 @@
 \alias{describe_audit_task}
 \title{Gets information about a Device Defender audit}
 \usage{
-describe_audit_task(
-  taskId = "string"
-)
+describe_audit_task(taskId)
 }
 \arguments{
 \item{taskId}{[required] The ID of the audit whose information you want to get.}
@@ -14,6 +12,10 @@ describe_audit_task(
 \description{
 Gets information about a Device Defender audit.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_audit_task(
+  taskId = "string"
+)
 }
+}
+

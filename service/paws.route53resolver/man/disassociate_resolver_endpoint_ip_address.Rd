@@ -4,14 +4,7 @@
 \alias{disassociate_resolver_endpoint_ip_address}
 \title{Removes IP addresses from an inbound or an outbound resolver endpoint}
 \usage{
-disassociate_resolver_endpoint_ip_address(
-  ResolverEndpointId = "string",
-  IpAddress = list(
-    IpId = "string",
-    SubnetId = "string",
-    Ip = "string"
-  )
-)
+disassociate_resolver_endpoint_ip_address(ResolverEndpointId, IpAddress)
 }
 \arguments{
 \item{ResolverEndpointId}{[required] The ID of the resolver endpoint that you want to disassociate an IP address from.}
@@ -24,6 +17,15 @@ Removes IP addresses from an inbound or an outbound resolver endpoint. If you wa
 \details{
 To add an IP address to an endpoint, see AssociateResolverEndpointIpAddress.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disassociate_resolver_endpoint_ip_address(
+  ResolverEndpointId = "string",
+  IpAddress = list(
+    IpId = "string",
+    SubnetId = "string",
+    Ip = "string"
+  )
+)
 }
+}
+

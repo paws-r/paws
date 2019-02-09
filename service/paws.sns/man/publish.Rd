@@ -4,21 +4,9 @@
 \alias{publish}
 \title{Sends a message to an Amazon SNS topic or sends a text message (SMS message) directly to a phone number}
 \usage{
-publish(
-  TopicArn = "string",
-  TargetArn = "string",
-  PhoneNumber = "string",
-  Message = "string",
-  Subject = "string",
-  MessageStructure = "string",
-  MessageAttributes = list(
-    list(
-      DataType = "string",
-      StringValue = "string",
-      BinaryValue = raw
-    )
-  )
-)
+publish(TopicArn = NULL, TargetArn = NULL, PhoneNumber = NULL,
+  Message, Subject = NULL, MessageStructure = NULL,
+  MessageAttributes = NULL)
 }
 \arguments{
 \item{TopicArn}{The topic you want to publish to.
@@ -92,6 +80,22 @@ To use the \code{Publish} action for sending a message to a mobile endpoint, suc
 
 For more information about formatting messages, see \href{http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-custommessage.html}{Send Custom Platform-Specific Payloads in Messages to Mobile Devices}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{publish(
+  TopicArn = "string",
+  TargetArn = "string",
+  PhoneNumber = "string",
+  Message = "string",
+  Subject = "string",
+  MessageStructure = "string",
+  MessageAttributes = list(
+    list(
+      DataType = "string",
+      StringValue = "string",
+      BinaryValue = raw
+    )
+  )
+)
 }
+}
+

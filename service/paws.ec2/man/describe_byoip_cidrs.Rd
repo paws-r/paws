@@ -4,11 +4,7 @@
 \alias{describe_byoip_cidrs}
 \title{Describes the IP address ranges that were specified in calls to ProvisionByoipCidr}
 \usage{
-describe_byoip_cidrs(
-  DryRun = TRUE|FALSE,
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_byoip_cidrs(DryRun = NULL, MaxResults, NextToken = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -23,6 +19,12 @@ Describes the IP address ranges that were specified in calls to ProvisionByoipCi
 \details{
 To describe the address pools that were created when you provisioned the address ranges, use DescribePublicIpv4Pools.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_byoip_cidrs(
+  DryRun = TRUE|FALSE,
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

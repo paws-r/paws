@@ -4,7 +4,18 @@
 \alias{replace_topic_rule}
 \title{Replaces the rule}
 \usage{
-replace_topic_rule(
+replace_topic_rule(ruleName, topicRulePayload)
+}
+\arguments{
+\item{ruleName}{[required] The name of the rule.}
+
+\item{topicRulePayload}{[required] The rule payload.}
+}
+\description{
+Replaces the rule. You must specify all parameters for the new rule. Creating rules is an administrator-level action. Any user who has permission to create rules will be able to access data processed by the rule.
+}
+\section{Accepted Parameters}{
+\preformatted{replace_topic_rule(
   ruleName = "string",
   topicRulePayload = list(
     sql = "string",
@@ -202,14 +213,5 @@ replace_topic_rule(
   )
 )
 }
-\arguments{
-\item{ruleName}{[required] The name of the rule.}
+}
 
-\item{topicRulePayload}{[required] The rule payload.}
-}
-\description{
-Replaces the rule. You must specify all parameters for the new rule. Creating rules is an administrator-level action. Any user who has permission to create rules will be able to access data processed by the rule.
-}
-\examples{
-
-}

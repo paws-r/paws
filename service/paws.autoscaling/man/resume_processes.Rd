@@ -4,12 +4,7 @@
 \alias{resume_processes}
 \title{Resumes the specified suspended automatic scaling processes, or all suspended process, for the specified Auto Scaling group}
 \usage{
-resume_processes(
-  AutoScalingGroupName = "string",
-  ScalingProcesses = list(
-    "string"
-  )
-)
+resume_processes(AutoScalingGroupName, ScalingProcesses = NULL)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
@@ -32,14 +27,24 @@ Resumes the specified suspended automatic scaling processes, or all suspended pr
 \details{
 For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html}{Suspending and Resuming Scaling Processes} in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{resume_processes(
+  AutoScalingGroupName = "string",
+  ScalingProcesses = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # This example resumes the specified suspended scaling process for the
 # specified Auto Scaling group.
-resume_processes(
+\donttest{resume_processes(
   AutoScalingGroupName = "my-auto-scaling-group",
   ScalingProcesses = list(
     "AlarmNotification"
   )
-)
+)}
 
 }

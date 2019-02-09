@@ -4,12 +4,8 @@
 \alias{remove_thing_from_thing_group}
 \title{Remove the specified thing from the specified group}
 \usage{
-remove_thing_from_thing_group(
-  thingGroupName = "string",
-  thingGroupArn = "string",
-  thingName = "string",
-  thingArn = "string"
-)
+remove_thing_from_thing_group(thingGroupName = NULL,
+  thingGroupArn = NULL, thingName = NULL, thingArn = NULL)
 }
 \arguments{
 \item{thingGroupName}{The group name.}
@@ -23,6 +19,13 @@ remove_thing_from_thing_group(
 \description{
 Remove the specified thing from the specified group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{remove_thing_from_thing_group(
+  thingGroupName = "string",
+  thingGroupArn = "string",
+  thingName = "string",
+  thingArn = "string"
+)
 }
+}
+

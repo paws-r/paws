@@ -4,9 +4,7 @@
 \alias{delete_insight}
 \title{Deletes an insight that is specified by the insight ARN}
 \usage{
-delete_insight(
-  InsightArn = "string"
-)
+delete_insight(InsightArn)
 }
 \arguments{
 \item{InsightArn}{[required] The ARN of the insight that you want to delete.}
@@ -14,6 +12,10 @@ delete_insight(
 \description{
 Deletes an insight that is specified by the insight ARN.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_insight(
+  InsightArn = "string"
+)
 }
+}
+

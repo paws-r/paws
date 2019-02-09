@@ -4,10 +4,7 @@
 \alias{delete_dataset_content}
 \title{Deletes the content of the specified data set}
 \usage{
-delete_dataset_content(
-  datasetName = "string",
-  versionId = "string"
-)
+delete_dataset_content(datasetName, versionId = NULL)
 }
 \arguments{
 \item{datasetName}{[required] The name of the data set whose content is deleted.}
@@ -17,6 +14,11 @@ delete_dataset_content(
 \description{
 Deletes the content of the specified data set.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_dataset_content(
+  datasetName = "string",
+  versionId = "string"
+)
 }
+}
+

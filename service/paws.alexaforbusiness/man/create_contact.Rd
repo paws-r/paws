@@ -4,13 +4,8 @@
 \alias{create_contact}
 \title{Creates a contact with the specified details}
 \usage{
-create_contact(
-  DisplayName = "string",
-  FirstName = "string",
-  LastName = "string",
-  PhoneNumber = "string",
-  ClientRequestToken = "string"
-)
+create_contact(DisplayName = NULL, FirstName, LastName = NULL,
+  PhoneNumber = NULL, ClientRequestToken = NULL)
 }
 \arguments{
 \item{DisplayName}{The name of the contact to display on the console.}
@@ -26,6 +21,14 @@ create_contact(
 \description{
 Creates a contact with the specified details.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_contact(
+  DisplayName = "string",
+  FirstName = "string",
+  LastName = "string",
+  PhoneNumber = "string",
+  ClientRequestToken = "string"
+)
 }
+}
+

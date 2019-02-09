@@ -4,11 +4,8 @@
 \alias{describe_effective_patches_for_patch_baseline}
 \title{Retrieves the current effective patches (the patch and the approval state) for the specified patch baseline}
 \usage{
-describe_effective_patches_for_patch_baseline(
-  BaselineId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_effective_patches_for_patch_baseline(BaselineId,
+  MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{BaselineId}{[required] The ID of the patch baseline to retrieve the effective patches for.}
@@ -20,6 +17,12 @@ describe_effective_patches_for_patch_baseline(
 \description{
 Retrieves the current effective patches (the patch and the approval state) for the specified patch baseline. Note that this API applies only to Windows patch baselines.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_effective_patches_for_patch_baseline(
+  BaselineId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

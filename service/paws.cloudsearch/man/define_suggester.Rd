@@ -4,7 +4,18 @@
 \alias{define_suggester}
 \title{Configures a suggester for a domain}
 \usage{
-define_suggester(
+define_suggester(DomainName, Suggester)
+}
+\arguments{
+\item{DomainName}{[required]}
+
+\item{Suggester}{[required]}
+}
+\description{
+Configures a suggester for a domain. A suggester enables you to display possible matches before users finish typing their queries. When you configure a suggester, you must specify the name of the text field you want to search for possible matches and a unique name for the suggester. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html}{Getting Search Suggestions} in the \emph{Amazon CloudSearch Developer Guide}.
+}
+\section{Accepted Parameters}{
+\preformatted{define_suggester(
   DomainName = "string",
   Suggester = list(
     SuggesterName = "string",
@@ -16,14 +27,5 @@ define_suggester(
   )
 )
 }
-\arguments{
-\item{DomainName}{[required]}
+}
 
-\item{Suggester}{[required]}
-}
-\description{
-Configures a suggester for a domain. A suggester enables you to display possible matches before users finish typing their queries. When you configure a suggester, you must specify the name of the text field you want to search for possible matches and a unique name for the suggester. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html}{Getting Search Suggestions} in the \emph{Amazon CloudSearch Developer Guide}.
-}
-\examples{
-
-}

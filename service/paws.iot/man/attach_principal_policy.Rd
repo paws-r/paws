@@ -4,10 +4,7 @@
 \alias{attach_principal_policy}
 \title{Attaches the specified policy to the specified principal (certificate or other credential)}
 \usage{
-attach_principal_policy(
-  policyName = "string",
-  principal = "string"
-)
+attach_principal_policy(policyName, principal)
 }
 \arguments{
 \item{policyName}{[required] The policy name.}
@@ -20,6 +17,11 @@ Attaches the specified policy to the specified principal (certificate or other c
 \details{
 \strong{Note:} This API is deprecated. Please use AttachPolicy instead.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{attach_principal_policy(
+  policyName = "string",
+  principal = "string"
+)
 }
+}
+

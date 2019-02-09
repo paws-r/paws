@@ -4,9 +4,7 @@
 \alias{request_upload_credentials}
 \title{Retrieves a fresh set of credentials for use when uploading a new set of game build files to Amazon GameLift's Amazon S3}
 \usage{
-request_upload_credentials(
-  BuildId = "string"
-)
+request_upload_credentials(BuildId)
 }
 \arguments{
 \item{BuildId}{[required] Unique identifier for a build to get credentials for.}
@@ -17,6 +15,10 @@ Retrieves a fresh set of credentials for use when uploading a new set of game bu
 \details{
 To request new credentials, specify the build ID as returned with an initial \code{CreateBuild} request. If successful, a new set of credentials are returned, along with the S3 storage location associated with the build ID.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{request_upload_credentials(
+  BuildId = "string"
+)
 }
+}
+

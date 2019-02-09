@@ -4,30 +4,9 @@
 \alias{create_file_system_from_backup}
 \title{Creates a new Amazon FSx file system from an existing Amazon FSx for Windows File Server backup}
 \usage{
-create_file_system_from_backup(
-  BackupId = "string",
-  ClientRequestToken = "string",
-  SubnetIds = list(
-    "string"
-  ),
-  SecurityGroupIds = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  WindowsConfiguration = list(
-    ActiveDirectoryId = "string",
-    ThroughputCapacity = 123,
-    WeeklyMaintenanceStartTime = "string",
-    DailyAutomaticBackupStartTime = "string",
-    AutomaticBackupRetentionDays = 123,
-    CopyTagsToBackups = TRUE|FALSE
-  )
-)
+create_file_system_from_backup(BackupId, ClientRequestToken = NULL,
+  SubnetIds, SecurityGroupIds = NULL, Tags = NULL,
+  WindowsConfiguration = NULL)
 }
 \arguments{
 \item{BackupId}{[required]}
@@ -58,9 +37,37 @@ By using the idempotent operation, you can retry a \code{CreateFileSystemFromBac
 
 The \code{CreateFileSystemFromBackup} call returns while the file system's lifecycle state is still \code{CREATING}. You can check the file-system creation status by calling the DescribeFileSystems operation, which returns the file system state along with other information.
 }
+\section{Accepted Parameters}{
+\preformatted{create_file_system_from_backup(
+  BackupId = "string",
+  ClientRequestToken = "string",
+  SubnetIds = list(
+    "string"
+  ),
+  SecurityGroupIds = list(
+    "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  WindowsConfiguration = list(
+    ActiveDirectoryId = "string",
+    ThroughputCapacity = 123,
+    WeeklyMaintenanceStartTime = "string",
+    DailyAutomaticBackupStartTime = "string",
+    AutomaticBackupRetentionDays = 123,
+    CopyTagsToBackups = TRUE|FALSE
+  )
+)
+}
+}
+
 \examples{
 # This operation creates a new file system from backup.
-create_file_system_from_backup(
+\donttest{create_file_system_from_backup(
   BackupId = "backup-03e3c82e0183b7b6b",
   ClientRequestToken = "f4c94ed7-238d-4c46-93db-48cd62ec33b7",
   SecurityGroupIds = list(
@@ -78,6 +85,6 @@ create_file_system_from_backup(
   WindowsConfiguration = list(
     ThroughputCapacity = 8L
   )
-)
+)}
 
 }

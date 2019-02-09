@@ -4,10 +4,7 @@
 \alias{list_roots}
 \title{Lists the roots that are defined in the current organization}
 \usage{
-list_roots(
-  NextToken = "string",
-  MaxResults = 123
-)
+list_roots(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{Use this parameter if you receive a \code{NextToken} response in a previous request that indicates that there is more output available. Set it to the value of the previous call's \code{NextToken} response to indicate where the output should continue from.}
@@ -24,9 +21,17 @@ This operation can be called only from the organization's master account.
 
 Policy types can be enabled and disabled in roots. This is distinct from whether they are available in the organization. When you enable all features, you make policy types available for use in that organization. Individual policy types can then be enabled and disabled in a root. To see the availability of a policy type in an organization, use DescribeOrganization.
 }
+\section{Accepted Parameters}{
+\preformatted{list_roots(
+  NextToken = "string",
+  MaxResults = 123
+)
+}
+}
+
 \examples{
 # The following example shows how to get the list of the roots in the
 # current organization:/n/n
-list_roots()
+\donttest{list_roots()}
 
 }

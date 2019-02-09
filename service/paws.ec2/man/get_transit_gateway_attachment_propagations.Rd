@@ -4,20 +4,9 @@
 \alias{get_transit_gateway_attachment_propagations}
 \title{Lists the route tables to which the specified resource attachment propagates routes}
 \usage{
-get_transit_gateway_attachment_propagations(
-  TransitGatewayAttachmentId = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  DryRun = TRUE|FALSE
-)
+get_transit_gateway_attachment_propagations(TransitGatewayAttachmentId,
+  Filters = NULL, MaxResults = NULL, NextToken = NULL,
+  DryRun = NULL)
 }
 \arguments{
 \item{TransitGatewayAttachmentId}{[required] The ID of the attachment.}
@@ -36,6 +25,21 @@ get_transit_gateway_attachment_propagations(
 \description{
 Lists the route tables to which the specified resource attachment propagates routes.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_transit_gateway_attachment_propagations(
+  TransitGatewayAttachmentId = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

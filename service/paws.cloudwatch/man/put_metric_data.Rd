@@ -4,7 +4,37 @@
 \alias{put_metric_data}
 \title{Publishes metric data points to Amazon CloudWatch}
 \usage{
-put_metric_data(
+put_metric_data(Namespace, MetricData)
+}
+\arguments{
+\item{Namespace}{[required] The namespace for the metric data.
+
+You cannot specify a namespace that begins with "AWS/". Namespaces that begin with "AWS/" are reserved for use by Amazon Web Services products.}
+
+\item{MetricData}{[required] The data for the metric. The array can include no more than 20 metrics per call.}
+}
+\description{
+Publishes metric data points to Amazon CloudWatch. CloudWatch associates the data points with the specified metric. If the specified metric does not exist, CloudWatch creates the metric. When CloudWatch creates a metric, it can take up to fifteen minutes for the metric to appear in calls to ListMetrics.
+}
+\details{
+You can publish either individual data points in the \code{Value} field, or arrays of values and the number of times each value occurred during the period by using the \code{Values} and \code{Counts} fields in the \code{MetricDatum} structure. Using the \code{Values} and \code{Counts} method enables you to publish up to 150 values per metric with one \code{PutMetricData} request, and supports retrieving percentile statistics on this data.
+
+Each \code{PutMetricData} request is limited to 40 KB in size for HTTP POST requests. You can send a payload compressed by gzip. Each request is also limited to no more than 20 different metrics.
+
+Although the \code{Value} parameter accepts numbers of type \code{Double}, CloudWatch rejects values that are either too small or too large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10) or 2e-360 to 2e360 (Base 2). In addition, special values (for example, NaN, +Infinity, -Infinity) are not supported.
+
+You can use up to 10 dimensions per metric to further clarify what data the metric collects. For more information about specifying dimensions, see \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html}{Publishing Metrics} in the \emph{Amazon CloudWatch User Guide}.
+
+Data points with time stamps from 24 hours ago or longer can take at least 48 hours to become available for GetMetricData or GetMetricStatistics from the time they are submitted.
+
+CloudWatch needs raw data points to calculate percentile statistics. If you publish data using a statistic set instead, you can only retrieve percentile statistics for this data if one of the following conditions is true:
+\itemize{
+\item The \code{SampleCount} value of the statistic set is 1 and \code{Min}, \code{Max}, and \code{Sum} are all equal.
+\item The \code{Min} and \code{Max} are equal, and \code{Sum} is equal to \code{Min} multiplied by \code{SampleCount}.
+}
+}
+\section{Accepted Parameters}{
+\preformatted{put_metric_data(
   Namespace = "string",
   MetricData = list(
     list(
@@ -35,33 +65,5 @@ put_metric_data(
   )
 )
 }
-\arguments{
-\item{Namespace}{[required] The namespace for the metric data.
-
-You cannot specify a namespace that begins with "AWS/". Namespaces that begin with "AWS/" are reserved for use by Amazon Web Services products.}
-
-\item{MetricData}{[required] The data for the metric. The array can include no more than 20 metrics per call.}
 }
-\description{
-Publishes metric data points to Amazon CloudWatch. CloudWatch associates the data points with the specified metric. If the specified metric does not exist, CloudWatch creates the metric. When CloudWatch creates a metric, it can take up to fifteen minutes for the metric to appear in calls to ListMetrics.
-}
-\details{
-You can publish either individual data points in the \code{Value} field, or arrays of values and the number of times each value occurred during the period by using the \code{Values} and \code{Counts} fields in the \code{MetricDatum} structure. Using the \code{Values} and \code{Counts} method enables you to publish up to 150 values per metric with one \code{PutMetricData} request, and supports retrieving percentile statistics on this data.
 
-Each \code{PutMetricData} request is limited to 40 KB in size for HTTP POST requests. You can send a payload compressed by gzip. Each request is also limited to no more than 20 different metrics.
-
-Although the \code{Value} parameter accepts numbers of type \code{Double}, CloudWatch rejects values that are either too small or too large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10) or 2e-360 to 2e360 (Base 2). In addition, special values (for example, NaN, +Infinity, -Infinity) are not supported.
-
-You can use up to 10 dimensions per metric to further clarify what data the metric collects. For more information about specifying dimensions, see \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html}{Publishing Metrics} in the \emph{Amazon CloudWatch User Guide}.
-
-Data points with time stamps from 24 hours ago or longer can take at least 48 hours to become available for GetMetricData or GetMetricStatistics from the time they are submitted.
-
-CloudWatch needs raw data points to calculate percentile statistics. If you publish data using a statistic set instead, you can only retrieve percentile statistics for this data if one of the following conditions is true:
-\itemize{
-\item The \code{SampleCount} value of the statistic set is 1 and \code{Min}, \code{Max}, and \code{Sum} are all equal.
-\item The \code{Min} and \code{Max} are equal, and \code{Sum} is equal to \code{Min} multiplied by \code{SampleCount}.
-}
-}
-\examples{
-
-}

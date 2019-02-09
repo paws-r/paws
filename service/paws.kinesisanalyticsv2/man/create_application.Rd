@@ -4,7 +4,31 @@
 \alias{create_application}
 \title{Creates an Amazon Kinesis Data Analytics application}
 \usage{
-create_application(
+create_application(ApplicationName, ApplicationDescription = NULL,
+  RuntimeEnvironment, ServiceExecutionRole,
+  ApplicationConfiguration = NULL, CloudWatchLoggingOptions = NULL)
+}
+\arguments{
+\item{ApplicationName}{[required] The name of your application (for example, \code{sample-app}).}
+
+\item{ApplicationDescription}{A summary description of the application.}
+
+\item{RuntimeEnvironment}{[required] The runtime environment for the application (\code{SQL-1.0} or \code{JAVA-8-FLINK-1.5}).}
+
+\item{ServiceExecutionRole}{[required] The IAM role used by the application to access Kinesis data streams, Kinesis Data Firehose delivery streams, Amazon S3 objects, and other external resources.}
+
+\item{ApplicationConfiguration}{Use this parameter to configure the application.}
+
+\item{CloudWatchLoggingOptions}{Use this parameter to configure an Amazon CloudWatch log stream to monitor application configuration errors.}
+}
+\description{
+Creates an Amazon Kinesis Data Analytics application. For information about creating a Kinesis Data Analytics application, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/Java/creating-app.html}{Creating an Application}.
+}
+\details{
+SQL is not enabled for this private beta release. Using SQL parameters (such as SqlApplicationConfiguration) will result in an error.
+}
+\section{Accepted Parameters}{
+\preformatted{create_application(
   ApplicationName = "string",
   ApplicationDescription = "string",
   RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6",
@@ -153,25 +177,5 @@ create_application(
   )
 )
 }
-\arguments{
-\item{ApplicationName}{[required] The name of your application (for example, \code{sample-app}).}
-
-\item{ApplicationDescription}{A summary description of the application.}
-
-\item{RuntimeEnvironment}{[required] The runtime environment for the application (\code{SQL-1.0} or \code{JAVA-8-FLINK-1.5}).}
-
-\item{ServiceExecutionRole}{[required] The IAM role used by the application to access Kinesis data streams, Kinesis Data Firehose delivery streams, Amazon S3 objects, and other external resources.}
-
-\item{ApplicationConfiguration}{Use this parameter to configure the application.}
-
-\item{CloudWatchLoggingOptions}{Use this parameter to configure an Amazon CloudWatch log stream to monitor application configuration errors.}
 }
-\description{
-Creates an Amazon Kinesis Data Analytics application. For information about creating a Kinesis Data Analytics application, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/Java/creating-app.html}{Creating an Application}.
-}
-\details{
-SQL is not enabled for this private beta release. Using SQL parameters (such as SqlApplicationConfiguration) will result in an error.
-}
-\examples{
 
-}

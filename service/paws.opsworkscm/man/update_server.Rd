@@ -4,13 +4,9 @@
 \alias{update_server}
 \title{Updates settings for a server}
 \usage{
-update_server(
-  DisableAutomatedBackup = TRUE|FALSE,
-  BackupRetentionCount = 123,
-  ServerName = "string",
-  PreferredMaintenanceWindow = "string",
-  PreferredBackupWindow = "string"
-)
+update_server(DisableAutomatedBackup = NULL,
+  BackupRetentionCount = NULL, ServerName,
+  PreferredMaintenanceWindow = NULL, PreferredBackupWindow = NULL)
 }
 \arguments{
 \item{DisableAutomatedBackup}{Setting DisableAutomatedBackup to \code{true} disables automated or scheduled backups. Automated backups are enabled by default.}
@@ -29,6 +25,14 @@ Updates settings for a server.
 \details{
 This operation is synchronous.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_server(
+  DisableAutomatedBackup = TRUE|FALSE,
+  BackupRetentionCount = 123,
+  ServerName = "string",
+  PreferredMaintenanceWindow = "string",
+  PreferredBackupWindow = "string"
+)
 }
+}
+

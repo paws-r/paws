@@ -2,36 +2,10 @@
 % Please edit documentation in R/paws.waf_operations.R
 \name{update_web_acl}
 \alias{update_web_acl}
-\title{Inserts or deletes ActivatedRule objects in a \code{WebACL}}
+\title{Inserts or deletes ActivatedRule objects in a WebACL}
 \usage{
-update_web_acl(
-  WebACLId = "string",
-  ChangeToken = "string",
-  Updates = list(
-    list(
-      Action = "INSERT"|"DELETE",
-      ActivatedRule = list(
-        Priority = 123,
-        RuleId = "string",
-        Action = list(
-          Type = "BLOCK"|"ALLOW"|"COUNT"
-        ),
-        OverrideAction = list(
-          Type = "NONE"|"COUNT"
-        ),
-        Type = "REGULAR"|"RATE_BASED"|"GROUP",
-        ExcludedRules = list(
-          list(
-            RuleId = "string"
-          )
-        )
-      )
-    )
-  ),
-  DefaultAction = list(
-    Type = "BLOCK"|"ALLOW"|"COUNT"
-  )
-)
+update_web_acl(WebACLId, ChangeToken, Updates = NULL,
+  DefaultAction = NULL)
 }
 \arguments{
 \item{WebACLId}{[required] The \code{WebACLId} of the WebACL that you want to update. \code{WebACLId} is returned by CreateWebACL and by ListWebACLs.}
@@ -77,10 +51,42 @@ Be aware that if you try to add a RATE\_BASED rule to a web ACL without setting 
 
 For more information about how to use the AWS WAF API to allow or block HTTP requests, see the \href{http://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{update_web_acl(
+  WebACLId = "string",
+  ChangeToken = "string",
+  Updates = list(
+    list(
+      Action = "INSERT"|"DELETE",
+      ActivatedRule = list(
+        Priority = 123,
+        RuleId = "string",
+        Action = list(
+          Type = "BLOCK"|"ALLOW"|"COUNT"
+        ),
+        OverrideAction = list(
+          Type = "NONE"|"COUNT"
+        ),
+        Type = "REGULAR"|"RATE_BASED"|"GROUP",
+        ExcludedRules = list(
+          list(
+            RuleId = "string"
+          )
+        )
+      )
+    )
+  ),
+  DefaultAction = list(
+    Type = "BLOCK"|"ALLOW"|"COUNT"
+  )
+)
+}
+}
+
 \examples{
 # The following example deletes an ActivatedRule object in a WebACL with
 # the ID webacl-1472061481310.
-update_web_acl(
+\donttest{update_web_acl(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   DefaultAction = list(
     Type = "ALLOW"
@@ -98,6 +104,6 @@ update_web_acl(
     )
   ),
   WebACLId = "webacl-1472061481310"
-)
+)}
 
 }

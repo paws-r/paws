@@ -4,12 +4,8 @@
 \alias{list_domains}
 \title{Returns the list of domains registered in the account}
 \usage{
-list_domains(
-  nextPageToken = "string",
-  registrationStatus = "REGISTERED"|"DEPRECATED",
-  maximumPageSize = 123,
-  reverseOrder = TRUE|FALSE
-)
+list_domains(nextPageToken = NULL, registrationStatus,
+  maximumPageSize = NULL, reverseOrder = NULL)
 }
 \arguments{
 \item{nextPageToken}{If a \code{NextPageToken} was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in \code{nextPageToken}. Keep all other arguments unchanged.
@@ -41,6 +37,13 @@ You can use IAM policies to control this action's access to Amazon SWF resources
 
 If the caller doesn't have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action fails. The associated event attribute's \code{cause} parameter is set to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see \href{http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows} in the \emph{Amazon SWF Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_domains(
+  nextPageToken = "string",
+  registrationStatus = "REGISTERED"|"DEPRECATED",
+  maximumPageSize = 123,
+  reverseOrder = TRUE|FALSE
+)
 }
+}
+

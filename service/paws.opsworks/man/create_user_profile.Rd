@@ -4,12 +4,8 @@
 \alias{create_user_profile}
 \title{Creates a new user profile}
 \usage{
-create_user_profile(
-  IamUserArn = "string",
-  SshUsername = "string",
-  SshPublicKey = "string",
-  AllowSelfManagement = TRUE|FALSE
-)
+create_user_profile(IamUserArn, SshUsername = NULL,
+  SshPublicKey = NULL, AllowSelfManagement = NULL)
 }
 \arguments{
 \item{IamUserArn}{[required] The user's IAM ARN; this can also be a federated user's ARN.}
@@ -26,6 +22,13 @@ Creates a new user profile.
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have an attached policy that explicitly grants permissions. For more information about user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_user_profile(
+  IamUserArn = "string",
+  SshUsername = "string",
+  SshPublicKey = "string",
+  AllowSelfManagement = TRUE|FALSE
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{get_event_selectors}
 \title{Describes the settings for the event selectors that you configured for your trail}
 \usage{
-get_event_selectors(
-  TrailName = "string"
-)
+get_event_selectors(TrailName)
 }
 \arguments{
 \item{TrailName}{[required] Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:
@@ -34,6 +32,10 @@ Describes the settings for the event selectors that you configured for your trai
 
 For more information, see \href{http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html}{Logging Data and Management Events for Trails} in the \emph{AWS CloudTrail User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_event_selectors(
+  TrailName = "string"
+)
 }
+}
+

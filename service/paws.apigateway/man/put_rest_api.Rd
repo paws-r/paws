@@ -4,15 +4,8 @@
 \alias{put_rest_api}
 \title{A feature of the API Gateway control service for updating an existing API with an input of external API definitions}
 \usage{
-put_rest_api(
-  restApiId = "string",
-  mode = "merge"|"overwrite",
-  failOnWarnings = TRUE|FALSE,
-  parameters = list(
-    "string"
-  ),
-  body = raw
-)
+put_rest_api(restApiId, mode = NULL, failOnWarnings = NULL,
+  parameters = NULL, body)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -28,6 +21,16 @@ put_rest_api(
 \description{
 A feature of the API Gateway control service for updating an existing API with an input of external API definitions. The update can take the form of merging the supplied definition into the existing API or overwriting the existing API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_rest_api(
+  restApiId = "string",
+  mode = "merge"|"overwrite",
+  failOnWarnings = TRUE|FALSE,
+  parameters = list(
+    "string"
+  ),
+  body = raw
+)
 }
+}
+

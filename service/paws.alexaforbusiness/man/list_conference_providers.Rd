@@ -4,10 +4,7 @@
 \alias{list_conference_providers}
 \title{Lists conference providers under a specific AWS account}
 \usage{
-list_conference_providers(
-  NextToken = "string",
-  MaxResults = 123
-)
+list_conference_providers(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{The tokens used for pagination.}
@@ -17,6 +14,11 @@ list_conference_providers(
 \description{
 Lists conference providers under a specific AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_conference_providers(
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

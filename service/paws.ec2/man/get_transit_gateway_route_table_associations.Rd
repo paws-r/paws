@@ -4,27 +4,15 @@
 \alias{get_transit_gateway_route_table_associations}
 \title{Gets information about the associations for the specified transit gateway route table}
 \usage{
-get_transit_gateway_route_table_associations(
-  TransitGatewayRouteTableId = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  DryRun = TRUE|FALSE
-)
+get_transit_gateway_route_table_associations(TransitGatewayRouteTableId,
+  Filters = NULL, MaxResults = NULL, NextToken = NULL,
+  DryRun = NULL)
 }
 \arguments{
 \item{TransitGatewayRouteTableId}{[required] The ID of the transit gateway route table.}
 
 \item{Filters}{One or more filters. The possible values are:
 \itemize{
-\item \code{association-id} - The ID of the association.
 \item \code{resource-id} - The ID of the resource.
 \item \code{resource-type} - The resource type (\code{vpc} | \code{vpn}).
 \item \code{transit-gateway-attachment-id} - The ID of the attachment.
@@ -39,6 +27,21 @@ get_transit_gateway_route_table_associations(
 \description{
 Gets information about the associations for the specified transit gateway route table.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_transit_gateway_route_table_associations(
+  TransitGatewayRouteTableId = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

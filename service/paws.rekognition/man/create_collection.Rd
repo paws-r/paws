@@ -4,15 +4,13 @@
 \alias{create_collection}
 \title{Creates a collection in an AWS Region}
 \usage{
-create_collection(
-  CollectionId = "string"
-)
+create_collection(CollectionId)
 }
 \arguments{
 \item{CollectionId}{[required] ID for the collection that you are creating.}
 }
 \description{
-Creates a collection in an AWS Region. You can add faces to the collection using the operation.
+Creates a collection in an AWS Region. You can add faces to the collection using the IndexFaces operation.
 }
 \details{
 For example, you might create collections, one for each of your application users. A user can then index faces using the \code{IndexFaces} operation and persist results in a specific collection. Then, a user can search the collection for faces in the user-specific container.
@@ -23,10 +21,17 @@ Collection names are case-sensitive.
 
 This operation requires permissions to perform the \code{rekognition:CreateCollection} action.
 }
+\section{Accepted Parameters}{
+\preformatted{create_collection(
+  CollectionId = "string"
+)
+}
+}
+
 \examples{
 # This operation creates a Rekognition collection for storing image data.
-create_collection(
+\donttest{create_collection(
   CollectionId = "myphotos"
-)
+)}
 
 }

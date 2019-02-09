@@ -4,10 +4,7 @@
 \alias{describe_portfolio}
 \title{Gets information about the specified portfolio}
 \usage{
-describe_portfolio(
-  AcceptLanguage = "string",
-  Id = "string"
-)
+describe_portfolio(AcceptLanguage = NULL, Id)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -22,6 +19,11 @@ describe_portfolio(
 \description{
 Gets information about the specified portfolio.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_portfolio(
+  AcceptLanguage = "string",
+  Id = "string"
+)
 }
+}
+

@@ -4,17 +4,8 @@
 \alias{create_thing}
 \title{Creates a thing record in the registry}
 \usage{
-create_thing(
-  thingName = "string",
-  thingTypeName = "string",
-  attributePayload = list(
-    attributes = list(
-      "string"
-    ),
-    merge = TRUE|FALSE
-  ),
-  billingGroupName = "string"
-)
+create_thing(thingName, thingTypeName = NULL, attributePayload = NULL,
+  billingGroupName = NULL)
 }
 \arguments{
 \item{thingName}{[required] The name of the thing to create.}
@@ -33,6 +24,18 @@ Creates a thing record in the registry.
 \details{
 This is a control plane operation. See \href{http://docs.aws.amazon.com/iot/latest/developerguide/authorization.html}{Authorization} for information about authorizing control plane actions.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_thing(
+  thingName = "string",
+  thingTypeName = "string",
+  attributePayload = list(
+    attributes = list(
+      "string"
+    ),
+    merge = TRUE|FALSE
+  ),
+  billingGroupName = "string"
+)
 }
+}
+

@@ -4,20 +4,9 @@
 \alias{create_key}
 \title{Creates a customer master key (CMK) in the caller's AWS account}
 \usage{
-create_key(
-  Policy = "string",
-  Description = "string",
-  KeyUsage = "ENCRYPT_DECRYPT",
-  Origin = "AWS_KMS"|"EXTERNAL"|"AWS_CLOUDHSM",
-  CustomKeyStoreId = "string",
-  BypassPolicyLockoutSafetyCheck = TRUE|FALSE,
-  Tags = list(
-    list(
-      TagKey = "string",
-      TagValue = "string"
-    )
-  )
-)
+create_key(Policy = NULL, Description = NULL, KeyUsage = NULL,
+  Origin = NULL, CustomKeyStoreId = NULL,
+  BypassPolicyLockoutSafetyCheck = NULL, Tags = NULL)
 }
 \arguments{
 \item{Policy}{The key policy to attach to the CMK.
@@ -86,15 +75,33 @@ To create a CMK in a \href{http://docs.aws.amazon.com/kms/latest/developerguide/
 
 You cannot use this operation to create a CMK in a different AWS account.
 }
+\section{Accepted Parameters}{
+\preformatted{create_key(
+  Policy = "string",
+  Description = "string",
+  KeyUsage = "ENCRYPT_DECRYPT",
+  Origin = "AWS_KMS"|"EXTERNAL"|"AWS_CLOUDHSM",
+  CustomKeyStoreId = "string",
+  BypassPolicyLockoutSafetyCheck = TRUE|FALSE,
+  Tags = list(
+    list(
+      TagKey = "string",
+      TagValue = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # The following example creates a CMK.
-create_key(
+\donttest{create_key(
   Tags = list(
     list(
       TagKey = "CreatedBy",
       TagValue = "ExampleUser"
     )
   )
-)
+)}
 
 }

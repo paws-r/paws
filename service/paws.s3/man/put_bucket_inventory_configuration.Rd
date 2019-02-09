@@ -4,7 +4,20 @@
 \alias{put_bucket_inventory_configuration}
 \title{Adds an inventory configuration (identified by the inventory ID) from the bucket}
 \usage{
-put_bucket_inventory_configuration(
+put_bucket_inventory_configuration(Bucket, Id, InventoryConfiguration)
+}
+\arguments{
+\item{Bucket}{[required] The name of the bucket where the inventory configuration will be stored.}
+
+\item{Id}{[required] The ID used to identify the inventory configuration.}
+
+\item{InventoryConfiguration}{[required] Specifies the inventory configuration.}
+}
+\description{
+Adds an inventory configuration (identified by the inventory ID) from the bucket.
+}
+\section{Accepted Parameters}{
+\preformatted{put_bucket_inventory_configuration(
   Bucket = "string",
   Id = "string",
   InventoryConfiguration = list(
@@ -37,16 +50,5 @@ put_bucket_inventory_configuration(
   )
 )
 }
-\arguments{
-\item{Bucket}{[required] The name of the bucket where the inventory configuration will be stored.}
-
-\item{Id}{[required] The ID used to identify the inventory configuration.}
-
-\item{InventoryConfiguration}{[required] Specifies the inventory configuration.}
 }
-\description{
-Adds an inventory configuration (identified by the inventory ID) from the bucket.
-}
-\examples{
 
-}

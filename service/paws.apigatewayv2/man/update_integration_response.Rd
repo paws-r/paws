@@ -4,20 +4,10 @@
 \alias{update_integration_response}
 \title{Updates an IntegrationResponses}
 \usage{
-update_integration_response(
-  ApiId = "string",
-  ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-  IntegrationId = "string",
-  IntegrationResponseId = "string",
-  IntegrationResponseKey = "string",
-  ResponseParameters = list(
-    "string"
-  ),
-  ResponseTemplates = list(
-    "string"
-  ),
-  TemplateSelectionExpression = "string"
-)
+update_integration_response(ApiId, ContentHandlingStrategy = NULL,
+  IntegrationId, IntegrationResponseId, IntegrationResponseKey = NULL,
+  ResponseParameters = NULL, ResponseTemplates = NULL,
+  TemplateSelectionExpression = NULL)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -45,6 +35,21 @@ If this property is not defined, the response payload will be passed through fro
 \description{
 Updates an IntegrationResponses.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_integration_response(
+  ApiId = "string",
+  ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
+  IntegrationId = "string",
+  IntegrationResponseId = "string",
+  IntegrationResponseKey = "string",
+  ResponseParameters = list(
+    "string"
+  ),
+  ResponseTemplates = list(
+    "string"
+  ),
+  TemplateSelectionExpression = "string"
+)
 }
+}
+

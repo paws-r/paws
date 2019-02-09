@@ -4,13 +4,7 @@
 \alias{update_user_pool_domain}
 \title{Updates the Secure Sockets Layer (SSL) certificate for the custom domain for your user pool}
 \usage{
-update_user_pool_domain(
-  Domain = "string",
-  UserPoolId = "string",
-  CustomDomainConfig = list(
-    CertificateArn = "string"
-  )
-)
+update_user_pool_domain(Domain, UserPoolId, CustomDomainConfig)
 }
 \arguments{
 \item{Domain}{[required] The domain name for the custom domain that hosts the sign-up and sign-in pages for your application. For example: \code{auth.example.com}.
@@ -39,6 +33,14 @@ After you submit your request, Amazon Cognito requires up to 1 hour to distribut
 
 For more information about adding a custom domain to your user pool, see \href{http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-add-custom-domain.html}{Using Your Own Domain for the Hosted UI}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_user_pool_domain(
+  Domain = "string",
+  UserPoolId = "string",
+  CustomDomainConfig = list(
+    CertificateArn = "string"
+  )
+)
 }
+}
+

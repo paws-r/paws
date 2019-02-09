@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.s3_operations.R
 \name{delete_public_access_block}
 \alias{delete_public_access_block}
-\title{Removes the \code{PublicAccessBlock} configuration from an Amazon S3 bucket}
+\title{Removes the PublicAccessBlock configuration from an Amazon S3 bucket}
 \usage{
-delete_public_access_block(
-  Bucket = "string"
-)
+delete_public_access_block(Bucket)
 }
 \arguments{
 \item{Bucket}{[required] The Amazon S3 bucket whose \code{PublicAccessBlock} configuration you want to delete.}
@@ -14,6 +12,10 @@ delete_public_access_block(
 \description{
 Removes the \code{PublicAccessBlock} configuration from an Amazon S3 bucket.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_public_access_block(
+  Bucket = "string"
+)
 }
+}
+

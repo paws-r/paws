@@ -4,15 +4,7 @@
 \alias{add_tags}
 \title{Adds tags to an Amazon EMR resource}
 \usage{
-add_tags(
-  ResourceId = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+add_tags(ResourceId, Tags)
 }
 \arguments{
 \item{ResourceId}{[required] The Amazon EMR resource identifier to which tags will be added. This value must be a cluster identifier.}
@@ -22,6 +14,16 @@ add_tags(
 \description{
 Adds tags to an Amazon EMR resource. Tags make it easier to associate clusters in various ways, such as grouping clusters to track your Amazon EMR resource allocation costs. For more information, see \href{http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html}{Tag Clusters}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{add_tags(
+  ResourceId = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

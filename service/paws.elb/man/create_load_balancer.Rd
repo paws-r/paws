@@ -4,34 +4,9 @@
 \alias{create_load_balancer}
 \title{Creates a Classic Load Balancer}
 \usage{
-create_load_balancer(
-  LoadBalancerName = "string",
-  Listeners = list(
-    list(
-      Protocol = "string",
-      LoadBalancerPort = 123,
-      InstanceProtocol = "string",
-      InstancePort = 123,
-      SSLCertificateId = "string"
-    )
-  ),
-  AvailabilityZones = list(
-    "string"
-  ),
-  Subnets = list(
-    "string"
-  ),
-  SecurityGroups = list(
-    "string"
-  ),
-  Scheme = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_load_balancer(LoadBalancerName, Listeners,
+  AvailabilityZones = NULL, Subnets = NULL, SecurityGroups = NULL,
+  Scheme = NULL, Tags = NULL)
 }
 \arguments{
 \item{LoadBalancerName}{[required] The name of the load balancer.
@@ -72,9 +47,41 @@ To describe your current load balancers, see DescribeLoadBalancers. When you are
 
 You can create up to 20 load balancers per region per account. You can request an increase for the number of load balancers for your account. For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-limits.html}{Limits for Your Classic Load Balancer} in the \emph{Classic Load Balancers Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_load_balancer(
+  LoadBalancerName = "string",
+  Listeners = list(
+    list(
+      Protocol = "string",
+      LoadBalancerPort = 123,
+      InstanceProtocol = "string",
+      InstancePort = 123,
+      SSLCertificateId = "string"
+    )
+  ),
+  AvailabilityZones = list(
+    "string"
+  ),
+  Subnets = list(
+    "string"
+  ),
+  SecurityGroups = list(
+    "string"
+  ),
+  Scheme = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # This example creates a load balancer with an HTTP listener in a VPC.
-create_load_balancer(
+\donttest{create_load_balancer(
   Listeners = list(
     list(
       InstancePort = 80L,
@@ -90,11 +97,11 @@ create_load_balancer(
   Subnets = list(
     "subnet-15aaab61"
   )
-)
+)}
 
 # This example creates a load balancer with an HTTP listener in
 # EC2-Classic.
-create_load_balancer(
+\donttest{create_load_balancer(
   AvailabilityZones = list(
     "us-west-2a"
   ),
@@ -107,10 +114,10 @@ create_load_balancer(
     )
   ),
   LoadBalancerName = "my-load-balancer"
-)
+)}
 
 # This example creates a load balancer with an HTTPS listener in a VPC.
-create_load_balancer(
+\donttest{create_load_balancer(
   Listeners = list(
     list(
       InstancePort = 80L,
@@ -133,11 +140,11 @@ create_load_balancer(
   Subnets = list(
     "subnet-15aaab61"
   )
-)
+)}
 
 # This example creates a load balancer with an HTTPS listener in
 # EC2-Classic.
-create_load_balancer(
+\donttest{create_load_balancer(
   AvailabilityZones = list(
     "us-west-2a"
   ),
@@ -157,11 +164,11 @@ create_load_balancer(
     )
   ),
   LoadBalancerName = "my-load-balancer"
-)
+)}
 
 # This example creates an internal load balancer with an HTTP listener in
 # a VPC.
-create_load_balancer(
+\donttest{create_load_balancer(
   Listeners = list(
     list(
       InstancePort = 80L,
@@ -178,6 +185,6 @@ create_load_balancer(
   Subnets = list(
     "subnet-15aaab61"
   )
-)
+)}
 
 }

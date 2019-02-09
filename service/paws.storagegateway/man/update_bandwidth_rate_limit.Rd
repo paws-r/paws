@@ -4,11 +4,9 @@
 \alias{update_bandwidth_rate_limit}
 \title{Updates the bandwidth rate limits of a gateway}
 \usage{
-update_bandwidth_rate_limit(
-  GatewayARN = "string",
-  AverageUploadRateLimitInBitsPerSec = 123,
-  AverageDownloadRateLimitInBitsPerSec = 123
-)
+update_bandwidth_rate_limit(GatewayARN,
+  AverageUploadRateLimitInBitsPerSec = NULL,
+  AverageDownloadRateLimitInBitsPerSec = NULL)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -25,14 +23,23 @@ By default, a gateway's bandwidth rate limits are not set. If you don't set any 
 
 To specify which gateway to update, use the Amazon Resource Name (ARN) of the gateway in your request.
 }
+\section{Accepted Parameters}{
+\preformatted{update_bandwidth_rate_limit(
+  GatewayARN = "string",
+  AverageUploadRateLimitInBitsPerSec = 123,
+  AverageDownloadRateLimitInBitsPerSec = 123
+)
+}
+}
+
 \examples{
 # Updates the bandwidth rate limits of a gateway. Both the upload and
 # download bandwidth rate limit can be set, or either one of the two. If a
 # new limit is not set, the existing rate limit remains.
-update_bandwidth_rate_limit(
+\donttest{update_bandwidth_rate_limit(
   AverageDownloadRateLimitInBitsPerSec = 102400L,
   AverageUploadRateLimitInBitsPerSec = 51200L,
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)
+)}
 
 }

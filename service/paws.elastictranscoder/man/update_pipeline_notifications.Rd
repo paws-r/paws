@@ -4,15 +4,7 @@
 \alias{update_pipeline_notifications}
 \title{With the UpdatePipelineNotifications operation, you can update Amazon Simple Notification Service (Amazon SNS) notifications for a pipeline}
 \usage{
-update_pipeline_notifications(
-  Id = "string",
-  Notifications = list(
-    Progressing = "string",
-    Completed = "string",
-    Warning = "string",
-    Error = "string"
-  )
-)
+update_pipeline_notifications(Id, Notifications)
 }
 \arguments{
 \item{Id}{[required] The identifier of the pipeline for which you want to change notification settings.}
@@ -33,6 +25,16 @@ With the UpdatePipelineNotifications operation, you can update Amazon Simple Not
 \details{
 When you update notifications for a pipeline, Elastic Transcoder returns the values that you specified in the request.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_pipeline_notifications(
+  Id = "string",
+  Notifications = list(
+    Progressing = "string",
+    Completed = "string",
+    Warning = "string",
+    Error = "string"
+  )
+)
 }
+}
+

@@ -4,7 +4,18 @@
 \alias{update_radius}
 \title{Updates the Remote Authentication Dial In User Service (RADIUS) server information for an AD Connector or Microsoft AD directory}
 \usage{
-update_radius(
+update_radius(DirectoryId, RadiusSettings)
+}
+\arguments{
+\item{DirectoryId}{[required] The identifier of the directory for which to update the RADIUS server information.}
+
+\item{RadiusSettings}{[required] A RadiusSettings object that contains information about the RADIUS server.}
+}
+\description{
+Updates the Remote Authentication Dial In User Service (RADIUS) server information for an AD Connector or Microsoft AD directory.
+}
+\section{Accepted Parameters}{
+\preformatted{update_radius(
   DirectoryId = "string",
   RadiusSettings = list(
     RadiusServers = list(
@@ -20,14 +31,5 @@ update_radius(
   )
 )
 }
-\arguments{
-\item{DirectoryId}{[required] The identifier of the directory for which to update the RADIUS server information.}
+}
 
-\item{RadiusSettings}{[required] A RadiusSettings object that contains information about the RADIUS server.}
-}
-\description{
-Updates the Remote Authentication Dial In User Service (RADIUS) server information for an AD Connector or Microsoft AD directory.
-}
-\examples{
-
-}

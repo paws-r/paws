@@ -4,10 +4,7 @@
 \alias{delete_transit_gateway}
 \title{Deletes the specified transit gateway}
 \usage{
-delete_transit_gateway(
-  TransitGatewayId = "string",
-  DryRun = TRUE|FALSE
-)
+delete_transit_gateway(TransitGatewayId, DryRun = NULL)
 }
 \arguments{
 \item{TransitGatewayId}{[required] The ID of the transit gateway.}
@@ -17,6 +14,11 @@ delete_transit_gateway(
 \description{
 Deletes the specified transit gateway.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_transit_gateway(
+  TransitGatewayId = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

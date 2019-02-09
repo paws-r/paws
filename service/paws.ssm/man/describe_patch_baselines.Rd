@@ -4,18 +4,8 @@
 \alias{describe_patch_baselines}
 \title{Lists the patch baselines in your AWS account}
 \usage{
-describe_patch_baselines(
-  Filters = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_patch_baselines(Filters = NULL, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{Filters}{Each element in the array is a structure containing:
@@ -31,6 +21,19 @@ Value: (array of strings, exactly 1 entry, between 1 and 255 characters)}
 \description{
 Lists the patch baselines in your AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_patch_baselines(
+  Filters = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

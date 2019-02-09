@@ -4,16 +4,8 @@
 \alias{describe_workspaces}
 \title{Describes the specified WorkSpaces}
 \usage{
-describe_workspaces(
-  WorkspaceIds = list(
-    "string"
-  ),
-  DirectoryId = "string",
-  UserName = "string",
-  BundleId = "string",
-  Limit = 123,
-  NextToken = "string"
-)
+describe_workspaces(WorkspaceIds = NULL, DirectoryId = NULL,
+  UserName = NULL, BundleId = NULL, Limit = NULL, NextToken = NULL)
 }
 \arguments{
 \item{WorkspaceIds}{The identifiers of the WorkSpaces. You cannot combine this parameter with any other filter.
@@ -36,6 +28,17 @@ Describes the specified WorkSpaces.
 \details{
 You can filter the results by using the bundle identifier, directory identifier, or owner, but you can specify only one filter at a time.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_workspaces(
+  WorkspaceIds = list(
+    "string"
+  ),
+  DirectoryId = "string",
+  UserName = "string",
+  BundleId = "string",
+  Limit = 123,
+  NextToken = "string"
+)
 }
+}
+

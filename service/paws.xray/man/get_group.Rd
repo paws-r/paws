@@ -4,10 +4,7 @@
 \alias{get_group}
 \title{Retrieves group resource details}
 \usage{
-get_group(
-  GroupName = "string",
-  GroupARN = "string"
-)
+get_group(GroupName = NULL, GroupARN = NULL)
 }
 \arguments{
 \item{GroupName}{The case-sensitive name of the group.}
@@ -17,6 +14,11 @@ get_group(
 \description{
 Retrieves group resource details.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_group(
+  GroupName = "string",
+  GroupARN = "string"
+)
 }
+}
+

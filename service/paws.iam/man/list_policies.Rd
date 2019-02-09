@@ -4,14 +4,8 @@
 \alias{list_policies}
 \title{Lists all the managed policies that are available in your AWS account, including your own customer-defined managed policies and all AWS managed policies}
 \usage{
-list_policies(
-  Scope = "All"|"AWS"|"Local",
-  OnlyAttached = TRUE|FALSE,
-  PathPrefix = "string",
-  PolicyUsageFilter = "PermissionsPolicy"|"PermissionsBoundary",
-  Marker = "string",
-  MaxItems = 123
-)
+list_policies(Scope = NULL, OnlyAttached = NULL, PathPrefix = NULL,
+  PolicyUsageFilter = NULL, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{Scope}{The scope to use for filtering the results.
@@ -28,7 +22,7 @@ When \code{OnlyAttached} is \code{true}, the returned list contains only the pol
 
 \item{PolicyUsageFilter}{The policy usage method to use for filtering the results.
 
-To list only permissions policies, setÂ \code{PolicyUsageFilter}Â toÂ \code{PermissionsPolicy}. To list only the policies used to set permissions boundaries, setÂ the value toÂ \code{PermissionsBoundary}.
+To list only permissions policies, set \code{PolicyUsageFilter} to \code{PermissionsPolicy}. To list only the policies used to set permissions boundaries, set the value to \code{PermissionsBoundary}.
 
 This parameter is optional. If it is not included, all policies are returned.}
 
@@ -48,6 +42,15 @@ You can paginate the results using the \code{MaxItems} and \code{Marker} paramet
 
 For more information about managed policies, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies} in the \emph{IAM User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_policies(
+  Scope = "All"|"AWS"|"Local",
+  OnlyAttached = TRUE|FALSE,
+  PathPrefix = "string",
+  PolicyUsageFilter = "PermissionsPolicy"|"PermissionsBoundary",
+  Marker = "string",
+  MaxItems = 123
+)
 }
+}
+

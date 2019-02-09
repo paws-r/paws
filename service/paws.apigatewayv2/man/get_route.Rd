@@ -4,10 +4,7 @@
 \alias{get_route}
 \title{Gets a Route}
 \usage{
-get_route(
-  ApiId = "string",
-  RouteId = "string"
-)
+get_route(ApiId, RouteId)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -17,6 +14,11 @@ get_route(
 \description{
 Gets a Route.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_route(
+  ApiId = "string",
+  RouteId = "string"
+)
 }
+}
+

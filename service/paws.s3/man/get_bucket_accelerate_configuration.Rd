@@ -4,9 +4,7 @@
 \alias{get_bucket_accelerate_configuration}
 \title{Returns the accelerate configuration of a bucket}
 \usage{
-get_bucket_accelerate_configuration(
-  Bucket = "string"
-)
+get_bucket_accelerate_configuration(Bucket)
 }
 \arguments{
 \item{Bucket}{[required] Name of the bucket for which the accelerate configuration is retrieved.}
@@ -14,6 +12,10 @@ get_bucket_accelerate_configuration(
 \description{
 Returns the accelerate configuration of a bucket.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_bucket_accelerate_configuration(
+  Bucket = "string"
+)
 }
+}
+

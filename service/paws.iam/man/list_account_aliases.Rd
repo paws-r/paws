@@ -4,10 +4,7 @@
 \alias{list_account_aliases}
 \title{Lists the account alias associated with the AWS account (Note: you can have only one)}
 \usage{
-list_account_aliases(
-  Marker = "string",
-  MaxItems = 123
-)
+list_account_aliases(Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{Marker}{Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the \code{Marker} element in the response that you received to indicate where the next call should start.}
@@ -19,8 +16,16 @@ If you do not include this parameter, the number of items defaults to 100. Note 
 \description{
 Lists the account alias associated with the AWS account (Note: you can have only one). For information about using an AWS account alias, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/AccountAlias.html}{Using an Alias for Your AWS Account ID} in the \emph{IAM User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{list_account_aliases(
+  Marker = "string",
+  MaxItems = 123
+)
+}
+}
+
 \examples{
 # The following command lists the aliases for the current account.
-list_account_aliases()
+\donttest{list_account_aliases()}
 
 }

@@ -4,10 +4,7 @@
 \alias{set_default_policy_version}
 \title{Sets the specified version of the specified policy as the policy's default (operative) version}
 \usage{
-set_default_policy_version(
-  policyName = "string",
-  policyVersionId = "string"
-)
+set_default_policy_version(policyName, policyVersionId)
 }
 \arguments{
 \item{policyName}{[required] The policy name.}
@@ -17,6 +14,11 @@ set_default_policy_version(
 \description{
 Sets the specified version of the specified policy as the policy's default (operative) version. This action affects all certificates to which the policy is attached. To list the principals the policy is attached to, use the ListPrincipalPolicy API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{set_default_policy_version(
+  policyName = "string",
+  policyVersionId = "string"
+)
 }
+}
+

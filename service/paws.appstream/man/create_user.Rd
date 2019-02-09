@@ -4,13 +4,8 @@
 \alias{create_user}
 \title{Creates a new user in the user pool}
 \usage{
-create_user(
-  UserName = "string",
-  MessageAction = "SUPPRESS"|"RESEND",
-  FirstName = "string",
-  LastName = "string",
-  AuthenticationType = "API"|"SAML"|"USERPOOL"
-)
+create_user(UserName, MessageAction = NULL, FirstName = NULL,
+  LastName = NULL, AuthenticationType)
 }
 \arguments{
 \item{UserName}{[required] The email address of the user.}
@@ -28,6 +23,14 @@ The temporary password in the welcome email is valid for only 7 days. If users d
 \description{
 Creates a new user in the user pool.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_user(
+  UserName = "string",
+  MessageAction = "SUPPRESS"|"RESEND",
+  FirstName = "string",
+  LastName = "string",
+  AuthenticationType = "API"|"SAML"|"USERPOOL"
+)
 }
+}
+

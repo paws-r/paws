@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.cloudsearch_operations.R
 \name{delete_expression}
 \alias{delete_expression}
-\title{Removes an \code{Expression} from the search domain}
+\title{Removes an Expression from the search domain}
 \usage{
-delete_expression(
-  DomainName = "string",
-  ExpressionName = "string"
-)
+delete_expression(DomainName, ExpressionName)
 }
 \arguments{
 \item{DomainName}{[required]}
@@ -17,6 +14,11 @@ delete_expression(
 \description{
 Removes an \code{Expression} from the search domain. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html}{Configuring Expressions} in the \emph{Amazon CloudSearch Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_expression(
+  DomainName = "string",
+  ExpressionName = "string"
+)
 }
+}
+

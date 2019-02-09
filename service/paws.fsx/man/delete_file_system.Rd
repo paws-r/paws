@@ -4,19 +4,8 @@
 \alias{delete_file_system}
 \title{Deletes a file system, deleting its contents}
 \usage{
-delete_file_system(
-  FileSystemId = "string",
-  ClientRequestToken = "string",
-  WindowsConfiguration = list(
-    SkipFinalBackup = TRUE|FALSE,
-    FinalBackupTags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
+delete_file_system(FileSystemId, ClientRequestToken = NULL,
+  WindowsConfiguration = NULL)
 }
 \arguments{
 \item{FileSystemId}{[required] The ID of the file system you want to delete.}
@@ -35,10 +24,27 @@ The \code{DeleteFileSystem} action returns while the file system has the \code{D
 
 The data in a deleted file system is also deleted and can't be recovered by any means.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_file_system(
+  FileSystemId = "string",
+  ClientRequestToken = "string",
+  WindowsConfiguration = list(
+    SkipFinalBackup = TRUE|FALSE,
+    FinalBackupTags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
+
 \examples{
 # This operation deletes an Amazon FSx file system.
-delete_file_system(
+\donttest{delete_file_system(
   FileSystemId = "fs-0498eed5fe91001ec"
-)
+)}
 
 }

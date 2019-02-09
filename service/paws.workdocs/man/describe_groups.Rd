@@ -4,13 +4,8 @@
 \alias{describe_groups}
 \title{Describes the groups specified by the query}
 \usage{
-describe_groups(
-  AuthenticationToken = "string",
-  SearchQuery = "string",
-  OrganizationId = "string",
-  Marker = "string",
-  Limit = 123
-)
+describe_groups(AuthenticationToken = NULL, SearchQuery,
+  OrganizationId = NULL, Marker = NULL, Limit = NULL)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
@@ -26,6 +21,14 @@ describe_groups(
 \description{
 Describes the groups specified by the query. Groups are defined by the underlying Active Directory.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_groups(
+  AuthenticationToken = "string",
+  SearchQuery = "string",
+  OrganizationId = "string",
+  Marker = "string",
+  Limit = 123
+)
 }
+}
+

@@ -4,7 +4,62 @@
 \alias{register_task_with_maintenance_window}
 \title{Adds a new task to a Maintenance Window}
 \usage{
-register_task_with_maintenance_window(
+register_task_with_maintenance_window(WindowId, Targets, TaskArn,
+  ServiceRoleArn = NULL, TaskType, TaskParameters = NULL,
+  TaskInvocationParameters = NULL, Priority = NULL, MaxConcurrency,
+  MaxErrors, LoggingInfo = NULL, Name = NULL, Description = NULL,
+  ClientToken = NULL)
+}
+\arguments{
+\item{WindowId}{[required] The ID of the Maintenance Window the task should be added to.}
+
+\item{Targets}{[required] The targets (either instances or Maintenance Window targets).
+
+Specify instances using the following format:
+
+\code{Key=InstanceIds,Values=<instance-id-1>,<instance-id-2>}
+
+Specify Maintenance Window targets using the following format:
+
+\code{Key=<WindowTargetIds>,Values=<window-target-id-1>,<window-target-id-2>}}
+
+\item{TaskArn}{[required] The ARN of the task to execute}
+
+\item{ServiceRoleArn}{The role to assume when running the Maintenance Window task.
+
+If you do not specify a service role ARN, Systems Manager will use your account's service-linked role for Systems Manager by default. If no service-linked role for Systems Manager exists in your account, it will be created when you run \code{RegisterTaskWithMaintenanceWindow} without specifying a service role ARN.
+
+For more information, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions}{Service-Linked Role Permissions for Systems Manager} and \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role}{Should I Use a Service-Linked Role or a Custom Service Role to Run Maintenance Window Tasks?} in the \emph{AWS Systems Manager User Guide}.}
+
+\item{TaskType}{[required] The type of task being registered.}
+
+\item{TaskParameters}{The parameters that should be passed to the task when it is executed.
+
+\code{TaskParameters} has been deprecated. To specify parameters to pass to a task when it runs, instead use the \code{Parameters} option in the \code{TaskInvocationParameters} structure. For information about how Systems Manager handles these options for the supported Maintenance Window task types, see MaintenanceWindowTaskInvocationParameters.}
+
+\item{TaskInvocationParameters}{The parameters that the task should use during execution. Populate only the fields that match the task type. All other fields should be empty.}
+
+\item{Priority}{The priority of the task in the Maintenance Window, the lower the number the higher the priority. Tasks in a Maintenance Window are scheduled in priority order with tasks that have the same priority scheduled in parallel.}
+
+\item{MaxConcurrency}{[required] The maximum number of targets this task can be run for in parallel.}
+
+\item{MaxErrors}{[required] The maximum number of errors allowed before this task stops being scheduled.}
+
+\item{LoggingInfo}{A structure containing information about an Amazon S3 bucket to write instance-level logs to.
+
+\code{LoggingInfo} has been deprecated. To specify an S3 bucket to contain logs, instead use the \code{OutputS3BucketName} and \code{OutputS3KeyPrefix} options in the \code{TaskInvocationParameters} structure. For information about how Systems Manager handles these options for the supported Maintenance Window task types, see MaintenanceWindowTaskInvocationParameters.}
+
+\item{Name}{An optional name for the task.}
+
+\item{Description}{An optional description for the task.}
+
+\item{ClientToken}{User-provided idempotency token.}
+}
+\description{
+Adds a new task to a Maintenance Window.
+}
+\section{Accepted Parameters}{
+\preformatted{register_task_with_maintenance_window(
   WindowId = "string",
   Targets = list(
     list(
@@ -77,54 +132,5 @@ register_task_with_maintenance_window(
   ClientToken = "string"
 )
 }
-\arguments{
-\item{WindowId}{[required] The ID of the Maintenance Window the task should be added to.}
-
-\item{Targets}{[required] The targets (either instances or Maintenance Window targets).
-
-Specify instances using the following format:
-
-\code{Key=InstanceIds,Values=<instance-id-1>,<instance-id-2>}
-
-Specify Maintenance Window targets using the following format:
-
-\code{Key=<WindowTargetIds>,Values=<window-target-id-1>,<window-target-id-2>}}
-
-\item{TaskArn}{[required] The ARN of the task to execute}
-
-\item{ServiceRoleArn}{The role to assume when running the Maintenance Window task.
-
-If you do not specify a service role ARN, Systems Manager will use your account's service-linked role for Systems Manager by default. If no service-linked role for Systems Manager exists in your account, it will be created when you run \code{RegisterTaskWithMaintenanceWindow} without specifying a service role ARN.
-
-For more information, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions}{Service-Linked Role Permissions for Systems Manager} and \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role}{Should I Use a Service-Linked Role or a Custom Service Role to Run Maintenance Window Tasks?} in the \emph{AWS Systems Manager User Guide}.}
-
-\item{TaskType}{[required] The type of task being registered.}
-
-\item{TaskParameters}{The parameters that should be passed to the task when it is executed.
-
-\code{TaskParameters} has been deprecated. To specify parameters to pass to a task when it runs, instead use the \code{Parameters} option in the \code{TaskInvocationParameters} structure. For information about how Systems Manager handles these options for the supported Maintenance Window task types, see MaintenanceWindowTaskInvocationParameters.}
-
-\item{TaskInvocationParameters}{The parameters that the task should use during execution. Populate only the fields that match the task type. All other fields should be empty.}
-
-\item{Priority}{The priority of the task in the Maintenance Window, the lower the number the higher the priority. Tasks in a Maintenance Window are scheduled in priority order with tasks that have the same priority scheduled in parallel.}
-
-\item{MaxConcurrency}{[required] The maximum number of targets this task can be run for in parallel.}
-
-\item{MaxErrors}{[required] The maximum number of errors allowed before this task stops being scheduled.}
-
-\item{LoggingInfo}{A structure containing information about an Amazon S3 bucket to write instance-level logs to.
-
-\code{LoggingInfo} has been deprecated. To specify an S3 bucket to contain logs, instead use the \code{OutputS3BucketName} and \code{OutputS3KeyPrefix} options in the \code{TaskInvocationParameters} structure. For information about how Systems Manager handles these options for the supported Maintenance Window task types, see MaintenanceWindowTaskInvocationParameters.}
-
-\item{Name}{An optional name for the task.}
-
-\item{Description}{An optional description for the task.}
-
-\item{ClientToken}{User-provided idempotency token.}
 }
-\description{
-Adds a new task to a Maintenance Window.
-}
-\examples{
 
-}

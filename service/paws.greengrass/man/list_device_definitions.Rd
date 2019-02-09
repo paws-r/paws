@@ -4,10 +4,7 @@
 \alias{list_device_definitions}
 \title{Retrieves a list of device definitions}
 \usage{
-list_device_definitions(
-  MaxResults = "string",
-  NextToken = "string"
-)
+list_device_definitions(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{The maximum number of results to be returned per request.}
@@ -17,6 +14,11 @@ list_device_definitions(
 \description{
 Retrieves a list of device definitions.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_device_definitions(
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
+}
+

@@ -4,16 +4,8 @@
 \alias{add_application_input_processing_configuration}
 \title{Adds an InputProcessingConfiguration to an SQL-based Kinesis Data Analytics application}
 \usage{
-add_application_input_processing_configuration(
-  ApplicationName = "string",
-  CurrentApplicationVersionId = 123,
-  InputId = "string",
-  InputProcessingConfiguration = list(
-    InputLambdaProcessor = list(
-      ResourceARN = "string"
-    )
-  )
-)
+add_application_input_processing_configuration(ApplicationName,
+  CurrentApplicationVersionId, InputId, InputProcessingConfiguration)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application to which you want to add the input processing configuration.}
@@ -27,6 +19,17 @@ add_application_input_processing_configuration(
 \description{
 Adds an InputProcessingConfiguration to an SQL-based Kinesis Data Analytics application. An input processor pre-processes records on the input stream before the application's SQL code executes. Currently, the only input processor available is \href{https://aws.amazon.com/documentation/lambda/}{AWS Lambda}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{add_application_input_processing_configuration(
+  ApplicationName = "string",
+  CurrentApplicationVersionId = 123,
+  InputId = "string",
+  InputProcessingConfiguration = list(
+    InputLambdaProcessor = list(
+      ResourceARN = "string"
+    )
+  )
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{delete_regex_match_set}
 \title{Permanently deletes a RegexMatchSet}
 \usage{
-delete_regex_match_set(
-  RegexMatchSetId = "string",
-  ChangeToken = "string"
-)
+delete_regex_match_set(RegexMatchSetId, ChangeToken)
 }
 \arguments{
 \item{RegexMatchSetId}{[required] The \code{RegexMatchSetId} of the RegexMatchSet that you want to delete. \code{RegexMatchSetId} is returned by CreateRegexMatchSet and by ListRegexMatchSets.}
@@ -27,6 +24,11 @@ To permanently delete a \code{RegexMatchSet}, perform the following steps:
 \item Submit a \code{DeleteRegexMatchSet} request.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_regex_match_set(
+  RegexMatchSetId = "string",
+  ChangeToken = "string"
+)
 }
+}
+

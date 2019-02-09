@@ -4,20 +4,9 @@
 \alias{create_load_balancer_tls_certificate}
 \title{Creates a Lightsail load balancer TLS certificate}
 \usage{
-create_load_balancer_tls_certificate(
-  loadBalancerName = "string",
-  certificateName = "string",
-  certificateDomainName = "string",
-  certificateAlternativeNames = list(
-    "string"
-  ),
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
+create_load_balancer_tls_certificate(loadBalancerName, certificateName,
+  certificateDomainName, certificateAlternativeNames = NULL,
+  tags = NULL)
 }
 \arguments{
 \item{loadBalancerName}{[required] The load balancer name where you want to create the SSL/TLS certificate.}
@@ -42,6 +31,21 @@ TLS is just an updated, more secure version of Secure Socket Layer (SSL).
 
 The \code{create load balancer tls certificate} operation supports tag-based access control via resource tags applied to the resource identified by loadBalancerName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_load_balancer_tls_certificate(
+  loadBalancerName = "string",
+  certificateName = "string",
+  certificateDomainName = "string",
+  certificateAlternativeNames = list(
+    "string"
+  ),
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
 }
+}
+

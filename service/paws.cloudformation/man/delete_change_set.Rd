@@ -4,10 +4,7 @@
 \alias{delete_change_set}
 \title{Deletes the specified change set}
 \usage{
-delete_change_set(
-  ChangeSetName = "string",
-  StackName = "string"
-)
+delete_change_set(ChangeSetName, StackName = NULL)
 }
 \arguments{
 \item{ChangeSetName}{[required] The name or Amazon Resource Name (ARN) of the change set that you want to delete.}
@@ -20,6 +17,11 @@ Deletes the specified change set. Deleting change sets ensures that no one execu
 \details{
 If the call successfully completes, AWS CloudFormation successfully deleted the change set.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_change_set(
+  ChangeSetName = "string",
+  StackName = "string"
+)
 }
+}
+

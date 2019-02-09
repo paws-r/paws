@@ -4,9 +4,7 @@
 \alias{delete_elasticsearch_domain}
 \title{Permanently deletes the specified Elasticsearch domain and all of its data}
 \usage{
-delete_elasticsearch_domain(
-  DomainName = "string"
-)
+delete_elasticsearch_domain(DomainName)
 }
 \arguments{
 \item{DomainName}{[required] The name of the Elasticsearch domain that you want to permanently delete.}
@@ -14,6 +12,10 @@ delete_elasticsearch_domain(
 \description{
 Permanently deletes the specified Elasticsearch domain and all of its data. Once a domain is deleted, it cannot be recovered.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_elasticsearch_domain(
+  DomainName = "string"
+)
 }
+}
+

@@ -4,20 +4,7 @@
 \alias{describe_vpcs}
 \title{Describes one or more of your VPCs}
 \usage{
-describe_vpcs(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  VpcIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
+describe_vpcs(Filters = NULL, VpcIds = NULL, DryRun = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -47,12 +34,30 @@ Default: Describes all your VPCs.}
 \description{
 Describes one or more of your VPCs.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_vpcs(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  VpcIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example describes the specified VPC.
-describe_vpcs(
+\donttest{describe_vpcs(
   VpcIds = list(
     "vpc-a01106c2"
   )
-)
+)}
 
 }

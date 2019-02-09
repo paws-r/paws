@@ -4,12 +4,8 @@
 \alias{initiate_multipart_upload}
 \title{This operation initiates a multipart upload}
 \usage{
-initiate_multipart_upload(
-  accountId = "string",
-  vaultName = "string",
-  archiveDescription = "string",
-  partSize = "string"
-)
+initiate_multipart_upload(accountId, vaultName,
+  archiveDescription = NULL, partSize = NULL)
 }
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
@@ -38,13 +34,23 @@ An AWS account has full permission to perform all operations (actions). However,
 
 For conceptual information and underlying REST API, see \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-archive-mpu.html}{Uploading Large Archives in Parts (Multipart Upload)} and \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-initiate-upload.html}{Initiate Multipart Upload} in the \emph{Amazon Glacier Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{initiate_multipart_upload(
+  accountId = "string",
+  vaultName = "string",
+  archiveDescription = "string",
+  partSize = "string"
+)
+}
+}
+
 \examples{
 # The example initiates a multipart upload to a vault named my-vault with
 # a part size of 1 MiB (1024 x 1024 bytes) per file.
-initiate_multipart_upload(
+\donttest{initiate_multipart_upload(
   accountId = "-",
   partSize = "1048576",
   vaultName = "my-vault"
-)
+)}
 
 }

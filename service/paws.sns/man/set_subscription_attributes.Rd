@@ -4,11 +4,8 @@
 \alias{set_subscription_attributes}
 \title{Allows a subscription owner to set an attribute of the subscription to a new value}
 \usage{
-set_subscription_attributes(
-  SubscriptionArn = "string",
-  AttributeName = "string",
-  AttributeValue = "string"
-)
+set_subscription_attributes(SubscriptionArn, AttributeName,
+  AttributeValue = NULL)
 }
 \arguments{
 \item{SubscriptionArn}{[required] The ARN of the subscription to modify.}
@@ -27,6 +24,12 @@ The following lists the names, descriptions, and values of the special request p
 \description{
 Allows a subscription owner to set an attribute of the subscription to a new value.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{set_subscription_attributes(
+  SubscriptionArn = "string",
+  AttributeName = "string",
+  AttributeValue = "string"
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{get_jobs}
 \title{Retrieves all current job definitions}
 \usage{
-get_jobs(
-  NextToken = "string",
-  MaxResults = 123
-)
+get_jobs(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{A continuation token, if this is a continuation call.}
@@ -17,6 +14,11 @@ get_jobs(
 \description{
 Retrieves all current job definitions.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_jobs(
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

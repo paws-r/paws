@@ -4,11 +4,7 @@
 \alias{update_ssh_public_key}
 \title{Sets the status of an IAM user's SSH public key to active or inactive}
 \usage{
-update_ssh_public_key(
-  UserName = "string",
-  SSHPublicKeyId = "string",
-  Status = "Active"|"Inactive"
-)
+update_ssh_public_key(UserName, SSHPublicKeyId, Status)
 }
 \arguments{
 \item{UserName}{[required] The name of the IAM user associated with the SSH public key.
@@ -27,6 +23,12 @@ Sets the status of an IAM user's SSH public key to active or inactive. SSH publi
 \details{
 The SSH public key affected by this operation is used only for authenticating the associated IAM user to an AWS CodeCommit repository. For more information about using SSH keys to authenticate to an AWS CodeCommit repository, see \href{http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html}{Set up AWS CodeCommit for SSH Connections} in the \emph{AWS CodeCommit User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_ssh_public_key(
+  UserName = "string",
+  SSHPublicKeyId = "string",
+  Status = "Active"|"Inactive"
+)
 }
+}
+

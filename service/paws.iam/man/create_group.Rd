@@ -4,10 +4,7 @@
 \alias{create_group}
 \title{Creates a new group}
 \usage{
-create_group(
-  Path = "string",
-  GroupName = "string"
-)
+create_group(Path = NULL, GroupName)
 }
 \arguments{
 \item{Path}{The path to the group. For more information about paths, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{IAM Identifiers} in the \emph{IAM User Guide}.
@@ -26,10 +23,18 @@ Creates a new group.
 \details{
 For information about the number of groups you can create, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html}{Limitations on IAM Entities} in the \emph{IAM User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_group(
+  Path = "string",
+  GroupName = "string"
+)
+}
+}
+
 \examples{
 # The following command creates an IAM group named Admins.
-create_group(
+\donttest{create_group(
   GroupName = "Admins"
-)
+)}
 
 }

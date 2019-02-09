@@ -4,12 +4,8 @@
 \alias{create_security_group}
 \title{Creates a security group}
 \usage{
-create_security_group(
-  Description = "string",
-  GroupName = "string",
-  VpcId = "string",
-  DryRun = TRUE|FALSE
-)
+create_security_group(Description, GroupName, VpcId = NULL,
+  DryRun = NULL)
 }
 \arguments{
 \item{Description}{[required] A description for the security group. This is informational only.
@@ -36,7 +32,7 @@ Constraints for EC2-VPC: a-z, A-Z, 0-9, spaces, and .\_-:/()#,@[]+=&;{}!\$*}
 Creates a security group.
 }
 \details{
-A security group is for use with instances either in the EC2-Classic platform or in a specific VPC. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html}{Amazon EC2 Security Groups} in the \emph{Amazon Elastic Compute Cloud User Guide} and \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html}{Security Groups for Your VPC} in the \emph{Amazon Virtual Private Cloud User Guide}.
+A security group is for use with instances either in the EC2-Classic platform or in a specific VPC. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html}{Amazon EC2 Security Groups} in the \emph{Amazon Elastic Compute Cloud User Guide} and \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html}{Security Groups for Your VPC} in the \emph{Amazon Virtual Private Cloud User Guide}.
 
 EC2-Classic: You can have up to 500 security groups.
 
@@ -48,12 +44,22 @@ You have a default security group for use in EC2-Classic and a default security 
 
 You can add or remove rules from your security groups using AuthorizeSecurityGroupIngress, AuthorizeSecurityGroupEgress, RevokeSecurityGroupIngress, and RevokeSecurityGroupEgress.
 }
+\section{Accepted Parameters}{
+\preformatted{create_security_group(
+  Description = "string",
+  GroupName = "string",
+  VpcId = "string",
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example creates a security group for the specified VPC.
-create_security_group(
+\donttest{create_security_group(
   Description = "My security group",
   GroupName = "my-security-group",
   VpcId = "vpc-1a2b3c4d"
-)
+)}
 
 }

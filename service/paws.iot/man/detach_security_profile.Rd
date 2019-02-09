@@ -4,10 +4,7 @@
 \alias{detach_security_profile}
 \title{Disassociates a Device Defender security profile from a thing group or from this account}
 \usage{
-detach_security_profile(
-  securityProfileName = "string",
-  securityProfileTargetArn = "string"
-)
+detach_security_profile(securityProfileName, securityProfileTargetArn)
 }
 \arguments{
 \item{securityProfileName}{[required] The security profile that is detached.}
@@ -17,6 +14,11 @@ detach_security_profile(
 \description{
 Disassociates a Device Defender security profile from a thing group or from this account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{detach_security_profile(
+  securityProfileName = "string",
+  securityProfileTargetArn = "string"
+)
 }
+}
+

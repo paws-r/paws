@@ -4,7 +4,16 @@
 \alias{delete_tags}
 \title{Deletes the specified tags}
 \usage{
-delete_tags(
+delete_tags(Tags)
+}
+\arguments{
+\item{Tags}{[required] One or more tags.}
+}
+\description{
+Deletes the specified tags.
+}
+\section{Accepted Parameters}{
+\preformatted{delete_tags(
   Tags = list(
     list(
       ResourceId = "string",
@@ -16,16 +25,12 @@ delete_tags(
   )
 )
 }
-\arguments{
-\item{Tags}{[required] One or more tags.}
 }
-\description{
-Deletes the specified tags.
-}
+
 \examples{
 # This example deletes the specified tag from the specified Auto Scaling
 # group.
-delete_tags(
+\donttest{delete_tags(
   Tags = list(
     list(
       Key = "Dept",
@@ -34,6 +39,6 @@ delete_tags(
       Value = "Research"
     )
   )
-)
+)}
 
 }

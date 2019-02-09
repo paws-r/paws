@@ -4,7 +4,23 @@
 \alias{update_receipt_rule}
 \title{Updates a receipt rule}
 \usage{
-update_receipt_rule(
+update_receipt_rule(RuleSetName, Rule)
+}
+\arguments{
+\item{RuleSetName}{[required] The name of the receipt rule set that the receipt rule belongs to.}
+
+\item{Rule}{[required] A data structure that contains the updated receipt rule information.}
+}
+\description{
+Updates a receipt rule.
+}
+\details{
+For information about managing receipt rules, see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rules.html}{Amazon SES Developer Guide}.
+
+You can execute this operation no more than once per second.
+}
+\section{Accepted Parameters}{
+\preformatted{update_receipt_rule(
   RuleSetName = "string",
   Rule = list(
     Name = "string",
@@ -55,22 +71,11 @@ update_receipt_rule(
   )
 )
 }
-\arguments{
-\item{RuleSetName}{[required] The name of the receipt rule set that the receipt rule belongs to.}
+}
 
-\item{Rule}{[required] A data structure that contains the updated receipt rule information.}
-}
-\description{
-Updates a receipt rule.
-}
-\details{
-For information about managing receipt rules, see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rules.html}{Amazon SES Developer Guide}.
-
-You can execute this operation no more than once per second.
-}
 \examples{
 # The following example updates a receipt rule to use an Amazon S3 action:
-update_receipt_rule(
+\donttest{update_receipt_rule(
   Rule = list(
     Actions = list(
       list(
@@ -86,6 +91,6 @@ update_receipt_rule(
     TlsPolicy = "Optional"
   ),
   RuleSetName = "MyRuleSet"
-)
+)}
 
 }

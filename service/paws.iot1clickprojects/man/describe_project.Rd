@@ -4,9 +4,7 @@
 \alias{describe_project}
 \title{Returns an object describing a project}
 \usage{
-describe_project(
-  projectName = "string"
-)
+describe_project(projectName)
 }
 \arguments{
 \item{projectName}{[required] The name of the project to be described.}
@@ -14,6 +12,10 @@ describe_project(
 \description{
 Returns an object describing a project.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_project(
+  projectName = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{get_upgrade_status}
 \title{Retrieves the latest status of the last upgrade or upgrade eligibility check that was performed on the domain}
 \usage{
-get_upgrade_status(
-  DomainName = "string"
-)
+get_upgrade_status(DomainName)
 }
 \arguments{
 \item{DomainName}{[required]}
@@ -14,6 +12,10 @@ get_upgrade_status(
 \description{
 Retrieves the latest status of the last upgrade or upgrade eligibility check that was performed on the domain.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_upgrade_status(
+  DomainName = "string"
+)
 }
+}
+

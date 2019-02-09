@@ -4,16 +4,7 @@
 \alias{put_action_revision}
 \title{Provides information to AWS CodePipeline about new revisions to a source}
 \usage{
-put_action_revision(
-  pipelineName = "string",
-  stageName = "string",
-  actionName = "string",
-  actionRevision = list(
-    revisionId = "string",
-    revisionChangeId = "string",
-    created = as.POSIXct("2015-01-01")
-  )
-)
+put_action_revision(pipelineName, stageName, actionName, actionRevision)
 }
 \arguments{
 \item{pipelineName}{[required] The name of the pipeline that will start processing the revision to the source.}
@@ -27,6 +18,17 @@ put_action_revision(
 \description{
 Provides information to AWS CodePipeline about new revisions to a source.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_action_revision(
+  pipelineName = "string",
+  stageName = "string",
+  actionName = "string",
+  actionRevision = list(
+    revisionId = "string",
+    revisionChangeId = "string",
+    created = as.POSIXct("2015-01-01")
+  )
+)
 }
+}
+

@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.waf_operations.R
 \name{get_change_token_status}
 \alias{get_change_token_status}
-\title{Returns the status of a \code{ChangeToken} that you got by calling GetChangeToken}
+\title{Returns the status of a ChangeToken that you got by calling GetChangeToken}
 \usage{
-get_change_token_status(
-  ChangeToken = "string"
-)
+get_change_token_status(ChangeToken)
 }
 \arguments{
 \item{ChangeToken}{[required] The change token for which you want to get the status. This change token was previously returned in the \code{GetChangeToken} response.}
@@ -21,11 +19,18 @@ Returns the status of a \code{ChangeToken} that you got by calling GetChangeToke
 \item \code{IN_SYNC}: Propagation is complete.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{get_change_token_status(
+  ChangeToken = "string"
+)
+}
+}
+
 \examples{
 # The following example returns the status of a change token with the ID
 # abcd12f2-46da-4fdb-b8d5-fbd4c466928f.
-get_change_token_status(
+\donttest{get_change_token_status(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f"
-)
+)}
 
 }

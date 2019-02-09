@@ -4,30 +4,12 @@
 \alias{put_integration}
 \title{Sets up a method's integration}
 \usage{
-put_integration(
-  restApiId = "string",
-  resourceId = "string",
-  httpMethod = "string",
-  type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
-  integrationHttpMethod = "string",
-  uri = "string",
-  connectionType = "INTERNET"|"VPC_LINK",
-  connectionId = "string",
-  credentials = "string",
-  requestParameters = list(
-    "string"
-  ),
-  requestTemplates = list(
-    "string"
-  ),
-  passthroughBehavior = "string",
-  cacheNamespace = "string",
-  cacheKeyParameters = list(
-    "string"
-  ),
-  contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-  timeoutInMillis = 123
-)
+put_integration(restApiId, resourceId, httpMethod, type,
+  integrationHttpMethod = NULL, uri = NULL, connectionType = NULL,
+  connectionId = NULL, credentials = NULL, requestParameters = NULL,
+  requestTemplates = NULL, passthroughBehavior = NULL,
+  cacheNamespace = NULL, cacheKeyParameters = NULL,
+  contentHandling = NULL, timeoutInMillis = NULL)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -80,6 +62,31 @@ If this property is not defined, the request payload will be passed through from
 \description{
 Sets up a method's integration.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_integration(
+  restApiId = "string",
+  resourceId = "string",
+  httpMethod = "string",
+  type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
+  integrationHttpMethod = "string",
+  uri = "string",
+  connectionType = "INTERNET"|"VPC_LINK",
+  connectionId = "string",
+  credentials = "string",
+  requestParameters = list(
+    "string"
+  ),
+  requestTemplates = list(
+    "string"
+  ),
+  passthroughBehavior = "string",
+  cacheNamespace = "string",
+  cacheKeyParameters = list(
+    "string"
+  ),
+  contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
+  timeoutInMillis = 123
+)
 }
+}
+

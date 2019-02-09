@@ -4,9 +4,7 @@
 \alias{delete_load_balancer}
 \title{Deletes the specified Application Load Balancer or Network Load Balancer and its attached listeners}
 \usage{
-delete_load_balancer(
-  LoadBalancerArn = "string"
-)
+delete_load_balancer(LoadBalancerArn)
 }
 \arguments{
 \item{LoadBalancerArn}{[required] The Amazon Resource Name (ARN) of the load balancer.}
@@ -19,10 +17,17 @@ You can't delete a load balancer if deletion protection is enabled. If the load 
 
 Deleting a load balancer does not affect its registered targets. For example, your EC2 instances continue to run and are still registered to their target groups. If you no longer need these EC2 instances, you can stop or terminate them.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_load_balancer(
+  LoadBalancerArn = "string"
+)
+}
+}
+
 \examples{
 # This example deletes the specified load balancer.
-delete_load_balancer(
+\donttest{delete_load_balancer(
   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188"
-)
+)}
 
 }

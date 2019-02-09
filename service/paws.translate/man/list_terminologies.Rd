@@ -4,10 +4,7 @@
 \alias{list_terminologies}
 \title{Provides a list of custom terminologies associated with your account}
 \usage{
-list_terminologies(
-  NextToken = "string",
-  MaxResults = 123
-)
+list_terminologies(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{If the result of the request to ListTerminologies was truncated, include the NextToken to fetch the next group of custom terminologies.}
@@ -17,6 +14,11 @@ list_terminologies(
 \description{
 Provides a list of custom terminologies associated with your account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_terminologies(
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

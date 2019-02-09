@@ -4,17 +4,8 @@
 \alias{create_cluster_parameter_group}
 \title{Creates an Amazon Redshift parameter group}
 \usage{
-create_cluster_parameter_group(
-  ParameterGroupName = "string",
-  ParameterGroupFamily = "string",
-  Description = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_cluster_parameter_group(ParameterGroupName, ParameterGroupFamily,
+  Description, Tags = NULL)
 }
 \arguments{
 \item{ParameterGroupName}{[required] The name of the cluster parameter group.
@@ -45,6 +36,18 @@ Creating parameter groups is independent of creating clusters. You can associate
 
 Parameters in the parameter group define specific behavior that applies to the databases you create on the cluster. For more information about parameters and parameter groups, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html}{Amazon Redshift Parameter Groups} in the \emph{Amazon Redshift Cluster Management Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_cluster_parameter_group(
+  ParameterGroupName = "string",
+  ParameterGroupFamily = "string",
+  Description = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

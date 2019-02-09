@@ -4,25 +4,10 @@
 \alias{put_method}
 \title{Add a method to an existing Resource resource}
 \usage{
-put_method(
-  restApiId = "string",
-  resourceId = "string",
-  httpMethod = "string",
-  authorizationType = "string",
-  authorizerId = "string",
-  apiKeyRequired = TRUE|FALSE,
-  operationName = "string",
-  requestParameters = list(
-    TRUE|FALSE
-  ),
-  requestModels = list(
-    "string"
-  ),
-  requestValidatorId = "string",
-  authorizationScopes = list(
-    "string"
-  )
-)
+put_method(restApiId, resourceId, httpMethod, authorizationType,
+  authorizerId = NULL, apiKeyRequired = NULL, operationName = NULL,
+  requestParameters = NULL, requestModels = NULL,
+  requestValidatorId = NULL, authorizationScopes = NULL)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -50,6 +35,26 @@ put_method(
 \description{
 Add a method to an existing Resource resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_method(
+  restApiId = "string",
+  resourceId = "string",
+  httpMethod = "string",
+  authorizationType = "string",
+  authorizerId = "string",
+  apiKeyRequired = TRUE|FALSE,
+  operationName = "string",
+  requestParameters = list(
+    TRUE|FALSE
+  ),
+  requestModels = list(
+    "string"
+  ),
+  requestValidatorId = "string",
+  authorizationScopes = list(
+    "string"
+  )
+)
 }
+}
+

@@ -4,19 +4,8 @@
 \alias{describe_maintenance_windows_for_target}
 \title{Retrieves information about the Maintenance Windows targets or tasks that an instance is associated with}
 \usage{
-describe_maintenance_windows_for_target(
-  Targets = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  ResourceType = "INSTANCE",
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_maintenance_windows_for_target(Targets, ResourceType,
+  MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{Targets}{[required] The instance ID or key/value pair to retrieve information about.}
@@ -30,6 +19,20 @@ describe_maintenance_windows_for_target(
 \description{
 Retrieves information about the Maintenance Windows targets or tasks that an instance is associated with.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_maintenance_windows_for_target(
+  Targets = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  ResourceType = "INSTANCE",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

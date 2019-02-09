@@ -4,24 +4,7 @@
 \alias{update_size_constraint_set}
 \title{Inserts or deletes SizeConstraint objects (filters) in a SizeConstraintSet}
 \usage{
-update_size_constraint_set(
-  SizeConstraintSetId = "string",
-  ChangeToken = "string",
-  Updates = list(
-    list(
-      Action = "INSERT"|"DELETE",
-      SizeConstraint = list(
-        FieldToMatch = list(
-          Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
-          Data = "string"
-        ),
-        TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
-        ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
-        Size = 123
-      )
-    )
-  )
-)
+update_size_constraint_set(SizeConstraintSetId, ChangeToken, Updates)
 }
 \arguments{
 \item{SizeConstraintSetId}{[required] The \code{SizeConstraintSetId} of the SizeConstraintSet that you want to update. \code{SizeConstraintSetId} is returned by CreateSizeConstraintSet and by ListSizeConstraintSets.}
@@ -62,11 +45,33 @@ To create and configure a \code{SizeConstraintSet}, perform the following steps:
 
 For more information about how to use the AWS WAF API to allow or block HTTP requests, see the \href{http://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{update_size_constraint_set(
+  SizeConstraintSetId = "string",
+  ChangeToken = "string",
+  Updates = list(
+    list(
+      Action = "INSERT"|"DELETE",
+      SizeConstraint = list(
+        FieldToMatch = list(
+          Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
+          Data = "string"
+        ),
+        TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
+        ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
+        Size = 123
+      )
+    )
+  )
+)
+}
+}
+
 \examples{
 # The following example deletes a SizeConstraint object (filters) in a
 # size constraint set with the ID
 # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-update_size_constraint_set(
+\donttest{update_size_constraint_set(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   SizeConstraintSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5",
   Updates = list(
@@ -82,6 +87,6 @@ update_size_constraint_set(
       )
     )
   )
-)
+)}
 
 }

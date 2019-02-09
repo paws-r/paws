@@ -4,12 +4,8 @@
 \alias{delete_table_version}
 \title{Deletes a specified version of a table}
 \usage{
-delete_table_version(
-  CatalogId = "string",
-  DatabaseName = "string",
-  TableName = "string",
-  VersionId = "string"
-)
+delete_table_version(CatalogId = NULL, DatabaseName, TableName,
+  VersionId)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the tables reside. If none is supplied, the AWS account ID is used by default.}
@@ -23,6 +19,13 @@ delete_table_version(
 \description{
 Deletes a specified version of a table.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_table_version(
+  CatalogId = "string",
+  DatabaseName = "string",
+  TableName = "string",
+  VersionId = "string"
+)
 }
+}
+

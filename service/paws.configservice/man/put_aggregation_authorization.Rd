@@ -4,10 +4,7 @@
 \alias{put_aggregation_authorization}
 \title{Authorizes the aggregator account and region to collect data from the source account and region}
 \usage{
-put_aggregation_authorization(
-  AuthorizedAccountId = "string",
-  AuthorizedAwsRegion = "string"
-)
+put_aggregation_authorization(AuthorizedAccountId, AuthorizedAwsRegion)
 }
 \arguments{
 \item{AuthorizedAccountId}{[required] The 12-digit account ID of the account authorized to aggregate data.}
@@ -17,6 +14,11 @@ put_aggregation_authorization(
 \description{
 Authorizes the aggregator account and region to collect data from the source account and region.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_aggregation_authorization(
+  AuthorizedAccountId = "string",
+  AuthorizedAwsRegion = "string"
+)
 }
+}
+

@@ -4,12 +4,7 @@
 \alias{attach_volume}
 \title{Attaches an EBS volume to a running or stopped instance and exposes it to the instance with the specified device name}
 \usage{
-attach_volume(
-  Device = "string",
-  InstanceId = "string",
-  VolumeId = "string",
-  DryRun = TRUE|FALSE
-)
+attach_volume(Device, InstanceId, VolumeId, DryRun = NULL)
 }
 \arguments{
 \item{Device}{[required] The device name (for example, \code{/dev/sdh} or \code{xvdh}).}
@@ -24,9 +19,9 @@ attach_volume(
 Attaches an EBS volume to a running or stopped instance and exposes it to the instance with the specified device name.
 }
 \details{
-Encrypted EBS volumes may only be attached to instances that support Amazon EBS encryption. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS Encryption} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+Encrypted EBS volumes may only be attached to instances that support Amazon EBS encryption. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS Encryption} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
-For a list of supported device names, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-attaching-volume.html}{Attaching an EBS Volume to an Instance}. Any device names that aren't reserved for instance store volumes can be used for EBS volumes. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html}{Amazon EC2 Instance Store} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For a list of supported device names, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-attaching-volume.html}{Attaching an EBS Volume to an Instance}. Any device names that aren't reserved for instance store volumes can be used for EBS volumes. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html}{Amazon EC2 Instance Store} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 If a volume has an AWS Marketplace product code:
 \itemize{
@@ -36,15 +31,25 @@ If a volume has an AWS Marketplace product code:
 \item The instance type and operating system of the instance must support the product. For example, you can't detach a volume from a Windows instance and attach it to a Linux instance.
 }
 
-For more information about EBS volumes, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-attaching-volume.html}{Attaching Amazon EBS Volumes} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information about EBS volumes, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-attaching-volume.html}{Attaching Amazon EBS Volumes} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{attach_volume(
+  Device = "string",
+  InstanceId = "string",
+  VolumeId = "string",
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example attaches a volume (``vol-1234567890abcdef0``) to an
 # instance (``i-01474ef662b89480``) as ``/dev/sdf``.
-attach_volume(
+\donttest{attach_volume(
   Device = "/dev/sdf",
   InstanceId = "i-01474ef662b89480",
   VolumeId = "vol-1234567890abcdef0"
-)
+)}
 
 }

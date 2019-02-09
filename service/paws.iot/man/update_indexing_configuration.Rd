@@ -4,15 +4,8 @@
 \alias{update_indexing_configuration}
 \title{Updates the search configuration}
 \usage{
-update_indexing_configuration(
-  thingIndexingConfiguration = list(
-    thingIndexingMode = "OFF"|"REGISTRY"|"REGISTRY_AND_SHADOW",
-    thingConnectivityIndexingMode = "OFF"|"STATUS"
-  ),
-  thingGroupIndexingConfiguration = list(
-    thingGroupIndexingMode = "OFF"|"ON"
-  )
-)
+update_indexing_configuration(thingIndexingConfiguration = NULL,
+  thingGroupIndexingConfiguration = NULL)
 }
 \arguments{
 \item{thingIndexingConfiguration}{Thing indexing configuration.}
@@ -22,6 +15,16 @@ update_indexing_configuration(
 \description{
 Updates the search configuration.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_indexing_configuration(
+  thingIndexingConfiguration = list(
+    thingIndexingMode = "OFF"|"REGISTRY"|"REGISTRY_AND_SHADOW",
+    thingConnectivityIndexingMode = "OFF"|"STATUS"
+  ),
+  thingGroupIndexingConfiguration = list(
+    thingGroupIndexingMode = "OFF"|"ON"
+  )
+)
 }
+}
+

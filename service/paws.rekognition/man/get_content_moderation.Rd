@@ -2,14 +2,10 @@
 % Please edit documentation in R/paws.rekognition_operations.R
 \name{get_content_moderation}
 \alias{get_content_moderation}
-\title{Gets the content moderation analysis results for a Amazon Rekognition Video analysis started by}
+\title{Gets the content moderation analysis results for a Amazon Rekognition Video analysis started by StartContentModeration}
 \usage{
-get_content_moderation(
-  JobId = "string",
-  MaxResults = 123,
-  NextToken = "string",
-  SortBy = "NAME"|"TIMESTAMP"
-)
+get_content_moderation(JobId, MaxResults = NULL, NextToken = NULL,
+  SortBy = NULL)
 }
 \arguments{
 \item{JobId}{[required] The identifier for the content moderation job. Use \code{JobId} to identify the job in a subsequent call to \code{GetContentModeration}.}
@@ -21,14 +17,14 @@ get_content_moderation(
 \item{SortBy}{Sort to use for elements in the \code{ModerationLabelDetections} array. Use \code{TIMESTAMP} to sort array elements by the time labels are detected. Use \code{NAME} to alphabetically group elements for a label together. Within each label group, the array element are sorted by detection confidence. The default sort is by \code{TIMESTAMP}.}
 }
 \description{
-Gets the content moderation analysis results for a Amazon Rekognition Video analysis started by .
+Gets the content moderation analysis results for a Amazon Rekognition Video analysis started by StartContentModeration.
 }
 \details{
-Content moderation analysis of a video is an asynchronous operation. You start analysis by calling . which returns a job identifier (\code{JobId}). When analysis finishes, Amazon Rekognition Video publishes a completion status to the Amazon Simple Notification Service topic registered in the initial call to \code{StartContentModeration}. To get the results of the content moderation analysis, first check that the status value published to the Amazon SNS topic is \code{SUCCEEDED}. If so, call \code{GetCelebrityDetection} and pass the job identifier (\code{JobId}) from the initial call to \code{StartCelebrityDetection}.
+Content moderation analysis of a video is an asynchronous operation. You start analysis by calling StartContentModeration. which returns a job identifier (\code{JobId}). When analysis finishes, Amazon Rekognition Video publishes a completion status to the Amazon Simple Notification Service topic registered in the initial call to \code{StartContentModeration}. To get the results of the content moderation analysis, first check that the status value published to the Amazon SNS topic is \code{SUCCEEDED}. If so, call \code{GetCelebrityDetection} and pass the job identifier (\code{JobId}) from the initial call to \code{StartCelebrityDetection}.
 
 For more information, see Working with Stored Videos in the Amazon Rekognition Devlopers Guide.
 
-\code{GetContentModeration} returns detected content moderation labels, and the time they are detected, in an array, \code{ModerationLabels}, of objects.
+\code{GetContentModeration} returns detected content moderation labels, and the time they are detected, in an array, \code{ModerationLabels}, of ContentModerationDetection objects.
 
 By default, the moderated labels are returned sorted by time, in milliseconds from the start of the video. You can also sort them by moderated label by specifying \code{NAME} for the \code{SortBy} input parameter.
 
@@ -36,6 +32,13 @@ Since video analysis can return a large number of results, use the \code{MaxResu
 
 For more information, see Detecting Unsafe Content in the Amazon Rekognition Developer Guide.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_content_moderation(
+  JobId = "string",
+  MaxResults = 123,
+  NextToken = "string",
+  SortBy = "NAME"|"TIMESTAMP"
+)
 }
+}
+

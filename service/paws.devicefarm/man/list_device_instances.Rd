@@ -4,10 +4,7 @@
 \alias{list_device_instances}
 \title{Returns information about the private device instances associated with one or more AWS accounts}
 \usage{
-list_device_instances(
-  maxResults = 123,
-  nextToken = "string"
-)
+list_device_instances(maxResults = NULL, nextToken = NULL)
 }
 \arguments{
 \item{maxResults}{An integer specifying the maximum number of items you want to return in the API response.}
@@ -17,6 +14,11 @@ list_device_instances(
 \description{
 Returns information about the private device instances associated with one or more AWS accounts.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_device_instances(
+  maxResults = 123,
+  nextToken = "string"
+)
 }
+}
+

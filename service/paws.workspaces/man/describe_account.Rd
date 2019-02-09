@@ -9,6 +9,8 @@ describe_account()
 \description{
 Retrieves a list that describes the configuration of bring your own license (BYOL) for the specified account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_account()
 }
+}
+

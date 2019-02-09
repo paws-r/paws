@@ -4,10 +4,8 @@
 \alias{delete_transit_gateway_vpc_attachment}
 \title{Deletes the specified VPC attachment}
 \usage{
-delete_transit_gateway_vpc_attachment(
-  TransitGatewayAttachmentId = "string",
-  DryRun = TRUE|FALSE
-)
+delete_transit_gateway_vpc_attachment(TransitGatewayAttachmentId,
+  DryRun = NULL)
 }
 \arguments{
 \item{TransitGatewayAttachmentId}{[required] The ID of the attachment.}
@@ -17,6 +15,11 @@ delete_transit_gateway_vpc_attachment(
 \description{
 Deletes the specified VPC attachment.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_transit_gateway_vpc_attachment(
+  TransitGatewayAttachmentId = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

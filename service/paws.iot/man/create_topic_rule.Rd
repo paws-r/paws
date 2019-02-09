@@ -4,7 +4,26 @@
 \alias{create_topic_rule}
 \title{Creates a rule}
 \usage{
-create_topic_rule(
+create_topic_rule(ruleName, topicRulePayload, tags = NULL)
+}
+\arguments{
+\item{ruleName}{[required] The name of the rule.}
+
+\item{topicRulePayload}{[required] The rule payload.}
+
+\item{tags}{Metadata which can be used to manage the topic rule.
+
+For URI Request parameters use format: ...key1=value1&key2=value2...
+
+For the CLI command-line parameter use format: --tags "key1=value1&key2=value2..."
+
+For the cli-input-json file use format: "tags": "key1=value1&key2=value2..."}
+}
+\description{
+Creates a rule. Creating rules is an administrator-level action. Any user who has permission to create rules will be able to access data processed by the rule.
+}
+\section{Accepted Parameters}{
+\preformatted{create_topic_rule(
   ruleName = "string",
   topicRulePayload = list(
     sql = "string",
@@ -199,17 +218,9 @@ create_topic_rule(
         roleArn = "string"
       )
     )
-  )
+  ),
+  tags = "string"
 )
 }
-\arguments{
-\item{ruleName}{[required] The name of the rule.}
+}
 
-\item{topicRulePayload}{[required] The rule payload.}
-}
-\description{
-Creates a rule. Creating rules is an administrator-level action. Any user who has permission to create rules will be able to access data processed by the rule.
-}
-\examples{
-
-}

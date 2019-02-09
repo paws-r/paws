@@ -4,10 +4,7 @@
 \alias{describe_default_parameters}
 \title{Returns the default system parameter information for the DAX caching software}
 \usage{
-describe_default_parameters(
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_default_parameters(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{The maximum number of results to include in the response. If more results exist than the specified \code{MaxResults} value, a token is included in the response so that the remaining results can be retrieved.
@@ -19,6 +16,11 @@ The value for \code{MaxResults} must be between 20 and 100.}
 \description{
 Returns the default system parameter information for the DAX caching software.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_default_parameters(
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

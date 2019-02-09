@@ -4,12 +4,8 @@
 \alias{get_segment_import_jobs}
 \title{Returns a list of import jobs for a specific segment}
 \usage{
-get_segment_import_jobs(
-  ApplicationId = "string",
-  PageSize = "string",
-  SegmentId = "string",
-  Token = "string"
-)
+get_segment_import_jobs(ApplicationId, PageSize = NULL, SegmentId,
+  Token = NULL)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
@@ -23,6 +19,13 @@ get_segment_import_jobs(
 \description{
 Returns a list of import jobs for a specific segment.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_segment_import_jobs(
+  ApplicationId = "string",
+  PageSize = "string",
+  SegmentId = "string",
+  Token = "string"
+)
 }
+}
+

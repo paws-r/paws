@@ -4,10 +4,7 @@
 \alias{update_trust}
 \title{Updates the trust that has been set up between your AWS Managed Microsoft AD directory and an on-premises Active Directory}
 \usage{
-update_trust(
-  TrustId = "string",
-  SelectiveAuth = "Enabled"|"Disabled"
-)
+update_trust(TrustId, SelectiveAuth = NULL)
 }
 \arguments{
 \item{TrustId}{[required] Identifier of the trust relationship.}
@@ -17,6 +14,11 @@ update_trust(
 \description{
 Updates the trust that has been set up between your AWS Managed Microsoft AD directory and an on-premises Active Directory.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_trust(
+  TrustId = "string",
+  SelectiveAuth = "Enabled"|"Disabled"
+)
 }
+}
+

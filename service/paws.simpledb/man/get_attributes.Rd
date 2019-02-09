@@ -4,14 +4,8 @@
 \alias{get_attributes}
 \title{Returns all of the attributes associated with the specified item}
 \usage{
-get_attributes(
-  DomainName = "string",
-  ItemName = "string",
-  AttributeNames = list(
-    "string"
-  ),
-  ConsistentRead = TRUE|FALSE
-)
+get_attributes(DomainName, ItemName, AttributeNames = NULL,
+  ConsistentRead = NULL)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain in which to perform the operation.}
@@ -30,6 +24,15 @@ If the item does not exist on the replica that was accessed for this operation, 
 
 If GetAttributes is called without being passed any attribute names, all the attributes for the item are returned.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_attributes(
+  DomainName = "string",
+  ItemName = "string",
+  AttributeNames = list(
+    "string"
+  ),
+  ConsistentRead = TRUE|FALSE
+)
 }
+}
+

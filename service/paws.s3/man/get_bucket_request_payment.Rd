@@ -4,9 +4,7 @@
 \alias{get_bucket_request_payment}
 \title{Returns the request payment configuration of a bucket}
 \usage{
-get_bucket_request_payment(
-  Bucket = "string"
-)
+get_bucket_request_payment(Bucket)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -14,10 +12,17 @@ get_bucket_request_payment(
 \description{
 Returns the request payment configuration of a bucket.
 }
+\section{Accepted Parameters}{
+\preformatted{get_bucket_request_payment(
+  Bucket = "string"
+)
+}
+}
+
 \examples{
 # The following example retrieves bucket versioning configuration.
-get_bucket_request_payment(
+\donttest{get_bucket_request_payment(
   Bucket = "examplebucket"
-)
+)}
 
 }

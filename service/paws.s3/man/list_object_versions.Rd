@@ -4,15 +4,9 @@
 \alias{list_object_versions}
 \title{Returns metadata about all of the versions of objects in a bucket}
 \usage{
-list_object_versions(
-  Bucket = "string",
-  Delimiter = "string",
-  EncodingType = "url",
-  KeyMarker = "string",
-  MaxKeys = 123,
-  Prefix = "string",
-  VersionIdMarker = "string"
-)
+list_object_versions(Bucket, Delimiter = NULL, EncodingType = NULL,
+  KeyMarker = NULL, MaxKeys = NULL, Prefix = NULL,
+  VersionIdMarker = NULL)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -32,15 +26,28 @@ list_object_versions(
 \description{
 Returns metadata about all of the versions of objects in a bucket.
 }
+\section{Accepted Parameters}{
+\preformatted{list_object_versions(
+  Bucket = "string",
+  Delimiter = "string",
+  EncodingType = "url",
+  KeyMarker = "string",
+  MaxKeys = 123,
+  Prefix = "string",
+  VersionIdMarker = "string"
+)
+}
+}
+
 \examples{
 # The following example return versions of an object with specific key
 # name prefix. The request limits the number of items returned to two. If
 # there are are more than two object version, S3 returns NextToken in the
 # response. You can specify this token value in your next request to fetch
 # next set of object versions.
-list_object_versions(
+\donttest{list_object_versions(
   Bucket = "examplebucket",
   Prefix = "HappyFace.jpg"
-)
+)}
 
 }

@@ -4,18 +4,7 @@
 \alias{update_authorizer}
 \title{Updates an existing Authorizer resource}
 \usage{
-update_authorizer(
-  restApiId = "string",
-  authorizerId = "string",
-  patchOperations = list(
-    list(
-      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-      path = "string",
-      value = "string",
-      from = "string"
-    )
-  )
-)
+update_authorizer(restApiId, authorizerId, patchOperations = NULL)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -32,6 +21,19 @@ Updates an existing Authorizer resource.
 \href{https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-authorizer.html}{AWS CLI}
 :::
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_authorizer(
+  restApiId = "string",
+  authorizerId = "string",
+  patchOperations = list(
+    list(
+      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
+      path = "string",
+      value = "string",
+      from = "string"
+    )
+  )
+)
 }
+}
+

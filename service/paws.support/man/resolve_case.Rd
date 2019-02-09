@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.support_operations.R
 \name{resolve_case}
 \alias{resolve_case}
-\title{Takes a \code{caseId} and returns the initial state of the case along with the state of the case after the call to ResolveCase completed}
+\title{Takes a caseId and returns the initial state of the case along with the state of the case after the call to ResolveCase completed}
 \usage{
-resolve_case(
-  caseId = "string"
-)
+resolve_case(caseId = NULL)
 }
 \arguments{
 \item{caseId}{The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-\emph{12345678910-2013-c4c1d2bf33c5cf47}}
@@ -14,6 +12,10 @@ resolve_case(
 \description{
 Takes a \code{caseId} and returns the initial state of the case along with the state of the case after the call to ResolveCase completed.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{resolve_case(
+  caseId = "string"
+)
 }
+}
+

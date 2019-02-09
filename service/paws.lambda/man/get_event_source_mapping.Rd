@@ -4,20 +4,25 @@
 \alias{get_event_source_mapping}
 \title{Returns details about an event source mapping}
 \usage{
-get_event_source_mapping(
-  UUID = "string"
-)
+get_event_source_mapping(UUID)
 }
 \arguments{
 \item{UUID}{[required] The identifier of the event source mapping.}
 }
 \description{
-Returns details about an event source mapping.
+Returns details about an event source mapping. You can get the identifier of a mapping from the output of ListEventSourceMappings.
 }
+\section{Accepted Parameters}{
+\preformatted{get_event_source_mapping(
+  UUID = "string"
+)
+}
+}
+
 \examples{
 # This operation retrieves a Lambda function's event source mapping
-get_event_source_mapping(
+\donttest{get_event_source_mapping(
   UUID = "123489-xxxxx-kdla8d89d7"
-)
+)}
 
 }

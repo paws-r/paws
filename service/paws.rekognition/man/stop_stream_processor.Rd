@@ -2,18 +2,20 @@
 % Please edit documentation in R/paws.rekognition_operations.R
 \name{stop_stream_processor}
 \alias{stop_stream_processor}
-\title{Stops a running stream processor that was created by}
+\title{Stops a running stream processor that was created by CreateStreamProcessor}
 \usage{
-stop_stream_processor(
+stop_stream_processor(Name)
+}
+\arguments{
+\item{Name}{[required] The name of a stream processor created by CreateStreamProcessor.}
+}
+\description{
+Stops a running stream processor that was created by CreateStreamProcessor.
+}
+\section{Accepted Parameters}{
+\preformatted{stop_stream_processor(
   Name = "string"
 )
 }
-\arguments{
-\item{Name}{[required] The name of a stream processor created by .}
 }
-\description{
-Stops a running stream processor that was created by .
-}
-\examples{
 
-}

@@ -4,12 +4,8 @@
 \alias{list_applied_schema_arns}
 \title{Lists schema major versions applied to a directory}
 \usage{
-list_applied_schema_arns(
-  DirectoryArn = "string",
-  SchemaArn = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_applied_schema_arns(DirectoryArn, SchemaArn = NULL,
+  NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{DirectoryArn}{[required] The ARN of the directory you are listing.}
@@ -23,6 +19,13 @@ list_applied_schema_arns(
 \description{
 Lists schema major versions applied to a directory. If \code{SchemaArn} is provided, lists the minor version.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_applied_schema_arns(
+  DirectoryArn = "string",
+  SchemaArn = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

@@ -4,19 +4,11 @@
 \alias{update_trail}
 \title{Updates the settings that specify delivery of log files}
 \usage{
-update_trail(
-  Name = "string",
-  S3BucketName = "string",
-  S3KeyPrefix = "string",
-  SnsTopicName = "string",
-  IncludeGlobalServiceEvents = TRUE|FALSE,
-  IsMultiRegionTrail = TRUE|FALSE,
-  EnableLogFileValidation = TRUE|FALSE,
-  CloudWatchLogsLogGroupArn = "string",
-  CloudWatchLogsRoleArn = "string",
-  KmsKeyId = "string",
-  IsOrganizationTrail = TRUE|FALSE
-)
+update_trail(Name, S3BucketName = NULL, S3KeyPrefix = NULL,
+  SnsTopicName = NULL, IncludeGlobalServiceEvents = NULL,
+  IsMultiRegionTrail = NULL, EnableLogFileValidation = NULL,
+  CloudWatchLogsLogGroupArn = NULL, CloudWatchLogsRoleArn = NULL,
+  KmsKeyId = NULL, IsOrganizationTrail = NULL)
 }
 \arguments{
 \item{Name}{[required] Specifies the name of the trail or trail ARN. If \code{Name} is a trail name, the string must meet the following requirements:
@@ -65,6 +57,20 @@ Examples:
 \description{
 Updates the settings that specify delivery of log files. Changes to a trail do not require stopping the CloudTrail service. Use this action to designate an existing bucket for log delivery. If the existing bucket has previously been a target for CloudTrail log files, an IAM policy exists for the bucket. \code{UpdateTrail} must be called from the region in which the trail was created; otherwise, an \code{InvalidHomeRegionException} is thrown.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_trail(
+  Name = "string",
+  S3BucketName = "string",
+  S3KeyPrefix = "string",
+  SnsTopicName = "string",
+  IncludeGlobalServiceEvents = TRUE|FALSE,
+  IsMultiRegionTrail = TRUE|FALSE,
+  EnableLogFileValidation = TRUE|FALSE,
+  CloudWatchLogsLogGroupArn = "string",
+  CloudWatchLogsRoleArn = "string",
+  KmsKeyId = "string",
+  IsOrganizationTrail = TRUE|FALSE
+)
 }
+}
+

@@ -4,14 +4,7 @@
 \alias{modify_instance_fleet}
 \title{Modifies the target On-Demand and target Spot capacities for the instance fleet with the specified InstanceFleetID within the cluster specified using ClusterID}
 \usage{
-modify_instance_fleet(
-  ClusterId = "string",
-  InstanceFleet = list(
-    InstanceFleetId = "string",
-    TargetOnDemandCapacity = 123,
-    TargetSpotCapacity = 123
-  )
-)
+modify_instance_fleet(ClusterId, InstanceFleet)
 }
 \arguments{
 \item{ClusterId}{[required] The unique identifier of the cluster.}
@@ -24,6 +17,15 @@ Modifies the target On-Demand and target Spot capacities for the instance fleet 
 \details{
 The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_instance_fleet(
+  ClusterId = "string",
+  InstanceFleet = list(
+    InstanceFleetId = "string",
+    TargetOnDemandCapacity = 123,
+    TargetSpotCapacity = 123
+  )
+)
 }
+}
+

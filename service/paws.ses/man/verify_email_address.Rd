@@ -4,9 +4,7 @@
 \alias{verify_email_address}
 \title{Deprecated}
 \usage{
-verify_email_address(
-  EmailAddress = "string"
-)
+verify_email_address(EmailAddress)
 }
 \arguments{
 \item{EmailAddress}{[required] The email address to be verified.}
@@ -14,11 +12,18 @@ verify_email_address(
 \description{
 Deprecated. Use the \code{VerifyEmailIdentity} operation to verify a new email address.
 }
+\section{Accepted Parameters}{
+\preformatted{verify_email_address(
+  EmailAddress = "string"
+)
+}
+}
+
 \examples{
 # The following example starts the email address verification process with
 # Amazon SES:
-verify_email_address(
+\donttest{verify_email_address(
   EmailAddress = "user@example.com"
-)
+)}
 
 }

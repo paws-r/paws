@@ -4,26 +4,10 @@
 \alias{describe_launch_template_versions}
 \title{Describes one or more versions of a specified launch template}
 \usage{
-describe_launch_template_versions(
-  DryRun = TRUE|FALSE,
-  LaunchTemplateId = "string",
-  LaunchTemplateName = "string",
-  Versions = list(
-    "string"
-  ),
-  MinVersion = "string",
-  MaxVersion = "string",
-  NextToken = "string",
-  MaxResults = 123,
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  )
-)
+describe_launch_template_versions(DryRun = NULL,
+  LaunchTemplateId = NULL, LaunchTemplateName = NULL,
+  Versions = NULL, MinVersion = NULL, MaxVersion = NULL,
+  NextToken = NULL, MaxResults = NULL, Filters = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -57,10 +41,34 @@ describe_launch_template_versions(
 \description{
 Describes one or more versions of a specified launch template. You can describe all versions, individual versions, or a range of versions.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_launch_template_versions(
+  DryRun = TRUE|FALSE,
+  LaunchTemplateId = "string",
+  LaunchTemplateName = "string",
+  Versions = list(
+    "string"
+  ),
+  MinVersion = "string",
+  MaxVersion = "string",
+  NextToken = "string",
+  MaxResults = 123,
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  )
+)
+}
+}
+
 \examples{
 # This example describes the versions for the specified launch template.
-describe_launch_template_versions(
+\donttest{describe_launch_template_versions(
   LaunchTemplateId = "068f72b72934aff71"
-)
+)}
 
 }

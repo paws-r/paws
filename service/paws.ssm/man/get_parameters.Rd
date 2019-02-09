@@ -4,12 +4,7 @@
 \alias{get_parameters}
 \title{Get details of a parameter}
 \usage{
-get_parameters(
-  Names = list(
-    "string"
-  ),
-  WithDecryption = TRUE|FALSE
-)
+get_parameters(Names, WithDecryption = NULL)
 }
 \arguments{
 \item{Names}{[required] Names of the parameters for which you want to query information.}
@@ -19,6 +14,13 @@ get_parameters(
 \description{
 Get details of a parameter. Don't confuse this API action with the GetParameter API action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_parameters(
+  Names = list(
+    "string"
+  ),
+  WithDecryption = TRUE|FALSE
+)
 }
+}
+

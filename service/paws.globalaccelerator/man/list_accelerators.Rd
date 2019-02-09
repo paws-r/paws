@@ -4,10 +4,7 @@
 \alias{list_accelerators}
 \title{List the accelerators for an AWS account}
 \usage{
-list_accelerators(
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_accelerators(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{The number of Global Accelerator objects that you want to return with this call. The default value is 10.}
@@ -17,6 +14,11 @@ list_accelerators(
 \description{
 List the accelerators for an AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_accelerators(
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

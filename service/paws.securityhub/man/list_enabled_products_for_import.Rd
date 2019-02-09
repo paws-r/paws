@@ -4,10 +4,7 @@
 \alias{list_enabled_products_for_import}
 \title{Lists all Security Hub-integrated third-party findings providers}
 \usage{
-list_enabled_products_for_import(
-  NextToken = "string",
-  MaxResults = 123
-)
+list_enabled_products_for_import(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{Paginates results. Set the value of this parameter to NULL on your first call to the ListEnabledProductsForImport operation. For subsequent calls to the operation, fill nextToken in the request with the value of NextToken from the previous response to continue listing data.}
@@ -17,6 +14,11 @@ list_enabled_products_for_import(
 \description{
 Lists all Security Hub-integrated third-party findings providers.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_enabled_products_for_import(
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

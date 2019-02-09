@@ -4,9 +4,7 @@
 \alias{describe_account_modifications}
 \title{Retrieves a list that describes modifications to the configuration of bring your own license (BYOL) for the specified account}
 \usage{
-describe_account_modifications(
-  NextToken = "string"
-)
+describe_account_modifications(NextToken = NULL)
 }
 \arguments{
 \item{NextToken}{If you received a \code{NextToken} from a previous call that was paginated, provide this token to receive the next set of results.}
@@ -14,6 +12,10 @@ describe_account_modifications(
 \description{
 Retrieves a list that describes modifications to the configuration of bring your own license (BYOL) for the specified account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_account_modifications(
+  NextToken = "string"
+)
 }
+}
+

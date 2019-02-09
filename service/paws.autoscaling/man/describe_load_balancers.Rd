@@ -4,11 +4,8 @@
 \alias{describe_load_balancers}
 \title{Describes the load balancers for the specified Auto Scaling group}
 \usage{
-describe_load_balancers(
-  AutoScalingGroupName = "string",
-  NextToken = "string",
-  MaxRecords = 123
-)
+describe_load_balancers(AutoScalingGroupName, NextToken = NULL,
+  MaxRecords = NULL)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
@@ -23,11 +20,20 @@ Describes the load balancers for the specified Auto Scaling group.
 \details{
 This operation describes only Classic Load Balancers. If you have Application Load Balancers, use DescribeLoadBalancerTargetGroups instead.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_load_balancers(
+  AutoScalingGroupName = "string",
+  NextToken = "string",
+  MaxRecords = 123
+)
+}
+}
+
 \examples{
 # This example describes the load balancers attached to the specified Auto
 # Scaling group.
-describe_load_balancers(
+\donttest{describe_load_balancers(
   AutoScalingGroupName = "my-auto-scaling-group"
-)
+)}
 
 }

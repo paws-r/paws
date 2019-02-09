@@ -4,10 +4,7 @@
 \alias{test_event_pattern}
 \title{Tests whether the specified event pattern matches the provided event}
 \usage{
-test_event_pattern(
-  EventPattern = "string",
-  Event = "string"
-)
+test_event_pattern(EventPattern, Event)
 }
 \arguments{
 \item{EventPattern}{[required] The event pattern. For more information, see \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html}{Events and Event Patterns} in the \emph{Amazon CloudWatch Events User Guide}.}
@@ -20,6 +17,11 @@ Tests whether the specified event pattern matches the provided event.
 \details{
 Most services in AWS treat : or / as the same character in Amazon Resource Names (ARNs). However, CloudWatch Events uses an exact match in event patterns and rules. Be sure to use the correct ARN characters when creating event patterns so that they match the ARN syntax in the event you want to match.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{test_event_pattern(
+  EventPattern = "string",
+  Event = "string"
+)
 }
+}
+

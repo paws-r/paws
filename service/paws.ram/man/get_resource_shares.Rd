@@ -4,24 +4,9 @@
 \alias{get_resource_shares}
 \title{Gets the specified resource shares or all of your resource shares}
 \usage{
-get_resource_shares(
-  resourceShareArns = list(
-    "string"
-  ),
-  resourceShareStatus = "PENDING"|"ACTIVE"|"FAILED"|"DELETING"|"DELETED",
-  resourceOwner = "SELF"|"OTHER-ACCOUNTS",
-  name = "string",
-  tagFilters = list(
-    list(
-      tagKey = "string",
-      tagValues = list(
-        "string"
-      )
-    )
-  ),
-  nextToken = "string",
-  maxResults = 123
-)
+get_resource_shares(resourceShareArns = NULL,
+  resourceShareStatus = NULL, resourceOwner, name = NULL,
+  tagFilters = NULL, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{resourceShareArns}{The Amazon Resource Names (ARN) of the resource shares.}
@@ -41,6 +26,25 @@ get_resource_shares(
 \description{
 Gets the specified resource shares or all of your resource shares.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_resource_shares(
+  resourceShareArns = list(
+    "string"
+  ),
+  resourceShareStatus = "PENDING"|"ACTIVE"|"FAILED"|"DELETING"|"DELETED",
+  resourceOwner = "SELF"|"OTHER-ACCOUNTS",
+  name = "string",
+  tagFilters = list(
+    list(
+      tagKey = "string",
+      tagValues = list(
+        "string"
+      )
+    )
+  ),
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

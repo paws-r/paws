@@ -2,25 +2,12 @@
 % Please edit documentation in R/paws.polly_operations.R
 \name{start_speech_synthesis_task}
 \alias{start_speech_synthesis_task}
-\title{Allows the creation of an asynchronous synthesis task, by starting a new \code{SpeechSynthesisTask}}
+\title{Allows the creation of an asynchronous synthesis task, by starting a new SpeechSynthesisTask}
 \usage{
-start_speech_synthesis_task(
-  LexiconNames = list(
-    "string"
-  ),
-  OutputFormat = "json"|"mp3"|"ogg_vorbis"|"pcm",
-  OutputS3BucketName = "string",
-  OutputS3KeyPrefix = "string",
-  SampleRate = "string",
-  SnsTopicArn = "string",
-  SpeechMarkTypes = list(
-    "sentence"|"ssml"|"viseme"|"word"
-  ),
-  Text = "string",
-  TextType = "ssml"|"text",
-  VoiceId = "Geraint"|"Gwyneth"|"Mads"|"Naja"|"Hans"|"Marlene"|"Nicole"|"Russell"|"Amy"|"Brian"|"Emma"|"Raveena"|"Ivy"|"Joanna"|"Joey"|"Justin"|"Kendra"|"Kimberly"|"Matthew"|"Salli"|"Conchita"|"Enrique"|"Miguel"|"Penelope"|"Chantal"|"Celine"|"Lea"|"Mathieu"|"Dora"|"Karl"|"Carla"|"Giorgio"|"Mizuki"|"Liv"|"Lotte"|"Ruben"|"Ewa"|"Jacek"|"Jan"|"Maja"|"Ricardo"|"Vitoria"|"Cristiano"|"Ines"|"Carmen"|"Maxim"|"Tatyana"|"Astrid"|"Filiz"|"Vicki"|"Takumi"|"Seoyeon"|"Aditi"|"Zhiyu"|"Bianca"|"Lucia"|"Mia",
-  LanguageCode = "cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR"
-)
+start_speech_synthesis_task(LexiconNames = NULL, OutputFormat,
+  OutputS3BucketName, OutputS3KeyPrefix = NULL, SampleRate = NULL,
+  SnsTopicArn = NULL, SpeechMarkTypes = NULL, Text, TextType = NULL,
+  VoiceId, LanguageCode = NULL)
 }
 \arguments{
 \item{LexiconNames}{List of one or more pronunciation lexicon names you want the service to apply during synthesis. Lexicons are applied only if the language of the lexicon is the same as the language of the voice.}
@@ -54,6 +41,24 @@ If a bilingual voice is used and no language code is specified, Amazon Polly wil
 \description{
 Allows the creation of an asynchronous synthesis task, by starting a new \code{SpeechSynthesisTask}. This operation requires all the standard information needed for speech synthesis, plus the name of an Amazon S3 bucket for the service to store the output of the synthesis task and two optional parameters (OutputS3KeyPrefix and SnsTopicArn). Once the synthesis task is created, this operation will return a SpeechSynthesisTask object, which will include an identifier of this task as well as the current status.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_speech_synthesis_task(
+  LexiconNames = list(
+    "string"
+  ),
+  OutputFormat = "json"|"mp3"|"ogg_vorbis"|"pcm",
+  OutputS3BucketName = "string",
+  OutputS3KeyPrefix = "string",
+  SampleRate = "string",
+  SnsTopicArn = "string",
+  SpeechMarkTypes = list(
+    "sentence"|"ssml"|"viseme"|"word"
+  ),
+  Text = "string",
+  TextType = "ssml"|"text",
+  VoiceId = "Geraint"|"Gwyneth"|"Mads"|"Naja"|"Hans"|"Marlene"|"Nicole"|"Russell"|"Amy"|"Brian"|"Emma"|"Raveena"|"Ivy"|"Joanna"|"Joey"|"Justin"|"Kendra"|"Kimberly"|"Matthew"|"Salli"|"Conchita"|"Enrique"|"Miguel"|"Penelope"|"Chantal"|"Celine"|"Lea"|"Mathieu"|"Dora"|"Karl"|"Carla"|"Giorgio"|"Mizuki"|"Liv"|"Lotte"|"Ruben"|"Ewa"|"Jacek"|"Jan"|"Maja"|"Ricardo"|"Vitoria"|"Cristiano"|"Ines"|"Carmen"|"Maxim"|"Tatyana"|"Astrid"|"Filiz"|"Vicki"|"Takumi"|"Seoyeon"|"Aditi"|"Zhiyu"|"Bianca"|"Lucia"|"Mia",
+  LanguageCode = "cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR"
+)
 }
+}
+

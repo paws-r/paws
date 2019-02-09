@@ -4,9 +4,7 @@
 \alias{get_domain_name}
 \title{Represents a domain name that is contained in a simpler, more intuitive URL that can be called}
 \usage{
-get_domain_name(
-  domainName = "string"
-)
+get_domain_name(domainName)
 }
 \arguments{
 \item{domainName}{[required] [Required] The name of the DomainName resource.}
@@ -14,6 +12,10 @@ get_domain_name(
 \description{
 Represents a domain name that is contained in a simpler, more intuitive URL that can be called.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_domain_name(
+  domainName = "string"
+)
 }
+}
+

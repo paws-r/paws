@@ -4,10 +4,7 @@
 \alias{export_certificate}
 \title{Exports a private certificate issued by a private certificate authority (CA) for use anywhere}
 \usage{
-export_certificate(
-  CertificateArn = "string",
-  Passphrase = raw
-)
+export_certificate(CertificateArn, Passphrase)
 }
 \arguments{
 \item{CertificateArn}{[required] An Amazon Resource Name (ARN) of the issued certificate. This must be of the form:
@@ -24,6 +21,11 @@ Exports a private certificate issued by a private certificate authority (CA) for
 \details{
 \code{openssl rsa -in encrypted_key.pem -out decrypted_key.pem}
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{export_certificate(
+  CertificateArn = "string",
+  Passphrase = raw
+)
 }
+}
+

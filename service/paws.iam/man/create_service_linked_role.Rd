@@ -4,11 +4,8 @@
 \alias{create_service_linked_role}
 \title{Creates an IAM role that is linked to a specific AWS service}
 \usage{
-create_service_linked_role(
-  AWSServiceName = "string",
-  Description = "string",
-  CustomSuffix = "string"
-)
+create_service_linked_role(AWSServiceName, Description = NULL,
+  CustomSuffix = NULL)
 }
 \arguments{
 \item{AWSServiceName}{[required] The service principal for the AWS service to which this role is attached. You use a string similar to a URL but without the http:// in front. For example: \code{elasticbeanstalk.amazonaws.com}.
@@ -27,6 +24,12 @@ Creates an IAM role that is linked to a specific AWS service. The service contro
 \details{
 To attach a policy to this service-linked role, you must make the request using the AWS service that depends on this role.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_service_linked_role(
+  AWSServiceName = "string",
+  Description = "string",
+  CustomSuffix = "string"
+)
 }
+}
+

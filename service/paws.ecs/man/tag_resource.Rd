@@ -2,17 +2,9 @@
 % Please edit documentation in R/paws.ecs_operations.R
 \name{tag_resource}
 \alias{tag_resource}
-\title{Associates the specified tags to a resource with the specified \code{resourceArn}}
+\title{Associates the specified tags to a resource with the specified resourceArn}
 \usage{
-tag_resource(
-  resourceArn = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
+tag_resource(resourceArn, tags)
 }
 \arguments{
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource to which to add tags. Currently, the supported resources are Amazon ECS tasks, services, task definitions, clusters, and container instances.}
@@ -22,9 +14,22 @@ tag_resource(
 \description{
 Associates the specified tags to a resource with the specified \code{resourceArn}. If existing tags on a resource are not specified in the request parameters, they are not changed. When a resource is deleted, the tags associated with that resource are deleted as well.
 }
+\section{Accepted Parameters}{
+\preformatted{tag_resource(
+  resourceArn = "string",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # This example tags the 'dev' cluster with key 'team' and value 'dev'.
-tag_resource(
+\donttest{tag_resource(
   resourceArn = "arn:aws:ecs:region:aws_account_id:cluster/dev",
   tags = list(
     list(
@@ -32,6 +37,6 @@ tag_resource(
       value = "dev"
     )
   )
-)
+)}
 
 }

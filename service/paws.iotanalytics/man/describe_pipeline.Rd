@@ -4,9 +4,7 @@
 \alias{describe_pipeline}
 \title{Retrieves information about a pipeline}
 \usage{
-describe_pipeline(
-  pipelineName = "string"
-)
+describe_pipeline(pipelineName)
 }
 \arguments{
 \item{pipelineName}{[required] The name of the pipeline whose information is retrieved.}
@@ -14,6 +12,10 @@ describe_pipeline(
 \description{
 Retrieves information about a pipeline.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_pipeline(
+  pipelineName = "string"
+)
 }
+}
+

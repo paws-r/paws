@@ -4,9 +4,7 @@
 \alias{delete_certificate}
 \title{Deletes a certificate and its associated private key}
 \usage{
-delete_certificate(
-  CertificateArn = "string"
-)
+delete_certificate(CertificateArn)
 }
 \arguments{
 \item{CertificateArn}{[required] String that contains the ARN of the ACM certificate to be deleted. This must be of the form:
@@ -21,6 +19,10 @@ Deletes a certificate and its associated private key. If this action succeeds, t
 \details{
 You cannot delete an ACM certificate that is being used by another AWS service. To delete a certificate that is in use, the certificate association must first be removed.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_certificate(
+  CertificateArn = "string"
+)
 }
+}
+

@@ -4,59 +4,19 @@
 \alias{create_replication_group}
 \title{Creates a Redis (cluster mode disabled) or a Redis (cluster mode enabled) replication group}
 \usage{
-create_replication_group(
-  ReplicationGroupId = "string",
-  ReplicationGroupDescription = "string",
-  PrimaryClusterId = "string",
-  AutomaticFailoverEnabled = TRUE|FALSE,
-  NumCacheClusters = 123,
-  PreferredCacheClusterAZs = list(
-    "string"
-  ),
-  NumNodeGroups = 123,
-  ReplicasPerNodeGroup = 123,
-  NodeGroupConfiguration = list(
-    list(
-      NodeGroupId = "string",
-      Slots = "string",
-      ReplicaCount = 123,
-      PrimaryAvailabilityZone = "string",
-      ReplicaAvailabilityZones = list(
-        "string"
-      )
-    )
-  ),
-  CacheNodeType = "string",
-  Engine = "string",
-  EngineVersion = "string",
-  CacheParameterGroupName = "string",
-  CacheSubnetGroupName = "string",
-  CacheSecurityGroupNames = list(
-    "string"
-  ),
-  SecurityGroupIds = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  SnapshotArns = list(
-    "string"
-  ),
-  SnapshotName = "string",
-  PreferredMaintenanceWindow = "string",
-  Port = 123,
-  NotificationTopicArn = "string",
-  AutoMinorVersionUpgrade = TRUE|FALSE,
-  SnapshotRetentionLimit = 123,
-  SnapshotWindow = "string",
-  AuthToken = "string",
-  TransitEncryptionEnabled = TRUE|FALSE,
-  AtRestEncryptionEnabled = TRUE|FALSE
-)
+create_replication_group(ReplicationGroupId, ReplicationGroupDescription,
+  PrimaryClusterId = NULL, AutomaticFailoverEnabled = NULL,
+  NumCacheClusters = NULL, PreferredCacheClusterAZs = NULL,
+  NumNodeGroups = NULL, ReplicasPerNodeGroup = NULL,
+  NodeGroupConfiguration = NULL, CacheNodeType = NULL, Engine = NULL,
+  EngineVersion = NULL, CacheParameterGroupName = NULL,
+  CacheSubnetGroupName = NULL, CacheSecurityGroupNames = NULL,
+  SecurityGroupIds = NULL, Tags = NULL, SnapshotArns = NULL,
+  SnapshotName = NULL, PreferredMaintenanceWindow = NULL,
+  Port = NULL, NotificationTopicArn = NULL,
+  AutoMinorVersionUpgrade = NULL, SnapshotRetentionLimit = NULL,
+  SnapshotWindow = NULL, AuthToken = NULL,
+  TransitEncryptionEnabled = NULL, AtRestEncryptionEnabled = NULL)
 }
 \arguments{
 \item{ReplicationGroupId}{[required] The replication group identifier. This parameter is stored as a lowercase string.
@@ -286,6 +246,60 @@ When a Redis (cluster mode disabled) replication group has been successfully cre
 
 This operation is valid for Redis only.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_replication_group(
+  ReplicationGroupId = "string",
+  ReplicationGroupDescription = "string",
+  PrimaryClusterId = "string",
+  AutomaticFailoverEnabled = TRUE|FALSE,
+  NumCacheClusters = 123,
+  PreferredCacheClusterAZs = list(
+    "string"
+  ),
+  NumNodeGroups = 123,
+  ReplicasPerNodeGroup = 123,
+  NodeGroupConfiguration = list(
+    list(
+      NodeGroupId = "string",
+      Slots = "string",
+      ReplicaCount = 123,
+      PrimaryAvailabilityZone = "string",
+      ReplicaAvailabilityZones = list(
+        "string"
+      )
+    )
+  ),
+  CacheNodeType = "string",
+  Engine = "string",
+  EngineVersion = "string",
+  CacheParameterGroupName = "string",
+  CacheSubnetGroupName = "string",
+  CacheSecurityGroupNames = list(
+    "string"
+  ),
+  SecurityGroupIds = list(
+    "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  SnapshotArns = list(
+    "string"
+  ),
+  SnapshotName = "string",
+  PreferredMaintenanceWindow = "string",
+  Port = 123,
+  NotificationTopicArn = "string",
+  AutoMinorVersionUpgrade = TRUE|FALSE,
+  SnapshotRetentionLimit = 123,
+  SnapshotWindow = "string",
+  AuthToken = "string",
+  TransitEncryptionEnabled = TRUE|FALSE,
+  AtRestEncryptionEnabled = TRUE|FALSE
+)
 }
+}
+

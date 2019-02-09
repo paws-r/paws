@@ -4,11 +4,7 @@
 \alias{copy_snapshot}
 \title{Copies an instance or disk snapshot from one AWS Region to another in Amazon Lightsail}
 \usage{
-copy_snapshot(
-  sourceSnapshotName = "string",
-  targetSnapshotName = "string",
-  sourceRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-)
+copy_snapshot(sourceSnapshotName, targetSnapshotName, sourceRegion)
 }
 \arguments{
 \item{sourceSnapshotName}{[required] The name of the source instance or disk snapshot to be copied.}
@@ -20,6 +16,12 @@ copy_snapshot(
 \description{
 Copies an instance or disk snapshot from one AWS Region to another in Amazon Lightsail.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{copy_snapshot(
+  sourceSnapshotName = "string",
+  targetSnapshotName = "string",
+  sourceRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
+)
 }
+}
+

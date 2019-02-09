@@ -4,25 +4,7 @@
 \alias{compare_faces}
 \title{Compares a face in the \emph{source} input image with each of the 100 largest faces detected in the \emph{target} input image}
 \usage{
-compare_faces(
-  SourceImage = list(
-    Bytes = raw,
-    S3Object = list(
-      Bucket = "string",
-      Name = "string",
-      Version = "string"
-    )
-  ),
-  TargetImage = list(
-    Bytes = raw,
-    S3Object = list(
-      Bucket = "string",
-      Name = "string",
-      Version = "string"
-    )
-  ),
-  SimilarityThreshold = 123.0
-)
+compare_faces(SourceImage, TargetImage, SimilarityThreshold = NULL)
 }
 \arguments{
 \item{SourceImage}{[required] The input image as base64-encoded bytes or an S3 object. If you use the AWS CLI to call Amazon Rekognition operations, passing base64-encoded image bytes is not supported.}
@@ -55,10 +37,33 @@ For an example, see Comparing Faces in Images in the Amazon Rekognition Develope
 
 This operation requires permissions to perform the \code{rekognition:CompareFaces} action.
 }
+\section{Accepted Parameters}{
+\preformatted{compare_faces(
+  SourceImage = list(
+    Bytes = raw,
+    S3Object = list(
+      Bucket = "string",
+      Name = "string",
+      Version = "string"
+    )
+  ),
+  TargetImage = list(
+    Bytes = raw,
+    S3Object = list(
+      Bucket = "string",
+      Name = "string",
+      Version = "string"
+    )
+  ),
+  SimilarityThreshold = 123.0
+)
+}
+}
+
 \examples{
 # This operation compares the largest face detected in the source image
 # with each face detected in the target image.
-compare_faces(
+\donttest{compare_faces(
   SimilarityThreshold = 90L,
   SourceImage = list(
     S3Object = list(
@@ -72,6 +77,6 @@ compare_faces(
       Name = "mytargetimage"
     )
   )
-)
+)}
 
 }

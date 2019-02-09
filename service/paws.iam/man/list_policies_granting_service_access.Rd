@@ -4,13 +4,8 @@
 \alias{list_policies_granting_service_access}
 \title{Retrieves a list of policies that the IAM identity (user, group, or role) can use to access each specified service}
 \usage{
-list_policies_granting_service_access(
-  Marker = "string",
-  Arn = "string",
-  ServiceNamespaces = list(
-    "string"
-  )
-)
+list_policies_granting_service_access(Marker = NULL, Arn,
+  ServiceNamespaces)
 }
 \arguments{
 \item{Marker}{Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the \code{Marker} element in the response that you received to indicate where the next call should start.}
@@ -19,7 +14,7 @@ list_policies_granting_service_access(
 
 \item{ServiceNamespaces}{[required] The service namespace for the AWS services whose policies you want to list.
 
-To learn the service namespace for a service, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html}{Actions, Resources, and Condition Keys for AWS Services} in the \emph{IAM User Guide}. Choose the name of the service to view details for that service. In the first paragraph, find the service prefix. For example, \code{(service prefix: a4b)}. For more information about service namespaces, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces} in theÂ \emph{AWS General Reference}.}
+To learn the service namespace for a service, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html}{Actions, Resources, and Condition Keys for AWS Services} in the \emph{IAM User Guide}. Choose the name of the service to view details for that service. In the first paragraph, find the service prefix. For example, \code{(service prefix: a4b)}. For more information about service namespaces, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces} in the \emph{AWS General Reference}.}
 }
 \description{
 Retrieves a list of policies that the IAM identity (user, group, or role) can use to access each specified service.
@@ -38,15 +33,26 @@ For each managed policy, this operation returns the ARN and policy name. For eac
 
 Policies that are attached to users and roles as permissions boundaries are not returned. To view which managed policy is currently used to set the permissions boundary for a user or role, use the GetUser or GetRole operations.
 }
+\section{Accepted Parameters}{
+\preformatted{list_policies_granting_service_access(
+  Marker = "string",
+  Arn = "string",
+  ServiceNamespaces = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # The following operation lists policies that allow ExampleUser01 to
 # access IAM or EC2.
-list_policies_granting_service_access(
+\donttest{list_policies_granting_service_access(
   Arn = "arn:aws:iam::123456789012:user/ExampleUser01",
   ServiceNamespaces = list(
     "iam",
     "ec2"
   )
-)
+)}
 
 }

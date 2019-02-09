@@ -4,9 +4,7 @@
 \alias{delete_policy}
 \title{Deletes the specified managed policy}
 \usage{
-delete_policy(
-  PolicyArn = "string"
-)
+delete_policy(PolicyArn)
 }
 \arguments{
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy you want to delete.
@@ -26,6 +24,10 @@ Before you can delete a managed policy, you must first detach the policy from al
 
 For information about managed policies, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies} in the \emph{IAM User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_policy(
+  PolicyArn = "string"
+)
 }
+}
+

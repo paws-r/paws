@@ -40,9 +40,14 @@ For existing tables and their GSIs, DynamoDB will not let you increase provision
 
 The \code{DescribeLimits} Request element has no content.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_limits()
+}
+}
+
 \examples{
 # The following example returns the maximum read and write capacity units
 # per table, and for the AWS account, in the current AWS region.
-describe_limits()
+\donttest{describe_limits()}
 
 }

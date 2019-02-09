@@ -4,10 +4,7 @@
 \alias{create_mesh}
 \title{Creates a new service mesh}
 \usage{
-create_mesh(
-  clientToken = "string",
-  meshName = "string"
-)
+create_mesh(clientToken = NULL, meshName)
 }
 \arguments{
 \item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. Up to 36 letters, numbers, hyphens, and underscores are allowed.}
@@ -20,6 +17,11 @@ Creates a new service mesh. A service mesh is a logical boundary for network tra
 \details{
 After you create your service mesh, you can create virtual nodes, virtual routers, and routes to distribute traffic between the applications in your mesh.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_mesh(
+  clientToken = "string",
+  meshName = "string"
+)
 }
+}
+

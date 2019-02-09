@@ -4,9 +4,7 @@
 \alias{reset_cache}
 \title{Resets all cache disks that have encountered a error and makes the disks available for reconfiguration as cache storage}
 \usage{
-reset_cache(
-  GatewayARN = "string"
-)
+reset_cache(GatewayARN)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -17,11 +15,18 @@ Resets all cache disks that have encountered a error and makes the disks availab
 \details{
 If the cache disk you are resetting contains data that has not been uploaded to Amazon S3 yet, that data can be lost. After you reset cache disks, there will be no configured cache disks left in the gateway, so you must configure at least one new cache disk for your gateway to function properly.
 }
+\section{Accepted Parameters}{
+\preformatted{reset_cache(
+  GatewayARN = "string"
+)
+}
+}
+
 \examples{
 # Resets all cache disks that have encountered a error and makes the disks
 # available for reconfiguration as cache storage.
-reset_cache(
+\donttest{reset_cache(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-13B4567C"
-)
+)}
 
 }

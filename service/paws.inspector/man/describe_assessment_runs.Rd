@@ -4,11 +4,7 @@
 \alias{describe_assessment_runs}
 \title{Describes the assessment runs that are specified by the ARNs of the assessment runs}
 \usage{
-describe_assessment_runs(
-  assessmentRunArns = list(
-    "string"
-  )
-)
+describe_assessment_runs(assessmentRunArns)
 }
 \arguments{
 \item{assessmentRunArns}{[required] The ARN that specifies the assessment run that you want to describe.}
@@ -16,13 +12,22 @@ describe_assessment_runs(
 \description{
 Describes the assessment runs that are specified by the ARNs of the assessment runs.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_assessment_runs(
+  assessmentRunArns = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # Describes the assessment runs that are specified by the ARNs of the
 # assessment runs.
-describe_assessment_runs(
+\donttest{describe_assessment_runs(
   assessmentRunArns = list(
     "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-4r1V2mAw/run/0-MKkpXXPE"
   )
-)
+)}
 
 }

@@ -4,10 +4,7 @@
 \alias{list_provisioning_artifacts}
 \title{Lists all provisioning artifacts (also known as versions) for the specified product}
 \usage{
-list_provisioning_artifacts(
-  AcceptLanguage = "string",
-  ProductId = "string"
-)
+list_provisioning_artifacts(AcceptLanguage = NULL, ProductId)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -22,6 +19,11 @@ list_provisioning_artifacts(
 \description{
 Lists all provisioning artifacts (also known as versions) for the specified product.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_provisioning_artifacts(
+  AcceptLanguage = "string",
+  ProductId = "string"
+)
 }
+}
+

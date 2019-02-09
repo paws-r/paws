@@ -4,11 +4,7 @@
 \alias{import_api_keys}
 \title{Import API keys from an external source, such as a CSV-formatted file}
 \usage{
-import_api_keys(
-  body = raw,
-  format = "csv",
-  failOnWarnings = TRUE|FALSE
-)
+import_api_keys(body, format, failOnWarnings = NULL)
 }
 \arguments{
 \item{body}{[required] The payload of the POST request to import API keys. For the payload format, see \href{https://docs.aws.amazon.com/apigateway/latest/developerguide/api-key-file-format.html}{API Key File Format}.}
@@ -20,6 +16,12 @@ import_api_keys(
 \description{
 Import API keys from an external source, such as a CSV-formatted file.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{import_api_keys(
+  body = raw,
+  format = "csv",
+  failOnWarnings = TRUE|FALSE
+)
 }
+}
+

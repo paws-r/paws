@@ -4,22 +4,8 @@
 \alias{describe_instances}
 \title{Describes one or more of your instances}
 \usage{
-describe_instances(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  InstanceIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE,
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_instances(Filters = NULL, InstanceIds = NULL, DryRun = NULL,
+  MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -85,8 +71,8 @@ describe_instances(
 \item \code{network-interface.subnet-id} - The ID of the subnet for the network interface.
 \item \code{network-interface.vpc-id} - The ID of the VPC for the network interface.
 \item \code{owner-id} - The AWS account ID of the instance owner.
-\item \code{partition-number} - The partition in which the instance is located.
 \item \code{placement-group-name} - The name of the placement group for the instance.
+\item \code{placement-partition-number} - The partition in which the instance is located.
 \item \code{platform} - The platform. Use \code{windows} if you have Windows instances; otherwise, leave blank.
 \item \code{private-dns-name} - The private IPv4 DNS name of the instance.
 \item \code{private-ip-address} - The private IPv4 address of the instance.
@@ -130,16 +116,36 @@ Recently terminated instances might appear in the returned results. This interva
 
 If you describe instances in the rare case where an Availability Zone is experiencing a service disruption and you specify instance IDs that are in the affected zone, or do not specify any instance IDs at all, the call fails. If you describe instances and specify only instance IDs that are in an unaffected zone, the call works normally.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_instances(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  InstanceIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE,
+  MaxResults = 123,
+  NextToken = "string"
+)
+}
+}
+
 \examples{
 # This example describes the specified instance.
-describe_instances(
+\donttest{describe_instances(
   InstanceIds = list(
     "i-1234567890abcdef0"
   )
-)
+)}
 
 # This example describes the instances with the t2.micro instance type.
-describe_instances(
+\donttest{describe_instances(
   Filters = list(
     list(
       Name = "instance-type",
@@ -148,10 +154,10 @@ describe_instances(
       )
     )
   )
-)
+)}
 
 # This example describes the instances with the Purpose=test tag.
-describe_instances(
+\donttest{describe_instances(
   Filters = list(
     list(
       Name = "tag:Purpose",
@@ -160,6 +166,6 @@ describe_instances(
       )
     )
   )
-)
+)}
 
 }

@@ -4,13 +4,8 @@
 \alias{detach_instances}
 \title{Removes one or more instances from the specified Auto Scaling group}
 \usage{
-detach_instances(
-  InstanceIds = list(
-    "string"
-  ),
-  AutoScalingGroupName = "string",
-  ShouldDecrementDesiredCapacity = TRUE|FALSE
-)
+detach_instances(InstanceIds = NULL, AutoScalingGroupName,
+  ShouldDecrementDesiredCapacity)
 }
 \arguments{
 \item{InstanceIds}{The IDs of the instances. You can specify up to 20 instances.}
@@ -31,15 +26,26 @@ If there is a Classic Load Balancer attached to the Auto Scaling group, the inst
 
 For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/detach-instance-asg.html}{Detach EC2 Instances from Your Auto Scaling Group} in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{detach_instances(
+  InstanceIds = list(
+    "string"
+  ),
+  AutoScalingGroupName = "string",
+  ShouldDecrementDesiredCapacity = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example detaches the specified instance from the specified Auto
 # Scaling group.
-detach_instances(
+\donttest{detach_instances(
   AutoScalingGroupName = "my-auto-scaling-group",
   InstanceIds = list(
     "i-93633f9b"
   ),
   ShouldDecrementDesiredCapacity = TRUE
-)
+)}
 
 }

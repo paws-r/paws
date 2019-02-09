@@ -4,7 +4,27 @@
 \alias{update_filter}
 \title{Updates the filter specified by the filter name}
 \usage{
-update_filter(
+update_filter(Action = NULL, Description = NULL, DetectorId,
+  FilterName, FindingCriteria = NULL, Rank = NULL)
+}
+\arguments{
+\item{Action}{Specifies the action that is to be applied to the findings that match the filter.}
+
+\item{Description}{The description of the filter.}
+
+\item{DetectorId}{[required] The unique ID of the detector that specifies the GuardDuty service where you want to update a filter.}
+
+\item{FilterName}{[required] The name of the filter.}
+
+\item{FindingCriteria}{Represents the criteria to be used in the filter for querying findings.}
+
+\item{Rank}{Specifies the position of the filter in the list of current filters. Also specifies the order in which this filter is applied to the findings.}
+}
+\description{
+Updates the filter specified by the filter name.
+}
+\section{Accepted Parameters}{
+\preformatted{update_filter(
   Action = "NOOP"|"ARCHIVE",
   Description = "string",
   DetectorId = "string",
@@ -28,22 +48,5 @@ update_filter(
   Rank = 123
 )
 }
-\arguments{
-\item{Action}{Specifies the action that is to be applied to the findings that match the filter.}
-
-\item{Description}{The description of the filter.}
-
-\item{DetectorId}{[required] The unique ID of the detector that specifies the GuardDuty service where you want to update a filter.}
-
-\item{FilterName}{[required] The name of the filter.}
-
-\item{FindingCriteria}{Represents the criteria to be used in the filter for querying findings.}
-
-\item{Rank}{Specifies the position of the filter in the list of current filters. Also specifies the order in which this filter is applied to the findings.}
 }
-\description{
-Updates the filter specified by the filter name.
-}
-\examples{
 
-}

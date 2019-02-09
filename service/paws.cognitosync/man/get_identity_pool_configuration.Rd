@@ -4,9 +4,7 @@
 \alias{get_identity_pool_configuration}
 \title{Gets the configuration settings of an identity pool}
 \usage{
-get_identity_pool_configuration(
-  IdentityPoolId = "string"
-)
+get_identity_pool_configuration(IdentityPoolId)
 }
 \arguments{
 \item{IdentityPoolId}{[required] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. This is the ID of the pool for which to return a configuration.}
@@ -17,6 +15,10 @@ Gets the configuration settings of an identity pool.
 \details{
 This API can only be called with developer credentials. You cannot call this API with the temporary user credentials provided by Cognito Identity.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_identity_pool_configuration(
+  IdentityPoolId = "string"
+)
 }
+}
+

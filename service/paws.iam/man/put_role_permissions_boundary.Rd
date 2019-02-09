@@ -4,10 +4,7 @@
 \alias{put_role_permissions_boundary}
 \title{Adds or updates the policy that is specified as the IAM role's permissions boundary}
 \usage{
-put_role_permissions_boundary(
-  RoleName = "string",
-  PermissionsBoundary = "string"
-)
+put_role_permissions_boundary(RoleName, PermissionsBoundary)
 }
 \arguments{
 \item{RoleName}{[required] The name (friendly name, not ARN) of the IAM role for which you want to set the permissions boundary.}
@@ -22,6 +19,11 @@ You cannot set the boundary for a service-linked role.
 
 Policies used as permissions boundaries do not provide permissions. You must also attach a permissions policy to the role. To learn how the effective permissions for a role are evaluated, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html}{IAM JSON Policy Evaluation Logic} in the IAM User Guide.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_role_permissions_boundary(
+  RoleName = "string",
+  PermissionsBoundary = "string"
+)
 }
+}
+

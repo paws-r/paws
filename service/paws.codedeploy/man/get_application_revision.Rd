@@ -4,7 +4,18 @@
 \alias{get_application_revision}
 \title{Gets information about an application revision}
 \usage{
-get_application_revision(
+get_application_revision(applicationName, revision)
+}
+\arguments{
+\item{applicationName}{[required] The name of the application that corresponds to the revision.}
+
+\item{revision}{[required] Information about the application revision to get, including type and location.}
+}
+\description{
+Gets information about an application revision.
+}
+\section{Accepted Parameters}{
+\preformatted{get_application_revision(
   applicationName = "string",
   revision = list(
     revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
@@ -30,14 +41,5 @@ get_application_revision(
   )
 )
 }
-\arguments{
-\item{applicationName}{[required] The name of the application that corresponds to the revision.}
+}
 
-\item{revision}{[required] Information about the application revision to get, including type and location.}
-}
-\description{
-Gets information about an application revision.
-}
-\examples{
-
-}

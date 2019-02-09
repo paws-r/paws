@@ -4,12 +4,8 @@
 \alias{attach_network_interface}
 \title{Attaches a network interface to an instance}
 \usage{
-attach_network_interface(
-  DeviceIndex = 123,
-  DryRun = TRUE|FALSE,
-  InstanceId = "string",
-  NetworkInterfaceId = "string"
-)
+attach_network_interface(DeviceIndex, DryRun = NULL, InstanceId,
+  NetworkInterfaceId)
 }
 \arguments{
 \item{DeviceIndex}{[required] The index of the device for the network interface attachment.}
@@ -23,13 +19,23 @@ attach_network_interface(
 \description{
 Attaches a network interface to an instance.
 }
+\section{Accepted Parameters}{
+\preformatted{attach_network_interface(
+  DeviceIndex = 123,
+  DryRun = TRUE|FALSE,
+  InstanceId = "string",
+  NetworkInterfaceId = "string"
+)
+}
+}
+
 \examples{
 # This example attaches the specified network interface to the specified
 # instance.
-attach_network_interface(
+\donttest{attach_network_interface(
   DeviceIndex = 1L,
   InstanceId = "i-1234567890abcdef0",
   NetworkInterfaceId = "eni-e5aa89a3"
-)
+)}
 
 }

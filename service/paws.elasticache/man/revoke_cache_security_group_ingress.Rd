@@ -4,11 +4,8 @@
 \alias{revoke_cache_security_group_ingress}
 \title{Revokes ingress from a cache security group}
 \usage{
-revoke_cache_security_group_ingress(
-  CacheSecurityGroupName = "string",
-  EC2SecurityGroupName = "string",
-  EC2SecurityGroupOwnerId = "string"
-)
+revoke_cache_security_group_ingress(CacheSecurityGroupName,
+  EC2SecurityGroupName, EC2SecurityGroupOwnerId)
 }
 \arguments{
 \item{CacheSecurityGroupName}{[required] The name of the cache security group to revoke ingress from.}
@@ -20,6 +17,12 @@ revoke_cache_security_group_ingress(
 \description{
 Revokes ingress from a cache security group. Use this operation to disallow access from an Amazon EC2 security group that had been previously authorized.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{revoke_cache_security_group_ingress(
+  CacheSecurityGroupName = "string",
+  EC2SecurityGroupName = "string",
+  EC2SecurityGroupOwnerId = "string"
+)
 }
+}
+

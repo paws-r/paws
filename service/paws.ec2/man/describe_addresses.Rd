@@ -4,7 +4,42 @@
 \alias{describe_addresses}
 \title{Describes one or more of your Elastic IP addresses}
 \usage{
-describe_addresses(
+describe_addresses(Filters = NULL, PublicIps = NULL,
+  AllocationIds = NULL, DryRun = NULL)
+}
+\arguments{
+\item{Filters}{One or more filters. Filter names and values are case-sensitive.
+\itemize{
+\item \code{allocation-id} - [EC2-VPC] The allocation ID for the address.
+\item \code{association-id} - [EC2-VPC] The association ID for the address.
+\item \code{domain} - Indicates whether the address is for use in EC2-Classic (\code{standard}) or in a VPC (\code{vpc}).
+\item \code{instance-id} - The ID of the instance the address is associated with, if any.
+\item \code{network-interface-id} - [EC2-VPC] The ID of the network interface that the address is associated with, if any.
+\item \code{network-interface-owner-id} - The AWS account ID of the owner.
+\item \code{private-ip-address} - [EC2-VPC] The private IP address associated with the Elastic IP address.
+\item \code{public-ip} - The Elastic IP address.
+\item \code{tag}:<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for the filter name and \code{TeamA} for the filter value.
+\item \code{tag-key} - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
+}}
+
+\item{PublicIps}{One or more Elastic IP addresses.
+
+Default: Describes all your Elastic IP addresses.}
+
+\item{AllocationIds}{[EC2-VPC] One or more allocation IDs.
+
+Default: Describes all your Elastic IP addresses.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+}
+\description{
+Describes one or more of your Elastic IP addresses.
+}
+\details{
+An Elastic IP address is for use in either the EC2-Classic platform or in a VPC. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP Addresses} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+}
+\section{Accepted Parameters}{
+\preformatted{describe_addresses(
   Filters = list(
     list(
       Name = "string",
@@ -22,44 +57,15 @@ describe_addresses(
   DryRun = TRUE|FALSE
 )
 }
-\arguments{
-\item{Filters}{One or more filters. Filter names and values are case-sensitive.
-\itemize{
-\item \code{allocation-id} - [EC2-VPC] The allocation ID for the address.
-\item \code{association-id} - [EC2-VPC] The association ID for the address.
-\item \code{domain} - Indicates whether the address is for use in EC2-Classic (\code{standard}) or in a VPC (\code{vpc}).
-\item \code{instance-id} - The ID of the instance the address is associated with, if any.
-\item \code{network-interface-id} - [EC2-VPC] The ID of the network interface that the address is associated with, if any.
-\item \code{network-interface-owner-id} - The AWS account ID of the owner.
-\item \code{private-ip-address} - [EC2-VPC] The private IP address associated with the Elastic IP address.
-\item \code{public-ip} - The Elastic IP address.
-\item \code{tag}:<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for the filter name and \code{TeamA} for the filter value.
-\item \code{tag-key} - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
-}}
-
-\item{PublicIps}{[EC2-Classic] One or more Elastic IP addresses.
-
-Default: Describes all your Elastic IP addresses.}
-
-\item{AllocationIds}{[EC2-VPC] One or more allocation IDs.
-
-Default: Describes all your Elastic IP addresses.}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\description{
-Describes one or more of your Elastic IP addresses.
-}
-\details{
-An Elastic IP address is for use in either the EC2-Classic platform or in a VPC. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP Addresses} in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
+
 \examples{
 # This example describes your Elastic IP addresses.
-describe_addresses()
+\donttest{describe_addresses()}
 
 # This example describes your Elastic IP addresses for use with instances
 # in a VPC.
-describe_addresses(
+\donttest{describe_addresses(
   Filters = list(
     list(
       Name = "domain",
@@ -68,11 +74,11 @@ describe_addresses(
       )
     )
   )
-)
+)}
 
 # This example describes your Elastic IP addresses for use with instances
 # in EC2-Classic.
-describe_addresses(
+\donttest{describe_addresses(
   Filters = list(
     list(
       Name = "domain",
@@ -81,6 +87,6 @@ describe_addresses(
       )
     )
   )
-)
+)}
 
 }

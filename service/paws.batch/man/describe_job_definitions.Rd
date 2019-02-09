@@ -4,15 +4,8 @@
 \alias{describe_job_definitions}
 \title{Describes a list of job definitions}
 \usage{
-describe_job_definitions(
-  jobDefinitions = list(
-    "string"
-  ),
-  maxResults = 123,
-  jobDefinitionName = "string",
-  status = "string",
-  nextToken = "string"
-)
+describe_job_definitions(jobDefinitions = NULL, maxResults = NULL,
+  jobDefinitionName = NULL, status = NULL, nextToken = NULL)
 }
 \arguments{
 \item{jobDefinitions}{A space-separated list of up to 100 job definition names or full Amazon Resource Name (ARN) entries.}
@@ -30,10 +23,23 @@ This token should be treated as an opaque identifier that is only used to retrie
 \description{
 Describes a list of job definitions. You can specify a \code{status} (such as \code{ACTIVE}) to only return job definitions that match that status.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_job_definitions(
+  jobDefinitions = list(
+    "string"
+  ),
+  maxResults = 123,
+  jobDefinitionName = "string",
+  status = "string",
+  nextToken = "string"
+)
+}
+}
+
 \examples{
 # This example describes all of your active job definitions.
-describe_job_definitions(
+\donttest{describe_job_definitions(
   status = "ACTIVE"
-)
+)}
 
 }

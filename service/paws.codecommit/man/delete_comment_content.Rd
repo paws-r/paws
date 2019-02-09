@@ -4,9 +4,7 @@
 \alias{delete_comment_content}
 \title{Deletes the content of a comment made on a change, file, or commit in a repository}
 \usage{
-delete_comment_content(
-  commentId = "string"
-)
+delete_comment_content(commentId)
 }
 \arguments{
 \item{commentId}{[required] The unique, system-generated ID of the comment. To get this ID, use GetCommentsForComparedCommit or GetCommentsForPullRequest.}
@@ -14,6 +12,10 @@ delete_comment_content(
 \description{
 Deletes the content of a comment made on a change, file, or commit in a repository.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_comment_content(
+  commentId = "string"
+)
 }
+}
+

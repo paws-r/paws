@@ -4,9 +4,7 @@
 \alias{decline_handshake}
 \title{Declines a handshake request}
 \usage{
-decline_handshake(
-  HandshakeId = "string"
-)
+decline_handshake(HandshakeId)
 }
 \arguments{
 \item{HandshakeId}{[required] The unique identifier (ID) of the handshake that you want to decline. You can get the ID from the ListHandshakesForAccount operation.
@@ -21,12 +19,19 @@ This operation can be called only from the account that received the handshake. 
 
 After you decline a handshake, it continues to appear in the results of relevant APIs for only 30 days. After that it is deleted.
 }
+\section{Accepted Parameters}{
+\preformatted{decline_handshake(
+  HandshakeId = "string"
+)
+}
+}
+
 \examples{
 # The following example shows Susan declining an invitation to join Bill's
 # organization. The DeclineHandshake operation returns a handshake object,
 # showing that the state is now DECLINED:
-decline_handshake(
+\donttest{decline_handshake(
   HandshakeId = "h-examplehandshakeid111"
-)
+)}
 
 }

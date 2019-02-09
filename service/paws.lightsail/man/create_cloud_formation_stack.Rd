@@ -4,17 +4,7 @@
 \alias{create_cloud_formation_stack}
 \title{Creates an AWS CloudFormation stack, which creates a new Amazon EC2 instance from an exported Amazon Lightsail snapshot}
 \usage{
-create_cloud_formation_stack(
-  instances = list(
-    list(
-      sourceName = "string",
-      instanceType = "string",
-      portInfoSource = "DEFAULT"|"INSTANCE"|"NONE",
-      userData = "string",
-      availabilityZone = "string"
-    )
-  )
-)
+create_cloud_formation_stack(instances)
 }
 \arguments{
 \item{instances}{[required] An array of parameters that will be used to create the new Amazon EC2 instance. You can only pass one instance entry at a time in this array. You will get an invalid parameter error if you pass more than one instance entry in this array.}
@@ -25,6 +15,18 @@ Creates an AWS CloudFormation stack, which creates a new Amazon EC2 instance fro
 \details{
 Wait until after your new Amazon EC2 instance is created before running the \code{create cloud formation stack} operation again with the same export snapshot record.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_cloud_formation_stack(
+  instances = list(
+    list(
+      sourceName = "string",
+      instanceType = "string",
+      portInfoSource = "DEFAULT"|"INSTANCE"|"NONE"|"CLOSED",
+      userData = "string",
+      availabilityZone = "string"
+    )
+  )
+)
 }
+}
+

@@ -2,13 +2,9 @@
 % Please edit documentation in R/paws.transfer_operations.R
 \name{import_ssh_public_key}
 \alias{import_ssh_public_key}
-\title{Adds a Secure Shell (SSH) public key to a user account identified by a \code{UserName} value assigned to a specific server, identified by \code{ServerId}}
+\title{Adds a Secure Shell (SSH) public key to a user account identified by a UserName value assigned to a specific server, identified by ServerId}
 \usage{
-import_ssh_public_key(
-  ServerId = "string",
-  SshPublicKeyBody = "string",
-  UserName = "string"
-)
+import_ssh_public_key(ServerId, SshPublicKeyBody, UserName)
 }
 \arguments{
 \item{ServerId}{[required] A system-assigned unique identifier for an SFTP server.}
@@ -23,6 +19,12 @@ Adds a Secure Shell (SSH) public key to a user account identified by a \code{Use
 \details{
 The response returns the \code{UserName} value, the \code{ServerId} value, and the name of the \code{SshPublicKeyId}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{import_ssh_public_key(
+  ServerId = "string",
+  SshPublicKeyBody = "string",
+  UserName = "string"
+)
 }
+}
+

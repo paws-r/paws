@@ -4,7 +4,18 @@
 \alias{put_events}
 \title{Use to record events for endpoints}
 \usage{
-put_events(
+put_events(ApplicationId, EventsRequest)
+}
+\arguments{
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+
+\item{EventsRequest}{[required]}
+}
+\description{
+Use to record events for endpoints. This method creates events and creates or updates the endpoints that those events are associated with.
+}
+\section{Accepted Parameters}{
+\preformatted{put_events(
   ApplicationId = "string",
   EventsRequest = list(
     BatchItem = list(
@@ -53,6 +64,9 @@ put_events(
         ),
         Events = list(
           list(
+            AppPackageName = "string",
+            AppTitle = "string",
+            AppVersionCode = "string",
             Attributes = list(
               "string"
             ),
@@ -61,6 +75,7 @@ put_events(
             Metrics = list(
               123.0
             ),
+            SdkName = "string",
             Session = list(
               Duration = 123,
               Id = "string",
@@ -75,14 +90,5 @@ put_events(
   )
 )
 }
-\arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+}
 
-\item{EventsRequest}{[required]}
-}
-\description{
-Use to record events for endpoints. This method creates events and creates or updates the endpoints that those events are associated with.
-}
-\examples{
-
-}

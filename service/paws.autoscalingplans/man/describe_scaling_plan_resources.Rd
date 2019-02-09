@@ -4,12 +4,8 @@
 \alias{describe_scaling_plan_resources}
 \title{Describes the scalable resources in the specified scaling plan}
 \usage{
-describe_scaling_plan_resources(
-  ScalingPlanName = "string",
-  ScalingPlanVersion = 123,
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_scaling_plan_resources(ScalingPlanName, ScalingPlanVersion,
+  MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ScalingPlanName}{[required] The name of the scaling plan.}
@@ -23,6 +19,13 @@ describe_scaling_plan_resources(
 \description{
 Describes the scalable resources in the specified scaling plan.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_scaling_plan_resources(
+  ScalingPlanName = "string",
+  ScalingPlanVersion = 123,
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

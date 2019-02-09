@@ -4,13 +4,7 @@
 \alias{update_event_configurations}
 \title{Updates the event configurations}
 \usage{
-update_event_configurations(
-  eventConfigurations = list(
-    list(
-      Enabled = TRUE|FALSE
-    )
-  )
-)
+update_event_configurations(eventConfigurations = NULL)
 }
 \arguments{
 \item{eventConfigurations}{The new event configuration values.}
@@ -18,6 +12,14 @@ update_event_configurations(
 \description{
 Updates the event configurations.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_event_configurations(
+  eventConfigurations = list(
+    list(
+      Enabled = TRUE|FALSE
+    )
+  )
+)
 }
+}
+

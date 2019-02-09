@@ -4,11 +4,8 @@
 \alias{delete_ota_update}
 \title{Delete an OTA update}
 \usage{
-delete_ota_update(
-  otaUpdateId = "string",
-  deleteStream = TRUE|FALSE,
-  forceDeleteAWSJob = TRUE|FALSE
-)
+delete_ota_update(otaUpdateId, deleteStream = NULL,
+  forceDeleteAWSJob = NULL)
 }
 \arguments{
 \item{otaUpdateId}{[required] The OTA update ID to delete.}
@@ -20,6 +17,12 @@ delete_ota_update(
 \description{
 Delete an OTA update.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_ota_update(
+  otaUpdateId = "string",
+  deleteStream = TRUE|FALSE,
+  forceDeleteAWSJob = TRUE|FALSE
+)
 }
+}
+

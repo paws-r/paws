@@ -4,9 +4,7 @@
 \alias{list_security_configurations}
 \title{Lists all the security configurations visible to this account, providing their creation dates and times, and their names}
 \usage{
-list_security_configurations(
-  Marker = "string"
-)
+list_security_configurations(Marker = NULL)
 }
 \arguments{
 \item{Marker}{The pagination token that indicates the set of results to retrieve.}
@@ -14,6 +12,10 @@ list_security_configurations(
 \description{
 Lists all the security configurations visible to this account, providing their creation dates and times, and their names. This call returns a maximum of 50 clusters per call, but returns a marker to track the paging of the cluster list across multiple ListSecurityConfigurations calls.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_security_configurations(
+  Marker = "string"
+)
 }
+}
+

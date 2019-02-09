@@ -4,13 +4,7 @@
 \alias{update_job}
 \title{You use this operation to change the parameters specified in the original manifest file by supplying a new manifest file}
 \usage{
-update_job(
-  JobId = "string",
-  Manifest = "string",
-  JobType = "Import"|"Export",
-  ValidateOnly = TRUE|FALSE,
-  APIVersion = "string"
-)
+update_job(JobId, Manifest, JobType, ValidateOnly, APIVersion = NULL)
 }
 \arguments{
 \item{JobId}{[required]}
@@ -26,6 +20,14 @@ update_job(
 \description{
 You use this operation to change the parameters specified in the original manifest file by supplying a new manifest file. The manifest file attached to this request replaces the original manifest file. You can only use the operation after a CreateJob request but before the data transfer starts and you can only use it on jobs you own.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_job(
+  JobId = "string",
+  Manifest = "string",
+  JobType = "Import"|"Export",
+  ValidateOnly = TRUE|FALSE,
+  APIVersion = "string"
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{describe_stack_resource}
 \title{Returns a description of the specified resource in the specified stack}
 \usage{
-describe_stack_resource(
-  StackName = "string",
-  LogicalResourceId = "string"
-)
+describe_stack_resource(StackName, LogicalResourceId)
 }
 \arguments{
 \item{StackName}{[required] The name or the unique stack ID that is associated with the stack, which are not always interchangeable:
@@ -28,6 +25,11 @@ Returns a description of the specified resource in the specified stack.
 \details{
 For deleted stacks, DescribeStackResource returns resource information for up to 90 days after the stack has been deleted.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_stack_resource(
+  StackName = "string",
+  LogicalResourceId = "string"
+)
 }
+}
+

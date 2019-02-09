@@ -10,7 +10,6 @@ describe_vpc_peering_authorizations()
 Retrieves valid VPC peering authorizations that are pending for the AWS account. This operation returns all VPC peering authorizations and requests for peering. This includes those initiated and received by this account.
 }
 \details{
-VPC peering connection operations include:
 \itemize{
 \item CreateVpcPeeringAuthorization
 \item DescribeVpcPeeringAuthorizations
@@ -20,6 +19,8 @@ VPC peering connection operations include:
 \item DeleteVpcPeeringConnection
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_vpc_peering_authorizations()
 }
+}
+

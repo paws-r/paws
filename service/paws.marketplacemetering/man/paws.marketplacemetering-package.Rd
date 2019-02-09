@@ -6,8 +6,8 @@
 \alias{paws.marketplacemetering-package}
 \title{paws.marketplacemetering: AWSMarketplace Metering}
 \description{
-This reference provides descriptions of the low-level AWS
-Marketplace Metering Service API.
+This reference provides descriptions of the
+    low-level AWS Marketplace Metering Service API.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

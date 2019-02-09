@@ -9,6 +9,8 @@ start_continuous_export()
 \description{
 Start the continuous flow of agent's discovered data into Amazon Athena.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_continuous_export()
 }
+}
+

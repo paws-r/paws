@@ -4,17 +4,8 @@
 \alias{get_relational_database_metric_data}
 \title{Returns the data points of the specified metric for a database in Amazon Lightsail}
 \usage{
-get_relational_database_metric_data(
-  relationalDatabaseName = "string",
-  metricName = "CPUUtilization"|"DatabaseConnections"|"DiskQueueDepth"|"FreeStorageSpace"|"NetworkReceiveThroughput"|"NetworkTransmitThroughput",
-  period = 123,
-  startTime = as.POSIXct("2015-01-01"),
-  endTime = as.POSIXct("2015-01-01"),
-  unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None",
-  statistics = list(
-    "Minimum"|"Maximum"|"Sum"|"Average"|"SampleCount"
-  )
-)
+get_relational_database_metric_data(relationalDatabaseName, metricName,
+  period, startTime, endTime, unit, statistics)
 }
 \arguments{
 \item{relationalDatabaseName}{[required] The name of your database from which to get metric data.}
@@ -50,6 +41,18 @@ For example, if you wish to use an end time of October 1, 2018, at 8 PM UTC, the
 \description{
 Returns the data points of the specified metric for a database in Amazon Lightsail.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_relational_database_metric_data(
+  relationalDatabaseName = "string",
+  metricName = "CPUUtilization"|"DatabaseConnections"|"DiskQueueDepth"|"FreeStorageSpace"|"NetworkReceiveThroughput"|"NetworkTransmitThroughput",
+  period = 123,
+  startTime = as.POSIXct("2015-01-01"),
+  endTime = as.POSIXct("2015-01-01"),
+  unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None",
+  statistics = list(
+    "Minimum"|"Maximum"|"Sum"|"Average"|"SampleCount"
+  )
+)
 }
+}
+

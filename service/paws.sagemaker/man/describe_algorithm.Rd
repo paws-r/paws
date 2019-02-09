@@ -4,9 +4,7 @@
 \alias{describe_algorithm}
 \title{Returns a description of the specified algorithm that is in your account}
 \usage{
-describe_algorithm(
-  AlgorithmName = "string"
-)
+describe_algorithm(AlgorithmName)
 }
 \arguments{
 \item{AlgorithmName}{[required] The name of the algorithm to describe.}
@@ -14,6 +12,10 @@ describe_algorithm(
 \description{
 Returns a description of the specified algorithm that is in your account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_algorithm(
+  AlgorithmName = "string"
+)
 }
+}
+

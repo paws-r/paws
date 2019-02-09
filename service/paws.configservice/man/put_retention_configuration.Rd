@@ -4,9 +4,7 @@
 \alias{put_retention_configuration}
 \title{Creates and updates the retention configuration with details about retention period (number of days) that AWS Config stores your historical information}
 \usage{
-put_retention_configuration(
-  RetentionPeriodInDays = 123
-)
+put_retention_configuration(RetentionPeriodInDays)
 }
 \arguments{
 \item{RetentionPeriodInDays}{[required] Number of days AWS Config stores your historical information.
@@ -19,6 +17,10 @@ Creates and updates the retention configuration with details about retention per
 \details{
 Currently, AWS Config supports only one retention configuration per region in your account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_retention_configuration(
+  RetentionPeriodInDays = 123
+)
 }
+}
+

@@ -4,7 +4,34 @@
 \alias{describe_transit_gateway_route_tables}
 \title{Describes one or more transit gateway route tables}
 \usage{
-describe_transit_gateway_route_tables(
+
+  describe_transit_gateway_route_tables(TransitGatewayRouteTableIds = NULL,
+  Filters = NULL, MaxResults = NULL, NextToken = NULL,
+  DryRun = NULL)
+}
+\arguments{
+\item{TransitGatewayRouteTableIds}{The IDs of the transit gateway route tables.}
+
+\item{Filters}{One or more filters. The possible values are:
+\itemize{
+\item \code{default-association-route-table} - Indicates whether this is the default association route table for the transit gateway (\code{true} | \code{false}).
+\item \code{default-propagation-route-table} - Indicates whether this is the default propagation route table for the transit gateway (\code{true} | \code{false}).
+\item \code{state} - The state of the attachment (\code{available} | \code{deleted} | \code{deleting} | \code{failed} | \code{modifying} | \code{pendingAcceptance} | \code{pending} | \code{rollingBack} | \code{rejected} | \code{rejecting}).
+\item \code{transit-gateway-id} - The ID of the transit gateway.
+\item \code{transit-gateway-route-table-id} - The ID of the transit gateway route table.
+}}
+
+\item{MaxResults}{The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned \code{nextToken} value.}
+
+\item{NextToken}{The token for the next page of results.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+}
+\description{
+Describes one or more transit gateway route tables. By default, all transit gateway route tables are described. Alternatively, you can filter the results.
+}
+\section{Accepted Parameters}{
+\preformatted{describe_transit_gateway_route_tables(
   TransitGatewayRouteTableIds = list(
     "string"
   ),
@@ -21,27 +48,5 @@ describe_transit_gateway_route_tables(
   DryRun = TRUE|FALSE
 )
 }
-\arguments{
-\item{TransitGatewayRouteTableIds}{The IDs of the transit gateway route tables.}
-
-\item{Filters}{One or more filters. The possible values are:
-\itemize{
-\item \code{default-association-route-table} - Indicates whether this is the default association route table for the transit gateway (\code{true} | \code{false}).
-\item \code{default-propagation-route-table} - Indicates whether this is the default propagation route table for the transit gateway (\code{true} | \code{false}).
-\item \code{transit-gateway-id} - The ID of the transit gateway.
-\item \code{transit-gateway-route-table-id} - The ID of the transit gateway route table.
-\item \code{transit-gateway-route-table-state} - The state (\code{pending} | \code{available} | \code{deleting} | \code{deleted}).
-}}
-
-\item{MaxResults}{The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned \code{nextToken} value.}
-
-\item{NextToken}{The token for the next page of results.}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\description{
-Describes one or more transit gateway route tables. By default, all transit gateway route tables are described. Alternatively, you can filter the results.
-}
-\examples{
 
-}

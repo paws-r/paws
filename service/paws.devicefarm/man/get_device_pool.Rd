@@ -4,9 +4,7 @@
 \alias{get_device_pool}
 \title{Gets information about a device pool}
 \usage{
-get_device_pool(
-  arn = "string"
-)
+get_device_pool(arn)
 }
 \arguments{
 \item{arn}{[required] The device pool's ARN.}
@@ -14,11 +12,18 @@ get_device_pool(
 \description{
 Gets information about a device pool.
 }
+\section{Accepted Parameters}{
+\preformatted{get_device_pool(
+  arn = "string"
+)
+}
+}
+
 \examples{
 # The following example returns information about a specific device pool,
 # given a project ARN.
-get_device_pool(
+\donttest{get_device_pool(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
-)
+)}
 
 }

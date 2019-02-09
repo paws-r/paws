@@ -4,11 +4,8 @@
 \alias{import_certificate_authority_certificate}
 \title{Imports your signed private CA certificate into ACM PCA}
 \usage{
-import_certificate_authority_certificate(
-  CertificateAuthorityArn = "string",
-  Certificate = raw,
-  CertificateChain = raw
-)
+import_certificate_authority_certificate(CertificateAuthorityArn,
+  Certificate, CertificateChain)
 }
 \arguments{
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called CreateCertificateAuthority. This must be of the form:
@@ -29,6 +26,12 @@ Your on-premises CA certificate must be the last certificate in your chain. The 
 
 The chain must be PEM-encoded.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{import_certificate_authority_certificate(
+  CertificateAuthorityArn = "string",
+  Certificate = raw,
+  CertificateChain = raw
+)
 }
+}
+

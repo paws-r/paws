@@ -4,7 +4,20 @@
 \alias{update_resource}
 \title{Changes information about a Resource resource}
 \usage{
-update_resource(
+update_resource(restApiId, resourceId, patchOperations = NULL)
+}
+\arguments{
+\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+
+\item{resourceId}{[required] [Required] The identifier of the Resource resource.}
+
+\item{patchOperations}{A list of update operations to be applied to the specified resource and in the order specified in this list.}
+}
+\description{
+Changes information about a Resource resource.
+}
+\section{Accepted Parameters}{
+\preformatted{update_resource(
   restApiId = "string",
   resourceId = "string",
   patchOperations = list(
@@ -17,16 +30,5 @@ update_resource(
   )
 )
 }
-\arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
-
-\item{resourceId}{[required] [Required] The identifier of the Resource resource.}
-
-\item{patchOperations}{A list of update operations to be applied to the specified resource and in the order specified in this list.}
 }
-\description{
-Changes information about a Resource resource.
-}
-\examples{
 
-}

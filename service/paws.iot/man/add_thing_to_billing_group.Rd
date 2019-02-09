@@ -4,12 +4,8 @@
 \alias{add_thing_to_billing_group}
 \title{Adds a thing to a billing group}
 \usage{
-add_thing_to_billing_group(
-  billingGroupName = "string",
-  billingGroupArn = "string",
-  thingName = "string",
-  thingArn = "string"
-)
+add_thing_to_billing_group(billingGroupName = NULL,
+  billingGroupArn = NULL, thingName = NULL, thingArn = NULL)
 }
 \arguments{
 \item{billingGroupName}{The name of the billing group.}
@@ -23,6 +19,13 @@ add_thing_to_billing_group(
 \description{
 Adds a thing to a billing group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{add_thing_to_billing_group(
+  billingGroupName = "string",
+  billingGroupArn = "string",
+  thingName = "string",
+  thingArn = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{shutdown_gateway}
 \title{Shuts down a gateway}
 \usage{
-shutdown_gateway(
-  GatewayARN = "string"
-)
+shutdown_gateway(GatewayARN)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -25,11 +23,18 @@ When you make a shutdown request, you will get a \code{200 OK} success response 
 
 If do not intend to use the gateway again, you must delete the gateway (using DeleteGateway) to no longer pay software charges associated with the gateway.
 }
+\section{Accepted Parameters}{
+\preformatted{shutdown_gateway(
+  GatewayARN = "string"
+)
+}
+}
+
 \examples{
 # This operation shuts down the gateway service component running in the
 # storage gateway's virtual machine (VM) and not the VM.
-shutdown_gateway(
+\donttest{shutdown_gateway(
   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B"
-)
+)}
 
 }

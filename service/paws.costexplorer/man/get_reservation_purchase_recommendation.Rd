@@ -4,21 +4,10 @@
 \alias{get_reservation_purchase_recommendation}
 \title{Gets recommendations for which reservations to purchase}
 \usage{
-get_reservation_purchase_recommendation(
-  AccountId = "string",
-  Service = "string",
-  AccountScope = "PAYER"|"LINKED",
-  LookbackPeriodInDays = "SEVEN_DAYS"|"THIRTY_DAYS"|"SIXTY_DAYS",
-  TermInYears = "ONE_YEAR"|"THREE_YEARS",
-  PaymentOption = "NO_UPFRONT"|"PARTIAL_UPFRONT"|"ALL_UPFRONT"|"LIGHT_UTILIZATION"|"MEDIUM_UTILIZATION"|"HEAVY_UTILIZATION",
-  ServiceSpecification = list(
-    EC2Specification = list(
-      OfferingClass = "STANDARD"|"CONVERTIBLE"
-    )
-  ),
-  PageSize = 123,
-  NextPageToken = "string"
-)
+get_reservation_purchase_recommendation(AccountId = NULL, Service,
+  AccountScope = NULL, LookbackPeriodInDays = NULL,
+  TermInYears = NULL, PaymentOption = NULL,
+  ServiceSpecification = NULL, PageSize = NULL, NextPageToken = NULL)
 }
 \arguments{
 \item{AccountId}{The account ID that is associated with the recommendation.}
@@ -49,6 +38,22 @@ AWS generates your recommendations by identifying your On-Demand usage during a 
 
 For example, AWS automatically aggregates your Amazon EC2 Linux, shared tenancy, and c4 family usage in the US West (Oregon) Region and recommends that you buy size-flexible regional reservations to apply to the c4 family usage. AWS recommends the smallest size instance in an instance family. This makes it easier to purchase a size-flexible RI. AWS also shows the equal number of normalized units so that you can purchase any instance size that you want. For this example, your RI recommendation would be for \code{c4.large} because that is the smallest size instance in the c4 instance family.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_reservation_purchase_recommendation(
+  AccountId = "string",
+  Service = "string",
+  AccountScope = "PAYER"|"LINKED",
+  LookbackPeriodInDays = "SEVEN_DAYS"|"THIRTY_DAYS"|"SIXTY_DAYS",
+  TermInYears = "ONE_YEAR"|"THREE_YEARS",
+  PaymentOption = "NO_UPFRONT"|"PARTIAL_UPFRONT"|"ALL_UPFRONT"|"LIGHT_UTILIZATION"|"MEDIUM_UTILIZATION"|"HEAVY_UTILIZATION",
+  ServiceSpecification = list(
+    EC2Specification = list(
+      OfferingClass = "STANDARD"|"CONVERTIBLE"
+    )
+  ),
+  PageSize = 123,
+  NextPageToken = "string"
+)
 }
+}
+

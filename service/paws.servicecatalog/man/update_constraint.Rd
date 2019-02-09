@@ -4,11 +4,7 @@
 \alias{update_constraint}
 \title{Updates the specified constraint}
 \usage{
-update_constraint(
-  AcceptLanguage = "string",
-  Id = "string",
-  Description = "string"
-)
+update_constraint(AcceptLanguage = NULL, Id, Description = NULL)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -25,6 +21,12 @@ update_constraint(
 \description{
 Updates the specified constraint.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_constraint(
+  AcceptLanguage = "string",
+  Id = "string",
+  Description = "string"
+)
 }
+}
+

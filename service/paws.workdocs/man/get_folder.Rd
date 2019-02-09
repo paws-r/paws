@@ -4,11 +4,8 @@
 \alias{get_folder}
 \title{Retrieves the metadata of the specified folder}
 \usage{
-get_folder(
-  AuthenticationToken = "string",
-  FolderId = "string",
-  IncludeCustomMetadata = TRUE|FALSE
-)
+get_folder(AuthenticationToken = NULL, FolderId,
+  IncludeCustomMetadata = NULL)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
@@ -20,6 +17,12 @@ get_folder(
 \description{
 Retrieves the metadata of the specified folder.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_folder(
+  AuthenticationToken = "string",
+  FolderId = "string",
+  IncludeCustomMetadata = TRUE|FALSE
+)
 }
+}
+

@@ -4,11 +4,8 @@
 \alias{list_instance_profiles}
 \title{Lists the instance profiles that have the specified path prefix}
 \usage{
-list_instance_profiles(
-  PathPrefix = "string",
-  Marker = "string",
-  MaxItems = 123
-)
+list_instance_profiles(PathPrefix = NULL, Marker = NULL,
+  MaxItems = NULL)
 }
 \arguments{
 \item{PathPrefix}{The path prefix for filtering the results. For example, the prefix \code{/application_abc/component_xyz/} gets all instance profiles whose path starts with \code{/application_abc/component_xyz/}.
@@ -27,6 +24,12 @@ Lists the instance profiles that have the specified path prefix. If there are no
 \details{
 You can paginate the results using the \code{MaxItems} and \code{Marker} parameters.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_instance_profiles(
+  PathPrefix = "string",
+  Marker = "string",
+  MaxItems = 123
+)
 }
+}
+

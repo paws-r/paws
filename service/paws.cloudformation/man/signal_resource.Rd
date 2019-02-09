@@ -4,12 +4,7 @@
 \alias{signal_resource}
 \title{Sends a signal to the specified resource with a success or failure status}
 \usage{
-signal_resource(
-  StackName = "string",
-  LogicalResourceId = "string",
-  UniqueId = "string",
-  Status = "SUCCESS"|"FAILURE"
-)
+signal_resource(StackName, LogicalResourceId, UniqueId, Status)
 }
 \arguments{
 \item{StackName}{[required] The stack name or unique stack ID that includes the resource that you want to signal.}
@@ -23,6 +18,13 @@ signal_resource(
 \description{
 Sends a signal to the specified resource with a success or failure status. You can use the SignalResource API in conjunction with a creation policy or update policy. AWS CloudFormation doesn't proceed with a stack creation or update until resources receive the required number of signals or the timeout period is exceeded. The SignalResource API is useful in cases where you want to send signals from anywhere other than an Amazon EC2 instance.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{signal_resource(
+  StackName = "string",
+  LogicalResourceId = "string",
+  UniqueId = "string",
+  Status = "SUCCESS"|"FAILURE"
+)
 }
+}
+

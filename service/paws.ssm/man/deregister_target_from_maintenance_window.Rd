@@ -4,11 +4,8 @@
 \alias{deregister_target_from_maintenance_window}
 \title{Removes a target from a Maintenance Window}
 \usage{
-deregister_target_from_maintenance_window(
-  WindowId = "string",
-  WindowTargetId = "string",
-  Safe = TRUE|FALSE
-)
+deregister_target_from_maintenance_window(WindowId, WindowTargetId,
+  Safe = NULL)
 }
 \arguments{
 \item{WindowId}{[required] The ID of the Maintenance Window the target should be removed from.}
@@ -20,6 +17,12 @@ deregister_target_from_maintenance_window(
 \description{
 Removes a target from a Maintenance Window.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{deregister_target_from_maintenance_window(
+  WindowId = "string",
+  WindowTargetId = "string",
+  Safe = TRUE|FALSE
+)
 }
+}
+

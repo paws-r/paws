@@ -4,49 +4,11 @@
 \alias{create_change_set}
 \title{Creates a list of changes that will be applied to a stack so that you can review the changes before executing them}
 \usage{
-create_change_set(
-  StackName = "string",
-  TemplateBody = "string",
-  TemplateURL = "string",
-  UsePreviousTemplate = TRUE|FALSE,
-  Parameters = list(
-    list(
-      ParameterKey = "string",
-      ParameterValue = "string",
-      UsePreviousValue = TRUE|FALSE,
-      ResolvedValue = "string"
-    )
-  ),
-  Capabilities = list(
-    "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"
-  ),
-  ResourceTypes = list(
-    "string"
-  ),
-  RoleARN = "string",
-  RollbackConfiguration = list(
-    RollbackTriggers = list(
-      list(
-        Arn = "string",
-        Type = "string"
-      )
-    ),
-    MonitoringTimeInMinutes = 123
-  ),
-  NotificationARNs = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  ChangeSetName = "string",
-  ClientToken = "string",
-  Description = "string",
-  ChangeSetType = "CREATE"|"UPDATE"
-)
+create_change_set(StackName, TemplateBody = NULL, TemplateURL = NULL,
+  UsePreviousTemplate = NULL, Parameters = NULL, Capabilities = NULL,
+  ResourceTypes = NULL, RoleARN = NULL, RollbackConfiguration = NULL,
+  NotificationARNs = NULL, Tags = NULL, ChangeSetName,
+  ClientToken = NULL, Description = NULL, ChangeSetType = NULL)
 }
 \arguments{
 \item{StackName}{[required] The name or the unique ID of the stack for which you are creating a change set. AWS CloudFormation generates the change set by comparing this stack's information with the information that you submit, such as a modified template or different parameter input values.}
@@ -135,6 +97,50 @@ To create a change set for a stack that doesn't exist, for the \code{ChangeSetTy
 
 When you are satisfied with the changes the change set will make, execute the change set by using the ExecuteChangeSet action. AWS CloudFormation doesn't make changes until you execute the change set.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_change_set(
+  StackName = "string",
+  TemplateBody = "string",
+  TemplateURL = "string",
+  UsePreviousTemplate = TRUE|FALSE,
+  Parameters = list(
+    list(
+      ParameterKey = "string",
+      ParameterValue = "string",
+      UsePreviousValue = TRUE|FALSE,
+      ResolvedValue = "string"
+    )
+  ),
+  Capabilities = list(
+    "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"
+  ),
+  ResourceTypes = list(
+    "string"
+  ),
+  RoleARN = "string",
+  RollbackConfiguration = list(
+    RollbackTriggers = list(
+      list(
+        Arn = "string",
+        Type = "string"
+      )
+    ),
+    MonitoringTimeInMinutes = 123
+  ),
+  NotificationARNs = list(
+    "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  ChangeSetName = "string",
+  ClientToken = "string",
+  Description = "string",
+  ChangeSetType = "CREATE"|"UPDATE"
+)
 }
+}
+

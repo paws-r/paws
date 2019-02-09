@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.glacier_operations.R
 \name{abort_vault_lock}
 \alias{abort_vault_lock}
-\title{This operation aborts the vault locking process if the vault lock is not in the \code{Locked} state}
+\title{This operation aborts the vault locking process if the vault lock is not in the Locked state}
 \usage{
-abort_vault_lock(
-  accountId = "string",
-  vaultName = "string"
-)
+abort_vault_lock(accountId, vaultName)
 }
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID.}
@@ -22,12 +19,20 @@ A vault lock is put into the \code{InProgress} state by calling InitiateVaultLoc
 
 This operation is idempotent. You can successfully invoke this operation multiple times, if the vault lock is in the \code{InProgress} state or if there is no policy associated with the vault.
 }
+\section{Accepted Parameters}{
+\preformatted{abort_vault_lock(
+  accountId = "string",
+  vaultName = "string"
+)
+}
+}
+
 \examples{
 # The example aborts the vault locking process if the vault lock is not in
 # the Locked state for the vault named examplevault.
-abort_vault_lock(
+\donttest{abort_vault_lock(
   accountId = "-",
   vaultName = "examplevault"
-)
+)}
 
 }

@@ -2,15 +2,10 @@
 % Please edit documentation in R/paws.glue_operations.R
 \name{get_tables}
 \alias{get_tables}
-\title{Retrieves the definitions of some or all of the tables in a given \code{Database}}
+\title{Retrieves the definitions of some or all of the tables in a given Database}
 \usage{
-get_tables(
-  CatalogId = "string",
-  DatabaseName = "string",
-  Expression = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+get_tables(CatalogId = NULL, DatabaseName, Expression = NULL,
+  NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the tables reside. If none is supplied, the AWS account ID is used by default.}
@@ -26,6 +21,14 @@ get_tables(
 \description{
 Retrieves the definitions of some or all of the tables in a given \code{Database}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_tables(
+  CatalogId = "string",
+  DatabaseName = "string",
+  Expression = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

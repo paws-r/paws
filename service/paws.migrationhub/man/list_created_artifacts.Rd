@@ -4,12 +4,8 @@
 \alias{list_created_artifacts}
 \title{Lists the created artifacts attached to a given migration task in an update stream}
 \usage{
-list_created_artifacts(
-  ProgressUpdateStream = "string",
-  MigrationTaskName = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_created_artifacts(ProgressUpdateStream, MigrationTaskName,
+  NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{ProgressUpdateStream}{[required] The name of the ProgressUpdateStream.}
@@ -30,6 +26,13 @@ Lists the created artifacts attached to a given migration task in an update stre
 \item Lists created artifacts in a paginated interface.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_created_artifacts(
+  ProgressUpdateStream = "string",
+  MigrationTaskName = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

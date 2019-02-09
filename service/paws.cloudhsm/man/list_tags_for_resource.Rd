@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.cloudhsm_operations.R
 \name{list_tags_for_resource}
 \alias{list_tags_for_resource}
-\title{This is documentation for \strong{AWS CloudHSM Classic}}
+\title{This is documentation for AWS CLOUDHSM CLASSIC}
 \usage{
-list_tags_for_resource(
-  ResourceArn = "string"
-)
+list_tags_for_resource(ResourceArn)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the AWS CloudHSM resource.}
@@ -19,6 +17,10 @@ This is documentation for \strong{AWS CloudHSM Classic}. For more information, s
 
 Returns a list of all tags for the specified AWS CloudHSM resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_tags_for_resource(
+  ResourceArn = "string"
+)
 }
+}
+

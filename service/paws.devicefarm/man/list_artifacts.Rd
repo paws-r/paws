@@ -4,11 +4,7 @@
 \alias{list_artifacts}
 \title{Gets information about artifacts}
 \usage{
-list_artifacts(
-  arn = "string",
-  type = "SCREENSHOT"|"FILE"|"LOG",
-  nextToken = "string"
-)
+list_artifacts(arn, type, nextToken = NULL)
 }
 \arguments{
 \item{arn}{[required] The Run, Job, Suite, or Test ARN.}
@@ -27,11 +23,20 @@ Allowed values include:
 \description{
 Gets information about artifacts.
 }
+\section{Accepted Parameters}{
+\preformatted{list_artifacts(
+  arn = "string",
+  type = "SCREENSHOT"|"FILE"|"LOG",
+  nextToken = "string"
+)
+}
+}
+
 \examples{
 # The following example lists screenshot artifacts for a specific run.
-list_artifacts(
+\donttest{list_artifacts(
   type = "SCREENSHOT",
   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:EXAMPLE-GUID-123-456"
-)
+)}
 
 }

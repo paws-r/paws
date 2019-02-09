@@ -4,11 +4,8 @@
 \alias{list_v2_logging_levels}
 \title{Lists logging levels}
 \usage{
-list_v2_logging_levels(
-  targetType = "DEFAULT"|"THING_GROUP",
-  nextToken = "string",
-  maxResults = 123
-)
+list_v2_logging_levels(targetType = NULL, nextToken = NULL,
+  maxResults = NULL)
 }
 \arguments{
 \item{targetType}{The type of resource for which you are configuring logging. Must be \code{THING_Group}.}
@@ -20,6 +17,12 @@ list_v2_logging_levels(
 \description{
 Lists logging levels.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_v2_logging_levels(
+  targetType = "DEFAULT"|"THING_GROUP",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

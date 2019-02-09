@@ -4,17 +4,7 @@
 \alias{create_dhcp_options}
 \title{Creates a set of DHCP options for your VPC}
 \usage{
-create_dhcp_options(
-  DhcpConfigurations = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE
-)
+create_dhcp_options(DhcpConfigurations, DryRun = NULL)
 }
 \arguments{
 \item{DhcpConfigurations}{[required] A DHCP configuration option.}
@@ -33,11 +23,26 @@ Creates a set of DHCP options for your VPC. After creating the set, you must ass
 \item \code{netbios-node-type} - The NetBIOS node type (1, 2, 4, or 8). We recommend that you specify 2 (broadcast and multicast are not currently supported). For more information about these node types, see \href{http://www.ietf.org/rfc/rfc2132.txt}{RFC 2132}.
 }
 
-Your VPC automatically starts out with a set of DHCP options that includes only a DNS server that we provide (AmazonProvidedDNS). If you create a set of options, and if your VPC has an internet gateway, make sure to set the \code{domain-name-servers} option either to \code{AmazonProvidedDNS} or to a domain name server of your choice. For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html}{DHCP Options Sets} in the \emph{Amazon Virtual Private Cloud User Guide}.
+Your VPC automatically starts out with a set of DHCP options that includes only a DNS server that we provide (AmazonProvidedDNS). If you create a set of options, and if your VPC has an internet gateway, make sure to set the \code{domain-name-servers} option either to \code{AmazonProvidedDNS} or to a domain name server of your choice. For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html}{DHCP Options Sets} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_dhcp_options(
+  DhcpConfigurations = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example creates a DHCP options set.
-create_dhcp_options(
+\donttest{create_dhcp_options(
   DhcpConfigurations = list(
     list(
       Key = "domain-name-servers",
@@ -47,6 +52,6 @@ create_dhcp_options(
       )
     )
   )
-)
+)}
 
 }

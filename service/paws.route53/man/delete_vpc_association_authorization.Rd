@@ -2,15 +2,9 @@
 % Please edit documentation in R/paws.route53_operations.R
 \name{delete_vpc_association_authorization}
 \alias{delete_vpc_association_authorization}
-\title{Removes authorization to submit an \code{AssociateVPCWithHostedZone} request to associate a specified VPC with a hosted zone that was created by a different account}
+\title{Removes authorization to submit an AssociateVPCWithHostedZone request to associate a specified VPC with a hosted zone that was created by a different account}
 \usage{
-delete_vpc_association_authorization(
-  HostedZoneId = "string",
-  VPC = list(
-    VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1",
-    VPCId = "string"
-  )
-)
+delete_vpc_association_authorization(HostedZoneId, VPC)
 }
 \arguments{
 \item{HostedZoneId}{[required] When removing authorization to associate a VPC that was created by one AWS account with a hosted zone that was created with a different AWS account, the ID of the hosted zone.}
@@ -23,6 +17,14 @@ Removes authorization to submit an \code{AssociateVPCWithHostedZone} request to 
 \details{
 Sending this request only prevents the AWS account that created the VPC from associating the VPC with the Amazon Route 53 hosted zone in the future. If the VPC is already associated with the hosted zone, \code{DeleteVPCAssociationAuthorization} won't disassociate the VPC from the hosted zone. If you want to delete an existing association, use \code{DisassociateVPCFromHostedZone}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_vpc_association_authorization(
+  HostedZoneId = "string",
+  VPC = list(
+    VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1",
+    VPCId = "string"
+  )
+)
 }
+}
+

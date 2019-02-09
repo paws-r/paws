@@ -4,9 +4,7 @@
 \alias{delete_virtual_mfa_device}
 \title{Deletes a virtual MFA device}
 \usage{
-delete_virtual_mfa_device(
-  SerialNumber = "string"
-)
+delete_virtual_mfa_device(SerialNumber)
 }
 \arguments{
 \item{SerialNumber}{[required] The serial number that uniquely identifies the MFA device. For virtual MFA devices, the serial number is the same as the ARN.
@@ -19,11 +17,18 @@ Deletes a virtual MFA device.
 \details{
 You must deactivate a user's virtual MFA device before you can delete it. For information about deactivating MFA devices, see DeactivateMFADevice.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_virtual_mfa_device(
+  SerialNumber = "string"
+)
+}
+}
+
 \examples{
 # The following delete-virtual-mfa-device command removes the specified
 # MFA device from the current AWS account.
-delete_virtual_mfa_device(
+\donttest{delete_virtual_mfa_device(
   SerialNumber = "arn:aws:iam::123456789012:mfa/ExampleName"
-)
+)}
 
 }

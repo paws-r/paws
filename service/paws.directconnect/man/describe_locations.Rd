@@ -9,6 +9,3 @@ describe_locations()
 \description{
 Lists the AWS Direct Connect locations in the current AWS Region. These are the locations that can be selected when calling CreateConnection or CreateInterconnect.
 }
-\examples{
-
-}

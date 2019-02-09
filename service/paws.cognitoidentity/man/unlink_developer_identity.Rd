@@ -2,14 +2,10 @@
 % Please edit documentation in R/paws.cognitoidentity_operations.R
 \name{unlink_developer_identity}
 \alias{unlink_developer_identity}
-\title{Unlinks a \code{DeveloperUserIdentifier} from an existing identity}
+\title{Unlinks a DeveloperUserIdentifier from an existing identity}
 \usage{
-unlink_developer_identity(
-  IdentityId = "string",
-  IdentityPoolId = "string",
-  DeveloperProviderName = "string",
-  DeveloperUserIdentifier = "string"
-)
+unlink_developer_identity(IdentityId, IdentityPoolId,
+  DeveloperProviderName, DeveloperUserIdentifier)
 }
 \arguments{
 \item{IdentityId}{[required] A unique identifier in the format REGION:GUID.}
@@ -26,6 +22,13 @@ Unlinks a \code{DeveloperUserIdentifier} from an existing identity. Unlinked dev
 \details{
 You must use AWS Developer credentials to call this API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{unlink_developer_identity(
+  IdentityId = "string",
+  IdentityPoolId = "string",
+  DeveloperProviderName = "string",
+  DeveloperUserIdentifier = "string"
+)
 }
+}
+

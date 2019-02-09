@@ -4,10 +4,7 @@
 \alias{list_brokers}
 \title{Returns a list of all brokers}
 \usage{
-list_brokers(
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_brokers(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{The maximum number of brokers that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.}
@@ -17,6 +14,11 @@ list_brokers(
 \description{
 Returns a list of all brokers.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_brokers(
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

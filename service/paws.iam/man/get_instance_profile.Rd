@@ -4,9 +4,7 @@
 \alias{get_instance_profile}
 \title{Retrieves information about the specified instance profile, including the instance profile's path, GUID, ARN, and role}
 \usage{
-get_instance_profile(
-  InstanceProfileName = "string"
-)
+get_instance_profile(InstanceProfileName)
 }
 \arguments{
 \item{InstanceProfileName}{[required] The name of the instance profile to get information about.
@@ -16,11 +14,18 @@ This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex 
 \description{
 Retrieves information about the specified instance profile, including the instance profile's path, GUID, ARN, and role. For more information about instance profiles, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html}{About Instance Profiles} in the \emph{IAM User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{get_instance_profile(
+  InstanceProfileName = "string"
+)
+}
+}
+
 \examples{
 # The following command gets information about the instance profile named
 # ExampleInstanceProfile.
-get_instance_profile(
+\donttest{get_instance_profile(
   InstanceProfileName = "ExampleInstanceProfile"
-)
+)}
 
 }

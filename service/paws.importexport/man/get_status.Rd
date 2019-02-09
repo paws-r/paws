@@ -4,10 +4,7 @@
 \alias{get_status}
 \title{This operation returns information about a job, including where the job is in the processing pipeline, the status of the results, and the signature value associated with the job}
 \usage{
-get_status(
-  JobId = "string",
-  APIVersion = "string"
-)
+get_status(JobId, APIVersion = NULL)
 }
 \arguments{
 \item{JobId}{[required]}
@@ -17,6 +14,11 @@ get_status(
 \description{
 This operation returns information about a job, including where the job is in the processing pipeline, the status of the results, and the signature value associated with the job. You can only return information about jobs you own.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_status(
+  JobId = "string",
+  APIVersion = "string"
+)
 }
+}
+

@@ -4,11 +4,7 @@
 \alias{list_roles}
 \title{Lists the IAM roles that have the specified path prefix}
 \usage{
-list_roles(
-  PathPrefix = "string",
-  Marker = "string",
-  MaxItems = 123
-)
+list_roles(PathPrefix = NULL, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{PathPrefix}{The path prefix for filtering the results. For example, the prefix \code{/application_abc/component_xyz/} gets all roles whose path starts with \code{/application_abc/component_xyz/}.
@@ -27,6 +23,12 @@ Lists the IAM roles that have the specified path prefix. If there are none, the 
 \details{
 You can paginate the results using the \code{MaxItems} and \code{Marker} parameters.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_roles(
+  PathPrefix = "string",
+  Marker = "string",
+  MaxItems = 123
+)
 }
+}
+

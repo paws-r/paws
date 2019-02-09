@@ -4,10 +4,7 @@
 \alias{put_schema_from_json}
 \title{Allows a schema to be updated using JSON upload}
 \usage{
-put_schema_from_json(
-  SchemaArn = "string",
-  Document = "string"
-)
+put_schema_from_json(SchemaArn, Document)
 }
 \arguments{
 \item{SchemaArn}{[required] The ARN of the schema to update.}
@@ -17,6 +14,11 @@ put_schema_from_json(
 \description{
 Allows a schema to be updated using JSON upload. Only available for development schemas. See \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_jsonformat.html#schemas_json}{JSON Schema Format} for more information.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_schema_from_json(
+  SchemaArn = "string",
+  Document = "string"
+)
 }
+}
+

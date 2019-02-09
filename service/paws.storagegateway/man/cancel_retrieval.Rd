@@ -4,10 +4,7 @@
 \alias{cancel_retrieval}
 \title{Cancels retrieval of a virtual tape from the virtual tape shelf (VTS) to a gateway after the retrieval process is initiated}
 \usage{
-cancel_retrieval(
-  GatewayARN = "string",
-  TapeARN = "string"
-)
+cancel_retrieval(GatewayARN, TapeARN)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -17,12 +14,20 @@ cancel_retrieval(
 \description{
 Cancels retrieval of a virtual tape from the virtual tape shelf (VTS) to a gateway after the retrieval process is initiated. The virtual tape is returned to the VTS. This operation is only supported in the tape gateway type.
 }
+\section{Accepted Parameters}{
+\preformatted{cancel_retrieval(
+  GatewayARN = "string",
+  TapeARN = "string"
+)
+}
+}
+
 \examples{
 # Cancels retrieval of a virtual tape from the virtual tape shelf (VTS) to
 # a gateway after the retrieval process is initiated.
-cancel_retrieval(
+\donttest{cancel_retrieval(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B",
   TapeARN = "arn:aws:storagegateway:us-east-1:999999999999:tape/AMZN01A2A4"
-)
+)}
 
 }

@@ -2,14 +2,10 @@
 % Please edit documentation in R/paws.opsworkscm_operations.R
 \name{restore_server}
 \alias{restore_server}
-\title{Restores a backup to a server that is in a \code{CONNECTION_LOST}, \code{HEALTHY}, \code{RUNNING}, \code{UNHEALTHY}, or \code{TERMINATED} state}
+\title{Restores a backup to a server that is in a CONNECTION_LOST, HEALTHY, RUNNING, UNHEALTHY, or TERMINATED state}
 \usage{
-restore_server(
-  BackupId = "string",
-  ServerName = "string",
-  InstanceType = "string",
-  KeyPair = "string"
-)
+restore_server(BackupId, ServerName, InstanceType = NULL,
+  KeyPair = NULL)
 }
 \arguments{
 \item{BackupId}{[required] The ID of the backup that you want to use to restore a server.}
@@ -28,6 +24,13 @@ This operation is asynchronous.
 
 An \code{InvalidStateException} is thrown when the server is not in a valid state. A \code{ResourceNotFoundException} is thrown when the server does not exist. A \code{ValidationException} is raised when parameters of the request are not valid.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{restore_server(
+  BackupId = "string",
+  ServerName = "string",
+  InstanceType = "string",
+  KeyPair = "string"
+)
 }
+}
+

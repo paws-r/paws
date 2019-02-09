@@ -4,10 +4,7 @@
 \alias{delete_model}
 \title{Deletes a Model}
 \usage{
-delete_model(
-  ApiId = "string",
-  ModelId = "string"
-)
+delete_model(ApiId, ModelId)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -17,6 +14,11 @@ delete_model(
 \description{
 Deletes a Model.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_model(
+  ApiId = "string",
+  ModelId = "string"
+)
 }
+}
+

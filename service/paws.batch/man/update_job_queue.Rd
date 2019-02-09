@@ -4,17 +4,8 @@
 \alias{update_job_queue}
 \title{Updates a job queue}
 \usage{
-update_job_queue(
-  jobQueue = "string",
-  state = "ENABLED"|"DISABLED",
-  priority = 123,
-  computeEnvironmentOrder = list(
-    list(
-      order = 123,
-      computeEnvironment = "string"
-    )
-  )
-)
+update_job_queue(jobQueue, state = NULL, priority = NULL,
+  computeEnvironmentOrder = NULL)
 }
 \arguments{
 \item{jobQueue}{[required] The name or the Amazon Resource Name (ARN) of the job queue.}
@@ -28,11 +19,26 @@ update_job_queue(
 \description{
 Updates a job queue.
 }
+\section{Accepted Parameters}{
+\preformatted{update_job_queue(
+  jobQueue = "string",
+  state = "ENABLED"|"DISABLED",
+  priority = 123,
+  computeEnvironmentOrder = list(
+    list(
+      order = 123,
+      computeEnvironment = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # This example disables a job queue so that it can be deleted.
-update_job_queue(
+\donttest{update_job_queue(
   jobQueue = "GPGPU",
   state = "DISABLED"
-)
+)}
 
 }

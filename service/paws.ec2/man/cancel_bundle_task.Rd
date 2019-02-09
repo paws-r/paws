@@ -4,10 +4,7 @@
 \alias{cancel_bundle_task}
 \title{Cancels a bundling operation for an instance store-backed Windows instance}
 \usage{
-cancel_bundle_task(
-  BundleId = "string",
-  DryRun = TRUE|FALSE
-)
+cancel_bundle_task(BundleId, DryRun = NULL)
 }
 \arguments{
 \item{BundleId}{[required] The ID of the bundle task.}
@@ -17,6 +14,11 @@ cancel_bundle_task(
 \description{
 Cancels a bundling operation for an instance store-backed Windows instance.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{cancel_bundle_task(
+  BundleId = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

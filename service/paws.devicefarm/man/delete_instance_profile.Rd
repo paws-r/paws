@@ -4,9 +4,7 @@
 \alias{delete_instance_profile}
 \title{Deletes a profile that can be applied to one or more private device instances}
 \usage{
-delete_instance_profile(
-  arn = "string"
-)
+delete_instance_profile(arn)
 }
 \arguments{
 \item{arn}{[required] The Amazon Resource Name (ARN) of the instance profile you are requesting to delete.}
@@ -14,6 +12,10 @@ delete_instance_profile(
 \description{
 Deletes a profile that can be applied to one or more private device instances.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_instance_profile(
+  arn = "string"
+)
 }
+}
+

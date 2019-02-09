@@ -4,9 +4,7 @@
 \alias{describe_location_s3}
 \title{Returns metadata, such as bucket name, about an Amazon S3 bucket location}
 \usage{
-describe_location_s3(
-  LocationArn = "string"
-)
+describe_location_s3(LocationArn)
 }
 \arguments{
 \item{LocationArn}{[required] The Amazon Resource Name (ARN) of the Amazon S3 bucket location to describe.}
@@ -14,6 +12,10 @@ describe_location_s3(
 \description{
 Returns metadata, such as bucket name, about an Amazon S3 bucket location.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_location_s3(
+  LocationArn = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{get_api}
 \title{Gets an Api resource}
 \usage{
-get_api(
-  ApiId = "string"
-)
+get_api(ApiId)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -14,6 +12,10 @@ get_api(
 \description{
 Gets an Api resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_api(
+  ApiId = "string"
+)
 }
+}
+

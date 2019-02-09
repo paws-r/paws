@@ -6,7 +6,8 @@
 \alias{paws.pinpointsmsvoice-package}
 \title{paws.pinpointsmsvoice: Amazon Pinpoint SMS and Voice Service}
 \description{
-Pinpoint SMS and Voice Messaging public facing APIs
+Pinpoint SMS and Voice Messaging public facing
+    APIs
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

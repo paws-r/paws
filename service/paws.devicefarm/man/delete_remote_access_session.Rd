@@ -4,9 +4,7 @@
 \alias{delete_remote_access_session}
 \title{Deletes a completed remote access session and its results}
 \usage{
-delete_remote_access_session(
-  arn = "string"
-)
+delete_remote_access_session(arn)
 }
 \arguments{
 \item{arn}{[required] The Amazon Resource Name (ARN) of the sesssion for which you want to delete remote access.}
@@ -14,10 +12,17 @@ delete_remote_access_session(
 \description{
 Deletes a completed remote access session and its results.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_remote_access_session(
+  arn = "string"
+)
+}
+}
+
 \examples{
 # The following example deletes a specific remote access session.
-delete_remote_access_session(
+\donttest{delete_remote_access_session(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-123-456"
-)
+)}
 
 }

@@ -4,9 +4,7 @@
 \alias{disassociate_device_from_room}
 \title{Disassociates a device from its current room}
 \usage{
-disassociate_device_from_room(
-  DeviceArn = "string"
-)
+disassociate_device_from_room(DeviceArn = NULL)
 }
 \arguments{
 \item{DeviceArn}{The ARN of the device to disassociate from a room. Required.}
@@ -14,6 +12,10 @@ disassociate_device_from_room(
 \description{
 Disassociates a device from its current room. The device continues to be connected to the Wi-Fi network and is still registered to the account. The device settings and skills are removed from the room.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disassociate_device_from_room(
+  DeviceArn = "string"
+)
 }
+}
+

@@ -4,20 +4,7 @@
 \alias{describe_regions}
 \title{Describes one or more regions that are currently available to you}
 \usage{
-describe_regions(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  RegionNames = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
+describe_regions(Filters = NULL, RegionNames = NULL, DryRun = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -34,10 +21,28 @@ describe_regions(
 Describes one or more regions that are currently available to you.
 }
 \details{
-For a list of the regions supported by Amazon EC2, see \href{http://docs.aws.amazon.com/general/latest/gr/rande.html#ec2_region}{Regions and Endpoints}.
+For a list of the regions supported by Amazon EC2, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#ec2_region}{Regions and Endpoints}.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_regions(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  RegionNames = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example describes all the regions that are available to you.
-describe_regions()
+\donttest{describe_regions()}
 
 }

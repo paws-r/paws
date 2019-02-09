@@ -9,6 +9,3 @@ list_domain_names()
 \description{
 Lists all search domains owned by an account.
 }
-\examples{
-
-}

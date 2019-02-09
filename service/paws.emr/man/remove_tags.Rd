@@ -4,12 +4,7 @@
 \alias{remove_tags}
 \title{Removes tags from an Amazon EMR resource}
 \usage{
-remove_tags(
-  ResourceId = "string",
-  TagKeys = list(
-    "string"
-  )
-)
+remove_tags(ResourceId, TagKeys)
 }
 \arguments{
 \item{ResourceId}{[required] The Amazon EMR resource identifier from which tags will be removed. This value must be a cluster identifier.}
@@ -22,6 +17,13 @@ Removes tags from an Amazon EMR resource. Tags make it easier to associate clust
 \details{
 The following example removes the stack tag with value Prod from a cluster:
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{remove_tags(
+  ResourceId = "string",
+  TagKeys = list(
+    "string"
+  )
+)
 }
+}
+

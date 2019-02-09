@@ -4,14 +4,8 @@
 \alias{put_rule}
 \title{Creates or updates the specified rule}
 \usage{
-put_rule(
-  Name = "string",
-  ScheduleExpression = "string",
-  EventPattern = "string",
-  State = "ENABLED"|"DISABLED",
-  Description = "string",
-  RoleArn = "string"
-)
+put_rule(Name, ScheduleExpression = NULL, EventPattern = NULL,
+  State = NULL, Description = NULL, RoleArn = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the rule that you are creating or updating.}
@@ -44,6 +38,15 @@ To prevent this, write the rules so that the triggered actions do not re-fire th
 
 An infinite loop can quickly cause higher than expected charges. We recommend that you use budgeting, which alerts you when charges exceed your specified limit. For more information, see \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/budgets-managing-costs.html}{Managing Your Costs with Budgets}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_rule(
+  Name = "string",
+  ScheduleExpression = "string",
+  EventPattern = "string",
+  State = "ENABLED"|"DISABLED",
+  Description = "string",
+  RoleArn = "string"
+)
 }
+}
+

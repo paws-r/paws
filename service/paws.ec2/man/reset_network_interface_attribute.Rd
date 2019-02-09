@@ -4,11 +4,8 @@
 \alias{reset_network_interface_attribute}
 \title{Resets a network interface attribute}
 \usage{
-reset_network_interface_attribute(
-  DryRun = TRUE|FALSE,
-  NetworkInterfaceId = "string",
-  SourceDestCheck = "string"
-)
+reset_network_interface_attribute(DryRun = NULL, NetworkInterfaceId,
+  SourceDestCheck = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -20,6 +17,12 @@ reset_network_interface_attribute(
 \description{
 Resets a network interface attribute. You can specify only one attribute at a time.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{reset_network_interface_attribute(
+  DryRun = TRUE|FALSE,
+  NetworkInterfaceId = "string",
+  SourceDestCheck = "string"
+)
 }
+}
+

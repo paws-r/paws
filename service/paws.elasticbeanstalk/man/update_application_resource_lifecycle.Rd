@@ -4,7 +4,19 @@
 \alias{update_application_resource_lifecycle}
 \title{Modifies lifecycle settings for an application}
 \usage{
-update_application_resource_lifecycle(
+update_application_resource_lifecycle(ApplicationName,
+  ResourceLifecycleConfig)
+}
+\arguments{
+\item{ApplicationName}{[required] The name of the application.}
+
+\item{ResourceLifecycleConfig}{[required] The lifecycle configuration.}
+}
+\description{
+Modifies lifecycle settings for an application.
+}
+\section{Accepted Parameters}{
+\preformatted{update_application_resource_lifecycle(
   ApplicationName = "string",
   ResourceLifecycleConfig = list(
     ServiceRole = "string",
@@ -23,14 +35,5 @@ update_application_resource_lifecycle(
   )
 )
 }
-\arguments{
-\item{ApplicationName}{[required] The name of the application.}
+}
 
-\item{ResourceLifecycleConfig}{[required] The lifecycle configuration.}
-}
-\description{
-Modifies lifecycle settings for an application.
-}
-\examples{
-
-}

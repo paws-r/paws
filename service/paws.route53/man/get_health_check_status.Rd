@@ -4,9 +4,7 @@
 \alias{get_health_check_status}
 \title{Gets status of a specified health check}
 \usage{
-get_health_check_status(
-  HealthCheckId = "string"
-)
+get_health_check_status(HealthCheckId)
 }
 \arguments{
 \item{HealthCheckId}{[required] The ID for the health check that you want the current status for. When you created the health check, \code{CreateHealthCheck} returned the ID in the response, in the \code{HealthCheckId} element.
@@ -16,6 +14,10 @@ If you want to check the status of a calculated health check, you must use the A
 \description{
 Gets status of a specified health check.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_health_check_status(
+  HealthCheckId = "string"
+)
 }
+}
+

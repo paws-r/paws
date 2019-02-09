@@ -4,25 +4,10 @@
 \alias{test_invoke_method}
 \title{Simulate the execution of a Method in your RestApi with headers, parameters, and an incoming request body}
 \usage{
-test_invoke_method(
-  restApiId = "string",
-  resourceId = "string",
-  httpMethod = "string",
-  pathWithQueryString = "string",
-  body = "string",
-  headers = list(
-    "string"
-  ),
-  multiValueHeaders = list(
-    list(
-      "string"
-    )
-  ),
-  clientCertificateId = "string",
-  stageVariables = list(
-    "string"
-  )
-)
+test_invoke_method(restApiId, resourceId, httpMethod,
+  pathWithQueryString = NULL, body = NULL, headers = NULL,
+  multiValueHeaders = NULL, clientCertificateId = NULL,
+  stageVariables = NULL)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -46,6 +31,26 @@ test_invoke_method(
 \description{
 Simulate the execution of a Method in your RestApi with headers, parameters, and an incoming request body.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{test_invoke_method(
+  restApiId = "string",
+  resourceId = "string",
+  httpMethod = "string",
+  pathWithQueryString = "string",
+  body = "string",
+  headers = list(
+    "string"
+  ),
+  multiValueHeaders = list(
+    list(
+      "string"
+    )
+  ),
+  clientCertificateId = "string",
+  stageVariables = list(
+    "string"
+  )
+)
 }
+}
+

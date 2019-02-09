@@ -4,12 +4,7 @@
 \alias{remove_tags_from_resource}
 \title{Removes tags from a directory}
 \usage{
-remove_tags_from_resource(
-  ResourceId = "string",
-  TagKeys = list(
-    "string"
-  )
-)
+remove_tags_from_resource(ResourceId, TagKeys)
 }
 \arguments{
 \item{ResourceId}{[required] Identifier (ID) of the directory from which to remove the tag.}
@@ -19,6 +14,13 @@ remove_tags_from_resource(
 \description{
 Removes tags from a directory.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{remove_tags_from_resource(
+  ResourceId = "string",
+  TagKeys = list(
+    "string"
+  )
+)
 }
+}
+

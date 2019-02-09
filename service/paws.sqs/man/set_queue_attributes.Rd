@@ -4,12 +4,7 @@
 \alias{set_queue_attributes}
 \title{Sets the value of one or more queue attributes}
 \usage{
-set_queue_attributes(
-  QueueUrl = "string",
-  Attributes = list(
-    "string"
-  )
-)
+set_queue_attributes(QueueUrl, Attributes)
 }
 \arguments{
 \item{QueueUrl}{[required] The URL of the Amazon SQS queue whose attributes are set.
@@ -65,6 +60,13 @@ In the future, new attributes might be added. If you write code that calls this 
 
 Cross-account permissions don't apply to this action. For more information, see see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name}{Grant Cross-Account Permissions to a Role and a User Name} in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{set_queue_attributes(
+  QueueUrl = "string",
+  Attributes = list(
+    "string"
+  )
+)
 }
+}
+

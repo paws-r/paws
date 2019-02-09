@@ -4,9 +4,7 @@
 \alias{describe_location_efs}
 \title{Returns metadata, such as the path information about an Amazon EFS location}
 \usage{
-describe_location_efs(
-  LocationArn = "string"
-)
+describe_location_efs(LocationArn)
 }
 \arguments{
 \item{LocationArn}{[required] The Amazon Resource Name (ARN) of the EFS location to describe.}
@@ -14,6 +12,10 @@ describe_location_efs(
 \description{
 Returns metadata, such as the path information about an Amazon EFS location.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_location_efs(
+  LocationArn = "string"
+)
 }
+}
+

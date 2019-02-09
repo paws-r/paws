@@ -4,10 +4,7 @@
 \alias{disassociate_resolver_rule}
 \title{Removes the association between a specified resolver rule and a specified VPC}
 \usage{
-disassociate_resolver_rule(
-  VPCId = "string",
-  ResolverRuleId = "string"
-)
+disassociate_resolver_rule(VPCId, ResolverRuleId)
 }
 \arguments{
 \item{VPCId}{[required] The ID of the VPC that you want to disassociate the resolver rule from.}
@@ -20,6 +17,11 @@ Removes the association between a specified resolver rule and a specified VPC.
 \details{
 If you disassociate a resolver rule from a VPC, Resolver stops forwarding DNS queries for the domain name that you specified in the resolver rule.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disassociate_resolver_rule(
+  VPCId = "string",
+  ResolverRuleId = "string"
+)
 }
+}
+

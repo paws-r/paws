@@ -4,10 +4,7 @@
 \alias{put_dashboard}
 \title{Creates a dashboard if it does not already exist, or updates an existing dashboard}
 \usage{
-put_dashboard(
-  DashboardName = "string",
-  DashboardBody = "string"
-)
+put_dashboard(DashboardName, DashboardBody)
 }
 \arguments{
 \item{DashboardName}{[required] The name of the dashboard. If a dashboard with this name already exists, this call modifies that dashboard, replacing its current contents. Otherwise, a new dashboard is created. The maximum length is 255, and valid characters are A-Z, a-z, 0-9, "-", and "\_". This parameter is required.}
@@ -26,6 +23,11 @@ A simple way to create a dashboard using \code{PutDashboard} is to copy an exist
 
 When you create a dashboard with \code{PutDashboard}, a good practice is to add a text widget at the top of the dashboard with a message that the dashboard was created by script and should not be changed in the console. This message could also point console users to the location of the \code{DashboardBody} script or the CloudFormation template used to create the dashboard.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_dashboard(
+  DashboardName = "string",
+  DashboardBody = "string"
+)
 }
+}
+

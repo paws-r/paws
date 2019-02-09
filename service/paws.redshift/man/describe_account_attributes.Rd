@@ -4,11 +4,7 @@
 \alias{describe_account_attributes}
 \title{Returns a list of attributes attached to an account}
 \usage{
-describe_account_attributes(
-  AttributeNames = list(
-    "string"
-  )
-)
+describe_account_attributes(AttributeNames = NULL)
 }
 \arguments{
 \item{AttributeNames}{A list of attribute names.}
@@ -16,6 +12,12 @@ describe_account_attributes(
 \description{
 Returns a list of attributes attached to an account
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_account_attributes(
+  AttributeNames = list(
+    "string"
+  )
+)
 }
+}
+

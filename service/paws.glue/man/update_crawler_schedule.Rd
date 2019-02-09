@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.glue_operations.R
 \name{update_crawler_schedule}
 \alias{update_crawler_schedule}
-\title{Updates the schedule of a crawler using a \code{cron} expression}
+\title{Updates the schedule of a crawler using a cron expression}
 \usage{
-update_crawler_schedule(
-  CrawlerName = "string",
-  Schedule = "string"
-)
+update_crawler_schedule(CrawlerName, Schedule = NULL)
 }
 \arguments{
 \item{CrawlerName}{[required] Name of the crawler whose schedule to update.}
@@ -17,6 +14,11 @@ update_crawler_schedule(
 \description{
 Updates the schedule of a crawler using a \code{cron} expression.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_crawler_schedule(
+  CrawlerName = "string",
+  Schedule = "string"
+)
 }
+}
+

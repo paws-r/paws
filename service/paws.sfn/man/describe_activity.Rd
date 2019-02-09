@@ -4,9 +4,7 @@
 \alias{describe_activity}
 \title{Describes an activity}
 \usage{
-describe_activity(
-  activityArn = "string"
-)
+describe_activity(activityArn)
 }
 \arguments{
 \item{activityArn}{[required] The Amazon Resource Name (ARN) of the activity to describe.}
@@ -17,6 +15,10 @@ Describes an activity.
 \details{
 This operation is eventually consistent. The results are best effort and may not reflect very recent updates and changes.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_activity(
+  activityArn = "string"
+)
 }
+}
+

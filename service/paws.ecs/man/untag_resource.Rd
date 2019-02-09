@@ -4,12 +4,7 @@
 \alias{untag_resource}
 \title{Deletes specified tags from a resource}
 \usage{
-untag_resource(
-  resourceArn = "string",
-  tagKeys = list(
-    "string"
-  )
-)
+untag_resource(resourceArn, tagKeys)
 }
 \arguments{
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource from which to delete tags. Currently, the supported resources are Amazon ECS tasks, services, task definitions, clusters, and container instances.}
@@ -19,13 +14,23 @@ untag_resource(
 \description{
 Deletes specified tags from a resource.
 }
+\section{Accepted Parameters}{
+\preformatted{untag_resource(
+  resourceArn = "string",
+  tagKeys = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # This example deletes the 'team' tag from the 'dev' cluster.
-untag_resource(
+\donttest{untag_resource(
   resourceArn = "arn:aws:ecs:region:aws_account_id:cluster/dev",
   tagKeys = list(
     "team"
   )
-)
+)}
 
 }

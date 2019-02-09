@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.machinelearning_operations.R
 \name{delete_data_source}
 \alias{delete_data_source}
-\title{Assigns the DELETED status to a \code{DataSource}, rendering it unusable}
+\title{Assigns the DELETED status to a DataSource, rendering it unusable}
 \usage{
-delete_data_source(
-  DataSourceId = "string"
-)
+delete_data_source(DataSourceId)
 }
 \arguments{
 \item{DataSourceId}{[required] A user-supplied ID that uniquely identifies the \code{DataSource}.}
@@ -19,6 +17,10 @@ After using the \code{DeleteDataSource} operation, you can use the GetDataSource
 
 \strong{Caution:} The results of the \code{DeleteDataSource} operation are irreversible.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_data_source(
+  DataSourceId = "string"
+)
 }
+}
+

@@ -14,6 +14,6 @@ For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userg
 }
 \examples{
 # This example describes the available termination policy types.
-describe_termination_policy_types()
+\donttest{describe_termination_policy_types()}
 
 }

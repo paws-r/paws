@@ -6,11 +6,12 @@
 \alias{paws.kms-package}
 \title{paws.kms: AWS Key Management Service}
 \description{
-AWS Key Management Service (AWS KMS) is an encryption and key
-management web service. This guide describes the AWS KMS operations
-that you can call programmatically. For general information about AWS
-KMS, see the [*AWS Key Management Service Developer
-Guide*](http://docs.aws.amazon.com/kms/latest/developerguide/).
+AWS Key Management Service (AWS KMS) is an
+    encryption and key management web service. This guide describes the
+    AWS KMS operations that you can call programmatically. For general
+    information about AWS KMS, see the [*AWS Key Management Service
+    Developer
+    Guide*](http://docs.aws.amazon.com/kms/latest/developerguide/).
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

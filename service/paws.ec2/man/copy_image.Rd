@@ -4,23 +4,15 @@
 \alias{copy_image}
 \title{Initiates the copy of an AMI from the specified source region to the current region}
 \usage{
-copy_image(
-  ClientToken = "string",
-  Description = "string",
-  Encrypted = TRUE|FALSE,
-  KmsKeyId = "string",
-  Name = "string",
-  SourceImageId = "string",
-  SourceRegion = "string",
-  DryRun = TRUE|FALSE
-)
+copy_image(ClientToken = NULL, Description = NULL, Encrypted = NULL,
+  KmsKeyId = NULL, Name, SourceImageId, SourceRegion, DryRun = NULL)
 }
 \arguments{
-\item{ClientToken}{Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html}{How to Ensure Idempotency} in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+\item{ClientToken}{Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html}{How to Ensure Idempotency} in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
 \item{Description}{A description for the new AMI in the destination region.}
 
-\item{Encrypted}{Specifies whether the destination snapshots of the copied image should be encrypted. You can encrypt a copy of an unencrypted snapshot, but you cannot create an unencrypted copy of an encrypted snapshot. The default CMK for EBS is used unless you specify a non-default AWS Key Management Service (AWS KMS) CMK using \code{KmsKeyId}. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS Encryption} in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+\item{Encrypted}{Specifies whether the destination snapshots of the copied image should be encrypted. You can encrypt a copy of an unencrypted snapshot, but you cannot create an unencrypted copy of an encrypted snapshot. The default CMK for EBS is used unless you specify a non-default AWS Key Management Service (AWS KMS) CMK using \code{KmsKeyId}. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS Encryption} in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
 \item{KmsKeyId}{An identifier for the AWS Key Management Service (AWS KMS) customer master key (CMK) to use when creating the encrypted volume. This parameter is only required if you want to use a non-default CMK; if this parameter is not specified, the default CMK for EBS is used. If a \code{KmsKeyId} is specified, the \code{Encrypted} flag must also be set.
 
@@ -50,16 +42,30 @@ Initiates the copy of an AMI from the specified source region to the current reg
 \details{
 Copies of encrypted backing snapshots for the AMI are encrypted. Copies of unencrypted backing snapshots remain unencrypted, unless you set \code{Encrypted} during the copy operation. You cannot create an unencrypted copy of an encrypted backing snapshot.
 
-For more information about the prerequisites and limits when copying an AMI, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html}{Copying an AMI} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information about the prerequisites and limits when copying an AMI, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html}{Copying an AMI} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{copy_image(
+  ClientToken = "string",
+  Description = "string",
+  Encrypted = TRUE|FALSE,
+  KmsKeyId = "string",
+  Name = "string",
+  SourceImageId = "string",
+  SourceRegion = "string",
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example copies the specified AMI from the us-east-1 region to the
 # current region.
-copy_image(
+\donttest{copy_image(
   Description = "",
   Name = "My server",
   SourceImageId = "ami-5731123e",
   SourceRegion = "us-east-1"
-)
+)}
 
 }

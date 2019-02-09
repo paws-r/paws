@@ -4,12 +4,7 @@
 \alias{modify_snapshot_schedule}
 \title{Modifies a snapshot schedule}
 \usage{
-modify_snapshot_schedule(
-  ScheduleIdentifier = "string",
-  ScheduleDefinitions = list(
-    "string"
-  )
-)
+modify_snapshot_schedule(ScheduleIdentifier, ScheduleDefinitions)
 }
 \arguments{
 \item{ScheduleIdentifier}{[required] A unique alphanumeric identifier of the schedule to modify.}
@@ -19,6 +14,13 @@ modify_snapshot_schedule(
 \description{
 Modifies a snapshot schedule. Any schedule associated with a cluster is modified asynchronously.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_snapshot_schedule(
+  ScheduleIdentifier = "string",
+  ScheduleDefinitions = list(
+    "string"
+  )
+)
 }
+}
+

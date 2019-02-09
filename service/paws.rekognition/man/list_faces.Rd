@@ -4,11 +4,7 @@
 \alias{list_faces}
 \title{Returns metadata for faces in the specified collection}
 \usage{
-list_faces(
-  CollectionId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_faces(CollectionId, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{CollectionId}{[required] ID of the collection from which to list the faces.}
@@ -23,11 +19,20 @@ Returns metadata for faces in the specified collection. This metadata includes i
 \details{
 This operation requires permissions to perform the \code{rekognition:ListFaces} action.
 }
+\section{Accepted Parameters}{
+\preformatted{list_faces(
+  CollectionId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
+}
+}
+
 \examples{
 # This operation lists the faces in a Rekognition collection.
-list_faces(
+\donttest{list_faces(
   CollectionId = "myphotos",
   MaxResults = 20L
-)
+)}
 
 }

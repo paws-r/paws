@@ -4,10 +4,7 @@
 \alias{cancel_pipeline_reprocessing}
 \title{Cancels the reprocessing of data through the pipeline}
 \usage{
-cancel_pipeline_reprocessing(
-  pipelineName = "string",
-  reprocessingId = "string"
-)
+cancel_pipeline_reprocessing(pipelineName, reprocessingId)
 }
 \arguments{
 \item{pipelineName}{[required] The name of pipeline for which data reprocessing is canceled.}
@@ -17,6 +14,11 @@ cancel_pipeline_reprocessing(
 \description{
 Cancels the reprocessing of data through the pipeline.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{cancel_pipeline_reprocessing(
+  pipelineName = "string",
+  reprocessingId = "string"
+)
 }
+}
+

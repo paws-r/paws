@@ -4,11 +4,7 @@
 \alias{preview_agents}
 \title{Previews the agents installed on the EC2 instances that are part of the specified assessment target}
 \usage{
-preview_agents(
-  previewAgentsArn = "string",
-  nextToken = "string",
-  maxResults = 123
-)
+preview_agents(previewAgentsArn, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{previewAgentsArn}{[required] The ARN of the assessment target whose agents you want to preview.}
@@ -20,12 +16,21 @@ preview_agents(
 \description{
 Previews the agents installed on the EC2 instances that are part of the specified assessment target.
 }
+\section{Accepted Parameters}{
+\preformatted{preview_agents(
+  previewAgentsArn = "string",
+  nextToken = "string",
+  maxResults = 123
+)
+}
+}
+
 \examples{
 # Previews the agents installed on the EC2 instances that are part of the
 # specified assessment target.
-preview_agents(
+\donttest{preview_agents(
   maxResults = 123L,
   previewAgentsArn = "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq"
-)
+)}
 
 }

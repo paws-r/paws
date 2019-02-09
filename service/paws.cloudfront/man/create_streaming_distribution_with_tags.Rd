@@ -4,7 +4,17 @@
 \alias{create_streaming_distribution_with_tags}
 \title{Create a new streaming distribution with tags}
 \usage{
-create_streaming_distribution_with_tags(
+
+  create_streaming_distribution_with_tags(StreamingDistributionConfigWithTags)
+}
+\arguments{
+\item{StreamingDistributionConfigWithTags}{[required] The streaming distribution's configuration information.}
+}
+\description{
+Create a new streaming distribution with tags.
+}
+\section{Accepted Parameters}{
+\preformatted{create_streaming_distribution_with_tags(
   StreamingDistributionConfigWithTags = list(
     StreamingDistributionConfig = list(
       CallerReference = "string",
@@ -45,12 +55,5 @@ create_streaming_distribution_with_tags(
   )
 )
 }
-\arguments{
-\item{StreamingDistributionConfigWithTags}{[required] The streaming distribution's configuration information.}
 }
-\description{
-Create a new streaming distribution with tags.
-}
-\examples{
 
-}

@@ -4,7 +4,29 @@
 \alias{create_project}
 \title{Creates a project, including project resources}
 \usage{
-create_project(
+create_project(name, id, description = NULL, clientRequestToken = NULL,
+  sourceCode = NULL, toolchain = NULL, tags = NULL)
+}
+\arguments{
+\item{name}{[required] The display name for the project to be created in AWS CodeStar.}
+
+\item{id}{[required] The ID of the project to be created in AWS CodeStar.}
+
+\item{description}{The description of the project, if any.}
+
+\item{clientRequestToken}{A user- or system-generated token that identifies the entity that requested project creation. This token can be used to repeat the request.}
+
+\item{sourceCode}{A list of the Code objects submitted with the project request. If this parameter is specified, the request must also include the toolchain parameter.}
+
+\item{toolchain}{The name of the toolchain template file submitted with the project request. If this parameter is specified, the request must also include the sourceCode parameter.}
+
+\item{tags}{The tags created for the project.}
+}
+\description{
+Creates a project, including project resources. This action creates a project based on a submitted project request. A set of source code files and a toolchain template file can be included with the project request. If these are not provided, an empty project is created.
+}
+\section{Accepted Parameters}{
+\preformatted{create_project(
   name = "string",
   id = "string",
   description = "string",
@@ -50,24 +72,5 @@ create_project(
   )
 )
 }
-\arguments{
-\item{name}{[required] The display name for the project to be created in AWS CodeStar.}
-
-\item{id}{[required] The ID of the project to be created in AWS CodeStar.}
-
-\item{description}{The description of the project, if any.}
-
-\item{clientRequestToken}{A user- or system-generated token that identifies the entity that requested project creation. This token can be used to repeat the request.}
-
-\item{sourceCode}{A list of the Code objects submitted with the project request. If this parameter is specified, the request must also include the toolchain parameter.}
-
-\item{toolchain}{The name of the toolchain template file submitted with the project request. If this parameter is specified, the request must also include the sourceCode parameter.}
-
-\item{tags}{The tags created for the project.}
 }
-\description{
-Creates a project, including project resources. This action creates a project based on a submitted project request. A set of source code files and a toolchain template file can be included with the project request. If these are not provided, an empty project is created.
-}
-\examples{
 
-}

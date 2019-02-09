@@ -4,13 +4,7 @@
 \alias{describe_suggesters}
 \title{Gets the suggesters configured for a domain}
 \usage{
-describe_suggesters(
-  DomainName = "string",
-  SuggesterNames = list(
-    "string"
-  ),
-  Deployed = TRUE|FALSE
-)
+describe_suggesters(DomainName, SuggesterNames = NULL, Deployed = NULL)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain you want to describe.}
@@ -22,6 +16,14 @@ describe_suggesters(
 \description{
 Gets the suggesters configured for a domain. A suggester enables you to display possible matches before users finish typing their queries. Can be limited to specific suggesters by name. By default, shows all suggesters and includes any pending changes to the configuration. Set the \code{Deployed} option to \code{true} to show the active configuration and exclude pending changes. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html}{Getting Search Suggestions} in the \emph{Amazon CloudSearch Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_suggesters(
+  DomainName = "string",
+  SuggesterNames = list(
+    "string"
+  ),
+  Deployed = TRUE|FALSE
+)
 }
+}
+

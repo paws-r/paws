@@ -4,10 +4,7 @@
 \alias{get_pipeline}
 \title{Returns the metadata, structure, stages, and actions of a pipeline}
 \usage{
-get_pipeline(
-  name = "string",
-  version = 123
-)
+get_pipeline(name, version = NULL)
 }
 \arguments{
 \item{name}{[required] The name of the pipeline for which you want to get information. Pipeline names must be unique under an Amazon Web Services (AWS) user account.}
@@ -17,6 +14,11 @@ get_pipeline(
 \description{
 Returns the metadata, structure, stages, and actions of a pipeline. Can be used to return the entire structure of a pipeline in JSON format, which can then be modified and used to update the pipeline structure with UpdatePipeline.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_pipeline(
+  name = "string",
+  version = 123
+)
 }
+}
+

@@ -4,7 +4,21 @@
 \alias{put_bucket_notification}
 \title{Deprecated, see the PutBucketNotificationConfiguraiton operation}
 \usage{
-put_bucket_notification(
+put_bucket_notification(Bucket, ContentMD5 = NULL,
+  NotificationConfiguration)
+}
+\arguments{
+\item{Bucket}{[required]}
+
+\item{ContentMD5}{}
+
+\item{NotificationConfiguration}{[required]}
+}
+\description{
+Deprecated, see the PutBucketNotificationConfiguraiton operation.
+}
+\section{Accepted Parameters}{
+\preformatted{put_bucket_notification(
   Bucket = "string",
   ContentMD5 = "string",
   NotificationConfiguration = list(
@@ -36,16 +50,5 @@ put_bucket_notification(
   )
 )
 }
-\arguments{
-\item{Bucket}{[required]}
-
-\item{ContentMD5}{}
-
-\item{NotificationConfiguration}{[required]}
 }
-\description{
-Deprecated, see the PutBucketNotificationConfiguraiton operation.
-}
-\examples{
 
-}

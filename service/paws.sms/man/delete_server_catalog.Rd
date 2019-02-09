@@ -9,6 +9,8 @@ delete_server_catalog()
 \description{
 Deletes all servers from your server catalog.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_server_catalog()
 }
+}
+

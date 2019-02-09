@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.machinelearning_operations.R
 \name{delete_ml_model}
 \alias{delete_ml_model}
-\title{Assigns the \code{DELETED} status to an \code{MLModel}, rendering it unusable}
+\title{Assigns the DELETED status to an MLModel, rendering it unusable}
 \usage{
-delete_ml_model(
-  MLModelId = "string"
-)
+delete_ml_model(MLModelId)
 }
 \arguments{
 \item{MLModelId}{[required] A user-supplied ID that uniquely identifies the \code{MLModel}.}
@@ -19,6 +17,10 @@ After using the \code{DeleteMLModel} operation, you can use the \code{GetMLModel
 
 \strong{Caution:} The result of the \code{DeleteMLModel} operation is irreversible.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_ml_model(
+  MLModelId = "string"
+)
 }
+}
+

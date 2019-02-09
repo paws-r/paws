@@ -4,20 +4,8 @@
 \alias{create_cluster}
 \title{Creates an Amazon EKS control plane}
 \usage{
-create_cluster(
-  name = "string",
-  version = "string",
-  roleArn = "string",
-  resourcesVpcConfig = list(
-    subnetIds = list(
-      "string"
-    ),
-    securityGroupIds = list(
-      "string"
-    )
-  ),
-  clientRequestToken = "string"
-)
+create_cluster(name, version = NULL, roleArn, resourcesVpcConfig,
+  clientRequestToken = NULL)
 }
 \arguments{
 \item{name}{[required] The unique name to give to your cluster.}
@@ -42,9 +30,27 @@ The cluster control plane is provisioned across multiple Availability Zones and 
 
 After you create an Amazon EKS cluster, you must configure your Kubernetes tooling to communicate with the API server and launch worker nodes into your cluster. For more information, see \href{http://docs.aws.amazon.com/eks/latest/userguide/managing-auth.html}{Managing Cluster Authentication} and \href{http://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html}{Launching Amazon EKS Worker Nodes}in the \emph{Amazon EKS User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_cluster(
+  name = "string",
+  version = "string",
+  roleArn = "string",
+  resourcesVpcConfig = list(
+    subnetIds = list(
+      "string"
+    ),
+    securityGroupIds = list(
+      "string"
+    )
+  ),
+  clientRequestToken = "string"
+)
+}
+}
+
 \examples{
 # The following example creates an Amazon EKS cluster called prod.
-create_cluster(
+\donttest{create_cluster(
   version = "1.10",
   name = "prod",
   clientRequestToken = "1d2129a1-3d38-460a-9756-e5b91fddb951",
@@ -58,6 +64,6 @@ create_cluster(
     )
   ),
   roleArn = "arn:aws:iam::012345678910:role/eks-service-role-AWSServiceRoleForAmazonEKS-J7ONKE3BQ4PI"
-)
+)}
 
 }

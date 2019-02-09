@@ -4,39 +4,17 @@
 \alias{create_db_cluster}
 \title{Creates a new Amazon Neptune DB cluster}
 \usage{
-create_db_cluster(
-  AvailabilityZones = list(
-    "string"
-  ),
-  BackupRetentionPeriod = 123,
-  CharacterSetName = "string",
-  DatabaseName = "string",
-  DBClusterIdentifier = "string",
-  DBClusterParameterGroupName = "string",
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  DBSubnetGroupName = "string",
-  Engine = "string",
-  EngineVersion = "string",
-  Port = 123,
-  MasterUsername = "string",
-  MasterUserPassword = "string",
-  OptionGroupName = "string",
-  PreferredBackupWindow = "string",
-  PreferredMaintenanceWindow = "string",
-  ReplicationSourceIdentifier = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  StorageEncrypted = TRUE|FALSE,
-  KmsKeyId = "string",
-  PreSignedUrl = "string",
-  EnableIAMDatabaseAuthentication = TRUE|FALSE
-)
+create_db_cluster(AvailabilityZones = NULL,
+  BackupRetentionPeriod = NULL, CharacterSetName = NULL,
+  DatabaseName = NULL, DBClusterIdentifier,
+  DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL,
+  DBSubnetGroupName = NULL, Engine, EngineVersion = NULL,
+  Port = NULL, MasterUsername = NULL, MasterUserPassword = NULL,
+  OptionGroupName = NULL, PreferredBackupWindow = NULL,
+  PreferredMaintenanceWindow = NULL,
+  ReplicationSourceIdentifier = NULL, Tags = NULL,
+  StorageEncrypted = NULL, KmsKeyId = NULL, PreSignedUrl = NULL,
+  EnableIAMDatabaseAuthentication = NULL)
 }
 \arguments{
 \item{AvailabilityZones}{A list of EC2 Availability Zones that instances in the DB cluster can be created in.}
@@ -174,6 +152,40 @@ Creates a new Amazon Neptune DB cluster.
 \details{
 You can use the \code{ReplicationSourceIdentifier} parameter to create the DB cluster as a Read Replica of another DB cluster or Amazon Neptune DB instance. For cross-region replication where the DB cluster identified by \code{ReplicationSourceIdentifier} is encrypted, you must also specify the \code{PreSignedUrl} parameter.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_db_cluster(
+  AvailabilityZones = list(
+    "string"
+  ),
+  BackupRetentionPeriod = 123,
+  CharacterSetName = "string",
+  DatabaseName = "string",
+  DBClusterIdentifier = "string",
+  DBClusterParameterGroupName = "string",
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
+  DBSubnetGroupName = "string",
+  Engine = "string",
+  EngineVersion = "string",
+  Port = 123,
+  MasterUsername = "string",
+  MasterUserPassword = "string",
+  OptionGroupName = "string",
+  PreferredBackupWindow = "string",
+  PreferredMaintenanceWindow = "string",
+  ReplicationSourceIdentifier = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  StorageEncrypted = TRUE|FALSE,
+  KmsKeyId = "string",
+  PreSignedUrl = "string",
+  EnableIAMDatabaseAuthentication = TRUE|FALSE
+)
 }
+}
+

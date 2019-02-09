@@ -2,24 +2,48 @@
 % Please edit documentation in R/paws.ecs_operations.R
 \name{put_account_setting}
 \alias{put_account_setting}
-\title{Modifies the ARN and resource ID format of a resource for a specified IAM user, IAM role, or the root user for an account}
+\title{Modifies the ARN and resource ID format of a resource type for a specified IAM user, IAM role, or the root user for an account}
 \usage{
-put_account_setting(
-  name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat",
-  value = "string",
-  principalArn = "string"
-)
+put_account_setting(name, value, principalArn = NULL)
 }
 \arguments{
 \item{name}{[required] The resource name for which to enable the new format. If \code{serviceLongArnFormat} is specified, the ARN for your Amazon ECS services is affected. If \code{taskLongArnFormat} is specified, the ARN and resource ID for your Amazon ECS tasks is affected. If \code{containerInstanceLongArnFormat} is specified, the ARN and resource ID for your Amazon ECS container instances is affected.}
 
 \item{value}{[required] The account setting value for the specified principal ARN. Accepted values are \code{enabled} and \code{disabled}.}
 
-\item{principalArn}{The ARN of the principal, which can be an IAM user, IAM role, or the root user. If you specify the root user, it modifies the ARN and resource ID format for all IAM users, IAM roles, and the root user of the account unless an IAM user or role explicitly overrides these settings for themselves. If this field is omitted, the setting are changed only for the authenticated user.}
+\item{principalArn}{The ARN of the principal, which can be an IAM user, IAM role, or the root user. If you specify the root user, it modifies the ARN and resource ID format for all IAM users, IAM roles, and the root user of the account unless an IAM user or role explicitly overrides these settings for themselves. If this field is omitted, the settings are changed only for the authenticated user.}
 }
 \description{
-Modifies the ARN and resource ID format of a resource for a specified IAM user, IAM role, or the root user for an account. You can specify whether the new ARN and resource ID format are enabled for new resources that are created. Enabling this setting is required to use new Amazon ECS features such as resource tagging.
+Modifies the ARN and resource ID format of a resource type for a specified IAM user, IAM role, or the root user for an account. If the account setting for the root user is changed, it sets the default setting for all of the IAM users and roles for which no individual account setting has been set. The opt-in and opt-out account setting can be set for each Amazon ECS resource separately. The ARN and resource ID format of a resource will be defined by the opt-in status of the IAM user or role that created the resource. Enabling this setting is required to use new Amazon ECS features such as resource tagging. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-resource-ids.html}{Amazon Resource Names (ARNs) and IDs} in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{put_account_setting(
+  name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat",
+  value = "string",
+  principalArn = "string"
+)
+}
+}
+
 \examples{
+# This example modifies your account settings to opt in to the new ARN and
+# resource ID format for Amazon ECS services. If you’re using this command
+# as the root user, then changes apply to the entire AWS account, unless
+# an IAM user or role explicitly overrides these settings for themselves.
+\donttest{put_account_setting(
+  name = "serviceLongArnFormat",
+  value = "enabled"
+)}
+
+# This example modifies the account setting for a specific IAM user or IAM
+# role to opt in to the new ARN and resource ID format for Amazon ECS
+# container instances. If you’re using this command as the root user, then
+# changes apply to the entire AWS account, unless an IAM user or role
+# explicitly overrides these settings for themselves.
+\donttest{put_account_setting(
+  name = "containerInstanceLongArnFormat",
+  value = "enabled",
+  principalArn = "arn:aws:iam::<aws_account_id>:user/principalName"
+)}
 
 }

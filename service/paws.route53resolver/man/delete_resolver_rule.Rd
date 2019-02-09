@@ -4,9 +4,7 @@
 \alias{delete_resolver_rule}
 \title{Deletes a resolver rule}
 \usage{
-delete_resolver_rule(
-  ResolverRuleId = "string"
-)
+delete_resolver_rule(ResolverRuleId)
 }
 \arguments{
 \item{ResolverRuleId}{[required] The ID of the resolver rule that you want to delete.}
@@ -14,6 +12,10 @@ delete_resolver_rule(
 \description{
 Deletes a resolver rule. Before you can delete a resolver rule, you must disassociate it from all the VPCs that you associated the resolver rule with. For more infomation, see DisassociateResolverRule.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_resolver_rule(
+  ResolverRuleId = "string"
+)
 }
+}
+

@@ -4,12 +4,7 @@
 \alias{put_record}
 \title{Writes a single data record into an Amazon Kinesis Data Firehose delivery stream}
 \usage{
-put_record(
-  DeliveryStreamName = "string",
-  Record = list(
-    Data = raw
-  )
-)
+put_record(DeliveryStreamName, Record)
 }
 \arguments{
 \item{DeliveryStreamName}{[required] The name of the delivery stream.}
@@ -34,6 +29,13 @@ Data records sent to Kinesis Data Firehose are stored for 24 hours from the time
 
 Don't concatenate two or more base64 strings to form the data fields of your records. Instead, concatenate the raw data, then perform base64 encoding.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_record(
+  DeliveryStreamName = "string",
+  Record = list(
+    Data = raw
+  )
+)
 }
+}
+

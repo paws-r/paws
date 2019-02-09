@@ -4,19 +4,7 @@
 \alias{list_namespaces}
 \title{Lists summary information about the namespaces that were created by the current AWS account}
 \usage{
-list_namespaces(
-  NextToken = "string",
-  MaxResults = 123,
-  Filters = list(
-    list(
-      Name = "TYPE",
-      Values = list(
-        "string"
-      ),
-      Condition = "EQ"|"IN"|"BETWEEN"
-    )
-  )
-)
+list_namespaces(NextToken = NULL, MaxResults = NULL, Filters = NULL)
 }
 \arguments{
 \item{NextToken}{For the first \code{ListNamespaces} request, omit this value.
@@ -34,6 +22,20 @@ If you specify more than one filter, a namespace must match all filters to be re
 \description{
 Lists summary information about the namespaces that were created by the current AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_namespaces(
+  NextToken = "string",
+  MaxResults = 123,
+  Filters = list(
+    list(
+      Name = "TYPE",
+      Values = list(
+        "string"
+      ),
+      Condition = "EQ"|"IN"|"BETWEEN"
+    )
+  )
+)
 }
+}
+

@@ -4,11 +4,8 @@
 \alias{associate_transit_gateway_route_table}
 \title{Associates the specified attachment with the specified transit gateway route table}
 \usage{
-associate_transit_gateway_route_table(
-  TransitGatewayRouteTableId = "string",
-  TransitGatewayAttachmentId = "string",
-  DryRun = TRUE|FALSE
-)
+associate_transit_gateway_route_table(TransitGatewayRouteTableId,
+  TransitGatewayAttachmentId, DryRun = NULL)
 }
 \arguments{
 \item{TransitGatewayRouteTableId}{[required] The ID of the transit gateway route table.}
@@ -20,6 +17,12 @@ associate_transit_gateway_route_table(
 \description{
 Associates the specified attachment with the specified transit gateway route table. You can associate only one route table with an attachment.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_transit_gateway_route_table(
+  TransitGatewayRouteTableId = "string",
+  TransitGatewayAttachmentId = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

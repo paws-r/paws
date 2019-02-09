@@ -4,9 +4,7 @@
 \alias{describe_document_classifier}
 \title{Gets the properties associated with a document classifier}
 \usage{
-describe_document_classifier(
-  DocumentClassifierArn = "string"
-)
+describe_document_classifier(DocumentClassifierArn)
 }
 \arguments{
 \item{DocumentClassifierArn}{[required] The Amazon Resource Name (ARN) that identifies the document classifier. The operation returns this identifier in its response.}
@@ -14,6 +12,10 @@ describe_document_classifier(
 \description{
 Gets the properties associated with a document classifier.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_document_classifier(
+  DocumentClassifierArn = "string"
+)
 }
+}
+

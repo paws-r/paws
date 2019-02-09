@@ -4,9 +4,7 @@
 \alias{describe_thing}
 \title{Gets information about the specified thing}
 \usage{
-describe_thing(
-  thingName = "string"
-)
+describe_thing(thingName)
 }
 \arguments{
 \item{thingName}{[required] The name of the thing.}
@@ -14,6 +12,10 @@ describe_thing(
 \description{
 Gets information about the specified thing.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_thing(
+  thingName = "string"
+)
 }
+}
+

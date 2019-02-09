@@ -4,13 +4,8 @@
 \alias{modify_db_subnet_group}
 \title{Modifies an existing DB subnet group}
 \usage{
-modify_db_subnet_group(
-  DBSubnetGroupName = "string",
-  DBSubnetGroupDescription = "string",
-  SubnetIds = list(
-    "string"
-  )
-)
+modify_db_subnet_group(DBSubnetGroupName,
+  DBSubnetGroupDescription = NULL, SubnetIds)
 }
 \arguments{
 \item{DBSubnetGroupName}{[required] The name for the DB subnet group. This value is stored as a lowercase string. You can't modify the default subnet group.
@@ -26,6 +21,14 @@ Example: \code{mySubnetgroup}}
 \description{
 Modifies an existing DB subnet group. DB subnet groups must contain at least one subnet in at least two AZs in the AWS Region.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_db_subnet_group(
+  DBSubnetGroupName = "string",
+  DBSubnetGroupDescription = "string",
+  SubnetIds = list(
+    "string"
+  )
+)
 }
+}
+

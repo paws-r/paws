@@ -4,11 +4,7 @@
 \alias{create_hsm}
 \title{Creates a new hardware security module (HSM) in the specified AWS CloudHSM cluster}
 \usage{
-create_hsm(
-  ClusterId = "string",
-  AvailabilityZone = "string",
-  IpAddress = "string"
-)
+create_hsm(ClusterId, AvailabilityZone, IpAddress = NULL)
 }
 \arguments{
 \item{ClusterId}{[required] The identifier (ID) of the HSM's cluster. To find the cluster ID, use DescribeClusters.}
@@ -20,6 +16,12 @@ create_hsm(
 \description{
 Creates a new hardware security module (HSM) in the specified AWS CloudHSM cluster.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_hsm(
+  ClusterId = "string",
+  AvailabilityZone = "string",
+  IpAddress = "string"
+)
 }
+}
+

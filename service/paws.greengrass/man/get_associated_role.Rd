@@ -4,9 +4,7 @@
 \alias{get_associated_role}
 \title{Retrieves the role associated with a particular group}
 \usage{
-get_associated_role(
-  GroupId = "string"
-)
+get_associated_role(GroupId)
 }
 \arguments{
 \item{GroupId}{[required] The ID of the Greengrass group.}
@@ -14,6 +12,10 @@ get_associated_role(
 \description{
 Retrieves the role associated with a particular group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_associated_role(
+  GroupId = "string"
+)
 }
+}
+

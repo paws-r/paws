@@ -4,16 +4,9 @@
 \alias{update_business_report_schedule}
 \title{Updates the configuration of the report delivery schedule with the specified schedule ARN}
 \usage{
-update_business_report_schedule(
-  ScheduleArn = "string",
-  S3BucketName = "string",
-  S3KeyPrefix = "string",
-  Format = "CSV"|"CSV_ZIP",
-  ScheduleName = "string",
-  Recurrence = list(
-    StartDate = "string"
-  )
-)
+update_business_report_schedule(ScheduleArn, S3BucketName = NULL,
+  S3KeyPrefix = NULL, Format = NULL, ScheduleName = NULL,
+  Recurrence = NULL)
 }
 \arguments{
 \item{ScheduleArn}{[required] The ARN of the business report schedule.}
@@ -31,6 +24,17 @@ update_business_report_schedule(
 \description{
 Updates the configuration of the report delivery schedule with the specified schedule ARN.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_business_report_schedule(
+  ScheduleArn = "string",
+  S3BucketName = "string",
+  S3KeyPrefix = "string",
+  Format = "CSV"|"CSV_ZIP",
+  ScheduleName = "string",
+  Recurrence = list(
+    StartDate = "string"
+  )
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{accept_invitation}
 \title{Accepts the invitation to be monitored by a master SecurityHub account}
 \usage{
-accept_invitation(
-  MasterId = "string",
-  InvitationId = "string"
-)
+accept_invitation(MasterId = NULL, InvitationId = NULL)
 }
 \arguments{
 \item{MasterId}{The account ID of the master Security Hub account whose invitation you're accepting.}
@@ -17,6 +14,11 @@ accept_invitation(
 \description{
 Accepts the invitation to be monitored by a master SecurityHub account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{accept_invitation(
+  MasterId = "string",
+  InvitationId = "string"
+)
 }
+}
+

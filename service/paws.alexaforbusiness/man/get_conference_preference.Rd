@@ -9,6 +9,8 @@ get_conference_preference()
 \description{
 Retrieves the existing conference preferences.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_conference_preference()
 }
+}
+

@@ -14,6 +14,8 @@ If you update your account limits, the old limits might be returned for a few mi
 
 This operation has a limit of one transaction per second per account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_limits()
 }
+}
+

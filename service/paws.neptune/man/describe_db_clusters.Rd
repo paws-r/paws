@@ -4,19 +4,8 @@
 \alias{describe_db_clusters}
 \title{Returns information about provisioned DB clusters}
 \usage{
-describe_db_clusters(
-  DBClusterIdentifier = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_db_clusters(DBClusterIdentifier = NULL, Filters = NULL,
+  MaxRecords = NULL, Marker = NULL)
 }
 \arguments{
 \item{DBClusterIdentifier}{The user-supplied DB cluster identifier. If this parameter is specified, information from only the specific DB cluster is returned. This parameter isn't case-sensitive.
@@ -44,6 +33,20 @@ Constraints: Minimum 20, maximum 100.}
 \description{
 Returns information about provisioned DB clusters. This API supports pagination.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_db_clusters(
+  DBClusterIdentifier = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
+}
+

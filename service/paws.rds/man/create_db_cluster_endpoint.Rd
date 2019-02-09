@@ -4,17 +4,9 @@
 \alias{create_db_cluster_endpoint}
 \title{Creates a new custom endpoint and associates it with an Amazon Aurora DB cluster}
 \usage{
-create_db_cluster_endpoint(
-  DBClusterIdentifier = "string",
-  DBClusterEndpointIdentifier = "string",
-  EndpointType = "string",
-  StaticMembers = list(
-    "string"
-  ),
-  ExcludedMembers = list(
-    "string"
-  )
-)
+create_db_cluster_endpoint(DBClusterIdentifier,
+  DBClusterEndpointIdentifier, EndpointType, StaticMembers = NULL,
+  ExcludedMembers = NULL)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The DB cluster identifier of the DB cluster associated with the endpoint. This parameter is stored as a lowercase string.}
@@ -30,6 +22,18 @@ create_db_cluster_endpoint(
 \description{
 Creates a new custom endpoint and associates it with an Amazon Aurora DB cluster.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_db_cluster_endpoint(
+  DBClusterIdentifier = "string",
+  DBClusterEndpointIdentifier = "string",
+  EndpointType = "string",
+  StaticMembers = list(
+    "string"
+  ),
+  ExcludedMembers = list(
+    "string"
+  )
+)
 }
+}
+

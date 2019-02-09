@@ -4,13 +4,7 @@
 \alias{reboot_workspaces}
 \title{Reboots the specified WorkSpaces}
 \usage{
-reboot_workspaces(
-  RebootWorkspaceRequests = list(
-    list(
-      WorkspaceId = "string"
-    )
-  )
-)
+reboot_workspaces(RebootWorkspaceRequests)
 }
 \arguments{
 \item{RebootWorkspaceRequests}{[required] The WorkSpaces to reboot. You can specify up to 25 WorkSpaces.}
@@ -23,6 +17,14 @@ You cannot reboot a WorkSpace unless its state is \code{AVAILABLE} or \code{UNHE
 
 This operation is asynchronous and returns before the WorkSpaces have rebooted.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{reboot_workspaces(
+  RebootWorkspaceRequests = list(
+    list(
+      WorkspaceId = "string"
+    )
+  )
+)
 }
+}
+

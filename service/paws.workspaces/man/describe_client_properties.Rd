@@ -4,11 +4,7 @@
 \alias{describe_client_properties}
 \title{Retrieves a list that describes one or more specified Amazon WorkSpaces clients}
 \usage{
-describe_client_properties(
-  ResourceIds = list(
-    "string"
-  )
-)
+describe_client_properties(ResourceIds)
 }
 \arguments{
 \item{ResourceIds}{[required] The resource identifiers, in the form of directory IDs.}
@@ -16,6 +12,12 @@ describe_client_properties(
 \description{
 Retrieves a list that describes one or more specified Amazon WorkSpaces clients.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_client_properties(
+  ResourceIds = list(
+    "string"
+  )
+)
 }
+}
+

@@ -4,19 +4,8 @@
 \alias{describe_engine_default_cluster_parameters}
 \title{Returns the default engine and system parameter information for the cluster database engine}
 \usage{
-describe_engine_default_cluster_parameters(
-  DBParameterGroupFamily = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_engine_default_cluster_parameters(DBParameterGroupFamily,
+  Filters = NULL, MaxRecords = NULL, Marker = NULL)
 }
 \arguments{
 \item{DBParameterGroupFamily}{[required] The name of the DB cluster parameter group family to return engine parameter information for.}
@@ -37,6 +26,20 @@ Returns the default engine and system parameter information for the cluster data
 \details{
 For more information on Amazon Aurora, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?} in the \emph{Amazon Aurora User Guide.}
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_engine_default_cluster_parameters(
+  DBParameterGroupFamily = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
+}
+

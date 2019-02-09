@@ -4,20 +4,8 @@
 \alias{describe_dhcp_options}
 \title{Describes one or more of your DHCP options sets}
 \usage{
-describe_dhcp_options(
-  DhcpOptionsIds = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE
-)
+describe_dhcp_options(DhcpOptionsIds = NULL, Filters = NULL,
+  DryRun = NULL)
 }
 \arguments{
 \item{DhcpOptionsIds}{The IDs of one or more DHCP options sets.
@@ -40,14 +28,32 @@ Default: Describes all your DHCP options sets.}
 Describes one or more of your DHCP options sets.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html}{DHCP Options Sets} in the \emph{Amazon Virtual Private Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html}{DHCP Options Sets} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_dhcp_options(
+  DhcpOptionsIds = list(
+    "string"
+  ),
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example describes the specified DHCP options set.
-describe_dhcp_options(
+\donttest{describe_dhcp_options(
   DhcpOptionsIds = list(
     "dopt-d9070ebb"
   )
-)
+)}
 
 }

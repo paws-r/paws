@@ -4,12 +4,8 @@
 \alias{list_resources_for_tag_option}
 \title{Lists the resources associated with the specified TagOption}
 \usage{
-list_resources_for_tag_option(
-  TagOptionId = "string",
-  ResourceType = "string",
-  PageSize = 123,
-  PageToken = "string"
-)
+list_resources_for_tag_option(TagOptionId, ResourceType = NULL,
+  PageSize = NULL, PageToken = NULL)
 }
 \arguments{
 \item{TagOptionId}{[required] The TagOption identifier.}
@@ -27,6 +23,13 @@ list_resources_for_tag_option(
 \description{
 Lists the resources associated with the specified TagOption.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_resources_for_tag_option(
+  TagOptionId = "string",
+  ResourceType = "string",
+  PageSize = 123,
+  PageToken = "string"
+)
 }
+}
+

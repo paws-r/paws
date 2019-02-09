@@ -4,7 +4,21 @@
 \alias{add_instance_fleet}
 \title{Adds an instance fleet to a running cluster}
 \usage{
-add_instance_fleet(
+add_instance_fleet(ClusterId, InstanceFleet)
+}
+\arguments{
+\item{ClusterId}{[required] The unique identifier of the cluster.}
+
+\item{InstanceFleet}{[required] Specifies the configuration of the instance fleet.}
+}
+\description{
+Adds an instance fleet to a running cluster.
+}
+\details{
+The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x.
+}
+\section{Accepted Parameters}{
+\preformatted{add_instance_fleet(
   ClusterId = "string",
   InstanceFleet = list(
     Name = "string",
@@ -51,17 +65,5 @@ add_instance_fleet(
   )
 )
 }
-\arguments{
-\item{ClusterId}{[required] The unique identifier of the cluster.}
+}
 
-\item{InstanceFleet}{[required] Specifies the configuration of the instance fleet.}
-}
-\description{
-Adds an instance fleet to a running cluster.
-}
-\details{
-The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x.
-}
-\examples{
-
-}

@@ -4,7 +4,16 @@
 \alias{put_policy}
 \title{Creates an AWS Firewall Manager policy}
 \usage{
-put_policy(
+put_policy(Policy)
+}
+\arguments{
+\item{Policy}{[required] The details of the AWS Firewall Manager policy to be created.}
+}
+\description{
+Creates an AWS Firewall Manager policy.
+}
+\section{Accepted Parameters}{
+\preformatted{put_policy(
   Policy = list(
     PolicyId = "string",
     PolicyName = "string",
@@ -35,12 +44,5 @@ put_policy(
   )
 )
 }
-\arguments{
-\item{Policy}{[required] The details of the AWS Firewall Manager policy to be created.}
 }
-\description{
-Creates an AWS Firewall Manager policy.
-}
-\examples{
 
-}

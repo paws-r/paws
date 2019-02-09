@@ -4,11 +4,7 @@
 \alias{list_principal_things}
 \title{Lists the things associated with the specified principal}
 \usage{
-list_principal_things(
-  nextToken = "string",
-  maxResults = 123,
-  principal = "string"
-)
+list_principal_things(nextToken = NULL, maxResults = NULL, principal)
 }
 \arguments{
 \item{nextToken}{The token to retrieve the next set of results.}
@@ -20,6 +16,12 @@ list_principal_things(
 \description{
 Lists the things associated with the specified principal.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_principal_things(
+  nextToken = "string",
+  maxResults = 123,
+  principal = "string"
+)
 }
+}
+

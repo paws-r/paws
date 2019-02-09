@@ -4,9 +4,7 @@
 \alias{cancel_job}
 \title{The CancelJob operation cancels an unfinished job}
 \usage{
-cancel_job(
-  Id = "string"
-)
+cancel_job(Id)
 }
 \arguments{
 \item{Id}{[required] The identifier of the job that you want to cancel.
@@ -19,6 +17,10 @@ The CancelJob operation cancels an unfinished job.
 \details{
 You can only cancel a job that has a status of \code{Submitted}. To prevent a pipeline from starting to process a job while you're getting the job identifier, use UpdatePipelineStatus to temporarily pause the pipeline.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{cancel_job(
+  Id = "string"
+)
 }
+}
+

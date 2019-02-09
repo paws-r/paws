@@ -4,9 +4,7 @@
 \alias{delete_tag_option}
 \title{Deletes the specified TagOption}
 \usage{
-delete_tag_option(
-  Id = "string"
-)
+delete_tag_option(Id)
 }
 \arguments{
 \item{Id}{[required] The TagOption identifier.}
@@ -17,6 +15,10 @@ Deletes the specified TagOption.
 \details{
 You cannot delete a TagOption if it is associated with a product or portfolio.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_tag_option(
+  Id = "string"
+)
 }
+}
+

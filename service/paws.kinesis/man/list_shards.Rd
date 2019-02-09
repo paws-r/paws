@@ -4,13 +4,9 @@
 \alias{list_shards}
 \title{Lists the shards in a stream and provides information about each shard}
 \usage{
-list_shards(
-  StreamName = "string",
-  NextToken = "string",
-  ExclusiveStartShardId = "string",
-  MaxResults = 123,
-  StreamCreationTimestamp = as.POSIXct("2015-01-01")
-)
+list_shards(StreamName = NULL, NextToken = NULL,
+  ExclusiveStartShardId = NULL, MaxResults = NULL,
+  StreamCreationTimestamp = NULL)
 }
 \arguments{
 \item{StreamName}{The name of the data stream whose shards you want to list.
@@ -45,6 +41,14 @@ Lists the shards in a stream and provides information about each shard. This ope
 \details{
 This API is a new operation that is used by the Amazon Kinesis Client Library (KCL). If you have a fine-grained IAM policy that only allows specific operations, you must update your policy to allow calls to this API. For more information, see \href{https://docs.aws.amazon.com/streams/latest/dev/controlling-access.html}{Controlling Access to Amazon Kinesis Data Streams Resources Using IAM}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_shards(
+  StreamName = "string",
+  NextToken = "string",
+  ExclusiveStartShardId = "string",
+  MaxResults = 123,
+  StreamCreationTimestamp = as.POSIXct("2015-01-01")
+)
 }
+}
+

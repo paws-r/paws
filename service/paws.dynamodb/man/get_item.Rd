@@ -2,44 +2,11 @@
 % Please edit documentation in R/paws.dynamodb_operations.R
 \name{get_item}
 \alias{get_item}
-\title{The \code{GetItem} operation returns a set of attributes for the item with the given primary key}
+\title{The GetItem operation returns a set of attributes for the item with the given primary key}
 \usage{
-get_item(
-  TableName = "string",
-  Key = list(
-    list(
-      S = "string",
-      N = "string",
-      B = raw,
-      SS = list(
-        "string"
-      ),
-      NS = list(
-        "string"
-      ),
-      BS = list(
-        raw
-      ),
-      M = list(
-        list()
-      ),
-      L = list(
-        list()
-      ),
-      NULL = TRUE|FALSE,
-      BOOL = TRUE|FALSE
-    )
-  ),
-  AttributesToGet = list(
-    "string"
-  ),
-  ConsistentRead = TRUE|FALSE,
-  ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE",
-  ProjectionExpression = "string",
-  ExpressionAttributeNames = list(
-    "string"
-  )
-)
+get_item(TableName, Key, AttributesToGet = NULL, ConsistentRead = NULL,
+  ReturnConsumedCapacity = NULL, ProjectionExpression = NULL,
+  ExpressionAttributeNames = NULL)
 }
 \arguments{
 \item{TableName}{[required] The name of the table containing the requested item.}
@@ -92,11 +59,51 @@ The \code{GetItem} operation returns a set of attributes for the item with the g
 \details{
 \code{GetItem} provides an eventually consistent read by default. If your application requires a strongly consistent read, set \code{ConsistentRead} to \code{true}. Although a strongly consistent read might take more time than an eventually consistent read, it always returns the last updated value.
 }
+\section{Accepted Parameters}{
+\preformatted{get_item(
+  TableName = "string",
+  Key = list(
+    list(
+      S = "string",
+      N = "string",
+      B = raw,
+      SS = list(
+        "string"
+      ),
+      NS = list(
+        "string"
+      ),
+      BS = list(
+        raw
+      ),
+      M = list(
+        list()
+      ),
+      L = list(
+        list()
+      ),
+      NULL = TRUE|FALSE,
+      BOOL = TRUE|FALSE
+    )
+  ),
+  AttributesToGet = list(
+    "string"
+  ),
+  ConsistentRead = TRUE|FALSE,
+  ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE",
+  ProjectionExpression = "string",
+  ExpressionAttributeNames = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # This example retrieves an item from the Music table. The table has a
 # partition key and a sort key (Artist and SongTitle), so you must specify
 # both of these attributes.
-get_item(
+\donttest{get_item(
   Key = list(
     Artist = list(
       S = "Acme Band"
@@ -106,6 +113,6 @@ get_item(
     )
   ),
   TableName = "Music"
-)
+)}
 
 }

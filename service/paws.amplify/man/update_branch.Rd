@@ -4,22 +4,10 @@
 \alias{update_branch}
 \title{Updates a branch for an Amplify App}
 \usage{
-update_branch(
-  appId = "string",
-  branchName = "string",
-  description = "string",
-  framework = "string",
-  stage = "PRODUCTION"|"BETA"|"DEVELOPMENT"|"EXPERIMENTAL",
-  enableNotification = TRUE|FALSE,
-  enableAutoBuild = TRUE|FALSE,
-  environmentVariables = list(
-    "string"
-  ),
-  basicAuthCredentials = "string",
-  enableBasicAuth = TRUE|FALSE,
-  buildSpec = "string",
-  ttl = "string"
-)
+update_branch(appId, branchName, description = NULL, framework = NULL,
+  stage = NULL, enableNotification = NULL, enableAutoBuild = NULL,
+  environmentVariables = NULL, basicAuthCredentials = NULL,
+  enableBasicAuth = NULL, buildSpec = NULL, ttl = NULL)
 }
 \arguments{
 \item{appId}{[required] Unique Id for an Amplify App.}
@@ -49,6 +37,23 @@ update_branch(
 \description{
 Updates a branch for an Amplify App.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_branch(
+  appId = "string",
+  branchName = "string",
+  description = "string",
+  framework = "string",
+  stage = "PRODUCTION"|"BETA"|"DEVELOPMENT"|"EXPERIMENTAL",
+  enableNotification = TRUE|FALSE,
+  enableAutoBuild = TRUE|FALSE,
+  environmentVariables = list(
+    "string"
+  ),
+  basicAuthCredentials = "string",
+  enableBasicAuth = TRUE|FALSE,
+  buildSpec = "string",
+  ttl = "string"
+)
 }
+}
+

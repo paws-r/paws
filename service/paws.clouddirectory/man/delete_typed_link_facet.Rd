@@ -4,10 +4,7 @@
 \alias{delete_typed_link_facet}
 \title{Deletes a TypedLinkFacet}
 \usage{
-delete_typed_link_facet(
-  SchemaArn = "string",
-  Name = "string"
-)
+delete_typed_link_facet(SchemaArn, Name)
 }
 \arguments{
 \item{SchemaArn}{[required] The Amazon Resource Name (ARN) that is associated with the schema. For more information, see arns.}
@@ -17,6 +14,11 @@ delete_typed_link_facet(
 \description{
 Deletes a TypedLinkFacet. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_typed_link_facet(
+  SchemaArn = "string",
+  Name = "string"
+)
 }
+}
+

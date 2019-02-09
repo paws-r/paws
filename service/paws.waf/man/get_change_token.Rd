@@ -14,9 +14,14 @@ Each create, update, or delete request must use a unique change token. If your a
 
 When you use a change token in a create, update, or delete request, the status of the change token changes to \code{PENDING}, which indicates that AWS WAF is propagating the change to all AWS WAF servers. Use \code{GetChangeTokenStatus} to determine the status of your change token.
 }
+\section{Accepted Parameters}{
+\preformatted{get_change_token()
+}
+}
+
 \examples{
 # The following example returns a change token to use for a create, update
 # or delete operation.
-get_change_token()
+\donttest{get_change_token()}
 
 }

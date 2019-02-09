@@ -4,10 +4,7 @@
 \alias{create_ip_set}
 \title{Creates an IPSet, which you use to specify which web requests that you want to allow or block based on the IP addresses that the requests originate from}
 \usage{
-create_ip_set(
-  Name = "string",
-  ChangeToken = "string"
-)
+create_ip_set(Name, ChangeToken)
 }
 \arguments{
 \item{Name}{[required] A friendly name or description of the IPSet. You can't change \code{Name} after you create the \code{IPSet}.}
@@ -28,11 +25,19 @@ To create and configure an \code{IPSet}, perform the following steps:
 
 For more information about how to use the AWS WAF API to allow or block HTTP requests, see the \href{http://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_ip_set(
+  Name = "string",
+  ChangeToken = "string"
+)
+}
+}
+
 \examples{
 # The following example creates an IP match set named MyIPSetFriendlyName.
-create_ip_set(
+\donttest{create_ip_set(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   Name = "MyIPSetFriendlyName"
-)
+)}
 
 }

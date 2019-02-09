@@ -4,15 +4,8 @@
 \alias{list_entity_recognizers}
 \title{Gets a list of the properties of all entity recognizers that you created, including recognizers currently in training}
 \usage{
-list_entity_recognizers(
-  Filter = list(
-    Status = "SUBMITTED"|"TRAINING"|"DELETING"|"STOP_REQUESTED"|"STOPPED"|"IN_ERROR"|"TRAINED",
-    SubmitTimeBefore = as.POSIXct("2015-01-01"),
-    SubmitTimeAfter = as.POSIXct("2015-01-01")
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
+list_entity_recognizers(Filter = NULL, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{Filter}{Filters the list of entities returned. You can filter on \code{Status}, \code{SubmitTimeBefore}, or \code{SubmitTimeAfter}. You can only set one filter at a time.}
@@ -27,6 +20,16 @@ Gets a list of the properties of all entity recognizers that you created, includ
 \details{
 The results of this list are not in any particular order. Please get the list and sort locally if needed.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_entity_recognizers(
+  Filter = list(
+    Status = "SUBMITTED"|"TRAINING"|"DELETING"|"STOP_REQUESTED"|"STOPPED"|"IN_ERROR"|"TRAINED",
+    SubmitTimeBefore = as.POSIXct("2015-01-01"),
+    SubmitTimeAfter = as.POSIXct("2015-01-01")
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{delete_bot_version}
 \title{Deletes a specific version of a bot}
 \usage{
-delete_bot_version(
-  name = "string",
-  version = "string"
-)
+delete_bot_version(name, version)
 }
 \arguments{
 \item{name}{[required] The name of the bot.}
@@ -20,6 +17,11 @@ Deletes a specific version of a bot. To delete all versions of a bot, use the De
 \details{
 This operation requires permissions for the \code{lex:DeleteBotVersion} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_bot_version(
+  name = "string",
+  version = "string"
+)
 }
+}
+

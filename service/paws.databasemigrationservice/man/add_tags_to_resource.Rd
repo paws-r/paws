@@ -4,15 +4,7 @@
 \alias{add_tags_to_resource}
 \title{Adds metadata tags to an AWS DMS resource, including replication instance, endpoint, security group, and migration task}
 \usage{
-add_tags_to_resource(
-  ResourceArn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+add_tags_to_resource(ResourceArn, Tags)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to be added to. AWS DMS resources include a replication instance, endpoint, and a replication task.}
@@ -22,13 +14,26 @@ add_tags_to_resource(
 \description{
 Adds metadata tags to an AWS DMS resource, including replication instance, endpoint, security group, and migration task. These tags can also be used with cost allocation reporting to track cost associated with DMS resources, or used in a Condition statement in an IAM policy for DMS.
 }
+\section{Accepted Parameters}{
+\preformatted{add_tags_to_resource(
+  ResourceArn = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # Adds metadata tags to an AWS DMS resource, including replication
 # instance, endpoint, security group, and migration task. These tags can
 # also be used with cost allocation reporting to track cost associated
 # with AWS DMS resources, or used in a Condition statement in an IAM
 # policy for AWS DMS.
-add_tags_to_resource(
+\donttest{add_tags_to_resource(
   ResourceArn = "arn:aws:dms:us-east-1:123456789012:endpoint:ASXWXJZLNWNT5HTWCGV2BUJQ7E",
   Tags = list(
     list(
@@ -36,6 +41,6 @@ add_tags_to_resource(
       Value = "1633456"
     )
   )
-)
+)}
 
 }

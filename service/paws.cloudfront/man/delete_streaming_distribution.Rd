@@ -4,10 +4,7 @@
 \alias{delete_streaming_distribution}
 \title{Delete a streaming distribution}
 \usage{
-delete_streaming_distribution(
-  Id = "string",
-  IfMatch = "string"
-)
+delete_streaming_distribution(Id, IfMatch = NULL)
 }
 \arguments{
 \item{Id}{[required] The distribution ID.}
@@ -32,6 +29,11 @@ Delete a streaming distribution. To delete an RTMP distribution using the CloudF
 
 For information about deleting a distribution using the CloudFront console, see \href{http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowToDeleteDistribution.html}{Deleting a Distribution} in the \emph{Amazon CloudFront Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_streaming_distribution(
+  Id = "string",
+  IfMatch = "string"
+)
 }
+}
+

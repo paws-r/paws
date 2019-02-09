@@ -4,7 +4,33 @@
 \alias{create_trigger}
 \title{Creates a new trigger}
 \usage{
-create_trigger(
+create_trigger(Name, Type, Schedule = NULL, Predicate = NULL, Actions,
+  Description = NULL, StartOnCreation = NULL)
+}
+\arguments{
+\item{Name}{[required] The name of the trigger.}
+
+\item{Type}{[required] The type of the new trigger.}
+
+\item{Schedule}{A \code{cron} expression used to specify the schedule (see \href{http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html}{Time-Based Schedules for Jobs and Crawlers}. For example, to run something every day at 12:15 UTC, you would specify: \code{cron(15 12 * * ? *)}.
+
+This field is required when the trigger type is SCHEDULED.}
+
+\item{Predicate}{A predicate to specify when the new trigger should fire.
+
+This field is required when the trigger type is CONDITIONAL.}
+
+\item{Actions}{[required] The actions initiated by this trigger when it fires.}
+
+\item{Description}{A description of the new trigger.}
+
+\item{StartOnCreation}{Set to true to start SCHEDULED and CONDITIONAL triggers when created. True not supported for ON\_DEMAND triggers.}
+}
+\description{
+Creates a new trigger.
+}
+\section{Accepted Parameters}{
+\preformatted{create_trigger(
   Name = "string",
   Type = "SCHEDULED"|"CONDITIONAL"|"ON_DEMAND",
   Schedule = "string",
@@ -35,28 +61,5 @@ create_trigger(
   StartOnCreation = TRUE|FALSE
 )
 }
-\arguments{
-\item{Name}{[required] The name of the trigger.}
-
-\item{Type}{[required] The type of the new trigger.}
-
-\item{Schedule}{A \code{cron} expression used to specify the schedule (see \href{http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html}{Time-Based Schedules for Jobs and Crawlers}. For example, to run something every day at 12:15 UTC, you would specify: \code{cron(15 12 * * ? *)}.
-
-This field is required when the trigger type is SCHEDULED.}
-
-\item{Predicate}{A predicate to specify when the new trigger should fire.
-
-This field is required when the trigger type is CONDITIONAL.}
-
-\item{Actions}{[required] The actions initiated by this trigger when it fires.}
-
-\item{Description}{A description of the new trigger.}
-
-\item{StartOnCreation}{Set to true to start SCHEDULED and CONDITIONAL triggers when created. True not supported for ON\_DEMAND triggers.}
 }
-\description{
-Creates a new trigger.
-}
-\examples{
 
-}

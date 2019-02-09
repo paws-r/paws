@@ -4,9 +4,7 @@
 \alias{disable_topic_rule}
 \title{Disables the rule}
 \usage{
-disable_topic_rule(
-  ruleName = "string"
-)
+disable_topic_rule(ruleName)
 }
 \arguments{
 \item{ruleName}{[required] The name of the rule to disable.}
@@ -14,6 +12,10 @@ disable_topic_rule(
 \description{
 Disables the rule.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disable_topic_rule(
+  ruleName = "string"
+)
 }
+}
+

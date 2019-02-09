@@ -4,12 +4,7 @@
 \alias{delete_network_acl_entry}
 \title{Deletes the specified ingress or egress entry (rule) from the specified network ACL}
 \usage{
-delete_network_acl_entry(
-  DryRun = TRUE|FALSE,
-  Egress = TRUE|FALSE,
-  NetworkAclId = "string",
-  RuleNumber = 123
-)
+delete_network_acl_entry(DryRun = NULL, Egress, NetworkAclId, RuleNumber)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -23,13 +18,23 @@ delete_network_acl_entry(
 \description{
 Deletes the specified ingress or egress entry (rule) from the specified network ACL.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_network_acl_entry(
+  DryRun = TRUE|FALSE,
+  Egress = TRUE|FALSE,
+  NetworkAclId = "string",
+  RuleNumber = 123
+)
+}
+}
+
 \examples{
 # This example deletes ingress rule number 100 from the specified network
 # ACL.
-delete_network_acl_entry(
+\donttest{delete_network_acl_entry(
   Egress = TRUE,
   NetworkAclId = "acl-5fb85d36",
   RuleNumber = 100L
-)
+)}
 
 }

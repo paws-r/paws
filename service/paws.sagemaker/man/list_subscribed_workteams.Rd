@@ -4,11 +4,8 @@
 \alias{list_subscribed_workteams}
 \title{Gets a list of the work teams that you are subscribed to in the AWS Marketplace}
 \usage{
-list_subscribed_workteams(
-  NameContains = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_subscribed_workteams(NameContains = NULL, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{NameContains}{A string in the work team name. This filter returns only work teams whose name contains the specified string.}
@@ -20,6 +17,12 @@ list_subscribed_workteams(
 \description{
 Gets a list of the work teams that you are subscribed to in the AWS Marketplace. The list may be empty if no work team satisfies the filter specified in the \code{NameContains} parameter.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_subscribed_workteams(
+  NameContains = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

@@ -16,6 +16,10 @@ test_that("describe_export_tasks", {
     expect_error(describe_export_tasks(), NA)
 })
 
+test_that("describe_import_tasks", {
+    expect_error(describe_import_tasks(), NA)
+})
+
 test_that("describe_tags", {
     expect_error(describe_tags(), NA)
 })

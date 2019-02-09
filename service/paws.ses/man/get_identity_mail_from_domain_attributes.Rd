@@ -4,11 +4,7 @@
 \alias{get_identity_mail_from_domain_attributes}
 \title{Returns the custom MAIL FROM attributes for a list of identities (email addresses : domains)}
 \usage{
-get_identity_mail_from_domain_attributes(
-  Identities = list(
-    "string"
-  )
-)
+get_identity_mail_from_domain_attributes(Identities)
 }
 \arguments{
 \item{Identities}{[required] A list of one or more identities.}
@@ -19,13 +15,22 @@ Returns the custom MAIL FROM attributes for a list of identities (email addresse
 \details{
 This operation is throttled at one request per second and can only get custom MAIL FROM attributes for up to 100 identities at a time.
 }
+\section{Accepted Parameters}{
+\preformatted{get_identity_mail_from_domain_attributes(
+  Identities = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # The following example returns the custom MAIL FROM attributes for an
 # identity:
-get_identity_mail_from_domain_attributes(
+\donttest{get_identity_mail_from_domain_attributes(
   Identities = list(
     "example.com"
   )
-)
+)}
 
 }

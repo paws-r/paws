@@ -4,10 +4,7 @@
 \alias{revoke_flow_entitlement}
 \title{Revokes an entitlement from a flow}
 \usage{
-revoke_flow_entitlement(
-  EntitlementArn = "string",
-  FlowArn = "string"
-)
+revoke_flow_entitlement(EntitlementArn, FlowArn)
 }
 \arguments{
 \item{EntitlementArn}{[required] The ARN of the entitlement that you want to revoke.}
@@ -17,6 +14,11 @@ revoke_flow_entitlement(
 \description{
 Revokes an entitlement from a flow. Once an entitlement is revoked, the content becomes unavailable to the subscriber and the associated output is removed.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{revoke_flow_entitlement(
+  EntitlementArn = "string",
+  FlowArn = "string"
+)
 }
+}
+

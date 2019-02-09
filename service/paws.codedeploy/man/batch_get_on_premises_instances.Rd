@@ -4,11 +4,7 @@
 \alias{batch_get_on_premises_instances}
 \title{Gets information about one or more on-premises instances}
 \usage{
-batch_get_on_premises_instances(
-  instanceNames = list(
-    "string"
-  )
-)
+batch_get_on_premises_instances(instanceNames)
 }
 \arguments{
 \item{instanceNames}{[required] The names of the on-premises instances about which to get information.}
@@ -16,6 +12,12 @@ batch_get_on_premises_instances(
 \description{
 Gets information about one or more on-premises instances.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{batch_get_on_premises_instances(
+  instanceNames = list(
+    "string"
+  )
+)
 }
+}
+

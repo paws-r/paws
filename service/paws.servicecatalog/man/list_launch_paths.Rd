@@ -4,12 +4,8 @@
 \alias{list_launch_paths}
 \title{Lists the paths to the specified product}
 \usage{
-list_launch_paths(
-  AcceptLanguage = "string",
-  ProductId = "string",
-  PageSize = 123,
-  PageToken = "string"
-)
+list_launch_paths(AcceptLanguage = NULL, ProductId, PageSize = NULL,
+  PageToken = NULL)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -28,6 +24,13 @@ list_launch_paths(
 \description{
 Lists the paths to the specified product. A path is how the user has access to a specified product, and is necessary when provisioning a product. A path also determines the constraints put on the product.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_launch_paths(
+  AcceptLanguage = "string",
+  ProductId = "string",
+  PageSize = 123,
+  PageToken = "string"
+)
 }
+}
+

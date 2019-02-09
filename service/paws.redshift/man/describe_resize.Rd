@@ -4,9 +4,7 @@
 \alias{describe_resize}
 \title{Returns information about the last resize operation for the specified cluster}
 \usage{
-describe_resize(
-  ClusterIdentifier = "string"
-)
+describe_resize(ClusterIdentifier)
 }
 \arguments{
 \item{ClusterIdentifier}{[required] The unique identifier of a cluster whose resize progress you are requesting. This parameter is case-sensitive.
@@ -19,6 +17,10 @@ Returns information about the last resize operation for the specified cluster. I
 \details{
 A resize operation can be requested using ModifyCluster and specifying a different number or type of nodes for the cluster.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_resize(
+  ClusterIdentifier = "string"
+)
 }
+}
+

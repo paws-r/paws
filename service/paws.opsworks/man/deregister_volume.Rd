@@ -4,9 +4,7 @@
 \alias{deregister_volume}
 \title{Deregisters an Amazon EBS volume}
 \usage{
-deregister_volume(
-  VolumeId = "string"
-)
+deregister_volume(VolumeId)
 }
 \arguments{
 \item{VolumeId}{[required] The AWS OpsWorks Stacks volume ID, which is the GUID that AWS OpsWorks Stacks assigned to the instance when you registered the volume with the stack, not the Amazon EC2 volume ID.}
@@ -17,6 +15,10 @@ Deregisters an Amazon EBS volume. The volume can then be registered by another s
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{deregister_volume(
+  VolumeId = "string"
+)
 }
+}
+

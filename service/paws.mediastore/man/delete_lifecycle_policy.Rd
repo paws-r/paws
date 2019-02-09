@@ -4,9 +4,7 @@
 \alias{delete_lifecycle_policy}
 \title{Removes an object lifecycle policy from a container}
 \usage{
-delete_lifecycle_policy(
-  ContainerName = "string"
-)
+delete_lifecycle_policy(ContainerName)
 }
 \arguments{
 \item{ContainerName}{[required] The name of the container that holds the object lifecycle policy.}
@@ -14,6 +12,10 @@ delete_lifecycle_policy(
 \description{
 Removes an object lifecycle policy from a container.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_lifecycle_policy(
+  ContainerName = "string"
+)
 }
+}
+

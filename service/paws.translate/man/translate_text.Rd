@@ -4,14 +4,8 @@
 \alias{translate_text}
 \title{Translates input text from the source language to the target language}
 \usage{
-translate_text(
-  Text = "string",
-  TerminologyNames = list(
-    "string"
-  ),
-  SourceLanguageCode = "string",
-  TargetLanguageCode = "string"
-)
+translate_text(Text, TerminologyNames = NULL, SourceLanguageCode,
+  TargetLanguageCode)
 }
 \arguments{
 \item{Text}{[required] The text to translate. The text string can be a maximum of 5,000 bytes long. Depending on your character set, this may be fewer than 5,000 characters.}
@@ -54,6 +48,15 @@ Translates input text from the source language to the target language. It is not
 
 To have Amazon Translate determine the source language of your text, you can specify \code{auto} in the \code{SourceLanguageCode} field. If you specify \code{auto}, Amazon Translate will call Amazon Comprehend to determine the source language.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{translate_text(
+  Text = "string",
+  TerminologyNames = list(
+    "string"
+  ),
+  SourceLanguageCode = "string",
+  TargetLanguageCode = "string"
+)
 }
+}
+

@@ -4,11 +4,7 @@
 \alias{describe_instance_attribute}
 \title{Describes the specified attribute of the specified instance}
 \usage{
-describe_instance_attribute(
-  Attribute = "instanceType"|"kernel"|"ramdisk"|"userData"|"disableApiTermination"|"instanceInitiatedShutdownBehavior"|"rootDeviceName"|"blockDeviceMapping"|"productCodes"|"sourceDestCheck"|"groupSet"|"ebsOptimized"|"sriovNetSupport"|"enaSupport",
-  DryRun = TRUE|FALSE,
-  InstanceId = "string"
-)
+describe_instance_attribute(Attribute, DryRun = NULL, InstanceId)
 }
 \arguments{
 \item{Attribute}{[required] The instance attribute.
@@ -22,28 +18,37 @@ Note: The \code{enaSupport} attribute is not supported at this time.}
 \description{
 Describes the specified attribute of the specified instance. You can specify only one attribute at a time. Valid attribute values are: \code{instanceType} | \code{kernel} | \code{ramdisk} | \code{userData} | \code{disableApiTermination} | \code{instanceInitiatedShutdownBehavior} | \code{rootDeviceName} | \code{blockDeviceMapping} | \code{productCodes} | \code{sourceDestCheck} | \code{groupSet} | \code{ebsOptimized} | \code{sriovNetSupport}
 }
+\section{Accepted Parameters}{
+\preformatted{describe_instance_attribute(
+  Attribute = "instanceType"|"kernel"|"ramdisk"|"userData"|"disableApiTermination"|"instanceInitiatedShutdownBehavior"|"rootDeviceName"|"blockDeviceMapping"|"productCodes"|"sourceDestCheck"|"groupSet"|"ebsOptimized"|"sriovNetSupport"|"enaSupport",
+  DryRun = TRUE|FALSE,
+  InstanceId = "string"
+)
+}
+}
+
 \examples{
 # This example describes the instance type of the specified instance.
 # 
-describe_instance_attribute(
+\donttest{describe_instance_attribute(
   Attribute = "instanceType",
   InstanceId = "i-1234567890abcdef0"
-)
+)}
 
 # This example describes the ``disableApiTermination`` attribute of the
 # specified instance.
 # 
-describe_instance_attribute(
+\donttest{describe_instance_attribute(
   Attribute = "disableApiTermination",
   InstanceId = "i-1234567890abcdef0"
-)
+)}
 
 # This example describes the ``blockDeviceMapping`` attribute of the
 # specified instance.
 # 
-describe_instance_attribute(
+\donttest{describe_instance_attribute(
   Attribute = "blockDeviceMapping",
   InstanceId = "i-1234567890abcdef0"
-)
+)}
 
 }

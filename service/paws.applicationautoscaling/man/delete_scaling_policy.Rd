@@ -4,12 +4,8 @@
 \alias{delete_scaling_policy}
 \title{Deletes the specified Application Auto Scaling scaling policy}
 \usage{
-delete_scaling_policy(
-  PolicyName = "string",
-  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
-  ResourceId = "string",
-  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"
-)
+delete_scaling_policy(PolicyName, ServiceNamespace, ResourceId,
+  ScalableDimension)
 }
 \arguments{
 \item{PolicyName}{[required] The name of the scaling policy.}
@@ -26,7 +22,7 @@ delete_scaling_policy(
 \item DynamoDB global secondary index - The resource type is \code{index} and the unique identifier is the resource ID. Example: \code{table/my-table/index/my-table-index}.
 \item Aurora DB cluster - The resource type is \code{cluster} and the unique identifier is the cluster name. Example: \code{cluster:my-db-cluster}.
 \item Amazon SageMaker endpoint variants - The resource type is \code{variant} and the unique identifier is the resource ID. Example: \code{endpoint/my-end-point/variant/KMeansClustering}.
-\item Custom resources are not supported with a resource type. This parameter must specify the \code{OutputValue} from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider.
+\item Custom resources are not supported with a resource type. This parameter must specify the \code{OutputValue} from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider. More information is available in our \href{https://github.com/aws/aws-auto-scaling-custom-resource}{GitHub repository}.
 }}
 
 \item{ScalableDimension}{[required] The scalable dimension. This string consists of the service namespace, resource type, and scaling property.
@@ -39,7 +35,7 @@ delete_scaling_policy(
 \item \code{dynamodb:table:WriteCapacityUnits} - The provisioned write capacity for a DynamoDB table.
 \item \code{dynamodb:index:ReadCapacityUnits} - The provisioned read capacity for a DynamoDB global secondary index.
 \item \code{dynamodb:index:WriteCapacityUnits} - The provisioned write capacity for a DynamoDB global secondary index.
-\item \code{rds:cluster:ReadReplicaCount} - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+\item \code{rds:cluster:ReadReplicaCount} - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition and Aurora PostgreSQL-compatible edition.
 \item \code{sagemaker:variant:DesiredInstanceCount} - The number of EC2 instances for an Amazon SageMaker model endpoint variant.
 \item \code{custom-resource:ResourceType:Property} - The scalable dimension for a custom resource provided by your own application or service.
 }}
@@ -52,14 +48,24 @@ Deleting a policy deletes the underlying alarm action, but does not delete the C
 
 To create a scaling policy or update an existing one, see PutScalingPolicy.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_scaling_policy(
+  PolicyName = "string",
+  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
+  ResourceId = "string",
+  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"
+)
+}
+}
+
 \examples{
 # This example deletes a scaling policy for the Amazon ECS service called
 # web-app, which is running in the default cluster.
-delete_scaling_policy(
+\donttest{delete_scaling_policy(
   PolicyName = "web-app-cpu-lt-25",
   ResourceId = "service/default/web-app",
   ScalableDimension = "ecs:service:DesiredCount",
   ServiceNamespace = "ecs"
-)
+)}
 
 }

@@ -4,15 +4,7 @@
 \alias{create_receipt_filter}
 \title{Creates a new IP address filter}
 \usage{
-create_receipt_filter(
-  Filter = list(
-    Name = "string",
-    IpFilter = list(
-      Policy = "Block"|"Allow",
-      Cidr = "string"
-    )
-  )
-)
+create_receipt_filter(Filter)
 }
 \arguments{
 \item{Filter}{[required] A data structure that describes the IP address filter to create, which consists of a name, an IP address range, and whether to allow or block mail from it.}
@@ -25,9 +17,22 @@ For information about setting up IP address filters, see the \href{http://docs.a
 
 You can execute this operation no more than once per second.
 }
+\section{Accepted Parameters}{
+\preformatted{create_receipt_filter(
+  Filter = list(
+    Name = "string",
+    IpFilter = list(
+      Policy = "Block"|"Allow",
+      Cidr = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # The following example creates a new IP address filter:
-create_receipt_filter(
+\donttest{create_receipt_filter(
   Filter = list(
     IpFilter = list(
       Cidr = "1.2.3.4/24",
@@ -35,6 +40,6 @@ create_receipt_filter(
     ),
     Name = "MyFilter"
   )
-)
+)}
 
 }

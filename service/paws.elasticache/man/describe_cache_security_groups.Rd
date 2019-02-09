@@ -4,11 +4,8 @@
 \alias{describe_cache_security_groups}
 \title{Returns a list of cache security group descriptions}
 \usage{
-describe_cache_security_groups(
-  CacheSecurityGroupName = "string",
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_cache_security_groups(CacheSecurityGroupName = NULL,
+  MaxRecords = NULL, Marker = NULL)
 }
 \arguments{
 \item{CacheSecurityGroupName}{The name of the cache security group to return details for.}
@@ -24,6 +21,12 @@ Constraints: minimum 20; maximum 100.}
 \description{
 Returns a list of cache security group descriptions. If a cache security group name is specified, the list contains only the description of that group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_cache_security_groups(
+  CacheSecurityGroupName = "string",
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{delete_container_policy}
 \title{Deletes the access policy that is associated with the specified container}
 \usage{
-delete_container_policy(
-  ContainerName = "string"
-)
+delete_container_policy(ContainerName)
 }
 \arguments{
 \item{ContainerName}{[required] The name of the container that holds the policy.}
@@ -14,6 +12,10 @@ delete_container_policy(
 \description{
 Deletes the access policy that is associated with the specified container.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_container_policy(
+  ContainerName = "string"
+)
 }
+}
+

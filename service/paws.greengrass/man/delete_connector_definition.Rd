@@ -4,9 +4,7 @@
 \alias{delete_connector_definition}
 \title{Deletes a connector definition}
 \usage{
-delete_connector_definition(
-  ConnectorDefinitionId = "string"
-)
+delete_connector_definition(ConnectorDefinitionId)
 }
 \arguments{
 \item{ConnectorDefinitionId}{[required] The ID of the connector definition.}
@@ -14,6 +12,10 @@ delete_connector_definition(
 \description{
 Deletes a connector definition.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_connector_definition(
+  ConnectorDefinitionId = "string"
+)
 }
+}
+

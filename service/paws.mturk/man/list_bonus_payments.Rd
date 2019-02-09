@@ -2,14 +2,10 @@
 % Please edit documentation in R/paws.mturk_operations.R
 \name{list_bonus_payments}
 \alias{list_bonus_payments}
-\title{The \code{ListBonusPayments} operation retrieves the amounts of bonuses you have paid to Workers for a given HIT or assignment}
+\title{The ListBonusPayments operation retrieves the amounts of bonuses you have paid to Workers for a given HIT or assignment}
 \usage{
-list_bonus_payments(
-  HITId = "string",
-  AssignmentId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_bonus_payments(HITId = NULL, AssignmentId = NULL,
+  NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{HITId}{The ID of the HIT associated with the bonus payments to retrieve. If not specified, all bonus payments for all assignments for the given HIT are returned. Either the HITId parameter or the AssignmentId parameter must be specified}
@@ -23,6 +19,13 @@ list_bonus_payments(
 \description{
 The \code{ListBonusPayments} operation retrieves the amounts of bonuses you have paid to Workers for a given HIT or assignment.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_bonus_payments(
+  HITId = "string",
+  AssignmentId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

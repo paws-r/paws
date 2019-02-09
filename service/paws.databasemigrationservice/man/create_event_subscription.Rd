@@ -4,24 +4,9 @@
 \alias{create_event_subscription}
 \title{Creates an AWS DMS event notification subscription}
 \usage{
-create_event_subscription(
-  SubscriptionName = "string",
-  SnsTopicArn = "string",
-  SourceType = "string",
-  EventCategories = list(
-    "string"
-  ),
-  SourceIds = list(
-    "string"
-  ),
-  Enabled = TRUE|FALSE,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_event_subscription(SubscriptionName, SnsTopicArn,
+  SourceType = NULL, EventCategories = NULL, SourceIds = NULL,
+  Enabled = NULL, Tags = NULL)
 }
 \arguments{
 \item{SubscriptionName}{[required] The name of the AWS DMS event notification subscription.
@@ -50,6 +35,25 @@ You can specify the type of source (\code{SourceType}) you want to be notified o
 
 For more information about AWS DMS events, see \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html}{Working with Events and Notifications} in the \emph{AWS Database Migration Service User Guide.}
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_event_subscription(
+  SubscriptionName = "string",
+  SnsTopicArn = "string",
+  SourceType = "string",
+  EventCategories = list(
+    "string"
+  ),
+  SourceIds = list(
+    "string"
+  ),
+  Enabled = TRUE|FALSE,
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

@@ -4,7 +4,20 @@
 \alias{put_auto_scaling_policy}
 \title{Creates or updates an automatic scaling policy for a core instance group or task instance group in an Amazon EMR cluster}
 \usage{
-put_auto_scaling_policy(
+put_auto_scaling_policy(ClusterId, InstanceGroupId, AutoScalingPolicy)
+}
+\arguments{
+\item{ClusterId}{[required] Specifies the ID of a cluster. The instance group to which the automatic scaling policy is applied is within this cluster.}
+
+\item{InstanceGroupId}{[required] Specifies the ID of the instance group to which the automatic scaling policy is applied.}
+
+\item{AutoScalingPolicy}{[required] Specifies the definition of the automatic scaling policy.}
+}
+\description{
+Creates or updates an automatic scaling policy for a core instance group or task instance group in an Amazon EMR cluster. The automatic scaling policy defines how an instance group dynamically adds and terminates EC2 instances in response to the value of a CloudWatch metric.
+}
+\section{Accepted Parameters}{
+\preformatted{put_auto_scaling_policy(
   ClusterId = "string",
   InstanceGroupId = "string",
   AutoScalingPolicy = list(
@@ -47,16 +60,5 @@ put_auto_scaling_policy(
   )
 )
 }
-\arguments{
-\item{ClusterId}{[required] Specifies the ID of a cluster. The instance group to which the automatic scaling policy is applied is within this cluster.}
-
-\item{InstanceGroupId}{[required] Specifies the ID of the instance group to which the automatic scaling policy is applied.}
-
-\item{AutoScalingPolicy}{[required] Specifies the definition of the automatic scaling policy.}
 }
-\description{
-Creates or updates an automatic scaling policy for a core instance group or task instance group in an Amazon EMR cluster. The automatic scaling policy defines how an instance group dynamically adds and terminates EC2 instances in response to the value of a CloudWatch metric.
-}
-\examples{
 
-}

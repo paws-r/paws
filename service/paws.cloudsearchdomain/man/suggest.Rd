@@ -4,11 +4,7 @@
 \alias{suggest}
 \title{Retrieves autocomplete suggestions for a partial query string}
 \usage{
-suggest(
-  query = "string",
-  suggester = "string",
-  size = 123
-)
+suggest(query, suggester, size = NULL)
 }
 \arguments{
 \item{query}{[required] Specifies the string for which you want to get suggestions.}
@@ -25,6 +21,12 @@ For more information about configuring suggesters and retrieving suggestions, se
 
 The endpoint for submitting \code{Suggest} requests is domain-specific. You submit suggest requests to a domain's search endpoint. To get the search endpoint for your domain, use the Amazon CloudSearch configuration service \code{DescribeDomains} action. A domain's endpoints are also displayed on the domain dashboard in the Amazon CloudSearch console.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{suggest(
+  query = "string",
+  suggester = "string",
+  size = 123
+)
 }
+}
+

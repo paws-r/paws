@@ -4,7 +4,40 @@
 \alias{authorize_security_group_egress}
 \title{[EC2-VPC only] Adds one or more egress rules to a security group for use with a VPC}
 \usage{
-authorize_security_group_egress(
+authorize_security_group_egress(DryRun = NULL, GroupId,
+  IpPermissions = NULL, CidrIp = NULL, FromPort = NULL,
+  IpProtocol = NULL, ToPort = NULL, SourceSecurityGroupName = NULL,
+  SourceSecurityGroupOwnerId = NULL)
+}
+\arguments{
+\item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{GroupId}{[required] The ID of the security group.}
+
+\item{IpPermissions}{One or more sets of IP permissions. You can't specify a destination security group and a CIDR IP address range in the same set of permissions.}
+
+\item{CidrIp}{Not supported. Use a set of IP permissions to specify the CIDR.}
+
+\item{FromPort}{Not supported. Use a set of IP permissions to specify the port.}
+
+\item{IpProtocol}{Not supported. Use a set of IP permissions to specify the protocol name or number.}
+
+\item{ToPort}{Not supported. Use a set of IP permissions to specify the port.}
+
+\item{SourceSecurityGroupName}{Not supported. Use a set of IP permissions to specify a destination security group.}
+
+\item{SourceSecurityGroupOwnerId}{Not supported. Use a set of IP permissions to specify a destination security group.}
+}
+\description{
+[EC2-VPC only] Adds one or more egress rules to a security group for use with a VPC. Specifically, this action permits instances to send traffic to one or more destination IPv4 or IPv6 CIDR address ranges, or to one or more destination security groups for the same VPC. This action doesn't apply to security groups for use in EC2-Classic. For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html}{Security Groups for Your VPC} in the \emph{Amazon Virtual Private Cloud User Guide}. For more information about security group limits, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html}{Amazon VPC Limits}.
+}
+\details{
+Each rule consists of the protocol (for example, TCP), plus either a CIDR range or a source group. For the TCP and UDP protocols, you must also specify the destination port or port range. For the ICMP protocol, you must also specify the ICMP type and code. You can use -1 for the type or code to mean all types or all codes. You can optionally specify a description for the rule.
+
+Rule changes are propagated to affected instances as quickly as possible. However, a small delay might occur.
+}
+\section{Accepted Parameters}{
+\preformatted{authorize_security_group_egress(
   DryRun = TRUE|FALSE,
   GroupId = "string",
   IpPermissions = list(
@@ -51,37 +84,12 @@ authorize_security_group_egress(
   SourceSecurityGroupOwnerId = "string"
 )
 }
-\arguments{
-\item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
-
-\item{GroupId}{[required] The ID of the security group.}
-
-\item{IpPermissions}{One or more sets of IP permissions. You can't specify a destination security group and a CIDR IP address range in the same set of permissions.}
-
-\item{CidrIp}{Not supported. Use a set of IP permissions to specify the CIDR.}
-
-\item{FromPort}{Not supported. Use a set of IP permissions to specify the port.}
-
-\item{IpProtocol}{Not supported. Use a set of IP permissions to specify the protocol name or number.}
-
-\item{ToPort}{Not supported. Use a set of IP permissions to specify the port.}
-
-\item{SourceSecurityGroupName}{Not supported. Use a set of IP permissions to specify a destination security group.}
-
-\item{SourceSecurityGroupOwnerId}{Not supported. Use a set of IP permissions to specify a destination security group.}
 }
-\description{
-[EC2-VPC only] Adds one or more egress rules to a security group for use with a VPC. Specifically, this action permits instances to send traffic to one or more destination IPv4 or IPv6 CIDR address ranges, or to one or more destination security groups for the same VPC. This action doesn't apply to security groups for use in EC2-Classic. For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html}{Security Groups for Your VPC} in the \emph{Amazon Virtual Private Cloud User Guide}. For more information about security group limits, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html}{Amazon VPC Limits}.
-}
-\details{
-Each rule consists of the protocol (for example, TCP), plus either a CIDR range or a source group. For the TCP and UDP protocols, you must also specify the destination port or port range. For the ICMP protocol, you must also specify the ICMP type and code. You can use -1 for the type or code to mean all types or all codes. You can optionally specify a description for the rule.
 
-Rule changes are propagated to affected instances as quickly as possible. However, a small delay might occur.
-}
 \examples{
 # This example adds a rule that grants access to the specified address
 # ranges on TCP port 80.
-authorize_security_group_egress(
+\donttest{authorize_security_group_egress(
   GroupId = "sg-1a2b3c4d",
   IpPermissions = list(
     list(
@@ -95,11 +103,11 @@ authorize_security_group_egress(
       ToPort = 80L
     )
   )
-)
+)}
 
 # This example adds a rule that grants access to the specified security
 # group on TCP port 80.
-authorize_security_group_egress(
+\donttest{authorize_security_group_egress(
   GroupId = "sg-1a2b3c4d",
   IpPermissions = list(
     list(
@@ -113,6 +121,6 @@ authorize_security_group_egress(
       )
     )
   )
-)
+)}
 
 }

@@ -4,9 +4,7 @@
 \alias{delete_receipt_filter}
 \title{Deletes the specified IP address filter}
 \usage{
-delete_receipt_filter(
-  FilterName = "string"
-)
+delete_receipt_filter(FilterName)
 }
 \arguments{
 \item{FilterName}{[required] The name of the IP address filter to delete.}
@@ -19,10 +17,17 @@ For information about managing IP address filters, see the \href{http://docs.aws
 
 You can execute this operation no more than once per second.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_receipt_filter(
+  FilterName = "string"
+)
+}
+}
+
 \examples{
 # The following example deletes an IP address filter:
-delete_receipt_filter(
+\donttest{delete_receipt_filter(
   FilterName = "MyFilter"
-)
+)}
 
 }

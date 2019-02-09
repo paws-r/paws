@@ -4,9 +4,7 @@
 \alias{stop_image_builder}
 \title{Stops the specified image builder}
 \usage{
-stop_image_builder(
-  Name = "string"
-)
+stop_image_builder(Name)
 }
 \arguments{
 \item{Name}{[required] The name of the image builder.}
@@ -14,6 +12,10 @@ stop_image_builder(
 \description{
 Stops the specified image builder.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{stop_image_builder(
+  Name = "string"
+)
 }
+}
+

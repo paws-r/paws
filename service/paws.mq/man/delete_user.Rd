@@ -4,10 +4,7 @@
 \alias{delete_user}
 \title{Deletes an ActiveMQ user}
 \usage{
-delete_user(
-  BrokerId = "string",
-  Username = "string"
-)
+delete_user(BrokerId, Username)
 }
 \arguments{
 \item{BrokerId}{[required] The unique ID that Amazon MQ generates for the broker.}
@@ -17,6 +14,11 @@ delete_user(
 \description{
 Deletes an ActiveMQ user.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_user(
+  BrokerId = "string",
+  Username = "string"
+)
 }
+}
+

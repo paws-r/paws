@@ -4,10 +4,7 @@
 \alias{forget_device}
 \title{Forgets the specified device}
 \usage{
-forget_device(
-  AccessToken = "string",
-  DeviceKey = "string"
-)
+forget_device(AccessToken = NULL, DeviceKey)
 }
 \arguments{
 \item{AccessToken}{The access token for the forgotten device request.}
@@ -17,6 +14,11 @@ forget_device(
 \description{
 Forgets the specified device.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{forget_device(
+  AccessToken = "string",
+  DeviceKey = "string"
+)
 }
+}
+

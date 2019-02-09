@@ -4,9 +4,7 @@
 \alias{get_bucket_location}
 \title{Returns the region the bucket resides in}
 \usage{
-get_bucket_location(
-  Bucket = "string"
-)
+get_bucket_location(Bucket)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -14,10 +12,17 @@ get_bucket_location(
 \description{
 Returns the region the bucket resides in.
 }
+\section{Accepted Parameters}{
+\preformatted{get_bucket_location(
+  Bucket = "string"
+)
+}
+}
+
 \examples{
 # The following example returns bucket location.
-get_bucket_location(
+\donttest{get_bucket_location(
   Bucket = "examplebucket"
-)
+)}
 
 }

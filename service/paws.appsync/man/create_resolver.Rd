@@ -2,22 +2,11 @@
 % Please edit documentation in R/paws.appsync_operations.R
 \name{create_resolver}
 \alias{create_resolver}
-\title{Creates a \code{Resolver} object}
+\title{Creates a Resolver object}
 \usage{
-create_resolver(
-  apiId = "string",
-  typeName = "string",
-  fieldName = "string",
-  dataSourceName = "string",
-  requestMappingTemplate = "string",
-  responseMappingTemplate = "string",
-  kind = "UNIT"|"PIPELINE",
-  pipelineConfig = list(
-    functions = list(
-      "string"
-    )
-  )
-)
+create_resolver(apiId, typeName, fieldName, dataSourceName = NULL,
+  requestMappingTemplate, responseMappingTemplate = NULL, kind = NULL,
+  pipelineConfig = NULL)
 }
 \arguments{
 \item{apiId}{[required] The ID for the GraphQL API for which the resolver is being created.}
@@ -48,6 +37,21 @@ Creates a \code{Resolver} object.
 \details{
 A resolver converts incoming requests into a format that a data source can understand and converts the data source's responses into GraphQL.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_resolver(
+  apiId = "string",
+  typeName = "string",
+  fieldName = "string",
+  dataSourceName = "string",
+  requestMappingTemplate = "string",
+  responseMappingTemplate = "string",
+  kind = "UNIT"|"PIPELINE",
+  pipelineConfig = list(
+    functions = list(
+      "string"
+    )
+  )
+)
 }
+}
+

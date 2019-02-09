@@ -4,13 +4,8 @@
 \alias{describe_vpc_classic_link_dns_support}
 \title{Describes the ClassicLink DNS support status of one or more VPCs}
 \usage{
-describe_vpc_classic_link_dns_support(
-  MaxResults = 123,
-  NextToken = "string",
-  VpcIds = list(
-    "string"
-  )
-)
+describe_vpc_classic_link_dns_support(MaxResults = NULL,
+  NextToken = NULL, VpcIds = NULL)
 }
 \arguments{
 \item{MaxResults}{The maximum number of items to return for this request. The request returns a token that you can specify in a subsequent call to get the next set of results.}
@@ -20,8 +15,16 @@ describe_vpc_classic_link_dns_support(
 \item{VpcIds}{One or more VPC IDs.}
 }
 \description{
-Describes the ClassicLink DNS support status of one or more VPCs. If enabled, the DNS hostname of a linked EC2-Classic instance resolves to its private IP address when addressed from an instance in the VPC to which it's linked. Similarly, the DNS hostname of an instance in a VPC resolves to its private IP address when addressed from a linked EC2-Classic instance. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html}{ClassicLink} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+Describes the ClassicLink DNS support status of one or more VPCs. If enabled, the DNS hostname of a linked EC2-Classic instance resolves to its private IP address when addressed from an instance in the VPC to which it's linked. Similarly, the DNS hostname of an instance in a VPC resolves to its private IP address when addressed from a linked EC2-Classic instance. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html}{ClassicLink} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{describe_vpc_classic_link_dns_support(
+  MaxResults = 123,
+  NextToken = "string",
+  VpcIds = list(
+    "string"
+  )
+)
+}
+}
 
-}

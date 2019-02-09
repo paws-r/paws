@@ -4,10 +4,7 @@
 \alias{attach_group_policy}
 \title{Attaches the specified managed policy to the specified IAM group}
 \usage{
-attach_group_policy(
-  GroupName = "string",
-  PolicyArn = "string"
-)
+attach_group_policy(GroupName, PolicyArn)
 }
 \arguments{
 \item{GroupName}{[required] The name (friendly name, not ARN) of the group to attach the policy to.
@@ -26,12 +23,20 @@ You use this API to attach a managed policy to a group. To embed an inline polic
 
 For more information about policies, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies} in the \emph{IAM User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{attach_group_policy(
+  GroupName = "string",
+  PolicyArn = "string"
+)
+}
+}
+
 \examples{
 # The following command attaches the AWS managed policy named
 # ReadOnlyAccess to the IAM group named Finance.
-attach_group_policy(
+\donttest{attach_group_policy(
   GroupName = "Finance",
   PolicyArn = "arn:aws:iam::aws:policy/ReadOnlyAccess"
-)
+)}
 
 }

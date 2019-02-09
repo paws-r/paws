@@ -4,11 +4,7 @@
 \alias{reset_deployments}
 \title{Resets a group's deployments}
 \usage{
-reset_deployments(
-  AmznClientToken = "string",
-  Force = TRUE|FALSE,
-  GroupId = "string"
-)
+reset_deployments(AmznClientToken = NULL, Force = NULL, GroupId)
 }
 \arguments{
 \item{AmznClientToken}{A client token used to correlate requests and responses.}
@@ -20,6 +16,12 @@ reset_deployments(
 \description{
 Resets a group's deployments.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{reset_deployments(
+  AmznClientToken = "string",
+  Force = TRUE|FALSE,
+  GroupId = "string"
+)
 }
+}
+

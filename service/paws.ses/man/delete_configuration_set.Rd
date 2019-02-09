@@ -4,9 +4,7 @@
 \alias{delete_configuration_set}
 \title{Deletes a configuration set}
 \usage{
-delete_configuration_set(
-  ConfigurationSetName = "string"
-)
+delete_configuration_set(ConfigurationSetName)
 }
 \arguments{
 \item{ConfigurationSetName}{[required] The name of the configuration set to delete.}
@@ -17,6 +15,10 @@ Deletes a configuration set. Configuration sets enable you to publish email send
 \details{
 You can execute this operation no more than once per second.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_configuration_set(
+  ConfigurationSetName = "string"
+)
 }
+}
+

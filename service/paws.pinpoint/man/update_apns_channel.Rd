@@ -4,7 +4,18 @@
 \alias{update_apns_channel}
 \title{Use to update the APNs channel for an app}
 \usage{
-update_apns_channel(
+update_apns_channel(APNSChannelRequest, ApplicationId)
+}
+\arguments{
+\item{APNSChannelRequest}{[required]}
+
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+}
+\description{
+Use to update the APNs channel for an app.
+}
+\section{Accepted Parameters}{
+\preformatted{update_apns_channel(
   APNSChannelRequest = list(
     BundleId = "string",
     Certificate = "string",
@@ -18,14 +29,5 @@ update_apns_channel(
   ApplicationId = "string"
 )
 }
-\arguments{
-\item{APNSChannelRequest}{[required]}
+}
 
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
-}
-\description{
-Use to update the APNs channel for an app.
-}
-\examples{
-
-}

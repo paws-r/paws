@@ -6,10 +6,10 @@
 \alias{paws.ram-package}
 \title{paws.ram: AWS Resource Access Manager}
 \description{
-Use AWS Resource Access Manager to share AWS resources
-between AWS accounts.  To share a resource, you create a resource
-share, associate the resource with the resource share, and specify the
-principals that can access the resource.
+Use AWS Resource Access Manager to share AWS
+    resources between AWS accounts.  To share a resource, you create a
+    resource share, associate the resource with the resource share, and
+    specify the principals that can access the resource.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

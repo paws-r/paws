@@ -4,17 +4,9 @@
 \alias{create_cachedi_scsi_volume}
 \title{Creates a cached volume on a specified cached volume gateway}
 \usage{
-create_cachedi_scsi_volume(
-  GatewayARN = "string",
-  VolumeSizeInBytes = 123,
-  SnapshotId = "string",
-  TargetName = "string",
-  SourceVolumeARN = "string",
-  NetworkInterfaceId = "string",
-  ClientToken = "string",
-  KMSEncrypted = TRUE|FALSE,
-  KMSKey = "string"
-)
+create_cachedi_scsi_volume(GatewayARN, VolumeSizeInBytes,
+  SnapshotId = NULL, TargetName, SourceVolumeARN = NULL,
+  NetworkInterfaceId, ClientToken, KMSEncrypted = NULL, KMSKey = NULL)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -47,15 +39,30 @@ In the request, you must specify the gateway, size of the volume in bytes, the i
 
 Optionally, you can provide the ARN for an existing volume as the \code{SourceVolumeARN} for this cached volume, which creates an exact copy of the existing volume's latest recovery point. The \code{VolumeSizeInBytes} value must be equal to or larger than the size of the copied volume, in bytes.
 }
+\section{Accepted Parameters}{
+\preformatted{create_cachedi_scsi_volume(
+  GatewayARN = "string",
+  VolumeSizeInBytes = 123,
+  SnapshotId = "string",
+  TargetName = "string",
+  SourceVolumeARN = "string",
+  NetworkInterfaceId = "string",
+  ClientToken = "string",
+  KMSEncrypted = TRUE|FALSE,
+  KMSKey = "string"
+)
+}
+}
+
 \examples{
 # Creates a cached volume on a specified cached gateway.
-create_cachedi_scsi_volume(
+\donttest{create_cachedi_scsi_volume(
   ClientToken = "cachedvol112233",
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B",
   NetworkInterfaceId = "10.1.1.1",
   SnapshotId = "snap-f47b7b94",
   TargetName = "my-volume",
   VolumeSizeInBytes = 536870912000
-)
+)}
 
 }

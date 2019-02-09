@@ -4,10 +4,7 @@
 \alias{disassociate_skill_from_skill_group}
 \title{Disassociates a skill from a skill group}
 \usage{
-disassociate_skill_from_skill_group(
-  SkillGroupArn = "string",
-  SkillId = "string"
-)
+disassociate_skill_from_skill_group(SkillGroupArn = NULL, SkillId)
 }
 \arguments{
 \item{SkillGroupArn}{The unique identifier of a skill. Required.}
@@ -17,6 +14,11 @@ disassociate_skill_from_skill_group(
 \description{
 Disassociates a skill from a skill group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disassociate_skill_from_skill_group(
+  SkillGroupArn = "string",
+  SkillId = "string"
+)
 }
+}
+

@@ -4,23 +4,9 @@
 \alias{create_instances}
 \title{Creates one or more Amazon Lightsail virtual private servers, or \emph{instances}}
 \usage{
-create_instances(
-  instanceNames = list(
-    "string"
-  ),
-  availabilityZone = "string",
-  customImageName = "string",
-  blueprintId = "string",
-  bundleId = "string",
-  userData = "string",
-  keyPairName = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
+create_instances(instanceNames, availabilityZone, customImageName = NULL,
+  blueprintId, bundleId, userData = NULL, keyPairName = NULL,
+  tags = NULL)
 }
 \arguments{
 \item{instanceNames}{[required] The names to use for your new Lightsail instances. Separate multiple values using quotation marks and commas, for example: \code{["MyFirstInstance","MySecondInstance"]}}
@@ -51,6 +37,24 @@ Creates one or more Amazon Lightsail virtual private servers, or \emph{instances
 \details{
 The \code{create instances} operation supports tag-based access control via request tags. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_instances(
+  instanceNames = list(
+    "string"
+  ),
+  availabilityZone = "string",
+  customImageName = "string",
+  blueprintId = "string",
+  bundleId = "string",
+  userData = "string",
+  keyPairName = "string",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
 }
+}
+

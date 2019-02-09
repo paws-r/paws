@@ -4,10 +4,7 @@
 \alias{enable_vgw_route_propagation}
 \title{Enables a virtual private gateway (VGW) to propagate routes to the specified route table of a VPC}
 \usage{
-enable_vgw_route_propagation(
-  GatewayId = "string",
-  RouteTableId = "string"
-)
+enable_vgw_route_propagation(GatewayId, RouteTableId)
 }
 \arguments{
 \item{GatewayId}{[required] The ID of the virtual private gateway.}
@@ -17,12 +14,20 @@ enable_vgw_route_propagation(
 \description{
 Enables a virtual private gateway (VGW) to propagate routes to the specified route table of a VPC.
 }
+\section{Accepted Parameters}{
+\preformatted{enable_vgw_route_propagation(
+  GatewayId = "string",
+  RouteTableId = "string"
+)
+}
+}
+
 \examples{
 # This example enables the specified virtual private gateway to propagate
 # static routes to the specified route table.
-enable_vgw_route_propagation(
+\donttest{enable_vgw_route_propagation(
   GatewayId = "vgw-9a4cacf3",
   RouteTableId = "rtb-22574640"
-)
+)}
 
 }

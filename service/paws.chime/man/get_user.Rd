@@ -4,10 +4,7 @@
 \alias{get_user}
 \title{Retrieves details for the specified user ID, such as primary email address, license type, and personal meeting PIN}
 \usage{
-get_user(
-  AccountId = "string",
-  UserId = "string"
-)
+get_user(AccountId, UserId)
 }
 \arguments{
 \item{AccountId}{[required] The Amazon Chime account ID.}
@@ -20,6 +17,11 @@ Retrieves details for the specified user ID, such as primary email address, lice
 \details{
 To retrieve user details with an email address instead of a user ID, use the ListUsers action, and then filter by email address.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_user(
+  AccountId = "string",
+  UserId = "string"
+)
 }
+}
+

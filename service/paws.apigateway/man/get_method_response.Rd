@@ -4,12 +4,7 @@
 \alias{get_method_response}
 \title{Describes a MethodResponse resource}
 \usage{
-get_method_response(
-  restApiId = "string",
-  resourceId = "string",
-  httpMethod = "string",
-  statusCode = "string"
-)
+get_method_response(restApiId, resourceId, httpMethod, statusCode)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -23,6 +18,13 @@ get_method_response(
 \description{
 Describes a MethodResponse resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_method_response(
+  restApiId = "string",
+  resourceId = "string",
+  httpMethod = "string",
+  statusCode = "string"
+)
 }
+}
+

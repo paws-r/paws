@@ -4,9 +4,7 @@
 \alias{get_group_query}
 \title{Returns the resource query associated with the specified resource group}
 \usage{
-get_group_query(
-  GroupName = "string"
-)
+get_group_query(GroupName)
 }
 \arguments{
 \item{GroupName}{[required] The name of the resource group.}
@@ -14,6 +12,10 @@ get_group_query(
 \description{
 Returns the resource query associated with the specified resource group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_group_query(
+  GroupName = "string"
+)
 }
+}
+

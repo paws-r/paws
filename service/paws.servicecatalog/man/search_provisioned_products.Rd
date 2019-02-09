@@ -4,22 +4,9 @@
 \alias{search_provisioned_products}
 \title{Gets information about the provisioned products that meet the specified criteria}
 \usage{
-search_provisioned_products(
-  AcceptLanguage = "string",
-  AccessLevelFilter = list(
-    Key = "Account"|"Role"|"User",
-    Value = "string"
-  ),
-  Filters = list(
-    list(
-      "string"
-    )
-  ),
-  SortBy = "string",
-  SortOrder = "ASCENDING"|"DESCENDING",
-  PageSize = 123,
-  PageToken = "string"
-)
+search_provisioned_products(AcceptLanguage = NULL,
+  AccessLevelFilter = NULL, Filters = NULL, SortBy = NULL,
+  SortOrder = NULL, PageSize = NULL, PageToken = NULL)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -48,6 +35,23 @@ Example: \code{"SearchQuery":["status:AVAILABLE"]}}
 \description{
 Gets information about the provisioned products that meet the specified criteria.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{search_provisioned_products(
+  AcceptLanguage = "string",
+  AccessLevelFilter = list(
+    Key = "Account"|"Role"|"User",
+    Value = "string"
+  ),
+  Filters = list(
+    list(
+      "string"
+    )
+  ),
+  SortBy = "string",
+  SortOrder = "ASCENDING"|"DESCENDING",
+  PageSize = 123,
+  PageToken = "string"
+)
 }
+}
+

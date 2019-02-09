@@ -4,15 +4,7 @@
 \alias{create_domain}
 \title{Creates a domain resource for the specified domain (e}
 \usage{
-create_domain(
-  domainName = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
+create_domain(domainName, tags = NULL)
 }
 \arguments{
 \item{domainName}{[required] The domain name to manage (e.g., \code{example.com}).
@@ -29,6 +21,16 @@ Creates a domain resource for the specified domain (e.g., example.com).
 \details{
 The \code{create domain} operation supports tag-based access control via request tags. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_domain(
+  domainName = "string",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
 }
+}
+

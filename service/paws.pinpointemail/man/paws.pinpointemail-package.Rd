@@ -6,11 +6,11 @@
 \alias{paws.pinpointemail-package}
 \title{paws.pinpointemail: Amazon Pinpoint Email Service}
 \description{
-This document contains reference information for the [Amazon
-Pinpoint](https://aws.amazon.com/pinpoint) Email API, version 1.0.
-This document is best used in conjunction with the [Amazon Pinpoint
-Developer
-Guide](http://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html).
+This document contains reference information for
+    the [Amazon Pinpoint](https://aws.amazon.com/pinpoint) Email API,
+    version 1.0. This document is best used in conjunction with the
+    [Amazon Pinpoint Developer
+    Guide](http://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html).
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

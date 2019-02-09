@@ -4,9 +4,7 @@
 \alias{start_replication_task_assessment}
 \title{Starts the replication task assessment for unsupported data types in the source database}
 \usage{
-start_replication_task_assessment(
-  ReplicationTaskArn = "string"
-)
+start_replication_task_assessment(ReplicationTaskArn)
 }
 \arguments{
 \item{ReplicationTaskArn}{[required] The Amazon Resource Name (ARN) of the replication task.}
@@ -14,6 +12,10 @@ start_replication_task_assessment(
 \description{
 Starts the replication task assessment for unsupported data types in the source database.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_replication_task_assessment(
+  ReplicationTaskArn = "string"
+)
 }
+}
+

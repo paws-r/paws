@@ -4,11 +4,7 @@
 \alias{reset_password}
 \title{Allows the administrator to reset the password for a user}
 \usage{
-reset_password(
-  OrganizationId = "string",
-  UserId = "string",
-  Password = "string"
-)
+reset_password(OrganizationId, UserId, Password)
 }
 \arguments{
 \item{OrganizationId}{[required] The identifier of the organization that contains the user for which the password is reset.}
@@ -20,6 +16,12 @@ reset_password(
 \description{
 Allows the administrator to reset the password for a user.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{reset_password(
+  OrganizationId = "string",
+  UserId = "string",
+  Password = "string"
+)
 }
+}
+

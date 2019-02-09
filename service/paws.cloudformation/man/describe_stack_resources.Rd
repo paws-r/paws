@@ -4,11 +4,8 @@
 \alias{describe_stack_resources}
 \title{Returns AWS resource descriptions for running and deleted stacks}
 \usage{
-describe_stack_resources(
-  StackName = "string",
-  LogicalResourceId = "string",
-  PhysicalResourceId = "string"
-)
+describe_stack_resources(StackName = NULL, LogicalResourceId = NULL,
+  PhysicalResourceId = NULL)
 }
 \arguments{
 \item{StackName}{The name or the unique stack ID that is associated with the stack, which are not always interchangeable:
@@ -45,6 +42,12 @@ You must specify either \code{StackName} or \code{PhysicalResourceId}, but not b
 
 A \code{ValidationError} is returned if you specify both \code{StackName} and \code{PhysicalResourceId} in the same request.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_stack_resources(
+  StackName = "string",
+  LogicalResourceId = "string",
+  PhysicalResourceId = "string"
+)
 }
+}
+

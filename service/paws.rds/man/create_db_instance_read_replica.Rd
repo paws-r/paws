@@ -4,50 +4,21 @@
 \alias{create_db_instance_read_replica}
 \title{Creates a new DB instance that acts as a Read Replica for an existing source DB instance}
 \usage{
-create_db_instance_read_replica(
-  DBInstanceIdentifier = "string",
-  SourceDBInstanceIdentifier = "string",
-  DBInstanceClass = "string",
-  AvailabilityZone = "string",
-  Port = 123,
-  MultiAZ = TRUE|FALSE,
-  AutoMinorVersionUpgrade = TRUE|FALSE,
-  Iops = 123,
-  OptionGroupName = "string",
-  PubliclyAccessible = TRUE|FALSE,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  DBSubnetGroupName = "string",
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  StorageType = "string",
-  CopyTagsToSnapshot = TRUE|FALSE,
-  MonitoringInterval = 123,
-  MonitoringRoleArn = "string",
-  KmsKeyId = "string",
-  PreSignedUrl = "string",
-  EnableIAMDatabaseAuthentication = TRUE|FALSE,
-  EnablePerformanceInsights = TRUE|FALSE,
-  PerformanceInsightsKMSKeyId = "string",
-  PerformanceInsightsRetentionPeriod = 123,
-  EnableCloudwatchLogsExports = list(
-    "string"
-  ),
-  ProcessorFeatures = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  UseDefaultProcessorFeatures = TRUE|FALSE,
-  DeletionProtection = TRUE|FALSE,
-  SourceRegion = "string"
-)
+create_db_instance_read_replica(DBInstanceIdentifier,
+  SourceDBInstanceIdentifier, DBInstanceClass = NULL,
+  AvailabilityZone = NULL, Port = NULL, MultiAZ = NULL,
+  AutoMinorVersionUpgrade = NULL, Iops = NULL,
+  OptionGroupName = NULL, PubliclyAccessible = NULL, Tags = NULL,
+  DBSubnetGroupName = NULL, VpcSecurityGroupIds = NULL,
+  StorageType = NULL, CopyTagsToSnapshot = NULL,
+  MonitoringInterval = NULL, MonitoringRoleArn = NULL,
+  KmsKeyId = NULL, PreSignedUrl = NULL,
+  EnableIAMDatabaseAuthentication = NULL,
+  EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL,
+  PerformanceInsightsRetentionPeriod = NULL,
+  EnableCloudwatchLogsExports = NULL, ProcessorFeatures = NULL,
+  UseDefaultProcessorFeatures = NULL, DeletionProtection = NULL,
+  SourceRegion = NULL)
 }
 \arguments{
 \item{DBInstanceIdentifier}{[required] The DB instance identifier of the Read Replica. This identifier is the unique key that identifies a DB instance. This parameter is stored as a lowercase string.}
@@ -200,6 +171,51 @@ All Read Replica DB instances are created with backups disabled. All other DB in
 
 Your source DB instance must have backup retention enabled.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_db_instance_read_replica(
+  DBInstanceIdentifier = "string",
+  SourceDBInstanceIdentifier = "string",
+  DBInstanceClass = "string",
+  AvailabilityZone = "string",
+  Port = 123,
+  MultiAZ = TRUE|FALSE,
+  AutoMinorVersionUpgrade = TRUE|FALSE,
+  Iops = 123,
+  OptionGroupName = "string",
+  PubliclyAccessible = TRUE|FALSE,
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  DBSubnetGroupName = "string",
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
+  StorageType = "string",
+  CopyTagsToSnapshot = TRUE|FALSE,
+  MonitoringInterval = 123,
+  MonitoringRoleArn = "string",
+  KmsKeyId = "string",
+  PreSignedUrl = "string",
+  EnableIAMDatabaseAuthentication = TRUE|FALSE,
+  EnablePerformanceInsights = TRUE|FALSE,
+  PerformanceInsightsKMSKeyId = "string",
+  PerformanceInsightsRetentionPeriod = 123,
+  EnableCloudwatchLogsExports = list(
+    "string"
+  ),
+  ProcessorFeatures = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  UseDefaultProcessorFeatures = TRUE|FALSE,
+  DeletionProtection = TRUE|FALSE,
+  SourceRegion = "string"
+)
 }
+}
+

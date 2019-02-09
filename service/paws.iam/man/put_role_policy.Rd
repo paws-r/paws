@@ -4,11 +4,7 @@
 \alias{put_role_policy}
 \title{Adds or updates an inline policy document that is embedded in the specified IAM role}
 \usage{
-put_role_policy(
-  RoleName = "string",
-  PolicyName = "string",
-  PolicyDocument = "string"
-)
+put_role_policy(RoleName, PolicyName, PolicyDocument)
 }
 \arguments{
 \item{RoleName}{[required] The name of the role to associate the policy with.
@@ -40,13 +36,22 @@ For information about limits on the number of inline policies that you can embed
 
 Because policy documents can be large, you should use POST rather than GET when calling \code{PutRolePolicy}. For general information about using the Query API with IAM, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_UsingQueryAPI.html}{Making Query Requests} in the \emph{IAM User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{put_role_policy(
+  RoleName = "string",
+  PolicyName = "string",
+  PolicyDocument = "string"
+)
+}
+}
+
 \examples{
 # The following command adds a permissions policy to the role named
 # Test-Role.
-put_role_policy(
+\donttest{put_role_policy(
   PolicyDocument = "{\\"Version\\":\\"2012-10-17\\",\\"Statement\\":{\\"Effect\\":\\"Allow\\",\\"Action\\":\\"s3:*\\",\\"Resource\\":\\"*\\"}}",
   PolicyName = "S3AccessPolicy",
   RoleName = "S3Access"
-)
+)}
 
 }

@@ -4,12 +4,8 @@
 \alias{list_principal_policies}
 \title{Lists the policies attached to the specified principal}
 \usage{
-list_principal_policies(
-  principal = "string",
-  marker = "string",
-  pageSize = 123,
-  ascendingOrder = TRUE|FALSE
-)
+list_principal_policies(principal, marker = NULL, pageSize = NULL,
+  ascendingOrder = NULL)
 }
 \arguments{
 \item{principal}{[required] The principal.}
@@ -26,6 +22,13 @@ Lists the policies attached to the specified principal. If you use an Cognito id
 \details{
 \strong{Note:} This API is deprecated. Please use ListAttachedPolicies instead.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_principal_policies(
+  principal = "string",
+  marker = "string",
+  pageSize = 123,
+  ascendingOrder = TRUE|FALSE
+)
 }
+}
+

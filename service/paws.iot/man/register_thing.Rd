@@ -4,12 +4,7 @@
 \alias{register_thing}
 \title{Provisions a thing}
 \usage{
-register_thing(
-  templateBody = "string",
-  parameters = list(
-    "string"
-  )
-)
+register_thing(templateBody, parameters = NULL)
 }
 \arguments{
 \item{templateBody}{[required] The provisioning template. See \href{http://docs.aws.amazon.com/iot/latest/developerguide/programmatic-provisioning.html}{Programmatic Provisioning} for more information.}
@@ -19,6 +14,13 @@ register_thing(
 \description{
 Provisions a thing.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{register_thing(
+  templateBody = "string",
+  parameters = list(
+    "string"
+  )
+)
 }
+}
+

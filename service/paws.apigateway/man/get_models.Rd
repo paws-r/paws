@@ -4,11 +4,7 @@
 \alias{get_models}
 \title{Describes existing Models defined for a RestApi resource}
 \usage{
-get_models(
-  restApiId = "string",
-  position = "string",
-  limit = 123
-)
+get_models(restApiId, position = NULL, limit = NULL)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -20,6 +16,12 @@ get_models(
 \description{
 Describes existing Models defined for a RestApi resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_models(
+  restApiId = "string",
+  position = "string",
+  limit = 123
+)
 }
+}
+

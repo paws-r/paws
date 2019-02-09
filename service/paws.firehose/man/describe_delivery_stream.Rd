@@ -4,11 +4,8 @@
 \alias{describe_delivery_stream}
 \title{Describes the specified delivery stream and gets the status}
 \usage{
-describe_delivery_stream(
-  DeliveryStreamName = "string",
-  Limit = 123,
-  ExclusiveStartDestinationId = "string"
-)
+describe_delivery_stream(DeliveryStreamName, Limit = NULL,
+  ExclusiveStartDestinationId = NULL)
 }
 \arguments{
 \item{DeliveryStreamName}{[required] The name of the delivery stream.}
@@ -20,6 +17,12 @@ describe_delivery_stream(
 \description{
 Describes the specified delivery stream and gets the status. For example, after your delivery stream is created, call \code{DescribeDeliveryStream} to see whether the delivery stream is \code{ACTIVE} and therefore ready for data to be sent to it.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_delivery_stream(
+  DeliveryStreamName = "string",
+  Limit = 123,
+  ExclusiveStartDestinationId = "string"
+)
 }
+}
+

@@ -4,11 +4,7 @@
 \alias{acknowledge_third_party_job}
 \title{Confirms a job worker has received the specified job}
 \usage{
-acknowledge_third_party_job(
-  jobId = "string",
-  nonce = "string",
-  clientToken = "string"
-)
+acknowledge_third_party_job(jobId, nonce, clientToken)
 }
 \arguments{
 \item{jobId}{[required] The unique system-generated ID of the job.}
@@ -20,6 +16,12 @@ acknowledge_third_party_job(
 \description{
 Confirms a job worker has received the specified job. Only used for partner actions.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{acknowledge_third_party_job(
+  jobId = "string",
+  nonce = "string",
+  clientToken = "string"
+)
 }
+}
+

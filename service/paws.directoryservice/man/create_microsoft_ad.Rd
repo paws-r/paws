@@ -4,19 +4,8 @@
 \alias{create_microsoft_ad}
 \title{Creates an AWS Managed Microsoft AD directory}
 \usage{
-create_microsoft_ad(
-  Name = "string",
-  ShortName = "string",
-  Password = "string",
-  Description = "string",
-  VpcSettings = list(
-    VpcId = "string",
-    SubnetIds = list(
-      "string"
-    )
-  ),
-  Edition = "Enterprise"|"Standard"
-)
+create_microsoft_ad(Name, ShortName = NULL, Password,
+  Description = NULL, VpcSettings, Edition = NULL)
 }
 \arguments{
 \item{Name}{[required] The fully qualified domain name for the directory, such as \code{corp.example.com}. This name will resolve inside your VPC only. It does not need to be publicly resolvable.}
@@ -37,6 +26,20 @@ Creates an AWS Managed Microsoft AD directory.
 \details{
 Before you call \emph{CreateMicrosoftAD}, ensure that all of the required permissions have been explicitly granted through a policy. For details about what permissions are required to run the \emph{CreateMicrosoftAD} operation, see \href{http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html}{AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_microsoft_ad(
+  Name = "string",
+  ShortName = "string",
+  Password = "string",
+  Description = "string",
+  VpcSettings = list(
+    VpcId = "string",
+    SubnetIds = list(
+      "string"
+    )
+  ),
+  Edition = "Enterprise"|"Standard"
+)
 }
+}
+

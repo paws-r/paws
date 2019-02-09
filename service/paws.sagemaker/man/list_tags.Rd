@@ -4,11 +4,7 @@
 \alias{list_tags}
 \title{Returns the tags for the specified Amazon SageMaker resource}
 \usage{
-list_tags(
-  ResourceArn = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_tags(ResourceArn, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource whose tags you want to retrieve.}
@@ -20,6 +16,12 @@ list_tags(
 \description{
 Returns the tags for the specified Amazon SageMaker resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_tags(
+  ResourceArn = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

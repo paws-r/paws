@@ -4,7 +4,34 @@
 \alias{list_deployment_instances}
 \title{The newer BatchGetDeploymentTargets should be used instead because it works with all compute types}
 \usage{
-list_deployment_instances(
+list_deployment_instances(deploymentId, nextToken = NULL,
+  instanceStatusFilter = NULL, instanceTypeFilter = NULL)
+}
+\arguments{
+\item{deploymentId}{[required] The unique ID of a deployment.}
+
+\item{nextToken}{An identifier returned from the previous list deployment instances call. It can be used to return the next set of deployment instances in the list.}
+
+\item{instanceStatusFilter}{A subset of instances to list by status:
+\itemize{
+\item Pending: Include those instances with pending deployments.
+\item InProgress: Include those instances where deployments are still in progress.
+\item Succeeded: Include those instances with successful deployments.
+\item Failed: Include those instances with failed deployments.
+\item Skipped: Include those instances with skipped deployments.
+\item Unknown: Include those instances with deployments in an unknown state.
+}}
+
+\item{instanceTypeFilter}{The set of instances in a blue/green deployment, either those in the original environment ("BLUE") or those in the replacement environment ("GREEN"), for which you want to view instance information.}
+}
+\description{
+The newer BatchGetDeploymentTargets should be used instead because it works with all compute types. \code{ListDeploymentInstances} throws an exception if it is used with a compute platform other than EC2/On-premises or AWS Lambda.
+}
+\details{
+Lists the instance for a deployment associated with the IAM user or AWS account.
+}
+\section{Accepted Parameters}{
+\preformatted{list_deployment_instances(
   deploymentId = "string",
   nextToken = "string",
   instanceStatusFilter = list(
@@ -15,29 +42,5 @@ list_deployment_instances(
   )
 )
 }
-\arguments{
-\item{deploymentId}{[required] The unique ID of a deployment.}
-
-\item{nextToken}{An identifier returned from the previous list deployment instances call. It can be used to return the next set of deployment instances in the list.}
-
-\item{instanceStatusFilter}{A subset of instances to list by status:
-\itemize{
-\item Pending: Include those instance with pending deployments.
-\item InProgress: Include those instance where deployments are still in progress.
-\item Succeeded: Include those instances with successful deployments.
-\item Failed: Include those instance with failed deployments.
-\item Skipped: Include those instance with skipped deployments.
-\item Unknown: Include those instance with deployments in an unknown state.
-}}
-
-\item{instanceTypeFilter}{The set of instances in a blue/green deployment, either those in the original environment ("BLUE") or those in the replacement environment ("GREEN"), for which you want to view instance information.}
 }
-\description{
-The newer BatchGetDeploymentTargets should be used instead because it works with all compute types. \code{ListDeploymentInstances} throws an exception if it is used with a compute platform other than EC2/On-premises or AWS Lambda.
-}
-\details{
-Lists the instance for a deployment associated with the applicable IAM user or AWS account.
-}
-\examples{
 
-}

@@ -9,6 +9,3 @@ describe_storage()
 \description{
 Returns the total amount of snapshot usage and provisioned storage for a user in megabytes.
 }
-\examples{
-
-}

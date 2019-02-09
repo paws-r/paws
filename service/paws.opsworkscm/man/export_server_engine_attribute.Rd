@@ -4,7 +4,32 @@
 \alias{export_server_engine_attribute}
 \title{Exports a specified server engine attribute as a base64-encoded string}
 \usage{
-export_server_engine_attribute(
+export_server_engine_attribute(ExportAttributeName, ServerName,
+  InputAttributes = NULL)
+}
+\arguments{
+\item{ExportAttributeName}{[required] The name of the export attribute. Currently, the supported export attribute is \code{Userdata}. This exports a user data script that includes parameters and values provided in the \code{InputAttributes} list.}
+
+\item{ServerName}{[required] The name of the server from which you are exporting the attribute.}
+
+\item{InputAttributes}{The list of engine attributes. The list type is \code{EngineAttribute}. An \code{EngineAttribute} list item is a pair that includes an attribute name and its value. For the \code{Userdata} ExportAttributeName, the following are supported engine attribute names.
+\itemize{
+\item \strong{RunList} In Chef, a list of roles or recipes that are run in the specified order. In Puppet, this parameter is ignored.
+\item \strong{OrganizationName} In Chef, an organization name. AWS OpsWorks for Chef Automate always creates the organization \code{default}. In Puppet, this parameter is ignored.
+\item \strong{NodeEnvironment} In Chef, a node environment (for example, development, staging, or one-box). In Puppet, this parameter is ignored.
+\item \strong{NodeClientVersion} In Chef, the version of the Chef engine (three numbers separated by dots, such as 13.8.5). If this attribute is empty, OpsWorks for Chef Automate uses the most current version. In Puppet, this parameter is ignored.
+}}
+}
+\description{
+Exports a specified server engine attribute as a base64-encoded string. For example, you can export user data that you can use in EC2 to associate nodes with a server.
+}
+\details{
+This operation is synchronous.
+
+A \code{ValidationException} is raised when parameters of the request are not valid. A \code{ResourceNotFoundException} is thrown when the server does not exist. An \code{InvalidStateException} is thrown when the server is in any of the following states: CREATING, TERMINATED, FAILED or DELETING.
+}
+\section{Accepted Parameters}{
+\preformatted{export_server_engine_attribute(
   ExportAttributeName = "string",
   ServerName = "string",
   InputAttributes = list(
@@ -15,21 +40,5 @@ export_server_engine_attribute(
   )
 )
 }
-\arguments{
-\item{ExportAttributeName}{[required] The name of the export attribute. Currently supported export attribute is "Userdata" which exports a userdata script filled out with parameters provided in the \code{InputAttributes} list.}
-
-\item{ServerName}{[required] The name of the Server to which the attribute is being exported from}
-
-\item{InputAttributes}{The list of engine attributes. The list type is \code{EngineAttribute}. \code{EngineAttribute} is a pair of attribute name and value. For \code{ExportAttributeName} "Userdata", currently supported input attribute names are: - "RunList": For Chef, an ordered list of roles and/or recipes that are run in the exact order. For Puppet, this parameter is ignored. - "OrganizationName": For Chef, an organization name. AWS OpsWorks for Chef Server always creates the organization "default". For Puppet, this parameter is ignored. - "NodeEnvironment": For Chef, a node environment (eg. development, staging, onebox). For Puppet, this parameter is ignored. - "NodeClientVersion": For Chef, version of Chef Engine (3 numbers separated by dots, eg. "13.8.5"). If empty, it uses the latest one. For Puppet, this parameter is ignored.}
 }
-\description{
-Exports a specified server engine attribute as a base64-encoded string. For example, you can export user data that you can use in EC2 to associate nodes with a server.
-}
-\details{
-This operation is synchronous.
 
-A \code{ValidationException} is raised when parameters of the request are not valid. A \code{ResourceNotFoundException} is thrown when the server does not exist. An \code{InvalidStateException} is thrown when the server is in any of the following states: CREATING, TERMINATED, FAILED or DELETING.
-}
-\examples{
-
-}

@@ -4,12 +4,8 @@
 \alias{describe_workspaces_connection_status}
 \title{Describes the connection status of the specified WorkSpaces}
 \usage{
-describe_workspaces_connection_status(
-  WorkspaceIds = list(
-    "string"
-  ),
-  NextToken = "string"
-)
+describe_workspaces_connection_status(WorkspaceIds = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{WorkspaceIds}{The identifiers of the WorkSpaces. You can specify up to 25 WorkSpaces.}
@@ -19,6 +15,13 @@ describe_workspaces_connection_status(
 \description{
 Describes the connection status of the specified WorkSpaces.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_workspaces_connection_status(
+  WorkspaceIds = list(
+    "string"
+  ),
+  NextToken = "string"
+)
 }
+}
+

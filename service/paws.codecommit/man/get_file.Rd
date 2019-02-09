@@ -4,11 +4,7 @@
 \alias{get_file}
 \title{Returns the base-64 encoded contents of a specified file and its metadata}
 \usage{
-get_file(
-  repositoryName = "string",
-  commitSpecifier = "string",
-  filePath = "string"
-)
+get_file(repositoryName, commitSpecifier = NULL, filePath)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository that contains the file.}
@@ -20,6 +16,12 @@ get_file(
 \description{
 Returns the base-64 encoded contents of a specified file and its metadata.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_file(
+  repositoryName = "string",
+  commitSpecifier = "string",
+  filePath = "string"
+)
 }
+}
+

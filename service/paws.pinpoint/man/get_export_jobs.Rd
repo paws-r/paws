@@ -4,11 +4,7 @@
 \alias{get_export_jobs}
 \title{Returns information about your export jobs}
 \usage{
-get_export_jobs(
-  ApplicationId = "string",
-  PageSize = "string",
-  Token = "string"
-)
+get_export_jobs(ApplicationId, PageSize = NULL, Token = NULL)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
@@ -20,6 +16,12 @@ get_export_jobs(
 \description{
 Returns information about your export jobs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_export_jobs(
+  ApplicationId = "string",
+  PageSize = "string",
+  Token = "string"
+)
 }
+}
+

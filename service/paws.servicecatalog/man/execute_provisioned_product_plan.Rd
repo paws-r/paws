@@ -4,11 +4,8 @@
 \alias{execute_provisioned_product_plan}
 \title{Provisions or modifies a product based on the resource changes for the specified plan}
 \usage{
-execute_provisioned_product_plan(
-  AcceptLanguage = "string",
-  PlanId = "string",
-  IdempotencyToken = "string"
-)
+execute_provisioned_product_plan(AcceptLanguage = NULL, PlanId,
+  IdempotencyToken)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -25,6 +22,12 @@ execute_provisioned_product_plan(
 \description{
 Provisions or modifies a product based on the resource changes for the specified plan.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{execute_provisioned_product_plan(
+  AcceptLanguage = "string",
+  PlanId = "string",
+  IdempotencyToken = "string"
+)
 }
+}
+

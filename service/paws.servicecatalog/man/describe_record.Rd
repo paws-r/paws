@@ -4,12 +4,8 @@
 \alias{describe_record}
 \title{Gets information about the specified request operation}
 \usage{
-describe_record(
-  AcceptLanguage = "string",
-  Id = "string",
-  PageToken = "string",
-  PageSize = 123
-)
+describe_record(AcceptLanguage = NULL, Id, PageToken = NULL,
+  PageSize = NULL)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -31,6 +27,13 @@ Gets information about the specified request operation.
 \details{
 Use this operation after calling a request operation (for example, ProvisionProduct, TerminateProvisionedProduct, or UpdateProvisionedProduct).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_record(
+  AcceptLanguage = "string",
+  Id = "string",
+  PageToken = "string",
+  PageSize = 123
+)
 }
+}
+

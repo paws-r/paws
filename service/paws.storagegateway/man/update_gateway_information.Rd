@@ -4,11 +4,8 @@
 \alias{update_gateway_information}
 \title{Updates a gateway's metadata, which includes the gateway's name and time zone}
 \usage{
-update_gateway_information(
-  GatewayARN = "string",
-  GatewayName = "string",
-  GatewayTimezone = "string"
-)
+update_gateway_information(GatewayARN, GatewayName = NULL,
+  GatewayTimezone = NULL)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -23,13 +20,22 @@ Updates a gateway's metadata, which includes the gateway's name and time zone. T
 \details{
 For Gateways activated after September 2, 2015, the gateway's ARN contains the gateway ID rather than the gateway name. However, changing the name of the gateway has no effect on the gateway's ARN.
 }
+\section{Accepted Parameters}{
+\preformatted{update_gateway_information(
+  GatewayARN = "string",
+  GatewayName = "string",
+  GatewayTimezone = "string"
+)
+}
+}
+
 \examples{
 # Updates a gateway's metadata, which includes the gateway's name and time
 # zone.
-update_gateway_information(
+\donttest{update_gateway_information(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B",
   GatewayName = "MyGateway2",
   GatewayTimezone = "GMT-12:00"
-)
+)}
 
 }

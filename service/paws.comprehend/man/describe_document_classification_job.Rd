@@ -4,9 +4,7 @@
 \alias{describe_document_classification_job}
 \title{Gets the properties associated with a document classification job}
 \usage{
-describe_document_classification_job(
-  JobId = "string"
-)
+describe_document_classification_job(JobId)
 }
 \arguments{
 \item{JobId}{[required] The identifier that Amazon Comprehend generated for the job. The operation returns this identifier in its response.}
@@ -14,6 +12,10 @@ describe_document_classification_job(
 \description{
 Gets the properties associated with a document classification job. Use this operation to get the status of a classification job.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_document_classification_job(
+  JobId = "string"
+)
 }
+}
+

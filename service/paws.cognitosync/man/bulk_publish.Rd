@@ -4,9 +4,7 @@
 \alias{bulk_publish}
 \title{Initiates a bulk publish of all existing datasets for an Identity Pool to the configured stream}
 \usage{
-bulk_publish(
-  IdentityPoolId = "string"
-)
+bulk_publish(IdentityPoolId)
 }
 \arguments{
 \item{IdentityPoolId}{[required] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.}
@@ -17,6 +15,10 @@ Initiates a bulk publish of all existing datasets for an Identity Pool to the co
 \details{
 This API can only be called with developer credentials. You cannot call this API with the temporary user credentials provided by Cognito Identity.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{bulk_publish(
+  IdentityPoolId = "string"
+)
 }
+}
+

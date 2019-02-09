@@ -4,12 +4,8 @@
 \alias{create_account}
 \title{Creates an AWS account that is automatically a member of the organization whose credentials made the request}
 \usage{
-create_account(
-  Email = "string",
-  AccountName = "string",
-  RoleName = "string",
-  IamUserAccessToBilling = "ALLOW"|"DENY"
-)
+create_account(Email, AccountName, RoleName = NULL,
+  IamUserAccessToBilling = NULL)
 }
 \arguments{
 \item{Email}{[required] The email address of the owner to assign to the new member account. This email address must not already be associated with another AWS account. You must use a valid email address to complete account creation. You can't access the root user of the account or remove an account that was created with an invalid email address.}
@@ -55,6 +51,16 @@ For more information about creating accounts, see \href{http://docs.aws.amazon.c
 
 When you create a member account with this operation, you can choose whether to create the account with the \strong{IAM User and Role Access to Billing Information} switch enabled. If you enable it, IAM users and roles that have appropriate permissions can view billing information for the account. If you disable it, only the account root user can access billing information. For information about how to disable this switch for an account, see \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html}{Granting Access to Your Billing Information and Tools}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_account(
+  Email = "string",
+  AccountName = "string",
+  RoleName = "string",
+  IamUserAccessToBilling = "ALLOW"|"DENY"
+)
+}
+}
+
 \examples{
 # The owner of an organization creates a member account in the
 # organization. The following example shows that when the organization
@@ -65,9 +71,9 @@ When you create a member account with this operation, you can choose whether to 
 # Organizations sends Susan a "Welcome to AWS" email:
 # 
 # 
-create_account(
+\donttest{create_account(
   AccountName = "Production Account",
   Email = "susan@example.com"
-)
+)}
 
 }

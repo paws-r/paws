@@ -4,14 +4,8 @@
 \alias{describe_tapes}
 \title{Returns a description of the specified Amazon Resource Name (ARN) of virtual tapes}
 \usage{
-describe_tapes(
-  GatewayARN = "string",
-  TapeARNs = list(
-    "string"
-  ),
-  Marker = "string",
-  Limit = 123
-)
+describe_tapes(GatewayARN, TapeARNs = NULL, Marker = NULL,
+  Limit = NULL)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -29,11 +23,23 @@ Amazon Web Services may impose its own limit, if this field is not set.}
 \description{
 Returns a description of the specified Amazon Resource Name (ARN) of virtual tapes. If a \code{TapeARN} is not specified, returns a description of all virtual tapes associated with the specified gateway. This operation is only supported in the tape gateway type.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_tapes(
+  GatewayARN = "string",
+  TapeARNs = list(
+    "string"
+  ),
+  Marker = "string",
+  Limit = 123
+)
+}
+}
+
 \examples{
 # Returns a description of the specified Amazon Resource Name (ARN) of
 # virtual tapes. If a TapeARN is not specified, returns a description of
 # all virtual tapes.
-describe_tapes(
+\donttest{describe_tapes(
   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B",
   Limit = 2L,
   Marker = "1",
@@ -41,6 +47,6 @@ describe_tapes(
     "arn:aws:storagegateway:us-east-1:999999999999:tape/TEST04A2A1",
     "arn:aws:storagegateway:us-east-1:999999999999:tape/TEST05A2A0"
   )
-)
+)}
 
 }

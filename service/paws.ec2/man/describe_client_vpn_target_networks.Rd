@@ -4,23 +4,9 @@
 \alias{describe_client_vpn_target_networks}
 \title{Describes the target networks associated with the specified Client VPN endpoint}
 \usage{
-describe_client_vpn_target_networks(
-  ClientVpnEndpointId = "string",
-  AssociationIds = list(
-    "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE
-)
+describe_client_vpn_target_networks(ClientVpnEndpointId,
+  AssociationIds = NULL, MaxResults = NULL, NextToken = NULL,
+  Filters = NULL, DryRun = NULL)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint.}
@@ -38,6 +24,24 @@ describe_client_vpn_target_networks(
 \description{
 Describes the target networks associated with the specified Client VPN endpoint.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_client_vpn_target_networks(
+  ClientVpnEndpointId = "string",
+  AssociationIds = list(
+    "string"
+  ),
+  MaxResults = 123,
+  NextToken = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  DryRun = TRUE|FALSE
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{list_channels}
 \title{Retrieves a list of channels}
 \usage{
-list_channels(
-  nextToken = "string",
-  maxResults = 123
-)
+list_channels(nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{nextToken}{The token for the next set of results.}
@@ -19,6 +16,11 @@ The default value is 100.}
 \description{
 Retrieves a list of channels.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_channels(
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

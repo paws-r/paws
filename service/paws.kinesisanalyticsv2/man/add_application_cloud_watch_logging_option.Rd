@@ -4,13 +4,8 @@
 \alias{add_application_cloud_watch_logging_option}
 \title{Adds an Amazon CloudWatch log stream to monitor application configuration errors}
 \usage{
-add_application_cloud_watch_logging_option(
-  ApplicationName = "string",
-  CurrentApplicationVersionId = 123,
-  CloudWatchLoggingOption = list(
-    LogStreamARN = "string"
-  )
-)
+add_application_cloud_watch_logging_option(ApplicationName,
+  CurrentApplicationVersionId, CloudWatchLoggingOption)
 }
 \arguments{
 \item{ApplicationName}{[required] The Kinesis Data Analytics application name.}
@@ -22,6 +17,14 @@ add_application_cloud_watch_logging_option(
 \description{
 Adds an Amazon CloudWatch log stream to monitor application configuration errors.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{add_application_cloud_watch_logging_option(
+  ApplicationName = "string",
+  CurrentApplicationVersionId = 123,
+  CloudWatchLoggingOption = list(
+    LogStreamARN = "string"
+  )
+)
 }
+}
+

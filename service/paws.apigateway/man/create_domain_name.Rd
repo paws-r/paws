@@ -4,21 +4,11 @@
 \alias{create_domain_name}
 \title{Creates a new domain name}
 \usage{
-create_domain_name(
-  domainName = "string",
-  certificateName = "string",
-  certificateBody = "string",
-  certificatePrivateKey = "string",
-  certificateChain = "string",
-  certificateArn = "string",
-  regionalCertificateName = "string",
-  regionalCertificateArn = "string",
-  endpointConfiguration = list(
-    types = list(
-      "REGIONAL"|"EDGE"|"PRIVATE"
-    )
-  )
-)
+create_domain_name(domainName, certificateName = NULL,
+  certificateBody = NULL, certificatePrivateKey = NULL,
+  certificateChain = NULL, certificateArn = NULL,
+  regionalCertificateName = NULL, regionalCertificateArn = NULL,
+  endpointConfiguration = NULL)
 }
 \arguments{
 \item{domainName}{[required] [Required] The name of the DomainName resource.}
@@ -42,6 +32,22 @@ create_domain_name(
 \description{
 Creates a new domain name.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_domain_name(
+  domainName = "string",
+  certificateName = "string",
+  certificateBody = "string",
+  certificatePrivateKey = "string",
+  certificateChain = "string",
+  certificateArn = "string",
+  regionalCertificateName = "string",
+  regionalCertificateArn = "string",
+  endpointConfiguration = list(
+    types = list(
+      "REGIONAL"|"EDGE"|"PRIVATE"
+    )
+  )
+)
 }
+}
+

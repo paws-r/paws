@@ -4,41 +4,10 @@
 \alias{provision_product}
 \title{Provisions the specified product}
 \usage{
-provision_product(
-  AcceptLanguage = "string",
-  ProductId = "string",
-  ProvisioningArtifactId = "string",
-  PathId = "string",
-  ProvisionedProductName = "string",
-  ProvisioningParameters = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  ProvisioningPreferences = list(
-    StackSetAccounts = list(
-      "string"
-    ),
-    StackSetRegions = list(
-      "string"
-    ),
-    StackSetFailureToleranceCount = 123,
-    StackSetFailureTolerancePercentage = 123,
-    StackSetMaxConcurrencyCount = 123,
-    StackSetMaxConcurrencyPercentage = 123
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  NotificationArns = list(
-    "string"
-  ),
-  ProvisionToken = "string"
-)
+provision_product(AcceptLanguage = NULL, ProductId,
+  ProvisioningArtifactId, PathId = NULL, ProvisionedProductName,
+  ProvisioningParameters = NULL, ProvisioningPreferences = NULL,
+  Tags = NULL, NotificationArns = NULL, ProvisionToken)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -74,6 +43,42 @@ A provisioned product is a resourced instance of a product. For example, provisi
 
 If the request contains a tag key with an empty list of values, there is a tag conflict for that key. Do not include conflicted keys as tags, or this causes the error "Parameter validation failed: Missing required parameter in Tags[\emph{N}]:\emph{Value}".
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{provision_product(
+  AcceptLanguage = "string",
+  ProductId = "string",
+  ProvisioningArtifactId = "string",
+  PathId = "string",
+  ProvisionedProductName = "string",
+  ProvisioningParameters = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  ProvisioningPreferences = list(
+    StackSetAccounts = list(
+      "string"
+    ),
+    StackSetRegions = list(
+      "string"
+    ),
+    StackSetFailureToleranceCount = 123,
+    StackSetFailureTolerancePercentage = 123,
+    StackSetMaxConcurrencyCount = 123,
+    StackSetMaxConcurrencyPercentage = 123
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  NotificationArns = list(
+    "string"
+  ),
+  ProvisionToken = "string"
+)
 }
+}
+

@@ -4,11 +4,7 @@
 \alias{list_groups}
 \title{Returns summaries of the organization's groups}
 \usage{
-list_groups(
-  OrganizationId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_groups(OrganizationId, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{OrganizationId}{[required] The identifier for the organization under which the groups exist.}
@@ -20,6 +16,12 @@ list_groups(
 \description{
 Returns summaries of the organization's groups.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_groups(
+  OrganizationId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

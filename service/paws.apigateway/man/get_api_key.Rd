@@ -4,10 +4,7 @@
 \alias{get_api_key}
 \title{Gets information about the current ApiKey resource}
 \usage{
-get_api_key(
-  apiKey = "string",
-  includeValue = TRUE|FALSE
-)
+get_api_key(apiKey, includeValue = NULL)
 }
 \arguments{
 \item{apiKey}{[required] [Required] The identifier of the ApiKey resource.}
@@ -17,6 +14,11 @@ get_api_key(
 \description{
 Gets information about the current ApiKey resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_api_key(
+  apiKey = "string",
+  includeValue = TRUE|FALSE
+)
 }
+}
+

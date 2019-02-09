@@ -4,11 +4,8 @@
 \alias{delete_association}
 \title{Disassociates the specified Systems Manager document from the specified instance}
 \usage{
-delete_association(
-  Name = "string",
-  InstanceId = "string",
-  AssociationId = "string"
-)
+delete_association(Name = NULL, InstanceId = NULL,
+  AssociationId = NULL)
 }
 \arguments{
 \item{Name}{The name of the Systems Manager document.}
@@ -23,6 +20,12 @@ Disassociates the specified Systems Manager document from the specified instance
 \details{
 When you disassociate a document from an instance, it does not change the configuration of the instance. To change the configuration state of an instance after you disassociate a document, you must create a new document with the desired configuration and associate it with the instance.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_association(
+  Name = "string",
+  InstanceId = "string",
+  AssociationId = "string"
+)
 }
+}
+

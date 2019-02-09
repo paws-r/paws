@@ -4,12 +4,8 @@
 \alias{put_image}
 \title{Creates or updates the image manifest and tags associated with an image}
 \usage{
-put_image(
-  registryId = "string",
-  repositoryName = "string",
-  imageManifest = "string",
-  imageTag = "string"
-)
+put_image(registryId = NULL, repositoryName, imageManifest,
+  imageTag = NULL)
 }
 \arguments{
 \item{registryId}{The AWS account ID associated with the registry that contains the repository in which to put the image. If you do not specify a registry, the default registry is assumed.}
@@ -26,6 +22,13 @@ Creates or updates the image manifest and tags associated with an image.
 \details{
 This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers for pulling and pushing images. In most cases, you should use the \code{docker} CLI to pull, tag, and push images.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_image(
+  registryId = "string",
+  repositoryName = "string",
+  imageManifest = "string",
+  imageTag = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{delete_alias}
 \title{Deletes an alias}
 \usage{
-delete_alias(
-  AliasId = "string"
-)
+delete_alias(AliasId)
 }
 \arguments{
 \item{AliasId}{[required] Unique identifier for a fleet alias. Specify the alias you want to delete.}
@@ -15,7 +13,6 @@ delete_alias(
 Deletes an alias. This action removes all record of the alias. Game clients attempting to access a server process using the deleted alias receive an error. To delete an alias, specify the alias ID to be deleted.
 }
 \details{
-Alias-related operations include:
 \itemize{
 \item CreateAlias
 \item ListAliases
@@ -25,6 +22,10 @@ Alias-related operations include:
 \item ResolveAlias
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_alias(
+  AliasId = "string"
+)
 }
+}
+

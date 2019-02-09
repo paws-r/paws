@@ -4,11 +4,8 @@
 \alias{get_connector_definition_version}
 \title{Retrieves information about a connector definition version, including the connectors that the version contains}
 \usage{
-get_connector_definition_version(
-  ConnectorDefinitionId = "string",
-  ConnectorDefinitionVersionId = "string",
-  NextToken = "string"
-)
+get_connector_definition_version(ConnectorDefinitionId,
+  ConnectorDefinitionVersionId, NextToken = NULL)
 }
 \arguments{
 \item{ConnectorDefinitionId}{[required] The ID of the connector definition.}
@@ -20,6 +17,12 @@ get_connector_definition_version(
 \description{
 Retrieves information about a connector definition version, including the connectors that the version contains. Connectors are prebuilt modules that interact with local infrastructure, device protocols, AWS, and other cloud services.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_connector_definition_version(
+  ConnectorDefinitionId = "string",
+  ConnectorDefinitionVersionId = "string",
+  NextToken = "string"
+)
 }
+}
+

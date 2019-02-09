@@ -4,10 +4,8 @@
 \alias{accept_resource_share_invitation}
 \title{Accepts an invitation to a resource share from another AWS account}
 \usage{
-accept_resource_share_invitation(
-  resourceShareInvitationArn = "string",
-  clientToken = "string"
-)
+accept_resource_share_invitation(resourceShareInvitationArn,
+  clientToken = NULL)
 }
 \arguments{
 \item{resourceShareInvitationArn}{[required] The Amazon Resource Name (ARN) of the invitation.}
@@ -17,6 +15,11 @@ accept_resource_share_invitation(
 \description{
 Accepts an invitation to a resource share from another AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{accept_resource_share_invitation(
+  resourceShareInvitationArn = "string",
+  clientToken = "string"
+)
 }
+}
+

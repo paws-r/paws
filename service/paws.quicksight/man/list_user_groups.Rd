@@ -4,13 +4,8 @@
 \alias{list_user_groups}
 \title{Lists the Amazon QuickSight groups that an Amazon QuickSight user is a member of}
 \usage{
-list_user_groups(
-  UserName = "string",
-  AwsAccountId = "string",
-  Namespace = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_user_groups(UserName, AwsAccountId, Namespace, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{UserName}{[required] The Amazon QuickSight user name that you want to list group memberships for.}
@@ -35,6 +30,14 @@ The response is a one or more group objects.
 
 \code{aws quicksight list-user-groups -\-user-name=Pat -\-aws-account-id=111122223333 -\-namespace=default -\-region=us-east-1 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_user_groups(
+  UserName = "string",
+  AwsAccountId = "string",
+  Namespace = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

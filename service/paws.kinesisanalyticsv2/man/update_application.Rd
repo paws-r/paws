@@ -4,7 +4,34 @@
 \alias{update_application}
 \title{Updates an existing Amazon Kinesis Data Analytics application}
 \usage{
-update_application(
+update_application(ApplicationName, CurrentApplicationVersionId,
+  ApplicationConfigurationUpdate = NULL,
+  ServiceExecutionRoleUpdate = NULL, RunConfigurationUpdate = NULL,
+  CloudWatchLoggingOptionUpdates = NULL)
+}
+\arguments{
+\item{ApplicationName}{[required] The name of the application to update.}
+
+\item{CurrentApplicationVersionId}{[required] The current application version ID. You can retrieve the application version ID using DescribeApplication.}
+
+\item{ApplicationConfigurationUpdate}{Describes application configuration updates.}
+
+\item{ServiceExecutionRoleUpdate}{Describes updates to the service execution role.}
+
+\item{RunConfigurationUpdate}{Describes updates to the application's starting parameters.}
+
+\item{CloudWatchLoggingOptionUpdates}{Describes application Amazon CloudWatch logging option updates. You can only update existing CloudWatch logging options with this action. To add a new CloudWatch logging option, use AddApplicationCloudWatchLoggingOption.}
+}
+\description{
+Updates an existing Amazon Kinesis Data Analytics application. Using this operation, you can update application code, input configuration, and output configuration.
+}
+\details{
+Kinesis Data Analytics updates the \code{ApplicationVersionId} each time you update your application.
+
+SQL is not enabled for this private beta. Using SQL parameters (such as SqlApplicationConfigurationUpdate) will result in an error.
+}
+\section{Accepted Parameters}{
+\preformatted{update_application(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   ApplicationConfigurationUpdate = list(
@@ -162,27 +189,5 @@ update_application(
   )
 )
 }
-\arguments{
-\item{ApplicationName}{[required] The name of the application to update.}
-
-\item{CurrentApplicationVersionId}{[required] The current application version ID. You can retrieve the application version ID using DescribeApplication.}
-
-\item{ApplicationConfigurationUpdate}{Describes application configuration updates.}
-
-\item{ServiceExecutionRoleUpdate}{Describes updates to the service execution role.}
-
-\item{RunConfigurationUpdate}{Describes updates to the application's starting parameters.}
-
-\item{CloudWatchLoggingOptionUpdates}{Describes application Amazon CloudWatch logging option updates. You can only update existing CloudWatch logging options with this action. To add a new CloudWatch logging option, use AddApplicationCloudWatchLoggingOption.}
 }
-\description{
-Updates an existing Amazon Kinesis Data Analytics application. Using this operation, you can update application code, input configuration, and output configuration.
-}
-\details{
-Kinesis Data Analytics updates the \code{ApplicationVersionId} each time you update your application.
 
-SQL is not enabled for this private beta. Using SQL parameters (such as SqlApplicationConfigurationUpdate) will result in an error.
-}
-\examples{
-
-}

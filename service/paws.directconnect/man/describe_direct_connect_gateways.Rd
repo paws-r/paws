@@ -4,11 +4,8 @@
 \alias{describe_direct_connect_gateways}
 \title{Lists all your Direct Connect gateways or only the specified Direct Connect gateway}
 \usage{
-describe_direct_connect_gateways(
-  directConnectGatewayId = "string",
-  maxResults = 123,
-  nextToken = "string"
-)
+describe_direct_connect_gateways(directConnectGatewayId = NULL,
+  maxResults = NULL, nextToken = NULL)
 }
 \arguments{
 \item{directConnectGatewayId}{The ID of the Direct Connect gateway.}
@@ -20,6 +17,12 @@ describe_direct_connect_gateways(
 \description{
 Lists all your Direct Connect gateways or only the specified Direct Connect gateway. Deleted Direct Connect gateways are not returned.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_direct_connect_gateways(
+  directConnectGatewayId = "string",
+  maxResults = 123,
+  nextToken = "string"
+)
 }
+}
+

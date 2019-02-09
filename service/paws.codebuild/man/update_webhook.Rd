@@ -4,11 +4,7 @@
 \alias{update_webhook}
 \title{Updates the webhook associated with an AWS CodeBuild build project}
 \usage{
-update_webhook(
-  projectName = "string",
-  branchFilter = "string",
-  rotateSecret = TRUE|FALSE
-)
+update_webhook(projectName, branchFilter = NULL, rotateSecret = NULL)
 }
 \arguments{
 \item{projectName}{[required] The name of the AWS CodeBuild project.}
@@ -23,6 +19,12 @@ Updates the webhook associated with an AWS CodeBuild build project.
 \details{
 If you use Bitbucket for your repository, \code{rotateSecret} is ignored.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_webhook(
+  projectName = "string",
+  branchFilter = "string",
+  rotateSecret = TRUE|FALSE
+)
 }
+}
+

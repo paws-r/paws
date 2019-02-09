@@ -4,15 +4,7 @@
 \alias{tag_delivery_stream}
 \title{Adds or updates tags for the specified delivery stream}
 \usage{
-tag_delivery_stream(
-  DeliveryStreamName = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+tag_delivery_stream(DeliveryStreamName, Tags)
 }
 \arguments{
 \item{DeliveryStreamName}{[required] The name of the delivery stream to which you want to add the tags.}
@@ -27,6 +19,16 @@ Each delivery stream can have up to 50 tags.
 
 This operation has a limit of five transactions per second per account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{tag_delivery_stream(
+  DeliveryStreamName = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{delete_hosted_zone}
 \title{Deletes a hosted zone}
 \usage{
-delete_hosted_zone(
-  Id = "string"
-)
+delete_hosted_zone(Id)
 }
 \arguments{
 \item{Id}{[required] The ID of the hosted zone you want to delete.}
@@ -27,6 +25,10 @@ To verify that the hosted zone has been deleted, do one of the following:
 \item Use the \code{ListHostedZones} action to get a list of the hosted zones associated with the current AWS account.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_hosted_zone(
+  Id = "string"
+)
 }
+}
+

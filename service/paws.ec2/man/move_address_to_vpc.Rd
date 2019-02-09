@@ -4,10 +4,7 @@
 \alias{move_address_to_vpc}
 \title{Moves an Elastic IP address from the EC2-Classic platform to the EC2-VPC platform}
 \usage{
-move_address_to_vpc(
-  DryRun = TRUE|FALSE,
-  PublicIp = "string"
-)
+move_address_to_vpc(DryRun = NULL, PublicIp)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -17,11 +14,19 @@ move_address_to_vpc(
 \description{
 Moves an Elastic IP address from the EC2-Classic platform to the EC2-VPC platform. The Elastic IP address must be allocated to your account for more than 24 hours, and it must not be associated with an instance. After the Elastic IP address is moved, it is no longer available for use in the EC2-Classic platform, unless you move it back using the RestoreAddressToClassic request. You cannot move an Elastic IP address that was originally allocated for use in the EC2-VPC platform to the EC2-Classic platform.
 }
+\section{Accepted Parameters}{
+\preformatted{move_address_to_vpc(
+  DryRun = TRUE|FALSE,
+  PublicIp = "string"
+)
+}
+}
+
 \examples{
 # This example moves the specified Elastic IP address to the EC2-VPC
 # platform.
-move_address_to_vpc(
+\donttest{move_address_to_vpc(
   PublicIp = "54.123.4.56"
-)
+)}
 
 }

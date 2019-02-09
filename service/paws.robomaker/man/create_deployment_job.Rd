@@ -2,9 +2,30 @@
 % Please edit documentation in R/paws.robomaker_operations.R
 \name{create_deployment_job}
 \alias{create_deployment_job}
-\title{Creates a deployment job}
+\title{Deploys a specific version of a robot application to robots in a fleet}
 \usage{
-create_deployment_job(
+create_deployment_job(deploymentConfig = NULL, clientRequestToken, fleet,
+  deploymentApplicationConfigs, tags = NULL)
+}
+\arguments{
+\item{deploymentConfig}{The requested deployment configuration.}
+
+\item{clientRequestToken}{[required] Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.}
+
+\item{fleet}{[required] The Amazon Resource Name (ARN) of the fleet to deploy.}
+
+\item{deploymentApplicationConfigs}{[required] The deployment application configuration.}
+
+\item{tags}{A map that contains tag keys and tag values that are attached to the deployment job.}
+}
+\description{
+Deploys a specific version of a robot application to robots in a fleet.
+}
+\details{
+The robot application must have a numbered \code{applicationVersion} for consistency reasons. To create a new version, use \code{CreateRobotApplicationVersion} or see \href{https://docs.aws.amazon.com/robomaker/latest/dg/create-robot-application-version.html}{Creating a Robot Application Version}.
+}
+\section{Accepted Parameters}{
+\preformatted{create_deployment_job(
   deploymentConfig = list(
     concurrentDeploymentPercentage = 123,
     failureThresholdPercentage = 123
@@ -25,21 +46,11 @@ create_deployment_job(
         )
       )
     )
+  ),
+  tags = list(
+    "string"
   )
 )
 }
-\arguments{
-\item{deploymentConfig}{The requested deployment configuration.}
-
-\item{clientRequestToken}{[required] Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.}
-
-\item{fleet}{[required] The Amazon Resource Name (ARN) of the fleet to deploy.}
-
-\item{deploymentApplicationConfigs}{[required] The deployment application configuration.}
 }
-\description{
-Creates a deployment job.
-}
-\examples{
 
-}

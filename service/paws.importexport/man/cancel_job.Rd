@@ -4,10 +4,7 @@
 \alias{cancel_job}
 \title{This operation cancels a specified job}
 \usage{
-cancel_job(
-  JobId = "string",
-  APIVersion = "string"
-)
+cancel_job(JobId, APIVersion = NULL)
 }
 \arguments{
 \item{JobId}{[required]}
@@ -17,6 +14,11 @@ cancel_job(
 \description{
 This operation cancels a specified job. Only the job owner can cancel it. The operation fails if the job has already started or is complete.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{cancel_job(
+  JobId = "string",
+  APIVersion = "string"
+)
 }
+}
+

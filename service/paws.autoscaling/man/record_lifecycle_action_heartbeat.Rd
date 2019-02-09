@@ -4,12 +4,8 @@
 \alias{record_lifecycle_action_heartbeat}
 \title{Records a heartbeat for the lifecycle action associated with the specified token or instance}
 \usage{
-record_lifecycle_action_heartbeat(
-  LifecycleHookName = "string",
-  AutoScalingGroupName = "string",
-  LifecycleActionToken = "string",
-  InstanceId = "string"
-)
+record_lifecycle_action_heartbeat(LifecycleHookName, AutoScalingGroupName,
+  LifecycleActionToken = NULL, InstanceId = NULL)
 }
 \arguments{
 \item{LifecycleHookName}{[required] The name of the lifecycle hook.}
@@ -35,13 +31,23 @@ This step is a part of the procedure for adding a lifecycle hook to an Auto Scal
 
 For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroupLifecycle.html}{Auto Scaling Lifecycle} in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{record_lifecycle_action_heartbeat(
+  LifecycleHookName = "string",
+  AutoScalingGroupName = "string",
+  LifecycleActionToken = "string",
+  InstanceId = "string"
+)
+}
+}
+
 \examples{
 # This example records a lifecycle action heartbeat to keep the instance
 # in a pending state.
-record_lifecycle_action_heartbeat(
+\donttest{record_lifecycle_action_heartbeat(
   AutoScalingGroupName = "my-auto-scaling-group",
   LifecycleActionToken = "bcd2f1b8-9a78-44d3-8a7a-4dd07d7cf635",
   LifecycleHookName = "my-lifecycle-hook"
-)
+)}
 
 }

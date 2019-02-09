@@ -4,7 +4,39 @@
 \alias{update_origin_endpoint}
 \title{Updates an existing OriginEndpoint}
 \usage{
-update_origin_endpoint(
+update_origin_endpoint(CmafPackage = NULL, DashPackage = NULL,
+  Description = NULL, HlsPackage = NULL, Id, ManifestName = NULL,
+  MssPackage = NULL, StartoverWindowSeconds = NULL,
+  TimeDelaySeconds = NULL, Whitelist = NULL)
+}
+\arguments{
+\item{CmafPackage}{}
+
+\item{DashPackage}{}
+
+\item{Description}{A short text description of the OriginEndpoint.}
+
+\item{HlsPackage}{}
+
+\item{Id}{[required] The ID of the OriginEndpoint to update.}
+
+\item{ManifestName}{A short string that will be appended to the end of the Endpoint URL.}
+
+\item{MssPackage}{}
+
+\item{StartoverWindowSeconds}{Maximum duration (in seconds) of content to retain for startover playback.
+If not specified, startover playback will be disabled for the OriginEndpoint.}
+
+\item{TimeDelaySeconds}{Amount of delay (in seconds) to enforce on the playback of live content.
+If not specified, there will be no time delay in effect for the OriginEndpoint.}
+
+\item{Whitelist}{A list of source IP CIDR blocks that will be allowed to access the OriginEndpoint.}
+}
+\description{
+Updates an existing OriginEndpoint.
+}
+\section{Accepted Parameters}{
+\preformatted{update_origin_endpoint(
   CmafPackage = list(
     Encryption = list(
       KeyRotationIntervalSeconds = 123,
@@ -124,32 +156,5 @@ update_origin_endpoint(
   )
 )
 }
-\arguments{
-\item{CmafPackage}{}
-
-\item{DashPackage}{}
-
-\item{Description}{A short text description of the OriginEndpoint.}
-
-\item{HlsPackage}{}
-
-\item{Id}{[required] The ID of the OriginEndpoint to update.}
-
-\item{ManifestName}{A short string that will be appended to the end of the Endpoint URL.}
-
-\item{MssPackage}{}
-
-\item{StartoverWindowSeconds}{Maximum duration (in seconds) of content to retain for startover playback.
-If not specified, startover playback will be disabled for the OriginEndpoint.}
-
-\item{TimeDelaySeconds}{Amount of delay (in seconds) to enforce on the playback of live content.
-If not specified, there will be no time delay in effect for the OriginEndpoint.}
-
-\item{Whitelist}{A list of source IP CIDR blocks that will be allowed to access the OriginEndpoint.}
 }
-\description{
-Updates an existing OriginEndpoint.
-}
-\examples{
 
-}

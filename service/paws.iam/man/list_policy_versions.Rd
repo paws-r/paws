@@ -4,11 +4,7 @@
 \alias{list_policy_versions}
 \title{Lists information about the versions of the specified managed policy, including the version that is currently set as the policy's default version}
 \usage{
-list_policy_versions(
-  PolicyArn = "string",
-  Marker = "string",
-  MaxItems = 123
-)
+list_policy_versions(PolicyArn, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy for which you want the versions.
@@ -27,6 +23,12 @@ Lists information about the versions of the specified managed policy, including 
 \details{
 For more information about managed policies, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies} in the \emph{IAM User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_policy_versions(
+  PolicyArn = "string",
+  Marker = "string",
+  MaxItems = 123
+)
 }
+}
+

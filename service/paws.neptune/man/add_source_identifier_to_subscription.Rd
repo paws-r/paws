@@ -4,10 +4,7 @@
 \alias{add_source_identifier_to_subscription}
 \title{Adds a source identifier to an existing event notification subscription}
 \usage{
-add_source_identifier_to_subscription(
-  SubscriptionName = "string",
-  SourceIdentifier = "string"
-)
+add_source_identifier_to_subscription(SubscriptionName, SourceIdentifier)
 }
 \arguments{
 \item{SubscriptionName}{[required] The name of the event notification subscription you want to add a source identifier to.}
@@ -25,6 +22,11 @@ Constraints:
 \description{
 Adds a source identifier to an existing event notification subscription.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{add_source_identifier_to_subscription(
+  SubscriptionName = "string",
+  SourceIdentifier = "string"
+)
 }
+}
+

@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.mturk_operations.R
 \name{get_assignment}
 \alias{get_assignment}
-\title{The \code{GetAssignment} operation retrieves the details of the specified Assignment}
+\title{The GetAssignment operation retrieves the details of the specified Assignment}
 \usage{
-get_assignment(
-  AssignmentId = "string"
-)
+get_assignment(AssignmentId)
 }
 \arguments{
 \item{AssignmentId}{[required] The ID of the Assignment to be retrieved.}
@@ -14,6 +12,10 @@ get_assignment(
 \description{
 The \code{GetAssignment} operation retrieves the details of the specified Assignment.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_assignment(
+  AssignmentId = "string"
+)
 }
+}
+

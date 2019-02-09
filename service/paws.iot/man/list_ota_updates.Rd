@@ -4,11 +4,8 @@
 \alias{list_ota_updates}
 \title{Lists OTA updates}
 \usage{
-list_ota_updates(
-  maxResults = 123,
-  nextToken = "string",
-  otaUpdateStatus = "CREATE_PENDING"|"CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"CREATE_FAILED"
-)
+list_ota_updates(maxResults = NULL, nextToken = NULL,
+  otaUpdateStatus = NULL)
 }
 \arguments{
 \item{maxResults}{The maximum number of results to return at one time.}
@@ -20,6 +17,12 @@ list_ota_updates(
 \description{
 Lists OTA updates.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_ota_updates(
+  maxResults = 123,
+  nextToken = "string",
+  otaUpdateStatus = "CREATE_PENDING"|"CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"CREATE_FAILED"
+)
 }
+}
+

@@ -4,11 +4,7 @@
 \alias{create_policy_version}
 \title{Creates a new version of the specified AWS IoT policy}
 \usage{
-create_policy_version(
-  policyName = "string",
-  policyDocument = "string",
-  setAsDefault = TRUE|FALSE
-)
+create_policy_version(policyName, policyDocument, setAsDefault = NULL)
 }
 \arguments{
 \item{policyName}{[required] The policy name.}
@@ -23,6 +19,12 @@ Creates a new version of the specified AWS IoT policy. To update a policy, creat
 \details{
 Optionally, you can set the new version as the policy's default version. The default version is the operative version (that is, the version that is in effect for the certificates to which the policy is attached).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_policy_version(
+  policyName = "string",
+  policyDocument = "string",
+  setAsDefault = TRUE|FALSE
+)
 }
+}
+

@@ -4,14 +4,8 @@
 \alias{list_jobs}
 \title{This operation lists jobs for a vault, including jobs that are in-progress and jobs that have recently finished}
 \usage{
-list_jobs(
-  accountId = "string",
-  vaultName = "string",
-  limit = "string",
-  marker = "string",
-  statuscode = "string",
-  completed = "string"
-)
+list_jobs(accountId, vaultName, limit = NULL, marker = NULL,
+  statuscode = NULL, completed = NULL)
 }
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
@@ -40,11 +34,23 @@ Additionally, you can filter the jobs list returned by specifying the optional \
 
 For more information about using this operation, see the documentation for the underlying REST API \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-jobs-get.html}{List Jobs}.
 }
+\section{Accepted Parameters}{
+\preformatted{list_jobs(
+  accountId = "string",
+  vaultName = "string",
+  limit = "string",
+  marker = "string",
+  statuscode = "string",
+  completed = "string"
+)
+}
+}
+
 \examples{
 # The example lists jobs for the vault named my-vault.
-list_jobs(
+\donttest{list_jobs(
   accountId = "-",
   vaultName = "my-vault"
-)
+)}
 
 }

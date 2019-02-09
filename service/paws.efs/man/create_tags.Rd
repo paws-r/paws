@@ -4,15 +4,7 @@
 \alias{create_tags}
 \title{Creates or overwrites tags associated with a file system}
 \usage{
-create_tags(
-  FileSystemId = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_tags(FileSystemId, Tags)
 }
 \arguments{
 \item{FileSystemId}{[required] ID of the file system whose tags you want to modify (String). This operation modifies the tags only, not the file system.}
@@ -25,9 +17,22 @@ Creates or overwrites tags associated with a file system. Each tag is a key-valu
 \details{
 This operation requires permission for the \code{elasticfilesystem:CreateTags} action.
 }
+\section{Accepted Parameters}{
+\preformatted{create_tags(
+  FileSystemId = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # This operation creates a new tag for an EFS file system.
-create_tags(
+\donttest{create_tags(
   FileSystemId = "fs-01234567",
   Tags = list(
     list(
@@ -35,6 +40,6 @@ create_tags(
       Value = "MyFileSystem"
     )
   )
-)
+)}
 
 }

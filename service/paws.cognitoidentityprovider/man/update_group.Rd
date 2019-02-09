@@ -4,13 +4,8 @@
 \alias{update_group}
 \title{Updates the specified group with the specified attributes}
 \usage{
-update_group(
-  GroupName = "string",
-  UserPoolId = "string",
-  Description = "string",
-  RoleArn = "string",
-  Precedence = 123
-)
+update_group(GroupName, UserPoolId, Description = NULL, RoleArn = NULL,
+  Precedence = NULL)
 }
 \arguments{
 \item{GroupName}{[required] The name of the group.}
@@ -29,6 +24,14 @@ Updates the specified group with the specified attributes.
 \details{
 Requires developer credentials.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_group(
+  GroupName = "string",
+  UserPoolId = "string",
+  Description = "string",
+  RoleArn = "string",
+  Precedence = 123
+)
 }
+}
+

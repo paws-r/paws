@@ -4,12 +4,7 @@
 \alias{phone_number_validate}
 \title{Returns information about the specified phone number}
 \usage{
-phone_number_validate(
-  NumberValidateRequest = list(
-    IsoCountryCode = "string",
-    PhoneNumber = "string"
-  )
-)
+phone_number_validate(NumberValidateRequest)
 }
 \arguments{
 \item{NumberValidateRequest}{[required]}
@@ -17,6 +12,13 @@ phone_number_validate(
 \description{
 Returns information about the specified phone number.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{phone_number_validate(
+  NumberValidateRequest = list(
+    IsoCountryCode = "string",
+    PhoneNumber = "string"
+  )
+)
 }
+}
+

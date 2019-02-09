@@ -4,12 +4,7 @@
 \alias{put_bucket_accelerate_configuration}
 \title{Sets the accelerate configuration of an existing bucket}
 \usage{
-put_bucket_accelerate_configuration(
-  Bucket = "string",
-  AccelerateConfiguration = list(
-    Status = "Enabled"|"Suspended"
-  )
-)
+put_bucket_accelerate_configuration(Bucket, AccelerateConfiguration)
 }
 \arguments{
 \item{Bucket}{[required] Name of the bucket for which the accelerate configuration is set.}
@@ -19,6 +14,13 @@ put_bucket_accelerate_configuration(
 \description{
 Sets the accelerate configuration of an existing bucket.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_bucket_accelerate_configuration(
+  Bucket = "string",
+  AccelerateConfiguration = list(
+    Status = "Enabled"|"Suspended"
+  )
+)
 }
+}
+

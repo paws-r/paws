@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.organizations_operations.R
 \name{enable_aws_service_access}
 \alias{enable_aws_service_access}
-\title{Enables the integration of an AWS service (the service that is specified by \code{ServicePrincipal}) with AWS Organizations}
+\title{Enables the integration of an AWS service (the service that is specified by ServicePrincipal) with AWS Organizations}
 \usage{
-enable_aws_service_access(
-  ServicePrincipal = "string"
-)
+enable_aws_service_access(ServicePrincipal)
 }
 \arguments{
 \item{ServicePrincipal}{[required] The service principal name of the AWS service for which you want to enable integration with your organization. This is typically in the form of a URL, such as \code{ service-abbreviation.amazonaws.comservice-abbreviation.amazonaws.com}.}
@@ -21,6 +19,10 @@ For more information about enabling services to integrate with AWS Organizations
 
 This operation can be called only from the organization's master account and only if the organization has \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html}{enabled all features}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{enable_aws_service_access(
+  ServicePrincipal = "string"
+)
 }
+}
+

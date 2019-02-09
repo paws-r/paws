@@ -4,11 +4,7 @@
 \alias{update_user_routing_profile}
 \title{Assigns the specified routing profile to a user}
 \usage{
-update_user_routing_profile(
-  RoutingProfileId = "string",
-  UserId = "string",
-  InstanceId = "string"
-)
+update_user_routing_profile(RoutingProfileId, UserId, InstanceId)
 }
 \arguments{
 \item{RoutingProfileId}{[required] The identifier of the routing profile to assign to the user.}
@@ -20,6 +16,12 @@ update_user_routing_profile(
 \description{
 Assigns the specified routing profile to a user.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_user_routing_profile(
+  RoutingProfileId = "string",
+  UserId = "string",
+  InstanceId = "string"
+)
 }
+}
+

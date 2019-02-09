@@ -4,12 +4,7 @@
 \alias{disable_stage_transition}
 \title{Prevents artifacts in a pipeline from transitioning to the next stage in the pipeline}
 \usage{
-disable_stage_transition(
-  pipelineName = "string",
-  stageName = "string",
-  transitionType = "Inbound"|"Outbound",
-  reason = "string"
-)
+disable_stage_transition(pipelineName, stageName, transitionType, reason)
 }
 \arguments{
 \item{pipelineName}{[required] The name of the pipeline in which you want to disable the flow of artifacts from one stage to another.}
@@ -23,6 +18,13 @@ disable_stage_transition(
 \description{
 Prevents artifacts in a pipeline from transitioning to the next stage in the pipeline.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disable_stage_transition(
+  pipelineName = "string",
+  stageName = "string",
+  transitionType = "Inbound"|"Outbound",
+  reason = "string"
+)
 }
+}
+

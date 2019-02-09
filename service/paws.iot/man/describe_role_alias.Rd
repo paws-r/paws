@@ -4,9 +4,7 @@
 \alias{describe_role_alias}
 \title{Describes a role alias}
 \usage{
-describe_role_alias(
-  roleAlias = "string"
-)
+describe_role_alias(roleAlias)
 }
 \arguments{
 \item{roleAlias}{[required] The role alias to describe.}
@@ -14,6 +12,10 @@ describe_role_alias(
 \description{
 Describes a role alias.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_role_alias(
+  roleAlias = "string"
+)
 }
+}
+

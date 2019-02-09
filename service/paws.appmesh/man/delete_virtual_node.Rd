@@ -4,10 +4,7 @@
 \alias{delete_virtual_node}
 \title{Deletes an existing virtual node}
 \usage{
-delete_virtual_node(
-  meshName = "string",
-  virtualNodeName = "string"
-)
+delete_virtual_node(meshName, virtualNodeName)
 }
 \arguments{
 \item{meshName}{[required] The name of the service mesh in which to delete the virtual node.}
@@ -17,6 +14,11 @@ delete_virtual_node(
 \description{
 Deletes an existing virtual node.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_virtual_node(
+  meshName = "string",
+  virtualNodeName = "string"
+)
 }
+}
+

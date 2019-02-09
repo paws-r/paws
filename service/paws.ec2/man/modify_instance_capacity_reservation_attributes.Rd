@@ -4,16 +4,8 @@
 \alias{modify_instance_capacity_reservation_attributes}
 \title{Modifies the Capacity Reservation settings for a stopped instance}
 \usage{
-modify_instance_capacity_reservation_attributes(
-  InstanceId = "string",
-  CapacityReservationSpecification = list(
-    CapacityReservationPreference = "open"|"none",
-    CapacityReservationTarget = list(
-      CapacityReservationId = "string"
-    )
-  ),
-  DryRun = TRUE|FALSE
-)
+modify_instance_capacity_reservation_attributes(InstanceId,
+  CapacityReservationSpecification, DryRun = NULL)
 }
 \arguments{
 \item{InstanceId}{[required] The ID of the instance to be modified.}
@@ -25,6 +17,17 @@ modify_instance_capacity_reservation_attributes(
 \description{
 Modifies the Capacity Reservation settings for a stopped instance. Use this action to configure an instance to target a specific Capacity Reservation, run in any \code{open} Capacity Reservation with matching attributes, or run On-Demand Instance capacity.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_instance_capacity_reservation_attributes(
+  InstanceId = "string",
+  CapacityReservationSpecification = list(
+    CapacityReservationPreference = "open"|"none",
+    CapacityReservationTarget = list(
+      CapacityReservationId = "string"
+    )
+  ),
+  DryRun = TRUE|FALSE
+)
 }
+}
+

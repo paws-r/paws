@@ -4,12 +4,8 @@
 \alias{update_domain_contact_privacy}
 \title{This operation updates the specified domain contact's privacy setting}
 \usage{
-update_domain_contact_privacy(
-  DomainName = "string",
-  AdminPrivacy = TRUE|FALSE,
-  RegistrantPrivacy = TRUE|FALSE,
-  TechPrivacy = TRUE|FALSE
-)
+update_domain_contact_privacy(DomainName, AdminPrivacy = NULL,
+  RegistrantPrivacy = NULL, TechPrivacy = NULL)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain that you want to update the privacy setting for.}
@@ -26,6 +22,13 @@ This operation updates the specified domain contact's privacy setting. When priv
 \details{
 This operation affects only the contact information for the specified contact type (registrant, administrator, or tech). If the request succeeds, Amazon Route 53 returns an operation ID that you can use with GetOperationDetail to track the progress and completion of the action. If the request doesn't complete successfully, the domain registrant will be notified by email.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_domain_contact_privacy(
+  DomainName = "string",
+  AdminPrivacy = TRUE|FALSE,
+  RegistrantPrivacy = TRUE|FALSE,
+  TechPrivacy = TRUE|FALSE
+)
 }
+}
+

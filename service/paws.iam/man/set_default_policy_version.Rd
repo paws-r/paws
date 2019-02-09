@@ -4,10 +4,7 @@
 \alias{set_default_policy_version}
 \title{Sets the specified version of the specified policy as the policy's default (operative) version}
 \usage{
-set_default_policy_version(
-  PolicyArn = "string",
-  VersionId = "string"
-)
+set_default_policy_version(PolicyArn, VersionId)
 }
 \arguments{
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy whose default version you want to set.
@@ -26,6 +23,11 @@ This operation affects all users, groups, and roles that the policy is attached 
 
 For information about managed policies, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies} in the \emph{IAM User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{set_default_policy_version(
+  PolicyArn = "string",
+  VersionId = "string"
+)
 }
+}
+

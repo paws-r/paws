@@ -4,9 +4,7 @@
 \alias{get_health_check}
 \title{Gets information about a specified health check}
 \usage{
-get_health_check(
-  HealthCheckId = "string"
-)
+get_health_check(HealthCheckId)
 }
 \arguments{
 \item{HealthCheckId}{[required] The identifier that Amazon Route 53 assigned to the health check when you created it. When you add or update a resource record set, you use this value to specify which health check to use. The value can be up to 64 characters long.}
@@ -14,6 +12,10 @@ get_health_check(
 \description{
 Gets information about a specified health check.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_health_check(
+  HealthCheckId = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{delete_user_profile}
 \title{Deletes a user profile}
 \usage{
-delete_user_profile(
-  IamUserArn = "string"
-)
+delete_user_profile(IamUserArn)
 }
 \arguments{
 \item{IamUserArn}{[required] The user's IAM ARN. This can also be a federated user's ARN.}
@@ -17,6 +15,10 @@ Deletes a user profile.
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have an attached policy that explicitly grants permissions. For more information about user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_user_profile(
+  IamUserArn = "string"
+)
 }
+}
+

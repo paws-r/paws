@@ -4,9 +4,7 @@
 \alias{describe_fleet}
 \title{Describes a fleet}
 \usage{
-describe_fleet(
-  fleet = "string"
-)
+describe_fleet(fleet)
 }
 \arguments{
 \item{fleet}{[required] The Amazon Resource Name (ARN) of the fleet.}
@@ -14,6 +12,10 @@ describe_fleet(
 \description{
 Describes a fleet.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_fleet(
+  fleet = "string"
+)
 }
+}
+

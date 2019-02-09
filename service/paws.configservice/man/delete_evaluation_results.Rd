@@ -4,9 +4,7 @@
 \alias{delete_evaluation_results}
 \title{Deletes the evaluation results for the specified AWS Config rule}
 \usage{
-delete_evaluation_results(
-  ConfigRuleName = "string"
-)
+delete_evaluation_results(ConfigRuleName)
 }
 \arguments{
 \item{ConfigRuleName}{[required] The name of the AWS Config rule for which you want to delete the evaluation results.}
@@ -14,6 +12,10 @@ delete_evaluation_results(
 \description{
 Deletes the evaluation results for the specified AWS Config rule. You can specify one AWS Config rule per request. After you delete the evaluation results, you can call the StartConfigRulesEvaluation API to start evaluating your AWS resources against the rule.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_evaluation_results(
+  ConfigRuleName = "string"
+)
 }
+}
+

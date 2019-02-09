@@ -4,31 +4,36 @@
 \alias{create_nat_gateway}
 \title{Creates a NAT gateway in the specified public subnet}
 \usage{
-create_nat_gateway(
-  AllocationId = "string",
-  ClientToken = "string",
-  SubnetId = "string"
-)
+create_nat_gateway(AllocationId, ClientToken = NULL, SubnetId)
 }
 \arguments{
 \item{AllocationId}{[required] The allocation ID of an Elastic IP address to associate with the NAT gateway. If the Elastic IP address is associated with another resource, you must first disassociate it.}
 
-\item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.
+\item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.
 
 Constraint: Maximum 64 ASCII characters.}
 
 \item{SubnetId}{[required] The subnet in which to create the NAT gateway.}
 }
 \description{
-Creates a NAT gateway in the specified public subnet. This action creates a network interface in the specified subnet with a private IP address from the IP address range of the subnet. Internet-bound traffic from a private subnet can be routed to the NAT gateway, therefore enabling instances in the private subnet to connect to the internet. For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html}{NAT Gateways} in the \emph{Amazon Virtual Private Cloud User Guide}.
+Creates a NAT gateway in the specified public subnet. This action creates a network interface in the specified subnet with a private IP address from the IP address range of the subnet. Internet-bound traffic from a private subnet can be routed to the NAT gateway, therefore enabling instances in the private subnet to connect to the internet. For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html}{NAT Gateways} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_nat_gateway(
+  AllocationId = "string",
+  ClientToken = "string",
+  SubnetId = "string"
+)
+}
+}
+
 \examples{
 # This example creates a NAT gateway in subnet subnet-1a2b3c4d and
 # associates an Elastic IP address with the allocation ID
 # eipalloc-37fc1a52 with the NAT gateway.
-create_nat_gateway(
+\donttest{create_nat_gateway(
   AllocationId = "eipalloc-37fc1a52",
   SubnetId = "subnet-1a2b3c4d"
-)
+)}
 
 }

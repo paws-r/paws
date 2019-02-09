@@ -4,71 +4,10 @@
 \alias{create_labeling_job}
 \title{Creates a job that uses workers to label the data objects in your input dataset}
 \usage{
-create_labeling_job(
-  LabelingJobName = "string",
-  LabelAttributeName = "string",
-  InputConfig = list(
-    DataSource = list(
-      S3DataSource = list(
-        ManifestS3Uri = "string"
-      )
-    ),
-    DataAttributes = list(
-      ContentClassifiers = list(
-        "FreeOfPersonallyIdentifiableInformation"|"FreeOfAdultContent"
-      )
-    )
-  ),
-  OutputConfig = list(
-    S3OutputPath = "string",
-    KmsKeyId = "string"
-  ),
-  RoleArn = "string",
-  LabelCategoryConfigS3Uri = "string",
-  StoppingConditions = list(
-    MaxHumanLabeledObjectCount = 123,
-    MaxPercentageOfInputDatasetLabeled = 123
-  ),
-  LabelingJobAlgorithmsConfig = list(
-    LabelingJobAlgorithmSpecificationArn = "string",
-    InitialActiveLearningModelArn = "string",
-    LabelingJobResourceConfig = list(
-      VolumeKmsKeyId = "string"
-    )
-  ),
-  HumanTaskConfig = list(
-    WorkteamArn = "string",
-    UiConfig = list(
-      UiTemplateS3Uri = "string"
-    ),
-    PreHumanTaskLambdaArn = "string",
-    TaskKeywords = list(
-      "string"
-    ),
-    TaskTitle = "string",
-    TaskDescription = "string",
-    NumberOfHumanWorkersPerDataObject = 123,
-    TaskTimeLimitInSeconds = 123,
-    TaskAvailabilityLifetimeInSeconds = 123,
-    MaxConcurrentTaskCount = 123,
-    AnnotationConsolidationConfig = list(
-      AnnotationConsolidationLambdaArn = "string"
-    ),
-    PublicWorkforceTaskPrice = list(
-      AmountInUsd = list(
-        Dollars = 123,
-        Cents = 123,
-        TenthFractionsOfACent = 123
-      )
-    )
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_labeling_job(LabelingJobName, LabelAttributeName, InputConfig,
+  OutputConfig, RoleArn, LabelCategoryConfigS3Uri = NULL,
+  StoppingConditions = NULL, LabelingJobAlgorithmsConfig = NULL,
+  HumanTaskConfig, Tags = NULL)
 }
 \arguments{
 \item{LabelingJobName}{[required] The name of the labeling job. This name is used to identify the job in a list of labeling jobs.}
@@ -164,6 +103,72 @@ The data objects to be labeled are contained in an Amazon S3 bucket. You create 
 
 The output can be used as the manifest file for another labeling job or as training data for your machine learning models.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_labeling_job(
+  LabelingJobName = "string",
+  LabelAttributeName = "string",
+  InputConfig = list(
+    DataSource = list(
+      S3DataSource = list(
+        ManifestS3Uri = "string"
+      )
+    ),
+    DataAttributes = list(
+      ContentClassifiers = list(
+        "FreeOfPersonallyIdentifiableInformation"|"FreeOfAdultContent"
+      )
+    )
+  ),
+  OutputConfig = list(
+    S3OutputPath = "string",
+    KmsKeyId = "string"
+  ),
+  RoleArn = "string",
+  LabelCategoryConfigS3Uri = "string",
+  StoppingConditions = list(
+    MaxHumanLabeledObjectCount = 123,
+    MaxPercentageOfInputDatasetLabeled = 123
+  ),
+  LabelingJobAlgorithmsConfig = list(
+    LabelingJobAlgorithmSpecificationArn = "string",
+    InitialActiveLearningModelArn = "string",
+    LabelingJobResourceConfig = list(
+      VolumeKmsKeyId = "string"
+    )
+  ),
+  HumanTaskConfig = list(
+    WorkteamArn = "string",
+    UiConfig = list(
+      UiTemplateS3Uri = "string"
+    ),
+    PreHumanTaskLambdaArn = "string",
+    TaskKeywords = list(
+      "string"
+    ),
+    TaskTitle = "string",
+    TaskDescription = "string",
+    NumberOfHumanWorkersPerDataObject = 123,
+    TaskTimeLimitInSeconds = 123,
+    TaskAvailabilityLifetimeInSeconds = 123,
+    MaxConcurrentTaskCount = 123,
+    AnnotationConsolidationConfig = list(
+      AnnotationConsolidationLambdaArn = "string"
+    ),
+    PublicWorkforceTaskPrice = list(
+      AmountInUsd = list(
+        Dollars = 123,
+        Cents = 123,
+        TenthFractionsOfACent = 123
+      )
+    )
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

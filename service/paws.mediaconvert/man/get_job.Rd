@@ -4,9 +4,7 @@
 \alias{get_job}
 \title{Retrieve the JSON for a specific completed transcoding job}
 \usage{
-get_job(
-  Id = "string"
-)
+get_job(Id)
 }
 \arguments{
 \item{Id}{[required] the job ID of the job.}
@@ -14,6 +12,10 @@ get_job(
 \description{
 Retrieve the JSON for a specific completed transcoding job.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_job(
+  Id = "string"
+)
 }
+}
+

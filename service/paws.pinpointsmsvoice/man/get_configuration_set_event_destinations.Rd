@@ -4,9 +4,7 @@
 \alias{get_configuration_set_event_destinations}
 \title{Obtain information about an event destination, including the types of events it reports, the Amazon Resource Name (ARN) of the destination, and the name of the event destination}
 \usage{
-get_configuration_set_event_destinations(
-  ConfigurationSetName = "string"
-)
+get_configuration_set_event_destinations(ConfigurationSetName)
 }
 \arguments{
 \item{ConfigurationSetName}{[required] ConfigurationSetName}
@@ -14,6 +12,10 @@ get_configuration_set_event_destinations(
 \description{
 Obtain information about an event destination, including the types of events it reports, the Amazon Resource Name (ARN) of the destination, and the name of the event destination.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_configuration_set_event_destinations(
+  ConfigurationSetName = "string"
+)
 }
+}
+

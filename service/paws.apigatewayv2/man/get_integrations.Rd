@@ -4,11 +4,7 @@
 \alias{get_integrations}
 \title{Gets the Integrations for an API}
 \usage{
-get_integrations(
-  ApiId = "string",
-  MaxResults = "string",
-  NextToken = "string"
-)
+get_integrations(ApiId, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -20,6 +16,12 @@ get_integrations(
 \description{
 Gets the Integrations for an API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_integrations(
+  ApiId = "string",
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
+}
+

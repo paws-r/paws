@@ -4,16 +4,7 @@
 \alias{reload_tables}
 \title{Reloads the target database table with the source data}
 \usage{
-reload_tables(
-  ReplicationTaskArn = "string",
-  TablesToReload = list(
-    list(
-      SchemaName = "string",
-      TableName = "string"
-    )
-  ),
-  ReloadOption = "data-reload"|"validate-only"
-)
+reload_tables(ReplicationTaskArn, TablesToReload, ReloadOption = NULL)
 }
 \arguments{
 \item{ReplicationTaskArn}{[required] The Amazon Resource Name (ARN) of the replication task.}
@@ -29,6 +20,17 @@ Default value is data-reload.}
 \description{
 Reloads the target database table with the source data.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{reload_tables(
+  ReplicationTaskArn = "string",
+  TablesToReload = list(
+    list(
+      SchemaName = "string",
+      TableName = "string"
+    )
+  ),
+  ReloadOption = "data-reload"|"validate-only"
+)
 }
+}
+

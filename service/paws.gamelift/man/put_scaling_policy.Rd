@@ -4,20 +4,10 @@
 \alias{put_scaling_policy}
 \title{Creates or updates a scaling policy for a fleet}
 \usage{
-put_scaling_policy(
-  Name = "string",
-  FleetId = "string",
-  ScalingAdjustment = 123,
-  ScalingAdjustmentType = "ChangeInCapacity"|"ExactCapacity"|"PercentChangeInCapacity",
-  Threshold = 123.0,
-  ComparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold",
-  EvaluationPeriods = 123,
-  MetricName = "ActivatingGameSessions"|"ActiveGameSessions"|"ActiveInstances"|"AvailableGameSessions"|"AvailablePlayerSessions"|"CurrentPlayerSessions"|"IdleInstances"|"PercentAvailableGameSessions"|"PercentIdleInstances"|"QueueDepth"|"WaitTime",
-  PolicyType = "RuleBased"|"TargetBased",
-  TargetConfiguration = list(
-    TargetValue = 123.0
-  )
-)
+put_scaling_policy(Name, FleetId, ScalingAdjustment = NULL,
+  ScalingAdjustmentType = NULL, Threshold = NULL,
+  ComparisonOperator = NULL, EvaluationPeriods = NULL, MetricName,
+  PolicyType = NULL, TargetConfiguration = NULL)
 }
 \arguments{
 \item{Name}{[required] Descriptive label that is associated with a scaling policy. Policy names do not need to be unique. A fleet can have only one scaling policy with the same name.}
@@ -39,7 +29,7 @@ put_scaling_policy(
 
 \item{EvaluationPeriods}{Length of time (in minutes) the metric must be at or beyond the threshold before a scaling event is triggered.}
 
-\item{MetricName}{[required] Name of the Amazon GameLift-defined metric that is used to trigger a scaling adjustment. For detailed descriptions of fleet metrics, see \href{http://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html}{Monitor Amazon GameLift with Amazon CloudWatch}.
+\item{MetricName}{[required] Name of the Amazon GameLift-defined metric that is used to trigger a scaling adjustment. For detailed descriptions of fleet metrics, see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html}{Monitor Amazon GameLift with Amazon CloudWatch}.
 \itemize{
 \item \strong{ActivatingGameSessions} -- Game sessions in the process of being created.
 \item \strong{ActiveGameSessions} -- Game sessions that are currently running.
@@ -66,7 +56,7 @@ Fleets can have multiple scaling policies of each type in force at the same time
 
 You can temporarily suspend all scaling policies for a fleet by calling StopFleetActions with the fleet action AUTO\_SCALING. To resume scaling policies, call StartFleetActions with the same fleet action. To stop just one scaling policy--or to permanently remove it, you must delete the policy with DeleteScalingPolicy.
 
-Learn more about how to work with auto-scaling in \href{http://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-autoscaling.html}{Set Up Fleet Automatic Scaling}.
+Learn more about how to work with auto-scaling in \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-autoscaling.html}{Set Up Fleet Automatic Scaling}.
 
 \strong{Target-based policy}
 
@@ -91,8 +81,6 @@ To implement the example, the rule statement would look like this:
 If \code{[PercentIdleInstances]} is \code{[GreaterThanThreshold]} \code{[20]} for \code{[15]} minutes, then \code{[PercentChangeInCapacity]} to/by \code{[10]}.
 
 To create or update a scaling policy, specify a unique combination of name and fleet ID, and set the policy type to "RuleBased". Specify the parameter values for a policy rule statement. On a successful request, the policy name is returned. Scaling policies are automatically in force as soon as they're successfully created. If the fleet's auto-scaling actions are temporarily suspended, the new policy will be in force once the fleet actions are restarted.
-
-Operations related to fleet capacity scaling include:
 \itemize{
 \item DescribeFleetCapacity
 \item UpdateFleetCapacity
@@ -106,6 +94,21 @@ Operations related to fleet capacity scaling include:
 \item StopFleetActions
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_scaling_policy(
+  Name = "string",
+  FleetId = "string",
+  ScalingAdjustment = 123,
+  ScalingAdjustmentType = "ChangeInCapacity"|"ExactCapacity"|"PercentChangeInCapacity",
+  Threshold = 123.0,
+  ComparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold",
+  EvaluationPeriods = 123,
+  MetricName = "ActivatingGameSessions"|"ActiveGameSessions"|"ActiveInstances"|"AvailableGameSessions"|"AvailablePlayerSessions"|"CurrentPlayerSessions"|"IdleInstances"|"PercentAvailableGameSessions"|"PercentIdleInstances"|"QueueDepth"|"WaitTime",
+  PolicyType = "RuleBased"|"TargetBased",
+  TargetConfiguration = list(
+    TargetValue = 123.0
+  )
+)
 }
+}
+

@@ -4,11 +4,7 @@
 \alias{get_import_jobs}
 \title{Returns information about your import jobs}
 \usage{
-get_import_jobs(
-  ApplicationId = "string",
-  PageSize = "string",
-  Token = "string"
-)
+get_import_jobs(ApplicationId, PageSize = NULL, Token = NULL)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
@@ -20,6 +16,12 @@ get_import_jobs(
 \description{
 Returns information about your import jobs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_import_jobs(
+  ApplicationId = "string",
+  PageSize = "string",
+  Token = "string"
+)
 }
+}
+

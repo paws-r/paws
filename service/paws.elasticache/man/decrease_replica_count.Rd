@@ -4,23 +4,9 @@
 \alias{decrease_replica_count}
 \title{Dynamically decreases the number of replics in a Redis (cluster mode disabled) replication group or the number of replica nodes in one or more node groups (shards) of a Redis (cluster mode enabled) replication group}
 \usage{
-decrease_replica_count(
-  ReplicationGroupId = "string",
-  NewReplicaCount = 123,
-  ReplicaConfiguration = list(
-    list(
-      NodeGroupId = "string",
-      NewReplicaCount = 123,
-      PreferredAvailabilityZones = list(
-        "string"
-      )
-    )
-  ),
-  ReplicasToRemove = list(
-    "string"
-  ),
-  ApplyImmediately = TRUE|FALSE
-)
+decrease_replica_count(ReplicationGroupId, NewReplicaCount = NULL,
+  ReplicaConfiguration = NULL, ReplicasToRemove = NULL,
+  ApplyImmediately)
 }
 \arguments{
 \item{ReplicationGroupId}{[required] The id of the replication group from which you want to remove replica nodes.}
@@ -46,6 +32,24 @@ The minimum number of replicas in a shard or replication group is:
 \description{
 Dynamically decreases the number of replics in a Redis (cluster mode disabled) replication group or the number of replica nodes in one or more node groups (shards) of a Redis (cluster mode enabled) replication group. This operation is performed with no cluster down time.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{decrease_replica_count(
+  ReplicationGroupId = "string",
+  NewReplicaCount = 123,
+  ReplicaConfiguration = list(
+    list(
+      NodeGroupId = "string",
+      NewReplicaCount = 123,
+      PreferredAvailabilityZones = list(
+        "string"
+      )
+    )
+  ),
+  ReplicasToRemove = list(
+    "string"
+  ),
+  ApplyImmediately = TRUE|FALSE
+)
 }
+}
+

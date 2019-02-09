@@ -4,10 +4,7 @@
 \alias{deactivate_mfa_device}
 \title{Deactivates the specified MFA device and removes it from association with the user name for which it was originally enabled}
 \usage{
-deactivate_mfa_device(
-  UserName = "string",
-  SerialNumber = "string"
-)
+deactivate_mfa_device(UserName, SerialNumber)
 }
 \arguments{
 \item{UserName}{[required] The name of the user whose MFA device you want to deactivate.
@@ -24,6 +21,11 @@ Deactivates the specified MFA device and removes it from association with the us
 \details{
 For more information about creating and working with virtual MFA devices, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_VirtualMFA.html}{Enabling a Virtual Multi-factor Authentication (MFA) Device} in the \emph{IAM User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{deactivate_mfa_device(
+  UserName = "string",
+  SerialNumber = "string"
+)
 }
+}
+

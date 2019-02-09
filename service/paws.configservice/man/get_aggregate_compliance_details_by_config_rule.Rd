@@ -4,15 +4,10 @@
 \alias{get_aggregate_compliance_details_by_config_rule}
 \title{Returns the evaluation results for the specified AWS Config rule for a specific resource in a rule}
 \usage{
-get_aggregate_compliance_details_by_config_rule(
-  ConfigurationAggregatorName = "string",
-  ConfigRuleName = "string",
-  AccountId = "string",
-  AwsRegion = "string",
-  ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
-  Limit = 123,
-  NextToken = "string"
-)
+
+  get_aggregate_compliance_details_by_config_rule(ConfigurationAggregatorName,
+  ConfigRuleName, AccountId, AwsRegion, ComplianceType = NULL,
+  Limit = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ConfigurationAggregatorName}{[required] The name of the configuration aggregator.}
@@ -37,6 +32,16 @@ Returns the evaluation results for the specified AWS Config rule for a specific 
 \details{
 The results can return an empty result page. But if you have a nextToken, the results are displayed on the next page.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_aggregate_compliance_details_by_config_rule(
+  ConfigurationAggregatorName = "string",
+  ConfigRuleName = "string",
+  AccountId = "string",
+  AwsRegion = "string",
+  ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
+  Limit = 123,
+  NextToken = "string"
+)
 }
+}
+

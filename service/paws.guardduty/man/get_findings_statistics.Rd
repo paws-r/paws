@@ -4,7 +4,21 @@
 \alias{get_findings_statistics}
 \title{Lists Amazon GuardDuty findings' statistics for the specified detector ID}
 \usage{
-get_findings_statistics(
+get_findings_statistics(DetectorId, FindingCriteria = NULL,
+  FindingStatisticTypes)
+}
+\arguments{
+\item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose findings' statistics you want to retrieve.}
+
+\item{FindingCriteria}{Represents the criteria used for querying findings.}
+
+\item{FindingStatisticTypes}{[required] Types of finding statistics to retrieve.}
+}
+\description{
+Lists Amazon GuardDuty findings' statistics for the specified detector ID.
+}
+\section{Accepted Parameters}{
+\preformatted{get_findings_statistics(
   DetectorId = "string",
   FindingCriteria = list(
     Criterion = list(
@@ -27,16 +41,5 @@ get_findings_statistics(
   )
 )
 }
-\arguments{
-\item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose findings' statistics you want to retrieve.}
-
-\item{FindingCriteria}{Represents the criteria used for querying findings.}
-
-\item{FindingStatisticTypes}{[required] Types of finding statistics to retrieve.}
 }
-\description{
-Lists Amazon GuardDuty findings' statistics for the specified detector ID.
-}
-\examples{
 
-}

@@ -4,12 +4,8 @@
 \alias{list_thing_registration_task_reports}
 \title{Information about the thing registration tasks}
 \usage{
-list_thing_registration_task_reports(
-  taskId = "string",
-  reportType = "ERRORS"|"RESULTS",
-  nextToken = "string",
-  maxResults = 123
-)
+list_thing_registration_task_reports(taskId, reportType,
+  nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{taskId}{[required] The id of the task.}
@@ -23,6 +19,13 @@ list_thing_registration_task_reports(
 \description{
 Information about the thing registration tasks.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_thing_registration_task_reports(
+  taskId = "string",
+  reportType = "ERRORS"|"RESULTS",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

@@ -4,37 +4,11 @@
 \alias{update_environment}
 \title{Updates the environment description, deploys a new application version, updates the configuration settings to an entirely new configuration template, or updates select configuration option values in the running environment}
 \usage{
-update_environment(
-  ApplicationName = "string",
-  EnvironmentId = "string",
-  EnvironmentName = "string",
-  GroupName = "string",
-  Description = "string",
-  Tier = list(
-    Name = "string",
-    Type = "string",
-    Version = "string"
-  ),
-  VersionLabel = "string",
-  TemplateName = "string",
-  SolutionStackName = "string",
-  PlatformArn = "string",
-  OptionSettings = list(
-    list(
-      ResourceName = "string",
-      Namespace = "string",
-      OptionName = "string",
-      Value = "string"
-    )
-  ),
-  OptionsToRemove = list(
-    list(
-      ResourceName = "string",
-      Namespace = "string",
-      OptionName = "string"
-    )
-  )
-)
+update_environment(ApplicationName = NULL, EnvironmentId = NULL,
+  EnvironmentName = NULL, GroupName = NULL, Description = NULL,
+  Tier = NULL, VersionLabel = NULL, TemplateName = NULL,
+  SolutionStackName = NULL, PlatformArn = NULL,
+  OptionSettings = NULL, OptionsToRemove = NULL)
 }
 \arguments{
 \item{ApplicationName}{The name of the application with which the environment is associated.}
@@ -77,17 +51,52 @@ Attempting to update both the release and configuration is not allowed and AWS E
 
 When updating the configuration settings to a new template or individual settings, a draft configuration is created and DescribeConfigurationSettings for this environment returns two setting descriptions with different \code{DeploymentStatus} values.
 }
+\section{Accepted Parameters}{
+\preformatted{update_environment(
+  ApplicationName = "string",
+  EnvironmentId = "string",
+  EnvironmentName = "string",
+  GroupName = "string",
+  Description = "string",
+  Tier = list(
+    Name = "string",
+    Type = "string",
+    Version = "string"
+  ),
+  VersionLabel = "string",
+  TemplateName = "string",
+  SolutionStackName = "string",
+  PlatformArn = "string",
+  OptionSettings = list(
+    list(
+      ResourceName = "string",
+      Namespace = "string",
+      OptionName = "string",
+      Value = "string"
+    )
+  ),
+  OptionsToRemove = list(
+    list(
+      ResourceName = "string",
+      Namespace = "string",
+      OptionName = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # The following operation updates an environment named "my-env" to version
 # "v2" of the application to which it belongs:
-update_environment(
+\donttest{update_environment(
   EnvironmentName = "my-env",
   VersionLabel = "v2"
-)
+)}
 
 # The following operation configures several options in the
 # aws:elb:loadbalancer namespace:
-update_environment(
+\donttest{update_environment(
   EnvironmentName = "my-env",
   OptionSettings = list(
     list(
@@ -111,6 +120,6 @@ update_environment(
       Value = "3"
     )
   )
-)
+)}
 
 }

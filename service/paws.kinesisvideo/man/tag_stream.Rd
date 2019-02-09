@@ -4,13 +4,7 @@
 \alias{tag_stream}
 \title{Adds one or more tags to a stream}
 \usage{
-tag_stream(
-  StreamARN = "string",
-  StreamName = "string",
-  Tags = list(
-    "string"
-  )
-)
+tag_stream(StreamARN = NULL, StreamName = NULL, Tags)
 }
 \arguments{
 \item{StreamARN}{The Amazon Resource Name (ARN) of the resource that you want to add the tag or tags to.}
@@ -29,6 +23,14 @@ This operation requires permission for the \code{KinesisVideo:TagStream} action.
 
 Kinesis video streams support up to 50 tags.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{tag_stream(
+  StreamARN = "string",
+  StreamName = "string",
+  Tags = list(
+    "string"
+  )
+)
 }
+}
+

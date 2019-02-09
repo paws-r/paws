@@ -4,11 +4,7 @@
 \alias{create_branch}
 \title{Creates a new branch in a repository and points the branch to a commit}
 \usage{
-create_branch(
-  repositoryName = "string",
-  branchName = "string",
-  commitId = "string"
-)
+create_branch(repositoryName, branchName, commitId)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository in which you want to create the new branch.}
@@ -23,6 +19,12 @@ Creates a new branch in a repository and points the branch to a commit.
 \details{
 Calling the create branch operation does not set a repository's default branch. To do this, call the update default branch operation.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_branch(
+  repositoryName = "string",
+  branchName = "string",
+  commitId = "string"
+)
 }
+}
+

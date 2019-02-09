@@ -4,7 +4,22 @@
 \alias{create_pipeline}
 \title{Creates a pipeline}
 \usage{
-create_pipeline(
+create_pipeline(pipelineName, pipelineActivities, tags = NULL)
+}
+\arguments{
+\item{pipelineName}{[required] The name of the pipeline.}
+
+\item{pipelineActivities}{[required] A list of pipeline activities.
+
+The list can be 1-25 \strong{PipelineActivity} objects. Activities perform transformations on your messages, such as removing, renaming, or adding message attributes; filtering messages based on attribute values; invoking your Lambda functions on messages for advanced processing; or performing mathematical transformations to normalize device data.}
+
+\item{tags}{Metadata which can be used to manage the pipeline.}
+}
+\description{
+Creates a pipeline. A pipeline consumes messages from one or more channels and allows you to process the messages before storing them in a data store.
+}
+\section{Accepted Parameters}{
+\preformatted{create_pipeline(
   pipelineName = "string",
   pipelineActivities = list(
     list(
@@ -79,18 +94,5 @@ create_pipeline(
   )
 )
 }
-\arguments{
-\item{pipelineName}{[required] The name of the pipeline.}
-
-\item{pipelineActivities}{[required] A list of pipeline activities.
-
-The list can be 1-25 \strong{PipelineActivity} objects. Activities perform transformations on your messages, such as removing, renaming, or adding message attributes; filtering messages based on attribute values; invoking your Lambda functions on messages for advanced processing; or performing mathematical transformations to normalize device data.}
-
-\item{tags}{Metadata which can be used to manage the pipeline.}
 }
-\description{
-Creates a pipeline. A pipeline consumes messages from one or more channels and allows you to process the messages before storing them in a data store.
-}
-\examples{
 
-}

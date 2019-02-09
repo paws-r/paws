@@ -4,22 +4,7 @@
 \alias{update_xss_match_set}
 \title{Inserts or deletes XssMatchTuple objects (filters) in an XssMatchSet}
 \usage{
-update_xss_match_set(
-  XssMatchSetId = "string",
-  ChangeToken = "string",
-  Updates = list(
-    list(
-      Action = "INSERT"|"DELETE",
-      XssMatchTuple = list(
-        FieldToMatch = list(
-          Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
-          Data = "string"
-        ),
-        TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
-      )
-    )
-  )
-)
+update_xss_match_set(XssMatchSetId, ChangeToken, Updates)
 }
 \arguments{
 \item{XssMatchSetId}{[required] The \code{XssMatchSetId} of the \code{XssMatchSet} that you want to update. \code{XssMatchSetId} is returned by CreateXssMatchSet and by ListXssMatchSets.}
@@ -56,10 +41,30 @@ To create and configure an \code{XssMatchSet}, perform the following steps:
 
 For more information about how to use the AWS WAF API to allow or block HTTP requests, see the \href{http://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{update_xss_match_set(
+  XssMatchSetId = "string",
+  ChangeToken = "string",
+  Updates = list(
+    list(
+      Action = "INSERT"|"DELETE",
+      XssMatchTuple = list(
+        FieldToMatch = list(
+          Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
+          Data = "string"
+        ),
+        TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+      )
+    )
+  )
+)
+}
+}
+
 \examples{
 # The following example deletes an XssMatchTuple object (filters) in an
 # XssMatchSet with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-update_xss_match_set(
+\donttest{update_xss_match_set(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   Updates = list(
     list(
@@ -73,6 +78,6 @@ update_xss_match_set(
     )
   ),
   XssMatchSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-)
+)}
 
 }

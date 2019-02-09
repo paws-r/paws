@@ -2,13 +2,9 @@
 % Please edit documentation in R/paws.simpledb_operations.R
 \name{select}
 \alias{select}
-\title{The \code{Select} operation returns a set of attributes for \code{ItemNames} that match the select expression}
+\title{The Select operation returns a set of attributes for ItemNames that match the select expression}
 \usage{
-select(
-  SelectExpression = "string",
-  NextToken = "string",
-  ConsistentRead = TRUE|FALSE
-)
+select(SelectExpression, NextToken = NULL, ConsistentRead = NULL)
 }
 \arguments{
 \item{SelectExpression}{[required] The expression used to query the domain.}
@@ -25,6 +21,12 @@ The total size of the response cannot exceed 1 MB in total size. Amazon SimpleDB
 
 For information on how to construct select expressions, see Using Select to Create Amazon SimpleDB Queries in the Developer Guide.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{select(
+  SelectExpression = "string",
+  NextToken = "string",
+  ConsistentRead = TRUE|FALSE
+)
 }
+}
+

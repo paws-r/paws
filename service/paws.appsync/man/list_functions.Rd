@@ -4,11 +4,7 @@
 \alias{list_functions}
 \title{List multiple functions}
 \usage{
-list_functions(
-  apiId = "string",
-  nextToken = "string",
-  maxResults = 123
-)
+list_functions(apiId, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{apiId}{[required] The GraphQL API ID.}
@@ -20,6 +16,12 @@ list_functions(
 \description{
 List multiple functions.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_functions(
+  apiId = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

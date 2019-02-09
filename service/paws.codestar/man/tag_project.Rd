@@ -4,12 +4,7 @@
 \alias{tag_project}
 \title{Adds tags to a project}
 \usage{
-tag_project(
-  id = "string",
-  tags = list(
-    "string"
-  )
-)
+tag_project(id, tags)
 }
 \arguments{
 \item{id}{[required] The ID of the project you want to add a tag to.}
@@ -19,6 +14,13 @@ tag_project(
 \description{
 Adds tags to a project.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{tag_project(
+  id = "string",
+  tags = list(
+    "string"
+  )
+)
 }
+}
+

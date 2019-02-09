@@ -4,10 +4,7 @@
 \alias{delete_configuration_template}
 \title{Deletes the specified configuration template}
 \usage{
-delete_configuration_template(
-  ApplicationName = "string",
-  TemplateName = "string"
-)
+delete_configuration_template(ApplicationName, TemplateName)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application to delete the configuration template from.}
@@ -20,12 +17,20 @@ Deletes the specified configuration template.
 \details{
 When you launch an environment using a configuration template, the environment gets a copy of the template. You can delete or modify the environment's copy of the template without affecting the running environment.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_configuration_template(
+  ApplicationName = "string",
+  TemplateName = "string"
+)
+}
+}
+
 \examples{
 # The following operation deletes a configuration template named
 # my-template for an application named my-app:
-delete_configuration_template(
+\donttest{delete_configuration_template(
   ApplicationName = "my-app",
   TemplateName = "my-template"
-)
+)}
 
 }

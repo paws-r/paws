@@ -4,9 +4,7 @@
 \alias{delete_build}
 \title{Deletes a build}
 \usage{
-delete_build(
-  BuildId = "string"
-)
+delete_build(BuildId)
 }
 \arguments{
 \item{BuildId}{[required] Unique identifier for a build to delete.}
@@ -16,8 +14,6 @@ Deletes a build. This action permanently deletes the build record and any upload
 }
 \details{
 To delete a build, specify its ID. Deleting a build does not affect the status of any active fleets using the build, but you can no longer create new fleets with the deleted build.
-
-Build-related operations include:
 \itemize{
 \item CreateBuild
 \item ListBuilds
@@ -26,6 +22,10 @@ Build-related operations include:
 \item DeleteBuild
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_build(
+  BuildId = "string"
+)
 }
+}
+

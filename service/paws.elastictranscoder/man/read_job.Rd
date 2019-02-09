@@ -4,9 +4,7 @@
 \alias{read_job}
 \title{The ReadJob operation returns detailed information about a job}
 \usage{
-read_job(
-  Id = "string"
-)
+read_job(Id)
 }
 \arguments{
 \item{Id}{[required] The identifier of the job for which you want to get detailed information.}
@@ -14,6 +12,10 @@ read_job(
 \description{
 The ReadJob operation returns detailed information about a job.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{read_job(
+  Id = "string"
+)
 }
+}
+

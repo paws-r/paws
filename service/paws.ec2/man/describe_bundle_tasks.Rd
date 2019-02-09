@@ -4,20 +4,8 @@
 \alias{describe_bundle_tasks}
 \title{Describes one or more of your bundling tasks}
 \usage{
-describe_bundle_tasks(
-  BundleIds = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE
-)
+describe_bundle_tasks(BundleIds = NULL, Filters = NULL,
+  DryRun = NULL)
 }
 \arguments{
 \item{BundleIds}{One or more bundle task IDs.
@@ -46,6 +34,21 @@ Describes one or more of your bundling tasks.
 \details{
 Completed bundle tasks are listed for only a limited time. If your bundle task is no longer in the list, you can still register an AMI from it. Just use \code{RegisterImage} with the Amazon S3 bucket name and image manifest name you provided to the bundle task.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_bundle_tasks(
+  BundleIds = list(
+    "string"
+  ),
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  DryRun = TRUE|FALSE
+)
 }
+}
+

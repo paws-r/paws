@@ -4,10 +4,45 @@
 \alias{modify_listener}
 \title{Modifies the specified properties of the specified listener}
 \usage{
-modify_listener(
+modify_listener(ListenerArn, Port = NULL, Protocol = NULL,
+  SslPolicy = NULL, Certificates = NULL, DefaultActions = NULL)
+}
+\arguments{
+\item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener.}
+
+\item{Port}{The port for connections from clients to the load balancer.}
+
+\item{Protocol}{The protocol for connections from clients to the load balancer. Application Load Balancers support the HTTP and HTTPS protocols. Network Load Balancers support the TCP and TLS protocols.}
+
+\item{SslPolicy}{[HTTPS and TLS listeners] The security policy that defines which protocols and ciphers are supported. For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies}{Security Policies} in the \emph{Application Load Balancers Guide}.}
+
+\item{Certificates}{[HTTPS and TLS listeners] The default SSL server certificate. You must provide exactly one certificate. Set \code{CertificateArn} to the certificate ARN but do not set \code{IsDefault}.
+
+To create a certificate list, use AddListenerCertificates.}
+
+\item{DefaultActions}{The actions for the default rule. The rule must include one forward action or one or more fixed-response actions.
+
+If the action type is \code{forward}, you specify a target group. The protocol of the target group must be HTTP or HTTPS for an Application Load Balancer. The protocol of the target group must be TCP or TLS for a Network Load Balancer.
+
+[HTTPS listeners] If the action type is \code{authenticate-oidc}, you authenticate users through an identity provider that is OpenID Connect (OIDC) compliant.
+
+[HTTPS listeners] If the action type is \code{authenticate-cognito}, you authenticate users through the user pools supported by Amazon Cognito.
+
+[Application Load Balancer] If the action type is \code{redirect}, you redirect specified client requests from one URL to another.
+
+[Application Load Balancer] If the action type is \code{fixed-response}, you drop specified client requests and return a custom HTTP response.}
+}
+\description{
+Modifies the specified properties of the specified listener.
+}
+\details{
+Any properties that you do not specify retain their current values. However, changing the protocol from HTTPS to HTTP, or from TLS to TCP, removes the security policy and server certificate properties. If you change the protocol from HTTP to HTTPS, or from TCP to TLS, you must add the security policy and server certificate properties.
+}
+\section{Accepted Parameters}{
+\preformatted{modify_listener(
   ListenerArn = "string",
   Port = 123,
-  Protocol = "HTTP"|"HTTPS"|"TCP",
+  Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS",
   SslPolicy = "string",
   Certificates = list(
     list(
@@ -64,40 +99,11 @@ modify_listener(
   )
 )
 }
-\arguments{
-\item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener.}
-
-\item{Port}{The port for connections from clients to the load balancer.}
-
-\item{Protocol}{The protocol for connections from clients to the load balancer. Application Load Balancers support HTTP and HTTPS and Network Load Balancers support TCP.}
-
-\item{SslPolicy}{[HTTPS listeners] The security policy that defines which protocols and ciphers are supported. For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies}{Security Policies} in the \emph{Application Load Balancers Guide}.}
-
-\item{Certificates}{[HTTPS listeners] The default SSL server certificate. You must provide exactly one certificate. Set \code{CertificateArn} to the certificate ARN but do not set \code{IsDefault}.
-
-To create a certificate list, use AddListenerCertificates.}
-
-\item{DefaultActions}{The actions for the default rule. The rule must include one forward action or one or more fixed-response actions.
-
-If the action type is \code{forward}, you specify a target group. The protocol of the target group must be HTTP or HTTPS for an Application Load Balancer or TCP for a Network Load Balancer.
-
-[HTTPS listener] If the action type is \code{authenticate-oidc}, you authenticate users through an identity provider that is OpenID Connect (OIDC) compliant.
-
-[HTTPS listener] If the action type is \code{authenticate-cognito}, you authenticate users through the user pools supported by Amazon Cognito.
-
-[Application Load Balancer] If the action type is \code{redirect}, you redirect specified client requests from one URL to another.
-
-[Application Load Balancer] If the action type is \code{fixed-response}, you drop specified client requests and return a custom HTTP response.}
 }
-\description{
-Modifies the specified properties of the specified listener.
-}
-\details{
-Any properties that you do not specify retain their current values. However, changing the protocol from HTTPS to HTTP removes the security policy and SSL certificate properties. If you change the protocol from HTTP to HTTPS, you must add the security policy and server certificate.
-}
+
 \examples{
 # This example changes the default action for the specified listener.
-modify_listener(
+\donttest{modify_listener(
   DefaultActions = list(
     list(
       TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-new-targets/2453ed029918f21f",
@@ -105,17 +111,17 @@ modify_listener(
     )
   ),
   ListenerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-load-balancer/50dc6c495c0c9188/f2f7dc8efc522ab2"
-)
+)}
 
 # This example changes the server certificate for the specified HTTPS
 # listener.
-modify_listener(
+\donttest{modify_listener(
   Certificates = list(
     list(
       CertificateArn = "arn:aws:iam::123456789012:server-certificate/my-new-server-cert"
     )
   ),
   ListenerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-load-balancer/50dc6c495c0c9188/0467ef3c8400ae65"
-)
+)}
 
 }

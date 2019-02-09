@@ -4,10 +4,7 @@
 \alias{start_on_demand_replication_run}
 \title{Starts an on-demand replication run for the specified replication job}
 \usage{
-start_on_demand_replication_run(
-  replicationJobId = "string",
-  description = "string"
-)
+start_on_demand_replication_run(replicationJobId, description = NULL)
 }
 \arguments{
 \item{replicationJobId}{[required] The identifier of the replication job.}
@@ -20,6 +17,11 @@ Starts an on-demand replication run for the specified replication job. This repl
 \details{
 There is a limit on the number of on-demand replications runs you can request in a 24-hour period.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_on_demand_replication_run(
+  replicationJobId = "string",
+  description = "string"
+)
 }
+}
+

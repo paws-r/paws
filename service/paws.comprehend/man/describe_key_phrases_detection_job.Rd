@@ -4,9 +4,7 @@
 \alias{describe_key_phrases_detection_job}
 \title{Gets the properties associated with a key phrases detection job}
 \usage{
-describe_key_phrases_detection_job(
-  JobId = "string"
-)
+describe_key_phrases_detection_job(JobId)
 }
 \arguments{
 \item{JobId}{[required] The identifier that Amazon Comprehend generated for the job. The operation returns this identifier in its response.}
@@ -14,6 +12,10 @@ describe_key_phrases_detection_job(
 \description{
 Gets the properties associated with a key phrases detection job. Use this operation to get the status of a detection job.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_key_phrases_detection_job(
+  JobId = "string"
+)
 }
+}
+

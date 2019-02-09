@@ -4,11 +4,7 @@
 \alias{list_projects}
 \title{Gets a list of build project names, with each build project name representing a single build project}
 \usage{
-list_projects(
-  sortBy = "NAME"|"CREATED_TIME"|"LAST_MODIFIED_TIME",
-  sortOrder = "ASCENDING"|"DESCENDING",
-  nextToken = "string"
-)
+list_projects(sortBy = NULL, sortOrder = NULL, nextToken = NULL)
 }
 \arguments{
 \item{sortBy}{The criterion to be used to list build project names. Valid values include:
@@ -33,6 +29,12 @@ Use \code{sortBy} to specify the criterion to be used to list build project name
 \description{
 Gets a list of build project names, with each build project name representing a single build project.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_projects(
+  sortBy = "NAME"|"CREATED_TIME"|"LAST_MODIFIED_TIME",
+  sortOrder = "ASCENDING"|"DESCENDING",
+  nextToken = "string"
+)
 }
+}
+

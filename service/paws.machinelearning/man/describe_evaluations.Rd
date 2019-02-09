@@ -2,21 +2,11 @@
 % Please edit documentation in R/paws.machinelearning_operations.R
 \name{describe_evaluations}
 \alias{describe_evaluations}
-\title{Returns a list of \code{DescribeEvaluations} that match the search criteria in the request}
+\title{Returns a list of DescribeEvaluations that match the search criteria in the request}
 \usage{
-describe_evaluations(
-  FilterVariable = "CreatedAt"|"LastUpdatedAt"|"Status"|"Name"|"IAMUser"|"MLModelId"|"DataSourceId"|"DataURI",
-  EQ = "string",
-  GT = "string",
-  LT = "string",
-  GE = "string",
-  LE = "string",
-  NE = "string",
-  Prefix = "string",
-  SortOrder = "asc"|"dsc",
-  NextToken = "string",
-  Limit = 123
-)
+describe_evaluations(FilterVariable = NULL, EQ = NULL, GT = NULL,
+  LT = NULL, GE = NULL, LE = NULL, NE = NULL, Prefix = NULL,
+  SortOrder = NULL, NextToken = NULL, Limit = NULL)
 }
 \arguments{
 \item{FilterVariable}{Use one of the following variable to filter a list of \code{Evaluation} objects:
@@ -66,6 +56,20 @@ Results are sorted by \code{FilterVariable}.}
 \description{
 Returns a list of \code{DescribeEvaluations} that match the search criteria in the request.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_evaluations(
+  FilterVariable = "CreatedAt"|"LastUpdatedAt"|"Status"|"Name"|"IAMUser"|"MLModelId"|"DataSourceId"|"DataURI",
+  EQ = "string",
+  GT = "string",
+  LT = "string",
+  GE = "string",
+  LE = "string",
+  NE = "string",
+  Prefix = "string",
+  SortOrder = "asc"|"dsc",
+  NextToken = "string",
+  Limit = 123
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{delete_directory}
 \title{Deletes a directory}
 \usage{
-delete_directory(
-  DirectoryArn = "string"
-)
+delete_directory(DirectoryArn)
 }
 \arguments{
 \item{DirectoryArn}{[required] The ARN of the directory to delete.}
@@ -14,6 +12,10 @@ delete_directory(
 \description{
 Deletes a directory. Only disabled directories can be deleted. A deleted directory cannot be undone. Exercise extreme caution when deleting directories.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_directory(
+  DirectoryArn = "string"
+)
 }
+}
+

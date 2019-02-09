@@ -4,10 +4,7 @@
 \alias{associate_kms_key}
 \title{Associates the specified AWS Key Management Service (AWS KMS) customer master key (CMK) with the specified log group}
 \usage{
-associate_kms_key(
-  logGroupName = "string",
-  kmsKeyId = "string"
-)
+associate_kms_key(logGroupName, kmsKeyId)
 }
 \arguments{
 \item{logGroupName}{[required] The name of the log group.}
@@ -24,6 +21,11 @@ Note that it can take up to 5 minutes for this operation to take effect.
 
 If you attempt to associate a CMK with a log group but the CMK does not exist or the CMK is disabled, you will receive an \code{InvalidParameterException} error.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_kms_key(
+  logGroupName = "string",
+  kmsKeyId = "string"
+)
 }
+}
+

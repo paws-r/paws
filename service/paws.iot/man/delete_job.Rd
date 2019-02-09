@@ -4,10 +4,7 @@
 \alias{delete_job}
 \title{Deletes a job and its related job executions}
 \usage{
-delete_job(
-  jobId = "string",
-  force = TRUE|FALSE
-)
+delete_job(jobId, force = NULL)
 }
 \arguments{
 \item{jobId}{[required] The ID of the job to be deleted.
@@ -26,6 +23,11 @@ Deleting a job may take time, depending on the number of job executions created 
 
 Only 10 jobs may have status "DELETION\_IN\_PROGRESS" at the same time, or a LimitExceededException will occur.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_job(
+  jobId = "string",
+  force = TRUE|FALSE
+)
 }
+}
+

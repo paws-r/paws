@@ -4,9 +4,7 @@
 \alias{get_namespace}
 \title{Gets information about a namespace}
 \usage{
-get_namespace(
-  Id = "string"
-)
+get_namespace(Id)
 }
 \arguments{
 \item{Id}{[required] The ID of the namespace that you want to get information about.}
@@ -14,6 +12,10 @@ get_namespace(
 \description{
 Gets information about a namespace.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_namespace(
+  Id = "string"
+)
 }
+}
+

@@ -4,17 +4,8 @@
 \alias{describe_policies}
 \title{Describes the policies for the specified Auto Scaling group}
 \usage{
-describe_policies(
-  AutoScalingGroupName = "string",
-  PolicyNames = list(
-    "string"
-  ),
-  PolicyTypes = list(
-    "string"
-  ),
-  NextToken = "string",
-  MaxRecords = 123
-)
+describe_policies(AutoScalingGroupName = NULL, PolicyNames = NULL,
+  PolicyTypes = NULL, NextToken = NULL, MaxRecords = NULL)
 }
 \arguments{
 \item{AutoScalingGroupName}{The name of the Auto Scaling group.}
@@ -30,11 +21,26 @@ describe_policies(
 \description{
 Describes the policies for the specified Auto Scaling group.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_policies(
+  AutoScalingGroupName = "string",
+  PolicyNames = list(
+    "string"
+  ),
+  PolicyTypes = list(
+    "string"
+  ),
+  NextToken = "string",
+  MaxRecords = 123
+)
+}
+}
+
 \examples{
 # This example describes the policies for the specified Auto Scaling
 # group.
-describe_policies(
+\donttest{describe_policies(
   AutoScalingGroupName = "my-auto-scaling-group"
-)
+)}
 
 }

@@ -2,18 +2,10 @@
 % Please edit documentation in R/paws.budgets_operations.R
 \name{describe_budget_performance_history}
 \alias{describe_budget_performance_history}
-\title{Describes the history for \code{DAILY}, \code{MONTHLY}, and \code{QUARTERLY} budgets}
+\title{Describes the history for DAILY, MONTHLY, and QUARTERLY budgets}
 \usage{
-describe_budget_performance_history(
-  AccountId = "string",
-  BudgetName = "string",
-  TimePeriod = list(
-    Start = as.POSIXct("2015-01-01"),
-    End = as.POSIXct("2015-01-01")
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_budget_performance_history(AccountId, BudgetName,
+  TimePeriod = NULL, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{AccountId}{[required]}
@@ -29,6 +21,17 @@ describe_budget_performance_history(
 \description{
 Describes the history for \code{DAILY}, \code{MONTHLY}, and \code{QUARTERLY} budgets. Budget history isn't available for \code{ANNUAL} budgets.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_budget_performance_history(
+  AccountId = "string",
+  BudgetName = "string",
+  TimePeriod = list(
+    Start = as.POSIXct("2015-01-01"),
+    End = as.POSIXct("2015-01-01")
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

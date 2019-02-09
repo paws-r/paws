@@ -4,10 +4,7 @@
 \alias{delete_subnet}
 \title{Deletes the specified subnet}
 \usage{
-delete_subnet(
-  SubnetId = "string",
-  DryRun = TRUE|FALSE
-)
+delete_subnet(SubnetId, DryRun = NULL)
 }
 \arguments{
 \item{SubnetId}{[required] The ID of the subnet.}
@@ -17,10 +14,18 @@ delete_subnet(
 \description{
 Deletes the specified subnet. You must terminate all running instances in the subnet before you can delete the subnet.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_subnet(
+  SubnetId = "string",
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example deletes the specified subnet.
-delete_subnet(
+\donttest{delete_subnet(
   SubnetId = "subnet-9d4a7b6c"
-)
+)}
 
 }

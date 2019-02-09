@@ -4,11 +4,8 @@
 \alias{delete_transit_gateway_route}
 \title{Deletes the specified route from the specified transit gateway route table}
 \usage{
-delete_transit_gateway_route(
-  TransitGatewayRouteTableId = "string",
-  DestinationCidrBlock = "string",
-  DryRun = TRUE|FALSE
-)
+delete_transit_gateway_route(TransitGatewayRouteTableId,
+  DestinationCidrBlock, DryRun = NULL)
 }
 \arguments{
 \item{TransitGatewayRouteTableId}{[required] The ID of the transit gateway route table.}
@@ -20,6 +17,12 @@ delete_transit_gateway_route(
 \description{
 Deletes the specified route from the specified transit gateway route table.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_transit_gateway_route(
+  TransitGatewayRouteTableId = "string",
+  DestinationCidrBlock = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

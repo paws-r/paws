@@ -4,17 +4,7 @@
 \alias{start_application}
 \title{Starts the specified Amazon Kinesis Analytics application}
 \usage{
-start_application(
-  ApplicationName = "string",
-  InputConfigurations = list(
-    list(
-      Id = "string",
-      InputStartingPositionConfiguration = list(
-        InputStartingPosition = "NOW"|"TRIM_HORIZON"|"LAST_STOPPED_POINT"
-      )
-    )
-  )
-)
+start_application(ApplicationName, InputConfigurations)
 }
 \arguments{
 \item{ApplicationName}{[required] Name of the application.}
@@ -33,6 +23,18 @@ After you start the application, you can stop the application from processing th
 
 This operation requires permissions to perform the \code{kinesisanalytics:StartApplication} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_application(
+  ApplicationName = "string",
+  InputConfigurations = list(
+    list(
+      Id = "string",
+      InputStartingPositionConfiguration = list(
+        InputStartingPosition = "NOW"|"TRIM_HORIZON"|"LAST_STOPPED_POINT"
+      )
+    )
+  )
+)
 }
+}
+

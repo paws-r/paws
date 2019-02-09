@@ -4,15 +4,7 @@
 \alias{remove_tags_from_certificate}
 \title{Remove one or more tags from an ACM certificate}
 \usage{
-remove_tags_from_certificate(
-  CertificateArn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+remove_tags_from_certificate(CertificateArn, Tags)
 }
 \arguments{
 \item{CertificateArn}{[required] String that contains the ARN of the ACM Certificate with one or more tags that you want to remove. This must be of the form:
@@ -29,6 +21,16 @@ Remove one or more tags from an ACM certificate. A tag consists of a key-value p
 \details{
 To add tags to a certificate, use the AddTagsToCertificate action. To view all of the tags that have been applied to a specific ACM certificate, use the ListTagsForCertificate action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{remove_tags_from_certificate(
+  CertificateArn = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

@@ -4,11 +4,8 @@
 \alias{delete_db_cluster}
 \title{The DeleteDBCluster action deletes a previously provisioned DB cluster}
 \usage{
-delete_db_cluster(
-  DBClusterIdentifier = "string",
-  SkipFinalSnapshot = TRUE|FALSE,
-  FinalDBSnapshotIdentifier = "string"
-)
+delete_db_cluster(DBClusterIdentifier, SkipFinalSnapshot = NULL,
+  FinalDBSnapshotIdentifier = NULL)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The DB cluster identifier for the DB cluster to be deleted. This parameter isn't case-sensitive.
@@ -41,6 +38,12 @@ The DeleteDBCluster action deletes a previously provisioned DB cluster. When you
 \details{
 For more information on Amazon Aurora, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?} in the \emph{Amazon Aurora User Guide.}
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_db_cluster(
+  DBClusterIdentifier = "string",
+  SkipFinalSnapshot = TRUE|FALSE,
+  FinalDBSnapshotIdentifier = "string"
+)
 }
+}
+

@@ -4,10 +4,8 @@
 \alias{create_presigned_notebook_instance_url}
 \title{Returns a URL that you can use to connect to the Jupyter server from a notebook instance}
 \usage{
-create_presigned_notebook_instance_url(
-  NotebookInstanceName = "string",
-  SessionExpirationDurationInSeconds = 123
-)
+create_presigned_notebook_instance_url(NotebookInstanceName,
+  SessionExpirationDurationInSeconds = NULL)
 }
 \arguments{
 \item{NotebookInstanceName}{[required] The name of the notebook instance.}
@@ -20,6 +18,11 @@ Returns a URL that you can use to connect to the Jupyter server from a notebook 
 \details{
 You can restrict access to this API and to the URL that it returns to a list of IP addresses that you specify. To restrict access, attach an IAM policy that denies access to this API unless the call comes from an IP address in the specified list to every AWS Identity and Access Management user, group, or role used to access the notebook instance. Use the \code{NotIpAddress} condition operator and the \code{aws:SourceIP} condition context key to specify the list of IP addresses that you want to have access to the notebook instance. For more information, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/howitworks-access-ws.html#nbi-ip-filter}{Limit Access to a Notebook Instance by IP Address}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_presigned_notebook_instance_url(
+  NotebookInstanceName = "string",
+  SessionExpirationDurationInSeconds = 123
+)
 }
+}
+

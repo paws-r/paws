@@ -4,20 +4,9 @@
 \alias{create_api_key}
 \title{Create an ApiKey resource}
 \usage{
-create_api_key(
-  name = "string",
-  description = "string",
-  enabled = TRUE|FALSE,
-  generateDistinctId = TRUE|FALSE,
-  value = "string",
-  stageKeys = list(
-    list(
-      restApiId = "string",
-      stageName = "string"
-    )
-  ),
-  customerId = "string"
-)
+create_api_key(name = NULL, description = NULL, enabled = NULL,
+  generateDistinctId = NULL, value = NULL, stageKeys = NULL,
+  customerId = NULL)
 }
 \arguments{
 \item{name}{The name of the ApiKey.}
@@ -42,6 +31,21 @@ Create an ApiKey resource.
 \href{https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-api-key.html}{AWS CLI}
 :::
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_api_key(
+  name = "string",
+  description = "string",
+  enabled = TRUE|FALSE,
+  generateDistinctId = TRUE|FALSE,
+  value = "string",
+  stageKeys = list(
+    list(
+      restApiId = "string",
+      stageName = "string"
+    )
+  ),
+  customerId = "string"
+)
 }
+}
+

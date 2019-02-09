@@ -4,22 +4,7 @@
 \alias{put_attributes}
 \title{The PutAttributes operation creates or replaces attributes in an item}
 \usage{
-put_attributes(
-  DomainName = "string",
-  ItemName = "string",
-  Attributes = list(
-    list(
-      Name = "string",
-      Value = "string",
-      Replace = TRUE|FALSE
-    )
-  ),
-  Expected = list(
-    Name = "string",
-    Value = "string",
-    Exists = TRUE|FALSE
-  )
-)
+put_attributes(DomainName, ItemName, Attributes, Expected = NULL)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain in which to perform the operation.}
@@ -51,6 +36,23 @@ The following limitations are enforced for this operation:
 \item 10 GB of total user data storage per domain
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_attributes(
+  DomainName = "string",
+  ItemName = "string",
+  Attributes = list(
+    list(
+      Name = "string",
+      Value = "string",
+      Replace = TRUE|FALSE
+    )
+  ),
+  Expected = list(
+    Name = "string",
+    Value = "string",
+    Exists = TRUE|FALSE
+  )
+)
 }
+}
+

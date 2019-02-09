@@ -4,11 +4,8 @@
 \alias{deregister_container_instance}
 \title{Deregisters an Amazon ECS container instance from the specified cluster}
 \usage{
-deregister_container_instance(
-  cluster = "string",
-  containerInstance = "string",
-  force = TRUE|FALSE
-)
+deregister_container_instance(cluster = NULL, containerInstance,
+  force = NULL)
 }
 \arguments{
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that hosts the container instance to deregister. If you do not specify a cluster, the default cluster is assumed.}
@@ -29,15 +26,24 @@ Deregistering a container instance removes the instance from a cluster, but it d
 
 If you terminate a running container instance, Amazon ECS automatically deregisters the instance from your cluster (stopped container instances or instances with disconnected agents are not automatically deregistered when terminated).
 }
+\section{Accepted Parameters}{
+\preformatted{deregister_container_instance(
+  cluster = "string",
+  containerInstance = "string",
+  force = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example deregisters a container instance from the specified cluster
 # in your default region. If there are still tasks running on the
 # container instance, you must either stop those tasks before
 # deregistering, or use the force option.
-deregister_container_instance(
+\donttest{deregister_container_instance(
   cluster = "default",
   containerInstance = "container_instance_UUID",
   force = TRUE
-)
+)}
 
 }

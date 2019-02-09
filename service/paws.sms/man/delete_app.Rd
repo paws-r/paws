@@ -4,11 +4,8 @@
 \alias{delete_app}
 \title{Deletes an existing application}
 \usage{
-delete_app(
-  appId = "string",
-  forceStopAppReplication = TRUE|FALSE,
-  forceTerminateApp = TRUE|FALSE
-)
+delete_app(appId = NULL, forceStopAppReplication = NULL,
+  forceTerminateApp = NULL)
 }
 \arguments{
 \item{appId}{ID of the application to delete.}
@@ -20,6 +17,12 @@ delete_app(
 \description{
 Deletes an existing application. Optionally deletes the launched stack associated with the application and all AWS SMS replication jobs for servers in the application.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_app(
+  appId = "string",
+  forceStopAppReplication = TRUE|FALSE,
+  forceTerminateApp = TRUE|FALSE
+)
 }
+}
+

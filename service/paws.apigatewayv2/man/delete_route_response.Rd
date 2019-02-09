@@ -4,11 +4,7 @@
 \alias{delete_route_response}
 \title{Deletes a RouteResponse}
 \usage{
-delete_route_response(
-  ApiId = "string",
-  RouteId = "string",
-  RouteResponseId = "string"
-)
+delete_route_response(ApiId, RouteId, RouteResponseId)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -20,6 +16,12 @@ delete_route_response(
 \description{
 Deletes a RouteResponse.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_route_response(
+  ApiId = "string",
+  RouteId = "string",
+  RouteResponseId = "string"
+)
 }
+}
+

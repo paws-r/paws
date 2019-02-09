@@ -4,9 +4,7 @@
 \alias{disassociate_connector}
 \title{Disassociates the specified connector from AWS SMS}
 \usage{
-disassociate_connector(
-  connectorId = "string"
-)
+disassociate_connector(connectorId)
 }
 \arguments{
 \item{connectorId}{[required] The identifier of the connector.}
@@ -17,6 +15,10 @@ Disassociates the specified connector from AWS SMS.
 \details{
 After you disassociate a connector, it is no longer available to support replication jobs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disassociate_connector(
+  connectorId = "string"
+)
 }
+}
+

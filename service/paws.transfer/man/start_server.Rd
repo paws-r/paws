@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.transfer_operations.R
 \name{start_server}
 \alias{start_server}
-\title{Changes the state of a Secure File Transfer Protocol (SFTP) server from \code{OFFLINE} to \code{ONLINE}}
+\title{Changes the state of a Secure File Transfer Protocol (SFTP) server from OFFLINE to ONLINE}
 \usage{
-start_server(
-  ServerId = "string"
-)
+start_server(ServerId)
 }
 \arguments{
 \item{ServerId}{[required] A system-assigned unique identifier for an SFTP server that you start.}
@@ -19,6 +17,10 @@ The state of \code{STARTING} indicates that the server is in an intermediate sta
 
 No response is returned from this call.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_server(
+  ServerId = "string"
+)
 }
+}
+

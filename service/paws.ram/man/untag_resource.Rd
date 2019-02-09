@@ -4,12 +4,7 @@
 \alias{untag_resource}
 \title{Removes the specified tags from the specified resource share}
 \usage{
-untag_resource(
-  resourceShareArn = "string",
-  tagKeys = list(
-    "string"
-  )
-)
+untag_resource(resourceShareArn, tagKeys)
 }
 \arguments{
 \item{resourceShareArn}{[required] The Amazon Resource Name (ARN) of the resource share.}
@@ -19,6 +14,13 @@ untag_resource(
 \description{
 Removes the specified tags from the specified resource share.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{untag_resource(
+  resourceShareArn = "string",
+  tagKeys = list(
+    "string"
+  )
+)
 }
+}
+

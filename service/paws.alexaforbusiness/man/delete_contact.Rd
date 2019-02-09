@@ -4,9 +4,7 @@
 \alias{delete_contact}
 \title{Deletes a contact by the contact ARN}
 \usage{
-delete_contact(
-  ContactArn = "string"
-)
+delete_contact(ContactArn)
 }
 \arguments{
 \item{ContactArn}{[required] The ARN of the contact to delete.}
@@ -14,6 +12,10 @@ delete_contact(
 \description{
 Deletes a contact by the contact ARN.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_contact(
+  ContactArn = "string"
+)
 }
+}
+

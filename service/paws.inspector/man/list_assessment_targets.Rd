@@ -4,13 +4,8 @@
 \alias{list_assessment_targets}
 \title{Lists the ARNs of the assessment targets within this AWS account}
 \usage{
-list_assessment_targets(
-  filter = list(
-    assessmentTargetNamePattern = "string"
-  ),
-  nextToken = "string",
-  maxResults = 123
-)
+list_assessment_targets(filter = NULL, nextToken = NULL,
+  maxResults = NULL)
 }
 \arguments{
 \item{filter}{You can use this parameter to specify a subset of data to be included in the action's response.
@@ -24,10 +19,21 @@ For a record to match a filter, all specified filter attributes must match. When
 \description{
 Lists the ARNs of the assessment targets within this AWS account. For more information about assessment targets, see \href{http://docs.aws.amazon.com/inspector/latest/userguide/inspector_applications.html}{Amazon Inspector Assessment Targets}.
 }
+\section{Accepted Parameters}{
+\preformatted{list_assessment_targets(
+  filter = list(
+    assessmentTargetNamePattern = "string"
+  ),
+  nextToken = "string",
+  maxResults = 123
+)
+}
+}
+
 \examples{
 # Lists the ARNs of the assessment targets within this AWS account. 
-list_assessment_targets(
+\donttest{list_assessment_targets(
   maxResults = 123L
-)
+)}
 
 }

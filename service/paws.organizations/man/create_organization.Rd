@@ -4,9 +4,7 @@
 \alias{create_organization}
 \title{Creates an AWS organization}
 \usage{
-create_organization(
-  FeatureSet = "ALL"|"CONSOLIDATED_BILLING"
-)
+create_organization(FeatureSet = NULL)
 }
 \arguments{
 \item{FeatureSet}{Specifies the feature set supported by the new organization. Each feature set supports different levels of functionality.
@@ -23,6 +21,13 @@ This operation must be called using credentials from the account that is to beco
 
 By default (or if you set the \code{FeatureSet} parameter to \code{ALL}), the new organization is created with all features enabled and service control policies automatically enabled in the root. If you instead choose to create the organization supporting only the consolidated billing features by setting the \code{FeatureSet} parameter to \code{CONSOLIDATED_BILLING\"}, then no policy types are enabled by default and you cannot use organization policies.
 }
+\section{Accepted Parameters}{
+\preformatted{create_organization(
+  FeatureSet = "ALL"|"CONSOLIDATED_BILLING"
+)
+}
+}
+
 \examples{
 # Bill wants to create an organization using credentials from account
 # 111111111111. The following example shows that the account becomes the
@@ -31,15 +36,15 @@ By default (or if you set the \code{FeatureSet} parameter to \code{ALL}), the ne
 # service control policies enabled on the root:
 # 
 # 
-create_organization()
+\donttest{create_organization()}
 
 # In the following example, Bill creates an organization using credentials
 # from account 111111111111, and configures the organization to support
 # only the consolidated billing feature set:
 # 
 # 
-create_organization(
+\donttest{create_organization(
   FeatureSet = "CONSOLIDATED_BILLING"
-)
+)}
 
 }

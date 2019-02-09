@@ -4,7 +4,23 @@
 \alias{search_rooms}
 \title{Searches rooms and lists the ones that meet a set of filter and sort criteria}
 \usage{
-search_rooms(
+search_rooms(NextToken = NULL, MaxResults = NULL, Filters = NULL,
+  SortCriteria = NULL)
+}
+\arguments{
+\item{NextToken}{An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by \code{MaxResults}.}
+
+\item{MaxResults}{The maximum number of results to include in the response. If more results exist than the specified \code{MaxResults} value, a token is included in the response so that the remaining results can be retrieved.}
+
+\item{Filters}{The filters to use to list a specified set of rooms. The supported filter keys are RoomName and ProfileName.}
+
+\item{SortCriteria}{The sort order to use in listing the specified set of rooms. The supported sort keys are RoomName and ProfileName.}
+}
+\description{
+Searches rooms and lists the ones that meet a set of filter and sort criteria.
+}
+\section{Accepted Parameters}{
+\preformatted{search_rooms(
   NextToken = "string",
   MaxResults = 123,
   Filters = list(
@@ -23,18 +39,5 @@ search_rooms(
   )
 )
 }
-\arguments{
-\item{NextToken}{An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by \code{MaxResults}.}
-
-\item{MaxResults}{The maximum number of results to include in the response. If more results exist than the specified \code{MaxResults} value, a token is included in the response so that the remaining results can be retrieved.}
-
-\item{Filters}{The filters to use to list a specified set of rooms. The supported filter keys are RoomName and ProfileName.}
-
-\item{SortCriteria}{The sort order to use in listing the specified set of rooms. The supported sort keys are RoomName and ProfileName.}
 }
-\description{
-Searches rooms and lists the ones that meet a set of filter and sort criteria.
-}
-\examples{
 
-}

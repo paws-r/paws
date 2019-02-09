@@ -4,10 +4,7 @@
 \alias{delete_cache_cluster}
 \title{Deletes a previously provisioned cluster}
 \usage{
-delete_cache_cluster(
-  CacheClusterId = "string",
-  FinalSnapshotIdentifier = "string"
-)
+delete_cache_cluster(CacheClusterId, FinalSnapshotIdentifier = NULL)
 }
 \arguments{
 \item{CacheClusterId}{[required] The cluster identifier for the cluster to be deleted. This parameter is not case sensitive.}
@@ -22,6 +19,11 @@ This operation cannot be used to delete a cluster that is the last read replica 
 
 This operation is not valid for Redis (cluster mode enabled) clusters.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_cache_cluster(
+  CacheClusterId = "string",
+  FinalSnapshotIdentifier = "string"
+)
 }
+}
+

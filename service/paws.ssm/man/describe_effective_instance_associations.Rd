@@ -4,11 +4,8 @@
 \alias{describe_effective_instance_associations}
 \title{All associations for the instance(s)}
 \usage{
-describe_effective_instance_associations(
-  InstanceId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_effective_instance_associations(InstanceId, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{InstanceId}{[required] The instance ID for which you want to view all associations.}
@@ -20,6 +17,12 @@ describe_effective_instance_associations(
 \description{
 All associations for the instance(s).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_effective_instance_associations(
+  InstanceId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{admin_enable_user}
 \title{Enables the specified user as an administrator}
 \usage{
-admin_enable_user(
-  UserPoolId = "string",
-  Username = "string"
-)
+admin_enable_user(UserPoolId, Username)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool where you want to enable the user.}
@@ -20,6 +17,11 @@ Enables the specified user as an administrator. Works on any user.
 \details{
 Requires developer credentials.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{admin_enable_user(
+  UserPoolId = "string",
+  Username = "string"
+)
 }
+}
+

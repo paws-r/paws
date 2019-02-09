@@ -2,13 +2,9 @@
 % Please edit documentation in R/paws.appstream_operations.R
 \name{describe_users}
 \alias{describe_users}
-\title{Retrieves a list that describes one or more specified users in the user pool, if user names are provided}
+\title{Retrieves a list that describes one or more specified users in the user pool}
 \usage{
-describe_users(
-  AuthenticationType = "API"|"SAML"|"USERPOOL",
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_users(AuthenticationType, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{AuthenticationType}{[required] The authentication type for the users in the user pool to describe. You must specify USERPOOL.}
@@ -18,8 +14,14 @@ describe_users(
 \item{NextToken}{The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.}
 }
 \description{
-Retrieves a list that describes one or more specified users in the user pool, if user names are provided. Otherwise, all users in the user pool are described.
+Retrieves a list that describes one or more specified users in the user pool.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{describe_users(
+  AuthenticationType = "API"|"SAML"|"USERPOOL",
+  MaxResults = 123,
+  NextToken = "string"
+)
+}
+}
 
-}

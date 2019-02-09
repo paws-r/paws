@@ -4,12 +4,7 @@
 \alias{get_integration_response}
 \title{Represents a get integration response}
 \usage{
-get_integration_response(
-  restApiId = "string",
-  resourceId = "string",
-  httpMethod = "string",
-  statusCode = "string"
-)
+get_integration_response(restApiId, resourceId, httpMethod, statusCode)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -23,6 +18,13 @@ get_integration_response(
 \description{
 Represents a get integration response.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_integration_response(
+  restApiId = "string",
+  resourceId = "string",
+  httpMethod = "string",
+  statusCode = "string"
+)
 }
+}
+

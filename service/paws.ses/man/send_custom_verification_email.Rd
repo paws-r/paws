@@ -4,11 +4,8 @@
 \alias{send_custom_verification_email}
 \title{Adds an email address to the list of identities for your Amazon SES account in the current AWS Region and attempts to verify it}
 \usage{
-send_custom_verification_email(
-  EmailAddress = "string",
-  TemplateName = "string",
-  ConfigurationSetName = "string"
-)
+send_custom_verification_email(EmailAddress, TemplateName,
+  ConfigurationSetName = NULL)
 }
 \arguments{
 \item{EmailAddress}{[required] The email address to verify.}
@@ -25,6 +22,12 @@ To use this operation, you must first create a custom verification email templat
 
 You can execute this operation no more than once per second.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{send_custom_verification_email(
+  EmailAddress = "string",
+  TemplateName = "string",
+  ConfigurationSetName = "string"
+)
 }
+}
+

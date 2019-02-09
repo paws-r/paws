@@ -4,18 +4,8 @@
 \alias{describe_association_execution_targets}
 \title{Use this API action to view information about a specific execution of a specific association}
 \usage{
-describe_association_execution_targets(
-  AssociationId = "string",
-  ExecutionId = "string",
-  Filters = list(
-    list(
-      Key = "Status"|"ResourceId"|"ResourceType",
-      Value = "string"
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_association_execution_targets(AssociationId, ExecutionId,
+  Filters = NULL, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{AssociationId}{[required] The association ID that includes the execution for which you want to view details.}
@@ -37,6 +27,19 @@ ResourceType (EQUAL)}
 \description{
 Use this API action to view information about a specific execution of a specific association.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_association_execution_targets(
+  AssociationId = "string",
+  ExecutionId = "string",
+  Filters = list(
+    list(
+      Key = "Status"|"ResourceId"|"ResourceType",
+      Value = "string"
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{delete_portfolio}
 \title{Deletes the specified portfolio}
 \usage{
-delete_portfolio(
-  AcceptLanguage = "string",
-  Id = "string"
-)
+delete_portfolio(AcceptLanguage = NULL, Id)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -25,6 +22,11 @@ Deletes the specified portfolio.
 \details{
 You cannot delete a portfolio if it was shared with you or if it has associated products, users, constraints, or shared accounts.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_portfolio(
+  AcceptLanguage = "string",
+  Id = "string"
+)
 }
+}
+

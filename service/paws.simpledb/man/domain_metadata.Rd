@@ -4,9 +4,7 @@
 \alias{domain_metadata}
 \title{Returns information about the domain, including when the domain was created, the number of items and attributes in the domain, and the size of the attribute names and values}
 \usage{
-domain_metadata(
-  DomainName = "string"
-)
+domain_metadata(DomainName)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain for which to display the metadata of.}
@@ -14,6 +12,10 @@ domain_metadata(
 \description{
 Returns information about the domain, including when the domain was created, the number of items and attributes in the domain, and the size of the attribute names and values.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{domain_metadata(
+  DomainName = "string"
+)
 }
+}
+

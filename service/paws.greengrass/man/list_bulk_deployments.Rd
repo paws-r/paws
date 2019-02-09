@@ -4,10 +4,7 @@
 \alias{list_bulk_deployments}
 \title{Returns a list of bulk deployments}
 \usage{
-list_bulk_deployments(
-  MaxResults = "string",
-  NextToken = "string"
-)
+list_bulk_deployments(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{The maximum number of results to be returned per request.}
@@ -17,6 +14,11 @@ list_bulk_deployments(
 \description{
 Returns a list of bulk deployments.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_bulk_deployments(
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{delete_reusable_delegation_set}
 \title{Deletes a reusable delegation set}
 \usage{
-delete_reusable_delegation_set(
-  Id = "string"
-)
+delete_reusable_delegation_set(Id)
 }
 \arguments{
 \item{Id}{[required] The ID of the reusable delegation set that you want to delete.}
@@ -19,6 +17,10 @@ You can delete a reusable delegation set only if it isn't associated with any ho
 
 To verify that the reusable delegation set is not associated with any hosted zones, submit a GetReusableDelegationSet request and specify the ID of the reusable delegation set that you want to delete.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_reusable_delegation_set(
+  Id = "string"
+)
 }
+}
+

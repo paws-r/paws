@@ -4,18 +4,11 @@
 \alias{list_compilation_jobs}
 \title{Lists model compilation jobs that satisfy various filters}
 \usage{
-list_compilation_jobs(
-  NextToken = "string",
-  MaxResults = 123,
-  CreationTimeAfter = as.POSIXct("2015-01-01"),
-  CreationTimeBefore = as.POSIXct("2015-01-01"),
-  LastModifiedTimeAfter = as.POSIXct("2015-01-01"),
-  LastModifiedTimeBefore = as.POSIXct("2015-01-01"),
-  NameContains = "string",
-  StatusEquals = "INPROGRESS"|"COMPLETED"|"FAILED"|"STARTING"|"STOPPING"|"STOPPED",
-  SortBy = "Name"|"CreationTime"|"Status",
-  SortOrder = "Ascending"|"Descending"
-)
+list_compilation_jobs(NextToken = NULL, MaxResults = NULL,
+  CreationTimeAfter = NULL, CreationTimeBefore = NULL,
+  LastModifiedTimeAfter = NULL, LastModifiedTimeBefore = NULL,
+  NameContains = NULL, StatusEquals = NULL, SortBy = NULL,
+  SortOrder = NULL)
 }
 \arguments{
 \item{NextToken}{If the result of the previous \code{ListCompilationJobs} request was truncated, the response includes a \code{NextToken}. To retrieve the next set of model compilation jobs, use the token in the next request.}
@@ -44,6 +37,19 @@ Lists model compilation jobs that satisfy various filters.
 \details{
 To create a model compilation job, use CreateCompilationJob. To get information about a particular model compilation job you have created, use DescribeCompilationJob.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_compilation_jobs(
+  NextToken = "string",
+  MaxResults = 123,
+  CreationTimeAfter = as.POSIXct("2015-01-01"),
+  CreationTimeBefore = as.POSIXct("2015-01-01"),
+  LastModifiedTimeAfter = as.POSIXct("2015-01-01"),
+  LastModifiedTimeBefore = as.POSIXct("2015-01-01"),
+  NameContains = "string",
+  StatusEquals = "INPROGRESS"|"COMPLETED"|"FAILED"|"STARTING"|"STOPPING"|"STOPPED",
+  SortBy = "Name"|"CreationTime"|"Status",
+  SortOrder = "Ascending"|"Descending"
+)
 }
+}
+

@@ -4,16 +4,10 @@
 \alias{list_labeling_jobs_for_workteam}
 \title{Gets a list of labeling jobs assigned to a specified work team}
 \usage{
-list_labeling_jobs_for_workteam(
-  WorkteamArn = "string",
-  MaxResults = 123,
-  NextToken = "string",
-  CreationTimeAfter = as.POSIXct("2015-01-01"),
-  CreationTimeBefore = as.POSIXct("2015-01-01"),
-  JobReferenceCodeContains = "string",
-  SortBy = "CreationTime",
-  SortOrder = "Ascending"|"Descending"
-)
+list_labeling_jobs_for_workteam(WorkteamArn, MaxResults = NULL,
+  NextToken = NULL, CreationTimeAfter = NULL,
+  CreationTimeBefore = NULL, JobReferenceCodeContains = NULL,
+  SortBy = NULL, SortOrder = NULL)
 }
 \arguments{
 \item{WorkteamArn}{[required] The Amazon Resource Name (ARN) of the work team for which you want to see labeling jobs for.}
@@ -35,6 +29,17 @@ list_labeling_jobs_for_workteam(
 \description{
 Gets a list of labeling jobs assigned to a specified work team.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_labeling_jobs_for_workteam(
+  WorkteamArn = "string",
+  MaxResults = 123,
+  NextToken = "string",
+  CreationTimeAfter = as.POSIXct("2015-01-01"),
+  CreationTimeBefore = as.POSIXct("2015-01-01"),
+  JobReferenceCodeContains = "string",
+  SortBy = "CreationTime",
+  SortOrder = "Ascending"|"Descending"
+)
 }
+}
+

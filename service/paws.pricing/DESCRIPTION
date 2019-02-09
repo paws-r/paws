@@ -1,6 +1,6 @@
 Package: paws.pricing
 Title: AWS Price List Service
-Version: 0.0.2
+Version: 0.0.3
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",
@@ -12,9 +12,9 @@ Authors@R:
              email = "adam.banker39@gmail.com"),
       person(given = "Amazon.com, Inc.",
              role = "cph"))
-Description: AWS Price List Service API (AWS Price List Service) is a
-    centralized and convenient way to programmatically query Amazon Web
-    Services for services, products, and pricing information. The AWS
+Description: AWS Price List Service API (AWS Price List Service)
+    is a centralized and convenient way to programmatically query Amazon
+    Web Services for services, products, and pricing information. The AWS
     Price List Service uses standardized product attributes such as
     `Location`, `Storage Class`, and `Operating System`, and provides
     prices at the SKU level. You can use the AWS Price List Service to
@@ -23,52 +23,15 @@ Description: AWS Price List Service API (AWS Price List Service) is a
     benefit analysis that compare your internal workloads with AWS.
 License: Apache License (>= 2.0)
 Depends: 
-    R (>= 3.5.1)
+    R (>= 3.4.0)
 Imports: 
-    base64enc,
-    digest,
-    httr,
-    ini,
-    jsonlite,
-    xml2
+    paws.common
+Suggests: 
+    testthat
+Remotes: 
+    paws-r/paws/paws.common
 Encoding: UTF-8
 LazyData: true
-Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
-RoxygenNote: 6.0.1
-Collate: 
-    'struct.R'
-    'handlers.R'
-    'url.R'
-    'net.R'
-    'credential_providers.R'
-    'credentials.R'
-    'client.R'
-    'config.R'
-    'convert.R'
-    'dateutil.R'
-    'error.R'
-    'handlers_core.R'
-    'handlers_ec2query.R'
-    'handlers_jsonrpc.R'
-    'handlers_query.R'
-    'handlers_rest.R'
-    'handlers_restjson.R'
-    'handlers_restxml.R'
-    'idempotency.R'
-    'jsonutil.R'
-    'paws.pricing_interfaces.R'
-    'paws.pricing_operations.R'
-    'paws.pricing_package.R'
-    'signer_v4.R'
-    'paws.pricing_service.R'
-    'populate.R'
-    'populateutil.R'
-    'tags.R'
-    'queryutil.R'
-    'request.R'
-    'signer_s3.R'
-    'signer_s3v4.R'
-    'signer_v2.R'
-    'time.R'
-    'util.R'
-    'xmlutil.R'
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
+    "collate"))
+RoxygenNote: 6.1.1

@@ -4,30 +4,9 @@
 \alias{create_service}
 \title{Creates a service, which defines the configuration for the following entities:}
 \usage{
-create_service(
-  Name = "string",
-  NamespaceId = "string",
-  CreatorRequestId = "string",
-  Description = "string",
-  DnsConfig = list(
-    NamespaceId = "string",
-    RoutingPolicy = "MULTIVALUE"|"WEIGHTED",
-    DnsRecords = list(
-      list(
-        Type = "SRV"|"A"|"AAAA"|"CNAME",
-        TTL = 123
-      )
-    )
-  ),
-  HealthCheckConfig = list(
-    Type = "HTTP"|"HTTPS"|"TCP",
-    ResourcePath = "string",
-    FailureThreshold = 123
-  ),
-  HealthCheckCustomConfig = list(
-    FailureThreshold = 123
-  )
-)
+create_service(Name, NamespaceId = NULL, CreatorRequestId = NULL,
+  Description = NULL, DnsConfig = NULL, HealthCheckConfig = NULL,
+  HealthCheckCustomConfig = NULL)
 }
 \arguments{
 \item{Name}{[required] The name that you want to assign to the service.}
@@ -68,6 +47,31 @@ After you create the service, you can submit a RegisterInstance request, and AWS
 
 For the current limit on the number of instances that you can register using the same namespace and using the same service, see \href{http://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html}{AWS Cloud Map Limits} in the \emph{AWS Cloud Map Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_service(
+  Name = "string",
+  NamespaceId = "string",
+  CreatorRequestId = "string",
+  Description = "string",
+  DnsConfig = list(
+    NamespaceId = "string",
+    RoutingPolicy = "MULTIVALUE"|"WEIGHTED",
+    DnsRecords = list(
+      list(
+        Type = "SRV"|"A"|"AAAA"|"CNAME",
+        TTL = 123
+      )
+    )
+  ),
+  HealthCheckConfig = list(
+    Type = "HTTP"|"HTTPS"|"TCP",
+    ResourcePath = "string",
+    FailureThreshold = 123
+  ),
+  HealthCheckCustomConfig = list(
+    FailureThreshold = 123
+  )
+)
 }
+}
+

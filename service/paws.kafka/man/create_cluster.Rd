@@ -4,7 +4,27 @@
 \alias{create_cluster}
 \title{Creates a new MSK cluster}
 \usage{
-create_cluster(
+create_cluster(BrokerNodeGroupInfo, ClusterName, EncryptionInfo = NULL,
+  EnhancedMonitoring = NULL, KafkaVersion, NumberOfBrokerNodes)
+}
+\arguments{
+\item{BrokerNodeGroupInfo}{[required] Information about the broker nodes in the cluster.}
+
+\item{ClusterName}{[required] The name of the cluster.}
+
+\item{EncryptionInfo}{Includes all encryption-related information.}
+
+\item{EnhancedMonitoring}{Specifies the level of monitoring for the MSK cluster. The possible values are DEFAULT, PER\_BROKER, and PER\_TOPIC\_PER\_BROKER.}
+
+\item{KafkaVersion}{[required] The version of Apache Kafka.}
+
+\item{NumberOfBrokerNodes}{[required] The number of Kafka broker nodes in the Amazon MSK cluster.}
+}
+\description{
+Creates a new MSK cluster.
+}
+\section{Accepted Parameters}{
+\preformatted{create_cluster(
   BrokerNodeGroupInfo = list(
     BrokerAZDistribution = "DEFAULT",
     ClientSubnets = list(
@@ -31,22 +51,5 @@ create_cluster(
   NumberOfBrokerNodes = 123
 )
 }
-\arguments{
-\item{BrokerNodeGroupInfo}{[required] Information about the broker nodes in the cluster.}
-
-\item{ClusterName}{[required] The name of the cluster.}
-
-\item{EncryptionInfo}{Includes all encryption-related information.}
-
-\item{EnhancedMonitoring}{Specifies the level of monitoring for the MSK cluster. The possible values are DEFAULT, PER\_BROKER, and PER\_TOPIC\_PER\_BROKER.}
-
-\item{KafkaVersion}{[required] The version of Apache Kafka.}
-
-\item{NumberOfBrokerNodes}{[required] The number of Kafka broker nodes in the Amazon MSK cluster.}
 }
-\description{
-Creates a new MSK cluster.
-}
-\examples{
 
-}

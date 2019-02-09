@@ -4,10 +4,7 @@
 \alias{associate_connection_with_lag}
 \title{Associates an existing connection with a link aggregation group (LAG)}
 \usage{
-associate_connection_with_lag(
-  connectionId = "string",
-  lagId = "string"
-)
+associate_connection_with_lag(connectionId, lagId)
 }
 \arguments{
 \item{connectionId}{[required] The ID of the connection. For example, dxcon-abc123.}
@@ -22,6 +19,11 @@ Any virtual interfaces that are directly associated with the connection are auto
 
 For interconnects, any hosted connections are automatically re-associated with the LAG. If the interconnect was originally associated with a different LAG, the hosted connections remain associated with the original LAG.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_connection_with_lag(
+  connectionId = "string",
+  lagId = "string"
+)
 }
+}
+

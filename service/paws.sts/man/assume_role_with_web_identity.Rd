@@ -4,14 +4,8 @@
 \alias{assume_role_with_web_identity}
 \title{Returns a set of temporary security credentials for users who have been authenticated in a mobile or web application with a web identity provider, such as Amazon Cognito, Login with Amazon, Facebook, Google, or any OpenID Connect-compatible identity provider}
 \usage{
-assume_role_with_web_identity(
-  RoleArn = "string",
-  RoleSessionName = "string",
-  WebIdentityToken = "string",
-  ProviderId = "string",
-  Policy = "string",
-  DurationSeconds = 123
-)
+assume_role_with_web_identity(RoleArn, RoleSessionName, WebIdentityToken,
+  ProviderId = NULL, Policy = NULL, DurationSeconds = NULL)
 }
 \arguments{
 \item{RoleArn}{[required] The Amazon Resource Name (ARN) of the role that the caller is assuming.}
@@ -72,14 +66,26 @@ For more information about how to use web identity federation and the \code{Assu
 \item \href{http://aws.amazon.com/articles/web-identity-federation-with-mobile-applications}{Web Identity Federation with Mobile Applications}. This article discusses web identity federation and shows an example of how to use web identity federation to get access to content in Amazon S3.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{assume_role_with_web_identity(
+  RoleArn = "string",
+  RoleSessionName = "string",
+  WebIdentityToken = "string",
+  ProviderId = "string",
+  Policy = "string",
+  DurationSeconds = 123
+)
+}
+}
+
 \examples{
 # 
-assume_role_with_web_identity(
+\donttest{assume_role_with_web_identity(
   DurationSeconds = 3600L,
   ProviderId = "www.amazon.com",
   RoleArn = "arn:aws:iam::123456789012:role/FederatedWebIdentityRole",
   RoleSessionName = "app1",
   WebIdentityToken = "Atza\%7CIQEBLjAsAhRFiXuWpUXuRvQ9PZL3GMFcYevydwIUFAHZwXZXXXXXXXXJnrulxKDHwy87oGKPznh0D6bEQZTSCzyoCtL_8S07pLpr0zMbn6w1lfVZKNTBdDansFBmtGnIsIapjI6xKR02Yc_2bQ8LZbUXSGm6Ry6_BG7PrtLZtj_dfCTj92xNGed-CrKqjG7nPBjNIL016GGvuS5gSvPRUxWES3VYfm1wl7WTI7jn-Pcb6M-buCgHhFOzTQxod27L9CqnOLio7N3gZAGpsp6n1-AJBOCJckcyXe2c6uD0srOJeZlKUm2eTDVMf8IehDVI0r1QOnTV6KzzAI3OY87Vd_cVMQ"
-)
+)}
 
 }

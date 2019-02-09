@@ -4,9 +4,7 @@
 \alias{delete_task}
 \title{Deletes a task}
 \usage{
-delete_task(
-  TaskArn = "string"
-)
+delete_task(TaskArn)
 }
 \arguments{
 \item{TaskArn}{[required] The Amazon Resource Name (ARN) of the task to delete.}
@@ -14,6 +12,10 @@ delete_task(
 \description{
 Deletes a task.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_task(
+  TaskArn = "string"
+)
 }
+}
+

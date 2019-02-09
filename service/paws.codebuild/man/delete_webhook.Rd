@@ -4,9 +4,7 @@
 \alias{delete_webhook}
 \title{For an existing AWS CodeBuild build project that has its source code stored in a GitHub or Bitbucket repository, stops AWS CodeBuild from rebuilding the source code every time a code change is pushed to the repository}
 \usage{
-delete_webhook(
-  projectName = "string"
-)
+delete_webhook(projectName)
 }
 \arguments{
 \item{projectName}{[required] The name of the AWS CodeBuild project.}
@@ -14,6 +12,10 @@ delete_webhook(
 \description{
 For an existing AWS CodeBuild build project that has its source code stored in a GitHub or Bitbucket repository, stops AWS CodeBuild from rebuilding the source code every time a code change is pushed to the repository.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_webhook(
+  projectName = "string"
+)
 }
+}
+

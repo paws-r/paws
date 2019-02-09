@@ -4,10 +4,7 @@
 \alias{get_segment}
 \title{Returns information about a segment}
 \usage{
-get_segment(
-  ApplicationId = "string",
-  SegmentId = "string"
-)
+get_segment(ApplicationId, SegmentId)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
@@ -17,6 +14,11 @@ get_segment(
 \description{
 Returns information about a segment.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_segment(
+  ApplicationId = "string",
+  SegmentId = "string"
+)
 }
+}
+

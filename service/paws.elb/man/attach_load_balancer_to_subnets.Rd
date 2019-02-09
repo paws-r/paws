@@ -4,12 +4,7 @@
 \alias{attach_load_balancer_to_subnets}
 \title{Adds one or more subnets to the set of configured subnets for the specified load balancer}
 \usage{
-attach_load_balancer_to_subnets(
-  LoadBalancerName = "string",
-  Subnets = list(
-    "string"
-  )
-)
+attach_load_balancer_to_subnets(LoadBalancerName, Subnets)
 }
 \arguments{
 \item{LoadBalancerName}{[required] The name of the load balancer.}
@@ -22,14 +17,24 @@ Adds one or more subnets to the set of configured subnets for the specified load
 \details{
 The load balancer evenly distributes requests across all registered subnets. For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-manage-subnets.html}{Add or Remove Subnets for Your Load Balancer in a VPC} in the \emph{Classic Load Balancers Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{attach_load_balancer_to_subnets(
+  LoadBalancerName = "string",
+  Subnets = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # This example adds the specified subnet to the set of configured subnets
 # for the specified load balancer.
-attach_load_balancer_to_subnets(
+\donttest{attach_load_balancer_to_subnets(
   LoadBalancerName = "my-load-balancer",
   Subnets = list(
     "subnet-0ecac448"
   )
-)
+)}
 
 }

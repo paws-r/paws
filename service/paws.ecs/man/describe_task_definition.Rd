@@ -4,12 +4,7 @@
 \alias{describe_task_definition}
 \title{Describes a task definition}
 \usage{
-describe_task_definition(
-  taskDefinition = "string",
-  include = list(
-    "TAGS"
-  )
-)
+describe_task_definition(taskDefinition, include = NULL)
 }
 \arguments{
 \item{taskDefinition}{[required] The \code{family} for the latest \code{ACTIVE} revision, \code{family} and \code{revision} (\code{family:revision}) for a specific revision in the family, or full Amazon Resource Name (ARN) of the task definition to describe.}
@@ -22,10 +17,20 @@ Describes a task definition. You can specify a \code{family} and \code{revision}
 \details{
 You can only describe \code{INACTIVE} task definitions while an active task or service references them.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_task_definition(
+  taskDefinition = "string",
+  include = list(
+    "TAGS"
+  )
+)
+}
+}
+
 \examples{
 # This example provides a description of the specified task definition.
-describe_task_definition(
+\donttest{describe_task_definition(
   taskDefinition = "hello_world:8"
-)
+)}
 
 }

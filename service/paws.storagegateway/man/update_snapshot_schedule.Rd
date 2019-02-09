@@ -4,12 +4,8 @@
 \alias{update_snapshot_schedule}
 \title{Updates a snapshot schedule configured for a gateway volume}
 \usage{
-update_snapshot_schedule(
-  VolumeARN = "string",
-  StartAt = 123,
-  RecurrenceInHours = 123,
-  Description = "string"
-)
+update_snapshot_schedule(VolumeARN, StartAt, RecurrenceInHours,
+  Description = NULL)
 }
 \arguments{
 \item{VolumeARN}{[required] The Amazon Resource Name (ARN) of the volume. Use the ListVolumes operation to return a list of gateway volumes.}
@@ -28,13 +24,23 @@ The default snapshot schedule for volume is once every 24 hours, starting at the
 
 In the request you must identify the gateway volume whose snapshot schedule you want to update, and the schedule information, including when you want the snapshot to begin on a day and the frequency (in hours) of snapshots.
 }
+\section{Accepted Parameters}{
+\preformatted{update_snapshot_schedule(
+  VolumeARN = "string",
+  StartAt = 123,
+  RecurrenceInHours = 123,
+  Description = "string"
+)
+}
+}
+
 \examples{
 # Updates a snapshot schedule configured for a gateway volume.
-update_snapshot_schedule(
+\donttest{update_snapshot_schedule(
   Description = "Hourly snapshot",
   RecurrenceInHours = 1L,
   StartAt = 0L,
   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB"
-)
+)}
 
 }

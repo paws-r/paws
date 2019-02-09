@@ -4,13 +4,7 @@
 \alias{delete_fleets}
 \title{Deletes the specified EC2 Fleet}
 \usage{
-delete_fleets(
-  DryRun = TRUE|FALSE,
-  FleetIds = list(
-    "string"
-  ),
-  TerminateInstances = TRUE|FALSE
-)
+delete_fleets(DryRun = NULL, FleetIds, TerminateInstances)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -25,6 +19,14 @@ Deletes the specified EC2 Fleet.
 \details{
 After you delete an EC2 Fleet, it launches no new instances. You must specify whether an EC2 Fleet should also terminate its instances. If you terminate the instances, the EC2 Fleet enters the \code{deleted_terminating} state. Otherwise, the EC2 Fleet enters the \code{deleted_running} state, and the instances continue to run until they are interrupted or you terminate them manually.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_fleets(
+  DryRun = TRUE|FALSE,
+  FleetIds = list(
+    "string"
+  ),
+  TerminateInstances = TRUE|FALSE
+)
 }
+}
+

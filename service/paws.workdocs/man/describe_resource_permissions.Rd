@@ -4,13 +4,8 @@
 \alias{describe_resource_permissions}
 \title{Describes the permissions of a specified resource}
 \usage{
-describe_resource_permissions(
-  AuthenticationToken = "string",
-  ResourceId = "string",
-  PrincipalId = "string",
-  Limit = 123,
-  Marker = "string"
-)
+describe_resource_permissions(AuthenticationToken = NULL, ResourceId,
+  PrincipalId = NULL, Limit = NULL, Marker = NULL)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
@@ -26,6 +21,14 @@ describe_resource_permissions(
 \description{
 Describes the permissions of a specified resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_resource_permissions(
+  AuthenticationToken = "string",
+  ResourceId = "string",
+  PrincipalId = "string",
+  Limit = 123,
+  Marker = "string"
+)
 }
+}
+

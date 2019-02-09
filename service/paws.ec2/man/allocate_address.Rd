@@ -4,12 +4,8 @@
 \alias{allocate_address}
 \title{Allocates an Elastic IP address to your AWS account}
 \usage{
-allocate_address(
-  Domain = "vpc"|"standard",
-  Address = "string",
-  PublicIpv4Pool = "string",
-  DryRun = TRUE|FALSE
-)
+allocate_address(Domain = NULL, Address = NULL,
+  PublicIpv4Pool = NULL, DryRun = NULL)
 }
 \arguments{
 \item{Domain}{Set to \code{vpc} to allocate the address for use with instances in a VPC.
@@ -26,23 +22,33 @@ Default: The address is for use with instances in EC2-Classic.}
 Allocates an Elastic IP address to your AWS account. After you allocate the Elastic IP address you can associate it with an instance or network interface. After you release an Elastic IP address, it is released to the IP address pool and can be allocated to a different AWS account.
 }
 \details{
-You can allocate an Elastic IP address from an address pool owned by AWS or from an address pool created from a public IPv4 address range that you have brought to AWS for use with your AWS resources using bring your own IP addresses (BYOIP). For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html}{Bring Your Own IP Addresses (BYOIP)} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+You can allocate an Elastic IP address from an address pool owned by AWS or from an address pool created from a public IPv4 address range that you have brought to AWS for use with your AWS resources using bring your own IP addresses (BYOIP). For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html}{Bring Your Own IP Addresses (BYOIP)} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 [EC2-VPC] If you release an Elastic IP address, you might be able to recover it. You cannot recover an Elastic IP address that you released after it is allocated to another AWS account. You cannot recover an Elastic IP address for EC2-Classic. To attempt to recover an Elastic IP address that you released, specify it in this operation.
 
 An Elastic IP address is for use either in the EC2-Classic platform or in a VPC. By default, you can allocate 5 Elastic IP addresses for EC2-Classic per region and 5 Elastic IP addresses for EC2-VPC per region.
 
-For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP Addresses} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP Addresses} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{allocate_address(
+  Domain = "vpc"|"standard",
+  Address = "string",
+  PublicIpv4Pool = "string",
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example allocates an Elastic IP address to use with an instance in
 # a VPC.
-allocate_address(
+\donttest{allocate_address(
   Domain = "vpc"
-)
+)}
 
 # This example allocates an Elastic IP address to use with an instance in
 # EC2-Classic.
-allocate_address()
+\donttest{allocate_address()}
 
 }

@@ -4,9 +4,7 @@
 \alias{delete_db_security_group}
 \title{Deletes a DB security group}
 \usage{
-delete_db_security_group(
-  DBSecurityGroupName = "string"
-)
+delete_db_security_group(DBSecurityGroupName)
 }
 \arguments{
 \item{DBSecurityGroupName}{[required] The name of the DB security group to delete.
@@ -27,6 +25,10 @@ Deletes a DB security group.
 \details{
 The specified DB security group must not be associated with any DB instances.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_db_security_group(
+  DBSecurityGroupName = "string"
+)
 }
+}
+

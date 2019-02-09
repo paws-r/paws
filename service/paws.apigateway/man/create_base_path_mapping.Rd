@@ -4,12 +4,8 @@
 \alias{create_base_path_mapping}
 \title{Creates a new BasePathMapping resource}
 \usage{
-create_base_path_mapping(
-  domainName = "string",
-  basePath = "string",
-  restApiId = "string",
-  stage = "string"
-)
+create_base_path_mapping(domainName, basePath = NULL, restApiId,
+  stage = NULL)
 }
 \arguments{
 \item{domainName}{[required] [Required] The domain name of the BasePathMapping resource to create.}
@@ -23,6 +19,13 @@ create_base_path_mapping(
 \description{
 Creates a new BasePathMapping resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_base_path_mapping(
+  domainName = "string",
+  basePath = "string",
+  restApiId = "string",
+  stage = "string"
+)
 }
+}
+

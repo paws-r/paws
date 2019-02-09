@@ -4,11 +4,7 @@
 \alias{create_state_machine}
 \title{Creates a state machine}
 \usage{
-create_state_machine(
-  name = "string",
-  definition = "string",
-  roleArn = "string"
-)
+create_state_machine(name, definition, roleArn)
 }
 \arguments{
 \item{name}{[required] The name of the state machine.
@@ -18,7 +14,7 @@ A name must \emph{not} contain:
 \item whitespace
 \item brackets \code{< > { } [ ]}
 \item wildcard characters \code{? *}
-\item special characters \code{\" # % \ ^ | ~ ` $ & , ; : /}
+\item special characters \code{\" # \% \ ^ | ~ ` $ & , ; : /}
 \item control characters (\code{U+0000-001F}, \code{U+007F-009F})
 }
 
@@ -31,6 +27,12 @@ A name must \emph{not} contain:
 \description{
 Creates a state machine. A state machine consists of a collection of states that can do work (\code{Task} states), determine to which states to transition next (\code{Choice} states), stop an execution with an error (\code{Fail} states), and so on. State machines are specified using a JSON-based, structured language.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_state_machine(
+  name = "string",
+  definition = "string",
+  roleArn = "string"
+)
 }
+}
+

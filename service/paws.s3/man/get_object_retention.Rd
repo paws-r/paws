@@ -4,12 +4,8 @@
 \alias{get_object_retention}
 \title{Retrieves an object's retention settings}
 \usage{
-get_object_retention(
-  Bucket = "string",
-  Key = "string",
-  VersionId = "string",
-  RequestPayer = "requester"
-)
+get_object_retention(Bucket, Key, VersionId = NULL,
+  RequestPayer = NULL)
 }
 \arguments{
 \item{Bucket}{[required] The bucket containing the object whose retention settings you want to retrieve.}
@@ -23,6 +19,13 @@ get_object_retention(
 \description{
 Retrieves an object's retention settings.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_object_retention(
+  Bucket = "string",
+  Key = "string",
+  VersionId = "string",
+  RequestPayer = "requester"
+)
 }
+}
+

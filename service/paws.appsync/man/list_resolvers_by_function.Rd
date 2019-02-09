@@ -4,12 +4,8 @@
 \alias{list_resolvers_by_function}
 \title{List the resolvers that are associated with a specific function}
 \usage{
-list_resolvers_by_function(
-  apiId = "string",
-  functionId = "string",
-  nextToken = "string",
-  maxResults = 123
-)
+list_resolvers_by_function(apiId, functionId, nextToken = NULL,
+  maxResults = NULL)
 }
 \arguments{
 \item{apiId}{[required] The API ID.}
@@ -23,6 +19,13 @@ list_resolvers_by_function(
 \description{
 List the resolvers that are associated with a specific function.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_resolvers_by_function(
+  apiId = "string",
+  functionId = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

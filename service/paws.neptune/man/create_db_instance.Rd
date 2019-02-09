@@ -4,61 +4,25 @@
 \alias{create_db_instance}
 \title{Creates a new DB instance}
 \usage{
-create_db_instance(
-  DBName = "string",
-  DBInstanceIdentifier = "string",
-  AllocatedStorage = 123,
-  DBInstanceClass = "string",
-  Engine = "string",
-  MasterUsername = "string",
-  MasterUserPassword = "string",
-  DBSecurityGroups = list(
-    "string"
-  ),
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  AvailabilityZone = "string",
-  DBSubnetGroupName = "string",
-  PreferredMaintenanceWindow = "string",
-  DBParameterGroupName = "string",
-  BackupRetentionPeriod = 123,
-  PreferredBackupWindow = "string",
-  Port = 123,
-  MultiAZ = TRUE|FALSE,
-  EngineVersion = "string",
-  AutoMinorVersionUpgrade = TRUE|FALSE,
-  LicenseModel = "string",
-  Iops = 123,
-  OptionGroupName = "string",
-  CharacterSetName = "string",
-  PubliclyAccessible = TRUE|FALSE,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  DBClusterIdentifier = "string",
-  StorageType = "string",
-  TdeCredentialArn = "string",
-  TdeCredentialPassword = "string",
-  StorageEncrypted = TRUE|FALSE,
-  KmsKeyId = "string",
-  Domain = "string",
-  CopyTagsToSnapshot = TRUE|FALSE,
-  MonitoringInterval = 123,
-  MonitoringRoleArn = "string",
-  DomainIAMRoleName = "string",
-  PromotionTier = 123,
-  Timezone = "string",
-  EnableIAMDatabaseAuthentication = TRUE|FALSE,
-  EnablePerformanceInsights = TRUE|FALSE,
-  PerformanceInsightsKMSKeyId = "string",
-  EnableCloudwatchLogsExports = list(
-    "string"
-  )
-)
+create_db_instance(DBName = NULL, DBInstanceIdentifier,
+  AllocatedStorage = NULL, DBInstanceClass, Engine,
+  MasterUsername = NULL, MasterUserPassword = NULL,
+  DBSecurityGroups = NULL, VpcSecurityGroupIds = NULL,
+  AvailabilityZone = NULL, DBSubnetGroupName = NULL,
+  PreferredMaintenanceWindow = NULL, DBParameterGroupName = NULL,
+  BackupRetentionPeriod = NULL, PreferredBackupWindow = NULL,
+  Port = NULL, MultiAZ = NULL, EngineVersion = NULL,
+  AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, Iops = NULL,
+  OptionGroupName = NULL, CharacterSetName = NULL,
+  PubliclyAccessible = NULL, Tags = NULL, DBClusterIdentifier = NULL,
+  StorageType = NULL, TdeCredentialArn = NULL,
+  TdeCredentialPassword = NULL, StorageEncrypted = NULL,
+  KmsKeyId = NULL, Domain = NULL, CopyTagsToSnapshot = NULL,
+  MonitoringInterval = NULL, MonitoringRoleArn = NULL,
+  DomainIAMRoleName = NULL, PromotionTier = NULL, Timezone = NULL,
+  EnableIAMDatabaseAuthentication = NULL,
+  EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL,
+  EnableCloudwatchLogsExports = NULL)
 }
 \arguments{
 \item{DBName}{The database name.
@@ -250,6 +214,62 @@ Default: \code{false}}
 \description{
 Creates a new DB instance.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_db_instance(
+  DBName = "string",
+  DBInstanceIdentifier = "string",
+  AllocatedStorage = 123,
+  DBInstanceClass = "string",
+  Engine = "string",
+  MasterUsername = "string",
+  MasterUserPassword = "string",
+  DBSecurityGroups = list(
+    "string"
+  ),
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
+  AvailabilityZone = "string",
+  DBSubnetGroupName = "string",
+  PreferredMaintenanceWindow = "string",
+  DBParameterGroupName = "string",
+  BackupRetentionPeriod = 123,
+  PreferredBackupWindow = "string",
+  Port = 123,
+  MultiAZ = TRUE|FALSE,
+  EngineVersion = "string",
+  AutoMinorVersionUpgrade = TRUE|FALSE,
+  LicenseModel = "string",
+  Iops = 123,
+  OptionGroupName = "string",
+  CharacterSetName = "string",
+  PubliclyAccessible = TRUE|FALSE,
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  DBClusterIdentifier = "string",
+  StorageType = "string",
+  TdeCredentialArn = "string",
+  TdeCredentialPassword = "string",
+  StorageEncrypted = TRUE|FALSE,
+  KmsKeyId = "string",
+  Domain = "string",
+  CopyTagsToSnapshot = TRUE|FALSE,
+  MonitoringInterval = 123,
+  MonitoringRoleArn = "string",
+  DomainIAMRoleName = "string",
+  PromotionTier = 123,
+  Timezone = "string",
+  EnableIAMDatabaseAuthentication = TRUE|FALSE,
+  EnablePerformanceInsights = TRUE|FALSE,
+  PerformanceInsightsKMSKeyId = "string",
+  EnableCloudwatchLogsExports = list(
+    "string"
+  )
+)
 }
+}
+

@@ -12,6 +12,8 @@ Describes your account attributes, and creates requests to increase limits befor
 \details{
 This operation is synchronous.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_account_attributes()
 }
+}
+

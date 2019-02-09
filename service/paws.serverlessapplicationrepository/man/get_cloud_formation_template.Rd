@@ -5,10 +5,7 @@
 \alias{get_cloud_formation_template}
 \title{Gets the specified AWS CloudFormation template}
 \usage{
-get_cloud_formation_template(
-  ApplicationId = "string",
-  TemplateId = "string"
-)
+get_cloud_formation_template(ApplicationId, TemplateId)
 }
 \arguments{
 \item{ApplicationId}{[required] The Amazon Resource Name (ARN) of the application.}
@@ -20,6 +17,11 @@ Pattern: [0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-f
 \description{
 Gets the specified AWS CloudFormation template.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_cloud_formation_template(
+  ApplicationId = "string",
+  TemplateId = "string"
+)
 }
+}
+

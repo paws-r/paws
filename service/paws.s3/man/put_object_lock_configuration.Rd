@@ -4,7 +4,25 @@
 \alias{put_object_lock_configuration}
 \title{Places an Object Lock configuration on the specified bucket}
 \usage{
-put_object_lock_configuration(
+put_object_lock_configuration(Bucket, ObjectLockConfiguration = NULL,
+  RequestPayer = NULL, Token = NULL, ContentMD5 = NULL)
+}
+\arguments{
+\item{Bucket}{[required] The bucket whose Object Lock configuration you want to create or replace.}
+
+\item{ObjectLockConfiguration}{The Object Lock configuration that you want to apply to the specified bucket.}
+
+\item{RequestPayer}{}
+
+\item{Token}{}
+
+\item{ContentMD5}{The MD5 hash for the request body.}
+}
+\description{
+Places an Object Lock configuration on the specified bucket. The rule specified in the Object Lock configuration will be applied by default to every new object placed in the specified bucket.
+}
+\section{Accepted Parameters}{
+\preformatted{put_object_lock_configuration(
   Bucket = "string",
   ObjectLockConfiguration = list(
     ObjectLockEnabled = "Enabled",
@@ -21,20 +39,5 @@ put_object_lock_configuration(
   ContentMD5 = "string"
 )
 }
-\arguments{
-\item{Bucket}{[required] The bucket whose Object Lock configuration you want to create or replace.}
-
-\item{ObjectLockConfiguration}{The Object Lock configuration that you want to apply to the specified bucket.}
-
-\item{RequestPayer}{}
-
-\item{Token}{}
-
-\item{ContentMD5}{The MD5 hash for the request body.}
 }
-\description{
-Places an Object Lock configuration on the specified bucket. The rule specified in the Object Lock configuration will be applied by default to every new object placed in the specified bucket.
-}
-\examples{
 
-}

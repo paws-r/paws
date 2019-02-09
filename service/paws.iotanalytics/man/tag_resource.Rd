@@ -4,7 +4,18 @@
 \alias{tag_resource}
 \title{Adds to or modifies the tags of the given resource}
 \usage{
-tag_resource(
+tag_resource(resourceArn, tags)
+}
+\arguments{
+\item{resourceArn}{[required] The ARN of the resource whose tags you want to modify.}
+
+\item{tags}{[required] The new or modified tags for the resource.}
+}
+\description{
+Adds to or modifies the tags of the given resource. Tags are metadata which can be used to manage a resource.
+}
+\section{Accepted Parameters}{
+\preformatted{tag_resource(
   resourceArn = "string",
   tags = list(
     list(
@@ -14,14 +25,5 @@ tag_resource(
   )
 )
 }
-\arguments{
-\item{resourceArn}{[required] The ARN of the resource whose tags will be modified.}
+}
 
-\item{tags}{[required] The new or modified tags for the resource.}
-}
-\description{
-Adds to or modifies the tags of the given resource. Tags are metadata which can be used to manage a resource.
-}
-\examples{
-
-}

@@ -2,20 +2,9 @@
 % Please edit documentation in R/paws.applicationdiscoveryservice_operations.R
 \name{describe_tags}
 \alias{describe_tags}
-\title{Retrieves a list of configuration items that have tags as specified by the key-value pairs, name and value, passed to the optional parameter \code{filters}}
+\title{Retrieves a list of configuration items that have tags as specified by the key-value pairs, name and value, passed to the optional parameter filters}
 \usage{
-describe_tags(
-  filters = list(
-    list(
-      name = "string",
-      values = list(
-        "string"
-      )
-    )
-  ),
-  maxResults = 123,
-  nextToken = "string"
-)
+describe_tags(filters = NULL, maxResults = NULL, nextToken = NULL)
 }
 \arguments{
 \item{filters}{You can filter the list using a \emph{key}-\emph{value} format. You can separate these items by using logical operators. Allowed filters include \code{tagKey}, \code{tagValue}, and \code{configurationId}.}
@@ -37,6 +26,19 @@ There are three valid tag filter names:
 
 Also, all configuration items associated with your user account that have tags can be listed if you call \code{DescribeTags} as is without passing any parameters.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_tags(
+  filters = list(
+    list(
+      name = "string",
+      values = list(
+        "string"
+      )
+    )
+  ),
+  maxResults = 123,
+  nextToken = "string"
+)
 }
+}
+

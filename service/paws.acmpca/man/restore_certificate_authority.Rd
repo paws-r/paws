@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.acmpca_operations.R
 \name{restore_certificate_authority}
 \alias{restore_certificate_authority}
-\title{Restores a certificate authority (CA) that is in the \code{DELETED} state}
+\title{Restores a certificate authority (CA) that is in the DELETED state}
 \usage{
-restore_certificate_authority(
-  CertificateAuthorityArn = "string"
-)
+restore_certificate_authority(CertificateAuthorityArn)
 }
 \arguments{
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called the CreateCertificateAuthority operation. This must be of the form:
@@ -16,6 +14,10 @@ restore_certificate_authority(
 \description{
 Restores a certificate authority (CA) that is in the \code{DELETED} state. You can restore a CA during the period that you defined in the \strong{PermanentDeletionTimeInDays} parameter of the DeleteCertificateAuthority operation. Currently, you can specify 7 to 30 days. If you did not specify a \strong{PermanentDeletionTimeInDays} value, by default you can restore the CA at any time in a 30 day period. You can check the time remaining in the restoration period of a private CA in the \code{DELETED} state by calling the DescribeCertificateAuthority or ListCertificateAuthorities operations. The status of a restored CA is set to its pre-deletion status when the \strong{RestoreCertificateAuthority} operation returns. To change its status to \code{ACTIVE}, call the UpdateCertificateAuthority operation. If the private CA was in the \code{PENDING_CERTIFICATE} state at deletion, you must use the ImportCertificateAuthorityCertificate operation to import a certificate authority into the private CA before it can be activated. You cannot restore a CA after the restoration period has ended.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{restore_certificate_authority(
+  CertificateAuthorityArn = "string"
+)
 }
+}
+

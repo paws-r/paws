@@ -4,9 +4,7 @@
 \alias{delete_subnet_group}
 \title{Deletes a subnet group}
 \usage{
-delete_subnet_group(
-  SubnetGroupName = "string"
-)
+delete_subnet_group(SubnetGroupName)
 }
 \arguments{
 \item{SubnetGroupName}{[required] The name of the subnet group to delete.}
@@ -17,6 +15,10 @@ Deletes a subnet group.
 \details{
 You cannot delete a subnet group if it is associated with any DAX clusters.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_subnet_group(
+  SubnetGroupName = "string"
+)
 }
+}
+

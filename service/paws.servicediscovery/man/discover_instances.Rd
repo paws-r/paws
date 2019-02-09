@@ -4,15 +4,8 @@
 \alias{discover_instances}
 \title{Discovers registered instances for a specified namespace and service}
 \usage{
-discover_instances(
-  NamespaceName = "string",
-  ServiceName = "string",
-  MaxResults = 123,
-  QueryParameters = list(
-    "string"
-  ),
-  HealthStatus = "HEALTHY"|"UNHEALTHY"|"ALL"
-)
+discover_instances(NamespaceName, ServiceName, MaxResults = NULL,
+  QueryParameters = NULL, HealthStatus = NULL)
 }
 \arguments{
 \item{NamespaceName}{[required] The name of the namespace that you specified when you registered the instance.}
@@ -28,6 +21,16 @@ discover_instances(
 \description{
 Discovers registered instances for a specified namespace and service.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{discover_instances(
+  NamespaceName = "string",
+  ServiceName = "string",
+  MaxResults = 123,
+  QueryParameters = list(
+    "string"
+  ),
+  HealthStatus = "HEALTHY"|"UNHEALTHY"|"ALL"
+)
 }
+}
+

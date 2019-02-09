@@ -6,7 +6,8 @@
 \alias{paws.sqs-package}
 \title{paws.sqs: Amazon Simple Queue Service}
 \description{
-Welcome to the *Amazon Simple Queue Service API Reference*.
+Welcome to the *Amazon Simple Queue Service API
+    Reference*.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

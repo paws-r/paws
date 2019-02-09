@@ -4,12 +4,7 @@
 \alias{assign_instance}
 \title{Assign a registered instance to a layer}
 \usage{
-assign_instance(
-  InstanceId = "string",
-  LayerIds = list(
-    "string"
-  )
-)
+assign_instance(InstanceId, LayerIds)
 }
 \arguments{
 \item{InstanceId}{[required] The instance ID.}
@@ -28,6 +23,13 @@ Assign a registered instance to a layer.
 
 \strong{Required Permissions}: To use this action, an AWS Identity and Access Management (IAM) user must have a Manage permissions level for the stack or an attached policy that explicitly grants permissions. For more information on user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{assign_instance(
+  InstanceId = "string",
+  LayerIds = list(
+    "string"
+  )
+)
 }
+}
+

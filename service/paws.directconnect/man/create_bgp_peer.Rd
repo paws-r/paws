@@ -4,16 +4,7 @@
 \alias{create_bgp_peer}
 \title{Creates a BGP peer on the specified virtual interface}
 \usage{
-create_bgp_peer(
-  virtualInterfaceId = "string",
-  newBGPPeer = list(
-    asn = 123,
-    authKey = "string",
-    addressFamily = "ipv4"|"ipv6",
-    amazonAddress = "string",
-    customerAddress = "string"
-  )
-)
+create_bgp_peer(virtualInterfaceId = NULL, newBGPPeer = NULL)
 }
 \arguments{
 \item{virtualInterfaceId}{The ID of the virtual interface.}
@@ -32,6 +23,17 @@ When creating a IPv6 BGP peer, omit the Amazon address and customer address. IPv
 
 For a public virtual interface, the Autonomous System Number (ASN) must be private or already whitelisted for the virtual interface.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_bgp_peer(
+  virtualInterfaceId = "string",
+  newBGPPeer = list(
+    asn = 123,
+    authKey = "string",
+    addressFamily = "ipv4"|"ipv6",
+    amazonAddress = "string",
+    customerAddress = "string"
+  )
+)
 }
+}
+

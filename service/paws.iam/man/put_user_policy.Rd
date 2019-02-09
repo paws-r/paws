@@ -4,11 +4,7 @@
 \alias{put_user_policy}
 \title{Adds or updates an inline policy document that is embedded in the specified IAM user}
 \usage{
-put_user_policy(
-  UserName = "string",
-  PolicyName = "string",
-  PolicyDocument = "string"
-)
+put_user_policy(UserName, PolicyName, PolicyDocument)
 }
 \arguments{
 \item{UserName}{[required] The name of the user to associate the policy with.
@@ -38,12 +34,21 @@ For information about limits on the number of inline policies that you can embed
 
 Because policy documents can be large, you should use POST rather than GET when calling \code{PutUserPolicy}. For general information about using the Query API with IAM, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_UsingQueryAPI.html}{Making Query Requests} in the \emph{IAM User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{put_user_policy(
+  UserName = "string",
+  PolicyName = "string",
+  PolicyDocument = "string"
+)
+}
+}
+
 \examples{
 # The following command attaches a policy to the IAM user named Bob.
-put_user_policy(
+\donttest{put_user_policy(
   PolicyDocument = "{\\"Version\\":\\"2012-10-17\\",\\"Statement\\":{\\"Effect\\":\\"Allow\\",\\"Action\\":\\"*\\",\\"Resource\\":\\"*\\"}}",
   PolicyName = "AllAccessPolicy",
   UserName = "Bob"
-)
+)}
 
 }

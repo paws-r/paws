@@ -4,16 +4,18 @@
 \alias{delete_application}
 \title{Deletes an application}
 \usage{
-delete_application(
-  applicationName = "string"
-)
+delete_application(applicationName)
 }
 \arguments{
-\item{applicationName}{[required] The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.}
+\item{applicationName}{[required] The name of an AWS CodeDeploy application associated with the IAM user or AWS account.}
 }
 \description{
 Deletes an application.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_application(
+  applicationName = "string"
+)
 }
+}
+

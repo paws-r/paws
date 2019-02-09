@@ -4,7 +4,23 @@
 \alias{describe_event_aggregates}
 \title{Returns the number of events of each event type (issue, scheduled change, and account notification)}
 \usage{
-describe_event_aggregates(
+describe_event_aggregates(filter = NULL, aggregateField,
+  maxResults = NULL, nextToken = NULL)
+}
+\arguments{
+\item{filter}{Values to narrow the results returned.}
+
+\item{aggregateField}{[required] The only currently supported value is \code{eventTypeCategory}.}
+
+\item{maxResults}{The maximum number of items to return in one batch, between 10 and 100, inclusive.}
+
+\item{nextToken}{If the results of a search are large, only a portion of the results are returned, and a \code{nextToken} pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.}
+}
+\description{
+Returns the number of events of each event type (issue, scheduled change, and account notification). If no filter is specified, the counts of all events in each category are returned.
+}
+\section{Accepted Parameters}{
+\preformatted{describe_event_aggregates(
   filter = list(
     eventArns = list(
       "string"
@@ -62,18 +78,5 @@ describe_event_aggregates(
   nextToken = "string"
 )
 }
-\arguments{
-\item{filter}{Values to narrow the results returned.}
-
-\item{aggregateField}{[required] The only currently supported value is \code{eventTypeCategory}.}
-
-\item{maxResults}{The maximum number of items to return in one batch, between 10 and 100, inclusive.}
-
-\item{nextToken}{If the results of a search are large, only a portion of the results are returned, and a \code{nextToken} pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.}
 }
-\description{
-Returns the number of events of each event type (issue, scheduled change, and account notification). If no filter is specified, the counts of all events in each category are returned.
-}
-\examples{
 
-}

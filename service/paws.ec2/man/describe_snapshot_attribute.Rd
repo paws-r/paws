@@ -4,11 +4,7 @@
 \alias{describe_snapshot_attribute}
 \title{Describes the specified attribute of the specified snapshot}
 \usage{
-describe_snapshot_attribute(
-  Attribute = "productCodes"|"createVolumePermission",
-  SnapshotId = "string",
-  DryRun = TRUE|FALSE
-)
+describe_snapshot_attribute(Attribute, SnapshotId, DryRun = NULL)
 }
 \arguments{
 \item{Attribute}{[required] The snapshot attribute you would like to view.}
@@ -21,14 +17,23 @@ describe_snapshot_attribute(
 Describes the specified attribute of the specified snapshot. You can specify only one attribute at a time.
 }
 \details{
-For more information about EBS snapshots, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html}{Amazon EBS Snapshots} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information about EBS snapshots, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html}{Amazon EBS Snapshots} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_snapshot_attribute(
+  Attribute = "productCodes"|"createVolumePermission",
+  SnapshotId = "string",
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example describes the ``createVolumePermission`` attribute on a
 # snapshot with the snapshot ID of ``snap-066877671789bd71b``.
-describe_snapshot_attribute(
+\donttest{describe_snapshot_attribute(
   Attribute = "createVolumePermission",
   SnapshotId = "snap-066877671789bd71b"
-)
+)}
 
 }

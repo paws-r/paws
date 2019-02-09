@@ -4,23 +4,8 @@
 \alias{describe_availability_zones}
 \title{Describes one or more of the Availability Zones that are available to you}
 \usage{
-describe_availability_zones(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  ZoneNames = list(
-    "string"
-  ),
-  ZoneIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
+describe_availability_zones(Filters = NULL, ZoneNames = NULL,
+  ZoneIds = NULL, DryRun = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -42,11 +27,32 @@ describe_availability_zones(
 Describes one or more of the Availability Zones that are available to you. The results include zones only for the region you're currently using. If there is an event impacting an Availability Zone, you can use this request to view the state and any provided message for that Availability Zone.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html}{Regions and Availability Zones} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html}{Regions and Availability Zones} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_availability_zones(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  ZoneNames = list(
+    "string"
+  ),
+  ZoneIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example describes the Availability Zones that are available to you.
 # The response includes Availability Zones only for the current region.
-describe_availability_zones()
+\donttest{describe_availability_zones()}
 
 }

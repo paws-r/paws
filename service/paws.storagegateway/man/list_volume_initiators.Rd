@@ -4,9 +4,7 @@
 \alias{list_volume_initiators}
 \title{Lists iSCSI initiators that are connected to a volume}
 \usage{
-list_volume_initiators(
-  VolumeARN = "string"
-)
+list_volume_initiators(VolumeARN)
 }
 \arguments{
 \item{VolumeARN}{[required] The Amazon Resource Name (ARN) of the volume. Use the ListVolumes operation to return a list of gateway volumes for the gateway.}
@@ -14,6 +12,10 @@ list_volume_initiators(
 \description{
 Lists iSCSI initiators that are connected to a volume. You can use this operation to determine whether a volume is being used or not. This operation is only supported in the cached volume and stored volume gateway types.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_volume_initiators(
+  VolumeARN = "string"
+)
 }
+}
+

@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.cloudhsm_operations.R
 \name{delete_luna_client}
 \alias{delete_luna_client}
-\title{This is documentation for \strong{AWS CloudHSM Classic}}
+\title{This is documentation for AWS CLOUDHSM CLASSIC}
 \usage{
-delete_luna_client(
-  ClientArn = "string"
-)
+delete_luna_client(ClientArn)
 }
 \arguments{
 \item{ClientArn}{[required] The ARN of the client to delete.}
@@ -19,6 +17,10 @@ This is documentation for \strong{AWS CloudHSM Classic}. For more information, s
 
 Deletes a client.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_luna_client(
+  ClientArn = "string"
+)
 }
+}
+

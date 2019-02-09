@@ -4,10 +4,7 @@
 \alias{terminate_job}
 \title{Terminates a job in a job queue}
 \usage{
-terminate_job(
-  jobId = "string",
-  reason = "string"
-)
+terminate_job(jobId, reason)
 }
 \arguments{
 \item{jobId}{[required] The AWS Batch job ID of the job to terminate.}
@@ -17,11 +14,19 @@ terminate_job(
 \description{
 Terminates a job in a job queue. Jobs that are in the \code{STARTING} or \code{RUNNING} state are terminated, which causes them to transition to \code{FAILED}. Jobs that have not progressed to the \code{STARTING} state are cancelled.
 }
+\section{Accepted Parameters}{
+\preformatted{terminate_job(
+  jobId = "string",
+  reason = "string"
+)
+}
+}
+
 \examples{
 # This example terminates a job with the specified job ID.
-terminate_job(
+\donttest{terminate_job(
   jobId = "61e743ed-35e4-48da-b2de-5c8333821c84",
   reason = "Terminating job."
-)
+)}
 
 }

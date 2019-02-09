@@ -4,9 +4,7 @@
 \alias{delete_algorithm}
 \title{Removes the specified algorithm from your account}
 \usage{
-delete_algorithm(
-  AlgorithmName = "string"
-)
+delete_algorithm(AlgorithmName)
 }
 \arguments{
 \item{AlgorithmName}{[required] The name of the algorithm to delete.}
@@ -14,6 +12,10 @@ delete_algorithm(
 \description{
 Removes the specified algorithm from your account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_algorithm(
+  AlgorithmName = "string"
+)
 }
+}
+

@@ -17,6 +17,6 @@ Even if a policy type is shown as available in the organization, it can be disab
 \examples{
 # The following example shows how to request information about the current
 # user's organization:/n/n
-describe_organization()
+\donttest{describe_organization()}
 
 }

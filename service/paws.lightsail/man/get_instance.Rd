@@ -4,9 +4,7 @@
 \alias{get_instance}
 \title{Returns information about a specific Amazon Lightsail instance, which is a virtual private server}
 \usage{
-get_instance(
-  instanceName = "string"
-)
+get_instance(instanceName)
 }
 \arguments{
 \item{instanceName}{[required] The name of the instance.}
@@ -14,6 +12,10 @@ get_instance(
 \description{
 Returns information about a specific Amazon Lightsail instance, which is a virtual private server.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_instance(
+  instanceName = "string"
+)
 }
+}
+

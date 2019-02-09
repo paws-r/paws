@@ -4,24 +4,8 @@
 \alias{allocate_public_virtual_interface}
 \title{Provisions a public virtual interface to be owned by the specified AWS account}
 \usage{
-allocate_public_virtual_interface(
-  connectionId = "string",
-  ownerAccount = "string",
-  newPublicVirtualInterfaceAllocation = list(
-    virtualInterfaceName = "string",
-    vlan = 123,
-    asn = 123,
-    authKey = "string",
-    amazonAddress = "string",
-    customerAddress = "string",
-    addressFamily = "ipv4"|"ipv6",
-    routeFilterPrefixes = list(
-      list(
-        cidr = "string"
-      )
-    )
-  )
-)
+allocate_public_virtual_interface(connectionId, ownerAccount,
+  newPublicVirtualInterfaceAllocation)
 }
 \arguments{
 \item{connectionId}{[required] The ID of the connection on which the public virtual interface is provisioned.}
@@ -40,6 +24,25 @@ Virtual interfaces created using this function must be confirmed by the owner us
 
 When creating an IPv6 public virtual interface, omit the Amazon address and customer address. IPv6 addresses are automatically assigned from the Amazon pool of IPv6 addresses; you cannot specify custom IPv6 addresses.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{allocate_public_virtual_interface(
+  connectionId = "string",
+  ownerAccount = "string",
+  newPublicVirtualInterfaceAllocation = list(
+    virtualInterfaceName = "string",
+    vlan = 123,
+    asn = 123,
+    authKey = "string",
+    amazonAddress = "string",
+    customerAddress = "string",
+    addressFamily = "ipv4"|"ipv6",
+    routeFilterPrefixes = list(
+      list(
+        cidr = "string"
+      )
+    )
+  )
+)
 }
+}
+

@@ -4,11 +4,7 @@
 \alias{describe_elasticsearch_domains}
 \title{Returns domain configuration information about the specified Elasticsearch domains, including the domain ID, domain endpoint, and domain ARN}
 \usage{
-describe_elasticsearch_domains(
-  DomainNames = list(
-    "string"
-  )
-)
+describe_elasticsearch_domains(DomainNames)
 }
 \arguments{
 \item{DomainNames}{[required] The Elasticsearch domains for which you want information.}
@@ -16,6 +12,12 @@ describe_elasticsearch_domains(
 \description{
 Returns domain configuration information about the specified Elasticsearch domains, including the domain ID, domain endpoint, and domain ARN.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_elasticsearch_domains(
+  DomainNames = list(
+    "string"
+  )
+)
 }
+}
+

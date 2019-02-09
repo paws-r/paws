@@ -4,9 +4,7 @@
 \alias{describe_maintenance_start_time}
 \title{Returns your gateway's weekly maintenance start time including the day and time of the week}
 \usage{
-describe_maintenance_start_time(
-  GatewayARN = "string"
-)
+describe_maintenance_start_time(GatewayARN)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -14,11 +12,18 @@ describe_maintenance_start_time(
 \description{
 Returns your gateway's weekly maintenance start time including the day and time of the week. Note that values are in terms of the gateway's time zone.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_maintenance_start_time(
+  GatewayARN = "string"
+)
+}
+}
+
 \examples{
 # Returns your gateway's weekly maintenance start time including the day
 # and time of the week.
-describe_maintenance_start_time(
+\donttest{describe_maintenance_start_time(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)
+)}
 
 }

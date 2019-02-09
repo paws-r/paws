@@ -4,12 +4,8 @@
 \alias{list_routes}
 \title{Returns a list of existing routes in a service mesh}
 \usage{
-list_routes(
-  limit = 123,
-  meshName = "string",
-  nextToken = "string",
-  virtualRouterName = "string"
-)
+list_routes(limit = NULL, meshName, nextToken = NULL,
+  virtualRouterName)
 }
 \arguments{
 \item{limit}{The maximum number of mesh results returned by \code{ListRoutes} in paginated output. When this parameter is used, \code{ListRoutes} only returns \code{limit} results in a single page along with a \code{nextToken} response element. The remaining results of the initial request can be seen by sending another \code{ListRoutes} request with the returned \code{nextToken} value. This value can be between 1 and 100. If this parameter is not used, then \code{ListRoutes} returns up to 100 results and a \code{nextToken} value if applicable.}
@@ -23,6 +19,13 @@ list_routes(
 \description{
 Returns a list of existing routes in a service mesh.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_routes(
+  limit = 123,
+  meshName = "string",
+  nextToken = "string",
+  virtualRouterName = "string"
+)
 }
+}
+

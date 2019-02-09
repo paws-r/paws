@@ -4,11 +4,8 @@
 \alias{get_function_definition_version}
 \title{Retrieves information about a Lambda function definition version, including which Lambda functions are included in the version and their configurations}
 \usage{
-get_function_definition_version(
-  FunctionDefinitionId = "string",
-  FunctionDefinitionVersionId = "string",
-  NextToken = "string"
-)
+get_function_definition_version(FunctionDefinitionId,
+  FunctionDefinitionVersionId, NextToken = NULL)
 }
 \arguments{
 \item{FunctionDefinitionId}{[required] The ID of the Lambda function definition.}
@@ -20,6 +17,12 @@ get_function_definition_version(
 \description{
 Retrieves information about a Lambda function definition version, including which Lambda functions are included in the version and their configurations.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_function_definition_version(
+  FunctionDefinitionId = "string",
+  FunctionDefinitionVersionId = "string",
+  NextToken = "string"
+)
 }
+}
+

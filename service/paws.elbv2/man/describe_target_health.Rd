@@ -4,7 +4,18 @@
 \alias{describe_target_health}
 \title{Describes the health of the specified targets or all of your targets}
 \usage{
-describe_target_health(
+describe_target_health(TargetGroupArn, Targets = NULL)
+}
+\arguments{
+\item{TargetGroupArn}{[required] The Amazon Resource Name (ARN) of the target group.}
+
+\item{Targets}{The targets.}
+}
+\description{
+Describes the health of the specified targets or all of your targets.
+}
+\section{Accepted Parameters}{
+\preformatted{describe_target_health(
   TargetGroupArn = "string",
   Targets = list(
     list(
@@ -15,25 +26,19 @@ describe_target_health(
   )
 )
 }
-\arguments{
-\item{TargetGroupArn}{[required] The Amazon Resource Name (ARN) of the target group.}
+}
 
-\item{Targets}{The targets.}
-}
-\description{
-Describes the health of the specified targets or all of your targets.
-}
 \examples{
 # This example describes the health of the targets for the specified
 # target group. One target is healthy but the other is not specified in an
 # action, so it can't receive traffic from the load balancer.
-describe_target_health(
+\donttest{describe_target_health(
   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067"
-)
+)}
 
 # This example describes the health of the specified target. This target
 # is healthy.
-describe_target_health(
+\donttest{describe_target_health(
   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067",
   Targets = list(
     list(
@@ -41,6 +46,6 @@ describe_target_health(
       Port = 80L
     )
   )
-)
+)}
 
 }

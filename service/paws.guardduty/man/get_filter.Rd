@@ -4,10 +4,7 @@
 \alias{get_filter}
 \title{Returns the details of the filter specified by the filter name}
 \usage{
-get_filter(
-  DetectorId = "string",
-  FilterName = "string"
-)
+get_filter(DetectorId, FilterName)
 }
 \arguments{
 \item{DetectorId}{[required] The detector ID that specifies the GuardDuty service where you want to list the details of the specified filter.}
@@ -17,6 +14,11 @@ get_filter(
 \description{
 Returns the details of the filter specified by the filter name.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_filter(
+  DetectorId = "string",
+  FilterName = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{start_db_instance}
 \title{Starts an Amazon RDS DB instance that was stopped using the AWS console, the stop-db-instance AWS CLI command, or the StopDBInstance action}
 \usage{
-start_db_instance(
-  DBInstanceIdentifier = "string"
-)
+start_db_instance(DBInstanceIdentifier)
 }
 \arguments{
 \item{DBInstanceIdentifier}{[required] The user-supplied instance identifier.}
@@ -19,6 +17,10 @@ For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/User
 
 This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For Aurora DB clusters, use StartDBCluster instead.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_db_instance(
+  DBInstanceIdentifier = "string"
+)
 }
+}
+

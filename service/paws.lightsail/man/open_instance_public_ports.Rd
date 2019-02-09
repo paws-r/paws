@@ -4,14 +4,7 @@
 \alias{open_instance_public_ports}
 \title{Adds public ports to an Amazon Lightsail instance}
 \usage{
-open_instance_public_ports(
-  portInfo = list(
-    fromPort = 123,
-    toPort = 123,
-    protocol = "tcp"|"all"|"udp"
-  ),
-  instanceName = "string"
-)
+open_instance_public_ports(portInfo, instanceName)
 }
 \arguments{
 \item{portInfo}{[required] An array of key-value pairs containing information about the port mappings.}
@@ -24,6 +17,15 @@ Adds public ports to an Amazon Lightsail instance.
 \details{
 The \code{open instance public ports} operation supports tag-based access control via resource tags applied to the resource identified by instanceName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{open_instance_public_ports(
+  portInfo = list(
+    fromPort = 123,
+    toPort = 123,
+    protocol = "tcp"|"all"|"udp"
+  ),
+  instanceName = "string"
+)
 }
+}
+

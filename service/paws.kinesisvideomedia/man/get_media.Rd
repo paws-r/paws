@@ -4,16 +4,7 @@
 \alias{get_media}
 \title{Use this API to retrieve media content from a Kinesis video stream}
 \usage{
-get_media(
-  StreamName = "string",
-  StreamARN = "string",
-  StartSelector = list(
-    StartSelectorType = "FRAGMENT_NUMBER"|"SERVER_TIMESTAMP"|"PRODUCER_TIMESTAMP"|"NOW"|"EARLIEST"|"CONTINUATION_TOKEN",
-    AfterFragmentNumber = "string",
-    StartTimestamp = as.POSIXct("2015-01-01"),
-    ContinuationToken = "string"
-  )
-)
+get_media(StreamName = NULL, StreamARN = NULL, StartSelector)
 }
 \arguments{
 \item{StreamName}{The Kinesis video stream name from where you want to get the media content. If you don't specify the \code{streamName}, you must specify the \code{streamARN}.}
@@ -36,6 +27,17 @@ The following limits apply when using the \code{GetMedia} API:
 \item Kinesis Video Streams sends media data at a rate of up to 25 megabytes per second (or 200 megabits per second) during a \code{GetMedia} session.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_media(
+  StreamName = "string",
+  StreamARN = "string",
+  StartSelector = list(
+    StartSelectorType = "FRAGMENT_NUMBER"|"SERVER_TIMESTAMP"|"PRODUCER_TIMESTAMP"|"NOW"|"EARLIEST"|"CONTINUATION_TOKEN",
+    AfterFragmentNumber = "string",
+    StartTimestamp = as.POSIXct("2015-01-01"),
+    ContinuationToken = "string"
+  )
+)
 }
+}
+

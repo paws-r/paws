@@ -4,10 +4,7 @@
 \alias{attach_policy}
 \title{Attaches a policy to a root, an organizational unit (OU), or an individual account}
 \usage{
-attach_policy(
-  PolicyId = "string",
-  TargetId = "string"
-)
+attach_policy(PolicyId, TargetId)
 }
 \arguments{
 \item{PolicyId}{[required] The unique identifier (ID) of the policy that you want to attach to the target. You can get the ID for the policy by calling the ListPolicies operation.
@@ -42,21 +39,29 @@ For more information about how Organizations policies permissions work, see \hre
 
 This operation can be called only from the organization's master account.
 }
+\section{Accepted Parameters}{
+\preformatted{attach_policy(
+  PolicyId = "string",
+  TargetId = "string"
+)
+}
+}
+
 \examples{
 # The following example shows how to attach a service control policy (SCP)
 # to an OU:
 # 
-attach_policy(
+\donttest{attach_policy(
   PolicyId = "p-examplepolicyid111",
   TargetId = "ou-examplerootid111-exampleouid111"
-)
+)}
 
 # The following example shows how to attach a service control policy (SCP)
 # to an account:
 # 
-attach_policy(
+\donttest{attach_policy(
   PolicyId = "p-examplepolicyid111",
   TargetId = "333333333333"
-)
+)}
 
 }

@@ -4,7 +4,18 @@
 \alias{batch_get_application_revisions}
 \title{Gets information about one or more application revisions}
 \usage{
-batch_get_application_revisions(
+batch_get_application_revisions(applicationName, revisions)
+}
+\arguments{
+\item{applicationName}{[required] The name of an AWS CodeDeploy application about which to get revision information.}
+
+\item{revisions}{[required] Information to get about the application revisions, including type and location.}
+}
+\description{
+Gets information about one or more application revisions.
+}
+\section{Accepted Parameters}{
+\preformatted{batch_get_application_revisions(
   applicationName = "string",
   revisions = list(
     list(
@@ -32,14 +43,5 @@ batch_get_application_revisions(
   )
 )
 }
-\arguments{
-\item{applicationName}{[required] The name of an AWS CodeDeploy application about which to get revision information.}
+}
 
-\item{revisions}{[required] Information to get about the application revisions, including type and location.}
-}
-\description{
-Gets information about one or more application revisions.
-}
-\examples{
-
-}

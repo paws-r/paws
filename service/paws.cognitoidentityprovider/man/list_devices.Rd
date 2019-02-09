@@ -4,11 +4,7 @@
 \alias{list_devices}
 \title{Lists the devices}
 \usage{
-list_devices(
-  AccessToken = "string",
-  Limit = 123,
-  PaginationToken = "string"
-)
+list_devices(AccessToken, Limit = NULL, PaginationToken = NULL)
 }
 \arguments{
 \item{AccessToken}{[required] The access tokens for the request to list devices.}
@@ -20,6 +16,12 @@ list_devices(
 \description{
 Lists the devices.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_devices(
+  AccessToken = "string",
+  Limit = 123,
+  PaginationToken = "string"
+)
 }
+}
+

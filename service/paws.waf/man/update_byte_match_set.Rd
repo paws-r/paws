@@ -4,24 +4,7 @@
 \alias{update_byte_match_set}
 \title{Inserts or deletes ByteMatchTuple objects (filters) in a ByteMatchSet}
 \usage{
-update_byte_match_set(
-  ByteMatchSetId = "string",
-  ChangeToken = "string",
-  Updates = list(
-    list(
-      Action = "INSERT"|"DELETE",
-      ByteMatchTuple = list(
-        FieldToMatch = list(
-          Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
-          Data = "string"
-        ),
-        TargetString = raw,
-        TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
-        PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
-      )
-    )
-  )
-)
+update_byte_match_set(ByteMatchSetId, ChangeToken, Updates)
 }
 \arguments{
 \item{ByteMatchSetId}{[required] The \code{ByteMatchSetId} of the ByteMatchSet that you want to update. \code{ByteMatchSetId} is returned by CreateByteMatchSet and by ListByteMatchSets.}
@@ -58,10 +41,32 @@ To create and configure a \code{ByteMatchSet}, perform the following steps:
 
 For more information about how to use the AWS WAF API to allow or block HTTP requests, see the \href{http://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{update_byte_match_set(
+  ByteMatchSetId = "string",
+  ChangeToken = "string",
+  Updates = list(
+    list(
+      Action = "INSERT"|"DELETE",
+      ByteMatchTuple = list(
+        FieldToMatch = list(
+          Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
+          Data = "string"
+        ),
+        TargetString = raw,
+        TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
+        PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
+      )
+    )
+  )
+)
+}
+}
+
 \examples{
 # The following example deletes a ByteMatchTuple object (filters) in an
 # byte match set with the ID exampleIDs3t-46da-4fdb-b8d5-abc321j569j5.
-update_byte_match_set(
+\donttest{update_byte_match_set(
   ByteMatchSetId = "exampleIDs3t-46da-4fdb-b8d5-abc321j569j5",
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   Updates = list(
@@ -78,6 +83,6 @@ update_byte_match_set(
       )
     )
   )
-)
+)}
 
 }

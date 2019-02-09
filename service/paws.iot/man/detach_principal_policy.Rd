@@ -4,10 +4,7 @@
 \alias{detach_principal_policy}
 \title{Removes the specified policy from the specified certificate}
 \usage{
-detach_principal_policy(
-  policyName = "string",
-  principal = "string"
-)
+detach_principal_policy(policyName, principal)
 }
 \arguments{
 \item{policyName}{[required] The name of the policy to detach.}
@@ -22,6 +19,11 @@ Removes the specified policy from the specified certificate.
 \details{
 \strong{Note:} This API is deprecated. Please use DetachPolicy instead.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{detach_principal_policy(
+  policyName = "string",
+  principal = "string"
+)
 }
+}
+

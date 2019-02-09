@@ -4,15 +4,7 @@
 \alias{add_tags}
 \title{Adds or modifies tags for the specified pipeline}
 \usage{
-add_tags(
-  pipelineId = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
+add_tags(pipelineId, tags)
 }
 \arguments{
 \item{pipelineId}{[required] The ID of the pipeline.}
@@ -22,6 +14,16 @@ add_tags(
 \description{
 Adds or modifies tags for the specified pipeline.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{add_tags(
+  pipelineId = "string",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
 }
+}
+

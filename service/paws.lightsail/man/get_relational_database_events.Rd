@@ -4,11 +4,8 @@
 \alias{get_relational_database_events}
 \title{Returns a list of events for a specific database in Amazon Lightsail}
 \usage{
-get_relational_database_events(
-  relationalDatabaseName = "string",
-  durationInMinutes = 123,
-  pageToken = "string"
-)
+get_relational_database_events(relationalDatabaseName,
+  durationInMinutes = NULL, pageToken = NULL)
 }
 \arguments{
 \item{relationalDatabaseName}{[required] The name of the database from which to get events.}
@@ -24,6 +21,12 @@ The minimum is 1 and the maximum is 14 days (20160 minutes).}
 \description{
 Returns a list of events for a specific database in Amazon Lightsail.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_relational_database_events(
+  relationalDatabaseName = "string",
+  durationInMinutes = 123,
+  pageToken = "string"
+)
 }
+}
+

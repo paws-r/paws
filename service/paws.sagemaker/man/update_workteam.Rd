@@ -4,7 +4,21 @@
 \alias{update_workteam}
 \title{Updates an existing work team with new member definitions or description}
 \usage{
-update_workteam(
+update_workteam(WorkteamName, MemberDefinitions = NULL,
+  Description = NULL)
+}
+\arguments{
+\item{WorkteamName}{[required] The name of the work team to update.}
+
+\item{MemberDefinitions}{A list of \code{MemberDefinition} objects that contain the updated work team members.}
+
+\item{Description}{An updated description for the work team.}
+}
+\description{
+Updates an existing work team with new member definitions or description.
+}
+\section{Accepted Parameters}{
+\preformatted{update_workteam(
   WorkteamName = "string",
   MemberDefinitions = list(
     list(
@@ -18,16 +32,5 @@ update_workteam(
   Description = "string"
 )
 }
-\arguments{
-\item{WorkteamName}{[required] The name of the work team to update.}
-
-\item{MemberDefinitions}{A list of \code{MemberDefinition} objects that contain the updated work team members.}
-
-\item{Description}{An updated description for the work team.}
 }
-\description{
-Updates an existing work team with new member definitions or description.
-}
-\examples{
 
-}

@@ -4,11 +4,7 @@
 \alias{create_resource}
 \title{Creates a Resource resource}
 \usage{
-create_resource(
-  restApiId = "string",
-  parentId = "string",
-  pathPart = "string"
-)
+create_resource(restApiId, parentId, pathPart)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -20,6 +16,12 @@ create_resource(
 \description{
 Creates a Resource resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_resource(
+  restApiId = "string",
+  parentId = "string",
+  pathPart = "string"
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{delete_receipt_rule}
 \title{Deletes the specified receipt rule}
 \usage{
-delete_receipt_rule(
-  RuleSetName = "string",
-  RuleName = "string"
-)
+delete_receipt_rule(RuleSetName, RuleName)
 }
 \arguments{
 \item{RuleSetName}{[required] The name of the receipt rule set that contains the receipt rule to delete.}
@@ -22,11 +19,19 @@ For information about managing receipt rules, see the \href{http://docs.aws.amaz
 
 You can execute this operation no more than once per second.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_receipt_rule(
+  RuleSetName = "string",
+  RuleName = "string"
+)
+}
+}
+
 \examples{
 # The following example deletes a receipt rule:
-delete_receipt_rule(
+\donttest{delete_receipt_rule(
   RuleName = "MyRule",
   RuleSetName = "MyRuleSet"
-)
+)}
 
 }

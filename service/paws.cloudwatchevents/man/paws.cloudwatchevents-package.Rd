@@ -6,12 +6,12 @@
 \alias{paws.cloudwatchevents-package}
 \title{paws.cloudwatchevents: Amazon CloudWatch Events}
 \description{
-Amazon CloudWatch Events helps you to respond to state
-changes in your AWS resources.  When your resources change state, they
-automatically send events into an event stream.  You can create rules
-that match selected events in the stream and route them to targets to
-take action.  You can also use rules to take action on a predetermined
-schedule.
+Amazon CloudWatch Events helps you to respond to
+    state changes in your AWS resources.  When your resources change
+    state, they automatically send events into an event stream.  You can
+    create rules that match selected events in the stream and route them
+    to targets to take action.  You can also use rules to take action on a
+    predetermined schedule.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

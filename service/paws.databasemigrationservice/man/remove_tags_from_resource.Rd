@@ -4,12 +4,7 @@
 \alias{remove_tags_from_resource}
 \title{Removes metadata tags from a DMS resource}
 \usage{
-remove_tags_from_resource(
-  ResourceArn = "string",
-  TagKeys = list(
-    "string"
-  )
-)
+remove_tags_from_resource(ResourceArn, TagKeys)
 }
 \arguments{
 \item{ResourceArn}{[required] >The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to be removed from.}
@@ -19,11 +14,21 @@ remove_tags_from_resource(
 \description{
 Removes metadata tags from a DMS resource.
 }
+\section{Accepted Parameters}{
+\preformatted{remove_tags_from_resource(
+  ResourceArn = "string",
+  TagKeys = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # Removes metadata tags from an AWS DMS resource.
-remove_tags_from_resource(
+\donttest{remove_tags_from_resource(
   ResourceArn = "arn:aws:dms:us-east-1:123456789012:endpoint:ASXWXJZLNWNT5HTWCGV2BUJQ7E",
   TagKeys = list()
-)
+)}
 
 }

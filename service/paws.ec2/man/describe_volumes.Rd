@@ -4,22 +4,8 @@
 \alias{describe_volumes}
 \title{Describes the specified EBS volumes}
 \usage{
-describe_volumes(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  VolumeIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE,
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_volumes(Filters = NULL, VolumeIds = NULL, DryRun = NULL,
+  MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -55,16 +41,36 @@ Describes the specified EBS volumes.
 \details{
 If you are describing a long list of volumes, you can paginate the output to make the list more manageable. The \code{MaxResults} parameter sets the maximum number of results returned in a single page. If the list of results exceeds your \code{MaxResults} value, then that number of results is returned along with a \code{NextToken} value that can be passed to a subsequent \code{DescribeVolumes} request to retrieve the remaining results.
 
-For more information about EBS volumes, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumes.html}{Amazon EBS Volumes} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information about EBS volumes, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumes.html}{Amazon EBS Volumes} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_volumes(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  VolumeIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE,
+  MaxResults = 123,
+  NextToken = "string"
+)
+}
+}
+
 \examples{
 # This example describes all of your volumes in the default region.
-describe_volumes()
+\donttest{describe_volumes()}
 
 # This example describes all volumes that are both attached to the
 # instance with the ID i-1234567890abcdef0 and set to delete when the
 # instance terminates.
-describe_volumes(
+\donttest{describe_volumes(
   Filters = list(
     list(
       Name = "attachment.instance-id",
@@ -79,6 +85,6 @@ describe_volumes(
       )
     )
   )
-)
+)}
 
 }

@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.ec2_operations.R
 \name{cancel_capacity_reservation}
 \alias{cancel_capacity_reservation}
-\title{Cancels the specified Capacity Reservation, releases the reserved capacity, and changes the Capacity Reservation's state to \code{cancelled}}
+\title{Cancels the specified Capacity Reservation, releases the reserved capacity, and changes the Capacity Reservation's state to cancelled}
 \usage{
-cancel_capacity_reservation(
-  CapacityReservationId = "string",
-  DryRun = TRUE|FALSE
-)
+cancel_capacity_reservation(CapacityReservationId, DryRun = NULL)
 }
 \arguments{
 \item{CapacityReservationId}{[required] The ID of the Capacity Reservation to be cancelled.}
@@ -20,6 +17,11 @@ Cancels the specified Capacity Reservation, releases the reserved capacity, and 
 \details{
 Instances running in the reserved capacity continue running until you stop them. Stopped instances that target the Capacity Reservation can no longer launch. Modify these instances to either target a different Capacity Reservation, launch On-Demand Instance capacity, or run in any open Capacity Reservation that has matching attributes and sufficient capacity.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{cancel_capacity_reservation(
+  CapacityReservationId = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

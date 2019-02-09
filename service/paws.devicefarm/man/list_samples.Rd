@@ -4,10 +4,7 @@
 \alias{list_samples}
 \title{Gets information about samples, given an AWS Device Farm job ARN}
 \usage{
-list_samples(
-  arn = "string",
-  nextToken = "string"
-)
+list_samples(arn, nextToken = NULL)
 }
 \arguments{
 \item{arn}{[required] The Amazon Resource Name (ARN) of the job used to list samples.}
@@ -17,12 +14,20 @@ list_samples(
 \description{
 Gets information about samples, given an AWS Device Farm job ARN.
 }
+\section{Accepted Parameters}{
+\preformatted{list_samples(
+  arn = "string",
+  nextToken = "string"
+)
+}
+}
+
 \examples{
 # The following example returns information about samples, given a
 # specific Device Farm project.
-list_samples(
+\donttest{list_samples(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
-)
+)}
 
 }

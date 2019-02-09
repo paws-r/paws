@@ -4,19 +4,11 @@
 \alias{create_trail}
 \title{Creates a trail that specifies the settings for delivery of log data to an Amazon S3 bucket}
 \usage{
-create_trail(
-  Name = "string",
-  S3BucketName = "string",
-  S3KeyPrefix = "string",
-  SnsTopicName = "string",
-  IncludeGlobalServiceEvents = TRUE|FALSE,
-  IsMultiRegionTrail = TRUE|FALSE,
-  EnableLogFileValidation = TRUE|FALSE,
-  CloudWatchLogsLogGroupArn = "string",
-  CloudWatchLogsRoleArn = "string",
-  KmsKeyId = "string",
-  IsOrganizationTrail = TRUE|FALSE
-)
+create_trail(Name, S3BucketName, S3KeyPrefix = NULL,
+  SnsTopicName = NULL, IncludeGlobalServiceEvents = NULL,
+  IsMultiRegionTrail = NULL, EnableLogFileValidation = NULL,
+  CloudWatchLogsLogGroupArn = NULL, CloudWatchLogsRoleArn = NULL,
+  KmsKeyId = NULL, IsOrganizationTrail = NULL)
 }
 \arguments{
 \item{Name}{[required] Specifies the name of the trail. The name must meet the following requirements:
@@ -61,6 +53,20 @@ Examples:
 \description{
 Creates a trail that specifies the settings for delivery of log data to an Amazon S3 bucket. A maximum of five trails can exist in a region, irrespective of the region in which they were created.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_trail(
+  Name = "string",
+  S3BucketName = "string",
+  S3KeyPrefix = "string",
+  SnsTopicName = "string",
+  IncludeGlobalServiceEvents = TRUE|FALSE,
+  IsMultiRegionTrail = TRUE|FALSE,
+  EnableLogFileValidation = TRUE|FALSE,
+  CloudWatchLogsLogGroupArn = "string",
+  CloudWatchLogsRoleArn = "string",
+  KmsKeyId = "string",
+  IsOrganizationTrail = TRUE|FALSE
+)
 }
+}
+

@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.lexmodelbuildingservice_operations.R
 \name{create_intent_version}
 \alias{create_intent_version}
-\title{Creates a new version of an intent based on the \code{$LATEST} version of the intent}
+\title{Creates a new version of an intent based on the $LATEST version of the intent}
 \usage{
-create_intent_version(
-  name = "string",
-  checksum = "string"
-)
+create_intent_version(name, checksum = NULL)
 }
 \arguments{
 \item{name}{[required] The name of the intent that you want to create a new version of. The name is case sensitive.}
@@ -24,6 +21,11 @@ When you create a version of an intent, Amazon Lex sets the version to 1. Subseq
 
 This operation requires permissions to perform the \code{lex:CreateIntentVersion} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_intent_version(
+  name = "string",
+  checksum = "string"
+)
 }
+}
+

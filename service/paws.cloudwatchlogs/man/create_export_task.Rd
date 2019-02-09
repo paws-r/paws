@@ -4,15 +4,9 @@
 \alias{create_export_task}
 \title{Creates an export task, which allows you to efficiently export data from a log group to an Amazon S3 bucket}
 \usage{
-create_export_task(
-  taskName = "string",
-  logGroupName = "string",
-  logStreamNamePrefix = "string",
-  from = 123,
-  to = 123,
-  destination = "string",
-  destinationPrefix = "string"
-)
+create_export_task(taskName = NULL, logGroupName,
+  logStreamNamePrefix = NULL, from, to, destination,
+  destinationPrefix = NULL)
 }
 \arguments{
 \item{taskName}{The name of the export task.}
@@ -37,6 +31,16 @@ This is an asynchronous call. If all the required information is provided, this 
 
 You can export logs from multiple log groups or multiple time ranges to the same S3 bucket. To separate out log data for each export task, you can specify a prefix to be used as the Amazon S3 key prefix for all exported objects.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_export_task(
+  taskName = "string",
+  logGroupName = "string",
+  logStreamNamePrefix = "string",
+  from = 123,
+  to = 123,
+  destination = "string",
+  destinationPrefix = "string"
+)
 }
+}
+

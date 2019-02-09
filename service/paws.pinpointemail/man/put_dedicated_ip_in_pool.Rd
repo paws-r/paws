@@ -4,10 +4,7 @@
 \alias{put_dedicated_ip_in_pool}
 \title{Move a dedicated IP address to an existing dedicated IP pool}
 \usage{
-put_dedicated_ip_in_pool(
-  Ip = "string",
-  DestinationPoolName = "string"
-)
+put_dedicated_ip_in_pool(Ip, DestinationPoolName)
 }
 \arguments{
 \item{Ip}{[required] The IP address that you want to move to the dedicated IP pool. The value you specify has to be a dedicated IP address that's associated with your Amazon Pinpoint account.}
@@ -22,6 +19,11 @@ The dedicated IP address that you specify must already exist, and must be associ
 
 The dedicated IP pool you specify must already exist. You can create a new pool by using the \code{CreateDedicatedIpPool} operation.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_dedicated_ip_in_pool(
+  Ip = "string",
+  DestinationPoolName = "string"
+)
 }
+}
+

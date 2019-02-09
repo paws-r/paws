@@ -4,11 +4,7 @@
 \alias{list_fleets}
 \title{Retrieves a collection of fleet records for this AWS account}
 \usage{
-list_fleets(
-  BuildId = "string",
-  Limit = 123,
-  NextToken = "string"
-)
+list_fleets(BuildId = NULL, Limit = NULL, NextToken = NULL)
 }
 \arguments{
 \item{BuildId}{Unique identifier for a build to return fleets for. Use this parameter to return only fleets using the specified build. To retrieve all fleets, leave this parameter empty.}
@@ -22,8 +18,6 @@ Retrieves a collection of fleet records for this AWS account. You can filter the
 }
 \details{
 Fleet records are not listed in any particular order.
-
-Fleet-related operations include:
 \itemize{
 \item CreateFleet
 \item ListFleets
@@ -46,6 +40,12 @@ Fleet-related operations include:
 \item StopFleetActions
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_fleets(
+  BuildId = "string",
+  Limit = 123,
+  NextToken = "string"
+)
 }
+}
+

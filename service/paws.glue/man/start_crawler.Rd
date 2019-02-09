@@ -4,9 +4,7 @@
 \alias{start_crawler}
 \title{Starts a crawl using the specified crawler, regardless of what is scheduled}
 \usage{
-start_crawler(
-  Name = "string"
-)
+start_crawler(Name)
 }
 \arguments{
 \item{Name}{[required] Name of the crawler to start.}
@@ -14,6 +12,10 @@ start_crawler(
 \description{
 Starts a crawl using the specified crawler, regardless of what is scheduled. If the crawler is already running, returns a \href{https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-exceptions.html#aws-glue-api-exceptions-CrawlerRunningException}{CrawlerRunningException}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_crawler(
+  Name = "string"
+)
 }
+}
+

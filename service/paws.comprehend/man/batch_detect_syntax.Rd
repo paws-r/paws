@@ -4,12 +4,7 @@
 \alias{batch_detect_syntax}
 \title{Inspects the text of a batch of documents for the syntax and part of speech of the words in the document and returns information about them}
 \usage{
-batch_detect_syntax(
-  TextList = list(
-    "string"
-  ),
-  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
-)
+batch_detect_syntax(TextList, LanguageCode)
 }
 \arguments{
 \item{TextList}{[required] A list containing the text of the input documents. The list can contain a maximum of 25 documents. Each document must contain fewer that 5,000 bytes of UTF-8 encoded characters.}
@@ -19,6 +14,13 @@ batch_detect_syntax(
 \description{
 Inspects the text of a batch of documents for the syntax and part of speech of the words in the document and returns information about them. For more information, see how-syntax.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{batch_detect_syntax(
+  TextList = list(
+    "string"
+  ),
+  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
+)
 }
+}
+

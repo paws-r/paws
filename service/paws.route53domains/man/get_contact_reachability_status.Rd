@@ -4,9 +4,7 @@
 \alias{get_contact_reachability_status}
 \title{For operations that require confirmation that the email address for the registrant contact is valid, such as registering a new domain, this operation returns information about whether the registrant contact has responded}
 \usage{
-get_contact_reachability_status(
-  domainName = "string"
-)
+get_contact_reachability_status(domainName = NULL)
 }
 \arguments{
 \item{domainName}{The name of the domain for which you want to know whether the registrant contact has confirmed that the email address is valid.}
@@ -17,6 +15,10 @@ For operations that require confirmation that the email address for the registra
 \details{
 If you want us to resend the email, use the \code{ResendContactReachabilityEmail} operation.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_contact_reachability_status(
+  domainName = "string"
+)
 }
+}
+

@@ -4,11 +4,7 @@
 \alias{list_jobs_by_status}
 \title{The ListJobsByStatus operation gets a list of jobs that have a specified status}
 \usage{
-list_jobs_by_status(
-  Status = "string",
-  Ascending = "string",
-  PageToken = "string"
-)
+list_jobs_by_status(Status, Ascending = NULL, PageToken = NULL)
 }
 \arguments{
 \item{Status}{[required] To get information about all of the jobs associated with the current AWS account that have a given status, specify the following status: \code{Submitted}, \code{Progressing}, \code{Complete}, \code{Canceled}, or \code{Error}.}
@@ -20,6 +16,12 @@ list_jobs_by_status(
 \description{
 The ListJobsByStatus operation gets a list of jobs that have a specified status. The response body contains one element for each job that satisfies the search criteria.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_jobs_by_status(
+  Status = "string",
+  Ascending = "string",
+  PageToken = "string"
+)
 }
+}
+

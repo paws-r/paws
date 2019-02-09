@@ -4,15 +4,9 @@
 \alias{list_algorithms}
 \title{Lists the machine learning algorithms that have been created}
 \usage{
-list_algorithms(
-  CreationTimeAfter = as.POSIXct("2015-01-01"),
-  CreationTimeBefore = as.POSIXct("2015-01-01"),
-  MaxResults = 123,
-  NameContains = "string",
-  NextToken = "string",
-  SortBy = "Name"|"CreationTime",
-  SortOrder = "Ascending"|"Descending"
-)
+list_algorithms(CreationTimeAfter = NULL, CreationTimeBefore = NULL,
+  MaxResults = NULL, NameContains = NULL, NextToken = NULL,
+  SortBy = NULL, SortOrder = NULL)
 }
 \arguments{
 \item{CreationTimeAfter}{A filter that returns only algorithms created after the specified time (timestamp).}
@@ -32,6 +26,16 @@ list_algorithms(
 \description{
 Lists the machine learning algorithms that have been created.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_algorithms(
+  CreationTimeAfter = as.POSIXct("2015-01-01"),
+  CreationTimeBefore = as.POSIXct("2015-01-01"),
+  MaxResults = 123,
+  NameContains = "string",
+  NextToken = "string",
+  SortBy = "Name"|"CreationTime",
+  SortOrder = "Ascending"|"Descending"
+)
 }
+}
+

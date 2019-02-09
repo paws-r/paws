@@ -4,14 +4,8 @@
 \alias{describe_ecs_clusters}
 \title{Describes Amazon ECS clusters that are registered with a stack}
 \usage{
-describe_ecs_clusters(
-  EcsClusterArns = list(
-    "string"
-  ),
-  StackId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+describe_ecs_clusters(EcsClusterArns = NULL, StackId = NULL,
+  NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{EcsClusterArns}{A list of ARNs, one for each cluster to be described.}
@@ -30,6 +24,15 @@ Describes Amazon ECS clusters that are registered with a stack. If you specify o
 
 This call accepts only one resource-identifying parameter.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_ecs_clusters(
+  EcsClusterArns = list(
+    "string"
+  ),
+  StackId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

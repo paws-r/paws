@@ -4,13 +4,8 @@
 \alias{create_network_interface_permission}
 \title{Grants an AWS-authorized account permission to attach the specified network interface to an instance in their account}
 \usage{
-create_network_interface_permission(
-  NetworkInterfaceId = "string",
-  AwsAccountId = "string",
-  AwsService = "string",
-  Permission = "INSTANCE-ATTACH"|"EIP-ASSOCIATE",
-  DryRun = TRUE|FALSE
-)
+create_network_interface_permission(NetworkInterfaceId,
+  AwsAccountId = NULL, AwsService = NULL, Permission, DryRun = NULL)
 }
 \arguments{
 \item{NetworkInterfaceId}{[required] The ID of the network interface.}
@@ -29,6 +24,14 @@ Grants an AWS-authorized account permission to attach the specified network inte
 \details{
 You can grant permission to a single AWS account only, and only one account at a time.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_network_interface_permission(
+  NetworkInterfaceId = "string",
+  AwsAccountId = "string",
+  AwsService = "string",
+  Permission = "INSTANCE-ATTACH"|"EIP-ASSOCIATE",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

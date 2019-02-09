@@ -4,10 +4,7 @@
 \alias{get_blob}
 \title{Returns the base-64 encoded content of an individual blob within a repository}
 \usage{
-get_blob(
-  repositoryName = "string",
-  blobId = "string"
-)
+get_blob(repositoryName, blobId)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository that contains the blob.}
@@ -17,6 +14,11 @@ get_blob(
 \description{
 Returns the base-64 encoded content of an individual blob within a repository.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_blob(
+  repositoryName = "string",
+  blobId = "string"
+)
 }
+}
+

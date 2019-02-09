@@ -4,7 +4,18 @@
 \alias{create_import_job}
 \title{Creates or updates an import job}
 \usage{
-create_import_job(
+create_import_job(ApplicationId, ImportJobRequest)
+}
+\arguments{
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+
+\item{ImportJobRequest}{[required]}
+}
+\description{
+Creates or updates an import job.
+}
+\section{Accepted Parameters}{
+\preformatted{create_import_job(
   ApplicationId = "string",
   ImportJobRequest = list(
     DefineSegment = TRUE|FALSE,
@@ -18,14 +29,5 @@ create_import_job(
   )
 )
 }
-\arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+}
 
-\item{ImportJobRequest}{[required]}
-}
-\description{
-Creates or updates an import job.
-}
-\examples{
-
-}

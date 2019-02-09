@@ -4,19 +4,9 @@
 \alias{create_business_report_schedule}
 \title{Creates a recurring schedule for usage reports to deliver to the specified S3 location with a specified daily or weekly interval}
 \usage{
-create_business_report_schedule(
-  ScheduleName = "string",
-  S3BucketName = "string",
-  S3KeyPrefix = "string",
-  Format = "CSV"|"CSV_ZIP",
-  ContentRange = list(
-    Interval = "ONE_DAY"|"ONE_WEEK"
-  ),
-  Recurrence = list(
-    StartDate = "string"
-  ),
-  ClientRequestToken = "string"
-)
+create_business_report_schedule(ScheduleName = NULL,
+  S3BucketName = NULL, S3KeyPrefix = NULL, Format, ContentRange,
+  Recurrence = NULL, ClientRequestToken = NULL)
 }
 \arguments{
 \item{ScheduleName}{The name identifier of the schedule.}
@@ -36,6 +26,20 @@ create_business_report_schedule(
 \description{
 Creates a recurring schedule for usage reports to deliver to the specified S3 location with a specified daily or weekly interval.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_business_report_schedule(
+  ScheduleName = "string",
+  S3BucketName = "string",
+  S3KeyPrefix = "string",
+  Format = "CSV"|"CSV_ZIP",
+  ContentRange = list(
+    Interval = "ONE_DAY"|"ONE_WEEK"
+  ),
+  Recurrence = list(
+    StartDate = "string"
+  ),
+  ClientRequestToken = "string"
+)
 }
+}
+

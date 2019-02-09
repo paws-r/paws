@@ -4,14 +4,9 @@
 \alias{update_cloud_front_origin_access_identity}
 \title{Update an origin access identity}
 \usage{
-update_cloud_front_origin_access_identity(
-  CloudFrontOriginAccessIdentityConfig = list(
-    CallerReference = "string",
-    Comment = "string"
-  ),
-  Id = "string",
-  IfMatch = "string"
-)
+
+  update_cloud_front_origin_access_identity(CloudFrontOriginAccessIdentityConfig,
+  Id, IfMatch = NULL)
 }
 \arguments{
 \item{CloudFrontOriginAccessIdentityConfig}{[required] The identity's configuration information.}
@@ -23,6 +18,15 @@ update_cloud_front_origin_access_identity(
 \description{
 Update an origin access identity.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_cloud_front_origin_access_identity(
+  CloudFrontOriginAccessIdentityConfig = list(
+    CallerReference = "string",
+    Comment = "string"
+  ),
+  Id = "string",
+  IfMatch = "string"
+)
 }
+}
+

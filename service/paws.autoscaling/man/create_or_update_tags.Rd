@@ -4,17 +4,7 @@
 \alias{create_or_update_tags}
 \title{Creates or updates tags for the specified Auto Scaling group}
 \usage{
-create_or_update_tags(
-  Tags = list(
-    list(
-      ResourceId = "string",
-      ResourceType = "string",
-      Key = "string",
-      Value = "string",
-      PropagateAtLaunch = TRUE|FALSE
-    )
-  )
-)
+create_or_update_tags(Tags)
 }
 \arguments{
 \item{Tags}{[required] One or more tags.}
@@ -27,9 +17,24 @@ When you specify a tag with a key that already exists, the operation overwrites 
 
 For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-tagging.html}{Tagging Auto Scaling Groups and Instances} in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_or_update_tags(
+  Tags = list(
+    list(
+      ResourceId = "string",
+      ResourceType = "string",
+      Key = "string",
+      Value = "string",
+      PropagateAtLaunch = TRUE|FALSE
+    )
+  )
+)
+}
+}
+
 \examples{
 # This example adds two tags to the specified Auto Scaling group.
-create_or_update_tags(
+\donttest{create_or_update_tags(
   Tags = list(
     list(
       Key = "Role",
@@ -46,6 +51,6 @@ create_or_update_tags(
       Value = "Research"
     )
   )
-)
+)}
 
 }

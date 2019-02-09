@@ -4,9 +4,7 @@
 \alias{get_resource_definition}
 \title{Retrieves information about a resource definition, including its creation time and latest version}
 \usage{
-get_resource_definition(
-  ResourceDefinitionId = "string"
-)
+get_resource_definition(ResourceDefinitionId)
 }
 \arguments{
 \item{ResourceDefinitionId}{[required] The ID of the resource definition.}
@@ -14,6 +12,10 @@ get_resource_definition(
 \description{
 Retrieves information about a resource definition, including its creation time and latest version.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_resource_definition(
+  ResourceDefinitionId = "string"
+)
 }
+}
+

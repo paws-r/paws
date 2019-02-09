@@ -4,9 +4,7 @@
 \alias{get_public_key}
 \title{Get the public key information}
 \usage{
-get_public_key(
-  Id = "string"
-)
+get_public_key(Id)
 }
 \arguments{
 \item{Id}{[required] Request the ID for the public key.}
@@ -14,6 +12,10 @@ get_public_key(
 \description{
 Get the public key information.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_public_key(
+  Id = "string"
+)
 }
+}
+

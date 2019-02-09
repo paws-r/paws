@@ -4,11 +4,7 @@
 \alias{list_role_tags}
 \title{Lists the tags that are attached to the specified role}
 \usage{
-list_role_tags(
-  RoleName = "string",
-  Marker = "string",
-  MaxItems = 123
-)
+list_role_tags(RoleName, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{RoleName}{[required] The name of the IAM role for which you want to see the list of tags.
@@ -24,10 +20,19 @@ If you do not include this parameter, it defaults to 100. Note that IAM might re
 \description{
 Lists the tags that are attached to the specified role. The returned list of tags is sorted by tag key. For more information about tagging, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM Identities} in the \emph{IAM User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{list_role_tags(
+  RoleName = "string",
+  Marker = "string",
+  MaxItems = 123
+)
+}
+}
+
 \examples{
 # The following example shows how to list the tags attached to a role.
-list_role_tags(
+\donttest{list_role_tags(
   RoleName = "taggedrole1"
-)
+)}
 
 }

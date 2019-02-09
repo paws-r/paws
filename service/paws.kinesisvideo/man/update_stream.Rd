@@ -4,13 +4,8 @@
 \alias{update_stream}
 \title{Updates stream metadata, such as the device name and media type}
 \usage{
-update_stream(
-  StreamName = "string",
-  StreamARN = "string",
-  CurrentVersion = "string",
-  DeviceName = "string",
-  MediaType = "string"
-)
+update_stream(StreamName = NULL, StreamARN = NULL, CurrentVersion,
+  DeviceName = NULL, MediaType = NULL)
 }
 \arguments{
 \item{StreamName}{The name of the stream whose metadata you want to update.
@@ -39,6 +34,14 @@ To make sure that you have the latest version of the stream before updating it, 
 
 \code{UpdateStream} is an asynchronous operation, and takes time to complete.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_stream(
+  StreamName = "string",
+  StreamARN = "string",
+  CurrentVersion = "string",
+  DeviceName = "string",
+  MediaType = "string"
+)
 }
+}
+

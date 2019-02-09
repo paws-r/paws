@@ -4,10 +4,7 @@
 \alias{describe_identity_provider}
 \title{Gets information about a specific identity provider}
 \usage{
-describe_identity_provider(
-  UserPoolId = "string",
-  ProviderName = "string"
-)
+describe_identity_provider(UserPoolId, ProviderName)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID.}
@@ -17,6 +14,11 @@ describe_identity_provider(
 \description{
 Gets information about a specific identity provider.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_identity_provider(
+  UserPoolId = "string",
+  ProviderName = "string"
+)
 }
+}
+

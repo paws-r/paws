@@ -4,21 +4,10 @@
 \alias{update_endpoint_group}
 \title{Update an endpoint group}
 \usage{
-update_endpoint_group(
-  EndpointGroupArn = "string",
-  EndpointConfigurations = list(
-    list(
-      EndpointId = "string",
-      Weight = 123
-    )
-  ),
-  TrafficDialPercentage = 123.0,
-  HealthCheckPort = 123,
-  HealthCheckProtocol = "TCP"|"HTTP"|"HTTPS",
-  HealthCheckPath = "string",
-  HealthCheckIntervalSeconds = 123,
-  ThresholdCount = 123
-)
+update_endpoint_group(EndpointGroupArn, EndpointConfigurations = NULL,
+  TrafficDialPercentage = NULL, HealthCheckPort = NULL,
+  HealthCheckProtocol = NULL, HealthCheckPath = NULL,
+  HealthCheckIntervalSeconds = NULL, ThresholdCount = NULL)
 }
 \arguments{
 \item{EndpointGroupArn}{[required] The Amazon Resource Name (ARN) of the endpoint group.}
@@ -44,6 +33,22 @@ The default value is 100.}
 \description{
 Update an endpoint group. To see an AWS CLI example of updating an endpoint group, scroll down to \strong{Example}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_endpoint_group(
+  EndpointGroupArn = "string",
+  EndpointConfigurations = list(
+    list(
+      EndpointId = "string",
+      Weight = 123
+    )
+  ),
+  TrafficDialPercentage = 123.0,
+  HealthCheckPort = 123,
+  HealthCheckProtocol = "TCP"|"HTTP"|"HTTPS",
+  HealthCheckPath = "string",
+  HealthCheckIntervalSeconds = 123,
+  ThresholdCount = 123
+)
 }
+}
+

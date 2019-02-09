@@ -4,15 +4,8 @@
 \alias{describe_environment_memberships}
 \title{Gets information about environment members for an AWS Cloud9 development environment}
 \usage{
-describe_environment_memberships(
-  userArn = "string",
-  environmentId = "string",
-  permissions = list(
-    "owner"|"read-write"|"read-only"
-  ),
-  nextToken = "string",
-  maxResults = 123
-)
+describe_environment_memberships(userArn = NULL, environmentId = NULL,
+  permissions = NULL, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{userArn}{The Amazon Resource Name (ARN) of an individual environment member to get information about. If no value is specified, information about all environment members are returned.}
@@ -35,26 +28,39 @@ If no value is specified, information about all environment members are returned
 \description{
 Gets information about environment members for an AWS Cloud9 development environment.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_environment_memberships(
+  userArn = "string",
+  environmentId = "string",
+  permissions = list(
+    "owner"|"read-write"|"read-only"
+  ),
+  nextToken = "string",
+  maxResults = 123
+)
+}
+}
+
 \examples{
 # The following example gets information about all of the environment
 # members for the specified AWS Cloud9 development environment.
-describe_environment_memberships(
+\donttest{describe_environment_memberships(
   environmentId = "8d9967e2f0624182b74e7690ad69ebEX"
-)
+)}
 
 # The following example gets information about the owner of the specified
 # AWS Cloud9 development environment.
-describe_environment_memberships(
+\donttest{describe_environment_memberships(
   environmentId = "8d9967e2f0624182b74e7690ad69ebEX",
   permissions = list(
     "owner"
   )
-)
+)}
 
 # The following example gets AWS Cloud9 development environment membership
 # information for the specified user.
-describe_environment_memberships(
+\donttest{describe_environment_memberships(
   userArn = "arn:aws:iam::123456789012:user/MyDemoUser"
-)
+)}
 
 }

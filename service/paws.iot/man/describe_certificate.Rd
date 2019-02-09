@@ -4,9 +4,7 @@
 \alias{describe_certificate}
 \title{Gets information about the specified certificate}
 \usage{
-describe_certificate(
-  certificateId = "string"
-)
+describe_certificate(certificateId)
 }
 \arguments{
 \item{certificateId}{[required] The ID of the certificate. (The last part of the certificate ARN contains the certificate ID.)}
@@ -14,6 +12,10 @@ describe_certificate(
 \description{
 Gets information about the specified certificate.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_certificate(
+  certificateId = "string"
+)
 }
+}
+

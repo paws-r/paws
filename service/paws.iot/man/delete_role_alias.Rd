@@ -4,9 +4,7 @@
 \alias{delete_role_alias}
 \title{Deletes a role alias}
 \usage{
-delete_role_alias(
-  roleAlias = "string"
-)
+delete_role_alias(roleAlias)
 }
 \arguments{
 \item{roleAlias}{[required] The role alias to delete.}
@@ -14,6 +12,10 @@ delete_role_alias(
 \description{
 Deletes a role alias
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_role_alias(
+  roleAlias = "string"
+)
 }
+}
+

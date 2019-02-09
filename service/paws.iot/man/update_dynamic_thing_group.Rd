@@ -4,22 +4,9 @@
 \alias{update_dynamic_thing_group}
 \title{Updates a dynamic thing group}
 \usage{
-update_dynamic_thing_group(
-  thingGroupName = "string",
-  thingGroupProperties = list(
-    thingGroupDescription = "string",
-    attributePayload = list(
-      attributes = list(
-        "string"
-      ),
-      merge = TRUE|FALSE
-    )
-  ),
-  expectedVersion = 123,
-  indexName = "string",
-  queryString = "string",
-  queryVersion = "string"
-)
+update_dynamic_thing_group(thingGroupName, thingGroupProperties,
+  expectedVersion = NULL, indexName = NULL, queryString = NULL,
+  queryVersion = NULL)
 }
 \arguments{
 \item{thingGroupName}{[required] The name of the dynamic thing group to update.}
@@ -41,6 +28,23 @@ Currently one query version is supported: "2017-09-30". If not specified, the qu
 \description{
 Updates a dynamic thing group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_dynamic_thing_group(
+  thingGroupName = "string",
+  thingGroupProperties = list(
+    thingGroupDescription = "string",
+    attributePayload = list(
+      attributes = list(
+        "string"
+      ),
+      merge = TRUE|FALSE
+    )
+  ),
+  expectedVersion = 123,
+  indexName = "string",
+  queryString = "string",
+  queryVersion = "string"
+)
 }
+}
+

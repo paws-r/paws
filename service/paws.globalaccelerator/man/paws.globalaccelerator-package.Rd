@@ -6,12 +6,12 @@
 \alias{paws.globalaccelerator-package}
 \title{paws.globalaccelerator: AWS Global Accelerator}
 \description{
-This is the *AWS Global Accelerator API Reference*. This
-guide is for developers who need detailed information about AWS Global
-Accelerator API actions, data types, and errors. For more information
-about Global Accelerator features, see the [AWS Global Accelerator
-Developer
-Guide](https://docs.aws.amazon.com/global-accelerator/latest/dg/Welcome.html).
+This is the *AWS Global Accelerator API Reference*.
+    This guide is for developers who need detailed information about AWS
+    Global Accelerator API actions, data types, and errors. For more
+    information about Global Accelerator features, see the [AWS Global
+    Accelerator Developer
+    Guide](https://docs.aws.amazon.com/global-accelerator/latest/dg/Welcome.html).
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

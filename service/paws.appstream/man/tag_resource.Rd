@@ -4,12 +4,7 @@
 \alias{tag_resource}
 \title{Adds or overwrites one or more tags for the specified AppStream 2}
 \usage{
-tag_resource(
-  ResourceArn = "string",
-  Tags = list(
-    "string"
-  )
-)
+tag_resource(ResourceArn, Tags)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource.}
@@ -28,6 +23,13 @@ To list the current tags for your resources, use ListTagsForResource. To disasso
 
 For more information about tags, see \href{http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html}{Tagging Your Resources} in the \emph{Amazon AppStream 2.0 Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{tag_resource(
+  ResourceArn = "string",
+  Tags = list(
+    "string"
+  )
+)
 }
+}
+

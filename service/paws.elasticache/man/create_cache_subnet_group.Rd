@@ -4,13 +4,8 @@
 \alias{create_cache_subnet_group}
 \title{Creates a new cache subnet group}
 \usage{
-create_cache_subnet_group(
-  CacheSubnetGroupName = "string",
-  CacheSubnetGroupDescription = "string",
-  SubnetIds = list(
-    "string"
-  )
-)
+create_cache_subnet_group(CacheSubnetGroupName,
+  CacheSubnetGroupDescription, SubnetIds)
 }
 \arguments{
 \item{CacheSubnetGroupName}{[required] A name for the cache subnet group. This value is stored as a lowercase string.
@@ -29,6 +24,14 @@ Creates a new cache subnet group.
 \details{
 Use this parameter only when you are creating a cluster in an Amazon Virtual Private Cloud (Amazon VPC).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_cache_subnet_group(
+  CacheSubnetGroupName = "string",
+  CacheSubnetGroupDescription = "string",
+  SubnetIds = list(
+    "string"
+  )
+)
 }
+}
+

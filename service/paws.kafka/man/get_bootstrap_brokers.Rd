@@ -4,9 +4,7 @@
 \alias{get_bootstrap_brokers}
 \title{A list of brokers that a client application can use to bootstrap}
 \usage{
-get_bootstrap_brokers(
-  ClusterArn = "string"
-)
+get_bootstrap_brokers(ClusterArn)
 }
 \arguments{
 \item{ClusterArn}{[required] The Amazon Resource Name (ARN) that uniquely identifies the cluster.}
@@ -14,6 +12,10 @@ get_bootstrap_brokers(
 \description{
 A list of brokers that a client application can use to bootstrap.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_bootstrap_brokers(
+  ClusterArn = "string"
+)
 }
+}
+

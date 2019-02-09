@@ -4,10 +4,7 @@
 \alias{list_tasks}
 \title{Returns a list of all the tasks}
 \usage{
-list_tasks(
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_tasks(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{The maximum number of tasks to return.}
@@ -17,6 +14,11 @@ list_tasks(
 \description{
 Returns a list of all the tasks.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_tasks(
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

@@ -4,11 +4,7 @@
 \alias{create_policy_version}
 \title{Creates a new version of the specified managed policy}
 \usage{
-create_policy_version(
-  PolicyArn = "string",
-  PolicyDocument = "string",
-  SetAsDefault = TRUE|FALSE
-)
+create_policy_version(PolicyArn, PolicyDocument, SetAsDefault = NULL)
 }
 \arguments{
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy to which you want to add a new version.
@@ -38,6 +34,12 @@ Optionally, you can set the new version as the policy's default version. The def
 
 For more information about managed policy versions, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html}{Versioning for Managed Policies} in the \emph{IAM User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_policy_version(
+  PolicyArn = "string",
+  PolicyDocument = "string",
+  SetAsDefault = TRUE|FALSE
+)
 }
+}
+

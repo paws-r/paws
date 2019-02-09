@@ -4,7 +4,18 @@
 \alias{test_repository_triggers}
 \title{Tests the functionality of repository triggers by sending information to the trigger target}
 \usage{
-test_repository_triggers(
+test_repository_triggers(repositoryName, triggers)
+}
+\arguments{
+\item{repositoryName}{[required] The name of the repository in which to test the triggers.}
+
+\item{triggers}{[required] The list of triggers to test.}
+}
+\description{
+Tests the functionality of repository triggers by sending information to the trigger target. If real data is available in the repository, the test will send data from the last commit. If no data is available, sample data will be generated.
+}
+\section{Accepted Parameters}{
+\preformatted{test_repository_triggers(
   repositoryName = "string",
   triggers = list(
     list(
@@ -21,14 +32,5 @@ test_repository_triggers(
   )
 )
 }
-\arguments{
-\item{repositoryName}{[required] The name of the repository in which to test the triggers.}
+}
 
-\item{triggers}{[required] The list of triggers to test.}
-}
-\description{
-Tests the functionality of repository triggers by sending information to the trigger target. If real data is available in the repository, the test will send data from the last commit. If no data is available, sample data will be generated.
-}
-\examples{
-
-}

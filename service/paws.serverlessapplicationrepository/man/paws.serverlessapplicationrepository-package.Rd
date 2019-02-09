@@ -6,11 +6,11 @@
 \alias{paws.serverlessapplicationrepository-package}
 \title{paws.serverlessapplicationrepository: AWSServerlessApplicationRepository}
 \description{
-The AWS Serverless Application Repository makes it easy for
-developers and enterprises to quickly find and deploy serverless
-applications in the AWS Cloud. For more information about serverless
-applications, see Serverless Computing and Applications on the AWS
-website.
+The AWS Serverless Application Repository makes it
+    easy for developers and enterprises to quickly find and deploy
+    serverless applications in the AWS Cloud. For more information about
+    serverless applications, see Serverless Computing and Applications on
+    the AWS website.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

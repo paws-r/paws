@@ -4,12 +4,7 @@
 \alias{import_source_credentials}
 \title{Imports the source repository credentials for an AWS CodeBuild project that has its source code stored in a GitHub, GitHub Enterprise, or Bitbucket repository}
 \usage{
-import_source_credentials(
-  username = "string",
-  token = "string",
-  serverType = "GITHUB"|"BITBUCKET"|"GITHUB_ENTERPRISE",
-  authType = "OAUTH"|"BASIC_AUTH"|"PERSONAL_ACCESS_TOKEN"
-)
+import_source_credentials(username = NULL, token, serverType, authType)
 }
 \arguments{
 \item{username}{The Bitbucket username when the \code{authType} is BASIC\_AUTH. This parameter is not valid for other types of source providers or connections.}
@@ -23,6 +18,13 @@ import_source_credentials(
 \description{
 Imports the source repository credentials for an AWS CodeBuild project that has its source code stored in a GitHub, GitHub Enterprise, or Bitbucket repository.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{import_source_credentials(
+  username = "string",
+  token = "string",
+  serverType = "GITHUB"|"BITBUCKET"|"GITHUB_ENTERPRISE",
+  authType = "OAUTH"|"BASIC_AUTH"|"PERSONAL_ACCESS_TOKEN"
+)
 }
+}
+

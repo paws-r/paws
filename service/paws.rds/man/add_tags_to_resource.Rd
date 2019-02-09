@@ -4,15 +4,7 @@
 \alias{add_tags_to_resource}
 \title{Adds metadata tags to an Amazon RDS resource}
 \usage{
-add_tags_to_resource(
-  ResourceName = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+add_tags_to_resource(ResourceName, Tags)
 }
 \arguments{
 \item{ResourceName}{[required] The Amazon RDS resource that the tags are added to. This value is an Amazon Resource Name (ARN). For information about creating an ARN, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an RDS Amazon Resource Name (ARN)}.}
@@ -25,6 +17,16 @@ Adds metadata tags to an Amazon RDS resource. These tags can also be used with c
 \details{
 For an overview on tagging Amazon RDS resources, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html}{Tagging Amazon RDS Resources}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{add_tags_to_resource(
+  ResourceName = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

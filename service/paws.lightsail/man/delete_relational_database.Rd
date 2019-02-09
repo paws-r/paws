@@ -4,11 +4,8 @@
 \alias{delete_relational_database}
 \title{Deletes a database in Amazon Lightsail}
 \usage{
-delete_relational_database(
-  relationalDatabaseName = "string",
-  skipFinalSnapshot = TRUE|FALSE,
-  finalRelationalDatabaseSnapshotName = "string"
-)
+delete_relational_database(relationalDatabaseName,
+  skipFinalSnapshot = NULL, finalRelationalDatabaseSnapshotName = NULL)
 }
 \arguments{
 \item{relationalDatabaseName}{[required] The name of the database that you are deleting.}
@@ -35,6 +32,12 @@ Deletes a database in Amazon Lightsail.
 \details{
 The \code{delete relational database} operation supports tag-based access control via resource tags applied to the resource identified by relationalDatabaseName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_relational_database(
+  relationalDatabaseName = "string",
+  skipFinalSnapshot = TRUE|FALSE,
+  finalRelationalDatabaseSnapshotName = "string"
+)
 }
+}
+

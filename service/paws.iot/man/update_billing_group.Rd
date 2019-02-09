@@ -4,13 +4,8 @@
 \alias{update_billing_group}
 \title{Updates information about the billing group}
 \usage{
-update_billing_group(
-  billingGroupName = "string",
-  billingGroupProperties = list(
-    billingGroupDescription = "string"
-  ),
-  expectedVersion = 123
-)
+update_billing_group(billingGroupName, billingGroupProperties,
+  expectedVersion = NULL)
 }
 \arguments{
 \item{billingGroupName}{[required] The name of the billing group.}
@@ -22,6 +17,14 @@ update_billing_group(
 \description{
 Updates information about the billing group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_billing_group(
+  billingGroupName = "string",
+  billingGroupProperties = list(
+    billingGroupDescription = "string"
+  ),
+  expectedVersion = 123
+)
 }
+}
+

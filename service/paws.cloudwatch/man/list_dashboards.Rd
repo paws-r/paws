@@ -4,10 +4,7 @@
 \alias{list_dashboards}
 \title{Returns a list of the dashboards for your account}
 \usage{
-list_dashboards(
-  DashboardNamePrefix = "string",
-  NextToken = "string"
-)
+list_dashboards(DashboardNamePrefix = NULL, NextToken = NULL)
 }
 \arguments{
 \item{DashboardNamePrefix}{If you specify this parameter, only the dashboards with names starting with the specified string are listed. The maximum length is 255, and valid characters are A-Z, a-z, 0-9, ".", "-", and "\_".}
@@ -20,6 +17,11 @@ Returns a list of the dashboards for your account. If you include \code{Dashboar
 \details{
 \code{ListDashboards} returns up to 1000 results on one page. If there are more than 1000 dashboards, you can call \code{ListDashboards} again and include the value you received for \code{NextToken} in the first call, to receive the next 1000 results.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_dashboards(
+  DashboardNamePrefix = "string",
+  NextToken = "string"
+)
 }
+}
+

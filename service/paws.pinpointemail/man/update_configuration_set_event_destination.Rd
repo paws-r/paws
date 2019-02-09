@@ -4,7 +4,24 @@
 \alias{update_configuration_set_event_destination}
 \title{Update the configuration of an event destination for a configuration set}
 \usage{
-update_configuration_set_event_destination(
+update_configuration_set_event_destination(ConfigurationSetName,
+  EventDestinationName, EventDestination)
+}
+\arguments{
+\item{ConfigurationSetName}{[required] The name of the configuration set that contains the event destination that you want to modify.}
+
+\item{EventDestinationName}{[required] The name of the event destination that you want to modify.}
+
+\item{EventDestination}{[required] An object that defines the event destination.}
+}
+\description{
+Update the configuration of an event destination for a configuration set.
+}
+\details{
+In Amazon Pinpoint, \emph{events} include message sends, deliveries, opens, clicks, bounces, and complaints. \emph{Event destinations} are places that you can send information about these events to. For example, you can send event data to Amazon SNS to receive notifications when you receive bounces or complaints, or you can use Amazon Kinesis Data Firehose to stream data to Amazon S3 for long-term storage.
+}
+\section{Accepted Parameters}{
+\preformatted{update_configuration_set_event_destination(
   ConfigurationSetName = "string",
   EventDestinationName = "string",
   EventDestination = list(
@@ -34,19 +51,5 @@ update_configuration_set_event_destination(
   )
 )
 }
-\arguments{
-\item{ConfigurationSetName}{[required] The name of the configuration set that contains the event destination that you want to modify.}
+}
 
-\item{EventDestinationName}{[required] The name of the event destination that you want to modify.}
-
-\item{EventDestination}{[required] An object that defines the event destination.}
-}
-\description{
-Update the configuration of an event destination for a configuration set.
-}
-\details{
-In Amazon Pinpoint, \emph{events} include message sends, deliveries, opens, clicks, bounces, and complaints. \emph{Event destinations} are places that you can send information about these events to. For example, you can send event data to Amazon SNS to receive notifications when you receive bounces or complaints, or you can use Amazon Kinesis Data Firehose to stream data to Amazon S3 for long-term storage.
-}
-\examples{
-
-}

@@ -4,18 +4,8 @@
 \alias{batch_get_partition}
 \title{Retrieves partitions in a batch request}
 \usage{
-batch_get_partition(
-  CatalogId = "string",
-  DatabaseName = "string",
-  TableName = "string",
-  PartitionsToGet = list(
-    list(
-      Values = list(
-        "string"
-      )
-    )
-  )
-)
+batch_get_partition(CatalogId = NULL, DatabaseName, TableName,
+  PartitionsToGet)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the partitions in question reside. If none is supplied, the AWS account ID is used by default.}
@@ -29,6 +19,19 @@ batch_get_partition(
 \description{
 Retrieves partitions in a batch request.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{batch_get_partition(
+  CatalogId = "string",
+  DatabaseName = "string",
+  TableName = "string",
+  PartitionsToGet = list(
+    list(
+      Values = list(
+        "string"
+      )
+    )
+  )
+)
 }
+}
+

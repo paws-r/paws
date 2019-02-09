@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.machinelearning_operations.R
 \name{get_ml_model}
 \alias{get_ml_model}
-\title{Returns an \code{MLModel} that includes detailed metadata, data source information, and the current status of the \code{MLModel}}
+\title{Returns an MLModel that includes detailed metadata, data source information, and the current status of the MLModel}
 \usage{
-get_ml_model(
-  MLModelId = "string",
-  Verbose = TRUE|FALSE
-)
+get_ml_model(MLModelId, Verbose = NULL)
 }
 \arguments{
 \item{MLModelId}{[required] The ID assigned to the \code{MLModel} at creation.}
@@ -24,6 +21,11 @@ Returns an \code{MLModel} that includes detailed metadata, data source informati
 \details{
 \code{GetMLModel} provides results in normal or verbose format.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_ml_model(
+  MLModelId = "string",
+  Verbose = TRUE|FALSE
+)
 }
+}
+

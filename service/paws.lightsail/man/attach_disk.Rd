@@ -4,11 +4,7 @@
 \alias{attach_disk}
 \title{Attaches a block storage disk to a running or stopped Lightsail instance and exposes it to the instance with the specified disk name}
 \usage{
-attach_disk(
-  diskName = "string",
-  instanceName = "string",
-  diskPath = "string"
-)
+attach_disk(diskName, instanceName, diskPath)
 }
 \arguments{
 \item{diskName}{[required] The unique Lightsail disk name (e.g., \code{my-disk}).}
@@ -23,6 +19,12 @@ Attaches a block storage disk to a running or stopped Lightsail instance and exp
 \details{
 The \code{attach disk} operation supports tag-based access control via resource tags applied to the resource identified by diskName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{attach_disk(
+  diskName = "string",
+  instanceName = "string",
+  diskPath = "string"
+)
 }
+}
+

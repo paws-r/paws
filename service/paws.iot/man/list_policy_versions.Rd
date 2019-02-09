@@ -4,9 +4,7 @@
 \alias{list_policy_versions}
 \title{Lists the versions of the specified policy and identifies the default version}
 \usage{
-list_policy_versions(
-  policyName = "string"
-)
+list_policy_versions(policyName)
 }
 \arguments{
 \item{policyName}{[required] The policy name.}
@@ -14,6 +12,10 @@ list_policy_versions(
 \description{
 Lists the versions of the specified policy and identifies the default version.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_policy_versions(
+  policyName = "string"
+)
 }
+}
+

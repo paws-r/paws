@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.waf_operations.R
 \name{get_sql_injection_match_set}
 \alias{get_sql_injection_match_set}
-\title{Returns the SqlInjectionMatchSet that is specified by \code{SqlInjectionMatchSetId}}
+\title{Returns the SqlInjectionMatchSet that is specified by SqlInjectionMatchSetId}
 \usage{
-get_sql_injection_match_set(
-  SqlInjectionMatchSetId = "string"
-)
+get_sql_injection_match_set(SqlInjectionMatchSetId)
 }
 \arguments{
 \item{SqlInjectionMatchSetId}{[required] The \code{SqlInjectionMatchSetId} of the SqlInjectionMatchSet that you want to get. \code{SqlInjectionMatchSetId} is returned by CreateSqlInjectionMatchSet and by ListSqlInjectionMatchSets.}
@@ -14,11 +12,18 @@ get_sql_injection_match_set(
 \description{
 Returns the SqlInjectionMatchSet that is specified by \code{SqlInjectionMatchSetId}.
 }
+\section{Accepted Parameters}{
+\preformatted{get_sql_injection_match_set(
+  SqlInjectionMatchSetId = "string"
+)
+}
+}
+
 \examples{
 # The following example returns the details of a SQL injection match set
 # with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-get_sql_injection_match_set(
+\donttest{get_sql_injection_match_set(
   SqlInjectionMatchSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-)
+)}
 
 }

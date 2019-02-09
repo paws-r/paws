@@ -4,7 +4,21 @@
 \alias{create_classifier}
 \title{Creates a classifier in the user's account}
 \usage{
-create_classifier(
+create_classifier(GrokClassifier = NULL, XMLClassifier = NULL,
+  JsonClassifier = NULL)
+}
+\arguments{
+\item{GrokClassifier}{A \code{GrokClassifier} object specifying the classifier to create.}
+
+\item{XMLClassifier}{An \code{XMLClassifier} object specifying the classifier to create.}
+
+\item{JsonClassifier}{A \code{JsonClassifier} object specifying the classifier to create.}
+}
+\description{
+Creates a classifier in the user's account. This may be a \code{GrokClassifier}, an \code{XMLClassifier}, or abbrev \code{JsonClassifier}, depending on which field of the request is present.
+}
+\section{Accepted Parameters}{
+\preformatted{create_classifier(
   GrokClassifier = list(
     Classification = "string",
     Name = "string",
@@ -22,16 +36,5 @@ create_classifier(
   )
 )
 }
-\arguments{
-\item{GrokClassifier}{A \code{GrokClassifier} object specifying the classifier to create.}
-
-\item{XMLClassifier}{An \code{XMLClassifier} object specifying the classifier to create.}
-
-\item{JsonClassifier}{A \code{JsonClassifier} object specifying the classifier to create.}
 }
-\description{
-Creates a classifier in the user's account. This may be a \code{GrokClassifier}, an \code{XMLClassifier}, or abbrev \code{JsonClassifier}, depending on which field of the request is present.
-}
-\examples{
 
-}

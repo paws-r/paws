@@ -4,10 +4,7 @@
 \alias{create_parameter_group}
 \title{Creates a new parameter group}
 \usage{
-create_parameter_group(
-  ParameterGroupName = "string",
-  Description = "string"
-)
+create_parameter_group(ParameterGroupName, Description = NULL)
 }
 \arguments{
 \item{ParameterGroupName}{[required] The name of the parameter group to apply to all of the clusters in this replication group.}
@@ -17,6 +14,11 @@ create_parameter_group(
 \description{
 Creates a new parameter group. A parameter group is a collection of parameters that you apply to all of the nodes in a DAX cluster.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_parameter_group(
+  ParameterGroupName = "string",
+  Description = "string"
+)
 }
+}
+

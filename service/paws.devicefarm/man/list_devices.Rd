@@ -4,19 +4,7 @@
 \alias{list_devices}
 \title{Gets information about unique device types}
 \usage{
-list_devices(
-  arn = "string",
-  nextToken = "string",
-  filters = list(
-    list(
-      attribute = "ARN"|"PLATFORM"|"OS_VERSION"|"MODEL"|"AVAILABILITY"|"FORM_FACTOR"|"MANUFACTURER"|"REMOTE_ACCESS_ENABLED"|"REMOTE_DEBUG_ENABLED"|"INSTANCE_ARN"|"INSTANCE_LABELS"|"FLEET_TYPE",
-      operator = "EQUALS"|"LESS_THAN"|"LESS_THAN_OR_EQUALS"|"GREATER_THAN"|"GREATER_THAN_OR_EQUALS"|"IN"|"NOT_IN"|"CONTAINS",
-      values = list(
-        "string"
-      )
-    )
-  )
-)
+list_devices(arn = NULL, nextToken = NULL, filters = NULL)
 }
 \arguments{
 \item{arn}{The Amazon Resource Name (ARN) of the project.}
@@ -36,8 +24,8 @@ Allowed values include:
 \item AVAILABILITY: The current availability of the device. Valid values are "AVAILABLE", "HIGHLY\_AVAILABLE", "BUSY", or "TEMPORARY\_NOT\_AVAILABLE".
 \item FORM\_FACTOR: The device form factor. Valid values are "PHONE" or "TABLET".
 \item MANUFACTURER: The device manufacturer. For example, "Apple".
-\item REMOTE\_ACCESS\_ENABLED: Whether the device is enabled for remote access.
-\item REMOTE\_DEBUG\_ENABLED: Whether the device is enabled for remote debugging.
+\item REMOTE\_ACCESS\_ENABLED: Whether the device is enabled for remote access. Valid values are "TRUE" or "FALSE".
+\item REMOTE\_DEBUG\_ENABLED: Whether the device is enabled for remote debugging. Valid values are "TRUE" or "FALSE".
 \item INSTANCE\_ARN: The Amazon Resource Name (ARN) of the device instance.
 \item INSTANCE\_LABELS: The label of the device instance.
 \item FLEET\_TYPE: The fleet type. Valid values are "PUBLIC" or "PRIVATE".
@@ -51,7 +39,7 @@ Allowed values include:
 }
 \item Values: An array of one or more filter values.
 \itemize{
-\item The IN and NOT operators can take a values array that has more than one element.
+\item The IN and NOT\_IN operators take a values array that has one or more elements.
 \item The other operators require an array with a single element.
 \item In a request, the AVAILABILITY attribute takes "AVAILABLE", "HIGHLY\_AVAILABLE", "BUSY", or "TEMPORARY\_NOT\_AVAILABLE" as values.
 }
@@ -60,11 +48,28 @@ Allowed values include:
 \description{
 Gets information about unique device types.
 }
+\section{Accepted Parameters}{
+\preformatted{list_devices(
+  arn = "string",
+  nextToken = "string",
+  filters = list(
+    list(
+      attribute = "ARN"|"PLATFORM"|"OS_VERSION"|"MODEL"|"AVAILABILITY"|"FORM_FACTOR"|"MANUFACTURER"|"REMOTE_ACCESS_ENABLED"|"REMOTE_DEBUG_ENABLED"|"INSTANCE_ARN"|"INSTANCE_LABELS"|"FLEET_TYPE",
+      operator = "EQUALS"|"LESS_THAN"|"LESS_THAN_OR_EQUALS"|"GREATER_THAN"|"GREATER_THAN_OR_EQUALS"|"IN"|"NOT_IN"|"CONTAINS",
+      values = list(
+        "string"
+      )
+    )
+  )
+)
+}
+}
+
 \examples{
 # The following example returns information about the available devices in
 # a specific project.
-list_devices(
+\donttest{list_devices(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
-)
+)}
 
 }

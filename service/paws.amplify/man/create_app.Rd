@@ -4,32 +4,11 @@
 \alias{create_app}
 \title{Creates a new Amplify App}
 \usage{
-create_app(
-  name = "string",
-  description = "string",
-  repository = "string",
-  platform = "IOS"|"ANDROID"|"WEB"|"REACT_NATIVE",
-  iamServiceRoleArn = "string",
-  oauthToken = "string",
-  environmentVariables = list(
-    "string"
-  ),
-  enableBranchAutoBuild = TRUE|FALSE,
-  enableBasicAuth = TRUE|FALSE,
-  basicAuthCredentials = "string",
-  customRules = list(
-    list(
-      source = "string",
-      target = "string",
-      status = "string",
-      condition = "string"
-    )
-  ),
-  tags = list(
-    "string"
-  ),
-  buildSpec = "string"
-)
+create_app(name, description = NULL, repository, platform,
+  iamServiceRoleArn = NULL, oauthToken, environmentVariables = NULL,
+  enableBranchAutoBuild = NULL, enableBasicAuth = NULL,
+  basicAuthCredentials = NULL, customRules = NULL, tags = NULL,
+  buildSpec = NULL)
 }
 \arguments{
 \item{name}{[required] Name for the Amplify App}
@@ -61,6 +40,33 @@ create_app(
 \description{
 Creates a new Amplify App.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_app(
+  name = "string",
+  description = "string",
+  repository = "string",
+  platform = "IOS"|"ANDROID"|"WEB"|"REACT_NATIVE",
+  iamServiceRoleArn = "string",
+  oauthToken = "string",
+  environmentVariables = list(
+    "string"
+  ),
+  enableBranchAutoBuild = TRUE|FALSE,
+  enableBasicAuth = TRUE|FALSE,
+  basicAuthCredentials = "string",
+  customRules = list(
+    list(
+      source = "string",
+      target = "string",
+      status = "string",
+      condition = "string"
+    )
+  ),
+  tags = list(
+    "string"
+  ),
+  buildSpec = "string"
+)
 }
+}
+

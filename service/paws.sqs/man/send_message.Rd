@@ -4,26 +4,9 @@
 \alias{send_message}
 \title{Delivers a message to the specified queue}
 \usage{
-send_message(
-  QueueUrl = "string",
-  MessageBody = "string",
-  DelaySeconds = 123,
-  MessageAttributes = list(
-    list(
-      StringValue = "string",
-      BinaryValue = raw,
-      StringListValues = list(
-        "string"
-      ),
-      BinaryListValues = list(
-        raw
-      ),
-      DataType = "string"
-    )
-  ),
-  MessageDeduplicationId = "string",
-  MessageGroupId = "string"
-)
+send_message(QueueUrl, MessageBody, DelaySeconds = NULL,
+  MessageAttributes = NULL, MessageDeduplicationId = NULL,
+  MessageGroupId = NULL)
 }
 \arguments{
 \item{QueueUrl}{[required] The URL of the Amazon SQS queue to which a message is sent.
@@ -65,13 +48,9 @@ If a message is sent successfully but the acknowledgement is lost and the messag
 
 Amazon SQS continues to keep track of the message deduplication ID even after the message is received and deleted.
 
-The length of \code{MessageDeduplicationId} is 128 characters. \code{MessageDeduplicationId} can contain alphanumeric characters (\code{a-z}, \code{A-Z}, \code{0-9}) and punctuation (\code{!\"#$%&\'()*+,-./:;<=>?@[&#93;^_`{|}~}).
+The length of \code{MessageDeduplicationId} is 128 characters. \code{MessageDeduplicationId} can contain alphanumeric characters (\code{a-z}, \code{A-Z}, \code{0-9}) and punctuation (\code{!\"#$\%&\'()*+,-./:;<=>?@[&#93;^_`{|}~}).
 
-For best practices of using \code{MessageDeduplicationId}, see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagededuplicationid-property.html}{Using the MessageDeduplicationId Property} in the \emph{Amazon Simple Queue Service Developer Guide}.
-
-[]^_`{|}~ ``).
-
-For best practices of using \code{MessageDeduplicationId}, see [Using the MessageDeduplicationId Property]: R:]%5E_%60%7B%7C%7D~%20%60%60).%0A%0AFor%20best%20practices%20of%20using%20%60MessageDeduplicationId%60,%20see%20[Using%20the%20MessageDeduplicationId%20Property}
+For best practices of using \code{MessageDeduplicationId}, see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagededuplicationid-property.html}{Using the MessageDeduplicationId Property} in the \emph{Amazon Simple Queue Service Developer Guide}.}
 
 \item{MessageGroupId}{This parameter applies only to FIFO (first-in-first-out) queues.
 
@@ -81,15 +60,11 @@ The tag that specifies that a message belongs to a specific message group. Messa
 \item \code{ReceiveMessage} might return messages with multiple \code{MessageGroupId} values. For each \code{MessageGroupId}, the messages are sorted by time sent. The caller can't specify a \code{MessageGroupId}.
 }
 
-The length of \code{MessageGroupId} is 128 characters. Valid values: alphanumeric characters and punctuation \code{(!\"#$%&\'()*+,-./:;<=>?@[&#93;^_`{|}~)}.
+The length of \code{MessageGroupId} is 128 characters. Valid values: alphanumeric characters and punctuation \code{(!\"#$\%&\'()*+,-./:;<=>?@[&#93;^_`{|}~)}.
 
 For best practices of using \code{MessageGroupId}, see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagegroupid-property.html}{Using the MessageGroupId Property} in the \emph{Amazon Simple Queue Service Developer Guide}.
 
-\code{MessageGroupId} is required for FIFO queues. You can't use it for Standard queues.
-
-[]^_`{|}~) ``.
-
-For best practices of using \code{MessageGroupId}, see [Using the MessageGroupId Property]: R:]%5E_%60%7B%7C%7D~)%20%60%60.%0A%0AFor%20best%20practices%20of%20using%20%60MessageGroupId%60,%20see%20[Using%20the%20MessageGroupId%20Property}
+\code{MessageGroupId} is required for FIFO queues. You can't use it for Standard queues.}
 }
 \description{
 Delivers a message to the specified queue.
@@ -101,6 +76,27 @@ A message can include only XML, JSON, and unformatted text. The following Unicod
 
 Any characters not included in this list will be rejected. For more information, see the \href{http://www.w3.org/TR/REC-xml/#charsets}{W3C specification for characters}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{send_message(
+  QueueUrl = "string",
+  MessageBody = "string",
+  DelaySeconds = 123,
+  MessageAttributes = list(
+    list(
+      StringValue = "string",
+      BinaryValue = raw,
+      StringListValues = list(
+        "string"
+      ),
+      BinaryListValues = list(
+        raw
+      ),
+      DataType = "string"
+    )
+  ),
+  MessageDeduplicationId = "string",
+  MessageGroupId = "string"
+)
 }
+}
+

@@ -4,11 +4,8 @@
 \alias{create_lb_cookie_stickiness_policy}
 \title{Generates a stickiness policy with sticky session lifetimes controlled by the lifetime of the browser (user-agent) or a specified expiration period}
 \usage{
-create_lb_cookie_stickiness_policy(
-  LoadBalancerName = "string",
-  PolicyName = "string",
-  CookieExpirationPeriod = 123
-)
+create_lb_cookie_stickiness_policy(LoadBalancerName, PolicyName,
+  CookieExpirationPeriod = NULL)
 }
 \arguments{
 \item{LoadBalancerName}{[required] The name of the load balancer.}
@@ -27,13 +24,22 @@ A cookie is inserted into the response for binding subsequent requests from the 
 
 For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-duration}{Duration-Based Session Stickiness} in the \emph{Classic Load Balancers Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_lb_cookie_stickiness_policy(
+  LoadBalancerName = "string",
+  PolicyName = "string",
+  CookieExpirationPeriod = 123
+)
+}
+}
+
 \examples{
 # This example generates a stickiness policy with sticky session lifetimes
 # controlled by the specified expiration period.
-create_lb_cookie_stickiness_policy(
+\donttest{create_lb_cookie_stickiness_policy(
   CookieExpirationPeriod = 60L,
   LoadBalancerName = "my-load-balancer",
   PolicyName = "my-duration-cookie-policy"
-)
+)}
 
 }

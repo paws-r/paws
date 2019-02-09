@@ -4,24 +4,12 @@
 \alias{create_relational_database}
 \title{Creates a new database in Amazon Lightsail}
 \usage{
-create_relational_database(
-  relationalDatabaseName = "string",
-  availabilityZone = "string",
-  relationalDatabaseBlueprintId = "string",
-  relationalDatabaseBundleId = "string",
-  masterDatabaseName = "string",
-  masterUsername = "string",
-  masterUserPassword = "string",
-  preferredBackupWindow = "string",
-  preferredMaintenanceWindow = "string",
-  publiclyAccessible = TRUE|FALSE,
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
+create_relational_database(relationalDatabaseName,
+  availabilityZone = NULL, relationalDatabaseBlueprintId,
+  relationalDatabaseBundleId, masterDatabaseName, masterUsername,
+  masterUserPassword = NULL, preferredBackupWindow = NULL,
+  preferredMaintenanceWindow = NULL, publiclyAccessible = NULL,
+  tags = NULL)
 }
 \arguments{
 \item{relationalDatabaseName}{[required] The name to use for your new database.
@@ -107,6 +95,25 @@ Creates a new database in Amazon Lightsail.
 \details{
 The \code{create relational database} operation supports tag-based access control via request tags. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_relational_database(
+  relationalDatabaseName = "string",
+  availabilityZone = "string",
+  relationalDatabaseBlueprintId = "string",
+  relationalDatabaseBundleId = "string",
+  masterDatabaseName = "string",
+  masterUsername = "string",
+  masterUserPassword = "string",
+  preferredBackupWindow = "string",
+  preferredMaintenanceWindow = "string",
+  publiclyAccessible = TRUE|FALSE,
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
 }
+}
+

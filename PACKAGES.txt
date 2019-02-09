@@ -13,6 +13,7 @@ paws.athena	athena
 paws.autoscaling	autoscaling
 paws.autoscalingplans	autoscaling-plans
 paws.migrationhub	AWSMigrationHub
+paws.backup	backup
 paws.batch	batch
 paws.budgets	budgets
 paws.costexplorer	ce
@@ -47,6 +48,7 @@ paws.directconnect	directconnect
 paws.applicationdiscoveryservice	discovery
 paws.dlm	dlm
 paws.databasemigrationservice	dms
+paws.docdb	docdb
 paws.directoryservice	ds
 paws.dynamodb	dynamodb
 paws.ec2	ec2
@@ -164,6 +166,7 @@ paws.translate	translate
 paws.waf	waf
 paws.wafregional	waf-regional
 paws.workdocs	workdocs
+paws.worklink	worklink
 paws.workmail	workmail
 paws.workspaces	workspaces
 paws.xray	xray

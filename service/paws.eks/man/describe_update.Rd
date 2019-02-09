@@ -4,10 +4,7 @@
 \alias{describe_update}
 \title{Returns descriptive information about an update against your Amazon EKS cluster}
 \usage{
-describe_update(
-  name = "string",
-  updateId = "string"
-)
+describe_update(name, updateId)
 }
 \arguments{
 \item{name}{[required] The name of the Amazon EKS cluster to update.}
@@ -20,6 +17,11 @@ Returns descriptive information about an update against your Amazon EKS cluster.
 \details{
 When the status of the update is \code{Succeeded}, the update is complete. If an update fails, the status is \code{Failed}, and an error detail explains the reason for the failure.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_update(
+  name = "string",
+  updateId = "string"
+)
 }
+}
+

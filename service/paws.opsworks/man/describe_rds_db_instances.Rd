@@ -4,12 +4,7 @@
 \alias{describe_rds_db_instances}
 \title{Describes Amazon RDS instances}
 \usage{
-describe_rds_db_instances(
-  StackId = "string",
-  RdsDbInstanceArns = list(
-    "string"
-  )
-)
+describe_rds_db_instances(StackId, RdsDbInstanceArns = NULL)
 }
 \arguments{
 \item{StackId}{[required] The ID of the stack with which the instances are registered. The operation returns descriptions of all registered Amazon RDS instances.}
@@ -24,6 +19,13 @@ Describes Amazon RDS instances.
 
 This call accepts only one resource-identifying parameter.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_rds_db_instances(
+  StackId = "string",
+  RdsDbInstanceArns = list(
+    "string"
+  )
+)
 }
+}
+

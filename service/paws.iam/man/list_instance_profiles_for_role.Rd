@@ -4,11 +4,8 @@
 \alias{list_instance_profiles_for_role}
 \title{Lists the instance profiles that have the specified associated IAM role}
 \usage{
-list_instance_profiles_for_role(
-  RoleName = "string",
-  Marker = "string",
-  MaxItems = 123
-)
+list_instance_profiles_for_role(RoleName, Marker = NULL,
+  MaxItems = NULL)
 }
 \arguments{
 \item{RoleName}{[required] The name of the role to list instance profiles for.
@@ -27,6 +24,12 @@ Lists the instance profiles that have the specified associated IAM role. If ther
 \details{
 You can paginate the results using the \code{MaxItems} and \code{Marker} parameters.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_instance_profiles_for_role(
+  RoleName = "string",
+  Marker = "string",
+  MaxItems = 123
+)
 }
+}
+

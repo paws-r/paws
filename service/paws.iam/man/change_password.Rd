@@ -4,10 +4,7 @@
 \alias{change_password}
 \title{Changes the password of the IAM user who is calling this operation}
 \usage{
-change_password(
-  OldPassword = "string",
-  NewPassword = "string"
-)
+change_password(OldPassword, NewPassword)
 }
 \arguments{
 \item{OldPassword}{[required] The IAM user's current password.}
@@ -22,11 +19,19 @@ Changes the password of the IAM user who is calling this operation. The AWS acco
 \details{
 To change the password for a different user, see UpdateLoginProfile. For more information about modifying passwords, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingLogins.html}{Managing Passwords} in the \emph{IAM User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{change_password(
+  OldPassword = "string",
+  NewPassword = "string"
+)
+}
+}
+
 \examples{
 # The following command changes the password for the current IAM user.
-change_password(
+\donttest{change_password(
   NewPassword = "]35d/{pB9Fo9wJ",
   OldPassword = "3s0K_;xh4~8XXI"
-)
+)}
 
 }

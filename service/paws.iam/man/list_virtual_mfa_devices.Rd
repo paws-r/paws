@@ -4,11 +4,8 @@
 \alias{list_virtual_mfa_devices}
 \title{Lists the virtual MFA devices defined in the AWS account by assignment status}
 \usage{
-list_virtual_mfa_devices(
-  AssignmentStatus = "Assigned"|"Unassigned"|"Any",
-  Marker = "string",
-  MaxItems = 123
-)
+list_virtual_mfa_devices(AssignmentStatus = NULL, Marker = NULL,
+  MaxItems = NULL)
 }
 \arguments{
 \item{AssignmentStatus}{The status (\code{Unassigned} or \code{Assigned}) of the devices to list. If you do not specify an \code{AssignmentStatus}, the operation defaults to \code{Any}, which lists both assigned and unassigned virtual MFA devices.,}
@@ -25,9 +22,18 @@ Lists the virtual MFA devices defined in the AWS account by assignment status. I
 \details{
 You can paginate the results using the \code{MaxItems} and \code{Marker} parameters.
 }
+\section{Accepted Parameters}{
+\preformatted{list_virtual_mfa_devices(
+  AssignmentStatus = "Assigned"|"Unassigned"|"Any",
+  Marker = "string",
+  MaxItems = 123
+)
+}
+}
+
 \examples{
 # The following command lists the virtual MFA devices that have been
 # configured for the current account.
-list_virtual_mfa_devices()
+\donttest{list_virtual_mfa_devices()}
 
 }

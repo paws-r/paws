@@ -4,11 +4,7 @@
 \alias{describe_jobs}
 \title{Describes a list of AWS Batch jobs}
 \usage{
-describe_jobs(
-  jobs = list(
-    "string"
-  )
-)
+describe_jobs(jobs)
 }
 \arguments{
 \item{jobs}{[required] A space-separated list of up to 100 job IDs.}
@@ -16,12 +12,21 @@ describe_jobs(
 \description{
 Describes a list of AWS Batch jobs.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_jobs(
+  jobs = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # This example describes a job with the specified job ID.
-describe_jobs(
+\donttest{describe_jobs(
   jobs = list(
     "24fa2d7a-64c4-49d2-8b47-f8da4fbde8e9"
   )
-)
+)}
 
 }

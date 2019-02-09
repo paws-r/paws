@@ -4,20 +4,9 @@
 \alias{create_route_response}
 \title{Creates a RouteResponse for a Route}
 \usage{
-create_route_response(
-  ApiId = "string",
-  ModelSelectionExpression = "string",
-  ResponseModels = list(
-    "string"
-  ),
-  ResponseParameters = list(
-    list(
-      Required = TRUE|FALSE
-    )
-  ),
-  RouteId = "string",
-  RouteResponseKey = "string"
-)
+create_route_response(ApiId, ModelSelectionExpression = NULL,
+  ResponseModels = NULL, ResponseParameters = NULL, RouteId,
+  RouteResponseKey)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -35,6 +24,21 @@ create_route_response(
 \description{
 Creates a RouteResponse for a Route.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_route_response(
+  ApiId = "string",
+  ModelSelectionExpression = "string",
+  ResponseModels = list(
+    "string"
+  ),
+  ResponseParameters = list(
+    list(
+      Required = TRUE|FALSE
+    )
+  ),
+  RouteId = "string",
+  RouteResponseKey = "string"
+)
 }
+}
+

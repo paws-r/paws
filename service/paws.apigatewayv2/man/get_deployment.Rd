@@ -4,10 +4,7 @@
 \alias{get_deployment}
 \title{Gets a Deployment}
 \usage{
-get_deployment(
-  ApiId = "string",
-  DeploymentId = "string"
-)
+get_deployment(ApiId, DeploymentId)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -17,6 +14,11 @@ get_deployment(
 \description{
 Gets a Deployment.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_deployment(
+  ApiId = "string",
+  DeploymentId = "string"
+)
 }
+}
+

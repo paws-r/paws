@@ -4,9 +4,7 @@
 \alias{get_static_ip}
 \title{Returns information about a specific static IP}
 \usage{
-get_static_ip(
-  staticIpName = "string"
-)
+get_static_ip(staticIpName)
 }
 \arguments{
 \item{staticIpName}{[required] The name of the static IP in Lightsail.}
@@ -14,6 +12,10 @@ get_static_ip(
 \description{
 Returns information about a specific static IP.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_static_ip(
+  staticIpName = "string"
+)
 }
+}
+

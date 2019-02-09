@@ -4,9 +4,7 @@
 \alias{delete_mesh}
 \title{Deletes an existing service mesh}
 \usage{
-delete_mesh(
-  meshName = "string"
-)
+delete_mesh(meshName)
 }
 \arguments{
 \item{meshName}{[required] The name of the service mesh to delete.}
@@ -17,6 +15,10 @@ Deletes an existing service mesh.
 \details{
 You must delete all resources (routes, virtual routers, virtual nodes) in the service mesh before you can delete the mesh itself.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_mesh(
+  meshName = "string"
+)
 }
+}
+

@@ -4,7 +4,28 @@
 \alias{set_load_based_auto_scaling}
 \title{Specify the load-based auto scaling configuration for a specified layer}
 \usage{
-set_load_based_auto_scaling(
+set_load_based_auto_scaling(LayerId, Enable = NULL, UpScaling = NULL,
+  DownScaling = NULL)
+}
+\arguments{
+\item{LayerId}{[required] The layer ID.}
+
+\item{Enable}{Enables load-based auto scaling for the layer.}
+
+\item{UpScaling}{An \code{AutoScalingThresholds} object with the upscaling threshold configuration. If the load exceeds these thresholds for a specified amount of time, AWS OpsWorks Stacks starts a specified number of instances.}
+
+\item{DownScaling}{An \code{AutoScalingThresholds} object with the downscaling threshold configuration. If the load falls below these thresholds for a specified amount of time, AWS OpsWorks Stacks stops a specified number of instances.}
+}
+\description{
+Specify the load-based auto scaling configuration for a specified layer. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html}{Managing Load with Time-based and Load-based Instances}.
+}
+\details{
+To use load-based auto scaling, you must create a set of load-based auto scaling instances. Load-based auto scaling operates only on the instances from that set, so you must ensure that you have created enough instances to handle the maximum anticipated load.
+
+\strong{Required Permissions}: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+}
+\section{Accepted Parameters}{
+\preformatted{set_load_based_auto_scaling(
   LayerId = "string",
   Enable = TRUE|FALSE,
   UpScaling = list(
@@ -31,23 +52,5 @@ set_load_based_auto_scaling(
   )
 )
 }
-\arguments{
-\item{LayerId}{[required] The layer ID.}
-
-\item{Enable}{Enables load-based auto scaling for the layer.}
-
-\item{UpScaling}{An \code{AutoScalingThresholds} object with the upscaling threshold configuration. If the load exceeds these thresholds for a specified amount of time, AWS OpsWorks Stacks starts a specified number of instances.}
-
-\item{DownScaling}{An \code{AutoScalingThresholds} object with the downscaling threshold configuration. If the load falls below these thresholds for a specified amount of time, AWS OpsWorks Stacks stops a specified number of instances.}
 }
-\description{
-Specify the load-based auto scaling configuration for a specified layer. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html}{Managing Load with Time-based and Load-based Instances}.
-}
-\details{
-To use load-based auto scaling, you must create a set of load-based auto scaling instances. Load-based auto scaling operates only on the instances from that set, so you must ensure that you have created enough instances to handle the maximum anticipated load.
 
-\strong{Required Permissions}: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
-}
-\examples{
-
-}

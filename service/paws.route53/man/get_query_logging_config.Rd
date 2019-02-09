@@ -4,9 +4,7 @@
 \alias{get_query_logging_config}
 \title{Gets information about a specified configuration for DNS query logging}
 \usage{
-get_query_logging_config(
-  Id = "string"
-)
+get_query_logging_config(Id)
 }
 \arguments{
 \item{Id}{[required] The ID of the configuration for DNS query logging that you want to get information about.}
@@ -17,6 +15,10 @@ Gets information about a specified configuration for DNS query logging.
 \details{
 For more information about DNS query logs, see CreateQueryLoggingConfig and \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html}{Logging DNS Queries}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_query_logging_config(
+  Id = "string"
+)
 }
+}
+

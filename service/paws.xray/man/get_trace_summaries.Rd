@@ -4,13 +4,8 @@
 \alias{get_trace_summaries}
 \title{Retrieves IDs and metadata for traces available for a specified time frame using an optional filter}
 \usage{
-get_trace_summaries(
-  StartTime = as.POSIXct("2015-01-01"),
-  EndTime = as.POSIXct("2015-01-01"),
-  Sampling = TRUE|FALSE,
-  FilterExpression = "string",
-  NextToken = "string"
-)
+get_trace_summaries(StartTime, EndTime, Sampling = NULL,
+  FilterExpression = NULL, NextToken = NULL)
 }
 \arguments{
 \item{StartTime}{[required] The start of the time frame for which to retrieve traces.}
@@ -37,6 +32,14 @@ This filter expression finds traces that have an annotation named \code{account}
 
 For a full list of indexed fields and keywords that you can use in filter expressions, see \href{http://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html}{Using Filter Expressions} in the \emph{AWS X-Ray Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_trace_summaries(
+  StartTime = as.POSIXct("2015-01-01"),
+  EndTime = as.POSIXct("2015-01-01"),
+  Sampling = TRUE|FALSE,
+  FilterExpression = "string",
+  NextToken = "string"
+)
 }
+}
+

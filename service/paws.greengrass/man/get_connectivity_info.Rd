@@ -4,9 +4,7 @@
 \alias{get_connectivity_info}
 \title{Retrieves the connectivity information for a core}
 \usage{
-get_connectivity_info(
-  ThingName = "string"
-)
+get_connectivity_info(ThingName)
 }
 \arguments{
 \item{ThingName}{[required] The thing name.}
@@ -14,6 +12,10 @@ get_connectivity_info(
 \description{
 Retrieves the connectivity information for a core.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_connectivity_info(
+  ThingName = "string"
+)
 }
+}
+

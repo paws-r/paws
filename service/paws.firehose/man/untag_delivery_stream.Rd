@@ -4,12 +4,7 @@
 \alias{untag_delivery_stream}
 \title{Removes tags from the specified delivery stream}
 \usage{
-untag_delivery_stream(
-  DeliveryStreamName = "string",
-  TagKeys = list(
-    "string"
-  )
-)
+untag_delivery_stream(DeliveryStreamName, TagKeys)
 }
 \arguments{
 \item{DeliveryStreamName}{[required] The name of the delivery stream.}
@@ -24,6 +19,13 @@ If you specify a tag that doesn't exist, the operation ignores it.
 
 This operation has a limit of five transactions per second per account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{untag_delivery_stream(
+  DeliveryStreamName = "string",
+  TagKeys = list(
+    "string"
+  )
+)
 }
+}
+

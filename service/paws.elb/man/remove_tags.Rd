@@ -4,7 +4,18 @@
 \alias{remove_tags}
 \title{Removes one or more tags from the specified load balancer}
 \usage{
-remove_tags(
+remove_tags(LoadBalancerNames, Tags)
+}
+\arguments{
+\item{LoadBalancerNames}{[required] The name of the load balancer. You can specify a maximum of one load balancer name.}
+
+\item{Tags}{[required] The list of tag keys to remove.}
+}
+\description{
+Removes one or more tags from the specified load balancer.
+}
+\section{Accepted Parameters}{
+\preformatted{remove_tags(
   LoadBalancerNames = list(
     "string"
   ),
@@ -15,17 +26,11 @@ remove_tags(
   )
 )
 }
-\arguments{
-\item{LoadBalancerNames}{[required] The name of the load balancer. You can specify a maximum of one load balancer name.}
+}
 
-\item{Tags}{[required] The list of tag keys to remove.}
-}
-\description{
-Removes one or more tags from the specified load balancer.
-}
 \examples{
 # This example removes the specified tag from the specified load balancer.
-remove_tags(
+\donttest{remove_tags(
   LoadBalancerNames = list(
     "my-load-balancer"
   ),
@@ -34,6 +39,6 @@ remove_tags(
       Key = "project"
     )
   )
-)
+)}
 
 }

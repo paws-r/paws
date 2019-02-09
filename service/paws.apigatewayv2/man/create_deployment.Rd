@@ -4,11 +4,7 @@
 \alias{create_deployment}
 \title{Creates a Deployment for an API}
 \usage{
-create_deployment(
-  ApiId = "string",
-  Description = "string",
-  StageName = "string"
-)
+create_deployment(ApiId, Description = NULL, StageName = NULL)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -20,6 +16,12 @@ create_deployment(
 \description{
 Creates a Deployment for an API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_deployment(
+  ApiId = "string",
+  Description = "string",
+  StageName = "string"
+)
 }
+}
+

@@ -4,15 +4,8 @@
 \alias{create_constraint}
 \title{Creates a constraint}
 \usage{
-create_constraint(
-  AcceptLanguage = "string",
-  PortfolioId = "string",
-  ProductId = "string",
-  Parameters = "string",
-  Type = "string",
-  Description = "string",
-  IdempotencyToken = "string"
-)
+create_constraint(AcceptLanguage = NULL, PortfolioId, ProductId,
+  Parameters, Type, Description = NULL, IdempotencyToken)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -72,6 +65,16 @@ TEMPLATE
 \description{
 Creates a constraint.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_constraint(
+  AcceptLanguage = "string",
+  PortfolioId = "string",
+  ProductId = "string",
+  Parameters = "string",
+  Type = "string",
+  Description = "string",
+  IdempotencyToken = "string"
+)
 }
+}
+

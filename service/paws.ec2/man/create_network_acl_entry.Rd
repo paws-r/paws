@@ -4,24 +4,9 @@
 \alias{create_network_acl_entry}
 \title{Creates an entry (a rule) in a network ACL with the specified rule number}
 \usage{
-create_network_acl_entry(
-  CidrBlock = "string",
-  DryRun = TRUE|FALSE,
-  Egress = TRUE|FALSE,
-  IcmpTypeCode = list(
-    Code = 123,
-    Type = 123
-  ),
-  Ipv6CidrBlock = "string",
-  NetworkAclId = "string",
-  PortRange = list(
-    From = 123,
-    To = 123
-  ),
-  Protocol = "string",
-  RuleAction = "allow"|"deny",
-  RuleNumber = 123
-)
+create_network_acl_entry(CidrBlock = NULL, DryRun = NULL, Egress,
+  IcmpTypeCode = NULL, Ipv6CidrBlock = NULL, NetworkAclId,
+  PortRange = NULL, Protocol, RuleAction, RuleNumber)
 }
 \arguments{
 \item{CidrBlock}{The IPv4 network range to allow or deny, in CIDR notation (for example \code{172.16.0.0/24}).}
@@ -54,13 +39,35 @@ We recommend that you leave room between the rule numbers (for example, 100, 110
 
 After you add an entry, you can't modify it; you must either replace it, or create an entry and delete the old one.
 
-For more information about network ACLs, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html}{Network ACLs} in the \emph{Amazon Virtual Private Cloud User Guide}.
+For more information about network ACLs, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html}{Network ACLs} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_network_acl_entry(
+  CidrBlock = "string",
+  DryRun = TRUE|FALSE,
+  Egress = TRUE|FALSE,
+  IcmpTypeCode = list(
+    Code = 123,
+    Type = 123
+  ),
+  Ipv6CidrBlock = "string",
+  NetworkAclId = "string",
+  PortRange = list(
+    From = 123,
+    To = 123
+  ),
+  Protocol = "string",
+  RuleAction = "allow"|"deny",
+  RuleNumber = 123
+)
+}
+}
+
 \examples{
 # This example creates an entry for the specified network ACL. The rule
 # allows ingress traffic from anywhere (0.0.0.0/0) on UDP port 53 (DNS)
 # into any associated subnet.
-create_network_acl_entry(
+\donttest{create_network_acl_entry(
   CidrBlock = "0.0.0.0/0",
   Egress = FALSE,
   NetworkAclId = "acl-5fb85d36",
@@ -71,6 +78,6 @@ create_network_acl_entry(
   Protocol = "17",
   RuleAction = "allow",
   RuleNumber = 100L
-)
+)}
 
 }

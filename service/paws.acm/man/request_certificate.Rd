@@ -4,24 +4,10 @@
 \alias{request_certificate}
 \title{Requests an ACM certificate for use with other AWS services}
 \usage{
-request_certificate(
-  DomainName = "string",
-  ValidationMethod = "EMAIL"|"DNS",
-  SubjectAlternativeNames = list(
-    "string"
-  ),
-  IdempotencyToken = "string",
-  DomainValidationOptions = list(
-    list(
-      DomainName = "string",
-      ValidationDomain = "string"
-    )
-  ),
-  Options = list(
-    CertificateTransparencyLoggingPreference = "ENABLED"|"DISABLED"
-  ),
-  CertificateAuthorityArn = "string"
-)
+request_certificate(DomainName, ValidationMethod = NULL,
+  SubjectAlternativeNames = NULL, IdempotencyToken = NULL,
+  DomainValidationOptions = NULL, Options = NULL,
+  CertificateAuthorityArn = NULL)
 }
 \arguments{
 \item{DomainName}{[required] Fully qualified domain name (FQDN), such as www.example.com, that you want to secure with an ACM certificate. Use an asterisk (*) to create a wildcard certificate that protects several sites in the same domain. For example, *.example.com protects www.example.com, site.example.com, and images.example.com.
@@ -55,6 +41,25 @@ Requests an ACM certificate for use with other AWS services. To request an ACM c
 \details{
 If you are requesting a private certificate, domain validation is not required. If you are requesting a public certificate, each domain name that you specify must be validated to verify that you own or control the domain. You can use \href{http://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html}{DNS validation} or \href{http://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-email.html}{email validation}. We recommend that you use DNS validation. ACM issues public certificates after receiving approval from the domain owner.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{request_certificate(
+  DomainName = "string",
+  ValidationMethod = "EMAIL"|"DNS",
+  SubjectAlternativeNames = list(
+    "string"
+  ),
+  IdempotencyToken = "string",
+  DomainValidationOptions = list(
+    list(
+      DomainName = "string",
+      ValidationDomain = "string"
+    )
+  ),
+  Options = list(
+    CertificateTransparencyLoggingPreference = "ENABLED"|"DISABLED"
+  ),
+  CertificateAuthorityArn = "string"
+)
 }
+}
+

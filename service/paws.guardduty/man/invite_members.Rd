@@ -4,14 +4,8 @@
 \alias{invite_members}
 \title{Invites other AWS accounts (created as members of the current AWS account by CreateMembers) to enable GuardDuty and allow the current AWS account to view and manage these accounts' GuardDuty findings on their behalf as the master account}
 \usage{
-invite_members(
-  AccountIds = list(
-    "string"
-  ),
-  DetectorId = "string",
-  DisableEmailNotification = TRUE|FALSE,
-  Message = "string"
-)
+invite_members(AccountIds, DetectorId, DisableEmailNotification = NULL,
+  Message = NULL)
 }
 \arguments{
 \item{AccountIds}{[required] A list of account IDs of the accounts that you want to invite to GuardDuty as members.}
@@ -25,6 +19,15 @@ invite_members(
 \description{
 Invites other AWS accounts (created as members of the current AWS account by CreateMembers) to enable GuardDuty and allow the current AWS account to view and manage these accounts' GuardDuty findings on their behalf as the master account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{invite_members(
+  AccountIds = list(
+    "string"
+  ),
+  DetectorId = "string",
+  DisableEmailNotification = TRUE|FALSE,
+  Message = "string"
+)
 }
+}
+

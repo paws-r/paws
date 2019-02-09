@@ -4,10 +4,7 @@
 \alias{get_terminology}
 \title{Retrieves a custom terminology}
 \usage{
-get_terminology(
-  Name = "string",
-  TerminologyDataFormat = "CSV"|"TMX"
-)
+get_terminology(Name, TerminologyDataFormat)
 }
 \arguments{
 \item{Name}{[required] The name of the custom terminology being retrieved.}
@@ -17,6 +14,11 @@ get_terminology(
 \description{
 Retrieves a custom terminology.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_terminology(
+  Name = "string",
+  TerminologyDataFormat = "CSV"|"TMX"
+)
 }
+}
+

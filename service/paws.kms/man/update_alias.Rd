@@ -4,10 +4,7 @@
 \alias{update_alias}
 \title{Associates an existing alias with a different customer master key (CMK)}
 \usage{
-update_alias(
-  AliasName = "string",
-  TargetKeyId = "string"
-)
+update_alias(AliasName, TargetKeyId)
 }
 \arguments{
 \item{AliasName}{[required] String that contains the name of the alias to be modified. The name must start with the word "alias" followed by a forward slash (alias/). Aliases that begin with "alias/aws" are reserved.}
@@ -29,12 +26,20 @@ To verify that the alias is mapped to the correct CMK, use ListAliases.}
 \description{
 Associates an existing alias with a different customer master key (CMK). Each CMK can have multiple aliases, but the aliases must be unique within the account and region. You cannot perform this operation on an alias in a different AWS account.
 }
+\section{Accepted Parameters}{
+\preformatted{update_alias(
+  AliasName = "string",
+  TargetKeyId = "string"
+)
+}
+}
+
 \examples{
 # The following example updates the specified alias to refer to the
 # specified customer master key (CMK).
-update_alias(
+\donttest{update_alias(
   AliasName = "alias/ExampleAlias",
   TargetKeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)
+)}
 
 }

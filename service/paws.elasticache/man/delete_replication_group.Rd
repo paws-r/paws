@@ -4,11 +4,8 @@
 \alias{delete_replication_group}
 \title{Deletes an existing replication group}
 \usage{
-delete_replication_group(
-  ReplicationGroupId = "string",
-  RetainPrimaryCluster = TRUE|FALSE,
-  FinalSnapshotIdentifier = "string"
-)
+delete_replication_group(ReplicationGroupId, RetainPrimaryCluster = NULL,
+  FinalSnapshotIdentifier = NULL)
 }
 \arguments{
 \item{ReplicationGroupId}{[required] The identifier for the cluster to be deleted. This parameter is not case sensitive.}
@@ -25,6 +22,12 @@ When you receive a successful response from this operation, Amazon ElastiCache i
 
 This operation is valid for Redis only.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_replication_group(
+  ReplicationGroupId = "string",
+  RetainPrimaryCluster = TRUE|FALSE,
+  FinalSnapshotIdentifier = "string"
+)
 }
+}
+

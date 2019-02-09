@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.cloudhsm_operations.R
 \name{delete_hapg}
 \alias{delete_hapg}
-\title{This is documentation for \strong{AWS CloudHSM Classic}}
+\title{This is documentation for AWS CLOUDHSM CLASSIC}
 \usage{
-delete_hapg(
-  HapgArn = "string"
-)
+delete_hapg(HapgArn)
 }
 \arguments{
 \item{HapgArn}{[required] The ARN of the high-availability partition group to delete.}
@@ -19,6 +17,10 @@ This is documentation for \strong{AWS CloudHSM Classic}. For more information, s
 
 Deletes a high-availability partition group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_hapg(
+  HapgArn = "string"
+)
 }
+}
+

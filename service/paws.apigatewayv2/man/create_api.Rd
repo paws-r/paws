@@ -4,15 +4,9 @@
 \alias{create_api}
 \title{Creates an Api resource}
 \usage{
-create_api(
-  ApiKeySelectionExpression = "string",
-  Description = "string",
-  DisableSchemaValidation = TRUE|FALSE,
-  Name = "string",
-  ProtocolType = "WEBSOCKET",
-  RouteSelectionExpression = "string",
-  Version = "string"
-)
+create_api(ApiKeySelectionExpression = NULL, Description = NULL,
+  DisableSchemaValidation = NULL, Name, ProtocolType,
+  RouteSelectionExpression, Version = NULL)
 }
 \arguments{
 \item{ApiKeySelectionExpression}{An API key selection expression. See \href{https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions}{API Key Selection Expressions}.}
@@ -32,6 +26,16 @@ create_api(
 \description{
 Creates an Api resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_api(
+  ApiKeySelectionExpression = "string",
+  Description = "string",
+  DisableSchemaValidation = TRUE|FALSE,
+  Name = "string",
+  ProtocolType = "WEBSOCKET",
+  RouteSelectionExpression = "string",
+  Version = "string"
+)
 }
+}
+

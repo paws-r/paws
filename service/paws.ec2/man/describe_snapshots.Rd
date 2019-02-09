@@ -4,28 +4,9 @@
 \alias{describe_snapshots}
 \title{Describes one or more of the EBS snapshots available to you}
 \usage{
-describe_snapshots(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  OwnerIds = list(
-    "string"
-  ),
-  RestorableByUserIds = list(
-    "string"
-  ),
-  SnapshotIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
+describe_snapshots(Filters = NULL, MaxResults = NULL,
+  NextToken = NULL, OwnerIds = NULL, RestorableByUserIds = NULL,
+  SnapshotIds = NULL, DryRun = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -78,20 +59,46 @@ If you specify a list of restorable users, only snapshots with create snapshot p
 
 If you are describing a long list of snapshots, you can paginate the output to make the list more manageable. The \code{MaxResults} parameter sets the maximum number of results returned in a single page. If the list of results exceeds your \code{MaxResults} value, then that number of results is returned along with a \code{NextToken} value that can be passed to a subsequent \code{DescribeSnapshots} request to retrieve the remaining results.
 
-For more information about EBS snapshots, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html}{Amazon EBS Snapshots} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information about EBS snapshots, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html}{Amazon EBS Snapshots} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_snapshots(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string",
+  OwnerIds = list(
+    "string"
+  ),
+  RestorableByUserIds = list(
+    "string"
+  ),
+  SnapshotIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example describes a snapshot with the snapshot ID of
 # ``snap-1234567890abcdef0``.
-describe_snapshots(
+\donttest{describe_snapshots(
   SnapshotIds = list(
     "snap-1234567890abcdef0"
   )
-)
+)}
 
 # This example describes all snapshots owned by the ID 012345678910 that
 # are in the ``pending`` status.
-describe_snapshots(
+\donttest{describe_snapshots(
   Filters = list(
     list(
       Name = "status",
@@ -103,6 +110,6 @@ describe_snapshots(
   OwnerIds = list(
     "012345678910"
   )
-)
+)}
 
 }

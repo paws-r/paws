@@ -4,12 +4,7 @@
 \alias{describe_account_attributes}
 \title{Describes attributes of your AWS account}
 \usage{
-describe_account_attributes(
-  AttributeNames = list(
-    "supported-platforms"|"default-vpc"
-  ),
-  DryRun = TRUE|FALSE
-)
+describe_account_attributes(AttributeNames = NULL, DryRun = NULL)
 }
 \arguments{
 \item{AttributeNames}{One or more account attribute names.}
@@ -29,16 +24,26 @@ Describes attributes of your AWS account. The following are the supported accoun
 \item \code{vpc-max-elastic-ips}: The maximum number of Elastic IP addresses that you can allocate for use with EC2-VPC.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{describe_account_attributes(
+  AttributeNames = list(
+    "supported-platforms"|"default-vpc"
+  ),
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example describes the supported-platforms attribute for your AWS
 # account.
-describe_account_attributes(
+\donttest{describe_account_attributes(
   AttributeNames = list(
     "supported-platforms"
   )
-)
+)}
 
 # This example describes the attributes for your AWS account.
-describe_account_attributes()
+\donttest{describe_account_attributes()}
 
 }

@@ -4,7 +4,25 @@
 \alias{list_assessment_runs}
 \title{Lists the assessment runs that correspond to the assessment templates that are specified by the ARNs of the assessment templates}
 \usage{
-list_assessment_runs(
+list_assessment_runs(assessmentTemplateArns = NULL, filter = NULL,
+  nextToken = NULL, maxResults = NULL)
+}
+\arguments{
+\item{assessmentTemplateArns}{The ARNs that specify the assessment templates whose assessment runs you want to list.}
+
+\item{filter}{You can use this parameter to specify a subset of data to be included in the action's response.
+
+For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.}
+
+\item{nextToken}{You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the \strong{ListAssessmentRuns} action. Subsequent calls to the action fill \strong{nextToken} in the request with the value of \strong{NextToken} from the previous response to continue listing data.}
+
+\item{maxResults}{You can use this parameter to indicate the maximum number of items that you want in the response. The default value is 10. The maximum value is 500.}
+}
+\description{
+Lists the assessment runs that correspond to the assessment templates that are specified by the ARNs of the assessment templates.
+}
+\section{Accepted Parameters}{
+\preformatted{list_assessment_runs(
   assessmentTemplateArns = list(
     "string"
   ),
@@ -37,28 +55,16 @@ list_assessment_runs(
   maxResults = 123
 )
 }
-\arguments{
-\item{assessmentTemplateArns}{The ARNs that specify the assessment templates whose assessment runs you want to list.}
-
-\item{filter}{You can use this parameter to specify a subset of data to be included in the action's response.
-
-For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.}
-
-\item{nextToken}{You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the \strong{ListAssessmentRuns} action. Subsequent calls to the action fill \strong{nextToken} in the request with the value of \strong{NextToken} from the previous response to continue listing data.}
-
-\item{maxResults}{You can use this parameter to indicate the maximum number of items that you want in the response. The default value is 10. The maximum value is 500.}
 }
-\description{
-Lists the assessment runs that correspond to the assessment templates that are specified by the ARNs of the assessment templates.
-}
+
 \examples{
 # Lists the assessment runs that correspond to the assessment templates
 # that are specified by the ARNs of the assessment templates.
-list_assessment_runs(
+\donttest{list_assessment_runs(
   assessmentTemplateArns = list(
     "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-4r1V2mAw"
   ),
   maxResults = 123L
-)
+)}
 
 }

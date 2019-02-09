@@ -4,9 +4,7 @@
 \alias{describe_thing_group}
 \title{Describe a thing group}
 \usage{
-describe_thing_group(
-  thingGroupName = "string"
-)
+describe_thing_group(thingGroupName)
 }
 \arguments{
 \item{thingGroupName}{[required] The name of the thing group.}
@@ -14,6 +12,10 @@ describe_thing_group(
 \description{
 Describe a thing group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_thing_group(
+  thingGroupName = "string"
+)
 }
+}
+

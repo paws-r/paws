@@ -4,7 +4,32 @@
 \alias{update_channel}
 \title{Updates a channel}
 \usage{
-update_channel(
+update_channel(ChannelId, Destinations = NULL, EncoderSettings = NULL,
+  InputAttachments = NULL, InputSpecification = NULL,
+  LogLevel = NULL, Name = NULL, RoleArn = NULL)
+}
+\arguments{
+\item{ChannelId}{[required] channel ID}
+
+\item{Destinations}{A list of output destinations for this channel.}
+
+\item{EncoderSettings}{The encoder settings for this channel.}
+
+\item{InputAttachments}{}
+
+\item{InputSpecification}{Specification of input for this channel (max. bitrate, resolution, codec, etc.)}
+
+\item{LogLevel}{The log level to write to CloudWatch Logs.}
+
+\item{Name}{The name of the channel.}
+
+\item{RoleArn}{An optional Amazon Resource Name (ARN) of the role to assume when running the Channel. If you do not specify this on an update call but the role was previously set that role will be removed.}
+}
+\description{
+Updates a channel.
+}
+\section{Accepted Parameters}{
+\preformatted{update_channel(
   ChannelId = "string",
   Destinations = list(
     list(
@@ -233,6 +258,11 @@ update_channel(
             ),
             RolloverInterval = 123
           ),
+          FrameCaptureGroupSettings = list(
+            Destination = list(
+              DestinationRefId = "string"
+            )
+          ),
           HlsGroupSettings = list(
             AdMarkers = list(
               "ADOBE"|"ELEMENTAL"|"ELEMENTAL_SCTE35"
@@ -286,6 +316,7 @@ update_channel(
                 RestartDelay = 123
               )
             ),
+            IFrameOnlyPlaylists = "DISABLED"|"STANDARD",
             IndexNSegments = 123,
             InputLossAction = "EMIT_OUTPUT"|"PAUSE_OUTPUT",
             IvInManifest = "EXCLUDE"|"INCLUDE",
@@ -432,6 +463,9 @@ update_channel(
                 Extension = "string",
                 NameModifier = "string"
               ),
+              FrameCaptureOutputSettings = list(
+                NameModifier = "string"
+              ),
               HlsOutputSettings = list(
                 HlsSettings = list(
                   AudioOnlyHlsSettings = list(
@@ -564,6 +598,9 @@ update_channel(
     VideoDescriptions = list(
       list(
         CodecSettings = list(
+          FrameCaptureSettings = list(
+            CaptureInterval = 123
+          ),
           H264Settings = list(
             AdaptiveQuantization = "HIGH"|"HIGHER"|"LOW"|"MAX"|"MEDIUM"|"OFF",
             AfdSignaling = "AUTO"|"FIXED"|"NONE",
@@ -699,26 +736,5 @@ update_channel(
   RoleArn = "string"
 )
 }
-\arguments{
-\item{ChannelId}{[required] channel ID}
-
-\item{Destinations}{A list of output destinations for this channel.}
-
-\item{EncoderSettings}{The encoder settings for this channel.}
-
-\item{InputAttachments}{}
-
-\item{InputSpecification}{Specification of input for this channel (max. bitrate, resolution, codec, etc.)}
-
-\item{LogLevel}{The log level to write to CloudWatch Logs.}
-
-\item{Name}{The name of the channel.}
-
-\item{RoleArn}{An optional Amazon Resource Name (ARN) of the role to assume when running the Channel. If you do not specify this on an update call but the role was previously set that role will be removed.}
 }
-\description{
-Updates a channel.
-}
-\examples{
 
-}

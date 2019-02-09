@@ -4,32 +4,10 @@
 \alias{simulate_custom_policy}
 \title{Simulate how a set of IAM policies and optionally a resource-based policy works with a list of API operations and AWS resources to determine the policies' effective permissions}
 \usage{
-simulate_custom_policy(
-  PolicyInputList = list(
-    "string"
-  ),
-  ActionNames = list(
-    "string"
-  ),
-  ResourceArns = list(
-    "string"
-  ),
-  ResourcePolicy = "string",
-  ResourceOwner = "string",
-  CallerArn = "string",
-  ContextEntries = list(
-    list(
-      ContextKeyName = "string",
-      ContextKeyValues = list(
-        "string"
-      ),
-      ContextKeyType = "string"|"stringList"|"numeric"|"numericList"|"boolean"|"booleanList"|"ip"|"ipList"|"binary"|"binaryList"|"date"|"dateList"
-    )
-  ),
-  ResourceHandlingOption = "string",
-  MaxItems = 123,
-  Marker = "string"
-)
+simulate_custom_policy(PolicyInputList, ActionNames, ResourceArns = NULL,
+  ResourcePolicy = NULL, ResourceOwner = NULL, CallerArn = NULL,
+  ContextEntries = NULL, ResourceHandlingOption = NULL,
+  MaxItems = NULL, Marker = NULL)
 }
 \arguments{
 \item{PolicyInputList}{[required] A list of policy documents to include in the simulation. Each document is specified as a string containing the complete, valid JSON text of an IAM policy. Do not include any resource-based policies in this parameter. Any resource-based policy must be submitted with the \code{ResourcePolicy} parameter. The policies cannot be "scope-down" policies, such as you could include in a call to \href{http://docs.aws.amazon.com/IAM/latest/APIReference/API_GetFederationToken.html}{GetFederationToken} or one of the \href{http://docs.aws.amazon.com/IAM/latest/APIReference/API_AssumeRole.html}{AssumeRole} API operations. In other words, do not use policies designed to restrict what a user can do while using the temporary credentials.
@@ -112,6 +90,33 @@ Context keys are variables maintained by AWS and its services that provide detai
 
 If the output is long, you can use \code{MaxItems} and \code{Marker} parameters to paginate the results.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{simulate_custom_policy(
+  PolicyInputList = list(
+    "string"
+  ),
+  ActionNames = list(
+    "string"
+  ),
+  ResourceArns = list(
+    "string"
+  ),
+  ResourcePolicy = "string",
+  ResourceOwner = "string",
+  CallerArn = "string",
+  ContextEntries = list(
+    list(
+      ContextKeyName = "string",
+      ContextKeyValues = list(
+        "string"
+      ),
+      ContextKeyType = "string"|"stringList"|"numeric"|"numericList"|"boolean"|"booleanList"|"ip"|"ipList"|"binary"|"binaryList"|"date"|"dateList"
+    )
+  ),
+  ResourceHandlingOption = "string",
+  MaxItems = 123,
+  Marker = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{describe_model_package}
 \title{Returns a description of the specified model package, which is used to create Amazon SageMaker models or list them on AWS Marketplace}
 \usage{
-describe_model_package(
-  ModelPackageName = "string"
-)
+describe_model_package(ModelPackageName)
 }
 \arguments{
 \item{ModelPackageName}{[required] The name of the model package to describe.}
@@ -17,6 +15,10 @@ Returns a description of the specified model package, which is used to create Am
 \details{
 To create models in Amazon SageMaker, buyers can subscribe to model packages listed on AWS Marketplace.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_model_package(
+  ModelPackageName = "string"
+)
 }
+}
+

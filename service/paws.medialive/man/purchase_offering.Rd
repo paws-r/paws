@@ -4,13 +4,8 @@
 \alias{purchase_offering}
 \title{Purchase an offering and create a reservation}
 \usage{
-purchase_offering(
-  Count = 123,
-  Name = "string",
-  OfferingId = "string",
-  RequestId = "string",
-  Start = "string"
-)
+purchase_offering(Count, Name = NULL, OfferingId, RequestId = NULL,
+  Start = NULL)
 }
 \arguments{
 \item{Count}{[required] Number of resources}
@@ -26,6 +21,14 @@ purchase_offering(
 \description{
 Purchase an offering and create a reservation.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{purchase_offering(
+  Count = 123,
+  Name = "string",
+  OfferingId = "string",
+  RequestId = "string",
+  Start = "string"
+)
 }
+}
+

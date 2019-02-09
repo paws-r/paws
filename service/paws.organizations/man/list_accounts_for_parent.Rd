@@ -4,11 +4,7 @@
 \alias{list_accounts_for_parent}
 \title{Lists the accounts in an organization that are contained by the specified target root or organizational unit (OU)}
 \usage{
-list_accounts_for_parent(
-  ParentId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_accounts_for_parent(ParentId, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{ParentId}{[required] The unique identifier (ID) for the parent root or organization unit (OU) whose accounts you want to list.}
@@ -25,11 +21,20 @@ Always check the \code{NextToken} response parameter for a \code{null} value whe
 
 This operation can be called only from the organization's master account.
 }
+\section{Accepted Parameters}{
+\preformatted{list_accounts_for_parent(
+  ParentId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
+}
+}
+
 \examples{
 # The following example shows how to request a list of the accounts in an
 # OU:/n/n
-list_accounts_for_parent(
+\donttest{list_accounts_for_parent(
   ParentId = "ou-examplerootid111-exampleouid111"
-)
+)}
 
 }

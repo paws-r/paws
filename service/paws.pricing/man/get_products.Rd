@@ -4,19 +4,8 @@
 \alias{get_products}
 \title{Returns a list of all products that match the filter criteria}
 \usage{
-get_products(
-  ServiceCode = "string",
-  Filters = list(
-    list(
-      Type = "TERM_MATCH",
-      Field = "string",
-      Value = "string"
-    )
-  ),
-  FormatVersion = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+get_products(ServiceCode = NULL, Filters = NULL,
+  FormatVersion = NULL, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{ServiceCode}{The code for the service whose products you want to retrieve.}
@@ -34,9 +23,26 @@ Valid values are: \code{aws_v1}}
 \description{
 Returns a list of all products that match the filter criteria.
 }
+\section{Accepted Parameters}{
+\preformatted{get_products(
+  ServiceCode = "string",
+  Filters = list(
+    list(
+      Type = "TERM_MATCH",
+      Field = "string",
+      Value = "string"
+    )
+  ),
+  FormatVersion = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
+}
+}
+
 \examples{
 # This operation returns a list of products that match the given criteria.
-get_products(
+\donttest{get_products(
   Filters = list(
     list(
       Field = "ServiceCode",
@@ -51,6 +57,6 @@ get_products(
   ),
   FormatVersion = "aws_v1",
   MaxResults = 1L
-)
+)}
 
 }

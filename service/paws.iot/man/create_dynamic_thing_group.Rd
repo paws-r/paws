@@ -4,27 +4,8 @@
 \alias{create_dynamic_thing_group}
 \title{Creates a dynamic thing group}
 \usage{
-create_dynamic_thing_group(
-  thingGroupName = "string",
-  thingGroupProperties = list(
-    thingGroupDescription = "string",
-    attributePayload = list(
-      attributes = list(
-        "string"
-      ),
-      merge = TRUE|FALSE
-    )
-  ),
-  indexName = "string",
-  queryString = "string",
-  queryVersion = "string",
-  tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_dynamic_thing_group(thingGroupName, thingGroupProperties = NULL,
+  indexName = NULL, queryString, queryVersion = NULL, tags = NULL)
 }
 \arguments{
 \item{thingGroupName}{[required] The dynamic thing group name to create.}
@@ -48,6 +29,28 @@ Currently one query version is supported: "2017-09-30". If not specified, the qu
 \description{
 Creates a dynamic thing group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_dynamic_thing_group(
+  thingGroupName = "string",
+  thingGroupProperties = list(
+    thingGroupDescription = "string",
+    attributePayload = list(
+      attributes = list(
+        "string"
+      ),
+      merge = TRUE|FALSE
+    )
+  ),
+  indexName = "string",
+  queryString = "string",
+  queryVersion = "string",
+  tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

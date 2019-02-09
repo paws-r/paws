@@ -4,23 +4,9 @@
 \alias{start_face_search}
 \title{Starts the asynchronous search for faces in a collection that match the faces of persons detected in a stored video}
 \usage{
-start_face_search(
-  Video = list(
-    S3Object = list(
-      Bucket = "string",
-      Name = "string",
-      Version = "string"
-    )
-  ),
-  ClientRequestToken = "string",
-  FaceMatchThreshold = 123.0,
-  CollectionId = "string",
-  NotificationChannel = list(
-    SNSTopicArn = "string",
-    RoleArn = "string"
-  ),
-  JobTag = "string"
-)
+start_face_search(Video, ClientRequestToken = NULL,
+  FaceMatchThreshold = NULL, CollectionId, NotificationChannel = NULL,
+  JobTag = NULL)
 }
 \arguments{
 \item{Video}{[required] The video you want to search. The video must be stored in an Amazon S3 bucket.}
@@ -39,8 +25,26 @@ start_face_search(
 Starts the asynchronous search for faces in a collection that match the faces of persons detected in a stored video.
 }
 \details{
-The video must be stored in an Amazon S3 bucket. Use Video to specify the bucket name and the filename of the video. \code{StartFaceSearch} returns a job identifier (\code{JobId}) which you use to get the search results once the search has completed. When searching is finished, Amazon Rekognition Video publishes a completion status to the Amazon Simple Notification Service topic that you specify in \code{NotificationChannel}. To get the search results, first check that the status value published to the Amazon SNS topic is \code{SUCCEEDED}. If so, call and pass the job identifier (\code{JobId}) from the initial call to \code{StartFaceSearch}. For more information, see procedure-person-search-videos.
+The video must be stored in an Amazon S3 bucket. Use Video to specify the bucket name and the filename of the video. \code{StartFaceSearch} returns a job identifier (\code{JobId}) which you use to get the search results once the search has completed. When searching is finished, Amazon Rekognition Video publishes a completion status to the Amazon Simple Notification Service topic that you specify in \code{NotificationChannel}. To get the search results, first check that the status value published to the Amazon SNS topic is \code{SUCCEEDED}. If so, call GetFaceSearch and pass the job identifier (\code{JobId}) from the initial call to \code{StartFaceSearch}. For more information, see procedure-person-search-videos.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{start_face_search(
+  Video = list(
+    S3Object = list(
+      Bucket = "string",
+      Name = "string",
+      Version = "string"
+    )
+  ),
+  ClientRequestToken = "string",
+  FaceMatchThreshold = 123.0,
+  CollectionId = "string",
+  NotificationChannel = list(
+    SNSTopicArn = "string",
+    RoleArn = "string"
+  ),
+  JobTag = "string"
+)
+}
+}
 
-}

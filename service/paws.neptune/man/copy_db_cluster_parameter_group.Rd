@@ -4,17 +4,9 @@
 \alias{copy_db_cluster_parameter_group}
 \title{Copies the specified DB cluster parameter group}
 \usage{
-copy_db_cluster_parameter_group(
-  SourceDBClusterParameterGroupIdentifier = "string",
-  TargetDBClusterParameterGroupIdentifier = "string",
-  TargetDBClusterParameterGroupDescription = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+copy_db_cluster_parameter_group(SourceDBClusterParameterGroupIdentifier,
+  TargetDBClusterParameterGroupIdentifier,
+  TargetDBClusterParameterGroupDescription, Tags = NULL)
 }
 \arguments{
 \item{SourceDBClusterParameterGroupIdentifier}{[required] The identifier or Amazon Resource Name (ARN) for the source DB cluster parameter group. For information about creating an ARN, see \href{http://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing}{Constructing an Amazon Resource Name (ARN)}.
@@ -45,6 +37,18 @@ Example: \code{my-cluster-param-group1}}
 \description{
 Copies the specified DB cluster parameter group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{copy_db_cluster_parameter_group(
+  SourceDBClusterParameterGroupIdentifier = "string",
+  TargetDBClusterParameterGroupIdentifier = "string",
+  TargetDBClusterParameterGroupDescription = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

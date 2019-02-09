@@ -4,11 +4,7 @@
 \alias{list_groups_for_user}
 \title{Lists the IAM groups that the specified IAM user belongs to}
 \usage{
-list_groups_for_user(
-  UserName = "string",
-  Marker = "string",
-  MaxItems = 123
-)
+list_groups_for_user(UserName, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{UserName}{[required] The name of the user to list groups for.
@@ -27,11 +23,20 @@ Lists the IAM groups that the specified IAM user belongs to.
 \details{
 You can paginate the results using the \code{MaxItems} and \code{Marker} parameters.
 }
+\section{Accepted Parameters}{
+\preformatted{list_groups_for_user(
+  UserName = "string",
+  Marker = "string",
+  MaxItems = 123
+)
+}
+}
+
 \examples{
 # The following command displays the groups that the IAM user named Bob
 # belongs to.
-list_groups_for_user(
+\donttest{list_groups_for_user(
   UserName = "Bob"
-)
+)}
 
 }

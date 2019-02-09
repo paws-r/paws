@@ -4,9 +4,7 @@
 \alias{get_service}
 \title{Gets the settings for a specified service}
 \usage{
-get_service(
-  Id = "string"
-)
+get_service(Id)
 }
 \arguments{
 \item{Id}{[required] The ID of the service that you want to get settings for.}
@@ -14,6 +12,10 @@ get_service(
 \description{
 Gets the settings for a specified service.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_service(
+  Id = "string"
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{list_public_keys}
 \title{List all public keys that have been added to CloudFront for this account}
 \usage{
-list_public_keys(
-  Marker = "string",
-  MaxItems = "string"
-)
+list_public_keys(Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{Marker}{Use this when paginating results to indicate where to begin in your list of public keys. The results include public keys in the list that occur after the marker. To get the next page of results, set the \code{Marker} to the value of the \code{NextMarker} from the current page's response (which is also the ID of the last public key on that page).}
@@ -17,6 +14,11 @@ list_public_keys(
 \description{
 List all public keys that have been added to CloudFront for this account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_public_keys(
+  Marker = "string",
+  MaxItems = "string"
+)
 }
+}
+

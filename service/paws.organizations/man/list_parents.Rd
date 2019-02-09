@@ -4,11 +4,7 @@
 \alias{list_parents}
 \title{Lists the root or organizational units (OUs) that serve as the immediate parent of the specified child OU or account}
 \usage{
-list_parents(
-  ChildId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_parents(ChildId, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{ChildId}{[required] The unique identifier (ID) of the OU or account whose parent containers you want to list. Do not specify a root.
@@ -33,11 +29,20 @@ This operation can be called only from the organization's master account.
 
 In the current release, a child can have only a single parent.
 }
+\section{Accepted Parameters}{
+\preformatted{list_parents(
+  ChildId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
+}
+}
+
 \examples{
 # The following example shows how to list the root or OUs that contain
 # account 444444444444:/n/n
-list_parents(
+\donttest{list_parents(
   ChildId = "444444444444"
-)
+)}
 
 }

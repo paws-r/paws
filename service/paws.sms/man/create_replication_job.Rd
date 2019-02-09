@@ -4,18 +4,10 @@
 \alias{create_replication_job}
 \title{Creates a replication job}
 \usage{
-create_replication_job(
-  serverId = "string",
-  seedReplicationTime = as.POSIXct("2015-01-01"),
-  frequency = 123,
-  runOnce = TRUE|FALSE,
-  licenseType = "AWS"|"BYOL",
-  roleName = "string",
-  description = "string",
-  numberOfRecentAmisToKeep = 123,
-  encrypted = TRUE|FALSE,
-  kmsKeyId = "string"
-)
+create_replication_job(serverId, seedReplicationTime, frequency = NULL,
+  runOnce = NULL, licenseType = NULL, roleName = NULL,
+  description = NULL, numberOfRecentAmisToKeep = NULL,
+  encrypted = NULL, kmsKeyId = NULL)
 }
 \arguments{
 \item{serverId}{[required] The identifier of the server.}
@@ -49,6 +41,19 @@ If encrypted is \emph{true} but a KMS key id is not specified, the customer's de
 \description{
 Creates a replication job. The replication job schedules periodic replication runs to replicate your server to AWS. Each replication run creates an Amazon Machine Image (AMI).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_replication_job(
+  serverId = "string",
+  seedReplicationTime = as.POSIXct("2015-01-01"),
+  frequency = 123,
+  runOnce = TRUE|FALSE,
+  licenseType = "AWS"|"BYOL",
+  roleName = "string",
+  description = "string",
+  numberOfRecentAmisToKeep = 123,
+  encrypted = TRUE|FALSE,
+  kmsKeyId = "string"
+)
 }
+}
+

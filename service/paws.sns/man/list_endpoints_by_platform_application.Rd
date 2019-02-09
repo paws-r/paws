@@ -4,10 +4,8 @@
 \alias{list_endpoints_by_platform_application}
 \title{Lists the endpoints and endpoint attributes for devices in a supported push notification service, such as GCM and APNS}
 \usage{
-list_endpoints_by_platform_application(
-  PlatformApplicationArn = "string",
-  NextToken = "string"
-)
+list_endpoints_by_platform_application(PlatformApplicationArn,
+  NextToken = NULL)
 }
 \arguments{
 \item{PlatformApplicationArn}{[required] PlatformApplicationArn for ListEndpointsByPlatformApplicationInput action.}
@@ -20,6 +18,11 @@ Lists the endpoints and endpoint attributes for devices in a supported push noti
 \details{
 This action is throttled at 30 transactions per second (TPS).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_endpoints_by_platform_application(
+  PlatformApplicationArn = "string",
+  NextToken = "string"
+)
 }
+}
+

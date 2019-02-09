@@ -4,10 +4,7 @@
 \alias{put_user_permissions_boundary}
 \title{Adds or updates the policy that is specified as the IAM user's permissions boundary}
 \usage{
-put_user_permissions_boundary(
-  UserName = "string",
-  PermissionsBoundary = "string"
-)
+put_user_permissions_boundary(UserName, PermissionsBoundary)
 }
 \arguments{
 \item{UserName}{[required] The name (friendly name, not ARN) of the IAM user for which you want to set the permissions boundary.}
@@ -20,6 +17,11 @@ Adds or updates the policy that is specified as the IAM user's permissions bound
 \details{
 Policies that are used as permissions boundaries do not provide permissions. You must also attach a permissions policy to the user. To learn how the effective permissions for a user are evaluated, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html}{IAM JSON Policy Evaluation Logic} in the IAM User Guide.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_user_permissions_boundary(
+  UserName = "string",
+  PermissionsBoundary = "string"
+)
 }
+}
+

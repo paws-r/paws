@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.sms_operations.R
 \name{generate_change_set}
 \alias{generate_change_set}
-\title{Generates a target change set for a currently launched stack and writes it to an Amazon S3 object in the customer's Amazon S3 bucket}
+\title{Generates a target change set for a currently launched stack and writes it to an Amazon S3 object in the customer’s Amazon S3 bucket}
 \usage{
-generate_change_set(
-  appId = "string",
-  changesetFormat = "JSON"|"YAML"
-)
+generate_change_set(appId = NULL, changesetFormat = NULL)
 }
 \arguments{
 \item{appId}{ID of the application associated with the change set.}
@@ -17,6 +14,11 @@ generate_change_set(
 \description{
 Generates a target change set for a currently launched stack and writes it to an Amazon S3 object in the customer's Amazon S3 bucket.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{generate_change_set(
+  appId = "string",
+  changesetFormat = "JSON"|"YAML"
+)
 }
+}
+

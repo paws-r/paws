@@ -4,7 +4,23 @@
 \alias{create_location_efs}
 \title{Creates an endpoint for an Amazon EFS file system}
 \usage{
-create_location_efs(
+create_location_efs(Subdirectory, EfsFilesystemArn, Ec2Config,
+  Tags = NULL)
+}
+\arguments{
+\item{Subdirectory}{[required] A subdirectory in the location's path. This subdirectory in the EFS file system is used to read data from the EFS source location or write data to the EFS destination. By default, AWS DataSync uses the root directory.}
+
+\item{EfsFilesystemArn}{[required] The Amazon Resource Name (ARN) for the Amazon EFS file system.}
+
+\item{Ec2Config}{[required] The subnet and security group that the Amazon EFS file system uses.}
+
+\item{Tags}{The key-value pair that represents a tag that you want to add to the resource. The value can be an empty string. This value helps you manage, filter, and search for your resources. We recommend that you create a name tag for your location.}
+}
+\description{
+Creates an endpoint for an Amazon EFS file system.
+}
+\section{Accepted Parameters}{
+\preformatted{create_location_efs(
   Subdirectory = "string",
   EfsFilesystemArn = "string",
   Ec2Config = list(
@@ -21,18 +37,5 @@ create_location_efs(
   )
 )
 }
-\arguments{
-\item{Subdirectory}{[required] A subdirectory in the location's path. This subdirectory in the EFS file system is used to read data from the EFS source location or write data to the EFS destination. By default, AWS DataSync uses the root directory.}
-
-\item{EfsFilesystemArn}{[required] The Amazon Resource Name (ARN) for the Amazon EFS file system.}
-
-\item{Ec2Config}{[required] The subnet and security group that the Amazon EFS file system uses.}
-
-\item{Tags}{The key-value pair that represents a tag that you want to add to the resource. The value can be an empty string. This value helps you manage, filter, and search for your resources. We recommend that you create a name tag for your location.}
 }
-\description{
-Creates an endpoint for an Amazon EFS file system.
-}
-\examples{
 
-}

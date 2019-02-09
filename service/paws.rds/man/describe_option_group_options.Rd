@@ -4,20 +4,8 @@
 \alias{describe_option_group_options}
 \title{Describes all available options}
 \usage{
-describe_option_group_options(
-  EngineName = "string",
-  MajorEngineVersion = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_option_group_options(EngineName, MajorEngineVersion = NULL,
+  Filters = NULL, MaxRecords = NULL, Marker = NULL)
 }
 \arguments{
 \item{EngineName}{[required] A required parameter. Options available for the given engine name are described.}
@@ -37,6 +25,21 @@ Constraints: Minimum 20, maximum 100.}
 \description{
 Describes all available options.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_option_group_options(
+  EngineName = "string",
+  MajorEngineVersion = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
+}
+

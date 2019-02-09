@@ -4,23 +4,8 @@
 \alias{index_faces}
 \title{Detects faces in the input image and adds them to the specified collection}
 \usage{
-index_faces(
-  CollectionId = "string",
-  Image = list(
-    Bytes = raw,
-    S3Object = list(
-      Bucket = "string",
-      Name = "string",
-      Version = "string"
-    )
-  ),
-  ExternalImageId = "string",
-  DetectionAttributes = list(
-    "DEFAULT"|"ALL"
-  ),
-  MaxFaces = 123,
-  QualityFilter = "NONE"|"AUTO"
-)
+index_faces(CollectionId, Image, ExternalImageId = NULL,
+  DetectionAttributes = NULL, MaxFaces = NULL, QualityFilter = NULL)
 }
 \arguments{
 \item{CollectionId}{[required] The ID of an existing collection to which you want to add the faces that are detected in the input images.}
@@ -49,29 +34,29 @@ To use quality filtering, the collection you are using must be associated with v
 Detects faces in the input image and adds them to the specified collection.
 }
 \details{
-Amazon Rekognition doesn't save the actual faces that are detected. Instead, the underlying detection algorithm first detects the faces in the input image. For each face, the algorithm extracts facial features into a feature vector, and stores it in the backend database. Amazon Rekognition uses feature vectors when it performs face match and search operations using the and operations.
+Amazon Rekognition doesn't save the actual faces that are detected. Instead, the underlying detection algorithm first detects the faces in the input image. For each face, the algorithm extracts facial features into a feature vector, and stores it in the backend database. Amazon Rekognition uses feature vectors when it performs face match and search operations using the SearchFaces and SearchFacesByImage operations.
 
 For more information, see Adding Faces to a Collection in the Amazon Rekognition Developer Guide.
 
-To get the number of faces in a collection, call .
+To get the number of faces in a collection, call DescribeCollection.
 
 If you're using version 1.0 of the face detection model, \code{IndexFaces} indexes the 15 largest faces in the input image. Later versions of the face detection model index the 100 largest faces in the input image.
 
 If you're using version 4 or later of the face model, image orientation information is not returned in the \code{OrientationCorrection} field.
 
-To determine which version of the model you're using, call and supply the collection ID. You can also get the model version from the value of \code{FaceModelVersion} in the response from \code{IndexFaces}
+To determine which version of the model you're using, call DescribeCollection and supply the collection ID. You can also get the model version from the value of \code{FaceModelVersion} in the response from \code{IndexFaces}
 
 For more information, see Model Versioning in the Amazon Rekognition Developer Guide.
 
-If you provide the optional \code{ExternalImageID} for the input image you provided, Amazon Rekognition associates this ID with all faces that it detects. When you call the operation, the response returns the external ID. You can use this external image ID to create a client-side index to associate the faces with each image. You can then use the index to find all faces in an image.
+If you provide the optional \code{ExternalImageID} for the input image you provided, Amazon Rekognition associates this ID with all faces that it detects. When you call the ListFaces operation, the response returns the external ID. You can use this external image ID to create a client-side index to associate the faces with each image. You can then use the index to find all faces in an image.
 
 You can specify the maximum number of faces to index with the \code{MaxFaces} input parameter. This is useful when you want to index the largest faces in an image and don't want to index smaller faces, such as those belonging to people standing in the background.
 
 The \code{QualityFilter} input parameter allows you to filter out detected faces that don't meet the required quality bar chosen by Amazon Rekognition. The quality bar is based on a variety of common use cases. By default, \code{IndexFaces} filters detected faces. You can also explicitly filter detected faces by specifying \code{AUTO} for the value of \code{QualityFilter}. If you do not want to filter detected faces, specify \code{NONE}.
 
-To use quality filtering, you need a collection associated with version 3 of the face model. To get the version of the face model associated with a collection, call .
+To use quality filtering, you need a collection associated with version 3 of the face model. To get the version of the face model associated with a collection, call DescribeCollection.
 
-Information about faces detected in an image, but not indexed, is returned in an array of objects, \code{UnindexedFaces}. Faces aren't indexed for reasons such as:
+Information about faces detected in an image, but not indexed, is returned in an array of UnindexedFace objects, \code{UnindexedFaces}. Faces aren't indexed for reasons such as:
 \itemize{
 \item The number of faces detected exceeds the value of the \code{MaxFaces} request parameter.
 \item The face is too small compared to the image dimensions.
@@ -94,10 +79,31 @@ The input image is passed either as base64-encoded image bytes, or as a referenc
 
 This operation requires permissions to perform the \code{rekognition:IndexFaces} action.
 }
+\section{Accepted Parameters}{
+\preformatted{index_faces(
+  CollectionId = "string",
+  Image = list(
+    Bytes = raw,
+    S3Object = list(
+      Bucket = "string",
+      Name = "string",
+      Version = "string"
+    )
+  ),
+  ExternalImageId = "string",
+  DetectionAttributes = list(
+    "DEFAULT"|"ALL"
+  ),
+  MaxFaces = 123,
+  QualityFilter = "NONE"|"AUTO"
+)
+}
+}
+
 \examples{
 # This operation detects faces in an image and adds them to the specified
 # Rekognition collection.
-index_faces(
+\donttest{index_faces(
   CollectionId = "myphotos",
   DetectionAttributes = list(),
   ExternalImageId = "myphotoid",
@@ -107,6 +113,6 @@ index_faces(
       Name = "myphoto"
     )
   )
-)
+)}
 
 }

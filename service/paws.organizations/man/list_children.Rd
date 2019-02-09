@@ -4,12 +4,7 @@
 \alias{list_children}
 \title{Lists all of the organizational units (OUs) or accounts that are contained in the specified parent OU or root}
 \usage{
-list_children(
-  ParentId = "string",
-  ChildType = "ACCOUNT"|"ORGANIZATIONAL_UNIT",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_children(ParentId, ChildType, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{ParentId}{[required] The unique identifier (ID) for the parent root or OU whose children you want to list.
@@ -34,12 +29,22 @@ Always check the \code{NextToken} response parameter for a \code{null} value whe
 
 This operation can be called only from the organization's master account.
 }
+\section{Accepted Parameters}{
+\preformatted{list_children(
+  ParentId = "string",
+  ChildType = "ACCOUNT"|"ORGANIZATIONAL_UNIT",
+  NextToken = "string",
+  MaxResults = 123
+)
+}
+}
+
 \examples{
 # The following example shows how to request a list of the child OUs in a
 # parent root or OU:/n/n
-list_children(
+\donttest{list_children(
   ChildType = "ORGANIZATIONAL_UNIT",
   ParentId = "ou-examplerootid111-exampleouid111"
-)
+)}
 
 }

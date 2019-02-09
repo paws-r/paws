@@ -4,12 +4,7 @@
 \alias{tag_queue}
 \title{Add cost allocation tags to the specified Amazon SQS queue}
 \usage{
-tag_queue(
-  QueueUrl = "string",
-  Tags = list(
-    "string"
-  )
-)
+tag_queue(QueueUrl, Tags)
 }
 \arguments{
 \item{QueueUrl}{[required] The URL of the queue.}
@@ -33,6 +28,13 @@ For a full list of tag restrictions, see \href{http://docs.aws.amazon.com/AWSSim
 
 Cross-account permissions don't apply to this action. For more information, see see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name}{Grant Cross-Account Permissions to a Role and a User Name} in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{tag_queue(
+  QueueUrl = "string",
+  Tags = list(
+    "string"
+  )
+)
 }
+}
+

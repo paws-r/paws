@@ -4,12 +4,8 @@
 \alias{admin_list_user_auth_events}
 \title{Lists a history of user activity and any risks detected as part of Amazon Cognito advanced security}
 \usage{
-admin_list_user_auth_events(
-  UserPoolId = "string",
-  Username = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+admin_list_user_auth_events(UserPoolId, Username, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID.}
@@ -23,6 +19,13 @@ admin_list_user_auth_events(
 \description{
 Lists a history of user activity and any risks detected as part of Amazon Cognito advanced security.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{admin_list_user_auth_events(
+  UserPoolId = "string",
+  Username = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

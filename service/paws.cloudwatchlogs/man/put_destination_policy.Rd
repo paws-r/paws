@@ -4,10 +4,7 @@
 \alias{put_destination_policy}
 \title{Creates or updates an access policy associated with an existing destination}
 \usage{
-put_destination_policy(
-  destinationName = "string",
-  accessPolicy = "string"
-)
+put_destination_policy(destinationName, accessPolicy)
 }
 \arguments{
 \item{destinationName}{[required] A name for an existing destination.}
@@ -17,6 +14,11 @@ put_destination_policy(
 \description{
 Creates or updates an access policy associated with an existing destination. An access policy is an \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies_overview.html}{IAM policy document} that is used to authorize claims to register a subscription filter against a given destination.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_destination_policy(
+  destinationName = "string",
+  accessPolicy = "string"
+)
 }
+}
+

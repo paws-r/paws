@@ -4,10 +4,7 @@
 \alias{update_vtl_device_type}
 \title{Updates the type of medium changer in a tape gateway}
 \usage{
-update_vtl_device_type(
-  VTLDeviceARN = "string",
-  DeviceType = "string"
-)
+update_vtl_device_type(VTLDeviceARN, DeviceType)
 }
 \arguments{
 \item{VTLDeviceARN}{[required] The Amazon Resource Name (ARN) of the medium changer you want to select.}
@@ -19,12 +16,20 @@ Valid Values: "STK-L700", "AWS-Gateway-VTL"}
 \description{
 Updates the type of medium changer in a tape gateway. When you activate a tape gateway, you select a medium changer type for the tape gateway. This operation enables you to select a different type of medium changer after a tape gateway is activated. This operation is only supported in the tape gateway type.
 }
+\section{Accepted Parameters}{
+\preformatted{update_vtl_device_type(
+  VTLDeviceARN = "string",
+  DeviceType = "string"
+)
+}
+}
+
 \examples{
 # Updates the type of medium changer in a gateway-VTL after a gateway-VTL
 # is activated.
-update_vtl_device_type(
+\donttest{update_vtl_device_type(
   DeviceType = "Medium Changer",
   VTLDeviceARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B/device/AMZN_SGW-1FAD4876_MEDIACHANGER_00001"
-)
+)}
 
 }

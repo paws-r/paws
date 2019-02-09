@@ -4,9 +4,7 @@
 \alias{start_delivery_stream_encryption}
 \title{Enables server-side encryption (SSE) for the delivery stream}
 \usage{
-start_delivery_stream_encryption(
-  DeliveryStreamName = "string"
-)
+start_delivery_stream_encryption(DeliveryStreamName)
 }
 \arguments{
 \item{DeliveryStreamName}{[required] The name of the delivery stream for which you want to enable server-side encryption (SSE).}
@@ -23,6 +21,10 @@ You can only enable SSE for a delivery stream that uses \code{DirectPut} as its 
 
 The \code{StartDeliveryStreamEncryption} and \code{StopDeliveryStreamEncryption} operations have a combined limit of 25 calls per delivery stream per 24 hours. For example, you reach the limit if you call \code{StartDeliveryStreamEncryption} 13 times and \code{StopDeliveryStreamEncryption} 12 times for the same delivery stream in a 24-hour period.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_delivery_stream_encryption(
+  DeliveryStreamName = "string"
+)
 }
+}
+

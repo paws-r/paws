@@ -4,9 +4,7 @@
 \alias{initiate_device_claim}
 \title{Given a device ID, initiates a claim request for the associated device}
 \usage{
-initiate_device_claim(
-  DeviceId = "string"
-)
+initiate_device_claim(DeviceId)
 }
 \arguments{
 \item{DeviceId}{[required] The unique identifier of the device.}
@@ -17,6 +15,10 @@ Given a device ID, initiates a claim request for the associated device.
 \details{
 Claiming a device consists of initiating a claim, then publishing a device event, and finalizing the claim. For a device of type button, a device event can be published by simply clicking the device.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{initiate_device_claim(
+  DeviceId = "string"
+)
 }
+}
+

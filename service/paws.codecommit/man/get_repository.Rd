@@ -4,9 +4,7 @@
 \alias{get_repository}
 \title{Returns information about a repository}
 \usage{
-get_repository(
-  repositoryName = "string"
-)
+get_repository(repositoryName)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository to get information about.}
@@ -17,6 +15,10 @@ Returns information about a repository.
 \details{
 The description field for a repository accepts all HTML characters and all valid Unicode characters. Applications that do not HTML-encode the description and display it in a web page could expose users to potentially malicious code. Make sure that you HTML-encode the description field in any application that uses this API to display the repository description on a web page.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_repository(
+  repositoryName = "string"
+)
 }
+}
+

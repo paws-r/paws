@@ -4,19 +4,7 @@
 \alias{list_operations}
 \title{Lists operations that match the criteria that you specify}
 \usage{
-list_operations(
-  NextToken = "string",
-  MaxResults = 123,
-  Filters = list(
-    list(
-      Name = "NAMESPACE_ID"|"SERVICE_ID"|"STATUS"|"TYPE"|"UPDATE_DATE",
-      Values = list(
-        "string"
-      ),
-      Condition = "EQ"|"IN"|"BETWEEN"
-    )
-  )
-)
+list_operations(NextToken = NULL, MaxResults = NULL, Filters = NULL)
 }
 \arguments{
 \item{NextToken}{For the first \code{ListOperations} request, omit this value.
@@ -34,6 +22,20 @@ If you specify more than one filter, an operation must match all filters to be r
 \description{
 Lists operations that match the criteria that you specify.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_operations(
+  NextToken = "string",
+  MaxResults = 123,
+  Filters = list(
+    list(
+      Name = "NAMESPACE_ID"|"SERVICE_ID"|"STATUS"|"TYPE"|"UPDATE_DATE",
+      Values = list(
+        "string"
+      ),
+      Condition = "EQ"|"IN"|"BETWEEN"
+    )
+  )
+)
 }
+}
+

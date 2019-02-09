@@ -4,11 +4,8 @@
 \alias{list_connector_definition_versions}
 \title{Lists the versions of a connector definition, which are containers for connectors}
 \usage{
-list_connector_definition_versions(
-  ConnectorDefinitionId = "string",
-  MaxResults = "string",
-  NextToken = "string"
-)
+list_connector_definition_versions(ConnectorDefinitionId,
+  MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ConnectorDefinitionId}{[required] The ID of the connector definition.}
@@ -20,6 +17,12 @@ list_connector_definition_versions(
 \description{
 Lists the versions of a connector definition, which are containers for connectors. Connectors run on the Greengrass core and contain built-in integration with local infrastructure, device protocols, AWS, and other cloud services.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_connector_definition_versions(
+  ConnectorDefinitionId = "string",
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
+}
+

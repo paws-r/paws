@@ -4,12 +4,8 @@
 \alias{get_builtin_slot_types}
 \title{Gets a list of built-in slot types that meet the specified criteria}
 \usage{
-get_builtin_slot_types(
-  locale = "en-US"|"en-GB"|"de-DE",
-  signatureContains = "string",
-  nextToken = "string",
-  maxResults = 123
-)
+get_builtin_slot_types(locale = NULL, signatureContains = NULL,
+  nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{locale}{A list of locales that the slot type supports.}
@@ -28,6 +24,13 @@ For a list of built-in slot types, see \href{https://developer.amazon.com/public
 
 This operation requires permission for the \code{lex:GetBuiltInSlotTypes} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_builtin_slot_types(
+  locale = "en-US"|"en-GB"|"de-DE",
+  signatureContains = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

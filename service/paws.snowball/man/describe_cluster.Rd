@@ -4,9 +4,7 @@
 \alias{describe_cluster}
 \title{Returns information about a specific cluster including shipping information, cluster status, and other important metadata}
 \usage{
-describe_cluster(
-  ClusterId = "string"
-)
+describe_cluster(ClusterId)
 }
 \arguments{
 \item{ClusterId}{[required] The automatically generated ID for a cluster.}
@@ -14,11 +12,18 @@ describe_cluster(
 \description{
 Returns information about a specific cluster including shipping information, cluster status, and other important metadata.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_cluster(
+  ClusterId = "string"
+)
+}
+}
+
 \examples{
 # Returns information about a specific cluster including shipping
 # information, cluster status, and other important metadata.
-describe_cluster(
+\donttest{describe_cluster(
   ClusterId = "CID123e4567-e89b-12d3-a456-426655440000"
-)
+)}
 
 }

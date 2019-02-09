@@ -4,12 +4,8 @@
 \alias{describe_mount_targets}
 \title{Returns the descriptions of all the current mount targets, or a specific mount target, for a file system}
 \usage{
-describe_mount_targets(
-  MaxItems = 123,
-  Marker = "string",
-  FileSystemId = "string",
-  MountTargetId = "string"
-)
+describe_mount_targets(MaxItems = NULL, Marker = NULL,
+  FileSystemId = NULL, MountTargetId = NULL)
 }
 \arguments{
 \item{MaxItems}{(Optional) Maximum number of mount targets to return in the response. It must be an integer with a value greater than zero.}
@@ -26,10 +22,20 @@ Returns the descriptions of all the current mount targets, or a specific mount t
 \details{
 This operation requires permissions for the \code{elasticfilesystem:DescribeMountTargets} action, on either the file system ID that you specify in \code{FileSystemId}, or on the file system of the mount target that you specify in \code{MountTargetId}.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_mount_targets(
+  MaxItems = 123,
+  Marker = "string",
+  FileSystemId = "string",
+  MountTargetId = "string"
+)
+}
+}
+
 \examples{
 # This operation describes all of a file system's mount targets.
-describe_mount_targets(
+\donttest{describe_mount_targets(
   FileSystemId = "fs-01234567"
-)
+)}
 
 }

@@ -4,15 +4,7 @@
 \alias{tag_resource}
 \title{Adds the specified tags to the specified resource share}
 \usage{
-tag_resource(
-  resourceShareArn = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
+tag_resource(resourceShareArn, tags)
 }
 \arguments{
 \item{resourceShareArn}{[required] The Amazon Resource Name (ARN) of the resource share.}
@@ -22,6 +14,16 @@ tag_resource(
 \description{
 Adds the specified tags to the specified resource share.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{tag_resource(
+  resourceShareArn = "string",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
 }
+}
+

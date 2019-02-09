@@ -4,10 +4,7 @@
 \alias{list_subscribed_rule_groups}
 \title{Returns an array of RuleGroup objects that you are subscribed to}
 \usage{
-list_subscribed_rule_groups(
-  NextMarker = "string",
-  Limit = 123
-)
+list_subscribed_rule_groups(NextMarker = NULL, Limit = NULL)
 }
 \arguments{
 \item{NextMarker}{If you specify a value for \code{Limit} and you have more \code{ByteMatchSets}subscribed rule groups than the value of \code{Limit}, AWS WAF returns a \code{NextMarker} value in the response that allows you to list another group of subscribed rule groups. For the second and subsequent \code{ListSubscribedRuleGroupsRequest} requests, specify the value of \code{NextMarker} from the previous response to get information about another batch of subscribed rule groups.}
@@ -17,6 +14,11 @@ list_subscribed_rule_groups(
 \description{
 Returns an array of RuleGroup objects that you are subscribed to.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_subscribed_rule_groups(
+  NextMarker = "string",
+  Limit = 123
+)
 }
+}
+

@@ -4,15 +4,9 @@
 \alias{get_log_events}
 \title{Lists log events from the specified log stream}
 \usage{
-get_log_events(
-  logGroupName = "string",
-  logStreamName = "string",
-  startTime = 123,
-  endTime = 123,
-  nextToken = "string",
-  limit = 123,
-  startFromHead = TRUE|FALSE
-)
+get_log_events(logGroupName, logStreamName, startTime = NULL,
+  endTime = NULL, nextToken = NULL, limit = NULL,
+  startFromHead = NULL)
 }
 \arguments{
 \item{logGroupName}{[required] The name of the log group.}
@@ -35,6 +29,16 @@ Lists log events from the specified log stream. You can list all the log events 
 \details{
 By default, this operation returns as many log events as can fit in a response size of 1MB (up to 10,000 log events). You can get additional log events by specifying one of the tokens in a subsequent call.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_log_events(
+  logGroupName = "string",
+  logStreamName = "string",
+  startTime = 123,
+  endTime = 123,
+  nextToken = "string",
+  limit = 123,
+  startFromHead = TRUE|FALSE
+)
 }
+}
+

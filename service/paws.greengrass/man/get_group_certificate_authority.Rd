@@ -4,10 +4,7 @@
 \alias{get_group_certificate_authority}
 \title{Retreives the CA associated with a group}
 \usage{
-get_group_certificate_authority(
-  CertificateAuthorityId = "string",
-  GroupId = "string"
-)
+get_group_certificate_authority(CertificateAuthorityId, GroupId)
 }
 \arguments{
 \item{CertificateAuthorityId}{[required] The ID of the certificate authority.}
@@ -17,6 +14,11 @@ get_group_certificate_authority(
 \description{
 Retreives the CA associated with a group. Returns the public key of the CA.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_group_certificate_authority(
+  CertificateAuthorityId = "string",
+  GroupId = "string"
+)
 }
+}
+

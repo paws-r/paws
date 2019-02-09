@@ -2,14 +2,9 @@
 % Please edit documentation in R/paws.chime_operations.R
 \name{batch_suspend_user}
 \alias{batch_suspend_user}
-\title{Suspends up to 50 users from a \code{Team} or \code{EnterpriseLWA} Amazon Chime account}
+\title{Suspends up to 50 users from a Team or EnterpriseLWA Amazon Chime account}
 \usage{
-batch_suspend_user(
-  AccountId = "string",
-  UserIdList = list(
-    "string"
-  )
-)
+batch_suspend_user(AccountId, UserIdList)
 }
 \arguments{
 \item{AccountId}{[required] The Amazon Chime account ID.}
@@ -26,6 +21,13 @@ Users suspended from an \code{EnterpriseLWA} account are immediately signed out 
 
 To sign out users without suspending them, use the LogoutUser action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{batch_suspend_user(
+  AccountId = "string",
+  UserIdList = list(
+    "string"
+  )
+)
 }
+}
+

@@ -4,11 +4,7 @@
 \alias{associate_dhcp_options}
 \title{Associates a set of DHCP options (that you've previously created) with the specified VPC, or associates no DHCP options with the VPC}
 \usage{
-associate_dhcp_options(
-  DhcpOptionsId = "string",
-  VpcId = "string",
-  DryRun = TRUE|FALSE
-)
+associate_dhcp_options(DhcpOptionsId, VpcId, DryRun = NULL)
 }
 \arguments{
 \item{DhcpOptionsId}{[required] The ID of the DHCP options set, or \code{default} to associate no DHCP options with the VPC.}
@@ -23,21 +19,30 @@ Associates a set of DHCP options (that you've previously created) with the speci
 \details{
 After you associate the options with the VPC, any existing instances and all new instances that you launch in that VPC use the options. You don't need to restart or relaunch the instances. They automatically pick up the changes within a few hours, depending on how frequently the instance renews its DHCP lease. You can explicitly renew the lease using the operating system on the instance.
 
-For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html}{DHCP Options Sets} in the \emph{Amazon Virtual Private Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html}{DHCP Options Sets} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{associate_dhcp_options(
+  DhcpOptionsId = "string",
+  VpcId = "string",
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example associates the specified DHCP options set with the
 # specified VPC.
-associate_dhcp_options(
+\donttest{associate_dhcp_options(
   DhcpOptionsId = "dopt-d9070ebb",
   VpcId = "vpc-a01106c2"
-)
+)}
 
 # This example associates the default DHCP options set with the specified
 # VPC.
-associate_dhcp_options(
+\donttest{associate_dhcp_options(
   DhcpOptionsId = "default",
   VpcId = "vpc-a01106c2"
-)
+)}
 
 }

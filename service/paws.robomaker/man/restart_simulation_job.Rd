@@ -4,9 +4,7 @@
 \alias{restart_simulation_job}
 \title{Restarts a running simulation job}
 \usage{
-restart_simulation_job(
-  job = "string"
-)
+restart_simulation_job(job)
 }
 \arguments{
 \item{job}{[required] The Amazon Resource Name (ARN) of the simulation job.}
@@ -14,6 +12,10 @@ restart_simulation_job(
 \description{
 Restarts a running simulation job.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{restart_simulation_job(
+  job = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{get_crawler}
 \title{Retrieves metadata for a specified crawler}
 \usage{
-get_crawler(
-  Name = "string"
-)
+get_crawler(Name)
 }
 \arguments{
 \item{Name}{[required] Name of the crawler to retrieve metadata for.}
@@ -14,6 +12,10 @@ get_crawler(
 \description{
 Retrieves metadata for a specified crawler.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_crawler(
+  Name = "string"
+)
 }
+}
+

@@ -4,20 +4,7 @@
 \alias{describe_subnets}
 \title{Describes one or more of your subnets}
 \usage{
-describe_subnets(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  SubnetIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
+describe_subnets(Filters = NULL, SubnetIds = NULL, DryRun = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -49,11 +36,29 @@ Default: Describes all your subnets.}
 Describes one or more of your subnets.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html}{Your VPC and Subnets} in the \emph{Amazon Virtual Private Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html}{Your VPC and Subnets} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_subnets(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  SubnetIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example describes the subnets for the specified VPC.
-describe_subnets(
+\donttest{describe_subnets(
   Filters = list(
     list(
       Name = "vpc-id",
@@ -62,6 +67,6 @@ describe_subnets(
       )
     )
   )
-)
+)}
 
 }

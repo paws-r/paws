@@ -4,17 +4,9 @@
 \alias{describe_hsm_client_certificates}
 \title{Returns information about the specified HSM client certificate}
 \usage{
-describe_hsm_client_certificates(
-  HsmClientCertificateIdentifier = "string",
-  MaxRecords = 123,
-  Marker = "string",
-  TagKeys = list(
-    "string"
-  ),
-  TagValues = list(
-    "string"
-  )
-)
+describe_hsm_client_certificates(HsmClientCertificateIdentifier = NULL,
+  MaxRecords = NULL, Marker = NULL, TagKeys = NULL,
+  TagValues = NULL)
 }
 \arguments{
 \item{HsmClientCertificateIdentifier}{The identifier of a specific HSM client certificate for which you want information. If no identifier is specified, information is returned for all HSM client certificates owned by your AWS customer account.}
@@ -39,6 +31,18 @@ If you specify both tag keys and tag values in the same request, Amazon Redshift
 
 If both tag keys and values are omitted from the request, HSM client certificates are returned regardless of whether they have tag keys or values associated with them.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_hsm_client_certificates(
+  HsmClientCertificateIdentifier = "string",
+  MaxRecords = 123,
+  Marker = "string",
+  TagKeys = list(
+    "string"
+  ),
+  TagValues = list(
+    "string"
+  )
+)
 }
+}
+

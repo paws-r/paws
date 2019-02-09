@@ -4,11 +4,7 @@
 \alias{create_role_alias}
 \title{Creates a role alias}
 \usage{
-create_role_alias(
-  roleAlias = "string",
-  roleArn = "string",
-  credentialDurationSeconds = 123
-)
+create_role_alias(roleAlias, roleArn, credentialDurationSeconds = NULL)
 }
 \arguments{
 \item{roleAlias}{[required] The role alias that points to a role ARN. This allows you to change the role without having to update the device.}
@@ -20,6 +16,12 @@ create_role_alias(
 \description{
 Creates a role alias.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_role_alias(
+  roleAlias = "string",
+  roleArn = "string",
+  credentialDurationSeconds = 123
+)
 }
+}
+

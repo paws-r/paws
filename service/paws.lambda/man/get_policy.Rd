@@ -2,38 +2,40 @@
 % Please edit documentation in R/paws.lambda_operations.R
 \name{get_policy}
 \alias{get_policy}
-\title{Returns the resource policy associated with the specified Lambda function}
+\title{Returns the resource-based IAM policy for a function, version, or alias}
 \usage{
-get_policy(
+get_policy(FunctionName, Qualifier = NULL)
+}
+\arguments{
+\item{FunctionName}{[required] The name of the Lambda function, version, or alias.
+
+\strong{Name formats}
+\itemize{
+\item \strong{Function name} - \code{my-function} (name-only), \code{my-function:v1} (with alias).
+\item \strong{Function ARN} - \code{arn:aws:lambda:us-west-2:123456789012:function:my-function}.
+\item \strong{Partial ARN} - \code{123456789012:function:my-function}.
+}
+
+You can append a version number or alias to any of the formats. The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
+
+\item{Qualifier}{Specify a version or alias to get the policy for that resource.}
+}
+\description{
+Returns the \href{http://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html}{resource-based IAM policy} for a function, version, or alias.
+}
+\section{Accepted Parameters}{
+\preformatted{get_policy(
   FunctionName = "string",
   Qualifier = "string"
 )
 }
-\arguments{
-\item{FunctionName}{[required] The name of the lambda function.
-
-\strong{Name formats}
-\itemize{
-\item \strong{Function name} - \code{MyFunction}.
-\item \strong{Function ARN} - \code{arn:aws:lambda:us-west-2:123456789012:function:MyFunction}.
-\item \strong{Partial ARN} - \code{123456789012:function:MyFunction}.
 }
 
-The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
-
-\item{Qualifier}{You can specify this optional query parameter to specify a function version or an alias name in which case this API will return all permissions associated with the specific qualified ARN. If you don't provide this parameter, the API will return permissions that apply to the unqualified function ARN.}
-}
-\description{
-Returns the resource policy associated with the specified Lambda function.
-}
-\details{
-This action requires permission for the \code{lambda:GetPolicy action.}
-}
 \examples{
 # This operation retrieves a Lambda function policy
-get_policy(
+\donttest{get_policy(
   FunctionName = "myFunction",
   Qualifier = "1"
-)
+)}
 
 }

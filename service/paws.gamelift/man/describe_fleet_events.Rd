@@ -4,13 +4,8 @@
 \alias{describe_fleet_events}
 \title{Retrieves entries from the specified fleet's event log}
 \usage{
-describe_fleet_events(
-  FleetId = "string",
-  StartTime = as.POSIXct("2015-01-01"),
-  EndTime = as.POSIXct("2015-01-01"),
-  Limit = 123,
-  NextToken = "string"
-)
+describe_fleet_events(FleetId, StartTime = NULL, EndTime = NULL,
+  Limit = NULL, NextToken = NULL)
 }
 \arguments{
 \item{FleetId}{[required] Unique identifier for a fleet to get event logs for.}
@@ -27,7 +22,6 @@ describe_fleet_events(
 Retrieves entries from the specified fleet's event log. You can specify a time range to limit the result set. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, a collection of event log entries matching the request are returned.
 }
 \details{
-Fleet-related operations include:
 \itemize{
 \item CreateFleet
 \item ListFleets
@@ -50,6 +44,14 @@ Fleet-related operations include:
 \item StopFleetActions
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_fleet_events(
+  FleetId = "string",
+  StartTime = as.POSIXct("2015-01-01"),
+  EndTime = as.POSIXct("2015-01-01"),
+  Limit = 123,
+  NextToken = "string"
+)
 }
+}
+

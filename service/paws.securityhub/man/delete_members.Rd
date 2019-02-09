@@ -4,11 +4,7 @@
 \alias{delete_members}
 \title{Deletes the Security Hub member accounts that are specified by the account IDs}
 \usage{
-delete_members(
-  AccountIds = list(
-    "string"
-  )
-)
+delete_members(AccountIds = NULL)
 }
 \arguments{
 \item{AccountIds}{A list of account IDs of the Security Hub member accounts that you want to delete.}
@@ -16,6 +12,12 @@ delete_members(
 \description{
 Deletes the Security Hub member accounts that are specified by the account IDs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_members(
+  AccountIds = list(
+    "string"
+  )
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{register_patch_baseline_for_patch_group}
 \title{Registers a patch baseline for a patch group}
 \usage{
-register_patch_baseline_for_patch_group(
-  BaselineId = "string",
-  PatchGroup = "string"
-)
+register_patch_baseline_for_patch_group(BaselineId, PatchGroup)
 }
 \arguments{
 \item{BaselineId}{[required] The ID of the patch baseline to register the patch group with.}
@@ -17,6 +14,11 @@ register_patch_baseline_for_patch_group(
 \description{
 Registers a patch baseline for a patch group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{register_patch_baseline_for_patch_group(
+  BaselineId = "string",
+  PatchGroup = "string"
+)
 }
+}
+

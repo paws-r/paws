@@ -4,10 +4,7 @@
 \alias{put_lifecycle_policy}
 \title{Writes an object lifecycle policy to a container}
 \usage{
-put_lifecycle_policy(
-  ContainerName = "string",
-  LifecyclePolicy = "string"
-)
+put_lifecycle_policy(ContainerName, LifecyclePolicy)
 }
 \arguments{
 \item{ContainerName}{[required] The name of the container that you want to assign the object lifecycle policy to.}
@@ -17,6 +14,11 @@ put_lifecycle_policy(
 \description{
 Writes an object lifecycle policy to a container. If the container already has an object lifecycle policy, the service replaces the existing policy with the new policy.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_lifecycle_policy(
+  ContainerName = "string",
+  LifecyclePolicy = "string"
+)
 }
+}
+

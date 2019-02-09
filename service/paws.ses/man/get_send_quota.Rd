@@ -15,6 +15,6 @@ You can execute this operation no more than once per second.
 \examples{
 # The following example returns the Amazon SES sending limits for an AWS
 # account:
-get_send_quota()
+\donttest{get_send_quota()}
 
 }

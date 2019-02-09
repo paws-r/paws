@@ -4,15 +4,7 @@
 \alias{tag_resource}
 \title{An API operation for adding tags to a resource}
 \usage{
-tag_resource(
-  ResourceArn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+tag_resource(ResourceArn, Tags)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource. Tagging is only supported for directories.}
@@ -22,6 +14,16 @@ tag_resource(
 \description{
 An API operation for adding tags to a resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{tag_resource(
+  ResourceArn = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

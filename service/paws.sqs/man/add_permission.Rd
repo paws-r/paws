@@ -2,18 +2,9 @@
 % Please edit documentation in R/paws.sqs_operations.R
 \name{add_permission}
 \alias{add_permission}
-\title{Adds a permission to a queue for a specific \link{principal}(http://docs}
+\title{Adds a permission to a queue for a specific principal}
 \usage{
-add_permission(
-  QueueUrl = "string",
-  Label = "string",
-  AWSAccountIds = list(
-    "string"
-  ),
-  Actions = list(
-    "string"
-  )
-)
+add_permission(QueueUrl, Label, AWSAccountIds, Actions)
 }
 \arguments{
 \item{QueueUrl}{[required] The URL of the Amazon SQS queue to which permissions are added.
@@ -48,6 +39,17 @@ Some actions take lists of parameters. These lists are specified using the \code
 
 Cross-account permissions don't apply to this action. For more information, see see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name}{Grant Cross-Account Permissions to a Role and a User Name} in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{add_permission(
+  QueueUrl = "string",
+  Label = "string",
+  AWSAccountIds = list(
+    "string"
+  ),
+  Actions = list(
+    "string"
+  )
+)
 }
+}
+

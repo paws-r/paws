@@ -4,9 +4,7 @@
 \alias{get_domains}
 \title{Returns a list of all domains in the user's account}
 \usage{
-get_domains(
-  pageToken = "string"
-)
+get_domains(pageToken = NULL)
 }
 \arguments{
 \item{pageToken}{A token used for advancing to the next page of results from your get domains request.}
@@ -14,6 +12,10 @@ get_domains(
 \description{
 Returns a list of all domains in the user's account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_domains(
+  pageToken = "string"
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{list_associated_stacks}
 \title{Retrieves the name of the stack with which the specified fleet is associated}
 \usage{
-list_associated_stacks(
-  FleetName = "string",
-  NextToken = "string"
-)
+list_associated_stacks(FleetName, NextToken = NULL)
 }
 \arguments{
 \item{FleetName}{[required] The name of the fleet.}
@@ -17,6 +14,11 @@ list_associated_stacks(
 \description{
 Retrieves the name of the stack with which the specified fleet is associated.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_associated_stacks(
+  FleetName = "string",
+  NextToken = "string"
+)
 }
+}
+

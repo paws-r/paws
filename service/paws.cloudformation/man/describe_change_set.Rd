@@ -4,11 +4,7 @@
 \alias{describe_change_set}
 \title{Returns the inputs for the change set and a list of changes that AWS CloudFormation will make if you execute the change set}
 \usage{
-describe_change_set(
-  ChangeSetName = "string",
-  StackName = "string",
-  NextToken = "string"
-)
+describe_change_set(ChangeSetName, StackName = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ChangeSetName}{[required] The name or Amazon Resource Name (ARN) of the change set that you want to describe.}
@@ -20,6 +16,12 @@ describe_change_set(
 \description{
 Returns the inputs for the change set and a list of changes that AWS CloudFormation will make if you execute the change set. For more information, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html}{Updating Stacks Using Change Sets} in the AWS CloudFormation User Guide.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_change_set(
+  ChangeSetName = "string",
+  StackName = "string",
+  NextToken = "string"
+)
 }
+}
+

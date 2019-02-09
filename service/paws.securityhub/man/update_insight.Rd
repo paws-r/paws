@@ -4,7 +4,23 @@
 \alias{update_insight}
 \title{Updates the AWS Security Hub insight specified by the insight ARN}
 \usage{
-update_insight(
+update_insight(InsightArn, Name = NULL, Filters = NULL,
+  GroupByAttribute = NULL)
+}
+\arguments{
+\item{InsightArn}{[required] The ARN of the insight that you want to update.}
+
+\item{Name}{The updated name for the insight.}
+
+\item{Filters}{The updated filters that define this insight.}
+
+\item{GroupByAttribute}{The updated GroupBy attribute that defines this insight.}
+}
+\description{
+Updates the AWS Security Hub insight specified by the insight ARN.
+}
+\section{Accepted Parameters}{
+\preformatted{update_insight(
   InsightArn = "string",
   Name = "string",
   Filters = list(
@@ -559,18 +575,5 @@ update_insight(
   GroupByAttribute = "string"
 )
 }
-\arguments{
-\item{InsightArn}{[required] The ARN of the insight that you want to update.}
-
-\item{Name}{The updated name for the insight.}
-
-\item{Filters}{The updated filters that define this insight.}
-
-\item{GroupByAttribute}{The updated GroupBy attribute that defines this insight.}
 }
-\description{
-Updates the AWS Security Hub insight specified by the insight ARN.
-}
-\examples{
 
-}

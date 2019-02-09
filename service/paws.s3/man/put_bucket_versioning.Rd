@@ -4,15 +4,8 @@
 \alias{put_bucket_versioning}
 \title{Sets the versioning state of an existing bucket}
 \usage{
-put_bucket_versioning(
-  Bucket = "string",
-  ContentMD5 = "string",
-  MFA = "string",
-  VersioningConfiguration = list(
-    MFADelete = "Enabled"|"Disabled",
-    Status = "Enabled"|"Suspended"
-  )
-)
+put_bucket_versioning(Bucket, ContentMD5 = NULL, MFA = NULL,
+  VersioningConfiguration)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -26,15 +19,28 @@ put_bucket_versioning(
 \description{
 Sets the versioning state of an existing bucket. To set the versioning state, you must be the bucket owner.
 }
+\section{Accepted Parameters}{
+\preformatted{put_bucket_versioning(
+  Bucket = "string",
+  ContentMD5 = "string",
+  MFA = "string",
+  VersioningConfiguration = list(
+    MFADelete = "Enabled"|"Disabled",
+    Status = "Enabled"|"Suspended"
+  )
+)
+}
+}
+
 \examples{
 # The following example sets versioning configuration on bucket. The
 # configuration enables versioning on the bucket.
-put_bucket_versioning(
+\donttest{put_bucket_versioning(
   Bucket = "examplebucket",
   VersioningConfiguration = list(
     MFADelete = "Disabled",
     Status = "Enabled"
   )
-)
+)}
 
 }

@@ -2,13 +2,9 @@
 % Please edit documentation in R/paws.appsync_operations.R
 \name{delete_resolver}
 \alias{delete_resolver}
-\title{Deletes a \code{Resolver} object}
+\title{Deletes a Resolver object}
 \usage{
-delete_resolver(
-  apiId = "string",
-  typeName = "string",
-  fieldName = "string"
-)
+delete_resolver(apiId, typeName, fieldName)
 }
 \arguments{
 \item{apiId}{[required] The API ID.}
@@ -20,6 +16,12 @@ delete_resolver(
 \description{
 Deletes a \code{Resolver} object.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_resolver(
+  apiId = "string",
+  typeName = "string",
+  fieldName = "string"
+)
 }
+}
+

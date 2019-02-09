@@ -4,9 +4,7 @@
 \alias{delete_ca_certificate}
 \title{Deletes a registered CA certificate}
 \usage{
-delete_ca_certificate(
-  certificateId = "string"
-)
+delete_ca_certificate(certificateId)
 }
 \arguments{
 \item{certificateId}{[required] The ID of the certificate to delete. (The last part of the certificate ARN contains the certificate ID.)}
@@ -14,6 +12,10 @@ delete_ca_certificate(
 \description{
 Deletes a registered CA certificate.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_ca_certificate(
+  certificateId = "string"
+)
 }
+}
+

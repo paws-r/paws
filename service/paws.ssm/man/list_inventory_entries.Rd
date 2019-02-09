@@ -4,21 +4,8 @@
 \alias{list_inventory_entries}
 \title{A list of inventory items returned by the request}
 \usage{
-list_inventory_entries(
-  InstanceId = "string",
-  TypeName = "string",
-  Filters = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      ),
-      Type = "Equal"|"NotEqual"|"BeginWith"|"LessThan"|"GreaterThan"|"Exists"
-    )
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
+list_inventory_entries(InstanceId, TypeName, Filters = NULL,
+  NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{InstanceId}{[required] The instance ID for which you want inventory information.}
@@ -34,6 +21,22 @@ list_inventory_entries(
 \description{
 A list of inventory items returned by the request.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_inventory_entries(
+  InstanceId = "string",
+  TypeName = "string",
+  Filters = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      ),
+      Type = "Equal"|"NotEqual"|"BeginWith"|"LessThan"|"GreaterThan"|"Exists"
+    )
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

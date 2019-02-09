@@ -4,11 +4,8 @@
 \alias{set_load_balancer_listener_ssl_certificate}
 \title{Sets the certificate that terminates the specified listener's SSL connections}
 \usage{
-set_load_balancer_listener_ssl_certificate(
-  LoadBalancerName = "string",
-  LoadBalancerPort = 123,
-  SSLCertificateId = "string"
-)
+set_load_balancer_listener_ssl_certificate(LoadBalancerName,
+  LoadBalancerPort, SSLCertificateId)
 }
 \arguments{
 \item{LoadBalancerName}{[required] The name of the load balancer.}
@@ -23,13 +20,22 @@ Sets the certificate that terminates the specified listener's SSL connections. T
 \details{
 For more information about updating your SSL certificate, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-update-ssl-cert.html}{Replace the SSL Certificate for Your Load Balancer} in the \emph{Classic Load Balancers Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{set_load_balancer_listener_ssl_certificate(
+  LoadBalancerName = "string",
+  LoadBalancerPort = 123,
+  SSLCertificateId = "string"
+)
+}
+}
+
 \examples{
 # This example replaces the existing SSL certificate for the specified
 # HTTPS listener.
-set_load_balancer_listener_ssl_certificate(
+\donttest{set_load_balancer_listener_ssl_certificate(
   LoadBalancerName = "my-load-balancer",
   LoadBalancerPort = 443L,
   SSLCertificateId = "arn:aws:iam::123456789012:server-certificate/new-server-cert"
-)
+)}
 
 }

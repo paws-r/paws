@@ -4,13 +4,8 @@
 \alias{describe_workspace_images}
 \title{Retrieves a list that describes one or more specified images, if the image identifiers are provided}
 \usage{
-describe_workspace_images(
-  ImageIds = list(
-    "string"
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
+describe_workspace_images(ImageIds = NULL, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{ImageIds}{The identifier of the image.}
@@ -22,6 +17,14 @@ describe_workspace_images(
 \description{
 Retrieves a list that describes one or more specified images, if the image identifiers are provided. Otherwise, all images in the account are described.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_workspace_images(
+  ImageIds = list(
+    "string"
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

@@ -4,12 +4,8 @@
 \alias{update_event_source_mapping}
 \title{Updates an event source mapping}
 \usage{
-update_event_source_mapping(
-  UUID = "string",
-  FunctionName = "string",
-  Enabled = TRUE|FALSE,
-  BatchSize = 123
-)
+update_event_source_mapping(UUID, FunctionName = NULL, Enabled = NULL,
+  BatchSize = NULL)
 }
 \arguments{
 \item{UUID}{[required] The identifier of the event source mapping.}
@@ -38,13 +34,23 @@ The length constraint applies only to the full ARN. If you specify only the func
 \description{
 Updates an event source mapping. You can change the function that AWS Lambda invokes, or pause invocation and resume later from the same location.
 }
+\section{Accepted Parameters}{
+\preformatted{update_event_source_mapping(
+  UUID = "string",
+  FunctionName = "string",
+  Enabled = TRUE|FALSE,
+  BatchSize = 123
+)
+}
+}
+
 \examples{
 # This operation updates a Lambda function event source mapping
-update_event_source_mapping(
+\donttest{update_event_source_mapping(
   BatchSize = 123L,
   Enabled = TRUE,
   FunctionName = "myFunction",
   UUID = "1234xCy789012"
-)
+)}
 
 }

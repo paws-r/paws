@@ -4,7 +4,18 @@
 \alias{deregister_targets}
 \title{Deregisters the specified targets from the specified target group}
 \usage{
-deregister_targets(
+deregister_targets(TargetGroupArn, Targets)
+}
+\arguments{
+\item{TargetGroupArn}{[required] The Amazon Resource Name (ARN) of the target group.}
+
+\item{Targets}{[required] The targets. If you specified a port override when you registered a target, you must specify both the target ID and the port when you deregister it.}
+}
+\description{
+Deregisters the specified targets from the specified target group. After the targets are deregistered, they no longer receive traffic from the load balancer.
+}
+\section{Accepted Parameters}{
+\preformatted{deregister_targets(
   TargetGroupArn = "string",
   Targets = list(
     list(
@@ -15,24 +26,18 @@ deregister_targets(
   )
 )
 }
-\arguments{
-\item{TargetGroupArn}{[required] The Amazon Resource Name (ARN) of the target group.}
+}
 
-\item{Targets}{[required] The targets. If you specified a port override when you registered a target, you must specify both the target ID and the port when you deregister it.}
-}
-\description{
-Deregisters the specified targets from the specified target group. After the targets are deregistered, they no longer receive traffic from the load balancer.
-}
 \examples{
 # This example deregisters the specified instance from the specified
 # target group.
-deregister_targets(
+\donttest{deregister_targets(
   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067",
   Targets = list(
     list(
       Id = "i-0f76fade"
     )
   )
-)
+)}
 
 }

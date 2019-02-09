@@ -4,13 +4,8 @@
 \alias{modify_capacity_reservation}
 \title{Modifies a Capacity Reservation's capacity and the conditions under which it is to be released}
 \usage{
-modify_capacity_reservation(
-  CapacityReservationId = "string",
-  InstanceCount = 123,
-  EndDate = as.POSIXct("2015-01-01"),
-  EndDateType = "unlimited"|"limited",
-  DryRun = TRUE|FALSE
-)
+modify_capacity_reservation(CapacityReservationId, InstanceCount = NULL,
+  EndDate = NULL, EndDateType = NULL, DryRun = NULL)
 }
 \arguments{
 \item{CapacityReservationId}{[required] The ID of the Capacity Reservation.}
@@ -34,6 +29,14 @@ You must provide an \code{EndDate} value if \code{EndDateType} is \code{limited}
 \description{
 Modifies a Capacity Reservation's capacity and the conditions under which it is to be released. You cannot change a Capacity Reservation's instance type, EBS optimization, instance store settings, platform, Availability Zone, or instance eligibility. If you need to modify any of these attributes, we recommend that you cancel the Capacity Reservation, and then create a new one with the required attributes.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_capacity_reservation(
+  CapacityReservationId = "string",
+  InstanceCount = 123,
+  EndDate = as.POSIXct("2015-01-01"),
+  EndDateType = "unlimited"|"limited",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

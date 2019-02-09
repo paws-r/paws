@@ -4,10 +4,8 @@
 \alias{create_simulation_application_version}
 \title{Creates a simulation application with a specific revision id}
 \usage{
-create_simulation_application_version(
-  application = "string",
-  currentRevisionId = "string"
-)
+create_simulation_application_version(application,
+  currentRevisionId = NULL)
 }
 \arguments{
 \item{application}{[required] The application information for the simulation application.}
@@ -17,6 +15,11 @@ create_simulation_application_version(
 \description{
 Creates a simulation application with a specific revision id.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_simulation_application_version(
+  application = "string",
+  currentRevisionId = "string"
+)
 }
+}
+

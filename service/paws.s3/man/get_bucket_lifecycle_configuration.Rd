@@ -4,9 +4,7 @@
 \alias{get_bucket_lifecycle_configuration}
 \title{Returns the lifecycle configuration information set on the bucket}
 \usage{
-get_bucket_lifecycle_configuration(
-  Bucket = "string"
-)
+get_bucket_lifecycle_configuration(Bucket)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -14,11 +12,18 @@ get_bucket_lifecycle_configuration(
 \description{
 Returns the lifecycle configuration information set on the bucket.
 }
+\section{Accepted Parameters}{
+\preformatted{get_bucket_lifecycle_configuration(
+  Bucket = "string"
+)
+}
+}
+
 \examples{
 # The following example retrieves lifecycle configuration on set on a
 # bucket. 
-get_bucket_lifecycle_configuration(
+\donttest{get_bucket_lifecycle_configuration(
   Bucket = "examplebucket"
-)
+)}
 
 }

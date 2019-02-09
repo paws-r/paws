@@ -4,16 +4,7 @@
 \alias{change_message_visibility_batch}
 \title{Changes the visibility timeout of multiple messages}
 \usage{
-change_message_visibility_batch(
-  QueueUrl = "string",
-  Entries = list(
-    list(
-      Id = "string",
-      ReceiptHandle = "string",
-      VisibilityTimeout = 123
-    )
-  )
-)
+change_message_visibility_batch(QueueUrl, Entries)
 }
 \arguments{
 \item{QueueUrl}{[required] The URL of the Amazon SQS queue whose messages' visibility is changed.
@@ -34,6 +25,17 @@ Some actions take lists of parameters. These lists are specified using the \code
 
 \code{&Attribute.2=second}
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{change_message_visibility_batch(
+  QueueUrl = "string",
+  Entries = list(
+    list(
+      Id = "string",
+      ReceiptHandle = "string",
+      VisibilityTimeout = 123
+    )
+  )
+)
 }
+}
+

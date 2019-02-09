@@ -4,11 +4,8 @@
 \alias{retrieve_environment_info}
 \title{Retrieves the compiled information from a RequestEnvironmentInfo request}
 \usage{
-retrieve_environment_info(
-  EnvironmentId = "string",
-  EnvironmentName = "string",
-  InfoType = "tail"|"bundle"
-)
+retrieve_environment_info(EnvironmentId = NULL, EnvironmentName = NULL,
+  InfoType)
 }
 \arguments{
 \item{EnvironmentId}{The ID of the data's environment.
@@ -34,12 +31,21 @@ Related Topics
 \item RequestEnvironmentInfo
 }
 }
+\section{Accepted Parameters}{
+\preformatted{retrieve_environment_info(
+  EnvironmentId = "string",
+  EnvironmentName = "string",
+  InfoType = "tail"|"bundle"
+)
+}
+}
+
 \examples{
 # The following operation retrieves a link to logs from an environment
 # named my-env:
-retrieve_environment_info(
+\donttest{retrieve_environment_info(
   EnvironmentName = "my-env",
   InfoType = "tail"
-)
+)}
 
 }

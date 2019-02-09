@@ -2,18 +2,10 @@
 % Please edit documentation in R/paws.s3_operations.R
 \name{put_public_access_block}
 \alias{put_public_access_block}
-\title{Creates or modifies the \code{PublicAccessBlock} configuration for an Amazon S3 bucket}
+\title{Creates or modifies the PublicAccessBlock configuration for an Amazon S3 bucket}
 \usage{
-put_public_access_block(
-  Bucket = "string",
-  ContentMD5 = "string",
-  PublicAccessBlockConfiguration = list(
-    BlockPublicAcls = TRUE|FALSE,
-    IgnorePublicAcls = TRUE|FALSE,
-    BlockPublicPolicy = TRUE|FALSE,
-    RestrictPublicBuckets = TRUE|FALSE
-  )
-)
+put_public_access_block(Bucket, ContentMD5 = NULL,
+  PublicAccessBlockConfiguration)
 }
 \arguments{
 \item{Bucket}{[required] The name of the Amazon S3 bucket whose \code{PublicAccessBlock} configuration you want to set.}
@@ -25,6 +17,17 @@ put_public_access_block(
 \description{
 Creates or modifies the \code{PublicAccessBlock} configuration for an Amazon S3 bucket.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_public_access_block(
+  Bucket = "string",
+  ContentMD5 = "string",
+  PublicAccessBlockConfiguration = list(
+    BlockPublicAcls = TRUE|FALSE,
+    IgnorePublicAcls = TRUE|FALSE,
+    BlockPublicPolicy = TRUE|FALSE,
+    RestrictPublicBuckets = TRUE|FALSE
+  )
+)
 }
+}
+

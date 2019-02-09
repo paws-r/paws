@@ -4,10 +4,7 @@
 \alias{get_instance_access}
 \title{Requests remote access to a fleet instance}
 \usage{
-get_instance_access(
-  FleetId = "string",
-  InstanceId = "string"
-)
+get_instance_access(FleetId, InstanceId)
 }
 \arguments{
 \item{FleetId}{[required] Unique identifier for a fleet that contains the instance you want access to. The fleet can be in any of the following statuses: \code{ACTIVATING}, \code{ACTIVE}, or \code{ERROR}. Fleets with an \code{ERROR} status may be accessible for a short time before they are deleted.}
@@ -18,10 +15,15 @@ get_instance_access(
 Requests remote access to a fleet instance. Remote access is useful for debugging, gathering benchmarking data, or watching activity in real time.
 }
 \details{
-Access requires credentials that match the operating system of the instance. For a Windows instance, Amazon GameLift returns a user name and password as strings for use with a Windows Remote Desktop client. For a Linux instance, Amazon GameLift returns a user name and RSA private key, also as strings, for use with an SSH client. The private key must be saved in the proper format to a \code{.pem} file before using. If you're making this request using the AWS CLI, saving the secret can be handled as part of the GetInstanceAccess request. (See the example later in this topic). For more information on remote access, see \href{http://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-remote-access.html}{Remotely Accessing an Instance}.
+Access requires credentials that match the operating system of the instance. For a Windows instance, Amazon GameLift returns a user name and password as strings for use with a Windows Remote Desktop client. For a Linux instance, Amazon GameLift returns a user name and RSA private key, also as strings, for use with an SSH client. The private key must be saved in the proper format to a \code{.pem} file before using. If you're making this request using the AWS CLI, saving the secret can be handled as part of the GetInstanceAccess request. (See the example later in this topic). For more information on remote access, see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-remote-access.html}{Remotely Accessing an Instance}.
 
-To request access to a specific instance, specify the IDs of the instance and the fleet it belongs to. If successful, an InstanceAccess object is returned containing the instance's IP address and a set of credentials.
+To request access to a specific instance, specify the IDs of both the instance and the fleet it belongs to. You can retrieve a fleet's instance IDs by calling DescribeInstances. If successful, an InstanceAccess object is returned containing the instance's IP address and a set of credentials.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{get_instance_access(
+  FleetId = "string",
+  InstanceId = "string"
+)
+}
+}
 
-}

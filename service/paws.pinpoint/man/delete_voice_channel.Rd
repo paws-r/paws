@@ -4,9 +4,7 @@
 \alias{delete_voice_channel}
 \title{Delete an Voice channel}
 \usage{
-delete_voice_channel(
-  ApplicationId = "string"
-)
+delete_voice_channel(ApplicationId)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
@@ -14,6 +12,10 @@ delete_voice_channel(
 \description{
 Delete an Voice channel
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_voice_channel(
+  ApplicationId = "string"
+)
 }
+}
+

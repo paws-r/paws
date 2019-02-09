@@ -12,6 +12,6 @@ Retrieves the password policy for the AWS account. For more information about us
 \examples{
 # The following command displays details about the password policy for the
 # current AWS account.
-get_account_password_policy()
+\donttest{get_account_password_policy()}
 
 }

@@ -4,10 +4,7 @@
 \alias{describe_project}
 \title{Gets details about a project in AWS Mobile Hub}
 \usage{
-describe_project(
-  projectId = "string",
-  syncFromResources = TRUE|FALSE
-)
+describe_project(projectId, syncFromResources = NULL)
 }
 \arguments{
 \item{projectId}{[required] Unique project identifier.}
@@ -17,6 +14,11 @@ describe_project(
 \description{
 Gets details about a project in AWS Mobile Hub.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_project(
+  projectId = "string",
+  syncFromResources = TRUE|FALSE
+)
 }
+}
+

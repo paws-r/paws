@@ -4,9 +4,7 @@
 \alias{delete_load_balancer}
 \title{Deletes the specified load balancer}
 \usage{
-delete_load_balancer(
-  LoadBalancerName = "string"
-)
+delete_load_balancer(LoadBalancerName)
 }
 \arguments{
 \item{LoadBalancerName}{[required] The name of the load balancer.}
@@ -19,10 +17,17 @@ If you are attempting to recreate a load balancer, you must reconfigure all sett
 
 If the load balancer does not exist or has already been deleted, the call to \code{DeleteLoadBalancer} still succeeds.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_load_balancer(
+  LoadBalancerName = "string"
+)
+}
+}
+
 \examples{
 # This example deletes the specified load balancer.
-delete_load_balancer(
+\donttest{delete_load_balancer(
   LoadBalancerName = "my-load-balancer"
-)
+)}
 
 }

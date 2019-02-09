@@ -4,21 +4,9 @@
 \alias{describe_network_interface_permissions}
 \title{Describes the permissions for your network interfaces}
 \usage{
-describe_network_interface_permissions(
-  NetworkInterfacePermissionIds = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
+
+  describe_network_interface_permissions(NetworkInterfacePermissionIds = NULL,
+  Filters = NULL, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NetworkInterfacePermissionIds}{One or more network interface permission IDs.}
@@ -39,6 +27,22 @@ describe_network_interface_permissions(
 \description{
 Describes the permissions for your network interfaces.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_network_interface_permissions(
+  NetworkInterfacePermissionIds = list(
+    "string"
+  ),
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

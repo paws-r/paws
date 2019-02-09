@@ -2,18 +2,20 @@
 % Please edit documentation in R/paws.sagemaker_operations.R
 \name{describe_code_repository}
 \alias{describe_code_repository}
-\title{Gets details about the specified git repository}
+\title{Gets details about the specified Git repository}
 \usage{
-describe_code_repository(
+describe_code_repository(CodeRepositoryName)
+}
+\arguments{
+\item{CodeRepositoryName}{[required] The name of the Git repository to describe.}
+}
+\description{
+Gets details about the specified Git repository.
+}
+\section{Accepted Parameters}{
+\preformatted{describe_code_repository(
   CodeRepositoryName = "string"
 )
 }
-\arguments{
-\item{CodeRepositoryName}{[required] The name of the git repository to describe.}
 }
-\description{
-Gets details about the specified git repository.
-}
-\examples{
 
-}

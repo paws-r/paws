@@ -4,7 +4,27 @@
 \alias{update_app}
 \title{Updates an application}
 \usage{
-update_app(
+update_app(appId = NULL, name = NULL, description = NULL,
+  roleName = NULL, serverGroups = NULL, tags = NULL)
+}
+\arguments{
+\item{appId}{ID of the application to update.}
+
+\item{name}{New name of the application.}
+
+\item{description}{New description of the application.}
+
+\item{roleName}{Name of the service role in the customer's account used by AWS SMS.}
+
+\item{serverGroups}{List of server groups in the application to update.}
+
+\item{tags}{List of tags to associate with the application.}
+}
+\description{
+Updates an application.
+}
+\section{Accepted Parameters}{
+\preformatted{update_app(
   appId = "string",
   name = "string",
   description = "string",
@@ -41,22 +61,5 @@ update_app(
   )
 )
 }
-\arguments{
-\item{appId}{ID of the application to update.}
-
-\item{name}{New name of the application.}
-
-\item{description}{New description of the application.}
-
-\item{roleName}{Name of the service role in the customer's account used by AWS SMS.}
-
-\item{serverGroups}{List of server groups in the application to update.}
-
-\item{tags}{List of tags to associate with the application.}
 }
-\description{
-Updates an application.
-}
-\examples{
 
-}

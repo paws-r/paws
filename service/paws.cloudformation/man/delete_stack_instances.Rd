@@ -4,26 +4,8 @@
 \alias{delete_stack_instances}
 \title{Deletes stack instances for the specified accounts, in the specified regions}
 \usage{
-delete_stack_instances(
-  StackSetName = "string",
-  Accounts = list(
-    "string"
-  ),
-  Regions = list(
-    "string"
-  ),
-  OperationPreferences = list(
-    RegionOrder = list(
-      "string"
-    ),
-    FailureToleranceCount = 123,
-    FailureTolerancePercentage = 123,
-    MaxConcurrentCount = 123,
-    MaxConcurrentPercentage = 123
-  ),
-  RetainStacks = TRUE|FALSE,
-  OperationId = "string"
-)
+delete_stack_instances(StackSetName, Accounts, Regions,
+  OperationPreferences = NULL, RetainStacks, OperationId = NULL)
 }
 \arguments{
 \item{StackSetName}{[required] The name or unique ID of the stack set that you want to delete stack instances for.}
@@ -49,6 +31,27 @@ Repeating this stack set operation with a new operation ID retries all stack ins
 \description{
 Deletes stack instances for the specified accounts, in the specified regions.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_stack_instances(
+  StackSetName = "string",
+  Accounts = list(
+    "string"
+  ),
+  Regions = list(
+    "string"
+  ),
+  OperationPreferences = list(
+    RegionOrder = list(
+      "string"
+    ),
+    FailureToleranceCount = 123,
+    FailureTolerancePercentage = 123,
+    MaxConcurrentCount = 123,
+    MaxConcurrentPercentage = 123
+  ),
+  RetainStacks = TRUE|FALSE,
+  OperationId = "string"
+)
 }
+}
+

@@ -4,15 +4,9 @@
 \alias{activate_gateway}
 \title{Activates the gateway you previously deployed on your host}
 \usage{
-activate_gateway(
-  ActivationKey = "string",
-  GatewayName = "string",
-  GatewayTimezone = "string",
-  GatewayRegion = "string",
-  GatewayType = "string",
-  TapeDriveType = "string",
-  MediumChangerType = "string"
-)
+activate_gateway(ActivationKey, GatewayName, GatewayTimezone,
+  GatewayRegion, GatewayType = NULL, TapeDriveType = NULL,
+  MediumChangerType = NULL)
 }
 \arguments{
 \item{ActivationKey}{[required] Your gateway activation key. You can obtain the activation key by sending an HTTP GET request with redirects enabled to the gateway IP address (port 80). The redirect URL returned in the response provides you the activation key for your gateway in the query string parameter \code{activationKey}. It may also include other activation-related parameters, however, these are merely defaults -- the arguments you pass to the \code{ActivateGateway} API call determine the actual configuration of your gateway.
@@ -45,9 +39,22 @@ Activates the gateway you previously deployed on your host. In the activation pr
 \details{
 You must turn on the gateway VM before you can activate your gateway.
 }
+\section{Accepted Parameters}{
+\preformatted{activate_gateway(
+  ActivationKey = "string",
+  GatewayName = "string",
+  GatewayTimezone = "string",
+  GatewayRegion = "string",
+  GatewayType = "string",
+  TapeDriveType = "string",
+  MediumChangerType = "string"
+)
+}
+}
+
 \examples{
 # Activates the gateway you previously deployed on your host.
-activate_gateway(
+\donttest{activate_gateway(
   ActivationKey = "29AV1-3OFV9-VVIUB-NKT0I-LRO6V",
   GatewayName = "My_Gateway",
   GatewayRegion = "us-east-1",
@@ -55,6 +62,6 @@ activate_gateway(
   GatewayType = "STORED",
   MediumChangerType = "AWS-Gateway-VTL",
   TapeDriveType = "IBM-ULT3580-TD5"
-)
+)}
 
 }

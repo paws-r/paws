@@ -4,11 +4,7 @@
 \alias{update_access_key}
 \title{Changes the status of the specified access key from Active to Inactive, or vice versa}
 \usage{
-update_access_key(
-  UserName = "string",
-  AccessKeyId = "string",
-  Status = "Active"|"Inactive"
-)
+update_access_key(UserName = NULL, AccessKeyId, Status)
 }
 \arguments{
 \item{UserName}{The name of the user whose key you want to update.
@@ -29,13 +25,22 @@ If the \code{UserName} field is not specified, the user name is determined impli
 
 For information about rotating keys, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/ManagingCredentials.html}{Managing Keys and Certificates} in the \emph{IAM User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{update_access_key(
+  UserName = "string",
+  AccessKeyId = "string",
+  Status = "Active"|"Inactive"
+)
+}
+}
+
 \examples{
 # The following command deactivates the specified access key (access key
 # ID and secret access key) for the IAM user named Bob.
-update_access_key(
+\donttest{update_access_key(
   AccessKeyId = "AKIAIOSFODNN7EXAMPLE",
   Status = "Inactive",
   UserName = "Bob"
-)
+)}
 
 }

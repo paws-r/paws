@@ -4,9 +4,7 @@
 \alias{describe_location_nfs}
 \title{Returns metadata, such as the path information, about a NFS location}
 \usage{
-describe_location_nfs(
-  LocationArn = "string"
-)
+describe_location_nfs(LocationArn)
 }
 \arguments{
 \item{LocationArn}{[required] The Amazon resource Name (ARN) of the NFS location to describe.}
@@ -14,6 +12,10 @@ describe_location_nfs(
 \description{
 Returns metadata, such as the path information, about a NFS location.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_location_nfs(
+  LocationArn = "string"
+)
 }
+}
+

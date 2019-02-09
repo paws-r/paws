@@ -4,9 +4,7 @@
 \alias{delete_snapshot_schedule}
 \title{Deletes a snapshot schedule}
 \usage{
-delete_snapshot_schedule(
-  ScheduleIdentifier = "string"
-)
+delete_snapshot_schedule(ScheduleIdentifier)
 }
 \arguments{
 \item{ScheduleIdentifier}{[required] A unique identifier of the snapshot schedule to delete.}
@@ -14,6 +12,10 @@ delete_snapshot_schedule(
 \description{
 Deletes a snapshot schedule.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_snapshot_schedule(
+  ScheduleIdentifier = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{delete_server}
 \title{Deletes the server and the underlying AWS CloudFormation stacks (including the server's EC2 instance)}
 \usage{
-delete_server(
-  ServerName = "string"
-)
+delete_server(ServerName)
 }
 \arguments{
 \item{ServerName}{[required] The ID of the server to delete.}
@@ -19,6 +17,10 @@ This operation is asynchronous.
 
 An \code{InvalidStateException} is thrown when a server deletion is already in progress. A \code{ResourceNotFoundException} is thrown when the server does not exist. A \code{ValidationException} is raised when parameters of the request are not valid.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_server(
+  ServerName = "string"
+)
 }
+}
+

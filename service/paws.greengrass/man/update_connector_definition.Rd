@@ -4,10 +4,7 @@
 \alias{update_connector_definition}
 \title{Updates a connector definition}
 \usage{
-update_connector_definition(
-  ConnectorDefinitionId = "string",
-  Name = "string"
-)
+update_connector_definition(ConnectorDefinitionId, Name = NULL)
 }
 \arguments{
 \item{ConnectorDefinitionId}{[required] The ID of the connector definition.}
@@ -17,6 +14,11 @@ update_connector_definition(
 \description{
 Updates a connector definition.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_connector_definition(
+  ConnectorDefinitionId = "string",
+  Name = "string"
+)
 }
+}
+

@@ -4,7 +4,21 @@
 \alias{create_configuration_set_event_destination}
 \title{Create a new event destination in a configuration set}
 \usage{
-create_configuration_set_event_destination(
+create_configuration_set_event_destination(ConfigurationSetName,
+  EventDestination = NULL, EventDestinationName = NULL)
+}
+\arguments{
+\item{ConfigurationSetName}{[required] ConfigurationSetName}
+
+\item{EventDestination}{}
+
+\item{EventDestinationName}{A name that identifies the event destination.}
+}
+\description{
+Create a new event destination in a configuration set.
+}
+\section{Accepted Parameters}{
+\preformatted{create_configuration_set_event_destination(
   ConfigurationSetName = "string",
   EventDestination = list(
     CloudWatchLogsDestination = list(
@@ -18,21 +32,13 @@ create_configuration_set_event_destination(
     ),
     MatchingEventTypes = list(
       "INITIATED_CALL"|"RINGING"|"ANSWERED"|"COMPLETED_CALL"|"BUSY"|"FAILED"|"NO_ANSWER"
+    ),
+    SnsDestination = list(
+      TopicArn = "string"
     )
   ),
   EventDestinationName = "string"
 )
 }
-\arguments{
-\item{ConfigurationSetName}{[required] ConfigurationSetName}
-
-\item{EventDestination}{}
-
-\item{EventDestinationName}{A name that identifies the event destination.}
 }
-\description{
-Create a new event destination in a configuration set.
-}
-\examples{
 
-}

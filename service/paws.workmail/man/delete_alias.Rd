@@ -4,11 +4,7 @@
 \alias{delete_alias}
 \title{Remove the alias from a set of aliases for a given user}
 \usage{
-delete_alias(
-  OrganizationId = "string",
-  EntityId = "string",
-  Alias = "string"
-)
+delete_alias(OrganizationId, EntityId, Alias)
 }
 \arguments{
 \item{OrganizationId}{[required] The identifier for the organization under which the user exists.}
@@ -20,6 +16,12 @@ delete_alias(
 \description{
 Remove the alias from a set of aliases for a given user.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_alias(
+  OrganizationId = "string",
+  EntityId = "string",
+  Alias = "string"
+)
 }
+}
+

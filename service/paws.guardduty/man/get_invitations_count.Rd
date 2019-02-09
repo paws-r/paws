@@ -9,6 +9,8 @@ get_invitations_count()
 \description{
 Returns the count of all GuardDuty membership invitations that were sent to the current member account except the currently accepted invitation.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_invitations_count()
 }
+}
+

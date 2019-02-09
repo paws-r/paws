@@ -4,18 +4,21 @@
 \alias{validate_matchmaking_rule_set}
 \title{Validates the syntax of a matchmaking rule or rule set}
 \usage{
-validate_matchmaking_rule_set(
-  RuleSetBody = "string"
-)
+validate_matchmaking_rule_set(RuleSetBody)
 }
 \arguments{
 \item{RuleSetBody}{[required] Collection of matchmaking rules to validate, formatted as a JSON string.}
 }
 \description{
-Validates the syntax of a matchmaking rule or rule set. This operation checks that the rule set uses syntactically correct JSON and that it conforms to allowed property expressions. To validate syntax, provide a rule set string.
+Validates the syntax of a matchmaking rule or rule set. This operation checks that the rule set is using syntactically correct JSON and that it conforms to allowed property expressions. To validate syntax, provide a rule set JSON string.
 }
 \details{
-Operations related to match configurations and rule sets include:
+\strong{Learn more}
+\itemize{
+\item \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/match-rulesets.html}{Build a Rule Set}
+}
+
+\strong{Related operations}
 \itemize{
 \item CreateMatchmakingConfiguration
 \item DescribeMatchmakingConfigurations
@@ -24,8 +27,13 @@ Operations related to match configurations and rule sets include:
 \item CreateMatchmakingRuleSet
 \item DescribeMatchmakingRuleSets
 \item ValidateMatchmakingRuleSet
+\item DeleteMatchmakingRuleSet
 }
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{validate_matchmaking_rule_set(
+  RuleSetBody = "string"
+)
+}
+}
 
-}

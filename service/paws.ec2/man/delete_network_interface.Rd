@@ -4,10 +4,7 @@
 \alias{delete_network_interface}
 \title{Deletes the specified network interface}
 \usage{
-delete_network_interface(
-  DryRun = TRUE|FALSE,
-  NetworkInterfaceId = "string"
-)
+delete_network_interface(DryRun = NULL, NetworkInterfaceId)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -17,10 +14,18 @@ delete_network_interface(
 \description{
 Deletes the specified network interface. You must detach the network interface before you can delete it.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_network_interface(
+  DryRun = TRUE|FALSE,
+  NetworkInterfaceId = "string"
+)
+}
+}
+
 \examples{
 # This example deletes the specified network interface.
-delete_network_interface(
+\donttest{delete_network_interface(
   NetworkInterfaceId = "eni-e5aa89a3"
-)
+)}
 
 }

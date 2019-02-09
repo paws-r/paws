@@ -4,9 +4,7 @@
 \alias{describe_cluster}
 \title{Returns a description of the MSK cluster whose Amazon Resource Name (ARN) is specified in the request}
 \usage{
-describe_cluster(
-  ClusterArn = "string"
-)
+describe_cluster(ClusterArn)
 }
 \arguments{
 \item{ClusterArn}{[required] The Amazon Resource Name (ARN) that uniquely identifies the cluster.}
@@ -14,6 +12,10 @@ describe_cluster(
 \description{
 Returns a description of the MSK cluster whose Amazon Resource Name (ARN) is specified in the request.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_cluster(
+  ClusterArn = "string"
+)
 }
+}
+

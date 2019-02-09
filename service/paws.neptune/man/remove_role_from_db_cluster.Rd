@@ -4,10 +4,7 @@
 \alias{remove_role_from_db_cluster}
 \title{Disassociates an Identity and Access Management (IAM) role from a DB cluster}
 \usage{
-remove_role_from_db_cluster(
-  DBClusterIdentifier = "string",
-  RoleArn = "string"
-)
+remove_role_from_db_cluster(DBClusterIdentifier, RoleArn)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The name of the DB cluster to disassociate the IAM role from.}
@@ -17,6 +14,11 @@ remove_role_from_db_cluster(
 \description{
 Disassociates an Identity and Access Management (IAM) role from a DB cluster.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{remove_role_from_db_cluster(
+  DBClusterIdentifier = "string",
+  RoleArn = "string"
+)
 }
+}
+

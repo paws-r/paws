@@ -4,14 +4,9 @@
 \alias{describe_game_sessions}
 \title{Retrieves a set of one or more game sessions}
 \usage{
-describe_game_sessions(
-  FleetId = "string",
-  GameSessionId = "string",
-  AliasId = "string",
-  StatusFilter = "string",
-  Limit = 123,
-  NextToken = "string"
-)
+describe_game_sessions(FleetId = NULL, GameSessionId = NULL,
+  AliasId = NULL, StatusFilter = NULL, Limit = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{FleetId}{Unique identifier for a fleet to retrieve all game sessions for.}
@@ -33,8 +28,6 @@ Retrieves a set of one or more game sessions. Request a specific game session or
 To get game sessions, specify one of the following: game session ID, fleet ID, or alias ID. You can filter this request by game session status. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, a GameSession object is returned for each game session matching the request.
 
 \emph{Available in Amazon GameLift Local.}
-
-Game-session-related operations include:
 \itemize{
 \item CreateGameSession
 \item DescribeGameSessions
@@ -48,6 +41,15 @@ Game-session-related operations include:
 \item StopGameSessionPlacement
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_game_sessions(
+  FleetId = "string",
+  GameSessionId = "string",
+  AliasId = "string",
+  StatusFilter = "string",
+  Limit = 123,
+  NextToken = "string"
+)
 }
+}
+

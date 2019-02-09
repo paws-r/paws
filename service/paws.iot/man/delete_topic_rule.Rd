@@ -4,9 +4,7 @@
 \alias{delete_topic_rule}
 \title{Deletes the rule}
 \usage{
-delete_topic_rule(
-  ruleName = "string"
-)
+delete_topic_rule(ruleName)
 }
 \arguments{
 \item{ruleName}{[required] The name of the rule.}
@@ -14,6 +12,10 @@ delete_topic_rule(
 \description{
 Deletes the rule.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_topic_rule(
+  ruleName = "string"
+)
 }
+}
+

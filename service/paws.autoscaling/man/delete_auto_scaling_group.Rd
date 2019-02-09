@@ -4,10 +4,7 @@
 \alias{delete_auto_scaling_group}
 \title{Deletes the specified Auto Scaling group}
 \usage{
-delete_auto_scaling_group(
-  AutoScalingGroupName = "string",
-  ForceDelete = TRUE|FALSE
-)
+delete_auto_scaling_group(AutoScalingGroupName, ForceDelete = NULL)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
@@ -26,17 +23,25 @@ To remove instances from the Auto Scaling group before deleting it, call DetachI
 
 To terminate all instances before deleting the Auto Scaling group, call UpdateAutoScalingGroup and set the minimum size and desired capacity of the Auto Scaling group to zero.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_auto_scaling_group(
+  AutoScalingGroupName = "string",
+  ForceDelete = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example deletes the specified Auto Scaling group.
-delete_auto_scaling_group(
+\donttest{delete_auto_scaling_group(
   AutoScalingGroupName = "my-auto-scaling-group"
-)
+)}
 
 # This example deletes the specified Auto Scaling group and all its
 # instances.
-delete_auto_scaling_group(
+\donttest{delete_auto_scaling_group(
   AutoScalingGroupName = "my-auto-scaling-group",
   ForceDelete = TRUE
-)
+)}
 
 }

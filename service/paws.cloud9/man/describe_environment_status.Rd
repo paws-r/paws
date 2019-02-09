@@ -4,9 +4,7 @@
 \alias{describe_environment_status}
 \title{Gets status information for an AWS Cloud9 development environment}
 \usage{
-describe_environment_status(
-  environmentId = "string"
-)
+describe_environment_status(environmentId)
 }
 \arguments{
 \item{environmentId}{[required] The ID of the environment to get status information about.}
@@ -14,10 +12,17 @@ describe_environment_status(
 \description{
 Gets status information for an AWS Cloud9 development environment.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_environment_status(
+  environmentId = "string"
+)
+}
+}
+
 \examples{
 # 
-describe_environment_status(
+\donttest{describe_environment_status(
   environmentId = "8d9967e2f0624182b74e7690ad69ebEX"
-)
+)}
 
 }

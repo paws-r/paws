@@ -4,11 +4,8 @@
 \alias{list_available_management_cidr_ranges}
 \title{Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks, that you can use for the network management interface when you enable bring your own license (BYOL)}
 \usage{
-list_available_management_cidr_ranges(
-  ManagementCidrRangeConstraint = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_available_management_cidr_ranges(ManagementCidrRangeConstraint,
+  MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ManagementCidrRangeConstraint}{[required] The IP address range to search. Specify an IP address range that is compatible with your network and in CIDR notation (that is, specify the range as an IPv4 CIDR block).}
@@ -23,6 +20,12 @@ Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks, that you c
 \details{
 The management network interface is connected to a secure Amazon WorkSpaces management network. It is used for interactive streaming of the WorkSpace desktop to Amazon WorkSpaces clients, and to allow Amazon WorkSpaces to manage the WorkSpace.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_available_management_cidr_ranges(
+  ManagementCidrRangeConstraint = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

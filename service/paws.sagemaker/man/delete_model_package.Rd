@@ -4,9 +4,7 @@
 \alias{delete_model_package}
 \title{Deletes a model package}
 \usage{
-delete_model_package(
-  ModelPackageName = "string"
-)
+delete_model_package(ModelPackageName)
 }
 \arguments{
 \item{ModelPackageName}{[required] The name of the model package. The name must have 1 to 63 characters. Valid characters are a-z, A-Z, 0-9, and - (hyphen).}
@@ -17,6 +15,10 @@ Deletes a model package.
 \details{
 A model package is used to create Amazon SageMaker models or list on AWS Marketplace. Buyers can subscribe to model packages listed on AWS Marketplace to create models in Amazon SageMaker.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_model_package(
+  ModelPackageName = "string"
+)
 }
+}
+

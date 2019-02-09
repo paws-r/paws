@@ -4,10 +4,7 @@
 \alias{list_protections}
 \title{Lists all Protection objects for the account}
 \usage{
-list_protections(
-  NextToken = "string",
-  MaxResults = 123
-)
+list_protections(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{The \code{ListProtectionsRequest.NextToken} value from a previous call to \code{ListProtections}. Pass null if this is the first call.}
@@ -19,6 +16,11 @@ This is a maximum value; it is possible that AWS WAF will return the results in 
 \description{
 Lists all Protection objects for the account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_protections(
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

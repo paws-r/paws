@@ -4,13 +4,8 @@
 \alias{put_notification_configuration}
 \title{Configures an Auto Scaling group to send notifications when specified events take place}
 \usage{
-put_notification_configuration(
-  AutoScalingGroupName = "string",
-  TopicARN = "string",
-  NotificationTypes = list(
-    "string"
-  )
-)
+put_notification_configuration(AutoScalingGroupName, TopicARN,
+  NotificationTypes)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
@@ -27,15 +22,26 @@ This configuration overwrites any existing configuration.
 
 For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/ASGettingNotifications.html}{Getting SNS Notifications When Your Auto Scaling Group Scales} in the \emph{Auto Scaling User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{put_notification_configuration(
+  AutoScalingGroupName = "string",
+  TopicARN = "string",
+  NotificationTypes = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # This example adds the specified notification to the specified Auto
 # Scaling group.
-put_notification_configuration(
+\donttest{put_notification_configuration(
   AutoScalingGroupName = "my-auto-scaling-group",
   NotificationTypes = list(
     "autoscaling:TEST_NOTIFICATION"
   ),
   TopicARN = "arn:aws:sns:us-west-2:123456789012:my-sns-topic"
-)
+)}
 
 }

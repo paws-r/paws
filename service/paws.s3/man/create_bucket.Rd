@@ -4,19 +4,10 @@
 \alias{create_bucket}
 \title{Creates a new bucket}
 \usage{
-create_bucket(
-  ACL = "private"|"public-read"|"public-read-write"|"authenticated-read",
-  Bucket = "string",
-  CreateBucketConfiguration = list(
-    LocationConstraint = "EU"|"eu-west-1"|"us-west-1"|"us-west-2"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"|"cn-north-1"|"eu-central-1"
-  ),
-  GrantFullControl = "string",
-  GrantRead = "string",
-  GrantReadACP = "string",
-  GrantWrite = "string",
-  GrantWriteACP = "string",
-  ObjectLockEnabledForBucket = TRUE|FALSE
-)
+create_bucket(ACL = NULL, Bucket, CreateBucketConfiguration = NULL,
+  GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL,
+  GrantWrite = NULL, GrantWriteACP = NULL,
+  ObjectLockEnabledForBucket = NULL)
 }
 \arguments{
 \item{ACL}{The canned ACL to apply to the bucket.}
@@ -40,19 +31,36 @@ create_bucket(
 \description{
 Creates a new bucket.
 }
+\section{Accepted Parameters}{
+\preformatted{create_bucket(
+  ACL = "private"|"public-read"|"public-read-write"|"authenticated-read",
+  Bucket = "string",
+  CreateBucketConfiguration = list(
+    LocationConstraint = "EU"|"eu-west-1"|"us-west-1"|"us-west-2"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"|"cn-north-1"|"eu-central-1"
+  ),
+  GrantFullControl = "string",
+  GrantRead = "string",
+  GrantReadACP = "string",
+  GrantWrite = "string",
+  GrantWriteACP = "string",
+  ObjectLockEnabledForBucket = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # The following example creates a bucket.
-create_bucket(
+\donttest{create_bucket(
   Bucket = "examplebucket"
-)
+)}
 
 # The following example creates a bucket. The request specifies an AWS
 # region where to create the bucket.
-create_bucket(
+\donttest{create_bucket(
   Bucket = "examplebucket",
   CreateBucketConfiguration = list(
     LocationConstraint = "eu-west-1"
   )
-)
+)}
 
 }

@@ -4,20 +4,10 @@
 \alias{put_playback_configuration}
 \title{Adds a new configuration to AWS Elemental MediaTailor}
 \usage{
-put_playback_configuration(
-  AdDecisionServerUrl = "string",
-  CdnConfiguration = list(
-    AdSegmentUrlPrefix = "string",
-    ContentSegmentUrlPrefix = "string"
-  ),
-  DashConfiguration = list(
-    MpdLocation = "string"
-  ),
-  Name = "string",
-  SlateAdUrl = "string",
-  TranscodeProfileName = "string",
-  VideoContentSourceUrl = "string"
-)
+put_playback_configuration(AdDecisionServerUrl = NULL,
+  CdnConfiguration = NULL, DashConfiguration = NULL, Name = NULL,
+  SlateAdUrl = NULL, TranscodeProfileName = NULL,
+  VideoContentSourceUrl = NULL)
 }
 \arguments{
 \item{AdDecisionServerUrl}{The URL for the ad decision server (ADS). This includes the specification of static parameters and placeholders for dynamic parameters. AWS Elemental MediaTailor substitutes player-specific and session-specific parameters as needed when calling the ADS. Alternately, for testing you can provide a static VAST URL. The maximum length is 25000 characters.}
@@ -37,6 +27,21 @@ put_playback_configuration(
 \description{
 Adds a new configuration to AWS Elemental MediaTailor.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_playback_configuration(
+  AdDecisionServerUrl = "string",
+  CdnConfiguration = list(
+    AdSegmentUrlPrefix = "string",
+    ContentSegmentUrlPrefix = "string"
+  ),
+  DashConfiguration = list(
+    MpdLocation = "string"
+  ),
+  Name = "string",
+  SlateAdUrl = "string",
+  TranscodeProfileName = "string",
+  VideoContentSourceUrl = "string"
+)
 }
+}
+

@@ -4,11 +4,7 @@
 \alias{set_topic_attributes}
 \title{Allows a topic owner to set an attribute of the topic to a new value}
 \usage{
-set_topic_attributes(
-  TopicArn = "string",
-  AttributeName = "string",
-  AttributeValue = "string"
-)
+set_topic_attributes(TopicArn, AttributeName, AttributeValue = NULL)
 }
 \arguments{
 \item{TopicArn}{[required] The ARN of the topic to modify.}
@@ -27,6 +23,12 @@ The following lists the names, descriptions, and values of the special request p
 \description{
 Allows a topic owner to set an attribute of the topic to a new value.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{set_topic_attributes(
+  TopicArn = "string",
+  AttributeName = "string",
+  AttributeValue = "string"
+)
 }
+}
+

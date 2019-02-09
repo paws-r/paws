@@ -4,9 +4,7 @@
 \alias{delete_workspace_image}
 \title{Deletes the specified image from your account}
 \usage{
-delete_workspace_image(
-  ImageId = "string"
-)
+delete_workspace_image(ImageId)
 }
 \arguments{
 \item{ImageId}{[required] The identifier of the image.}
@@ -14,6 +12,10 @@ delete_workspace_image(
 \description{
 Deletes the specified image from your account. To delete an image, you must first delete any bundles that are associated with the image.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_workspace_image(
+  ImageId = "string"
+)
 }
+}
+

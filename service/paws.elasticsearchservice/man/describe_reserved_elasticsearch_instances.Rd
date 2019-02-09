@@ -4,11 +4,9 @@
 \alias{describe_reserved_elasticsearch_instances}
 \title{Returns information about reserved Elasticsearch instances for this account}
 \usage{
-describe_reserved_elasticsearch_instances(
-  ReservedElasticsearchInstanceId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+
+  describe_reserved_elasticsearch_instances(ReservedElasticsearchInstanceId = NULL,
+  MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ReservedElasticsearchInstanceId}{The reserved instance identifier filter value. Use this parameter to show only the reservation that matches the specified reserved Elasticsearch instance ID.}
@@ -20,6 +18,12 @@ describe_reserved_elasticsearch_instances(
 \description{
 Returns information about reserved Elasticsearch instances for this account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_reserved_elasticsearch_instances(
+  ReservedElasticsearchInstanceId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

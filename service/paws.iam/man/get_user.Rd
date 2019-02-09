@@ -4,9 +4,7 @@
 \alias{get_user}
 \title{Retrieves information about the specified IAM user, including the user's creation date, path, unique ID, and ARN}
 \usage{
-get_user(
-  UserName = "string"
-)
+get_user(UserName = NULL)
 }
 \arguments{
 \item{UserName}{The name of the user to get information about.
@@ -19,10 +17,17 @@ Retrieves information about the specified IAM user, including the user's creatio
 \details{
 If you do not specify a user name, IAM determines the user name implicitly based on the AWS access key ID used to sign the request to this API.
 }
+\section{Accepted Parameters}{
+\preformatted{get_user(
+  UserName = "string"
+)
+}
+}
+
 \examples{
 # The following command gets information about the IAM user named Bob.
-get_user(
+\donttest{get_user(
   UserName = "Bob"
-)
+)}
 
 }

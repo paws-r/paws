@@ -4,9 +4,7 @@
 \alias{approve_skill}
 \title{Associates a skill with the organization under the customer's AWS account}
 \usage{
-approve_skill(
-  SkillId = "string"
-)
+approve_skill(SkillId)
 }
 \arguments{
 \item{SkillId}{[required] The unique identifier of the skill.}
@@ -14,6 +12,10 @@ approve_skill(
 \description{
 Associates a skill with the organization under the customer's AWS account. If a skill is private, the user implicitly accepts access to this skill during enablement.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{approve_skill(
+  SkillId = "string"
+)
 }
+}
+

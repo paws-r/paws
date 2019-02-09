@@ -4,9 +4,7 @@
 \alias{stop_training_job}
 \title{Stops a training job}
 \usage{
-stop_training_job(
-  TrainingJobName = "string"
-)
+stop_training_job(TrainingJobName)
 }
 \arguments{
 \item{TrainingJobName}{[required] The name of the training job to stop.}
@@ -19,6 +17,10 @@ Training algorithms provided by Amazon SageMaker save the intermediate results o
 
 When it receives a \code{StopTrainingJob} request, Amazon SageMaker changes the status of the job to \code{Stopping}. After Amazon SageMaker stops the job, it sets the status to \code{Stopped}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{stop_training_job(
+  TrainingJobName = "string"
+)
 }
+}
+

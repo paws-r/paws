@@ -4,7 +4,36 @@
 \alias{create_model_package}
 \title{Creates a model package that you can use to create Amazon SageMaker models or list on AWS Marketplace}
 \usage{
-create_model_package(
+create_model_package(ModelPackageName, ModelPackageDescription = NULL,
+  InferenceSpecification = NULL, ValidationSpecification = NULL,
+  SourceAlgorithmSpecification = NULL, CertifyForMarketplace = NULL)
+}
+\arguments{
+\item{ModelPackageName}{[required] The name of the model package. The name must have 1 to 63 characters. Valid characters are a-z, A-Z, 0-9, and - (hyphen).}
+
+\item{ModelPackageDescription}{A description of the model package.}
+
+\item{InferenceSpecification}{Specifies details about inference jobs that can be run with models based on this model package, including the following:
+\itemize{
+\item The Amazon ECR paths of containers that contain the inference code and model artifacts.
+\item The instance types that the model package supports for transform jobs and real-time endpoints used for inference.
+\item The input and output content formats that the model package supports for inference.
+}}
+
+\item{ValidationSpecification}{Specifies configurations for one or more transform jobs that Amazon SageMaker runs to test the model package.}
+
+\item{SourceAlgorithmSpecification}{Details about the algorithm that was used to create the model package.}
+
+\item{CertifyForMarketplace}{Whether to certify the model package for listing on AWS Marketplace.}
+}
+\description{
+Creates a model package that you can use to create Amazon SageMaker models or list on AWS Marketplace. Buyers can subscribe to model packages listed on AWS Marketplace to create models in Amazon SageMaker.
+}
+\details{
+To create a model package by specifying a Docker container that contains your inference code and the Amazon S3 location of your model artifacts, provide values for \code{InferenceSpecification}. To create a model from an algorithm resource that you created or subscribed to in AWS Marketplace, provide a value for \code{SourceAlgorithmSpecification}.
+}
+\section{Accepted Parameters}{
+\preformatted{create_model_package(
   ModelPackageName = "string",
   ModelPackageDescription = "string",
   InferenceSpecification = list(
@@ -79,30 +108,5 @@ create_model_package(
   CertifyForMarketplace = TRUE|FALSE
 )
 }
-\arguments{
-\item{ModelPackageName}{[required] The name of the model package. The name must have 1 to 63 characters. Valid characters are a-z, A-Z, 0-9, and - (hyphen).}
-
-\item{ModelPackageDescription}{A description of the model package.}
-
-\item{InferenceSpecification}{Specifies details about inference jobs that can be run with models based on this model package, including the following:
-\itemize{
-\item The Amazon ECR paths of containers that contain the inference code and model artifacts.
-\item The instance types that the model package supports for transform jobs and real-time endpoints used for inference.
-\item The input and output content formats that the model package supports for inference.
-}}
-
-\item{ValidationSpecification}{Specifies configurations for one or more transform jobs that Amazon SageMaker runs to test the model package.}
-
-\item{SourceAlgorithmSpecification}{Details about the algorithm that was used to create the model package.}
-
-\item{CertifyForMarketplace}{Whether to certify the model package for listing on AWS Marketplace.}
 }
-\description{
-Creates a model package that you can use to create Amazon SageMaker models or list on AWS Marketplace. Buyers can subscribe to model packages listed on AWS Marketplace to create models in Amazon SageMaker.
-}
-\details{
-To create a model package by specifying a Docker container that contains your inference code and the Amazon S3 location of your model artifacts, provide values for \code{InferenceSpecification}. To create a model from an algorithm resource that you created or subscribed to in AWS Marketplace, provide a value for \code{SourceAlgorithmSpecification}.
-}
-\examples{
 
-}

@@ -4,13 +4,8 @@
 \alias{list_services}
 \title{Lists the services that are running in a specified cluster}
 \usage{
-list_services(
-  cluster = "string",
-  nextToken = "string",
-  maxResults = 123,
-  launchType = "EC2"|"FARGATE",
-  schedulingStrategy = "REPLICA"|"DAEMON"
-)
+list_services(cluster = NULL, nextToken = NULL, maxResults = NULL,
+  launchType = NULL, schedulingStrategy = NULL)
 }
 \arguments{
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that hosts the services to list. If you do not specify a cluster, the default cluster is assumed.}
@@ -28,9 +23,20 @@ This token should be treated as an opaque identifier that is only used to retrie
 \description{
 Lists the services that are running in a specified cluster.
 }
+\section{Accepted Parameters}{
+\preformatted{list_services(
+  cluster = "string",
+  nextToken = "string",
+  maxResults = 123,
+  launchType = "EC2"|"FARGATE",
+  schedulingStrategy = "REPLICA"|"DAEMON"
+)
+}
+}
+
 \examples{
 # This example lists the services running in the default cluster for an
 # account.
-list_services()
+\donttest{list_services()}
 
 }

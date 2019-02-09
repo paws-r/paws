@@ -4,17 +4,10 @@
 \alias{update_license_configuration}
 \title{Modifies the attributes of an existing license configuration object}
 \usage{
-update_license_configuration(
-  LicenseConfigurationArn = "string",
-  LicenseConfigurationStatus = "AVAILABLE"|"DISABLED",
-  LicenseRules = list(
-    "string"
-  ),
-  LicenseCount = 123,
-  LicenseCountHardLimit = TRUE|FALSE,
-  Name = "string",
-  Description = "string"
-)
+update_license_configuration(LicenseConfigurationArn,
+  LicenseConfigurationStatus = NULL, LicenseRules = NULL,
+  LicenseCount = NULL, LicenseCountHardLimit = NULL, Name = NULL,
+  Description = NULL)
 }
 \arguments{
 \item{LicenseConfigurationArn}{[required] ARN for a license configuration.}
@@ -34,6 +27,18 @@ update_license_configuration(
 \description{
 Modifies the attributes of an existing license configuration object. A license configuration is an abstraction of a customer license agreement that can be consumed and enforced by License Manager. Components include specifications for the license type (Instances, cores, sockets, VCPUs), tenancy (shared or Dedicated Host), host affinity (how long a VM is associated with a host), the number of licenses purchased and used.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_license_configuration(
+  LicenseConfigurationArn = "string",
+  LicenseConfigurationStatus = "AVAILABLE"|"DISABLED",
+  LicenseRules = list(
+    "string"
+  ),
+  LicenseCount = 123,
+  LicenseCountHardLimit = TRUE|FALSE,
+  Name = "string",
+  Description = "string"
+)
 }
+}
+

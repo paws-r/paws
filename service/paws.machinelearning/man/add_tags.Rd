@@ -4,16 +4,7 @@
 \alias{add_tags}
 \title{Adds one or more tags to an object, up to a limit of 10}
 \usage{
-add_tags(
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  ResourceId = "string",
-  ResourceType = "BatchPrediction"|"DataSource"|"Evaluation"|"MLModel"
-)
+add_tags(Tags, ResourceId, ResourceType)
 }
 \arguments{
 \item{Tags}{[required] The key-value pairs to use to create tags. If you specify a key without specifying a value, Amazon ML creates a tag with the specified key and a value of null.}
@@ -25,6 +16,17 @@ add_tags(
 \description{
 Adds one or more tags to an object, up to a limit of 10. Each tag consists of a key and an optional value. If you add a tag using a key that is already associated with the ML object, \code{AddTags} updates the tag's value.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{add_tags(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  ResourceId = "string",
+  ResourceType = "BatchPrediction"|"DataSource"|"Evaluation"|"MLModel"
+)
 }
+}
+

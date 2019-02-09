@@ -4,10 +4,7 @@
 \alias{update_core_definition}
 \title{Updates a core definition}
 \usage{
-update_core_definition(
-  CoreDefinitionId = "string",
-  Name = "string"
-)
+update_core_definition(CoreDefinitionId, Name = NULL)
 }
 \arguments{
 \item{CoreDefinitionId}{[required] The ID of the core definition.}
@@ -17,6 +14,11 @@ update_core_definition(
 \description{
 Updates a core definition.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_core_definition(
+  CoreDefinitionId = "string",
+  Name = "string"
+)
 }
+}
+

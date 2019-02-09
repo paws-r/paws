@@ -4,23 +4,8 @@
 \alias{create_resource_share}
 \title{Creates a resource share}
 \usage{
-create_resource_share(
-  name = "string",
-  resourceArns = list(
-    "string"
-  ),
-  principals = list(
-    "string"
-  ),
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  ),
-  allowExternalPrincipals = TRUE|FALSE,
-  clientToken = "string"
-)
+create_resource_share(name, resourceArns = NULL, principals = NULL,
+  tags = NULL, allowExternalPrincipals = NULL, clientToken = NULL)
 }
 \arguments{
 \item{name}{[required] The name of the resource share.}
@@ -38,6 +23,24 @@ create_resource_share(
 \description{
 Creates a resource share.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_resource_share(
+  name = "string",
+  resourceArns = list(
+    "string"
+  ),
+  principals = list(
+    "string"
+  ),
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  ),
+  allowExternalPrincipals = TRUE|FALSE,
+  clientToken = "string"
+)
 }
+}
+

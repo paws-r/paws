@@ -4,36 +4,10 @@
 \alias{send_templated_email}
 \title{Composes an email message using an email template and immediately queues it for sending}
 \usage{
-send_templated_email(
-  Source = "string",
-  Destination = list(
-    ToAddresses = list(
-      "string"
-    ),
-    CcAddresses = list(
-      "string"
-    ),
-    BccAddresses = list(
-      "string"
-    )
-  ),
-  ReplyToAddresses = list(
-    "string"
-  ),
-  ReturnPath = "string",
-  SourceArn = "string",
-  ReturnPathArn = "string",
-  Tags = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  ConfigurationSetName = "string",
-  Template = "string",
-  TemplateArn = "string",
-  TemplateData = "string"
-)
+send_templated_email(Source, Destination, ReplyToAddresses = NULL,
+  ReturnPath = NULL, SourceArn = NULL, ReturnPathArn = NULL,
+  Tags = NULL, ConfigurationSetName = NULL, Template,
+  TemplateArn = NULL, TemplateData)
 }
 \arguments{
 \item{Source}{[required] The email address that is sending the email. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES. For information about verifying identities, see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html}{Amazon SES Developer Guide}.
@@ -88,6 +62,37 @@ If your call to the \code{SendTemplatedEmail} operation includes all of the requ
 
 For these reasons, we highly recommend that you set up Amazon SES to send you notifications when Rendering Failure events occur. For more information, see \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html}{Sending Personalized Email Using the Amazon SES API} in the \emph{Amazon Simple Email Service Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{send_templated_email(
+  Source = "string",
+  Destination = list(
+    ToAddresses = list(
+      "string"
+    ),
+    CcAddresses = list(
+      "string"
+    ),
+    BccAddresses = list(
+      "string"
+    )
+  ),
+  ReplyToAddresses = list(
+    "string"
+  ),
+  ReturnPath = "string",
+  SourceArn = "string",
+  ReturnPathArn = "string",
+  Tags = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  ConfigurationSetName = "string",
+  Template = "string",
+  TemplateArn = "string",
+  TemplateData = "string"
+)
 }
+}
+

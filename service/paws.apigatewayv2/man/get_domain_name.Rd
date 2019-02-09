@@ -4,9 +4,7 @@
 \alias{get_domain_name}
 \title{Gets a domain name}
 \usage{
-get_domain_name(
-  DomainName = "string"
-)
+get_domain_name(DomainName)
 }
 \arguments{
 \item{DomainName}{[required] The domain name.}
@@ -14,6 +12,10 @@ get_domain_name(
 \description{
 Gets a domain name.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_domain_name(
+  DomainName = "string"
+)
 }
+}
+

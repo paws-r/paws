@@ -5,45 +5,11 @@
 \alias{create_cloud_formation_change_set}
 \title{Creates an AWS CloudFormation change set for the given application}
 \usage{
-create_cloud_formation_change_set(
-  ApplicationId = "string",
-  Capabilities = list(
-    "string"
-  ),
-  ChangeSetName = "string",
-  ClientToken = "string",
-  Description = "string",
-  NotificationArns = list(
-    "string"
-  ),
-  ParameterOverrides = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  ResourceTypes = list(
-    "string"
-  ),
-  RollbackConfiguration = list(
-    MonitoringTimeInMinutes = 123,
-    RollbackTriggers = list(
-      list(
-        Arn = "string",
-        Type = "string"
-      )
-    )
-  ),
-  SemanticVersion = "string",
-  StackName = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  TemplateId = "string"
-)
+create_cloud_formation_change_set(ApplicationId, Capabilities = NULL,
+  ChangeSetName = NULL, ClientToken = NULL, Description = NULL,
+  NotificationArns = NULL, ParameterOverrides = NULL,
+  ResourceTypes = NULL, RollbackConfiguration = NULL,
+  SemanticVersion = NULL, StackName, Tags = NULL, TemplateId = NULL)
 }
 \arguments{
 \item{ApplicationId}{[required] The Amazon Resource Name (ARN) of the application.}
@@ -89,6 +55,46 @@ Pattern: [0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-f
 \description{
 Creates an AWS CloudFormation change set for the given application.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_cloud_formation_change_set(
+  ApplicationId = "string",
+  Capabilities = list(
+    "string"
+  ),
+  ChangeSetName = "string",
+  ClientToken = "string",
+  Description = "string",
+  NotificationArns = list(
+    "string"
+  ),
+  ParameterOverrides = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  ResourceTypes = list(
+    "string"
+  ),
+  RollbackConfiguration = list(
+    MonitoringTimeInMinutes = 123,
+    RollbackTriggers = list(
+      list(
+        Arn = "string",
+        Type = "string"
+      )
+    )
+  ),
+  SemanticVersion = "string",
+  StackName = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  TemplateId = "string"
+)
 }
+}
+

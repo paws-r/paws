@@ -4,12 +4,8 @@
 \alias{update_traffic_policy_instance}
 \title{Updates the resource record sets in a specified hosted zone that were created based on the settings in a specified traffic policy version}
 \usage{
-update_traffic_policy_instance(
-  Id = "string",
-  TTL = 123,
-  TrafficPolicyId = "string",
-  TrafficPolicyVersion = 123
-)
+update_traffic_policy_instance(Id, TTL, TrafficPolicyId,
+  TrafficPolicyVersion)
 }
 \arguments{
 \item{Id}{[required] The ID of the traffic policy instance that you want to update.}
@@ -31,6 +27,13 @@ When you update a traffic policy instance, Amazon Route 53 continues to respond 
 \item Route 53 deletes the old group of resource record sets that are associated with the root resource record set name.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_traffic_policy_instance(
+  Id = "string",
+  TTL = 123,
+  TrafficPolicyId = "string",
+  TrafficPolicyVersion = 123
+)
 }
+}
+

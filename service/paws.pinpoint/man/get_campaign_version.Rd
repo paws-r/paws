@@ -4,11 +4,7 @@
 \alias{get_campaign_version}
 \title{Returns information about a specific version of a campaign}
 \usage{
-get_campaign_version(
-  ApplicationId = "string",
-  CampaignId = "string",
-  Version = "string"
-)
+get_campaign_version(ApplicationId, CampaignId, Version)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
@@ -20,6 +16,12 @@ get_campaign_version(
 \description{
 Returns information about a specific version of a campaign.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_campaign_version(
+  ApplicationId = "string",
+  CampaignId = "string",
+  Version = "string"
+)
 }
+}
+

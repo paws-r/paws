@@ -4,16 +4,8 @@
 \alias{put_object_legal_hold}
 \title{Applies a Legal Hold configuration to the specified object}
 \usage{
-put_object_legal_hold(
-  Bucket = "string",
-  Key = "string",
-  LegalHold = list(
-    Status = "ON"|"OFF"
-  ),
-  RequestPayer = "requester",
-  VersionId = "string",
-  ContentMD5 = "string"
-)
+put_object_legal_hold(Bucket, Key, LegalHold = NULL,
+  RequestPayer = NULL, VersionId = NULL, ContentMD5 = NULL)
 }
 \arguments{
 \item{Bucket}{[required] The bucket containing the object that you want to place a Legal Hold on.}
@@ -31,6 +23,17 @@ put_object_legal_hold(
 \description{
 Applies a Legal Hold configuration to the specified object.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_object_legal_hold(
+  Bucket = "string",
+  Key = "string",
+  LegalHold = list(
+    Status = "ON"|"OFF"
+  ),
+  RequestPayer = "requester",
+  VersionId = "string",
+  ContentMD5 = "string"
+)
 }
+}
+

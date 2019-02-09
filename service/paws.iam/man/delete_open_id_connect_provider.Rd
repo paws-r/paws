@@ -4,9 +4,7 @@
 \alias{delete_open_id_connect_provider}
 \title{Deletes an OpenID Connect identity provider (IdP) resource object in IAM}
 \usage{
-delete_open_id_connect_provider(
-  OpenIDConnectProviderArn = "string"
-)
+delete_open_id_connect_provider(OpenIDConnectProviderArn)
 }
 \arguments{
 \item{OpenIDConnectProviderArn}{[required] The Amazon Resource Name (ARN) of the IAM OpenID Connect provider resource object to delete. You can get a list of OpenID Connect provider resource ARNs by using the ListOpenIDConnectProviders operation.}
@@ -19,6 +17,10 @@ Deleting an IAM OIDC provider resource does not update any roles that reference 
 
 This operation is idempotent; it does not fail or return an error if you call the operation for a provider that does not exist.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_open_id_connect_provider(
+  OpenIDConnectProviderArn = "string"
+)
 }
+}
+

@@ -4,18 +4,7 @@
 \alias{list_groups}
 \title{Returns a list of existing resource groups in your account}
 \usage{
-list_groups(
-  Filters = list(
-    list(
-      Name = "resource-type",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_groups(Filters = NULL, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{Filters}{Filters, formatted as GroupFilter objects, that you want to apply to a ListGroups operation.
@@ -30,6 +19,19 @@ list_groups(
 \description{
 Returns a list of existing resource groups in your account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_groups(
+  Filters = list(
+    list(
+      Name = "resource-type",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

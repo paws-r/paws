@@ -4,26 +4,8 @@
 \alias{create_deployment}
 \title{Runs deployment or stack commands}
 \usage{
-create_deployment(
-  StackId = "string",
-  AppId = "string",
-  InstanceIds = list(
-    "string"
-  ),
-  LayerIds = list(
-    "string"
-  ),
-  Command = list(
-    Name = "install_dependencies"|"update_dependencies"|"update_custom_cookbooks"|"execute_recipes"|"configure"|"setup"|"deploy"|"rollback"|"start"|"stop"|"restart"|"undeploy",
-    Args = list(
-      list(
-        "string"
-      )
-    )
-  ),
-  Comment = "string",
-  CustomJson = "string"
-)
+create_deployment(StackId, AppId = NULL, InstanceIds = NULL,
+  LayerIds = NULL, Command, Comment = NULL, CustomJson = NULL)
 }
 \arguments{
 \item{StackId}{[required] The stack ID.}
@@ -50,6 +32,27 @@ Runs deployment or stack commands. For more information, see \href{http://docs.a
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have a Deploy or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_deployment(
+  StackId = "string",
+  AppId = "string",
+  InstanceIds = list(
+    "string"
+  ),
+  LayerIds = list(
+    "string"
+  ),
+  Command = list(
+    Name = "install_dependencies"|"update_dependencies"|"update_custom_cookbooks"|"execute_recipes"|"configure"|"setup"|"deploy"|"rollback"|"start"|"stop"|"restart"|"undeploy",
+    Args = list(
+      list(
+        "string"
+      )
+    )
+  ),
+  Comment = "string",
+  CustomJson = "string"
+)
 }
+}
+

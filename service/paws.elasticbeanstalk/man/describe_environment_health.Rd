@@ -4,13 +4,8 @@
 \alias{describe_environment_health}
 \title{Returns information about the overall health of the specified environment}
 \usage{
-describe_environment_health(
-  EnvironmentName = "string",
-  EnvironmentId = "string",
-  AttributeNames = list(
-    "Status"|"Color"|"Causes"|"ApplicationMetrics"|"InstancesHealth"|"All"|"HealthStatus"|"RefreshedAt"
-  )
-)
+describe_environment_health(EnvironmentName = NULL,
+  EnvironmentId = NULL, AttributeNames = NULL)
 }
 \arguments{
 \item{EnvironmentName}{Specify the environment by name.
@@ -26,14 +21,25 @@ You must specify either this or an EnvironmentName, or both.}
 \description{
 Returns information about the overall health of the specified environment. The \strong{DescribeEnvironmentHealth} operation is only available with AWS Elastic Beanstalk Enhanced Health.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_environment_health(
+  EnvironmentName = "string",
+  EnvironmentId = "string",
+  AttributeNames = list(
+    "Status"|"Color"|"Causes"|"ApplicationMetrics"|"InstancesHealth"|"All"|"HealthStatus"|"RefreshedAt"
+  )
+)
+}
+}
+
 \examples{
 # The following operation retrieves overall health information for an
 # environment named my-env:
-describe_environment_health(
+\donttest{describe_environment_health(
   AttributeNames = list(
     "All"
   ),
   EnvironmentName = "my-env"
-)
+)}
 
 }

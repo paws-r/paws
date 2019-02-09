@@ -4,9 +4,7 @@
 \alias{describe_db_cluster_snapshot_attributes}
 \title{Returns a list of DB cluster snapshot attribute names and values for a manual DB cluster snapshot}
 \usage{
-describe_db_cluster_snapshot_attributes(
-  DBClusterSnapshotIdentifier = "string"
-)
+describe_db_cluster_snapshot_attributes(DBClusterSnapshotIdentifier)
 }
 \arguments{
 \item{DBClusterSnapshotIdentifier}{[required] The identifier for the DB cluster snapshot to describe the attributes for.}
@@ -19,6 +17,10 @@ When sharing snapshots with other AWS accounts, \code{DescribeDBClusterSnapshotA
 
 To add or remove access for an AWS account to copy or restore a manual DB cluster snapshot, or to make the manual DB cluster snapshot public or private, use the ModifyDBClusterSnapshotAttribute API action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_db_cluster_snapshot_attributes(
+  DBClusterSnapshotIdentifier = "string"
+)
 }
+}
+

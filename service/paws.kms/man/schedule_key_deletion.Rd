@@ -4,10 +4,7 @@
 \alias{schedule_key_deletion}
 \title{Schedules the deletion of a customer master key (CMK)}
 \usage{
-schedule_key_deletion(
-  KeyId = "string",
-  PendingWindowInDays = 123
-)
+schedule_key_deletion(KeyId, PendingWindowInDays = NULL)
 }
 \arguments{
 \item{KeyId}{[required] The unique identifier of the customer master key (CMK) to delete.
@@ -40,11 +37,19 @@ For more information about scheduling a CMK for deletion, see \href{http://docs.
 
 The result of this operation varies with the key state of the CMK. For details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key} in the \emph{AWS Key Management Service Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{schedule_key_deletion(
+  KeyId = "string",
+  PendingWindowInDays = 123
+)
+}
+}
+
 \examples{
 # The following example schedules the specified CMK for deletion.
-schedule_key_deletion(
+\donttest{schedule_key_deletion(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
   PendingWindowInDays = 7L
-)
+)}
 
 }

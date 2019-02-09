@@ -4,13 +4,7 @@
 \alias{create_placement}
 \title{Creates an empty placement}
 \usage{
-create_placement(
-  placementName = "string",
-  projectName = "string",
-  attributes = list(
-    "string"
-  )
-)
+create_placement(placementName, projectName, attributes = NULL)
 }
 \arguments{
 \item{placementName}{[required] The name of the placement to be created.}
@@ -22,6 +16,14 @@ create_placement(
 \description{
 Creates an empty placement.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_placement(
+  placementName = "string",
+  projectName = "string",
+  attributes = list(
+    "string"
+  )
+)
 }
+}
+

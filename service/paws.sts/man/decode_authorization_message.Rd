@@ -4,9 +4,7 @@
 \alias{decode_authorization_message}
 \title{Decodes additional information about the authorization status of a request from an encoded message returned in response to an AWS request}
 \usage{
-decode_authorization_message(
-  EncodedMessage = "string"
-)
+decode_authorization_message(EncodedMessage)
 }
 \arguments{
 \item{EncodedMessage}{[required] The encoded message that was returned with the response.}
@@ -30,10 +28,17 @@ The decoded message includes the following type of information:
 \item The values of condition keys in the context of the user's request.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{decode_authorization_message(
+  EncodedMessage = "string"
+)
+}
+}
+
 \examples{
 # 
-decode_authorization_message(
+\donttest{decode_authorization_message(
   EncodedMessage = "<encoded-message>"
-)
+)}
 
 }

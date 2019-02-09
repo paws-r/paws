@@ -4,9 +4,7 @@
 \alias{launch_app}
 \title{Launches an application stack}
 \usage{
-launch_app(
-  appId = "string"
-)
+launch_app(appId = NULL)
 }
 \arguments{
 \item{appId}{ID of the application to launch.}
@@ -14,6 +12,10 @@ launch_app(
 \description{
 Launches an application stack.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{launch_app(
+  appId = "string"
+)
 }
+}
+

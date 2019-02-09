@@ -4,10 +4,7 @@
 \alias{delete_stage}
 \title{Deletes a Stage}
 \usage{
-delete_stage(
-  ApiId = "string",
-  StageName = "string"
-)
+delete_stage(ApiId, StageName)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -17,6 +14,11 @@ delete_stage(
 \description{
 Deletes a Stage.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_stage(
+  ApiId = "string",
+  StageName = "string"
+)
 }
+}
+

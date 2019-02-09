@@ -4,10 +4,7 @@
 \alias{delete_placement}
 \title{Deletes a placement}
 \usage{
-delete_placement(
-  placementName = "string",
-  projectName = "string"
-)
+delete_placement(placementName, projectName)
 }
 \arguments{
 \item{placementName}{[required] The name of the empty placement to delete.}
@@ -20,6 +17,11 @@ Deletes a placement. To delete a placement, it must not have any devices associa
 \details{
 When you delete a placement, all associated data becomes irretrievable.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_placement(
+  placementName = "string",
+  projectName = "string"
+)
 }
+}
+

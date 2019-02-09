@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.lightsail_operations.R
 \name{get_export_snapshot_records}
 \alias{get_export_snapshot_records}
-\title{Returns the export snapshot record created as a result of the \code{export snapshot} operation}
+\title{Returns the export snapshot record created as a result of the export snapshot operation}
 \usage{
-get_export_snapshot_records(
-  pageToken = "string"
-)
+get_export_snapshot_records(pageToken = NULL)
 }
 \arguments{
 \item{pageToken}{A token used for advancing to a specific page of results for your \code{get export snapshot records} request.}
@@ -17,6 +15,10 @@ Returns the export snapshot record created as a result of the \code{export snaps
 \details{
 An export snapshot record can be used to create a new Amazon EC2 instance and its related resources with the \code{create cloud formation stack} operation.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_export_snapshot_records(
+  pageToken = "string"
+)
 }
+}
+

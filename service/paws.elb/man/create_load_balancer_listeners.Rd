@@ -4,18 +4,7 @@
 \alias{create_load_balancer_listeners}
 \title{Creates one or more listeners for the specified load balancer}
 \usage{
-create_load_balancer_listeners(
-  LoadBalancerName = "string",
-  Listeners = list(
-    list(
-      Protocol = "string",
-      LoadBalancerPort = 123,
-      InstanceProtocol = "string",
-      InstancePort = 123,
-      SSLCertificateId = "string"
-    )
-  )
-)
+create_load_balancer_listeners(LoadBalancerName, Listeners)
 }
 \arguments{
 \item{LoadBalancerName}{[required] The name of the load balancer.}
@@ -28,10 +17,26 @@ Creates one or more listeners for the specified load balancer. If a listener wit
 \details{
 For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html}{Listeners for Your Classic Load Balancer} in the \emph{Classic Load Balancers Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_load_balancer_listeners(
+  LoadBalancerName = "string",
+  Listeners = list(
+    list(
+      Protocol = "string",
+      LoadBalancerPort = 123,
+      InstanceProtocol = "string",
+      InstancePort = 123,
+      SSLCertificateId = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # This example creates a listener for your load balancer at port 80 using
 # the HTTP protocol.
-create_load_balancer_listeners(
+\donttest{create_load_balancer_listeners(
   Listeners = list(
     list(
       InstancePort = 80L,
@@ -41,11 +46,11 @@ create_load_balancer_listeners(
     )
   ),
   LoadBalancerName = "my-load-balancer"
-)
+)}
 
 # This example creates a listener for your load balancer at port 443 using
 # the HTTPS protocol.
-create_load_balancer_listeners(
+\donttest{create_load_balancer_listeners(
   Listeners = list(
     list(
       InstancePort = 80L,
@@ -56,6 +61,6 @@ create_load_balancer_listeners(
     )
   ),
   LoadBalancerName = "my-load-balancer"
-)
+)}
 
 }

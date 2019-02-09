@@ -4,21 +4,9 @@
 \alias{put_slot_type}
 \title{Creates a custom slot type or replaces an existing custom slot type}
 \usage{
-put_slot_type(
-  name = "string",
-  description = "string",
-  enumerationValues = list(
-    list(
-      value = "string",
-      synonyms = list(
-        "string"
-      )
-    )
-  ),
-  checksum = "string",
-  valueSelectionStrategy = "ORIGINAL_VALUE"|"TOP_RESOLUTION",
-  createVersion = TRUE|FALSE
-)
+put_slot_type(name, description = NULL, enumerationValues = NULL,
+  checksum = NULL, valueSelectionStrategy = NULL,
+  createVersion = NULL)
 }
 \arguments{
 \item{name}{[required] The name of the slot type. The name is \emph{not} case sensitive.
@@ -59,10 +47,29 @@ If you specify the name of an existing slot type, the fields in the request repl
 
 This operation requires permissions for the \code{lex:PutSlotType} action.
 }
+\section{Accepted Parameters}{
+\preformatted{put_slot_type(
+  name = "string",
+  description = "string",
+  enumerationValues = list(
+    list(
+      value = "string",
+      synonyms = list(
+        "string"
+      )
+    )
+  ),
+  checksum = "string",
+  valueSelectionStrategy = "ORIGINAL_VALUE"|"TOP_RESOLUTION",
+  createVersion = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example shows how to create a slot type that describes pizza
 # sauces.
-put_slot_type(
+\donttest{put_slot_type(
   name = "PizzaSauceType",
   description = "Available pizza sauces",
   enumerationValues = list(
@@ -73,6 +80,6 @@ put_slot_type(
       value = "white"
     )
   )
-)
+)}
 
 }

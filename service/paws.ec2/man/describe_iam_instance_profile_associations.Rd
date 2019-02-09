@@ -4,21 +4,8 @@
 \alias{describe_iam_instance_profile_associations}
 \title{Describes your IAM instance profile associations}
 \usage{
-describe_iam_instance_profile_associations(
-  AssociationIds = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_iam_instance_profile_associations(AssociationIds = NULL,
+  Filters = NULL, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{AssociationIds}{One or more IAM instance profile associations.}
@@ -36,12 +23,31 @@ describe_iam_instance_profile_associations(
 \description{
 Describes your IAM instance profile associations.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_iam_instance_profile_associations(
+  AssociationIds = list(
+    "string"
+  ),
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
+}
+}
+
 \examples{
 # This example describes the specified IAM instance profile association.
-describe_iam_instance_profile_associations(
+\donttest{describe_iam_instance_profile_associations(
   AssociationIds = list(
     "iip-assoc-0db249b1f25fa24b8"
   )
-)
+)}
 
 }

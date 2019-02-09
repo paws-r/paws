@@ -4,10 +4,7 @@
 \alias{associate_hosted_connection}
 \title{Associates a hosted connection and its virtual interfaces with a link aggregation group (LAG) or interconnect}
 \usage{
-associate_hosted_connection(
-  connectionId = "string",
-  parentConnectionId = "string"
-)
+associate_hosted_connection(connectionId, parentConnectionId)
 }
 \arguments{
 \item{connectionId}{[required] The ID of the hosted connection.}
@@ -20,6 +17,11 @@ Associates a hosted connection and its virtual interfaces with a link aggregatio
 \details{
 Intended for use by AWS Direct Connect partners only.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_hosted_connection(
+  connectionId = "string",
+  parentConnectionId = "string"
+)
 }
+}
+

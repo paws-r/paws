@@ -4,30 +4,9 @@
 \alias{create_instances_from_snapshot}
 \title{Uses a specific snapshot as a blueprint for creating one or more new instances that are based on that identical configuration}
 \usage{
-create_instances_from_snapshot(
-  instanceNames = list(
-    "string"
-  ),
-  attachedDiskMapping = list(
-    list(
-      list(
-        originalDiskPath = "string",
-        newDiskName = "string"
-      )
-    )
-  ),
-  availabilityZone = "string",
-  instanceSnapshotName = "string",
-  bundleId = "string",
-  userData = "string",
-  keyPairName = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
+create_instances_from_snapshot(instanceNames, attachedDiskMapping = NULL,
+  availabilityZone, instanceSnapshotName, bundleId, userData = NULL,
+  keyPairName = NULL, tags = NULL)
 }
 \arguments{
 \item{instanceNames}{[required] The names for your new instances.}
@@ -56,6 +35,31 @@ Uses a specific snapshot as a blueprint for creating one or more new instances t
 \details{
 The \code{create instances from snapshot} operation supports tag-based access control via request tags and resource tags applied to the resource identified by instanceSnapshotName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_instances_from_snapshot(
+  instanceNames = list(
+    "string"
+  ),
+  attachedDiskMapping = list(
+    list(
+      list(
+        originalDiskPath = "string",
+        newDiskName = "string"
+      )
+    )
+  ),
+  availabilityZone = "string",
+  instanceSnapshotName = "string",
+  bundleId = "string",
+  userData = "string",
+  keyPairName = "string",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
 }
+}
+

@@ -4,22 +4,8 @@
 \alias{describe_elastic_gpus}
 \title{Describes the Elastic Graphics accelerator associated with your instances}
 \usage{
-describe_elastic_gpus(
-  ElasticGpuIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE,
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_elastic_gpus(ElasticGpuIds = NULL, DryRun = NULL,
+  Filters = NULL, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ElasticGpuIds}{One or more Elastic Graphics accelerator IDs.}
@@ -40,8 +26,25 @@ describe_elastic_gpus(
 \item{NextToken}{The token to request the next page of results.}
 }
 \description{
-Describes the Elastic Graphics accelerator associated with your instances. For more information about Elastic Graphics, see \href{http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-graphics.html}{Amazon Elastic Graphics}.
+Describes the Elastic Graphics accelerator associated with your instances. For more information about Elastic Graphics, see \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-graphics.html}{Amazon Elastic Graphics}.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{describe_elastic_gpus(
+  ElasticGpuIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE,
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
+}
+}
 
-}

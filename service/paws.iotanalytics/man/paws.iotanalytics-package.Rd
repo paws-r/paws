@@ -6,11 +6,12 @@
 \alias{paws.iotanalytics-package}
 \title{paws.iotanalytics: AWS IoT Analytics}
 \description{
-AWS IoT Analytics allows you to collect large amounts of
-device data, process messages, and store them. You can then query the
-data and run sophisticated analytics on it. AWS IoT Analytics enables
-advanced data exploration through integration with Jupyter Notebooks
-and data visualization through integration with Amazon QuickSight.
+AWS IoT Analytics allows you to collect large
+    amounts of device data, process messages, and store them. You can then
+    query the data and run sophisticated analytics on it. AWS IoT
+    Analytics enables advanced data exploration through integration with
+    Jupyter Notebooks and data visualization through integration with
+    Amazon QuickSight.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

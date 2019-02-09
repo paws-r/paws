@@ -4,22 +4,8 @@
 \alias{describe_network_interfaces}
 \title{Describes one or more of your network interfaces}
 \usage{
-describe_network_interfaces(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE,
-  NetworkInterfaceIds = list(
-    "string"
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
+describe_network_interfaces(Filters = NULL, DryRun = NULL,
+  NetworkInterfaceIds = NULL, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -74,12 +60,32 @@ Default: Describes all your network interfaces.}
 \description{
 Describes one or more of your network interfaces.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_network_interfaces(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  DryRun = TRUE|FALSE,
+  NetworkInterfaceIds = list(
+    "string"
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
+}
+}
+
 \examples{
 # 
-describe_network_interfaces(
+\donttest{describe_network_interfaces(
   NetworkInterfaceIds = list(
     "eni-e5aa89a3"
   )
-)
+)}
 
 }

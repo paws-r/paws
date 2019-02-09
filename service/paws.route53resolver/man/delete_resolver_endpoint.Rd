@@ -4,9 +4,7 @@
 \alias{delete_resolver_endpoint}
 \title{Deletes a resolver endpoint}
 \usage{
-delete_resolver_endpoint(
-  ResolverEndpointId = "string"
-)
+delete_resolver_endpoint(ResolverEndpointId)
 }
 \arguments{
 \item{ResolverEndpointId}{[required] The ID of the resolver endpoint that you want to delete.}
@@ -20,6 +18,10 @@ Deletes a resolver endpoint. The effect of deleting a resolver endpoint depends 
 \item \strong{Outbound}: DNS queries from a VPC are no longer routed to your network or to another VPC.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_resolver_endpoint(
+  ResolverEndpointId = "string"
+)
 }
+}
+

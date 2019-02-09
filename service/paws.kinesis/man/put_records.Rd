@@ -2,18 +2,9 @@
 % Please edit documentation in R/paws.kinesis_operations.R
 \name{put_records}
 \alias{put_records}
-\title{Writes multiple data records into a Kinesis data stream in a single call (also referred to as a \code{PutRecords} request)}
+\title{Writes multiple data records into a Kinesis data stream in a single call (also referred to as a PutRecords request)}
 \usage{
-put_records(
-  Records = list(
-    list(
-      Data = raw,
-      ExplicitHashKey = "string",
-      PartitionKey = "string"
-    )
-  ),
-  StreamName = "string"
-)
+put_records(Records, StreamName)
 }
 \arguments{
 \item{Records}{[required] The records associated with the request.}
@@ -44,6 +35,17 @@ An unsuccessfully processed record includes \code{ErrorCode} and \code{ErrorMess
 
 By default, data records are accessible for 24 hours from the time that they are added to a stream. You can use IncreaseStreamRetentionPeriod or DecreaseStreamRetentionPeriod to modify this retention period.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_records(
+  Records = list(
+    list(
+      Data = raw,
+      ExplicitHashKey = "string",
+      PartitionKey = "string"
+    )
+  ),
+  StreamName = "string"
+)
 }
+}
+

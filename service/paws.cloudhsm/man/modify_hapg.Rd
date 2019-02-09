@@ -2,15 +2,9 @@
 % Please edit documentation in R/paws.cloudhsm_operations.R
 \name{modify_hapg}
 \alias{modify_hapg}
-\title{This is documentation for \strong{AWS CloudHSM Classic}}
+\title{This is documentation for AWS CLOUDHSM CLASSIC}
 \usage{
-modify_hapg(
-  HapgArn = "string",
-  Label = "string",
-  PartitionSerialList = list(
-    "string"
-  )
-)
+modify_hapg(HapgArn, Label = NULL, PartitionSerialList = NULL)
 }
 \arguments{
 \item{HapgArn}{[required] The ARN of the high-availability partition group to modify.}
@@ -27,6 +21,14 @@ This is documentation for \strong{AWS CloudHSM Classic}. For more information, s
 
 Modifies an existing high-availability partition group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_hapg(
+  HapgArn = "string",
+  Label = "string",
+  PartitionSerialList = list(
+    "string"
+  )
+)
 }
+}
+

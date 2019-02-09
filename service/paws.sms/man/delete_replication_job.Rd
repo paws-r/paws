@@ -4,9 +4,7 @@
 \alias{delete_replication_job}
 \title{Deletes the specified replication job}
 \usage{
-delete_replication_job(
-  replicationJobId = "string"
-)
+delete_replication_job(replicationJobId)
 }
 \arguments{
 \item{replicationJobId}{[required] The identifier of the replication job.}
@@ -17,6 +15,10 @@ Deletes the specified replication job.
 \details{
 After you delete a replication job, there are no further replication runs. AWS deletes the contents of the Amazon S3 bucket used to store AWS SMS artifacts. The AMIs created by the replication runs are not deleted.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_replication_job(
+  replicationJobId = "string"
+)
 }
+}
+

@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.snowball_operations.R
 \name{list_jobs}
 \alias{list_jobs}
-\title{Returns an array of \code{JobListEntry} objects of the specified length}
+\title{Returns an array of JobListEntry objects of the specified length}
 \usage{
-list_jobs(
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_jobs(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{The number of \code{JobListEntry} objects to return.}
@@ -17,12 +14,20 @@ list_jobs(
 \description{
 Returns an array of \code{JobListEntry} objects of the specified length. Each \code{JobListEntry} object contains a job's state, a job's ID, and a value that indicates whether the job is a job part, in the case of export jobs. Calling this API action in one of the US regions will return jobs from the list of all jobs associated with this account in all US regions.
 }
+\section{Accepted Parameters}{
+\preformatted{list_jobs(
+  MaxResults = 123,
+  NextToken = "string"
+)
+}
+}
+
 \examples{
 # Returns an array of JobListEntry objects of the specified length. Each
 # JobListEntry object contains a job's state, a job's ID, and a value that
 # indicates whether the job is a job part, in the case of export jobs.
 # Calling this API action in one of the US regions will return jobs from
 # the list of all jobs associated with this account in all US regions.
-list_jobs()
+\donttest{list_jobs()}
 
 }

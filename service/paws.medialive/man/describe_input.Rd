@@ -4,9 +4,7 @@
 \alias{describe_input}
 \title{Produces details about an input}
 \usage{
-describe_input(
-  InputId = "string"
-)
+describe_input(InputId)
 }
 \arguments{
 \item{InputId}{[required] Unique ID of the input}
@@ -14,6 +12,10 @@ describe_input(
 \description{
 Produces details about an input
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_input(
+  InputId = "string"
+)
 }
+}
+

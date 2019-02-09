@@ -4,11 +4,7 @@
 \alias{list_key_policies}
 \title{Gets the names of the key policies that are attached to a customer master key (CMK)}
 \usage{
-list_key_policies(
-  KeyId = "string",
-  Limit = 123,
-  Marker = "string"
-)
+list_key_policies(KeyId, Limit = NULL, Marker = NULL)
 }
 \arguments{
 \item{KeyId}{[required] A unique identifier for the customer master key (CMK).
@@ -34,10 +30,19 @@ Currently only 1 policy can be attached to a key.}
 \description{
 Gets the names of the key policies that are attached to a customer master key (CMK). This operation is designed to get policy names that you can use in a GetKeyPolicy operation. However, the only valid policy name is \code{default}. You cannot perform this operation on a CMK in a different AWS account.
 }
+\section{Accepted Parameters}{
+\preformatted{list_key_policies(
+  KeyId = "string",
+  Limit = 123,
+  Marker = "string"
+)
+}
+}
+
 \examples{
 # The following example lists key policies for the specified CMK.
-list_key_policies(
+\donttest{list_key_policies(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)
+)}
 
 }

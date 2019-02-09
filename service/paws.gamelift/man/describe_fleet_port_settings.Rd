@@ -4,9 +4,7 @@
 \alias{describe_fleet_port_settings}
 \title{Retrieves the inbound connection permissions for a fleet}
 \usage{
-describe_fleet_port_settings(
-  FleetId = "string"
-)
+describe_fleet_port_settings(FleetId)
 }
 \arguments{
 \item{FleetId}{[required] Unique identifier for a fleet to retrieve port settings for.}
@@ -15,7 +13,6 @@ describe_fleet_port_settings(
 Retrieves the inbound connection permissions for a fleet. Connection permissions include a range of IP addresses and port settings that incoming traffic can use to access server processes in the fleet. To get a fleet's inbound connection permissions, specify a fleet ID. If successful, a collection of IpPermission objects is returned for the requested fleet ID. If the requested fleet has been deleted, the result set is empty.
 }
 \details{
-Fleet-related operations include:
 \itemize{
 \item CreateFleet
 \item ListFleets
@@ -38,6 +35,10 @@ Fleet-related operations include:
 \item StopFleetActions
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_fleet_port_settings(
+  FleetId = "string"
+)
 }
+}
+

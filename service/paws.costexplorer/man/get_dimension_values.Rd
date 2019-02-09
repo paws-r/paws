@@ -4,16 +4,8 @@
 \alias{get_dimension_values}
 \title{Retrieves all available filter values for a specified filter over a period of time}
 \usage{
-get_dimension_values(
-  SearchString = "string",
-  TimePeriod = list(
-    Start = "string",
-    End = "string"
-  ),
-  Dimension = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID",
-  Context = "COST_AND_USAGE"|"RESERVATIONS",
-  NextPageToken = "string"
-)
+get_dimension_values(SearchString = NULL, TimePeriod, Dimension,
+  Context = NULL, NextPageToken = NULL)
 }
 \arguments{
 \item{SearchString}{The value that you want to search the filter values for.}
@@ -60,6 +52,17 @@ If you set the context to \code{RESERVATIONS}, you can use the following dimensi
 \description{
 Retrieves all available filter values for a specified filter over a period of time. You can search the dimension values for an arbitrary string.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_dimension_values(
+  SearchString = "string",
+  TimePeriod = list(
+    Start = "string",
+    End = "string"
+  ),
+  Dimension = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID",
+  Context = "COST_AND_USAGE"|"RESERVATIONS",
+  NextPageToken = "string"
+)
 }
+}
+

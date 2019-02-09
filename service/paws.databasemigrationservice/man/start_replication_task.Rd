@@ -4,13 +4,9 @@
 \alias{start_replication_task}
 \title{Starts the replication task}
 \usage{
-start_replication_task(
-  ReplicationTaskArn = "string",
-  StartReplicationTaskType = "start-replication"|"resume-processing"|"reload-target",
-  CdcStartTime = as.POSIXct("2015-01-01"),
-  CdcStartPosition = "string",
-  CdcStopPosition = "string"
-)
+start_replication_task(ReplicationTaskArn, StartReplicationTaskType,
+  CdcStartTime = NULL, CdcStartPosition = NULL,
+  CdcStopPosition = NULL)
 }
 \arguments{
 \item{ReplicationTaskArn}{[required] The Amazon Resource Name (ARN) of the replication task to be started.}
@@ -43,12 +39,23 @@ Starts the replication task.
 \details{
 For more information about AWS DMS tasks, see \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html}{Working with Migration Tasks} in the \emph{AWS Database Migration Service User Guide.}
 }
+\section{Accepted Parameters}{
+\preformatted{start_replication_task(
+  ReplicationTaskArn = "string",
+  StartReplicationTaskType = "start-replication"|"resume-processing"|"reload-target",
+  CdcStartTime = as.POSIXct("2015-01-01"),
+  CdcStartPosition = "string",
+  CdcStopPosition = "string"
+)
+}
+}
+
 \examples{
 # Starts the replication task.
-start_replication_task(
+\donttest{start_replication_task(
   CdcStartTime = "2016-12-14T13:33:20Z",
   ReplicationTaskArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJQ",
   StartReplicationTaskType = "start-replication"
-)
+)}
 
 }

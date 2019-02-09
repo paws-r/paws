@@ -2,25 +2,13 @@
 % Please edit documentation in R/paws.lambda_operations.R
 \name{publish_layer_version}
 \alias{publish_layer_version}
-\title{Creates a function layer from a ZIP archive}
+\title{Creates an AWS Lambda layer from a ZIP archive}
 \usage{
-publish_layer_version(
-  LayerName = "string",
-  Description = "string",
-  Content = list(
-    S3Bucket = "string",
-    S3Key = "string",
-    S3ObjectVersion = "string",
-    ZipFile = raw
-  ),
-  CompatibleRuntimes = list(
-    "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"java8"|"python2.7"|"python3.6"|"python3.7"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided"
-  ),
-  LicenseInfo = "string"
-)
+publish_layer_version(LayerName, Description = NULL, Content,
+  CompatibleRuntimes = NULL, LicenseInfo = NULL)
 }
 \arguments{
-\item{LayerName}{[required] The name of the layer.}
+\item{LayerName}{[required] The name or Amazon Resource Name (ARN) of the layer.}
 
 \item{Description}{The description of the version.}
 
@@ -36,11 +24,26 @@ publish_layer_version(
 }}
 }
 \description{
-Creates a function layer from a ZIP archive. Each time you call \code{PublishLayerVersion} with the same version name, a new version is created.
+Creates an \href{http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layer} from a ZIP archive. Each time you call \code{PublishLayerVersion} with the same version name, a new version is created.
 }
 \details{
 Add layers to your function with CreateFunction or UpdateFunctionConfiguration.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{publish_layer_version(
+  LayerName = "string",
+  Description = "string",
+  Content = list(
+    S3Bucket = "string",
+    S3Key = "string",
+    S3ObjectVersion = "string",
+    ZipFile = raw
+  ),
+  CompatibleRuntimes = list(
+    "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"java8"|"python2.7"|"python3.6"|"python3.7"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided"
+  ),
+  LicenseInfo = "string"
+)
 }
+}
+

@@ -6,11 +6,11 @@
 \alias{paws.licensemanager-package}
 \title{paws.licensemanager: AWS License Manager}
 \description{
-*This is the AWS License Manager API Reference.* It provides
-descriptions, syntax, and usage examples for each of the actions and
-data types for License Manager. The topic for each action shows the
-Query API request parameters and the XML response. You can also view
-the XML request elements in the WSDL.
+*This is the AWS License Manager API
+    Reference.* It provides descriptions, syntax, and usage examples for
+    each of the actions and data types for License Manager. The topic for
+    each action shows the Query API request parameters and the XML
+    response. You can also view the XML request elements in the WSDL.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

@@ -4,10 +4,7 @@
 \alias{delete_internet_gateway}
 \title{Deletes the specified internet gateway}
 \usage{
-delete_internet_gateway(
-  DryRun = TRUE|FALSE,
-  InternetGatewayId = "string"
-)
+delete_internet_gateway(DryRun = NULL, InternetGatewayId)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -17,10 +14,18 @@ delete_internet_gateway(
 \description{
 Deletes the specified internet gateway. You must detach the internet gateway from the VPC before you can delete it.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_internet_gateway(
+  DryRun = TRUE|FALSE,
+  InternetGatewayId = "string"
+)
+}
+}
+
 \examples{
 # This example deletes the specified Internet gateway.
-delete_internet_gateway(
+\donttest{delete_internet_gateway(
   InternetGatewayId = "igw-c0a643a9"
-)
+)}
 
 }

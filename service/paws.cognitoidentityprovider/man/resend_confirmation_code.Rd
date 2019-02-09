@@ -4,17 +4,8 @@
 \alias{resend_confirmation_code}
 \title{Resends the confirmation (for confirmation of registration) to a specific user in the user pool}
 \usage{
-resend_confirmation_code(
-  ClientId = "string",
-  SecretHash = "string",
-  UserContextData = list(
-    EncodedData = "string"
-  ),
-  Username = "string",
-  AnalyticsMetadata = list(
-    AnalyticsEndpointId = "string"
-  )
-)
+resend_confirmation_code(ClientId, SecretHash = NULL,
+  UserContextData = NULL, Username, AnalyticsMetadata = NULL)
 }
 \arguments{
 \item{ClientId}{[required] The ID of the client associated with the user pool.}
@@ -30,6 +21,18 @@ resend_confirmation_code(
 \description{
 Resends the confirmation (for confirmation of registration) to a specific user in the user pool.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{resend_confirmation_code(
+  ClientId = "string",
+  SecretHash = "string",
+  UserContextData = list(
+    EncodedData = "string"
+  ),
+  Username = "string",
+  AnalyticsMetadata = list(
+    AnalyticsEndpointId = "string"
+  )
+)
 }
+}
+

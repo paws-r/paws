@@ -4,17 +4,8 @@
 \alias{create_user}
 \title{Creates a new IAM user for your AWS account}
 \usage{
-create_user(
-  Path = "string",
-  UserName = "string",
-  PermissionsBoundary = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_user(Path = NULL, UserName, PermissionsBoundary = NULL,
+  Tags = NULL)
 }
 \arguments{
 \item{Path}{The path for the user name. For more information about paths, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{IAM Identifiers} in the \emph{IAM User Guide}.
@@ -39,11 +30,26 @@ Creates a new IAM user for your AWS account.
 \details{
 For information about limitations on the number of IAM users you can create, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html}{Limitations on IAM Entities} in the \emph{IAM User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_user(
+  Path = "string",
+  UserName = "string",
+  PermissionsBoundary = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # The following create-user command creates an IAM user named Bob in the
 # current account.
-create_user(
+\donttest{create_user(
   UserName = "Bob"
-)
+)}
 
 }

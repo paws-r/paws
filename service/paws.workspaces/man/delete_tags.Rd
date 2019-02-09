@@ -4,12 +4,7 @@
 \alias{delete_tags}
 \title{Deletes the specified tags from the specified WorkSpace}
 \usage{
-delete_tags(
-  ResourceId = "string",
-  TagKeys = list(
-    "string"
-  )
-)
+delete_tags(ResourceId, TagKeys)
 }
 \arguments{
 \item{ResourceId}{[required] The identifier of the WorkSpace. To find this ID, use DescribeWorkspaces.}
@@ -19,6 +14,13 @@ delete_tags(
 \description{
 Deletes the specified tags from the specified WorkSpace.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_tags(
+  ResourceId = "string",
+  TagKeys = list(
+    "string"
+  )
+)
 }
+}
+

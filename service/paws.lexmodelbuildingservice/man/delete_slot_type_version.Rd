@@ -4,10 +4,7 @@
 \alias{delete_slot_type_version}
 \title{Deletes a specific version of a slot type}
 \usage{
-delete_slot_type_version(
-  name = "string",
-  version = "string"
-)
+delete_slot_type_version(name, version)
 }
 \arguments{
 \item{name}{[required] The name of the slot type.}
@@ -20,6 +17,11 @@ Deletes a specific version of a slot type. To delete all versions of a slot type
 \details{
 This operation requires permissions for the \code{lex:DeleteSlotTypeVersion} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_slot_type_version(
+  name = "string",
+  version = "string"
+)
 }
+}
+

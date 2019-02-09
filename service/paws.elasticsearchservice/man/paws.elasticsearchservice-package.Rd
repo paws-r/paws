@@ -6,8 +6,8 @@
 \alias{paws.elasticsearchservice-package}
 \title{paws.elasticsearchservice: Amazon Elasticsearch Service}
 \description{
-Use the Amazon Elasticsearch configuration API to create,
-configure, and manage Elasticsearch domains.
+Use the Amazon Elasticsearch configuration API to
+    create, configure, and manage Elasticsearch domains.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

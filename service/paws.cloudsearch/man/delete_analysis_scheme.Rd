@@ -4,10 +4,7 @@
 \alias{delete_analysis_scheme}
 \title{Deletes an analysis scheme}
 \usage{
-delete_analysis_scheme(
-  DomainName = "string",
-  AnalysisSchemeName = "string"
-)
+delete_analysis_scheme(DomainName, AnalysisSchemeName)
 }
 \arguments{
 \item{DomainName}{[required]}
@@ -17,6 +14,11 @@ delete_analysis_scheme(
 \description{
 Deletes an analysis scheme. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html}{Configuring Analysis Schemes} in the \emph{Amazon CloudSearch Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_analysis_scheme(
+  DomainName = "string",
+  AnalysisSchemeName = "string"
+)
 }
+}
+

@@ -4,13 +4,8 @@
 \alias{increase_replication_factor}
 \title{Adds one or more nodes to a DAX cluster}
 \usage{
-increase_replication_factor(
-  ClusterName = "string",
-  NewReplicationFactor = 123,
-  AvailabilityZones = list(
-    "string"
-  )
-)
+increase_replication_factor(ClusterName, NewReplicationFactor,
+  AvailabilityZones = NULL)
 }
 \arguments{
 \item{ClusterName}{[required] The name of the DAX cluster that will receive additional nodes.}
@@ -22,6 +17,14 @@ increase_replication_factor(
 \description{
 Adds one or more nodes to a DAX cluster.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{increase_replication_factor(
+  ClusterName = "string",
+  NewReplicationFactor = 123,
+  AvailabilityZones = list(
+    "string"
+  )
+)
 }
+}
+

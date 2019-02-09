@@ -4,15 +4,7 @@
 \alias{remove_attributes}
 \title{Used to remove the attributes for an app}
 \usage{
-remove_attributes(
-  ApplicationId = "string",
-  AttributeType = "string",
-  UpdateAttributesRequest = list(
-    Blacklist = list(
-      "string"
-    )
-  )
-)
+remove_attributes(ApplicationId, AttributeType, UpdateAttributesRequest)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
@@ -24,6 +16,16 @@ remove_attributes(
 \description{
 Used to remove the attributes for an app
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{remove_attributes(
+  ApplicationId = "string",
+  AttributeType = "string",
+  UpdateAttributesRequest = list(
+    Blacklist = list(
+      "string"
+    )
+  )
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{associate_certificate}
 \title{Associates an AWS Certificate Manager (ACM) Amazon Resource Name (ARN) with AWS Elemental MediaConvert}
 \usage{
-associate_certificate(
-  Arn = "string"
-)
+associate_certificate(Arn)
 }
 \arguments{
 \item{Arn}{[required] The ARN of the ACM certificate that you want to associate with your MediaConvert resource.}
@@ -14,6 +12,10 @@ associate_certificate(
 \description{
 Associates an AWS Certificate Manager (ACM) Amazon Resource Name (ARN) with AWS Elemental MediaConvert.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_certificate(
+  Arn = "string"
+)
 }
+}
+

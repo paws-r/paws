@@ -4,10 +4,7 @@
 \alias{get_pipeline_execution}
 \title{Returns information about an execution of a pipeline, including details about artifacts, the pipeline execution ID, and the name, version, and status of the pipeline}
 \usage{
-get_pipeline_execution(
-  pipelineName = "string",
-  pipelineExecutionId = "string"
-)
+get_pipeline_execution(pipelineName, pipelineExecutionId)
 }
 \arguments{
 \item{pipelineName}{[required] The name of the pipeline about which you want to get execution details.}
@@ -17,6 +14,11 @@ get_pipeline_execution(
 \description{
 Returns information about an execution of a pipeline, including details about artifacts, the pipeline execution ID, and the name, version, and status of the pipeline.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_pipeline_execution(
+  pipelineName = "string",
+  pipelineExecutionId = "string"
+)
 }
+}
+

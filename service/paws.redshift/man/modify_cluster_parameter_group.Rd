@@ -4,22 +4,7 @@
 \alias{modify_cluster_parameter_group}
 \title{Modifies the parameters of a parameter group}
 \usage{
-modify_cluster_parameter_group(
-  ParameterGroupName = "string",
-  Parameters = list(
-    list(
-      ParameterName = "string",
-      ParameterValue = "string",
-      Description = "string",
-      Source = "string",
-      DataType = "string",
-      AllowedValues = "string",
-      ApplyType = "static"|"dynamic",
-      IsModifiable = TRUE|FALSE,
-      MinimumEngineVersion = "string"
-    )
-  )
-)
+modify_cluster_parameter_group(ParameterGroupName, Parameters)
 }
 \arguments{
 \item{ParameterGroupName}{[required] The name of the parameter group to be modified.}
@@ -36,6 +21,23 @@ Modifies the parameters of a parameter group.
 \details{
 For more information about parameters and parameter groups, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html}{Amazon Redshift Parameter Groups} in the \emph{Amazon Redshift Cluster Management Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_cluster_parameter_group(
+  ParameterGroupName = "string",
+  Parameters = list(
+    list(
+      ParameterName = "string",
+      ParameterValue = "string",
+      Description = "string",
+      Source = "string",
+      DataType = "string",
+      AllowedValues = "string",
+      ApplyType = "static"|"dynamic",
+      IsModifiable = TRUE|FALSE,
+      MinimumEngineVersion = "string"
+    )
+  )
+)
 }
+}
+

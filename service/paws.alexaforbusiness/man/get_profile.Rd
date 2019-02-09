@@ -4,9 +4,7 @@
 \alias{get_profile}
 \title{Gets the details of a room profile by profile ARN}
 \usage{
-get_profile(
-  ProfileArn = "string"
-)
+get_profile(ProfileArn = NULL)
 }
 \arguments{
 \item{ProfileArn}{The ARN of the room profile for which to request details. Required.}
@@ -14,6 +12,10 @@ get_profile(
 \description{
 Gets the details of a room profile by profile ARN.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_profile(
+  ProfileArn = "string"
+)
 }
+}
+

@@ -4,14 +4,8 @@
 \alias{list_account_settings}
 \title{Lists the account settings for an Amazon ECS resource for a specified principal}
 \usage{
-list_account_settings(
-  name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat",
-  value = "string",
-  principalArn = "string",
-  effectiveSettings = TRUE|FALSE,
-  nextToken = "string",
-  maxResults = 123
-)
+list_account_settings(name = NULL, value = NULL, principalArn = NULL,
+  effectiveSettings = NULL, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{name}{The resource name you want to list the account settings for.}
@@ -31,6 +25,29 @@ This token should be treated as an opaque identifier that is only used to retrie
 \description{
 Lists the account settings for an Amazon ECS resource for a specified principal.
 }
+\section{Accepted Parameters}{
+\preformatted{list_account_settings(
+  name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat",
+  value = "string",
+  principalArn = "string",
+  effectiveSettings = TRUE|FALSE,
+  nextToken = "string",
+  maxResults = 123
+)
+}
+}
+
 \examples{
+# This example displays the effective account settings for your account.
+\donttest{list_account_settings(
+  effectiveSettings = TRUE
+)}
+
+# This example displays the effective account settings for the specified
+# user or role.
+\donttest{list_account_settings(
+  effectiveSettings = TRUE,
+  principalArn = "arn:aws:iam::<aws_account_id>:user/principalName"
+)}
 
 }

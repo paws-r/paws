@@ -4,9 +4,7 @@
 \alias{stop_delivery_stream_encryption}
 \title{Disables server-side encryption (SSE) for the delivery stream}
 \usage{
-stop_delivery_stream_encryption(
-  DeliveryStreamName = "string"
-)
+stop_delivery_stream_encryption(DeliveryStreamName)
 }
 \arguments{
 \item{DeliveryStreamName}{[required] The name of the delivery stream for which you want to disable server-side encryption (SSE).}
@@ -21,6 +19,10 @@ To check the encryption state of a delivery stream, use DescribeDeliveryStream.
 
 The \code{StartDeliveryStreamEncryption} and \code{StopDeliveryStreamEncryption} operations have a combined limit of 25 calls per delivery stream per 24 hours. For example, you reach the limit if you call \code{StartDeliveryStreamEncryption} 13 times and \code{StopDeliveryStreamEncryption} 12 times for the same delivery stream in a 24-hour period.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{stop_delivery_stream_encryption(
+  DeliveryStreamName = "string"
+)
 }
+}
+

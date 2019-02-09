@@ -4,10 +4,7 @@
 \alias{list_gateways}
 \title{Lists gateways owned by an AWS account in a region specified in the request}
 \usage{
-list_gateways(
-  Marker = "string",
-  Limit = 123
-)
+list_gateways(Marker = NULL, Limit = NULL)
 }
 \arguments{
 \item{Marker}{An opaque string that indicates the position at which to begin the returned list of gateways.}
@@ -22,13 +19,21 @@ By default, the operation returns a maximum of 100 gateways. This operation supp
 
 If you have more gateways than are returned in a response (that is, the response returns only a truncated list of your gateways), the response contains a marker that you can specify in your next request to fetch the next page of gateways.
 }
+\section{Accepted Parameters}{
+\preformatted{list_gateways(
+  Marker = "string",
+  Limit = 123
+)
+}
+}
+
 \examples{
 # Lists gateways owned by an AWS account in a specified region as
 # requested. Results are sorted by gateway ARN up to a maximum of 100
 # gateways.
-list_gateways(
+\donttest{list_gateways(
   Limit = 2L,
   Marker = "1"
-)
+)}
 
 }

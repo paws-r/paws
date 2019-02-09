@@ -9,6 +9,8 @@ get_hosted_zone_count()
 \description{
 Retrieves the number of hosted zones that are associated with the current AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_hosted_zone_count()
 }
+}
+

@@ -4,11 +4,7 @@
 \alias{delete_invitations}
 \title{Deletes invitations that are sent to this AWS account (invitee) by the AWS accounts (inviters) that are specified by their account IDs}
 \usage{
-delete_invitations(
-  AccountIds = list(
-    "string"
-  )
-)
+delete_invitations(AccountIds = NULL)
 }
 \arguments{
 \item{AccountIds}{A list of account IDs specifying accounts whose invitations to Security Hub you want to delete.}
@@ -16,6 +12,12 @@ delete_invitations(
 \description{
 Deletes invitations that are sent to this AWS account (invitee) by the AWS accounts (inviters) that are specified by their account IDs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_invitations(
+  AccountIds = list(
+    "string"
+  )
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{describe_stacks}
 \title{Returns the description for the specified stack; if no stack name was specified, then it returns the description for all the stacks created}
 \usage{
-describe_stacks(
-  StackName = "string",
-  NextToken = "string"
-)
+describe_stacks(StackName = NULL, NextToken = NULL)
 }
 \arguments{
 \item{StackName}{The name or the unique stack ID that is associated with the stack, which are not always interchangeable:
@@ -26,6 +23,11 @@ Returns the description for the specified stack; if no stack name was specified,
 \details{
 If the stack does not exist, an \code{AmazonCloudFormationException} is returned.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_stacks(
+  StackName = "string",
+  NextToken = "string"
+)
 }
+}
+

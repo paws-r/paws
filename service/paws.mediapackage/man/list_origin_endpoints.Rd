@@ -4,11 +4,8 @@
 \alias{list_origin_endpoints}
 \title{Returns a collection of OriginEndpoint records}
 \usage{
-list_origin_endpoints(
-  ChannelId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_origin_endpoints(ChannelId = NULL, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{ChannelId}{When specified, the request will return only OriginEndpoints associated with the given Channel ID.}
@@ -20,6 +17,12 @@ list_origin_endpoints(
 \description{
 Returns a collection of OriginEndpoint records.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_origin_endpoints(
+  ChannelId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

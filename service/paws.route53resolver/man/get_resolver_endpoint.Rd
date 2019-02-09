@@ -4,9 +4,7 @@
 \alias{get_resolver_endpoint}
 \title{Gets information about a specified resolver endpoint, such as whether it's an inbound or an outbound resolver endpoint, and the current status of the endpoint}
 \usage{
-get_resolver_endpoint(
-  ResolverEndpointId = "string"
-)
+get_resolver_endpoint(ResolverEndpointId)
 }
 \arguments{
 \item{ResolverEndpointId}{[required] The ID of the resolver endpoint that you want to get information about.}
@@ -14,6 +12,10 @@ get_resolver_endpoint(
 \description{
 Gets information about a specified resolver endpoint, such as whether it's an inbound or an outbound resolver endpoint, and the current status of the endpoint.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_resolver_endpoint(
+  ResolverEndpointId = "string"
+)
 }
+}
+

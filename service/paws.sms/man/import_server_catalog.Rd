@@ -12,6 +12,8 @@ Gathers a complete list of on-premises servers. Connectors must be installed and
 \details{
 This call returns immediately, but might take additional time to retrieve all the servers.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{import_server_catalog()
 }
+}
+

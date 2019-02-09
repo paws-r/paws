@@ -4,11 +4,8 @@
 \alias{get_replication_runs}
 \title{Describes the replication runs for the specified replication job}
 \usage{
-get_replication_runs(
-  replicationJobId = "string",
-  nextToken = "string",
-  maxResults = 123
-)
+get_replication_runs(replicationJobId, nextToken = NULL,
+  maxResults = NULL)
 }
 \arguments{
 \item{replicationJobId}{[required] The identifier of the replication job.}
@@ -20,6 +17,12 @@ get_replication_runs(
 \description{
 Describes the replication runs for the specified replication job.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_replication_runs(
+  replicationJobId = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

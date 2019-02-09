@@ -4,18 +4,10 @@
 \alias{list_offerings}
 \title{List offerings available for purchase}
 \usage{
-list_offerings(
-  ChannelConfiguration = "string",
-  Codec = "string",
-  MaxResults = 123,
-  MaximumBitrate = "string",
-  MaximumFramerate = "string",
-  NextToken = "string",
-  Resolution = "string",
-  ResourceType = "string",
-  SpecialFeature = "string",
-  VideoQuality = "string"
-)
+list_offerings(ChannelConfiguration = NULL, Codec = NULL,
+  MaxResults = NULL, MaximumBitrate = NULL, MaximumFramerate = NULL,
+  NextToken = NULL, Resolution = NULL, ResourceType = NULL,
+  SpecialFeature = NULL, VideoQuality = NULL)
 }
 \arguments{
 \item{ChannelConfiguration}{Filter to offerings that match the configuration of an existing channel, e.g. '2345678' (a channel ID)}
@@ -41,6 +33,19 @@ list_offerings(
 \description{
 List offerings available for purchase.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_offerings(
+  ChannelConfiguration = "string",
+  Codec = "string",
+  MaxResults = 123,
+  MaximumBitrate = "string",
+  MaximumFramerate = "string",
+  NextToken = "string",
+  Resolution = "string",
+  ResourceType = "string",
+  SpecialFeature = "string",
+  VideoQuality = "string"
+)
 }
+}
+

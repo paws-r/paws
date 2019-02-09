@@ -4,20 +4,8 @@
 \alias{describe_client_vpn_routes}
 \title{Describes the routes for the specified Client VPN endpoint}
 \usage{
-describe_client_vpn_routes(
-  ClientVpnEndpointId = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  DryRun = TRUE|FALSE
-)
+describe_client_vpn_routes(ClientVpnEndpointId, Filters = NULL,
+  MaxResults = NULL, NextToken = NULL, DryRun = NULL)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint.}
@@ -33,6 +21,21 @@ describe_client_vpn_routes(
 \description{
 Describes the routes for the specified Client VPN endpoint.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_client_vpn_routes(
+  ClientVpnEndpointId = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

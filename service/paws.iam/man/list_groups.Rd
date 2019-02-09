@@ -4,11 +4,7 @@
 \alias{list_groups}
 \title{Lists the IAM groups that have the specified path prefix}
 \usage{
-list_groups(
-  PathPrefix = "string",
-  Marker = "string",
-  MaxItems = 123
-)
+list_groups(PathPrefix = NULL, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{PathPrefix}{The path prefix for filtering the results. For example, the prefix \code{/division_abc/subdivision_xyz/} gets all groups whose path starts with \code{/division_abc/subdivision_xyz/}.
@@ -27,8 +23,17 @@ Lists the IAM groups that have the specified path prefix.
 \details{
 You can paginate the results using the \code{MaxItems} and \code{Marker} parameters.
 }
+\section{Accepted Parameters}{
+\preformatted{list_groups(
+  PathPrefix = "string",
+  Marker = "string",
+  MaxItems = 123
+)
+}
+}
+
 \examples{
 # The following command lists the IAM groups in the current account:
-list_groups()
+\donttest{list_groups()}
 
 }

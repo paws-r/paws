@@ -4,16 +4,8 @@
 \alias{activate_pipeline}
 \title{Validates the specified pipeline and starts processing pipeline tasks}
 \usage{
-activate_pipeline(
-  pipelineId = "string",
-  parameterValues = list(
-    list(
-      id = "string",
-      stringValue = "string"
-    )
-  ),
-  startTimestamp = as.POSIXct("2015-01-01")
-)
+activate_pipeline(pipelineId, parameterValues = NULL,
+  startTimestamp = NULL)
 }
 \arguments{
 \item{pipelineId}{[required] The ID of the pipeline.}
@@ -30,6 +22,17 @@ If you need to pause the pipeline to investigate an issue with a component, such
 
 To activate a finished pipeline, modify the end date for the pipeline and then activate it.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{activate_pipeline(
+  pipelineId = "string",
+  parameterValues = list(
+    list(
+      id = "string",
+      stringValue = "string"
+    )
+  ),
+  startTimestamp = as.POSIXct("2015-01-01")
+)
 }
+}
+

@@ -4,23 +4,7 @@
 \alias{put_event_selectors}
 \title{Configures an event selector for your trail}
 \usage{
-put_event_selectors(
-  TrailName = "string",
-  EventSelectors = list(
-    list(
-      ReadWriteType = "ReadOnly"|"WriteOnly"|"All",
-      IncludeManagementEvents = TRUE|FALSE,
-      DataResources = list(
-        list(
-          Type = "string",
-          Values = list(
-            "string"
-          )
-        )
-      )
-    )
-  )
-)
+put_event_selectors(TrailName, EventSelectors)
 }
 \arguments{
 \item{TrailName}{[required] Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:
@@ -57,6 +41,24 @@ The \code{PutEventSelectors} operation must be called from the region in which t
 
 You can configure up to five event selectors for each trail. For more information, see \href{http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html}{Logging Data and Management Events for Trails} and \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html}{Limits in AWS CloudTrail} in the \emph{AWS CloudTrail User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_event_selectors(
+  TrailName = "string",
+  EventSelectors = list(
+    list(
+      ReadWriteType = "ReadOnly"|"WriteOnly"|"All",
+      IncludeManagementEvents = TRUE|FALSE,
+      DataResources = list(
+        list(
+          Type = "string",
+          Values = list(
+            "string"
+          )
+        )
+      )
+    )
+  )
+)
 }
+}
+

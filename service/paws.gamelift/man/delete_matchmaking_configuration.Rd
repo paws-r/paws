@@ -4,9 +4,7 @@
 \alias{delete_matchmaking_configuration}
 \title{Permanently removes a FlexMatch matchmaking configuration}
 \usage{
-delete_matchmaking_configuration(
-  Name = "string"
-)
+delete_matchmaking_configuration(Name)
 }
 \arguments{
 \item{Name}{[required] Unique identifier for a matchmaking configuration}
@@ -15,7 +13,6 @@ delete_matchmaking_configuration(
 Permanently removes a FlexMatch matchmaking configuration. To delete, specify the configuration name. A matchmaking configuration cannot be deleted if it is being used in any active matchmaking tickets.
 }
 \details{
-Operations related to match configurations and rule sets include:
 \itemize{
 \item CreateMatchmakingConfiguration
 \item DescribeMatchmakingConfigurations
@@ -24,8 +21,13 @@ Operations related to match configurations and rule sets include:
 \item CreateMatchmakingRuleSet
 \item DescribeMatchmakingRuleSets
 \item ValidateMatchmakingRuleSet
+\item DeleteMatchmakingRuleSet
 }
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{delete_matchmaking_configuration(
+  Name = "string"
+)
+}
+}
 
-}

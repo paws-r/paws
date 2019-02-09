@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.s3_operations.R
 \name{get_public_access_block}
 \alias{get_public_access_block}
-\title{Retrieves the \code{PublicAccessBlock} configuration for an Amazon S3 bucket}
+\title{Retrieves the PublicAccessBlock configuration for an Amazon S3 bucket}
 \usage{
-get_public_access_block(
-  Bucket = "string"
-)
+get_public_access_block(Bucket)
 }
 \arguments{
 \item{Bucket}{[required] The name of the Amazon S3 bucket whose \code{PublicAccessBlock} configuration you want to retrieve.}
@@ -14,6 +12,10 @@ get_public_access_block(
 \description{
 Retrieves the \code{PublicAccessBlock} configuration for an Amazon S3 bucket.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_public_access_block(
+  Bucket = "string"
+)
 }
+}
+

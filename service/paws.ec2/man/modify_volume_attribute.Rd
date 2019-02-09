@@ -4,13 +4,7 @@
 \alias{modify_volume_attribute}
 \title{Modifies a volume attribute}
 \usage{
-modify_volume_attribute(
-  AutoEnableIO = list(
-    Value = TRUE|FALSE
-  ),
-  VolumeId = "string",
-  DryRun = TRUE|FALSE
-)
+modify_volume_attribute(AutoEnableIO = NULL, VolumeId, DryRun = NULL)
 }
 \arguments{
 \item{AutoEnableIO}{Indicates whether the volume should be auto-enabled for I/O operations.}
@@ -27,16 +21,27 @@ By default, all I/O operations for the volume are suspended when the data on the
 
 You can change the default behavior to resume I/O operations. We recommend that you change this only for boot volumes or for volumes that are stateless or disposable.
 }
+\section{Accepted Parameters}{
+\preformatted{modify_volume_attribute(
+  AutoEnableIO = list(
+    Value = TRUE|FALSE
+  ),
+  VolumeId = "string",
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example sets the ``autoEnableIo`` attribute of the volume with the
 # ID ``vol-1234567890abcdef0`` to ``true``. If the command succeeds, no
 # output is returned.
-modify_volume_attribute(
+\donttest{modify_volume_attribute(
   AutoEnableIO = list(
     Value = TRUE
   ),
   DryRun = TRUE,
   VolumeId = "vol-1234567890abcdef0"
-)
+)}
 
 }

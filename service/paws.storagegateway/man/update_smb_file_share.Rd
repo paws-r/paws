@@ -4,22 +4,10 @@
 \alias{update_smb_file_share}
 \title{Updates a Server Message Block (SMB) file share}
 \usage{
-update_smb_file_share(
-  FileShareARN = "string",
-  KMSEncrypted = TRUE|FALSE,
-  KMSKey = "string",
-  DefaultStorageClass = "string",
-  ObjectACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"bucket-owner-read"|"bucket-owner-full-control"|"aws-exec-read",
-  ReadOnly = TRUE|FALSE,
-  GuessMIMETypeEnabled = TRUE|FALSE,
-  RequesterPays = TRUE|FALSE,
-  ValidUserList = list(
-    "string"
-  ),
-  InvalidUserList = list(
-    "string"
-  )
-)
+update_smb_file_share(FileShareARN, KMSEncrypted = NULL, KMSKey = NULL,
+  DefaultStorageClass = NULL, ObjectACL = NULL, ReadOnly = NULL,
+  GuessMIMETypeEnabled = NULL, RequesterPays = NULL,
+  ValidUserList = NULL, InvalidUserList = NULL)
 }
 \arguments{
 \item{FileShareARN}{[required] The Amazon Resource Name (ARN) of the SMB file share that you want to update.}
@@ -52,6 +40,23 @@ File gateways require AWS Security Token Service (AWS STS) to be activated to en
 
 File gateways don't support creating hard or symbolic links on a file share.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_smb_file_share(
+  FileShareARN = "string",
+  KMSEncrypted = TRUE|FALSE,
+  KMSKey = "string",
+  DefaultStorageClass = "string",
+  ObjectACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"bucket-owner-read"|"bucket-owner-full-control"|"aws-exec-read",
+  ReadOnly = TRUE|FALSE,
+  GuessMIMETypeEnabled = TRUE|FALSE,
+  RequesterPays = TRUE|FALSE,
+  ValidUserList = list(
+    "string"
+  ),
+  InvalidUserList = list(
+    "string"
+  )
+)
 }
+}
+

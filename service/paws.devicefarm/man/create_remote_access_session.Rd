@@ -4,25 +4,11 @@
 \alias{create_remote_access_session}
 \title{Specifies and starts a remote access session}
 \usage{
-create_remote_access_session(
-  projectArn = "string",
-  deviceArn = "string",
-  instanceArn = "string",
-  sshPublicKey = "string",
-  remoteDebugEnabled = TRUE|FALSE,
-  remoteRecordEnabled = TRUE|FALSE,
-  remoteRecordAppArn = "string",
-  name = "string",
-  clientId = "string",
-  configuration = list(
-    billingMethod = "METERED"|"UNMETERED",
-    vpceConfigurationArns = list(
-      "string"
-    )
-  ),
-  interactionMode = "INTERACTIVE"|"NO_VIDEO"|"VIDEO_ONLY",
-  skipAppResign = TRUE|FALSE
-)
+create_remote_access_session(projectArn, deviceArn, instanceArn = NULL,
+  sshPublicKey = NULL, remoteDebugEnabled = NULL,
+  remoteRecordEnabled = NULL, remoteRecordAppArn = NULL, name = NULL,
+  clientId = NULL, configuration = NULL, interactionMode = NULL,
+  skipAppResign = NULL)
 }
 \arguments{
 \item{projectArn}{[required] The Amazon Resource Name (ARN) of the project for which you want to create a remote access session.}
@@ -59,15 +45,38 @@ For more information about how Device Farm re-signs your app(s), see \href{https
 \description{
 Specifies and starts a remote access session.
 }
+\section{Accepted Parameters}{
+\preformatted{create_remote_access_session(
+  projectArn = "string",
+  deviceArn = "string",
+  instanceArn = "string",
+  sshPublicKey = "string",
+  remoteDebugEnabled = TRUE|FALSE,
+  remoteRecordEnabled = TRUE|FALSE,
+  remoteRecordAppArn = "string",
+  name = "string",
+  clientId = "string",
+  configuration = list(
+    billingMethod = "METERED"|"UNMETERED",
+    vpceConfigurationArns = list(
+      "string"
+    )
+  ),
+  interactionMode = "INTERACTIVE"|"NO_VIDEO"|"VIDEO_ONLY",
+  skipAppResign = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # The following example creates a remote access session named MySession.
-create_remote_access_session(
+\donttest{create_remote_access_session(
   name = "MySession",
   configuration = list(
     billingMethod = "METERED"
   ),
   deviceArn = "arn:aws:devicefarm:us-west-2::device:123EXAMPLE",
   projectArn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
-)
+)}
 
 }

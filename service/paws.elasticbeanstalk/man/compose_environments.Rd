@@ -4,13 +4,8 @@
 \alias{compose_environments}
 \title{Create or update a group of environments that each run a separate component of a single application}
 \usage{
-compose_environments(
-  ApplicationName = "string",
-  GroupName = "string",
-  VersionLabels = list(
-    "string"
-  )
-)
+compose_environments(ApplicationName = NULL, GroupName = NULL,
+  VersionLabels = NULL)
 }
 \arguments{
 \item{ApplicationName}{The name of the application to which the specified source bundles belong.}
@@ -22,6 +17,14 @@ compose_environments(
 \description{
 Create or update a group of environments that each run a separate component of a single application. Takes a list of version labels that specify application source bundles for each of the environments to create or update. The name of each environment and other required information must be included in the source bundles in an environment manifest named \code{env.yaml}. See \href{http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-mgmt-compose.html}{Compose Environments} for details.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{compose_environments(
+  ApplicationName = "string",
+  GroupName = "string",
+  VersionLabels = list(
+    "string"
+  )
+)
 }
+}
+

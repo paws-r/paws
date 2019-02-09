@@ -4,12 +4,8 @@
 \alias{view_billing}
 \title{Returns all the domain-related billing records for the current AWS account for a specified period}
 \usage{
-view_billing(
-  Start = as.POSIXct("2015-01-01"),
-  End = as.POSIXct("2015-01-01"),
-  Marker = "string",
-  MaxItems = 123
-)
+view_billing(Start = NULL, End = NULL, Marker = NULL,
+  MaxItems = NULL)
 }
 \arguments{
 \item{Start}{The beginning date and time for the time period for which you want a list of billing records. Specify the date and time in Coordinated Universal time (UTC).}
@@ -27,6 +23,13 @@ Default: 20}
 \description{
 Returns all the domain-related billing records for the current AWS account for a specified period
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{view_billing(
+  Start = as.POSIXct("2015-01-01"),
+  End = as.POSIXct("2015-01-01"),
+  Marker = "string",
+  MaxItems = 123
+)
 }
+}
+

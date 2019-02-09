@@ -4,80 +4,17 @@
 \alias{create_auto_scaling_group}
 \title{Creates an Auto Scaling group with the specified name and attributes}
 \usage{
-create_auto_scaling_group(
-  AutoScalingGroupName = "string",
-  LaunchConfigurationName = "string",
-  LaunchTemplate = list(
-    LaunchTemplateId = "string",
-    LaunchTemplateName = "string",
-    Version = "string"
-  ),
-  MixedInstancesPolicy = list(
-    LaunchTemplate = list(
-      LaunchTemplateSpecification = list(
-        LaunchTemplateId = "string",
-        LaunchTemplateName = "string",
-        Version = "string"
-      ),
-      Overrides = list(
-        list(
-          InstanceType = "string"
-        )
-      )
-    ),
-    InstancesDistribution = list(
-      OnDemandAllocationStrategy = "string",
-      OnDemandBaseCapacity = 123,
-      OnDemandPercentageAboveBaseCapacity = 123,
-      SpotAllocationStrategy = "string",
-      SpotInstancePools = 123,
-      SpotMaxPrice = "string"
-    )
-  ),
-  InstanceId = "string",
-  MinSize = 123,
-  MaxSize = 123,
-  DesiredCapacity = 123,
-  DefaultCooldown = 123,
-  AvailabilityZones = list(
-    "string"
-  ),
-  LoadBalancerNames = list(
-    "string"
-  ),
-  TargetGroupARNs = list(
-    "string"
-  ),
-  HealthCheckType = "string",
-  HealthCheckGracePeriod = 123,
-  PlacementGroup = "string",
-  VPCZoneIdentifier = "string",
-  TerminationPolicies = list(
-    "string"
-  ),
-  NewInstancesProtectedFromScaleIn = TRUE|FALSE,
-  LifecycleHookSpecificationList = list(
-    list(
-      LifecycleHookName = "string",
-      LifecycleTransition = "string",
-      NotificationMetadata = "string",
-      HeartbeatTimeout = 123,
-      DefaultResult = "string",
-      NotificationTargetARN = "string",
-      RoleARN = "string"
-    )
-  ),
-  Tags = list(
-    list(
-      ResourceId = "string",
-      ResourceType = "string",
-      Key = "string",
-      Value = "string",
-      PropagateAtLaunch = TRUE|FALSE
-    )
-  ),
-  ServiceLinkedRoleARN = "string"
-)
+create_auto_scaling_group(AutoScalingGroupName,
+  LaunchConfigurationName = NULL, LaunchTemplate = NULL,
+  MixedInstancesPolicy = NULL, InstanceId = NULL, MinSize, MaxSize,
+  DesiredCapacity = NULL, DefaultCooldown = NULL,
+  AvailabilityZones = NULL, LoadBalancerNames = NULL,
+  TargetGroupARNs = NULL, HealthCheckType = NULL,
+  HealthCheckGracePeriod = NULL, PlacementGroup = NULL,
+  VPCZoneIdentifier = NULL, TerminationPolicies = NULL,
+  NewInstancesProtectedFromScaleIn = NULL,
+  LifecycleHookSpecificationList = NULL, Tags = NULL,
+  ServiceLinkedRoleARN = NULL)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group. This name must be unique within the scope of your AWS account.}
@@ -152,19 +89,97 @@ If you exceed your maximum limit of Auto Scaling groups, the call fails. For inf
 
 For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroup.html}{Auto Scaling Groups} in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_auto_scaling_group(
+  AutoScalingGroupName = "string",
+  LaunchConfigurationName = "string",
+  LaunchTemplate = list(
+    LaunchTemplateId = "string",
+    LaunchTemplateName = "string",
+    Version = "string"
+  ),
+  MixedInstancesPolicy = list(
+    LaunchTemplate = list(
+      LaunchTemplateSpecification = list(
+        LaunchTemplateId = "string",
+        LaunchTemplateName = "string",
+        Version = "string"
+      ),
+      Overrides = list(
+        list(
+          InstanceType = "string"
+        )
+      )
+    ),
+    InstancesDistribution = list(
+      OnDemandAllocationStrategy = "string",
+      OnDemandBaseCapacity = 123,
+      OnDemandPercentageAboveBaseCapacity = 123,
+      SpotAllocationStrategy = "string",
+      SpotInstancePools = 123,
+      SpotMaxPrice = "string"
+    )
+  ),
+  InstanceId = "string",
+  MinSize = 123,
+  MaxSize = 123,
+  DesiredCapacity = 123,
+  DefaultCooldown = 123,
+  AvailabilityZones = list(
+    "string"
+  ),
+  LoadBalancerNames = list(
+    "string"
+  ),
+  TargetGroupARNs = list(
+    "string"
+  ),
+  HealthCheckType = "string",
+  HealthCheckGracePeriod = 123,
+  PlacementGroup = "string",
+  VPCZoneIdentifier = "string",
+  TerminationPolicies = list(
+    "string"
+  ),
+  NewInstancesProtectedFromScaleIn = TRUE|FALSE,
+  LifecycleHookSpecificationList = list(
+    list(
+      LifecycleHookName = "string",
+      LifecycleTransition = "string",
+      NotificationMetadata = "string",
+      HeartbeatTimeout = 123,
+      DefaultResult = "string",
+      NotificationTargetARN = "string",
+      RoleARN = "string"
+    )
+  ),
+  Tags = list(
+    list(
+      ResourceId = "string",
+      ResourceType = "string",
+      Key = "string",
+      Value = "string",
+      PropagateAtLaunch = TRUE|FALSE
+    )
+  ),
+  ServiceLinkedRoleARN = "string"
+)
+}
+}
+
 \examples{
 # This example creates an Auto Scaling group.
-create_auto_scaling_group(
+\donttest{create_auto_scaling_group(
   AutoScalingGroupName = "my-auto-scaling-group",
   LaunchConfigurationName = "my-launch-config",
   MaxSize = 3L,
   MinSize = 1L,
   VPCZoneIdentifier = "subnet-4176792c"
-)
+)}
 
 # This example creates an Auto Scaling group and attaches the specified
 # Classic Load Balancer.
-create_auto_scaling_group(
+\donttest{create_auto_scaling_group(
   AutoScalingGroupName = "my-auto-scaling-group",
   AvailabilityZones = list(
     "us-west-2c"
@@ -177,11 +192,11 @@ create_auto_scaling_group(
   ),
   MaxSize = 3L,
   MinSize = 1L
-)
+)}
 
 # This example creates an Auto Scaling group and attaches the specified
 # target group.
-create_auto_scaling_group(
+\donttest{create_auto_scaling_group(
   AutoScalingGroupName = "my-auto-scaling-group",
   HealthCheckGracePeriod = 120L,
   HealthCheckType = "ELB",
@@ -192,6 +207,6 @@ create_auto_scaling_group(
     "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067"
   ),
   VPCZoneIdentifier = "subnet-4176792c, subnet-65ea5f08"
-)
+)}
 
 }

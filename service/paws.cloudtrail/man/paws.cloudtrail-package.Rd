@@ -7,8 +7,8 @@
 \title{paws.cloudtrail: AWS CloudTrail}
 \description{
 This is the CloudTrail API Reference. It provides
-descriptions of actions, data types, common parameters, and common
-errors for CloudTrail.
+    descriptions of actions, data types, common parameters, and common
+    errors for CloudTrail.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

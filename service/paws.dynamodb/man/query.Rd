@@ -2,133 +2,16 @@
 % Please edit documentation in R/paws.dynamodb_operations.R
 \name{query}
 \alias{query}
-\title{The \code{Query} operation finds items based on primary key values}
+\title{The Query operation finds items based on primary key values}
 \usage{
-query(
-  TableName = "string",
-  IndexName = "string",
-  Select = "ALL_ATTRIBUTES"|"ALL_PROJECTED_ATTRIBUTES"|"SPECIFIC_ATTRIBUTES"|"COUNT",
-  AttributesToGet = list(
-    "string"
-  ),
-  Limit = 123,
-  ConsistentRead = TRUE|FALSE,
-  KeyConditions = list(
-    list(
-      AttributeValueList = list(
-        list(
-          S = "string",
-          N = "string",
-          B = raw,
-          SS = list(
-            "string"
-          ),
-          NS = list(
-            "string"
-          ),
-          BS = list(
-            raw
-          ),
-          M = list(
-            list()
-          ),
-          L = list(
-            list()
-          ),
-          NULL = TRUE|FALSE,
-          BOOL = TRUE|FALSE
-        )
-      ),
-      ComparisonOperator = "EQ"|"NE"|"IN"|"LE"|"LT"|"GE"|"GT"|"BETWEEN"|"NOT_NULL"|"NULL"|"CONTAINS"|"NOT_CONTAINS"|"BEGINS_WITH"
-    )
-  ),
-  QueryFilter = list(
-    list(
-      AttributeValueList = list(
-        list(
-          S = "string",
-          N = "string",
-          B = raw,
-          SS = list(
-            "string"
-          ),
-          NS = list(
-            "string"
-          ),
-          BS = list(
-            raw
-          ),
-          M = list(
-            list()
-          ),
-          L = list(
-            list()
-          ),
-          NULL = TRUE|FALSE,
-          BOOL = TRUE|FALSE
-        )
-      ),
-      ComparisonOperator = "EQ"|"NE"|"IN"|"LE"|"LT"|"GE"|"GT"|"BETWEEN"|"NOT_NULL"|"NULL"|"CONTAINS"|"NOT_CONTAINS"|"BEGINS_WITH"
-    )
-  ),
-  ConditionalOperator = "AND"|"OR",
-  ScanIndexForward = TRUE|FALSE,
-  ExclusiveStartKey = list(
-    list(
-      S = "string",
-      N = "string",
-      B = raw,
-      SS = list(
-        "string"
-      ),
-      NS = list(
-        "string"
-      ),
-      BS = list(
-        raw
-      ),
-      M = list(
-        list()
-      ),
-      L = list(
-        list()
-      ),
-      NULL = TRUE|FALSE,
-      BOOL = TRUE|FALSE
-    )
-  ),
-  ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE",
-  ProjectionExpression = "string",
-  FilterExpression = "string",
-  KeyConditionExpression = "string",
-  ExpressionAttributeNames = list(
-    "string"
-  ),
-  ExpressionAttributeValues = list(
-    list(
-      S = "string",
-      N = "string",
-      B = raw,
-      SS = list(
-        "string"
-      ),
-      NS = list(
-        "string"
-      ),
-      BS = list(
-        raw
-      ),
-      M = list(
-        list()
-      ),
-      L = list(
-        list()
-      ),
-      NULL = TRUE|FALSE,
-      BOOL = TRUE|FALSE
-    )
-  )
-)
+query(TableName, IndexName = NULL, Select = NULL,
+  AttributesToGet = NULL, Limit = NULL, ConsistentRead = NULL,
+  KeyConditions = NULL, QueryFilter = NULL,
+  ConditionalOperator = NULL, ScanIndexForward = NULL,
+  ExclusiveStartKey = NULL, ReturnConsumedCapacity = NULL,
+  ProjectionExpression = NULL, FilterExpression = NULL,
+  KeyConditionExpression = NULL, ExpressionAttributeNames = NULL,
+  ExpressionAttributeValues = NULL)
 }
 \arguments{
 \item{TableName}{[required] The name of the table containing the requested items.}
@@ -294,12 +177,141 @@ A \code{Query} operation can return an empty result set and a \code{LastEvaluate
 
 You can query a table, a local secondary index, or a global secondary index. For a query on a table or on a local secondary index, you can set the \code{ConsistentRead} parameter to \code{true} and obtain a strongly consistent result. Global secondary indexes support eventually consistent reads only, so do not specify \code{ConsistentRead} when querying a global secondary index.
 }
+\section{Accepted Parameters}{
+\preformatted{query(
+  TableName = "string",
+  IndexName = "string",
+  Select = "ALL_ATTRIBUTES"|"ALL_PROJECTED_ATTRIBUTES"|"SPECIFIC_ATTRIBUTES"|"COUNT",
+  AttributesToGet = list(
+    "string"
+  ),
+  Limit = 123,
+  ConsistentRead = TRUE|FALSE,
+  KeyConditions = list(
+    list(
+      AttributeValueList = list(
+        list(
+          S = "string",
+          N = "string",
+          B = raw,
+          SS = list(
+            "string"
+          ),
+          NS = list(
+            "string"
+          ),
+          BS = list(
+            raw
+          ),
+          M = list(
+            list()
+          ),
+          L = list(
+            list()
+          ),
+          NULL = TRUE|FALSE,
+          BOOL = TRUE|FALSE
+        )
+      ),
+      ComparisonOperator = "EQ"|"NE"|"IN"|"LE"|"LT"|"GE"|"GT"|"BETWEEN"|"NOT_NULL"|"NULL"|"CONTAINS"|"NOT_CONTAINS"|"BEGINS_WITH"
+    )
+  ),
+  QueryFilter = list(
+    list(
+      AttributeValueList = list(
+        list(
+          S = "string",
+          N = "string",
+          B = raw,
+          SS = list(
+            "string"
+          ),
+          NS = list(
+            "string"
+          ),
+          BS = list(
+            raw
+          ),
+          M = list(
+            list()
+          ),
+          L = list(
+            list()
+          ),
+          NULL = TRUE|FALSE,
+          BOOL = TRUE|FALSE
+        )
+      ),
+      ComparisonOperator = "EQ"|"NE"|"IN"|"LE"|"LT"|"GE"|"GT"|"BETWEEN"|"NOT_NULL"|"NULL"|"CONTAINS"|"NOT_CONTAINS"|"BEGINS_WITH"
+    )
+  ),
+  ConditionalOperator = "AND"|"OR",
+  ScanIndexForward = TRUE|FALSE,
+  ExclusiveStartKey = list(
+    list(
+      S = "string",
+      N = "string",
+      B = raw,
+      SS = list(
+        "string"
+      ),
+      NS = list(
+        "string"
+      ),
+      BS = list(
+        raw
+      ),
+      M = list(
+        list()
+      ),
+      L = list(
+        list()
+      ),
+      NULL = TRUE|FALSE,
+      BOOL = TRUE|FALSE
+    )
+  ),
+  ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE",
+  ProjectionExpression = "string",
+  FilterExpression = "string",
+  KeyConditionExpression = "string",
+  ExpressionAttributeNames = list(
+    "string"
+  ),
+  ExpressionAttributeValues = list(
+    list(
+      S = "string",
+      N = "string",
+      B = raw,
+      SS = list(
+        "string"
+      ),
+      NS = list(
+        "string"
+      ),
+      BS = list(
+        raw
+      ),
+      M = list(
+        list()
+      ),
+      L = list(
+        list()
+      ),
+      NULL = TRUE|FALSE,
+      BOOL = TRUE|FALSE
+    )
+  )
+)
+}
+}
+
 \examples{
 # This example queries items in the Music table. The table has a partition
 # key and sort key (Artist and SongTitle), but this query only specifies
 # the partition key value. It returns song titles by the artist named "No
 # One You Know".
-query(
+\donttest{query(
   ExpressionAttributeValues = list(
     `:v1` = list(
       S = "No One You Know"
@@ -308,6 +320,6 @@ query(
   KeyConditionExpression = "Artist = :v1",
   ProjectionExpression = "SongTitle",
   TableName = "Music"
-)
+)}
 
 }

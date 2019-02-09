@@ -4,13 +4,8 @@
 \alias{get_service_graph}
 \title{Retrieves a document that describes services that process incoming requests, and downstream services that they call as a result}
 \usage{
-get_service_graph(
-  StartTime = as.POSIXct("2015-01-01"),
-  EndTime = as.POSIXct("2015-01-01"),
-  GroupName = "string",
-  GroupARN = "string",
-  NextToken = "string"
-)
+get_service_graph(StartTime, EndTime, GroupName = NULL,
+  GroupARN = NULL, NextToken = NULL)
 }
 \arguments{
 \item{StartTime}{[required] The start of the time frame for which to generate a graph.}
@@ -26,6 +21,14 @@ get_service_graph(
 \description{
 Retrieves a document that describes services that process incoming requests, and downstream services that they call as a result. Root services process incoming requests and make calls to downstream services. Root services are applications that use the AWS X-Ray SDK. Downstream services can be other applications, AWS resources, HTTP web APIs, or SQL databases.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_service_graph(
+  StartTime = as.POSIXct("2015-01-01"),
+  EndTime = as.POSIXct("2015-01-01"),
+  GroupName = "string",
+  GroupARN = "string",
+  NextToken = "string"
+)
 }
+}
+

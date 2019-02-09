@@ -4,13 +4,8 @@
 \alias{describe_scaling_activities}
 \title{Provides descriptive information about the scaling activities in the specified namespace from the previous six weeks}
 \usage{
-describe_scaling_activities(
-  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
-  ResourceId = "string",
-  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property",
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_scaling_activities(ServiceNamespace, ResourceId = NULL,
+  ScalableDimension = NULL, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ServiceNamespace}{[required] The namespace of the AWS service that provides the resource or \code{custom-resource} for a resource provided by your own application or service. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces} in the \emph{Amazon Web Services General Reference}.}
@@ -25,7 +20,7 @@ describe_scaling_activities(
 \item DynamoDB global secondary index - The resource type is \code{index} and the unique identifier is the resource ID. Example: \code{table/my-table/index/my-table-index}.
 \item Aurora DB cluster - The resource type is \code{cluster} and the unique identifier is the cluster name. Example: \code{cluster:my-db-cluster}.
 \item Amazon SageMaker endpoint variants - The resource type is \code{variant} and the unique identifier is the resource ID. Example: \code{endpoint/my-end-point/variant/KMeansClustering}.
-\item Custom resources are not supported with a resource type. This parameter must specify the \code{OutputValue} from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider.
+\item Custom resources are not supported with a resource type. This parameter must specify the \code{OutputValue} from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider. More information is available in our \href{https://github.com/aws/aws-auto-scaling-custom-resource}{GitHub repository}.
 }}
 
 \item{ScalableDimension}{The scalable dimension. This string consists of the service namespace, resource type, and scaling property. If you specify a scalable dimension, you must also specify a resource ID.
@@ -38,7 +33,7 @@ describe_scaling_activities(
 \item \code{dynamodb:table:WriteCapacityUnits} - The provisioned write capacity for a DynamoDB table.
 \item \code{dynamodb:index:ReadCapacityUnits} - The provisioned read capacity for a DynamoDB global secondary index.
 \item \code{dynamodb:index:WriteCapacityUnits} - The provisioned write capacity for a DynamoDB global secondary index.
-\item \code{rds:cluster:ReadReplicaCount} - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+\item \code{rds:cluster:ReadReplicaCount} - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition and Aurora PostgreSQL-compatible edition.
 \item \code{sagemaker:variant:DesiredInstanceCount} - The number of EC2 instances for an Amazon SageMaker model endpoint variant.
 \item \code{custom-resource:ResourceType:Property} - The scalable dimension for a custom resource provided by your own application or service.
 }}
@@ -57,13 +52,24 @@ You can filter the results using the \code{ResourceId} and \code{ScalableDimensi
 
 Scaling activities are triggered by CloudWatch alarms that are associated with scaling policies. To view the scaling policies for a service namespace, see DescribeScalingPolicies. To create a scaling policy or update an existing one, see PutScalingPolicy.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_scaling_activities(
+  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
+  ResourceId = "string",
+  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property",
+  MaxResults = 123,
+  NextToken = "string"
+)
+}
+}
+
 \examples{
 # This example describes the scaling activities for an Amazon ECS service
 # called web-app that is running in the default cluster.
-describe_scaling_activities(
+\donttest{describe_scaling_activities(
   ResourceId = "service/default/web-app",
   ScalableDimension = "ecs:service:DesiredCount",
   ServiceNamespace = "ecs"
-)
+)}
 
 }

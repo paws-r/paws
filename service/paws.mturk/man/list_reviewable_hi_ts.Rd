@@ -2,14 +2,10 @@
 % Please edit documentation in R/paws.mturk_operations.R
 \name{list_reviewable_hi_ts}
 \alias{list_reviewable_hi_ts}
-\title{The \code{ListReviewableHITs} operation retrieves the HITs with Status equal to Reviewable or Status equal to Reviewing that belong to the Requester calling the operation}
+\title{The ListReviewableHITs operation retrieves the HITs with Status equal to Reviewable or Status equal to Reviewing that belong to the Requester calling the operation}
 \usage{
-list_reviewable_hi_ts(
-  HITTypeId = "string",
-  Status = "Reviewable"|"Reviewing",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_reviewable_hi_ts(HITTypeId = NULL, Status = NULL,
+  NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{HITTypeId}{The ID of the HIT type of the HITs to consider for the query. If not specified, all HITs for the Reviewer are considered}
@@ -23,6 +19,13 @@ list_reviewable_hi_ts(
 \description{
 The \code{ListReviewableHITs} operation retrieves the HITs with Status equal to Reviewable or Status equal to Reviewing that belong to the Requester calling the operation.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_reviewable_hi_ts(
+  HITTypeId = "string",
+  Status = "Reviewable"|"Reviewing",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

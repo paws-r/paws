@@ -2,13 +2,10 @@
 % Please edit documentation in R/paws.redshift_operations.R
 \name{describe_cluster_db_revisions}
 \alias{describe_cluster_db_revisions}
-\title{Returns an array of \code{ClusterDbRevision} objects}
+\title{Returns an array of ClusterDbRevision objects}
 \usage{
-describe_cluster_db_revisions(
-  ClusterIdentifier = "string",
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_cluster_db_revisions(ClusterIdentifier = NULL,
+  MaxRecords = NULL, Marker = NULL)
 }
 \arguments{
 \item{ClusterIdentifier}{A unique identifier for a cluster whose \code{ClusterDbRevisions} you are requesting. This parameter is case sensitive. All clusters defined for an account are returned by default.}
@@ -26,6 +23,12 @@ Constraints: You can specify either the \code{ClusterIdentifier} parameter, or t
 \description{
 Returns an array of \code{ClusterDbRevision} objects.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_cluster_db_revisions(
+  ClusterIdentifier = "string",
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
+}
+

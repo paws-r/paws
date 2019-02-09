@@ -4,10 +4,7 @@
 \alias{register_event_topic}
 \title{Associates a directory with an SNS topic}
 \usage{
-register_event_topic(
-  DirectoryId = "string",
-  TopicName = "string"
-)
+register_event_topic(DirectoryId, TopicName)
 }
 \arguments{
 \item{DirectoryId}{[required] The Directory ID that will publish status messages to the SNS topic.}
@@ -17,6 +14,11 @@ register_event_topic(
 \description{
 Associates a directory with an SNS topic. This establishes the directory as a publisher to the specified SNS topic. You can then receive email or text (SMS) messages when the status of your directory changes. You get notified if your directory goes from an Active status to an Impaired or Inoperable status. You also receive a notification when the directory returns to an Active status.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{register_event_topic(
+  DirectoryId = "string",
+  TopicName = "string"
+)
 }
+}
+

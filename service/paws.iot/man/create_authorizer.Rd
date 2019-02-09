@@ -4,15 +4,8 @@
 \alias{create_authorizer}
 \title{Creates an authorizer}
 \usage{
-create_authorizer(
-  authorizerName = "string",
-  authorizerFunctionArn = "string",
-  tokenKeyName = "string",
-  tokenSigningPublicKeys = list(
-    "string"
-  ),
-  status = "ACTIVE"|"INACTIVE"
-)
+create_authorizer(authorizerName, authorizerFunctionArn, tokenKeyName,
+  tokenSigningPublicKeys, status = NULL)
 }
 \arguments{
 \item{authorizerName}{[required] The authorizer name.}
@@ -28,6 +21,16 @@ create_authorizer(
 \description{
 Creates an authorizer.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_authorizer(
+  authorizerName = "string",
+  authorizerFunctionArn = "string",
+  tokenKeyName = "string",
+  tokenSigningPublicKeys = list(
+    "string"
+  ),
+  status = "ACTIVE"|"INACTIVE"
+)
 }
+}
+

@@ -4,12 +4,7 @@
 \alias{detach_load_balancer_target_groups}
 \title{Detaches one or more target groups from the specified Auto Scaling group}
 \usage{
-detach_load_balancer_target_groups(
-  AutoScalingGroupName = "string",
-  TargetGroupARNs = list(
-    "string"
-  )
-)
+detach_load_balancer_target_groups(AutoScalingGroupName, TargetGroupARNs)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
@@ -19,14 +14,24 @@ detach_load_balancer_target_groups(
 \description{
 Detaches one or more target groups from the specified Auto Scaling group.
 }
+\section{Accepted Parameters}{
+\preformatted{detach_load_balancer_target_groups(
+  AutoScalingGroupName = "string",
+  TargetGroupARNs = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # This example detaches the specified target group from the specified Auto
 # Scaling group
-detach_load_balancer_target_groups(
+\donttest{detach_load_balancer_target_groups(
   AutoScalingGroupName = "my-auto-scaling-group",
   TargetGroupARNs = list(
     "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067"
   )
-)
+)}
 
 }

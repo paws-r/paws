@@ -2,13 +2,10 @@
 % Please edit documentation in R/paws.connect_operations.R
 \name{list_user_hierarchy_groups}
 \alias{list_user_hierarchy_groups}
-\title{Returns a \code{UserHierarchyGroupSummaryList}, which is an array of \code{HierarchyGroupSummary} objects that contain information about the hierarchy groups in your instance}
+\title{Returns a UserHierarchyGroupSummaryList, which is an array of HierarchyGroupSummary objects that contain information about the hierarchy groups in your instance}
 \usage{
-list_user_hierarchy_groups(
-  InstanceId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_user_hierarchy_groups(InstanceId, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{InstanceId}{[required] The identifier for your Amazon Connect instance. To find the ID of your instance, open the AWS console and select Amazon Connect. Select the alias of the instance in the Instance alias column. The instance ID is displayed in the Overview section of your instance settings. For example, the instance ID is the set of characters at the end of the instance ARN, after instance/, such as 10a4c4eb-f57e-4d4c-b602-bf39176ced07.}
@@ -20,6 +17,12 @@ list_user_hierarchy_groups(
 \description{
 Returns a \code{UserHierarchyGroupSummaryList}, which is an array of \code{HierarchyGroupSummary} objects that contain information about the hierarchy groups in your instance.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_user_hierarchy_groups(
+  InstanceId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

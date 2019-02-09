@@ -4,21 +4,9 @@
 \alias{update_account_audit_configuration}
 \title{Configures or reconfigures the Device Defender audit settings for this account}
 \usage{
-update_account_audit_configuration(
-  roleArn = "string",
-  auditNotificationTargetConfigurations = list(
-    list(
-      targetArn = "string",
-      roleArn = "string",
-      enabled = TRUE|FALSE
-    )
-  ),
-  auditCheckConfigurations = list(
-    list(
-      enabled = TRUE|FALSE
-    )
-  )
-)
+update_account_audit_configuration(roleArn = NULL,
+  auditNotificationTargetConfigurations = NULL,
+  auditCheckConfigurations = NULL)
 }
 \arguments{
 \item{roleArn}{The ARN of the role that grants permission to AWS IoT to access information about your devices, policies, certificates and other items as necessary when performing an audit.}
@@ -36,6 +24,22 @@ On the first call to \code{UpdateAccountAuditConfiguration} this parameter is re
 \description{
 Configures or reconfigures the Device Defender audit settings for this account. Settings include how audit notifications are sent and which audit checks are enabled or disabled.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_account_audit_configuration(
+  roleArn = "string",
+  auditNotificationTargetConfigurations = list(
+    list(
+      targetArn = "string",
+      roleArn = "string",
+      enabled = TRUE|FALSE
+    )
+  ),
+  auditCheckConfigurations = list(
+    list(
+      enabled = TRUE|FALSE
+    )
+  )
+)
 }
+}
+

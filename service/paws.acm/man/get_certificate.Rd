@@ -4,9 +4,7 @@
 \alias{get_certificate}
 \title{Retrieves a certificate specified by an ARN and its certificate chain}
 \usage{
-get_certificate(
-  CertificateArn = "string"
-)
+get_certificate(CertificateArn)
 }
 \arguments{
 \item{CertificateArn}{[required] String that contains a certificate ARN in the following format:
@@ -18,6 +16,10 @@ For more information about ARNs, see \href{http://docs.aws.amazon.com/general/la
 \description{
 Retrieves a certificate specified by an ARN and its certificate chain . The chain is an ordered list of certificates that contains the end entity certificate, intermediate certificates of subordinate CAs, and the root certificate in that order. The certificate and certificate chain are base64 encoded. If you want to decode the certificate to see the individual fields, you can use OpenSSL.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_certificate(
+  CertificateArn = "string"
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{delete_user}
 \title{Deletes the specified user from a Simple AD or Microsoft AD directory}
 \usage{
-delete_user(
-  AuthenticationToken = "string",
-  UserId = "string"
-)
+delete_user(AuthenticationToken = NULL, UserId)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
@@ -17,6 +14,11 @@ delete_user(
 \description{
 Deletes the specified user from a Simple AD or Microsoft AD directory.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_user(
+  AuthenticationToken = "string",
+  UserId = "string"
+)
 }
+}
+

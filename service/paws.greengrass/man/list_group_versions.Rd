@@ -4,11 +4,7 @@
 \alias{list_group_versions}
 \title{Lists the versions of a group}
 \usage{
-list_group_versions(
-  GroupId = "string",
-  MaxResults = "string",
-  NextToken = "string"
-)
+list_group_versions(GroupId, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{GroupId}{[required] The ID of the Greengrass group.}
@@ -20,6 +16,12 @@ list_group_versions(
 \description{
 Lists the versions of a group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_group_versions(
+  GroupId = "string",
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
+}
+

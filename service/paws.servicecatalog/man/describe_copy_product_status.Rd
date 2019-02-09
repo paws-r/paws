@@ -4,10 +4,7 @@
 \alias{describe_copy_product_status}
 \title{Gets the status of the specified copy product operation}
 \usage{
-describe_copy_product_status(
-  AcceptLanguage = "string",
-  CopyProductToken = "string"
-)
+describe_copy_product_status(AcceptLanguage = NULL, CopyProductToken)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -22,6 +19,11 @@ describe_copy_product_status(
 \description{
 Gets the status of the specified copy product operation.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_copy_product_status(
+  AcceptLanguage = "string",
+  CopyProductToken = "string"
+)
 }
+}
+

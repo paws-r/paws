@@ -4,15 +4,8 @@
 \alias{cancel_job_execution}
 \title{Cancels the execution of a job for a given thing}
 \usage{
-cancel_job_execution(
-  jobId = "string",
-  thingName = "string",
-  force = TRUE|FALSE,
-  expectedVersion = 123,
-  statusDetails = list(
-    "string"
-  )
-)
+cancel_job_execution(jobId, thingName, force = NULL,
+  expectedVersion = NULL, statusDetails = NULL)
 }
 \arguments{
 \item{jobId}{[required] The ID of the job to be canceled.}
@@ -30,6 +23,16 @@ Canceling a job execution which is "IN\_PROGRESS", will cause the device to be u
 \description{
 Cancels the execution of a job for a given thing.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{cancel_job_execution(
+  jobId = "string",
+  thingName = "string",
+  force = TRUE|FALSE,
+  expectedVersion = 123,
+  statusDetails = list(
+    "string"
+  )
+)
 }
+}
+

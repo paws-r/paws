@@ -4,13 +4,8 @@
 \alias{list_presets}
 \title{Retrieve a JSON array of up to twenty of your presets}
 \usage{
-list_presets(
-  Category = "string",
-  ListBy = "NAME"|"CREATION_DATE"|"SYSTEM",
-  MaxResults = 123,
-  NextToken = "string",
-  Order = "ASCENDING"|"DESCENDING"
-)
+list_presets(Category = NULL, ListBy = NULL, MaxResults = NULL,
+  NextToken = NULL, Order = NULL)
 }
 \arguments{
 \item{Category}{Optionally, specify a preset category to limit responses to only presets from that category.}
@@ -26,6 +21,14 @@ list_presets(
 \description{
 Retrieve a JSON array of up to twenty of your presets. This will return the presets themselves, not just a list of them. To retrieve the next twenty presets, use the nextToken string returned with the array.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_presets(
+  Category = "string",
+  ListBy = "NAME"|"CREATION_DATE"|"SYSTEM",
+  MaxResults = 123,
+  NextToken = "string",
+  Order = "ASCENDING"|"DESCENDING"
+)
 }
+}
+

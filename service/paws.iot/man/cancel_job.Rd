@@ -4,12 +4,7 @@
 \alias{cancel_job}
 \title{Cancels a job}
 \usage{
-cancel_job(
-  jobId = "string",
-  reasonCode = "string",
-  comment = "string",
-  force = TRUE|FALSE
-)
+cancel_job(jobId, reasonCode = NULL, comment = NULL, force = NULL)
 }
 \arguments{
 \item{jobId}{[required] The unique identifier you assigned to this job when it was created.}
@@ -25,6 +20,13 @@ Canceling a job which is "IN\_PROGRESS", will cause a device which is executing 
 \description{
 Cancels a job.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{cancel_job(
+  jobId = "string",
+  reasonCode = "string",
+  comment = "string",
+  force = TRUE|FALSE
+)
 }
+}
+

@@ -4,12 +4,7 @@
 \alias{list_tags}
 \title{Lists the tags for the trail in the current region}
 \usage{
-list_tags(
-  ResourceIdList = list(
-    "string"
-  ),
-  NextToken = "string"
-)
+list_tags(ResourceIdList, NextToken = NULL)
 }
 \arguments{
 \item{ResourceIdList}{[required] Specifies a list of trail ARNs whose tags will be listed. The list has a limit of 20 ARNs. The format of a trail ARN is:
@@ -21,6 +16,13 @@ list_tags(
 \description{
 Lists the tags for the trail in the current region.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_tags(
+  ResourceIdList = list(
+    "string"
+  ),
+  NextToken = "string"
+)
 }
+}
+

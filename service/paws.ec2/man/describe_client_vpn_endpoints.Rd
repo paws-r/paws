@@ -4,7 +4,26 @@
 \alias{describe_client_vpn_endpoints}
 \title{Describes one or more Client VPN endpoints in the account}
 \usage{
-describe_client_vpn_endpoints(
+describe_client_vpn_endpoints(ClientVpnEndpointIds = NULL,
+  MaxResults = NULL, NextToken = NULL, Filters = NULL,
+  DryRun = NULL)
+}
+\arguments{
+\item{ClientVpnEndpointIds}{The ID of the Client VPN endpoint.}
+
+\item{MaxResults}{The maximum number of results to return for the request in a single page. The remaining results can be seen by sending another request with the nextToken value.}
+
+\item{NextToken}{The token to retrieve the next page of results.}
+
+\item{Filters}{One or more filters. Filter names and values are case-sensitive.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+}
+\description{
+Describes one or more Client VPN endpoints in the account.
+}
+\section{Accepted Parameters}{
+\preformatted{describe_client_vpn_endpoints(
   ClientVpnEndpointIds = list(
     "string"
   ),
@@ -21,20 +40,5 @@ describe_client_vpn_endpoints(
   DryRun = TRUE|FALSE
 )
 }
-\arguments{
-\item{ClientVpnEndpointIds}{The ID of the Client VPN endpoint.}
-
-\item{MaxResults}{The maximum number of results to return for the request in a single page. The remaining results can be seen by sending another request with the nextToken value.}
-
-\item{NextToken}{The token to retrieve the next page of results.}
-
-\item{Filters}{One or more filters. Filter names and values are case-sensitive.}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\description{
-Describes one or more Client VPN endpoints in the account.
-}
-\examples{
 
-}

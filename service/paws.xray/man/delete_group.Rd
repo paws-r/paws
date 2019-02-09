@@ -4,10 +4,7 @@
 \alias{delete_group}
 \title{Deletes a group resource}
 \usage{
-delete_group(
-  GroupName = "string",
-  GroupARN = "string"
-)
+delete_group(GroupName = NULL, GroupARN = NULL)
 }
 \arguments{
 \item{GroupName}{The case-sensitive name of the group.}
@@ -17,6 +14,11 @@ delete_group(
 \description{
 Deletes a group resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_group(
+  GroupName = "string",
+  GroupARN = "string"
+)
 }
+}
+

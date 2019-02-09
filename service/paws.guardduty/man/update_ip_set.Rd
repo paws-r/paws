@@ -4,13 +4,8 @@
 \alias{update_ip_set}
 \title{Updates the IPSet specified by the IPSet ID}
 \usage{
-update_ip_set(
-  Activate = TRUE|FALSE,
-  DetectorId = "string",
-  IpSetId = "string",
-  Location = "string",
-  Name = "string"
-)
+update_ip_set(Activate = NULL, DetectorId, IpSetId, Location = NULL,
+  Name = NULL)
 }
 \arguments{
 \item{Activate}{The updated boolean value that specifies whether the IPSet is active or not.}
@@ -26,6 +21,14 @@ update_ip_set(
 \description{
 Updates the IPSet specified by the IPSet ID.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_ip_set(
+  Activate = TRUE|FALSE,
+  DetectorId = "string",
+  IpSetId = "string",
+  Location = "string",
+  Name = "string"
+)
 }
+}
+

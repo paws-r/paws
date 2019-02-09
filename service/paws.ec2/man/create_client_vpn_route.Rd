@@ -4,13 +4,8 @@
 \alias{create_client_vpn_route}
 \title{Adds a route to a network to a Client VPN endpoint}
 \usage{
-create_client_vpn_route(
-  ClientVpnEndpointId = "string",
-  DestinationCidrBlock = "string",
-  TargetVpcSubnetId = "string",
-  Description = "string",
-  DryRun = TRUE|FALSE
-)
+create_client_vpn_route(ClientVpnEndpointId, DestinationCidrBlock,
+  TargetVpcSubnetId, Description = NULL, DryRun = NULL)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint to which to add the route.}
@@ -31,8 +26,16 @@ Route address ranges cannot overlap with the CIDR range specified for client all
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Adds a route to a network to a Client VPN endpoint. Each Client VPN endpoint has a route table that describes the available destination network routes. Each route in the route table specifies the path for traï¬ƒc to speciï¬c resources or networks.
+Adds a route to a network to a Client VPN endpoint. Each Client VPN endpoint has a route table that describes the available destination network routes. Each route in the route table specifies the path for traﬃc to speciﬁc resources or networks.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{create_client_vpn_route(
+  ClientVpnEndpointId = "string",
+  DestinationCidrBlock = "string",
+  TargetVpcSubnetId = "string",
+  Description = "string",
+  DryRun = TRUE|FALSE
+)
+}
+}
 
-}

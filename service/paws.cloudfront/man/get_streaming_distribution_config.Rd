@@ -4,9 +4,7 @@
 \alias{get_streaming_distribution_config}
 \title{Get the configuration information about a streaming distribution}
 \usage{
-get_streaming_distribution_config(
-  Id = "string"
-)
+get_streaming_distribution_config(Id)
 }
 \arguments{
 \item{Id}{[required] The streaming distribution's ID.}
@@ -14,6 +12,10 @@ get_streaming_distribution_config(
 \description{
 Get the configuration information about a streaming distribution.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_streaming_distribution_config(
+  Id = "string"
+)
 }
+}
+

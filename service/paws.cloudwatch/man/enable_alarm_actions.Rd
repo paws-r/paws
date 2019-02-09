@@ -4,11 +4,7 @@
 \alias{enable_alarm_actions}
 \title{Enables the actions for the specified alarms}
 \usage{
-enable_alarm_actions(
-  AlarmNames = list(
-    "string"
-  )
-)
+enable_alarm_actions(AlarmNames)
 }
 \arguments{
 \item{AlarmNames}{[required] The names of the alarms.}
@@ -16,6 +12,12 @@ enable_alarm_actions(
 \description{
 Enables the actions for the specified alarms.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{enable_alarm_actions(
+  AlarmNames = list(
+    "string"
+  )
+)
 }
+}
+

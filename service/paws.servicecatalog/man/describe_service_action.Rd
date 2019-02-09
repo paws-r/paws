@@ -4,10 +4,7 @@
 \alias{describe_service_action}
 \title{Describes a self-service action}
 \usage{
-describe_service_action(
-  Id = "string",
-  AcceptLanguage = "string"
-)
+describe_service_action(Id, AcceptLanguage = NULL)
 }
 \arguments{
 \item{Id}{[required] The self-service action identifier.}
@@ -22,6 +19,11 @@ describe_service_action(
 \description{
 Describes a self-service action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_service_action(
+  Id = "string",
+  AcceptLanguage = "string"
+)
 }
+}
+

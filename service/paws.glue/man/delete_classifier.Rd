@@ -4,9 +4,7 @@
 \alias{delete_classifier}
 \title{Removes a classifier from the Data Catalog}
 \usage{
-delete_classifier(
-  Name = "string"
-)
+delete_classifier(Name)
 }
 \arguments{
 \item{Name}{[required] Name of the classifier to remove.}
@@ -14,6 +12,10 @@ delete_classifier(
 \description{
 Removes a classifier from the Data Catalog.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_classifier(
+  Name = "string"
+)
 }
+}
+

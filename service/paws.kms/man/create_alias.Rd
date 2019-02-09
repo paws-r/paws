@@ -4,10 +4,7 @@
 \alias{create_alias}
 \title{Creates a display name for a customer master key (CMK)}
 \usage{
-create_alias(
-  AliasName = "string",
-  TargetKeyId = "string"
-)
+create_alias(AliasName, TargetKeyId)
 }
 \arguments{
 \item{AliasName}{[required] String that contains the display name. The name must start with the word "alias" followed by a forward slash (alias/). Aliases that begin with "alias/AWS" are reserved.}
@@ -40,12 +37,20 @@ To map an existing alias to a different CMK, call UpdateAlias.
 
 The result of this operation varies with the key state of the CMK. For details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key} in the \emph{AWS Key Management Service Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_alias(
+  AliasName = "string",
+  TargetKeyId = "string"
+)
+}
+}
+
 \examples{
 # The following example creates an alias for the specified customer master
 # key (CMK).
-create_alias(
+\donttest{create_alias(
   AliasName = "alias/ExampleAlias",
   TargetKeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)
+)}
 
 }

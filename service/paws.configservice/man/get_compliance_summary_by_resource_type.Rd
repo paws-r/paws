@@ -4,11 +4,7 @@
 \alias{get_compliance_summary_by_resource_type}
 \title{Returns the number of resources that are compliant and the number that are noncompliant}
 \usage{
-get_compliance_summary_by_resource_type(
-  ResourceTypes = list(
-    "string"
-  )
-)
+get_compliance_summary_by_resource_type(ResourceTypes = NULL)
 }
 \arguments{
 \item{ResourceTypes}{Specify one or more resource types to get the number of resources that are compliant and the number that are noncompliant for each resource type.
@@ -18,6 +14,12 @@ For this request, you can specify an AWS resource type such as \code{AWS::EC2::I
 \description{
 Returns the number of resources that are compliant and the number that are noncompliant. You can specify one or more resource types to get these numbers for each resource type. The maximum number returned is 100.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_compliance_summary_by_resource_type(
+  ResourceTypes = list(
+    "string"
+  )
+)
 }
+}
+

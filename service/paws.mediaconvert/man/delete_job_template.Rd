@@ -4,9 +4,7 @@
 \alias{delete_job_template}
 \title{Permanently delete a job template you have created}
 \usage{
-delete_job_template(
-  Name = "string"
-)
+delete_job_template(Name)
 }
 \arguments{
 \item{Name}{[required] The name of the job template to be deleted.}
@@ -14,6 +12,10 @@ delete_job_template(
 \description{
 Permanently delete a job template you have created.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_job_template(
+  Name = "string"
+)
 }
+}
+

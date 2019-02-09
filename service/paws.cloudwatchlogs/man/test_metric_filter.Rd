@@ -4,12 +4,7 @@
 \alias{test_metric_filter}
 \title{Tests the filter pattern of a metric filter against a sample of log event messages}
 \usage{
-test_metric_filter(
-  filterPattern = "string",
-  logEventMessages = list(
-    "string"
-  )
-)
+test_metric_filter(filterPattern, logEventMessages)
 }
 \arguments{
 \item{filterPattern}{[required]}
@@ -19,6 +14,13 @@ test_metric_filter(
 \description{
 Tests the filter pattern of a metric filter against a sample of log event messages. You can use this operation to validate the correctness of a metric filter pattern.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{test_metric_filter(
+  filterPattern = "string",
+  logEventMessages = list(
+    "string"
+  )
+)
 }
+}
+

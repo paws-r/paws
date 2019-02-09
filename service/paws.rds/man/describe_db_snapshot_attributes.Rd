@@ -4,9 +4,7 @@
 \alias{describe_db_snapshot_attributes}
 \title{Returns a list of DB snapshot attribute names and values for a manual DB snapshot}
 \usage{
-describe_db_snapshot_attributes(
-  DBSnapshotIdentifier = "string"
-)
+describe_db_snapshot_attributes(DBSnapshotIdentifier)
 }
 \arguments{
 \item{DBSnapshotIdentifier}{[required] The identifier for the DB snapshot to describe the attributes for.}
@@ -19,6 +17,10 @@ When sharing snapshots with other AWS accounts, \code{DescribeDBSnapshotAttribut
 
 To add or remove access for an AWS account to copy or restore a manual DB snapshot, or to make the manual DB snapshot public or private, use the ModifyDBSnapshotAttribute API action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_db_snapshot_attributes(
+  DBSnapshotIdentifier = "string"
+)
 }
+}
+

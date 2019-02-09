@@ -4,20 +4,8 @@
 \alias{get_object_attributes}
 \title{Retrieves attributes within a facet that are associated with an object}
 \usage{
-get_object_attributes(
-  DirectoryArn = "string",
-  ObjectReference = list(
-    Selector = "string"
-  ),
-  ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL",
-  SchemaFacet = list(
-    SchemaArn = "string",
-    FacetName = "string"
-  ),
-  AttributeNames = list(
-    "string"
-  )
-)
+get_object_attributes(DirectoryArn, ObjectReference,
+  ConsistencyLevel = NULL, SchemaFacet, AttributeNames)
 }
 \arguments{
 \item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory where the object resides.}
@@ -33,6 +21,21 @@ get_object_attributes(
 \description{
 Retrieves attributes within a facet that are associated with an object.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_object_attributes(
+  DirectoryArn = "string",
+  ObjectReference = list(
+    Selector = "string"
+  ),
+  ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL",
+  SchemaFacet = list(
+    SchemaArn = "string",
+    FacetName = "string"
+  ),
+  AttributeNames = list(
+    "string"
+  )
+)
 }
+}
+

@@ -4,11 +4,7 @@
 \alias{update_environment}
 \title{Changes the settings of an existing AWS Cloud9 development environment}
 \usage{
-update_environment(
-  environmentId = "string",
-  name = "string",
-  description = "string"
-)
+update_environment(environmentId, name = NULL, description = NULL)
 }
 \arguments{
 \item{environmentId}{[required] The ID of the environment to change settings.}
@@ -20,12 +16,21 @@ update_environment(
 \description{
 Changes the settings of an existing AWS Cloud9 development environment.
 }
+\section{Accepted Parameters}{
+\preformatted{update_environment(
+  environmentId = "string",
+  name = "string",
+  description = "string"
+)
+}
+}
+
 \examples{
 # 
-update_environment(
+\donttest{update_environment(
   name = "my-changed-demo-environment",
   description = "This is my changed demonstration environment.",
   environmentId = "8d9967e2f0624182b74e7690ad69ebEX"
-)
+)}
 
 }

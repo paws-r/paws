@@ -4,10 +4,7 @@
 \alias{list_tags_for_resource}
 \title{Returns a list of the tags assigned to the specified resource}
 \usage{
-list_tags_for_resource(
-  ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline",
-  ResourceId = "string"
-)
+list_tags_for_resource(ResourceType, ResourceId)
 }
 \arguments{
 \item{ResourceType}{[required] Returns a list of tags for a specific resource type.}
@@ -17,6 +14,11 @@ list_tags_for_resource(
 \description{
 Returns a list of the tags assigned to the specified resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_tags_for_resource(
+  ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline",
+  ResourceId = "string"
+)
 }
+}
+

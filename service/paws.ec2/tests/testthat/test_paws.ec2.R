@@ -320,6 +320,10 @@ test_that("describe_spot_instance_requests", {
     expect_error(describe_spot_instance_requests(), NA)
 })
 
+test_that("describe_spot_instance_requests", {
+    expect_error(describe_spot_instance_requests(MaxResults = 20), NA)
+})
+
 test_that("describe_spot_price_history", {
     expect_error(describe_spot_price_history(), NA)
 })
@@ -450,6 +454,10 @@ test_that("describe_vpc_endpoints", {
 
 test_that("describe_vpc_peering_connections", {
     expect_error(describe_vpc_peering_connections(), NA)
+})
+
+test_that("describe_vpc_peering_connections", {
+    expect_error(describe_vpc_peering_connections(MaxResults = 20), NA)
 })
 
 test_that("describe_vpcs", {

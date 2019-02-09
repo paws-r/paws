@@ -4,9 +4,7 @@
 \alias{describe_offering}
 \title{Get details for an offering}
 \usage{
-describe_offering(
-  OfferingId = "string"
-)
+describe_offering(OfferingId)
 }
 \arguments{
 \item{OfferingId}{[required] Unique offering ID, e.g. '87654321'}
@@ -14,6 +12,10 @@ describe_offering(
 \description{
 Get details for an offering.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_offering(
+  OfferingId = "string"
+)
 }
+}
+

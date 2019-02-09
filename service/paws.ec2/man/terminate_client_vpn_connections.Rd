@@ -4,12 +4,8 @@
 \alias{terminate_client_vpn_connections}
 \title{Terminates active Client VPN endpoint connections}
 \usage{
-terminate_client_vpn_connections(
-  ClientVpnEndpointId = "string",
-  ConnectionId = "string",
-  Username = "string",
-  DryRun = TRUE|FALSE
-)
+terminate_client_vpn_connections(ClientVpnEndpointId,
+  ConnectionId = NULL, Username = NULL, DryRun = NULL)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint to which the client is connected.}
@@ -23,6 +19,13 @@ terminate_client_vpn_connections(
 \description{
 Terminates active Client VPN endpoint connections. This action can be used to terminate a specific client connection, or up to five connections established by a specific user.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{terminate_client_vpn_connections(
+  ClientVpnEndpointId = "string",
+  ConnectionId = "string",
+  Username = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

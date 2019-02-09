@@ -4,15 +4,8 @@
 \alias{associate_created_artifact}
 \title{Associates a created artifact of an AWS cloud resource, the target receiving the migration, with the migration task performed by a migration tool}
 \usage{
-associate_created_artifact(
-  ProgressUpdateStream = "string",
-  MigrationTaskName = "string",
-  CreatedArtifact = list(
-    Name = "string",
-    Description = "string"
-  ),
-  DryRun = TRUE|FALSE
-)
+associate_created_artifact(ProgressUpdateStream, MigrationTaskName,
+  CreatedArtifact, DryRun = NULL)
 }
 \arguments{
 \item{ProgressUpdateStream}{[required] The name of the ProgressUpdateStream.}
@@ -33,6 +26,16 @@ Associates a created artifact of an AWS cloud resource, the target receiving the
 \item Examples of the AWS resource behind the created artifact are, AMI's, EC2 instance, or DMS endpoint, etc.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_created_artifact(
+  ProgressUpdateStream = "string",
+  MigrationTaskName = "string",
+  CreatedArtifact = list(
+    Name = "string",
+    Description = "string"
+  ),
+  DryRun = TRUE|FALSE
+)
 }
+}
+

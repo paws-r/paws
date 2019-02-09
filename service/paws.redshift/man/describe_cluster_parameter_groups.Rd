@@ -4,17 +4,9 @@
 \alias{describe_cluster_parameter_groups}
 \title{Returns a list of Amazon Redshift parameter groups, including parameter groups you created and the default parameter group}
 \usage{
-describe_cluster_parameter_groups(
-  ParameterGroupName = "string",
-  MaxRecords = 123,
-  Marker = "string",
-  TagKeys = list(
-    "string"
-  ),
-  TagValues = list(
-    "string"
-  )
-)
+describe_cluster_parameter_groups(ParameterGroupName = NULL,
+  MaxRecords = NULL, Marker = NULL, TagKeys = NULL,
+  TagValues = NULL)
 }
 \arguments{
 \item{ParameterGroupName}{The name of a specific parameter group for which to return details. By default, details about all parameter groups and the default parameter group are returned.}
@@ -41,6 +33,18 @@ If you specify both tag keys and tag values in the same request, Amazon Redshift
 
 If both tag keys and values are omitted from the request, parameter groups are returned regardless of whether they have tag keys or values associated with them.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_cluster_parameter_groups(
+  ParameterGroupName = "string",
+  MaxRecords = 123,
+  Marker = "string",
+  TagKeys = list(
+    "string"
+  ),
+  TagValues = list(
+    "string"
+  )
+)
 }
+}
+

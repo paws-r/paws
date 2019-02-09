@@ -4,12 +4,8 @@
 \alias{backtrack_db_cluster}
 \title{Backtracks a DB cluster to a specific time, without creating a new DB cluster}
 \usage{
-backtrack_db_cluster(
-  DBClusterIdentifier = "string",
-  BacktrackTo = as.POSIXct("2015-01-01"),
-  Force = TRUE|FALSE,
-  UseEarliestTimeOnPointInTimeUnavailable = TRUE|FALSE
-)
+backtrack_db_cluster(DBClusterIdentifier, BacktrackTo, Force = NULL,
+  UseEarliestTimeOnPointInTimeUnavailable = NULL)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The DB cluster identifier of the DB cluster to be backtracked. This parameter is stored as a lowercase string.
@@ -45,6 +41,13 @@ Backtracks a DB cluster to a specific time, without creating a new DB cluster.
 \details{
 For more information on backtracking, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Managing.Backtrack.html}{Backtracking an Aurora DB Cluster} in the \emph{Amazon Aurora User Guide.}
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{backtrack_db_cluster(
+  DBClusterIdentifier = "string",
+  BacktrackTo = as.POSIXct("2015-01-01"),
+  Force = TRUE|FALSE,
+  UseEarliestTimeOnPointInTimeUnavailable = TRUE|FALSE
+)
 }
+}
+

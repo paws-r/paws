@@ -4,14 +4,7 @@
 \alias{update_adm_channel}
 \title{Update an ADM channel}
 \usage{
-update_adm_channel(
-  ADMChannelRequest = list(
-    ClientId = "string",
-    ClientSecret = "string",
-    Enabled = TRUE|FALSE
-  ),
-  ApplicationId = "string"
-)
+update_adm_channel(ADMChannelRequest, ApplicationId)
 }
 \arguments{
 \item{ADMChannelRequest}{[required]}
@@ -21,6 +14,15 @@ update_adm_channel(
 \description{
 Update an ADM channel.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_adm_channel(
+  ADMChannelRequest = list(
+    ClientId = "string",
+    ClientSecret = "string",
+    Enabled = TRUE|FALSE
+  ),
+  ApplicationId = "string"
+)
 }
+}
+

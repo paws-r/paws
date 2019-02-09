@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.kms_operations.R
 \name{disconnect_custom_key_store}
 \alias{disconnect_custom_key_store}
-\title{Disconnects the \link{custom key store}(http://docs}
+\title{Disconnects the custom key store from its associated AWS CloudHSM cluster}
 \usage{
-disconnect_custom_key_store(
-  CustomKeyStoreId = "string"
-)
+disconnect_custom_key_store(CustomKeyStoreId)
 }
 \arguments{
 \item{CustomKeyStoreId}{[required] Enter the ID of the custom key store you want to disconnect. To find the ID of a custom key store, use the DescribeCustomKeyStores operation.}
@@ -23,6 +21,10 @@ If the operation succeeds, it returns a JSON object with no properties.
 
 This operation is part of the \href{http://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{Custom Key Store feature} feature in AWS KMS, which combines the convenience and extensive integration of AWS KMS with the isolation and control of a single-tenant key store.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disconnect_custom_key_store(
+  CustomKeyStoreId = "string"
+)
 }
+}
+

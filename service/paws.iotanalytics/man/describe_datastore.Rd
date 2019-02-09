@@ -4,10 +4,7 @@
 \alias{describe_datastore}
 \title{Retrieves information about a data store}
 \usage{
-describe_datastore(
-  datastoreName = "string",
-  includeStatistics = TRUE|FALSE
-)
+describe_datastore(datastoreName, includeStatistics = NULL)
 }
 \arguments{
 \item{datastoreName}{[required] The name of the data store}
@@ -17,6 +14,11 @@ describe_datastore(
 \description{
 Retrieves information about a data store.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_datastore(
+  datastoreName = "string",
+  includeStatistics = TRUE|FALSE
+)
 }
+}
+

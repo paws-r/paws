@@ -4,19 +4,9 @@
 \alias{list_instances}
 \title{Provides information for all active EC2 instances and EC2 instances terminated in the last 30 days, up to a maximum of 2,000}
 \usage{
-list_instances(
-  ClusterId = "string",
-  InstanceGroupId = "string",
-  InstanceGroupTypes = list(
-    "MASTER"|"CORE"|"TASK"
-  ),
-  InstanceFleetId = "string",
-  InstanceFleetType = "MASTER"|"CORE"|"TASK",
-  InstanceStates = list(
-    "AWAITING_FULFILLMENT"|"PROVISIONING"|"BOOTSTRAPPING"|"RUNNING"|"TERMINATED"
-  ),
-  Marker = "string"
-)
+list_instances(ClusterId, InstanceGroupId = NULL,
+  InstanceGroupTypes = NULL, InstanceFleetId = NULL,
+  InstanceFleetType = NULL, InstanceStates = NULL, Marker = NULL)
 }
 \arguments{
 \item{ClusterId}{[required] The identifier of the cluster for which to list the instances.}
@@ -36,6 +26,20 @@ list_instances(
 \description{
 Provides information for all active EC2 instances and EC2 instances terminated in the last 30 days, up to a maximum of 2,000. EC2 instances in any of the following states are considered active: AWAITING\_FULFILLMENT, PROVISIONING, BOOTSTRAPPING, RUNNING.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_instances(
+  ClusterId = "string",
+  InstanceGroupId = "string",
+  InstanceGroupTypes = list(
+    "MASTER"|"CORE"|"TASK"
+  ),
+  InstanceFleetId = "string",
+  InstanceFleetType = "MASTER"|"CORE"|"TASK",
+  InstanceStates = list(
+    "AWAITING_FULFILLMENT"|"PROVISIONING"|"BOOTSTRAPPING"|"RUNNING"|"TERMINATED"
+  ),
+  Marker = "string"
+)
 }
+}
+

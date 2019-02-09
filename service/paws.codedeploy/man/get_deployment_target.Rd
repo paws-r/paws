@@ -4,10 +4,7 @@
 \alias{get_deployment_target}
 \title{Returns information about a deployment target}
 \usage{
-get_deployment_target(
-  deploymentId = "string",
-  targetId = "string"
-)
+get_deployment_target(deploymentId = NULL, targetId = NULL)
 }
 \arguments{
 \item{deploymentId}{The unique ID of a deployment.}
@@ -17,6 +14,11 @@ get_deployment_target(
 \description{
 Returns information about a deployment target.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_deployment_target(
+  deploymentId = "string",
+  targetId = "string"
+)
 }
+}
+

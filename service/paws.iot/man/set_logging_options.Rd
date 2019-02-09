@@ -4,12 +4,7 @@
 \alias{set_logging_options}
 \title{Sets the logging options}
 \usage{
-set_logging_options(
-  loggingOptionsPayload = list(
-    roleArn = "string",
-    logLevel = "DEBUG"|"INFO"|"ERROR"|"WARN"|"DISABLED"
-  )
-)
+set_logging_options(loggingOptionsPayload)
 }
 \arguments{
 \item{loggingOptionsPayload}{[required] The logging options payload.}
@@ -20,6 +15,13 @@ Sets the logging options.
 \details{
 NOTE: use of this command is not recommended. Use \code{SetV2LoggingOptions} instead.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{set_logging_options(
+  loggingOptionsPayload = list(
+    roleArn = "string",
+    logLevel = "DEBUG"|"INFO"|"ERROR"|"WARN"|"DISABLED"
+  )
+)
 }
+}
+

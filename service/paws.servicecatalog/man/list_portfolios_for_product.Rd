@@ -4,12 +4,8 @@
 \alias{list_portfolios_for_product}
 \title{Lists all portfolios that the specified product is associated with}
 \usage{
-list_portfolios_for_product(
-  AcceptLanguage = "string",
-  ProductId = "string",
-  PageToken = "string",
-  PageSize = 123
-)
+list_portfolios_for_product(AcceptLanguage = NULL, ProductId,
+  PageToken = NULL, PageSize = NULL)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -28,6 +24,13 @@ list_portfolios_for_product(
 \description{
 Lists all portfolios that the specified product is associated with.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_portfolios_for_product(
+  AcceptLanguage = "string",
+  ProductId = "string",
+  PageToken = "string",
+  PageSize = 123
+)
 }
+}
+

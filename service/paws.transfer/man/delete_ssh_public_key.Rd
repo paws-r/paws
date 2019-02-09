@@ -4,11 +4,7 @@
 \alias{delete_ssh_public_key}
 \title{Deletes a user's Secure Shell (SSH) public key}
 \usage{
-delete_ssh_public_key(
-  ServerId = "string",
-  SshPublicKeyId = "string",
-  UserName = "string"
-)
+delete_ssh_public_key(ServerId, SshPublicKeyId, UserName)
 }
 \arguments{
 \item{ServerId}{[required] A system-assigned unique identifier for a Secure File Transfer Protocol (SFTP) server instance that has the user assigned to it.}
@@ -23,6 +19,12 @@ Deletes a user's Secure Shell (SSH) public key.
 \details{
 No response is returned from this call.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_ssh_public_key(
+  ServerId = "string",
+  SshPublicKeyId = "string",
+  UserName = "string"
+)
 }
+}
+

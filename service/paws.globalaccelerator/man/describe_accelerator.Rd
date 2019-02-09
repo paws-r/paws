@@ -4,9 +4,7 @@
 \alias{describe_accelerator}
 \title{Describe an accelerator}
 \usage{
-describe_accelerator(
-  AcceleratorArn = "string"
-)
+describe_accelerator(AcceleratorArn)
 }
 \arguments{
 \item{AcceleratorArn}{[required] The Amazon Resource Name (ARN) of the accelerator to describe.}
@@ -14,6 +12,10 @@ describe_accelerator(
 \description{
 Describe an accelerator. To see an AWS CLI example of describing an accelerator, scroll down to \strong{Example}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_accelerator(
+  AcceleratorArn = "string"
+)
 }
+}
+

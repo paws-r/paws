@@ -4,9 +4,7 @@
 \alias{deregister_ecs_cluster}
 \title{Deregisters a specified Amazon ECS cluster from a stack}
 \usage{
-deregister_ecs_cluster(
-  EcsClusterArn = "string"
-)
+deregister_ecs_cluster(EcsClusterArn)
 }
 \arguments{
 \item{EcsClusterArn}{[required] The cluster's Amazon Resource Number (ARN).}
@@ -17,6 +15,10 @@ Deregisters a specified Amazon ECS cluster from a stack. For more information, s
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have a Manage permissions level for the stack or an attached policy that explicitly grants permissions. For more information on user permissions, see \url{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{deregister_ecs_cluster(
+  EcsClusterArn = "string"
+)
 }
+}
+

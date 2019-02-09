@@ -4,22 +4,9 @@
 \alias{discover_input_schema}
 \title{Infers a schema for an SQL-based Amazon Kinesis Data Analytics application by evaluating sample records on the specified streaming source (Kinesis data stream or Kinesis Data Firehose delivery stream) or Amazon S3 object}
 \usage{
-discover_input_schema(
-  ResourceARN = "string",
-  ServiceExecutionRole = "string",
-  InputStartingPositionConfiguration = list(
-    InputStartingPosition = "NOW"|"TRIM_HORIZON"|"LAST_STOPPED_POINT"
-  ),
-  S3Configuration = list(
-    BucketARN = "string",
-    FileKey = "string"
-  ),
-  InputProcessingConfiguration = list(
-    InputLambdaProcessor = list(
-      ResourceARN = "string"
-    )
-  )
-)
+discover_input_schema(ResourceARN = NULL, ServiceExecutionRole,
+  InputStartingPositionConfiguration = NULL, S3Configuration = NULL,
+  InputProcessingConfiguration = NULL)
 }
 \arguments{
 \item{ResourceARN}{The Amazon Resource Name (ARN) of the streaming source.}
@@ -38,6 +25,23 @@ Infers a schema for an SQL-based Amazon Kinesis Data Analytics application by ev
 \details{
 You can use the inferred schema when configuring a streaming source for your application. When you create an application using the Kinesis Data Analytics console, the console uses this operation to infer a schema and show it in the console user interface.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{discover_input_schema(
+  ResourceARN = "string",
+  ServiceExecutionRole = "string",
+  InputStartingPositionConfiguration = list(
+    InputStartingPosition = "NOW"|"TRIM_HORIZON"|"LAST_STOPPED_POINT"
+  ),
+  S3Configuration = list(
+    BucketARN = "string",
+    FileKey = "string"
+  ),
+  InputProcessingConfiguration = list(
+    InputLambdaProcessor = list(
+      ResourceARN = "string"
+    )
+  )
+)
 }
+}
+

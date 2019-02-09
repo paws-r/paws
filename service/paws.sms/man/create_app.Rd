@@ -4,7 +4,27 @@
 \alias{create_app}
 \title{Creates an application}
 \usage{
-create_app(
+create_app(name = NULL, description = NULL, roleName = NULL,
+  clientToken = NULL, serverGroups = NULL, tags = NULL)
+}
+\arguments{
+\item{name}{Name of the new application.}
+
+\item{description}{Description of the new application}
+
+\item{roleName}{Name of service role in customer's account to be used by AWS SMS.}
+
+\item{clientToken}{A unique, case-sensitive identifier you provide to ensure idempotency of application creation.}
+
+\item{serverGroups}{List of server groups to include in the application.}
+
+\item{tags}{List of tags to be associated with the application.}
+}
+\description{
+Creates an application. An application consists of one or more server groups. Each server group contain one or more servers.
+}
+\section{Accepted Parameters}{
+\preformatted{create_app(
   name = "string",
   description = "string",
   roleName = "string",
@@ -41,22 +61,5 @@ create_app(
   )
 )
 }
-\arguments{
-\item{name}{Name of the new application.}
-
-\item{description}{Description of the new application}
-
-\item{roleName}{Name of service role in customer's account to be used by AWS SMS.}
-
-\item{clientToken}{A unique, case-sensitive identifier you provide to ensure idempotency of application creation.}
-
-\item{serverGroups}{List of server groups to include in the application.}
-
-\item{tags}{List of tags to be associated with the application.}
 }
-\description{
-Creates an application. An application consists of one or more server groups. Each server group contain one or more servers.
-}
-\examples{
 
-}

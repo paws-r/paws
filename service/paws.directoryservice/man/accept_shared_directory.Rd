@@ -4,9 +4,7 @@
 \alias{accept_shared_directory}
 \title{Accepts a directory sharing request that was sent from the directory owner account}
 \usage{
-accept_shared_directory(
-  SharedDirectoryId = "string"
-)
+accept_shared_directory(SharedDirectoryId)
 }
 \arguments{
 \item{SharedDirectoryId}{[required] Identifier of the shared directory in the directory consumer account. This identifier is different for each directory owner account.}
@@ -14,6 +12,10 @@ accept_shared_directory(
 \description{
 Accepts a directory sharing request that was sent from the directory owner account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{accept_shared_directory(
+  SharedDirectoryId = "string"
+)
 }
+}
+

@@ -6,7 +6,8 @@
 \alias{paws.kinesisanalyticsv2-package}
 \title{paws.kinesisanalyticsv2: Amazon Kinesis Analytics}
 \description{
-Documentation for Kinesis Data Analytics API v2
+Documentation for Kinesis Data Analytics API
+    v2
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

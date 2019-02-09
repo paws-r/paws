@@ -4,11 +4,8 @@
 \alias{delete_db_instance}
 \title{The DeleteDBInstance action deletes a previously provisioned DB instance}
 \usage{
-delete_db_instance(
-  DBInstanceIdentifier = "string",
-  SkipFinalSnapshot = TRUE|FALSE,
-  FinalDBSnapshotIdentifier = "string"
-)
+delete_db_instance(DBInstanceIdentifier, SkipFinalSnapshot = NULL,
+  FinalDBSnapshotIdentifier = NULL)
 }
 \arguments{
 \item{DBInstanceIdentifier}{[required] The DB instance identifier for the DB instance to be deleted. This parameter isn't case-sensitive.
@@ -56,6 +53,12 @@ If the specified DB instance is part of a DB cluster, you can't delete the DB in
 
 To delete a DB instance in this case, first call the PromoteReadReplicaDBCluster API action to promote the DB cluster so it's no longer a Read Replica. After the promotion completes, then call the \code{DeleteDBInstance} API action to delete the final instance in the DB cluster.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_db_instance(
+  DBInstanceIdentifier = "string",
+  SkipFinalSnapshot = TRUE|FALSE,
+  FinalDBSnapshotIdentifier = "string"
+)
 }
+}
+

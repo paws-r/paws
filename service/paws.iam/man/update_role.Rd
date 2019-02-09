@@ -4,11 +4,7 @@
 \alias{update_role}
 \title{Updates the description or maximum session duration setting of a role}
 \usage{
-update_role(
-  RoleName = "string",
-  Description = "string",
-  MaxSessionDuration = 123
-)
+update_role(RoleName, Description = NULL, MaxSessionDuration = NULL)
 }
 \arguments{
 \item{RoleName}{[required] The name of the role that you want to modify.}
@@ -22,6 +18,12 @@ Anyone who assumes the role from the AWS CLI or API can use the \code{DurationSe
 \description{
 Updates the description or maximum session duration setting of a role.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_role(
+  RoleName = "string",
+  Description = "string",
+  MaxSessionDuration = 123
+)
 }
+}
+

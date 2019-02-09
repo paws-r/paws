@@ -4,7 +4,20 @@
 \alias{get_mapping}
 \title{Creates mappings}
 \usage{
-get_mapping(
+get_mapping(Source, Sinks = NULL, Location = NULL)
+}
+\arguments{
+\item{Source}{[required] Specifies the source table.}
+
+\item{Sinks}{A list of target tables.}
+
+\item{Location}{Parameters for the mapping.}
+}
+\description{
+Creates mappings.
+}
+\section{Accepted Parameters}{
+\preformatted{get_mapping(
   Source = list(
     DatabaseName = "string",
     TableName = "string"
@@ -40,16 +53,5 @@ get_mapping(
   )
 )
 }
-\arguments{
-\item{Source}{[required] Specifies the source table.}
-
-\item{Sinks}{A list of target tables.}
-
-\item{Location}{Parameters for the mapping.}
 }
-\description{
-Creates mappings.
-}
-\examples{
 
-}

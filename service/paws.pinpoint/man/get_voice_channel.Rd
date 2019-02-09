@@ -4,9 +4,7 @@
 \alias{get_voice_channel}
 \title{Get a Voice Channel}
 \usage{
-get_voice_channel(
-  ApplicationId = "string"
-)
+get_voice_channel(ApplicationId)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
@@ -14,6 +12,10 @@ get_voice_channel(
 \description{
 Get a Voice Channel
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_voice_channel(
+  ApplicationId = "string"
+)
 }
+}
+

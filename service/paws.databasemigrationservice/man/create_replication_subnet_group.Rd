@@ -4,19 +4,8 @@
 \alias{create_replication_subnet_group}
 \title{Creates a replication subnet group given a list of the subnet IDs in a VPC}
 \usage{
-create_replication_subnet_group(
-  ReplicationSubnetGroupIdentifier = "string",
-  ReplicationSubnetGroupDescription = "string",
-  SubnetIds = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_replication_subnet_group(ReplicationSubnetGroupIdentifier,
+  ReplicationSubnetGroupDescription, SubnetIds, Tags = NULL)
 }
 \arguments{
 \item{ReplicationSubnetGroupIdentifier}{[required] The name for the replication subnet group. This value is stored as a lowercase string.
@@ -34,10 +23,27 @@ Example: \code{mySubnetgroup}}
 \description{
 Creates a replication subnet group given a list of the subnet IDs in a VPC.
 }
+\section{Accepted Parameters}{
+\preformatted{create_replication_subnet_group(
+  ReplicationSubnetGroupIdentifier = "string",
+  ReplicationSubnetGroupDescription = "string",
+  SubnetIds = list(
+    "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # Creates a replication subnet group given a list of the subnet IDs in a
 # VPC.
-create_replication_subnet_group(
+\donttest{create_replication_subnet_group(
   ReplicationSubnetGroupDescription = "US West subnet group",
   ReplicationSubnetGroupIdentifier = "us-west-2ab-vpc-215ds366",
   SubnetIds = list(
@@ -50,6 +56,6 @@ create_replication_subnet_group(
       Value = "145235"
     )
   )
-)
+)}
 
 }

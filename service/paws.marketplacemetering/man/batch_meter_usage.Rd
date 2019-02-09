@@ -4,17 +4,7 @@
 \alias{batch_meter_usage}
 \title{BatchMeterUsage is called from a SaaS application listed on the AWS Marketplace to post metering records for a set of customers}
 \usage{
-batch_meter_usage(
-  UsageRecords = list(
-    list(
-      Timestamp = as.POSIXct("2015-01-01"),
-      CustomerIdentifier = "string",
-      Dimension = "string",
-      Quantity = 123
-    )
-  ),
-  ProductCode = "string"
-)
+batch_meter_usage(UsageRecords, ProductCode)
 }
 \arguments{
 \item{UsageRecords}{[required] The set of UsageRecords to submit. BatchMeterUsage accepts up to 25 UsageRecords at a time.}
@@ -31,6 +21,18 @@ Every request to BatchMeterUsage is for one product. If you need to meter usage 
 
 BatchMeterUsage can process up to 25 UsageRecords at a time.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{batch_meter_usage(
+  UsageRecords = list(
+    list(
+      Timestamp = as.POSIXct("2015-01-01"),
+      CustomerIdentifier = "string",
+      Dimension = "string",
+      Quantity = 123
+    )
+  ),
+  ProductCode = "string"
+)
 }
+}
+

@@ -4,32 +4,10 @@
 \alias{create_stack_set}
 \title{Creates a stack set}
 \usage{
-create_stack_set(
-  StackSetName = "string",
-  Description = "string",
-  TemplateBody = "string",
-  TemplateURL = "string",
-  Parameters = list(
-    list(
-      ParameterKey = "string",
-      ParameterValue = "string",
-      UsePreviousValue = TRUE|FALSE,
-      ResolvedValue = "string"
-    )
-  ),
-  Capabilities = list(
-    "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  AdministrationRoleARN = "string",
-  ExecutionRoleName = "string",
-  ClientRequestToken = "string"
-)
+create_stack_set(StackSetName, Description = NULL, TemplateBody = NULL,
+  TemplateURL = NULL, Parameters = NULL, Capabilities = NULL,
+  Tags = NULL, AdministrationRoleARN = NULL,
+  ExecutionRoleName = NULL, ClientRequestToken = NULL)
 }
 \arguments{
 \item{StackSetName}{[required] The name to associate with the stack set. The name must be unique in the region where you create your stack set.
@@ -99,6 +77,33 @@ If you don't specify an operation ID, the SDK generates one automatically.}
 \description{
 Creates a stack set.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_stack_set(
+  StackSetName = "string",
+  Description = "string",
+  TemplateBody = "string",
+  TemplateURL = "string",
+  Parameters = list(
+    list(
+      ParameterKey = "string",
+      ParameterValue = "string",
+      UsePreviousValue = TRUE|FALSE,
+      ResolvedValue = "string"
+    )
+  ),
+  Capabilities = list(
+    "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  AdministrationRoleARN = "string",
+  ExecutionRoleName = "string",
+  ClientRequestToken = "string"
+)
 }
+}
+

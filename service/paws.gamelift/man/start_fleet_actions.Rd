@@ -4,12 +4,7 @@
 \alias{start_fleet_actions}
 \title{Resumes activity on a fleet that was suspended with StopFleetActions}
 \usage{
-start_fleet_actions(
-  FleetId = "string",
-  Actions = list(
-    "AUTO_SCALING"
-  )
-)
+start_fleet_actions(FleetId, Actions)
 }
 \arguments{
 \item{FleetId}{[required] Unique identifier for a fleet}
@@ -21,8 +16,6 @@ Resumes activity on a fleet that was suspended with StopFleetActions. Currently,
 }
 \details{
 To start fleet actions, specify the fleet ID and the type of actions to restart. When auto-scaling fleet actions are restarted, Amazon GameLift once again initiates scaling events as triggered by the fleet's scaling policies. If actions on the fleet were never stopped, this operation will have no effect. You can view a fleet's stopped actions using DescribeFleetAttributes.
-
-Operations related to fleet capacity scaling include:
 \itemize{
 \item DescribeFleetCapacity
 \item UpdateFleetCapacity
@@ -36,6 +29,13 @@ Operations related to fleet capacity scaling include:
 \item StopFleetActions
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_fleet_actions(
+  FleetId = "string",
+  Actions = list(
+    "AUTO_SCALING"
+  )
+)
 }
+}
+

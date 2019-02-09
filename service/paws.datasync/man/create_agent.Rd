@@ -4,16 +4,7 @@
 \alias{create_agent}
 \title{Activates an AWS DataSync agent that you have deployed on your host}
 \usage{
-create_agent(
-  ActivationKey = "string",
-  AgentName = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_agent(ActivationKey, AgentName = NULL, Tags = NULL)
 }
 \arguments{
 \item{ActivationKey}{[required] Your agent activation key. You can get the activation key either by sending an HTTP GET request with redirects that enable you to get the agent IP address (port 80). Alternatively, you can get it from the AWS DataSync console.
@@ -34,6 +25,17 @@ You can use an agent for more than one location. If a task uses multiple agents,
 
 Agents are automatically updated by AWS on a regular basis, using a mechanism that ensures minimal interruption to your tasks.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_agent(
+  ActivationKey = "string",
+  AgentName = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

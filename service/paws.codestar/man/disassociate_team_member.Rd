@@ -4,10 +4,7 @@
 \alias{disassociate_team_member}
 \title{Removes a user from a project}
 \usage{
-disassociate_team_member(
-  projectId = "string",
-  userArn = "string"
-)
+disassociate_team_member(projectId, userArn)
 }
 \arguments{
 \item{projectId}{[required] The ID of the AWS CodeStar project from which you want to remove a team member.}
@@ -17,6 +14,11 @@ disassociate_team_member(
 \description{
 Removes a user from a project. Removing a user from a project also removes the IAM policies from that user that allowed access to the project and its resources. Disassociating a team member does not remove that user's profile from AWS CodeStar. It does not remove the user from IAM.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disassociate_team_member(
+  projectId = "string",
+  userArn = "string"
+)
 }
+}
+

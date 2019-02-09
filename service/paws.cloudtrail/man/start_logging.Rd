@@ -4,9 +4,7 @@
 \alias{start_logging}
 \title{Starts the recording of AWS API calls and log file delivery for a trail}
 \usage{
-start_logging(
-  Name = "string"
-)
+start_logging(Name)
 }
 \arguments{
 \item{Name}{[required] Specifies the name or the CloudTrail ARN of the trail for which CloudTrail logs AWS API calls. The format of a trail ARN is:
@@ -16,6 +14,10 @@ start_logging(
 \description{
 Starts the recording of AWS API calls and log file delivery for a trail. For a trail that is enabled in all regions, this operation must be called from the region in which the trail was created. This operation cannot be called on the shadow trails (replicated trails in other regions) of a trail that is enabled in all regions.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_logging(
+  Name = "string"
+)
 }
+}
+

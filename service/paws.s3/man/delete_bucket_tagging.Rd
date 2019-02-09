@@ -4,9 +4,7 @@
 \alias{delete_bucket_tagging}
 \title{Deletes the tags from the bucket}
 \usage{
-delete_bucket_tagging(
-  Bucket = "string"
-)
+delete_bucket_tagging(Bucket)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -14,10 +12,17 @@ delete_bucket_tagging(
 \description{
 Deletes the tags from the bucket.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_bucket_tagging(
+  Bucket = "string"
+)
+}
+}
+
 \examples{
 # The following example deletes bucket tags.
-delete_bucket_tagging(
+\donttest{delete_bucket_tagging(
   Bucket = "examplebucket"
-)
+)}
 
 }

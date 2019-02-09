@@ -4,15 +4,8 @@
 \alias{get_tags}
 \title{Queries for available tag keys and tag values for a specified period}
 \usage{
-get_tags(
-  SearchString = "string",
-  TimePeriod = list(
-    Start = "string",
-    End = "string"
-  ),
-  TagKey = "string",
-  NextPageToken = "string"
-)
+get_tags(SearchString = NULL, TimePeriod, TagKey = NULL,
+  NextPageToken = NULL)
 }
 \arguments{
 \item{SearchString}{The value that you want to search for.}
@@ -26,6 +19,16 @@ get_tags(
 \description{
 Queries for available tag keys and tag values for a specified period. You can search the tag values for an arbitrary string.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_tags(
+  SearchString = "string",
+  TimePeriod = list(
+    Start = "string",
+    End = "string"
+  ),
+  TagKey = "string",
+  NextPageToken = "string"
+)
 }
+}
+

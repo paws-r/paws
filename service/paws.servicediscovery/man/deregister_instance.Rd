@@ -4,10 +4,7 @@
 \alias{deregister_instance}
 \title{Deletes the Amazon Route 53 DNS records and health check, if any, that AWS Cloud Map created for the specified instance}
 \usage{
-deregister_instance(
-  ServiceId = "string",
-  InstanceId = "string"
-)
+deregister_instance(ServiceId, InstanceId)
 }
 \arguments{
 \item{ServiceId}{[required] The ID of the service that the instance is associated with.}
@@ -17,6 +14,11 @@ deregister_instance(
 \description{
 Deletes the Amazon Route 53 DNS records and health check, if any, that AWS Cloud Map created for the specified instance.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{deregister_instance(
+  ServiceId = "string",
+  InstanceId = "string"
+)
 }
+}
+

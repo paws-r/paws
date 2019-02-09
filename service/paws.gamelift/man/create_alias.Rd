@@ -4,15 +4,7 @@
 \alias{create_alias}
 \title{Creates an alias for a fleet}
 \usage{
-create_alias(
-  Name = "string",
-  Description = "string",
-  RoutingStrategy = list(
-    Type = "SIMPLE"|"TERMINAL",
-    FleetId = "string",
-    Message = "string"
-  )
-)
+create_alias(Name, Description = NULL, RoutingStrategy)
 }
 \arguments{
 \item{Name}{[required] Descriptive label that is associated with an alias. Alias names do not need to be unique.}
@@ -28,8 +20,6 @@ Creates an alias for a fleet. In most situations, you can use an alias ID in pla
 Amazon GameLift supports two types of routing strategies for aliases: simple and terminal. A simple alias points to an active fleet. A terminal alias is used to display messaging or link to a URL instead of routing players to an active fleet. For example, you might use a terminal alias when a game version is no longer supported and you want to direct players to an upgrade site.
 
 To create a fleet alias, specify an alias name, routing strategy, and optional description. Each simple alias can point to only one fleet, but a fleet can have multiple aliases. If successful, a new alias record is returned, including an alias ID, which you can reference when creating a game session. You can reassign an alias to another fleet by calling \code{UpdateAlias}.
-
-Alias-related operations include:
 \itemize{
 \item CreateAlias
 \item ListAliases
@@ -39,6 +29,16 @@ Alias-related operations include:
 \item ResolveAlias
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_alias(
+  Name = "string",
+  Description = "string",
+  RoutingStrategy = list(
+    Type = "SIMPLE"|"TERMINAL",
+    FleetId = "string",
+    Message = "string"
+  )
+)
 }
+}
+

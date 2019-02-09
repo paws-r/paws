@@ -4,12 +4,7 @@
 \alias{describe_event_topics}
 \title{Obtains information about which SNS topics receive status messages from the specified directory}
 \usage{
-describe_event_topics(
-  DirectoryId = "string",
-  TopicNames = list(
-    "string"
-  )
-)
+describe_event_topics(DirectoryId = NULL, TopicNames = NULL)
 }
 \arguments{
 \item{DirectoryId}{The Directory ID for which to get the list of associated SNS topics. If this member is null, associations for all Directory IDs are returned.}
@@ -24,6 +19,13 @@ Obtains information about which SNS topics receive status messages from the spec
 \details{
 If no input parameters are provided, such as DirectoryId or TopicName, this request describes all of the associations in the account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_event_topics(
+  DirectoryId = "string",
+  TopicNames = list(
+    "string"
+  )
+)
 }
+}
+

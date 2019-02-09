@@ -4,18 +4,8 @@
 \alias{describe_replication_instances}
 \title{Returns information about replication instances for your account in the current region}
 \usage{
-describe_replication_instances(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_replication_instances(Filters = NULL, MaxRecords = NULL,
+  Marker = NULL)
 }
 \arguments{
 \item{Filters}{Filters applied to the describe action.
@@ -33,9 +23,25 @@ Constraints: Minimum 20, maximum 100.}
 \description{
 Returns information about replication instances for your account in the current region.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_replication_instances(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
+}
+}
+
 \examples{
 # Returns the status of the refresh-schemas operation.
-describe_replication_instances(
+\donttest{describe_replication_instances(
   Filters = list(
     list(
       Name = "string",
@@ -47,6 +53,6 @@ describe_replication_instances(
   ),
   Marker = "",
   MaxRecords = 123L
-)
+)}
 
 }

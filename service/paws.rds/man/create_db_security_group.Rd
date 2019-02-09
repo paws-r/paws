@@ -4,16 +4,8 @@
 \alias{create_db_security_group}
 \title{Creates a new DB security group}
 \usage{
-create_db_security_group(
-  DBSecurityGroupName = "string",
-  DBSecurityGroupDescription = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_db_security_group(DBSecurityGroupName, DBSecurityGroupDescription,
+  Tags = NULL)
 }
 \arguments{
 \item{DBSecurityGroupName}{[required] The name for the DB security group. This value is stored as a lowercase string.
@@ -38,6 +30,17 @@ Creates a new DB security group. DB security groups control access to a DB insta
 \details{
 A DB security group controls access to EC2-Classic DB instances that are not in a VPC.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_db_security_group(
+  DBSecurityGroupName = "string",
+  DBSecurityGroupDescription = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

@@ -4,14 +4,9 @@
 \alias{list_backups}
 \title{List backups associated with an AWS account}
 \usage{
-list_backups(
-  TableName = "string",
-  Limit = 123,
-  TimeRangeLowerBound = as.POSIXct("2015-01-01"),
-  TimeRangeUpperBound = as.POSIXct("2015-01-01"),
-  ExclusiveStartBackupArn = "string",
-  BackupType = "USER"|"SYSTEM"|"ALL"
-)
+list_backups(TableName = NULL, Limit = NULL,
+  TimeRangeLowerBound = NULL, TimeRangeUpperBound = NULL,
+  ExclusiveStartBackupArn = NULL, BackupType = NULL)
 }
 \arguments{
 \item{TableName}{The backups from the table specified by \code{TableName} are listed.}
@@ -41,6 +36,15 @@ In the request, start time is inclusive but end time is exclusive. Note that the
 
 You can call \code{ListBackups} a maximum of 5 times per second.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_backups(
+  TableName = "string",
+  Limit = 123,
+  TimeRangeLowerBound = as.POSIXct("2015-01-01"),
+  TimeRangeUpperBound = as.POSIXct("2015-01-01"),
+  ExclusiveStartBackupArn = "string",
+  BackupType = "USER"|"SYSTEM"|"AWS_BACKUP"|"ALL"
+)
 }
+}
+

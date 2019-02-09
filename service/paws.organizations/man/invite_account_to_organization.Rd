@@ -4,13 +4,7 @@
 \alias{invite_account_to_organization}
 \title{Sends an invitation to another account to join your organization as a member account}
 \usage{
-invite_account_to_organization(
-  Target = list(
-    Id = "string",
-    Type = "ACCOUNT"|"ORGANIZATION"|"EMAIL"
-  ),
-  Notes = "string"
-)
+invite_account_to_organization(Target, Notes = NULL)
 }
 \arguments{
 \item{Notes}{Additional information that you want to include in the generated email to the recipient account owner.}
@@ -26,16 +20,27 @@ Sends an invitation to another account to join your organization as a member acc
 
 This operation can be called only from the organization's master account.
 }
+\section{Accepted Parameters}{
+\preformatted{invite_account_to_organization(
+  Target = list(
+    Id = "string",
+    Type = "ACCOUNT"|"ORGANIZATION"|"EMAIL"
+  ),
+  Notes = "string"
+)
+}
+}
+
 \examples{
 # The following example shows the admin of the master account owned by
 # bill@example.com inviting the account owned by juan@example.com to join
 # an organization.
-invite_account_to_organization(
+\donttest{invite_account_to_organization(
   Notes = "This is a request for Juan's account to join Bill's organization",
   Target = list(
     Id = "juan@example.com",
     Type = "EMAIL"
   )
-)
+)}
 
 }

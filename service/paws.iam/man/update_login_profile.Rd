@@ -4,11 +4,8 @@
 \alias{update_login_profile}
 \title{Changes the password for the specified IAM user}
 \usage{
-update_login_profile(
-  UserName = "string",
-  Password = "string",
-  PasswordResetRequired = TRUE|FALSE
-)
+update_login_profile(UserName, Password = NULL,
+  PasswordResetRequired = NULL)
 }
 \arguments{
 \item{UserName}{[required] The name of the user whose password you want to update.
@@ -34,12 +31,21 @@ Changes the password for the specified IAM user.
 \details{
 IAM users can change their own passwords by calling ChangePassword. For more information about modifying passwords, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingLogins.html}{Managing Passwords} in the \emph{IAM User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{update_login_profile(
+  UserName = "string",
+  Password = "string",
+  PasswordResetRequired = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # The following command creates or changes the password for the IAM user
 # named Bob.
-update_login_profile(
+\donttest{update_login_profile(
   Password = "SomeKindOfPassword123!@#",
   UserName = "Bob"
-)
+)}
 
 }

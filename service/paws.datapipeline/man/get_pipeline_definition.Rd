@@ -4,10 +4,7 @@
 \alias{get_pipeline_definition}
 \title{Gets the definition of the specified pipeline}
 \usage{
-get_pipeline_definition(
-  pipelineId = "string",
-  version = "string"
-)
+get_pipeline_definition(pipelineId, version = NULL)
 }
 \arguments{
 \item{pipelineId}{[required] The ID of the pipeline.}
@@ -17,6 +14,11 @@ get_pipeline_definition(
 \description{
 Gets the definition of the specified pipeline. You can call \code{GetPipelineDefinition} to retrieve the pipeline definition that you provided using PutPipelineDefinition.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_pipeline_definition(
+  pipelineId = "string",
+  version = "string"
+)
 }
+}
+

@@ -4,11 +4,7 @@
 \alias{publish}
 \title{Publishes state information}
 \usage{
-publish(
-  topic = "string",
-  qos = 123,
-  payload = raw
-)
+publish(topic, qos = NULL, payload = NULL)
 }
 \arguments{
 \item{topic}{[required] The name of the MQTT topic.}
@@ -23,6 +19,12 @@ Publishes state information.
 \details{
 For more information, see \href{http://docs.aws.amazon.com/iot/latest/developerguide/protocols.html#http}{HTTP Protocol} in the \emph{AWS IoT Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{publish(
+  topic = "string",
+  qos = 123,
+  payload = raw
+)
 }
+}
+

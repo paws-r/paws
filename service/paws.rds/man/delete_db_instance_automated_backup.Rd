@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.rds_operations.R
 \name{delete_db_instance_automated_backup}
 \alias{delete_db_instance_automated_backup}
-\title{Deletes automated backups based on the source instance's \code{DbiResourceId} value or the restorable instance's resource ID}
+\title{Deletes automated backups based on the source instance's DbiResourceId value or the restorable instance's resource ID}
 \usage{
-delete_db_instance_automated_backup(
-  DbiResourceId = "string"
-)
+delete_db_instance_automated_backup(DbiResourceId)
 }
 \arguments{
 \item{DbiResourceId}{[required] The identifier for the source DB instance, which can't be changed and which is unique to an AWS Region.}
@@ -14,6 +12,10 @@ delete_db_instance_automated_backup(
 \description{
 Deletes automated backups based on the source instance's \code{DbiResourceId} value or the restorable instance's resource ID.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_db_instance_automated_backup(
+  DbiResourceId = "string"
+)
 }
+}
+

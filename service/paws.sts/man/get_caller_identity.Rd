@@ -9,19 +9,24 @@ get_caller_identity()
 \description{
 Returns details about the IAM identity whose credentials are used to call the API.
 }
+\section{Accepted Parameters}{
+\preformatted{get_caller_identity()
+}
+}
+
 \examples{
 # This example shows a request and response made with the credentials for
 # a user named Alice in the AWS account 123456789012.
-get_caller_identity()
+\donttest{get_caller_identity()}
 
 # This example shows a request and response made with temporary
 # credentials created by AssumeRole. The name of the assumed role is
 # my-role-name, and the RoleSessionName is set to my-role-session-name.
-get_caller_identity()
+\donttest{get_caller_identity()}
 
 # This example shows a request and response made with temporary
 # credentials created by using GetFederationToken. The Name parameter is
 # set to my-federated-user-name.
-get_caller_identity()
+\donttest{get_caller_identity()}
 
 }

@@ -4,9 +4,7 @@
 \alias{confirm_connection}
 \title{Confirms the creation of the specified hosted connection on an interconnect}
 \usage{
-confirm_connection(
-  connectionId = "string"
-)
+confirm_connection(connectionId)
 }
 \arguments{
 \item{connectionId}{[required] The ID of the hosted connection.}
@@ -17,6 +15,10 @@ Confirms the creation of the specified hosted connection on an interconnect.
 \details{
 Upon creation, the hosted connection is initially in the \code{Ordering} state, and remains in this state until the owner confirms creation of the hosted connection.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{confirm_connection(
+  connectionId = "string"
+)
 }
+}
+

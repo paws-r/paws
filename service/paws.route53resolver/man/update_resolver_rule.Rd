@@ -4,7 +4,18 @@
 \alias{update_resolver_rule}
 \title{Updates settings for a specified resolver rule}
 \usage{
-update_resolver_rule(
+update_resolver_rule(ResolverRuleId, Config)
+}
+\arguments{
+\item{ResolverRuleId}{[required] The ID of the resolver rule that you want to update.}
+
+\item{Config}{[required] The new settings for the resolver rule.}
+}
+\description{
+Updates settings for a specified resolver rule. \code{ResolverRuleId} is required, and all other parameters are optional. If you don't specify a parameter, it retains its current value.
+}
+\section{Accepted Parameters}{
+\preformatted{update_resolver_rule(
   ResolverRuleId = "string",
   Config = list(
     Name = "string",
@@ -18,14 +29,5 @@ update_resolver_rule(
   )
 )
 }
-\arguments{
-\item{ResolverRuleId}{[required] The ID of the resolver rule that you want to update.}
+}
 
-\item{Config}{[required] The new settings for the resolver rule.}
-}
-\description{
-Updates settings for a specified resolver rule. \code{ResolverRuleId} is required, and all other parameters are optional. If you don't specify a parameter, it retains its current value.
-}
-\examples{
-
-}

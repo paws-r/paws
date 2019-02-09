@@ -4,9 +4,7 @@
 \alias{get_load_balancer_tls_certificates}
 \title{Returns information about the TLS certificates that are associated with the specified Lightsail load balancer}
 \usage{
-get_load_balancer_tls_certificates(
-  loadBalancerName = "string"
-)
+get_load_balancer_tls_certificates(loadBalancerName)
 }
 \arguments{
 \item{loadBalancerName}{[required] The name of the load balancer you associated with your SSL/TLS certificate.}
@@ -19,6 +17,10 @@ TLS is just an updated, more secure version of Secure Socket Layer (SSL).
 
 You can have a maximum of 2 certificates associated with a Lightsail load balancer. One is active and the other is inactive.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_load_balancer_tls_certificates(
+  loadBalancerName = "string"
+)
 }
+}
+

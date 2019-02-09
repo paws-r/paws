@@ -4,11 +4,8 @@
 \alias{set_stack_policy}
 \title{Sets a stack policy for a specified stack}
 \usage{
-set_stack_policy(
-  StackName = "string",
-  StackPolicyBody = "string",
-  StackPolicyURL = "string"
-)
+set_stack_policy(StackName, StackPolicyBody = NULL,
+  StackPolicyURL = NULL)
 }
 \arguments{
 \item{StackName}{[required] The name or unique stack ID that you want to associate a policy with.}
@@ -20,6 +17,12 @@ set_stack_policy(
 \description{
 Sets a stack policy for a specified stack.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{set_stack_policy(
+  StackName = "string",
+  StackPolicyBody = "string",
+  StackPolicyURL = "string"
+)
 }
+}
+

@@ -4,35 +4,11 @@
 \alias{update_provisioned_product}
 \title{Requests updates to the configuration of the specified provisioned product}
 \usage{
-update_provisioned_product(
-  AcceptLanguage = "string",
-  ProvisionedProductName = "string",
-  ProvisionedProductId = "string",
-  ProductId = "string",
-  ProvisioningArtifactId = "string",
-  PathId = "string",
-  ProvisioningParameters = list(
-    list(
-      Key = "string",
-      Value = "string",
-      UsePreviousValue = TRUE|FALSE
-    )
-  ),
-  ProvisioningPreferences = list(
-    StackSetAccounts = list(
-      "string"
-    ),
-    StackSetRegions = list(
-      "string"
-    ),
-    StackSetFailureToleranceCount = 123,
-    StackSetFailureTolerancePercentage = 123,
-    StackSetMaxConcurrencyCount = 123,
-    StackSetMaxConcurrencyPercentage = 123,
-    StackSetOperationType = "CREATE"|"UPDATE"|"DELETE"
-  ),
-  UpdateToken = "string"
-)
+update_provisioned_product(AcceptLanguage = NULL,
+  ProvisionedProductName = NULL, ProvisionedProductId = NULL,
+  ProductId = NULL, ProvisioningArtifactId = NULL, PathId = NULL,
+  ProvisioningParameters = NULL, ProvisioningPreferences = NULL,
+  UpdateToken)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -66,6 +42,36 @@ If there are tags associated with the object, they cannot be updated or added. D
 
 You can check the status of this request using DescribeRecord.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_provisioned_product(
+  AcceptLanguage = "string",
+  ProvisionedProductName = "string",
+  ProvisionedProductId = "string",
+  ProductId = "string",
+  ProvisioningArtifactId = "string",
+  PathId = "string",
+  ProvisioningParameters = list(
+    list(
+      Key = "string",
+      Value = "string",
+      UsePreviousValue = TRUE|FALSE
+    )
+  ),
+  ProvisioningPreferences = list(
+    StackSetAccounts = list(
+      "string"
+    ),
+    StackSetRegions = list(
+      "string"
+    ),
+    StackSetFailureToleranceCount = 123,
+    StackSetFailureTolerancePercentage = 123,
+    StackSetMaxConcurrencyCount = 123,
+    StackSetMaxConcurrencyPercentage = 123,
+    StackSetOperationType = "CREATE"|"UPDATE"|"DELETE"
+  ),
+  UpdateToken = "string"
+)
 }
+}
+

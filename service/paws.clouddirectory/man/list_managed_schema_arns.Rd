@@ -4,11 +4,8 @@
 \alias{list_managed_schema_arns}
 \title{Lists the major version families of each managed schema}
 \usage{
-list_managed_schema_arns(
-  SchemaArn = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_managed_schema_arns(SchemaArn = NULL, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{SchemaArn}{The response for ListManagedSchemaArns. When this parameter is used, all minor version ARNs for a major version are listed.}
@@ -20,6 +17,12 @@ list_managed_schema_arns(
 \description{
 Lists the major version families of each managed schema. If a major version ARN is provided as SchemaArn, the minor version revisions in that family are listed instead.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_managed_schema_arns(
+  SchemaArn = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

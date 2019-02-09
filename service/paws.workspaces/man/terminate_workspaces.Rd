@@ -4,13 +4,7 @@
 \alias{terminate_workspaces}
 \title{Terminates the specified WorkSpaces}
 \usage{
-terminate_workspaces(
-  TerminateWorkspaceRequests = list(
-    list(
-      WorkspaceId = "string"
-    )
-  )
-)
+terminate_workspaces(TerminateWorkspaceRequests)
 }
 \arguments{
 \item{TerminateWorkspaceRequests}{[required] The WorkSpaces to terminate. You can specify up to 25 WorkSpaces.}
@@ -25,6 +19,14 @@ You can terminate a WorkSpace that is in any state except \code{SUSPENDED}.
 
 This operation is asynchronous and returns before the WorkSpaces have been completely terminated.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{terminate_workspaces(
+  TerminateWorkspaceRequests = list(
+    list(
+      WorkspaceId = "string"
+    )
+  )
+)
 }
+}
+

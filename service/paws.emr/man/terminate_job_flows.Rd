@@ -4,11 +4,7 @@
 \alias{terminate_job_flows}
 \title{TerminateJobFlows shuts a list of clusters (job flows) down}
 \usage{
-terminate_job_flows(
-  JobFlowIds = list(
-    "string"
-  )
-)
+terminate_job_flows(JobFlowIds)
 }
 \arguments{
 \item{JobFlowIds}{[required] A list of job flows to be shutdown.}
@@ -19,6 +15,12 @@ TerminateJobFlows shuts a list of clusters (job flows) down. When a job flow is 
 \details{
 The maximum number of clusters allowed is 10. The call to \code{TerminateJobFlows} is asynchronous. Depending on the configuration of the cluster, it may take up to 1-5 minutes for the cluster to completely terminate and release allocated resources, such as Amazon EC2 instances.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{terminate_job_flows(
+  JobFlowIds = list(
+    "string"
+  )
+)
 }
+}
+

@@ -4,11 +4,7 @@
 \alias{list_rule_names_by_target}
 \title{Lists the rules for the specified target}
 \usage{
-list_rule_names_by_target(
-  TargetArn = "string",
-  NextToken = "string",
-  Limit = 123
-)
+list_rule_names_by_target(TargetArn, NextToken = NULL, Limit = NULL)
 }
 \arguments{
 \item{TargetArn}{[required] The Amazon Resource Name (ARN) of the target resource.}
@@ -20,6 +16,12 @@ list_rule_names_by_target(
 \description{
 Lists the rules for the specified target. You can see which of the rules in Amazon CloudWatch Events can invoke a specific target in your account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_rule_names_by_target(
+  TargetArn = "string",
+  NextToken = "string",
+  Limit = 123
+)
 }
+}
+

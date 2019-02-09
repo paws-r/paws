@@ -4,9 +4,7 @@
 \alias{get_field_level_encryption_profile_config}
 \title{Get the field-level encryption profile configuration information}
 \usage{
-get_field_level_encryption_profile_config(
-  Id = "string"
-)
+get_field_level_encryption_profile_config(Id)
 }
 \arguments{
 \item{Id}{[required] Get the ID for the field-level encryption profile configuration information.}
@@ -14,6 +12,10 @@ get_field_level_encryption_profile_config(
 \description{
 Get the field-level encryption profile configuration information.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_field_level_encryption_profile_config(
+  Id = "string"
+)
 }
+}
+

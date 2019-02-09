@@ -4,10 +4,7 @@
 \alias{delete_stage}
 \title{Deletes a Stage resource}
 \usage{
-delete_stage(
-  restApiId = "string",
-  stageName = "string"
-)
+delete_stage(restApiId, stageName)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -17,6 +14,11 @@ delete_stage(
 \description{
 Deletes a Stage resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_stage(
+  restApiId = "string",
+  stageName = "string"
+)
 }
+}
+

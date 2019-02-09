@@ -4,12 +4,9 @@
 \alias{copy_cluster_snapshot}
 \title{Copies the specified automated cluster snapshot to a new manual cluster snapshot}
 \usage{
-copy_cluster_snapshot(
-  SourceSnapshotIdentifier = "string",
-  SourceSnapshotClusterIdentifier = "string",
-  TargetSnapshotIdentifier = "string",
-  ManualSnapshotRetentionPeriod = 123
-)
+copy_cluster_snapshot(SourceSnapshotIdentifier,
+  SourceSnapshotClusterIdentifier = NULL, TargetSnapshotIdentifier,
+  ManualSnapshotRetentionPeriod = NULL)
 }
 \arguments{
 \item{SourceSnapshotIdentifier}{[required] The identifier for the source snapshot.
@@ -51,6 +48,13 @@ When you delete a cluster, Amazon Redshift deletes any automated snapshots of th
 
 For more information about working with snapshots, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html}{Amazon Redshift Snapshots} in the \emph{Amazon Redshift Cluster Management Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{copy_cluster_snapshot(
+  SourceSnapshotIdentifier = "string",
+  SourceSnapshotClusterIdentifier = "string",
+  TargetSnapshotIdentifier = "string",
+  ManualSnapshotRetentionPeriod = 123
+)
 }
+}
+

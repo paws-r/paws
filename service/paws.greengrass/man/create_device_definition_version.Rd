@@ -4,7 +4,21 @@
 \alias{create_device_definition_version}
 \title{Creates a version of a device definition that has already been defined}
 \usage{
-create_device_definition_version(
+create_device_definition_version(AmznClientToken = NULL,
+  DeviceDefinitionId, Devices = NULL)
+}
+\arguments{
+\item{AmznClientToken}{A client token used to correlate requests and responses.}
+
+\item{DeviceDefinitionId}{[required] The ID of the device definition.}
+
+\item{Devices}{A list of devices in the definition version.}
+}
+\description{
+Creates a version of a device definition that has already been defined.
+}
+\section{Accepted Parameters}{
+\preformatted{create_device_definition_version(
   AmznClientToken = "string",
   DeviceDefinitionId = "string",
   Devices = list(
@@ -17,16 +31,5 @@ create_device_definition_version(
   )
 )
 }
-\arguments{
-\item{AmznClientToken}{A client token used to correlate requests and responses.}
-
-\item{DeviceDefinitionId}{[required] The ID of the device definition.}
-
-\item{Devices}{A list of devices in the definition version.}
 }
-\description{
-Creates a version of a device definition that has already been defined.
-}
-\examples{
 
-}

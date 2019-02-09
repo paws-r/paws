@@ -4,11 +4,7 @@
 \alias{list_virtual_nodes}
 \title{Returns a list of existing virtual nodes}
 \usage{
-list_virtual_nodes(
-  limit = 123,
-  meshName = "string",
-  nextToken = "string"
-)
+list_virtual_nodes(limit = NULL, meshName, nextToken = NULL)
 }
 \arguments{
 \item{limit}{The maximum number of mesh results returned by \code{ListVirtualNodes} in paginated output. When this parameter is used, \code{ListVirtualNodes} only returns \code{limit} results in a single page along with a \code{nextToken} response element. The remaining results of the initial request can be seen by sending another \code{ListVirtualNodes} request with the returned \code{nextToken} value. This value can be between 1 and 100. If this parameter is not used, then \code{ListVirtualNodes} returns up to 100 results and a \code{nextToken} value if applicable.}
@@ -20,6 +16,12 @@ list_virtual_nodes(
 \description{
 Returns a list of existing virtual nodes.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_virtual_nodes(
+  limit = 123,
+  meshName = "string",
+  nextToken = "string"
+)
 }
+}
+

@@ -4,16 +4,9 @@
 \alias{update_ca_certificate}
 \title{Updates a registered CA certificate}
 \usage{
-update_ca_certificate(
-  certificateId = "string",
-  newStatus = "ACTIVE"|"INACTIVE",
-  newAutoRegistrationStatus = "ENABLE"|"DISABLE",
-  registrationConfig = list(
-    templateBody = "string",
-    roleArn = "string"
-  ),
-  removeAutoRegistration = TRUE|FALSE
-)
+update_ca_certificate(certificateId, newStatus = NULL,
+  newAutoRegistrationStatus = NULL, registrationConfig = NULL,
+  removeAutoRegistration = NULL)
 }
 \arguments{
 \item{certificateId}{[required] The CA certificate identifier.}
@@ -31,6 +24,17 @@ update_ca_certificate(
 \description{
 Updates a registered CA certificate.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_ca_certificate(
+  certificateId = "string",
+  newStatus = "ACTIVE"|"INACTIVE",
+  newAutoRegistrationStatus = "ENABLE"|"DISABLE",
+  registrationConfig = list(
+    templateBody = "string",
+    roleArn = "string"
+  ),
+  removeAutoRegistration = TRUE|FALSE
+)
 }
+}
+

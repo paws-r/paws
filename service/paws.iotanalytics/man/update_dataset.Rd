@@ -4,7 +4,25 @@
 \alias{update_dataset}
 \title{Updates the settings of a data set}
 \usage{
-update_dataset(
+update_dataset(datasetName, actions, triggers = NULL,
+  contentDeliveryRules = NULL, retentionPeriod = NULL)
+}
+\arguments{
+\item{datasetName}{[required] The name of the data set to update.}
+
+\item{actions}{[required] A list of "DatasetAction" objects.}
+
+\item{triggers}{A list of "DatasetTrigger" objects. The list can be empty or can contain up to five \strong{DataSetTrigger} objects.}
+
+\item{contentDeliveryRules}{When data set contents are created they are delivered to destinations specified here.}
+
+\item{retentionPeriod}{How long, in days, message data is kept for the data set.}
+}
+\description{
+Updates the settings of a data set.
+}
+\section{Accepted Parameters}{
+\preformatted{update_dataset(
   datasetName = "string",
   actions = list(
     list(
@@ -70,20 +88,5 @@ update_dataset(
   )
 )
 }
-\arguments{
-\item{datasetName}{[required] The name of the data set to update.}
-
-\item{actions}{[required] A list of "DatasetAction" objects.}
-
-\item{triggers}{A list of "DatasetTrigger" objects. The list can be empty or can contain up to five \strong{DataSetTrigger} objects.}
-
-\item{contentDeliveryRules}{}
-
-\item{retentionPeriod}{How long, in days, message data is kept for the data set.}
 }
-\description{
-Updates the settings of a data set.
-}
-\examples{
 
-}

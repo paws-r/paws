@@ -6,8 +6,8 @@
 \alias{paws.robomaker-package}
 \title{paws.robomaker: AWS RoboMaker}
 \description{
-his section provides documentation for the AWS RoboMaker API
-operations.
+his section provides documentation for the AWS
+    RoboMaker API operations.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

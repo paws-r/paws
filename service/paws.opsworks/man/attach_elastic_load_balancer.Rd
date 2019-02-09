@@ -4,10 +4,7 @@
 \alias{attach_elastic_load_balancer}
 \title{Attaches an Elastic Load Balancing load balancer to a specified layer}
 \usage{
-attach_elastic_load_balancer(
-  ElasticLoadBalancerName = "string",
-  LayerId = "string"
-)
+attach_elastic_load_balancer(ElasticLoadBalancerName, LayerId)
 }
 \arguments{
 \item{ElasticLoadBalancerName}{[required] The Elastic Load Balancing instance's name.}
@@ -22,6 +19,11 @@ You must create the Elastic Load Balancing instance separately, by using the Ela
 
 \strong{Required Permissions}: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{attach_elastic_load_balancer(
+  ElasticLoadBalancerName = "string",
+  LayerId = "string"
+)
 }
+}
+

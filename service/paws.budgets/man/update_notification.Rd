@@ -4,7 +4,23 @@
 \alias{update_notification}
 \title{Updates a notification}
 \usage{
-update_notification(
+update_notification(AccountId, BudgetName, OldNotification,
+  NewNotification)
+}
+\arguments{
+\item{AccountId}{[required] The \code{accountId} that is associated with the budget whose notification you want to update.}
+
+\item{BudgetName}{[required] The name of the budget whose notification you want to update.}
+
+\item{OldNotification}{[required] The previous notification that is associated with a budget.}
+
+\item{NewNotification}{[required] The updated notification to be associated with a budget.}
+}
+\description{
+Updates a notification.
+}
+\section{Accepted Parameters}{
+\preformatted{update_notification(
   AccountId = "string",
   BudgetName = "string",
   OldNotification = list(
@@ -23,18 +39,5 @@ update_notification(
   )
 )
 }
-\arguments{
-\item{AccountId}{[required] The \code{accountId} that is associated with the budget whose notification you want to update.}
-
-\item{BudgetName}{[required] The name of the budget whose notification you want to update.}
-
-\item{OldNotification}{[required] The previous notification that is associated with a budget.}
-
-\item{NewNotification}{[required] The updated notification to be associated with a budget.}
 }
-\description{
-Updates a notification.
-}
-\examples{
 
-}

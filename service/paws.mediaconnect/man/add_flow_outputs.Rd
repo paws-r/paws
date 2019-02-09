@@ -4,7 +4,18 @@
 \alias{add_flow_outputs}
 \title{Adds outputs to an existing flow}
 \usage{
-add_flow_outputs(
+add_flow_outputs(FlowArn, Outputs)
+}
+\arguments{
+\item{FlowArn}{[required] The flow that you want to add outputs to.}
+
+\item{Outputs}{[required] A list of outputs that you want to add.}
+}
+\description{
+Adds outputs to an existing flow. You can create up to 20 outputs per flow.
+}
+\section{Accepted Parameters}{
+\preformatted{add_flow_outputs(
   FlowArn = "string",
   Outputs = list(
     list(
@@ -26,14 +37,5 @@ add_flow_outputs(
   )
 )
 }
-\arguments{
-\item{FlowArn}{[required] The flow that you want to add outputs to.}
+}
 
-\item{Outputs}{[required] A list of outputs that you want to add.}
-}
-\description{
-Adds outputs to an existing flow. You can create up to 20 outputs per flow.
-}
-\examples{
-
-}

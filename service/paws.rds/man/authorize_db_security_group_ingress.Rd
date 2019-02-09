@@ -4,13 +4,9 @@
 \alias{authorize_db_security_group_ingress}
 \title{Enables ingress to a DBSecurityGroup using one of two forms of authorization}
 \usage{
-authorize_db_security_group_ingress(
-  DBSecurityGroupName = "string",
-  CIDRIP = "string",
-  EC2SecurityGroupName = "string",
-  EC2SecurityGroupId = "string",
-  EC2SecurityGroupOwnerId = "string"
-)
+authorize_db_security_group_ingress(DBSecurityGroupName, CIDRIP = NULL,
+  EC2SecurityGroupName = NULL, EC2SecurityGroupId = NULL,
+  EC2SecurityGroupOwnerId = NULL)
 }
 \arguments{
 \item{DBSecurityGroupName}{[required] The name of the DB security group to add authorization to.}
@@ -31,6 +27,14 @@ You can't authorize ingress from an EC2 security group in one AWS Region to an A
 
 For an overview of CIDR ranges, go to the \href{http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing}{Wikipedia Tutorial}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{authorize_db_security_group_ingress(
+  DBSecurityGroupName = "string",
+  CIDRIP = "string",
+  EC2SecurityGroupName = "string",
+  EC2SecurityGroupId = "string",
+  EC2SecurityGroupOwnerId = "string"
+)
 }
+}
+

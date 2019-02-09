@@ -4,14 +4,8 @@
 \alias{delete_partition}
 \title{Deletes a specified partition}
 \usage{
-delete_partition(
-  CatalogId = "string",
-  DatabaseName = "string",
-  TableName = "string",
-  PartitionValues = list(
-    "string"
-  )
-)
+delete_partition(CatalogId = NULL, DatabaseName, TableName,
+  PartitionValues)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the partition to be deleted resides. If none is supplied, the AWS account ID is used by default.}
@@ -25,6 +19,15 @@ delete_partition(
 \description{
 Deletes a specified partition.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_partition(
+  CatalogId = "string",
+  DatabaseName = "string",
+  TableName = "string",
+  PartitionValues = list(
+    "string"
+  )
+)
 }
+}
+

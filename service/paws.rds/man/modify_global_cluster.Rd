@@ -4,11 +4,8 @@
 \alias{modify_global_cluster}
 \title{Modify a setting for an Amazon Aurora global cluster}
 \usage{
-modify_global_cluster(
-  GlobalClusterIdentifier = "string",
-  NewGlobalClusterIdentifier = "string",
-  DeletionProtection = TRUE|FALSE
-)
+modify_global_cluster(GlobalClusterIdentifier = NULL,
+  NewGlobalClusterIdentifier = NULL, DeletionProtection = NULL)
 }
 \arguments{
 \item{GlobalClusterIdentifier}{The DB cluster identifier for the global cluster being modified. This parameter is not case-sensitive.
@@ -34,6 +31,12 @@ Example: \code{my-cluster2}}
 \description{
 Modify a setting for an Amazon Aurora global cluster. You can change one or more database configuration parameters by specifying these parameters and the new values in the request. For more information on Amazon Aurora, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?} in the \emph{Amazon Aurora User Guide.}
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_global_cluster(
+  GlobalClusterIdentifier = "string",
+  NewGlobalClusterIdentifier = "string",
+  DeletionProtection = TRUE|FALSE
+)
 }
+}
+

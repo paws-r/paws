@@ -4,9 +4,7 @@
 \alias{get_email_identity}
 \title{Provides information about a specific identity associated with your Amazon Pinpoint account, including the identity's verification status, its DKIM authentication status, and its custom Mail-From settings}
 \usage{
-get_email_identity(
-  EmailIdentity = "string"
-)
+get_email_identity(EmailIdentity)
 }
 \arguments{
 \item{EmailIdentity}{[required] The email identity that you want to retrieve details for.}
@@ -14,6 +12,10 @@ get_email_identity(
 \description{
 Provides information about a specific identity associated with your Amazon Pinpoint account, including the identity's verification status, its DKIM authentication status, and its custom Mail-From settings.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_email_identity(
+  EmailIdentity = "string"
+)
 }
+}
+

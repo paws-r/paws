@@ -4,11 +4,7 @@
 \alias{describe_applications}
 \title{Returns the descriptions of existing applications}
 \usage{
-describe_applications(
-  ApplicationNames = list(
-    "string"
-  )
-)
+describe_applications(ApplicationNames = NULL)
 }
 \arguments{
 \item{ApplicationNames}{If specified, AWS Elastic Beanstalk restricts the returned descriptions to only include those with the specified names.}
@@ -16,9 +12,18 @@ describe_applications(
 \description{
 Returns the descriptions of existing applications.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_applications(
+  ApplicationNames = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # The following operation retrieves information about applications in the
 # current region:
-describe_applications()
+\donttest{describe_applications()}
 
 }

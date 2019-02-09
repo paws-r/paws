@@ -4,10 +4,7 @@
 \alias{get_certificate}
 \title{Retrieves a certificate from your private CA}
 \usage{
-get_certificate(
-  CertificateAuthorityArn = "string",
-  CertificateArn = "string"
-)
+get_certificate(CertificateAuthorityArn, CertificateArn)
 }
 \arguments{
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called CreateCertificateAuthority. This must be of the form:
@@ -21,6 +18,11 @@ get_certificate(
 \description{
 Retrieves a certificate from your private CA. The ARN of the certificate is returned when you call the IssueCertificate operation. You must specify both the ARN of your private CA and the ARN of the issued certificate when calling the \strong{GetCertificate} operation. You can retrieve the certificate if it is in the \strong{ISSUED} state. You can call the CreateCertificateAuthorityAuditReport operation to create a report that contains information about all of the certificates issued and revoked by your private CA.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_certificate(
+  CertificateAuthorityArn = "string",
+  CertificateArn = "string"
+)
 }
+}
+

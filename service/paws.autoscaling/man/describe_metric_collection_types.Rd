@@ -14,6 +14,6 @@ The \code{GroupStandbyInstances} metric is not returned by default. You must exp
 }
 \examples{
 # This example describes the available metric collection types.
-describe_metric_collection_types()
+\donttest{describe_metric_collection_types()}
 
 }

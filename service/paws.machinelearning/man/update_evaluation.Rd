@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.machinelearning_operations.R
 \name{update_evaluation}
 \alias{update_evaluation}
-\title{Updates the \code{EvaluationName} of an \code{Evaluation}}
+\title{Updates the EvaluationName of an Evaluation}
 \usage{
-update_evaluation(
-  EvaluationId = "string",
-  EvaluationName = "string"
-)
+update_evaluation(EvaluationId, EvaluationName)
 }
 \arguments{
 \item{EvaluationId}{[required] The ID assigned to the \code{Evaluation} during creation.}
@@ -20,6 +17,11 @@ Updates the \code{EvaluationName} of an \code{Evaluation}.
 \details{
 You can use the \code{GetEvaluation} operation to view the contents of the updated data element.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_evaluation(
+  EvaluationId = "string",
+  EvaluationName = "string"
+)
 }
+}
+

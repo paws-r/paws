@@ -4,30 +4,11 @@
 \alias{restore_db_cluster_from_snapshot}
 \title{Creates a new DB cluster from a DB snapshot or DB cluster snapshot}
 \usage{
-restore_db_cluster_from_snapshot(
-  AvailabilityZones = list(
-    "string"
-  ),
-  DBClusterIdentifier = "string",
-  SnapshotIdentifier = "string",
-  Engine = "string",
-  EngineVersion = "string",
-  Port = 123,
-  DBSubnetGroupName = "string",
-  DatabaseName = "string",
-  OptionGroupName = "string",
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  KmsKeyId = "string",
-  EnableIAMDatabaseAuthentication = TRUE|FALSE
-)
+restore_db_cluster_from_snapshot(AvailabilityZones = NULL,
+  DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion = NULL,
+  Port = NULL, DBSubnetGroupName = NULL, DatabaseName = NULL,
+  OptionGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL,
+  KmsKeyId = NULL, EnableIAMDatabaseAuthentication = NULL)
 }
 \arguments{
 \item{AvailabilityZones}{Provides the list of EC2 Availability Zones that instances in the restored DB cluster can be created in.}
@@ -102,6 +83,31 @@ If a DB snapshot is specified, the target DB cluster is created from the source 
 
 If a DB cluster snapshot is specified, the target DB cluster is created from the source DB cluster restore point with the same configuration as the original source DB cluster, except that the new DB cluster is created with the default security group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{restore_db_cluster_from_snapshot(
+  AvailabilityZones = list(
+    "string"
+  ),
+  DBClusterIdentifier = "string",
+  SnapshotIdentifier = "string",
+  Engine = "string",
+  EngineVersion = "string",
+  Port = 123,
+  DBSubnetGroupName = "string",
+  DatabaseName = "string",
+  OptionGroupName = "string",
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  KmsKeyId = "string",
+  EnableIAMDatabaseAuthentication = TRUE|FALSE
+)
 }
+}
+

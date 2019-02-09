@@ -4,12 +4,7 @@
 \alias{delete_tags}
 \title{Remove a tag from a resource}
 \usage{
-delete_tags(
-  ResourceArn = "string",
-  TagKeys = list(
-    "string"
-  )
-)
+delete_tags(ResourceArn, TagKeys)
 }
 \arguments{
 \item{ResourceArn}{[required] the Amazon Resource Name (ARN)}
@@ -19,6 +14,13 @@ delete_tags(
 \description{
 Remove a tag from a resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_tags(
+  ResourceArn = "string",
+  TagKeys = list(
+    "string"
+  )
+)
 }
+}
+

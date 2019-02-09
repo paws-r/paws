@@ -15,6 +15,6 @@ Returns a list of all buckets owned by the authenticated sender of the request.
 # there are are more than two object version, S3 returns NextToken in the
 # response. You can specify this token value in your next request to fetch
 # next set of object versions.
-list_buckets()
+\donttest{list_buckets()}
 
 }

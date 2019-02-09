@@ -4,9 +4,7 @@
 \alias{enable_directory}
 \title{Enables the specified directory}
 \usage{
-enable_directory(
-  DirectoryArn = "string"
-)
+enable_directory(DirectoryArn)
 }
 \arguments{
 \item{DirectoryArn}{[required] The ARN of the directory to enable.}
@@ -14,6 +12,10 @@ enable_directory(
 \description{
 Enables the specified directory. Only disabled directories can be enabled. Once enabled, the directory can then be read and written to.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{enable_directory(
+  DirectoryArn = "string"
+)
 }
+}
+

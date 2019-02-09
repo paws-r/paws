@@ -4,9 +4,7 @@
 \alias{get_license_configuration}
 \title{Returns a detailed description of a license configuration}
 \usage{
-get_license_configuration(
-  LicenseConfigurationArn = "string"
-)
+get_license_configuration(LicenseConfigurationArn)
 }
 \arguments{
 \item{LicenseConfigurationArn}{[required] ARN of the license configuration being requested.}
@@ -14,6 +12,10 @@ get_license_configuration(
 \description{
 Returns a detailed description of a license configuration.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_license_configuration(
+  LicenseConfigurationArn = "string"
+)
 }
+}
+

@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.rekognition_operations.R
 \name{list_stream_processors}
 \alias{list_stream_processors}
-\title{Gets a list of stream processors that you have created with}
+\title{Gets a list of stream processors that you have created with CreateStreamProcessor}
 \usage{
-list_stream_processors(
-  NextToken = "string",
-  MaxResults = 123
-)
+list_stream_processors(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{If the previous response was incomplete (because there are more stream processors to retrieve), Amazon Rekognition Video returns a pagination token in the response. You can use this pagination token to retrieve the next set of stream processors.}
@@ -15,8 +12,13 @@ list_stream_processors(
 \item{MaxResults}{Maximum number of stream processors you want Amazon Rekognition Video to return in the response. The default is 1000.}
 }
 \description{
-Gets a list of stream processors that you have created with .
+Gets a list of stream processors that you have created with CreateStreamProcessor.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{list_stream_processors(
+  NextToken = "string",
+  MaxResults = 123
+)
+}
+}
 
-}

@@ -4,20 +4,9 @@
 \alias{create_role}
 \title{Creates a new role for your AWS account}
 \usage{
-create_role(
-  Path = "string",
-  RoleName = "string",
-  AssumeRolePolicyDocument = "string",
-  Description = "string",
-  MaxSessionDuration = 123,
-  PermissionsBoundary = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_role(Path = NULL, RoleName, AssumeRolePolicyDocument,
+  Description = NULL, MaxSessionDuration = NULL,
+  PermissionsBoundary = NULL, Tags = NULL)
 }
 \arguments{
 \item{Path}{The path to the role. For more information about paths, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{IAM Identifiers} in the \emph{IAM User Guide}.
@@ -56,13 +45,31 @@ If any one of the tags is invalid or if you exceed the allowed number of tags pe
 \description{
 Creates a new role for your AWS account. For more information about roles, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html}{IAM Roles}. For information about limitations on role names and the number of roles you can create, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html}{Limitations on IAM Entities} in the \emph{IAM User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_role(
+  Path = "string",
+  RoleName = "string",
+  AssumeRolePolicyDocument = "string",
+  Description = "string",
+  MaxSessionDuration = 123,
+  PermissionsBoundary = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # The following command creates a role named Test-Role and attaches a
 # trust policy to it that is provided as a URL-encoded JSON string.
-create_role(
+\donttest{create_role(
   AssumeRolePolicyDocument = "<URL-encoded-JSON>",
   Path = "/",
   RoleName = "Test-Role"
-)
+)}
 
 }

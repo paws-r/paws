@@ -4,11 +4,7 @@
 \alias{create_environment_membership}
 \title{Adds an environment member to an AWS Cloud9 development environment}
 \usage{
-create_environment_membership(
-  environmentId = "string",
-  userArn = "string",
-  permissions = "read-write"|"read-only"
-)
+create_environment_membership(environmentId, userArn, permissions)
 }
 \arguments{
 \item{environmentId}{[required] The ID of the environment that contains the environment member you want to add.}
@@ -24,12 +20,21 @@ create_environment_membership(
 \description{
 Adds an environment member to an AWS Cloud9 development environment.
 }
+\section{Accepted Parameters}{
+\preformatted{create_environment_membership(
+  environmentId = "string",
+  userArn = "string",
+  permissions = "read-write"|"read-only"
+)
+}
+}
+
 \examples{
 # 
-create_environment_membership(
+\donttest{create_environment_membership(
   environmentId = "8d9967e2f0624182b74e7690ad69ebEX",
   permissions = "read-write",
   userArn = "arn:aws:iam::123456789012:user/AnotherDemoUser"
-)
+)}
 
 }

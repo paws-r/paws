@@ -4,14 +4,8 @@
 \alias{create_ip_set}
 \title{Creates a new IPSet - a list of trusted IP addresses that have been whitelisted for secure communication with AWS infrastructure and applications}
 \usage{
-create_ip_set(
-  Activate = TRUE|FALSE,
-  ClientToken = "string",
-  DetectorId = "string",
-  Format = "TXT"|"STIX"|"OTX_CSV"|"ALIEN_VAULT"|"PROOF_POINT"|"FIRE_EYE",
-  Location = "string",
-  Name = "string"
-)
+create_ip_set(Activate, ClientToken = NULL, DetectorId, Format, Location,
+  Name)
 }
 \arguments{
 \item{Activate}{[required] A boolean value that indicates whether GuardDuty is to start using the uploaded IPSet.}
@@ -29,6 +23,15 @@ create_ip_set(
 \description{
 Creates a new IPSet - a list of trusted IP addresses that have been whitelisted for secure communication with AWS infrastructure and applications.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_ip_set(
+  Activate = TRUE|FALSE,
+  ClientToken = "string",
+  DetectorId = "string",
+  Format = "TXT"|"STIX"|"OTX_CSV"|"ALIEN_VAULT"|"PROOF_POINT"|"FIRE_EYE",
+  Location = "string",
+  Name = "string"
+)
 }
+}
+

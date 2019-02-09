@@ -4,15 +4,9 @@
 \alias{list_objects}
 \title{Returns some or all (up to 1000) of the objects in a bucket}
 \usage{
-list_objects(
-  Bucket = "string",
-  Delimiter = "string",
-  EncodingType = "url",
-  Marker = "string",
-  MaxKeys = 123,
-  Prefix = "string",
-  RequestPayer = "requester"
-)
+list_objects(Bucket, Delimiter = NULL, EncodingType = NULL,
+  Marker = NULL, MaxKeys = NULL, Prefix = NULL,
+  RequestPayer = NULL)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -32,11 +26,24 @@ list_objects(
 \description{
 Returns some or all (up to 1000) of the objects in a bucket. You can use the request parameters as selection criteria to return a subset of the objects in a bucket.
 }
+\section{Accepted Parameters}{
+\preformatted{list_objects(
+  Bucket = "string",
+  Delimiter = "string",
+  EncodingType = "url",
+  Marker = "string",
+  MaxKeys = 123,
+  Prefix = "string",
+  RequestPayer = "requester"
+)
+}
+}
+
 \examples{
 # The following example list two objects in a bucket.
-list_objects(
+\donttest{list_objects(
   Bucket = "examplebucket",
   MaxKeys = "2"
-)
+)}
 
 }

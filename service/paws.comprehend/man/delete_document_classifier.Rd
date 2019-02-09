@@ -4,9 +4,7 @@
 \alias{delete_document_classifier}
 \title{Deletes a previously created document classifier}
 \usage{
-delete_document_classifier(
-  DocumentClassifierArn = "string"
-)
+delete_document_classifier(DocumentClassifierArn)
 }
 \arguments{
 \item{DocumentClassifierArn}{[required] The Amazon Resource Name (ARN) that identifies the document classifier.}
@@ -19,6 +17,10 @@ Only those classifiers that are in terminated states (IN\_ERROR, TRAINED) will b
 
 This is an asynchronous action that puts the classifier into a DELETING state, and it is then removed by a background job. Once removed, the classifier disappears from your account and is no longer available for use.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_document_classifier(
+  DocumentClassifierArn = "string"
+)
 }
+}
+

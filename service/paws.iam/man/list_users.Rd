@@ -4,11 +4,7 @@
 \alias{list_users}
 \title{Lists the IAM users that have the specified path prefix}
 \usage{
-list_users(
-  PathPrefix = "string",
-  Marker = "string",
-  MaxItems = 123
-)
+list_users(PathPrefix = NULL, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{PathPrefix}{The path prefix for filtering the results. For example: \code{/division_abc/subdivision_xyz/}, which would get all user names whose path starts with \code{/division_abc/subdivision_xyz/}.
@@ -27,8 +23,17 @@ Lists the IAM users that have the specified path prefix. If no path prefix is sp
 \details{
 You can paginate the results using the \code{MaxItems} and \code{Marker} parameters.
 }
+\section{Accepted Parameters}{
+\preformatted{list_users(
+  PathPrefix = "string",
+  Marker = "string",
+  MaxItems = 123
+)
+}
+}
+
 \examples{
 # The following command lists the IAM users in the current account.
-list_users()
+\donttest{list_users()}
 
 }

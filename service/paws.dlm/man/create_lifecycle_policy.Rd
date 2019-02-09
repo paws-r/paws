@@ -4,7 +4,25 @@
 \alias{create_lifecycle_policy}
 \title{Creates a policy to manage the lifecycle of the specified AWS resources}
 \usage{
-create_lifecycle_policy(
+create_lifecycle_policy(ExecutionRoleArn, Description, State,
+  PolicyDetails)
+}
+\arguments{
+\item{ExecutionRoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role used to run the operations specified by the lifecycle policy.}
+
+\item{Description}{[required] A description of the lifecycle policy. The characters ^[0-9A-Za-z \_-]+\$ are supported.}
+
+\item{State}{[required] The desired activation state of the lifecycle policy after creation.}
+
+\item{PolicyDetails}{[required] The configuration details of the lifecycle policy.
+
+Target tags cannot be re-used across lifecycle policies.}
+}
+\description{
+Creates a policy to manage the lifecycle of the specified AWS resources. You can create up to 100 lifecycle policies.
+}
+\section{Accepted Parameters}{
+\preformatted{create_lifecycle_policy(
   ExecutionRoleArn = "string",
   Description = "string",
   State = "ENABLED"|"DISABLED",
@@ -43,20 +61,5 @@ create_lifecycle_policy(
   )
 )
 }
-\arguments{
-\item{ExecutionRoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role used to run the operations specified by the lifecycle policy.}
-
-\item{Description}{[required] A description of the lifecycle policy. The characters ^[0-9A-Za-z \_-]+\$ are supported.}
-
-\item{State}{[required] The desired activation state of the lifecycle policy after creation.}
-
-\item{PolicyDetails}{[required] The configuration details of the lifecycle policy.
-
-Target tags cannot be re-used across lifecycle policies.}
 }
-\description{
-Creates a policy to manage the lifecycle of the specified AWS resources. You can create up to 100 lifecycle policies.
-}
-\examples{
 
-}

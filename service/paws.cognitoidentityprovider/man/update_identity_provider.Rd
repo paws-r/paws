@@ -4,19 +4,9 @@
 \alias{update_identity_provider}
 \title{Updates identity provider information for a user pool}
 \usage{
-update_identity_provider(
-  UserPoolId = "string",
-  ProviderName = "string",
-  ProviderDetails = list(
-    "string"
-  ),
-  AttributeMapping = list(
-    "string"
-  ),
-  IdpIdentifiers = list(
-    "string"
-  )
-)
+update_identity_provider(UserPoolId, ProviderName,
+  ProviderDetails = NULL, AttributeMapping = NULL,
+  IdpIdentifiers = NULL)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID.}
@@ -32,6 +22,20 @@ update_identity_provider(
 \description{
 Updates identity provider information for a user pool.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_identity_provider(
+  UserPoolId = "string",
+  ProviderName = "string",
+  ProviderDetails = list(
+    "string"
+  ),
+  AttributeMapping = list(
+    "string"
+  ),
+  IdpIdentifiers = list(
+    "string"
+  )
+)
 }
+}
+

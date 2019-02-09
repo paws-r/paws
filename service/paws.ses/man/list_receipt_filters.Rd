@@ -14,9 +14,14 @@ For information about managing IP address filters, see the \href{http://docs.aws
 
 You can execute this operation no more than once per second.
 }
+\section{Accepted Parameters}{
+\preformatted{list_receipt_filters()
+}
+}
+
 \examples{
 # The following example lists the IP address filters that are associated
 # with an AWS account:
-list_receipt_filters()
+\donttest{list_receipt_filters()}
 
 }

@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.sagemaker_operations.R
 \name{describe_endpoint_config}
 \alias{describe_endpoint_config}
-\title{Returns the description of an endpoint configuration created using the \code{CreateEndpointConfig} API}
+\title{Returns the description of an endpoint configuration created using the CreateEndpointConfig API}
 \usage{
-describe_endpoint_config(
-  EndpointConfigName = "string"
-)
+describe_endpoint_config(EndpointConfigName)
 }
 \arguments{
 \item{EndpointConfigName}{[required] The name of the endpoint configuration.}
@@ -14,6 +12,10 @@ describe_endpoint_config(
 \description{
 Returns the description of an endpoint configuration created using the \code{CreateEndpointConfig} API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_endpoint_config(
+  EndpointConfigName = "string"
+)
 }
+}
+

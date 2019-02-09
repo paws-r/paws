@@ -4,10 +4,7 @@
 \alias{delete_thing}
 \title{Deletes the specified thing}
 \usage{
-delete_thing(
-  thingName = "string",
-  expectedVersion = 123
-)
+delete_thing(thingName, expectedVersion = NULL)
 }
 \arguments{
 \item{thingName}{[required] The name of the thing to delete.}
@@ -17,6 +14,11 @@ delete_thing(
 \description{
 Deletes the specified thing. Returns successfully with no error if the deletion is successful or you specify a thing that doesn't exist.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_thing(
+  thingName = "string",
+  expectedVersion = 123
+)
 }
+}
+

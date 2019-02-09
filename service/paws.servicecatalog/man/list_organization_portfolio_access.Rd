@@ -4,13 +4,8 @@
 \alias{list_organization_portfolio_access}
 \title{Lists the organization nodes that have access to the specified portfolio}
 \usage{
-list_organization_portfolio_access(
-  AcceptLanguage = "string",
-  PortfolioId = "string",
-  OrganizationNodeType = "ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ACCOUNT",
-  PageToken = "string",
-  PageSize = 123
-)
+list_organization_portfolio_access(AcceptLanguage = NULL, PortfolioId,
+  OrganizationNodeType, PageToken = NULL, PageSize = NULL)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -36,6 +31,14 @@ list_organization_portfolio_access(
 \description{
 Lists the organization nodes that have access to the specified portfolio. This API can only be called by the master account in the organization.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_organization_portfolio_access(
+  AcceptLanguage = "string",
+  PortfolioId = "string",
+  OrganizationNodeType = "ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ACCOUNT",
+  PageToken = "string",
+  PageSize = 123
+)
 }
+}
+

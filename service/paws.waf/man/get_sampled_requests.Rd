@@ -4,15 +4,7 @@
 \alias{get_sampled_requests}
 \title{Gets detailed information about a specified number of requests--a sample--that AWS WAF randomly selects from among the first 5,000 requests that your AWS resource received during a time range that you choose}
 \usage{
-get_sampled_requests(
-  WebAclId = "string",
-  RuleId = "string",
-  TimeWindow = list(
-    StartTime = as.POSIXct("2015-01-01"),
-    EndTime = as.POSIXct("2015-01-01")
-  ),
-  MaxItems = 123
-)
+get_sampled_requests(WebAclId, RuleId, TimeWindow, MaxItems)
 }
 \arguments{
 \item{WebAclId}{[required] The \code{WebACLId} of the \code{WebACL} for which you want \code{GetSampledRequests} to return a sample of requests.}
@@ -33,12 +25,25 @@ Gets detailed information about a specified number of requests--a sample--that A
 \details{
 \code{GetSampledRequests} returns a time range, which is usually the time range that you specified. However, if your resource (such as a CloudFront distribution) received 5,000 requests before the specified time range elapsed, \code{GetSampledRequests} returns an updated time range. This new time range indicates the actual period during which AWS WAF selected the requests in the sample.
 }
+\section{Accepted Parameters}{
+\preformatted{get_sampled_requests(
+  WebAclId = "string",
+  RuleId = "string",
+  TimeWindow = list(
+    StartTime = as.POSIXct("2015-01-01"),
+    EndTime = as.POSIXct("2015-01-01")
+  ),
+  MaxItems = 123
+)
+}
+}
+
 \examples{
 # The following example returns detailed information about 100 requests
 # --a sample-- that AWS WAF randomly selects from among the first 5,000
 # requests that your AWS resource received between the time period
 # 2016-09-27T15:50Z to 2016-09-27T15:50Z.
-get_sampled_requests(
+\donttest{get_sampled_requests(
   MaxItems = 100L,
   RuleId = "WAFRule-1-Example",
   TimeWindow = list(
@@ -46,6 +51,6 @@ get_sampled_requests(
     StartTime = "2016-09-27T15:50Z"
   ),
   WebAclId = "createwebacl-1472061481310"
-)
+)}
 
 }

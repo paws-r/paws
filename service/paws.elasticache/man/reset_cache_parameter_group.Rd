@@ -4,16 +4,8 @@
 \alias{reset_cache_parameter_group}
 \title{Modifies the parameters of a cache parameter group to the engine or system default value}
 \usage{
-reset_cache_parameter_group(
-  CacheParameterGroupName = "string",
-  ResetAllParameters = TRUE|FALSE,
-  ParameterNameValues = list(
-    list(
-      ParameterName = "string",
-      ParameterValue = "string"
-    )
-  )
-)
+reset_cache_parameter_group(CacheParameterGroupName,
+  ResetAllParameters = NULL, ParameterNameValues = NULL)
 }
 \arguments{
 \item{CacheParameterGroupName}{[required] The name of the cache parameter group to reset.}
@@ -27,6 +19,17 @@ Valid values: \code{true} | \code{false}}
 \description{
 Modifies the parameters of a cache parameter group to the engine or system default value. You can reset specific parameters by submitting a list of parameter names. To reset the entire cache parameter group, specify the \code{ResetAllParameters} and \code{CacheParameterGroupName} parameters.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{reset_cache_parameter_group(
+  CacheParameterGroupName = "string",
+  ResetAllParameters = TRUE|FALSE,
+  ParameterNameValues = list(
+    list(
+      ParameterName = "string",
+      ParameterValue = "string"
+    )
+  )
+)
 }
+}
+

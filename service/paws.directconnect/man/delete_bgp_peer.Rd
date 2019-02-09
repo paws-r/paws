@@ -4,12 +4,8 @@
 \alias{delete_bgp_peer}
 \title{Deletes the specified BGP peer on the specified virtual interface with the specified customer address and ASN}
 \usage{
-delete_bgp_peer(
-  virtualInterfaceId = "string",
-  asn = 123,
-  customerAddress = "string",
-  bgpPeerId = "string"
-)
+delete_bgp_peer(virtualInterfaceId = NULL, asn = NULL,
+  customerAddress = NULL, bgpPeerId = NULL)
 }
 \arguments{
 \item{virtualInterfaceId}{The ID of the virtual interface.}
@@ -26,6 +22,13 @@ Deletes the specified BGP peer on the specified virtual interface with the speci
 \details{
 You cannot delete the last BGP peer from a virtual interface.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_bgp_peer(
+  virtualInterfaceId = "string",
+  asn = 123,
+  customerAddress = "string",
+  bgpPeerId = "string"
+)
 }
+}
+

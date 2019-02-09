@@ -4,11 +4,8 @@
 \alias{update_server_certificate}
 \title{Updates the name and/or the path of the specified server certificate stored in IAM}
 \usage{
-update_server_certificate(
-  ServerCertificateName = "string",
-  NewPath = "string",
-  NewServerCertificateName = "string"
-)
+update_server_certificate(ServerCertificateName, NewPath = NULL,
+  NewServerCertificateName = NULL)
 }
 \arguments{
 \item{ServerCertificateName}{[required] The name of the server certificate that you want to update.
@@ -33,6 +30,12 @@ You should understand the implications of changing a server certificate's path o
 
 The person making the request (the principal), must have permission to change the server certificate with the old name and the new name. For example, to change the certificate named \code{ProductionCert} to \code{ProdCert}, the principal must have a policy that allows them to update both certificates. If the principal has permission to update the \code{ProductionCert} group, but not the \code{ProdCert} certificate, then the update fails. For more information about permissions, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/access.html}{Access Management} in the \emph{IAM User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_server_certificate(
+  ServerCertificateName = "string",
+  NewPath = "string",
+  NewServerCertificateName = "string"
+)
 }
+}
+

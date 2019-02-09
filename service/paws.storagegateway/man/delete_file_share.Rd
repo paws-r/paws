@@ -4,10 +4,7 @@
 \alias{delete_file_share}
 \title{Deletes a file share from a file gateway}
 \usage{
-delete_file_share(
-  FileShareARN = "string",
-  ForceDelete = TRUE|FALSE
-)
+delete_file_share(FileShareARN, ForceDelete = NULL)
 }
 \arguments{
 \item{FileShareARN}{[required] The Amazon Resource Name (ARN) of the file share to be deleted.}
@@ -17,6 +14,11 @@ delete_file_share(
 \description{
 Deletes a file share from a file gateway. This operation is only supported for file gateways.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_file_share(
+  FileShareARN = "string",
+  ForceDelete = TRUE|FALSE
+)
 }
+}
+

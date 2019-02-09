@@ -4,10 +4,7 @@
 \alias{get_operations_for_resource}
 \title{Gets operations for a specific resource (e}
 \usage{
-get_operations_for_resource(
-  resourceName = "string",
-  pageToken = "string"
-)
+get_operations_for_resource(resourceName, pageToken = NULL)
 }
 \arguments{
 \item{resourceName}{[required] The name of the resource for which you are requesting information.}
@@ -17,6 +14,11 @@ get_operations_for_resource(
 \description{
 Gets operations for a specific resource (e.g., an instance or a static IP).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_operations_for_resource(
+  resourceName = "string",
+  pageToken = "string"
+)
 }
+}
+

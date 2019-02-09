@@ -4,15 +4,7 @@
 \alias{tag_resource}
 \title{Adds one or more tags to the specified Amazon Lightsail resource}
 \usage{
-tag_resource(
-  resourceName = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
+tag_resource(resourceName, tags)
 }
 \arguments{
 \item{resourceName}{[required] The name of the resource to which you are adding tags.}
@@ -25,6 +17,16 @@ Adds one or more tags to the specified Amazon Lightsail resource. Each resource 
 \details{
 The \code{tag resource} operation supports tag-based access control via request tags and resource tags applied to the resource identified by resourceName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{tag_resource(
+  resourceName = "string",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
 }
+}
+

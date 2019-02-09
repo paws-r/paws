@@ -4,10 +4,7 @@
 \alias{get_branch}
 \title{Retrieves a branch for an Amplify App}
 \usage{
-get_branch(
-  appId = "string",
-  branchName = "string"
-)
+get_branch(appId, branchName)
 }
 \arguments{
 \item{appId}{[required] Unique Id for an Amplify App.}
@@ -17,6 +14,11 @@ get_branch(
 \description{
 Retrieves a branch for an Amplify App.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_branch(
+  appId = "string",
+  branchName = "string"
+)
 }
+}
+

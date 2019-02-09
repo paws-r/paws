@@ -4,22 +4,8 @@
 \alias{describe_route_tables}
 \title{Describes one or more of your route tables}
 \usage{
-describe_route_tables(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE,
-  RouteTableIds = list(
-    "string"
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
+describe_route_tables(Filters = NULL, DryRun = NULL,
+  RouteTableIds = NULL, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -63,14 +49,34 @@ Describes one or more of your route tables.
 \details{
 Each subnet in your VPC must be associated with a route table. If a subnet is not explicitly associated with any route table, it is implicitly associated with the main route table. This command does not return the subnet ID for implicit associations.
 
-For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html}{Route Tables} in the \emph{Amazon Virtual Private Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html}{Route Tables} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_route_tables(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  DryRun = TRUE|FALSE,
+  RouteTableIds = list(
+    "string"
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
+}
+}
+
 \examples{
 # This example describes the specified route table.
-describe_route_tables(
+\donttest{describe_route_tables(
   RouteTableIds = list(
     "rtb-1f382e7d"
   )
-)
+)}
 
 }

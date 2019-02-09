@@ -4,9 +4,7 @@
 \alias{delete_notebook_instance}
 \title{Deletes an Amazon SageMaker notebook instance}
 \usage{
-delete_notebook_instance(
-  NotebookInstanceName = "string"
-)
+delete_notebook_instance(NotebookInstanceName)
 }
 \arguments{
 \item{NotebookInstanceName}{[required] The name of the Amazon SageMaker notebook instance to delete.}
@@ -17,6 +15,10 @@ Deletes an Amazon SageMaker notebook instance. Before you can delete a notebook 
 \details{
 When you delete a notebook instance, you lose all of your data. Amazon SageMaker removes the ML compute instance, and deletes the ML storage volume and the network interface associated with the notebook instance.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_notebook_instance(
+  NotebookInstanceName = "string"
+)
 }
+}
+

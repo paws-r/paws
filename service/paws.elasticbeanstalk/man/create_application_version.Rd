@@ -4,29 +4,10 @@
 \alias{create_application_version}
 \title{Creates an application version for the specified application}
 \usage{
-create_application_version(
-  ApplicationName = "string",
-  VersionLabel = "string",
-  Description = "string",
-  SourceBuildInformation = list(
-    SourceType = "Git"|"Zip",
-    SourceRepository = "CodeCommit"|"S3",
-    SourceLocation = "string"
-  ),
-  SourceBundle = list(
-    S3Bucket = "string",
-    S3Key = "string"
-  ),
-  BuildConfiguration = list(
-    ArtifactName = "string",
-    CodeBuildServiceRole = "string",
-    ComputeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE",
-    Image = "string",
-    TimeoutInMinutes = 123
-  ),
-  AutoCreateApplication = TRUE|FALSE,
-  Process = TRUE|FALSE
-)
+create_application_version(ApplicationName, VersionLabel,
+  Description = NULL, SourceBuildInformation = NULL,
+  SourceBundle = NULL, BuildConfiguration = NULL,
+  AutoCreateApplication = NULL, Process = NULL)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application. If no application is found with this name, and \code{AutoCreateApplication} is \code{false}, returns an \code{InvalidParameterValue} error.}
@@ -69,10 +50,37 @@ Omit both \code{SourceBuildInformation} and \code{SourceBundle} to use the defau
 
 Once you create an application version with a specified Amazon S3 bucket and key location, you cannot change that Amazon S3 location. If you change the Amazon S3 location, you receive an exception when you attempt to launch an environment from the application version.
 }
+\section{Accepted Parameters}{
+\preformatted{create_application_version(
+  ApplicationName = "string",
+  VersionLabel = "string",
+  Description = "string",
+  SourceBuildInformation = list(
+    SourceType = "Git"|"Zip",
+    SourceRepository = "CodeCommit"|"S3",
+    SourceLocation = "string"
+  ),
+  SourceBundle = list(
+    S3Bucket = "string",
+    S3Key = "string"
+  ),
+  BuildConfiguration = list(
+    ArtifactName = "string",
+    CodeBuildServiceRole = "string",
+    ComputeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE",
+    Image = "string",
+    TimeoutInMinutes = 123
+  ),
+  AutoCreateApplication = TRUE|FALSE,
+  Process = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # The following operation creates a new version (v1) of an application
 # named my-app:
-create_application_version(
+\donttest{create_application_version(
   ApplicationName = "my-app",
   AutoCreateApplication = TRUE,
   Description = "my-app-v1",
@@ -82,6 +90,6 @@ create_application_version(
     S3Key = "sample.war"
   ),
   VersionLabel = "v1"
-)
+)}
 
 }

@@ -9,6 +9,3 @@ describe_operating_systems()
 \description{
 Describes the operating systems that are supported by AWS OpsWorks Stacks.
 }
-\examples{
-
-}

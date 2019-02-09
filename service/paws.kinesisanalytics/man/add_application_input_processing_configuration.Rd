@@ -4,17 +4,8 @@
 \alias{add_application_input_processing_configuration}
 \title{Adds an InputProcessingConfiguration to an application}
 \usage{
-add_application_input_processing_configuration(
-  ApplicationName = "string",
-  CurrentApplicationVersionId = 123,
-  InputId = "string",
-  InputProcessingConfiguration = list(
-    InputLambdaProcessor = list(
-      ResourceARN = "string",
-      RoleARN = "string"
-    )
-  )
-)
+add_application_input_processing_configuration(ApplicationName,
+  CurrentApplicationVersionId, InputId, InputProcessingConfiguration)
 }
 \arguments{
 \item{ApplicationName}{[required] Name of the application to which you want to add the input processing configuration.}
@@ -28,6 +19,18 @@ add_application_input_processing_configuration(
 \description{
 Adds an InputProcessingConfiguration to an application. An input processor preprocesses records on the input stream before the application's SQL code executes. Currently, the only input processor available is \href{https://aws.amazon.com/documentation/lambda/}{AWS Lambda}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{add_application_input_processing_configuration(
+  ApplicationName = "string",
+  CurrentApplicationVersionId = 123,
+  InputId = "string",
+  InputProcessingConfiguration = list(
+    InputLambdaProcessor = list(
+      ResourceARN = "string",
+      RoleARN = "string"
+    )
+  )
+)
 }
+}
+

@@ -4,17 +4,10 @@
 \alias{update_replication_job}
 \title{Updates the specified settings for the specified replication job}
 \usage{
-update_replication_job(
-  replicationJobId = "string",
-  frequency = 123,
-  nextReplicationRunStartTime = as.POSIXct("2015-01-01"),
-  licenseType = "AWS"|"BYOL",
-  roleName = "string",
-  description = "string",
-  numberOfRecentAmisToKeep = 123,
-  encrypted = TRUE|FALSE,
-  kmsKeyId = "string"
-)
+update_replication_job(replicationJobId, frequency = NULL,
+  nextReplicationRunStartTime = NULL, licenseType = NULL,
+  roleName = NULL, description = NULL,
+  numberOfRecentAmisToKeep = NULL, encrypted = NULL, kmsKeyId = NULL)
 }
 \arguments{
 \item{replicationJobId}{[required] The identifier of the replication job.}
@@ -46,6 +39,18 @@ If encrypted is \emph{true} but a KMS key id is not specified, the customer's de
 \description{
 Updates the specified settings for the specified replication job.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_replication_job(
+  replicationJobId = "string",
+  frequency = 123,
+  nextReplicationRunStartTime = as.POSIXct("2015-01-01"),
+  licenseType = "AWS"|"BYOL",
+  roleName = "string",
+  description = "string",
+  numberOfRecentAmisToKeep = 123,
+  encrypted = TRUE|FALSE,
+  kmsKeyId = "string"
+)
 }
+}
+

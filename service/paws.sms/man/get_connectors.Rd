@@ -4,10 +4,7 @@
 \alias{get_connectors}
 \title{Describes the connectors registered with the AWS SMS}
 \usage{
-get_connectors(
-  nextToken = "string",
-  maxResults = 123
-)
+get_connectors(nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{nextToken}{The token for the next set of results.}
@@ -17,6 +14,11 @@ get_connectors(
 \description{
 Describes the connectors registered with the AWS SMS.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_connectors(
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

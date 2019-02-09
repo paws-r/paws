@@ -4,10 +4,7 @@
 \alias{describe_step}
 \title{Provides more detail about the cluster step}
 \usage{
-describe_step(
-  ClusterId = "string",
-  StepId = "string"
-)
+describe_step(ClusterId, StepId)
 }
 \arguments{
 \item{ClusterId}{[required] The identifier of the cluster with steps to describe.}
@@ -17,6 +14,11 @@ describe_step(
 \description{
 Provides more detail about the cluster step.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_step(
+  ClusterId = "string",
+  StepId = "string"
+)
 }
+}
+

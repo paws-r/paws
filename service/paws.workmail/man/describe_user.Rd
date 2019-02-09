@@ -4,10 +4,7 @@
 \alias{describe_user}
 \title{Provides information regarding the user}
 \usage{
-describe_user(
-  OrganizationId = "string",
-  UserId = "string"
-)
+describe_user(OrganizationId, UserId)
 }
 \arguments{
 \item{OrganizationId}{[required] The identifier for the organization under which the user exists.}
@@ -17,6 +14,11 @@ describe_user(
 \description{
 Provides information regarding the user.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_user(
+  OrganizationId = "string",
+  UserId = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{describe_rule}
 \title{Describes the specified rule}
 \usage{
-describe_rule(
-  Name = "string"
-)
+describe_rule(Name)
 }
 \arguments{
 \item{Name}{[required] The name of the rule.}
@@ -17,6 +15,10 @@ Describes the specified rule.
 \details{
 DescribeRule does not list the targets of a rule. To see the targets associated with a rule, use ListTargetsByRule.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_rule(
+  Name = "string"
+)
 }
+}
+

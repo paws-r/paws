@@ -2,22 +2,11 @@
 % Please edit documentation in R/paws.appsync_operations.R
 \name{update_resolver}
 \alias{update_resolver}
-\title{Updates a \code{Resolver} object}
+\title{Updates a Resolver object}
 \usage{
-update_resolver(
-  apiId = "string",
-  typeName = "string",
-  fieldName = "string",
-  dataSourceName = "string",
-  requestMappingTemplate = "string",
-  responseMappingTemplate = "string",
-  kind = "UNIT"|"PIPELINE",
-  pipelineConfig = list(
-    functions = list(
-      "string"
-    )
-  )
-)
+update_resolver(apiId, typeName, fieldName, dataSourceName = NULL,
+  requestMappingTemplate, responseMappingTemplate = NULL, kind = NULL,
+  pipelineConfig = NULL)
 }
 \arguments{
 \item{apiId}{[required] The API ID.}
@@ -43,6 +32,21 @@ update_resolver(
 \description{
 Updates a \code{Resolver} object.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_resolver(
+  apiId = "string",
+  typeName = "string",
+  fieldName = "string",
+  dataSourceName = "string",
+  requestMappingTemplate = "string",
+  responseMappingTemplate = "string",
+  kind = "UNIT"|"PIPELINE",
+  pipelineConfig = list(
+    functions = list(
+      "string"
+    )
+  )
+)
 }
+}
+

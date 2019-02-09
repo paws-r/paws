@@ -4,9 +4,7 @@
 \alias{delete_entity_recognizer}
 \title{Deletes an entity recognizer}
 \usage{
-delete_entity_recognizer(
-  EntityRecognizerArn = "string"
-)
+delete_entity_recognizer(EntityRecognizerArn)
 }
 \arguments{
 \item{EntityRecognizerArn}{[required] The Amazon Resource Name (ARN) that identifies the entity recognizer.}
@@ -19,6 +17,10 @@ Only those recognizers that are in terminated states (IN\_ERROR, TRAINED) will b
 
 This is an asynchronous action that puts the recognizer into a DELETING state, and it is then removed by a background job. Once removed, the recognizer disappears from your account and is no longer available for use.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_entity_recognizer(
+  EntityRecognizerArn = "string"
+)
 }
+}
+

@@ -4,13 +4,7 @@
 \alias{create_user_pool_domain}
 \title{Creates a new domain for a user pool}
 \usage{
-create_user_pool_domain(
-  Domain = "string",
-  UserPoolId = "string",
-  CustomDomainConfig = list(
-    CertificateArn = "string"
-  )
-)
+create_user_pool_domain(Domain, UserPoolId, CustomDomainConfig = NULL)
 }
 \arguments{
 \item{Domain}{[required] The domain string.}
@@ -26,6 +20,14 @@ For more information about the hosted domain and custom domains, see \href{http:
 \description{
 Creates a new domain for a user pool.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_user_pool_domain(
+  Domain = "string",
+  UserPoolId = "string",
+  CustomDomainConfig = list(
+    CertificateArn = "string"
+  )
+)
 }
+}
+

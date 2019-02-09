@@ -4,10 +4,7 @@
 \alias{acknowledge_job}
 \title{Returns information about a specified job and whether that job has been received by the job worker}
 \usage{
-acknowledge_job(
-  jobId = "string",
-  nonce = "string"
-)
+acknowledge_job(jobId, nonce)
 }
 \arguments{
 \item{jobId}{[required] The unique system-generated ID of the job for which you want to confirm receipt.}
@@ -17,6 +14,11 @@ acknowledge_job(
 \description{
 Returns information about a specified job and whether that job has been received by the job worker. Only used for custom actions.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{acknowledge_job(
+  jobId = "string",
+  nonce = "string"
+)
 }
+}
+

@@ -4,18 +4,9 @@
 \alias{describe_tags}
 \title{Returns a list of tags}
 \usage{
-describe_tags(
-  ResourceName = "string",
-  ResourceType = "string",
-  MaxRecords = 123,
-  Marker = "string",
-  TagKeys = list(
-    "string"
-  ),
-  TagValues = list(
-    "string"
-  )
-)
+describe_tags(ResourceName = NULL, ResourceType = NULL,
+  MaxRecords = NULL, Marker = NULL, TagKeys = NULL,
+  TagValues = NULL)
 }
 \arguments{
 \item{ResourceName}{The Amazon Resource Name (ARN) for which you want to describe the tag or tags. For example, \code{arn:aws:redshift:us-east-1:123456789:cluster:t1}.}
@@ -59,6 +50,19 @@ If you specify both tag keys and tag values in the same request, Amazon Redshift
 
 If both tag keys and values are omitted from the request, resources are returned regardless of whether they have tag keys or values associated with them.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_tags(
+  ResourceName = "string",
+  ResourceType = "string",
+  MaxRecords = 123,
+  Marker = "string",
+  TagKeys = list(
+    "string"
+  ),
+  TagValues = list(
+    "string"
+  )
+)
 }
+}
+

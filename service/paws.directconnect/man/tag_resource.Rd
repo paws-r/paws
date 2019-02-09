@@ -4,15 +4,7 @@
 \alias{tag_resource}
 \title{Adds the specified tags to the specified AWS Direct Connect resource}
 \usage{
-tag_resource(
-  resourceArn = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
+tag_resource(resourceArn, tags)
 }
 \arguments{
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource.}
@@ -25,6 +17,16 @@ Adds the specified tags to the specified AWS Direct Connect resource. Each resou
 \details{
 Each tag consists of a key and an optional value. If a tag with the same key is already associated with the resource, this action updates its value.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{tag_resource(
+  resourceArn = "string",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
 }
+}
+

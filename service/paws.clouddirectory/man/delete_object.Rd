@@ -4,12 +4,7 @@
 \alias{delete_object}
 \title{Deletes an object and its associated attributes}
 \usage{
-delete_object(
-  DirectoryArn = "string",
-  ObjectReference = list(
-    Selector = "string"
-  )
-)
+delete_object(DirectoryArn, ObjectReference)
 }
 \arguments{
 \item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory where the object resides. For more information, see arns.}
@@ -19,6 +14,13 @@ delete_object(
 \description{
 Deletes an object and its associated attributes. Only objects with no children and no parents can be deleted. The maximum number of attributes that can be deleted during an object deletion is 30. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/limits.html}{Amazon Cloud Directory Limits}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_object(
+  DirectoryArn = "string",
+  ObjectReference = list(
+    Selector = "string"
+  )
+)
 }
+}
+

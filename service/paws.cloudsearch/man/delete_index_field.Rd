@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.cloudsearch_operations.R
 \name{delete_index_field}
 \alias{delete_index_field}
-\title{Removes an \code{IndexField} from the search domain}
+\title{Removes an IndexField from the search domain}
 \usage{
-delete_index_field(
-  DomainName = "string",
-  IndexFieldName = "string"
-)
+delete_index_field(DomainName, IndexFieldName)
 }
 \arguments{
 \item{DomainName}{[required]}
@@ -17,6 +14,11 @@ delete_index_field(
 \description{
 Removes an \code{IndexField} from the search domain. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html}{Configuring Index Fields} in the \emph{Amazon CloudSearch Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_index_field(
+  DomainName = "string",
+  IndexFieldName = "string"
+)
 }
+}
+

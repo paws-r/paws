@@ -4,9 +4,7 @@
 \alias{get_topic_attributes}
 \title{Returns all of the properties of a topic}
 \usage{
-get_topic_attributes(
-  TopicArn = "string"
-)
+get_topic_attributes(TopicArn)
 }
 \arguments{
 \item{TopicArn}{[required] The ARN of the topic whose properties you want to get.}
@@ -14,6 +12,10 @@ get_topic_attributes(
 \description{
 Returns all of the properties of a topic. Topic properties returned might differ based on the authorization of the user.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_topic_attributes(
+  TopicArn = "string"
+)
 }
+}
+

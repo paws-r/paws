@@ -4,9 +4,7 @@
 \alias{describe_secret}
 \title{Retrieves the details of a secret}
 \usage{
-describe_secret(
-  SecretId = "string"
-)
+describe_secret(SecretId)
 }
 \arguments{
 \item{SecretId}{[required] The identifier of the secret whose details you want to retrieve. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.
@@ -32,10 +30,17 @@ To run this command, you must have the following permissions:
 \item To list all of the secrets in the AWS account, use ListSecrets.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{describe_secret(
+  SecretId = "string"
+)
+}
+}
+
 \examples{
 # The following example shows how to get the details about a secret.
-describe_secret(
+\donttest{describe_secret(
   SecretId = "MyTestDatabaseSecret"
-)
+)}
 
 }

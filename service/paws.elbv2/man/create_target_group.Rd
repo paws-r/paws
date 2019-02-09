@@ -4,37 +4,25 @@
 \alias{create_target_group}
 \title{Creates a target group}
 \usage{
-create_target_group(
-  Name = "string",
-  Protocol = "HTTP"|"HTTPS"|"TCP",
-  Port = 123,
-  VpcId = "string",
-  HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP",
-  HealthCheckPort = "string",
-  HealthCheckEnabled = TRUE|FALSE,
-  HealthCheckPath = "string",
-  HealthCheckIntervalSeconds = 123,
-  HealthCheckTimeoutSeconds = 123,
-  HealthyThresholdCount = 123,
-  UnhealthyThresholdCount = 123,
-  Matcher = list(
-    HttpCode = "string"
-  ),
-  TargetType = "instance"|"ip"|"lambda"
-)
+create_target_group(Name, Protocol = NULL, Port = NULL, VpcId = NULL,
+  HealthCheckProtocol = NULL, HealthCheckPort = NULL,
+  HealthCheckEnabled = NULL, HealthCheckPath = NULL,
+  HealthCheckIntervalSeconds = NULL, HealthCheckTimeoutSeconds = NULL,
+  HealthyThresholdCount = NULL, UnhealthyThresholdCount = NULL,
+  Matcher = NULL, TargetType = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the target group.
 
 This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.}
 
-\item{Protocol}{The protocol to use for routing traffic to the targets. For Application Load Balancers, the supported protocols are HTTP and HTTPS. For Network Load Balancers, the supported protocol is TCP. If the target is a Lambda function, this parameter does not apply.}
+\item{Protocol}{The protocol to use for routing traffic to the targets. For Application Load Balancers, the supported protocols are HTTP and HTTPS. For Network Load Balancers, the supported protocols are TCP and TLS. If the target is a Lambda function, this parameter does not apply.}
 
 \item{Port}{The port on which the targets receive traffic. This port is used unless you specify a port override when registering the target. If the target is a Lambda function, this parameter does not apply.}
 
 \item{VpcId}{The identifier of the virtual private cloud (VPC). If the target is a Lambda function, this parameter does not apply.}
 
-\item{HealthCheckProtocol}{The protocol the load balancer uses when performing health checks on targets. The TCP protocol is supported only if the protocol of the target group is TCP. For Application Load Balancers, the default is HTTP. For Network Load Balancers, the default is TCP.}
+\item{HealthCheckProtocol}{The protocol the load balancer uses when performing health checks on targets. For Application Load Balancers, the default is HTTP. For Network Load Balancers, the default is TCP. The TCP protocol is supported for health checks only if the protocol of the target group is TCP or TLS. The TLS protocol is not supported for health checks.}
 
 \item{HealthCheckPort}{The port the load balancer uses when performing health checks on targets. The default is \code{traffic-port}, which is the port on which each target receives traffic from the load balancer.}
 
@@ -73,15 +61,37 @@ This operation is idempotent, which means that it completes at most one time. If
 
 For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html}{Target Groups for Your Application Load Balancers} in the \emph{Application Load Balancers Guide} or \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html}{Target Groups for Your Network Load Balancers} in the \emph{Network Load Balancers Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_target_group(
+  Name = "string",
+  Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS",
+  Port = 123,
+  VpcId = "string",
+  HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS",
+  HealthCheckPort = "string",
+  HealthCheckEnabled = TRUE|FALSE,
+  HealthCheckPath = "string",
+  HealthCheckIntervalSeconds = 123,
+  HealthCheckTimeoutSeconds = 123,
+  HealthyThresholdCount = 123,
+  UnhealthyThresholdCount = 123,
+  Matcher = list(
+    HttpCode = "string"
+  ),
+  TargetType = "instance"|"ip"|"lambda"
+)
+}
+}
+
 \examples{
 # This example creates a target group that you can use to route traffic to
 # targets using HTTP on port 80. This target group uses the default health
 # check configuration.
-create_target_group(
+\donttest{create_target_group(
   Name = "my-targets",
   Port = 80L,
   Protocol = "HTTP",
   VpcId = "vpc-3ac0fb5f"
-)
+)}
 
 }

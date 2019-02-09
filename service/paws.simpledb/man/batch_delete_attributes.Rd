@@ -4,20 +4,7 @@
 \alias{batch_delete_attributes}
 \title{Performs multiple DeleteAttributes operations in a single call, which reduces round trips and latencies}
 \usage{
-batch_delete_attributes(
-  DomainName = "string",
-  Items = list(
-    list(
-      Name = "string",
-      Attributes = list(
-        list(
-          Name = "string",
-          Value = "string"
-        )
-      )
-    )
-  )
-)
+batch_delete_attributes(DomainName, Items)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain in which the attributes are being deleted.}
@@ -44,6 +31,21 @@ The following limitations are enforced for this operation:
 \item 25 item limit per BatchDeleteAttributes operation
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{batch_delete_attributes(
+  DomainName = "string",
+  Items = list(
+    list(
+      Name = "string",
+      Attributes = list(
+        list(
+          Name = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
+)
 }
+}
+

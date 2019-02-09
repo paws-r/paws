@@ -4,32 +4,10 @@
 \alias{create_product}
 \title{Creates a product}
 \usage{
-create_product(
-  AcceptLanguage = "string",
-  Name = "string",
-  Owner = "string",
-  Description = "string",
-  Distributor = "string",
-  SupportDescription = "string",
-  SupportEmail = "string",
-  SupportUrl = "string",
-  ProductType = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  ProvisioningArtifactParameters = list(
-    Name = "string",
-    Description = "string",
-    Info = list(
-      "string"
-    ),
-    Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR"
-  ),
-  IdempotencyToken = "string"
-)
+create_product(AcceptLanguage = NULL, Name, Owner, Description = NULL,
+  Distributor = NULL, SupportDescription = NULL, SupportEmail = NULL,
+  SupportUrl = NULL, ProductType, Tags = NULL,
+  ProvisioningArtifactParameters, IdempotencyToken)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -64,6 +42,33 @@ create_product(
 \description{
 Creates a product.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_product(
+  AcceptLanguage = "string",
+  Name = "string",
+  Owner = "string",
+  Description = "string",
+  Distributor = "string",
+  SupportDescription = "string",
+  SupportEmail = "string",
+  SupportUrl = "string",
+  ProductType = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  ProvisioningArtifactParameters = list(
+    Name = "string",
+    Description = "string",
+    Info = list(
+      "string"
+    ),
+    Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR"
+  ),
+  IdempotencyToken = "string"
+)
 }
+}
+

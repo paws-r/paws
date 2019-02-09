@@ -4,10 +4,7 @@
 \alias{describe_node_association_status}
 \title{Returns the current status of an existing association or disassociation request}
 \usage{
-describe_node_association_status(
-  NodeAssociationStatusToken = "string",
-  ServerName = "string"
-)
+describe_node_association_status(NodeAssociationStatusToken, ServerName)
 }
 \arguments{
 \item{NodeAssociationStatusToken}{[required] The token returned in either the AssociateNodeResponse or the DisassociateNodeResponse.}
@@ -20,6 +17,11 @@ Returns the current status of an existing association or disassociation request.
 \details{
 A \code{ResourceNotFoundException} is thrown when no recent association or disassociation request with the specified token is found, or when the server does not exist. A \code{ValidationException} is raised when parameters of the request are not valid.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_node_association_status(
+  NodeAssociationStatusToken = "string",
+  ServerName = "string"
+)
 }
+}
+

@@ -4,11 +4,8 @@
 \alias{list_associations_for_license_configuration}
 \title{Lists the resource associations for a license configuration}
 \usage{
-list_associations_for_license_configuration(
-  LicenseConfigurationArn = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_associations_for_license_configuration(LicenseConfigurationArn,
+  MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{LicenseConfigurationArn}{[required] ARN of a \code{LicenseConfiguration} object.}
@@ -20,6 +17,12 @@ list_associations_for_license_configuration(
 \description{
 Lists the resource associations for a license configuration. Resource associations need not consume licenses from a license configuration. For example, an AMI or a stopped instance may not consume a license (depending on the license rules). Use this operation to find all resources associated with a license configuration.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_associations_for_license_configuration(
+  LicenseConfigurationArn = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

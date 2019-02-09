@@ -4,10 +4,7 @@
 \alias{attach_policy}
 \title{Attaches a policy to the specified target}
 \usage{
-attach_policy(
-  policyName = "string",
-  target = "string"
-)
+attach_policy(policyName, target)
 }
 \arguments{
 \item{policyName}{[required] The name of the policy to attach.}
@@ -17,6 +14,11 @@ attach_policy(
 \description{
 Attaches a policy to the specified target.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{attach_policy(
+  policyName = "string",
+  target = "string"
+)
 }
+}
+

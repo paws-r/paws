@@ -4,15 +4,8 @@
 \alias{describe_container_instances}
 \title{Describes Amazon Elastic Container Service container instances}
 \usage{
-describe_container_instances(
-  cluster = "string",
-  containerInstances = list(
-    "string"
-  ),
-  include = list(
-    "TAGS"
-  )
-)
+describe_container_instances(cluster = NULL, containerInstances,
+  include = NULL)
 }
 \arguments{
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that hosts the container instances to describe. If you do not specify a cluster, the default cluster is assumed.}
@@ -24,15 +17,28 @@ describe_container_instances(
 \description{
 Describes Amazon Elastic Container Service container instances. Returns metadata about registered and remaining resources on each container instance requested.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_container_instances(
+  cluster = "string",
+  containerInstances = list(
+    "string"
+  ),
+  include = list(
+    "TAGS"
+  )
+)
+}
+}
+
 \examples{
 # This example provides a description of the specified container instance
 # in your default region, using the container instance UUID as an
 # identifier.
-describe_container_instances(
+\donttest{describe_container_instances(
   cluster = "default",
   containerInstances = list(
     "f2756532-8f13-4d53-87c9-aed50dc94cd7"
   )
-)
+)}
 
 }

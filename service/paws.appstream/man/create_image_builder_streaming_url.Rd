@@ -4,10 +4,7 @@
 \alias{create_image_builder_streaming_url}
 \title{Creates a URL to start an image builder streaming session}
 \usage{
-create_image_builder_streaming_url(
-  Name = "string",
-  Validity = 123
-)
+create_image_builder_streaming_url(Name, Validity = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the image builder.}
@@ -17,6 +14,11 @@ create_image_builder_streaming_url(
 \description{
 Creates a URL to start an image builder streaming session.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_image_builder_streaming_url(
+  Name = "string",
+  Validity = 123
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{flush_stage_cache}
 \title{Flushes a stage's cache}
 \usage{
-flush_stage_cache(
-  restApiId = "string",
-  stageName = "string"
-)
+flush_stage_cache(restApiId, stageName)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -17,6 +14,11 @@ flush_stage_cache(
 \description{
 Flushes a stage's cache.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{flush_stage_cache(
+  restApiId = "string",
+  stageName = "string"
+)
 }
+}
+

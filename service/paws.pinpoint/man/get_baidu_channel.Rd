@@ -4,9 +4,7 @@
 \alias{get_baidu_channel}
 \title{Get a BAIDU GCM channel}
 \usage{
-get_baidu_channel(
-  ApplicationId = "string"
-)
+get_baidu_channel(ApplicationId)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
@@ -14,6 +12,10 @@ get_baidu_channel(
 \description{
 Get a BAIDU GCM channel
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_baidu_channel(
+  ApplicationId = "string"
+)
 }
+}
+

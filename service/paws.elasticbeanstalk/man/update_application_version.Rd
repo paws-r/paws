@@ -4,11 +4,8 @@
 \alias{update_application_version}
 \title{Updates the specified application version to have the specified properties}
 \usage{
-update_application_version(
-  ApplicationName = "string",
-  VersionLabel = "string",
-  Description = "string"
-)
+update_application_version(ApplicationName, VersionLabel,
+  Description = NULL)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application associated with this version.
@@ -27,13 +24,22 @@ Updates the specified application version to have the specified properties.
 \details{
 If a property (for example, \code{description}) is not provided, the value remains unchanged. To clear properties, specify an empty string.
 }
+\section{Accepted Parameters}{
+\preformatted{update_application_version(
+  ApplicationName = "string",
+  VersionLabel = "string",
+  Description = "string"
+)
+}
+}
+
 \examples{
 # The following operation updates the description of an application
 # version named 22a0-stage-150819_185942:
-update_application_version(
+\donttest{update_application_version(
   ApplicationName = "my-app",
   Description = "new description",
   VersionLabel = "22a0-stage-150819_185942"
-)
+)}
 
 }

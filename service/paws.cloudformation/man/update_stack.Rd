@@ -4,50 +4,13 @@
 \alias{update_stack}
 \title{Updates a stack as specified in the template}
 \usage{
-update_stack(
-  StackName = "string",
-  TemplateBody = "string",
-  TemplateURL = "string",
-  UsePreviousTemplate = TRUE|FALSE,
-  StackPolicyDuringUpdateBody = "string",
-  StackPolicyDuringUpdateURL = "string",
-  Parameters = list(
-    list(
-      ParameterKey = "string",
-      ParameterValue = "string",
-      UsePreviousValue = TRUE|FALSE,
-      ResolvedValue = "string"
-    )
-  ),
-  Capabilities = list(
-    "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"
-  ),
-  ResourceTypes = list(
-    "string"
-  ),
-  RoleARN = "string",
-  RollbackConfiguration = list(
-    RollbackTriggers = list(
-      list(
-        Arn = "string",
-        Type = "string"
-      )
-    ),
-    MonitoringTimeInMinutes = 123
-  ),
-  StackPolicyBody = "string",
-  StackPolicyURL = "string",
-  NotificationARNs = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  ClientRequestToken = "string"
-)
+update_stack(StackName, TemplateBody = NULL, TemplateURL = NULL,
+  UsePreviousTemplate = NULL, StackPolicyDuringUpdateBody = NULL,
+  StackPolicyDuringUpdateURL = NULL, Parameters = NULL,
+  Capabilities = NULL, ResourceTypes = NULL, RoleARN = NULL,
+  RollbackConfiguration = NULL, StackPolicyBody = NULL,
+  StackPolicyURL = NULL, NotificationARNs = NULL, Tags = NULL,
+  ClientRequestToken = NULL)
 }
 \arguments{
 \item{StackName}{[required] The name or unique stack ID of the stack to update.}
@@ -150,6 +113,51 @@ To get a copy of the template for an existing stack, you can use the GetTemplate
 
 For more information about creating an update template, updating a stack, and monitoring the progress of the update, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks.html}{Updating a Stack}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_stack(
+  StackName = "string",
+  TemplateBody = "string",
+  TemplateURL = "string",
+  UsePreviousTemplate = TRUE|FALSE,
+  StackPolicyDuringUpdateBody = "string",
+  StackPolicyDuringUpdateURL = "string",
+  Parameters = list(
+    list(
+      ParameterKey = "string",
+      ParameterValue = "string",
+      UsePreviousValue = TRUE|FALSE,
+      ResolvedValue = "string"
+    )
+  ),
+  Capabilities = list(
+    "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"
+  ),
+  ResourceTypes = list(
+    "string"
+  ),
+  RoleARN = "string",
+  RollbackConfiguration = list(
+    RollbackTriggers = list(
+      list(
+        Arn = "string",
+        Type = "string"
+      )
+    ),
+    MonitoringTimeInMinutes = 123
+  ),
+  StackPolicyBody = "string",
+  StackPolicyURL = "string",
+  NotificationARNs = list(
+    "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  ClientRequestToken = "string"
+)
 }
+}
+

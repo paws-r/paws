@@ -4,11 +4,8 @@
 \alias{update_group}
 \title{Updates a group resource}
 \usage{
-update_group(
-  GroupName = "string",
-  GroupARN = "string",
-  FilterExpression = "string"
-)
+update_group(GroupName = NULL, GroupARN = NULL,
+  FilterExpression = NULL)
 }
 \arguments{
 \item{GroupName}{The case-sensitive name of the group.}
@@ -20,6 +17,12 @@ update_group(
 \description{
 Updates a group resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_group(
+  GroupName = "string",
+  GroupARN = "string",
+  FilterExpression = "string"
+)
 }
+}
+

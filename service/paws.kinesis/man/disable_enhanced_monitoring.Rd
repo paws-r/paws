@@ -4,12 +4,7 @@
 \alias{disable_enhanced_monitoring}
 \title{Disables enhanced monitoring}
 \usage{
-disable_enhanced_monitoring(
-  StreamName = "string",
-  ShardLevelMetrics = list(
-    "IncomingBytes"|"IncomingRecords"|"OutgoingBytes"|"OutgoingRecords"|"WriteProvisionedThroughputExceeded"|"ReadProvisionedThroughputExceeded"|"IteratorAgeMilliseconds"|"ALL"
-  )
-)
+disable_enhanced_monitoring(StreamName, ShardLevelMetrics)
 }
 \arguments{
 \item{StreamName}{[required] The name of the Kinesis data stream for which to disable enhanced monitoring.}
@@ -33,6 +28,13 @@ For more information, see \href{http://docs.aws.amazon.com/kinesis/latest/dev/mo
 \description{
 Disables enhanced monitoring.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disable_enhanced_monitoring(
+  StreamName = "string",
+  ShardLevelMetrics = list(
+    "IncomingBytes"|"IncomingRecords"|"OutgoingBytes"|"OutgoingRecords"|"WriteProvisionedThroughputExceeded"|"ReadProvisionedThroughputExceeded"|"IteratorAgeMilliseconds"|"ALL"
+  )
+)
 }
+}
+

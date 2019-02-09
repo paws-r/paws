@@ -4,11 +4,8 @@
 \alias{list_speech_synthesis_tasks}
 \title{Returns a list of SpeechSynthesisTask objects ordered by their creation date}
 \usage{
-list_speech_synthesis_tasks(
-  MaxResults = 123,
-  NextToken = "string",
-  Status = "scheduled"|"inProgress"|"completed"|"failed"
-)
+list_speech_synthesis_tasks(MaxResults = NULL, NextToken = NULL,
+  Status = NULL)
 }
 \arguments{
 \item{MaxResults}{Maximum number of speech synthesis tasks returned in a List operation.}
@@ -20,6 +17,12 @@ list_speech_synthesis_tasks(
 \description{
 Returns a list of SpeechSynthesisTask objects ordered by their creation date. This operation can filter the tasks by their status, for example, allowing users to list only tasks that are completed.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_speech_synthesis_tasks(
+  MaxResults = 123,
+  NextToken = "string",
+  Status = "scheduled"|"inProgress"|"completed"|"failed"
+)
 }
+}
+

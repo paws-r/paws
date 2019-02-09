@@ -4,10 +4,7 @@
 \alias{get_records}
 \title{Gets data records from a Kinesis data stream's shard}
 \usage{
-get_records(
-  ShardIterator = "string",
-  Limit = 123
-)
+get_records(ShardIterator, Limit = NULL)
 }
 \arguments{
 \item{ShardIterator}{[required] The position in the shard from which you want to start sequentially reading data records. A shard iterator specifies this position using the sequence number of a data record in the shard.}
@@ -32,6 +29,11 @@ Each Amazon Kinesis record includes a value, \code{ApproximateArrivalTimestamp},
 
 This operation has a limit of five transactions per second per account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_records(
+  ShardIterator = "string",
+  Limit = 123
+)
 }
+}
+

@@ -4,11 +4,8 @@
 \alias{describe_load_balancer_target_groups}
 \title{Describes the target groups for the specified Auto Scaling group}
 \usage{
-describe_load_balancer_target_groups(
-  AutoScalingGroupName = "string",
-  NextToken = "string",
-  MaxRecords = 123
-)
+describe_load_balancer_target_groups(AutoScalingGroupName,
+  NextToken = NULL, MaxRecords = NULL)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
@@ -20,11 +17,20 @@ describe_load_balancer_target_groups(
 \description{
 Describes the target groups for the specified Auto Scaling group.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_load_balancer_target_groups(
+  AutoScalingGroupName = "string",
+  NextToken = "string",
+  MaxRecords = 123
+)
+}
+}
+
 \examples{
 # This example describes the target groups attached to the specified Auto
 # Scaling group.
-describe_load_balancer_target_groups(
+\donttest{describe_load_balancer_target_groups(
   AutoScalingGroupName = "my-auto-scaling-group"
-)
+)}
 
 }

@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.mturk_operations.R
 \name{accept_qualification_request}
 \alias{accept_qualification_request}
-\title{The \code{AcceptQualificationRequest} operation approves a Worker's request for a Qualification}
+\title{The AcceptQualificationRequest operation approves a Worker's request for a Qualification}
 \usage{
-accept_qualification_request(
-  QualificationRequestId = "string",
-  IntegerValue = 123
-)
+accept_qualification_request(QualificationRequestId, IntegerValue = NULL)
 }
 \arguments{
 \item{QualificationRequestId}{[required] The ID of the Qualification request, as returned by the \code{GetQualificationRequests} operation.}
@@ -22,6 +19,11 @@ Only the owner of the Qualification type can grant a Qualification request for t
 
 A successful request for the \code{AcceptQualificationRequest} operation returns with no errors and an empty body.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{accept_qualification_request(
+  QualificationRequestId = "string",
+  IntegerValue = 123
+)
 }
+}
+

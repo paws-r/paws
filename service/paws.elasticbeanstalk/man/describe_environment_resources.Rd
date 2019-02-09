@@ -4,10 +4,8 @@
 \alias{describe_environment_resources}
 \title{Returns AWS resources for this environment}
 \usage{
-describe_environment_resources(
-  EnvironmentId = "string",
-  EnvironmentName = "string"
-)
+describe_environment_resources(EnvironmentId = NULL,
+  EnvironmentName = NULL)
 }
 \arguments{
 \item{EnvironmentId}{The ID of the environment to retrieve AWS resource usage data.
@@ -21,11 +19,19 @@ Condition: You must specify either this or an EnvironmentId, or both. If you do 
 \description{
 Returns AWS resources for this environment.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_environment_resources(
+  EnvironmentId = "string",
+  EnvironmentName = "string"
+)
+}
+}
+
 \examples{
 # The following operation retrieves information about resources in an
 # environment named my-env:
-describe_environment_resources(
+\donttest{describe_environment_resources(
   EnvironmentName = "my-env"
-)
+)}
 
 }

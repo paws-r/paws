@@ -4,7 +4,18 @@
 \alias{send_messages}
 \title{Used to send a direct message}
 \usage{
-send_messages(
+send_messages(ApplicationId, MessageRequest)
+}
+\arguments{
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+
+\item{MessageRequest}{[required]}
+}
+\description{
+Used to send a direct message.
+}
+\section{Accepted Parameters}{
+\preformatted{send_messages(
   ApplicationId = "string",
   MessageRequest = list(
     Addresses = list(
@@ -219,14 +230,5 @@ send_messages(
   )
 )
 }
-\arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+}
 
-\item{MessageRequest}{[required]}
-}
-\description{
-Used to send a direct message.
-}
-\examples{
-
-}

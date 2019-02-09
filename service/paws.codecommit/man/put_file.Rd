@@ -4,17 +4,9 @@
 \alias{put_file}
 \title{Adds or updates a file in a branch in an AWS CodeCommit repository, and generates a commit for the addition in the specified branch}
 \usage{
-put_file(
-  repositoryName = "string",
-  branchName = "string",
-  fileContent = raw,
-  filePath = "string",
-  fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK",
-  parentCommitId = "string",
-  commitMessage = "string",
-  name = "string",
-  email = "string"
-)
+put_file(repositoryName, branchName, fileContent, filePath,
+  fileMode = NULL, parentCommitId = NULL, commitMessage = NULL,
+  name = NULL, email = NULL)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository where you want to add or update the file.}
@@ -42,6 +34,18 @@ The commit ID must match the ID of the head commit at the time of the operation,
 \description{
 Adds or updates a file in a branch in an AWS CodeCommit repository, and generates a commit for the addition in the specified branch.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_file(
+  repositoryName = "string",
+  branchName = "string",
+  fileContent = raw,
+  filePath = "string",
+  fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK",
+  parentCommitId = "string",
+  commitMessage = "string",
+  name = "string",
+  email = "string"
+)
 }
+}
+

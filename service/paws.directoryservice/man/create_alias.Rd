@@ -4,10 +4,7 @@
 \alias{create_alias}
 \title{Creates an alias for a directory and assigns the alias to the directory}
 \usage{
-create_alias(
-  DirectoryId = "string",
-  Alias = "string"
-)
+create_alias(DirectoryId, Alias)
 }
 \arguments{
 \item{DirectoryId}{[required] The identifier of the directory for which to create the alias.}
@@ -22,6 +19,11 @@ Creates an alias for a directory and assigns the alias to the directory. The ali
 \details{
 After an alias has been created, it cannot be deleted or reused, so this operation should only be used when absolutely necessary.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_alias(
+  DirectoryId = "string",
+  Alias = "string"
+)
 }
+}
+

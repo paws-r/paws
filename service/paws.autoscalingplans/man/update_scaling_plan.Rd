@@ -4,7 +4,26 @@
 \alias{update_scaling_plan}
 \title{Updates the specified scaling plan}
 \usage{
-update_scaling_plan(
+update_scaling_plan(ScalingPlanName, ScalingPlanVersion,
+  ApplicationSource = NULL, ScalingInstructions = NULL)
+}
+\arguments{
+\item{ScalingPlanName}{[required] The name of the scaling plan.}
+
+\item{ScalingPlanVersion}{[required] The version number of the scaling plan.}
+
+\item{ApplicationSource}{A CloudFormation stack or set of tags.}
+
+\item{ScalingInstructions}{The scaling instructions.}
+}
+\description{
+Updates the specified scaling plan.
+}
+\details{
+You cannot update a scaling plan if it is in the process of being created, updated, or deleted.
+}
+\section{Accepted Parameters}{
+\preformatted{update_scaling_plan(
   ScalingPlanName = "string",
   ScalingPlanVersion = 123,
   ApplicationSource = list(
@@ -76,21 +95,5 @@ update_scaling_plan(
   )
 )
 }
-\arguments{
-\item{ScalingPlanName}{[required] The name of the scaling plan.}
-
-\item{ScalingPlanVersion}{[required] The version number of the scaling plan.}
-
-\item{ApplicationSource}{A CloudFormation stack or set of tags.}
-
-\item{ScalingInstructions}{The scaling instructions.}
 }
-\description{
-Updates the specified scaling plan.
-}
-\details{
-You cannot update a scaling plan if it is in the process of being created, updated, or deleted.
-}
-\examples{
 
-}

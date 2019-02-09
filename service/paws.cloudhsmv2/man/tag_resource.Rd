@@ -4,15 +4,7 @@
 \alias{tag_resource}
 \title{Adds or overwrites one or more tags for the specified AWS CloudHSM cluster}
 \usage{
-tag_resource(
-  ResourceId = "string",
-  TagList = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+tag_resource(ResourceId, TagList)
 }
 \arguments{
 \item{ResourceId}{[required] The cluster identifier (ID) for the cluster that you are tagging. To find the cluster ID, use DescribeClusters.}
@@ -22,6 +14,16 @@ tag_resource(
 \description{
 Adds or overwrites one or more tags for the specified AWS CloudHSM cluster.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{tag_resource(
+  ResourceId = "string",
+  TagList = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

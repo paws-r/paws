@@ -4,10 +4,7 @@
 \alias{get_client_certificates}
 \title{Gets a collection of ClientCertificate resources}
 \usage{
-get_client_certificates(
-  position = "string",
-  limit = 123
-)
+get_client_certificates(position = NULL, limit = NULL)
 }
 \arguments{
 \item{position}{The current pagination position in the paged result set.}
@@ -17,6 +14,11 @@ get_client_certificates(
 \description{
 Gets a collection of ClientCertificate resources.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_client_certificates(
+  position = "string",
+  limit = 123
+)
 }
+}
+

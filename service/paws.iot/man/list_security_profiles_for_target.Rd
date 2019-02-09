@@ -4,12 +4,8 @@
 \alias{list_security_profiles_for_target}
 \title{Lists the Device Defender security profiles attached to a target (thing group)}
 \usage{
-list_security_profiles_for_target(
-  nextToken = "string",
-  maxResults = 123,
-  recursive = TRUE|FALSE,
-  securityProfileTargetArn = "string"
-)
+list_security_profiles_for_target(nextToken = NULL, maxResults = NULL,
+  recursive = NULL, securityProfileTargetArn)
 }
 \arguments{
 \item{nextToken}{The token for the next set of results.}
@@ -23,6 +19,13 @@ list_security_profiles_for_target(
 \description{
 Lists the Device Defender security profiles attached to a target (thing group).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_security_profiles_for_target(
+  nextToken = "string",
+  maxResults = 123,
+  recursive = TRUE|FALSE,
+  securityProfileTargetArn = "string"
+)
 }
+}
+

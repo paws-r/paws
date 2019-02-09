@@ -4,14 +4,8 @@
 \alias{put_mailbox_permissions}
 \title{Sets permissions for a user or group}
 \usage{
-put_mailbox_permissions(
-  OrganizationId = "string",
-  EntityId = "string",
-  GranteeId = "string",
-  PermissionValues = list(
-    "FULL_ACCESS"|"SEND_AS"|"SEND_ON_BEHALF"
-  )
-)
+put_mailbox_permissions(OrganizationId, EntityId, GranteeId,
+  PermissionValues)
 }
 \arguments{
 \item{OrganizationId}{[required] The identifier of the organization under which the entity (user or group) exists.}
@@ -25,6 +19,15 @@ put_mailbox_permissions(
 \description{
 Sets permissions for a user or group. This replaces any pre-existing permissions set for the entity.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_mailbox_permissions(
+  OrganizationId = "string",
+  EntityId = "string",
+  GranteeId = "string",
+  PermissionValues = list(
+    "FULL_ACCESS"|"SEND_AS"|"SEND_ON_BEHALF"
+  )
+)
 }
+}
+

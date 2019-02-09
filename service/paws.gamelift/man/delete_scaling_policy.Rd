@@ -4,10 +4,7 @@
 \alias{delete_scaling_policy}
 \title{Deletes a fleet scaling policy}
 \usage{
-delete_scaling_policy(
-  Name = "string",
-  FleetId = "string"
-)
+delete_scaling_policy(Name, FleetId)
 }
 \arguments{
 \item{Name}{[required] Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.}
@@ -19,8 +16,6 @@ Deletes a fleet scaling policy. This action means that the policy is no longer i
 }
 \details{
 To temporarily suspend scaling policies, call StopFleetActions. This operation suspends all policies for the fleet.
-
-Operations related to fleet capacity scaling include:
 \itemize{
 \item DescribeFleetCapacity
 \item UpdateFleetCapacity
@@ -34,6 +29,11 @@ Operations related to fleet capacity scaling include:
 \item StopFleetActions
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_scaling_policy(
+  Name = "string",
+  FleetId = "string"
+)
 }
+}
+

@@ -4,15 +4,7 @@
 \alias{poll_for_third_party_jobs}
 \title{Determines whether there are any third party jobs for a job worker to act on}
 \usage{
-poll_for_third_party_jobs(
-  actionTypeId = list(
-    category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
-    owner = "AWS"|"ThirdParty"|"Custom",
-    provider = "string",
-    version = "string"
-  ),
-  maxBatchSize = 123
-)
+poll_for_third_party_jobs(actionTypeId, maxBatchSize = NULL)
 }
 \arguments{
 \item{actionTypeId}{[required] Represents information about an action type.}
@@ -25,6 +17,16 @@ Determines whether there are any third party jobs for a job worker to act on. On
 \details{
 When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{poll_for_third_party_jobs(
+  actionTypeId = list(
+    category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+    owner = "AWS"|"ThirdParty"|"Custom",
+    provider = "string",
+    version = "string"
+  ),
+  maxBatchSize = 123
+)
 }
+}
+

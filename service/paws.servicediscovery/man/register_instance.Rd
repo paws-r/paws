@@ -4,14 +4,8 @@
 \alias{register_instance}
 \title{Creates or updates one or more records and, optionally, creates a health check based on the settings in a specified service}
 \usage{
-register_instance(
-  ServiceId = "string",
-  InstanceId = "string",
-  CreatorRequestId = "string",
-  Attributes = list(
-    "string"
-  )
-)
+register_instance(ServiceId, InstanceId, CreatorRequestId = NULL,
+  Attributes)
 }
 \arguments{
 \item{ServiceId}{[required] The ID of the service that you want to use for settings for the instance.}
@@ -106,6 +100,15 @@ When AWS Cloud Map receives a DNS query for the specified DNS name, it returns t
 
 For the current limit on the number of instances that you can register using the same namespace and using the same service, see \href{http://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html}{AWS Cloud Map Limits} in the \emph{AWS Cloud Map Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{register_instance(
+  ServiceId = "string",
+  InstanceId = "string",
+  CreatorRequestId = "string",
+  Attributes = list(
+    "string"
+  )
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{delete_lag}
 \title{Deletes the specified link aggregation group (LAG)}
 \usage{
-delete_lag(
-  lagId = "string"
-)
+delete_lag(lagId)
 }
 \arguments{
 \item{lagId}{[required] The ID of the LAG.}
@@ -14,6 +12,10 @@ delete_lag(
 \description{
 Deletes the specified link aggregation group (LAG). You cannot delete a LAG if it has active virtual interfaces or hosted connections.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_lag(
+  lagId = "string"
+)
 }
+}
+

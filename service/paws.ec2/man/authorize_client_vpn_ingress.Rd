@@ -4,14 +4,9 @@
 \alias{authorize_client_vpn_ingress}
 \title{Adds an ingress authorization rule to a Client VPN endpoint}
 \usage{
-authorize_client_vpn_ingress(
-  ClientVpnEndpointId = "string",
-  TargetNetworkCidr = "string",
-  AccessGroupId = "string",
-  AuthorizeAllGroups = TRUE|FALSE,
-  Description = "string",
-  DryRun = TRUE|FALSE
-)
+authorize_client_vpn_ingress(ClientVpnEndpointId, TargetNetworkCidr,
+  AccessGroupId = NULL, AuthorizeAllGroups = NULL,
+  Description = NULL, DryRun = NULL)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint.}
@@ -29,6 +24,15 @@ authorize_client_vpn_ingress(
 \description{
 Adds an ingress authorization rule to a Client VPN endpoint. Ingress authorization rules act as firewall rules that grant access to networks. You must configure ingress authorization rules to enable clients to access resources in AWS or on-premises networks.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{authorize_client_vpn_ingress(
+  ClientVpnEndpointId = "string",
+  TargetNetworkCidr = "string",
+  AccessGroupId = "string",
+  AuthorizeAllGroups = TRUE|FALSE,
+  Description = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.snowball_operations.R
 \name{list_clusters}
 \alias{list_clusters}
-\title{Returns an array of \code{ClusterListEntry} objects of the specified length}
+\title{Returns an array of ClusterListEntry objects of the specified length}
 \usage{
-list_clusters(
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_clusters(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{The number of \code{ClusterListEntry} objects to return.}
@@ -17,10 +14,18 @@ list_clusters(
 \description{
 Returns an array of \code{ClusterListEntry} objects of the specified length. Each \code{ClusterListEntry} object contains a cluster's state, a cluster's ID, and other important status information.
 }
+\section{Accepted Parameters}{
+\preformatted{list_clusters(
+  MaxResults = 123,
+  NextToken = "string"
+)
+}
+}
+
 \examples{
 # Returns an array of ClusterListEntry objects of the specified length.
 # Each ClusterListEntry object contains a cluster's state, a cluster's ID,
 # and other important status information.
-list_clusters()
+\donttest{list_clusters()}
 
 }

@@ -4,11 +4,8 @@
 \alias{list_signing_certificates}
 \title{Returns information about the signing certificates associated with the specified IAM user}
 \usage{
-list_signing_certificates(
-  UserName = "string",
-  Marker = "string",
-  MaxItems = 123
-)
+list_signing_certificates(UserName = NULL, Marker = NULL,
+  MaxItems = NULL)
 }
 \arguments{
 \item{UserName}{The name of the IAM user whose signing certificates you want to examine.
@@ -29,11 +26,20 @@ Although each user is limited to a small number of signing certificates, you can
 
 If the \code{UserName} field is not specified, the user name is determined implicitly based on the AWS access key ID used to sign the request for this API. This operation works for access keys under the AWS account. Consequently, you can use this operation to manage AWS account root user credentials even if the AWS account has no associated users.
 }
+\section{Accepted Parameters}{
+\preformatted{list_signing_certificates(
+  UserName = "string",
+  Marker = "string",
+  MaxItems = 123
+)
+}
+}
+
 \examples{
 # The following command lists the signing certificates for the IAM user
 # named Bob.
-list_signing_certificates(
+\donttest{list_signing_certificates(
   UserName = "Bob"
-)
+)}
 
 }

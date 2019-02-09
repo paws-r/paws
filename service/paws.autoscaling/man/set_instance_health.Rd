@@ -4,11 +4,8 @@
 \alias{set_instance_health}
 \title{Sets the health status of the specified instance}
 \usage{
-set_instance_health(
-  InstanceId = "string",
-  HealthStatus = "string",
-  ShouldRespectGracePeriod = TRUE|FALSE
-)
+set_instance_health(InstanceId, HealthStatus,
+  ShouldRespectGracePeriod = NULL)
 }
 \arguments{
 \item{InstanceId}{[required] The ID of the instance.}
@@ -25,12 +22,21 @@ Sets the health status of the specified instance.
 \details{
 For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html}{Health Checks} in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{set_instance_health(
+  InstanceId = "string",
+  HealthStatus = "string",
+  ShouldRespectGracePeriod = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example sets the health status of the specified instance to
 # Unhealthy.
-set_instance_health(
+\donttest{set_instance_health(
   HealthStatus = "Unhealthy",
   InstanceId = "i-93633f9b"
-)
+)}
 
 }

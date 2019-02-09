@@ -12,6 +12,6 @@ Deletes the password policy for the AWS account. There are no parameters.
 \examples{
 # The following command removes the password policy from the current AWS
 # account:
-delete_account_password_policy()
+\donttest{delete_account_password_policy()}
 
 }

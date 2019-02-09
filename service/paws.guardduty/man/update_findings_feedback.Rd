@@ -4,14 +4,8 @@
 \alias{update_findings_feedback}
 \title{Marks specified Amazon GuardDuty findings as useful or not useful}
 \usage{
-update_findings_feedback(
-  Comments = "string",
-  DetectorId = "string",
-  Feedback = "USEFUL"|"NOT_USEFUL",
-  FindingIds = list(
-    "string"
-  )
-)
+update_findings_feedback(Comments = NULL, DetectorId, Feedback,
+  FindingIds)
 }
 \arguments{
 \item{Comments}{Additional feedback about the GuardDuty findings.}
@@ -25,6 +19,15 @@ update_findings_feedback(
 \description{
 Marks specified Amazon GuardDuty findings as useful or not useful.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_findings_feedback(
+  Comments = "string",
+  DetectorId = "string",
+  Feedback = "USEFUL"|"NOT_USEFUL",
+  FindingIds = list(
+    "string"
+  )
+)
 }
+}
+

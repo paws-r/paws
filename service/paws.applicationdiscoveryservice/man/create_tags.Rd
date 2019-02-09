@@ -4,17 +4,7 @@
 \alias{create_tags}
 \title{Creates one or more tags for configuration items}
 \usage{
-create_tags(
-  configurationIds = list(
-    "string"
-  ),
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
+create_tags(configurationIds, tags)
 }
 \arguments{
 \item{configurationIds}{[required] A list of configuration items that you want to tag.}
@@ -26,6 +16,18 @@ create_tags(
 \description{
 Creates one or more tags for configuration items. Tags are metadata that help you categorize IT assets. This API accepts a list of multiple configuration items.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_tags(
+  configurationIds = list(
+    "string"
+  ),
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
 }
+}
+

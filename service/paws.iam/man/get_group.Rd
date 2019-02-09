@@ -4,11 +4,7 @@
 \alias{get_group}
 \title{Returns a list of IAM users that are in the specified IAM group}
 \usage{
-get_group(
-  GroupName = "string",
-  Marker = "string",
-  MaxItems = 123
-)
+get_group(GroupName, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{GroupName}{[required] The name of the group.
@@ -24,6 +20,12 @@ If you do not include this parameter, the number of items defaults to 100. Note 
 \description{
 Returns a list of IAM users that are in the specified IAM group. You can paginate the results using the \code{MaxItems} and \code{Marker} parameters.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_group(
+  GroupName = "string",
+  Marker = "string",
+  MaxItems = 123
+)
 }
+}
+

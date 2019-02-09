@@ -4,14 +4,9 @@
 \alias{describe_cache_engine_versions}
 \title{Returns a list of the available cache engines and their versions}
 \usage{
-describe_cache_engine_versions(
-  Engine = "string",
-  EngineVersion = "string",
-  CacheParameterGroupFamily = "string",
-  MaxRecords = 123,
-  Marker = "string",
-  DefaultOnly = TRUE|FALSE
-)
+describe_cache_engine_versions(Engine = NULL, EngineVersion = NULL,
+  CacheParameterGroupFamily = NULL, MaxRecords = NULL, Marker = NULL,
+  DefaultOnly = NULL)
 }
 \arguments{
 \item{Engine}{The cache engine to return. Valid values: \code{memcached} | \code{redis}}
@@ -44,6 +39,15 @@ Constraints: minimum 20; maximum 100.}
 \description{
 Returns a list of the available cache engines and their versions.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_cache_engine_versions(
+  Engine = "string",
+  EngineVersion = "string",
+  CacheParameterGroupFamily = "string",
+  MaxRecords = 123,
+  Marker = "string",
+  DefaultOnly = TRUE|FALSE
+)
 }
+}
+

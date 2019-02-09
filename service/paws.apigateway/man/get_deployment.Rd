@@ -4,13 +4,7 @@
 \alias{get_deployment}
 \title{Gets information about a Deployment resource}
 \usage{
-get_deployment(
-  restApiId = "string",
-  deploymentId = "string",
-  embed = list(
-    "string"
-  )
-)
+get_deployment(restApiId, deploymentId, embed = NULL)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -22,6 +16,14 @@ get_deployment(
 \description{
 Gets information about a Deployment resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_deployment(
+  restApiId = "string",
+  deploymentId = "string",
+  embed = list(
+    "string"
+  )
+)
 }
+}
+

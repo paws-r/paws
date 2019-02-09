@@ -4,12 +4,8 @@
 \alias{create_accelerator}
 \title{Create an accelerator}
 \usage{
-create_accelerator(
-  Name = "string",
-  IpAddressType = "IPV4",
-  Enabled = TRUE|FALSE,
-  IdempotencyToken = "string"
-)
+create_accelerator(Name, IpAddressType = NULL, Enabled = NULL,
+  IdempotencyToken)
 }
 \arguments{
 \item{Name}{[required] The name of an accelerator. The name can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens (-), and must not begin or end with a hyphen.}
@@ -25,6 +21,13 @@ If the value is set to true, an accelerator cannot be deleted. If set to false, 
 \description{
 Create an accelerator. An accelerator includes one or more listeners that process inbound connections and direct traffic to one or more endpoint groups, each of which includes endpoints, such as Network Load Balancers. To see an AWS CLI example of creating an accelerator, scroll down to \strong{Example}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_accelerator(
+  Name = "string",
+  IpAddressType = "IPV4",
+  Enabled = TRUE|FALSE,
+  IdempotencyToken = "string"
+)
 }
+}
+

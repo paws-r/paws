@@ -4,7 +4,21 @@
 \alias{create_connector_definition_version}
 \title{Creates a version of a connector definition which has already been defined}
 \usage{
-create_connector_definition_version(
+create_connector_definition_version(AmznClientToken = NULL,
+  ConnectorDefinitionId, Connectors = NULL)
+}
+\arguments{
+\item{AmznClientToken}{A client token used to correlate requests and responses.}
+
+\item{ConnectorDefinitionId}{[required] The ID of the connector definition.}
+
+\item{Connectors}{A list of references to connectors in this version, with their corresponding configuration settings.}
+}
+\description{
+Creates a version of a connector definition which has already been defined.
+}
+\section{Accepted Parameters}{
+\preformatted{create_connector_definition_version(
   AmznClientToken = "string",
   ConnectorDefinitionId = "string",
   Connectors = list(
@@ -18,16 +32,5 @@ create_connector_definition_version(
   )
 )
 }
-\arguments{
-\item{AmznClientToken}{A client token used to correlate requests and responses.}
-
-\item{ConnectorDefinitionId}{[required] The ID of the connector definition.}
-
-\item{Connectors}{A list of references to connectors in this version, with their corresponding configuration settings.}
 }
-\description{
-Creates a version of a connector definition which has already been defined.
-}
-\examples{
 
-}

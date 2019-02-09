@@ -7,11 +7,11 @@
 \title{paws.storagegateway: AWS Storage Gateway}
 \description{
 AWS Storage Gateway is the service that connects an
-on-premises software appliance with cloud-based storage to provide
-seamless and secure integration between an organization\'s on-premises
-IT environment and AWS\'s storage infrastructure. The service enables
-you to securely upload data to the AWS cloud for cost effective backup
-and rapid disaster recovery.
+    on-premises software appliance with cloud-based storage to provide
+    seamless and secure integration between an organization\'s on-premises
+    IT environment and AWS\'s storage infrastructure. The service enables
+    you to securely upload data to the AWS cloud for cost effective backup
+    and rapid disaster recovery.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

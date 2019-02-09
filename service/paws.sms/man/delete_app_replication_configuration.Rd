@@ -4,9 +4,7 @@
 \alias{delete_app_replication_configuration}
 \title{Deletes existing replication configuration for an application}
 \usage{
-delete_app_replication_configuration(
-  appId = "string"
-)
+delete_app_replication_configuration(appId = NULL)
 }
 \arguments{
 \item{appId}{ID of the application associated with the replication configuration.}
@@ -14,6 +12,10 @@ delete_app_replication_configuration(
 \description{
 Deletes existing replication configuration for an application.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_app_replication_configuration(
+  appId = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{delete_job}
 \title{Deletes a specified job definition}
 \usage{
-delete_job(
-  JobName = "string"
-)
+delete_job(JobName)
 }
 \arguments{
 \item{JobName}{[required] The name of the job definition to delete.}
@@ -14,6 +12,10 @@ delete_job(
 \description{
 Deletes a specified job definition. If the job definition is not found, no exception is thrown.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_job(
+  JobName = "string"
+)
 }
+}
+

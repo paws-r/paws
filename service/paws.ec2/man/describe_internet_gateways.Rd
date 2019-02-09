@@ -4,20 +4,8 @@
 \alias{describe_internet_gateways}
 \title{Describes one or more of your internet gateways}
 \usage{
-describe_internet_gateways(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE,
-  InternetGatewayIds = list(
-    "string"
-  )
-)
+describe_internet_gateways(Filters = NULL, DryRun = NULL,
+  InternetGatewayIds = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -39,9 +27,27 @@ Default: Describes all your internet gateways.}
 \description{
 Describes one or more of your internet gateways.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_internet_gateways(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  DryRun = TRUE|FALSE,
+  InternetGatewayIds = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # This example describes the Internet gateway for the specified VPC.
-describe_internet_gateways(
+\donttest{describe_internet_gateways(
   Filters = list(
     list(
       Name = "attachment.vpc-id",
@@ -50,6 +56,6 @@ describe_internet_gateways(
       )
     )
   )
-)
+)}
 
 }

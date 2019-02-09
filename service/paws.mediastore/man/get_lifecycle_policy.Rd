@@ -4,9 +4,7 @@
 \alias{get_lifecycle_policy}
 \title{Retrieves the object lifecycle policy that is assigned to a container}
 \usage{
-get_lifecycle_policy(
-  ContainerName = "string"
-)
+get_lifecycle_policy(ContainerName)
 }
 \arguments{
 \item{ContainerName}{[required] The name of the container that the object lifecycle policy is assigned to.}
@@ -14,6 +12,10 @@ get_lifecycle_policy(
 \description{
 Retrieves the object lifecycle policy that is assigned to a container.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_lifecycle_policy(
+  ContainerName = "string"
+)
 }
+}
+

@@ -6,8 +6,8 @@
 \alias{paws.machinelearning-package}
 \title{paws.machinelearning: Amazon Machine Learning}
 \description{
-Definition of the public APIs exposed by Amazon Machine
-Learning
+Definition of the public APIs exposed by
+    Amazon Machine Learning
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

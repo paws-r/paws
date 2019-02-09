@@ -2,20 +2,13 @@
 % Please edit documentation in R/paws.lambda_operations.R
 \name{add_layer_version_permission}
 \alias{add_layer_version_permission}
-\title{Adds permissions to the resource-based policy of a version of a function layer}
+\title{Adds permissions to the resource-based policy of a version of an AWS Lambda layer}
 \usage{
-add_layer_version_permission(
-  LayerName = "string",
-  VersionNumber = 123,
-  StatementId = "string",
-  Action = "string",
-  Principal = "string",
-  OrganizationId = "string",
-  RevisionId = "string"
-)
+add_layer_version_permission(LayerName, VersionNumber, StatementId, Action,
+  Principal, OrganizationId = NULL, RevisionId = NULL)
 }
 \arguments{
-\item{LayerName}{[required] The name of the layer.}
+\item{LayerName}{[required] The name or Amazon Resource Name (ARN) of the layer.}
 
 \item{VersionNumber}{[required] The version number.}
 
@@ -30,11 +23,21 @@ add_layer_version_permission(
 \item{RevisionId}{Only update the policy if the revision ID matches the ID specified. Use this option to avoid modifying a policy that has changed since you last read it.}
 }
 \description{
-Adds permissions to the resource-based policy of a version of a function layer. Use this action to grant layer usage permission to other accounts. You can grant permission to a single account, all AWS accounts, or all accounts in an organization.
+Adds permissions to the resource-based policy of a version of an \href{http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layer}. Use this action to grant layer usage permission to other accounts. You can grant permission to a single account, all AWS accounts, or all accounts in an organization.
 }
 \details{
 To revoke permission, call RemoveLayerVersionPermission with the statement ID that you specified when you added it.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{add_layer_version_permission(
+  LayerName = "string",
+  VersionNumber = 123,
+  StatementId = "string",
+  Action = "string",
+  Principal = "string",
+  OrganizationId = "string",
+  RevisionId = "string"
+)
 }
+}
+

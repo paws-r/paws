@@ -4,10 +4,7 @@
 \alias{describe_vault}
 \title{This operation returns information about a vault, including the vault's Amazon Resource Name (ARN), the date the vault was created, the number of archives it contains, and the total size of all the archives in the vault}
 \usage{
-describe_vault(
-  accountId = "string",
-  vaultName = "string"
-)
+describe_vault(accountId, vaultName)
 }
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
@@ -22,11 +19,19 @@ An AWS account has full permission to perform all operations (actions). However,
 
 For conceptual information and underlying REST API, see \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/retrieving-vault-info.html}{Retrieving Vault Metadata in Amazon Glacier} and \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-get.html}{Describe Vault} in the \emph{Amazon Glacier Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_vault(
+  accountId = "string",
+  vaultName = "string"
+)
+}
+}
+
 \examples{
 # The example retrieves data about a vault named my-vault.
-describe_vault(
+\donttest{describe_vault(
   accountId = "-",
   vaultName = "my-vault"
-)
+)}
 
 }

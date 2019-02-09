@@ -4,10 +4,7 @@
 \alias{disassociate_connection_from_lag}
 \title{Disassociates a connection from a link aggregation group (LAG)}
 \usage{
-disassociate_connection_from_lag(
-  connectionId = "string",
-  lagId = "string"
-)
+disassociate_connection_from_lag(connectionId, lagId)
 }
 \arguments{
 \item{connectionId}{[required] The ID of the connection. For example, dxcon-abc123.}
@@ -20,6 +17,11 @@ Disassociates a connection from a link aggregation group (LAG). The connection i
 \details{
 If disassociating the connection would cause the LAG to fall below its setting for minimum number of operational connections, the request fails, except when it's the last member of the LAG. If all connections are disassociated, the LAG continues to exist as an empty LAG with no physical connections.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disassociate_connection_from_lag(
+  connectionId = "string",
+  lagId = "string"
+)
 }
+}
+

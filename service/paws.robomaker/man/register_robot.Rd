@@ -4,10 +4,7 @@
 \alias{register_robot}
 \title{Registers a robot with a fleet}
 \usage{
-register_robot(
-  fleet = "string",
-  robot = "string"
-)
+register_robot(fleet, robot)
 }
 \arguments{
 \item{fleet}{[required] The Amazon Resource Name (ARN) of the fleet.}
@@ -17,6 +14,11 @@ register_robot(
 \description{
 Registers a robot with a fleet.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{register_robot(
+  fleet = "string",
+  robot = "string"
+)
 }
+}
+

@@ -4,14 +4,8 @@
 \alias{get_compliance_details_by_config_rule}
 \title{Returns the evaluation results for the specified AWS Config rule}
 \usage{
-get_compliance_details_by_config_rule(
-  ConfigRuleName = "string",
-  ComplianceTypes = list(
-    "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA"
-  ),
-  Limit = 123,
-  NextToken = "string"
-)
+get_compliance_details_by_config_rule(ConfigRuleName,
+  ComplianceTypes = NULL, Limit = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ConfigRuleName}{[required] The name of the AWS Config rule for which you want compliance information.}
@@ -27,6 +21,15 @@ The allowed values are \code{COMPLIANT}, \code{NON_COMPLIANT}, and \code{NOT_APP
 \description{
 Returns the evaluation results for the specified AWS Config rule. The results indicate which AWS resources were evaluated by the rule, when each resource was last evaluated, and whether each resource complies with the rule.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_compliance_details_by_config_rule(
+  ConfigRuleName = "string",
+  ComplianceTypes = list(
+    "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA"
+  ),
+  Limit = 123,
+  NextToken = "string"
+)
 }
+}
+

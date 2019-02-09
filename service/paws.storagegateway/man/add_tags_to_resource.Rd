@@ -4,15 +4,7 @@
 \alias{add_tags_to_resource}
 \title{Adds one or more tags to the specified resource}
 \usage{
-add_tags_to_resource(
-  ResourceARN = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+add_tags_to_resource(ResourceARN, Tags)
 }
 \arguments{
 \item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the resource you want to add tags to.}
@@ -33,9 +25,22 @@ Adds one or more tags to the specified resource. You use tags to add metadata to
 
 You can create a maximum of 10 tags for each resource. Virtual tapes and storage volumes that are recovered to a new gateway maintain their tags.
 }
+\section{Accepted Parameters}{
+\preformatted{add_tags_to_resource(
+  ResourceARN = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # Adds one or more tags to the specified resource.
-add_tags_to_resource(
+\donttest{add_tags_to_resource(
   ResourceARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-11A2222B",
   Tags = list(
     list(
@@ -43,6 +48,6 @@ add_tags_to_resource(
       Value = "East Coast"
     )
   )
-)
+)}
 
 }

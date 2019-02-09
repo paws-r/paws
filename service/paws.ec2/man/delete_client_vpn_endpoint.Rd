@@ -4,10 +4,7 @@
 \alias{delete_client_vpn_endpoint}
 \title{Deletes the specified Client VPN endpoint}
 \usage{
-delete_client_vpn_endpoint(
-  ClientVpnEndpointId = "string",
-  DryRun = TRUE|FALSE
-)
+delete_client_vpn_endpoint(ClientVpnEndpointId, DryRun = NULL)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN to be deleted.}
@@ -17,6 +14,11 @@ delete_client_vpn_endpoint(
 \description{
 Deletes the specified Client VPN endpoint. You must disassociate all target networks before you can delete a Client VPN endpoint.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_client_vpn_endpoint(
+  ClientVpnEndpointId = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

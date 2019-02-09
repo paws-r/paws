@@ -4,9 +4,7 @@
 \alias{get_change}
 \title{Returns the current status of a change batch request}
 \usage{
-get_change(
-  Id = "string"
-)
+get_change(Id)
 }
 \arguments{
 \item{Id}{[required] The ID of the change batch request. The value that you specify here is the value that \code{ChangeResourceRecordSets} returned in the \code{Id} element when you submitted the request.}
@@ -20,6 +18,10 @@ Returns the current status of a change batch request. The status is one of the f
 \item \code{INSYNC} indicates that the changes have propagated to all Route 53 DNS servers.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_change(
+  Id = "string"
+)
 }
+}
+

@@ -4,11 +4,8 @@
 \alias{list_identities}
 \title{Returns a list containing all of the identities (email addresses and domains) for your AWS account in the current AWS Region, regardless of verification status}
 \usage{
-list_identities(
-  IdentityType = "EmailAddress"|"Domain",
-  NextToken = "string",
-  MaxItems = 123
-)
+list_identities(IdentityType = NULL, NextToken = NULL,
+  MaxItems = NULL)
 }
 \arguments{
 \item{IdentityType}{The type of the identities to list. Possible values are "EmailAddress" and "Domain". If this parameter is omitted, then all identities will be listed.}
@@ -23,13 +20,22 @@ Returns a list containing all of the identities (email addresses and domains) fo
 \details{
 You can execute this operation no more than once per second.
 }
+\section{Accepted Parameters}{
+\preformatted{list_identities(
+  IdentityType = "EmailAddress"|"Domain",
+  NextToken = "string",
+  MaxItems = 123
+)
+}
+}
+
 \examples{
 # The following example lists the email address identities that have been
 # submitted for verification with Amazon SES:
-list_identities(
+\donttest{list_identities(
   IdentityType = "EmailAddress",
   MaxItems = 123L,
   NextToken = ""
-)
+)}
 
 }

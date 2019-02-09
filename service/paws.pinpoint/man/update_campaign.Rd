@@ -4,7 +4,20 @@
 \alias{update_campaign}
 \title{Use to update a campaign}
 \usage{
-update_campaign(
+update_campaign(ApplicationId, CampaignId, WriteCampaignRequest)
+}
+\arguments{
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+
+\item{CampaignId}{[required] The unique ID of the campaign.}
+
+\item{WriteCampaignRequest}{[required]}
+}
+\description{
+Use to update a campaign.
+}
+\section{Accepted Parameters}{
+\preformatted{update_campaign(
   ApplicationId = "string",
   CampaignId = "string",
   WriteCampaignRequest = list(
@@ -275,16 +288,5 @@ update_campaign(
   )
 )
 }
-\arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
-
-\item{CampaignId}{[required] The unique ID of the campaign.}
-
-\item{WriteCampaignRequest}{[required]}
 }
-\description{
-Use to update a campaign.
-}
-\examples{
 
-}

@@ -4,11 +4,7 @@
 \alias{get_identity_notification_attributes}
 \title{Given a list of verified identities (email addresses and/or domains), returns a structure describing identity notification attributes}
 \usage{
-get_identity_notification_attributes(
-  Identities = list(
-    "string"
-  )
-)
+get_identity_notification_attributes(Identities)
 }
 \arguments{
 \item{Identities}{[required] A list of one or more identities. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: \code{user@example.com}, \code{example.com}, \code{arn:aws:ses:us-east-1:123456789012:identity/example.com}.}
@@ -21,13 +17,22 @@ This operation is throttled at one request per second and can only get notificat
 
 For more information about using notifications with Amazon SES, see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html}{Amazon SES Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{get_identity_notification_attributes(
+  Identities = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # The following example returns the notification attributes for an
 # identity:
-get_identity_notification_attributes(
+\donttest{get_identity_notification_attributes(
   Identities = list(
     "example.com"
   )
-)
+)}
 
 }

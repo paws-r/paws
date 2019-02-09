@@ -4,11 +4,8 @@
 \alias{describe_environment_managed_actions}
 \title{Lists an environment's upcoming and in-progress managed actions}
 \usage{
-describe_environment_managed_actions(
-  EnvironmentName = "string",
-  EnvironmentId = "string",
-  Status = "Scheduled"|"Pending"|"Running"|"Unknown"
-)
+describe_environment_managed_actions(EnvironmentName = NULL,
+  EnvironmentId = NULL, Status = NULL)
 }
 \arguments{
 \item{EnvironmentName}{The name of the target environment.}
@@ -20,6 +17,12 @@ describe_environment_managed_actions(
 \description{
 Lists an environment's upcoming and in-progress managed actions.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_environment_managed_actions(
+  EnvironmentName = "string",
+  EnvironmentId = "string",
+  Status = "Scheduled"|"Pending"|"Running"|"Unknown"
+)
 }
+}
+

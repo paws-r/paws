@@ -4,10 +4,7 @@
 \alias{create_instance_profile}
 \title{Creates a new instance profile}
 \usage{
-create_instance_profile(
-  InstanceProfileName = "string",
-  Path = "string"
-)
+create_instance_profile(InstanceProfileName, Path = NULL)
 }
 \arguments{
 \item{InstanceProfileName}{[required] The name of the instance profile to create.
@@ -26,12 +23,20 @@ Creates a new instance profile. For information about instance profiles, go to \
 \details{
 For information about the number of instance profiles you can create, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html}{Limitations on IAM Entities} in the \emph{IAM User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_instance_profile(
+  InstanceProfileName = "string",
+  Path = "string"
+)
+}
+}
+
 \examples{
 # The following command creates an instance profile named Webserver that
 # is ready to have a role attached and then be associated with an EC2
 # instance.
-create_instance_profile(
+\donttest{create_instance_profile(
   InstanceProfileName = "Webserver"
-)
+)}
 
 }

@@ -4,9 +4,7 @@
 \alias{describe_build}
 \title{Retrieves properties for a build}
 \usage{
-describe_build(
-  BuildId = "string"
-)
+describe_build(BuildId)
 }
 \arguments{
 \item{BuildId}{[required] Unique identifier for a build to retrieve properties for.}
@@ -15,7 +13,6 @@ describe_build(
 Retrieves properties for a build. To request a build record, specify a build ID. If successful, an object containing the build properties is returned.
 }
 \details{
-Build-related operations include:
 \itemize{
 \item CreateBuild
 \item ListBuilds
@@ -24,6 +21,10 @@ Build-related operations include:
 \item DeleteBuild
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_build(
+  BuildId = "string"
+)
 }
+}
+

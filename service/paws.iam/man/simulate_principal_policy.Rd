@@ -4,33 +4,10 @@
 \alias{simulate_principal_policy}
 \title{Simulate how a set of IAM policies attached to an IAM entity works with a list of API operations and AWS resources to determine the policies' effective permissions}
 \usage{
-simulate_principal_policy(
-  PolicySourceArn = "string",
-  PolicyInputList = list(
-    "string"
-  ),
-  ActionNames = list(
-    "string"
-  ),
-  ResourceArns = list(
-    "string"
-  ),
-  ResourcePolicy = "string",
-  ResourceOwner = "string",
-  CallerArn = "string",
-  ContextEntries = list(
-    list(
-      ContextKeyName = "string",
-      ContextKeyValues = list(
-        "string"
-      ),
-      ContextKeyType = "string"|"stringList"|"numeric"|"numericList"|"boolean"|"booleanList"|"ip"|"ipList"|"binary"|"binaryList"|"date"|"dateList"
-    )
-  ),
-  ResourceHandlingOption = "string",
-  MaxItems = 123,
-  Marker = "string"
-)
+simulate_principal_policy(PolicySourceArn, PolicyInputList = NULL,
+  ActionNames, ResourceArns = NULL, ResourcePolicy = NULL,
+  ResourceOwner = NULL, CallerArn = NULL, ContextEntries = NULL,
+  ResourceHandlingOption = NULL, MaxItems = NULL, Marker = NULL)
 }
 \arguments{
 \item{PolicySourceArn}{[required] The Amazon Resource Name (ARN) of a user, group, or role whose policies you want to include in the simulation. If you specify a user, group, or role, the simulation includes all policies that are associated with that entity. If you specify a user, the simulation also includes all policies that are attached to any groups the user belongs to.
@@ -121,6 +98,34 @@ Context keys are variables maintained by AWS and its services that provide detai
 
 If the output is long, you can use the \code{MaxItems} and \code{Marker} parameters to paginate the results.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{simulate_principal_policy(
+  PolicySourceArn = "string",
+  PolicyInputList = list(
+    "string"
+  ),
+  ActionNames = list(
+    "string"
+  ),
+  ResourceArns = list(
+    "string"
+  ),
+  ResourcePolicy = "string",
+  ResourceOwner = "string",
+  CallerArn = "string",
+  ContextEntries = list(
+    list(
+      ContextKeyName = "string",
+      ContextKeyValues = list(
+        "string"
+      ),
+      ContextKeyType = "string"|"stringList"|"numeric"|"numericList"|"boolean"|"booleanList"|"ip"|"ipList"|"binary"|"binaryList"|"date"|"dateList"
+    )
+  ),
+  ResourceHandlingOption = "string",
+  MaxItems = 123,
+  Marker = "string"
+)
 }
+}
+

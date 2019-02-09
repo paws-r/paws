@@ -4,9 +4,7 @@
 \alias{delete_pipeline}
 \title{The DeletePipeline operation removes a pipeline}
 \usage{
-delete_pipeline(
-  Id = "string"
-)
+delete_pipeline(Id)
 }
 \arguments{
 \item{Id}{[required] The identifier of the pipeline that you want to delete.}
@@ -17,6 +15,10 @@ The DeletePipeline operation removes a pipeline.
 \details{
 You can only delete a pipeline that has never been used or that is not currently in use (doesn't contain any active jobs). If the pipeline is currently in use, \code{DeletePipeline} returns an error.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_pipeline(
+  Id = "string"
+)
 }
+}
+

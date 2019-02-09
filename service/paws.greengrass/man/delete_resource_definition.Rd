@@ -4,9 +4,7 @@
 \alias{delete_resource_definition}
 \title{Deletes a resource definition}
 \usage{
-delete_resource_definition(
-  ResourceDefinitionId = "string"
-)
+delete_resource_definition(ResourceDefinitionId)
 }
 \arguments{
 \item{ResourceDefinitionId}{[required] The ID of the resource definition.}
@@ -14,6 +12,10 @@ delete_resource_definition(
 \description{
 Deletes a resource definition.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_resource_definition(
+  ResourceDefinitionId = "string"
+)
 }
+}
+

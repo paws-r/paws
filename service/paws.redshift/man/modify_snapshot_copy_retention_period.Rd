@@ -4,11 +4,8 @@
 \alias{modify_snapshot_copy_retention_period}
 \title{Modifies the number of days to retain snapshots in the destination AWS Region after they are copied from the source AWS Region}
 \usage{
-modify_snapshot_copy_retention_period(
-  ClusterIdentifier = "string",
-  RetentionPeriod = 123,
-  Manual = TRUE|FALSE
-)
+modify_snapshot_copy_retention_period(ClusterIdentifier, RetentionPeriod,
+  Manual = NULL)
 }
 \arguments{
 \item{ClusterIdentifier}{[required] The unique identifier of the cluster for which you want to change the retention period for either automated or manual snapshots that are copied to a destination AWS Region.
@@ -34,6 +31,12 @@ Constraints: The number of days must be either -1 or an integer between 1 and 3,
 \description{
 Modifies the number of days to retain snapshots in the destination AWS Region after they are copied from the source AWS Region. By default, this operation only changes the retention period of copied automated snapshots. The retention periods for both new and existing copied automated snapshots are updated with the new retention period. You can set the manual option to change only the retention periods of copied manual snapshots. If you set this option, only newly copied manual snapshots have the new retention period.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_snapshot_copy_retention_period(
+  ClusterIdentifier = "string",
+  RetentionPeriod = 123,
+  Manual = TRUE|FALSE
+)
 }
+}
+

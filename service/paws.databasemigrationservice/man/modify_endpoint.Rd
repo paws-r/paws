@@ -4,63 +4,15 @@
 \alias{modify_endpoint}
 \title{Modifies the specified endpoint}
 \usage{
-modify_endpoint(
-  EndpointArn = "string",
-  EndpointIdentifier = "string",
-  EndpointType = "source"|"target",
-  EngineName = "string",
-  Username = "string",
-  Password = "string",
-  ServerName = "string",
-  Port = 123,
-  DatabaseName = "string",
-  ExtraConnectionAttributes = "string",
-  CertificateArn = "string",
-  SslMode = "none"|"require"|"verify-ca"|"verify-full",
-  ServiceAccessRoleArn = "string",
-  ExternalTableDefinition = "string",
-  DynamoDbSettings = list(
-    ServiceAccessRoleArn = "string"
-  ),
-  S3Settings = list(
-    ServiceAccessRoleArn = "string",
-    ExternalTableDefinition = "string",
-    CsvRowDelimiter = "string",
-    CsvDelimiter = "string",
-    BucketFolder = "string",
-    BucketName = "string",
-    CompressionType = "none"|"gzip"
-  ),
-  DmsTransferSettings = list(
-    ServiceAccessRoleArn = "string",
-    BucketName = "string"
-  ),
-  MongoDbSettings = list(
-    Username = "string",
-    Password = "string",
-    ServerName = "string",
-    Port = 123,
-    DatabaseName = "string",
-    AuthType = "no"|"password",
-    AuthMechanism = "default"|"mongodb_cr"|"scram_sha_1",
-    NestingLevel = "none"|"one",
-    ExtractDocId = "string",
-    DocsToInvestigate = "string",
-    AuthSource = "string",
-    KmsKeyId = "string"
-  ),
-  KinesisSettings = list(
-    StreamArn = "string",
-    MessageFormat = "json",
-    ServiceAccessRoleArn = "string"
-  ),
-  ElasticsearchSettings = list(
-    ServiceAccessRoleArn = "string",
-    EndpointUri = "string",
-    FullLoadErrorPercentage = 123,
-    ErrorRetryDuration = 123
-  )
-)
+modify_endpoint(EndpointArn, EndpointIdentifier = NULL,
+  EndpointType = NULL, EngineName = NULL, Username = NULL,
+  Password = NULL, ServerName = NULL, Port = NULL,
+  DatabaseName = NULL, ExtraConnectionAttributes = NULL,
+  CertificateArn = NULL, SslMode = NULL, ServiceAccessRoleArn = NULL,
+  ExternalTableDefinition = NULL, DynamoDbSettings = NULL,
+  S3Settings = NULL, DmsTransferSettings = NULL,
+  MongoDbSettings = NULL, KinesisSettings = NULL,
+  ElasticsearchSettings = NULL)
 }
 \arguments{
 \item{EndpointArn}{[required] The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.}
@@ -123,9 +75,70 @@ JSON syntax:
 \description{
 Modifies the specified endpoint.
 }
+\section{Accepted Parameters}{
+\preformatted{modify_endpoint(
+  EndpointArn = "string",
+  EndpointIdentifier = "string",
+  EndpointType = "source"|"target",
+  EngineName = "string",
+  Username = "string",
+  Password = "string",
+  ServerName = "string",
+  Port = 123,
+  DatabaseName = "string",
+  ExtraConnectionAttributes = "string",
+  CertificateArn = "string",
+  SslMode = "none"|"require"|"verify-ca"|"verify-full",
+  ServiceAccessRoleArn = "string",
+  ExternalTableDefinition = "string",
+  DynamoDbSettings = list(
+    ServiceAccessRoleArn = "string"
+  ),
+  S3Settings = list(
+    ServiceAccessRoleArn = "string",
+    ExternalTableDefinition = "string",
+    CsvRowDelimiter = "string",
+    CsvDelimiter = "string",
+    BucketFolder = "string",
+    BucketName = "string",
+    CompressionType = "none"|"gzip"
+  ),
+  DmsTransferSettings = list(
+    ServiceAccessRoleArn = "string",
+    BucketName = "string"
+  ),
+  MongoDbSettings = list(
+    Username = "string",
+    Password = "string",
+    ServerName = "string",
+    Port = 123,
+    DatabaseName = "string",
+    AuthType = "no"|"password",
+    AuthMechanism = "default"|"mongodb_cr"|"scram_sha_1",
+    NestingLevel = "none"|"one",
+    ExtractDocId = "string",
+    DocsToInvestigate = "string",
+    AuthSource = "string",
+    KmsKeyId = "string"
+  ),
+  KinesisSettings = list(
+    StreamArn = "string",
+    MessageFormat = "json",
+    ServiceAccessRoleArn = "string"
+  ),
+  ElasticsearchSettings = list(
+    ServiceAccessRoleArn = "string",
+    EndpointUri = "string",
+    FullLoadErrorPercentage = 123,
+    ErrorRetryDuration = 123
+  )
+)
+}
+}
+
 \examples{
 # Modifies the specified endpoint.
-modify_endpoint(
+\donttest{modify_endpoint(
   CertificateArn = "",
   DatabaseName = "",
   EndpointArn = "",
@@ -138,6 +151,6 @@ modify_endpoint(
   ServerName = "",
   SslMode = "require",
   Username = ""
-)
+)}
 
 }

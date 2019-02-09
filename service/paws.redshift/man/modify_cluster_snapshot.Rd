@@ -4,11 +4,8 @@
 \alias{modify_cluster_snapshot}
 \title{Modifies the settings for a snapshot}
 \usage{
-modify_cluster_snapshot(
-  SnapshotIdentifier = "string",
-  ManualSnapshotRetentionPeriod = 123,
-  Force = TRUE|FALSE
-)
+modify_cluster_snapshot(SnapshotIdentifier,
+  ManualSnapshotRetentionPeriod = NULL, Force = NULL)
 }
 \arguments{
 \item{SnapshotIdentifier}{[required] The identifier of the snapshot whose setting you want to modify.}
@@ -24,6 +21,12 @@ The value must be either -1 or an integer between 1 and 3,653.}
 \description{
 Modifies the settings for a snapshot.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_cluster_snapshot(
+  SnapshotIdentifier = "string",
+  ManualSnapshotRetentionPeriod = 123,
+  Force = TRUE|FALSE
+)
 }
+}
+

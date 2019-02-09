@@ -4,11 +4,7 @@
 \alias{describe_matchmaking}
 \title{Retrieves one or more matchmaking tickets}
 \usage{
-describe_matchmaking(
-  TicketIds = list(
-    "string"
-  )
-)
+describe_matchmaking(TicketIds)
 }
 \arguments{
 \item{TicketIds}{[required] Unique identifier for a matchmaking ticket. You can include up to 10 ID values.}
@@ -20,8 +16,6 @@ Retrieves one or more matchmaking tickets. Use this operation to retrieve ticket
 You can use this operation to track the progress of matchmaking requests (through polling) as an alternative to using event notifications. See more details on tracking matchmaking requests through polling or notifications in StartMatchmaking.
 
 To request matchmaking tickets, provide a list of up to 10 ticket IDs. If the request is successful, a ticket object is returned for each requested ID that currently exists.
-
-Matchmaking-related operations include:
 \itemize{
 \item StartMatchmaking
 \item DescribeMatchmaking
@@ -30,6 +24,12 @@ Matchmaking-related operations include:
 \item StartMatchBackfill
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_matchmaking(
+  TicketIds = list(
+    "string"
+  )
+)
 }
+}
+

@@ -4,11 +4,8 @@
 \alias{create_http_namespace}
 \title{Creates an HTTP namespace}
 \usage{
-create_http_namespace(
-  Name = "string",
-  CreatorRequestId = "string",
-  Description = "string"
-)
+create_http_namespace(Name, CreatorRequestId = NULL,
+  Description = NULL)
 }
 \arguments{
 \item{Name}{[required] The name that you want to assign to this namespace.}
@@ -23,6 +20,12 @@ Creates an HTTP namespace. Service instances that you register using an HTTP nam
 \details{
 For the current limit on the number of namespaces that you can create using the same AWS account, see \href{http://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html}{AWS Cloud Map Limits} in the \emph{AWS Cloud Map Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_http_namespace(
+  Name = "string",
+  CreatorRequestId = "string",
+  Description = "string"
+)
 }
+}
+

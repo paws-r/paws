@@ -4,13 +4,8 @@
 \alias{describe_communications}
 \title{Returns communications (and attachments) for one or more support cases}
 \usage{
-describe_communications(
-  caseId = "string",
-  beforeTime = "string",
-  afterTime = "string",
-  nextToken = "string",
-  maxResults = 123
-)
+describe_communications(caseId, beforeTime = NULL, afterTime = NULL,
+  nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{caseId}{[required] The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-\emph{12345678910-2013-c4c1d2bf33c5cf47}}
@@ -31,6 +26,14 @@ Case data is available for 12 months after creation. If a case was created more 
 
 You can use the \code{maxResults} and \code{nextToken} parameters to control the pagination of the result set. Set \code{maxResults} to the number of cases you want displayed on each page, and use \code{nextToken} to specify the resumption of pagination.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_communications(
+  caseId = "string",
+  beforeTime = "string",
+  afterTime = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

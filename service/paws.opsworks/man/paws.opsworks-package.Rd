@@ -6,10 +6,10 @@
 \alias{paws.opsworks-package}
 \title{paws.opsworks: AWS OpsWorks}
 \description{
-Welcome to the *AWS OpsWorks Stacks API Reference*. This
-guide provides descriptions, syntax, and usage examples for AWS
-OpsWorks Stacks actions and data types, including common parameters
-and error codes.
+Welcome to the *AWS OpsWorks Stacks API Reference*.
+    This guide provides descriptions, syntax, and usage examples for AWS
+    OpsWorks Stacks actions and data types, including common parameters
+    and error codes.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

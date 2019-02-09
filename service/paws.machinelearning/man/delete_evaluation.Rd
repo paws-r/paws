@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.machinelearning_operations.R
 \name{delete_evaluation}
 \alias{delete_evaluation}
-\title{Assigns the \code{DELETED} status to an \code{Evaluation}, rendering it unusable}
+\title{Assigns the DELETED status to an Evaluation, rendering it unusable}
 \usage{
-delete_evaluation(
-  EvaluationId = "string"
-)
+delete_evaluation(EvaluationId)
 }
 \arguments{
 \item{EvaluationId}{[required] A user-supplied ID that uniquely identifies the \code{Evaluation} to delete.}
@@ -21,6 +19,10 @@ Caution
 
 The results of the \code{DeleteEvaluation} operation are irreversible.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_evaluation(
+  EvaluationId = "string"
+)
 }
+}
+

@@ -2,13 +2,9 @@
 % Please edit documentation in R/paws.secretsmanager_operations.R
 \name{get_secret_value}
 \alias{get_secret_value}
-\title{Retrieves the contents of the encrypted fields \code{SecretString} or \code{SecretBinary} from the specified version of a secret, whichever contains content}
+\title{Retrieves the contents of the encrypted fields SecretString or SecretBinary from the specified version of a secret, whichever contains content}
 \usage{
-get_secret_value(
-  SecretId = "string",
-  VersionId = "string",
-  VersionStage = "string"
-)
+get_secret_value(SecretId, VersionId = NULL, VersionStage = NULL)
 }
 \arguments{
 \item{SecretId}{[required] Specifies the secret containing the version that you want to retrieve. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.
@@ -41,15 +37,24 @@ To run this command, you must have the following permissions:
 \item To retrieve the non-encrypted details for the secret, use DescribeSecret.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{get_secret_value(
+  SecretId = "string",
+  VersionId = "string",
+  VersionStage = "string"
+)
+}
+}
+
 \examples{
 # The following example shows how to retrieve the secret string value from
 # the version of the secret that has the AWSPREVIOUS staging label
 # attached. If you want to retrieve the AWSCURRENT version of the secret,
 # then you can omit the VersionStage parameter because it defaults to
 # AWSCURRENT.
-get_secret_value(
+\donttest{get_secret_value(
   SecretId = "MyTestDatabaseSecret",
   VersionStage = "AWSPREVIOUS"
-)
+)}
 
 }

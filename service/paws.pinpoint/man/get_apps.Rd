@@ -4,10 +4,7 @@
 \alias{get_apps}
 \title{Returns information about your apps}
 \usage{
-get_apps(
-  PageSize = "string",
-  Token = "string"
-)
+get_apps(PageSize = NULL, Token = NULL)
 }
 \arguments{
 \item{PageSize}{The number of entries you want on each page in the response.}
@@ -17,6 +14,11 @@ get_apps(
 \description{
 Returns information about your apps.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_apps(
+  PageSize = "string",
+  Token = "string"
+)
 }
+}
+

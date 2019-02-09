@@ -4,53 +4,20 @@
 \alias{restore_db_instance_to_point_in_time}
 \title{Restores a DB instance to an arbitrary point in time}
 \usage{
-restore_db_instance_to_point_in_time(
-  SourceDBInstanceIdentifier = "string",
-  TargetDBInstanceIdentifier = "string",
-  RestoreTime = as.POSIXct("2015-01-01"),
-  UseLatestRestorableTime = TRUE|FALSE,
-  DBInstanceClass = "string",
-  Port = 123,
-  AvailabilityZone = "string",
-  DBSubnetGroupName = "string",
-  MultiAZ = TRUE|FALSE,
-  PubliclyAccessible = TRUE|FALSE,
-  AutoMinorVersionUpgrade = TRUE|FALSE,
-  LicenseModel = "string",
-  DBName = "string",
-  Engine = "string",
-  Iops = 123,
-  OptionGroupName = "string",
-  CopyTagsToSnapshot = TRUE|FALSE,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  StorageType = "string",
-  TdeCredentialArn = "string",
-  TdeCredentialPassword = "string",
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  Domain = "string",
-  DomainIAMRoleName = "string",
-  EnableIAMDatabaseAuthentication = TRUE|FALSE,
-  EnableCloudwatchLogsExports = list(
-    "string"
-  ),
-  ProcessorFeatures = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  UseDefaultProcessorFeatures = TRUE|FALSE,
-  DBParameterGroupName = "string",
-  DeletionProtection = TRUE|FALSE,
-  SourceDbiResourceId = "string"
-)
+restore_db_instance_to_point_in_time(SourceDBInstanceIdentifier = NULL,
+  TargetDBInstanceIdentifier, RestoreTime = NULL,
+  UseLatestRestorableTime = NULL, DBInstanceClass = NULL,
+  Port = NULL, AvailabilityZone = NULL, DBSubnetGroupName = NULL,
+  MultiAZ = NULL, PubliclyAccessible = NULL,
+  AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, DBName = NULL,
+  Engine = NULL, Iops = NULL, OptionGroupName = NULL,
+  CopyTagsToSnapshot = NULL, Tags = NULL, StorageType = NULL,
+  TdeCredentialArn = NULL, TdeCredentialPassword = NULL,
+  VpcSecurityGroupIds = NULL, Domain = NULL,
+  DomainIAMRoleName = NULL, EnableIAMDatabaseAuthentication = NULL,
+  EnableCloudwatchLogsExports = NULL, ProcessorFeatures = NULL,
+  UseDefaultProcessorFeatures = NULL, DBParameterGroupName = NULL,
+  DeletionProtection = NULL, SourceDbiResourceId = NULL)
 }
 \arguments{
 \item{SourceDBInstanceIdentifier}{The identifier of the source DB instance from which to restore.
@@ -224,6 +191,54 @@ The target database is created with most of the original configuration, but in a
 
 This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For Aurora, use RestoreDBClusterToPointInTime.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{restore_db_instance_to_point_in_time(
+  SourceDBInstanceIdentifier = "string",
+  TargetDBInstanceIdentifier = "string",
+  RestoreTime = as.POSIXct("2015-01-01"),
+  UseLatestRestorableTime = TRUE|FALSE,
+  DBInstanceClass = "string",
+  Port = 123,
+  AvailabilityZone = "string",
+  DBSubnetGroupName = "string",
+  MultiAZ = TRUE|FALSE,
+  PubliclyAccessible = TRUE|FALSE,
+  AutoMinorVersionUpgrade = TRUE|FALSE,
+  LicenseModel = "string",
+  DBName = "string",
+  Engine = "string",
+  Iops = 123,
+  OptionGroupName = "string",
+  CopyTagsToSnapshot = TRUE|FALSE,
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  StorageType = "string",
+  TdeCredentialArn = "string",
+  TdeCredentialPassword = "string",
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
+  Domain = "string",
+  DomainIAMRoleName = "string",
+  EnableIAMDatabaseAuthentication = TRUE|FALSE,
+  EnableCloudwatchLogsExports = list(
+    "string"
+  ),
+  ProcessorFeatures = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  UseDefaultProcessorFeatures = TRUE|FALSE,
+  DBParameterGroupName = "string",
+  DeletionProtection = TRUE|FALSE,
+  SourceDbiResourceId = "string"
+)
 }
+}
+

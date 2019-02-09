@@ -4,9 +4,7 @@
 \alias{delete_transcription_job}
 \title{Deletes a previously submitted transcription job along with any other generated results such as the transcription, models, and so on}
 \usage{
-delete_transcription_job(
-  TranscriptionJobName = "string"
-)
+delete_transcription_job(TranscriptionJobName)
 }
 \arguments{
 \item{TranscriptionJobName}{[required] The name of the transcription job to be deleted.}
@@ -14,6 +12,10 @@ delete_transcription_job(
 \description{
 Deletes a previously submitted transcription job along with any other generated results such as the transcription, models, and so on.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_transcription_job(
+  TranscriptionJobName = "string"
+)
 }
+}
+

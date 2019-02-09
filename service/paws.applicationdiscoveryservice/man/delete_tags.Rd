@@ -4,17 +4,7 @@
 \alias{delete_tags}
 \title{Deletes the association between configuration items and one or more tags}
 \usage{
-delete_tags(
-  configurationIds = list(
-    "string"
-  ),
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
+delete_tags(configurationIds, tags = NULL)
 }
 \arguments{
 \item{configurationIds}{[required] A list of configuration items with tags that you want to delete.}
@@ -26,6 +16,18 @@ delete_tags(
 \description{
 Deletes the association between configuration items and one or more tags. This API accepts a list of multiple configuration items.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_tags(
+  configurationIds = list(
+    "string"
+  ),
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
 }
+}
+

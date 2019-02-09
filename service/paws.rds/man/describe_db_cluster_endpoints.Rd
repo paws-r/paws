@@ -4,20 +4,9 @@
 \alias{describe_db_cluster_endpoints}
 \title{Returns information about endpoints for an Amazon Aurora DB cluster}
 \usage{
-describe_db_cluster_endpoints(
-  DBClusterIdentifier = "string",
-  DBClusterEndpointIdentifier = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_db_cluster_endpoints(DBClusterIdentifier = NULL,
+  DBClusterEndpointIdentifier = NULL, Filters = NULL,
+  MaxRecords = NULL, Marker = NULL)
 }
 \arguments{
 \item{DBClusterIdentifier}{The DB cluster identifier of the DB cluster associated with the endpoint. This parameter is stored as a lowercase string.}
@@ -37,6 +26,21 @@ Constraints: Minimum 20, maximum 100.}
 \description{
 Returns information about endpoints for an Amazon Aurora DB cluster.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_db_cluster_endpoints(
+  DBClusterIdentifier = "string",
+  DBClusterEndpointIdentifier = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
+}
+

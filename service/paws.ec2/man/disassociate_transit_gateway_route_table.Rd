@@ -4,11 +4,8 @@
 \alias{disassociate_transit_gateway_route_table}
 \title{Disassociates a resource attachment from a transit gateway route table}
 \usage{
-disassociate_transit_gateway_route_table(
-  TransitGatewayRouteTableId = "string",
-  TransitGatewayAttachmentId = "string",
-  DryRun = TRUE|FALSE
-)
+disassociate_transit_gateway_route_table(TransitGatewayRouteTableId,
+  TransitGatewayAttachmentId, DryRun = NULL)
 }
 \arguments{
 \item{TransitGatewayRouteTableId}{[required] The ID of the transit gateway route table.}
@@ -20,6 +17,12 @@ disassociate_transit_gateway_route_table(
 \description{
 Disassociates a resource attachment from a transit gateway route table.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disassociate_transit_gateway_route_table(
+  TransitGatewayRouteTableId = "string",
+  TransitGatewayAttachmentId = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

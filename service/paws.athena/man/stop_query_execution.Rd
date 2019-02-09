@@ -4,9 +4,7 @@
 \alias{stop_query_execution}
 \title{Stops a query execution}
 \usage{
-stop_query_execution(
-  QueryExecutionId = "string"
-)
+stop_query_execution(QueryExecutionId)
 }
 \arguments{
 \item{QueryExecutionId}{[required] The unique ID of the query execution to stop.}
@@ -17,6 +15,10 @@ Stops a query execution.
 \details{
 For code samples using the AWS SDK for Java, see \href{http://docs.aws.amazon.com/athena/latest/ug/code-samples.html}{Examples and Code Samples} in the \emph{Amazon Athena User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{stop_query_execution(
+  QueryExecutionId = "string"
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{delete_traffic_policy}
 \title{Deletes a traffic policy}
 \usage{
-delete_traffic_policy(
-  Id = "string",
-  Version = 123
-)
+delete_traffic_policy(Id, Version)
 }
 \arguments{
 \item{Id}{[required] The ID of the traffic policy that you want to delete.}
@@ -17,6 +14,11 @@ delete_traffic_policy(
 \description{
 Deletes a traffic policy.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_traffic_policy(
+  Id = "string",
+  Version = 123
+)
 }
+}
+

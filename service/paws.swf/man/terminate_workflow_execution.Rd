@@ -2,16 +2,10 @@
 % Please edit documentation in R/paws.swf_operations.R
 \name{terminate_workflow_execution}
 \alias{terminate_workflow_execution}
-\title{Records a \code{WorkflowExecutionTerminated} event and forces closure of the workflow execution identified by the given domain, runId, and workflowId}
+\title{Records a WorkflowExecutionTerminated event and forces closure of the workflow execution identified by the given domain, runId, and workflowId}
 \usage{
-terminate_workflow_execution(
-  domain = "string",
-  workflowId = "string",
-  runId = "string",
-  reason = "string",
-  details = "string",
-  childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON"
-)
+terminate_workflow_execution(domain, workflowId, runId = NULL,
+  reason = NULL, details = NULL, childPolicy = NULL)
 }
 \arguments{
 \item{domain}{[required] The domain of the workflow execution to terminate.}
@@ -56,6 +50,15 @@ You can use IAM policies to control this action's access to Amazon SWF resources
 
 If the caller doesn't have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action fails. The associated event attribute's \code{cause} parameter is set to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see \href{http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows} in the \emph{Amazon SWF Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{terminate_workflow_execution(
+  domain = "string",
+  workflowId = "string",
+  runId = "string",
+  reason = "string",
+  details = "string",
+  childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON"
+)
 }
+}
+

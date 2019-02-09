@@ -4,11 +4,8 @@
 \alias{put_resource_policy}
 \title{Sets the Data Catalog resource policy for access control}
 \usage{
-put_resource_policy(
-  PolicyInJson = "string",
-  PolicyHashCondition = "string",
-  PolicyExistsCondition = "MUST_EXIST"|"NOT_EXIST"|"NONE"
-)
+put_resource_policy(PolicyInJson, PolicyHashCondition = NULL,
+  PolicyExistsCondition = NULL)
 }
 \arguments{
 \item{PolicyInJson}{[required] Contains the policy document to set, in JSON format.}
@@ -20,6 +17,12 @@ put_resource_policy(
 \description{
 Sets the Data Catalog resource policy for access control.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_resource_policy(
+  PolicyInJson = "string",
+  PolicyHashCondition = "string",
+  PolicyExistsCondition = "MUST_EXIST"|"NOT_EXIST"|"NONE"
+)
 }
+}
+

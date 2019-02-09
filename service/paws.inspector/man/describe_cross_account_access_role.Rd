@@ -12,6 +12,6 @@ Describes the IAM role that enables Amazon Inspector to access your AWS account.
 \examples{
 # Describes the IAM role that enables Amazon Inspector to access your AWS
 # account.
-describe_cross_account_access_role()
+\donttest{describe_cross_account_access_role()}
 
 }

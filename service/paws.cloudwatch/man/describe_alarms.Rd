@@ -4,16 +4,9 @@
 \alias{describe_alarms}
 \title{Retrieves the specified alarms}
 \usage{
-describe_alarms(
-  AlarmNames = list(
-    "string"
-  ),
-  AlarmNamePrefix = "string",
-  StateValue = "OK"|"ALARM"|"INSUFFICIENT_DATA",
-  ActionPrefix = "string",
-  MaxRecords = 123,
-  NextToken = "string"
-)
+describe_alarms(AlarmNames = NULL, AlarmNamePrefix = NULL,
+  StateValue = NULL, ActionPrefix = NULL, MaxRecords = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{AlarmNames}{The names of the alarms.}
@@ -31,6 +24,17 @@ describe_alarms(
 \description{
 Retrieves the specified alarms. If no alarms are specified, all alarms are returned. Alarms can be retrieved by using only a prefix for the alarm name, the alarm state, or a prefix for any action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_alarms(
+  AlarmNames = list(
+    "string"
+  ),
+  AlarmNamePrefix = "string",
+  StateValue = "OK"|"ALARM"|"INSUFFICIENT_DATA",
+  ActionPrefix = "string",
+  MaxRecords = 123,
+  NextToken = "string"
+)
 }
+}
+

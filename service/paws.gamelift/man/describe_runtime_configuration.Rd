@@ -4,9 +4,7 @@
 \alias{describe_runtime_configuration}
 \title{Retrieves the current run-time configuration for the specified fleet}
 \usage{
-describe_runtime_configuration(
-  FleetId = "string"
-)
+describe_runtime_configuration(FleetId)
 }
 \arguments{
 \item{FleetId}{[required] Unique identifier for a fleet to get the run-time configuration for.}
@@ -15,7 +13,6 @@ describe_runtime_configuration(
 Retrieves the current run-time configuration for the specified fleet. The run-time configuration tells Amazon GameLift how to launch server processes on instances in the fleet.
 }
 \details{
-Fleet-related operations include:
 \itemize{
 \item CreateFleet
 \item ListFleets
@@ -38,6 +35,10 @@ Fleet-related operations include:
 \item StopFleetActions
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_runtime_configuration(
+  FleetId = "string"
+)
 }
+}
+

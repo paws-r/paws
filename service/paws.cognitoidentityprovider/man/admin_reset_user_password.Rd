@@ -4,10 +4,7 @@
 \alias{admin_reset_user_password}
 \title{Resets the specified user's password in a user pool as an administrator}
 \usage{
-admin_reset_user_password(
-  UserPoolId = "string",
-  Username = "string"
-)
+admin_reset_user_password(UserPoolId, Username)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool where you want to reset the user's password.}
@@ -22,6 +19,11 @@ When a developer calls this API, the current password is invalidated, so it must
 
 Requires developer credentials.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{admin_reset_user_password(
+  UserPoolId = "string",
+  Username = "string"
+)
 }
+}
+

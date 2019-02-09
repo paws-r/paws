@@ -4,9 +4,7 @@
 \alias{terminate_app}
 \title{Terminates the stack for an application}
 \usage{
-terminate_app(
-  appId = "string"
-)
+terminate_app(appId = NULL)
 }
 \arguments{
 \item{appId}{ID of the application to terminate.}
@@ -14,6 +12,10 @@ terminate_app(
 \description{
 Terminates the stack for an application.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{terminate_app(
+  appId = "string"
+)
 }
+}
+

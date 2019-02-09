@@ -4,12 +4,7 @@
 \alias{untag_log_group}
 \title{Removes the specified tags from the specified log group}
 \usage{
-untag_log_group(
-  logGroupName = "string",
-  tags = list(
-    "string"
-  )
-)
+untag_log_group(logGroupName, tags)
 }
 \arguments{
 \item{logGroupName}{[required] The name of the log group.}
@@ -22,6 +17,13 @@ Removes the specified tags from the specified log group.
 \details{
 To list the tags for a log group, use ListTagsLogGroup. To add tags, use UntagLogGroup.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{untag_log_group(
+  logGroupName = "string",
+  tags = list(
+    "string"
+  )
+)
 }
+}
+

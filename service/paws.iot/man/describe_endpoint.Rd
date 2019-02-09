@@ -4,9 +4,7 @@
 \alias{describe_endpoint}
 \title{Returns a unique endpoint specific to the AWS account making the call}
 \usage{
-describe_endpoint(
-  endpointType = "string"
-)
+describe_endpoint(endpointType = NULL)
 }
 \arguments{
 \item{endpointType}{The endpoint type. Valid endpoint types include:
@@ -20,6 +18,10 @@ describe_endpoint(
 \description{
 Returns a unique endpoint specific to the AWS account making the call.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_endpoint(
+  endpointType = "string"
+)
 }
+}
+

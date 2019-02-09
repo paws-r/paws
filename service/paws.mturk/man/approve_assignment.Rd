@@ -2,13 +2,10 @@
 % Please edit documentation in R/paws.mturk_operations.R
 \name{approve_assignment}
 \alias{approve_assignment}
-\title{The \code{ApproveAssignment} operation approves the results of a completed assignment}
+\title{The ApproveAssignment operation approves the results of a completed assignment}
 \usage{
-approve_assignment(
-  AssignmentId = "string",
-  RequesterFeedback = "string",
-  OverrideRejection = TRUE|FALSE
-)
+approve_assignment(AssignmentId, RequesterFeedback = NULL,
+  OverrideRejection = NULL)
 }
 \arguments{
 \item{AssignmentId}{[required] The ID of the assignment. The assignment must correspond to a HIT created by the Requester.}
@@ -31,6 +28,12 @@ If the Requester's account does not have adequate funds for these payments, the 
 
 You can also call this operation for assignments that were previous rejected and approve them by explicitly overriding the previous rejection. This only works on rejected assignments that were submitted within the previous 30 days and only if the assignment's related HIT has not been deleted.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{approve_assignment(
+  AssignmentId = "string",
+  RequesterFeedback = "string",
+  OverrideRejection = TRUE|FALSE
+)
 }
+}
+

@@ -5,10 +5,7 @@
 \alias{create_cloud_formation_template}
 \title{Creates an AWS CloudFormation template}
 \usage{
-create_cloud_formation_template(
-  ApplicationId = "string",
-  SemanticVersion = "string"
-)
+create_cloud_formation_template(ApplicationId, SemanticVersion = NULL)
 }
 \arguments{
 \item{ApplicationId}{[required] The Amazon Resource Name (ARN) of the application.}
@@ -20,6 +17,11 @@ create_cloud_formation_template(
 \description{
 Creates an AWS CloudFormation template.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_cloud_formation_template(
+  ApplicationId = "string",
+  SemanticVersion = "string"
+)
 }
+}
+

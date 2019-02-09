@@ -4,29 +4,13 @@
 \alias{create_replication_instance}
 \title{Creates the replication instance using the specified parameters}
 \usage{
-create_replication_instance(
-  ReplicationInstanceIdentifier = "string",
-  AllocatedStorage = 123,
-  ReplicationInstanceClass = "string",
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  AvailabilityZone = "string",
-  ReplicationSubnetGroupIdentifier = "string",
-  PreferredMaintenanceWindow = "string",
-  MultiAZ = TRUE|FALSE,
-  EngineVersion = "string",
-  AutoMinorVersionUpgrade = TRUE|FALSE,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  KmsKeyId = "string",
-  PubliclyAccessible = TRUE|FALSE,
-  DnsNameServers = "string"
-)
+create_replication_instance(ReplicationInstanceIdentifier,
+  AllocatedStorage = NULL, ReplicationInstanceClass,
+  VpcSecurityGroupIds = NULL, AvailabilityZone = NULL,
+  ReplicationSubnetGroupIdentifier = NULL,
+  PreferredMaintenanceWindow = NULL, MultiAZ = NULL,
+  EngineVersion = NULL, AutoMinorVersionUpgrade = NULL, Tags = NULL,
+  KmsKeyId = NULL, PubliclyAccessible = NULL, DnsNameServers = NULL)
 }
 \arguments{
 \item{ReplicationInstanceIdentifier}{[required] The replication instance identifier. This parameter is stored as a lowercase string.
@@ -85,9 +69,36 @@ Default: \code{true}}
 \description{
 Creates the replication instance using the specified parameters.
 }
+\section{Accepted Parameters}{
+\preformatted{create_replication_instance(
+  ReplicationInstanceIdentifier = "string",
+  AllocatedStorage = 123,
+  ReplicationInstanceClass = "string",
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
+  AvailabilityZone = "string",
+  ReplicationSubnetGroupIdentifier = "string",
+  PreferredMaintenanceWindow = "string",
+  MultiAZ = TRUE|FALSE,
+  EngineVersion = "string",
+  AutoMinorVersionUpgrade = TRUE|FALSE,
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  KmsKeyId = "string",
+  PubliclyAccessible = TRUE|FALSE,
+  DnsNameServers = "string"
+)
+}
+}
+
 \examples{
 # Creates the replication instance using the specified parameters.
-create_replication_instance(
+\donttest{create_replication_instance(
   AllocatedStorage = 123L,
   AutoMinorVersionUpgrade = TRUE,
   AvailabilityZone = "",
@@ -106,6 +117,6 @@ create_replication_instance(
     )
   ),
   VpcSecurityGroupIds = list()
-)
+)}
 
 }

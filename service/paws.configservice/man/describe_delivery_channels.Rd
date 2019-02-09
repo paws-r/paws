@@ -4,11 +4,7 @@
 \alias{describe_delivery_channels}
 \title{Returns details about the specified delivery channel}
 \usage{
-describe_delivery_channels(
-  DeliveryChannelNames = list(
-    "string"
-  )
-)
+describe_delivery_channels(DeliveryChannelNames = NULL)
 }
 \arguments{
 \item{DeliveryChannelNames}{A list of delivery channel names.}
@@ -19,6 +15,12 @@ Returns details about the specified delivery channel. If a delivery channel is n
 \details{
 Currently, you can specify only one delivery channel per region in your account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_delivery_channels(
+  DeliveryChannelNames = list(
+    "string"
+  )
+)
 }
+}
+

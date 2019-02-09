@@ -4,9 +4,7 @@
 \alias{get_relational_database_log_streams}
 \title{Returns a list of available log streams for a specific database in Amazon Lightsail}
 \usage{
-get_relational_database_log_streams(
-  relationalDatabaseName = "string"
-)
+get_relational_database_log_streams(relationalDatabaseName)
 }
 \arguments{
 \item{relationalDatabaseName}{[required] The name of your database for which to get log streams.}
@@ -14,6 +12,10 @@ get_relational_database_log_streams(
 \description{
 Returns a list of available log streams for a specific database in Amazon Lightsail.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_relational_database_log_streams(
+  relationalDatabaseName = "string"
+)
 }
+}
+

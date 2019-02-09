@@ -4,10 +4,7 @@
 \alias{update_pull_request_status}
 \title{Updates the status of a pull request}
 \usage{
-update_pull_request_status(
-  pullRequestId = "string",
-  pullRequestStatus = "OPEN"|"CLOSED"
-)
+update_pull_request_status(pullRequestId, pullRequestStatus)
 }
 \arguments{
 \item{pullRequestId}{[required] The system-generated ID of the pull request. To get this ID, use ListPullRequests.}
@@ -17,6 +14,11 @@ update_pull_request_status(
 \description{
 Updates the status of a pull request.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_pull_request_status(
+  pullRequestId = "string",
+  pullRequestStatus = "OPEN"|"CLOSED"
+)
 }
+}
+

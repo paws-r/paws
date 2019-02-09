@@ -4,10 +4,7 @@
 \alias{associate_device_with_room}
 \title{Associates a device with a given room}
 \usage{
-associate_device_with_room(
-  DeviceArn = "string",
-  RoomArn = "string"
-)
+associate_device_with_room(DeviceArn = NULL, RoomArn = NULL)
 }
 \arguments{
 \item{DeviceArn}{The ARN of the device to associate to a room. Required.}
@@ -17,6 +14,11 @@ associate_device_with_room(
 \description{
 Associates a device with a given room. This applies all the settings from the room profile to the device, and all the skills in any skill groups added to that room. This operation requires the device to be online, or else a manual sync is required.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_device_with_room(
+  DeviceArn = "string",
+  RoomArn = "string"
+)
 }
+}
+

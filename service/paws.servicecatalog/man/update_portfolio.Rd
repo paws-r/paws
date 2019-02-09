@@ -4,22 +4,9 @@
 \alias{update_portfolio}
 \title{Updates the specified portfolio}
 \usage{
-update_portfolio(
-  AcceptLanguage = "string",
-  Id = "string",
-  DisplayName = "string",
-  Description = "string",
-  ProviderName = "string",
-  AddTags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  RemoveTags = list(
-    "string"
-  )
-)
+update_portfolio(AcceptLanguage = NULL, Id, DisplayName = NULL,
+  Description = NULL, ProviderName = NULL, AddTags = NULL,
+  RemoveTags = NULL)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -47,6 +34,23 @@ Updates the specified portfolio.
 \details{
 You cannot update a product that was shared with you.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_portfolio(
+  AcceptLanguage = "string",
+  Id = "string",
+  DisplayName = "string",
+  Description = "string",
+  ProviderName = "string",
+  AddTags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  RemoveTags = list(
+    "string"
+  )
+)
 }
+}
+

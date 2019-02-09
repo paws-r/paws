@@ -4,7 +4,21 @@
 \alias{create_logger_definition}
 \title{Creates a logger definition}
 \usage{
-create_logger_definition(
+create_logger_definition(AmznClientToken = NULL, InitialVersion = NULL,
+  Name = NULL)
+}
+\arguments{
+\item{AmznClientToken}{A client token used to correlate requests and responses.}
+
+\item{InitialVersion}{Information about the initial version of the logger definition.}
+
+\item{Name}{The name of the logger definition.}
+}
+\description{
+Creates a logger definition. You may provide the initial version of the logger definition now or use ''CreateLoggerDefinitionVersion'' at a later time.
+}
+\section{Accepted Parameters}{
+\preformatted{create_logger_definition(
   AmznClientToken = "string",
   InitialVersion = list(
     Loggers = list(
@@ -20,16 +34,5 @@ create_logger_definition(
   Name = "string"
 )
 }
-\arguments{
-\item{AmznClientToken}{A client token used to correlate requests and responses.}
-
-\item{InitialVersion}{Information about the initial version of the logger definition.}
-
-\item{Name}{The name of the logger definition.}
 }
-\description{
-Creates a logger definition. You may provide the initial version of the logger definition now or use ''CreateLoggerDefinitionVersion'' at a later time.
-}
-\examples{
 
-}

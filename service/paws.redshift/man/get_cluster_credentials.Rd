@@ -4,16 +4,8 @@
 \alias{get_cluster_credentials}
 \title{Returns a database user name and temporary password with temporary authorization to log on to an Amazon Redshift database}
 \usage{
-get_cluster_credentials(
-  DbUser = "string",
-  DbName = "string",
-  ClusterIdentifier = "string",
-  DurationSeconds = 123,
-  AutoCreate = TRUE|FALSE,
-  DbGroups = list(
-    "string"
-  )
-)
+get_cluster_credentials(DbUser, DbName = NULL, ClusterIdentifier,
+  DurationSeconds = NULL, AutoCreate = NULL, DbGroups = NULL)
 }
 \arguments{
 \item{DbUser}{[required] The name of a database user. If a user name matching \code{DbUser} exists in the database, the temporary user credentials have the same permissions as the existing user. If \code{DbUser} doesn't exist in the database and \code{Autocreate} is \code{True}, a new user is created using the value for \code{DbUser} with PUBLIC permissions. If a database user matching the value for \code{DbUser} doesn't exist and \code{Autocreate} is \code{False}, then the command succeeds but the connection attempt will fail because the user doesn't exist in the database.
@@ -73,6 +65,17 @@ In addition, if the \code{AutoCreate} parameter is set to \code{True}, then the 
 
 If the \code{DbName} parameter is specified, the IAM policy must allow access to the resource \code{dbname} for the specified database name.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_cluster_credentials(
+  DbUser = "string",
+  DbName = "string",
+  ClusterIdentifier = "string",
+  DurationSeconds = 123,
+  AutoCreate = TRUE|FALSE,
+  DbGroups = list(
+    "string"
+  )
+)
 }
+}
+

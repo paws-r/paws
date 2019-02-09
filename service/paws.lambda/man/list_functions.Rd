@@ -2,37 +2,41 @@
 % Please edit documentation in R/paws.lambda_operations.R
 \name{list_functions}
 \alias{list_functions}
-\title{Returns a list of your Lambda functions}
+\title{Returns a list of Lambda functions, with the version-specific configuration of each}
 \usage{
-list_functions(
+list_functions(MasterRegion = NULL, FunctionVersion = NULL,
+  Marker = NULL, MaxItems = NULL)
+}
+\arguments{
+\item{MasterRegion}{For Lambda@Edge functions, the region of the master function. For example, \code{us-east-2} or \code{ALL}. If specified, you must set \code{FunctionVersion} to \code{ALL}.}
+
+\item{FunctionVersion}{Set to \code{ALL} to include entries for all published versions of each function.}
+
+\item{Marker}{Specify the pagination token returned by a previous request to retrieve the next page of results.}
+
+\item{MaxItems}{Specify a value between 1 and 50 to limit the number of functions in the response.}
+}
+\description{
+Returns a list of Lambda functions, with the version-specific configuration of each.
+}
+\details{
+Set \code{FunctionVersion} to \code{ALL} to include all published versions of each function in addition to the unpublished version. To get more information about a function or version, use GetFunction.
+}
+\section{Accepted Parameters}{
+\preformatted{list_functions(
   MasterRegion = "string",
   FunctionVersion = "ALL",
   Marker = "string",
   MaxItems = 123
 )
 }
-\arguments{
-\item{MasterRegion}{Specify a region (e.g. \code{us-east-2}) to only list functions that were created in that region, or \code{ALL} to include functions replicated from any region. If specified, you also must specify the \code{FunctionVersion}.}
-
-\item{FunctionVersion}{Set to \code{ALL} to list all published versions. If not specified, only the latest unpublished version ARN is returned.}
-
-\item{Marker}{Optional string. An opaque pagination token returned from a previous \code{ListFunctions} operation. If present, indicates where to continue the listing.}
-
-\item{MaxItems}{Optional integer. Specifies the maximum number of AWS Lambda functions to return in response. This parameter value must be greater than 0. The absolute maximum of AWS Lambda functions that can be returned is 50.}
 }
-\description{
-Returns a list of your Lambda functions. For each function, the response includes the function configuration information. You must use GetFunction to retrieve the code for your function.
-}
-\details{
-This operation requires permission for the \code{lambda:ListFunctions} action.
 
-If you are using the versioning feature, you can list all of your functions or only \code{$LATEST} versions. For information about the versioning feature, see \href{http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{AWS Lambda Function Versioning and Aliases}.
-}
 \examples{
 # This operation retrieves a Lambda functions
-list_functions(
+\donttest{list_functions(
   Marker = "",
   MaxItems = 123L
-)
+)}
 
 }

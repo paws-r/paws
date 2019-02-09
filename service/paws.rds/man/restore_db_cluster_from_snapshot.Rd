@@ -4,43 +4,14 @@
 \alias{restore_db_cluster_from_snapshot}
 \title{Creates a new DB cluster from a DB snapshot or DB cluster snapshot}
 \usage{
-restore_db_cluster_from_snapshot(
-  AvailabilityZones = list(
-    "string"
-  ),
-  DBClusterIdentifier = "string",
-  SnapshotIdentifier = "string",
-  Engine = "string",
-  EngineVersion = "string",
-  Port = 123,
-  DBSubnetGroupName = "string",
-  DatabaseName = "string",
-  OptionGroupName = "string",
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  KmsKeyId = "string",
-  EnableIAMDatabaseAuthentication = TRUE|FALSE,
-  BacktrackWindow = 123,
-  EnableCloudwatchLogsExports = list(
-    "string"
-  ),
-  EngineMode = "string",
-  ScalingConfiguration = list(
-    MinCapacity = 123,
-    MaxCapacity = 123,
-    AutoPause = TRUE|FALSE,
-    SecondsUntilAutoPause = 123
-  ),
-  DBClusterParameterGroupName = "string",
-  DeletionProtection = TRUE|FALSE
-)
+restore_db_cluster_from_snapshot(AvailabilityZones = NULL,
+  DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion = NULL,
+  Port = NULL, DBSubnetGroupName = NULL, DatabaseName = NULL,
+  OptionGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL,
+  KmsKeyId = NULL, EnableIAMDatabaseAuthentication = NULL,
+  BacktrackWindow = NULL, EnableCloudwatchLogsExports = NULL,
+  EngineMode = NULL, ScalingConfiguration = NULL,
+  DBClusterParameterGroupName = NULL, DeletionProtection = NULL)
 }
 \arguments{
 \item{AvailabilityZones}{Provides the list of Amazon EC2 Availability Zones that instances in the restored DB cluster can be created in.}
@@ -144,6 +115,44 @@ If a DB cluster snapshot is specified, the target DB cluster is created from the
 
 For more information on Amazon Aurora, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?} in the \emph{Amazon Aurora User Guide.}
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{restore_db_cluster_from_snapshot(
+  AvailabilityZones = list(
+    "string"
+  ),
+  DBClusterIdentifier = "string",
+  SnapshotIdentifier = "string",
+  Engine = "string",
+  EngineVersion = "string",
+  Port = 123,
+  DBSubnetGroupName = "string",
+  DatabaseName = "string",
+  OptionGroupName = "string",
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  KmsKeyId = "string",
+  EnableIAMDatabaseAuthentication = TRUE|FALSE,
+  BacktrackWindow = 123,
+  EnableCloudwatchLogsExports = list(
+    "string"
+  ),
+  EngineMode = "string",
+  ScalingConfiguration = list(
+    MinCapacity = 123,
+    MaxCapacity = 123,
+    AutoPause = TRUE|FALSE,
+    SecondsUntilAutoPause = 123
+  ),
+  DBClusterParameterGroupName = "string",
+  DeletionProtection = TRUE|FALSE
+)
 }
+}
+

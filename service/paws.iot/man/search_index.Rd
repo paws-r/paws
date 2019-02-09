@@ -4,13 +4,8 @@
 \alias{search_index}
 \title{The query search index}
 \usage{
-search_index(
-  indexName = "string",
-  queryString = "string",
-  nextToken = "string",
-  maxResults = 123,
-  queryVersion = "string"
-)
+search_index(indexName = NULL, queryString, nextToken = NULL,
+  maxResults = NULL, queryVersion = NULL)
 }
 \arguments{
 \item{indexName}{The search index name.}
@@ -26,6 +21,14 @@ search_index(
 \description{
 The query search index.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{search_index(
+  indexName = "string",
+  queryString = "string",
+  nextToken = "string",
+  maxResults = 123,
+  queryVersion = "string"
+)
 }
+}
+

@@ -4,16 +4,8 @@
 \alias{set_vault_notifications}
 \title{This operation configures notifications that will be sent when specific events happen to a vault}
 \usage{
-set_vault_notifications(
-  accountId = "string",
-  vaultName = "string",
-  vaultNotificationConfig = list(
-    SNSTopic = "string",
-    Events = list(
-      "string"
-    )
-  )
-)
+set_vault_notifications(accountId, vaultName,
+  vaultNotificationConfig = NULL)
 }
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.}
@@ -38,9 +30,23 @@ An AWS account has full permission to perform all operations (actions). However,
 
 For conceptual information and underlying REST API, see \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html}{Configuring Vault Notifications in Amazon Glacier} and \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifications-put.html}{Set Vault Notification Configuration} in the \emph{Amazon Glacier Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{set_vault_notifications(
+  accountId = "string",
+  vaultName = "string",
+  vaultNotificationConfig = list(
+    SNSTopic = "string",
+    Events = list(
+      "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # The example sets the examplevault notification configuration.
-set_vault_notifications(
+\donttest{set_vault_notifications(
   accountId = "-",
   vaultName = "examplevault",
   vaultNotificationConfig = list(
@@ -50,6 +56,6 @@ set_vault_notifications(
     ),
     SNSTopic = "arn:aws:sns:us-west-2:012345678901:mytopic"
   )
-)
+)}
 
 }

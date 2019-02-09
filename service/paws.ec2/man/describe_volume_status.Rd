@@ -4,22 +4,8 @@
 \alias{describe_volume_status}
 \title{Describes the status of the specified volumes}
 \usage{
-describe_volume_status(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  VolumeIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
+describe_volume_status(Filters = NULL, MaxResults = NULL,
+  NextToken = NULL, VolumeIds = NULL, DryRun = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -54,7 +40,7 @@ Describes the status of the specified volumes. Volume status provides the result
 \details{
 The \code{DescribeVolumeStatus} operation provides the following information about the specified volumes:
 
-\emph{Status}: Reflects the current status of the volume. The possible values are \code{ok}, \code{impaired} , \code{warning}, or \code{insufficient-data}. If all checks pass, the overall status of the volume is \code{ok}. If the check fails, the overall status is \code{impaired}. If the status is \code{insufficient-data}, then the checks may still be taking place on your volume at the time. We recommend that you retry the request. For more information about volume status, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-volume-status.html}{Monitoring the Status of Your Volumes} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+\emph{Status}: Reflects the current status of the volume. The possible values are \code{ok}, \code{impaired} , \code{warning}, or \code{insufficient-data}. If all checks pass, the overall status of the volume is \code{ok}. If the check fails, the overall status is \code{impaired}. If the status is \code{insufficient-data}, then the checks may still be taking place on your volume at the time. We recommend that you retry the request. For more information about volume status, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-volume-status.html}{Monitoring the Status of Your Volumes} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 \emph{Events}: Reflect the cause of a volume status and may require you to take action. For example, if your volume returns an \code{impaired} status, then the volume event might be \code{potential-data-inconsistency}. This means that your volume has been affected by an issue with the underlying host, has all I/O operations disabled, and may have inconsistent data.
 
@@ -62,18 +48,38 @@ The \code{DescribeVolumeStatus} operation provides the following information abo
 
 Volume status is based on the volume status checks, and does not reflect the volume state. Therefore, volume status does not indicate volumes in the \code{error} state (for example, when a volume is incapable of accepting I/O.)
 }
+\section{Accepted Parameters}{
+\preformatted{describe_volume_status(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string",
+  VolumeIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example describes the status for the volume
 # ``vol-1234567890abcdef0``.
-describe_volume_status(
+\donttest{describe_volume_status(
   VolumeIds = list(
     "vol-1234567890abcdef0"
   )
-)
+)}
 
 # This example describes the status for all volumes that are impaired. In
 # this example output, there are no impaired volumes.
-describe_volume_status(
+\donttest{describe_volume_status(
   Filters = list(
     list(
       Name = "volume-status.status",
@@ -82,6 +88,6 @@ describe_volume_status(
       )
     )
   )
-)
+)}
 
 }

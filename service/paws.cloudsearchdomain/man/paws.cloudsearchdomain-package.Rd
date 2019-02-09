@@ -6,8 +6,8 @@
 \alias{paws.cloudsearchdomain-package}
 \title{paws.cloudsearchdomain: Amazon CloudSearch Domain}
 \description{
-You use the AmazonCloudSearch2013 API to upload documents to
-a search domain and search those documents.
+You use the AmazonCloudSearch2013 API to upload
+    documents to a search domain and search those documents.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

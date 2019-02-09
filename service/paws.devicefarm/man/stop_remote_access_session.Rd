@@ -4,9 +4,7 @@
 \alias{stop_remote_access_session}
 \title{Ends a specified remote access session}
 \usage{
-stop_remote_access_session(
-  arn = "string"
-)
+stop_remote_access_session(arn)
 }
 \arguments{
 \item{arn}{[required] The Amazon Resource Name (ARN) of the remote access session you wish to stop.}
@@ -14,6 +12,10 @@ stop_remote_access_session(
 \description{
 Ends a specified remote access session.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{stop_remote_access_session(
+  arn = "string"
+)
 }
+}
+

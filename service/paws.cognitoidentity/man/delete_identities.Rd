@@ -4,11 +4,7 @@
 \alias{delete_identities}
 \title{Deletes identities from an identity pool}
 \usage{
-delete_identities(
-  IdentityIdsToDelete = list(
-    "string"
-  )
-)
+delete_identities(IdentityIdsToDelete)
 }
 \arguments{
 \item{IdentityIdsToDelete}{[required] A list of 1-60 identities that you want to delete.}
@@ -19,6 +15,12 @@ Deletes identities from an identity pool. You can specify a list of 1-60 identit
 \details{
 You must use AWS Developer credentials to call this API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_identities(
+  IdentityIdsToDelete = list(
+    "string"
+  )
+)
 }
+}
+

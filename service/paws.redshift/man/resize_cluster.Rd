@@ -4,13 +4,8 @@
 \alias{resize_cluster}
 \title{Changes the size of the cluster}
 \usage{
-resize_cluster(
-  ClusterIdentifier = "string",
-  ClusterType = "string",
-  NodeType = "string",
-  NumberOfNodes = 123,
-  Classic = TRUE|FALSE
-)
+resize_cluster(ClusterIdentifier, ClusterType = NULL, NodeType = NULL,
+  NumberOfNodes, Classic = NULL)
 }
 \arguments{
 \item{ClusterIdentifier}{[required] The unique identifier for the cluster to resize.}
@@ -37,6 +32,14 @@ Elastic resize operations have the following restrictions:
 \item The type of nodes that you add must match the node type for the cluster.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{resize_cluster(
+  ClusterIdentifier = "string",
+  ClusterType = "string",
+  NodeType = "string",
+  NumberOfNodes = 123,
+  Classic = TRUE|FALSE
+)
 }
+}
+

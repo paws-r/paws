@@ -4,9 +4,7 @@
 \alias{delete_image}
 \title{Deletes the specified image}
 \usage{
-delete_image(
-  Name = "string"
-)
+delete_image(Name)
 }
 \arguments{
 \item{Name}{[required] The name of the image.}
@@ -14,6 +12,10 @@ delete_image(
 \description{
 Deletes the specified image. You cannot delete an image when it is in use. After you delete an image, you cannot provision new capacity using the image.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_image(
+  Name = "string"
+)
 }
+}
+

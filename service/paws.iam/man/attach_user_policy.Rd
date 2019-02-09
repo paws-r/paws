@@ -4,10 +4,7 @@
 \alias{attach_user_policy}
 \title{Attaches the specified managed policy to the specified user}
 \usage{
-attach_user_policy(
-  UserName = "string",
-  PolicyArn = "string"
-)
+attach_user_policy(UserName, PolicyArn)
 }
 \arguments{
 \item{UserName}{[required] The name (friendly name, not ARN) of the IAM user to attach the policy to.
@@ -26,12 +23,20 @@ You use this API to attach a \emph{managed} policy to a user. To embed an inline
 
 For more information about policies, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies} in the \emph{IAM User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{attach_user_policy(
+  UserName = "string",
+  PolicyArn = "string"
+)
+}
+}
+
 \examples{
 # The following command attaches the AWS managed policy named
 # AdministratorAccess to the IAM user named Alice.
-attach_user_policy(
+\donttest{attach_user_policy(
   PolicyArn = "arn:aws:iam::aws:policy/AdministratorAccess",
   UserName = "Alice"
-)
+)}
 
 }

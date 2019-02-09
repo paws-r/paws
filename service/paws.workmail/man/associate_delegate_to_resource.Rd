@@ -4,11 +4,7 @@
 \alias{associate_delegate_to_resource}
 \title{Adds a member to the resource's set of delegates}
 \usage{
-associate_delegate_to_resource(
-  OrganizationId = "string",
-  ResourceId = "string",
-  EntityId = "string"
-)
+associate_delegate_to_resource(OrganizationId, ResourceId, EntityId)
 }
 \arguments{
 \item{OrganizationId}{[required] The organization under which the resource exists.}
@@ -20,6 +16,12 @@ associate_delegate_to_resource(
 \description{
 Adds a member to the resource's set of delegates.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_delegate_to_resource(
+  OrganizationId = "string",
+  ResourceId = "string",
+  EntityId = "string"
+)
 }
+}
+

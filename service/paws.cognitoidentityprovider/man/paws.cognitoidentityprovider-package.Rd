@@ -6,9 +6,10 @@
 \alias{paws.cognitoidentityprovider-package}
 \title{paws.cognitoidentityprovider: Amazon Cognito Identity Provider}
 \description{
-Using the Amazon Cognito User Pools API, you can create a
-user pool to manage directories and users. You can authenticate a user
-to obtain tokens related to user identity and access policies.
+Using the Amazon Cognito User Pools API, you can
+    create a user pool to manage directories and users. You can
+    authenticate a user to obtain tokens related to user identity and
+    access policies.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

@@ -4,18 +4,10 @@
 \alias{describe_activities}
 \title{Describes the user activities in a specified time period}
 \usage{
-describe_activities(
-  AuthenticationToken = "string",
-  StartTime = as.POSIXct("2015-01-01"),
-  EndTime = as.POSIXct("2015-01-01"),
-  OrganizationId = "string",
-  ActivityTypes = "string",
-  ResourceId = "string",
-  UserId = "string",
-  IncludeIndirectActivities = TRUE|FALSE,
-  Limit = 123,
-  Marker = "string"
-)
+describe_activities(AuthenticationToken = NULL, StartTime = NULL,
+  EndTime = NULL, OrganizationId = NULL, ActivityTypes = NULL,
+  ResourceId = NULL, UserId = NULL, IncludeIndirectActivities = NULL,
+  Limit = NULL, Marker = NULL)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
@@ -41,6 +33,19 @@ describe_activities(
 \description{
 Describes the user activities in a specified time period.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_activities(
+  AuthenticationToken = "string",
+  StartTime = as.POSIXct("2015-01-01"),
+  EndTime = as.POSIXct("2015-01-01"),
+  OrganizationId = "string",
+  ActivityTypes = "string",
+  ResourceId = "string",
+  UserId = "string",
+  IncludeIndirectActivities = TRUE|FALSE,
+  Limit = 123,
+  Marker = "string"
+)
 }
+}
+

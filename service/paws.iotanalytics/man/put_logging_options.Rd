@@ -4,13 +4,7 @@
 \alias{put_logging_options}
 \title{Sets or updates the AWS IoT Analytics logging options}
 \usage{
-put_logging_options(
-  loggingOptions = list(
-    roleArn = "string",
-    level = "ERROR",
-    enabled = TRUE|FALSE
-  )
-)
+put_logging_options(loggingOptions)
 }
 \arguments{
 \item{loggingOptions}{[required] The new values of the AWS IoT Analytics logging options.}
@@ -21,6 +15,14 @@ Sets or updates the AWS IoT Analytics logging options.
 \details{
 Note that if you update the value of any \code{loggingOptions} field, it takes up to one minute for the change to take effect. Also, if you change the policy attached to the role you specified in the roleArn field (for example, to correct an invalid policy) it takes up to 5 minutes for that change to take effect.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_logging_options(
+  loggingOptions = list(
+    roleArn = "string",
+    level = "ERROR",
+    enabled = TRUE|FALSE
+  )
+)
 }
+}
+

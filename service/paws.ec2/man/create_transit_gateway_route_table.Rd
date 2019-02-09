@@ -4,7 +4,21 @@
 \alias{create_transit_gateway_route_table}
 \title{Creates a route table for the specified transit gateway}
 \usage{
-create_transit_gateway_route_table(
+create_transit_gateway_route_table(TransitGatewayId,
+  TagSpecifications = NULL, DryRun = NULL)
+}
+\arguments{
+\item{TransitGatewayId}{[required] The ID of the transit gateway.}
+
+\item{TagSpecifications}{The tags to apply to the transit gateway route table.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+}
+\description{
+Creates a route table for the specified transit gateway.
+}
+\section{Accepted Parameters}{
+\preformatted{create_transit_gateway_route_table(
   TransitGatewayId = "string",
   TagSpecifications = list(
     list(
@@ -20,16 +34,5 @@ create_transit_gateway_route_table(
   DryRun = TRUE|FALSE
 )
 }
-\arguments{
-\item{TransitGatewayId}{[required] The ID of the transit gateway.}
-
-\item{TagSpecifications}{The tags to apply to the transit gateway route table.}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\description{
-Creates a route table for the specified transit gateway.
-}
-\examples{
 
-}

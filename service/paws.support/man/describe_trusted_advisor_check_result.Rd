@@ -4,10 +4,7 @@
 \alias{describe_trusted_advisor_check_result}
 \title{Returns the results of the Trusted Advisor check that has the specified check ID}
 \usage{
-describe_trusted_advisor_check_result(
-  checkId = "string",
-  language = "string"
-)
+describe_trusted_advisor_check_result(checkId, language = NULL)
 }
 \arguments{
 \item{checkId}{[required] The unique identifier for the Trusted Advisor check.}
@@ -32,6 +29,11 @@ In addition, the response contains these fields:
 \item \strong{checkId.} The unique identifier for the check.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_trusted_advisor_check_result(
+  checkId = "string",
+  language = "string"
+)
 }
+}
+

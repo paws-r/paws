@@ -4,16 +4,8 @@
 \alias{describe_load_balancers}
 \title{Describes the specified load balancers or all of your load balancers}
 \usage{
-describe_load_balancers(
-  LoadBalancerArns = list(
-    "string"
-  ),
-  Names = list(
-    "string"
-  ),
-  Marker = "string",
-  PageSize = 123
-)
+describe_load_balancers(LoadBalancerArns = NULL, Names = NULL,
+  Marker = NULL, PageSize = NULL)
 }
 \arguments{
 \item{LoadBalancerArns}{The Amazon Resource Names (ARN) of the load balancers. You can specify up to 20 load balancers in a single call.}
@@ -30,12 +22,26 @@ Describes the specified load balancers or all of your load balancers.
 \details{
 To describe the listeners for a load balancer, use DescribeListeners. To describe the attributes for a load balancer, use DescribeLoadBalancerAttributes.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_load_balancers(
+  LoadBalancerArns = list(
+    "string"
+  ),
+  Names = list(
+    "string"
+  ),
+  Marker = "string",
+  PageSize = 123
+)
+}
+}
+
 \examples{
 # This example describes the specified load balancer.
-describe_load_balancers(
+\donttest{describe_load_balancers(
   LoadBalancerArns = list(
     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188"
   )
-)
+)}
 
 }

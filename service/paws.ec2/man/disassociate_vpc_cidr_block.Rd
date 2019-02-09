@@ -4,9 +4,7 @@
 \alias{disassociate_vpc_cidr_block}
 \title{Disassociates a CIDR block from a VPC}
 \usage{
-disassociate_vpc_cidr_block(
-  AssociationId = "string"
-)
+disassociate_vpc_cidr_block(AssociationId)
 }
 \arguments{
 \item{AssociationId}{[required] The association ID for the CIDR block.}
@@ -17,6 +15,10 @@ Disassociates a CIDR block from a VPC. To disassociate the CIDR block, you must 
 \details{
 You cannot disassociate the CIDR block with which you originally created the VPC (the primary CIDR block).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disassociate_vpc_cidr_block(
+  AssociationId = "string"
+)
 }
+}
+

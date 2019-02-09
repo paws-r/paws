@@ -4,16 +4,7 @@
 \alias{create_instance_snapshot}
 \title{Creates a snapshot of a specific virtual private server, or \emph{instance}}
 \usage{
-create_instance_snapshot(
-  instanceSnapshotName = "string",
-  instanceName = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
+create_instance_snapshot(instanceSnapshotName, instanceName, tags = NULL)
 }
 \arguments{
 \item{instanceSnapshotName}{[required] The name for your new snapshot.}
@@ -30,6 +21,17 @@ Creates a snapshot of a specific virtual private server, or \emph{instance}. You
 \details{
 The \code{create instance snapshot} operation supports tag-based access control via request tags. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_instance_snapshot(
+  instanceSnapshotName = "string",
+  instanceName = "string",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
 }
+}
+

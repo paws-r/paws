@@ -4,11 +4,8 @@
 \alias{delete_application_version}
 \title{Deletes the specified version from the specified application}
 \usage{
-delete_application_version(
-  ApplicationName = "string",
-  VersionLabel = "string",
-  DeleteSourceBundle = TRUE|FALSE
-)
+delete_application_version(ApplicationName, VersionLabel,
+  DeleteSourceBundle = NULL)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application to which the version belongs.}
@@ -23,13 +20,22 @@ Deletes the specified version from the specified application.
 \details{
 You cannot delete an application version that is associated with a running environment.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_application_version(
+  ApplicationName = "string",
+  VersionLabel = "string",
+  DeleteSourceBundle = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # The following operation deletes an application version named
 # 22a0-stage-150819_182129 for an application named my-app:
-delete_application_version(
+\donttest{delete_application_version(
   ApplicationName = "my-app",
   DeleteSourceBundle = TRUE,
   VersionLabel = "22a0-stage-150819_182129"
-)
+)}
 
 }

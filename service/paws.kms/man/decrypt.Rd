@@ -4,15 +4,7 @@
 \alias{decrypt}
 \title{Decrypts ciphertext}
 \usage{
-decrypt(
-  CiphertextBlob = raw,
-  EncryptionContext = list(
-    "string"
-  ),
-  GrantTokens = list(
-    "string"
-  )
-)
+decrypt(CiphertextBlob, EncryptionContext = NULL, GrantTokens = NULL)
 }
 \arguments{
 \item{CiphertextBlob}{[required] Ciphertext to be decrypted. The blob includes metadata.}
@@ -37,11 +29,24 @@ Note that if a caller has been granted access permissions to all keys (through, 
 
 The result of this operation varies with the key state of the CMK. For details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key} in the \emph{AWS Key Management Service Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{decrypt(
+  CiphertextBlob = raw,
+  EncryptionContext = list(
+    "string"
+  ),
+  GrantTokens = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # The following example decrypts data that was encrypted with a customer
 # master key (CMK) in AWS KMS.
-decrypt(
+\donttest{decrypt(
   CiphertextBlob = "<binary data>"
-)
+)}
 
 }

@@ -4,16 +4,8 @@
 \alias{describe_backups}
 \title{Gets information about backups of AWS CloudHSM clusters}
 \usage{
-describe_backups(
-  NextToken = "string",
-  MaxResults = 123,
-  Filters = list(
-    list(
-      "string"
-    )
-  ),
-  SortAscending = TRUE|FALSE
-)
+describe_backups(NextToken = NULL, MaxResults = NULL, Filters = NULL,
+  SortAscending = NULL)
 }
 \arguments{
 \item{NextToken}{The \code{NextToken} value that you received in the previous response. Use this value to get more backups.}
@@ -38,6 +30,17 @@ Gets information about backups of AWS CloudHSM clusters.
 \details{
 This is a paginated operation, which means that each response might contain only a subset of all the backups. When the response contains only a subset of backups, it includes a \code{NextToken} value. Use this value in a subsequent \code{DescribeBackups} request to get more backups. When you receive a response with no \code{NextToken} (or an empty or null value), that means there are no more backups to get.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_backups(
+  NextToken = "string",
+  MaxResults = 123,
+  Filters = list(
+    list(
+      "string"
+    )
+  ),
+  SortAscending = TRUE|FALSE
+)
 }
+}
+

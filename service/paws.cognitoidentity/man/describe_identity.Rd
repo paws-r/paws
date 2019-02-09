@@ -4,9 +4,7 @@
 \alias{describe_identity}
 \title{Returns metadata related to the given identity, including when the identity was created and any associated linked logins}
 \usage{
-describe_identity(
-  IdentityId = "string"
-)
+describe_identity(IdentityId)
 }
 \arguments{
 \item{IdentityId}{[required] A unique identifier in the format REGION:GUID.}
@@ -17,6 +15,10 @@ Returns metadata related to the given identity, including when the identity was 
 \details{
 You must use AWS Developer credentials to call this API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_identity(
+  IdentityId = "string"
+)
 }
+}
+

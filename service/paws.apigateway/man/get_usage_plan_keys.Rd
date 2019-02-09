@@ -4,12 +4,8 @@
 \alias{get_usage_plan_keys}
 \title{Gets all the usage plan keys representing the API keys added to a specified usage plan}
 \usage{
-get_usage_plan_keys(
-  usagePlanId = "string",
-  position = "string",
-  limit = 123,
-  nameQuery = "string"
-)
+get_usage_plan_keys(usagePlanId, position = NULL, limit = NULL,
+  nameQuery = NULL)
 }
 \arguments{
 \item{usagePlanId}{[required] [Required] The Id of the UsagePlan resource representing the usage plan containing the to-be-retrieved UsagePlanKey resource representing a plan customer.}
@@ -23,6 +19,13 @@ get_usage_plan_keys(
 \description{
 Gets all the usage plan keys representing the API keys added to a specified usage plan.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_usage_plan_keys(
+  usagePlanId = "string",
+  position = "string",
+  limit = 123,
+  nameQuery = "string"
+)
 }
+}
+

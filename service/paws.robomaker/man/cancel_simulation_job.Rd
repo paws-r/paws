@@ -4,9 +4,7 @@
 \alias{cancel_simulation_job}
 \title{Cancels the specified simulation job}
 \usage{
-cancel_simulation_job(
-  job = "string"
-)
+cancel_simulation_job(job)
 }
 \arguments{
 \item{job}{[required] The simulation job ARN to cancel.}
@@ -14,6 +12,10 @@ cancel_simulation_job(
 \description{
 Cancels the specified simulation job.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{cancel_simulation_job(
+  job = "string"
+)
 }
+}
+

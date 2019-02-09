@@ -4,10 +4,7 @@
 \alias{put_resource_policy}
 \title{Creates or updates a resource policy allowing other AWS services to put log events to this account, such as Amazon Route 53}
 \usage{
-put_resource_policy(
-  policyName = "string",
-  policyDocument = "string"
-)
+put_resource_policy(policyName = NULL, policyDocument = NULL)
 }
 \arguments{
 \item{policyName}{Name of the new policy. This parameter is required.}
@@ -16,13 +13,16 @@ put_resource_policy(
 
 The following example creates a resource policy enabling the Route 53 service to put DNS query logs in to the specified log group. Replace "logArn" with the ARN of your CloudWatch Logs resource, such as a log group or log stream.
 
-\code{{ "Version": "2012-10-17", "Statement": [ { "Sid": "Route53LogsToCloudWatchLogs", "Effect": "Allow", "Principal": { "Service": [ "route53.amazonaws.com" ] }, "Action":"logs:PutLogEvents", "Resource": "logArn" } ] } }
-
-[ { "Sid": "Route53LogsToCloudWatchLogs", "Effect": "Allow", "Principal": { "Service": [ "route53.amazonaws.com" ]: R:%20%7B%20%22Sid%22:%20%22Route53LogsToCloudWatchLogs%22,%20%22Effect%22:%20%22Allow%22,%20%22Principal%22:%20%7B%20%22Service%22:%20[%20%22route53.amazonaws.com%22%20}
+\code{{ "Version": "2012-10-17", "Statement": [ { "Sid": "Route53LogsToCloudWatchLogs", "Effect": "Allow", "Principal": { "Service": [ "route53.amazonaws.com" ] }, "Action":"logs:PutLogEvents", "Resource": "logArn" } ] } }}
 }
 \description{
 Creates or updates a resource policy allowing other AWS services to put log events to this account, such as Amazon Route 53. An account can have up to 10 resource policies per region.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_resource_policy(
+  policyName = "string",
+  policyDocument = "string"
+)
 }
+}
+

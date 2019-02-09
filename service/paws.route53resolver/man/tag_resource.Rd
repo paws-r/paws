@@ -4,15 +4,7 @@
 \alias{tag_resource}
 \title{Adds one or more tags to a specified resource}
 \usage{
-tag_resource(
-  ResourceArn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+tag_resource(ResourceArn, Tags)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) for the resource that you want to add tags to. To get the ARN for a resource, use the applicable \code{Get} or \code{List} command:
@@ -30,6 +22,16 @@ tag_resource(
 \description{
 Adds one or more tags to a specified resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{tag_resource(
+  ResourceArn = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

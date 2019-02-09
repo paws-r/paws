@@ -4,11 +4,7 @@
 \alias{delete_project}
 \title{Deletes a project, including project resources}
 \usage{
-delete_project(
-  id = "string",
-  clientRequestToken = "string",
-  deleteStack = TRUE|FALSE
-)
+delete_project(id, clientRequestToken = NULL, deleteStack = NULL)
 }
 \arguments{
 \item{id}{[required] The ID of the project to be deleted in AWS CodeStar.}
@@ -20,6 +16,12 @@ delete_project(
 \description{
 Deletes a project, including project resources. Does not delete users associated with the project, but does delete the IAM roles that allowed access to the project.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_project(
+  id = "string",
+  clientRequestToken = "string",
+  deleteStack = TRUE|FALSE
+)
 }
+}
+

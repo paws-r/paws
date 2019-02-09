@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.lexmodelbuildingservice_operations.R
 \name{get_import}
 \alias{get_import}
-\title{Gets information about an import job started with the \code{StartImport} operation}
+\title{Gets information about an import job started with the StartImport operation}
 \usage{
-get_import(
-  importId = "string"
-)
+get_import(importId)
 }
 \arguments{
 \item{importId}{[required] The identifier of the import job information to return.}
@@ -14,6 +12,10 @@ get_import(
 \description{
 Gets information about an import job started with the \code{StartImport} operation.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_import(
+  importId = "string"
+)
 }
+}
+

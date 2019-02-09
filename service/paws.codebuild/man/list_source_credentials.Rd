@@ -2,13 +2,15 @@
 % Please edit documentation in R/paws.codebuild_operations.R
 \name{list_source_credentials}
 \alias{list_source_credentials}
-\title{Returns a list of \code{SourceCredentialsInfo} objects}
+\title{Returns a list of SourceCredentialsInfo objects}
 \usage{
 list_source_credentials()
 }
 \description{
 Returns a list of \code{SourceCredentialsInfo} objects.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_source_credentials()
 }
+}
+

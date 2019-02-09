@@ -4,9 +4,7 @@
 \alias{release_static_ip}
 \title{Deletes a specific static IP from your account}
 \usage{
-release_static_ip(
-  staticIpName = "string"
-)
+release_static_ip(staticIpName)
 }
 \arguments{
 \item{staticIpName}{[required] The name of the static IP to delete.}
@@ -14,6 +12,10 @@ release_static_ip(
 \description{
 Deletes a specific static IP from your account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{release_static_ip(
+  staticIpName = "string"
+)
 }
+}
+

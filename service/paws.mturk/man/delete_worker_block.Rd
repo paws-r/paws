@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.mturk_operations.R
 \name{delete_worker_block}
 \alias{delete_worker_block}
-\title{The \code{DeleteWorkerBlock} operation allows you to reinstate a blocked Worker to work on your HITs}
+\title{The DeleteWorkerBlock operation allows you to reinstate a blocked Worker to work on your HITs}
 \usage{
-delete_worker_block(
-  WorkerId = "string",
-  Reason = "string"
-)
+delete_worker_block(WorkerId, Reason = NULL)
 }
 \arguments{
 \item{WorkerId}{[required] The ID of the Worker to unblock.}
@@ -17,6 +14,11 @@ delete_worker_block(
 \description{
 The \code{DeleteWorkerBlock} operation allows you to reinstate a blocked Worker to work on your HITs. This operation reverses the effects of the CreateWorkerBlock operation. You need the Worker ID to use this operation. If the Worker ID is missing or invalid, this operation fails and returns the message "WorkerId is invalid." If the specified Worker is not blocked, this operation returns successfully.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_worker_block(
+  WorkerId = "string",
+  Reason = "string"
+)
 }
+}
+

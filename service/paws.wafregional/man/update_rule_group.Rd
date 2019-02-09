@@ -2,33 +2,9 @@
 % Please edit documentation in R/paws.wafregional_operations.R
 \name{update_rule_group}
 \alias{update_rule_group}
-\title{Inserts or deletes ActivatedRule objects in a \code{RuleGroup}}
+\title{Inserts or deletes ActivatedRule objects in a RuleGroup}
 \usage{
-update_rule_group(
-  RuleGroupId = "string",
-  Updates = list(
-    list(
-      Action = "INSERT"|"DELETE",
-      ActivatedRule = list(
-        Priority = 123,
-        RuleId = "string",
-        Action = list(
-          Type = "BLOCK"|"ALLOW"|"COUNT"
-        ),
-        OverrideAction = list(
-          Type = "NONE"|"COUNT"
-        ),
-        Type = "REGULAR"|"RATE_BASED"|"GROUP",
-        ExcludedRules = list(
-          list(
-            RuleId = "string"
-          )
-        )
-      )
-    )
-  ),
-  ChangeToken = "string"
-)
+update_rule_group(RuleGroupId, Updates, ChangeToken)
 }
 \arguments{
 \item{RuleGroupId}{[required] The \code{RuleGroupId} of the RuleGroup that you want to update. \code{RuleGroupId} is returned by CreateRuleGroup and by ListRuleGroups.}
@@ -61,6 +37,32 @@ If you want to replace one \code{Rule} with another, you delete the existing one
 
 For more information about how to use the AWS WAF API to allow or block HTTP requests, see the \href{http://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_rule_group(
+  RuleGroupId = "string",
+  Updates = list(
+    list(
+      Action = "INSERT"|"DELETE",
+      ActivatedRule = list(
+        Priority = 123,
+        RuleId = "string",
+        Action = list(
+          Type = "BLOCK"|"ALLOW"|"COUNT"
+        ),
+        OverrideAction = list(
+          Type = "NONE"|"COUNT"
+        ),
+        Type = "REGULAR"|"RATE_BASED"|"GROUP",
+        ExcludedRules = list(
+          list(
+            RuleId = "string"
+          )
+        )
+      )
+    )
+  ),
+  ChangeToken = "string"
+)
 }
+}
+

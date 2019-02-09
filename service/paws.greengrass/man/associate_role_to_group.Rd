@@ -4,10 +4,7 @@
 \alias{associate_role_to_group}
 \title{Associates a role with a group}
 \usage{
-associate_role_to_group(
-  GroupId = "string",
-  RoleArn = "string"
-)
+associate_role_to_group(GroupId, RoleArn = NULL)
 }
 \arguments{
 \item{GroupId}{[required] The ID of the Greengrass group.}
@@ -17,6 +14,11 @@ associate_role_to_group(
 \description{
 Associates a role with a group. Your Greengrass core will use the role to access AWS cloud services. The role's permissions should allow Greengrass core Lambda functions to perform actions against the cloud.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_role_to_group(
+  GroupId = "string",
+  RoleArn = "string"
+)
 }
+}
+

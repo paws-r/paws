@@ -4,9 +4,7 @@
 \alias{create_account_alias}
 \title{Creates an alias for your AWS account}
 \usage{
-create_account_alias(
-  AccountAlias = "string"
-)
+create_account_alias(AccountAlias)
 }
 \arguments{
 \item{AccountAlias}{[required] The account alias to create.
@@ -16,11 +14,18 @@ This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex 
 \description{
 Creates an alias for your AWS account. For information about using an AWS account alias, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/AccountAlias.html}{Using an Alias for Your AWS Account ID} in the \emph{IAM User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_account_alias(
+  AccountAlias = "string"
+)
+}
+}
+
 \examples{
 # The following command associates the alias examplecorp to your AWS
 # account.
-create_account_alias(
+\donttest{create_account_alias(
   AccountAlias = "examplecorp"
-)
+)}
 
 }

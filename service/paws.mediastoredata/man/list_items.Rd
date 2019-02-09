@@ -4,11 +4,7 @@
 \alias{list_items}
 \title{Provides a list of metadata entries about folders and objects in the specified folder}
 \usage{
-list_items(
-  Path = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_items(Path = NULL, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{Path}{The path in the container from which to retrieve items. Format: <folder name>/<folder name>/<file name>}
@@ -24,6 +20,12 @@ Tokens expire after 15 minutes.}
 \description{
 Provides a list of metadata entries about folders and objects in the specified folder.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_items(
+  Path = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

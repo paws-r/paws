@@ -4,10 +4,7 @@
 \alias{detect_entities}
 \title{Inspects text for named entities, and returns information about them}
 \usage{
-detect_entities(
-  Text = "string",
-  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
-)
+detect_entities(Text, LanguageCode)
 }
 \arguments{
 \item{Text}{[required] A UTF-8 text string. Each string must contain fewer that 5,000 bytes of UTF-8 encoded characters.}
@@ -17,6 +14,11 @@ detect_entities(
 \description{
 Inspects text for named entities, and returns information about them. For more information, about named entities, see how-entities.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{detect_entities(
+  Text = "string",
+  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
+)
 }
+}
+

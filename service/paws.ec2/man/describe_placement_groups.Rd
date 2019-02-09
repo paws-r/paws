@@ -4,20 +4,8 @@
 \alias{describe_placement_groups}
 \title{Describes one or more of your placement groups}
 \usage{
-describe_placement_groups(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE,
-  GroupNames = list(
-    "string"
-  )
-)
+describe_placement_groups(Filters = NULL, DryRun = NULL,
+  GroupNames = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -34,8 +22,23 @@ describe_placement_groups(
 Default: Describes all your placement groups, or only those otherwise specified.}
 }
 \description{
-Describes one or more of your placement groups. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement Groups} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+Describes one or more of your placement groups. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement Groups} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{describe_placement_groups(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  DryRun = TRUE|FALSE,
+  GroupNames = list(
+    "string"
+  )
+)
+}
+}
 
-}

@@ -4,11 +4,7 @@
 \alias{reset_image_attribute}
 \title{Resets an attribute of an AMI to its default value}
 \usage{
-reset_image_attribute(
-  Attribute = "launchPermission",
-  ImageId = "string",
-  DryRun = TRUE|FALSE
-)
+reset_image_attribute(Attribute, ImageId, DryRun = NULL)
 }
 \arguments{
 \item{Attribute}{[required] The attribute to reset (currently you can only reset the launch permission attribute).}
@@ -23,12 +19,21 @@ Resets an attribute of an AMI to its default value.
 \details{
 The productCodes attribute can't be reset.
 }
+\section{Accepted Parameters}{
+\preformatted{reset_image_attribute(
+  Attribute = "launchPermission",
+  ImageId = "string",
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example resets the launchPermission attribute for the specified
 # AMI. By default, AMIs are private.
-reset_image_attribute(
+\donttest{reset_image_attribute(
   Attribute = "launchPermission",
   ImageId = "ami-5731123e"
-)
+)}
 
 }

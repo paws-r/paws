@@ -4,9 +4,7 @@
 \alias{delete_volume}
 \title{Deletes the specified storage volume that you previously created using the CreateCachediSCSIVolume or CreateStorediSCSIVolume API}
 \usage{
-delete_volume(
-  VolumeARN = "string"
-)
+delete_volume(VolumeARN)
 }
 \arguments{
 \item{VolumeARN}{[required] The Amazon Resource Name (ARN) of the volume. Use the ListVolumes operation to return a list of gateway volumes.}
@@ -19,11 +17,18 @@ Before you delete a volume, make sure there are no iSCSI connections to the volu
 
 In the request, you must provide the Amazon Resource Name (ARN) of the storage volume you want to delete.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_volume(
+  VolumeARN = "string"
+)
+}
+}
+
 \examples{
 # Deletes the specified gateway volume that you previously created using
 # the CreateCachediSCSIVolume or CreateStorediSCSIVolume API.
-delete_volume(
+\donttest{delete_volume(
   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB"
-)
+)}
 
 }

@@ -4,13 +4,7 @@
 \alias{import_rest_api}
 \title{A feature of the API Gateway control service for creating a new API from an external API definition file}
 \usage{
-import_rest_api(
-  failOnWarnings = TRUE|FALSE,
-  parameters = list(
-    "string"
-  ),
-  body = raw
-)
+import_rest_api(failOnWarnings = NULL, parameters = NULL, body)
 }
 \arguments{
 \item{failOnWarnings}{A query parameter to indicate whether to rollback the API creation (\code{true}) or not (\code{false}) when a warning is encountered. The default value is \code{false}.}
@@ -34,6 +28,14 @@ The AWS CLI command to set the regional endpoint on the imported API is:\preform
 \description{
 A feature of the API Gateway control service for creating a new API from an external API definition file.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{import_rest_api(
+  failOnWarnings = TRUE|FALSE,
+  parameters = list(
+    "string"
+  ),
+  body = raw
+)
 }
+}
+

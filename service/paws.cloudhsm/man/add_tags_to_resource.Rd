@@ -2,17 +2,9 @@
 % Please edit documentation in R/paws.cloudhsm_operations.R
 \name{add_tags_to_resource}
 \alias{add_tags_to_resource}
-\title{This is documentation for \strong{AWS CloudHSM Classic}}
+\title{This is documentation for AWS CLOUDHSM CLASSIC}
 \usage{
-add_tags_to_resource(
-  ResourceArn = "string",
-  TagList = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+add_tags_to_resource(ResourceArn, TagList)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the AWS CloudHSM resource to tag.}
@@ -29,6 +21,16 @@ Adds or overwrites one or more tags for the specified AWS CloudHSM resource.
 
 Each tag consists of a key and a value. Tag keys must be unique to each resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{add_tags_to_resource(
+  ResourceArn = "string",
+  TagList = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

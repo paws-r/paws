@@ -4,10 +4,7 @@
 \alias{attach_thing_principal}
 \title{Attaches the specified principal to the specified thing}
 \usage{
-attach_thing_principal(
-  thingName = "string",
-  principal = "string"
-)
+attach_thing_principal(thingName, principal)
 }
 \arguments{
 \item{thingName}{[required] The name of the thing.}
@@ -17,6 +14,11 @@ attach_thing_principal(
 \description{
 Attaches the specified principal to the specified thing.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{attach_thing_principal(
+  thingName = "string",
+  principal = "string"
+)
 }
+}
+

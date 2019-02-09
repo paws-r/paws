@@ -4,10 +4,7 @@
 \alias{get_role_policy}
 \title{Retrieves the specified inline policy document that is embedded with the specified IAM role}
 \usage{
-get_role_policy(
-  RoleName = "string",
-  PolicyName = "string"
-)
+get_role_policy(RoleName, PolicyName)
 }
 \arguments{
 \item{RoleName}{[required] The name of the role associated with the policy.
@@ -30,6 +27,11 @@ For more information about policies, see \href{http://docs.aws.amazon.com/IAM/la
 
 For more information about roles, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html}{Using Roles to Delegate Permissions and Federate Identities}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_role_policy(
+  RoleName = "string",
+  PolicyName = "string"
+)
 }
+}
+

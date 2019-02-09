@@ -4,10 +4,7 @@
 \alias{get_user_policy}
 \title{Retrieves the specified inline policy document that is embedded in the specified IAM user}
 \usage{
-get_user_policy(
-  UserName = "string",
-  PolicyName = "string"
-)
+get_user_policy(UserName, PolicyName)
 }
 \arguments{
 \item{UserName}{[required] The name of the user who the policy is associated with.
@@ -28,6 +25,11 @@ An IAM user can also have managed policies attached to it. To retrieve a managed
 
 For more information about policies, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies} in the \emph{IAM User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_user_policy(
+  UserName = "string",
+  PolicyName = "string"
+)
 }
+}
+

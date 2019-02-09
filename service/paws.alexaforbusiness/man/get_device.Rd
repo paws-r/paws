@@ -4,9 +4,7 @@
 \alias{get_device}
 \title{Gets the details of a device by device ARN}
 \usage{
-get_device(
-  DeviceArn = "string"
-)
+get_device(DeviceArn = NULL)
 }
 \arguments{
 \item{DeviceArn}{The ARN of the device for which to request details. Required.}
@@ -14,6 +12,10 @@ get_device(
 \description{
 Gets the details of a device by device ARN.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_device(
+  DeviceArn = "string"
+)
 }
+}
+

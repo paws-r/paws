@@ -4,26 +4,9 @@
 \alias{describe_scheduled_instances}
 \title{Describes one or more of your Scheduled Instances}
 \usage{
-describe_scheduled_instances(
-  DryRun = TRUE|FALSE,
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  ScheduledInstanceIds = list(
-    "string"
-  ),
-  SlotStartTimeRange = list(
-    EarliestTime = as.POSIXct("2015-01-01"),
-    LatestTime = as.POSIXct("2015-01-01")
-  )
-)
+describe_scheduled_instances(DryRun = NULL, Filters = NULL,
+  MaxResults = NULL, NextToken = NULL, ScheduledInstanceIds = NULL,
+  SlotStartTimeRange = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -47,12 +30,36 @@ describe_scheduled_instances(
 \description{
 Describes one or more of your Scheduled Instances.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_scheduled_instances(
+  DryRun = TRUE|FALSE,
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string",
+  ScheduledInstanceIds = list(
+    "string"
+  ),
+  SlotStartTimeRange = list(
+    EarliestTime = as.POSIXct("2015-01-01"),
+    LatestTime = as.POSIXct("2015-01-01")
+  )
+)
+}
+}
+
 \examples{
 # This example describes the specified Scheduled Instance.
-describe_scheduled_instances(
+\donttest{describe_scheduled_instances(
   ScheduledInstanceIds = list(
     "sci-1234-1234-1234-1234-123456789012"
   )
-)
+)}
 
 }

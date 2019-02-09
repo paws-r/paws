@@ -4,9 +4,7 @@
 \alias{describe_stream_summary}
 \title{Provides a summarized description of the specified Kinesis data stream without the shard list}
 \usage{
-describe_stream_summary(
-  StreamName = "string"
-)
+describe_stream_summary(StreamName)
 }
 \arguments{
 \item{StreamName}{[required] The name of the stream to describe.}
@@ -17,6 +15,10 @@ Provides a summarized description of the specified Kinesis data stream without t
 \details{
 The information returned includes the stream name, Amazon Resource Name (ARN), status, record retention period, approximate creation time, monitoring, encryption details, and open shard count.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_stream_summary(
+  StreamName = "string"
+)
 }
+}
+

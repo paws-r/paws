@@ -4,9 +4,7 @@
 \alias{get_bucket_cors}
 \title{Returns the CORS configuration for the bucket}
 \usage{
-get_bucket_cors(
-  Bucket = "string"
-)
+get_bucket_cors(Bucket)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -14,11 +12,18 @@ get_bucket_cors(
 \description{
 Returns the CORS configuration for the bucket.
 }
+\section{Accepted Parameters}{
+\preformatted{get_bucket_cors(
+  Bucket = "string"
+)
+}
+}
+
 \examples{
 # The following example returns cross-origin resource sharing (CORS)
 # configuration set on a bucket.
-get_bucket_cors(
+\donttest{get_bucket_cors(
   Bucket = "examplebucket"
-)
+)}
 
 }

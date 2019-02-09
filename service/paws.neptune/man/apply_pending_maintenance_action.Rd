@@ -4,11 +4,8 @@
 \alias{apply_pending_maintenance_action}
 \title{Applies a pending maintenance action to a resource (for example, to a DB instance)}
 \usage{
-apply_pending_maintenance_action(
-  ResourceIdentifier = "string",
-  ApplyAction = "string",
-  OptInType = "string"
-)
+apply_pending_maintenance_action(ResourceIdentifier, ApplyAction,
+  OptInType)
 }
 \arguments{
 \item{ResourceIdentifier}{[required] The Amazon Resource Name (ARN) of the resource that the pending maintenance action applies to. For information about creating an ARN, see \href{http://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing}{Constructing an Amazon Resource Name (ARN)}.}
@@ -29,6 +26,12 @@ Valid values:
 \description{
 Applies a pending maintenance action to a resource (for example, to a DB instance).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{apply_pending_maintenance_action(
+  ResourceIdentifier = "string",
+  ApplyAction = "string",
+  OptInType = "string"
+)
 }
+}
+

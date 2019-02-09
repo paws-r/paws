@@ -4,11 +4,8 @@
 \alias{create_app_cookie_stickiness_policy}
 \title{Generates a stickiness policy with sticky session lifetimes that follow that of an application-generated cookie}
 \usage{
-create_app_cookie_stickiness_policy(
-  LoadBalancerName = "string",
-  PolicyName = "string",
-  CookieName = "string"
-)
+create_app_cookie_stickiness_policy(LoadBalancerName, PolicyName,
+  CookieName)
 }
 \arguments{
 \item{LoadBalancerName}{[required] The name of the load balancer.}
@@ -27,13 +24,22 @@ If the application cookie is explicitly removed or expires, the session stops be
 
 For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-application}{Application-Controlled Session Stickiness} in the \emph{Classic Load Balancers Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_app_cookie_stickiness_policy(
+  LoadBalancerName = "string",
+  PolicyName = "string",
+  CookieName = "string"
+)
+}
+}
+
 \examples{
 # This example generates a stickiness policy that follows the sticky
 # session lifetimes of the application-generated cookie.
-create_app_cookie_stickiness_policy(
+\donttest{create_app_cookie_stickiness_policy(
   CookieName = "my-app-cookie",
   LoadBalancerName = "my-load-balancer",
   PolicyName = "my-app-cookie-policy"
-)
+)}
 
 }

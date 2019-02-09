@@ -4,10 +4,7 @@
 \alias{list_logging_configurations}
 \title{Returns an array of LoggingConfiguration objects}
 \usage{
-list_logging_configurations(
-  NextMarker = "string",
-  Limit = 123
-)
+list_logging_configurations(NextMarker = NULL, Limit = NULL)
 }
 \arguments{
 \item{NextMarker}{If you specify a value for \code{Limit} and you have more \code{LoggingConfigurations} than the value of \code{Limit}, AWS WAF returns a \code{NextMarker} value in the response that allows you to list another group of \code{LoggingConfigurations}. For the second and subsequent \code{ListLoggingConfigurations} requests, specify the value of \code{NextMarker} from the previous response to get information about another batch of \code{ListLoggingConfigurations}.}
@@ -17,6 +14,11 @@ list_logging_configurations(
 \description{
 Returns an array of LoggingConfiguration objects.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_logging_configurations(
+  NextMarker = "string",
+  Limit = 123
+)
 }
+}
+

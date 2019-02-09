@@ -4,11 +4,7 @@
 \alias{list_domain_associations}
 \title{List domains with an app}
 \usage{
-list_domain_associations(
-  appId = "string",
-  nextToken = "string",
-  maxResults = 123
-)
+list_domain_associations(appId, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{appId}{[required] Unique Id for an Amplify App.}
@@ -20,6 +16,12 @@ list_domain_associations(
 \description{
 List domains with an app
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_domain_associations(
+  appId = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

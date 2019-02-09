@@ -4,9 +4,7 @@
 \alias{stop_query}
 \title{Stops a CloudWatch Logs Insights query that is in progress}
 \usage{
-stop_query(
-  queryId = "string"
-)
+stop_query(queryId)
 }
 \arguments{
 \item{queryId}{[required] The ID number of the query to stop. If necessary, you can use \code{DescribeQueries} to find this ID number.}
@@ -14,6 +12,10 @@ stop_query(
 \description{
 Stops a CloudWatch Logs Insights query that is in progress. If the query has already ended, the operation returns an error indicating that the specified query is not running.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{stop_query(
+  queryId = "string"
+)
 }
+}
+

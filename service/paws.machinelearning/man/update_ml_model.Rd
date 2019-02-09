@@ -2,13 +2,9 @@
 % Please edit documentation in R/paws.machinelearning_operations.R
 \name{update_ml_model}
 \alias{update_ml_model}
-\title{Updates the \code{MLModelName} and the \code{ScoreThreshold} of an \code{MLModel}}
+\title{Updates the MLModelName and the ScoreThreshold of an MLModel}
 \usage{
-update_ml_model(
-  MLModelId = "string",
-  MLModelName = "string",
-  ScoreThreshold = 123.0
-)
+update_ml_model(MLModelId, MLModelName = NULL, ScoreThreshold = NULL)
 }
 \arguments{
 \item{MLModelId}{[required] The ID assigned to the \code{MLModel} during creation.}
@@ -25,6 +21,12 @@ Updates the \code{MLModelName} and the \code{ScoreThreshold} of an \code{MLModel
 \details{
 You can use the \code{GetMLModel} operation to view the contents of the updated data element.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_ml_model(
+  MLModelId = "string",
+  MLModelName = "string",
+  ScoreThreshold = 123.0
+)
 }
+}
+

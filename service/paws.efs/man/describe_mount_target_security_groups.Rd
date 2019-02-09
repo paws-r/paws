@@ -4,9 +4,7 @@
 \alias{describe_mount_target_security_groups}
 \title{Returns the security groups currently in effect for a mount target}
 \usage{
-describe_mount_target_security_groups(
-  MountTargetId = "string"
-)
+describe_mount_target_security_groups(MountTargetId)
 }
 \arguments{
 \item{MountTargetId}{[required] ID of the mount target whose security groups you want to retrieve.}
@@ -21,11 +19,18 @@ This operation requires permissions for the following actions:
 \item \code{ec2:DescribeNetworkInterfaceAttribute} action on the mount target's network interface.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{describe_mount_target_security_groups(
+  MountTargetId = "string"
+)
+}
+}
+
 \examples{
 # This operation describes all of the security groups for a file system's
 # mount target.
-describe_mount_target_security_groups(
+\donttest{describe_mount_target_security_groups(
   MountTargetId = "fsmt-12340abc"
-)
+)}
 
 }

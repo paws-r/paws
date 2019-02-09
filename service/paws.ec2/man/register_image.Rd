@@ -4,38 +4,11 @@
 \alias{register_image}
 \title{Registers an AMI}
 \usage{
-register_image(
-  ImageLocation = "string",
-  Architecture = "i386"|"x86_64"|"arm64",
-  BlockDeviceMappings = list(
-    list(
-      DeviceName = "string",
-      VirtualName = "string",
-      Ebs = list(
-        DeleteOnTermination = TRUE|FALSE,
-        Iops = 123,
-        SnapshotId = "string",
-        VolumeSize = 123,
-        VolumeType = "standard"|"io1"|"gp2"|"sc1"|"st1",
-        Encrypted = TRUE|FALSE,
-        KmsKeyId = "string"
-      ),
-      NoDevice = "string"
-    )
-  ),
-  Description = "string",
-  DryRun = TRUE|FALSE,
-  EnaSupport = TRUE|FALSE,
-  KernelId = "string",
-  Name = "string",
-  BillingProducts = list(
-    "string"
-  ),
-  RamdiskId = "string",
-  RootDeviceName = "string",
-  SriovNetSupport = "string",
-  VirtualizationType = "string"
-)
+register_image(ImageLocation = NULL, Architecture = NULL,
+  BlockDeviceMappings = NULL, Description = NULL, DryRun = NULL,
+  EnaSupport = NULL, KernelId = NULL, Name, BillingProducts = NULL,
+  RamdiskId = NULL, RootDeviceName = NULL, SriovNetSupport = NULL,
+  VirtualizationType = NULL)
 }
 \arguments{
 \item{ImageLocation}{The full path to your AMI manifest in Amazon S3 storage.}
@@ -77,12 +50,12 @@ This option is supported only for HVM AMIs. Specifying this option with a PV AMI
 Default: \code{paravirtual}}
 }
 \description{
-Registers an AMI. When you're creating an AMI, this is the final step you must complete before you can launch an instance from the AMI. For more information about creating AMIs, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami.html}{Creating Your Own AMIs} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+Registers an AMI. When you're creating an AMI, this is the final step you must complete before you can launch an instance from the AMI. For more information about creating AMIs, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami.html}{Creating Your Own AMIs} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \details{
 For Amazon EBS-backed instances, CreateImage creates and registers the AMI in a single request, so you don't have to register the AMI yourself.
 
-You can also use \code{RegisterImage} to create an Amazon EBS-backed Linux AMI from a snapshot of a root device volume. You specify the snapshot using the block device mapping. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-launch-snapshot.html}{Launching a Linux Instance from a Backup} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+You can also use \code{RegisterImage} to create an Amazon EBS-backed Linux AMI from a snapshot of a root device volume. You specify the snapshot using the block device mapping. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-launch-snapshot.html}{Launching a Linux Instance from a Backup} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 You can't register an image where a secondary (non-root) snapshot has AWS Marketplace product codes.
 
@@ -92,6 +65,39 @@ To create an AMI for operating systems that require a billing code, see CreateIm
 
 If needed, you can deregister an AMI at any time. Any modifications you make to an AMI backed by an instance store volume invalidates its registration. If you make changes to an image, deregister the previous image and register the new image.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{register_image(
+  ImageLocation = "string",
+  Architecture = "i386"|"x86_64"|"arm64",
+  BlockDeviceMappings = list(
+    list(
+      DeviceName = "string",
+      VirtualName = "string",
+      Ebs = list(
+        DeleteOnTermination = TRUE|FALSE,
+        Iops = 123,
+        SnapshotId = "string",
+        VolumeSize = 123,
+        VolumeType = "standard"|"io1"|"gp2"|"sc1"|"st1",
+        Encrypted = TRUE|FALSE,
+        KmsKeyId = "string"
+      ),
+      NoDevice = "string"
+    )
+  ),
+  Description = "string",
+  DryRun = TRUE|FALSE,
+  EnaSupport = TRUE|FALSE,
+  KernelId = "string",
+  Name = "string",
+  BillingProducts = list(
+    "string"
+  ),
+  RamdiskId = "string",
+  RootDeviceName = "string",
+  SriovNetSupport = "string",
+  VirtualizationType = "string"
+)
 }
+}
+

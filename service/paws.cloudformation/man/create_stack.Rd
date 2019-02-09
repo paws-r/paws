@@ -4,51 +4,13 @@
 \alias{create_stack}
 \title{Creates a stack as specified in the template}
 \usage{
-create_stack(
-  StackName = "string",
-  TemplateBody = "string",
-  TemplateURL = "string",
-  Parameters = list(
-    list(
-      ParameterKey = "string",
-      ParameterValue = "string",
-      UsePreviousValue = TRUE|FALSE,
-      ResolvedValue = "string"
-    )
-  ),
-  DisableRollback = TRUE|FALSE,
-  RollbackConfiguration = list(
-    RollbackTriggers = list(
-      list(
-        Arn = "string",
-        Type = "string"
-      )
-    ),
-    MonitoringTimeInMinutes = 123
-  ),
-  TimeoutInMinutes = 123,
-  NotificationARNs = list(
-    "string"
-  ),
-  Capabilities = list(
-    "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"
-  ),
-  ResourceTypes = list(
-    "string"
-  ),
-  RoleARN = "string",
-  OnFailure = "DO_NOTHING"|"ROLLBACK"|"DELETE",
-  StackPolicyBody = "string",
-  StackPolicyURL = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  ClientRequestToken = "string",
-  EnableTerminationProtection = TRUE|FALSE
-)
+create_stack(StackName, TemplateBody = NULL, TemplateURL = NULL,
+  Parameters = NULL, DisableRollback = NULL,
+  RollbackConfiguration = NULL, TimeoutInMinutes = NULL,
+  NotificationARNs = NULL, Capabilities = NULL, ResourceTypes = NULL,
+  RoleARN = NULL, OnFailure = NULL, StackPolicyBody = NULL,
+  StackPolicyURL = NULL, Tags = NULL, ClientRequestToken = NULL,
+  EnableTerminationProtection = NULL)
 }
 \arguments{
 \item{StackName}{[required] The name that is associated with the stack. The name must be unique in the region in which you are creating the stack.
@@ -144,6 +106,52 @@ For \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cf
 \description{
 Creates a stack as specified in the template. After the call completes successfully, the stack creation starts. You can check the status of the stack via the DescribeStacks API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_stack(
+  StackName = "string",
+  TemplateBody = "string",
+  TemplateURL = "string",
+  Parameters = list(
+    list(
+      ParameterKey = "string",
+      ParameterValue = "string",
+      UsePreviousValue = TRUE|FALSE,
+      ResolvedValue = "string"
+    )
+  ),
+  DisableRollback = TRUE|FALSE,
+  RollbackConfiguration = list(
+    RollbackTriggers = list(
+      list(
+        Arn = "string",
+        Type = "string"
+      )
+    ),
+    MonitoringTimeInMinutes = 123
+  ),
+  TimeoutInMinutes = 123,
+  NotificationARNs = list(
+    "string"
+  ),
+  Capabilities = list(
+    "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"
+  ),
+  ResourceTypes = list(
+    "string"
+  ),
+  RoleARN = "string",
+  OnFailure = "DO_NOTHING"|"ROLLBACK"|"DELETE",
+  StackPolicyBody = "string",
+  StackPolicyURL = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  ClientRequestToken = "string",
+  EnableTerminationProtection = TRUE|FALSE
+)
 }
+}
+

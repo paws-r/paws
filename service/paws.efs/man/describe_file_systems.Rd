@@ -2,14 +2,10 @@
 % Please edit documentation in R/paws.efs_operations.R
 \name{describe_file_systems}
 \alias{describe_file_systems}
-\title{Returns the description of a specific Amazon EFS file system if either the file system \code{CreationToken} or the \code{FileSystemId} is provided}
+\title{Returns the description of a specific Amazon EFS file system if either the file system CreationToken or the FileSystemId is provided}
 \usage{
-describe_file_systems(
-  MaxItems = 123,
-  Marker = "string",
-  CreationToken = "string",
-  FileSystemId = "string"
-)
+describe_file_systems(MaxItems = NULL, Marker = NULL,
+  CreationToken = NULL, FileSystemId = NULL)
 }
 \arguments{
 \item{MaxItems}{(Optional) Specifies the maximum number of file systems to return in the response (integer). This parameter value must be greater than 0. The number of items that Amazon EFS returns is the minimum of the \code{MaxItems} parameter specified in the request and the service's internal maximum number of items per page.}
@@ -34,8 +30,18 @@ The order of file systems returned in the response of one \code{DescribeFileSyst
 
 This operation requires permissions for the \code{elasticfilesystem:DescribeFileSystems} action.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_file_systems(
+  MaxItems = 123,
+  Marker = "string",
+  CreationToken = "string",
+  FileSystemId = "string"
+)
+}
+}
+
 \examples{
 # This operation describes all of the EFS file systems in an account.
-describe_file_systems()
+\donttest{describe_file_systems()}
 
 }

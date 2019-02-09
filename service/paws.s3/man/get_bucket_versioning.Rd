@@ -4,9 +4,7 @@
 \alias{get_bucket_versioning}
 \title{Returns the versioning state of a bucket}
 \usage{
-get_bucket_versioning(
-  Bucket = "string"
-)
+get_bucket_versioning(Bucket)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -14,10 +12,17 @@ get_bucket_versioning(
 \description{
 Returns the versioning state of a bucket.
 }
+\section{Accepted Parameters}{
+\preformatted{get_bucket_versioning(
+  Bucket = "string"
+)
+}
+}
+
 \examples{
 # The following example retrieves bucket versioning configuration.
-get_bucket_versioning(
+\donttest{get_bucket_versioning(
   Bucket = "examplebucket"
-)
+)}
 
 }

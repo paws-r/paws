@@ -4,9 +4,7 @@
 \alias{update_account_sending_enabled}
 \title{Enables or disables email sending across your entire Amazon SES account in the current AWS Region}
 \usage{
-update_account_sending_enabled(
-  Enabled = TRUE|FALSE
-)
+update_account_sending_enabled(Enabled = NULL)
 }
 \arguments{
 \item{Enabled}{Describes whether email sending is enabled or disabled for your Amazon SES account in the current AWS Region.}
@@ -17,10 +15,17 @@ Enables or disables email sending across your entire Amazon SES account in the c
 \details{
 You can execute this operation no more than once per second.
 }
+\section{Accepted Parameters}{
+\preformatted{update_account_sending_enabled(
+  Enabled = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # The following example updated the sending status for this account.
-update_account_sending_enabled(
+\donttest{update_account_sending_enabled(
   Enabled = TRUE
-)
+)}
 
 }

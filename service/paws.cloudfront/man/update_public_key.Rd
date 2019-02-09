@@ -4,16 +4,7 @@
 \alias{update_public_key}
 \title{Update public key information}
 \usage{
-update_public_key(
-  PublicKeyConfig = list(
-    CallerReference = "string",
-    Name = "string",
-    EncodedKey = "string",
-    Comment = "string"
-  ),
-  Id = "string",
-  IfMatch = "string"
-)
+update_public_key(PublicKeyConfig, Id, IfMatch = NULL)
 }
 \arguments{
 \item{PublicKeyConfig}{[required] Request to update public key information.}
@@ -25,6 +16,17 @@ update_public_key(
 \description{
 Update public key information. Note that the only value you can change is the comment.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_public_key(
+  PublicKeyConfig = list(
+    CallerReference = "string",
+    Name = "string",
+    EncodedKey = "string",
+    Comment = "string"
+  ),
+  Id = "string",
+  IfMatch = "string"
+)
 }
+}
+

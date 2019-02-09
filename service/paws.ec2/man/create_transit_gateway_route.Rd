@@ -4,13 +4,9 @@
 \alias{create_transit_gateway_route}
 \title{Creates a static route for the specified transit gateway route table}
 \usage{
-create_transit_gateway_route(
-  DestinationCidrBlock = "string",
-  TransitGatewayRouteTableId = "string",
-  TransitGatewayAttachmentId = "string",
-  Blackhole = TRUE|FALSE,
-  DryRun = TRUE|FALSE
-)
+create_transit_gateway_route(DestinationCidrBlock,
+  TransitGatewayRouteTableId, TransitGatewayAttachmentId = NULL,
+  Blackhole = NULL, DryRun = NULL)
 }
 \arguments{
 \item{DestinationCidrBlock}{[required] The CIDR range used for destination matches. Routing decisions are based on the most specific match.}
@@ -26,6 +22,14 @@ create_transit_gateway_route(
 \description{
 Creates a static route for the specified transit gateway route table.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_transit_gateway_route(
+  DestinationCidrBlock = "string",
+  TransitGatewayRouteTableId = "string",
+  TransitGatewayAttachmentId = "string",
+  Blackhole = TRUE|FALSE,
+  DryRun = TRUE|FALSE
+)
 }
+}
+

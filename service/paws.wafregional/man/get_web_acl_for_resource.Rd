@@ -4,9 +4,7 @@
 \alias{get_web_acl_for_resource}
 \title{Returns the web ACL for the specified resource, either an application load balancer or Amazon API Gateway stage}
 \usage{
-get_web_acl_for_resource(
-  ResourceArn = "string"
-)
+get_web_acl_for_resource(ResourceArn)
 }
 \arguments{
 \item{ResourceArn}{[required] The ARN (Amazon Resource Name) of the resource for which to get the web ACL, either an application load balancer or Amazon API Gateway stage.
@@ -20,6 +18,10 @@ The ARN should be in one of the following formats:
 \description{
 Returns the web ACL for the specified resource, either an application load balancer or Amazon API Gateway stage.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_web_acl_for_resource(
+  ResourceArn = "string"
+)
 }
+}
+

@@ -2,14 +2,10 @@
 % Please edit documentation in R/paws.kms_operations.R
 \name{create_custom_key_store}
 \alias{create_custom_key_store}
-\title{Creates a \link{custom key store}(http://docs}
+\title{Creates a custom key store that is associated with an AWS CloudHSM cluster that you own and manage}
 \usage{
-create_custom_key_store(
-  CustomKeyStoreName = "string",
-  CloudHsmClusterId = "string",
-  TrustAnchorCertificate = "string",
-  KeyStorePassword = "string"
-)
+create_custom_key_store(CustomKeyStoreName, CloudHsmClusterId,
+  TrustAnchorCertificate, KeyStorePassword)
 }
 \arguments{
 \item{CustomKeyStoreName}{[required] Specifies a friendly name for the custom key store. The name must be unique in your AWS account.}
@@ -37,7 +33,7 @@ The \code{CreateCustomKeyStore} operation requires the following elements.
 \item You must provide the password of the dedicated \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser}{kmsuser crypto user} (CU) account in the cluster.
 }
 
-Before you create the custom key store, use the \href{http://docs.aws.amazon.com/cloudhsm/latest/userguide/cloudhsm_mgmt_util-createUser.html}{createUser} command in \code{cloudhsm_mgmt_util} to create \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser}{a crypto user (CU) named kmsuser}in specified AWS CloudHSM cluster. AWS KMS uses the \code{kmsuser} CU account to create and manage key material on your behalf. For instructions, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/create-keystore.html#before-keystore}{Create the kmsuser Crypto User} in the \emph{AWS Key Management Service Developer Guide}.
+Before you create the custom key store, use the \href{http://docs.aws.amazon.com/cloudhsm/latest/userguide/cloudhsm_mgmt_util-createUser.html}{createUser} command in \code{cloudhsm_mgmt_util} to create \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser}{a crypto user (CU) named kmsuser} in specified AWS CloudHSM cluster. AWS KMS uses the \code{kmsuser} CU account to create and manage key material on your behalf. For instructions, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/create-keystore.html#before-keystore}{Create the kmsuser Crypto User} in the \emph{AWS Key Management Service Developer Guide}.
 
 The AWS CloudHSM cluster that you specify must meet the following requirements.
 \itemize{
@@ -51,6 +47,13 @@ New custom key stores are not automatically connected. After you create your cus
 
 If this operation succeeds, it returns the ID of the new custom key store. For help with failures, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html}{Troubleshoot a Custom Key Store} in the \emph{AWS KMS Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_custom_key_store(
+  CustomKeyStoreName = "string",
+  CloudHsmClusterId = "string",
+  TrustAnchorCertificate = "string",
+  KeyStorePassword = "string"
+)
 }
+}
+

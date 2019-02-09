@@ -6,9 +6,9 @@
 \alias{paws.codestar-package}
 \title{paws.codestar: AWS CodeStar}
 \description{
-This is the API reference for AWS CodeStar. This reference
-provides descriptions of the operations and data types for the AWS
-CodeStar API along with usage examples.
+This is the API reference for AWS CodeStar. This
+    reference provides descriptions of the operations and data types for
+    the AWS CodeStar API along with usage examples.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

@@ -4,7 +4,38 @@
 \alias{create_channel}
 \title{Creates a new channel}
 \usage{
-create_channel(
+create_channel(Destinations = NULL, EncoderSettings = NULL,
+  InputAttachments = NULL, InputSpecification = NULL,
+  LogLevel = NULL, Name = NULL, RequestId = NULL, Reserved = NULL,
+  RoleArn = NULL, Tags = NULL)
+}
+\arguments{
+\item{Destinations}{}
+
+\item{EncoderSettings}{}
+
+\item{InputAttachments}{List of input attachments for channel.}
+
+\item{InputSpecification}{Specification of input for this channel (max. bitrate, resolution, codec, etc.)}
+
+\item{LogLevel}{The log level to write to CloudWatch Logs.}
+
+\item{Name}{Name of channel.}
+
+\item{RequestId}{Unique request ID to be specified. This is needed to prevent retries from
+creating multiple resources.}
+
+\item{Reserved}{Deprecated field that's only usable by whitelisted customers.}
+
+\item{RoleArn}{An optional Amazon Resource Name (ARN) of the role to assume when running the Channel.}
+
+\item{Tags}{A collection of key-value pairs.}
+}
+\description{
+Creates a new channel
+}
+\section{Accepted Parameters}{
+\preformatted{create_channel(
   Destinations = list(
     list(
       Id = "string",
@@ -232,6 +263,11 @@ create_channel(
             ),
             RolloverInterval = 123
           ),
+          FrameCaptureGroupSettings = list(
+            Destination = list(
+              DestinationRefId = "string"
+            )
+          ),
           HlsGroupSettings = list(
             AdMarkers = list(
               "ADOBE"|"ELEMENTAL"|"ELEMENTAL_SCTE35"
@@ -285,6 +321,7 @@ create_channel(
                 RestartDelay = 123
               )
             ),
+            IFrameOnlyPlaylists = "DISABLED"|"STANDARD",
             IndexNSegments = 123,
             InputLossAction = "EMIT_OUTPUT"|"PAUSE_OUTPUT",
             IvInManifest = "EXCLUDE"|"INCLUDE",
@@ -431,6 +468,9 @@ create_channel(
                 Extension = "string",
                 NameModifier = "string"
               ),
+              FrameCaptureOutputSettings = list(
+                NameModifier = "string"
+              ),
               HlsOutputSettings = list(
                 HlsSettings = list(
                   AudioOnlyHlsSettings = list(
@@ -563,6 +603,9 @@ create_channel(
     VideoDescriptions = list(
       list(
         CodecSettings = list(
+          FrameCaptureSettings = list(
+            CaptureInterval = 123
+          ),
           H264Settings = list(
             AdaptiveQuantization = "HIGH"|"HIGHER"|"LOW"|"MAX"|"MEDIUM"|"OFF",
             AfdSignaling = "AUTO"|"FIXED"|"NONE",
@@ -697,32 +740,11 @@ create_channel(
   Name = "string",
   RequestId = "string",
   Reserved = "string",
-  RoleArn = "string"
+  RoleArn = "string",
+  Tags = list(
+    "string"
+  )
 )
 }
-\arguments{
-\item{Destinations}{}
-
-\item{EncoderSettings}{}
-
-\item{InputAttachments}{List of input attachments for channel.}
-
-\item{InputSpecification}{Specification of input for this channel (max. bitrate, resolution, codec, etc.)}
-
-\item{LogLevel}{The log level to write to CloudWatch Logs.}
-
-\item{Name}{Name of channel.}
-
-\item{RequestId}{Unique request ID to be specified. This is needed to prevent retries from
-creating multiple resources.}
-
-\item{Reserved}{Deprecated field that's only usable by whitelisted customers.}
-
-\item{RoleArn}{An optional Amazon Resource Name (ARN) of the role to assume when running the Channel.}
 }
-\description{
-Creates a new channel
-}
-\examples{
 
-}

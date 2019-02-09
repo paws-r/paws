@@ -4,12 +4,7 @@
 \alias{delete_integration_response}
 \title{Represents a delete integration response}
 \usage{
-delete_integration_response(
-  restApiId = "string",
-  resourceId = "string",
-  httpMethod = "string",
-  statusCode = "string"
-)
+delete_integration_response(restApiId, resourceId, httpMethod, statusCode)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -23,6 +18,13 @@ delete_integration_response(
 \description{
 Represents a delete integration response.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_integration_response(
+  restApiId = "string",
+  resourceId = "string",
+  httpMethod = "string",
+  statusCode = "string"
+)
 }
+}
+

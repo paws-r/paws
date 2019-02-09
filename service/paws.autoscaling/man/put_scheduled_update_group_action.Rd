@@ -4,17 +4,10 @@
 \alias{put_scheduled_update_group_action}
 \title{Creates or updates a scheduled scaling action for an Auto Scaling group}
 \usage{
-put_scheduled_update_group_action(
-  AutoScalingGroupName = "string",
-  ScheduledActionName = "string",
-  Time = as.POSIXct("2015-01-01"),
-  StartTime = as.POSIXct("2015-01-01"),
-  EndTime = as.POSIXct("2015-01-01"),
-  Recurrence = "string",
-  MinSize = 123,
-  MaxSize = 123,
-  DesiredCapacity = 123
-)
+put_scheduled_update_group_action(AutoScalingGroupName,
+  ScheduledActionName, Time = NULL, StartTime = NULL, EndTime = NULL,
+  Recurrence = NULL, MinSize = NULL, MaxSize = NULL,
+  DesiredCapacity = NULL)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
@@ -45,10 +38,25 @@ Creates or updates a scheduled scaling action for an Auto Scaling group. If you 
 \details{
 For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/schedule_time.html}{Scheduled Scaling} in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{put_scheduled_update_group_action(
+  AutoScalingGroupName = "string",
+  ScheduledActionName = "string",
+  Time = as.POSIXct("2015-01-01"),
+  StartTime = as.POSIXct("2015-01-01"),
+  EndTime = as.POSIXct("2015-01-01"),
+  Recurrence = "string",
+  MinSize = 123,
+  MaxSize = 123,
+  DesiredCapacity = 123
+)
+}
+}
+
 \examples{
 # This example adds the specified scheduled action to the specified Auto
 # Scaling group.
-put_scheduled_update_group_action(
+\donttest{put_scheduled_update_group_action(
   AutoScalingGroupName = "my-auto-scaling-group",
   DesiredCapacity = 4L,
   EndTime = "2014-05-12T08:00:00Z",
@@ -56,6 +64,6 @@ put_scheduled_update_group_action(
   MinSize = 2L,
   ScheduledActionName = "my-scheduled-action",
   StartTime = "2014-05-12T08:00:00Z"
-)
+)}
 
 }

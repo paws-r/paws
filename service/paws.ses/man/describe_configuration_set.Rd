@@ -4,12 +4,8 @@
 \alias{describe_configuration_set}
 \title{Returns the details of the specified configuration set}
 \usage{
-describe_configuration_set(
-  ConfigurationSetName = "string",
-  ConfigurationSetAttributeNames = list(
-    "eventDestinations"|"trackingOptions"|"reputationOptions"
-  )
-)
+describe_configuration_set(ConfigurationSetName,
+  ConfigurationSetAttributeNames = NULL)
 }
 \arguments{
 \item{ConfigurationSetName}{[required] The name of the configuration set to describe.}
@@ -22,6 +18,13 @@ Returns the details of the specified configuration set. For information about us
 \details{
 You can execute this operation no more than once per second.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_configuration_set(
+  ConfigurationSetName = "string",
+  ConfigurationSetAttributeNames = list(
+    "eventDestinations"|"trackingOptions"|"reputationOptions"
+  )
+)
 }
+}
+

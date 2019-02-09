@@ -4,10 +4,7 @@
 \alias{get_ui_customization}
 \title{Gets the UI Customization information for a particular app client's app UI, if there is something set}
 \usage{
-get_ui_customization(
-  UserPoolId = "string",
-  ClientId = "string"
-)
+get_ui_customization(UserPoolId, ClientId = NULL)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool.}
@@ -17,6 +14,11 @@ get_ui_customization(
 \description{
 Gets the UI Customization information for a particular app client's app UI, if there is something set. If nothing is set for the particular client, but there is an existing pool level customization (app \code{clientId} will be \code{ALL}), then that is returned. If nothing is present, then an empty shape is returned.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_ui_customization(
+  UserPoolId = "string",
+  ClientId = "string"
+)
 }
+}
+

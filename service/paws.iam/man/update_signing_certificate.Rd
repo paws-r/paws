@@ -4,11 +4,7 @@
 \alias{update_signing_certificate}
 \title{Changes the status of the specified user signing certificate from active to disabled, or vice versa}
 \usage{
-update_signing_certificate(
-  UserName = "string",
-  CertificateId = "string",
-  Status = "Active"|"Inactive"
-)
+update_signing_certificate(UserName = NULL, CertificateId, Status)
 }
 \arguments{
 \item{UserName}{The name of the IAM user the signing certificate belongs to.
@@ -27,13 +23,22 @@ Changes the status of the specified user signing certificate from active to disa
 \details{
 If the \code{UserName} field is not specified, the user name is determined implicitly based on the AWS access key ID used to sign the request. This operation works for access keys under the AWS account. Consequently, you can use this operation to manage AWS account root user credentials even if the AWS account has no associated users.
 }
+\section{Accepted Parameters}{
+\preformatted{update_signing_certificate(
+  UserName = "string",
+  CertificateId = "string",
+  Status = "Active"|"Inactive"
+)
+}
+}
+
 \examples{
 # The following command changes the status of a signing certificate for a
 # user named Bob to Inactive.
-update_signing_certificate(
+\donttest{update_signing_certificate(
   CertificateId = "TA7SMP42TDN5Z26OBPJE7EXAMPLE",
   Status = "Inactive",
   UserName = "Bob"
-)
+)}
 
 }

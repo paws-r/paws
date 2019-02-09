@@ -4,10 +4,7 @@
 \alias{get_deployable_patch_snapshot_for_instance}
 \title{Retrieves the current snapshot for the patch baseline the instance uses}
 \usage{
-get_deployable_patch_snapshot_for_instance(
-  InstanceId = "string",
-  SnapshotId = "string"
-)
+get_deployable_patch_snapshot_for_instance(InstanceId, SnapshotId)
 }
 \arguments{
 \item{InstanceId}{[required] The ID of the instance for which the appropriate patch snapshot should be retrieved.}
@@ -17,6 +14,11 @@ get_deployable_patch_snapshot_for_instance(
 \description{
 Retrieves the current snapshot for the patch baseline the instance uses. This API is primarily used by the AWS-RunPatchBaseline Systems Manager document.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_deployable_patch_snapshot_for_instance(
+  InstanceId = "string",
+  SnapshotId = "string"
+)
 }
+}
+

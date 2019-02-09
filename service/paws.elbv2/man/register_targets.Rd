@@ -4,16 +4,7 @@
 \alias{register_targets}
 \title{Registers the specified targets with the specified target group}
 \usage{
-register_targets(
-  TargetGroupArn = "string",
-  Targets = list(
-    list(
-      Id = "string",
-      Port = 123,
-      AvailabilityZone = "string"
-    )
-  )
-)
+register_targets(TargetGroupArn, Targets)
 }
 \arguments{
 \item{TargetGroupArn}{[required] The Amazon Resource Name (ARN) of the target group.}
@@ -34,10 +25,24 @@ With a Network Load Balancer, you cannot register instances by instance ID if th
 
 To remove a target from a target group, use DeregisterTargets.
 }
+\section{Accepted Parameters}{
+\preformatted{register_targets(
+  TargetGroupArn = "string",
+  Targets = list(
+    list(
+      Id = "string",
+      Port = 123,
+      AvailabilityZone = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # This example registers the specified instances with the specified target
 # group.
-register_targets(
+\donttest{register_targets(
   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067",
   Targets = list(
     list(
@@ -47,12 +52,12 @@ register_targets(
       Id = "i-ceddcd4d"
     )
   )
-)
+)}
 
 # This example registers the specified instance with the specified target
 # group using multiple ports. This enables you to register ECS containers
 # on the same instance as targets in the target group.
-register_targets(
+\donttest{register_targets(
   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-new-targets/3bb63f11dfb0faf9",
   Targets = list(
     list(
@@ -64,6 +69,6 @@ register_targets(
       Port = 766L
     )
   )
-)
+)}
 
 }

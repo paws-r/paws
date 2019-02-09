@@ -4,13 +4,7 @@
 \alias{replace_iam_instance_profile_association}
 \title{Replaces an IAM instance profile for the specified running instance}
 \usage{
-replace_iam_instance_profile_association(
-  IamInstanceProfile = list(
-    Arn = "string",
-    Name = "string"
-  ),
-  AssociationId = "string"
-)
+replace_iam_instance_profile_association(IamInstanceProfile, AssociationId)
 }
 \arguments{
 \item{IamInstanceProfile}{[required] The IAM instance profile.}
@@ -23,6 +17,14 @@ Replaces an IAM instance profile for the specified running instance. You can use
 \details{
 Use DescribeIamInstanceProfileAssociations to get the association ID.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{replace_iam_instance_profile_association(
+  IamInstanceProfile = list(
+    Arn = "string",
+    Name = "string"
+  ),
+  AssociationId = "string"
+)
 }
+}
+

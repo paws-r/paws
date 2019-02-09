@@ -4,9 +4,7 @@
 \alias{describe_subscribed_workteam}
 \title{Gets information about a work team provided by a vendor}
 \usage{
-describe_subscribed_workteam(
-  WorkteamArn = "string"
-)
+describe_subscribed_workteam(WorkteamArn)
 }
 \arguments{
 \item{WorkteamArn}{[required] The Amazon Resource Name (ARN) of the subscribed work team to describe.}
@@ -14,6 +12,10 @@ describe_subscribed_workteam(
 \description{
 Gets information about a work team provided by a vendor. It returns details about the subscription with a vendor in the AWS Marketplace.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_subscribed_workteam(
+  WorkteamArn = "string"
+)
 }
+}
+

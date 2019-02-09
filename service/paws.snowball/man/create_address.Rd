@@ -4,7 +4,16 @@
 \alias{create_address}
 \title{Creates an address for a Snowball to be shipped to}
 \usage{
-create_address(
+create_address(Address)
+}
+\arguments{
+\item{Address}{[required] The address that you want the Snowball shipped to.}
+}
+\description{
+Creates an address for a Snowball to be shipped to. In most regions, addresses are validated at the time of creation. The address you provide must be located within the serviceable area of your region. If the address is invalid or unsupported, then an exception is thrown.
+}
+\section{Accepted Parameters}{
+\preformatted{create_address(
   Address = list(
     AddressId = "string",
     Name = "string",
@@ -23,18 +32,14 @@ create_address(
   )
 )
 }
-\arguments{
-\item{Address}{[required] The address that you want the Snowball shipped to.}
 }
-\description{
-Creates an address for a Snowball to be shipped to. In most regions, addresses are validated at the time of creation. The address you provide must be located within the serviceable area of your region. If the address is invalid or unsupported, then an exception is thrown.
-}
+
 \examples{
 # This operation creates an address for a job. Addresses are validated at
 # the time of creation. The address you provide must be located within the
 # serviceable area of your region. If the address is invalid or
 # unsupported, then an exception is thrown.
-create_address(
+\donttest{create_address(
   Address = list(
     City = "Seattle",
     Company = "My Company's Name",
@@ -45,6 +50,6 @@ create_address(
     StateOrProvince = "WA",
     Street1 = "123 Main Street"
   )
-)
+)}
 
 }

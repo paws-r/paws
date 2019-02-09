@@ -4,18 +4,10 @@
 \alias{create_profile}
 \title{Creates a new room profile with the specified details}
 \usage{
-create_profile(
-  ProfileName = "string",
-  Timezone = "string",
-  Address = "string",
-  DistanceUnit = "METRIC"|"IMPERIAL",
-  TemperatureUnit = "FAHRENHEIT"|"CELSIUS",
-  WakeWord = "ALEXA"|"AMAZON"|"ECHO"|"COMPUTER",
-  ClientRequestToken = "string",
-  SetupModeDisabled = TRUE|FALSE,
-  MaxVolumeLimit = 123,
-  PSTNEnabled = TRUE|FALSE
-)
+create_profile(ProfileName, Timezone, Address, DistanceUnit,
+  TemperatureUnit, WakeWord, ClientRequestToken = NULL,
+  SetupModeDisabled = NULL, MaxVolumeLimit = NULL,
+  PSTNEnabled = NULL)
 }
 \arguments{
 \item{ProfileName}{[required] The name of a room profile.}
@@ -41,6 +33,19 @@ create_profile(
 \description{
 Creates a new room profile with the specified details.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_profile(
+  ProfileName = "string",
+  Timezone = "string",
+  Address = "string",
+  DistanceUnit = "METRIC"|"IMPERIAL",
+  TemperatureUnit = "FAHRENHEIT"|"CELSIUS",
+  WakeWord = "ALEXA"|"AMAZON"|"ECHO"|"COMPUTER",
+  ClientRequestToken = "string",
+  SetupModeDisabled = TRUE|FALSE,
+  MaxVolumeLimit = 123,
+  PSTNEnabled = TRUE|FALSE
+)
 }
+}
+

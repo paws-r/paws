@@ -4,18 +4,8 @@
 \alias{post_text}
 \title{Sends user input (text-only) to Amazon Lex}
 \usage{
-post_text(
-  botName = "string",
-  botAlias = "string",
-  userId = "string",
-  sessionAttributes = list(
-    "string"
-  ),
-  requestAttributes = list(
-    "string"
-  ),
-  inputText = "string"
-)
+post_text(botName, botAlias, userId, sessionAttributes = NULL,
+  requestAttributes = NULL, inputText)
 }
 \arguments{
 \item{botName}{[required] The name of the Amazon Lex bot.}
@@ -68,6 +58,19 @@ Not all Amazon Lex messages require a user response. For example, a conclusion s
 
 In addition, Amazon Lex also returns your application-specific \code{sessionAttributes}. For more information, see \href{http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html}{Managing Conversation Context}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{post_text(
+  botName = "string",
+  botAlias = "string",
+  userId = "string",
+  sessionAttributes = list(
+    "string"
+  ),
+  requestAttributes = list(
+    "string"
+  ),
+  inputText = "string"
+)
 }
+}
+

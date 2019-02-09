@@ -4,13 +4,7 @@
 \alias{get_insights}
 \title{Lists and describes insights that are specified by insight ARNs}
 \usage{
-get_insights(
-  InsightArns = list(
-    "string"
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
+get_insights(InsightArns = NULL, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{InsightArns}{The ARNS of the insights that you want to describe.}
@@ -22,6 +16,14 @@ get_insights(
 \description{
 Lists and describes insights that are specified by insight ARNs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_insights(
+  InsightArns = list(
+    "string"
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

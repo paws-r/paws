@@ -4,17 +4,10 @@
 \alias{update_cluster}
 \title{Modifies the settings for a DAX cluster}
 \usage{
-update_cluster(
-  ClusterName = "string",
-  Description = "string",
-  PreferredMaintenanceWindow = "string",
-  NotificationTopicArn = "string",
-  NotificationTopicStatus = "string",
-  ParameterGroupName = "string",
-  SecurityGroupIds = list(
-    "string"
-  )
-)
+update_cluster(ClusterName, Description = NULL,
+  PreferredMaintenanceWindow = NULL, NotificationTopicArn = NULL,
+  NotificationTopicStatus = NULL, ParameterGroupName = NULL,
+  SecurityGroupIds = NULL)
 }
 \arguments{
 \item{ClusterName}{[required] The name of the DAX cluster to be modified.}
@@ -34,6 +27,18 @@ update_cluster(
 \description{
 Modifies the settings for a DAX cluster. You can use this action to change one or more cluster configuration parameters by specifying the parameters and the new values.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_cluster(
+  ClusterName = "string",
+  Description = "string",
+  PreferredMaintenanceWindow = "string",
+  NotificationTopicArn = "string",
+  NotificationTopicStatus = "string",
+  ParameterGroupName = "string",
+  SecurityGroupIds = list(
+    "string"
+  )
+)
 }
+}
+

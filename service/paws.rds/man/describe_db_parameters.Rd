@@ -4,20 +4,8 @@
 \alias{describe_db_parameters}
 \title{Returns the detailed parameter list for a particular DB parameter group}
 \usage{
-describe_db_parameters(
-  DBParameterGroupName = "string",
-  Source = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_db_parameters(DBParameterGroupName, Source = NULL,
+  Filters = NULL, MaxRecords = NULL, Marker = NULL)
 }
 \arguments{
 \item{DBParameterGroupName}{[required] The name of a specific DB parameter group to return details for.
@@ -46,6 +34,21 @@ Constraints: Minimum 20, maximum 100.}
 \description{
 Returns the detailed parameter list for a particular DB parameter group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_db_parameters(
+  DBParameterGroupName = "string",
+  Source = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
+}
+

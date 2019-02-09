@@ -4,9 +4,7 @@
 \alias{describe_target_group_attributes}
 \title{Describes the attributes for the specified target group}
 \usage{
-describe_target_group_attributes(
-  TargetGroupArn = "string"
-)
+describe_target_group_attributes(TargetGroupArn)
 }
 \arguments{
 \item{TargetGroupArn}{[required] The Amazon Resource Name (ARN) of the target group.}
@@ -17,10 +15,17 @@ Describes the attributes for the specified target group.
 \details{
 For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#target-group-attributes}{Target Group Attributes} in the \emph{Application Load Balancers Guide} or \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#target-group-attributes}{Target Group Attributes} in the \emph{Network Load Balancers Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_target_group_attributes(
+  TargetGroupArn = "string"
+)
+}
+}
+
 \examples{
 # This example describes the attributes of the specified target group.
-describe_target_group_attributes(
+\donttest{describe_target_group_attributes(
   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067"
-)
+)}
 
 }

@@ -4,10 +4,7 @@
 \alias{list_resource_definitions}
 \title{Retrieves a list of resource definitions}
 \usage{
-list_resource_definitions(
-  MaxResults = "string",
-  NextToken = "string"
-)
+list_resource_definitions(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{The maximum number of results to be returned per request.}
@@ -17,6 +14,11 @@ list_resource_definitions(
 \description{
 Retrieves a list of resource definitions.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_resource_definitions(
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
+}
+

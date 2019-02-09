@@ -4,10 +4,7 @@
 \alias{list_connector_definitions}
 \title{Retrieves a list of connector definitions}
 \usage{
-list_connector_definitions(
-  MaxResults = "string",
-  NextToken = "string"
-)
+list_connector_definitions(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{The maximum number of results to be returned per request.}
@@ -17,6 +14,11 @@ list_connector_definitions(
 \description{
 Retrieves a list of connector definitions.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_connector_definitions(
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
+}
+

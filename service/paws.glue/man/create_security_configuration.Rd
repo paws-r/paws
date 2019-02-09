@@ -4,7 +4,18 @@
 \alias{create_security_configuration}
 \title{Creates a new security configuration}
 \usage{
-create_security_configuration(
+create_security_configuration(Name, EncryptionConfiguration)
+}
+\arguments{
+\item{Name}{[required] The name for the new security configuration.}
+
+\item{EncryptionConfiguration}{[required] The encryption configuration for the new security configuration.}
+}
+\description{
+Creates a new security configuration.
+}
+\section{Accepted Parameters}{
+\preformatted{create_security_configuration(
   Name = "string",
   EncryptionConfiguration = list(
     S3Encryption = list(
@@ -24,14 +35,5 @@ create_security_configuration(
   )
 )
 }
-\arguments{
-\item{Name}{[required] The name for the new security configuration.}
+}
 
-\item{EncryptionConfiguration}{[required] The encryption configuration for the new security configuration.}
-}
-\description{
-Creates a new security configuration.
-}
-\examples{
-
-}

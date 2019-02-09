@@ -4,13 +4,8 @@
 \alias{describe_comments}
 \title{List all the comments for the specified document version}
 \usage{
-describe_comments(
-  AuthenticationToken = "string",
-  DocumentId = "string",
-  VersionId = "string",
-  Limit = 123,
-  Marker = "string"
-)
+describe_comments(AuthenticationToken = NULL, DocumentId, VersionId,
+  Limit = NULL, Marker = NULL)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
@@ -26,6 +21,14 @@ describe_comments(
 \description{
 List all the comments for the specified document version.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_comments(
+  AuthenticationToken = "string",
+  DocumentId = "string",
+  VersionId = "string",
+  Limit = 123,
+  Marker = "string"
+)
 }
+}
+

@@ -4,11 +4,7 @@
 \alias{list_jobs}
 \title{This operation returns the jobs associated with the requester}
 \usage{
-list_jobs(
-  MaxJobs = 123,
-  Marker = "string",
-  APIVersion = "string"
-)
+list_jobs(MaxJobs = NULL, Marker = NULL, APIVersion = NULL)
 }
 \arguments{
 \item{MaxJobs}{}
@@ -20,6 +16,12 @@ list_jobs(
 \description{
 This operation returns the jobs associated with the requester. AWS Import/Export lists the jobs in reverse chronological order based on the date of creation. For example if Job Test1 was created 2009Dec30 and Test2 was created 2010Feb05, the ListJobs operation would return Test2 followed by Test1.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_jobs(
+  MaxJobs = 123,
+  Marker = "string",
+  APIVersion = "string"
+)
 }
+}
+

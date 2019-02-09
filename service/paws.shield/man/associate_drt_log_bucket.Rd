@@ -4,9 +4,7 @@
 \alias{associate_drt_log_bucket}
 \title{Authorizes the DDoS Response team (DRT) to access the specified Amazon S3 bucket containing your flow logs}
 \usage{
-associate_drt_log_bucket(
-  LogBucket = "string"
-)
+associate_drt_log_bucket(LogBucket)
 }
 \arguments{
 \item{LogBucket}{[required] The Amazon S3 bucket that contains your flow logs.}
@@ -17,6 +15,10 @@ Authorizes the DDoS Response team (DRT) to access the specified Amazon S3 bucket
 \details{
 To use the services of the DRT and make an \code{AssociateDRTLogBucket} request, you must be subscribed to the \href{https://aws.amazon.com/premiumsupport/business-support/}{Business Support plan} or the \href{https://aws.amazon.com/premiumsupport/enterprise-support/}{Enterprise Support plan}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_drt_log_bucket(
+  LogBucket = "string"
+)
 }
+}
+

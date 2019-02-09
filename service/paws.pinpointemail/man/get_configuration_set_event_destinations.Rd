@@ -4,9 +4,7 @@
 \alias{get_configuration_set_event_destinations}
 \title{Retrieve a list of event destinations that are associated with a configuration set}
 \usage{
-get_configuration_set_event_destinations(
-  ConfigurationSetName = "string"
-)
+get_configuration_set_event_destinations(ConfigurationSetName)
 }
 \arguments{
 \item{ConfigurationSetName}{[required] The name of the configuration set that contains the event destination.}
@@ -17,6 +15,10 @@ Retrieve a list of event destinations that are associated with a configuration s
 \details{
 In Amazon Pinpoint, \emph{events} include message sends, deliveries, opens, clicks, bounces, and complaints. \emph{Event destinations} are places that you can send information about these events to. For example, you can send event data to Amazon SNS to receive notifications when you receive bounces or complaints, or you can use Amazon Kinesis Data Firehose to stream data to Amazon S3 for long-term storage.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_configuration_set_event_destinations(
+  ConfigurationSetName = "string"
+)
 }
+}
+

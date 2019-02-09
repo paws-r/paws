@@ -4,10 +4,7 @@
 \alias{delete_size_constraint_set}
 \title{Permanently deletes a SizeConstraintSet}
 \usage{
-delete_size_constraint_set(
-  SizeConstraintSetId = "string",
-  ChangeToken = "string"
-)
+delete_size_constraint_set(SizeConstraintSetId, ChangeToken)
 }
 \arguments{
 \item{SizeConstraintSetId}{[required] The \code{SizeConstraintSetId} of the SizeConstraintSet that you want to delete. \code{SizeConstraintSetId} is returned by CreateSizeConstraintSet and by ListSizeConstraintSets.}
@@ -27,12 +24,20 @@ To permanently delete a \code{SizeConstraintSet}, perform the following steps:
 \item Submit a \code{DeleteSizeConstraintSet} request.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{delete_size_constraint_set(
+  SizeConstraintSetId = "string",
+  ChangeToken = "string"
+)
+}
+}
+
 \examples{
 # The following example deletes a size constraint set  with the ID
 # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-delete_size_constraint_set(
+\donttest{delete_size_constraint_set(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   SizeConstraintSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-)
+)}
 
 }

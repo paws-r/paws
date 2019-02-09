@@ -4,9 +4,7 @@
 \alias{delete_game_session_queue}
 \title{Deletes a game session queue}
 \usage{
-delete_game_session_queue(
-  Name = "string"
-)
+delete_game_session_queue(Name)
 }
 \arguments{
 \item{Name}{[required] Descriptive label that is associated with game session queue. Queue names must be unique within each region.}
@@ -15,7 +13,6 @@ delete_game_session_queue(
 Deletes a game session queue. This action means that any StartGameSessionPlacement requests that reference this queue will fail. To delete a queue, specify the queue name.
 }
 \details{
-Queue-related operations include:
 \itemize{
 \item CreateGameSessionQueue
 \item DescribeGameSessionQueues
@@ -23,6 +20,10 @@ Queue-related operations include:
 \item DeleteGameSessionQueue
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_game_session_queue(
+  Name = "string"
+)
 }
+}
+

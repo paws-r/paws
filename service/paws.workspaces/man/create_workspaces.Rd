@@ -4,7 +4,19 @@
 \alias{create_workspaces}
 \title{Creates one or more WorkSpaces}
 \usage{
-create_workspaces(
+create_workspaces(Workspaces)
+}
+\arguments{
+\item{Workspaces}{[required] The WorkSpaces to create. You can specify up to 25 WorkSpaces.}
+}
+\description{
+Creates one or more WorkSpaces.
+}
+\details{
+This operation is asynchronous and returns before the WorkSpaces are created.
+}
+\section{Accepted Parameters}{
+\preformatted{create_workspaces(
   Workspaces = list(
     list(
       DirectoryId = "string",
@@ -30,15 +42,5 @@ create_workspaces(
   )
 )
 }
-\arguments{
-\item{Workspaces}{[required] The WorkSpaces to create. You can specify up to 25 WorkSpaces.}
 }
-\description{
-Creates one or more WorkSpaces.
-}
-\details{
-This operation is asynchronous and returns before the WorkSpaces are created.
-}
-\examples{
 
-}

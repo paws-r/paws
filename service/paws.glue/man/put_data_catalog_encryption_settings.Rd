@@ -4,7 +4,19 @@
 \alias{put_data_catalog_encryption_settings}
 \title{Sets the security configuration for a specified catalog}
 \usage{
-put_data_catalog_encryption_settings(
+put_data_catalog_encryption_settings(CatalogId = NULL,
+  DataCatalogEncryptionSettings)
+}
+\arguments{
+\item{CatalogId}{The ID of the Data Catalog for which to set the security configuration. If none is supplied, the AWS account ID is used by default.}
+
+\item{DataCatalogEncryptionSettings}{[required] The security configuration to set.}
+}
+\description{
+Sets the security configuration for a specified catalog. Once the configuration has been set, the specified encryption is applied to every catalog write thereafter.
+}
+\section{Accepted Parameters}{
+\preformatted{put_data_catalog_encryption_settings(
   CatalogId = "string",
   DataCatalogEncryptionSettings = list(
     EncryptionAtRest = list(
@@ -18,14 +30,5 @@ put_data_catalog_encryption_settings(
   )
 )
 }
-\arguments{
-\item{CatalogId}{The ID of the Data Catalog for which to set the security configuration. If none is supplied, the AWS account ID is used by default.}
+}
 
-\item{DataCatalogEncryptionSettings}{[required] The security configuration to set.}
-}
-\description{
-Sets the security configuration for a specified catalog. Once the configuration has been set, the specified encryption is applied to every catalog write thereafter.
-}
-\examples{
-
-}

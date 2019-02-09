@@ -4,10 +4,7 @@
 \alias{delete_snapshot}
 \title{Deletes the specified snapshot}
 \usage{
-delete_snapshot(
-  SnapshotId = "string",
-  DryRun = TRUE|FALSE
-)
+delete_snapshot(SnapshotId, DryRun = NULL)
 }
 \arguments{
 \item{SnapshotId}{[required] The ID of the EBS snapshot.}
@@ -22,14 +19,22 @@ When you make periodic snapshots of a volume, the snapshots are incremental, and
 
 You cannot delete a snapshot of the root device of an EBS volume used by a registered AMI. You must first de-register the AMI before you can delete the snapshot.
 
-For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-snapshot.html}{Deleting an Amazon EBS Snapshot} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-snapshot.html}{Deleting an Amazon EBS Snapshot} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_snapshot(
+  SnapshotId = "string",
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example deletes a snapshot with the snapshot ID of
 # ``snap-1234567890abcdef0``. If the command succeeds, no output is
 # returned.
-delete_snapshot(
+\donttest{delete_snapshot(
   SnapshotId = "snap-1234567890abcdef0"
-)
+)}
 
 }

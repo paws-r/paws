@@ -4,12 +4,8 @@
 \alias{retry_stage_execution}
 \title{Resumes the pipeline execution by retrying the last failed actions in a stage}
 \usage{
-retry_stage_execution(
-  pipelineName = "string",
-  stageName = "string",
-  pipelineExecutionId = "string",
-  retryMode = "FAILED_ACTIONS"
-)
+retry_stage_execution(pipelineName, stageName, pipelineExecutionId,
+  retryMode)
 }
 \arguments{
 \item{pipelineName}{[required] The name of the pipeline that contains the failed stage.}
@@ -23,6 +19,13 @@ retry_stage_execution(
 \description{
 Resumes the pipeline execution by retrying the last failed actions in a stage.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{retry_stage_execution(
+  pipelineName = "string",
+  stageName = "string",
+  pipelineExecutionId = "string",
+  retryMode = "FAILED_ACTIONS"
+)
 }
+}
+

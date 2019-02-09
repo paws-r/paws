@@ -4,10 +4,7 @@
 \alias{list_agents}
 \title{Returns a list of agents owned by an AWS account in the AWS Region specified in the request}
 \usage{
-list_agents(
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_agents(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{The maximum number of agents to list.}
@@ -22,6 +19,11 @@ By default, this operation returns a maximum of 100 agents. This operation suppo
 
 If you have more agents than are returned in a response (that is, the response returns only a truncated list of your agents), the response contains a marker that you can specify in your next request to fetch the next page of agents.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_agents(
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

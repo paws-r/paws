@@ -4,10 +4,7 @@
 \alias{detach_policy}
 \title{Detaches a policy from the specified target}
 \usage{
-detach_policy(
-  policyName = "string",
-  target = "string"
-)
+detach_policy(policyName, target)
 }
 \arguments{
 \item{policyName}{[required] The policy to detach.}
@@ -17,6 +14,11 @@ detach_policy(
 \description{
 Detaches a policy from the specified target.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{detach_policy(
+  policyName = "string",
+  target = "string"
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{disassociate_skill_from_users}
 \title{Makes a private skill unavailable for enrolled users and prevents them from enabling it on their devices}
 \usage{
-disassociate_skill_from_users(
-  OrganizationArn = "string",
-  SkillId = "string"
-)
+disassociate_skill_from_users(OrganizationArn = NULL, SkillId)
 }
 \arguments{
 \item{OrganizationArn}{The ARN of the organization.}
@@ -17,6 +14,11 @@ disassociate_skill_from_users(
 \description{
 Makes a private skill unavailable for enrolled users and prevents them from enabling it on their devices.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disassociate_skill_from_users(
+  OrganizationArn = "string",
+  SkillId = "string"
+)
 }
+}
+

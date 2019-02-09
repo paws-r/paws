@@ -4,9 +4,7 @@
 \alias{list_group_certificate_authorities}
 \title{Retrieves the current CAs for a group}
 \usage{
-list_group_certificate_authorities(
-  GroupId = "string"
-)
+list_group_certificate_authorities(GroupId)
 }
 \arguments{
 \item{GroupId}{[required] The ID of the Greengrass group.}
@@ -14,6 +12,10 @@ list_group_certificate_authorities(
 \description{
 Retrieves the current CAs for a group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_group_certificate_authorities(
+  GroupId = "string"
+)
 }
+}
+

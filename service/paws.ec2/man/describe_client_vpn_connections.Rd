@@ -4,20 +4,8 @@
 \alias{describe_client_vpn_connections}
 \title{Describes active client connections and connections that have been terminated within the last 60 minutes for the specified Client VPN endpoint}
 \usage{
-describe_client_vpn_connections(
-  ClientVpnEndpointId = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  NextToken = "string",
-  MaxResults = 123,
-  DryRun = TRUE|FALSE
-)
+describe_client_vpn_connections(ClientVpnEndpointId, Filters = NULL,
+  NextToken = NULL, MaxResults = NULL, DryRun = NULL)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint.}
@@ -33,6 +21,21 @@ describe_client_vpn_connections(
 \description{
 Describes active client connections and connections that have been terminated within the last 60 minutes for the specified Client VPN endpoint.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_client_vpn_connections(
+  ClientVpnEndpointId = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string",
+  MaxResults = 123,
+  DryRun = TRUE|FALSE
+)
 }
+}
+

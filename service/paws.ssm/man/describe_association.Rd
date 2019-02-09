@@ -4,12 +4,8 @@
 \alias{describe_association}
 \title{Describes the association for the specified target or instance}
 \usage{
-describe_association(
-  Name = "string",
-  InstanceId = "string",
-  AssociationId = "string",
-  AssociationVersion = "string"
-)
+describe_association(Name = NULL, InstanceId = NULL,
+  AssociationId = NULL, AssociationVersion = NULL)
 }
 \arguments{
 \item{Name}{The name of the Systems Manager document.}
@@ -23,6 +19,13 @@ describe_association(
 \description{
 Describes the association for the specified target or instance. If you created the association by using the \code{Targets} parameter, then you must retrieve the association by using the association ID. If you created the association by specifying an instance ID and a Systems Manager document, then you retrieve the association by specifying the document name and the instance ID.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_association(
+  Name = "string",
+  InstanceId = "string",
+  AssociationId = "string",
+  AssociationVersion = "string"
+)
 }
+}
+

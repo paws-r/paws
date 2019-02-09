@@ -4,12 +4,9 @@
 \alias{describe_direct_connect_gateway_associations}
 \title{Lists the associations between your Direct Connect gateways and virtual private gateways}
 \usage{
-describe_direct_connect_gateway_associations(
-  directConnectGatewayId = "string",
-  virtualGatewayId = "string",
-  maxResults = 123,
-  nextToken = "string"
-)
+
+  describe_direct_connect_gateway_associations(directConnectGatewayId = NULL,
+  virtualGatewayId = NULL, maxResults = NULL, nextToken = NULL)
 }
 \arguments{
 \item{directConnectGatewayId}{The ID of the Direct Connect gateway.}
@@ -23,6 +20,13 @@ describe_direct_connect_gateway_associations(
 \description{
 Lists the associations between your Direct Connect gateways and virtual private gateways. You must specify a Direct Connect gateway, a virtual private gateway, or both. If you specify a Direct Connect gateway, the response contains all virtual private gateways associated with the Direct Connect gateway. If you specify a virtual private gateway, the response contains all Direct Connect gateways associated with the virtual private gateway. If you specify both, the response contains the association between the Direct Connect gateway and the virtual private gateway.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_direct_connect_gateway_associations(
+  directConnectGatewayId = "string",
+  virtualGatewayId = "string",
+  maxResults = 123,
+  nextToken = "string"
+)
 }
+}
+

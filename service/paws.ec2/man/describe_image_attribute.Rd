@@ -4,11 +4,7 @@
 \alias{describe_image_attribute}
 \title{Describes the specified attribute of the specified AMI}
 \usage{
-describe_image_attribute(
-  Attribute = "description"|"kernel"|"ramdisk"|"launchPermission"|"productCodes"|"blockDeviceMapping"|"sriovNetSupport",
-  ImageId = "string",
-  DryRun = TRUE|FALSE
-)
+describe_image_attribute(Attribute, ImageId, DryRun = NULL)
 }
 \arguments{
 \item{Attribute}{[required] The AMI attribute.
@@ -22,11 +18,20 @@ describe_image_attribute(
 \description{
 Describes the specified attribute of the specified AMI. You can specify only one attribute at a time.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_image_attribute(
+  Attribute = "description"|"kernel"|"ramdisk"|"launchPermission"|"productCodes"|"blockDeviceMapping"|"sriovNetSupport",
+  ImageId = "string",
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example describes the launch permissions for the specified AMI.
-describe_image_attribute(
+\donttest{describe_image_attribute(
   Attribute = "launchPermission",
   ImageId = "ami-5731123e"
-)
+)}
 
 }

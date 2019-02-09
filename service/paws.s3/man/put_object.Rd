@@ -4,39 +4,17 @@
 \alias{put_object}
 \title{Adds an object to a bucket}
 \usage{
-put_object(
-  ACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"aws-exec-read"|"bucket-owner-read"|"bucket-owner-full-control",
-  Body = raw,
-  Bucket = "string",
-  CacheControl = "string",
-  ContentDisposition = "string",
-  ContentEncoding = "string",
-  ContentLanguage = "string",
-  ContentLength = 123,
-  ContentMD5 = "string",
-  ContentType = "string",
-  Expires = as.POSIXct("2015-01-01"),
-  GrantFullControl = "string",
-  GrantRead = "string",
-  GrantReadACP = "string",
-  GrantWriteACP = "string",
-  Key = "string",
-  Metadata = list(
-    "string"
-  ),
-  ServerSideEncryption = "AES256"|"aws:kms",
-  StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER",
-  WebsiteRedirectLocation = "string",
-  SSECustomerAlgorithm = "string",
-  SSECustomerKey = raw,
-  SSECustomerKeyMD5 = "string",
-  SSEKMSKeyId = "string",
-  RequestPayer = "requester",
-  Tagging = "string",
-  ObjectLockMode = "GOVERNANCE"|"COMPLIANCE",
-  ObjectLockRetainUntilDate = as.POSIXct("2015-01-01"),
-  ObjectLockLegalHoldStatus = "ON"|"OFF"
-)
+put_object(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL,
+  ContentDisposition = NULL, ContentEncoding = NULL,
+  ContentLanguage = NULL, ContentLength = NULL, ContentMD5 = NULL,
+  ContentType = NULL, Expires = NULL, GrantFullControl = NULL,
+  GrantRead = NULL, GrantReadACP = NULL, GrantWriteACP = NULL, Key,
+  Metadata = NULL, ServerSideEncryption = NULL, StorageClass = NULL,
+  WebsiteRedirectLocation = NULL, SSECustomerAlgorithm = NULL,
+  SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL,
+  SSEKMSKeyId = NULL, RequestPayer = NULL, Tagging = NULL,
+  ObjectLockMode = NULL, ObjectLockRetainUntilDate = NULL,
+  ObjectLockLegalHoldStatus = NULL)
 }
 \arguments{
 \item{ACL}{The canned ACL to apply to the object.}
@@ -81,7 +59,7 @@ put_object(
 
 \item{SSECustomerAlgorithm}{Specifies the algorithm to use to when encrypting the object (e.g., AES256).}
 
-\item{SSECustomerKey}{Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm header.}
+\item{SSECustomerKey}{Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-side​-encryption​-customer-algorithm header.}
 
 \item{SSECustomerKeyMD5}{Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.}
 
@@ -100,40 +78,77 @@ put_object(
 \description{
 Adds an object to a bucket.
 }
+\section{Accepted Parameters}{
+\preformatted{put_object(
+  ACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"aws-exec-read"|"bucket-owner-read"|"bucket-owner-full-control",
+  Body = raw,
+  Bucket = "string",
+  CacheControl = "string",
+  ContentDisposition = "string",
+  ContentEncoding = "string",
+  ContentLanguage = "string",
+  ContentLength = 123,
+  ContentMD5 = "string",
+  ContentType = "string",
+  Expires = as.POSIXct("2015-01-01"),
+  GrantFullControl = "string",
+  GrantRead = "string",
+  GrantReadACP = "string",
+  GrantWriteACP = "string",
+  Key = "string",
+  Metadata = list(
+    "string"
+  ),
+  ServerSideEncryption = "AES256"|"aws:kms",
+  StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER",
+  WebsiteRedirectLocation = "string",
+  SSECustomerAlgorithm = "string",
+  SSECustomerKey = raw,
+  SSECustomerKeyMD5 = "string",
+  SSEKMSKeyId = "string",
+  RequestPayer = "requester",
+  Tagging = "string",
+  ObjectLockMode = "GOVERNANCE"|"COMPLIANCE",
+  ObjectLockRetainUntilDate = as.POSIXct("2015-01-01"),
+  ObjectLockLegalHoldStatus = "ON"|"OFF"
+)
+}
+}
+
 \examples{
 # The following example creates an object. If the bucket is versioning
 # enabled, S3 returns version ID in response.
-put_object(
+\donttest{put_object(
   Body = "filetoupload",
   Bucket = "examplebucket",
   Key = "objectkey"
-)
+)}
 
 # The following example uploads an object to a versioning-enabled bucket.
 # The source file is specified using Windows file syntax. S3 returns
 # VersionId of the newly created object.
-put_object(
+\donttest{put_object(
   Body = "HappyFace.jpg",
   Bucket = "examplebucket",
   Key = "HappyFace.jpg"
-)
+)}
 
 # The following example uploads and object. The request specifies the
 # optional server-side encryption option. The request also specifies
 # optional object tags. If the bucket is versioning enabled, S3 returns
 # version ID in response.
-put_object(
+\donttest{put_object(
   Body = "filetoupload",
   Bucket = "examplebucket",
   Key = "exampleobject",
   ServerSideEncryption = "AES256",
   Tagging = "key1=value1&key2=value2"
-)
+)}
 
 # The following example creates an object. The request also specifies
 # optional metadata. If the bucket is versioning enabled, S3 returns
 # version ID in response.
-put_object(
+\donttest{put_object(
   Body = "filetoupload",
   Bucket = "examplebucket",
   Key = "exampleobject",
@@ -141,38 +156,38 @@ put_object(
     metadata1 = "value1",
     metadata2 = "value2"
   )
-)
+)}
 
 # The following example uploads an object. The request specifies optional
 # object tags. The bucket is versioned, therefore S3 returns version ID of
 # the newly created object.
-put_object(
+\donttest{put_object(
   Body = "c:\\\\HappyFace.jpg",
   Bucket = "examplebucket",
   Key = "HappyFace.jpg",
   Tagging = "key1=value1&key2=value2"
-)
+)}
 
 # The following example uploads an object. The request specifies optional
 # request headers to directs S3 to use specific storage class and use
 # server-side encryption.
-put_object(
+\donttest{put_object(
   Body = "HappyFace.jpg",
   Bucket = "examplebucket",
   Key = "HappyFace.jpg",
   ServerSideEncryption = "AES256",
   StorageClass = "STANDARD_IA"
-)
+)}
 
 # The following example uploads and object. The request specifies optional
 # canned ACL (access control list) to all READ access to authenticated
 # users. If the bucket is versioning enabled, S3 returns version ID in
 # response.
-put_object(
+\donttest{put_object(
   ACL = "authenticated-read",
   Body = "filetoupload",
   Bucket = "examplebucket",
   Key = "exampleobject"
-)
+)}
 
 }

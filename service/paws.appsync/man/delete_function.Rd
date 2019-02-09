@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.appsync_operations.R
 \name{delete_function}
 \alias{delete_function}
-\title{Deletes a \code{Function}}
+\title{Deletes a Function}
 \usage{
-delete_function(
-  apiId = "string",
-  functionId = "string"
-)
+delete_function(apiId, functionId)
 }
 \arguments{
 \item{apiId}{[required] The GraphQL API ID.}
@@ -17,6 +14,11 @@ delete_function(
 \description{
 Deletes a \code{Function}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_function(
+  apiId = "string",
+  functionId = "string"
+)
 }
+}
+

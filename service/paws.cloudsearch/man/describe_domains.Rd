@@ -4,11 +4,7 @@
 \alias{describe_domains}
 \title{Gets information about the search domains owned by this account}
 \usage{
-describe_domains(
-  DomainNames = list(
-    "string"
-  )
-)
+describe_domains(DomainNames = NULL)
 }
 \arguments{
 \item{DomainNames}{The names of the domains you want to include in the response.}
@@ -16,6 +12,12 @@ describe_domains(
 \description{
 Gets information about the search domains owned by this account. Can be limited to specific domains. Shows all domains by default. To get the number of searchable documents in a domain, use the console or submit a \code{matchall} request to your domain's search endpoint: \code{q=matchall&amp;q.parser=structured&amp;size=0}. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html}{Getting Information about a Search Domain} in the \emph{Amazon CloudSearch Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_domains(
+  DomainNames = list(
+    "string"
+  )
+)
 }
+}
+

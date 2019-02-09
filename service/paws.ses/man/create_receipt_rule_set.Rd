@@ -4,9 +4,7 @@
 \alias{create_receipt_rule_set}
 \title{Creates an empty receipt rule set}
 \usage{
-create_receipt_rule_set(
-  RuleSetName = "string"
-)
+create_receipt_rule_set(RuleSetName)
 }
 \arguments{
 \item{RuleSetName}{[required] The name of the rule set to create. The name must:
@@ -24,10 +22,17 @@ For information about setting up receipt rule sets, see the \href{http://docs.aw
 
 You can execute this operation no more than once per second.
 }
+\section{Accepted Parameters}{
+\preformatted{create_receipt_rule_set(
+  RuleSetName = "string"
+)
+}
+}
+
 \examples{
 # The following example creates an empty receipt rule set:
-create_receipt_rule_set(
+\donttest{create_receipt_rule_set(
   RuleSetName = "MyRuleSet"
-)
+)}
 
 }

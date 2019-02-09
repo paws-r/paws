@@ -4,10 +4,7 @@
 \alias{get_third_party_job_details}
 \title{Requests the details of a job for a third party action}
 \usage{
-get_third_party_job_details(
-  jobId = "string",
-  clientToken = "string"
-)
+get_third_party_job_details(jobId, clientToken)
 }
 \arguments{
 \item{jobId}{[required] The unique system-generated ID used for identifying the job.}
@@ -20,6 +17,11 @@ Requests the details of a job for a third party action. Only used for partner ac
 \details{
 When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts. Additionally, this API returns any secret values defined for the action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_third_party_job_details(
+  jobId = "string",
+  clientToken = "string"
+)
 }
+}
+

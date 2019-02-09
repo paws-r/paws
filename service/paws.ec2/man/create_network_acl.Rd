@@ -4,10 +4,7 @@
 \alias{create_network_acl}
 \title{Creates a network ACL in a VPC}
 \usage{
-create_network_acl(
-  DryRun = TRUE|FALSE,
-  VpcId = "string"
-)
+create_network_acl(DryRun = NULL, VpcId)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -18,12 +15,20 @@ create_network_acl(
 Creates a network ACL in a VPC. Network ACLs provide an optional layer of security (in addition to security groups) for the instances in your VPC.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html}{Network ACLs} in the \emph{Amazon Virtual Private Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html}{Network ACLs} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_network_acl(
+  DryRun = TRUE|FALSE,
+  VpcId = "string"
+)
+}
+}
+
 \examples{
 # This example creates a network ACL for the specified VPC.
-create_network_acl(
+\donttest{create_network_acl(
   VpcId = "vpc-a01106c2"
-)
+)}
 
 }

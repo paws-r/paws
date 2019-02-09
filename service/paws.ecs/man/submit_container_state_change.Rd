@@ -4,22 +4,9 @@
 \alias{submit_container_state_change}
 \title{This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent}
 \usage{
-submit_container_state_change(
-  cluster = "string",
-  task = "string",
-  containerName = "string",
-  status = "string",
-  exitCode = 123,
-  reason = "string",
-  networkBindings = list(
-    list(
-      bindIP = "string",
-      containerPort = 123,
-      hostPort = 123,
-      protocol = "tcp"|"udp"
-    )
-  )
-)
+submit_container_state_change(cluster = NULL, task = NULL,
+  containerName = NULL, status = NULL, exitCode = NULL,
+  reason = NULL, networkBindings = NULL)
 }
 \arguments{
 \item{cluster}{The short name or full ARN of the cluster that hosts the container.}
@@ -42,6 +29,23 @@ This action is only used by the Amazon ECS agent, and it is not intended for use
 \details{
 Sent to acknowledge that a container changed states.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{submit_container_state_change(
+  cluster = "string",
+  task = "string",
+  containerName = "string",
+  status = "string",
+  exitCode = 123,
+  reason = "string",
+  networkBindings = list(
+    list(
+      bindIP = "string",
+      containerPort = 123,
+      hostPort = 123,
+      protocol = "tcp"|"udp"
+    )
+  )
+)
 }
+}
+

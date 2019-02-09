@@ -4,18 +4,8 @@
 \alias{notify_migration_task_state}
 \title{Notifies Migration Hub of the current status, progress, or other detail regarding a migration task}
 \usage{
-notify_migration_task_state(
-  ProgressUpdateStream = "string",
-  MigrationTaskName = "string",
-  Task = list(
-    Status = "NOT_STARTED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
-    StatusDetail = "string",
-    ProgressPercent = 123
-  ),
-  UpdateDateTime = as.POSIXct("2015-01-01"),
-  NextUpdateSeconds = 123,
-  DryRun = TRUE|FALSE
-)
+notify_migration_task_state(ProgressUpdateStream, MigrationTaskName, Task,
+  UpdateDateTime, NextUpdateSeconds, DryRun = NULL)
 }
 \arguments{
 \item{ProgressUpdateStream}{[required] The name of the ProgressUpdateStream.}
@@ -40,6 +30,19 @@ Notifies Migration Hub of the current status, progress, or other detail regardin
 \item \code{ProgressUpdateStream} is used for access control and to provide a namespace for each migration tool.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{notify_migration_task_state(
+  ProgressUpdateStream = "string",
+  MigrationTaskName = "string",
+  Task = list(
+    Status = "NOT_STARTED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
+    StatusDetail = "string",
+    ProgressPercent = 123
+  ),
+  UpdateDateTime = as.POSIXct("2015-01-01"),
+  NextUpdateSeconds = 123,
+  DryRun = TRUE|FALSE
+)
 }
+}
+

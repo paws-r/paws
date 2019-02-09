@@ -4,10 +4,7 @@
 \alias{delete_bucket_inventory_configuration}
 \title{Deletes an inventory configuration (identified by the inventory ID) from the bucket}
 \usage{
-delete_bucket_inventory_configuration(
-  Bucket = "string",
-  Id = "string"
-)
+delete_bucket_inventory_configuration(Bucket, Id)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket containing the inventory configuration to delete.}
@@ -17,6 +14,11 @@ delete_bucket_inventory_configuration(
 \description{
 Deletes an inventory configuration (identified by the inventory ID) from the bucket.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_bucket_inventory_configuration(
+  Bucket = "string",
+  Id = "string"
+)
 }
+}
+

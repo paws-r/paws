@@ -4,12 +4,8 @@
 \alias{list_members}
 \title{Lists details about all member accounts for the current GuardDuty master account}
 \usage{
-list_members(
-  DetectorId = "string",
-  MaxResults = 123,
-  NextToken = "string",
-  OnlyAssociated = "string"
-)
+list_members(DetectorId, MaxResults = NULL, NextToken = NULL,
+  OnlyAssociated = NULL)
 }
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account whose members you want to list.}
@@ -23,6 +19,13 @@ list_members(
 \description{
 Lists details about all member accounts for the current GuardDuty master account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_members(
+  DetectorId = "string",
+  MaxResults = 123,
+  NextToken = "string",
+  OnlyAssociated = "string"
+)
 }
+}
+

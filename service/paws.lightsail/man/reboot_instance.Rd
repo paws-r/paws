@@ -4,19 +4,21 @@
 \alias{reboot_instance}
 \title{Restarts a specific instance}
 \usage{
-reboot_instance(
-  instanceName = "string"
-)
+reboot_instance(instanceName)
 }
 \arguments{
 \item{instanceName}{[required] The name of the instance to reboot.}
 }
 \description{
-Restarts a specific instance. When your Amazon Lightsail instance is finished rebooting, Lightsail assigns a new public IP address. To use the same IP address after restarting, create a static IP address and attach it to the instance.
+Restarts a specific instance.
 }
 \details{
 The \code{reboot instance} operation supports tag-based access control via resource tags applied to the resource identified by instanceName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{reboot_instance(
+  instanceName = "string"
+)
 }
+}
+

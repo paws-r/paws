@@ -4,16 +4,8 @@
 \alias{update_queue}
 \title{Modify one of your existing queues}
 \usage{
-update_queue(
-  Description = "string",
-  Name = "string",
-  ReservationPlanSettings = list(
-    Commitment = "ONE_YEAR",
-    RenewalType = "AUTO_RENEW"|"EXPIRE",
-    ReservedSlots = 123
-  ),
-  Status = "ACTIVE"|"PAUSED"
-)
+update_queue(Description = NULL, Name, ReservationPlanSettings = NULL,
+  Status = NULL)
 }
 \arguments{
 \item{Description}{The new description for the queue, if you are changing it.}
@@ -27,6 +19,17 @@ update_queue(
 \description{
 Modify one of your existing queues.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_queue(
+  Description = "string",
+  Name = "string",
+  ReservationPlanSettings = list(
+    Commitment = "ONE_YEAR",
+    RenewalType = "AUTO_RENEW"|"EXPIRE",
+    ReservedSlots = 123
+  ),
+  Status = "ACTIVE"|"PAUSED"
+)
 }
+}
+

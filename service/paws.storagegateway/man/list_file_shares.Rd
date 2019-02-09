@@ -4,11 +4,7 @@
 \alias{list_file_shares}
 \title{Gets a list of the file shares for a specific file gateway, or the list of file shares that belong to the calling user account}
 \usage{
-list_file_shares(
-  GatewayARN = "string",
-  Limit = 123,
-  Marker = "string"
-)
+list_file_shares(GatewayARN = NULL, Limit = NULL, Marker = NULL)
 }
 \arguments{
 \item{GatewayARN}{The Amazon resource Name (ARN) of the gateway whose file shares you want to list. If this field is not present, all file shares under your account are listed.}
@@ -20,6 +16,12 @@ list_file_shares(
 \description{
 Gets a list of the file shares for a specific file gateway, or the list of file shares that belong to the calling user account. This operation is only supported for file gateways.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_file_shares(
+  GatewayARN = "string",
+  Limit = 123,
+  Marker = "string"
+)
 }
+}
+

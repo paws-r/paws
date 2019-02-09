@@ -4,7 +4,28 @@
 \alias{list_on_premises_instances}
 \title{Gets a list of names for one or more on-premises instances}
 \usage{
-list_on_premises_instances(
+list_on_premises_instances(registrationStatus = NULL,
+  tagFilters = NULL, nextToken = NULL)
+}
+\arguments{
+\item{registrationStatus}{The registration status of the on-premises instances:
+\itemize{
+\item Deregistered: Include deregistered on-premises instances in the resulting list.
+\item Registered: Include registered on-premises instances in the resulting list.
+}}
+
+\item{tagFilters}{The on-premises instance tags that are used to restrict the on-premises instance names returned.}
+
+\item{nextToken}{An identifier returned from the previous list on-premises instances call. It can be used to return the next set of on-premises instances in the list.}
+}
+\description{
+Gets a list of names for one or more on-premises instances.
+}
+\details{
+Unless otherwise specified, both registered and deregistered on-premises instance names are listed. To list only registered or deregistered on-premises instance names, use the registration status parameter.
+}
+\section{Accepted Parameters}{
+\preformatted{list_on_premises_instances(
   registrationStatus = "Registered"|"Deregistered",
   tagFilters = list(
     list(
@@ -16,23 +37,5 @@ list_on_premises_instances(
   nextToken = "string"
 )
 }
-\arguments{
-\item{registrationStatus}{The registration status of the on-premises instances:
-\itemize{
-\item Deregistered: Include deregistered on-premises instances in the resulting list.
-\item Registered: Include registered on-premises instances in the resulting list.
-}}
+}
 
-\item{tagFilters}{The on-premises instance tags that will be used to restrict the corresponding on-premises instance names returned.}
-
-\item{nextToken}{An identifier returned from the previous list on-premises instances call. It can be used to return the next set of on-premises instances in the list.}
-}
-\description{
-Gets a list of names for one or more on-premises instances.
-}
-\details{
-Unless otherwise specified, both registered and deregistered on-premises instance names will be listed. To list only registered or deregistered on-premises instance names, use the registration status parameter.
-}
-\examples{
-
-}

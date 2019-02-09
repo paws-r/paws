@@ -4,12 +4,7 @@
 \alias{create_connection}
 \title{Creates a connection between a customer network and a specific AWS Direct Connect location}
 \usage{
-create_connection(
-  location = "string",
-  bandwidth = "string",
-  connectionName = "string",
-  lagId = "string"
-)
+create_connection(location, bandwidth, connectionName, lagId = NULL)
 }
 \arguments{
 \item{location}{[required] The location of the connection.}
@@ -30,6 +25,13 @@ To find the locations for your Region, use DescribeLocations.
 
 You can automatically add the new connection to a link aggregation group (LAG) by specifying a LAG ID in the request. This ensures that the new connection is allocated on the same AWS Direct Connect endpoint that hosts the specified LAG. If there are no available ports on the endpoint, the request fails and no connection is created.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_connection(
+  location = "string",
+  bandwidth = "string",
+  connectionName = "string",
+  lagId = "string"
+)
 }
+}
+

@@ -4,7 +4,18 @@
 \alias{create_typed_link_facet}
 \title{Creates a TypedLinkFacet}
 \usage{
-create_typed_link_facet(
+create_typed_link_facet(SchemaArn, Facet)
+}
+\arguments{
+\item{SchemaArn}{[required] The Amazon Resource Name (ARN) that is associated with the schema. For more information, see arns.}
+
+\item{Facet}{[required] Facet structure that is associated with the typed link facet.}
+}
+\description{
+Creates a TypedLinkFacet. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
+}
+\section{Accepted Parameters}{
+\preformatted{create_typed_link_facet(
   SchemaArn = "string",
   Facet = list(
     Name = "string",
@@ -37,14 +48,5 @@ create_typed_link_facet(
   )
 )
 }
-\arguments{
-\item{SchemaArn}{[required] The Amazon Resource Name (ARN) that is associated with the schema. For more information, see arns.}
+}
 
-\item{Facet}{[required] Facet structure that is associated with the typed link facet.}
-}
-\description{
-Creates a TypedLinkFacet. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
-}
-\examples{
-
-}

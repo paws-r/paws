@@ -4,20 +4,8 @@
 \alias{create_identity_provider}
 \title{Creates an identity provider for a user pool}
 \usage{
-create_identity_provider(
-  UserPoolId = "string",
-  ProviderName = "string",
-  ProviderType = "SAML"|"Facebook"|"Google"|"LoginWithAmazon"|"OIDC",
-  ProviderDetails = list(
-    "string"
-  ),
-  AttributeMapping = list(
-    "string"
-  ),
-  IdpIdentifiers = list(
-    "string"
-  )
-)
+create_identity_provider(UserPoolId, ProviderName, ProviderType,
+  ProviderDetails, AttributeMapping = NULL, IdpIdentifiers = NULL)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID.}
@@ -35,6 +23,21 @@ create_identity_provider(
 \description{
 Creates an identity provider for a user pool.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_identity_provider(
+  UserPoolId = "string",
+  ProviderName = "string",
+  ProviderType = "SAML"|"Facebook"|"Google"|"LoginWithAmazon"|"OIDC",
+  ProviderDetails = list(
+    "string"
+  ),
+  AttributeMapping = list(
+    "string"
+  ),
+  IdpIdentifiers = list(
+    "string"
+  )
+)
 }
+}
+

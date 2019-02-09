@@ -4,10 +4,7 @@
 \alias{delete_domain_association}
 \title{Deletes a DomainAssociation}
 \usage{
-delete_domain_association(
-  appId = "string",
-  domainName = "string"
-)
+delete_domain_association(appId, domainName)
 }
 \arguments{
 \item{appId}{[required] Unique Id for an Amplify App.}
@@ -17,6 +14,11 @@ delete_domain_association(
 \description{
 Deletes a DomainAssociation.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_domain_association(
+  appId = "string",
+  domainName = "string"
+)
 }
+}
+

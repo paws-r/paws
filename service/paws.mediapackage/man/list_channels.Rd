@@ -4,10 +4,7 @@
 \alias{list_channels}
 \title{Returns a collection of Channels}
 \usage{
-list_channels(
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_channels(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{Upper bound on number of records to return.}
@@ -17,6 +14,11 @@ list_channels(
 \description{
 Returns a collection of Channels.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_channels(
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{describe_endpoint}
 \title{Returns the description of an endpoint}
 \usage{
-describe_endpoint(
-  EndpointName = "string"
-)
+describe_endpoint(EndpointName)
 }
 \arguments{
 \item{EndpointName}{[required] The name of the endpoint.}
@@ -14,6 +12,10 @@ describe_endpoint(
 \description{
 Returns the description of an endpoint.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_endpoint(
+  EndpointName = "string"
+)
 }
+}
+

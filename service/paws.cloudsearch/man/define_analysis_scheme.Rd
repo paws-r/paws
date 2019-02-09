@@ -2,9 +2,20 @@
 % Please edit documentation in R/paws.cloudsearch_operations.R
 \name{define_analysis_scheme}
 \alias{define_analysis_scheme}
-\title{Configures an analysis scheme that can be applied to a \code{text} or \code{text-array} field to define language-specific text processing options}
+\title{Configures an analysis scheme that can be applied to a text or text-array field to define language-specific text processing options}
 \usage{
-define_analysis_scheme(
+define_analysis_scheme(DomainName, AnalysisScheme)
+}
+\arguments{
+\item{DomainName}{[required]}
+
+\item{AnalysisScheme}{[required]}
+}
+\description{
+Configures an analysis scheme that can be applied to a \code{text} or \code{text-array} field to define language-specific text processing options. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html}{Configuring Analysis Schemes} in the \emph{Amazon CloudSearch Developer Guide}.
+}
+\section{Accepted Parameters}{
+\preformatted{define_analysis_scheme(
   DomainName = "string",
   AnalysisScheme = list(
     AnalysisSchemeName = "string",
@@ -19,14 +30,5 @@ define_analysis_scheme(
   )
 )
 }
-\arguments{
-\item{DomainName}{[required]}
+}
 
-\item{AnalysisScheme}{[required]}
-}
-\description{
-Configures an analysis scheme that can be applied to a \code{text} or \code{text-array} field to define language-specific text processing options. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html}{Configuring Analysis Schemes} in the \emph{Amazon CloudSearch Developer Guide}.
-}
-\examples{
-
-}

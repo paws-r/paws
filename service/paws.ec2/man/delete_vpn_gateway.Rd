@@ -4,10 +4,7 @@
 \alias{delete_vpn_gateway}
 \title{Deletes the specified virtual private gateway}
 \usage{
-delete_vpn_gateway(
-  VpnGatewayId = "string",
-  DryRun = TRUE|FALSE
-)
+delete_vpn_gateway(VpnGatewayId, DryRun = NULL)
 }
 \arguments{
 \item{VpnGatewayId}{[required] The ID of the virtual private gateway.}
@@ -17,6 +14,11 @@ delete_vpn_gateway(
 \description{
 Deletes the specified virtual private gateway. We recommend that before you delete a virtual private gateway, you detach it from the VPC and delete the VPN connection. Note that you don't need to delete the virtual private gateway if you plan to delete and recreate the VPN connection between your VPC and your network.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_vpn_gateway(
+  VpnGatewayId = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

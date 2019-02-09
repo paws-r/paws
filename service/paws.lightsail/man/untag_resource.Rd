@@ -4,12 +4,7 @@
 \alias{untag_resource}
 \title{Deletes the specified set of tag keys and their values from the specified Amazon Lightsail resource}
 \usage{
-untag_resource(
-  resourceName = "string",
-  tagKeys = list(
-    "string"
-  )
-)
+untag_resource(resourceName, tagKeys)
 }
 \arguments{
 \item{resourceName}{[required] The name of the resource from which you are removing a tag.}
@@ -22,6 +17,13 @@ Deletes the specified set of tag keys and their values from the specified Amazon
 \details{
 The \code{untag resource} operation supports tag-based access control via request tags and resource tags applied to the resource identified by resourceName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{untag_resource(
+  resourceName = "string",
+  tagKeys = list(
+    "string"
+  )
+)
 }
+}
+

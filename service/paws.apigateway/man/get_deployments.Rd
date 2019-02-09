@@ -4,11 +4,7 @@
 \alias{get_deployments}
 \title{Gets information about a Deployments collection}
 \usage{
-get_deployments(
-  restApiId = "string",
-  position = "string",
-  limit = 123
-)
+get_deployments(restApiId, position = NULL, limit = NULL)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -20,6 +16,12 @@ get_deployments(
 \description{
 Gets information about a Deployments collection.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_deployments(
+  restApiId = "string",
+  position = "string",
+  limit = 123
+)
 }
+}
+

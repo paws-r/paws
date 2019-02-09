@@ -4,16 +4,11 @@
 \alias{describe_matchmaking_rule_sets}
 \title{Retrieves the details for FlexMatch matchmaking rule sets}
 \usage{
-describe_matchmaking_rule_sets(
-  Names = list(
-    "string"
-  ),
-  Limit = 123,
-  NextToken = "string"
-)
+describe_matchmaking_rule_sets(Names = NULL, Limit = NULL,
+  NextToken = NULL)
 }
 \arguments{
-\item{Names}{Unique identifier for a matchmaking rule set. This name is used to identify the rule set associated with a matchmaking configuration.}
+\item{Names}{List of one or more matchmaking rule set names to retrieve details for. (Note: The rule set name is different from the optional "name" field in the rule set body.)}
 
 \item{Limit}{Maximum number of results to return. Use this parameter with \code{NextToken} to get results as a set of sequential pages.}
 
@@ -23,7 +18,12 @@ describe_matchmaking_rule_sets(
 Retrieves the details for FlexMatch matchmaking rule sets. You can request all existing rule sets for the region, or provide a list of one or more rule set names. When requesting multiple items, use the pagination parameters to retrieve results as a set of sequential pages. If successful, a rule set is returned for each requested name.
 }
 \details{
-Operations related to match configurations and rule sets include:
+\strong{Learn more}
+\itemize{
+\item \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/match-rulesets.html}{Build a Rule Set}
+}
+
+\strong{Related operations}
 \itemize{
 \item CreateMatchmakingConfiguration
 \item DescribeMatchmakingConfigurations
@@ -32,8 +32,17 @@ Operations related to match configurations and rule sets include:
 \item CreateMatchmakingRuleSet
 \item DescribeMatchmakingRuleSets
 \item ValidateMatchmakingRuleSet
+\item DeleteMatchmakingRuleSet
 }
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{describe_matchmaking_rule_sets(
+  Names = list(
+    "string"
+  ),
+  Limit = 123,
+  NextToken = "string"
+)
+}
+}
 
-}

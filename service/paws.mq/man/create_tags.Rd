@@ -4,12 +4,7 @@
 \alias{create_tags}
 \title{Add a tag to a resource}
 \usage{
-create_tags(
-  ResourceArn = "string",
-  Tags = list(
-    "string"
-  )
-)
+create_tags(ResourceArn, Tags = NULL)
 }
 \arguments{
 \item{ResourceArn}{[required] the Amazon Resource Name (ARN)}
@@ -19,6 +14,13 @@ create_tags(
 \description{
 Add a tag to a resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_tags(
+  ResourceArn = "string",
+  Tags = list(
+    "string"
+  )
+)
 }
+}
+

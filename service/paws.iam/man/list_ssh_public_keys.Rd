@@ -4,11 +4,7 @@
 \alias{list_ssh_public_keys}
 \title{Returns information about the SSH public keys associated with the specified IAM user}
 \usage{
-list_ssh_public_keys(
-  UserName = "string",
-  Marker = "string",
-  MaxItems = 123
-)
+list_ssh_public_keys(UserName = NULL, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{UserName}{The name of the IAM user to list SSH public keys for. If none is specified, the \code{UserName} field is determined implicitly based on the AWS access key used to sign the request.
@@ -29,6 +25,12 @@ The SSH public keys returned by this operation are used only for authenticating 
 
 Although each user is limited to a small number of keys, you can still paginate the results using the \code{MaxItems} and \code{Marker} parameters.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_ssh_public_keys(
+  UserName = "string",
+  Marker = "string",
+  MaxItems = 123
+)
 }
+}
+

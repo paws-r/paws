@@ -4,7 +4,28 @@
 \alias{create_workteam}
 \title{Creates a new work team for labeling your data}
 \usage{
-create_workteam(
+create_workteam(WorkteamName, MemberDefinitions, Description,
+  Tags = NULL)
+}
+\arguments{
+\item{WorkteamName}{[required] The name of the work team. Use this name to identify the work team.}
+
+\item{MemberDefinitions}{[required] A list of \code{MemberDefinition} objects that contains objects that identify the Amazon Cognito user pool that makes up the work team. For more information, see \href{http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html}{Amazon Cognito User Pools}.
+
+All of the \code{CognitoMemberDefinition} objects that make up the member definition must have the same \code{ClientId} and \code{UserPool} values.}
+
+\item{Description}{[required] A description of the work team.}
+
+\item{Tags}{}
+}
+\description{
+Creates a new work team for labeling your data. A work team is defined by one or more Amazon Cognito user pools. You must first create the user pools before you can create a work team.
+}
+\details{
+You cannot create more than 25 work teams in an account and region.
+}
+\section{Accepted Parameters}{
+\preformatted{create_workteam(
   WorkteamName = "string",
   MemberDefinitions = list(
     list(
@@ -24,23 +45,5 @@ create_workteam(
   )
 )
 }
-\arguments{
-\item{WorkteamName}{[required] The name of the work team. Use this name to identify the work team.}
-
-\item{MemberDefinitions}{[required] A list of \code{MemberDefinition} objects that contains objects that identify the Amazon Cognito user pool that makes up the work team. For more information, see \href{http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html}{Amazon Cognito User Pools}.
-
-All of the \code{CognitoMemberDefinition} objects that make up the member definition must have the same \code{ClientId} and \code{UserPool} values.}
-
-\item{Description}{[required] A description of the work team.}
-
-\item{Tags}{}
 }
-\description{
-Creates a new work team for labeling your data. A work team is defined by one or more Amazon Cognito user pools. You must first create the user pools before you can create a work team.
-}
-\details{
-You cannot create more than 25 work teams in an account and region.
-}
-\examples{
 
-}

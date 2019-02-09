@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.devicefarm_operations.R
 \name{renew_offering}
 \alias{renew_offering}
-\title{Explicitly sets the quantity of devices to renew for an offering, starting from the \code{effectiveDate} of the next period}
+\title{Explicitly sets the quantity of devices to renew for an offering, starting from the effectiveDate of the next period}
 \usage{
-renew_offering(
-  offeringId = "string",
-  quantity = 123
-)
+renew_offering(offeringId = NULL, quantity = NULL)
 }
 \arguments{
 \item{offeringId}{The ID of a request to renew an offering.}
@@ -17,11 +14,19 @@ renew_offering(
 \description{
 Explicitly sets the quantity of devices to renew for an offering, starting from the \code{effectiveDate} of the next period. The API returns a \code{NotEligible} error if the user is not permitted to invoke the operation. Please contact \href{mailto:aws-devicefarm-support@amazon.com}{aws-devicefarm-support@amazon.com} if you believe that you should be able to invoke this operation.
 }
+\section{Accepted Parameters}{
+\preformatted{renew_offering(
+  offeringId = "string",
+  quantity = 123
+)
+}
+}
+
 \examples{
 # The following example renews a specific device slot offering.
-renew_offering(
+\donttest{renew_offering(
   offeringId = "D68B3C05-1BA6-4360-BC69-12345EXAMPLE",
   quantity = 1L
-)
+)}
 
 }

@@ -4,7 +4,20 @@
 \alias{update_task}
 \title{Updates the metadata associated with a task}
 \usage{
-update_task(
+update_task(TaskArn, Options = NULL, Name = NULL)
+}
+\arguments{
+\item{TaskArn}{[required] The Amazon Resource Name (ARN) of the resource name of the task to update.}
+
+\item{Options}{}
+
+\item{Name}{The name of the task to update.}
+}
+\description{
+Updates the metadata associated with a task.
+}
+\section{Accepted Parameters}{
+\preformatted{update_task(
   TaskArn = "string",
   Options = list(
     VerifyMode = "POINT_IN_TIME_CONSISTENT"|"NONE",
@@ -20,16 +33,5 @@ update_task(
   Name = "string"
 )
 }
-\arguments{
-\item{TaskArn}{[required] The Amazon Resource Name (ARN) of the resource name of the task to update.}
-
-\item{Options}{}
-
-\item{Name}{The name of the task to update.}
 }
-\description{
-Updates the metadata associated with a task.
-}
-\examples{
 
-}

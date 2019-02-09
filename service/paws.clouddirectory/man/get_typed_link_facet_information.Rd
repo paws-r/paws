@@ -4,10 +4,7 @@
 \alias{get_typed_link_facet_information}
 \title{Returns the identity attribute order for a specific TypedLinkFacet}
 \usage{
-get_typed_link_facet_information(
-  SchemaArn = "string",
-  Name = "string"
-)
+get_typed_link_facet_information(SchemaArn, Name)
 }
 \arguments{
 \item{SchemaArn}{[required] The Amazon Resource Name (ARN) that is associated with the schema. For more information, see arns.}
@@ -17,6 +14,11 @@ get_typed_link_facet_information(
 \description{
 Returns the identity attribute order for a specific TypedLinkFacet. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_typed_link_facet_information(
+  SchemaArn = "string",
+  Name = "string"
+)
 }
+}
+

@@ -4,10 +4,8 @@
 \alias{export_client_vpn_client_certificate_revocation_list}
 \title{Downloads the client certificate revocation list for the specified Client VPN endpoint}
 \usage{
-export_client_vpn_client_certificate_revocation_list(
-  ClientVpnEndpointId = "string",
-  DryRun = TRUE|FALSE
-)
+export_client_vpn_client_certificate_revocation_list(ClientVpnEndpointId,
+  DryRun = NULL)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint.}
@@ -17,6 +15,11 @@ export_client_vpn_client_certificate_revocation_list(
 \description{
 Downloads the client certificate revocation list for the specified Client VPN endpoint.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{export_client_vpn_client_certificate_revocation_list(
+  ClientVpnEndpointId = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

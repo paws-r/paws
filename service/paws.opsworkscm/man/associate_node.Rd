@@ -4,16 +4,7 @@
 \alias{associate_node}
 \title{Associates a new node with the server}
 \usage{
-associate_node(
-  ServerName = "string",
-  NodeName = "string",
-  EngineAttributes = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  )
-)
+associate_node(ServerName, NodeName, EngineAttributes)
 }
 \arguments{
 \item{ServerName}{[required] The name of the server with which to associate the node.}
@@ -47,6 +38,17 @@ Example (Chef): \code{aws opsworks-cm associate-node --server-name MyServer --no
 
 A node can can only be associated with servers that are in a \code{HEALTHY} state. Otherwise, an \code{InvalidStateException} is thrown. A \code{ResourceNotFoundException} is thrown when the server does not exist. A \code{ValidationException} is raised when parameters of the request are not valid. The AssociateNode API call can be integrated into Auto Scaling configurations, AWS Cloudformation templates, or the user data of a server's instance.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_node(
+  ServerName = "string",
+  NodeName = "string",
+  EngineAttributes = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

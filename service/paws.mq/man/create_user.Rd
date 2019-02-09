@@ -4,15 +4,8 @@
 \alias{create_user}
 \title{Creates an ActiveMQ user}
 \usage{
-create_user(
-  BrokerId = "string",
-  ConsoleAccess = TRUE|FALSE,
-  Groups = list(
-    "string"
-  ),
-  Password = "string",
-  Username = "string"
-)
+create_user(BrokerId, ConsoleAccess = NULL, Groups = NULL,
+  Password = NULL, Username)
 }
 \arguments{
 \item{BrokerId}{[required] The unique ID that Amazon MQ generates for the broker.}
@@ -28,6 +21,16 @@ create_user(
 \description{
 Creates an ActiveMQ user.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_user(
+  BrokerId = "string",
+  ConsoleAccess = TRUE|FALSE,
+  Groups = list(
+    "string"
+  ),
+  Password = "string",
+  Username = "string"
+)
 }
+}
+

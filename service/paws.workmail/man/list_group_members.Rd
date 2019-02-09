@@ -4,12 +4,8 @@
 \alias{list_group_members}
 \title{Returns an overview of the members of a group}
 \usage{
-list_group_members(
-  OrganizationId = "string",
-  GroupId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_group_members(OrganizationId, GroupId, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{OrganizationId}{[required] The identifier for the organization under which the group exists.}
@@ -23,6 +19,13 @@ list_group_members(
 \description{
 Returns an overview of the members of a group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_group_members(
+  OrganizationId = "string",
+  GroupId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

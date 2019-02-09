@@ -4,7 +4,18 @@
 \alias{create_domain_name}
 \title{Creates a domain name}
 \usage{
-create_domain_name(
+create_domain_name(DomainName, DomainNameConfigurations = NULL)
+}
+\arguments{
+\item{DomainName}{[required] The domain name.}
+
+\item{DomainNameConfigurations}{The domain name configurations.}
+}
+\description{
+Creates a domain name.
+}
+\section{Accepted Parameters}{
+\preformatted{create_domain_name(
   DomainName = "string",
   DomainNameConfigurations = list(
     list(
@@ -18,14 +29,5 @@ create_domain_name(
   )
 )
 }
-\arguments{
-\item{DomainName}{[required] The domain name.}
+}
 
-\item{DomainNameConfigurations}{The domain name configurations.}
-}
-\description{
-Creates a domain name.
-}
-\examples{
-
-}

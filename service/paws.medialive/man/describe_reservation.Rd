@@ -4,9 +4,7 @@
 \alias{describe_reservation}
 \title{Get details for a reservation}
 \usage{
-describe_reservation(
-  ReservationId = "string"
-)
+describe_reservation(ReservationId)
 }
 \arguments{
 \item{ReservationId}{[required] Unique reservation ID, e.g. '1234567'}
@@ -14,6 +12,10 @@ describe_reservation(
 \description{
 Get details for a reservation.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_reservation(
+  ReservationId = "string"
+)
 }
+}
+

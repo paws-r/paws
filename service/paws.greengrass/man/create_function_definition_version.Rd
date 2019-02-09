@@ -4,7 +4,23 @@
 \alias{create_function_definition_version}
 \title{Creates a version of a Lambda function definition that has already been defined}
 \usage{
-create_function_definition_version(
+create_function_definition_version(AmznClientToken = NULL,
+  DefaultConfig = NULL, FunctionDefinitionId, Functions = NULL)
+}
+\arguments{
+\item{AmznClientToken}{A client token used to correlate requests and responses.}
+
+\item{DefaultConfig}{Default configuration that will apply to all Lambda functions in this function definition version}
+
+\item{FunctionDefinitionId}{[required] The ID of the Lambda function definition.}
+
+\item{Functions}{A list of Lambda functions in this function definition version.}
+}
+\description{
+Creates a version of a Lambda function definition that has already been defined.
+}
+\section{Accepted Parameters}{
+\preformatted{create_function_definition_version(
   AmznClientToken = "string",
   DefaultConfig = list(
     Execution = list(
@@ -47,18 +63,5 @@ create_function_definition_version(
   )
 )
 }
-\arguments{
-\item{AmznClientToken}{A client token used to correlate requests and responses.}
-
-\item{DefaultConfig}{Default configuration that will apply to all Lambda functions in this function definition version}
-
-\item{FunctionDefinitionId}{[required] The ID of the Lambda function definition.}
-
-\item{Functions}{A list of Lambda functions in this function definition version.}
 }
-\description{
-Creates a version of a Lambda function definition that has already been defined.
-}
-\examples{
 
-}

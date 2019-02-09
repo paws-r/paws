@@ -4,12 +4,7 @@
 \alias{get_object_acl}
 \title{Returns the access control list (ACL) of an object}
 \usage{
-get_object_acl(
-  Bucket = "string",
-  Key = "string",
-  VersionId = "string",
-  RequestPayer = "requester"
-)
+get_object_acl(Bucket, Key, VersionId = NULL, RequestPayer = NULL)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -23,11 +18,21 @@ get_object_acl(
 \description{
 Returns the access control list (ACL) of an object.
 }
+\section{Accepted Parameters}{
+\preformatted{get_object_acl(
+  Bucket = "string",
+  Key = "string",
+  VersionId = "string",
+  RequestPayer = "requester"
+)
+}
+}
+
 \examples{
 # The following example retrieves access control list (ACL) of an object.
-get_object_acl(
+\donttest{get_object_acl(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg"
-)
+)}
 
 }

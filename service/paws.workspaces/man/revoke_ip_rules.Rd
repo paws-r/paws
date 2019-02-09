@@ -4,12 +4,7 @@
 \alias{revoke_ip_rules}
 \title{Removes one or more rules from the specified IP access control group}
 \usage{
-revoke_ip_rules(
-  GroupId = "string",
-  UserRules = list(
-    "string"
-  )
-)
+revoke_ip_rules(GroupId, UserRules)
 }
 \arguments{
 \item{GroupId}{[required] The identifier of the group.}
@@ -19,6 +14,13 @@ revoke_ip_rules(
 \description{
 Removes one or more rules from the specified IP access control group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{revoke_ip_rules(
+  GroupId = "string",
+  UserRules = list(
+    "string"
+  )
+)
 }
+}
+

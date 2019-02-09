@@ -11,6 +11,6 @@ Describes the notification types that are supported by Amazon EC2 Auto Scaling.
 }
 \examples{
 # This example describes the available notification types.
-describe_auto_scaling_notification_types()
+\donttest{describe_auto_scaling_notification_types()}
 
 }

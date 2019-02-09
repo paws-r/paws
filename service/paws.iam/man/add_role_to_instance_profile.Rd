@@ -4,10 +4,7 @@
 \alias{add_role_to_instance_profile}
 \title{Adds the specified IAM role to the specified instance profile}
 \usage{
-add_role_to_instance_profile(
-  InstanceProfileName = "string",
-  RoleName = "string"
-)
+add_role_to_instance_profile(InstanceProfileName, RoleName)
 }
 \arguments{
 \item{InstanceProfileName}{[required] The name of the instance profile to update.
@@ -26,12 +23,20 @@ The caller of this API must be granted the \code{PassRole} permission on the IAM
 
 For more information about roles, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html}{Working with Roles}. For more information about instance profiles, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html}{About Instance Profiles}.
 }
+\section{Accepted Parameters}{
+\preformatted{add_role_to_instance_profile(
+  InstanceProfileName = "string",
+  RoleName = "string"
+)
+}
+}
+
 \examples{
 # The following command adds the role named S3Access to the instance
 # profile named Webserver:
-add_role_to_instance_profile(
+\donttest{add_role_to_instance_profile(
   InstanceProfileName = "Webserver",
   RoleName = "S3Access"
-)
+)}
 
 }

@@ -4,7 +4,21 @@
 \alias{create_function_definition}
 \title{Creates a Lambda function definition which contains a list of Lambda functions and their configurations to be used in a group}
 \usage{
-create_function_definition(
+create_function_definition(AmznClientToken = NULL,
+  InitialVersion = NULL, Name = NULL)
+}
+\arguments{
+\item{AmznClientToken}{A client token used to correlate requests and responses.}
+
+\item{InitialVersion}{Information about the initial version of the function definition.}
+
+\item{Name}{The name of the function definition.}
+}
+\description{
+Creates a Lambda function definition which contains a list of Lambda functions and their configurations to be used in a group. You can create an initial version of the definition by providing a list of Lambda functions and their configurations now, or use ''CreateFunctionDefinitionVersion'' later.
+}
+\section{Accepted Parameters}{
+\preformatted{create_function_definition(
   AmznClientToken = "string",
   InitialVersion = list(
     DefaultConfig = list(
@@ -49,16 +63,5 @@ create_function_definition(
   Name = "string"
 )
 }
-\arguments{
-\item{AmznClientToken}{A client token used to correlate requests and responses.}
-
-\item{InitialVersion}{Information about the initial version of the function definition.}
-
-\item{Name}{The name of the function definition.}
 }
-\description{
-Creates a Lambda function definition which contains a list of Lambda functions and their configurations to be used in a group. You can create an initial version of the definition by providing a list of Lambda functions and their configurations now, or use ''CreateFunctionDefinitionVersion'' later.
-}
-\examples{
 
-}

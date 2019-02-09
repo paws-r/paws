@@ -4,9 +4,7 @@
 \alias{get_app_replication_configuration}
 \title{Retrieves an application replication configuration associatd with an application}
 \usage{
-get_app_replication_configuration(
-  appId = "string"
-)
+get_app_replication_configuration(appId = NULL)
 }
 \arguments{
 \item{appId}{ID of the application associated with the replication configuration.}
@@ -14,6 +12,10 @@ get_app_replication_configuration(
 \description{
 Retrieves an application replication configuration associatd with an application.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_app_replication_configuration(
+  appId = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{delete_layer}
 \title{Deletes a specified layer}
 \usage{
-delete_layer(
-  LayerId = "string"
-)
+delete_layer(LayerId)
 }
 \arguments{
 \item{LayerId}{[required] The layer ID.}
@@ -17,6 +15,10 @@ Deletes a specified layer. You must first stop and then delete all associated in
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_layer(
+  LayerId = "string"
+)
 }
+}
+

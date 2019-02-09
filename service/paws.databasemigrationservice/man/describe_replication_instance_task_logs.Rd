@@ -4,11 +4,8 @@
 \alias{describe_replication_instance_task_logs}
 \title{Returns information about the task logs for the specified task}
 \usage{
-describe_replication_instance_task_logs(
-  ReplicationInstanceArn = "string",
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_replication_instance_task_logs(ReplicationInstanceArn,
+  MaxRecords = NULL, Marker = NULL)
 }
 \arguments{
 \item{ReplicationInstanceArn}{[required] The Amazon Resource Name (ARN) of the replication instance.}
@@ -24,6 +21,12 @@ Constraints: Minimum 20, maximum 100.}
 \description{
 Returns information about the task logs for the specified task.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_replication_instance_task_logs(
+  ReplicationInstanceArn = "string",
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
+}
+

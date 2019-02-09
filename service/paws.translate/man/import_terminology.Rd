@@ -4,19 +4,8 @@
 \alias{import_terminology}
 \title{Creates or updates a custom terminology, depending on whether or not one already exists for the given terminology name}
 \usage{
-import_terminology(
-  Name = "string",
-  MergeStrategy = "OVERWRITE",
-  Description = "string",
-  TerminologyData = list(
-    File = raw,
-    Format = "CSV"|"TMX"
-  ),
-  EncryptionKey = list(
-    Type = "KMS",
-    Id = "string"
-  )
-)
+import_terminology(Name, MergeStrategy, Description = NULL,
+  TerminologyData, EncryptionKey = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the custom terminology being imported.}
@@ -35,6 +24,20 @@ Creates or updates a custom terminology, depending on whether or not one already
 \details{
 If you import a terminology that overwrites an existing one, the new terminology take up to 10 minutes to fully propagate and be available for use in a translation due to cache policies with the DataPlane service that performs the translations.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{import_terminology(
+  Name = "string",
+  MergeStrategy = "OVERWRITE",
+  Description = "string",
+  TerminologyData = list(
+    File = raw,
+    Format = "CSV"|"TMX"
+  ),
+  EncryptionKey = list(
+    Type = "KMS",
+    Id = "string"
+  )
+)
 }
+}
+

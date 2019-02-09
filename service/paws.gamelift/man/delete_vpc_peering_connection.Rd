@@ -4,10 +4,7 @@
 \alias{delete_vpc_peering_connection}
 \title{Removes a VPC peering connection}
 \usage{
-delete_vpc_peering_connection(
-  FleetId = "string",
-  VpcPeeringConnectionId = "string"
-)
+delete_vpc_peering_connection(FleetId, VpcPeeringConnectionId)
 }
 \arguments{
 \item{FleetId}{[required] Unique identifier for a fleet. This value must match the fleet ID referenced in the VPC peering connection record.}
@@ -19,8 +16,6 @@ Removes a VPC peering connection. To delete the connection, you must have a vali
 }
 \details{
 Once a valid authorization exists, call this operation from the AWS account that is used to manage the Amazon GameLift fleets. Identify the connection to delete by the connection ID and fleet ID. If successful, the connection is removed.
-
-VPC peering connection operations include:
 \itemize{
 \item CreateVpcPeeringAuthorization
 \item DescribeVpcPeeringAuthorizations
@@ -30,6 +25,11 @@ VPC peering connection operations include:
 \item DeleteVpcPeeringConnection
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_vpc_peering_connection(
+  FleetId = "string",
+  VpcPeeringConnectionId = "string"
+)
 }
+}
+

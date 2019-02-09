@@ -4,28 +4,9 @@
 \alias{create_user}
 \title{Creates a new user account in your Amazon Connect instance}
 \usage{
-create_user(
-  Username = "string",
-  Password = "string",
-  IdentityInfo = list(
-    FirstName = "string",
-    LastName = "string",
-    Email = "string"
-  ),
-  PhoneConfig = list(
-    PhoneType = "SOFT_PHONE"|"DESK_PHONE",
-    AutoAccept = TRUE|FALSE,
-    AfterContactWorkTimeLimit = 123,
-    DeskPhoneNumber = "string"
-  ),
-  DirectoryUserId = "string",
-  SecurityProfileIds = list(
-    "string"
-  ),
-  RoutingProfileId = "string",
-  HierarchyGroupId = "string",
-  InstanceId = "string"
-)
+create_user(Username, Password = NULL, IdentityInfo = NULL,
+  PhoneConfig, DirectoryUserId = NULL, SecurityProfileIds,
+  RoutingProfileId, HierarchyGroupId = NULL, InstanceId)
 }
 \arguments{
 \item{Username}{[required] The user name in Amazon Connect for the account to create. If you are using SAML for identity management in your Amazon Connect, the value for \code{Username} can include up to 64 characters from [a-zA-Z0-9\_-.\@]+.}
@@ -51,6 +32,29 @@ This parameter is required if you are using an existing directory for identity m
 \description{
 Creates a new user account in your Amazon Connect instance.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_user(
+  Username = "string",
+  Password = "string",
+  IdentityInfo = list(
+    FirstName = "string",
+    LastName = "string",
+    Email = "string"
+  ),
+  PhoneConfig = list(
+    PhoneType = "SOFT_PHONE"|"DESK_PHONE",
+    AutoAccept = TRUE|FALSE,
+    AfterContactWorkTimeLimit = 123,
+    DeskPhoneNumber = "string"
+  ),
+  DirectoryUserId = "string",
+  SecurityProfileIds = list(
+    "string"
+  ),
+  RoutingProfileId = "string",
+  HierarchyGroupId = "string",
+  InstanceId = "string"
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{test_render_template}
 \title{Creates a preview of the MIME content of an email when provided with a template and a set of replacement data}
 \usage{
-test_render_template(
-  TemplateName = "string",
-  TemplateData = "string"
-)
+test_render_template(TemplateName, TemplateData)
 }
 \arguments{
 \item{TemplateName}{[required] The name of the template that you want to render.}
@@ -20,6 +17,11 @@ Creates a preview of the MIME content of an email when provided with a template 
 \details{
 You can execute this operation no more than once per second.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{test_render_template(
+  TemplateName = "string",
+  TemplateData = "string"
+)
 }
+}
+

@@ -4,13 +4,7 @@
 \alias{list_apps}
 \title{Returns a list of summaries for all applications}
 \usage{
-list_apps(
-  appIds = list(
-    "string"
-  ),
-  nextToken = "string",
-  maxResults = 123
-)
+list_apps(appIds = NULL, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{appIds}{}
@@ -22,6 +16,14 @@ list_apps(
 \description{
 Returns a list of summaries for all applications.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_apps(
+  appIds = list(
+    "string"
+  ),
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

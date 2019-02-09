@@ -9,6 +9,8 @@ get_notification_channel()
 \description{
 Returns information about the Amazon Simple Notification Service (SNS) topic that is used to record AWS Firewall Manager SNS logs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_notification_channel()
 }
+}
+

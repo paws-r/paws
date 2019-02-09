@@ -4,10 +4,7 @@
 \alias{deregister_image}
 \title{Deregisters the specified AMI}
 \usage{
-deregister_image(
-  ImageId = "string",
-  DryRun = TRUE|FALSE
-)
+deregister_image(ImageId, DryRun = NULL)
 }
 \arguments{
 \item{ImageId}{[required] The ID of the AMI.}
@@ -20,6 +17,11 @@ Deregisters the specified AMI. After you deregister an AMI, it can't be used to 
 \details{
 When you deregister an Amazon EBS-backed AMI, it doesn't affect the snapshot that was created for the root volume of the instance during the AMI creation process. When you deregister an instance store-backed AMI, it doesn't affect the files that you uploaded to Amazon S3 when you created the AMI.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{deregister_image(
+  ImageId = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

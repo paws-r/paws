@@ -4,12 +4,8 @@
 \alias{get_document}
 \title{Gets the contents of the specified Systems Manager document}
 \usage{
-get_document(
-  Name = "string",
-  VersionName = "string",
-  DocumentVersion = "string",
-  DocumentFormat = "YAML"|"JSON"
-)
+get_document(Name, VersionName = NULL, DocumentVersion = NULL,
+  DocumentFormat = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the Systems Manager document.}
@@ -23,6 +19,13 @@ get_document(
 \description{
 Gets the contents of the specified Systems Manager document.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_document(
+  Name = "string",
+  VersionName = "string",
+  DocumentVersion = "string",
+  DocumentFormat = "YAML"|"JSON"
+)
 }
+}
+

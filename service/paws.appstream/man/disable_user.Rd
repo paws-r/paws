@@ -4,10 +4,7 @@
 \alias{disable_user}
 \title{Disables the specified user in the user pool}
 \usage{
-disable_user(
-  UserName = "string",
-  AuthenticationType = "API"|"SAML"|"USERPOOL"
-)
+disable_user(UserName, AuthenticationType)
 }
 \arguments{
 \item{UserName}{[required] The email address of the user.}
@@ -17,6 +14,11 @@ disable_user(
 \description{
 Disables the specified user in the user pool. Users can't sign in to AppStream 2.0 until they are re-enabled. This action does not delete the user.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disable_user(
+  UserName = "string",
+  AuthenticationType = "API"|"SAML"|"USERPOOL"
+)
 }
+}
+

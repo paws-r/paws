@@ -4,10 +4,7 @@
 \alias{describe_provisioned_product}
 \title{Gets information about the specified provisioned product}
 \usage{
-describe_provisioned_product(
-  AcceptLanguage = "string",
-  Id = "string"
-)
+describe_provisioned_product(AcceptLanguage = NULL, Id)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -22,6 +19,11 @@ describe_provisioned_product(
 \description{
 Gets information about the specified provisioned product.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_provisioned_product(
+  AcceptLanguage = "string",
+  Id = "string"
+)
 }
+}
+

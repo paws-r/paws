@@ -4,9 +4,7 @@
 \alias{opt_in_phone_number}
 \title{Use this request to opt in a phone number that is opted out, which enables you to resume sending SMS messages to the number}
 \usage{
-opt_in_phone_number(
-  phoneNumber = "string"
-)
+opt_in_phone_number(phoneNumber)
 }
 \arguments{
 \item{phoneNumber}{[required] The phone number to opt in.}
@@ -17,6 +15,10 @@ Use this request to opt in a phone number that is opted out, which enables you t
 \details{
 You can opt in a phone number only once every 30 days.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{opt_in_phone_number(
+  phoneNumber = "string"
+)
 }
+}
+

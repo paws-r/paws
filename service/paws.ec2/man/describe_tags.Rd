@@ -4,19 +4,8 @@
 \alias{describe_tags}
 \title{Describes one or more of the tags for your EC2 resources}
 \usage{
-describe_tags(
-  DryRun = TRUE|FALSE,
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_tags(DryRun = NULL, Filters = NULL, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -38,11 +27,28 @@ describe_tags(
 Describes one or more of the tags for your EC2 resources.
 }
 \details{
-For more information about tags, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html}{Tagging Your Resources} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information about tags, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html}{Tagging Your Resources} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_tags(
+  DryRun = TRUE|FALSE,
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
+}
+}
+
 \examples{
 # This example describes the tags for the specified instance.
-describe_tags(
+\donttest{describe_tags(
   Filters = list(
     list(
       Name = "resource-id",
@@ -51,6 +57,6 @@ describe_tags(
       )
     )
   )
-)
+)}
 
 }

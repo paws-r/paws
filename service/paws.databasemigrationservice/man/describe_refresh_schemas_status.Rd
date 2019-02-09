@@ -4,9 +4,7 @@
 \alias{describe_refresh_schemas_status}
 \title{Returns the status of the RefreshSchemas operation}
 \usage{
-describe_refresh_schemas_status(
-  EndpointArn = "string"
-)
+describe_refresh_schemas_status(EndpointArn)
 }
 \arguments{
 \item{EndpointArn}{[required] The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.}
@@ -14,10 +12,17 @@ describe_refresh_schemas_status(
 \description{
 Returns the status of the RefreshSchemas operation.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_refresh_schemas_status(
+  EndpointArn = "string"
+)
+}
+}
+
 \examples{
 # Returns the status of the refresh-schemas operation.
-describe_refresh_schemas_status(
+\donttest{describe_refresh_schemas_status(
   EndpointArn = ""
-)
+)}
 
 }

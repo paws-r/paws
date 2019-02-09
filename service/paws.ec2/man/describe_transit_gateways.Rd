@@ -4,7 +4,38 @@
 \alias{describe_transit_gateways}
 \title{Describes one or more transit gateways}
 \usage{
-describe_transit_gateways(
+describe_transit_gateways(TransitGatewayIds = NULL, Filters = NULL,
+  MaxResults = NULL, NextToken = NULL, DryRun = NULL)
+}
+\arguments{
+\item{TransitGatewayIds}{The IDs of the transit gateways.}
+
+\item{Filters}{One or more filters. The possible values are:
+\itemize{
+\item \code{options.propagation-default-route-table-id} - The ID of the default propagation route table.
+\item \code{options.amazon-side-asn} - The private ASN for the Amazon side of a BGP session.
+\item \code{options.association-default-route-table-id} - The ID of the default association route table.
+\item \code{options.auto-accept-shared-attachments} - Indicates whether there is automatic acceptance of attachment requests (\code{enable} | \code{disable}).
+\item \code{options.default-route-table-association} - Indicates whether resource attachments are automatically associated with the default association route table (\code{enable} | \code{disable}).
+\item \code{options.default-route-table-propagation} - Indicates whether resource attachments automatically propagate routes to the default propagation route table (\code{enable} | \code{disable}).
+\item \code{options.dns-support} - Indicates whether DNS support is enabled (\code{enable} | \code{disable}).
+\item \code{options.vpn-ecmp-support} - Indicates whether Equal Cost Multipath Protocol support is enabled (\code{enable} | \code{disable}).
+\item \code{owner-id} - The ID of the AWS account that owns the transit gateway.
+\item \code{state} - The state of the attachment (\code{available} | \code{deleted} | \code{deleting} | \code{failed} | \code{modifying} | \code{pendingAcceptance} | \code{pending} | \code{rollingBack} | \code{rejected} | \code{rejecting}).
+\item \code{transit-gateway-id} - The ID of the transit gateway.
+}}
+
+\item{MaxResults}{The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned \code{nextToken} value.}
+
+\item{NextToken}{The token for the next page of results.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+}
+\description{
+Describes one or more transit gateways. By default, all transit gateways are described. Alternatively, you can filter the results.
+}
+\section{Accepted Parameters}{
+\preformatted{describe_transit_gateways(
   TransitGatewayIds = list(
     "string"
   ),
@@ -21,30 +52,5 @@ describe_transit_gateways(
   DryRun = TRUE|FALSE
 )
 }
-\arguments{
-\item{TransitGatewayIds}{The IDs of the transit gateways.}
-
-\item{Filters}{One or more filters. The possible values are:
-\itemize{
-\item \code{amazon-side-asn} - The private ASN for the Amazon side of a BGP session.
-\item \code{association-default-route-table-id} - The ID of the default association route table.
-\item \code{default-route-table-association} - Indicates whether resource attachments are automatically associated with the default association route table (\code{enable} | \code{disable}).
-\item \code{default-route-table-propagation} - Indicates whether resource attachments automatically propagate routes to the default propagation route table (\code{enable} | \code{disable}).
-\item \code{owner-account-id} - The ID of the AWS account that owns the transit gateway.
-\item \code{propagation-default-route-table-id} - The ID of the default propagation route table.
-\item \code{transit-gateway-id} - The ID of the transit gateway.
-\item \code{transit-gateway-state} - The state of the transit gateway (\code{pending} | \code{available} | \code{deleting} | \code{deleted}).
-}}
-
-\item{MaxResults}{The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned \code{nextToken} value.}
-
-\item{NextToken}{The token for the next page of results.}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\description{
-Describes one or more transit gateways. By default, all transit gateways are described. Alternatively, you can filter the results.
-}
-\examples{
 
-}

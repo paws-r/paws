@@ -4,12 +4,7 @@
 \alias{monitor_instances}
 \title{Enables detailed monitoring for a running instance}
 \usage{
-monitor_instances(
-  InstanceIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
+monitor_instances(InstanceIds, DryRun = NULL)
 }
 \arguments{
 \item{InstanceIds}{[required] One or more instance IDs.}
@@ -17,11 +12,18 @@ monitor_instances(
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Enables detailed monitoring for a running instance. Otherwise, basic monitoring is enabled. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html}{Monitoring Your Instances and Volumes} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+Enables detailed monitoring for a running instance. Otherwise, basic monitoring is enabled. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html}{Monitoring Your Instances and Volumes} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \details{
 To disable detailed monitoring, see .
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{monitor_instances(
+  InstanceIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE
+)
 }
+}
+

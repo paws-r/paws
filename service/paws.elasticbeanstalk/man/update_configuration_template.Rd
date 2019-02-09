@@ -4,26 +4,8 @@
 \alias{update_configuration_template}
 \title{Updates the specified configuration template to have the specified properties or configuration option values}
 \usage{
-update_configuration_template(
-  ApplicationName = "string",
-  TemplateName = "string",
-  Description = "string",
-  OptionSettings = list(
-    list(
-      ResourceName = "string",
-      Namespace = "string",
-      OptionName = "string",
-      Value = "string"
-    )
-  ),
-  OptionsToRemove = list(
-    list(
-      ResourceName = "string",
-      Namespace = "string",
-      OptionName = "string"
-    )
-  )
-)
+update_configuration_template(ApplicationName, TemplateName,
+  Description = NULL, OptionSettings = NULL, OptionsToRemove = NULL)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application associated with the configuration template to update.
@@ -53,11 +35,35 @@ Related Topics
 \item DescribeConfigurationOptions
 }
 }
+\section{Accepted Parameters}{
+\preformatted{update_configuration_template(
+  ApplicationName = "string",
+  TemplateName = "string",
+  Description = "string",
+  OptionSettings = list(
+    list(
+      ResourceName = "string",
+      Namespace = "string",
+      OptionName = "string",
+      Value = "string"
+    )
+  ),
+  OptionsToRemove = list(
+    list(
+      ResourceName = "string",
+      Namespace = "string",
+      OptionName = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # The following operation removes the configured CloudWatch custom health
 # metrics configuration ConfigDocument from a saved configuration template
 # named my-template:
-update_configuration_template(
+\donttest{update_configuration_template(
   ApplicationName = "my-app",
   OptionsToRemove = list(
     list(
@@ -66,6 +72,6 @@ update_configuration_template(
     )
   ),
   TemplateName = "my-template"
-)
+)}
 
 }

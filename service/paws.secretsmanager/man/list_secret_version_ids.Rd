@@ -4,12 +4,8 @@
 \alias{list_secret_version_ids}
 \title{Lists all of the versions attached to the specified secret}
 \usage{
-list_secret_version_ids(
-  SecretId = "string",
-  MaxResults = 123,
-  NextToken = "string",
-  IncludeDeprecated = TRUE|FALSE
-)
+list_secret_version_ids(SecretId, MaxResults = NULL, NextToken = NULL,
+  IncludeDeprecated = NULL)
 }
 \arguments{
 \item{SecretId}{[required] The identifier for the secret containing the versions you want to list. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.
@@ -40,12 +36,22 @@ To run this command, you must have the following permissions:
 \item To list the secrets in an account, use ListSecrets.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{list_secret_version_ids(
+  SecretId = "string",
+  MaxResults = 123,
+  NextToken = "string",
+  IncludeDeprecated = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # The following example shows how to retrieve a list of all of the
 # versions of a secret, including those without any staging labels.
-list_secret_version_ids(
+\donttest{list_secret_version_ids(
   IncludeDeprecated = TRUE,
   SecretId = "MyTestDatabaseSecret"
-)
+)}
 
 }

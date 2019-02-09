@@ -4,9 +4,7 @@
 \alias{describe_collection}
 \title{Describes the specified collection}
 \usage{
-describe_collection(
-  CollectionId = "string"
-)
+describe_collection(CollectionId)
 }
 \arguments{
 \item{CollectionId}{[required] The ID of the collection to describe.}
@@ -17,6 +15,10 @@ Describes the specified collection. You can use \code{DescribeCollection} to get
 \details{
 For more information, see Describing a Collection in the Amazon Rekognition Developer Guide.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_collection(
+  CollectionId = "string"
+)
 }
+}
+

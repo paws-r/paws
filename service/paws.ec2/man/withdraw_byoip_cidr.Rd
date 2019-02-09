@@ -4,10 +4,7 @@
 \alias{withdraw_byoip_cidr}
 \title{Stops advertising an IPv4 address range that is provisioned as an address pool}
 \usage{
-withdraw_byoip_cidr(
-  Cidr = "string",
-  DryRun = TRUE|FALSE
-)
+withdraw_byoip_cidr(Cidr, DryRun = NULL)
 }
 \arguments{
 \item{Cidr}{[required] The public IPv4 address range, in CIDR notation.}
@@ -22,6 +19,11 @@ You can perform this operation at most once every 10 seconds, even if you specif
 
 It can take a few minutes before traffic to the specified addresses stops routing to AWS because of BGP propagation delays.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{withdraw_byoip_cidr(
+  Cidr = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

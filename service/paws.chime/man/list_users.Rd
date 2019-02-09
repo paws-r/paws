@@ -4,12 +4,8 @@
 \alias{list_users}
 \title{Lists the users that belong to the specified Amazon Chime account}
 \usage{
-list_users(
-  AccountId = "string",
-  UserEmail = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_users(AccountId, UserEmail = NULL, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{AccountId}{[required] The Amazon Chime account ID.}
@@ -23,6 +19,13 @@ list_users(
 \description{
 Lists the users that belong to the specified Amazon Chime account. You can specify an email address to list only the user that the email address belongs to.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_users(
+  AccountId = "string",
+  UserEmail = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

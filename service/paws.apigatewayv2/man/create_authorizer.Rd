@@ -4,21 +4,10 @@
 \alias{create_authorizer}
 \title{Creates an Authorizer for an API}
 \usage{
-create_authorizer(
-  ApiId = "string",
-  AuthorizerCredentialsArn = "string",
-  AuthorizerResultTtlInSeconds = 123,
-  AuthorizerType = "REQUEST",
-  AuthorizerUri = "string",
-  IdentitySource = list(
-    "string"
-  ),
-  IdentityValidationExpression = "string",
-  Name = "string",
-  ProviderArns = list(
-    "string"
-  )
-)
+create_authorizer(ApiId, AuthorizerCredentialsArn = NULL,
+  AuthorizerResultTtlInSeconds = NULL, AuthorizerType, AuthorizerUri,
+  IdentitySource, IdentityValidationExpression = NULL, Name,
+  ProviderArns = NULL)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -44,6 +33,22 @@ For the REQUEST authorizer, this is required when authorization caching is enabl
 \description{
 Creates an Authorizer for an API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_authorizer(
+  ApiId = "string",
+  AuthorizerCredentialsArn = "string",
+  AuthorizerResultTtlInSeconds = 123,
+  AuthorizerType = "REQUEST",
+  AuthorizerUri = "string",
+  IdentitySource = list(
+    "string"
+  ),
+  IdentityValidationExpression = "string",
+  Name = "string",
+  ProviderArns = list(
+    "string"
+  )
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{list_ip_sets}
 \title{Returns an array of IPSetSummary objects in the response}
 \usage{
-list_ip_sets(
-  NextMarker = "string",
-  Limit = 123
-)
+list_ip_sets(NextMarker = NULL, Limit = NULL)
 }
 \arguments{
 \item{NextMarker}{If you specify a value for \code{Limit} and you have more \code{IPSets} than the value of \code{Limit}, AWS WAF returns a \code{NextMarker} value in the response that allows you to list another group of \code{IPSets}. For the second and subsequent \code{ListIPSets} requests, specify the value of \code{NextMarker} from the previous response to get information about another batch of \code{IPSets}.}
@@ -17,10 +14,18 @@ list_ip_sets(
 \description{
 Returns an array of IPSetSummary objects in the response.
 }
+\section{Accepted Parameters}{
+\preformatted{list_ip_sets(
+  NextMarker = "string",
+  Limit = 123
+)
+}
+}
+
 \examples{
 # The following example returns an array of up to 100 IP match sets.
-list_ip_sets(
+\donttest{list_ip_sets(
   Limit = 100L
-)
+)}
 
 }

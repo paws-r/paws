@@ -4,20 +4,9 @@
 \alias{put_integration_response}
 \title{Represents a put integration}
 \usage{
-put_integration_response(
-  restApiId = "string",
-  resourceId = "string",
-  httpMethod = "string",
-  statusCode = "string",
-  selectionPattern = "string",
-  responseParameters = list(
-    "string"
-  ),
-  responseTemplates = list(
-    "string"
-  ),
-  contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
-)
+put_integration_response(restApiId, resourceId, httpMethod, statusCode,
+  selectionPattern = NULL, responseParameters = NULL,
+  responseTemplates = NULL, contentHandling = NULL)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -45,6 +34,21 @@ If this property is not defined, the response payload will be passed through fro
 \description{
 Represents a put integration.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_integration_response(
+  restApiId = "string",
+  resourceId = "string",
+  httpMethod = "string",
+  statusCode = "string",
+  selectionPattern = "string",
+  responseParameters = list(
+    "string"
+  ),
+  responseTemplates = list(
+    "string"
+  ),
+  contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
+)
 }
+}
+

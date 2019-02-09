@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.waf_operations.R
 \name{get_web_acl}
 \alias{get_web_acl}
-\title{Returns the WebACL that is specified by \code{WebACLId}}
+\title{Returns the WebACL that is specified by WebACLId}
 \usage{
-get_web_acl(
-  WebACLId = "string"
-)
+get_web_acl(WebACLId)
 }
 \arguments{
 \item{WebACLId}{[required] The \code{WebACLId} of the WebACL that you want to get. \code{WebACLId} is returned by CreateWebACL and by ListWebACLs.}
@@ -14,11 +12,18 @@ get_web_acl(
 \description{
 Returns the WebACL that is specified by \code{WebACLId}.
 }
+\section{Accepted Parameters}{
+\preformatted{get_web_acl(
+  WebACLId = "string"
+)
+}
+}
+
 \examples{
 # The following example returns the details of a web ACL with the ID
 # createwebacl-1472061481310.
-get_web_acl(
+\donttest{get_web_acl(
   WebACLId = "createwebacl-1472061481310"
-)
+)}
 
 }

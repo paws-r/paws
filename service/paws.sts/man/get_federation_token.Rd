@@ -4,11 +4,7 @@
 \alias{get_federation_token}
 \title{Returns a set of temporary security credentials (consisting of an access key ID, a secret access key, and a security token) for a federated user}
 \usage{
-get_federation_token(
-  Name = "string",
-  Policy = "string",
-  DurationSeconds = 123
-)
+get_federation_token(Name, Policy = NULL, DurationSeconds = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the federated user. The name is used as an identifier for the temporary security credentials (such as \code{Bob}). For example, you can reference the federated user name in a resource-based policy, such as in an Amazon S3 bucket policy.
@@ -59,12 +55,21 @@ If you do not pass a policy, the resulting temporary security credentials have n
 
 For more information about how permissions work, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_getfederationtoken.html}{Permissions for GetFederationToken}. For information about using \code{GetFederationToken} to create temporary security credentials, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getfederationtoken}{GetFederationToken---Federation Through a Custom Identity Broker}.
 }
+\section{Accepted Parameters}{
+\preformatted{get_federation_token(
+  Name = "string",
+  Policy = "string",
+  DurationSeconds = 123
+)
+}
+}
+
 \examples{
 # 
-get_federation_token(
+\donttest{get_federation_token(
   DurationSeconds = 3600L,
   Name = "Bob",
   Policy = "{\\"Version\\":\\"2012-10-17\\",\\"Statement\\":[{\\"Sid\\":\\"Stmt1\\",\\"Effect\\":\\"Allow\\",\\"Action\\":\\"s3:*\\",\\"Resource\\":\\"*\\"}]}"
-)
+)}
 
 }

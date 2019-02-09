@@ -6,8 +6,8 @@
 \alias{paws.translate-package}
 \title{paws.translate: Amazon Translate}
 \description{
-Provides translation between one source language and another
-of the same set of languages.
+Provides translation between one source language
+    and another of the same set of languages.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

@@ -4,9 +4,7 @@
 \alias{delete_mount_target}
 \title{Deletes the specified mount target}
 \usage{
-delete_mount_target(
-  MountTargetId = "string"
-)
+delete_mount_target(MountTargetId)
 }
 \arguments{
 \item{MountTargetId}{[required] ID of the mount target to delete (String).}
@@ -29,10 +27,17 @@ The operation also requires permissions for the following Amazon EC2 action on t
 \item \code{ec2:DeleteNetworkInterface}
 }
 }
+\section{Accepted Parameters}{
+\preformatted{delete_mount_target(
+  MountTargetId = "string"
+)
+}
+}
+
 \examples{
 # This operation deletes a mount target.
-delete_mount_target(
+\donttest{delete_mount_target(
   MountTargetId = "fsmt-12340abc"
-)
+)}
 
 }

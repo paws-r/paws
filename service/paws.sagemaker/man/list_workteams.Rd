@@ -4,13 +4,8 @@
 \alias{list_workteams}
 \title{Gets a list of work teams that you have defined in a region}
 \usage{
-list_workteams(
-  SortBy = "Name"|"CreateDate",
-  SortOrder = "Ascending"|"Descending",
-  NameContains = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_workteams(SortBy = NULL, SortOrder = NULL, NameContains = NULL,
+  NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{SortBy}{The field to sort results by. The default is \code{CreationTime}.}
@@ -26,6 +21,14 @@ list_workteams(
 \description{
 Gets a list of work teams that you have defined in a region. The list may be empty if no work team satisfies the filter specified in the \code{NameContains} parameter.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_workteams(
+  SortBy = "Name"|"CreateDate",
+  SortOrder = "Ascending"|"Descending",
+  NameContains = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

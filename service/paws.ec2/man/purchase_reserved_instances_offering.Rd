@@ -4,15 +4,8 @@
 \alias{purchase_reserved_instances_offering}
 \title{Purchases a Reserved Instance for use with your account}
 \usage{
-purchase_reserved_instances_offering(
-  InstanceCount = 123,
-  ReservedInstancesOfferingId = "string",
-  DryRun = TRUE|FALSE,
-  LimitPrice = list(
-    Amount = 123.0,
-    CurrencyCode = "USD"
-  )
-)
+purchase_reserved_instances_offering(InstanceCount,
+  ReservedInstancesOfferingId, DryRun = NULL, LimitPrice = NULL)
 }
 \arguments{
 \item{InstanceCount}{[required] The number of Reserved Instances to purchase.}
@@ -29,8 +22,18 @@ Purchases a Reserved Instance for use with your account. With Reserved Instances
 \details{
 Use DescribeReservedInstancesOfferings to get a list of Reserved Instance offerings that match your specifications. After you've purchased a Reserved Instance, you can check for your new Reserved Instance with DescribeReservedInstances.
 
-For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-on-demand-reserved-instances.html}{Reserved Instances} and \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html}{Reserved Instance Marketplace} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-on-demand-reserved-instances.html}{Reserved Instances} and \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html}{Reserved Instance Marketplace} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{purchase_reserved_instances_offering(
+  InstanceCount = 123,
+  ReservedInstancesOfferingId = "string",
+  DryRun = TRUE|FALSE,
+  LimitPrice = list(
+    Amount = 123.0,
+    CurrencyCode = "USD"
+  )
+)
+}
+}
 
-}

@@ -4,10 +4,7 @@
 \alias{describe_service_access_policies}
 \title{Gets information about the access policies that control access to the domain's document and search endpoints}
 \usage{
-describe_service_access_policies(
-  DomainName = "string",
-  Deployed = TRUE|FALSE
-)
+describe_service_access_policies(DomainName, Deployed = NULL)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain you want to describe.}
@@ -17,6 +14,11 @@ describe_service_access_policies(
 \description{
 Gets information about the access policies that control access to the domain's document and search endpoints. By default, shows the configuration with any pending changes. Set the \code{Deployed} option to \code{true} to show the active configuration and exclude pending changes. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html}{Configuring Access for a Search Domain} in the \emph{Amazon CloudSearch Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_service_access_policies(
+  DomainName = "string",
+  Deployed = TRUE|FALSE
+)
 }
+}
+

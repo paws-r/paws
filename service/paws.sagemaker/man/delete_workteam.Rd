@@ -4,9 +4,7 @@
 \alias{delete_workteam}
 \title{Deletes an existing work team}
 \usage{
-delete_workteam(
-  WorkteamName = "string"
-)
+delete_workteam(WorkteamName)
 }
 \arguments{
 \item{WorkteamName}{[required] The name of the work team to delete.}
@@ -14,6 +12,10 @@ delete_workteam(
 \description{
 Deletes an existing work team. This operation can't be undone.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_workteam(
+  WorkteamName = "string"
+)
 }
+}
+

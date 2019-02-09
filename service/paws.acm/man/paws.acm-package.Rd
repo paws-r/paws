@@ -7,7 +7,7 @@
 \title{paws.acm: AWS Certificate Manager}
 \description{
 Welcome to the AWS Certificate Manager (ACM) API
-documentation.
+    documentation.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

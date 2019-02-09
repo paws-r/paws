@@ -4,10 +4,7 @@
 \alias{update_thing_shadow}
 \title{Updates the thing shadow for the specified thing}
 \usage{
-update_thing_shadow(
-  thingName = "string",
-  payload = raw
-)
+update_thing_shadow(thingName, payload)
 }
 \arguments{
 \item{thingName}{[required] The name of the thing.}
@@ -20,6 +17,11 @@ Updates the thing shadow for the specified thing.
 \details{
 For more information, see \href{http://docs.aws.amazon.com/iot/latest/developerguide/API_UpdateThingShadow.html}{UpdateThingShadow} in the \emph{AWS IoT Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_thing_shadow(
+  thingName = "string",
+  payload = raw
+)
 }
+}
+

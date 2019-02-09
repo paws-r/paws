@@ -4,9 +4,7 @@
 \alias{get_bucket_tagging}
 \title{Returns the tag set associated with the bucket}
 \usage{
-get_bucket_tagging(
-  Bucket = "string"
-)
+get_bucket_tagging(Bucket)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -14,10 +12,17 @@ get_bucket_tagging(
 \description{
 Returns the tag set associated with the bucket.
 }
+\section{Accepted Parameters}{
+\preformatted{get_bucket_tagging(
+  Bucket = "string"
+)
+}
+}
+
 \examples{
 # The following example returns tag set associated with a bucket
-get_bucket_tagging(
+\donttest{get_bucket_tagging(
   Bucket = "examplebucket"
-)
+)}
 
 }

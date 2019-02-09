@@ -4,15 +4,7 @@
 \alias{tag_resource}
 \title{Attach one of more tags to any resource}
 \usage{
-tag_resource(
-  ResourceArn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+tag_resource(ResourceArn, Tags)
 }
 \arguments{
 \item{ResourceArn}{[required] Resource of the ARN to be tagged.}
@@ -22,6 +14,16 @@ tag_resource(
 \description{
 Attach one of more tags to any resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{tag_resource(
+  ResourceArn = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

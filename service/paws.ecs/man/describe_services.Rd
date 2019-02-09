@@ -4,15 +4,7 @@
 \alias{describe_services}
 \title{Describes the specified services running in your cluster}
 \usage{
-describe_services(
-  cluster = "string",
-  services = list(
-    "string"
-  ),
-  include = list(
-    "TAGS"
-  )
-)
+describe_services(cluster = NULL, services, include = NULL)
 }
 \arguments{
 \item{cluster}{The short name or full Amazon Resource Name (ARN)the cluster that hosts the service to describe. If you do not specify a cluster, the default cluster is assumed.}
@@ -24,13 +16,26 @@ describe_services(
 \description{
 Describes the specified services running in your cluster.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_services(
+  cluster = "string",
+  services = list(
+    "string"
+  ),
+  include = list(
+    "TAGS"
+  )
+)
+}
+}
+
 \examples{
 # This example provides descriptive information about the service named
 # ``ecs-simple-service``.
-describe_services(
+\donttest{describe_services(
   services = list(
     "ecs-simple-service"
   )
-)
+)}
 
 }

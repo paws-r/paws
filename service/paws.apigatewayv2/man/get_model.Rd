@@ -4,10 +4,7 @@
 \alias{get_model}
 \title{Gets a Model}
 \usage{
-get_model(
-  ApiId = "string",
-  ModelId = "string"
-)
+get_model(ApiId, ModelId)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -17,6 +14,11 @@ get_model(
 \description{
 Gets a Model.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_model(
+  ApiId = "string",
+  ModelId = "string"
+)
 }
+}
+

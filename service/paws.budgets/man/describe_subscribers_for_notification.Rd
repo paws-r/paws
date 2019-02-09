@@ -4,19 +4,8 @@
 \alias{describe_subscribers_for_notification}
 \title{Lists the subscribers that are associated with a notification}
 \usage{
-describe_subscribers_for_notification(
-  AccountId = "string",
-  BudgetName = "string",
-  Notification = list(
-    NotificationType = "ACTUAL"|"FORECASTED",
-    ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
-    Threshold = 123.0,
-    ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
-    NotificationState = "OK"|"ALARM"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_subscribers_for_notification(AccountId, BudgetName, Notification,
+  MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{AccountId}{[required] The \code{accountId} that is associated with the budget whose subscribers you want descriptions of.}
@@ -32,6 +21,20 @@ describe_subscribers_for_notification(
 \description{
 Lists the subscribers that are associated with a notification.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_subscribers_for_notification(
+  AccountId = "string",
+  BudgetName = "string",
+  Notification = list(
+    NotificationType = "ACTUAL"|"FORECASTED",
+    ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
+    Threshold = 123.0,
+    ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
+    NotificationState = "OK"|"ALARM"
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

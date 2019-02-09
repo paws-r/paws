@@ -4,18 +4,8 @@
 \alias{list_fragments}
 \title{Returns a list of Fragment objects from the specified stream and start location within the archived data}
 \usage{
-list_fragments(
-  StreamName = "string",
-  MaxResults = 123,
-  NextToken = "string",
-  FragmentSelector = list(
-    FragmentSelectorType = "PRODUCER_TIMESTAMP"|"SERVER_TIMESTAMP",
-    TimestampRange = list(
-      StartTimestamp = as.POSIXct("2015-01-01"),
-      EndTimestamp = as.POSIXct("2015-01-01")
-    )
-  )
-)
+list_fragments(StreamName, MaxResults = NULL, NextToken = NULL,
+  FragmentSelector = NULL)
 }
 \arguments{
 \item{StreamName}{[required] The name of the stream from which to retrieve a fragment list.}
@@ -29,6 +19,19 @@ list_fragments(
 \description{
 Returns a list of Fragment objects from the specified stream and start location within the archived data.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_fragments(
+  StreamName = "string",
+  MaxResults = 123,
+  NextToken = "string",
+  FragmentSelector = list(
+    FragmentSelectorType = "PRODUCER_TIMESTAMP"|"SERVER_TIMESTAMP",
+    TimestampRange = list(
+      StartTimestamp = as.POSIXct("2015-01-01"),
+      EndTimestamp = as.POSIXct("2015-01-01")
+    )
+  )
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{cancel_handshake}
 \title{Cancels a handshake}
 \usage{
-cancel_handshake(
-  HandshakeId = "string"
-)
+cancel_handshake(HandshakeId)
 }
 \arguments{
 \item{HandshakeId}{[required] The unique identifier (ID) of the handshake that you want to cancel. You can get the ID from the ListHandshakesForOrganization operation.
@@ -21,14 +19,21 @@ This operation can be called only from the account that originated the handshake
 
 After you cancel a handshake, it continues to appear in the results of relevant APIs for only 30 days. After that it is deleted.
 }
+\section{Accepted Parameters}{
+\preformatted{cancel_handshake(
+  HandshakeId = "string"
+)
+}
+}
+
 \examples{
 # Bill previously sent an invitation to Susan's account to join his
 # organization. He changes his mind and decides to cancel the invitation
 # before Susan accepts it. The following example shows Bill's
 # cancellation:
 # 
-cancel_handshake(
+\donttest{cancel_handshake(
   HandshakeId = "h-examplehandshakeid111"
-)
+)}
 
 }

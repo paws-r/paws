@@ -4,12 +4,8 @@
 \alias{describe_provisioning_parameters}
 \title{Gets information about the configuration required to provision the specified product using the specified provisioning artifact}
 \usage{
-describe_provisioning_parameters(
-  AcceptLanguage = "string",
-  ProductId = "string",
-  ProvisioningArtifactId = "string",
-  PathId = "string"
-)
+describe_provisioning_parameters(AcceptLanguage = NULL, ProductId,
+  ProvisioningArtifactId, PathId = NULL)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -31,6 +27,13 @@ Gets information about the configuration required to provision the specified pro
 \details{
 If the output contains a TagOption key with an empty list of values, there is a TagOption conflict for that key. The end user cannot take action to fix the conflict, and launch is not blocked. In subsequent calls to ProvisionProduct, do not include conflicted TagOption keys as tags, or this causes the error "Parameter validation failed: Missing required parameter in Tags[\emph{N}]:\emph{Value}". Tag the provisioned product with the value \code{sc-tagoption-conflict-portfolioId-productId}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_provisioning_parameters(
+  AcceptLanguage = "string",
+  ProductId = "string",
+  ProvisioningArtifactId = "string",
+  PathId = "string"
+)
 }
+}
+

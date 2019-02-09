@@ -4,10 +4,7 @@
 \alias{put_permission_policy}
 \title{Attaches a IAM policy to the specified resource}
 \usage{
-put_permission_policy(
-  ResourceArn = "string",
-  Policy = "string"
-)
+put_permission_policy(ResourceArn, Policy)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the RuleGroup to which you want to attach the policy.}
@@ -34,6 +31,11 @@ For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide
 
 An example of a valid policy parameter is shown in the Examples section below.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_permission_policy(
+  ResourceArn = "string",
+  Policy = "string"
+)
 }
+}
+

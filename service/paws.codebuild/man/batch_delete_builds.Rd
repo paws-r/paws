@@ -4,11 +4,7 @@
 \alias{batch_delete_builds}
 \title{Deletes one or more builds}
 \usage{
-batch_delete_builds(
-  ids = list(
-    "string"
-  )
-)
+batch_delete_builds(ids)
 }
 \arguments{
 \item{ids}{[required] The IDs of the builds to delete.}
@@ -16,6 +12,12 @@ batch_delete_builds(
 \description{
 Deletes one or more builds.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{batch_delete_builds(
+  ids = list(
+    "string"
+  )
+)
 }
+}
+

@@ -4,7 +4,26 @@
 \alias{describe_affected_entities}
 \title{Returns a list of entities that have been affected by the specified events, based on the specified filter criteria}
 \usage{
-describe_affected_entities(
+describe_affected_entities(filter, locale = NULL, nextToken = NULL,
+  maxResults = NULL)
+}
+\arguments{
+\item{filter}{[required] Values to narrow the results returned. At least one event ARN is required.}
+
+\item{locale}{The locale (language) to return information in. English (en) is the default and the only supported value at this time.}
+
+\item{nextToken}{If the results of a search are large, only a portion of the results are returned, and a \code{nextToken} pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.}
+
+\item{maxResults}{The maximum number of items to return in one batch, between 10 and 100, inclusive.}
+}
+\description{
+Returns a list of entities that have been affected by the specified events, based on the specified filter criteria. Entities can refer to individual customer resources, groups of customer resources, or any other construct, depending on the AWS service. Events that have impact beyond that of the affected entities, or where the extent of impact is unknown, include at least one entity indicating this.
+}
+\details{
+At least one event ARN is required. Results are sorted by the \code{lastUpdatedTime} of the entity, starting with the most recent.
+}
+\section{Accepted Parameters}{
+\preformatted{describe_affected_entities(
   filter = list(
     eventArns = list(
       "string"
@@ -35,21 +54,5 @@ describe_affected_entities(
   maxResults = 123
 )
 }
-\arguments{
-\item{filter}{[required] Values to narrow the results returned. At least one event ARN is required.}
-
-\item{locale}{The locale (language) to return information in. English (en) is the default and the only supported value at this time.}
-
-\item{nextToken}{If the results of a search are large, only a portion of the results are returned, and a \code{nextToken} pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.}
-
-\item{maxResults}{The maximum number of items to return in one batch, between 10 and 100, inclusive.}
 }
-\description{
-Returns a list of entities that have been affected by the specified events, based on the specified filter criteria. Entities can refer to individual customer resources, groups of customer resources, or any other construct, depending on the AWS service. Events that have impact beyond that of the affected entities, or where the extent of impact is unknown, include at least one entity indicating this.
-}
-\details{
-At least one event ARN is required. Results are sorted by the \code{lastUpdatedTime} of the entity, starting with the most recent.
-}
-\examples{
 
-}

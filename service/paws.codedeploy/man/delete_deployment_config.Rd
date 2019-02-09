@@ -4,12 +4,10 @@
 \alias{delete_deployment_config}
 \title{Deletes a deployment configuration}
 \usage{
-delete_deployment_config(
-  deploymentConfigName = "string"
-)
+delete_deployment_config(deploymentConfigName)
 }
 \arguments{
-\item{deploymentConfigName}{[required] The name of a deployment configuration associated with the applicable IAM user or AWS account.}
+\item{deploymentConfigName}{[required] The name of a deployment configuration associated with the IAM user or AWS account.}
 }
 \description{
 Deletes a deployment configuration.
@@ -17,6 +15,10 @@ Deletes a deployment configuration.
 \details{
 A deployment configuration cannot be deleted if it is currently in use. Predefined configurations cannot be deleted.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_deployment_config(
+  deploymentConfigName = "string"
+)
 }
+}
+

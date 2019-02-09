@@ -4,7 +4,23 @@
 \alias{add_facet_to_object}
 \title{Adds a new Facet to an object}
 \usage{
-add_facet_to_object(
+add_facet_to_object(DirectoryArn, SchemaFacet,
+  ObjectAttributeList = NULL, ObjectReference)
+}
+\arguments{
+\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory where the object resides. For more information, see arns.}
+
+\item{SchemaFacet}{[required] Identifiers for the facet that you are adding to the object. See SchemaFacet for details.}
+
+\item{ObjectAttributeList}{Attributes on the facet that you are adding to the object.}
+
+\item{ObjectReference}{[required] A reference to the object you are adding the specified facet to.}
+}
+\description{
+Adds a new Facet to an object. An object can have more than one facet applied on it.
+}
+\section{Accepted Parameters}{
+\preformatted{add_facet_to_object(
   DirectoryArn = "string",
   SchemaFacet = list(
     SchemaArn = "string",
@@ -31,18 +47,5 @@ add_facet_to_object(
   )
 )
 }
-\arguments{
-\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory where the object resides. For more information, see arns.}
-
-\item{SchemaFacet}{[required] Identifiers for the facet that you are adding to the object. See SchemaFacet for details.}
-
-\item{ObjectAttributeList}{Attributes on the facet that you are adding to the object.}
-
-\item{ObjectReference}{[required] A reference to the object you are adding the specified facet to.}
 }
-\description{
-Adds a new Facet to an object. An object can have more than one facet applied on it.
-}
-\examples{
 
-}

@@ -4,14 +4,9 @@
 \alias{update_provisioning_artifact}
 \title{Updates the specified provisioning artifact (also known as a version) for the specified product}
 \usage{
-update_provisioning_artifact(
-  AcceptLanguage = "string",
-  ProductId = "string",
-  ProvisioningArtifactId = "string",
-  Name = "string",
-  Description = "string",
-  Active = TRUE|FALSE
-)
+update_provisioning_artifact(AcceptLanguage = NULL, ProductId,
+  ProvisioningArtifactId, Name = NULL, Description = NULL,
+  Active = NULL)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -37,6 +32,15 @@ Updates the specified provisioning artifact (also known as a version) for the sp
 \details{
 You cannot update a provisioning artifact for a product that was shared with you.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_provisioning_artifact(
+  AcceptLanguage = "string",
+  ProductId = "string",
+  ProvisioningArtifactId = "string",
+  Name = "string",
+  Description = "string",
+  Active = TRUE|FALSE
+)
 }
+}
+

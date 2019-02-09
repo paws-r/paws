@@ -4,7 +4,25 @@
 \alias{get_plan}
 \title{Gets code to perform a specified mapping}
 \usage{
-get_plan(
+get_plan(Mapping, Source, Sinks = NULL, Location = NULL,
+  Language = NULL)
+}
+\arguments{
+\item{Mapping}{[required] The list of mappings from a source table to target tables.}
+
+\item{Source}{[required] The source table.}
+
+\item{Sinks}{The target tables.}
+
+\item{Location}{Parameters for the mapping.}
+
+\item{Language}{The programming language of the code to perform the mapping.}
+}
+\description{
+Gets code to perform a specified mapping.
+}
+\section{Accepted Parameters}{
+\preformatted{get_plan(
   Mapping = list(
     list(
       SourceTable = "string",
@@ -51,20 +69,5 @@ get_plan(
   Language = "PYTHON"|"SCALA"
 )
 }
-\arguments{
-\item{Mapping}{[required] The list of mappings from a source table to target tables.}
-
-\item{Source}{[required] The source table.}
-
-\item{Sinks}{The target tables.}
-
-\item{Location}{Parameters for the mapping.}
-
-\item{Language}{The programming language of the code to perform the mapping.}
 }
-\description{
-Gets code to perform a specified mapping.
-}
-\examples{
 
-}

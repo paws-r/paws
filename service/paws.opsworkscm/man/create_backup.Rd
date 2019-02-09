@@ -4,10 +4,7 @@
 \alias{create_backup}
 \title{Creates an application-level backup of a server}
 \usage{
-create_backup(
-  ServerName = "string",
-  Description = "string"
-)
+create_backup(ServerName, Description = NULL)
 }
 \arguments{
 \item{ServerName}{[required] The name of the server that you want to back up.}
@@ -24,6 +21,11 @@ This operation is asynchronous.
 
 A \code{LimitExceededException} is thrown when the maximum number of manual backups is reached. An \code{InvalidStateException} is thrown when the server is not in any of the following states: RUNNING, HEALTHY, or UNHEALTHY. A \code{ResourceNotFoundException} is thrown when the server is not found. A \code{ValidationException} is thrown when parameters of the request are not valid.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_backup(
+  ServerName = "string",
+  Description = "string"
+)
 }
+}
+

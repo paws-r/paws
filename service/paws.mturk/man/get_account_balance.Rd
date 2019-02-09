@@ -2,13 +2,15 @@
 % Please edit documentation in R/paws.mturk_operations.R
 \name{get_account_balance}
 \alias{get_account_balance}
-\title{The \code{GetAccountBalance} operation retrieves the amount of money in your Amazon Mechanical Turk account}
+\title{The GetAccountBalance operation retrieves the amount of money in your Amazon Mechanical Turk account}
 \usage{
 get_account_balance()
 }
 \description{
 The \code{GetAccountBalance} operation retrieves the amount of money in your Amazon Mechanical Turk account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_account_balance()
 }
+}
+

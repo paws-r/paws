@@ -4,16 +4,7 @@
 \alias{recognize_celebrities}
 \title{Returns an array of celebrities recognized in the input image}
 \usage{
-recognize_celebrities(
-  Image = list(
-    Bytes = raw,
-    S3Object = list(
-      Bucket = "string",
-      Name = "string",
-      Version = "string"
-    )
-  )
-)
+recognize_celebrities(Image)
 }
 \arguments{
 \item{Image}{[required] The input image as base64-encoded bytes or an S3 object. If you use the AWS CLI to call Amazon Rekognition operations, passing base64-encoded image bytes is not supported.}
@@ -26,7 +17,7 @@ Returns an array of celebrities recognized in the input image. For more informat
 
 For each celebrity recognized, \code{RecognizeCelebrities} returns a \code{Celebrity} object. The \code{Celebrity} object contains the celebrity name, ID, URL links to additional information, match confidence, and a \code{ComparedFace} object that you can use to locate the celebrity's face on the image.
 
-Amazon Rekognition doesn't retain information about which images a celebrity has been recognized in. Your application must store this information and use the \code{Celebrity} ID property as a unique identifier for the celebrity. If you don't store the celebrity name or additional information URLs returned by \code{RecognizeCelebrities}, you will need the ID to identify the celebrity in a call to the operation.
+Amazon Rekognition doesn't retain information about which images a celebrity has been recognized in. Your application must store this information and use the \code{Celebrity} ID property as a unique identifier for the celebrity. If you don't store the celebrity name or additional information URLs returned by \code{RecognizeCelebrities}, you will need the ID to identify the celebrity in a call to the GetCelebrityInfo operation.
 
 You pass the input image either as base64-encoded image bytes or as a reference to an image in an Amazon S3 bucket. If you use the AWS CLI to call Amazon Rekognition operations, passing image bytes is not supported. The image must be either a PNG or JPEG formatted file.
 
@@ -34,6 +25,17 @@ For an example, see Recognizing Celebrities in an Image in the Amazon Rekognitio
 
 This operation requires permissions to perform the \code{rekognition:RecognizeCelebrities} operation.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{recognize_celebrities(
+  Image = list(
+    Bytes = raw,
+    S3Object = list(
+      Bucket = "string",
+      Name = "string",
+      Version = "string"
+    )
+  )
+)
 }
+}
+

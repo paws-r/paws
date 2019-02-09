@@ -4,11 +4,7 @@
 \alias{create_configuration_set}
 \title{Creates a configuration set}
 \usage{
-create_configuration_set(
-  ConfigurationSet = list(
-    Name = "string"
-  )
-)
+create_configuration_set(ConfigurationSet)
 }
 \arguments{
 \item{ConfigurationSet}{[required] A data structure that contains the name of the configuration set.}
@@ -21,6 +17,12 @@ Configuration sets enable you to publish email sending events. For information a
 
 You can execute this operation no more than once per second.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_configuration_set(
+  ConfigurationSet = list(
+    Name = "string"
+  )
+)
 }
+}
+

@@ -4,12 +4,7 @@
 \alias{get_identity_policies}
 \title{Returns the requested sending authorization policies for the given identity (an email address or a domain)}
 \usage{
-get_identity_policies(
-  Identity = "string",
-  PolicyNames = list(
-    "string"
-  )
-)
+get_identity_policies(Identity, PolicyNames)
 }
 \arguments{
 \item{Identity}{[required] The identity for which the policies will be retrieved. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: \code{user@example.com}, \code{example.com}, \code{arn:aws:ses:us-east-1:123456789012:identity/example.com}.
@@ -28,14 +23,24 @@ Sending authorization is a feature that enables an identity owner to authorize o
 
 You can execute this operation no more than once per second.
 }
+\section{Accepted Parameters}{
+\preformatted{get_identity_policies(
+  Identity = "string",
+  PolicyNames = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # The following example returns a sending authorization policy for an
 # identity:
-get_identity_policies(
+\donttest{get_identity_policies(
   Identity = "example.com",
   PolicyNames = list(
     "MyPolicy"
   )
-)
+)}
 
 }

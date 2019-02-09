@@ -4,11 +4,7 @@
 \alias{describe_trusted_advisor_check_summaries}
 \title{Returns the summaries of the results of the Trusted Advisor checks that have the specified check IDs}
 \usage{
-describe_trusted_advisor_check_summaries(
-  checkIds = list(
-    "string"
-  )
-)
+describe_trusted_advisor_check_summaries(checkIds)
 }
 \arguments{
 \item{checkIds}{[required] The IDs of the Trusted Advisor checks.}
@@ -19,6 +15,12 @@ Returns the summaries of the results of the Trusted Advisor checks that have the
 \details{
 The response contains an array of TrustedAdvisorCheckSummary objects.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_trusted_advisor_check_summaries(
+  checkIds = list(
+    "string"
+  )
+)
 }
+}
+

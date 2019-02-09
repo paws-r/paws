@@ -4,9 +4,7 @@
 \alias{delete_cache_security_group}
 \title{Deletes a cache security group}
 \usage{
-delete_cache_security_group(
-  CacheSecurityGroupName = "string"
-)
+delete_cache_security_group(CacheSecurityGroupName)
 }
 \arguments{
 \item{CacheSecurityGroupName}{[required] The name of the cache security group to delete.
@@ -19,6 +17,10 @@ Deletes a cache security group.
 \details{
 You cannot delete a cache security group if it is associated with any clusters.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_cache_security_group(
+  CacheSecurityGroupName = "string"
+)
 }
+}
+

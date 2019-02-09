@@ -4,10 +4,7 @@
 \alias{describe_migration_task}
 \title{Retrieves a list of all attributes associated with a specific migration task}
 \usage{
-describe_migration_task(
-  ProgressUpdateStream = "string",
-  MigrationTaskName = "string"
-)
+describe_migration_task(ProgressUpdateStream, MigrationTaskName)
 }
 \arguments{
 \item{ProgressUpdateStream}{[required] The name of the ProgressUpdateStream.}
@@ -17,6 +14,11 @@ describe_migration_task(
 \description{
 Retrieves a list of all attributes associated with a specific migration task.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_migration_task(
+  ProgressUpdateStream = "string",
+  MigrationTaskName = "string"
+)
 }
+}
+

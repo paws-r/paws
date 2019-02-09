@@ -4,11 +4,7 @@
 \alias{describe_export_tasks}
 \title{Describes one or more of your export tasks}
 \usage{
-describe_export_tasks(
-  ExportTaskIds = list(
-    "string"
-  )
-)
+describe_export_tasks(ExportTaskIds = NULL)
 }
 \arguments{
 \item{ExportTaskIds}{One or more export task IDs.}
@@ -16,6 +12,12 @@ describe_export_tasks(
 \description{
 Describes one or more of your export tasks.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_export_tasks(
+  ExportTaskIds = list(
+    "string"
+  )
+)
 }
+}
+

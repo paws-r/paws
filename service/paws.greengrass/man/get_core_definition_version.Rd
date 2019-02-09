@@ -4,10 +4,7 @@
 \alias{get_core_definition_version}
 \title{Retrieves information about a core definition version}
 \usage{
-get_core_definition_version(
-  CoreDefinitionId = "string",
-  CoreDefinitionVersionId = "string"
-)
+get_core_definition_version(CoreDefinitionId, CoreDefinitionVersionId)
 }
 \arguments{
 \item{CoreDefinitionId}{[required] The ID of the core definition.}
@@ -17,6 +14,11 @@ get_core_definition_version(
 \description{
 Retrieves information about a core definition version.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_core_definition_version(
+  CoreDefinitionId = "string",
+  CoreDefinitionVersionId = "string"
+)
 }
+}
+

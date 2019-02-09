@@ -4,11 +4,9 @@
 \alias{disable_transit_gateway_route_table_propagation}
 \title{Disables the specified resource attachment from propagating routes to the specified propagation route table}
 \usage{
-disable_transit_gateway_route_table_propagation(
-  TransitGatewayRouteTableId = "string",
-  TransitGatewayAttachmentId = "string",
-  DryRun = TRUE|FALSE
-)
+
+  disable_transit_gateway_route_table_propagation(TransitGatewayRouteTableId,
+  TransitGatewayAttachmentId, DryRun = NULL)
 }
 \arguments{
 \item{TransitGatewayRouteTableId}{[required] The ID of the propagation route table.}
@@ -20,6 +18,12 @@ disable_transit_gateway_route_table_propagation(
 \description{
 Disables the specified resource attachment from propagating routes to the specified propagation route table.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disable_transit_gateway_route_table_propagation(
+  TransitGatewayRouteTableId = "string",
+  TransitGatewayAttachmentId = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

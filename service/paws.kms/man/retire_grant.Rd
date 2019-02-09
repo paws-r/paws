@@ -4,11 +4,7 @@
 \alias{retire_grant}
 \title{Retires a grant}
 \usage{
-retire_grant(
-  GrantToken = "string",
-  KeyId = "string",
-  GrantId = "string"
-)
+retire_grant(GrantToken = NULL, KeyId = NULL, GrantId = NULL)
 }
 \arguments{
 \item{GrantToken}{Token that identifies the grant to be retired.}
@@ -34,11 +30,20 @@ Retires a grant. To clean up, you can retire a grant when you're done using it. 
 
 You must identify the grant to retire by its grant token or by a combination of the grant ID and the Amazon Resource Name (ARN) of the customer master key (CMK). A grant token is a unique variable-length base64-encoded string. A grant ID is a 64 character unique identifier of a grant. The CreateGrant operation returns both.
 }
+\section{Accepted Parameters}{
+\preformatted{retire_grant(
+  GrantToken = "string",
+  KeyId = "string",
+  GrantId = "string"
+)
+}
+}
+
 \examples{
 # The following example retires a grant.
-retire_grant(
+\donttest{retire_grant(
   GrantId = "0c237476b39f8bc44e45212e08498fbe3151305030726c0590dd8d3e9f3d6a60",
   KeyId = "arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab"
-)
+)}
 
 }

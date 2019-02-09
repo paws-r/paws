@@ -4,16 +4,8 @@
 \alias{register_user}
 \title{Creates an Amazon QuickSight user, whose identity is associated with the AWS Identity and Access Management (IAM) identity or role specified in the request}
 \usage{
-register_user(
-  IdentityType = "IAM"|"QUICKSIGHT",
-  Email = "string",
-  UserRole = "ADMIN"|"AUTHOR"|"READER"|"RESTRICTED_AUTHOR"|"RESTRICTED_READER",
-  IamArn = "string",
-  SessionName = "string",
-  AwsAccountId = "string",
-  Namespace = "string",
-  UserName = "string"
-)
+register_user(IdentityType, Email, UserRole, IamArn = NULL,
+  SessionName = NULL, AwsAccountId, Namespace, UserName = NULL)
 }
 \arguments{
 \item{IdentityType}{[required] Amazon QuickSight supports several ways of managing the identity of users. This parameter accepts two values:
@@ -55,6 +47,17 @@ The condition keys are \code{quicksight:IamArn} and \code{quicksight:SessionName
 
 \code{aws quicksight register-user -\-aws-account-id=111122223333 -\-namespace=default -\-email=pat@example.com -\-identity-type=IAM -\-user-role=AUTHOR -\-iam-arn=arn:aws:iam::111122223333:user/Pat }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{register_user(
+  IdentityType = "IAM"|"QUICKSIGHT",
+  Email = "string",
+  UserRole = "ADMIN"|"AUTHOR"|"READER"|"RESTRICTED_AUTHOR"|"RESTRICTED_READER",
+  IamArn = "string",
+  SessionName = "string",
+  AwsAccountId = "string",
+  Namespace = "string",
+  UserName = "string"
+)
 }
+}
+

@@ -4,13 +4,7 @@
 \alias{stop_workspaces}
 \title{Stops the specified WorkSpaces}
 \usage{
-stop_workspaces(
-  StopWorkspaceRequests = list(
-    list(
-      WorkspaceId = "string"
-    )
-  )
-)
+stop_workspaces(StopWorkspaceRequests)
 }
 \arguments{
 \item{StopWorkspaceRequests}{[required] The WorkSpaces to stop. You can specify up to 25 WorkSpaces.}
@@ -21,6 +15,14 @@ Stops the specified WorkSpaces.
 \details{
 You cannot stop a WorkSpace unless it has a running mode of \code{AutoStop} and a state of \code{AVAILABLE}, \code{IMPAIRED}, \code{UNHEALTHY}, or \code{ERROR}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{stop_workspaces(
+  StopWorkspaceRequests = list(
+    list(
+      WorkspaceId = "string"
+    )
+  )
+)
 }
+}
+

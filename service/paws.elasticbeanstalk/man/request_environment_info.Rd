@@ -4,11 +4,8 @@
 \alias{request_environment_info}
 \title{Initiates a request to compile the specified type of information of the deployed environment}
 \usage{
-request_environment_info(
-  EnvironmentId = "string",
-  EnvironmentName = "string",
-  InfoType = "tail"|"bundle"
-)
+request_environment_info(EnvironmentId = NULL, EnvironmentName = NULL,
+  InfoType)
 }
 \arguments{
 \item{EnvironmentId}{The ID of the environment of the requested data.
@@ -40,11 +37,20 @@ Related Topics
 \item RetrieveEnvironmentInfo
 }
 }
+\section{Accepted Parameters}{
+\preformatted{request_environment_info(
+  EnvironmentId = "string",
+  EnvironmentName = "string",
+  InfoType = "tail"|"bundle"
+)
+}
+}
+
 \examples{
 # The following operation requests logs from an environment named my-env:
-request_environment_info(
+\donttest{request_environment_info(
   EnvironmentName = "my-env",
   InfoType = "tail"
-)
+)}
 
 }

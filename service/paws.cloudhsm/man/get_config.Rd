@@ -2,15 +2,9 @@
 % Please edit documentation in R/paws.cloudhsm_operations.R
 \name{get_config}
 \alias{get_config}
-\title{This is documentation for \strong{AWS CloudHSM Classic}}
+\title{This is documentation for AWS CLOUDHSM CLASSIC}
 \usage{
-get_config(
-  ClientArn = "string",
-  ClientVersion = "5.1"|"5.3",
-  HapgList = list(
-    "string"
-  )
-)
+get_config(ClientArn, ClientVersion, HapgList)
 }
 \arguments{
 \item{ClientArn}{[required] The ARN of the client.}
@@ -27,6 +21,14 @@ This is documentation for \strong{AWS CloudHSM Classic}. For more information, s
 
 Gets the configuration files necessary to connect to all high availability partition groups the client is associated with.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_config(
+  ClientArn = "string",
+  ClientVersion = "5.1"|"5.3",
+  HapgList = list(
+    "string"
+  )
+)
 }
+}
+

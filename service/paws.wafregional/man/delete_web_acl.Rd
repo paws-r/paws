@@ -4,10 +4,7 @@
 \alias{delete_web_acl}
 \title{Permanently deletes a WebACL}
 \usage{
-delete_web_acl(
-  WebACLId = "string",
-  ChangeToken = "string"
-)
+delete_web_acl(WebACLId, ChangeToken)
 }
 \arguments{
 \item{WebACLId}{[required] The \code{WebACLId} of the WebACL that you want to delete. \code{WebACLId} is returned by CreateWebACL and by ListWebACLs.}
@@ -25,12 +22,20 @@ To delete a \code{WebACL}, perform the following steps:
 \item Submit a \code{DeleteWebACL} request.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{delete_web_acl(
+  WebACLId = "string",
+  ChangeToken = "string"
+)
+}
+}
+
 \examples{
 # The following example deletes a web ACL with the ID
 # example-46da-4444-5555-example.
-delete_web_acl(
+\donttest{delete_web_acl(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   WebACLId = "example-46da-4444-5555-example"
-)
+)}
 
 }

@@ -4,12 +4,7 @@
 \alias{batch_delete_connection}
 \title{Deletes a list of connection definitions from the Data Catalog}
 \usage{
-batch_delete_connection(
-  CatalogId = "string",
-  ConnectionNameList = list(
-    "string"
-  )
-)
+batch_delete_connection(CatalogId = NULL, ConnectionNameList)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog in which the connections reside. If none is supplied, the AWS account ID is used by default.}
@@ -19,6 +14,13 @@ batch_delete_connection(
 \description{
 Deletes a list of connection definitions from the Data Catalog.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{batch_delete_connection(
+  CatalogId = "string",
+  ConnectionNameList = list(
+    "string"
+  )
+)
 }
+}
+

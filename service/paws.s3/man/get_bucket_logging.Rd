@@ -4,9 +4,7 @@
 \alias{get_bucket_logging}
 \title{Returns the logging status of a bucket and the permissions users have to view and modify that status}
 \usage{
-get_bucket_logging(
-  Bucket = "string"
-)
+get_bucket_logging(Bucket)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -14,6 +12,10 @@ get_bucket_logging(
 \description{
 Returns the logging status of a bucket and the permissions users have to view and modify that status. To use GET, you must be the bucket owner.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_bucket_logging(
+  Bucket = "string"
+)
 }
+}
+

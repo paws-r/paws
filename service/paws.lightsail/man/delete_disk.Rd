@@ -4,9 +4,7 @@
 \alias{delete_disk}
 \title{Deletes the specified block storage disk}
 \usage{
-delete_disk(
-  diskName = "string"
-)
+delete_disk(diskName)
 }
 \arguments{
 \item{diskName}{[required] The unique name of the disk you want to delete (e.g., \code{my-disk}).}
@@ -19,6 +17,10 @@ The disk may remain in the \code{deleting} state for several minutes.
 
 The \code{delete disk} operation supports tag-based access control via resource tags applied to the resource identified by diskName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_disk(
+  diskName = "string"
+)
 }
+}
+

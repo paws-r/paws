@@ -4,19 +4,8 @@
 \alias{describe_global_clusters}
 \title{Returns information about Aurora global database clusters}
 \usage{
-describe_global_clusters(
-  GlobalClusterIdentifier = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_global_clusters(GlobalClusterIdentifier = NULL,
+  Filters = NULL, MaxRecords = NULL, Marker = NULL)
 }
 \arguments{
 \item{GlobalClusterIdentifier}{The user-supplied DB cluster identifier. If this parameter is specified, information from only the specific DB cluster is returned. This parameter isn't case-sensitive.
@@ -47,6 +36,20 @@ Returns information about Aurora global database clusters. This API supports pag
 \details{
 For more information on Amazon Aurora, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?} in the \emph{Amazon Aurora User Guide.}
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_global_clusters(
+  GlobalClusterIdentifier = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
+}
+

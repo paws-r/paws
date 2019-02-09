@@ -4,10 +4,8 @@
 \alias{delete_service_specific_credential}
 \title{Deletes the specified service-specific credential}
 \usage{
-delete_service_specific_credential(
-  UserName = "string",
-  ServiceSpecificCredentialId = "string"
-)
+delete_service_specific_credential(UserName = NULL,
+  ServiceSpecificCredentialId)
 }
 \arguments{
 \item{UserName}{The name of the IAM user associated with the service-specific credential. If this value is not specified, then the operation assumes the user whose credentials are used to call the operation.
@@ -21,6 +19,11 @@ This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex 
 \description{
 Deletes the specified service-specific credential.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_service_specific_credential(
+  UserName = "string",
+  ServiceSpecificCredentialId = "string"
+)
 }
+}
+

@@ -4,11 +4,8 @@
 \alias{list_published_schema_arns}
 \title{Lists the major version families of each published schema}
 \usage{
-list_published_schema_arns(
-  SchemaArn = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_published_schema_arns(SchemaArn = NULL, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{SchemaArn}{The response for \code{ListPublishedSchemaArns} when this parameter is used will list all minor version ARNs for a major version.}
@@ -20,6 +17,12 @@ list_published_schema_arns(
 \description{
 Lists the major version families of each published schema. If a major version ARN is provided as \code{SchemaArn}, the minor version revisions in that family are listed instead.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_published_schema_arns(
+  SchemaArn = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

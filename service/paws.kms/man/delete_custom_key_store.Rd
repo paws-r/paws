@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.kms_operations.R
 \name{delete_custom_key_store}
 \alias{delete_custom_key_store}
-\title{Deletes a \link{custom key store}(http://docs}
+\title{Deletes a custom key store}
 \usage{
-delete_custom_key_store(
-  CustomKeyStoreId = "string"
-)
+delete_custom_key_store(CustomKeyStoreId)
 }
 \arguments{
 \item{CustomKeyStoreId}{[required] Enter the ID of the custom key store you want to delete. To find the ID of a custom key store, use the DescribeCustomKeyStores operation.}
@@ -25,6 +23,10 @@ If the operation succeeds, it returns a JSON object with no properties.
 
 This operation is part of the \href{http://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{Custom Key Store feature} feature in AWS KMS, which combines the convenience and extensive integration of AWS KMS with the isolation and control of a single-tenant key store.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_custom_key_store(
+  CustomKeyStoreId = "string"
+)
 }
+}
+

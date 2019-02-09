@@ -4,11 +4,8 @@
 \alias{delete_provisioned_product_plan}
 \title{Deletes the specified plan}
 \usage{
-delete_provisioned_product_plan(
-  AcceptLanguage = "string",
-  PlanId = "string",
-  IgnoreErrors = TRUE|FALSE
-)
+delete_provisioned_product_plan(AcceptLanguage = NULL, PlanId,
+  IgnoreErrors = NULL)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -25,6 +22,12 @@ delete_provisioned_product_plan(
 \description{
 Deletes the specified plan.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_provisioned_product_plan(
+  AcceptLanguage = "string",
+  PlanId = "string",
+  IgnoreErrors = TRUE|FALSE
+)
 }
+}
+

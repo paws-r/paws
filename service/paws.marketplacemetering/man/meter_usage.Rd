@@ -4,13 +4,7 @@
 \alias{meter_usage}
 \title{API to emit metering records}
 \usage{
-meter_usage(
-  ProductCode = "string",
-  Timestamp = as.POSIXct("2015-01-01"),
-  UsageDimension = "string",
-  UsageQuantity = 123,
-  DryRun = TRUE|FALSE
-)
+meter_usage(ProductCode, Timestamp, UsageDimension, UsageQuantity, DryRun)
 }
 \arguments{
 \item{ProductCode}{[required] Product code is used to uniquely identify a product in AWS Marketplace. The product code should be the same as the one used during the publishing of a new product.}
@@ -29,6 +23,14 @@ API to emit metering records. For identical requests, the API is idempotent. It 
 \details{
 MeterUsage is authenticated on the buyer's AWS account, generally when running from an EC2 instance on the AWS Marketplace.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{meter_usage(
+  ProductCode = "string",
+  Timestamp = as.POSIXct("2015-01-01"),
+  UsageDimension = "string",
+  UsageQuantity = 123,
+  DryRun = TRUE|FALSE
+)
 }
+}
+

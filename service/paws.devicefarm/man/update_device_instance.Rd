@@ -4,13 +4,7 @@
 \alias{update_device_instance}
 \title{Updates information about an existing private device instance}
 \usage{
-update_device_instance(
-  arn = "string",
-  profileArn = "string",
-  labels = list(
-    "string"
-  )
-)
+update_device_instance(arn, profileArn = NULL, labels = NULL)
 }
 \arguments{
 \item{arn}{[required] The Amazon Resource Name (ARN) of the device instance.}
@@ -22,6 +16,14 @@ update_device_instance(
 \description{
 Updates information about an existing private device instance.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_device_instance(
+  arn = "string",
+  profileArn = "string",
+  labels = list(
+    "string"
+  )
+)
 }
+}
+

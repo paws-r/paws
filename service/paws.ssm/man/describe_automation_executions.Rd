@@ -4,7 +4,21 @@
 \alias{describe_automation_executions}
 \title{Provides details about all active and terminated Automation executions}
 \usage{
-describe_automation_executions(
+describe_automation_executions(Filters = NULL, MaxResults = NULL,
+  NextToken = NULL)
+}
+\arguments{
+\item{Filters}{Filters used to limit the scope of executions that are requested.}
+
+\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
+
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
+}
+\description{
+Provides details about all active and terminated Automation executions.
+}
+\section{Accepted Parameters}{
+\preformatted{describe_automation_executions(
   Filters = list(
     list(
       Key = "DocumentNamePrefix"|"ExecutionStatus"|"ExecutionId"|"ParentExecutionId"|"CurrentAction"|"StartTimeBefore"|"StartTimeAfter"|"AutomationType",
@@ -17,16 +31,5 @@ describe_automation_executions(
   NextToken = "string"
 )
 }
-\arguments{
-\item{Filters}{Filters used to limit the scope of executions that are requested.}
-
-\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
-
-\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 }
-\description{
-Provides details about all active and terminated Automation executions.
-}
-\examples{
 
-}

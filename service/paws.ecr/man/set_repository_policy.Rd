@@ -4,12 +4,8 @@
 \alias{set_repository_policy}
 \title{Applies a repository policy on a specified repository to control access permissions}
 \usage{
-set_repository_policy(
-  registryId = "string",
-  repositoryName = "string",
-  policyText = "string",
-  force = TRUE|FALSE
-)
+set_repository_policy(registryId = NULL, repositoryName, policyText,
+  force = NULL)
 }
 \arguments{
 \item{registryId}{The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.}
@@ -23,6 +19,13 @@ set_repository_policy(
 \description{
 Applies a repository policy on a specified repository to control access permissions.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{set_repository_policy(
+  registryId = "string",
+  repositoryName = "string",
+  policyText = "string",
+  force = TRUE|FALSE
+)
 }
+}
+

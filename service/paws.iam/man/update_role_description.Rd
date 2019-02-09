@@ -4,10 +4,7 @@
 \alias{update_role_description}
 \title{Use UpdateRole instead}
 \usage{
-update_role_description(
-  RoleName = "string",
-  Description = "string"
-)
+update_role_description(RoleName, Description)
 }
 \arguments{
 \item{RoleName}{[required] The name of the role that you want to modify.}
@@ -20,6 +17,11 @@ Use UpdateRole instead.
 \details{
 Modifies only the description of a role. This operation performs the same function as the \code{Description} parameter in the \code{UpdateRole} operation.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_role_description(
+  RoleName = "string",
+  Description = "string"
+)
 }
+}
+

@@ -4,22 +4,8 @@
 \alias{create_vpn_connection}
 \title{Creates a VPN connection between an existing virtual private gateway and a VPN customer gateway}
 \usage{
-create_vpn_connection(
-  CustomerGatewayId = "string",
-  Type = "string",
-  VpnGatewayId = "string",
-  TransitGatewayId = "string",
-  DryRun = TRUE|FALSE,
-  Options = list(
-    StaticRoutesOnly = TRUE|FALSE,
-    TunnelOptions = list(
-      list(
-        TunnelInsideCidr = "string",
-        PreSharedKey = "string"
-      )
-    )
-  )
-)
+create_vpn_connection(CustomerGatewayId, Type, VpnGatewayId = NULL,
+  TransitGatewayId = NULL, DryRun = NULL, Options = NULL)
 }
 \arguments{
 \item{CustomerGatewayId}{[required] The ID of the customer gateway.}
@@ -46,8 +32,25 @@ If you decide to shut down your VPN connection for any reason and later create a
 
 This is an idempotent operation. If you perform the operation more than once, Amazon EC2 doesn't return an error.
 
-For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html}{AWS Managed VPN Connections} in the \emph{Amazon Virtual Private Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html}{AWS Site-to-Site VPN} in the \emph{AWS Site-to-Site VPN User Guide}.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{create_vpn_connection(
+  CustomerGatewayId = "string",
+  Type = "string",
+  VpnGatewayId = "string",
+  TransitGatewayId = "string",
+  DryRun = TRUE|FALSE,
+  Options = list(
+    StaticRoutesOnly = TRUE|FALSE,
+    TunnelOptions = list(
+      list(
+        TunnelInsideCidr = "string",
+        PreSharedKey = "string"
+      )
+    )
+  )
+)
+}
+}
 
-}

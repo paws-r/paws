@@ -4,10 +4,7 @@
 \alias{create_reusable_delegation_set}
 \title{Creates a delegation set (a group of four name servers) that can be reused by multiple hosted zones}
 \usage{
-create_reusable_delegation_set(
-  CallerReference = "string",
-  HostedZoneId = "string"
-)
+create_reusable_delegation_set(CallerReference, HostedZoneId = NULL)
 }
 \arguments{
 \item{CallerReference}{[required] A unique string that identifies the request, and that allows you to retry failed \code{CreateReusableDelegationSet} requests without the risk of executing the operation twice. You must use a unique \code{CallerReference} string every time you submit a \code{CreateReusableDelegationSet} request. \code{CallerReference} can be any unique string, for example a date/time stamp.}
@@ -39,6 +36,11 @@ If you want to migrate existing hosted zones to use a reusable delegation set, t
 \item For larger numbers of hosted zones, you can also migrate hosted zones that have overlapping name servers to hosted zones that don't have overlapping name servers, then migrate the hosted zones again to use the reusable delegation set.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_reusable_delegation_set(
+  CallerReference = "string",
+  HostedZoneId = "string"
+)
 }
+}
+

@@ -14,9 +14,14 @@ For information about setting up receipt rule sets, see the \href{http://docs.aw
 
 You can execute this operation no more than once per second.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_active_receipt_rule_set()
+}
+}
+
 \examples{
 # The following example returns the metadata and receipt rules for the
 # receipt rule set that is currently active:
-describe_active_receipt_rule_set()
+\donttest{describe_active_receipt_rule_set()}
 
 }

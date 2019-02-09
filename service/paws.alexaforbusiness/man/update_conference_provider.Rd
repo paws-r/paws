@@ -4,7 +4,25 @@
 \alias{update_conference_provider}
 \title{Updates an existing conference provider's settings}
 \usage{
-update_conference_provider(
+update_conference_provider(ConferenceProviderArn, ConferenceProviderType,
+  IPDialIn = NULL, PSTNDialIn = NULL, MeetingSetting)
+}
+\arguments{
+\item{ConferenceProviderArn}{[required] The ARN of the conference provider.}
+
+\item{ConferenceProviderType}{[required] The type of the conference provider.}
+
+\item{IPDialIn}{The IP endpoint and protocol for calling.}
+
+\item{PSTNDialIn}{The information for PSTN conferencing.}
+
+\item{MeetingSetting}{[required] The meeting settings for the conference provider.}
+}
+\description{
+Updates an existing conference provider's settings.
+}
+\section{Accepted Parameters}{
+\preformatted{update_conference_provider(
   ConferenceProviderArn = "string",
   ConferenceProviderType = "CHIME"|"BLUEJEANS"|"FUZE"|"GOOGLE_HANGOUTS"|"POLYCOM"|"RINGCENTRAL"|"SKYPE_FOR_BUSINESS"|"WEBEX"|"ZOOM"|"CUSTOM",
   IPDialIn = list(
@@ -22,20 +40,5 @@ update_conference_provider(
   )
 )
 }
-\arguments{
-\item{ConferenceProviderArn}{[required] The ARN of the conference provider.}
-
-\item{ConferenceProviderType}{[required] The type of the conference provider.}
-
-\item{IPDialIn}{The IP endpoint and protocol for calling.}
-
-\item{PSTNDialIn}{The information for PSTN conferencing.}
-
-\item{MeetingSetting}{[required] The meeting settings for the conference provider.}
 }
-\description{
-Updates an existing conference provider's settings.
-}
-\examples{
 
-}

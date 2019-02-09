@@ -4,12 +4,8 @@
 \alias{create_policy}
 \title{Creates a new managed policy for your AWS account}
 \usage{
-create_policy(
-  PolicyName = "string",
-  Path = "string",
-  PolicyDocument = "string",
-  Description = "string"
-)
+create_policy(PolicyName, Path = NULL, PolicyDocument,
+  Description = NULL)
 }
 \arguments{
 \item{PolicyName}{[required] The friendly name of the policy.
@@ -47,6 +43,13 @@ This operation creates a policy version with a version identifier of \code{v1} a
 
 For more information about managed policies in general, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies} in the \emph{IAM User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_policy(
+  PolicyName = "string",
+  Path = "string",
+  PolicyDocument = "string",
+  Description = "string"
+)
 }
+}
+

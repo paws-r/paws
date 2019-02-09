@@ -4,9 +4,7 @@
 \alias{get_domain}
 \title{Returns information about a specific domain recordset}
 \usage{
-get_domain(
-  domainName = "string"
-)
+get_domain(domainName)
 }
 \arguments{
 \item{domainName}{[required] The domain name for which your want to return information about.}
@@ -14,6 +12,10 @@ get_domain(
 \description{
 Returns information about a specific domain recordset.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_domain(
+  domainName = "string"
+)
 }
+}
+

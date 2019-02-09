@@ -4,10 +4,7 @@
 \alias{delete_route_table}
 \title{Deletes the specified route table}
 \usage{
-delete_route_table(
-  DryRun = TRUE|FALSE,
-  RouteTableId = "string"
-)
+delete_route_table(DryRun = NULL, RouteTableId)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -17,10 +14,18 @@ delete_route_table(
 \description{
 Deletes the specified route table. You must disassociate the route table from any subnets before you can delete it. You can't delete the main route table.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_route_table(
+  DryRun = TRUE|FALSE,
+  RouteTableId = "string"
+)
+}
+}
+
 \examples{
 # This example deletes the specified route table.
-delete_route_table(
+\donttest{delete_route_table(
   RouteTableId = "rtb-22574640"
-)
+)}
 
 }

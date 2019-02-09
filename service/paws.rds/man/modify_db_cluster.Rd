@@ -4,40 +4,15 @@
 \alias{modify_db_cluster}
 \title{Modify a setting for an Amazon Aurora DB cluster}
 \usage{
-modify_db_cluster(
-  DBClusterIdentifier = "string",
-  NewDBClusterIdentifier = "string",
-  ApplyImmediately = TRUE|FALSE,
-  BackupRetentionPeriod = 123,
-  DBClusterParameterGroupName = "string",
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  Port = 123,
-  MasterUserPassword = "string",
-  OptionGroupName = "string",
-  PreferredBackupWindow = "string",
-  PreferredMaintenanceWindow = "string",
-  EnableIAMDatabaseAuthentication = TRUE|FALSE,
-  BacktrackWindow = 123,
-  CloudwatchLogsExportConfiguration = list(
-    EnableLogTypes = list(
-      "string"
-    ),
-    DisableLogTypes = list(
-      "string"
-    )
-  ),
-  EngineVersion = "string",
-  ScalingConfiguration = list(
-    MinCapacity = 123,
-    MaxCapacity = 123,
-    AutoPause = TRUE|FALSE,
-    SecondsUntilAutoPause = 123
-  ),
-  DeletionProtection = TRUE|FALSE,
-  EnableHttpEndpoint = TRUE|FALSE
-)
+modify_db_cluster(DBClusterIdentifier, NewDBClusterIdentifier = NULL,
+  ApplyImmediately = NULL, BackupRetentionPeriod = NULL,
+  DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL,
+  Port = NULL, MasterUserPassword = NULL, OptionGroupName = NULL,
+  PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL,
+  EnableIAMDatabaseAuthentication = NULL, BacktrackWindow = NULL,
+  CloudwatchLogsExportConfiguration = NULL, EngineVersion = NULL,
+  ScalingConfiguration = NULL, DeletionProtection = NULL,
+  EnableHttpEndpoint = NULL)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The DB cluster identifier for the cluster being modified. This parameter is not case-sensitive.
@@ -147,6 +122,41 @@ For more information about Aurora Serverless, see \href{http://docs.aws.amazon.c
 \description{
 Modify a setting for an Amazon Aurora DB cluster. You can change one or more database configuration parameters by specifying these parameters and the new values in the request. For more information on Amazon Aurora, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?} in the \emph{Amazon Aurora User Guide.}
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_db_cluster(
+  DBClusterIdentifier = "string",
+  NewDBClusterIdentifier = "string",
+  ApplyImmediately = TRUE|FALSE,
+  BackupRetentionPeriod = 123,
+  DBClusterParameterGroupName = "string",
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
+  Port = 123,
+  MasterUserPassword = "string",
+  OptionGroupName = "string",
+  PreferredBackupWindow = "string",
+  PreferredMaintenanceWindow = "string",
+  EnableIAMDatabaseAuthentication = TRUE|FALSE,
+  BacktrackWindow = 123,
+  CloudwatchLogsExportConfiguration = list(
+    EnableLogTypes = list(
+      "string"
+    ),
+    DisableLogTypes = list(
+      "string"
+    )
+  ),
+  EngineVersion = "string",
+  ScalingConfiguration = list(
+    MinCapacity = 123,
+    MaxCapacity = 123,
+    AutoPause = TRUE|FALSE,
+    SecondsUntilAutoPause = 123
+  ),
+  DeletionProtection = TRUE|FALSE,
+  EnableHttpEndpoint = TRUE|FALSE
+)
 }
+}
+

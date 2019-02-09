@@ -2,13 +2,9 @@
 % Please edit documentation in R/paws.lambda_operations.R
 \name{list_layers}
 \alias{list_layers}
-\title{Lists function layers and shows information about the latest version of each}
+\title{Lists AWS Lambda layers and shows information about the latest version of each}
 \usage{
-list_layers(
-  CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"java8"|"python2.7"|"python3.6"|"python3.7"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided",
-  Marker = "string",
-  MaxItems = 123
-)
+list_layers(CompatibleRuntime = NULL, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{CompatibleRuntime}{A runtime identifier. For example, \code{go1.x}.}
@@ -18,8 +14,14 @@ list_layers(
 \item{MaxItems}{The maximum number of layers to return.}
 }
 \description{
-Lists function layers and shows information about the latest version of each. Specify a \href{http://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html}{runtime identifier} to list only layers that indicate that they're compatible with that runtime.
+Lists \href{http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layers} and shows information about the latest version of each. Specify a \href{http://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html}{runtime identifier} to list only layers that indicate that they're compatible with that runtime.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{list_layers(
+  CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"java8"|"python2.7"|"python3.6"|"python3.7"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided",
+  Marker = "string",
+  MaxItems = 123
+)
+}
+}
 
-}

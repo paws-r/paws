@@ -4,11 +4,7 @@
 \alias{start_stream_encryption}
 \title{Enables or updates server-side encryption using an AWS KMS key for a specified stream}
 \usage{
-start_stream_encryption(
-  StreamName = "string",
-  EncryptionType = "NONE"|"KMS",
-  KeyId = "string"
-)
+start_stream_encryption(StreamName, EncryptionType, KeyId)
 }
 \arguments{
 \item{StreamName}{[required] The name of the stream for which to start encrypting records.}
@@ -34,6 +30,12 @@ API Limits: You can successfully apply a new AWS KMS key for server-side encrypt
 
 Note: It can take up to 5 seconds after the stream is in an \code{ACTIVE} status before all records written to the stream are encrypted. After you enable encryption, you can verify that encryption is applied by inspecting the API response from \code{PutRecord} or \code{PutRecords}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_stream_encryption(
+  StreamName = "string",
+  EncryptionType = "NONE"|"KMS",
+  KeyId = "string"
+)
 }
+}
+

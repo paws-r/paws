@@ -4,9 +4,7 @@
 \alias{retrieve_domain_auth_code}
 \title{This operation returns the AuthCode for the domain}
 \usage{
-retrieve_domain_auth_code(
-  DomainName = "string"
-)
+retrieve_domain_auth_code(DomainName)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain that you want to get an authorization code for.}
@@ -14,6 +12,10 @@ retrieve_domain_auth_code(
 \description{
 This operation returns the AuthCode for the domain. To transfer a domain to another registrar, you provide this value to the new registrar.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{retrieve_domain_auth_code(
+  DomainName = "string"
+)
 }
+}
+

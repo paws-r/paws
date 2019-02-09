@@ -2,14 +2,10 @@
 % Please edit documentation in R/paws.kms_operations.R
 \name{describe_custom_key_stores}
 \alias{describe_custom_key_stores}
-\title{Gets information about \link{custom key stores}(http://docs}
+\title{Gets information about custom key stores in the account and region}
 \usage{
-describe_custom_key_stores(
-  CustomKeyStoreId = "string",
-  CustomKeyStoreName = "string",
-  Limit = 123,
-  Marker = "string"
-)
+describe_custom_key_stores(CustomKeyStoreId = NULL,
+  CustomKeyStoreName = NULL, Limit = NULL, Marker = NULL)
 }
 \arguments{
 \item{CustomKeyStoreId}{Gets only information about the specified custom key store. Enter the key store ID.
@@ -38,6 +34,13 @@ Custom key stores have a \code{DISCONNECTED} connection state if the key store h
 
 For help repairing your custom key store, see the \href{http://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore-html}{Troubleshooting Custom Key Stores} topic in the \emph{AWS Key Management Service Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_custom_key_stores(
+  CustomKeyStoreId = "string",
+  CustomKeyStoreName = "string",
+  Limit = 123,
+  Marker = "string"
+)
 }
+}
+

@@ -4,7 +4,28 @@
 \alias{update_job}
 \title{Updates supported fields of the specified job}
 \usage{
-update_job(
+update_job(jobId, description = NULL, presignedUrlConfig = NULL,
+  jobExecutionsRolloutConfig = NULL, abortConfig = NULL,
+  timeoutConfig = NULL)
+}
+\arguments{
+\item{jobId}{[required] The ID of the job to be updated.}
+
+\item{description}{A short text description of the job.}
+
+\item{presignedUrlConfig}{Configuration information for pre-signed S3 URLs.}
+
+\item{jobExecutionsRolloutConfig}{Allows you to create a staged rollout of the job.}
+
+\item{abortConfig}{Allows you to create criteria to abort a job.}
+
+\item{timeoutConfig}{Specifies the amount of time each device has to finish its execution of the job. The timer is started when the job execution status is set to \code{IN_PROGRESS}. If the job execution status is not set to another terminal state before the time expires, it will be automatically set to \code{TIMED_OUT}.}
+}
+\description{
+Updates supported fields of the specified job.
+}
+\section{Accepted Parameters}{
+\preformatted{update_job(
   jobId = "string",
   description = "string",
   presignedUrlConfig = list(
@@ -37,22 +58,5 @@ update_job(
   )
 )
 }
-\arguments{
-\item{jobId}{[required] The ID of the job to be updated.}
-
-\item{description}{A short text description of the job.}
-
-\item{presignedUrlConfig}{Configuration information for pre-signed S3 URLs.}
-
-\item{jobExecutionsRolloutConfig}{Allows you to create a staged rollout of the job.}
-
-\item{abortConfig}{Allows you to create criteria to abort a job.}
-
-\item{timeoutConfig}{Specifies the amount of time each device has to finish its execution of the job. The timer is started when the job execution status is set to \code{IN_PROGRESS}. If the job execution status is not set to another terminal state before the time expires, it will be automatically set to \code{TIMED_OUT}.}
 }
-\description{
-Updates supported fields of the specified job.
-}
-\examples{
 
-}

@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.lexmodelbuildingservice_operations.R
 \name{create_slot_type_version}
 \alias{create_slot_type_version}
-\title{Creates a new version of a slot type based on the \code{$LATEST} version of the specified slot type}
+\title{Creates a new version of a slot type based on the $LATEST version of the specified slot type}
 \usage{
-create_slot_type_version(
-  name = "string",
-  checksum = "string"
-)
+create_slot_type_version(name, checksum = NULL)
 }
 \arguments{
 \item{name}{[required] The name of the slot type that you want to create a new version for. The name is case sensitive.}
@@ -24,6 +21,11 @@ When you create a version of a slot type, Amazon Lex sets the version to 1. Subs
 
 This operation requires permissions for the \code{lex:CreateSlotTypeVersion} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_slot_type_version(
+  name = "string",
+  checksum = "string"
+)
 }
+}
+

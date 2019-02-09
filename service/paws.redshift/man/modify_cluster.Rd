@@ -4,34 +4,18 @@
 \alias{modify_cluster}
 \title{Modifies the settings for a cluster}
 \usage{
-modify_cluster(
-  ClusterIdentifier = "string",
-  ClusterType = "string",
-  NodeType = "string",
-  NumberOfNodes = 123,
-  ClusterSecurityGroups = list(
-    "string"
-  ),
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  MasterUserPassword = "string",
-  ClusterParameterGroupName = "string",
-  AutomatedSnapshotRetentionPeriod = 123,
-  ManualSnapshotRetentionPeriod = 123,
-  PreferredMaintenanceWindow = "string",
-  ClusterVersion = "string",
-  AllowVersionUpgrade = TRUE|FALSE,
-  HsmClientCertificateIdentifier = "string",
-  HsmConfigurationIdentifier = "string",
-  NewClusterIdentifier = "string",
-  PubliclyAccessible = TRUE|FALSE,
-  ElasticIp = "string",
-  EnhancedVpcRouting = TRUE|FALSE,
-  MaintenanceTrackName = "string",
-  Encrypted = TRUE|FALSE,
-  KmsKeyId = "string"
-)
+modify_cluster(ClusterIdentifier, ClusterType = NULL, NodeType = NULL,
+  NumberOfNodes = NULL, ClusterSecurityGroups = NULL,
+  VpcSecurityGroupIds = NULL, MasterUserPassword = NULL,
+  ClusterParameterGroupName = NULL,
+  AutomatedSnapshotRetentionPeriod = NULL,
+  ManualSnapshotRetentionPeriod = NULL,
+  PreferredMaintenanceWindow = NULL, ClusterVersion = NULL,
+  AllowVersionUpgrade = NULL, HsmClientCertificateIdentifier = NULL,
+  HsmConfigurationIdentifier = NULL, NewClusterIdentifier = NULL,
+  PubliclyAccessible = NULL, ElasticIp = NULL,
+  EnhancedVpcRouting = NULL, MaintenanceTrackName = NULL,
+  Encrypted = NULL, KmsKeyId = NULL)
 }
 \arguments{
 \item{ClusterIdentifier}{[required] The unique identifier of the cluster to be modified.
@@ -167,6 +151,35 @@ Modifies the settings for a cluster. For example, you can add another security o
 \details{
 You can also change node type and the number of nodes to scale up or down the cluster. When resizing a cluster, you must specify both the number of nodes and the node type even if one of the parameters does not change.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_cluster(
+  ClusterIdentifier = "string",
+  ClusterType = "string",
+  NodeType = "string",
+  NumberOfNodes = 123,
+  ClusterSecurityGroups = list(
+    "string"
+  ),
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
+  MasterUserPassword = "string",
+  ClusterParameterGroupName = "string",
+  AutomatedSnapshotRetentionPeriod = 123,
+  ManualSnapshotRetentionPeriod = 123,
+  PreferredMaintenanceWindow = "string",
+  ClusterVersion = "string",
+  AllowVersionUpgrade = TRUE|FALSE,
+  HsmClientCertificateIdentifier = "string",
+  HsmConfigurationIdentifier = "string",
+  NewClusterIdentifier = "string",
+  PubliclyAccessible = TRUE|FALSE,
+  ElasticIp = "string",
+  EnhancedVpcRouting = TRUE|FALSE,
+  MaintenanceTrackName = "string",
+  Encrypted = TRUE|FALSE,
+  KmsKeyId = "string"
+)
 }
+}
+

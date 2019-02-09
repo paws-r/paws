@@ -4,11 +4,7 @@
 \alias{modify_identity_id_format}
 \title{Modifies the ID format of a resource for a specified IAM user, IAM role, or the root user for an account; or all IAM users, IAM roles, and the root user for an account}
 \usage{
-modify_identity_id_format(
-  PrincipalArn = "string",
-  Resource = "string",
-  UseLongIds = TRUE|FALSE
-)
+modify_identity_id_format(PrincipalArn, Resource, UseLongIds)
 }
 \arguments{
 \item{PrincipalArn}{[required] The ARN of the principal, which can be an IAM user, IAM role, or the root user. Specify \code{all} to modify the ID format for all IAM users, IAM roles, and the root user of the account.}
@@ -25,12 +21,18 @@ Modifies the ID format of a resource for a specified IAM user, IAM role, or the 
 \details{
 This request can only be used to modify longer ID settings for resource types that are within the opt-in period. Resources currently in their opt-in period include: \code{bundle} | \code{conversion-task} | \code{customer-gateway} | \code{dhcp-options} | \code{elastic-ip-allocation} | \code{elastic-ip-association} | \code{export-task} | \code{flow-log} | \code{image} | \code{import-task} | \code{internet-gateway} | \code{network-acl} | \code{network-acl-association} | \code{network-interface} | \code{network-interface-attachment} | \code{prefix-list} | \code{route-table} | \code{route-table-association} | \code{security-group} | \code{subnet} | \code{subnet-cidr-block-association} | \code{vpc} | \code{vpc-cidr-block-association} | \code{vpc-endpoint} | \code{vpc-peering-connection} | \code{vpn-connection} | \code{vpn-gateway}.
 
-For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html}{Resource IDs} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html}{Resource IDs} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 This setting applies to the principal specified in the request; it does not apply to the principal that makes the request.
 
 Resources created with longer IDs are visible to all IAM roles and users, regardless of these settings and provided that they have permission to use the relevant \code{Describe} command for the resource type.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_identity_id_format(
+  PrincipalArn = "string",
+  Resource = "string",
+  UseLongIds = TRUE|FALSE
+)
 }
+}
+

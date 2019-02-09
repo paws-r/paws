@@ -4,11 +4,7 @@
 \alias{get_console_output}
 \title{Gets the console output for the specified instance}
 \usage{
-get_console_output(
-  InstanceId = "string",
-  DryRun = TRUE|FALSE,
-  Latest = TRUE|FALSE
-)
+get_console_output(InstanceId, DryRun = NULL, Latest = NULL)
 }
 \arguments{
 \item{InstanceId}{[required] The ID of the instance.}
@@ -27,12 +23,21 @@ By default, the console output returns buffered information that was posted shor
 
 You can optionally retrieve the latest serial console output at any time during the instance lifecycle. This option is supported on instance types that use the Nitro hypervisor.
 
-For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-console.html#instance-console-console-output}{Instance Console Output} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-console.html#instance-console-console-output}{Instance Console Output} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{get_console_output(
+  InstanceId = "string",
+  DryRun = TRUE|FALSE,
+  Latest = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example gets the console output for the specified instance.
-get_console_output(
+\donttest{get_console_output(
   InstanceId = "i-1234567890abcdef0"
-)
+)}
 
 }

@@ -4,9 +4,7 @@
 \alias{get_applied_schema_version}
 \title{Returns current applied schema version ARN, including the minor version in use}
 \usage{
-get_applied_schema_version(
-  SchemaArn = "string"
-)
+get_applied_schema_version(SchemaArn)
 }
 \arguments{
 \item{SchemaArn}{[required] The ARN of the applied schema.}
@@ -14,6 +12,10 @@ get_applied_schema_version(
 \description{
 Returns current applied schema version ARN, including the minor version in use.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_applied_schema_version(
+  SchemaArn = "string"
+)
 }
+}
+

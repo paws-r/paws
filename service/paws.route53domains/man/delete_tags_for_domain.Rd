@@ -4,12 +4,7 @@
 \alias{delete_tags_for_domain}
 \title{This operation deletes the specified tags for a domain}
 \usage{
-delete_tags_for_domain(
-  DomainName = "string",
-  TagsToDelete = list(
-    "string"
-  )
-)
+delete_tags_for_domain(DomainName, TagsToDelete)
 }
 \arguments{
 \item{DomainName}{[required] The domain for which you want to delete one or more tags.}
@@ -22,6 +17,13 @@ This operation deletes the specified tags for a domain.
 \details{
 All tag operations are eventually consistent; subsequent operations might not immediately represent all issued operations.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_tags_for_domain(
+  DomainName = "string",
+  TagsToDelete = list(
+    "string"
+  )
+)
 }
+}
+

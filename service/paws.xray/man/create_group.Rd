@@ -4,10 +4,7 @@
 \alias{create_group}
 \title{Creates a group resource with a name and a filter expression}
 \usage{
-create_group(
-  GroupName = "string",
-  FilterExpression = "string"
-)
+create_group(GroupName, FilterExpression = NULL)
 }
 \arguments{
 \item{GroupName}{[required] The case-sensitive name of the new group. Default is a reserved name and names must be unique.}
@@ -17,6 +14,11 @@ create_group(
 \description{
 Creates a group resource with a name and a filter expression.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_group(
+  GroupName = "string",
+  FilterExpression = "string"
+)
 }
+}
+

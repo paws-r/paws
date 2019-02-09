@@ -4,11 +4,7 @@
 \alias{create_app}
 \title{Creates or updates an app}
 \usage{
-create_app(
-  CreateApplicationRequest = list(
-    Name = "string"
-  )
-)
+create_app(CreateApplicationRequest)
 }
 \arguments{
 \item{CreateApplicationRequest}{[required]}
@@ -16,6 +12,12 @@ create_app(
 \description{
 Creates or updates an app.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_app(
+  CreateApplicationRequest = list(
+    Name = "string"
+  )
+)
 }
+}
+

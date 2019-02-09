@@ -4,9 +4,7 @@
 \alias{start_relational_database}
 \title{Starts a specific database from a stopped state in Amazon Lightsail}
 \usage{
-start_relational_database(
-  relationalDatabaseName = "string"
-)
+start_relational_database(relationalDatabaseName)
 }
 \arguments{
 \item{relationalDatabaseName}{[required] The name of your database to start.}
@@ -17,6 +15,10 @@ Starts a specific database from a stopped state in Amazon Lightsail. To restart 
 \details{
 The \code{start relational database} operation supports tag-based access control via resource tags applied to the resource identified by relationalDatabaseName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_relational_database(
+  relationalDatabaseName = "string"
+)
 }
+}
+

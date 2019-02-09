@@ -4,11 +4,8 @@
 \alias{delete_security_group}
 \title{Deletes a security group}
 \usage{
-delete_security_group(
-  GroupId = "string",
-  GroupName = "string",
-  DryRun = TRUE|FALSE
-)
+delete_security_group(GroupId = NULL, GroupName = NULL,
+  DryRun = NULL)
 }
 \arguments{
 \item{GroupId}{The ID of the security group. Required for a nondefault VPC.}
@@ -23,10 +20,19 @@ Deletes a security group.
 \details{
 If you attempt to delete a security group that is associated with an instance, or is referenced by another security group, the operation fails with \code{InvalidGroup.InUse} in EC2-Classic or \code{DependencyViolation} in EC2-VPC.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_security_group(
+  GroupId = "string",
+  GroupName = "string",
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example deletes the specified security group.
-delete_security_group(
+\donttest{delete_security_group(
   GroupId = "sg-903004f8"
-)
+)}
 
 }

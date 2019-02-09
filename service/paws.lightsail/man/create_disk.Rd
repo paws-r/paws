@@ -4,17 +4,7 @@
 \alias{create_disk}
 \title{Creates a block storage disk that can be attached to a Lightsail instance in the same Availability Zone (e}
 \usage{
-create_disk(
-  diskName = "string",
-  availabilityZone = "string",
-  sizeInGb = 123,
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
+create_disk(diskName, availabilityZone, sizeInGb, tags = NULL)
 }
 \arguments{
 \item{diskName}{[required] The unique Lightsail disk name (e.g., \code{my-disk}).}
@@ -35,6 +25,18 @@ Creates a block storage disk that can be attached to a Lightsail instance in the
 \details{
 The \code{create disk} operation supports tag-based access control via request tags. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_disk(
+  diskName = "string",
+  availabilityZone = "string",
+  sizeInGb = 123,
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
 }
+}
+

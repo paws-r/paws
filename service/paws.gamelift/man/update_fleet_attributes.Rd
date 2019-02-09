@@ -4,19 +4,9 @@
 \alias{update_fleet_attributes}
 \title{Updates fleet properties, including name and description, for a fleet}
 \usage{
-update_fleet_attributes(
-  FleetId = "string",
-  Name = "string",
-  Description = "string",
-  NewGameSessionProtectionPolicy = "NoProtection"|"FullProtection",
-  ResourceCreationLimitPolicy = list(
-    NewGameSessionsPerCreator = 123,
-    PolicyPeriodInMinutes = 123
-  ),
-  MetricGroups = list(
-    "string"
-  )
-)
+update_fleet_attributes(FleetId, Name = NULL, Description = NULL,
+  NewGameSessionProtectionPolicy = NULL,
+  ResourceCreationLimitPolicy = NULL, MetricGroups = NULL)
 }
 \arguments{
 \item{FleetId}{[required] Unique identifier for a fleet to update attribute metadata for.}
@@ -39,7 +29,6 @@ update_fleet_attributes(
 Updates fleet properties, including name and description, for a fleet. To update metadata, specify the fleet ID and the property values that you want to change. If successful, the fleet ID for the updated fleet is returned.
 }
 \details{
-Fleet-related operations include:
 \itemize{
 \item CreateFleet
 \item ListFleets
@@ -62,6 +51,20 @@ Fleet-related operations include:
 \item StopFleetActions
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_fleet_attributes(
+  FleetId = "string",
+  Name = "string",
+  Description = "string",
+  NewGameSessionProtectionPolicy = "NoProtection"|"FullProtection",
+  ResourceCreationLimitPolicy = list(
+    NewGameSessionsPerCreator = 123,
+    PolicyPeriodInMinutes = 123
+  ),
+  MetricGroups = list(
+    "string"
+  )
+)
 }
+}
+

@@ -4,25 +4,11 @@
 \alias{create_branch}
 \title{Creates a new Branch for an Amplify App}
 \usage{
-create_branch(
-  appId = "string",
-  branchName = "string",
-  description = "string",
-  stage = "PRODUCTION"|"BETA"|"DEVELOPMENT"|"EXPERIMENTAL",
-  framework = "string",
-  enableNotification = TRUE|FALSE,
-  enableAutoBuild = TRUE|FALSE,
-  environmentVariables = list(
-    "string"
-  ),
-  basicAuthCredentials = "string",
-  enableBasicAuth = TRUE|FALSE,
-  tags = list(
-    "string"
-  ),
-  buildSpec = "string",
-  ttl = "string"
-)
+create_branch(appId, branchName, description = NULL, stage = NULL,
+  framework = NULL, enableNotification = NULL,
+  enableAutoBuild = NULL, environmentVariables = NULL,
+  basicAuthCredentials = NULL, enableBasicAuth = NULL, tags = NULL,
+  buildSpec = NULL, ttl = NULL)
 }
 \arguments{
 \item{appId}{[required] Unique Id for an Amplify App.}
@@ -54,6 +40,26 @@ create_branch(
 \description{
 Creates a new Branch for an Amplify App.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_branch(
+  appId = "string",
+  branchName = "string",
+  description = "string",
+  stage = "PRODUCTION"|"BETA"|"DEVELOPMENT"|"EXPERIMENTAL",
+  framework = "string",
+  enableNotification = TRUE|FALSE,
+  enableAutoBuild = TRUE|FALSE,
+  environmentVariables = list(
+    "string"
+  ),
+  basicAuthCredentials = "string",
+  enableBasicAuth = TRUE|FALSE,
+  tags = list(
+    "string"
+  ),
+  buildSpec = "string",
+  ttl = "string"
+)
 }
+}
+

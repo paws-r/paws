@@ -4,11 +4,7 @@
 \alias{delete_route}
 \title{Deletes an existing route}
 \usage{
-delete_route(
-  meshName = "string",
-  routeName = "string",
-  virtualRouterName = "string"
-)
+delete_route(meshName, routeName, virtualRouterName)
 }
 \arguments{
 \item{meshName}{[required] The name of the service mesh in which to delete the route.}
@@ -20,6 +16,12 @@ delete_route(
 \description{
 Deletes an existing route.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_route(
+  meshName = "string",
+  routeName = "string",
+  virtualRouterName = "string"
+)
 }
+}
+

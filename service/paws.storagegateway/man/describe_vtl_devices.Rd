@@ -4,14 +4,8 @@
 \alias{describe_vtl_devices}
 \title{Returns a description of virtual tape library (VTL) devices for the specified tape gateway}
 \usage{
-describe_vtl_devices(
-  GatewayARN = "string",
-  VTLDeviceARNs = list(
-    "string"
-  ),
-  Marker = "string",
-  Limit = 123
-)
+describe_vtl_devices(GatewayARN, VTLDeviceARNs = NULL, Marker = NULL,
+  Limit = NULL)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -30,14 +24,26 @@ Returns a description of virtual tape library (VTL) devices for the specified ta
 \details{
 This operation is only supported in the tape gateway type.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_vtl_devices(
+  GatewayARN = "string",
+  VTLDeviceARNs = list(
+    "string"
+  ),
+  Marker = "string",
+  Limit = 123
+)
+}
+}
+
 \examples{
 # Returns a description of virtual tape library (VTL) devices for the
 # specified gateway.
-describe_vtl_devices(
+\donttest{describe_vtl_devices(
   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B",
   Limit = 123L,
   Marker = "1",
   VTLDeviceARNs = list()
-)
+)}
 
 }

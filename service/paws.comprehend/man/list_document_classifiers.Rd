@@ -4,15 +4,8 @@
 \alias{list_document_classifiers}
 \title{Gets a list of the document classifiers that you have created}
 \usage{
-list_document_classifiers(
-  Filter = list(
-    Status = "SUBMITTED"|"TRAINING"|"DELETING"|"STOP_REQUESTED"|"STOPPED"|"IN_ERROR"|"TRAINED",
-    SubmitTimeBefore = as.POSIXct("2015-01-01"),
-    SubmitTimeAfter = as.POSIXct("2015-01-01")
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
+list_document_classifiers(Filter = NULL, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{Filter}{Filters the jobs that are returned. You can filter jobs on their name, status, or the date and time that they were submitted. You can only set one filter at a time.}
@@ -24,6 +17,16 @@ list_document_classifiers(
 \description{
 Gets a list of the document classifiers that you have created.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_document_classifiers(
+  Filter = list(
+    Status = "SUBMITTED"|"TRAINING"|"DELETING"|"STOP_REQUESTED"|"STOPPED"|"IN_ERROR"|"TRAINED",
+    SubmitTimeBefore = as.POSIXct("2015-01-01"),
+    SubmitTimeAfter = as.POSIXct("2015-01-01")
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

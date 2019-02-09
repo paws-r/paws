@@ -2,29 +2,10 @@
 % Please edit documentation in R/paws.machinelearning_operations.R
 \name{create_data_source_from_redshift}
 \alias{create_data_source_from_redshift}
-\title{Creates a \code{DataSource} from a database hosted on an Amazon Redshift cluster}
+\title{Creates a DataSource from a database hosted on an Amazon Redshift cluster}
 \usage{
-create_data_source_from_redshift(
-  DataSourceId = "string",
-  DataSourceName = "string",
-  DataSpec = list(
-    DatabaseInformation = list(
-      DatabaseName = "string",
-      ClusterIdentifier = "string"
-    ),
-    SelectSqlQuery = "string",
-    DatabaseCredentials = list(
-      Username = "string",
-      Password = "string"
-    ),
-    S3StagingLocation = "string",
-    DataRearrangement = "string",
-    DataSchema = "string",
-    DataSchemaUri = "string"
-  ),
-  RoleARN = "string",
-  ComputeStatistics = TRUE|FALSE
-)
+create_data_source_from_redshift(DataSourceId, DataSourceName = NULL,
+  DataSpec, RoleARN, ComputeStatistics = NULL)
 }
 \arguments{
 \item{DataSourceId}{[required] A user-supplied ID that uniquely identifies the \code{DataSource}.}
@@ -70,6 +51,28 @@ After the \code{DataSource} has been created, it's ready for use in evaluations 
 
 You can't change an existing datasource, but you can copy and modify the settings from an existing Amazon Redshift datasource to create a new datasource. To do so, call \code{GetDataSource} for an existing datasource and copy the values to a \code{CreateDataSource} call. Change the settings that you want to change and make sure that all required fields have the appropriate values.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_data_source_from_redshift(
+  DataSourceId = "string",
+  DataSourceName = "string",
+  DataSpec = list(
+    DatabaseInformation = list(
+      DatabaseName = "string",
+      ClusterIdentifier = "string"
+    ),
+    SelectSqlQuery = "string",
+    DatabaseCredentials = list(
+      Username = "string",
+      Password = "string"
+    ),
+    S3StagingLocation = "string",
+    DataRearrangement = "string",
+    DataSchema = "string",
+    DataSchemaUri = "string"
+  ),
+  RoleARN = "string",
+  ComputeStatistics = TRUE|FALSE
+)
 }
+}
+

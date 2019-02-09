@@ -4,12 +4,8 @@
 \alias{update_resource_share}
 \title{Updates the specified resource share}
 \usage{
-update_resource_share(
-  resourceShareArn = "string",
-  name = "string",
-  allowExternalPrincipals = TRUE|FALSE,
-  clientToken = "string"
-)
+update_resource_share(resourceShareArn, name = NULL,
+  allowExternalPrincipals = NULL, clientToken = NULL)
 }
 \arguments{
 \item{resourceShareArn}{[required] The Amazon Resource Name (ARN) of the resource share.}
@@ -23,6 +19,13 @@ update_resource_share(
 \description{
 Updates the specified resource share.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_resource_share(
+  resourceShareArn = "string",
+  name = "string",
+  allowExternalPrincipals = TRUE|FALSE,
+  clientToken = "string"
+)
 }
+}
+

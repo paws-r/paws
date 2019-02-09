@@ -4,12 +4,8 @@
 \alias{execute_provisioned_product_service_action}
 \title{Executes a self-service action against a provisioned product}
 \usage{
-execute_provisioned_product_service_action(
-  ProvisionedProductId = "string",
-  ServiceActionId = "string",
-  ExecuteToken = "string",
-  AcceptLanguage = "string"
-)
+execute_provisioned_product_service_action(ProvisionedProductId,
+  ServiceActionId, ExecuteToken, AcceptLanguage = NULL)
 }
 \arguments{
 \item{ProvisionedProductId}{[required] The identifier of the provisioned product.}
@@ -28,6 +24,13 @@ execute_provisioned_product_service_action(
 \description{
 Executes a self-service action against a provisioned product.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{execute_provisioned_product_service_action(
+  ProvisionedProductId = "string",
+  ServiceActionId = "string",
+  ExecuteToken = "string",
+  AcceptLanguage = "string"
+)
 }
+}
+

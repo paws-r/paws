@@ -4,22 +4,8 @@
 \alias{describe_prefix_lists}
 \title{Describes available AWS services in a prefix list format, which includes the prefix list name and prefix list ID of the service and the IP address range for the service}
 \usage{
-describe_prefix_lists(
-  DryRun = TRUE|FALSE,
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  PrefixListIds = list(
-    "string"
-  )
-)
+describe_prefix_lists(DryRun = NULL, Filters = NULL,
+  MaxResults = NULL, NextToken = NULL, PrefixListIds = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -41,6 +27,23 @@ Constraint: If the value specified is greater than 1000, we return only 1000 ite
 \description{
 Describes available AWS services in a prefix list format, which includes the prefix list name and prefix list ID of the service and the IP address range for the service. A prefix list ID is required for creating an outbound security group rule that allows traffic from a VPC to access an AWS service through a gateway VPC endpoint. Currently, the services that support this action are Amazon S3 and Amazon DynamoDB.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_prefix_lists(
+  DryRun = TRUE|FALSE,
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string",
+  PrefixListIds = list(
+    "string"
+  )
+)
 }
+}
+

@@ -4,7 +4,20 @@
 \alias{create_script}
 \title{Transforms a directed acyclic graph (DAG) into code}
 \usage{
-create_script(
+create_script(DagNodes = NULL, DagEdges = NULL, Language = NULL)
+}
+\arguments{
+\item{DagNodes}{A list of the nodes in the DAG.}
+
+\item{DagEdges}{A list of the edges in the DAG.}
+
+\item{Language}{The programming language of the resulting code from the DAG.}
+}
+\description{
+Transforms a directed acyclic graph (DAG) into code.
+}
+\section{Accepted Parameters}{
+\preformatted{create_script(
   DagNodes = list(
     list(
       Id = "string",
@@ -29,16 +42,5 @@ create_script(
   Language = "PYTHON"|"SCALA"
 )
 }
-\arguments{
-\item{DagNodes}{A list of the nodes in the DAG.}
-
-\item{DagEdges}{A list of the edges in the DAG.}
-
-\item{Language}{The programming language of the resulting code from the DAG.}
 }
-\description{
-Transforms a directed acyclic graph (DAG) into code.
-}
-\examples{
 
-}

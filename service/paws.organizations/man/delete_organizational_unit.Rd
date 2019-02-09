@@ -4,9 +4,7 @@
 \alias{delete_organizational_unit}
 \title{Deletes an organizational unit (OU) from a root or another OU}
 \usage{
-delete_organizational_unit(
-  OrganizationalUnitId = "string"
-)
+delete_organizational_unit(OrganizationalUnitId)
 }
 \arguments{
 \item{OrganizationalUnitId}{[required] The unique identifier (ID) of the organizational unit that you want to delete. You can get the ID from the ListOrganizationalUnitsForParent operation.
@@ -19,13 +17,20 @@ Deletes an organizational unit (OU) from a root or another OU. You must first re
 \details{
 This operation can be called only from the organization's master account.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_organizational_unit(
+  OrganizationalUnitId = "string"
+)
+}
+}
+
 \examples{
 # The following example shows how to delete an OU. The example assumes
 # that you previously removed all accounts and other OUs from the OU:
 # 
 # 
-delete_organizational_unit(
+\donttest{delete_organizational_unit(
   OrganizationalUnitId = "ou-examplerootid111-exampleouid111"
-)
+)}
 
 }

@@ -4,14 +4,8 @@
 \alias{create_configuration}
 \title{Creates a new configuration for the specified configuration name}
 \usage{
-create_configuration(
-  EngineType = "ACTIVEMQ",
-  EngineVersion = "string",
-  Name = "string",
-  Tags = list(
-    "string"
-  )
-)
+create_configuration(EngineType = NULL, EngineVersion = NULL,
+  Name = NULL, Tags = NULL)
 }
 \arguments{
 \item{EngineType}{Required. The type of broker engine. Note: Currently, Amazon MQ supports only ACTIVEMQ.}
@@ -25,6 +19,15 @@ create_configuration(
 \description{
 Creates a new configuration for the specified configuration name. Amazon MQ uses the default configuration (the engine type and version).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_configuration(
+  EngineType = "ACTIVEMQ",
+  EngineVersion = "string",
+  Name = "string",
+  Tags = list(
+    "string"
+  )
+)
 }
+}
+

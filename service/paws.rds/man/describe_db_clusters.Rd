@@ -4,19 +4,8 @@
 \alias{describe_db_clusters}
 \title{Returns information about provisioned Aurora DB clusters}
 \usage{
-describe_db_clusters(
-  DBClusterIdentifier = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_db_clusters(DBClusterIdentifier = NULL, Filters = NULL,
+  MaxRecords = NULL, Marker = NULL)
 }
 \arguments{
 \item{DBClusterIdentifier}{The user-supplied DB cluster identifier. If this parameter is specified, information from only the specific DB cluster is returned. This parameter isn't case-sensitive.
@@ -47,6 +36,20 @@ Returns information about provisioned Aurora DB clusters. This API supports pagi
 \details{
 For more information on Amazon Aurora, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?} in the \emph{Amazon Aurora User Guide.}
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_db_clusters(
+  DBClusterIdentifier = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
+}
+

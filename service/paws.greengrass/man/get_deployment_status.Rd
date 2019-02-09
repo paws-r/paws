@@ -4,10 +4,7 @@
 \alias{get_deployment_status}
 \title{Returns the status of a deployment}
 \usage{
-get_deployment_status(
-  DeploymentId = "string",
-  GroupId = "string"
-)
+get_deployment_status(DeploymentId, GroupId)
 }
 \arguments{
 \item{DeploymentId}{[required] The ID of the deployment.}
@@ -17,6 +14,11 @@ get_deployment_status(
 \description{
 Returns the status of a deployment.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_deployment_status(
+  DeploymentId = "string",
+  GroupId = "string"
+)
 }
+}
+

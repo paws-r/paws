@@ -4,12 +4,8 @@
 \alias{list_event_source_mappings}
 \title{Lists event source mappings}
 \usage{
-list_event_source_mappings(
-  EventSourceArn = "string",
-  FunctionName = "string",
-  Marker = "string",
-  MaxItems = 123
-)
+list_event_source_mappings(EventSourceArn = NULL, FunctionName = NULL,
+  Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{EventSourceArn}{The Amazon Resource Name (ARN) of the event source.
@@ -38,6 +34,13 @@ The length constraint applies only to the full ARN. If you specify only the func
 \description{
 Lists event source mappings. Specify an \code{EventSourceArn} to only show event source mappings for a single event source.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_event_source_mappings(
+  EventSourceArn = "string",
+  FunctionName = "string",
+  Marker = "string",
+  MaxItems = 123
+)
 }
+}
+

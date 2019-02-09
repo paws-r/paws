@@ -4,13 +4,8 @@
 \alias{describe_fleet_attributes}
 \title{Retrieves fleet properties, including metadata, status, and configuration, for one or more fleets}
 \usage{
-describe_fleet_attributes(
-  FleetIds = list(
-    "string"
-  ),
-  Limit = 123,
-  NextToken = "string"
-)
+describe_fleet_attributes(FleetIds = NULL, Limit = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{FleetIds}{Unique identifier for a fleet(s) to retrieve attributes for. To request attributes for all fleets, leave this parameter empty.}
@@ -24,8 +19,6 @@ Retrieves fleet properties, including metadata, status, and configuration, for o
 }
 \details{
 Some API actions may limit the number of fleet IDs allowed in one request. If a request exceeds this limit, the request fails and the error message includes the maximum allowed.
-
-Fleet-related operations include:
 \itemize{
 \item CreateFleet
 \item ListFleets
@@ -48,6 +41,14 @@ Fleet-related operations include:
 \item StopFleetActions
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_fleet_attributes(
+  FleetIds = list(
+    "string"
+  ),
+  Limit = 123,
+  NextToken = "string"
+)
 }
+}
+

@@ -2,19 +2,11 @@
 % Please edit documentation in R/paws.machinelearning_operations.R
 \name{create_ml_model}
 \alias{create_ml_model}
-\title{Creates a new \code{MLModel} using the \code{DataSource} and the recipe as information sources}
+\title{Creates a new MLModel using the DataSource and the recipe as information sources}
 \usage{
-create_ml_model(
-  MLModelId = "string",
-  MLModelName = "string",
-  MLModelType = "REGRESSION"|"BINARY"|"MULTICLASS",
-  Parameters = list(
-    "string"
-  ),
-  TrainingDataSourceId = "string",
-  Recipe = "string",
-  RecipeUri = "string"
-)
+create_ml_model(MLModelId, MLModelName = NULL, MLModelType,
+  Parameters = NULL, TrainingDataSourceId, Recipe = NULL,
+  RecipeUri = NULL)
 }
 \arguments{
 \item{MLModelId}{[required] A user-supplied ID that uniquely identifies the \code{MLModel}.}
@@ -65,6 +57,18 @@ You can use the \code{GetMLModel} operation to check the progress of the \code{M
 
 \code{CreateMLModel} requires a \code{DataSource} with computed statistics, which can be created by setting \code{ComputeStatistics} to \code{true} in \code{CreateDataSourceFromRDS}, \code{CreateDataSourceFromS3}, or \code{CreateDataSourceFromRedshift} operations.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_ml_model(
+  MLModelId = "string",
+  MLModelName = "string",
+  MLModelType = "REGRESSION"|"BINARY"|"MULTICLASS",
+  Parameters = list(
+    "string"
+  ),
+  TrainingDataSourceId = "string",
+  Recipe = "string",
+  RecipeUri = "string"
+)
 }
+}
+

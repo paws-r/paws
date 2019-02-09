@@ -4,21 +4,8 @@
 \alias{delete_attributes}
 \title{Deletes one or more attributes associated with an item}
 \usage{
-delete_attributes(
-  DomainName = "string",
-  ItemName = "string",
-  Attributes = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  Expected = list(
-    Name = "string",
-    Value = "string",
-    Exists = TRUE|FALSE
-  )
-)
+delete_attributes(DomainName, ItemName, Attributes = NULL,
+  Expected = NULL)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain in which to perform the operation.}
@@ -39,6 +26,22 @@ If \code{DeleteAttributes} is called without being passed any attributes or valu
 
 Because Amazon SimpleDB makes multiple copies of item data and uses an eventual consistency update model, performing a GetAttributes or Select operation (read) immediately after a \code{DeleteAttributes} or PutAttributes operation (write) might not return updated item data.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_attributes(
+  DomainName = "string",
+  ItemName = "string",
+  Attributes = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  Expected = list(
+    Name = "string",
+    Value = "string",
+    Exists = TRUE|FALSE
+  )
+)
 }
+}
+

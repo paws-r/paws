@@ -4,61 +4,14 @@
 \alias{put_metric_alarm}
 \title{Creates or updates an alarm and associates it with the specified metric or metric math expression}
 \usage{
-put_metric_alarm(
-  AlarmName = "string",
-  AlarmDescription = "string",
-  ActionsEnabled = TRUE|FALSE,
-  OKActions = list(
-    "string"
-  ),
-  AlarmActions = list(
-    "string"
-  ),
-  InsufficientDataActions = list(
-    "string"
-  ),
-  MetricName = "string",
-  Namespace = "string",
-  Statistic = "SampleCount"|"Average"|"Sum"|"Minimum"|"Maximum",
-  ExtendedStatistic = "string",
-  Dimensions = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  Period = 123,
-  Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None",
-  EvaluationPeriods = 123,
-  DatapointsToAlarm = 123,
-  Threshold = 123.0,
-  ComparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold",
-  TreatMissingData = "string",
-  EvaluateLowSampleCountPercentile = "string",
-  Metrics = list(
-    list(
-      Id = "string",
-      MetricStat = list(
-        Metric = list(
-          Namespace = "string",
-          MetricName = "string",
-          Dimensions = list(
-            list(
-              Name = "string",
-              Value = "string"
-            )
-          )
-        ),
-        Period = 123,
-        Stat = "string",
-        Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
-      ),
-      Expression = "string",
-      Label = "string",
-      ReturnData = TRUE|FALSE
-    )
-  )
-)
+put_metric_alarm(AlarmName, AlarmDescription = NULL,
+  ActionsEnabled = NULL, OKActions = NULL, AlarmActions = NULL,
+  InsufficientDataActions = NULL, MetricName = NULL,
+  Namespace = NULL, Statistic = NULL, ExtendedStatistic = NULL,
+  Dimensions = NULL, Period = NULL, Unit = NULL, EvaluationPeriods,
+  DatapointsToAlarm = NULL, Threshold, ComparisonOperator,
+  TreatMissingData = NULL, EvaluateLowSampleCountPercentile = NULL,
+  Metrics = NULL)
 }
 \arguments{
 \item{AlarmName}{[required] The name for the alarm. This name must be unique within your AWS account.}
@@ -154,6 +107,62 @@ If you are using temporary security credentials granted using AWS STS, you canno
 
 The first time you create an alarm in the AWS Management Console, the CLI, or by using the PutMetricAlarm API, CloudWatch creates the necessary service-linked role for you. The service-linked role is called \code{AWSServiceRoleForCloudWatchEvents}. For more information, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role}{AWS service-linked role}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_metric_alarm(
+  AlarmName = "string",
+  AlarmDescription = "string",
+  ActionsEnabled = TRUE|FALSE,
+  OKActions = list(
+    "string"
+  ),
+  AlarmActions = list(
+    "string"
+  ),
+  InsufficientDataActions = list(
+    "string"
+  ),
+  MetricName = "string",
+  Namespace = "string",
+  Statistic = "SampleCount"|"Average"|"Sum"|"Minimum"|"Maximum",
+  ExtendedStatistic = "string",
+  Dimensions = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  Period = 123,
+  Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None",
+  EvaluationPeriods = 123,
+  DatapointsToAlarm = 123,
+  Threshold = 123.0,
+  ComparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold",
+  TreatMissingData = "string",
+  EvaluateLowSampleCountPercentile = "string",
+  Metrics = list(
+    list(
+      Id = "string",
+      MetricStat = list(
+        Metric = list(
+          Namespace = "string",
+          MetricName = "string",
+          Dimensions = list(
+            list(
+              Name = "string",
+              Value = "string"
+            )
+          )
+        ),
+        Period = 123,
+        Stat = "string",
+        Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
+      ),
+      Expression = "string",
+      Label = "string",
+      ReturnData = TRUE|FALSE
+    )
+  )
+)
 }
+}
+

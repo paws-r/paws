@@ -4,19 +4,12 @@
 \alias{create_route}
 \title{Creates a route in a route table within a VPC}
 \usage{
-create_route(
-  DestinationCidrBlock = "string",
-  DestinationIpv6CidrBlock = "string",
-  DryRun = TRUE|FALSE,
-  EgressOnlyInternetGatewayId = "string",
-  GatewayId = "string",
-  InstanceId = "string",
-  NatGatewayId = "string",
-  TransitGatewayId = "string",
-  NetworkInterfaceId = "string",
-  RouteTableId = "string",
-  VpcPeeringConnectionId = "string"
-)
+create_route(DestinationCidrBlock = NULL,
+  DestinationIpv6CidrBlock = NULL, DryRun = NULL,
+  EgressOnlyInternetGatewayId = NULL, GatewayId = NULL,
+  InstanceId = NULL, NatGatewayId = NULL, TransitGatewayId = NULL,
+  NetworkInterfaceId = NULL, RouteTableId,
+  VpcPeeringConnectionId = NULL)
 }
 \arguments{
 \item{DestinationCidrBlock}{The IPv4 CIDR address block used for the destination match. Routing decisions are based on the most specific match.}
@@ -55,16 +48,33 @@ When determining how to route traffic, we use the route with the most specific m
 
 Both routes apply to the traffic destined for \code{192.0.2.3}. However, the second route in the list covers a smaller number of IP addresses and is therefore more specific, so we use that route to determine where to target the traffic.
 
-For more information about route tables, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html}{Route Tables} in the \emph{Amazon Virtual Private Cloud User Guide}.
+For more information about route tables, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html}{Route Tables} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_route(
+  DestinationCidrBlock = "string",
+  DestinationIpv6CidrBlock = "string",
+  DryRun = TRUE|FALSE,
+  EgressOnlyInternetGatewayId = "string",
+  GatewayId = "string",
+  InstanceId = "string",
+  NatGatewayId = "string",
+  TransitGatewayId = "string",
+  NetworkInterfaceId = "string",
+  RouteTableId = "string",
+  VpcPeeringConnectionId = "string"
+)
+}
+}
+
 \examples{
 # This example creates a route for the specified route table. The route
 # matches all traffic (0.0.0.0/0) and routes it to the specified Internet
 # gateway.
-create_route(
+\donttest{create_route(
   DestinationCidrBlock = "0.0.0.0/0",
   GatewayId = "igw-c0a643a9",
   RouteTableId = "rtb-22574640"
-)
+)}
 
 }

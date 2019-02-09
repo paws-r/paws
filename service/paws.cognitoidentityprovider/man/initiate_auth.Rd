@@ -4,22 +4,8 @@
 \alias{initiate_auth}
 \title{Initiates the authentication flow}
 \usage{
-initiate_auth(
-  AuthFlow = "USER_SRP_AUTH"|"REFRESH_TOKEN_AUTH"|"REFRESH_TOKEN"|"CUSTOM_AUTH"|"ADMIN_NO_SRP_AUTH"|"USER_PASSWORD_AUTH",
-  AuthParameters = list(
-    "string"
-  ),
-  ClientMetadata = list(
-    "string"
-  ),
-  ClientId = "string",
-  AnalyticsMetadata = list(
-    AnalyticsEndpointId = "string"
-  ),
-  UserContextData = list(
-    EncodedData = "string"
-  )
-)
+initiate_auth(AuthFlow, AuthParameters = NULL, ClientMetadata = NULL,
+  ClientId, AnalyticsMetadata = NULL, UserContextData = NULL)
 }
 \arguments{
 \item{AuthFlow}{[required] The authentication flow for this call to execute. The API action will depend on this value. For example:
@@ -57,6 +43,23 @@ Valid values include:
 \description{
 Initiates the authentication flow.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{initiate_auth(
+  AuthFlow = "USER_SRP_AUTH"|"REFRESH_TOKEN_AUTH"|"REFRESH_TOKEN"|"CUSTOM_AUTH"|"ADMIN_NO_SRP_AUTH"|"USER_PASSWORD_AUTH",
+  AuthParameters = list(
+    "string"
+  ),
+  ClientMetadata = list(
+    "string"
+  ),
+  ClientId = "string",
+  AnalyticsMetadata = list(
+    AnalyticsEndpointId = "string"
+  ),
+  UserContextData = list(
+    EncodedData = "string"
+  )
+)
 }
+}
+

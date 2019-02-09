@@ -4,9 +4,7 @@
 \alias{enable_key}
 \title{Sets the key state of a customer master key (CMK) to enabled}
 \usage{
-enable_key(
-  KeyId = "string"
-)
+enable_key(KeyId)
 }
 \arguments{
 \item{KeyId}{[required] A unique identifier for the customer master key (CMK).
@@ -27,10 +25,17 @@ Sets the key state of a customer master key (CMK) to enabled. This allows you to
 \details{
 The result of this operation varies with the key state of the CMK. For details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key} in the \emph{AWS Key Management Service Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{enable_key(
+  KeyId = "string"
+)
+}
+}
+
 \examples{
 # The following example enables the specified CMK.
-enable_key(
+\donttest{enable_key(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)
+)}
 
 }

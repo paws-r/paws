@@ -4,10 +4,7 @@
 \alias{delete_rule}
 \title{Deletes the specified rule}
 \usage{
-delete_rule(
-  Name = "string",
-  Force = TRUE|FALSE
-)
+delete_rule(Name, Force = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the rule.}
@@ -24,6 +21,11 @@ When you delete a rule, incoming events might continue to match to the deleted r
 
 Managed rules are rules created and managed by another AWS service on your behalf. These rules are created by those other AWS services to support functionality in those services. You can delete these rules using the \code{Force} option, but you should do so only if you are sure the other service is not still using that rule.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_rule(
+  Name = "string",
+  Force = TRUE|FALSE
+)
 }
+}
+

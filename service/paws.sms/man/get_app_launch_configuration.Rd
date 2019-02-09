@@ -4,9 +4,7 @@
 \alias{get_app_launch_configuration}
 \title{Retrieves the application launch configuration associated with an application}
 \usage{
-get_app_launch_configuration(
-  appId = "string"
-)
+get_app_launch_configuration(appId = NULL)
 }
 \arguments{
 \item{appId}{ID of the application launch configuration.}
@@ -14,6 +12,10 @@ get_app_launch_configuration(
 \description{
 Retrieves the application launch configuration associated with an application.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_app_launch_configuration(
+  appId = "string"
+)
 }
+}
+

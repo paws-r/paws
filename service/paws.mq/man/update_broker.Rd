@@ -4,19 +4,8 @@
 \alias{update_broker}
 \title{Adds a pending configuration change to a broker}
 \usage{
-update_broker(
-  AutoMinorVersionUpgrade = TRUE|FALSE,
-  BrokerId = "string",
-  Configuration = list(
-    Id = "string",
-    Revision = 123
-  ),
-  EngineVersion = "string",
-  Logs = list(
-    Audit = TRUE|FALSE,
-    General = TRUE|FALSE
-  )
-)
+update_broker(AutoMinorVersionUpgrade = NULL, BrokerId,
+  Configuration = NULL, EngineVersion = NULL, Logs = NULL)
 }
 \arguments{
 \item{AutoMinorVersionUpgrade}{Enables automatic upgrades to new minor versions for brokers, as Apache releases the versions. The automatic upgrades occur during the maintenance window of the broker or after a manual broker reboot.}
@@ -32,6 +21,20 @@ update_broker(
 \description{
 Adds a pending configuration change to a broker.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_broker(
+  AutoMinorVersionUpgrade = TRUE|FALSE,
+  BrokerId = "string",
+  Configuration = list(
+    Id = "string",
+    Revision = 123
+  ),
+  EngineVersion = "string",
+  Logs = list(
+    Audit = TRUE|FALSE,
+    General = TRUE|FALSE
+  )
+)
 }
+}
+

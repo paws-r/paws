@@ -4,14 +4,8 @@
 \alias{delete_labels}
 \title{Deletes the specified list of labels from a resource}
 \usage{
-delete_labels(
-  ResourceId = "string",
-  AuthenticationToken = "string",
-  Labels = list(
-    "string"
-  ),
-  DeleteAll = TRUE|FALSE
-)
+delete_labels(ResourceId, AuthenticationToken = NULL, Labels = NULL,
+  DeleteAll = NULL)
 }
 \arguments{
 \item{ResourceId}{[required] The ID of the resource.}
@@ -25,6 +19,15 @@ delete_labels(
 \description{
 Deletes the specified list of labels from a resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_labels(
+  ResourceId = "string",
+  AuthenticationToken = "string",
+  Labels = list(
+    "string"
+  ),
+  DeleteAll = TRUE|FALSE
+)
 }
+}
+

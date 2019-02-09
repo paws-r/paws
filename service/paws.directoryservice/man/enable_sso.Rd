@@ -4,11 +4,7 @@
 \alias{enable_sso}
 \title{Enables single sign-on for a directory}
 \usage{
-enable_sso(
-  DirectoryId = "string",
-  UserName = "string",
-  Password = "string"
-)
+enable_sso(DirectoryId, UserName = NULL, Password = NULL)
 }
 \arguments{
 \item{DirectoryId}{[required] The identifier of the directory for which to enable single-sign on.}
@@ -22,6 +18,12 @@ If the AD Connector service account does not have privileges to add a service pr
 \description{
 Enables single sign-on for a directory.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{enable_sso(
+  DirectoryId = "string",
+  UserName = "string",
+  Password = "string"
+)
 }
+}
+

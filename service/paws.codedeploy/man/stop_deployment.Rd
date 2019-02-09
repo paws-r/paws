@@ -4,10 +4,7 @@
 \alias{stop_deployment}
 \title{Attempts to stop an ongoing deployment}
 \usage{
-stop_deployment(
-  deploymentId = "string",
-  autoRollbackEnabled = TRUE|FALSE
-)
+stop_deployment(deploymentId, autoRollbackEnabled = NULL)
 }
 \arguments{
 \item{deploymentId}{[required] The unique ID of a deployment.}
@@ -17,6 +14,11 @@ stop_deployment(
 \description{
 Attempts to stop an ongoing deployment.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{stop_deployment(
+  deploymentId = "string",
+  autoRollbackEnabled = TRUE|FALSE
+)
 }
+}
+

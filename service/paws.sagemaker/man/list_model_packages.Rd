@@ -4,15 +4,9 @@
 \alias{list_model_packages}
 \title{Lists the model packages that have been created}
 \usage{
-list_model_packages(
-  CreationTimeAfter = as.POSIXct("2015-01-01"),
-  CreationTimeBefore = as.POSIXct("2015-01-01"),
-  MaxResults = 123,
-  NameContains = "string",
-  NextToken = "string",
-  SortBy = "Name"|"CreationTime",
-  SortOrder = "Ascending"|"Descending"
-)
+list_model_packages(CreationTimeAfter = NULL,
+  CreationTimeBefore = NULL, MaxResults = NULL, NameContains = NULL,
+  NextToken = NULL, SortBy = NULL, SortOrder = NULL)
 }
 \arguments{
 \item{CreationTimeAfter}{A filter that returns only model packages created after the specified time (timestamp).}
@@ -32,6 +26,16 @@ list_model_packages(
 \description{
 Lists the model packages that have been created.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_model_packages(
+  CreationTimeAfter = as.POSIXct("2015-01-01"),
+  CreationTimeBefore = as.POSIXct("2015-01-01"),
+  MaxResults = 123,
+  NameContains = "string",
+  NextToken = "string",
+  SortBy = "Name"|"CreationTime",
+  SortOrder = "Ascending"|"Descending"
+)
 }
+}
+

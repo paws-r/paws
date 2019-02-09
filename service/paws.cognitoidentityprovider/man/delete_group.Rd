@@ -4,10 +4,7 @@
 \alias{delete_group}
 \title{Deletes a group}
 \usage{
-delete_group(
-  GroupName = "string",
-  UserPoolId = "string"
-)
+delete_group(GroupName, UserPoolId)
 }
 \arguments{
 \item{GroupName}{[required] The name of the group.}
@@ -20,6 +17,11 @@ Deletes a group. Currently only groups with no members can be deleted.
 \details{
 Requires developer credentials.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_group(
+  GroupName = "string",
+  UserPoolId = "string"
+)
 }
+}
+

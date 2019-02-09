@@ -4,9 +4,7 @@
 \alias{get_distribution}
 \title{Get the information about a distribution}
 \usage{
-get_distribution(
-  Id = "string"
-)
+get_distribution(Id)
 }
 \arguments{
 \item{Id}{[required] The distribution's ID.}
@@ -14,6 +12,10 @@ get_distribution(
 \description{
 Get the information about a distribution.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_distribution(
+  Id = "string"
+)
 }
+}
+

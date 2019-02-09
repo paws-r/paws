@@ -4,7 +4,20 @@
 \alias{render_ui_template}
 \title{Renders the UI template so that you can preview the worker's experience}
 \usage{
-render_ui_template(
+render_ui_template(UiTemplate, Task, RoleArn)
+}
+\arguments{
+\item{UiTemplate}{[required] A \code{Template} object containing the worker UI template to render.}
+
+\item{Task}{[required] A \code{RenderableTask} object containing a representative task to render.}
+
+\item{RoleArn}{[required] The Amazon Resource Name (ARN) that has access to the S3 objects that are used by the template.}
+}
+\description{
+Renders the UI template so that you can preview the worker's experience.
+}
+\section{Accepted Parameters}{
+\preformatted{render_ui_template(
   UiTemplate = list(
     Content = "string"
   ),
@@ -14,16 +27,5 @@ render_ui_template(
   RoleArn = "string"
 )
 }
-\arguments{
-\item{UiTemplate}{[required] A \code{Template}object containing the worker UI template to render.}
-
-\item{Task}{[required] A \code{RenderableTask} object containing a representative task to render.}
-
-\item{RoleArn}{[required] The Amazon Resource Name (ARN) that has access to the S3 objects that are used by the template.}
 }
-\description{
-Renders the UI template so that you can preview the worker's experience.
-}
-\examples{
 
-}

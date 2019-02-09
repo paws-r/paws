@@ -4,9 +4,7 @@
 \alias{rotate_encryption_key}
 \title{Rotates the encryption keys for a cluster}
 \usage{
-rotate_encryption_key(
-  ClusterIdentifier = "string"
-)
+rotate_encryption_key(ClusterIdentifier)
 }
 \arguments{
 \item{ClusterIdentifier}{[required] The unique identifier of the cluster that you want to rotate the encryption keys for.
@@ -16,6 +14,10 @@ Constraints: Must be the name of valid cluster that has encryption enabled.}
 \description{
 Rotates the encryption keys for a cluster.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{rotate_encryption_key(
+  ClusterIdentifier = "string"
+)
 }
+}
+

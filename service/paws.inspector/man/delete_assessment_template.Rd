@@ -4,9 +4,7 @@
 \alias{delete_assessment_template}
 \title{Deletes the assessment template that is specified by the ARN of the assessment template}
 \usage{
-delete_assessment_template(
-  assessmentTemplateArn = "string"
-)
+delete_assessment_template(assessmentTemplateArn)
 }
 \arguments{
 \item{assessmentTemplateArn}{[required] The ARN that specifies the assessment template that you want to delete.}
@@ -14,11 +12,18 @@ delete_assessment_template(
 \description{
 Deletes the assessment template that is specified by the ARN of the assessment template.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_assessment_template(
+  assessmentTemplateArn = "string"
+)
+}
+}
+
 \examples{
 # Deletes the assessment template that is specified by the ARN of the
 # assessment template.
-delete_assessment_template(
+\donttest{delete_assessment_template(
   assessmentTemplateArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-it5r2S4T"
-)
+)}
 
 }

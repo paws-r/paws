@@ -4,7 +4,21 @@
 \alias{create_connector_definition}
 \title{Creates a connector definition}
 \usage{
-create_connector_definition(
+create_connector_definition(AmznClientToken = NULL,
+  InitialVersion = NULL, Name = NULL)
+}
+\arguments{
+\item{AmznClientToken}{A client token used to correlate requests and responses.}
+
+\item{InitialVersion}{Information about the initial version of the connector definition.}
+
+\item{Name}{The name of the connector definition.}
+}
+\description{
+Creates a connector definition. You may provide the initial version of the connector definition now or use ''CreateConnectorDefinitionVersion'' at a later time.
+}
+\section{Accepted Parameters}{
+\preformatted{create_connector_definition(
   AmznClientToken = "string",
   InitialVersion = list(
     Connectors = list(
@@ -20,16 +34,5 @@ create_connector_definition(
   Name = "string"
 )
 }
-\arguments{
-\item{AmznClientToken}{A client token used to correlate requests and responses.}
-
-\item{InitialVersion}{Information about the initial version of the connector definition.}
-
-\item{Name}{The name of the connector definition.}
 }
-\description{
-Creates a connector definition. You may provide the initial version of the connector definition now or use ''CreateConnectorDefinitionVersion'' at a later time.
-}
-\examples{
 
-}

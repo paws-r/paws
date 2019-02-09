@@ -4,7 +4,25 @@
 \alias{update_route}
 \title{Updates an existing route for a specified service mesh and virtual router}
 \usage{
-update_route(
+update_route(clientToken = NULL, meshName, routeName, spec,
+  virtualRouterName)
+}
+\arguments{
+\item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. Up to 36 letters, numbers, hyphens, and underscores are allowed.}
+
+\item{meshName}{[required] The name of the service mesh in which the route resides.}
+
+\item{routeName}{[required] The name of the route to update.}
+
+\item{spec}{[required] The new route specification to apply. This overwrites the existing data.}
+
+\item{virtualRouterName}{[required] The name of the virtual router with which the route is associated.}
+}
+\description{
+Updates an existing route for a specified service mesh and virtual router.
+}
+\section{Accepted Parameters}{
+\preformatted{update_route(
   clientToken = "string",
   meshName = "string",
   routeName = "string",
@@ -26,20 +44,5 @@ update_route(
   virtualRouterName = "string"
 )
 }
-\arguments{
-\item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. Up to 36 letters, numbers, hyphens, and underscores are allowed.}
-
-\item{meshName}{[required] The name of the service mesh in which the route resides.}
-
-\item{routeName}{[required] The name of the route to update.}
-
-\item{spec}{[required] The new route specification to apply. This overwrites the existing data.}
-
-\item{virtualRouterName}{[required] The name of the virtual router with which the route is associated.}
 }
-\description{
-Updates an existing route for a specified service mesh and virtual router.
-}
-\examples{
 
-}

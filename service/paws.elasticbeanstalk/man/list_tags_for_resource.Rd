@@ -4,9 +4,7 @@
 \alias{list_tags_for_resource}
 \title{Returns the tags applied to an AWS Elastic Beanstalk resource}
 \usage{
-list_tags_for_resource(
-  ResourceArn = "string"
-)
+list_tags_for_resource(ResourceArn)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resouce for which a tag list is requested.
@@ -19,6 +17,10 @@ Returns the tags applied to an AWS Elastic Beanstalk resource. The response cont
 \details{
 Currently, Elastic Beanstalk only supports tagging of Elastic Beanstalk environments. For details about environment tagging, see \href{http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.tagging.html}{Tagging Resources in Your Elastic Beanstalk Environment}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_tags_for_resource(
+  ResourceArn = "string"
+)
 }
+}
+

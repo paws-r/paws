@@ -4,12 +4,8 @@
 \alias{list_facet_attributes}
 \title{Retrieves attributes attached to the facet}
 \usage{
-list_facet_attributes(
-  SchemaArn = "string",
-  Name = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_facet_attributes(SchemaArn, Name, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{SchemaArn}{[required] The ARN of the schema where the facet resides.}
@@ -23,6 +19,13 @@ list_facet_attributes(
 \description{
 Retrieves attributes attached to the facet.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_facet_attributes(
+  SchemaArn = "string",
+  Name = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

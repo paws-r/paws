@@ -4,12 +4,7 @@
 \alias{delete_user_attributes}
 \title{Deletes the attributes for a user}
 \usage{
-delete_user_attributes(
-  UserAttributeNames = list(
-    "string"
-  ),
-  AccessToken = "string"
-)
+delete_user_attributes(UserAttributeNames, AccessToken)
 }
 \arguments{
 \item{UserAttributeNames}{[required] An array of strings representing the user attribute names you wish to delete.
@@ -21,6 +16,13 @@ For custom attributes, you must prepend the \code{custom:} prefix to the attribu
 \description{
 Deletes the attributes for a user.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_user_attributes(
+  UserAttributeNames = list(
+    "string"
+  ),
+  AccessToken = "string"
+)
 }
+}
+

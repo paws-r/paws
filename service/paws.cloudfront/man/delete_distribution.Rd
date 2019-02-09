@@ -4,10 +4,7 @@
 \alias{delete_distribution}
 \title{Delete a distribution}
 \usage{
-delete_distribution(
-  Id = "string",
-  IfMatch = "string"
-)
+delete_distribution(Id, IfMatch = NULL)
 }
 \arguments{
 \item{Id}{[required] The distribution ID.}
@@ -17,6 +14,11 @@ delete_distribution(
 \description{
 Delete a distribution.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_distribution(
+  Id = "string",
+  IfMatch = "string"
+)
 }
+}
+

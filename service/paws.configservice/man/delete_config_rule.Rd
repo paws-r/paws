@@ -4,9 +4,7 @@
 \alias{delete_config_rule}
 \title{Deletes the specified AWS Config rule and all of its evaluation results}
 \usage{
-delete_config_rule(
-  ConfigRuleName = "string"
-)
+delete_config_rule(ConfigRuleName)
 }
 \arguments{
 \item{ConfigRuleName}{[required] The name of the AWS Config rule that you want to delete.}
@@ -19,6 +17,10 @@ AWS Config sets the state of a rule to \code{DELETING} until the deletion is com
 
 You can check the state of a rule by using the \code{DescribeConfigRules} request.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_config_rule(
+  ConfigRuleName = "string"
+)
 }
+}
+

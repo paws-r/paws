@@ -4,10 +4,7 @@
 \alias{delete_connection}
 \title{Deletes a connection from the Data Catalog}
 \usage{
-delete_connection(
-  CatalogId = "string",
-  ConnectionName = "string"
-)
+delete_connection(CatalogId = NULL, ConnectionName)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog in which the connection resides. If none is supplied, the AWS account ID is used by default.}
@@ -17,6 +14,11 @@ delete_connection(
 \description{
 Deletes a connection from the Data Catalog.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_connection(
+  CatalogId = "string",
+  ConnectionName = "string"
+)
 }
+}
+

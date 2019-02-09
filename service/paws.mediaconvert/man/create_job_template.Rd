@@ -4,7 +4,32 @@
 \alias{create_job_template}
 \title{Create a new job template}
 \usage{
-create_job_template(
+create_job_template(AccelerationSettings = NULL, Category = NULL,
+  Description = NULL, Name, Queue = NULL, Settings, Tags = NULL)
+}
+\arguments{
+\item{AccelerationSettings}{This is a beta feature. If you are interested in using this feature please contact AWS customer support.}
+
+\item{Category}{Optional. A category for the job template you are creating}
+
+\item{Description}{Optional. A description of the job template you are creating.}
+
+\item{Name}{[required] The name of the job template you are creating.}
+
+\item{Queue}{Optional. The queue that jobs created from this template are assigned to. If you don't specify this, jobs will go to the default queue.}
+
+\item{Settings}{[required]}
+
+\item{Tags}{The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.}
+}
+\description{
+Create a new job template. For information about job templates see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
+}
+\section{Accepted Parameters}{
+\preformatted{create_job_template(
+  AccelerationSettings = list(
+    Mode = "DISABLED"|"ENABLED"
+  ),
   Category = "string",
   Description = "string",
   Name = "string",
@@ -74,9 +99,12 @@ create_job_template(
                 SourceFile = "string",
                 TimeDelta = 123
               ),
-              SourceType = "ANCILLARY"|"DVB_SUB"|"EMBEDDED"|"SCTE20"|"SCC"|"TTML"|"STL"|"SRT"|"SMI"|"TELETEXT"|"NULL_SOURCE",
+              SourceType = "ANCILLARY"|"DVB_SUB"|"EMBEDDED"|"SCTE20"|"SCC"|"TTML"|"STL"|"SRT"|"SMI"|"TELETEXT"|"NULL_SOURCE"|"IMSC",
               TeletextSourceSettings = list(
                 PageNumber = "string"
+              ),
+              TrackSourceSettings = list(
+                TrackNumber = 123
               )
             )
           )
@@ -387,6 +415,7 @@ create_job_template(
                     FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
                     FontOpacity = 123,
                     FontResolution = 123,
+                    FontScript = "AUTOMATIC"|"HANS"|"HANT",
                     FontSize = 123,
                     OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
                     OutlineSize = 123,
@@ -406,6 +435,7 @@ create_job_template(
                     FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
                     FontOpacity = 123,
                     FontResolution = 123,
+                    FontScript = "AUTOMATIC"|"HANS"|"HANT",
                     FontSize = 123,
                     OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
                     OutlineSize = 123,
@@ -416,6 +446,9 @@ create_job_template(
                     TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
                     XPosition = 123,
                     YPosition = 123
+                  ),
+                  EmbeddedDestinationSettings = list(
+                    Destination608ChannelNumber = 123
                   ),
                   SccDestinationSettings = list(
                     Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
@@ -465,6 +498,7 @@ create_job_template(
                 EbpAudioInterval = "VIDEO_AND_FIXED_INTERVALS"|"VIDEO_INTERVAL",
                 EbpPlacement = "VIDEO_AND_AUDIO_PIDS"|"VIDEO_PID",
                 EsRateInPes = "INCLUDE"|"EXCLUDE",
+                ForceTsVideoEbpOrder = "FORCE"|"DEFAULT",
                 FragmentTime = 123.0,
                 MaxPcrInterval = 123,
                 MinEbpInterval = 123,
@@ -786,22 +820,5 @@ create_job_template(
   )
 )
 }
-\arguments{
-\item{Category}{Optional. A category for the job template you are creating}
-
-\item{Description}{Optional. A description of the job template you are creating.}
-
-\item{Name}{[required] The name of the job template you are creating.}
-
-\item{Queue}{Optional. The queue that jobs created from this template are assigned to. If you don't specify this, jobs will go to the default queue.}
-
-\item{Settings}{[required]}
-
-\item{Tags}{The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.}
 }
-\description{
-Create a new job template. For information about job templates see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
-}
-\examples{
 
-}

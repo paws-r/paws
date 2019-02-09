@@ -2,13 +2,9 @@
 % Please edit documentation in R/paws.kms_operations.R
 \name{list_retirable_grants}
 \alias{list_retirable_grants}
-\title{Returns a list of all grants for which the grant's \code{RetiringPrincipal} matches the one specified}
+\title{Returns a list of all grants for which the grant's RetiringPrincipal matches the one specified}
 \usage{
-list_retirable_grants(
-  Limit = 123,
-  Marker = "string",
-  RetiringPrincipal = "string"
-)
+list_retirable_grants(Limit = NULL, Marker = NULL, RetiringPrincipal)
 }
 \arguments{
 \item{Limit}{Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not return more than the specified number of items, but it might return fewer.
@@ -27,11 +23,20 @@ Returns a list of all grants for which the grant's \code{RetiringPrincipal} matc
 \details{
 A typical use is to list all grants that you are able to retire. To retire a grant, use RetireGrant.
 }
+\section{Accepted Parameters}{
+\preformatted{list_retirable_grants(
+  Limit = 123,
+  Marker = "string",
+  RetiringPrincipal = "string"
+)
+}
+}
+
 \examples{
 # The following example lists the grants that the specified principal
 # (identity) can retire.
-list_retirable_grants(
+\donttest{list_retirable_grants(
   RetiringPrincipal = "arn:aws:iam::111122223333:role/ExampleRole"
-)
+)}
 
 }

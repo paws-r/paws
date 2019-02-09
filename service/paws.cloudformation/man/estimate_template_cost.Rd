@@ -4,18 +4,8 @@
 \alias{estimate_template_cost}
 \title{Returns the estimated monthly cost of a template}
 \usage{
-estimate_template_cost(
-  TemplateBody = "string",
-  TemplateURL = "string",
-  Parameters = list(
-    list(
-      ParameterKey = "string",
-      ParameterValue = "string",
-      UsePreviousValue = TRUE|FALSE,
-      ResolvedValue = "string"
-    )
-  )
-)
+estimate_template_cost(TemplateBody = NULL, TemplateURL = NULL,
+  Parameters = NULL)
 }
 \arguments{
 \item{TemplateBody}{Structure containing the template body with a minimum length of 1 byte and a maximum length of 51,200 bytes. (For more information, go to \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy} in the AWS CloudFormation User Guide.)
@@ -31,6 +21,19 @@ Conditional: You must pass \code{TemplateURL} or \code{TemplateBody}. If both ar
 \description{
 Returns the estimated monthly cost of a template. The return value is an AWS Simple Monthly Calculator URL with a query string that describes the resources required to run the template.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{estimate_template_cost(
+  TemplateBody = "string",
+  TemplateURL = "string",
+  Parameters = list(
+    list(
+      ParameterKey = "string",
+      ParameterValue = "string",
+      UsePreviousValue = TRUE|FALSE,
+      ResolvedValue = "string"
+    )
+  )
+)
 }
+}
+

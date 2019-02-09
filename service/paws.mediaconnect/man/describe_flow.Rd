@@ -4,9 +4,7 @@
 \alias{describe_flow}
 \title{Displays the details of a flow}
 \usage{
-describe_flow(
-  FlowArn = "string"
-)
+describe_flow(FlowArn)
 }
 \arguments{
 \item{FlowArn}{[required] The ARN of the flow that you want to describe.}
@@ -14,6 +12,10 @@ describe_flow(
 \description{
 Displays the details of a flow. The response includes the flow ARN, name, and Availability Zone, as well as details about the source, outputs, and entitlements.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_flow(
+  FlowArn = "string"
+)
 }
+}
+

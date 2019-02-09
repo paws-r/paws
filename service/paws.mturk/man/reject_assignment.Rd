@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.mturk_operations.R
 \name{reject_assignment}
 \alias{reject_assignment}
-\title{The \code{RejectAssignment} operation rejects the results of a completed assignment}
+\title{The RejectAssignment operation rejects the results of a completed assignment}
 \usage{
-reject_assignment(
-  AssignmentId = "string",
-  RequesterFeedback = "string"
-)
+reject_assignment(AssignmentId, RequesterFeedback)
 }
 \arguments{
 \item{AssignmentId}{[required] The ID of the assignment. The assignment must correspond to a HIT created by the Requester.}
@@ -22,6 +19,11 @@ You can include an optional feedback message with the rejection, which the Worke
 
 Only the Requester who created the HIT can reject an assignment for the HIT.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{reject_assignment(
+  AssignmentId = "string",
+  RequesterFeedback = "string"
+)
 }
+}
+

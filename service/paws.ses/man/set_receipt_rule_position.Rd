@@ -4,11 +4,7 @@
 \alias{set_receipt_rule_position}
 \title{Sets the position of the specified receipt rule in the receipt rule set}
 \usage{
-set_receipt_rule_position(
-  RuleSetName = "string",
-  RuleName = "string",
-  After = "string"
-)
+set_receipt_rule_position(RuleSetName, RuleName, After = NULL)
 }
 \arguments{
 \item{RuleSetName}{[required] The name of the receipt rule set that contains the receipt rule to reposition.}
@@ -25,13 +21,22 @@ For information about managing receipt rules, see the \href{http://docs.aws.amaz
 
 You can execute this operation no more than once per second.
 }
+\section{Accepted Parameters}{
+\preformatted{set_receipt_rule_position(
+  RuleSetName = "string",
+  RuleName = "string",
+  After = "string"
+)
+}
+}
+
 \examples{
 # The following example sets the position of a receipt rule in a receipt
 # rule set:
-set_receipt_rule_position(
+\donttest{set_receipt_rule_position(
   After = "PutRuleAfterThisRule",
   RuleName = "RuleToReposition",
   RuleSetName = "MyRuleSet"
-)
+)}
 
 }

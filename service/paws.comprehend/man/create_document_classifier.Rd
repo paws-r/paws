@@ -4,15 +4,8 @@
 \alias{create_document_classifier}
 \title{Creates a new document classifier that you can use to categorize documents}
 \usage{
-create_document_classifier(
-  DocumentClassifierName = "string",
-  DataAccessRoleArn = "string",
-  InputDataConfig = list(
-    S3Uri = "string"
-  ),
-  ClientRequestToken = "string",
-  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
-)
+create_document_classifier(DocumentClassifierName, DataAccessRoleArn,
+  InputDataConfig, ClientRequestToken = NULL, LanguageCode)
 }
 \arguments{
 \item{DocumentClassifierName}{[required] The name of the document classifier.}
@@ -28,6 +21,16 @@ create_document_classifier(
 \description{
 Creates a new document classifier that you can use to categorize documents. To create a classifier you provide a set of training documents that labeled with the categories that you want to use. After the classifier is trained you can use it to categorize a set of labeled documents into the categories. For more information, see how-document-classification.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_document_classifier(
+  DocumentClassifierName = "string",
+  DataAccessRoleArn = "string",
+  InputDataConfig = list(
+    S3Uri = "string"
+  ),
+  ClientRequestToken = "string",
+  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
+)
 }
+}
+

@@ -5,24 +5,11 @@
 \alias{create_application}
 \title{Creates an application, optionally including an AWS SAM file to create the first application version in the same call}
 \usage{
-create_application(
-  Author = "string",
-  Description = "string",
-  HomePageUrl = "string",
-  Labels = list(
-    "string"
-  ),
-  LicenseBody = "string",
-  LicenseUrl = "string",
-  Name = "string",
-  ReadmeBody = "string",
-  ReadmeUrl = "string",
-  SemanticVersion = "string",
-  SourceCodeUrl = "string",
-  SpdxLicenseId = "string",
-  TemplateBody = "string",
-  TemplateUrl = "string"
-)
+create_application(Author, Description, HomePageUrl = NULL,
+  Labels = NULL, LicenseBody = NULL, LicenseUrl = NULL, Name,
+  ReadmeBody = NULL, ReadmeUrl = NULL, SemanticVersion = NULL,
+  SourceCodeUrl = NULL, SpdxLicenseId = NULL, TemplateBody = NULL,
+  TemplateUrl = NULL)
 }
 \arguments{
 \item{Author}{[required] The name of the author publishing the app.
@@ -92,6 +79,25 @@ You can specify only one of templateBody and templateUrl; otherwise an error res
 \description{
 Creates an application, optionally including an AWS SAM file to create the first application version in the same call.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_application(
+  Author = "string",
+  Description = "string",
+  HomePageUrl = "string",
+  Labels = list(
+    "string"
+  ),
+  LicenseBody = "string",
+  LicenseUrl = "string",
+  Name = "string",
+  ReadmeBody = "string",
+  ReadmeUrl = "string",
+  SemanticVersion = "string",
+  SourceCodeUrl = "string",
+  SpdxLicenseId = "string",
+  TemplateBody = "string",
+  TemplateUrl = "string"
+)
 }
+}
+

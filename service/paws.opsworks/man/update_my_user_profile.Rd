@@ -4,9 +4,7 @@
 \alias{update_my_user_profile}
 \title{Updates a user's SSH public key}
 \usage{
-update_my_user_profile(
-  SshPublicKey = "string"
-)
+update_my_user_profile(SshPublicKey = NULL)
 }
 \arguments{
 \item{SshPublicKey}{The user's SSH public key.}
@@ -17,6 +15,10 @@ Updates a user's SSH public key.
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have self-management enabled or an attached policy that explicitly grants permissions. For more information about user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_my_user_profile(
+  SshPublicKey = "string"
+)
 }
+}
+

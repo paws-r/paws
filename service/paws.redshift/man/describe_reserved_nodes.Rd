@@ -4,11 +4,8 @@
 \alias{describe_reserved_nodes}
 \title{Returns the descriptions of the reserved nodes}
 \usage{
-describe_reserved_nodes(
-  ReservedNodeId = "string",
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_reserved_nodes(ReservedNodeId = NULL, MaxRecords = NULL,
+  Marker = NULL)
 }
 \arguments{
 \item{ReservedNodeId}{Identifier for the node reservation.}
@@ -24,6 +21,12 @@ Constraints: minimum 20, maximum 100.}
 \description{
 Returns the descriptions of the reserved nodes.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_reserved_nodes(
+  ReservedNodeId = "string",
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
+}
+

@@ -4,16 +4,8 @@
 \alias{create_snapshot_copy_grant}
 \title{Creates a snapshot copy grant that permits Amazon Redshift to use a customer master key (CMK) from AWS Key Management Service (AWS KMS) to encrypt copied snapshots in a destination region}
 \usage{
-create_snapshot_copy_grant(
-  SnapshotCopyGrantName = "string",
-  KmsKeyId = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_snapshot_copy_grant(SnapshotCopyGrantName, KmsKeyId = NULL,
+  Tags = NULL)
 }
 \arguments{
 \item{SnapshotCopyGrantName}{[required] The name of the snapshot copy grant. This name must be unique in the region for the AWS account.
@@ -37,6 +29,17 @@ Creates a snapshot copy grant that permits Amazon Redshift to use a customer mas
 \details{
 For more information about managing snapshot copy grants, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html}{Amazon Redshift Database Encryption} in the \emph{Amazon Redshift Cluster Management Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_snapshot_copy_grant(
+  SnapshotCopyGrantName = "string",
+  KmsKeyId = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

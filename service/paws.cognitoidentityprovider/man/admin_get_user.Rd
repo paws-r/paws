@@ -4,10 +4,7 @@
 \alias{admin_get_user}
 \title{Gets the specified user by user name in a user pool as an administrator}
 \usage{
-admin_get_user(
-  UserPoolId = "string",
-  Username = "string"
-)
+admin_get_user(UserPoolId, Username)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool where you want to get information about the user.}
@@ -20,6 +17,11 @@ Gets the specified user by user name in a user pool as an administrator. Works o
 \details{
 Requires developer credentials.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{admin_get_user(
+  UserPoolId = "string",
+  Username = "string"
+)
 }
+}
+

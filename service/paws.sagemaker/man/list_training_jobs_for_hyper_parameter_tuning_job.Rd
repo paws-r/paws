@@ -4,14 +4,10 @@
 \alias{list_training_jobs_for_hyper_parameter_tuning_job}
 \title{Gets a list of TrainingJobSummary objects that describe the training jobs that a hyperparameter tuning job launched}
 \usage{
-list_training_jobs_for_hyper_parameter_tuning_job(
-  HyperParameterTuningJobName = "string",
-  NextToken = "string",
-  MaxResults = 123,
-  StatusEquals = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
-  SortBy = "Name"|"CreationTime"|"Status"|"FinalObjectiveMetricValue",
-  SortOrder = "Ascending"|"Descending"
-)
+
+  list_training_jobs_for_hyper_parameter_tuning_job(HyperParameterTuningJobName,
+  NextToken = NULL, MaxResults = NULL, StatusEquals = NULL,
+  SortBy = NULL, SortOrder = NULL)
 }
 \arguments{
 \item{HyperParameterTuningJobName}{[required] The name of the tuning job whose training jobs you want to list.}
@@ -31,6 +27,15 @@ If the value of this field is \code{FinalObjectiveMetricValue}, any training job
 \description{
 Gets a list of TrainingJobSummary objects that describe the training jobs that a hyperparameter tuning job launched.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_training_jobs_for_hyper_parameter_tuning_job(
+  HyperParameterTuningJobName = "string",
+  NextToken = "string",
+  MaxResults = 123,
+  StatusEquals = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
+  SortBy = "Name"|"CreationTime"|"Status"|"FinalObjectiveMetricValue",
+  SortOrder = "Ascending"|"Descending"
+)
 }
+}
+

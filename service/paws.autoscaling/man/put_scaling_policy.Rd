@@ -4,45 +4,12 @@
 \alias{put_scaling_policy}
 \title{Creates or updates a policy for an Auto Scaling group}
 \usage{
-put_scaling_policy(
-  AutoScalingGroupName = "string",
-  PolicyName = "string",
-  PolicyType = "string",
-  AdjustmentType = "string",
-  MinAdjustmentStep = 123,
-  MinAdjustmentMagnitude = 123,
-  ScalingAdjustment = 123,
-  Cooldown = 123,
-  MetricAggregationType = "string",
-  StepAdjustments = list(
-    list(
-      MetricIntervalLowerBound = 123.0,
-      MetricIntervalUpperBound = 123.0,
-      ScalingAdjustment = 123
-    )
-  ),
-  EstimatedInstanceWarmup = 123,
-  TargetTrackingConfiguration = list(
-    PredefinedMetricSpecification = list(
-      PredefinedMetricType = "ASGAverageCPUUtilization"|"ASGAverageNetworkIn"|"ASGAverageNetworkOut"|"ALBRequestCountPerTarget",
-      ResourceLabel = "string"
-    ),
-    CustomizedMetricSpecification = list(
-      MetricName = "string",
-      Namespace = "string",
-      Dimensions = list(
-        list(
-          Name = "string",
-          Value = "string"
-        )
-      ),
-      Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
-      Unit = "string"
-    ),
-    TargetValue = 123.0,
-    DisableScaleIn = TRUE|FALSE
-  )
-)
+put_scaling_policy(AutoScalingGroupName, PolicyName, PolicyType = NULL,
+  AdjustmentType = NULL, MinAdjustmentStep = NULL,
+  MinAdjustmentMagnitude = NULL, ScalingAdjustment = NULL,
+  Cooldown = NULL, MetricAggregationType = NULL,
+  StepAdjustments = NULL, EstimatedInstanceWarmup = NULL,
+  TargetTrackingConfiguration = NULL)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
@@ -95,14 +62,57 @@ Creates or updates a policy for an Auto Scaling group. To update an existing pol
 \details{
 If you exceed your maximum limit of step adjustments, which by default is 20 per region, the call fails. For information about updating this limit, see \href{http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html}{AWS Service Limits} in the \emph{Amazon Web Services General Reference}.
 }
+\section{Accepted Parameters}{
+\preformatted{put_scaling_policy(
+  AutoScalingGroupName = "string",
+  PolicyName = "string",
+  PolicyType = "string",
+  AdjustmentType = "string",
+  MinAdjustmentStep = 123,
+  MinAdjustmentMagnitude = 123,
+  ScalingAdjustment = 123,
+  Cooldown = 123,
+  MetricAggregationType = "string",
+  StepAdjustments = list(
+    list(
+      MetricIntervalLowerBound = 123.0,
+      MetricIntervalUpperBound = 123.0,
+      ScalingAdjustment = 123
+    )
+  ),
+  EstimatedInstanceWarmup = 123,
+  TargetTrackingConfiguration = list(
+    PredefinedMetricSpecification = list(
+      PredefinedMetricType = "ASGAverageCPUUtilization"|"ASGAverageNetworkIn"|"ASGAverageNetworkOut"|"ALBRequestCountPerTarget",
+      ResourceLabel = "string"
+    ),
+    CustomizedMetricSpecification = list(
+      MetricName = "string",
+      Namespace = "string",
+      Dimensions = list(
+        list(
+          Name = "string",
+          Value = "string"
+        )
+      ),
+      Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
+      Unit = "string"
+    ),
+    TargetValue = 123.0,
+    DisableScaleIn = TRUE|FALSE
+  )
+)
+}
+}
+
 \examples{
 # This example adds the specified policy to the specified Auto Scaling
 # group.
-put_scaling_policy(
+\donttest{put_scaling_policy(
   AdjustmentType = "ChangeInCapacity",
   AutoScalingGroupName = "my-auto-scaling-group",
   PolicyName = "ScaleIn",
   ScalingAdjustment = -1L
-)
+)}
 
 }

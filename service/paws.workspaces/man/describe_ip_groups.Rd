@@ -4,13 +4,8 @@
 \alias{describe_ip_groups}
 \title{Describes one or more of your IP access control groups}
 \usage{
-describe_ip_groups(
-  GroupIds = list(
-    "string"
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
+describe_ip_groups(GroupIds = NULL, NextToken = NULL,
+  MaxResults = NULL)
 }
 \arguments{
 \item{GroupIds}{The identifiers of one or more IP access control groups.}
@@ -22,6 +17,14 @@ describe_ip_groups(
 \description{
 Describes one or more of your IP access control groups.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_ip_groups(
+  GroupIds = list(
+    "string"
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

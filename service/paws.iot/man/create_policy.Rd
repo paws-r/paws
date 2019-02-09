@@ -4,10 +4,7 @@
 \alias{create_policy}
 \title{Creates an AWS IoT policy}
 \usage{
-create_policy(
-  policyName = "string",
-  policyDocument = "string"
-)
+create_policy(policyName, policyDocument)
 }
 \arguments{
 \item{policyName}{[required] The policy name.}
@@ -20,6 +17,11 @@ Creates an AWS IoT policy.
 \details{
 The created policy is the default version for the policy. This operation creates a policy version with a version identifier of \strong{1} and sets \strong{1} as the policy's default version.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_policy(
+  policyName = "string",
+  policyDocument = "string"
+)
 }
+}
+

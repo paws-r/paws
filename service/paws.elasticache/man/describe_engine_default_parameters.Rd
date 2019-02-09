@@ -4,11 +4,8 @@
 \alias{describe_engine_default_parameters}
 \title{Returns the default engine and system parameter information for the specified cache engine}
 \usage{
-describe_engine_default_parameters(
-  CacheParameterGroupFamily = "string",
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_engine_default_parameters(CacheParameterGroupFamily,
+  MaxRecords = NULL, Marker = NULL)
 }
 \arguments{
 \item{CacheParameterGroupFamily}{[required] The name of the cache parameter group family.
@@ -26,6 +23,12 @@ Constraints: minimum 20; maximum 100.}
 \description{
 Returns the default engine and system parameter information for the specified cache engine.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_engine_default_parameters(
+  CacheParameterGroupFamily = "string",
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
+}
+

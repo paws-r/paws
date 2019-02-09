@@ -4,9 +4,7 @@
 \alias{get_data_catalog_encryption_settings}
 \title{Retrieves the security configuration for a specified catalog}
 \usage{
-get_data_catalog_encryption_settings(
-  CatalogId = "string"
-)
+get_data_catalog_encryption_settings(CatalogId = NULL)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog for which to retrieve the security configuration. If none is supplied, the AWS account ID is used by default.}
@@ -14,6 +12,10 @@ get_data_catalog_encryption_settings(
 \description{
 Retrieves the security configuration for a specified catalog.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_data_catalog_encryption_settings(
+  CatalogId = "string"
+)
 }
+}
+

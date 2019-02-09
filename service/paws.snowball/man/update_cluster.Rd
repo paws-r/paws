@@ -2,9 +2,34 @@
 % Please edit documentation in R/paws.snowball_operations.R
 \name{update_cluster}
 \alias{update_cluster}
-\title{While a cluster's \code{ClusterState} value is in the \code{AwaitingQuorum} state, you can update some of the information associated with a cluster}
+\title{While a cluster's ClusterState value is in the AwaitingQuorum state, you can update some of the information associated with a cluster}
 \usage{
-update_cluster(
+update_cluster(ClusterId, RoleARN = NULL, Description = NULL,
+  Resources = NULL, AddressId = NULL, ShippingOption = NULL,
+  Notification = NULL, ForwardingAddressId = NULL)
+}
+\arguments{
+\item{ClusterId}{[required] The cluster ID of the cluster that you want to update, for example \code{CID123e4567-e89b-12d3-a456-426655440000}.}
+
+\item{RoleARN}{The new role Amazon Resource Name (ARN) that you want to associate with this cluster. To create a role ARN, use the \href{http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html}{CreateRole} API action in AWS Identity and Access Management (IAM).}
+
+\item{Description}{The updated description of this cluster.}
+
+\item{Resources}{The updated arrays of JobResource objects that can include updated S3Resource objects or LambdaResource objects.}
+
+\item{AddressId}{The ID of the updated Address object.}
+
+\item{ShippingOption}{The updated shipping option value of this cluster's ShippingDetails object.}
+
+\item{Notification}{The new or updated Notification object.}
+
+\item{ForwardingAddressId}{The updated ID for the forwarding address for a cluster. This field is not supported in most regions.}
+}
+\description{
+While a cluster's \code{ClusterState} value is in the \code{AwaitingQuorum} state, you can update some of the information associated with a cluster. Once the cluster changes to a different job state, usually 60 minutes after the cluster being created, this action is no longer available.
+}
+\section{Accepted Parameters}{
+\preformatted{update_cluster(
   ClusterId = "string",
   RoleARN = "string",
   Description = "string",
@@ -47,34 +72,16 @@ update_cluster(
   ForwardingAddressId = "string"
 )
 }
-\arguments{
-\item{ClusterId}{[required] The cluster ID of the cluster that you want to update, for example \code{CID123e4567-e89b-12d3-a456-426655440000}.}
-
-\item{RoleARN}{The new role Amazon Resource Name (ARN) that you want to associate with this cluster. To create a role ARN, use the \href{http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html}{CreateRole} API action in AWS Identity and Access Management (IAM).}
-
-\item{Description}{The updated description of this cluster.}
-
-\item{Resources}{The updated arrays of JobResource objects that can include updated S3Resource objects or LambdaResource objects.}
-
-\item{AddressId}{The ID of the updated Address object.}
-
-\item{ShippingOption}{The updated shipping option value of this cluster's ShippingDetails object.}
-
-\item{Notification}{The new or updated Notification object.}
-
-\item{ForwardingAddressId}{The updated ID for the forwarding address for a cluster. This field is not supported in most regions.}
 }
-\description{
-While a cluster's \code{ClusterState} value is in the \code{AwaitingQuorum} state, you can update some of the information associated with a cluster. Once the cluster changes to a different job state, usually 60 minutes after the cluster being created, this action is no longer available.
-}
+
 \examples{
 # This action allows you to update certain parameters for a cluster. Once
 # the cluster changes to a different state, usually within 60 minutes of
 # it being created, this action is no longer available.
-update_cluster(
+\donttest{update_cluster(
   AddressId = "ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b",
   ClusterId = "CID123e4567-e89b-12d3-a456-426655440000",
   Description = "Updated the address to send this to image processing - RJ"
-)
+)}
 
 }

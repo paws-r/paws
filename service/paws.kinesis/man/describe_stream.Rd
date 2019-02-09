@@ -4,11 +4,7 @@
 \alias{describe_stream}
 \title{Describes the specified Kinesis data stream}
 \usage{
-describe_stream(
-  StreamName = "string",
-  Limit = 123,
-  ExclusiveStartShardId = "string"
-)
+describe_stream(StreamName, Limit = NULL, ExclusiveStartShardId = NULL)
 }
 \arguments{
 \item{StreamName}{[required] The name of the stream to describe.}
@@ -29,6 +25,12 @@ There are no guarantees about the chronological order shards returned. To proces
 
 This operation has a limit of 10 transactions per second per account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_stream(
+  StreamName = "string",
+  Limit = 123,
+  ExclusiveStartShardId = "string"
+)
 }
+}
+

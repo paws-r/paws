@@ -2,40 +2,40 @@
 % Please edit documentation in R/paws.lambda_operations.R
 \name{get_function}
 \alias{get_function}
-\title{Returns the configuration information of the Lambda function and a presigned URL link to the}
+\title{Returns information about function or function version, with a link to download the deployment package that's valid for 10 minutes}
 \usage{
-get_function(
-  FunctionName = "string",
-  Qualifier = "string"
-)
+get_function(FunctionName, Qualifier = NULL)
 }
 \arguments{
-\item{FunctionName}{[required] The name of the Lambda function.
+\item{FunctionName}{[required] The name of the Lambda function, version, or alias.
 
 \strong{Name formats}
 \itemize{
-\item \strong{Function name} - \code{MyFunction}.
-\item \strong{Function ARN} - \code{arn:aws:lambda:us-west-2:123456789012:function:MyFunction}.
-\item \strong{Partial ARN} - \code{123456789012:function:MyFunction}.
+\item \strong{Function name} - \code{my-function} (name-only), \code{my-function:v1} (with alias).
+\item \strong{Function ARN} - \code{arn:aws:lambda:us-west-2:123456789012:function:my-function}.
+\item \strong{Partial ARN} - \code{123456789012:function:my-function}.
 }
 
-The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
+You can append a version number or alias to any of the formats. The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
 
 \item{Qualifier}{Specify a version or alias to get details about a published version of the function.}
 }
 \description{
-Returns the configuration information of the Lambda function and a presigned URL link to the .zip file you uploaded with CreateFunction so you can download the .zip file. Note that the URL is valid for up to 10 minutes. The configuration information is the same information you provided as parameters when uploading the function.
+Returns information about function or function version, with a link to download the deployment package that's valid for 10 minutes. If you specify a function version, only details specific to that version are returned.
 }
-\details{
-Use the \code{Qualifier} parameter to retrieve a published version of the function. Otherwise, returns the unpublished version (\code{$LATEST}). For more information, see \href{http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{AWS Lambda Function Versioning and Aliases}.
+\section{Accepted Parameters}{
+\preformatted{get_function(
+  FunctionName = "string",
+  Qualifier = "string"
+)
+}
+}
 
-This operation requires permission for the \code{lambda:GetFunction} action.
-}
 \examples{
 # This operation retrieves a Lambda function's event source mapping
-get_function(
+\donttest{get_function(
   FunctionName = "myFunction",
   Qualifier = "1"
-)
+)}
 
 }

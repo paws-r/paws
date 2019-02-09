@@ -4,28 +4,10 @@
 \alias{admin_create_user}
 \title{Creates a new user in the specified user pool}
 \usage{
-admin_create_user(
-  UserPoolId = "string",
-  Username = "string",
-  UserAttributes = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  ValidationData = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  TemporaryPassword = "string",
-  ForceAliasCreation = TRUE|FALSE,
-  MessageAction = "RESEND"|"SUPPRESS",
-  DesiredDeliveryMediums = list(
-    "SMS"|"EMAIL"
-  )
-)
+admin_create_user(UserPoolId, Username, UserAttributes = NULL,
+  ValidationData = NULL, TemporaryPassword = NULL,
+  ForceAliasCreation = NULL, MessageAction = NULL,
+  DesiredDeliveryMediums = NULL)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool where the user will be created.}
@@ -82,6 +64,29 @@ In either case, the user will be in the \code{FORCE_CHANGE_PASSWORD} state until
 
 AdminCreateUser requires developer credentials.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{admin_create_user(
+  UserPoolId = "string",
+  Username = "string",
+  UserAttributes = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  ValidationData = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  TemporaryPassword = "string",
+  ForceAliasCreation = TRUE|FALSE,
+  MessageAction = "RESEND"|"SUPPRESS",
+  DesiredDeliveryMediums = list(
+    "SMS"|"EMAIL"
+  )
+)
 }
+}
+

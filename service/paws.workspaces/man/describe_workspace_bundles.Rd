@@ -4,13 +4,8 @@
 \alias{describe_workspace_bundles}
 \title{Retrieves a list that describes the available WorkSpace bundles}
 \usage{
-describe_workspace_bundles(
-  BundleIds = list(
-    "string"
-  ),
-  Owner = "string",
-  NextToken = "string"
-)
+describe_workspace_bundles(BundleIds = NULL, Owner = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{BundleIds}{The identifiers of the bundles. You cannot combine this parameter with any other filter.}
@@ -27,6 +22,14 @@ Retrieves a list that describes the available WorkSpace bundles.
 \details{
 You can filter the results using either bundle ID or owner, but not both.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_workspace_bundles(
+  BundleIds = list(
+    "string"
+  ),
+  Owner = "string",
+  NextToken = "string"
+)
 }
+}
+

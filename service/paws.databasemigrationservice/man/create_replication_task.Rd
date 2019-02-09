@@ -4,24 +4,10 @@
 \alias{create_replication_task}
 \title{Creates a replication task using the specified parameters}
 \usage{
-create_replication_task(
-  ReplicationTaskIdentifier = "string",
-  SourceEndpointArn = "string",
-  TargetEndpointArn = "string",
-  ReplicationInstanceArn = "string",
-  MigrationType = "full-load"|"cdc"|"full-load-and-cdc",
-  TableMappings = "string",
-  ReplicationTaskSettings = "string",
-  CdcStartTime = as.POSIXct("2015-01-01"),
-  CdcStartPosition = "string",
-  CdcStopPosition = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_replication_task(ReplicationTaskIdentifier, SourceEndpointArn,
+  TargetEndpointArn, ReplicationInstanceArn, MigrationType, TableMappings,
+  ReplicationTaskSettings = NULL, CdcStartTime = NULL,
+  CdcStartPosition = NULL, CdcStopPosition = NULL, Tags = NULL)
 }
 \arguments{
 \item{ReplicationTaskIdentifier}{[required] The replication task identifier.
@@ -72,9 +58,31 @@ Commit time example: --cdc-stop-position "commit\_time: 3018-02-09T12:12:12 "}
 \description{
 Creates a replication task using the specified parameters.
 }
+\section{Accepted Parameters}{
+\preformatted{create_replication_task(
+  ReplicationTaskIdentifier = "string",
+  SourceEndpointArn = "string",
+  TargetEndpointArn = "string",
+  ReplicationInstanceArn = "string",
+  MigrationType = "full-load"|"cdc"|"full-load-and-cdc",
+  TableMappings = "string",
+  ReplicationTaskSettings = "string",
+  CdcStartTime = as.POSIXct("2015-01-01"),
+  CdcStartPosition = "string",
+  CdcStopPosition = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # Creates a replication task using the specified parameters.
-create_replication_task(
+\donttest{create_replication_task(
   CdcStartTime = "2016-12-14T18:25:43Z",
   MigrationType = "full-load",
   ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJQ",
@@ -89,6 +97,6 @@ create_replication_task(
     )
   ),
   TargetEndpointArn = "arn:aws:dms:us-east-1:123456789012:endpoint:ASXWXJZLNWNT5HTWCGV2BUJQ7E"
-)
+)}
 
 }

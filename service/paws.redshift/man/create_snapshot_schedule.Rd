@@ -4,21 +4,9 @@
 \alias{create_snapshot_schedule}
 \title{Creates a new snapshot schedule}
 \usage{
-create_snapshot_schedule(
-  ScheduleDefinitions = list(
-    "string"
-  ),
-  ScheduleIdentifier = "string",
-  ScheduleDescription = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  DryRun = TRUE|FALSE,
-  NextInvocations = 123
-)
+create_snapshot_schedule(ScheduleDefinitions = NULL,
+  ScheduleIdentifier = NULL, ScheduleDescription = NULL, Tags = NULL,
+  DryRun = NULL, NextInvocations = NULL)
 }
 \arguments{
 \item{ScheduleDefinitions}{The definition of the snapshot schedule. The definition is made up of schedule expressions, for example "cron(30 12 *)" or "rate(12 hours)".}
@@ -36,6 +24,22 @@ create_snapshot_schedule(
 \description{
 Creates a new snapshot schedule.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_snapshot_schedule(
+  ScheduleDefinitions = list(
+    "string"
+  ),
+  ScheduleIdentifier = "string",
+  ScheduleDescription = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  DryRun = TRUE|FALSE,
+  NextInvocations = 123
+)
 }
+}
+

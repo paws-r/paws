@@ -4,9 +4,7 @@
 \alias{describe_stack_drift_detection_status}
 \title{Returns information about a stack drift detection operation}
 \usage{
-describe_stack_drift_detection_status(
-  StackDriftDetectionId = "string"
-)
+describe_stack_drift_detection_status(StackDriftDetectionId)
 }
 \arguments{
 \item{StackDriftDetectionId}{[required] The ID of the drift detection results of this operation.
@@ -19,6 +17,10 @@ Returns information about a stack drift detection operation. A stack drift detec
 \details{
 Use DetectStackDrift to initiate a stack drift detection operation. \code{DetectStackDrift} returns a \code{StackDriftDetectionId} you can use to monitor the progress of the operation using \code{DescribeStackDriftDetectionStatus}. Once the drift detection operation has completed, use DescribeStackResourceDrifts to return drift information about the stack and its resources.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_stack_drift_detection_status(
+  StackDriftDetectionId = "string"
+)
 }
+}
+

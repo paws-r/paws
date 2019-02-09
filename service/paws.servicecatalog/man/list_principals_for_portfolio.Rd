@@ -4,12 +4,8 @@
 \alias{list_principals_for_portfolio}
 \title{Lists all principal ARNs associated with the specified portfolio}
 \usage{
-list_principals_for_portfolio(
-  AcceptLanguage = "string",
-  PortfolioId = "string",
-  PageSize = 123,
-  PageToken = "string"
-)
+list_principals_for_portfolio(AcceptLanguage = NULL, PortfolioId,
+  PageSize = NULL, PageToken = NULL)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -28,6 +24,13 @@ list_principals_for_portfolio(
 \description{
 Lists all principal ARNs associated with the specified portfolio.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_principals_for_portfolio(
+  AcceptLanguage = "string",
+  PortfolioId = "string",
+  PageSize = 123,
+  PageToken = "string"
+)
 }
+}
+

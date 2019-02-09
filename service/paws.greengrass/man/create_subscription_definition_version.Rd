@@ -4,7 +4,21 @@
 \alias{create_subscription_definition_version}
 \title{Creates a version of a subscription definition which has already been defined}
 \usage{
-create_subscription_definition_version(
+create_subscription_definition_version(AmznClientToken = NULL,
+  SubscriptionDefinitionId, Subscriptions = NULL)
+}
+\arguments{
+\item{AmznClientToken}{A client token used to correlate requests and responses.}
+
+\item{SubscriptionDefinitionId}{[required] The ID of the subscription definition.}
+
+\item{Subscriptions}{A list of subscriptions.}
+}
+\description{
+Creates a version of a subscription definition which has already been defined.
+}
+\section{Accepted Parameters}{
+\preformatted{create_subscription_definition_version(
   AmznClientToken = "string",
   SubscriptionDefinitionId = "string",
   Subscriptions = list(
@@ -17,16 +31,5 @@ create_subscription_definition_version(
   )
 )
 }
-\arguments{
-\item{AmznClientToken}{A client token used to correlate requests and responses.}
-
-\item{SubscriptionDefinitionId}{[required] The ID of the subscription definition.}
-
-\item{Subscriptions}{A list of subscriptions.}
 }
-\description{
-Creates a version of a subscription definition which has already been defined.
-}
-\examples{
 
-}

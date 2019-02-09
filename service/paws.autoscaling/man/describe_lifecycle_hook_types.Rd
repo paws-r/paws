@@ -18,6 +18,6 @@ The following hook types are supported:
 }
 \examples{
 # This example describes the available lifecycle hook types.
-describe_lifecycle_hook_types()
+\donttest{describe_lifecycle_hook_types()}
 
 }

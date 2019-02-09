@@ -4,9 +4,7 @@
 \alias{get_account_limit}
 \title{Gets the specified limit for the current account, for example, the maximum number of health checks that you can create using the account}
 \usage{
-get_account_limit(
-  Type = "MAX_HEALTH_CHECKS_BY_OWNER"|"MAX_HOSTED_ZONES_BY_OWNER"|"MAX_TRAFFIC_POLICY_INSTANCES_BY_OWNER"|"MAX_REUSABLE_DELEGATION_SETS_BY_OWNER"|"MAX_TRAFFIC_POLICIES_BY_OWNER"
-)
+get_account_limit(Type)
 }
 \arguments{
 \item{Type}{[required] The limit that you want to get. Valid values include the following:
@@ -24,6 +22,10 @@ Gets the specified limit for the current account, for example, the maximum numbe
 \details{
 For the default limit, see \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html}{Limits} in the \emph{Amazon Route 53 Developer Guide}. To request a higher limit, \href{https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-route53}{open a case}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_account_limit(
+  Type = "MAX_HEALTH_CHECKS_BY_OWNER"|"MAX_HOSTED_ZONES_BY_OWNER"|"MAX_TRAFFIC_POLICY_INSTANCES_BY_OWNER"|"MAX_REUSABLE_DELEGATION_SETS_BY_OWNER"|"MAX_TRAFFIC_POLICIES_BY_OWNER"
+)
 }
+}
+

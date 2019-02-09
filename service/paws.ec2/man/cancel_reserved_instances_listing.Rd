@@ -4,9 +4,7 @@
 \alias{cancel_reserved_instances_listing}
 \title{Cancels the specified Reserved Instance listing in the Reserved Instance Marketplace}
 \usage{
-cancel_reserved_instances_listing(
-  ReservedInstancesListingId = "string"
-)
+cancel_reserved_instances_listing(ReservedInstancesListingId)
 }
 \arguments{
 \item{ReservedInstancesListingId}{[required] The ID of the Reserved Instance listing.}
@@ -15,8 +13,12 @@ cancel_reserved_instances_listing(
 Cancels the specified Reserved Instance listing in the Reserved Instance Marketplace.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html}{Reserved Instance Marketplace} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html}{Reserved Instance Marketplace} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{cancel_reserved_instances_listing(
+  ReservedInstancesListingId = "string"
+)
+}
+}
 
-}

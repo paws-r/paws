@@ -4,12 +4,7 @@
 \alias{set_endpoint_attributes}
 \title{Sets the attributes for an endpoint for a device on one of the supported push notification services, such as GCM and APNS}
 \usage{
-set_endpoint_attributes(
-  EndpointArn = "string",
-  Attributes = list(
-    "string"
-  )
-)
+set_endpoint_attributes(EndpointArn, Attributes)
 }
 \arguments{
 \item{EndpointArn}{[required] EndpointArn used for SetEndpointAttributes action.}
@@ -24,6 +19,13 @@ set_endpoint_attributes(
 \description{
 Sets the attributes for an endpoint for a device on one of the supported push notification services, such as GCM and APNS. For more information, see \href{http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html}{Using Amazon SNS Mobile Push Notifications}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{set_endpoint_attributes(
+  EndpointArn = "string",
+  Attributes = list(
+    "string"
+  )
+)
 }
+}
+

@@ -2,19 +2,11 @@
 % Please edit documentation in R/paws.connect_operations.R
 \name{start_outbound_voice_contact}
 \alias{start_outbound_voice_contact}
-\title{The \code{StartOutboundVoiceContact} operation initiates a contact flow to place an outbound call to a customer}
+\title{The StartOutboundVoiceContact operation initiates a contact flow to place an outbound call to a customer}
 \usage{
-start_outbound_voice_contact(
-  DestinationPhoneNumber = "string",
-  ContactFlowId = "string",
-  InstanceId = "string",
-  ClientToken = "string",
-  SourcePhoneNumber = "string",
-  QueueId = "string",
-  Attributes = list(
-    "string"
-  )
-)
+start_outbound_voice_contact(DestinationPhoneNumber, ContactFlowId,
+  InstanceId, ClientToken = NULL, SourcePhoneNumber = NULL,
+  QueueId = NULL, Attributes = NULL)
 }
 \arguments{
 \item{DestinationPhoneNumber}{[required] The phone number of the customer in E.164 format.}
@@ -47,6 +39,18 @@ If you are using an IAM account, it must have permission to the \code{connect:St
 
 There is a 60 second dialing timeout for this operation. If the call is not connected after 60 seconds, the call fails.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_outbound_voice_contact(
+  DestinationPhoneNumber = "string",
+  ContactFlowId = "string",
+  InstanceId = "string",
+  ClientToken = "string",
+  SourcePhoneNumber = "string",
+  QueueId = "string",
+  Attributes = list(
+    "string"
+  )
+)
 }
+}
+

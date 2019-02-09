@@ -4,10 +4,7 @@
 \alias{detach_policy}
 \title{Detaches a policy from a target root, organizational unit (OU), or account}
 \usage{
-detach_policy(
-  PolicyId = "string",
-  TargetId = "string"
-)
+detach_policy(PolicyId, TargetId)
 }
 \arguments{
 \item{PolicyId}{[required] The unique identifier (ID) of the policy you want to detach. You can get the ID from the ListPolicies or ListPoliciesForTarget operations.
@@ -31,11 +28,19 @@ Detaches a policy from a target root, organizational unit (OU), or account. If t
 
 This operation can be called only from the organization's master account.
 }
+\section{Accepted Parameters}{
+\preformatted{detach_policy(
+  PolicyId = "string",
+  TargetId = "string"
+)
+}
+}
+
 \examples{
 # The following example shows how to detach a policy from an OU:/n/n
-detach_policy(
+\donttest{detach_policy(
   PolicyId = "p-examplepolicyid111",
   TargetId = "ou-examplerootid111-exampleouid111"
-)
+)}
 
 }

@@ -2,9 +2,39 @@
 % Please edit documentation in R/paws.appsync_operations.R
 \name{create_data_source}
 \alias{create_data_source}
-\title{Creates a \code{DataSource} object}
+\title{Creates a DataSource object}
 \usage{
-create_data_source(
+create_data_source(apiId, name, description = NULL, type,
+  serviceRoleArn = NULL, dynamodbConfig = NULL, lambdaConfig = NULL,
+  elasticsearchConfig = NULL, httpConfig = NULL,
+  relationalDatabaseConfig = NULL)
+}
+\arguments{
+\item{apiId}{[required] The API ID for the GraphQL API for the \code{DataSource}.}
+
+\item{name}{[required] A user-supplied name for the \code{DataSource}.}
+
+\item{description}{A description of the \code{DataSource}.}
+
+\item{type}{[required] The type of the \code{DataSource}.}
+
+\item{serviceRoleArn}{The AWS IAM service role ARN for the data source. The system assumes this role when accessing the data source.}
+
+\item{dynamodbConfig}{Amazon DynamoDB settings.}
+
+\item{lambdaConfig}{AWS Lambda settings.}
+
+\item{elasticsearchConfig}{Amazon Elasticsearch Service settings.}
+
+\item{httpConfig}{HTTP endpoint settings.}
+
+\item{relationalDatabaseConfig}{Relational database settings.}
+}
+\description{
+Creates a \code{DataSource} object.
+}
+\section{Accepted Parameters}{
+\preformatted{create_data_source(
   apiId = "string",
   name = "string",
   description = "string",
@@ -44,30 +74,5 @@ create_data_source(
   )
 )
 }
-\arguments{
-\item{apiId}{[required] The API ID for the GraphQL API for the \code{DataSource}.}
-
-\item{name}{[required] A user-supplied name for the \code{DataSource}.}
-
-\item{description}{A description of the \code{DataSource}.}
-
-\item{type}{[required] The type of the \code{DataSource}.}
-
-\item{serviceRoleArn}{The AWS IAM service role ARN for the data source. The system assumes this role when accessing the data source.}
-
-\item{dynamodbConfig}{Amazon DynamoDB settings.}
-
-\item{lambdaConfig}{AWS Lambda settings.}
-
-\item{elasticsearchConfig}{Amazon Elasticsearch Service settings.}
-
-\item{httpConfig}{HTTP endpoint settings.}
-
-\item{relationalDatabaseConfig}{Relational database settings.}
 }
-\description{
-Creates a \code{DataSource} object.
-}
-\examples{
 
-}

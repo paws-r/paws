@@ -4,9 +4,7 @@
 \alias{describe_billing_group}
 \title{Returns information about a billing group}
 \usage{
-describe_billing_group(
-  billingGroupName = "string"
-)
+describe_billing_group(billingGroupName)
 }
 \arguments{
 \item{billingGroupName}{[required] The name of the billing group.}
@@ -14,6 +12,10 @@ describe_billing_group(
 \description{
 Returns information about a billing group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_billing_group(
+  billingGroupName = "string"
+)
 }
+}
+

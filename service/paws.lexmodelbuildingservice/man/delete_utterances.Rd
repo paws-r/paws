@@ -4,10 +4,7 @@
 \alias{delete_utterances}
 \title{Deletes stored utterances}
 \usage{
-delete_utterances(
-  botName = "string",
-  userId = "string"
-)
+delete_utterances(botName, userId)
 }
 \arguments{
 \item{botName}{[required] The name of the bot that stored the utterances.}
@@ -24,6 +21,11 @@ Use the \code{DeleteStoredUtterances} operation to manually delete stored uttera
 
 This operation requires permissions for the \code{lex:DeleteUtterances} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_utterances(
+  botName = "string",
+  userId = "string"
+)
 }
+}
+

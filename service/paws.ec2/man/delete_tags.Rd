@@ -4,18 +4,7 @@
 \alias{delete_tags}
 \title{Deletes the specified set of tags from the specified set of resources}
 \usage{
-delete_tags(
-  DryRun = TRUE|FALSE,
-  Resources = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+delete_tags(DryRun = NULL, Resources, Tags = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -32,11 +21,27 @@ If you omit this parameter, we delete all user-defined tags for the specified re
 Deletes the specified set of tags from the specified set of resources.
 }
 \details{
-To list the current tags, use DescribeTags. For more information about tags, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html}{Tagging Your Resources} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+To list the current tags, use DescribeTags. For more information about tags, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html}{Tagging Your Resources} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_tags(
+  DryRun = TRUE|FALSE,
+  Resources = list(
+    "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # This example deletes the tag Stack=test from the specified image.
-delete_tags(
+\donttest{delete_tags(
   Resources = list(
     "ami-78a54011"
   ),
@@ -46,6 +51,6 @@ delete_tags(
       Value = "test"
     )
   )
-)
+)}
 
 }

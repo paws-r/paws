@@ -4,14 +4,9 @@
 \alias{list_entities_for_policy}
 \title{Lists all IAM users, groups, and roles that the specified managed policy is attached to}
 \usage{
-list_entities_for_policy(
-  PolicyArn = "string",
-  EntityFilter = "User"|"Role"|"Group"|"LocalManagedPolicy"|"AWSManagedPolicy",
-  PathPrefix = "string",
-  PolicyUsageFilter = "PermissionsPolicy"|"PermissionsBoundary",
-  Marker = "string",
-  MaxItems = 123
-)
+list_entities_for_policy(PolicyArn, EntityFilter = NULL,
+  PathPrefix = NULL, PolicyUsageFilter = NULL, Marker = NULL,
+  MaxItems = NULL)
 }
 \arguments{
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy for which you want the versions.
@@ -28,7 +23,7 @@ This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex 
 
 \item{PolicyUsageFilter}{The policy usage method to use for filtering the results.
 
-To list only permissions policies, setÂ \code{PolicyUsageFilter}Â toÂ \code{PermissionsPolicy}. To list only the policies used to set permissions boundaries, setÂ the value toÂ \code{PermissionsBoundary}.
+To list only permissions policies, set \code{PolicyUsageFilter} to \code{PermissionsPolicy}. To list only the policies used to set permissions boundaries, set the value to \code{PermissionsBoundary}.
 
 This parameter is optional. If it is not included, all policies are returned.}
 
@@ -46,6 +41,15 @@ You can use the optional \code{EntityFilter} parameter to limit the results to a
 
 You can paginate the results using the \code{MaxItems} and \code{Marker} parameters.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_entities_for_policy(
+  PolicyArn = "string",
+  EntityFilter = "User"|"Role"|"Group"|"LocalManagedPolicy"|"AWSManagedPolicy",
+  PathPrefix = "string",
+  PolicyUsageFilter = "PermissionsPolicy"|"PermissionsBoundary",
+  Marker = "string",
+  MaxItems = 123
+)
 }
+}
+

@@ -4,12 +4,8 @@
 \alias{list_attached_policies}
 \title{Lists the policies attached to the specified thing group}
 \usage{
-list_attached_policies(
-  target = "string",
-  recursive = TRUE|FALSE,
-  marker = "string",
-  pageSize = 123
-)
+list_attached_policies(target, recursive = NULL, marker = NULL,
+  pageSize = NULL)
 }
 \arguments{
 \item{target}{[required] The group for which the policies will be listed.}
@@ -23,6 +19,13 @@ list_attached_policies(
 \description{
 Lists the policies attached to the specified thing group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_attached_policies(
+  target = "string",
+  recursive = TRUE|FALSE,
+  marker = "string",
+  pageSize = 123
+)
 }
+}
+

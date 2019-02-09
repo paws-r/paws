@@ -4,9 +4,7 @@
 \alias{register_cross_account_access_role}
 \title{Registers the IAM role that grants Amazon Inspector access to AWS Services needed to perform security assessments}
 \usage{
-register_cross_account_access_role(
-  roleArn = "string"
-)
+register_cross_account_access_role(roleArn)
 }
 \arguments{
 \item{roleArn}{[required] The ARN of the IAM role that grants Amazon Inspector access to AWS Services needed to perform security assessments.}
@@ -14,12 +12,19 @@ register_cross_account_access_role(
 \description{
 Registers the IAM role that grants Amazon Inspector access to AWS Services needed to perform security assessments.
 }
+\section{Accepted Parameters}{
+\preformatted{register_cross_account_access_role(
+  roleArn = "string"
+)
+}
+}
+
 \examples{
 # Registers the IAM role that Amazon Inspector uses to list your EC2
 # instances at the start of the assessment run or when you call the
 # PreviewAgents action.
-register_cross_account_access_role(
+\donttest{register_cross_account_access_role(
   roleArn = "arn:aws:iam::123456789012:role/inspector"
-)
+)}
 
 }

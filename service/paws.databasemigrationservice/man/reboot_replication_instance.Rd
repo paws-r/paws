@@ -4,10 +4,7 @@
 \alias{reboot_replication_instance}
 \title{Reboots a replication instance}
 \usage{
-reboot_replication_instance(
-  ReplicationInstanceArn = "string",
-  ForceFailover = TRUE|FALSE
-)
+reboot_replication_instance(ReplicationInstanceArn, ForceFailover = NULL)
 }
 \arguments{
 \item{ReplicationInstanceArn}{[required] The Amazon Resource Name (ARN) of the replication instance.}
@@ -17,6 +14,11 @@ reboot_replication_instance(
 \description{
 Reboots a replication instance. Rebooting results in a momentary outage, until the replication instance becomes available again.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{reboot_replication_instance(
+  ReplicationInstanceArn = "string",
+  ForceFailover = TRUE|FALSE
+)
 }
+}
+

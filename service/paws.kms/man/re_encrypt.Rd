@@ -4,19 +4,9 @@
 \alias{re_encrypt}
 \title{Encrypts data on the server side with a new customer master key (CMK) without exposing the plaintext of the data on the client side}
 \usage{
-re_encrypt(
-  CiphertextBlob = raw,
-  SourceEncryptionContext = list(
-    "string"
-  ),
-  DestinationKeyId = "string",
-  DestinationEncryptionContext = list(
-    "string"
-  ),
-  GrantTokens = list(
-    "string"
-  )
-)
+re_encrypt(CiphertextBlob, SourceEncryptionContext = NULL,
+  DestinationKeyId, DestinationEncryptionContext = NULL,
+  GrantTokens = NULL)
 }
 \arguments{
 \item{CiphertextBlob}{[required] Ciphertext of the data to reencrypt.}
@@ -53,11 +43,28 @@ Unlike other operations, \code{ReEncrypt} is authorized twice, once as \code{ReE
 
 The result of this operation varies with the key state of the CMK. For details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key} in the \emph{AWS Key Management Service Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{re_encrypt(
+  CiphertextBlob = raw,
+  SourceEncryptionContext = list(
+    "string"
+  ),
+  DestinationKeyId = "string",
+  DestinationEncryptionContext = list(
+    "string"
+  ),
+  GrantTokens = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # The following example reencrypts data with the specified CMK.
-re_encrypt(
+\donttest{re_encrypt(
   CiphertextBlob = "<binary data>",
   DestinationKeyId = "0987dcba-09fe-87dc-65ba-ab0987654321"
-)
+)}
 
 }

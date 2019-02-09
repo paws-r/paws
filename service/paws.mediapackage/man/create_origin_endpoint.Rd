@@ -4,7 +4,44 @@
 \alias{create_origin_endpoint}
 \title{Creates a new OriginEndpoint record}
 \usage{
-create_origin_endpoint(
+create_origin_endpoint(ChannelId, CmafPackage = NULL,
+  DashPackage = NULL, Description = NULL, HlsPackage = NULL, Id,
+  ManifestName = NULL, MssPackage = NULL,
+  StartoverWindowSeconds = NULL, TimeDelaySeconds = NULL,
+  Whitelist = NULL)
+}
+\arguments{
+\item{ChannelId}{[required] The ID of the Channel that the OriginEndpoint will be associated with.
+This cannot be changed after the OriginEndpoint is created.}
+
+\item{CmafPackage}{}
+
+\item{DashPackage}{}
+
+\item{Description}{A short text description of the OriginEndpoint.}
+
+\item{HlsPackage}{}
+
+\item{Id}{[required] The ID of the OriginEndpoint.  The ID must be unique within the region
+and it cannot be changed after the OriginEndpoint is created.}
+
+\item{ManifestName}{A short string that will be used as the filename of the OriginEndpoint URL (defaults to "index").}
+
+\item{MssPackage}{}
+
+\item{StartoverWindowSeconds}{Maximum duration (seconds) of content to retain for startover playback.
+If not specified, startover playback will be disabled for the OriginEndpoint.}
+
+\item{TimeDelaySeconds}{Amount of delay (seconds) to enforce on the playback of live content.
+If not specified, there will be no time delay in effect for the OriginEndpoint.}
+
+\item{Whitelist}{A list of source IP CIDR blocks that will be allowed to access the OriginEndpoint.}
+}
+\description{
+Creates a new OriginEndpoint record.
+}
+\section{Accepted Parameters}{
+\preformatted{create_origin_endpoint(
   ChannelId = "string",
   CmafPackage = list(
     Encryption = list(
@@ -125,36 +162,5 @@ create_origin_endpoint(
   )
 )
 }
-\arguments{
-\item{ChannelId}{[required] The ID of the Channel that the OriginEndpoint will be associated with.
-This cannot be changed after the OriginEndpoint is created.}
-
-\item{CmafPackage}{}
-
-\item{DashPackage}{}
-
-\item{Description}{A short text description of the OriginEndpoint.}
-
-\item{HlsPackage}{}
-
-\item{Id}{[required] The ID of the OriginEndpoint.  The ID must be unique within the region
-and it cannot be changed after the OriginEndpoint is created.}
-
-\item{ManifestName}{A short string that will be used as the filename of the OriginEndpoint URL (defaults to "index").}
-
-\item{MssPackage}{}
-
-\item{StartoverWindowSeconds}{Maximum duration (seconds) of content to retain for startover playback.
-If not specified, startover playback will be disabled for the OriginEndpoint.}
-
-\item{TimeDelaySeconds}{Amount of delay (seconds) to enforce on the playback of live content.
-If not specified, there will be no time delay in effect for the OriginEndpoint.}
-
-\item{Whitelist}{A list of source IP CIDR blocks that will be allowed to access the OriginEndpoint.}
 }
-\description{
-Creates a new OriginEndpoint record.
-}
-\examples{
 
-}

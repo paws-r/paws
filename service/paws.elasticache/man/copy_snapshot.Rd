@@ -4,11 +4,8 @@
 \alias{copy_snapshot}
 \title{Makes a copy of an existing snapshot}
 \usage{
-copy_snapshot(
-  SourceSnapshotName = "string",
-  TargetSnapshotName = "string",
-  TargetBucket = "string"
-)
+copy_snapshot(SourceSnapshotName, TargetSnapshotName,
+  TargetBucket = NULL)
 }
 \arguments{
 \item{SourceSnapshotName}{[required] The name of an existing snapshot from which to make a copy.}
@@ -73,6 +70,12 @@ You could receive the following error messages.
 
 \strong{Solution:} Add View Permissions on the bucket. For more information, see \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html#Snapshots.Exporting.GrantAccess}{Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket} in the ElastiCache User Guide.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{copy_snapshot(
+  SourceSnapshotName = "string",
+  TargetSnapshotName = "string",
+  TargetBucket = "string"
+)
 }
+}
+

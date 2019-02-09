@@ -4,14 +4,8 @@
 \alias{update_model}
 \title{Updates a Model}
 \usage{
-update_model(
-  ApiId = "string",
-  ContentType = "string",
-  Description = "string",
-  ModelId = "string",
-  Name = "string",
-  Schema = "string"
-)
+update_model(ApiId, ContentType = NULL, Description = NULL, ModelId,
+  Name = NULL, Schema = NULL)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -29,6 +23,15 @@ update_model(
 \description{
 Updates a Model.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_model(
+  ApiId = "string",
+  ContentType = "string",
+  Description = "string",
+  ModelId = "string",
+  Name = "string",
+  Schema = "string"
+)
 }
+}
+

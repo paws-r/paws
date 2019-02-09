@@ -4,7 +4,23 @@
 \alias{describe_event_types}
 \title{Returns the event types that meet the specified filter criteria}
 \usage{
-describe_event_types(
+describe_event_types(filter = NULL, locale = NULL, nextToken = NULL,
+  maxResults = NULL)
+}
+\arguments{
+\item{filter}{Values to narrow the results returned.}
+
+\item{locale}{The locale (language) to return information in. English (en) is the default and the only supported value at this time.}
+
+\item{nextToken}{If the results of a search are large, only a portion of the results are returned, and a \code{nextToken} pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.}
+
+\item{maxResults}{The maximum number of items to return in one batch, between 10 and 100, inclusive.}
+}
+\description{
+Returns the event types that meet the specified filter criteria. If no filter criteria are specified, all event types are returned, in no particular order.
+}
+\section{Accepted Parameters}{
+\preformatted{describe_event_types(
   filter = list(
     eventTypeCodes = list(
       "string"
@@ -21,18 +37,5 @@ describe_event_types(
   maxResults = 123
 )
 }
-\arguments{
-\item{filter}{Values to narrow the results returned.}
-
-\item{locale}{The locale (language) to return information in. English (en) is the default and the only supported value at this time.}
-
-\item{nextToken}{If the results of a search are large, only a portion of the results are returned, and a \code{nextToken} pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.}
-
-\item{maxResults}{The maximum number of items to return in one batch, between 10 and 100, inclusive.}
 }
-\description{
-Returns the event types that meet the specified filter criteria. If no filter criteria are specified, all event types are returned, in no particular order.
-}
-\examples{
 
-}

@@ -4,11 +4,8 @@
 \alias{create_certificate_authority_audit_report}
 \title{Creates an audit report that lists every time that the your CA private key is used}
 \usage{
-create_certificate_authority_audit_report(
-  CertificateAuthorityArn = "string",
-  S3BucketName = "string",
-  AuditReportResponseFormat = "JSON"|"CSV"
-)
+create_certificate_authority_audit_report(CertificateAuthorityArn,
+  S3BucketName, AuditReportResponseFormat)
 }
 \arguments{
 \item{CertificateAuthorityArn}{[required] Amazon Resource Name (ARN) of the CA to be audited. This is of the form:
@@ -22,6 +19,12 @@ create_certificate_authority_audit_report(
 \description{
 Creates an audit report that lists every time that the your CA private key is used. The report is saved in the Amazon S3 bucket that you specify on input. The IssueCertificate and RevokeCertificate operations use the private key. You can generate a new report every 30 minutes.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_certificate_authority_audit_report(
+  CertificateAuthorityArn = "string",
+  S3BucketName = "string",
+  AuditReportResponseFormat = "JSON"|"CSV"
+)
 }
+}
+

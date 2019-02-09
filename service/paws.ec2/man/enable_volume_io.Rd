@@ -4,10 +4,7 @@
 \alias{enable_volume_io}
 \title{Enables I/O operations for a volume that had I/O operations disabled because the data on the volume was potentially inconsistent}
 \usage{
-enable_volume_io(
-  DryRun = TRUE|FALSE,
-  VolumeId = "string"
-)
+enable_volume_io(DryRun = NULL, VolumeId)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -17,10 +14,18 @@ enable_volume_io(
 \description{
 Enables I/O operations for a volume that had I/O operations disabled because the data on the volume was potentially inconsistent.
 }
+\section{Accepted Parameters}{
+\preformatted{enable_volume_io(
+  DryRun = TRUE|FALSE,
+  VolumeId = "string"
+)
+}
+}
+
 \examples{
 # This example enables I/O on volume ``vol-1234567890abcdef0``.
-enable_volume_io(
+\donttest{enable_volume_io(
   VolumeId = "vol-1234567890abcdef0"
-)
+)}
 
 }

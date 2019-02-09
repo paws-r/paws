@@ -4,23 +4,8 @@
 \alias{start_signing_job}
 \title{Initiates a signing job to be performed on the code provided}
 \usage{
-start_signing_job(
-  source = list(
-    s3 = list(
-      bucketName = "string",
-      key = "string",
-      version = "string"
-    )
-  ),
-  destination = list(
-    s3 = list(
-      bucketName = "string",
-      prefix = "string"
-    )
-  ),
-  profileName = "string",
-  clientRequestToken = "string"
-)
+start_signing_job(source, destination, profileName = NULL,
+  clientRequestToken)
 }
 \arguments{
 \item{source}{[required] The S3 bucket that contains the object to sign or a BLOB that contains your raw code.}
@@ -47,6 +32,24 @@ You can call the DescribeSigningJob and the ListSigningJobs actions after you ca
 
 For a Java example that shows how to use this action, see \url{http://docs.aws.amazon.com/acm/latest/userguide/}
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_signing_job(
+  source = list(
+    s3 = list(
+      bucketName = "string",
+      key = "string",
+      version = "string"
+    )
+  ),
+  destination = list(
+    s3 = list(
+      bucketName = "string",
+      prefix = "string"
+    )
+  ),
+  profileName = "string",
+  clientRequestToken = "string"
+)
 }
+}
+

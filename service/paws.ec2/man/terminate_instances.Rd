@@ -4,12 +4,7 @@
 \alias{terminate_instances}
 \title{Shuts down one or more instances}
 \usage{
-terminate_instances(
-  InstanceIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
+terminate_instances(InstanceIds, DryRun = NULL)
 }
 \arguments{
 \item{InstanceIds}{[required] One or more instance IDs.
@@ -28,16 +23,26 @@ Terminated instances remain visible after termination (for approximately one hou
 
 By default, Amazon EC2 deletes all EBS volumes that were attached when the instance launched. Volumes attached after instance launch continue running.
 
-You can stop, start, and terminate EBS-backed instances. You can only terminate instance store-backed instances. What happens to an instance differs if you stop it or terminate it. For example, when you stop an instance, the root device and any other devices attached to the instance persist. When you terminate an instance, any attached EBS volumes with the \code{DeleteOnTermination} block device mapping parameter set to \code{true} are automatically deleted. For more information about the differences between stopping and terminating instances, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html}{Instance Lifecycle} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+You can stop, start, and terminate EBS-backed instances. You can only terminate instance store-backed instances. What happens to an instance differs if you stop it or terminate it. For example, when you stop an instance, the root device and any other devices attached to the instance persist. When you terminate an instance, any attached EBS volumes with the \code{DeleteOnTermination} block device mapping parameter set to \code{true} are automatically deleted. For more information about the differences between stopping and terminating instances, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html}{Instance Lifecycle} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
-For more information about troubleshooting, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesShuttingDown.html}{Troubleshooting Terminating Your Instance} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information about troubleshooting, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesShuttingDown.html}{Troubleshooting Terminating Your Instance} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{terminate_instances(
+  InstanceIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example terminates the specified EC2 instance.
-terminate_instances(
+\donttest{terminate_instances(
   InstanceIds = list(
     "i-1234567890abcdef0"
   )
-)
+)}
 
 }

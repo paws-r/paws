@@ -4,11 +4,8 @@
 \alias{start_lifecycle_policy_preview}
 \title{Starts a preview of the specified lifecycle policy}
 \usage{
-start_lifecycle_policy_preview(
-  registryId = "string",
-  repositoryName = "string",
-  lifecyclePolicyText = "string"
-)
+start_lifecycle_policy_preview(registryId = NULL, repositoryName,
+  lifecyclePolicyText = NULL)
 }
 \arguments{
 \item{registryId}{The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.}
@@ -20,6 +17,12 @@ start_lifecycle_policy_preview(
 \description{
 Starts a preview of the specified lifecycle policy. This allows you to see the results before creating the lifecycle policy.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_lifecycle_policy_preview(
+  registryId = "string",
+  repositoryName = "string",
+  lifecyclePolicyText = "string"
+)
 }
+}
+

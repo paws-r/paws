@@ -4,11 +4,7 @@
 \alias{create_player_session}
 \title{Adds a player to a game session and creates a player session record}
 \usage{
-create_player_session(
-  GameSessionId = "string",
-  PlayerId = "string",
-  PlayerData = "string"
-)
+create_player_session(GameSessionId, PlayerId, PlayerData = NULL)
 }
 \arguments{
 \item{GameSessionId}{[required] Unique identifier for the game session to add a player to.}
@@ -24,8 +20,6 @@ Adds a player to a game session and creates a player session record. Before a pl
 To create a player session, specify a game session ID, player ID, and optionally a string of player data. If successful, the player is added to the game session and a new PlayerSession object is returned. Player sessions cannot be updated.
 
 \emph{Available in Amazon GameLift Local.}
-
-Player-session-related operations include:
 \itemize{
 \item CreatePlayerSession
 \item CreatePlayerSessions
@@ -36,6 +30,12 @@ Player-session-related operations include:
 \item StopGameSessionPlacement
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_player_session(
+  GameSessionId = "string",
+  PlayerId = "string",
+  PlayerData = "string"
+)
 }
+}
+

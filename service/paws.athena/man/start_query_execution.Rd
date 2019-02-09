@@ -2,22 +2,10 @@
 % Please edit documentation in R/paws.athena_operations.R
 \name{start_query_execution}
 \alias{start_query_execution}
-\title{Runs (executes) the SQL query statements contained in the \code{Query} string}
+\title{Runs (executes) the SQL query statements contained in the Query string}
 \usage{
-start_query_execution(
-  QueryString = "string",
-  ClientRequestToken = "string",
-  QueryExecutionContext = list(
-    Database = "string"
-  ),
-  ResultConfiguration = list(
-    OutputLocation = "string",
-    EncryptionConfiguration = list(
-      EncryptionOption = "SSE_S3"|"SSE_KMS"|"CSE_KMS",
-      KmsKey = "string"
-    )
-  )
-)
+start_query_execution(QueryString, ClientRequestToken = NULL,
+  QueryExecutionContext = NULL, ResultConfiguration)
 }
 \arguments{
 \item{QueryString}{[required] The SQL query statements to be executed.}
@@ -36,6 +24,21 @@ Runs (executes) the SQL query statements contained in the \code{Query} string.
 \details{
 For code samples using the AWS SDK for Java, see \href{http://docs.aws.amazon.com/athena/latest/ug/code-samples.html}{Examples and Code Samples} in the \emph{Amazon Athena User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_query_execution(
+  QueryString = "string",
+  ClientRequestToken = "string",
+  QueryExecutionContext = list(
+    Database = "string"
+  ),
+  ResultConfiguration = list(
+    OutputLocation = "string",
+    EncryptionConfiguration = list(
+      EncryptionOption = "SSE_S3"|"SSE_KMS"|"CSE_KMS",
+      KmsKey = "string"
+    )
+  )
+)
 }
+}
+

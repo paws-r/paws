@@ -4,17 +4,7 @@
 \alias{update_resource_server}
 \title{Updates the name and scopes of resource server}
 \usage{
-update_resource_server(
-  UserPoolId = "string",
-  Identifier = "string",
-  Name = "string",
-  Scopes = list(
-    list(
-      ScopeName = "string",
-      ScopeDescription = "string"
-    )
-  )
-)
+update_resource_server(UserPoolId, Identifier, Name, Scopes = NULL)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool.}
@@ -28,6 +18,18 @@ update_resource_server(
 \description{
 Updates the name and scopes of resource server. All other fields are read-only.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_resource_server(
+  UserPoolId = "string",
+  Identifier = "string",
+  Name = "string",
+  Scopes = list(
+    list(
+      ScopeName = "string",
+      ScopeDescription = "string"
+    )
+  )
+)
 }
+}
+

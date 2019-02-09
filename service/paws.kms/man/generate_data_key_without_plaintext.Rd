@@ -4,17 +4,8 @@
 \alias{generate_data_key_without_plaintext}
 \title{Returns a data encryption key encrypted under a customer master key (CMK)}
 \usage{
-generate_data_key_without_plaintext(
-  KeyId = "string",
-  EncryptionContext = list(
-    "string"
-  ),
-  KeySpec = "AES_256"|"AES_128",
-  NumberOfBytes = 123,
-  GrantTokens = list(
-    "string"
-  )
-)
+generate_data_key_without_plaintext(KeyId, EncryptionContext = NULL,
+  KeySpec = NULL, NumberOfBytes = NULL, GrantTokens = NULL)
 }
 \arguments{
 \item{KeyId}{[required] The identifier of the customer master key (CMK) under which to generate and encrypt the data encryption key.
@@ -53,13 +44,28 @@ This operation is useful in a system that has multiple components with different
 
 The result of this operation varies with the key state of the CMK. For details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key} in the \emph{AWS Key Management Service Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{generate_data_key_without_plaintext(
+  KeyId = "string",
+  EncryptionContext = list(
+    "string"
+  ),
+  KeySpec = "AES_256"|"AES_128",
+  NumberOfBytes = 123,
+  GrantTokens = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # The following example generates an encrypted copy of a 256-bit symmetric
 # data encryption key (data key). The data key is encrypted with the
 # specified customer master key (CMK).
-generate_data_key_without_plaintext(
+\donttest{generate_data_key_without_plaintext(
   KeyId = "alias/ExampleAlias",
   KeySpec = "AES_256"
-)
+)}
 
 }

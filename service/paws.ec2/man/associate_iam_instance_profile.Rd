@@ -4,13 +4,7 @@
 \alias{associate_iam_instance_profile}
 \title{Associates an IAM instance profile with a running or stopped instance}
 \usage{
-associate_iam_instance_profile(
-  IamInstanceProfile = list(
-    Arn = "string",
-    Name = "string"
-  ),
-  InstanceId = "string"
-)
+associate_iam_instance_profile(IamInstanceProfile, InstanceId)
 }
 \arguments{
 \item{IamInstanceProfile}{[required] The IAM instance profile.}
@@ -20,14 +14,25 @@ associate_iam_instance_profile(
 \description{
 Associates an IAM instance profile with a running or stopped instance. You cannot associate more than one IAM instance profile with an instance.
 }
+\section{Accepted Parameters}{
+\preformatted{associate_iam_instance_profile(
+  IamInstanceProfile = list(
+    Arn = "string",
+    Name = "string"
+  ),
+  InstanceId = "string"
+)
+}
+}
+
 \examples{
 # This example associates an IAM instance profile named admin-role with
 # the specified instance.
-associate_iam_instance_profile(
+\donttest{associate_iam_instance_profile(
   IamInstanceProfile = list(
     Name = "admin-role"
   ),
   InstanceId = "i-123456789abcde123"
-)
+)}
 
 }

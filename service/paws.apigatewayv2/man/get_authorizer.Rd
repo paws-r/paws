@@ -4,10 +4,7 @@
 \alias{get_authorizer}
 \title{Gets an Authorizer}
 \usage{
-get_authorizer(
-  ApiId = "string",
-  AuthorizerId = "string"
-)
+get_authorizer(ApiId, AuthorizerId)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -17,6 +14,11 @@ get_authorizer(
 \description{
 Gets an Authorizer.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_authorizer(
+  ApiId = "string",
+  AuthorizerId = "string"
+)
 }
+}
+

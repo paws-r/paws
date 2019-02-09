@@ -4,10 +4,7 @@
 \alias{get_domain_names}
 \title{Represents a collection of DomainName resources}
 \usage{
-get_domain_names(
-  position = "string",
-  limit = 123
-)
+get_domain_names(position = NULL, limit = NULL)
 }
 \arguments{
 \item{position}{The current pagination position in the paged result set.}
@@ -17,6 +14,11 @@ get_domain_names(
 \description{
 Represents a collection of DomainName resources.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_domain_names(
+  position = "string",
+  limit = 123
+)
 }
+}
+

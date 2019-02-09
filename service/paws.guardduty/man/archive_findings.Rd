@@ -4,12 +4,7 @@
 \alias{archive_findings}
 \title{Archives Amazon GuardDuty findings specified by the list of finding IDs}
 \usage{
-archive_findings(
-  DetectorId = "string",
-  FindingIds = list(
-    "string"
-  )
-)
+archive_findings(DetectorId, FindingIds)
 }
 \arguments{
 \item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose findings you want to archive.}
@@ -19,6 +14,13 @@ archive_findings(
 \description{
 Archives Amazon GuardDuty findings specified by the list of finding IDs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{archive_findings(
+  DetectorId = "string",
+  FindingIds = list(
+    "string"
+  )
+)
 }
+}
+

@@ -4,12 +4,7 @@
 \alias{set_termination_protection}
 \title{SetTerminationProtection locks a cluster (job flow) so the EC2 instances in the cluster cannot be terminated by user intervention, an API call, or in the event of a job-flow error}
 \usage{
-set_termination_protection(
-  JobFlowIds = list(
-    "string"
-  ),
-  TerminationProtected = TRUE|FALSE
-)
+set_termination_protection(JobFlowIds, TerminationProtected)
 }
 \arguments{
 \item{JobFlowIds}{[required] A list of strings that uniquely identify the clusters to protect. This identifier is returned by RunJobFlow and can also be obtained from DescribeJobFlows .}
@@ -26,6 +21,13 @@ To terminate a cluster that has been locked by setting \code{SetTerminationProte
 
 For more information, see\href{http://docs.aws.amazon.com/emr/latest/ManagementGuide/UsingEMR_TerminationProtection.html}{Managing Cluster Termination} in the \emph{Amazon EMR Management Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{set_termination_protection(
+  JobFlowIds = list(
+    "string"
+  ),
+  TerminationProtected = TRUE|FALSE
+)
 }
+}
+

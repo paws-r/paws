@@ -4,10 +4,7 @@
 \alias{delete_bucket_metrics_configuration}
 \title{Deletes a metrics configuration (specified by the metrics configuration ID) from the bucket}
 \usage{
-delete_bucket_metrics_configuration(
-  Bucket = "string",
-  Id = "string"
-)
+delete_bucket_metrics_configuration(Bucket, Id)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket containing the metrics configuration to delete.}
@@ -17,6 +14,11 @@ delete_bucket_metrics_configuration(
 \description{
 Deletes a metrics configuration (specified by the metrics configuration ID) from the bucket.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_bucket_metrics_configuration(
+  Bucket = "string",
+  Id = "string"
+)
 }
+}
+

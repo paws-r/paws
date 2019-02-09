@@ -4,7 +4,20 @@
 \alias{put_bucket_logging}
 \title{Set the logging parameters for a bucket and to specify permissions for who can view and modify the logging parameters}
 \usage{
-put_bucket_logging(
+put_bucket_logging(Bucket, BucketLoggingStatus, ContentMD5 = NULL)
+}
+\arguments{
+\item{Bucket}{[required]}
+
+\item{BucketLoggingStatus}{[required]}
+
+\item{ContentMD5}{}
+}
+\description{
+Set the logging parameters for a bucket and to specify permissions for who can view and modify the logging parameters. To set the logging status of a bucket, you must be the bucket owner.
+}
+\section{Accepted Parameters}{
+\preformatted{put_bucket_logging(
   Bucket = "string",
   BucketLoggingStatus = list(
     LoggingEnabled = list(
@@ -27,21 +40,13 @@ put_bucket_logging(
   ContentMD5 = "string"
 )
 }
-\arguments{
-\item{Bucket}{[required]}
-
-\item{BucketLoggingStatus}{[required]}
-
-\item{ContentMD5}{}
 }
-\description{
-Set the logging parameters for a bucket and to specify permissions for who can view and modify the logging parameters. To set the logging status of a bucket, you must be the bucket owner.
-}
+
 \examples{
 # The following example sets logging policy on a bucket. For the Log
 # Delivery group to deliver logs to the destination bucket, it needs
 # permission for the READ_ACP action which the policy grants.
-put_bucket_logging(
+\donttest{put_bucket_logging(
   Bucket = "sourcebucket",
   BucketLoggingStatus = list(
     LoggingEnabled = list(
@@ -58,6 +63,6 @@ put_bucket_logging(
       TargetPrefix = "MyBucketLogs/"
     )
   )
-)
+)}
 
 }

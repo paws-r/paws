@@ -4,11 +4,7 @@
 \alias{describe_volume_attribute}
 \title{Describes the specified attribute of the specified volume}
 \usage{
-describe_volume_attribute(
-  Attribute = "autoEnableIO"|"productCodes",
-  VolumeId = "string",
-  DryRun = TRUE|FALSE
-)
+describe_volume_attribute(Attribute, VolumeId, DryRun = NULL)
 }
 \arguments{
 \item{Attribute}{[required] The attribute of the volume. This parameter is required.}
@@ -21,14 +17,23 @@ describe_volume_attribute(
 Describes the specified attribute of the specified volume. You can specify only one attribute at a time.
 }
 \details{
-For more information about EBS volumes, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumes.html}{Amazon EBS Volumes} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information about EBS volumes, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumes.html}{Amazon EBS Volumes} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_volume_attribute(
+  Attribute = "autoEnableIO"|"productCodes",
+  VolumeId = "string",
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example describes the ``autoEnableIo`` attribute of the volume with
 # the ID ``vol-049df61146c4d7901``.
-describe_volume_attribute(
+\donttest{describe_volume_attribute(
   Attribute = "autoEnableIO",
   VolumeId = "vol-049df61146c4d7901"
-)
+)}
 
 }

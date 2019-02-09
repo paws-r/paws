@@ -4,9 +4,7 @@
 \alias{delete_backup}
 \title{Deletes a backup}
 \usage{
-delete_backup(
-  BackupId = "string"
-)
+delete_backup(BackupId)
 }
 \arguments{
 \item{BackupId}{[required] The ID of the backup to delete. Run the DescribeBackups command to get a list of backup IDs. Backup IDs are in the format \code{ServerName-yyyyMMddHHmmssSSS}.}
@@ -17,6 +15,10 @@ Deletes a backup. You can delete both manual and automated backups. This operati
 \details{
 An \code{InvalidStateException} is thrown when a backup deletion is already in progress. A \code{ResourceNotFoundException} is thrown when the backup does not exist. A \code{ValidationException} is thrown when parameters of the request are not valid.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_backup(
+  BackupId = "string"
+)
 }
+}
+

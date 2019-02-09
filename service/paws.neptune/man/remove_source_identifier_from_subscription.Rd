@@ -4,10 +4,8 @@
 \alias{remove_source_identifier_from_subscription}
 \title{Removes a source identifier from an existing event notification subscription}
 \usage{
-remove_source_identifier_from_subscription(
-  SubscriptionName = "string",
-  SourceIdentifier = "string"
-)
+remove_source_identifier_from_subscription(SubscriptionName,
+  SourceIdentifier)
 }
 \arguments{
 \item{SubscriptionName}{[required] The name of the event notification subscription you want to remove a source identifier from.}
@@ -17,6 +15,11 @@ remove_source_identifier_from_subscription(
 \description{
 Removes a source identifier from an existing event notification subscription.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{remove_source_identifier_from_subscription(
+  SubscriptionName = "string",
+  SourceIdentifier = "string"
+)
 }
+}
+

@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.mturk_operations.R
 \name{get_qualification_score}
 \alias{get_qualification_score}
-\title{The \code{GetQualificationScore} operation returns the value of a Worker's Qualification for a given Qualification type}
+\title{The GetQualificationScore operation returns the value of a Worker's Qualification for a given Qualification type}
 \usage{
-get_qualification_score(
-  QualificationTypeId = "string",
-  WorkerId = "string"
-)
+get_qualification_score(QualificationTypeId, WorkerId)
 }
 \arguments{
 \item{QualificationTypeId}{[required] The ID of the QualificationType.}
@@ -22,6 +19,11 @@ To get a Worker's Qualification, you must know the Worker's ID. The Worker's ID 
 
 Only the owner of a Qualification type can query the value of a Worker's Qualification of that type.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_qualification_score(
+  QualificationTypeId = "string",
+  WorkerId = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{list_tags}
 \title{Lists tags for a resource}
 \usage{
-list_tags(
-  ResourceArn = "string"
-)
+list_tags(ResourceArn)
 }
 \arguments{
 \item{ResourceArn}{[required] the Amazon Resource Name (ARN)}
@@ -14,6 +12,10 @@ list_tags(
 \description{
 Lists tags for a resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_tags(
+  ResourceArn = "string"
+)
 }
+}
+

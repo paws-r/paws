@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.kms_operations.R
 \name{get_key_rotation_status}
 \alias{get_key_rotation_status}
-\title{Gets a Boolean value that indicates whether \link{automatic rotation of the key material}(http://docs}
+\title{Gets a Boolean value that indicates whether automatic rotation of the key material is enabled for the specified customer master key (CMK)}
 \usage{
-get_key_rotation_status(
-  KeyId = "string"
-)
+get_key_rotation_status(KeyId)
 }
 \arguments{
 \item{KeyId}{[required] A unique identifier for the customer master key (CMK).
@@ -33,11 +31,18 @@ The result of this operation varies with the key state of the CMK. For details, 
 
 To perform this operation on a CMK in a different AWS account, specify the key ARN in the value of the \code{KeyId} parameter.
 }
+\section{Accepted Parameters}{
+\preformatted{get_key_rotation_status(
+  KeyId = "string"
+)
+}
+}
+
 \examples{
 # The following example retrieves the status of automatic annual rotation
 # of the key material for the specified CMK.
-get_key_rotation_status(
+\donttest{get_key_rotation_status(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)
+)}
 
 }

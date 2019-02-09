@@ -4,11 +4,7 @@
 \alias{update_build}
 \title{Updates metadata in a build record, including the build name and version}
 \usage{
-update_build(
-  BuildId = "string",
-  Name = "string",
-  Version = "string"
-)
+update_build(BuildId, Name = NULL, Version = NULL)
 }
 \arguments{
 \item{BuildId}{[required] Unique identifier for a build to update.}
@@ -21,7 +17,6 @@ update_build(
 Updates metadata in a build record, including the build name and version. To update the metadata, specify the build ID to update and provide the new values. If successful, a build object containing the updated metadata is returned.
 }
 \details{
-Build-related operations include:
 \itemize{
 \item CreateBuild
 \item ListBuilds
@@ -30,6 +25,12 @@ Build-related operations include:
 \item DeleteBuild
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_build(
+  BuildId = "string",
+  Name = "string",
+  Version = "string"
+)
 }
+}
+

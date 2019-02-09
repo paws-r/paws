@@ -4,30 +4,10 @@
 \alias{update_service}
 \title{Modifies the parameters of a service}
 \usage{
-update_service(
-  cluster = "string",
-  service = "string",
-  desiredCount = 123,
-  taskDefinition = "string",
-  deploymentConfiguration = list(
-    maximumPercent = 123,
-    minimumHealthyPercent = 123
-  ),
-  networkConfiguration = list(
-    awsvpcConfiguration = list(
-      subnets = list(
-        "string"
-      ),
-      securityGroups = list(
-        "string"
-      ),
-      assignPublicIp = "ENABLED"|"DISABLED"
-    )
-  ),
-  platformVersion = "string",
-  forceNewDeployment = TRUE|FALSE,
-  healthCheckGracePeriodSeconds = 123
-)
+update_service(cluster = NULL, service, desiredCount = NULL,
+  taskDefinition = NULL, deploymentConfiguration = NULL,
+  networkConfiguration = NULL, platformVersion = NULL,
+  forceNewDeployment = NULL, healthCheckGracePeriodSeconds = NULL)
 }
 \arguments{
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that your service is running on. If you do not specify a cluster, the default cluster is assumed.}
@@ -44,7 +24,7 @@ update_service(
 
 Updating a service to add a subnet to a list of existing subnets does not trigger a service deployment. For example, if your network configuration change is to keep the existing subnets and simply add another subnet to the network configuration, this does not trigger a new service deployment.}
 
-\item{platformVersion}{The platform version on which your tasks in the service are running. A platform version is only specified for tasks using the Fargate launch type. If one is not specified, the \code{LATEST} platform version is used by default. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html}{AWS Fargate Platform Versions} in the \emph{Amazon Elastic Container Service Developer Guide}.}
+\item{platformVersion}{The platform version on which your tasks in the service are running. A platform version is only specified for tasks using the Fargate launch type. If one is not specified, the \code{LATEST} platform version is used by default. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html}{AWS Fargate Platform Versions} in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{forceNewDeployment}{Whether to force a new deployment of the service. Deployments are not forced by default. You can use this option to trigger a new deployment with no service definition changes. For example, you can update a service's tasks to use a newer Docker image with the same image/tag combination (\code{my_image:latest}) or to roll Fargate tasks onto a newer platform version.}
 
@@ -86,19 +66,47 @@ When the service scheduler stops running tasks, it attempts to maintain balance 
 \item Stop the task on a container instance in an optimal Availability Zone (based on the previous steps), favoring container instances with the largest number of running tasks for this service.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{update_service(
+  cluster = "string",
+  service = "string",
+  desiredCount = 123,
+  taskDefinition = "string",
+  deploymentConfiguration = list(
+    maximumPercent = 123,
+    minimumHealthyPercent = 123
+  ),
+  networkConfiguration = list(
+    awsvpcConfiguration = list(
+      subnets = list(
+        "string"
+      ),
+      securityGroups = list(
+        "string"
+      ),
+      assignPublicIp = "ENABLED"|"DISABLED"
+    )
+  ),
+  platformVersion = "string",
+  forceNewDeployment = TRUE|FALSE,
+  healthCheckGracePeriodSeconds = 123
+)
+}
+}
+
 \examples{
 # This example updates the my-http-service service to use the
 # amazon-ecs-sample task definition.
-update_service(
+\donttest{update_service(
   service = "my-http-service",
   taskDefinition = "amazon-ecs-sample"
-)
+)}
 
 # This example updates the desired count of the my-http-service service to
 # 10.
-update_service(
+\donttest{update_service(
   desiredCount = 10L,
   service = "my-http-service"
-)
+)}
 
 }

@@ -4,10 +4,7 @@
 \alias{delete_dynamic_thing_group}
 \title{Deletes a dynamic thing group}
 \usage{
-delete_dynamic_thing_group(
-  thingGroupName = "string",
-  expectedVersion = 123
-)
+delete_dynamic_thing_group(thingGroupName, expectedVersion = NULL)
 }
 \arguments{
 \item{thingGroupName}{[required] The name of the dynamic thing group to delete.}
@@ -17,6 +14,11 @@ delete_dynamic_thing_group(
 \description{
 Deletes a dynamic thing group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_dynamic_thing_group(
+  thingGroupName = "string",
+  expectedVersion = 123
+)
 }
+}
+

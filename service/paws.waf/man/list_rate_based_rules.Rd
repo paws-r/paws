@@ -4,10 +4,7 @@
 \alias{list_rate_based_rules}
 \title{Returns an array of RuleSummary objects}
 \usage{
-list_rate_based_rules(
-  NextMarker = "string",
-  Limit = 123
-)
+list_rate_based_rules(NextMarker = NULL, Limit = NULL)
 }
 \arguments{
 \item{NextMarker}{If you specify a value for \code{Limit} and you have more \code{Rules} than the value of \code{Limit}, AWS WAF returns a \code{NextMarker} value in the response that allows you to list another group of \code{Rules}. For the second and subsequent \code{ListRateBasedRules} requests, specify the value of \code{NextMarker} from the previous response to get information about another batch of \code{Rules}.}
@@ -17,6 +14,11 @@ list_rate_based_rules(
 \description{
 Returns an array of RuleSummary objects.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_rate_based_rules(
+  NextMarker = "string",
+  Limit = 123
+)
 }
+}
+

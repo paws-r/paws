@@ -4,9 +4,7 @@
 \alias{list_tags_for_resource}
 \title{List the tags for an Amazon ECR resource}
 \usage{
-list_tags_for_resource(
-  resourceArn = "string"
-)
+list_tags_for_resource(resourceArn)
 }
 \arguments{
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) that identifies the resource for which to list the tags. Currently, the only supported resource is an Amazon ECR repository.}
@@ -14,6 +12,10 @@ list_tags_for_resource(
 \description{
 List the tags for an Amazon ECR resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_tags_for_resource(
+  resourceArn = "string"
+)
 }
+}
+

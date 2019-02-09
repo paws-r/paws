@@ -4,11 +4,7 @@
 \alias{list_user_policies}
 \title{Lists the names of the inline policies embedded in the specified IAM user}
 \usage{
-list_user_policies(
-  UserName = "string",
-  Marker = "string",
-  MaxItems = 123
-)
+list_user_policies(UserName, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{UserName}{[required] The name of the user to list policies for.
@@ -29,6 +25,12 @@ An IAM user can also have managed policies attached to it. To list the managed p
 
 You can paginate the results using the \code{MaxItems} and \code{Marker} parameters. If there are no inline policies embedded with the specified user, the operation returns an empty list.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_user_policies(
+  UserName = "string",
+  Marker = "string",
+  MaxItems = 123
+)
 }
+}
+

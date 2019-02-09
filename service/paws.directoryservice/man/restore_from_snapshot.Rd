@@ -4,9 +4,7 @@
 \alias{restore_from_snapshot}
 \title{Restores a directory using an existing directory snapshot}
 \usage{
-restore_from_snapshot(
-  SnapshotId = "string"
-)
+restore_from_snapshot(SnapshotId)
 }
 \arguments{
 \item{SnapshotId}{[required] The identifier of the snapshot to restore from.}
@@ -19,6 +17,10 @@ When you restore a directory from a snapshot, any changes made to the directory 
 
 This action returns as soon as the restore operation is initiated. You can monitor the progress of the restore operation by calling the DescribeDirectories operation with the directory identifier. When the \strong{DirectoryDescription.Stage} value changes to \code{Active}, the restore operation is complete.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{restore_from_snapshot(
+  SnapshotId = "string"
+)
 }
+}
+

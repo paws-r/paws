@@ -4,10 +4,7 @@
 \alias{get_blueprints}
 \title{Returns the list of available instance images, or \emph{blueprints}}
 \usage{
-get_blueprints(
-  includeInactive = TRUE|FALSE,
-  pageToken = "string"
-)
+get_blueprints(includeInactive = NULL, pageToken = NULL)
 }
 \arguments{
 \item{includeInactive}{A Boolean value indicating whether to include inactive results in your request.}
@@ -17,6 +14,11 @@ get_blueprints(
 \description{
 Returns the list of available instance images, or \emph{blueprints}. You can use a blueprint to create a new virtual private server already running a specific operating system, as well as a preinstalled app or development stack. The software each instance is running depends on the blueprint image you choose.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_blueprints(
+  includeInactive = TRUE|FALSE,
+  pageToken = "string"
+)
 }
+}
+

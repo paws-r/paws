@@ -4,16 +4,7 @@
 \alias{attach_object}
 \title{Attaches an existing object to another object}
 \usage{
-attach_object(
-  DirectoryArn = "string",
-  ParentReference = list(
-    Selector = "string"
-  ),
-  ChildReference = list(
-    Selector = "string"
-  ),
-  LinkName = "string"
-)
+attach_object(DirectoryArn, ParentReference, ChildReference, LinkName)
 }
 \arguments{
 \item{DirectoryArn}{[required] Amazon Resource Name (ARN) that is associated with the Directory where both objects reside. For more information, see arns.}
@@ -33,6 +24,17 @@ Attaches an existing object to another object. An object can be accessed in two 
 \item Using \code{ObjectIdentifier}
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{attach_object(
+  DirectoryArn = "string",
+  ParentReference = list(
+    Selector = "string"
+  ),
+  ChildReference = list(
+    Selector = "string"
+  ),
+  LinkName = "string"
+)
 }
+}
+

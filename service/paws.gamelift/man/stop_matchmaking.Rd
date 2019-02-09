@@ -4,9 +4,7 @@
 \alias{stop_matchmaking}
 \title{Cancels a matchmaking ticket that is currently being processed}
 \usage{
-stop_matchmaking(
-  TicketId = "string"
-)
+stop_matchmaking(TicketId)
 }
 \arguments{
 \item{TicketId}{[required] Unique identifier for a matchmaking ticket.}
@@ -15,7 +13,6 @@ stop_matchmaking(
 Cancels a matchmaking ticket that is currently being processed. To stop the matchmaking operation, specify the ticket ID. If successful, work on the ticket is stopped, and the ticket status is changed to \code{CANCELLED}.
 }
 \details{
-Matchmaking-related operations include:
 \itemize{
 \item StartMatchmaking
 \item DescribeMatchmaking
@@ -24,6 +21,10 @@ Matchmaking-related operations include:
 \item StartMatchBackfill
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{stop_matchmaking(
+  TicketId = "string"
+)
 }
+}
+

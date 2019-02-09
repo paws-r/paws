@@ -4,7 +4,25 @@
 \alias{create_preset}
 \title{Create a new preset}
 \usage{
-create_preset(
+create_preset(Category = NULL, Description = NULL, Name, Settings,
+  Tags = NULL)
+}
+\arguments{
+\item{Category}{Optional. A category for the preset you are creating.}
+
+\item{Description}{Optional. A description of the preset you are creating.}
+
+\item{Name}{[required] The name of the preset you are creating.}
+
+\item{Settings}{[required]}
+
+\item{Tags}{The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.}
+}
+\description{
+Create a new preset. For information about job templates see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
+}
+\section{Accepted Parameters}{
+\preformatted{create_preset(
   Category = "string",
   Description = "string",
   Name = "string",
@@ -115,6 +133,7 @@ create_preset(
             FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
             FontOpacity = 123,
             FontResolution = 123,
+            FontScript = "AUTOMATIC"|"HANS"|"HANT",
             FontSize = 123,
             OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
             OutlineSize = 123,
@@ -134,6 +153,7 @@ create_preset(
             FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
             FontOpacity = 123,
             FontResolution = 123,
+            FontScript = "AUTOMATIC"|"HANS"|"HANT",
             FontSize = 123,
             OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
             OutlineSize = 123,
@@ -144,6 +164,9 @@ create_preset(
             TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
             XPosition = 123,
             YPosition = 123
+          ),
+          EmbeddedDestinationSettings = list(
+            Destination608ChannelNumber = 123
           ),
           SccDestinationSettings = list(
             Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
@@ -193,6 +216,7 @@ create_preset(
         EbpAudioInterval = "VIDEO_AND_FIXED_INTERVALS"|"VIDEO_INTERVAL",
         EbpPlacement = "VIDEO_AND_AUDIO_PIDS"|"VIDEO_PID",
         EsRateInPes = "INCLUDE"|"EXCLUDE",
+        ForceTsVideoEbpOrder = "FORCE"|"DEFAULT",
         FragmentTime = 123.0,
         MaxPcrInterval = 123,
         MinEbpInterval = 123,
@@ -484,20 +508,5 @@ create_preset(
   )
 )
 }
-\arguments{
-\item{Category}{Optional. A category for the preset you are creating.}
-
-\item{Description}{Optional. A description of the preset you are creating.}
-
-\item{Name}{[required] The name of the preset you are creating.}
-
-\item{Settings}{[required]}
-
-\item{Tags}{The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.}
 }
-\description{
-Create a new preset. For information about job templates see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
-}
-\examples{
 
-}

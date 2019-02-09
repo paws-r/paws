@@ -4,33 +4,9 @@
 \alias{create_stack_instances}
 \title{Creates stack instances for the specified accounts, within the specified regions}
 \usage{
-create_stack_instances(
-  StackSetName = "string",
-  Accounts = list(
-    "string"
-  ),
-  Regions = list(
-    "string"
-  ),
-  ParameterOverrides = list(
-    list(
-      ParameterKey = "string",
-      ParameterValue = "string",
-      UsePreviousValue = TRUE|FALSE,
-      ResolvedValue = "string"
-    )
-  ),
-  OperationPreferences = list(
-    RegionOrder = list(
-      "string"
-    ),
-    FailureToleranceCount = 123,
-    FailureTolerancePercentage = 123,
-    MaxConcurrentCount = 123,
-    MaxConcurrentPercentage = 123
-  ),
-  OperationId = "string"
-)
+create_stack_instances(StackSetName, Accounts, Regions,
+  ParameterOverrides = NULL, OperationPreferences = NULL,
+  OperationId = NULL)
 }
 \arguments{
 \item{StackSetName}{[required] The name or unique ID of the stack set that you want to create stack instances from.}
@@ -70,6 +46,34 @@ Repeating this stack set operation with a new operation ID retries all stack ins
 \description{
 Creates stack instances for the specified accounts, within the specified regions. A stack instance refers to a stack in a specific account and region. \code{Accounts} and \code{Regions} are required parameters---you must specify at least one account and one region.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_stack_instances(
+  StackSetName = "string",
+  Accounts = list(
+    "string"
+  ),
+  Regions = list(
+    "string"
+  ),
+  ParameterOverrides = list(
+    list(
+      ParameterKey = "string",
+      ParameterValue = "string",
+      UsePreviousValue = TRUE|FALSE,
+      ResolvedValue = "string"
+    )
+  ),
+  OperationPreferences = list(
+    RegionOrder = list(
+      "string"
+    ),
+    FailureToleranceCount = 123,
+    FailureTolerancePercentage = 123,
+    MaxConcurrentCount = 123,
+    MaxConcurrentPercentage = 123
+  ),
+  OperationId = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{describe_cache}
 \title{Returns information about the cache of a gateway}
 \usage{
-describe_cache(
-  GatewayARN = "string"
-)
+describe_cache(GatewayARN)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -17,10 +15,17 @@ Returns information about the cache of a gateway. This operation is only support
 \details{
 The response includes disk IDs that are configured as cache, and it includes the amount of cache allocated and used.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_cache(
+  GatewayARN = "string"
+)
+}
+}
+
 \examples{
 # Returns information about the cache of a gateway.
-describe_cache(
+\donttest{describe_cache(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)
+)}
 
 }

@@ -4,11 +4,7 @@
 \alias{unsubscribe_from_event}
 \title{Disables the process of sending Amazon Simple Notification Service (SNS) notifications about a specified event to a specified SNS topic}
 \usage{
-unsubscribe_from_event(
-  resourceArn = "string",
-  event = "ASSESSMENT_RUN_STARTED"|"ASSESSMENT_RUN_COMPLETED"|"ASSESSMENT_RUN_STATE_CHANGED"|"FINDING_REPORTED"|"OTHER",
-  topicArn = "string"
-)
+unsubscribe_from_event(resourceArn, event, topicArn)
 }
 \arguments{
 \item{resourceArn}{[required] The ARN of the assessment template that is used during the event for which you want to stop receiving SNS notifications.}
@@ -20,13 +16,22 @@ unsubscribe_from_event(
 \description{
 Disables the process of sending Amazon Simple Notification Service (SNS) notifications about a specified event to a specified SNS topic.
 }
+\section{Accepted Parameters}{
+\preformatted{unsubscribe_from_event(
+  resourceArn = "string",
+  event = "ASSESSMENT_RUN_STARTED"|"ASSESSMENT_RUN_COMPLETED"|"ASSESSMENT_RUN_STATE_CHANGED"|"FINDING_REPORTED"|"OTHER",
+  topicArn = "string"
+)
+}
+}
+
 \examples{
 # Disables the process of sending Amazon Simple Notification Service (SNS)
 # notifications about a specified event to a specified SNS topic.
-unsubscribe_from_event(
+\donttest{unsubscribe_from_event(
   event = "ASSESSMENT_RUN_COMPLETED",
   resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-7sbz2Kz0",
   topicArn = "arn:aws:sns:us-west-2:123456789012:exampletopic"
-)
+)}
 
 }

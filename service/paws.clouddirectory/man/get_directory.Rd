@@ -4,9 +4,7 @@
 \alias{get_directory}
 \title{Retrieves metadata about a directory}
 \usage{
-get_directory(
-  DirectoryArn = "string"
-)
+get_directory(DirectoryArn)
 }
 \arguments{
 \item{DirectoryArn}{[required] The ARN of the directory.}
@@ -14,6 +12,10 @@ get_directory(
 \description{
 Retrieves metadata about a directory.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_directory(
+  DirectoryArn = "string"
+)
 }
+}
+

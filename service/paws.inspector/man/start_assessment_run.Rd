@@ -4,10 +4,7 @@
 \alias{start_assessment_run}
 \title{Starts the assessment run specified by the ARN of the assessment template}
 \usage{
-start_assessment_run(
-  assessmentTemplateArn = "string",
-  assessmentRunName = "string"
-)
+start_assessment_run(assessmentTemplateArn, assessmentRunName = NULL)
 }
 \arguments{
 \item{assessmentTemplateArn}{[required] The ARN of the assessment template of the assessment run that you want to start.}
@@ -17,13 +14,21 @@ start_assessment_run(
 \description{
 Starts the assessment run specified by the ARN of the assessment template. For this API to function properly, you must not exceed the limit of running up to 500 concurrent agents per AWS account.
 }
+\section{Accepted Parameters}{
+\preformatted{start_assessment_run(
+  assessmentTemplateArn = "string",
+  assessmentRunName = "string"
+)
+}
+}
+
 \examples{
 # Starts the assessment run specified by the ARN of the assessment
 # template. For this API to function properly, you must not exceed the
 # limit of running up to 500 concurrent agents per AWS account.
-start_assessment_run(
+\donttest{start_assessment_run(
   assessmentRunName = "examplerun",
   assessmentTemplateArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-it5r2S4T"
-)
+)}
 
 }

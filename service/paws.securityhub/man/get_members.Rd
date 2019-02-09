@@ -4,11 +4,7 @@
 \alias{get_members}
 \title{Returns the details on the Security Hub member accounts that are specified by the account IDs}
 \usage{
-get_members(
-  AccountIds = list(
-    "string"
-  )
-)
+get_members(AccountIds)
 }
 \arguments{
 \item{AccountIds}{[required] A list of account IDs for the Security Hub member accounts on which you want to return the details.}
@@ -16,6 +12,12 @@ get_members(
 \description{
 Returns the details on the Security Hub member accounts that are specified by the account IDs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_members(
+  AccountIds = list(
+    "string"
+  )
+)
 }
+}
+

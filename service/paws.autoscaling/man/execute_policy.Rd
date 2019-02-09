@@ -4,13 +4,8 @@
 \alias{execute_policy}
 \title{Executes the specified policy}
 \usage{
-execute_policy(
-  AutoScalingGroupName = "string",
-  PolicyName = "string",
-  HonorCooldown = TRUE|FALSE,
-  MetricValue = 123.0,
-  BreachThreshold = 123.0
-)
+execute_policy(AutoScalingGroupName = NULL, PolicyName,
+  HonorCooldown = NULL, MetricValue = NULL, BreachThreshold = NULL)
 }
 \arguments{
 \item{AutoScalingGroupName}{The name of the Auto Scaling group.}
@@ -36,13 +31,24 @@ This parameter is required if the policy type is \code{StepScaling} and not supp
 \description{
 Executes the specified policy.
 }
+\section{Accepted Parameters}{
+\preformatted{execute_policy(
+  AutoScalingGroupName = "string",
+  PolicyName = "string",
+  HonorCooldown = TRUE|FALSE,
+  MetricValue = 123.0,
+  BreachThreshold = 123.0
+)
+}
+}
+
 \examples{
 # This example executes the specified Auto Scaling policy for the
 # specified Auto Scaling group.
-execute_policy(
+\donttest{execute_policy(
   AutoScalingGroupName = "my-auto-scaling-group",
   HonorCooldown = TRUE,
   PolicyName = "ScaleIn"
-)
+)}
 
 }

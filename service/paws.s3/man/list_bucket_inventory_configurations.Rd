@@ -4,10 +4,7 @@
 \alias{list_bucket_inventory_configurations}
 \title{Returns a list of inventory configurations for the bucket}
 \usage{
-list_bucket_inventory_configurations(
-  Bucket = "string",
-  ContinuationToken = "string"
-)
+list_bucket_inventory_configurations(Bucket, ContinuationToken = NULL)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket containing the inventory configurations to retrieve.}
@@ -17,6 +14,11 @@ list_bucket_inventory_configurations(
 \description{
 Returns a list of inventory configurations for the bucket.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_bucket_inventory_configurations(
+  Bucket = "string",
+  ContinuationToken = "string"
+)
 }
+}
+

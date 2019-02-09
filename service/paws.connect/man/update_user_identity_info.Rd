@@ -2,17 +2,9 @@
 % Please edit documentation in R/paws.connect_operations.R
 \name{update_user_identity_info}
 \alias{update_user_identity_info}
-\title{Updates the identity information for the specified user in a \code{UserIdentityInfo} object, including email, first name, and last name}
+\title{Updates the identity information for the specified user in a UserIdentityInfo object, including email, first name, and last name}
 \usage{
-update_user_identity_info(
-  IdentityInfo = list(
-    FirstName = "string",
-    LastName = "string",
-    Email = "string"
-  ),
-  UserId = "string",
-  InstanceId = "string"
-)
+update_user_identity_info(IdentityInfo, UserId, InstanceId)
 }
 \arguments{
 \item{IdentityInfo}{[required] A \code{UserIdentityInfo} object.}
@@ -24,6 +16,16 @@ update_user_identity_info(
 \description{
 Updates the identity information for the specified user in a \code{UserIdentityInfo} object, including email, first name, and last name.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_user_identity_info(
+  IdentityInfo = list(
+    FirstName = "string",
+    LastName = "string",
+    Email = "string"
+  ),
+  UserId = "string",
+  InstanceId = "string"
+)
 }
+}
+

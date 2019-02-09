@@ -4,11 +4,8 @@
 \alias{delete_application_cloud_watch_logging_option}
 \title{Deletes an Amazon CloudWatch log stream from an Amazon Kinesis Data Analytics application}
 \usage{
-delete_application_cloud_watch_logging_option(
-  ApplicationName = "string",
-  CurrentApplicationVersionId = 123,
-  CloudWatchLoggingOptionId = "string"
-)
+delete_application_cloud_watch_logging_option(ApplicationName,
+  CurrentApplicationVersionId, CloudWatchLoggingOptionId)
 }
 \arguments{
 \item{ApplicationName}{[required] The application name.}
@@ -20,6 +17,12 @@ delete_application_cloud_watch_logging_option(
 \description{
 Deletes an Amazon CloudWatch log stream from an Amazon Kinesis Data Analytics application.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_application_cloud_watch_logging_option(
+  ApplicationName = "string",
+  CurrentApplicationVersionId = 123,
+  CloudWatchLoggingOptionId = "string"
+)
 }
+}
+

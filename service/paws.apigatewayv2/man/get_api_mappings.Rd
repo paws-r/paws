@@ -4,11 +4,7 @@
 \alias{get_api_mappings}
 \title{The API mappings}
 \usage{
-get_api_mappings(
-  DomainName = "string",
-  MaxResults = "string",
-  NextToken = "string"
-)
+get_api_mappings(DomainName, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{DomainName}{[required] The domain name.}
@@ -20,6 +16,12 @@ get_api_mappings(
 \description{
 The API mappings.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_api_mappings(
+  DomainName = "string",
+  MaxResults = "string",
+  NextToken = "string"
+)
 }
+}
+

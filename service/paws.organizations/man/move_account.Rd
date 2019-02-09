@@ -4,11 +4,7 @@
 \alias{move_account}
 \title{Moves an account from its current source parent root or organizational unit (OU) to the specified destination parent root or OU}
 \usage{
-move_account(
-  AccountId = "string",
-  SourceParentId = "string",
-  DestinationParentId = "string"
-)
+move_account(AccountId, SourceParentId, DestinationParentId)
 }
 \arguments{
 \item{AccountId}{[required] The unique identifier (ID) of the account that you want to move.
@@ -37,13 +33,22 @@ Moves an account from its current source parent root or organizational unit (OU)
 \details{
 This operation can be called only from the organization's master account.
 }
+\section{Accepted Parameters}{
+\preformatted{move_account(
+  AccountId = "string",
+  SourceParentId = "string",
+  DestinationParentId = "string"
+)
+}
+}
+
 \examples{
 # The following example shows how to move a member account from the root
 # to an OU:/n/n
-move_account(
+\donttest{move_account(
   AccountId = "333333333333",
   DestinationParentId = "ou-examplerootid111-exampleouid111",
   SourceParentId = "r-examplerootid111"
-)
+)}
 
 }

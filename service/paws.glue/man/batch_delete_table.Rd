@@ -4,13 +4,7 @@
 \alias{batch_delete_table}
 \title{Deletes multiple tables at once}
 \usage{
-batch_delete_table(
-  CatalogId = "string",
-  DatabaseName = "string",
-  TablesToDelete = list(
-    "string"
-  )
-)
+batch_delete_table(CatalogId = NULL, DatabaseName, TablesToDelete)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the table resides. If none is supplied, the AWS account ID is used by default.}
@@ -27,6 +21,14 @@ After completing this operation, you will no longer have access to the table ver
 
 To ensure immediate deletion of all related resources, before calling \code{BatchDeleteTable}, use \code{DeleteTableVersion} or \code{BatchDeleteTableVersion}, and \code{DeletePartition} or \code{BatchDeletePartition}, to delete any resources that belong to the table.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{batch_delete_table(
+  CatalogId = "string",
+  DatabaseName = "string",
+  TablesToDelete = list(
+    "string"
+  )
+)
 }
+}
+

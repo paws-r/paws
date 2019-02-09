@@ -4,10 +4,7 @@
 \alias{associate_skill_with_users}
 \title{Makes a private skill available for enrolled users to enable on their devices}
 \usage{
-associate_skill_with_users(
-  OrganizationArn = "string",
-  SkillId = "string"
-)
+associate_skill_with_users(OrganizationArn = NULL, SkillId)
 }
 \arguments{
 \item{OrganizationArn}{The ARN of the organization.}
@@ -17,6 +14,11 @@ associate_skill_with_users(
 \description{
 Makes a private skill available for enrolled users to enable on their devices.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_skill_with_users(
+  OrganizationArn = "string",
+  SkillId = "string"
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{delete_lifecycle_hook}
 \title{Deletes the specified lifecycle hook}
 \usage{
-delete_lifecycle_hook(
-  LifecycleHookName = "string",
-  AutoScalingGroupName = "string"
-)
+delete_lifecycle_hook(LifecycleHookName, AutoScalingGroupName)
 }
 \arguments{
 \item{LifecycleHookName}{[required] The name of the lifecycle hook.}
@@ -20,11 +17,19 @@ Deletes the specified lifecycle hook.
 \details{
 If there are any outstanding lifecycle actions, they are completed first (\code{ABANDON} for launching instances, \code{CONTINUE} for terminating instances).
 }
+\section{Accepted Parameters}{
+\preformatted{delete_lifecycle_hook(
+  LifecycleHookName = "string",
+  AutoScalingGroupName = "string"
+)
+}
+}
+
 \examples{
 # This example deletes the specified lifecycle hook.
-delete_lifecycle_hook(
+\donttest{delete_lifecycle_hook(
   AutoScalingGroupName = "my-auto-scaling-group",
   LifecycleHookName = "my-lifecycle-hook"
-)
+)}
 
 }

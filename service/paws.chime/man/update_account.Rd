@@ -4,10 +4,7 @@
 \alias{update_account}
 \title{Updates account details for the specified Amazon Chime account}
 \usage{
-update_account(
-  AccountId = "string",
-  Name = "string"
-)
+update_account(AccountId, Name = NULL)
 }
 \arguments{
 \item{AccountId}{[required] The Amazon Chime account ID.}
@@ -17,6 +14,11 @@ update_account(
 \description{
 Updates account details for the specified Amazon Chime account. Currently, only account name updates are supported for this action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_account(
+  AccountId = "string",
+  Name = "string"
+)
 }
+}
+

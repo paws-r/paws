@@ -2,18 +2,11 @@
 % Please edit documentation in R/paws.appsync_operations.R
 \name{update_function}
 \alias{update_function}
-\title{Updates a \code{Function} object}
+\title{Updates a Function object}
 \usage{
-update_function(
-  apiId = "string",
-  name = "string",
-  description = "string",
-  functionId = "string",
-  dataSourceName = "string",
-  requestMappingTemplate = "string",
-  responseMappingTemplate = "string",
-  functionVersion = "string"
-)
+update_function(apiId, name, description = NULL, functionId,
+  dataSourceName, requestMappingTemplate, responseMappingTemplate = NULL,
+  functionVersion)
 }
 \arguments{
 \item{apiId}{[required] The GraphQL API ID.}
@@ -35,6 +28,17 @@ update_function(
 \description{
 Updates a \code{Function} object.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_function(
+  apiId = "string",
+  name = "string",
+  description = "string",
+  functionId = "string",
+  dataSourceName = "string",
+  requestMappingTemplate = "string",
+  responseMappingTemplate = "string",
+  functionVersion = "string"
+)
 }
+}
+

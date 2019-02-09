@@ -4,11 +4,7 @@
 \alias{get_bots}
 \title{Returns bot information as follows:}
 \usage{
-get_bots(
-  nextToken = "string",
-  maxResults = 123,
-  nameContains = "string"
-)
+get_bots(nextToken = NULL, maxResults = NULL, nameContains = NULL)
 }
 \arguments{
 \item{nextToken}{A pagination token that fetches the next page of bots. If the response to this call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of bots, specify the pagination token in the next request.}
@@ -28,11 +24,20 @@ Returns bot information as follows:
 
 This operation requires permission for the \code{lex:GetBots} action.
 }
+\section{Accepted Parameters}{
+\preformatted{get_bots(
+  nextToken = "string",
+  maxResults = 123,
+  nameContains = "string"
+)
+}
+}
+
 \examples{
 # This example shows how to get a list of all of the bots in your account.
-get_bots(
+\donttest{get_bots(
   maxResults = 5L,
   nextToken = ""
-)
+)}
 
 }

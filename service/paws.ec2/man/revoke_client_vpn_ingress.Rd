@@ -4,13 +4,8 @@
 \alias{revoke_client_vpn_ingress}
 \title{Removes an ingress authorization rule from a Client VPN endpoint}
 \usage{
-revoke_client_vpn_ingress(
-  ClientVpnEndpointId = "string",
-  TargetNetworkCidr = "string",
-  AccessGroupId = "string",
-  RevokeAllGroups = TRUE|FALSE,
-  DryRun = TRUE|FALSE
-)
+revoke_client_vpn_ingress(ClientVpnEndpointId, TargetNetworkCidr,
+  AccessGroupId = NULL, RevokeAllGroups = NULL, DryRun = NULL)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint with which the authorization rule is associated.}
@@ -26,6 +21,14 @@ revoke_client_vpn_ingress(
 \description{
 Removes an ingress authorization rule from a Client VPN endpoint.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{revoke_client_vpn_ingress(
+  ClientVpnEndpointId = "string",
+  TargetNetworkCidr = "string",
+  AccessGroupId = "string",
+  RevokeAllGroups = TRUE|FALSE,
+  DryRun = TRUE|FALSE
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{delete_backup}
 \title{Deletes an Amazon FSx for Windows File Server backup, deleting its contents}
 \usage{
-delete_backup(
-  BackupId = "string",
-  ClientRequestToken = "string"
-)
+delete_backup(BackupId, ClientRequestToken = NULL)
 }
 \arguments{
 \item{BackupId}{[required] The ID of the backup you want to delete.}
@@ -22,10 +19,18 @@ The \code{DeleteBackup} call returns instantly. The backup will not show up in l
 
 The data in a deleted backup is also deleted and can't be recovered by any means.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_backup(
+  BackupId = "string",
+  ClientRequestToken = "string"
+)
+}
+}
+
 \examples{
 # This operation deletes an Amazon FSx file system backup.
-delete_backup(
+\donttest{delete_backup(
   BackupId = "backup-03e3c82e0183b7b6b"
-)
+)}
 
 }

@@ -4,16 +4,8 @@
 \alias{decrease_replication_factor}
 \title{Removes one or more nodes from a DAX cluster}
 \usage{
-decrease_replication_factor(
-  ClusterName = "string",
-  NewReplicationFactor = 123,
-  AvailabilityZones = list(
-    "string"
-  ),
-  NodeIdsToRemove = list(
-    "string"
-  )
-)
+decrease_replication_factor(ClusterName, NewReplicationFactor,
+  AvailabilityZones = NULL, NodeIdsToRemove = NULL)
 }
 \arguments{
 \item{ClusterName}{[required] The name of the DAX cluster from which you want to remove nodes.}
@@ -30,6 +22,17 @@ Removes one or more nodes from a DAX cluster.
 \details{
 You cannot use \code{DecreaseReplicationFactor} to remove the last node in a DAX cluster. If you need to do this, use \code{DeleteCluster} instead.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{decrease_replication_factor(
+  ClusterName = "string",
+  NewReplicationFactor = 123,
+  AvailabilityZones = list(
+    "string"
+  ),
+  NodeIdsToRemove = list(
+    "string"
+  )
+)
 }
+}
+

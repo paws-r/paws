@@ -4,12 +4,8 @@
 \alias{describe_notifications_for_budget}
 \title{Lists the notifications that are associated with a budget}
 \usage{
-describe_notifications_for_budget(
-  AccountId = "string",
-  BudgetName = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_notifications_for_budget(AccountId, BudgetName,
+  MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{AccountId}{[required] The \code{accountId} that is associated with the budget whose notifications you want descriptions of.}
@@ -23,6 +19,13 @@ describe_notifications_for_budget(
 \description{
 Lists the notifications that are associated with a budget.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_notifications_for_budget(
+  AccountId = "string",
+  BudgetName = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

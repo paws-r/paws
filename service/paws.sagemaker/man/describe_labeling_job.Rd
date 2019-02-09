@@ -4,9 +4,7 @@
 \alias{describe_labeling_job}
 \title{Gets information about a labeling job}
 \usage{
-describe_labeling_job(
-  LabelingJobName = "string"
-)
+describe_labeling_job(LabelingJobName)
 }
 \arguments{
 \item{LabelingJobName}{[required] The name of the labeling job to return information for.}
@@ -14,6 +12,10 @@ describe_labeling_job(
 \description{
 Gets information about a labeling job.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_labeling_job(
+  LabelingJobName = "string"
+)
 }
+}
+

@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.mturk_operations.R
 \name{reject_qualification_request}
 \alias{reject_qualification_request}
-\title{The \code{RejectQualificationRequest} operation rejects a user's request for a Qualification}
+\title{The RejectQualificationRequest operation rejects a user's request for a Qualification}
 \usage{
-reject_qualification_request(
-  QualificationRequestId = "string",
-  Reason = "string"
-)
+reject_qualification_request(QualificationRequestId, Reason = NULL)
 }
 \arguments{
 \item{QualificationRequestId}{[required] The ID of the Qualification request, as returned by the \code{ListQualificationRequests} operation.}
@@ -20,6 +17,11 @@ The \code{RejectQualificationRequest} operation rejects a user's request for a Q
 \details{
 You can provide a text message explaining why the request was rejected. The Worker who made the request can see this message.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{reject_qualification_request(
+  QualificationRequestId = "string",
+  Reason = "string"
+)
 }
+}
+

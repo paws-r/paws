@@ -4,9 +4,7 @@
 \alias{delete_db_cluster_parameter_group}
 \title{Deletes a specified DB cluster parameter group}
 \usage{
-delete_db_cluster_parameter_group(
-  DBClusterParameterGroupName = "string"
-)
+delete_db_cluster_parameter_group(DBClusterParameterGroupName)
 }
 \arguments{
 \item{DBClusterParameterGroupName}{[required] The name of the DB cluster parameter group.
@@ -24,6 +22,10 @@ Deletes a specified DB cluster parameter group. The DB cluster parameter group t
 \details{
 For more information on Amazon Aurora, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?} in the \emph{Amazon Aurora User Guide.}
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_db_cluster_parameter_group(
+  DBClusterParameterGroupName = "string"
+)
 }
+}
+

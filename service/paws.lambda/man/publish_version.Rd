@@ -2,14 +2,10 @@
 % Please edit documentation in R/paws.lambda_operations.R
 \name{publish_version}
 \alias{publish_version}
-\title{Publishes a version of your function from the current snapshot of \$LATEST}
+\title{Creates a version from the current code and configuration of a function}
 \usage{
-publish_version(
-  FunctionName = "string",
-  CodeSha256 = "string",
-  Description = "string",
-  RevisionId = "string"
-)
+publish_version(FunctionName, CodeSha256 = NULL, Description = NULL,
+  RevisionId = NULL)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the lambda function.
@@ -23,21 +19,36 @@ publish_version(
 
 The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
 
-\item{CodeSha256}{The SHA256 hash of the deployment package you want to publish. This provides validation on the code you are publishing. If you provide this parameter, the value must match the SHA256 of the \$LATEST version for the publication to succeed. You can use the \strong{DryRun} parameter of UpdateFunctionCode to verify the hash value that will be returned before publishing your new version.}
+\item{CodeSha256}{Only publish a version if the hash matches the value specified. Use this option to avoid publishing a version if the function code has changed since you last updated it. You can get the hash for the version you uploaded from the output of UpdateFunctionCode.}
 
-\item{Description}{The description for the version you are publishing. If not provided, AWS Lambda copies the description from the \$LATEST version.}
+\item{Description}{Specify a description for the version to override the description in the function configuration.}
 
-\item{RevisionId}{An optional value you can use to ensure you are updating the latest update of the function version or alias. If the \code{RevisionID} you pass doesn't match the latest \code{RevisionId} of the function or alias, it will fail with an error message, advising you retrieve the latest function version or alias \code{RevisionID} using either GetFunction or GetAlias.}
+\item{RevisionId}{Only update the function if the revision ID matches the ID specified. Use this option to avoid publishing a version if the function configuration has changed since you last updated it.}
 }
 \description{
-Publishes a version of your function from the current snapshot of \$LATEST. That is, AWS Lambda takes a snapshot of the function code and configuration information from \$LATEST and publishes a new version. The code and configuration cannot be modified after publication. For information about the versioning feature, see \href{http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{AWS Lambda Function Versioning and Aliases}.
+Creates a \href{http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{version} from the current code and configuration of a function. Use versions to create a snapshot of your function code and configuration that doesn't change.
 }
+\details{
+AWS Lambda does not publish a version if the function's configuration and code hasn't changed since the last version. Use UpdateFunctionCode or UpdateFunctionConfiguration to update the function prior to publishing a version.
+
+Clients can invoke versions directly or with an alias. To create an alias, use CreateAlias.
+}
+\section{Accepted Parameters}{
+\preformatted{publish_version(
+  FunctionName = "string",
+  CodeSha256 = "string",
+  Description = "string",
+  RevisionId = "string"
+)
+}
+}
+
 \examples{
 # This operation publishes a version of a Lambda function
-publish_version(
+\donttest{publish_version(
   CodeSha256 = "",
   Description = "",
   FunctionName = "myFunction"
-)
+)}
 
 }

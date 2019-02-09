@@ -4,10 +4,7 @@
 \alias{test_connection}
 \title{Tests the connection between the replication instance and the endpoint}
 \usage{
-test_connection(
-  ReplicationInstanceArn = "string",
-  EndpointArn = "string"
-)
+test_connection(ReplicationInstanceArn, EndpointArn)
 }
 \arguments{
 \item{ReplicationInstanceArn}{[required] The Amazon Resource Name (ARN) of the replication instance.}
@@ -17,11 +14,19 @@ test_connection(
 \description{
 Tests the connection between the replication instance and the endpoint.
 }
+\section{Accepted Parameters}{
+\preformatted{test_connection(
+  ReplicationInstanceArn = "string",
+  EndpointArn = "string"
+)
+}
+}
+
 \examples{
 # Tests the connection between the replication instance and the endpoint.
-test_connection(
+\donttest{test_connection(
   EndpointArn = "arn:aws:dms:us-east-1:123456789012:endpoint:RAAR3R22XSH46S3PWLC3NJAWKM",
   ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJQ"
-)
+)}
 
 }

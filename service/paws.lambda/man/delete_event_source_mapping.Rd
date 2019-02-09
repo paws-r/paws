@@ -4,20 +4,25 @@
 \alias{delete_event_source_mapping}
 \title{Deletes an event source mapping}
 \usage{
-delete_event_source_mapping(
-  UUID = "string"
-)
+delete_event_source_mapping(UUID)
 }
 \arguments{
 \item{UUID}{[required] The identifier of the event source mapping.}
 }
 \description{
-Deletes an event source mapping.
+Deletes an \href{http://docs.aws.amazon.com/lambda/latest/dg/intro-invocation-modes.html}{event source mapping}. You can get the identifier of a mapping from the output of ListEventSourceMappings.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_event_source_mapping(
+  UUID = "string"
+)
+}
+}
+
 \examples{
 # This operation deletes a Lambda function event source mapping
-delete_event_source_mapping(
+\donttest{delete_event_source_mapping(
   UUID = "12345kxodurf3443"
-)
+)}
 
 }

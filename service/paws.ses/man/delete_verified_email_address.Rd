@@ -4,9 +4,7 @@
 \alias{delete_verified_email_address}
 \title{Deprecated}
 \usage{
-delete_verified_email_address(
-  EmailAddress = "string"
-)
+delete_verified_email_address(EmailAddress)
 }
 \arguments{
 \item{EmailAddress}{[required] An email address to be removed from the list of verified addresses.}
@@ -14,11 +12,18 @@ delete_verified_email_address(
 \description{
 Deprecated. Use the \code{DeleteIdentity} operation to delete email addresses and domains.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_verified_email_address(
+  EmailAddress = "string"
+)
+}
+}
+
 \examples{
 # The following example deletes an email address from the list of
 # identities that have been submitted for verification with Amazon SES:
-delete_verified_email_address(
+\donttest{delete_verified_email_address(
   EmailAddress = "user@example.com"
-)
+)}
 
 }

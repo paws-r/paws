@@ -4,7 +4,56 @@
 \alias{update_distribution}
 \title{Updates the configuration for a web distribution}
 \usage{
-update_distribution(
+update_distribution(DistributionConfig, Id, IfMatch = NULL)
+}
+\arguments{
+\item{DistributionConfig}{[required] The distribution's configuration information.}
+
+\item{Id}{[required] The distribution's id.}
+
+\item{IfMatch}{The value of the \code{ETag} header that you received when retrieving the distribution's configuration. For example: \code{E2QWRUHAPOMQZL}.}
+}
+\description{
+Updates the configuration for a web distribution.
+}
+\details{
+When you update a distribution, there are more required fields than when you create a distribution. When you update your distribution by using this API action, follow the steps here to get the current configuration and then make your updates, to make sure that you include all of the required fields. To view a summary, see \href{http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-overview-required-fields.html}{Required Fields for Create Distribution and Update Distribution} in the \emph{Amazon CloudFront Developer Guide}.
+
+The update process includes getting the current distribution configuration, updating the XML document that is returned to make your changes, and then submitting an \code{UpdateDistribution} request to make the updates.
+
+For information about updating a distribution using the CloudFront console instead, see \href{http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-creating-console.html}{Creating a Distribution} in the \emph{Amazon CloudFront Developer Guide}.
+
+\strong{To update a web distribution using the CloudFront API}
+\enumerate{
+\item Submit a GetDistributionConfig request to get the current configuration and an \code{Etag} header for the distribution.
+}
+
+If you update the distribution again, you must get a new \code{Etag} header.
+\enumerate{
+\item Update the XML document that was returned in the response to your \code{GetDistributionConfig} request to include your changes.
+}
+
+When you edit the XML file, be aware of the following:
+\itemize{
+\item You must strip out the ETag parameter that is returned.
+\item Additional fields are required when you update a distribution. There may be fields included in the XML file for features that you haven't configured for your distribution. This is expected and required to successfully update the distribution.
+\item You can't change the value of \code{CallerReference}. If you try to change this value, CloudFront returns an \code{IllegalUpdate} error.
+\item The new configuration replaces the existing configuration; the values that you specify in an \code{UpdateDistribution} request are not merged into your existing configuration. When you add, delete, or replace values in an element that allows multiple values (for example, \code{CNAME}), you must specify all of the values that you want to appear in the updated distribution. In addition, you must update the corresponding \code{Quantity} element.
+}
+\enumerate{
+\item Submit an \code{UpdateDistribution} request to update the configuration for your distribution:
+}
+\itemize{
+\item In the request body, include the XML document that you updated in Step 2. The request body must include an XML document with a \code{DistributionConfig} element.
+\item Set the value of the HTTP \code{If-Match} header to the value of the \code{ETag} header that CloudFront returned when you submitted the \code{GetDistributionConfig} request in Step 1.
+}
+\enumerate{
+\item Review the response to the \code{UpdateDistribution} request to confirm that the configuration was successfully updated.
+\item Optional: Submit a GetDistribution request to confirm that your changes have propagated. When propagation is complete, the value of \code{Status} is \code{Deployed}.
+}
+}
+\section{Accepted Parameters}{
+\preformatted{update_distribution(
   DistributionConfig = list(
     CallerReference = "string",
     Aliases = list(
@@ -251,52 +300,5 @@ update_distribution(
   IfMatch = "string"
 )
 }
-\arguments{
-\item{DistributionConfig}{[required] The distribution's configuration information.}
-
-\item{Id}{[required] The distribution's id.}
-
-\item{IfMatch}{The value of the \code{ETag} header that you received when retrieving the distribution's configuration. For example: \code{E2QWRUHAPOMQZL}.}
-}
-\description{
-Updates the configuration for a web distribution.
-}
-\details{
-When you update a distribution, there are more required fields than when you create a distribution. When you update your distribution by using this API action, follow the steps here to get the current configuration and then make your updates, to make sure that you include all of the required fields. To view a summary, see \href{http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-overview-required-fields.html}{Required Fields for Create Distribution and Update Distribution} in the \emph{Amazon CloudFront Developer Guide}.
-
-The update process includes getting the current distribution configuration, updating the XML document that is returned to make your changes, and then submitting an \code{UpdateDistribution} request to make the updates.
-
-For information about updating a distribution using the CloudFront console instead, see \href{http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-creating-console.html}{Creating a Distribution} in the \emph{Amazon CloudFront Developer Guide}.
-
-\strong{To update a web distribution using the CloudFront API}
-\enumerate{
-\item Submit a GetDistributionConfig request to get the current configuration and an \code{Etag} header for the distribution.
 }
 
-If you update the distribution again, you must get a new \code{Etag} header.
-\enumerate{
-\item Update the XML document that was returned in the response to your \code{GetDistributionConfig} request to include your changes.
-}
-
-When you edit the XML file, be aware of the following:
-\itemize{
-\item You must strip out the ETag parameter that is returned.
-\item Additional fields are required when you update a distribution. There may be fields included in the XML file for features that you haven't configured for your distribution. This is expected and required to successfully update the distribution.
-\item You can't change the value of \code{CallerReference}. If you try to change this value, CloudFront returns an \code{IllegalUpdate} error.
-\item The new configuration replaces the existing configuration; the values that you specify in an \code{UpdateDistribution} request are not merged into your existing configuration. When you add, delete, or replace values in an element that allows multiple values (for example, \code{CNAME}), you must specify all of the values that you want to appear in the updated distribution. In addition, you must update the corresponding \code{Quantity} element.
-}
-\enumerate{
-\item Submit an \code{UpdateDistribution} request to update the configuration for your distribution:
-}
-\itemize{
-\item In the request body, include the XML document that you updated in Step 2. The request body must include an XML document with a \code{DistributionConfig} element.
-\item Set the value of the HTTP \code{If-Match} header to the value of the \code{ETag} header that CloudFront returned when you submitted the \code{GetDistributionConfig} request in Step 1.
-}
-\enumerate{
-\item Review the response to the \code{UpdateDistribution} request to confirm that the configuration was successfully updated.
-\item Optional: Submit a GetDistribution request to confirm that your changes have propagated. When propagation is complete, the value of \code{Status} is \code{Deployed}.
-}
-}
-\examples{
-
-}

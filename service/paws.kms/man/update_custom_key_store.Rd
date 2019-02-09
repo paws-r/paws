@@ -4,12 +4,8 @@
 \alias{update_custom_key_store}
 \title{Changes the properties of a custom key store}
 \usage{
-update_custom_key_store(
-  CustomKeyStoreId = "string",
-  NewCustomKeyStoreName = "string",
-  KeyStorePassword = "string",
-  CloudHsmClusterId = "string"
-)
+update_custom_key_store(CustomKeyStoreId, NewCustomKeyStoreName = NULL,
+  KeyStorePassword = NULL, CloudHsmClusterId = NULL)
 }
 \arguments{
 \item{CustomKeyStoreId}{[required] Identifies the custom key store that you want to update. Enter the ID of the custom key store. To find the ID of a custom key store, use the DescribeCustomKeyStores operation.}
@@ -50,6 +46,13 @@ If the operation succeeds, it returns a JSON object with no properties.
 
 This operation is part of the \href{http://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{Custom Key Store feature} feature in AWS KMS, which combines the convenience and extensive integration of AWS KMS with the isolation and control of a single-tenant key store.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_custom_key_store(
+  CustomKeyStoreId = "string",
+  NewCustomKeyStoreName = "string",
+  KeyStorePassword = "string",
+  CloudHsmClusterId = "string"
+)
 }
+}
+

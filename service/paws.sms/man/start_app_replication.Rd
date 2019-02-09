@@ -4,9 +4,7 @@
 \alias{start_app_replication}
 \title{Starts replicating an application}
 \usage{
-start_app_replication(
-  appId = "string"
-)
+start_app_replication(appId = NULL)
 }
 \arguments{
 \item{appId}{ID of the application to replicate.}
@@ -14,6 +12,10 @@ start_app_replication(
 \description{
 Starts replicating an application.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_app_replication(
+  appId = "string"
+)
 }
+}
+

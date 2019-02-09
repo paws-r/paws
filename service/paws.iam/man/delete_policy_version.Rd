@@ -4,10 +4,7 @@
 \alias{delete_policy_version}
 \title{Deletes the specified version from the specified managed policy}
 \usage{
-delete_policy_version(
-  PolicyArn = "string",
-  VersionId = "string"
-)
+delete_policy_version(PolicyArn, VersionId)
 }
 \arguments{
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy from which you want to delete a version.
@@ -28,6 +25,11 @@ You cannot delete the default version from a policy using this API. To delete th
 
 For information about versions for managed policies, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html}{Versioning for Managed Policies} in the \emph{IAM User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_policy_version(
+  PolicyArn = "string",
+  VersionId = "string"
+)
 }
+}
+

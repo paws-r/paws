@@ -4,7 +4,75 @@
 \alias{create_endpoint}
 \title{Creates an endpoint using the provided settings}
 \usage{
-create_endpoint(
+create_endpoint(EndpointIdentifier, EndpointType, EngineName,
+  Username = NULL, Password = NULL, ServerName = NULL, Port = NULL,
+  DatabaseName = NULL, ExtraConnectionAttributes = NULL,
+  KmsKeyId = NULL, Tags = NULL, CertificateArn = NULL,
+  SslMode = NULL, ServiceAccessRoleArn = NULL,
+  ExternalTableDefinition = NULL, DynamoDbSettings = NULL,
+  S3Settings = NULL, DmsTransferSettings = NULL,
+  MongoDbSettings = NULL, KinesisSettings = NULL,
+  ElasticsearchSettings = NULL)
+}
+\arguments{
+\item{EndpointIdentifier}{[required] The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.}
+
+\item{EndpointType}{[required] The type of endpoint.}
+
+\item{EngineName}{[required] The type of engine for the endpoint. Valid values, depending on the \code{EndPointType} value, include \code{mysql}, \code{oracle}, \code{postgres}, \code{mariadb}, \code{aurora}, \code{aurora-postgresql}, \code{redshift}, \code{s3}, \code{db2}, \code{azuredb}, \code{sybase}, \code{dynamodb}, \code{mongodb}, and \code{sqlserver}.}
+
+\item{Username}{The user name to be used to log in to the endpoint database.}
+
+\item{Password}{The password to be used to log in to the endpoint database.}
+
+\item{ServerName}{The name of the server where the endpoint database resides.}
+
+\item{Port}{The port used by the endpoint database.}
+
+\item{DatabaseName}{The name of the endpoint database.}
+
+\item{ExtraConnectionAttributes}{Additional attributes associated with the connection.}
+
+\item{KmsKeyId}{The AWS KMS key identifier to use to encrypt the connection parameters. If you don't specify a value for the \code{KmsKeyId} parameter, then AWS DMS uses your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS Region.}
+
+\item{Tags}{Tags to be added to the endpoint.}
+
+\item{CertificateArn}{The Amazon Resource Name (ARN) for the certificate.}
+
+\item{SslMode}{The Secure Sockets Layer (SSL) mode to use for the SSL connection. The SSL mode can be one of four values: \code{none}, \code{require}, \code{verify-ca}, \code{verify-full}. The default value is \code{none}.}
+
+\item{ServiceAccessRoleArn}{The Amazon Resource Name (ARN) for the service access role that you want to use to create the endpoint.}
+
+\item{ExternalTableDefinition}{The external table definition.}
+
+\item{DynamoDbSettings}{Settings in JSON format for the target Amazon DynamoDB endpoint. For more information about the available settings, see \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html}{Using Object Mapping to Migrate Data to DynamoDB} in the \emph{AWS Database Migration Service User Guide.}}
+
+\item{S3Settings}{Settings in JSON format for the target Amazon S3 endpoint. For more information about the available settings, see \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html#CHAP_Target.S3.Configuring}{Extra Connection Attributes When Using Amazon S3 as a Target for AWS DMS} in the \emph{AWS Database Migration Service User Guide.}}
+
+\item{DmsTransferSettings}{The settings in JSON format for the DMS transfer type of source endpoint.
+
+Possible attributes include the following:
+\itemize{
+\item \code{serviceAccessRoleArn} - The IAM role that has permission to access the Amazon S3 bucket.
+\item \code{bucketName} - The name of the S3 bucket to use.
+\item \code{compressionType} - An optional parameter to use GZIP to compress the target files. To use GZIP, set this value to \code{NONE} (the default). To keep the files uncompressed, don't use this value.
+}
+
+Shorthand syntax for these attributes is as follows: \code{ServiceAccessRoleArn=string,BucketName=string,CompressionType=string}
+
+JSON syntax for these attributes is as follows: \code{{ "ServiceAccessRoleArn": "string", "BucketName": "string", "CompressionType": "none"|"gzip" } }}
+
+\item{MongoDbSettings}{Settings in JSON format for the source MongoDB endpoint. For more information about the available settings, see the configuration properties section in \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html}{Using MongoDB as a Target for AWS Database Migration Service} in the \emph{AWS Database Migration Service User Guide.}}
+
+\item{KinesisSettings}{Settings in JSON format for the target Amazon Kinesis Data Streams endpoint. For more information about the available settings, see \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping%20}{Using Object Mapping to Migrate Data to a Kinesis Data Stream} in the \emph{AWS Database Migration User Guide.}}
+
+\item{ElasticsearchSettings}{Settings in JSON format for the target Elasticsearch endpoint. For more information about the available settings, see \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Elasticsearch.html#CHAP_Target.Elasticsearch.Configuration}{Extra Connection Attributes When Using Elasticsearch as a Target for AWS DMS} in the \emph{AWS Database Migration User Guide.}}
+}
+\description{
+Creates an endpoint using the provided settings.
+}
+\section{Accepted Parameters}{
+\preformatted{create_endpoint(
   EndpointIdentifier = "string",
   EndpointType = "source"|"target",
   EngineName = "string",
@@ -68,66 +136,11 @@ create_endpoint(
   )
 )
 }
-\arguments{
-\item{EndpointIdentifier}{[required] The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.}
-
-\item{EndpointType}{[required] The type of endpoint.}
-
-\item{EngineName}{[required] The type of engine for the endpoint. Valid values, depending on the \code{EndPointType} value, include \code{mysql}, \code{oracle}, \code{postgres}, \code{mariadb}, \code{aurora}, \code{aurora-postgresql}, \code{redshift}, \code{s3}, \code{db2}, \code{azuredb}, \code{sybase}, \code{dynamodb}, \code{mongodb}, and \code{sqlserver}.}
-
-\item{Username}{The user name to be used to log in to the endpoint database.}
-
-\item{Password}{The password to be used to log in to the endpoint database.}
-
-\item{ServerName}{The name of the server where the endpoint database resides.}
-
-\item{Port}{The port used by the endpoint database.}
-
-\item{DatabaseName}{The name of the endpoint database.}
-
-\item{ExtraConnectionAttributes}{Additional attributes associated with the connection.}
-
-\item{KmsKeyId}{The AWS KMS key identifier to use to encrypt the connection parameters. If you don't specify a value for the \code{KmsKeyId} parameter, then AWS DMS uses your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS Region.}
-
-\item{Tags}{Tags to be added to the endpoint.}
-
-\item{CertificateArn}{The Amazon Resource Name (ARN) for the certificate.}
-
-\item{SslMode}{The Secure Sockets Layer (SSL) mode to use for the SSL connection. The SSL mode can be one of four values: \code{none}, \code{require}, \code{verify-ca}, \code{verify-full}. The default value is \code{none}.}
-
-\item{ServiceAccessRoleArn}{The Amazon Resource Name (ARN) for the service access role that you want to use to create the endpoint.}
-
-\item{ExternalTableDefinition}{The external table definition.}
-
-\item{DynamoDbSettings}{Settings in JSON format for the target Amazon DynamoDB endpoint. For more information about the available settings, see \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html}{Using Object Mapping to Migrate Data to DynamoDB} in the \emph{AWS Database Migration Service User Guide.}}
-
-\item{S3Settings}{Settings in JSON format for the target Amazon S3 endpoint. For more information about the available settings, see \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html#CHAP_Target.S3.Configuring}{Extra Connection Attributes When Using Amazon S3 as a Target for AWS DMS} in the \emph{AWS Database Migration Service User Guide.}}
-
-\item{DmsTransferSettings}{The settings in JSON format for the DMS transfer type of source endpoint.
-
-Possible attributes include the following:
-\itemize{
-\item \code{serviceAccessRoleArn} - The IAM role that has permission to access the Amazon S3 bucket.
-\item \code{bucketName} - The name of the S3 bucket to use.
-\item \code{compressionType} - An optional parameter to use GZIP to compress the target files. To use GZIP, set this value to \code{NONE} (the default). To keep the files uncompressed, don't use this value.
 }
 
-Shorthand syntax for these attributes is as follows: \code{ServiceAccessRoleArn=string,BucketName=string,CompressionType=string}
-
-JSON syntax for these attributes is as follows: \code{{ "ServiceAccessRoleArn": "string", "BucketName": "string", "CompressionType": "none"|"gzip" } }}
-
-\item{MongoDbSettings}{Settings in JSON format for the source MongoDB endpoint. For more information about the available settings, see the configuration properties section in \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html}{Using MongoDB as a Target for AWS Database Migration Service} in the \emph{AWS Database Migration Service User Guide.}}
-
-\item{KinesisSettings}{Settings in JSON format for the target Amazon Kinesis Data Streams endpoint. For more information about the available settings, see \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping%20}{Using Object Mapping to Migrate Data to a Kinesis Data Stream} in the \emph{AWS Database Migration User Guide.}}
-
-\item{ElasticsearchSettings}{Settings in JSON format for the target Elasticsearch endpoint. For more information about the available settings, see \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Elasticsearch.html#CHAP_Target.Elasticsearch.Configuration}{Extra Connection Attributes When Using Elasticsearch as a Target for AWS DMS} in the \emph{AWS Database Migration User Guide.}}
-}
-\description{
-Creates an endpoint using the provided settings.
-}
 \examples{
 # Creates an endpoint using the provided settings.
-create_endpoint(
+\donttest{create_endpoint(
   CertificateArn = "",
   DatabaseName = "testdb",
   EndpointIdentifier = "test-endpoint-1",
@@ -146,6 +159,6 @@ create_endpoint(
     )
   ),
   Username = "username"
-)
+)}
 
 }

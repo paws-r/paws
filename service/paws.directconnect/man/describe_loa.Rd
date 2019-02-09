@@ -4,11 +4,7 @@
 \alias{describe_loa}
 \title{Gets the LOA-CFA for a connection, interconnect, or link aggregation group (LAG)}
 \usage{
-describe_loa(
-  connectionId = "string",
-  providerName = "string",
-  loaContentType = "application/pdf"
-)
+describe_loa(connectionId, providerName = NULL, loaContentType = NULL)
 }
 \arguments{
 \item{connectionId}{[required] The ID of a connection, LAG, or interconnect.}
@@ -23,6 +19,12 @@ Gets the LOA-CFA for a connection, interconnect, or link aggregation group (LAG)
 \details{
 The Letter of Authorization - Connecting Facility Assignment (LOA-CFA) is a document that is used when establishing your cross connect to AWS at the colocation facility. For more information, see \href{http://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html}{Requesting Cross Connects at AWS Direct Connect Locations} in the \emph{AWS Direct Connect User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_loa(
+  connectionId = "string",
+  providerName = "string",
+  loaContentType = "application/pdf"
+)
 }
+}
+

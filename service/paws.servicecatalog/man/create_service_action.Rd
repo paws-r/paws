@@ -4,16 +4,8 @@
 \alias{create_service_action}
 \title{Creates a self-service action}
 \usage{
-create_service_action(
-  Name = "string",
-  DefinitionType = "SSM_AUTOMATION",
-  Definition = list(
-    "string"
-  ),
-  Description = "string",
-  AcceptLanguage = "string",
-  IdempotencyToken = "string"
-)
+create_service_action(Name, DefinitionType, Definition,
+  Description = NULL, AcceptLanguage = NULL, IdempotencyToken)
 }
 \arguments{
 \item{Name}{[required] The self-service action name.}
@@ -54,6 +46,17 @@ Parameters
 \description{
 Creates a self-service action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_service_action(
+  Name = "string",
+  DefinitionType = "SSM_AUTOMATION",
+  Definition = list(
+    "string"
+  ),
+  Description = "string",
+  AcceptLanguage = "string",
+  IdempotencyToken = "string"
+)
 }
+}
+

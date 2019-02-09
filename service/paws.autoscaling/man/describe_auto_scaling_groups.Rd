@@ -4,13 +4,8 @@
 \alias{describe_auto_scaling_groups}
 \title{Describes one or more Auto Scaling groups}
 \usage{
-describe_auto_scaling_groups(
-  AutoScalingGroupNames = list(
-    "string"
-  ),
-  NextToken = "string",
-  MaxRecords = 123
-)
+describe_auto_scaling_groups(AutoScalingGroupNames = NULL,
+  NextToken = NULL, MaxRecords = NULL)
 }
 \arguments{
 \item{AutoScalingGroupNames}{The names of the Auto Scaling groups. You can specify up to \code{MaxRecords} names. If you omit this parameter, all Auto Scaling groups are described.}
@@ -22,12 +17,23 @@ describe_auto_scaling_groups(
 \description{
 Describes one or more Auto Scaling groups.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_auto_scaling_groups(
+  AutoScalingGroupNames = list(
+    "string"
+  ),
+  NextToken = "string",
+  MaxRecords = 123
+)
+}
+}
+
 \examples{
 # This example describes the specified Auto Scaling group.
-describe_auto_scaling_groups(
+\donttest{describe_auto_scaling_groups(
   AutoScalingGroupNames = list(
     "my-auto-scaling-group"
   )
-)
+)}
 
 }

@@ -2,17 +2,13 @@
 % Please edit documentation in R/paws.lambda_operations.R
 \name{remove_layer_version_permission}
 \alias{remove_layer_version_permission}
-\title{Removes a statement from the permissions policy for a layer version}
+\title{Removes a statement from the permissions policy for a version of an AWS Lambda layer}
 \usage{
-remove_layer_version_permission(
-  LayerName = "string",
-  VersionNumber = 123,
-  StatementId = "string",
-  RevisionId = "string"
-)
+remove_layer_version_permission(LayerName, VersionNumber, StatementId,
+  RevisionId = NULL)
 }
 \arguments{
-\item{LayerName}{[required] The name of the layer.}
+\item{LayerName}{[required] The name or Amazon Resource Name (ARN) of the layer.}
 
 \item{VersionNumber}{[required] The version number.}
 
@@ -21,8 +17,15 @@ remove_layer_version_permission(
 \item{RevisionId}{Only update the policy if the revision ID matches the ID specified. Use this option to avoid modifying a policy that has changed since you last read it.}
 }
 \description{
-Removes a statement from the permissions policy for a layer version. For more information, see AddLayerVersionPermission.
+Removes a statement from the permissions policy for a version of an \href{http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layer}. For more information, see AddLayerVersionPermission.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{remove_layer_version_permission(
+  LayerName = "string",
+  VersionNumber = 123,
+  StatementId = "string",
+  RevisionId = "string"
+)
+}
+}
 
-}

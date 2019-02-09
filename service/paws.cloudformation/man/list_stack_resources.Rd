@@ -4,10 +4,7 @@
 \alias{list_stack_resources}
 \title{Returns descriptions of all resources of the specified stack}
 \usage{
-list_stack_resources(
-  StackName = "string",
-  NextToken = "string"
-)
+list_stack_resources(StackName, NextToken = NULL)
 }
 \arguments{
 \item{StackName}{[required] The name or the unique stack ID that is associated with the stack, which are not always interchangeable:
@@ -26,6 +23,11 @@ Returns descriptions of all resources of the specified stack.
 \details{
 For deleted stacks, ListStackResources returns resource information for up to 90 days after the stack has been deleted.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_stack_resources(
+  StackName = "string",
+  NextToken = "string"
+)
 }
+}
+

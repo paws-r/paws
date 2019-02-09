@@ -4,11 +4,7 @@
 \alias{describe_budgets}
 \title{Lists the budgets that are associated with an account}
 \usage{
-describe_budgets(
-  AccountId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+describe_budgets(AccountId, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{AccountId}{[required] The \code{accountId} that is associated with the budgets that you want descriptions of.}
@@ -20,6 +16,12 @@ describe_budgets(
 \description{
 Lists the budgets that are associated with an account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_budgets(
+  AccountId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

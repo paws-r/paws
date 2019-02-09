@@ -4,7 +4,18 @@
 \alias{create_campaign}
 \title{Creates or updates a campaign}
 \usage{
-create_campaign(
+create_campaign(ApplicationId, WriteCampaignRequest)
+}
+\arguments{
+\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+
+\item{WriteCampaignRequest}{[required]}
+}
+\description{
+Creates or updates a campaign.
+}
+\section{Accepted Parameters}{
+\preformatted{create_campaign(
   ApplicationId = "string",
   WriteCampaignRequest = list(
     AdditionalTreatments = list(
@@ -274,14 +285,5 @@ create_campaign(
   )
 )
 }
-\arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+}
 
-\item{WriteCampaignRequest}{[required]}
-}
-\description{
-Creates or updates a campaign.
-}
-\examples{
-
-}

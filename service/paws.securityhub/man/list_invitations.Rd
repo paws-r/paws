@@ -4,10 +4,7 @@
 \alias{list_invitations}
 \title{Lists all Security Hub membership invitations that were sent to the current AWS account}
 \usage{
-list_invitations(
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_invitations(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{Indicates the maximum number of items that you want in the response.}
@@ -17,6 +14,11 @@ list_invitations(
 \description{
 Lists all Security Hub membership invitations that were sent to the current AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_invitations(
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

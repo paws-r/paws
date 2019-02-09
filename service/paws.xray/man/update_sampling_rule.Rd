@@ -4,7 +4,16 @@
 \alias{update_sampling_rule}
 \title{Modifies a sampling rule's configuration}
 \usage{
-update_sampling_rule(
+update_sampling_rule(SamplingRuleUpdate)
+}
+\arguments{
+\item{SamplingRuleUpdate}{[required] The rule and fields to change.}
+}
+\description{
+Modifies a sampling rule's configuration.
+}
+\section{Accepted Parameters}{
+\preformatted{update_sampling_rule(
   SamplingRuleUpdate = list(
     RuleName = "string",
     RuleARN = "string",
@@ -23,12 +32,5 @@ update_sampling_rule(
   )
 )
 }
-\arguments{
-\item{SamplingRuleUpdate}{[required] The rule and fields to change.}
 }
-\description{
-Modifies a sampling rule's configuration.
-}
-\examples{
 
-}

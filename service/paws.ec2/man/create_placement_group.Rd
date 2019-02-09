@@ -4,12 +4,8 @@
 \alias{create_placement_group}
 \title{Creates a placement group in which to launch instances}
 \usage{
-create_placement_group(
-  DryRun = TRUE|FALSE,
-  GroupName = "string",
-  Strategy = "cluster"|"spread"|"partition",
-  PartitionCount = 123
-)
+create_placement_group(DryRun = NULL, GroupName = NULL,
+  Strategy = NULL, PartitionCount = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -28,13 +24,23 @@ Creates a placement group in which to launch instances. The strategy of the plac
 \details{
 A \code{cluster} placement group is a logical grouping of instances within a single Availability Zone that benefit from low network latency, high network throughput. A \code{spread} placement group places instances on distinct hardware. A \code{partition} placement group places groups of instances in different partitions, where instances in one partition do not share the same hardware with instances in another partition.
 
-For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement Groups} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement Groups} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_placement_group(
+  DryRun = TRUE|FALSE,
+  GroupName = "string",
+  Strategy = "cluster"|"spread"|"partition",
+  PartitionCount = 123
+)
+}
+}
+
 \examples{
 # This example creates a placement group with the specified name.
-create_placement_group(
+\donttest{create_placement_group(
   GroupName = "my-cluster",
   Strategy = "cluster"
-)
+)}
 
 }

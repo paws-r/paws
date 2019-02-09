@@ -4,20 +4,9 @@
 \alias{modify_transit_gateway_vpc_attachment}
 \title{Modifies the specified VPC attachment}
 \usage{
-modify_transit_gateway_vpc_attachment(
-  TransitGatewayAttachmentId = "string",
-  AddSubnetIds = list(
-    "string"
-  ),
-  RemoveSubnetIds = list(
-    "string"
-  ),
-  Options = list(
-    DnsSupport = "enable"|"disable",
-    Ipv6Support = "enable"|"disable"
-  ),
-  DryRun = TRUE|FALSE
-)
+modify_transit_gateway_vpc_attachment(TransitGatewayAttachmentId,
+  AddSubnetIds = NULL, RemoveSubnetIds = NULL, Options = NULL,
+  DryRun = NULL)
 }
 \arguments{
 \item{TransitGatewayAttachmentId}{[required] The ID of the attachment.}
@@ -33,6 +22,21 @@ modify_transit_gateway_vpc_attachment(
 \description{
 Modifies the specified VPC attachment.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_transit_gateway_vpc_attachment(
+  TransitGatewayAttachmentId = "string",
+  AddSubnetIds = list(
+    "string"
+  ),
+  RemoveSubnetIds = list(
+    "string"
+  ),
+  Options = list(
+    DnsSupport = "enable"|"disable",
+    Ipv6Support = "enable"|"disable"
+  ),
+  DryRun = TRUE|FALSE
+)
 }
+}
+

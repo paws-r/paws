@@ -4,7 +4,26 @@
 \alias{update_domain_contact}
 \title{This operation updates the contact information for a particular domain}
 \usage{
-update_domain_contact(
+update_domain_contact(DomainName, AdminContact = NULL,
+  RegistrantContact = NULL, TechContact = NULL)
+}
+\arguments{
+\item{DomainName}{[required] The name of the domain that you want to update contact information for.}
+
+\item{AdminContact}{Provides detailed contact information.}
+
+\item{RegistrantContact}{Provides detailed contact information.}
+
+\item{TechContact}{Provides detailed contact information.}
+}
+\description{
+This operation updates the contact information for a particular domain. You must specify information for at least one contact: registrant, administrator, or technical.
+}
+\details{
+If the update is successful, this method returns an operation ID that you can use to track the progress and completion of the action. If the request is not completed successfully, the domain registrant will be notified by email.
+}
+\section{Accepted Parameters}{
+\preformatted{update_domain_contact(
   DomainName = "string",
   AdminContact = list(
     FirstName = "string",
@@ -71,21 +90,5 @@ update_domain_contact(
   )
 )
 }
-\arguments{
-\item{DomainName}{[required] The name of the domain that you want to update contact information for.}
-
-\item{AdminContact}{Provides detailed contact information.}
-
-\item{RegistrantContact}{Provides detailed contact information.}
-
-\item{TechContact}{Provides detailed contact information.}
 }
-\description{
-This operation updates the contact information for a particular domain. You must specify information for at least one contact: registrant, administrator, or technical.
-}
-\details{
-If the update is successful, this method returns an operation ID that you can use to track the progress and completion of the action. If the request is not completed successfully, the domain registrant will be notified by email.
-}
-\examples{
 
-}

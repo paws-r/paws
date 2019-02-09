@@ -4,10 +4,7 @@
 \alias{put_email_identity_dkim_attributes}
 \title{Used to enable or disable DKIM authentication for an email identity}
 \usage{
-put_email_identity_dkim_attributes(
-  EmailIdentity = "string",
-  SigningEnabled = TRUE|FALSE
-)
+put_email_identity_dkim_attributes(EmailIdentity, SigningEnabled = NULL)
 }
 \arguments{
 \item{EmailIdentity}{[required] The email identity that you want to change the DKIM settings for.}
@@ -19,6 +16,11 @@ When you set this value \code{true}, then the messages that Amazon Pinpoint send
 \description{
 Used to enable or disable DKIM authentication for an email identity.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_email_identity_dkim_attributes(
+  EmailIdentity = "string",
+  SigningEnabled = TRUE|FALSE
+)
 }
+}
+

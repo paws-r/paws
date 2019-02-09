@@ -4,17 +4,8 @@
 \alias{set_user_mfa_preference}
 \title{Set the user's multi-factor authentication (MFA) method preference}
 \usage{
-set_user_mfa_preference(
-  SMSMfaSettings = list(
-    Enabled = TRUE|FALSE,
-    PreferredMfa = TRUE|FALSE
-  ),
-  SoftwareTokenMfaSettings = list(
-    Enabled = TRUE|FALSE,
-    PreferredMfa = TRUE|FALSE
-  ),
-  AccessToken = "string"
-)
+set_user_mfa_preference(SMSMfaSettings = NULL,
+  SoftwareTokenMfaSettings = NULL, AccessToken)
 }
 \arguments{
 \item{SMSMfaSettings}{The SMS text message multi-factor authentication (MFA) settings.}
@@ -26,6 +17,18 @@ set_user_mfa_preference(
 \description{
 Set the user's multi-factor authentication (MFA) method preference.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{set_user_mfa_preference(
+  SMSMfaSettings = list(
+    Enabled = TRUE|FALSE,
+    PreferredMfa = TRUE|FALSE
+  ),
+  SoftwareTokenMfaSettings = list(
+    Enabled = TRUE|FALSE,
+    PreferredMfa = TRUE|FALSE
+  ),
+  AccessToken = "string"
+)
 }
+}
+

@@ -6,8 +6,8 @@
 \alias{paws.amplify-package}
 \title{paws.amplify: AWS Amplify}
 \description{
-Amplify is a fully managed continuous deployment and hosting
-service for modern web apps.
+Amplify is a fully managed continuous deployment
+    and hosting service for modern web apps.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

@@ -2,26 +2,28 @@
 % Please edit documentation in R/paws.codedeploy_operations.R
 \name{batch_get_deployment_instances}
 \alias{batch_get_deployment_instances}
-\title{This method works, but is considered deprecated}
+\title{This method works, but is deprecated}
 \usage{
-batch_get_deployment_instances(
+batch_get_deployment_instances(deploymentId, instanceIds)
+}
+\arguments{
+\item{deploymentId}{[required] The unique ID of a deployment.}
+
+\item{instanceIds}{[required] The unique IDs of instances used in the deployment.}
+}
+\description{
+This method works, but is deprecated. Use \code{BatchGetDeploymentTargets} instead.
+}
+\details{
+Returns an array of instances associated with a deployment. This method works with EC2/On-premises and AWS Lambda compute platforms. The newer \code{BatchGetDeploymentTargets} works with all compute platforms.
+}
+\section{Accepted Parameters}{
+\preformatted{batch_get_deployment_instances(
   deploymentId = "string",
   instanceIds = list(
     "string"
   )
 )
 }
-\arguments{
-\item{deploymentId}{[required] The unique ID of a deployment.}
+}
 
-\item{instanceIds}{[required] The unique IDs of instances of the deployment.}
-}
-\description{
-This method works, but is considered deprecated. Use \code{BatchGetDeploymentTargets} instead.
-}
-\details{
-Returns an array of instances associated with a deployment. This method works with EC2/On-premises and AWS Lambda compute platforms. The newer \code{BatchGetDeploymentTargets} works with all compute platforms.
-}
-\examples{
-
-}

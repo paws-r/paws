@@ -4,11 +4,7 @@
 \alias{get_object_torrent}
 \title{Return torrent files from a bucket}
 \usage{
-get_object_torrent(
-  Bucket = "string",
-  Key = "string",
-  RequestPayer = "requester"
-)
+get_object_torrent(Bucket, Key, RequestPayer = NULL)
 }
 \arguments{
 \item{Bucket}{[required]}
@@ -20,11 +16,20 @@ get_object_torrent(
 \description{
 Return torrent files from a bucket.
 }
+\section{Accepted Parameters}{
+\preformatted{get_object_torrent(
+  Bucket = "string",
+  Key = "string",
+  RequestPayer = "requester"
+)
+}
+}
+
 \examples{
 # The following example retrieves torrent files of an object.
-get_object_torrent(
+\donttest{get_object_torrent(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg"
-)
+)}
 
 }

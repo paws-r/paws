@@ -2,17 +2,11 @@
 % Please edit documentation in R/paws.appsync_operations.R
 \name{create_function}
 \alias{create_function}
-\title{Creates a \code{Function} object}
+\title{Creates a Function object}
 \usage{
-create_function(
-  apiId = "string",
-  name = "string",
-  description = "string",
-  dataSourceName = "string",
-  requestMappingTemplate = "string",
-  responseMappingTemplate = "string",
-  functionVersion = "string"
-)
+create_function(apiId, name, description = NULL, dataSourceName,
+  requestMappingTemplate, responseMappingTemplate = NULL,
+  functionVersion)
 }
 \arguments{
 \item{apiId}{[required] The GraphQL API ID.}
@@ -35,6 +29,16 @@ Creates a \code{Function} object.
 \details{
 A function is a reusable entity. Multiple functions can be used to compose the resolver logic.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_function(
+  apiId = "string",
+  name = "string",
+  description = "string",
+  dataSourceName = "string",
+  requestMappingTemplate = "string",
+  responseMappingTemplate = "string",
+  functionVersion = "string"
+)
 }
+}
+

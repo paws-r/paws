@@ -4,9 +4,7 @@
 \alias{stop_continuous_export}
 \title{Stop the continuous flow of agent's discovered data into Amazon Athena}
 \usage{
-stop_continuous_export(
-  exportId = "string"
-)
+stop_continuous_export(exportId)
 }
 \arguments{
 \item{exportId}{[required] The unique ID assigned to this export.}
@@ -14,6 +12,10 @@ stop_continuous_export(
 \description{
 Stop the continuous flow of agent's discovered data into Amazon Athena.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{stop_continuous_export(
+  exportId = "string"
+)
 }
+}
+

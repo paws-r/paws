@@ -4,9 +4,7 @@
 \alias{delete_spot_datafeed_subscription}
 \title{Deletes the data feed for Spot Instances}
 \usage{
-delete_spot_datafeed_subscription(
-  DryRun = TRUE|FALSE
-)
+delete_spot_datafeed_subscription(DryRun = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -14,8 +12,15 @@ delete_spot_datafeed_subscription(
 \description{
 Deletes the data feed for Spot Instances.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_spot_datafeed_subscription(
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example deletes a Spot data feed subscription for the account.
-delete_spot_datafeed_subscription()
+\donttest{delete_spot_datafeed_subscription()}
 
 }

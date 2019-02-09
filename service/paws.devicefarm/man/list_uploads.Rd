@@ -4,11 +4,7 @@
 \alias{list_uploads}
 \title{Gets information about uploads, given an AWS Device Farm project ARN}
 \usage{
-list_uploads(
-  arn = "string",
-  type = "ANDROID_APP"|"IOS_APP"|"WEB_APP"|"EXTERNAL_DATA"|"APPIUM_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_PYTHON_TEST_PACKAGE"|"APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_WEB_PYTHON_TEST_PACKAGE"|"CALABASH_TEST_PACKAGE"|"INSTRUMENTATION_TEST_PACKAGE"|"UIAUTOMATION_TEST_PACKAGE"|"UIAUTOMATOR_TEST_PACKAGE"|"XCTEST_TEST_PACKAGE"|"XCTEST_UI_TEST_PACKAGE"|"APPIUM_JAVA_JUNIT_TEST_SPEC"|"APPIUM_JAVA_TESTNG_TEST_SPEC"|"APPIUM_PYTHON_TEST_SPEC"|"APPIUM_WEB_JAVA_JUNIT_TEST_SPEC"|"APPIUM_WEB_JAVA_TESTNG_TEST_SPEC"|"APPIUM_WEB_PYTHON_TEST_SPEC"|"INSTRUMENTATION_TEST_SPEC"|"XCTEST_UI_TEST_SPEC",
-  nextToken = "string"
-)
+list_uploads(arn, type = NULL, nextToken = NULL)
 }
 \arguments{
 \item{arn}{[required] The Amazon Resource Name (ARN) of the project for which you want to list uploads.}
@@ -24,9 +20,13 @@ Must be one of the following values:
 \item APPIUM\_JAVA\_JUNIT\_TEST\_PACKAGE: An Appium Java JUnit test package upload.
 \item APPIUM\_JAVA\_TESTNG\_TEST\_PACKAGE: An Appium Java TestNG test package upload.
 \item APPIUM\_PYTHON\_TEST\_PACKAGE: An Appium Python test package upload.
-\item APPIUM\_WEB\_JAVA\_JUNIT\_TEST\_PACKAGE: An Appium Java JUnit test package upload.
-\item APPIUM\_WEB\_JAVA\_TESTNG\_TEST\_PACKAGE: An Appium Java TestNG test package upload.
-\item APPIUM\_WEB\_PYTHON\_TEST\_PACKAGE: An Appium Python test package upload.
+\item APPIUM\_NODE\_TEST\_PACKAGE: An Appium Node.js test package upload.
+\item APPIUM\_RUBY\_TEST\_PACKAGE: An Appium Ruby test package upload.
+\item APPIUM\_WEB\_JAVA\_JUNIT\_TEST\_PACKAGE: An Appium Java JUnit test package upload for a web app.
+\item APPIUM\_WEB\_JAVA\_TESTNG\_TEST\_PACKAGE: An Appium Java TestNG test package upload for a web app.
+\item APPIUM\_WEB\_PYTHON\_TEST\_PACKAGE: An Appium Python test package upload for a web app.
+\item APPIUM\_WEB\_NODE\_TEST\_PACKAGE: An Appium Node.js test package upload for a web app.
+\item APPIUM\_WEB\_RUBY\_TEST\_PACKAGE: An Appium Ruby test package upload for a web app.
 \item CALABASH\_TEST\_PACKAGE: A Calabash test package upload.
 \item INSTRUMENTATION\_TEST\_PACKAGE: An instrumentation upload.
 \item UIAUTOMATION\_TEST\_PACKAGE: A uiautomation test package upload.
@@ -36,9 +36,13 @@ Must be one of the following values:
 \item APPIUM\_JAVA\_JUNIT\_TEST\_SPEC: An Appium Java JUnit test spec upload.
 \item APPIUM\_JAVA\_TESTNG\_TEST\_SPEC: An Appium Java TestNG test spec upload.
 \item APPIUM\_PYTHON\_TEST\_SPEC: An Appium Python test spec upload.
-\item APPIUM\_WEB\_JAVA\_JUNIT\_TEST\_SPEC: An Appium Java JUnit test spec upload.
-\item APPIUM\_WEB\_JAVA\_TESTNG\_TEST\_SPEC: An Appium Java TestNG test spec upload.
-\item APPIUM\_WEB\_PYTHON\_TEST\_SPEC: An Appium Python test spec upload.
+\item APPIUM\_NODE\_TEST\_SPEC: An Appium Node.js test spec upload.
+\item APPIUM\_RUBY\_TEST\_SPEC: An Appium Ruby test spec upload.
+\item APPIUM\_WEB\_JAVA\_JUNIT\_TEST\_SPEC: An Appium Java JUnit test spec upload for a web app.
+\item APPIUM\_WEB\_JAVA\_TESTNG\_TEST\_SPEC: An Appium Java TestNG test spec upload for a web app.
+\item APPIUM\_WEB\_PYTHON\_TEST\_SPEC: An Appium Python test spec upload for a web app.
+\item APPIUM\_WEB\_NODE\_TEST\_SPEC: An Appium Node.js test spec upload for a web app.
+\item APPIUM\_WEB\_RUBY\_TEST\_SPEC: An Appium Ruby test spec upload for a web app.
 \item INSTRUMENTATION\_TEST\_SPEC: An instrumentation test spec upload.
 \item XCTEST\_UI\_TEST\_SPEC: An XCode UI test spec upload.
 }}
@@ -48,12 +52,21 @@ Must be one of the following values:
 \description{
 Gets information about uploads, given an AWS Device Farm project ARN.
 }
+\section{Accepted Parameters}{
+\preformatted{list_uploads(
+  arn = "string",
+  type = "ANDROID_APP"|"IOS_APP"|"WEB_APP"|"EXTERNAL_DATA"|"APPIUM_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_PYTHON_TEST_PACKAGE"|"APPIUM_NODE_TEST_PACKAGE"|"APPIUM_RUBY_TEST_PACKAGE"|"APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_WEB_PYTHON_TEST_PACKAGE"|"APPIUM_WEB_NODE_TEST_PACKAGE"|"APPIUM_WEB_RUBY_TEST_PACKAGE"|"CALABASH_TEST_PACKAGE"|"INSTRUMENTATION_TEST_PACKAGE"|"UIAUTOMATION_TEST_PACKAGE"|"UIAUTOMATOR_TEST_PACKAGE"|"XCTEST_TEST_PACKAGE"|"XCTEST_UI_TEST_PACKAGE"|"APPIUM_JAVA_JUNIT_TEST_SPEC"|"APPIUM_JAVA_TESTNG_TEST_SPEC"|"APPIUM_PYTHON_TEST_SPEC"|"APPIUM_NODE_TEST_SPEC"|"APPIUM_RUBY_TEST_SPEC"|"APPIUM_WEB_JAVA_JUNIT_TEST_SPEC"|"APPIUM_WEB_JAVA_TESTNG_TEST_SPEC"|"APPIUM_WEB_PYTHON_TEST_SPEC"|"APPIUM_WEB_NODE_TEST_SPEC"|"APPIUM_WEB_RUBY_TEST_SPEC"|"INSTRUMENTATION_TEST_SPEC"|"XCTEST_UI_TEST_SPEC",
+  nextToken = "string"
+)
+}
+}
+
 \examples{
 # The following example returns information about uploads, given a
 # specific Device Farm project.
-list_uploads(
+\donttest{list_uploads(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
-)
+)}
 
 }

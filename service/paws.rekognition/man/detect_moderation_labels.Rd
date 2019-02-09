@@ -4,17 +4,7 @@
 \alias{detect_moderation_labels}
 \title{Detects explicit or suggestive adult content in a specified JPEG or PNG format image}
 \usage{
-detect_moderation_labels(
-  Image = list(
-    Bytes = raw,
-    S3Object = list(
-      Bucket = "string",
-      Name = "string",
-      Version = "string"
-    )
-  ),
-  MinConfidence = 123.0
-)
+detect_moderation_labels(Image, MinConfidence = NULL)
 }
 \arguments{
 \item{Image}{[required] The input image as base64-encoded bytes or an S3 object. If you use the AWS CLI to call Amazon Rekognition operations, passing base64-encoded image bytes is not supported.}
@@ -33,6 +23,18 @@ For information about moderation labels, see Detecting Unsafe Content in the Ama
 
 You pass the input image either as base64-encoded image bytes or as a reference to an image in an Amazon S3 bucket. If you use the AWS CLI to call Amazon Rekognition operations, passing image bytes is not supported. The image must be either a PNG or JPEG formatted file.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{detect_moderation_labels(
+  Image = list(
+    Bytes = raw,
+    S3Object = list(
+      Bucket = "string",
+      Name = "string",
+      Version = "string"
+    )
+  ),
+  MinConfidence = 123.0
+)
 }
+}
+

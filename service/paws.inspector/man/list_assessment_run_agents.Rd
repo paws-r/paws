@@ -4,19 +4,8 @@
 \alias{list_assessment_run_agents}
 \title{Lists the agents of the assessment runs that are specified by the ARNs of the assessment runs}
 \usage{
-list_assessment_run_agents(
-  assessmentRunArn = "string",
-  filter = list(
-    agentHealths = list(
-      "HEALTHY"|"UNHEALTHY"|"UNKNOWN"
-    ),
-    agentHealthCodes = list(
-      "IDLE"|"RUNNING"|"SHUTDOWN"|"UNHEALTHY"|"THROTTLED"|"UNKNOWN"
-    )
-  ),
-  nextToken = "string",
-  maxResults = 123
-)
+list_assessment_run_agents(assessmentRunArn, filter = NULL,
+  nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{assessmentRunArn}{[required] The ARN that specifies the assessment run whose agents you want to list.}
@@ -32,12 +21,29 @@ For a record to match a filter, all specified filter attributes must match. When
 \description{
 Lists the agents of the assessment runs that are specified by the ARNs of the assessment runs.
 }
+\section{Accepted Parameters}{
+\preformatted{list_assessment_run_agents(
+  assessmentRunArn = "string",
+  filter = list(
+    agentHealths = list(
+      "HEALTHY"|"UNHEALTHY"|"UNKNOWN"
+    ),
+    agentHealthCodes = list(
+      "IDLE"|"RUNNING"|"SHUTDOWN"|"UNHEALTHY"|"THROTTLED"|"UNKNOWN"
+    )
+  ),
+  nextToken = "string",
+  maxResults = 123
+)
+}
+}
+
 \examples{
 # Lists the agents of the assessment runs that are specified by the ARNs
 # of the assessment runs.
-list_assessment_run_agents(
+\donttest{list_assessment_run_agents(
   assessmentRunArn = "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-4r1V2mAw/run/0-MKkpXXPE",
   maxResults = 123L
-)
+)}
 
 }

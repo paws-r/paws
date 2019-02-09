@@ -4,9 +4,7 @@
 \alias{delete_group}
 \title{Deletes a specified resource group}
 \usage{
-delete_group(
-  GroupName = "string"
-)
+delete_group(GroupName)
 }
 \arguments{
 \item{GroupName}{[required] The name of the resource group to delete.}
@@ -14,6 +12,10 @@ delete_group(
 \description{
 Deletes a specified resource group. Deleting a resource group does not delete resources that are members of the group; it only deletes the group structure.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_group(
+  GroupName = "string"
+)
 }
+}
+

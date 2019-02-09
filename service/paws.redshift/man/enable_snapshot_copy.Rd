@@ -4,13 +4,9 @@
 \alias{enable_snapshot_copy}
 \title{Enables the automatic copy of snapshots from one region to another region for a specified cluster}
 \usage{
-enable_snapshot_copy(
-  ClusterIdentifier = "string",
-  DestinationRegion = "string",
-  RetentionPeriod = 123,
-  SnapshotCopyGrantName = "string",
-  ManualSnapshotRetentionPeriod = 123
-)
+enable_snapshot_copy(ClusterIdentifier, DestinationRegion,
+  RetentionPeriod = NULL, SnapshotCopyGrantName = NULL,
+  ManualSnapshotRetentionPeriod = NULL)
 }
 \arguments{
 \item{ClusterIdentifier}{[required] The unique identifier of the source cluster to copy snapshots from.
@@ -36,6 +32,14 @@ The value must be either -1 or an integer between 1 and 3,653.}
 \description{
 Enables the automatic copy of snapshots from one region to another region for a specified cluster.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{enable_snapshot_copy(
+  ClusterIdentifier = "string",
+  DestinationRegion = "string",
+  RetentionPeriod = 123,
+  SnapshotCopyGrantName = "string",
+  ManualSnapshotRetentionPeriod = 123
+)
 }
+}
+

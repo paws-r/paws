@@ -4,10 +4,7 @@
 \alias{list_remote_access_sessions}
 \title{Returns a list of all currently running remote access sessions}
 \usage{
-list_remote_access_sessions(
-  arn = "string",
-  nextToken = "string"
-)
+list_remote_access_sessions(arn, nextToken = NULL)
 }
 \arguments{
 \item{arn}{[required] The Amazon Resource Name (ARN) of the remote access session about which you are requesting information.}
@@ -17,12 +14,20 @@ list_remote_access_sessions(
 \description{
 Returns a list of all currently running remote access sessions.
 }
+\section{Accepted Parameters}{
+\preformatted{list_remote_access_sessions(
+  arn = "string",
+  nextToken = "string"
+)
+}
+}
+
 \examples{
 # The following example returns information about a specific Device Farm
 # remote access session.
-list_remote_access_sessions(
+\donttest{list_remote_access_sessions(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-123-456",
   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE="
-)
+)}
 
 }

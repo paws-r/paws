@@ -4,10 +4,7 @@
 \alias{list_bootstrap_actions}
 \title{Provides information about the bootstrap actions associated with a cluster}
 \usage{
-list_bootstrap_actions(
-  ClusterId = "string",
-  Marker = "string"
-)
+list_bootstrap_actions(ClusterId, Marker = NULL)
 }
 \arguments{
 \item{ClusterId}{[required] The cluster identifier for the bootstrap actions to list.}
@@ -17,6 +14,11 @@ list_bootstrap_actions(
 \description{
 Provides information about the bootstrap actions associated with a cluster.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_bootstrap_actions(
+  ClusterId = "string",
+  Marker = "string"
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{create_application_snapshot}
 \title{Creates a snapshot of the application's state data}
 \usage{
-create_application_snapshot(
-  ApplicationName = "string",
-  SnapshotName = "string"
-)
+create_application_snapshot(ApplicationName, SnapshotName)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of an existing application}
@@ -17,6 +14,11 @@ create_application_snapshot(
 \description{
 Creates a snapshot of the application's state data.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_application_snapshot(
+  ApplicationName = "string",
+  SnapshotName = "string"
+)
 }
+}
+

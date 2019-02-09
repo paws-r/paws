@@ -4,10 +4,8 @@
 \alias{add_client_id_to_open_id_connect_provider}
 \title{Adds a new client ID (also known as audience) to the list of client IDs already registered for the specified IAM OpenID Connect (OIDC) provider resource}
 \usage{
-add_client_id_to_open_id_connect_provider(
-  OpenIDConnectProviderArn = "string",
-  ClientID = "string"
-)
+add_client_id_to_open_id_connect_provider(OpenIDConnectProviderArn,
+  ClientID)
 }
 \arguments{
 \item{OpenIDConnectProviderArn}{[required] The Amazon Resource Name (ARN) of the IAM OpenID Connect (OIDC) provider resource to add the client ID to. You can get a list of OIDC provider ARNs by using the ListOpenIDConnectProviders operation.}
@@ -20,13 +18,21 @@ Adds a new client ID (also known as audience) to the list of client IDs already 
 \details{
 This operation is idempotent; it does not fail or return an error if you add an existing client ID to the provider.
 }
+\section{Accepted Parameters}{
+\preformatted{add_client_id_to_open_id_connect_provider(
+  OpenIDConnectProviderArn = "string",
+  ClientID = "string"
+)
+}
+}
+
 \examples{
 # The following add-client-id-to-open-id-connect-provider command adds the
 # client ID my-application-ID to the OIDC provider named
 # server.example.com:
-add_client_id_to_open_id_connect_provider(
+\donttest{add_client_id_to_open_id_connect_provider(
   ClientID = "my-application-ID",
   OpenIDConnectProviderArn = "arn:aws:iam::123456789012:oidc-provider/server.example.com"
-)
+)}
 
 }

@@ -4,17 +4,7 @@
 \alias{add_tags}
 \title{Adds the specified tags to the specified Elastic Load Balancing resource}
 \usage{
-add_tags(
-  ResourceArns = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+add_tags(ResourceArns, Tags)
 }
 \arguments{
 \item{ResourceArns}{[required] The Amazon Resource Name (ARN) of the resource.}
@@ -29,9 +19,24 @@ Each tag consists of a key and an optional value. If a resource already has a ta
 
 To list the current tags for your resources, use DescribeTags. To remove tags from your resources, use RemoveTags.
 }
+\section{Accepted Parameters}{
+\preformatted{add_tags(
+  ResourceArns = list(
+    "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # This example adds the specified tags to the specified load balancer.
-add_tags(
+\donttest{add_tags(
   ResourceArns = list(
     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188"
   ),
@@ -45,6 +50,6 @@ add_tags(
       Value = "digital-media"
     )
   )
-)
+)}
 
 }

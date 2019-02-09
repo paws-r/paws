@@ -4,17 +4,9 @@
 \alias{copy_db_parameter_group}
 \title{Copies the specified DB parameter group}
 \usage{
-copy_db_parameter_group(
-  SourceDBParameterGroupIdentifier = "string",
-  TargetDBParameterGroupIdentifier = "string",
-  TargetDBParameterGroupDescription = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+copy_db_parameter_group(SourceDBParameterGroupIdentifier,
+  TargetDBParameterGroupIdentifier, TargetDBParameterGroupDescription,
+  Tags = NULL)
 }
 \arguments{
 \item{SourceDBParameterGroupIdentifier}{[required] The identifier or ARN for the source DB parameter group. For information about creating an ARN, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an ARN for Amazon RDS} in the \emph{Amazon RDS User Guide}.
@@ -44,6 +36,18 @@ Example: \code{my-db-parameter-group}}
 \description{
 Copies the specified DB parameter group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{copy_db_parameter_group(
+  SourceDBParameterGroupIdentifier = "string",
+  TargetDBParameterGroupIdentifier = "string",
+  TargetDBParameterGroupDescription = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

@@ -6,9 +6,9 @@
 \alias{paws.dlm-package}
 \title{paws.dlm: Amazon Data Lifecycle Manager}
 \description{
-With Amazon Data Lifecycle Manager, you can manage the
-lifecycle of your AWS resources. You create lifecycle policies, which
-are used to automate operations on the specified resources.
+With Amazon Data Lifecycle Manager, you can manage
+    the lifecycle of your AWS resources. You create lifecycle policies,
+    which are used to automate operations on the specified resources.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

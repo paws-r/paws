@@ -4,9 +4,7 @@
 \alias{get_role}
 \title{Retrieves information about the specified role, including the role's path, GUID, ARN, and the role's trust policy that grants permission to assume the role}
 \usage{
-get_role(
-  RoleName = "string"
-)
+get_role(RoleName)
 }
 \arguments{
 \item{RoleName}{[required] The name of the IAM role to get information about.
@@ -19,10 +17,17 @@ Retrieves information about the specified role, including the role's path, GUID,
 \details{
 Policies returned by this API are URL-encoded compliant with \href{https://tools.ietf.org/html/rfc3986}{RFC 3986}. You can use a URL decoding method to convert the policy back to plain JSON text. For example, if you use Java, you can use the \code{decode} method of the \code{java.net.URLDecoder} utility class in the Java SDK. Other languages and SDKs provide similar functionality.
 }
+\section{Accepted Parameters}{
+\preformatted{get_role(
+  RoleName = "string"
+)
+}
+}
+
 \examples{
 # The following command gets information about the role named Test-Role.
-get_role(
+\donttest{get_role(
   RoleName = "Test-Role"
-)
+)}
 
 }

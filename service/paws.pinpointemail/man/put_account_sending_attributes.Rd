@@ -4,9 +4,7 @@
 \alias{put_account_sending_attributes}
 \title{Enable or disable the ability of your account to send email}
 \usage{
-put_account_sending_attributes(
-  SendingEnabled = TRUE|FALSE
-)
+put_account_sending_attributes(SendingEnabled = NULL)
 }
 \arguments{
 \item{SendingEnabled}{Enables or disables your account's ability to send email. Set to \code{true} to enable email sending, or set to \code{false} to disable email sending.
@@ -16,6 +14,10 @@ If AWS paused your account's ability to send email, you can't use this operation
 \description{
 Enable or disable the ability of your account to send email.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_account_sending_attributes(
+  SendingEnabled = TRUE|FALSE
+)
 }
+}
+

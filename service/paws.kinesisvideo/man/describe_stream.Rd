@@ -4,10 +4,7 @@
 \alias{describe_stream}
 \title{Returns the most current information about the specified stream}
 \usage{
-describe_stream(
-  StreamName = "string",
-  StreamARN = "string"
-)
+describe_stream(StreamName = NULL, StreamARN = NULL)
 }
 \arguments{
 \item{StreamName}{The name of the stream.}
@@ -17,6 +14,11 @@ describe_stream(
 \description{
 Returns the most current information about the specified stream. You must specify either the \code{StreamName} or the \code{StreamARN}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_stream(
+  StreamName = "string",
+  StreamARN = "string"
+)
 }
+}
+

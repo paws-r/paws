@@ -4,11 +4,8 @@
 \alias{describe_default_cluster_parameters}
 \title{Returns a list of parameter settings for the specified parameter group family}
 \usage{
-describe_default_cluster_parameters(
-  ParameterGroupFamily = "string",
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_default_cluster_parameters(ParameterGroupFamily,
+  MaxRecords = NULL, Marker = NULL)
 }
 \arguments{
 \item{ParameterGroupFamily}{[required] The name of the cluster parameter group family.}
@@ -27,6 +24,12 @@ Returns a list of parameter settings for the specified parameter group family.
 \details{
 For more information about parameters and parameter groups, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html}{Amazon Redshift Parameter Groups} in the \emph{Amazon Redshift Cluster Management Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_default_cluster_parameters(
+  ParameterGroupFamily = "string",
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
+}
+

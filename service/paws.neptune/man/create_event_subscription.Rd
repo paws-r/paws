@@ -4,24 +4,9 @@
 \alias{create_event_subscription}
 \title{Creates an event notification subscription}
 \usage{
-create_event_subscription(
-  SubscriptionName = "string",
-  SnsTopicArn = "string",
-  SourceType = "string",
-  EventCategories = list(
-    "string"
-  ),
-  SourceIds = list(
-    "string"
-  ),
-  Enabled = TRUE|FALSE,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_event_subscription(SubscriptionName, SnsTopicArn,
+  SourceType = NULL, EventCategories = NULL, SourceIds = NULL,
+  Enabled = NULL, Tags = NULL)
 }
 \arguments{
 \item{SubscriptionName}{[required] The name of the subscription.
@@ -59,6 +44,25 @@ You can specify the type of source (SourceType) you want to be notified of, prov
 
 If you specify both the SourceType and SourceIds, such as SourceType = db-instance and SourceIdentifier = myDBInstance1, you are notified of all the db-instance events for the specified source. If you specify a SourceType but do not specify a SourceIdentifier, you receive notice of the events for that source type for all your Neptune sources. If you do not specify either the SourceType nor the SourceIdentifier, you are notified of events generated from all Neptune sources belonging to your customer account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_event_subscription(
+  SubscriptionName = "string",
+  SnsTopicArn = "string",
+  SourceType = "string",
+  EventCategories = list(
+    "string"
+  ),
+  SourceIds = list(
+    "string"
+  ),
+  Enabled = TRUE|FALSE,
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

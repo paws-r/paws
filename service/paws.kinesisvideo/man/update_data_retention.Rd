@@ -4,13 +4,8 @@
 \alias{update_data_retention}
 \title{Increases or decreases the stream's data retention period by the value that you specify}
 \usage{
-update_data_retention(
-  StreamName = "string",
-  StreamARN = "string",
-  CurrentVersion = "string",
-  Operation = "INCREASE_DATA_RETENTION"|"DECREASE_DATA_RETENTION",
-  DataRetentionChangeInHours = 123
-)
+update_data_retention(StreamName = NULL, StreamARN = NULL,
+  CurrentVersion, Operation, DataRetentionChangeInHours)
 }
 \arguments{
 \item{StreamName}{The name of the stream whose retention period you want to change.}
@@ -37,6 +32,14 @@ Changing the data retention period affects the data in the stream as follows:
 \item If the data retention period is decreased, existing data is retained for the new retention period. For example, if the data retention period is decreased from seven hours to one hour, all existing data is retained for one hour, and any data older than one hour is deleted immediately.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_data_retention(
+  StreamName = "string",
+  StreamARN = "string",
+  CurrentVersion = "string",
+  Operation = "INCREASE_DATA_RETENTION"|"DECREASE_DATA_RETENTION",
+  DataRetentionChangeInHours = 123
+)
 }
+}
+

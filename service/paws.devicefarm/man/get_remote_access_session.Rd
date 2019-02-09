@@ -4,9 +4,7 @@
 \alias{get_remote_access_session}
 \title{Returns a link to a currently running remote access session}
 \usage{
-get_remote_access_session(
-  arn = "string"
-)
+get_remote_access_session(arn)
 }
 \arguments{
 \item{arn}{[required] The Amazon Resource Name (ARN) of the remote access session about which you want to get session information.}
@@ -14,10 +12,17 @@ get_remote_access_session(
 \description{
 Returns a link to a currently running remote access session.
 }
+\section{Accepted Parameters}{
+\preformatted{get_remote_access_session(
+  arn = "string"
+)
+}
+}
+
 \examples{
 # The following example gets a specific remote access session.
-get_remote_access_session(
+\donttest{get_remote_access_session(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-123-456"
-)
+)}
 
 }

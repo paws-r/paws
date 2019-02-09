@@ -4,17 +4,9 @@
 \alias{modify_vpc_endpoint_service_configuration}
 \title{Modifies the attributes of your VPC endpoint service configuration}
 \usage{
-modify_vpc_endpoint_service_configuration(
-  DryRun = TRUE|FALSE,
-  ServiceId = "string",
-  AcceptanceRequired = TRUE|FALSE,
-  AddNetworkLoadBalancerArns = list(
-    "string"
-  ),
-  RemoveNetworkLoadBalancerArns = list(
-    "string"
-  )
-)
+modify_vpc_endpoint_service_configuration(DryRun = NULL, ServiceId,
+  AcceptanceRequired = NULL, AddNetworkLoadBalancerArns = NULL,
+  RemoveNetworkLoadBalancerArns = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -30,6 +22,18 @@ modify_vpc_endpoint_service_configuration(
 \description{
 Modifies the attributes of your VPC endpoint service configuration. You can change the Network Load Balancers for your service, and you can specify whether acceptance is required for requests to connect to your endpoint service through an interface VPC endpoint.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_vpc_endpoint_service_configuration(
+  DryRun = TRUE|FALSE,
+  ServiceId = "string",
+  AcceptanceRequired = TRUE|FALSE,
+  AddNetworkLoadBalancerArns = list(
+    "string"
+  ),
+  RemoveNetworkLoadBalancerArns = list(
+    "string"
+  )
+)
 }
+}
+

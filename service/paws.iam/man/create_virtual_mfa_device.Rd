@@ -4,10 +4,7 @@
 \alias{create_virtual_mfa_device}
 \title{Creates a new virtual MFA device for the AWS account}
 \usage{
-create_virtual_mfa_device(
-  Path = "string",
-  VirtualMFADeviceName = "string"
-)
+create_virtual_mfa_device(Path = NULL, VirtualMFADeviceName)
 }
 \arguments{
 \item{Path}{The path for the virtual MFA device. For more information about paths, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{IAM Identifiers} in the \emph{IAM User Guide}.
@@ -28,6 +25,11 @@ For information about limits on the number of MFA devices you can create, see \h
 
 The seed information contained in the QR code and the Base32 string should be treated like any other secret access information, such as your AWS access keys or your passwords. After you provision your virtual device, you should ensure that the information is destroyed following secure procedures.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_virtual_mfa_device(
+  Path = "string",
+  VirtualMFADeviceName = "string"
+)
 }
+}
+

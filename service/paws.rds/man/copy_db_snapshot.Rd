@@ -4,21 +4,9 @@
 \alias{copy_db_snapshot}
 \title{Copies the specified DB snapshot}
 \usage{
-copy_db_snapshot(
-  SourceDBSnapshotIdentifier = "string",
-  TargetDBSnapshotIdentifier = "string",
-  KmsKeyId = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  CopyTags = TRUE|FALSE,
-  PreSignedUrl = "string",
-  OptionGroupName = "string",
-  SourceRegion = "string"
-)
+copy_db_snapshot(SourceDBSnapshotIdentifier, TargetDBSnapshotIdentifier,
+  KmsKeyId = NULL, Tags = NULL, CopyTags = NULL,
+  PreSignedUrl = NULL, OptionGroupName = NULL, SourceRegion = NULL)
 }
 \arguments{
 \item{SourceDBSnapshotIdentifier}{[required] The identifier for the source DB snapshot.
@@ -97,6 +85,22 @@ You can copy a snapshot from one AWS Region to another. In that case, the AWS Re
 
 For more information about copying snapshots, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopyDBSnapshot.html}{Copying a DB Snapshot} in the \emph{Amazon RDS User Guide.}
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{copy_db_snapshot(
+  SourceDBSnapshotIdentifier = "string",
+  TargetDBSnapshotIdentifier = "string",
+  KmsKeyId = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  CopyTags = TRUE|FALSE,
+  PreSignedUrl = "string",
+  OptionGroupName = "string",
+  SourceRegion = "string"
+)
 }
+}
+

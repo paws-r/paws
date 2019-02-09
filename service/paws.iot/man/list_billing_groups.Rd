@@ -4,11 +4,8 @@
 \alias{list_billing_groups}
 \title{Lists the billing groups you have created}
 \usage{
-list_billing_groups(
-  nextToken = "string",
-  maxResults = 123,
-  namePrefixFilter = "string"
-)
+list_billing_groups(nextToken = NULL, maxResults = NULL,
+  namePrefixFilter = NULL)
 }
 \arguments{
 \item{nextToken}{The token to retrieve the next set of results.}
@@ -20,6 +17,12 @@ list_billing_groups(
 \description{
 Lists the billing groups you have created.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_billing_groups(
+  nextToken = "string",
+  maxResults = 123,
+  namePrefixFilter = "string"
+)
 }
+}
+

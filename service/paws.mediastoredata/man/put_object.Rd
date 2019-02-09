@@ -4,13 +4,8 @@
 \alias{put_object}
 \title{Uploads an object to the specified path}
 \usage{
-put_object(
-  Body = raw,
-  Path = "string",
-  ContentType = "string",
-  CacheControl = "string",
-  StorageClass = "TEMPORAL"
-)
+put_object(Body, Path, ContentType = NULL, CacheControl = NULL,
+  StorageClass = NULL)
 }
 \arguments{
 \item{Body}{[required] The bytes to be stored.}
@@ -40,6 +35,14 @@ Headers with a custom user-defined value are also accepted.}
 \description{
 Uploads an object to the specified path. Object sizes are limited to 25 MB.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_object(
+  Body = raw,
+  Path = "string",
+  ContentType = "string",
+  CacheControl = "string",
+  StorageClass = "TEMPORAL"
+)
 }
+}
+

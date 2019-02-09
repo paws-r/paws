@@ -4,9 +4,7 @@
 \alias{global_sign_out}
 \title{Signs out users from all devices}
 \usage{
-global_sign_out(
-  AccessToken = "string"
-)
+global_sign_out(AccessToken)
 }
 \arguments{
 \item{AccessToken}{[required] The access token.}
@@ -14,6 +12,10 @@ global_sign_out(
 \description{
 Signs out users from all devices.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{global_sign_out(
+  AccessToken = "string"
+)
 }
+}
+

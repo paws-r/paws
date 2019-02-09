@@ -4,9 +4,7 @@
 \alias{delete_instance_profile}
 \title{Deletes the specified instance profile}
 \usage{
-delete_instance_profile(
-  InstanceProfileName = "string"
-)
+delete_instance_profile(InstanceProfileName)
 }
 \arguments{
 \item{InstanceProfileName}{[required] The name of the instance profile to delete.
@@ -21,11 +19,18 @@ Make sure that you do not have any Amazon EC2 instances running with the instanc
 
 For more information about instance profiles, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html}{About Instance Profiles}.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_instance_profile(
+  InstanceProfileName = "string"
+)
+}
+}
+
 \examples{
 # The following command deletes the instance profile named
 # ExampleInstanceProfile
-delete_instance_profile(
+\donttest{delete_instance_profile(
   InstanceProfileName = "ExampleInstanceProfile"
-)
+)}
 
 }

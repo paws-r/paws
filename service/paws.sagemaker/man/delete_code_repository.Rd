@@ -2,18 +2,20 @@
 % Please edit documentation in R/paws.sagemaker_operations.R
 \name{delete_code_repository}
 \alias{delete_code_repository}
-\title{Deletes the specified git repository from your account}
+\title{Deletes the specified Git repository from your account}
 \usage{
-delete_code_repository(
+delete_code_repository(CodeRepositoryName)
+}
+\arguments{
+\item{CodeRepositoryName}{[required] The name of the Git repository to delete.}
+}
+\description{
+Deletes the specified Git repository from your account.
+}
+\section{Accepted Parameters}{
+\preformatted{delete_code_repository(
   CodeRepositoryName = "string"
 )
 }
-\arguments{
-\item{CodeRepositoryName}{[required] The name of the git repository to delete.}
 }
-\description{
-Deletes the specified git repository from your account.
-}
-\examples{
 
-}

@@ -4,10 +4,7 @@
 \alias{get_security_configurations}
 \title{Retrieves a list of all security configurations}
 \usage{
-get_security_configurations(
-  MaxResults = 123,
-  NextToken = "string"
-)
+get_security_configurations(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{The maximum number of results to return.}
@@ -17,6 +14,11 @@ get_security_configurations(
 \description{
 Retrieves a list of all security configurations.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_security_configurations(
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

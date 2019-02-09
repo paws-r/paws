@@ -4,11 +4,8 @@
 \alias{describe_cache_subnet_groups}
 \title{Returns a list of cache subnet group descriptions}
 \usage{
-describe_cache_subnet_groups(
-  CacheSubnetGroupName = "string",
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_cache_subnet_groups(CacheSubnetGroupName = NULL,
+  MaxRecords = NULL, Marker = NULL)
 }
 \arguments{
 \item{CacheSubnetGroupName}{The name of the cache subnet group to return details for.}
@@ -24,6 +21,12 @@ Constraints: minimum 20; maximum 100.}
 \description{
 Returns a list of cache subnet group descriptions. If a subnet group name is specified, the list contains only the description of that group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_cache_subnet_groups(
+  CacheSubnetGroupName = "string",
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
+}
+

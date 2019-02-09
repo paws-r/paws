@@ -4,10 +4,7 @@
 \alias{get_password_data}
 \title{Retrieves the encrypted administrator password for a running Windows instance}
 \usage{
-get_password_data(
-  InstanceId = "string",
-  DryRun = TRUE|FALSE
-)
+get_password_data(InstanceId, DryRun = NULL)
 }
 \arguments{
 \item{InstanceId}{[required] The ID of the Windows instance.}
@@ -18,7 +15,7 @@ get_password_data(
 Retrieves the encrypted administrator password for a running Windows instance.
 }
 \details{
-The Windows password is generated at boot by the \code{EC2Config} service or \code{EC2Launch} scripts (Windows Server 2016 and later). This usually only happens the first time an instance is launched. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/UsingConfig_WinAMI.html}{EC2Config} and \href{http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch.html}{EC2Launch} in the Amazon Elastic Compute Cloud User Guide.
+The Windows password is generated at boot by the \code{EC2Config} service or \code{EC2Launch} scripts (Windows Server 2016 and later). This usually only happens the first time an instance is launched. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/UsingConfig_WinAMI.html}{EC2Config} and \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch.html}{EC2Launch} in the Amazon Elastic Compute Cloud User Guide.
 
 For the \code{EC2Config} service, the password is not generated for rebundled AMIs unless \code{Ec2SetPassword} is enabled before bundling.
 
@@ -26,6 +23,11 @@ The password is encrypted using the key pair that you specified when you launche
 
 When you launch an instance, password generation and encryption may take a few minutes. If you try to retrieve the password before it's available, the output returns an empty string. We recommend that you wait up to 15 minutes after launching an instance before trying to retrieve the generated password.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_password_data(
+  InstanceId = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

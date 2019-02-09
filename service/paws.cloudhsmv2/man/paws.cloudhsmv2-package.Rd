@@ -7,8 +7,8 @@
 \title{paws.cloudhsmv2: AWS CloudHSM V2}
 \description{
 For more information about AWS CloudHSM, see [AWS
-CloudHSM](http://aws.amazon.com/cloudhsm/) and the [AWS CloudHSM User
-Guide](http://docs.aws.amazon.com/cloudhsm/latest/userguide/).
+    CloudHSM](http://aws.amazon.com/cloudhsm/) and the [AWS CloudHSM User
+    Guide](http://docs.aws.amazon.com/cloudhsm/latest/userguide/).
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

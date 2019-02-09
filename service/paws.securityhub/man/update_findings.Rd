@@ -4,7 +4,20 @@
 \alias{update_findings}
 \title{Updates the AWS Security Hub-aggregated findings specified by the filter attributes}
 \usage{
-update_findings(
+update_findings(Filters, Note = NULL, RecordState = NULL)
+}
+\arguments{
+\item{Filters}{[required] A collection of attributes that specify what findings you want to update.}
+
+\item{Note}{The updated note for the finding.}
+
+\item{RecordState}{The updated record state for the finding.}
+}
+\description{
+Updates the AWS Security Hub-aggregated findings specified by the filter attributes.
+}
+\section{Accepted Parameters}{
+\preformatted{update_findings(
   Filters = list(
     ProductArn = list(
       list(
@@ -561,16 +574,5 @@ update_findings(
   RecordState = "ACTIVE"|"ARCHIVED"
 )
 }
-\arguments{
-\item{Filters}{[required] A collection of attributes that specify what findings you want to update.}
-
-\item{Note}{The updated note for the finding.}
-
-\item{RecordState}{The updated record state for the finding.}
 }
-\description{
-Updates the AWS Security Hub-aggregated findings specified by the filter attributes.
-}
-\examples{
 
-}

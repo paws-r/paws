@@ -4,21 +4,8 @@
 \alias{describe_images}
 \title{Returns metadata about the images in a repository, including image size, image tags, and creation date}
 \usage{
-describe_images(
-  registryId = "string",
-  repositoryName = "string",
-  imageIds = list(
-    list(
-      imageDigest = "string",
-      imageTag = "string"
-    )
-  ),
-  nextToken = "string",
-  maxResults = 123,
-  filter = list(
-    tagStatus = "TAGGED"|"UNTAGGED"|"ANY"
-  )
-)
+describe_images(registryId = NULL, repositoryName, imageIds = NULL,
+  nextToken = NULL, maxResults = NULL, filter = NULL)
 }
 \arguments{
 \item{registryId}{The AWS account ID associated with the registry that contains the repository in which to describe images. If you do not specify a registry, the default registry is assumed.}
@@ -39,6 +26,22 @@ Returns metadata about the images in a repository, including image size, image t
 \details{
 Beginning with Docker version 1.9, the Docker client compresses image layers before pushing them to a V2 Docker registry. The output of the \code{docker images} command shows the uncompressed image size, so it may return a larger image size than the image sizes returned by DescribeImages.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_images(
+  registryId = "string",
+  repositoryName = "string",
+  imageIds = list(
+    list(
+      imageDigest = "string",
+      imageTag = "string"
+    )
+  ),
+  nextToken = "string",
+  maxResults = 123,
+  filter = list(
+    tagStatus = "TAGGED"|"UNTAGGED"|"ANY"
+  )
+)
 }
+}
+

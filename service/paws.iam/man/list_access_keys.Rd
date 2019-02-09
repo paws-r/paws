@@ -4,11 +4,7 @@
 \alias{list_access_keys}
 \title{Returns information about the access key IDs associated with the specified IAM user}
 \usage{
-list_access_keys(
-  UserName = "string",
-  Marker = "string",
-  MaxItems = 123
-)
+list_access_keys(UserName = NULL, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{UserName}{The name of the user.
@@ -31,11 +27,20 @@ If the \code{UserName} field is not specified, the user name is determined impli
 
 To ensure the security of your AWS account, the secret access key is accessible only during key and user creation.
 }
+\section{Accepted Parameters}{
+\preformatted{list_access_keys(
+  UserName = "string",
+  Marker = "string",
+  MaxItems = 123
+)
+}
+}
+
 \examples{
 # The following command lists the access keys IDs for the IAM user named
 # Alice.
-list_access_keys(
+\donttest{list_access_keys(
   UserName = "Alice"
-)
+)}
 
 }

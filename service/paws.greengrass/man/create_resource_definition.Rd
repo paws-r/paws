@@ -4,7 +4,21 @@
 \alias{create_resource_definition}
 \title{Creates a resource definition which contains a list of resources to be used in a group}
 \usage{
-create_resource_definition(
+create_resource_definition(AmznClientToken = NULL,
+  InitialVersion = NULL, Name = NULL)
+}
+\arguments{
+\item{AmznClientToken}{A client token used to correlate requests and responses.}
+
+\item{InitialVersion}{Information about the initial version of the resource definition.}
+
+\item{Name}{The name of the resource definition.}
+}
+\description{
+Creates a resource definition which contains a list of resources to be used in a group. You can create an initial version of the definition by providing a list of resources now, or use ''CreateResourceDefinitionVersion'' later.
+}
+\section{Accepted Parameters}{
+\preformatted{create_resource_definition(
   AmznClientToken = "string",
   InitialVersion = list(
     Resources = list(
@@ -48,16 +62,5 @@ create_resource_definition(
   Name = "string"
 )
 }
-\arguments{
-\item{AmznClientToken}{A client token used to correlate requests and responses.}
-
-\item{InitialVersion}{Information about the initial version of the resource definition.}
-
-\item{Name}{The name of the resource definition.}
 }
-\description{
-Creates a resource definition which contains a list of resources to be used in a group. You can create an initial version of the definition by providing a list of resources now, or use ''CreateResourceDefinitionVersion'' later.
-}
-\examples{
 
-}

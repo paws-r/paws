@@ -4,12 +4,8 @@
 \alias{modify_current_db_cluster_capacity}
 \title{Set the capacity of an Aurora Serverless DB cluster to a specific value}
 \usage{
-modify_current_db_cluster_capacity(
-  DBClusterIdentifier = "string",
-  Capacity = 123,
-  SecondsBeforeTimeout = 123,
-  TimeoutAction = "string"
-)
+modify_current_db_cluster_capacity(DBClusterIdentifier, Capacity = NULL,
+  SecondsBeforeTimeout = NULL, TimeoutAction = NULL)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The DB cluster identifier for the cluster being modified. This parameter is not case-sensitive.
@@ -49,6 +45,13 @@ For more information about Aurora Serverless, see \href{http://docs.aws.amazon.c
 
 If you call \code{ModifyCurrentDBClusterCapacity} with the default \code{TimeoutAction}, connections that prevent Aurora Serverless from finding a scaling point might be dropped. For more information about scaling points, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.how-it-works.html#aurora-serverless.how-it-works.auto-scaling}{Autoscaling for Aurora Serverless} in the \emph{Amazon Aurora User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_current_db_cluster_capacity(
+  DBClusterIdentifier = "string",
+  Capacity = 123,
+  SecondsBeforeTimeout = 123,
+  TimeoutAction = "string"
+)
 }
+}
+

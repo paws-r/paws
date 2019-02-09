@@ -4,9 +4,7 @@
 \alias{list_tags_for_certificate}
 \title{Lists the tags that have been applied to the ACM certificate}
 \usage{
-list_tags_for_certificate(
-  CertificateArn = "string"
-)
+list_tags_for_certificate(CertificateArn)
 }
 \arguments{
 \item{CertificateArn}{[required] String that contains the ARN of the ACM certificate for which you want to list the tags. This must have the following form:
@@ -18,6 +16,10 @@ For more information about ARNs, see \href{http://docs.aws.amazon.com/general/la
 \description{
 Lists the tags that have been applied to the ACM certificate. Use the certificate's Amazon Resource Name (ARN) to specify the certificate. To add a tag to an ACM certificate, use the AddTagsToCertificate action. To delete a tag, use the RemoveTagsFromCertificate action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_tags_for_certificate(
+  CertificateArn = "string"
+)
 }
+}
+

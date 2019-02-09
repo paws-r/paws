@@ -4,11 +4,7 @@
 \alias{get_slot_type_versions}
 \title{Gets information about all versions of a slot type}
 \usage{
-get_slot_type_versions(
-  name = "string",
-  nextToken = "string",
-  maxResults = 123
-)
+get_slot_type_versions(name, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{name}{[required] The name of the slot type for which versions should be returned.}
@@ -27,6 +23,12 @@ The \code{GetSlotTypeVersions} operation always returns at least one version, th
 
 This operation requires permissions for the \code{lex:GetSlotTypeVersions} action.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_slot_type_versions(
+  name = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

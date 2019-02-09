@@ -4,10 +4,7 @@
 \alias{stop_automation_execution}
 \title{Stop an Automation that is currently executing}
 \usage{
-stop_automation_execution(
-  AutomationExecutionId = "string",
-  Type = "Complete"|"Cancel"
-)
+stop_automation_execution(AutomationExecutionId, Type = NULL)
 }
 \arguments{
 \item{AutomationExecutionId}{[required] The execution ID of the Automation to stop.}
@@ -17,6 +14,11 @@ stop_automation_execution(
 \description{
 Stop an Automation that is currently executing.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{stop_automation_execution(
+  AutomationExecutionId = "string",
+  Type = "Complete"|"Cancel"
+)
 }
+}
+

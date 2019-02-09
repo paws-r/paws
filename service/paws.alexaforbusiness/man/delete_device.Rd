@@ -4,9 +4,7 @@
 \alias{delete_device}
 \title{Removes a device from Alexa For Business}
 \usage{
-delete_device(
-  DeviceArn = "string"
-)
+delete_device(DeviceArn)
 }
 \arguments{
 \item{DeviceArn}{[required] The ARN of the device for which to request details.}
@@ -14,6 +12,10 @@ delete_device(
 \description{
 Removes a device from Alexa For Business.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_device(
+  DeviceArn = "string"
+)
 }
+}
+

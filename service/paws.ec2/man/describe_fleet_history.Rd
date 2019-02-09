@@ -4,14 +4,8 @@
 \alias{describe_fleet_history}
 \title{Describes the events for the specified EC2 Fleet during the specified time}
 \usage{
-describe_fleet_history(
-  DryRun = TRUE|FALSE,
-  EventType = "instance-change"|"fleet-change"|"service-error",
-  MaxResults = 123,
-  NextToken = "string",
-  FleetId = "string",
-  StartTime = as.POSIXct("2015-01-01")
-)
+describe_fleet_history(DryRun = NULL, EventType = NULL,
+  MaxResults = NULL, NextToken = NULL, FleetId, StartTime)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -29,6 +23,15 @@ describe_fleet_history(
 \description{
 Describes the events for the specified EC2 Fleet during the specified time.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_fleet_history(
+  DryRun = TRUE|FALSE,
+  EventType = "instance-change"|"fleet-change"|"service-error",
+  MaxResults = 123,
+  NextToken = "string",
+  FleetId = "string",
+  StartTime = as.POSIXct("2015-01-01")
+)
 }
+}
+

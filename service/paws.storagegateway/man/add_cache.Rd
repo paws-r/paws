@@ -4,12 +4,7 @@
 \alias{add_cache}
 \title{Configures one or more gateway local disks as cache for a gateway}
 \usage{
-add_cache(
-  GatewayARN = "string",
-  DiskIds = list(
-    "string"
-  )
-)
+add_cache(GatewayARN, DiskIds)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -22,15 +17,25 @@ Configures one or more gateway local disks as cache for a gateway. This operatio
 \details{
 In the request, you specify the gateway Amazon Resource Name (ARN) to which you want to add cache, and one or more disk IDs that you want to configure as cache.
 }
+\section{Accepted Parameters}{
+\preformatted{add_cache(
+  GatewayARN = "string",
+  DiskIds = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # The following example shows a request that activates a gateway-stored
 # volume.
-add_cache(
+\donttest{add_cache(
   DiskIds = list(
     "pci-0000:03:00.0-scsi-0:0:0:0",
     "pci-0000:03:00.0-scsi-0:0:1:0"
   ),
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)
+)}
 
 }

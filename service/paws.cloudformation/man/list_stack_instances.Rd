@@ -4,13 +4,8 @@
 \alias{list_stack_instances}
 \title{Returns summary information about stack instances that are associated with the specified stack set}
 \usage{
-list_stack_instances(
-  StackSetName = "string",
-  NextToken = "string",
-  MaxResults = 123,
-  StackInstanceAccount = "string",
-  StackInstanceRegion = "string"
-)
+list_stack_instances(StackSetName, NextToken = NULL, MaxResults = NULL,
+  StackInstanceAccount = NULL, StackInstanceRegion = NULL)
 }
 \arguments{
 \item{StackSetName}{[required] The name or unique ID of the stack set that you want to list stack instances for.}
@@ -26,6 +21,14 @@ list_stack_instances(
 \description{
 Returns summary information about stack instances that are associated with the specified stack set. You can filter for stack instances that are associated with a specific AWS account name or region.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_stack_instances(
+  StackSetName = "string",
+  NextToken = "string",
+  MaxResults = 123,
+  StackInstanceAccount = "string",
+  StackInstanceRegion = "string"
+)
 }
+}
+

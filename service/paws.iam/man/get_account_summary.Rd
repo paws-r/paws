@@ -15,6 +15,6 @@ For information about limitations on IAM entities, see \href{http://docs.aws.ama
 \examples{
 # The following command returns information about the IAM entity quotas
 # and usage in the current AWS account.
-get_account_summary()
+\donttest{get_account_summary()}
 
 }

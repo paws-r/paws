@@ -4,19 +4,8 @@
 \alias{put_metric_filter}
 \title{Creates or updates a metric filter and associates it with the specified log group}
 \usage{
-put_metric_filter(
-  logGroupName = "string",
-  filterName = "string",
-  filterPattern = "string",
-  metricTransformations = list(
-    list(
-      metricName = "string",
-      metricNamespace = "string",
-      metricValue = "string",
-      defaultValue = 123.0
-    )
-  )
-)
+put_metric_filter(logGroupName, filterName, filterPattern,
+  metricTransformations)
 }
 \arguments{
 \item{logGroupName}{[required] The name of the log group.}
@@ -33,6 +22,20 @@ Creates or updates a metric filter and associates it with the specified log grou
 \details{
 The maximum number of metric filters that can be associated with a log group is 100.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_metric_filter(
+  logGroupName = "string",
+  filterName = "string",
+  filterPattern = "string",
+  metricTransformations = list(
+    list(
+      metricName = "string",
+      metricNamespace = "string",
+      metricValue = "string",
+      defaultValue = 123.0
+    )
+  )
+)
 }
+}
+

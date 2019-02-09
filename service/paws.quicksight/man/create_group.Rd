@@ -4,12 +4,7 @@
 \alias{create_group}
 \title{Creates an Amazon QuickSight group}
 \usage{
-create_group(
-  GroupName = "string",
-  Description = "string",
-  AwsAccountId = "string",
-  Namespace = "string"
-)
+create_group(GroupName, Description = NULL, AwsAccountId, Namespace)
 }
 \arguments{
 \item{GroupName}{[required] A name for the group that you want to create.}
@@ -32,6 +27,13 @@ The response is a group object.
 
 \code{aws quicksight create-group --aws-account-id=111122223333 --namespace=default --group-name="Sales-Management" --description="Sales Management - Forecasting" }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_group(
+  GroupName = "string",
+  Description = "string",
+  AwsAccountId = "string",
+  Namespace = "string"
+)
 }
+}
+

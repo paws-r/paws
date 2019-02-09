@@ -4,17 +4,13 @@
 \alias{create_group_version}
 \title{Creates a version of a group which has already been defined}
 \usage{
-create_group_version(
-  AmznClientToken = "string",
-  ConnectorDefinitionVersionArn = "string",
-  CoreDefinitionVersionArn = "string",
-  DeviceDefinitionVersionArn = "string",
-  FunctionDefinitionVersionArn = "string",
-  GroupId = "string",
-  LoggerDefinitionVersionArn = "string",
-  ResourceDefinitionVersionArn = "string",
-  SubscriptionDefinitionVersionArn = "string"
-)
+create_group_version(AmznClientToken = NULL,
+  ConnectorDefinitionVersionArn = NULL,
+  CoreDefinitionVersionArn = NULL, DeviceDefinitionVersionArn = NULL,
+  FunctionDefinitionVersionArn = NULL, GroupId,
+  LoggerDefinitionVersionArn = NULL,
+  ResourceDefinitionVersionArn = NULL,
+  SubscriptionDefinitionVersionArn = NULL)
 }
 \arguments{
 \item{AmznClientToken}{A client token used to correlate requests and responses.}
@@ -38,6 +34,18 @@ create_group_version(
 \description{
 Creates a version of a group which has already been defined.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_group_version(
+  AmznClientToken = "string",
+  ConnectorDefinitionVersionArn = "string",
+  CoreDefinitionVersionArn = "string",
+  DeviceDefinitionVersionArn = "string",
+  FunctionDefinitionVersionArn = "string",
+  GroupId = "string",
+  LoggerDefinitionVersionArn = "string",
+  ResourceDefinitionVersionArn = "string",
+  SubscriptionDefinitionVersionArn = "string"
+)
 }
+}
+

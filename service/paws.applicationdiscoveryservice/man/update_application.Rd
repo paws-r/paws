@@ -4,11 +4,7 @@
 \alias{update_application}
 \title{Updates metadata about an application}
 \usage{
-update_application(
-  configurationId = "string",
-  name = "string",
-  description = "string"
-)
+update_application(configurationId, name = NULL, description = NULL)
 }
 \arguments{
 \item{configurationId}{[required] Configuration ID of the application to be updated.}
@@ -20,6 +16,12 @@ update_application(
 \description{
 Updates metadata about an application.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_application(
+  configurationId = "string",
+  name = "string",
+  description = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{delete_thing_shadow}
 \title{Deletes the thing shadow for the specified thing}
 \usage{
-delete_thing_shadow(
-  thingName = "string"
-)
+delete_thing_shadow(thingName)
 }
 \arguments{
 \item{thingName}{[required] The name of the thing.}
@@ -17,6 +15,10 @@ Deletes the thing shadow for the specified thing.
 \details{
 For more information, see \href{http://docs.aws.amazon.com/iot/latest/developerguide/API_DeleteThingShadow.html}{DeleteThingShadow} in the \emph{AWS IoT Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_thing_shadow(
+  thingName = "string"
+)
 }
+}
+

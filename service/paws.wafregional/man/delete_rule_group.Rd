@@ -4,10 +4,7 @@
 \alias{delete_rule_group}
 \title{Permanently deletes a RuleGroup}
 \usage{
-delete_rule_group(
-  RuleGroupId = "string",
-  ChangeToken = "string"
-)
+delete_rule_group(RuleGroupId, ChangeToken)
 }
 \arguments{
 \item{RuleGroupId}{[required] The \code{RuleGroupId} of the RuleGroup that you want to delete. \code{RuleGroupId} is returned by CreateRuleGroup and by ListRuleGroups.}
@@ -27,6 +24,11 @@ To permanently delete a \code{RuleGroup} from AWS WAF, perform the following ste
 \item Submit a \code{DeleteRuleGroup} request.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_rule_group(
+  RuleGroupId = "string",
+  ChangeToken = "string"
+)
 }
+}
+

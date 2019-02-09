@@ -4,11 +4,7 @@
 \alias{get_identity_verification_attributes}
 \title{Given a list of identities (email addresses and/or domains), returns the verification status and (for domain identities) the verification token for each identity}
 \usage{
-get_identity_verification_attributes(
-  Identities = list(
-    "string"
-  )
-)
+get_identity_verification_attributes(Identities)
 }
 \arguments{
 \item{Identities}{[required] A list of identities.}
@@ -23,13 +19,22 @@ For domain identities, the domain's verification status is "Pending" as Amazon S
 
 This operation is throttled at one request per second and can only get verification attributes for up to 100 identities at a time.
 }
+\section{Accepted Parameters}{
+\preformatted{get_identity_verification_attributes(
+  Identities = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # The following example returns the verification status and the
 # verification token for a domain identity:
-get_identity_verification_attributes(
+\donttest{get_identity_verification_attributes(
   Identities = list(
     "example.com"
   )
-)
+)}
 
 }

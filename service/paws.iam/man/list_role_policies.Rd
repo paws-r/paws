@@ -4,11 +4,7 @@
 \alias{list_role_policies}
 \title{Lists the names of the inline policies that are embedded in the specified IAM role}
 \usage{
-list_role_policies(
-  RoleName = "string",
-  Marker = "string",
-  MaxItems = 123
-)
+list_role_policies(RoleName, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{RoleName}{[required] The name of the role to list policies for.
@@ -29,6 +25,12 @@ An IAM role can also have managed policies attached to it. To list the managed p
 
 You can paginate the results using the \code{MaxItems} and \code{Marker} parameters. If there are no inline policies embedded with the specified role, the operation returns an empty list.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_role_policies(
+  RoleName = "string",
+  Marker = "string",
+  MaxItems = 123
+)
 }
+}
+

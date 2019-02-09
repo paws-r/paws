@@ -4,10 +4,7 @@
 \alias{list_imports}
 \title{Lists all stacks that are importing an exported output value}
 \usage{
-list_imports(
-  ExportName = "string",
-  NextToken = "string"
-)
+list_imports(ExportName, NextToken = NULL)
 }
 \arguments{
 \item{ExportName}{[required] The name of the exported output value. AWS CloudFormation returns the stack names that are importing this value.}
@@ -20,6 +17,11 @@ Lists all stacks that are importing an exported output value. To modify or remov
 \details{
 For more information about importing an exported output value, see the \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html}{Fn::ImportValue} function.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_imports(
+  ExportName = "string",
+  NextToken = "string"
+)
 }
+}
+

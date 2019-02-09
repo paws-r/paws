@@ -2,19 +2,10 @@
 % Please edit documentation in R/paws.machinelearning_operations.R
 \name{create_data_source_from_s3}
 \alias{create_data_source_from_s3}
-\title{Creates a \code{DataSource} object}
+\title{Creates a DataSource object}
 \usage{
-create_data_source_from_s3(
-  DataSourceId = "string",
-  DataSourceName = "string",
-  DataSpec = list(
-    DataLocationS3 = "string",
-    DataRearrangement = "string",
-    DataSchema = "string",
-    DataSchemaLocationS3 = "string"
-  ),
-  ComputeStatistics = TRUE|FALSE
-)
+create_data_source_from_s3(DataSourceId, DataSourceName = NULL, DataSpec,
+  ComputeStatistics = NULL)
 }
 \arguments{
 \item{DataSourceId}{[required] A user-supplied identifier that uniquely identifies the \code{DataSource}.}
@@ -45,6 +36,18 @@ The observation data used in a \code{DataSource} should be ready to use; that is
 
 After the \code{DataSource} has been created, it's ready to use in evaluations and batch predictions. If you plan to use the \code{DataSource} to train an \code{MLModel}, the \code{DataSource} also needs a recipe. A recipe describes how each input variable will be used in training an \code{MLModel}. Will the variable be included or excluded from training? Will the variable be manipulated; for example, will it be combined with another variable or will it be split apart into word combinations? The recipe provides answers to these questions.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_data_source_from_s3(
+  DataSourceId = "string",
+  DataSourceName = "string",
+  DataSpec = list(
+    DataLocationS3 = "string",
+    DataRearrangement = "string",
+    DataSchema = "string",
+    DataSchemaLocationS3 = "string"
+  ),
+  ComputeStatistics = TRUE|FALSE
+)
 }
+}
+

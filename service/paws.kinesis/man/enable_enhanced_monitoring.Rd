@@ -4,12 +4,7 @@
 \alias{enable_enhanced_monitoring}
 \title{Enables enhanced Kinesis data stream monitoring for shard-level metrics}
 \usage{
-enable_enhanced_monitoring(
-  StreamName = "string",
-  ShardLevelMetrics = list(
-    "IncomingBytes"|"IncomingRecords"|"OutgoingBytes"|"OutgoingRecords"|"WriteProvisionedThroughputExceeded"|"ReadProvisionedThroughputExceeded"|"IteratorAgeMilliseconds"|"ALL"
-  )
-)
+enable_enhanced_monitoring(StreamName, ShardLevelMetrics)
 }
 \arguments{
 \item{StreamName}{[required] The name of the stream for which to enable enhanced monitoring.}
@@ -33,6 +28,13 @@ For more information, see \href{http://docs.aws.amazon.com/kinesis/latest/dev/mo
 \description{
 Enables enhanced Kinesis data stream monitoring for shard-level metrics.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{enable_enhanced_monitoring(
+  StreamName = "string",
+  ShardLevelMetrics = list(
+    "IncomingBytes"|"IncomingRecords"|"OutgoingBytes"|"OutgoingRecords"|"WriteProvisionedThroughputExceeded"|"ReadProvisionedThroughputExceeded"|"IteratorAgeMilliseconds"|"ALL"
+  )
+)
 }
+}
+

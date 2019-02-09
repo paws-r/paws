@@ -4,15 +4,8 @@
 \alias{associate_discovered_resource}
 \title{Associates a discovered resource ID from Application Discovery Service (ADS) with a migration task}
 \usage{
-associate_discovered_resource(
-  ProgressUpdateStream = "string",
-  MigrationTaskName = "string",
-  DiscoveredResource = list(
-    ConfigurationId = "string",
-    Description = "string"
-  ),
-  DryRun = TRUE|FALSE
-)
+associate_discovered_resource(ProgressUpdateStream, MigrationTaskName,
+  DiscoveredResource, DryRun = NULL)
 }
 \arguments{
 \item{ProgressUpdateStream}{[required] The name of the ProgressUpdateStream.}
@@ -26,6 +19,16 @@ associate_discovered_resource(
 \description{
 Associates a discovered resource ID from Application Discovery Service (ADS) with a migration task.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{associate_discovered_resource(
+  ProgressUpdateStream = "string",
+  MigrationTaskName = "string",
+  DiscoveredResource = list(
+    ConfigurationId = "string",
+    Description = "string"
+  ),
+  DryRun = TRUE|FALSE
+)
 }
+}
+

@@ -4,11 +4,7 @@
 \alias{delete_group}
 \title{Removes a user group from Amazon QuickSight}
 \usage{
-delete_group(
-  GroupName = "string",
-  AwsAccountId = "string",
-  Namespace = "string"
-)
+delete_group(GroupName, AwsAccountId, Namespace)
 }
 \arguments{
 \item{GroupName}{[required] The name of the group that you want to delete.}
@@ -27,6 +23,12 @@ The permissions resource is \code{arn:aws:quicksight:us-east-1:<aws-account-id>:
 
 \code{aws quicksight delete-group -\-aws-account-id=111122223333 -\-namespace=default -\-group-name=Sales-Management }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_group(
+  GroupName = "string",
+  AwsAccountId = "string",
+  Namespace = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{describe_create_account_status}
 \title{Retrieves the current status of an asynchronous request to create an account}
 \usage{
-describe_create_account_status(
-  CreateAccountRequestId = "string"
-)
+describe_create_account_status(CreateAccountRequestId)
 }
 \arguments{
 \item{CreateAccountRequestId}{[required] Specifies the \code{operationId} that uniquely identifies the request. You can get the ID from the response to an earlier CreateAccount request, or from the ListCreateAccountStatus operation.
@@ -19,14 +17,21 @@ Retrieves the current status of an asynchronous request to create an account.
 \details{
 This operation can be called only from the organization's master account.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_create_account_status(
+  CreateAccountRequestId = "string"
+)
+}
+}
+
 \examples{
 # The following example shows how to request the status about a previous
 # request to create an account in an organization. This operation can be
 # called only by a principal from the organization's master account. In
 # the example, the specified "createAccountRequestId" comes from the
 # response of the original call to "CreateAccount":
-describe_create_account_status(
+\donttest{describe_create_account_status(
   CreateAccountRequestId = "car-exampleaccountcreationrequestid"
-)
+)}
 
 }

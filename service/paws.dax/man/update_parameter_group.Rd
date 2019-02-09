@@ -4,15 +4,7 @@
 \alias{update_parameter_group}
 \title{Modifies the parameters of a parameter group}
 \usage{
-update_parameter_group(
-  ParameterGroupName = "string",
-  ParameterNameValues = list(
-    list(
-      ParameterName = "string",
-      ParameterValue = "string"
-    )
-  )
-)
+update_parameter_group(ParameterGroupName, ParameterNameValues)
 }
 \arguments{
 \item{ParameterGroupName}{[required] The name of the parameter group.}
@@ -22,6 +14,16 @@ update_parameter_group(
 \description{
 Modifies the parameters of a parameter group. You can modify up to 20 parameters in a single request by submitting a list parameter name and value pairs.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_parameter_group(
+  ParameterGroupName = "string",
+  ParameterNameValues = list(
+    list(
+      ParameterName = "string",
+      ParameterValue = "string"
+    )
+  )
+)
 }
+}
+

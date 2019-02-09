@@ -4,11 +4,7 @@
 \alias{list_instances}
 \title{Lists summary information about the instances that you registered by using a specified service}
 \usage{
-list_instances(
-  ServiceId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_instances(ServiceId, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{ServiceId}{[required] The ID of the service that you want to list instances for.}
@@ -22,6 +18,12 @@ If more than \code{MaxResults} instances match the specified criteria, you can s
 \description{
 Lists summary information about the instances that you registered by using a specified service.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_instances(
+  ServiceId = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

@@ -2,40 +2,43 @@
 % Please edit documentation in R/paws.lambda_operations.R
 \name{get_function_configuration}
 \alias{get_function_configuration}
-\title{Returns the configuration information of the Lambda function}
+\title{Returns a the version-specific settings of a Lambda function or version}
 \usage{
-get_function_configuration(
-  FunctionName = "string",
-  Qualifier = "string"
-)
+get_function_configuration(FunctionName, Qualifier = NULL)
 }
 \arguments{
-\item{FunctionName}{[required] The name of the Lambda function.
+\item{FunctionName}{[required] The name of the Lambda function, version, or alias.
 
 \strong{Name formats}
 \itemize{
-\item \strong{Function name} - \code{MyFunction}.
-\item \strong{Function ARN} - \code{arn:aws:lambda:us-west-2:123456789012:function:MyFunction}.
-\item \strong{Partial ARN} - \code{123456789012:function:MyFunction}.
+\item \strong{Function name} - \code{my-function} (name-only), \code{my-function:v1} (with alias).
+\item \strong{Function ARN} - \code{arn:aws:lambda:us-west-2:123456789012:function:my-function}.
+\item \strong{Partial ARN} - \code{123456789012:function:my-function}.
 }
 
-The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
+You can append a version number or alias to any of the formats. The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.}
 
 \item{Qualifier}{Specify a version or alias to get details about a published version of the function.}
 }
 \description{
-Returns the configuration information of the Lambda function. This the same information you provided as parameters when uploading the function by using CreateFunction.
+Returns a the version-specific settings of a Lambda function or version. The output includes only options that can vary between versions of a function. To modify these settings, use UpdateFunctionConfiguration.
 }
 \details{
-If you are using the versioning feature, you can retrieve this information for a specific function version by using the optional \code{Qualifier} parameter and specifying the function version or alias that points to it. If you don't provide it, the API returns information about the \$LATEST version of the function. For more information about versioning, see \href{http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{AWS Lambda Function Versioning and Aliases}.
-
-This operation requires permission for the \code{lambda:GetFunctionConfiguration} operation.
+To get all of a function's details, including function-level settings, use GetFunction.
 }
+\section{Accepted Parameters}{
+\preformatted{get_function_configuration(
+  FunctionName = "string",
+  Qualifier = "string"
+)
+}
+}
+
 \examples{
 # This operation retrieves a Lambda function's event source mapping
-get_function_configuration(
+\donttest{get_function_configuration(
   FunctionName = "myFunction",
   Qualifier = "1"
-)
+)}
 
 }

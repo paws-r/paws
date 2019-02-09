@@ -4,12 +4,7 @@
 \alias{update_voice_channel}
 \title{Update an Voice channel}
 \usage{
-update_voice_channel(
-  ApplicationId = "string",
-  VoiceChannelRequest = list(
-    Enabled = TRUE|FALSE
-  )
-)
+update_voice_channel(ApplicationId, VoiceChannelRequest)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
@@ -19,6 +14,13 @@ update_voice_channel(
 \description{
 Update an Voice channel
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_voice_channel(
+  ApplicationId = "string",
+  VoiceChannelRequest = list(
+    Enabled = TRUE|FALSE
+  )
+)
 }
+}
+

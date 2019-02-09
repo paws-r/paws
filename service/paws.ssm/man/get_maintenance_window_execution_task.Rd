@@ -4,10 +4,7 @@
 \alias{get_maintenance_window_execution_task}
 \title{Retrieves the details about a specific task executed as part of a Maintenance Window execution}
 \usage{
-get_maintenance_window_execution_task(
-  WindowExecutionId = "string",
-  TaskId = "string"
-)
+get_maintenance_window_execution_task(WindowExecutionId, TaskId)
 }
 \arguments{
 \item{WindowExecutionId}{[required] The ID of the Maintenance Window execution that includes the task.}
@@ -17,6 +14,11 @@ get_maintenance_window_execution_task(
 \description{
 Retrieves the details about a specific task executed as part of a Maintenance Window execution.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_maintenance_window_execution_task(
+  WindowExecutionId = "string",
+  TaskId = "string"
+)
 }
+}
+

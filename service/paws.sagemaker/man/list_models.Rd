@@ -2,17 +2,11 @@
 % Please edit documentation in R/paws.sagemaker_operations.R
 \name{list_models}
 \alias{list_models}
-\title{Lists models created with the \link{CreateModel}(http://docs}
+\title{Lists models created with the CreateModel API}
 \usage{
-list_models(
-  SortBy = "Name"|"CreationTime",
-  SortOrder = "Ascending"|"Descending",
-  NextToken = "string",
-  MaxResults = 123,
-  NameContains = "string",
-  CreationTimeBefore = as.POSIXct("2015-01-01"),
-  CreationTimeAfter = as.POSIXct("2015-01-01")
-)
+list_models(SortBy = NULL, SortOrder = NULL, NextToken = NULL,
+  MaxResults = NULL, NameContains = NULL, CreationTimeBefore = NULL,
+  CreationTimeAfter = NULL)
 }
 \arguments{
 \item{SortBy}{Sorts the list of results. The default is \code{CreationTime}.}
@@ -32,6 +26,16 @@ list_models(
 \description{
 Lists models created with the \href{http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateModel.html}{CreateModel} API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_models(
+  SortBy = "Name"|"CreationTime",
+  SortOrder = "Ascending"|"Descending",
+  NextToken = "string",
+  MaxResults = 123,
+  NameContains = "string",
+  CreationTimeBefore = as.POSIXct("2015-01-01"),
+  CreationTimeAfter = as.POSIXct("2015-01-01")
+)
 }
+}
+

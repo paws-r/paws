@@ -4,12 +4,8 @@
 \alias{list_accepted_portfolio_shares}
 \title{Lists all portfolios for which sharing was accepted by this account}
 \usage{
-list_accepted_portfolio_shares(
-  AcceptLanguage = "string",
-  PageToken = "string",
-  PageSize = 123,
-  PortfolioShareType = "IMPORTED"|"AWS_SERVICECATALOG"|"AWS_ORGANIZATIONS"
-)
+list_accepted_portfolio_shares(AcceptLanguage = NULL, PageToken = NULL,
+  PageSize = NULL, PortfolioShareType = NULL)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -33,6 +29,13 @@ list_accepted_portfolio_shares(
 \description{
 Lists all portfolios for which sharing was accepted by this account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_accepted_portfolio_shares(
+  AcceptLanguage = "string",
+  PageToken = "string",
+  PageSize = 123,
+  PortfolioShareType = "IMPORTED"|"AWS_SERVICECATALOG"|"AWS_ORGANIZATIONS"
+)
 }
+}
+

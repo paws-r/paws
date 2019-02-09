@@ -2,22 +2,9 @@
 % Please edit documentation in R/paws.wafregional_operations.R
 \name{update_rule}
 \alias{update_rule}
-\title{Inserts or deletes Predicate objects in a \code{Rule}}
+\title{Inserts or deletes Predicate objects in a Rule}
 \usage{
-update_rule(
-  RuleId = "string",
-  ChangeToken = "string",
-  Updates = list(
-    list(
-      Action = "INSERT"|"DELETE",
-      Predicate = list(
-        Negated = TRUE|FALSE,
-        Type = "IPMatch"|"ByteMatch"|"SqlInjectionMatch"|"GeoMatch"|"SizeConstraint"|"XssMatch"|"RegexMatch",
-        DataId = "string"
-      )
-    )
-  )
-)
+update_rule(RuleId, ChangeToken, Updates)
 }
 \arguments{
 \item{RuleId}{[required] The \code{RuleId} of the \code{Rule} that you want to update. \code{RuleId} is returned by \code{CreateRule} and by ListRules.}
@@ -55,10 +42,28 @@ If you want to replace one \code{ByteMatchSet} or \code{IPSet} with another, you
 
 For more information about how to use the AWS WAF API to allow or block HTTP requests, see the \href{http://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{update_rule(
+  RuleId = "string",
+  ChangeToken = "string",
+  Updates = list(
+    list(
+      Action = "INSERT"|"DELETE",
+      Predicate = list(
+        Negated = TRUE|FALSE,
+        Type = "IPMatch"|"ByteMatch"|"SqlInjectionMatch"|"GeoMatch"|"SizeConstraint"|"XssMatch"|"RegexMatch",
+        DataId = "string"
+      )
+    )
+  )
+)
+}
+}
+
 \examples{
 # The following example deletes a Predicate object in a rule with the ID
 # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-update_rule(
+\donttest{update_rule(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   RuleId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5",
   Updates = list(
@@ -71,6 +76,6 @@ update_rule(
       )
     )
   )
-)
+)}
 
 }

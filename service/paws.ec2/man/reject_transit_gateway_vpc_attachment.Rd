@@ -4,10 +4,8 @@
 \alias{reject_transit_gateway_vpc_attachment}
 \title{Rejects a request to attach a VPC to a transit gateway}
 \usage{
-reject_transit_gateway_vpc_attachment(
-  TransitGatewayAttachmentId = "string",
-  DryRun = TRUE|FALSE
-)
+reject_transit_gateway_vpc_attachment(TransitGatewayAttachmentId,
+  DryRun = NULL)
 }
 \arguments{
 \item{TransitGatewayAttachmentId}{[required] The ID of the attachment.}
@@ -20,6 +18,11 @@ Rejects a request to attach a VPC to a transit gateway.
 \details{
 The VPC attachment must be in the \code{pendingAcceptance} state. Use DescribeTransitGatewayVpcAttachments to view your pending VPC attachment requests. Use AcceptTransitGatewayVpcAttachment to accept a VPC attachment request.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{reject_transit_gateway_vpc_attachment(
+  TransitGatewayAttachmentId = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

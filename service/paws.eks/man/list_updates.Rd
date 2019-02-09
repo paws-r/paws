@@ -4,11 +4,7 @@
 \alias{list_updates}
 \title{Lists the updates associated with an Amazon EKS cluster in your AWS account, in the specified Region}
 \usage{
-list_updates(
-  name = "string",
-  nextToken = "string",
-  maxResults = 123
-)
+list_updates(name, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{name}{[required] The name of the Amazon EKS cluster for which to list updates.}
@@ -20,6 +16,12 @@ list_updates(
 \description{
 Lists the updates associated with an Amazon EKS cluster in your AWS account, in the specified Region.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_updates(
+  name = "string",
+  nextToken = "string",
+  maxResults = 123
+)
 }
+}
+

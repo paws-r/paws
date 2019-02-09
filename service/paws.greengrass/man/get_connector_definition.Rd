@@ -4,9 +4,7 @@
 \alias{get_connector_definition}
 \title{Retrieves information about a connector definition}
 \usage{
-get_connector_definition(
-  ConnectorDefinitionId = "string"
-)
+get_connector_definition(ConnectorDefinitionId)
 }
 \arguments{
 \item{ConnectorDefinitionId}{[required] The ID of the connector definition.}
@@ -14,6 +12,10 @@ get_connector_definition(
 \description{
 Retrieves information about a connector definition.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_connector_definition(
+  ConnectorDefinitionId = "string"
+)
 }
+}
+

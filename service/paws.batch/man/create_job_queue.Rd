@@ -4,17 +4,8 @@
 \alias{create_job_queue}
 \title{Creates an AWS Batch job queue}
 \usage{
-create_job_queue(
-  jobQueueName = "string",
-  state = "ENABLED"|"DISABLED",
-  priority = 123,
-  computeEnvironmentOrder = list(
-    list(
-      order = 123,
-      computeEnvironment = "string"
-    )
-  )
-)
+create_job_queue(jobQueueName, state = NULL, priority,
+  computeEnvironmentOrder)
 }
 \arguments{
 \item{jobQueueName}{[required] The name of the job queue.}
@@ -31,10 +22,25 @@ Creates an AWS Batch job queue. When you create a job queue, you associate one o
 \details{
 You also set a priority to the job queue that determines the order in which the AWS Batch scheduler places jobs onto its associated compute environments. For example, if a compute environment is associated with more than one job queue, the job queue with a higher priority is given preference for scheduling jobs to that compute environment.
 }
+\section{Accepted Parameters}{
+\preformatted{create_job_queue(
+  jobQueueName = "string",
+  state = "ENABLED"|"DISABLED",
+  priority = 123,
+  computeEnvironmentOrder = list(
+    list(
+      order = 123,
+      computeEnvironment = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # This example creates a job queue called LowPriority that uses the M4Spot
 # compute environment.
-create_job_queue(
+\donttest{create_job_queue(
   computeEnvironmentOrder = list(
     list(
       computeEnvironment = "M4Spot",
@@ -44,12 +50,12 @@ create_job_queue(
   jobQueueName = "LowPriority",
   priority = 1L,
   state = "ENABLED"
-)
+)}
 
 # This example creates a job queue called HighPriority that uses the
 # C4OnDemand compute environment with an order of 1 and the M4Spot compute
 # environment with an order of 2.
-create_job_queue(
+\donttest{create_job_queue(
   computeEnvironmentOrder = list(
     list(
       computeEnvironment = "C4OnDemand",
@@ -63,6 +69,6 @@ create_job_queue(
   jobQueueName = "HighPriority",
   priority = 10L,
   state = "ENABLED"
-)
+)}
 
 }

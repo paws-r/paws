@@ -2,15 +2,11 @@
 % Please edit documentation in R/paws.cognitoidentity_operations.R
 \name{lookup_developer_identity}
 \alias{lookup_developer_identity}
-\title{Retrieves the \code{IdentityID} associated with a \code{DeveloperUserIdentifier} or the list of \code{DeveloperUserIdentifier}s associated with an \code{IdentityId} for an existing identity}
+\title{Retrieves the IdentityID associated with a DeveloperUserIdentifier or the list of DeveloperUserIdentifiers associated with an IdentityId for an existing identity}
 \usage{
-lookup_developer_identity(
-  IdentityPoolId = "string",
-  IdentityId = "string",
-  DeveloperUserIdentifier = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+lookup_developer_identity(IdentityPoolId, IdentityId = NULL,
+  DeveloperUserIdentifier = NULL, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
@@ -29,6 +25,14 @@ Retrieves the \code{IdentityID} associated with a \code{DeveloperUserIdentifier}
 \details{
 You must use AWS Developer credentials to call this API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{lookup_developer_identity(
+  IdentityPoolId = "string",
+  IdentityId = "string",
+  DeveloperUserIdentifier = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

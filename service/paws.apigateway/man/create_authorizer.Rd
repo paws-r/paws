@@ -4,20 +4,11 @@
 \alias{create_authorizer}
 \title{Adds a new Authorizer resource to an existing RestApi resource}
 \usage{
-create_authorizer(
-  restApiId = "string",
-  name = "string",
-  type = "TOKEN"|"REQUEST"|"COGNITO_USER_POOLS",
-  providerARNs = list(
-    "string"
-  ),
-  authType = "string",
-  authorizerUri = "string",
-  authorizerCredentials = "string",
-  identitySource = "string",
-  identityValidationExpression = "string",
-  authorizerResultTtlInSeconds = 123
-)
+create_authorizer(restApiId, name, type, providerARNs = NULL,
+  authType = NULL, authorizerUri = NULL,
+  authorizerCredentials = NULL, identitySource = NULL,
+  identityValidationExpression = NULL,
+  authorizerResultTtlInSeconds = NULL)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -52,6 +43,21 @@ Adds a new Authorizer resource to an existing RestApi resource.
 \href{https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-authorizer.html}{AWS CLI}
 :::
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_authorizer(
+  restApiId = "string",
+  name = "string",
+  type = "TOKEN"|"REQUEST"|"COGNITO_USER_POOLS",
+  providerARNs = list(
+    "string"
+  ),
+  authType = "string",
+  authorizerUri = "string",
+  authorizerCredentials = "string",
+  identitySource = "string",
+  identityValidationExpression = "string",
+  authorizerResultTtlInSeconds = 123
+)
 }
+}
+

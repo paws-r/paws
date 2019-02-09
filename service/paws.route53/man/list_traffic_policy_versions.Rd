@@ -4,11 +4,8 @@
 \alias{list_traffic_policy_versions}
 \title{Gets information about all of the versions for a specified traffic policy}
 \usage{
-list_traffic_policy_versions(
-  Id = "string",
-  TrafficPolicyVersionMarker = "string",
-  MaxItems = "string"
-)
+list_traffic_policy_versions(Id, TrafficPolicyVersionMarker = NULL,
+  MaxItems = NULL)
 }
 \arguments{
 \item{Id}{[required] Specify the value of \code{Id} of the traffic policy for which you want to list all versions.}
@@ -25,6 +22,12 @@ Gets information about all of the versions for a specified traffic policy.
 \details{
 Traffic policy versions are listed in numerical order by \code{VersionNumber}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_traffic_policy_versions(
+  Id = "string",
+  TrafficPolicyVersionMarker = "string",
+  MaxItems = "string"
+)
 }
+}
+

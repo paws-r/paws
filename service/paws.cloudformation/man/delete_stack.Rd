@@ -4,14 +4,8 @@
 \alias{delete_stack}
 \title{Deletes a specified stack}
 \usage{
-delete_stack(
-  StackName = "string",
-  RetainResources = list(
-    "string"
-  ),
-  RoleARN = "string",
-  ClientRequestToken = "string"
-)
+delete_stack(StackName, RetainResources = NULL, RoleARN = NULL,
+  ClientRequestToken = NULL)
 }
 \arguments{
 \item{StackName}{[required] The name or the unique stack ID that is associated with the stack.}
@@ -33,6 +27,15 @@ In the console, stack operations display the client request token on the Events 
 \description{
 Deletes a specified stack. Once the call completes successfully, stack deletion starts. Deleted stacks do not show up in the DescribeStacks API if the deletion has been completed successfully.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_stack(
+  StackName = "string",
+  RetainResources = list(
+    "string"
+  ),
+  RoleARN = "string",
+  ClientRequestToken = "string"
+)
 }
+}
+

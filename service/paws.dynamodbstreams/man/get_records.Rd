@@ -4,10 +4,7 @@
 \alias{get_records}
 \title{Retrieves the stream records from a given shard}
 \usage{
-get_records(
-  ShardIterator = "string",
-  Limit = 123
-)
+get_records(ShardIterator, Limit = NULL)
 }
 \arguments{
 \item{ShardIterator}{[required] A shard iterator that was retrieved from a previous GetShardIterator operation. This iterator can be used to access the stream records in this shard.}
@@ -22,10 +19,18 @@ Specify a shard iterator using the \code{ShardIterator} parameter. The shard ite
 
 \code{GetRecords} can retrieve a maximum of 1 MB of data or 1000 stream records, whichever comes first.
 }
+\section{Accepted Parameters}{
+\preformatted{get_records(
+  ShardIterator = "string",
+  Limit = 123
+)
+}
+}
+
 \examples{
 # The following example retrieves all the stream records from a shard.
-get_records(
+\donttest{get_records(
   ShardIterator = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T20:51:10.252|1|AAAAAAAAAAEvJp6D+zaQ...  <remaining characters omitted> ..."
-)
+)}
 
 }

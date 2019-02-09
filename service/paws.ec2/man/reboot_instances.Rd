@@ -4,12 +4,7 @@
 \alias{reboot_instances}
 \title{Requests a reboot of one or more instances}
 \usage{
-reboot_instances(
-  InstanceIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
+reboot_instances(InstanceIds, DryRun = NULL)
 }
 \arguments{
 \item{InstanceIds}{[required] One or more instance IDs.}
@@ -22,14 +17,24 @@ Requests a reboot of one or more instances. This operation is asynchronous; it o
 \details{
 If an instance does not cleanly shut down within four minutes, Amazon EC2 performs a hard reboot.
 
-For more information about troubleshooting, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-console.html}{Getting Console Output and Rebooting Instances} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information about troubleshooting, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-console.html}{Getting Console Output and Rebooting Instances} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{reboot_instances(
+  InstanceIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example reboots the specified EC2 instance.
-reboot_instances(
+\donttest{reboot_instances(
   InstanceIds = list(
     "i-1234567890abcdef5"
   )
-)
+)}
 
 }

@@ -4,9 +4,7 @@
 \alias{describe_training_job}
 \title{Returns information about a training job}
 \usage{
-describe_training_job(
-  TrainingJobName = "string"
-)
+describe_training_job(TrainingJobName)
 }
 \arguments{
 \item{TrainingJobName}{[required] The name of the training job.}
@@ -14,6 +12,10 @@ describe_training_job(
 \description{
 Returns information about a training job.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_training_job(
+  TrainingJobName = "string"
+)
 }
+}
+

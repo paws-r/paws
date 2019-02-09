@@ -4,9 +4,7 @@
 \alias{describe_listener}
 \title{Describe a listener}
 \usage{
-describe_listener(
-  ListenerArn = "string"
-)
+describe_listener(ListenerArn)
 }
 \arguments{
 \item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener to describe.}
@@ -14,6 +12,10 @@ describe_listener(
 \description{
 Describe a listener.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_listener(
+  ListenerArn = "string"
+)
 }
+}
+

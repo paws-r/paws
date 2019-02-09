@@ -4,9 +4,7 @@
 \alias{delete_resource_policy}
 \title{Deletes a resource policy from this account}
 \usage{
-delete_resource_policy(
-  policyName = "string"
-)
+delete_resource_policy(policyName = NULL)
 }
 \arguments{
 \item{policyName}{The name of the policy to be revoked. This parameter is required.}
@@ -14,6 +12,10 @@ delete_resource_policy(
 \description{
 Deletes a resource policy from this account. This revokes the access of the identities in that policy to put log events to this account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_resource_policy(
+  policyName = "string"
+)
 }
+}
+

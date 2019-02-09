@@ -4,11 +4,7 @@
 \alias{delete_alarms}
 \title{Deletes the specified alarms}
 \usage{
-delete_alarms(
-  AlarmNames = list(
-    "string"
-  )
-)
+delete_alarms(AlarmNames)
 }
 \arguments{
 \item{AlarmNames}{[required] The alarms to be deleted.}
@@ -16,6 +12,12 @@ delete_alarms(
 \description{
 Deletes the specified alarms. In the event of an error, no alarms are deleted.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_alarms(
+  AlarmNames = list(
+    "string"
+  )
+)
 }
+}
+

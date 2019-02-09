@@ -4,27 +4,10 @@
 \alias{create_identity_pool}
 \title{Creates a new identity pool}
 \usage{
-create_identity_pool(
-  IdentityPoolName = "string",
-  AllowUnauthenticatedIdentities = TRUE|FALSE,
-  SupportedLoginProviders = list(
-    "string"
-  ),
-  DeveloperProviderName = "string",
-  OpenIdConnectProviderARNs = list(
-    "string"
-  ),
-  CognitoIdentityProviders = list(
-    list(
-      ProviderName = "string",
-      ClientId = "string",
-      ServerSideTokenCheck = TRUE|FALSE
-    )
-  ),
-  SamlProviderARNs = list(
-    "string"
-  )
-)
+create_identity_pool(IdentityPoolName, AllowUnauthenticatedIdentities,
+  SupportedLoginProviders = NULL, DeveloperProviderName = NULL,
+  OpenIdConnectProviderARNs = NULL, CognitoIdentityProviders = NULL,
+  SamlProviderARNs = NULL)
 }
 \arguments{
 \item{IdentityPoolName}{[required] A string that you provide.}
@@ -57,6 +40,28 @@ Creates a new identity pool. The identity pool is a store of user identity infor
 
 You must use AWS Developer credentials to call this API.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_identity_pool(
+  IdentityPoolName = "string",
+  AllowUnauthenticatedIdentities = TRUE|FALSE,
+  SupportedLoginProviders = list(
+    "string"
+  ),
+  DeveloperProviderName = "string",
+  OpenIdConnectProviderARNs = list(
+    "string"
+  ),
+  CognitoIdentityProviders = list(
+    list(
+      ProviderName = "string",
+      ClientId = "string",
+      ServerSideTokenCheck = TRUE|FALSE
+    )
+  ),
+  SamlProviderARNs = list(
+    "string"
+  )
+)
 }
+}
+

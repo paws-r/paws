@@ -4,13 +4,8 @@
 \alias{update_threat_intel_set}
 \title{Updates the ThreatIntelSet specified by ThreatIntelSet ID}
 \usage{
-update_threat_intel_set(
-  Activate = TRUE|FALSE,
-  DetectorId = "string",
-  Location = "string",
-  Name = "string",
-  ThreatIntelSetId = "string"
-)
+update_threat_intel_set(Activate = NULL, DetectorId, Location = NULL,
+  Name = NULL, ThreatIntelSetId)
 }
 \arguments{
 \item{Activate}{The updated boolean value that specifies whether the ThreateIntelSet is active or not.}
@@ -26,6 +21,14 @@ update_threat_intel_set(
 \description{
 Updates the ThreatIntelSet specified by ThreatIntelSet ID.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_threat_intel_set(
+  Activate = TRUE|FALSE,
+  DetectorId = "string",
+  Location = "string",
+  Name = "string",
+  ThreatIntelSetId = "string"
+)
 }
+}
+

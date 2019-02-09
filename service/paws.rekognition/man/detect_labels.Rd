@@ -4,18 +4,7 @@
 \alias{detect_labels}
 \title{Detects instances of real-world entities within an image (JPEG or PNG) provided as input}
 \usage{
-detect_labels(
-  Image = list(
-    Bytes = raw,
-    S3Object = list(
-      Bucket = "string",
-      Name = "string",
-      Version = "string"
-    )
-  ),
-  MaxLabels = 123,
-  MinConfidence = 123.0
-)
+detect_labels(Image, MaxLabels = NULL, MinConfidence = NULL)
 }
 \arguments{
 \item{Image}{[required] The input image as base64-encoded bytes or an S3 object. If you use the AWS CLI to call Amazon Rekognition operations, passing base64-encoded image bytes is not supported.}
@@ -24,7 +13,7 @@ detect_labels(
 
 \item{MinConfidence}{Specifies the minimum confidence level for the labels to return. Amazon Rekognition doesn't return any labels with confidence lower than this specified value.
 
-If \code{MinConfidence} is not specified, the operation returns labels with a confidence values greater than or equal to 50 percent.}
+If \code{MinConfidence} is not specified, the operation returns labels with a confidence values greater than or equal to 55 percent.}
 }
 \description{
 Detects instances of real-world entities within an image (JPEG or PNG) provided as input. This includes objects like flower, tree, and table; events like wedding, graduation, and birthday party; and concepts like landscape, evening, and nature.
@@ -54,11 +43,11 @@ In the preceding example, the operation returns one label for each of the three 
 
 In this example, the detection algorithm more precisely identifies the flower as a tulip.
 
-In response, the API returns an array of labels. In addition, the response also includes the orientation correction. Optionally, you can specify \code{MinConfidence} to control the confidence threshold for the labels returned. The default is 50\%. You can also add the \code{MaxLabels} parameter to limit the number of labels returned.
+In response, the API returns an array of labels. In addition, the response also includes the orientation correction. Optionally, you can specify \code{MinConfidence} to control the confidence threshold for the labels returned. The default is 55\%. You can also add the \code{MaxLabels} parameter to limit the number of labels returned.
 
 If the object detected is a person, the operation doesn't provide the same facial details that the DetectFaces operation provides.
 
-\code{DetectLabels} returns bounding boxes for instances of common object labels in an array of objects. An \code{Instance} object contains a object, for the location of the label on the image. It also includes the confidence by which the bounding box was detected.
+\code{DetectLabels} returns bounding boxes for instances of common object labels in an array of Instance objects. An \code{Instance} object contains a BoundingBox object, for the location of the label on the image. It also includes the confidence by which the bounding box was detected.
 
 \code{DetectLabels} also returns a hierarchical taxonomy of detected labels. For example, a detected car might be assigned the label \emph{car}. The label \emph{car} has two parent labels: \emph{Vehicle} (its parent) and \emph{Transportation} (its grandparent). The response returns the entire list of ancestors for a label. Each ancestor is a unique label in the response. In the previous example, \emph{Car}, \emph{Vehicle}, and \emph{Transportation} are returned as unique labels in the response.
 
@@ -66,9 +55,25 @@ This is a stateless API operation. That is, the operation does not persist any d
 
 This operation requires permissions to perform the \code{rekognition:DetectLabels} action.
 }
+\section{Accepted Parameters}{
+\preformatted{detect_labels(
+  Image = list(
+    Bytes = raw,
+    S3Object = list(
+      Bucket = "string",
+      Name = "string",
+      Version = "string"
+    )
+  ),
+  MaxLabels = 123,
+  MinConfidence = 123.0
+)
+}
+}
+
 \examples{
 # This operation detects labels in the supplied image
-detect_labels(
+\donttest{detect_labels(
   Image = list(
     S3Object = list(
       Bucket = "mybucket",
@@ -77,6 +82,6 @@ detect_labels(
   ),
   MaxLabels = 123L,
   MinConfidence = 70L
-)
+)}
 
 }

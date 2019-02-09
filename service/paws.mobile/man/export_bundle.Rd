@@ -4,11 +4,7 @@
 \alias{export_bundle}
 \title{Generates customized software development kit (SDK) and or tool packages used to integrate mobile web or mobile app clients with backend AWS resources}
 \usage{
-export_bundle(
-  bundleId = "string",
-  projectId = "string",
-  platform = "OSX"|"WINDOWS"|"LINUX"|"OBJC"|"SWIFT"|"ANDROID"|"JAVASCRIPT"
-)
+export_bundle(bundleId, projectId = NULL, platform = NULL)
 }
 \arguments{
 \item{bundleId}{[required] Unique bundle identifier.}
@@ -20,6 +16,12 @@ export_bundle(
 \description{
 Generates customized software development kit (SDK) and or tool packages used to integrate mobile web or mobile app clients with backend AWS resources.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{export_bundle(
+  bundleId = "string",
+  projectId = "string",
+  platform = "OSX"|"WINDOWS"|"LINUX"|"OBJC"|"SWIFT"|"ANDROID"|"JAVASCRIPT"
+)
 }
+}
+

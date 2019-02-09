@@ -4,11 +4,8 @@
 \alias{enable_transit_gateway_route_table_propagation}
 \title{Enables the specified attachment to propagate routes to the specified propagation route table}
 \usage{
-enable_transit_gateway_route_table_propagation(
-  TransitGatewayRouteTableId = "string",
-  TransitGatewayAttachmentId = "string",
-  DryRun = TRUE|FALSE
-)
+enable_transit_gateway_route_table_propagation(TransitGatewayRouteTableId,
+  TransitGatewayAttachmentId, DryRun = NULL)
 }
 \arguments{
 \item{TransitGatewayRouteTableId}{[required] The ID of the propagation route table.}
@@ -20,6 +17,12 @@ enable_transit_gateway_route_table_propagation(
 \description{
 Enables the specified attachment to propagate routes to the specified propagation route table.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{enable_transit_gateway_route_table_propagation(
+  TransitGatewayRouteTableId = "string",
+  TransitGatewayAttachmentId = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

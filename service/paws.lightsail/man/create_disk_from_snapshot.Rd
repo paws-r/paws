@@ -4,18 +4,8 @@
 \alias{create_disk_from_snapshot}
 \title{Creates a block storage disk from a disk snapshot that can be attached to a Lightsail instance in the same Availability Zone (e}
 \usage{
-create_disk_from_snapshot(
-  diskName = "string",
-  diskSnapshotName = "string",
-  availabilityZone = "string",
-  sizeInGb = 123,
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
+create_disk_from_snapshot(diskName, diskSnapshotName, availabilityZone,
+  sizeInGb, tags = NULL)
 }
 \arguments{
 \item{diskName}{[required] The unique Lightsail disk name (e.g., \code{my-disk}).}
@@ -38,6 +28,19 @@ Creates a block storage disk from a disk snapshot that can be attached to a Ligh
 \details{
 The \code{create disk from snapshot} operation supports tag-based access control via request tags and resource tags applied to the resource identified by diskSnapshotName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_disk_from_snapshot(
+  diskName = "string",
+  diskSnapshotName = "string",
+  availabilityZone = "string",
+  sizeInGb = 123,
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
 }
+}
+

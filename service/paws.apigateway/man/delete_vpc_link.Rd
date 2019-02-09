@@ -4,9 +4,7 @@
 \alias{delete_vpc_link}
 \title{Deletes an existing VpcLink of a specified identifier}
 \usage{
-delete_vpc_link(
-  vpcLinkId = "string"
-)
+delete_vpc_link(vpcLinkId)
 }
 \arguments{
 \item{vpcLinkId}{[required] [Required] The identifier of the VpcLink. It is used in an Integration to reference this VpcLink.}
@@ -14,6 +12,10 @@ delete_vpc_link(
 \description{
 Deletes an existing VpcLink of a specified identifier.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_vpc_link(
+  vpcLinkId = "string"
+)
 }
+}
+

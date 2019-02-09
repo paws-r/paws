@@ -9,6 +9,8 @@ disable_security_hub()
 \description{
 Disables the AWS Security Hub Service.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disable_security_hub()
 }
+}
+

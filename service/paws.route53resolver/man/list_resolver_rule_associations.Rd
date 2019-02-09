@@ -4,18 +4,8 @@
 \alias{list_resolver_rule_associations}
 \title{Lists the associations that were created between resolver rules and VPCs using the current AWS account}
 \usage{
-list_resolver_rule_associations(
-  MaxResults = 123,
-  NextToken = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  )
-)
+list_resolver_rule_associations(MaxResults = NULL, NextToken = NULL,
+  Filters = NULL)
 }
 \arguments{
 \item{MaxResults}{The maximum number of rule associations that you want to return in the response to a \code{ListResolverRuleAssociations} request. If you don't specify a value for \code{MaxResults}, Resolver returns up to 100 rule associations.}
@@ -31,6 +21,19 @@ If you submit a second or subsequent \code{ListResolverRuleAssociations} request
 \description{
 Lists the associations that were created between resolver rules and VPCs using the current AWS account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_resolver_rule_associations(
+  MaxResults = 123,
+  NextToken = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  )
+)
 }
+}
+

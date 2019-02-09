@@ -4,9 +4,7 @@
 \alias{delete_app_launch_configuration}
 \title{Deletes existing launch configuration for an application}
 \usage{
-delete_app_launch_configuration(
-  appId = "string"
-)
+delete_app_launch_configuration(appId = NULL)
 }
 \arguments{
 \item{appId}{ID of the application associated with the launch configuration.}
@@ -14,6 +12,10 @@ delete_app_launch_configuration(
 \description{
 Deletes existing launch configuration for an application.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_app_launch_configuration(
+  appId = "string"
+)
 }
+}
+

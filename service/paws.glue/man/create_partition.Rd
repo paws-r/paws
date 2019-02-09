@@ -4,7 +4,23 @@
 \alias{create_partition}
 \title{Creates a new partition}
 \usage{
-create_partition(
+create_partition(CatalogId = NULL, DatabaseName, TableName,
+  PartitionInput)
+}
+\arguments{
+\item{CatalogId}{The ID of the catalog in which the partion is to be created. Currently, this should be the AWS account ID.}
+
+\item{DatabaseName}{[required] The name of the metadata database in which the partition is to be created.}
+
+\item{TableName}{[required] The name of the metadata table in which the partition is to be created.}
+
+\item{PartitionInput}{[required] A \code{PartitionInput} structure defining the partition to be created.}
+}
+\description{
+Creates a new partition.
+}
+\section{Accepted Parameters}{
+\preformatted{create_partition(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",
@@ -65,18 +81,5 @@ create_partition(
   )
 )
 }
-\arguments{
-\item{CatalogId}{The ID of the catalog in which the partion is to be created. Currently, this should be the AWS account ID.}
-
-\item{DatabaseName}{[required] The name of the metadata database in which the partition is to be created.}
-
-\item{TableName}{[required] The name of the metadata table in which the partition is to be created.}
-
-\item{PartitionInput}{[required] A \code{PartitionInput} structure defining the partition to be created.}
 }
-\description{
-Creates a new partition.
-}
-\examples{
 
-}

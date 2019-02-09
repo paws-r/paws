@@ -4,21 +4,9 @@
 \alias{describe_option_groups}
 \title{Describes the available option groups}
 \usage{
-describe_option_groups(
-  OptionGroupName = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  Marker = "string",
-  MaxRecords = 123,
-  EngineName = "string",
-  MajorEngineVersion = "string"
-)
+describe_option_groups(OptionGroupName = NULL, Filters = NULL,
+  Marker = NULL, MaxRecords = NULL, EngineName = NULL,
+  MajorEngineVersion = NULL)
 }
 \arguments{
 \item{OptionGroupName}{The name of the option group to describe. Can't be supplied together with EngineName or MajorEngineVersion.}
@@ -40,6 +28,22 @@ Constraints: Minimum 20, maximum 100.}
 \description{
 Describes the available option groups.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_option_groups(
+  OptionGroupName = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  Marker = "string",
+  MaxRecords = 123,
+  EngineName = "string",
+  MajorEngineVersion = "string"
+)
 }
+}
+

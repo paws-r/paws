@@ -4,11 +4,8 @@
 \alias{list_identity_providers}
 \title{Lists information about all identity providers for a user pool}
 \usage{
-list_identity_providers(
-  UserPoolId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_identity_providers(UserPoolId, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID.}
@@ -20,6 +17,12 @@ list_identity_providers(
 \description{
 Lists information about all identity providers for a user pool.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_identity_providers(
+  UserPoolId = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

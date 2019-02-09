@@ -12,6 +12,3 @@ Returns attributes related to AWS Elastic Beanstalk that are associated with the
 \details{
 The result currently has one set of attributes---resource quotas.
 }
-\examples{
-
-}

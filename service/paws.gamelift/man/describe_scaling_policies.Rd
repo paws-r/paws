@@ -4,12 +4,8 @@
 \alias{describe_scaling_policies}
 \title{Retrieves all scaling policies applied to a fleet}
 \usage{
-describe_scaling_policies(
-  FleetId = "string",
-  StatusFilter = "ACTIVE"|"UPDATE_REQUESTED"|"UPDATING"|"DELETE_REQUESTED"|"DELETING"|"DELETED"|"ERROR",
-  Limit = 123,
-  NextToken = "string"
-)
+describe_scaling_policies(FleetId, StatusFilter = NULL, Limit = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{FleetId}{[required] Unique identifier for a fleet to retrieve scaling policies for.}
@@ -36,8 +32,6 @@ Retrieves all scaling policies applied to a fleet.
 To get a fleet's scaling policies, specify the fleet ID. You can filter this request by policy status, such as to retrieve only active scaling policies. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, set of ScalingPolicy objects is returned for the fleet.
 
 A fleet may have all of its scaling policies suspended (StopFleetActions). This action does not affect the status of the scaling policies, which remains ACTIVE. To see whether a fleet's scaling policies are in force or suspended, call DescribeFleetAttributes and check the stopped actions.
-
-Operations related to fleet capacity scaling include:
 \itemize{
 \item DescribeFleetCapacity
 \item UpdateFleetCapacity
@@ -51,6 +45,13 @@ Operations related to fleet capacity scaling include:
 \item StopFleetActions
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_scaling_policies(
+  FleetId = "string",
+  StatusFilter = "ACTIVE"|"UPDATE_REQUESTED"|"UPDATING"|"DELETE_REQUESTED"|"DELETING"|"DELETED"|"ERROR",
+  Limit = 123,
+  NextToken = "string"
+)
 }
+}
+

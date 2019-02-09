@@ -4,10 +4,7 @@
 \alias{describe_robot_application}
 \title{Describes a robot application}
 \usage{
-describe_robot_application(
-  application = "string",
-  applicationVersion = "string"
-)
+describe_robot_application(application, applicationVersion = NULL)
 }
 \arguments{
 \item{application}{[required] The Amazon Resource Name (ARN) of the robot application.}
@@ -17,6 +14,11 @@ describe_robot_application(
 \description{
 Describes a robot application.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_robot_application(
+  application = "string",
+  applicationVersion = "string"
+)
 }
+}
+

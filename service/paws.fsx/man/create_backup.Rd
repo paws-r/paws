@@ -4,16 +4,7 @@
 \alias{create_backup}
 \title{Creates a backup of an existing Amazon FSx for Windows File Server file system}
 \usage{
-create_backup(
-  FileSystemId = "string",
-  ClientRequestToken = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+create_backup(FileSystemId, ClientRequestToken = NULL, Tags = NULL)
 }
 \arguments{
 \item{FileSystemId}{[required] The ID of the file system to back up.}
@@ -36,9 +27,23 @@ By using the idempotent operation, you can retry a \code{CreateBackup} operation
 
 The \code{CreateFileSystem} operation returns while the backup's lifecycle state is still \code{CREATING}. You can check the file system creation status by calling the DescribeBackups operation, which returns the backup state along with other information.
 }
+\section{Accepted Parameters}{
+\preformatted{create_backup(
+  FileSystemId = "string",
+  ClientRequestToken = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # This operation creates a new backup.
-create_backup(
+\donttest{create_backup(
   FileSystemId = "fs-0498eed5fe91001ec",
   Tags = list(
     list(
@@ -46,6 +51,6 @@ create_backup(
       Value = "MyBackup"
     )
   )
-)
+)}
 
 }

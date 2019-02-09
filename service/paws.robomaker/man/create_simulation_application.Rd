@@ -4,7 +4,27 @@
 \alias{create_simulation_application}
 \title{Creates a simulation application}
 \usage{
-create_simulation_application(
+create_simulation_application(name, sources, simulationSoftwareSuite,
+  robotSoftwareSuite, renderingEngine, tags = NULL)
+}
+\arguments{
+\item{name}{[required] The name of the simulation application.}
+
+\item{sources}{[required] The sources of the simulation application.}
+
+\item{simulationSoftwareSuite}{[required] The simulation software suite used by the simulation application.}
+
+\item{robotSoftwareSuite}{[required] The robot software suite of the simulation application.}
+
+\item{renderingEngine}{[required] The rendering engine for the simulation application.}
+
+\item{tags}{A map that contains tag keys and tag values that are attached to the simulation application.}
+}
+\description{
+Creates a simulation application.
+}
+\section{Accepted Parameters}{
+\preformatted{create_simulation_application(
   name = "string",
   sources = list(
     list(
@@ -24,23 +44,11 @@ create_simulation_application(
   renderingEngine = list(
     name = "OGRE",
     version = "string"
+  ),
+  tags = list(
+    "string"
   )
 )
 }
-\arguments{
-\item{name}{[required] The name of the simulation application.}
-
-\item{sources}{[required] The sources of the simulation application.}
-
-\item{simulationSoftwareSuite}{[required] The simulation software suite used by the simulation application.}
-
-\item{robotSoftwareSuite}{[required] The robot software suite of the simulation application.}
-
-\item{renderingEngine}{[required] The rendering engine for the simulation application.}
 }
-\description{
-Creates a simulation application.
-}
-\examples{
 
-}

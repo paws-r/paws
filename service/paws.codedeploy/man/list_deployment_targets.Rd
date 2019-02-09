@@ -4,15 +4,8 @@
 \alias{list_deployment_targets}
 \title{Returns an array of target IDs that are associated a deployment}
 \usage{
-list_deployment_targets(
-  deploymentId = "string",
-  nextToken = "string",
-  targetFilters = list(
-    list(
-      "string"
-    )
-  )
-)
+list_deployment_targets(deploymentId = NULL, nextToken = NULL,
+  targetFilters = NULL)
 }
 \arguments{
 \item{deploymentId}{The unique ID of a deployment.}
@@ -24,6 +17,16 @@ list_deployment_targets(
 \description{
 Returns an array of target IDs that are associated a deployment.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_deployment_targets(
+  deploymentId = "string",
+  nextToken = "string",
+  targetFilters = list(
+    list(
+      "string"
+    )
+  )
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{create_group_certificate_authority}
 \title{Creates a CA for the group}
 \usage{
-create_group_certificate_authority(
-  AmznClientToken = "string",
-  GroupId = "string"
-)
+create_group_certificate_authority(AmznClientToken = NULL, GroupId)
 }
 \arguments{
 \item{AmznClientToken}{A client token used to correlate requests and responses.}
@@ -17,6 +14,11 @@ create_group_certificate_authority(
 \description{
 Creates a CA for the group. If a CA already exists, it will rotate the existing CA.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_group_certificate_authority(
+  AmznClientToken = "string",
+  GroupId = "string"
+)
 }
+}
+

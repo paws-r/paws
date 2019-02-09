@@ -4,10 +4,8 @@
 \alias{delete_transit_gateway_route_table}
 \title{Deletes the specified transit gateway route table}
 \usage{
-delete_transit_gateway_route_table(
-  TransitGatewayRouteTableId = "string",
-  DryRun = TRUE|FALSE
-)
+delete_transit_gateway_route_table(TransitGatewayRouteTableId,
+  DryRun = NULL)
 }
 \arguments{
 \item{TransitGatewayRouteTableId}{[required] The ID of the transit gateway route table.}
@@ -17,6 +15,11 @@ delete_transit_gateway_route_table(
 \description{
 Deletes the specified transit gateway route table. You must disassociate the route table from any transit gateway route tables before you can delete it.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_transit_gateway_route_table(
+  TransitGatewayRouteTableId = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

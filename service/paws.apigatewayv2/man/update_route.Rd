@@ -4,29 +4,12 @@
 \alias{update_route}
 \title{Updates a Route}
 \usage{
-update_route(
-  ApiId = "string",
-  ApiKeyRequired = TRUE|FALSE,
-  AuthorizationScopes = list(
-    "string"
-  ),
-  AuthorizationType = "NONE"|"AWS_IAM"|"CUSTOM",
-  AuthorizerId = "string",
-  ModelSelectionExpression = "string",
-  OperationName = "string",
-  RequestModels = list(
-    "string"
-  ),
-  RequestParameters = list(
-    list(
-      Required = TRUE|FALSE
-    )
-  ),
-  RouteId = "string",
-  RouteKey = "string",
-  RouteResponseSelectionExpression = "string",
-  Target = "string"
-)
+update_route(ApiId, ApiKeyRequired = NULL, AuthorizationScopes = NULL,
+  AuthorizationType = NULL, AuthorizerId = NULL,
+  ModelSelectionExpression = NULL, OperationName = NULL,
+  RequestModels = NULL, RequestParameters = NULL, RouteId,
+  RouteKey = NULL, RouteResponseSelectionExpression = NULL,
+  Target = NULL)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -58,6 +41,30 @@ update_route(
 \description{
 Updates a Route.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_route(
+  ApiId = "string",
+  ApiKeyRequired = TRUE|FALSE,
+  AuthorizationScopes = list(
+    "string"
+  ),
+  AuthorizationType = "NONE"|"AWS_IAM"|"CUSTOM",
+  AuthorizerId = "string",
+  ModelSelectionExpression = "string",
+  OperationName = "string",
+  RequestModels = list(
+    "string"
+  ),
+  RequestParameters = list(
+    list(
+      Required = TRUE|FALSE
+    )
+  ),
+  RouteId = "string",
+  RouteKey = "string",
+  RouteResponseSelectionExpression = "string",
+  Target = "string"
+)
 }
+}
+

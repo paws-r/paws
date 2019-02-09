@@ -4,20 +4,8 @@
 \alias{describe_network_acls}
 \title{Describes one or more of your network ACLs}
 \usage{
-describe_network_acls(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE,
-  NetworkAclIds = list(
-    "string"
-  )
-)
+describe_network_acls(Filters = NULL, DryRun = NULL,
+  NetworkAclIds = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -52,14 +40,32 @@ Default: Describes all your network ACLs.}
 Describes one or more of your network ACLs.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html}{Network ACLs} in the \emph{Amazon Virtual Private Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html}{Network ACLs} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_network_acls(
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  DryRun = TRUE|FALSE,
+  NetworkAclIds = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # This example describes the specified network ACL.
-describe_network_acls(
+\donttest{describe_network_acls(
   NetworkAclIds = list(
     "acl-5fb85d36"
   )
-)
+)}
 
 }

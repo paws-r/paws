@@ -4,9 +4,7 @@
 \alias{get_sampling_statistic_summaries}
 \title{Retrieves information about recent sampling results for all sampling rules}
 \usage{
-get_sampling_statistic_summaries(
-  NextToken = "string"
-)
+get_sampling_statistic_summaries(NextToken = NULL)
 }
 \arguments{
 \item{NextToken}{Pagination token. Not used.}
@@ -14,6 +12,10 @@ get_sampling_statistic_summaries(
 \description{
 Retrieves information about recent sampling results for all sampling rules.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_sampling_statistic_summaries(
+  NextToken = "string"
+)
 }
+}
+

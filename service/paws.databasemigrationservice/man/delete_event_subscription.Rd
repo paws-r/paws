@@ -4,9 +4,7 @@
 \alias{delete_event_subscription}
 \title{Deletes an AWS DMS event subscription}
 \usage{
-delete_event_subscription(
-  SubscriptionName = "string"
-)
+delete_event_subscription(SubscriptionName)
 }
 \arguments{
 \item{SubscriptionName}{[required] The name of the DMS event notification subscription to be deleted.}
@@ -14,6 +12,10 @@ delete_event_subscription(
 \description{
 Deletes an AWS DMS event subscription.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_event_subscription(
+  SubscriptionName = "string"
+)
 }
+}
+

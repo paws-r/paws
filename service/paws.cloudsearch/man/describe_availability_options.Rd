@@ -4,10 +4,7 @@
 \alias{describe_availability_options}
 \title{Gets the availability options configured for a domain}
 \usage{
-describe_availability_options(
-  DomainName = "string",
-  Deployed = TRUE|FALSE
-)
+describe_availability_options(DomainName, Deployed = NULL)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain you want to describe.}
@@ -17,6 +14,11 @@ describe_availability_options(
 \description{
 Gets the availability options configured for a domain. By default, shows the configuration with any pending changes. Set the \code{Deployed} option to \code{true} to show the active configuration and exclude pending changes. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html}{Configuring Availability Options} in the \emph{Amazon CloudSearch Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_availability_options(
+  DomainName = "string",
+  Deployed = TRUE|FALSE
+)
 }
+}
+

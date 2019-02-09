@@ -4,11 +4,8 @@
 \alias{describe_connection_loa}
 \title{Deprecated}
 \usage{
-describe_connection_loa(
-  connectionId = "string",
-  providerName = "string",
-  loaContentType = "application/pdf"
-)
+describe_connection_loa(connectionId, providerName = NULL,
+  loaContentType = NULL)
 }
 \arguments{
 \item{connectionId}{[required] The ID of the connection.}
@@ -25,6 +22,12 @@ Gets the LOA-CFA for a connection.
 
 The Letter of Authorization - Connecting Facility Assignment (LOA-CFA) is a document that your APN partner or service provider uses when establishing your cross connect to AWS at the colocation facility. For more information, see \href{http://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html}{Requesting Cross Connects at AWS Direct Connect Locations} in the \emph{AWS Direct Connect User Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_connection_loa(
+  connectionId = "string",
+  providerName = "string",
+  loaContentType = "application/pdf"
+)
 }
+}
+

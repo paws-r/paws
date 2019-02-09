@@ -4,7 +4,21 @@
 \alias{create_input_security_group}
 \title{Creates a Input Security Group}
 \usage{
-create_input_security_group(
+create_input_security_group(Tags = NULL, WhitelistRules = NULL)
+}
+\arguments{
+\item{Tags}{A collection of key-value pairs.}
+
+\item{WhitelistRules}{List of IPv4 CIDR addresses to whitelist}
+}
+\description{
+Creates a Input Security Group
+}
+\section{Accepted Parameters}{
+\preformatted{create_input_security_group(
+  Tags = list(
+    "string"
+  ),
   WhitelistRules = list(
     list(
       Cidr = "string"
@@ -12,12 +26,5 @@ create_input_security_group(
   )
 )
 }
-\arguments{
-\item{WhitelistRules}{List of IPv4 CIDR addresses to whitelist}
 }
-\description{
-Creates a Input Security Group
-}
-\examples{
 
-}

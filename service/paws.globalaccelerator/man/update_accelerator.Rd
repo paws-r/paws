@@ -4,12 +4,8 @@
 \alias{update_accelerator}
 \title{Update an accelerator}
 \usage{
-update_accelerator(
-  AcceleratorArn = "string",
-  Name = "string",
-  IpAddressType = "IPV4",
-  Enabled = TRUE|FALSE
-)
+update_accelerator(AcceleratorArn, Name = NULL, IpAddressType = NULL,
+  Enabled = NULL)
 }
 \arguments{
 \item{AcceleratorArn}{[required] The Amazon Resource Name (ARN) of the accelerator to update.}
@@ -25,6 +21,13 @@ If the value is set to true, the accelerator cannot be deleted. If set to false,
 \description{
 Update an accelerator.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_accelerator(
+  AcceleratorArn = "string",
+  Name = "string",
+  IpAddressType = "IPV4",
+  Enabled = TRUE|FALSE
+)
 }
+}
+

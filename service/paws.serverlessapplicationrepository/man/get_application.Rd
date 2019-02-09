@@ -5,10 +5,7 @@
 \alias{get_application}
 \title{Gets the specified application}
 \usage{
-get_application(
-  ApplicationId = "string",
-  SemanticVersion = "string"
-)
+get_application(ApplicationId, SemanticVersion = NULL)
 }
 \arguments{
 \item{ApplicationId}{[required] The Amazon Resource Name (ARN) of the application.}
@@ -18,6 +15,11 @@ get_application(
 \description{
 Gets the specified application.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_application(
+  ApplicationId = "string",
+  SemanticVersion = "string"
+)
 }
+}
+

@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.waf_operations.R
 \name{get_regex_match_set}
 \alias{get_regex_match_set}
-\title{Returns the RegexMatchSet specified by \code{RegexMatchSetId}}
+\title{Returns the RegexMatchSet specified by RegexMatchSetId}
 \usage{
-get_regex_match_set(
-  RegexMatchSetId = "string"
-)
+get_regex_match_set(RegexMatchSetId)
 }
 \arguments{
 \item{RegexMatchSetId}{[required] The \code{RegexMatchSetId} of the RegexMatchSet that you want to get. \code{RegexMatchSetId} is returned by CreateRegexMatchSet and by ListRegexMatchSets.}
@@ -14,6 +12,10 @@ get_regex_match_set(
 \description{
 Returns the RegexMatchSet specified by \code{RegexMatchSetId}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_regex_match_set(
+  RegexMatchSetId = "string"
+)
 }
+}
+

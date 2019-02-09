@@ -4,16 +4,10 @@
 \alias{describe_reserved_cache_nodes}
 \title{Returns information about reserved cache nodes for this account, or about a specified reserved cache node}
 \usage{
-describe_reserved_cache_nodes(
-  ReservedCacheNodeId = "string",
-  ReservedCacheNodesOfferingId = "string",
-  CacheNodeType = "string",
-  Duration = "string",
-  ProductDescription = "string",
-  OfferingType = "string",
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_reserved_cache_nodes(ReservedCacheNodeId = NULL,
+  ReservedCacheNodesOfferingId = NULL, CacheNodeType = NULL,
+  Duration = NULL, ProductDescription = NULL, OfferingType = NULL,
+  MaxRecords = NULL, Marker = NULL)
 }
 \arguments{
 \item{ReservedCacheNodeId}{The reserved cache node identifier filter value. Use this parameter to show only the reservation that matches the specified reservation ID.}
@@ -94,6 +88,17 @@ Constraints: minimum 20; maximum 100.}
 \description{
 Returns information about reserved cache nodes for this account, or about a specified reserved cache node.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_reserved_cache_nodes(
+  ReservedCacheNodeId = "string",
+  ReservedCacheNodesOfferingId = "string",
+  CacheNodeType = "string",
+  Duration = "string",
+  ProductDescription = "string",
+  OfferingType = "string",
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
+}
+

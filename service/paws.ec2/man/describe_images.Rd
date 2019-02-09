@@ -4,26 +4,8 @@
 \alias{describe_images}
 \title{Describes one or more of the images (AMIs, AKIs, and ARIs) available to you}
 \usage{
-describe_images(
-  ExecutableUsers = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  ImageIds = list(
-    "string"
-  ),
-  Owners = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
+describe_images(ExecutableUsers = NULL, Filters = NULL,
+  ImageIds = NULL, Owners = NULL, DryRun = NULL)
 }
 \arguments{
 \item{ExecutableUsers}{Scopes the images by users with explicit launch permissions. Specify an AWS account ID, \code{self} (the sender of the request), or \code{all} (public AMIs).}
@@ -76,12 +58,36 @@ Describes one or more of the images (AMIs, AKIs, and ARIs) available to you. Ima
 \details{
 Deregistered images are included in the returned results for an unspecified interval after deregistration.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_images(
+  ExecutableUsers = list(
+    "string"
+  ),
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  ImageIds = list(
+    "string"
+  ),
+  Owners = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example describes the specified AMI.
-describe_images(
+\donttest{describe_images(
   ImageIds = list(
     "ami-5731123e"
   )
-)
+)}
 
 }

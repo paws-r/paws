@@ -2,15 +2,9 @@
 % Please edit documentation in R/paws.connect_operations.R
 \name{update_contact_attributes}
 \alias{update_contact_attributes}
-\title{The \code{UpdateContactAttributes} operation lets you programmatically create new, or update existing, contact attributes associated with a contact}
+\title{The UpdateContactAttributes operation lets you programmatically create new, or update existing, contact attributes associated with a contact}
 \usage{
-update_contact_attributes(
-  InitialContactId = "string",
-  InstanceId = "string",
-  Attributes = list(
-    "string"
-  )
-)
+update_contact_attributes(InitialContactId, InstanceId, Attributes)
 }
 \arguments{
 \item{InitialContactId}{[required] The unique identifier of the contact for which to update attributes. This is the identifier for the contact associated with the first interaction with the contact center.}
@@ -31,6 +25,14 @@ Contact attributes are available in Amazon Connect for 24 months, and are then d
 
 You cannot use the operation to update attributes for contacts that occurred prior to the release of the API, September 12, 2018. You can update attributes only for contacts that started after the release of the API. If you attempt to update attributes for a contact that occurred prior to the release of the API, a 400 error is returned. This applies also to queued callbacks that were initiated prior to the release of the API but are still active in your instance.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_contact_attributes(
+  InitialContactId = "string",
+  InstanceId = "string",
+  Attributes = list(
+    "string"
+  )
+)
 }
+}
+

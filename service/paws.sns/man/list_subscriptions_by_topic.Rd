@@ -4,10 +4,7 @@
 \alias{list_subscriptions_by_topic}
 \title{Returns a list of the subscriptions to a specific topic}
 \usage{
-list_subscriptions_by_topic(
-  TopicArn = "string",
-  NextToken = "string"
-)
+list_subscriptions_by_topic(TopicArn, NextToken = NULL)
 }
 \arguments{
 \item{TopicArn}{[required] The ARN of the topic for which you wish to find subscriptions.}
@@ -20,6 +17,11 @@ Returns a list of the subscriptions to a specific topic. Each call returns a lim
 \details{
 This action is throttled at 30 transactions per second (TPS).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_subscriptions_by_topic(
+  TopicArn = "string",
+  NextToken = "string"
+)
 }
+}
+

@@ -4,12 +4,8 @@
 \alias{start_schema_extension}
 \title{Applies a schema extension to a Microsoft AD directory}
 \usage{
-start_schema_extension(
-  DirectoryId = "string",
-  CreateSnapshotBeforeSchemaExtension = TRUE|FALSE,
-  LdifContent = "string",
-  Description = "string"
-)
+start_schema_extension(DirectoryId, CreateSnapshotBeforeSchemaExtension,
+  LdifContent, Description)
 }
 \arguments{
 \item{DirectoryId}{[required] The identifier of the directory for which the schema extension will be applied to.}
@@ -23,6 +19,13 @@ start_schema_extension(
 \description{
 Applies a schema extension to a Microsoft AD directory.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_schema_extension(
+  DirectoryId = "string",
+  CreateSnapshotBeforeSchemaExtension = TRUE|FALSE,
+  LdifContent = "string",
+  Description = "string"
+)
 }
+}
+

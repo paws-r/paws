@@ -4,11 +4,7 @@
 \alias{get_integration_response}
 \title{Gets an IntegrationResponses}
 \usage{
-get_integration_response(
-  ApiId = "string",
-  IntegrationId = "string",
-  IntegrationResponseId = "string"
-)
+get_integration_response(ApiId, IntegrationId, IntegrationResponseId)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -20,6 +16,12 @@ get_integration_response(
 \description{
 Gets an IntegrationResponses.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_integration_response(
+  ApiId = "string",
+  IntegrationId = "string",
+  IntegrationResponseId = "string"
+)
 }
+}
+

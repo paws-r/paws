@@ -4,9 +4,7 @@
 \alias{get_public_access_block}
 \title{Retrieves the Public Access Block configuration for an Amazon Web Services account}
 \usage{
-get_public_access_block(
-  AccountId = "string"
-)
+get_public_access_block(AccountId)
 }
 \arguments{
 \item{AccountId}{[required] The Account ID for the Amazon Web Services account whose Public Access Block configuration you want to retrieve.}
@@ -14,6 +12,10 @@ get_public_access_block(
 \description{
 Retrieves the Public Access Block configuration for an Amazon Web Services account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_public_access_block(
+  AccountId = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{start_configuration_recorder}
 \title{Starts recording configurations of the AWS resources you have selected to record in your AWS account}
 \usage{
-start_configuration_recorder(
-  ConfigurationRecorderName = "string"
-)
+start_configuration_recorder(ConfigurationRecorderName)
 }
 \arguments{
 \item{ConfigurationRecorderName}{[required] The name of the recorder object that records each configuration change made to the resources.}
@@ -17,6 +15,10 @@ Starts recording configurations of the AWS resources you have selected to record
 \details{
 You must have created at least one delivery channel to successfully start the configuration recorder.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_configuration_recorder(
+  ConfigurationRecorderName = "string"
+)
 }
+}
+

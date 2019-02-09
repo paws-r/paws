@@ -4,15 +4,8 @@
 \alias{put_parameter}
 \title{Add a parameter to the system}
 \usage{
-put_parameter(
-  Name = "string",
-  Description = "string",
-  Value = "string",
-  Type = "String"|"StringList"|"SecureString",
-  KeyId = "string",
-  Overwrite = TRUE|FALSE,
-  AllowedPattern = "string"
-)
+put_parameter(Name, Description = NULL, Value, Type, KeyId = NULL,
+  Overwrite = NULL, AllowedPattern = NULL)
 }
 \arguments{
 \item{Name}{[required] The fully qualified name of the parameter that you want to add to the system. The fully qualified name includes the complete hierarchy of the parameter path and name. For example: \code{/Dev/DBServer/MySQL/db-string13}
@@ -58,6 +51,16 @@ If you don't specify a key ID, the system uses the default key associated with y
 \description{
 Add a parameter to the system.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{put_parameter(
+  Name = "string",
+  Description = "string",
+  Value = "string",
+  Type = "String"|"StringList"|"SecureString",
+  KeyId = "string",
+  Overwrite = TRUE|FALSE,
+  AllowedPattern = "string"
+)
 }
+}
+

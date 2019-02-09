@@ -4,18 +4,9 @@
 \alias{describe_users}
 \title{Describes the specified users}
 \usage{
-describe_users(
-  AuthenticationToken = "string",
-  OrganizationId = "string",
-  UserIds = "string",
-  Query = "string",
-  Include = "ALL"|"ACTIVE_PENDING",
-  Order = "ASCENDING"|"DESCENDING",
-  Sort = "USER_NAME"|"FULL_NAME"|"STORAGE_LIMIT"|"USER_STATUS"|"STORAGE_USED",
-  Marker = "string",
-  Limit = 123,
-  Fields = "string"
-)
+describe_users(AuthenticationToken = NULL, OrganizationId = NULL,
+  UserIds = NULL, Query = NULL, Include = NULL, Order = NULL,
+  Sort = NULL, Marker = NULL, Limit = NULL, Fields = NULL)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.}
@@ -44,6 +35,19 @@ Describes the specified users. You can describe all users or filter the results 
 \details{
 By default, Amazon WorkDocs returns the first 24 active or pending users. If there are more results, the response includes a marker that you can use to request the next set of results.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_users(
+  AuthenticationToken = "string",
+  OrganizationId = "string",
+  UserIds = "string",
+  Query = "string",
+  Include = "ALL"|"ACTIVE_PENDING",
+  Order = "ASCENDING"|"DESCENDING",
+  Sort = "USER_NAME"|"FULL_NAME"|"STORAGE_LIMIT"|"USER_STATUS"|"STORAGE_USED",
+  Marker = "string",
+  Limit = 123,
+  Fields = "string"
+)
 }
+}
+

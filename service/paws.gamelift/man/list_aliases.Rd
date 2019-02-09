@@ -4,12 +4,8 @@
 \alias{list_aliases}
 \title{Retrieves all aliases for this AWS account}
 \usage{
-list_aliases(
-  RoutingStrategyType = "SIMPLE"|"TERMINAL",
-  Name = "string",
-  Limit = 123,
-  NextToken = "string"
-)
+list_aliases(RoutingStrategyType = NULL, Name = NULL, Limit = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{RoutingStrategyType}{Type of routing to filter results on. Use this parameter to retrieve only aliases of a certain type. To retrieve all aliases, leave this parameter empty.
@@ -31,8 +27,6 @@ Retrieves all aliases for this AWS account. You can filter the result set by ali
 }
 \details{
 Returned aliases are not listed in any particular order.
-
-Alias-related operations include:
 \itemize{
 \item CreateAlias
 \item ListAliases
@@ -42,6 +36,13 @@ Alias-related operations include:
 \item ResolveAlias
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_aliases(
+  RoutingStrategyType = "SIMPLE"|"TERMINAL",
+  Name = "string",
+  Limit = 123,
+  NextToken = "string"
+)
 }
+}
+

@@ -11,6 +11,6 @@ Describes the policy adjustment types for use with PutScalingPolicy.
 }
 \examples{
 # This example describes the available adjustment types.
-describe_adjustment_types()
+\donttest{describe_adjustment_types()}
 
 }

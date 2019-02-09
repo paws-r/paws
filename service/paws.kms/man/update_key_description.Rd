@@ -4,10 +4,7 @@
 \alias{update_key_description}
 \title{Updates the description of a customer master key (CMK)}
 \usage{
-update_key_description(
-  KeyId = "string",
-  Description = "string"
-)
+update_key_description(KeyId, Description)
 }
 \arguments{
 \item{KeyId}{[required] A unique identifier for the customer master key (CMK).
@@ -32,11 +29,19 @@ You cannot perform this operation on a CMK in a different AWS account.
 
 The result of this operation varies with the key state of the CMK. For details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key} in the \emph{AWS Key Management Service Developer Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{update_key_description(
+  KeyId = "string",
+  Description = "string"
+)
+}
+}
+
 \examples{
 # The following example updates the description of the specified CMK.
-update_key_description(
+\donttest{update_key_description(
   Description = "Example description that indicates the intended use of this CMK.",
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)
+)}
 
 }

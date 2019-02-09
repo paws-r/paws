@@ -4,19 +4,8 @@
 \alias{list_group_resources}
 \title{Returns a list of ARNs of resources that are members of a specified resource group}
 \usage{
-list_group_resources(
-  GroupName = "string",
-  Filters = list(
-    list(
-      Name = "resource-type",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_group_resources(GroupName, Filters = NULL, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{GroupName}{[required] The name of the resource group.}
@@ -33,6 +22,20 @@ list_group_resources(
 \description{
 Returns a list of ARNs of resources that are members of a specified resource group.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_group_resources(
+  GroupName = "string",
+  Filters = list(
+    list(
+      Name = "resource-type",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
 }
+}
+

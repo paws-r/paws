@@ -4,9 +4,7 @@
 \alias{get_bucket_policy_status}
 \title{Retrieves the policy status for an Amazon S3 bucket, indicating whether the bucket is public}
 \usage{
-get_bucket_policy_status(
-  Bucket = "string"
-)
+get_bucket_policy_status(Bucket)
 }
 \arguments{
 \item{Bucket}{[required] The name of the Amazon S3 bucket whose policy status you want to retrieve.}
@@ -14,6 +12,10 @@ get_bucket_policy_status(
 \description{
 Retrieves the policy status for an Amazon S3 bucket, indicating whether the bucket is public.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_bucket_policy_status(
+  Bucket = "string"
+)
 }
+}
+

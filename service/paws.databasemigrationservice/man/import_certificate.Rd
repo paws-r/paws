@@ -4,17 +4,8 @@
 \alias{import_certificate}
 \title{Uploads the specified certificate}
 \usage{
-import_certificate(
-  CertificateIdentifier = "string",
-  CertificatePem = "string",
-  CertificateWallet = raw,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+import_certificate(CertificateIdentifier, CertificatePem = NULL,
+  CertificateWallet = NULL, Tags = NULL)
 }
 \arguments{
 \item{CertificateIdentifier}{[required] The customer-assigned name of the certificate. Valid characters are A-z and 0-9.}
@@ -28,11 +19,26 @@ import_certificate(
 \description{
 Uploads the specified certificate.
 }
+\section{Accepted Parameters}{
+\preformatted{import_certificate(
+  CertificateIdentifier = "string",
+  CertificatePem = "string",
+  CertificateWallet = raw,
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
+
 \examples{
 # Uploads the specified certificate.
-import_certificate(
+\donttest{import_certificate(
   CertificateIdentifier = "",
   CertificatePem = ""
-)
+)}
 
 }

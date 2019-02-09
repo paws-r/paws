@@ -4,11 +4,8 @@
 \alias{delete_user_defined_function}
 \title{Deletes an existing function definition from the Data Catalog}
 \usage{
-delete_user_defined_function(
-  CatalogId = "string",
-  DatabaseName = "string",
-  FunctionName = "string"
-)
+delete_user_defined_function(CatalogId = NULL, DatabaseName,
+  FunctionName)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the function to be deleted is located. If none is supplied, the AWS account ID is used by default.}
@@ -20,6 +17,12 @@ delete_user_defined_function(
 \description{
 Deletes an existing function definition from the Data Catalog.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_user_defined_function(
+  CatalogId = "string",
+  DatabaseName = "string",
+  FunctionName = "string"
+)
 }
+}
+

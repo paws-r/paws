@@ -4,10 +4,7 @@
 \alias{delete_stream}
 \title{Deletes a Kinesis data stream and all its shards and data}
 \usage{
-delete_stream(
-  StreamName = "string",
-  EnforceConsumerDeletion = TRUE|FALSE
-)
+delete_stream(StreamName, EnforceConsumerDeletion = NULL)
 }
 \arguments{
 \item{StreamName}{[required] The name of the stream to delete.}
@@ -28,6 +25,11 @@ You can use the DescribeStream operation to check the state of the stream, which
 
 DeleteStream has a limit of five transactions per second per account.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_stream(
+  StreamName = "string",
+  EnforceConsumerDeletion = TRUE|FALSE
+)
 }
+}
+

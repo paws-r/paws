@@ -4,15 +4,7 @@
 \alias{update_rules_of_ip_group}
 \title{Replaces the current rules of the specified IP access control group with the specified rules}
 \usage{
-update_rules_of_ip_group(
-  GroupId = "string",
-  UserRules = list(
-    list(
-      ipRule = "string",
-      ruleDesc = "string"
-    )
-  )
-)
+update_rules_of_ip_group(GroupId, UserRules)
 }
 \arguments{
 \item{GroupId}{[required] The identifier of the group.}
@@ -22,6 +14,16 @@ update_rules_of_ip_group(
 \description{
 Replaces the current rules of the specified IP access control group with the specified rules.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_rules_of_ip_group(
+  GroupId = "string",
+  UserRules = list(
+    list(
+      ipRule = "string",
+      ruleDesc = "string"
+    )
+  )
+)
 }
+}
+

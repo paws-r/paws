@@ -4,13 +4,8 @@
 \alias{assume_role_with_saml}
 \title{Returns a set of temporary security credentials for users who have been authenticated via a SAML authentication response}
 \usage{
-assume_role_with_saml(
-  RoleArn = "string",
-  PrincipalArn = "string",
-  SAMLAssertion = "string",
-  Policy = "string",
-  DurationSeconds = 123
-)
+assume_role_with_saml(RoleArn, PrincipalArn, SAMLAssertion,
+  Policy = NULL, DurationSeconds = NULL)
 }
 \arguments{
 \item{RoleArn}{[required] The Amazon Resource Name (ARN) of the role that the caller is assuming.}
@@ -61,6 +56,14 @@ For more information, see the following resources:
 \item \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html}{Creating a Role for SAML 2.0 Federation} in the \emph{IAM User Guide}.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{assume_role_with_saml(
+  RoleArn = "string",
+  PrincipalArn = "string",
+  SAMLAssertion = "string",
+  Policy = "string",
+  DurationSeconds = 123
+)
 }
+}
+

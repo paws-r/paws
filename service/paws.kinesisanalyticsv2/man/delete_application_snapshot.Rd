@@ -4,11 +4,8 @@
 \alias{delete_application_snapshot}
 \title{Deletes a snapshot of application state}
 \usage{
-delete_application_snapshot(
-  ApplicationName = "string",
-  SnapshotName = "string",
-  SnapshotCreationTimestamp = as.POSIXct("2015-01-01")
-)
+delete_application_snapshot(ApplicationName, SnapshotName,
+  SnapshotCreationTimestamp)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of an existing application.}
@@ -20,6 +17,12 @@ delete_application_snapshot(
 \description{
 Deletes a snapshot of application state.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_application_snapshot(
+  ApplicationName = "string",
+  SnapshotName = "string",
+  SnapshotCreationTimestamp = as.POSIXct("2015-01-01")
+)
 }
+}
+

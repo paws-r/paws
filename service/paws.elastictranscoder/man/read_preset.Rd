@@ -4,9 +4,7 @@
 \alias{read_preset}
 \title{The ReadPreset operation gets detailed information about a preset}
 \usage{
-read_preset(
-  Id = "string"
-)
+read_preset(Id)
 }
 \arguments{
 \item{Id}{[required] The identifier of the preset for which you want to get detailed information.}
@@ -14,6 +12,10 @@ read_preset(
 \description{
 The ReadPreset operation gets detailed information about a preset.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{read_preset(
+  Id = "string"
+)
 }
+}
+

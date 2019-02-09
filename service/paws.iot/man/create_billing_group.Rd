@@ -4,7 +4,21 @@
 \alias{create_billing_group}
 \title{Creates a billing group}
 \usage{
-create_billing_group(
+create_billing_group(billingGroupName, billingGroupProperties = NULL,
+  tags = NULL)
+}
+\arguments{
+\item{billingGroupName}{[required] The name you wish to give to the billing group.}
+
+\item{billingGroupProperties}{The properties of the billing group.}
+
+\item{tags}{Metadata which can be used to manage the billing group.}
+}
+\description{
+Creates a billing group.
+}
+\section{Accepted Parameters}{
+\preformatted{create_billing_group(
   billingGroupName = "string",
   billingGroupProperties = list(
     billingGroupDescription = "string"
@@ -17,16 +31,5 @@ create_billing_group(
   )
 )
 }
-\arguments{
-\item{billingGroupName}{[required] The name you wish to give to the billing group.}
-
-\item{billingGroupProperties}{The properties of the billing group.}
-
-\item{tags}{Metadata which can be used to manage the billing group.}
 }
-\description{
-Creates a billing group.
-}
-\examples{
 
-}

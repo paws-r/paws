@@ -4,13 +4,8 @@
 \alias{get_resources}
 \title{Retrieves a collection of resources, including folders and documents}
 \usage{
-get_resources(
-  AuthenticationToken = "string",
-  UserId = "string",
-  CollectionType = "SHARED_WITH_ME",
-  Limit = 123,
-  Marker = "string"
-)
+get_resources(AuthenticationToken = NULL, UserId = NULL,
+  CollectionType = NULL, Limit = NULL, Marker = NULL)
 }
 \arguments{
 \item{AuthenticationToken}{The Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API operation using AWS credentials.}
@@ -26,6 +21,14 @@ get_resources(
 \description{
 Retrieves a collection of resources, including folders and documents. The only \code{CollectionType} supported is \code{SHARED_WITH_ME}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_resources(
+  AuthenticationToken = "string",
+  UserId = "string",
+  CollectionType = "SHARED_WITH_ME",
+  Limit = 123,
+  Marker = "string"
+)
 }
+}
+

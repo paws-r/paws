@@ -4,11 +4,8 @@
 \alias{get_template}
 \title{Returns the template body for a specified stack}
 \usage{
-get_template(
-  StackName = "string",
-  ChangeSetName = "string",
-  TemplateStage = "Original"|"Processed"
-)
+get_template(StackName = NULL, ChangeSetName = NULL,
+  TemplateStage = NULL)
 }
 \arguments{
 \item{StackName}{The name or the unique stack ID that is associated with the stack, which are not always interchangeable:
@@ -33,6 +30,12 @@ For deleted stacks, GetTemplate returns the template for up to 90 days after the
 
 If the template does not exist, a \code{ValidationError} is returned.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_template(
+  StackName = "string",
+  ChangeSetName = "string",
+  TemplateStage = "Original"|"Processed"
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{list_tests}
 \title{Gets information about tests in a given test suite}
 \usage{
-list_tests(
-  arn = "string",
-  nextToken = "string"
-)
+list_tests(arn, nextToken = NULL)
 }
 \arguments{
 \item{arn}{[required] The test suite's Amazon Resource Name (ARN).}
@@ -17,12 +14,20 @@ list_tests(
 \description{
 Gets information about tests in a given test suite.
 }
+\section{Accepted Parameters}{
+\preformatted{list_tests(
+  arn = "string",
+  nextToken = "string"
+)
+}
+}
+
 \examples{
 # The following example returns information about tests, given a specific
 # Device Farm project.
-list_tests(
+\donttest{list_tests(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
-)
+)}
 
 }

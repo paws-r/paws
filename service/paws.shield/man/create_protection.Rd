@@ -4,10 +4,7 @@
 \alias{create_protection}
 \title{Enables AWS Shield Advanced for a specific AWS resource}
 \usage{
-create_protection(
-  Name = "string",
-  ResourceArn = "string"
-)
+create_protection(Name, ResourceArn)
 }
 \arguments{
 \item{Name}{[required] Friendly name for the \code{Protection} you are creating.}
@@ -18,17 +15,23 @@ The ARN should be in one of the following formats:
 \itemize{
 \item For an Application Load Balancer: \code{arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id }
 \item For an Elastic Load Balancer (Classic Load Balancer): \code{arn:aws:elasticloadbalancing:region:account-id:loadbalancer/load-balancer-name region:account-id:loadbalancer/load-balancer-name }
-\item For AWS CloudFront distribution: \code{arn:aws:cloudfront::account-id:distribution/distribution-id account-id:distribution/distribution-id }
+\item For an AWS CloudFront distribution: \code{arn:aws:cloudfront::account-id:distribution/distribution-id account-id:distribution/distribution-id }
+\item For an AWS Global Accelerator accelerator: \code{arn:aws:globalaccelerator::account-id:accelerator/accelerator-id account-id:accelerator/accelerator-id }
 \item For Amazon Route 53: \code{arn:aws:route53:::hostedzone/hosted-zone-id hosted-zone-id }
 \item For an Elastic IP address: \code{arn:aws:ec2:region:account-id:eip-allocation/allocation-id region:account-id:eip-allocation/allocation-id }
 }}
 }
 \description{
-Enables AWS Shield Advanced for a specific AWS resource. The resource can be an Amazon CloudFront distribution, Elastic Load Balancing load balancer, Elastic IP Address, or an Amazon Route 53 hosted zone.
+Enables AWS Shield Advanced for a specific AWS resource. The resource can be an Amazon CloudFront distribution, Elastic Load Balancing load balancer, AWS Global Accelerator accelerator, Elastic IP Address, or an Amazon Route 53 hosted zone.
 }
 \details{
 You can add protection to only a single resource with each CreateProtection request. If you want to add protection to multiple resources at once, use the \href{https://console.aws.amazon.com/waf/}{AWS WAF console}. For more information see \href{https://docs.aws.amazon.com/waf/latest/developerguide/getting-started-ddos.html}{Getting Started with AWS Shield Advanced} and \href{https://docs.aws.amazon.com/waf/latest/developerguide/configure-new-protection.html}{Add AWS Shield Advanced Protection to more AWS Resources}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_protection(
+  Name = "string",
+  ResourceArn = "string"
+)
 }
+}
+

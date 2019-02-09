@@ -4,18 +4,8 @@
 \alias{get_connections}
 \title{Retrieves a list of connection definitions from the Data Catalog}
 \usage{
-get_connections(
-  CatalogId = "string",
-  Filter = list(
-    MatchCriteria = list(
-      "string"
-    ),
-    ConnectionType = "JDBC"|"SFTP"
-  ),
-  HidePassword = TRUE|FALSE,
-  NextToken = "string",
-  MaxResults = 123
-)
+get_connections(CatalogId = NULL, Filter = NULL, HidePassword = NULL,
+  NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog in which the connections reside. If none is supplied, the AWS account ID is used by default.}
@@ -31,6 +21,19 @@ get_connections(
 \description{
 Retrieves a list of connection definitions from the Data Catalog.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_connections(
+  CatalogId = "string",
+  Filter = list(
+    MatchCriteria = list(
+      "string"
+    ),
+    ConnectionType = "JDBC"|"SFTP"
+  ),
+  HidePassword = TRUE|FALSE,
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

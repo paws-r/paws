@@ -4,7 +4,23 @@
 \alias{list_certificates}
 \title{Retrieves a list of certificate ARNs and domain names}
 \usage{
-list_certificates(
+list_certificates(CertificateStatuses = NULL, Includes = NULL,
+  NextToken = NULL, MaxItems = NULL)
+}
+\arguments{
+\item{CertificateStatuses}{Filter the certificate list by status value.}
+
+\item{Includes}{Filter the certificate list. For more information, see the Filters structure.}
+
+\item{NextToken}{Use this parameter only when paginating results and only in a subsequent request after you receive a response with truncated results. Set it to the value of \code{NextToken} from the response you just received.}
+
+\item{MaxItems}{Use this parameter when paginating results to specify the maximum number of items to return in the response. If additional items exist beyond the number you specify, the \code{NextToken} element is sent in the response. Use this \code{NextToken} value in a subsequent request to retrieve additional items.}
+}
+\description{
+Retrieves a list of certificate ARNs and domain names. You can request that only certificates that match a specific status be listed. You can also filter by specific attributes of the certificate.
+}
+\section{Accepted Parameters}{
+\preformatted{list_certificates(
   CertificateStatuses = list(
     "PENDING_VALIDATION"|"ISSUED"|"INACTIVE"|"EXPIRED"|"VALIDATION_TIMED_OUT"|"REVOKED"|"FAILED"
   ),
@@ -23,18 +39,5 @@ list_certificates(
   MaxItems = 123
 )
 }
-\arguments{
-\item{CertificateStatuses}{Filter the certificate list by status value.}
-
-\item{Includes}{Filter the certificate list. For more information, see the Filters structure.}
-
-\item{NextToken}{Use this parameter only when paginating results and only in a subsequent request after you receive a response with truncated results. Set it to the value of \code{NextToken} from the response you just received.}
-
-\item{MaxItems}{Use this parameter when paginating results to specify the maximum number of items to return in the response. If additional items exist beyond the number you specify, the \code{NextToken} element is sent in the response. Use this \code{NextToken} value in a subsequent request to retrieve additional items.}
 }
-\description{
-Retrieves a list of certificate ARNs and domain names. You can request that only certificates that match a specific status be listed. You can also filter by specific attributes of the certificate.
-}
-\examples{
 
-}

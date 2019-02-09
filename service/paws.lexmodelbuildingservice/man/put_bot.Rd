@@ -4,44 +4,10 @@
 \alias{put_bot}
 \title{Creates an Amazon Lex conversational bot or replaces an existing bot}
 \usage{
-put_bot(
-  name = "string",
-  description = "string",
-  intents = list(
-    list(
-      intentName = "string",
-      intentVersion = "string"
-    )
-  ),
-  clarificationPrompt = list(
-    messages = list(
-      list(
-        contentType = "PlainText"|"SSML"|"CustomPayload",
-        content = "string",
-        groupNumber = 123
-      )
-    ),
-    maxAttempts = 123,
-    responseCard = "string"
-  ),
-  abortStatement = list(
-    messages = list(
-      list(
-        contentType = "PlainText"|"SSML"|"CustomPayload",
-        content = "string",
-        groupNumber = 123
-      )
-    ),
-    responseCard = "string"
-  ),
-  idleSessionTTLInSeconds = 123,
-  voiceId = "string",
-  checksum = "string",
-  processBehavior = "SAVE"|"BUILD",
-  locale = "en-US"|"en-GB"|"de-DE",
-  childDirected = TRUE|FALSE,
-  createVersion = TRUE|FALSE
-)
+put_bot(name, description = NULL, intents = NULL,
+  clarificationPrompt = NULL, abortStatement = NULL,
+  idleSessionTTLInSeconds = NULL, voiceId = NULL, checksum = NULL,
+  processBehavior = NULL, locale, childDirected, createVersion = NULL)
 }
 \arguments{
 \item{name}{[required] The name of the bot. The name is \emph{not} case sensitive.}
@@ -100,9 +66,51 @@ If you specify the name of an existing bot, the fields in the request replace th
 
 This operation requires permissions for the \code{lex:PutBot} action. For more information, see auth-and-access-control.
 }
+\section{Accepted Parameters}{
+\preformatted{put_bot(
+  name = "string",
+  description = "string",
+  intents = list(
+    list(
+      intentName = "string",
+      intentVersion = "string"
+    )
+  ),
+  clarificationPrompt = list(
+    messages = list(
+      list(
+        contentType = "PlainText"|"SSML"|"CustomPayload",
+        content = "string",
+        groupNumber = 123
+      )
+    ),
+    maxAttempts = 123,
+    responseCard = "string"
+  ),
+  abortStatement = list(
+    messages = list(
+      list(
+        contentType = "PlainText"|"SSML"|"CustomPayload",
+        content = "string",
+        groupNumber = 123
+      )
+    ),
+    responseCard = "string"
+  ),
+  idleSessionTTLInSeconds = 123,
+  voiceId = "string",
+  checksum = "string",
+  processBehavior = "SAVE"|"BUILD",
+  locale = "en-US"|"en-GB"|"de-DE",
+  childDirected = TRUE|FALSE,
+  createVersion = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example shows how to create a bot for ordering pizzas.
-put_bot(
+\donttest{put_bot(
   name = "DocOrderPizzaBot",
   abortStatement = list(
     messages = list(
@@ -140,6 +148,6 @@ put_bot(
   ),
   locale = "en-US",
   processBehavior = "SAVE"
-)
+)}
 
 }

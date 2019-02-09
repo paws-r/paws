@@ -4,9 +4,7 @@
 \alias{get_test}
 \title{Gets information about a test}
 \usage{
-get_test(
-  arn = "string"
-)
+get_test(arn)
 }
 \arguments{
 \item{arn}{[required] The test's ARN.}
@@ -14,10 +12,17 @@ get_test(
 \description{
 Gets information about a test.
 }
+\section{Accepted Parameters}{
+\preformatted{get_test(
+  arn = "string"
+)
+}
+}
+
 \examples{
 # The following example gets information about a specific test.
-get_test(
+\donttest{get_test(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:test:EXAMPLE-GUID-123-456"
-)
+)}
 
 }

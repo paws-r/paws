@@ -4,10 +4,7 @@
 \alias{delete_application}
 \title{Deletes the specified application along with all associated versions and configurations}
 \usage{
-delete_application(
-  ApplicationName = "string",
-  TerminateEnvByForce = TRUE|FALSE
-)
+delete_application(ApplicationName, TerminateEnvByForce = NULL)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application to delete.}
@@ -20,10 +17,18 @@ Deletes the specified application along with all associated versions and configu
 \details{
 You cannot delete an application that has a running environment.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_application(
+  ApplicationName = "string",
+  TerminateEnvByForce = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # The following operation deletes an application named my-app:
-delete_application(
+\donttest{delete_application(
   ApplicationName = "my-app"
-)
+)}
 
 }

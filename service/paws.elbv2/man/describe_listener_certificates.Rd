@@ -2,13 +2,10 @@
 % Please edit documentation in R/paws.elbv2_operations.R
 \name{describe_listener_certificates}
 \alias{describe_listener_certificates}
-\title{Describes the certificates for the specified secure listener}
+\title{Describes the certificates for the specified HTTPS listener}
 \usage{
-describe_listener_certificates(
-  ListenerArn = "string",
-  Marker = "string",
-  PageSize = 123
-)
+describe_listener_certificates(ListenerArn, Marker = NULL,
+  PageSize = NULL)
 }
 \arguments{
 \item{ListenerArn}{[required] The Amazon Resource Names (ARN) of the listener.}
@@ -18,8 +15,14 @@ describe_listener_certificates(
 \item{PageSize}{The maximum number of results to return with this call.}
 }
 \description{
-Describes the certificates for the specified secure listener.
+Describes the certificates for the specified HTTPS listener.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{describe_listener_certificates(
+  ListenerArn = "string",
+  Marker = "string",
+  PageSize = 123
+)
+}
+}
 
-}

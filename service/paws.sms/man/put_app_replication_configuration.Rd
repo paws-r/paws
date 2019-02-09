@@ -4,7 +4,19 @@
 \alias{put_app_replication_configuration}
 \title{Creates or updates a replication configuration for an application}
 \usage{
-put_app_replication_configuration(
+put_app_replication_configuration(appId = NULL,
+  serverGroupReplicationConfigurations = NULL)
+}
+\arguments{
+\item{appId}{ID of the application tassociated with the replication configuration.}
+
+\item{serverGroupReplicationConfigurations}{Replication configurations for server groups in the application.}
+}
+\description{
+Creates or updates a replication configuration for an application.
+}
+\section{Accepted Parameters}{
+\preformatted{put_app_replication_configuration(
   appId = "string",
   serverGroupReplicationConfigurations = list(
     list(
@@ -42,14 +54,5 @@ put_app_replication_configuration(
   )
 )
 }
-\arguments{
-\item{appId}{ID of the application tassociated with the replication configuration.}
+}
 
-\item{serverGroupReplicationConfigurations}{Replication configurations for server groups in the application.}
-}
-\description{
-Creates or updates a replication configuration for an application.
-}
-\examples{
-
-}

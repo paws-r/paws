@@ -4,13 +4,7 @@
 \alias{remove_tags_from_resource}
 \title{Removes all tags from the specified resource}
 \usage{
-remove_tags_from_resource(
-  ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline",
-  ResourceId = "string",
-  TagKeys = list(
-    "string"
-  )
-)
+remove_tags_from_resource(ResourceType, ResourceId, TagKeys)
 }
 \arguments{
 \item{ResourceType}{[required] The type of resource of which you want to remove a tag.
@@ -34,6 +28,14 @@ The ManagedInstance type for this API action is only for on-premises managed ins
 \description{
 Removes all tags from the specified resource.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{remove_tags_from_resource(
+  ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline",
+  ResourceId = "string",
+  TagKeys = list(
+    "string"
+  )
+)
 }
+}
+

@@ -4,11 +4,8 @@
 \alias{disassociate_client_vpn_target_network}
 \title{Disassociates a target network from the specified Client VPN endpoint}
 \usage{
-disassociate_client_vpn_target_network(
-  ClientVpnEndpointId = "string",
-  AssociationId = "string",
-  DryRun = TRUE|FALSE
-)
+disassociate_client_vpn_target_network(ClientVpnEndpointId, AssociationId,
+  DryRun = NULL)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint from which to disassociate the target network.}
@@ -28,6 +25,12 @@ Disassociates a target network from the specified Client VPN endpoint. When you 
 \item The Client VPN endpoint's status changes to \code{pending-associate}
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disassociate_client_vpn_target_network(
+  ClientVpnEndpointId = "string",
+  AssociationId = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

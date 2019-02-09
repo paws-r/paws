@@ -4,19 +4,9 @@
 \alias{create_notebook_instance_lifecycle_config}
 \title{Creates a lifecycle configuration that you can associate with a notebook instance}
 \usage{
-create_notebook_instance_lifecycle_config(
-  NotebookInstanceLifecycleConfigName = "string",
-  OnCreate = list(
-    list(
-      Content = "string"
-    )
-  ),
-  OnStart = list(
-    list(
-      Content = "string"
-    )
-  )
-)
+
+  create_notebook_instance_lifecycle_config(NotebookInstanceLifecycleConfigName,
+  OnCreate = NULL, OnStart = NULL)
 }
 \arguments{
 \item{NotebookInstanceLifecycleConfigName}{[required] The name of the lifecycle configuration.}
@@ -39,6 +29,20 @@ Lifecycle configuration scripts cannot run for longer than 5 minutes. If a scrip
 
 For information about notebook instance lifestyle configurations, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html}{Step 2.1: (Optional) Customize a Notebook Instance}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_notebook_instance_lifecycle_config(
+  NotebookInstanceLifecycleConfigName = "string",
+  OnCreate = list(
+    list(
+      Content = "string"
+    )
+  ),
+  OnStart = list(
+    list(
+      Content = "string"
+    )
+  )
+)
 }
+}
+

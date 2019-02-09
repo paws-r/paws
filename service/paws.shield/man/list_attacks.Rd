@@ -4,21 +4,8 @@
 \alias{list_attacks}
 \title{Returns all ongoing DDoS attacks or all DDoS attacks during a specified time period}
 \usage{
-list_attacks(
-  ResourceArns = list(
-    "string"
-  ),
-  StartTime = list(
-    FromInclusive = as.POSIXct("2015-01-01"),
-    ToExclusive = as.POSIXct("2015-01-01")
-  ),
-  EndTime = list(
-    FromInclusive = as.POSIXct("2015-01-01"),
-    ToExclusive = as.POSIXct("2015-01-01")
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
+list_attacks(ResourceArns = NULL, StartTime = NULL, EndTime = NULL,
+  NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{ResourceArns}{The ARN (Amazon Resource Name) of the resource that was attacked. If this is left blank, all applicable resources for this account will be included.}
@@ -36,6 +23,22 @@ This is a maximum value; it is possible that AWS WAF will return the results in 
 \description{
 Returns all ongoing DDoS attacks or all DDoS attacks during a specified time period.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_attacks(
+  ResourceArns = list(
+    "string"
+  ),
+  StartTime = list(
+    FromInclusive = as.POSIXct("2015-01-01"),
+    ToExclusive = as.POSIXct("2015-01-01")
+  ),
+  EndTime = list(
+    FromInclusive = as.POSIXct("2015-01-01"),
+    ToExclusive = as.POSIXct("2015-01-01")
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

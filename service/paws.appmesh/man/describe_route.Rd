@@ -4,11 +4,7 @@
 \alias{describe_route}
 \title{Describes an existing route}
 \usage{
-describe_route(
-  meshName = "string",
-  routeName = "string",
-  virtualRouterName = "string"
-)
+describe_route(meshName, routeName, virtualRouterName)
 }
 \arguments{
 \item{meshName}{[required] The name of the service mesh in which the route resides.}
@@ -20,6 +16,12 @@ describe_route(
 \description{
 Describes an existing route.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_route(
+  meshName = "string",
+  routeName = "string",
+  virtualRouterName = "string"
+)
 }
+}
+

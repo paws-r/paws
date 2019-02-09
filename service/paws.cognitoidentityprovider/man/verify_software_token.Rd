@@ -4,12 +4,8 @@
 \alias{verify_software_token}
 \title{Use this API to register a user's entered TOTP code and mark the user's software token MFA status as "verified" if successful}
 \usage{
-verify_software_token(
-  AccessToken = "string",
-  Session = "string",
-  UserCode = "string",
-  FriendlyDeviceName = "string"
-)
+verify_software_token(AccessToken = NULL, Session = NULL, UserCode,
+  FriendlyDeviceName = NULL)
 }
 \arguments{
 \item{AccessToken}{The access token.}
@@ -23,6 +19,13 @@ verify_software_token(
 \description{
 Use this API to register a user's entered TOTP code and mark the user's software token MFA status as "verified" if successful. The request takes an access token or a session string, but not both.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{verify_software_token(
+  AccessToken = "string",
+  Session = "string",
+  UserCode = "string",
+  FriendlyDeviceName = "string"
+)
 }
+}
+

@@ -4,9 +4,7 @@
 \alias{delete_terminology}
 \title{A synchronous action that deletes a custom terminology}
 \usage{
-delete_terminology(
-  Name = "string"
-)
+delete_terminology(Name)
 }
 \arguments{
 \item{Name}{[required] The name of the custom terminology being deleted.}
@@ -14,6 +12,10 @@ delete_terminology(
 \description{
 A synchronous action that deletes a custom terminology.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_terminology(
+  Name = "string"
+)
 }
+}
+

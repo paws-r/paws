@@ -4,12 +4,8 @@
 \alias{describe_provisioning_artifact}
 \title{Gets information about the specified provisioning artifact (also known as a version) for the specified product}
 \usage{
-describe_provisioning_artifact(
-  AcceptLanguage = "string",
-  ProvisioningArtifactId = "string",
-  ProductId = "string",
-  Verbose = TRUE|FALSE
-)
+describe_provisioning_artifact(AcceptLanguage = NULL,
+  ProvisioningArtifactId, ProductId, Verbose = NULL)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -28,6 +24,13 @@ describe_provisioning_artifact(
 \description{
 Gets information about the specified provisioning artifact (also known as a version) for the specified product.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_provisioning_artifact(
+  AcceptLanguage = "string",
+  ProvisioningArtifactId = "string",
+  ProductId = "string",
+  Verbose = TRUE|FALSE
+)
 }
+}
+

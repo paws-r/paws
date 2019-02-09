@@ -2,21 +2,11 @@
 % Please edit documentation in R/paws.machinelearning_operations.R
 \name{describe_ml_models}
 \alias{describe_ml_models}
-\title{Returns a list of \code{MLModel} that match the search criteria in the request}
+\title{Returns a list of MLModel that match the search criteria in the request}
 \usage{
-describe_ml_models(
-  FilterVariable = "CreatedAt"|"LastUpdatedAt"|"Status"|"Name"|"IAMUser"|"TrainingDataSourceId"|"RealtimeEndpointStatus"|"MLModelType"|"Algorithm"|"TrainingDataURI",
-  EQ = "string",
-  GT = "string",
-  LT = "string",
-  GE = "string",
-  LE = "string",
-  NE = "string",
-  Prefix = "string",
-  SortOrder = "asc"|"dsc",
-  NextToken = "string",
-  Limit = 123
-)
+describe_ml_models(FilterVariable = NULL, EQ = NULL, GT = NULL,
+  LT = NULL, GE = NULL, LE = NULL, NE = NULL, Prefix = NULL,
+  SortOrder = NULL, NextToken = NULL, Limit = NULL)
 }
 \arguments{
 \item{FilterVariable}{Use one of the following variables to filter a list of \code{MLModel}:
@@ -68,6 +58,20 @@ Results are sorted by \code{FilterVariable}.}
 \description{
 Returns a list of \code{MLModel} that match the search criteria in the request.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_ml_models(
+  FilterVariable = "CreatedAt"|"LastUpdatedAt"|"Status"|"Name"|"IAMUser"|"TrainingDataSourceId"|"RealtimeEndpointStatus"|"MLModelType"|"Algorithm"|"TrainingDataURI",
+  EQ = "string",
+  GT = "string",
+  LT = "string",
+  GE = "string",
+  LE = "string",
+  NE = "string",
+  Prefix = "string",
+  SortOrder = "asc"|"dsc",
+  NextToken = "string",
+  Limit = 123
+)
 }
+}
+

@@ -4,10 +4,7 @@
 \alias{get_lifecycle_policy}
 \title{Retrieves the specified lifecycle policy}
 \usage{
-get_lifecycle_policy(
-  registryId = "string",
-  repositoryName = "string"
-)
+get_lifecycle_policy(registryId = NULL, repositoryName)
 }
 \arguments{
 \item{registryId}{The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.}
@@ -17,6 +14,11 @@ get_lifecycle_policy(
 \description{
 Retrieves the specified lifecycle policy.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_lifecycle_policy(
+  registryId = "string",
+  repositoryName = "string"
+)
 }
+}
+

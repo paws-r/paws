@@ -4,16 +4,9 @@
 \alias{get_scaling_plan_resource_forecast_data}
 \title{Retrieves the forecast data for a scalable resource}
 \usage{
-get_scaling_plan_resource_forecast_data(
-  ScalingPlanName = "string",
-  ScalingPlanVersion = 123,
-  ServiceNamespace = "autoscaling"|"ecs"|"ec2"|"rds"|"dynamodb",
-  ResourceId = "string",
-  ScalableDimension = "autoscaling:autoScalingGroup:DesiredCapacity"|"ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"rds:cluster:ReadReplicaCount"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits",
-  ForecastDataType = "CapacityForecast"|"LoadForecast"|"ScheduledActionMinCapacity"|"ScheduledActionMaxCapacity",
-  StartTime = as.POSIXct("2015-01-01"),
-  EndTime = as.POSIXct("2015-01-01")
-)
+get_scaling_plan_resource_forecast_data(ScalingPlanName,
+  ScalingPlanVersion, ServiceNamespace, ResourceId, ScalableDimension,
+  ForecastDataType, StartTime, EndTime)
 }
 \arguments{
 \item{ScalingPlanName}{[required] The name of the scaling plan.}
@@ -54,6 +47,17 @@ Retrieves the forecast data for a scalable resource.
 \details{
 Capacity forecasts are represented as predicted values, or data points, that are calculated using historical data points from a specified CloudWatch load metric. Data points are available for up to 56 days.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_scaling_plan_resource_forecast_data(
+  ScalingPlanName = "string",
+  ScalingPlanVersion = 123,
+  ServiceNamespace = "autoscaling"|"ecs"|"ec2"|"rds"|"dynamodb",
+  ResourceId = "string",
+  ScalableDimension = "autoscaling:autoScalingGroup:DesiredCapacity"|"ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"rds:cluster:ReadReplicaCount"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits",
+  ForecastDataType = "CapacityForecast"|"LoadForecast"|"ScheduledActionMinCapacity"|"ScheduledActionMaxCapacity",
+  StartTime = as.POSIXct("2015-01-01"),
+  EndTime = as.POSIXct("2015-01-01")
+)
 }
+}
+

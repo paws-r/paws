@@ -4,15 +4,8 @@
 \alias{subscribe}
 \title{Prepares to subscribe an endpoint by sending the endpoint a confirmation message}
 \usage{
-subscribe(
-  TopicArn = "string",
-  Protocol = "string",
-  Endpoint = "string",
-  Attributes = list(
-    "string"
-  ),
-  ReturnSubscriptionArn = TRUE|FALSE
-)
+subscribe(TopicArn, Protocol, Endpoint = NULL, Attributes = NULL,
+  ReturnSubscriptionArn = NULL)
 }
 \arguments{
 \item{TopicArn}{[required] The ARN of the topic you want to subscribe to.}
@@ -64,6 +57,16 @@ Prepares to subscribe an endpoint by sending the endpoint a confirmation message
 \details{
 This action is throttled at 100 transactions per second (TPS).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{subscribe(
+  TopicArn = "string",
+  Protocol = "string",
+  Endpoint = "string",
+  Attributes = list(
+    "string"
+  ),
+  ReturnSubscriptionArn = TRUE|FALSE
+)
 }
+}
+

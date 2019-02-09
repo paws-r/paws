@@ -4,12 +4,8 @@
 \alias{list_attached_user_policies}
 \title{Lists all managed policies that are attached to the specified IAM user}
 \usage{
-list_attached_user_policies(
-  UserName = "string",
-  PathPrefix = "string",
-  Marker = "string",
-  MaxItems = 123
-)
+list_attached_user_policies(UserName, PathPrefix = NULL, Marker = NULL,
+  MaxItems = NULL)
 }
 \arguments{
 \item{UserName}{[required] The name (friendly name, not ARN) of the user to list attached policies for.
@@ -34,6 +30,13 @@ An IAM user can also have inline policies embedded with it. To list the inline p
 
 You can paginate the results using the \code{MaxItems} and \code{Marker} parameters. You can use the \code{PathPrefix} parameter to limit the list of policies to only those matching the specified path prefix. If there are no policies attached to the specified group (or none that match the specified path prefix), the operation returns an empty list.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_attached_user_policies(
+  UserName = "string",
+  PathPrefix = "string",
+  Marker = "string",
+  MaxItems = 123
+)
 }
+}
+

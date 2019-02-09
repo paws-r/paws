@@ -4,22 +4,8 @@
 \alias{describe_fleets}
 \title{Describes one or more of your EC2 Fleets}
 \usage{
-describe_fleets(
-  DryRun = TRUE|FALSE,
-  MaxResults = 123,
-  NextToken = "string",
-  FleetIds = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  )
-)
+describe_fleets(DryRun = NULL, MaxResults = NULL, NextToken = NULL,
+  FleetIds = NULL, Filters = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
@@ -42,6 +28,23 @@ describe_fleets(
 \description{
 Describes one or more of your EC2 Fleets.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_fleets(
+  DryRun = TRUE|FALSE,
+  MaxResults = 123,
+  NextToken = "string",
+  FleetIds = list(
+    "string"
+  ),
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  )
+)
 }
+}
+

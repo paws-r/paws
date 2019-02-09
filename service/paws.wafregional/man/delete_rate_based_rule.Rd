@@ -4,10 +4,7 @@
 \alias{delete_rate_based_rule}
 \title{Permanently deletes a RateBasedRule}
 \usage{
-delete_rate_based_rule(
-  RuleId = "string",
-  ChangeToken = "string"
-)
+delete_rate_based_rule(RuleId, ChangeToken)
 }
 \arguments{
 \item{RuleId}{[required] The \code{RuleId} of the RateBasedRule that you want to delete. \code{RuleId} is returned by CreateRateBasedRule and by ListRateBasedRules.}
@@ -27,6 +24,11 @@ To permanently delete a \code{RateBasedRule} from AWS WAF, perform the following
 \item Submit a \code{DeleteRateBasedRule} request.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_rate_based_rule(
+  RuleId = "string",
+  ChangeToken = "string"
+)
 }
+}
+

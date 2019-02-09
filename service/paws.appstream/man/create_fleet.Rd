@@ -4,33 +4,12 @@
 \alias{create_fleet}
 \title{Creates a fleet}
 \usage{
-create_fleet(
-  Name = "string",
-  ImageName = "string",
-  ImageArn = "string",
-  InstanceType = "string",
-  FleetType = "ALWAYS_ON"|"ON_DEMAND",
-  ComputeCapacity = list(
-    DesiredInstances = 123
-  ),
-  VpcConfig = list(
-    SubnetIds = list(
-      "string"
-    ),
-    SecurityGroupIds = list(
-      "string"
-    )
-  ),
-  MaxUserDurationInSeconds = 123,
-  DisconnectTimeoutInSeconds = 123,
-  Description = "string",
-  DisplayName = "string",
-  EnableDefaultInternetAccess = TRUE|FALSE,
-  DomainJoinInfo = list(
-    DirectoryName = "string",
-    OrganizationalUnitDistinguishedName = "string"
-  )
-)
+create_fleet(Name, ImageName = NULL, ImageArn = NULL, InstanceType,
+  FleetType = NULL, ComputeCapacity, VpcConfig = NULL,
+  MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL,
+  Description = NULL, DisplayName = NULL,
+  EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL,
+  Tags = NULL)
 }
 \arguments{
 \item{Name}{[required] A unique name for the fleet.}
@@ -81,17 +60,54 @@ ON\_DEMAND
 
 \item{DisconnectTimeoutInSeconds}{The time after disconnection when a session is considered to have ended, in seconds. If a user who was disconnected reconnects within this time interval, the user is connected to their previous session. Specify a value between 60 and 57600.}
 
-\item{Description}{The description for display.}
+\item{Description}{The description to display.}
 
-\item{DisplayName}{The fleet name for display.}
+\item{DisplayName}{The fleet name to display.}
 
 \item{EnableDefaultInternetAccess}{Enables or disables default internet access for the fleet.}
 
-\item{DomainJoinInfo}{The information needed to join a Microsoft Active Directory domain.}
+\item{DomainJoinInfo}{The name of the directory and organizational unit (OU) to use to join the fleet to a Microsoft Active Directory domain.}
+
+\item{Tags}{The tags to associate with the fleet. A tag is a key-value pair (the value is optional). For example, Environment=Test, or, if you do not specify a value, Environment=.
+
+If you do not specify a value, we set the value to an empty string.
+
+For more information, see \href{http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html}{Tagging Your Resources} in the \emph{Amazon AppStream 2.0 Developer Guide}.}
 }
 \description{
 Creates a fleet. A fleet consists of streaming instances that run a specified image.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_fleet(
+  Name = "string",
+  ImageName = "string",
+  ImageArn = "string",
+  InstanceType = "string",
+  FleetType = "ALWAYS_ON"|"ON_DEMAND",
+  ComputeCapacity = list(
+    DesiredInstances = 123
+  ),
+  VpcConfig = list(
+    SubnetIds = list(
+      "string"
+    ),
+    SecurityGroupIds = list(
+      "string"
+    )
+  ),
+  MaxUserDurationInSeconds = 123,
+  DisconnectTimeoutInSeconds = 123,
+  Description = "string",
+  DisplayName = "string",
+  EnableDefaultInternetAccess = TRUE|FALSE,
+  DomainJoinInfo = list(
+    DirectoryName = "string",
+    OrganizationalUnitDistinguishedName = "string"
+  ),
+  Tags = list(
+    "string"
+  )
+)
 }
+}
+

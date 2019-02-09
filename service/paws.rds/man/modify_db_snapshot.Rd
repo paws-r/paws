@@ -4,11 +4,8 @@
 \alias{modify_db_snapshot}
 \title{Updates a manual DB snapshot, which can be encrypted or not encrypted, with a new engine version}
 \usage{
-modify_db_snapshot(
-  DBSnapshotIdentifier = "string",
-  EngineVersion = "string",
-  OptionGroupName = "string"
-)
+modify_db_snapshot(DBSnapshotIdentifier, EngineVersion = NULL,
+  OptionGroupName = NULL)
 }
 \arguments{
 \item{DBSnapshotIdentifier}{[required] The identifier of the DB snapshot to modify.}
@@ -39,6 +36,12 @@ Updates a manual DB snapshot, which can be encrypted or not encrypted, with a ne
 \details{
 Amazon RDS supports upgrading DB snapshots for MySQL and Oracle.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{modify_db_snapshot(
+  DBSnapshotIdentifier = "string",
+  EngineVersion = "string",
+  OptionGroupName = "string"
+)
 }
+}
+

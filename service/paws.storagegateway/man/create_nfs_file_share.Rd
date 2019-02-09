@@ -4,29 +4,11 @@
 \alias{create_nfs_file_share}
 \title{Creates a Network File System (NFS) file share on an existing file gateway}
 \usage{
-create_nfs_file_share(
-  ClientToken = "string",
-  NFSFileShareDefaults = list(
-    FileMode = "string",
-    DirectoryMode = "string",
-    GroupId = 123,
-    OwnerId = 123
-  ),
-  GatewayARN = "string",
-  KMSEncrypted = TRUE|FALSE,
-  KMSKey = "string",
-  Role = "string",
-  LocationARN = "string",
-  DefaultStorageClass = "string",
-  ObjectACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"bucket-owner-read"|"bucket-owner-full-control"|"aws-exec-read",
-  ClientList = list(
-    "string"
-  ),
-  Squash = "string",
-  ReadOnly = TRUE|FALSE,
-  GuessMIMETypeEnabled = TRUE|FALSE,
-  RequesterPays = TRUE|FALSE
-)
+create_nfs_file_share(ClientToken, NFSFileShareDefaults = NULL,
+  GatewayARN, KMSEncrypted = NULL, KMSKey = NULL, Role, LocationARN,
+  DefaultStorageClass = NULL, ObjectACL = NULL, ClientList = NULL,
+  Squash = NULL, ReadOnly = NULL, GuessMIMETypeEnabled = NULL,
+  RequesterPays = NULL)
 }
 \arguments{
 \item{ClientToken}{[required] A unique string value that you supply that is used by file gateway to ensure idempotent file share creation.}
@@ -70,6 +52,30 @@ File gateway requires AWS Security Token Service (AWS STS) to be activated to en
 
 File gateway does not support creating hard or symbolic links on a file share.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_nfs_file_share(
+  ClientToken = "string",
+  NFSFileShareDefaults = list(
+    FileMode = "string",
+    DirectoryMode = "string",
+    GroupId = 123,
+    OwnerId = 123
+  ),
+  GatewayARN = "string",
+  KMSEncrypted = TRUE|FALSE,
+  KMSKey = "string",
+  Role = "string",
+  LocationARN = "string",
+  DefaultStorageClass = "string",
+  ObjectACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"bucket-owner-read"|"bucket-owner-full-control"|"aws-exec-read",
+  ClientList = list(
+    "string"
+  ),
+  Squash = "string",
+  ReadOnly = TRUE|FALSE,
+  GuessMIMETypeEnabled = TRUE|FALSE,
+  RequesterPays = TRUE|FALSE
+)
 }
+}
+

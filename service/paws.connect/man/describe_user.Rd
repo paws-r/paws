@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.connect_operations.R
 \name{describe_user}
 \alias{describe_user}
-\title{Returns a \code{User} object that contains information about the user account specified by the \code{UserId}}
+\title{Returns a User object that contains information about the user account specified by the UserId}
 \usage{
-describe_user(
-  UserId = "string",
-  InstanceId = "string"
-)
+describe_user(UserId, InstanceId)
 }
 \arguments{
 \item{UserId}{[required] Unique identifier for the user account to return.}
@@ -17,6 +14,11 @@ describe_user(
 \description{
 Returns a \code{User} object that contains information about the user account specified by the \code{UserId}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_user(
+  UserId = "string",
+  InstanceId = "string"
+)
 }
+}
+

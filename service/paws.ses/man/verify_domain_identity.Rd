@@ -4,9 +4,7 @@
 \alias{verify_domain_identity}
 \title{Adds a domain to the list of identities for your Amazon SES account in the current AWS Region and attempts to verify it}
 \usage{
-verify_domain_identity(
-  Domain = "string"
-)
+verify_domain_identity(Domain)
 }
 \arguments{
 \item{Domain}{[required] The domain to be verified.}
@@ -17,11 +15,18 @@ Adds a domain to the list of identities for your Amazon SES account in the curre
 \details{
 You can execute this operation no more than once per second.
 }
+\section{Accepted Parameters}{
+\preformatted{verify_domain_identity(
+  Domain = "string"
+)
+}
+}
+
 \examples{
 # The following example starts the domain verification process with Amazon
 # SES:
-verify_domain_identity(
+\donttest{verify_domain_identity(
   Domain = "example.com"
-)
+)}
 
 }

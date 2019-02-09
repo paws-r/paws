@@ -4,11 +4,7 @@
 \alias{list_tags}
 \title{Lists the tags, if any, that are associated with your private CA}
 \usage{
-list_tags(
-  CertificateAuthorityArn = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
+list_tags(CertificateAuthorityArn, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called the CreateCertificateAuthority operation. This must be of the form:
@@ -22,6 +18,12 @@ list_tags(
 \description{
 Lists the tags, if any, that are associated with your private CA. Tags are labels that you can use to identify and organize your CAs. Each tag consists of a key and an optional value. Call the TagCertificateAuthority operation to add one or more tags to your CA. Call the UntagCertificateAuthority operation to remove tags.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_tags(
+  CertificateAuthorityArn = "string",
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

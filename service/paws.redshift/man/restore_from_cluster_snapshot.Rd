@@ -4,39 +4,19 @@
 \alias{restore_from_cluster_snapshot}
 \title{Creates a new cluster from a snapshot}
 \usage{
-restore_from_cluster_snapshot(
-  ClusterIdentifier = "string",
-  SnapshotIdentifier = "string",
-  SnapshotClusterIdentifier = "string",
-  Port = 123,
-  AvailabilityZone = "string",
-  AllowVersionUpgrade = TRUE|FALSE,
-  ClusterSubnetGroupName = "string",
-  PubliclyAccessible = TRUE|FALSE,
-  OwnerAccount = "string",
-  HsmClientCertificateIdentifier = "string",
-  HsmConfigurationIdentifier = "string",
-  ElasticIp = "string",
-  ClusterParameterGroupName = "string",
-  ClusterSecurityGroups = list(
-    "string"
-  ),
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  PreferredMaintenanceWindow = "string",
-  AutomatedSnapshotRetentionPeriod = 123,
-  ManualSnapshotRetentionPeriod = 123,
-  KmsKeyId = "string",
-  NodeType = "string",
-  EnhancedVpcRouting = TRUE|FALSE,
-  AdditionalInfo = "string",
-  IamRoles = list(
-    "string"
-  ),
-  MaintenanceTrackName = "string",
-  SnapshotScheduleIdentifier = "string"
-)
+restore_from_cluster_snapshot(ClusterIdentifier, SnapshotIdentifier,
+  SnapshotClusterIdentifier = NULL, Port = NULL,
+  AvailabilityZone = NULL, AllowVersionUpgrade = NULL,
+  ClusterSubnetGroupName = NULL, PubliclyAccessible = NULL,
+  OwnerAccount = NULL, HsmClientCertificateIdentifier = NULL,
+  HsmConfigurationIdentifier = NULL, ElasticIp = NULL,
+  ClusterParameterGroupName = NULL, ClusterSecurityGroups = NULL,
+  VpcSecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL,
+  AutomatedSnapshotRetentionPeriod = NULL,
+  ManualSnapshotRetentionPeriod = NULL, KmsKeyId = NULL,
+  NodeType = NULL, EnhancedVpcRouting = NULL, AdditionalInfo = NULL,
+  IamRoles = NULL, MaintenanceTrackName = NULL,
+  SnapshotScheduleIdentifier = NULL)
 }
 \arguments{
 \item{ClusterIdentifier}{[required] The identifier of the cluster that will be created from restoring the snapshot.
@@ -157,6 +137,40 @@ If you restore a cluster into a VPC, you must provide a cluster subnet group whe
 
 For more information about working with snapshots, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html}{Amazon Redshift Snapshots} in the \emph{Amazon Redshift Cluster Management Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{restore_from_cluster_snapshot(
+  ClusterIdentifier = "string",
+  SnapshotIdentifier = "string",
+  SnapshotClusterIdentifier = "string",
+  Port = 123,
+  AvailabilityZone = "string",
+  AllowVersionUpgrade = TRUE|FALSE,
+  ClusterSubnetGroupName = "string",
+  PubliclyAccessible = TRUE|FALSE,
+  OwnerAccount = "string",
+  HsmClientCertificateIdentifier = "string",
+  HsmConfigurationIdentifier = "string",
+  ElasticIp = "string",
+  ClusterParameterGroupName = "string",
+  ClusterSecurityGroups = list(
+    "string"
+  ),
+  VpcSecurityGroupIds = list(
+    "string"
+  ),
+  PreferredMaintenanceWindow = "string",
+  AutomatedSnapshotRetentionPeriod = 123,
+  ManualSnapshotRetentionPeriod = 123,
+  KmsKeyId = "string",
+  NodeType = "string",
+  EnhancedVpcRouting = TRUE|FALSE,
+  AdditionalInfo = "string",
+  IamRoles = list(
+    "string"
+  ),
+  MaintenanceTrackName = "string",
+  SnapshotScheduleIdentifier = "string"
+)
 }
+}
+

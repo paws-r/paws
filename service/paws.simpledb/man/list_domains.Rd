@@ -2,12 +2,9 @@
 % Please edit documentation in R/paws.simpledb_operations.R
 \name{list_domains}
 \alias{list_domains}
-\title{The \code{ListDomains} operation lists all domains associated with the Access Key ID}
+\title{The ListDomains operation lists all domains associated with the Access Key ID}
 \usage{
-list_domains(
-  MaxNumberOfDomains = 123,
-  NextToken = "string"
-)
+list_domains(MaxNumberOfDomains = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxNumberOfDomains}{The maximum number of domain names you want returned. The range is 1 to 100. The default setting is 100.}
@@ -17,6 +14,11 @@ list_domains(
 \description{
 The \code{ListDomains} operation lists all domains associated with the Access Key ID. It returns domain names up to the limit set by \href{#MaxNumberOfDomains}{MaxNumberOfDomains}. A \href{#NextToken}{NextToken} is returned if there are more than \code{MaxNumberOfDomains} domains. Calling \code{ListDomains} successive times with the \code{NextToken} provided by the operation returns up to \code{MaxNumberOfDomains} more domain names with each successive operation call.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_domains(
+  MaxNumberOfDomains = 123,
+  NextToken = "string"
+)
 }
+}
+

@@ -4,12 +4,8 @@
 \alias{get_object_legal_hold}
 \title{Gets an object's current Legal Hold status}
 \usage{
-get_object_legal_hold(
-  Bucket = "string",
-  Key = "string",
-  VersionId = "string",
-  RequestPayer = "requester"
-)
+get_object_legal_hold(Bucket, Key, VersionId = NULL,
+  RequestPayer = NULL)
 }
 \arguments{
 \item{Bucket}{[required] The bucket containing the object whose Legal Hold status you want to retrieve.}
@@ -23,6 +19,13 @@ get_object_legal_hold(
 \description{
 Gets an object's current Legal Hold status.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_object_legal_hold(
+  Bucket = "string",
+  Key = "string",
+  VersionId = "string",
+  RequestPayer = "requester"
+)
 }
+}
+

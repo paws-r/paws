@@ -4,9 +4,7 @@
 \alias{stop_app_replication}
 \title{Stops replicating an application}
 \usage{
-stop_app_replication(
-  appId = "string"
-)
+stop_app_replication(appId = NULL)
 }
 \arguments{
 \item{appId}{ID of the application to stop replicating.}
@@ -14,6 +12,10 @@ stop_app_replication(
 \description{
 Stops replicating an application.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{stop_app_replication(
+  appId = "string"
+)
 }
+}
+

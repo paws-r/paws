@@ -4,9 +4,7 @@
 \alias{get_query_results}
 \title{Returns the results from the specified query}
 \usage{
-get_query_results(
-  queryId = "string"
-)
+get_query_results(queryId)
 }
 \arguments{
 \item{queryId}{[required] The ID number of the query.}
@@ -17,6 +15,10 @@ Returns the results from the specified query. If the query is in progress, parti
 \details{
 \code{GetQueryResults} does not start a query execution. To run a query, use .
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_query_results(
+  queryId = "string"
+)
 }
+}
+

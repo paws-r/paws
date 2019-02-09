@@ -4,19 +4,7 @@
 \alias{detect_faces}
 \title{Detects faces within an image that is provided as input}
 \usage{
-detect_faces(
-  Image = list(
-    Bytes = raw,
-    S3Object = list(
-      Bucket = "string",
-      Name = "string",
-      Version = "string"
-    )
-  ),
-  Attributes = list(
-    "DEFAULT"|"ALL"
-  )
-)
+detect_faces(Image, Attributes = NULL)
 }
 \arguments{
 \item{Image}{[required] The input image as base64-encoded bytes or an S3 object. If you use the AWS CLI to call Amazon Rekognition operations, passing base64-encoded image bytes is not supported.}
@@ -39,15 +27,32 @@ This is a stateless API operation. That is, the operation does not persist any d
 
 This operation requires permissions to perform the \code{rekognition:DetectFaces} action.
 }
+\section{Accepted Parameters}{
+\preformatted{detect_faces(
+  Image = list(
+    Bytes = raw,
+    S3Object = list(
+      Bucket = "string",
+      Name = "string",
+      Version = "string"
+    )
+  ),
+  Attributes = list(
+    "DEFAULT"|"ALL"
+  )
+)
+}
+}
+
 \examples{
 # This operation detects faces in an image stored in an AWS S3 bucket.
-detect_faces(
+\donttest{detect_faces(
   Image = list(
     S3Object = list(
       Bucket = "mybucket",
       Name = "myphoto"
     )
   )
-)
+)}
 
 }

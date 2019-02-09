@@ -4,10 +4,8 @@
 \alias{create_certificate_from_csr}
 \title{Creates an X}
 \usage{
-create_certificate_from_csr(
-  certificateSigningRequest = "string",
-  setAsActive = TRUE|FALSE
-)
+create_certificate_from_csr(certificateSigningRequest,
+  setAsActive = NULL)
 }
 \arguments{
 \item{certificateSigningRequest}{[required] The certificate signing request (CSR).}
@@ -44,6 +42,11 @@ On a Windows command prompt, the command to create certificates for all CSRs in 
 
 > forfiles /p my-csr-directory /c "cmd /c aws iot create-certificate-from-csr --certificate-signing-request file://@path"
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_certificate_from_csr(
+  certificateSigningRequest = "string",
+  setAsActive = TRUE|FALSE
+)
 }
+}
+

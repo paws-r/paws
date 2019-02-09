@@ -4,9 +4,7 @@
 \alias{get_vocabulary}
 \title{Gets information about a vocabulary}
 \usage{
-get_vocabulary(
-  VocabularyName = "string"
-)
+get_vocabulary(VocabularyName)
 }
 \arguments{
 \item{VocabularyName}{[required] The name of the vocabulary to return information about. The name is case-sensitive.}
@@ -14,6 +12,10 @@ get_vocabulary(
 \description{
 Gets information about a vocabulary.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_vocabulary(
+  VocabularyName = "string"
+)
 }
+}
+

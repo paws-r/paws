@@ -4,13 +4,8 @@
 \alias{list_constraints_for_portfolio}
 \title{Lists the constraints for the specified portfolio and product}
 \usage{
-list_constraints_for_portfolio(
-  AcceptLanguage = "string",
-  PortfolioId = "string",
-  ProductId = "string",
-  PageSize = 123,
-  PageToken = "string"
-)
+list_constraints_for_portfolio(AcceptLanguage = NULL, PortfolioId,
+  ProductId = NULL, PageSize = NULL, PageToken = NULL)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -31,6 +26,14 @@ list_constraints_for_portfolio(
 \description{
 Lists the constraints for the specified portfolio and product.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{list_constraints_for_portfolio(
+  AcceptLanguage = "string",
+  PortfolioId = "string",
+  ProductId = "string",
+  PageSize = 123,
+  PageToken = "string"
+)
 }
+}
+

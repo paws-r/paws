@@ -4,10 +4,8 @@
 \alias{export_client_vpn_client_configuration}
 \title{Downloads the contents of the Client VPN endpoint configuration file for the specified Client VPN endpoint}
 \usage{
-export_client_vpn_client_configuration(
-  ClientVpnEndpointId = "string",
-  DryRun = TRUE|FALSE
-)
+export_client_vpn_client_configuration(ClientVpnEndpointId,
+  DryRun = NULL)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint.}
@@ -17,6 +15,11 @@ export_client_vpn_client_configuration(
 \description{
 Downloads the contents of the Client VPN endpoint configuration file for the specified Client VPN endpoint. The Client VPN endpoint configuration file includes the Client VPN endpoint and certificate information clients need to establish a connection with the Client VPN endpoint.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{export_client_vpn_client_configuration(
+  ClientVpnEndpointId = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

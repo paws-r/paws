@@ -4,14 +4,8 @@
 \alias{apply_security_groups_to_client_vpn_target_network}
 \title{Applies a security group to the association between the target network and the Client VPN endpoint}
 \usage{
-apply_security_groups_to_client_vpn_target_network(
-  ClientVpnEndpointId = "string",
-  VpcId = "string",
-  SecurityGroupIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
+apply_security_groups_to_client_vpn_target_network(ClientVpnEndpointId,
+  VpcId, SecurityGroupIds, DryRun = NULL)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint.}
@@ -25,6 +19,15 @@ apply_security_groups_to_client_vpn_target_network(
 \description{
 Applies a security group to the association between the target network and the Client VPN endpoint. This action replaces the existing security groups with the specified security groups.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{apply_security_groups_to_client_vpn_target_network(
+  ClientVpnEndpointId = "string",
+  VpcId = "string",
+  SecurityGroupIds = list(
+    "string"
+  ),
+  DryRun = TRUE|FALSE
+)
 }
+}
+

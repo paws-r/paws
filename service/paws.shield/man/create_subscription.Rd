@@ -14,6 +14,8 @@ As part of this request you can specify \code{EmergencySettings} that automatica
 
 When you initally create a subscription, your subscription is set to be automatically renewed at the end of the existing subscription period. You can change this by submitting an \code{UpdateSubscription} request.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_subscription()
 }
+}
+

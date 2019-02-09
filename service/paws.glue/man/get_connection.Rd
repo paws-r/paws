@@ -4,11 +4,7 @@
 \alias{get_connection}
 \title{Retrieves a connection definition from the Data Catalog}
 \usage{
-get_connection(
-  CatalogId = "string",
-  Name = "string",
-  HidePassword = TRUE|FALSE
-)
+get_connection(CatalogId = NULL, Name, HidePassword = NULL)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog in which the connection resides. If none is supplied, the AWS account ID is used by default.}
@@ -20,6 +16,12 @@ get_connection(
 \description{
 Retrieves a connection definition from the Data Catalog.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_connection(
+  CatalogId = "string",
+  Name = "string",
+  HidePassword = TRUE|FALSE
+)
 }
+}
+

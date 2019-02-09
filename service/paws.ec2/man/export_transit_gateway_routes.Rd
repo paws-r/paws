@@ -4,7 +4,34 @@
 \alias{export_transit_gateway_routes}
 \title{Exports routes from the specified transit gateway route table to the specified S3 bucket}
 \usage{
-export_transit_gateway_routes(
+export_transit_gateway_routes(TransitGatewayRouteTableId, Filters = NULL,
+  S3Bucket, DryRun = NULL)
+}
+\arguments{
+\item{TransitGatewayRouteTableId}{[required] The ID of the route table.}
+
+\item{Filters}{One or more filters. The possible values are:
+\itemize{
+\item \code{attachment.transit-gateway-attachment-id}- The id of the transit gateway attachment.
+\item \code{attachment.resource-id} - The resource id of the transit gateway attachment.
+\item \code{route-search.exact-match} - The exact match of the specified filter.
+\item \code{route-search.longest-prefix-match} - The longest prefix that matches the route.
+\item \code{route-search.subnet-of-match} - The routes with a subnet that match the specified CIDR filter.
+\item \code{route-search.supernet-of-match} - The routes with a CIDR that encompass the CIDR filter. For example, if you have 10.0.1.0/29 and 10.0.1.0/31 routes in your route table and you specify supernet-of-match as 10.0.1.0/30, then the result returns 10.0.1.0/29.
+\item \code{state} - The state of the attachment (\code{available} | \code{deleted} | \code{deleting} | \code{failed} | \code{modifying} | \code{pendingAcceptance} | \code{pending} | \code{rollingBack} | \code{rejected} | \code{rejecting}).
+\item \code{transit-gateway-route-destination-cidr-block} - The CIDR range.
+\item \code{type} - The type of roue (\code{active} | \code{blackhole}).
+}}
+
+\item{S3Bucket}{[required] The name of the S3 bucket.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+}
+\description{
+Exports routes from the specified transit gateway route table to the specified S3 bucket. By default, all routes are exported. Alternatively, you can filter by CIDR range.
+}
+\section{Accepted Parameters}{
+\preformatted{export_transit_gateway_routes(
   TransitGatewayRouteTableId = "string",
   Filters = list(
     list(
@@ -18,25 +45,5 @@ export_transit_gateway_routes(
   DryRun = TRUE|FALSE
 )
 }
-\arguments{
-\item{TransitGatewayRouteTableId}{[required] The ID of the route table.}
-
-\item{Filters}{One or more filters. The possible values are:
-\itemize{
-\item \code{transit-gateway-route-destination-cidr-block} - The CIDR range.
-\item \code{transit-gateway-route-state} - The state of the route (\code{active} | \code{blackhole}).
-\item \code{transit-gateway-route-transit-gateway-attachment-id} - The ID of the attachment.
-\item \code{transit-gateway-route-type} - The route type (\code{static} | \code{propagated}).
-\item \code{transit-gateway-route-vpn-connection-id} - The ID of the VPN connection.
-}}
-
-\item{S3Bucket}{[required] The name of the S3 bucket.}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\description{
-Exports routes from the specified transit gateway route table to the specified S3 bucket. By default, all routes are exported. Alternatively, you can filter by CIDR range.
-}
-\examples{
 
-}

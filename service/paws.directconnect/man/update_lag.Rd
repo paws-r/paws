@@ -4,11 +4,7 @@
 \alias{update_lag}
 \title{Updates the attributes of the specified link aggregation group (LAG)}
 \usage{
-update_lag(
-  lagId = "string",
-  lagName = "string",
-  minimumLinks = 123
-)
+update_lag(lagId, lagName = NULL, minimumLinks = NULL)
 }
 \arguments{
 \item{lagId}{[required] The ID of the LAG.}
@@ -29,6 +25,12 @@ You can update the following attributes:
 
 When you create a LAG, the default value for the minimum number of operational connections is zero (0). If you update this value and the number of operational connections falls below the specified value, the LAG automatically goes down to avoid over-utilization of the remaining connections. Adjust this value with care, as it could force the LAG down if it is set higher than the current number of operational connections.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_lag(
+  lagId = "string",
+  lagName = "string",
+  minimumLinks = 123
+)
 }
+}
+

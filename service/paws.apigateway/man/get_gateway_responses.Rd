@@ -4,11 +4,7 @@
 \alias{get_gateway_responses}
 \title{Gets the GatewayResponses collection on the given RestApi}
 \usage{
-get_gateway_responses(
-  restApiId = "string",
-  position = "string",
-  limit = 123
-)
+get_gateway_responses(restApiId, position = NULL, limit = NULL)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -20,6 +16,12 @@ get_gateway_responses(
 \description{
 Gets the GatewayResponses collection on the given RestApi. If an API developer has not added any definitions for gateway responses, the result will be the API Gateway-generated default GatewayResponses collection for the supported response types.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_gateway_responses(
+  restApiId = "string",
+  position = "string",
+  limit = 123
+)
 }
+}
+

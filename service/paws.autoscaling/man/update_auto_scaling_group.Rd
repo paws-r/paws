@@ -4,53 +4,14 @@
 \alias{update_auto_scaling_group}
 \title{Updates the configuration for the specified Auto Scaling group}
 \usage{
-update_auto_scaling_group(
-  AutoScalingGroupName = "string",
-  LaunchConfigurationName = "string",
-  LaunchTemplate = list(
-    LaunchTemplateId = "string",
-    LaunchTemplateName = "string",
-    Version = "string"
-  ),
-  MixedInstancesPolicy = list(
-    LaunchTemplate = list(
-      LaunchTemplateSpecification = list(
-        LaunchTemplateId = "string",
-        LaunchTemplateName = "string",
-        Version = "string"
-      ),
-      Overrides = list(
-        list(
-          InstanceType = "string"
-        )
-      )
-    ),
-    InstancesDistribution = list(
-      OnDemandAllocationStrategy = "string",
-      OnDemandBaseCapacity = 123,
-      OnDemandPercentageAboveBaseCapacity = 123,
-      SpotAllocationStrategy = "string",
-      SpotInstancePools = 123,
-      SpotMaxPrice = "string"
-    )
-  ),
-  MinSize = 123,
-  MaxSize = 123,
-  DesiredCapacity = 123,
-  DefaultCooldown = 123,
-  AvailabilityZones = list(
-    "string"
-  ),
-  HealthCheckType = "string",
-  HealthCheckGracePeriod = 123,
-  PlacementGroup = "string",
-  VPCZoneIdentifier = "string",
-  TerminationPolicies = list(
-    "string"
-  ),
-  NewInstancesProtectedFromScaleIn = TRUE|FALSE,
-  ServiceLinkedRoleARN = "string"
-)
+update_auto_scaling_group(AutoScalingGroupName,
+  LaunchConfigurationName = NULL, LaunchTemplate = NULL,
+  MixedInstancesPolicy = NULL, MinSize = NULL, MaxSize = NULL,
+  DesiredCapacity = NULL, DefaultCooldown = NULL,
+  AvailabilityZones = NULL, HealthCheckType = NULL,
+  HealthCheckGracePeriod = NULL, PlacementGroup = NULL,
+  VPCZoneIdentifier = NULL, TerminationPolicies = NULL,
+  NewInstancesProtectedFromScaleIn = NULL, ServiceLinkedRoleARN = NULL)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
@@ -110,27 +71,78 @@ Note the following:
 \item All other optional parameters are left unchanged if not specified.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{update_auto_scaling_group(
+  AutoScalingGroupName = "string",
+  LaunchConfigurationName = "string",
+  LaunchTemplate = list(
+    LaunchTemplateId = "string",
+    LaunchTemplateName = "string",
+    Version = "string"
+  ),
+  MixedInstancesPolicy = list(
+    LaunchTemplate = list(
+      LaunchTemplateSpecification = list(
+        LaunchTemplateId = "string",
+        LaunchTemplateName = "string",
+        Version = "string"
+      ),
+      Overrides = list(
+        list(
+          InstanceType = "string"
+        )
+      )
+    ),
+    InstancesDistribution = list(
+      OnDemandAllocationStrategy = "string",
+      OnDemandBaseCapacity = 123,
+      OnDemandPercentageAboveBaseCapacity = 123,
+      SpotAllocationStrategy = "string",
+      SpotInstancePools = 123,
+      SpotMaxPrice = "string"
+    )
+  ),
+  MinSize = 123,
+  MaxSize = 123,
+  DesiredCapacity = 123,
+  DefaultCooldown = 123,
+  AvailabilityZones = list(
+    "string"
+  ),
+  HealthCheckType = "string",
+  HealthCheckGracePeriod = 123,
+  PlacementGroup = "string",
+  VPCZoneIdentifier = "string",
+  TerminationPolicies = list(
+    "string"
+  ),
+  NewInstancesProtectedFromScaleIn = TRUE|FALSE,
+  ServiceLinkedRoleARN = "string"
+)
+}
+}
+
 \examples{
 # This example updates the launch configuration of the specified Auto
 # Scaling group.
-update_auto_scaling_group(
+\donttest{update_auto_scaling_group(
   AutoScalingGroupName = "my-auto-scaling-group",
   LaunchConfigurationName = "new-launch-config"
-)
+)}
 
 # This example updates the minimum size and maximum size of the specified
 # Auto Scaling group.
-update_auto_scaling_group(
+\donttest{update_auto_scaling_group(
   AutoScalingGroupName = "my-auto-scaling-group",
   MaxSize = 3L,
   MinSize = 1L
-)
+)}
 
 # This example enables instance protection for the specified Auto Scaling
 # group.
-update_auto_scaling_group(
+\donttest{update_auto_scaling_group(
   AutoScalingGroupName = "my-auto-scaling-group",
   NewInstancesProtectedFromScaleIn = TRUE
-)
+)}
 
 }

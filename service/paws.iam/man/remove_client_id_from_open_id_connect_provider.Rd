@@ -4,10 +4,8 @@
 \alias{remove_client_id_from_open_id_connect_provider}
 \title{Removes the specified client ID (also known as audience) from the list of client IDs registered for the specified IAM OpenID Connect (OIDC) provider resource object}
 \usage{
-remove_client_id_from_open_id_connect_provider(
-  OpenIDConnectProviderArn = "string",
-  ClientID = "string"
-)
+remove_client_id_from_open_id_connect_provider(OpenIDConnectProviderArn,
+  ClientID)
 }
 \arguments{
 \item{OpenIDConnectProviderArn}{[required] The Amazon Resource Name (ARN) of the IAM OIDC provider resource to remove the client ID from. You can get a list of OIDC provider ARNs by using the ListOpenIDConnectProviders operation.
@@ -22,6 +20,11 @@ Removes the specified client ID (also known as audience) from the list of client
 \details{
 This operation is idempotent; it does not fail or return an error if you try to remove a client ID that does not exist.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{remove_client_id_from_open_id_connect_provider(
+  OpenIDConnectProviderArn = "string",
+  ClientID = "string"
+)
 }
+}
+

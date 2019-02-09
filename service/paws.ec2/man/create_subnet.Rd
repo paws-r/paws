@@ -4,14 +4,8 @@
 \alias{create_subnet}
 \title{Creates a subnet in an existing VPC}
 \usage{
-create_subnet(
-  AvailabilityZone = "string",
-  AvailabilityZoneId = "string",
-  CidrBlock = "string",
-  Ipv6CidrBlock = "string",
-  VpcId = "string",
-  DryRun = TRUE|FALSE
-)
+create_subnet(AvailabilityZone = NULL, AvailabilityZoneId = NULL,
+  CidrBlock, Ipv6CidrBlock = NULL, VpcId, DryRun = NULL)
 }
 \arguments{
 \item{AvailabilityZone}{The Availability Zone for the subnet.
@@ -42,15 +36,27 @@ If you add more than one subnet to a VPC, they're set up in a star topology with
 
 If you launch an instance in a VPC using an Amazon EBS-backed AMI, the IP address doesn't change if you stop and restart the instance (unlike a similar instance launched outside a VPC, which gets a new IP address when restarted). It's therefore possible to have a subnet with no running instances (they're all stopped), but no remaining IP addresses available.
 
-For more information about subnets, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html}{Your VPC and Subnets} in the \emph{Amazon Virtual Private Cloud User Guide}.
+For more information about subnets, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html}{Your VPC and Subnets} in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{create_subnet(
+  AvailabilityZone = "string",
+  AvailabilityZoneId = "string",
+  CidrBlock = "string",
+  Ipv6CidrBlock = "string",
+  VpcId = "string",
+  DryRun = TRUE|FALSE
+)
+}
+}
+
 \examples{
 # This example creates a subnet in the specified VPC with the specified
 # CIDR block. We recommend that you let us select an Availability Zone for
 # you.
-create_subnet(
+\donttest{create_subnet(
   CidrBlock = "10.0.1.0/24",
   VpcId = "vpc-a01106c2"
-)
+)}
 
 }

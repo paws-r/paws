@@ -4,9 +4,7 @@
 \alias{read_pipeline}
 \title{The ReadPipeline operation gets detailed information about a pipeline}
 \usage{
-read_pipeline(
-  Id = "string"
-)
+read_pipeline(Id)
 }
 \arguments{
 \item{Id}{[required] The identifier of the pipeline to read.}
@@ -14,6 +12,10 @@ read_pipeline(
 \description{
 The ReadPipeline operation gets detailed information about a pipeline.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{read_pipeline(
+  Id = "string"
+)
 }
+}
+

@@ -4,18 +4,15 @@
 \alias{create_vpc_peering_authorization}
 \title{Requests authorization to create or delete a peer connection between the VPC for your Amazon GameLift fleet and a virtual private cloud (VPC) in your AWS account}
 \usage{
-create_vpc_peering_authorization(
-  GameLiftAwsAccountId = "string",
-  PeerVpcId = "string"
-)
+create_vpc_peering_authorization(GameLiftAwsAccountId, PeerVpcId)
 }
 \arguments{
 \item{GameLiftAwsAccountId}{[required] Unique identifier for the AWS account that you use to manage your Amazon GameLift fleet. You can find your Account ID in the AWS Management Console under account settings.}
 
-\item{PeerVpcId}{[required] Unique identifier for a VPC with resources to be accessed by your Amazon GameLift fleet. The VPC must be in the same region where your fleet is deployed. To get VPC information, including IDs, use the Virtual Private Cloud service tools, including the VPC Dashboard in the AWS Management Console.}
+\item{PeerVpcId}{[required] Unique identifier for a VPC with resources to be accessed by your Amazon GameLift fleet. The VPC must be in the same region where your fleet is deployed. Look up a VPC ID using the \href{https://console.aws.amazon.com/vpc/}{VPC Dashboard} in the AWS Management Console. Learn more about VPC peering in \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html}{VPC Peering with Amazon GameLift Fleets}.}
 }
 \description{
-Requests authorization to create or delete a peer connection between the VPC for your Amazon GameLift fleet and a virtual private cloud (VPC) in your AWS account. VPC peering enables the game servers on your fleet to communicate directly with other AWS resources. Once you've received authorization, call CreateVpcPeeringConnection to establish the peering connection. For more information, see \href{http://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html}{VPC Peering with Amazon GameLift Fleets}.
+Requests authorization to create or delete a peer connection between the VPC for your Amazon GameLift fleet and a virtual private cloud (VPC) in your AWS account. VPC peering enables the game servers on your fleet to communicate directly with other AWS resources. Once you've received authorization, call CreateVpcPeeringConnection to establish the peering connection. For more information, see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html}{VPC Peering with Amazon GameLift Fleets}.
 }
 \details{
 You can peer with VPCs that are owned by any AWS account you have access to, including the account that you use to manage your Amazon GameLift fleets. You cannot peer with VPCs that are in different regions.
@@ -25,8 +22,6 @@ To request authorization to create a connection, call this operation from the AW
 To request authorization to delete a connection, call this operation from the AWS account with the VPC that is peered with your Amazon GameLift fleet. Identify the following values: (1) VPC ID that you want to delete the peering connection for, and (2) ID of the AWS account that you use to manage Amazon GameLift.
 
 The authorization remains valid for 24 hours unless it is canceled by a call to DeleteVpcPeeringAuthorization. You must create or delete the peering connection while the authorization is valid.
-
-VPC peering connection operations include:
 \itemize{
 \item CreateVpcPeeringAuthorization
 \item DescribeVpcPeeringAuthorizations
@@ -36,6 +31,11 @@ VPC peering connection operations include:
 \item DeleteVpcPeeringConnection
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_vpc_peering_authorization(
+  GameLiftAwsAccountId = "string",
+  PeerVpcId = "string"
+)
 }
+}
+

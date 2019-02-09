@@ -4,9 +4,7 @@
 \alias{cancel_resize}
 \title{Cancels a resize operation}
 \usage{
-cancel_resize(
-  ClusterIdentifier = "string"
-)
+cancel_resize(ClusterIdentifier)
 }
 \arguments{
 \item{ClusterIdentifier}{[required] The unique identifier for the cluster that you want to cancel a resize operation for.}
@@ -14,6 +12,10 @@ cancel_resize(
 \description{
 Cancels a resize operation.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{cancel_resize(
+  ClusterIdentifier = "string"
+)
 }
+}
+

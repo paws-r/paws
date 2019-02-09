@@ -4,7 +4,37 @@
 \alias{update_stack}
 \title{Updates the specified fields for the specified stack}
 \usage{
-update_stack(
+update_stack(DisplayName = NULL, Description = NULL, Name,
+  StorageConnectors = NULL, DeleteStorageConnectors = NULL,
+  RedirectURL = NULL, FeedbackURL = NULL, AttributesToDelete = NULL,
+  UserSettings = NULL, ApplicationSettings = NULL)
+}
+\arguments{
+\item{DisplayName}{The stack name to display.}
+
+\item{Description}{The description to display.}
+
+\item{Name}{[required] The name of the stack.}
+
+\item{StorageConnectors}{The storage connectors to enable.}
+
+\item{DeleteStorageConnectors}{Deletes the storage connectors currently enabled for the stack.}
+
+\item{RedirectURL}{The URL that users are redirected to after their streaming session ends.}
+
+\item{FeedbackURL}{The URL that users are redirected to after they choose the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.}
+
+\item{AttributesToDelete}{The stack attributes to delete.}
+
+\item{UserSettings}{The actions that are enabled or disabled for users during their streaming sessions. By default, these actions are enabled.}
+
+\item{ApplicationSettings}{The persistent application settings for users of a stack. When these settings are enabled, changes that users make to applications and Windows settings are automatically saved after each session and applied to the next session.}
+}
+\description{
+Updates the specified fields for the specified stack.
+}
+\section{Accepted Parameters}{
+\preformatted{update_stack(
   DisplayName = "string",
   Description = "string",
   Name = "string",
@@ -35,30 +65,5 @@ update_stack(
   )
 )
 }
-\arguments{
-\item{DisplayName}{The stack name for display.}
-
-\item{Description}{The description for display.}
-
-\item{Name}{[required] The name of the stack.}
-
-\item{StorageConnectors}{The storage connectors to enable.}
-
-\item{DeleteStorageConnectors}{Deletes the storage connectors currently enabled for the stack.}
-
-\item{RedirectURL}{The URL that users are redirected to after their streaming session ends.}
-
-\item{FeedbackURL}{The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.}
-
-\item{AttributesToDelete}{The stack attributes to delete.}
-
-\item{UserSettings}{The actions that are enabled or disabled for users during their streaming sessions. By default, these actions are enabled.}
-
-\item{ApplicationSettings}{The persistent application settings for users of a stack. When these settings are enabled, changes that users make to applications and Windows settings are automatically saved after each session and applied to the next session.}
 }
-\description{
-Updates the specified fields for the specified stack.
-}
-\examples{
 
-}

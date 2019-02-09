@@ -4,10 +4,7 @@
 \alias{attach_load_balancer_tls_certificate}
 \title{Attaches a Transport Layer Security (TLS) certificate to your load balancer}
 \usage{
-attach_load_balancer_tls_certificate(
-  loadBalancerName = "string",
-  certificateName = "string"
-)
+attach_load_balancer_tls_certificate(loadBalancerName, certificateName)
 }
 \arguments{
 \item{loadBalancerName}{[required] The name of the load balancer to which you want to associate the SSL/TLS certificate.}
@@ -22,6 +19,11 @@ Once you create and validate your certificate, you can attach it to your load ba
 
 The \code{attach load balancer tls certificate} operation supports tag-based access control via resource tags applied to the resource identified by loadBalancerName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{attach_load_balancer_tls_certificate(
+  loadBalancerName = "string",
+  certificateName = "string"
+)
 }
+}
+

@@ -4,19 +4,8 @@
 \alias{change_tags_for_resource}
 \title{Adds, edits, or deletes tags for a health check or a hosted zone}
 \usage{
-change_tags_for_resource(
-  ResourceType = "healthcheck"|"hostedzone",
-  ResourceId = "string",
-  AddTags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  RemoveTagKeys = list(
-    "string"
-  )
-)
+change_tags_for_resource(ResourceType, ResourceId, AddTags = NULL,
+  RemoveTagKeys = NULL)
 }
 \arguments{
 \item{ResourceType}{[required] The type of the resource.
@@ -39,10 +28,27 @@ Adds, edits, or deletes tags for a health check or a hosted zone.
 \details{
 For information about using tags for cost allocation, see \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Using Cost Allocation Tags} in the \emph{AWS Billing and Cost Management User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{change_tags_for_resource(
+  ResourceType = "healthcheck"|"hostedzone",
+  ResourceId = "string",
+  AddTags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  RemoveTagKeys = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # The following example adds two tags and removes one tag from the hosted
 # zone with ID Z3M3LMPEXAMPLE.
-change_tags_for_resource(
+\donttest{change_tags_for_resource(
   AddTags = list(
     list(
       Key = "apex",
@@ -58,6 +64,6 @@ change_tags_for_resource(
   ),
   ResourceId = "Z3M3LMPEXAMPLE",
   ResourceType = "hostedzone"
-)
+)}
 
 }

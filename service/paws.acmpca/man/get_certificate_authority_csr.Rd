@@ -4,9 +4,7 @@
 \alias{get_certificate_authority_csr}
 \title{Retrieves the certificate signing request (CSR) for your private certificate authority (CA)}
 \usage{
-get_certificate_authority_csr(
-  CertificateAuthorityArn = "string"
-)
+get_certificate_authority_csr(CertificateAuthorityArn)
 }
 \arguments{
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called the CreateCertificateAuthority operation. This must be of the form:
@@ -16,6 +14,10 @@ get_certificate_authority_csr(
 \description{
 Retrieves the certificate signing request (CSR) for your private certificate authority (CA). The CSR is created when you call the CreateCertificateAuthority operation. Take the CSR to your on-premises X.509 infrastructure and sign it by using your root or a subordinate CA. Then import the signed certificate back into ACM PCA by calling the ImportCertificateAuthorityCertificate operation. The CSR is returned as a base64 PEM-encoded string.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_certificate_authority_csr(
+  CertificateAuthorityArn = "string"
+)
 }
+}
+

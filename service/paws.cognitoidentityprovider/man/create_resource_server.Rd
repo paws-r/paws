@@ -4,17 +4,7 @@
 \alias{create_resource_server}
 \title{Creates a new OAuth2}
 \usage{
-create_resource_server(
-  UserPoolId = "string",
-  Identifier = "string",
-  Name = "string",
-  Scopes = list(
-    list(
-      ScopeName = "string",
-      ScopeDescription = "string"
-    )
-  )
-)
+create_resource_server(UserPoolId, Identifier, Name, Scopes = NULL)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool.}
@@ -28,6 +18,18 @@ create_resource_server(
 \description{
 Creates a new OAuth2.0 resource server and defines custom scopes in it.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_resource_server(
+  UserPoolId = "string",
+  Identifier = "string",
+  Name = "string",
+  Scopes = list(
+    list(
+      ScopeName = "string",
+      ScopeDescription = "string"
+    )
+  )
+)
 }
+}
+

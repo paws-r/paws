@@ -4,48 +4,11 @@
 \alias{update_stack_set}
 \title{Updates the stack set, and associated stack instances in the specified accounts and regions}
 \usage{
-update_stack_set(
-  StackSetName = "string",
-  Description = "string",
-  TemplateBody = "string",
-  TemplateURL = "string",
-  UsePreviousTemplate = TRUE|FALSE,
-  Parameters = list(
-    list(
-      ParameterKey = "string",
-      ParameterValue = "string",
-      UsePreviousValue = TRUE|FALSE,
-      ResolvedValue = "string"
-    )
-  ),
-  Capabilities = list(
-    "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  OperationPreferences = list(
-    RegionOrder = list(
-      "string"
-    ),
-    FailureToleranceCount = 123,
-    FailureTolerancePercentage = 123,
-    MaxConcurrentCount = 123,
-    MaxConcurrentPercentage = 123
-  ),
-  AdministrationRoleARN = "string",
-  ExecutionRoleName = "string",
-  OperationId = "string",
-  Accounts = list(
-    "string"
-  ),
-  Regions = list(
-    "string"
-  )
-)
+update_stack_set(StackSetName, Description = NULL, TemplateBody = NULL,
+  TemplateURL = NULL, UsePreviousTemplate = NULL, Parameters = NULL,
+  Capabilities = NULL, Tags = NULL, OperationPreferences = NULL,
+  AdministrationRoleARN = NULL, ExecutionRoleName = NULL,
+  OperationId = NULL, Accounts = NULL, Regions = NULL)
 }
 \arguments{
 \item{StackSetName}{[required] The name or unique ID of the stack set that you want to update.}
@@ -149,6 +112,49 @@ Updates the stack set, and associated stack instances in the specified accounts 
 \details{
 Even if the stack set operation created by updating the stack set fails (completely or partially, below or above a specified failure tolerance), the stack set is updated with your changes. Subsequent CreateStackInstances calls on the specified stack set use the updated stack set.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_stack_set(
+  StackSetName = "string",
+  Description = "string",
+  TemplateBody = "string",
+  TemplateURL = "string",
+  UsePreviousTemplate = TRUE|FALSE,
+  Parameters = list(
+    list(
+      ParameterKey = "string",
+      ParameterValue = "string",
+      UsePreviousValue = TRUE|FALSE,
+      ResolvedValue = "string"
+    )
+  ),
+  Capabilities = list(
+    "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  OperationPreferences = list(
+    RegionOrder = list(
+      "string"
+    ),
+    FailureToleranceCount = 123,
+    FailureTolerancePercentage = 123,
+    MaxConcurrentCount = 123,
+    MaxConcurrentPercentage = 123
+  ),
+  AdministrationRoleARN = "string",
+  ExecutionRoleName = "string",
+  OperationId = "string",
+  Accounts = list(
+    "string"
+  ),
+  Regions = list(
+    "string"
+  )
+)
 }
+}
+

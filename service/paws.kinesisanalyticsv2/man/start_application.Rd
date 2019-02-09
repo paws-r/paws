@@ -4,7 +4,21 @@
 \alias{start_application}
 \title{Starts the specified Amazon Kinesis Data Analytics application}
 \usage{
-start_application(
+start_application(ApplicationName, RunConfiguration)
+}
+\arguments{
+\item{ApplicationName}{[required] The name of the application.}
+
+\item{RunConfiguration}{[required] Identifies the run configuration (start parameters) of a Kinesis Data Analytics application.}
+}
+\description{
+Starts the specified Amazon Kinesis Data Analytics application. After creating an application, you must exclusively call this operation to start your application.
+}
+\details{
+SQL is not enabled for this private beta. Using SQL parameters (such as RunConfiguration\$SqlRunConfigurations) will result in an error.
+}
+\section{Accepted Parameters}{
+\preformatted{start_application(
   ApplicationName = "string",
   RunConfiguration = list(
     SqlRunConfigurations = list(
@@ -22,17 +36,5 @@ start_application(
   )
 )
 }
-\arguments{
-\item{ApplicationName}{[required] The name of the application.}
+}
 
-\item{RunConfiguration}{[required] Identifies the run configuration (start parameters) of a Kinesis Data Analytics application.}
-}
-\description{
-Starts the specified Amazon Kinesis Data Analytics application. After creating an application, you must exclusively call this operation to start your application.
-}
-\details{
-SQL is not enabled for this private beta. Using SQL parameters (such as RunConfiguration\$SqlRunConfigurations) will result in an error.
-}
-\examples{
-
-}

@@ -4,7 +4,26 @@
 \alias{create_thing_group}
 \title{Create a thing group}
 \usage{
-create_thing_group(
+create_thing_group(thingGroupName, parentGroupName = NULL,
+  thingGroupProperties = NULL, tags = NULL)
+}
+\arguments{
+\item{thingGroupName}{[required] The thing group name to create.}
+
+\item{parentGroupName}{The name of the parent thing group.}
+
+\item{thingGroupProperties}{The thing group properties.}
+
+\item{tags}{Metadata which can be used to manage the thing group.}
+}
+\description{
+Create a thing group.
+}
+\details{
+This is a control plane operation. See \href{http://docs.aws.amazon.com/iot/latest/developerguide/authorization.html}{Authorization} for information about authorizing control plane actions.
+}
+\section{Accepted Parameters}{
+\preformatted{create_thing_group(
   thingGroupName = "string",
   parentGroupName = "string",
   thingGroupProperties = list(
@@ -24,21 +43,5 @@ create_thing_group(
   )
 )
 }
-\arguments{
-\item{thingGroupName}{[required] The thing group name to create.}
-
-\item{parentGroupName}{The name of the parent thing group.}
-
-\item{thingGroupProperties}{The thing group properties.}
-
-\item{tags}{Metadata which can be used to manage the thing group.}
 }
-\description{
-Create a thing group.
-}
-\details{
-This is a control plane operation. See \href{http://docs.aws.amazon.com/iot/latest/developerguide/authorization.html}{Authorization} for information about authorizing control plane actions.
-}
-\examples{
 
-}

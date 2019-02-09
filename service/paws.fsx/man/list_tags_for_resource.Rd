@@ -4,11 +4,8 @@
 \alias{list_tags_for_resource}
 \title{Lists tags for an Amazon FSx file systems and backups in the case of Amazon FSx for Windows File Server}
 \usage{
-list_tags_for_resource(
-  ResourceARN = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
+list_tags_for_resource(ResourceARN, MaxResults = NULL,
+  NextToken = NULL)
 }
 \arguments{
 \item{ResourceARN}{[required] The ARN of the Amazon FSx resource that will have its tags listed.}
@@ -31,10 +28,19 @@ When using this action, keep the following in mind:
 \item The order of tags returned in the response of one \code{ListTagsForResource} call and the order of tags returned across the responses of a multi-call iteration is unspecified.
 }
 }
+\section{Accepted Parameters}{
+\preformatted{list_tags_for_resource(
+  ResourceARN = "string",
+  MaxResults = 123,
+  NextToken = "string"
+)
+}
+}
+
 \examples{
 # This operation lists tags for an Amazon FSx resource.
-list_tags_for_resource(
+\donttest{list_tags_for_resource(
   ResourceARN = "arn:aws:fsx:us-east-1:012345678912:file-system/fs-0498eed5fe91001ec"
-)
+)}
 
 }

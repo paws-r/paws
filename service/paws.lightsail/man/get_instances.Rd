@@ -4,9 +4,7 @@
 \alias{get_instances}
 \title{Returns information about all Amazon Lightsail virtual private servers, or \emph{instances}}
 \usage{
-get_instances(
-  pageToken = "string"
-)
+get_instances(pageToken = NULL)
 }
 \arguments{
 \item{pageToken}{A token used for advancing to the next page of results from your get instances request.}
@@ -14,6 +12,10 @@ get_instances(
 \description{
 Returns information about all Amazon Lightsail virtual private servers, or \emph{instances}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_instances(
+  pageToken = "string"
+)
 }
+}
+

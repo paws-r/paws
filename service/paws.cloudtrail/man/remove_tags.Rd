@@ -4,15 +4,7 @@
 \alias{remove_tags}
 \title{Removes the specified tags from a trail}
 \usage{
-remove_tags(
-  ResourceId = "string",
-  TagsList = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+remove_tags(ResourceId, TagsList = NULL)
 }
 \arguments{
 \item{ResourceId}{[required] Specifies the ARN of the trail from which tags should be removed. The format of a trail ARN is:
@@ -24,6 +16,16 @@ remove_tags(
 \description{
 Removes the specified tags from a trail.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{remove_tags(
+  ResourceId = "string",
+  TagsList = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

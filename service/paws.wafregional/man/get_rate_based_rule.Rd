@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.wafregional_operations.R
 \name{get_rate_based_rule}
 \alias{get_rate_based_rule}
-\title{Returns the RateBasedRule that is specified by the \code{RuleId} that you included in the \code{GetRateBasedRule} request}
+\title{Returns the RateBasedRule that is specified by the RuleId that you included in the GetRateBasedRule request}
 \usage{
-get_rate_based_rule(
-  RuleId = "string"
-)
+get_rate_based_rule(RuleId)
 }
 \arguments{
 \item{RuleId}{[required] The \code{RuleId} of the RateBasedRule that you want to get. \code{RuleId} is returned by CreateRateBasedRule and by ListRateBasedRules.}
@@ -14,6 +12,10 @@ get_rate_based_rule(
 \description{
 Returns the RateBasedRule that is specified by the \code{RuleId} that you included in the \code{GetRateBasedRule} request.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_rate_based_rule(
+  RuleId = "string"
+)
 }
+}
+

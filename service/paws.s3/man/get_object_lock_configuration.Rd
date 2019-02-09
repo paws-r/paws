@@ -4,9 +4,7 @@
 \alias{get_object_lock_configuration}
 \title{Gets the Object Lock configuration for a bucket}
 \usage{
-get_object_lock_configuration(
-  Bucket = "string"
-)
+get_object_lock_configuration(Bucket)
 }
 \arguments{
 \item{Bucket}{[required] The bucket whose Object Lock configuration you want to retrieve.}
@@ -14,6 +12,10 @@ get_object_lock_configuration(
 \description{
 Gets the Object Lock configuration for a bucket. The rule specified in the Object Lock configuration will be applied by default to every new object placed in the specified bucket.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_object_lock_configuration(
+  Bucket = "string"
+)
 }
+}
+

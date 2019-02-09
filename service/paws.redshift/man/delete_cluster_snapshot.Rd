@@ -4,10 +4,8 @@
 \alias{delete_cluster_snapshot}
 \title{Deletes the specified manual snapshot}
 \usage{
-delete_cluster_snapshot(
-  SnapshotIdentifier = "string",
-  SnapshotClusterIdentifier = "string"
-)
+delete_cluster_snapshot(SnapshotIdentifier,
+  SnapshotClusterIdentifier = NULL)
 }
 \arguments{
 \item{SnapshotIdentifier}{[required] The unique identifier of the manual snapshot to be deleted.
@@ -24,6 +22,11 @@ Deletes the specified manual snapshot. The snapshot must be in the \code{availab
 \details{
 Unlike automated snapshots, manual snapshots are retained even after you delete your cluster. Amazon Redshift does not delete your manual snapshots. You must delete manual snapshot explicitly to avoid getting charged. If other accounts are authorized to access the snapshot, you must revoke all of the authorizations before you can delete the snapshot.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_cluster_snapshot(
+  SnapshotIdentifier = "string",
+  SnapshotClusterIdentifier = "string"
+)
 }
+}
+

@@ -4,14 +4,9 @@
 \alias{update_service_settings}
 \title{Updates License Manager service settings}
 \usage{
-update_service_settings(
-  S3BucketArn = "string",
-  SnsTopicArn = "string",
-  OrganizationConfiguration = list(
-    EnableIntegration = TRUE|FALSE
-  ),
-  EnableCrossAccountsDiscovery = TRUE|FALSE
-)
+update_service_settings(S3BucketArn = NULL, SnsTopicArn = NULL,
+  OrganizationConfiguration = NULL,
+  EnableCrossAccountsDiscovery = NULL)
 }
 \arguments{
 \item{S3BucketArn}{ARN of the Amazon S3 bucket where License Manager information is stored.}
@@ -25,6 +20,15 @@ update_service_settings(
 \description{
 Updates License Manager service settings.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_service_settings(
+  S3BucketArn = "string",
+  SnsTopicArn = "string",
+  OrganizationConfiguration = list(
+    EnableIntegration = TRUE|FALSE
+  ),
+  EnableCrossAccountsDiscovery = TRUE|FALSE
+)
 }
+}
+

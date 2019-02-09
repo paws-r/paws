@@ -4,11 +4,8 @@
 \alias{modify_spot_fleet_request}
 \title{Modifies the specified Spot Fleet request}
 \usage{
-modify_spot_fleet_request(
-  ExcessCapacityTerminationPolicy = "noTermination"|"default",
-  SpotFleetRequestId = "string",
-  TargetCapacity = 123
-)
+modify_spot_fleet_request(ExcessCapacityTerminationPolicy = NULL,
+  SpotFleetRequestId, TargetCapacity = NULL)
 }
 \arguments{
 \item{ExcessCapacityTerminationPolicy}{Indicates whether running Spot Instances should be terminated if the target capacity of the Spot Fleet request is decreased below the current size of the Spot Fleet.}
@@ -29,20 +26,29 @@ To scale down your Spot Fleet, decrease its target capacity. First, the Spot Fle
 
 If you are finished with your Spot Fleet for now, but will use it again later, you can set the target capacity to 0.
 }
+\section{Accepted Parameters}{
+\preformatted{modify_spot_fleet_request(
+  ExcessCapacityTerminationPolicy = "noTermination"|"default",
+  SpotFleetRequestId = "string",
+  TargetCapacity = 123
+)
+}
+}
+
 \examples{
 # This example increases the target capacity of the specified Spot fleet
 # request.
-modify_spot_fleet_request(
+\donttest{modify_spot_fleet_request(
   SpotFleetRequestId = "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE",
   TargetCapacity = 20L
-)
+)}
 
 # This example decreases the target capacity of the specified Spot fleet
 # request without terminating any Spot Instances as a result.
-modify_spot_fleet_request(
+\donttest{modify_spot_fleet_request(
   ExcessCapacityTerminationPolicy = "NoTermination ",
   SpotFleetRequestId = "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE",
   TargetCapacity = 10L
-)
+)}
 
 }

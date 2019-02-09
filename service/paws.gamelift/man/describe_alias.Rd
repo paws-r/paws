@@ -4,9 +4,7 @@
 \alias{describe_alias}
 \title{Retrieves properties for an alias}
 \usage{
-describe_alias(
-  AliasId = "string"
-)
+describe_alias(AliasId)
 }
 \arguments{
 \item{AliasId}{[required] Unique identifier for a fleet alias. Specify the alias you want to retrieve.}
@@ -16,8 +14,6 @@ Retrieves properties for an alias. This operation returns all alias metadata and
 }
 \details{
 To get alias properties, specify the alias ID. If successful, the requested alias record is returned.
-
-Alias-related operations include:
 \itemize{
 \item CreateAlias
 \item ListAliases
@@ -27,6 +23,10 @@ Alias-related operations include:
 \item ResolveAlias
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_alias(
+  AliasId = "string"
+)
 }
+}
+

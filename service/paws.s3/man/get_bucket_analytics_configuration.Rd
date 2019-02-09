@@ -4,10 +4,7 @@
 \alias{get_bucket_analytics_configuration}
 \title{Gets an analytics configuration for the bucket (specified by the analytics configuration ID)}
 \usage{
-get_bucket_analytics_configuration(
-  Bucket = "string",
-  Id = "string"
-)
+get_bucket_analytics_configuration(Bucket, Id)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket from which an analytics configuration is retrieved.}
@@ -17,6 +14,11 @@ get_bucket_analytics_configuration(
 \description{
 Gets an analytics configuration for the bucket (specified by the analytics configuration ID).
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_bucket_analytics_configuration(
+  Bucket = "string",
+  Id = "string"
+)
 }
+}
+

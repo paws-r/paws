@@ -6,9 +6,9 @@
 \alias{paws.sfn-package}
 \title{paws.sfn: AWS Step Functions}
 \description{
-AWS Step Functions is a service that lets you coordinate the
-components of distributed applications and microservices using visual
-workflows.
+AWS Step Functions is a service that lets you
+    coordinate the components of distributed applications and
+    microservices using visual workflows.
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}

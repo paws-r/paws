@@ -4,44 +4,9 @@
 \alias{get_reservation_coverage}
 \title{Retrieves the reservation coverage for your account}
 \usage{
-get_reservation_coverage(
-  TimePeriod = list(
-    Start = "string",
-    End = "string"
-  ),
-  GroupBy = list(
-    list(
-      Type = "DIMENSION"|"TAG",
-      Key = "string"
-    )
-  ),
-  Granularity = "DAILY"|"MONTHLY"|"HOURLY",
-  Filter = list(
-    Or = list(
-      list()
-    ),
-    And = list(
-      list()
-    ),
-    Not = list(),
-    Dimensions = list(
-      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID",
-      Values = list(
-        "string"
-      )
-    ),
-    Tags = list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  Metrics = list(
-    "string"
-  ),
-  NextPageToken = "string"
-)
+get_reservation_coverage(TimePeriod, GroupBy = NULL,
+  Granularity = NULL, Filter = NULL, Metrics = NULL,
+  NextPageToken = NULL)
 }
 \arguments{
 \item{TimePeriod}{[required] The start and end dates of the period that you want to retrieve data about reservation coverage for. You can retrieve data for a maximum of 13 months: the last 12 months and the current month. The start date is inclusive, but the end date is exclusive. For example, if \code{start} is \code{2017-01-01} and \code{end} is \code{2017-05-01}, then the cost and usage data is retrieved from \code{2017-01-01} up to and including \code{2017-04-30} but not including \code{2017-05-01}.}
@@ -57,7 +22,6 @@ get_reservation_coverage(
 \item OPERATING\_SYSTEM
 \item PLATFORM
 \item REGION
-\item TAG
 \item TENANCY
 }}
 
@@ -112,6 +76,45 @@ Retrieves the reservation coverage for your account. This enables you to see how
 
 To determine valid values for a dimension, use the \code{GetDimensionValues} operation.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_reservation_coverage(
+  TimePeriod = list(
+    Start = "string",
+    End = "string"
+  ),
+  GroupBy = list(
+    list(
+      Type = "DIMENSION"|"TAG",
+      Key = "string"
+    )
+  ),
+  Granularity = "DAILY"|"MONTHLY"|"HOURLY",
+  Filter = list(
+    Or = list(
+      list()
+    ),
+    And = list(
+      list()
+    ),
+    Not = list(),
+    Dimensions = list(
+      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID",
+      Values = list(
+        "string"
+      )
+    ),
+    Tags = list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  Metrics = list(
+    "string"
+  ),
+  NextPageToken = "string"
+)
 }
+}
+

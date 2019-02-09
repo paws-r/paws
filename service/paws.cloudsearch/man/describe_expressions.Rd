@@ -4,13 +4,8 @@
 \alias{describe_expressions}
 \title{Gets the expressions configured for the search domain}
 \usage{
-describe_expressions(
-  DomainName = "string",
-  ExpressionNames = list(
-    "string"
-  ),
-  Deployed = TRUE|FALSE
-)
+describe_expressions(DomainName, ExpressionNames = NULL,
+  Deployed = NULL)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain you want to describe.}
@@ -22,6 +17,14 @@ describe_expressions(
 \description{
 Gets the expressions configured for the search domain. Can be limited to specific expressions by name. By default, shows all expressions and includes any pending changes to the configuration. Set the \code{Deployed} option to \code{true} to show the active configuration and exclude pending changes. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html}{Configuring Expressions} in the \emph{Amazon CloudSearch Developer Guide}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_expressions(
+  DomainName = "string",
+  ExpressionNames = list(
+    "string"
+  ),
+  Deployed = TRUE|FALSE
+)
 }
+}
+

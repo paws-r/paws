@@ -4,12 +4,8 @@
 \alias{disassociate_discovered_resource}
 \title{Disassociate an Application Discovery Service (ADS) discovered resource from a migration task}
 \usage{
-disassociate_discovered_resource(
-  ProgressUpdateStream = "string",
-  MigrationTaskName = "string",
-  ConfigurationId = "string",
-  DryRun = TRUE|FALSE
-)
+disassociate_discovered_resource(ProgressUpdateStream, MigrationTaskName,
+  ConfigurationId, DryRun = NULL)
 }
 \arguments{
 \item{ProgressUpdateStream}{[required] The name of the ProgressUpdateStream.}
@@ -23,6 +19,13 @@ disassociate_discovered_resource(
 \description{
 Disassociate an Application Discovery Service (ADS) discovered resource from a migration task.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{disassociate_discovered_resource(
+  ProgressUpdateStream = "string",
+  MigrationTaskName = "string",
+  ConfigurationId = "string",
+  DryRun = TRUE|FALSE
+)
 }
+}
+

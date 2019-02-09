@@ -2,18 +2,20 @@
 % Please edit documentation in R/paws.rekognition_operations.R
 \name{describe_stream_processor}
 \alias{describe_stream_processor}
-\title{Provides information about a stream processor created by}
+\title{Provides information about a stream processor created by CreateStreamProcessor}
 \usage{
-describe_stream_processor(
-  Name = "string"
-)
+describe_stream_processor(Name)
 }
 \arguments{
 \item{Name}{[required] Name of the stream processor for which you want information.}
 }
 \description{
-Provides information about a stream processor created by . You can get information about the input and output streams, the input parameters for the face recognition being performed, and the current status of the stream processor.
+Provides information about a stream processor created by CreateStreamProcessor. You can get information about the input and output streams, the input parameters for the face recognition being performed, and the current status of the stream processor.
 }
-\examples{
+\section{Accepted Parameters}{
+\preformatted{describe_stream_processor(
+  Name = "string"
+)
+}
+}
 
-}

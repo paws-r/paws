@@ -4,12 +4,8 @@
 \alias{describe_table_restore_status}
 \title{Lists the status of one or more table restore requests made using the RestoreTableFromClusterSnapshot API action}
 \usage{
-describe_table_restore_status(
-  ClusterIdentifier = "string",
-  TableRestoreRequestId = "string",
-  MaxRecords = 123,
-  Marker = "string"
-)
+describe_table_restore_status(ClusterIdentifier = NULL,
+  TableRestoreRequestId = NULL, MaxRecords = NULL, Marker = NULL)
 }
 \arguments{
 \item{ClusterIdentifier}{The Amazon Redshift cluster that the table is being restored to.}
@@ -23,6 +19,13 @@ describe_table_restore_status(
 \description{
 Lists the status of one or more table restore requests made using the RestoreTableFromClusterSnapshot API action. If you don't specify a value for the \code{TableRestoreRequestId} parameter, then \code{DescribeTableRestoreStatus} returns the status of all table restore requests ordered by the date and time of the request in ascending order. Otherwise \code{DescribeTableRestoreStatus} returns the status of the table specified by \code{TableRestoreRequestId}.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_table_restore_status(
+  ClusterIdentifier = "string",
+  TableRestoreRequestId = "string",
+  MaxRecords = 123,
+  Marker = "string"
+)
 }
+}
+

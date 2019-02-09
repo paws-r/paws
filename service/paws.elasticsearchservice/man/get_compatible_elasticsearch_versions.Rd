@@ -4,9 +4,7 @@
 \alias{get_compatible_elasticsearch_versions}
 \title{Returns a list of upgrade compatible Elastisearch versions}
 \usage{
-get_compatible_elasticsearch_versions(
-  DomainName = "string"
-)
+get_compatible_elasticsearch_versions(DomainName = NULL)
 }
 \arguments{
 \item{DomainName}{}
@@ -14,6 +12,10 @@ get_compatible_elasticsearch_versions(
 \description{
 Returns a list of upgrade compatible Elastisearch versions. You can optionally pass a \code{DomainName DomainName} to get all upgrade compatible Elasticsearch versions for that specific domain.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_compatible_elasticsearch_versions(
+  DomainName = "string"
+)
 }
+}
+

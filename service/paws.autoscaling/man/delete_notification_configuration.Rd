@@ -4,10 +4,7 @@
 \alias{delete_notification_configuration}
 \title{Deletes the specified notification}
 \usage{
-delete_notification_configuration(
-  AutoScalingGroupName = "string",
-  TopicARN = "string"
-)
+delete_notification_configuration(AutoScalingGroupName, TopicARN)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
@@ -17,12 +14,20 @@ delete_notification_configuration(
 \description{
 Deletes the specified notification.
 }
+\section{Accepted Parameters}{
+\preformatted{delete_notification_configuration(
+  AutoScalingGroupName = "string",
+  TopicARN = "string"
+)
+}
+}
+
 \examples{
 # This example deletes the specified notification from the specified Auto
 # Scaling group.
-delete_notification_configuration(
+\donttest{delete_notification_configuration(
   AutoScalingGroupName = "my-auto-scaling-group",
   TopicARN = "arn:aws:sns:us-west-2:123456789012:my-sns-topic"
-)
+)}
 
 }

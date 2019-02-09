@@ -4,15 +4,7 @@
 \alias{tag_resource}
 \title{Adds specified tags to a resource with the specified ARN}
 \usage{
-tag_resource(
-  resourceArn = "string",
-  tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
+tag_resource(resourceArn, tags)
 }
 \arguments{
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the the resource to which to add tags. Currently, the only supported resource is an Amazon ECR repository.}
@@ -22,6 +14,16 @@ tag_resource(
 \description{
 Adds specified tags to a resource with the specified ARN. Existing tags on a resource are not changed if they are not specified in the request parameters.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{tag_resource(
+  resourceArn = "string",
+  tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
 }
+}
+

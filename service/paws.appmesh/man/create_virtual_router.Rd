@@ -4,16 +4,8 @@
 \alias{create_virtual_router}
 \title{Creates a new virtual router within a service mesh}
 \usage{
-create_virtual_router(
-  clientToken = "string",
-  meshName = "string",
-  spec = list(
-    serviceNames = list(
-      "string"
-    )
-  ),
-  virtualRouterName = "string"
-)
+create_virtual_router(clientToken = NULL, meshName, spec,
+  virtualRouterName)
 }
 \arguments{
 \item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. Up to 36 letters, numbers, hyphens, and underscores are allowed.}
@@ -30,6 +22,17 @@ Creates a new virtual router within a service mesh.
 \details{
 Virtual routers handle traffic for one or more service names within your mesh. After you create your virtual router, create and associate routes for your virtual router that direct incoming requests to different virtual nodes.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_virtual_router(
+  clientToken = "string",
+  meshName = "string",
+  spec = list(
+    serviceNames = list(
+      "string"
+    )
+  ),
+  virtualRouterName = "string"
+)
 }
+}
+

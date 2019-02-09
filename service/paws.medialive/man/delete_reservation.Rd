@@ -4,9 +4,7 @@
 \alias{delete_reservation}
 \title{Delete an expired reservation}
 \usage{
-delete_reservation(
-  ReservationId = "string"
-)
+delete_reservation(ReservationId)
 }
 \arguments{
 \item{ReservationId}{[required] Unique reservation ID, e.g. '1234567'}
@@ -14,6 +12,10 @@ delete_reservation(
 \description{
 Delete an expired reservation.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_reservation(
+  ReservationId = "string"
+)
 }
+}
+

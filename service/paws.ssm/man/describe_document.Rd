@@ -4,11 +4,7 @@
 \alias{describe_document}
 \title{Describes the specified Systems Manager document}
 \usage{
-describe_document(
-  Name = "string",
-  DocumentVersion = "string",
-  VersionName = "string"
-)
+describe_document(Name, DocumentVersion = NULL, VersionName = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the Systems Manager document.}
@@ -20,6 +16,12 @@ describe_document(
 \description{
 Describes the specified Systems Manager document.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_document(
+  Name = "string",
+  DocumentVersion = "string",
+  VersionName = "string"
+)
 }
+}
+

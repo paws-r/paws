@@ -4,13 +4,8 @@
 \alias{get_enabled_standards}
 \title{Lists and describes enabled standards}
 \usage{
-get_enabled_standards(
-  StandardsSubscriptionArns = list(
-    "string"
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
+get_enabled_standards(StandardsSubscriptionArns = NULL,
+  NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{StandardsSubscriptionArns}{The list of standards subscription ARNS that you want to list and describe.}
@@ -22,6 +17,14 @@ get_enabled_standards(
 \description{
 Lists and describes enabled standards.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_enabled_standards(
+  StandardsSubscriptionArns = list(
+    "string"
+  ),
+  NextToken = "string",
+  MaxResults = 123
+)
 }
+}
+

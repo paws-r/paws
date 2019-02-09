@@ -4,10 +4,7 @@
 \alias{grant_access}
 \title{This action can be used only with Windows stacks}
 \usage{
-grant_access(
-  InstanceId = "string",
-  ValidForInMinutes = 123
-)
+grant_access(InstanceId, ValidForInMinutes = NULL)
 }
 \arguments{
 \item{InstanceId}{[required] The instance's AWS OpsWorks Stacks ID.}
@@ -20,6 +17,11 @@ This action can be used only with Windows stacks.
 \details{
 Grants RDP access to a Windows instance for a specified time period.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{grant_access(
+  InstanceId = "string",
+  ValidForInMinutes = 123
+)
 }
+}
+

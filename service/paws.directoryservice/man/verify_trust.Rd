@@ -4,9 +4,7 @@
 \alias{verify_trust}
 \title{AWS Directory Service for Microsoft Active Directory allows you to configure and verify trust relationships}
 \usage{
-verify_trust(
-  TrustId = "string"
-)
+verify_trust(TrustId)
 }
 \arguments{
 \item{TrustId}{[required] The unique Trust ID of the trust relationship to verify.}
@@ -17,6 +15,10 @@ AWS Directory Service for Microsoft Active Directory allows you to configure and
 \details{
 This action verifies a trust relationship between your AWS Managed Microsoft AD directory and an external domain.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{verify_trust(
+  TrustId = "string"
+)
 }
+}
+

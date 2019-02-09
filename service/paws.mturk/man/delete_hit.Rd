@@ -2,11 +2,9 @@
 % Please edit documentation in R/paws.mturk_operations.R
 \name{delete_hit}
 \alias{delete_hit}
-\title{The \code{DeleteHIT} operation is used to delete HIT that is no longer needed}
+\title{The DeleteHIT operation is used to delete HIT that is no longer needed}
 \usage{
-delete_hit(
-  HITId = "string"
-)
+delete_hit(HITId)
 }
 \arguments{
 \item{HITId}{[required] The ID of the HIT to be deleted.}
@@ -23,6 +21,10 @@ You can only dispose of HITs that are in the \code{Reviewable} state, with all o
 \item Disposing HITs can improve the performance of operations such as ListReviewableHITs and ListHITs.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_hit(
+  HITId = "string"
+)
 }
+}
+

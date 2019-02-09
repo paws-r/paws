@@ -4,10 +4,7 @@
 \alias{delete_usage_plan_key}
 \title{Deletes a usage plan key and remove the underlying API key from the associated usage plan}
 \usage{
-delete_usage_plan_key(
-  usagePlanId = "string",
-  keyId = "string"
-)
+delete_usage_plan_key(usagePlanId, keyId)
 }
 \arguments{
 \item{usagePlanId}{[required] [Required] The Id of the UsagePlan resource representing the usage plan containing the to-be-deleted UsagePlanKey resource representing a plan customer.}
@@ -17,6 +14,11 @@ delete_usage_plan_key(
 \description{
 Deletes a usage plan key and remove the underlying API key from the associated usage plan.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_usage_plan_key(
+  usagePlanId = "string",
+  keyId = "string"
+)
 }
+}
+

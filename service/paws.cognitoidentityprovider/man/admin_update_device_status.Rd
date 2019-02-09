@@ -4,12 +4,8 @@
 \alias{admin_update_device_status}
 \title{Updates the device status as an administrator}
 \usage{
-admin_update_device_status(
-  UserPoolId = "string",
-  Username = "string",
-  DeviceKey = "string",
-  DeviceRememberedStatus = "remembered"|"not_remembered"
-)
+admin_update_device_status(UserPoolId, Username, DeviceKey,
+  DeviceRememberedStatus = NULL)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID.}
@@ -26,6 +22,13 @@ Updates the device status as an administrator.
 \details{
 Requires developer credentials.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{admin_update_device_status(
+  UserPoolId = "string",
+  Username = "string",
+  DeviceKey = "string",
+  DeviceRememberedStatus = "remembered"|"not_remembered"
+)
 }
+}
+

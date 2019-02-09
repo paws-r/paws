@@ -4,13 +4,8 @@
 \alias{describe_directories}
 \title{Obtains information about the directories that belong to this account}
 \usage{
-describe_directories(
-  DirectoryIds = list(
-    "string"
-  ),
-  NextToken = "string",
-  Limit = 123
-)
+describe_directories(DirectoryIds = NULL, NextToken = NULL,
+  Limit = NULL)
 }
 \arguments{
 \item{DirectoryIds}{A list of identifiers of the directories for which to obtain the information. If this member is null, all directories that belong to the current account are returned.
@@ -31,6 +26,14 @@ This operation supports pagination with the use of the \code{NextToken} request 
 
 You can also specify a maximum number of return results with the \code{Limit} parameter.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{describe_directories(
+  DirectoryIds = list(
+    "string"
+  ),
+  NextToken = "string",
+  Limit = 123
+)
 }
+}
+

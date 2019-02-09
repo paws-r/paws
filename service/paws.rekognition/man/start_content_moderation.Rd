@@ -4,22 +4,9 @@
 \alias{start_content_moderation}
 \title{Starts asynchronous detection of explicit or suggestive adult content in a stored video}
 \usage{
-start_content_moderation(
-  Video = list(
-    S3Object = list(
-      Bucket = "string",
-      Name = "string",
-      Version = "string"
-    )
-  ),
-  MinConfidence = 123.0,
-  ClientRequestToken = "string",
-  NotificationChannel = list(
-    SNSTopicArn = "string",
-    RoleArn = "string"
-  ),
-  JobTag = "string"
-)
+start_content_moderation(Video, MinConfidence = NULL,
+  ClientRequestToken = NULL, NotificationChannel = NULL,
+  JobTag = NULL)
 }
 \arguments{
 \item{Video}{[required] The video in which you want to moderate content. The video must be stored in an Amazon S3 bucket.}
@@ -38,10 +25,27 @@ Starts asynchronous detection of explicit or suggestive adult content in a store
 \details{
 Amazon Rekognition Video can moderate content in a video stored in an Amazon S3 bucket. Use Video to specify the bucket name and the filename of the video. \code{StartContentModeration} returns a job identifier (\code{JobId}) which you use to get the results of the analysis. When content moderation analysis is finished, Amazon Rekognition Video publishes a completion status to the Amazon Simple Notification Service topic that you specify in \code{NotificationChannel}.
 
-To get the results of the content moderation analysis, first check that the status value published to the Amazon SNS topic is \code{SUCCEEDED}. If so, call and pass the job identifier (\code{JobId}) from the initial call to \code{StartContentModeration}.
+To get the results of the content moderation analysis, first check that the status value published to the Amazon SNS topic is \code{SUCCEEDED}. If so, call GetContentModeration and pass the job identifier (\code{JobId}) from the initial call to \code{StartContentModeration}.
 
 For more information, see Detecting Unsafe Content in the Amazon Rekognition Developer Guide.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{start_content_moderation(
+  Video = list(
+    S3Object = list(
+      Bucket = "string",
+      Name = "string",
+      Version = "string"
+    )
+  ),
+  MinConfidence = 123.0,
+  ClientRequestToken = "string",
+  NotificationChannel = list(
+    SNSTopicArn = "string",
+    RoleArn = "string"
+  ),
+  JobTag = "string"
+)
 }
+}
+

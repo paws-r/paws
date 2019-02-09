@@ -4,9 +4,7 @@
 \alias{delete_account}
 \title{Deletes the specified Amazon Chime account}
 \usage{
-delete_account(
-  AccountId = "string"
-)
+delete_account(AccountId)
 }
 \arguments{
 \item{AccountId}{[required] The Amazon Chime account ID.}
@@ -21,6 +19,10 @@ Deleted accounts appear in your \code{Disabled} accounts list for 90 days. To re
 
 After 90 days, deleted accounts are permanently removed from your \code{Disabled} accounts list.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_account(
+  AccountId = "string"
+)
 }
+}
+

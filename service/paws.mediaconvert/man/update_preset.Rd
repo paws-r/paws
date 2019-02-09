@@ -4,7 +4,23 @@
 \alias{update_preset}
 \title{Modify one of your existing presets}
 \usage{
-update_preset(
+update_preset(Category = NULL, Description = NULL, Name,
+  Settings = NULL)
+}
+\arguments{
+\item{Category}{The new category for the preset, if you are changing it.}
+
+\item{Description}{The new description for the preset, if you are changing it.}
+
+\item{Name}{[required] The name of the preset you are modifying.}
+
+\item{Settings}{}
+}
+\description{
+Modify one of your existing presets.
+}
+\section{Accepted Parameters}{
+\preformatted{update_preset(
   Category = "string",
   Description = "string",
   Name = "string",
@@ -115,6 +131,7 @@ update_preset(
             FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
             FontOpacity = 123,
             FontResolution = 123,
+            FontScript = "AUTOMATIC"|"HANS"|"HANT",
             FontSize = 123,
             OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
             OutlineSize = 123,
@@ -134,6 +151,7 @@ update_preset(
             FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
             FontOpacity = 123,
             FontResolution = 123,
+            FontScript = "AUTOMATIC"|"HANS"|"HANT",
             FontSize = 123,
             OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
             OutlineSize = 123,
@@ -144,6 +162,9 @@ update_preset(
             TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
             XPosition = 123,
             YPosition = 123
+          ),
+          EmbeddedDestinationSettings = list(
+            Destination608ChannelNumber = 123
           ),
           SccDestinationSettings = list(
             Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
@@ -193,6 +214,7 @@ update_preset(
         EbpAudioInterval = "VIDEO_AND_FIXED_INTERVALS"|"VIDEO_INTERVAL",
         EbpPlacement = "VIDEO_AND_AUDIO_PIDS"|"VIDEO_PID",
         EsRateInPes = "INCLUDE"|"EXCLUDE",
+        ForceTsVideoEbpOrder = "FORCE"|"DEFAULT",
         FragmentTime = 123.0,
         MaxPcrInterval = 123,
         MinEbpInterval = 123,
@@ -481,18 +503,5 @@ update_preset(
   )
 )
 }
-\arguments{
-\item{Category}{The new category for the preset, if you are changing it.}
-
-\item{Description}{The new description for the preset, if you are changing it.}
-
-\item{Name}{[required] The name of the preset you are modifying.}
-
-\item{Settings}{}
 }
-\description{
-Modify one of your existing presets.
-}
-\examples{
 
-}

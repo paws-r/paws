@@ -4,7 +4,16 @@
 \alias{create_distribution_with_tags}
 \title{Create a new distribution with tags}
 \usage{
-create_distribution_with_tags(
+create_distribution_with_tags(DistributionConfigWithTags)
+}
+\arguments{
+\item{DistributionConfigWithTags}{[required] The distribution's configuration information.}
+}
+\description{
+Create a new distribution with tags.
+}
+\section{Accepted Parameters}{
+\preformatted{create_distribution_with_tags(
   DistributionConfigWithTags = list(
     DistributionConfig = list(
       CallerReference = "string",
@@ -259,12 +268,5 @@ create_distribution_with_tags(
   )
 )
 }
-\arguments{
-\item{DistributionConfigWithTags}{[required] The distribution's configuration information.}
 }
-\description{
-Create a new distribution with tags.
-}
-\examples{
 
-}

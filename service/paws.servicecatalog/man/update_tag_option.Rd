@@ -4,11 +4,7 @@
 \alias{update_tag_option}
 \title{Updates the specified TagOption}
 \usage{
-update_tag_option(
-  Id = "string",
-  Value = "string",
-  Active = TRUE|FALSE
-)
+update_tag_option(Id, Value = NULL, Active = NULL)
 }
 \arguments{
 \item{Id}{[required] The TagOption identifier.}
@@ -20,6 +16,12 @@ update_tag_option(
 \description{
 Updates the specified TagOption.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{update_tag_option(
+  Id = "string",
+  Value = "string",
+  Active = TRUE|FALSE
+)
 }
+}
+

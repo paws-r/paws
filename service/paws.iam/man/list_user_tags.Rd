@@ -4,11 +4,7 @@
 \alias{list_user_tags}
 \title{Lists the tags that are attached to the specified user}
 \usage{
-list_user_tags(
-  UserName = "string",
-  Marker = "string",
-  MaxItems = 123
-)
+list_user_tags(UserName, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{UserName}{[required] The name of the IAM user whose tags you want to see.
@@ -24,10 +20,19 @@ If you do not include this parameter, it defaults to 100. Note that IAM might re
 \description{
 Lists the tags that are attached to the specified user. The returned list of tags is sorted by tag key. For more information about tagging, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM Identities} in the \emph{IAM User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{list_user_tags(
+  UserName = "string",
+  Marker = "string",
+  MaxItems = 123
+)
+}
+}
+
 \examples{
 # The following example shows how to list the tags attached to a user.
-list_user_tags(
+\donttest{list_user_tags(
   UserName = "anika"
-)
+)}
 
 }

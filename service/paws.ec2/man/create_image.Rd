@@ -4,7 +4,34 @@
 \alias{create_image}
 \title{Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance that is either running or stopped}
 \usage{
-create_image(
+create_image(BlockDeviceMappings = NULL, Description = NULL,
+  DryRun = NULL, InstanceId, Name, NoReboot = NULL)
+}
+\arguments{
+\item{BlockDeviceMappings}{Information about one or more block device mappings. This parameter cannot be used to modify the encryption status of existing volumes or snapshots. To create an AMI with encrypted snapshots, use the CopyImage action.}
+
+\item{Description}{A description for the new image.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{InstanceId}{[required] The ID of the instance.}
+
+\item{Name}{[required] A name for the new image.
+
+Constraints: 3-128 alphanumeric characters, parentheses (()), square brackets ([]), spaces ( ), periods (.), slashes (/), dashes (-), single quotes ('), at-signs (@), or underscores(\_)}
+
+\item{NoReboot}{By default, Amazon EC2 attempts to shut down and reboot the instance before creating the image. If the 'No Reboot' option is set, Amazon EC2 doesn't shut down the instance before creating the image. When this option is used, file system integrity on the created image can't be guaranteed.}
+}
+\description{
+Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance that is either running or stopped.
+}
+\details{
+If you customized your instance with instance store volumes or EBS volumes in addition to the root device volume, the new AMI contains block device mapping information for those volumes. When you launch an instance from this new AMI, the instance automatically launches with those additional volumes.
+
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html}{Creating Amazon EBS-Backed Linux AMIs} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+}
+\section{Accepted Parameters}{
+\preformatted{create_image(
   BlockDeviceMappings = list(
     list(
       DeviceName = "string",
@@ -28,34 +55,13 @@ create_image(
   NoReboot = TRUE|FALSE
 )
 }
-\arguments{
-\item{BlockDeviceMappings}{Information about one or more block device mappings. This parameter cannot be used to modify the encryption status of existing volumes or snapshots. To create an AMI with encrypted snapshots, use the CopyImage action.}
-
-\item{Description}{A description for the new image.}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
-
-\item{InstanceId}{[required] The ID of the instance.}
-
-\item{Name}{[required] A name for the new image.
-
-Constraints: 3-128 alphanumeric characters, parentheses (()), square brackets ([]), spaces ( ), periods (.), slashes (/), dashes (-), single quotes ('), at-signs (@), or underscores(\_)}
-
-\item{NoReboot}{By default, Amazon EC2 attempts to shut down and reboot the instance before creating the image. If the 'No Reboot' option is set, Amazon EC2 doesn't shut down the instance before creating the image. When this option is used, file system integrity on the created image can't be guaranteed.}
 }
-\description{
-Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance that is either running or stopped.
-}
-\details{
-If you customized your instance with instance store volumes or EBS volumes in addition to the root device volume, the new AMI contains block device mapping information for those volumes. When you launch an instance from this new AMI, the instance automatically launches with those additional volumes.
 
-For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html}{Creating Amazon EBS-Backed Linux AMIs} in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
 \examples{
 # This example creates an AMI from the specified instance and adds an EBS
 # volume with the device name /dev/sdh and an instance store volume with
 # the device name /dev/sdc.
-create_image(
+\donttest{create_image(
   BlockDeviceMappings = list(
     list(
       DeviceName = "/dev/sdh",
@@ -72,6 +78,6 @@ create_image(
   InstanceId = "i-1234567890abcdef0",
   Name = "My server",
   NoReboot = TRUE
-)
+)}
 
 }

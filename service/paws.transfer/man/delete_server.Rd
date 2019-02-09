@@ -4,9 +4,7 @@
 \alias{delete_server}
 \title{Deletes the Secure File Transfer Protocol (SFTP) server that you specify}
 \usage{
-delete_server(
-  ServerId = "string"
-)
+delete_server(ServerId)
 }
 \arguments{
 \item{ServerId}{[required] A unique system-assigned identifier for an SFTP server instance.}
@@ -17,6 +15,10 @@ Deletes the Secure File Transfer Protocol (SFTP) server that you specify. If you
 \details{
 No response returns from this call.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{delete_server(
+  ServerId = "string"
+)
 }
+}
+

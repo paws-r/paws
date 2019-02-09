@@ -4,12 +4,7 @@
 \alias{untag_user}
 \title{Removes the specified tags from the user}
 \usage{
-untag_user(
-  UserName = "string",
-  TagKeys = list(
-    "string"
-  )
-)
+untag_user(UserName, TagKeys)
 }
 \arguments{
 \item{UserName}{[required] The name of the IAM user from which you want to remove tags.
@@ -21,14 +16,24 @@ This parameter accepts (through its \href{http://wikipedia.org/wiki/regex}{regex
 \description{
 Removes the specified tags from the user. For more information about tagging, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM Identities} in the \emph{IAM User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{untag_user(
+  UserName = "string",
+  TagKeys = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # The following example shows how to remove tags that are attached to a
 # user named 'anika'.
-untag_user(
+\donttest{untag_user(
   TagKeys = list(
     "Dept"
   ),
   UserName = "anika"
-)
+)}
 
 }

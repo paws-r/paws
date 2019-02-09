@@ -4,11 +4,7 @@
 \alias{register_usage}
 \title{Paid container software products sold through AWS Marketplace must integrate with the AWS Marketplace Metering Service and call the RegisterUsage operation for software entitlement and metering}
 \usage{
-register_usage(
-  ProductCode = "string",
-  PublicKeyVersion = 123,
-  Nonce = "string"
-)
+register_usage(ProductCode, PublicKeyVersion, Nonce = NULL)
 }
 \arguments{
 \item{ProductCode}{[required] Product code is used to uniquely identify a product in AWS Marketplace. The product code should be the same as the one used during the publishing of a new product.}
@@ -26,6 +22,12 @@ Paid container software products sold through AWS Marketplace must integrate wit
 \item \emph{Metering}: RegisterUsage meters software use per ECS task, per hour, with usage prorated to the second. A minimum of 1 minute of usage applies to tasks that are short lived. For example, if a customer has a 10 node ECS cluster and creates an ECS service configured as a Daemon Set, then ECS will launch a task on all 10 cluster nodes and the customer will be charged: (10 * hourly\_rate). Metering for software use is automatically handled by the AWS Marketplace Metering Control Plane -- your software is not required to perform any metering specific actions, other than call RegisterUsage once for metering of software use to commence. The AWS Marketplace Metering Control Plane will also continue to bill customers for running ECS tasks, regardless of the customers subscription state, removing the need for your software to perform entitlement checks at runtime.
 }
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{register_usage(
+  ProductCode = "string",
+  PublicKeyVersion = 123,
+  Nonce = "string"
+)
 }
+}
+

@@ -4,26 +4,9 @@
 \alias{test_invoke_authorizer}
 \title{Simulate the execution of an Authorizer in your RestApi with headers, parameters, and an incoming request body}
 \usage{
-test_invoke_authorizer(
-  restApiId = "string",
-  authorizerId = "string",
-  headers = list(
-    "string"
-  ),
-  multiValueHeaders = list(
-    list(
-      "string"
-    )
-  ),
-  pathWithQueryString = "string",
-  body = "string",
-  stageVariables = list(
-    "string"
-  ),
-  additionalContext = list(
-    "string"
-  )
-)
+test_invoke_authorizer(restApiId, authorizerId, headers = NULL,
+  multiValueHeaders = NULL, pathWithQueryString = NULL, body = NULL,
+  stageVariables = NULL, additionalContext = NULL)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -50,6 +33,27 @@ Simulate the execution of an Authorizer in your RestApi with headers, parameters
 \href{https://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html}{Enable custom authorizers}
 :::
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{test_invoke_authorizer(
+  restApiId = "string",
+  authorizerId = "string",
+  headers = list(
+    "string"
+  ),
+  multiValueHeaders = list(
+    list(
+      "string"
+    )
+  ),
+  pathWithQueryString = "string",
+  body = "string",
+  stageVariables = list(
+    "string"
+  ),
+  additionalContext = list(
+    "string"
+  )
+)
 }
+}
+

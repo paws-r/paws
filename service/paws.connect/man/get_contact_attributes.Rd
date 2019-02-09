@@ -4,10 +4,7 @@
 \alias{get_contact_attributes}
 \title{Retrieves the contact attributes associated with a contact}
 \usage{
-get_contact_attributes(
-  InstanceId = "string",
-  InitialContactId = "string"
-)
+get_contact_attributes(InstanceId, InitialContactId)
 }
 \arguments{
 \item{InstanceId}{[required] The instance ID for the instance from which to retrieve contact attributes.}
@@ -17,6 +14,11 @@ get_contact_attributes(
 \description{
 Retrieves the contact attributes associated with a contact.
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{get_contact_attributes(
+  InstanceId = "string",
+  InitialContactId = "string"
+)
 }
+}
+

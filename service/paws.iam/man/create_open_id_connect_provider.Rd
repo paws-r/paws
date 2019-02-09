@@ -2,17 +2,9 @@
 % Please edit documentation in R/paws.iam_operations.R
 \name{create_open_id_connect_provider}
 \alias{create_open_id_connect_provider}
-\title{Creates an IAM entity to describe an identity provider (IdP) that supports \link{OpenID Connect (OIDC)}(http://openid}
+\title{Creates an IAM entity to describe an identity provider (IdP) that supports OpenID Connect (OIDC)}
 \usage{
-create_open_id_connect_provider(
-  Url = "string",
-  ClientIDList = list(
-    "string"
-  ),
-  ThumbprintList = list(
-    "string"
-  )
-)
+create_open_id_connect_provider(Url, ClientIDList = NULL, ThumbprintList)
 }
 \arguments{
 \item{Url}{[required] The URL of the identity provider. The URL must begin with \code{https://} and should correspond to the \code{iss} claim in the provider's OpenID Connect ID tokens. Per the OIDC standard, path components are allowed but query parameters are not. Typically the URL consists of only a hostname, like \code{https://server.example.org} or \code{https://example.com}.
@@ -50,11 +42,24 @@ You get all of this information from the OIDC IdP that you want to use to access
 
 Because trust for the OIDC provider is derived from the IAM provider that this operation creates, it is best to limit access to the CreateOpenIDConnectProvider operation to highly privileged users.
 }
+\section{Accepted Parameters}{
+\preformatted{create_open_id_connect_provider(
+  Url = "string",
+  ClientIDList = list(
+    "string"
+  ),
+  ThumbprintList = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # The following example defines a new OIDC provider in IAM with a client
 # ID of my-application-id and pointing at the server with a URL of
 # https://server.example.com.
-create_open_id_connect_provider(
+\donttest{create_open_id_connect_provider(
   ClientIDList = list(
     "my-application-id"
   ),
@@ -62,6 +67,6 @@ create_open_id_connect_provider(
     "3768084dfb3d2b68b7897bf5f565da8efEXAMPLE"
   ),
   Url = "https://server.example.com"
-)
+)}
 
 }

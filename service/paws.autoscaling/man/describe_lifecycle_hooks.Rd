@@ -4,12 +4,7 @@
 \alias{describe_lifecycle_hooks}
 \title{Describes the lifecycle hooks for the specified Auto Scaling group}
 \usage{
-describe_lifecycle_hooks(
-  AutoScalingGroupName = "string",
-  LifecycleHookNames = list(
-    "string"
-  )
-)
+describe_lifecycle_hooks(AutoScalingGroupName, LifecycleHookNames = NULL)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
@@ -19,11 +14,21 @@ describe_lifecycle_hooks(
 \description{
 Describes the lifecycle hooks for the specified Auto Scaling group.
 }
+\section{Accepted Parameters}{
+\preformatted{describe_lifecycle_hooks(
+  AutoScalingGroupName = "string",
+  LifecycleHookNames = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # This example describes the lifecycle hooks for the specified Auto
 # Scaling group.
-describe_lifecycle_hooks(
+\donttest{describe_lifecycle_hooks(
   AutoScalingGroupName = "my-auto-scaling-group"
-)
+)}
 
 }

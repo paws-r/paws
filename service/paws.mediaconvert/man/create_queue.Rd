@@ -4,19 +4,8 @@
 \alias{create_queue}
 \title{Create a new transcoding queue}
 \usage{
-create_queue(
-  Description = "string",
-  Name = "string",
-  PricingPlan = "ON_DEMAND"|"RESERVED",
-  ReservationPlanSettings = list(
-    Commitment = "ONE_YEAR",
-    RenewalType = "AUTO_RENEW"|"EXPIRE",
-    ReservedSlots = 123
-  ),
-  Tags = list(
-    "string"
-  )
-)
+create_queue(Description = NULL, Name, PricingPlan = NULL,
+  ReservationPlanSettings = NULL, Tags = NULL)
 }
 \arguments{
 \item{Description}{Optional. A description of the queue that you are creating.}
@@ -32,6 +21,20 @@ create_queue(
 \description{
 Create a new transcoding queue. For information about queues, see Working With Queues in the User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/working-with-queues.html
 }
-\examples{
-
+\section{Accepted Parameters}{
+\preformatted{create_queue(
+  Description = "string",
+  Name = "string",
+  PricingPlan = "ON_DEMAND"|"RESERVED",
+  ReservationPlanSettings = list(
+    Commitment = "ONE_YEAR",
+    RenewalType = "AUTO_RENEW"|"EXPIRE",
+    ReservedSlots = 123
+  ),
+  Tags = list(
+    "string"
+  )
+)
 }
+}
+

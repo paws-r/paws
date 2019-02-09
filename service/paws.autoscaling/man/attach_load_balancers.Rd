@@ -4,12 +4,7 @@
 \alias{attach_load_balancers}
 \title{Attaches one or more Classic Load Balancers to the specified Auto Scaling group}
 \usage{
-attach_load_balancers(
-  AutoScalingGroupName = "string",
-  LoadBalancerNames = list(
-    "string"
-  )
-)
+attach_load_balancers(AutoScalingGroupName, LoadBalancerNames)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
@@ -26,14 +21,24 @@ To describe the load balancers for an Auto Scaling group, use DescribeLoadBalanc
 
 For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-load-balancer-asg.html}{Attach a Load Balancer to Your Auto Scaling Group} in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
+\section{Accepted Parameters}{
+\preformatted{attach_load_balancers(
+  AutoScalingGroupName = "string",
+  LoadBalancerNames = list(
+    "string"
+  )
+)
+}
+}
+
 \examples{
 # This example attaches the specified load balancer to the specified Auto
 # Scaling group.
-attach_load_balancers(
+\donttest{attach_load_balancers(
   AutoScalingGroupName = "my-auto-scaling-group",
   LoadBalancerNames = list(
     "my-load-balancer"
   )
-)
+)}
 
 }
