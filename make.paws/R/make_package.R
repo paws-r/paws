@@ -100,14 +100,12 @@ copy_customizations <- function(api, path) {
 
 # Generate tests for the package and write them to the tests folder.
 write_tests <- function(api, path) {
-  testthat <- make_testthat_file(api)
-  tests <- make_tests(api)
   package <- package_name(api)
   filename <- paste0("test_", package, ".R")
   test_path <- file.path(path, "tests")
-  testthat <- add_edit_warning(testthat)
+
+  tests <- make_tests(api)
   tests <- add_edit_warning(tests)
-  write_list(testthat, file.path(test_path, "testthat.R"))
   write_list(tests, file.path(test_path, "testthat", filename))
 }
 
