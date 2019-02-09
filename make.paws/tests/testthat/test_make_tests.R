@@ -17,21 +17,6 @@ format_test_code <- function(code) {
   return(result)
 }
 
-test_that("make_testthat_file", {
-  api <- list(
-    name = "example"
-  )
-  a <- make_testthat_file(api)
-  e <- code({
-    library(testthat)
-    library(paws.example)
-    test_check("paws.example")
-  })
-  actual <- format_test_code(a)
-  expected <- format_test_code(e)
-  expect_equal(actual, expected)
-})
-
 test_that("make_test no arguments", {
   operation <- list(
     name = "foo"

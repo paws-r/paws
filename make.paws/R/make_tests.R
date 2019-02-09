@@ -51,26 +51,6 @@ run_tests_internal <- function(path, timeout = 180) {
 
 #-------------------------------------------------------------------------------
 
-# Make the testthat.R file template.
-TESTTHAT_TEMPLATE <- make_code_template({
-  library(testthat)
-  library(.PACKAGE)
-  test_check(.PACKAGE_QUOTED)
-})
-
-# Make the contents of the testthat.R file which runs a package's tests.
-make_testthat_file <- function(api) {
-  name <- package_name(api)
-  result <- render_code_template(
-    template = TESTTHAT_TEMPLATE,
-    values = list(
-      .PACKAGE = as.symbol(name),
-      .PACKAGE_QUOTED = name
-    )
-  )
-  return(result)
-}
-
 # Make the individual test template.
 # The template must be defined outside `make_test` for code coverage to work.
 TEST_TEMPLATE <- make_code_template({
