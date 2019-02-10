@@ -39,7 +39,7 @@ list:
 build: ${PACKAGES}
 	@echo "build the AWS SDK packages"
 
-${PACKAGES}:
+${PACKAGES}: deps
 	@echo "build $@"
 	@API=$$(grep -e "^$@\b" PACKAGES.txt | awk '{ print $$2 }') && \
 	Rscript -e "library(make.paws); make_package('$$API', '${IN_DIR}', '${OUT_DIR}')" && \
