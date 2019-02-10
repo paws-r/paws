@@ -14,7 +14,7 @@ new_operation(name, http_method, http_path, paginator,
 
 \item{http_path}{The HTTP path.}
 
-\item{paginator}{Currently unusued.}
+\item{paginator}{Currently unused.}
 
 \item{before_presign_fn}{Currently unused.}
 }
