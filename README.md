@@ -35,7 +35,7 @@ devtools::install_github("paws-r/paws/service/paws.ec2")
 ### Credentials
 
 First, set up your credentials and region. Here we set them within R.
-Paws also supports OS envrionment variables, AWS credential files, and
+Paws also supports OS environment variables, AWS credential files, and
 IAM roles. See [docs/credentials.md](docs/credentials.md) for more info.
 
 ``` r
