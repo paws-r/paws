@@ -3,3 +3,4 @@
 .RData
 .Ruserdata
 *.Rcheck
+cran-comments.md
