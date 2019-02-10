@@ -3,10 +3,10 @@ context("Network")
 test_that("issue", {
   req <- HttpRequest(
     method = "GET",
-    url = parse_url("https://jsonplaceholder.typicode.com/todos/1")
+    url = parse_url("https://httpbin.org/json")
   )
   resp <- issue(req)
   expect_equal(resp$status_code, 200)
   expect_error(body <- jsonlite::fromJSON(rawToChar(resp$body)), NA)
-  expect_equal(body$id, 1)
+  expect_equal(body$slideshow$title, "Sample Slide Show")
 })
