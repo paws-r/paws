@@ -6,7 +6,7 @@ Status](https://travis-ci.com/paws-r/paws.svg?branch=master)](https://travis-ci.
 [![AppVeyor Build
 Status](https://ci.appveyor.com/api/projects/status/2ma1spb2f55129qc/branch/master?svg=true)](https://ci.appveyor.com/project/paws-r/paws/branch/master)
 [![codecov](https://codecov.io/gh/paws-r/paws/branch/master/graph/badge.svg)](https://codecov.io/gh/paws-r/paws)
-[![view examples](https://img.shields.io/badge/learn%20by-examples-0077b3.svg?style=flat-square)](https://github.com/paws-r/paws/tree/master/examples)
+[![view examples](https://img.shields.io/badge/learn%20by-examples-0077b3.svg)](https://github.com/paws-r/paws/tree/master/examples)
 
 Paws is a **P**ackage for **A**mazon **W**eb **S**ervices. Paws provides
 access to the full suite of AWS services from within R.
