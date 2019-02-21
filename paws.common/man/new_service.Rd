@@ -12,7 +12,8 @@ new_service(metadata, handlers)
 \item{handlers}{A set of handlers, e.g. from \code{new_handlers}.}
 }
 \description{
-Return an API service client used to make requests.
+Return an API service object with information and handlers needed to make
+API requests.
 }
 \details{
 The \code{metadata} parameter requires a list like the following:\preformatted{list(
@@ -26,3 +27,29 @@ The \code{metadata} parameter requires a list like the following:\preformatted{l
 )
 }
 }
+\examples{
+# Metadata for the S3 API.
+metadata <- list(
+  service_name = "s3",
+  endpoints = list("us-east-1" = "s3.amazonaws.com"),
+  service_id = "S3",
+  api_version = "2006-03-01",
+  signing_name = NULL,
+  json_version = "",
+  target_prefix = ""
+)
+
+# Handlers for S3.
+handlers <- new_handlers("restxml", "v4")
+
+# Build a service object for S3, containing the information necessary to
+# build, send, and receive requests.
+service <- new_service(metadata, handlers)
+
+}
+\seealso{
+Other API request functions: \code{\link{new_handlers}},
+  \code{\link{new_operation}}, \code{\link{new_request}},
+  \code{\link{send_request}}
+}
+\concept{API request functions}

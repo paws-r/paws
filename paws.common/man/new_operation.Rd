@@ -19,5 +19,23 @@ new_operation(name, http_method, http_path, paginator,
 \item{before_presign_fn}{Currently unused.}
 }
 \description{
-Return an API operation object
+Return an API operation object, with information on what to request for a
+given API operation. For example, the S3 service's "list buckets" operation
+is named \code{ListBuckets}, it requires a \code{GET} request, and so on.
 }
+\examples{
+# Save info about the S3 ListBuckets API operation.
+op <- new_operation(
+  name = "ListBuckets",
+  http_method = "GET",
+  http_path = "/",
+  paginator = list()
+)
+
+}
+\seealso{
+Other API request functions: \code{\link{new_handlers}},
+  \code{\link{new_request}}, \code{\link{new_service}},
+  \code{\link{send_request}}
+}
+\concept{API request functions}

@@ -16,3 +16,11 @@ populate(input, interface)
 with a similar shape. The second list, called the \code{interface}, will generally
 also contain extra metadata for making API requests, such as names or types.
 }
+\examples{
+# Make an interface with metadata, e.g. type.
+interface <- tag_add(list(foo = c(), bar = c()), list(type = "structure"))
+
+# Combine data and the metadata from the interface.
+populate(list(foo = 1, bar = 2), interface)
+
+}
