@@ -24,10 +24,6 @@ new_service(metadata, handlers)
 Return an API service object with information and handlers needed to make
 API requests.
 }
-\section{Service metadata}{
-
-}
-
 \section{Region and credentials}{
 
 

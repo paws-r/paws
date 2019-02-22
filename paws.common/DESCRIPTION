@@ -9,8 +9,8 @@ Authors@R: c(
     )
 Description: Functions for making low-level API requests to Amazon Web Services.
     The functions handle building, signing, and sending requests, and receiving
-    responses. They are designed to help build higher-level APIs to individual 
-    services, such as Simple Storage Service (S3).
+    responses. They are designed to help build higher-level interfaces to 
+    individual services, such as Simple Storage Service (S3).
 License: Apache License (>= 2.0)
 Encoding: UTF-8
 LazyData: true
