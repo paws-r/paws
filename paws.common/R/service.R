@@ -56,8 +56,6 @@ new_handlers <- function(protocol, signer) {
 #' Return an API service object with information and handlers needed to make
 #' API requests.
 #'
-#' @section Service metadata:
-#'
 #' @section Region and credentials:
 #'
 #' `new_service` requires that you've set your AWS region in one of:
