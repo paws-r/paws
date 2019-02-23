@@ -18,3 +18,18 @@ new_request(client, operation, params, data)
 \description{
 Return an API request object, with everything needed to make a request.
 }
+\examples{
+# Make a request object for the S3 ListBuckets operation.
+\donttest{client <- function() {new_service(metadata, handlers)}
+op <- new_operation("ListBuckets", "GET", "/", list())
+params <- list()
+data <- tag_add(list(Buckets = list()), list(type = "structure"))
+req <- new_request(client, op, params, data)}
+
+}
+\seealso{
+Other API request functions: \code{\link{new_handlers}},
+  \code{\link{new_operation}}, \code{\link{new_service}},
+  \code{\link{send_request}}
+}
+\concept{API request functions}

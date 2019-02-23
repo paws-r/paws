@@ -60,6 +60,13 @@ populate_scalar <- function(input, interface) {
 #' @param input A list with data to copy.
 #' @param interface A list of a similar shape to copy data into.
 #'
+#' @examples
+#' # Make an interface with metadata, e.g. type.
+#' interface <- tag_add(list(foo = c(), bar = c()), list(type = "structure"))
+#'
+#' # Combine data and the metadata from the interface.
+#' populate(list(foo = 1, bar = 2), interface)
+#'
 #' @export
 populate <- function(input, interface) {
   t <- tag_get(interface, "type")

@@ -63,6 +63,16 @@ Handlers <- struct(
 #' @param existing An existing request handler list.
 #' @param ... One or more request-handling functions to add.
 #'
+#' @examples
+#' # Replace a handler list with a new handler list.
+#' \donttest{handlers$build <- handlers_set(restxml_build)}
+#'
+#' # Add a new handler onto the end of an existing handler list.
+#' \donttest{handlers$build <- handlers_add_back(handlers$build, restxml_build)}
+#'
+#' # Add a new handler at the beginning of an existing handler list.
+#' \donttest{handlers$build <- handlers_add_front(handlers$build, restxml_build)}
+#'
 #' @name handlers
 NULL
 

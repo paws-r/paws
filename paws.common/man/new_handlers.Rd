@@ -15,3 +15,14 @@ or \code{restxml}.}
 \description{
 Return request handlers for a given protocol and request signer.
 }
+\examples{
+# Get the handlers needed for an API using REST-JSON and AWS signature V4.
+handlers <- new_handlers("restjson", "v4")
+
+}
+\seealso{
+Other API request functions: \code{\link{new_operation}},
+  \code{\link{new_request}}, \code{\link{new_service}},
+  \code{\link{send_request}}
+}
+\concept{API request functions}

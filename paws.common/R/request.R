@@ -13,11 +13,26 @@ Operation <- struct(
 
 #' Return an API operation object
 #'
+#' Return an API operation object, with information on what to request for a
+#' given API operation. For example, the S3 service's "list buckets" operation
+#' is named `ListBuckets`, it requires a `GET` request, and so on.
+#'
 #' @param name The API operation name.
 #' @param http_method The HTTP method, e.g. `"GET"` or `"POST"`.
 #' @param http_path The HTTP path.
 #' @param paginator Currently unused.
 #' @param before_presign_fn Currently unused.
+#'
+#' @family API request functions
+#'
+#' @examples
+#' # Save info about the S3 ListBuckets API operation.
+#' op <- new_operation(
+#'   name = "ListBuckets",
+#'   http_method = "GET",
+#'   http_path = "/",
+#'   paginator = list()
+#' )
 #'
 #' @export
 new_operation <- function(name, http_method, http_path, paginator, before_presign_fn = NULL) {
@@ -62,12 +77,22 @@ Request <- struct(
 
 #' Return an API request object
 #'
-#' Return an API request object, with everything needed to make a request.
+#' Return an API request object with everything needed to make a request.
 #'
 #' @param client A service client, e.g. from `new_service`.
 #' @param operation An operation, e.g. from `new_operation`.
 #' @param params A populated input object.
 #' @param data An empty output object.
+#'
+#' @family API request functions
+#'
+#' @examples
+#' # Make a request object for the S3 ListBuckets operation.
+#' \donttest{client <- function() {new_service(metadata, handlers)}
+#' op <- new_operation("ListBuckets", "GET", "/", list())
+#' params <- list()
+#' data <- tag_add(list(Buckets = list()), list(type = "structure"))
+#' req <- new_request(client, op, params, data)}
 #'
 #' @export
 new_request <- function(client, operation, params, data) {
@@ -108,11 +133,16 @@ new_request <- function(client, operation, params, data) {
 
 #' Send a request and handle the response
 #'
-#' Send a request and handle the response, returning an output object
-#' for the API operation that has been populated with the data received in the
-#' response.
+#' Send a request and handle the response. Build the HTTP request, send it to
+#' AWS, interpret the response, and throw an error if the response is not ok.
 #'
 #' @param request A request, e.g. from `new_request`.
+#'
+#' @family API request functions
+#'
+#' @examples
+#' # Send a request and handle the response.
+#' \donttest{resp <- send_request(req)}
 #'
 #' @export
 send_request <- function(request) {

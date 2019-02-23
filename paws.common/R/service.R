@@ -6,6 +6,12 @@
 #'                 or `restxml`.
 #' @param signer Signer: `v2` or `v4`.
 #'
+#' @family API request functions
+#'
+#' @examples
+#' # Get the handlers needed for an API using REST-JSON and AWS signature V4.
+#' handlers <- new_handlers("restjson", "v4")
+#'
 #' @export
 new_handlers <- function(protocol, signer) {
   handler <- function(protocol, type) {
@@ -47,9 +53,24 @@ new_handlers <- function(protocol, signer) {
 
 #' Return an AWS API service object
 #'
-#' Return an API service client used to make requests.
+#' Return an API service object with information and handlers needed to make
+#' API requests.
 #'
-#' The `metadata` parameter requires a list like the following:
+#' @section Region and credentials:
+#'
+#' `new_service` requires that you've set your AWS region in one of:
+#' 1. `AWS_REGION` R environment variable
+#' 2. `AWS_REGION` OS environment variable (Linux and macOS)
+#' 3. `~/.aws/config` AWS configuration file
+#'
+#' `new_service` also requires that you've set your AWS credentials in one of:
+#' 1. `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` R environment variables
+#' 2. `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` OS environment variables
+#'    (Linux and macOS)
+#' 3. `~/.aws/credentials` AWS credentials file
+#' 4. IAM role
+#'
+#' @param metadata A named list of API metadata. It should look like:
 #' ```
 #' list(
 #'   service_name = "string",
@@ -61,9 +82,28 @@ new_handlers <- function(protocol, signer) {
 #'   target_prefix = "string"
 #' )
 #' ```
-#'
-#' @param metadata A named list of API metadata. See details.
 #' @param handlers A set of handlers, e.g. from `new_handlers`.
+#'
+#' @family API request functions
+#'
+#' @examples
+#' \donttest{# Metadata for the S3 API.
+#' metadata <- list(
+#'   service_name = "s3",
+#'   endpoints = list("us-east-1" = "s3.amazonaws.com"),
+#'   service_id = "S3",
+#'   api_version = "2006-03-01",
+#'   signing_name = NULL,
+#'   json_version = "",
+#'   target_prefix = ""
+#' )
+#'
+#' # Handlers for S3.
+#' handlers <- new_handlers("restxml", "v4")
+#'
+#' # Build a service object for S3, containing the information necessary to
+#' # build, send, and receive requests.
+#' service <- new_service(metadata, handlers)}
 #'
 #' @export
 new_service <- function(metadata, handlers) {

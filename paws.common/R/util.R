@@ -1,9 +1,19 @@
 #' Check whether an object is empty
 #'
-#' Check whether an object is empty, e.g. has no sub-elements or is NA or the
+#' Check whether an object is empty, e.g. has no sub-elements, is NA, or is the
 #' empty string.
 #'
 #' @param x An object.
+#'
+#' @examples
+#' is_empty(NA) # TRUE
+#' is_empty("") # TRUE
+#' is_empty(list()) # TRUE
+#' is_empty(list(list())) # TRUE
+#'
+#' is_empty(1) # FALSE
+#' is_empty(list(1)) # FALSE
+#' is_empty(list(list(1))) # FALSE
 #'
 #' @export
 is_empty <- function(x) {
