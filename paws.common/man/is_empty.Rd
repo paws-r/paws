@@ -10,7 +10,7 @@ is_empty(x)
 \item{x}{An object.}
 }
 \description{
-Check whether an object is empty, e.g. has no sub-elements or is NA or the
+Check whether an object is empty, e.g. has no sub-elements, is NA, or is the
 empty string.
 }
 \examples{
