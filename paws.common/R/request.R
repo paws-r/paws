@@ -77,7 +77,7 @@ Request <- struct(
 
 #' Return an API request object
 #'
-#' Return an API request object, with everything needed to make a request.
+#' Return an API request object with everything needed to make a request.
 #'
 #' @param client A service client, e.g. from `new_service`.
 #' @param operation An operation, e.g. from `new_operation`.
