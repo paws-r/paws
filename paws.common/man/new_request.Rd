@@ -16,7 +16,7 @@ new_request(client, operation, params, data)
 \item{data}{An empty output object.}
 }
 \description{
-Return an API request object, with everything needed to make a request.
+Return an API request object with everything needed to make a request.
 }
 \examples{
 # Make a request object for the S3 ListBuckets operation.
