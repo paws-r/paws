@@ -1,56 +1,6 @@
 #' @include make_function.R
 NULL
 
-#' Run all tests in a package in another R session
-#'
-#' @param path The path to the package source.
-#' @param timeout How long it should be allowed to run.
-#'
-#' @export
-run_tests <- function(path, timeout = 180) {
-  result <- tryCatch({
-    run_tests_internal(path, timeout)
-  }, error = function(e) {
-    data.frame(
-      package = basename(path),
-      file = NA_character_,
-      test = NA_character_,
-      success = FALSE,
-      message = "test failure",
-      stringsAsFactors = FALSE
-    )
-  })
-  return(result)
-}
-
-# Run all tests in a package with a given path.
-run_tests_internal <- function(path, timeout = 180) {
-  result <- callr::r(
-    func = function(pkg, ...) devtools::test(pkg, ...),
-    args = list(
-      pkg = path,
-      reporter = testthat::ListReporter
-    ),
-    timeout = timeout
-  )
-  out <- do.call(
-    rbind,
-    lapply(result, function(x) {
-      data.frame(
-        package = basename(path),
-        file = x$file,
-        test = x$test,
-        success = sapply(x$results, function(y) !("error" %in% class(y))),
-        message = sapply(x$results, function(y) y$message),
-        stringsAsFactors = FALSE
-      )
-    })
-  )
-  return(out)
-}
-
-#-------------------------------------------------------------------------------
-
 # Make the individual test template.
 # The template must be defined outside `make_test` for code coverage to work.
 TEST_TEMPLATE <- make_code_template({

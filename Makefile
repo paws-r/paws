@@ -1,6 +1,5 @@
 IN_DIR := ./vendor/aws-sdk-js
-API_DIR := ${IN_DIR}/apis
-OUT_DIR := ./service
+OUT_DIR := ./paws
 SCRIPT_DIR := ./script
 
 # Make R use the user's package library by setting the R user home path (R_USER)
@@ -20,25 +19,25 @@ help:
 	@echo "  install            build and install the AWS SDK"
 	@echo "  common             build and install common functions"
 	@echo "  codegen            build and install the code generator"
-	@echo "  unit               run unit tests"
-	@echo "  integration        run integration tests"
+	@echo "  unit               run unit tests (for common and codegen)"
+	@echo "  integration        run integration tests (for AWS SDK)"
 	@echo "  deps               get project dependencies"
 	@echo "  update-deps        update project dependencies"
 
 build: deps
 	@echo "build the AWS SDK"
-	Rscript -e "library(make.paws); make_sdk('${API_DIR}', '${OUT_DIR}')" && \
+	@Rscript -e "library(make.paws); make_sdk('${IN_DIR}', '${OUT_DIR}')" && \
 	${SCRIPT_DIR}/update_version.sh ${OUT_DIR}
 
 install: build
 	@echo "install the AWS SDK packages"
-	Rscript -e "devtools::install('${OUT_DIR}', upgrade = FALSE, quiet = TRUE)"
+	@Rscript -e "devtools::install('${OUT_DIR}', upgrade = FALSE, quiet = TRUE)"
 
 unit: test-common test-codegen
 
 integration:
 	@echo "run integration tests"
-	Rscript -e "devtools::test('${OUT_DIR}')"
+	@Rscript -e "devtools::test('${OUT_DIR}')"
 
 common:
 	@echo "build and install common functions"

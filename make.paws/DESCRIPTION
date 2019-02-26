@@ -41,6 +41,8 @@ Collate:
     'make_names.R'
     'make_operation.R'
     'make_package.R'
+    'make_sdk.R'
+    'make_sdk_for_api.R'
     'make_service.R'
     'make_tests.R'
     'make_utils.R'

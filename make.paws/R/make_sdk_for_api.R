@@ -1,24 +1,27 @@
-#' Make an R package for a given API
+#' Add the SDK for a given API
 #'
 #' @param api_name Name of the API to make a package for.
 #' @param in_dir Directory containing API files.
 #' @param out_dir Directory of the R package.
-make_package <- function(api_name, in_dir, out_dir) {
+write_sdk_for_api <- function(api_name, in_dir, out_dir) {
   api <- read_api(api_name, in_dir)
-  package <- package_name(api)
+  write_code(api, out_dir)
+  write_tests(api, out_dir)
+  write_documentation(api, out_dir)
+  return(invisible(TRUE))
+}
 
-  r_dir <- file.path(out_dir, "R")
+#-------------------------------------------------------------------------------
+
+# Write code for a given API
+write_code <- function(api, path) {
+  r_dir <- file.path(path, "R")
   write_operations(api, r_dir)
   write_interfaces(api, r_dir)
   write_service(api, r_dir)
   copy_customizations(api, r_dir)
-
-  write_tests(api, out_dir)
-  write_documentation(api, out_dir)
-  return(invisible(package))
+  return(TRUE)
 }
-
-#-------------------------------------------------------------------------------
 
 # Generate the operations and write them to a file in the package.
 write_operations <- function(api, path) {
@@ -67,7 +70,6 @@ write_tests <- function(api, path) {
   package <- package_name(api)
   filename <- paste0("test_", package, ".R")
   test_path <- file.path(path, "tests")
-
   tests <- make_tests(api)
   tests <- add_edit_warning(tests)
   write_list(tests, file.path(test_path, "testthat", filename))
@@ -75,9 +77,7 @@ write_tests <- function(api, path) {
 
 # Generate the package's documentation.
 write_documentation <- function(api, path) {
-  quietly(
-      roxygen2::roxygenize(path)
-  )
+  quietly(roxygen2::roxygenize(path))
   return(TRUE)
 }
 
