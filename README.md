@@ -10,13 +10,10 @@ Status](https://ci.appveyor.com/api/projects/status/2ma1spb2f55129qc/branch/mast
 
 ## Overview
 
-Paws is a **P**ackage for **A**mazon **W**eb **S**ervices. Paws provides
+Paws is a **P**ackage for **A**mazon **W**eb **S**ervices in R. Paws provides
 access to the full suite of AWS services from within R.
 
-Each AWS service has its own R package within Paws. For example, to use
-EC2, use the `paws.ec2` package.
-
-**Disclaimer**: Paws is not a product of or supported by Amazon Web
+Disclaimer: Paws is not a product of or supported by Amazon Web
 Services.
 
 Paws is based on the design and implementation of the [AWS SDK for
@@ -24,14 +21,16 @@ Go](https://github.com/aws/aws-sdk-go) and it uses AWS’s API definition
 files and API documentation from the [AWS SDK for
 JavaScript](https://github.com/aws/aws-sdk-js).
 
-*Logo by [Hsinyi Chen](https://www.starfolioart.com/)*
+*Logo by [Hsinyi Chen](https://www.starfolioart.com/).*
 
 ## Getting Started
 
 ### Installation
 
-Paws is currently available on GitHub. See [the list of available
-packages here](service). Install a package (e.g. `paws.ec2`) using:
+Paws is currently available on GitHub. Each AWS service has its own R
+package within Paws. For example, to use EC2, use the `paws.ec2` package.
+See [the list of available packages here](service). Install a package
+(e.g. `paws.ec2`) using:
 
 ``` r
 devtools::install_github("paws-r/paws/service/paws.ec2")
