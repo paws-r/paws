@@ -24,6 +24,8 @@ Go](https://github.com/aws/aws-sdk-go) and it uses AWS’s API definition
 files and API documentation from the [AWS SDK for
 JavaScript](https://github.com/aws/aws-sdk-js).
 
+*Logo by [Hsinyi Chen](https://www.starfolioart.com/)*
+
 ## Getting Started
 
 ### Installation
