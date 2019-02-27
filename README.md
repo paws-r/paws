@@ -1,5 +1,5 @@
 
-# Paws, an AWS SDK for R
+# Paws, an AWS SDK for R <img src="docs/logo.png" align="right" height="138.5" />
 
 [![Build
 Status](https://travis-ci.com/paws-r/paws.svg?branch=master)](https://travis-ci.com/paws-r/paws)
