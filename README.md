@@ -1,5 +1,5 @@
 
-# Paws, an AWS SDK for R
+# Paws, an AWS SDK for R <img src="docs/logo.png" align="right" height="150" />
 
 [![Build
 Status](https://travis-ci.com/paws-r/paws.svg?branch=master)](https://travis-ci.com/paws-r/paws)
@@ -7,6 +7,8 @@ Status](https://travis-ci.com/paws-r/paws.svg?branch=master)](https://travis-ci.
 Status](https://ci.appveyor.com/api/projects/status/2ma1spb2f55129qc/branch/master?svg=true)](https://ci.appveyor.com/project/paws-r/paws/branch/master)
 [![codecov](https://codecov.io/gh/paws-r/paws/branch/master/graph/badge.svg)](https://codecov.io/gh/paws-r/paws)
 [![view examples](https://img.shields.io/badge/learn%20by-examples-0077b3.svg)](https://github.com/paws-r/paws/tree/master/examples)
+
+## Overview
 
 Paws is a **P**ackage for **A**mazon **W**eb **S**ervices. Paws provides
 access to the full suite of AWS services from within R.
@@ -21,6 +23,8 @@ Paws is based on the design and implementation of the [AWS SDK for
 Go](https://github.com/aws/aws-sdk-go) and it uses AWS’s API definition
 files and API documentation from the [AWS SDK for
 JavaScript](https://github.com/aws/aws-sdk-js).
+
+*Logo by [Hsinyi Chen](https://www.starfolioart.com/)*
 
 ## Getting Started
 
