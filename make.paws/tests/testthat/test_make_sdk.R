@@ -1,6 +1,7 @@
 context("Make package")
 
 test_that("make_package", {
+  skip("TODO: Adapt to make_sdk.")
   path <- tempdir()
 
   # Create a fake API spec.
@@ -93,7 +94,19 @@ test_that("make_package", {
   expect_true(dir.exists(file.path(package_dir, "man")))
 })
 
-# Requires that `R/customizations/aws.dynamodb.R` exists.
+test_that("list_apis", {
+  temp <- tempdir()
+
+  write("", file.path(temp, "api1-2018-01-01.normal.json"))
+  write("", file.path(temp, "api2-2018-01-01.normal.json"))
+  write("skip", file.path(temp, "skip.json"))
+
+  actual <- list_apis(temp)
+  expected <- c("api1", "api2")
+  expect_equal(actual, expected)
+})
+
+# Requires that `R/customizations/dynamodb.R` exists.
 test_that("copy customizations", {
   api <- list(
     name = "dynamodb"
@@ -101,7 +114,7 @@ test_that("copy customizations", {
   path <- tempdir()
 
   copy_customizations(api, path)
-  expect_true(file.exists(file.path(path, "paws.dynamodb_customizations.R")))
+  expect_true(file.exists(file.path(path, "dynamodb_customizations.R")))
 })
 
 test_that("copy customizations -- no customizations for package", {
@@ -112,9 +125,4 @@ test_that("copy customizations -- no customizations for package", {
 
   copy_customizations(api, path)
   expect_false(file.exists(file.path(path, "aws.example_customizations.R")))
-})
-
-test_that("make_imports returns a string-ified list separated by commas", {
-  imports <- make_imports()
-  expect_match(imports, "([a-zA-Z0-9\\.]+,\n)*[a-zA-Z0-9\\.]+")
 })
