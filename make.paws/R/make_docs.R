@@ -10,7 +10,6 @@ make_docs <- function(operation, api) {
   return <- make_doc_return(operation)
   examples <- make_doc_examples(operation)
   rdname <- make_doc_rdname(operation, api)
-  internal <- "#' @keywords internal"
   docs <- glue::glue_collapse(
     c(title,
       description,

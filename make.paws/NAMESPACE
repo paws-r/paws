@@ -2,6 +2,8 @@
 
 export(make_sdk)
 importFrom(paws.common,is_empty)
+importFrom(paws.common,new_handlers)
+importFrom(paws.common,new_service)
 importFrom(paws.common,tag_add)
 importFrom(paws.common,tag_get)
 importFrom(paws.common,tag_has)

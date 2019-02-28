@@ -36,11 +36,10 @@ RoxygenNote: 6.1.1
 Collate: 
     'make_api.R'
     'make_docs.R'
-    'make_function.R'
+    'make_template.R'
     'make_interface.R'
     'make_names.R'
     'make_operation.R'
-    'make_package.R'
     'make_sdk.R'
     'make_sdk_for_api.R'
     'make_service.R'

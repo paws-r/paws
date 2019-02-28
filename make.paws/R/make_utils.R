@@ -1,28 +1,15 @@
-# Return a string where all whole word elements in `translations` have been
-# translated to the corresponding value, e.g.
-# translate("foo bar barqux", list("bar" = "baz")) -> "foo baz barqux"
-translate <- function(x, translations) {
-  escape <- function(x) gsub("([[:punct:]])", "\\\\\\1", x)
-  whole_word <- function(x) {
-    if (startsWith(x, "\\")) return(sprintf("%s\\b", x))
-    if (grepl("\\\\.$", x)) return(sprintf("\\b%s", x))
-    return(sprintf("\\b%s\\b", x))
-  }
-  result <- x
-  for (from in names(translations)) {
-    to <- translations[[from]]
-    if (!is.character(to)) to <- paste(deparse(to, width.cutoff = 500), collapse = "")
-    from <- escape(from) # escape special characters.
-    from <- whole_word(from) # find whole words only.
-    result <- gsub(from, to, result)
-  }
-  return(result)
+# Return a call defining the structure of the given object x.
+get_structure <- function(x) {
+  result <- paste(deparse(x), collapse = "")
+  result <- gsub(" ", "", result, fixed = TRUE)
+  result <- gsub(",", ", ", result, fixed = TRUE)
+  result <- gsub("=", " = ", result, fixed = TRUE)
+  result
 }
 
 # Returns a quoted string, e.g. "foo" -> '"foo"'.
 quoted <- function(string) {
-  quoted_string <- sprintf('"%s"', string)
-  return(quoted_string)
+  return(shQuote(string))
 }
 
 # Find the path to files in R packages.

@@ -8,7 +8,8 @@ make_sdk <- function(in_dir, out_dir, quiet = FALSE) {
   version <- make_version(out_dir)
   write_skeleton(out_dir)
   write_description(out_dir, version)
-  for (api in list_apis(file.path(in_dir, "apis"))[1:30]) {
+  # TODO: Delete [1:5].
+  for (api in list_apis(file.path(in_dir, "apis"))) {
     if (!quiet) cat(paste0(api, "\n"))
     write_sdk_for_api(api, in_dir, out_dir)
   }

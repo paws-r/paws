@@ -59,24 +59,17 @@ populate_location_constraint <- function(request) {
 
 content_md5 <- function(request) {
   operation_name <- request$operation$name
-
   if (!(operation_name %in% c("PutBucketCors", "PutBucketLifecycle",
                               "PutBucketPolicy", "PutBucketTagging",
                               "DeleteObjects",
                               "PutBucketLifecycleConfiguration",
                               "PutBucketReplication", "PutObject",
                               "UploadPart"))) {return(request)}
-
   body <- request$body
-
   hash <- digest::digest(body, serialize = FALSE, raw = TRUE)
-
   base64_hash <- base64enc::base64encode(hash)
-
   request$http_request$header$`Content-Md5` <- base64_hash
-
   return(request)
-
 }
 
 ################################################################################
@@ -110,13 +103,13 @@ s3_unmarshal_error <- function(request) {
 
 ################################################################################
 
-HANDLERS$build <- handlers_add_front(HANDLERS$build,
+.s3$handlers$build <- handlers_add_front(.s3$handlers$build,
                                      update_endpoint_for_s3_config)
 
-HANDLERS$build <- handlers_add_front(HANDLERS$build,
+.s3$handlers$build <- handlers_add_front(.s3$handlers$build,
                                      populate_location_constraint)
 
-HANDLERS$build <- handlers_add_back(HANDLERS$build,
+.s3$handlers$build <- handlers_add_back(.s3$handlers$build,
                                     content_md5)
 
-HANDLERS$unmarshal_error <- handlers_set(s3_unmarshal_error)
+.s3$handlers$unmarshal_error <- handlers_set(s3_unmarshal_error)

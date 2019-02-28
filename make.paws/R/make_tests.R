@@ -1,28 +1,27 @@
-#' @include make_function.R
+#' @include make_template.R
 NULL
 
 # Make the individual test template.
-# The template must be defined outside `make_test` for code coverage to work.
-TEST_TEMPLATE <- make_code_template({
-  test_that(.OPERATION_QUOTED, {
-    expect_error(.OPERATION, .OUTCOME)
+test_template <- template(
+  `
+  test_that(${operation_name}, {
+    expect_error(${call}, ${outcome})
   })
-})
+  `
+)
 
 # Make a test for a given operation with the given arguments.
 # The template must be defined outside `make_test` for code coverage to work.
 make_test <- function(operation, args, outcome) {
   name <- get_operation_name(operation)
   call <- make_call(name, args)
-  result <- render_code_template(
-    template = TEST_TEMPLATE,
-    values = list(
-      .OPERATION_QUOTED = name,
-      .OPERATION = call,
-      .OUTCOME = outcome
-    )
+  test <- render(
+    test_template,
+    operation_name = quoted(name),
+    call = call,
+    outcome = outcome
   )
-  return(result)
+  return(test)
 }
 
 # Make all tests for a given API.

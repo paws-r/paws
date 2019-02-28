@@ -36,7 +36,7 @@ test_that("make_test with arguments", {
   operation <- list(
     name = "foo"
   )
-  a <- make_test(operation, list("bar", 123), NA)
+  a <- make_test(operation, list('"bar"', 123), NA)
   e <- code({
     test_that("foo", {
       expect_error(foo("bar", 123), NA)

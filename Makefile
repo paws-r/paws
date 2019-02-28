@@ -49,7 +49,7 @@ test-common:
 
 codegen: common
 	@echo "build and install the code generator"
-	@cd make.paws && Rscript -e "devtools::document(); devtools::install(upgrade = FALSE)"
+	@cd make.paws && Rscript -e "devtools::install(upgrade = FALSE)"
 
 test-codegen:
 	@echo "run unit tests for the code generator"

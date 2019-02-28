@@ -3,4 +3,4 @@
 # Copy code used by generated packages.
 rm -fr inst/src
 mkdir -p inst/src
-cp -r R/* inst/src
+find R -mindepth 1 -maxdepth 1 -type d -exec cp -r {} inst/src \;

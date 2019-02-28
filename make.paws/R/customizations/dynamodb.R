@@ -7,4 +7,4 @@ disable_compression <- function(request) {
   return(request)
 }
 
-HANDLERS$build <- handlers_add_back(HANDLERS$build, disable_compression)
+.dynamodb$handlers$build <- handlers_add_back(HANDLERS$build, disable_compression)
