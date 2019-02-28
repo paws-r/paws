@@ -24,13 +24,13 @@ help:
 	@echo "  deps               get project dependencies"
 	@echo "  update-deps        update project dependencies"
 
-build: deps
+build: deps codegen
 	@echo "build the AWS SDK"
 	@Rscript -e "library(make.paws); make_sdk('${IN_DIR}', '${OUT_DIR}')" && \
 	${SCRIPT_DIR}/update_version.sh ${OUT_DIR}
 
 install: build
-	@echo "install the AWS SDK packages"
+	@echo "install the AWS SDK package"
 	@Rscript -e "devtools::install('${OUT_DIR}', upgrade = FALSE, quiet = TRUE)"
 
 unit: test-common test-codegen

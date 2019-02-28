@@ -9,15 +9,15 @@ make_docs <- function(operation, api) {
   params <- make_doc_params(operation, api)
   return <- make_doc_return(operation)
   examples <- make_doc_examples(operation)
-  export <- "#' @export"
+  rdname <- make_doc_rdname(operation, api)
+  internal <- "#' @keywords internal"
   docs <- glue::glue_collapse(
     c(title,
       description,
       accepted_params,
       params,
-      # return,
       examples,
-      export),
+      rdname),
     sep = "\n#'\n"
   )
   return(as.character(docs))
@@ -122,6 +122,12 @@ make_doc_examples <- function(operation) {
   result <- paste(c("@examples", result), collapse = "\n")
   result <- comment(result, "#'")
   return(result)
+}
+
+make_doc_rdname <- function(operation, api) {
+  svc_name <- package_name(api)
+  op_name <- get_operation_name(operation)
+  result <- sprintf("#' @rdname %s_%s", svc_name, op_name)
 }
 
 #-------------------------------------------------------------------------------

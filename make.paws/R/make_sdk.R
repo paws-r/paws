@@ -1,16 +1,18 @@
-#' Make the AWS SDK R Package
+#' Make the AWS SDK R package
 #'
 #' @param in_dir Directory containing API files.
 #' @param out_dir Directory of the R package.
 #'
 #' @export
-make_sdk <- function(in_dir, out_dir) {
+make_sdk <- function(in_dir, out_dir, quiet = FALSE) {
   version <- make_version(out_dir)
   write_skeleton(out_dir)
   write_description(out_dir, version)
-  for (api in list_apis(file.path(in_dir, "apis"))) {
+  for (api in list_apis(file.path(in_dir, "apis"))[1:30]) {
+    if (!quiet) cat(paste0(api, "\n"))
     write_sdk_for_api(api, in_dir, out_dir)
   }
+  write_documentation(out_dir)
   return(invisible(TRUE))
 }
 
@@ -88,6 +90,12 @@ write_description <- function(path, version) {
   }
   description$normalize()
   description$write()
+  return(TRUE)
+}
+
+# Generate the package's documentation.
+write_documentation <- function(path) {
+  quietly(roxygen2::roxygenize(path))
   return(TRUE)
 }
 

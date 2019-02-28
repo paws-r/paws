@@ -2,9 +2,9 @@
 % Please edit documentation in R/make_sdk.R
 \name{make_sdk}
 \alias{make_sdk}
-\title{Make the AWS SDK R Package}
+\title{Make the AWS SDK R package}
 \usage{
-make_sdk(in_dir, out_dir)
+make_sdk(in_dir, out_dir, quiet = FALSE)
 }
 \arguments{
 \item{in_dir}{Directory containing API files.}
@@ -12,5 +12,5 @@ make_sdk(in_dir, out_dir)
 \item{out_dir}{Directory of the R package.}
 }
 \description{
-Make the AWS SDK R Package
+Make the AWS SDK R package
 }

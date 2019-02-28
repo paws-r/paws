@@ -7,7 +7,6 @@ write_sdk_for_api <- function(api_name, in_dir, out_dir) {
   api <- read_api(api_name, in_dir)
   write_code(api, out_dir)
   write_tests(api, out_dir)
-  write_documentation(api, out_dir)
   return(invisible(TRUE))
 }
 
@@ -73,12 +72,6 @@ write_tests <- function(api, path) {
   tests <- make_tests(api)
   tests <- add_edit_warning(tests)
   write_list(tests, file.path(test_path, "testthat", filename))
-}
-
-# Generate the package's documentation.
-write_documentation <- function(api, path) {
-  quietly(roxygen2::roxygenize(path))
-  return(TRUE)
 }
 
 # Add a Roxygen directive to the top of a file.
