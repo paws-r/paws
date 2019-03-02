@@ -15,7 +15,7 @@ tag_has(object, tag)
 
 tag_add(object, tags)
 
-tag_del(object)
+tag_del(object, tags = NULL)
 
 type(object)
 }

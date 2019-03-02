@@ -1,5 +1,5 @@
 #' @include templates.R
-#' @importFrom paws.common is_empty tag_add
+#' @importFrom paws.common is_empty tag_add tag_del
 NULL
 
 interface_file_template <- template(
@@ -39,6 +39,7 @@ interface_template <- template(
 make_interface <- function(name, shape_name, api) {
   if (is.null(shape_name)) return(make_empty_interface(name))
   shape <- make_shape(list(shape = shape_name), api)
+  shape <- tag_del(shape, c("enum", "min", "max", "pattern"))
   interface <- render(
     interface_template,
     name = name,
@@ -154,7 +155,7 @@ make_tags <- function(shape) {
     shape$enum <- unlist(shape$enum)
   }
   taggable <- sapply(shape, is.atomic)
-  ignore <- c("documentation", "enum", "min", "max", "pattern", "shape")
+  ignore <- c("documentation", "shape")
   keep <- !(names(shape) %in% ignore)
   tags <- shape[taggable & keep]
   return(tags)
