@@ -7,7 +7,11 @@ service_file_template <- template(
   #' @importFrom paws.common new_handlers new_service
   NULL
 
-  ${docs}
+  #' ${title}
+  #'
+  #' @description
+  #' ${description}
+  #'
   #' @rdname ${service}
   #' @export
   ${service} <- list()
@@ -28,7 +32,7 @@ service_file_template <- template(
   .${service}$handlers <- new_handlers(${protocol}, ${signer})
 
   .${service}$service <- function() {
-    return(new_service(.${service}$metadata, .${service}$handlers))
+    new_service(.${service}$metadata, .${service}$handlers)
   }
   `
 )
@@ -39,7 +43,7 @@ make_service <- function(api) {
   render(
     service_file_template,
     title = service_title(api),
-    details = service_details(api),
+    description = service_description(api),
     service = package_name(api),
     protocol = protocol_package(api),
     signer = quoted(api$metadata$signatureVersion),
@@ -62,7 +66,14 @@ service_title <- function(api) {
 
 # Return the API description.
 service_description <- function(api) {
-
+  desc <- convert(api$documentation)
+  if (length(desc) > 1) {
+    if (desc[1] == service_title(api)) desc <- desc[-1]
+    if (desc[1] == "") desc <- desc[-1]
+    desc[-1] <- paste0("#' ", desc[-1])
+    desc <- paste(desc, collapse = "\n")
+  }
+  return(desc)
 }
 
 # Returns the standardized protocol name used by an API.
@@ -72,15 +83,15 @@ protocol_package <- function(api) {
   if (protocol == "json") protocol <- "jsonrpc"
   else if (protocol == "ec2") protocol <- "ec2query"
   else protocol <- gsub("\\-", "", protocol)
-  return(quoted(protocol))
+  quoted(protocol)
 }
 
 # Returns the signing name for an API, either the signing name specified in the
 # API definition or the signing name assigned by `client_config`.
 signing_name <- function(api) {
   name <- api$metadata$signingName
-  if (!is.null(name)) return(quoted(name))
-  return("NULL")
+  if (is.null(name)) return("NULL")
+  quoted(name)
 }
 
 endpoint_data <- function(api) {
@@ -91,12 +102,12 @@ endpoint_data <- function(api) {
 json_version <- function(api) {
   version <- api$metadata$jsonVersion
   if (is.null(version)) version <- ""
-  return(quoted(version))
+  quoted(version)
 }
 
 # Returns the target prefix for the API, or "" if none.
 target_prefix <- function(api) {
   prefix <- api$metadata$targetPrefix
   if (is.null(prefix)) prefix <- ""
-  return(quoted(prefix))
+  quoted(prefix)
 }

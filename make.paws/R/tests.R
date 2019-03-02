@@ -1,6 +1,33 @@
 #' @include templates.R
 NULL
 
+test_file_template <- template(
+  `
+  context(${service})
+
+  ${tests}
+  `
+)
+
+# Make all tests for a given API.
+make_tests <- function(api) {
+  tests <- list()
+  i <- 1
+  for (operation in get_testable_operations(api)) {
+    for (test_args in get_test_args(operation, api)) {
+      test <- make_test(operation, test_args$args, test_args$outcome)
+      tests[[i]] <- test
+      i <- i + 1
+    }
+  }
+  tests <- paste(tests, collapse = "\n\n")
+  render(
+    test_file_template,
+    service = quoted(package_name(api)),
+    tests = tests
+  )
+}
+
 # Make the individual test template.
 test_template <- template(
   `
@@ -22,21 +49,6 @@ make_test <- function(operation, args, outcome) {
     outcome = outcome
   )
   return(test)
-}
-
-# Make all tests for a given API.
-make_tests <- function(api) {
-  tests <- list()
-  i <- 1
-  for (operation in get_testable_operations(api)) {
-    for (test_args in get_test_args(operation, api)) {
-      test <- make_test(operation, test_args$args, test_args$outcome)
-      tests[[i]] <- test
-      i <- i + 1
-    }
-  }
-  result <- paste(tests, collapse = "\n\n")
-  return(result)
 }
 
 # Returns a list of the testable operations for a given API.

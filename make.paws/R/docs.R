@@ -16,6 +16,7 @@ make_docs <- function(operation, api) {
       accepted_params,
       params,
       examples,
+      "#' @keywords internal",
       rdname),
     sep = "\n#'\n"
   )
@@ -392,10 +393,11 @@ html_to_text <- function(html) {
 convert <- function(docs, wrap = TRUE) {
   if (is.null(docs) || docs == "") return("")
   if (grepl("^<", docs)) {
-    html_to_markdown(docs, wrap)
+    result <- html_to_markdown(docs, wrap)
   } else {
-    strsplit(docs, "\n")[[1]]
+    result <- strsplit(docs, "\n")[[1]]
   }
+  result
 }
 
 # Get the first sentence from a block of text.
