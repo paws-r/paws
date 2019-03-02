@@ -1,4 +1,4 @@
-#' @include make_template.R
+#' @include templates.R
 NULL
 
 # Make the individual test template.

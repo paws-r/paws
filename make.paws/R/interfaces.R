@@ -1,4 +1,4 @@
-#' @include make_template.R
+#' @include templates.R
 #' @importFrom paws.common is_empty tag_add
 NULL
 

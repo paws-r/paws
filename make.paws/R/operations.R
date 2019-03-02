@@ -1,4 +1,4 @@
-#' @include make_template.R
+#' @include templates.R
 NULL
 
 operation_file_template <- template(

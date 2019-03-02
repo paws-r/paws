@@ -1,4 +1,4 @@
-#' @include make_template.R
+#' @include templates.R
 NULL
 
 service_file_template <- template(
@@ -7,9 +7,9 @@ service_file_template <- template(
   #' @importFrom paws.common new_handlers new_service
   NULL
 
-  #' ${service_desc}
-  #' @export
+  ${docs}
   #' @rdname ${service}
+  #' @export
   ${service} <- list()
 
   # Private API objects: metadata, handlers, interfaces, etc.
@@ -38,7 +38,8 @@ service_file_template <- template(
 make_service <- function(api) {
   render(
     service_file_template,
-    service_desc = service_desc(api),
+    title = service_title(api),
+    details = service_details(api),
     service = package_name(api),
     protocol = protocol_package(api),
     signer = quoted(api$metadata$signatureVersion),
@@ -54,9 +55,14 @@ make_service <- function(api) {
 
 #-------------------------------------------------------------------------------
 
-# Return the API description.
-service_desc <- function(api) {
+# Return the API title.
+service_title <- function(api) {
   api$metadata$serviceFullName
+}
+
+# Return the API description.
+service_description <- function(api) {
+
 }
 
 # Returns the standardized protocol name used by an API.
