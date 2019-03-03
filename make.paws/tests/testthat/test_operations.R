@@ -45,9 +45,9 @@ test_that("make_operation", {
     #' @param Input2
     #' @param Input3
     #'
-    #' @section Accepted Parameters:
+    #' @section Request syntax:
     #' ```
-    #' operation(
+    #' api$operation(
     #'   Input1 = \"string\",
     #'   Input2 = \"string\",
     #'   Input3 = 123

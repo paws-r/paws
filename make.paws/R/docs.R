@@ -5,16 +5,16 @@ NULL
 make_docs <- function(operation, api) {
   title <- make_doc_title(operation)
   description <- make_doc_desc(operation)
-  accepted_params <- make_doc_accepted_params(operation, api)
   params <- make_doc_params(operation, api)
-  return <- make_doc_return(operation)
-  examples <- make_doc_examples(operation)
+  request <- make_doc_request(operation, api)
+  response <- make_doc_response(operation, api)
+  examples <- make_doc_examples(operation, api)
   rdname <- make_doc_rdname(operation, api)
   docs <- glue::glue_collapse(
     c(title,
       description,
       params,
-      accepted_params,
+      request,
       examples,
       "#' @keywords internal",
       rdname),
@@ -66,29 +66,29 @@ make_doc_params <- function(operation, api) {
   return(as.character(params))
 }
 
-# Return a string showing the operation's accepted parameters,
+# Return a string showing the operation's request syntax,
 # including all parameters.
-make_doc_accepted_params <- function(operation, api) {
-  op_name <- get_operation_name(operation)
+make_doc_request <- function(operation, api) {
+  func <- sprintf("%s$%s", package_name(api), get_operation_name(operation))
   shape_name <- operation$input$shape
   if (!is.null(shape_name)) {
     shape <- make_shape(list(shape = shape_name), api)
     args <- add_example_values(shape)
     masks <- list("(" = "&#40;", ")" = "&#41;")
     args <- mask(args, masks)
-    call <- gsub("^list", op_name, list_to_string(args, quote = FALSE))
+    call <- gsub("^list", func, list_to_string(args, quote = FALSE))
     call <- unmask(clean_example(call), masks)
     call <- paste("```", call, "```", sep = "\n")
-    accepted_params <- comment(paste(c("@section Accepted Parameters:", call),
+    accepted_params <- comment(paste(c("@section Request syntax:", call),
                                      collapse = "\n"), "#'")
     return(accepted_params)
   }
   return("")
 }
 
-# Return a string with a description of the operation's return value.
+# Return a string with a description of the operation's response.
 # TODO: Implement.
-make_doc_return <- function(operation, api) {
+make_doc_response <- function(operation, api) {
   output <- operation$output
   "#' @return"
 }
@@ -113,8 +113,8 @@ make_doc_example <- function(example, op_name) {
 }
 
 # Make all operation examples provided in the operation object.
-make_doc_examples <- function(operation) {
-  func <- get_operation_name(operation)
+make_doc_examples <- function(operation, api) {
+  func <- sprintf("%s$%s", package_name(api), get_operation_name(operation))
   examples <- lapply(operation$examples, make_doc_example, op_name = func)
   if (length(examples) == 0) return(NULL)
   result <- paste(examples, collapse = "\n\n")

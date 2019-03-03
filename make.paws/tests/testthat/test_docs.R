@@ -151,7 +151,7 @@ test_that("make_doc_desc with percent sign", {
   expect_equal(make_doc_desc(operation), expected)
 })
 
-test_that("make_doc_usage", {
+test_that("make_doc_request", {
   operation <- list(
     name = "operation",
     input = list(
@@ -159,6 +159,9 @@ test_that("make_doc_usage", {
     )
   )
   api <- list(
+    metadata = list(
+      serviceAbbreviation = "api"
+    ),
     shapes = list(
       OperationShape = list(
         type = "structure",
@@ -209,11 +212,11 @@ test_that("make_doc_usage", {
     )
   )
 
-  actual <- make_doc_accepted_params(operation, api)
+  actual <- make_doc_request(operation, api)
   expected <- paste(
-    "#' @section Accepted Parameters:",
+    "#' @section Request syntax:",
     "#' ```",
-    "#' operation(",
+    "#' api$operation(",
     "#'   Foo = \"string\",",
     "#'   Bar = list(",
     "#'     Baz = 123,",
@@ -266,11 +269,15 @@ test_that("make_doc_params", {
 })
 
 test_that("make_doc_examples", {
-
+  api <- list(
+    metadata = list(
+      serviceAbbreviation = "api"
+    )
+  )
   operation <- list(
     name = "Operation"
   )
-  actual <- make_doc_examples(operation)
+  actual <- make_doc_examples(operation, api)
   expect_null(actual)
 
   operation <- list(
@@ -287,11 +294,11 @@ test_that("make_doc_examples", {
       )
     )
   )
-  actual <- make_doc_examples(operation)
+  actual <- make_doc_examples(operation, api)
   expected <- paste(
     "#' @examples",
     "#' # Description",
-    "#' \\donttest{operation(",
+    "#' \\donttest{api$operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
     "#'     Qux = 123",
@@ -319,14 +326,14 @@ test_that("make_doc_examples", {
       )
     )
   )
-  actual <- make_doc_examples(operation)
+  actual <- make_doc_examples(operation, api)
   expected <- paste(
     "#' @examples",
     "#' # Description1",
-    "#' \\donttest{operation()}",
+    "#' \\donttest{api$operation()}",
     "#' ",
     "#' # Description2",
-    "#' \\donttest{operation(",
+    "#' \\donttest{api$operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
     "#'     Qux = 123",
@@ -350,11 +357,11 @@ test_that("make_doc_examples", {
       )
     )
   )
-  actual <- make_doc_examples(operation)
+  actual <- make_doc_examples(operation, api)
   expected <- paste(
     "#' @examples",
     "#' # Description, with a comma",
-    "#' \\donttest{operation(",
+    "#' \\donttest{api$operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
     "#'     Qux = 123",
@@ -378,11 +385,11 @@ test_that("make_doc_examples", {
       )
     )
   )
-  actual <- make_doc_examples(operation)
+  actual <- make_doc_examples(operation, api)
   expected <- paste(
     "#' @examples",
     "#' # Description, with a comma",
-    "#' \\donttest{operation(",
+    "#' \\donttest{api$operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
     "#'     Qux = \"a,b,c\"",
