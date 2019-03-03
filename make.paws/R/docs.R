@@ -178,9 +178,25 @@ escape_special_chars <- function(text) {
 clean_html <- function(text) {
   if (length(text) == 1 && text == "") return("")
   html <- xml2::read_html(text)
-  code_nodes <- xml2::xml_find_all(html, ".//code")
-  xml2::xml_text(code_nodes) <- sapply(xml2::xml_text(code_nodes), clean_code)
-  as.character(xml2::xml_children(html))
+  as.character(clean_html_node(html))
+}
+
+# Escape unmatched quotes in code snippets.
+# Note: this modifies its inputs.
+clean_html_node <- function(node) {
+  for (child in xml2::xml_children(node)) {
+    if (xml2::xml_name(child) == "code") {
+      text <- as.character(child)
+      text <- gsub("^<code>(.*)</code>$", "\\1", text)
+      # Replace all text and child nodes with a single text node.
+      xml2::xml_remove(xml2::xml_find_all(child, "//text()"))
+      xml2::xml_remove(xml2::xml_children(child))
+      xml2::xml_text(child) <- escape_unmatched_quotes(text)
+    } else {
+      child <- clean_html_node(child)
+    }
+  }
+  node
 }
 
 # Escape unmatched characters. Assumes
