@@ -1,0 +1,37 @@
+Package: paws.directoryservice
+Title: AWS Directory Service
+Version: 0.0.3
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut",
+             email = "adam.banker39@gmail.com"),
+      person(given = "Amazon.com, Inc.",
+             role = "cph"))
+Description: AWS Directory Service is a web service that makes
+    it easy for you to setup and run directories in the AWS cloud, or
+    connect your AWS resources with an existing on-premises Microsoft
+    Active Directory. This guide provides detailed information about AWS
+    Directory Service operations, data types, parameters, and errors. For
+    information about AWS Directory Services features, see [AWS Directory
+    Service](https://aws.amazon.com/directoryservice/) and the [AWS
+    Directory Service Administration
+    Guide](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/what_is.html).
+License: Apache License (>= 2.0)
+Depends: 
+    R (>= 3.4.0)
+Imports: 
+    paws.common
+Suggests: 
+    testthat
+Remotes: 
+    paws-r/paws/paws.common
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
+    "collate"))
+RoxygenNote: 6.1.1

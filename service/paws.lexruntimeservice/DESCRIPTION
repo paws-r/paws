@@ -1,0 +1,40 @@
+Package: paws.lexruntimeservice
+Title: Amazon Lex Runtime Service
+Version: 0.0.3
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut",
+             email = "adam.banker39@gmail.com"),
+      person(given = "Amazon.com, Inc.",
+             role = "cph"))
+Description: Amazon Lex provides both build and runtime
+    endpoints. Each endpoint provides a set of operations (API). Your
+    conversational bot uses the runtime API to understand user utterances
+    (user input text or voice). For example, suppose a user says \"I want
+    pizza\", your bot sends this input to Amazon Lex using the runtime
+    API. Amazon Lex recognizes that the user request is for the OrderPizza
+    intent (one of the intents defined in the bot). Then Amazon Lex
+    engages in user conversation on behalf of the bot to elicit required
+    information (slot values, such as pizza size and crust type), and then
+    performs fulfillment activity (that you configured when you created
+    the bot). You use the build-time API to create and manage your Amazon
+    Lex bot. For a list of build-time operations, see the build-time API,.
+License: Apache License (>= 2.0)
+Depends: 
+    R (>= 3.4.0)
+Imports: 
+    paws.common
+Suggests: 
+    testthat
+Remotes: 
+    paws-r/paws/paws.common
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
+    "collate"))
+RoxygenNote: 6.1.1

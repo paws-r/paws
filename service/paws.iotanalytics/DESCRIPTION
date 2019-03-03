@@ -1,0 +1,34 @@
+Package: paws.iotanalytics
+Title: AWS IoT Analytics
+Version: 0.0.3
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut",
+             email = "adam.banker39@gmail.com"),
+      person(given = "Amazon.com, Inc.",
+             role = "cph"))
+Description: AWS IoT Analytics allows you to collect large
+    amounts of device data, process messages, and store them. You can then
+    query the data and run sophisticated analytics on it. AWS IoT
+    Analytics enables advanced data exploration through integration with
+    Jupyter Notebooks and data visualization through integration with
+    Amazon QuickSight.
+License: Apache License (>= 2.0)
+Depends: 
+    R (>= 3.4.0)
+Imports: 
+    paws.common
+Suggests: 
+    testthat
+Remotes: 
+    paws-r/paws/paws.common
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
+    "collate"))
+RoxygenNote: 6.1.1

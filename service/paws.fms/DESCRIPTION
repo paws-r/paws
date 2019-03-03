@@ -1,0 +1,34 @@
+Package: paws.fms
+Title: Firewall Management Service
+Version: 0.0.3
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut",
+             email = "adam.banker39@gmail.com"),
+      person(given = "Amazon.com, Inc.",
+             role = "cph"))
+Description: This is the *AWS Firewall Manager API Reference*.
+    This guide is for developers who need detailed information about the
+    AWS Firewall Manager API actions, data types, and errors. For detailed
+    information about AWS Firewall Manager features, see the [AWS Firewall
+    Manager Developer
+    Guide](http://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html).
+License: Apache License (>= 2.0)
+Depends: 
+    R (>= 3.4.0)
+Imports: 
+    paws.common
+Suggests: 
+    testthat
+Remotes: 
+    paws-r/paws/paws.common
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
+    "collate"))
+RoxygenNote: 6.1.1

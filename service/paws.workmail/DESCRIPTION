@@ -1,0 +1,35 @@
+Package: paws.workmail
+Title: Amazon WorkMail
+Version: 0.0.3
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut",
+             email = "adam.banker39@gmail.com"),
+      person(given = "Amazon.com, Inc.",
+             role = "cph"))
+Description: Amazon WorkMail is a secure, managed business email
+    and calendaring service with support for existing desktop and mobile
+    email clients. You can access your email, contacts, and calendars
+    using Microsoft Outlook, your browser, or their native iOS and Android
+    email applications. You can integrate Amazon WorkMail with your
+    existing corporate directory and control both the keys that encrypt
+    your data and the location in which your data is stored.
+License: Apache License (>= 2.0)
+Depends: 
+    R (>= 3.4.0)
+Imports: 
+    paws.common
+Suggests: 
+    testthat
+Remotes: 
+    paws-r/paws/paws.common
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
+    "collate"))
+RoxygenNote: 6.1.1

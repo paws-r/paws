@@ -1,0 +1,37 @@
+Package: paws.ssm
+Title: Amazon Simple Systems Manager (SSM)
+Version: 0.0.3
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut",
+             email = "adam.banker39@gmail.com"),
+      person(given = "Amazon.com, Inc.",
+             role = "cph"))
+Description: AWS Systems Manager is a collection of capabilities
+    that helps you automate management tasks such as collecting system
+    inventory, applying operating system (OS) patches, automating the
+    creation of Amazon Machine Images (AMIs), and configuring operating
+    systems (OSs) and applications at scale. Systems Manager lets you
+    remotely and securely manage the configuration of your managed
+    instances. A *managed instance* is any Amazon EC2 instance or
+    on-premises machine in your hybrid environment that has been
+    configured for Systems Manager.
+License: Apache License (>= 2.0)
+Depends: 
+    R (>= 3.4.0)
+Imports: 
+    paws.common
+Suggests: 
+    testthat
+Remotes: 
+    paws-r/paws/paws.common
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
+    "collate"))
+RoxygenNote: 6.1.1

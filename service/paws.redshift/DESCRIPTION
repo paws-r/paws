@@ -1,0 +1,39 @@
+Package: paws.redshift
+Title: Amazon Redshift
+Version: 0.0.3
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut",
+             email = "adam.banker39@gmail.com"),
+      person(given = "Amazon.com, Inc.",
+             role = "cph"))
+Description: This is an interface reference for Amazon Redshift.
+    It contains documentation for one of the programming or command line
+    interfaces you can use to manage Amazon Redshift clusters. Note that
+    Amazon Redshift is asynchronous, which means that some interfaces may
+    require techniques, such as polling or asynchronous callback handlers,
+    to determine when a command has been applied. In this reference, the
+    parameter descriptions indicate whether a change is applied
+    immediately, on the next instance reboot, or during the next
+    maintenance window. For a summary of the Amazon Redshift cluster
+    management interfaces, go to [Using the Amazon Redshift Management
+    Interfaces](http://docs.aws.amazon.com/redshift/latest/mgmt/using-aws-sdk.html).
+License: Apache License (>= 2.0)
+Depends: 
+    R (>= 3.4.0)
+Imports: 
+    paws.common
+Suggests: 
+    testthat
+Remotes: 
+    paws-r/paws/paws.common
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
+    "collate"))
+RoxygenNote: 6.1.1

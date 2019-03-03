@@ -1,0 +1,36 @@
+Package: paws.dax
+Title: Amazon DynamoDB Accelerator (DAX)
+Version: 0.0.3
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut",
+             email = "adam.banker39@gmail.com"),
+      person(given = "Amazon.com, Inc.",
+             role = "cph"))
+Description: DAX is a managed caching service engineered for
+    Amazon DynamoDB. DAX dramatically speeds up database reads by caching
+    frequently-accessed data from DynamoDB, so applications can access
+    that data with sub-millisecond latency. You can create a DAX cluster
+    easily, using the AWS Management Console. With a few simple
+    modifications to your code, your application can begin taking
+    advantage of the DAX cluster and realize significant improvements in
+    read performance.
+License: Apache License (>= 2.0)
+Depends: 
+    R (>= 3.4.0)
+Imports: 
+    paws.common
+Suggests: 
+    testthat
+Remotes: 
+    paws-r/paws/paws.common
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
+    "collate"))
+RoxygenNote: 6.1.1

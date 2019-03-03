@@ -1,0 +1,37 @@
+Package: paws.clouddirectory
+Title: Amazon CloudDirectory
+Version: 0.0.3
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut",
+             email = "adam.banker39@gmail.com"),
+      person(given = "Amazon.com, Inc.",
+             role = "cph"))
+Description: Amazon Cloud Directory is a component of the AWS
+    Directory Service that simplifies the development and management of
+    cloud-scale web, mobile, and IoT applications. This guide describes
+    the Cloud Directory operations that you can call programmatically and
+    includes detailed information on data types and errors. For
+    information about Cloud Directory features, see [AWS Directory
+    Service](https://aws.amazon.com/directoryservice/) and the [Amazon
+    Cloud Directory Developer
+    Guide](https://docs.aws.amazon.com/clouddirectory/latest/developerguide/what_is_cloud_directory.html).
+License: Apache License (>= 2.0)
+Depends: 
+    R (>= 3.4.0)
+Imports: 
+    paws.common
+Suggests: 
+    testthat
+Remotes: 
+    paws-r/paws/paws.common
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
+    "collate"))
+RoxygenNote: 6.1.1

@@ -1,0 +1,39 @@
+Package: paws.applicationdiscoveryservice
+Title: AWS Application Discovery Service
+Version: 0.0.3
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut",
+             email = "adam.banker39@gmail.com"),
+      person(given = "Amazon.com, Inc.",
+             role = "cph"))
+Description: AWS Application Discovery Service helps you plan
+    application migration projects by automatically identifying servers,
+    virtual machines (VMs), software, and software dependencies running in
+    your on-premises data centers. Application Discovery Service also
+    collects application performance data, which can help you assess the
+    outcome of your migration. The data collected by Application Discovery
+    Service is securely retained in an AWS-hosted and managed database in
+    the cloud. You can export the data as a CSV or XML file into your
+    preferred visualization tool or cloud-migration solution to plan your
+    migration. For more information, see [AWS Application Discovery
+    Service FAQ](http://aws.amazon.com/application-discovery/faqs/).
+License: Apache License (>= 2.0)
+Depends: 
+    R (>= 3.4.0)
+Imports: 
+    paws.common
+Suggests: 
+    testthat
+Remotes: 
+    paws-r/paws/paws.common
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
+    "collate"))
+RoxygenNote: 6.1.1

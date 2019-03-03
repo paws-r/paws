@@ -1,0 +1,35 @@
+Package: paws.iotdataplane
+Title: AWS IoT Data Plane
+Version: 0.0.3
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut",
+             email = "adam.banker39@gmail.com"),
+      person(given = "Amazon.com, Inc.",
+             role = "cph"))
+Description: AWS IoT-Data enables secure, bi-directional
+    communication between Internet-connected things (such as sensors,
+    actuators, embedded devices, or smart appliances) and the AWS cloud.
+    It implements a broker for applications and things to publish messages
+    over HTTP (Publish) and retrieve, update, and delete thing shadows. A
+    thing shadow is a persistent representation of your things and their
+    state in the AWS cloud.
+License: Apache License (>= 2.0)
+Depends: 
+    R (>= 3.4.0)
+Imports: 
+    paws.common
+Suggests: 
+    testthat
+Remotes: 
+    paws-r/paws/paws.common
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
+    "collate"))
+RoxygenNote: 6.1.1

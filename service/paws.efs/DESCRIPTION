@@ -1,0 +1,35 @@
+Package: paws.efs
+Title: Amazon Elastic File System
+Version: 0.0.3
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut",
+             email = "adam.banker39@gmail.com"),
+      person(given = "Amazon.com, Inc.",
+             role = "cph"))
+Description: Amazon Elastic File System (Amazon EFS) provides
+    simple, scalable file storage for use with Amazon EC2 instances in the
+    AWS Cloud. With Amazon EFS, storage capacity is elastic, growing and
+    shrinking automatically as you add and remove files, so your
+    applications have the storage they need, when they need it. For more
+    information, see the [User
+    Guide](http://docs.aws.amazon.com/efs/latest/ug/api-reference.html).
+License: Apache License (>= 2.0)
+Depends: 
+    R (>= 3.4.0)
+Imports: 
+    paws.common
+Suggests: 
+    testthat
+Remotes: 
+    paws-r/paws/paws.common
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
+    "collate"))
+RoxygenNote: 6.1.1

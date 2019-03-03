@@ -1,0 +1,34 @@
+Package: paws.codepipeline
+Title: AWS CodePipeline
+Version: 0.0.3
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut",
+             email = "adam.banker39@gmail.com"),
+      person(given = "Amazon.com, Inc.",
+             role = "cph"))
+Description: This is the AWS CodePipeline API Reference. This
+    guide provides descriptions of the actions and data types for AWS
+    CodePipeline. Some functionality for your pipeline is only
+    configurable through the API. For additional information, see the [AWS
+    CodePipeline User
+    Guide](http://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html).
+License: Apache License (>= 2.0)
+Depends: 
+    R (>= 3.4.0)
+Imports: 
+    paws.common
+Suggests: 
+    testthat
+Remotes: 
+    paws-r/paws/paws.common
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
+    "collate"))
+RoxygenNote: 6.1.1

@@ -1,0 +1,35 @@
+Package: paws.gamelift
+Title: Amazon GameLift
+Version: 0.0.3
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut",
+             email = "adam.banker39@gmail.com"),
+      person(given = "Amazon.com, Inc.",
+             role = "cph"))
+Description: Amazon GameLift is a managed service for developers
+    who need a scalable, dedicated server solution for their multiplayer
+    games. Use Amazon GameLift for these tasks: (1) set up computing
+    resources and deploy your game servers, (2) run game sessions and get
+    players into games, (3) automatically scale your resources to meet
+    player demand and manage costs, and (4) track in-depth metrics on game
+    server performance and player usage.
+License: Apache License (>= 2.0)
+Depends: 
+    R (>= 3.4.0)
+Imports: 
+    paws.common
+Suggests: 
+    testthat
+Remotes: 
+    paws-r/paws/paws.common
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
+    "collate"))
+RoxygenNote: 6.1.1

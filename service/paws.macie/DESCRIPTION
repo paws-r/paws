@@ -1,0 +1,36 @@
+Package: paws.macie
+Title: Amazon Macie
+Version: 0.0.3
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut",
+             email = "adam.banker39@gmail.com"),
+      person(given = "Amazon.com, Inc.",
+             role = "cph"))
+Description: Amazon Macie is a security service that uses
+    machine learning to automatically discover, classify, and protect
+    sensitive data in AWS. Macie recognizes sensitive data such as
+    personally identifiable information (PII) or intellectual property,
+    and provides you with dashboards and alerts that give visibility into
+    how this data is being accessed or moved. For more information, see
+    the [Macie User
+    Guide](https://docs.aws.amazon.com/macie/latest/userguide/what-is-macie.html).
+License: Apache License (>= 2.0)
+Depends: 
+    R (>= 3.4.0)
+Imports: 
+    paws.common
+Suggests: 
+    testthat
+Remotes: 
+    paws-r/paws/paws.common
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
+    "collate"))
+RoxygenNote: 6.1.1

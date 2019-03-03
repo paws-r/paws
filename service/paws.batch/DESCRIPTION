@@ -1,0 +1,37 @@
+Package: paws.batch
+Title: AWS Batch
+Version: 0.0.3
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut",
+             email = "adam.banker39@gmail.com"),
+      person(given = "Amazon.com, Inc.",
+             role = "cph"))
+Description: AWS Batch enables you to run batch computing
+    workloads on the AWS Cloud. Batch computing is a common way for
+    developers, scientists, and engineers to access large amounts of
+    compute resources, and AWS Batch removes the undifferentiated heavy
+    lifting of configuring and managing the required infrastructure. AWS
+    Batch will be familiar to users of traditional batch computing
+    software. This service can efficiently provision resources in response
+    to jobs submitted in order to eliminate capacity constraints, reduce
+    compute costs, and deliver results quickly.
+License: Apache License (>= 2.0)
+Depends: 
+    R (>= 3.4.0)
+Imports: 
+    paws.common
+Suggests: 
+    testthat
+Remotes: 
+    paws-r/paws/paws.common
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
+    "collate"))
+RoxygenNote: 6.1.1

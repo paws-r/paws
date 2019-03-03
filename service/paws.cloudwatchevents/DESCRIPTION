@@ -1,0 +1,34 @@
+Package: paws.cloudwatchevents
+Title: Amazon CloudWatch Events
+Version: 0.0.3
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut",
+             email = "adam.banker39@gmail.com"),
+      person(given = "Amazon.com, Inc.",
+             role = "cph"))
+Description: Amazon CloudWatch Events helps you to respond to
+    state changes in your AWS resources.  When your resources change
+    state, they automatically send events into an event stream.  You can
+    create rules that match selected events in the stream and route them
+    to targets to take action.  You can also use rules to take action on a
+    predetermined schedule.
+License: Apache License (>= 2.0)
+Depends: 
+    R (>= 3.4.0)
+Imports: 
+    paws.common
+Suggests: 
+    testthat
+Remotes: 
+    paws-r/paws/paws.common
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
+    "collate"))
+RoxygenNote: 6.1.1
