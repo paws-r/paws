@@ -20,26 +20,6 @@ test_that("html_to_markdown", {
   expect_equal(html_to_markdown(text), expected)
 })
 
-test_that("convert", {
-  text <- NULL
-  expected <- ""
-  expect_equal(convert(text), expected)
-
-  text <- ""
-  expect_equal(convert(text), text)
-
-  text <- "foo"
-  expect_equal(convert(text), text)
-
-  text <- "<body>foo</body>"
-  expected <- "foo"
-  expect_equal(convert(text), expected)
-
-  text <- "<body><p>foo</p><p>bar</p></body>"
-  expected <- c("foo", "", "bar")
-  expect_equal(convert(text), expected)
-})
-
 test_that("mask", {
   foo <- list(
     a = list(

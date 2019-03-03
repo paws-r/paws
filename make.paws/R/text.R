@@ -27,17 +27,6 @@ html_to_text <- function(html) {
   html_to(html, "plain")
 }
 
-# Convert documentation to Markdown.
-convert <- function(docs) {
-  if (is.null(docs) || docs == "") return("")
-  if (grepl("^<", docs)) {
-    result <- html_to_markdown(docs)
-  } else {
-    result <- strsplit(docs, "\n")[[1]]
-  }
-  result
-}
-
 # Return the object with all strings masked according to `masks`, e.g.
 # `mask("foobar", list("b" = "&#98;"))` --> "foo&#98;ar"
 mask <- function(object, masks, regexp = FALSE) {

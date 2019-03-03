@@ -29,12 +29,16 @@ test_that("make_doc_desc", {
   expect_equal(make_doc_desc(operation), expected)
 })
 
-test_that("make_doc_desc with percent sign", {
-  operation <- list(documentation = "<body><p>Foo%</p><p>Bar</p></body>")
+test_that("make_doc_desc with special characters", {
+  operation <- list(documentation = "<body><p>Foo%</p><p>Bar{</p><p>}Baz</p><p>\\Qux</p></body>")
   expected <- paste(
     "#' Foo\\%",
     "#' ",
-    "#' Bar",
+    "#' Bar\\{",
+    "#' ",
+    "#' \\}Baz",
+    "#' ",
+    "#' \\\\Qux",
     sep = "\n"
   )
   expect_equal(make_doc_desc(operation), expected)
@@ -318,22 +322,31 @@ test_that("clean_markdown", {
   expect_equal(clean_markdown(lines), expected)
 })
 
-test_that("preprocess", {
-  text <- ""
-  expect_equal(preprocess(text), text)
+test_that("convert", {
+  text <- NULL
+  expected <- ""
+  expect_equal(convert(text), expected)
 
-  text <- "<body></body>"
-  expect_equal(preprocess(text), text)
+  text <- ""
+  expect_equal(convert(text), text)
+
+  text <- "foo"
+  expect_equal(convert(text), text)
 
   text <- "<body>foo</body>"
-  expect_equal(preprocess(text), text)
+  expected <- "foo"
+  expect_equal(convert(text), expected)
 
-  text <- "<body><code>foo</code></body>"
-  expect_equal(preprocess(text), text)
+  text <- "<body><p>foo</p><p>bar</p></body>"
+  expected <- c("foo", "", "bar")
+  expect_equal(convert(text), expected)
+
+  text <- "`foo`"
+  expect_equal(convert(text), text)
 
   text <- "<body><code>'foo</code></body>"
-  expected <- "<body><code>\\'foo</code></body>"
-  expect_equal(preprocess(text), expected)
+  expected <- "`\\'foo`"
+  expect_equal(convert(text), expected)
 })
 
 test_that("first_sentence", {

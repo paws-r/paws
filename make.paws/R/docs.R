@@ -154,19 +154,49 @@ comment <- function(s, char = "#") {
   return(result)
 }
 
-# Preprocess HTML to fix issues that R flags when installing packages.
+# Convert documentation to Markdown.
+convert <- function(docs) {
+  if (is.null(docs) || docs == "") return("")
+  if (grepl("^<", docs)) {
+    html <- clean_html(docs)
+    result <- html_to_markdown(html)
+  } else {
+    result <- strsplit(docs, "\n")[[1]]
+  }
+  result <- escape_special_chars(result)
+  result
+}
+
+# Clean text to escape special characters that will go into Rd files.
+escape_special_chars <- function(text) {
+  gsub("([%{}])", "\\\\\\1", text)
+}
+
+# Clean HTML to escape special characters that will go into Rd files.
+# See https://developer.r-project.org/parseRd.pdf.
 clean_html <- function(text) {
   if (length(text) == 1 && text == "") return("")
   html <- xml2::read_html(text)
-  code <- xml2::xml_find_all(html, ".//code")
-  if (length(code) > 0) {
-    code_text <- xml2::xml_text(code)
-    xml2::xml_text(code) <- escape_special_characters(code_text)
-    result <- as.character(xml2::xml_children(html))
-  } else {
-    result <- text
+  code_nodes <- xml2::xml_find_all(html, ".//code")
+  xml2::xml_text(code_nodes) <- sapply(xml2::xml_text(code_nodes), clean_code)
+  as.character(xml2::xml_children(html))
+}
+
+# Escape unmatched characters. Assumes
+# R documentation will fail if there are unmatched quotes in code snippets.
+# See https://developer.r-project.org/parseRd.pdf.
+escape_unmatched_quotes <- function(x) {
+  result <- x
+  for (char in c("'", '"', "`")) {
+    if (stringr::str_count(result, char) %% 2 != 0) {
+      result <- gsub(char, paste0("\\", char), result, fixed = TRUE)
+    }
   }
   result
+}
+
+clean_code <- function(text) {
+  escape_unmatched_quotes(text)
 }
 
 # Remove extra lines that break roxygen2.
