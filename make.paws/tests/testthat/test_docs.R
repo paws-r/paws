@@ -302,6 +302,20 @@ test_that("clean_markdown", {
 
   text <- "[foo]"
   expect_equal(clean_markdown(text), text)
+
+  lines <- ""
+  expect_equal(clean_markdown(lines), lines)
+
+  lines <- c("foo", "bar", "baz")
+  expect_equal(clean_markdown(lines), lines)
+
+  lines <- c("foo", "bar", "<!-- -->", "baz")
+  expected <- c("foo", "bar", "baz")
+  expect_equal(clean_markdown(lines), expected)
+
+  lines <- c("\\[foo\\]", "bar", "baz")
+  expected <- c("&#91;foo&#93;", "bar", "baz")
+  expect_equal(clean_markdown(lines), expected)
 })
 
 test_that("preprocess", {
@@ -320,22 +334,6 @@ test_that("preprocess", {
   text <- "<body><code>'foo</code></body>"
   expected <- "<body><code>\\'foo</code></body>"
   expect_equal(preprocess(text), expected)
-})
-
-test_that("postprocess", {
-  lines <- ""
-  expect_equal(postprocess(lines), lines)
-
-  lines <- c("foo", "bar", "baz")
-  expect_equal(postprocess(lines), lines)
-
-  lines <- c("foo", "bar", "<!-- -->", "baz")
-  expected <- c("foo", "bar", "baz")
-  expect_equal(postprocess(lines), expected)
-
-  lines <- c("\\[foo\\]", "bar", "baz")
-  expected <- c("&#91;foo&#93;", "bar", "baz")
-  expect_equal(postprocess(lines), expected)
 })
 
 test_that("first_sentence", {

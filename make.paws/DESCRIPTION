@@ -41,7 +41,7 @@ Collate:
     'names.R'
     'operations.R'
     'make_sdk.R'
-    'sdk_for_api.R'
+    'process_api.R'
     'service.R'
     'tests.R'
     'text.R'

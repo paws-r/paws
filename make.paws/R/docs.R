@@ -155,7 +155,7 @@ comment <- function(s, char = "#") {
 }
 
 # Preprocess HTML to fix issues that R flags when installing packages.
-preprocess <- function(text) {
+clean_html <- function(text) {
   if (length(text) == 1 && text == "") return("")
   html <- xml2::read_html(text)
   code <- xml2::xml_find_all(html, ".//code")
@@ -170,6 +170,7 @@ preprocess <- function(text) {
 }
 
 # Remove extra lines that break roxygen2.
+# Preserve square brackets by converting to HTML character codes.
 clean_markdown <- function(markdown) {
   keep <- markdown != "<!-- -->"
   result <- markdown[keep]
