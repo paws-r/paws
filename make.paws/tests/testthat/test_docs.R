@@ -1,116 +1,5 @@
 context("Make documentation")
 
-test_that("fix_markdown_chars", {
-  text <- ""
-  expect_equal(fix_markdown_chars(text), text)
-
-  text <- "foo"
-  expect_equal(fix_markdown_chars(text), text)
-
-  text <- "\\[foo\\]"
-  expected <- "&#91;foo&#93;"
-  expect_equal(fix_markdown_chars(text), expected)
-
-  text <- "[foo]"
-  expect_equal(fix_markdown_chars(text), text)
-})
-
-test_that("preprocess", {
-  text <- ""
-  expect_equal(preprocess(text), text)
-
-  text <- "<body></body>"
-  expect_equal(preprocess(text), text)
-
-  text <- "<body>foo</body>"
-  expect_equal(preprocess(text), text)
-
-  text <- "<body><code>foo</code></body>"
-  expect_equal(preprocess(text), text)
-
-  text <- "<body><code>'foo</code></body>"
-  expected <- "<body><code>\\'foo</code></body>"
-  expect_equal(preprocess(text), expected)
-})
-
-test_that("postprocess", {
-  lines <- ""
-  expect_equal(postprocess(lines), lines)
-
-  lines <- c("foo", "bar", "baz")
-  expect_equal(postprocess(lines), lines)
-
-  lines <- c("foo", "bar", "<!-- -->", "baz")
-  expected <- c("foo", "bar", "baz")
-  expect_equal(postprocess(lines), expected)
-
-  lines <- c("\\[foo\\]", "bar", "baz")
-  expected <- c("&#91;foo&#93;", "bar", "baz")
-  expect_equal(postprocess(lines), expected)
-})
-
-test_that("html_to_markdown", {
-  text <- NULL
-  expect_equal(html_to_markdown(text), "")
-
-  text <- ""
-  expect_equal(html_to_markdown(text), text)
-
-  text <- "<body>foo</body>"
-  expected <- "foo"
-  expect_equal(html_to_markdown(text), expected)
-
-  text <- "<body><code>bar</code></body>"
-  expected <- "`bar`"
-  expect_equal(html_to_markdown(text), expected)
-
-  text <- "<body><p>foo</p><p>bar</p></body>"
-  expected <- c("foo", "", "bar")
-  expect_equal(html_to_markdown(text), expected)
-})
-
-test_that("convert", {
-  text <- NULL
-  expected <- ""
-  expect_equal(convert(text), expected)
-
-  text <- ""
-  expect_equal(convert(text), text)
-
-  text <- "foo"
-  expect_equal(convert(text), text)
-
-  text <- "<body>foo</body>"
-  expected <- "foo"
-  expect_equal(convert(text), expected)
-
-  text <- "<body><p>foo</p><p>bar</p></body>"
-  expected <- c("foo", "", "bar")
-  expect_equal(convert(text), expected)
-})
-
-test_that("mask", {
-  foo <- list(
-    a = list(
-      "abc",
-      "xyz",
-      123
-    )
-  )
-  masks <- list("b" = "&#98;", "z" = "&#122;")
-  result <- mask(foo, masks)
-  expect_equal(result$a[[1]], "a&#98;c")
-  expect_equal(result$a[[2]], "xy&#122;")
-  expect_equal(result$a[[3]], foo$a[[3]])
-  expect_equal(foo, unmask(mask(foo, masks), masks))
-})
-
-test_that("first_sentence", {
-  expect_equal(first_sentence(""), "")
-  expect_equal(first_sentence("foo."), "foo")
-  expect_equal(first_sentence("foo. bar."), "foo")
-})
-
 test_that("make_doc_title", {
   operation <- list()
   expected <- "#' "
@@ -398,4 +287,59 @@ test_that("make_doc_examples", {
     sep = "\n"
   )
   expect_equal(actual, expected)
+})
+
+test_that("clean_markdown", {
+  text <- ""
+  expect_equal(clean_markdown(text), text)
+
+  text <- "foo"
+  expect_equal(clean_markdown(text), text)
+
+  text <- "\\[foo\\]"
+  expected <- "&#91;foo&#93;"
+  expect_equal(clean_markdown(text), expected)
+
+  text <- "[foo]"
+  expect_equal(clean_markdown(text), text)
+})
+
+test_that("preprocess", {
+  text <- ""
+  expect_equal(preprocess(text), text)
+
+  text <- "<body></body>"
+  expect_equal(preprocess(text), text)
+
+  text <- "<body>foo</body>"
+  expect_equal(preprocess(text), text)
+
+  text <- "<body><code>foo</code></body>"
+  expect_equal(preprocess(text), text)
+
+  text <- "<body><code>'foo</code></body>"
+  expected <- "<body><code>\\'foo</code></body>"
+  expect_equal(preprocess(text), expected)
+})
+
+test_that("postprocess", {
+  lines <- ""
+  expect_equal(postprocess(lines), lines)
+
+  lines <- c("foo", "bar", "baz")
+  expect_equal(postprocess(lines), lines)
+
+  lines <- c("foo", "bar", "<!-- -->", "baz")
+  expected <- c("foo", "bar", "baz")
+  expect_equal(postprocess(lines), expected)
+
+  lines <- c("\\[foo\\]", "bar", "baz")
+  expected <- c("&#91;foo&#93;", "bar", "baz")
+  expect_equal(postprocess(lines), expected)
+})
+
+test_that("first_sentence", {
+  expect_equal(first_sentence(""), "")
+  expect_equal(first_sentence("foo."), "foo")
+  expect_equal(first_sentence("foo. bar."), "foo")
 })

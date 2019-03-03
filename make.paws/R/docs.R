@@ -74,7 +74,7 @@ make_doc_request <- function(operation, api) {
   if (!is.null(shape_name)) {
     shape <- make_shape(list(shape = shape_name), api)
     args <- add_example_values(shape)
-    masks <- list("(" = "&#40;", ")" = "&#41;")
+    masks <- list("\\(" = "&#40;", "\\)" = "&#41;")
     args <- mask(args, masks)
     call <- gsub("^list", func, list_to_string(args, quote = FALSE))
     call <- unmask(clean_example(call), masks)
@@ -131,23 +131,50 @@ make_doc_rdname <- function(operation, api) {
 
 #-------------------------------------------------------------------------------
 
-# Write a UTF-8 encoded file
-# Use `writeLines(..., useBytes = TRUE)` to write UTF-8 on Windows. Otherwise
-# Pandoc will occasionally fail with errors like `pandoc.exe: Cannot decode
-# byte '\x97': Data.Text.Internal.Encoding.decodeUtf8: Invalid UTF-8 stream`.
-write_utf8 <- function(x, file) {
-  writeLines(rlang::as_utf8_string(x), con = file, useBytes = TRUE)
+# Get the first sentence from a block of text.
+first_sentence <- function(x) {
+  if (is.list(x)) x <- as.character(x)
+  if (length(x) == 1 && x == "") return("")
+  first <- strsplit(x, "\\.")[[1]][[1]]
+  return(first)
 }
 
-# Replace special markdown characters with HTML character codes.
-fix_markdown_chars <- function(x, translate = c("\\[" = "&#91;", "\\]" = "&#93;")) {
-  result <- x
-  for (i in seq_along(translate)) {
-    from <- names(translate)[i]
-    to <- translate[i]
-    result <- gsub(from, to, result, fixed = TRUE)
-  }
+# Break a string into lines that are at most `chars` characters long.
+break_lines <- function(s, chars = 72) {
+  regex <- sprintf("(.{1,%i})(\\s|$)", chars)
+  result <- gsub(regex, "\\1\n", s)
   return(result)
+}
+
+# Add comment characters at the beginning of each line of the given string.
+comment <- function(s, char = "#") {
+  if (length(s) == 0) return(char)
+  lines <- strsplit(s, "\n", fixed = TRUE)[[1]]
+  result <- paste(char, lines, sep = " ", collapse = "\n")
+  return(result)
+}
+
+# Preprocess HTML to fix issues that R flags when installing packages.
+preprocess <- function(text) {
+  if (length(text) == 1 && text == "") return("")
+  html <- xml2::read_html(text)
+  code <- xml2::xml_find_all(html, ".//code")
+  if (length(code) > 0) {
+    code_text <- xml2::xml_text(code)
+    xml2::xml_text(code) <- escape_special_characters(code_text)
+    result <- as.character(xml2::xml_children(html))
+  } else {
+    result <- text
+  }
+  result
+}
+
+# Remove extra lines that break roxygen2.
+clean_markdown <- function(markdown) {
+  keep <- markdown != "<!-- -->"
+  result <- markdown[keep]
+  result <- mask(result, c("\\[" = "&#91;", "\\]" = "&#93;"))
+  result
 }
 
 # Convert an R list to a string.
@@ -174,10 +201,33 @@ list_to_string <- function(x, quote = TRUE) {
   return(result)
 }
 
-# Break a string into lines that are at most `chars` characters long.
-break_lines <- function(s, chars = 72) {
-  regex <- sprintf("(.{1,%i})(\\s|$)", chars)
-  result <- gsub(regex, "\\1\n", s)
+# Add example values, e.g. "string" for strings, to an input or output shape.
+add_example_values <- function(shape) {
+  if (type(shape) == "scalar") {
+    t <- tag_get(shape, "type")
+    if (tag_has(shape, "enum")) {
+      t <- "enum"
+      enum <- tag_get(shape, "enum")
+    }
+    result <- switch(
+      t,
+      blob = "raw",
+      boolean = "TRUE|FALSE",
+      double = "123.0",
+      enum = paste0(sprintf('"%s"', enum), collapse = "|"),
+      float = "123.0",
+      integer = "123",
+      long = "123",
+      string = '"string"',
+      timestamp = 'as.POSIXct("2015-01-01")',
+      t
+    )
+  } else {
+    result <- shape
+    for (i in seq_along(result)) {
+      result[[i]] <- add_example_values(result[[i]])
+    }
+  }
   return(result)
 }
 
@@ -226,9 +276,7 @@ clean_example <- function(s) {
 
       # For open perens, add to stack and indent next line
       open_perens <- c(open_perens, "(")
-
       indents <- paste0(rep(tab_string, length(open_perens)), collapse = "")
-
       cleaned <- paste0(cleaned, "(\n", indents)
 
     } else if (current_character == ")" & prev_character != "(") {
@@ -240,178 +288,23 @@ clean_example <- function(s) {
       } else {
         open_perens <- c()
       }
-
       indents <- paste0(rep(tab_string, length(open_perens)), collapse = "")
-
       cleaned <- paste0(cleaned, "\n", indents, ")")
 
     } else if (current_character == ",") {
       # Add new line after every comma
 
-      indents <- paste0(rep(tab_string,
-                            max(length(open_perens) - 1, 0)
-      ),
-      collapse = "")
-
+      indents <- paste0(rep(tab_string, max(length(open_perens) - 1, 0)), collapse = "")
       space_number <- ifelse(substr(s, i + 1, i + 1) == " ",
                              num_spaces - 1, num_spaces)
       final_tab = paste0(rep(" ", space_number), collapse = "")
       cleaned <- paste0(cleaned, ",\n", indents, final_tab)
 
-    } else{
+    } else {
       # Add other characters to new output string
       cleaned <- paste0(cleaned, current_character)
     }
   }
 
   cleaned
-}
-
-# Add comment characters at the beginning of each line of the given string.
-comment <- function(s, char = "#") {
-  if (length(s) == 0) return(char)
-  lines <- strsplit(s, "\n", fixed = TRUE)[[1]]
-  result <- paste(char, lines, sep = " ", collapse = "\n")
-  return(result)
-}
-
-# Preprocess HTML to fix issues that R flags when installing packages.
-preprocess <- function(text) {
-  if (length(text) == 1 && text == "") return("")
-  html <- xml2::read_html(text)
-  code <- xml2::xml_find_all(html, ".//code")
-  if (length(code) > 0) {
-    code_text <- xml2::xml_text(code)
-    xml2::xml_text(code) <- escape_special_characters(code_text)
-    result <- as.character(xml2::xml_children(html))
-  } else {
-    result <- text
-  }
-  result
-}
-
-# Remove extra lines that break roxygen2.
-postprocess <- function(markdown) {
-  keep <- markdown != "<!-- -->"
-  result <- markdown[keep]
-
-  # Fix brackets after converting to HTML because if we do it before converting
-  # to HTML, Pandoc just converts HTML codes back to the original brackets.
-  # TODO: Fix the extra space inserted by Pandoc.
-  result <- fix_markdown_chars(result)
-  result
-}
-
-# Convert HTML to markdown
-html_to_markdown <- function(html, wrap = TRUE) {
-  if (is.null(html)) return("")
-  # preprocessed <- preprocess(html)
-  preprocessed <- html
-  temp_in <- tempfile()
-  write_utf8(preprocessed, temp_in)
-  temp_out <- tempfile()
-  if (wrap) {
-    options <- c()
-  } else {
-    options <- c("--wrap=none")
-  }
-  rmarkdown::pandoc_convert(temp_in, output = temp_out,
-                            from = "html", to = "markdown",
-                            options = options)
-  markdown <- readLines(temp_out)
-  result <- postprocess(markdown)
-  result
-}
-
-html_to_text <- function(html) {
-  if (is.null(html)) return("")
-  temp_in <- tempfile()
-  write_utf8(html, temp_in)
-  temp_out <- tempfile()
-  rmarkdown::pandoc_convert(temp_in, output = temp_out,
-                            from = "html", to = "plain",
-                            options = "--wrap=none")
-  result <- readLines(temp_out)
-  return(result)
-}
-
-# Convert documentation to Markdown.
-convert <- function(docs, wrap = TRUE) {
-  if (is.null(docs) || docs == "") return("")
-  if (grepl("^<", docs)) {
-    result <- html_to_markdown(docs, wrap)
-  } else {
-    result <- strsplit(docs, "\n")[[1]]
-  }
-  result
-}
-
-# Get the first sentence from a block of text.
-first_sentence <- function(x) {
-  if (is.list(x)) x <- as.character(x)
-  if (length(x) == 1 && x == "") return("")
-  first <- strsplit(x, "\\.")[[1]][[1]]
-  return(first)
-}
-
-# Add example values, e.g. "string" for strings, to an input or output shape.
-add_example_values <- function(shape) {
-  if (type(shape) == "scalar") {
-    t <- tag_get(shape, "type")
-    if (tag_has(shape, "enum")) {
-      t <- "enum"
-      enum <- tag_get(shape, "enum")
-    }
-    result <- switch(
-      t,
-      blob = "raw",
-      boolean = "TRUE|FALSE",
-      double = "123.0",
-      enum = paste0(sprintf('"%s"', enum), collapse = "|"),
-      float = "123.0",
-      integer = "123",
-      long = "123",
-      string = '"string"',
-      timestamp = 'as.POSIXct("2015-01-01")',
-      t
-    )
-  } else {
-    result <- shape
-    for (i in seq_along(result)) {
-      result[[i]] <- add_example_values(result[[i]])
-    }
-  }
-  return(result)
-}
-
-# Return the object with all strings masked according to `masks`, e.g.
-# `mask("foobar", list("b" = "&#98;"))` --> "foo&#98;ar"
-mask <- function(object, masks) {
-  if (is.atomic(object)) {
-    if (is.character(object)) {
-      result <- object
-      for (i in seq_along(masks)) {
-        from <- names(masks)[i]
-        to <- masks[[i]]
-        result <- gsub(from, to, result, fixed = TRUE)
-      }
-      return(result)
-    }
-    return(object)
-  }
-  result <- object
-  for (i in seq_along(object)) {
-    result[[i]] <- mask(result[[i]], masks)
-  }
-  return(result)
-}
-
-unmask <- function(object, masks) {
-  unmasks <- list()
-  for (i in seq_along(masks)) {
-    from <- masks[[i]]
-    to <- names(masks)[i]
-    unmasks[[from]] <- to
-  }
-  return(mask(object, unmasks))
 }

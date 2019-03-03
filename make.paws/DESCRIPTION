@@ -44,4 +44,5 @@ Collate:
     'sdk_for_api.R'
     'service.R'
     'tests.R'
+    'text.R'
     'utils.R'
