@@ -355,6 +355,10 @@ test_that("convert", {
   text <- '<p> <code>{ "actors": {}, "title": {"format": "text","max_phrases": 2,"pre_tag": "<b>","post_tag": "</b>"} }</code></p>'
   expected <- "`\\{ \"actors\": \\{\\}, \"title\": \\{\"format\": \"text\",\"max_phrases\": 2,\"pre_tag\": \"<b>\",\"post_tag\": \"</b>\"\\} \\}`"
   expect_equal(convert(text), expected)
+
+  text <- "<body><p>foo</p><p>bar<code>'baz</code></p></body>"
+  expected <- c("foo", "", "bar`\\'baz`")
+  expect_equal(convert(text), expected)
 })
 
 test_that("first_sentence", {
