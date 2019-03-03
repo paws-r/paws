@@ -1,17 +1,5 @@
 context("Make documentation")
 
-test_that("fix_unmatched_char", {
-  expect_equal(fix_unmatched_char("(foo)", "()"), "(foo)")
-  expect_equal(fix_unmatched_char("(foo", "()"), "\\(foo")
-  expect_equal(fix_unmatched_char("foo)", "()"), "foo\\)")
-  expect_equal(fix_unmatched_char("foo", "()"), "foo")
-  expect_equal(fix_unmatched_char("'foo'", "''"), "'foo'")
-  expect_equal(fix_unmatched_char("'foo", "''"), "\\'foo")
-  expect_equal(fix_unmatched_char("foo'", "''"), "foo\\'")
-  expect_equal(fix_unmatched_char("foo", "''"), "foo")
-  expect_equal(fix_unmatched_char("", "''"), "")
-})
-
 test_that("fix_markdown_chars", {
   text <- ""
   expect_equal(fix_markdown_chars(text), text)
