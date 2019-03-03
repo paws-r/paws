@@ -13,8 +13,8 @@ make_docs <- function(operation, api) {
   docs <- glue::glue_collapse(
     c(title,
       description,
-      accepted_params,
       params,
+      accepted_params,
       examples,
       "#' @keywords internal",
       rdname),
@@ -35,7 +35,6 @@ make_doc_title <- function(operation) {
 # Make the description and details documentation.
 make_doc_desc <- function(operation) {
   docs <- convert(operation$documentation)
-  docs <- escape_special_characters(docs)
   description <- glue::glue("#' {docs}")
   description <- glue::glue_collapse(description, sep = "\n")
   return(as.character(description))
@@ -140,48 +139,6 @@ write_utf8 <- function(x, file) {
   writeLines(rlang::as_utf8_string(x), con = file, useBytes = TRUE)
 }
 
-# Escape unmatched characters
-#
-# Check whether there are an equal number of each of a pair of characters, and
-# if not, escape all such characters. Escape all such characters since it is
-# hard to determine which particular characters have no match.
-#
-# We need to escape unmatched characters because R will not install packages
-# whose documentation includes code snippets with unmatched quotes or
-# parentheses.
-fix_unmatched_char <- function(x, pair) {
-  start <- substr(pair, 1, 1)
-  stop <- substr(pair, 2, 2)
-  ret <- unlist(lapply(x, function(string) {
-    count_start <- stringr::str_count(string, stringr::coll(start))
-    count_stop <- stringr::str_count(string, stringr::coll(stop))
-    result <- string
-    if (start == stop) {
-      unmatched <- count_start %% 2 != 0
-      if (unmatched) {
-        result <- gsub(start, paste0("\\", start), result, fixed = TRUE)
-      }
-    } else {
-      unmatched <- count_start != count_stop
-      if (unmatched) {
-        result <- gsub(start, paste0("\\", start), result, fixed = TRUE)
-        result <- gsub(stop, paste0("\\", stop), result, fixed = TRUE)
-      }
-    }
-    result
-  }))
-  return(ret)
-}
-
-# Escape unmatched characters for multiple pairs of characters
-fix_unmatched_chars <- function(x, pairs = c("''", '""', "()")) {
-  result <- x
-  for (pair in pairs) {
-    result <- fix_unmatched_char(result, pair)
-  }
-  return(result)
-}
-
 # Replace special markdown characters with HTML character codes.
 fix_markdown_chars <- function(x, translate = c("\\[" = "&#91;", "\\]" = "&#93;")) {
   result <- x
@@ -221,12 +178,6 @@ list_to_string <- function(x, quote = TRUE) {
 break_lines <- function(s, chars = 72) {
   regex <- sprintf("(.{1,%i})(\\s|$)", chars)
   result <- gsub(regex, "\\1\n", s)
-  return(result)
-}
-
-# Format code given as a string -- add indentation, etc.
-format_code <- function(s) {
-  result <- formatR::tidy_source(text = s)
   return(result)
 }
 
@@ -316,12 +267,6 @@ clean_example <- function(s) {
   cleaned
 }
 
-# Escapes special characters in documentation
-escape_special_characters <- function(text) {
-  result <- gsub("%", "\\\\%", text)
-  return(result)
-}
-
 # Add comment characters at the beginning of each line of the given string.
 comment <- function(s, char = "#") {
   if (length(s) == 0) return(char)
@@ -337,7 +282,7 @@ preprocess <- function(text) {
   code <- xml2::xml_find_all(html, ".//code")
   if (length(code) > 0) {
     code_text <- xml2::xml_text(code)
-    xml2::xml_text(code) <- fix_unmatched_chars(code_text)
+    xml2::xml_text(code) <- escape_special_characters(code_text)
     result <- as.character(xml2::xml_children(html))
   } else {
     result <- text
@@ -360,7 +305,8 @@ postprocess <- function(markdown) {
 # Convert HTML to markdown
 html_to_markdown <- function(html, wrap = TRUE) {
   if (is.null(html)) return("")
-  preprocessed <- preprocess(html)
+  # preprocessed <- preprocess(html)
+  preprocessed <- html
   temp_in <- tempfile()
   write_utf8(preprocessed, temp_in)
   temp_out <- tempfile()

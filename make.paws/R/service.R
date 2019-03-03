@@ -9,7 +9,6 @@ service_file_template <- template(
 
   #' ${title}
   #'
-  #' @description
   #' ${description}
   #'
   #' @rdname ${service}
@@ -67,12 +66,14 @@ service_title <- function(api) {
 # Return the API description.
 service_description <- function(api) {
   desc <- convert(api$documentation)
+  if (is.null(desc) || desc == "") return("")
   if (length(desc) > 1) {
     if (desc[1] == service_title(api)) desc <- desc[-1]
     if (desc[1] == "") desc <- desc[-1]
     desc[-1] <- paste0("#' ", desc[-1])
     desc <- paste(desc, collapse = "\n")
   }
+  desc <- paste("@description", desc, collapse = "")
   return(desc)
 }
 
