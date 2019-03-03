@@ -24,7 +24,11 @@ type(object)
 
 \item{tag}{A tag name.}
 
-\item{tags}{A named list with tag names and their values.}
+\item{tags}{A list of tags.
+\itemize{
+\item \code{tag_add}: A named vector with tag names and their values.
+\item \code{tag_del}: A character vector of tags to delete.
+}}
 }
 \description{
 Tags are metadata stored in an object's attributes, used to store types and
@@ -37,7 +41,8 @@ exist.
 
 \code{tag_add} returns the object after adding the given list of tags and values.
 
-\code{tag_del} returns the object after deleting all tags.
+\code{tag_del} returns the object after recursively deleting tags in \code{tags}, or
+all tags if \code{NULL}.
 
 \code{type} returns broadly what type an object is, based on its \code{type} tag.
 }

@@ -18,7 +18,7 @@
 #'
 #' @param object An object.
 #' @param tag A tag name.
-#' @param tags
+#' @param tags A list of tags.
 #' * `tag_add`: A named vector with tag names and their values.
 #' * `tag_del`: A character vector of tags to delete.
 #'

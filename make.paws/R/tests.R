@@ -15,7 +15,7 @@ make_tests <- function(api) {
   i <- 1
   for (operation in get_testable_operations(api)) {
     for (test_args in get_test_args(operation, api)) {
-      test <- make_test(operation, test_args$args, test_args$outcome)
+      test <- make_test(operation, api, test_args$args, test_args$outcome)
       tests[[i]] <- test
       i <- i + 1
     }
@@ -38,13 +38,14 @@ test_template <- template(
 )
 
 # Make a test for a given operation with the given arguments.
-# The template must be defined outside `make_test` for code coverage to work.
-make_test <- function(operation, args, outcome) {
-  name <- get_operation_name(operation)
-  call <- make_call(name, args)
+make_test <- function(operation, api, args, outcome) {
+  operation <- get_operation_name(operation)
+  service <- package_name(api)
+  fn <- sprintf("%s$%s", service, operation)
+  call <- make_call(fn, args)
   test <- render(
     test_template,
-    operation_name = quoted(name),
+    operation_name = quoted(operation),
     call = call,
     outcome = outcome
   )

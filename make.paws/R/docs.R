@@ -34,7 +34,7 @@ make_doc_title <- function(operation) {
 
 # Make the description and details documentation.
 make_doc_desc <- function(operation) {
-  docs <- convert(operation$documentation, wrap = FALSE)
+  docs <- convert(operation$documentation)
   docs <- escape_special_characters(docs)
   description <- glue::glue("#' {docs}")
   description <- glue::glue_collapse(description, sep = "\n")
@@ -50,7 +50,7 @@ make_doc_params <- function(operation, api) {
     params <- sapply(inputs, function(input) {
       param <- input$member_name
       required <- input$required
-      documentation <- convert(input$documentation, wrap = FALSE)
+      documentation <- convert(input$documentation)
       documentation <- glue::glue_collapse(documentation, sep = "\n")
       if (required) {
         documentation <- glue::glue("&#91;required&#93; {documentation}")
