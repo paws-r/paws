@@ -16,6 +16,10 @@ test_that("make_doc_title", {
   operation <- list(documentation = "<body><p>[In brackets] Outside brackets.</p></body>")
   expected <- "#' &#91;In brackets&#93; Outside brackets"
   expect_equal(make_doc_title(operation), expected)
+
+  operation <- list(documentation = "<p>A really long description which is over 80 characters wide and will get cut off by the automatic line wrapping when converted from HTML to Markdown. Here is another sentence.</p>")
+  expected <- "#' A really long description which is over 80 characters wide and will get\n#' cut off by the automatic line wrapping when converted from HTML to\n#' Markdown"
+  expect_equal(make_doc_title(operation), expected)
 })
 
 test_that("make_doc_desc", {

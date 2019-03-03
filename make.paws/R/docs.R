@@ -25,10 +25,11 @@ make_docs <- function(operation, api) {
 
 # Make the documentation title.
 make_doc_title <- function(operation) {
-  docs <- html_to_text(operation$documentation)
+  docs <- paste(html_to_text(operation$documentation), collapse = " ")
+  docs <- gsub(" +", " ", docs)
   title <- first_sentence(docs)
   title <- mask(title, c("[" = "&#91;", "]" = "&#93;"))
-  title <- glue::glue("#' {title}")
+  title <- comment(break_lines(title), "#'")
   return(as.character(title))
 }
 
