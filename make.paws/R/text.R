@@ -12,8 +12,7 @@ html_to <- function(html, to) {
   temp_in <- tempfile()
   write_utf8(html, temp_in)
   temp_out <- tempfile()
-  rmarkdown::pandoc_convert(temp_in, output = temp_out,
-                            from = "html", to = to)
+  rmarkdown::pandoc_convert(temp_in, output = temp_out, from = "html", to = to)
   result <- readLines(temp_out)
   result
 }

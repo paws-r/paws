@@ -352,6 +352,22 @@ test_that("convert", {
   expected <- "`\\'foo`"
   expect_equal(convert(text), expected)
 
+  text <- "<body>\\'{</body>"
+  expected <- "\\\\\\'\\{"
+  expect_equal(convert(text), expected)
+
+  text <- "<body>%{}\\</body>"
+  expected <- "\\%\\{\\}\\\\"
+  expect_equal(convert(text), expected)
+
+  text <- "<body>123%{}</body>"
+  expected <- "123\\%\\{\\}"
+  expect_equal(convert(text), expected)
+
+  text <- "<body>foo \\bar { \\u0123 <code>baz'</code></body>"
+  expected <- "foo \\\\bar \\{ \\\\u0123 `baz\\'`"
+  expect_equal(convert(text), expected)
+
   text <- '<p> <code>{ "actors": {}, "title": {"format": "text","max_phrases": 2,"pre_tag": "<b>","post_tag": "</b>"} }</code></p>'
   expected <- "`\\{ \"actors\": \\{\\}, \"title\": \\{\"format\": \"text\",\"max_phrases\": 2,\"pre_tag\": \"<b>\",\"post_tag\": \"</b>\"\\} \\}`"
   expect_equal(convert(text), expected)

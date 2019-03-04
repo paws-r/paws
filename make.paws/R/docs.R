@@ -156,6 +156,19 @@ comment <- function(s, char = "#") {
 }
 
 # Convert documentation to Markdown.
+#
+# The conversion pipeline goes
+# 1. raw html
+# 2. escape unmatched quotes in code snippets
+# 3. convert html to markdown with Pandoc
+# 4. escape special characters
+# 5. finished documentation added to generated R code
+#
+# Unmatched quotes are escaped while still in html because it is easier to
+# identify code snippets as they are all in <code></code> nodes.
+#
+# Special characters % { } \ are escaped after converting to html because
+# this avoids any changes that would otherwise be made by Pandoc.
 convert <- function(docs) {
   if (is.null(docs) || docs == "") return("")
   if (grepl("^<", docs)) {
@@ -166,11 +179,6 @@ convert <- function(docs) {
   }
   result <- escape_special_chars(result)
   result
-}
-
-# Clean text to escape special characters that will go into Rd files.
-escape_special_chars <- function(text) {
-  gsub("([%{}])", "\\\\\\1", text)
 }
 
 # Clean HTML to escape special characters that will go into Rd files.
@@ -184,18 +192,29 @@ clean_html <- function(text) {
 # Escape unmatched quotes in code snippets.
 # Note: this modifies its inputs.
 clean_html_node <- function(node) {
+  if (xml2::xml_name(node) == "code") {
+    text <- as.character(node)
+    text <- gsub("^<code>(.*)</code>$", "\\1", text)
+    new_node <- xml2::xml_new_root("code")
+    xml2::xml_text(new_node) <- escape_unmatched_quotes(text)
+    xml2::xml_replace(node, new_node)
+  }
   for (child in xml2::xml_children(node)) {
-    if (xml2::xml_name(child) == "code") {
-      text <- as.character(child)
-      text <- gsub("^<code>(.*)</code>$", "\\1", text)
-      new_node <- xml2::xml_new_root("code")
-      xml2::xml_text(new_node) <- escape_unmatched_quotes(text)
-      xml2::xml_replace(child, new_node)
-    } else {
-      child <- clean_html_node(child)
-    }
+    child <- clean_html_node(child)
   }
   node
+}
+
+# Escape special characters % { }, and single \ not followed by another special
+# character. These cause problems in R documentation Rd files.
+# See https://developer.r-project.org/parseRd.pdf.
+escape_special_chars <- function(text) {
+  result <- text
+  result <- gsub("(?<!\\\\)\\\\(?![\\\\%{}'\"\\*~])", "\\\\\\\\", result, perl = TRUE)
+  for (char in c("%", "{", "}")) {
+    result <- gsub(paste0("(?<!\\\\)", char), paste0("\\\\", char), result, perl = TRUE)
+  }
+  result
 }
 
 # Escape unmatched characters. Assumes
@@ -209,10 +228,6 @@ escape_unmatched_quotes <- function(x) {
     }
   }
   result
-}
-
-clean_code <- function(text) {
-  escape_unmatched_quotes(text)
 }
 
 # Remove extra lines that break roxygen2.
