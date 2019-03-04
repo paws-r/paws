@@ -1,9 +1,8 @@
 # Return a call defining the structure of the given object x.
 get_structure <- function(x) {
   result <- paste(deparse(x), collapse = "")
-  result <- gsub(" ", "", result, fixed = TRUE)
-  result <- gsub(",", ", ", result, fixed = TRUE)
-  result <- gsub("=", " = ", result, fixed = TRUE)
+  result <- gsub(" *, *", ", ", result)
+  result <- gsub(" *= *", " = ", result)
   result
 }
 

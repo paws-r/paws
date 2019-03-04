@@ -1,4 +1,4 @@
-# Returns a template for given R code; simply converts it to a string.
+# Returns a string representing a template for given R code.
 template <- function(x) {
   expr <- substitute(x)
   if (class(expr) == "{") {
@@ -9,7 +9,7 @@ template <- function(x) {
 }
 
 # Returns a string by rendering a template, replacing variables enclosed with
-# {} with corresponding named argument values in `...`.
+# ${} with corresponding named argument values in `...`.
 render <- function(template, ...) {
   as.character(stringr::str_interp(template, env = list(...)))
 }

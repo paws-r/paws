@@ -382,3 +382,33 @@ test_that("first_sentence", {
   expect_equal(first_sentence("foo."), "foo")
   expect_equal(first_sentence("foo. bar."), "foo")
 })
+
+test_that("escape_unmatched_quotes", {
+  expect_equal(escape_unmatched_quotes("'foo'"), "'foo'")
+  expect_equal(escape_unmatched_quotes("'foo"), "\\'foo")
+  expect_equal(escape_unmatched_quotes("foo'"), "foo\\'")
+  expect_equal(escape_unmatched_quotes("foo"), "foo")
+  expect_equal(escape_unmatched_quotes(""), "")
+})
+
+test_that("clean_markdown", {
+  text <- ""
+  expect_equal(clean_markdown(text), text)
+
+  text <- "foo"
+  expect_equal(clean_markdown(text), text)
+
+  text <- "\\[foo\\]"
+  expected <- "&#91;foo&#93;"
+  expect_equal(clean_markdown(text), expected)
+
+  text <- "[foo]"
+  expect_equal(clean_markdown(text), text)
+
+  lines <- c("foo", "bar", "baz")
+  expect_equal(clean_markdown(lines), lines)
+
+  lines <- c("foo", "bar", "<!-- -->", "baz")
+  expected <- c("foo", "bar", "baz")
+  expect_equal(clean_markdown(lines), expected)
+})
