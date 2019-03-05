@@ -195,8 +195,15 @@ clean_html_node <- function(node) {
   if (xml2::xml_name(node) == "code") {
     text <- as.character(node)
     text <- gsub("^<code>(.*)</code>$", "\\1", text)
+    text <- escape_unmatched_quotes(text)
+
+    # R's Rd generator inserts garbage when it sees some un-escaped brackets
+    # within code snippets. To avoid, add escaping backslashes. We need two
+    # backslashes instead of one, since Pandoc converts "\[" to "[".
+    text <- mask(text, c("[" = "\\\\[", "]" = "\\\\]"))
+
     new_node <- xml2::xml_new_root("code")
-    xml2::xml_text(new_node) <- escape_unmatched_quotes(text)
+    xml2::xml_text(new_node) <- text
     xml2::xml_replace(node, new_node)
   }
   for (child in xml2::xml_children(node)) {
