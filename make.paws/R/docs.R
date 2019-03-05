@@ -207,10 +207,15 @@ clean_html_node <- function(node) {
 
 # Escape special characters % { }, and single \ not followed by another special
 # character. These cause problems in R documentation Rd files.
+# Do not escape \ when followed by:
+#   1. % { } \ ' " ` -- escaped special Rd or LaTeX characters
+#   2. * [ ] -- escaped markdown characters
+#   3. ~ -- ???
 # See https://developer.r-project.org/parseRd.pdf.
 escape_special_chars <- function(text) {
   result <- text
-  result <- gsub("(?<!\\\\)\\\\(?![\\\\%{}'\"\\*~])", "\\\\\\\\", result, perl = TRUE)
+  result <- gsub("(?<!\\\\)\\\\(?![\\\\%{}'\"`\\*~\\[\\]])", "\\\\\\\\", result, perl = TRUE)
+  result <- gsub("`\\\\`", "`\\\\\\\\`", result, fixed = TRUE) # Special case: `\`
   for (char in c("%", "{", "}")) {
     result <- gsub(paste0("(?<!\\\\)", char), paste0("\\\\", char), result, perl = TRUE)
   }
