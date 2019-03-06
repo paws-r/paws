@@ -4,7 +4,7 @@
 \alias{make_sdk}
 \title{Make the AWS SDK R package}
 \usage{
-make_sdk(in_dir, out_dir, quiet = FALSE)
+make_sdk(in_dir, out_dir)
 }
 \arguments{
 \item{in_dir}{Directory containing API files.}

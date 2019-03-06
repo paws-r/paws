@@ -30,17 +30,17 @@ Suggests:
 Remotes:
     paws-r/paws/paws.common
 SystemRequirements: pandoc (>= 1.12.3) - http://pandoc.org
-Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
+Roxygen: list(markdown = TRUE, roclets = c("rd"))
 RoxygenNote: 6.1.1
 Collate: 
-    'read_api.R'
     'docs.R'
     'templates.R'
     'interfaces.R'
+    'make_sdk.R'
     'names.R'
     'operations.R'
-    'make_sdk.R'
     'process_api.R'
+    'read_api.R'
     'service.R'
     'tests.R'
     'text.R'
