@@ -32,6 +32,11 @@ clean_template <- function(template) {
   template
 }
 
+# Declare variables to avoid R CMD check notes about templates.
+utils::globalVariables(
+  "${function_name}(${args})"
+)
+
 make_call <- function(function_name, args) {
   args_fmt <- c()
   for (i in seq_along(args)) {

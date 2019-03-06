@@ -60,6 +60,11 @@ make_interface_pair <- function(operation, api) {
   paste(input, output, sep = "\n\n")
 }
 
+# Declare variables to avoid R CMD check notes about templates.
+utils::globalVariables(
+  "\n    ${name} <- function(...) {\n      list()\n    }\n    "
+)
+
 make_empty_interface <- function(name) {
   interface_template <- template(
     `
