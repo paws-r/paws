@@ -4,12 +4,12 @@
 #' @param out_dir Directory of the R package.
 #'
 #' @export
-make_sdk <- function(in_dir, out_dir, quiet = FALSE) {
+make_sdk <- function(in_dir, out_dir) {
   version <- make_version(out_dir)
   write_skeleton(out_dir)
   write_description(out_dir, version)
   for (api in list_apis(file.path(in_dir, "apis"))) {
-    if (!quiet) cat(paste0(api, "\n"))
+    cat(paste0(api, "\n"))
     write_sdk_for_api(api, in_dir, out_dir)
   }
   write_documentation(out_dir)

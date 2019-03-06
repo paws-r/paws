@@ -12,10 +12,8 @@ License: Apache License (>= 2.0)
 Encoding: UTF-8
 LazyData: true
 Imports:
-    callr,
     desc,
     devtools,
-    formatR,
     glue,
     jsonlite,
     methods,
@@ -27,6 +25,7 @@ Imports:
     xml2
 Suggests: 
     covr,
+    formatR,
     testthat
 Remotes:
     paws-r/paws/paws.common
