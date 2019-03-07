@@ -11,13 +11,16 @@
 #'
 #' `tag_add` returns the object after adding the given list of tags and values.
 #'
-#' `tag_del` returns the object after deleting all tags.
+#' `tag_del` returns the object after recursively deleting tags in `tags`, or
+#' all tags if `NULL`.
 #'
 #' `type` returns broadly what type an object is, based on its `type` tag.
 #'
 #' @param object An object.
 #' @param tag A tag name.
-#' @param tags A named list with tag names and their values.
+#' @param tags A list of tags.
+#' * `tag_add`: A named vector with tag names and their values.
+#' * `tag_del`: A character vector of tags to delete.
 #'
 #' @examples
 #' foo <- list()
@@ -69,15 +72,24 @@ tag_add <- function(object, tags) {
   return(object)
 }
 
-# Remove all tags from an object.
+# Remove all tags recursively from an object. If no `tags` argument is provided,
+# delete all tags.
 #' @rdname tags
 #' @export
-tag_del <- function(object) {
+tag_del <- function(object, tags = NULL) {
   result <- object
-  attr(result, "tags") <- NULL
+  if (is.null(tags)) {
+    attr(result, "tags") <- NULL
+  } else {
+    this_tags <- attr(object, "tags", exact = TRUE)
+    for (tag in tags) {
+      this_tags[[tag]] <- NULL
+    }
+    attr(result, "tags") <- this_tags
+  }
   if (is.atomic(result)) return(result)
   for (i in seq_along(result)) {
-    result[[i]] <- tag_del(result[[i]])
+    result[[i]] <- tag_del(result[[i]], tags)
   }
   return(result)
 }

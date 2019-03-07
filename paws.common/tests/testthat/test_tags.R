@@ -17,7 +17,7 @@ test_that("add tags to an object with tags", {
   expect_equal(tag_get(c, "baz"), list(qux = "xyz"))
 })
 
-test_that("delete tags", {
+test_that("delete all tags", {
   inner1 <- list(foo = 1)
   inner1 <- tag_add(inner1, list(test = "list_item_tag"))
   inner2 <- list(foo = 2)
@@ -39,4 +39,38 @@ test_that("delete tags", {
   expect_equal(tag_get(result$inner, "test"), "")
   expect_equal(tag_get(result$inner[[1]], "test"), "")
   expect_equal(result$inner[[2]]$foo, 2)
+})
+
+test_that("delete some tags", {
+  inner1 <- list(foo = 1)
+  inner1 <- tag_add(inner1, list(foo1 = "list_item_tag"))
+  inner2 <- list(foo = 2)
+  inner2 <- tag_add(inner2, list(foo2 = "list_item_tag"))
+  inner3 <- list(foo = 3)
+  inner3 <- tag_add(inner3, list(foo2 = "list_item_tag"))
+  inner <- list(inner1, inner2, inner3)
+  inner <- tag_add(inner, list(bar1 = "list_tag"))
+
+  outer <- list(inner = inner)
+  outer <- tag_add(outer, list(bar1 = "structure_tag"))
+
+  expect_equal(tag_get(outer, "bar1"), "structure_tag")
+  expect_equal(tag_get(outer$inner, "bar1"), "list_tag")
+  expect_equal(tag_get(outer$inner[[1]], "foo1"), "list_item_tag")
+  expect_equal(tag_get(outer$inner[[2]], "foo1"), "")
+  expect_equal(tag_get(outer$inner[[3]], "foo1"), "")
+  expect_equal(tag_get(outer$inner[[1]], "foo2"), "")
+  expect_equal(tag_get(outer$inner[[2]], "foo2"), "list_item_tag")
+  expect_equal(tag_get(outer$inner[[3]], "foo2"), "list_item_tag")
+
+  result <- tag_del(outer, "foo2")
+
+  expect_equal(tag_get(outer, "bar1"), "structure_tag")
+  expect_equal(tag_get(outer$inner, "bar1"), "list_tag")
+  expect_equal(tag_get(result$inner[[1]], "foo1"), "list_item_tag")
+  expect_equal(tag_get(result$inner[[2]], "foo1"), "")
+  expect_equal(tag_get(result$inner[[3]], "foo1"), "")
+  expect_equal(tag_get(result$inner[[1]], "foo2"), "")
+  expect_equal(tag_get(result$inner[[2]], "foo2"), "")
+  expect_equal(tag_get(result$inner[[3]], "foo2"), "")
 })
