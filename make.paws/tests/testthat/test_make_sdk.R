@@ -1,6 +1,6 @@
-context("Make package")
+context("Make SDK")
 
-test_that("make_package", {
+test_that("make_sdk", {
   path <- tempdir()
 
   # Create a fake API spec.
