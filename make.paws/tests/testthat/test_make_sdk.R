@@ -1,17 +1,16 @@
 context("Make package")
 
 test_that("make_package", {
-  skip("TODO: Adapt to make_sdk.")
   path <- tempdir()
 
   # Create a fake API spec.
   path_in <- file.path(path, "in")
   api <- list(
     metadata = list(
-      endpointPrefix = "example",
+      endpointPrefix = "foo",
       protocol = "json",
-      serviceAbbreviation = "example",
-      serviceFullName = "AWS Example",
+      serviceAbbreviation = "foo",
+      serviceFullName = "AWS Foo",
       signatureVersion = "v4"
     ),
     operations = list(
@@ -65,7 +64,7 @@ test_that("make_package", {
         type = "string"
       )
     ),
-    documentation = "AWS Example is an example AWS API."
+    documentation = "AWS Foo is an example AWS API."
   )
   api_path <- file.path(path_in, "apis", "example-2018-11-01.normal.json")
   dir.create(dirname(api_path), recursive = TRUE)
@@ -83,15 +82,16 @@ test_that("make_package", {
   jsonlite::write_json(region_config, region_config_path, auto_unbox = TRUE)
 
   path_out <- file.path(path, "out")
-  package_dir <- file.path(path_out, "paws.example")
 
-  make_package("example", path_in, path_out)
+  make_sdk(path_in, path_out)
 
-  expect_true(dir.exists(package_dir))
-  expect_true(file.exists(file.path(package_dir, "DESCRIPTION")))
-  expect_true(file.exists(file.path(package_dir, "NAMESPACE")))
-  expect_true(dir.exists(file.path(package_dir, "R")))
-  expect_true(dir.exists(file.path(package_dir, "man")))
+  expect_true(dir.exists(path_out))
+  expect_true(file.exists(file.path(path_out, "DESCRIPTION")))
+  expect_true(file.exists(file.path(path_out, "NAMESPACE")))
+  expect_true(dir.exists(file.path(path_out, "R")))
+  expect_true(dir.exists(file.path(path_out, "man")))
+  files <- c("foo_interfaces.R", "foo_operations.R", "foo_service.R")
+  expect_true(all(files %in% list.files(file.path(path_out, "R"))))
 })
 
 test_that("list_apis", {
