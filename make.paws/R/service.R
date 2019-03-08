@@ -47,9 +47,9 @@ make_service <- function(api) {
     protocol = protocol_package(api),
     signer = quoted(api$metadata$signatureVersion),
     service_name = quoted(service_name(api)),
-    endpoints = endpoint_data(api),
+    endpoints = endpoints(api),
     service_id = quoted(service_id(api)),
-    api_version = quoted(api$metadata$apiVersion),
+    api_version = api_version(api),
     signing_name = signing_name(api),
     json_version = json_version(api),
     target_prefix = target_prefix(api)
@@ -95,8 +95,17 @@ signing_name <- function(api) {
   quoted(name)
 }
 
-endpoint_data <- function(api) {
+# Returns a string representation of a list of the endpoints or endpoint
+# patterns, e.g. "list("*/*" = "{service}.{region}.amazonaws.com")".
+endpoints <- function(api) {
   get_structure(api$region_config)
+}
+
+# Returns the API's version, or "" if none.
+api_version <- function(api) {
+  version <- api$metadata$apiVersion
+  if (is.null(version)) version <- ""
+  quoted(version)
 }
 
 # Returns the JSON version for the API, or "" if none.
