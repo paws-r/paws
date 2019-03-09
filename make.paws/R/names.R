@@ -1,6 +1,6 @@
 # Return the name of the R package to be generated.
 package_name <- function(api) {
-  name <- sprintf("paws.%s", tolower(struct_name(api)))
+  name <- tolower(struct_name(api))
   return(name)
 }
 

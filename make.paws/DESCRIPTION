@@ -12,10 +12,8 @@ License: Apache License (>= 2.0)
 Encoding: UTF-8
 LazyData: true
 Imports:
-    callr,
     desc,
     devtools,
-    formatR,
     glue,
     jsonlite,
     methods,
@@ -27,20 +25,23 @@ Imports:
     xml2
 Suggests: 
     covr,
+    formatR,
     testthat
 Remotes:
     paws-r/paws/paws.common
 SystemRequirements: pandoc (>= 1.12.3) - http://pandoc.org
-Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
+Roxygen: list(markdown = TRUE, roclets = c("rd"))
 RoxygenNote: 6.1.1
 Collate: 
-    'make_api.R'
-    'make_docs.R'
-    'make_function.R'
-    'make_interface.R'
-    'make_names.R'
-    'make_operation.R'
-    'make_package.R'
-    'make_service.R'
-    'make_tests.R'
-    'make_utils.R'
+    'docs.R'
+    'templates.R'
+    'interfaces.R'
+    'make_sdk.R'
+    'names.R'
+    'operations.R'
+    'process_api.R'
+    'read_api.R'
+    'service.R'
+    'tests.R'
+    'text.R'
+    'utils.R'

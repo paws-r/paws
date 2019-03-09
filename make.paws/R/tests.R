@@ -1,79 +1,13 @@
-#' @include make_function.R
+#' @include templates.R
 NULL
 
-#' Run all tests in a package in another R session
-#'
-#' @param path The path to the package source.
-#' @param timeout How long it should be allowed to run.
-#'
-#' @export
-run_tests <- function(path, timeout = 180) {
-  result <- tryCatch({
-    run_tests_internal(path, timeout)
-  }, error = function(e) {
-    data.frame(
-      package = basename(path),
-      file = NA_character_,
-      test = NA_character_,
-      success = FALSE,
-      message = "test failure",
-      stringsAsFactors = FALSE
-    )
-  })
-  return(result)
-}
+test_file_template <- template(
+  `
+  context(${service})
 
-# Run all tests in a package with a given path.
-run_tests_internal <- function(path, timeout = 180) {
-  result <- callr::r(
-    func = function(pkg, ...) devtools::test(pkg, ...),
-    args = list(
-      pkg = path,
-      reporter = testthat::ListReporter
-    ),
-    timeout = timeout
-  )
-  out <- do.call(
-    rbind,
-    lapply(result, function(x) {
-      data.frame(
-        package = basename(path),
-        file = x$file,
-        test = x$test,
-        success = sapply(x$results, function(y) !("error" %in% class(y))),
-        message = sapply(x$results, function(y) y$message),
-        stringsAsFactors = FALSE
-      )
-    })
-  )
-  return(out)
-}
-
-#-------------------------------------------------------------------------------
-
-# Make the individual test template.
-# The template must be defined outside `make_test` for code coverage to work.
-TEST_TEMPLATE <- make_code_template({
-  test_that(.OPERATION_QUOTED, {
-    expect_error(.OPERATION, .OUTCOME)
-  })
-})
-
-# Make a test for a given operation with the given arguments.
-# The template must be defined outside `make_test` for code coverage to work.
-make_test <- function(operation, args, outcome) {
-  name <- get_operation_name(operation)
-  call <- make_call(name, args)
-  result <- render_code_template(
-    template = TEST_TEMPLATE,
-    values = list(
-      .OPERATION_QUOTED = name,
-      .OPERATION = call,
-      .OUTCOME = outcome
-    )
-  )
-  return(result)
-}
+  ${tests}
+  `
+)
 
 # Make all tests for a given API.
 make_tests <- function(api) {
@@ -81,13 +15,41 @@ make_tests <- function(api) {
   i <- 1
   for (operation in get_testable_operations(api)) {
     for (test_args in get_test_args(operation, api)) {
-      test <- make_test(operation, test_args$args, test_args$outcome)
+      test <- make_test(operation, api, test_args$args, test_args$outcome)
       tests[[i]] <- test
       i <- i + 1
     }
   }
-  result <- paste(tests, collapse = "\n\n")
-  return(result)
+  tests <- paste(tests, collapse = "\n\n")
+  render(
+    test_file_template,
+    service = quoted(package_name(api)),
+    tests = tests
+  )
+}
+
+# Make the individual test template.
+test_template <- template(
+  `
+  test_that(${operation_name}, {
+    expect_error(${call}, ${outcome})
+  })
+  `
+)
+
+# Make a test for a given operation with the given arguments.
+make_test <- function(operation, api, args, outcome) {
+  operation <- get_operation_name(operation)
+  service <- package_name(api)
+  fn <- sprintf("%s$%s", service, operation)
+  call <- make_call(fn, args)
+  test <- render(
+    test_template,
+    operation_name = quoted(operation),
+    call = call,
+    outcome = outcome
+  )
+  return(test)
 }
 
 # Returns a list of the testable operations for a given API.

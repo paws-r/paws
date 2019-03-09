@@ -80,23 +80,3 @@ fix_operation_names <- function(api) {
   }
   return(api)
 }
-
-#' Make a list of packages and their antecedant API file names
-#'
-#' @param path The path to the folder containing the "apis" folder.
-#'
-#' @export
-make_package_list <- function(path) {
-  files <- list.files(file.path(path, "apis"), pattern = ".*\\.normal\\.json")
-  apis <- unique(gsub("(.+)-\\d{4}.*", "\\1", files))
-  package_list <- lapply(apis, function(api_name) {
-    api <- read_api(api_name, path)
-    list(
-      package = package_name(api),
-      api = api_name
-    )
-  })
-  out <- paste(sapply(package_list, function(x) paste(x, collapse = "\t")), collapse = "\n")
-  cat(out)
-  return(invisible(package_list))
-}

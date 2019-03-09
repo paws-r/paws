@@ -18,13 +18,18 @@ format_test_code <- function(code) {
 }
 
 test_that("make_test no arguments", {
+  api <- list(
+    metadata = list(
+      serviceAbbreviation = "api"
+    )
+  )
   operation <- list(
     name = "foo"
   )
-  a <- make_test(operation, NULL, NA)
+  a <- make_test(operation, api, NULL, NA)
   e <- code({
     test_that("foo", {
-      expect_error(foo(), NA)
+      expect_error(api$foo(), NA)
     })
   })
   actual <- format_test_code(a)
@@ -33,13 +38,18 @@ test_that("make_test no arguments", {
 })
 
 test_that("make_test with arguments", {
+  api <- list(
+    metadata = list(
+      serviceAbbreviation = "api"
+    )
+  )
   operation <- list(
     name = "foo"
   )
-  a <- make_test(operation, list("bar", 123), NA)
+  a <- make_test(operation, api, list('"bar"', 123), NA)
   e <- code({
     test_that("foo", {
-      expect_error(foo("bar", 123), NA)
+      expect_error(api$foo("bar", 123), NA)
     })
   })
   actual <- format_test_code(a)
@@ -49,6 +59,9 @@ test_that("make_test with arguments", {
 
 test_that("make_tests", {
   api <- list(
+    metadata = list(
+      serviceAbbreviation = "api"
+    ),
 
     operations = list(
       CreateFoo = list(
@@ -90,16 +103,18 @@ test_that("make_tests", {
   )
   a <- make_tests(api)
   e <- code({
+    context("api")
+
     test_that("describe_foo", {
-      expect_error(describe_foo(), NA)
+      expect_error(api$describe_foo(), NA)
     })
 
     test_that("describe_foo", {
-      expect_error(describe_foo(MaxResults = 20), NA)
+      expect_error(api$describe_foo(MaxResults = 20), NA)
     })
 
     test_that("list_bar", {
-      expect_error(list_bar(), NA)
+      expect_error(api$list_bar(), NA)
     })
   })
   actual <- format_test_code(a)

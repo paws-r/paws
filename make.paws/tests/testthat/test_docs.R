@@ -1,128 +1,5 @@
 context("Make documentation")
 
-test_that("fix_unmatched_char", {
-  expect_equal(fix_unmatched_char("(foo)", "()"), "(foo)")
-  expect_equal(fix_unmatched_char("(foo", "()"), "\\(foo")
-  expect_equal(fix_unmatched_char("foo)", "()"), "foo\\)")
-  expect_equal(fix_unmatched_char("foo", "()"), "foo")
-  expect_equal(fix_unmatched_char("'foo'", "''"), "'foo'")
-  expect_equal(fix_unmatched_char("'foo", "''"), "\\'foo")
-  expect_equal(fix_unmatched_char("foo'", "''"), "foo\\'")
-  expect_equal(fix_unmatched_char("foo", "''"), "foo")
-  expect_equal(fix_unmatched_char("", "''"), "")
-})
-
-test_that("fix_markdown_chars", {
-  text <- ""
-  expect_equal(fix_markdown_chars(text), text)
-
-  text <- "foo"
-  expect_equal(fix_markdown_chars(text), text)
-
-  text <- "\\[foo\\]"
-  expected <- "&#91;foo&#93;"
-  expect_equal(fix_markdown_chars(text), expected)
-
-  text <- "[foo]"
-  expect_equal(fix_markdown_chars(text), text)
-})
-
-test_that("preprocess", {
-  text <- ""
-  expect_equal(preprocess(text), text)
-
-  text <- "<body></body>"
-  expect_equal(preprocess(text), text)
-
-  text <- "<body>foo</body>"
-  expect_equal(preprocess(text), text)
-
-  text <- "<body><code>foo</code></body>"
-  expect_equal(preprocess(text), text)
-
-  text <- "<body><code>'foo</code></body>"
-  expected <- "<body><code>\\'foo</code></body>"
-  expect_equal(preprocess(text), expected)
-})
-
-test_that("postprocess", {
-  lines <- ""
-  expect_equal(postprocess(lines), lines)
-
-  lines <- c("foo", "bar", "baz")
-  expect_equal(postprocess(lines), lines)
-
-  lines <- c("foo", "bar", "<!-- -->", "baz")
-  expected <- c("foo", "bar", "baz")
-  expect_equal(postprocess(lines), expected)
-
-  lines <- c("\\[foo\\]", "bar", "baz")
-  expected <- c("&#91;foo&#93;", "bar", "baz")
-  expect_equal(postprocess(lines), expected)
-})
-
-test_that("html_to_markdown", {
-  text <- NULL
-  expect_equal(html_to_markdown(text), "")
-
-  text <- ""
-  expect_equal(html_to_markdown(text), text)
-
-  text <- "<body>foo</body>"
-  expected <- "foo"
-  expect_equal(html_to_markdown(text), expected)
-
-  text <- "<body><code>bar</code></body>"
-  expected <- "`bar`"
-  expect_equal(html_to_markdown(text), expected)
-
-  text <- "<body><p>foo</p><p>bar</p></body>"
-  expected <- c("foo", "", "bar")
-  expect_equal(html_to_markdown(text), expected)
-})
-
-test_that("convert", {
-  text <- NULL
-  expected <- ""
-  expect_equal(convert(text), expected)
-
-  text <- ""
-  expect_equal(convert(text), text)
-
-  text <- "foo"
-  expect_equal(convert(text), text)
-
-  text <- "<body>foo</body>"
-  expected <- "foo"
-  expect_equal(convert(text), expected)
-
-  text <- "<body><p>foo</p><p>bar</p></body>"
-  expected <- c("foo", "", "bar")
-  expect_equal(convert(text), expected)
-})
-
-test_that("mask", {
-  foo <- list(
-    a = list(
-      "abc",
-      "xyz",
-      123
-    )
-  )
-  masks <- list("b" = "&#98;", "z" = "&#122;")
-  result <- mask(foo, masks)
-  expect_equal(result$a[[1]], "a&#98;c")
-  expect_equal(result$a[[2]], "xy&#122;")
-  expect_equal(result$a[[3]], foo$a[[3]])
-  expect_equal(foo, unmask(mask(foo, masks), masks))
-})
-
-test_that("first_sentence", {
-  expect_equal(first_sentence(""), "")
-  expect_equal(first_sentence("foo."), "foo")
-  expect_equal(first_sentence("foo. bar."), "foo")
-})
-
 test_that("make_doc_title", {
   operation <- list()
   expected <- "#' "
@@ -139,6 +16,10 @@ test_that("make_doc_title", {
   operation <- list(documentation = "<body><p>[In brackets] Outside brackets.</p></body>")
   expected <- "#' &#91;In brackets&#93; Outside brackets"
   expect_equal(make_doc_title(operation), expected)
+
+  operation <- list(documentation = "<p>A really long description which is over 80 characters wide and will get cut off by the automatic line wrapping when converted from HTML to Markdown. Here is another sentence.</p>")
+  expected <- "#' A really long description which is over 80 characters wide and will get\n#' cut off by the automatic line wrapping when converted from HTML to\n#' Markdown"
+  expect_equal(make_doc_title(operation), expected)
 })
 
 test_that("make_doc_desc", {
@@ -152,18 +33,22 @@ test_that("make_doc_desc", {
   expect_equal(make_doc_desc(operation), expected)
 })
 
-test_that("make_doc_desc with percent sign", {
-  operation <- list(documentation = "<body><p>Foo%</p><p>Bar</p></body>")
+test_that("make_doc_desc with special characters", {
+  operation <- list(documentation = "<body><p>Foo%</p><p>Bar{</p><p>}Baz</p><p>\\Qux</p></body>")
   expected <- paste(
     "#' Foo\\%",
     "#' ",
-    "#' Bar",
+    "#' Bar\\{",
+    "#' ",
+    "#' \\}Baz",
+    "#' ",
+    "#' \\\\Qux",
     sep = "\n"
   )
   expect_equal(make_doc_desc(operation), expected)
 })
 
-test_that("make_doc_usage", {
+test_that("make_doc_request", {
   operation <- list(
     name = "operation",
     input = list(
@@ -171,6 +56,9 @@ test_that("make_doc_usage", {
     )
   )
   api <- list(
+    metadata = list(
+      serviceAbbreviation = "api"
+    ),
     shapes = list(
       OperationShape = list(
         type = "structure",
@@ -221,11 +109,11 @@ test_that("make_doc_usage", {
     )
   )
 
-  actual <- make_doc_accepted_params(operation, api)
+  actual <- make_doc_request(operation, api)
   expected <- paste(
-    "#' @section Accepted Parameters:",
+    "#' @section Request syntax:",
     "#' ```",
-    "#' operation(",
+    "#' api$operation(",
     "#'   Foo = \"string\",",
     "#'   Bar = list(",
     "#'     Baz = 123,",
@@ -278,11 +166,15 @@ test_that("make_doc_params", {
 })
 
 test_that("make_doc_examples", {
-
+  api <- list(
+    metadata = list(
+      serviceAbbreviation = "api"
+    )
+  )
   operation <- list(
     name = "Operation"
   )
-  actual <- make_doc_examples(operation)
+  actual <- make_doc_examples(operation, api)
   expect_null(actual)
 
   operation <- list(
@@ -299,11 +191,11 @@ test_that("make_doc_examples", {
       )
     )
   )
-  actual <- make_doc_examples(operation)
+  actual <- make_doc_examples(operation, api)
   expected <- paste(
     "#' @examples",
     "#' # Description",
-    "#' \\donttest{operation(",
+    "#' \\donttest{api$operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
     "#'     Qux = 123",
@@ -331,14 +223,14 @@ test_that("make_doc_examples", {
       )
     )
   )
-  actual <- make_doc_examples(operation)
+  actual <- make_doc_examples(operation, api)
   expected <- paste(
     "#' @examples",
     "#' # Description1",
-    "#' \\donttest{operation()}",
+    "#' \\donttest{api$operation()}",
     "#' ",
     "#' # Description2",
-    "#' \\donttest{operation(",
+    "#' \\donttest{api$operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
     "#'     Qux = 123",
@@ -362,11 +254,11 @@ test_that("make_doc_examples", {
       )
     )
   )
-  actual <- make_doc_examples(operation)
+  actual <- make_doc_examples(operation, api)
   expected <- paste(
     "#' @examples",
     "#' # Description, with a comma",
-    "#' \\donttest{operation(",
+    "#' \\donttest{api$operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
     "#'     Qux = 123",
@@ -390,11 +282,11 @@ test_that("make_doc_examples", {
       )
     )
   )
-  actual <- make_doc_examples(operation)
+  actual <- make_doc_examples(operation, api)
   expected <- paste(
     "#' @examples",
     "#' # Description, with a comma",
-    "#' \\donttest{operation(",
+    "#' \\donttest{api$operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
     "#'     Qux = \"a,b,c\"",
@@ -403,4 +295,120 @@ test_that("make_doc_examples", {
     sep = "\n"
   )
   expect_equal(actual, expected)
+})
+
+test_that("clean_markdown", {
+  text <- ""
+  expect_equal(clean_markdown(text), text)
+
+  text <- "foo"
+  expect_equal(clean_markdown(text), text)
+
+  text <- "\\[foo\\]"
+  expected <- "&#91;foo&#93;"
+  expect_equal(clean_markdown(text), expected)
+
+  text <- "[foo]"
+  expect_equal(clean_markdown(text), text)
+
+  lines <- ""
+  expect_equal(clean_markdown(lines), lines)
+
+  lines <- c("foo", "bar", "baz")
+  expect_equal(clean_markdown(lines), lines)
+
+  lines <- c("foo", "bar", "<!-- -->", "baz")
+  expected <- c("foo", "bar", "baz")
+  expect_equal(clean_markdown(lines), expected)
+
+  lines <- c("\\[foo\\]", "bar", "baz")
+  expected <- c("&#91;foo&#93;", "bar", "baz")
+  expect_equal(clean_markdown(lines), expected)
+})
+
+test_that("convert", {
+  text <- NULL
+  expected <- ""
+  expect_equal(convert(text), expected)
+
+  text <- ""
+  expect_equal(convert(text), text)
+
+  text <- "foo"
+  expect_equal(convert(text), text)
+
+  text <- "<body>foo</body>"
+  expected <- "foo"
+  expect_equal(convert(text), expected)
+
+  text <- "<body><p>foo</p><p>bar</p></body>"
+  expected <- c("foo", "", "bar")
+  expect_equal(convert(text), expected)
+
+  text <- "`foo`"
+  expect_equal(convert(text), text)
+
+  text <- "<body><code>'foo</code></body>"
+  expected <- "`\\'foo`"
+  expect_equal(convert(text), expected)
+
+  text <- "<body>\\'{</body>"
+  expected <- "\\\\\\'\\{"
+  expect_equal(convert(text), expected)
+
+  text <- "<body>%{}\\</body>"
+  expected <- "\\%\\{\\}\\\\"
+  expect_equal(convert(text), expected)
+
+  text <- "<body>123%{}</body>"
+  expected <- "123\\%\\{\\}"
+  expect_equal(convert(text), expected)
+
+  text <- "<body>foo \\bar { \\u0123 <code>baz'</code></body>"
+  expected <- "foo \\\\bar \\{ \\\\u0123 `baz\\'`"
+  expect_equal(convert(text), expected)
+
+  text <- '<p> <code>{ "actors": {}, "title": {"format": "text","max_phrases": 2,"pre_tag": "<b>","post_tag": "</b>"} }</code></p>'
+  expected <- "`\\{ \"actors\": \\{\\}, \"title\": \\{\"format\": \"text\",\"max_phrases\": 2,\"pre_tag\": \"<b>\",\"post_tag\": \"</b>\"\\} \\}`"
+  expect_equal(convert(text), expected)
+
+  text <- "<body><p>foo</p><p>bar<code>'baz</code></p></body>"
+  expected <- c("foo", "", "bar`\\'baz`")
+  expect_equal(convert(text), expected)
+})
+
+test_that("first_sentence", {
+  expect_equal(first_sentence(""), "")
+  expect_equal(first_sentence("foo."), "foo")
+  expect_equal(first_sentence("foo. bar."), "foo")
+})
+
+test_that("escape_unmatched_quotes", {
+  expect_equal(escape_unmatched_quotes("'foo'"), "'foo'")
+  expect_equal(escape_unmatched_quotes("'foo"), "\\'foo")
+  expect_equal(escape_unmatched_quotes("foo'"), "foo\\'")
+  expect_equal(escape_unmatched_quotes("foo"), "foo")
+  expect_equal(escape_unmatched_quotes(""), "")
+})
+
+test_that("clean_markdown", {
+  text <- ""
+  expect_equal(clean_markdown(text), text)
+
+  text <- "foo"
+  expect_equal(clean_markdown(text), text)
+
+  text <- "\\[foo\\]"
+  expected <- "&#91;foo&#93;"
+  expect_equal(clean_markdown(text), expected)
+
+  text <- "[foo]"
+  expect_equal(clean_markdown(text), text)
+
+  lines <- c("foo", "bar", "baz")
+  expect_equal(clean_markdown(lines), lines)
+
+  lines <- c("foo", "bar", "<!-- -->", "baz")
+  expected <- c("foo", "bar", "baz")
+  expect_equal(clean_markdown(lines), expected)
 })

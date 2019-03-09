@@ -1,16 +1,16 @@
-context("Make package")
+context("Make SDK")
 
-test_that("make_package", {
+test_that("make_sdk", {
   path <- tempdir()
 
   # Create a fake API spec.
   path_in <- file.path(path, "in")
   api <- list(
     metadata = list(
-      endpointPrefix = "example",
+      endpointPrefix = "foo",
       protocol = "json",
-      serviceAbbreviation = "example",
-      serviceFullName = "AWS Example",
+      serviceAbbreviation = "foo",
+      serviceFullName = "AWS Foo",
       signatureVersion = "v4"
     ),
     operations = list(
@@ -64,7 +64,7 @@ test_that("make_package", {
         type = "string"
       )
     ),
-    documentation = "AWS Example is an example AWS API."
+    documentation = "AWS Foo is an example AWS API."
   )
   api_path <- file.path(path_in, "apis", "example-2018-11-01.normal.json")
   dir.create(dirname(api_path), recursive = TRUE)
@@ -82,18 +82,31 @@ test_that("make_package", {
   jsonlite::write_json(region_config, region_config_path, auto_unbox = TRUE)
 
   path_out <- file.path(path, "out")
-  package_dir <- file.path(path_out, "paws.example")
 
-  make_package("example", path_in, path_out)
+  make_sdk(path_in, path_out)
 
-  expect_true(dir.exists(package_dir))
-  expect_true(file.exists(file.path(package_dir, "DESCRIPTION")))
-  expect_true(file.exists(file.path(package_dir, "NAMESPACE")))
-  expect_true(dir.exists(file.path(package_dir, "R")))
-  expect_true(dir.exists(file.path(package_dir, "man")))
+  expect_true(dir.exists(path_out))
+  expect_true(file.exists(file.path(path_out, "DESCRIPTION")))
+  expect_true(file.exists(file.path(path_out, "NAMESPACE")))
+  expect_true(dir.exists(file.path(path_out, "R")))
+  expect_true(dir.exists(file.path(path_out, "man")))
+  files <- c("foo_interfaces.R", "foo_operations.R", "foo_service.R")
+  expect_true(all(files %in% list.files(file.path(path_out, "R"))))
 })
 
-# Requires that `R/customizations/aws.dynamodb.R` exists.
+test_that("list_apis", {
+  temp <- tempdir()
+
+  write("", file.path(temp, "api1-2018-01-01.normal.json"))
+  write("", file.path(temp, "api2-2018-01-01.normal.json"))
+  write("skip", file.path(temp, "skip.json"))
+
+  actual <- list_apis(temp)
+  expected <- c("api1", "api2")
+  expect_equal(actual, expected)
+})
+
+# Requires that `R/customizations/dynamodb.R` exists.
 test_that("copy customizations", {
   api <- list(
     name = "dynamodb"
@@ -101,7 +114,7 @@ test_that("copy customizations", {
   path <- tempdir()
 
   copy_customizations(api, path)
-  expect_true(file.exists(file.path(path, "paws.dynamodb_customizations.R")))
+  expect_true(file.exists(file.path(path, "dynamodb_customizations.R")))
 })
 
 test_that("copy customizations -- no customizations for package", {
@@ -112,9 +125,4 @@ test_that("copy customizations -- no customizations for package", {
 
   copy_customizations(api, path)
   expect_false(file.exists(file.path(path, "aws.example_customizations.R")))
-})
-
-test_that("make_imports returns a string-ified list separated by commas", {
-  imports <- make_imports()
-  expect_match(imports, "([a-zA-Z0-9\\.]+,\n)*[a-zA-Z0-9\\.]+")
 })
