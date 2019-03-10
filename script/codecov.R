@@ -11,6 +11,7 @@ result <- lapply(args, function(dir) {
 })
 
 coverage <- do.call(c, result)
+attr(coverage, "package") <- list(path = "")
 class(coverage) <- class(result[[1]])
 
 covr::codecov(coverage = coverage)
