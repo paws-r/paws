@@ -226,7 +226,7 @@ escape_special_chars <- function(text) {
   result
 }
 
-# Escape unmatched characters. Assumes
+# Escape unmatched characters.
 # R documentation will fail if there are unmatched quotes in code snippets.
 # See https://developer.r-project.org/parseRd.pdf.
 escape_unmatched_quotes <- function(x) {

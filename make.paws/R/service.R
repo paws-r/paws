@@ -88,9 +88,9 @@ service_description <- function(api) {
 service_operations <- function(api) {
   rows <- lapply(api$operations, function(op) {
     op_name <- get_operation_name(op)
-    op_doc_title <- paste0(package_name(api), "_", op_name)
+    doc_name <- paste0(package_name(api), "_", op_name)
     data.frame(
-      name = link(text = op_name, ref = op_doc_title),
+      name = link(text = op_name, ref = doc_name),
       desc = get_operation_title(op)
     )
   })

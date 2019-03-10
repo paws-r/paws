@@ -75,7 +75,7 @@ tabular <- function(df, ...) {
         contents, "\n}\n", sep = "")
 }
 
-# Return a single LaTeX link to a function in the same package.
+# Return a LaTeX link to a documentation page in the same package.
 # See https://cran.r-project.org/web/packages/roxygen2/vignettes/formatting.html
 link <- function(text, ref) {
   stopifnot(is.character(text) && length(text) == 1)
