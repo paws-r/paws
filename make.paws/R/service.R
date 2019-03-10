@@ -11,6 +11,15 @@ service_file_template <- template(
   #'
   #' ${description}
   #'
+  #' ${operations}
+  #'
+  #' @usage
+  #' ${service} <- paws::${service}
+  #' ${service}$operation()
+  #'
+  #' @format
+  #' A list of operations for ${title}.
+  #'
   #' @rdname ${service}
   #' @export
   ${service} <- list()
@@ -43,6 +52,7 @@ make_service <- function(api) {
     service_file_template,
     title = service_title(api),
     description = service_description(api),
+    operations = service_operations(api),
     service = package_name(api),
     protocol = protocol_package(api),
     signer = quoted(api$metadata$signatureVersion),
@@ -70,11 +80,23 @@ service_description <- function(api) {
   if (length(desc) > 1) {
     if (desc[1] == service_title(api)) desc <- desc[-1]
     if (desc[1] == "") desc <- desc[-1]
-    desc[-1] <- paste0("#' ", desc[-1])
-    desc <- paste(desc, collapse = "\n")
   }
-  desc <- paste("@description", desc, collapse = "")
-  return(desc)
+  desc <- comment(desc, "#'")
+  paste("@description", desc, sep = "\n")
+}
+
+service_operations <- function(api) {
+  rows <- lapply(api$operations, function(op) {
+    op_name <- get_operation_name(op)
+    op_doc_title <- paste0(package_name(api), "_", op_name)
+    data.frame(
+      name = link(text = op_name, ref = op_doc_title),
+      desc = get_operation_title(op)
+    )
+  })
+  table <- gsub(" +", " ", tabular(do.call(rbind, rows)))
+  table <- comment(table, "#'")
+  paste("@section Operations:", table, sep = "\n")
 }
 
 # Returns the standardized protocol name used by an API.
