@@ -85,6 +85,7 @@ service_description <- function(api) {
   paste("@description", desc, sep = "\n")
 }
 
+# Returns a list of the API's operations with links to their docs.
 service_operations <- function(api) {
   rows <- lapply(api$operations, function(op) {
     op_name <- get_operation_name(op)
