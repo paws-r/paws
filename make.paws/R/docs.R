@@ -25,10 +25,7 @@ make_docs <- function(operation, api) {
 
 # Make the documentation title.
 make_doc_title <- function(operation) {
-  docs <- paste(html_to_text(operation$documentation), collapse = " ")
-  docs <- gsub(" +", " ", docs)
-  title <- first_sentence(docs)
-  title <- mask(title, c("[" = "&#91;", "]" = "&#93;"))
+  title <- get_operation_title(operation)
   title <- comment(break_lines(title), "#'")
   return(as.character(title))
 }
@@ -229,7 +226,7 @@ escape_special_chars <- function(text) {
   result
 }
 
-# Escape unmatched characters. Assumes
+# Escape unmatched characters.
 # R documentation will fail if there are unmatched quotes in code snippets.
 # See https://developer.r-project.org/parseRd.pdf.
 escape_unmatched_quotes <- function(x) {
@@ -273,6 +270,15 @@ list_to_string <- function(x, quote = TRUE) {
   result <- paste0(result, ")")
 
   return(result)
+}
+
+# Returns the title of an operation (the first sentence of its description).
+get_operation_title <- function(operation) {
+  docs <- paste(html_to_text(operation$documentation), collapse = " ")
+  docs <- gsub(" +", " ", docs)
+  title <- first_sentence(docs)
+  title <- mask(title, c("[" = "&#91;", "]" = "&#93;"))
+  title
 }
 
 # Add example values, e.g. "string" for strings, to an input or output shape.
