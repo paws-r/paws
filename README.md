@@ -25,13 +25,13 @@ JavaScript](https://github.com/aws/aws-sdk-js).
 
 ## Installation
 
-Paws is currently available on GitHub. Each AWS service has its own R
-package within Paws. For example, to use EC2, use the `paws.ec2` package.
-See [the list of available packages here](service). Install a package
-(e.g. `paws.ec2`) using:
+Paws is currently available on GitHub. Each AWS service is available
+within Paws. For example, to use EC2, use `paws::ec2`.
+See [the list of available packages here](service). Install paws
+(e.g. `paws`) using:
 
 ``` r
-devtools::install_github("paws-r/paws/service/paws.ec2")
+devtools::install_github("paws-r/paws/paws")
 ```
 
 ## Credentials
@@ -55,7 +55,11 @@ Sys.setenv(
 Launch an EC2 instance using the `run_instances` function.
 
 ``` r
+<<<<<<< HEAD
 resp <- paws.ec2::run_instances(
+=======
+ec2 <- paws::ec2$run_instances(
+>>>>>>> Updates readme to use singular package
   ImageId = "ami-f973ab84",
   InstanceType = "t2.micro",
   KeyName = "default",
@@ -74,14 +78,20 @@ resp <- paws.ec2::run_instances(
 List all of your instances with `describe_instances`.
 
 ``` r
-paws.ec2::describe_instances()
+paws::ec2$describe_instances()
 ```
 
 Shut down the instance you started with `terminate_instances`.
 
 ``` r
+<<<<<<< HEAD
 paws.ec2::terminate_instances(
   InstanceIds = resp$Instances[[1]]$InstanceId
+=======
+paws::ec2$terminate_instances(
+  InstanceIds = ec2$Instances[[1]]$InstanceId
+)
+>>>>>>> Updates readme to use singular package
 ```
 
 ## Documentation
@@ -90,7 +100,7 @@ You can see all the operations for a given service, like EC2, by looking
 through the package documentation.
 
 ``` r
-help(package = "paws.ec2")
+?paws::ec2
 ```
 
 We also have examples for [EC2](examples/ec2.R), [S3](examples/s3.R),
