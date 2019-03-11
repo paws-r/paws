@@ -33,12 +33,12 @@ trust_policy <- list(
   )
 )
 
-iam <- paws.iam::create_role(
+iam <- paws::iam$create_role(
   RoleName = role_name,
   AssumeRolePolicyDocument = jsonlite::toJSON(trust_policy, auto_unbox = TRUE)
 )
 
-paws.iam::attach_role_policy(
+paws::iam$attach_role_policy(
   RoleName = role_name,
   PolicyArn = policy_arn
 )
@@ -46,7 +46,7 @@ paws.iam::attach_role_policy(
 #-------------------------------------------------------------------------------
 
 # Create the Lambda function.
-paws.lambda::create_function(
+paws::lambda$create_function(
   Code = list(ZipFile = zip_contents),
   FunctionName = "MyFunction",
   Handler = "lambda.handler",
@@ -55,15 +55,15 @@ paws.lambda::create_function(
 )
 
 # Run the function.
-response <- paws.lambda::invoke("MyFunction")
+response <- paws::lambda$invoke("MyFunction")
 
 # Print the function's output.
 rawToChar(response$Payload)
 
 # List available functions.
-paws.lambda::list_functions()
+paws::lambda$list_functions()
 
 # Clean up.
-paws.lambda::delete_function("MyFunction")
-paws.iam::detach_role_policy(role_name, policy_arn)
-paws.iam::delete_role(role_name)
+paws::lambda$delete_function("MyFunction")
+paws::iam$detach_role_policy(role_name, policy_arn)
+paws::iam$delete_role(role_name)

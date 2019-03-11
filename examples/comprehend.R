@@ -1,12 +1,12 @@
 # Comprehend natural language processing examples
 
 # Determine the dominant language(s) in a document.
-paws.comprehend::detect_dominant_language(
+paws::comprehend$detect_dominant_language(
   Text = "Hello world!"
 )
 
 # Determine the prevailing sentiment in a batch of documents.
-paws.comprehend::batch_detect_sentiment(
+paws::comprehend$batch_detect_sentiment(
   TextList = list(
     "Awesome!",
     "OK",
@@ -24,7 +24,7 @@ text <-
    ceaselessly into the past."
 
 # Find named entities in a document.
-paws.comprehend::detect_entities(
+paws::comprehend$detect_entities(
   Text = text,
   LanguageCode = "en"
 )

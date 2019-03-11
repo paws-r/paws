@@ -6,12 +6,12 @@
 bucket_name <- paste0("paws-example-", uuid::UUIDgenerate())
 
 # Create a bucket in us-east-1
-paws.s3::create_bucket(
+paws::s3$create_bucket(
   Bucket = bucket_name
 )
 
 # List your buckets
-paws.s3::list_buckets()
+paws::s3$list_buckets()
 
 # Create a data.frame that we will upload to S3
 example_df <- data.frame(foo = c("hello", "world"), bar = c(1, 2))
@@ -25,17 +25,17 @@ read_file <- file(file_name, "rb")
 s3_example <- readBin(read_file, "raw", n = file.size(file_name))
 
 # Upload file to s3
-paws.s3::put_object(
+paws::s3$put_object(
   Body = s3_example,
   Bucket = bucket_name,
   Key = file_name
 )
 
 # List objects in the bucket
-paws.s3::list_objects(Bucket = bucket_name)
+paws::s3$list_objects(Bucket = bucket_name)
 
 # Download the file and store the output in a variable
-s3_download <- paws.s3::get_object(
+s3_download <- paws::s3$get_object(
   Bucket = bucket_name,
   Key = file_name
 )
@@ -49,8 +49,8 @@ writeBin(s3_download_body, con = file_name2)
 readRDS(file_name2)
 
 # Cleanup
-paws.s3::delete_object(Bucket = bucket_name, Key = file_name)
-paws.s3::delete_bucket(Bucket = bucket_name)
+paws::s3$delete_object(Bucket = bucket_name, Key = file_name)
+paws::s3$delete_bucket(Bucket = bucket_name)
 close(read_file)
 file.remove(file_name)
 file.remove(file_name2)
