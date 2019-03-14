@@ -17,15 +17,16 @@ service_file_template <- template(
   #' ${service} <- paws::${service}
   #' ${service}$operation()
   #'
-  #' @format
-  #' A list of operations for ${title}.
-  #'
   #' @rdname ${service}
   #' @export
-  ${service} <- list()
+  ${service} <- function() {
+    .${service}$operations
+  }
 
   # Private API objects: metadata, handlers, interfaces, etc.
   .${service} <- list()
+
+  .${service}$operations <- list()
 
   .${service}$metadata <- list(
     service_name = ${service_name},

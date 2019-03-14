@@ -40,7 +40,7 @@ operation_template <- template(
     response <- send_request(request)
     return(response)
   }
-  ${service}$${function_name} <- ${service}_${function_name}
+  .${service}$operations$${function_name} <- ${service}_${function_name}
   `
 )
 
