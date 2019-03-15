@@ -278,6 +278,10 @@ get_operation_title <- function(operation) {
   docs <- gsub(" +", " ", docs)
   title <- first_sentence(docs)
   title <- mask(title, c("[" = "&#91;", "]" = "&#93;"))
+  if (length(title) == 0 || title == "") {
+    title <- gsub("_", " ", get_operation_name(operation))
+    substr(title, 1, 1) <- toupper(substr(title, 1, 1))
+  }
   title
 }
 

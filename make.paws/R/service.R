@@ -13,7 +13,7 @@ service_file_template <- template(
   #'
   #' ${operations}
   #'
-  #' @usage
+  #' @section Using operations:
   #' ${service} <- paws::${service}
   #' ${service}$operation()
   #'
