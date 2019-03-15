@@ -14,7 +14,7 @@ service_file_template <- template(
   #' ${operations}
   #'
   #' @section Using operations:
-  #' ${service} <- paws::${service}
+  #' ${service} <- paws::${service}()
   #' ${service}$operation()
   #'
   #' @rdname ${service}
@@ -82,7 +82,7 @@ service_description <- function(api) {
     if (desc[1] == service_title(api)) desc <- desc[-1]
     if (desc[1] == "") desc <- desc[-1]
   }
-  desc <- comment(desc, "#'")
+  desc <- comment(paste(desc, collapse = "\n"), "#'")
   paste("@description", desc, sep = "\n")
 }
 
