@@ -1,8 +1,8 @@
 context("Make documentation")
 
 test_that("make_doc_title", {
-  operation <- list()
-  expected <- "#' "
+  operation <- list(name = "FooOperation")
+  expected <- "#' Foo operation"
   expect_equal(make_doc_title(operation), expected)
 
   operation <- list(documentation = "<body><p>Foo. Bar.</p></body>")
