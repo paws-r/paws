@@ -233,7 +233,7 @@ escape_special_chars <- function(text) {
   # Unicode character codes: \\uxxxx to `U+xxxx`
   result <- gsub("\\\\\\\\u([0-9a-fA-F]{4})", "`U+\\1`", result)
 
-  # Escape character codes: e.g. \n to `\\n`
+  # Control character codes: e.g. \n to `\\n`
   result <- gsub("(\\\\)+([a-zA-Z])\\b", "`\\\\\\\\\\2`", result)
 
   result
