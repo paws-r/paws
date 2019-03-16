@@ -23,9 +23,7 @@ JavaScript](https://github.com/aws/aws-sdk-js).
 
 *Logo by [Hsinyi Chen](https://www.starfolioart.com/).*
 
-## Getting Started
-
-### Installation
+## Installing
 
 Paws is currently available on GitHub. Each AWS service has its own R
 package within Paws. For example, to use EC2, use the `paws.ec2` package.
@@ -36,11 +34,13 @@ See [the list of available packages here](service). Install a package
 devtools::install_github("paws-r/paws/service/paws.ec2")
 ```
 
-### Credentials
+## Credentials
 
-First, set up your credentials and region. Here we set them within R.
-Paws also supports OS environment variables, AWS credential files, and
-IAM roles. See [docs/credentials.md](docs/credentials.md) for more info.
+You'll need to set up your credentials and region. Paws supports R 
+and OS environment variables, AWS credential files, and IAM roles. 
+See [docs/credentials.md](docs/credentials.md) for more info.
+
+In this example, we set them with R environment variables.
 
 ``` r
 Sys.setenv(
@@ -50,13 +50,12 @@ Sys.setenv(
 )
 ```
 
-### Run an operation
+## Run operations
 
-Here we launch an EC2 instance using the `run_instances` function. See
-the [examples](examples) folder for more examples.
+Launch an EC2 instance using the `run_instances` function.
 
 ``` r
-ec2 <- paws.ec2::run_instances(
+resp <- paws.ec2::run_instances(
   ImageId = "ami-f973ab84",
   InstanceType = "t2.micro",
   KeyName = "default",
@@ -72,18 +71,17 @@ ec2 <- paws.ec2::run_instances(
 )
 ```
 
-We can get a list of all of our instances with `describe_instances`.
+List all of your instances with `describe_instances`.
 
 ``` r
 paws.ec2::describe_instances()
 ```
 
-Using AWS services can cost money, so remember to shut down anything you
-start.
+Shut down the instance you started with `terminate_instances`.
 
 ``` r
 paws.ec2::terminate_instances(
-  InstanceIds = ec2$Instances[[1]]$InstanceId
+  InstanceIds = resp$Instances[[1]]$InstanceId
 )
 ```
 
