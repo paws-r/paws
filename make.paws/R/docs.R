@@ -218,11 +218,24 @@ clean_html_node <- function(node) {
 # See https://developer.r-project.org/parseRd.pdf.
 escape_special_chars <- function(text) {
   result <- text
+
+  # Single \ -- not following another \ and not preceding a special character
   result <- gsub("(?<!\\\\)\\\\(?![\\\\%{}'\"`\\*~\\[\\]])", "\\\\\\\\", result, perl = TRUE)
-  result <- gsub("`\\`", "`\\\\`", result, fixed = TRUE) # Special case: `\`
+
+  # Special case: `\`
+  result <- gsub("`\\`", "`\\\\`", result, fixed = TRUE)
+
+  # Special characters -- not already escaped
   for (char in c("%", "{", "}")) {
     result <- gsub(paste0("(?<!\\\\)", char), paste0("\\\\", char), result, perl = TRUE)
   }
+
+  # Unicode character codes: \\uxxxx to `U+xxxx`
+  result <- gsub("\\\\\\\\u([0-9a-fA-F]{4})", "`U+\\1`", result)
+
+  # Newline code: \\n to `\\n`
+  result <- gsub("\\\\\\\\n", "`\\\\n`", result)
+
   result
 }
 
