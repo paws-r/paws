@@ -365,7 +365,7 @@ test_that("convert", {
   expect_equal(convert(text), expected)
 
   text <- "<body>foo \\bar { \\u0123 <code>baz'</code></body>"
-  expected <- "foo \\\\bar \\{ \\\\u0123 `baz\\'`"
+  expected <- "foo \\\\bar \\{ `U+0123` `baz\\'`"
   expect_equal(convert(text), expected)
 
   text <- '<p> <code>{ "actors": {}, "title": {"format": "text","max_phrases": 2,"pre_tag": "<b>","post_tag": "</b>"} }</code></p>'
