@@ -11,11 +11,9 @@ service_file_template <- template(
   #'
   #' ${description}
   #'
-  #' ${operations}
+  #' ${example}
   #'
-  #' @section Using operations:
-  #' ${service} <- paws::${service}()
-  #' ${service}$operation()
+  #' ${operations}
   #'
   #' @rdname ${service}
   #' @export
@@ -53,6 +51,7 @@ make_service <- function(api) {
     service_file_template,
     title = service_title(api),
     description = service_description(api),
+    example = service_example(api),
     operations = service_operations(api),
     service = package_name(api),
     protocol = protocol_package(api),
@@ -84,6 +83,20 @@ service_description <- function(api) {
   }
   desc <- comment(paste(desc, collapse = "\n"), "#'")
   paste("@description", desc, sep = "\n")
+}
+
+# Returns an example showing how to use the service.
+# It was necessary to separate this from the template because the template
+# can't contain ` characters.
+service_example <- function(api) {
+  service <- package_name(api)
+  glue::glue(gsub("^ +", "",
+  "@section Example:
+  #' ```
+  #' {service} <- paws::{service}()
+  #' {service}$operation()
+  #' ```
+  "))
 }
 
 # Returns a list of the API's operations with links to their docs.
