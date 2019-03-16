@@ -375,6 +375,10 @@ test_that("convert", {
   text <- "<body><p>foo</p><p>bar<code>'baz</code></p></body>"
   expected <- c("foo", "", "bar`\\'baz`")
   expect_equal(convert(text), expected)
+
+  text <- "<p>foo \\a \\b</p>"
+  expected <- c("foo `\\\\a` `\\\\b`")
+  expect_equal(convert(text), expected)
 })
 
 test_that("first_sentence", {
