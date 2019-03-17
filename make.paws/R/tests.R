@@ -32,7 +32,8 @@ make_tests <- function(api) {
 test_template <- template(
   `
   test_that(${operation_name}, {
-    expect_error(${call}, ${outcome})
+    svc <- paws::${service_name}()
+    expect_error(svc$${call}, ${outcome})
   })
   `
 )
@@ -41,10 +42,10 @@ test_template <- template(
 make_test <- function(operation, api, args, outcome) {
   operation <- get_operation_name(operation)
   service <- package_name(api)
-  fn <- sprintf("%s$%s", service, operation)
-  call <- make_call(fn, args)
+  call <- make_call(operation, args)
   test <- render(
     test_template,
+    service_name = service,
     operation_name = quoted(operation),
     call = call,
     outcome = outcome

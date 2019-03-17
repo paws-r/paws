@@ -52,7 +52,7 @@ make_doc_usage <- function(operation, api) {
   service_name <- package_name(api)
   operation_name <- get_operation_name(operation)
   args <- paste(params, collapse = ", ")
-  usage <- glue::glue("{service_name}${operation_name}({args})")
+  usage <- glue::glue("{service_name}_{operation_name}({args})")
   usage <- break_lines(usage, at = c("\\s", "\\("))
   usage <- gsub("\n *$", "", usage) # delete empty lines
   usage <- gsub("\n", "\n  ", usage) # indent subsequent lines
