@@ -3,7 +3,9 @@ NULL
 
 test_file_template <- template(
   `
-  context(${service})
+  context("${service}")
+
+  svc <- paws::${service}()
 
   ${tests}
   `
@@ -23,7 +25,7 @@ make_tests <- function(api) {
   tests <- paste(tests, collapse = "\n\n")
   render(
     test_file_template,
-    service = quoted(package_name(api)),
+    service = package_name(api),
     tests = tests
   )
 }
@@ -31,8 +33,7 @@ make_tests <- function(api) {
 # Make the individual test template.
 test_template <- template(
   `
-  test_that(${operation_name}, {
-    svc <- paws::${service_name}()
+  test_that("${operation_name}", {
     expect_error(svc$${call}, ${outcome})
   })
   `
@@ -45,8 +46,7 @@ make_test <- function(operation, api, args, outcome) {
   call <- make_call(operation, args)
   test <- render(
     test_template,
-    service_name = service,
-    operation_name = quoted(operation),
+    operation_name = operation,
     call = call,
     outcome = outcome
   )
