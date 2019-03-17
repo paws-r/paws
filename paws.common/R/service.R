@@ -125,10 +125,29 @@ new_service <- function(metadata, handlers) {
     target_prefix = metadata$target_prefix
   )
 
+  handlers <- customize(handlers, metadata$service_name)
+
   svc <- Client(
     config = cfg$config,
     client_info = client_info,
     handlers = handlers
   )
   return(svc)
+}
+
+# A list of customization functions, which can add special handlers for a
+# particular service. A service that needs customizations should have a
+# function added this list under its service name. The function should accept
+# a handlers object and return a handlers object. `customize` will look up
+# the appropriate customization function and apply it to the handlers object.
+# Example: `customizations$s3 <- function(handlers) {...}`
+customizations <- list()
+
+# Add customizations to the handlers for a given service.
+customize <- function(handlers, service) {
+  if (service %in% names(customizations)) {
+    customize_fn <- customizations[[service]]
+    handlers <- customize_fn(handlers)
+  }
+  handlers
 }

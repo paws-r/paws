@@ -1,5 +1,4 @@
-#' @include s3_service.R
-#' @importFrom paws.common handlers_add_front handlers_add_back handlers_set
+#' @include service.R
 NULL
 
 ################################################################################
@@ -103,13 +102,13 @@ s3_unmarshal_error <- function(request) {
 
 ################################################################################
 
-.s3$handlers$build <- handlers_add_front(.s3$handlers$build,
-                                     update_endpoint_for_s3_config)
-
-.s3$handlers$build <- handlers_add_front(.s3$handlers$build,
-                                     populate_location_constraint)
-
-.s3$handlers$build <- handlers_add_back(.s3$handlers$build,
-                                    content_md5)
-
-.s3$handlers$unmarshal_error <- handlers_set(s3_unmarshal_error)
+customizations$s3 <- function(handlers) {
+  handlers$build <- handlers_add_front(handlers$build,
+                                       update_endpoint_for_s3_config)
+  handlers$build <- handlers_add_front(handlers$build,
+                                       populate_location_constraint)
+  handlers$build <- handlers_add_back(handlers$build,
+                                      content_md5)
+  handlers$unmarshal_error <- handlers_set(s3_unmarshal_error)
+  handlers
+}
