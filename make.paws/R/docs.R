@@ -5,6 +5,7 @@ NULL
 make_docs <- function(operation, api) {
   title <- make_doc_title(operation)
   description <- make_doc_desc(operation)
+  usage <- make_doc_usage(operation, api)
   params <- make_doc_params(operation, api)
   request <- make_doc_request(operation, api)
   response <- make_doc_response(operation, api)
@@ -13,6 +14,7 @@ make_docs <- function(operation, api) {
   docs <- glue::glue_collapse(
     c(title,
       description,
+      usage,
       params,
       request,
       examples,
@@ -36,6 +38,26 @@ make_doc_desc <- function(operation) {
   description <- glue::glue("#' {docs}")
   description <- glue::glue_collapse(description, sep = "\n")
   return(as.character(description))
+}
+
+# Make the usage section.
+# Ensure that there are no lines over 100 characters.
+make_doc_usage <- function(operation, api) {
+  if (!is.null(operation$input$shape)) {
+    shape <- api$shapes[[operation$input$shape]]
+    params <- names(shape$members)
+  } else {
+    params <- c()
+  }
+  service_name <- package_name(api)
+  operation_name <- get_operation_name(operation)
+  args <- paste(params, collapse = ", ")
+  usage <- glue::glue("{service_name}${operation_name}({args})")
+  usage <- break_lines(usage, at = c("\\s", "\\("))
+  usage <- gsub("\n", "\n  ", usage)
+  usage <- comment(usage, "#'")
+  usage <- paste("#' @usage", usage, sep = "\n")
+  usage
 }
 
 # Make the parameter documentation.
@@ -138,9 +160,9 @@ first_sentence <- function(x) {
 }
 
 # Break a string into lines that are at most `chars` characters long.
-break_lines <- function(s, chars = 72) {
-  regex <- sprintf("(.{1,%i})(\\s|$)", chars)
-  result <- gsub(regex, "\\1\n", s)
+break_lines <- function(s, chars = 72, at = "\\s") {
+  regex <- sprintf("(.{1,%i})(%s|$)", chars, paste(at, collapse = "|"))
+  result <- gsub(regex, "\\1\\2\n", s)
   return(result)
 }
 
