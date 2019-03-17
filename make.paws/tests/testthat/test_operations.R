@@ -41,6 +41,9 @@ test_that("make_operation", {
     #'
     #' Foo.
     #'
+    #' @usage
+    #' api$operation(Input1, Input2, Input3)
+    #'
     #' @param Input1
     #' @param Input2
     #' @param Input3

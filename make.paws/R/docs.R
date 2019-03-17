@@ -54,7 +54,8 @@ make_doc_usage <- function(operation, api) {
   args <- paste(params, collapse = ", ")
   usage <- glue::glue("{service_name}${operation_name}({args})")
   usage <- break_lines(usage, at = c("\\s", "\\("))
-  usage <- gsub("\n", "\n  ", usage)
+  usage <- gsub("\n *$", "", usage) # delete empty lines
+  usage <- gsub("\n", "\n  ", usage) # indent subsequent lines
   usage <- comment(usage, "#'")
   usage <- paste("#' @usage", usage, sep = "\n")
   usage
@@ -163,6 +164,7 @@ first_sentence <- function(x) {
 break_lines <- function(s, chars = 72, at = "\\s") {
   regex <- sprintf("(.{1,%i})(%s|$)", chars, paste(at, collapse = "|"))
   result <- gsub(regex, "\\1\\2\n", s)
+  result <- gsub(" +\n", "\n", result)
   return(result)
 }
 
