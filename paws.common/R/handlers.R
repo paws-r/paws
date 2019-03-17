@@ -74,10 +74,10 @@ Handlers <- struct(
 #' \donttest{handlers$build <- handlers_add_front(handlers$build, restxml_build)}
 #'
 #' @name handlers
+#' @keywords internal
 NULL
 
 #' @rdname handlers
-#' @export
 handlers_set <- function(...) {
   h <- HandlerList(...)
   return(h)
@@ -85,7 +85,6 @@ handlers_set <- function(...) {
 
 # Add a list of functions to an existing HandlerList.
 #' @rdname handlers
-#' @export
 handlers_add_back <- function(existing, ...) {
   h <- existing
   n <- HandlerList(...)
@@ -94,7 +93,6 @@ handlers_add_back <- function(existing, ...) {
 }
 
 #' @rdname handlers
-#' @export
 handlers_add_front <- function(existing, ...) {
   h <- existing
   n <- HandlerList(...)
