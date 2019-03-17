@@ -2,9 +2,6 @@ language: r
 
 cache: packages
 
-r_github_packages:
-  - r-lib/covr
-
 install:
   - R -e "devtools::install_deps('make.paws', dep = T)"
   - R -e "devtools::install('paws.common')"
