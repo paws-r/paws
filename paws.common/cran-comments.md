@@ -1,6 +1,5 @@
 ## Test environments
 * local Windows install, R 3.5.1
-* Ubuntu 14.04 (on Travis-CI), R 3.5.2
 * Windows (on AppVeyor), R 3.5.2
 * R-hub (devel and release)
 
@@ -9,15 +8,14 @@ There were no ERRORs or WARNINGs.
 
 There was 1 NOTE:
 
-* checking CRAN incoming feasibility ... NOTE
-Maintainer: ‘David Kretch <david.kretch@gmail.com>’
+> checking CRAN incoming feasibility ... NOTE
+  
+  Maintainer: 'David Kretch <david.kretch@gmail.com>'
+  Days since last update: 6
 
-New submission
+I apologize for submitting an update so soon after the first. We are making
+another package which needs the functionality we have added to this one.
 
 ## Downstream dependencies
 
 None.
-
-## Changes since last submission
-
-1. Added a link to https://aws.amazon.com in the description.
