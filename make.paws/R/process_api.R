@@ -20,7 +20,6 @@ write_code <- function(api, path) {
   write_operations(api, r_dir)
   write_interfaces(api, r_dir)
   write_service(api, r_dir)
-  copy_customizations(api, r_dir)
   return(TRUE)
 }
 
@@ -46,19 +45,6 @@ write_service <- function(api, path) {
   package <- package_name(api)
   filename <- paste0(package, "_service.R")
   write_list(service, file.path(path, filename))
-}
-
-# Copy customizations for a given package, if there are any.
-copy_customizations <- function(api, path) {
-  path_in <- system_file("src", "customizations", package = methods::getPackageName())
-  files <- list.files(path_in, full.names = TRUE)
-  service <- tolower(struct_name(api))
-  src_file <- files[grep(sprintf("^%s.R$", service), basename(files))]
-  if (length(src_file) > 0) {
-    package <- package_name(api)
-    filename <- sprintf("%s_customizations.R", package)
-    file.copy(src_file, file.path(path, filename), overwrite = TRUE)
-  }
 }
 
 # Generate tests for the package and write them to the tests folder.

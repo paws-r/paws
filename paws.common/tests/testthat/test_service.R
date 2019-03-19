@@ -45,3 +45,19 @@ test_that("new_service", {
   expect_equal(service$client_info$service_id, metadata$service_id)
   expect_equal(service$client_info$signing_name, metadata$signing_name)
 })
+
+test_that("new_service adds customizations", {
+  metadata <- list(
+    service_name = "dynamodb",
+    endpoints = list("*" = "dynamodb.{region}.amazonaws.com"),
+    service_id = "DynamoDB",
+    api_version = "2012-08-10",
+    signing_name = NULL,
+    json_version = "1.0",
+    target_prefix = "DynamoDB_20120810"
+  )
+  handlers <- new_handlers("jsonrpc", "v4")
+  service <- new_service(metadata, handlers)
+  handler_names <- sapply(service$handlers$build$list, function(x) x$name)
+  expect_true("disable_compression" %in% handler_names)
+})

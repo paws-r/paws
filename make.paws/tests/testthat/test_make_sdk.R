@@ -105,24 +105,3 @@ test_that("list_apis", {
   expected <- c("api1", "api2")
   expect_equal(actual, expected)
 })
-
-# Requires that `R/customizations/dynamodb.R` exists.
-test_that("copy customizations", {
-  api <- list(
-    name = "dynamodb"
-  )
-  path <- tempdir()
-
-  copy_customizations(api, path)
-  expect_true(file.exists(file.path(path, "dynamodb_customizations.R")))
-})
-
-test_that("copy customizations -- no customizations for package", {
-  api <- list(
-    name = "example"
-  )
-  path <- tempdir()
-
-  copy_customizations(api, path)
-  expect_false(file.exists(file.path(path, "aws.example_customizations.R")))
-})

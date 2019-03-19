@@ -33,3 +33,4 @@ functions must take a request and return a request.
 \donttest{handlers$build <- handlers_add_front(handlers$build, restxml_build)}
 
 }
+\keyword{internal}
