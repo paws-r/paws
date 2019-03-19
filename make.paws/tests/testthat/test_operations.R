@@ -41,6 +41,9 @@ test_that("make_operation", {
     #'
     #' Foo.
     #'
+    #' @usage
+    #' api_operation(Input1, Input2, Input3)
+    #'
     #' @param Input1
     #' @param Input2
     #' @param Input3
@@ -71,7 +74,7 @@ test_that("make_operation", {
       response <- send_request(request)
       return(response)
     }
-    api$operation <- api_operation")
+    .api$operations$operation <- api_operation")
 
   actual <- formatR::tidy_source(text = a, output = FALSE)
   expected <- formatR::tidy_source(text = e, output = FALSE)

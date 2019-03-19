@@ -5,6 +5,7 @@ NULL
 make_docs <- function(operation, api) {
   title <- make_doc_title(operation)
   description <- make_doc_desc(operation)
+  usage <- make_doc_usage(operation, api)
   params <- make_doc_params(operation, api)
   request <- make_doc_request(operation, api)
   response <- make_doc_response(operation, api)
@@ -13,6 +14,7 @@ make_docs <- function(operation, api) {
   docs <- glue::glue_collapse(
     c(title,
       description,
+      usage,
       params,
       request,
       examples,
@@ -36,6 +38,27 @@ make_doc_desc <- function(operation) {
   description <- glue::glue("#' {docs}")
   description <- glue::glue_collapse(description, sep = "\n")
   return(as.character(description))
+}
+
+# Make the usage section.
+# Ensure that there are no lines over 100 characters.
+make_doc_usage <- function(operation, api) {
+  if (!is.null(operation$input$shape)) {
+    shape <- api$shapes[[operation$input$shape]]
+    params <- names(shape$members)
+  } else {
+    params <- c()
+  }
+  service_name <- package_name(api)
+  operation_name <- get_operation_name(operation)
+  args <- paste(params, collapse = ", ")
+  usage <- glue::glue("{service_name}_{operation_name}({args})")
+  usage <- break_lines(usage, at = c("\\s", "\\("))
+  usage <- gsub("\n *$", "", usage) # delete empty lines
+  usage <- gsub("\n", "\n  ", usage) # indent subsequent lines
+  usage <- comment(usage, "#'")
+  usage <- paste("#' @usage", usage, sep = "\n")
+  usage
 }
 
 # Make the parameter documentation.
@@ -138,9 +161,10 @@ first_sentence <- function(x) {
 }
 
 # Break a string into lines that are at most `chars` characters long.
-break_lines <- function(s, chars = 72) {
-  regex <- sprintf("(.{1,%i})(\\s|$)", chars)
-  result <- gsub(regex, "\\1\n", s)
+break_lines <- function(s, chars = 72, at = "\\s") {
+  regex <- sprintf("(.{1,%i})(%s|$)", chars, paste(at, collapse = "|"))
+  result <- gsub(regex, "\\1\\2\n", s)
+  result <- gsub(" +\n", "\n", result)
   return(result)
 }
 
@@ -218,11 +242,24 @@ clean_html_node <- function(node) {
 # See https://developer.r-project.org/parseRd.pdf.
 escape_special_chars <- function(text) {
   result <- text
+
+  # Single \ -- not following another \ and not preceding a special character
   result <- gsub("(?<!\\\\)\\\\(?![\\\\%{}'\"`\\*~\\[\\]])", "\\\\\\\\", result, perl = TRUE)
-  result <- gsub("`\\`", "`\\\\`", result, fixed = TRUE) # Special case: `\`
+
+  # Special case: `\`
+  result <- gsub("`\\`", "`\\\\`", result, fixed = TRUE)
+
+  # Special characters -- not already escaped
   for (char in c("%", "{", "}")) {
     result <- gsub(paste0("(?<!\\\\)", char), paste0("\\\\", char), result, perl = TRUE)
   }
+
+  # Unicode character codes: \\uxxxx to `U+xxxx`
+  result <- gsub("\\\\\\\\u([0-9a-fA-F]{4})", "`U+\\1`", result)
+
+  # Control character codes: e.g. \n to `\\n`
+  result <- gsub("(\\\\)+([a-zA-Z])\\b", "`\\\\\\\\\\2`", result)
+
   result
 }
 
@@ -278,6 +315,10 @@ get_operation_title <- function(operation) {
   docs <- gsub(" +", " ", docs)
   title <- first_sentence(docs)
   title <- mask(title, c("[" = "&#91;", "]" = "&#93;"))
+  if (length(title) == 0 || title == "") {
+    title <- gsub("_", " ", get_operation_name(operation))
+    substr(title, 1, 1) <- toupper(substr(title, 1, 1))
+  }
   title
 }
 

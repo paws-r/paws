@@ -29,7 +29,7 @@ test_that("make_test no arguments", {
   a <- make_test(operation, api, NULL, NA)
   e <- code({
     test_that("foo", {
-      expect_error(api$foo(), NA)
+      expect_error(svc$foo(), NA)
     })
   })
   actual <- format_test_code(a)
@@ -49,7 +49,7 @@ test_that("make_test with arguments", {
   a <- make_test(operation, api, list('"bar"', 123), NA)
   e <- code({
     test_that("foo", {
-      expect_error(api$foo("bar", 123), NA)
+      expect_error(svc$foo("bar", 123), NA)
     })
   })
   actual <- format_test_code(a)
@@ -105,16 +105,18 @@ test_that("make_tests", {
   e <- code({
     context("api")
 
+    svc <- paws::api()
+
     test_that("describe_foo", {
-      expect_error(api$describe_foo(), NA)
+      expect_error(svc$describe_foo(), NA)
     })
 
     test_that("describe_foo", {
-      expect_error(api$describe_foo(MaxResults = 20), NA)
+      expect_error(svc$describe_foo(MaxResults = 20), NA)
     })
 
     test_that("list_bar", {
-      expect_error(api$list_bar(), NA)
+      expect_error(svc$list_bar(), NA)
     })
   })
   actual <- format_test_code(a)

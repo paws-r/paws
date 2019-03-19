@@ -1,8 +1,8 @@
 context("Make documentation")
 
 test_that("make_doc_title", {
-  operation <- list()
-  expected <- "#' "
+  operation <- list(name = "FooOperation")
+  expected <- "#' Foo operation"
   expect_equal(make_doc_title(operation), expected)
 
   operation <- list(documentation = "<body><p>Foo. Bar.</p></body>")
@@ -365,7 +365,7 @@ test_that("convert", {
   expect_equal(convert(text), expected)
 
   text <- "<body>foo \\bar { \\u0123 <code>baz'</code></body>"
-  expected <- "foo \\\\bar \\{ \\\\u0123 `baz\\'`"
+  expected <- "foo \\\\bar \\{ `U+0123` `baz\\'`"
   expect_equal(convert(text), expected)
 
   text <- '<p> <code>{ "actors": {}, "title": {"format": "text","max_phrases": 2,"pre_tag": "<b>","post_tag": "</b>"} }</code></p>'
@@ -374,6 +374,10 @@ test_that("convert", {
 
   text <- "<body><p>foo</p><p>bar<code>'baz</code></p></body>"
   expected <- c("foo", "", "bar`\\'baz`")
+  expect_equal(convert(text), expected)
+
+  text <- "<p>foo \\a \\b</p>"
+  expected <- c("foo `\\\\a` `\\\\b`")
   expect_equal(convert(text), expected)
 })
 
