@@ -8,6 +8,7 @@ r_github_packages:
 install:
   - R -e "devtools::install_deps('paws.common', dep = T)"
   - R -e "devtools::install_deps('make.paws', dep = T)"
+  - R -e "devtools::install('paws.common')"
 
 script:
   - R CMD build paws.common && R CMD check paws.common*.tar.gz
