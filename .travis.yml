@@ -11,6 +11,7 @@ install:
 
 script:
   - R CMD build paws.common && R CMD check paws.common*.tar.gz
+  - R CMD build make.paws && R CMD check make.paws*.tar.gz
 
 after_success:
-  - Rscript script/codecov.R paws.common
+  - Rscript script/codecov.R paws.common make.paws
