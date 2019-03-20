@@ -295,6 +295,34 @@ test_that("make_doc_examples", {
     sep = "\n"
   )
   expect_equal(actual, expected)
+
+  operation <- list(
+    name = "Operation",
+    examples = list(
+      list(
+        input = list(
+          "Foo" = "bar",
+          "Baz" = list(
+            "Qux" = "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"Stmt1\",\"Effect\":\"Allow\",\"Action\":\"s3:*\",\"Resource\":\"*\"}]"
+          )
+        ),
+        description = "A very long string"
+      )
+    )
+  )
+  actual <- make_doc_examples(operation, api)
+  expected <- paste(
+    "#' @examples",
+    "#' # A very long string",
+    "#' \\donttest{api$operation(",
+    "#'   Foo = \"bar\",",
+    "#'   Baz = list(",
+    "#'     Qux = \"{\\\"Version\\\":\\\"2012-10-17\\\",\\\"Statement\\\":[{\\\"Sid\\\":\\\"Stmt1\\\",\\\"Effect\\\":...\"",
+    "#'   )",
+    "#' )}",
+    sep = "\n"
+  )
+  expect_equal(actual, expected)
 })
 
 test_that("clean_markdown", {
