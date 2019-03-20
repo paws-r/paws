@@ -27,8 +27,6 @@ Suggests:
     covr,
     formatR,
     testthat
-Remotes:
-    paws-r/paws/paws.common
 SystemRequirements: pandoc (>= 1.12.3) - http://pandoc.org
 Roxygen: list(markdown = TRUE, roclets = c("rd"))
 RoxygenNote: 6.1.1
