@@ -127,6 +127,20 @@ make_doc_example <- function(example, op_name) {
   args <- make_doc_example_args(example$input)
   call <- glue::glue("{op_name}({args})")
   call <- clean_example(call)
+
+  # Truncate long lines to avoid R CMD check warnings.
+  # For strings containing quotes, e.g. JSON, keep an even number of quotes
+  # to avoid further warnings from R CMD check about unmatched quotes.
+  lines <- strsplit(call, "\n")[[1]]
+  truncated <- lapply(lines, function(x) {
+    trunc <- gsub('^(.{92})(.*)"(.)?$', '\\1..."\\3', x)
+    if (stringr::str_count(trunc, '\"') %% 2 != 0) {
+      trunc <- gsub('\\\\"[^"]*"(,)?$', '..."\\1', trunc)
+    }
+    trunc
+  })
+  call <- paste(truncated, collapse = "\n")
+
   call <- paste0("\\donttest{", call, "}")
   desc <- comment(break_lines(example$description))
   result <- paste(desc, call, sep = "\n")
