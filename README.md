@@ -23,7 +23,7 @@ JavaScript](https://github.com/aws/aws-sdk-js).
 
 *Logo by [Hsinyi Chen](https://www.starfolioart.com/).*
 
-## Installing
+## Installation
 
 Paws is currently available on GitHub. Each AWS service has its own R
 package within Paws. For example, to use EC2, use the `paws.ec2` package.
@@ -50,7 +50,7 @@ Sys.setenv(
 )
 ```
 
-## Run operations
+## Usage
 
 Launch an EC2 instance using the `run_instances` function.
 
