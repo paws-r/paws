@@ -78,7 +78,6 @@ write_description <- function(path, version) {
     Depends = "R (>= 3.4.0)",
     Imports = "paws.common",
     Suggests = "testthat",
-    Remotes = "paws-r/paws/paws.common",
     License = "Apache License (>= 2.0)",
     Encoding = "UTF-8",
     LazyData = "true",
