@@ -1,7 +1,9 @@
 # DynamoDB examples
 
+dynamodb <- paws::dynamodb()
+
 # Create a DynamoDB table.
-response <- paws.dynamodb::create_table(
+resp <- dynamodb$create_table(
   AttributeDefinitions = list(
     list(
       "AttributeName" = "Artist",
@@ -30,7 +32,7 @@ response <- paws.dynamodb::create_table(
 )
 
 # List our DynamoDB tables.
-tables <- paws.dynamodb::list_tables()
+tables <- dynamodb$list_tables()
 
 # Delete the table just created.
-paws.dynamodb::delete_table("Music")
+dynamodb$delete_table("Music")

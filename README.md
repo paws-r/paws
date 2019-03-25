@@ -13,31 +13,22 @@ Status](https://ci.appveyor.com/api/projects/status/2ma1spb2f55129qc/branch/mast
 Paws is a **P**ackage for **A**mazon **W**eb **S**ervices in R. Paws provides
 access to the full suite of AWS services from within R.
 
-Disclaimer: Paws is not a product of or supported by Amazon Web
-Services.
-
-Paws is based on the design and implementation of the [AWS SDK for
-Go](https://github.com/aws/aws-sdk-go) and it uses AWS’s API definition
-files and API documentation from the [AWS SDK for
-JavaScript](https://github.com/aws/aws-sdk-js).
-
-*Logo by [Hsinyi Chen](https://www.starfolioart.com/).*
+Disclaimer: Paws is not a product of or supported by Amazon Web Services.
 
 ## Installation
 
-Paws is currently available on GitHub. Each AWS service has its own R
-package within Paws. For example, to use EC2, use the `paws.ec2` package.
-See [the list of available packages here](service). Install a package
-(e.g. `paws.ec2`) using:
+Paws is currently available on GitHub. Install it using:
 
 ``` r
-devtools::install_github("paws-r/paws/service/paws.ec2")
+remotes::install_github("paws-r/paws/paws")
 ```
+
+It takes several minutes to install. We're sorry; please be patient.
 
 ## Credentials
 
-You'll need to set up your credentials and region. Paws supports R 
-and OS environment variables, AWS credential files, and IAM roles. 
+You'll need to set up your AWS credentials and region. Paws supports R
+and OS environment variables, AWS credential files, and IAM roles.
 See [docs/credentials.md](docs/credentials.md) for more info.
 
 In this example, we set them with R environment variables.
@@ -52,10 +43,17 @@ Sys.setenv(
 
 ## Usage
 
+To use a service, create a client. All of a service's operations
+can be accessed from this object.
+
+``` r
+ec2 <- paws::ec2()
+```
+
 Launch an EC2 instance using the `run_instances` function.
 
 ``` r
-resp <- paws.ec2::run_instances(
+resp <- ec2$run_instances(
   ImageId = "ami-f973ab84",
   InstanceType = "t2.micro",
   KeyName = "default",
@@ -74,26 +72,40 @@ resp <- paws.ec2::run_instances(
 List all of your instances with `describe_instances`.
 
 ``` r
-paws.ec2::describe_instances()
+ec2$describe_instances()
 ```
 
 Shut down the instance you started with `terminate_instances`.
 
 ``` r
-paws.ec2::terminate_instances(
+ec2$terminate_instances(
   InstanceIds = resp$Instances[[1]]$InstanceId
 ```
 
 ## Documentation
 
-You can see all the operations for a given service, like EC2, by looking
-through the package documentation.
+You can see all available services by looking at the package documentation.
 
 ``` r
-help(package = "paws.ec2")
+help(package = "paws")
+```
+
+If you look at the help for each service, you can see all its operations.
+
+``` r
+?paws::ec2
 ```
 
 We also have examples for [EC2](examples/ec2.R), [S3](examples/s3.R),
 [SQS](examples/sqs.R), [SNS](examples/sns.R),
 [DynamoDB](examples/dynamodb.R), [Lambda](examples/lambda.R),
 [Batch](examples/batch.R), and [Comprehend](examples/comprehend.R).
+
+## Credits
+
+Paws is based on the design of the [AWS SDK for
+Go](https://github.com/aws/aws-sdk-go) and it uses AWS’s API definition
+files and API documentation from the [AWS SDK for
+JavaScript](https://github.com/aws/aws-sdk-js).
+
+*Logo by [Hsinyi Chen](https://www.starfolioart.com/).*

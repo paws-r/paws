@@ -1,7 +1,9 @@
 # EC2 examples
 
+ec2 <- paws::ec2()
+
 # Start an EC2 instance.
-response <- paws.ec2::run_instances(
+resp <- ec2$run_instances(
   ImageId = "ami-f973ab84",
   InstanceType = "t2.micro",
   MinCount = 1,
@@ -24,9 +26,9 @@ response <- paws.ec2::run_instances(
 )
 
 # List our instances.
-instances <- paws.ec2::describe_instances()
+instances <- ec2$describe_instances()
 
 # Terminate the instance we previously started.
-paws.ec2::terminate_instances(
-  InstanceIds = response$Instances[[1]]$InstanceId
+ec2$terminate_instances(
+  InstanceIds = resp$Instances[[1]]$InstanceId
 )
