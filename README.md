@@ -84,19 +84,24 @@ ec2$terminate_instances(
 
 ## Documentation
 
-You can see all available services by looking at the package documentation.
+You can browse all available services by looking at the package documentation.
 
 ``` r
 help(package = "paws")
 ```
 
-If you look at the help for each service, you can see all its operations.
+You can also jump to a specific service and see all its operations.
 
 ``` r
 ?paws::ec2
 ```
 
-We also have examples for [EC2](examples/ec2.R), [S3](examples/s3.R),
+RStudio's code completion will show you the available services,
+their operations, and each operation's parameters.
+
+![](docs/code_completion.gif)
+
+There are also examples for [EC2](examples/ec2.R), [S3](examples/s3.R),
 [SQS](examples/sqs.R), [SNS](examples/sns.R),
 [DynamoDB](examples/dynamodb.R), [Lambda](examples/lambda.R),
 [Batch](examples/batch.R), and [Comprehend](examples/comprehend.R).
@@ -108,4 +113,4 @@ Go](https://github.com/aws/aws-sdk-go) and it uses AWS’s API definition
 files and API documentation from the [AWS SDK for
 JavaScript](https://github.com/aws/aws-sdk-js).
 
-*Logo by [Hsinyi Chen](https://www.starfolioart.com/).*
+Logo by [Hsinyi Chen](https://www.starfolioart.com/).
