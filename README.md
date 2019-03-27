@@ -80,6 +80,7 @@ Shut down the instance you started with `terminate_instances`.
 ``` r
 ec2$terminate_instances(
   InstanceIds = resp$Instances[[1]]$InstanceId
+)
 ```
 
 ## Documentation
