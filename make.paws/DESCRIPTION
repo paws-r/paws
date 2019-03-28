@@ -40,6 +40,7 @@ Collate:
     'process_api.R'
     'read_api.R'
     'service.R'
+    'tests_config.R'
     'tests.R'
     'text.R'
     'utils.R'
