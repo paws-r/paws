@@ -1,4 +1,5 @@
 #' @include templates.R
+#' @include tests_config.R
 NULL
 
 test_file_template <- template(
@@ -57,11 +58,10 @@ make_test <- function(operation, api, args, outcome) {
 get_testable_operations <- function(api) {
   testable_operations <- list()
   i <- 1
-  skipped_operations <- get_skipped_operations(api)
   for (operation in api$operations) {
     name <- get_operation_name(operation)
     if (!any(startsWith(name, c("describe", "list")))) next
-    if (name %in% skipped_operations) next
+    if (skipped_operation(operation, api)) next
     if (has_required_params(operation, api)) next
     testable_operations[[i]] <- operation
     i <- i + 1
@@ -69,17 +69,22 @@ get_testable_operations <- function(api) {
   return(testable_operations)
 }
 
-# Get which operations to skip testing for a given API.
+# Return whether the operation should be skipped, based on whether it matches
+# any of the patterns in the list of operations to skip.
+skipped_operation <- function(operation, api) {
+  name <- get_operation_name(operation)
+  skips <- get_skipped_operations(api)
+  matches <- sapply(skips, function(x) grepl(x, name))
+  any(matches)
+}
+
+# Return a list of patterns that encompass the operations to skip for an API.
 get_skipped_operations <- function(api) {
-  service <- tolower(struct_name(api))
-  if (length(service) == 0) return(character(0))
-  file <- sprintf("%s.R", service)
-  path <- system_file("src", "tests", package = methods::getPackageName())
-  if (!file.exists(file.path(path, file))) return(character(0))
-  env <- new.env()
-  source(file.path(path, file), local = env)
-  if (is.null(env$skip)) return(character(0))
-  return(env$skip)
+  service <- package_name(api)
+  skip <- tests_config[[service]]$skip
+  if (is.null(skip)) return(character(0))
+  patterns <- sprintf("^%s$", gsub("\\*", ".*", skip))
+  patterns
 }
 
 # Return a list of test arguments & outcomes for an operation.
