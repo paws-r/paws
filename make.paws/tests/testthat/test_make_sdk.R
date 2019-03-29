@@ -89,7 +89,6 @@ test_that("make_sdk", {
   expect_true(file.exists(file.path(path_out, "DESCRIPTION")))
   expect_true(file.exists(file.path(path_out, "NAMESPACE")))
   expect_true(dir.exists(file.path(path_out, "R")))
-  expect_true(dir.exists(file.path(path_out, "man")))
   files <- c("foo_interfaces.R", "foo_operations.R", "foo_service.R")
   expect_true(all(files %in% list.files(file.path(path_out, "R"))))
 })
