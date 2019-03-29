@@ -43,7 +43,7 @@ common:
 	@echo "build and install common functions"
 	@cd paws.common && Rscript -e "devtools::document(); devtools::install(upgrade = FALSE)"
 
-test-common:
+test-common: common
 	@echo "run unit tests for common functions"
 	@Rscript -e "devtools::test('paws.common')"
 
@@ -51,7 +51,7 @@ codegen: common
 	@echo "build and install the code generator"
 	@cd make.paws && Rscript -e "devtools::install(upgrade = FALSE)"
 
-test-codegen:
+test-codegen: codegen
 	@echo "run unit tests for the code generator"
 	@Rscript -e "devtools::test('make.paws')"
 

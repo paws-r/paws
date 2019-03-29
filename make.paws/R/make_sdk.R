@@ -5,9 +5,8 @@
 #'
 #' @export
 make_sdk <- function(in_dir, out_dir) {
-  version <- make_version(out_dir)
+  clear(out_dir)
   write_skeleton(out_dir)
-  write_description(out_dir, version)
   for (api in list_apis(file.path(in_dir, "apis"))) {
     cat(paste0(api, "\n"))
     write_sdk_for_api(api, in_dir, out_dir)
@@ -16,16 +15,20 @@ make_sdk <- function(in_dir, out_dir) {
   return(invisible(TRUE))
 }
 
+# Clear out files from the output directory.
+clear <- function(path) {
+  keep <- c("DESCRIPTION", "cran-comments.md")
+  files <- list.files(path, recursive = TRUE)
+  delete <- setdiff(files, keep)
+  sapply(file.path(path, delete), file.remove)
+}
+
 # Make a package directory
-write_skeleton <- function(path, overwrite = TRUE) {
-  if (dir.exists(path) && overwrite) {
-    unlink(path, recursive = TRUE, force = TRUE)
-  }
-  dir.create(file.path(path, "R"), recursive = TRUE, showWarnings = FALSE)
+write_skeleton <- function(path) {
+  use_r_dir(path)
   use_description(path)
   use_namespace(path)
   use_package_doc(path)
-  use_apl2_license(path)
   return(TRUE)
 }
 
@@ -36,10 +39,33 @@ list_apis <- function(path) {
   return(apis)
 }
 
-# Create a dummy DESCRIPTION file.
+# Create the package's R directory.
+use_r_dir <- function(path) {
+  r_dir <- file.path(path, "R")
+  dir.create(r_dir, recursive = TRUE, showWarnings = FALSE)
+}
+
+# Create a dummy DESCRIPTION file if it doesn't already exist.
 use_description <- function(path) {
-  desc_path <- file.path(path, "DESCRIPTION")
-  file.create(desc_path, showWarnings = FALSE)
+  file <- file.path(path, "DESCRIPTION")
+  if (file.exists(file)) return()
+  file.create(file)
+  description <- desc::desc(file)
+  contents <- list(
+    Package = "paws",
+    Version = "0.0.1",
+    Title = "Paws Amazon Web Services SDK",
+    `Authors@R` = make_authors(),
+    Description = "An Amazon Web Services SDK for R.",
+    License = "Apache License (>= 2.0)",
+    Encoding = "UTF-8"
+  )
+  for (key in names(contents)) {
+    value <- contents[[key]]
+    description$set(key, value)
+  }
+  description$normalize()
+  description$write()
 }
 
 # Create a dummy R file to make Roxygen generate package-level documentation.
@@ -58,63 +84,14 @@ use_namespace <- function(path) {
   file.copy(template, to)
 }
 
-# Add the APL2 license to the package.
-use_apl2_license <- function(path) {
-  description <- desc::desc(file.path(path, "DESCRIPTION"))
-  description$set("License" = "Apache License (>= 2.0)")
-  description$normalize
-  description$write()
-}
-
-# Make a package description.
-write_description <- function(path, version) {
-  description <- desc::desc(file.path(path, "DESCRIPTION"))
-  contents <- list(
-    Package = "paws",
-    Title = "Paws Amazon Web Services SDK",
-    Version = version,
-    `Authors@R` = make_authors(),
-    Description = "An Amazon Web Services software development kit.",
-    Depends = "R (>= 3.4.0)",
-    Imports = "paws.common",
-    Suggests = "testthat",
-    License = "Apache License (>= 2.0)",
-    Encoding = "UTF-8",
-    LazyData = "true",
-    Roxygen = 'list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))'
-  )
-  for (key in names(contents)) {
-    value <- contents[[key]]
-    description$set(key, value)
-  }
-  description$normalize()
-  description$write()
-  return(TRUE)
+# Return the authors from this package.
+make_authors <- function(authors) {
+  package <- methods::getPackageName()
+  description <- utils::packageDescription(package)
+  description$`Authors@R`
 }
 
 # Generate the package's documentation.
 write_documentation <- function(path) {
   quietly(roxygen2::roxygenize(path))
-  return(TRUE)
-}
-
-# Returns a version; the existing package's if present, otherwise a default.
-make_version <- function(path) {
-  version <- "0.0.0.9000"
-  description <- file.path(path, "DESCRIPTION")
-  if (file.exists(description)) {
-    version <- tryCatch({
-      desc::desc_get_version(description)
-    }, error = function(e) version
-    )
-  }
-  return(version)
-}
-
-# Return the authors from this package.
-make_authors <- function(authors) {
-  package <- methods::getPackageName()
-  description <- utils::packageDescription(package)
-  authors <- description$`Authors@R`
-  return(authors)
 }
