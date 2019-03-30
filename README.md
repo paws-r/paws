@@ -63,7 +63,8 @@ resp <- ec2$run_instances(
     list(
       ResourceType = "instance",
       Tags = list(
-        list(Key = "webserver", Value = "production"))
+        list(Key = "webserver", Value = "production")
+      )
     )
   )
 )
