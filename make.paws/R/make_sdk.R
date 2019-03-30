@@ -5,7 +5,7 @@
 #'
 #' @export
 make_sdk <- function(in_dir, out_dir) {
-  clear(out_dir)
+  clear_dir(out_dir)
   write_skeleton(out_dir)
   for (api in list_apis(file.path(in_dir, "apis"))) {
     cat(paste0(api, "\n"))
@@ -16,8 +16,8 @@ make_sdk <- function(in_dir, out_dir) {
 }
 
 # Clear out files from the output directory.
-clear <- function(path) {
-  keep <- c("DESCRIPTION", "cran-comments.md")
+clear_dir <- function(path) {
+  keep <- c(".Rbuildignore", "DESCRIPTION", "cran-comments.md")
   files <- list.files(path, recursive = TRUE)
   delete <- setdiff(files, keep)
   sapply(file.path(path, delete), file.remove)

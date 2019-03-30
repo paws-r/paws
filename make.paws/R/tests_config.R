@@ -20,6 +20,7 @@ tests_config <- list(
 
   cloudformation = list(
     skip = list(
+      "describe_stack_events",
       "describe_stack_resources"
     )
   ),
