@@ -15,6 +15,7 @@ read_api <- function(api_name, path) {
   }
   region_config <- jsonlite::read_json(region_config_path)
   api <- merge_region_config(api, region_config)
+  api <- fix_region_config(api)
 
   return(api)
 }
@@ -79,4 +80,17 @@ fix_operation_names <- function(api) {
     api$operations[[op_name]]$name <- op_name
   }
   return(api)
+}
+
+# Fix certain services' region config, which are (apparently) incorrect.
+fix_region_config <- function(api) {
+  service <- package_name(api)
+  region_config <- list(
+    chime = list("*" = "service.chime.aws.amazon.com"),
+    docdb = list("*" = "rds.{region}.amazonaws.com")
+  )
+  if (service %in% names(region_config)) {
+    api$region_config <- region_config[[service]]
+  }
+  api
 }
