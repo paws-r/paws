@@ -6,14 +6,6 @@ test_that("describe_account_limits", {
   expect_error(svc$describe_account_limits(), NA)
 })
 
-test_that("describe_stack_events", {
-  expect_error(svc$describe_stack_events(), NA)
-})
-
-test_that("describe_stack_resources", {
-  expect_error(svc$describe_stack_resources(), NA)
-})
-
 test_that("describe_stacks", {
   expect_error(svc$describe_stacks(), NA)
 })

@@ -90,7 +90,7 @@ chime <- function() {
 
 .chime$metadata <- list(
   service_name = "chime",
-  endpoints = list("*" = "chime.{region}.amazonaws.com", "cn-*" = "chime.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = "service.chime.aws.amazon.com"),
   service_id = "Chime",
   api_version = "2018-05-01",
   signing_name = NULL,

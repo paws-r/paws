@@ -6,10 +6,6 @@ test_that("describe_account_audit_configuration", {
   expect_error(svc$describe_account_audit_configuration(), NA)
 })
 
-test_that("describe_default_authorizer", {
-  expect_error(svc$describe_default_authorizer(), NA)
-})
-
 test_that("describe_endpoint", {
   expect_error(svc$describe_endpoint(), NA)
 })
@@ -20,10 +16,6 @@ test_that("describe_event_configurations", {
 
 test_that("list_active_violations", {
   expect_error(svc$list_active_violations(), NA)
-})
-
-test_that("list_audit_findings", {
-  expect_error(svc$list_audit_findings(), NA)
 })
 
 test_that("list_authorizers", {
@@ -96,8 +88,4 @@ test_that("list_things", {
 
 test_that("list_topic_rules", {
   expect_error(svc$list_topic_rules(), NA)
-})
-
-test_that("list_v2_logging_levels", {
-  expect_error(svc$list_v2_logging_levels(), NA)
 })

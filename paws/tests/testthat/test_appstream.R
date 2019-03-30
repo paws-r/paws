@@ -33,11 +33,3 @@ test_that("describe_images", {
 test_that("describe_stacks", {
   expect_error(svc$describe_stacks(), NA)
 })
-
-test_that("describe_user_stack_associations", {
-  expect_error(svc$describe_user_stack_associations(), NA)
-})
-
-test_that("describe_user_stack_associations", {
-  expect_error(svc$describe_user_stack_associations(MaxResults = 20), NA)
-})

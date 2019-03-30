@@ -2,10 +2,6 @@ context("wafregional")
 
 svc <- paws::wafregional()
 
-test_that("list_activated_rules_in_rule_group", {
-  expect_error(svc$list_activated_rules_in_rule_group(), NA)
-})
-
 test_that("list_byte_match_sets", {
   expect_error(svc$list_byte_match_sets(), NA)
 })
@@ -16,10 +12,6 @@ test_that("list_geo_match_sets", {
 
 test_that("list_ip_sets", {
   expect_error(svc$list_ip_sets(), NA)
-})
-
-test_that("list_logging_configurations", {
-  expect_error(svc$list_logging_configurations(), NA)
 })
 
 test_that("list_rate_based_rules", {

@@ -10,10 +10,6 @@ test_that("describe_activations", {
   expect_error(svc$describe_activations(MaxResults = 20), NA)
 })
 
-test_that("describe_association", {
-  expect_error(svc$describe_association(), NA)
-})
-
 test_that("describe_automation_executions", {
   expect_error(svc$describe_automation_executions(), NA)
 })
@@ -44,14 +40,6 @@ test_that("describe_inventory_deletions", {
 
 test_that("describe_inventory_deletions", {
   expect_error(svc$describe_inventory_deletions(MaxResults = 20), NA)
-})
-
-test_that("describe_maintenance_window_schedule", {
-  expect_error(svc$describe_maintenance_window_schedule(), NA)
-})
-
-test_that("describe_maintenance_window_schedule", {
-  expect_error(svc$describe_maintenance_window_schedule(MaxResults = 20), NA)
 })
 
 test_that("describe_maintenance_windows", {
@@ -108,22 +96,6 @@ test_that("list_commands", {
 
 test_that("list_commands", {
   expect_error(svc$list_commands(MaxResults = 20), NA)
-})
-
-test_that("list_compliance_items", {
-  expect_error(svc$list_compliance_items(), NA)
-})
-
-test_that("list_compliance_items", {
-  expect_error(svc$list_compliance_items(MaxResults = 20), NA)
-})
-
-test_that("list_compliance_summaries", {
-  expect_error(svc$list_compliance_summaries(), NA)
-})
-
-test_that("list_compliance_summaries", {
-  expect_error(svc$list_compliance_summaries(MaxResults = 20), NA)
 })
 
 test_that("list_documents", {

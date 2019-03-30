@@ -14,10 +14,6 @@ test_that("describe_cache_parameter_groups", {
   expect_error(svc$describe_cache_parameter_groups(), NA)
 })
 
-test_that("describe_cache_security_groups", {
-  expect_error(svc$describe_cache_security_groups(), NA)
-})
-
 test_that("describe_cache_subnet_groups", {
   expect_error(svc$describe_cache_subnet_groups(), NA)
 })
@@ -40,8 +36,4 @@ test_that("describe_reserved_cache_nodes_offerings", {
 
 test_that("describe_snapshots", {
   expect_error(svc$describe_snapshots(), NA)
-})
-
-test_that("list_allowed_node_type_modifications", {
-  expect_error(svc$list_allowed_node_type_modifications(), NA)
 })

@@ -14,10 +14,6 @@ test_that("describe_cluster_parameter_groups", {
   expect_error(svc$describe_cluster_parameter_groups(), NA)
 })
 
-test_that("describe_cluster_security_groups", {
-  expect_error(svc$describe_cluster_security_groups(), NA)
-})
-
 test_that("describe_cluster_snapshots", {
   expect_error(svc$describe_cluster_snapshots(), NA)
 })
@@ -80,10 +76,6 @@ test_that("describe_snapshot_schedules", {
 
 test_that("describe_storage", {
   expect_error(svc$describe_storage(), NA)
-})
-
-test_that("describe_table_restore_status", {
-  expect_error(svc$describe_table_restore_status(), NA)
 })
 
 test_that("describe_tags", {

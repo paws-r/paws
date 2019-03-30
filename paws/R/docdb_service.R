@@ -69,7 +69,7 @@ docdb <- function() {
 
 .docdb$metadata <- list(
   service_name = "docdb",
-  endpoints = list("*" = "docdb.{region}.amazonaws.com", "cn-*" = "docdb.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = "rds.{region}.amazonaws.com"),
   service_id = "DocDB",
   api_version = "2014-10-31",
   signing_name = "rds",
