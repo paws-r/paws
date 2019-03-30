@@ -18,14 +18,6 @@ test_that("list_conference_providers", {
   expect_error(svc$list_conference_providers(MaxResults = 20), NA)
 })
 
-test_that("list_skills", {
-  expect_error(svc$list_skills(), NA)
-})
-
-test_that("list_skills", {
-  expect_error(svc$list_skills(MaxResults = 20), NA)
-})
-
 test_that("list_skills_store_categories", {
   expect_error(svc$list_skills_store_categories(), NA)
 })

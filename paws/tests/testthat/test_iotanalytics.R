@@ -2,10 +2,6 @@ context("iotanalytics")
 
 svc <- paws::iotanalytics()
 
-test_that("describe_logging_options", {
-  expect_error(svc$describe_logging_options(), NA)
-})
-
 test_that("list_channels", {
   expect_error(svc$list_channels(), NA)
 })

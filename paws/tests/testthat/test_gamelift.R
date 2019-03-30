@@ -18,16 +18,8 @@ test_that("describe_fleet_utilization", {
   expect_error(svc$describe_fleet_utilization(), NA)
 })
 
-test_that("describe_game_session_details", {
-  expect_error(svc$describe_game_session_details(), NA)
-})
-
 test_that("describe_game_session_queues", {
   expect_error(svc$describe_game_session_queues(), NA)
-})
-
-test_that("describe_game_sessions", {
-  expect_error(svc$describe_game_sessions(), NA)
 })
 
 test_that("describe_matchmaking_configurations", {
@@ -36,10 +28,6 @@ test_that("describe_matchmaking_configurations", {
 
 test_that("describe_matchmaking_rule_sets", {
   expect_error(svc$describe_matchmaking_rule_sets(), NA)
-})
-
-test_that("describe_player_sessions", {
-  expect_error(svc$describe_player_sessions(), NA)
 })
 
 test_that("describe_vpc_peering_authorizations", {

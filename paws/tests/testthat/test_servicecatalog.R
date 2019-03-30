@@ -21,7 +21,3 @@ test_that("list_record_history", {
 test_that("list_service_actions", {
   expect_error(svc$list_service_actions(), NA)
 })
-
-test_that("list_tag_options", {
-  expect_error(svc$list_tag_options(), NA)
-})

@@ -13,7 +13,3 @@ test_that("describe_job_definitions", {
 test_that("describe_job_queues", {
   expect_error(svc$describe_job_queues(), NA)
 })
-
-test_that("list_jobs", {
-  expect_error(svc$list_jobs(), NA)
-})

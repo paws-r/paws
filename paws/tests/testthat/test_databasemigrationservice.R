@@ -46,10 +46,6 @@ test_that("describe_replication_subnet_groups", {
   expect_error(svc$describe_replication_subnet_groups(), NA)
 })
 
-test_that("describe_replication_task_assessment_results", {
-  expect_error(svc$describe_replication_task_assessment_results(), NA)
-})
-
 test_that("describe_replication_tasks", {
   expect_error(svc$describe_replication_tasks(), NA)
 })

@@ -10,10 +10,6 @@ test_that("list_deployment_configs", {
   expect_error(svc$list_deployment_configs(), NA)
 })
 
-test_that("list_deployment_targets", {
-  expect_error(svc$list_deployment_targets(), NA)
-})
-
 test_that("list_deployments", {
   expect_error(svc$list_deployments(), NA)
 })

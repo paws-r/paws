@@ -250,14 +250,6 @@ test_that("describe_principal_id_format", {
   expect_error(svc$describe_principal_id_format(MaxResults = 20), NA)
 })
 
-test_that("describe_public_ipv_4_pools", {
-  expect_error(svc$describe_public_ipv_4_pools(), NA)
-})
-
-test_that("describe_public_ipv_4_pools", {
-  expect_error(svc$describe_public_ipv_4_pools(MaxResults = 20), NA)
-})
-
 test_that("describe_regions", {
   expect_error(svc$describe_regions(), NA)
 })
