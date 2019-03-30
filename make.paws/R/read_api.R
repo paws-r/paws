@@ -82,7 +82,7 @@ fix_operation_names <- function(api) {
   return(api)
 }
 
-# Fix certain services' region config, which are (apprently) incorrect.
+# Fix certain services' region config, which are (apparently) incorrect.
 fix_region_config <- function(api) {
   service <- package_name(api)
   region_config <- list(
