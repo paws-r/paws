@@ -6,6 +6,12 @@ tests_config <- list(
     )
   ),
 
+  applicationdiscoveryservice = list(
+    skip = list(
+      "*" # endpoint not found
+    )
+  ),
+
   appstream = list(
     skip = list(
       "describe_user_stack_associations"
@@ -145,7 +151,7 @@ tests_config <- list(
     )
   ),
 
-  iot1clickdeviceservice = list(
+  iot1clickdevicesservice = list(
     skip = list(
       "*" # endpoint not found
     )
@@ -254,6 +260,12 @@ tests_config <- list(
     )
   ),
 
+  pinpointsmsvoice = list(
+    skip = list(
+      "*"
+    )
+  ),
+
   redshift = list(
     skip = list(
       "describe_cluster_security_groups",
@@ -310,6 +322,12 @@ tests_config <- list(
     skip = list(
       "describe_activities",
       "describe_users"
+    )
+  ),
+
+  workspaces = list(
+    skip = list(
+      "*"
     )
   )
 
