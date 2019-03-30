@@ -49,6 +49,12 @@ tests_config <- list(
     )
   ),
 
+  devicefarm = list(
+    skip = list(
+      "*" # endpoint not found
+    )
+  ),
+
   directconnect = list(
     skip = list(
       "*"
@@ -119,6 +125,12 @@ tests_config <- list(
     )
   ),
 
+  globalaccelerator = list(
+    skip = list(
+      "*" # endpoint not found
+    )
+  ),
+
   health = list(
     skip = list(
       "*"
@@ -133,6 +145,12 @@ tests_config <- list(
     )
   ),
 
+  iot1clickdeviceservice = list(
+    skip = list(
+      "*" # endpoint not found
+    )
+  ),
+
   iotanalytics = list(
     skip = list(
       "describe_logging_options"
@@ -143,6 +161,18 @@ tests_config <- list(
     skip = list(
       "describe_stream_consumer",
       "list_shards"
+    )
+  ),
+
+  kinesisanalyticsv2 = list(
+    skip = list(
+      "*" # endpoint not found
+    )
+  ),
+
+  licensemanager = list(
+    skip = list(
+      "*" # endpoint not found
     )
   ),
 
@@ -167,6 +197,18 @@ tests_config <- list(
   mediastore = list(
     skip = list(
       "describe_container"
+    )
+  ),
+
+  mediastoredata = list(
+    skip = list(
+      "*" # endpoint not found
+    )
+  ),
+
+  migrationhub = list(
+    skip = list(
+      "*" # endpoint not found
     )
   ),
 
@@ -203,6 +245,12 @@ tests_config <- list(
   organizations = list(
     skip = list(
       "*"
+    )
+  ),
+
+  pinpointemail = list(
+    skip = list(
+      "*" # endpoint not found
     )
   ),
 
