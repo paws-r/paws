@@ -134,9 +134,12 @@ make_doc_example <- function(example, op_name) {
   lines <- strsplit(call, "\n")[[1]]
   truncated <- lapply(lines, function(x) {
     trunc <- gsub('^(.{92})(.*)"(.)?$', '\\1..."\\3', x)
+    # Delete extra unmatched quotation marks.
     if (stringr::str_count(trunc, '\"') %% 2 != 0) {
       trunc <- gsub('\\\\"[^"]*"(,)?$', '..."\\1', trunc)
     }
+    # Fix special case \..." -> ..." (extra backslash)
+    trunc <- gsub('\\\\+(\\.){3}"(,)?$', '..."\\2', trunc)
     trunc
   })
   call <- paste(truncated, collapse = "\n")
