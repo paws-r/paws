@@ -41,16 +41,16 @@ isn't a null version, Amazon S3 does not remove any objects.
 }
 
 \examples{
-# The following example deletes an object from an S3 bucket.
-\donttest{s3$delete_object(
-  Bucket = "examplebucket",
-  Key = "objectkey.jpg"
-)}
-
 # The following example deletes an object from a non-versioned bucket.
 \donttest{s3$delete_object(
   Bucket = "ExampleBucket",
   Key = "HappyFace.jpg"
+)}
+
+# The following example deletes an object from an S3 bucket.
+\donttest{s3$delete_object(
+  Bucket = "examplebucket",
+  Key = "objectkey.jpg"
 )}
 
 }

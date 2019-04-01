@@ -14,7 +14,9 @@ EC2 instances based on user-defined policies, schedules, and health
 checks. Use this service with AWS Auto Scaling, Amazon CloudWatch, and
 Elastic Load Balancing.
 
-For more information, see the \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html}{Amazon EC2 Auto Scaling User Guide}.
+For more information, including information about granting IAM users
+required permissions for Amazon EC2 Auto Scaling actions, see the
+\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html}{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Example}{
 \preformatted{autoscaling <- paws::autoscaling()
@@ -38,10 +40,10 @@ autoscaling$operation()
 \link[=autoscaling_delete_launch_configuration]{delete_launch_configuration} \tab Deletes the specified launch configuration \cr
 \link[=autoscaling_delete_lifecycle_hook]{delete_lifecycle_hook} \tab Deletes the specified lifecycle hook \cr
 \link[=autoscaling_delete_notification_configuration]{delete_notification_configuration} \tab Deletes the specified notification \cr
-\link[=autoscaling_delete_policy]{delete_policy} \tab Deletes the specified Auto Scaling policy \cr
+\link[=autoscaling_delete_policy]{delete_policy} \tab Deletes the specified scaling policy \cr
 \link[=autoscaling_delete_scheduled_action]{delete_scheduled_action} \tab Deletes the specified scheduled action \cr
 \link[=autoscaling_delete_tags]{delete_tags} \tab Deletes the specified tags \cr
-\link[=autoscaling_describe_account_limits]{describe_account_limits} \tab Describes the current Auto Scaling resource limits for your AWS account \cr
+\link[=autoscaling_describe_account_limits]{describe_account_limits} \tab Describes the current Amazon EC2 Auto Scaling resource limits for your AWS account \cr
 \link[=autoscaling_describe_adjustment_types]{describe_adjustment_types} \tab Describes the policy adjustment types for use with PutScalingPolicy \cr
 \link[=autoscaling_describe_auto_scaling_groups]{describe_auto_scaling_groups} \tab Describes one or more Auto Scaling groups \cr
 \link[=autoscaling_describe_auto_scaling_instances]{describe_auto_scaling_instances} \tab Describes one or more Auto Scaling instances \cr

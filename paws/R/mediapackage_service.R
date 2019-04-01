@@ -23,8 +23,11 @@ NULL
 #'  \link[=mediapackage_describe_origin_endpoint]{describe_origin_endpoint} \tab Gets details about an existing OriginEndpoint \cr
 #'  \link[=mediapackage_list_channels]{list_channels} \tab Returns a collection of Channels \cr
 #'  \link[=mediapackage_list_origin_endpoints]{list_origin_endpoints} \tab Returns a collection of OriginEndpoint records \cr
+#'  \link[=mediapackage_list_tags_for_resource]{list_tags_for_resource} \tab List tags for resource \cr
 #'  \link[=mediapackage_rotate_channel_credentials]{rotate_channel_credentials} \tab Changes the Channel's first IngestEndpoint's username and password \cr
 #'  \link[=mediapackage_rotate_ingest_endpoint_credentials]{rotate_ingest_endpoint_credentials} \tab Rotate the IngestEndpoint's username and password, as specified by the IngestEndpoint's id\cr
+#'  \link[=mediapackage_tag_resource]{tag_resource} \tab Tag resource \cr
+#'  \link[=mediapackage_untag_resource]{untag_resource} \tab Untag resource \cr
 #'  \link[=mediapackage_update_channel]{update_channel} \tab Updates an existing Channel \cr
 #'  \link[=mediapackage_update_origin_endpoint]{update_origin_endpoint} \tab Updates an existing OriginEndpoint 
 #' }

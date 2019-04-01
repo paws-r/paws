@@ -21,7 +21,7 @@ For better performance, specify \code{StartTime} and \code{EndTime} values that
 align with the value of the metric's \code{Period} and sync up with the
 beginning and end of an hour. For example, if the \code{Period} of a metric
 is 5 minutes, specifying 12:05 or 12:30 as \code{StartTime} can get a faster
-response from CloudWatch then setting 12:07 or 12:29 as the \code{StartTime}.}
+response from CloudWatch than setting 12:07 or 12:29 as the \code{StartTime}.}
 
 \item{EndTime}{[required] The time stamp indicating the latest data to be returned.
 
@@ -29,7 +29,7 @@ For better performance, specify \code{StartTime} and \code{EndTime} values that
 align with the value of the metric's \code{Period} and sync up with the
 beginning and end of an hour. For example, if the \code{Period} of a metric
 is 5 minutes, specifying 12:05 or 12:30 as \code{EndTime} can get a faster
-response from CloudWatch then setting 12:07 or 12:29 as the \code{EndTime}.}
+response from CloudWatch than setting 12:07 or 12:29 as the \code{EndTime}.}
 
 \item{NextToken}{Include this value, if it was returned by the previous call, to get the
 next set of data points.}
@@ -50,7 +50,7 @@ values of the returned statistics, to create new time series that
 represent new insights into your data. For example, using Lambda
 metrics, you could divide the Errors metric by the Invocations metric to
 get an error rate time series. For more information about metric math
-expressions, see \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax}{Metric Math Syntax and Functions}
+expressions, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax}{Metric Math Syntax and Functions}
 in the \emph{Amazon CloudWatch User Guide}.
 }
 \details{

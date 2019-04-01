@@ -32,7 +32,9 @@ mediastore$operation()
 \link[=mediastore_list_containers]{list_containers} \tab Lists the properties of all containers in AWS Elemental MediaStore \cr
 \link[=mediastore_put_container_policy]{put_container_policy} \tab Creates an access policy for the specified container to restrict the users and clients that can access it \cr
 \link[=mediastore_put_cors_policy]{put_cors_policy} \tab Sets the cross-origin resource sharing (CORS) configuration on a container so that the container can service cross-origin requests\cr
-\link[=mediastore_put_lifecycle_policy]{put_lifecycle_policy} \tab Writes an object lifecycle policy to a container
+\link[=mediastore_put_lifecycle_policy]{put_lifecycle_policy} \tab Writes an object lifecycle policy to a container \cr
+\link[=mediastore_start_access_logging]{start_access_logging} \tab Starts access logging on the specified container \cr
+\link[=mediastore_stop_access_logging]{stop_access_logging} \tab Stops access logging on the specified container
 }
 }
 

@@ -7,7 +7,7 @@
 cloudwatchevents_test_event_pattern(EventPattern, Event)
 }
 \arguments{
-\item{EventPattern}{[required] The event pattern. For more information, see \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html}{Events and Event Patterns}
+\item{EventPattern}{[required] The event pattern. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html}{Events and Event Patterns}
 in the \emph{Amazon CloudWatch Events User Guide}.}
 
 \item{Event}{[required] The event, in JSON format, to test against the event pattern.}

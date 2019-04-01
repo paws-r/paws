@@ -4,7 +4,8 @@
 \alias{glue_create_classifier}
 \title{Creates a classifier in the user's account}
 \usage{
-glue_create_classifier(GrokClassifier, XMLClassifier, JsonClassifier)
+glue_create_classifier(GrokClassifier, XMLClassifier, JsonClassifier,
+  CsvClassifier)
 }
 \arguments{
 \item{GrokClassifier}{A \code{GrokClassifier} object specifying the classifier to create.}
@@ -12,11 +13,13 @@ glue_create_classifier(GrokClassifier, XMLClassifier, JsonClassifier)
 \item{XMLClassifier}{An \code{XMLClassifier} object specifying the classifier to create.}
 
 \item{JsonClassifier}{A \code{JsonClassifier} object specifying the classifier to create.}
+
+\item{CsvClassifier}{A \code{CsvClassifier} object specifying the classifier to create.}
 }
 \description{
 Creates a classifier in the user's account. This may be a
-\code{GrokClassifier}, an \code{XMLClassifier}, or abbrev \code{JsonClassifier},
-depending on which field of the request is present.
+\code{GrokClassifier}, an \code{XMLClassifier}, a \code{JsonClassifier}, or a
+\code{CsvClassifier}, depending on which field of the request is present.
 }
 \section{Request syntax}{
 \preformatted{glue$create_classifier(
@@ -34,6 +37,17 @@ depending on which field of the request is present.
   JsonClassifier = list(
     Name = "string",
     JsonPath = "string"
+  ),
+  CsvClassifier = list(
+    Name = "string",
+    Delimiter = "string",
+    QuoteSymbol = "string",
+    ContainsHeader = "UNKNOWN"|"PRESENT"|"ABSENT",
+    Header = list(
+      "string"
+    ),
+    DisableValueTrimming = TRUE|FALSE,
+    AllowSingleColumn = TRUE|FALSE
   )
 )
 }

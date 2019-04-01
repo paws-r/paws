@@ -54,7 +54,7 @@ After you submit your request, Amazon Cognito requires up to 1 hour to
 distribute your new certificate to your custom domain.
 
 For more information about adding a custom domain to your user pool, see
-\href{http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-add-custom-domain.html}{Using Your Own Domain for the Hosted UI}.
+\href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-add-custom-domain.html}{Using Your Own Domain for the Hosted UI}.
 }
 \section{Request syntax}{
 \preformatted{cognitoidentityprovider$update_user_pool_domain(

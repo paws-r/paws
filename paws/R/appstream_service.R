@@ -7,9 +7,9 @@ NULL
 #' @description
 #' Amazon AppStream 2.0
 #' 
-#' This is the *Amazon AppStream 2.0 API Reference*. It provides
-#' descriptions and syntax for each of the actions and data types in
-#' AppStream 2.0. AppStream 2.0 is a fully managed application streaming
+#' This is the *Amazon AppStream 2.0 API Reference*. This reference
+#' provides descriptions and syntax for each of the actions and data types
+#' in AppStream 2.0. AppStream 2.0 is a fully managed application streaming
 #' service. You centrally manage your desktop applications on AppStream 2.0
 #' and securely deliver them to any computer. AppStream 2.0 manages the AWS
 #' resources required to host and run your applications, scales
@@ -54,7 +54,7 @@ NULL
 #'  \link[=appstream_describe_image_builders]{describe_image_builders} \tab Retrieves a list that describes one or more specified image builders, if the image builder names are provided\cr
 #'  \link[=appstream_describe_image_permissions]{describe_image_permissions} \tab Retrieves a list that describes the permissions for shared AWS account IDs on a private image that you own \cr
 #'  \link[=appstream_describe_images]{describe_images} \tab Retrieves a list that describes one or more specified images, if the image names or image ARNs are provided \cr
-#'  \link[=appstream_describe_sessions]{describe_sessions} \tab Retrieves a list that describes the streaming sessions for a specified stack and fleet \cr
+#'  \link[=appstream_describe_sessions]{describe_sessions} \tab Retrieves a list that describes the active streaming sessions for a specified stack and fleet \cr
 #'  \link[=appstream_describe_stacks]{describe_stacks} \tab Retrieves a list that describes one or more specified stacks, if the stack names are provided \cr
 #'  \link[=appstream_describe_user_stack_associations]{describe_user_stack_associations} \tab Retrieves a list that describes the UserStackAssociation objects \cr
 #'  \link[=appstream_describe_users]{describe_users} \tab Retrieves a list that describes one or more specified users in the user pool \cr

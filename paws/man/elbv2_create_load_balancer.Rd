@@ -72,16 +72,16 @@ describe your current load balancers, see DescribeLoadBalancers. When
 you are finished with a load balancer, you can delete it using
 DeleteLoadBalancer.
 
-For limit information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html}{Limits for Your Application Load Balancer}
-in the \emph{Application Load Balancers Guide} and \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html}{Limits for Your Network Load Balancer}
+For limit information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html}{Limits for Your Application Load Balancer}
+in the \emph{Application Load Balancers Guide} and \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html}{Limits for Your Network Load Balancer}
 in the \emph{Network Load Balancers Guide}.
 
 This operation is idempotent, which means that it completes at most one
 time. If you attempt to create multiple load balancers with the same
 settings, each call succeeds.
 
-For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html}{Application Load Balancers}
-in the \emph{Application Load Balancers Guide} and \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html}{Network Load Balancers}
+For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html}{Application Load Balancers}
+in the \emph{Application Load Balancers Guide} and \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html}{Network Load Balancers}
 in the \emph{Network Load Balancers Guide}.
 }
 \section{Request syntax}{

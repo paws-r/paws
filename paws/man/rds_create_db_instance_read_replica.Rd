@@ -39,14 +39,14 @@ backup retention period must be greater than 0.
 Replica, specify a valid DB instance identifier.
 \item If the source DB instance is in a different AWS Region than the Read
 Replica, specify a valid DB instance ARN. For more information, go
-to \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an ARN for Amazon RDS}
+to \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an ARN for Amazon RDS}
 in the \emph{Amazon RDS User Guide}.
 }}
 
 \item{DBInstanceClass}{The compute and memory capacity of the Read Replica, for example,
 \code{db.m4.large}. Not all DB instance classes are available in all AWS
 Regions, or for all database engines. For the full list of DB instance
-classes, and availability for your engine, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html}{DB Instance Class}
+classes, and availability for your engine, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html}{DB Instance Class}
 in the \emph{Amazon RDS User Guide.}
 
 Default: Inherits from the source DB instance.}
@@ -144,7 +144,7 @@ Valid Values: \code{0, 1, 5, 10, 15, 30, 60}}
 \item{MonitoringRoleArn}{The ARN for the IAM role that permits RDS to send enhanced monitoring
 metrics to Amazon CloudWatch Logs. For example,
 \code{arn:aws:iam:123456789012:role/emaccess}. For information on creating a
-monitoring role, go to \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole}{To create an IAM role for Amazon RDS Enhanced Monitoring}
+monitoring role, go to \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole}{To create an IAM role for Amazon RDS Enhanced Monitoring}
 in the \emph{Amazon RDS User Guide}.
 
 If \code{MonitoringInterval} is set to a value other than 0, then you must
@@ -210,8 +210,8 @@ instance in the us-west-2 AWS Region, then your
 }
 
 To learn how to generate a Signature Version 4 signed request, see
-\href{http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html}{Authenticating Requests: Using Query Parameters (AWS Signature Version 4)}
-and \href{http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4 Signing Process}.
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html}{Authenticating Requests: Using Query Parameters (AWS Signature Version 4)}
+and \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4 Signing Process}.
 
 If you supply a value for this operation's \code{SourceRegion} parameter, a
 pre-signed URL will be calculated on your behalf.}
@@ -232,7 +232,7 @@ Default: \code{false}}
 \item{EnablePerformanceInsights}{True to enable Performance Insights for the read replica, and otherwise
 false.
 
-For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{Using Amazon Performance Insights}
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{Using Amazon Performance Insights}
 in the \emph{Amazon RDS User Guide}.}
 
 \item{PerformanceInsightsKMSKeyId}{The AWS KMS key identifier for encryption of Performance Insights data.
@@ -244,7 +244,7 @@ values are 7 or 731 (2 years).}
 
 \item{EnableCloudwatchLogsExports}{The list of logs that the new DB instance is to export to CloudWatch
 Logs. The values in the list depend on the DB engine being used. For
-more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
+more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
 in the \emph{Amazon RDS User Guide}.}
 
 \item{ProcessorFeatures}{The number of CPU cores and the number of threads per core for the DB
@@ -255,7 +255,7 @@ uses its default processor features.}
 
 \item{DeletionProtection}{Indicates if the DB instance should have deletion protection enabled.
 The database can't be deleted when this value is set to true. The
-default is false. For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
+default is false. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
 
 \item{SourceRegion}{The ID of the region that contains the source for the read replica.}
 }
@@ -263,7 +263,7 @@ default is false. For more information, see \href{http://docs.aws.amazon.com/Ama
 Creates a new DB instance that acts as a Read Replica for an existing
 source DB instance. You can create a Read Replica for a DB instance
 running MySQL, MariaDB, or PostgreSQL. For more information, see
-\href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html}{Working with PostgreSQL, MySQL, and MariaDB Read Replicas}
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html}{Working with PostgreSQL, MySQL, and MariaDB Read Replicas}
 in the \emph{Amazon RDS User Guide}.
 }
 \details{

@@ -30,6 +30,10 @@ the \code{TranscriptFileUri} field. The S3 bucket must have permissions that
 allow Amazon Transcribe to put files in the bucket. For more
 information, see \href{https://docs.aws.amazon.com/transcribe/latest/dg/access-control-managing-permissions.html#auth-role-iam-user}{Permissions Required for IAM User Roles}.
 
+Amazon Transcribe uses the default Amazon S3 key for server-side
+encryption of transcripts that are placed in your S3 bucket. You can't
+specify your own encryption key.
+
 If you don't set the \code{OutputBucketName}, Amazon Transcribe generates a
 pre-signed URL, a shareable URL that provides secure access to your
 transcription, and returns it in the \code{TranscriptFileUri} field. Use this
@@ -44,7 +48,7 @@ Starts an asynchronous job to transcribe speech to text.
 \section{Request syntax}{
 \preformatted{transcribeservice$start_transcription_job(
   TranscriptionJobName = "string",
-  LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT",
+  LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR",
   MediaSampleRateHertz = 123,
   MediaFormat = "mp3"|"mp4"|"wav"|"flac",
   Media = list(

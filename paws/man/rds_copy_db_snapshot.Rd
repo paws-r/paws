@@ -113,8 +113,8 @@ like the following example:
 }
 
 To learn how to generate a Signature Version 4 signed request, see
-\href{http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html}{Authenticating Requests: Using Query Parameters (AWS Signature Version 4)}
-and \href{http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4 Signing Process}.
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html}{Authenticating Requests: Using Query Parameters (AWS Signature Version 4)}
+and \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4 Signing Process}.
 
 If you supply a value for this operation's \code{SourceRegion} parameter, a
 pre-signed URL will be calculated on your behalf.}
@@ -125,7 +125,7 @@ Specify this option if you are copying a snapshot from one AWS Region to
 another, and your DB instance uses a nondefault option group. If your
 source DB instance uses Transparent Data Encryption for Oracle or
 Microsoft SQL Server, you must specify this option when copying across
-AWS Regions. For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopySnapshot.Options}{Option Group Considerations}
+AWS Regions. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopySnapshot.Options}{Option Group Considerations}
 in the \emph{Amazon RDS User Guide.}}
 
 \item{SourceRegion}{The ID of the region that contains the snapshot to be copied.}
@@ -139,7 +139,7 @@ You can copy a snapshot from one AWS Region to another. In that case,
 the AWS Region where you call the \code{CopyDBSnapshot} action is the
 destination AWS Region for the DB snapshot copy.
 
-For more information about copying snapshots, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopyDBSnapshot.html}{Copying a DB Snapshot}
+For more information about copying snapshots, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopyDBSnapshot.html}{Copying a DB Snapshot}
 in the \emph{Amazon RDS User Guide.}
 }
 \section{Request syntax}{

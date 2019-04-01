@@ -26,6 +26,8 @@ snapshot is public and can be copied or restored by all AWS accounts.
 To add or remove access for an AWS account to copy or restore a manual
 DB cluster snapshot, or to make the manual DB cluster snapshot public or
 private, use the ModifyDBClusterSnapshotAttribute API action.
+
+This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
 \preformatted{rds$describe_db_cluster_snapshot_attributes(

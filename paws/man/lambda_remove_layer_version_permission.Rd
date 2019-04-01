@@ -20,7 +20,7 @@ this option to avoid modifying a policy that has changed since you last
 read it.}
 }
 \description{
-Removes a statement from the permissions policy for a version of an \href{http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layer}.
+Removes a statement from the permissions policy for a version of an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layer}.
 For more information, see AddLayerVersionPermission.
 }
 \section{Request syntax}{

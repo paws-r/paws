@@ -18,7 +18,7 @@ response contains a list of tag key-value pairs.
 }
 \details{
 Currently, Elastic Beanstalk only supports tagging of Elastic Beanstalk
-environments. For details about environment tagging, see \href{http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.tagging.html}{Tagging Resources in Your Elastic Beanstalk Environment}.
+environments. For details about environment tagging, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.tagging.html}{Tagging Resources in Your Elastic Beanstalk Environment}.
 }
 \section{Request syntax}{
 \preformatted{elasticbeanstalk$list_tags_for_resource(

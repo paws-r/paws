@@ -13,8 +13,9 @@ appmesh_delete_mesh(meshName)
 Deletes an existing service mesh.
 }
 \details{
-You must delete all resources (routes, virtual routers, virtual nodes)
-in the service mesh before you can delete the mesh itself.
+You must delete all resources (virtual services, routes, virtual
+routers, and virtual nodes) in the service mesh before you can delete
+the mesh itself.
 }
 \section{Request syntax}{
 \preformatted{appmesh$delete_mesh(

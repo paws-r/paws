@@ -29,7 +29,7 @@ RemovePermission.}
 
 \item{Condition}{This parameter enables you to limit the permission to accounts that
 fulfill a certain condition, such as being a member of a certain AWS
-organization. For more information about AWS Organizations, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html}{What Is AWS Organizations}
+organization. For more information about AWS Organizations, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html}{What Is AWS Organizations}
 in the \emph{AWS Organizations User Guide}.
 
 If you specify \code{Condition} with an AWS organization ID, and specify
@@ -60,7 +60,7 @@ in that organization.
 If you grant permissions using an organization, then accounts in that
 organization must specify a \code{RoleArn} with proper permissions when they
 use \code{PutTarget} to add your account's event bus as a target. For more
-information, see \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEvents-CrossAccountEventDelivery.html}{Sending and Receiving Events Between AWS Accounts}
+information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEvents-CrossAccountEventDelivery.html}{Sending and Receiving Events Between AWS Accounts}
 in the \emph{Amazon CloudWatch Events User Guide}.
 
 The permission policy on the default event bus cannot exceed 10 KB in

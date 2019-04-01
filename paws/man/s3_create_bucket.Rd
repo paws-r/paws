@@ -51,11 +51,6 @@ Creates a new bucket.
 }
 
 \examples{
-# The following example creates a bucket.
-\donttest{s3$create_bucket(
-  Bucket = "examplebucket"
-)}
-
 # The following example creates a bucket. The request specifies an AWS
 # region where to create the bucket.
 \donttest{s3$create_bucket(
@@ -63,6 +58,11 @@ Creates a new bucket.
   CreateBucketConfiguration = list(
     LocationConstraint = "eu-west-1"
   )
+)}
+
+# The following example creates a bucket.
+\donttest{s3$create_bucket(
+  Bucket = "examplebucket"
 )}
 
 }

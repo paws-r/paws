@@ -10,13 +10,13 @@ mediaconvert_list_job_templates(Category, ListBy, MaxResults, NextToken,
 \arguments{
 \item{Category}{Optionally, specify a job template category to limit responses to only job templates from that category.}
 
-\item{ListBy}{}
+\item{ListBy}{Optional. When you request a list of job templates, you can choose to list them alphabetically by NAME or chronologically by CREATION_DATE. If you don't specify, the service will list them by name.}
 
 \item{MaxResults}{Optional. Number of job templates, up to twenty, that will be returned at one time.}
 
 \item{NextToken}{Use this string, provided with the response to a previous request, to request the next batch of job templates.}
 
-\item{Order}{}
+\item{Order}{When you request lists of resources, you can optionally specify whether they are sorted in ASCENDING or DESCENDING order. Default varies by resource.}
 }
 \description{
 Retrieve a JSON array of up to twenty of your job templates. This will return the templates themselves, not just a list of them. To retrieve the next twenty templates, use the nextToken string returned with the array

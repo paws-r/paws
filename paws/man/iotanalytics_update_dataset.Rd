@@ -5,7 +5,7 @@
 \title{Updates the settings of a data set}
 \usage{
 iotanalytics_update_dataset(datasetName, actions, triggers,
-  contentDeliveryRules, retentionPeriod)
+  contentDeliveryRules, retentionPeriod, versioningConfiguration)
 }
 \arguments{
 \item{datasetName}{[required] The name of the data set to update.}
@@ -18,7 +18,14 @@ contain up to five \strong{DataSetTrigger} objects.}
 \item{contentDeliveryRules}{When data set contents are created they are delivered to destinations
 specified here.}
 
-\item{retentionPeriod}{How long, in days, message data is kept for the data set.}
+\item{retentionPeriod}{How long, in days, data set contents are kept for the data set.}
+
+\item{versioningConfiguration}{[Optional] How many versions of data set contents are kept. If not
+specified or set to null, only the latest version plus the latest
+succeeded version (if they are different) are kept for the time period
+specified by the "retentionPeriod" parameter. (For more information,
+see
+https://docs.aws.amazon.com/iotanalytics/latest/userguide/getting-started.html\#aws-iot-analytics-dataset-versions)}
 }
 \description{
 Updates the settings of a data set.
@@ -87,6 +94,10 @@ Updates the settings of a data set.
   retentionPeriod = list(
     unlimited = TRUE|FALSE,
     numberOfDays = 123
+  ),
+  versioningConfiguration = list(
+    unlimited = TRUE|FALSE,
+    maxVersions = 123
   )
 )
 }

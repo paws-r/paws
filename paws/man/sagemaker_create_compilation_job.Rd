@@ -75,7 +75,7 @@ compilation jobs, use ListCompilationJobs.
   ),
   OutputConfig = list(
     S3OutputLocation = "string",
-    TargetDevice = "ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"jetson_tx1"|"jetson_tx2"|"rasp3b"|"deeplens"
+    TargetDevice = "ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"jetson_tx1"|"jetson_tx2"|"rasp3b"|"deeplens"|"rk3399"|"rk3288"
   ),
   StoppingCondition = list(
     MaxRuntimeInSeconds = 123

@@ -15,7 +15,7 @@ Returns a description of a notebook instance lifecycle configuration.
 }
 \details{
 For information about notebook instance lifestyle configurations, see
-\href{http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html}{Step 2.1: (Optional) Customize a Notebook Instance}.
+\href{https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html}{Step 2.1: (Optional) Customize a Notebook Instance}.
 }
 \section{Request syntax}{
 \preformatted{sagemaker$describe_notebook_instance_lifecycle_config(

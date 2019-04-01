@@ -18,7 +18,7 @@ NULL
 #' @usage
 #' storagegateway_activate_gateway(ActivationKey, GatewayName,
 #'   GatewayTimezone, GatewayRegion, GatewayType, TapeDriveType,
-#'   MediumChangerType)
+#'   MediumChangerType, Tags)
 #'
 #' @param ActivationKey &#91;required&#93; Your gateway activation key. You can obtain the activation key by
 #' sending an HTTP GET request with redirects enabled to the gateway IP
@@ -43,13 +43,12 @@ NULL
 #' gateway region specified must be the same region as the region in your
 #' `Host` header in the request. For more information about available
 #' regions and endpoints for AWS Storage Gateway, see [Regions and
-#' Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region)
+#' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region)
 #' in the *Amazon Web Services Glossary*.
 #' 
-#' Valid Values: \"us-east-1\", \"us-east-2\", \"us-west-1\",
-#' \"us-west-2\", \"ca-central-1\", \"eu-west-1\", \"eu-central-1\",
-#' \"eu-west-2\", \"eu-west-3\", \"ap-northeast-1\", \"ap-northeast-2\",
-#' \"ap-southeast-1\", \"ap-southeast-2\", \"ap-south-1\", \"sa-east-1\"
+#' Valid Values: See [AWS Storage Gateway Regions and
+#' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region)
+#' in the AWS General Reference.
 #' @param GatewayType A value that defines the type of gateway to activate. The type specified
 #' is critical to all later functions of the gateway and cannot be changed
 #' after activation. The default value is `CACHED`.
@@ -63,6 +62,13 @@ NULL
 #' gateway. This field is optional.
 #' 
 #' Valid Values: \"STK-L700\", \"AWS-Gateway-VTL\"
+#' @param Tags A list of up to 10 tags that can be assigned to the gateway. Each tag is
+#' a key-value pair.
+#' 
+#' Valid characters for key and value are letters, spaces, and numbers
+#' representable in UTF-8 format, and the following special characters: + -
+#' = . \\_ : / @. The maximum length of a tag\'s key is 128 characters, and
+#' the maximum length for a tag\'s value is 256.
 #'
 #' @section Request syntax:
 #' ```
@@ -73,7 +79,13 @@ NULL
 #'   GatewayRegion = "string",
 #'   GatewayType = "string",
 #'   TapeDriveType = "string",
-#'   MediumChangerType = "string"
+#'   MediumChangerType = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -92,14 +104,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname storagegateway_activate_gateway
-storagegateway_activate_gateway <- function(ActivationKey, GatewayName, GatewayTimezone, GatewayRegion, GatewayType = NULL, TapeDriveType = NULL, MediumChangerType = NULL) {
+storagegateway_activate_gateway <- function(ActivationKey, GatewayName, GatewayTimezone, GatewayRegion, GatewayType = NULL, TapeDriveType = NULL, MediumChangerType = NULL, Tags = NULL) {
   op <- new_operation(
     name = "ActivateGateway",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .storagegateway$activate_gateway_input(ActivationKey = ActivationKey, GatewayName = GatewayName, GatewayTimezone = GatewayTimezone, GatewayRegion = GatewayRegion, GatewayType = GatewayType, TapeDriveType = TapeDriveType, MediumChangerType = MediumChangerType)
+  input <- .storagegateway$activate_gateway_input(ActivationKey = ActivationKey, GatewayName = GatewayName, GatewayTimezone = GatewayTimezone, GatewayRegion = GatewayRegion, GatewayType = GatewayType, TapeDriveType = TapeDriveType, MediumChangerType = MediumChangerType, Tags = Tags)
   output <- .storagegateway$activate_gateway_output()
   svc <- .storagegateway$service()
   request <- new_request(svc, op, input, output)
@@ -113,7 +125,7 @@ storagegateway_activate_gateway <- function(ActivationKey, GatewayName, GatewayT
 #' Configures one or more gateway local disks as cache for a gateway. This
 #' operation is only supported in the cached volume, tape and file gateway
 #' type (see [Storage Gateway
-#' Concepts](http://docs.aws.amazon.com/storagegateway/latest/userguide/StorageGatewayConcepts.html)).
+#' Concepts](https://docs.aws.amazon.com/storagegateway/latest/userguide/StorageGatewayConcepts.html)).
 #' 
 #' In the request, you specify the gateway Amazon Resource Name (ARN) to
 #' which you want to add cache, and one or more disk IDs that you want to
@@ -123,7 +135,9 @@ storagegateway_activate_gateway <- function(ActivationKey, GatewayName, GatewayT
 #' storagegateway_add_cache(GatewayARN, DiskIds)
 #'
 #' @param GatewayARN &#91;required&#93; 
-#' @param DiskIds &#91;required&#93; 
+#' @param DiskIds &#91;required&#93; An array of strings that identify disks that are to be configured as
+#' working storage. Each string have a minimum length of 1 and maximum
+#' length of 300. You can get the disk IDs from the ListLocalDisks API.
 #'
 #' @section Request syntax:
 #' ```
@@ -175,13 +189,11 @@ storagegateway_add_cache <- function(GatewayARN, DiskIds) {
 #' 
 #' -   Storage gateways of all types
 #' 
-#' <!-- -->
+#' -   Storage volumes
 #' 
-#' -   Storage Volumes
+#' -   Virtual tapes
 #' 
-#' <!-- -->
-#' 
-#' -   Virtual Tapes
+#' -   NFS and SMB file shares
 #' 
 #' You can create a maximum of 10 tags for each resource. Virtual tapes and
 #' storage volumes that are recovered to a new gateway maintain their tags.
@@ -195,7 +207,8 @@ storagegateway_add_cache <- function(GatewayARN, DiskIds) {
 #' 
 #' Valid characters for key and value are letters, spaces, and numbers
 #' representable in UTF-8 format, and the following special characters: + -
-#' = . \\_ : / @.
+#' = . \\_ : / @. The maximum length of a tag\'s key is 128 characters, and
+#' the maximum length for a tag\'s value is 256.
 #'
 #' @section Request syntax:
 #' ```
@@ -256,7 +269,9 @@ storagegateway_add_tags_to_resource <- function(ResourceARN, Tags) {
 #' storagegateway_add_upload_buffer(GatewayARN, DiskIds)
 #'
 #' @param GatewayARN &#91;required&#93; 
-#' @param DiskIds &#91;required&#93; 
+#' @param DiskIds &#91;required&#93; An array of strings that identify disks that are to be configured as
+#' working storage. Each string have a minimum length of 1 and maximum
+#' length of 300. You can get the disk IDs from the ListLocalDisks API.
 #'
 #' @section Request syntax:
 #' ```
@@ -558,13 +573,16 @@ storagegateway_cancel_retrieval <- function(GatewayARN, TapeARN) {
 #' the new cached volume. Specify this field if you want to create the
 #' iSCSI storage volume from a snapshot otherwise do not include this
 #' field. To list snapshots for your account use
-#' [DescribeSnapshots](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html)
+#' [DescribeSnapshots](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html)
 #' in the *Amazon Elastic Compute Cloud API Reference*.
-#' @param TargetName &#91;required&#93; The name of the iSCSI target used by initiators to connect to the target
-#' and as a suffix for the target ARN. For example, specifying `TargetName`
-#' as *myvolume* results in the target ARN of
-#' arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume.
-#' The target name must be unique across all volumes of a gateway.
+#' @param TargetName &#91;required&#93; The name of the iSCSI target used by an initiator to connect to a volume
+#' and used as a suffix for the target ARN. For example, specifying
+#' `TargetName` as *myvolume* results in the target ARN of
+#' `arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume`.
+#' The target name must be unique across all volumes on a gateway.
+#' 
+#' If you don\'t specify a value, Storage Gateway uses the value that was
+#' previously used for this volume as the new target name.
 #' @param SourceVolumeARN The ARN for an existing volume. Specifying this ARN makes the new volume
 #' into an exact copy of the specified existing volume\'s latest recovery
 #' point. The `VolumeSizeInBytes` value for this new volume must be equal
@@ -651,7 +669,7 @@ storagegateway_create_cachedi_scsi_volume <- function(GatewayARN, VolumeSizeInBy
 #' storagegateway_create_nfs_file_share(ClientToken, NFSFileShareDefaults,
 #'   GatewayARN, KMSEncrypted, KMSKey, Role, LocationARN,
 #'   DefaultStorageClass, ObjectACL, ClientList, Squash, ReadOnly,
-#'   GuessMIMETypeEnabled, RequesterPays)
+#'   GuessMIMETypeEnabled, RequesterPays, Tags)
 #'
 #' @param ClientToken &#91;required&#93; A unique string value that you supply that is used by file gateway to
 #' ensure idempotent file share creation.
@@ -675,7 +693,8 @@ storagegateway_create_cachedi_scsi_volume <- function(GatewayARN, VolumeSizeInBy
 #' \"private\".
 #' @param ClientList The list of clients that are allowed to access the file gateway. The
 #' list must contain either valid IP addresses or valid CIDR blocks.
-#' @param Squash Maps a user to anonymous user. Valid options are the following:
+#' @param Squash A value that maps a user to anonymous user. Valid options are the
+#' following:
 #' 
 #' -   `RootSquash` - Only root is mapped to anonymous user.
 #' 
@@ -690,6 +709,13 @@ storagegateway_create_cachedi_scsi_volume <- function(GatewayARN, VolumeSizeInBy
 #' @param RequesterPays A value that sets the access control list permission for objects in the
 #' Amazon S3 bucket that a file gateway puts objects into. The default
 #' value is `private`.
+#' @param Tags A list of up to 10 tags that can be assigned to the NFS file share. Each
+#' tag is a key-value pair.
+#' 
+#' Valid characters for key and value are letters, spaces, and numbers
+#' representable in UTF-8 format, and the following special characters: + -
+#' = . \\_ : / @. The maximum length of a tag\'s key is 128 characters, and
+#' the maximum length for a tag\'s value is 256.
 #'
 #' @section Request syntax:
 #' ```
@@ -714,21 +740,27 @@ storagegateway_create_cachedi_scsi_volume <- function(GatewayARN, VolumeSizeInBy
 #'   Squash = "string",
 #'   ReadOnly = TRUE|FALSE,
 #'   GuessMIMETypeEnabled = TRUE|FALSE,
-#'   RequesterPays = TRUE|FALSE
+#'   RequesterPays = TRUE|FALSE,
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname storagegateway_create_nfs_file_share
-storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaults = NULL, GatewayARN, KMSEncrypted = NULL, KMSKey = NULL, Role, LocationARN, DefaultStorageClass = NULL, ObjectACL = NULL, ClientList = NULL, Squash = NULL, ReadOnly = NULL, GuessMIMETypeEnabled = NULL, RequesterPays = NULL) {
+storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaults = NULL, GatewayARN, KMSEncrypted = NULL, KMSKey = NULL, Role, LocationARN, DefaultStorageClass = NULL, ObjectACL = NULL, ClientList = NULL, Squash = NULL, ReadOnly = NULL, GuessMIMETypeEnabled = NULL, RequesterPays = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateNFSFileShare",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .storagegateway$create_nfs_file_share_input(ClientToken = ClientToken, NFSFileShareDefaults = NFSFileShareDefaults, GatewayARN = GatewayARN, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, Role = Role, LocationARN = LocationARN, DefaultStorageClass = DefaultStorageClass, ObjectACL = ObjectACL, ClientList = ClientList, Squash = Squash, ReadOnly = ReadOnly, GuessMIMETypeEnabled = GuessMIMETypeEnabled, RequesterPays = RequesterPays)
+  input <- .storagegateway$create_nfs_file_share_input(ClientToken = ClientToken, NFSFileShareDefaults = NFSFileShareDefaults, GatewayARN = GatewayARN, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, Role = Role, LocationARN = LocationARN, DefaultStorageClass = DefaultStorageClass, ObjectACL = ObjectACL, ClientList = ClientList, Squash = Squash, ReadOnly = ReadOnly, GuessMIMETypeEnabled = GuessMIMETypeEnabled, RequesterPays = RequesterPays, Tags = Tags)
   output <- .storagegateway$create_nfs_file_share_output()
   svc <- .storagegateway$service()
   request <- new_request(svc, op, input, output)
@@ -752,7 +784,7 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' AWS STS is not activated in this AWS Region, activate it. For
 #' information about how to activate AWS STS, see [Activating and
 #' Deactivating AWS STS in an AWS
-#' Region](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)
+#' Region](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)
 #' in the *AWS Identity and Access Management User Guide.*
 #' 
 #' File gateways don\'t support creating hard or symbolic links on a file
@@ -762,7 +794,7 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' storagegateway_create_smb_file_share(ClientToken, GatewayARN,
 #'   KMSEncrypted, KMSKey, Role, LocationARN, DefaultStorageClass, ObjectACL,
 #'   ReadOnly, GuessMIMETypeEnabled, RequesterPays, ValidUserList,
-#'   InvalidUserList, Authentication)
+#'   InvalidUserList, Authentication, Tags)
 #'
 #' @param ClientToken &#91;required&#93; A unique string value that you supply that is used by file gateway to
 #' ensure idempotent file share creation.
@@ -803,6 +835,13 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' 
 #' Valid values are `ActiveDirectory` or `GuestAccess`. The default is
 #' `ActiveDirectory`.
+#' @param Tags A list of up to 10 tags that can be assigned to the NFS file share. Each
+#' tag is a key-value pair.
+#' 
+#' Valid characters for key and value are letters, spaces, and numbers
+#' representable in UTF-8 format, and the following special characters: + -
+#' = . \\_ : / @. The maximum length of a tag\'s key is 128 characters, and
+#' the maximum length for a tag\'s value is 256.
 #'
 #' @section Request syntax:
 #' ```
@@ -824,21 +863,27 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #'   InvalidUserList = list(
 #'     "string"
 #'   ),
-#'   Authentication = "string"
+#'   Authentication = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname storagegateway_create_smb_file_share
-storagegateway_create_smb_file_share <- function(ClientToken, GatewayARN, KMSEncrypted = NULL, KMSKey = NULL, Role, LocationARN, DefaultStorageClass = NULL, ObjectACL = NULL, ReadOnly = NULL, GuessMIMETypeEnabled = NULL, RequesterPays = NULL, ValidUserList = NULL, InvalidUserList = NULL, Authentication = NULL) {
+storagegateway_create_smb_file_share <- function(ClientToken, GatewayARN, KMSEncrypted = NULL, KMSKey = NULL, Role, LocationARN, DefaultStorageClass = NULL, ObjectACL = NULL, ReadOnly = NULL, GuessMIMETypeEnabled = NULL, RequesterPays = NULL, ValidUserList = NULL, InvalidUserList = NULL, Authentication = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateSMBFileShare",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .storagegateway$create_smb_file_share_input(ClientToken = ClientToken, GatewayARN = GatewayARN, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, Role = Role, LocationARN = LocationARN, DefaultStorageClass = DefaultStorageClass, ObjectACL = ObjectACL, ReadOnly = ReadOnly, GuessMIMETypeEnabled = GuessMIMETypeEnabled, RequesterPays = RequesterPays, ValidUserList = ValidUserList, InvalidUserList = InvalidUserList, Authentication = Authentication)
+  input <- .storagegateway$create_smb_file_share_input(ClientToken = ClientToken, GatewayARN = GatewayARN, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, Role = Role, LocationARN = LocationARN, DefaultStorageClass = DefaultStorageClass, ObjectACL = ObjectACL, ReadOnly = ReadOnly, GuessMIMETypeEnabled = GuessMIMETypeEnabled, RequesterPays = RequesterPays, ValidUserList = ValidUserList, InvalidUserList = InvalidUserList, Authentication = Authentication, Tags = Tags)
   output <- .storagegateway$create_smb_file_share_output()
   svc <- .storagegateway$service()
   request <- new_request(svc, op, input, output)
@@ -858,7 +903,7 @@ storagegateway_create_smb_file_share <- function(ClientToken, GatewayARN, KMSEnc
 #' snapshots of your gateway volume on a scheduled or ad-hoc basis. This
 #' API enables you to take ad-hoc snapshot. For more information, see
 #' [Editing a Snapshot
-#' Schedule](http://docs.aws.amazon.com/storagegateway/latest/userguide/managing-volumes.html#SchedulingSnapshot).
+#' Schedule](https://docs.aws.amazon.com/storagegateway/latest/userguide/managing-volumes.html#SchedulingSnapshot).
 #' 
 #' In the CreateSnapshot request you identify the volume by providing its
 #' Amazon Resource Name (ARN). You must also provide description for the
@@ -871,11 +916,11 @@ storagegateway_create_smb_file_share <- function(ClientToken, GatewayARN, KMSEnc
 #' 
 #' To list or delete a snapshot, you must use the Amazon EC2 API. For more
 #' information, see DescribeSnapshots or DeleteSnapshot in the [EC2 API
-#' reference](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Operations.html).
+#' reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Operations.html).
 #' 
 #' Volume and snapshot IDs are changing to a longer length ID format. For
 #' more information, see the important note on the
-#' [Welcome](http://docs.aws.amazon.com/storagegateway/latest/APIReference/Welcome.html)
+#' [Welcome](https://docs.aws.amazon.com/storagegateway/latest/APIReference/Welcome.html)
 #' page.
 #'
 #' @usage
@@ -948,8 +993,13 @@ storagegateway_create_snapshot <- function(VolumeARN, SnapshotDescription) {
 #' storagegateway_create_snapshot_from_volume_recovery_point(VolumeARN,
 #'   SnapshotDescription)
 #'
-#' @param VolumeARN &#91;required&#93; 
-#' @param SnapshotDescription &#91;required&#93; 
+#' @param VolumeARN &#91;required&#93; The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
+#' DescribeStorediSCSIVolumes operation to return to retrieve the TargetARN
+#' for specified VolumeARN.
+#' @param SnapshotDescription &#91;required&#93; Textual description of the snapshot that appears in the Amazon EC2
+#' console, Elastic Block Store snapshots panel in the **Description**
+#' field, and in the AWS Storage Gateway snapshot **Details** pane,
+#' **Description** field
 #'
 #' @section Request syntax:
 #' ```
@@ -1009,23 +1059,26 @@ storagegateway_create_snapshot_from_volume_recovery_point <- function(VolumeARN,
 #' @param GatewayARN &#91;required&#93; 
 #' @param DiskId &#91;required&#93; The unique identifier for the gateway local disk that is configured as a
 #' stored volume. Use
-#' [ListLocalDisks](http://docs.aws.amazon.com/storagegateway/latest/userguide/API_ListLocalDisks.html)
+#' [ListLocalDisks](https://docs.aws.amazon.com/storagegateway/latest/userguide/API_ListLocalDisks.html)
 #' to list disk IDs for a gateway.
 #' @param SnapshotId The snapshot ID (e.g. \"snap-1122aabb\") of the snapshot to restore as
 #' the new stored volume. Specify this field if you want to create the
 #' iSCSI storage volume from a snapshot otherwise do not include this
 #' field. To list snapshots for your account use
-#' [DescribeSnapshots](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html)
+#' [DescribeSnapshots](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html)
 #' in the *Amazon Elastic Compute Cloud API Reference*.
 #' @param PreserveExistingData &#91;required&#93; Specify this field as true if you want to preserve the data on the local
 #' disk. Otherwise, specifying this field as false creates an empty volume.
 #' 
 #' Valid Values: true, false
-#' @param TargetName &#91;required&#93; The name of the iSCSI target used by initiators to connect to the target
-#' and as a suffix for the target ARN. For example, specifying `TargetName`
-#' as *myvolume* results in the target ARN of
-#' arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume.
-#' The target name must be unique across all volumes of a gateway.
+#' @param TargetName &#91;required&#93; The name of the iSCSI target used by an initiator to connect to a volume
+#' and used as a suffix for the target ARN. For example, specifying
+#' `TargetName` as *myvolume* results in the target ARN of
+#' `arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume`.
+#' The target name must be unique across all volumes on a gateway.
+#' 
+#' If you don\'t specify a value, Storage Gateway uses the value that was
+#' previously used for this volume as the new target name.
 #' @param NetworkInterfaceId &#91;required&#93; The network interface of the gateway on which to expose the iSCSI
 #' target. Only IPv4 addresses are accepted. Use DescribeGatewayInformation
 #' to get a list of the network interfaces available on a gateway.
@@ -1095,7 +1148,7 @@ storagegateway_create_storedi_scsi_volume <- function(GatewayARN, DiskId, Snapsh
 #'
 #' @usage
 #' storagegateway_create_tape_with_barcode(GatewayARN, TapeSizeInBytes,
-#'   TapeBarcode, KMSEncrypted, KMSKey)
+#'   TapeBarcode, KMSEncrypted, KMSKey, PoolId)
 #'
 #' @param GatewayARN &#91;required&#93; The unique Amazon Resource Name (ARN) that represents the gateway to
 #' associate the virtual tape with. Use the ListGateways operation to
@@ -1112,6 +1165,13 @@ storagegateway_create_storedi_scsi_volume <- function(GatewayARN, DiskId, Snapsh
 #' @param KMSKey The Amazon Resource Name (ARN) of the AWS KMS Key used for Amazon S3
 #' server side encryption. This value can only be set when KMSEncrypted is
 #' true. Optional.
+#' @param PoolId The ID of the pool that you want to add your tape to for archiving. The
+#' tape in this pool is archived in the S3 storage class that is associated
+#' with the pool. When you use your backup application to eject the tape,
+#' the tape is archived directly into the storage class (Glacier or Deep
+#' Archive) that corresponds to the pool.
+#' 
+#' Valid values: \"GLACIER\", \"DEEP\\_ARCHIVE\"
 #'
 #' @section Request syntax:
 #' ```
@@ -1120,7 +1180,8 @@ storagegateway_create_storedi_scsi_volume <- function(GatewayARN, DiskId, Snapsh
 #'   TapeSizeInBytes = 123,
 #'   TapeBarcode = "string",
 #'   KMSEncrypted = TRUE|FALSE,
-#'   KMSKey = "string"
+#'   KMSKey = "string",
+#'   PoolId = "string"
 #' )
 #' ```
 #'
@@ -1135,14 +1196,14 @@ storagegateway_create_storedi_scsi_volume <- function(GatewayARN, DiskId, Snapsh
 #' @keywords internal
 #'
 #' @rdname storagegateway_create_tape_with_barcode
-storagegateway_create_tape_with_barcode <- function(GatewayARN, TapeSizeInBytes, TapeBarcode, KMSEncrypted = NULL, KMSKey = NULL) {
+storagegateway_create_tape_with_barcode <- function(GatewayARN, TapeSizeInBytes, TapeBarcode, KMSEncrypted = NULL, KMSKey = NULL, PoolId = NULL) {
   op <- new_operation(
     name = "CreateTapeWithBarcode",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .storagegateway$create_tape_with_barcode_input(GatewayARN = GatewayARN, TapeSizeInBytes = TapeSizeInBytes, TapeBarcode = TapeBarcode, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey)
+  input <- .storagegateway$create_tape_with_barcode_input(GatewayARN = GatewayARN, TapeSizeInBytes = TapeSizeInBytes, TapeBarcode = TapeBarcode, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, PoolId = PoolId)
   output <- .storagegateway$create_tape_with_barcode_output()
   svc <- .storagegateway$service()
   request <- new_request(svc, op, input, output)
@@ -1163,7 +1224,7 @@ storagegateway_create_tape_with_barcode <- function(GatewayARN, TapeSizeInBytes,
 #'
 #' @usage
 #' storagegateway_create_tapes(GatewayARN, TapeSizeInBytes, ClientToken,
-#'   NumTapesToCreate, TapeBarcodePrefix, KMSEncrypted, KMSKey)
+#'   NumTapesToCreate, TapeBarcodePrefix, KMSEncrypted, KMSKey, PoolId)
 #'
 #' @param GatewayARN &#91;required&#93; The unique Amazon Resource Name (ARN) that represents the gateway to
 #' associate the virtual tapes with. Use the ListGateways operation to
@@ -1187,6 +1248,13 @@ storagegateway_create_tape_with_barcode <- function(GatewayARN, TapeSizeInBytes,
 #' @param KMSKey The Amazon Resource Name (ARN) of the AWS KMS key used for Amazon S3
 #' server side encryption. This value can only be set when KMSEncrypted is
 #' true. Optional.
+#' @param PoolId The ID of the pool that you want to add your tape to for archiving. The
+#' tape in this pool is archived in the S3 storage class you chose when you
+#' created the tape. When you use your backup application to eject the
+#' tape, the tape is archived directly into the storage class (Glacier or
+#' Deep Archive).
+#' 
+#' Valid values: \"GLACIER\", \"DEEP\\_ARCHIVE\"
 #'
 #' @section Request syntax:
 #' ```
@@ -1197,7 +1265,8 @@ storagegateway_create_tape_with_barcode <- function(GatewayARN, TapeSizeInBytes,
 #'   NumTapesToCreate = 123,
 #'   TapeBarcodePrefix = "string",
 #'   KMSEncrypted = TRUE|FALSE,
-#'   KMSKey = "string"
+#'   KMSKey = "string",
+#'   PoolId = "string"
 #' )
 #' ```
 #'
@@ -1214,14 +1283,14 @@ storagegateway_create_tape_with_barcode <- function(GatewayARN, TapeSizeInBytes,
 #' @keywords internal
 #'
 #' @rdname storagegateway_create_tapes
-storagegateway_create_tapes <- function(GatewayARN, TapeSizeInBytes, ClientToken, NumTapesToCreate, TapeBarcodePrefix, KMSEncrypted = NULL, KMSKey = NULL) {
+storagegateway_create_tapes <- function(GatewayARN, TapeSizeInBytes, ClientToken, NumTapesToCreate, TapeBarcodePrefix, KMSEncrypted = NULL, KMSKey = NULL, PoolId = NULL) {
   op <- new_operation(
     name = "CreateTapes",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .storagegateway$create_tapes_input(GatewayARN = GatewayARN, TapeSizeInBytes = TapeSizeInBytes, ClientToken = ClientToken, NumTapesToCreate = NumTapesToCreate, TapeBarcodePrefix = TapeBarcodePrefix, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey)
+  input <- .storagegateway$create_tapes_input(GatewayARN = GatewayARN, TapeSizeInBytes = TapeSizeInBytes, ClientToken = ClientToken, NumTapesToCreate = NumTapesToCreate, TapeBarcodePrefix = TapeBarcodePrefix, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, PoolId = PoolId)
   output <- .storagegateway$create_tapes_output()
   svc <- .storagegateway$service()
   request <- new_request(svc, op, input, output)
@@ -1439,7 +1508,7 @@ storagegateway_delete_gateway <- function(GatewayARN) {
 #' You can take snapshots of your gateway volumes on a scheduled or ad hoc
 #' basis. This API action enables you to delete a snapshot schedule for a
 #' volume. For more information, see [Working with
-#' Snapshots](http://docs.aws.amazon.com/storagegateway/latest/userguide/WorkingWithSnapshots.html).
+#' Snapshots](https://docs.aws.amazon.com/storagegateway/latest/userguide/WorkingWithSnapshots.html).
 #' In the `DeleteSnapshotSchedule` request, you identify the volume by
 #' providing its Amazon Resource Name (ARN). This operation is only
 #' supported in stored and cached volume gateway types.
@@ -1450,7 +1519,7 @@ storagegateway_delete_gateway <- function(GatewayARN) {
 #' @usage
 #' storagegateway_delete_snapshot_schedule(VolumeARN)
 #'
-#' @param VolumeARN &#91;required&#93; 
+#' @param VolumeARN &#91;required&#93; The volume which snapshot schedule to delete.
 #'
 #' @section Request syntax:
 #' ```
@@ -1589,7 +1658,7 @@ storagegateway_delete_tape_archive <- function(TapeARN) {
 #' snapshot in progress. You can use the Amazon Elastic Compute Cloud
 #' (Amazon EC2) API to query snapshots on the volume you are deleting and
 #' check the snapshot status. For more information, go to
-#' [DescribeSnapshots](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html)
+#' [DescribeSnapshots](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html)
 #' in the *Amazon Elastic Compute Cloud API Reference*.
 #' 
 #' In the request, you must provide the Amazon Resource Name (ARN) of the
@@ -1740,7 +1809,9 @@ storagegateway_describe_cache <- function(GatewayARN) {
 #' @usage
 #' storagegateway_describe_cachedi_scsi_volumes(VolumeARNs)
 #'
-#' @param VolumeARNs &#91;required&#93; 
+#' @param VolumeARNs &#91;required&#93; An array of strings where each string represents the Amazon Resource
+#' Name (ARN) of a cached volume. All of the specified cached volumes must
+#' from the same gateway. Use ListVolumes to get volume ARNs for a gateway.
 #'
 #' @section Request syntax:
 #' ```
@@ -3753,7 +3824,7 @@ storagegateway_update_chap_credentials <- function(TargetARN, SecretToAuthentica
 #'
 #' @param GatewayARN &#91;required&#93; 
 #' @param GatewayName 
-#' @param GatewayTimezone 
+#' @param GatewayTimezone A value that indicates the time zone of the gateway.
 #'
 #' @section Request syntax:
 #' ```
@@ -3807,9 +3878,9 @@ storagegateway_update_gateway_information <- function(GatewayARN, GatewayName = 
 #' your iSCSI Initiators\' timeouts. For more information about increasing
 #' iSCSI Initiator timeouts for Windows and Linux, see [Customizing Your
 #' Windows iSCSI
-#' Settings](http://docs.aws.amazon.com/storagegateway/latest/userguide/ConfiguringiSCSIClientInitiatorWindowsClient.html#CustomizeWindowsiSCSISettings)
+#' Settings](https://docs.aws.amazon.com/storagegateway/latest/userguide/ConfiguringiSCSIClientInitiatorWindowsClient.html#CustomizeWindowsiSCSISettings)
 #' and [Customizing Your Linux iSCSI
-#' Settings](http://docs.aws.amazon.com/storagegateway/latest/userguide/ConfiguringiSCSIClientInitiatorRedHatClient.html#CustomizeLinuxiSCSISettings),
+#' Settings](https://docs.aws.amazon.com/storagegateway/latest/userguide/ConfiguringiSCSIClientInitiatorRedHatClient.html#CustomizeLinuxiSCSISettings),
 #' respectively.
 #'
 #' @usage
@@ -4027,7 +4098,7 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
 #' AWS STS is not activated in this AWS Region, activate it. For
 #' information about how to activate AWS STS, see [Activating and
 #' Deactivating AWS STS in an AWS
-#' Region](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)
+#' Region](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)
 #' in the *AWS Identity and Access Management User Guide.*
 #' 
 #' File gateways don\'t support creating hard or symbolic links on a file

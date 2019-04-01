@@ -82,10 +82,11 @@ marketplacemetering_batch_meter_usage <- function(UsageRecords, ProductCode) {
 #' portions of the timestamp will be ignored.
 #' @param UsageDimension &#91;required&#93; It will be one of the fcp dimension name provided during the publishing
 #' of the product.
-#' @param UsageQuantity &#91;required&#93; Consumption value for the hour.
-#' @param DryRun &#91;required&#93; Checks whether you have the permissions required for the action, but
+#' @param UsageQuantity Consumption value for the hour. Defaults to `0` if not specified.
+#' @param DryRun Checks whether you have the permissions required for the action, but
 #' does not make the request. If you have the permissions, the request
 #' returns DryRunOperation; otherwise, it returns UnauthorizedException.
+#' Defaults to `false` if not specified.
 #'
 #' @section Request syntax:
 #' ```
@@ -103,7 +104,7 @@ marketplacemetering_batch_meter_usage <- function(UsageRecords, ProductCode) {
 #' @keywords internal
 #'
 #' @rdname marketplacemetering_meter_usage
-marketplacemetering_meter_usage <- function(ProductCode, Timestamp, UsageDimension, UsageQuantity, DryRun) {
+marketplacemetering_meter_usage <- function(ProductCode, Timestamp, UsageDimension, UsageQuantity = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "MeterUsage",
     http_method = "POST",

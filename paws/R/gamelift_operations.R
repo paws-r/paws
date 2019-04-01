@@ -164,29 +164,22 @@ gamelift_create_alias <- function(Name, Description = NULL, RoutingStrategy) {
 #' Amazon Simple Storage Service (Amazon S3) location.
 #' 
 #' Game server binaries must be combined into a `.zip` file for use with
-#' Amazon GameLift. See [Uploading Your
-#' Game](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html)
-#' for more information.
+#' Amazon GameLift.
 #' 
 #' To create new builds quickly and easily, use the AWS CLI command
 #' **[upload-build](https://docs.aws.amazon.com/cli/latest/reference/gamelift/upload-build.html)**
 #' . This helper command uploads your build and creates a new build record
-#' in one step, and automatically handles the necessary permissions. See
-#' [Upload Build Files to Amazon
-#' GameLift](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html)
-#' for more help.
+#' in one step, and automatically handles the necessary permissions.
 #' 
 #' The `CreateBuild` operation should be used only when you need to
 #' manually upload your build files, as in the following scenarios:
 #' 
 #' -   Store a build file in an Amazon S3 bucket under your own AWS
 #'     account. To use this option, you must first give Amazon GameLift
-#'     access to that Amazon S3 bucket. See [Create a Build with Files in
-#'     Amazon
-#'     S3](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build)
-#'     for detailed help. To create a new build record using files in your
-#'     Amazon S3 bucket, call `CreateBuild` and specify a build name,
-#'     operating system, and the storage location of your game build.
+#'     access to that Amazon S3 bucket. To create a new build record using
+#'     files in your Amazon S3 bucket, call `CreateBuild` and specify a
+#'     build name, operating system, and the storage location of your game
+#'     build.
 #' 
 #' -   Upload a build file directly to Amazon GameLift\'s Amazon S3
 #'     account. To use this option, you first call `CreateBuild` with a
@@ -202,6 +195,16 @@ gamelift_create_alias <- function(Name, Description = NULL, RoutingStrategy) {
 #' build ID and places it in `INITIALIZED` status. You can use
 #' DescribeBuild to check the status of your build. A build must be in
 #' `READY` status before it can be used to create fleets.
+#' 
+#' **Learn more**
+#' 
+#' [Uploading Your
+#' Game](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html)
+#' 
+#' [Create a Build with Files in Amazon
+#' S3](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build)
+#' 
+#' **Related operations**
 #' 
 #' -   CreateBuild
 #' 
@@ -306,7 +309,7 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #' 
 #' **Learn more**
 #' 
-#' See Amazon GameLift Developer Guide topics in [Working with
+#' [Working with
 #' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
 #' 
 #' **Related operations**
@@ -354,7 +357,7 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #'   ServerLaunchParameters, LogPaths, EC2InstanceType,
 #'   EC2InboundPermissions, NewGameSessionProtectionPolicy,
 #'   RuntimeConfiguration, ResourceCreationLimitPolicy, MetricGroups,
-#'   PeerVpcAwsAccountId, PeerVpcId, FleetType)
+#'   PeerVpcAwsAccountId, PeerVpcId, FleetType, InstanceRoleArn)
 #'
 #' @param Name &#91;required&#93; Descriptive label that is associated with a fleet. Fleet names do not
 #' need to be unique.
@@ -437,6 +440,14 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #' can be interrupted (with a two-minute notification). Learn more about
 #' Amazon GameLift spot instances with at [Set up Access to External
 #' Services](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-credentials.html).
+#' @param InstanceRoleArn Unique identifier for an AWS IAM role that manages access to your AWS
+#' services. Any application that runs on an instance in this fleet can
+#' assume the role, including install scripts, server processs, daemons
+#' (background processes). Create a role or look up a role\'s ARN using the
+#' [IAM dashboard](https://console.aws.amazon.com/iam/) in the AWS
+#' Management Console. Learn more about using on-box credentials for your
+#' game servers at [Access external resources from a game
+#' server](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-resources.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -479,21 +490,22 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #'   ),
 #'   PeerVpcAwsAccountId = "string",
 #'   PeerVpcId = "string",
-#'   FleetType = "ON_DEMAND"|"SPOT"
+#'   FleetType = "ON_DEMAND"|"SPOT",
+#'   InstanceRoleArn = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname gamelift_create_fleet
-gamelift_create_fleet <- function(Name, Description = NULL, BuildId, ServerLaunchPath = NULL, ServerLaunchParameters = NULL, LogPaths = NULL, EC2InstanceType, EC2InboundPermissions = NULL, NewGameSessionProtectionPolicy = NULL, RuntimeConfiguration = NULL, ResourceCreationLimitPolicy = NULL, MetricGroups = NULL, PeerVpcAwsAccountId = NULL, PeerVpcId = NULL, FleetType = NULL) {
+gamelift_create_fleet <- function(Name, Description = NULL, BuildId, ServerLaunchPath = NULL, ServerLaunchParameters = NULL, LogPaths = NULL, EC2InstanceType, EC2InboundPermissions = NULL, NewGameSessionProtectionPolicy = NULL, RuntimeConfiguration = NULL, ResourceCreationLimitPolicy = NULL, MetricGroups = NULL, PeerVpcAwsAccountId = NULL, PeerVpcId = NULL, FleetType = NULL, InstanceRoleArn = NULL) {
   op <- new_operation(
     name = "CreateFleet",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .gamelift$create_fleet_input(Name = Name, Description = Description, BuildId = BuildId, ServerLaunchPath = ServerLaunchPath, ServerLaunchParameters = ServerLaunchParameters, LogPaths = LogPaths, EC2InstanceType = EC2InstanceType, EC2InboundPermissions = EC2InboundPermissions, NewGameSessionProtectionPolicy = NewGameSessionProtectionPolicy, RuntimeConfiguration = RuntimeConfiguration, ResourceCreationLimitPolicy = ResourceCreationLimitPolicy, MetricGroups = MetricGroups, PeerVpcAwsAccountId = PeerVpcAwsAccountId, PeerVpcId = PeerVpcId, FleetType = FleetType)
+  input <- .gamelift$create_fleet_input(Name = Name, Description = Description, BuildId = BuildId, ServerLaunchPath = ServerLaunchPath, ServerLaunchParameters = ServerLaunchParameters, LogPaths = LogPaths, EC2InstanceType = EC2InstanceType, EC2InboundPermissions = EC2InboundPermissions, NewGameSessionProtectionPolicy = NewGameSessionProtectionPolicy, RuntimeConfiguration = RuntimeConfiguration, ResourceCreationLimitPolicy = ResourceCreationLimitPolicy, MetricGroups = MetricGroups, PeerVpcAwsAccountId = PeerVpcAwsAccountId, PeerVpcId = PeerVpcId, FleetType = FleetType, InstanceRoleArn = InstanceRoleArn)
   output <- .gamelift$create_fleet_output()
   svc <- .gamelift$service()
   request <- new_request(svc, op, input, output)
@@ -1345,6 +1357,13 @@ gamelift_delete_alias <- function(AliasId) {
 #' status of any active fleets using the build, but you can no longer
 #' create new fleets with the deleted build.
 #' 
+#' **Learn more**
+#' 
+#' [Working with
+#' Builds](https://docs.aws.amazon.com/gamelift/latest/developerguide/build-intro.html)
+#' 
+#' **Related operations**
+#' 
 #' -   CreateBuild
 #' 
 #' -   ListBuilds
@@ -1393,6 +1412,13 @@ gamelift_delete_build <- function(BuildId) {
 #' 
 #' This action removes the fleet\'s resources and the fleet record. Once a
 #' fleet is deleted, you can no longer use that fleet.
+#' 
+#' **Learn more**
+#' 
+#' [Working with
+#' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
+#' 
+#' **Related operations**
 #' 
 #' -   CreateFleet
 #' 
@@ -1868,6 +1894,13 @@ gamelift_describe_alias <- function(AliasId) {
 #' build ID. If successful, an object containing the build properties is
 #' returned.
 #' 
+#' **Learn more**
+#' 
+#' [Working with
+#' Builds](https://docs.aws.amazon.com/gamelift/latest/developerguide/build-intro.html)
+#' 
+#' **Related operations**
+#' 
 #' -   CreateBuild
 #' 
 #' -   ListBuilds
@@ -1923,6 +1956,13 @@ gamelift_describe_build <- function(BuildId) {
 #' Service limits vary depending on region. Available regions for Amazon
 #' GameLift can be found in the AWS Management Console for Amazon GameLift
 #' (see the drop-down list in the upper right corner).
+#' 
+#' **Learn more**
+#' 
+#' [Working with
+#' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
+#' 
+#' **Related operations**
 #' 
 #' -   CreateFleet
 #' 
@@ -2014,6 +2054,13 @@ gamelift_describe_ec2_instance_limits <- function(EC2InstanceType = NULL) {
 #' Some API actions may limit the number of fleet IDs allowed in one
 #' request. If a request exceeds this limit, the request fails and the
 #' error message includes the maximum allowed.
+#' 
+#' **Learn more**
+#' 
+#' [Working with
+#' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
+#' 
+#' **Related operations**
 #' 
 #' -   CreateFleet
 #' 
@@ -2113,6 +2160,13 @@ gamelift_describe_fleet_attributes <- function(FleetIds = NULL, Limit = NULL, Ne
 #' request. If a request exceeds this limit, the request fails and the
 #' error message includes the maximum allowed.
 #' 
+#' **Learn more**
+#' 
+#' [Working with
+#' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
+#' 
+#' **Related operations**
+#' 
 #' -   CreateFleet
 #' 
 #' -   ListFleets
@@ -2202,6 +2256,13 @@ gamelift_describe_fleet_capacity <- function(FleetIds = NULL, Limit = NULL, Next
 #' a time range to limit the result set. Use the pagination parameters to
 #' retrieve results as a set of sequential pages. If successful, a
 #' collection of event log entries matching the request are returned.
+#' 
+#' **Learn more**
+#' 
+#' [Working with
+#' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
+#' 
+#' **Related operations**
 #' 
 #' -   CreateFleet
 #' 
@@ -2304,6 +2365,13 @@ gamelift_describe_fleet_events <- function(FleetId, StartTime = NULL, EndTime = 
 #' requested fleet ID. If the requested fleet has been deleted, the result
 #' set is empty.
 #' 
+#' **Learn more**
+#' 
+#' [Working with
+#' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
+#' 
+#' **Related operations**
+#' 
 #' -   CreateFleet
 #' 
 #' -   ListFleets
@@ -2386,6 +2454,13 @@ gamelift_describe_fleet_port_settings <- function(FleetId) {
 #' Some API actions may limit the number of fleet IDs allowed in one
 #' request. If a request exceeds this limit, the request fails and the
 #' error message includes the maximum allowed.
+#' 
+#' **Learn more**
+#' 
+#' [Working with
+#' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
+#' 
+#' **Related operations**
 #' 
 #' -   CreateFleet
 #' 
@@ -3111,6 +3186,13 @@ gamelift_describe_player_sessions <- function(GameSessionId = NULL, PlayerId = N
 #' The run-time configuration tells Amazon GameLift how to launch server
 #' processes on instances in the fleet.
 #' 
+#' **Learn more**
+#' 
+#' [Working with
+#' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
+#' 
+#' **Related operations**
+#' 
 #' -   CreateFleet
 #' 
 #' -   ListFleets
@@ -3585,6 +3667,13 @@ gamelift_list_aliases <- function(RoutingStrategyType = NULL, Name = NULL, Limit
 #' 
 #' Build records are not listed in any particular order.
 #' 
+#' **Learn more**
+#' 
+#' [Working with
+#' Builds](https://docs.aws.amazon.com/gamelift/latest/developerguide/build-intro.html)
+#' 
+#' **Related operations**
+#' 
 #' -   CreateBuild
 #' 
 #' -   ListBuilds
@@ -3654,6 +3743,13 @@ gamelift_list_builds <- function(Status = NULL, Limit = NULL, NextToken = NULL) 
 #' retrieve results in sequential pages.
 #' 
 #' Fleet records are not listed in any particular order.
+#' 
+#' **Learn more**
+#' 
+#' [Working with
+#' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
+#' 
+#' **Related operations**
 #' 
 #' -   CreateFleet
 #' 
@@ -3964,6 +4060,23 @@ gamelift_put_scaling_policy <- function(Name, FleetId, ScalingAdjustment = NULL,
 #' initial `CreateBuild` request. If successful, a new set of credentials
 #' are returned, along with the S3 storage location associated with the
 #' build ID.
+#' 
+#' **Learn more**
+#' 
+#' [Uploading Your
+#' Game](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html)
+#' 
+#' **Related operations**
+#' 
+#' -   CreateBuild
+#' 
+#' -   ListBuilds
+#' 
+#' -   DescribeBuild
+#' 
+#' -   UpdateBuild
+#' 
+#' -   DeleteBuild
 #'
 #' @usage
 #' gamelift_request_upload_credentials(BuildId)
@@ -4242,19 +4355,44 @@ gamelift_search_game_sessions <- function(FleetId = NULL, AliasId = NULL, Filter
 #' will have no effect. You can view a fleet\'s stopped actions using
 #' DescribeFleetAttributes.
 #' 
-#' -   DescribeFleetCapacity
+#' **Learn more**
 #' 
-#' -   UpdateFleetCapacity
+#' [Working with
+#' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
 #' 
-#' -   DescribeEC2InstanceLimits
+#' **Related operations**
 #' 
-#' -   Manage scaling policies:
+#' -   CreateFleet
 #' 
-#'     -   PutScalingPolicy (auto-scaling)
+#' -   ListFleets
 #' 
-#'     -   DescribeScalingPolicies (auto-scaling)
+#' -   DeleteFleet
 #' 
-#'     -   DeleteScalingPolicy (auto-scaling)
+#' -   Describe fleets:
+#' 
+#'     -   DescribeFleetAttributes
+#' 
+#'     -   DescribeFleetCapacity
+#' 
+#'     -   DescribeFleetPortSettings
+#' 
+#'     -   DescribeFleetUtilization
+#' 
+#'     -   DescribeRuntimeConfiguration
+#' 
+#'     -   DescribeEC2InstanceLimits
+#' 
+#'     -   DescribeFleetEvents
+#' 
+#' -   Update fleets:
+#' 
+#'     -   UpdateFleetAttributes
+#' 
+#'     -   UpdateFleetCapacity
+#' 
+#'     -   UpdateFleetPortSettings
+#' 
+#'     -   UpdateRuntimeConfiguration
 #' 
 #' -   Manage fleet actions:
 #' 
@@ -4724,6 +4862,51 @@ gamelift_start_matchmaking <- function(TicketId = NULL, ConfigurationName, Playe
 #' longer initiates scaling events except to maintain the fleet\'s desired
 #' instances setting (FleetCapacity. Changes to the fleet\'s capacity must
 #' be done manually using UpdateFleetCapacity.
+#' 
+#' **Learn more**
+#' 
+#' [Working with
+#' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
+#' 
+#' **Related operations**
+#' 
+#' -   CreateFleet
+#' 
+#' -   ListFleets
+#' 
+#' -   DeleteFleet
+#' 
+#' -   Describe fleets:
+#' 
+#'     -   DescribeFleetAttributes
+#' 
+#'     -   DescribeFleetCapacity
+#' 
+#'     -   DescribeFleetPortSettings
+#' 
+#'     -   DescribeFleetUtilization
+#' 
+#'     -   DescribeRuntimeConfiguration
+#' 
+#'     -   DescribeEC2InstanceLimits
+#' 
+#'     -   DescribeFleetEvents
+#' 
+#' -   Update fleets:
+#' 
+#'     -   UpdateFleetAttributes
+#' 
+#'     -   UpdateFleetCapacity
+#' 
+#'     -   UpdateFleetPortSettings
+#' 
+#'     -   UpdateRuntimeConfiguration
+#' 
+#' -   Manage fleet actions:
+#' 
+#'     -   StartFleetActions
+#' 
+#'     -   StopFleetActions
 #'
 #' @usage
 #' gamelift_stop_fleet_actions(FleetId, Actions)
@@ -4933,6 +5116,13 @@ gamelift_update_alias <- function(AliasId, Name = NULL, Description = NULL, Rout
 #' provide the new values. If successful, a build object containing the
 #' updated metadata is returned.
 #' 
+#' **Learn more**
+#' 
+#' [Working with
+#' Builds](https://docs.aws.amazon.com/gamelift/latest/developerguide/build-intro.html)
+#' 
+#' **Related operations**
+#' 
 #' -   CreateBuild
 #' 
 #' -   ListBuilds
@@ -4986,6 +5176,13 @@ gamelift_update_build <- function(BuildId, Name = NULL, Version = NULL) {
 #' To update metadata, specify the fleet ID and the property values that
 #' you want to change. If successful, the fleet ID for the updated fleet is
 #' returned.
+#' 
+#' **Learn more**
+#' 
+#' [Working with
+#' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
+#' 
+#' **Related operations**
 #' 
 #' -   CreateFleet
 #' 
@@ -5109,6 +5306,13 @@ gamelift_update_fleet_attributes <- function(FleetId, Name = NULL, Description =
 #' desired instance count is higher than the instance type\'s limit, the
 #' \"Limit Exceeded\" exception occurs.
 #' 
+#' **Learn more**
+#' 
+#' [Working with
+#' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
+#' 
+#' **Related operations**
+#' 
 #' -   CreateFleet
 #' 
 #' -   ListFleets
@@ -5195,6 +5399,13 @@ gamelift_update_fleet_capacity <- function(FleetId, DesiredInstances = NULL, Min
 #' permissions you want to remove in `InboundPermissionRevocations`.
 #' Permissions to be removed must match existing fleet permissions. If
 #' successful, the fleet ID for the updated fleet is returned.
+#' 
+#' **Learn more**
+#' 
+#' [Working with
+#' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
+#' 
+#' **Related operations**
 #' 
 #' -   CreateFleet
 #' 
@@ -5580,6 +5791,13 @@ gamelift_update_matchmaking_configuration <- function(Name, Description = NULL, 
 #' run-time configuration. As a result, the run-time configuration changes
 #' are applied gradually as existing processes shut down and new processes
 #' are launched in Amazon GameLift\'s normal process recycling activity.
+#' 
+#' **Learn more**
+#' 
+#' [Working with
+#' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
+#' 
+#' **Related operations**
 #' 
 #' -   CreateFleet
 #' 

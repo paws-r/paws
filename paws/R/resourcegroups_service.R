@@ -58,7 +58,7 @@ NULL
 #'  \link[=resourcegroups_list_group_resources]{list_group_resources} \tab Returns a list of ARNs of resources that are members of a specified resource group\cr
 #'  \link[=resourcegroups_list_groups]{list_groups} \tab Returns a list of existing resource groups in your account \cr
 #'  \link[=resourcegroups_search_resources]{search_resources} \tab Returns a list of AWS resource identifiers that matches a specified query \cr
-#'  \link[=resourcegroups_tag]{tag} \tab Adds specified tags to a resource with the specified ARN \cr
+#'  \link[=resourcegroups_tag]{tag} \tab Adds tags to a resource group with the specified ARN \cr
 #'  \link[=resourcegroups_untag]{untag} \tab Deletes specified tags from a specified resource \cr
 #'  \link[=resourcegroups_update_group]{update_group} \tab Updates an existing group with a new or changed description \cr
 #'  \link[=resourcegroups_update_group_query]{update_group_query} \tab Updates the resource query of a group 

@@ -367,10 +367,10 @@ resourcegroups_search_resources <- function(ResourceQuery, MaxResults = NULL, Ne
 }
 .resourcegroups$operations$search_resources <- resourcegroups_search_resources
 
-#' Adds specified tags to a resource with the specified ARN
+#' Adds tags to a resource group with the specified ARN
 #'
-#' Adds specified tags to a resource with the specified ARN. Existing tags
-#' on a resource are not changed if they are not specified in the request
+#' Adds tags to a resource group with the specified ARN. Existing tags on a
+#' resource group are not changed if they are not specified in the request
 #' parameters.
 #'
 #' @usage

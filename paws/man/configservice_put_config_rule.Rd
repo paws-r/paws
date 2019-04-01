@@ -30,7 +30,7 @@ is part of the \code{ConfigRule} object.
 
 If you are adding an AWS managed Config rule, specify the rule's
 identifier for the \code{SourceIdentifier} key. To reference AWS managed
-Config rule identifiers, see \href{http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html}{About AWS Managed Config Rules}.
+Config rule identifiers, see \href{https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html}{About AWS Managed Config Rules}.
 
 For any new rule that you add, specify the \code{ConfigRuleName} in the
 \code{ConfigRule} object. Do not specify the \code{ConfigRuleArn} or the
@@ -40,13 +40,13 @@ If you are updating a rule that you added previously, you can specify
 the rule by \code{ConfigRuleName}, \code{ConfigRuleId}, or \code{ConfigRuleArn} in the
 \code{ConfigRule} data type that you use in this request.
 
-The maximum number of rules that AWS Config supports is 50.
+The maximum number of rules that AWS Config supports is 150.
 
 For information about requesting a rule limit increase, see \href{http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config}{AWS Config Limits}
 in the \emph{AWS General Reference Guide}.
 
 For more information about developing and using AWS Config rules, see
-\href{http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html}{Evaluating AWS Resource Configurations with AWS Config}
+\href{https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html}{Evaluating AWS Resource Configurations with AWS Config}
 in the \emph{AWS Config Developer Guide}.
 }
 \section{Request syntax}{

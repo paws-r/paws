@@ -27,6 +27,8 @@ and the HTTP methods that can be executed on your container. The policy
 can contain up to 398,000 characters. You can add up to 100 rules to a
 CORS policy. If more than one rule applies, the service uses the first
 applicable rule listed.
+
+To learn more about CORS, see \href{https://docs.aws.amazon.com/mediastore/latest/ug/cors-policy.html}{Cross-Origin Resource Sharing (CORS) in AWS Elemental MediaStore}.
 }
 \section{Request syntax}{
 \preformatted{mediastore$put_cors_policy(

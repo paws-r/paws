@@ -7,7 +7,7 @@
 lambda_list_aliases(FunctionName, FunctionVersion, Marker, MaxItems)
 }
 \arguments{
-\item{FunctionName}{[required] The name of the lambda function.
+\item{FunctionName}{[required] The name of the Lambda function.
 
 \strong{Name formats}
 \itemize{
@@ -23,14 +23,14 @@ the function name, it is limited to 64 characters in length.}
 \item{FunctionVersion}{Specify a function version to only list aliases that invoke that
 version.}
 
-\item{Marker}{Specify the pagination token returned by a previous request to retrieve
-the next page of results.}
+\item{Marker}{Specify the pagination token that's returned by a previous request to
+retrieve the next page of results.}
 
 \item{MaxItems}{Limit the number of aliases returned.}
 }
 \description{
 Returns a list of
-\href{http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{aliases}
+\href{https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{aliases}
 for a Lambda function.
 }
 \section{Request syntax}{

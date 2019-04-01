@@ -4,7 +4,8 @@
 \alias{ec2_describe_network_acls}
 \title{Describes one or more of your network ACLs}
 \usage{
-ec2_describe_network_acls(Filters, DryRun, NetworkAclIds)
+ec2_describe_network_acls(Filters, DryRun, NetworkAclIds, NextToken,
+  MaxResults)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -52,6 +53,12 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{NetworkAclIds}{One or more network ACL IDs.
 
 Default: Describes all your network ACLs.}
+
+\item{NextToken}{The token for the next page of results.}
+
+\item{MaxResults}{The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned \code{nextToken}
+value.}
 }
 \description{
 Describes one or more of your network ACLs.
@@ -73,7 +80,9 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
   DryRun = TRUE|FALSE,
   NetworkAclIds = list(
     "string"
-  )
+  ),
+  NextToken = "string",
+  MaxResults = 123
 )
 }
 }

@@ -29,7 +29,7 @@ NULL
 #' @param kmsKeyId &#91;required&#93; The Amazon Resource Name (ARN) of the CMK to use when encrypting log
 #' data. For more information, see [Amazon Resource Names - AWS Key
 #' Management Service (AWS
-#' KMS)](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms).
+#' KMS)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms).
 #'
 #' @section Request syntax:
 #' ```
@@ -197,7 +197,7 @@ cloudwatchlogs_create_export_task <- function(taskName = NULL, logGroupName, log
 #' @param kmsKeyId The Amazon Resource Name (ARN) of the CMK to use when encrypting log
 #' data. For more information, see [Amazon Resource Names - AWS Key
 #' Management Service (AWS
-#' KMS)](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms).
+#' KMS)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms).
 #' @param tags The key-value pairs to use for the tags.
 #'
 #' @section Request syntax:
@@ -1012,7 +1012,7 @@ cloudwatchlogs_disassociate_kms_key <- function(logGroupName) {
 #' Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time
 #' are not returned.
 #' @param filterPattern The filter pattern to use. For more information, see [Filter and Pattern
-#' Syntax](http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html).
+#' Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html).
 #' 
 #' If not provided, all the events are matched.
 #' @param nextToken The token for the next set of events to return. (You received this token
@@ -1352,7 +1352,7 @@ cloudwatchlogs_put_destination <- function(destinationName, targetArn, roleArn) 
 #'
 #' Creates or updates an access policy associated with an existing
 #' destination. An access policy is an [IAM policy
-#' document](http://docs.aws.amazon.com/IAM/latest/UserGuide/policies_overview.html)
+#' document](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies_overview.html)
 #' that is used to authorize claims to register a subscription filter
 #' against a given destination.
 #'
@@ -1717,20 +1717,22 @@ cloudwatchlogs_put_subscription_filter <- function(logGroupName, filterName, fil
 #' use.
 #' 
 #' For more information, see [CloudWatch Logs Insights Query
-#' Syntax](http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html).
+#' Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html).
 #'
 #' @usage
 #' cloudwatchlogs_start_query(logGroupName, startTime, endTime,
 #'   queryString, limit)
 #'
 #' @param logGroupName &#91;required&#93; The log group on which to perform the query.
-#' @param startTime &#91;required&#93; The beginning of the time range to query. Specified as epoch time, the
-#' number of seconds since January 1, 1970, 00:00:00 UTC.
-#' @param endTime &#91;required&#93; The end of the time range to query. Specified as epoch time, the number
-#' of seconds since January 1, 1970, 00:00:00 UTC.
+#' @param startTime &#91;required&#93; The beginning of the time range to query. The range is inclusive, so the
+#' specified start time is included in the query. Specified as epoch time,
+#' the number of seconds since January 1, 1970, 00:00:00 UTC.
+#' @param endTime &#91;required&#93; The end of the time range to query. The range is inclusive, so the
+#' specified end time is included in the query. Specified as epoch time,
+#' the number of seconds since January 1, 1970, 00:00:00 UTC.
 #' @param queryString &#91;required&#93; The query string to use. For more information, see [CloudWatch Logs
 #' Insights Query
-#' Syntax](http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html).
+#' Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html).
 #' @param limit The maximum number of log events to return in the query. If the query
 #' string uses the `fields` command, only the specified fields and their
 #' values are returned.
@@ -1812,7 +1814,7 @@ cloudwatchlogs_stop_query <- function(queryId) {
 #' 
 #' For more information about tags, see [Tag Log Groups in Amazon
 #' CloudWatch
-#' Logs](http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/log-group-tagging.html)
+#' Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/log-group-tagging.html)
 #' in the *Amazon CloudWatch Logs User Guide*.
 #'
 #' @usage

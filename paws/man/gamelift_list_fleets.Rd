@@ -25,6 +25,12 @@ retrieve results in sequential pages.
 }
 \details{
 Fleet records are not listed in any particular order.
+
+\strong{Learn more}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Working with Fleets}.
+
+\strong{Related operations}
 \itemize{
 \item CreateFleet
 \item ListFleets

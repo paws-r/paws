@@ -22,7 +22,7 @@ NULL
 #' 
 #' For a list of region-specific endpoints that AWS Elastic Beanstalk
 #' supports, go to [Regions and
-#' Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region)
+#' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region)
 #' in the *Amazon Web Services Glossary*.
 #'
 #' @section Example:

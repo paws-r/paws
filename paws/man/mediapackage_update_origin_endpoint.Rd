@@ -81,6 +81,7 @@ Updates an existing OriginEndpoint.
         Url = "string"
       )
     ),
+    ManifestLayout = "FULL"|"COMPACT",
     ManifestWindowSeconds = 123,
     MinBufferTimeSeconds = 123,
     MinUpdatePeriodSeconds = 123,
@@ -89,6 +90,7 @@ Updates an existing OriginEndpoint.
     ),
     Profile = "NONE"|"HBBTV_1_5",
     SegmentDurationSeconds = 123,
+    SegmentTemplateFormat = "NUMBER_WITH_TIMELINE"|"TIME_WITH_TIMELINE",
     StreamSelection = list(
       MaxVideoBitsPerSecond = 123,
       MinVideoBitsPerSecond = 123,

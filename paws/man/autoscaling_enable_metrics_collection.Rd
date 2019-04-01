@@ -28,7 +28,7 @@ value is \code{1Minute}.}
 }
 \description{
 Enables group metrics for the specified Auto Scaling group. For more
-information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-monitoring.html}{Monitoring Your Auto Scaling Groups and Instances}
+information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-monitoring.html}{Monitoring Your Auto Scaling Groups and Instances}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{

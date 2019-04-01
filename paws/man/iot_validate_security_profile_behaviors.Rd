@@ -30,7 +30,12 @@ Validates a Device Defender security profile behaviors specification.
             123
           )
         ),
-        durationSeconds = 123
+        durationSeconds = 123,
+        consecutiveDatapointsToAlarm = 123,
+        consecutiveDatapointsToClear = 123,
+        statisticalThreshold = list(
+          statistic = "string"
+        )
       )
     )
   )

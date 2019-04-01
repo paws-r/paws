@@ -15,6 +15,11 @@ The run-time configuration tells Amazon GameLift how to launch server
 processes on instances in the fleet.
 }
 \details{
+\strong{Learn more}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Working with Fleets}.
+
+\strong{Related operations}
 \itemize{
 \item CreateFleet
 \item ListFleets

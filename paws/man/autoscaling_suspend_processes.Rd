@@ -33,7 +33,7 @@ prevent other process types from functioning properly.
 
 To resume processes that have been suspended, use ResumeProcesses.
 
-For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html}{Suspending and Resuming Scaling Processes}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html}{Suspending and Resuming Scaling Processes}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{

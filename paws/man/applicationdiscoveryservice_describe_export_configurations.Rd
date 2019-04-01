@@ -16,11 +16,9 @@ export descriptions returned.}
 \item{nextToken}{The token from the previous call to describe-export-tasks.}
 }
 \description{
-\code{DescribeExportConfigurations} is deprecated.
-}
-\details{
-Use instead
-\href{http://docs.aws.amazon.com/application-discovery/latest/APIReference/API_DescribeExportTasks.html}{DescribeExportTasks}.
+\code{DescribeExportConfigurations} is deprecated. Use
+\href{https://docs.aws.amazon.com/application-discovery/latest/APIReference/API_DescribeExportTasks.html}{DescribeImportTasks},
+instead.
 }
 \section{Request syntax}{
 \preformatted{applicationdiscoveryservice$describe_export_configurations(

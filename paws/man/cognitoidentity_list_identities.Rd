@@ -2,7 +2,7 @@
 % Please edit documentation in R/cognitoidentity_operations.R
 \name{cognitoidentity_list_identities}
 \alias{cognitoidentity_list_identities}
-\title{Lists the identities in a pool}
+\title{Lists the identities in an identity pool}
 \usage{
 cognitoidentity_list_identities(IdentityPoolId, MaxResults, NextToken,
   HideDisabled)
@@ -19,7 +19,7 @@ identities. If omitted, the ListIdentities API will include disabled
 identities in the response.}
 }
 \description{
-Lists the identities in a pool.
+Lists the identities in an identity pool.
 }
 \details{
 You must use AWS Developer credentials to call this API.

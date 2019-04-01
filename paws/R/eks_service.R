@@ -33,6 +33,7 @@ NULL
 #'  \link[=eks_describe_update]{describe_update} \tab Returns descriptive information about an update against your Amazon EKS cluster \cr
 #'  \link[=eks_list_clusters]{list_clusters} \tab Lists the Amazon EKS clusters in your AWS account in the specified Region \cr
 #'  \link[=eks_list_updates]{list_updates} \tab Lists the updates associated with an Amazon EKS cluster in your AWS account, in the specified Region\cr
+#'  \link[=eks_update_cluster_config]{update_cluster_config} \tab Updates an Amazon EKS cluster configuration \cr
 #'  \link[=eks_update_cluster_version]{update_cluster_version} \tab Updates an Amazon EKS cluster to the specified Kubernetes version 
 #' }
 #'

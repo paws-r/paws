@@ -7,7 +7,7 @@
 appmesh_describe_virtual_router(meshName, virtualRouterName)
 }
 \arguments{
-\item{meshName}{[required] The name of the service mesh in which the virtual router resides.}
+\item{meshName}{[required] The name of the service mesh that the virtual router resides in.}
 
 \item{virtualRouterName}{[required] The name of the virtual router to describe.}
 }

@@ -7,11 +7,11 @@
 appmesh_describe_route(meshName, routeName, virtualRouterName)
 }
 \arguments{
-\item{meshName}{[required] The name of the service mesh in which the route resides.}
+\item{meshName}{[required] The name of the service mesh that the route resides in.}
 
 \item{routeName}{[required] The name of the route to describe.}
 
-\item{virtualRouterName}{[required] The name of the virtual router with which the route is associated.}
+\item{virtualRouterName}{[required] The name of the virtual router that the route is associated with.}
 }
 \description{
 Describes an existing route.

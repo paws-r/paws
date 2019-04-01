@@ -19,7 +19,7 @@ db-snapshot}
 Displays a list of categories for all event source types, or, if
 specified, for a specified source type. You can see a list of the event
 categories and source types in the
-\href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html}{Events}
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html}{Events}
 topic in the \emph{Amazon RDS User Guide.}
 }
 \section{Request syntax}{

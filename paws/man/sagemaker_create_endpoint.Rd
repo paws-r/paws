@@ -12,16 +12,16 @@ sagemaker_create_endpoint(EndpointName, EndpointConfigName, Tags)
 in your AWS account.}
 
 \item{EndpointConfigName}{[required] The name of an endpoint configuration. For more information, see
-\href{http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html}{CreateEndpointConfig}.}
+\href{https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html}{CreateEndpointConfig}.}
 
-\item{Tags}{An array of key-value pairs. For more information, see \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}in
+\item{Tags}{An array of key-value pairs. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}in
 the \emph{AWS Billing and Cost Management User Guide}.}
 }
 \description{
 Creates an endpoint using the endpoint configuration specified in the
 request. Amazon SageMaker uses the endpoint to provision resources and
 deploy models. You create the endpoint configuration with the
-\href{http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html}{CreateEndpointConfig}
+\href{https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html}{CreateEndpointConfig}
 API.
 }
 \details{
@@ -39,10 +39,10 @@ When Amazon SageMaker receives the request, it sets the endpoint status
 to \code{Creating}. After it creates the endpoint, it sets the status to
 \code{InService}. Amazon SageMaker can then process incoming requests for
 inferences. To check the status of an endpoint, use the
-\href{http://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html}{DescribeEndpoint}
+\href{https://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html}{DescribeEndpoint}
 API.
 
-For an example, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/ex1.html}{Exercise 1: Using the K-Means Algorithm Provided by Amazon SageMaker}.
+For an example, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/ex1.html}{Exercise 1: Using the K-Means Algorithm Provided by Amazon SageMaker}.
 
 If any of the models hosted at this endpoint get model data from an
 Amazon S3 location, Amazon SageMaker uses AWS Security Token Service to

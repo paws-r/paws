@@ -6,16 +6,26 @@
 private gateways}
 \usage{
 directconnect_describe_direct_connect_gateway_associations(
-  directConnectGatewayId, virtualGatewayId, maxResults, nextToken)
+  associationId, associatedGatewayId, directConnectGatewayId, maxResults,
+  nextToken, virtualGatewayId)
 }
 \arguments{
+\item{associationId}{The ID of the Direct Connect gateway association.}
+
+\item{associatedGatewayId}{The ID of the associated gateway.}
+
 \item{directConnectGatewayId}{The ID of the Direct Connect gateway.}
 
-\item{virtualGatewayId}{The ID of the virtual private gateway.}
+\item{maxResults}{The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned \code{nextToken}
+value.
 
-\item{maxResults}{The maximum number of associations to return per page.}
+If \code{MaxResults} is given a value larger than 100, only 100 results are
+returned.}
 
 \item{nextToken}{The token provided in the previous call to retrieve the next page.}
+
+\item{virtualGatewayId}{The ID of the virtual private gateway.}
 }
 \description{
 Lists the associations between your Direct Connect gateways and virtual
@@ -30,10 +40,12 @@ gateway.
 }
 \section{Request syntax}{
 \preformatted{directconnect$describe_direct_connect_gateway_associations(
+  associationId = "string",
+  associatedGatewayId = "string",
   directConnectGatewayId = "string",
-  virtualGatewayId = "string",
   maxResults = 123,
-  nextToken = "string"
+  nextToken = "string",
+  virtualGatewayId = "string"
 )
 }
 }

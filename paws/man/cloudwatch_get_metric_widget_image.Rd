@@ -26,7 +26,7 @@ The default is \code{png}. If you specify \code{png}, the API returns an HTTP
 response with the content-type set to \code{text/xml}. The image data is in a
 \code{MetricWidgetImage} field. For example:
 
-\code{ &lt;GetMetricWidgetImageResponse xmlns="http://monitoring.amazonaws.com/doc/2010-08-01/"&gt;}
+\code{ &lt;GetMetricWidgetImageResponse xmlns=&lt;URLstring&gt;&gt;}
 
 \code{ &lt;GetMetricWidgetImageResult&gt;}
 

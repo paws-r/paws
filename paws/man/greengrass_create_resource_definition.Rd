@@ -6,7 +6,7 @@
 used in a group}
 \usage{
 greengrass_create_resource_definition(AmznClientToken, InitialVersion,
-  Name)
+  Name, tags)
 }
 \arguments{
 \item{AmznClientToken}{A client token used to correlate requests and responses.}
@@ -14,6 +14,8 @@ greengrass_create_resource_definition(AmznClientToken, InitialVersion,
 \item{InitialVersion}{Information about the initial version of the resource definition.}
 
 \item{Name}{The name of the resource definition.}
+
+\item{tags}{Tag(s) to add to the new resource}
 }
 \description{
 Creates a resource definition which contains a list of resources to be used in a group. You can create an initial version of the definition by providing a list of resources now, or use ''CreateResourceDefinitionVersion'' later.
@@ -60,7 +62,10 @@ Creates a resource definition which contains a list of resources to be used in a
       )
     )
   ),
-  Name = "string"
+  Name = "string",
+  tags = list(
+    "string"
+  )
 )
 }
 }

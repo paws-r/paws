@@ -17,7 +17,7 @@ Application Load Balancers support the HTTP and HTTPS protocols. Network
 Load Balancers support the TCP and TLS protocols.}
 
 \item{SslPolicy}{[HTTPS and TLS listeners] The security policy that defines which
-protocols and ciphers are supported. For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies}{Security Policies}
+protocols and ciphers are supported. For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies}{Security Policies}
 in the \emph{Application Load Balancers Guide}.}
 
 \item{Certificates}{[HTTPS and TLS listeners] The default SSL server certificate. You must
@@ -86,7 +86,8 @@ the security policy and server certificate properties.
         AuthenticationRequestExtraParams = list(
           "string"
         ),
-        OnUnauthenticatedRequest = "deny"|"allow"|"authenticate"
+        OnUnauthenticatedRequest = "deny"|"allow"|"authenticate",
+        UseExistingClientSecret = TRUE|FALSE
       ),
       AuthenticateCognitoConfig = list(
         UserPoolArn = "string",

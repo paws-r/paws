@@ -6,7 +6,7 @@
 \usage{
 glue_create_dev_endpoint(EndpointName, RoleArn, SecurityGroupIds,
   SubnetId, PublicKey, PublicKeys, NumberOfNodes, ExtraPythonLibsS3Path,
-  ExtraJarsS3Path, SecurityConfiguration)
+  ExtraJarsS3Path, SecurityConfiguration, Tags, Arguments)
 }
 \arguments{
 \item{EndpointName}{[required] The name to be assigned to the new DevEndpoint.}
@@ -49,6 +49,13 @@ your DevEndpoint.}
 
 \item{SecurityConfiguration}{The name of the SecurityConfiguration structure to be used with this
 DevEndpoint.}
+
+\item{Tags}{The tags to use with this DevEndpoint. You may use tags to limit access
+to the DevEndpoint. For more information about tags in AWS Glue, see
+\href{http://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html}{AWS Tags in AWS Glue} in
+the developer guide.}
+
+\item{Arguments}{A map of arguments used to configure the DevEndpoint.}
 }
 \description{
 Creates a new DevEndpoint.
@@ -68,7 +75,13 @@ Creates a new DevEndpoint.
   NumberOfNodes = 123,
   ExtraPythonLibsS3Path = "string",
   ExtraJarsS3Path = "string",
-  SecurityConfiguration = "string"
+  SecurityConfiguration = "string",
+  Tags = list(
+    "string"
+  ),
+  Arguments = list(
+    "string"
+  )
 )
 }
 }

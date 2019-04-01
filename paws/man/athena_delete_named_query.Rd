@@ -2,7 +2,8 @@
 % Please edit documentation in R/athena_operations.R
 \name{athena_delete_named_query}
 \alias{athena_delete_named_query}
-\title{Deletes a named query}
+\title{Deletes the named query if you have access to the workgroup in which the
+query was saved}
 \usage{
 athena_delete_named_query(NamedQueryId)
 }
@@ -10,7 +11,8 @@ athena_delete_named_query(NamedQueryId)
 \item{NamedQueryId}{[required] The unique ID of the query to delete.}
 }
 \description{
-Deletes a named query.
+Deletes the named query if you have access to the workgroup in which the
+query was saved.
 }
 \details{
 For code samples using the AWS SDK for Java, see \href{http://docs.aws.amazon.com/athena/latest/ug/code-samples.html}{Examples and Code Samples}

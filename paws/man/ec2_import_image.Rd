@@ -74,7 +74,16 @@ information, see
 \href{https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#prerequisites-image}{Prerequisites}
 in the VM Import/Export User Guide.
 
-Valid values: \code{AWS} \| \code{BYOL}}
+Valid values include:
+\itemize{
+\item \code{Auto} - Detects the source-system operating system (OS) and applies
+the appropriate license.
+\item \code{AWS} - Replaces the source-system license with an AWS license, if
+appropriate.
+\item \code{BYOL} - Retains the source-system license, if appropriate.
+}
+
+Default value: \code{Auto}}
 
 \item{Platform}{The operating system of the virtual machine.
 

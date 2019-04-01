@@ -7,7 +7,13 @@
 robomaker_list_deployment_jobs(filters, nextToken, maxResults)
 }
 \arguments{
-\item{filters}{Optional filters to limit results.}
+\item{filters}{Optional filters to limit results.
+
+The filter names \code{status} and \code{fleetName} are supported. When filtering,
+you must use the complete value of the filtered item. You can use up to
+three filters, but they must be for the same named item. For example, if
+you are looking for items with the status \code{InProgress} or the status
+\code{Pending}.}
 
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated
 \code{ListDeploymentJobs} request where \code{maxResults} was used and the results

@@ -31,15 +31,15 @@ created (the \strong{Status} field of the CertificateAuthority is
 haven't yet imported the signed certificate (the \strong{Status} is
 \code{PENDING_CERTIFICATE}) into ACM PCA.
 
-If the CA is in one of the aforementioned states and you call
+If the CA is in one of the previously mentioned states and you call
 DeleteCertificateAuthority, the CA's status changes to \code{DELETED}.
-However, the CA won't be permentantly deleted until the restoration
+However, the CA won't be permanently deleted until the restoration
 period has passed. By default, if you do not set the
 \code{PermanentDeletionTimeInDays} parameter, the CA remains restorable for
 30 days. You can set the parameter from 7 to 30 days. The
 DescribeCertificateAuthority operation returns the time remaining in the
 restoration window of a Private CA in the \code{DELETED} state. To restore an
-eligable CA, call the RestoreCertificateAuthority operation.
+eligible CA, call the RestoreCertificateAuthority operation.
 }
 \section{Request syntax}{
 \preformatted{acmpca$delete_certificate_authority(

@@ -12,7 +12,7 @@ lambda_get_layer_version_policy(LayerName, VersionNumber)
 \item{VersionNumber}{[required] The version number.}
 }
 \description{
-Returns the permission policy for a version of an \href{http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layer}.
+Returns the permission policy for a version of an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layer}.
 For more information, see AddLayerVersionPermission.
 }
 \section{Request syntax}{

@@ -15,8 +15,10 @@ cognitoidentity_get_id(AccountId, IdentityPoolId, Logins)
 tokens. The available provider names for \code{Logins} are as follows:
 \itemize{
 \item Facebook: \code{graph.facebook.com}
-\item Amazon Cognito Identity Provider:
-\code{cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789}
+\item Amazon Cognito user pool:
+\code{cognito-idp.&lt;region&gt;.amazonaws.com/&lt;YOUR_USER_POOL_ID&gt;},
+for example,
+\code{cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789}.
 \item Google: \code{accounts.google.com}
 \item Amazon: \code{www.amazon.com}
 \item Twitter: \code{api.twitter.com}

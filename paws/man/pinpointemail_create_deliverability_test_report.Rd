@@ -5,7 +5,7 @@
 \title{Create a new predictive inbox placement test}
 \usage{
 pinpointemail_create_deliverability_test_report(ReportName,
-  FromEmailAddress, Content)
+  FromEmailAddress, Content, Tags)
 }
 \arguments{
 \item{ReportName}{A unique name that helps you to identify the predictive inbox placement
@@ -16,6 +16,9 @@ sent from.}
 
 \item{Content}{[required] The HTML body of the message that you sent when you performed the
 predictive inbox placement test.}
+
+\item{Tags}{An object that defines the tags (keys and values) that you want to
+associate with the predictive inbox placement test.}
 }
 \description{
 Create a new predictive inbox placement test. Predictive inbox placement
@@ -51,6 +54,12 @@ test.
     ),
     Raw = list(
       Data = raw
+    )
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
     )
   )
 )

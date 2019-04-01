@@ -30,11 +30,11 @@ NULL
 #' 
 #'     For more information about invitations, see [Inviting an AWS Account
 #'     to Join Your
-#'     Organization](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_invites.html)
+#'     Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_invites.html)
 #'     in the *AWS Organizations User Guide*. For more information about
 #'     requests to enable all features in the organization, see [Enabling
 #'     All Features in Your
-#'     Organization](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html)
+#'     Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html)
 #'     in the *AWS Organizations User Guide*.
 #' 
 #' After you accept a handshake, it continues to appear in the results of
@@ -104,9 +104,10 @@ organizations_accept_handshake <- function(HandshakeId) {
 #'     -   If you attach the policy directly to an account, then it affects
 #'         only that account.
 #' 
-#'     SCPs essentially are permission \"filters\". When you attach one SCP
-#'     to a higher level root or OU, and you also attach a different SCP to
-#'     a child OU or to an account, the child policy can further restrict
+#'     SCPs are JSON policies that specify the maximum permissions for an
+#'     organization or organizational unit (OU). When you attach one SCP to
+#'     a higher level root or OU, and you also attach a different SCP to a
+#'     child OU or to an account, the child policy can further restrict
 #'     only the permissions that pass through the parent filter and are
 #'     available to the child. An SCP that is attached to a child cannot
 #'     grant a permission that is not already granted by the parent. For
@@ -128,7 +129,7 @@ organizations_accept_handshake <- function(HandshakeId) {
 #' 
 #'     For more information about how Organizations policies permissions
 #'     work, see [Using Service Control
-#'     Policies](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html)
+#'     Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html)
 #'     in the *AWS Organizations User Guide*.
 #' 
 #' This operation can be called only from the organization\'s master
@@ -282,7 +283,7 @@ organizations_cancel_handshake <- function(HandshakeId) {
 #'     For information on using AWS CloudTrail with Organizations, see
 #'     [Monitoring the Activity in Your
 #'     Organization](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_monitoring.html)
-#'     in the *AWS Organizations User Guide*.
+#'     in the *AWS Organizations User Guide.*
 #' 
 #' The user who calls the API to create an account must have the
 #' `organizations:CreateAccount` permission. If you enabled all features in
@@ -304,8 +305,8 @@ organizations_cancel_handshake <- function(HandshakeId) {
 #' 
 #' For more information about creating accounts, see [Creating an AWS
 #' Account in Your
-#' Organization](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_create.html)
-#' in the *AWS Organizations User Guide*.
+#' Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_create.html)
+#' in the *AWS Organizations User Guide.*
 #' 
 #' -   When you create an account in an organization using the AWS
 #'     Organizations console, API, or CLI commands, the information
@@ -327,7 +328,7 @@ organizations_cancel_handshake <- function(HandshakeId) {
 #'     then try again. If the error persists, contact [AWS
 #'     Support](https://console.aws.amazon.com/support/home#/).
 #' 
-#' -   Using CreateAccount to create multiple temporary accounts is not
+#' -   Using CreateAccount to create multiple temporary accounts isn\'t
 #'     recommended. You can only close an account from the Billing and Cost
 #'     Management Console, and you must be signed in as the root user. For
 #'     information on the requirements and process for closing an account,
@@ -342,7 +343,7 @@ organizations_cancel_handshake <- function(HandshakeId) {
 #' the account. If you disable it, only the account root user can access
 #' billing information. For information about how to disable this switch
 #' for an account, see [Granting Access to Your Billing Information and
-#' Tools](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html).
+#' Tools](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html).
 #'
 #' @usage
 #' organizations_create_account(Email, AccountName, RoleName,
@@ -367,10 +368,10 @@ organizations_cancel_handshake <- function(HandshakeId) {
 #' 
 #' For more information about how to use this role to access the member
 #' account, see [Accessing and Administering the Member Accounts in Your
-#' Organization](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role)
+#' Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role)
 #' in the *AWS Organizations User Guide*, and steps 2 and 3 in [Tutorial:
 #' Delegate Access Across AWS Accounts Using IAM
-#' Roles](http://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html)
+#' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html)
 #' in the *IAM User Guide*.
 #' 
 #' The [regex pattern](http://wikipedia.org/wiki/regex) that is used to
@@ -382,7 +383,7 @@ organizations_cancel_handshake <- function(HandshakeId) {
 #' `DENY`, only the root user of the new account can access account billing
 #' information. For more information, see [Activating Access to the Billing
 #' and Cost Management
-#' Console](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate)
+#' Console](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate)
 #' in the *AWS Billing and Cost Management User Guide*.
 #' 
 #' If you don\'t specify this parameter, the value defaults to `ALLOW`, and
@@ -437,7 +438,7 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #'
 #' Creates an AWS organization. The account whose user is calling the
 #' CreateOrganization operation automatically becomes the [master
-#' account](http://docs.aws.amazon.com/IAM/latest/UserGuide/orgs_getting-started_concepts.html#account)
+#' account](https://docs.aws.amazon.com/IAM/latest/UserGuide/orgs_getting-started_concepts.html#account)
 #' of the new organization.
 #' 
 #' This operation must be called using credentials from the account that is
@@ -461,14 +462,14 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #' -   *CONSOLIDATED\\_BILLING*: All member accounts have their bills
 #'     consolidated to and paid by the master account. For more
 #'     information, see [Consolidated
-#'     billing](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only)
+#'     billing](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only)
 #'     in the *AWS Organizations User Guide*.
 #' 
 #' -   *ALL*: In addition to all the features supported by the consolidated
 #'     billing feature set, the master account can also apply any type of
 #'     policy to any member account in the organization. For more
 #'     information, see [All
-#'     features](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all)
+#'     features](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all)
 #'     in the *AWS Organizations User Guide*.
 #'
 #' @section Request syntax:
@@ -525,7 +526,7 @@ organizations_create_organization <- function(FeatureSet = NULL) {
 #' enabled for that root. For service control policies, the limit is five.
 #' 
 #' For more information about OUs, see [Managing Organizational
-#' Units](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_ous.html)
+#' Units](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_ous.html)
 #' in the *AWS Organizations User Guide*.
 #' 
 #' This operation can be called only from the organization\'s master
@@ -594,7 +595,7 @@ organizations_create_organizational_unit <- function(ParentId, Name) {
 #' 
 #' For more information about policies and their use, see [Managing
 #' Organization
-#' Policies](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html).
+#' Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html).
 #' 
 #' This operation can be called only from the organization\'s master
 #' account.
@@ -604,12 +605,12 @@ organizations_create_organizational_unit <- function(ParentId, Name) {
 #'
 #' @param Content &#91;required&#93; The policy content to add to the new policy. For example, if you create
 #' a [service control
-#' policy](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html)
+#' policy](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html)
 #' (SCP), this string must be JSON text that specifies the permissions that
 #' admins in attached accounts can delegate to their users, groups, and
 #' roles. For more information about the SCP syntax, see [Service Control
 #' Policy
-#' Syntax](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html)
+#' Syntax](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html)
 #' in the *AWS Organizations User Guide*.
 #' @param Description &#91;required&#93; An optional description to assign to the policy.
 #' @param Name &#91;required&#93; The friendly name to assign to the policy.
@@ -642,7 +643,7 @@ organizations_create_organizational_unit <- function(ParentId, Name) {
 #' # 
 #' # 
 #' \donttest{organizations$create_policy(
-#'   Content = "{\\\"Version\\\":\\\"2012-10-17\\\",\\\"Statement\\\":{\\\"Effect\\\":\\...",
+#'   Content = "{\\\"Version\\\":\\\"2012-10-17\\\",\\\"Statement\\\":{\\\"Effect\\\":...",
 #'   Description = "Enables admins of attached accounts to delegate all S3 permissions",
 #'   Name = "AllowAllS3Actions",
 #'   Type = "SERVICE_CONTROL_POLICY"
@@ -1193,12 +1194,12 @@ organizations_describe_policy <- function(PolicyId) {
 #' one that limits the permissions that can be delegated, then you must
 #' attach the replacement policy before you can remove the default one.
 #' This is the authorization strategy of
-#' [whitelisting](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_whitelist).
+#' [whitelisting](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_whitelist).
 #' If you instead attach a second SCP and leave the `FullAWSAccess` SCP
 #' still attached, and specify `"Effect": "Deny"` in the second SCP to
 #' override the `"Effect": "Allow"` in the `FullAWSAccess` policy (or any
 #' other attached SCP), then you are using the authorization strategy of
-#' [blacklisting](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_blacklist).
+#' [blacklisting](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_blacklist).
 #' 
 #' This operation can be called only from the organization\'s master
 #' account.
@@ -1464,7 +1465,7 @@ organizations_enable_aws_service_access <- function(ServicePrincipal) {
 #' access only to consolidated billing, and you can\'t use any of the
 #' advanced account administration features that AWS Organizations
 #' supports. For more information, see [Enabling All Features in Your
-#' Organization](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html)
+#' Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html)
 #' in the *AWS Organizations User Guide*.
 #' 
 #' This operation is required only for organizations that were created
@@ -2148,8 +2149,8 @@ organizations_list_create_account_status <- function(States = NULL, NextToken = 
 #'
 #' @param Filter Filters the handshakes that you want included in the response. The
 #' default is all types. Use the `ActionType` element to limit the output
-#' to only a specified type, such as `INVITE`, `ENABLE-FULL-CONTROL`, or
-#' `APPROVE-FULL-CONTROL`. Alternatively, for the `ENABLE-FULL-CONTROL`
+#' to only a specified type, such as `INVITE`, `ENABLE_ALL_FEATURES`, or
+#' `APPROVE_ALL_FEATURES`. Alternatively, for the `ENABLE_ALL_FEATURES`
 #' handshake that generates a separate child handshake for each member
 #' account, you can specify `ParentHandshakeId` to see only the handshakes
 #' that were generated by that parent request.
@@ -2998,7 +2999,7 @@ organizations_update_organizational_unit <- function(OrganizationalUnitId, Name 
 #' @param Content If provided, the new content for the policy. The text must be correctly
 #' formatted JSON that complies with the syntax for the policy\'s type. For
 #' more information, see [Service Control Policy
-#' Syntax](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html)
+#' Syntax](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html)
 #' in the *AWS Organizations User Guide*.
 #'
 #' @section Request syntax:
@@ -3025,7 +3026,7 @@ organizations_update_organizational_unit <- function(OrganizationalUnitId, Name 
 #' # the preceding example with a new JSON policy text string that allows S3
 #' # actions instead of EC2 actions:/n/n
 #' \donttest{organizations$update_policy(
-#'   Content = "{ \\\"Version\\\": \\\"2012-10-17\\\", \\\"Statement\\\": {\\\"Effect\\\": \\...",
+#'   Content = "{ \\\"Version\\\": \\\"2012-10-17\\\", \\\"Statement\\\": {\\\"Effect\\\": ...",
 #'   PolicyId = "p-examplepolicyid111"
 #' )}
 #'

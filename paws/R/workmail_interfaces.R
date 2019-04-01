@@ -5,7 +5,7 @@ NULL
 
 .workmail$associate_delegate_to_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(    type = "string")), ResourceId = structure(logical(0), tags = list(    type = "string")), EntityId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), EntityId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -17,7 +17,7 @@ NULL
 
 .workmail$associate_member_to_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(    type = "string")), GroupId = structure(logical(0), tags = list(    type = "string")), MemberId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), GroupId = structure(logical(0), tags = list(type = "string")), MemberId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -29,7 +29,7 @@ NULL
 
 .workmail$create_alias_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(    type = "string")), EntityId = structure(logical(0), tags = list(    type = "string")), Alias = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), EntityId = structure(logical(0), tags = list(type = "string")), Alias = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -41,43 +41,43 @@ NULL
 
 .workmail$create_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(    type = "string")), Name = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .workmail$create_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GroupId = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(GroupId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .workmail$create_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(    type = "string")), Name = structure(logical(0), tags = list(    type = "string")), Type = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .workmail$create_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ResourceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .workmail$create_user_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(    type = "string")), Name = structure(logical(0), tags = list(    type = "string")), DisplayName = structure(logical(0), tags = list(    type = "string")), Password = structure(logical(0), tags = list(    type = "string", sensitive = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Password = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .workmail$create_user_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UserId = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(UserId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .workmail$delete_alias_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(    type = "string")), EntityId = structure(logical(0), tags = list(    type = "string")), Alias = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), EntityId = structure(logical(0), tags = list(type = "string")), Alias = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -89,7 +89,7 @@ NULL
 
 .workmail$delete_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(    type = "string")), GroupId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), GroupId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -101,7 +101,7 @@ NULL
 
 .workmail$delete_mailbox_permissions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(    type = "string")), EntityId = structure(logical(0), tags = list(    type = "string")), GranteeId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), EntityId = structure(logical(0), tags = list(type = "string")), GranteeId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -113,7 +113,7 @@ NULL
 
 .workmail$delete_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(    type = "string")), ResourceId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -125,7 +125,7 @@ NULL
 
 .workmail$delete_user_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(    type = "string")), UserId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), UserId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -137,7 +137,7 @@ NULL
 
 .workmail$deregister_from_work_mail_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(    type = "string")), EntityId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), EntityId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -149,55 +149,55 @@ NULL
 
 .workmail$describe_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(    type = "string")), GroupId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), GroupId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .workmail$describe_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GroupId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), EnabledDate = structure(logical(0), tags = list(type = "timestamp")), DisabledDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(    type = "structure"))
+  shape <- structure(list(GroupId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), EnabledDate = structure(logical(0), tags = list(type = "timestamp")), DisabledDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .workmail$describe_organization_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .workmail$describe_organization_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(    type = "string")), Alias = structure(logical(0), tags = list(    type = "string")), State = structure(logical(0), tags = list(    type = "string")), DirectoryId = structure(logical(0), tags = list(    type = "string")), DirectoryType = structure(logical(0), tags = list(    type = "string")), DefaultMailDomain = structure(logical(0), tags = list(    type = "string")), CompletedDate = structure(logical(0), tags = list(    type = "timestamp")), ErrorMessage = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), Alias = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), DirectoryId = structure(logical(0), tags = list(type = "string")), DirectoryType = structure(logical(0), tags = list(type = "string")), DefaultMailDomain = structure(logical(0), tags = list(type = "string")), CompletedDate = structure(logical(0), tags = list(type = "timestamp")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .workmail$describe_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(    type = "string")), ResourceId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .workmail$describe_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceId = structure(logical(0), tags = list(    type = "string")), Email = structure(logical(0), tags = list(    type = "string")), Name = structure(logical(0), tags = list(    type = "string")), Type = structure(logical(0), tags = list(    type = "string")), BookingOptions = structure(list(AutoAcceptRequests = structure(logical(0), tags = list(    type = "boolean")), AutoDeclineRecurringRequests = structure(logical(0), tags = list(    type = "boolean")), AutoDeclineConflictingRequests = structure(logical(0), tags = list(    type = "boolean"))), tags = list(type = "structure")), State = structure(logical(0), tags = list(    type = "string")), EnabledDate = structure(logical(0), tags = list(    type = "timestamp")), DisabledDate = structure(logical(0), tags = list(    type = "timestamp"))), tags = list(type = "structure"))
+  shape <- structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), BookingOptions = structure(list(AutoAcceptRequests = structure(logical(0), tags = list(type = "boolean")), AutoDeclineRecurringRequests = structure(logical(0), tags = list(type = "boolean")), AutoDeclineConflictingRequests = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), State = structure(logical(0), tags = list(type = "string")), EnabledDate = structure(logical(0), tags = list(type = "timestamp")), DisabledDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .workmail$describe_user_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(    type = "string")), UserId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), UserId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .workmail$describe_user_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UserId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), UserRole = structure(logical(0), tags = list(type = "string")), EnabledDate = structure(logical(0), tags = list(type = "timestamp")), DisabledDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(    type = "structure"))
+  shape <- structure(list(UserId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), UserRole = structure(logical(0), tags = list(type = "string")), EnabledDate = structure(logical(0), tags = list(type = "timestamp")), DisabledDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .workmail$disassociate_delegate_from_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(    type = "string")), ResourceId = structure(logical(0), tags = list(    type = "string")), EntityId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), EntityId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -209,7 +209,7 @@ NULL
 
 .workmail$disassociate_member_from_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(    type = "string")), GroupId = structure(logical(0), tags = list(    type = "string")), MemberId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), GroupId = structure(logical(0), tags = list(type = "string")), MemberId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -221,103 +221,103 @@ NULL
 
 .workmail$list_aliases_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(    type = "string")), EntityId = structure(logical(0), tags = list(    type = "string")), NextToken = structure(logical(0), tags = list(    type = "string")), MaxResults = structure(logical(0), tags = list(    type = "integer", box = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), EntityId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .workmail$list_aliases_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Aliases = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Aliases = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .workmail$list_group_members_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(    type = "string")), GroupId = structure(logical(0), tags = list(    type = "string")), NextToken = structure(logical(0), tags = list(    type = "string")), MaxResults = structure(logical(0), tags = list(    type = "integer", box = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), GroupId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .workmail$list_group_members_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Members = structure(list(structure(list(Id = structure(logical(0), tags = list(    type = "string")), Name = structure(logical(0), tags = list(    type = "string")), Type = structure(logical(0), tags = list(    type = "string")), State = structure(logical(0), tags = list(    type = "string")), EnabledDate = structure(logical(0), tags = list(    type = "timestamp")), DisabledDate = structure(logical(0), tags = list(    type = "timestamp"))), tags = list(type = "structure"))), tags = list(    type = "list")), NextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Members = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), EnabledDate = structure(logical(0), tags = list(type = "timestamp")), DisabledDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .workmail$list_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(    type = "string")), NextToken = structure(logical(0), tags = list(    type = "string")), MaxResults = structure(logical(0), tags = list(    type = "integer", box = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .workmail$list_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Groups = structure(list(structure(list(Id = structure(logical(0), tags = list(    type = "string")), Email = structure(logical(0), tags = list(    type = "string")), Name = structure(logical(0), tags = list(    type = "string")), State = structure(logical(0), tags = list(    type = "string")), EnabledDate = structure(logical(0), tags = list(    type = "timestamp")), DisabledDate = structure(logical(0), tags = list(    type = "timestamp"))), tags = list(type = "structure"))), tags = list(    type = "list")), NextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Groups = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), EnabledDate = structure(logical(0), tags = list(type = "timestamp")), DisabledDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .workmail$list_mailbox_permissions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(    type = "string")), EntityId = structure(logical(0), tags = list(    type = "string")), NextToken = structure(logical(0), tags = list(    type = "string")), MaxResults = structure(logical(0), tags = list(    type = "integer", box = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), EntityId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .workmail$list_mailbox_permissions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Permissions = structure(list(structure(list(GranteeId = structure(logical(0), tags = list(    type = "string")), GranteeType = structure(logical(0), tags = list(    type = "string")), PermissionValues = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Permissions = structure(list(structure(list(GranteeId = structure(logical(0), tags = list(type = "string")), GranteeType = structure(logical(0), tags = list(type = "string")), PermissionValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .workmail$list_organizations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(    type = "string")), MaxResults = structure(logical(0), tags = list(    type = "integer", box = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .workmail$list_organizations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationSummaries = structure(list(structure(list(    OrganizationId = structure(logical(0), tags = list(type = "string")), Alias = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(OrganizationSummaries = structure(list(structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), Alias = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .workmail$list_resource_delegates_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(    type = "string")), ResourceId = structure(logical(0), tags = list(    type = "string")), NextToken = structure(logical(0), tags = list(    type = "string")), MaxResults = structure(logical(0), tags = list(    type = "integer", box = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .workmail$list_resource_delegates_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Delegates = structure(list(structure(list(Id = structure(logical(0), tags = list(    type = "string")), Type = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "list")), NextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Delegates = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .workmail$list_resources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(    type = "string")), NextToken = structure(logical(0), tags = list(    type = "string")), MaxResults = structure(logical(0), tags = list(    type = "integer", box = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .workmail$list_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Resources = structure(list(structure(list(Id = structure(logical(0), tags = list(    type = "string")), Email = structure(logical(0), tags = list(    type = "string")), Name = structure(logical(0), tags = list(    type = "string")), Type = structure(logical(0), tags = list(    type = "string")), State = structure(logical(0), tags = list(    type = "string")), EnabledDate = structure(logical(0), tags = list(    type = "timestamp")), DisabledDate = structure(logical(0), tags = list(    type = "timestamp"))), tags = list(type = "structure"))), tags = list(    type = "list")), NextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Resources = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), EnabledDate = structure(logical(0), tags = list(type = "timestamp")), DisabledDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .workmail$list_users_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(    type = "string")), NextToken = structure(logical(0), tags = list(    type = "string")), MaxResults = structure(logical(0), tags = list(    type = "integer", box = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .workmail$list_users_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Users = structure(list(structure(list(Id = structure(logical(0), tags = list(    type = "string")), Email = structure(logical(0), tags = list(    type = "string")), Name = structure(logical(0), tags = list(    type = "string")), DisplayName = structure(logical(0), tags = list(    type = "string")), State = structure(logical(0), tags = list(    type = "string")), UserRole = structure(logical(0), tags = list(    type = "string")), EnabledDate = structure(logical(0), tags = list(    type = "timestamp")), DisabledDate = structure(logical(0), tags = list(    type = "timestamp"))), tags = list(type = "structure"))), tags = list(    type = "list")), NextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Users = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), UserRole = structure(logical(0), tags = list(type = "string")), EnabledDate = structure(logical(0), tags = list(type = "timestamp")), DisabledDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .workmail$put_mailbox_permissions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(    type = "string")), EntityId = structure(logical(0), tags = list(    type = "string")), GranteeId = structure(logical(0), tags = list(    type = "string")), PermissionValues = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), EntityId = structure(logical(0), tags = list(type = "string")), GranteeId = structure(logical(0), tags = list(type = "string")), PermissionValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -329,7 +329,7 @@ NULL
 
 .workmail$register_to_work_mail_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(    type = "string")), EntityId = structure(logical(0), tags = list(    type = "string")), Email = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), EntityId = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -341,7 +341,7 @@ NULL
 
 .workmail$reset_password_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(    type = "string")), UserId = structure(logical(0), tags = list(    type = "string")), Password = structure(logical(0), tags = list(    type = "string", sensitive = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), UserId = structure(logical(0), tags = list(type = "string")), Password = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -353,7 +353,7 @@ NULL
 
 .workmail$update_primary_email_address_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(    type = "string")), EntityId = structure(logical(0), tags = list(    type = "string")), Email = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), EntityId = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -365,7 +365,7 @@ NULL
 
 .workmail$update_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(    type = "string")), ResourceId = structure(logical(0), tags = list(    type = "string")), Name = structure(logical(0), tags = list(    type = "string")), BookingOptions = structure(list(AutoAcceptRequests = structure(logical(0), tags = list(    type = "boolean")), AutoDeclineRecurringRequests = structure(logical(0), tags = list(    type = "boolean")), AutoDeclineConflictingRequests = structure(logical(0), tags = list(    type = "boolean"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), BookingOptions = structure(list(AutoAcceptRequests = structure(logical(0), tags = list(type = "boolean")), AutoDeclineRecurringRequests = structure(logical(0), tags = list(type = "boolean")), AutoDeclineConflictingRequests = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

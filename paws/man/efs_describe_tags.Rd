@@ -7,20 +7,20 @@
 efs_describe_tags(MaxItems, Marker, FileSystemId)
 }
 \arguments{
-\item{MaxItems}{(Optional) Maximum number of file system tags to return in the response.
-It must be an integer with a value greater than zero.}
+\item{MaxItems}{(Optional) The maximum number of file system tags to return in the
+response. Currently, this number is automatically set to 10.}
 
-\item{Marker}{(Optional) Opaque pagination token returned from a previous
+\item{Marker}{(Optional) An opaque pagination token returned from a previous
 \code{DescribeTags} operation (String). If present, it specifies to continue
 the list from where the previous call left off.}
 
-\item{FileSystemId}{[required] ID of the file system whose tag set you want to retrieve.}
+\item{FileSystemId}{[required] The ID of the file system whose tag set you want to retrieve.}
 }
 \description{
 Returns the tags associated with a file system. The order of tags
 returned in the response of one \code{DescribeTags} call and the order of
-tags returned across the responses of a multi-call iteration (when using
-pagination) is unspecified.
+tags returned across the responses of a multiple-call iteration (when
+using pagination) is unspecified.
 }
 \details{
 This operation requires permissions for the

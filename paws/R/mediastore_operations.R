@@ -160,7 +160,8 @@ mediastore_delete_cors_policy <- function(ContainerName) {
 
 #' Removes an object lifecycle policy from a container
 #'
-#' Removes an object lifecycle policy from a container.
+#' Removes an object lifecycle policy from a container. It takes up to 20
+#' minutes for the change to take effect.
 #'
 #' @usage
 #' mediastore_delete_lifecycle_policy(ContainerName)
@@ -465,6 +466,10 @@ mediastore_put_container_policy <- function(ContainerName, Policy) {
 #' can contain up to 398,000 characters. You can add up to 100 rules to a
 #' CORS policy. If more than one rule applies, the service uses the first
 #' applicable rule listed.
+#' 
+#' To learn more about CORS, see [Cross-Origin Resource Sharing (CORS) in
+#' AWS Elemental
+#' MediaStore](https://docs.aws.amazon.com/mediastore/latest/ug/cors-policy.html).
 #'
 #' @usage
 #' mediastore_put_cors_policy(ContainerName, CorsPolicy)
@@ -519,7 +524,12 @@ mediastore_put_cors_policy <- function(ContainerName, CorsPolicy) {
 #'
 #' Writes an object lifecycle policy to a container. If the container
 #' already has an object lifecycle policy, the service replaces the
-#' existing policy with the new policy.
+#' existing policy with the new policy. It takes up to 20 minutes for the
+#' change to take effect.
+#' 
+#' For information about how to construct an object lifecycle policy, see
+#' [Components of an Object Lifecycle
+#' Policy](https://docs.aws.amazon.com/mediastore/latest/ug/policies-object-lifecycle-components.html).
 #'
 #' @usage
 #' mediastore_put_lifecycle_policy(ContainerName, LifecyclePolicy)
@@ -554,3 +564,78 @@ mediastore_put_lifecycle_policy <- function(ContainerName, LifecyclePolicy) {
   return(response)
 }
 .mediastore$operations$put_lifecycle_policy <- mediastore_put_lifecycle_policy
+
+#' Starts access logging on the specified container
+#'
+#' Starts access logging on the specified container. When you enable access
+#' logging on a container, MediaStore delivers access logs for objects
+#' stored in that container to Amazon CloudWatch Logs.
+#'
+#' @usage
+#' mediastore_start_access_logging(ContainerName)
+#'
+#' @param ContainerName &#91;required&#93; The name of the container that you want to start access logging on.
+#'
+#' @section Request syntax:
+#' ```
+#' mediastore$start_access_logging(
+#'   ContainerName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediastore_start_access_logging
+mediastore_start_access_logging <- function(ContainerName) {
+  op <- new_operation(
+    name = "StartAccessLogging",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .mediastore$start_access_logging_input(ContainerName = ContainerName)
+  output <- .mediastore$start_access_logging_output()
+  svc <- .mediastore$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediastore$operations$start_access_logging <- mediastore_start_access_logging
+
+#' Stops access logging on the specified container
+#'
+#' Stops access logging on the specified container. When you stop access
+#' logging on a container, MediaStore stops sending access logs to Amazon
+#' CloudWatch Logs. These access logs are not saved and are not
+#' retrievable.
+#'
+#' @usage
+#' mediastore_stop_access_logging(ContainerName)
+#'
+#' @param ContainerName &#91;required&#93; The name of the container that you want to stop access logging on.
+#'
+#' @section Request syntax:
+#' ```
+#' mediastore$stop_access_logging(
+#'   ContainerName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediastore_stop_access_logging
+mediastore_stop_access_logging <- function(ContainerName) {
+  op <- new_operation(
+    name = "StopAccessLogging",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .mediastore$stop_access_logging_input(ContainerName = ContainerName)
+  output <- .mediastore$stop_access_logging_output()
+  svc <- .mediastore$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediastore$operations$stop_access_logging <- mediastore_stop_access_logging

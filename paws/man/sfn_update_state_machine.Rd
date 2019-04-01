@@ -10,7 +10,7 @@ sfn_update_state_machine(stateMachineArn, definition, roleArn)
 \arguments{
 \item{stateMachineArn}{[required] The Amazon Resource Name (ARN) of the state machine.}
 
-\item{definition}{The Amazon States Language definition of the state machine. See \href{http://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html}{Amazon States Language}.}
+\item{definition}{The Amazon States Language definition of the state machine. See \href{https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html}{Amazon States Language}.}
 
 \item{roleArn}{The Amazon Resource Name (ARN) of the IAM role of the state machine.}
 }

@@ -5,15 +5,21 @@
 \title{Creates an application version}
 \usage{
 serverlessapplicationrepository_create_application_version(
-  ApplicationId, SemanticVersion, SourceCodeUrl, TemplateBody,
-  TemplateUrl)
+  ApplicationId, SemanticVersion, SourceCodeArchiveUrl, SourceCodeUrl,
+  TemplateBody, TemplateUrl)
 }
 \arguments{
 \item{ApplicationId}{[required] The Amazon Resource Name (ARN) of the application.}
 
 \item{SemanticVersion}{[required] The semantic version of the new version.}
 
-\item{SourceCodeUrl}{A link to a public repository for the source code of your application.}
+\item{SourceCodeArchiveUrl}{A link to the S3 object that contains the ZIP archive of the source code
+for this version of your application.
+
+Maximum size 50 MB}
+
+\item{SourceCodeUrl}{A link to a public repository for the source code of your application,
+for example the URL of a specific GitHub commit.}
 
 \item{TemplateBody}{The raw packaged AWS SAM template of your application.}
 
@@ -26,6 +32,7 @@ Creates an application version.
 \preformatted{serverlessapplicationrepository$create_application_version(
   ApplicationId = "string",
   SemanticVersion = "string",
+  SourceCodeArchiveUrl = "string",
   SourceCodeUrl = "string",
   TemplateBody = "string",
   TemplateUrl = "string"

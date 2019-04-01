@@ -5,7 +5,7 @@
 \title{Creates an entity recognizer using submitted files}
 \usage{
 comprehend_create_entity_recognizer(RecognizerName, DataAccessRoleArn,
-  InputDataConfig, ClientRequestToken, LanguageCode)
+  InputDataConfig, ClientRequestToken, LanguageCode, VolumeKmsKeyId)
 }
 \arguments{
 \item{RecognizerName}{[required] The name given to the newly created recognizer. Recognizer names can be
@@ -25,6 +25,16 @@ request token, Amazon Comprehend generates one.}
 
 \item{LanguageCode}{[required] The language of the input documents. All documents must be in the same
 language. Only English ("en") is currently supported.}
+
+\item{VolumeKmsKeyId}{ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
+uses to encrypt data on the storage volume attached to the ML compute
+instance(s) that process the analysis job. The VolumeKmsKeyId can be
+either of the following formats:
+\itemize{
+\item KMS Key ID: \code{"1234abcd-12ab-34cd-56ef-1234567890ab"}
+\item Amazon Resource Name (ARN) of a KMS Key:
+\code{"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"}
+}}
 }
 \description{
 Creates an entity recognizer using submitted files. After your
@@ -52,7 +62,8 @@ using the API.
     )
   ),
   ClientRequestToken = "string",
-  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
+  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt",
+  VolumeKmsKeyId = "string"
 )
 }
 }

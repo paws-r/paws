@@ -5,7 +5,7 @@ NULL
 
 .apigatewaymanagementapi$post_to_connection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Data = structure(logical(0), tags = list(type = "blob")), ConnectionId = structure(logical(0), tags = list(location = "uri", locationName = "connectionId", type = "string"))), tags = list(    type = "structure", payload = "Data"))
+  shape <- structure(list(Data = structure(logical(0), tags = list(type = "blob")), ConnectionId = structure(logical(0), tags = list(location = "uri", locationName = "connectionId", type = "string"))), tags = list(type = "structure", payload = "Data"))
   return(populate(args, shape))
 }
 

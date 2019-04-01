@@ -372,7 +372,7 @@ cloudwatch_get_dashboard <- function(DashboardName) {
 #' metrics, you could divide the Errors metric by the Invocations metric to
 #' get an error rate time series. For more information about metric math
 #' expressions, see [Metric Math Syntax and
-#' Functions](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax)
+#' Functions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax)
 #' in the *Amazon CloudWatch User Guide*.
 #' 
 #' Calls to the `GetMetricData` API have a different pricing structure than
@@ -417,14 +417,14 @@ cloudwatch_get_dashboard <- function(DashboardName) {
 #' align with the value of the metric\'s `Period` and sync up with the
 #' beginning and end of an hour. For example, if the `Period` of a metric
 #' is 5 minutes, specifying 12:05 or 12:30 as `StartTime` can get a faster
-#' response from CloudWatch then setting 12:07 or 12:29 as the `StartTime`.
+#' response from CloudWatch than setting 12:07 or 12:29 as the `StartTime`.
 #' @param EndTime &#91;required&#93; The time stamp indicating the latest data to be returned.
 #' 
 #' For better performance, specify `StartTime` and `EndTime` values that
 #' align with the value of the metric\'s `Period` and sync up with the
 #' beginning and end of an hour. For example, if the `Period` of a metric
 #' is 5 minutes, specifying 12:05 or 12:30 as `EndTime` can get a faster
-#' response from CloudWatch then setting 12:07 or 12:29 as the `EndTime`.
+#' response from CloudWatch than setting 12:07 or 12:29 as the `EndTime`.
 #' @param NextToken Include this value, if it was returned by the previous call, to get the
 #' next set of data points.
 #' @param ScanBy The order in which data points should be returned. `TimestampDescending`
@@ -549,7 +549,7 @@ cloudwatch_get_metric_data <- function(MetricDataQueries, StartTime, EndTime, Ne
 #' 
 #' For information about metrics and dimensions supported by AWS services,
 #' see the [Amazon CloudWatch Metrics and Dimensions
-#' Reference](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CW_Support_For_AWS.html)
+#' Reference](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CW_Support_For_AWS.html)
 #' in the *Amazon CloudWatch User Guide*.
 #'
 #' @usage
@@ -564,10 +564,10 @@ cloudwatch_get_metric_data <- function(MetricDataQueries, StartTime, EndTime, Ne
 #' combination of dimensions was not published, you can\'t retrieve
 #' statistics for it. You must specify the same dimensions that were used
 #' when the metrics were created. For an example, see [Dimension
-#' Combinations](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations)
+#' Combinations](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations)
 #' in the *Amazon CloudWatch User Guide*. For more information about
 #' specifying dimensions, see [Publishing
-#' Metrics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html)
+#' Metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html)
 #' in the *Amazon CloudWatch User Guide*.
 #' @param StartTime &#91;required&#93; The time stamp that determines the first data point to return. Start
 #' times are evaluated relative to the time that CloudWatch receives the
@@ -722,7 +722,7 @@ cloudwatch_get_metric_statistics <- function(Namespace, MetricName, Dimensions =
 #' response with the content-type set to `text/xml`. The image data is in a
 #' `MetricWidgetImage` field. For example:
 #' 
-#' ` &lt;GetMetricWidgetImageResponse xmlns="http://monitoring.amazonaws.com/doc/2010-08-01/"&gt;`
+#' ` &lt;GetMetricWidgetImageResponse xmlns=&lt;URLstring&gt;&gt;`
 #' 
 #' ` &lt;GetMetricWidgetImageResult&gt;`
 #' 
@@ -877,6 +877,45 @@ cloudwatch_list_metrics <- function(Namespace = NULL, MetricName = NULL, Dimensi
 }
 .cloudwatch$operations$list_metrics <- cloudwatch_list_metrics
 
+#' Displays the tags associated with a CloudWatch resource
+#'
+#' Displays the tags associated with a CloudWatch resource. Alarms support
+#' tagging.
+#'
+#' @usage
+#' cloudwatch_list_tags_for_resource(ResourceARN)
+#'
+#' @param ResourceARN &#91;required&#93; The ARN of the CloudWatch resource that you want to view tags for. For
+#' more information on ARN format, see [Example
+#' ARNs](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-cloudwatch)
+#' in the *Amazon Web Services General Reference*.
+#'
+#' @section Request syntax:
+#' ```
+#' cloudwatch$list_tags_for_resource(
+#'   ResourceARN = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_list_tags_for_resource
+cloudwatch_list_tags_for_resource <- function(ResourceARN) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatch$list_tags_for_resource_input(ResourceARN = ResourceARN)
+  output <- .cloudwatch$list_tags_for_resource_output()
+  svc <- .cloudwatch$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$list_tags_for_resource <- cloudwatch_list_tags_for_resource
+
 #' Creates a dashboard if it does not already exist, or updates an existing
 #' dashboard
 #'
@@ -970,8 +1009,7 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
 #' 
 #' -   `ec2:TerminateInstances` for alarms with terminate actions
 #' 
-#' -   `ec2:DescribeInstanceRecoveryAttribute` and `ec2:RecoverInstances`
-#'     for alarms with recover actions
+#' -   No specific permissions are needed for alarms with recover actions
 #' 
 #' If you have read/write permissions for Amazon CloudWatch but not for
 #' Amazon EC2, you can still create an alarm, but the stop or terminate
@@ -992,14 +1030,14 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
 #' necessary service-linked role for you. The service-linked role is called
 #' `AWSServiceRoleForCloudWatchEvents`. For more information, see [AWS
 #' service-linked
-#' role](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role).
+#' role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role).
 #'
 #' @usage
 #' cloudwatch_put_metric_alarm(AlarmName, AlarmDescription, ActionsEnabled,
 #'   OKActions, AlarmActions, InsufficientDataActions, MetricName, Namespace,
 #'   Statistic, ExtendedStatistic, Dimensions, Period, Unit,
 #'   EvaluationPeriods, DatapointsToAlarm, Threshold, ComparisonOperator,
-#'   TreatMissingData, EvaluateLowSampleCountPercentile, Metrics)
+#'   TreatMissingData, EvaluateLowSampleCountPercentile, Metrics, Tags)
 #'
 #' @param AlarmName &#91;required&#93; The name for the alarm. This name must be unique within your AWS
 #' account.
@@ -1030,6 +1068,7 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
 #' Valid Values: `arn:aws:automate:<i>region</i>:ec2:stop` \\|
 #' `arn:aws:automate:<i>region</i>:ec2:terminate` \\|
 #' `arn:aws:automate:<i>region</i>:ec2:recover` \\|
+#' `arn:aws:automate:<i>region</i>:ec2:reboot` \\|
 #' `arn:aws:sns:<i>region</i>:<i>account-id</i>:<i>sns-topic-name</i> ` \\|
 #' `arn:aws:autoscaling:<i>region</i>:<i>account-id</i>:scalingPolicy:<i>policy-id</i>autoScalingGroupName/<i>group-friendly-name</i>:policyName/<i>policy-friendly-name</i> `
 #' 
@@ -1046,6 +1085,7 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
 #' Valid Values: `arn:aws:automate:<i>region</i>:ec2:stop` \\|
 #' `arn:aws:automate:<i>region</i>:ec2:terminate` \\|
 #' `arn:aws:automate:<i>region</i>:ec2:recover` \\|
+#' `arn:aws:automate:<i>region</i>:ec2:reboot` \\|
 #' `arn:aws:sns:<i>region</i>:<i>account-id</i>:<i>sns-topic-name</i> ` \\|
 #' `arn:aws:autoscaling:<i>region</i>:<i>account-id</i>:scalingPolicy:<i>policy-id</i>autoScalingGroupName/<i>group-friendly-name</i>:policyName/<i>policy-friendly-name</i> `
 #' 
@@ -1111,7 +1151,7 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
 #' @param DatapointsToAlarm The number of datapoints that must be breaching to trigger the alarm.
 #' This is used only if you are setting an \"M out of N\" alarm. In that
 #' case, this value is the M. For more information, see [Evaluating an
-#' Alarm](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarm-evaluation)
+#' Alarm](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarm-evaluation)
 #' in the *Amazon CloudWatch User Guide*.
 #' @param Threshold &#91;required&#93; The value against which the specified statistic is compared.
 #' @param ComparisonOperator &#91;required&#93; The arithmetic operation to use when comparing the specified statistic
@@ -1121,7 +1161,7 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
 #' `TreatMissingData` is omitted, the default behavior of `missing` is
 #' used. For more information, see [Configuring How CloudWatch Alarms
 #' Treats Missing
-#' Data](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarms-and-missing-data).
+#' Data](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarms-and-missing-data).
 #' 
 #' Valid Values: `breaching | notBreaching | ignore | missing`
 #' @param EvaluateLowSampleCountPercentile Used only for alarms based on percentiles. If you specify `ignore`, the
@@ -1130,18 +1170,28 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
 #' parameter, the alarm is always evaluated and possibly changes state no
 #' matter how many data points are available. For more information, see
 #' [Percentile-Based CloudWatch Alarms and Low Data
-#' Samples](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#percentiles-with-low-samples).
+#' Samples](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#percentiles-with-low-samples).
 #' 
 #' Valid Values: `evaluate | ignore`
 #' @param Metrics An array of `MetricDataQuery` structures that enable you to create an
 #' alarm based on the result of a metric math expression. Each item in the
 #' `Metrics` array either retrieves a metric or performs a math expression.
 #' 
+#' One item in the `Metrics` array is the expression that the alarm
+#' watches. You designate this expression by setting `ReturnValue` to true
+#' for this object in the array. For more information, see MetricDataQuery.
+#' 
 #' If you use the `Metrics` parameter, you cannot include the `MetricName`,
 #' `Dimensions`, `Period`, `Namespace`, `Statistic`, or `ExtendedStatistic`
 #' parameters of `PutMetricAlarm` in the same operation. Instead, you
 #' retrieve the metrics you are using in your math expression as part of
 #' the `Metrics` array.
+#' @param Tags A list of key-value pairs to associate with the alarm or dashboard. You
+#' can associate as many as 50 tags with an alarm.
+#' 
+#' Tags can help you organize and categorize your resources. You can also
+#' use them to scope user permissions, by granting a user permission to
+#' access or change only resources with certain tag values.
 #'
 #' @section Request syntax:
 #' ```
@@ -1198,6 +1248,12 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
 #'       Label = "string",
 #'       ReturnData = TRUE|FALSE
 #'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1205,14 +1261,14 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
 #' @keywords internal
 #'
 #' @rdname cloudwatch_put_metric_alarm
-cloudwatch_put_metric_alarm <- function(AlarmName, AlarmDescription = NULL, ActionsEnabled = NULL, OKActions = NULL, AlarmActions = NULL, InsufficientDataActions = NULL, MetricName = NULL, Namespace = NULL, Statistic = NULL, ExtendedStatistic = NULL, Dimensions = NULL, Period = NULL, Unit = NULL, EvaluationPeriods, DatapointsToAlarm = NULL, Threshold, ComparisonOperator, TreatMissingData = NULL, EvaluateLowSampleCountPercentile = NULL, Metrics = NULL) {
+cloudwatch_put_metric_alarm <- function(AlarmName, AlarmDescription = NULL, ActionsEnabled = NULL, OKActions = NULL, AlarmActions = NULL, InsufficientDataActions = NULL, MetricName = NULL, Namespace = NULL, Statistic = NULL, ExtendedStatistic = NULL, Dimensions = NULL, Period = NULL, Unit = NULL, EvaluationPeriods, DatapointsToAlarm = NULL, Threshold, ComparisonOperator, TreatMissingData = NULL, EvaluateLowSampleCountPercentile = NULL, Metrics = NULL, Tags = NULL) {
   op <- new_operation(
     name = "PutMetricAlarm",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudwatch$put_metric_alarm_input(AlarmName = AlarmName, AlarmDescription = AlarmDescription, ActionsEnabled = ActionsEnabled, OKActions = OKActions, AlarmActions = AlarmActions, InsufficientDataActions = InsufficientDataActions, MetricName = MetricName, Namespace = Namespace, Statistic = Statistic, ExtendedStatistic = ExtendedStatistic, Dimensions = Dimensions, Period = Period, Unit = Unit, EvaluationPeriods = EvaluationPeriods, DatapointsToAlarm = DatapointsToAlarm, Threshold = Threshold, ComparisonOperator = ComparisonOperator, TreatMissingData = TreatMissingData, EvaluateLowSampleCountPercentile = EvaluateLowSampleCountPercentile, Metrics = Metrics)
+  input <- .cloudwatch$put_metric_alarm_input(AlarmName = AlarmName, AlarmDescription = AlarmDescription, ActionsEnabled = ActionsEnabled, OKActions = OKActions, AlarmActions = AlarmActions, InsufficientDataActions = InsufficientDataActions, MetricName = MetricName, Namespace = Namespace, Statistic = Statistic, ExtendedStatistic = ExtendedStatistic, Dimensions = Dimensions, Period = Period, Unit = Unit, EvaluationPeriods = EvaluationPeriods, DatapointsToAlarm = DatapointsToAlarm, Threshold = Threshold, ComparisonOperator = ComparisonOperator, TreatMissingData = TreatMissingData, EvaluateLowSampleCountPercentile = EvaluateLowSampleCountPercentile, Metrics = Metrics, Tags = Tags)
   output <- .cloudwatch$put_metric_alarm_output()
   svc <- .cloudwatch$service()
   request <- new_request(svc, op, input, output)
@@ -1247,9 +1303,9 @@ cloudwatch_put_metric_alarm <- function(AlarmName, AlarmDescription = NULL, Acti
 #' +Infinity, -Infinity) are not supported.
 #' 
 #' You can use up to 10 dimensions per metric to further clarify what data
-#' the metric collects. For more information about specifying dimensions,
-#' see [Publishing
-#' Metrics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html)
+#' the metric collects. Each dimension consists of a Name and Value pair.
+#' For more information about specifying dimensions, see [Publishing
+#' Metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html)
 #' in the *Amazon CloudWatch User Guide*.
 #' 
 #' Data points with time stamps from 24 hours ago or longer can take at
@@ -1385,3 +1441,106 @@ cloudwatch_set_alarm_state <- function(AlarmName, StateValue, StateReason, State
   return(response)
 }
 .cloudwatch$operations$set_alarm_state <- cloudwatch_set_alarm_state
+
+#' Assigns one or more tags (key-value pairs) to the specified CloudWatch
+#' resource
+#'
+#' Assigns one or more tags (key-value pairs) to the specified CloudWatch
+#' resource. Tags can help you organize and categorize your resources. You
+#' can also use them to scope user permissions, by granting a user
+#' permission to access or change only resources with certain tag values.
+#' In CloudWatch, alarms can be tagged.
+#' 
+#' Tags don\'t have any semantic meaning to AWS and are interpreted
+#' strictly as strings of characters.
+#' 
+#' You can use the `TagResource` action with a resource that already has
+#' tags. If you specify a new tag key for the resource, this tag is
+#' appended to the list of tags associated with the resource. If you
+#' specify a tag key that is already associated with the resource, the new
+#' tag value that you specify replaces the previous value for that tag.
+#' 
+#' You can associate as many as 50 tags with a resource.
+#'
+#' @usage
+#' cloudwatch_tag_resource(ResourceARN, Tags)
+#'
+#' @param ResourceARN &#91;required&#93; The ARN of the CloudWatch resource that you\'re adding tags to. For more
+#' information on ARN format, see [Example
+#' ARNs](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-cloudwatch)
+#' in the *Amazon Web Services General Reference*.
+#' @param Tags &#91;required&#93; The list of key-value pairs to associate with the resource.
+#'
+#' @section Request syntax:
+#' ```
+#' cloudwatch$tag_resource(
+#'   ResourceARN = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_tag_resource
+cloudwatch_tag_resource <- function(ResourceARN, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatch$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
+  output <- .cloudwatch$tag_resource_output()
+  svc <- .cloudwatch$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$tag_resource <- cloudwatch_tag_resource
+
+#' Removes one or more tags from the specified resource
+#'
+#' Removes one or more tags from the specified resource.
+#'
+#' @usage
+#' cloudwatch_untag_resource(ResourceARN, TagKeys)
+#'
+#' @param ResourceARN &#91;required&#93; The ARN of the CloudWatch resource that you\'re removing tags from. For
+#' more information on ARN format, see [Example
+#' ARNs](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-cloudwatch)
+#' in the *Amazon Web Services General Reference*.
+#' @param TagKeys &#91;required&#93; The list of tag keys to remove from the resource.
+#'
+#' @section Request syntax:
+#' ```
+#' cloudwatch$untag_resource(
+#'   ResourceARN = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_untag_resource
+cloudwatch_untag_resource <- function(ResourceARN, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatch$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
+  output <- .cloudwatch$untag_resource_output()
+  svc <- .cloudwatch$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$untag_resource <- cloudwatch_untag_resource

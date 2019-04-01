@@ -15,7 +15,7 @@ their log events to the associated destination.}
 }
 \description{
 Creates or updates an access policy associated with an existing
-destination. An access policy is an \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies_overview.html}{IAM policy document}
+destination. An access policy is an \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies_overview.html}{IAM policy document}
 that is used to authorize claims to register a subscription filter
 against a given destination.
 }

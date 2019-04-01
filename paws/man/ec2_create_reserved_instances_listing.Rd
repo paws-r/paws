@@ -30,9 +30,8 @@ Reserved Instance listing at a time. To get a list of your Standard
 Reserved Instances, you can use the DescribeReservedInstances operation.
 }
 \details{
-Only Standard Reserved Instances with a capacity reservation can be sold
-in the Reserved Instance Marketplace. Convertible Reserved Instances and
-Standard Reserved Instances with a regional benefit cannot be sold.
+Only Standard Reserved Instances can be sold in the Reserved Instance
+Marketplace. Convertible Reserved Instances cannot be sold.
 
 The Reserved Instance Marketplace matches sellers who want to resell
 Standard Reserved Instance capacity that they no longer need with buyers

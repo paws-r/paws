@@ -6,7 +6,7 @@
 functions and their configurations to be used in a group}
 \usage{
 greengrass_create_function_definition(AmznClientToken, InitialVersion,
-  Name)
+  Name, tags)
 }
 \arguments{
 \item{AmznClientToken}{A client token used to correlate requests and responses.}
@@ -14,6 +14,8 @@ greengrass_create_function_definition(AmznClientToken, InitialVersion,
 \item{InitialVersion}{Information about the initial version of the function definition.}
 
 \item{Name}{The name of the function definition.}
+
+\item{tags}{Tag(s) to add to the new resource}
 }
 \description{
 Creates a Lambda function definition which contains a list of Lambda functions and their configurations to be used in a group. You can create an initial version of the definition by providing a list of Lambda functions and their configurations now, or use ''CreateFunctionDefinitionVersion'' later.
@@ -24,7 +26,11 @@ Creates a Lambda function definition which contains a list of Lambda functions a
   InitialVersion = list(
     DefaultConfig = list(
       Execution = list(
-        IsolationMode = "GreengrassContainer"|"NoContainer"
+        IsolationMode = "GreengrassContainer"|"NoContainer",
+        RunAs = list(
+          Gid = 123,
+          Uid = 123
+        )
       )
     ),
     Functions = list(
@@ -61,7 +67,10 @@ Creates a Lambda function definition which contains a list of Lambda functions a
       )
     )
   ),
-  Name = "string"
+  Name = "string",
+  tags = list(
+    "string"
+  )
 )
 }
 }

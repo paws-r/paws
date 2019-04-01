@@ -5,19 +5,24 @@
 \title{Creates a Device Defender security profile}
 \usage{
 iot_create_security_profile(securityProfileName,
-  securityProfileDescription, behaviors, alertTargets, tags)
+  securityProfileDescription, behaviors, alertTargets,
+  additionalMetricsToRetain, tags)
 }
 \arguments{
 \item{securityProfileName}{[required] The name you are giving to the security profile.}
 
 \item{securityProfileDescription}{A description of the security profile.}
 
-\item{behaviors}{[required] Specifies the behaviors that, when violated by a device (thing), cause
+\item{behaviors}{Specifies the behaviors that, when violated by a device (thing), cause
 an alert.}
 
 \item{alertTargets}{Specifies the destinations to which alerts are sent. (Alerts are always
 sent to the console.) Alerts are generated when a device (thing)
 violates a behavior.}
+
+\item{additionalMetricsToRetain}{A list of metrics whose data is retained (stored). By default, data is
+retained for any metric used in the profile's \code{behaviors} but it is
+also retained for any metric specified here.}
 
 \item{tags}{Metadata which can be used to manage the security profile.}
 }
@@ -43,7 +48,12 @@ Creates a Device Defender security profile.
             123
           )
         ),
-        durationSeconds = 123
+        durationSeconds = 123,
+        consecutiveDatapointsToAlarm = 123,
+        consecutiveDatapointsToClear = 123,
+        statisticalThreshold = list(
+          statistic = "string"
+        )
       )
     )
   ),
@@ -52,6 +62,9 @@ Creates a Device Defender security profile.
       alertTargetArn = "string",
       roleArn = "string"
     )
+  ),
+  additionalMetricsToRetain = list(
+    "string"
   ),
   tags = list(
     list(

@@ -6,12 +6,17 @@
 private gateway}
 \usage{
 directconnect_create_direct_connect_gateway_association(
-  directConnectGatewayId, virtualGatewayId)
+  directConnectGatewayId, gatewayId,
+  addAllowedPrefixesToDirectConnectGateway, virtualGatewayId)
 }
 \arguments{
 \item{directConnectGatewayId}{[required] The ID of the Direct Connect gateway.}
 
-\item{virtualGatewayId}{[required] The ID of the virtual private gateway.}
+\item{gatewayId}{The ID of the virtual private gateway.}
+
+\item{addAllowedPrefixesToDirectConnectGateway}{The Amazon VPC prefixes to advertise to the Direct Connect gateway}
+
+\item{virtualGatewayId}{The ID of the virtual private gateway.}
 }
 \description{
 Creates an association between a Direct Connect gateway and a virtual
@@ -21,6 +26,12 @@ and must not be associated with another Direct Connect gateway.
 \section{Request syntax}{
 \preformatted{directconnect$create_direct_connect_gateway_association(
   directConnectGatewayId = "string",
+  gatewayId = "string",
+  addAllowedPrefixesToDirectConnectGateway = list(
+    list(
+      cidr = "string"
+    )
+  ),
   virtualGatewayId = "string"
 )
 }

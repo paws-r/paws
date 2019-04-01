@@ -8,15 +8,17 @@ autoscaling_describe_auto_scaling_groups(AutoScalingGroupNames,
   NextToken, MaxRecords)
 }
 \arguments{
-\item{AutoScalingGroupNames}{The names of the Auto Scaling groups. You can specify up to \code{MaxRecords}
-names. If you omit this parameter, all Auto Scaling groups are
-described.}
+\item{AutoScalingGroupNames}{The names of the Auto Scaling groups. Each name can be a maximum of 1600
+characters. By default, you can only specify up to 50 names. You can
+optionally increase this limit using the \code{MaxRecords} parameter.
+
+If you omit this parameter, all Auto Scaling groups are described.}
 
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 
 \item{MaxRecords}{The maximum number of items to return with this call. The default value
-is 50 and the maximum value is 100.}
+is \code{50} and the maximum value is \code{100}.}
 }
 \description{
 Describes one or more Auto Scaling groups.

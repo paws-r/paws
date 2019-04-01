@@ -12,7 +12,7 @@ lambda_delete_layer_version(LayerName, VersionNumber)
 \item{VersionNumber}{[required] The version number.}
 }
 \description{
-Deletes a version of an \href{http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layer}.
+Deletes a version of an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layer}.
 Deleted versions can no longer be viewed or added to functions. To avoid
 breaking functions, a copy of the version remains in Lambda until no
 functions refer to it.

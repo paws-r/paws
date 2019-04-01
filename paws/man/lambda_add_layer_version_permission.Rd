@@ -29,7 +29,7 @@ this option to avoid modifying a policy that has changed since you last
 read it.}
 }
 \description{
-Adds permissions to the resource-based policy of a version of an \href{http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layer}.
+Adds permissions to the resource-based policy of a version of an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layer}.
 Use this action to grant layer usage permission to other accounts. You
 can grant permission to a single account, all AWS accounts, or all
 accounts in an organization.

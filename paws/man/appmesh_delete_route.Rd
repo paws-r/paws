@@ -7,11 +7,11 @@
 appmesh_delete_route(meshName, routeName, virtualRouterName)
 }
 \arguments{
-\item{meshName}{[required] The name of the service mesh in which to delete the route.}
+\item{meshName}{[required] The name of the service mesh to delete the route in.}
 
 \item{routeName}{[required] The name of the route to delete.}
 
-\item{virtualRouterName}{[required] The name of the virtual router in which to delete the route.}
+\item{virtualRouterName}{[required] The name of the virtual router to delete the route in.}
 }
 \description{
 Deletes an existing route.

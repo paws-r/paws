@@ -43,7 +43,7 @@ Elastic Container Service (Amazon ECR) isn't supported. Free and
 BYOL products for ECS aren't required to call RegisterUsage, but
 you can do so if you want to receive usage data in your seller
 reports. For more information on using the RegisterUsage operation,
-see \href{https://docs.aws.amazon.com/latest/userguide/entitlement-and-metering-for-paid-products.html}{Container-Based Products}.
+see \href{https://docs.aws.amazon.com/marketplace/latest/userguide/container-based-products.html}{Container-Based Products}.
 }
 
 BatchMeterUsage API calls are captured by AWS CloudTrail. You can use

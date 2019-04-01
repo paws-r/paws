@@ -25,7 +25,7 @@ NULL
 #' 
 #' For more information about the features of Amazon CloudWatch Events, see
 #' the [Amazon CloudWatch Events User
-#' Guide](http://docs.aws.amazon.com/AmazonCloudWatch/latest/events).
+#' Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events).
 #'
 #' @section Example:
 #' ```
@@ -42,6 +42,7 @@ NULL
 #'  \link[=cloudwatchevents_enable_rule]{enable_rule} \tab Enables the specified rule \cr
 #'  \link[=cloudwatchevents_list_rule_names_by_target]{list_rule_names_by_target} \tab Lists the rules for the specified target \cr
 #'  \link[=cloudwatchevents_list_rules]{list_rules} \tab Lists your Amazon CloudWatch Events rules \cr
+#'  \link[=cloudwatchevents_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with a CloudWatch Events resource \cr
 #'  \link[=cloudwatchevents_list_targets_by_rule]{list_targets_by_rule} \tab Lists the targets assigned to the specified rule \cr
 #'  \link[=cloudwatchevents_put_events]{put_events} \tab Sends custom events to Amazon CloudWatch Events so that they can be matched to rules \cr
 #'  \link[=cloudwatchevents_put_permission]{put_permission} \tab Running PutPermission permits the specified AWS account or AWS organization to put events to your account's default _event bus_ \cr
@@ -49,7 +50,9 @@ NULL
 #'  \link[=cloudwatchevents_put_targets]{put_targets} \tab Adds the specified targets to the specified rule, or updates the targets if they are already associated with the rule \cr
 #'  \link[=cloudwatchevents_remove_permission]{remove_permission} \tab Revokes the permission of another AWS account to be able to put events to your default event bus \cr
 #'  \link[=cloudwatchevents_remove_targets]{remove_targets} \tab Removes the specified targets from the specified rule \cr
-#'  \link[=cloudwatchevents_test_event_pattern]{test_event_pattern} \tab Tests whether the specified event pattern matches the provided event 
+#'  \link[=cloudwatchevents_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified CloudWatch Events resource \cr
+#'  \link[=cloudwatchevents_test_event_pattern]{test_event_pattern} \tab Tests whether the specified event pattern matches the provided event \cr
+#'  \link[=cloudwatchevents_untag_resource]{untag_resource} \tab Removes one or more tags from the specified CloudWatch Events resource 
 #' }
 #'
 #' @rdname cloudwatchevents

@@ -14,11 +14,11 @@ NULL
 #' and manage policies and credentials to authenticate devices.
 #' 
 #' For more information about how AWS IoT works, see the [Developer
-#' Guide](http://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html).
+#' Guide](https://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html).
 #' 
 #' For information about how to use the credentials provider for AWS IoT,
 #' see [Authorizing Direct Calls to AWS
-#' Services](http://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html).
+#' Services](https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html).
 #'
 #' @section Example:
 #' ```
@@ -114,6 +114,7 @@ NULL
 #'  \link[=iot_get_policy]{get_policy} \tab Gets information about the specified policy with the policy document of the default version \cr
 #'  \link[=iot_get_policy_version]{get_policy_version} \tab Gets information about the specified policy version \cr
 #'  \link[=iot_get_registration_code]{get_registration_code} \tab Gets a registration code used to register a CA certificate with AWS IoT \cr
+#'  \link[=iot_get_statistics]{get_statistics} \tab Gets statistics about things that match the specified query \cr
 #'  \link[=iot_get_topic_rule]{get_topic_rule} \tab Gets information about the rule \cr
 #'  \link[=iot_get_v2_logging_options]{get_v2_logging_options} \tab Gets the fine grained logging options \cr
 #'  \link[=iot_list_active_violations]{list_active_violations} \tab Lists the active violations for a given Device Defender security profile \cr

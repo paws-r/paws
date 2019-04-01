@@ -2,18 +2,23 @@
 % Please edit documentation in R/athena_operations.R
 \name{athena_list_query_executions}
 \alias{athena_list_query_executions}
-\title{Provides a list of all available query execution IDs}
+\title{Provides a list of available query execution IDs for the queries in the
+specified workgroup}
 \usage{
-athena_list_query_executions(NextToken, MaxResults)
+athena_list_query_executions(NextToken, MaxResults, WorkGroup)
 }
 \arguments{
 \item{NextToken}{The token that specifies where to start pagination if a previous request
 was truncated.}
 
 \item{MaxResults}{The maximum number of query executions to return in this request.}
+
+\item{WorkGroup}{The name of the workgroup from which queries are being returned.}
 }
 \description{
-Provides a list of all available query execution IDs.
+Provides a list of available query execution IDs for the queries in the
+specified workgroup. Requires you to have access to the workgroup in
+which the queries ran.
 }
 \details{
 For code samples using the AWS SDK for Java, see \href{http://docs.aws.amazon.com/athena/latest/ug/code-samples.html}{Examples and Code Samples}
@@ -22,7 +27,8 @@ in the \emph{Amazon Athena User Guide}.
 \section{Request syntax}{
 \preformatted{athena$list_query_executions(
   NextToken = "string",
-  MaxResults = 123
+  MaxResults = 123,
+  WorkGroup = "string"
 )
 }
 }

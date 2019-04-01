@@ -8,7 +8,7 @@ glue_delete_connection(CatalogId, ConnectionName)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog in which the connection resides. If none is
-supplied, the AWS account ID is used by default.}
+provided, the AWS account ID is used by default.}
 
 \item{ConnectionName}{[required] The name of the connection to delete.}
 }

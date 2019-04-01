@@ -15,7 +15,12 @@ policy to.}
 \description{
 Writes an object lifecycle policy to a container. If the container
 already has an object lifecycle policy, the service replaces the
-existing policy with the new policy.
+existing policy with the new policy. It takes up to 20 minutes for the
+change to take effect.
+}
+\details{
+For information about how to construct an object lifecycle policy, see
+\href{https://docs.aws.amazon.com/mediastore/latest/ug/policies-object-lifecycle-components.html}{Components of an Object Lifecycle Policy}.
 }
 \section{Request syntax}{
 \preformatted{mediastore$put_lifecycle_policy(

@@ -5,7 +5,7 @@
 \title{Creates a subscription definition}
 \usage{
 greengrass_create_subscription_definition(AmznClientToken,
-  InitialVersion, Name)
+  InitialVersion, Name, tags)
 }
 \arguments{
 \item{AmznClientToken}{A client token used to correlate requests and responses.}
@@ -13,6 +13,8 @@ greengrass_create_subscription_definition(AmznClientToken,
 \item{InitialVersion}{Information about the initial version of the subscription definition.}
 
 \item{Name}{The name of the subscription definition.}
+
+\item{tags}{Tag(s) to add to the new resource}
 }
 \description{
 Creates a subscription definition. You may provide the initial version of the subscription definition now or use ''CreateSubscriptionDefinitionVersion'' at a later time.
@@ -30,7 +32,10 @@ Creates a subscription definition. You may provide the initial version of the su
       )
     )
   ),
-  Name = "string"
+  Name = "string",
+  tags = list(
+    "string"
+  )
 )
 }
 }

@@ -12,7 +12,7 @@ rds_copy_db_cluster_parameter_group(
 \arguments{
 \item{SourceDBClusterParameterGroupIdentifier}{[required] The identifier or Amazon Resource Name (ARN) for the source DB cluster
 parameter group. For information about creating an ARN, see
-\href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an ARN for Amazon RDS}
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an ARN for Amazon RDS}
 in the \emph{Amazon Aurora User Guide}.
 
 Constraints:
@@ -45,6 +45,9 @@ Example: \code{my-cluster-param-group1}}
 }
 \description{
 Copies the specified DB cluster parameter group.
+}
+\details{
+This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
 \preformatted{rds$copy_db_cluster_parameter_group(

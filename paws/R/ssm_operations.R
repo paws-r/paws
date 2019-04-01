@@ -184,7 +184,7 @@ ssm_cancel_maintenance_window_execution <- function(WindowExecutionId) {
 #'
 #' @usage
 #' ssm_create_activation(Description, DefaultInstanceName, IamRole,
-#'   RegistrationLimit, ExpirationDate)
+#'   RegistrationLimit, ExpirationDate, Tags)
 #'
 #' @param Description A user-defined description of the resource that you want to register
 #' with Amazon EC2.
@@ -201,6 +201,29 @@ ssm_cancel_maintenance_window_execution <- function(WindowExecutionId) {
 #' The default value is 1 instance.
 #' @param ExpirationDate The date by which this activation request should expire. The default
 #' value is 24 hours.
+#' @param Tags Optional metadata that you assign to a resource. Tags enable you to
+#' categorize a resource in different ways, such as by purpose, owner, or
+#' environment. For example, you might want to tag an activation to
+#' identify which servers or virtual machines (VMs) in your on-premises
+#' environment you intend to activate. In this case, you could specify the
+#' following key name/value pairs:
+#' 
+#' -   `Key=OS,Value=Windows`
+#' 
+#' -   `Key=Environment,Value=Production`
+#' 
+#' When you install SSM Agent on your on-premises servers and VMs, you
+#' specify an activation ID and code. When you specify the activation ID
+#' and code, tags assigned to the activation are automatically applied to
+#' the on-premises servers or VMs.
+#' 
+#' You can\'t add tags to or delete tags from an existing activation. You
+#' can tag your on-premises servers and VMs after they connect to Systems
+#' Manager for the first time and are assigned a managed instance ID. This
+#' means they are listed in the AWS Systems Manager console with an ID that
+#' is prefixed with \"mi-\". For information about how to add tags to your
+#' managed instances, see AddTagsToResource. For information about how to
+#' remove tags from your managed instances, see RemoveTagsFromResource.
 #'
 #' @section Request syntax:
 #' ```
@@ -211,6 +234,12 @@ ssm_cancel_maintenance_window_execution <- function(WindowExecutionId) {
 #'   RegistrationLimit = 123,
 #'   ExpirationDate = as.POSIXct(
 #'     "2015-01-01"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -218,14 +247,14 @@ ssm_cancel_maintenance_window_execution <- function(WindowExecutionId) {
 #' @keywords internal
 #'
 #' @rdname ssm_create_activation
-ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL, IamRole, RegistrationLimit = NULL, ExpirationDate = NULL) {
+ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL, IamRole, RegistrationLimit = NULL, ExpirationDate = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateActivation",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ssm$create_activation_input(Description = Description, DefaultInstanceName = DefaultInstanceName, IamRole = IamRole, RegistrationLimit = RegistrationLimit, ExpirationDate = ExpirationDate)
+  input <- .ssm$create_activation_input(Description = Description, DefaultInstanceName = DefaultInstanceName, IamRole = IamRole, RegistrationLimit = RegistrationLimit, ExpirationDate = ExpirationDate, Tags = Tags)
   output <- .ssm$create_activation_output()
   svc <- .ssm$service()
   request <- new_request(svc, op, input, output)
@@ -254,7 +283,25 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #'   AutomationTargetParameterName, MaxErrors, MaxConcurrency,
 #'   ComplianceSeverity)
 #'
-#' @param Name &#91;required&#93; The name of the Systems Manager document.
+#' @param Name &#91;required&#93; The name of the SSM document that contains the configuration information
+#' for the instance. You can specify Command, Policy, or Automation
+#' documents.
+#' 
+#' You can specify AWS-predefined documents, documents you created, or a
+#' document that is shared with you from another account.
+#' 
+#' For SSM documents that are shared with you from other AWS accounts, you
+#' must specify the complete SSM document ARN, in the following format:
+#' 
+#' `arn:<i>partition</i>:ssm:<i>region</i>:<i>account-id</i>:document/<i>document-name</i> `
+#' 
+#' For example:
+#' 
+#' `arn:aws:ssm:us-east-2:12345678912:document/My-Shared-Document`
+#' 
+#' For AWS-predefined documents and SSM documents you created in your
+#' account, you only need to specify the document name. For example,
+#' `AWS-ApplyPatchBaseline` or `My-Document`.
 #' @param DocumentVersion The document version you want to associate with the target(s). Can be a
 #' specific version or the default version.
 #' @param InstanceId The instance ID.
@@ -434,7 +481,7 @@ ssm_create_association_batch <- function(Entries) {
 #'
 #' @usage
 #' ssm_create_document(Content, Attachments, Name, VersionName,
-#'   DocumentType, DocumentFormat, TargetType)
+#'   DocumentType, DocumentFormat, TargetType, Tags)
 #'
 #' @param Content &#91;required&#93; A valid JSON or YAML string.
 #' @param Attachments A list of key and value pairs that describe attachments to a version of
@@ -465,6 +512,18 @@ ssm_create_association_batch <- function(Entries) {
 #' resource types, see [AWS Resource Types
 #' Reference](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
 #' in the *AWS CloudFormation User Guide*.
+#' @param Tags Optional metadata that you assign to a resource. Tags enable you to
+#' categorize a resource in different ways, such as by purpose, owner, or
+#' environment. For example, you might want to tag an SSM document to
+#' identify the types of targets or the environment where it will run. In
+#' this case, you could specify the following key name/value pairs:
+#' 
+#' -   `Key=OS,Value=Windows`
+#' 
+#' -   `Key=Environment,Value=Production`
+#' 
+#' To add tags to an existing SSM document, use the AddTagsToResource
+#' action.
 #'
 #' @section Request syntax:
 #' ```
@@ -482,21 +541,27 @@ ssm_create_association_batch <- function(Entries) {
 #'   VersionName = "string",
 #'   DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package",
 #'   DocumentFormat = "YAML"|"JSON",
-#'   TargetType = "string"
+#'   TargetType = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname ssm_create_document
-ssm_create_document <- function(Content, Attachments = NULL, Name, VersionName = NULL, DocumentType = NULL, DocumentFormat = NULL, TargetType = NULL) {
+ssm_create_document <- function(Content, Attachments = NULL, Name, VersionName = NULL, DocumentType = NULL, DocumentFormat = NULL, TargetType = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDocument",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ssm$create_document_input(Content = Content, Attachments = Attachments, Name = Name, VersionName = VersionName, DocumentType = DocumentType, DocumentFormat = DocumentFormat, TargetType = TargetType)
+  input <- .ssm$create_document_input(Content = Content, Attachments = Attachments, Name = Name, VersionName = VersionName, DocumentType = DocumentType, DocumentFormat = DocumentFormat, TargetType = TargetType, Tags = Tags)
   output <- .ssm$create_document_output()
   svc <- .ssm$service()
   request <- new_request(svc, op, input, output)
@@ -512,7 +577,7 @@ ssm_create_document <- function(Content, Attachments = NULL, Name, VersionName =
 #' @usage
 #' ssm_create_maintenance_window(Name, Description, StartDate, EndDate,
 #'   Schedule, ScheduleTimezone, Duration, Cutoff, AllowUnassociatedTargets,
-#'   ClientToken)
+#'   ClientToken, Tags)
 #'
 #' @param Name &#91;required&#93; The name of the Maintenance Window.
 #' @param Description An optional description for the Maintenance Window. We recommend
@@ -542,6 +607,21 @@ ssm_create_document <- function(Content, Attachments = NULL, Name, VersionName =
 #' previously-registered targets when you register a task with the
 #' Maintenance Window.
 #' @param ClientToken User-provided idempotency token.
+#' @param Tags Optional metadata that you assign to a resource. Tags enable you to
+#' categorize a resource in different ways, such as by purpose, owner, or
+#' environment. For example, you might want to tag a Maintenance Window to
+#' identify the type of tasks it will run, the types of targets, and the
+#' environment it will run in. In this case, you could specify the
+#' following key name/value pairs:
+#' 
+#' -   `Key=TaskType,Value=AgentUpdate`
+#' 
+#' -   `Key=OS,Value=Windows`
+#' 
+#' -   `Key=Environment,Value=Production`
+#' 
+#' To add tags to an existing Maintenance Window, use the AddTagsToResource
+#' action.
 #'
 #' @section Request syntax:
 #' ```
@@ -555,21 +635,27 @@ ssm_create_document <- function(Content, Attachments = NULL, Name, VersionName =
 #'   Duration = 123,
 #'   Cutoff = 123,
 #'   AllowUnassociatedTargets = TRUE|FALSE,
-#'   ClientToken = "string"
+#'   ClientToken = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname ssm_create_maintenance_window
-ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = NULL, EndDate = NULL, Schedule, ScheduleTimezone = NULL, Duration, Cutoff, AllowUnassociatedTargets, ClientToken = NULL) {
+ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = NULL, EndDate = NULL, Schedule, ScheduleTimezone = NULL, Duration, Cutoff, AllowUnassociatedTargets, ClientToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateMaintenanceWindow",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ssm$create_maintenance_window_input(Name = Name, Description = Description, StartDate = StartDate, EndDate = EndDate, Schedule = Schedule, ScheduleTimezone = ScheduleTimezone, Duration = Duration, Cutoff = Cutoff, AllowUnassociatedTargets = AllowUnassociatedTargets, ClientToken = ClientToken)
+  input <- .ssm$create_maintenance_window_input(Name = Name, Description = Description, StartDate = StartDate, EndDate = EndDate, Schedule = Schedule, ScheduleTimezone = ScheduleTimezone, Duration = Duration, Cutoff = Cutoff, AllowUnassociatedTargets = AllowUnassociatedTargets, ClientToken = ClientToken, Tags = Tags)
   output <- .ssm$create_maintenance_window_output()
   svc <- .ssm$service()
   request <- new_request(svc, op, input, output)
@@ -590,12 +676,12 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #' ssm_create_patch_baseline(OperatingSystem, Name, GlobalFilters,
 #'   ApprovalRules, ApprovedPatches, ApprovedPatchesComplianceLevel,
 #'   ApprovedPatchesEnableNonSecurity, RejectedPatches,
-#'   RejectedPatchesAction, Description, Sources, ClientToken)
+#'   RejectedPatchesAction, Description, Sources, ClientToken, Tags)
 #'
 #' @param OperatingSystem Defines the operating system the patch baseline applies to. The Default
 #' value is WINDOWS.
 #' @param Name &#91;required&#93; The name of the patch baseline.
-#' @param GlobalFilters A set of global filters used to exclude patches from the baseline.
+#' @param GlobalFilters A set of global filters used to include patches in the baseline.
 #' @param ApprovalRules A set of rules used to include patches in the baseline.
 #' @param ApprovedPatches A list of explicitly approved patches for the baseline.
 #' 
@@ -636,6 +722,19 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #' target operating systems and source repositories. Applies to Linux
 #' instances only.
 #' @param ClientToken User-provided idempotency token.
+#' @param Tags Optional metadata that you assign to a resource. Tags enable you to
+#' categorize a resource in different ways, such as by purpose, owner, or
+#' environment. For example, you might want to tag a patch baseline to
+#' identify the severity level of patches it specifies and the operating
+#' system family it applies to. In this case, you could specify the
+#' following key name/value pairs:
+#' 
+#' -   `Key=PatchSeverity,Value=Critical`
+#' 
+#' -   `Key=OS,Value=Windows`
+#' 
+#' To add tags to an existing patch baseline, use the AddTagsToResource
+#' action.
 #'
 #' @section Request syntax:
 #' ```
@@ -690,21 +789,27 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #'       Configuration = "string"
 #'     )
 #'   ),
-#'   ClientToken = "string"
+#'   ClientToken = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname ssm_create_patch_baseline
-ssm_create_patch_baseline <- function(OperatingSystem = NULL, Name, GlobalFilters = NULL, ApprovalRules = NULL, ApprovedPatches = NULL, ApprovedPatchesComplianceLevel = NULL, ApprovedPatchesEnableNonSecurity = NULL, RejectedPatches = NULL, RejectedPatchesAction = NULL, Description = NULL, Sources = NULL, ClientToken = NULL) {
+ssm_create_patch_baseline <- function(OperatingSystem = NULL, Name, GlobalFilters = NULL, ApprovalRules = NULL, ApprovedPatches = NULL, ApprovedPatchesComplianceLevel = NULL, ApprovedPatchesEnableNonSecurity = NULL, RejectedPatches = NULL, RejectedPatchesAction = NULL, Description = NULL, Sources = NULL, ClientToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreatePatchBaseline",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ssm$create_patch_baseline_input(OperatingSystem = OperatingSystem, Name = Name, GlobalFilters = GlobalFilters, ApprovalRules = ApprovalRules, ApprovedPatches = ApprovedPatches, ApprovedPatchesComplianceLevel = ApprovedPatchesComplianceLevel, ApprovedPatchesEnableNonSecurity = ApprovedPatchesEnableNonSecurity, RejectedPatches = RejectedPatches, RejectedPatchesAction = RejectedPatchesAction, Description = Description, Sources = Sources, ClientToken = ClientToken)
+  input <- .ssm$create_patch_baseline_input(OperatingSystem = OperatingSystem, Name = Name, GlobalFilters = GlobalFilters, ApprovalRules = ApprovalRules, ApprovedPatches = ApprovedPatches, ApprovedPatchesComplianceLevel = ApprovedPatchesComplianceLevel, ApprovedPatchesEnableNonSecurity = ApprovedPatchesEnableNonSecurity, RejectedPatches = RejectedPatches, RejectedPatchesAction = RejectedPatchesAction, Description = Description, Sources = Sources, ClientToken = ClientToken, Tags = Tags)
   output <- .ssm$create_patch_baseline_output()
   svc <- .ssm$service()
   request <- new_request(svc, op, input, output)
@@ -725,10 +830,9 @@ ssm_create_patch_baseline <- function(OperatingSystem = NULL, Name, GlobalFilter
 #' By default, data is not encrypted in Amazon S3. We strongly recommend
 #' that you enable encryption in Amazon S3 to ensure secure data storage.
 #' We also recommend that you secure access to the Amazon S3 bucket by
-#' creating a restrictive bucket policy. To view an example of a
-#' restrictive Amazon S3 bucket policy for Resource Data Sync, see [Create
-#' a Resource Data Sync for
-#' Inventory](http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync-create.html)
+#' creating a restrictive bucket policy. For more information, see
+#' [Configuring Resource Data Sync for
+#' Inventory](http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync.html)
 #' in the *AWS Systems Manager User Guide*.
 #'
 #' @usage
@@ -1368,9 +1472,9 @@ ssm_describe_activations <- function(Filters = NULL, MaxResults = NULL, NextToke
 #' @param AssociationId The association ID for which you want information.
 #' @param AssociationVersion Specify the association version to retrieve. To view the latest version,
 #' either specify `$LATEST` for this parameter, or omit this parameter. To
-#' view a list of all associations for an instance, use
-#' ListInstanceAssociations. To get a list of versions for a specific
-#' association, use ListAssociationVersions.
+#' view a list of all associations for an instance, use ListAssociations.
+#' To get a list of versions for a specific association, use
+#' ListAssociationVersions.
 #'
 #' @section Request syntax:
 #' ```
@@ -3736,6 +3840,57 @@ ssm_get_patch_baseline_for_patch_group <- function(PatchGroup, OperatingSystem =
 }
 .ssm$operations$get_patch_baseline_for_patch_group <- ssm_get_patch_baseline_for_patch_group
 
+#' ServiceSetting is an account-level setting for an AWS service
+#'
+#' `ServiceSetting` is an account-level setting for an AWS service. This
+#' setting defines how a user interacts with or uses a service or a feature
+#' of a service. For example, if an AWS service charges money to the
+#' account based on feature or service usage, then the AWS service team
+#' might create a default setting of \"false\". This means the user can\'t
+#' use this feature unless they change the setting to \"true\" and
+#' intentionally opt in for a paid feature.
+#' 
+#' Services map a `SettingId` object to a setting value. AWS services teams
+#' define the default value for a `SettingId`. You can\'t create a new
+#' `SettingId`, but you can overwrite the default value if you have the
+#' `ssm:UpdateServiceSetting` permission for the setting. Use the
+#' UpdateServiceSetting API action to change the default setting. Or use
+#' the ResetServiceSetting to change the value back to the original value
+#' defined by the AWS service team.
+#' 
+#' Query the current service setting for the account.
+#'
+#' @usage
+#' ssm_get_service_setting(SettingId)
+#'
+#' @param SettingId &#91;required&#93; The ID of the service setting to get.
+#'
+#' @section Request syntax:
+#' ```
+#' ssm$get_service_setting(
+#'   SettingId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssm_get_service_setting
+ssm_get_service_setting <- function(SettingId) {
+  op <- new_operation(
+    name = "GetServiceSetting",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssm$get_service_setting_input(SettingId = SettingId)
+  output <- .ssm$get_service_setting_output()
+  svc <- .ssm$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssm$operations$get_service_setting <- ssm_get_service_setting
+
 #' A parameter label is a user-defined alias to help you manage different
 #' versions of a parameter
 #'
@@ -4666,7 +4821,7 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #'
 #' @usage
 #' ssm_put_parameter(Name, Description, Value, Type, KeyId, Overwrite,
-#'   AllowedPattern)
+#'   AllowedPattern, Tags)
 #'
 #' @param Name &#91;required&#93; The fully qualified name of the parameter that you want to add to the
 #' system. The fully qualified name includes the complete hierarchy of the
@@ -4731,6 +4886,22 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' @param AllowedPattern A regular expression used to validate the parameter value. For example,
 #' for String types with values restricted to numbers, you can specify the
 #' following: AllowedPattern=\\^`\\d`+\\$
+#' @param Tags Optional metadata that you assign to a resource. Tags enable you to
+#' categorize a resource in different ways, such as by purpose, owner, or
+#' environment. For example, you might want to tag a Systems Manager
+#' parameter to identify the type of resource to which it applies, the
+#' environment, or the type of configuration data referenced by the
+#' parameter. In this case, you could specify the following key name/value
+#' pairs:
+#' 
+#' -   `Key=Resource,Value=S3bucket`
+#' 
+#' -   `Key=OS,Value=Windows`
+#' 
+#' -   `Key=ParameterType,Value=LicenseKey`
+#' 
+#' To add tags to an existing Systems Manager parameter, use the
+#' AddTagsToResource action.
 #'
 #' @section Request syntax:
 #' ```
@@ -4741,21 +4912,27 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #'   Type = "String"|"StringList"|"SecureString",
 #'   KeyId = "string",
 #'   Overwrite = TRUE|FALSE,
-#'   AllowedPattern = "string"
+#'   AllowedPattern = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname ssm_put_parameter
-ssm_put_parameter <- function(Name, Description = NULL, Value, Type, KeyId = NULL, Overwrite = NULL, AllowedPattern = NULL) {
+ssm_put_parameter <- function(Name, Description = NULL, Value, Type, KeyId = NULL, Overwrite = NULL, AllowedPattern = NULL, Tags = NULL) {
   op <- new_operation(
     name = "PutParameter",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ssm$put_parameter_input(Name = Name, Description = Description, Value = Value, Type = Type, KeyId = KeyId, Overwrite = Overwrite, AllowedPattern = AllowedPattern)
+  input <- .ssm$put_parameter_input(Name = Name, Description = Description, Value = Value, Type = Type, KeyId = KeyId, Overwrite = Overwrite, AllowedPattern = AllowedPattern, Tags = Tags)
   output <- .ssm$put_parameter_output()
   svc <- .ssm$service()
   request <- new_request(svc, op, input, output)
@@ -5120,6 +5297,57 @@ ssm_remove_tags_from_resource <- function(ResourceType, ResourceId, TagKeys) {
   return(response)
 }
 .ssm$operations$remove_tags_from_resource <- ssm_remove_tags_from_resource
+
+#' ServiceSetting is an account-level setting for an AWS service
+#'
+#' `ServiceSetting` is an account-level setting for an AWS service. This
+#' setting defines how a user interacts with or uses a service or a feature
+#' of a service. For example, if an AWS service charges money to the
+#' account based on feature or service usage, then the AWS service team
+#' might create a default setting of \"false\". This means the user can\'t
+#' use this feature unless they change the setting to \"true\" and
+#' intentionally opt in for a paid feature.
+#' 
+#' Services map a `SettingId` object to a setting value. AWS services teams
+#' define the default value for a `SettingId`. You can\'t create a new
+#' `SettingId`, but you can overwrite the default value if you have the
+#' `ssm:UpdateServiceSetting` permission for the setting. Use the
+#' GetServiceSetting API action to view the current value. Use the
+#' UpdateServiceSetting API action to change the default setting.
+#' 
+#' Reset the service setting for the account to the default value as
+#' provisioned by the AWS service team.
+#'
+#' @usage
+#' ssm_reset_service_setting(SettingId)
+#'
+#' @param SettingId &#91;required&#93; The ID of the service setting to reset.
+#'
+#' @section Request syntax:
+#' ```
+#' ssm$reset_service_setting(
+#'   SettingId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssm_reset_service_setting
+ssm_reset_service_setting <- function(SettingId) {
+  op <- new_operation(
+    name = "ResetServiceSetting",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssm$reset_service_setting_input(SettingId = SettingId)
+  output <- .ssm$reset_service_setting_output()
+  svc <- .ssm$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssm$operations$reset_service_setting <- ssm_reset_service_setting
 
 #' Reconnects a session to an instance after it has been disconnected
 #'
@@ -5652,7 +5880,25 @@ ssm_terminate_session <- function(SessionId) {
 #' @param ScheduleExpression The cron expression used to schedule the association that you want to
 #' update.
 #' @param OutputLocation An Amazon S3 bucket where you want to store the results of this request.
-#' @param Name The name of the association document.
+#' @param Name The name of the SSM document that contains the configuration information
+#' for the instance. You can specify Command, Policy, or Automation
+#' documents.
+#' 
+#' You can specify AWS-predefined documents, documents you created, or a
+#' document that is shared with you from another account.
+#' 
+#' For SSM documents that are shared with you from other AWS accounts, you
+#' must specify the complete SSM document ARN, in the following format:
+#' 
+#' `arn:aws:ssm:<i>region</i>:<i>account-id</i>:document/<i>document-name</i> `
+#' 
+#' For example:
+#' 
+#' `arn:aws:ssm:us-east-2:12345678912:document/My-Shared-Document`
+#' 
+#' For AWS-predefined documents and SSM documents you created in your
+#' account, you only need to specify the document name. For example,
+#' `AWS-ApplyPatchBaseline` or `My-Document`.
 #' @param Targets The targets of the association.
 #' @param AssociationName The name of the association that you want to update.
 #' @param AssociationVersion This parameter is provided for concurrency control purposes. You must
@@ -6276,7 +6522,7 @@ ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
 #'
 #' @param BaselineId &#91;required&#93; The ID of the patch baseline to update.
 #' @param Name The name of the patch baseline.
-#' @param GlobalFilters A set of global filters used to exclude patches from the baseline.
+#' @param GlobalFilters A set of global filters used to include patches in the baseline.
 #' @param ApprovalRules A set of rules used to include patches in the baseline.
 #' @param ApprovedPatches A list of explicitly approved patches for the baseline.
 #' 
@@ -6393,3 +6639,56 @@ ssm_update_patch_baseline <- function(BaselineId, Name = NULL, GlobalFilters = N
   return(response)
 }
 .ssm$operations$update_patch_baseline <- ssm_update_patch_baseline
+
+#' ServiceSetting is an account-level setting for an AWS service
+#'
+#' `ServiceSetting` is an account-level setting for an AWS service. This
+#' setting defines how a user interacts with or uses a service or a feature
+#' of a service. For example, if an AWS service charges money to the
+#' account based on feature or service usage, then the AWS service team
+#' might create a default setting of \"false\". This means the user can\'t
+#' use this feature unless they change the setting to \"true\" and
+#' intentionally opt in for a paid feature.
+#' 
+#' Services map a `SettingId` object to a setting value. AWS services teams
+#' define the default value for a `SettingId`. You can\'t create a new
+#' `SettingId`, but you can overwrite the default value if you have the
+#' `ssm:UpdateServiceSetting` permission for the setting. Use the
+#' GetServiceSetting API action to view the current value. Or, use the
+#' ResetServiceSetting to change the value back to the original value
+#' defined by the AWS service team.
+#' 
+#' Update the service setting for the account.
+#'
+#' @usage
+#' ssm_update_service_setting(SettingId, SettingValue)
+#'
+#' @param SettingId &#91;required&#93; The ID of the service setting to update.
+#' @param SettingValue &#91;required&#93; The new value to specify for the service setting.
+#'
+#' @section Request syntax:
+#' ```
+#' ssm$update_service_setting(
+#'   SettingId = "string",
+#'   SettingValue = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssm_update_service_setting
+ssm_update_service_setting <- function(SettingId, SettingValue) {
+  op <- new_operation(
+    name = "UpdateServiceSetting",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssm$update_service_setting_input(SettingId = SettingId, SettingValue = SettingValue)
+  output <- .ssm$update_service_setting_output()
+  svc <- .ssm$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssm$operations$update_service_setting <- ssm_update_service_setting

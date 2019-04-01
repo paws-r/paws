@@ -4,10 +4,13 @@
 \alias{pinpointemail_create_dedicated_ip_pool}
 \title{Create a new pool of dedicated IP addresses}
 \usage{
-pinpointemail_create_dedicated_ip_pool(PoolName)
+pinpointemail_create_dedicated_ip_pool(PoolName, Tags)
 }
 \arguments{
 \item{PoolName}{[required] The name of the dedicated IP pool.}
+
+\item{Tags}{An object that defines the tags (keys and values) that you want to
+associate with the pool.}
 }
 \description{
 Create a new pool of dedicated IP addresses. A pool can include one or
@@ -18,7 +21,13 @@ sends it using only the IP addresses in the associated pool.
 }
 \section{Request syntax}{
 \preformatted{pinpointemail$create_dedicated_ip_pool(
-  PoolName = "string"
+  PoolName = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

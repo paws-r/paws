@@ -8,9 +8,10 @@ NULL
 #' Amazon Lightsail is the easiest way to get started with AWS for
 #' developers who just need virtual private servers. Lightsail includes
 #' everything you need to launch your project quickly - a virtual machine,
-#' SSD-based storage, data transfer, DNS management, and a static IP - for
-#' a low, predictable price. You manage those Lightsail servers through the
-#' Lightsail console or by using the API or command-line interface (CLI).
+#' a managed database, SSD-based storage, data transfer, DNS management,
+#' and a static IP - for a low, predictable price. You manage those
+#' Lightsail servers through the Lightsail console or by using the API or
+#' command-line interface (CLI).
 #' 
 #' For more information about Lightsail concepts and tasks, see the
 #' [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/all).
@@ -40,7 +41,7 @@ NULL
 #'  \link[=lightsail_create_disk_from_snapshot]{create_disk_from_snapshot} \tab Creates a block storage disk from a disk snapshot that can be attached to a Lightsail instance in the same Availability Zone (e \cr
 #'  \link[=lightsail_create_disk_snapshot]{create_disk_snapshot} \tab Creates a snapshot of a block storage disk \cr
 #'  \link[=lightsail_create_domain]{create_domain} \tab Creates a domain resource for the specified domain (e \cr
-#'  \link[=lightsail_create_domain_entry]{create_domain_entry} \tab Creates one of the following entry records associated with the domain: A record, CNAME record, TXT record, or MX record \cr
+#'  \link[=lightsail_create_domain_entry]{create_domain_entry} \tab Creates one of the following entry records associated with the domain: Address (A), canonical name (CNAME), mail exchanger (MX), name server (NS), start of authority (SOA), service locator (SRV), or text (TXT)\cr
 #'  \link[=lightsail_create_instance_snapshot]{create_instance_snapshot} \tab Creates a snapshot of a specific virtual private server, or _instance_ \cr
 #'  \link[=lightsail_create_instances]{create_instances} \tab Creates one or more Amazon Lightsail virtual private servers, or _instances_ \cr
 #'  \link[=lightsail_create_instances_from_snapshot]{create_instances_from_snapshot} \tab Uses a specific snapshot as a blueprint for creating one or more new instances that are based on that identical configuration \cr
@@ -57,6 +58,7 @@ NULL
 #'  \link[=lightsail_delete_instance]{delete_instance} \tab Deletes a specific Amazon Lightsail virtual private server, or _instance_ \cr
 #'  \link[=lightsail_delete_instance_snapshot]{delete_instance_snapshot} \tab Deletes a specific snapshot of a virtual private server (or _instance_) \cr
 #'  \link[=lightsail_delete_key_pair]{delete_key_pair} \tab Deletes a specific SSH key pair \cr
+#'  \link[=lightsail_delete_known_host_keys]{delete_known_host_keys} \tab Deletes the known host key or certificate used by the Amazon Lightsail browser-based SSH or RDP clients to authenticate an instance \cr
 #'  \link[=lightsail_delete_load_balancer]{delete_load_balancer} \tab Deletes a Lightsail load balancer and all its associated SSL/TLS certificates \cr
 #'  \link[=lightsail_delete_load_balancer_tls_certificate]{delete_load_balancer_tls_certificate} \tab Deletes an SSL/TLS certificate associated with a Lightsail load balancer \cr
 #'  \link[=lightsail_delete_relational_database]{delete_relational_database} \tab Deletes a database in Amazon Lightsail \cr
@@ -113,7 +115,7 @@ NULL
 #'  \link[=lightsail_is_vpc_peered]{is_vpc_peered} \tab Returns a Boolean value indicating whether your Lightsail VPC is peered \cr
 #'  \link[=lightsail_open_instance_public_ports]{open_instance_public_ports} \tab Adds public ports to an Amazon Lightsail instance \cr
 #'  \link[=lightsail_peer_vpc]{peer_vpc} \tab Tries to peer the Lightsail VPC with the user's default VPC \cr
-#'  \link[=lightsail_put_instance_public_ports]{put_instance_public_ports} \tab Sets the specified open ports for an Amazon Lightsail instance, and closes all ports for every protocol not included in the current request\cr
+#'  \link[=lightsail_put_instance_public_ports]{put_instance_public_ports} \tab Sets the specified open ports for an Amazon Lightsail instance, and closes all ports for every protocol not included in the current request \cr
 #'  \link[=lightsail_reboot_instance]{reboot_instance} \tab Restarts a specific instance \cr
 #'  \link[=lightsail_reboot_relational_database]{reboot_relational_database} \tab Restarts a specific database in Amazon Lightsail \cr
 #'  \link[=lightsail_release_static_ip]{release_static_ip} \tab Deletes a specific static IP from your account \cr

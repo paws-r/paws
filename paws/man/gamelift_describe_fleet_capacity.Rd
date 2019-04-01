@@ -36,6 +36,12 @@ fleets that currently exist.
 Some API actions may limit the number of fleet IDs allowed in one
 request. If a request exceeds this limit, the request fails and the
 error message includes the maximum allowed.
+
+\strong{Learn more}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Working with Fleets}.
+
+\strong{Related operations}
 \itemize{
 \item CreateFleet
 \item ListFleets

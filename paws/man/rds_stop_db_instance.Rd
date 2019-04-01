@@ -19,7 +19,7 @@ parameter group, and option group membership. Amazon RDS also retains
 the transaction logs so you can do a point-in-time restore if necessary.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_StopInstance.html}{Stopping an Amazon RDS DB Instance Temporarily}
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_StopInstance.html}{Stopping an Amazon RDS DB Instance Temporarily}
 in the \emph{Amazon RDS User Guide.}
 
 This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For

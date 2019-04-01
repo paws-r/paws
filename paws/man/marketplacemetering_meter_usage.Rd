@@ -18,11 +18,12 @@ portions of the timestamp will be ignored.}
 \item{UsageDimension}{[required] It will be one of the fcp dimension name provided during the publishing
 of the product.}
 
-\item{UsageQuantity}{[required] Consumption value for the hour.}
+\item{UsageQuantity}{Consumption value for the hour. Defaults to \code{0} if not specified.}
 
-\item{DryRun}{[required] Checks whether you have the permissions required for the action, but
+\item{DryRun}{Checks whether you have the permissions required for the action, but
 does not make the request. If you have the permissions, the request
-returns DryRunOperation; otherwise, it returns UnauthorizedException.}
+returns DryRunOperation; otherwise, it returns UnauthorizedException.
+Defaults to \code{false} if not specified.}
 }
 \description{
 API to emit metering records. For identical requests, the API is

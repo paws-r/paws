@@ -74,13 +74,13 @@ NULL
 #' **AWS CodeDeploy Information Resources**
 #' 
 #' -   [AWS CodeDeploy User
-#'     Guide](http://docs.aws.amazon.com/codedeploy/latest/userguide)
+#'     Guide](https://docs.aws.amazon.com/codedeploy/latest/userguide)
 #' 
 #' -   [AWS CodeDeploy API Reference
-#'     Guide](http://docs.aws.amazon.com/codedeploy/latest/APIReference/)
+#'     Guide](https://docs.aws.amazon.com/codedeploy/latest/APIReference/)
 #' 
 #' -   [AWS CLI Reference for AWS
-#'     CodeDeploy](http://docs.aws.amazon.com/cli/latest/reference/deploy/index.html)
+#'     CodeDeploy](https://docs.aws.amazon.com/cli/latest/reference/deploy/index.html)
 #' 
 #' -   [AWS CodeDeploy Developer
 #'     Forum](https://forums.aws.amazon.com/forum.jspa?forumID=179)

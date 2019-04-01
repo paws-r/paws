@@ -9,12 +9,12 @@ glue_put_data_catalog_encryption_settings(CatalogId,
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog for which to set the security configuration.
-If none is supplied, the AWS account ID is used by default.}
+If none is provided, the AWS account ID is used by default.}
 
 \item{DataCatalogEncryptionSettings}{[required] The security configuration to set.}
 }
 \description{
-Sets the security configuration for a specified catalog. Once the
+Sets the security configuration for a specified catalog. After the
 configuration has been set, the specified encryption is applied to every
 catalog write thereafter.
 }

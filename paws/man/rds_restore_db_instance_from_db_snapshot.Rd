@@ -38,7 +38,7 @@ Constraints:
 \item{DBInstanceClass}{The compute and memory capacity of the Amazon RDS DB instance, for
 example, \code{db.m4.large}. Not all DB instance classes are available in all
 AWS Regions, or for all database engines. For the full list of DB
-instance classes, and availability for your engine, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html}{DB Instance Class}
+instance classes, and availability for your engine, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html}{DB Instance Class}
 in the \emph{Amazon RDS User Guide.}
 
 Default: The same DBInstanceClass as the original DB instance.}
@@ -122,7 +122,7 @@ additional time, though your DB instance is available for connections
 before the conversion starts.
 
 The provisioned IOPS value must follow the requirements for your
-database engine. For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS}{Amazon RDS Provisioned IOPS Storage to Improve Performance}
+database engine. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS}{Amazon RDS Provisioned IOPS Storage to Improve Performance}
 in the \emph{Amazon RDS User Guide.}
 
 Constraints: Must be an integer greater than 1000.}
@@ -160,7 +160,7 @@ VPC.}
 \item{Domain}{Specify the Active Directory Domain to restore the instance in.}
 
 \item{CopyTagsToSnapshot}{True to copy all tags from the restored DB instance to snapshots of the
-DB instance, and otherwise false. The default is false.}
+restored DB instance, and otherwise false. The default is false.}
 
 \item{DomainIAMRoleName}{Specify the name of the IAM role to be used when making API calls to the
 Directory Service.}
@@ -179,7 +179,7 @@ Default: \code{false}}
 
 \item{EnableCloudwatchLogsExports}{The list of logs that the restored DB instance is to export to
 CloudWatch Logs. The values in the list depend on the DB engine being
-used. For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
+used. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
 in the \emph{Amazon Aurora User Guide}.}
 
 \item{ProcessorFeatures}{The number of CPU cores and the number of threads per core for the DB
@@ -202,7 +202,7 @@ Constraints:
 
 \item{DeletionProtection}{Indicates if the DB instance should have deletion protection enabled.
 The database can't be deleted when this value is set to true. The
-default is false. For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
+default is false. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
 }
 \description{
 Creates a new DB instance from a DB snapshot. The target database is

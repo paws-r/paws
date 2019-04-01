@@ -24,7 +24,7 @@ treated as \code{SimpleScaling}.}
 This parameter is supported if the policy type is \code{SimpleScaling} or
 \code{StepScaling}.
 
-For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scale-based-on-demand.html}{Dynamic Scaling}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scale-based-on-demand.html}{Dynamic Scaling}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{MinAdjustmentStep}{Available for backward compatibility. Use \code{MinAdjustmentMagnitude}
@@ -42,8 +42,8 @@ This parameter is supported if the policy type is \code{SimpleScaling} or
 positive value adds to the current capacity while a negative number
 removes from the current capacity.
 
-This parameter is required if the policy type is \code{SimpleScaling} and not
-supported otherwise.}
+Conditional: This parameter is required if the policy type is
+\code{SimpleScaling} and not supported otherwise.}
 
 \item{Cooldown}{The amount of time, in seconds, after a scaling activity completes and
 before the next scaling activity can start. If this parameter is not
@@ -51,7 +51,7 @@ specified, the default cooldown period for the group applies.
 
 This parameter is supported if the policy type is \code{SimpleScaling}.
 
-For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html}{Scaling Cooldowns}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html}{Scaling Cooldowns}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{MetricAggregationType}{The aggregation type for the CloudWatch metrics. The valid values are
@@ -63,8 +63,8 @@ This parameter is supported if the policy type is \code{StepScaling}.}
 \item{StepAdjustments}{A set of adjustments that enable you to scale based on the size of the
 alarm breach.
 
-This parameter is required if the policy type is \code{StepScaling} and not
-supported otherwise.}
+Conditional: This parameter is required if the policy type is
+\code{StepScaling} and not supported otherwise.}
 
 \item{EstimatedInstanceWarmup}{The estimated time, in seconds, until a newly launched instance can
 contribute to the CloudWatch metrics. The default is to use the value
@@ -73,22 +73,17 @@ specified for the default cooldown period for the group.
 This parameter is supported if the policy type is \code{StepScaling} or
 \code{TargetTrackingScaling}.}
 
-\item{TargetTrackingConfiguration}{A target tracking policy.
+\item{TargetTrackingConfiguration}{A target tracking scaling policy. Includes support for predefined or
+customized metrics.
 
-This parameter is required if the policy type is \code{TargetTrackingScaling}
-and not supported otherwise.}
+Conditional: This parameter is required if the policy type is
+\code{TargetTrackingScaling} and not supported otherwise.}
 }
 \description{
 Creates or updates a policy for an Auto Scaling group. To update an
 existing policy, use the existing policy name and set the parameters to
 change. Any existing parameter not changed in an update to an existing
 policy is not changed in this update request.
-}
-\details{
-If you exceed your maximum limit of step adjustments, which by default
-is 20 per region, the call fails. For information about updating this
-limit, see \href{http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html}{AWS Service Limits}
-in the \emph{Amazon Web Services General Reference}.
 }
 \section{Request syntax}{
 \preformatted{autoscaling$put_scaling_policy(

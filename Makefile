@@ -57,8 +57,8 @@ test-codegen: codegen
 
 deps:
 	@echo "get project dependencies"
-	@git submodule init; git submodule update
+	@if [ ! -d ${IN_DIR} ]; then git submodule init && git submodule update; fi
 
 update-deps: deps
 	@echo "update project dependencies"
-	@cd ${IN_DIR}; git pull origin master
+	@git submodule update --remote

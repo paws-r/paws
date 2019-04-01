@@ -5,7 +5,7 @@ NULL
 
 .datapipeline$activate_pipeline_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pipelineId = structure(logical(0), tags = list(    type = "string")), parameterValues = structure(list(structure(list(    id = structure(logical(0), tags = list(type = "string")), stringValue = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))), tags = list(type = "list")), startTimestamp = structure(logical(0), tags = list(    type = "timestamp"))), tags = list(type = "structure"))
+  shape <- structure(list(pipelineId = structure(logical(0), tags = list(type = "string")), parameterValues = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), stringValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), startTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -17,7 +17,7 @@ NULL
 
 .datapipeline$add_tags_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pipelineId = structure(logical(0), tags = list(    type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(    type = "string")), value = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(pipelineId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -29,19 +29,19 @@ NULL
 
 .datapipeline$create_pipeline_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), uniqueId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(        type = "string")), value = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(        type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), uniqueId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .datapipeline$create_pipeline_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pipelineId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(pipelineId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .datapipeline$deactivate_pipeline_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pipelineId = structure(logical(0), tags = list(    type = "string")), cancelActive = structure(logical(0), tags = list(    type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(pipelineId = structure(logical(0), tags = list(type = "string")), cancelActive = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -53,7 +53,7 @@ NULL
 
 .datapipeline$delete_pipeline_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pipelineId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(pipelineId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -63,103 +63,103 @@ NULL
 
 .datapipeline$describe_objects_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pipelineId = structure(logical(0), tags = list(    type = "string")), objectIds = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list")), evaluateExpressions = structure(logical(0), tags = list(    type = "boolean")), marker = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(pipelineId = structure(logical(0), tags = list(type = "string")), objectIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), evaluateExpressions = structure(logical(0), tags = list(type = "boolean")), marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .datapipeline$describe_objects_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pipelineObjects = structure(list(structure(list(    id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), fields = structure(list(structure(list(key = structure(logical(0), tags = list(        type = "string")), stringValue = structure(logical(0), tags = list(        type = "string")), refValue = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(        type = "list"))), tags = list(type = "structure"))), tags = list(    type = "list")), marker = structure(logical(0), tags = list(    type = "string")), hasMoreResults = structure(logical(0), tags = list(    type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(pipelineObjects = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), fields = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), stringValue = structure(logical(0), tags = list(type = "string")), refValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), marker = structure(logical(0), tags = list(type = "string")), hasMoreResults = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .datapipeline$describe_pipelines_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pipelineIds = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(pipelineIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .datapipeline$describe_pipelines_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pipelineDescriptionList = structure(list(structure(list(    pipelineId = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), fields = structure(list(structure(list(key = structure(logical(0), tags = list(        type = "string")), stringValue = structure(logical(0), tags = list(        type = "string")), refValue = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(        type = "list")), description = structure(logical(0), tags = list(        type = "string")), tags = structure(list(structure(list(        key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(        type = "structure"))), tags = list(type = "list"))), tags = list(    type = "structure"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(pipelineDescriptionList = structure(list(structure(list(pipelineId = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), fields = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), stringValue = structure(logical(0), tags = list(type = "string")), refValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), description = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .datapipeline$evaluate_expression_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pipelineId = structure(logical(0), tags = list(    type = "string")), objectId = structure(logical(0), tags = list(    type = "string")), expression = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(pipelineId = structure(logical(0), tags = list(type = "string")), objectId = structure(logical(0), tags = list(type = "string")), expression = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .datapipeline$evaluate_expression_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(evaluatedExpression = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(evaluatedExpression = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .datapipeline$get_pipeline_definition_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pipelineId = structure(logical(0), tags = list(    type = "string")), version = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(pipelineId = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .datapipeline$get_pipeline_definition_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pipelineObjects = structure(list(structure(list(    id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), fields = structure(list(structure(list(key = structure(logical(0), tags = list(        type = "string")), stringValue = structure(logical(0), tags = list(        type = "string")), refValue = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(        type = "list"))), tags = list(type = "structure"))), tags = list(    type = "list")), parameterObjects = structure(list(structure(list(    id = structure(logical(0), tags = list(type = "string")), attributes = structure(list(structure(list(key = structure(logical(0), tags = list(        type = "string")), stringValue = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(        type = "list"))), tags = list(type = "structure"))), tags = list(    type = "list")), parameterValues = structure(list(structure(list(    id = structure(logical(0), tags = list(type = "string")), stringValue = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(pipelineObjects = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), fields = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), stringValue = structure(logical(0), tags = list(type = "string")), refValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), parameterObjects = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), attributes = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), stringValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), parameterValues = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), stringValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .datapipeline$list_pipelines_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(marker = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .datapipeline$list_pipelines_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pipelineIdList = structure(list(structure(list(    id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))), tags = list(type = "list")), marker = structure(logical(0), tags = list(    type = "string")), hasMoreResults = structure(logical(0), tags = list(    type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(pipelineIdList = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), marker = structure(logical(0), tags = list(type = "string")), hasMoreResults = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .datapipeline$poll_for_task_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workerGroup = structure(logical(0), tags = list(    type = "string")), hostname = structure(logical(0), tags = list(    type = "string")), instanceIdentity = structure(list(document = structure(logical(0), tags = list(    type = "string")), signature = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(workerGroup = structure(logical(0), tags = list(type = "string")), hostname = structure(logical(0), tags = list(type = "string")), instanceIdentity = structure(list(document = structure(logical(0), tags = list(type = "string")), signature = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .datapipeline$poll_for_task_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(taskObject = structure(list(taskId = structure(logical(0), tags = list(    type = "string")), pipelineId = structure(logical(0), tags = list(    type = "string")), attemptId = structure(logical(0), tags = list(    type = "string")), objects = structure(list(structure(list(    id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), fields = structure(list(structure(list(key = structure(logical(0), tags = list(        type = "string")), stringValue = structure(logical(0), tags = list(        type = "string")), refValue = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(        type = "list"))), tags = list(type = "structure"))), tags = list(    type = "map"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(taskObject = structure(list(taskId = structure(logical(0), tags = list(type = "string")), pipelineId = structure(logical(0), tags = list(type = "string")), attemptId = structure(logical(0), tags = list(type = "string")), objects = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), fields = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), stringValue = structure(logical(0), tags = list(type = "string")), refValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .datapipeline$put_pipeline_definition_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pipelineId = structure(logical(0), tags = list(    type = "string")), pipelineObjects = structure(list(structure(list(    id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), fields = structure(list(structure(list(key = structure(logical(0), tags = list(        type = "string")), stringValue = structure(logical(0), tags = list(        type = "string")), refValue = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(        type = "list"))), tags = list(type = "structure"))), tags = list(    type = "list")), parameterObjects = structure(list(structure(list(    id = structure(logical(0), tags = list(type = "string")), attributes = structure(list(structure(list(key = structure(logical(0), tags = list(        type = "string")), stringValue = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(        type = "list"))), tags = list(type = "structure"))), tags = list(    type = "list")), parameterValues = structure(list(structure(list(    id = structure(logical(0), tags = list(type = "string")), stringValue = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(pipelineId = structure(logical(0), tags = list(type = "string")), pipelineObjects = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), fields = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), stringValue = structure(logical(0), tags = list(type = "string")), refValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), parameterObjects = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), attributes = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), stringValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), parameterValues = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), stringValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .datapipeline$put_pipeline_definition_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(validationErrors = structure(list(structure(list(    id = structure(logical(0), tags = list(type = "string")), errors = structure(list(structure(logical(0), tags = list(        type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))), tags = list(type = "list")), validationWarnings = structure(list(    structure(list(id = structure(logical(0), tags = list(type = "string")), warnings = structure(list(structure(logical(0), tags = list(            type = "string"))), tags = list(type = "list"))), tags = list(        type = "structure"))), tags = list(type = "list")), errored = structure(logical(0), tags = list(    type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(validationErrors = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), errors = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), validationWarnings = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), warnings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), errored = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .datapipeline$query_objects_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pipelineId = structure(logical(0), tags = list(    type = "string")), query = structure(list(selectors = structure(list(    structure(list(fieldName = structure(logical(0), tags = list(        type = "string")), operator = structure(list(type = structure(logical(0), tags = list(        type = "string")), values = structure(list(structure(logical(0), tags = list(        type = "string"))), tags = list(type = "list"))), tags = list(        type = "structure"))), tags = list(type = "structure"))), tags = list(    type = "list"))), tags = list(type = "structure")), sphere = structure(logical(0), tags = list(    type = "string")), marker = structure(logical(0), tags = list(    type = "string")), limit = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(pipelineId = structure(logical(0), tags = list(type = "string")), query = structure(list(selectors = structure(list(structure(list(fieldName = structure(logical(0), tags = list(type = "string")), operator = structure(list(type = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), sphere = structure(logical(0), tags = list(type = "string")), marker = structure(logical(0), tags = list(type = "string")), limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .datapipeline$query_objects_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ids = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list")), marker = structure(logical(0), tags = list(    type = "string")), hasMoreResults = structure(logical(0), tags = list(    type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(ids = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), marker = structure(logical(0), tags = list(type = "string")), hasMoreResults = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .datapipeline$remove_tags_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pipelineId = structure(logical(0), tags = list(    type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(pipelineId = structure(logical(0), tags = list(type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -171,31 +171,31 @@ NULL
 
 .datapipeline$report_task_progress_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(taskId = structure(logical(0), tags = list(type = "string")), fields = structure(list(structure(list(key = structure(logical(0), tags = list(        type = "string")), stringValue = structure(logical(0), tags = list(        type = "string")), refValue = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(        type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(taskId = structure(logical(0), tags = list(type = "string")), fields = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), stringValue = structure(logical(0), tags = list(type = "string")), refValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .datapipeline$report_task_progress_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(canceled = structure(logical(0), tags = list(type = "boolean"))), tags = list(    type = "structure"))
+  shape <- structure(list(canceled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .datapipeline$report_task_runner_heartbeat_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(taskrunnerId = structure(logical(0), tags = list(    type = "string")), workerGroup = structure(logical(0), tags = list(    type = "string")), hostname = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(taskrunnerId = structure(logical(0), tags = list(type = "string")), workerGroup = structure(logical(0), tags = list(type = "string")), hostname = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .datapipeline$report_task_runner_heartbeat_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(terminate = structure(logical(0), tags = list(    type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(terminate = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .datapipeline$set_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pipelineId = structure(logical(0), tags = list(    type = "string")), objectIds = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list")), status = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(pipelineId = structure(logical(0), tags = list(type = "string")), objectIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -205,7 +205,7 @@ NULL
 
 .datapipeline$set_task_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(taskId = structure(logical(0), tags = list(type = "string")), taskStatus = structure(logical(0), tags = list(type = "string")), errorId = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), errorStackTrace = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(taskId = structure(logical(0), tags = list(type = "string")), taskStatus = structure(logical(0), tags = list(type = "string")), errorId = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), errorStackTrace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -217,12 +217,12 @@ NULL
 
 .datapipeline$validate_pipeline_definition_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pipelineId = structure(logical(0), tags = list(    type = "string")), pipelineObjects = structure(list(structure(list(    id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), fields = structure(list(structure(list(key = structure(logical(0), tags = list(        type = "string")), stringValue = structure(logical(0), tags = list(        type = "string")), refValue = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(        type = "list"))), tags = list(type = "structure"))), tags = list(    type = "list")), parameterObjects = structure(list(structure(list(    id = structure(logical(0), tags = list(type = "string")), attributes = structure(list(structure(list(key = structure(logical(0), tags = list(        type = "string")), stringValue = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(        type = "list"))), tags = list(type = "structure"))), tags = list(    type = "list")), parameterValues = structure(list(structure(list(    id = structure(logical(0), tags = list(type = "string")), stringValue = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(pipelineId = structure(logical(0), tags = list(type = "string")), pipelineObjects = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), fields = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), stringValue = structure(logical(0), tags = list(type = "string")), refValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), parameterObjects = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), attributes = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), stringValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), parameterValues = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), stringValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .datapipeline$validate_pipeline_definition_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(validationErrors = structure(list(structure(list(    id = structure(logical(0), tags = list(type = "string")), errors = structure(list(structure(logical(0), tags = list(        type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))), tags = list(type = "list")), validationWarnings = structure(list(    structure(list(id = structure(logical(0), tags = list(type = "string")), warnings = structure(list(structure(logical(0), tags = list(            type = "string"))), tags = list(type = "list"))), tags = list(        type = "structure"))), tags = list(type = "list")), errored = structure(logical(0), tags = list(    type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(validationErrors = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), errors = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), validationWarnings = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), warnings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), errored = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }

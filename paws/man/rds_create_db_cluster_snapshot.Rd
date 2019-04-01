@@ -34,8 +34,11 @@ Example: \code{my-cluster1}}
 }
 \description{
 Creates a snapshot of a DB cluster. For more information on Amazon
-Aurora, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
+Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
 in the \emph{Amazon Aurora User Guide.}
+}
+\details{
+This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
 \preformatted{rds$create_db_cluster_snapshot(

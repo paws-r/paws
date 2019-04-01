@@ -7,7 +7,7 @@ documents}
 \usage{
 comprehend_start_key_phrases_detection_job(InputDataConfig,
   OutputDataConfig, DataAccessRoleArn, JobName, LanguageCode,
-  ClientRequestToken)
+  ClientRequestToken, VolumeKmsKeyId)
 }
 \arguments{
 \item{InputDataConfig}{[required] Specifies the format and location of the input data for the job.}
@@ -26,6 +26,16 @@ Spanish ("es"). All documents must be in the same language.}
 
 \item{ClientRequestToken}{A unique identifier for the request. If you don't set the client
 request token, Amazon Comprehend generates one.}
+
+\item{VolumeKmsKeyId}{ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
+uses to encrypt data on the storage volume attached to the ML compute
+instance(s) that process the analysis job. The VolumeKmsKeyId can be
+either of the following formats:
+\itemize{
+\item KMS Key ID: \code{"1234abcd-12ab-34cd-56ef-1234567890ab"}
+\item Amazon Resource Name (ARN) of a KMS Key:
+\code{"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"}
+}}
 }
 \description{
 Starts an asynchronous key phrase detection job for a collection of
@@ -38,12 +48,14 @@ documents. Use the operation to track the status of a job.
     InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
   ),
   OutputDataConfig = list(
-    S3Uri = "string"
+    S3Uri = "string",
+    KmsKeyId = "string"
   ),
   DataAccessRoleArn = "string",
   JobName = "string",
   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt",
-  ClientRequestToken = "string"
+  ClientRequestToken = "string",
+  VolumeKmsKeyId = "string"
 )
 }
 }

@@ -9,7 +9,7 @@ NULL
 #' Determines the dominant language of the input text for a batch of
 #' documents. For a list of languages that Amazon Comprehend can detect,
 #' see [Amazon Comprehend Supported
-#' Languages](http://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html).
+#' Languages](https://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html).
 #'
 #' @usage
 #' comprehend_batch_detect_dominant_language(TextList)
@@ -235,7 +235,8 @@ comprehend_batch_detect_syntax <- function(TextList, LanguageCode) {
 #'
 #' @usage
 #' comprehend_create_document_classifier(DocumentClassifierName,
-#'   DataAccessRoleArn, InputDataConfig, ClientRequestToken, LanguageCode)
+#'   DataAccessRoleArn, InputDataConfig, ClientRequestToken, LanguageCode,
+#'   VolumeKmsKeyId)
 #'
 #' @param DocumentClassifierName &#91;required&#93; The name of the document classifier.
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Management (IAM)
@@ -245,6 +246,15 @@ comprehend_batch_detect_syntax <- function(TextList, LanguageCode) {
 #' request token, Amazon Comprehend generates one.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify English (\"en\") or
 #' Spanish (\"es\"). All documents must be in the same language.
+#' @param VolumeKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
+#' uses to encrypt data on the storage volume attached to the ML compute
+#' instance(s) that process the analysis job. The VolumeKmsKeyId can be
+#' either of the following formats:
+#' 
+#' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' 
+#' -   Amazon Resource Name (ARN) of a KMS Key:
+#'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
 #'
 #' @section Request syntax:
 #' ```
@@ -255,21 +265,22 @@ comprehend_batch_detect_syntax <- function(TextList, LanguageCode) {
 #'     S3Uri = "string"
 #'   ),
 #'   ClientRequestToken = "string",
-#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
+#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt",
+#'   VolumeKmsKeyId = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_create_document_classifier
-comprehend_create_document_classifier <- function(DocumentClassifierName, DataAccessRoleArn, InputDataConfig, ClientRequestToken = NULL, LanguageCode) {
+comprehend_create_document_classifier <- function(DocumentClassifierName, DataAccessRoleArn, InputDataConfig, ClientRequestToken = NULL, LanguageCode, VolumeKmsKeyId = NULL) {
   op <- new_operation(
     name = "CreateDocumentClassifier",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$create_document_classifier_input(DocumentClassifierName = DocumentClassifierName, DataAccessRoleArn = DataAccessRoleArn, InputDataConfig = InputDataConfig, ClientRequestToken = ClientRequestToken, LanguageCode = LanguageCode)
+  input <- .comprehend$create_document_classifier_input(DocumentClassifierName = DocumentClassifierName, DataAccessRoleArn = DataAccessRoleArn, InputDataConfig = InputDataConfig, ClientRequestToken = ClientRequestToken, LanguageCode = LanguageCode, VolumeKmsKeyId = VolumeKmsKeyId)
   output <- .comprehend$create_document_classifier_output()
   svc <- .comprehend$service()
   request <- new_request(svc, op, input, output)
@@ -286,7 +297,7 @@ comprehend_create_document_classifier <- function(DocumentClassifierName, DataAc
 #'
 #' @usage
 #' comprehend_create_entity_recognizer(RecognizerName, DataAccessRoleArn,
-#'   InputDataConfig, ClientRequestToken, LanguageCode)
+#'   InputDataConfig, ClientRequestToken, LanguageCode, VolumeKmsKeyId)
 #'
 #' @param RecognizerName &#91;required&#93; The name given to the newly created recognizer. Recognizer names can be
 #' a maximum of 256 characters. Alphanumeric characters, hyphens (-) and
@@ -301,6 +312,15 @@ comprehend_create_document_classifier <- function(DocumentClassifierName, DataAc
 #' request token, Amazon Comprehend generates one.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. All documents must be in the same
 #' language. Only English (\"en\") is currently supported.
+#' @param VolumeKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
+#' uses to encrypt data on the storage volume attached to the ML compute
+#' instance(s) that process the analysis job. The VolumeKmsKeyId can be
+#' either of the following formats:
+#' 
+#' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' 
+#' -   Amazon Resource Name (ARN) of a KMS Key:
+#'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
 #'
 #' @section Request syntax:
 #' ```
@@ -324,21 +344,22 @@ comprehend_create_document_classifier <- function(DocumentClassifierName, DataAc
 #'     )
 #'   ),
 #'   ClientRequestToken = "string",
-#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
+#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt",
+#'   VolumeKmsKeyId = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_create_entity_recognizer
-comprehend_create_entity_recognizer <- function(RecognizerName, DataAccessRoleArn, InputDataConfig, ClientRequestToken = NULL, LanguageCode) {
+comprehend_create_entity_recognizer <- function(RecognizerName, DataAccessRoleArn, InputDataConfig, ClientRequestToken = NULL, LanguageCode, VolumeKmsKeyId = NULL) {
   op <- new_operation(
     name = "CreateEntityRecognizer",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$create_entity_recognizer_input(RecognizerName = RecognizerName, DataAccessRoleArn = DataAccessRoleArn, InputDataConfig = InputDataConfig, ClientRequestToken = ClientRequestToken, LanguageCode = LanguageCode)
+  input <- .comprehend$create_entity_recognizer_input(RecognizerName = RecognizerName, DataAccessRoleArn = DataAccessRoleArn, InputDataConfig = InputDataConfig, ClientRequestToken = ClientRequestToken, LanguageCode = LanguageCode, VolumeKmsKeyId = VolumeKmsKeyId)
   output <- .comprehend$create_entity_recognizer_output()
   svc <- .comprehend$service()
   request <- new_request(svc, op, input, output)
@@ -735,7 +756,7 @@ comprehend_describe_topics_detection_job <- function(JobId) {
 #' Determines the dominant language of the input text. For a list of
 #' languages that Amazon Comprehend can detect, see [Amazon Comprehend
 #' Supported
-#' Languages](http://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html).
+#' Languages](https://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html).
 #'
 #' @usage
 #' comprehend_detect_dominant_language(Text)
@@ -1358,7 +1379,7 @@ comprehend_list_topics_detection_jobs <- function(Filter = NULL, NextToken = NUL
 #' @usage
 #' comprehend_start_document_classification_job(JobName,
 #'   DocumentClassifierArn, InputDataConfig, OutputDataConfig,
-#'   DataAccessRoleArn, ClientRequestToken)
+#'   DataAccessRoleArn, ClientRequestToken, VolumeKmsKeyId)
 #'
 #' @param JobName The identifier of the job.
 #' @param DocumentClassifierArn &#91;required&#93; The Amazon Resource Name (ARN) of the document classifier to use to
@@ -1369,6 +1390,15 @@ comprehend_list_topics_detection_jobs <- function(Filter = NULL, NextToken = NUL
 #' (IAM) role that grants Amazon Comprehend read access to your input data.
 #' @param ClientRequestToken A unique identifier for the request. If you do not set the client
 #' request token, Amazon Comprehend generates one.
+#' @param VolumeKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
+#' uses to encrypt data on the storage volume attached to the ML compute
+#' instance(s) that process the analysis job. The VolumeKmsKeyId can be
+#' either of the following formats:
+#' 
+#' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' 
+#' -   Amazon Resource Name (ARN) of a KMS Key:
+#'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
 #'
 #' @section Request syntax:
 #' ```
@@ -1380,24 +1410,26 @@ comprehend_list_topics_detection_jobs <- function(Filter = NULL, NextToken = NUL
 #'     InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
 #'   ),
 #'   OutputDataConfig = list(
-#'     S3Uri = "string"
+#'     S3Uri = "string",
+#'     KmsKeyId = "string"
 #'   ),
 #'   DataAccessRoleArn = "string",
-#'   ClientRequestToken = "string"
+#'   ClientRequestToken = "string",
+#'   VolumeKmsKeyId = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_start_document_classification_job
-comprehend_start_document_classification_job <- function(JobName = NULL, DocumentClassifierArn, InputDataConfig, OutputDataConfig, DataAccessRoleArn, ClientRequestToken = NULL) {
+comprehend_start_document_classification_job <- function(JobName = NULL, DocumentClassifierArn, InputDataConfig, OutputDataConfig, DataAccessRoleArn, ClientRequestToken = NULL, VolumeKmsKeyId = NULL) {
   op <- new_operation(
     name = "StartDocumentClassificationJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$start_document_classification_job_input(JobName = JobName, DocumentClassifierArn = DocumentClassifierArn, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, ClientRequestToken = ClientRequestToken)
+  input <- .comprehend$start_document_classification_job_input(JobName = JobName, DocumentClassifierArn = DocumentClassifierArn, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId)
   output <- .comprehend$start_document_classification_job_output()
   svc <- .comprehend$service()
   request <- new_request(svc, op, input, output)
@@ -1414,7 +1446,8 @@ comprehend_start_document_classification_job <- function(JobName = NULL, Documen
 #'
 #' @usage
 #' comprehend_start_dominant_language_detection_job(InputDataConfig,
-#'   OutputDataConfig, DataAccessRoleArn, JobName, ClientRequestToken)
+#'   OutputDataConfig, DataAccessRoleArn, JobName, ClientRequestToken,
+#'   VolumeKmsKeyId)
 #'
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
@@ -1425,6 +1458,15 @@ comprehend_start_document_classification_job <- function(JobName = NULL, Documen
 #' @param JobName An identifier for the job.
 #' @param ClientRequestToken A unique identifier for the request. If you do not set the client
 #' request token, Amazon Comprehend generates one.
+#' @param VolumeKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
+#' uses to encrypt data on the storage volume attached to the ML compute
+#' instance(s) that process the analysis job. The VolumeKmsKeyId can be
+#' either of the following formats:
+#' 
+#' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' 
+#' -   Amazon Resource Name (ARN) of a KMS Key:
+#'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
 #'
 #' @section Request syntax:
 #' ```
@@ -1434,25 +1476,27 @@ comprehend_start_document_classification_job <- function(JobName = NULL, Documen
 #'     InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
 #'   ),
 #'   OutputDataConfig = list(
-#'     S3Uri = "string"
+#'     S3Uri = "string",
+#'     KmsKeyId = "string"
 #'   ),
 #'   DataAccessRoleArn = "string",
 #'   JobName = "string",
-#'   ClientRequestToken = "string"
+#'   ClientRequestToken = "string",
+#'   VolumeKmsKeyId = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_start_dominant_language_detection_job
-comprehend_start_dominant_language_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, ClientRequestToken = NULL) {
+comprehend_start_dominant_language_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, ClientRequestToken = NULL, VolumeKmsKeyId = NULL) {
   op <- new_operation(
     name = "StartDominantLanguageDetectionJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$start_dominant_language_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, ClientRequestToken = ClientRequestToken)
+  input <- .comprehend$start_dominant_language_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId)
   output <- .comprehend$start_dominant_language_detection_job_output()
   svc <- .comprehend$service()
   request <- new_request(svc, op, input, output)
@@ -1475,7 +1519,7 @@ comprehend_start_dominant_language_detection_job <- function(InputDataConfig, Ou
 #' @usage
 #' comprehend_start_entities_detection_job(InputDataConfig,
 #'   OutputDataConfig, DataAccessRoleArn, JobName, EntityRecognizerArn,
-#'   LanguageCode, ClientRequestToken)
+#'   LanguageCode, ClientRequestToken, VolumeKmsKeyId)
 #'
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
@@ -1495,6 +1539,15 @@ comprehend_start_dominant_language_detection_job <- function(InputDataConfig, Ou
 #' training the model is used instead.
 #' @param ClientRequestToken A unique identifier for the request. If you don\'t set the client
 #' request token, Amazon Comprehend generates one.
+#' @param VolumeKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
+#' uses to encrypt data on the storage volume attached to the ML compute
+#' instance(s) that process the analysis job. The VolumeKmsKeyId can be
+#' either of the following formats:
+#' 
+#' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' 
+#' -   Amazon Resource Name (ARN) of a KMS Key:
+#'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
 #'
 #' @section Request syntax:
 #' ```
@@ -1504,27 +1557,29 @@ comprehend_start_dominant_language_detection_job <- function(InputDataConfig, Ou
 #'     InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
 #'   ),
 #'   OutputDataConfig = list(
-#'     S3Uri = "string"
+#'     S3Uri = "string",
+#'     KmsKeyId = "string"
 #'   ),
 #'   DataAccessRoleArn = "string",
 #'   JobName = "string",
 #'   EntityRecognizerArn = "string",
 #'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt",
-#'   ClientRequestToken = "string"
+#'   ClientRequestToken = "string",
+#'   VolumeKmsKeyId = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_start_entities_detection_job
-comprehend_start_entities_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, EntityRecognizerArn = NULL, LanguageCode, ClientRequestToken = NULL) {
+comprehend_start_entities_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, EntityRecognizerArn = NULL, LanguageCode, ClientRequestToken = NULL, VolumeKmsKeyId = NULL) {
   op <- new_operation(
     name = "StartEntitiesDetectionJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$start_entities_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, EntityRecognizerArn = EntityRecognizerArn, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken)
+  input <- .comprehend$start_entities_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, EntityRecognizerArn = EntityRecognizerArn, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId)
   output <- .comprehend$start_entities_detection_job_output()
   svc <- .comprehend$service()
   request <- new_request(svc, op, input, output)
@@ -1542,7 +1597,7 @@ comprehend_start_entities_detection_job <- function(InputDataConfig, OutputDataC
 #' @usage
 #' comprehend_start_key_phrases_detection_job(InputDataConfig,
 #'   OutputDataConfig, DataAccessRoleArn, JobName, LanguageCode,
-#'   ClientRequestToken)
+#'   ClientRequestToken, VolumeKmsKeyId)
 #'
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
@@ -1555,6 +1610,15 @@ comprehend_start_entities_detection_job <- function(InputDataConfig, OutputDataC
 #' Spanish (\"es\"). All documents must be in the same language.
 #' @param ClientRequestToken A unique identifier for the request. If you don\'t set the client
 #' request token, Amazon Comprehend generates one.
+#' @param VolumeKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
+#' uses to encrypt data on the storage volume attached to the ML compute
+#' instance(s) that process the analysis job. The VolumeKmsKeyId can be
+#' either of the following formats:
+#' 
+#' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' 
+#' -   Amazon Resource Name (ARN) of a KMS Key:
+#'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
 #'
 #' @section Request syntax:
 #' ```
@@ -1564,26 +1628,28 @@ comprehend_start_entities_detection_job <- function(InputDataConfig, OutputDataC
 #'     InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
 #'   ),
 #'   OutputDataConfig = list(
-#'     S3Uri = "string"
+#'     S3Uri = "string",
+#'     KmsKeyId = "string"
 #'   ),
 #'   DataAccessRoleArn = "string",
 #'   JobName = "string",
 #'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt",
-#'   ClientRequestToken = "string"
+#'   ClientRequestToken = "string",
+#'   VolumeKmsKeyId = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_start_key_phrases_detection_job
-comprehend_start_key_phrases_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, LanguageCode, ClientRequestToken = NULL) {
+comprehend_start_key_phrases_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, LanguageCode, ClientRequestToken = NULL, VolumeKmsKeyId = NULL) {
   op <- new_operation(
     name = "StartKeyPhrasesDetectionJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$start_key_phrases_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken)
+  input <- .comprehend$start_key_phrases_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId)
   output <- .comprehend$start_key_phrases_detection_job_output()
   svc <- .comprehend$service()
   request <- new_request(svc, op, input, output)
@@ -1601,7 +1667,7 @@ comprehend_start_key_phrases_detection_job <- function(InputDataConfig, OutputDa
 #' @usage
 #' comprehend_start_sentiment_detection_job(InputDataConfig,
 #'   OutputDataConfig, DataAccessRoleArn, JobName, LanguageCode,
-#'   ClientRequestToken)
+#'   ClientRequestToken, VolumeKmsKeyId)
 #'
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
@@ -1614,6 +1680,15 @@ comprehend_start_key_phrases_detection_job <- function(InputDataConfig, OutputDa
 #' Spanish (\"es\"). All documents must be in the same language.
 #' @param ClientRequestToken A unique identifier for the request. If you don\'t set the client
 #' request token, Amazon Comprehend generates one.
+#' @param VolumeKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
+#' uses to encrypt data on the storage volume attached to the ML compute
+#' instance(s) that process the analysis job. The VolumeKmsKeyId can be
+#' either of the following formats:
+#' 
+#' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' 
+#' -   Amazon Resource Name (ARN) of a KMS Key:
+#'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
 #'
 #' @section Request syntax:
 #' ```
@@ -1623,26 +1698,28 @@ comprehend_start_key_phrases_detection_job <- function(InputDataConfig, OutputDa
 #'     InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
 #'   ),
 #'   OutputDataConfig = list(
-#'     S3Uri = "string"
+#'     S3Uri = "string",
+#'     KmsKeyId = "string"
 #'   ),
 #'   DataAccessRoleArn = "string",
 #'   JobName = "string",
 #'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt",
-#'   ClientRequestToken = "string"
+#'   ClientRequestToken = "string",
+#'   VolumeKmsKeyId = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_start_sentiment_detection_job
-comprehend_start_sentiment_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, LanguageCode, ClientRequestToken = NULL) {
+comprehend_start_sentiment_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, LanguageCode, ClientRequestToken = NULL, VolumeKmsKeyId = NULL) {
   op <- new_operation(
     name = "StartSentimentDetectionJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$start_sentiment_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken)
+  input <- .comprehend$start_sentiment_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId)
   output <- .comprehend$start_sentiment_detection_job_output()
   svc <- .comprehend$service()
   request <- new_request(svc, op, input, output)
@@ -1658,7 +1735,8 @@ comprehend_start_sentiment_detection_job <- function(InputDataConfig, OutputData
 #'
 #' @usage
 #' comprehend_start_topics_detection_job(InputDataConfig, OutputDataConfig,
-#'   DataAccessRoleArn, JobName, NumberOfTopics, ClientRequestToken)
+#'   DataAccessRoleArn, JobName, NumberOfTopics, ClientRequestToken,
+#'   VolumeKmsKeyId)
 #'
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files. The output is a compressed
@@ -1673,6 +1751,15 @@ comprehend_start_sentiment_detection_job <- function(InputDataConfig, OutputData
 #' @param NumberOfTopics The number of topics to detect.
 #' @param ClientRequestToken A unique identifier for the request. If you do not set the client
 #' request token, Amazon Comprehend generates one.
+#' @param VolumeKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
+#' uses to encrypt data on the storage volume attached to the ML compute
+#' instance(s) that process the analysis job. The VolumeKmsKeyId can be
+#' either of the following formats:
+#' 
+#' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' 
+#' -   Amazon Resource Name (ARN) of a KMS Key:
+#'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
 #'
 #' @section Request syntax:
 #' ```
@@ -1682,26 +1769,28 @@ comprehend_start_sentiment_detection_job <- function(InputDataConfig, OutputData
 #'     InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
 #'   ),
 #'   OutputDataConfig = list(
-#'     S3Uri = "string"
+#'     S3Uri = "string",
+#'     KmsKeyId = "string"
 #'   ),
 #'   DataAccessRoleArn = "string",
 #'   JobName = "string",
 #'   NumberOfTopics = 123,
-#'   ClientRequestToken = "string"
+#'   ClientRequestToken = "string",
+#'   VolumeKmsKeyId = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_start_topics_detection_job
-comprehend_start_topics_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, NumberOfTopics = NULL, ClientRequestToken = NULL) {
+comprehend_start_topics_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, NumberOfTopics = NULL, ClientRequestToken = NULL, VolumeKmsKeyId = NULL) {
   op <- new_operation(
     name = "StartTopicsDetectionJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$start_topics_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, NumberOfTopics = NumberOfTopics, ClientRequestToken = ClientRequestToken)
+  input <- .comprehend$start_topics_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, NumberOfTopics = NumberOfTopics, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId)
   output <- .comprehend$start_topics_detection_job_output()
   svc <- .comprehend$service()
   request <- new_request(svc, op, input, output)

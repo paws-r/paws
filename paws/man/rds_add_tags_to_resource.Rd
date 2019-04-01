@@ -9,7 +9,7 @@ rds_add_tags_to_resource(ResourceName, Tags)
 \arguments{
 \item{ResourceName}{[required] The Amazon RDS resource that the tags are added to. This value is an
 Amazon Resource Name (ARN). For information about creating an ARN, see
-\href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an RDS Amazon Resource Name (ARN)}.}
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an RDS Amazon Resource Name (ARN)}.}
 
 \item{Tags}{[required] The tags to be assigned to the Amazon RDS resource.}
 }
@@ -20,7 +20,7 @@ RDS resources, or used in a Condition statement in an IAM policy for
 Amazon RDS.
 }
 \details{
-For an overview on tagging Amazon RDS resources, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html}{Tagging Amazon RDS Resources}.
+For an overview on tagging Amazon RDS resources, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html}{Tagging Amazon RDS Resources}.
 }
 \section{Request syntax}{
 \preformatted{rds$add_tags_to_resource(

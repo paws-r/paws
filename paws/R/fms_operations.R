@@ -95,9 +95,21 @@ fms_delete_notification_channel <- function() {
 #'
 #' @param PolicyId &#91;required&#93; The ID of the policy that you want to delete. `PolicyId` is returned by
 #' `PutPolicy` and by `ListPolicies`.
-#' @param DeleteAllPolicyResources If `True`, the request will also delete all web ACLs in this policy.
-#' Associated resources will no longer be protected by web ACLs in this
-#' policy.
+#' @param DeleteAllPolicyResources If `True`, the request will also perform a clean-up process that will:
+#' 
+#' -   Delete rule groups created by AWS Firewall Manager
+#' 
+#' -   Remove web ACLs from in-scope resources
+#' 
+#' -   Delete web ACLs that contain no rules or rule groups
+#' 
+#' After the cleanup, in-scope resources will no longer be protected by web
+#' ACLs in this policy. Protection of out-of-scope resources will remain
+#' unchanged. Scope is determined by tags and accounts associated with the
+#' policy. When creating the policy, if you specified that only resources
+#' in specific accounts or with specific tags be protected by the policy,
+#' those resources are in-scope. All others are out of scope. If you did
+#' not specify tags or accounts, all resources are in-scope.
 #'
 #' @section Request syntax:
 #' ```
@@ -304,6 +316,73 @@ fms_get_policy <- function(PolicyId) {
 }
 .fms$operations$get_policy <- fms_get_policy
 
+#' If you created a Shield Advanced policy, returns policy-level attack
+#' summary information in the event of a potential DDoS attack
+#'
+#' If you created a Shield Advanced policy, returns policy-level attack
+#' summary information in the event of a potential DDoS attack.
+#'
+#' @usage
+#' fms_get_protection_status(PolicyId, MemberAccountId, StartTime, EndTime,
+#'   NextToken, MaxResults)
+#'
+#' @param PolicyId &#91;required&#93; The ID of the policy for which you want to get the attack information.
+#' @param MemberAccountId The AWS account that is in scope of the policy that you want to get the
+#' details for.
+#' @param StartTime The start of the time period to query for the attacks. This is a
+#' `timestamp` type. The sample request above indicates a number type
+#' because the default used by AWS Firewall Manager is Unix time in
+#' seconds. However, any valid `timestamp` format is allowed.
+#' @param EndTime The end of the time period to query for the attacks. This is a
+#' `timestamp` type. The sample request above indicates a number type
+#' because the default used by AWS Firewall Manager is Unix time in
+#' seconds. However, any valid `timestamp` format is allowed.
+#' @param NextToken If you specify a value for `MaxResults` and you have more objects than
+#' the number that you specify for `MaxResults`, AWS Firewall Manager
+#' returns a `NextToken` value in the response that allows you to list
+#' another group of objects. For the second and subsequent
+#' `GetProtectionStatus` requests, specify the value of `NextToken` from
+#' the previous response to get information about another batch of objects.
+#' @param MaxResults Specifies the number of objects that you want AWS Firewall Manager to
+#' return for this request. If you have more objects than the number that
+#' you specify for `MaxResults`, the response includes a `NextToken` value
+#' that you can use to get another batch of objects.
+#'
+#' @section Request syntax:
+#' ```
+#' fms$get_protection_status(
+#'   PolicyId = "string",
+#'   MemberAccountId = "string",
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fms_get_protection_status
+fms_get_protection_status <- function(PolicyId, MemberAccountId = NULL, StartTime = NULL, EndTime = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "GetProtectionStatus",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$get_protection_status_input(PolicyId = PolicyId, MemberAccountId = MemberAccountId, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .fms$get_protection_status_output()
+  svc <- .fms$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$get_protection_status <- fms_get_protection_status
+
 #' Returns an array of PolicyComplianceStatus objects in the response
 #'
 #' Returns an array of `PolicyComplianceStatus` objects in the response.
@@ -498,6 +577,19 @@ fms_put_notification_channel <- function(SnsTopicArn, SnsRoleName) {
 #' Creates an AWS Firewall Manager policy
 #'
 #' Creates an AWS Firewall Manager policy.
+#' 
+#' Firewall Manager provides two types of policies: A Shield Advanced
+#' policy, which applies Shield Advanced protection to specified accounts
+#' and resources, or a WAF policy, which contains a rule group and defines
+#' which resources are to be protected by that rule group. A policy is
+#' specific to either WAF or Shield Advanced. If you want to enforce both
+#' WAF rules and Shield Advanced protection across accounts, you can create
+#' multiple policies. You can create one or more policies for WAF rules,
+#' and one or more policies for Shield Advanced.
+#' 
+#' You must be subscribed to Shield Advanced to create a Shield Advanced
+#' policy. For more information on subscribing to Shield Advanced, see
+#' [CreateSubscription](https://docs.aws.amazon.com/waf/latest/DDOSAPIReference/API_CreateSubscription.html).
 #'
 #' @usage
 #' fms_put_policy(Policy)
@@ -512,10 +604,13 @@ fms_put_notification_channel <- function(SnsTopicArn, SnsRoleName) {
 #'     PolicyName = "string",
 #'     PolicyUpdateToken = "string",
 #'     SecurityServicePolicyData = list(
-#'       Type = "WAF",
+#'       Type = "WAF"|"SHIELD_ADVANCED",
 #'       ManagedServiceData = "string"
 #'     ),
 #'     ResourceType = "string",
+#'     ResourceTypeList = list(
+#'       "string"
+#'     ),
 #'     ResourceTags = list(
 #'       list(
 #'         Key = "string",

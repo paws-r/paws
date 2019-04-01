@@ -10,11 +10,12 @@ workmail_create_user(OrganizationId, Name, DisplayName, Password)
 \arguments{
 \item{OrganizationId}{[required] The identifier of the organization for which the user is created.}
 
-\item{Name}{[required] The name for the user to be created.}
+\item{Name}{[required] The name for the new user. Simple AD or AD Connector user names have a
+maximum length of 20. All others have a maximum length of 64.}
 
-\item{DisplayName}{[required] The display name for the user to be created.}
+\item{DisplayName}{[required] The display name for the new user.}
 
-\item{Password}{[required] The password for the user to be created.}
+\item{Password}{[required] The password for the new user.}
 }
 \description{
 Creates a user who can be used in Amazon WorkMail by calling the

@@ -280,6 +280,9 @@ Creates or updates a campaign.
     ),
     SegmentId = "string",
     SegmentVersion = 123,
+    tags = list(
+      "string"
+    ),
     TreatmentDescription = "string",
     TreatmentName = "string"
   )

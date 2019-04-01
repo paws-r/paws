@@ -26,7 +26,7 @@ Valid values: \code{db-instance} \| \code{db-cluster} \| \code{db-parameter-grou
 
 \item{EventCategories}{A list of event categories for a SourceType that you want to subscribe
 to. You can see a list of the categories for a given SourceType in the
-\href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html}{Events}
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html}{Events}
 topic in the \emph{Amazon RDS User Guide} or by using the
 \strong{DescribeEventCategories} action.}
 

@@ -64,6 +64,7 @@ alexaforbusiness$operation()
 \link[=alexaforbusiness_get_conference_provider]{get_conference_provider} \tab Gets details about a specific conference provider \cr
 \link[=alexaforbusiness_get_contact]{get_contact} \tab Gets the contact details by the contact ARN \cr
 \link[=alexaforbusiness_get_device]{get_device} \tab Gets the details of a device by device ARN \cr
+\link[=alexaforbusiness_get_invitation_configuration]{get_invitation_configuration} \tab Retrieves the configured values for the user enrollment invitation email template \cr
 \link[=alexaforbusiness_get_profile]{get_profile} \tab Gets the details of a room profile by profile ARN \cr
 \link[=alexaforbusiness_get_room]{get_room} \tab Gets room details by room ARN \cr
 \link[=alexaforbusiness_get_room_skill_parameter]{get_room_skill_parameter} \tab Gets room skill parameter details by room, skill, and parameter key ARN \cr
@@ -77,6 +78,7 @@ alexaforbusiness$operation()
 \link[=alexaforbusiness_list_smart_home_appliances]{list_smart_home_appliances} \tab Lists all of the smart home appliances associated with a room \cr
 \link[=alexaforbusiness_list_tags]{list_tags} \tab Lists all tags for the specified resource \cr
 \link[=alexaforbusiness_put_conference_preference]{put_conference_preference} \tab Sets the conference preferences on a specific conference provider at the account level \cr
+\link[=alexaforbusiness_put_invitation_configuration]{put_invitation_configuration} \tab Configures the email template for the user enrollment invitation with the specified attributes \cr
 \link[=alexaforbusiness_put_room_skill_parameter]{put_room_skill_parameter} \tab Updates room skill parameter details by room, skill, and parameter key ID \cr
 \link[=alexaforbusiness_put_skill_authorization]{put_skill_authorization} \tab Links a user's account to a third-party skill provider \cr
 \link[=alexaforbusiness_register_avs_device]{register_avs_device} \tab Registers an Alexa-enabled device built by an Original Equipment Manufacturer (OEM) using Alexa Voice Service (AVS) \cr

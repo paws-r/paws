@@ -16,8 +16,11 @@ Aurora DB cluster, for example
 }
 \description{
 Associates an Identity and Access Management (IAM) role from an Amazon
-Aurora DB cluster. For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Integrating.Authorizing.html}{Authorizing Amazon Aurora MySQL to Access Other AWS Services on Your Behalf}
+Aurora DB cluster. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Integrating.Authorizing.html}{Authorizing Amazon Aurora MySQL to Access Other AWS Services on Your Behalf}
 in the \emph{Amazon Aurora User Guide}.
+}
+\details{
+This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
 \preformatted{rds$add_role_to_db_cluster(

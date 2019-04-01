@@ -296,24 +296,24 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' @param ComputeCapacity &#91;required&#93; The desired capacity for the fleet.
 #' @param VpcConfig The VPC configuration for the fleet.
 #' @param MaxUserDurationInSeconds The maximum time that a streaming session can run, in seconds. Specify a
-#' value between 600 and 57600.
+#' value between 600 and 360000.
 #' @param DisconnectTimeoutInSeconds The time after disconnection when a session is considered to have ended,
 #' in seconds. If a user who was disconnected reconnects within this time
 #' interval, the user is connected to their previous session. Specify a
-#' value between 60 and 57600.
+#' value between 60 and 360000.
 #' @param Description The description to display.
 #' @param DisplayName The fleet name to display.
 #' @param EnableDefaultInternetAccess Enables or disables default internet access for the fleet.
 #' @param DomainJoinInfo The name of the directory and organizational unit (OU) to use to join
 #' the fleet to a Microsoft Active Directory domain.
-#' @param Tags The tags to associate with the fleet. A tag is a key-value pair (the
-#' value is optional). For example, Environment=Test, or, if you do not
-#' specify a value, Environment=.
+#' @param Tags The tags to associate with the fleet. A tag is a key-value pair, and the
+#' value is optional. For example, Environment=Test. If you do not specify
+#' a value, Environment=.
 #' 
-#' If you do not specify a value, we set the value to an empty string.
+#' If you do not specify a value, the value is set to an empty string.
 #' 
 #' For more information, see [Tagging Your
-#' Resources](http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
+#' Resources](https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
 #' in the *Amazon AppStream 2.0 Developer Guide*.
 #'
 #' @section Request syntax:
@@ -395,14 +395,14 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
 #' the image builder to a Microsoft Active Directory domain.
 #' @param AppstreamAgentVersion The version of the AppStream 2.0 agent to use for this image builder. To
 #' use the latest version of the AppStream 2.0 agent, specify \[LATEST\].
-#' @param Tags The tags to associate with the image builder. A tag is a key-value pair
-#' (the value is optional). For example, Environment=Test, or, if you do
-#' not specify a value, Environment=.
+#' @param Tags The tags to associate with the image builder. A tag is a key-value pair,
+#' and the value is optional. For example, Environment=Test. If you do not
+#' specify a value, Environment=.
 #' 
-#' If you do not specify a value, we set the value to an empty string.
+#' If you do not specify a value, the value is set to an empty string.
 #' 
 #' For more information about tags, see [Tagging Your
-#' Resources](http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
+#' Resources](https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
 #' in the *Amazon AppStream 2.0 Developer Guide*.
 #'
 #' @section Request syntax:
@@ -515,14 +515,14 @@ appstream_create_image_builder_streaming_url <- function(Name, Validity = NULL) 
 #' settings are enabled, changes that users make to applications and
 #' Windows settings are automatically saved after each session and applied
 #' to the next session.
-#' @param Tags The tags to associate with the stack. A tag is a key-value pair (the
-#' value is optional). For example, Environment=Test, or, if you do not
-#' specify a value, Environment=.
+#' @param Tags The tags to associate with the stack. A tag is a key-value pair, and the
+#' value is optional. For example, Environment=Test. If you do not specify
+#' a value, Environment=.
 #' 
-#' If you do not specify a value, we set the value to an empty string.
+#' If you do not specify a value, the value is set to an empty string.
 #' 
 #' For more information about tags, see [Tagging Your
-#' Resources](http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
+#' Resources](https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
 #' in the *Amazon AppStream 2.0 Developer Guide*.
 #'
 #' @section Request syntax:
@@ -595,7 +595,7 @@ appstream_create_stack <- function(Name, Description = NULL, DisplayName = NULL,
 #' @param Validity The time that the streaming URL will be valid, in seconds. Specify a
 #' value between 1 and 604800 seconds. The default is 60 seconds.
 #' @param SessionContext The session context. For more information, see [Session
-#' Context](http://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters)
+#' Context](https://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters)
 #' in the *Amazon AppStream 2.0 Developer Guide*.
 #'
 #' @section Request syntax:
@@ -1178,14 +1178,14 @@ appstream_describe_images <- function(Names = NULL, Arns = NULL, Type = NULL, Ne
 }
 .appstream$operations$describe_images <- appstream_describe_images
 
-#' Retrieves a list that describes the streaming sessions for a specified
-#' stack and fleet
+#' Retrieves a list that describes the active streaming sessions for a
+#' specified stack and fleet
 #'
-#' Retrieves a list that describes the streaming sessions for a specified
-#' stack and fleet. If a UserId is provided for the stack and fleet, only
-#' streaming sessions for that user are described. If an authentication
-#' type is not provided, the default is to authenticate users using a
-#' streaming URL.
+#' Retrieves a list that describes the active streaming sessions for a
+#' specified stack and fleet. If a value for `UserId` is provided for the
+#' stack and fleet, only streaming sessions for that user are described. If
+#' an authentication type is not provided, the default is to authenticate
+#' users using a streaming URL.
 #'
 #' @usage
 #' appstream_describe_sessions(StackName, FleetName, UserId, NextToken,
@@ -1199,8 +1199,9 @@ appstream_describe_images <- function(Names = NULL, Arns = NULL, Type = NULL, Ne
 #' @param Limit The size of each page of results. The default value is 20 and the
 #' maximum value is 50.
 #' @param AuthenticationType The authentication method. Specify `API` for a user authenticated using
-#' a streaming URL or `SAML` for a SAML federated user. The default is to
-#' authenticate users using a streaming URL.
+#' a streaming URL, `SAML` for a SAML 2.0-federated user, or `USERPOOL` for
+#' a user in the AppStream 2.0 user pool. The default is to authenticate
+#' users using a streaming URL.
 #'
 #' @section Request syntax:
 #' ```
@@ -1607,7 +1608,7 @@ appstream_list_associated_stacks <- function(FleetName, NextToken = NULL) {
 #' You can tag AppStream 2.0 image builders, images, fleets, and stacks.
 #' 
 #' For more information about tags, see [Tagging Your
-#' Resources](http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
+#' Resources](https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
 #' in the *Amazon AppStream 2.0 Developer Guide*.
 #'
 #' @usage
@@ -1797,18 +1798,18 @@ appstream_stop_image_builder <- function(Name) {
 #' disassociate tags from your resources, use UntagResource.
 #' 
 #' For more information about tags, see [Tagging Your
-#' Resources](http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
+#' Resources](https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
 #' in the *Amazon AppStream 2.0 Developer Guide*.
 #'
 #' @usage
 #' appstream_tag_resource(ResourceArn, Tags)
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
-#' @param Tags &#91;required&#93; The tags to associate. A tag is a key-value pair (the value is
-#' optional). For example, `Environment=Test`, or, if you do not specify a
-#' value, `Environment=`.
+#' @param Tags &#91;required&#93; The tags to associate. A tag is a key-value pair, and the value is
+#' optional. For example, Environment=Test. If you do not specify a value,
+#' Environment=.
 #' 
-#' If you do not specify a value, we set the value to an empty string.
+#' If you do not specify a value, the value is set to an empty string.
 #'
 #' @section Request syntax:
 #' ```
@@ -1847,7 +1848,7 @@ appstream_tag_resource <- function(ResourceArn, Tags) {
 #' To list the current tags for your resources, use ListTagsForResource.
 #' 
 #' For more information about tags, see [Tagging Your
-#' Resources](http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
+#' Resources](https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
 #' in the *Amazon AppStream 2.0 Developer Guide*.
 #'
 #' @usage
@@ -1997,11 +1998,13 @@ appstream_update_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' @param ComputeCapacity The desired capacity for the fleet.
 #' @param VpcConfig The VPC configuration for the fleet.
 #' @param MaxUserDurationInSeconds The maximum time that a streaming session can run, in seconds. Specify a
-#' value between 600 and 57600.
+#' value between 600 and 360000. By default, the value is 900 seconds (15
+#' minutes).
 #' @param DisconnectTimeoutInSeconds The time after disconnection when a session is considered to have ended,
 #' in seconds. If a user who was disconnected reconnects within this time
 #' interval, the user is connected to their previous session. Specify a
-#' value between 60 and 57600.
+#' value between 60 and 360000. By default, the value is 900 seconds (15
+#' minutes).
 #' @param DeleteVpcConfig Deletes the VPC association for the specified fleet.
 #' @param Description The description to display.
 #' @param DisplayName The fleet name to display.

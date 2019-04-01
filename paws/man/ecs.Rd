@@ -7,6 +7,8 @@
 ecs()
 }
 \description{
+Amazon Elastic Container Service
+
 Amazon Elastic Container Service (Amazon ECS) is a highly scalable,
 fast, container management service that makes it easy to run, stop, and
 manage Docker containers on a cluster. You can host your cluster on a
@@ -38,16 +40,19 @@ ecs$operation()
 \tabular{ll}{
 \link[=ecs_create_cluster]{create_cluster} \tab Creates a new Amazon ECS cluster \cr
 \link[=ecs_create_service]{create_service} \tab Runs and maintains a desired number of tasks from a specified task definition \cr
+\link[=ecs_create_task_set]{create_task_set} \tab Create a task set in the specified cluster and service \cr
 \link[=ecs_delete_account_setting]{delete_account_setting} \tab Modifies the ARN and resource ID format of a resource for a specified IAM user, IAM role, or the root user for an account \cr
 \link[=ecs_delete_attributes]{delete_attributes} \tab Deletes one or more custom attributes from an Amazon ECS resource \cr
 \link[=ecs_delete_cluster]{delete_cluster} \tab Deletes the specified cluster \cr
 \link[=ecs_delete_service]{delete_service} \tab Deletes a specified service within a cluster \cr
+\link[=ecs_delete_task_set]{delete_task_set} \tab Deletes a specified task set within a service \cr
 \link[=ecs_deregister_container_instance]{deregister_container_instance} \tab Deregisters an Amazon ECS container instance from the specified cluster \cr
 \link[=ecs_deregister_task_definition]{deregister_task_definition} \tab Deregisters the specified task definition by family and revision \cr
 \link[=ecs_describe_clusters]{describe_clusters} \tab Describes one or more of your clusters \cr
 \link[=ecs_describe_container_instances]{describe_container_instances} \tab Describes Amazon Elastic Container Service container instances \cr
 \link[=ecs_describe_services]{describe_services} \tab Describes the specified services running in your cluster \cr
 \link[=ecs_describe_task_definition]{describe_task_definition} \tab Describes a task definition \cr
+\link[=ecs_describe_task_sets]{describe_task_sets} \tab Describes the task sets in the specified cluster and service \cr
 \link[=ecs_describe_tasks]{describe_tasks} \tab Describes a specified task or tasks \cr
 \link[=ecs_discover_poll_endpoint]{discover_poll_endpoint} \tab This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent \cr
 \link[=ecs_list_account_settings]{list_account_settings} \tab Lists the account settings for an Amazon ECS resource for a specified principal \cr
@@ -73,7 +78,9 @@ ecs$operation()
 \link[=ecs_untag_resource]{untag_resource} \tab Deletes specified tags from a resource \cr
 \link[=ecs_update_container_agent]{update_container_agent} \tab Updates the Amazon ECS container agent on a specified container instance \cr
 \link[=ecs_update_container_instances_state]{update_container_instances_state} \tab Modifies the status of an Amazon ECS container instance \cr
-\link[=ecs_update_service]{update_service} \tab Modifies the parameters of a service
+\link[=ecs_update_service]{update_service} \tab Modifies the parameters of a service \cr
+\link[=ecs_update_service_primary_task_set]{update_service_primary_task_set} \tab Modifies which task set in a service is the primary task set \cr
+\link[=ecs_update_task_set]{update_task_set} \tab Modifies a task set
 }
 }
 

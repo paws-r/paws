@@ -7,13 +7,13 @@
 mediaconvert_list_queues(ListBy, MaxResults, NextToken, Order)
 }
 \arguments{
-\item{ListBy}{}
+\item{ListBy}{Optional. When you request a list of queues, you can choose to list them alphabetically by NAME or chronologically by CREATION_DATE. If you don't specify, the service will list them by creation date.}
 
 \item{MaxResults}{Optional. Number of queues, up to twenty, that will be returned at one time.}
 
 \item{NextToken}{Use this string, provided with the response to a previous request, to request the next batch of queues.}
 
-\item{Order}{}
+\item{Order}{When you request lists of resources, you can optionally specify whether they are sorted in ASCENDING or DESCENDING order. Default varies by resource.}
 }
 \description{
 Retrieve a JSON array of up to twenty of your queues. This will return the queues themselves, not just a list of them. To retrieve the next twenty queues, use the nextToken string returned with the array.

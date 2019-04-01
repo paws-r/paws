@@ -15,6 +15,11 @@ build ID. If successful, an object containing the build properties is
 returned.
 }
 \details{
+\strong{Learn more}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/build-intro.html}{Working with Builds}
+
+\strong{Related operations}
 \itemize{
 \item CreateBuild
 \item ListBuilds

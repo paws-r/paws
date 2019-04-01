@@ -17,6 +17,12 @@ any uploaded build files.
 To delete a build, specify its ID. Deleting a build does not affect the
 status of any active fleets using the build, but you can no longer
 create new fleets with the deleted build.
+
+\strong{Learn more}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/build-intro.html}{Working with Builds}
+
+\strong{Related operations}
 \itemize{
 \item CreateBuild
 \item ListBuilds

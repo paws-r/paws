@@ -19,19 +19,19 @@ uses when the model is deployed for predictions.}
 \item{ExecutionRoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker can
 assume to access model artifacts and docker image for deployment on ML
 compute instances or for batch transform jobs. Deploying on ML compute
-instances is part of model hosting. For more information, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html}{Amazon SageMaker Roles}.
+instances is part of model hosting. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html}{Amazon SageMaker Roles}.
 
 To be able to pass this role to Amazon SageMaker, the caller of this API
 must have the \code{iam:PassRole} permission.}
 
-\item{Tags}{An array of key-value pairs. For more information, see \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}
+\item{Tags}{An array of key-value pairs. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}
 in the \emph{AWS Billing and Cost Management User Guide}.}
 
 \item{VpcConfig}{A VpcConfig object that specifies the VPC that you want your model to
 connect to. Control access to and from your model container by
 configuring the VPC. \code{VpcConfig} is used in hosting services and in
-batch transform. For more information, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html}{Protect Endpoints by Using an Amazon Virtual Private Cloud} and
-\href{http://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html}{Protect Data in Batch Transform Jobs by Using an Amazon Virtual Private Cloud}.}
+batch transform. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html}{Protect Endpoints by Using an Amazon Virtual Private Cloud}
+and \href{https://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html}{Protect Data in Batch Transform Jobs by Using an Amazon Virtual Private Cloud}.}
 
 \item{EnableNetworkIsolation}{Isolates the model container. No inbound or outbound network calls can
 be made to or from the model container.

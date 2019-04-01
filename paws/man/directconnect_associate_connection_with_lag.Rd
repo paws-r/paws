@@ -7,10 +7,9 @@
 directconnect_associate_connection_with_lag(connectionId, lagId)
 }
 \arguments{
-\item{connectionId}{[required] The ID of the connection. For example, dxcon-abc123.}
+\item{connectionId}{[required] The ID of the connection.}
 
-\item{lagId}{[required] The ID of the LAG with which to associate the connection. For example,
-dxlag-abc123.}
+\item{lagId}{[required] The ID of the LAG with which to associate the connection.}
 }
 \description{
 Associates an existing connection with a link aggregation group (LAG).

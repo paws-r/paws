@@ -15,7 +15,7 @@ Returns descriptive information about an Amazon EKS cluster.
 \details{
 The API server endpoint and certificate authority data returned by this
 operation are required for \code{kubelet} and \code{kubectl} to communicate with
-your Kubernetes API server. For more information, see \href{http://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html}{Create a kubeconfig for Amazon EKS}.
+your Kubernetes API server. For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html}{Create a kubeconfig for Amazon EKS}.
 
 The API server endpoint and certificate authority data are not available
 until the cluster reaches the \code{ACTIVE} state.

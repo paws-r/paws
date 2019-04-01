@@ -13,7 +13,7 @@ mediaconvert_update_preset(Category, Description, Name, Settings)
 
 \item{Name}{[required] The name of the preset you are modifying.}
 
-\item{Settings}{}
+\item{Settings}{Settings for preset}
 }
 \description{
 Modify one of your existing presets.
@@ -227,6 +227,9 @@ Modify one of your existing presets.
         PrivateMetadataPid = 123,
         ProgramNumber = 123,
         RateMode = "VBR"|"CBR",
+        Scte35Esam = list(
+          Scte35EsamPid = 123
+        ),
         Scte35Pid = 123,
         Scte35Source = "PASSTHROUGH"|"NONE",
         SegmentationMarkers = "NONE"|"RAI_SEGSTART"|"RAI_ADAPT"|"PSI_SEGSTART"|"EBP"|"EBP_LEGACY",

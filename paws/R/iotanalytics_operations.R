@@ -166,7 +166,7 @@ iotanalytics_create_channel <- function(channelName, retentionPeriod = NULL, tag
 #'
 #' @usage
 #' iotanalytics_create_dataset(datasetName, actions, triggers,
-#'   contentDeliveryRules, retentionPeriod, tags)
+#'   contentDeliveryRules, retentionPeriod, versioningConfiguration, tags)
 #'
 #' @param datasetName &#91;required&#93; The name of the data set.
 #' @param actions &#91;required&#93; A list of actions that create the data set contents.
@@ -176,10 +176,18 @@ iotanalytics_create_channel <- function(channelName, retentionPeriod = NULL, tag
 #' **DataSetTrigger** objects.
 #' @param contentDeliveryRules When data set contents are created they are delivered to destinations
 #' specified here.
-#' @param retentionPeriod \[Optional\] How long, in days, message data is kept for the data set.
-#' If not given or set to null, the latest version of the dataset content
-#' plus the latest succeeded version (if they are different) are retained
-#' for at most 90 days.
+#' @param retentionPeriod \[Optional\] How long, in days, versions of data set contents are kept
+#' for the data set. If not specified or set to null, versions of data set
+#' contents are retained for at most 90 days. The number of versions of
+#' data set contents retained is determined by the
+#' `versioningConfiguration` parameter. (For more information, see
+#' https://docs.aws.amazon.com/iotanalytics/latest/userguide/getting-started.html\\#aws-iot-analytics-dataset-versions)
+#' @param versioningConfiguration \[Optional\] How many versions of data set contents are kept. If not
+#' specified or set to null, only the latest version plus the latest
+#' succeeded version (if they are different) are kept for the time period
+#' specified by the \"retentionPeriod\" parameter. (For more information,
+#' see
+#' https://docs.aws.amazon.com/iotanalytics/latest/userguide/getting-started.html\\#aws-iot-analytics-dataset-versions)
 #' @param tags Metadata which can be used to manage the data set.
 #'
 #' @section Request syntax:
@@ -248,6 +256,10 @@ iotanalytics_create_channel <- function(channelName, retentionPeriod = NULL, tag
 #'     unlimited = TRUE|FALSE,
 #'     numberOfDays = 123
 #'   ),
+#'   versioningConfiguration = list(
+#'     unlimited = TRUE|FALSE,
+#'     maxVersions = 123
+#'   ),
 #'   tags = list(
 #'     list(
 #'       key = "string",
@@ -260,14 +272,14 @@ iotanalytics_create_channel <- function(channelName, retentionPeriod = NULL, tag
 #' @keywords internal
 #'
 #' @rdname iotanalytics_create_dataset
-iotanalytics_create_dataset <- function(datasetName, actions, triggers = NULL, contentDeliveryRules = NULL, retentionPeriod = NULL, tags = NULL) {
+iotanalytics_create_dataset <- function(datasetName, actions, triggers = NULL, contentDeliveryRules = NULL, retentionPeriod = NULL, versioningConfiguration = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateDataset",
     http_method = "POST",
     http_path = "/datasets",
     paginator = list()
   )
-  input <- .iotanalytics$create_dataset_input(datasetName = datasetName, actions = actions, triggers = triggers, contentDeliveryRules = contentDeliveryRules, retentionPeriod = retentionPeriod, tags = tags)
+  input <- .iotanalytics$create_dataset_input(datasetName = datasetName, actions = actions, triggers = triggers, contentDeliveryRules = contentDeliveryRules, retentionPeriod = retentionPeriod, versioningConfiguration = versioningConfiguration, tags = tags)
   output <- .iotanalytics$create_dataset_output()
   svc <- .iotanalytics$service()
   request <- new_request(svc, op, input, output)
@@ -364,19 +376,25 @@ iotanalytics_create_datastore <- function(datastoreName, retentionPeriod = NULL,
 #'
 #' Creates a pipeline. A pipeline consumes messages from one or more
 #' channels and allows you to process the messages before storing them in a
-#' data store.
+#' data store. You must specify both a `channel` and a `datastore` activity
+#' and, optionally, as many as 23 additional activities in the
+#' `pipelineActivities` array.
 #'
 #' @usage
 #' iotanalytics_create_pipeline(pipelineName, pipelineActivities, tags)
 #'
 #' @param pipelineName &#91;required&#93; The name of the pipeline.
-#' @param pipelineActivities &#91;required&#93; A list of pipeline activities.
-#' 
-#' The list can be 1-25 **PipelineActivity** objects. Activities perform
-#' transformations on your messages, such as removing, renaming, or adding
+#' @param pipelineActivities &#91;required&#93; A list of \"PipelineActivity\" objects. Activities perform
+#' transformations on your messages, such as removing, renaming or adding
 #' message attributes; filtering messages based on attribute values;
 #' invoking your Lambda functions on messages for advanced processing; or
 #' performing mathematical transformations to normalize device data.
+#' 
+#' The list can be 2-25 **PipelineActivity** objects and must contain both
+#' a `channel` and a `datastore` activity. Each entry in the list must
+#' contain only one activity, for example:
+#' 
+#' `pipelineActivities = \\[ \{ "channel": \{ ... \} \}, \{ "lambda": \{ ... \} \}, ... \\]`
 #' @param tags Metadata which can be used to manage the pipeline.
 #'
 #' @section Request syntax:
@@ -1493,7 +1511,7 @@ iotanalytics_update_channel <- function(channelName, retentionPeriod = NULL) {
 #'
 #' @usage
 #' iotanalytics_update_dataset(datasetName, actions, triggers,
-#'   contentDeliveryRules, retentionPeriod)
+#'   contentDeliveryRules, retentionPeriod, versioningConfiguration)
 #'
 #' @param datasetName &#91;required&#93; The name of the data set to update.
 #' @param actions &#91;required&#93; A list of \"DatasetAction\" objects.
@@ -1501,7 +1519,13 @@ iotanalytics_update_channel <- function(channelName, retentionPeriod = NULL) {
 #' contain up to five **DataSetTrigger** objects.
 #' @param contentDeliveryRules When data set contents are created they are delivered to destinations
 #' specified here.
-#' @param retentionPeriod How long, in days, message data is kept for the data set.
+#' @param retentionPeriod How long, in days, data set contents are kept for the data set.
+#' @param versioningConfiguration \[Optional\] How many versions of data set contents are kept. If not
+#' specified or set to null, only the latest version plus the latest
+#' succeeded version (if they are different) are kept for the time period
+#' specified by the \"retentionPeriod\" parameter. (For more information,
+#' see
+#' https://docs.aws.amazon.com/iotanalytics/latest/userguide/getting-started.html\\#aws-iot-analytics-dataset-versions)
 #'
 #' @section Request syntax:
 #' ```
@@ -1568,6 +1592,10 @@ iotanalytics_update_channel <- function(channelName, retentionPeriod = NULL) {
 #'   retentionPeriod = list(
 #'     unlimited = TRUE|FALSE,
 #'     numberOfDays = 123
+#'   ),
+#'   versioningConfiguration = list(
+#'     unlimited = TRUE|FALSE,
+#'     maxVersions = 123
 #'   )
 #' )
 #' ```
@@ -1575,14 +1603,14 @@ iotanalytics_update_channel <- function(channelName, retentionPeriod = NULL) {
 #' @keywords internal
 #'
 #' @rdname iotanalytics_update_dataset
-iotanalytics_update_dataset <- function(datasetName, actions, triggers = NULL, contentDeliveryRules = NULL, retentionPeriod = NULL) {
+iotanalytics_update_dataset <- function(datasetName, actions, triggers = NULL, contentDeliveryRules = NULL, retentionPeriod = NULL, versioningConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateDataset",
     http_method = "PUT",
     http_path = "/datasets/{datasetName}",
     paginator = list()
   )
-  input <- .iotanalytics$update_dataset_input(datasetName = datasetName, actions = actions, triggers = triggers, contentDeliveryRules = contentDeliveryRules, retentionPeriod = retentionPeriod)
+  input <- .iotanalytics$update_dataset_input(datasetName = datasetName, actions = actions, triggers = triggers, contentDeliveryRules = contentDeliveryRules, retentionPeriod = retentionPeriod, versioningConfiguration = versioningConfiguration)
   output <- .iotanalytics$update_dataset_output()
   svc <- .iotanalytics$service()
   request <- new_request(svc, op, input, output)
@@ -1633,19 +1661,25 @@ iotanalytics_update_datastore <- function(datastoreName, retentionPeriod = NULL)
 
 #' Updates the settings of a pipeline
 #'
-#' Updates the settings of a pipeline.
+#' Updates the settings of a pipeline. You must specify both a `channel`
+#' and a `datastore` activity and, optionally, as many as 23 additional
+#' activities in the `pipelineActivities` array.
 #'
 #' @usage
 #' iotanalytics_update_pipeline(pipelineName, pipelineActivities)
 #'
 #' @param pipelineName &#91;required&#93; The name of the pipeline to update.
-#' @param pipelineActivities &#91;required&#93; A list of \"PipelineActivity\" objects.
-#' 
-#' The list can be 1-25 **PipelineActivity** objects. Activities perform
+#' @param pipelineActivities &#91;required&#93; A list of \"PipelineActivity\" objects. Activities perform
 #' transformations on your messages, such as removing, renaming or adding
 #' message attributes; filtering messages based on attribute values;
 #' invoking your Lambda functions on messages for advanced processing; or
 #' performing mathematical transformations to normalize device data.
+#' 
+#' The list can be 2-25 **PipelineActivity** objects and must contain both
+#' a `channel` and a `datastore` activity. Each entry in the list must
+#' contain only one activity, for example:
+#' 
+#' `pipelineActivities = \\[ \{ "channel": \{ ... \} \}, \{ "lambda": \{ ... \} \}, ... \\]`
 #'
 #' @section Request syntax:
 #' ```

@@ -9,7 +9,7 @@ rds_list_tags_for_resource(ResourceName, Filters)
 \arguments{
 \item{ResourceName}{[required] The Amazon RDS resource with tags to be listed. This value is an Amazon
 Resource Name (ARN). For information about creating an ARN, see
-\href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an ARN for Amazon RDS}
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an ARN for Amazon RDS}
 in the \emph{Amazon RDS User Guide}.}
 
 \item{Filters}{This parameter is not currently supported.}
@@ -18,7 +18,7 @@ in the \emph{Amazon RDS User Guide}.}
 Lists all tags on an Amazon RDS resource.
 }
 \details{
-For an overview on tagging an Amazon RDS resource, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html}{Tagging Amazon RDS Resources}
+For an overview on tagging an Amazon RDS resource, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html}{Tagging Amazon RDS Resources}
 in the \emph{Amazon RDS User Guide}.
 }
 \section{Request syntax}{

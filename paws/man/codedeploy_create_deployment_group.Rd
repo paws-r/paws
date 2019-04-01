@@ -27,7 +27,7 @@ is used if a configuration isn't specified for the deployment or
 deployment group.
 
 For more information about the predefined deployment configurations in
-AWS CodeDeploy, see \href{http://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html}{Working with Deployment Groups in AWS CodeDeploy}
+AWS CodeDeploy, see \href{https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html}{Working with Deployment Groups in AWS CodeDeploy}
 in the AWS CodeDeploy User Guide.}
 
 \item{ec2TagFilters}{The Amazon EC2 tags on which to filter. The deployment group includes
@@ -44,7 +44,7 @@ used in the same call as OnPremisesTagSet.}
 behalf when interacting with AWS services.}
 
 \item{triggerConfigurations}{Information about triggers to create when the deployment group is
-created. For examples, see \href{http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html}{Create a Trigger for an AWS CodeDeploy Event}
+created. For examples, see \href{https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html}{Create a Trigger for an AWS CodeDeploy Event}
 in the AWS CodeDeploy User Guide.}
 
 \item{alarmConfiguration}{Information to add about Amazon CloudWatch alarms when the deployment

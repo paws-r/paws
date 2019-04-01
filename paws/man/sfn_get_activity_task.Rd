@@ -30,7 +30,7 @@ seconds (5 seconds higher than the maximum time the service may hold the
 poll request).
 
 Polling with \code{GetActivityTask} can cause latency in some
-implementations. See \href{http://docs.aws.amazon.com/step-functions/latest/dg/bp-activity-pollers.html}{Avoid Latency When Polling for Activity Tasks}
+implementations. See \href{https://docs.aws.amazon.com/step-functions/latest/dg/bp-activity-pollers.html}{Avoid Latency When Polling for Activity Tasks}
 in the Step Functions Developer Guide.
 }
 \section{Request syntax}{

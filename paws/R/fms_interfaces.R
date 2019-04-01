@@ -5,7 +5,7 @@ NULL
 
 .fms$associate_admin_account_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AdminAccount = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(AdminAccount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -25,7 +25,7 @@ NULL
 
 .fms$delete_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyId = structure(logical(0), tags = list(type = "string")), DeleteAllPolicyResources = structure(logical(0), tags = list(        type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(PolicyId = structure(logical(0), tags = list(type = "string")), DeleteAllPolicyResources = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -51,19 +51,19 @@ NULL
 
 .fms$get_admin_account_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AdminAccount = structure(logical(0), tags = list(    type = "string")), RoleStatus = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(AdminAccount = structure(logical(0), tags = list(type = "string")), RoleStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .fms$get_compliance_detail_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyId = structure(logical(0), tags = list(type = "string")), MemberAccount = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(PolicyId = structure(logical(0), tags = list(type = "string")), MemberAccount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .fms$get_compliance_detail_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyComplianceDetail = structure(list(PolicyOwner = structure(logical(0), tags = list(    type = "string")), PolicyId = structure(logical(0), tags = list(    type = "string")), MemberAccount = structure(logical(0), tags = list(    type = "string")), Violators = structure(list(structure(list(    ResourceId = structure(logical(0), tags = list(type = "string")), ViolationReason = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))), tags = list(type = "list")), EvaluationLimitExceeded = structure(logical(0), tags = list(    type = "boolean")), ExpiredAt = structure(logical(0), tags = list(    type = "timestamp")), IssueInfoMap = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "map"))), tags = list(    type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(PolicyComplianceDetail = structure(list(PolicyOwner = structure(logical(0), tags = list(type = "string")), PolicyId = structure(logical(0), tags = list(type = "string")), MemberAccount = structure(logical(0), tags = list(type = "string")), Violators = structure(list(structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), ViolationReason = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EvaluationLimitExceeded = structure(logical(0), tags = list(type = "boolean")), ExpiredAt = structure(logical(0), tags = list(type = "timestamp")), IssueInfoMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -75,61 +75,73 @@ NULL
 
 .fms$get_notification_channel_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SnsTopicArn = structure(logical(0), tags = list(    type = "string")), SnsRoleName = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(SnsTopicArn = structure(logical(0), tags = list(type = "string")), SnsRoleName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .fms$get_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyId = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(PolicyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .fms$get_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Policy = structure(list(PolicyId = structure(logical(0), tags = list(    type = "string")), PolicyName = structure(logical(0), tags = list(    type = "string")), PolicyUpdateToken = structure(logical(0), tags = list(    type = "string")), SecurityServicePolicyData = structure(list(    Type = structure(logical(0), tags = list(type = "string")), ManagedServiceData = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure")), ResourceType = structure(logical(0), tags = list(    type = "string")), ResourceTags = structure(list(structure(list(    Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))), tags = list(type = "list")), ExcludeResourceTags = structure(logical(0), tags = list(    type = "boolean")), RemediationEnabled = structure(logical(0), tags = list(    type = "boolean")), IncludeMap = structure(list(structure(list(    structure(logical(0), tags = list(type = "string"))), tags = list(    type = "list"))), tags = list(type = "map")), ExcludeMap = structure(list(    structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(        type = "list"))), tags = list(type = "map"))), tags = list(    type = "structure")), PolicyArn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Policy = structure(list(PolicyId = structure(logical(0), tags = list(type = "string")), PolicyName = structure(logical(0), tags = list(type = "string")), PolicyUpdateToken = structure(logical(0), tags = list(type = "string")), SecurityServicePolicyData = structure(list(Type = structure(logical(0), tags = list(type = "string")), ManagedServiceData = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ResourceType = structure(logical(0), tags = list(type = "string")), ResourceTypeList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceTags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ExcludeResourceTags = structure(logical(0), tags = list(type = "boolean")), RemediationEnabled = structure(logical(0), tags = list(type = "boolean")), IncludeMap = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), ExcludeMap = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure")), PolicyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.fms$get_protection_status_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(PolicyId = structure(logical(0), tags = list(type = "string")), MemberAccountId = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.fms$get_protection_status_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AdminAccountId = structure(logical(0), tags = list(type = "string")), ServiceType = structure(logical(0), tags = list(type = "string")), Data = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .fms$list_compliance_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(    type = "structure"))
+  shape <- structure(list(PolicyId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .fms$list_compliance_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyComplianceStatusList = structure(list(structure(list(    PolicyOwner = structure(logical(0), tags = list(type = "string")), PolicyId = structure(logical(0), tags = list(type = "string")), PolicyName = structure(logical(0), tags = list(type = "string")), MemberAccount = structure(logical(0), tags = list(type = "string")), EvaluationResults = structure(list(structure(list(ComplianceStatus = structure(logical(0), tags = list(        type = "string")), ViolatorCount = structure(logical(0), tags = list(        type = "long")), EvaluationLimitExceeded = structure(logical(0), tags = list(        type = "boolean"))), tags = list(type = "structure"))), tags = list(        type = "list")), LastUpdated = structure(logical(0), tags = list(        type = "timestamp")), IssueInfoMap = structure(list(structure(logical(0), tags = list(        type = "string"))), tags = list(type = "map"))), tags = list(    type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(PolicyComplianceStatusList = structure(list(structure(list(PolicyOwner = structure(logical(0), tags = list(type = "string")), PolicyId = structure(logical(0), tags = list(type = "string")), PolicyName = structure(logical(0), tags = list(type = "string")), MemberAccount = structure(logical(0), tags = list(type = "string")), EvaluationResults = structure(list(structure(list(ComplianceStatus = structure(logical(0), tags = list(type = "string")), ViolatorCount = structure(logical(0), tags = list(type = "long")), EvaluationLimitExceeded = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), LastUpdated = structure(logical(0), tags = list(type = "timestamp")), IssueInfoMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .fms$list_member_accounts_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(    type = "string")), MaxResults = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .fms$list_member_accounts_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MemberAccounts = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(MemberAccounts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .fms$list_policies_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(    type = "string")), MaxResults = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .fms$list_policies_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyList = structure(list(structure(list(PolicyArn = structure(logical(0), tags = list(    type = "string")), PolicyId = structure(logical(0), tags = list(    type = "string")), PolicyName = structure(logical(0), tags = list(    type = "string")), ResourceType = structure(logical(0), tags = list(    type = "string")), SecurityServiceType = structure(logical(0), tags = list(    type = "string")), RemediationEnabled = structure(logical(0), tags = list(    type = "boolean"))), tags = list(type = "structure"))), tags = list(    type = "list")), NextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(PolicyList = structure(list(structure(list(PolicyArn = structure(logical(0), tags = list(type = "string")), PolicyId = structure(logical(0), tags = list(type = "string")), PolicyName = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), SecurityServiceType = structure(logical(0), tags = list(type = "string")), RemediationEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .fms$put_notification_channel_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SnsTopicArn = structure(logical(0), tags = list(    type = "string")), SnsRoleName = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(SnsTopicArn = structure(logical(0), tags = list(type = "string")), SnsRoleName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -139,12 +151,12 @@ NULL
 
 .fms$put_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Policy = structure(list(PolicyId = structure(logical(0), tags = list(    type = "string")), PolicyName = structure(logical(0), tags = list(    type = "string")), PolicyUpdateToken = structure(logical(0), tags = list(    type = "string")), SecurityServicePolicyData = structure(list(    Type = structure(logical(0), tags = list(type = "string")), ManagedServiceData = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure")), ResourceType = structure(logical(0), tags = list(    type = "string")), ResourceTags = structure(list(structure(list(    Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))), tags = list(type = "list")), ExcludeResourceTags = structure(logical(0), tags = list(    type = "boolean")), RemediationEnabled = structure(logical(0), tags = list(    type = "boolean")), IncludeMap = structure(list(structure(list(    structure(logical(0), tags = list(type = "string"))), tags = list(    type = "list"))), tags = list(type = "map")), ExcludeMap = structure(list(    structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(        type = "list"))), tags = list(type = "map"))), tags = list(    type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Policy = structure(list(PolicyId = structure(logical(0), tags = list(type = "string")), PolicyName = structure(logical(0), tags = list(type = "string")), PolicyUpdateToken = structure(logical(0), tags = list(type = "string")), SecurityServicePolicyData = structure(list(Type = structure(logical(0), tags = list(type = "string")), ManagedServiceData = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ResourceType = structure(logical(0), tags = list(type = "string")), ResourceTypeList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceTags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ExcludeResourceTags = structure(logical(0), tags = list(type = "boolean")), RemediationEnabled = structure(logical(0), tags = list(type = "boolean")), IncludeMap = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), ExcludeMap = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .fms$put_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Policy = structure(list(PolicyId = structure(logical(0), tags = list(    type = "string")), PolicyName = structure(logical(0), tags = list(    type = "string")), PolicyUpdateToken = structure(logical(0), tags = list(    type = "string")), SecurityServicePolicyData = structure(list(    Type = structure(logical(0), tags = list(type = "string")), ManagedServiceData = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure")), ResourceType = structure(logical(0), tags = list(    type = "string")), ResourceTags = structure(list(structure(list(    Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))), tags = list(type = "list")), ExcludeResourceTags = structure(logical(0), tags = list(    type = "boolean")), RemediationEnabled = structure(logical(0), tags = list(    type = "boolean")), IncludeMap = structure(list(structure(list(    structure(logical(0), tags = list(type = "string"))), tags = list(    type = "list"))), tags = list(type = "map")), ExcludeMap = structure(list(    structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(        type = "list"))), tags = list(type = "map"))), tags = list(    type = "structure")), PolicyArn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Policy = structure(list(PolicyId = structure(logical(0), tags = list(type = "string")), PolicyName = structure(logical(0), tags = list(type = "string")), PolicyUpdateToken = structure(logical(0), tags = list(type = "string")), SecurityServicePolicyData = structure(list(Type = structure(logical(0), tags = list(type = "string")), ManagedServiceData = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ResourceType = structure(logical(0), tags = list(type = "string")), ResourceTypeList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceTags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ExcludeResourceTags = structure(logical(0), tags = list(type = "boolean")), RemediationEnabled = structure(logical(0), tags = list(type = "boolean")), IncludeMap = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), ExcludeMap = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure")), PolicyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }

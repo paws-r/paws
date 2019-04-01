@@ -15,13 +15,13 @@ value here, the latest version available in Amazon EKS is used.}
 
 \item{roleArn}{[required] The Amazon Resource Name (ARN) of the IAM role that provides permissions
 for Amazon EKS to make calls to other AWS API operations on your behalf.
-For more information, see \href{http://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html}{Amazon EKS Service IAM Role}
+For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html}{Amazon EKS Service IAM Role}
 in the \strong{Amazon EKS User Guide} .}
 
-\item{resourcesVpcConfig}{[required] The VPC subnets and security groups used by the cluster control plane.
-Amazon EKS VPC resources have specific requirements to work properly
-with Kubernetes. For more information, see \href{http://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html}{Cluster VPC Considerations}
-and \href{http://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html}{Cluster Security Group Considerations}
+\item{resourcesVpcConfig}{[required] The VPC configuration used by the cluster control plane. Amazon EKS VPC
+resources have specific requirements to work properly with Kubernetes.
+For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html}{Cluster VPC Considerations}
+and \href{https://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html}{Cluster Security Group Considerations}
 in the \emph{Amazon EKS User Guide}. You must specify at least two subnets.
 You may specify up to five security groups, but we recommend that you
 use a dedicated security group for your cluster control plane.}
@@ -51,8 +51,8 @@ worker nodes (for example, to support \code{kubectl exec}, \code{logs}, and
 
 After you create an Amazon EKS cluster, you must configure your
 Kubernetes tooling to communicate with the API server and launch worker
-nodes into your cluster. For more information, see \href{http://docs.aws.amazon.com/eks/latest/userguide/managing-auth.html}{Managing Cluster Authentication}
-and \href{http://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html}{Launching Amazon EKS Worker Nodes}in
+nodes into your cluster. For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/managing-auth.html}{Managing Cluster Authentication}
+and \href{https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html}{Launching Amazon EKS Worker Nodes}in
 the \emph{Amazon EKS User Guide}.
 }
 \section{Request syntax}{
@@ -66,7 +66,9 @@ the \emph{Amazon EKS User Guide}.
     ),
     securityGroupIds = list(
       "string"
-    )
+    ),
+    endpointPublicAccess = TRUE|FALSE,
+    endpointPrivateAccess = TRUE|FALSE
   ),
   clientRequestToken = "string"
 )

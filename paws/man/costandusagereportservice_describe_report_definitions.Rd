@@ -2,7 +2,7 @@
 % Please edit documentation in R/costandusagereportservice_operations.R
 \name{costandusagereportservice_describe_report_definitions}
 \alias{costandusagereportservice_describe_report_definitions}
-\title{Describe a list of report definitions owned by the account}
+\title{Lists the AWS Cost and Usage reports available to this account}
 \usage{
 costandusagereportservice_describe_report_definitions(MaxResults,
   NextToken)
@@ -13,7 +13,7 @@ costandusagereportservice_describe_report_definitions(MaxResults,
 \item{NextToken}{}
 }
 \description{
-Describe a list of report definitions owned by the account
+Lists the AWS Cost and Usage reports available to this account.
 }
 \section{Request syntax}{
 \preformatted{costandusagereportservice$describe_report_definitions(
@@ -23,4 +23,12 @@ Describe a list of report definitions owned by the account
 }
 }
 
+\examples{
+# The following example lists the AWS Cost and Usage reports for the
+# account.
+\donttest{costandusagereportservice$describe_report_definitions(
+  MaxResults = 5L
+)}
+
+}
 \keyword{internal}

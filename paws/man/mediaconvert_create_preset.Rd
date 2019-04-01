@@ -13,7 +13,7 @@ mediaconvert_create_preset(Category, Description, Name, Settings, Tags)
 
 \item{Name}{[required] The name of the preset you are creating.}
 
-\item{Settings}{[required]}
+\item{Settings}{[required] Settings for preset}
 
 \item{Tags}{The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.}
 }
@@ -229,6 +229,9 @@ Create a new preset. For information about job templates see the User Guide at h
         PrivateMetadataPid = 123,
         ProgramNumber = 123,
         RateMode = "VBR"|"CBR",
+        Scte35Esam = list(
+          Scte35EsamPid = 123
+        ),
         Scte35Pid = 123,
         Scte35Source = "PASSTHROUGH"|"NONE",
         SegmentationMarkers = "NONE"|"RAI_SEGSTART"|"RAI_ADAPT"|"PSI_SEGSTART"|"EBP"|"EBP_LEGACY",

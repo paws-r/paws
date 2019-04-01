@@ -15,6 +15,9 @@ stored as a lowercase string.}
 Deletes a custom endpoint and removes it from an Amazon Aurora DB
 cluster.
 }
+\details{
+This action only applies to Aurora DB clusters.
+}
 \section{Request syntax}{
 \preformatted{rds$delete_db_cluster_endpoint(
   DBClusterEndpointIdentifier = "string"

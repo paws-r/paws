@@ -10,13 +10,13 @@ workmail_create_resource(OrganizationId, Name, Type)
 \item{OrganizationId}{[required] The identifier associated with the organization for which the resource
 is created.}
 
-\item{Name}{[required] The name of the created resource.}
+\item{Name}{[required] The name of the new resource.}
 
-\item{Type}{[required] The type of the created resource.}
+\item{Type}{[required] The type of the new resource. The available types are \code{equipment} and
+\code{room}.}
 }
 \description{
-Creates a new Amazon WorkMail resource. The available types are
-equipment and room.
+Creates a new Amazon WorkMail resource.
 }
 \section{Request syntax}{
 \preformatted{workmail$create_resource(

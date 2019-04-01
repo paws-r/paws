@@ -20,6 +20,9 @@ Example: \code{my-cluster-replica1}}
 \description{
 Promotes a Read Replica DB cluster to a standalone DB cluster.
 }
+\details{
+This action only applies to Aurora DB clusters.
+}
 \section{Request syntax}{
 \preformatted{rds$promote_read_replica_db_cluster(
   DBClusterIdentifier = "string"

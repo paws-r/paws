@@ -10,13 +10,13 @@ mediaconvert_list_presets(Category, ListBy, MaxResults, NextToken,
 \arguments{
 \item{Category}{Optionally, specify a preset category to limit responses to only presets from that category.}
 
-\item{ListBy}{}
+\item{ListBy}{Optional. When you request a list of presets, you can choose to list them alphabetically by NAME or chronologically by CREATION_DATE. If you don't specify, the service will list them by name.}
 
 \item{MaxResults}{Optional. Number of presets, up to twenty, that will be returned at one time}
 
 \item{NextToken}{Use this string, provided with the response to a previous request, to request the next batch of presets.}
 
-\item{Order}{}
+\item{Order}{When you request lists of resources, you can optionally specify whether they are sorted in ASCENDING or DESCENDING order. Default varies by resource.}
 }
 \description{
 Retrieve a JSON array of up to twenty of your presets. This will return the presets themselves, not just a list of them. To retrieve the next twenty presets, use the nextToken string returned with the array.

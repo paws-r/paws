@@ -14,7 +14,8 @@ NULL
 #'
 #' @usage
 #' pinpointemail_create_configuration_set(ConfigurationSetName,
-#'   TrackingOptions, DeliveryOptions, ReputationOptions, SendingOptions)
+#'   TrackingOptions, DeliveryOptions, ReputationOptions, SendingOptions,
+#'   Tags)
 #'
 #' @param ConfigurationSetName The name of the configuration set.
 #' @param TrackingOptions An object that defines the open and click tracking options for emails
@@ -26,6 +27,8 @@ NULL
 #' configuration set.
 #' @param SendingOptions An object that defines whether or not Amazon Pinpoint can send email
 #' that you send using the configuration set.
+#' @param Tags An object that defines the tags (keys and values) that you want to
+#' associate with the configuration set.
 #'
 #' @section Request syntax:
 #' ```
@@ -45,6 +48,12 @@ NULL
 #'   ),
 #'   SendingOptions = list(
 #'     SendingEnabled = TRUE|FALSE
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -52,14 +61,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname pinpointemail_create_configuration_set
-pinpointemail_create_configuration_set <- function(ConfigurationSetName = NULL, TrackingOptions = NULL, DeliveryOptions = NULL, ReputationOptions = NULL, SendingOptions = NULL) {
+pinpointemail_create_configuration_set <- function(ConfigurationSetName = NULL, TrackingOptions = NULL, DeliveryOptions = NULL, ReputationOptions = NULL, SendingOptions = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateConfigurationSet",
     http_method = "POST",
     http_path = "/v1/email/configuration-sets",
     paginator = list()
   )
-  input <- .pinpointemail$create_configuration_set_input(ConfigurationSetName = ConfigurationSetName, TrackingOptions = TrackingOptions, DeliveryOptions = DeliveryOptions, ReputationOptions = ReputationOptions, SendingOptions = SendingOptions)
+  input <- .pinpointemail$create_configuration_set_input(ConfigurationSetName = ConfigurationSetName, TrackingOptions = TrackingOptions, DeliveryOptions = DeliveryOptions, ReputationOptions = ReputationOptions, SendingOptions = SendingOptions, Tags = Tags)
   output <- .pinpointemail$create_configuration_set_output()
   svc <- .pinpointemail$service()
   request <- new_request(svc, op, input, output)
@@ -151,28 +160,36 @@ pinpointemail_create_configuration_set_event_destination <- function(Configurati
 #' sends it using only the IP addresses in the associated pool.
 #'
 #' @usage
-#' pinpointemail_create_dedicated_ip_pool(PoolName)
+#' pinpointemail_create_dedicated_ip_pool(PoolName, Tags)
 #'
 #' @param PoolName &#91;required&#93; The name of the dedicated IP pool.
+#' @param Tags An object that defines the tags (keys and values) that you want to
+#' associate with the pool.
 #'
 #' @section Request syntax:
 #' ```
 #' pinpointemail$create_dedicated_ip_pool(
-#'   PoolName = "string"
+#'   PoolName = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname pinpointemail_create_dedicated_ip_pool
-pinpointemail_create_dedicated_ip_pool <- function(PoolName) {
+pinpointemail_create_dedicated_ip_pool <- function(PoolName, Tags = NULL) {
   op <- new_operation(
     name = "CreateDedicatedIpPool",
     http_method = "POST",
     http_path = "/v1/email/dedicated-ip-pools",
     paginator = list()
   )
-  input <- .pinpointemail$create_dedicated_ip_pool_input(PoolName = PoolName)
+  input <- .pinpointemail$create_dedicated_ip_pool_input(PoolName = PoolName, Tags = Tags)
   output <- .pinpointemail$create_dedicated_ip_pool_output()
   svc <- .pinpointemail$service()
   request <- new_request(svc, op, input, output)
@@ -195,7 +212,7 @@ pinpointemail_create_dedicated_ip_pool <- function(PoolName) {
 #'
 #' @usage
 #' pinpointemail_create_deliverability_test_report(ReportName,
-#'   FromEmailAddress, Content)
+#'   FromEmailAddress, Content, Tags)
 #'
 #' @param ReportName A unique name that helps you to identify the predictive inbox placement
 #' test when you retrieve the results.
@@ -203,6 +220,8 @@ pinpointemail_create_dedicated_ip_pool <- function(PoolName) {
 #' sent from.
 #' @param Content &#91;required&#93; The HTML body of the message that you sent when you performed the
 #' predictive inbox placement test.
+#' @param Tags An object that defines the tags (keys and values) that you want to
+#' associate with the predictive inbox placement test.
 #'
 #' @section Request syntax:
 #' ```
@@ -229,6 +248,12 @@ pinpointemail_create_dedicated_ip_pool <- function(PoolName) {
 #'     Raw = list(
 #'       Data = raw
 #'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -236,14 +261,14 @@ pinpointemail_create_dedicated_ip_pool <- function(PoolName) {
 #' @keywords internal
 #'
 #' @rdname pinpointemail_create_deliverability_test_report
-pinpointemail_create_deliverability_test_report <- function(ReportName = NULL, FromEmailAddress, Content) {
+pinpointemail_create_deliverability_test_report <- function(ReportName = NULL, FromEmailAddress, Content, Tags = NULL) {
   op <- new_operation(
     name = "CreateDeliverabilityTestReport",
     http_method = "POST",
     http_path = "/v1/email/deliverability-dashboard/test",
     paginator = list()
   )
-  input <- .pinpointemail$create_deliverability_test_report_input(ReportName = ReportName, FromEmailAddress = FromEmailAddress, Content = Content)
+  input <- .pinpointemail$create_deliverability_test_report_input(ReportName = ReportName, FromEmailAddress = FromEmailAddress, Content = Content, Tags = Tags)
   output <- .pinpointemail$create_deliverability_test_report_output()
   svc <- .pinpointemail$service()
   request <- new_request(svc, op, input, output)
@@ -273,28 +298,36 @@ pinpointemail_create_deliverability_test_report <- function(ReportName = NULL, F
 #' verification process.
 #'
 #' @usage
-#' pinpointemail_create_email_identity(EmailIdentity)
+#' pinpointemail_create_email_identity(EmailIdentity, Tags)
 #'
 #' @param EmailIdentity &#91;required&#93; The email address or domain that you want to verify.
+#' @param Tags An object that defines the tags (keys and values) that you want to
+#' associate with the email identity.
 #'
 #' @section Request syntax:
 #' ```
 #' pinpointemail$create_email_identity(
-#'   EmailIdentity = "string"
+#'   EmailIdentity = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname pinpointemail_create_email_identity
-pinpointemail_create_email_identity <- function(EmailIdentity) {
+pinpointemail_create_email_identity <- function(EmailIdentity, Tags = NULL) {
   op <- new_operation(
     name = "CreateEmailIdentity",
     http_method = "POST",
     http_path = "/v1/email/identities",
     paginator = list()
   )
-  input <- .pinpointemail$create_email_identity_input(EmailIdentity = EmailIdentity)
+  input <- .pinpointemail$create_email_identity_input(EmailIdentity = EmailIdentity, Tags = Tags)
   output <- .pinpointemail$create_email_identity_output()
   svc <- .pinpointemail$service()
   request <- new_request(svc, op, input, output)
@@ -1067,6 +1100,48 @@ pinpointemail_list_email_identities <- function(NextToken = NULL, PageSize = NUL
 }
 .pinpointemail$operations$list_email_identities <- pinpointemail_list_email_identities
 
+#' Retrieve a list of the tags (keys and values) that are associated with a
+#' specific resource
+#'
+#' Retrieve a list of the tags (keys and values) that are associated with a
+#' specific resource. AÂ *tag*Â is a label that you optionally define and
+#' associate with a resource in Amazon Pinpoint. Each tag consists of a
+#' requiredÂ *tag key*Â and an optional associatedÂ *tag value*. A tag key is
+#' a general label that acts as a category for more specific tag values. A
+#' tag value acts as a descriptor within a tag key.
+#'
+#' @usage
+#' pinpointemail_list_tags_for_resource(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to retrieve
+#' tag information for.
+#'
+#' @section Request syntax:
+#' ```
+#' pinpointemail$list_tags_for_resource(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointemail_list_tags_for_resource
+pinpointemail_list_tags_for_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/v1/email/tags",
+    paginator = list()
+  )
+  input <- .pinpointemail$list_tags_for_resource_input(ResourceArn = ResourceArn)
+  output <- .pinpointemail$list_tags_for_resource_output()
+  svc <- .pinpointemail$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointemail$operations$list_tags_for_resource <- pinpointemail_list_tags_for_resource
+
 #' Enable or disable the automatic warm-up feature for dedicated IP
 #' addresses
 #'
@@ -1717,6 +1792,109 @@ pinpointemail_send_email <- function(FromEmailAddress = NULL, Destination, Reply
   return(response)
 }
 .pinpointemail$operations$send_email <- pinpointemail_send_email
+
+#' Add one or more tags (keys and values) to one or more specified
+#' resources
+#'
+#' Add one or more tags (keys and values) to one or more specified
+#' resources. A *tag*Â is a label that you optionally define and associate
+#' with a resource in Amazon Pinpoint. Tags can help you categorize and
+#' manage resources in different ways, such as by purpose, owner,
+#' environment, or other criteria. A resource can have as many as 50 tags.
+#' 
+#' Each tag consists of a requiredÂ *tag key*Â and an associatedÂ *tag value*,
+#' both of which you define. A tag key is a general label that acts as a
+#' category for more specific tag values. A tag value acts as a descriptor
+#' within a tag key.
+#'
+#' @usage
+#' pinpointemail_tag_resource(ResourceArn, Tags)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to add one
+#' or more tags to.
+#' @param Tags &#91;required&#93; A list of the tags that you want to add to the resource. A tag consists
+#' of a required tag key (`Key`) and an associated tag value (`Value`). The
+#' maximum length of a tag key is 128 characters. The maximum length of a
+#' tag value is 256 characters.
+#'
+#' @section Request syntax:
+#' ```
+#' pinpointemail$tag_resource(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointemail_tag_resource
+pinpointemail_tag_resource <- function(ResourceArn, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/v1/email/tags",
+    paginator = list()
+  )
+  input <- .pinpointemail$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+  output <- .pinpointemail$tag_resource_output()
+  svc <- .pinpointemail$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointemail$operations$tag_resource <- pinpointemail_tag_resource
+
+#' Remove one or more tags (keys and values) from a specified resource
+#'
+#' Remove one or more tags (keys and values) from a specified resource.
+#'
+#' @usage
+#' pinpointemail_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to remove
+#' one or more tags from.
+#' @param TagKeys &#91;required&#93; The tags (tag keys) that you want to remove from the resource. When you
+#' specify a tag key, the action removes both that key and its associated
+#' tag value.
+#' 
+#' To remove more than one tag from the resource, append the `TagKeys`
+#' parameter and argument for each additional tag to remove, separated by
+#' an ampersand. For example:
+#' `/v1/email/tags?ResourceArn=ResourceArn&amp;TagKeys=Key1&amp;TagKeys=Key2`
+#'
+#' @section Request syntax:
+#' ```
+#' pinpointemail$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointemail_untag_resource
+pinpointemail_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/v1/email/tags",
+    paginator = list()
+  )
+  input <- .pinpointemail$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .pinpointemail$untag_resource_output()
+  svc <- .pinpointemail$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointemail$operations$untag_resource <- pinpointemail_untag_resource
 
 #' Update the configuration of an event destination for a configuration set
 #'

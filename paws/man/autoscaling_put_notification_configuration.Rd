@@ -26,8 +26,8 @@ delivered to an endpoint such as a web server or an email address.
 \details{
 This configuration overwrites any existing configuration.
 
-For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/ASGettingNotifications.html}{Getting SNS Notifications When Your Auto Scaling Group Scales}
-in the \emph{Auto Scaling User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ASGettingNotifications.html}{Getting Amazon SNS Notifications When Your Auto Scaling Group Scales}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
 \preformatted{autoscaling$put_notification_configuration(

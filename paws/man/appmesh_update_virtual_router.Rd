@@ -12,7 +12,7 @@ appmesh_update_virtual_router(clientToken, meshName, spec,
 idempotency of the request. Up to 36 letters, numbers, hyphens, and
 underscores are allowed.}
 
-\item{meshName}{[required] The name of the service mesh in which the virtual router resides.}
+\item{meshName}{[required] The name of the service mesh that the virtual router resides in.}
 
 \item{spec}{[required] The new virtual router specification to apply. This overwrites the
 existing data.}
@@ -27,8 +27,13 @@ Updates an existing virtual router in a specified service mesh.
   clientToken = "string",
   meshName = "string",
   spec = list(
-    serviceNames = list(
-      "string"
+    listeners = list(
+      list(
+        portMapping = list(
+          port = 123,
+          protocol = "http"|"tcp"
+        )
+      )
     )
   ),
   virtualRouterName = "string"

@@ -15,11 +15,11 @@ s3_select_object_content(Bucket, Key, SSECustomerAlgorithm,
 \item{Key}{[required] The object key.}
 
 \item{SSECustomerAlgorithm}{The SSE Algorithm used to encrypt the object. For more information, see
-\href{http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html}{Server-Side Encryption (Using Customer-Provided Encryption Keys}.}
+\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html}{Server-Side Encryption (Using Customer-Provided Encryption Keys}.}
 
-\item{SSECustomerKey}{The SSE Customer Key. For more information, see \href{http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html}{Server-Side Encryption (Using Customer-Provided Encryption Keys}.}
+\item{SSECustomerKey}{The SSE Customer Key. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html}{Server-Side Encryption (Using Customer-Provided Encryption Keys}.}
 
-\item{SSECustomerKeyMD5}{The SSE Customer Key MD5. For more information, see \href{http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html}{Server-Side Encryption (Using Customer-Provided Encryption Keys}.}
+\item{SSECustomerKeyMD5}{The SSE Customer Key MD5. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html}{Server-Side Encryption (Using Customer-Provided Encryption Keys}.}
 
 \item{Expression}{[required] The expression that is used to query the object.}
 

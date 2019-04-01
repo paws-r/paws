@@ -24,10 +24,10 @@ Default: Gateway}
 DescribeVpcEndpointServices request, or get the name from the service
 provider.}
 
-\item{PolicyDocument}{(Gateway endpoint) A policy to attach to the endpoint that controls
-access to the service. The policy must be in valid JSON format. If this
-parameter is not specified, we attach a default policy that allows full
-access to the service.}
+\item{PolicyDocument}{A policy to attach to the endpoint that controls access to the service.
+The policy must be in valid JSON format. If this parameter is not
+specified, we attach a default policy that allows full access to the
+service.}
 
 \item{RouteTableIds}{(Gateway endpoint) One or more route table IDs.}
 

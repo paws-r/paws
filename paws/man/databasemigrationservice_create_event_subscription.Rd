@@ -25,7 +25,7 @@ Valid values: replication-instance \| migration-task}
 
 \item{EventCategories}{A list of event categories for a source type that you want to subscribe
 to. You can see a list of the categories for a given source type by
-calling the \code{DescribeEventCategories} action or in the topic \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html}{Working with Events and Notifications}
+calling the \code{DescribeEventCategories} action or in the topic \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html}{Working with Events and Notifications}
 in the \emph{AWS Database Migration Service User Guide.}}
 
 \item{SourceIds}{The list of identifiers of the event sources for which events will be
@@ -57,7 +57,7 @@ don't specify either \code{SourceType} nor \code{SourceIdentifier}, you will be
 notified of events generated from all AWS DMS sources belonging to your
 customer account.
 
-For more information about AWS DMS events, see \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html}{Working with Events and Notifications}
+For more information about AWS DMS events, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html}{Working with Events and Notifications}
 in the \emph{AWS Database Migration Service User Guide.}
 }
 \section{Request syntax}{

@@ -5,31 +5,31 @@ NULL
 
 .iot1clickdevicesservice$claim_devices_by_claim_code_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClaimCode = structure(logical(0), tags = list(    location = "uri", locationName = "claimCode", type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(ClaimCode = structure(logical(0), tags = list(location = "uri", locationName = "claimCode", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .iot1clickdevicesservice$claim_devices_by_claim_code_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClaimCode = structure(logical(0), tags = list(    locationName = "claimCode", type = "string")), Total = structure(logical(0), tags = list(    locationName = "total", type = "integer"))), tags = list(    type = "structure"))
+  shape <- structure(list(ClaimCode = structure(logical(0), tags = list(locationName = "claimCode", type = "string")), Total = structure(logical(0), tags = list(locationName = "total", type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .iot1clickdevicesservice$describe_device_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DeviceId = structure(logical(0), tags = list(location = "uri", locationName = "deviceId", type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(DeviceId = structure(logical(0), tags = list(location = "uri", locationName = "deviceId", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .iot1clickdevicesservice$describe_device_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DeviceDescription = structure(list(Attributes = structure(list(    structure(logical(0), tags = list(type = "string"))), tags = list(    locationName = "attributes", type = "map")), DeviceId = structure(logical(0), tags = list(    locationName = "deviceId", type = "string")), Enabled = structure(logical(0), tags = list(    locationName = "enabled", type = "boolean")), RemainingLife = structure(logical(0), tags = list(    locationName = "remainingLife", type = "double")), Type = structure(logical(0), tags = list(    locationName = "type", type = "string"))), tags = list(locationName = "deviceDescription", type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(DeviceDescription = structure(list(Arn = structure(logical(0), tags = list(locationName = "arn", type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "attributes", type = "map")), DeviceId = structure(logical(0), tags = list(locationName = "deviceId", type = "string")), Enabled = structure(logical(0), tags = list(locationName = "enabled", type = "boolean")), RemainingLife = structure(logical(0), tags = list(locationName = "remainingLife", type = "double")), Type = structure(logical(0), tags = list(locationName = "type", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(locationName = "deviceDescription", type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .iot1clickdevicesservice$finalize_device_claim_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DeviceId = structure(logical(0), tags = list(location = "uri", locationName = "deviceId", type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(DeviceId = structure(logical(0), tags = list(location = "uri", locationName = "deviceId", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -41,19 +41,19 @@ NULL
 
 .iot1clickdevicesservice$get_device_methods_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DeviceId = structure(logical(0), tags = list(location = "uri", locationName = "deviceId", type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(DeviceId = structure(logical(0), tags = list(location = "uri", locationName = "deviceId", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .iot1clickdevicesservice$get_device_methods_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DeviceMethods = structure(list(structure(list(    DeviceType = structure(logical(0), tags = list(locationName = "deviceType", type = "string")), MethodName = structure(logical(0), tags = list(        locationName = "methodName", type = "string"))), tags = list(    type = "structure"))), tags = list(locationName = "deviceMethods", type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(DeviceMethods = structure(list(structure(list(DeviceType = structure(logical(0), tags = list(locationName = "deviceType", type = "string")), MethodName = structure(logical(0), tags = list(locationName = "methodName", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "deviceMethods", type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .iot1clickdevicesservice$initiate_device_claim_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DeviceId = structure(logical(0), tags = list(location = "uri", locationName = "deviceId", type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(DeviceId = structure(logical(0), tags = list(location = "uri", locationName = "deviceId", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -65,43 +65,65 @@ NULL
 
 .iot1clickdevicesservice$invoke_device_method_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DeviceId = structure(logical(0), tags = list(location = "uri", locationName = "deviceId", type = "string")), DeviceMethod = structure(list(    DeviceType = structure(logical(0), tags = list(locationName = "deviceType", type = "string")), MethodName = structure(logical(0), tags = list(        locationName = "methodName", type = "string"))), tags = list(    locationName = "deviceMethod", type = "structure")), DeviceMethodParameters = structure(logical(0), tags = list(    locationName = "deviceMethodParameters", type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(DeviceId = structure(logical(0), tags = list(location = "uri", locationName = "deviceId", type = "string")), DeviceMethod = structure(list(DeviceType = structure(logical(0), tags = list(locationName = "deviceType", type = "string")), MethodName = structure(logical(0), tags = list(locationName = "methodName", type = "string"))), tags = list(locationName = "deviceMethod", type = "structure")), DeviceMethodParameters = structure(logical(0), tags = list(locationName = "deviceMethodParameters", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .iot1clickdevicesservice$invoke_device_method_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DeviceMethodResponse = structure(logical(0), tags = list(    locationName = "deviceMethodResponse", type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(DeviceMethodResponse = structure(logical(0), tags = list(locationName = "deviceMethodResponse", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .iot1clickdevicesservice$list_device_events_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DeviceId = structure(logical(0), tags = list(location = "uri", locationName = "deviceId", type = "string")), FromTimeStamp = structure(logical(0), tags = list(    location = "querystring", locationName = "fromTimeStamp", type = "timestamp", timestampFormat = "iso8601")), MaxResults = structure(logical(0), tags = list(    location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), ToTimeStamp = structure(logical(0), tags = list(        location = "querystring", locationName = "toTimeStamp", type = "timestamp", timestampFormat = "iso8601"))), tags = list(    type = "structure"))
+  shape <- structure(list(DeviceId = structure(logical(0), tags = list(location = "uri", locationName = "deviceId", type = "string")), FromTimeStamp = structure(logical(0), tags = list(location = "querystring", locationName = "fromTimeStamp", type = "timestamp", timestampFormat = "iso8601")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), ToTimeStamp = structure(logical(0), tags = list(location = "querystring", locationName = "toTimeStamp", type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .iot1clickdevicesservice$list_device_events_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Events = structure(list(structure(list(Device = structure(list(    Attributes = structure(list(), tags = list(locationName = "attributes", type = "structure")), DeviceId = structure(logical(0), tags = list(        locationName = "deviceId", type = "string")), Type = structure(logical(0), tags = list(        locationName = "type", type = "string"))), tags = list(    locationName = "device", type = "structure")), StdEvent = structure(logical(0), tags = list(    locationName = "stdEvent", type = "string"))), tags = list(    type = "structure"))), tags = list(locationName = "events", type = "list")), NextToken = structure(logical(0), tags = list(    locationName = "nextToken", type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(Events = structure(list(structure(list(Device = structure(list(Attributes = structure(list(), tags = list(locationName = "attributes", type = "structure")), DeviceId = structure(logical(0), tags = list(locationName = "deviceId", type = "string")), Type = structure(logical(0), tags = list(locationName = "type", type = "string"))), tags = list(locationName = "device", type = "structure")), StdEvent = structure(logical(0), tags = list(locationName = "stdEvent", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "events", type = "list")), NextToken = structure(logical(0), tags = list(locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .iot1clickdevicesservice$list_devices_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DeviceType = structure(logical(0), tags = list(    location = "querystring", locationName = "deviceType", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(        location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(DeviceType = structure(logical(0), tags = list(location = "querystring", locationName = "deviceType", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .iot1clickdevicesservice$list_devices_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Devices = structure(list(structure(list(Attributes = structure(list(    structure(logical(0), tags = list(type = "string"))), tags = list(    locationName = "attributes", type = "map")), DeviceId = structure(logical(0), tags = list(    locationName = "deviceId", type = "string")), Enabled = structure(logical(0), tags = list(    locationName = "enabled", type = "boolean")), RemainingLife = structure(logical(0), tags = list(    locationName = "remainingLife", type = "double")), Type = structure(logical(0), tags = list(    locationName = "type", type = "string"))), tags = list(type = "structure"))), tags = list(    locationName = "devices", type = "list")), NextToken = structure(logical(0), tags = list(    locationName = "nextToken", type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(Devices = structure(list(structure(list(Arn = structure(logical(0), tags = list(locationName = "arn", type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "attributes", type = "map")), DeviceId = structure(logical(0), tags = list(locationName = "deviceId", type = "string")), Enabled = structure(logical(0), tags = list(locationName = "enabled", type = "boolean")), RemainingLife = structure(logical(0), tags = list(locationName = "remainingLife", type = "double")), Type = structure(logical(0), tags = list(locationName = "type", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))), tags = list(locationName = "devices", type = "list")), NextToken = structure(logical(0), tags = list(locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
+}
+
+.iot1clickdevicesservice$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resource-arn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iot1clickdevicesservice$list_tags_for_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iot1clickdevicesservice$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resource-arn", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iot1clickdevicesservice$tag_resource_output <- function(...) {
+  list()
 }
 
 .iot1clickdevicesservice$unclaim_device_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DeviceId = structure(logical(0), tags = list(location = "uri", locationName = "deviceId", type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(DeviceId = structure(logical(0), tags = list(location = "uri", locationName = "deviceId", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -111,9 +133,19 @@ NULL
   return(populate(args, shape))
 }
 
+.iot1clickdevicesservice$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resource-arn", type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iot1clickdevicesservice$untag_resource_output <- function(...) {
+  list()
+}
+
 .iot1clickdevicesservice$update_device_state_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DeviceId = structure(logical(0), tags = list(location = "uri", locationName = "deviceId", type = "string")), Enabled = structure(logical(0), tags = list(    locationName = "enabled", type = "boolean"))), tags = list(    type = "structure"))
+  shape <- structure(list(DeviceId = structure(logical(0), tags = list(location = "uri", locationName = "deviceId", type = "string")), Enabled = structure(logical(0), tags = list(locationName = "enabled", type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

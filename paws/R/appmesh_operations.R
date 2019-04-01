@@ -3,42 +3,59 @@
 #' @include appmesh_service.R
 NULL
 
-#' Creates a new service mesh
+#' Creates a service mesh
 #'
-#' Creates a new service mesh. A service mesh is a logical boundary for
-#' network traffic between the services that reside within it.
+#' Creates a service mesh. A service mesh is a logical boundary for network
+#' traffic between the services that reside within it.
 #' 
-#' After you create your service mesh, you can create virtual nodes,
-#' virtual routers, and routes to distribute traffic between the
-#' applications in your mesh.
+#' After you create your service mesh, you can create virtual services,
+#' virtual nodes, virtual routers, and routes to distribute traffic between
+#' the applications in your mesh.
 #'
 #' @usage
-#' appmesh_create_mesh(clientToken, meshName)
+#' appmesh_create_mesh(clientToken, meshName, spec, tags)
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name to use for the service mesh.
+#' @param spec The service mesh specification to apply.
+#' @param tags Optional metadata that you can apply to the service mesh to assist with
+#' categorization and organization. Each tag consists of a key and an
+#' optional value, both of which you define. Tag keys can have a maximum
+#' character length of 128 characters, and tag values can have a maximum
+#' length of 256 characters.
 #'
 #' @section Request syntax:
 #' ```
 #' appmesh$create_mesh(
 #'   clientToken = "string",
-#'   meshName = "string"
+#'   meshName = "string",
+#'   spec = list(
+#'     egressFilter = list(
+#'       type = "ALLOW_ALL"|"DROP_ALL"
+#'     )
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname appmesh_create_mesh
-appmesh_create_mesh <- function(clientToken = NULL, meshName) {
+appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateMesh",
     http_method = "PUT",
-    http_path = "/meshes",
+    http_path = "/v20190125/meshes",
     paginator = list()
   )
-  input <- .appmesh$create_mesh_input(clientToken = clientToken, meshName = meshName)
+  input <- .appmesh$create_mesh_input(clientToken = clientToken, meshName = meshName, spec = spec, tags = tags)
   output <- .appmesh$create_mesh_output()
   svc <- .appmesh$service()
   request <- new_request(svc, op, input, output)
@@ -47,29 +64,33 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName) {
 }
 .appmesh$operations$create_mesh <- appmesh_create_mesh
 
-#' Creates a new route that is associated with a virtual router
+#' Creates a route that is associated with a virtual router
 #'
-#' Creates a new route that is associated with a virtual router.
+#' Creates a route that is associated with a virtual router.
 #' 
 #' You can use the `prefix` parameter in your route specification for
-#' path-based routing of requests. For example, if your virtual router
-#' service name is `my-service.local`, and you want the route to match
-#' requests to `my-service.local/metrics`, then your prefix should be
-#' `/metrics`.
+#' path-based routing of requests. For example, if your virtual service
+#' name is `my-service.local` and you want the route to match requests to
+#' `my-service.local/metrics`, your prefix should be `/metrics`.
 #' 
 #' If your route matches a request, you can distribute traffic to one or
 #' more target virtual nodes with relative weighting.
 #'
 #' @usage
-#' appmesh_create_route(clientToken, meshName, routeName, spec,
+#' appmesh_create_route(clientToken, meshName, routeName, spec, tags,
 #'   virtualRouterName)
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
-#' @param meshName &#91;required&#93; The name of the service mesh in which to create the route.
+#' @param meshName &#91;required&#93; The name of the service mesh to create the route in.
 #' @param routeName &#91;required&#93; The name to use for the route.
 #' @param spec &#91;required&#93; The route specification to apply.
+#' @param tags Optional metadata that you can apply to the route to assist with
+#' categorization and organization. Each tag consists of a key and an
+#' optional value, both of which you define. Tag keys can have a maximum
+#' character length of 128 characters, and tag values can have a maximum
+#' length of 256 characters.
 #' @param virtualRouterName &#91;required&#93; The name of the virtual router in which to create the route.
 #'
 #' @section Request syntax:
@@ -91,6 +112,22 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName) {
 #'       match = list(
 #'         prefix = "string"
 #'       )
+#'     ),
+#'     tcpRoute = list(
+#'       action = list(
+#'         weightedTargets = list(
+#'           list(
+#'             virtualNode = "string",
+#'             weight = 123
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
 #'     )
 #'   ),
 #'   virtualRouterName = "string"
@@ -100,14 +137,14 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName) {
 #' @keywords internal
 #'
 #' @rdname appmesh_create_route
-appmesh_create_route <- function(clientToken = NULL, meshName, routeName, spec, virtualRouterName) {
+appmesh_create_route <- function(clientToken = NULL, meshName, routeName, spec, tags = NULL, virtualRouterName) {
   op <- new_operation(
     name = "CreateRoute",
     http_method = "PUT",
-    http_path = "/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes",
+    http_path = "/v20190125/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes",
     paginator = list()
   )
-  input <- .appmesh$create_route_input(clientToken = clientToken, meshName = meshName, routeName = routeName, spec = spec, virtualRouterName = virtualRouterName)
+  input <- .appmesh$create_route_input(clientToken = clientToken, meshName = meshName, routeName = routeName, spec = spec, tags = tags, virtualRouterName = virtualRouterName)
   output <- .appmesh$create_route_output()
   svc <- .appmesh$service()
   request <- new_request(svc, op, input, output)
@@ -116,14 +153,14 @@ appmesh_create_route <- function(clientToken = NULL, meshName, routeName, spec, 
 }
 .appmesh$operations$create_route <- appmesh_create_route
 
-#' Creates a new virtual node within a service mesh
+#' Creates a virtual node within a service mesh
 #'
-#' Creates a new virtual node within a service mesh.
+#' Creates a virtual node within a service mesh.
 #' 
-#' A virtual node acts as logical pointer to a particular task group, such
-#' as an Amazon ECS service or a Kubernetes deployment. When you create a
-#' virtual node, you must specify the DNS service discovery name for your
-#' task group.
+#' A virtual node acts as a logical pointer to a particular task group,
+#' such as an Amazon ECS service or a Kubernetes deployment. When you
+#' create a virtual node, you must specify the DNS service discovery
+#' hostname for your task group.
 #' 
 #' Any inbound traffic that your virtual node expects should be specified
 #' as a `listener`. Any outbound traffic that your virtual node expects to
@@ -131,8 +168,8 @@ appmesh_create_route <- function(clientToken = NULL, meshName, routeName, spec, 
 #' 
 #' The response metadata for your new virtual node contains the `arn` that
 #' is associated with the virtual node. Set this value (either the full ARN
-#' or the truncated resource name, for example,
-#' `mesh/default/virtualNode/simpleapp`, as the `APPMESH_VIRTUAL_NODE_NAME`
+#' or the truncated resource name: for example,
+#' `mesh/default/virtualNode/simpleapp`) as the `APPMESH_VIRTUAL_NODE_NAME`
 #' environment variable for your task group\'s Envoy proxy container in
 #' your task definition or pod spec. This is then mapped to the `node.id`
 #' and `node.cluster` Envoy parameters.
@@ -143,14 +180,19 @@ appmesh_create_route <- function(clientToken = NULL, meshName, routeName, spec, 
 #' environment variable.
 #'
 #' @usage
-#' appmesh_create_virtual_node(clientToken, meshName, spec,
+#' appmesh_create_virtual_node(clientToken, meshName, spec, tags,
 #'   virtualNodeName)
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
-#' @param meshName &#91;required&#93; The name of the service mesh in which to create the virtual node.
+#' @param meshName &#91;required&#93; The name of the service mesh to create the virtual node in.
 #' @param spec &#91;required&#93; The virtual node specification to apply.
+#' @param tags Optional metadata that you can apply to the virtual node to assist with
+#' categorization and organization. Each tag consists of a key and an
+#' optional value, both of which you define. Tag keys can have a maximum
+#' character length of 128 characters, and tag values can have a maximum
+#' length of 256 characters.
 #' @param virtualNodeName &#91;required&#93; The name to use for the virtual node.
 #'
 #' @section Request syntax:
@@ -160,7 +202,11 @@ appmesh_create_route <- function(clientToken = NULL, meshName, routeName, spec, 
 #'   meshName = "string",
 #'   spec = list(
 #'     backends = list(
-#'       "string"
+#'       list(
+#'         virtualService = list(
+#'           virtualServiceName = "string"
+#'         )
+#'       )
 #'     ),
 #'     listeners = list(
 #'       list(
@@ -179,10 +225,23 @@ appmesh_create_route <- function(clientToken = NULL, meshName, routeName, spec, 
 #'         )
 #'       )
 #'     ),
+#'     logging = list(
+#'       accessLog = list(
+#'         file = list(
+#'           path = "string"
+#'         )
+#'       )
+#'     ),
 #'     serviceDiscovery = list(
 #'       dns = list(
-#'         serviceName = "string"
+#'         hostname = "string"
 #'       )
+#'     )
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
 #'     )
 #'   ),
 #'   virtualNodeName = "string"
@@ -192,14 +251,14 @@ appmesh_create_route <- function(clientToken = NULL, meshName, routeName, spec, 
 #' @keywords internal
 #'
 #' @rdname appmesh_create_virtual_node
-appmesh_create_virtual_node <- function(clientToken = NULL, meshName, spec, virtualNodeName) {
+appmesh_create_virtual_node <- function(clientToken = NULL, meshName, spec, tags = NULL, virtualNodeName) {
   op <- new_operation(
     name = "CreateVirtualNode",
     http_method = "PUT",
-    http_path = "/meshes/{meshName}/virtualNodes",
+    http_path = "/v20190125/meshes/{meshName}/virtualNodes",
     paginator = list()
   )
-  input <- .appmesh$create_virtual_node_input(clientToken = clientToken, meshName = meshName, spec = spec, virtualNodeName = virtualNodeName)
+  input <- .appmesh$create_virtual_node_input(clientToken = clientToken, meshName = meshName, spec = spec, tags = tags, virtualNodeName = virtualNodeName)
   output <- .appmesh$create_virtual_node_output()
   svc <- .appmesh$service()
   request <- new_request(svc, op, input, output)
@@ -208,24 +267,32 @@ appmesh_create_virtual_node <- function(clientToken = NULL, meshName, spec, virt
 }
 .appmesh$operations$create_virtual_node <- appmesh_create_virtual_node
 
-#' Creates a new virtual router within a service mesh
+#' Creates a virtual router within a service mesh
 #'
-#' Creates a new virtual router within a service mesh.
+#' Creates a virtual router within a service mesh.
 #' 
-#' Virtual routers handle traffic for one or more service names within your
-#' mesh. After you create your virtual router, create and associate routes
-#' for your virtual router that direct incoming requests to different
-#' virtual nodes.
+#' Any inbound traffic that your virtual router expects should be specified
+#' as a `listener`.
+#' 
+#' Virtual routers handle traffic for one or more virtual services within
+#' your mesh. After you create your virtual router, create and associate
+#' routes for your virtual router that direct incoming requests to
+#' different virtual nodes.
 #'
 #' @usage
-#' appmesh_create_virtual_router(clientToken, meshName, spec,
+#' appmesh_create_virtual_router(clientToken, meshName, spec, tags,
 #'   virtualRouterName)
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
-#' @param meshName &#91;required&#93; The name of the service mesh in which to create the virtual router.
+#' @param meshName &#91;required&#93; The name of the service mesh to create the virtual router in.
 #' @param spec &#91;required&#93; The virtual router specification to apply.
+#' @param tags Optional metadata that you can apply to the virtual router to assist
+#' with categorization and organization. Each tag consists of a key and an
+#' optional value, both of which you define. Tag keys can have a maximum
+#' character length of 128 characters, and tag values can have a maximum
+#' length of 256 characters.
 #' @param virtualRouterName &#91;required&#93; The name to use for the virtual router.
 #'
 #' @section Request syntax:
@@ -234,8 +301,19 @@ appmesh_create_virtual_node <- function(clientToken = NULL, meshName, spec, virt
 #'   clientToken = "string",
 #'   meshName = "string",
 #'   spec = list(
-#'     serviceNames = list(
-#'       "string"
+#'     listeners = list(
+#'       list(
+#'         portMapping = list(
+#'           port = 123,
+#'           protocol = "http"|"tcp"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
 #'     )
 #'   ),
 #'   virtualRouterName = "string"
@@ -245,14 +323,14 @@ appmesh_create_virtual_node <- function(clientToken = NULL, meshName, spec, virt
 #' @keywords internal
 #'
 #' @rdname appmesh_create_virtual_router
-appmesh_create_virtual_router <- function(clientToken = NULL, meshName, spec, virtualRouterName) {
+appmesh_create_virtual_router <- function(clientToken = NULL, meshName, spec, tags = NULL, virtualRouterName) {
   op <- new_operation(
     name = "CreateVirtualRouter",
     http_method = "PUT",
-    http_path = "/meshes/{meshName}/virtualRouters",
+    http_path = "/v20190125/meshes/{meshName}/virtualRouters",
     paginator = list()
   )
-  input <- .appmesh$create_virtual_router_input(clientToken = clientToken, meshName = meshName, spec = spec, virtualRouterName = virtualRouterName)
+  input <- .appmesh$create_virtual_router_input(clientToken = clientToken, meshName = meshName, spec = spec, tags = tags, virtualRouterName = virtualRouterName)
   output <- .appmesh$create_virtual_router_output()
   svc <- .appmesh$service()
   request <- new_request(svc, op, input, output)
@@ -261,12 +339,84 @@ appmesh_create_virtual_router <- function(clientToken = NULL, meshName, spec, vi
 }
 .appmesh$operations$create_virtual_router <- appmesh_create_virtual_router
 
+#' Creates a virtual service within a service mesh
+#'
+#' Creates a virtual service within a service mesh.
+#' 
+#' A virtual service is an abstraction of a real service that is provided
+#' by a virtual node directly or indirectly by means of a virtual router.
+#' Dependent services call your virtual service by its
+#' `virtualServiceName`, and those requests are routed to the virtual node
+#' or virtual router that is specified as the provider for the virtual
+#' service.
+#'
+#' @usage
+#' appmesh_create_virtual_service(clientToken, meshName, spec, tags,
+#'   virtualServiceName)
+#'
+#' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. Up to 36 letters, numbers, hyphens, and
+#' underscores are allowed.
+#' @param meshName &#91;required&#93; The name of the service mesh to create the virtual service in.
+#' @param spec &#91;required&#93; The virtual service specification to apply.
+#' @param tags Optional metadata that you can apply to the virtual service to assist
+#' with categorization and organization. Each tag consists of a key and an
+#' optional value, both of which you define. Tag keys can have a maximum
+#' character length of 128 characters, and tag values can have a maximum
+#' length of 256 characters.
+#' @param virtualServiceName &#91;required&#93; The name to use for the virtual service.
+#'
+#' @section Request syntax:
+#' ```
+#' appmesh$create_virtual_service(
+#'   clientToken = "string",
+#'   meshName = "string",
+#'   spec = list(
+#'     provider = list(
+#'       virtualNode = list(
+#'         virtualNodeName = "string"
+#'       ),
+#'       virtualRouter = list(
+#'         virtualRouterName = "string"
+#'       )
+#'     )
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   virtualServiceName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appmesh_create_virtual_service
+appmesh_create_virtual_service <- function(clientToken = NULL, meshName, spec, tags = NULL, virtualServiceName) {
+  op <- new_operation(
+    name = "CreateVirtualService",
+    http_method = "PUT",
+    http_path = "/v20190125/meshes/{meshName}/virtualServices",
+    paginator = list()
+  )
+  input <- .appmesh$create_virtual_service_input(clientToken = clientToken, meshName = meshName, spec = spec, tags = tags, virtualServiceName = virtualServiceName)
+  output <- .appmesh$create_virtual_service_output()
+  svc <- .appmesh$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appmesh$operations$create_virtual_service <- appmesh_create_virtual_service
+
 #' Deletes an existing service mesh
 #'
 #' Deletes an existing service mesh.
 #' 
-#' You must delete all resources (routes, virtual routers, virtual nodes)
-#' in the service mesh before you can delete the mesh itself.
+#' You must delete all resources (virtual services, routes, virtual
+#' routers, and virtual nodes) in the service mesh before you can delete
+#' the mesh itself.
 #'
 #' @usage
 #' appmesh_delete_mesh(meshName)
@@ -287,7 +437,7 @@ appmesh_delete_mesh <- function(meshName) {
   op <- new_operation(
     name = "DeleteMesh",
     http_method = "DELETE",
-    http_path = "/meshes/{meshName}",
+    http_path = "/v20190125/meshes/{meshName}",
     paginator = list()
   )
   input <- .appmesh$delete_mesh_input(meshName = meshName)
@@ -306,9 +456,9 @@ appmesh_delete_mesh <- function(meshName) {
 #' @usage
 #' appmesh_delete_route(meshName, routeName, virtualRouterName)
 #'
-#' @param meshName &#91;required&#93; The name of the service mesh in which to delete the route.
+#' @param meshName &#91;required&#93; The name of the service mesh to delete the route in.
 #' @param routeName &#91;required&#93; The name of the route to delete.
-#' @param virtualRouterName &#91;required&#93; The name of the virtual router in which to delete the route.
+#' @param virtualRouterName &#91;required&#93; The name of the virtual router to delete the route in.
 #'
 #' @section Request syntax:
 #' ```
@@ -326,7 +476,7 @@ appmesh_delete_route <- function(meshName, routeName, virtualRouterName) {
   op <- new_operation(
     name = "DeleteRoute",
     http_method = "DELETE",
-    http_path = "/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes/{routeName}",
+    http_path = "/v20190125/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes/{routeName}",
     paginator = list()
   )
   input <- .appmesh$delete_route_input(meshName = meshName, routeName = routeName, virtualRouterName = virtualRouterName)
@@ -341,11 +491,14 @@ appmesh_delete_route <- function(meshName, routeName, virtualRouterName) {
 #' Deletes an existing virtual node
 #'
 #' Deletes an existing virtual node.
+#' 
+#' You must delete any virtual services that list a virtual node as a
+#' service provider before you can delete the virtual node itself.
 #'
 #' @usage
 #' appmesh_delete_virtual_node(meshName, virtualNodeName)
 #'
-#' @param meshName &#91;required&#93; The name of the service mesh in which to delete the virtual node.
+#' @param meshName &#91;required&#93; The name of the service mesh to delete the virtual node in.
 #' @param virtualNodeName &#91;required&#93; The name of the virtual node to delete.
 #'
 #' @section Request syntax:
@@ -363,7 +516,7 @@ appmesh_delete_virtual_node <- function(meshName, virtualNodeName) {
   op <- new_operation(
     name = "DeleteVirtualNode",
     http_method = "DELETE",
-    http_path = "/meshes/{meshName}/virtualNodes/{virtualNodeName}",
+    http_path = "/v20190125/meshes/{meshName}/virtualNodes/{virtualNodeName}",
     paginator = list()
   )
   input <- .appmesh$delete_virtual_node_input(meshName = meshName, virtualNodeName = virtualNodeName)
@@ -385,7 +538,7 @@ appmesh_delete_virtual_node <- function(meshName, virtualNodeName) {
 #' @usage
 #' appmesh_delete_virtual_router(meshName, virtualRouterName)
 #'
-#' @param meshName &#91;required&#93; The name of the service mesh in which to delete the virtual router.
+#' @param meshName &#91;required&#93; The name of the service mesh to delete the virtual router in.
 #' @param virtualRouterName &#91;required&#93; The name of the virtual router to delete.
 #'
 #' @section Request syntax:
@@ -403,7 +556,7 @@ appmesh_delete_virtual_router <- function(meshName, virtualRouterName) {
   op <- new_operation(
     name = "DeleteVirtualRouter",
     http_method = "DELETE",
-    http_path = "/meshes/{meshName}/virtualRouters/{virtualRouterName}",
+    http_path = "/v20190125/meshes/{meshName}/virtualRouters/{virtualRouterName}",
     paginator = list()
   )
   input <- .appmesh$delete_virtual_router_input(meshName = meshName, virtualRouterName = virtualRouterName)
@@ -414,6 +567,43 @@ appmesh_delete_virtual_router <- function(meshName, virtualRouterName) {
   return(response)
 }
 .appmesh$operations$delete_virtual_router <- appmesh_delete_virtual_router
+
+#' Deletes an existing virtual service
+#'
+#' Deletes an existing virtual service.
+#'
+#' @usage
+#' appmesh_delete_virtual_service(meshName, virtualServiceName)
+#'
+#' @param meshName &#91;required&#93; The name of the service mesh to delete the virtual service in.
+#' @param virtualServiceName &#91;required&#93; The name of the virtual service to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' appmesh$delete_virtual_service(
+#'   meshName = "string",
+#'   virtualServiceName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appmesh_delete_virtual_service
+appmesh_delete_virtual_service <- function(meshName, virtualServiceName) {
+  op <- new_operation(
+    name = "DeleteVirtualService",
+    http_method = "DELETE",
+    http_path = "/v20190125/meshes/{meshName}/virtualServices/{virtualServiceName}",
+    paginator = list()
+  )
+  input <- .appmesh$delete_virtual_service_input(meshName = meshName, virtualServiceName = virtualServiceName)
+  output <- .appmesh$delete_virtual_service_output()
+  svc <- .appmesh$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appmesh$operations$delete_virtual_service <- appmesh_delete_virtual_service
 
 #' Describes an existing service mesh
 #'
@@ -438,7 +628,7 @@ appmesh_describe_mesh <- function(meshName) {
   op <- new_operation(
     name = "DescribeMesh",
     http_method = "GET",
-    http_path = "/meshes/{meshName}",
+    http_path = "/v20190125/meshes/{meshName}",
     paginator = list()
   )
   input <- .appmesh$describe_mesh_input(meshName = meshName)
@@ -457,9 +647,9 @@ appmesh_describe_mesh <- function(meshName) {
 #' @usage
 #' appmesh_describe_route(meshName, routeName, virtualRouterName)
 #'
-#' @param meshName &#91;required&#93; The name of the service mesh in which the route resides.
+#' @param meshName &#91;required&#93; The name of the service mesh that the route resides in.
 #' @param routeName &#91;required&#93; The name of the route to describe.
-#' @param virtualRouterName &#91;required&#93; The name of the virtual router with which the route is associated.
+#' @param virtualRouterName &#91;required&#93; The name of the virtual router that the route is associated with.
 #'
 #' @section Request syntax:
 #' ```
@@ -477,7 +667,7 @@ appmesh_describe_route <- function(meshName, routeName, virtualRouterName) {
   op <- new_operation(
     name = "DescribeRoute",
     http_method = "GET",
-    http_path = "/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes/{routeName}",
+    http_path = "/v20190125/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes/{routeName}",
     paginator = list()
   )
   input <- .appmesh$describe_route_input(meshName = meshName, routeName = routeName, virtualRouterName = virtualRouterName)
@@ -496,7 +686,7 @@ appmesh_describe_route <- function(meshName, routeName, virtualRouterName) {
 #' @usage
 #' appmesh_describe_virtual_node(meshName, virtualNodeName)
 #'
-#' @param meshName &#91;required&#93; The name of the service mesh in which the virtual node resides.
+#' @param meshName &#91;required&#93; The name of the service mesh that the virtual node resides in.
 #' @param virtualNodeName &#91;required&#93; The name of the virtual node to describe.
 #'
 #' @section Request syntax:
@@ -514,7 +704,7 @@ appmesh_describe_virtual_node <- function(meshName, virtualNodeName) {
   op <- new_operation(
     name = "DescribeVirtualNode",
     http_method = "GET",
-    http_path = "/meshes/{meshName}/virtualNodes/{virtualNodeName}",
+    http_path = "/v20190125/meshes/{meshName}/virtualNodes/{virtualNodeName}",
     paginator = list()
   )
   input <- .appmesh$describe_virtual_node_input(meshName = meshName, virtualNodeName = virtualNodeName)
@@ -533,7 +723,7 @@ appmesh_describe_virtual_node <- function(meshName, virtualNodeName) {
 #' @usage
 #' appmesh_describe_virtual_router(meshName, virtualRouterName)
 #'
-#' @param meshName &#91;required&#93; The name of the service mesh in which the virtual router resides.
+#' @param meshName &#91;required&#93; The name of the service mesh that the virtual router resides in.
 #' @param virtualRouterName &#91;required&#93; The name of the virtual router to describe.
 #'
 #' @section Request syntax:
@@ -551,7 +741,7 @@ appmesh_describe_virtual_router <- function(meshName, virtualRouterName) {
   op <- new_operation(
     name = "DescribeVirtualRouter",
     http_method = "GET",
-    http_path = "/meshes/{meshName}/virtualRouters/{virtualRouterName}",
+    http_path = "/v20190125/meshes/{meshName}/virtualRouters/{virtualRouterName}",
     paginator = list()
   )
   input <- .appmesh$describe_virtual_router_input(meshName = meshName, virtualRouterName = virtualRouterName)
@@ -563,6 +753,43 @@ appmesh_describe_virtual_router <- function(meshName, virtualRouterName) {
 }
 .appmesh$operations$describe_virtual_router <- appmesh_describe_virtual_router
 
+#' Describes an existing virtual service
+#'
+#' Describes an existing virtual service.
+#'
+#' @usage
+#' appmesh_describe_virtual_service(meshName, virtualServiceName)
+#'
+#' @param meshName &#91;required&#93; The name of the service mesh that the virtual service resides in.
+#' @param virtualServiceName &#91;required&#93; The name of the virtual service to describe.
+#'
+#' @section Request syntax:
+#' ```
+#' appmesh$describe_virtual_service(
+#'   meshName = "string",
+#'   virtualServiceName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appmesh_describe_virtual_service
+appmesh_describe_virtual_service <- function(meshName, virtualServiceName) {
+  op <- new_operation(
+    name = "DescribeVirtualService",
+    http_method = "GET",
+    http_path = "/v20190125/meshes/{meshName}/virtualServices/{virtualServiceName}",
+    paginator = list()
+  )
+  input <- .appmesh$describe_virtual_service_input(meshName = meshName, virtualServiceName = virtualServiceName)
+  output <- .appmesh$describe_virtual_service_output()
+  svc <- .appmesh$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appmesh$operations$describe_virtual_service <- appmesh_describe_virtual_service
+
 #' Returns a list of existing service meshes
 #'
 #' Returns a list of existing service meshes.
@@ -570,19 +797,19 @@ appmesh_describe_virtual_router <- function(meshName, virtualRouterName) {
 #' @usage
 #' appmesh_list_meshes(limit, nextToken)
 #'
-#' @param limit The maximum number of mesh results returned by `ListMeshes` in paginated
-#' output. When this parameter is used, `ListMeshes` only returns `limit`
-#' results in a single page along with a `nextToken` response element. The
-#' remaining results of the initial request can be seen by sending another
+#' @param limit The maximum number of results returned by `ListMeshes` in paginated
+#' output. When you use this parameter, `ListMeshes` returns only `limit`
+#' results in a single page along with a `nextToken` response element. You
+#' can see the remaining results of the initial request by sending another
 #' `ListMeshes` request with the returned `nextToken` value. This value can
-#' be between 1 and 100. If this parameter is not used, then `ListMeshes`
+#' be between 1 and 100. If you don\'t use this parameter, `ListMeshes`
 #' returns up to 100 results and a `nextToken` value if applicable.
 #' @param nextToken The `nextToken` value returned from a previous paginated `ListMeshes`
 #' request where `limit` was used and the results exceeded the value of
 #' that parameter. Pagination continues from the end of the previous
 #' results that returned the `nextToken` value.
 #' 
-#' This token should be treated as an opaque identifier that is only used
+#' This token should be treated as an opaque identifier that is used only
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
 #'
@@ -601,7 +828,7 @@ appmesh_list_meshes <- function(limit = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListMeshes",
     http_method = "GET",
-    http_path = "/meshes",
+    http_path = "/v20190125/meshes",
     paginator = list()
   )
   input <- .appmesh$list_meshes_input(limit = limit, nextToken = nextToken)
@@ -620,19 +847,19 @@ appmesh_list_meshes <- function(limit = NULL, nextToken = NULL) {
 #' @usage
 #' appmesh_list_routes(limit, meshName, nextToken, virtualRouterName)
 #'
-#' @param limit The maximum number of mesh results returned by `ListRoutes` in paginated
-#' output. When this parameter is used, `ListRoutes` only returns `limit`
-#' results in a single page along with a `nextToken` response element. The
-#' remaining results of the initial request can be seen by sending another
+#' @param limit The maximum number of results returned by `ListRoutes` in paginated
+#' output. When you use this parameter, `ListRoutes` returns only `limit`
+#' results in a single page along with a `nextToken` response element. You
+#' can see the remaining results of the initial request by sending another
 #' `ListRoutes` request with the returned `nextToken` value. This value can
-#' be between 1 and 100. If this parameter is not used, then `ListRoutes`
+#' be between 1 and 100. If you don\'t use this parameter, `ListRoutes`
 #' returns up to 100 results and a `nextToken` value if applicable.
-#' @param meshName &#91;required&#93; The name of the service mesh in which to list routes.
+#' @param meshName &#91;required&#93; The name of the service mesh to list routes in.
 #' @param nextToken The `nextToken` value returned from a previous paginated `ListRoutes`
 #' request where `limit` was used and the results exceeded the value of
 #' that parameter. Pagination continues from the end of the previous
 #' results that returned the `nextToken` value.
-#' @param virtualRouterName &#91;required&#93; The name of the virtual router in which to list routes.
+#' @param virtualRouterName &#91;required&#93; The name of the virtual router to list routes in.
 #'
 #' @section Request syntax:
 #' ```
@@ -651,7 +878,7 @@ appmesh_list_routes <- function(limit = NULL, meshName, nextToken = NULL, virtua
   op <- new_operation(
     name = "ListRoutes",
     http_method = "GET",
-    http_path = "/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes",
+    http_path = "/v20190125/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes",
     paginator = list()
   )
   input <- .appmesh$list_routes_input(limit = limit, meshName = meshName, nextToken = nextToken, virtualRouterName = virtualRouterName)
@@ -663,6 +890,56 @@ appmesh_list_routes <- function(limit = NULL, meshName, nextToken = NULL, virtua
 }
 .appmesh$operations$list_routes <- appmesh_list_routes
 
+#' List the tags for an App Mesh resource
+#'
+#' List the tags for an App Mesh resource.
+#'
+#' @usage
+#' appmesh_list_tags_for_resource(limit, nextToken, resourceArn)
+#'
+#' @param limit The maximum number of tag results returned by `ListTagsForResource` in
+#' paginated output. When this parameter is used, `ListTagsForResource`
+#' returns only `limit` results in a single page along with a `nextToken`
+#' response element. You can see the remaining results of the initial
+#' request by sending another `ListTagsForResource` request with the
+#' returned `nextToken` value. This value can be between 1 and 100. If you
+#' don\'t use this parameter, `ListTagsForResource` returns up to 100
+#' results and a `nextToken` value if applicable.
+#' @param nextToken The `nextToken` value returned from a previous paginated
+#' `ListTagsForResource` request where `limit` was used and the results
+#' exceeded the value of that parameter. Pagination continues from the end
+#' of the previous results that returned the `nextToken` value.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource to list the
+#' tags for.
+#'
+#' @section Request syntax:
+#' ```
+#' appmesh$list_tags_for_resource(
+#'   limit = 123,
+#'   nextToken = "string",
+#'   resourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appmesh_list_tags_for_resource
+appmesh_list_tags_for_resource <- function(limit = NULL, nextToken = NULL, resourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/v20190125/tags",
+    paginator = list()
+  )
+  input <- .appmesh$list_tags_for_resource_input(limit = limit, nextToken = nextToken, resourceArn = resourceArn)
+  output <- .appmesh$list_tags_for_resource_output()
+  svc <- .appmesh$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appmesh$operations$list_tags_for_resource <- appmesh_list_tags_for_resource
+
 #' Returns a list of existing virtual nodes
 #'
 #' Returns a list of existing virtual nodes.
@@ -670,15 +947,15 @@ appmesh_list_routes <- function(limit = NULL, meshName, nextToken = NULL, virtua
 #' @usage
 #' appmesh_list_virtual_nodes(limit, meshName, nextToken)
 #'
-#' @param limit The maximum number of mesh results returned by `ListVirtualNodes` in
-#' paginated output. When this parameter is used, `ListVirtualNodes` only
-#' returns `limit` results in a single page along with a `nextToken`
-#' response element. The remaining results of the initial request can be
-#' seen by sending another `ListVirtualNodes` request with the returned
-#' `nextToken` value. This value can be between 1 and 100. If this
-#' parameter is not used, then `ListVirtualNodes` returns up to 100 results
-#' and a `nextToken` value if applicable.
-#' @param meshName &#91;required&#93; The name of the service mesh in which to list virtual nodes.
+#' @param limit The maximum number of results returned by `ListVirtualNodes` in
+#' paginated output. When you use this parameter, `ListVirtualNodes`
+#' returns only `limit` results in a single page along with a `nextToken`
+#' response element. You can see the remaining results of the initial
+#' request by sending another `ListVirtualNodes` request with the returned
+#' `nextToken` value. This value can be between 1 and 100. If you don\'t
+#' use this parameter, `ListVirtualNodes` returns up to 100 results and a
+#' `nextToken` value if applicable.
+#' @param meshName &#91;required&#93; The name of the service mesh to list virtual nodes in.
 #' @param nextToken The `nextToken` value returned from a previous paginated
 #' `ListVirtualNodes` request where `limit` was used and the results
 #' exceeded the value of that parameter. Pagination continues from the end
@@ -700,7 +977,7 @@ appmesh_list_virtual_nodes <- function(limit = NULL, meshName, nextToken = NULL)
   op <- new_operation(
     name = "ListVirtualNodes",
     http_method = "GET",
-    http_path = "/meshes/{meshName}/virtualNodes",
+    http_path = "/v20190125/meshes/{meshName}/virtualNodes",
     paginator = list()
   )
   input <- .appmesh$list_virtual_nodes_input(limit = limit, meshName = meshName, nextToken = nextToken)
@@ -719,15 +996,15 @@ appmesh_list_virtual_nodes <- function(limit = NULL, meshName, nextToken = NULL)
 #' @usage
 #' appmesh_list_virtual_routers(limit, meshName, nextToken)
 #'
-#' @param limit The maximum number of mesh results returned by `ListVirtualRouters` in
-#' paginated output. When this parameter is used, `ListVirtualRouters` only
-#' returns `limit` results in a single page along with a `nextToken`
-#' response element. The remaining results of the initial request can be
-#' seen by sending another `ListVirtualRouters` request with the returned
-#' `nextToken` value. This value can be between 1 and 100. If this
-#' parameter is not used, then `ListVirtualRouters` returns up to 100
+#' @param limit The maximum number of results returned by `ListVirtualRouters` in
+#' paginated output. When you use this parameter, `ListVirtualRouters`
+#' returns only `limit` results in a single page along with a `nextToken`
+#' response element. You can see the remaining results of the initial
+#' request by sending another `ListVirtualRouters` request with the
+#' returned `nextToken` value. This value can be between 1 and 100. If you
+#' don\'t use this parameter, `ListVirtualRouters` returns up to 100
 #' results and a `nextToken` value if applicable.
-#' @param meshName &#91;required&#93; The name of the service mesh in which to list virtual routers.
+#' @param meshName &#91;required&#93; The name of the service mesh to list virtual routers in.
 #' @param nextToken The `nextToken` value returned from a previous paginated
 #' `ListVirtualRouters` request where `limit` was used and the results
 #' exceeded the value of that parameter. Pagination continues from the end
@@ -749,7 +1026,7 @@ appmesh_list_virtual_routers <- function(limit = NULL, meshName, nextToken = NUL
   op <- new_operation(
     name = "ListVirtualRouters",
     http_method = "GET",
-    http_path = "/meshes/{meshName}/virtualRouters",
+    http_path = "/v20190125/meshes/{meshName}/virtualRouters",
     paginator = list()
   )
   input <- .appmesh$list_virtual_routers_input(limit = limit, meshName = meshName, nextToken = nextToken)
@@ -760,6 +1037,187 @@ appmesh_list_virtual_routers <- function(limit = NULL, meshName, nextToken = NUL
   return(response)
 }
 .appmesh$operations$list_virtual_routers <- appmesh_list_virtual_routers
+
+#' Returns a list of existing virtual services in a service mesh
+#'
+#' Returns a list of existing virtual services in a service mesh.
+#'
+#' @usage
+#' appmesh_list_virtual_services(limit, meshName, nextToken)
+#'
+#' @param limit The maximum number of results returned by `ListVirtualServices` in
+#' paginated output. When you use this parameter, `ListVirtualServices`
+#' returns only `limit` results in a single page along with a `nextToken`
+#' response element. You can see the remaining results of the initial
+#' request by sending another `ListVirtualServices` request with the
+#' returned `nextToken` value. This value can be between 1 and 100. If you
+#' don\'t use this parameter, `ListVirtualServices` returns up to 100
+#' results and a `nextToken` value if applicable.
+#' @param meshName &#91;required&#93; The name of the service mesh to list virtual services in.
+#' @param nextToken The `nextToken` value returned from a previous paginated
+#' `ListVirtualServices` request where `limit` was used and the results
+#' exceeded the value of that parameter. Pagination continues from the end
+#' of the previous results that returned the `nextToken` value.
+#'
+#' @section Request syntax:
+#' ```
+#' appmesh$list_virtual_services(
+#'   limit = 123,
+#'   meshName = "string",
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appmesh_list_virtual_services
+appmesh_list_virtual_services <- function(limit = NULL, meshName, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListVirtualServices",
+    http_method = "GET",
+    http_path = "/v20190125/meshes/{meshName}/virtualServices",
+    paginator = list()
+  )
+  input <- .appmesh$list_virtual_services_input(limit = limit, meshName = meshName, nextToken = nextToken)
+  output <- .appmesh$list_virtual_services_output()
+  svc <- .appmesh$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appmesh$operations$list_virtual_services <- appmesh_list_virtual_services
+
+#' Associates the specified tags to a resource with the specified
+#' resourceArn
+#'
+#' Associates the specified tags to a resource with the specified
+#' `resourceArn`. If existing tags on a resource aren\'t specified in the
+#' request parameters, they aren\'t changed. When a resource is deleted,
+#' the tags associated with that resource are also deleted.
+#'
+#' @usage
+#' appmesh_tag_resource(resourceArn, tags)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to add tags to.
+#' @param tags &#91;required&#93; The tags to add to the resource. A tag is an array of key-value pairs.
+#' Tag keys can have a maximum character length of 128 characters, and tag
+#' values can have a maximum length of 256 characters.
+#'
+#' @section Request syntax:
+#' ```
+#' appmesh$tag_resource(
+#'   resourceArn = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appmesh_tag_resource
+appmesh_tag_resource <- function(resourceArn, tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "PUT",
+    http_path = "/v20190125/tag",
+    paginator = list()
+  )
+  input <- .appmesh$tag_resource_input(resourceArn = resourceArn, tags = tags)
+  output <- .appmesh$tag_resource_output()
+  svc <- .appmesh$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appmesh$operations$tag_resource <- appmesh_tag_resource
+
+#' Deletes specified tags from a resource
+#'
+#' Deletes specified tags from a resource.
+#'
+#' @usage
+#' appmesh_untag_resource(resourceArn, tagKeys)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to delete tags from.
+#' @param tagKeys &#91;required&#93; The keys of the tags to be removed.
+#'
+#' @section Request syntax:
+#' ```
+#' appmesh$untag_resource(
+#'   resourceArn = "string",
+#'   tagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appmesh_untag_resource
+appmesh_untag_resource <- function(resourceArn, tagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "PUT",
+    http_path = "/v20190125/untag",
+    paginator = list()
+  )
+  input <- .appmesh$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
+  output <- .appmesh$untag_resource_output()
+  svc <- .appmesh$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appmesh$operations$untag_resource <- appmesh_untag_resource
+
+#' Updates an existing service mesh
+#'
+#' Updates an existing service mesh.
+#'
+#' @usage
+#' appmesh_update_mesh(clientToken, meshName, spec)
+#'
+#' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. Up to 36 letters, numbers, hyphens, and
+#' underscores are allowed.
+#' @param meshName &#91;required&#93; The name of the service mesh to update.
+#' @param spec The service mesh specification to apply.
+#'
+#' @section Request syntax:
+#' ```
+#' appmesh$update_mesh(
+#'   clientToken = "string",
+#'   meshName = "string",
+#'   spec = list(
+#'     egressFilter = list(
+#'       type = "ALLOW_ALL"|"DROP_ALL"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appmesh_update_mesh
+appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
+  op <- new_operation(
+    name = "UpdateMesh",
+    http_method = "PUT",
+    http_path = "/v20190125/meshes/{meshName}",
+    paginator = list()
+  )
+  input <- .appmesh$update_mesh_input(clientToken = clientToken, meshName = meshName, spec = spec)
+  output <- .appmesh$update_mesh_output()
+  svc <- .appmesh$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appmesh$operations$update_mesh <- appmesh_update_mesh
 
 #' Updates an existing route for a specified service mesh and virtual
 #' router
@@ -774,10 +1232,10 @@ appmesh_list_virtual_routers <- function(limit = NULL, meshName, nextToken = NUL
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
-#' @param meshName &#91;required&#93; The name of the service mesh in which the route resides.
+#' @param meshName &#91;required&#93; The name of the service mesh that the route resides in.
 #' @param routeName &#91;required&#93; The name of the route to update.
 #' @param spec &#91;required&#93; The new route specification to apply. This overwrites the existing data.
-#' @param virtualRouterName &#91;required&#93; The name of the virtual router with which the route is associated.
+#' @param virtualRouterName &#91;required&#93; The name of the virtual router that the route is associated with.
 #'
 #' @section Request syntax:
 #' ```
@@ -798,6 +1256,16 @@ appmesh_list_virtual_routers <- function(limit = NULL, meshName, nextToken = NUL
 #'       match = list(
 #'         prefix = "string"
 #'       )
+#'     ),
+#'     tcpRoute = list(
+#'       action = list(
+#'         weightedTargets = list(
+#'           list(
+#'             virtualNode = "string",
+#'             weight = 123
+#'           )
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   virtualRouterName = "string"
@@ -811,7 +1279,7 @@ appmesh_update_route <- function(clientToken = NULL, meshName, routeName, spec, 
   op <- new_operation(
     name = "UpdateRoute",
     http_method = "PUT",
-    http_path = "/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes/{routeName}",
+    http_path = "/v20190125/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes/{routeName}",
     paginator = list()
   )
   input <- .appmesh$update_route_input(clientToken = clientToken, meshName = meshName, routeName = routeName, spec = spec, virtualRouterName = virtualRouterName)
@@ -834,7 +1302,7 @@ appmesh_update_route <- function(clientToken = NULL, meshName, routeName, spec, 
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
-#' @param meshName &#91;required&#93; The name of the service mesh in which the virtual node resides.
+#' @param meshName &#91;required&#93; The name of the service mesh that the virtual node resides in.
 #' @param spec &#91;required&#93; The new virtual node specification to apply. This overwrites the
 #' existing data.
 #' @param virtualNodeName &#91;required&#93; The name of the virtual node to update.
@@ -846,7 +1314,11 @@ appmesh_update_route <- function(clientToken = NULL, meshName, routeName, spec, 
 #'   meshName = "string",
 #'   spec = list(
 #'     backends = list(
-#'       "string"
+#'       list(
+#'         virtualService = list(
+#'           virtualServiceName = "string"
+#'         )
+#'       )
 #'     ),
 #'     listeners = list(
 #'       list(
@@ -865,9 +1337,16 @@ appmesh_update_route <- function(clientToken = NULL, meshName, routeName, spec, 
 #'         )
 #'       )
 #'     ),
+#'     logging = list(
+#'       accessLog = list(
+#'         file = list(
+#'           path = "string"
+#'         )
+#'       )
+#'     ),
 #'     serviceDiscovery = list(
 #'       dns = list(
-#'         serviceName = "string"
+#'         hostname = "string"
 #'       )
 #'     )
 #'   ),
@@ -882,7 +1361,7 @@ appmesh_update_virtual_node <- function(clientToken = NULL, meshName, spec, virt
   op <- new_operation(
     name = "UpdateVirtualNode",
     http_method = "PUT",
-    http_path = "/meshes/{meshName}/virtualNodes/{virtualNodeName}",
+    http_path = "/v20190125/meshes/{meshName}/virtualNodes/{virtualNodeName}",
     paginator = list()
   )
   input <- .appmesh$update_virtual_node_input(clientToken = clientToken, meshName = meshName, spec = spec, virtualNodeName = virtualNodeName)
@@ -905,7 +1384,7 @@ appmesh_update_virtual_node <- function(clientToken = NULL, meshName, spec, virt
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
-#' @param meshName &#91;required&#93; The name of the service mesh in which the virtual router resides.
+#' @param meshName &#91;required&#93; The name of the service mesh that the virtual router resides in.
 #' @param spec &#91;required&#93; The new virtual router specification to apply. This overwrites the
 #' existing data.
 #' @param virtualRouterName &#91;required&#93; The name of the virtual router to update.
@@ -916,8 +1395,13 @@ appmesh_update_virtual_node <- function(clientToken = NULL, meshName, spec, virt
 #'   clientToken = "string",
 #'   meshName = "string",
 #'   spec = list(
-#'     serviceNames = list(
-#'       "string"
+#'     listeners = list(
+#'       list(
+#'         portMapping = list(
+#'           port = 123,
+#'           protocol = "http"|"tcp"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   virtualRouterName = "string"
@@ -931,7 +1415,7 @@ appmesh_update_virtual_router <- function(clientToken = NULL, meshName, spec, vi
   op <- new_operation(
     name = "UpdateVirtualRouter",
     http_method = "PUT",
-    http_path = "/meshes/{meshName}/virtualRouters/{virtualRouterName}",
+    http_path = "/v20190125/meshes/{meshName}/virtualRouters/{virtualRouterName}",
     paginator = list()
   )
   input <- .appmesh$update_virtual_router_input(clientToken = clientToken, meshName = meshName, spec = spec, virtualRouterName = virtualRouterName)
@@ -942,3 +1426,57 @@ appmesh_update_virtual_router <- function(clientToken = NULL, meshName, spec, vi
   return(response)
 }
 .appmesh$operations$update_virtual_router <- appmesh_update_virtual_router
+
+#' Updates an existing virtual service in a specified service mesh
+#'
+#' Updates an existing virtual service in a specified service mesh.
+#'
+#' @usage
+#' appmesh_update_virtual_service(clientToken, meshName, spec,
+#'   virtualServiceName)
+#'
+#' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. Up to 36 letters, numbers, hyphens, and
+#' underscores are allowed.
+#' @param meshName &#91;required&#93; The name of the service mesh that the virtual service resides in.
+#' @param spec &#91;required&#93; The new virtual service specification to apply. This overwrites the
+#' existing data.
+#' @param virtualServiceName &#91;required&#93; The name of the virtual service to update.
+#'
+#' @section Request syntax:
+#' ```
+#' appmesh$update_virtual_service(
+#'   clientToken = "string",
+#'   meshName = "string",
+#'   spec = list(
+#'     provider = list(
+#'       virtualNode = list(
+#'         virtualNodeName = "string"
+#'       ),
+#'       virtualRouter = list(
+#'         virtualRouterName = "string"
+#'       )
+#'     )
+#'   ),
+#'   virtualServiceName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appmesh_update_virtual_service
+appmesh_update_virtual_service <- function(clientToken = NULL, meshName, spec, virtualServiceName) {
+  op <- new_operation(
+    name = "UpdateVirtualService",
+    http_method = "PUT",
+    http_path = "/v20190125/meshes/{meshName}/virtualServices/{virtualServiceName}",
+    paginator = list()
+  )
+  input <- .appmesh$update_virtual_service_input(clientToken = clientToken, meshName = meshName, spec = spec, virtualServiceName = virtualServiceName)
+  output <- .appmesh$update_virtual_service_output()
+  svc <- .appmesh$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appmesh$operations$update_virtual_service <- appmesh_update_virtual_service

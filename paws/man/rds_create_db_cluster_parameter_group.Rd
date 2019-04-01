@@ -64,8 +64,10 @@ can use the \emph{Parameter Groups} option of the \href{https://console.aws.amaz
 DescribeDBClusterParameters command to verify that your DB cluster
 parameter group has been created or modified.
 
-For more information on Amazon Aurora, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
+For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
 in the \emph{Amazon Aurora User Guide.}
+
+This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
 \preformatted{rds$create_db_cluster_parameter_group(

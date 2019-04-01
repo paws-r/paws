@@ -10,7 +10,7 @@ applicationautoscaling_register_scalable_target(ServiceNamespace,
 \arguments{
 \item{ServiceNamespace}{[required] The namespace of the AWS service that provides the resource or
 \code{custom-resource} for a resource provided by your own application or
-service. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces}
+service. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces}
 in the \emph{Amazon Web Services General Reference}.}
 
 \item{ResourceId}{[required] The identifier of the resource associated with the scalable target. This
@@ -72,10 +72,10 @@ instances for an Amazon SageMaker model endpoint variant.
 a custom resource provided by your own application or service.
 }}
 
-\item{MinCapacity}{The minimum value to scale to in response to a scale in event. This
+\item{MinCapacity}{The minimum value to scale to in response to a scale-in event. This
 parameter is required to register a scalable target.}
 
-\item{MaxCapacity}{The maximum value to scale to in response to a scale out event. This
+\item{MaxCapacity}{The maximum value to scale to in response to a scale-out event. This
 parameter is required to register a scalable target.}
 
 \item{RoleARN}{Application Auto Scaling creates a service-linked role that grants it
@@ -89,7 +89,7 @@ behalf.}
 }
 \description{
 Registers or updates a scalable target. A scalable target is a resource
-that Application Auto Scaling can scale in and scale out. Each scalable
+that Application Auto Scaling can scale out and scale in. Each scalable
 target has a resource ID, scalable dimension, and namespace, as well as
 values for minimum and maximum capacity.
 }

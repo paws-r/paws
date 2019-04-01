@@ -23,26 +23,25 @@ The length constraint applies only to the full ARN. If you specify only
 the function name, it is limited to 64 characters in length.}
 
 \item{Runtime}{[required] The identifier of the function's
-\href{http://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html}{runtime}.}
+\href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html}{runtime}.}
 
 \item{Role}{[required] The Amazon Resource Name (ARN) of the function's execution role.}
 
 \item{Handler}{[required] The name of the method within your code that Lambda calls to execute
-your function. The format includes the filename and can also include
+your function. The format includes the file name. It can also include
 namespaces and other qualifiers, depending on the runtime. For more
-information, see \href{http://docs.aws.amazon.com/lambda/latest/dg/programming-model-v2.html}{Programming Model}.}
+information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/programming-model-v2.html}{Programming Model}.}
 
 \item{Code}{[required] The code for the function.}
 
 \item{Description}{A description of the function.}
 
-\item{Timeout}{The amount of time that Lambda allows a function to run before
-terminating it. The default is 3 seconds. The maximum allowed value is
-900 seconds.}
+\item{Timeout}{The amount of time that Lambda allows a function to run before stopping
+it. The default is 3 seconds. The maximum allowed value is 900 seconds.}
 
 \item{MemorySize}{The amount of memory that your function has access to. Increasing the
-function's memory also increases it's CPU allocation. The default
-value is 128 MB. The value must be a multiple of 64 MB.}
+function's memory also increases its CPU allocation. The default value
+is 128 MB. The value must be a multiple of 64 MB.}
 
 \item{Publish}{Set to true to publish the first version of the function during
 creation.}
@@ -50,53 +49,54 @@ creation.}
 \item{VpcConfig}{For network connectivity to AWS resources in a VPC, specify a list of
 security groups and subnets in the VPC. When you connect a function to a
 VPC, it can only access resources and the internet through that VPC. For
-more information, see \href{http://docs.aws.amazon.com/lambda/latest/dg/vpc.html}{VPC Settings}.}
+more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/vpc.html}{VPC Settings}.}
 
 \item{DeadLetterConfig}{A dead letter queue configuration that specifies the queue or topic
 where Lambda sends asynchronous events when they fail processing. For
-more information, see \href{http://docs.aws.amazon.com/lambda/latest/dg/dlq.html}{Dead Letter Queues}.}
+more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/dlq.html}{Dead Letter Queues}.}
 
 \item{Environment}{Environment variables that are accessible from function code during
 execution.}
 
-\item{KMSKeyArn}{The ARN of the AWS Key Management Service key used to encrypt your
-function's environment variables. If not provided, AWS Lambda uses a
-default service key.}
+\item{KMSKeyArn}{The ARN of the AWS Key Management Service (AWS KMS) key that's used to
+encrypt your function's environment variables. If it's not provided,
+AWS Lambda uses a default service key.}
 
 \item{TracingConfig}{Set \code{Mode} to \code{Active} to sample and trace a subset of incoming requests
 with AWS X-Ray.}
 
 \item{Tags}{A list of
-\href{http://docs.aws.amazon.com/lambda/latest/dg/tagging.html}{tags} to
+\href{https://docs.aws.amazon.com/lambda/latest/dg/tagging.html}{tags} to
 apply to the function.}
 
-\item{Layers}{A list of \href{http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{function layers}
+\item{Layers}{A list of \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{function layers}
 to add to the function's execution environment. Specify each layer by
-ARN, including the version.}
+its ARN, including the version.}
 }
 \description{
-Creates a Lambda function. To create a function, you need a \href{http://docs.aws.amazon.com/lambda/latest/dg/deployment-package-v2.html}{deployment package}
-and an \href{http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role}{execution role}.
+Creates a Lambda function. To create a function, you need a \href{https://docs.aws.amazon.com/lambda/latest/dg/deployment-package-v2.html}{deployment package}
+and an \href{https://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role}{execution role}.
 The deployment package contains your function code. The execution role
-grants the function permission to use AWS services such as Amazon
+grants the function permission to use AWS services, such as Amazon
 CloudWatch Logs for log streaming and AWS X-Ray for request tracing.
 }
 \details{
 A function has an unpublished version, and can have published versions
-and aliases. A published version is a snapshot of your function code and
-configuration that can not be changed. An alias is a named resource that
-maps to a version, and can be changed to map to a different version. Use
-the \code{Publish} parameter to create version \code{1} of your function from its
-initial configuration.
+and aliases. The unpublished version changes when you update your
+function's code and configuration. A published version is a snapshot of
+your function code and configuration that can't be changed. An alias is
+a named resource that maps to a version, and can be changed to map to a
+different version. Use the \code{Publish} parameter to create version \code{1} of
+your function from its initial configuration.
 
 The other parameters let you configure version-specific and
 function-level settings. You can modify version-specific settings later
 with UpdateFunctionConfiguration. Function-level settings apply to both
-the unpublished and published versions of the function and include tags
+the unpublished and published versions of the function, and include tags
 (TagResource) and per-function concurrency limits
 (PutFunctionConcurrency).
 
-If another account or a AWS service invokes your function, use
+If another account or an AWS service invokes your function, use
 AddPermission to grant permission by creating a resource-based IAM
 policy. You can grant permissions at the function level, on a version,
 or on an alias.
@@ -104,7 +104,7 @@ or on an alias.
 To invoke your function directly, use Invoke. To invoke your function in
 response to events in other AWS services, create an event source mapping
 (CreateEventSourceMapping), or configure a function trigger in the other
-service. For more information, see \href{http://docs.aws.amazon.com/lambda/latest/dg/invoking-lambda-functions.html}{Invoking Functions}.
+service. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/invoking-lambda-functions.html}{Invoking Functions}.
 }
 \section{Request syntax}{
 \preformatted{lambda$create_function(

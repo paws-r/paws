@@ -51,14 +51,14 @@ exceeded the value of that parameter. Pagination continues from the end
 of the previous results that returned the \code{NextToken} value. This value
 is \code{null} when there are no more results to return.}
 
-\item{OwnerIds}{Returns the snapshots owned by the specified owner. Multiple owners can
-be specified.}
+\item{OwnerIds}{Describes the snapshots owned by one or more owners.}
 
 \item{RestorableByUserIds}{One or more AWS accounts IDs that can create volumes from the snapshot.}
 
 \item{SnapshotIds}{One or more snapshot IDs.
 
-Default: Describes snapshots for which you have launch permissions.}
+Default: Describes the snapshots for which you have create volume
+permissions.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -67,10 +67,10 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Describes one or more of the EBS snapshots available to you. Available
-snapshots include public snapshots available for any AWS account to
-launch, private snapshots that you own, and private snapshots owned by
-another AWS account but for which you've been given explicit create
-volume permissions.
+snapshots include public snapshots available for use by any AWS account,
+private snapshots that you own, and private snapshots owned by another
+AWS account for which you've been given explicit create volume
+permissions.
 }
 \details{
 The create volume permissions fall into the following categories:

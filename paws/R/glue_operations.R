@@ -116,7 +116,7 @@ glue_batch_create_partition <- function(CatalogId = NULL, DatabaseName, TableNam
 #' glue_batch_delete_connection(CatalogId, ConnectionNameList)
 #'
 #' @param CatalogId The ID of the Data Catalog in which the connections reside. If none is
-#' supplied, the AWS account ID is used by default.
+#' provided, the AWS account ID is used by default.
 #' @param ConnectionNameList &#91;required&#93; A list of names of the connections to delete.
 #'
 #' @section Request syntax:
@@ -300,6 +300,133 @@ glue_batch_delete_table_version <- function(CatalogId = NULL, DatabaseName, Tabl
 }
 .glue$operations$batch_delete_table_version <- glue_batch_delete_table_version
 
+#' Returns a list of resource metadata for a given list of crawler names
+#'
+#' Returns a list of resource metadata for a given list of crawler names.
+#' After calling the `ListCrawlers` operation, you can call this operation
+#' to access the data to which you have been granted permissions. This
+#' operation supports all IAM permissions, including permission conditions
+#' that uses tags.
+#'
+#' @usage
+#' glue_batch_get_crawlers(CrawlerNames)
+#'
+#' @param CrawlerNames &#91;required&#93; A list of crawler names, which may be the names returned from the
+#' `ListCrawlers` operation.
+#'
+#' @section Request syntax:
+#' ```
+#' glue$batch_get_crawlers(
+#'   CrawlerNames = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_batch_get_crawlers
+glue_batch_get_crawlers <- function(CrawlerNames) {
+  op <- new_operation(
+    name = "BatchGetCrawlers",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$batch_get_crawlers_input(CrawlerNames = CrawlerNames)
+  output <- .glue$batch_get_crawlers_output()
+  svc <- .glue$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$batch_get_crawlers <- glue_batch_get_crawlers
+
+#' Returns a list of resource metadata for a given list of DevEndpoint
+#' names
+#'
+#' Returns a list of resource metadata for a given list of DevEndpoint
+#' names. After calling the `ListDevEndpoints` operation, you can call this
+#' operation to access the data to which you have been granted permissions.
+#' This operation supports all IAM permissions, including permission
+#' conditions that uses tags.
+#'
+#' @usage
+#' glue_batch_get_dev_endpoints(DevEndpointNames)
+#'
+#' @param DevEndpointNames &#91;required&#93; The list of DevEndpoint names, which may be the names returned from the
+#' `ListDevEndpoint` operation.
+#'
+#' @section Request syntax:
+#' ```
+#' glue$batch_get_dev_endpoints(
+#'   DevEndpointNames = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_batch_get_dev_endpoints
+glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
+  op <- new_operation(
+    name = "BatchGetDevEndpoints",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$batch_get_dev_endpoints_input(DevEndpointNames = DevEndpointNames)
+  output <- .glue$batch_get_dev_endpoints_output()
+  svc <- .glue$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$batch_get_dev_endpoints <- glue_batch_get_dev_endpoints
+
+#' Returns a list of resource metadata for a given list of job names
+#'
+#' Returns a list of resource metadata for a given list of job names. After
+#' calling the `ListJobs` operation, you can call this operation to access
+#' the data to which you have been granted permissions. This operation
+#' supports all IAM permissions, including permission conditions that uses
+#' tags.
+#'
+#' @usage
+#' glue_batch_get_jobs(JobNames)
+#'
+#' @param JobNames &#91;required&#93; A list of job names, which may be the names returned from the `ListJobs`
+#' operation.
+#'
+#' @section Request syntax:
+#' ```
+#' glue$batch_get_jobs(
+#'   JobNames = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_batch_get_jobs
+glue_batch_get_jobs <- function(JobNames) {
+  op <- new_operation(
+    name = "BatchGetJobs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$batch_get_jobs_input(JobNames = JobNames)
+  output <- .glue$batch_get_jobs_output()
+  svc <- .glue$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$batch_get_jobs <- glue_batch_get_jobs
+
 #' Retrieves partitions in a batch request
 #'
 #' Retrieves partitions in a batch request.
@@ -349,6 +476,48 @@ glue_batch_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, 
 }
 .glue$operations$batch_get_partition <- glue_batch_get_partition
 
+#' Returns a list of resource metadata for a given list of trigger names
+#'
+#' Returns a list of resource metadata for a given list of trigger names.
+#' After calling the `ListTriggers` operation, you can call this operation
+#' to access the data to which you have been granted permissions. This
+#' operation supports all IAM permissions, including permission conditions
+#' that uses tags.
+#'
+#' @usage
+#' glue_batch_get_triggers(TriggerNames)
+#'
+#' @param TriggerNames &#91;required&#93; A list of trigger names, which may be the names returned from the
+#' `ListTriggers` operation.
+#'
+#' @section Request syntax:
+#' ```
+#' glue$batch_get_triggers(
+#'   TriggerNames = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_batch_get_triggers
+glue_batch_get_triggers <- function(TriggerNames) {
+  op <- new_operation(
+    name = "BatchGetTriggers",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$batch_get_triggers_input(TriggerNames = TriggerNames)
+  output <- .glue$batch_get_triggers_output()
+  svc <- .glue$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$batch_get_triggers <- glue_batch_get_triggers
+
 #' Stops one or more job runs for a specified job definition
 #'
 #' Stops one or more job runs for a specified job definition.
@@ -391,15 +560,17 @@ glue_batch_stop_job_run <- function(JobName, JobRunIds) {
 #' Creates a classifier in the user's account
 #'
 #' Creates a classifier in the user\'s account. This may be a
-#' `GrokClassifier`, an `XMLClassifier`, or abbrev `JsonClassifier`,
-#' depending on which field of the request is present.
+#' `GrokClassifier`, an `XMLClassifier`, a `JsonClassifier`, or a
+#' `CsvClassifier`, depending on which field of the request is present.
 #'
 #' @usage
-#' glue_create_classifier(GrokClassifier, XMLClassifier, JsonClassifier)
+#' glue_create_classifier(GrokClassifier, XMLClassifier, JsonClassifier,
+#'   CsvClassifier)
 #'
 #' @param GrokClassifier A `GrokClassifier` object specifying the classifier to create.
 #' @param XMLClassifier An `XMLClassifier` object specifying the classifier to create.
 #' @param JsonClassifier A `JsonClassifier` object specifying the classifier to create.
+#' @param CsvClassifier A `CsvClassifier` object specifying the classifier to create.
 #'
 #' @section Request syntax:
 #' ```
@@ -418,6 +589,17 @@ glue_batch_stop_job_run <- function(JobName, JobRunIds) {
 #'   JsonClassifier = list(
 #'     Name = "string",
 #'     JsonPath = "string"
+#'   ),
+#'   CsvClassifier = list(
+#'     Name = "string",
+#'     Delimiter = "string",
+#'     QuoteSymbol = "string",
+#'     ContainsHeader = "UNKNOWN"|"PRESENT"|"ABSENT",
+#'     Header = list(
+#'       "string"
+#'     ),
+#'     DisableValueTrimming = TRUE|FALSE,
+#'     AllowSingleColumn = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -425,14 +607,14 @@ glue_batch_stop_job_run <- function(JobName, JobRunIds) {
 #' @keywords internal
 #'
 #' @rdname glue_create_classifier
-glue_create_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, JsonClassifier = NULL) {
+glue_create_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, JsonClassifier = NULL, CsvClassifier = NULL) {
   op <- new_operation(
     name = "CreateClassifier",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$create_classifier_input(GrokClassifier = GrokClassifier, XMLClassifier = XMLClassifier, JsonClassifier = JsonClassifier)
+  input <- .glue$create_classifier_input(GrokClassifier = GrokClassifier, XMLClassifier = XMLClassifier, JsonClassifier = JsonClassifier, CsvClassifier = CsvClassifier)
   output <- .glue$create_classifier_output()
   svc <- .glue$service()
   request <- new_request(svc, op, input, output)
@@ -449,7 +631,7 @@ glue_create_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, 
 #' glue_create_connection(CatalogId, ConnectionInput)
 #'
 #' @param CatalogId The ID of the Data Catalog in which to create the connection. If none is
-#' supplied, the AWS account ID is used by default.
+#' provided, the AWS account ID is used by default.
 #' @param ConnectionInput &#91;required&#93; A `ConnectionInput` object defining the connection to create.
 #'
 #' @section Request syntax:
@@ -507,7 +689,7 @@ glue_create_connection <- function(CatalogId = NULL, ConnectionInput) {
 #' @usage
 #' glue_create_crawler(Name, Role, DatabaseName, Description, Targets,
 #'   Schedule, Classifiers, TablePrefix, SchemaChangePolicy, Configuration,
-#'   CrawlerSecurityConfiguration)
+#'   CrawlerSecurityConfiguration, Tags)
 #'
 #' @param Name &#91;required&#93; Name of the new crawler.
 #' @param Role &#91;required&#93; The IAM role (or ARN of an IAM role) used by the new crawler to access
@@ -533,6 +715,11 @@ glue_create_connection <- function(CatalogId = NULL, ConnectionInput) {
 #' Crawler](http://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html).
 #' @param CrawlerSecurityConfiguration The name of the SecurityConfiguration structure to be used by this
 #' Crawler.
+#' @param Tags The tags to use with this crawler request. You may use tags to limit
+#' access to the crawler. For more information about tags in AWS Glue, see
+#' [AWS Tags in AWS
+#' Glue](http://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html) in
+#' the developer guide.
 #'
 #' @section Request syntax:
 #' ```
@@ -575,21 +762,24 @@ glue_create_connection <- function(CatalogId = NULL, ConnectionInput) {
 #'     DeleteBehavior = "LOG"|"DELETE_FROM_DATABASE"|"DEPRECATE_IN_DATABASE"
 #'   ),
 #'   Configuration = "string",
-#'   CrawlerSecurityConfiguration = "string"
+#'   CrawlerSecurityConfiguration = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname glue_create_crawler
-glue_create_crawler <- function(Name, Role, DatabaseName, Description = NULL, Targets, Schedule = NULL, Classifiers = NULL, TablePrefix = NULL, SchemaChangePolicy = NULL, Configuration = NULL, CrawlerSecurityConfiguration = NULL) {
+glue_create_crawler <- function(Name, Role, DatabaseName, Description = NULL, Targets, Schedule = NULL, Classifiers = NULL, TablePrefix = NULL, SchemaChangePolicy = NULL, Configuration = NULL, CrawlerSecurityConfiguration = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateCrawler",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$create_crawler_input(Name = Name, Role = Role, DatabaseName = DatabaseName, Description = Description, Targets = Targets, Schedule = Schedule, Classifiers = Classifiers, TablePrefix = TablePrefix, SchemaChangePolicy = SchemaChangePolicy, Configuration = Configuration, CrawlerSecurityConfiguration = CrawlerSecurityConfiguration)
+  input <- .glue$create_crawler_input(Name = Name, Role = Role, DatabaseName = DatabaseName, Description = Description, Targets = Targets, Schedule = Schedule, Classifiers = Classifiers, TablePrefix = TablePrefix, SchemaChangePolicy = SchemaChangePolicy, Configuration = Configuration, CrawlerSecurityConfiguration = CrawlerSecurityConfiguration, Tags = Tags)
   output <- .glue$create_crawler_output()
   svc <- .glue$service()
   request <- new_request(svc, op, input, output)
@@ -651,7 +841,7 @@ glue_create_database <- function(CatalogId = NULL, DatabaseInput) {
 #' @usage
 #' glue_create_dev_endpoint(EndpointName, RoleArn, SecurityGroupIds,
 #'   SubnetId, PublicKey, PublicKeys, NumberOfNodes, ExtraPythonLibsS3Path,
-#'   ExtraJarsS3Path, SecurityConfiguration)
+#'   ExtraJarsS3Path, SecurityConfiguration, Tags, Arguments)
 #'
 #' @param EndpointName &#91;required&#93; The name to be assigned to the new DevEndpoint.
 #' @param RoleArn &#91;required&#93; The IAM role for the DevEndpoint.
@@ -684,6 +874,12 @@ glue_create_database <- function(CatalogId = NULL, DatabaseInput) {
 #' your DevEndpoint.
 #' @param SecurityConfiguration The name of the SecurityConfiguration structure to be used with this
 #' DevEndpoint.
+#' @param Tags The tags to use with this DevEndpoint. You may use tags to limit access
+#' to the DevEndpoint. For more information about tags in AWS Glue, see
+#' [AWS Tags in AWS
+#' Glue](http://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html) in
+#' the developer guide.
+#' @param Arguments A map of arguments used to configure the DevEndpoint.
 #'
 #' @section Request syntax:
 #' ```
@@ -701,21 +897,27 @@ glue_create_database <- function(CatalogId = NULL, DatabaseInput) {
 #'   NumberOfNodes = 123,
 #'   ExtraPythonLibsS3Path = "string",
 #'   ExtraJarsS3Path = "string",
-#'   SecurityConfiguration = "string"
+#'   SecurityConfiguration = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   Arguments = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname glue_create_dev_endpoint
-glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = NULL, SubnetId = NULL, PublicKey = NULL, PublicKeys = NULL, NumberOfNodes = NULL, ExtraPythonLibsS3Path = NULL, ExtraJarsS3Path = NULL, SecurityConfiguration = NULL) {
+glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = NULL, SubnetId = NULL, PublicKey = NULL, PublicKeys = NULL, NumberOfNodes = NULL, ExtraPythonLibsS3Path = NULL, ExtraJarsS3Path = NULL, SecurityConfiguration = NULL, Tags = NULL, Arguments = NULL) {
   op <- new_operation(
     name = "CreateDevEndpoint",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$create_dev_endpoint_input(EndpointName = EndpointName, RoleArn = RoleArn, SecurityGroupIds = SecurityGroupIds, SubnetId = SubnetId, PublicKey = PublicKey, PublicKeys = PublicKeys, NumberOfNodes = NumberOfNodes, ExtraPythonLibsS3Path = ExtraPythonLibsS3Path, ExtraJarsS3Path = ExtraJarsS3Path, SecurityConfiguration = SecurityConfiguration)
+  input <- .glue$create_dev_endpoint_input(EndpointName = EndpointName, RoleArn = RoleArn, SecurityGroupIds = SecurityGroupIds, SubnetId = SubnetId, PublicKey = PublicKey, PublicKeys = PublicKeys, NumberOfNodes = NumberOfNodes, ExtraPythonLibsS3Path = ExtraPythonLibsS3Path, ExtraJarsS3Path = ExtraJarsS3Path, SecurityConfiguration = SecurityConfiguration, Tags = Tags, Arguments = Arguments)
   output <- .glue$create_dev_endpoint_output()
   svc <- .glue$service()
   request <- new_request(svc, op, input, output)
@@ -731,7 +933,7 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' @usage
 #' glue_create_job(Name, Description, LogUri, Role, ExecutionProperty,
 #'   Command, DefaultArguments, Connections, MaxRetries, AllocatedCapacity,
-#'   Timeout, MaxCapacity, NotificationProperty, SecurityConfiguration)
+#'   Timeout, MaxCapacity, NotificationProperty, SecurityConfiguration, Tags)
 #'
 #' @param Name &#91;required&#93; The name you assign to this job definition. It must be unique in your
 #' account.
@@ -767,13 +969,30 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' @param Timeout The job timeout in minutes. This is the maximum time that a job run can
 #' consume resources before it is terminated and enters `TIMEOUT` status.
 #' The default is 2,880 minutes (48 hours).
-#' @param MaxCapacity AWS Glue supports running jobs on a `JobCommand.Name`=\"pythonshell\"
-#' with allocated processing as low as 0.0625 DPU, which can be specified
-#' using `MaxCapacity`. Glue ETL jobs running in any other way cannot have
-#' fractional DPU allocations.
+#' @param MaxCapacity The number of AWS Glue data processing units (DPUs) that can be
+#' allocated when this job runs. A DPU is a relative measure of processing
+#' power that consists of 4 vCPUs of compute capacity and 16 GB of memory.
+#' For more information, see the [AWS Glue pricing
+#' page](https://aws.amazon.com/glue/pricing/).
+#' 
+#' The value that can be allocated for `MaxCapacity` depends on whether you
+#' are running a python shell job, or an Apache Spark ETL job:
+#' 
+#' -   When you specify a python shell job
+#'     (`JobCommand.Name`=\"pythonshell\"), you can allocate either 0.0625
+#'     or 1 DPU. The default is 0.0625 DPU.
+#' 
+#' -   When you specify an Apache Spark ETL job
+#'     (`JobCommand.Name`=\"glueetl\"), you can allocate from 2 to 100
+#'     DPUs. The default is 10 DPUs. This job type cannot have a fractional
+#'     DPU allocation.
 #' @param NotificationProperty Specifies configuration properties of a job notification.
 #' @param SecurityConfiguration The name of the SecurityConfiguration structure to be used with this
 #' job.
+#' @param Tags The tags to use with this job. You may use tags to limit access to the
+#' job. For more information about tags in AWS Glue, see [AWS Tags in AWS
+#' Glue](http://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html) in
+#' the developer guide.
 #'
 #' @section Request syntax:
 #' ```
@@ -804,21 +1023,24 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #'   NotificationProperty = list(
 #'     NotifyDelayAfter = 123
 #'   ),
-#'   SecurityConfiguration = "string"
+#'   SecurityConfiguration = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname glue_create_job
-glue_create_job <- function(Name, Description = NULL, LogUri = NULL, Role, ExecutionProperty = NULL, Command, DefaultArguments = NULL, Connections = NULL, MaxRetries = NULL, AllocatedCapacity = NULL, Timeout = NULL, MaxCapacity = NULL, NotificationProperty = NULL, SecurityConfiguration = NULL) {
+glue_create_job <- function(Name, Description = NULL, LogUri = NULL, Role, ExecutionProperty = NULL, Command, DefaultArguments = NULL, Connections = NULL, MaxRetries = NULL, AllocatedCapacity = NULL, Timeout = NULL, MaxCapacity = NULL, NotificationProperty = NULL, SecurityConfiguration = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$create_job_input(Name = Name, Description = Description, LogUri = LogUri, Role = Role, ExecutionProperty = ExecutionProperty, Command = Command, DefaultArguments = DefaultArguments, Connections = Connections, MaxRetries = MaxRetries, AllocatedCapacity = AllocatedCapacity, Timeout = Timeout, MaxCapacity = MaxCapacity, NotificationProperty = NotificationProperty, SecurityConfiguration = SecurityConfiguration)
+  input <- .glue$create_job_input(Name = Name, Description = Description, LogUri = LogUri, Role = Role, ExecutionProperty = ExecutionProperty, Command = Command, DefaultArguments = DefaultArguments, Connections = Connections, MaxRetries = MaxRetries, AllocatedCapacity = AllocatedCapacity, Timeout = Timeout, MaxCapacity = MaxCapacity, NotificationProperty = NotificationProperty, SecurityConfiguration = SecurityConfiguration, Tags = Tags)
   output <- .glue$create_job_output()
   svc <- .glue$service()
   request <- new_request(svc, op, input, output)
@@ -1156,7 +1378,7 @@ glue_create_table <- function(CatalogId = NULL, DatabaseName, TableInput) {
 #'
 #' @usage
 #' glue_create_trigger(Name, Type, Schedule, Predicate, Actions,
-#'   Description, StartOnCreation)
+#'   Description, StartOnCreation, Tags)
 #'
 #' @param Name &#91;required&#93; The name of the trigger.
 #' @param Type &#91;required&#93; The type of the new trigger.
@@ -1174,6 +1396,11 @@ glue_create_table <- function(CatalogId = NULL, DatabaseName, TableInput) {
 #' @param Description A description of the new trigger.
 #' @param StartOnCreation Set to true to start SCHEDULED and CONDITIONAL triggers when created.
 #' True not supported for ON\\_DEMAND triggers.
+#' @param Tags The tags to use with this trigger. You may use tags to limit access to
+#' the trigger. For more information about tags in AWS Glue, see [AWS Tags
+#' in AWS
+#' Glue](http://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html) in
+#' the developer guide.
 #'
 #' @section Request syntax:
 #' ```
@@ -1205,21 +1432,24 @@ glue_create_table <- function(CatalogId = NULL, DatabaseName, TableInput) {
 #'     )
 #'   ),
 #'   Description = "string",
-#'   StartOnCreation = TRUE|FALSE
+#'   StartOnCreation = TRUE|FALSE,
+#'   Tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname glue_create_trigger
-glue_create_trigger <- function(Name, Type, Schedule = NULL, Predicate = NULL, Actions, Description = NULL, StartOnCreation = NULL) {
+glue_create_trigger <- function(Name, Type, Schedule = NULL, Predicate = NULL, Actions, Description = NULL, StartOnCreation = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateTrigger",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$create_trigger_input(Name = Name, Type = Type, Schedule = Schedule, Predicate = Predicate, Actions = Actions, Description = Description, StartOnCreation = StartOnCreation)
+  input <- .glue$create_trigger_input(Name = Name, Type = Type, Schedule = Schedule, Predicate = Predicate, Actions = Actions, Description = Description, StartOnCreation = StartOnCreation, Tags = Tags)
   output <- .glue$create_trigger_output()
   svc <- .glue$service()
   request <- new_request(svc, op, input, output)
@@ -1324,7 +1554,7 @@ glue_delete_classifier <- function(Name) {
 #' glue_delete_connection(CatalogId, ConnectionName)
 #'
 #' @param CatalogId The ID of the Data Catalog in which the connection resides. If none is
-#' supplied, the AWS account ID is used by default.
+#' provided, the AWS account ID is used by default.
 #' @param ConnectionName &#91;required&#93; The name of the connection to delete.
 #'
 #' @section Request syntax:
@@ -1917,14 +2147,14 @@ glue_get_classifiers <- function(MaxResults = NULL, NextToken = NULL) {
 #' glue_get_connection(CatalogId, Name, HidePassword)
 #'
 #' @param CatalogId The ID of the Data Catalog in which the connection resides. If none is
-#' supplied, the AWS account ID is used by default.
+#' provided, the AWS account ID is used by default.
 #' @param Name &#91;required&#93; The name of the connection definition to retrieve.
-#' @param HidePassword Allow you to retrieve the connection metadata without displaying the
+#' @param HidePassword Allows you to retrieve the connection metadata without returning the
 #' password. For instance, the AWS Glue console uses this flag to retrieve
-#' connections, since the console does not display passwords. Set this
-#' parameter where the caller may not have permission to use the KMS key to
+#' the connection, and does not display the password. Set this parameter
+#' when the caller might not have permission to use the AWS KMS key to
 #' decrypt the password, but does have permission to access the rest of the
-#' connection metadata (that is, the other connection properties).
+#' connection properties.
 #'
 #' @section Request syntax:
 #' ```
@@ -1963,14 +2193,14 @@ glue_get_connection <- function(CatalogId = NULL, Name, HidePassword = NULL) {
 #'   MaxResults)
 #'
 #' @param CatalogId The ID of the Data Catalog in which the connections reside. If none is
-#' supplied, the AWS account ID is used by default.
+#' provided, the AWS account ID is used by default.
 #' @param Filter A filter that controls which connections will be returned.
-#' @param HidePassword Allow you to retrieve the connection metadata without displaying the
+#' @param HidePassword Allows you to retrieve the connection metadata without returning the
 #' password. For instance, the AWS Glue console uses this flag to retrieve
-#' connections, since the console does not display passwords. Set this
-#' parameter where the caller may not have permission to use the KMS key to
+#' the connection, and does not display the password. Set this parameter
+#' when the caller might not have permission to use the AWS KMS key to
 #' decrypt the password, but does have permission to access the rest of the
-#' connection metadata (that is, the other connection properties).
+#' connection properties.
 #' @param NextToken A continuation token, if this is a continuation call.
 #' @param MaxResults The maximum number of connections to return in one response.
 #'
@@ -2130,7 +2360,7 @@ glue_get_crawlers <- function(MaxResults = NULL, NextToken = NULL) {
 #' glue_get_data_catalog_encryption_settings(CatalogId)
 #'
 #' @param CatalogId The ID of the Data Catalog for which to retrieve the security
-#' configuration. If none is supplied, the AWS account ID is used by
+#' configuration. If none is provided, the AWS account ID is used by
 #' default.
 #'
 #' @section Request syntax:
@@ -3128,6 +3358,41 @@ glue_get_tables <- function(CatalogId = NULL, DatabaseName, Expression = NULL, N
 }
 .glue$operations$get_tables <- glue_get_tables
 
+#' Retrieves a list of tags associated with a resource
+#'
+#' Retrieves a list of tags associated with a resource.
+#'
+#' @usage
+#' glue_get_tags(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon ARN of the resource for which to retrieve tags.
+#'
+#' @section Request syntax:
+#' ```
+#' glue$get_tags(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_tags
+glue_get_tags <- function(ResourceArn) {
+  op <- new_operation(
+    name = "GetTags",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$get_tags_input(ResourceArn = ResourceArn)
+  output <- .glue$get_tags_output()
+  svc <- .glue$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_tags <- glue_get_tags
+
 #' Retrieves the definition of a trigger
 #'
 #' Retrieves the definition of a trigger.
@@ -3326,9 +3591,209 @@ glue_import_catalog_to_glue <- function(CatalogId = NULL) {
 }
 .glue$operations$import_catalog_to_glue <- glue_import_catalog_to_glue
 
+#' Retrieves the names of all crawler resources in this AWS account, or the
+#' resources with the specified tag
+#'
+#' Retrieves the names of all crawler resources in this AWS account, or the
+#' resources with the specified tag. This operation allows you to see which
+#' resources are available in your account, and their names.
+#' 
+#' This operation takes the optional `Tags` field which you can use as a
+#' filter on the response so that tagged resources can be retrieved as a
+#' group. If you choose to use tags filtering, only resources with the tag
+#' will be retrieved.
+#'
+#' @usage
+#' glue_list_crawlers(MaxResults, NextToken, Tags)
+#'
+#' @param MaxResults The maximum size of a list to return.
+#' @param NextToken A continuation token, if this is a continuation request.
+#' @param Tags Specifies to return only these tagged resources.
+#'
+#' @section Request syntax:
+#' ```
+#' glue$list_crawlers(
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_crawlers
+glue_list_crawlers <- function(MaxResults = NULL, NextToken = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "ListCrawlers",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$list_crawlers_input(MaxResults = MaxResults, NextToken = NextToken, Tags = Tags)
+  output <- .glue$list_crawlers_output()
+  svc <- .glue$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_crawlers <- glue_list_crawlers
+
+#' Retrieves the names of all DevEndpoint resources in this AWS account, or
+#' the resources with the specified tag
+#'
+#' Retrieves the names of all DevEndpoint resources in this AWS account, or
+#' the resources with the specified tag. This operation allows you to see
+#' which resources are available in your account, and their names.
+#' 
+#' This operation takes the optional `Tags` field which you can use as a
+#' filter on the response so that tagged resources can be retrieved as a
+#' group. If you choose to use tags filtering, only resources with the tag
+#' will be retrieved.
+#'
+#' @usage
+#' glue_list_dev_endpoints(NextToken, MaxResults, Tags)
+#'
+#' @param NextToken A continuation token, if this is a continuation request.
+#' @param MaxResults The maximum size of a list to return.
+#' @param Tags Specifies to return only these tagged resources.
+#'
+#' @section Request syntax:
+#' ```
+#' glue$list_dev_endpoints(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_dev_endpoints
+glue_list_dev_endpoints <- function(NextToken = NULL, MaxResults = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "ListDevEndpoints",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$list_dev_endpoints_input(NextToken = NextToken, MaxResults = MaxResults, Tags = Tags)
+  output <- .glue$list_dev_endpoints_output()
+  svc <- .glue$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_dev_endpoints <- glue_list_dev_endpoints
+
+#' Retrieves the names of all job resources in this AWS account, or the
+#' resources with the specified tag
+#'
+#' Retrieves the names of all job resources in this AWS account, or the
+#' resources with the specified tag. This operation allows you to see which
+#' resources are available in your account, and their names.
+#' 
+#' This operation takes the optional `Tags` field which you can use as a
+#' filter on the response so that tagged resources can be retrieved as a
+#' group. If you choose to use tags filtering, only resources with the tag
+#' will be retrieved.
+#'
+#' @usage
+#' glue_list_jobs(NextToken, MaxResults, Tags)
+#'
+#' @param NextToken A continuation token, if this is a continuation request.
+#' @param MaxResults The maximum size of a list to return.
+#' @param Tags Specifies to return only these tagged resources.
+#'
+#' @section Request syntax:
+#' ```
+#' glue$list_jobs(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_jobs
+glue_list_jobs <- function(NextToken = NULL, MaxResults = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "ListJobs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$list_jobs_input(NextToken = NextToken, MaxResults = MaxResults, Tags = Tags)
+  output <- .glue$list_jobs_output()
+  svc <- .glue$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_jobs <- glue_list_jobs
+
+#' Retrieves the names of all trigger resources in this AWS account, or the
+#' resources with the specified tag
+#'
+#' Retrieves the names of all trigger resources in this AWS account, or the
+#' resources with the specified tag. This operation allows you to see which
+#' resources are available in your account, and their names.
+#' 
+#' This operation takes the optional `Tags` field which you can use as a
+#' filter on the response so that tagged resources can be retrieved as a
+#' group. If you choose to use tags filtering, only resources with the tag
+#' will be retrieved.
+#'
+#' @usage
+#' glue_list_triggers(NextToken, DependentJobName, MaxResults, Tags)
+#'
+#' @param NextToken A continuation token, if this is a continuation request.
+#' @param DependentJobName The name of the job for which to retrieve triggers. The trigger that can
+#' start this job will be returned, and if there is no such trigger, all
+#' triggers will be returned.
+#' @param MaxResults The maximum size of a list to return.
+#' @param Tags Specifies to return only these tagged resources.
+#'
+#' @section Request syntax:
+#' ```
+#' glue$list_triggers(
+#'   NextToken = "string",
+#'   DependentJobName = "string",
+#'   MaxResults = 123,
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_triggers
+glue_list_triggers <- function(NextToken = NULL, DependentJobName = NULL, MaxResults = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "ListTriggers",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$list_triggers_input(NextToken = NextToken, DependentJobName = DependentJobName, MaxResults = MaxResults, Tags = Tags)
+  output <- .glue$list_triggers_output()
+  svc <- .glue$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_triggers <- glue_list_triggers
+
 #' Sets the security configuration for a specified catalog
 #'
-#' Sets the security configuration for a specified catalog. Once the
+#' Sets the security configuration for a specified catalog. After the
 #' configuration has been set, the specified encryption is applied to every
 #' catalog write thereafter.
 #'
@@ -3337,7 +3802,7 @@ glue_import_catalog_to_glue <- function(CatalogId = NULL) {
 #'   DataCatalogEncryptionSettings)
 #'
 #' @param CatalogId The ID of the Data Catalog for which to set the security configuration.
-#' If none is supplied, the AWS account ID is used by default.
+#' If none is provided, the AWS account ID is used by default.
 #' @param DataCatalogEncryptionSettings &#91;required&#93; The security configuration to set.
 #'
 #' @section Request syntax:
@@ -3385,9 +3850,10 @@ glue_put_data_catalog_encryption_settings <- function(CatalogId = NULL, DataCata
 #'   PolicyExistsCondition)
 #'
 #' @param PolicyInJson &#91;required&#93; Contains the policy document to set, in JSON format.
-#' @param PolicyHashCondition This is the hash value returned when the previous policy was set using
-#' PutResourcePolicy. Its purpose is to prevent concurrent modifications of
-#' a policy. Do not use this parameter if no previous policy has been set.
+#' @param PolicyHashCondition The hash value returned when the previous policy was set using
+#' `PutResourcePolicy`. Its purpose is to prevent concurrent modifications
+#' of a policy. Do not use this parameter if no previous policy has been
+#' set.
 #' @param PolicyExistsCondition A value of `MUST_EXIST` is used to update a policy. A value of
 #' `NOT_EXIST` is used to create a new policy. If a value of `NONE` or a
 #' null value is used, the call will not depend on the existence of a
@@ -3543,8 +4009,8 @@ glue_start_crawler_schedule <- function(CrawlerName) {
 #'
 #' @param JobName &#91;required&#93; The name of the job definition to use.
 #' @param JobRunId The ID of a previous JobRun to retry.
-#' @param Arguments The job arguments specifically for this run. They override the
-#' equivalent default arguments set for in the job definition itself.
+#' @param Arguments The job arguments specifically for this run. For this job run, they
+#' replace the default arguments set in the job definition itself.
 #' 
 #' You can specify arguments here that your own job-execution script
 #' consumes, as well as arguments that AWS Glue itself consumes.
@@ -3569,10 +4035,23 @@ glue_start_crawler_schedule <- function(CrawlerName) {
 #' can consume resources before it is terminated and enters `TIMEOUT`
 #' status. The default is 2,880 minutes (48 hours). This overrides the
 #' timeout value set in the parent job.
-#' @param MaxCapacity AWS Glue supports running jobs on a `JobCommand.Name`=\"pythonshell\"
-#' with allocated processing as low as 0.0625 DPU, which can be specified
-#' using `MaxCapacity`. Glue ETL jobs running in any other way cannot have
-#' fractional DPU allocations.
+#' @param MaxCapacity The number of AWS Glue data processing units (DPUs) that can be
+#' allocated when this job runs. A DPU is a relative measure of processing
+#' power that consists of 4 vCPUs of compute capacity and 16 GB of memory.
+#' For more information, see the [AWS Glue pricing
+#' page](https://aws.amazon.com/glue/pricing/).
+#' 
+#' The value that can be allocated for `MaxCapacity` depends on whether you
+#' are running a python shell job, or an Apache Spark ETL job:
+#' 
+#' -   When you specify a python shell job
+#'     (`JobCommand.Name`=\"pythonshell\"), you can allocate either 0.0625
+#'     or 1 DPU. The default is 0.0625 DPU.
+#' 
+#' -   When you specify an Apache Spark ETL job
+#'     (`JobCommand.Name`=\"glueetl\"), you can allocate from 2 to 100
+#'     DPUs. The default is 10 DPUs. This job type cannot have a fractional
+#'     DPU allocation.
 #' @param NotificationProperty Specifies configuration properties of a job run notification.
 #' @param SecurityConfiguration The name of the SecurityConfiguration structure to be used with this job
 #' run.
@@ -3758,18 +4237,104 @@ glue_stop_trigger <- function(Name) {
 }
 .glue$operations$stop_trigger <- glue_stop_trigger
 
-#' Modifies an existing classifier (a GrokClassifier, XMLClassifier, or
-#' JsonClassifier, depending on which field is present)
+#' Adds tags to a resource
 #'
-#' Modifies an existing classifier (a `GrokClassifier`, `XMLClassifier`, or
-#' `JsonClassifier`, depending on which field is present).
+#' Adds tags to a resource. A tag is a label you can assign to an AWS
+#' resource. In AWS Glue, you can tag only certain resources. For
+#' information about what resources you can tag, see [AWS Tags in AWS
+#' Glue](http://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html).
 #'
 #' @usage
-#' glue_update_classifier(GrokClassifier, XMLClassifier, JsonClassifier)
+#' glue_tag_resource(ResourceArn, TagsToAdd)
+#'
+#' @param ResourceArn &#91;required&#93; The ARN of the AWS Glue resource to which to add the tags. For more
+#' information about AWS Glue resource ARNs, see the [AWS Glue ARN string
+#' pattern](http://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-common.html#aws-glue-api-regex-aws-glue-arn-id).
+#' @param TagsToAdd &#91;required&#93; Tags to add to this resource.
+#'
+#' @section Request syntax:
+#' ```
+#' glue$tag_resource(
+#'   ResourceArn = "string",
+#'   TagsToAdd = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_tag_resource
+glue_tag_resource <- function(ResourceArn, TagsToAdd) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$tag_resource_input(ResourceArn = ResourceArn, TagsToAdd = TagsToAdd)
+  output <- .glue$tag_resource_output()
+  svc <- .glue$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$tag_resource <- glue_tag_resource
+
+#' Removes tags from a resource
+#'
+#' Removes tags from a resource.
+#'
+#' @usage
+#' glue_untag_resource(ResourceArn, TagsToRemove)
+#'
+#' @param ResourceArn &#91;required&#93; The ARN of the resource from which to remove the tags.
+#' @param TagsToRemove &#91;required&#93; Tags to remove from this resource.
+#'
+#' @section Request syntax:
+#' ```
+#' glue$untag_resource(
+#'   ResourceArn = "string",
+#'   TagsToRemove = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_untag_resource
+glue_untag_resource <- function(ResourceArn, TagsToRemove) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$untag_resource_input(ResourceArn = ResourceArn, TagsToRemove = TagsToRemove)
+  output <- .glue$untag_resource_output()
+  svc <- .glue$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$untag_resource <- glue_untag_resource
+
+#' Modifies an existing classifier (a GrokClassifier, an XMLClassifier, a
+#' JsonClassifier, or a CsvClassifier, depending on which field is present)
+#'
+#' Modifies an existing classifier (a `GrokClassifier`, an `XMLClassifier`,
+#' a `JsonClassifier`, or a `CsvClassifier`, depending on which field is
+#' present).
+#'
+#' @usage
+#' glue_update_classifier(GrokClassifier, XMLClassifier, JsonClassifier,
+#'   CsvClassifier)
 #'
 #' @param GrokClassifier A `GrokClassifier` object with updated fields.
 #' @param XMLClassifier An `XMLClassifier` object with updated fields.
 #' @param JsonClassifier A `JsonClassifier` object with updated fields.
+#' @param CsvClassifier A `CsvClassifier` object with updated fields.
 #'
 #' @section Request syntax:
 #' ```
@@ -3788,6 +4353,17 @@ glue_stop_trigger <- function(Name) {
 #'   JsonClassifier = list(
 #'     Name = "string",
 #'     JsonPath = "string"
+#'   ),
+#'   CsvClassifier = list(
+#'     Name = "string",
+#'     Delimiter = "string",
+#'     QuoteSymbol = "string",
+#'     ContainsHeader = "UNKNOWN"|"PRESENT"|"ABSENT",
+#'     Header = list(
+#'       "string"
+#'     ),
+#'     DisableValueTrimming = TRUE|FALSE,
+#'     AllowSingleColumn = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -3795,14 +4371,14 @@ glue_stop_trigger <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname glue_update_classifier
-glue_update_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, JsonClassifier = NULL) {
+glue_update_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, JsonClassifier = NULL, CsvClassifier = NULL) {
   op <- new_operation(
     name = "UpdateClassifier",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$update_classifier_input(GrokClassifier = GrokClassifier, XMLClassifier = XMLClassifier, JsonClassifier = JsonClassifier)
+  input <- .glue$update_classifier_input(GrokClassifier = GrokClassifier, XMLClassifier = XMLClassifier, JsonClassifier = JsonClassifier, CsvClassifier = CsvClassifier)
   output <- .glue$update_classifier_output()
   svc <- .glue$service()
   request <- new_request(svc, op, input, output)
@@ -3819,7 +4395,7 @@ glue_update_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, 
 #' glue_update_connection(CatalogId, Name, ConnectionInput)
 #'
 #' @param CatalogId The ID of the Data Catalog in which the connection resides. If none is
-#' supplied, the AWS account ID is used by default.
+#' provided, the AWS account ID is used by default.
 #' @param Name &#91;required&#93; The name of the connection definition to update.
 #' @param ConnectionInput &#91;required&#93; A `ConnectionInput` object that redefines the connection in question.
 #'
@@ -4063,7 +4639,8 @@ glue_update_database <- function(CatalogId = NULL, Name, DatabaseInput) {
 #'
 #' @usage
 #' glue_update_dev_endpoint(EndpointName, PublicKey, AddPublicKeys,
-#'   DeletePublicKeys, CustomLibraries, UpdateEtlLibraries)
+#'   DeletePublicKeys, CustomLibraries, UpdateEtlLibraries, DeleteArguments,
+#'   AddArguments)
 #'
 #' @param EndpointName &#91;required&#93; The name of the DevEndpoint to be updated.
 #' @param PublicKey The public key for the DevEndpoint to use.
@@ -4072,6 +4649,10 @@ glue_update_database <- function(CatalogId = NULL, Name, DatabaseInput) {
 #' @param CustomLibraries Custom Python or Java libraries to be loaded in the DevEndpoint.
 #' @param UpdateEtlLibraries True if the list of custom libraries to be loaded in the development
 #' endpoint needs to be updated, or False otherwise.
+#' @param DeleteArguments The list of argument keys to be deleted from the map of arguments used
+#' to configure the DevEndpoint.
+#' @param AddArguments The map of arguments to add the map of arguments used to configure the
+#' DevEndpoint.
 #'
 #' @section Request syntax:
 #' ```
@@ -4088,21 +4669,27 @@ glue_update_database <- function(CatalogId = NULL, Name, DatabaseInput) {
 #'     ExtraPythonLibsS3Path = "string",
 #'     ExtraJarsS3Path = "string"
 #'   ),
-#'   UpdateEtlLibraries = TRUE|FALSE
+#'   UpdateEtlLibraries = TRUE|FALSE,
+#'   DeleteArguments = list(
+#'     "string"
+#'   ),
+#'   AddArguments = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname glue_update_dev_endpoint
-glue_update_dev_endpoint <- function(EndpointName, PublicKey = NULL, AddPublicKeys = NULL, DeletePublicKeys = NULL, CustomLibraries = NULL, UpdateEtlLibraries = NULL) {
+glue_update_dev_endpoint <- function(EndpointName, PublicKey = NULL, AddPublicKeys = NULL, DeletePublicKeys = NULL, CustomLibraries = NULL, UpdateEtlLibraries = NULL, DeleteArguments = NULL, AddArguments = NULL) {
   op <- new_operation(
     name = "UpdateDevEndpoint",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$update_dev_endpoint_input(EndpointName = EndpointName, PublicKey = PublicKey, AddPublicKeys = AddPublicKeys, DeletePublicKeys = DeletePublicKeys, CustomLibraries = CustomLibraries, UpdateEtlLibraries = UpdateEtlLibraries)
+  input <- .glue$update_dev_endpoint_input(EndpointName = EndpointName, PublicKey = PublicKey, AddPublicKeys = AddPublicKeys, DeletePublicKeys = DeletePublicKeys, CustomLibraries = CustomLibraries, UpdateEtlLibraries = UpdateEtlLibraries, DeleteArguments = DeleteArguments, AddArguments = AddArguments)
   output <- .glue$update_dev_endpoint_output()
   svc <- .glue$service()
   request <- new_request(svc, op, input, output)

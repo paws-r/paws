@@ -7,10 +7,10 @@
 iot_register_thing(templateBody, parameters)
 }
 \arguments{
-\item{templateBody}{[required] The provisioning template. See \href{http://docs.aws.amazon.com/iot/latest/developerguide/programmatic-provisioning.html}{Programmatic Provisioning}
+\item{templateBody}{[required] The provisioning template. See \href{https://docs.aws.amazon.com/iot/latest/developerguide/programmatic-provisioning.html}{Programmatic Provisioning}
 for more information.}
 
-\item{parameters}{The parameters for provisioning a thing. See \href{http://docs.aws.amazon.com/iot/latest/developerguide/programmatic-provisioning.html}{Programmatic Provisioning}
+\item{parameters}{The parameters for provisioning a thing. See \href{https://docs.aws.amazon.com/iot/latest/developerguide/programmatic-provisioning.html}{Programmatic Provisioning}
 for more information.}
 }
 \description{

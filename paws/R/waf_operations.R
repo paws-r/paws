@@ -28,7 +28,7 @@ NULL
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
-#' Guide](http://docs.aws.amazon.com/waf/latest/developerguide/).
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
 #' @usage
 #' waf_create_byte_match_set(Name, ChangeToken)
@@ -90,7 +90,7 @@ waf_create_byte_match_set <- function(Name, ChangeToken) {
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
-#' Guide](http://docs.aws.amazon.com/waf/latest/developerguide/).
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
 #' @usage
 #' waf_create_geo_match_set(Name, ChangeToken)
@@ -153,7 +153,7 @@ waf_create_geo_match_set <- function(Name, ChangeToken) {
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
-#' Guide](http://docs.aws.amazon.com/waf/latest/developerguide/).
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
 #' @usage
 #' waf_create_ip_set(Name, ChangeToken)
@@ -263,7 +263,7 @@ waf_create_ip_set <- function(Name, ChangeToken) {
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
-#' Guide](http://docs.aws.amazon.com/waf/latest/developerguide/).
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
 #' @usage
 #' waf_create_rate_based_rule(Name, MetricName, RateKey, RateLimit,
@@ -346,7 +346,7 @@ waf_create_rate_based_rule <- function(Name, MetricName, RateKey, RateLimit, Cha
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
-#' Guide](http://docs.aws.amazon.com/waf/latest/developerguide/).
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
 #' @usage
 #' waf_create_regex_match_set(Name, ChangeToken)
@@ -405,7 +405,7 @@ waf_create_regex_match_set <- function(Name, ChangeToken) {
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
-#' Guide](http://docs.aws.amazon.com/waf/latest/developerguide/).
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
 #' @usage
 #' waf_create_regex_pattern_set(Name, ChangeToken)
@@ -481,7 +481,7 @@ waf_create_regex_pattern_set <- function(Name, ChangeToken) {
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
-#' Guide](http://docs.aws.amazon.com/waf/latest/developerguide/).
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
 #' @usage
 #' waf_create_rule(Name, MetricName, ChangeToken)
@@ -547,7 +547,7 @@ waf_create_rule <- function(Name, MetricName, ChangeToken) {
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
-#' Guide](http://docs.aws.amazon.com/waf/latest/developerguide/).
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
 #' @usage
 #' waf_create_rule_group(Name, MetricName, ChangeToken)
@@ -614,7 +614,7 @@ waf_create_rule_group <- function(Name, MetricName, ChangeToken) {
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
-#' Guide](http://docs.aws.amazon.com/waf/latest/developerguide/).
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
 #' @usage
 #' waf_create_size_constraint_set(Name, ChangeToken)
@@ -684,7 +684,7 @@ waf_create_size_constraint_set <- function(Name, ChangeToken) {
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
-#' Guide](http://docs.aws.amazon.com/waf/latest/developerguide/).
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
 #' @usage
 #' waf_create_sql_injection_match_set(Name, ChangeToken)
@@ -764,7 +764,8 @@ waf_create_sql_injection_match_set <- function(Name, ChangeToken) {
 #'     associate the `WebACL` with a CloudFront distribution.
 #' 
 #' For more information about how to use the AWS WAF API, see the [AWS WAF
-#' Developer Guide](http://docs.aws.amazon.com/waf/latest/developerguide/).
+#' Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
 #' @usage
 #' waf_create_web_acl(Name, MetricName, DefaultAction, ChangeToken)
@@ -847,7 +848,7 @@ waf_create_web_acl <- function(Name, MetricName, DefaultAction, ChangeToken) {
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
-#' Guide](http://docs.aws.amazon.com/waf/latest/developerguide/).
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
 #' @usage
 #' waf_create_xss_match_set(Name, ChangeToken)
@@ -1760,7 +1761,7 @@ waf_get_change_token <- function() {
 #' -   `PENDING`: AWS WAF is propagating the create, update, or delete
 #'     request to all AWS WAF servers.
 #' 
-#' -   `IN_SYNC`: Propagation is complete.
+#' -   `INSYNC`: Propagation is complete.
 #'
 #' @usage
 #' waf_get_change_token_status(ChangeToken)
@@ -3196,6 +3197,10 @@ waf_list_xss_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' 
 #' 1.  Create an Amazon Kinesis Data Firehose .
 #' 
+#'     Create the data firehose with a PUT source and in the region that
+#'     you are operating. However, if you are capturing logs for Amazon
+#'     CloudFront, always create the firehose in US East (N. Virginia).
+#' 
 #' 2.  Associate that firehose to your web ACL using a
 #'     `PutLoggingConfiguration` request.
 #' 
@@ -3203,7 +3208,7 @@ waf_list_xss_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' request, AWS WAF will create a service linked role with the necessary
 #' permissions to write logs to the Amazon Kinesis Data Firehose. For more
 #' information, see [Logging Web ACL Traffic
-#' Information](http://docs.aws.amazon.com/waf/latest/developerguide/logging.html)
+#' Information](https://docs.aws.amazon.com/waf/latest/developerguide/logging.html)
 #' in the *AWS WAF Developer Guide*.
 #'
 #' @usage
@@ -3360,7 +3365,7 @@ waf_put_permission_policy <- function(ResourceArn, Policy) {
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
-#' Guide](http://docs.aws.amazon.com/waf/latest/developerguide/).
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
 #' @usage
 #' waf_update_byte_match_set(ByteMatchSetId, ChangeToken, Updates)
@@ -3474,7 +3479,7 @@ waf_update_byte_match_set <- function(ByteMatchSetId, ChangeToken, Updates) {
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
-#' Guide](http://docs.aws.amazon.com/waf/latest/developerguide/).
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
 #' @usage
 #' waf_update_geo_match_set(GeoMatchSetId, ChangeToken, Updates)
@@ -3547,8 +3552,8 @@ waf_update_geo_match_set <- function(GeoMatchSetId, ChangeToken, Updates) {
 #'     `192.0.2.44/32` (for the individual IP address `192.0.2.44`).
 #' 
 #' AWS WAF supports IPv4 address ranges: /8 and any range between /16
-#' through /32. AWS WAF supports IPv6 address ranges: /16, /24, /32, /48,
-#' /56, /64, and /128. For more information about CIDR notation, see the
+#' through /32. AWS WAF supports IPv6 address ranges: /24, /32, /48, /56,
+#' /64, and /128. For more information about CIDR notation, see the
 #' Wikipedia entry [Classless Inter-Domain
 #' Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 #' 
@@ -3588,7 +3593,7 @@ waf_update_geo_match_set <- function(GeoMatchSetId, ChangeToken, Updates) {
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
-#' Guide](http://docs.aws.amazon.com/waf/latest/developerguide/).
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
 #' @usage
 #' waf_update_ip_set(IPSetId, ChangeToken, Updates)
@@ -3794,7 +3799,7 @@ waf_update_rate_based_rule <- function(RuleId, ChangeToken, Updates, RateLimit) 
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
-#' Guide](http://docs.aws.amazon.com/waf/latest/developerguide/).
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
 #' @usage
 #' waf_update_regex_match_set(RegexMatchSetId, Updates, ChangeToken)
@@ -3882,7 +3887,7 @@ waf_update_regex_match_set <- function(RegexMatchSetId, Updates, ChangeToken) {
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
-#' Guide](http://docs.aws.amazon.com/waf/latest/developerguide/).
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
 #' @usage
 #' waf_update_regex_pattern_set(RegexPatternSetId, Updates, ChangeToken)
@@ -3966,7 +3971,7 @@ waf_update_regex_pattern_set <- function(RegexPatternSetId, Updates, ChangeToken
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
-#' Guide](http://docs.aws.amazon.com/waf/latest/developerguide/).
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
 #' @usage
 #' waf_update_rule(RuleId, ChangeToken, Updates)
@@ -4065,7 +4070,7 @@ waf_update_rule <- function(RuleId, ChangeToken, Updates) {
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
-#' Guide](http://docs.aws.amazon.com/waf/latest/developerguide/).
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
 #' @usage
 #' waf_update_rule_group(RuleGroupId, Updates, ChangeToken)
@@ -4182,7 +4187,7 @@ waf_update_rule_group <- function(RuleGroupId, Updates, ChangeToken) {
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
-#' Guide](http://docs.aws.amazon.com/waf/latest/developerguide/).
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
 #' @usage
 #' waf_update_size_constraint_set(SizeConstraintSetId, ChangeToken,
@@ -4308,7 +4313,7 @@ waf_update_size_constraint_set <- function(SizeConstraintSetId, ChangeToken, Upd
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
-#' Guide](http://docs.aws.amazon.com/waf/latest/developerguide/).
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
 #' @usage
 #' waf_update_sql_injection_match_set(SqlInjectionMatchSetId, ChangeToken,
@@ -4452,7 +4457,7 @@ waf_update_sql_injection_match_set <- function(SqlInjectionMatchSetId, ChangeTok
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
-#' Guide](http://docs.aws.amazon.com/waf/latest/developerguide/).
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
 #' @usage
 #' waf_update_web_acl(WebACLId, ChangeToken, Updates, DefaultAction)
@@ -4593,7 +4598,7 @@ waf_update_web_acl <- function(WebACLId, ChangeToken, Updates = NULL, DefaultAct
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
-#' Guide](http://docs.aws.amazon.com/waf/latest/developerguide/).
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
 #' @usage
 #' waf_update_xss_match_set(XssMatchSetId, ChangeToken, Updates)

@@ -17,7 +17,7 @@ Region in an AWS account.}
 You set hyperparameters before you start the learning process. For a
 list of hyperparameters for each training algorithm provided by Amazon
 SageMaker, see
-\href{http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html}{Algorithms}.
+\href{https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html}{Algorithms}.
 
 You can specify a maximum of 100 hyperparameters. Each hyperparameter is
 a key-value pair. Each key and value is limited to 256 characters, as
@@ -26,8 +26,8 @@ specified by the \code{Length Constraint}.}
 \item{AlgorithmSpecification}{[required] The registry path of the Docker image that contains the training
 algorithm and algorithm-specific metadata, including the input mode. For
 more information about algorithms provided by Amazon SageMaker, see
-\href{http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html}{Algorithms}.
-For information about providing your own algorithms, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html}{Using Your Own Algorithms with Amazon SageMaker}.}
+\href{https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html}{Algorithms}.
+For information about providing your own algorithms, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html}{Using Your Own Algorithms with Amazon SageMaker}.}
 
 \item{RoleArn}{[required] The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can
 assume to perform tasks on your behalf.
@@ -37,7 +37,7 @@ input data from an S3 bucket, download a Docker image that contains
 training code, write model artifacts to an S3 bucket, write logs to
 Amazon CloudWatch Logs, and publish metrics to Amazon CloudWatch. You
 grant permissions for all of these tasks to an IAM role. For more
-information, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html}{Amazon SageMaker Roles}.
+information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html}{Amazon SageMaker Roles}.
 
 To be able to pass this role to Amazon SageMaker, the caller of this API
 must have the \code{iam:PassRole} permission.}
@@ -72,7 +72,7 @@ count greater than 1.}
 
 \item{VpcConfig}{A VpcConfig object that specifies the VPC that you want your training
 job to connect to. Control access to and from your training container by
-configuring the VPC. For more information, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html}{Protect Training Jobs by Using an Amazon Virtual Private Cloud}.}
+configuring the VPC. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html}{Protect Training Jobs by Using an Amazon Virtual Private Cloud}.}
 
 \item{StoppingCondition}{[required] Sets a duration for training. Use this parameter to cap model training
 costs. To stop a job, Amazon SageMaker sends the algorithm the \code{SIGTERM}
@@ -84,7 +84,7 @@ has been met, training algorithms provided by Amazon SageMaker save the
 intermediate results of the job. This intermediate data is a valid model
 artifact. You can use it to create a model using the \code{CreateModel} API.}
 
-\item{Tags}{An array of key-value pairs. For more information, see \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}
+\item{Tags}{An array of key-value pairs. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}
 in the \emph{AWS Billing and Cost Management User Guide}.}
 
 \item{EnableNetworkIsolation}{Isolates the training container. No inbound or outbound network calls
@@ -98,9 +98,11 @@ The Semantic Segmentation built-in algorithm does not support network
 isolation.}
 
 \item{EnableInterContainerTrafficEncryption}{To encrypt all communications between ML compute instances in
-distributed training, choose \code{True},. Encryption provides greater
-security for distributed training, but training can take longer because
-of additional communications between ML compute instances.}
+distributed training, choose \code{True}. Encryption provides greater
+security for distributed training, but training might take longer. How
+long it takes depends on the amount of communication between compute
+instances, especially if you use a deep learning algorithm in
+distributed training. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html}{Protect Communications Between ML Compute Instances in a Distributed Training Job}.}
 }
 \description{
 Starts a model training job. After training completes, Amazon SageMaker
@@ -110,8 +112,8 @@ specify.
 \details{
 If you choose to host your model using Amazon SageMaker hosting
 services, you can use the resulting model artifacts as part of the
-model. You can also use the artifacts in a deep learning service other
-than Amazon SageMaker, provided that you know how to use them for
+model. You can also use the artifacts in a machine learning service
+other than Amazon SageMaker, provided that you know how to use them for
 inferences.
 
 In the request body, you provide the following:
@@ -121,7 +123,7 @@ In the request body, you provide the following:
 influence the quality of the final model. For a list of
 hyperparameters for each training algorithm provided by Amazon
 SageMaker, see
-\href{http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html}{Algorithms}.
+\href{https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html}{Algorithms}.
 \item \code{InputDataConfig} - Describes the training dataset and the Amazon S3
 location where it is stored.
 \item \code{OutputDataConfig} - Identifies the Amazon S3 location where you
@@ -137,7 +139,7 @@ SageMaker can successfully complete model training.
 parameter to cap model training costs.
 }
 
-For more information about Amazon SageMaker, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html}{How It Works}.
+For more information about Amazon SageMaker, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html}{How It Works}.
 }
 \section{Request syntax}{
 \preformatted{sagemaker$create_training_job(

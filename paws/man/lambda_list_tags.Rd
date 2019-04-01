@@ -11,7 +11,7 @@ lambda_list_tags(Resource)
 }
 \description{
 Returns a function's
-\href{http://docs.aws.amazon.com/lambda/latest/dg/tagging.html}{tags}. You
+\href{https://docs.aws.amazon.com/lambda/latest/dg/tagging.html}{tags}. You
 can also view tags with GetFunction.
 }
 \section{Request syntax}{

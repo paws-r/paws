@@ -247,7 +247,7 @@ directoryservice_cancel_schema_extension <- function(DirectoryId, SchemaExtensio
 #'
 #' @usage
 #' directoryservice_connect_directory(Name, ShortName, Password,
-#'   Description, Size, ConnectSettings)
+#'   Description, Size, ConnectSettings, Tags)
 #'
 #' @param Name &#91;required&#93; The fully qualified name of the on-premises directory, such as
 #' `corp.example.com`.
@@ -257,6 +257,7 @@ directoryservice_cancel_schema_extension <- function(DirectoryId, SchemaExtensio
 #' @param Size &#91;required&#93; The size of the directory.
 #' @param ConnectSettings &#91;required&#93; A DirectoryConnectSettings object that contains additional information
 #' for the operation.
+#' @param Tags The tags to be assigned to AD Connector.
 #'
 #' @section Request syntax:
 #' ```
@@ -275,6 +276,12 @@ directoryservice_cancel_schema_extension <- function(DirectoryId, SchemaExtensio
 #'       "string"
 #'     ),
 #'     CustomerUserName = "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -282,14 +289,14 @@ directoryservice_cancel_schema_extension <- function(DirectoryId, SchemaExtensio
 #' @keywords internal
 #'
 #' @rdname directoryservice_connect_directory
-directoryservice_connect_directory <- function(Name, ShortName = NULL, Password, Description = NULL, Size, ConnectSettings) {
+directoryservice_connect_directory <- function(Name, ShortName = NULL, Password, Description = NULL, Size, ConnectSettings, Tags = NULL) {
   op <- new_operation(
     name = "ConnectDirectory",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .directoryservice$connect_directory_input(Name = Name, ShortName = ShortName, Password = Password, Description = Description, Size = Size, ConnectSettings = ConnectSettings)
+  input <- .directoryservice$connect_directory_input(Name = Name, ShortName = ShortName, Password = Password, Description = Description, Size = Size, ConnectSettings = ConnectSettings, Tags = Tags)
   output <- .directoryservice$connect_directory_output()
   svc <- .directoryservice$service()
   request <- new_request(svc, op, input, output)
@@ -459,7 +466,7 @@ directoryservice_create_conditional_forwarder <- function(DirectoryId, RemoteDom
 #'
 #' @usage
 #' directoryservice_create_directory(Name, ShortName, Password,
-#'   Description, Size, VpcSettings)
+#'   Description, Size, VpcSettings, Tags)
 #'
 #' @param Name &#91;required&#93; The fully qualified name for the directory, such as `corp.example.com`.
 #' @param ShortName The short name of the directory, such as `CORP`.
@@ -470,6 +477,7 @@ directoryservice_create_conditional_forwarder <- function(DirectoryId, RemoteDom
 #' @param Size &#91;required&#93; The size of the directory.
 #' @param VpcSettings A DirectoryVpcSettings object that contains additional information for
 #' the operation.
+#' @param Tags The tags to be assigned to the Simple AD directory.
 #'
 #' @section Request syntax:
 #' ```
@@ -484,6 +492,12 @@ directoryservice_create_conditional_forwarder <- function(DirectoryId, RemoteDom
 #'     SubnetIds = list(
 #'       "string"
 #'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -491,14 +505,14 @@ directoryservice_create_conditional_forwarder <- function(DirectoryId, RemoteDom
 #' @keywords internal
 #'
 #' @rdname directoryservice_create_directory
-directoryservice_create_directory <- function(Name, ShortName = NULL, Password, Description = NULL, Size, VpcSettings = NULL) {
+directoryservice_create_directory <- function(Name, ShortName = NULL, Password, Description = NULL, Size, VpcSettings = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDirectory",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .directoryservice$create_directory_input(Name = Name, ShortName = ShortName, Password = Password, Description = Description, Size = Size, VpcSettings = VpcSettings)
+  input <- .directoryservice$create_directory_input(Name = Name, ShortName = ShortName, Password = Password, Description = Description, Size = Size, VpcSettings = VpcSettings, Tags = Tags)
   output <- .directoryservice$create_directory_output()
   svc <- .directoryservice$service()
   request <- new_request(svc, op, input, output)
@@ -563,7 +577,7 @@ directoryservice_create_log_subscription <- function(DirectoryId, LogGroupName) 
 #'
 #' @usage
 #' directoryservice_create_microsoft_ad(Name, ShortName, Password,
-#'   Description, VpcSettings, Edition)
+#'   Description, VpcSettings, Edition, Tags)
 #'
 #' @param Name &#91;required&#93; The fully qualified domain name for the directory, such as
 #' `corp.example.com`. This name will resolve inside your VPC only. It does
@@ -579,6 +593,7 @@ directoryservice_create_log_subscription <- function(DirectoryId, LogGroupName) 
 #' operation.
 #' @param Edition AWS Managed Microsoft AD is available in two editions: Standard and
 #' Enterprise. Enterprise is the default.
+#' @param Tags The tags to be assigned to the AWS Managed Microsoft AD directory.
 #'
 #' @section Request syntax:
 #' ```
@@ -593,21 +608,27 @@ directoryservice_create_log_subscription <- function(DirectoryId, LogGroupName) 
 #'       "string"
 #'     )
 #'   ),
-#'   Edition = "Enterprise"|"Standard"
+#'   Edition = "Enterprise"|"Standard",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname directoryservice_create_microsoft_ad
-directoryservice_create_microsoft_ad <- function(Name, ShortName = NULL, Password, Description = NULL, VpcSettings, Edition = NULL) {
+directoryservice_create_microsoft_ad <- function(Name, ShortName = NULL, Password, Description = NULL, VpcSettings, Edition = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateMicrosoftAD",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .directoryservice$create_microsoft_ad_input(Name = Name, ShortName = ShortName, Password = Password, Description = Description, VpcSettings = VpcSettings, Edition = Edition)
+  input <- .directoryservice$create_microsoft_ad_input(Name = Name, ShortName = ShortName, Password = Password, Description = Description, VpcSettings = VpcSettings, Edition = Edition, Tags = Tags)
   output <- .directoryservice$create_microsoft_ad_output()
   svc <- .directoryservice$service()
   request <- new_request(svc, op, input, output)

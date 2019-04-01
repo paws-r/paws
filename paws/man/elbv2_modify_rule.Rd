@@ -72,6 +72,40 @@ To modify the actions for the default rule, use ModifyListener.
       Field = "string",
       Values = list(
         "string"
+      ),
+      HostHeaderConfig = list(
+        Values = list(
+          "string"
+        )
+      ),
+      PathPatternConfig = list(
+        Values = list(
+          "string"
+        )
+      ),
+      HttpHeaderConfig = list(
+        HttpHeaderName = "string",
+        Values = list(
+          "string"
+        )
+      ),
+      QueryStringConfig = list(
+        Values = list(
+          list(
+            Key = "string",
+            Value = "string"
+          )
+        )
+      ),
+      HttpRequestMethodConfig = list(
+        Values = list(
+          "string"
+        )
+      ),
+      SourceIpConfig = list(
+        Values = list(
+          "string"
+        )
       )
     )
   ),
@@ -92,7 +126,8 @@ To modify the actions for the default rule, use ModifyListener.
         AuthenticationRequestExtraParams = list(
           "string"
         ),
-        OnUnauthenticatedRequest = "deny"|"allow"|"authenticate"
+        OnUnauthenticatedRequest = "deny"|"allow"|"authenticate",
+        UseExistingClientSecret = TRUE|FALSE
       ),
       AuthenticateCognitoConfig = list(
         UserPoolArn = "string",

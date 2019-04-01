@@ -5,19 +5,19 @@ NULL
 
 .mediastore$create_container_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContainerName = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ContainerName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .mediastore$create_container_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Container = structure(list(Endpoint = structure(logical(0), tags = list(    type = "string")), CreationTime = structure(logical(0), tags = list(    type = "timestamp")), ARN = structure(logical(0), tags = list(    type = "string")), Name = structure(logical(0), tags = list(    type = "string")), Status = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(Container = structure(list(Endpoint = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), ARN = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), AccessLoggingEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .mediastore$delete_container_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContainerName = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ContainerName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -29,7 +29,7 @@ NULL
 
 .mediastore$delete_container_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContainerName = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ContainerName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -41,7 +41,7 @@ NULL
 
 .mediastore$delete_cors_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContainerName = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ContainerName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -53,7 +53,7 @@ NULL
 
 .mediastore$delete_lifecycle_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContainerName = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ContainerName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -65,67 +65,67 @@ NULL
 
 .mediastore$describe_container_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContainerName = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ContainerName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .mediastore$describe_container_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Container = structure(list(Endpoint = structure(logical(0), tags = list(    type = "string")), CreationTime = structure(logical(0), tags = list(    type = "timestamp")), ARN = structure(logical(0), tags = list(    type = "string")), Name = structure(logical(0), tags = list(    type = "string")), Status = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(Container = structure(list(Endpoint = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), ARN = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), AccessLoggingEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .mediastore$get_container_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContainerName = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ContainerName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .mediastore$get_container_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Policy = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .mediastore$get_cors_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContainerName = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ContainerName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .mediastore$get_cors_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CorsPolicy = structure(list(structure(list(AllowedOrigins = structure(list(    structure(logical(0), tags = list(type = "string"))), tags = list(    type = "list")), AllowedMethods = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list")), AllowedHeaders = structure(list(    structure(logical(0), tags = list(type = "string"))), tags = list(    type = "list")), MaxAgeSeconds = structure(logical(0), tags = list(    type = "integer")), ExposeHeaders = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(CorsPolicy = structure(list(structure(list(AllowedOrigins = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllowedMethods = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllowedHeaders = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MaxAgeSeconds = structure(logical(0), tags = list(type = "integer")), ExposeHeaders = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .mediastore$get_lifecycle_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContainerName = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ContainerName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .mediastore$get_lifecycle_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LifecyclePolicy = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(LifecyclePolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .mediastore$list_containers_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(    type = "string")), MaxResults = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .mediastore$list_containers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Containers = structure(list(structure(list(Endpoint = structure(logical(0), tags = list(    type = "string")), CreationTime = structure(logical(0), tags = list(    type = "timestamp")), ARN = structure(logical(0), tags = list(    type = "string")), Name = structure(logical(0), tags = list(    type = "string")), Status = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "list")), NextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Containers = structure(list(structure(list(Endpoint = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), ARN = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), AccessLoggingEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .mediastore$put_container_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContainerName = structure(logical(0), tags = list(    type = "string")), Policy = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ContainerName = structure(logical(0), tags = list(type = "string")), Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -137,7 +137,7 @@ NULL
 
 .mediastore$put_cors_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContainerName = structure(logical(0), tags = list(    type = "string")), CorsPolicy = structure(list(structure(list(    AllowedOrigins = structure(list(structure(logical(0), tags = list(        type = "string"))), tags = list(type = "list")), AllowedMethods = structure(list(        structure(logical(0), tags = list(type = "string"))), tags = list(        type = "list")), AllowedHeaders = structure(list(structure(logical(0), tags = list(        type = "string"))), tags = list(type = "list")), MaxAgeSeconds = structure(logical(0), tags = list(        type = "integer")), ExposeHeaders = structure(list(structure(logical(0), tags = list(        type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(ContainerName = structure(logical(0), tags = list(type = "string")), CorsPolicy = structure(list(structure(list(AllowedOrigins = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllowedMethods = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllowedHeaders = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MaxAgeSeconds = structure(logical(0), tags = list(type = "integer")), ExposeHeaders = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -149,11 +149,35 @@ NULL
 
 .mediastore$put_lifecycle_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContainerName = structure(logical(0), tags = list(    type = "string")), LifecyclePolicy = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ContainerName = structure(logical(0), tags = list(type = "string")), LifecyclePolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .mediastore$put_lifecycle_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediastore$start_access_logging_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ContainerName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediastore$start_access_logging_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediastore$stop_access_logging_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ContainerName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediastore$stop_access_logging_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))

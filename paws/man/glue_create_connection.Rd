@@ -8,7 +8,7 @@ glue_create_connection(CatalogId, ConnectionInput)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog in which to create the connection. If none is
-supplied, the AWS account ID is used by default.}
+provided, the AWS account ID is used by default.}
 
 \item{ConnectionInput}{[required] A \code{ConnectionInput} object defining the connection to create.}
 }

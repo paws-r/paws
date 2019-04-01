@@ -2,19 +2,19 @@
 % Please edit documentation in R/workmail_operations.R
 \name{workmail_associate_member_to_group}
 \alias{workmail_associate_member_to_group}
-\title{Adds a member to the group's set}
+\title{Adds a member (user or group) to the group's set}
 \usage{
 workmail_associate_member_to_group(OrganizationId, GroupId, MemberId)
 }
 \arguments{
 \item{OrganizationId}{[required] The organization under which the group exists.}
 
-\item{GroupId}{[required] The group for which the member is associated.}
+\item{GroupId}{[required] The group to which the member (user or group) is associated.}
 
-\item{MemberId}{[required] The member to associate to the group.}
+\item{MemberId}{[required] The member (user or group) to associate to the group.}
 }
 \description{
-Adds a member to the group's set.
+Adds a member (user or group) to the group's set.
 }
 \section{Request syntax}{
 \preformatted{workmail$associate_member_to_group(

@@ -3,6 +3,56 @@
 #' @include directconnect_service.R
 NULL
 
+#' Accepts a proposal request to attach a virtual private gateway to a
+#' Direct Connect gateway
+#'
+#' Accepts a proposal request to attach a virtual private gateway to a
+#' Direct Connect gateway.
+#'
+#' @usage
+#' directconnect_accept_direct_connect_gateway_association_proposal(
+#'   directConnectGatewayId, proposalId, associatedGatewayOwnerAccount,
+#'   overrideAllowedPrefixesToDirectConnectGateway)
+#'
+#' @param directConnectGatewayId &#91;required&#93; The ID of the Direct Connect gateway.
+#' @param proposalId &#91;required&#93; The ID of the request proposal.
+#' @param associatedGatewayOwnerAccount &#91;required&#93; The ID of the AWS account that owns the virtual private gateway.
+#' @param overrideAllowedPrefixesToDirectConnectGateway Overrides the Amazon VPC prefixes advertised to the Direct Connect
+#' gateway.
+#'
+#' @section Request syntax:
+#' ```
+#' directconnect$accept_direct_connect_gateway_association_proposal(
+#'   directConnectGatewayId = "string",
+#'   proposalId = "string",
+#'   associatedGatewayOwnerAccount = "string",
+#'   overrideAllowedPrefixesToDirectConnectGateway = list(
+#'     list(
+#'       cidr = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directconnect_accept_direct_connect_gateway_association_proposal
+directconnect_accept_direct_connect_gateway_association_proposal <- function(directConnectGatewayId, proposalId, associatedGatewayOwnerAccount, overrideAllowedPrefixesToDirectConnectGateway = NULL) {
+  op <- new_operation(
+    name = "AcceptDirectConnectGatewayAssociationProposal",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .directconnect$accept_direct_connect_gateway_association_proposal_input(directConnectGatewayId = directConnectGatewayId, proposalId = proposalId, associatedGatewayOwnerAccount = associatedGatewayOwnerAccount, overrideAllowedPrefixesToDirectConnectGateway = overrideAllowedPrefixesToDirectConnectGateway)
+  output <- .directconnect$accept_direct_connect_gateway_association_proposal_output()
+  svc <- .directconnect$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directconnect$operations$accept_direct_connect_gateway_association_proposal <- directconnect_accept_direct_connect_gateway_association_proposal
+
 #' Deprecated
 #'
 #' Deprecated. Use AllocateHostedConnection instead.
@@ -12,19 +62,21 @@ NULL
 #' Allocates a VLAN number and a specified amount of bandwidth for use by a
 #' hosted connection on the specified interconnect.
 #' 
-#' Intended for use by AWS Direct Connect partners only.
+#' Intended for use by AWS Direct Connect Partners only.
 #'
 #' @usage
 #' directconnect_allocate_connection_on_interconnect(bandwidth,
 #'   connectionName, ownerAccount, interconnectId, vlan)
 #'
-#' @param bandwidth &#91;required&#93; The bandwidth of the connection, in Mbps. The possible values are
-#' 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, and 500Mbps.
+#' @param bandwidth &#91;required&#93; The bandwidth of the connection. The possible values are 50Mbps,
+#' 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, and
+#' 10Gbps. Note that only those AWS Direct Connect Partners who have met
+#' specific requirements are allowed to create a 1Gbps, 2Gbps, 5Gbps or
+#' 10Gbps hosted connection.
 #' @param connectionName &#91;required&#93; The name of the provisioned connection.
 #' @param ownerAccount &#91;required&#93; The ID of the AWS account of the customer for whom the connection will
 #' be provisioned.
 #' @param interconnectId &#91;required&#93; The ID of the interconnect on which the connection will be provisioned.
-#' For example, dxcon-456abc78.
 #' @param vlan &#91;required&#93; The dedicated VLAN provisioned to the connection.
 #'
 #' @section Request syntax:
@@ -58,15 +110,18 @@ directconnect_allocate_connection_on_interconnect <- function(bandwidth, connect
 .directconnect$operations$allocate_connection_on_interconnect <- directconnect_allocate_connection_on_interconnect
 
 #' Creates a hosted connection on the specified interconnect or a link
-#' aggregation group (LAG)
+#' aggregation group (LAG) of interconnects
 #'
 #' Creates a hosted connection on the specified interconnect or a link
-#' aggregation group (LAG).
+#' aggregation group (LAG) of interconnects.
 #' 
-#' Allocates a VLAN number and a specified amount of bandwidth for use by a
-#' hosted connection on the specified interconnect or LAG.
+#' Allocates a VLAN number and a specified amount of capacity (bandwidth)
+#' for use by a hosted connection on the specified interconnect or LAG of
+#' interconnects. AWS polices the hosted connection for the specified
+#' capacity and the AWS Direct Connect Partner must also police the hosted
+#' connection for the specified capacity.
 #' 
-#' Intended for use by AWS Direct Connect partners only.
+#' Intended for use by AWS Direct Connect Partners only.
 #'
 #' @usage
 #' directconnect_allocate_hosted_connection(connectionId, ownerAccount,
@@ -74,8 +129,11 @@ directconnect_allocate_connection_on_interconnect <- function(bandwidth, connect
 #'
 #' @param connectionId &#91;required&#93; The ID of the interconnect or LAG.
 #' @param ownerAccount &#91;required&#93; The ID of the AWS account ID of the customer for the connection.
-#' @param bandwidth &#91;required&#93; The bandwidth of the hosted connection, in Mbps. The possible values are
-#' 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, and 500Mbps.
+#' @param bandwidth &#91;required&#93; The bandwidth of the connection. The possible values are 50Mbps,
+#' 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, and
+#' 10Gbps. Note that only those AWS Direct Connect Partners who have met
+#' specific requirements are allowed to create a 1Gbps, 2Gbps, 5Gbps or
+#' 10Gbps hosted connection.
 #' @param connectionName &#91;required&#93; The name of the hosted connection.
 #' @param vlan &#91;required&#93; The dedicated VLAN provisioned to the hosted connection.
 #'
@@ -258,9 +316,8 @@ directconnect_allocate_public_virtual_interface <- function(connectionId, ownerA
 #' @usage
 #' directconnect_associate_connection_with_lag(connectionId, lagId)
 #'
-#' @param connectionId &#91;required&#93; The ID of the connection. For example, dxcon-abc123.
-#' @param lagId &#91;required&#93; The ID of the LAG with which to associate the connection. For example,
-#' dxlag-abc123.
+#' @param connectionId &#91;required&#93; The ID of the connection.
+#' @param lagId &#91;required&#93; The ID of the LAG with which to associate the connection.
 #'
 #' @section Request syntax:
 #' ```
@@ -298,7 +355,7 @@ directconnect_associate_connection_with_lag <- function(connectionId, lagId) {
 #' IP address, the operation fails. This action temporarily interrupts the
 #' hosted connection\'s connectivity to AWS as it is being migrated.
 #' 
-#' Intended for use by AWS Direct Connect partners only.
+#' Intended for use by AWS Direct Connect Partners only.
 #'
 #' @usage
 #' directconnect_associate_hosted_connection(connectionId,
@@ -687,15 +744,24 @@ directconnect_create_direct_connect_gateway <- function(directConnectGatewayName
 #'
 #' @usage
 #' directconnect_create_direct_connect_gateway_association(
-#'   directConnectGatewayId, virtualGatewayId)
+#'   directConnectGatewayId, gatewayId,
+#'   addAllowedPrefixesToDirectConnectGateway, virtualGatewayId)
 #'
 #' @param directConnectGatewayId &#91;required&#93; The ID of the Direct Connect gateway.
-#' @param virtualGatewayId &#91;required&#93; The ID of the virtual private gateway.
+#' @param gatewayId The ID of the virtual private gateway.
+#' @param addAllowedPrefixesToDirectConnectGateway The Amazon VPC prefixes to advertise to the Direct Connect gateway
+#' @param virtualGatewayId The ID of the virtual private gateway.
 #'
 #' @section Request syntax:
 #' ```
 #' directconnect$create_direct_connect_gateway_association(
 #'   directConnectGatewayId = "string",
+#'   gatewayId = "string",
+#'   addAllowedPrefixesToDirectConnectGateway = list(
+#'     list(
+#'       cidr = "string"
+#'     )
+#'   ),
 #'   virtualGatewayId = "string"
 #' )
 #' ```
@@ -703,14 +769,14 @@ directconnect_create_direct_connect_gateway <- function(directConnectGatewayName
 #' @keywords internal
 #'
 #' @rdname directconnect_create_direct_connect_gateway_association
-directconnect_create_direct_connect_gateway_association <- function(directConnectGatewayId, virtualGatewayId) {
+directconnect_create_direct_connect_gateway_association <- function(directConnectGatewayId, gatewayId = NULL, addAllowedPrefixesToDirectConnectGateway = NULL, virtualGatewayId = NULL) {
   op <- new_operation(
     name = "CreateDirectConnectGatewayAssociation",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .directconnect$create_direct_connect_gateway_association_input(directConnectGatewayId = directConnectGatewayId, virtualGatewayId = virtualGatewayId)
+  input <- .directconnect$create_direct_connect_gateway_association_input(directConnectGatewayId = directConnectGatewayId, gatewayId = gatewayId, addAllowedPrefixesToDirectConnectGateway = addAllowedPrefixesToDirectConnectGateway, virtualGatewayId = virtualGatewayId)
   output <- .directconnect$create_direct_connect_gateway_association_output()
   svc <- .directconnect$service()
   request <- new_request(svc, op, input, output)
@@ -719,17 +785,78 @@ directconnect_create_direct_connect_gateway_association <- function(directConnec
 }
 .directconnect$operations$create_direct_connect_gateway_association <- directconnect_create_direct_connect_gateway_association
 
-#' Creates an interconnect between an AWS Direct Connect partner's network
+#' Creates a proposal to associate the specified virtual private gateway
+#' with the specified Direct Connect gateway
+#'
+#' Creates a proposal to associate the specified virtual private gateway
+#' with the specified Direct Connect gateway.
+#' 
+#' You can only associate a Direct Connect gateway and virtual private
+#' gateway when the account that owns the Direct Connect gateway and the
+#' account that owns the virtual private gateway have the same payer ID.
+#'
+#' @usage
+#' directconnect_create_direct_connect_gateway_association_proposal(
+#'   directConnectGatewayId, directConnectGatewayOwnerAccount, gatewayId,
+#'   addAllowedPrefixesToDirectConnectGateway,
+#'   removeAllowedPrefixesToDirectConnectGateway)
+#'
+#' @param directConnectGatewayId &#91;required&#93; The ID of the Direct Connect gateway.
+#' @param directConnectGatewayOwnerAccount &#91;required&#93; The ID of the AWS account that owns the Direct Connect gateway.
+#' @param gatewayId &#91;required&#93; The ID of the virtual private gateway.
+#' @param addAllowedPrefixesToDirectConnectGateway The Amazon VPC prefixes to advertise to the Direct Connect gateway.
+#' @param removeAllowedPrefixesToDirectConnectGateway The Amazon VPC prefixes to no longer advertise to the Direct Connect
+#' gateway.
+#'
+#' @section Request syntax:
+#' ```
+#' directconnect$create_direct_connect_gateway_association_proposal(
+#'   directConnectGatewayId = "string",
+#'   directConnectGatewayOwnerAccount = "string",
+#'   gatewayId = "string",
+#'   addAllowedPrefixesToDirectConnectGateway = list(
+#'     list(
+#'       cidr = "string"
+#'     )
+#'   ),
+#'   removeAllowedPrefixesToDirectConnectGateway = list(
+#'     list(
+#'       cidr = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directconnect_create_direct_connect_gateway_association_proposal
+directconnect_create_direct_connect_gateway_association_proposal <- function(directConnectGatewayId, directConnectGatewayOwnerAccount, gatewayId, addAllowedPrefixesToDirectConnectGateway = NULL, removeAllowedPrefixesToDirectConnectGateway = NULL) {
+  op <- new_operation(
+    name = "CreateDirectConnectGatewayAssociationProposal",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .directconnect$create_direct_connect_gateway_association_proposal_input(directConnectGatewayId = directConnectGatewayId, directConnectGatewayOwnerAccount = directConnectGatewayOwnerAccount, gatewayId = gatewayId, addAllowedPrefixesToDirectConnectGateway = addAllowedPrefixesToDirectConnectGateway, removeAllowedPrefixesToDirectConnectGateway = removeAllowedPrefixesToDirectConnectGateway)
+  output <- .directconnect$create_direct_connect_gateway_association_proposal_output()
+  svc <- .directconnect$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directconnect$operations$create_direct_connect_gateway_association_proposal <- directconnect_create_direct_connect_gateway_association_proposal
+
+#' Creates an interconnect between an AWS Direct Connect Partner's network
 #' and a specific AWS Direct Connect location
 #'
-#' Creates an interconnect between an AWS Direct Connect partner\'s network
+#' Creates an interconnect between an AWS Direct Connect Partner\'s network
 #' and a specific AWS Direct Connect location.
 #' 
-#' An interconnect is a connection which is capable of hosting other
-#' connections. The partner can use an interconnect to provide sub-1Gbps
-#' AWS Direct Connect service to tier 2 customers who do not have their own
-#' connections. Like a standard connection, an interconnect links the
-#' partner\'s network to an AWS Direct Connect location over a standard
+#' An interconnect is a connection that is capable of hosting other
+#' connections. The AWS Direct Connect partner can use an interconnect to
+#' provide AWS Direct Connect hosted connections to customers through their
+#' own network services. Like a standard connection, an interconnect links
+#' the partner\'s network to an AWS Direct Connect location over a standard
 #' Ethernet fiber-optic cable. One end is connected to the partner\'s
 #' router, the other to an AWS Direct Connect router.
 #' 
@@ -739,13 +866,13 @@ directconnect_create_direct_connect_gateway_association <- function(directConnec
 #' that hosts the specified LAG. If there are no available ports on the
 #' endpoint, the request fails and no interconnect is created.
 #' 
-#' For each end customer, the AWS Direct Connect partner provisions a
-#' connection on their interconnect by calling
-#' AllocateConnectionOnInterconnect. The end customer can then connect to
-#' AWS resources by creating a virtual interface on their connection, using
-#' the VLAN assigned to them by the partner.
+#' For each end customer, the AWS Direct Connect Partner provisions a
+#' connection on their interconnect by calling AllocateHostedConnection.
+#' The end customer can then connect to AWS resources by creating a virtual
+#' interface on their connection, using the VLAN assigned to them by the
+#' AWS Direct Connect Partner.
 #' 
-#' Intended for use by AWS Direct Connect partners only.
+#' Intended for use by AWS Direct Connect Partners only.
 #'
 #' @usage
 #' directconnect_create_interconnect(interconnectName, bandwidth, location,
@@ -812,7 +939,7 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
 #' LAG. The connection ID does not change.
 #' 
 #' If the AWS account used to create a LAG is a registered AWS Direct
-#' Connect partner, the LAG is automatically enabled to host
+#' Connect Partner, the LAG is automatically enabled to host
 #' sub-connections. For a LAG owned by a partner, any associated virtual
 #' interfaces cannot be directly configured.
 #'
@@ -824,7 +951,8 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
 #' the LAG.
 #' @param location &#91;required&#93; The location for the LAG.
 #' @param connectionsBandwidth &#91;required&#93; The bandwidth of the individual physical connections bundled by the LAG.
-#' The possible values are 1Gbps and 10Gbps.
+#' The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps,
+#' 500Mbps, 1Gbps, 2Gbps, 5Gbps, and 10Gbps.
 #' @param lagName &#91;required&#93; The name of the LAG.
 #' @param connectionId The ID of an existing connection to migrate to the LAG.
 #'
@@ -1103,15 +1231,17 @@ directconnect_delete_direct_connect_gateway <- function(directConnectGatewayId) 
 #' virtual private gateway.
 #'
 #' @usage
-#' directconnect_delete_direct_connect_gateway_association(
+#' directconnect_delete_direct_connect_gateway_association(associationId,
 #'   directConnectGatewayId, virtualGatewayId)
 #'
-#' @param directConnectGatewayId &#91;required&#93; The ID of the Direct Connect gateway.
-#' @param virtualGatewayId &#91;required&#93; The ID of the virtual private gateway.
+#' @param associationId The ID of the Direct Connect gateway association.
+#' @param directConnectGatewayId The ID of the Direct Connect gateway.
+#' @param virtualGatewayId The ID of the virtual private gateway.
 #'
 #' @section Request syntax:
 #' ```
 #' directconnect$delete_direct_connect_gateway_association(
+#'   associationId = "string",
 #'   directConnectGatewayId = "string",
 #'   virtualGatewayId = "string"
 #' )
@@ -1120,14 +1250,14 @@ directconnect_delete_direct_connect_gateway <- function(directConnectGatewayId) 
 #' @keywords internal
 #'
 #' @rdname directconnect_delete_direct_connect_gateway_association
-directconnect_delete_direct_connect_gateway_association <- function(directConnectGatewayId, virtualGatewayId) {
+directconnect_delete_direct_connect_gateway_association <- function(associationId = NULL, directConnectGatewayId = NULL, virtualGatewayId = NULL) {
   op <- new_operation(
     name = "DeleteDirectConnectGatewayAssociation",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .directconnect$delete_direct_connect_gateway_association_input(directConnectGatewayId = directConnectGatewayId, virtualGatewayId = virtualGatewayId)
+  input <- .directconnect$delete_direct_connect_gateway_association_input(associationId = associationId, directConnectGatewayId = directConnectGatewayId, virtualGatewayId = virtualGatewayId)
   output <- .directconnect$delete_direct_connect_gateway_association_output()
   svc <- .directconnect$service()
   request <- new_request(svc, op, input, output)
@@ -1136,11 +1266,49 @@ directconnect_delete_direct_connect_gateway_association <- function(directConnec
 }
 .directconnect$operations$delete_direct_connect_gateway_association <- directconnect_delete_direct_connect_gateway_association
 
+#' Deletes the association proposal request between the specified Direct
+#' Connect gateway and virtual private gateway
+#'
+#' Deletes the association proposal request between the specified Direct
+#' Connect gateway and virtual private gateway.
+#'
+#' @usage
+#' directconnect_delete_direct_connect_gateway_association_proposal(
+#'   proposalId)
+#'
+#' @param proposalId &#91;required&#93; The ID of the proposal.
+#'
+#' @section Request syntax:
+#' ```
+#' directconnect$delete_direct_connect_gateway_association_proposal(
+#'   proposalId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directconnect_delete_direct_connect_gateway_association_proposal
+directconnect_delete_direct_connect_gateway_association_proposal <- function(proposalId) {
+  op <- new_operation(
+    name = "DeleteDirectConnectGatewayAssociationProposal",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .directconnect$delete_direct_connect_gateway_association_proposal_input(proposalId = proposalId)
+  output <- .directconnect$delete_direct_connect_gateway_association_proposal_output()
+  svc <- .directconnect$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directconnect$operations$delete_direct_connect_gateway_association_proposal <- directconnect_delete_direct_connect_gateway_association_proposal
+
 #' Deletes the specified interconnect
 #'
 #' Deletes the specified interconnect.
 #' 
-#' Intended for use by AWS Direct Connect partners only.
+#' Intended for use by AWS Direct Connect Partners only.
 #'
 #' @usage
 #' directconnect_delete_interconnect(interconnectId)
@@ -1254,7 +1422,7 @@ directconnect_delete_virtual_interface <- function(virtualInterfaceId) {
 #' is a document that your APN partner or service provider uses when
 #' establishing your cross connect to AWS at the colocation facility. For
 #' more information, see [Requesting Cross Connects at AWS Direct Connect
-#' Locations](http://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html)
+#' Locations](https://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html)
 #' in the *AWS Direct Connect User Guide*.
 #'
 #' @usage
@@ -1339,7 +1507,7 @@ directconnect_describe_connections <- function(connectionId = NULL) {
 #' Lists the connections that have been provisioned on the specified
 #' interconnect.
 #' 
-#' Intended for use by AWS Direct Connect partners only.
+#' Intended for use by AWS Direct Connect Partners only.
 #'
 #' @usage
 #' directconnect_describe_connections_on_interconnect(interconnectId)
@@ -1372,6 +1540,58 @@ directconnect_describe_connections_on_interconnect <- function(interconnectId) {
 }
 .directconnect$operations$describe_connections_on_interconnect <- directconnect_describe_connections_on_interconnect
 
+#' Describes one or more association proposals for connection between a
+#' virtual private gateway and a Direct Connect gateway
+#'
+#' Describes one or more association proposals for connection between a
+#' virtual private gateway and a Direct Connect gateway.
+#'
+#' @usage
+#' directconnect_describe_direct_connect_gateway_association_proposals(
+#'   directConnectGatewayId, proposalId, associatedGatewayId, maxResults,
+#'   nextToken)
+#'
+#' @param directConnectGatewayId The ID of the Direct Connect gateway.
+#' @param proposalId The ID of the proposal.
+#' @param associatedGatewayId The ID of the associated virtual private gateway.
+#' @param maxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned `nextToken`
+#' value.
+#' 
+#' If `MaxResults` is given a value larger than 100, only 100 results are
+#' returned.
+#' @param nextToken The token for the next page of results.
+#'
+#' @section Request syntax:
+#' ```
+#' directconnect$describe_direct_connect_gateway_association_proposals(
+#'   directConnectGatewayId = "string",
+#'   proposalId = "string",
+#'   associatedGatewayId = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directconnect_describe_direct_connect_gateway_association_proposals
+directconnect_describe_direct_connect_gateway_association_proposals <- function(directConnectGatewayId = NULL, proposalId = NULL, associatedGatewayId = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeDirectConnectGatewayAssociationProposals",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .directconnect$describe_direct_connect_gateway_association_proposals_input(directConnectGatewayId = directConnectGatewayId, proposalId = proposalId, associatedGatewayId = associatedGatewayId, maxResults = maxResults, nextToken = nextToken)
+  output <- .directconnect$describe_direct_connect_gateway_association_proposals_output()
+  svc <- .directconnect$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directconnect$operations$describe_direct_connect_gateway_association_proposals <- directconnect_describe_direct_connect_gateway_association_proposals
+
 #' Lists the associations between your Direct Connect gateways and virtual
 #' private gateways
 #'
@@ -1387,34 +1607,44 @@ directconnect_describe_connections_on_interconnect <- function(interconnectId) {
 #'
 #' @usage
 #' directconnect_describe_direct_connect_gateway_associations(
-#'   directConnectGatewayId, virtualGatewayId, maxResults, nextToken)
+#'   associationId, associatedGatewayId, directConnectGatewayId, maxResults,
+#'   nextToken, virtualGatewayId)
 #'
+#' @param associationId The ID of the Direct Connect gateway association.
+#' @param associatedGatewayId The ID of the associated gateway.
 #' @param directConnectGatewayId The ID of the Direct Connect gateway.
-#' @param virtualGatewayId The ID of the virtual private gateway.
-#' @param maxResults The maximum number of associations to return per page.
+#' @param maxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned `nextToken`
+#' value.
+#' 
+#' If `MaxResults` is given a value larger than 100, only 100 results are
+#' returned.
 #' @param nextToken The token provided in the previous call to retrieve the next page.
+#' @param virtualGatewayId The ID of the virtual private gateway.
 #'
 #' @section Request syntax:
 #' ```
 #' directconnect$describe_direct_connect_gateway_associations(
+#'   associationId = "string",
+#'   associatedGatewayId = "string",
 #'   directConnectGatewayId = "string",
-#'   virtualGatewayId = "string",
 #'   maxResults = 123,
-#'   nextToken = "string"
+#'   nextToken = "string",
+#'   virtualGatewayId = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname directconnect_describe_direct_connect_gateway_associations
-directconnect_describe_direct_connect_gateway_associations <- function(directConnectGatewayId = NULL, virtualGatewayId = NULL, maxResults = NULL, nextToken = NULL) {
+directconnect_describe_direct_connect_gateway_associations <- function(associationId = NULL, associatedGatewayId = NULL, directConnectGatewayId = NULL, maxResults = NULL, nextToken = NULL, virtualGatewayId = NULL) {
   op <- new_operation(
     name = "DescribeDirectConnectGatewayAssociations",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .directconnect$describe_direct_connect_gateway_associations_input(directConnectGatewayId = directConnectGatewayId, virtualGatewayId = virtualGatewayId, maxResults = maxResults, nextToken = nextToken)
+  input <- .directconnect$describe_direct_connect_gateway_associations_input(associationId = associationId, associatedGatewayId = associatedGatewayId, directConnectGatewayId = directConnectGatewayId, maxResults = maxResults, nextToken = nextToken, virtualGatewayId = virtualGatewayId)
   output <- .directconnect$describe_direct_connect_gateway_associations_output()
   svc <- .directconnect$service()
   request <- new_request(svc, op, input, output)
@@ -1441,7 +1671,12 @@ directconnect_describe_direct_connect_gateway_associations <- function(directCon
 #'
 #' @param directConnectGatewayId The ID of the Direct Connect gateway.
 #' @param virtualInterfaceId The ID of the virtual interface.
-#' @param maxResults The maximum number of attachments to return per page.
+#' @param maxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned `nextToken`
+#' value.
+#' 
+#' If `MaxResults` is given a value larger than 100, only 100 results are
+#' returned.
 #' @param nextToken The token provided in the previous call to retrieve the next page.
 #'
 #' @section Request syntax:
@@ -1484,7 +1719,12 @@ directconnect_describe_direct_connect_gateway_attachments <- function(directConn
 #'   maxResults, nextToken)
 #'
 #' @param directConnectGatewayId The ID of the Direct Connect gateway.
-#' @param maxResults The maximum number of Direct Connect gateways to return per page.
+#' @param maxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned `nextToken`
+#' value.
+#' 
+#' If `MaxResults` is given a value larger than 100, only 100 results are
+#' returned.
 #' @param nextToken The token provided in the previous call to retrieve the next page.
 #'
 #' @section Request syntax:
@@ -1521,7 +1761,7 @@ directconnect_describe_direct_connect_gateways <- function(directConnectGatewayI
 #' Lists the hosted connections that have been provisioned on the specified
 #' interconnect or link aggregation group (LAG).
 #' 
-#' Intended for use by AWS Direct Connect partners only.
+#' Intended for use by AWS Direct Connect Partners only.
 #'
 #' @usage
 #' directconnect_describe_hosted_connections(connectionId)
@@ -1564,7 +1804,7 @@ directconnect_describe_hosted_connections <- function(connectionId) {
 #' is a document that is used when establishing your cross connect to AWS
 #' at the colocation facility. For more information, see [Requesting Cross
 #' Connects at AWS Direct Connect
-#' Locations](http://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html)
+#' Locations](https://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html)
 #' in the *AWS Direct Connect User Guide*.
 #'
 #' @usage
@@ -1688,7 +1928,7 @@ directconnect_describe_lags <- function(lagId = NULL) {
 #' is a document that is used when establishing your cross connect to AWS
 #' at the colocation facility. For more information, see [Requesting Cross
 #' Connects at AWS Direct Connect
-#' Locations](http://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html)
+#' Locations](https://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html)
 #' in the *AWS Direct Connect User Guide*.
 #'
 #' @usage
@@ -1885,7 +2125,7 @@ directconnect_describe_virtual_interfaces <- function(connectionId = NULL, virtu
 #' (the connection is not deleted; to delete the connection, use the
 #' DeleteConnection request). If the LAG has associated virtual interfaces
 #' or hosted connections, they remain associated with the LAG. A
-#' disassociated connection owned by an AWS Direct Connect partner is
+#' disassociated connection owned by an AWS Direct Connect Partner is
 #' automatically converted to an interconnect.
 #' 
 #' If disassociating the connection would cause the LAG to fall below its
@@ -1897,8 +2137,8 @@ directconnect_describe_virtual_interfaces <- function(connectionId = NULL, virtu
 #' @usage
 #' directconnect_disassociate_connection_from_lag(connectionId, lagId)
 #'
-#' @param connectionId &#91;required&#93; The ID of the connection. For example, dxcon-abc123.
-#' @param lagId &#91;required&#93; The ID of the LAG. For example, dxlag-abc123.
+#' @param connectionId &#91;required&#93; The ID of the connection.
+#' @param lagId &#91;required&#93; The ID of the LAG.
 #'
 #' @section Request syntax:
 #' ```
@@ -2012,6 +2252,60 @@ directconnect_untag_resource <- function(resourceArn, tagKeys) {
   return(response)
 }
 .directconnect$operations$untag_resource <- directconnect_untag_resource
+
+#' Updates the specified attributes of the Direct Connect gateway
+#' association
+#'
+#' Updates the specified attributes of the Direct Connect gateway
+#' association.
+#' 
+#' Add or remove prefixes from the association.
+#'
+#' @usage
+#' directconnect_update_direct_connect_gateway_association(associationId,
+#'   addAllowedPrefixesToDirectConnectGateway,
+#'   removeAllowedPrefixesToDirectConnectGateway)
+#'
+#' @param associationId The ID of the Direct Connect gateway association.
+#' @param addAllowedPrefixesToDirectConnectGateway The Amazon VPC prefixes to advertise to the Direct Connect gateway.
+#' @param removeAllowedPrefixesToDirectConnectGateway The Amazon VPC prefixes to no longer advertise to the Direct Connect
+#' gateway.
+#'
+#' @section Request syntax:
+#' ```
+#' directconnect$update_direct_connect_gateway_association(
+#'   associationId = "string",
+#'   addAllowedPrefixesToDirectConnectGateway = list(
+#'     list(
+#'       cidr = "string"
+#'     )
+#'   ),
+#'   removeAllowedPrefixesToDirectConnectGateway = list(
+#'     list(
+#'       cidr = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directconnect_update_direct_connect_gateway_association
+directconnect_update_direct_connect_gateway_association <- function(associationId = NULL, addAllowedPrefixesToDirectConnectGateway = NULL, removeAllowedPrefixesToDirectConnectGateway = NULL) {
+  op <- new_operation(
+    name = "UpdateDirectConnectGatewayAssociation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .directconnect$update_direct_connect_gateway_association_input(associationId = associationId, addAllowedPrefixesToDirectConnectGateway = addAllowedPrefixesToDirectConnectGateway, removeAllowedPrefixesToDirectConnectGateway = removeAllowedPrefixesToDirectConnectGateway)
+  output <- .directconnect$update_direct_connect_gateway_association_output()
+  svc <- .directconnect$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directconnect$operations$update_direct_connect_gateway_association <- directconnect_update_direct_connect_gateway_association
 
 #' Updates the attributes of the specified link aggregation group (LAG)
 #'

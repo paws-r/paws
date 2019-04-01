@@ -42,8 +42,8 @@ must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10) or
 +Infinity, -Infinity) are not supported.
 
 You can use up to 10 dimensions per metric to further clarify what data
-the metric collects. For more information about specifying dimensions,
-see \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html}{Publishing Metrics}
+the metric collects. Each dimension consists of a Name and Value pair.
+For more information about specifying dimensions, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html}{Publishing Metrics}
 in the \emph{Amazon CloudWatch User Guide}.
 
 Data points with time stamps from 24 hours ago or longer can take at

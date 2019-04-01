@@ -2,7 +2,7 @@
 % Please edit documentation in R/workspaces_operations.R
 \name{workspaces_modify_client_properties}
 \alias{workspaces_modify_client_properties}
-\title{Modifies the properties of the specified Amazon WorkSpaces client}
+\title{Modifies the properties of the specified Amazon WorkSpaces clients}
 \usage{
 workspaces_modify_client_properties(ResourceId, ClientProperties)
 }
@@ -12,7 +12,7 @@ workspaces_modify_client_properties(ResourceId, ClientProperties)
 \item{ClientProperties}{[required] Information about the Amazon WorkSpaces client.}
 }
 \description{
-Modifies the properties of the specified Amazon WorkSpaces client.
+Modifies the properties of the specified Amazon WorkSpaces clients.
 }
 \section{Request syntax}{
 \preformatted{workspaces$modify_client_properties(

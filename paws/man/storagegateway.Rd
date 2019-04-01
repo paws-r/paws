@@ -19,15 +19,15 @@ disaster recovery.
 Use the following links to get started using the \emph{AWS Storage Gateway
 Service API Reference}:
 \itemize{
-\item \href{http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewayHTTPRequestsHeaders}{AWS Storage Gateway Required Request Headers}:
+\item \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewayHTTPRequestsHeaders}{AWS Storage Gateway Required Request Headers}:
 Describes the required headers that you must send with every POST
 request to AWS Storage Gateway.
-\item \href{http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewaySigningRequests}{Signing Requests}:
+\item \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewaySigningRequests}{Signing Requests}:
 AWS Storage Gateway requires that you authenticate every request you
 send; this topic describes how sign such a request.
-\item \href{http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#APIErrorResponses}{Error Responses}:
+\item \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#APIErrorResponses}{Error Responses}:
 Provides reference information about AWS Storage Gateway errors.
-\item \href{http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_Operations.html}{Operations in AWS Storage Gateway}:
+\item \href{https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_Operations.html}{Operations in AWS Storage Gateway}:
 Contains detailed descriptions of all AWS Storage Gateway
 operations, their request parameters, response elements, possible
 errors, and examples of requests and responses.

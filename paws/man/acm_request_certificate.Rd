@@ -20,8 +20,8 @@ periods. Each subsequent Subject Alternative Name (SAN), however, can be
 up to 253 octets in length.}
 
 \item{ValidationMethod}{The method you want to use if you are requesting a public certificate to
-validate that you own or control domain. You can \href{http://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html}{validate with DNS}
-or \href{http://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-email.html}{validate with email}.
+validate that you own or control domain. You can \href{https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html}{validate with DNS}
+or \href{https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-email.html}{validate with email}.
 We recommend that you use DNS validation.}
 
 \item{SubjectAlternativeNames}{Additional FQDNs to be included in the Subject Alternative Name
@@ -32,7 +32,7 @@ maximum number of domain names that you can add to an ACM certificate is
 100. However, the initial limit is 10 domain names. If you need more
 than 10 names, you must request a limit increase. For more information,
 see
-\href{http://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html}{Limits}.
+\href{https://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html}{Limits}.
 
 The maximum length of a SAN DNS name is 253 octets. The name is made up
 of multiple labels separated by periods. No label can be longer than 63
@@ -65,13 +65,13 @@ certificate to a certificate transparency log. Certificate transparency
 makes it possible to detect SSL/TLS certificates that have been
 mistakenly or maliciously issued. Certificates that have not been logged
 typically produce an error message in a browser. For more information,
-see \href{http://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency}{Opting Out of Certificate Transparency Logging}.}
+see \href{https://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency}{Opting Out of Certificate Transparency Logging}.}
 
 \item{CertificateAuthorityArn}{The Amazon Resource Name (ARN) of the private certificate authority (CA)
 that will be used to issue the certificate. If you do not provide an ARN
 and you are trying to request a private certificate, ACM will attempt to
 issue a public certificate. For more information about private CAs, see
-the \href{http://docs.aws.amazon.com/acm-pca/latest/userguide/PcaWelcome.html}{AWS Certificate Manager Private Certificate Authority (PCA)}
+the \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaWelcome.html}{AWS Certificate Manager Private Certificate Authority (PCA)}
 user guide. The ARN must have the following form:
 
 \code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012}}
@@ -86,8 +86,8 @@ FQDNs in the \code{SubjectAlternativeNames} parameter.
 If you are requesting a private certificate, domain validation is not
 required. If you are requesting a public certificate, each domain name
 that you specify must be validated to verify that you own or control the
-domain. You can use \href{http://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html}{DNS validation}
-or \href{http://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-email.html}{email validation}.
+domain. You can use \href{https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html}{DNS validation}
+or \href{https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-email.html}{email validation}.
 We recommend that you use DNS validation. ACM issues public certificates
 after receiving approval from the domain owner.
 }

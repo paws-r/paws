@@ -5,7 +5,7 @@
 \title{Creates a new trigger}
 \usage{
 glue_create_trigger(Name, Type, Schedule, Predicate, Actions,
-  Description, StartOnCreation)
+  Description, StartOnCreation, Tags)
 }
 \arguments{
 \item{Name}{[required] The name of the trigger.}
@@ -28,6 +28,10 @@ This field is required when the trigger type is CONDITIONAL.}
 
 \item{StartOnCreation}{Set to true to start SCHEDULED and CONDITIONAL triggers when created.
 True not supported for ON\_DEMAND triggers.}
+
+\item{Tags}{The tags to use with this trigger. You may use tags to limit access to
+the trigger. For more information about tags in AWS Glue, see \href{http://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html}{AWS Tags in AWS Glue} in
+the developer guide.}
 }
 \description{
 Creates a new trigger.
@@ -61,7 +65,10 @@ Creates a new trigger.
     )
   ),
   Description = "string",
-  StartOnCreation = TRUE|FALSE
+  StartOnCreation = TRUE|FALSE,
+  Tags = list(
+    "string"
+  )
 )
 }
 }

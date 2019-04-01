@@ -12,7 +12,7 @@ applicationautoscaling_put_scheduled_action(ServiceNamespace, Schedule,
 \arguments{
 \item{ServiceNamespace}{[required] The namespace of the AWS service that provides the resource or
 \code{custom-resource} for a resource provided by your own application or
-service. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces}
+service. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces}
 in the \emph{Amazon Web Services General Reference}.}
 
 \item{Schedule}{The schedule for this action. The following formats are supported:
@@ -65,8 +65,7 @@ is defined by the service provider. More information is available in
 our \href{https://github.com/aws/aws-auto-scaling-custom-resource}{GitHub repository}.
 }}
 
-\item{ScalableDimension}{The scalable dimension. This parameter is required if you are creating a
-scheduled action. This string consists of the service namespace,
+\item{ScalableDimension}{[required] The scalable dimension. This string consists of the service namespace,
 resource type, and scaling property.
 \itemize{
 \item \code{ecs:service:DesiredCount} - The desired task count of an ECS
@@ -123,6 +122,8 @@ this update request.
 You can view the scheduled actions using DescribeScheduledActions. If
 you are no longer using a scheduled action, you can delete it using
 DeleteScheduledAction.
+
+Learn more about how to work with scheduled actions in the \href{https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html}{Application Auto Scaling User Guide}.
 }
 \section{Request syntax}{
 \preformatted{applicationautoscaling$put_scheduled_action(

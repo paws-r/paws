@@ -47,6 +47,10 @@ security group and one subnet ID.}
 \description{
 Creates a simulation job.
 }
+\details{
+After 90 days, simulation jobs expire and will be deleted. They will no
+longer be accessible.
+}
 \section{Request syntax}{
 \preformatted{robomaker$create_simulation_job(
   clientRequestToken = "string",

@@ -44,7 +44,7 @@ marker, up to the value specified by \code{MaxRecords}.}
 \description{
 Lists events for a given source identifier and source type. You can also
 specify a start and end time. For more information on AWS DMS events,
-see \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html}{Working with Events and Notifications}
+see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html}{Working with Events and Notifications}
 in the \emph{AWS Database Migration User Guide.}
 }
 \section{Request syntax}{

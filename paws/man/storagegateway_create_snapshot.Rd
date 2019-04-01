@@ -25,7 +25,7 @@ off-site recovery, as well as import the data to an Amazon Elastic Block
 Store (EBS) volume in Amazon Elastic Compute Cloud (EC2). You can take
 snapshots of your gateway volume on a scheduled or ad-hoc basis. This
 API enables you to take ad-hoc snapshot. For more information, see
-\href{http://docs.aws.amazon.com/storagegateway/latest/userguide/managing-volumes.html#SchedulingSnapshot}{Editing a Snapshot Schedule}.
+\href{https://docs.aws.amazon.com/storagegateway/latest/userguide/managing-volumes.html#SchedulingSnapshot}{Editing a Snapshot Schedule}.
 
 In the CreateSnapshot request you identify the volume by providing its
 Amazon Resource Name (ARN). You must also provide description for the
@@ -37,11 +37,11 @@ when you want to create a volume from a snapshot. This operation is only
 supported in stored and cached volume gateway type.
 
 To list or delete a snapshot, you must use the Amazon EC2 API. For more
-information, see DescribeSnapshots or DeleteSnapshot in the \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Operations.html}{EC2 API reference}.
+information, see DescribeSnapshots or DeleteSnapshot in the \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Operations.html}{EC2 API reference}.
 
 Volume and snapshot IDs are changing to a longer length ID format. For
 more information, see the important note on the
-\href{http://docs.aws.amazon.com/storagegateway/latest/APIReference/Welcome.html}{Welcome}
+\href{https://docs.aws.amazon.com/storagegateway/latest/APIReference/Welcome.html}{Welcome}
 page.
 }
 \section{Request syntax}{

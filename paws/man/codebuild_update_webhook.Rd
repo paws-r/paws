@@ -4,7 +4,8 @@
 \alias{codebuild_update_webhook}
 \title{Updates the webhook associated with an AWS CodeBuild build project}
 \usage{
-codebuild_update_webhook(projectName, branchFilter, rotateSecret)
+codebuild_update_webhook(projectName, branchFilter, rotateSecret,
+  filterGroups)
 }
 \arguments{
 \item{projectName}{[required] The name of the AWS CodeBuild project.}
@@ -12,11 +13,17 @@ codebuild_update_webhook(projectName, branchFilter, rotateSecret)
 \item{branchFilter}{A regular expression used to determine which repository branches are
 built when a webhook is triggered. If the name of a branch matches the
 regular expression, then it is built. If \code{branchFilter} is empty, then
-all branches are built.}
+all branches are built.
+
+It is recommended that you use \code{filterGroups} instead of \code{branchFilter}.}
 
 \item{rotateSecret}{A boolean value that specifies whether the associated GitHub
 repository's secret token should be updated. If you use Bitbucket for
 your repository, \code{rotateSecret} is ignored.}
+
+\item{filterGroups}{An array of arrays of \code{WebhookFilter} objects used to determine if a
+webhook event can trigger a build. A filter group must pcontain at least
+one \code{EVENT} \code{WebhookFilter}.}
 }
 \description{
 Updates the webhook associated with an AWS CodeBuild build project.
@@ -28,7 +35,16 @@ If you use Bitbucket for your repository, \code{rotateSecret} is ignored.
 \preformatted{codebuild$update_webhook(
   projectName = "string",
   branchFilter = "string",
-  rotateSecret = TRUE|FALSE
+  rotateSecret = TRUE|FALSE,
+  filterGroups = list(
+    list(
+      list(
+        type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH",
+        pattern = "string",
+        excludeMatchedPattern = TRUE|FALSE
+      )
+    )
+  )
 )
 }
 }

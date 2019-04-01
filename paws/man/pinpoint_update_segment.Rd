@@ -204,6 +204,9 @@ Used to update a segment.
         )
       ),
       Include = "ALL"|"ANY"|"NONE"
+    ),
+    tags = list(
+      "string"
     )
   )
 )

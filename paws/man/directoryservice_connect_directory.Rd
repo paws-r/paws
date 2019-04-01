@@ -5,7 +5,7 @@
 \title{Creates an AD Connector to connect to an on-premises directory}
 \usage{
 directoryservice_connect_directory(Name, ShortName, Password,
-  Description, Size, ConnectSettings)
+  Description, Size, ConnectSettings, Tags)
 }
 \arguments{
 \item{Name}{[required] The fully qualified name of the on-premises directory, such as
@@ -21,6 +21,8 @@ directoryservice_connect_directory(Name, ShortName, Password,
 
 \item{ConnectSettings}{[required] A DirectoryConnectSettings object that contains additional information
 for the operation.}
+
+\item{Tags}{The tags to be assigned to AD Connector.}
 }
 \description{
 Creates an AD Connector to connect to an on-premises directory.
@@ -47,6 +49,12 @@ operation, see \href{http://docs.aws.amazon.com/directoryservice/latest/admin-gu
       "string"
     ),
     CustomerUserName = "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
   )
 )
 }

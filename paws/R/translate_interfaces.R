@@ -5,7 +5,7 @@ NULL
 
 .translate$delete_terminology_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -15,48 +15,48 @@ NULL
 
 .translate$get_terminology_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), TerminologyDataFormat = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), TerminologyDataFormat = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .translate$get_terminology_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TerminologyProperties = structure(list(Name = structure(logical(0), tags = list(    type = "string")), Description = structure(logical(0), tags = list(    type = "string")), Arn = structure(logical(0), tags = list(    type = "string")), SourceLanguageCode = structure(logical(0), tags = list(    type = "string")), TargetLanguageCodes = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list")), EncryptionKey = structure(list(    Type = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure")), SizeBytes = structure(logical(0), tags = list(    type = "integer")), TermCount = structure(logical(0), tags = list(    type = "integer")), CreatedAt = structure(logical(0), tags = list(    type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(    type = "timestamp"))), tags = list(type = "structure")), TerminologyDataLocation = structure(list(RepositoryType = structure(logical(0), tags = list(        type = "string")), Location = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(TerminologyProperties = structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), SourceLanguageCode = structure(logical(0), tags = list(type = "string")), TargetLanguageCodes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EncryptionKey = structure(list(Type = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SizeBytes = structure(logical(0), tags = list(type = "integer")), TermCount = structure(logical(0), tags = list(type = "integer")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), TerminologyDataLocation = structure(list(RepositoryType = structure(logical(0), tags = list(type = "string")), Location = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .translate$import_terminology_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), MergeStrategy = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), TerminologyData = structure(list(File = structure(logical(0), tags = list(        type = "blob", sensitive = TRUE)), Format = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure")), EncryptionKey = structure(list(Type = structure(logical(0), tags = list(        type = "string")), Id = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), MergeStrategy = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), TerminologyData = structure(list(File = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), Format = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EncryptionKey = structure(list(Type = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .translate$import_terminology_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TerminologyProperties = structure(list(Name = structure(logical(0), tags = list(    type = "string")), Description = structure(logical(0), tags = list(    type = "string")), Arn = structure(logical(0), tags = list(    type = "string")), SourceLanguageCode = structure(logical(0), tags = list(    type = "string")), TargetLanguageCodes = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list")), EncryptionKey = structure(list(    Type = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure")), SizeBytes = structure(logical(0), tags = list(    type = "integer")), TermCount = structure(logical(0), tags = list(    type = "integer")), CreatedAt = structure(logical(0), tags = list(    type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(    type = "timestamp"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(TerminologyProperties = structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), SourceLanguageCode = structure(logical(0), tags = list(type = "string")), TargetLanguageCodes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EncryptionKey = structure(list(Type = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SizeBytes = structure(logical(0), tags = list(type = "integer")), TermCount = structure(logical(0), tags = list(type = "integer")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .translate$list_terminologies_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(    type = "string")), MaxResults = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .translate$list_terminologies_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TerminologyPropertiesList = structure(list(structure(list(    Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), SourceLanguageCode = structure(logical(0), tags = list(type = "string")), TargetLanguageCodes = structure(list(structure(logical(0), tags = list(        type = "string"))), tags = list(type = "list")), EncryptionKey = structure(list(        Type = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string"))), tags = list(        type = "structure")), SizeBytes = structure(logical(0), tags = list(        type = "integer")), TermCount = structure(logical(0), tags = list(        type = "integer")), CreatedAt = structure(logical(0), tags = list(        type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(        type = "timestamp"))), tags = list(type = "structure"))), tags = list(    type = "list")), NextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(TerminologyPropertiesList = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), SourceLanguageCode = structure(logical(0), tags = list(type = "string")), TargetLanguageCodes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EncryptionKey = structure(list(Type = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SizeBytes = structure(logical(0), tags = list(type = "integer")), TermCount = structure(logical(0), tags = list(type = "integer")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .translate$translate_text_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Text = structure(logical(0), tags = list(type = "string")), TerminologyNames = structure(list(structure(logical(0), tags = list(        type = "string"))), tags = list(type = "list")), SourceLanguageCode = structure(logical(0), tags = list(        type = "string")), TargetLanguageCode = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Text = structure(logical(0), tags = list(type = "string")), TerminologyNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SourceLanguageCode = structure(logical(0), tags = list(type = "string")), TargetLanguageCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .translate$translate_text_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TranslatedText = structure(logical(0), tags = list(    type = "string")), SourceLanguageCode = structure(logical(0), tags = list(    type = "string")), TargetLanguageCode = structure(logical(0), tags = list(    type = "string")), AppliedTerminologies = structure(list(    structure(list(Name = structure(logical(0), tags = list(type = "string")), Terms = structure(list(structure(list(SourceText = structure(logical(0), tags = list(            type = "string")), TargetText = structure(logical(0), tags = list(            type = "string"))), tags = list(type = "structure"))), tags = list(            type = "list"))), tags = list(type = "structure"))), tags = list(    type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(TranslatedText = structure(logical(0), tags = list(type = "string")), SourceLanguageCode = structure(logical(0), tags = list(type = "string")), TargetLanguageCode = structure(logical(0), tags = list(type = "string")), AppliedTerminologies = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Terms = structure(list(structure(list(SourceText = structure(logical(0), tags = list(type = "string")), TargetText = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }

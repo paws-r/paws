@@ -13,15 +13,23 @@ NULL
 #' An Amazon Kinesis video stream has the following requirements for
 #' providing data through HLS:
 #' 
-#' -   The media type must be `video/h264`.
+#' -   The media must contain h.264 encoded video and, optionally, AAC
+#'     encoded audio. Specifically, the codec id of track 1 should be
+#'     `V_MPEG/ISO/AVC`. Optionally, the codec id of track 2 should be
+#'     `A_AAC`.
 #' 
 #' -   Data retention must be greater than 0.
 #' 
-#' -   The fragments must contain codec private data in the AVC (Advanced
-#'     Video Coding) for H.264 format ([MPEG-4 specification ISO/IEC
+#' -   The video track of each fragment must contain codec private data in
+#'     the Advanced Video Coding (AVC) for H.264 format ([MPEG-4
+#'     specification ISO/IEC
 #'     14496-15](https://www.iso.org/standard/55980.html)). For information
 #'     about adapting stream data to a given format, see [NAL Adaptation
-#'     Flags](http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/latest/dg/producer-reference-nal.html).
+#'     Flags](http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html).
+#' 
+#' -   The audio track (if present) of each fragment must contain codec
+#'     private data in the AAC format ([AAC specification ISO/IEC
+#'     13818-7](https://www.iso.org/standard/43345.html)).
 #' 
 #' Kinesis Video Streams HLS sessions contain fragments in the fragmented
 #' MPEG-4 form (also called fMP4 or CMAF), rather than the MPEG-2 form
@@ -50,7 +58,7 @@ NULL
 #' 
 #'     The media that is made available through the playlist consists only
 #'     of the requested stream, time range, and format. No other media data
-#'     (such as frames outside the requested window or alternate bit rates)
+#'     (such as frames outside the requested window or alternate bitrates)
 #'     is made available.
 #' 
 #' 3.  Provide the URL (containing the encrypted session token) for the HLS
@@ -58,18 +66,18 @@ NULL
 #'     Kinesis Video Streams makes the HLS media playlist, initialization
 #'     fragment, and media fragments available through the master playlist
 #'     URL. The initialization fragment contains the codec private data for
-#'     the stream, and other data needed to set up the video decoder and
-#'     renderer. The media fragments contain H.264-encoded video frames and
-#'     time stamps.
+#'     the stream, and other data needed to set up the video or audio
+#'     decoder and renderer. The media fragments contain H.264-encoded
+#'     video frames or AAC-encoded audio samples.
 #' 
 #' 4.  The media player receives the authenticated URL and requests stream
 #'     metadata and media data normally. When the media player requests
 #'     data, it calls the following actions:
 #' 
 #'     -   **GetHLSMasterPlaylist:** Retrieves an HLS master playlist,
-#'         which contains a URL for the `GetHLSMediaPlaylist` action, and
-#'         additional metadata for the media player, including estimated
-#'         bit rate and resolution.
+#'         which contains a URL for the `GetHLSMediaPlaylist` action for
+#'         each track, and additional metadata for the media player,
+#'         including estimated bitrate and resolution.
 #' 
 #'     -   **GetHLSMediaPlaylist:** Retrieves an HLS media playlist, which
 #'         contains a URL to access the MP4 initialization fragment with
@@ -80,7 +88,9 @@ NULL
 #'         `LIVE` or `ON_DEMAND`. The HLS media playlist is typically
 #'         static for sessions with a `PlaybackType` of `ON_DEMAND`. The
 #'         HLS media playlist is continually updated with new fragments for
-#'         sessions with a `PlaybackType` of `LIVE`.
+#'         sessions with a `PlaybackType` of `LIVE`. There is a distinct
+#'         HLS media playlist for the video track and the audio track (if
+#'         applicable) that contains MP4 media URLs for the specific track.
 #' 
 #'     -   **GetMP4InitFragment:** Retrieves the MP4 initialization
 #'         fragment. The media player typically loads the initialization
@@ -90,23 +100,36 @@ NULL
 #' 
 #'         The initialization fragment does not correspond to a fragment in
 #'         a Kinesis video stream. It contains only the codec private data
-#'         for the stream, which the media player needs to decode video
-#'         frames.
+#'         for the stream and respective track, which the media player
+#'         needs to decode the media frames.
 #' 
 #'     -   **GetMP4MediaFragment:** Retrieves MP4 media fragments. These
 #'         fragments contain the \"`moof`\" and \"`mdat`\" MP4 atoms and
-#'         their child atoms, containing the encoded fragment\'s video
-#'         frames and their time stamps.
+#'         their child atoms, containing the encoded fragment\'s media
+#'         frames and their timestamps.
 #' 
 #'         After the first media fragment is made available in a streaming
 #'         session, any fragments that don\'t contain the same codec
-#'         private data are excluded in the HLS media playlist. Therefore,
-#'         the codec private data does not change between fragments in a
-#'         session.
+#'         private data cause an error to be returned when those different
+#'         media fragments are loaded. Therefore, the codec private data
+#'         should not change between fragments in a session. This also
+#'         means that the session fails if the fragments in a stream change
+#'         from having only video to having both audio and video.
 #' 
 #'         Data retrieved with this action is billable. See
-#'         [Pricing](aws.amazon.comkinesis/video-streams/pricing/) for
-#'         details.
+#'         [Pricing](https://aws.amazon.com/kinesis/video-streams/pricing/)
+#'         for details.
+#' 
+#'     -   **GetTSFragment:** Retrieves MPEG TS fragments containing both
+#'         initialization and media data for all tracks in the stream.
+#' 
+#'         If the `ContainerFormat` is `MPEG_TS`, this API is used instead
+#'         of `GetMP4InitFragment` and `GetMP4MediaFragment` to retrieve
+#'         stream media.
+#' 
+#'         Data retrieved with this action is billable. For more
+#'         information, see [Kinesis Video Streams
+#'         pricing](https://aws.amazon.com/kinesis/video-streams/pricing/).
 #' 
 #' The following restrictions apply to HLS sessions:
 #' 
@@ -139,8 +162,9 @@ NULL
 #'
 #' @usage
 #' kinesisvideoarchivedmedia_get_hls_streaming_session_url(StreamName,
-#'   StreamARN, PlaybackMode, HLSFragmentSelector, DiscontinuityMode,
-#'   Expires, MaxMediaPlaylistFragmentResults)
+#'   StreamARN, PlaybackMode, HLSFragmentSelector, ContainerFormat,
+#'   DiscontinuityMode, DisplayFragmentTimestamp, Expires,
+#'   MaxMediaPlaylistFragmentResults)
 #'
 #' @param StreamName The name of the stream for which to retrieve the HLS master playlist
 #' URL.
@@ -181,38 +205,61 @@ NULL
 #' 
 #' In both playback modes, if `FragmentSelectorType` is
 #' `PRODUCER_TIMESTAMP`, and if there are multiple fragments with the same
-#' start time stamp, the fragment that has the larger fragment number (that
+#' start timestamp, the fragment that has the larger fragment number (that
 #' is, the newer fragment) is included in the HLS media playlist. The other
-#' fragments are not included. Fragments that have different time stamps
-#' but have overlapping durations are still included in the HLS media
-#' playlist. This can lead to unexpected behavior in the media player.
+#' fragments are not included. Fragments that have different timestamps but
+#' have overlapping durations are still included in the HLS media playlist.
+#' This can lead to unexpected behavior in the media player.
 #' 
 #' The default is `LIVE`.
-#' @param HLSFragmentSelector The time range of the requested fragment, and the source of the time
-#' stamps.
+#' @param HLSFragmentSelector The time range of the requested fragment, and the source of the
+#' timestamps.
 #' 
 #' This parameter is required if `PlaybackMode` is `ON_DEMAND`. This
 #' parameter is optional if `PlaybackMode` is `LIVE`. If `PlaybackMode` is
 #' `LIVE`, the `FragmentSelectorType` can be set, but the `TimestampRange`
 #' should not be set. If `PlaybackMode` is `ON_DEMAND`, both
 #' `FragmentSelectorType` and `TimestampRange` must be set.
+#' @param ContainerFormat Specifies which format should be used for packaging the media.
+#' Specifying the `FRAGMENTED_MP4` container format packages the media into
+#' MP4 fragments (fMP4 or CMAF). This is the recommended packaging because
+#' there is minimal packaging overhead. The other container format option
+#' is `MPEG_TS`. HLS has supported MPEG TS chunks since it was released and
+#' is sometimes the only supported packaging on older HLS players. MPEG TS
+#' typically has a 5-25 percent packaging overhead. This means MPEG TS
+#' typically requires 5-25 percent more bandwidth and cost than fMP4.
+#' 
+#' The default is `FRAGMENTED_MP4`.
 #' @param DiscontinuityMode Specifies when flags marking discontinuities between fragments will be
 #' added to the media playlists. The default is `ALWAYS` when
 #' HLSFragmentSelector is `SERVER_TIMESTAMP`, and `NEVER` when it is
 #' `PRODUCER_TIMESTAMP`.
 #' 
 #' Media players typically build a timeline of media content to play, based
-#' on the time stamps of each fragment. This means that if there is any
+#' on the timestamps of each fragment. This means that if there is any
 #' overlap between fragments (as is typical if HLSFragmentSelector is
 #' `SERVER_TIMESTAMP`), the media player timeline has small gaps between
 #' fragments in some places, and overwrites frames in other places. When
 #' there are discontinuity flags between fragments, the media player is
 #' expected to reset the timeline, resulting in the fragment being played
 #' immediately after the previous fragment. We recommend that you always
-#' have discontinuity flags between fragments if the fragment time stamps
+#' have discontinuity flags between fragments if the fragment timestamps
 #' are not accurate or if fragments might be missing. You should not place
 #' discontinuity flags between fragments for the player timeline to
-#' accurately map to the producer time stamps.
+#' accurately map to the producer timestamps.
+#' @param DisplayFragmentTimestamp Specifies when the fragment start timestamps should be included in the
+#' HLS media playlist. Typically, media players report the playhead
+#' position as a time relative to the start of the first fragment in the
+#' playback session. However, when the start timestamps are included in the
+#' HLS media playlist, some media players might report the current playhead
+#' as an absolute time based on the fragment timestamps. This can be useful
+#' for creating a playback experience that shows viewers the wall-clock
+#' time of the media.
+#' 
+#' The default is `NEVER`. When HLSFragmentSelector is `SERVER_TIMESTAMP`,
+#' the timestamps will be the server start timestamps. Similarly, when
+#' HLSFragmentSelector is `PRODUCER_TIMESTAMP`, the timestamps will be the
+#' producer start timestamps.
 #' @param Expires The time in seconds until the requested session expires. This value can
 #' be between 300 (5 minutes) and 43200 (12 hours).
 #' 
@@ -259,7 +306,9 @@ NULL
 #'       )
 #'     )
 #'   ),
+#'   ContainerFormat = "FRAGMENTED_MP4"|"MPEG_TS",
 #'   DiscontinuityMode = "ALWAYS"|"NEVER",
+#'   DisplayFragmentTimestamp = "ALWAYS"|"NEVER",
 #'   Expires = 123,
 #'   MaxMediaPlaylistFragmentResults = 123
 #' )
@@ -268,14 +317,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname kinesisvideoarchivedmedia_get_hls_streaming_session_url
-kinesisvideoarchivedmedia_get_hls_streaming_session_url <- function(StreamName = NULL, StreamARN = NULL, PlaybackMode = NULL, HLSFragmentSelector = NULL, DiscontinuityMode = NULL, Expires = NULL, MaxMediaPlaylistFragmentResults = NULL) {
+kinesisvideoarchivedmedia_get_hls_streaming_session_url <- function(StreamName = NULL, StreamARN = NULL, PlaybackMode = NULL, HLSFragmentSelector = NULL, ContainerFormat = NULL, DiscontinuityMode = NULL, DisplayFragmentTimestamp = NULL, Expires = NULL, MaxMediaPlaylistFragmentResults = NULL) {
   op <- new_operation(
     name = "GetHLSStreamingSessionURL",
     http_method = "POST",
     http_path = "/getHLSStreamingSessionURL",
     paginator = list()
   )
-  input <- .kinesisvideoarchivedmedia$get_hls_streaming_session_url_input(StreamName = StreamName, StreamARN = StreamARN, PlaybackMode = PlaybackMode, HLSFragmentSelector = HLSFragmentSelector, DiscontinuityMode = DiscontinuityMode, Expires = Expires, MaxMediaPlaylistFragmentResults = MaxMediaPlaylistFragmentResults)
+  input <- .kinesisvideoarchivedmedia$get_hls_streaming_session_url_input(StreamName = StreamName, StreamARN = StreamARN, PlaybackMode = PlaybackMode, HLSFragmentSelector = HLSFragmentSelector, ContainerFormat = ContainerFormat, DiscontinuityMode = DiscontinuityMode, DisplayFragmentTimestamp = DisplayFragmentTimestamp, Expires = Expires, MaxMediaPlaylistFragmentResults = MaxMediaPlaylistFragmentResults)
   output <- .kinesisvideoarchivedmedia$get_hls_streaming_session_url_output()
   svc <- .kinesisvideoarchivedmedia$service()
   request <- new_request(svc, op, input, output)
@@ -289,6 +338,11 @@ kinesisvideoarchivedmedia_get_hls_streaming_session_url <- function(StreamName =
 #'
 #' Gets media for a list of fragments (specified by fragment number) from
 #' the archived data in an Amazon Kinesis video stream.
+#' 
+#' You must first call the `GetDataEndpoint` API to get an endpoint. Then
+#' send the `GetMediaForFragmentList` requests to this endpoint using the
+#' [\\--endpoint-url
+#' parameter](https://docs.aws.amazon.com/cli/latest/reference/).
 #' 
 #' The following limits apply when using the `GetMediaForFragmentList` API:
 #' 
@@ -336,11 +390,22 @@ kinesisvideoarchivedmedia_get_media_for_fragment_list <- function(StreamName, Fr
 }
 .kinesisvideoarchivedmedia$operations$get_media_for_fragment_list <- kinesisvideoarchivedmedia_get_media_for_fragment_list
 
-#' Returns a list of Fragment objects from the specified stream and start
-#' location within the archived data
+#' Returns a list of Fragment objects from the specified stream and
+#' timestamp range within the archived data
 #'
-#' Returns a list of Fragment objects from the specified stream and start
-#' location within the archived data.
+#' Returns a list of Fragment objects from the specified stream and
+#' timestamp range within the archived data.
+#' 
+#' Listing fragments is eventually consistent. This means that even if the
+#' producer receives an acknowledgment that a fragment is persisted, the
+#' result might not be returned immediately from a request to
+#' `ListFragments`. However, results are typically available in less than
+#' one second.
+#' 
+#' You must first call the `GetDataEndpoint` API to get an endpoint. Then
+#' send the `ListFragments` requests to this endpoint using the
+#' [\\--endpoint-url
+#' parameter](https://docs.aws.amazon.com/cli/latest/reference/).
 #'
 #' @usage
 #' kinesisvideoarchivedmedia_list_fragments(StreamName, MaxResults,
@@ -353,7 +418,7 @@ kinesisvideoarchivedmedia_get_media_for_fragment_list <- function(StreamName, Fr
 #' can use to resume pagination.
 #' @param NextToken A token to specify where to start paginating. This is the
 #' ListFragmentsOutput\\$NextToken from a previously truncated response.
-#' @param FragmentSelector Describes the time stamp range and time stamp origin for the range of
+#' @param FragmentSelector Describes the timestamp range and timestamp origin for the range of
 #' fragments to return.
 #'
 #' @section Request syntax:

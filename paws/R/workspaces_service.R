@@ -40,7 +40,7 @@ NULL
 #'  \link[=workspaces_import_workspace_image]{import_workspace_image} \tab Imports the specified Windows 7 or Windows 10 bring your own license (BYOL) image into Amazon WorkSpaces \cr
 #'  \link[=workspaces_list_available_management_cidr_ranges]{list_available_management_cidr_ranges} \tab Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks, that you can use for the network management interface when you enable bring your own license (BYOL)\cr
 #'  \link[=workspaces_modify_account]{modify_account} \tab Modifies the configuration of bring your own license (BYOL) for the specified account \cr
-#'  \link[=workspaces_modify_client_properties]{modify_client_properties} \tab Modifies the properties of the specified Amazon WorkSpaces client \cr
+#'  \link[=workspaces_modify_client_properties]{modify_client_properties} \tab Modifies the properties of the specified Amazon WorkSpaces clients \cr
 #'  \link[=workspaces_modify_workspace_properties]{modify_workspace_properties} \tab Modifies the specified WorkSpace properties \cr
 #'  \link[=workspaces_modify_workspace_state]{modify_workspace_state} \tab Sets the state of the specified WorkSpace \cr
 #'  \link[=workspaces_reboot_workspaces]{reboot_workspaces} \tab Reboots the specified WorkSpaces \cr

@@ -48,8 +48,9 @@ token.
 
 \item{SmsConfiguration}{SMS configuration.}
 
-\item{UserPoolTags}{The cost allocation tags for the user pool. For more information, see
-\href{http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html}{Adding Cost Allocation Tags to Your User Pool}}
+\item{UserPoolTags}{The tag keys and values to assign to the user pool. A tag is a label
+that you can use to categorize and manage user pools in different ways,
+such as by purpose, owner, environment, or other criteria.}
 
 \item{AdminCreateUserConfig}{The configuration for \code{AdminCreateUser} requests.}
 

@@ -22,7 +22,7 @@ GetChangeToken. \code{ChangeTokenStatus} is one of the following values:
 update, or delete an AWS WAF object.
 \item \code{PENDING}: AWS WAF is propagating the create, update, or delete
 request to all AWS WAF servers.
-\item \code{IN_SYNC}: Propagation is complete.
+\item \code{INSYNC}: Propagation is complete.
 }
 }
 \section{Request syntax}{

@@ -7,7 +7,7 @@
 lambda_get_alias(FunctionName, Name)
 }
 \arguments{
-\item{FunctionName}{[required] The name of the lambda function.
+\item{FunctionName}{[required] The name of the Lambda function.
 
 \strong{Name formats}
 \itemize{
@@ -24,7 +24,7 @@ the function name, it is limited to 64 characters in length.}
 }
 \description{
 Returns details about a Lambda function
-\href{http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{alias}.
+\href{https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{alias}.
 }
 \section{Request syntax}{
 \preformatted{lambda$get_alias(

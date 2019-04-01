@@ -4,9 +4,14 @@
 \alias{transfer_update_server}
 \title{Updates the server properties after that server has been created}
 \usage{
-transfer_update_server(IdentityProviderDetails, LoggingRole, ServerId)
+transfer_update_server(EndpointDetails, EndpointType,
+  IdentityProviderDetails, LoggingRole, ServerId)
 }
 \arguments{
+\item{EndpointDetails}{}
+
+\item{EndpointType}{}
+
 \item{IdentityProviderDetails}{This response parameter is an array containing all of the information
 required to call a customer's authentication API method.}
 
@@ -26,6 +31,10 @@ Transfer Protocol (SFTP) server you updated.
 }
 \section{Request syntax}{
 \preformatted{transfer$update_server(
+  EndpointDetails = list(
+    VpcEndpointId = "string"
+  ),
+  EndpointType = "PUBLIC"|"VPC_ENDPOINT",
   IdentityProviderDetails = list(
     Url = "string",
     InvocationRole = "string"

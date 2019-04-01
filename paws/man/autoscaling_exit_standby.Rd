@@ -15,7 +15,7 @@ autoscaling_exit_standby(InstanceIds, AutoScalingGroupName)
 Moves the specified instances out of the standby state.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enter-exit-standby.html}{Temporarily Removing Instances from Your Auto Scaling Group}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enter-exit-standby.html}{Temporarily Removing Instances from Your Auto Scaling Group}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{

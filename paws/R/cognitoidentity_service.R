@@ -5,43 +5,27 @@ NULL
 #' Amazon Cognito Identity
 #'
 #' @description
-#' Amazon Cognito
+#' Amazon Cognito Federated Identities
 #' 
-#' Amazon Cognito is a web service that delivers scoped temporary
-#' credentials to mobile devices and other untrusted environments. Amazon
-#' Cognito uniquely identifies a device and supplies the user with a
-#' consistent identity over the lifetime of an application.
+#' Amazon Cognito Federated Identities is a web service that delivers
+#' scoped temporary credentials to mobile devices and other untrusted
+#' environments. It uniquely identifies a device and supplies the user with
+#' a consistent identity over the lifetime of an application.
 #' 
-#' Using Amazon Cognito, you can enable authentication with one or more
-#' third-party identity providers (Facebook, Google, or Login with Amazon),
-#' and you can also choose to support unauthenticated access from your app.
-#' Cognito delivers a unique identifier for each user and acts as an OpenID
-#' token provider trusted by AWS Security Token Service (STS) to access
-#' temporary, limited-privilege AWS credentials.
+#' Using Amazon Cognito Federated Identities, you can enable authentication
+#' with one or more third-party identity providers (Facebook, Google, or
+#' Login with Amazon) or an Amazon Cognito user pool, and you can also
+#' choose to support unauthenticated access from your app. Cognito delivers
+#' a unique identifier for each user and acts as an OpenID token provider
+#' trusted by AWS Security Token Service (STS) to access temporary,
+#' limited-privilege AWS credentials.
 #' 
-#' To provide end-user credentials, first make an unsigned call to GetId.
-#' If the end user is authenticated with one of the supported identity
-#' providers, set the `Logins` map with the identity provider token.
-#' `GetId` returns a unique identifier for the user.
+#' For a description of the authentication flow from the Amazon Cognito
+#' Developer Guide see [Authentication
+#' Flow](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html).
 #' 
-#' Next, make an unsigned call to GetCredentialsForIdentity. This call
-#' expects the same `Logins` map as the `GetId` call, as well as the
-#' `IdentityID` originally returned by `GetId`. Assuming your identity pool
-#' has been configured via the SetIdentityPoolRoles operation,
-#' `GetCredentialsForIdentity` will return AWS credentials for your use. If
-#' your pool has not been configured with `SetIdentityPoolRoles`, or if you
-#' want to follow legacy flow, make an unsigned call to GetOpenIdToken,
-#' which returns the OpenID token necessary to call STS and retrieve AWS
-#' credentials. This call expects the same `Logins` map as the `GetId`
-#' call, as well as the `IdentityID` originally returned by `GetId`. The
-#' token returned by `GetOpenIdToken` can be passed to the STS operation
-#' [AssumeRoleWithWebIdentity](http://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoleWithWebIdentity.html)
-#' to retrieve AWS credentials.
-#' 
-#' If you want to use Amazon Cognito in an Android, iOS, or Unity
-#' application, you will probably want to make API calls via the AWS Mobile
-#' SDK. To learn more, see the [AWS Mobile SDK Developer
-#' Guide](http://docs.aws.amazon.com/mobile/index.html).
+#' For more information see [Amazon Cognito Federated
+#' Identities](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html).
 #'
 #' @section Example:
 #' ```
@@ -53,7 +37,7 @@ NULL
 #' \tabular{ll}{
 #'  \link[=cognitoidentity_create_identity_pool]{create_identity_pool} \tab Creates a new identity pool \cr
 #'  \link[=cognitoidentity_delete_identities]{delete_identities} \tab Deletes identities from an identity pool \cr
-#'  \link[=cognitoidentity_delete_identity_pool]{delete_identity_pool} \tab Deletes a user pool \cr
+#'  \link[=cognitoidentity_delete_identity_pool]{delete_identity_pool} \tab Deletes an identity pool \cr
 #'  \link[=cognitoidentity_describe_identity]{describe_identity} \tab Returns metadata related to the given identity, including when the identity was created and any associated linked logins \cr
 #'  \link[=cognitoidentity_describe_identity_pool]{describe_identity_pool} \tab Gets details about a particular identity pool, including the pool name, ID description, creation date, and current number of users \cr
 #'  \link[=cognitoidentity_get_credentials_for_identity]{get_credentials_for_identity} \tab Returns credentials for the provided identity ID \cr
@@ -61,14 +45,17 @@ NULL
 #'  \link[=cognitoidentity_get_identity_pool_roles]{get_identity_pool_roles} \tab Gets the roles for an identity pool \cr
 #'  \link[=cognitoidentity_get_open_id_token]{get_open_id_token} \tab Gets an OpenID token, using a known Cognito ID \cr
 #'  \link[=cognitoidentity_get_open_id_token_for_developer_identity]{get_open_id_token_for_developer_identity} \tab Registers (or retrieves) a Cognito IdentityId and an OpenID Connect token for a user authenticated by your backend authentication process \cr
-#'  \link[=cognitoidentity_list_identities]{list_identities} \tab Lists the identities in a pool \cr
+#'  \link[=cognitoidentity_list_identities]{list_identities} \tab Lists the identities in an identity pool \cr
 #'  \link[=cognitoidentity_list_identity_pools]{list_identity_pools} \tab Lists all of the Cognito identity pools registered for your account \cr
-#'  \link[=cognitoidentity_lookup_developer_identity]{lookup_developer_identity} \tab Retrieves the IdentityID associated with a DeveloperUserIdentifier or the list of DeveloperUserIdentifiers associated with an IdentityId for an existing identity\cr
+#'  \link[=cognitoidentity_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags that are assigned to an Amazon Cognito identity pool \cr
+#'  \link[=cognitoidentity_lookup_developer_identity]{lookup_developer_identity} \tab Retrieves the IdentityID associated with a DeveloperUserIdentifier or the list of DeveloperUserIdentifier values associated with an IdentityId for an existing identity\cr
 #'  \link[=cognitoidentity_merge_developer_identities]{merge_developer_identities} \tab Merges two users having different IdentityIds, existing in the same identity pool, and identified by the same developer provider \cr
 #'  \link[=cognitoidentity_set_identity_pool_roles]{set_identity_pool_roles} \tab Sets the roles for an identity pool \cr
+#'  \link[=cognitoidentity_tag_resource]{tag_resource} \tab Assigns a set of tags to an Amazon Cognito identity pool \cr
 #'  \link[=cognitoidentity_unlink_developer_identity]{unlink_developer_identity} \tab Unlinks a DeveloperUserIdentifier from an existing identity \cr
 #'  \link[=cognitoidentity_unlink_identity]{unlink_identity} \tab Unlinks a federated identity from an existing account \cr
-#'  \link[=cognitoidentity_update_identity_pool]{update_identity_pool} \tab Updates a user pool 
+#'  \link[=cognitoidentity_untag_resource]{untag_resource} \tab Removes the specified tags from an Amazon Cognito identity pool \cr
+#'  \link[=cognitoidentity_update_identity_pool]{update_identity_pool} \tab Updates an identity pool 
 #' }
 #'
 #' @rdname cognitoidentity

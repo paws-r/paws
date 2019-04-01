@@ -21,7 +21,7 @@ access the API, go to \href{http://aws.amazon.com/tools/}{Tools for Amazon Web S
 \strong{Endpoints}
 
 For a list of region-specific endpoints that AWS Elastic Beanstalk
-supports, go to \href{http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region}{Regions and Endpoints}
+supports, go to \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region}{Regions and Endpoints}
 in the \emph{Amazon Web Services Glossary}.
 }
 \section{Example}{

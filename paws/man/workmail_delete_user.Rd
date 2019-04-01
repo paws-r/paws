@@ -7,14 +7,18 @@
 workmail_delete_user(OrganizationId, UserId)
 }
 \arguments{
-\item{OrganizationId}{[required] The organization that contains the user.}
+\item{OrganizationId}{[required] The organization that contains the user to be deleted.}
 
 \item{UserId}{[required] The identifier of the user to be deleted.}
 }
 \description{
-Deletes a user from Amazon WorkMail and all subsequent systems. The
-action can't be undone. The mailbox is kept as-is for a minimum of 30
-days, without any means to restore it.
+Deletes a user from Amazon WorkMail and all subsequent systems. Before
+you can delete a user, the user state must be \code{DISABLED}. Use the
+DescribeUser action to confirm the user state.
+}
+\details{
+Deleting a user is permanent and cannot be undone. WorkMail archives
+user mailboxes for 30 days before they are permanently removed.
 }
 \section{Request syntax}{
 \preformatted{workmail$delete_user(

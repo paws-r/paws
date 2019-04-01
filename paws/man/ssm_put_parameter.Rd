@@ -5,7 +5,7 @@
 \title{Add a parameter to the system}
 \usage{
 ssm_put_parameter(Name, Description, Value, Type, KeyId, Overwrite,
-  AllowedPattern)
+  AllowedPattern, Tags)
 }
 \arguments{
 \item{Name}{[required] The fully qualified name of the parameter that you want to add to the
@@ -72,6 +72,22 @@ the \code{Key ID} parameter.
 \item{AllowedPattern}{A regular expression used to validate the parameter value. For example,
 for String types with values restricted to numbers, you can specify the
 following: AllowedPattern=\^\code{\\d}+\$}
+
+\item{Tags}{Optional metadata that you assign to a resource. Tags enable you to
+categorize a resource in different ways, such as by purpose, owner, or
+environment. For example, you might want to tag a Systems Manager
+parameter to identify the type of resource to which it applies, the
+environment, or the type of configuration data referenced by the
+parameter. In this case, you could specify the following key name/value
+pairs:
+\itemize{
+\item \code{Key=Resource,Value=S3bucket}
+\item \code{Key=OS,Value=Windows}
+\item \code{Key=ParameterType,Value=LicenseKey}
+}
+
+To add tags to an existing Systems Manager parameter, use the
+AddTagsToResource action.}
 }
 \description{
 Add a parameter to the system.
@@ -84,7 +100,13 @@ Add a parameter to the system.
   Type = "String"|"StringList"|"SecureString",
   KeyId = "string",
   Overwrite = TRUE|FALSE,
-  AllowedPattern = "string"
+  AllowedPattern = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

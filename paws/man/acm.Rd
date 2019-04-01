@@ -11,7 +11,7 @@ Welcome to the AWS Certificate Manager (ACM) API documentation.
 
 You can use ACM to manage SSL/TLS certificates for your AWS-based
 websites and applications. For general information about using ACM, see
-the \href{http://docs.aws.amazon.com/acm/latest/userguide/}{AWS Certificate Manager UserGuide}.
+the \href{https://docs.aws.amazon.com/acm/latest/userguide/}{AWS Certificate Manager UserGuide}.
 }
 \section{Example}{
 \preformatted{acm <- paws::acm()
@@ -31,6 +31,7 @@ acm$operation()
 \link[=acm_list_certificates]{list_certificates} \tab Retrieves a list of certificate ARNs and domain names \cr
 \link[=acm_list_tags_for_certificate]{list_tags_for_certificate} \tab Lists the tags that have been applied to the ACM certificate \cr
 \link[=acm_remove_tags_from_certificate]{remove_tags_from_certificate} \tab Remove one or more tags from an ACM certificate \cr
+\link[=acm_renew_certificate]{renew_certificate} \tab Renews an eligable ACM certificate \cr
 \link[=acm_request_certificate]{request_certificate} \tab Requests an ACM certificate for use with other AWS services \cr
 \link[=acm_resend_validation_email]{resend_validation_email} \tab Resends the email that requests domain ownership validation \cr
 \link[=acm_update_certificate_options]{update_certificate_options} \tab Updates a certificate

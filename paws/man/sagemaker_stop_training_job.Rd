@@ -16,11 +16,6 @@ seconds. Algorithms might use this 120-second window to save the model
 artifacts, so the results of the training is not lost.
 }
 \details{
-Training algorithms provided by Amazon SageMaker save the intermediate
-results of a model training job. This intermediate data is a valid model
-artifact. You can use the model artifacts that are saved when Amazon
-SageMaker stops a training job to create a model.
-
 When it receives a \code{StopTrainingJob} request, Amazon SageMaker changes
 the status of the job to \code{Stopping}. After Amazon SageMaker stops the
 job, it sets the status to \code{Stopped}.

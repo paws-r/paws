@@ -5,7 +5,7 @@
 \title{Creates or updates the specified rule}
 \usage{
 cloudwatchevents_put_rule(Name, ScheduleExpression, EventPattern, State,
-  Description, RoleArn)
+  Description, RoleArn, Tags)
 }
 \arguments{
 \item{Name}{[required] The name of the rule that you are creating or updating.}
@@ -13,7 +13,7 @@ cloudwatchevents_put_rule(Name, ScheduleExpression, EventPattern, State,
 \item{ScheduleExpression}{The scheduling expression. For example, "cron(0 20 * * ? *)" or
 "rate(5 minutes)".}
 
-\item{EventPattern}{The event pattern. For more information, see \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html}{Events and Event Patterns}
+\item{EventPattern}{The event pattern. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html}{Events and Event Patterns}
 in the \emph{Amazon CloudWatch Events User Guide}.}
 
 \item{State}{Indicates whether the rule is enabled or disabled.}
@@ -21,6 +21,8 @@ in the \emph{Amazon CloudWatch Events User Guide}.}
 \item{Description}{A description of the rule.}
 
 \item{RoleArn}{The Amazon Resource Name (ARN) of the IAM role associated with the rule.}
+
+\item{Tags}{The list of key-value pairs to associate with the rule.}
 }
 \description{
 Creates or updates the specified rule. Rules are enabled by default, or
@@ -43,6 +45,17 @@ schedule. A rule can have both an EventPattern and a ScheduleExpression,
 in which case the rule triggers on matching events as well as on a
 schedule.
 
+When you initially create a rule, you can optionally assign one or more
+tags to the rule. Tags can help you organize and categorize your
+resources. You can also use them to scope user permissions, by granting
+a user permission to access or change only rules with certain tag
+values. To use the \code{PutRule} operation and assign tags, you must have
+both the \code{events:PutRule} and \code{events:TagResource} permissions.
+
+If you are updating an existing rule, any tags you specify in the
+\code{PutRule} operation are ignored. To update the tags of an existing rule,
+use TagResource and UntagResource.
+
 Most services in AWS treat : or / as the same character in Amazon
 Resource Names (ARNs). However, CloudWatch Events uses an exact match in
 event patterns and rules. Be sure to use the correct ARN characters when
@@ -62,7 +75,7 @@ are found to be in a bad state, instead of after any change.
 
 An infinite loop can quickly cause higher than expected charges. We
 recommend that you use budgeting, which alerts you when charges exceed
-your specified limit. For more information, see \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/budgets-managing-costs.html}{Managing Your Costs with Budgets}.
+your specified limit. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/budgets-managing-costs.html}{Managing Your Costs with Budgets}.
 }
 \section{Request syntax}{
 \preformatted{cloudwatchevents$put_rule(
@@ -71,7 +84,13 @@ your specified limit. For more information, see \href{http://docs.aws.amazon.com
   EventPattern = "string",
   State = "ENABLED"|"DISABLED",
   Description = "string",
-  RoleArn = "string"
+  RoleArn = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

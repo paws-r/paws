@@ -37,6 +37,14 @@ NOTIFICATION
 :   Specify the \code{NotificationArns} property as follows:\preformatted{`\{"NotificationArns" : \\["arn:aws:sns:us-east-1:123456789012:Topic"\\]\}`
 }
 
+RESOUCE\_UPDATE
+
+:   Specify the \code{TagUpdatesOnProvisionedProduct} property as follows:\preformatted{`\{"Version":"2.0","Properties":\{"TagUpdateOnProvisionedProduct":"String"\}\}`
+
+The `TagUpdatesOnProvisionedProduct` property accepts a string value
+of `ALLOWED` or `NOT_ALLOWED`.
+}
+
 STACKSET
 
 :   Specify the \code{Parameters} property as follows:\preformatted{`\{"Version": "String", "Properties": \{"AccountList": \\[ "String" \\], "RegionList": \\[ "String" \\], "AdminRole": "String", "ExecutionRole": "String"\}\}`
@@ -58,6 +66,7 @@ TEMPLATE
 \itemize{
 \item \code{LAUNCH}
 \item \code{NOTIFICATION}
+\item \code{RESOURCE_UPDATE}
 \item \code{STACKSET}
 \item \code{TEMPLATE}
 }}

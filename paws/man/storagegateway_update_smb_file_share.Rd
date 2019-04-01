@@ -60,7 +60,7 @@ File gateways require AWS Security Token Service (AWS STS) to be
 activated to enable you to create a file share. Make sure that AWS STS
 is activated in the AWS Region you are creating your file gateway in. If
 AWS STS is not activated in this AWS Region, activate it. For
-information about how to activate AWS STS, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html}{Activating and Deactivating AWS STS in an AWS Region}
+information about how to activate AWS STS, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html}{Activating and Deactivating AWS STS in an AWS Region}
 in the \emph{AWS Identity and Access Management User Guide.}
 
 File gateways don't support creating hard or symbolic links on a file

@@ -4,11 +4,9 @@
 \alias{apigatewayv2_delete_api_mapping}
 \title{Deletes an API mapping}
 \usage{
-apigatewayv2_delete_api_mapping(ApiId, ApiMappingId, DomainName)
+apigatewayv2_delete_api_mapping(ApiMappingId, DomainName)
 }
 \arguments{
-\item{ApiId}{[required] The identifier of the API.}
-
 \item{ApiMappingId}{[required] The API mapping identifier.}
 
 \item{DomainName}{[required] The domain name.}
@@ -18,7 +16,6 @@ Deletes an API mapping.
 }
 \section{Request syntax}{
 \preformatted{apigatewayv2$delete_api_mapping(
-  ApiId = "string",
   ApiMappingId = "string",
   DomainName = "string"
 )

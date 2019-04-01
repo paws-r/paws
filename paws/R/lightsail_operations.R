@@ -651,11 +651,13 @@ lightsail_create_domain <- function(domainName, tags = NULL) {
 }
 .lightsail$operations$create_domain <- lightsail_create_domain
 
-#' Creates one of the following entry records associated with the domain: A
-#' record, CNAME record, TXT record, or MX record
+#' Creates one of the following entry records associated with the domain:
+#' Address (A), canonical name (CNAME), mail exchanger (MX), name server
+#' (NS), start of authority (SOA), service locator (SRV), or text (TXT)
 #'
-#' Creates one of the following entry records associated with the domain: A
-#' record, CNAME record, TXT record, or MX record.
+#' Creates one of the following entry records associated with the domain:
+#' Address (A), canonical name (CNAME), mail exchanger (MX), name server
+#' (NS), start of authority (SOA), service locator (SRV), or text (TXT).
 #' 
 #' The `create domain entry` operation supports tag-based access control
 #' via resource tags applied to the resource identified by domainName. For
@@ -1796,6 +1798,53 @@ lightsail_delete_key_pair <- function(keyPairName) {
   return(response)
 }
 .lightsail$operations$delete_key_pair <- lightsail_delete_key_pair
+
+#' Deletes the known host key or certificate used by the Amazon Lightsail
+#' browser-based SSH or RDP clients to authenticate an instance
+#'
+#' Deletes the known host key or certificate used by the Amazon Lightsail
+#' browser-based SSH or RDP clients to authenticate an instance. This
+#' operation enables the Lightsail browser-based SSH or RDP clients to
+#' connect to the instance after a host key mismatch.
+#' 
+#' Perform this operation only if you were expecting the host key or
+#' certificate mismatch or if you are familiar with the new host key or
+#' certificate on the instance. For more information, see [Troubleshooting
+#' connection issues when using the Amazon Lightsail browser-based SSH or
+#' RDP
+#' client](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-troubleshooting-browser-based-ssh-rdp-client-connection).
+#'
+#' @usage
+#' lightsail_delete_known_host_keys(instanceName)
+#'
+#' @param instanceName &#91;required&#93; The name of the instance for which you want to reset the host key or
+#' certificate.
+#'
+#' @section Request syntax:
+#' ```
+#' lightsail$delete_known_host_keys(
+#'   instanceName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_delete_known_host_keys
+lightsail_delete_known_host_keys <- function(instanceName) {
+  op <- new_operation(
+    name = "DeleteKnownHostKeys",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$delete_known_host_keys_input(instanceName = instanceName)
+  output <- .lightsail$delete_known_host_keys_output()
+  svc <- .lightsail$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$delete_known_host_keys <- lightsail_delete_known_host_keys
 
 #' Deletes a Lightsail load balancer and all its associated SSL/TLS
 #' certificates

@@ -26,9 +26,9 @@ NULL
 #' After you create an Amazon EKS cluster, you must configure your
 #' Kubernetes tooling to communicate with the API server and launch worker
 #' nodes into your cluster. For more information, see [Managing Cluster
-#' Authentication](http://docs.aws.amazon.com/eks/latest/userguide/managing-auth.html)
+#' Authentication](https://docs.aws.amazon.com/eks/latest/userguide/managing-auth.html)
 #' and [Launching Amazon EKS Worker
-#' Nodes](http://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html)in
+#' Nodes](https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html)in
 #' the *Amazon EKS User Guide*.
 #'
 #' @usage
@@ -41,14 +41,14 @@ NULL
 #' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that provides permissions
 #' for Amazon EKS to make calls to other AWS API operations on your behalf.
 #' For more information, see [Amazon EKS Service IAM
-#' Role](http://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html)
+#' Role](https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html)
 #' in the **Amazon EKS User Guide** .
-#' @param resourcesVpcConfig &#91;required&#93; The VPC subnets and security groups used by the cluster control plane.
-#' Amazon EKS VPC resources have specific requirements to work properly
-#' with Kubernetes. For more information, see [Cluster VPC
-#' Considerations](http://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html)
+#' @param resourcesVpcConfig &#91;required&#93; The VPC configuration used by the cluster control plane. Amazon EKS VPC
+#' resources have specific requirements to work properly with Kubernetes.
+#' For more information, see [Cluster VPC
+#' Considerations](https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html)
 #' and [Cluster Security Group
-#' Considerations](http://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html)
+#' Considerations](https://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html)
 #' in the *Amazon EKS User Guide*. You must specify at least two subnets.
 #' You may specify up to five security groups, but we recommend that you
 #' use a dedicated security group for your cluster control plane.
@@ -67,7 +67,9 @@ NULL
 #'     ),
 #'     securityGroupIds = list(
 #'       "string"
-#'     )
+#'     ),
+#'     endpointPublicAccess = TRUE|FALSE,
+#'     endpointPrivateAccess = TRUE|FALSE
 #'   ),
 #'   clientRequestToken = "string"
 #' )
@@ -119,7 +121,7 @@ eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig
 #' cluster so that the load balancers are deleted properly. Otherwise, you
 #' can have orphaned resources in your VPC that prevent you from being able
 #' to delete the VPC. For more information, see [Deleting a
-#' Cluster](http://docs.aws.amazon.com/eks/latest/userguide/delete-cluster.html)
+#' Cluster](https://docs.aws.amazon.com/eks/latest/userguide/delete-cluster.html)
 #' in the *Amazon EKS User Guide*.
 #'
 #' @usage
@@ -168,7 +170,7 @@ eks_delete_cluster <- function(name) {
 #' operation are required for `kubelet` and `kubectl` to communicate with
 #' your Kubernetes API server. For more information, see [Create a
 #' kubeconfig for Amazon
-#' EKS](http://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html).
+#' EKS](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html).
 #' 
 #' The API server endpoint and certificate authority data are not available
 #' until the cluster reaches the `ACTIVE` state.
@@ -362,6 +364,69 @@ eks_list_updates <- function(name, nextToken = NULL, maxResults = NULL) {
   return(response)
 }
 .eks$operations$list_updates <- eks_list_updates
+
+#' Updates an Amazon EKS cluster configuration
+#'
+#' Updates an Amazon EKS cluster configuration. Your cluster continues to
+#' function during the update. The response output includes an update ID
+#' that you can use to track the status of your cluster update with the
+#' DescribeUpdate API operation.
+#' 
+#' Currently, the only cluster configuration changes supported are to
+#' enable or disable Amazon EKS public and private API server endpoints.
+#' For more information, see [Amazon EKS Cluster Endpoint Access
+#' Control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
+#' in the **Amazon EKS User Guide** .
+#' 
+#' Cluster updates are asynchronous, and they should finish within a few
+#' minutes. During an update, the cluster status moves to `UPDATING` (this
+#' status transition is eventually consistent). When the update is complete
+#' (either `Failed` or `Successful`), the cluster status moves to `Active`.
+#'
+#' @usage
+#' eks_update_cluster_config(name, resourcesVpcConfig, clientRequestToken)
+#'
+#' @param name &#91;required&#93; The name of the Amazon EKS cluster to update.
+#' @param resourcesVpcConfig 
+#' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#'
+#' @section Request syntax:
+#' ```
+#' eks$update_cluster_config(
+#'   name = "string",
+#'   resourcesVpcConfig = list(
+#'     subnetIds = list(
+#'       "string"
+#'     ),
+#'     securityGroupIds = list(
+#'       "string"
+#'     ),
+#'     endpointPublicAccess = TRUE|FALSE,
+#'     endpointPrivateAccess = TRUE|FALSE
+#'   ),
+#'   clientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eks_update_cluster_config
+eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, clientRequestToken = NULL) {
+  op <- new_operation(
+    name = "UpdateClusterConfig",
+    http_method = "POST",
+    http_path = "/clusters/{name}/update-config",
+    paginator = list()
+  )
+  input <- .eks$update_cluster_config_input(name = name, resourcesVpcConfig = resourcesVpcConfig, clientRequestToken = clientRequestToken)
+  output <- .eks$update_cluster_config_output()
+  svc <- .eks$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$update_cluster_config <- eks_update_cluster_config
 
 #' Updates an Amazon EKS cluster to the specified Kubernetes version
 #'

@@ -11,7 +11,12 @@ directconnect_describe_direct_connect_gateways(directConnectGatewayId,
 \arguments{
 \item{directConnectGatewayId}{The ID of the Direct Connect gateway.}
 
-\item{maxResults}{The maximum number of Direct Connect gateways to return per page.}
+\item{maxResults}{The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned \code{nextToken}
+value.
+
+If \code{MaxResults} is given a value larger than 100, only 100 results are
+returned.}
 
 \item{nextToken}{The token provided in the previous call to retrieve the next page.}
 }

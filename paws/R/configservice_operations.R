@@ -393,6 +393,45 @@ configservice_delete_pending_aggregation_request <- function(RequesterAccountId,
 }
 .configservice$operations$delete_pending_aggregation_request <- configservice_delete_pending_aggregation_request
 
+#' Deletes the remediation configuration
+#'
+#' Deletes the remediation configuration.
+#'
+#' @usage
+#' configservice_delete_remediation_configuration(ConfigRuleName,
+#'   ResourceType)
+#'
+#' @param ConfigRuleName &#91;required&#93; The name of the AWS Config rule for which you want to delete remediation
+#' configuration.
+#' @param ResourceType The type of a resource.
+#'
+#' @section Request syntax:
+#' ```
+#' configservice$delete_remediation_configuration(
+#'   ConfigRuleName = "string",
+#'   ResourceType = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_delete_remediation_configuration
+configservice_delete_remediation_configuration <- function(ConfigRuleName, ResourceType = NULL) {
+  op <- new_operation(
+    name = "DeleteRemediationConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$delete_remediation_configuration_input(ConfigRuleName = ConfigRuleName, ResourceType = ResourceType)
+  output <- .configservice$delete_remediation_configuration_output()
+  svc <- .configservice$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$delete_remediation_configuration <- configservice_delete_remediation_configuration
+
 #' Deletes the retention configuration
 #'
 #' Deletes the retention configuration.
@@ -605,8 +644,7 @@ configservice_describe_aggregation_authorizations <- function(Limit = NULL, Next
 #' @param ConfigRuleNames Specify one or more AWS Config rule names to filter the results by rule.
 #' @param ComplianceTypes Filters the results by compliance.
 #' 
-#' The allowed values are `COMPLIANT`, `NON_COMPLIANT`, and
-#' `INSUFFICIENT_DATA`.
+#' The allowed values are `COMPLIANT` and `NON_COMPLIANT`.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
 #'
@@ -683,7 +721,8 @@ configservice_describe_compliance_by_config_rule <- function(ConfigRuleNames = N
 #' must also specify a type for `ResourceType`.
 #' @param ComplianceTypes Filters the results by compliance.
 #' 
-#' The allowed values are `COMPLIANT` and `NON_COMPLIANT`.
+#' The allowed values are `COMPLIANT`, `NON_COMPLIANT`, and
+#' `INSUFFICIENT_DATA`.
 #' @param Limit The maximum number of evaluation results returned on each page. The
 #' default is 10. You cannot specify a number greater than 100. If you
 #' specify 0, AWS Config uses the default.
@@ -821,9 +860,10 @@ configservice_describe_config_rules <- function(ConfigRuleNames = NULL, NextToke
 #' Returns status information for sources within an aggregator
 #'
 #' Returns status information for sources within an aggregator. The status
-#' includes information about the last time AWS Config aggregated data from
-#' source accounts or AWS Config failed to aggregate data from source
-#' accounts with the related error code or message.
+#' includes information about the last time AWS Config verified
+#' authorization between the source account and an aggregator account. In
+#' case of a failure, the status contains the related error code or
+#' message.
 #'
 #' @usage
 #' configservice_describe_configuration_aggregator_sources_status(
@@ -1130,6 +1170,101 @@ configservice_describe_pending_aggregation_requests <- function(Limit = NULL, Ne
   return(response)
 }
 .configservice$operations$describe_pending_aggregation_requests <- configservice_describe_pending_aggregation_requests
+
+#' Returns the details of one or more remediation configurations
+#'
+#' Returns the details of one or more remediation configurations.
+#'
+#' @usage
+#' configservice_describe_remediation_configurations(ConfigRuleNames)
+#'
+#' @param ConfigRuleNames &#91;required&#93; A list of AWS Config rule names of remediation configurations for which
+#' you want details.
+#'
+#' @section Request syntax:
+#' ```
+#' configservice$describe_remediation_configurations(
+#'   ConfigRuleNames = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_describe_remediation_configurations
+configservice_describe_remediation_configurations <- function(ConfigRuleNames) {
+  op <- new_operation(
+    name = "DescribeRemediationConfigurations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$describe_remediation_configurations_input(ConfigRuleNames = ConfigRuleNames)
+  output <- .configservice$describe_remediation_configurations_output()
+  svc <- .configservice$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$describe_remediation_configurations <- configservice_describe_remediation_configurations
+
+#' Provides a detailed view of a Remediation Execution for a set of
+#' resources including state, timestamps for when steps for the remediation
+#' execution occur, and any error messages for steps that have failed
+#'
+#' Provides a detailed view of a Remediation Execution for a set of
+#' resources including state, timestamps for when steps for the remediation
+#' execution occur, and any error messages for steps that have failed. When
+#' you specify the limit and the next token, you receive a paginated
+#' response.
+#'
+#' @usage
+#' configservice_describe_remediation_execution_status(ConfigRuleName,
+#'   ResourceKeys, Limit, NextToken)
+#'
+#' @param ConfigRuleName &#91;required&#93; A list of AWS Config rule names.
+#' @param ResourceKeys A list of resource keys to be processed with the current request. Each
+#' element in the list consists of the resource type and resource ID.
+#' @param Limit The maximum number of RemediationExecutionStatuses returned on each
+#' page. The default is maximum. If you specify 0, AWS Config uses the
+#' default.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get
+#' the next page of results in a paginated response.
+#'
+#' @section Request syntax:
+#' ```
+#' configservice$describe_remediation_execution_status(
+#'   ConfigRuleName = "string",
+#'   ResourceKeys = list(
+#'     list(
+#'       resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::EventSubscription"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::S3::Bucket"|"AWS::SSM::ManagedInstanceInventory"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::DynamoDB::Table"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::WAF::RuleGroup"|"AWS::WAFRegional::RuleGroup"|"AWS::Lambda::Function"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::CodePipeline::Pipeline",
+#'       resourceId = "string"
+#'     )
+#'   ),
+#'   Limit = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_describe_remediation_execution_status
+configservice_describe_remediation_execution_status <- function(ConfigRuleName, ResourceKeys = NULL, Limit = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeRemediationExecutionStatus",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$describe_remediation_execution_status_input(ConfigRuleName = ConfigRuleName, ResourceKeys = ResourceKeys, Limit = Limit, NextToken = NextToken)
+  output <- .configservice$describe_remediation_execution_status_output()
+  svc <- .configservice$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$describe_remediation_execution_status <- configservice_describe_remediation_execution_status
 
 #' Returns the details of one or more retention configurations
 #'
@@ -1896,6 +2031,50 @@ configservice_list_discovered_resources <- function(resourceType, resourceIds = 
 }
 .configservice$operations$list_discovered_resources <- configservice_list_discovered_resources
 
+#' List the tags for AWS Config resource
+#'
+#' List the tags for AWS Config resource.
+#'
+#' @usage
+#' configservice_list_tags_for_resource(ResourceArn, Limit, NextToken)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to
+#' list the tags. Currently, the supported resources are `ConfigRule`,
+#' `ConfigurationAggregator` and `AggregatorAuthorization`.
+#' @param Limit The maximum number of tags returned on each page. The limit maximum is
+#' 50. You cannot specify a number greater than 50. If you specify 0, AWS
+#' Config uses the default.
+#' @param NextToken The nextToken string returned on a previous page that you use to get the
+#' next page of results in a paginated response.
+#'
+#' @section Request syntax:
+#' ```
+#' configservice$list_tags_for_resource(
+#'   ResourceArn = "string",
+#'   Limit = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_list_tags_for_resource
+configservice_list_tags_for_resource <- function(ResourceArn, Limit = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$list_tags_for_resource_input(ResourceArn = ResourceArn, Limit = Limit, NextToken = NextToken)
+  output <- .configservice$list_tags_for_resource_output()
+  svc <- .configservice$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$list_tags_for_resource <- configservice_list_tags_for_resource
+
 #' Authorizes the aggregator account and region to collect data from the
 #' source account and region
 #'
@@ -1958,7 +2137,7 @@ configservice_put_aggregation_authorization <- function(AuthorizedAccountId, Aut
 #' If you are adding an AWS managed Config rule, specify the rule\'s
 #' identifier for the `SourceIdentifier` key. To reference AWS managed
 #' Config rule identifiers, see [About AWS Managed Config
-#' Rules](http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html).
+#' Rules](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html).
 #' 
 #' For any new rule that you add, specify the `ConfigRuleName` in the
 #' `ConfigRule` object. Do not specify the `ConfigRuleArn` or the
@@ -1968,7 +2147,7 @@ configservice_put_aggregation_authorization <- function(AuthorizedAccountId, Aut
 #' the rule by `ConfigRuleName`, `ConfigRuleId`, or `ConfigRuleArn` in the
 #' `ConfigRule` data type that you use in this request.
 #' 
-#' The maximum number of rules that AWS Config supports is 50.
+#' The maximum number of rules that AWS Config supports is 150.
 #' 
 #' For information about requesting a rule limit increase, see [AWS Config
 #' Limits](http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config)
@@ -1976,7 +2155,7 @@ configservice_put_aggregation_authorization <- function(AuthorizedAccountId, Aut
 #' 
 #' For more information about developing and using AWS Config rules, see
 #' [Evaluating AWS Resource Configurations with AWS
-#' Config](http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html)
+#' Config](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html)
 #' in the *AWS Config Developer Guide*.
 #'
 #' @usage
@@ -2284,6 +2463,67 @@ configservice_put_evaluations <- function(Evaluations = NULL, ResultToken, TestM
 }
 .configservice$operations$put_evaluations <- configservice_put_evaluations
 
+#' Adds or updates the remediation configuration with a specific AWS Config
+#' rule with the selected target or action
+#'
+#' Adds or updates the remediation configuration with a specific AWS Config
+#' rule with the selected target or action. The API creates the
+#' `RemediationConfiguration` object for the AWS Config rule. The AWS
+#' Config rule must already exist for you to add a remediation
+#' configuration. The target (SSM document) must exist and have permissions
+#' to use the target.
+#'
+#' @usage
+#' configservice_put_remediation_configurations(RemediationConfigurations)
+#'
+#' @param RemediationConfigurations &#91;required&#93; A list of remediation configuration objects.
+#'
+#' @section Request syntax:
+#' ```
+#' configservice$put_remediation_configurations(
+#'   RemediationConfigurations = list(
+#'     list(
+#'       ConfigRuleName = "string",
+#'       TargetType = "SSM_DOCUMENT",
+#'       TargetId = "string",
+#'       TargetVersion = "string",
+#'       Parameters = list(
+#'         list(
+#'           ResourceValue = list(
+#'             Value = "RESOURCE_ID"
+#'           ),
+#'           StaticValue = list(
+#'             Values = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ResourceType = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_put_remediation_configurations
+configservice_put_remediation_configurations <- function(RemediationConfigurations) {
+  op <- new_operation(
+    name = "PutRemediationConfigurations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$put_remediation_configurations_input(RemediationConfigurations = RemediationConfigurations)
+  output <- .configservice$put_remediation_configurations_output()
+  svc <- .configservice$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$put_remediation_configurations <- configservice_put_remediation_configurations
+
 #' Creates and updates the retention configuration with details about
 #' retention period (number of days) that AWS Config stores your historical
 #' information
@@ -2330,6 +2570,54 @@ configservice_put_retention_configuration <- function(RetentionPeriodInDays) {
   return(response)
 }
 .configservice$operations$put_retention_configuration <- configservice_put_retention_configuration
+
+#' Accepts a structured query language (SQL) SELECT command, performs the
+#' corresponding search, and returns resource configurations matching the
+#' properties
+#'
+#' Accepts a structured query language (SQL) `SELECT` command, performs the
+#' corresponding search, and returns resource configurations matching the
+#' properties.
+#' 
+#' For more information about query components, see the [**Query
+#' Components**](https://docs.aws.amazon.com/config/latest/developerguide/query-components.html)
+#' section in the AWS Config Developer Guide.
+#'
+#' @usage
+#' configservice_select_resource_config(Expression, Limit, NextToken)
+#'
+#' @param Expression &#91;required&#93; The SQL query `SELECT` command.
+#' @param Limit The maximum number of query results returned on each page.
+#' @param NextToken The `nextToken` string returned in a previous request that you use to
+#' request the next page of results in a paginated response.
+#'
+#' @section Request syntax:
+#' ```
+#' configservice$select_resource_config(
+#'   Expression = "string",
+#'   Limit = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_select_resource_config
+configservice_select_resource_config <- function(Expression, Limit = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "SelectResourceConfig",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$select_resource_config_input(Expression = Expression, Limit = Limit, NextToken = NextToken)
+  output <- .configservice$select_resource_config_output()
+  svc <- .configservice$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$select_resource_config <- configservice_select_resource_config
 
 #' Runs an on-demand evaluation for the specified AWS Config rules against
 #' the last known configuration state of the resources
@@ -2444,6 +2732,58 @@ configservice_start_configuration_recorder <- function(ConfigurationRecorderName
 }
 .configservice$operations$start_configuration_recorder <- configservice_start_configuration_recorder
 
+#' Runs an on-demand remediation for the specified AWS Config rules against
+#' the last known remediation configuration
+#'
+#' Runs an on-demand remediation for the specified AWS Config rules against
+#' the last known remediation configuration. It runs an execution against
+#' the current state of your resources. Remediation execution is
+#' asynchronous.
+#' 
+#' You can specify up to 100 resource keys per request. An existing
+#' StartRemediationExecution call for the specified resource keys must
+#' complete before you can call the API again.
+#'
+#' @usage
+#' configservice_start_remediation_execution(ConfigRuleName, ResourceKeys)
+#'
+#' @param ConfigRuleName &#91;required&#93; The list of names of AWS Config rules that you want to run remediation
+#' execution for.
+#' @param ResourceKeys &#91;required&#93; A list of resource keys to be processed with the current request. Each
+#' element in the list consists of the resource type and resource ID.
+#'
+#' @section Request syntax:
+#' ```
+#' configservice$start_remediation_execution(
+#'   ConfigRuleName = "string",
+#'   ResourceKeys = list(
+#'     list(
+#'       resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::EventSubscription"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::S3::Bucket"|"AWS::SSM::ManagedInstanceInventory"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::DynamoDB::Table"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::WAF::RuleGroup"|"AWS::WAFRegional::RuleGroup"|"AWS::Lambda::Function"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::CodePipeline::Pipeline",
+#'       resourceId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_start_remediation_execution
+configservice_start_remediation_execution <- function(ConfigRuleName, ResourceKeys) {
+  op <- new_operation(
+    name = "StartRemediationExecution",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$start_remediation_execution_input(ConfigRuleName = ConfigRuleName, ResourceKeys = ResourceKeys)
+  output <- .configservice$start_remediation_execution_output()
+  svc <- .configservice$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$start_remediation_execution <- configservice_start_remediation_execution
+
 #' Stops recording configurations of the AWS resources you have selected to
 #' record in your AWS account
 #'
@@ -2481,3 +2821,92 @@ configservice_stop_configuration_recorder <- function(ConfigurationRecorderName)
   return(response)
 }
 .configservice$operations$stop_configuration_recorder <- configservice_stop_configuration_recorder
+
+#' Associates the specified tags to a resource with the specified
+#' resourceArn
+#'
+#' Associates the specified tags to a resource with the specified
+#' resourceArn. If existing tags on a resource are not specified in the
+#' request parameters, they are not changed. When a resource is deleted,
+#' the tags associated with that resource are deleted as well.
+#'
+#' @usage
+#' configservice_tag_resource(ResourceArn, Tags)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to
+#' list the tags. Currently, the supported resources are `ConfigRule`,
+#' `ConfigurationAggregator` and `AggregatorAuthorization`.
+#' @param Tags &#91;required&#93; An array of tag object.
+#'
+#' @section Request syntax:
+#' ```
+#' configservice$tag_resource(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_tag_resource
+configservice_tag_resource <- function(ResourceArn, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+  output <- .configservice$tag_resource_output()
+  svc <- .configservice$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$tag_resource <- configservice_tag_resource
+
+#' Deletes specified tags from a resource
+#'
+#' Deletes specified tags from a resource.
+#'
+#' @usage
+#' configservice_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to
+#' list the tags. Currently, the supported resources are `ConfigRule`,
+#' `ConfigurationAggregator` and `AggregatorAuthorization`.
+#' @param TagKeys &#91;required&#93; The keys of the tags to be removed.
+#'
+#' @section Request syntax:
+#' ```
+#' configservice$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_untag_resource
+configservice_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .configservice$untag_resource_output()
+  svc <- .configservice$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$untag_resource <- configservice_untag_resource

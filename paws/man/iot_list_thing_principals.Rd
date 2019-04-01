@@ -10,7 +10,9 @@ iot_list_thing_principals(thingName)
 \item{thingName}{[required] The name of the thing.}
 }
 \description{
-Lists the principals associated with the specified thing.
+Lists the principals associated with the specified thing. A principal
+can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito
+identities or federated identities.
 }
 \section{Request syntax}{
 \preformatted{iot$list_thing_principals(

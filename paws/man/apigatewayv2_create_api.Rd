@@ -17,7 +17,7 @@ apigatewayv2_create_api(ApiKeySelectionExpression, Description,
 
 \item{Name}{[required] The name of the API.}
 
-\item{ProtocolType}{[required] The API protocol: HTTP or WEBSOCKET.}
+\item{ProtocolType}{[required] The API protocol: Currently only WEBSOCKET is supported.}
 
 \item{RouteSelectionExpression}{[required] The route selection expression for the API.}
 

@@ -54,7 +54,7 @@ to add and/or the country that you want to delete. If you want to change
 a country, you delete the existing country and add the new one.
 
 For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the \href{http://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
+HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{waf$update_geo_match_set(

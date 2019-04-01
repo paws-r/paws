@@ -5,7 +5,7 @@
 \title{Create a new version of your custom platform}
 \usage{
 elasticbeanstalk_create_platform_version(PlatformName, PlatformVersion,
-  PlatformDefinitionBundle, EnvironmentName, OptionSettings)
+  PlatformDefinitionBundle, EnvironmentName, OptionSettings, Tags)
 }
 \arguments{
 \item{PlatformName}{[required] The name of your custom platform.}
@@ -17,6 +17,12 @@ elasticbeanstalk_create_platform_version(PlatformName, PlatformVersion,
 \item{EnvironmentName}{The name of the builder environment.}
 
 \item{OptionSettings}{The configuration option settings to apply to the builder environment.}
+
+\item{Tags}{Specifies the tags applied to the new platform version.
+
+Elastic Beanstalk applies these tags only to the platform version.
+Environments that you create using the platform version don't inherit
+the tags.}
 }
 \description{
 Create a new version of your custom platform.
@@ -35,6 +41,12 @@ Create a new version of your custom platform.
       ResourceName = "string",
       Namespace = "string",
       OptionName = "string",
+      Value = "string"
+    )
+  ),
+  Tags = list(
+    list(
+      Key = "string",
       Value = "string"
     )
   )

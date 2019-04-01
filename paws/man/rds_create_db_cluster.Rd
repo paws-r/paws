@@ -12,12 +12,13 @@ rds_create_db_cluster(AvailabilityZones, BackupRetentionPeriod,
   ReplicationSourceIdentifier, Tags, StorageEncrypted, KmsKeyId,
   PreSignedUrl, EnableIAMDatabaseAuthentication, BacktrackWindow,
   EnableCloudwatchLogsExports, EngineMode, ScalingConfiguration,
-  DeletionProtection, GlobalClusterIdentifier, SourceRegion)
+  DeletionProtection, GlobalClusterIdentifier, CopyTagsToSnapshot,
+  SourceRegion)
 }
 \arguments{
 \item{AvailabilityZones}{A list of EC2 Availability Zones that instances in the DB cluster can be
 created in. For information on AWS Regions and Availability Zones, see
-\href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.RegionsAndAvailabilityZones.html}{Choosing the Regions and Availability Zones}
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.RegionsAndAvailabilityZones.html}{Choosing the Regions and Availability Zones}
 in the \emph{Amazon Aurora User Guide}.}
 
 \item{BackupRetentionPeriod}{The number of days for which automated backups are retained. You must
@@ -115,7 +116,7 @@ parameter.
 
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region. To see the time blocks available, see
-\href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora}{Adjusting the Preferred DB Cluster Maintenance Window}
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora}{Adjusting the Preferred DB Cluster Maintenance Window}
 in the \emph{Amazon Aurora User Guide.}
 
 Constraints:
@@ -133,7 +134,7 @@ Format: \code{ddd:hh24:mi-ddd:hh24:mi}
 
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region, occurring on a random day of the
-week. To see the time blocks available, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora}{Adjusting the Preferred DB Cluster Maintenance Window}
+week. To see the time blocks available, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora}{Adjusting the Preferred DB Cluster Maintenance Window}
 in the \emph{Amazon Aurora User Guide.}
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
@@ -202,8 +203,8 @@ look like Example:
 }
 
 To learn how to generate a Signature Version 4 signed request, see
-\href{http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html}{Authenticating Requests: Using Query Parameters (AWS Signature Version 4)}
-and \href{http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4 Signing Process}.
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html}{Authenticating Requests: Using Query Parameters (AWS Signature Version 4)}
+and \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4 Signing Process}.
 
 If you supply a value for this operation's \code{SourceRegion} parameter, a
 pre-signed URL will be calculated on your behalf.}
@@ -226,7 +227,7 @@ Constraints:
 
 \item{EnableCloudwatchLogsExports}{The list of log types that need to be enabled for exporting to
 CloudWatch Logs. The values in the list depend on the DB engine being
-used. For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
+used. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
 in the \emph{Amazon Aurora User Guide}.}
 
 \item{EngineMode}{The DB engine mode of the DB cluster, either \code{provisioned},
@@ -242,6 +243,9 @@ is false.}
 \item{GlobalClusterIdentifier}{The global cluster ID of an Aurora cluster that becomes the primary
 cluster in the new global database cluster.}
 
+\item{CopyTagsToSnapshot}{True to copy all tags from the DB cluster to snapshots of the DB
+cluster, and otherwise false. The default is false.}
+
 \item{SourceRegion}{The ID of the region that contains the source for the read replica.}
 }
 \description{
@@ -254,8 +258,10 @@ instance. For cross-region replication where the DB cluster identified
 by \code{ReplicationSourceIdentifier} is encrypted, you must also specify the
 \code{PreSignedUrl} parameter.
 
-For more information on Amazon Aurora, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
+For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
 in the \emph{Amazon Aurora User Guide.}
+
+This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
 \preformatted{rds$create_db_cluster(
@@ -303,6 +309,7 @@ in the \emph{Amazon Aurora User Guide.}
   ),
   DeletionProtection = TRUE|FALSE,
   GlobalClusterIdentifier = "string",
+  CopyTagsToSnapshot = TRUE|FALSE,
   SourceRegion = "string"
 )
 }

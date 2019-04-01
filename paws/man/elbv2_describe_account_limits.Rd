@@ -18,8 +18,8 @@ Describes the current Elastic Load Balancing resource limits for your
 AWS account.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html}{Limits for Your Application Load Balancers}
-in the \emph{Application Load Balancer Guide} or \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html}{Limits for Your Network Load Balancers}
+For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html}{Limits for Your Application Load Balancers}
+in the \emph{Application Load Balancer Guide} or \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html}{Limits for Your Network Load Balancers}
 in the \emph{Network Load Balancers Guide}.
 }
 \section{Request syntax}{

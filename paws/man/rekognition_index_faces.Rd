@@ -14,7 +14,11 @@ are detected in the input images.}
 
 \item{Image}{[required] The input image as base64-encoded bytes or an S3 object. If you use the
 AWS CLI to call Amazon Rekognition operations, passing base64-encoded
-image bytes isn't supported.}
+image bytes isn't supported.
+
+If you are using an AWS SDK to call Amazon Rekognition, you might not
+need to base64-encode image bytes passed using the \code{Bytes} field. For
+more information, see Images in the Amazon Rekognition developer guide.}
 
 \item{ExternalImageId}{The ID you want to assign to all the faces detected in the image.}
 
@@ -135,7 +139,7 @@ all detected faces, \code{FaceRecords}. This includes:
 \item The bounding box, \code{BoundingBox}, of the detected face.
 \item A confidence value, \code{Confidence}, which indicates the confidence
 that the bounding box contains a face.
-\item A face ID, \code{faceId}, assigned by the service for each face that's
+\item A face ID, \code{FaceId}, assigned by the service for each face that's
 detected and stored.
 \item An image ID, \code{ImageId}, assigned by the service for the input image.
 }

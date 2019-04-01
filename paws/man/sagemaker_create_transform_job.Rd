@@ -16,36 +16,39 @@ Region in an AWS account.}
 \code{ModelName} must be the name of an existing Amazon SageMaker model
 within an AWS Region in an AWS account.}
 
-\item{MaxConcurrentTransforms}{The maximum number of parallel requests that can be sent to an algorithm
-container on an instance. This is good for algorithms that implement
-multiple workers on larger instances . The default value is \code{1}. To
-allow Amazon SageMaker to determine the appropriate number for
-\code{MaxConcurrentTransforms}, do not set the value in the API.}
+\item{MaxConcurrentTransforms}{The maximum number of parallel requests that can be sent to each
+instance in a transform job. The default value is \code{1}. To allow Amazon
+SageMaker to determine the appropriate number for
+\code{MaxConcurrentTransforms}, set the value to \code{0}.}
 
-\item{MaxPayloadInMB}{The maximum payload size allowed, in MB. A payload is the data portion
-of a record (without metadata). The value in \code{MaxPayloadInMB} must be
-greater or equal to the size of a single record. You can approximate the
-size of a record by dividing the size of your dataset by the number of
-records. Then multiply this value by the number of records you want in a
-mini-batch. We recommend to enter a slightly larger value than this to
-ensure the records fit within the maximum payload size. The default
+\item{MaxPayloadInMB}{The maximum allowed size of the payload, in MB. A \emph{payload} is the data
+portion of a record (without metadata). The value in \code{MaxPayloadInMB}
+must be greater than, or equal to, the size of a single record. To
+estimate the size of a record in MB, divide the size of your dataset by
+the number of records. To ensure that the records fit within the maximum
+payload size, we recommend using a slightly larger value. The default
 value is \code{6} MB.
 
 For cases where the payload might be arbitrarily large and is
 transmitted using HTTP chunked encoding, set the value to \code{0}. This
-feature only works in supported algorithms. Currently, Amazon SageMaker
-built-in algorithms do not support this feature.}
+feature works only in supported algorithms. Currently, Amazon SageMaker
+built-in algorithms do not support HTTP chunked encoding.}
 
-\item{BatchStrategy}{Determines the number of records to include in a mini-batch. If you want
-to include only one record in a mini-batch, specify \code{SingleRecord}.. If
-you want mini-batches to contain a maximum of the number of records
-specified in the \code{MaxPayloadInMB} parameter, specify \code{MultiRecord}.
+\item{BatchStrategy}{Specifies the number of records to include in a mini-batch for an HTTP
+inference request. A \emph{record} is a single unit of input data that
+inference can be made on. For example, a single line in a CSV file is a
+record.
 
-If you set \code{SplitType} to \code{Line} and \code{BatchStrategy} to \code{MultiRecord}, a
-batch transform automatically splits your input data into the specified
-payload size. There's no need to split the dataset into smaller files
-or to use larger payload sizes unless the records in your dataset are
-very large.}
+To enable the batch strategy, you must set \code{SplitType} to \code{Line},
+\code{RecordIO}, or \code{TFRecord}.
+
+To use only one record when making an HTTP invocation request to a
+container, set \code{BatchStrategy} to \code{SingleRecord} and \code{SplitType} to
+\code{Line}.
+
+To fit as many records in a mini-batch as can fit within the
+\code{MaxPayloadInMB} limit, set \code{BatchStrategy} to \code{MultiRecord} and
+\code{SplitType} to \code{Line}.}
 
 \item{Environment}{The environment variables to set in the Docker container. We support up
 to 16 key and values entries in the map.}
@@ -57,7 +60,7 @@ to 16 key and values entries in the map.}
 \item{TransformResources}{[required] Describes the resources, including ML instance types and ML instance
 count, to use for the transform job.}
 
-\item{Tags}{(Optional) An array of key-value pairs. For more information, see \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}
+\item{Tags}{(Optional) An array of key-value pairs. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}
 in the \emph{AWS Billing and Cost Management User Guide}.}
 }
 \description{
@@ -86,7 +89,7 @@ transform job.
 }
 
 For more information about how batch transformation works Amazon
-SageMaker, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html}{How It Works}.
+SageMaker, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html}{How It Works}.
 }
 \section{Request syntax}{
 \preformatted{sagemaker$create_transform_job(

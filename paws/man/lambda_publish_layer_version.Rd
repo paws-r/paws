@@ -14,7 +14,7 @@ lambda_publish_layer_version(LayerName, Description, Content,
 
 \item{Content}{[required] The function layer archive.}
 
-\item{CompatibleRuntimes}{A list of compatible \href{http://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html}{function runtimes}.
+\item{CompatibleRuntimes}{A list of compatible \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html}{function runtimes}.
 Used for filtering with ListLayers and ListLayerVersions.}
 
 \item{LicenseInfo}{The layer's software license. It can be any of the following:
@@ -27,7 +27,7 @@ example, \code{MIT}.
 }}
 }
 \description{
-Creates an \href{http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layer}
+Creates an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layer}
 from a ZIP archive. Each time you call \code{PublishLayerVersion} with the
 same version name, a new version is created.
 }

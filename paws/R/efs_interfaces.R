@@ -5,31 +5,31 @@ NULL
 
 .efs$create_file_system_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CreationToken = structure(logical(0), tags = list(    type = "string")), PerformanceMode = structure(logical(0), tags = list(    type = "string")), Encrypted = structure(logical(0), tags = list(    type = "boolean")), KmsKeyId = structure(logical(0), tags = list(    type = "string")), ThroughputMode = structure(logical(0), tags = list(    type = "string")), ProvisionedThroughputInMibps = structure(logical(0), tags = list(    type = "double"))), tags = list(type = "structure"))
+  shape <- structure(list(CreationToken = structure(logical(0), tags = list(type = "string")), PerformanceMode = structure(logical(0), tags = list(type = "string")), Encrypted = structure(logical(0), tags = list(type = "boolean")), KmsKeyId = structure(logical(0), tags = list(type = "string")), ThroughputMode = structure(logical(0), tags = list(type = "string")), ProvisionedThroughputInMibps = structure(logical(0), tags = list(type = "double")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .efs$create_file_system_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OwnerId = structure(logical(0), tags = list(type = "string")), CreationToken = structure(logical(0), tags = list(type = "string")), FileSystemId = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LifeCycleState = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), NumberOfMountTargets = structure(logical(0), tags = list(        type = "integer")), SizeInBytes = structure(list(Value = structure(logical(0), tags = list(        type = "long")), Timestamp = structure(logical(0), tags = list(        type = "timestamp"))), tags = list(type = "structure")), PerformanceMode = structure(logical(0), tags = list(type = "string")), Encrypted = structure(logical(0), tags = list(type = "boolean")), KmsKeyId = structure(logical(0), tags = list(type = "string")), ThroughputMode = structure(logical(0), tags = list(type = "string")), ProvisionedThroughputInMibps = structure(logical(0), tags = list(        type = "double"))), tags = list(type = "structure"))
+  shape <- structure(list(OwnerId = structure(logical(0), tags = list(type = "string")), CreationToken = structure(logical(0), tags = list(type = "string")), FileSystemId = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LifeCycleState = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), NumberOfMountTargets = structure(logical(0), tags = list(type = "integer")), SizeInBytes = structure(list(Value = structure(logical(0), tags = list(type = "long")), Timestamp = structure(logical(0), tags = list(type = "timestamp")), ValueInIA = structure(logical(0), tags = list(type = "long")), ValueInStandard = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), PerformanceMode = structure(logical(0), tags = list(type = "string")), Encrypted = structure(logical(0), tags = list(type = "boolean")), KmsKeyId = structure(logical(0), tags = list(type = "string")), ThroughputMode = structure(logical(0), tags = list(type = "string")), ProvisionedThroughputInMibps = structure(logical(0), tags = list(type = "double")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .efs$create_mount_target_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FileSystemId = structure(logical(0), tags = list(    type = "string")), SubnetId = structure(logical(0), tags = list(    type = "string")), IpAddress = structure(logical(0), tags = list(    type = "string")), SecurityGroups = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(FileSystemId = structure(logical(0), tags = list(type = "string")), SubnetId = structure(logical(0), tags = list(type = "string")), IpAddress = structure(logical(0), tags = list(type = "string")), SecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .efs$create_mount_target_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OwnerId = structure(logical(0), tags = list(type = "string")), MountTargetId = structure(logical(0), tags = list(type = "string")), FileSystemId = structure(logical(0), tags = list(type = "string")), SubnetId = structure(logical(0), tags = list(type = "string")), LifeCycleState = structure(logical(0), tags = list(type = "string")), IpAddress = structure(logical(0), tags = list(type = "string")), NetworkInterfaceId = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(OwnerId = structure(logical(0), tags = list(type = "string")), MountTargetId = structure(logical(0), tags = list(type = "string")), FileSystemId = structure(logical(0), tags = list(type = "string")), SubnetId = structure(logical(0), tags = list(type = "string")), LifeCycleState = structure(logical(0), tags = list(type = "string")), IpAddress = structure(logical(0), tags = list(type = "string")), NetworkInterfaceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .efs$create_tags_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FileSystemId = structure(logical(0), tags = list(    location = "uri", locationName = "FileSystemId", type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(        type = "string")), Value = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(        type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(FileSystemId = structure(logical(0), tags = list(location = "uri", locationName = "FileSystemId", type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -39,7 +39,7 @@ NULL
 
 .efs$delete_file_system_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FileSystemId = structure(logical(0), tags = list(    location = "uri", locationName = "FileSystemId", type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(FileSystemId = structure(logical(0), tags = list(location = "uri", locationName = "FileSystemId", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -49,7 +49,7 @@ NULL
 
 .efs$delete_mount_target_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MountTargetId = structure(logical(0), tags = list(    location = "uri", locationName = "MountTargetId", type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(MountTargetId = structure(logical(0), tags = list(location = "uri", locationName = "MountTargetId", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -59,7 +59,7 @@ NULL
 
 .efs$delete_tags_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FileSystemId = structure(logical(0), tags = list(    location = "uri", locationName = "FileSystemId", type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(        type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(FileSystemId = structure(logical(0), tags = list(location = "uri", locationName = "FileSystemId", type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -69,55 +69,67 @@ NULL
 
 .efs$describe_file_systems_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxItems = structure(logical(0), tags = list(location = "querystring", locationName = "MaxItems", type = "integer")), Marker = structure(logical(0), tags = list(    location = "querystring", locationName = "Marker", type = "string")), CreationToken = structure(logical(0), tags = list(location = "querystring", locationName = "CreationToken", type = "string")), FileSystemId = structure(logical(0), tags = list(        location = "querystring", locationName = "FileSystemId", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(MaxItems = structure(logical(0), tags = list(location = "querystring", locationName = "MaxItems", type = "integer")), Marker = structure(logical(0), tags = list(location = "querystring", locationName = "Marker", type = "string")), CreationToken = structure(logical(0), tags = list(location = "querystring", locationName = "CreationToken", type = "string")), FileSystemId = structure(logical(0), tags = list(location = "querystring", locationName = "FileSystemId", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .efs$describe_file_systems_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Marker = structure(logical(0), tags = list(type = "string")), FileSystems = structure(list(structure(list(OwnerId = structure(logical(0), tags = list(        type = "string")), CreationToken = structure(logical(0), tags = list(        type = "string")), FileSystemId = structure(logical(0), tags = list(        type = "string")), CreationTime = structure(logical(0), tags = list(        type = "timestamp")), LifeCycleState = structure(logical(0), tags = list(        type = "string")), Name = structure(logical(0), tags = list(        type = "string")), NumberOfMountTargets = structure(logical(0), tags = list(        type = "integer")), SizeInBytes = structure(list(Value = structure(logical(0), tags = list(        type = "long")), Timestamp = structure(logical(0), tags = list(        type = "timestamp"))), tags = list(type = "structure")), PerformanceMode = structure(logical(0), tags = list(type = "string")), Encrypted = structure(logical(0), tags = list(type = "boolean")), KmsKeyId = structure(logical(0), tags = list(type = "string")), ThroughputMode = structure(logical(0), tags = list(type = "string")), ProvisionedThroughputInMibps = structure(logical(0), tags = list(            type = "double"))), tags = list(type = "structure"))), tags = list(        type = "list")), NextMarker = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Marker = structure(logical(0), tags = list(type = "string")), FileSystems = structure(list(structure(list(OwnerId = structure(logical(0), tags = list(type = "string")), CreationToken = structure(logical(0), tags = list(type = "string")), FileSystemId = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LifeCycleState = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), NumberOfMountTargets = structure(logical(0), tags = list(type = "integer")), SizeInBytes = structure(list(Value = structure(logical(0), tags = list(type = "long")), Timestamp = structure(logical(0), tags = list(type = "timestamp")), ValueInIA = structure(logical(0), tags = list(type = "long")), ValueInStandard = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), PerformanceMode = structure(logical(0), tags = list(type = "string")), Encrypted = structure(logical(0), tags = list(type = "boolean")), KmsKeyId = structure(logical(0), tags = list(type = "string")), ThroughputMode = structure(logical(0), tags = list(type = "string")), ProvisionedThroughputInMibps = structure(logical(0), tags = list(type = "double")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextMarker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.efs$describe_lifecycle_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FileSystemId = structure(logical(0), tags = list(location = "uri", locationName = "FileSystemId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.efs$describe_lifecycle_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(LifecyclePolicies = structure(list(structure(list(TransitionToIA = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .efs$describe_mount_target_security_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MountTargetId = structure(logical(0), tags = list(    location = "uri", locationName = "MountTargetId", type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(MountTargetId = structure(logical(0), tags = list(location = "uri", locationName = "MountTargetId", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .efs$describe_mount_target_security_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SecurityGroups = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(SecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .efs$describe_mount_targets_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxItems = structure(logical(0), tags = list(location = "querystring", locationName = "MaxItems", type = "integer")), Marker = structure(logical(0), tags = list(    location = "querystring", locationName = "Marker", type = "string")), FileSystemId = structure(logical(0), tags = list(location = "querystring", locationName = "FileSystemId", type = "string")), MountTargetId = structure(logical(0), tags = list(        location = "querystring", locationName = "MountTargetId", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(MaxItems = structure(logical(0), tags = list(location = "querystring", locationName = "MaxItems", type = "integer")), Marker = structure(logical(0), tags = list(location = "querystring", locationName = "Marker", type = "string")), FileSystemId = structure(logical(0), tags = list(location = "querystring", locationName = "FileSystemId", type = "string")), MountTargetId = structure(logical(0), tags = list(location = "querystring", locationName = "MountTargetId", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .efs$describe_mount_targets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Marker = structure(logical(0), tags = list(type = "string")), MountTargets = structure(list(structure(list(OwnerId = structure(logical(0), tags = list(        type = "string")), MountTargetId = structure(logical(0), tags = list(        type = "string")), FileSystemId = structure(logical(0), tags = list(        type = "string")), SubnetId = structure(logical(0), tags = list(        type = "string")), LifeCycleState = structure(logical(0), tags = list(        type = "string")), IpAddress = structure(logical(0), tags = list(        type = "string")), NetworkInterfaceId = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(        type = "list")), NextMarker = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Marker = structure(logical(0), tags = list(type = "string")), MountTargets = structure(list(structure(list(OwnerId = structure(logical(0), tags = list(type = "string")), MountTargetId = structure(logical(0), tags = list(type = "string")), FileSystemId = structure(logical(0), tags = list(type = "string")), SubnetId = structure(logical(0), tags = list(type = "string")), LifeCycleState = structure(logical(0), tags = list(type = "string")), IpAddress = structure(logical(0), tags = list(type = "string")), NetworkInterfaceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextMarker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .efs$describe_tags_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxItems = structure(logical(0), tags = list(location = "querystring", locationName = "MaxItems", type = "integer")), Marker = structure(logical(0), tags = list(    location = "querystring", locationName = "Marker", type = "string")), FileSystemId = structure(logical(0), tags = list(location = "uri", locationName = "FileSystemId", type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(MaxItems = structure(logical(0), tags = list(location = "querystring", locationName = "MaxItems", type = "integer")), Marker = structure(logical(0), tags = list(location = "querystring", locationName = "Marker", type = "string")), FileSystemId = structure(logical(0), tags = list(location = "uri", locationName = "FileSystemId", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .efs$describe_tags_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Marker = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(        type = "string")), Value = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(        type = "list")), NextMarker = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Marker = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextMarker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .efs$modify_mount_target_security_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MountTargetId = structure(logical(0), tags = list(    location = "uri", locationName = "MountTargetId", type = "string")), SecurityGroups = structure(list(structure(logical(0), tags = list(        type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(MountTargetId = structure(logical(0), tags = list(location = "uri", locationName = "MountTargetId", type = "string")), SecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -125,14 +137,26 @@ NULL
   list()
 }
 
+.efs$put_lifecycle_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FileSystemId = structure(logical(0), tags = list(location = "uri", locationName = "FileSystemId", type = "string")), LifecyclePolicies = structure(list(structure(list(TransitionToIA = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.efs$put_lifecycle_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(LifecyclePolicies = structure(list(structure(list(TransitionToIA = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .efs$update_file_system_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FileSystemId = structure(logical(0), tags = list(    location = "uri", locationName = "FileSystemId", type = "string")), ThroughputMode = structure(logical(0), tags = list(type = "string")), ProvisionedThroughputInMibps = structure(logical(0), tags = list(        type = "double"))), tags = list(type = "structure"))
+  shape <- structure(list(FileSystemId = structure(logical(0), tags = list(location = "uri", locationName = "FileSystemId", type = "string")), ThroughputMode = structure(logical(0), tags = list(type = "string")), ProvisionedThroughputInMibps = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .efs$update_file_system_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OwnerId = structure(logical(0), tags = list(type = "string")), CreationToken = structure(logical(0), tags = list(type = "string")), FileSystemId = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LifeCycleState = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), NumberOfMountTargets = structure(logical(0), tags = list(        type = "integer")), SizeInBytes = structure(list(Value = structure(logical(0), tags = list(        type = "long")), Timestamp = structure(logical(0), tags = list(        type = "timestamp"))), tags = list(type = "structure")), PerformanceMode = structure(logical(0), tags = list(type = "string")), Encrypted = structure(logical(0), tags = list(type = "boolean")), KmsKeyId = structure(logical(0), tags = list(type = "string")), ThroughputMode = structure(logical(0), tags = list(type = "string")), ProvisionedThroughputInMibps = structure(logical(0), tags = list(        type = "double"))), tags = list(type = "structure"))
+  shape <- structure(list(OwnerId = structure(logical(0), tags = list(type = "string")), CreationToken = structure(logical(0), tags = list(type = "string")), FileSystemId = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LifeCycleState = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), NumberOfMountTargets = structure(logical(0), tags = list(type = "integer")), SizeInBytes = structure(list(Value = structure(logical(0), tags = list(type = "long")), Timestamp = structure(logical(0), tags = list(type = "timestamp")), ValueInIA = structure(logical(0), tags = list(type = "long")), ValueInStandard = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), PerformanceMode = structure(logical(0), tags = list(type = "string")), Encrypted = structure(logical(0), tags = list(type = "boolean")), KmsKeyId = structure(logical(0), tags = list(type = "string")), ThroughputMode = structure(logical(0), tags = list(type = "string")), ProvisionedThroughputInMibps = structure(logical(0), tags = list(type = "double")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }

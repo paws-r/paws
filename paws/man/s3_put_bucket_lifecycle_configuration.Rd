@@ -53,13 +53,13 @@ configuration exists, it replaces it.
               "2015-01-01"
             ),
             Days = 123,
-            StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"
+            StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"DEEP_ARCHIVE"
           )
         ),
         NoncurrentVersionTransitions = list(
           list(
             NoncurrentDays = 123,
-            StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"
+            StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"DEEP_ARCHIVE"
           )
         ),
         NoncurrentVersionExpiration = list(

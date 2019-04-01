@@ -30,6 +30,13 @@ Update a channel schedule
           InputSwitchSettings = list(
             InputAttachmentNameReference = "string"
           ),
+          PauseStateSettings = list(
+            Pipelines = list(
+              list(
+                PipelineId = "PIPELINE_0"|"PIPELINE_1"
+              )
+            )
+          ),
           Scte35ReturnToNetworkSettings = list(
             SpliceEventId = 123
           ),

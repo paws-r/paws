@@ -7,21 +7,21 @@
 efs_delete_mount_target(MountTargetId)
 }
 \arguments{
-\item{MountTargetId}{[required] ID of the mount target to delete (String).}
+\item{MountTargetId}{[required] The ID of the mount target to delete (String).}
 }
 \description{
 Deletes the specified mount target.
 }
 \details{
-This operation forcibly breaks any mounts of the file system via the
-mount target that is being deleted, which might disrupt instances or
+This operation forcibly breaks any mounts of the file system by using
+the mount target that is being deleted, which might disrupt instances or
 applications using those mounts. To avoid applications getting cut off
 abruptly, you might consider unmounting any mounts of the mount target,
 if feasible. The operation also deletes the associated network
-interface. Uncommitted writes may be lost, but breaking a mount target
+interface. Uncommitted writes might be lost, but breaking a mount target
 using this operation does not corrupt the file system itself. The file
-system you created remains. You can mount an EC2 instance in your VPC
-via another mount target.
+system you created remains. You can mount an EC2 instance in your VPC by
+using another mount target.
 
 This operation requires permissions for the following action on the file
 system:

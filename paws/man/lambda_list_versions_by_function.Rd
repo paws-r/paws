@@ -8,7 +8,7 @@ each}
 lambda_list_versions_by_function(FunctionName, Marker, MaxItems)
 }
 \arguments{
-\item{FunctionName}{[required] The name of the lambda function.
+\item{FunctionName}{[required] The name of the Lambda function.
 
 \strong{Name formats}
 \itemize{
@@ -21,14 +21,14 @@ lambda_list_versions_by_function(FunctionName, Marker, MaxItems)
 The length constraint applies only to the full ARN. If you specify only
 the function name, it is limited to 64 characters in length.}
 
-\item{Marker}{Specify the pagination token returned by a previous request to retrieve
-the next page of results.}
+\item{Marker}{Specify the pagination token that's returned by a previous request to
+retrieve the next page of results.}
 
-\item{MaxItems}{Limit the number of versions returned.}
+\item{MaxItems}{Limit the number of versions that are returned.}
 }
 \description{
 Returns a list of
-\href{http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{versions},
+\href{https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{versions},
 with the version-specific configuration of each.
 }
 \section{Request syntax}{

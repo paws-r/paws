@@ -16,6 +16,12 @@ set the fleet's desired capacity to zero. See UpdateFleetCapacity.
 \details{
 This action removes the fleet's resources and the fleet record. Once a
 fleet is deleted, you can no longer use that fleet.
+
+\strong{Learn more}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Working with Fleets}.
+
+\strong{Related operations}
 \itemize{
 \item CreateFleet
 \item ListFleets

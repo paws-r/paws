@@ -11,35 +11,52 @@ NULL
 #'
 #' @usage
 #' transcribeservice_create_vocabulary(VocabularyName, LanguageCode,
-#'   Phrases)
+#'   Phrases, VocabularyFileUri)
 #'
 #' @param VocabularyName &#91;required&#93; The name of the vocabulary. The name must be unique within an AWS
 #' account. The name is case-sensitive.
 #' @param LanguageCode &#91;required&#93; The language code of the vocabulary entries.
-#' @param Phrases &#91;required&#93; An array of strings that contains the vocabulary entries.
+#' @param Phrases An array of strings that contains the vocabulary entries.
+#' @param VocabularyFileUri The S3 location of the text file that contains the definition of the
+#' custom vocabulary. The URI must be in the same region as the API
+#' endpoint that you are calling. The general form is
+#' 
+#' ` https://s3-&lt;aws-region&gt;.amazonaws.com/&lt;bucket-name&gt;/&lt;keyprefix&gt;/&lt;objectkey&gt; `
+#' 
+#' For example:
+#' 
+#' `https://s3-us-east-1.amazonaws.com/examplebucket/vocab.txt`
+#' 
+#' For more information about S3 object names, see [Object
+#' Keys](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)
+#' in the *Amazon S3 Developer Guide*.
+#' 
+#' For more information about custom vocabularies, see [Custom
+#' Vocabularies](http://docs.aws.amazon.com/transcribe/latest/dg/how-it-works.html#how-vocabulary).
 #'
 #' @section Request syntax:
 #' ```
 #' transcribeservice$create_vocabulary(
 #'   VocabularyName = "string",
-#'   LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT",
+#'   LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR",
 #'   Phrases = list(
 #'     "string"
-#'   )
+#'   ),
+#'   VocabularyFileUri = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname transcribeservice_create_vocabulary
-transcribeservice_create_vocabulary <- function(VocabularyName, LanguageCode, Phrases) {
+transcribeservice_create_vocabulary <- function(VocabularyName, LanguageCode, Phrases = NULL, VocabularyFileUri = NULL) {
   op <- new_operation(
     name = "CreateVocabulary",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .transcribeservice$create_vocabulary_input(VocabularyName = VocabularyName, LanguageCode = LanguageCode, Phrases = Phrases)
+  input <- .transcribeservice$create_vocabulary_input(VocabularyName = VocabularyName, LanguageCode = LanguageCode, Phrases = Phrases, VocabularyFileUri = VocabularyFileUri)
   output <- .transcribeservice$create_vocabulary_output()
   svc <- .transcribeservice$service()
   request <- new_request(svc, op, input, output)
@@ -318,6 +335,10 @@ transcribeservice_list_vocabularies <- function(NextToken = NULL, MaxResults = N
 #' information, see [Permissions Required for IAM User
 #' Roles](https://docs.aws.amazon.com/transcribe/latest/dg/access-control-managing-permissions.html#auth-role-iam-user).
 #' 
+#' Amazon Transcribe uses the default Amazon S3 key for server-side
+#' encryption of transcripts that are placed in your S3 bucket. You can\'t
+#' specify your own encryption key.
+#' 
 #' If you don\'t set the `OutputBucketName`, Amazon Transcribe generates a
 #' pre-signed URL, a shareable URL that provides secure access to your
 #' transcription, and returns it in the `TranscriptFileUri` field. Use this
@@ -329,7 +350,7 @@ transcribeservice_list_vocabularies <- function(NextToken = NULL, MaxResults = N
 #' ```
 #' transcribeservice$start_transcription_job(
 #'   TranscriptionJobName = "string",
-#'   LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT",
+#'   LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR",
 #'   MediaSampleRateHertz = 123,
 #'   MediaFormat = "mp3"|"mp4"|"wav"|"flac",
 #'   Media = list(
@@ -372,34 +393,51 @@ transcribeservice_start_transcription_job <- function(TranscriptionJobName, Lang
 #'
 #' @usage
 #' transcribeservice_update_vocabulary(VocabularyName, LanguageCode,
-#'   Phrases)
+#'   Phrases, VocabularyFileUri)
 #'
 #' @param VocabularyName &#91;required&#93; The name of the vocabulary to update. The name is case-sensitive.
 #' @param LanguageCode &#91;required&#93; The language code of the vocabulary entries.
-#' @param Phrases &#91;required&#93; An array of strings containing the vocabulary entries.
+#' @param Phrases An array of strings containing the vocabulary entries.
+#' @param VocabularyFileUri The S3 location of the text file that contains the definition of the
+#' custom vocabulary. The URI must be in the same region as the API
+#' endpoint that you are calling. The general form is
+#' 
+#' ` https://s3-&lt;aws-region&gt;.amazonaws.com/&lt;bucket-name&gt;/&lt;keyprefix&gt;/&lt;objectkey&gt; `
+#' 
+#' For example:
+#' 
+#' `https://s3-us-east-1.amazonaws.com/examplebucket/vocab.txt`
+#' 
+#' For more information about S3 object names, see [Object
+#' Keys](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)
+#' in the *Amazon S3 Developer Guide*.
+#' 
+#' For more information about custom vocabularies, see [Custom
+#' Vocabularies](http://docs.aws.amazon.com/transcribe/latest/dg/how-it-works.html#how-vocabulary).
 #'
 #' @section Request syntax:
 #' ```
 #' transcribeservice$update_vocabulary(
 #'   VocabularyName = "string",
-#'   LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT",
+#'   LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR",
 #'   Phrases = list(
 #'     "string"
-#'   )
+#'   ),
+#'   VocabularyFileUri = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname transcribeservice_update_vocabulary
-transcribeservice_update_vocabulary <- function(VocabularyName, LanguageCode, Phrases) {
+transcribeservice_update_vocabulary <- function(VocabularyName, LanguageCode, Phrases = NULL, VocabularyFileUri = NULL) {
   op <- new_operation(
     name = "UpdateVocabulary",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .transcribeservice$update_vocabulary_input(VocabularyName = VocabularyName, LanguageCode = LanguageCode, Phrases = Phrases)
+  input <- .transcribeservice$update_vocabulary_input(VocabularyName = VocabularyName, LanguageCode = LanguageCode, Phrases = Phrases, VocabularyFileUri = VocabularyFileUri)
   output <- .transcribeservice$update_vocabulary_output()
   svc <- .transcribeservice$service()
   request <- new_request(svc, op, input, output)

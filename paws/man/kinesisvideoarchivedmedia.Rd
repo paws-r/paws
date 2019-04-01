@@ -20,7 +20,7 @@ kinesisvideoarchivedmedia$operation()
 \tabular{ll}{
 \link[=kinesisvideoarchivedmedia_get_hls_streaming_session_url]{get_hls_streaming_session_url} \tab Retrieves an HTTP Live Streaming (HLS) URL for the stream \cr
 \link[=kinesisvideoarchivedmedia_get_media_for_fragment_list]{get_media_for_fragment_list} \tab Gets media for a list of fragments (specified by fragment number) from the archived data in an Amazon Kinesis video stream\cr
-\link[=kinesisvideoarchivedmedia_list_fragments]{list_fragments} \tab Returns a list of Fragment objects from the specified stream and start location within the archived data
+\link[=kinesisvideoarchivedmedia_list_fragments]{list_fragments} \tab Returns a list of Fragment objects from the specified stream and timestamp range within the archived data
 }
 }
 

@@ -6,7 +6,7 @@
 that you can manage these resources using Run Command}
 \usage{
 ssm_create_activation(Description, DefaultInstanceName, IamRole,
-  RegistrationLimit, ExpirationDate)
+  RegistrationLimit, ExpirationDate, Tags)
 }
 \arguments{
 \item{Description}{A user-defined description of the resource that you want to register
@@ -28,6 +28,30 @@ The default value is 1 instance.}
 
 \item{ExpirationDate}{The date by which this activation request should expire. The default
 value is 24 hours.}
+
+\item{Tags}{Optional metadata that you assign to a resource. Tags enable you to
+categorize a resource in different ways, such as by purpose, owner, or
+environment. For example, you might want to tag an activation to
+identify which servers or virtual machines (VMs) in your on-premises
+environment you intend to activate. In this case, you could specify the
+following key name/value pairs:
+\itemize{
+\item \code{Key=OS,Value=Windows}
+\item \code{Key=Environment,Value=Production}
+}
+
+When you install SSM Agent on your on-premises servers and VMs, you
+specify an activation ID and code. When you specify the activation ID
+and code, tags assigned to the activation are automatically applied to
+the on-premises servers or VMs.
+
+You can't add tags to or delete tags from an existing activation. You
+can tag your on-premises servers and VMs after they connect to Systems
+Manager for the first time and are assigned a managed instance ID. This
+means they are listed in the AWS Systems Manager console with an ID that
+is prefixed with "mi-". For information about how to add tags to your
+managed instances, see AddTagsToResource. For information about how to
+remove tags from your managed instances, see RemoveTagsFromResource.}
 }
 \description{
 Registers your on-premises server or virtual machine with Amazon EC2 so
@@ -43,6 +67,12 @@ managed instance. For more information about activations, see \href{http://docs.
   RegistrationLimit = 123,
   ExpirationDate = as.POSIXct(
     "2015-01-01"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
   )
 )
 }

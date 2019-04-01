@@ -13,8 +13,8 @@ ec2_import_client_vpn_client_certificate_revocation_list(
 revocation list applies.}
 
 \item{CertificateRevocationList}{[required] The client certificate revocation list file. For more information, see
-\href{vpn/latest/clientvpn-admin/cvpn-working-certificates.html#cvpn-working-certificates-generate}{Generate a Client Certificate Revocation List}
-in the \emph{AWS Client VPN Admin Guide}.}
+\href{https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/cvpn-working-certificates.html#cvpn-working-certificates-generate}{Generate a Client Certificate Revocation List}
+in the \emph{AWS Client VPN Administrator Guide}.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

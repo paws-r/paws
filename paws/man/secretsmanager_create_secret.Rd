@@ -99,7 +99,7 @@ to parse.
 For storing multiple values, we recommend that you use a JSON text
 string argument and specify key/value pairs. For information on how to
 format a JSON parameter for the various command line tool environments,
-see \href{http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json}{Using JSON for Parameters}
+see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json}{Using JSON for Parameters}
 in the \emph{AWS CLI User Guide}. For example:
 
 \code{\\[\{"username":"bob"\},\{"password":"abc123xyz456"\}\\]}
@@ -124,7 +124,7 @@ operation is blocked and returns an \code{Access Denied} error.
 
 This parameter requires a JSON text string argument. For information on
 how to format a JSON parameter for the various command line tool
-environments, see \href{http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json}{Using JSON for Parameters}
+environments, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json}{Using JSON for Parameters}
 in the \emph{AWS CLI User Guide}. For example:
 
 \code{\\[\{"Key":"CostCenter","Value":"12345"\},\{"Key":"environment","Value":"production"\}\\]}

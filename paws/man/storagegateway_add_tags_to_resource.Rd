@@ -14,7 +14,8 @@ resource. The value can be an empty string.
 
 Valid characters for key and value are letters, spaces, and numbers
 representable in UTF-8 format, and the following special characters: + -
-= . \_ : / @.}
+= . \_ : / @. The maximum length of a tag's key is 128 characters, and
+the maximum length for a tag's value is 256.}
 }
 \description{
 Adds one or more tags to the specified resource. You use tags to add
@@ -26,14 +27,9 @@ define. You can add tags to the following AWS Storage Gateway resources:
 \details{
 \itemize{
 \item Storage gateways of all types
-}<!-- -->
-
-\itemize{
-\item Storage Volumes
-}<!-- -->
-
-\itemize{
-\item Virtual Tapes
+\item Storage volumes
+\item Virtual tapes
+\item NFS and SMB file shares
 }
 
 You can create a maximum of 10 tags for each resource. Virtual tapes and

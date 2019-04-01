@@ -21,7 +21,8 @@ API.}
 \item{Operation}{[required] Indicates whether you want to increase or decrease the retention period.}
 
 \item{DataRetentionChangeInHours}{[required] The retention period, in hours. The value you specify replaces the
-current value.}
+current value. The maximum value for this parameter is 87600 (ten
+years).}
 }
 \description{
 Increases or decreases the stream's data retention period by the value

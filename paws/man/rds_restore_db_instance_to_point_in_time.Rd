@@ -55,7 +55,7 @@ Constraints: Can't be specified if RestoreTime parameter is provided.}
 \item{DBInstanceClass}{The compute and memory capacity of the Amazon RDS DB instance, for
 example, \code{db.m4.large}. Not all DB instance classes are available in all
 AWS Regions, or for all database engines. For the full list of DB
-instance classes, and availability for your engine, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html}{DB Instance Class}
+instance classes, and availability for your engine, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html}{DB Instance Class}
 in the \emph{Amazon RDS User Guide.}
 
 Default: The same DBInstanceClass as the original DB instance.}
@@ -146,7 +146,7 @@ can't be removed from a DB instance once it is associated with a DB
 instance}
 
 \item{CopyTagsToSnapshot}{True to copy all tags from the restored DB instance to snapshots of the
-DB instance, and otherwise false. The default is false.}
+restored DB instance, and otherwise false. The default is false.}
 
 \item{Tags}{}
 
@@ -190,7 +190,7 @@ Default: \code{false}}
 
 \item{EnableCloudwatchLogsExports}{The list of logs that the restored DB instance is to export to
 CloudWatch Logs. The values in the list depend on the DB engine being
-used. For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
+used. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
 in the \emph{Amazon RDS User Guide}.}
 
 \item{ProcessorFeatures}{The number of CPU cores and the number of threads per core for the DB
@@ -213,7 +213,7 @@ Constraints:
 
 \item{DeletionProtection}{Indicates if the DB instance should have deletion protection enabled.
 The database can't be deleted when this value is set to true. The
-default is false. For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
+default is false. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
 
 \item{SourceDbiResourceId}{The resource ID of the source DB instance from which to restore.}
 }

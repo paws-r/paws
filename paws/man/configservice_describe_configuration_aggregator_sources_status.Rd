@@ -25,9 +25,10 @@ default is maximum. If you specify 0, AWS Config uses the default.}
 }
 \description{
 Returns status information for sources within an aggregator. The status
-includes information about the last time AWS Config aggregated data from
-source accounts or AWS Config failed to aggregate data from source
-accounts with the related error code or message.
+includes information about the last time AWS Config verified
+authorization between the source account and an aggregator account. In
+case of a failure, the status contains the related error code or
+message.
 }
 \section{Request syntax}{
 \preformatted{configservice$describe_configuration_aggregator_sources_status(

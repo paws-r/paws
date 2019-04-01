@@ -95,6 +95,7 @@ cognitoidentityprovider$operation()
 \link[=cognitoidentityprovider_list_groups]{list_groups} \tab Lists the groups associated with a user pool \cr
 \link[=cognitoidentityprovider_list_identity_providers]{list_identity_providers} \tab Lists information about all identity providers for a user pool \cr
 \link[=cognitoidentityprovider_list_resource_servers]{list_resource_servers} \tab Lists the resource servers for a user pool \cr
+\link[=cognitoidentityprovider_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags that are assigned to an Amazon Cognito user pool \cr
 \link[=cognitoidentityprovider_list_user_import_jobs]{list_user_import_jobs} \tab Lists the user import jobs \cr
 \link[=cognitoidentityprovider_list_user_pool_clients]{list_user_pool_clients} \tab Lists the clients that have been created for the specified user pool \cr
 \link[=cognitoidentityprovider_list_user_pools]{list_user_pools} \tab Lists the user pools associated with an AWS account \cr
@@ -110,6 +111,8 @@ cognitoidentityprovider$operation()
 \link[=cognitoidentityprovider_sign_up]{sign_up} \tab Registers the user in the specified user pool and creates a user name, password, and user attributes \cr
 \link[=cognitoidentityprovider_start_user_import_job]{start_user_import_job} \tab Starts the user import \cr
 \link[=cognitoidentityprovider_stop_user_import_job]{stop_user_import_job} \tab Stops the user import job \cr
+\link[=cognitoidentityprovider_tag_resource]{tag_resource} \tab Assigns a set of tags to an Amazon Cognito user pool \cr
+\link[=cognitoidentityprovider_untag_resource]{untag_resource} \tab Removes the specified tags from an Amazon Cognito user pool \cr
 \link[=cognitoidentityprovider_update_auth_event_feedback]{update_auth_event_feedback} \tab Provides the feedback for an authentication event whether it was from a valid user or not \cr
 \link[=cognitoidentityprovider_update_device_status]{update_device_status} \tab Updates the device status \cr
 \link[=cognitoidentityprovider_update_group]{update_group} \tab Updates the specified group with the specified attributes \cr

@@ -2,7 +2,7 @@
 % Please edit documentation in R/mediaconvert_operations.R
 \name{mediaconvert_cancel_job}
 \alias{mediaconvert_cancel_job}
-\title{Permanently remove a job from a queue}
+\title{Permanently cancel a job}
 \usage{
 mediaconvert_cancel_job(Id)
 }
@@ -10,7 +10,7 @@ mediaconvert_cancel_job(Id)
 \item{Id}{[required] The Job ID of the job to be cancelled.}
 }
 \description{
-Permanently remove a job from a queue. Once you have canceled a job, you can't start it again. You can't delete a running job.
+Permanently cancel a job. Once you have canceled a job, you can't start it again.
 }
 \section{Request syntax}{
 \preformatted{mediaconvert$cancel_job(

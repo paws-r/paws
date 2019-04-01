@@ -18,7 +18,7 @@ NULL
 #' also registered with the target groups.
 #' 
 #' For more information, see [Attach EC2 Instances to Your Auto Scaling
-#' Group](http://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-instance-asg.html)
+#' Group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-instance-asg.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
@@ -74,8 +74,11 @@ autoscaling_attach_instances <- function(InstanceIds = NULL, AutoScalingGroupNam
 #' DescribeLoadBalancerTargetGroups. To detach the target group from the
 #' Auto Scaling group, use DetachLoadBalancerTargetGroups.
 #' 
-#' For more information, see [Attach a Load Balancer to Your Auto Scaling
-#' Group](http://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-load-balancer-asg.html)
+#' With Application Load Balancers and Network Load Balancers, instances
+#' are registered as targets with a target group. With Classic Load
+#' Balancers, instances are registered with the load balancer. For more
+#' information, see [Attaching a Load Balancer to Your Auto Scaling
+#' Group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-load-balancer-asg.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
@@ -131,15 +134,16 @@ autoscaling_attach_load_balancer_target_groups <- function(AutoScalingGroupName,
 #' Attaches one or more Classic Load Balancers to the specified Auto
 #' Scaling group.
 #' 
-#' To attach an Application Load Balancer instead, see
-#' AttachLoadBalancerTargetGroups.
+#' To attach an Application Load Balancer or a Network Load Balancer
+#' instead, see AttachLoadBalancerTargetGroups.
 #' 
 #' To describe the load balancers for an Auto Scaling group, use
 #' DescribeLoadBalancers. To detach the load balancer from the Auto Scaling
 #' group, use DetachLoadBalancers.
 #' 
-#' For more information, see [Attach a Load Balancer to Your Auto Scaling
-#' Group](http://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-load-balancer-asg.html)
+#' For more information, see [Attaching a Load Balancer to Your Auto
+#' Scaling
+#' Group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-load-balancer-asg.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
@@ -314,8 +318,8 @@ autoscaling_batch_put_scheduled_update_group_action <- function(AutoScalingGroup
 #' 5.  **If you finish before the timeout period ends, complete the
 #'     lifecycle action.**
 #' 
-#' For more information, see [Auto Scaling
-#' Lifecycle](http://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroupLifecycle.html)
+#' For more information, see [Amazon EC2 Auto Scaling Lifecycle
+#' Hooks](https://docs.aws.amazon.com/autoscaling/ec2/userguide/lifecycle-hooks.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
@@ -379,12 +383,8 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #' 
 #' If you exceed your maximum limit of Auto Scaling groups, the call fails.
 #' For information about viewing this limit, see DescribeAccountLimits. For
-#' information about updating this limit, see [Auto Scaling
-#' Limits](http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html)
-#' in the *Amazon EC2 Auto Scaling User Guide*.
-#' 
-#' For more information, see [Auto Scaling
-#' Groups](http://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroup.html)
+#' information about updating this limit, see [Amazon EC2 Auto Scaling
+#' Limits](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
@@ -400,12 +400,25 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #' scope of your AWS account.
 #' @param LaunchConfigurationName The name of the launch configuration. This parameter, a launch template,
 #' a mixed instances policy, or an EC2 instance must be specified.
+#' 
+#' For more information, see [Creating an Auto Scaling Group Using a Launch
+#' Configuration](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg.html)
+#' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param LaunchTemplate The launch template to use to launch instances. This parameter, a launch
 #' configuration, a mixed instances policy, or an EC2 instance must be
 #' specified.
+#' 
+#' For more information, see [Creating an Auto Scaling Group Using a Launch
+#' Template](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-launch-template.html)
+#' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param MixedInstancesPolicy The mixed instances policy to use to launch instances. This parameter, a
 #' launch template, a launch configuration, or an EC2 instance must be
 #' specified.
+#' 
+#' For more information, see [Auto Scaling Groups with Multiple Instance
+#' Types and Purchase
+#' Options](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-purchase-options.html)
+#' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param InstanceId The ID of the instance used to create a launch configuration for the
 #' group. This parameter, a launch configuration, a launch template, or a
 #' mixed instances policy must be specified.
@@ -416,7 +429,7 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #' for the block device mapping.
 #' 
 #' For more information, see [Create an Auto Scaling Group Using an EC2
-#' Instance](http://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-from-instance.html)
+#' Instance](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-from-instance.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param MinSize &#91;required&#93; The minimum size of the group.
 #' @param MaxSize &#91;required&#93; The maximum size of the group.
@@ -426,71 +439,86 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #' specify a desired capacity, the default is the minimum size of the
 #' group.
 #' @param DefaultCooldown The amount of time, in seconds, after a scaling activity completes
-#' before another scaling activity can start. The default is 300.
+#' before another scaling activity can start. The default value is `300`.
 #' 
 #' For more information, see [Scaling
-#' Cooldowns](http://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html)
+#' Cooldowns](https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param AvailabilityZones One or more Availability Zones for the group. This parameter is optional
-#' if you specify one or more subnets.
+#' if you specify one or more subnets for `VPCZoneIdentifier`.
+#' 
+#' Conditional: If your account supports EC2-Classic and VPC, this
+#' parameter is required to launch instances into EC2-Classic.
 #' @param LoadBalancerNames One or more Classic Load Balancers. To specify an Application Load
-#' Balancer, use `TargetGroupARNs` instead.
+#' Balancer or a Network Load Balancer, use `TargetGroupARNs` instead.
 #' 
 #' For more information, see [Using a Load Balancer With an Auto Scaling
-#' Group](http://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-from-instance.html)
+#' Group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-load-balancer.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param TargetGroupARNs The Amazon Resource Names (ARN) of the target groups.
 #' @param HealthCheckType The service to use for the health checks. The valid values are `EC2` and
-#' `ELB`.
+#' `ELB`. The default value is `EC2`. If you configure an Auto Scaling
+#' group to use ELB health checks, it considers the instance unhealthy if
+#' it fails either the EC2 status checks or the load balancer health
+#' checks.
 #' 
-#' By default, health checks use Amazon EC2 instance status checks to
-#' determine the health of an instance. For more information, see [Health
-#' Checks](http://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html)
+#' For more information, see [Health Checks for Auto Scaling
+#' Instances](https://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param HealthCheckGracePeriod The amount of time, in seconds, that Amazon EC2 Auto Scaling waits
 #' before checking the health status of an EC2 instance that has come into
 #' service. During this time, any health check failures for the instance
-#' are ignored. The default is 0.
+#' are ignored. The default value is `0`.
 #' 
-#' This parameter is required if you are adding an `ELB` health check.
-#' 
-#' For more information, see [Health
-#' Checks](http://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html)
+#' For more information, see [Health Checks for Auto Scaling
+#' Instances](https://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
+#' 
+#' Conditional: This parameter is required if you are adding an `ELB`
+#' health check.
 #' @param PlacementGroup The name of the placement group into which to launch your instances, if
-#' any. For more information, see [Placement
-#' Groups](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
-#' in the *Amazon Elastic Compute Cloud User Guide*.
-#' @param VPCZoneIdentifier A comma-separated list of subnet identifiers for your virtual private
-#' cloud (VPC).
+#' any. A placement group is a logical grouping of instances within a
+#' single Availability Zone. You cannot specify multiple Availability Zones
+#' and a placement group. For more information, see [Placement
+#' Groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
+#' in the *Amazon EC2 User Guide for Linux Instances*.
+#' @param VPCZoneIdentifier A comma-separated list of subnet IDs for your virtual private cloud
+#' (VPC).
 #' 
-#' If you specify subnets and Availability Zones with this call, ensure
-#' that the subnets\' Availability Zones match the Availability Zones
-#' specified.
+#' If you specify `VPCZoneIdentifier` with `AvailabilityZones`, the subnets
+#' that you specify for this parameter must reside in those Availability
+#' Zones.
 #' 
-#' For more information, see [Launching Auto Scaling Instances in a
-#' VPC](http://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html)
-#' in the *Amazon EC2 Auto Scaling User Guide*.
+#' Conditional: If your account supports EC2-Classic and VPC, this
+#' parameter is required to launch instances into a VPC.
 #' @param TerminationPolicies One or more termination policies used to select the instance to
 #' terminate. These policies are executed in the order that they are
 #' listed.
 #' 
 #' For more information, see [Controlling Which Instances Auto Scaling
 #' Terminates During Scale
-#' In](http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html)
-#' in the *Auto Scaling User Guide*.
+#' In](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html)
+#' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param NewInstancesProtectedFromScaleIn Indicates whether newly launched instances are protected from
-#' termination by Auto Scaling when scaling in.
+#' termination by Amazon EC2 Auto Scaling when scaling in.
+#' 
+#' For more information about preventing instances from terminating on
+#' scale in, see [Instance
+#' Protection](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html#instance-protection)
+#' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param LifecycleHookSpecificationList One or more lifecycle hooks.
 #' @param Tags One or more tags.
 #' 
 #' For more information, see [Tagging Auto Scaling Groups and
-#' Instances](http://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-tagging.html)
+#' Instances](https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-tagging.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param ServiceLinkedRoleARN The Amazon Resource Name (ARN) of the service-linked role that the Auto
 #' Scaling group uses to call other AWS services on your behalf. By
 #' default, Amazon EC2 Auto Scaling uses a service-linked role named
-#' AWSServiceRoleForAutoScaling, which it creates if it does not exist.
+#' AWSServiceRoleForAutoScaling, which it creates if it does not exist. For
+#' more information, see [Service-Linked
+#' Roles](https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-service-linked-role.html)
+#' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @section Request syntax:
 #' ```
@@ -638,12 +666,12 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
 #' If you exceed your maximum limit of launch configurations, the call
 #' fails. For information about viewing this limit, see
 #' DescribeAccountLimits. For information about updating this limit, see
-#' [Auto Scaling
-#' Limits](http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html)
+#' [Amazon EC2 Auto Scaling
+#' Limits](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' 
 #' For more information, see [Launch
-#' Configurations](http://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchConfiguration.html)
+#' Configurations](https://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchConfiguration.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
@@ -662,38 +690,45 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
 #' If you do not specify `InstanceId`, you must specify `ImageId`.
 #' 
 #' For more information, see [Finding an
-#' AMI](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html)
-#' in the *Amazon Elastic Compute Cloud User Guide*.
+#' AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html)
+#' in the *Amazon EC2 User Guide for Linux Instances*.
 #' @param KeyName The name of the key pair. For more information, see [Amazon EC2 Key
-#' Pairs](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html)
-#' in the *Amazon Elastic Compute Cloud User Guide*.
+#' Pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html)
+#' in the *Amazon EC2 User Guide for Linux Instances*.
 #' @param SecurityGroups One or more security groups with which to associate the instances.
 #' 
 #' If your instances are launched in EC2-Classic, you can either specify
 #' security group names or the security group IDs. For more information,
 #' see [Amazon EC2 Security
-#' Groups](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html)
-#' in the *Amazon Elastic Compute Cloud User Guide*.
+#' Groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html)
+#' in the *Amazon EC2 User Guide for Linux Instances*.
 #' 
 #' If your instances are launched into a VPC, specify security group IDs.
 #' For more information, see [Security Groups for Your
-#' VPC](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html)
+#' VPC](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html)
 #' in the *Amazon Virtual Private Cloud User Guide*.
 #' @param ClassicLinkVPCId The ID of a ClassicLink-enabled VPC to link your EC2-Classic instances
 #' to. This parameter is supported only if you are launching EC2-Classic
 #' instances. For more information, see
-#' [ClassicLink](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html)
-#' in the *Amazon Elastic Compute Cloud User Guide*.
+#' [ClassicLink](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html)
+#' in the *Amazon EC2 User Guide for Linux Instances* and [Linking
+#' EC2-Classic Instances to a
+#' VPC](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html#as-ClassicLink)
+#' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param ClassicLinkVPCSecurityGroups The IDs of one or more security groups for the specified
-#' ClassicLink-enabled VPC. This parameter is required if you specify a
-#' ClassicLink-enabled VPC, and is not supported otherwise. For more
-#' information, see
-#' [ClassicLink](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html)
-#' in the *Amazon Elastic Compute Cloud User Guide*.
+#' ClassicLink-enabled VPC. For more information, see
+#' [ClassicLink](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html)
+#' in the *Amazon EC2 User Guide for Linux Instances* and [Linking
+#' EC2-Classic Instances to a
+#' VPC](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html#as-ClassicLink)
+#' in the *Amazon EC2 Auto Scaling User Guide*.
+#' 
+#' Conditional: This parameter is required if you specify a
+#' ClassicLink-enabled VPC, and is not supported otherwise.
 #' @param UserData The user data to make available to the launched EC2 instances. For more
 #' information, see [Instance Metadata and User
-#' Data](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)
-#' in the *Amazon Elastic Compute Cloud User Guide*.
+#' Data](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)
+#' in the *Amazon EC2 User Guide for Linux Instances*.
 #' @param InstanceId The ID of the instance to use to create the launch configuration. The
 #' new launch configuration derives attributes from the instance, except
 #' for the block device mapping.
@@ -705,28 +740,28 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
 #' any other instance attributes, specify them as part of the same request.
 #' 
 #' For more information, see [Create a Launch Configuration Using an EC2
-#' Instance](http://docs.aws.amazon.com/autoscaling/ec2/userguide/create-lc-with-instanceID.html)
+#' Instance](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-lc-with-instanceID.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param InstanceType The instance type of the EC2 instance.
 #' 
 #' If you do not specify `InstanceId`, you must specify `InstanceType`.
 #' 
 #' For information about available instance types, see [Available Instance
-#' Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes)
-#' in the *Amazon Elastic Compute Cloud User Guide.*
+#' Types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes)
+#' in the *Amazon EC2 User Guide for Linux Instances.*
 #' @param KernelId The ID of the kernel associated with the AMI.
 #' @param RamdiskId The ID of the RAM disk associated with the AMI.
 #' @param BlockDeviceMappings One or more mappings that specify how block devices are exposed to the
 #' instance. For more information, see [Block Device
-#' Mapping](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html)
-#' in the *Amazon Elastic Compute Cloud User Guide*.
+#' Mapping](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html)
+#' in the *Amazon EC2 User Guide for Linux Instances*.
 #' @param InstanceMonitoring Enables detailed monitoring (`true`) or basic monitoring (`false`) for
-#' the Auto Scaling instances. The default is `true`.
+#' the Auto Scaling instances. The default value is `true`.
 #' @param SpotPrice The maximum hourly price to be paid for any Spot Instance launched to
 #' fulfill the request. Spot Instances are launched when the price you
 #' specify exceeds the current Spot market price. For more information, see
 #' [Launching Spot Instances in Your Auto Scaling
-#' Group](http://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-launch-spot-instances.html)
+#' Group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-launch-spot-instances.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param IamInstanceProfile The name or the Amazon Resource Name (ARN) of the instance profile
 #' associated with the IAM role for the instance.
@@ -735,8 +770,8 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
 #' credentials available. You can use IAM roles with Amazon EC2 Auto
 #' Scaling to automatically enable applications running on your EC2
 #' instances to securely access other AWS resources. For more information,
-#' see [Launch Auto Scaling Instances with an IAM
-#' Role](http://docs.aws.amazon.com/autoscaling/ec2/userguide/us-iam-role.html)
+#' see [Use an IAM Role for Applications That Run on Amazon EC2
+#' Instances](https://docs.aws.amazon.com/autoscaling/ec2/userguide/us-iam-role.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param EbsOptimized Indicates whether the instance is optimized for Amazon EBS I/O. By
 #' default, the instance is not optimized for EBS I/O. The optimization
@@ -744,12 +779,12 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
 #' configuration stack to provide optimal I/O performance. This
 #' optimization is not available with all instance types. Additional usage
 #' charges apply. For more information, see [Amazon EBS-Optimized
-#' Instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSOptimized.html)
-#' in the *Amazon Elastic Compute Cloud User Guide*.
+#' Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSOptimized.html)
+#' in the *Amazon EC2 User Guide for Linux Instances*.
 #' @param AssociatePublicIpAddress Used for groups that launch instances into a virtual private cloud
 #' (VPC). Specifies whether to assign a public IP address to each instance.
 #' For more information, see [Launching Auto Scaling Instances in a
-#' VPC](http://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html)
+#' VPC](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' 
 #' If you specify this parameter, be sure to specify at least one subnet
@@ -769,7 +804,7 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
 #' when you create your group.
 #' 
 #' For more information, see [Launching Auto Scaling Instances in a
-#' VPC](http://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html)
+#' VPC](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' 
 #' Valid values: `default` \\| `dedicated`
@@ -858,7 +893,7 @@ autoscaling_create_launch_configuration <- function(LaunchConfigurationName, Ima
 #' message.
 #' 
 #' For more information, see [Tagging Auto Scaling Groups and
-#' Instances](http://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-tagging.html)
+#' Instances](https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-tagging.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
@@ -1131,9 +1166,9 @@ autoscaling_delete_notification_configuration <- function(AutoScalingGroupName, 
 }
 .autoscaling$operations$delete_notification_configuration <- autoscaling_delete_notification_configuration
 
-#' Deletes the specified Auto Scaling policy
+#' Deletes the specified scaling policy
 #'
-#' Deletes the specified Auto Scaling policy.
+#' Deletes the specified scaling policy.
 #' 
 #' Deleting a policy deletes the underlying alarm action, but does not
 #' delete the alarm, even if it no longer has an associated action.
@@ -1281,13 +1316,15 @@ autoscaling_delete_tags <- function(Tags) {
 }
 .autoscaling$operations$delete_tags <- autoscaling_delete_tags
 
-#' Describes the current Auto Scaling resource limits for your AWS account
+#' Describes the current Amazon EC2 Auto Scaling resource limits for your
+#' AWS account
 #'
-#' Describes the current Auto Scaling resource limits for your AWS account.
+#' Describes the current Amazon EC2 Auto Scaling resource limits for your
+#' AWS account.
 #' 
-#' For information about requesting an increase in these limits, see [Auto
-#' Scaling
-#' Limits](http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html)
+#' For information about requesting an increase in these limits, see
+#' [Amazon EC2 Auto Scaling
+#' Limits](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
@@ -1362,13 +1399,15 @@ autoscaling_describe_adjustment_types <- function() {
 #' autoscaling_describe_auto_scaling_groups(AutoScalingGroupNames,
 #'   NextToken, MaxRecords)
 #'
-#' @param AutoScalingGroupNames The names of the Auto Scaling groups. You can specify up to `MaxRecords`
-#' names. If you omit this parameter, all Auto Scaling groups are
-#' described.
+#' @param AutoScalingGroupNames The names of the Auto Scaling groups. Each name can be a maximum of 1600
+#' characters. By default, you can only specify up to 50 names. You can
+#' optionally increase this limit using the `MaxRecords` parameter.
+#' 
+#' If you omit this parameter, all Auto Scaling groups are described.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
 #' @param MaxRecords The maximum number of items to return with this call. The default value
-#' is 50 and the maximum value is 100.
+#' is `50` and the maximum value is `100`.
 #'
 #' @section Request syntax:
 #' ```
@@ -1420,7 +1459,7 @@ autoscaling_describe_auto_scaling_groups <- function(AutoScalingGroupNames = NUL
 #' omit this parameter, all Auto Scaling instances are described. If you
 #' specify an ID that does not exist, it is ignored with no error.
 #' @param MaxRecords The maximum number of items to return with this call. The default value
-#' is 50 and the maximum value is 50.
+#' is `50` and the maximum value is `50`.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
 #'
@@ -1511,7 +1550,7 @@ autoscaling_describe_auto_scaling_notification_types <- function() {
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
 #' @param MaxRecords The maximum number of items to return with this call. The default value
-#' is 50 and the maximum value is 100.
+#' is `50` and the maximum value is `100`.
 #'
 #' @section Request syntax:
 #' ```
@@ -1651,7 +1690,7 @@ autoscaling_describe_lifecycle_hooks <- function(AutoScalingGroupName, Lifecycle
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
 #' @param MaxRecords The maximum number of items to return with this call. The default value
-#' is 100 and the maximum value is 100.
+#' is `100` and the maximum value is `100`.
 #'
 #' @section Request syntax:
 #' ```
@@ -1693,8 +1732,8 @@ autoscaling_describe_load_balancer_target_groups <- function(AutoScalingGroupNam
 #' Describes the load balancers for the specified Auto Scaling group.
 #' 
 #' This operation describes only Classic Load Balancers. If you have
-#' Application Load Balancers, use DescribeLoadBalancerTargetGroups
-#' instead.
+#' Application Load Balancers or Network Load Balancers, use
+#' DescribeLoadBalancerTargetGroups instead.
 #'
 #' @usage
 #' autoscaling_describe_load_balancers(AutoScalingGroupName, NextToken,
@@ -1704,7 +1743,7 @@ autoscaling_describe_load_balancer_target_groups <- function(AutoScalingGroupNam
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
 #' @param MaxRecords The maximum number of items to return with this call. The default value
-#' is 100 and the maximum value is 100.
+#' is `100` and the maximum value is `100`.
 #'
 #' @section Request syntax:
 #' ```
@@ -1792,7 +1831,7 @@ autoscaling_describe_metric_collection_types <- function() {
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
 #' @param MaxRecords The maximum number of items to return with this call. The default value
-#' is 50 and the maximum value is 100.
+#' is `50` and the maximum value is `100`.
 #'
 #' @section Request syntax:
 #' ```
@@ -1846,12 +1885,12 @@ autoscaling_describe_notification_configurations <- function(AutoScalingGroupNam
 #' policies are described. If a group name is provided, the results are
 #' limited to that group. This list is limited to 50 items. If you specify
 #' an unknown policy name, it is ignored with no error.
-#' @param PolicyTypes One or more policy types. Valid values are `SimpleScaling` and
-#' `StepScaling`.
+#' @param PolicyTypes One or more policy types. The valid values are `SimpleScaling`,
+#' `StepScaling`, and `TargetTrackingScaling`.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
 #' @param MaxRecords The maximum number of items to be returned with each call. The default
-#' value is 50 and the maximum value is 100.
+#' value is `50` and the maximum value is `100`.
 #'
 #' @section Request syntax:
 #' ```
@@ -1911,7 +1950,7 @@ autoscaling_describe_policies <- function(AutoScalingGroupName = NULL, PolicyNam
 #' are limited to that group.
 #' @param AutoScalingGroupName The name of the Auto Scaling group.
 #' @param MaxRecords The maximum number of items to return with this call. The default value
-#' is 100 and the maximum value is 100.
+#' is `100` and the maximum value is `100`.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
 #'
@@ -2012,7 +2051,7 @@ autoscaling_describe_scaling_process_types <- function() {
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
 #' @param MaxRecords The maximum number of items to return with this call. The default value
-#' is 50 and the maximum value is 100.
+#' is `50` and the maximum value is `100`.
 #'
 #' @section Request syntax:
 #' ```
@@ -2079,7 +2118,7 @@ autoscaling_describe_scheduled_actions <- function(AutoScalingGroupName = NULL, 
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
 #' @param MaxRecords The maximum number of items to return with this call. The default value
-#' is 50 and the maximum value is 100.
+#' is `50` and the maximum value is `100`.
 #'
 #' @section Request syntax:
 #' ```
@@ -2135,7 +2174,7 @@ autoscaling_describe_tags <- function(Filters = NULL, NextToken = NULL, MaxRecor
 #' 
 #' For more information, see [Controlling Which Auto Scaling Instances
 #' Terminate During Scale
-#' In](http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html)
+#' In](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
@@ -2185,7 +2224,7 @@ autoscaling_describe_termination_policy_types <- function() {
 #' deregistered from the target groups.
 #' 
 #' For more information, see [Detach EC2 Instances from Your Auto Scaling
-#' Group](http://docs.aws.amazon.com/autoscaling/ec2/userguide/detach-instance-asg.html)
+#' Group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/detach-instance-asg.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
@@ -2297,7 +2336,8 @@ autoscaling_detach_load_balancer_target_groups <- function(AutoScalingGroupName,
 #' Scaling group.
 #' 
 #' This operation detaches only Classic Load Balancers. If you have
-#' Application Load Balancers, use DetachLoadBalancerTargetGroups instead.
+#' Application Load Balancers or Network Load Balancers, use
+#' DetachLoadBalancerTargetGroups instead.
 #' 
 #' When you detach a load balancer, it enters the `Removing` state while
 #' deregistering the instances in the group. When all instances are
@@ -2421,7 +2461,7 @@ autoscaling_disable_metrics_collection <- function(AutoScalingGroupName, Metrics
 #'
 #' Enables group metrics for the specified Auto Scaling group. For more
 #' information, see [Monitoring Your Auto Scaling Groups and
-#' Instances](http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-monitoring.html)
+#' Instances](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-monitoring.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
@@ -2494,7 +2534,7 @@ autoscaling_enable_metrics_collection <- function(AutoScalingGroupName, Metrics 
 #' 
 #' For more information, see [Temporarily Removing Instances from Your Auto
 #' Scaling
-#' Group](http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enter-exit-standby.html)
+#' Group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enter-exit-standby.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
@@ -2562,7 +2602,7 @@ autoscaling_enter_standby <- function(InstanceIds = NULL, AutoScalingGroupName, 
 #' This parameter is not supported if the policy type is `StepScaling`.
 #' 
 #' For more information, see [Scaling
-#' Cooldowns](http://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html)
+#' Cooldowns](https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param MetricValue The metric value to compare to `BreachThreshold`. This enables you to
 #' execute a policy of type `StepScaling` and determine which step
@@ -2573,12 +2613,12 @@ autoscaling_enter_standby <- function(InstanceIds = NULL, AutoScalingGroupName, 
 #' If you specify a metric value that doesn\'t correspond to a step
 #' adjustment for the policy, the call returns an error.
 #' 
-#' This parameter is required if the policy type is `StepScaling` and not
-#' supported otherwise.
+#' Conditional: This parameter is required if the policy type is
+#' `StepScaling` and not supported otherwise.
 #' @param BreachThreshold The breach threshold for the alarm.
 #' 
-#' This parameter is required if the policy type is `StepScaling` and not
-#' supported otherwise.
+#' Conditional: This parameter is required if the policy type is
+#' `StepScaling` and not supported otherwise.
 #'
 #' @section Request syntax:
 #' ```
@@ -2625,7 +2665,7 @@ autoscaling_execute_policy <- function(AutoScalingGroupName = NULL, PolicyName, 
 #' 
 #' For more information, see [Temporarily Removing Instances from Your Auto
 #' Scaling
-#' Group](http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enter-exit-standby.html)
+#' Group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enter-exit-standby.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
@@ -2678,8 +2718,8 @@ autoscaling_exit_standby <- function(InstanceIds = NULL, AutoScalingGroupName) {
 #' group.
 #' 
 #' A lifecycle hook tells Amazon EC2 Auto Scaling to perform an action on
-#' an instance that is not actively in service; for example, either when
-#' the instance launches or before the instance terminates.
+#' an instance when the instance launches (before it is put into service)
+#' or as the instance terminates (before it is fully terminated).
 #' 
 #' This step is a part of the procedure for adding a lifecycle hook to an
 #' Auto Scaling group:
@@ -2697,20 +2737,22 @@ autoscaling_exit_standby <- function(InstanceIds = NULL, AutoScalingGroupName) {
 #'     the instances launch or terminate.**
 #' 
 #' 4.  If you need more time, record the lifecycle action heartbeat to keep
-#'     the instance in a pending state.
+#'     the instance in a pending state using using
+#'     RecordLifecycleActionHeartbeat.
 #' 
 #' 5.  If you finish before the timeout period ends, complete the lifecycle
-#'     action.
+#'     action using CompleteLifecycleAction.
 #' 
-#' For more information, see [Auto Scaling Lifecycle
-#' Hooks](http://docs.aws.amazon.com/autoscaling/ec2/userguide/lifecycle-hooks.html)
+#' For more information, see [Amazon EC2 Auto Scaling Lifecycle
+#' Hooks](https://docs.aws.amazon.com/autoscaling/ec2/userguide/lifecycle-hooks.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' 
 #' If you exceed your maximum limit of lifecycle hooks, which by default is
-#' 50 per Auto Scaling group, the call fails. For information about
-#' updating this limit, see [AWS Service
-#' Limits](http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html)
-#' in the *Amazon Web Services General Reference*.
+#' 50 per Auto Scaling group, the call fails.
+#' 
+#' You can view the lifecycle hooks for an Auto Scaling group using
+#' DescribeLifecycleHooks. If you are no longer using a lifecycle hook, you
+#' can delete it using DeleteLifecycleHook.
 #'
 #' @usage
 #' autoscaling_put_lifecycle_hook(LifecycleHookName, AutoScalingGroupName,
@@ -2720,23 +2762,25 @@ autoscaling_exit_standby <- function(InstanceIds = NULL, AutoScalingGroupName) {
 #' @param LifecycleHookName &#91;required&#93; The name of the lifecycle hook.
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param LifecycleTransition The instance state to which you want to attach the lifecycle hook. The
-#' possible values are:
+#' valid values are:
 #' 
 #' -   autoscaling:EC2\\_INSTANCE\\_LAUNCHING
 #' 
 #' -   autoscaling:EC2\\_INSTANCE\\_TERMINATING
 #' 
-#' This parameter is required for new lifecycle hooks, but optional when
-#' updating existing hooks.
+#' Conditional: This parameter is required for new lifecycle hooks, but
+#' optional when updating existing hooks.
 #' @param RoleARN The ARN of the IAM role that allows the Auto Scaling group to publish to
-#' the specified notification target.
+#' the specified notification target, for example, an Amazon SNS topic or
+#' an Amazon SQS queue.
 #' 
-#' This parameter is required for new lifecycle hooks, but optional when
-#' updating existing hooks.
+#' Conditional: This parameter is required for new lifecycle hooks, but
+#' optional when updating existing hooks.
 #' @param NotificationTargetARN The ARN of the notification target that Amazon EC2 Auto Scaling uses to
 #' notify you when an instance is in the transition state for the lifecycle
-#' hook. This target can be either an SQS queue or an SNS topic. If you
-#' specify an empty string, this overrides the current ARN.
+#' hook. This target can be either an SQS queue or an SNS topic.
+#' 
+#' If you specify an empty string, this overrides the current ARN.
 #' 
 #' This operation uses the JSON format when sending notifications to an
 #' Amazon SQS queue, and an email key-value pair format when sending
@@ -2745,15 +2789,16 @@ autoscaling_exit_standby <- function(InstanceIds = NULL, AutoScalingGroupName) {
 #' When you specify a notification target, Amazon EC2 Auto Scaling sends it
 #' a test message. Test messages contain the following additional key-value
 #' pair: `"Event": "autoscaling:TEST_NOTIFICATION"`.
-#' @param NotificationMetadata Contains additional information that you want to include any time Amazon
-#' EC2 Auto Scaling sends a message to the notification target.
+#' @param NotificationMetadata Additional information that you want to include any time Amazon EC2 Auto
+#' Scaling sends a message to the notification target.
 #' @param HeartbeatTimeout The maximum time, in seconds, that can elapse before the lifecycle hook
-#' times out. The range is from 30 to 7200 seconds. The default is 3600
-#' seconds (1 hour).
+#' times out. The range is from `30` to `7200` seconds. The default value
+#' is `3600` seconds (1 hour).
 #' 
 #' If the lifecycle hook times out, Amazon EC2 Auto Scaling performs the
-#' default action. You can prevent the lifecycle hook from timing out by
-#' calling RecordLifecycleActionHeartbeat.
+#' action that you specified in the `DefaultResult` parameter. You can
+#' prevent the lifecycle hook from timing out by calling
+#' RecordLifecycleActionHeartbeat.
 #' @param DefaultResult Defines the action the Auto Scaling group should take when the lifecycle
 #' hook timeout elapses or if an unexpected failure occurs. This parameter
 #' can be either `CONTINUE` or `ABANDON`. The default value is `ABANDON`.
@@ -2810,10 +2855,10 @@ autoscaling_put_lifecycle_hook <- function(LifecycleHookName, AutoScalingGroupNa
 #' 
 #' This configuration overwrites any existing configuration.
 #' 
-#' For more information, see [Getting SNS Notifications When Your Auto
-#' Scaling Group
-#' Scales](http://docs.aws.amazon.com/autoscaling/ec2/userguide/ASGettingNotifications.html)
-#' in the *Auto Scaling User Guide*.
+#' For more information, see [Getting Amazon SNS Notifications When Your
+#' Auto Scaling Group
+#' Scales](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ASGettingNotifications.html)
+#' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
 #' autoscaling_put_notification_configuration(AutoScalingGroupName,
@@ -2873,12 +2918,6 @@ autoscaling_put_notification_configuration <- function(AutoScalingGroupName, Top
 #' existing policy, use the existing policy name and set the parameters to
 #' change. Any existing parameter not changed in an update to an existing
 #' policy is not changed in this update request.
-#' 
-#' If you exceed your maximum limit of step adjustments, which by default
-#' is 20 per region, the call fails. For information about updating this
-#' limit, see [AWS Service
-#' Limits](http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html)
-#' in the *Amazon Web Services General Reference*.
 #'
 #' @usage
 #' autoscaling_put_scaling_policy(AutoScalingGroupName, PolicyName,
@@ -2898,7 +2937,7 @@ autoscaling_put_notification_configuration <- function(AutoScalingGroupName, Top
 #' `StepScaling`.
 #' 
 #' For more information, see [Dynamic
-#' Scaling](http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scale-based-on-demand.html)
+#' Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scale-based-on-demand.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param MinAdjustmentStep Available for backward compatibility. Use `MinAdjustmentMagnitude`
 #' instead.
@@ -2913,8 +2952,8 @@ autoscaling_put_notification_configuration <- function(AutoScalingGroupName, Top
 #' positive value adds to the current capacity while a negative number
 #' removes from the current capacity.
 #' 
-#' This parameter is required if the policy type is `SimpleScaling` and not
-#' supported otherwise.
+#' Conditional: This parameter is required if the policy type is
+#' `SimpleScaling` and not supported otherwise.
 #' @param Cooldown The amount of time, in seconds, after a scaling activity completes and
 #' before the next scaling activity can start. If this parameter is not
 #' specified, the default cooldown period for the group applies.
@@ -2922,7 +2961,7 @@ autoscaling_put_notification_configuration <- function(AutoScalingGroupName, Top
 #' This parameter is supported if the policy type is `SimpleScaling`.
 #' 
 #' For more information, see [Scaling
-#' Cooldowns](http://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html)
+#' Cooldowns](https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param MetricAggregationType The aggregation type for the CloudWatch metrics. The valid values are
 #' `Minimum`, `Maximum`, and `Average`. If the aggregation type is null,
@@ -2932,18 +2971,19 @@ autoscaling_put_notification_configuration <- function(AutoScalingGroupName, Top
 #' @param StepAdjustments A set of adjustments that enable you to scale based on the size of the
 #' alarm breach.
 #' 
-#' This parameter is required if the policy type is `StepScaling` and not
-#' supported otherwise.
+#' Conditional: This parameter is required if the policy type is
+#' `StepScaling` and not supported otherwise.
 #' @param EstimatedInstanceWarmup The estimated time, in seconds, until a newly launched instance can
 #' contribute to the CloudWatch metrics. The default is to use the value
 #' specified for the default cooldown period for the group.
 #' 
 #' This parameter is supported if the policy type is `StepScaling` or
 #' `TargetTrackingScaling`.
-#' @param TargetTrackingConfiguration A target tracking policy.
+#' @param TargetTrackingConfiguration A target tracking scaling policy. Includes support for predefined or
+#' customized metrics.
 #' 
-#' This parameter is required if the policy type is `TargetTrackingScaling`
-#' and not supported otherwise.
+#' Conditional: This parameter is required if the policy type is
+#' `TargetTrackingScaling` and not supported otherwise.
 #'
 #' @section Request syntax:
 #' ```
@@ -3024,7 +3064,7 @@ autoscaling_put_scaling_policy <- function(AutoScalingGroupName, PolicyName, Pol
 #' action, the corresponding value remains unchanged.
 #' 
 #' For more information, see [Scheduled
-#' Scaling](http://docs.aws.amazon.com/autoscaling/ec2/userguide/schedule_time.html)
+#' Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/schedule_time.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
@@ -3035,8 +3075,8 @@ autoscaling_put_scaling_policy <- function(AutoScalingGroupName, PolicyName, Pol
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param ScheduledActionName &#91;required&#93; The name of this scaling action.
 #' @param Time This parameter is deprecated.
-#' @param StartTime The time for this action to start, in \"YYYY-MM-DDThh:mm:ssZ\" format in
-#' UTC/GMT only (for example, `2014-06-01T00:00:00Z`).
+#' @param StartTime The time for this action to start, in YYYY-MM-DDThh:mm:ssZ format in
+#' UTC/GMT only and in quotes (for example, `"2019-06-01T00:00:00Z"`).
 #' 
 #' If you specify `Recurrence` and `StartTime`, Amazon EC2 Auto Scaling
 #' performs the action at this time, and then performs the action based on
@@ -3046,8 +3086,11 @@ autoscaling_put_scaling_policy <- function(AutoScalingGroupName, PolicyName, Pol
 #' returns an error message.
 #' @param EndTime The time for the recurring schedule to end. Amazon EC2 Auto Scaling does
 #' not perform the action after this time.
-#' @param Recurrence The recurring schedule for this action, in Unix cron syntax format. For
-#' more information about this format, see [Crontab](http://crontab.org).
+#' @param Recurrence The recurring schedule for this action, in Unix cron syntax format. This
+#' format consists of five fields separated by white spaces: \[Minute\]
+#' \[Hour\] \[Day\\_of\\_Month\] \[Month\\_of\\_Year\] \[Day\\_of\\_Week\]. The
+#' value must be in quotes (for example, `"30 0 1 1,6,12 *"`). For more
+#' information about this format, see [Crontab](http://crontab.org).
 #' @param MinSize The minimum size for the Auto Scaling group.
 #' @param MaxSize The maximum size for the Auto Scaling group.
 #' @param DesiredCapacity The number of EC2 instances that should be running in the group.
@@ -3134,7 +3177,7 @@ autoscaling_put_scheduled_update_group_action <- function(AutoScalingGroupName, 
 #'     action.
 #' 
 #' For more information, see [Auto Scaling
-#' Lifecycle](http://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroupLifecycle.html)
+#' Lifecycle](https://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroupLifecycle.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
@@ -3194,7 +3237,7 @@ autoscaling_record_lifecycle_action_heartbeat <- function(LifecycleHookName, Aut
 #' suspended process, for the specified Auto Scaling group.
 #' 
 #' For more information, see [Suspending and Resuming Scaling
-#' Processes](http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html)
+#' Processes](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
@@ -3265,7 +3308,7 @@ autoscaling_resume_processes <- function(AutoScalingGroupName, ScalingProcesses 
 #' 
 #' For more information about desired capacity, see [What Is Amazon EC2
 #' Auto
-#' Scaling?](http://docs.aws.amazon.com/autoscaling/ec2/userguide/WhatIsAutoScaling.html)
+#' Scaling?](https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
@@ -3321,8 +3364,8 @@ autoscaling_set_desired_capacity <- function(AutoScalingGroupName, DesiredCapaci
 #'
 #' Sets the health status of the specified instance.
 #' 
-#' For more information, see [Health
-#' Checks](http://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html)
+#' For more information, see [Health Checks for Auto Scaling
+#' Instances](https://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
@@ -3382,8 +3425,9 @@ autoscaling_set_instance_health <- function(InstanceId, HealthStatus, ShouldResp
 #'
 #' Updates the instance protection settings of the specified instances.
 #' 
-#' For more information, see [Instance
-#' Protection](http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html#instance-protection)
+#' For more information about preventing instances that are part of an Auto
+#' Scaling group from terminating on scale in, see [Instance
+#' Protection](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html#instance-protection)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
@@ -3456,7 +3500,7 @@ autoscaling_set_instance_protection <- function(InstanceIds, AutoScalingGroupNam
 #' To resume processes that have been suspended, use ResumeProcesses.
 #' 
 #' For more information, see [Suspending and Resuming Scaling
-#' Processes](http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html)
+#' Processes](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
@@ -3619,53 +3663,68 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
 #' @param MixedInstancesPolicy The mixed instances policy to use to specify the updates. If you specify
 #' this parameter, you can\'t specify a launch configuration or a launch
 #' template.
+#' 
+#' For more information, see [Auto Scaling Groups with Multiple Instance
+#' Types and Purchase
+#' Options](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-purchase-options.html)
+#' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param MinSize The minimum size of the Auto Scaling group.
 #' @param MaxSize The maximum size of the Auto Scaling group.
 #' @param DesiredCapacity The number of EC2 instances that should be running in the Auto Scaling
 #' group. This number must be greater than or equal to the minimum size of
 #' the group and less than or equal to the maximum size of the group.
 #' @param DefaultCooldown The amount of time, in seconds, after a scaling activity completes
-#' before another scaling activity can start. The default is 300.
+#' before another scaling activity can start. The default value is `300`.
 #' 
 #' For more information, see [Scaling
-#' Cooldowns](http://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html)
+#' Cooldowns](https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param AvailabilityZones One or more Availability Zones for the group.
 #' @param HealthCheckType The service to use for the health checks. The valid values are `EC2` and
-#' `ELB`.
+#' `ELB`. If you configure an Auto Scaling group to use ELB health checks,
+#' it considers the instance unhealthy if it fails either the EC2 status
+#' checks or the load balancer health checks.
 #' @param HealthCheckGracePeriod The amount of time, in seconds, that Amazon EC2 Auto Scaling waits
 #' before checking the health status of an EC2 instance that has come into
-#' service. The default is 0.
+#' service. The default value is `0`.
 #' 
-#' For more information, see [Health
-#' Checks](http://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html)
+#' For more information, see [Health Checks for Auto Scaling
+#' Instances](https://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
+#' 
+#' Conditional: This parameter is required if you are adding an `ELB`
+#' health check.
 #' @param PlacementGroup The name of the placement group into which to launch your instances, if
-#' any. For more information, see [Placement
-#' Groups](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
-#' in the *Amazon Elastic Compute Cloud User Guide*.
-#' @param VPCZoneIdentifier The ID of the subnet, if you are launching into a VPC. You can specify
-#' several subnets in a comma-separated list.
+#' any. A placement group is a logical grouping of instances within a
+#' single Availability Zone. You cannot specify multiple Availability Zones
+#' and a placement group. For more information, see [Placement
+#' Groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
+#' in the *Amazon EC2 User Guide for Linux Instances*.
+#' @param VPCZoneIdentifier A comma-separated list of subnet IDs, if you are launching into a VPC.
 #' 
-#' When you specify `VPCZoneIdentifier` with `AvailabilityZones`, ensure
-#' that the subnets\' Availability Zones match the values you specify for
-#' `AvailabilityZones`.
-#' 
-#' For more information, see [Launching Auto Scaling Instances in a
-#' VPC](http://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html)
-#' in the *Amazon EC2 Auto Scaling User Guide*.
+#' If you specify `VPCZoneIdentifier` with `AvailabilityZones`, the subnets
+#' that you specify for this parameter must reside in those Availability
+#' Zones.
 #' @param TerminationPolicies A standalone termination policy or a list of termination policies used
 #' to select the instance to terminate. The policies are executed in the
 #' order that they are listed.
 #' 
 #' For more information, see [Controlling Which Instances Auto Scaling
 #' Terminates During Scale
-#' In](http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html)
-#' in the *Auto Scaling User Guide*.
+#' In](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html)
+#' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param NewInstancesProtectedFromScaleIn Indicates whether newly launched instances are protected from
-#' termination by Auto Scaling when scaling in.
+#' termination by Amazon EC2 Auto Scaling when scaling in.
+#' 
+#' For more information about preventing instances from terminating on
+#' scale in, see [Instance
+#' Protection](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html#instance-protection)
+#' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param ServiceLinkedRoleARN The Amazon Resource Name (ARN) of the service-linked role that the Auto
-#' Scaling group uses to call other AWS services on your behalf.
+#' Scaling group uses to call other AWS services on your behalf. For more
+#' information, see [Service-Linked
+#' Roles](https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-service-linked-role.html)
+#' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @section Request syntax:
 #' ```

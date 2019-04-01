@@ -7,7 +7,7 @@
 appmesh_delete_virtual_router(meshName, virtualRouterName)
 }
 \arguments{
-\item{meshName}{[required] The name of the service mesh in which to delete the virtual router.}
+\item{meshName}{[required] The name of the service mesh to delete the virtual router in.}
 
 \item{virtualRouterName}{[required] The name of the virtual router to delete.}
 }

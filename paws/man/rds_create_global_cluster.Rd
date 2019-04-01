@@ -39,6 +39,8 @@ You can create a global database that is initially empty, and then add a
 primary cluster and a secondary cluster to it. Or you can specify an
 existing Aurora cluster during the create operation, and this cluster
 becomes the primary cluster of the global database.
+
+This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
 \preformatted{rds$create_global_cluster(

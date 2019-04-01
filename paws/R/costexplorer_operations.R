@@ -19,7 +19,7 @@ NULL
 #' costexplorer_get_cost_and_usage(TimePeriod, Granularity, Filter,
 #'   Metrics, GroupBy, NextPageToken)
 #'
-#' @param TimePeriod Sets the start and end dates for retrieving AWS costs. The start date is
+#' @param TimePeriod &#91;required&#93; Sets the start and end dates for retrieving AWS costs. The start date is
 #' inclusive, but the end date is exclusive. For example, if `start` is
 #' `2017-01-01` and `end` is `2017-05-01`, then the cost and usage data is
 #' retrieved from `2017-01-01` up to and including `2017-04-30` but not
@@ -112,7 +112,7 @@ NULL
 #' @keywords internal
 #'
 #' @rdname costexplorer_get_cost_and_usage
-costexplorer_get_cost_and_usage <- function(TimePeriod = NULL, Granularity = NULL, Filter = NULL, Metrics = NULL, GroupBy = NULL, NextPageToken = NULL) {
+costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity = NULL, Filter = NULL, Metrics = NULL, GroupBy = NULL, NextPageToken = NULL) {
   op <- new_operation(
     name = "GetCostAndUsage",
     http_method = "POST",
@@ -472,7 +472,10 @@ costexplorer_get_dimension_values <- function(SearchString = NULL, TimePeriod, D
 #' values for a dimension, they are OR\'d together.
 #' 
 #' If you don\'t provide a `SERVICE` filter, Cost Explorer defaults to EC2.
-#' @param Metrics 
+#' @param Metrics The measurement that you want your reservation coverage reported in.
+#' 
+#' Valid values are `Hour`, `Unit`, and `Cost`. You can use multiple values
+#' in a request.
 #' @param NextPageToken The token to retrieve the next set of results. AWS provides the token
 #' when the response from a previous call has more results than the maximum
 #' page size.

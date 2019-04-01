@@ -62,8 +62,8 @@ This operation is idempotent, which means that it completes at most one
 time. If you attempt to create multiple listeners with the same
 settings, each call succeeds.
 
-For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html}{Listeners for Your Application Load Balancers}
-in the \emph{Application Load Balancers Guide} and \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html}{Listeners for Your Network Load Balancers}
+For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html}{Listeners for Your Application Load Balancers}
+in the \emph{Application Load Balancers Guide} and \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html}{Listeners for Your Network Load Balancers}
 in the \emph{Network Load Balancers Guide}.
 }
 \section{Request syntax}{
@@ -95,7 +95,8 @@ in the \emph{Network Load Balancers Guide}.
         AuthenticationRequestExtraParams = list(
           "string"
         ),
-        OnUnauthenticatedRequest = "deny"|"allow"|"authenticate"
+        OnUnauthenticatedRequest = "deny"|"allow"|"authenticate",
+        UseExistingClientSecret = TRUE|FALSE
       ),
       AuthenticateCognitoConfig = list(
         UserPoolArn = "string",

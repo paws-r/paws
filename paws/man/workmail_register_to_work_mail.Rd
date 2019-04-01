@@ -2,30 +2,32 @@
 % Please edit documentation in R/workmail_operations.R
 \name{workmail_register_to_work_mail}
 \alias{workmail_register_to_work_mail}
-\title{Registers an existing and disabled user, group, or resource/entity for
-Amazon WorkMail use by associating a mailbox and calendaring
-capabilities}
+\title{Registers an existing and disabled user, group, or resource for Amazon
+WorkMail use by associating a mailbox and calendaring capabilities}
 \usage{
 workmail_register_to_work_mail(OrganizationId, EntityId, Email)
 }
 \arguments{
-\item{OrganizationId}{[required] The identifier for the organization under which the Amazon WorkMail
-entity exists.}
+\item{OrganizationId}{[required] The identifier for the organization under which the user, group, or
+resource exists.}
 
-\item{EntityId}{[required] The identifier for the entity to be updated.}
+\item{EntityId}{[required] The identifier for the user, group, or resource to be updated.}
 
-\item{Email}{[required] The email for the entity to be updated.}
+\item{Email}{[required] The email for the user, group, or resource to be updated.}
 }
 \description{
-Registers an existing and disabled user, group, or resource/entity for
-Amazon WorkMail use by associating a mailbox and calendaring
-capabilities. It performs no change if the entity is enabled and fails
-if the entity is deleted. This operation results in the accumulation of
-costs. For more information, see
-\href{http://aws.amazon.com/workmail/pricing}{Pricing}. The equivalent
-console functionality for this operation is \emph{Enable}. Users can either
-be created by calling the CreateUser API or they can be synchronized
-from your directory. For more information, see DeregisterFromWorkMail.
+Registers an existing and disabled user, group, or resource for Amazon
+WorkMail use by associating a mailbox and calendaring capabilities. It
+performs no change if the user, group, or resource is enabled and fails
+if the user, group, or resource is deleted. This operation results in
+the accumulation of costs. For more information, see
+\href{https://aws.amazon.com//workmail/pricing}{Pricing}. The equivalent
+console functionality for this operation is \emph{Enable}.
+}
+\details{
+Users can either be created by calling the CreateUser API operation or
+they can be synchronized from your directory. For more information, see
+DeregisterFromWorkMail.
 }
 \section{Request syntax}{
 \preformatted{workmail$register_to_work_mail(

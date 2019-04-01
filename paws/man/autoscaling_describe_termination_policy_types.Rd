@@ -10,7 +10,7 @@ autoscaling_describe_termination_policy_types()
 Describes the termination policies supported by Amazon EC2 Auto Scaling.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html}{Controlling Which Auto Scaling Instances Terminate During Scale In}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html}{Controlling Which Auto Scaling Instances Terminate During Scale In}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \examples{

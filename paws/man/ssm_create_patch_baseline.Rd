@@ -7,7 +7,7 @@
 ssm_create_patch_baseline(OperatingSystem, Name, GlobalFilters,
   ApprovalRules, ApprovedPatches, ApprovedPatchesComplianceLevel,
   ApprovedPatchesEnableNonSecurity, RejectedPatches,
-  RejectedPatchesAction, Description, Sources, ClientToken)
+  RejectedPatchesAction, Description, Sources, ClientToken, Tags)
 }
 \arguments{
 \item{OperatingSystem}{Defines the operating system the patch baseline applies to. The Default
@@ -15,7 +15,7 @@ value is WINDOWS.}
 
 \item{Name}{[required] The name of the patch baseline.}
 
-\item{GlobalFilters}{A set of global filters used to exclude patches from the baseline.}
+\item{GlobalFilters}{A set of global filters used to include patches in the baseline.}
 
 \item{ApprovalRules}{A set of rules used to include patches in the baseline.}
 
@@ -61,6 +61,20 @@ target operating systems and source repositories. Applies to Linux
 instances only.}
 
 \item{ClientToken}{User-provided idempotency token.}
+
+\item{Tags}{Optional metadata that you assign to a resource. Tags enable you to
+categorize a resource in different ways, such as by purpose, owner, or
+environment. For example, you might want to tag a patch baseline to
+identify the severity level of patches it specifies and the operating
+system family it applies to. In this case, you could specify the
+following key name/value pairs:
+\itemize{
+\item \code{Key=PatchSeverity,Value=Critical}
+\item \code{Key=OS,Value=Windows}
+}
+
+To add tags to an existing patch baseline, use the AddTagsToResource
+action.}
 }
 \description{
 Creates a patch baseline.
@@ -122,7 +136,13 @@ each supported operating system type, see
       Configuration = "string"
     )
   ),
-  ClientToken = "string"
+  ClientToken = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

@@ -182,6 +182,10 @@ test_that("describe_internet_gateways", {
   expect_error(svc$describe_internet_gateways(), NA)
 })
 
+test_that("describe_internet_gateways", {
+  expect_error(svc$describe_internet_gateways(MaxResults = 20), NA)
+})
+
 test_that("describe_key_pairs", {
   expect_error(svc$describe_key_pairs(), NA)
 })
@@ -212,6 +216,10 @@ test_that("describe_nat_gateways", {
 
 test_that("describe_network_acls", {
   expect_error(svc$describe_network_acls(), NA)
+})
+
+test_that("describe_network_acls", {
+  expect_error(svc$describe_network_acls(MaxResults = 20), NA)
 })
 
 test_that("describe_network_interface_permissions", {
@@ -456,6 +464,10 @@ test_that("describe_vpc_peering_connections", {
 
 test_that("describe_vpcs", {
   expect_error(svc$describe_vpcs(), NA)
+})
+
+test_that("describe_vpcs", {
+  expect_error(svc$describe_vpcs(MaxResults = 20), NA)
 })
 
 test_that("describe_vpn_connections", {

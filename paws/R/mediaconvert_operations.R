@@ -39,9 +39,9 @@ mediaconvert_associate_certificate <- function(Arn) {
 }
 .mediaconvert$operations$associate_certificate <- mediaconvert_associate_certificate
 
-#' Permanently remove a job from a queue
+#' Permanently cancel a job
 #'
-#' Permanently remove a job from a queue. Once you have canceled a job, you can't start it again. You can't delete a running job.
+#' Permanently cancel a job. Once you have canceled a job, you can't start it again.
 #'
 #' @usage
 #' mediaconvert_cancel_job(Id)
@@ -80,15 +80,17 @@ mediaconvert_cancel_job <- function(Id) {
 #'
 #' @usage
 #' mediaconvert_create_job(AccelerationSettings, BillingTagsSource,
-#'   ClientRequestToken, JobTemplate, Queue, Role, Settings, UserMetadata)
+#'   ClientRequestToken, JobTemplate, Queue, Role, Settings,
+#'   StatusUpdateInterval, UserMetadata)
 #'
 #' @param AccelerationSettings This is a beta feature. If you are interested in using this feature, please contact AWS customer support.
-#' @param BillingTagsSource 
+#' @param BillingTagsSource Optional. Choose a tag type that AWS Billing and Cost Management will use to sort your AWS Elemental MediaConvert costs on any billing report that you set up. Any transcoding outputs that don't have an associated tag will appear in your billing report unsorted. If you don't choose a valid value for this field, your job outputs will appear on the billing report unsorted.
 #' @param ClientRequestToken Idempotency token for CreateJob operation.
 #' @param JobTemplate When you create a job, you can either specify a job template or specify the transcoding settings individually
 #' @param Queue Optional. When you create a job, you can specify a queue to send it to. If you don't specify, the job will go to the default queue. For more about queues, see the User Guide topic at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html.
 #' @param Role &#91;required&#93; Required. The IAM role you use for creating this job. For details about permissions, see the User Guide topic at the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/iam-role.html.
-#' @param Settings &#91;required&#93; 
+#' @param Settings &#91;required&#93; JobSettings contains all the transcode settings for a job.
+#' @param StatusUpdateInterval Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval, in seconds, between status updates. MediaConvert sends an update at this interval from the time the service begins processing your job to the time it completes the transcode or encounters an error.
 #' @param UserMetadata User-defined metadata that you want to associate with an MediaConvert job. You specify metadata in key/value pairs.
 #'
 #' @section Request syntax:
@@ -106,6 +108,15 @@ mediaconvert_cancel_job <- function(Id) {
 #'     AdAvailOffset = 123,
 #'     AvailBlanking = list(
 #'       AvailBlankingImage = "string"
+#'     ),
+#'     Esam = list(
+#'       ManifestConfirmConditionNotification = list(
+#'         MccXml = "string"
+#'       ),
+#'       ResponseSignalPreroll = 123,
+#'       SignalProcessingNotification = list(
+#'         SccXml = "string"
+#'       )
 #'     ),
 #'     Inputs = list(
 #'       list(
@@ -235,7 +246,8 @@ mediaconvert_cancel_job <- function(Id) {
 #'             WhitePointY = 123
 #'           ),
 #'           Pid = 123,
-#'           ProgramNumber = 123
+#'           ProgramNumber = 123,
+#'           Rotate = "DEGREE_0"|"DEGREES_90"|"DEGREES_180"|"DEGREES_270"|"AUTO"
 #'         )
 #'       )
 #'     ),
@@ -267,6 +279,14 @@ mediaconvert_cancel_job <- function(Id) {
 #'             ClientCache = "DISABLED"|"ENABLED",
 #'             CodecSpecification = "RFC_6381"|"RFC_4281",
 #'             Destination = "string",
+#'             DestinationSettings = list(
+#'               S3Settings = list(
+#'                 Encryption = list(
+#'                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                   KmsKeyArn = "string"
+#'                 )
+#'               )
+#'             ),
 #'             Encryption = list(
 #'               ConstantInitializationVector = "string",
 #'               EncryptionMethod = "SAMPLE_AES",
@@ -293,6 +313,14 @@ mediaconvert_cancel_job <- function(Id) {
 #'           DashIsoGroupSettings = list(
 #'             BaseUrl = "string",
 #'             Destination = "string",
+#'             DestinationSettings = list(
+#'               S3Settings = list(
+#'                 Encryption = list(
+#'                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                   KmsKeyArn = "string"
+#'                 )
+#'               )
+#'             ),
 #'             Encryption = list(
 #'               SpekeKeyProvider = list(
 #'                 CertificateArn = "string",
@@ -311,7 +339,15 @@ mediaconvert_cancel_job <- function(Id) {
 #'             WriteSegmentTimelineInRepresentation = "ENABLED"|"DISABLED"
 #'           ),
 #'           FileGroupSettings = list(
-#'             Destination = "string"
+#'             Destination = "string",
+#'             DestinationSettings = list(
+#'               S3Settings = list(
+#'                 Encryption = list(
+#'                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                   KmsKeyArn = "string"
+#'                 )
+#'               )
+#'             )
 #'           ),
 #'           HlsGroupSettings = list(
 #'             AdMarkers = list(
@@ -330,11 +366,20 @@ mediaconvert_cancel_job <- function(Id) {
 #'             ClientCache = "DISABLED"|"ENABLED",
 #'             CodecSpecification = "RFC_6381"|"RFC_4281",
 #'             Destination = "string",
+#'             DestinationSettings = list(
+#'               S3Settings = list(
+#'                 Encryption = list(
+#'                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                   KmsKeyArn = "string"
+#'                 )
+#'               )
+#'             ),
 #'             DirectoryStructure = "SINGLE_DIRECTORY"|"SUBDIRECTORY_PER_STREAM",
 #'             Encryption = list(
 #'               ConstantInitializationVector = "string",
 #'               EncryptionMethod = "AES128"|"SAMPLE_AES",
 #'               InitializationVectorInManifest = "INCLUDE"|"EXCLUDE",
+#'               OfflineEncrypted = "ENABLED"|"DISABLED",
 #'               SpekeKeyProvider = list(
 #'                 CertificateArn = "string",
 #'                 ResourceId = "string",
@@ -369,6 +414,14 @@ mediaconvert_cancel_job <- function(Id) {
 #'           MsSmoothGroupSettings = list(
 #'             AudioDeduplication = "COMBINE_DUPLICATE_STREAMS"|"NONE",
 #'             Destination = "string",
+#'             DestinationSettings = list(
+#'               S3Settings = list(
+#'                 Encryption = list(
+#'                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                   KmsKeyArn = "string"
+#'                 )
+#'               )
+#'             ),
 #'             Encryption = list(
 #'               SpekeKeyProvider = list(
 #'                 CertificateArn = "string",
@@ -590,6 +643,9 @@ mediaconvert_cancel_job <- function(Id) {
 #'                 PrivateMetadataPid = 123,
 #'                 ProgramNumber = 123,
 #'                 RateMode = "VBR"|"CBR",
+#'                 Scte35Esam = list(
+#'                   Scte35EsamPid = 123
+#'                 ),
 #'                 Scte35Pid = 123,
 #'                 Scte35Source = "PASSTHROUGH"|"NONE",
 #'                 SegmentationMarkers = "NONE"|"RAI_SEGSTART"|"RAI_ADAPT"|"PSI_SEGSTART"|"EBP"|"EBP_LEGACY",
@@ -893,6 +949,7 @@ mediaconvert_cancel_job <- function(Id) {
 #'       )
 #'     )
 #'   ),
+#'   StatusUpdateInterval = "SECONDS_10"|"SECONDS_12"|"SECONDS_15"|"SECONDS_20"|"SECONDS_30"|"SECONDS_60"|"SECONDS_120"|"SECONDS_180"|"SECONDS_240"|"SECONDS_300"|"SECONDS_360"|"SECONDS_420"|"SECONDS_480"|"SECONDS_540"|"SECONDS_600",
 #'   UserMetadata = list(
 #'     "string"
 #'   )
@@ -902,14 +959,14 @@ mediaconvert_cancel_job <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname mediaconvert_create_job
-mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSource = NULL, ClientRequestToken = NULL, JobTemplate = NULL, Queue = NULL, Role, Settings, UserMetadata = NULL) {
+mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSource = NULL, ClientRequestToken = NULL, JobTemplate = NULL, Queue = NULL, Role, Settings, StatusUpdateInterval = NULL, UserMetadata = NULL) {
   op <- new_operation(
     name = "CreateJob",
     http_method = "POST",
     http_path = "/2017-08-29/jobs",
     paginator = list()
   )
-  input <- .mediaconvert$create_job_input(AccelerationSettings = AccelerationSettings, BillingTagsSource = BillingTagsSource, ClientRequestToken = ClientRequestToken, JobTemplate = JobTemplate, Queue = Queue, Role = Role, Settings = Settings, UserMetadata = UserMetadata)
+  input <- .mediaconvert$create_job_input(AccelerationSettings = AccelerationSettings, BillingTagsSource = BillingTagsSource, ClientRequestToken = ClientRequestToken, JobTemplate = JobTemplate, Queue = Queue, Role = Role, Settings = Settings, StatusUpdateInterval = StatusUpdateInterval, UserMetadata = UserMetadata)
   output <- .mediaconvert$create_job_output()
   svc <- .mediaconvert$service()
   request <- new_request(svc, op, input, output)
@@ -924,14 +981,15 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'
 #' @usage
 #' mediaconvert_create_job_template(AccelerationSettings, Category,
-#'   Description, Name, Queue, Settings, Tags)
+#'   Description, Name, Queue, Settings, StatusUpdateInterval, Tags)
 #'
 #' @param AccelerationSettings This is a beta feature. If you are interested in using this feature please contact AWS customer support.
 #' @param Category Optional. A category for the job template you are creating
 #' @param Description Optional. A description of the job template you are creating.
 #' @param Name &#91;required&#93; The name of the job template you are creating.
 #' @param Queue Optional. The queue that jobs created from this template are assigned to. If you don't specify this, jobs will go to the default queue.
-#' @param Settings &#91;required&#93; 
+#' @param Settings &#91;required&#93; JobTemplateSettings contains all the transcode settings saved in the template that will be applied to jobs created from it.
+#' @param StatusUpdateInterval Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval, in seconds, between status updates. MediaConvert sends an update at this interval from the time the service begins processing your job to the time it completes the transcode or encounters an error.
 #' @param Tags The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.
 #'
 #' @section Request syntax:
@@ -948,6 +1006,15 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'     AdAvailOffset = 123,
 #'     AvailBlanking = list(
 #'       AvailBlankingImage = "string"
+#'     ),
+#'     Esam = list(
+#'       ManifestConfirmConditionNotification = list(
+#'         MccXml = "string"
+#'       ),
+#'       ResponseSignalPreroll = 123,
+#'       SignalProcessingNotification = list(
+#'         SccXml = "string"
+#'       )
 #'     ),
 #'     Inputs = list(
 #'       list(
@@ -1067,7 +1134,8 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'             WhitePointY = 123
 #'           ),
 #'           Pid = 123,
-#'           ProgramNumber = 123
+#'           ProgramNumber = 123,
+#'           Rotate = "DEGREE_0"|"DEGREES_90"|"DEGREES_180"|"DEGREES_270"|"AUTO"
 #'         )
 #'       )
 #'     ),
@@ -1099,6 +1167,14 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'             ClientCache = "DISABLED"|"ENABLED",
 #'             CodecSpecification = "RFC_6381"|"RFC_4281",
 #'             Destination = "string",
+#'             DestinationSettings = list(
+#'               S3Settings = list(
+#'                 Encryption = list(
+#'                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                   KmsKeyArn = "string"
+#'                 )
+#'               )
+#'             ),
 #'             Encryption = list(
 #'               ConstantInitializationVector = "string",
 #'               EncryptionMethod = "SAMPLE_AES",
@@ -1125,6 +1201,14 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'           DashIsoGroupSettings = list(
 #'             BaseUrl = "string",
 #'             Destination = "string",
+#'             DestinationSettings = list(
+#'               S3Settings = list(
+#'                 Encryption = list(
+#'                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                   KmsKeyArn = "string"
+#'                 )
+#'               )
+#'             ),
 #'             Encryption = list(
 #'               SpekeKeyProvider = list(
 #'                 CertificateArn = "string",
@@ -1143,7 +1227,15 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'             WriteSegmentTimelineInRepresentation = "ENABLED"|"DISABLED"
 #'           ),
 #'           FileGroupSettings = list(
-#'             Destination = "string"
+#'             Destination = "string",
+#'             DestinationSettings = list(
+#'               S3Settings = list(
+#'                 Encryption = list(
+#'                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                   KmsKeyArn = "string"
+#'                 )
+#'               )
+#'             )
 #'           ),
 #'           HlsGroupSettings = list(
 #'             AdMarkers = list(
@@ -1162,11 +1254,20 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'             ClientCache = "DISABLED"|"ENABLED",
 #'             CodecSpecification = "RFC_6381"|"RFC_4281",
 #'             Destination = "string",
+#'             DestinationSettings = list(
+#'               S3Settings = list(
+#'                 Encryption = list(
+#'                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                   KmsKeyArn = "string"
+#'                 )
+#'               )
+#'             ),
 #'             DirectoryStructure = "SINGLE_DIRECTORY"|"SUBDIRECTORY_PER_STREAM",
 #'             Encryption = list(
 #'               ConstantInitializationVector = "string",
 #'               EncryptionMethod = "AES128"|"SAMPLE_AES",
 #'               InitializationVectorInManifest = "INCLUDE"|"EXCLUDE",
+#'               OfflineEncrypted = "ENABLED"|"DISABLED",
 #'               SpekeKeyProvider = list(
 #'                 CertificateArn = "string",
 #'                 ResourceId = "string",
@@ -1201,6 +1302,14 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'           MsSmoothGroupSettings = list(
 #'             AudioDeduplication = "COMBINE_DUPLICATE_STREAMS"|"NONE",
 #'             Destination = "string",
+#'             DestinationSettings = list(
+#'               S3Settings = list(
+#'                 Encryption = list(
+#'                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                   KmsKeyArn = "string"
+#'                 )
+#'               )
+#'             ),
 #'             Encryption = list(
 #'               SpekeKeyProvider = list(
 #'                 CertificateArn = "string",
@@ -1422,6 +1531,9 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'                 PrivateMetadataPid = 123,
 #'                 ProgramNumber = 123,
 #'                 RateMode = "VBR"|"CBR",
+#'                 Scte35Esam = list(
+#'                   Scte35EsamPid = 123
+#'                 ),
 #'                 Scte35Pid = 123,
 #'                 Scte35Source = "PASSTHROUGH"|"NONE",
 #'                 SegmentationMarkers = "NONE"|"RAI_SEGSTART"|"RAI_ADAPT"|"PSI_SEGSTART"|"EBP"|"EBP_LEGACY",
@@ -1725,6 +1837,7 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'       )
 #'     )
 #'   ),
+#'   StatusUpdateInterval = "SECONDS_10"|"SECONDS_12"|"SECONDS_15"|"SECONDS_20"|"SECONDS_30"|"SECONDS_60"|"SECONDS_120"|"SECONDS_180"|"SECONDS_240"|"SECONDS_300"|"SECONDS_360"|"SECONDS_420"|"SECONDS_480"|"SECONDS_540"|"SECONDS_600",
 #'   Tags = list(
 #'     "string"
 #'   )
@@ -1734,14 +1847,14 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #' @keywords internal
 #'
 #' @rdname mediaconvert_create_job_template
-mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Category = NULL, Description = NULL, Name, Queue = NULL, Settings, Tags = NULL) {
+mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Category = NULL, Description = NULL, Name, Queue = NULL, Settings, StatusUpdateInterval = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateJobTemplate",
     http_method = "POST",
     http_path = "/2017-08-29/jobTemplates",
     paginator = list()
   )
-  input <- .mediaconvert$create_job_template_input(AccelerationSettings = AccelerationSettings, Category = Category, Description = Description, Name = Name, Queue = Queue, Settings = Settings, Tags = Tags)
+  input <- .mediaconvert$create_job_template_input(AccelerationSettings = AccelerationSettings, Category = Category, Description = Description, Name = Name, Queue = Queue, Settings = Settings, StatusUpdateInterval = StatusUpdateInterval, Tags = Tags)
   output <- .mediaconvert$create_job_template_output()
   svc <- .mediaconvert$service()
   request <- new_request(svc, op, input, output)
@@ -1760,7 +1873,7 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #' @param Category Optional. A category for the preset you are creating.
 #' @param Description Optional. A description of the preset you are creating.
 #' @param Name &#91;required&#93; The name of the preset you are creating.
-#' @param Settings &#91;required&#93; 
+#' @param Settings &#91;required&#93; Settings for preset
 #' @param Tags The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.
 #'
 #' @section Request syntax:
@@ -1973,6 +2086,9 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'         PrivateMetadataPid = 123,
 #'         ProgramNumber = 123,
 #'         RateMode = "VBR"|"CBR",
+#'         Scte35Esam = list(
+#'           Scte35EsamPid = 123
+#'         ),
 #'         Scte35Pid = 123,
 #'         Scte35Source = "PASSTHROUGH"|"NONE",
 #'         SegmentationMarkers = "NONE"|"RAI_SEGSTART"|"RAI_ADAPT"|"PSI_SEGSTART"|"EBP"|"EBP_LEGACY",
@@ -2435,7 +2551,7 @@ mediaconvert_delete_queue <- function(Name) {
 #' mediaconvert_describe_endpoints(MaxResults, Mode, NextToken)
 #'
 #' @param MaxResults Optional. Max number of endpoints, up to twenty, that will be returned at one time.
-#' @param Mode 
+#' @param Mode Optional field, defaults to DEFAULT. Specify DEFAULT for this operation to return your endpoints if any exist, or to create an endpoint for you and return it if one doesn't already exist. Specify GET_ONLY to return your endpoints if any exist, or an empty list if none exist.
 #' @param NextToken Use this string, provided with the response to a previous request, to request the next batch of endpoints.
 #'
 #' @section Request syntax:
@@ -2652,10 +2768,10 @@ mediaconvert_get_queue <- function(Name) {
 #'   Order)
 #'
 #' @param Category Optionally, specify a job template category to limit responses to only job templates from that category.
-#' @param ListBy 
+#' @param ListBy Optional. When you request a list of job templates, you can choose to list them alphabetically by NAME or chronologically by CREATION_DATE. If you don't specify, the service will list them by name.
 #' @param MaxResults Optional. Number of job templates, up to twenty, that will be returned at one time.
 #' @param NextToken Use this string, provided with the response to a previous request, to request the next batch of job templates.
-#' @param Order 
+#' @param Order When you request lists of resources, you can optionally specify whether they are sorted in ASCENDING or DESCENDING order. Default varies by resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -2696,9 +2812,9 @@ mediaconvert_list_job_templates <- function(Category = NULL, ListBy = NULL, MaxR
 #'
 #' @param MaxResults Optional. Number of jobs, up to twenty, that will be returned at one time.
 #' @param NextToken Use this string, provided with the response to a previous request, to request the next batch of jobs.
-#' @param Order 
+#' @param Order When you request lists of resources, you can optionally specify whether they are sorted in ASCENDING or DESCENDING order. Default varies by resource.
 #' @param Queue Provide a queue name to get back only jobs from that queue.
-#' @param Status 
+#' @param Status A job's status can be SUBMITTED, PROGRESSING, COMPLETE, CANCELED, or ERROR.
 #'
 #' @section Request syntax:
 #' ```
@@ -2739,10 +2855,10 @@ mediaconvert_list_jobs <- function(MaxResults = NULL, NextToken = NULL, Order = 
 #'   Order)
 #'
 #' @param Category Optionally, specify a preset category to limit responses to only presets from that category.
-#' @param ListBy 
+#' @param ListBy Optional. When you request a list of presets, you can choose to list them alphabetically by NAME or chronologically by CREATION_DATE. If you don't specify, the service will list them by name.
 #' @param MaxResults Optional. Number of presets, up to twenty, that will be returned at one time
 #' @param NextToken Use this string, provided with the response to a previous request, to request the next batch of presets.
-#' @param Order 
+#' @param Order When you request lists of resources, you can optionally specify whether they are sorted in ASCENDING or DESCENDING order. Default varies by resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -2781,10 +2897,10 @@ mediaconvert_list_presets <- function(Category = NULL, ListBy = NULL, MaxResults
 #' @usage
 #' mediaconvert_list_queues(ListBy, MaxResults, NextToken, Order)
 #'
-#' @param ListBy 
+#' @param ListBy Optional. When you request a list of queues, you can choose to list them alphabetically by NAME or chronologically by CREATION_DATE. If you don't specify, the service will list them by creation date.
 #' @param MaxResults Optional. Number of queues, up to twenty, that will be returned at one time.
 #' @param NextToken Use this string, provided with the response to a previous request, to request the next batch of queues.
-#' @param Order 
+#' @param Order When you request lists of resources, you can optionally specify whether they are sorted in ASCENDING or DESCENDING order. Default varies by resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -2934,14 +3050,15 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'
 #' @usage
 #' mediaconvert_update_job_template(AccelerationSettings, Category,
-#'   Description, Name, Queue, Settings)
+#'   Description, Name, Queue, Settings, StatusUpdateInterval)
 #'
 #' @param AccelerationSettings This is a beta feature. If you are interested in using this feature, please contact AWS customer support.
 #' @param Category The new category for the job template, if you are changing it.
 #' @param Description The new description for the job template, if you are changing it.
 #' @param Name &#91;required&#93; The name of the job template you are modifying
 #' @param Queue The new queue for the job template, if you are changing it.
-#' @param Settings 
+#' @param Settings JobTemplateSettings contains all the transcode settings saved in the template that will be applied to jobs created from it.
+#' @param StatusUpdateInterval Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval, in seconds, between status updates. MediaConvert sends an update at this interval from the time the service begins processing your job to the time it completes the transcode or encounters an error.
 #'
 #' @section Request syntax:
 #' ```
@@ -2957,6 +3074,15 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'     AdAvailOffset = 123,
 #'     AvailBlanking = list(
 #'       AvailBlankingImage = "string"
+#'     ),
+#'     Esam = list(
+#'       ManifestConfirmConditionNotification = list(
+#'         MccXml = "string"
+#'       ),
+#'       ResponseSignalPreroll = 123,
+#'       SignalProcessingNotification = list(
+#'         SccXml = "string"
+#'       )
 #'     ),
 #'     Inputs = list(
 #'       list(
@@ -3076,7 +3202,8 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'             WhitePointY = 123
 #'           ),
 #'           Pid = 123,
-#'           ProgramNumber = 123
+#'           ProgramNumber = 123,
+#'           Rotate = "DEGREE_0"|"DEGREES_90"|"DEGREES_180"|"DEGREES_270"|"AUTO"
 #'         )
 #'       )
 #'     ),
@@ -3108,6 +3235,14 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'             ClientCache = "DISABLED"|"ENABLED",
 #'             CodecSpecification = "RFC_6381"|"RFC_4281",
 #'             Destination = "string",
+#'             DestinationSettings = list(
+#'               S3Settings = list(
+#'                 Encryption = list(
+#'                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                   KmsKeyArn = "string"
+#'                 )
+#'               )
+#'             ),
 #'             Encryption = list(
 #'               ConstantInitializationVector = "string",
 #'               EncryptionMethod = "SAMPLE_AES",
@@ -3134,6 +3269,14 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'           DashIsoGroupSettings = list(
 #'             BaseUrl = "string",
 #'             Destination = "string",
+#'             DestinationSettings = list(
+#'               S3Settings = list(
+#'                 Encryption = list(
+#'                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                   KmsKeyArn = "string"
+#'                 )
+#'               )
+#'             ),
 #'             Encryption = list(
 #'               SpekeKeyProvider = list(
 #'                 CertificateArn = "string",
@@ -3152,7 +3295,15 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'             WriteSegmentTimelineInRepresentation = "ENABLED"|"DISABLED"
 #'           ),
 #'           FileGroupSettings = list(
-#'             Destination = "string"
+#'             Destination = "string",
+#'             DestinationSettings = list(
+#'               S3Settings = list(
+#'                 Encryption = list(
+#'                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                   KmsKeyArn = "string"
+#'                 )
+#'               )
+#'             )
 #'           ),
 #'           HlsGroupSettings = list(
 #'             AdMarkers = list(
@@ -3171,11 +3322,20 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'             ClientCache = "DISABLED"|"ENABLED",
 #'             CodecSpecification = "RFC_6381"|"RFC_4281",
 #'             Destination = "string",
+#'             DestinationSettings = list(
+#'               S3Settings = list(
+#'                 Encryption = list(
+#'                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                   KmsKeyArn = "string"
+#'                 )
+#'               )
+#'             ),
 #'             DirectoryStructure = "SINGLE_DIRECTORY"|"SUBDIRECTORY_PER_STREAM",
 #'             Encryption = list(
 #'               ConstantInitializationVector = "string",
 #'               EncryptionMethod = "AES128"|"SAMPLE_AES",
 #'               InitializationVectorInManifest = "INCLUDE"|"EXCLUDE",
+#'               OfflineEncrypted = "ENABLED"|"DISABLED",
 #'               SpekeKeyProvider = list(
 #'                 CertificateArn = "string",
 #'                 ResourceId = "string",
@@ -3210,6 +3370,14 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'           MsSmoothGroupSettings = list(
 #'             AudioDeduplication = "COMBINE_DUPLICATE_STREAMS"|"NONE",
 #'             Destination = "string",
+#'             DestinationSettings = list(
+#'               S3Settings = list(
+#'                 Encryption = list(
+#'                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                   KmsKeyArn = "string"
+#'                 )
+#'               )
+#'             ),
 #'             Encryption = list(
 #'               SpekeKeyProvider = list(
 #'                 CertificateArn = "string",
@@ -3431,6 +3599,9 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'                 PrivateMetadataPid = 123,
 #'                 ProgramNumber = 123,
 #'                 RateMode = "VBR"|"CBR",
+#'                 Scte35Esam = list(
+#'                   Scte35EsamPid = 123
+#'                 ),
 #'                 Scte35Pid = 123,
 #'                 Scte35Source = "PASSTHROUGH"|"NONE",
 #'                 SegmentationMarkers = "NONE"|"RAI_SEGSTART"|"RAI_ADAPT"|"PSI_SEGSTART"|"EBP"|"EBP_LEGACY",
@@ -3733,21 +3904,22 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'         )
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   StatusUpdateInterval = "SECONDS_10"|"SECONDS_12"|"SECONDS_15"|"SECONDS_20"|"SECONDS_30"|"SECONDS_60"|"SECONDS_120"|"SECONDS_180"|"SECONDS_240"|"SECONDS_300"|"SECONDS_360"|"SECONDS_420"|"SECONDS_480"|"SECONDS_540"|"SECONDS_600"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname mediaconvert_update_job_template
-mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Category = NULL, Description = NULL, Name, Queue = NULL, Settings = NULL) {
+mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Category = NULL, Description = NULL, Name, Queue = NULL, Settings = NULL, StatusUpdateInterval = NULL) {
   op <- new_operation(
     name = "UpdateJobTemplate",
     http_method = "PUT",
     http_path = "/2017-08-29/jobTemplates/{name}",
     paginator = list()
   )
-  input <- .mediaconvert$update_job_template_input(AccelerationSettings = AccelerationSettings, Category = Category, Description = Description, Name = Name, Queue = Queue, Settings = Settings)
+  input <- .mediaconvert$update_job_template_input(AccelerationSettings = AccelerationSettings, Category = Category, Description = Description, Name = Name, Queue = Queue, Settings = Settings, StatusUpdateInterval = StatusUpdateInterval)
   output <- .mediaconvert$update_job_template_output()
   svc <- .mediaconvert$service()
   request <- new_request(svc, op, input, output)
@@ -3766,7 +3938,7 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #' @param Category The new category for the preset, if you are changing it.
 #' @param Description The new description for the preset, if you are changing it.
 #' @param Name &#91;required&#93; The name of the preset you are modifying.
-#' @param Settings 
+#' @param Settings Settings for preset
 #'
 #' @section Request syntax:
 #' ```
@@ -3978,6 +4150,9 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'         PrivateMetadataPid = 123,
 #'         ProgramNumber = 123,
 #'         RateMode = "VBR"|"CBR",
+#'         Scte35Esam = list(
+#'           Scte35EsamPid = 123
+#'         ),
 #'         Scte35Pid = 123,
 #'         Scte35Source = "PASSTHROUGH"|"NONE",
 #'         SegmentationMarkers = "NONE"|"RAI_SEGSTART"|"RAI_ADAPT"|"PSI_SEGSTART"|"EBP"|"EBP_LEGACY",

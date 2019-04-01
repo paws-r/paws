@@ -68,6 +68,60 @@ databasemigrationservice_add_tags_to_resource <- function(ResourceArn, Tags) {
 }
 .databasemigrationservice$operations$add_tags_to_resource <- databasemigrationservice_add_tags_to_resource
 
+#' Applies a pending maintenance action to a resource (for example, to a
+#' replication instance)
+#'
+#' Applies a pending maintenance action to a resource (for example, to a
+#' replication instance).
+#'
+#' @usage
+#' databasemigrationservice_apply_pending_maintenance_action(
+#'   ReplicationInstanceArn, ApplyAction, OptInType)
+#'
+#' @param ReplicationInstanceArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS DMS resource that the pending
+#' maintenance action applies to.
+#' @param ApplyAction &#91;required&#93; The pending maintenance action to apply to this resource.
+#' @param OptInType &#91;required&#93; A value that specifies the type of opt-in request, or undoes an opt-in
+#' request. An opt-in request of type `immediate` cannot be undone.
+#' 
+#' Valid values:
+#' 
+#' -   `immediate` - Apply the maintenance action immediately.
+#' 
+#' -   `next-maintenance` - Apply the maintenance action during the next
+#'     maintenance window for the resource.
+#' 
+#' -   `undo-opt-in` - Cancel any existing `next-maintenance` opt-in
+#'     requests.
+#'
+#' @section Request syntax:
+#' ```
+#' databasemigrationservice$apply_pending_maintenance_action(
+#'   ReplicationInstanceArn = "string",
+#'   ApplyAction = "string",
+#'   OptInType = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname databasemigrationservice_apply_pending_maintenance_action
+databasemigrationservice_apply_pending_maintenance_action <- function(ReplicationInstanceArn, ApplyAction, OptInType) {
+  op <- new_operation(
+    name = "ApplyPendingMaintenanceAction",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .databasemigrationservice$apply_pending_maintenance_action_input(ReplicationInstanceArn = ReplicationInstanceArn, ApplyAction = ApplyAction, OptInType = OptInType)
+  output <- .databasemigrationservice$apply_pending_maintenance_action_output()
+  svc <- .databasemigrationservice$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.databasemigrationservice$operations$apply_pending_maintenance_action <- databasemigrationservice_apply_pending_maintenance_action
+
 #' Creates an endpoint using the provided settings
 #'
 #' Creates an endpoint using the provided settings.
@@ -78,7 +132,7 @@ databasemigrationservice_add_tags_to_resource <- function(ResourceArn, Tags) {
 #'   DatabaseName, ExtraConnectionAttributes, KmsKeyId, Tags, CertificateArn,
 #'   SslMode, ServiceAccessRoleArn, ExternalTableDefinition,
 #'   DynamoDbSettings, S3Settings, DmsTransferSettings, MongoDbSettings,
-#'   KinesisSettings, ElasticsearchSettings)
+#'   KinesisSettings, ElasticsearchSettings, RedshiftSettings)
 #'
 #' @param EndpointIdentifier &#91;required&#93; The database endpoint identifier. Identifiers must begin with a letter;
 #' must contain only ASCII letters, digits, and hyphens; and must not end
@@ -110,12 +164,12 @@ databasemigrationservice_add_tags_to_resource <- function(ResourceArn, Tags) {
 #' @param DynamoDbSettings Settings in JSON format for the target Amazon DynamoDB endpoint. For
 #' more information about the available settings, see [Using Object Mapping
 #' to Migrate Data to
-#' DynamoDB](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html)
+#' DynamoDB](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html)
 #' in the *AWS Database Migration Service User Guide.*
 #' @param S3Settings Settings in JSON format for the target Amazon S3 endpoint. For more
 #' information about the available settings, see [Extra Connection
 #' Attributes When Using Amazon S3 as a Target for AWS
-#' DMS](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html#CHAP_Target.S3.Configuring)
+#' DMS](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html#CHAP_Target.S3.Configuring)
 #' in the *AWS Database Migration Service User Guide.*
 #' @param DmsTransferSettings The settings in JSON format for the DMS transfer type of source
 #' endpoint.
@@ -140,18 +194,19 @@ databasemigrationservice_add_tags_to_resource <- function(ResourceArn, Tags) {
 #' information about the available settings, see the configuration
 #' properties section in [Using MongoDB as a Target for AWS Database
 #' Migration
-#' Service](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html)
+#' Service](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html)
 #' in the *AWS Database Migration Service User Guide.*
 #' @param KinesisSettings Settings in JSON format for the target Amazon Kinesis Data Streams
 #' endpoint. For more information about the available settings, see [Using
 #' Object Mapping to Migrate Data to a Kinesis Data
-#' Stream](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping\%20)
+#' Stream](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping\%20)
 #' in the *AWS Database Migration User Guide.*
 #' @param ElasticsearchSettings Settings in JSON format for the target Elasticsearch endpoint. For more
 #' information about the available settings, see [Extra Connection
 #' Attributes When Using Elasticsearch as a Target for AWS
-#' DMS](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Elasticsearch.html#CHAP_Target.Elasticsearch.Configuration)
+#' DMS](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Elasticsearch.html#CHAP_Target.Elasticsearch.Configuration)
 #' in the *AWS Database Migration User Guide.*
+#' @param RedshiftSettings 
 #'
 #' @section Request syntax:
 #' ```
@@ -186,7 +241,17 @@ databasemigrationservice_add_tags_to_resource <- function(ResourceArn, Tags) {
 #'     CsvDelimiter = "string",
 #'     BucketFolder = "string",
 #'     BucketName = "string",
-#'     CompressionType = "none"|"gzip"
+#'     CompressionType = "none"|"gzip",
+#'     EncryptionMode = "sse-s3"|"sse-kms",
+#'     ServerSideEncryptionKmsKeyId = "string",
+#'     DataFormat = "csv"|"parquet",
+#'     EncodingType = "plain"|"plain-dictionary"|"rle-dictionary",
+#'     DictPageSizeLimit = 123,
+#'     RowGroupLength = 123,
+#'     DataPageSize = 123,
+#'     ParquetVersion = "parquet-1-0"|"parquet-2-0",
+#'     EnableStatistics = TRUE|FALSE,
+#'     CdcInsertsOnly = TRUE|FALSE
 #'   ),
 #'   DmsTransferSettings = list(
 #'     ServiceAccessRoleArn = "string",
@@ -216,6 +281,33 @@ databasemigrationservice_add_tags_to_resource <- function(ResourceArn, Tags) {
 #'     EndpointUri = "string",
 #'     FullLoadErrorPercentage = 123,
 #'     ErrorRetryDuration = 123
+#'   ),
+#'   RedshiftSettings = list(
+#'     AcceptAnyDate = TRUE|FALSE,
+#'     AfterConnectScript = "string",
+#'     BucketFolder = "string",
+#'     BucketName = "string",
+#'     ConnectionTimeout = 123,
+#'     DatabaseName = "string",
+#'     DateFormat = "string",
+#'     EmptyAsNull = TRUE|FALSE,
+#'     EncryptionMode = "sse-s3"|"sse-kms",
+#'     FileTransferUploadStreams = 123,
+#'     LoadTimeout = 123,
+#'     MaxFileSize = 123,
+#'     Password = "string",
+#'     Port = 123,
+#'     RemoveQuotes = TRUE|FALSE,
+#'     ReplaceInvalidChars = "string",
+#'     ReplaceChars = "string",
+#'     ServerName = "string",
+#'     ServiceAccessRoleArn = "string",
+#'     ServerSideEncryptionKmsKeyId = "string",
+#'     TimeFormat = "string",
+#'     TrimBlanks = TRUE|FALSE,
+#'     TruncateColumns = TRUE|FALSE,
+#'     Username = "string",
+#'     WriteBufferSize = 123
 #'   )
 #' )
 #' ```
@@ -246,14 +338,14 @@ databasemigrationservice_add_tags_to_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname databasemigrationservice_create_endpoint
-databasemigrationservice_create_endpoint <- function(EndpointIdentifier, EndpointType, EngineName, Username = NULL, Password = NULL, ServerName = NULL, Port = NULL, DatabaseName = NULL, ExtraConnectionAttributes = NULL, KmsKeyId = NULL, Tags = NULL, CertificateArn = NULL, SslMode = NULL, ServiceAccessRoleArn = NULL, ExternalTableDefinition = NULL, DynamoDbSettings = NULL, S3Settings = NULL, DmsTransferSettings = NULL, MongoDbSettings = NULL, KinesisSettings = NULL, ElasticsearchSettings = NULL) {
+databasemigrationservice_create_endpoint <- function(EndpointIdentifier, EndpointType, EngineName, Username = NULL, Password = NULL, ServerName = NULL, Port = NULL, DatabaseName = NULL, ExtraConnectionAttributes = NULL, KmsKeyId = NULL, Tags = NULL, CertificateArn = NULL, SslMode = NULL, ServiceAccessRoleArn = NULL, ExternalTableDefinition = NULL, DynamoDbSettings = NULL, S3Settings = NULL, DmsTransferSettings = NULL, MongoDbSettings = NULL, KinesisSettings = NULL, ElasticsearchSettings = NULL, RedshiftSettings = NULL) {
   op <- new_operation(
     name = "CreateEndpoint",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .databasemigrationservice$create_endpoint_input(EndpointIdentifier = EndpointIdentifier, EndpointType = EndpointType, EngineName = EngineName, Username = Username, Password = Password, ServerName = ServerName, Port = Port, DatabaseName = DatabaseName, ExtraConnectionAttributes = ExtraConnectionAttributes, KmsKeyId = KmsKeyId, Tags = Tags, CertificateArn = CertificateArn, SslMode = SslMode, ServiceAccessRoleArn = ServiceAccessRoleArn, ExternalTableDefinition = ExternalTableDefinition, DynamoDbSettings = DynamoDbSettings, S3Settings = S3Settings, DmsTransferSettings = DmsTransferSettings, MongoDbSettings = MongoDbSettings, KinesisSettings = KinesisSettings, ElasticsearchSettings = ElasticsearchSettings)
+  input <- .databasemigrationservice$create_endpoint_input(EndpointIdentifier = EndpointIdentifier, EndpointType = EndpointType, EngineName = EngineName, Username = Username, Password = Password, ServerName = ServerName, Port = Port, DatabaseName = DatabaseName, ExtraConnectionAttributes = ExtraConnectionAttributes, KmsKeyId = KmsKeyId, Tags = Tags, CertificateArn = CertificateArn, SslMode = SslMode, ServiceAccessRoleArn = ServiceAccessRoleArn, ExternalTableDefinition = ExternalTableDefinition, DynamoDbSettings = DynamoDbSettings, S3Settings = S3Settings, DmsTransferSettings = DmsTransferSettings, MongoDbSettings = MongoDbSettings, KinesisSettings = KinesisSettings, ElasticsearchSettings = ElasticsearchSettings, RedshiftSettings = RedshiftSettings)
   output <- .databasemigrationservice$create_endpoint_output()
   svc <- .databasemigrationservice$service()
   request <- new_request(svc, op, input, output)
@@ -281,7 +373,7 @@ databasemigrationservice_create_endpoint <- function(EndpointIdentifier, Endpoin
 #' customer account.
 #' 
 #' For more information about AWS DMS events, see [Working with Events and
-#' Notifications](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html)
+#' Notifications](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html)
 #' in the *AWS Database Migration Service User Guide.*
 #'
 #' @usage
@@ -304,7 +396,7 @@ databasemigrationservice_create_endpoint <- function(EndpointIdentifier, Endpoin
 #' to. You can see a list of the categories for a given source type by
 #' calling the `DescribeEventCategories` action or in the topic [Working
 #' with Events and
-#' Notifications](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html)
+#' Notifications](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html)
 #' in the *AWS Database Migration Service User Guide.*
 #' @param SourceIds The list of identifiers of the event sources for which events will be
 #' returned. If not specified, then all sources are included in the
@@ -608,7 +700,7 @@ databasemigrationservice_create_replication_subnet_group <- function(Replication
 #' @param ReplicationTaskSettings Settings for the task, such as target metadata settings. For a complete
 #' list of task settings, see [Task Settings for AWS Database Migration
 #' Service
-#' Tasks](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html)
+#' Tasks](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html)
 #' in the *AWS Database Migration User Guide.*
 #' @param CdcStartTime Indicates the start time for a change data capture (CDC) operation. Use
 #' either CdcStartTime or CdcStartPosition to specify when you want a CDC
@@ -1307,7 +1399,7 @@ databasemigrationservice_describe_endpoints <- function(Filters = NULL, MaxRecor
 #' Lists categories for all event source types, or, if specified, for a
 #' specified source type. You can see a list of the event categories and
 #' source types in [Working with Events and
-#' Notifications](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html)
+#' Notifications](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html)
 #' in the *AWS Database Migration Service User Guide.*
 #'
 #' @usage
@@ -1421,7 +1513,7 @@ databasemigrationservice_describe_event_subscriptions <- function(SubscriptionNa
 #' Lists events for a given source identifier and source type. You can also
 #' specify a start and end time. For more information on AWS DMS events,
 #' see [Working with Events and
-#' Notifications](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html)
+#' Notifications](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html)
 #' in the *AWS Database Migration User Guide.*
 #'
 #' @usage
@@ -1556,6 +1648,64 @@ databasemigrationservice_describe_orderable_replication_instances <- function(Ma
   return(response)
 }
 .databasemigrationservice$operations$describe_orderable_replication_instances <- databasemigrationservice_describe_orderable_replication_instances
+
+#' For internal use only
+#'
+#' For internal use only
+#'
+#' @usage
+#' databasemigrationservice_describe_pending_maintenance_actions(
+#'   ReplicationInstanceArn, Filters, Marker, MaxRecords)
+#'
+#' @param ReplicationInstanceArn The ARN of the replication instance.
+#' @param Filters 
+#' @param Marker An optional pagination token provided by a previous request. If this
+#' parameter is specified, the response includes only records beyond the
+#' marker, up to the value specified by `MaxRecords`.
+#' @param MaxRecords The maximum number of records to include in the response. If more
+#' records exist than the specified `MaxRecords` value, a pagination token
+#' called a marker is included in the response so that the remaining
+#' results can be retrieved.
+#' 
+#' Default: 100
+#' 
+#' Constraints: Minimum 20, maximum 100.
+#'
+#' @section Request syntax:
+#' ```
+#' databasemigrationservice$describe_pending_maintenance_actions(
+#'   ReplicationInstanceArn = "string",
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string",
+#'   MaxRecords = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname databasemigrationservice_describe_pending_maintenance_actions
+databasemigrationservice_describe_pending_maintenance_actions <- function(ReplicationInstanceArn = NULL, Filters = NULL, Marker = NULL, MaxRecords = NULL) {
+  op <- new_operation(
+    name = "DescribePendingMaintenanceActions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .databasemigrationservice$describe_pending_maintenance_actions_input(ReplicationInstanceArn = ReplicationInstanceArn, Filters = Filters, Marker = Marker, MaxRecords = MaxRecords)
+  output <- .databasemigrationservice$describe_pending_maintenance_actions_output()
+  svc <- .databasemigrationservice$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.databasemigrationservice$operations$describe_pending_maintenance_actions <- databasemigrationservice_describe_pending_maintenance_actions
 
 #' Returns the status of the RefreshSchemas operation
 #'
@@ -1858,7 +2008,7 @@ databasemigrationservice_describe_replication_task_assessment_results <- functio
 #'
 #' @usage
 #' databasemigrationservice_describe_replication_tasks(Filters, MaxRecords,
-#'   Marker)
+#'   Marker, WithoutSettings)
 #'
 #' @param Filters Filters applied to the describe action.
 #' 
@@ -1875,6 +2025,9 @@ databasemigrationservice_describe_replication_task_assessment_results <- functio
 #' @param Marker An optional pagination token provided by a previous request. If this
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
+#' @param WithoutSettings Set this flag to avoid returning setting information. Use this to reduce
+#' overhead when settings are too large. Choose TRUE to use this flag,
+#' otherwise choose FALSE (default).
 #'
 #' @section Request syntax:
 #' ```
@@ -1888,7 +2041,8 @@ databasemigrationservice_describe_replication_task_assessment_results <- functio
 #'     )
 #'   ),
 #'   MaxRecords = 123,
-#'   Marker = "string"
+#'   Marker = "string",
+#'   WithoutSettings = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -1912,14 +2066,14 @@ databasemigrationservice_describe_replication_task_assessment_results <- functio
 #' @keywords internal
 #'
 #' @rdname databasemigrationservice_describe_replication_tasks
-databasemigrationservice_describe_replication_tasks <- function(Filters = NULL, MaxRecords = NULL, Marker = NULL) {
+databasemigrationservice_describe_replication_tasks <- function(Filters = NULL, MaxRecords = NULL, Marker = NULL, WithoutSettings = NULL) {
   op <- new_operation(
     name = "DescribeReplicationTasks",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .databasemigrationservice$describe_replication_tasks_input(Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
+  input <- .databasemigrationservice$describe_replication_tasks_input(Filters = Filters, MaxRecords = MaxRecords, Marker = Marker, WithoutSettings = WithoutSettings)
   output <- .databasemigrationservice$describe_replication_tasks_output()
   svc <- .databasemigrationservice$service()
   request <- new_request(svc, op, input, output)
@@ -2171,7 +2325,7 @@ databasemigrationservice_list_tags_for_resource <- function(ResourceArn) {
 #'   ServerName, Port, DatabaseName, ExtraConnectionAttributes,
 #'   CertificateArn, SslMode, ServiceAccessRoleArn, ExternalTableDefinition,
 #'   DynamoDbSettings, S3Settings, DmsTransferSettings, MongoDbSettings,
-#'   KinesisSettings, ElasticsearchSettings)
+#'   KinesisSettings, ElasticsearchSettings, RedshiftSettings)
 #'
 #' @param EndpointArn &#91;required&#93; The Amazon Resource Name (ARN) string that uniquely identifies the
 #' endpoint.
@@ -2204,12 +2358,12 @@ databasemigrationservice_list_tags_for_resource <- function(ResourceArn) {
 #' @param DynamoDbSettings Settings in JSON format for the target Amazon DynamoDB endpoint. For
 #' more information about the available settings, see [Using Object Mapping
 #' to Migrate Data to
-#' DynamoDB](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html)
+#' DynamoDB](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html)
 #' in the *AWS Database Migration Service User Guide.*
 #' @param S3Settings Settings in JSON format for the target Amazon S3 endpoint. For more
 #' information about the available settings, see [Extra Connection
 #' Attributes When Using Amazon S3 as a Target for AWS
-#' DMS](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html#CHAP_Target.S3.Configuring)
+#' DMS](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html#CHAP_Target.S3.Configuring)
 #' in the *AWS Database Migration Service User Guide.*
 #' @param DmsTransferSettings The settings in JSON format for the DMS transfer type of source
 #' endpoint.
@@ -2236,18 +2390,19 @@ databasemigrationservice_list_tags_for_resource <- function(ResourceArn) {
 #' information about the available settings, see the configuration
 #' properties section in [Using MongoDB as a Target for AWS Database
 #' Migration
-#' Service](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html)
+#' Service](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html)
 #' in the *AWS Database Migration Service User Guide.*
 #' @param KinesisSettings Settings in JSON format for the target Amazon Kinesis Data Streams
 #' endpoint. For more information about the available settings, see [Using
 #' Object Mapping to Migrate Data to a Kinesis Data
-#' Stream](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping\%20)
+#' Stream](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping\%20)
 #' in the *AWS Database Migration User Guide.*
 #' @param ElasticsearchSettings Settings in JSON format for the target Elasticsearch endpoint. For more
 #' information about the available settings, see [Extra Connection
 #' Attributes When Using Elasticsearch as a Target for AWS
-#' DMS](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Elasticsearch.html#CHAP_Target.Elasticsearch.Configuration)
+#' DMS](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Elasticsearch.html#CHAP_Target.Elasticsearch.Configuration)
 #' in the *AWS Database Migration User Guide.*
+#' @param RedshiftSettings 
 #'
 #' @section Request syntax:
 #' ```
@@ -2276,7 +2431,17 @@ databasemigrationservice_list_tags_for_resource <- function(ResourceArn) {
 #'     CsvDelimiter = "string",
 #'     BucketFolder = "string",
 #'     BucketName = "string",
-#'     CompressionType = "none"|"gzip"
+#'     CompressionType = "none"|"gzip",
+#'     EncryptionMode = "sse-s3"|"sse-kms",
+#'     ServerSideEncryptionKmsKeyId = "string",
+#'     DataFormat = "csv"|"parquet",
+#'     EncodingType = "plain"|"plain-dictionary"|"rle-dictionary",
+#'     DictPageSizeLimit = 123,
+#'     RowGroupLength = 123,
+#'     DataPageSize = 123,
+#'     ParquetVersion = "parquet-1-0"|"parquet-2-0",
+#'     EnableStatistics = TRUE|FALSE,
+#'     CdcInsertsOnly = TRUE|FALSE
 #'   ),
 #'   DmsTransferSettings = list(
 #'     ServiceAccessRoleArn = "string",
@@ -2306,6 +2471,33 @@ databasemigrationservice_list_tags_for_resource <- function(ResourceArn) {
 #'     EndpointUri = "string",
 #'     FullLoadErrorPercentage = 123,
 #'     ErrorRetryDuration = 123
+#'   ),
+#'   RedshiftSettings = list(
+#'     AcceptAnyDate = TRUE|FALSE,
+#'     AfterConnectScript = "string",
+#'     BucketFolder = "string",
+#'     BucketName = "string",
+#'     ConnectionTimeout = 123,
+#'     DatabaseName = "string",
+#'     DateFormat = "string",
+#'     EmptyAsNull = TRUE|FALSE,
+#'     EncryptionMode = "sse-s3"|"sse-kms",
+#'     FileTransferUploadStreams = 123,
+#'     LoadTimeout = 123,
+#'     MaxFileSize = 123,
+#'     Password = "string",
+#'     Port = 123,
+#'     RemoveQuotes = TRUE|FALSE,
+#'     ReplaceInvalidChars = "string",
+#'     ReplaceChars = "string",
+#'     ServerName = "string",
+#'     ServiceAccessRoleArn = "string",
+#'     ServerSideEncryptionKmsKeyId = "string",
+#'     TimeFormat = "string",
+#'     TrimBlanks = TRUE|FALSE,
+#'     TruncateColumns = TRUE|FALSE,
+#'     Username = "string",
+#'     WriteBufferSize = 123
 #'   )
 #' )
 #' ```
@@ -2330,14 +2522,14 @@ databasemigrationservice_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname databasemigrationservice_modify_endpoint
-databasemigrationservice_modify_endpoint <- function(EndpointArn, EndpointIdentifier = NULL, EndpointType = NULL, EngineName = NULL, Username = NULL, Password = NULL, ServerName = NULL, Port = NULL, DatabaseName = NULL, ExtraConnectionAttributes = NULL, CertificateArn = NULL, SslMode = NULL, ServiceAccessRoleArn = NULL, ExternalTableDefinition = NULL, DynamoDbSettings = NULL, S3Settings = NULL, DmsTransferSettings = NULL, MongoDbSettings = NULL, KinesisSettings = NULL, ElasticsearchSettings = NULL) {
+databasemigrationservice_modify_endpoint <- function(EndpointArn, EndpointIdentifier = NULL, EndpointType = NULL, EngineName = NULL, Username = NULL, Password = NULL, ServerName = NULL, Port = NULL, DatabaseName = NULL, ExtraConnectionAttributes = NULL, CertificateArn = NULL, SslMode = NULL, ServiceAccessRoleArn = NULL, ExternalTableDefinition = NULL, DynamoDbSettings = NULL, S3Settings = NULL, DmsTransferSettings = NULL, MongoDbSettings = NULL, KinesisSettings = NULL, ElasticsearchSettings = NULL, RedshiftSettings = NULL) {
   op <- new_operation(
     name = "ModifyEndpoint",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .databasemigrationservice$modify_endpoint_input(EndpointArn = EndpointArn, EndpointIdentifier = EndpointIdentifier, EndpointType = EndpointType, EngineName = EngineName, Username = Username, Password = Password, ServerName = ServerName, Port = Port, DatabaseName = DatabaseName, ExtraConnectionAttributes = ExtraConnectionAttributes, CertificateArn = CertificateArn, SslMode = SslMode, ServiceAccessRoleArn = ServiceAccessRoleArn, ExternalTableDefinition = ExternalTableDefinition, DynamoDbSettings = DynamoDbSettings, S3Settings = S3Settings, DmsTransferSettings = DmsTransferSettings, MongoDbSettings = MongoDbSettings, KinesisSettings = KinesisSettings, ElasticsearchSettings = ElasticsearchSettings)
+  input <- .databasemigrationservice$modify_endpoint_input(EndpointArn = EndpointArn, EndpointIdentifier = EndpointIdentifier, EndpointType = EndpointType, EngineName = EngineName, Username = Username, Password = Password, ServerName = ServerName, Port = Port, DatabaseName = DatabaseName, ExtraConnectionAttributes = ExtraConnectionAttributes, CertificateArn = CertificateArn, SslMode = SslMode, ServiceAccessRoleArn = ServiceAccessRoleArn, ExternalTableDefinition = ExternalTableDefinition, DynamoDbSettings = DynamoDbSettings, S3Settings = S3Settings, DmsTransferSettings = DmsTransferSettings, MongoDbSettings = MongoDbSettings, KinesisSettings = KinesisSettings, ElasticsearchSettings = ElasticsearchSettings, RedshiftSettings = RedshiftSettings)
   output <- .databasemigrationservice$modify_endpoint_output()
   svc <- .databasemigrationservice$service()
   request <- new_request(svc, op, input, output)
@@ -2577,7 +2769,7 @@ databasemigrationservice_modify_replication_subnet_group <- function(Replication
 #' you can modify it.
 #' 
 #' For more information about AWS DMS tasks, see [Working with Migration
-#' Tasks](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html)
+#' Tasks](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html)
 #' in the *AWS Database Migration Service User Guide*.
 #'
 #' @usage
@@ -2862,7 +3054,7 @@ databasemigrationservice_remove_tags_from_resource <- function(ResourceArn, TagK
 #' Starts the replication task.
 #' 
 #' For more information about AWS DMS tasks, see [Working with Migration
-#' Tasks](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html)
+#' Tasks](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html)
 #' in the *AWS Database Migration Service User Guide.*
 #'
 #' @usage

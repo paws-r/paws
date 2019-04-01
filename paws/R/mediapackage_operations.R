@@ -8,31 +8,35 @@ NULL
 #' Creates a new Channel.
 #'
 #' @usage
-#' mediapackage_create_channel(Description, Id)
+#' mediapackage_create_channel(Description, Id, Tags)
 #'
 #' @param Description A short text description of the Channel.
 #' @param Id &#91;required&#93; The ID of the Channel. The ID must be unique within the region and it
 #' cannot be changed after a Channel is created.
+#' @param Tags 
 #'
 #' @section Request syntax:
 #' ```
 #' mediapackage$create_channel(
 #'   Description = "string",
-#'   Id = "string"
+#'   Id = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname mediapackage_create_channel
-mediapackage_create_channel <- function(Description = NULL, Id) {
+mediapackage_create_channel <- function(Description = NULL, Id, Tags = NULL) {
   op <- new_operation(
     name = "CreateChannel",
     http_method = "POST",
     http_path = "/channels",
     paginator = list()
   )
-  input <- .mediapackage$create_channel_input(Description = Description, Id = Id)
+  input <- .mediapackage$create_channel_input(Description = Description, Id = Id, Tags = Tags)
   output <- .mediapackage$create_channel_output()
   svc <- .mediapackage$service()
   request <- new_request(svc, op, input, output)
@@ -48,7 +52,7 @@ mediapackage_create_channel <- function(Description = NULL, Id) {
 #' @usage
 #' mediapackage_create_origin_endpoint(ChannelId, CmafPackage, DashPackage,
 #'   Description, HlsPackage, Id, ManifestName, MssPackage,
-#'   StartoverWindowSeconds, TimeDelaySeconds, Whitelist)
+#'   StartoverWindowSeconds, Tags, TimeDelaySeconds, Whitelist)
 #'
 #' @param ChannelId &#91;required&#93; The ID of the Channel that the OriginEndpoint will be associated with.
 #' This cannot be changed after the OriginEndpoint is created.
@@ -62,6 +66,7 @@ mediapackage_create_channel <- function(Description = NULL, Id) {
 #' @param MssPackage 
 #' @param StartoverWindowSeconds Maximum duration (seconds) of content to retain for startover playback.
 #' If not specified, startover playback will be disabled for the OriginEndpoint.
+#' @param Tags 
 #' @param TimeDelaySeconds Amount of delay (seconds) to enforce on the playback of live content.
 #' If not specified, there will be no time delay in effect for the OriginEndpoint.
 #' @param Whitelist A list of source IP CIDR blocks that will be allowed to access the OriginEndpoint.
@@ -115,6 +120,7 @@ mediapackage_create_channel <- function(Description = NULL, Id) {
 #'         Url = "string"
 #'       )
 #'     ),
+#'     ManifestLayout = "FULL"|"COMPACT",
 #'     ManifestWindowSeconds = 123,
 #'     MinBufferTimeSeconds = 123,
 #'     MinUpdatePeriodSeconds = 123,
@@ -123,6 +129,7 @@ mediapackage_create_channel <- function(Description = NULL, Id) {
 #'     ),
 #'     Profile = "NONE"|"HBBTV_1_5",
 #'     SegmentDurationSeconds = 123,
+#'     SegmentTemplateFormat = "NUMBER_WITH_TIMELINE"|"TIME_WITH_TIMELINE",
 #'     StreamSelection = list(
 #'       MaxVideoBitsPerSecond = 123,
 #'       MinVideoBitsPerSecond = 123,
@@ -183,6 +190,9 @@ mediapackage_create_channel <- function(Description = NULL, Id) {
 #'     )
 #'   ),
 #'   StartoverWindowSeconds = 123,
+#'   Tags = list(
+#'     "string"
+#'   ),
 #'   TimeDelaySeconds = 123,
 #'   Whitelist = list(
 #'     "string"
@@ -193,14 +203,14 @@ mediapackage_create_channel <- function(Description = NULL, Id) {
 #' @keywords internal
 #'
 #' @rdname mediapackage_create_origin_endpoint
-mediapackage_create_origin_endpoint <- function(ChannelId, CmafPackage = NULL, DashPackage = NULL, Description = NULL, HlsPackage = NULL, Id, ManifestName = NULL, MssPackage = NULL, StartoverWindowSeconds = NULL, TimeDelaySeconds = NULL, Whitelist = NULL) {
+mediapackage_create_origin_endpoint <- function(ChannelId, CmafPackage = NULL, DashPackage = NULL, Description = NULL, HlsPackage = NULL, Id, ManifestName = NULL, MssPackage = NULL, StartoverWindowSeconds = NULL, Tags = NULL, TimeDelaySeconds = NULL, Whitelist = NULL) {
   op <- new_operation(
     name = "CreateOriginEndpoint",
     http_method = "POST",
     http_path = "/origin_endpoints",
     paginator = list()
   )
-  input <- .mediapackage$create_origin_endpoint_input(ChannelId = ChannelId, CmafPackage = CmafPackage, DashPackage = DashPackage, Description = Description, HlsPackage = HlsPackage, Id = Id, ManifestName = ManifestName, MssPackage = MssPackage, StartoverWindowSeconds = StartoverWindowSeconds, TimeDelaySeconds = TimeDelaySeconds, Whitelist = Whitelist)
+  input <- .mediapackage$create_origin_endpoint_input(ChannelId = ChannelId, CmafPackage = CmafPackage, DashPackage = DashPackage, Description = Description, HlsPackage = HlsPackage, Id = Id, ManifestName = ManifestName, MssPackage = MssPackage, StartoverWindowSeconds = StartoverWindowSeconds, Tags = Tags, TimeDelaySeconds = TimeDelaySeconds, Whitelist = Whitelist)
   output <- .mediapackage$create_origin_endpoint_output()
   svc <- .mediapackage$service()
   request <- new_request(svc, op, input, output)
@@ -425,6 +435,41 @@ mediapackage_list_origin_endpoints <- function(ChannelId = NULL, MaxResults = NU
 }
 .mediapackage$operations$list_origin_endpoints <- mediapackage_list_origin_endpoints
 
+#' List tags for resource
+#'
+#' 
+#'
+#' @usage
+#' mediapackage_list_tags_for_resource(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; 
+#'
+#' @section Request syntax:
+#' ```
+#' mediapackage$list_tags_for_resource(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediapackage_list_tags_for_resource
+mediapackage_list_tags_for_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/tags/{resource-arn}",
+    paginator = list()
+  )
+  input <- .mediapackage$list_tags_for_resource_input(ResourceArn = ResourceArn)
+  output <- .mediapackage$list_tags_for_resource_output()
+  svc <- .mediapackage$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediapackage$operations$list_tags_for_resource <- mediapackage_list_tags_for_resource
+
 #' Changes the Channel's first IngestEndpoint's username and password
 #'
 #' Changes the Channel's first IngestEndpoint's username and password. WARNING - This API is deprecated. Please use RotateIngestEndpointCredentials instead
@@ -497,6 +542,84 @@ mediapackage_rotate_ingest_endpoint_credentials <- function(Id, IngestEndpointId
   return(response)
 }
 .mediapackage$operations$rotate_ingest_endpoint_credentials <- mediapackage_rotate_ingest_endpoint_credentials
+
+#' Tag resource
+#'
+#' 
+#'
+#' @usage
+#' mediapackage_tag_resource(ResourceArn, Tags)
+#'
+#' @param ResourceArn &#91;required&#93; 
+#' @param Tags &#91;required&#93; 
+#'
+#' @section Request syntax:
+#' ```
+#' mediapackage$tag_resource(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediapackage_tag_resource
+mediapackage_tag_resource <- function(ResourceArn, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/tags/{resource-arn}",
+    paginator = list()
+  )
+  input <- .mediapackage$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+  output <- .mediapackage$tag_resource_output()
+  svc <- .mediapackage$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediapackage$operations$tag_resource <- mediapackage_tag_resource
+
+#' Untag resource
+#'
+#' 
+#'
+#' @usage
+#' mediapackage_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; 
+#' @param TagKeys &#91;required&#93; The key(s) of tag to be deleted
+#'
+#' @section Request syntax:
+#' ```
+#' mediapackage$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediapackage_untag_resource
+mediapackage_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/tags/{resource-arn}",
+    paginator = list()
+  )
+  input <- .mediapackage$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .mediapackage$untag_resource_output()
+  svc <- .mediapackage$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediapackage$operations$untag_resource <- mediapackage_untag_resource
 
 #' Updates an existing Channel
 #'
@@ -605,6 +728,7 @@ mediapackage_update_channel <- function(Description = NULL, Id) {
 #'         Url = "string"
 #'       )
 #'     ),
+#'     ManifestLayout = "FULL"|"COMPACT",
 #'     ManifestWindowSeconds = 123,
 #'     MinBufferTimeSeconds = 123,
 #'     MinUpdatePeriodSeconds = 123,
@@ -613,6 +737,7 @@ mediapackage_update_channel <- function(Description = NULL, Id) {
 #'     ),
 #'     Profile = "NONE"|"HBBTV_1_5",
 #'     SegmentDurationSeconds = 123,
+#'     SegmentTemplateFormat = "NUMBER_WITH_TIMELINE"|"TIME_WITH_TIMELINE",
 #'     StreamSelection = list(
 #'       MaxVideoBitsPerSecond = 123,
 #'       MinVideoBitsPerSecond = 123,

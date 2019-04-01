@@ -8,7 +8,7 @@ glue_batch_delete_connection(CatalogId, ConnectionNameList)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog in which the connections reside. If none is
-supplied, the AWS account ID is used by default.}
+provided, the AWS account ID is used by default.}
 
 \item{ConnectionNameList}{[required] A list of names of the connections to delete.}
 }

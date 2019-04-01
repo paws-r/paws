@@ -19,7 +19,7 @@ than one parameter, submit a list of the following: \code{ParameterName},
 modified in a single request.
 }
 \details{
-For more information on Amazon Aurora, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
+For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
 in the \emph{Amazon Aurora User Guide.}
 
 Changes to dynamic parameters are applied immediately. Changes to static
@@ -37,6 +37,8 @@ database defined by the \code{character_set_database} parameter. You can use
 the \emph{Parameter Groups} option of the \href{https://console.aws.amazon.com/rds/}{Amazon RDS console} or the
 DescribeDBClusterParameters command to verify that your DB cluster
 parameter group has been created or modified.
+
+This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
 \preformatted{rds$modify_db_cluster_parameter_group(

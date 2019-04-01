@@ -15,14 +15,14 @@ policies are described. If a group name is provided, the results are
 limited to that group. This list is limited to 50 items. If you specify
 an unknown policy name, it is ignored with no error.}
 
-\item{PolicyTypes}{One or more policy types. Valid values are \code{SimpleScaling} and
-\code{StepScaling}.}
+\item{PolicyTypes}{One or more policy types. The valid values are \code{SimpleScaling},
+\code{StepScaling}, and \code{TargetTrackingScaling}.}
 
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 
 \item{MaxRecords}{The maximum number of items to be returned with each call. The default
-value is 50 and the maximum value is 100.}
+value is \code{50} and the maximum value is \code{100}.}
 }
 \description{
 Describes the policies for the specified Auto Scaling group.

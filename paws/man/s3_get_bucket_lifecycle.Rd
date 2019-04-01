@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_get_bucket_lifecycle}
 \alias{s3_get_bucket_lifecycle}
-\title{Deprecated, see the GetBucketLifecycleConfiguration operation}
+\title{No longer used, see the GetBucketLifecycleConfiguration operation}
 \usage{
 s3_get_bucket_lifecycle(Bucket)
 }
@@ -10,7 +10,7 @@ s3_get_bucket_lifecycle(Bucket)
 \item{Bucket}{[required]}
 }
 \description{
-Deprecated, see the GetBucketLifecycleConfiguration operation.
+No longer used, see the GetBucketLifecycleConfiguration operation.
 }
 \section{Request syntax}{
 \preformatted{s3$get_bucket_lifecycle(

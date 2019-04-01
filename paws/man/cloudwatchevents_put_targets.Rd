@@ -55,7 +55,7 @@ Amazon SNS resources, CloudWatch Events relies on resource-based
 policies. For EC2 instances, Kinesis data streams, and AWS Step
 Functions state machines, CloudWatch Events relies on IAM roles that you
 specify in the \code{RoleARN} argument in \code{PutTargets}. For more information,
-see \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/auth-and-access-control-cwe.html}{Authentication and Access Control}
+see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/auth-and-access-control-cwe.html}{Authentication and Access Control}
 in the \emph{Amazon CloudWatch Events User Guide}.
 
 If another AWS account is in the same region and has granted you
@@ -72,7 +72,7 @@ If you are setting the event bus of another account as the target, and
 that account granted permission to your account through an organization
 instead of directly by the account ID, then you must specify a \code{RoleArn}
 with proper permissions in the \code{Target} structure. For more information,
-see \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEvents-CrossAccountEventDelivery.html}{Sending and Receiving Events Between AWS Accounts}
+see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEvents-CrossAccountEventDelivery.html}{Sending and Receiving Events Between AWS Accounts}
 in the \emph{Amazon CloudWatch Events User Guide}.
 
 For more information about enabling cross-account events, see

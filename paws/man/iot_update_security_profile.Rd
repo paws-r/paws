@@ -5,7 +5,9 @@
 \title{Updates a Device Defender security profile}
 \usage{
 iot_update_security_profile(securityProfileName,
-  securityProfileDescription, behaviors, alertTargets, expectedVersion)
+  securityProfileDescription, behaviors, alertTargets,
+  additionalMetricsToRetain, deleteBehaviors, deleteAlertTargets,
+  deleteAdditionalMetricsToRetain, expectedVersion)
 }
 \arguments{
 \item{securityProfileName}{[required] The name of the security profile you want to update.}
@@ -16,6 +18,22 @@ iot_update_security_profile(securityProfileName,
 an alert.}
 
 \item{alertTargets}{Where the alerts are sent. (Alerts are always sent to the console.)}
+
+\item{additionalMetricsToRetain}{A list of metrics whose data is retained (stored). By default, data is
+retained for any metric used in the profile's \code{behaviors} but it is
+also retained for any metric specified here.}
+
+\item{deleteBehaviors}{If true, delete all \code{behaviors} defined for this security profile. If
+any \code{behaviors} are defined in the current invocation an exception
+occurs.}
+
+\item{deleteAlertTargets}{If true, delete all \code{alertTargets} defined for this security profile. If
+any \code{alertTargets} are defined in the current invocation an exception
+occurs.}
+
+\item{deleteAdditionalMetricsToRetain}{If true, delete all \code{additionalMetricsToRetain} defined for this
+security profile. If any \code{additionalMetricsToRetain} are defined in the
+current invocation an exception occurs.}
 
 \item{expectedVersion}{The expected version of the security profile. A new version is generated
 whenever the security profile is updated. If you specify a value that is
@@ -44,7 +62,12 @@ Updates a Device Defender security profile.
             123
           )
         ),
-        durationSeconds = 123
+        durationSeconds = 123,
+        consecutiveDatapointsToAlarm = 123,
+        consecutiveDatapointsToClear = 123,
+        statisticalThreshold = list(
+          statistic = "string"
+        )
       )
     )
   ),
@@ -54,6 +77,12 @@ Updates a Device Defender security profile.
       roleArn = "string"
     )
   ),
+  additionalMetricsToRetain = list(
+    "string"
+  ),
+  deleteBehaviors = TRUE|FALSE,
+  deleteAlertTargets = TRUE|FALSE,
+  deleteAdditionalMetricsToRetain = TRUE|FALSE,
   expectedVersion = 123
 )
 }

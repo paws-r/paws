@@ -2,8 +2,8 @@
 % Please edit documentation in R/lambda_operations.R
 \name{lambda_get_function}
 \alias{lambda_get_function}
-\title{Returns information about function or function version, with a link to
-download the deployment package that's valid for 10 minutes}
+\title{Returns information about the function or function version, with a link
+to download the deployment package that's valid for 10 minutes}
 \usage{
 lambda_get_function(FunctionName, Qualifier)
 }
@@ -27,10 +27,10 @@ function name, it is limited to 64 characters in length.}
 the function.}
 }
 \description{
-Returns information about function or function version, with a link to
-download the deployment package that's valid for 10 minutes. If you
-specify a function version, only details specific to that version are
-returned.
+Returns information about the function or function version, with a link
+to download the deployment package that's valid for 10 minutes. If you
+specify a function version, only details that are specific to that
+version are returned.
 }
 \section{Request syntax}{
 \preformatted{lambda$get_function(

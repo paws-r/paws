@@ -7,7 +7,7 @@
 cognitoidentity_create_identity_pool(IdentityPoolName,
   AllowUnauthenticatedIdentities, SupportedLoginProviders,
   DeveloperProviderName, OpenIdConnectProviderARNs,
-  CognitoIdentityProviders, SamlProviderARNs)
+  CognitoIdentityProviders, SamlProviderARNs, IdentityPoolTags)
 }
 \arguments{
 \item{IdentityPoolName}{[required] A string that you provide.}
@@ -27,10 +27,14 @@ Please take care in setting this parameter.}
 
 \item{OpenIdConnectProviderARNs}{A list of OpendID Connect provider ARNs.}
 
-\item{CognitoIdentityProviders}{An array of Amazon Cognito Identity user pools and their client IDs.}
+\item{CognitoIdentityProviders}{An array of Amazon Cognito user pools and their client IDs.}
 
 \item{SamlProviderARNs}{An array of Amazon Resource Names (ARNs) of the SAML provider for your
 identity pool.}
+
+\item{IdentityPoolTags}{Tags to assign to the identity pool. A tag is a label that you can apply
+to identity pools to categorize and manage them in different ways, such
+as by purpose, owner, environment, or other criteria.}
 }
 \description{
 Creates a new identity pool. The identity pool is a store of user
@@ -68,6 +72,9 @@ You must use AWS Developer credentials to call this API.
     )
   ),
   SamlProviderARNs = list(
+    "string"
+  ),
+  IdentityPoolTags = list(
     "string"
   )
 )

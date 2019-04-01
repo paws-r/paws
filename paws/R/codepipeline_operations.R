@@ -115,7 +115,7 @@ codepipeline_acknowledge_third_party_job <- function(jobId, nonce, clientToken) 
 #' action within the URL templates by following the format of
 #' \{Config:name\}, as long as the configuration property is both required
 #' and not secret. For more information, see [Create a Custom Action for a
-#' Pipeline](http://docs.aws.amazon.com/codepipeline/latest/userguide/how-to-create-custom-action.html).
+#' Pipeline](https://docs.aws.amazon.com/codepipeline/latest/userguide/how-to-create-custom-action.html).
 #' @param inputArtifactDetails &#91;required&#93; The details of the input artifact for the action, such as its commit ID.
 #' @param outputArtifactDetails &#91;required&#93; The details of the output artifact of the action, such as its commit ID.
 #'
@@ -656,6 +656,10 @@ codepipeline_get_pipeline_execution <- function(pipelineName, pipelineExecutionI
 #'
 #' Returns information about the state of a pipeline, including the stages
 #' and actions.
+#' 
+#' Values returned in the revisionId and revisionUrl fields indicate the
+#' source revision information, such as the commit ID, for the current
+#' state.
 #'
 #' @usage
 #' codepipeline_get_pipeline_state(name)
@@ -733,6 +737,56 @@ codepipeline_get_third_party_job_details <- function(jobId, clientToken) {
   return(response)
 }
 .codepipeline$operations$get_third_party_job_details <- codepipeline_get_third_party_job_details
+
+#' Lists the action executions that have occurred in a pipeline
+#'
+#' Lists the action executions that have occurred in a pipeline.
+#'
+#' @usage
+#' codepipeline_list_action_executions(pipelineName, filter, maxResults,
+#'   nextToken)
+#'
+#' @param pipelineName &#91;required&#93; The name of the pipeline for which you want to list action execution
+#' history.
+#' @param filter Input information used to filter action execution history.
+#' @param maxResults The maximum number of results to return in a single call. To retrieve
+#' the remaining results, make another call with the returned nextToken
+#' value. The action execution history is limited to the most recent 12
+#' months, based on action execution start times. Default value is 100.
+#' @param nextToken The token that was returned from the previous ListActionExecutions call,
+#' which can be used to return the next set of action executions in the
+#' list.
+#'
+#' @section Request syntax:
+#' ```
+#' codepipeline$list_action_executions(
+#'   pipelineName = "string",
+#'   filter = list(
+#'     pipelineExecutionId = "string"
+#'   ),
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codepipeline_list_action_executions
+codepipeline_list_action_executions <- function(pipelineName, filter = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListActionExecutions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codepipeline$list_action_executions_input(pipelineName = pipelineName, filter = filter, maxResults = maxResults, nextToken = nextToken)
+  output <- .codepipeline$list_action_executions_output()
+  svc <- .codepipeline$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codepipeline$operations$list_action_executions <- codepipeline_list_action_executions
 
 #' Gets a summary of all AWS CodePipeline action types associated with your
 #' account

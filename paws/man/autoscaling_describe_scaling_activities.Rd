@@ -18,7 +18,7 @@ are limited to that group.}
 \item{AutoScalingGroupName}{The name of the Auto Scaling group.}
 
 \item{MaxRecords}{The maximum number of items to return with this call. The default value
-is 100 and the maximum value is 100.}
+is \code{100} and the maximum value is \code{100}.}
 
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}

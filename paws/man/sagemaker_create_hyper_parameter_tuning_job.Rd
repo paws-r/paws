@@ -61,7 +61,7 @@ objective metric that you choose.
 \preformatted{sagemaker$create_hyper_parameter_tuning_job(
   HyperParameterTuningJobName = "string",
   HyperParameterTuningJobConfig = list(
-    Strategy = "Bayesian",
+    Strategy = "Bayesian"|"Random",
     HyperParameterTuningJobObjective = list(
       Type = "Maximize"|"Minimize",
       MetricName = "string"
@@ -75,14 +75,16 @@ objective metric that you choose.
         list(
           Name = "string",
           MinValue = "string",
-          MaxValue = "string"
+          MaxValue = "string",
+          ScalingType = "Auto"|"Linear"|"Logarithmic"|"ReverseLogarithmic"
         )
       ),
       ContinuousParameterRanges = list(
         list(
           Name = "string",
           MinValue = "string",
-          MaxValue = "string"
+          MaxValue = "string",
+          ScalingType = "Auto"|"Linear"|"Logarithmic"|"ReverseLogarithmic"
         )
       ),
       CategoricalParameterRanges = list(

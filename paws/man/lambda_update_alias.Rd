@@ -8,7 +8,7 @@ lambda_update_alias(FunctionName, Name, FunctionVersion, Description,
   RoutingConfig, RevisionId)
 }
 \arguments{
-\item{FunctionName}{[required] The name of the lambda function.
+\item{FunctionName}{[required] The name of the Lambda function.
 
 \strong{Name formats}
 \itemize{
@@ -27,16 +27,16 @@ the function name, it is limited to 64 characters in length.}
 
 \item{Description}{A description of the alias.}
 
-\item{RoutingConfig}{The \href{http://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html}{routing configuration}
+\item{RoutingConfig}{The \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html}{routing configuration}
 of the alias.}
 
-\item{RevisionId}{Only update the alias if the revision ID matches the ID specified. Use
-this option to avoid modifying an alias that has changed since you last
-read it.}
+\item{RevisionId}{Only update the alias if the revision ID matches the ID that's
+specified. Use this option to avoid modifying an alias that has changed
+since you last read it.}
 }
 \description{
 Updates the configuration of a Lambda function
-\href{http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{alias}.
+\href{https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{alias}.
 }
 \section{Request syntax}{
 \preformatted{lambda$update_alias(

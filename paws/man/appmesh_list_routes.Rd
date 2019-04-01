@@ -7,22 +7,22 @@
 appmesh_list_routes(limit, meshName, nextToken, virtualRouterName)
 }
 \arguments{
-\item{limit}{The maximum number of mesh results returned by \code{ListRoutes} in paginated
-output. When this parameter is used, \code{ListRoutes} only returns \code{limit}
-results in a single page along with a \code{nextToken} response element. The
-remaining results of the initial request can be seen by sending another
+\item{limit}{The maximum number of results returned by \code{ListRoutes} in paginated
+output. When you use this parameter, \code{ListRoutes} returns only \code{limit}
+results in a single page along with a \code{nextToken} response element. You
+can see the remaining results of the initial request by sending another
 \code{ListRoutes} request with the returned \code{nextToken} value. This value can
-be between 1 and 100. If this parameter is not used, then \code{ListRoutes}
+be between 1 and 100. If you don't use this parameter, \code{ListRoutes}
 returns up to 100 results and a \code{nextToken} value if applicable.}
 
-\item{meshName}{[required] The name of the service mesh in which to list routes.}
+\item{meshName}{[required] The name of the service mesh to list routes in.}
 
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated \code{ListRoutes}
 request where \code{limit} was used and the results exceeded the value of
 that parameter. Pagination continues from the end of the previous
 results that returned the \code{nextToken} value.}
 
-\item{virtualRouterName}{[required] The name of the virtual router in which to list routes.}
+\item{virtualRouterName}{[required] The name of the virtual router to list routes in.}
 }
 \description{
 Returns a list of existing routes in a service mesh.

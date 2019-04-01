@@ -11,7 +11,7 @@ NULL
 #' developers who need detailed information about the AWS Firewall Manager
 #' API actions, data types, and errors. For detailed information about AWS
 #' Firewall Manager features, see the [AWS Firewall Manager Developer
-#' Guide](http://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html).
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html).
 #'
 #' @section Example:
 #' ```
@@ -29,6 +29,7 @@ NULL
 #'  \link[=fms_get_compliance_detail]{get_compliance_detail} \tab Returns detailed compliance information about the specified member account \cr
 #'  \link[=fms_get_notification_channel]{get_notification_channel} \tab Returns information about the Amazon Simple Notification Service (SNS) topic that is used to record AWS Firewall Manager SNS logs \cr
 #'  \link[=fms_get_policy]{get_policy} \tab Returns information about the specified AWS Firewall Manager policy \cr
+#'  \link[=fms_get_protection_status]{get_protection_status} \tab If you created a Shield Advanced policy, returns policy-level attack summary information in the event of a potential DDoS attack \cr
 #'  \link[=fms_list_compliance_status]{list_compliance_status} \tab Returns an array of PolicyComplianceStatus objects in the response \cr
 #'  \link[=fms_list_member_accounts]{list_member_accounts} \tab Returns a MemberAccounts object that lists the member accounts in the administrator's AWS organization \cr
 #'  \link[=fms_list_policies]{list_policies} \tab Returns an array of PolicySummary objects in the response \cr

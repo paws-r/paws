@@ -6,7 +6,7 @@
 and no application versions}
 \usage{
 elasticbeanstalk_create_application(ApplicationName, Description,
-  ResourceLifecycleConfig)
+  ResourceLifecycleConfig, Tags)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application.
@@ -19,6 +19,11 @@ specified name already exists, the action returns an
 
 \item{ResourceLifecycleConfig}{Specify an application resource lifecycle configuration to prevent your
 application from accumulating too many versions.}
+
+\item{Tags}{Specifies the tags applied to the application.
+
+Elastic Beanstalk applies these tags only to the application.
+Environments that you create in the application don't inherit the tags.}
 }
 \description{
 Creates an application that has one configuration template named
@@ -41,6 +46,12 @@ Creates an application that has one configuration template named
         MaxAgeInDays = 123,
         DeleteSourceFromS3 = TRUE|FALSE
       )
+    )
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
     )
   )
 )

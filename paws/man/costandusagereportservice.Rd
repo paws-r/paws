@@ -7,7 +7,21 @@
 costandusagereportservice()
 }
 \description{
-All public APIs for AWS Cost and Usage Report service
+The AWS Cost and Usage Report API enables you to programmatically
+create, query, and delete AWS Cost and Usage report definitions.
+
+AWS Cost and Usage reports track the monthly AWS costs and usage
+associated with your AWS account. The report contains line items for
+each unique combination of AWS product, usage type, and operation that
+your AWS account uses. You can configure the AWS Cost and Usage report
+to show only the data that you want, using the AWS Cost and Usage API.
+
+Service Endpoint
+
+The AWS Cost and Usage Report API provides the following endpoint:
+\itemize{
+\item cur.us-east-1.amazonaws.com
+}
 }
 \section{Example}{
 \preformatted{costandusagereportservice <- paws::costandusagereportservice()
@@ -18,9 +32,9 @@ costandusagereportservice$operation()
 \section{Operations}{
 
 \tabular{ll}{
-\link[=costandusagereportservice_delete_report_definition]{delete_report_definition} \tab Delete a specified report definition \cr
-\link[=costandusagereportservice_describe_report_definitions]{describe_report_definitions} \tab Describe a list of report definitions owned by the account\cr
-\link[=costandusagereportservice_put_report_definition]{put_report_definition} \tab Create a new report definition
+\link[=costandusagereportservice_delete_report_definition]{delete_report_definition} \tab Deletes the specified report \cr
+\link[=costandusagereportservice_describe_report_definitions]{describe_report_definitions} \tab Lists the AWS Cost and Usage reports available to this account\cr
+\link[=costandusagereportservice_put_report_definition]{put_report_definition} \tab Creates a new report using the description that you provide
 }
 }
 

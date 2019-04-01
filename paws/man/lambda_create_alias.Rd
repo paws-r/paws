@@ -8,7 +8,7 @@ lambda_create_alias(FunctionName, Name, FunctionVersion, Description,
   RoutingConfig)
 }
 \arguments{
-\item{FunctionName}{[required] The name of the lambda function.
+\item{FunctionName}{[required] The name of the Lambda function.
 
 \strong{Name formats}
 \itemize{
@@ -27,12 +27,12 @@ the function name, it is limited to 64 characters in length.}
 
 \item{Description}{A description of the alias.}
 
-\item{RoutingConfig}{The \href{http://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html}{routing configuration}
+\item{RoutingConfig}{The \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html}{routing configuration}
 of the alias.}
 }
 \description{
 Creates an
-\href{http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{alias}
+\href{https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{alias}
 for a Lambda function version. Use aliases to provide clients with a
 function identifier that you can update to invoke a different version.
 }

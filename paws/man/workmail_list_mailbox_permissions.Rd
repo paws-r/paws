@@ -2,16 +2,17 @@
 % Please edit documentation in R/workmail_operations.R
 \name{workmail_list_mailbox_permissions}
 \alias{workmail_list_mailbox_permissions}
-\title{Lists the mailbox permissions associated with a mailbox}
+\title{Lists the mailbox permissions associated with a user, group, or resource
+mailbox}
 \usage{
 workmail_list_mailbox_permissions(OrganizationId, EntityId, NextToken,
   MaxResults)
 }
 \arguments{
-\item{OrganizationId}{[required] The identifier of the organization under which the entity (user or
-group) exists.}
+\item{OrganizationId}{[required] The identifier of the organization under which the user, group, or
+resource exists.}
 
-\item{EntityId}{[required] The identifier of the entity (user or group) for which to list mailbox
+\item{EntityId}{[required] The identifier of the user, group, or resource for which to list mailbox
 permissions.}
 
 \item{NextToken}{The token to use to retrieve the next page of results. The first call
@@ -20,7 +21,8 @@ does not contain any tokens.}
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
 \description{
-Lists the mailbox permissions associated with a mailbox.
+Lists the mailbox permissions associated with a user, group, or resource
+mailbox.
 }
 \section{Request syntax}{
 \preformatted{workmail$list_mailbox_permissions(

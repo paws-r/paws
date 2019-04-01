@@ -31,7 +31,7 @@ reserves capacity for that concurrency level.
 \details{
 Concurrency settings apply to the function as a whole, including all
 published versions and the unpublished version. Reserving concurrency
-both guarantees that your function has capacity to process the specified
+both ensures that your function has capacity to process the specified
 number of events simultaneously, and prevents it from scaling beyond
 that level. Use GetFunction to see the current setting for a function.
 
@@ -39,7 +39,7 @@ Use GetAccountSettings to see your regional concurrency limit. You can
 reserve concurrency for as many functions as you like, as long as you
 leave at least 100 simultaneous executions unreserved for functions that
 aren't configured with a per-function limit. For more information, see
-\href{http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html}{Managing Concurrency}.
+\href{https://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html}{Managing Concurrency}.
 }
 \section{Request syntax}{
 \preformatted{lambda$put_function_concurrency(

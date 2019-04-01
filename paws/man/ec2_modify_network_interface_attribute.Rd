@@ -34,7 +34,8 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.}
 }
 \description{
 Modifies the specified network interface attribute. You can specify only
-one attribute at a time.
+one attribute at a time. You can use this action to attach and detach
+security groups from an existing EC2 instance.
 }
 \section{Request syntax}{
 \preformatted{ec2$modify_network_interface_attribute(

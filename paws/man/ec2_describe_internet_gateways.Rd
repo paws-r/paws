@@ -4,7 +4,8 @@
 \alias{ec2_describe_internet_gateways}
 \title{Describes one or more of your internet gateways}
 \usage{
-ec2_describe_internet_gateways(Filters, DryRun, InternetGatewayIds)
+ec2_describe_internet_gateways(Filters, DryRun, InternetGatewayIds,
+  NextToken, MaxResults)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -34,6 +35,12 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{InternetGatewayIds}{One or more internet gateway IDs.
 
 Default: Describes all your internet gateways.}
+
+\item{NextToken}{The token for the next page of results.}
+
+\item{MaxResults}{The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned \code{nextToken}
+value.}
 }
 \description{
 Describes one or more of your internet gateways.
@@ -51,7 +58,9 @@ Describes one or more of your internet gateways.
   DryRun = TRUE|FALSE,
   InternetGatewayIds = list(
     "string"
-  )
+  ),
+  NextToken = "string",
+  MaxResults = 123
 )
 }
 }

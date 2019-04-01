@@ -7,9 +7,9 @@
 efs_modify_mount_target_security_groups(MountTargetId, SecurityGroups)
 }
 \arguments{
-\item{MountTargetId}{[required] ID of the mount target whose security groups you want to modify.}
+\item{MountTargetId}{[required] The ID of the mount target whose security groups you want to modify.}
 
-\item{SecurityGroups}{Array of up to five VPC security group IDs.}
+\item{SecurityGroups}{An array of up to five VPC security group IDs.}
 }
 \description{
 Modifies the set of security groups in effect for a mount target.

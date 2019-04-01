@@ -15,7 +15,7 @@ chime_batch_suspend_user(AccountId, UserIdList)
 \description{
 Suspends up to 50 users from a \code{Team} or \code{EnterpriseLWA} Amazon Chime
 account. For more information about different account types, see
-\href{http://docs.aws.amazon.com/chime/latest/ag/manage-chime-account.html}{Managing Your Amazon Chime Accounts}
+\href{https://docs.aws.amazon.com/chime/latest/ag/manage-chime-account.html}{Managing Your Amazon Chime Accounts}
 in the \emph{Amazon Chime Administration Guide}.
 }
 \details{
@@ -25,9 +25,9 @@ suspension from suspended \code{Team} account users, invite them to the
 \code{Team} account again. You can use the InviteUsers action to do so.
 
 Users suspended from an \code{EnterpriseLWA} account are immediately signed
-out of Amazon Chime and are no longer able to sign in. To remove the
-suspension from suspended \code{EnterpriseLWA} account users, use the
-BatchUnsuspendUser action.
+out of Amazon Chime and can no longer sign in. To remove the suspension
+from suspended \code{EnterpriseLWA} account users, use the BatchUnsuspendUser
+action.
 
 To sign out users without suspending them, use the LogoutUser action.
 }

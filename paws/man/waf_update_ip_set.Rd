@@ -37,8 +37,8 @@ the range of IP addresses from \code{192.0.2.0} to \code{192.0.2.255}) or
 }
 
 AWS WAF supports IPv4 address ranges: /8 and any range between /16
-through /32. AWS WAF supports IPv6 address ranges: /16, /24, /32, /48,
-/56, /64, and /128. For more information about CIDR notation, see the
+through /32. AWS WAF supports IPv6 address ranges: /24, /32, /48, /56,
+/64, and /128. For more information about CIDR notation, see the
 Wikipedia entry \href{https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing}{Classless Inter-Domain Routing}.
 
 IPv6 addresses can be represented using any of the following formats:
@@ -73,7 +73,7 @@ one.
 You can insert a maximum of 1000 addresses in a single request.
 
 For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the \href{http://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
+HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{waf$update_ip_set(

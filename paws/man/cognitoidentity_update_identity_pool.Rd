@@ -2,12 +2,12 @@
 % Please edit documentation in R/cognitoidentity_operations.R
 \name{cognitoidentity_update_identity_pool}
 \alias{cognitoidentity_update_identity_pool}
-\title{Updates a user pool}
+\title{Updates an identity pool}
 \usage{
 cognitoidentity_update_identity_pool(IdentityPoolId, IdentityPoolName,
   AllowUnauthenticatedIdentities, SupportedLoginProviders,
   DeveloperProviderName, OpenIdConnectProviderARNs,
-  CognitoIdentityProviders, SamlProviderARNs)
+  CognitoIdentityProviders, SamlProviderARNs, IdentityPoolTags)
 }
 \arguments{
 \item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
@@ -22,14 +22,18 @@ cognitoidentity_update_identity_pool(IdentityPoolId, IdentityPoolName,
 
 \item{OpenIdConnectProviderARNs}{A list of OpendID Connect provider ARNs.}
 
-\item{CognitoIdentityProviders}{A list representing an Amazon Cognito Identity User Pool and its client
-ID.}
+\item{CognitoIdentityProviders}{A list representing an Amazon Cognito user pool and its client ID.}
 
 \item{SamlProviderARNs}{An array of Amazon Resource Names (ARNs) of the SAML provider for your
 identity pool.}
+
+\item{IdentityPoolTags}{The tags that are assigned to the identity pool. A tag is a label that
+you can apply to identity pools to categorize and manage them in
+different ways, such as by purpose, owner, environment, or other
+criteria.}
 }
 \description{
-Updates a user pool.
+Updates an identity pool.
 }
 \details{
 You must use AWS Developer credentials to call this API.
@@ -54,6 +58,9 @@ You must use AWS Developer credentials to call this API.
     )
   ),
   SamlProviderARNs = list(
+    "string"
+  ),
+  IdentityPoolTags = list(
     "string"
   )
 )

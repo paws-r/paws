@@ -6,7 +6,7 @@
 \usage{
 storagegateway_activate_gateway(ActivationKey, GatewayName,
   GatewayTimezone, GatewayRegion, GatewayType, TapeDriveType,
-  MediumChangerType)
+  MediumChangerType, Tags)
 }
 \arguments{
 \item{ActivationKey}{[required] Your gateway activation key. You can obtain the activation key by
@@ -34,13 +34,11 @@ schedule.}
 \item{GatewayRegion}{[required] A value that indicates the region where you want to store your data. The
 gateway region specified must be the same region as the region in your
 \code{Host} header in the request. For more information about available
-regions and endpoints for AWS Storage Gateway, see \href{http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region}{Regions and Endpoints}
+regions and endpoints for AWS Storage Gateway, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region}{Regions and Endpoints}
 in the \emph{Amazon Web Services Glossary}.
 
-Valid Values: "us-east-1", "us-east-2", "us-west-1",
-"us-west-2", "ca-central-1", "eu-west-1", "eu-central-1",
-"eu-west-2", "eu-west-3", "ap-northeast-1", "ap-northeast-2",
-"ap-southeast-1", "ap-southeast-2", "ap-south-1", "sa-east-1"}
+Valid Values: See \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region}{AWS Storage Gateway Regions and Endpoints}
+in the AWS General Reference.}
 
 \item{GatewayType}{A value that defines the type of gateway to activate. The type specified
 is critical to all later functions of the gateway and cannot be changed
@@ -57,6 +55,14 @@ Valid Values: "IBM-ULT3580-TD5"}
 gateway. This field is optional.
 
 Valid Values: "STK-L700", "AWS-Gateway-VTL"}
+
+\item{Tags}{A list of up to 10 tags that can be assigned to the gateway. Each tag is
+a key-value pair.
+
+Valid characters for key and value are letters, spaces, and numbers
+representable in UTF-8 format, and the following special characters: + -
+= . \_ : / @. The maximum length of a tag's key is 128 characters, and
+the maximum length for a tag's value is 256.}
 }
 \description{
 Activates the gateway you previously deployed on your host. In the
@@ -78,7 +84,13 @@ You must turn on the gateway VM before you can activate your gateway.
   GatewayRegion = "string",
   GatewayType = "string",
   TapeDriveType = "string",
-  MediumChangerType = "string"
+  MediumChangerType = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

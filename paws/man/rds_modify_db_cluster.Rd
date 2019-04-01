@@ -10,7 +10,7 @@ rds_modify_db_cluster(DBClusterIdentifier, NewDBClusterIdentifier,
   PreferredBackupWindow, PreferredMaintenanceWindow,
   EnableIAMDatabaseAuthentication, BacktrackWindow,
   CloudwatchLogsExportConfiguration, EngineVersion, ScalingConfiguration,
-  DeletionProtection, EnableHttpEndpoint)
+  DeletionProtection, EnableHttpEndpoint, CopyTagsToSnapshot)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The DB cluster identifier for the cluster being modified. This parameter
@@ -94,7 +94,7 @@ parameter.
 
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region. To see the time blocks available, see
-\href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora}{Adjusting the Preferred DB Cluster Maintenance Window}
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora}{Adjusting the Preferred DB Cluster Maintenance Window}
 in the \emph{Amazon Aurora User Guide.}
 
 Constraints:
@@ -112,7 +112,7 @@ Format: \code{ddd:hh24:mi-ddd:hh24:mi}
 
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region, occurring on a random day of the
-week. To see the time blocks available, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora}{Adjusting the Preferred DB Cluster Maintenance Window}
+week. To see the time blocks available, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora}{Adjusting the Preferred DB Cluster Maintenance Window}
 in the \emph{Amazon Aurora User Guide.}
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
@@ -163,15 +163,21 @@ API for running SQL queries on the Aurora Serverless DB cluster. You can
 also query your database from inside the RDS console with the query
 editor.
 
-For more information about Aurora Serverless, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html}{Using Amazon Aurora Serverless}
+For more information about Aurora Serverless, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html}{Using Amazon Aurora Serverless}
 in the \emph{Amazon Aurora User Guide}.}
+
+\item{CopyTagsToSnapshot}{True to copy all tags from the DB cluster to snapshots of the DB
+cluster, and otherwise false. The default is false.}
 }
 \description{
 Modify a setting for an Amazon Aurora DB cluster. You can change one or
 more database configuration parameters by specifying these parameters
 and the new values in the request. For more information on Amazon
-Aurora, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
+Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
 in the \emph{Amazon Aurora User Guide.}
+}
+\details{
+This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
 \preformatted{rds$modify_db_cluster(
@@ -206,7 +212,8 @@ in the \emph{Amazon Aurora User Guide.}
     SecondsUntilAutoPause = 123
   ),
   DeletionProtection = TRUE|FALSE,
-  EnableHttpEndpoint = TRUE|FALSE
+  EnableHttpEndpoint = TRUE|FALSE,
+  CopyTagsToSnapshot = TRUE|FALSE
 )
 }
 }

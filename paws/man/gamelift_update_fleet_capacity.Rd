@@ -39,6 +39,12 @@ count matches the desired instance count. You can view a fleet's
 current capacity information by calling DescribeFleetCapacity. If the
 desired instance count is higher than the instance type's limit, the
 "Limit Exceeded" exception occurs.
+
+\strong{Learn more}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Working with Fleets}.
+
+\strong{Related operations}
 \itemize{
 \item CreateFleet
 \item ListFleets

@@ -4,11 +4,11 @@
 \alias{sfn_create_activity}
 \title{Creates an activity}
 \usage{
-sfn_create_activity(name)
+sfn_create_activity(name, tags)
 }
 \arguments{
 \item{name}{[required] The name of the activity to create. This name must be unique for your
-AWS account and region for 90 days. For more information, see \href{http://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions}{Limits Related to State Machine Executions}
+AWS account and region for 90 days. For more information, see \href{https://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions}{Limits Related to State Machine Executions}
 in the \emph{AWS Step Functions Developer Guide}.
 
 A name must \emph{not} contain:
@@ -19,6 +19,8 @@ A name must \emph{not} contain:
 \item special characters \code{\" # \\\% \\ ^ | ~ \` $ &amp; , ; : /}
 \item control characters (\code{U+0000-001F}, \code{U+007F-009F})
 }}
+
+\item{tags}{The list of tags to add to a resource.}
 }
 \description{
 Creates an activity. An activity is a task that you write in any
@@ -29,9 +31,19 @@ This function lets Step Functions know the existence of your activity
 and returns an identifier for use in a state machine and when polling
 from the activity.
 }
+\details{
+This operation is eventually consistent. The results are best effort and
+may not reflect very recent updates and changes.
+}
 \section{Request syntax}{
 \preformatted{sfn$create_activity(
-  name = "string"
+  name = "string",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
 )
 }
 }

@@ -7,8 +7,8 @@ the first application version in the same call}
 \usage{
 serverlessapplicationrepository_create_application(Author, Description,
   HomePageUrl, Labels, LicenseBody, LicenseUrl, Name, ReadmeBody,
-  ReadmeUrl, SemanticVersion, SourceCodeUrl, SpdxLicenseId, TemplateBody,
-  TemplateUrl)
+  ReadmeUrl, SemanticVersion, SourceCodeArchiveUrl, SourceCodeUrl,
+  SpdxLicenseId, TemplateBody, TemplateUrl)
 }
 \arguments{
 \item{Author}{[required] The name of the author publishing the app.
@@ -74,7 +74,13 @@ error results.}
 
 \url{https://semver.org/}}
 
-\item{SourceCodeUrl}{A link to a public repository for the source code of your application.}
+\item{SourceCodeArchiveUrl}{A link to the S3 object that contains the ZIP archive of the source code
+for this version of your application.
+
+Maximum size 50 MB}
+
+\item{SourceCodeUrl}{A link to a public repository for the source code of your application,
+for example the URL of a specific GitHub commit.}
 
 \item{SpdxLicenseId}{A valid identifier from \url{https://spdx.org/licenses/}.}
 
@@ -108,6 +114,7 @@ the first application version in the same call.
   ReadmeBody = "string",
   ReadmeUrl = "string",
   SemanticVersion = "string",
+  SourceCodeArchiveUrl = "string",
   SourceCodeUrl = "string",
   SpdxLicenseId = "string",
   TemplateBody = "string",

@@ -5,7 +5,7 @@
 \title{Creates a logger definition}
 \usage{
 greengrass_create_logger_definition(AmznClientToken, InitialVersion,
-  Name)
+  Name, tags)
 }
 \arguments{
 \item{AmznClientToken}{A client token used to correlate requests and responses.}
@@ -13,6 +13,8 @@ greengrass_create_logger_definition(AmznClientToken, InitialVersion,
 \item{InitialVersion}{Information about the initial version of the logger definition.}
 
 \item{Name}{The name of the logger definition.}
+
+\item{tags}{Tag(s) to add to the new resource}
 }
 \description{
 Creates a logger definition. You may provide the initial version of the logger definition now or use ''CreateLoggerDefinitionVersion'' at a later time.
@@ -31,7 +33,10 @@ Creates a logger definition. You may provide the initial version of the logger d
       )
     )
   ),
-  Name = "string"
+  Name = "string",
+  tags = list(
+    "string"
+  )
 )
 }
 }

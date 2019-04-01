@@ -6,7 +6,7 @@
 \usage{
 mediapackage_create_origin_endpoint(ChannelId, CmafPackage, DashPackage,
   Description, HlsPackage, Id, ManifestName, MssPackage,
-  StartoverWindowSeconds, TimeDelaySeconds, Whitelist)
+  StartoverWindowSeconds, Tags, TimeDelaySeconds, Whitelist)
 }
 \arguments{
 \item{ChannelId}{[required] The ID of the Channel that the OriginEndpoint will be associated with.
@@ -29,6 +29,8 @@ and it cannot be changed after the OriginEndpoint is created.}
 
 \item{StartoverWindowSeconds}{Maximum duration (seconds) of content to retain for startover playback.
 If not specified, startover playback will be disabled for the OriginEndpoint.}
+
+\item{Tags}{}
 
 \item{TimeDelaySeconds}{Amount of delay (seconds) to enforce on the playback of live content.
 If not specified, there will be no time delay in effect for the OriginEndpoint.}
@@ -86,6 +88,7 @@ Creates a new OriginEndpoint record.
         Url = "string"
       )
     ),
+    ManifestLayout = "FULL"|"COMPACT",
     ManifestWindowSeconds = 123,
     MinBufferTimeSeconds = 123,
     MinUpdatePeriodSeconds = 123,
@@ -94,6 +97,7 @@ Creates a new OriginEndpoint record.
     ),
     Profile = "NONE"|"HBBTV_1_5",
     SegmentDurationSeconds = 123,
+    SegmentTemplateFormat = "NUMBER_WITH_TIMELINE"|"TIME_WITH_TIMELINE",
     StreamSelection = list(
       MaxVideoBitsPerSecond = 123,
       MinVideoBitsPerSecond = 123,
@@ -154,6 +158,9 @@ Creates a new OriginEndpoint record.
     )
   ),
   StartoverWindowSeconds = 123,
+  Tags = list(
+    "string"
+  ),
   TimeDelaySeconds = 123,
   Whitelist = list(
     "string"

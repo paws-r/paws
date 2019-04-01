@@ -17,7 +17,7 @@ to complete before executing the policy.
 
 This parameter is not supported if the policy type is \code{StepScaling}.
 
-For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html}{Scaling Cooldowns}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html}{Scaling Cooldowns}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{MetricValue}{The metric value to compare to \code{BreachThreshold}. This enables you to
@@ -29,13 +29,13 @@ of 10, you can set the metric value to 59.
 If you specify a metric value that doesn't correspond to a step
 adjustment for the policy, the call returns an error.
 
-This parameter is required if the policy type is \code{StepScaling} and not
-supported otherwise.}
+Conditional: This parameter is required if the policy type is
+\code{StepScaling} and not supported otherwise.}
 
 \item{BreachThreshold}{The breach threshold for the alarm.
 
-This parameter is required if the policy type is \code{StepScaling} and not
-supported otherwise.}
+Conditional: This parameter is required if the policy type is
+\code{StepScaling} and not supported otherwise.}
 }
 \description{
 Executes the specified policy.

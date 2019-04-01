@@ -24,8 +24,8 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
 \item{Iops}{The number of I/O operations per second (IOPS) to provision for the
 volume, with a maximum ratio of 50 IOPS/GiB. Range is 100 to 64,000 IOPS
-for volumes in most regions. Maximum IOPS of 64,000 is guaranteed only
-on \href{AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances}{Nitro-based instances}.
+for volumes in most Regions. Maximum IOPS of 64,000 is guaranteed only
+on \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances}{Nitro-based instances}.
 Other instance families guarantee performance up to 32,000 IOPS. For
 more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html}{Amazon EBS Volume Types}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
@@ -80,7 +80,7 @@ HDD, or \code{standard} for Magnetic volumes.
 Defaults: If no volume type is specified, the default is \code{standard} in
 us-east-1, eu-west-1, eu-central-1, us-west-2, us-west-1, sa-east-1,
 ap-northeast-1, ap-northeast-2, ap-southeast-1, ap-southeast-2,
-ap-south-1, us-gov-west-1, and cn-north-1. In all other regions, EBS
+ap-south-1, us-gov-west-1, and cn-north-1. In all other Regions, EBS
 defaults to \code{gp2}.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -125,7 +125,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   DryRun = TRUE|FALSE,
   TagSpecifications = list(
     list(
-      ResourceType = "customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-instances-request"|"subnet"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"host-reservation"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-instances-request"|"subnet"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
       Tags = list(
         list(
           Key = "string",

@@ -11,9 +11,9 @@ transfer_list_users(MaxResults, NextToken, ServerId)
 \item{MaxResults}{Specifies the number of users to return as a response to the \code{ListUsers}
 request.}
 
-\item{NextToken}{When you can get additional results from the \code{ListUsers}ListUsers call,
-a \code{NextToken} parameter is returned in the output. You can then pass in
-a subsequent command the \code{NextToken} parameter to continue listing
+\item{NextToken}{When you can get additional results from the \code{ListUsers} call, a
+\code{NextToken} parameter is returned in the output. You can then pass in a
+subsequent command the \code{NextToken} parameter to continue listing
 additional users.}
 
 \item{ServerId}{[required] A system-assigned unique identifier for a Secure File Transfer Protocol

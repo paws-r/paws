@@ -463,6 +463,15 @@ servicecatalog_copy_product <- function(AcceptLanguage = NULL, SourceProductArn,
 #' 
 #'     `\{"NotificationArns" : \\["arn:aws:sns:us-east-1:123456789012:Topic"\\]\}`
 #' 
+#' RESOUCE\\_UPDATE
+#' 
+#' :   Specify the `TagUpdatesOnProvisionedProduct` property as follows:
+#' 
+#'     `\{"Version":"2.0","Properties":\{"TagUpdateOnProvisionedProduct":"String"\}\}`
+#' 
+#'     The `TagUpdatesOnProvisionedProduct` property accepts a string value
+#'     of `ALLOWED` or `NOT_ALLOWED`.
+#' 
 #' STACKSET
 #' 
 #' :   Specify the `Parameters` property as follows:
@@ -487,6 +496,8 @@ servicecatalog_copy_product <- function(AcceptLanguage = NULL, SourceProductArn,
 #' -   `LAUNCH`
 #' 
 #' -   `NOTIFICATION`
+#' 
+#' -   `RESOURCE_UPDATE`
 #' 
 #' -   `STACKSET`
 #' 
@@ -3859,7 +3870,7 @@ servicecatalog_update_product <- function(AcceptLanguage = NULL, Id, Name = NULL
 #' servicecatalog_update_provisioned_product(AcceptLanguage,
 #'   ProvisionedProductName, ProvisionedProductId, ProductId,
 #'   ProvisioningArtifactId, PathId, ProvisioningParameters,
-#'   ProvisioningPreferences, UpdateToken)
+#'   ProvisioningPreferences, Tags, UpdateToken)
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -3879,6 +3890,9 @@ servicecatalog_update_product <- function(AcceptLanguage = NULL, Id, Name = NULL
 #' @param ProvisioningParameters The new parameters.
 #' @param ProvisioningPreferences An object that contains information about the provisioning preferences
 #' for a stack set.
+#' @param Tags One or more tags. Requires the product to have `RESOURCE_UPDATE`
+#' constraint with `TagUpdatesOnProvisionedProduct` set to `ALLOWED` to
+#' allow tag updates.
 #' @param UpdateToken &#91;required&#93; The idempotency token that uniquely identifies the provisioning update
 #' request.
 #'
@@ -3911,6 +3925,12 @@ servicecatalog_update_product <- function(AcceptLanguage = NULL, Id, Name = NULL
 #'     StackSetMaxConcurrencyPercentage = 123,
 #'     StackSetOperationType = "CREATE"|"UPDATE"|"DELETE"
 #'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
 #'   UpdateToken = "string"
 #' )
 #' ```
@@ -3918,14 +3938,14 @@ servicecatalog_update_product <- function(AcceptLanguage = NULL, Id, Name = NULL
 #' @keywords internal
 #'
 #' @rdname servicecatalog_update_provisioned_product
-servicecatalog_update_provisioned_product <- function(AcceptLanguage = NULL, ProvisionedProductName = NULL, ProvisionedProductId = NULL, ProductId = NULL, ProvisioningArtifactId = NULL, PathId = NULL, ProvisioningParameters = NULL, ProvisioningPreferences = NULL, UpdateToken) {
+servicecatalog_update_provisioned_product <- function(AcceptLanguage = NULL, ProvisionedProductName = NULL, ProvisionedProductId = NULL, ProductId = NULL, ProvisioningArtifactId = NULL, PathId = NULL, ProvisioningParameters = NULL, ProvisioningPreferences = NULL, Tags = NULL, UpdateToken) {
   op <- new_operation(
     name = "UpdateProvisionedProduct",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .servicecatalog$update_provisioned_product_input(AcceptLanguage = AcceptLanguage, ProvisionedProductName = ProvisionedProductName, ProvisionedProductId = ProvisionedProductId, ProductId = ProductId, ProvisioningArtifactId = ProvisioningArtifactId, PathId = PathId, ProvisioningParameters = ProvisioningParameters, ProvisioningPreferences = ProvisioningPreferences, UpdateToken = UpdateToken)
+  input <- .servicecatalog$update_provisioned_product_input(AcceptLanguage = AcceptLanguage, ProvisionedProductName = ProvisionedProductName, ProvisionedProductId = ProvisionedProductId, ProductId = ProductId, ProvisioningArtifactId = ProvisioningArtifactId, PathId = PathId, ProvisioningParameters = ProvisioningParameters, ProvisioningPreferences = ProvisioningPreferences, Tags = Tags, UpdateToken = UpdateToken)
   output <- .servicecatalog$update_provisioned_product_output()
   svc <- .servicecatalog$service()
   request <- new_request(svc, op, input, output)

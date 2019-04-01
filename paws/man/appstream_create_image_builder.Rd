@@ -32,13 +32,13 @@ the image builder to a Microsoft Active Directory domain.}
 \item{AppstreamAgentVersion}{The version of the AppStream 2.0 agent to use for this image builder. To
 use the latest version of the AppStream 2.0 agent, specify [LATEST].}
 
-\item{Tags}{The tags to associate with the image builder. A tag is a key-value pair
-(the value is optional). For example, Environment=Test, or, if you do
-not specify a value, Environment=.
+\item{Tags}{The tags to associate with the image builder. A tag is a key-value pair,
+and the value is optional. For example, Environment=Test. If you do not
+specify a value, Environment=.
 
-If you do not specify a value, we set the value to an empty string.
+If you do not specify a value, the value is set to an empty string.
 
-For more information about tags, see \href{http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html}{Tagging Your Resources}
+For more information about tags, see \href{https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html}{Tagging Your Resources}
 in the \emph{Amazon AppStream 2.0 Developer Guide}.}
 }
 \description{

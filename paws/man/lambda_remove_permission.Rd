@@ -2,7 +2,7 @@
 % Please edit documentation in R/lambda_operations.R
 \name{lambda_remove_permission}
 \alias{lambda_remove_permission}
-\title{Revokes function use permission from an AWS service or another account}
+\title{Revokes function-use permission from an AWS service or another account}
 \usage{
 lambda_remove_permission(FunctionName, StatementId, Qualifier,
   RevisionId)
@@ -28,12 +28,12 @@ function name, it is limited to 64 characters in length.}
 \item{Qualifier}{Specify a version or alias to remove permissions from a published
 version of the function.}
 
-\item{RevisionId}{Only update the policy if the revision ID matches the ID specified. Use
-this option to avoid modifying a policy that has changed since you last
-read it.}
+\item{RevisionId}{Only update the policy if the revision ID matches the ID that's
+specified. Use this option to avoid modifying a policy that has changed
+since you last read it.}
 }
 \description{
-Revokes function use permission from an AWS service or another account.
+Revokes function-use permission from an AWS service or another account.
 You can get the ID of the statement from the output of GetPolicy.
 }
 \section{Request syntax}{

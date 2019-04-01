@@ -39,6 +39,12 @@ account.
 \item \code{shared} - Return all manual DB snapshots that have been shared to
 my AWS account.
 \item \code{public} - Return all DB snapshots that have been marked as public.
+\item \code{awsbackup} - Return the DB snapshots managed by the AWS Backup
+service.
+
+For information about AWS Backup, see the \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html}{AWS Backup DeveloperGuide.}
+
+The \code{awsbackup} type does not apply to Aurora.
 }
 
 If you don't specify a \code{SnapshotType} value, then both automated and

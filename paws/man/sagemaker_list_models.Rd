@@ -10,7 +10,7 @@ sagemaker_list_models(SortBy, SortOrder, NextToken, MaxResults,
 \arguments{
 \item{SortBy}{Sorts the list of results. The default is \code{CreationTime}.}
 
-\item{SortOrder}{The sort order for results. The default is \code{Ascending}.}
+\item{SortOrder}{The sort order for results. The default is \code{Descending}.}
 
 \item{NextToken}{If the response to a previous \code{ListModels} request was truncated, the
 response includes a \code{NextToken}. To retrieve the next set of models, use
@@ -29,7 +29,7 @@ the training job whose name contains the specified string.}
 }
 \description{
 Lists models created with the
-\href{http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateModel.html}{CreateModel}
+\href{https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateModel.html}{CreateModel}
 API.
 }
 \section{Request syntax}{

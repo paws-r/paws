@@ -23,7 +23,7 @@ ASCII character range.}
 
 \item{Content}{If provided, the new content for the policy. The text must be correctly
 formatted JSON that complies with the syntax for the policy's type. For
-more information, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html}{Service Control Policy Syntax}
+more information, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html}{Service Control Policy Syntax}
 in the \emph{AWS Organizations User Guide}.}
 }
 \description{
@@ -59,7 +59,7 @@ account.
 # the preceding example with a new JSON policy text string that allows S3
 # actions instead of EC2 actions:/n/n
 \donttest{organizations$update_policy(
-  Content = "{ \\\\\\"Version\\\\\\": \\\\\\"2012-10-17\\\\\\", \\\\\\"Statement\\\\\\": {\\\\\\"Effect\\\\\\": \\\\...",
+  Content = "{ \\\\\\"Version\\\\\\": \\\\\\"2012-10-17\\\\\\", \\\\\\"Statement\\\\\\": {\\\\\\"Effect\\\\\\": ...",
   PolicyId = "p-examplepolicyid111"
 )}
 

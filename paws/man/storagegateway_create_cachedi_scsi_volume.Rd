@@ -17,14 +17,17 @@ storagegateway_create_cachedi_scsi_volume(GatewayARN, VolumeSizeInBytes,
 the new cached volume. Specify this field if you want to create the
 iSCSI storage volume from a snapshot otherwise do not include this
 field. To list snapshots for your account use
-\href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html}{DescribeSnapshots}
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html}{DescribeSnapshots}
 in the \emph{Amazon Elastic Compute Cloud API Reference}.}
 
-\item{TargetName}{[required] The name of the iSCSI target used by initiators to connect to the target
-and as a suffix for the target ARN. For example, specifying \code{TargetName}
-as \emph{myvolume} results in the target ARN of
-arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume.
-The target name must be unique across all volumes of a gateway.}
+\item{TargetName}{[required] The name of the iSCSI target used by an initiator to connect to a volume
+and used as a suffix for the target ARN. For example, specifying
+\code{TargetName} as \emph{myvolume} results in the target ARN of
+\code{arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume}.
+The target name must be unique across all volumes on a gateway.
+
+If you don't specify a value, Storage Gateway uses the value that was
+previously used for this volume as the new target name.}
 
 \item{SourceVolumeARN}{The ARN for an existing volume. Specifying this ARN makes the new volume
 into an exact copy of the specified existing volume's latest recovery

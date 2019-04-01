@@ -4,7 +4,7 @@
 \alias{greengrass_create_group}
 \title{Creates a group}
 \usage{
-greengrass_create_group(AmznClientToken, InitialVersion, Name)
+greengrass_create_group(AmznClientToken, InitialVersion, Name, tags)
 }
 \arguments{
 \item{AmznClientToken}{A client token used to correlate requests and responses.}
@@ -12,6 +12,8 @@ greengrass_create_group(AmznClientToken, InitialVersion, Name)
 \item{InitialVersion}{Information about the initial version of the group.}
 
 \item{Name}{The name of the group.}
+
+\item{tags}{Tag(s) to add to the new resource}
 }
 \description{
 Creates a group. You may provide the initial version of the group or use ''CreateGroupVersion'' at a later time. Tip: You can use the ''gg_group_setup'' package (https://github.com/awslabs/aws-greengrass-group-setup) as a library or command-line application to create and deploy Greengrass groups.
@@ -28,7 +30,10 @@ Creates a group. You may provide the initial version of the group or use ''Creat
     ResourceDefinitionVersionArn = "string",
     SubscriptionDefinitionVersionArn = "string"
   ),
-  Name = "string"
+  Name = "string",
+  tags = list(
+    "string"
+  )
 )
 }
 }

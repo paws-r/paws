@@ -13,7 +13,7 @@ NULL
 #' 
 #' This guide provides descriptions of the Organizations API. For more
 #' information about using this service, see the [AWS Organizations User
-#' Guide](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html).
+#' Guide](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html).
 #' 
 #' **API Version**
 #' 
@@ -34,7 +34,7 @@ NULL
 #' Organizations. However, you also can use the Organizations Query API to
 #' make direct calls to the Organizations web service. To learn more about
 #' the Organizations Query API, see [Making Query
-#' Requests](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_query-requests.html)
+#' Requests](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_query-requests.html)
 #' in the *AWS Organizations User Guide*. Organizations supports GET and
 #' POST requests for all actions. That is, the API does not require you to
 #' use GET for some actions and POST for others. However, GET requests are
@@ -55,7 +55,7 @@ NULL
 #' sign requests.
 #' 
 #' To sign requests, we recommend that you use [Signature Version
-#' 4](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 #' If you have an existing application that uses Signature Version 2, you
 #' do not have to update it to use Signature Version 4. However, some
 #' operations now require Signature Version 4. The documentation for
@@ -102,7 +102,7 @@ NULL
 #' For the various SDKs used to call the APIs, see the documentation for
 #' the SDK of interest to learn how to direct the requests to a specific
 #' endpoint. For more information, see [Regions and
-#' Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html#sts_region)
+#' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#sts_region)
 #' in the *AWS General Reference*.
 #' 
 #' **How examples are presented**
@@ -124,11 +124,11 @@ NULL
 #' made the request, when it was made, and so on. For more about AWS
 #' Organizations and its support for AWS CloudTrail, see [Logging AWS
 #' Organizations Events with AWS
-#' CloudTrail](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_monitoring.html#orgs_cloudtrail-integration)
+#' CloudTrail](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_monitoring.html#orgs_cloudtrail-integration)
 #' in the *AWS Organizations User Guide*. To learn more about CloudTrail,
 #' including how to turn it on and find your log files, see the [AWS
 #' CloudTrail User
-#' Guide](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
+#' Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
 #'
 #' @section Example:
 #' ```

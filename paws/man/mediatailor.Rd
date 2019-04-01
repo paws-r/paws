@@ -28,10 +28,13 @@ mediatailor$operation()
 \section{Operations}{
 
 \tabular{ll}{
-\link[=mediatailor_delete_playback_configuration]{delete_playback_configuration} \tab Deletes the configuration for the specified name \cr
-\link[=mediatailor_get_playback_configuration]{get_playback_configuration} \tab Returns the configuration for the specified name \cr
-\link[=mediatailor_list_playback_configurations]{list_playback_configurations} \tab Returns a list of the configurations defined in AWS Elemental MediaTailor\cr
-\link[=mediatailor_put_playback_configuration]{put_playback_configuration} \tab Adds a new configuration to AWS Elemental MediaTailor
+\link[=mediatailor_delete_playback_configuration]{delete_playback_configuration} \tab Deletes the playback configuration for the specified name \cr
+\link[=mediatailor_get_playback_configuration]{get_playback_configuration} \tab Returns the playback configuration for the specified name \cr
+\link[=mediatailor_list_playback_configurations]{list_playback_configurations} \tab Returns a list of the playback configurations defined in AWS Elemental MediaTailor \cr
+\link[=mediatailor_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of the tags assigned to the specified playback configuration resource\cr
+\link[=mediatailor_put_playback_configuration]{put_playback_configuration} \tab Adds a new playback configuration to AWS Elemental MediaTailor \cr
+\link[=mediatailor_tag_resource]{tag_resource} \tab Adds tags to the specified playback configuration resource \cr
+\link[=mediatailor_untag_resource]{untag_resource} \tab Removes tags from the specified playback configuration resource
 }
 }
 

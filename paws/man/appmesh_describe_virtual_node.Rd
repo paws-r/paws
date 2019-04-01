@@ -7,7 +7,7 @@
 appmesh_describe_virtual_node(meshName, virtualNodeName)
 }
 \arguments{
-\item{meshName}{[required] The name of the service mesh in which the virtual node resides.}
+\item{meshName}{[required] The name of the service mesh that the virtual node resides in.}
 
 \item{virtualNodeName}{[required] The name of the virtual node to describe.}
 }

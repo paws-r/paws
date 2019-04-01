@@ -13,7 +13,7 @@ storagegateway_update_gateway_information(GatewayARN, GatewayName,
 
 \item{GatewayName}{}
 
-\item{GatewayTimezone}{}
+\item{GatewayTimezone}{A value that indicates the time zone of the gateway.}
 }
 \description{
 Updates a gateway's metadata, which includes the gateway's name and

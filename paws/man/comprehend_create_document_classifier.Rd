@@ -6,7 +6,8 @@
 documents}
 \usage{
 comprehend_create_document_classifier(DocumentClassifierName,
-  DataAccessRoleArn, InputDataConfig, ClientRequestToken, LanguageCode)
+  DataAccessRoleArn, InputDataConfig, ClientRequestToken, LanguageCode,
+  VolumeKmsKeyId)
 }
 \arguments{
 \item{DocumentClassifierName}{[required] The name of the document classifier.}
@@ -21,6 +22,16 @@ request token, Amazon Comprehend generates one.}
 
 \item{LanguageCode}{[required] The language of the input documents. You can specify English ("en") or
 Spanish ("es"). All documents must be in the same language.}
+
+\item{VolumeKmsKeyId}{ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
+uses to encrypt data on the storage volume attached to the ML compute
+instance(s) that process the analysis job. The VolumeKmsKeyId can be
+either of the following formats:
+\itemize{
+\item KMS Key ID: \code{"1234abcd-12ab-34cd-56ef-1234567890ab"}
+\item Amazon Resource Name (ARN) of a KMS Key:
+\code{"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"}
+}}
 }
 \description{
 Creates a new document classifier that you can use to categorize
@@ -38,7 +49,8 @@ how-document-classification.
     S3Uri = "string"
   ),
   ClientRequestToken = "string",
-  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
+  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt",
+  VolumeKmsKeyId = "string"
 )
 }
 }

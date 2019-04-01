@@ -13,7 +13,7 @@ rds_restore_db_cluster_from_s3(AvailabilityZones, BackupRetentionPeriod,
   Tags, StorageEncrypted, KmsKeyId, EnableIAMDatabaseAuthentication,
   SourceEngine, SourceEngineVersion, S3BucketName, S3Prefix,
   S3IngestionRoleArn, BacktrackWindow, EnableCloudwatchLogsExports,
-  DeletionProtection)
+  DeletionProtection, CopyTagsToSnapshot)
 }
 \arguments{
 \item{AvailabilityZones}{A list of EC2 Availability Zones that instances in the restored DB
@@ -112,7 +112,7 @@ parameter.
 
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region. To see the time blocks available, see
-\href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora}{Adjusting the Preferred Maintenance Window}
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora}{Adjusting the Preferred Maintenance Window}
 in the \emph{Amazon Aurora User Guide.}
 
 Constraints:
@@ -130,7 +130,7 @@ Format: \code{ddd:hh24:mi-ddd:hh24:mi}
 
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region, occurring on a random day of the
-week. To see the time blocks available, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora}{Adjusting the Preferred Maintenance Window}
+week. To see the time blocks available, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora}{Adjusting the Preferred Maintenance Window}
 in the \emph{Amazon Aurora User Guide.}
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
@@ -196,19 +196,25 @@ Constraints:
 
 \item{EnableCloudwatchLogsExports}{The list of logs that the restored DB cluster is to export to CloudWatch
 Logs. The values in the list depend on the DB engine being used. For
-more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
+more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
 in the \emph{Amazon Aurora User Guide}.}
 
 \item{DeletionProtection}{Indicates if the DB cluster should have deletion protection enabled. The
 database can't be deleted when this value is set to true. The default
 is false.}
+
+\item{CopyTagsToSnapshot}{True to copy all tags from the restored DB cluster to snapshots of the
+restored DB cluster, and otherwise false. The default is false.}
 }
 \description{
 Creates an Amazon Aurora DB cluster from data stored in an Amazon S3
 bucket. Amazon RDS must be authorized to access the Amazon S3 bucket and
 the data must be created using the Percona XtraBackup utility as
-described in \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Migrating.html}{Migrating Data to an Amazon Aurora MySQL DB Cluster}
+described in \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Migrating.html}{Migrating Data to an Amazon Aurora MySQL DB Cluster}
 in the \emph{Amazon Aurora User Guide}.
+}
+\details{
+This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
 \preformatted{rds$restore_db_cluster_from_s3(
@@ -250,7 +256,8 @@ in the \emph{Amazon Aurora User Guide}.
   EnableCloudwatchLogsExports = list(
     "string"
   ),
-  DeletionProtection = TRUE|FALSE
+  DeletionProtection = TRUE|FALSE,
+  CopyTagsToSnapshot = TRUE|FALSE
 )
 }
 }

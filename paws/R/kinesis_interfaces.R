@@ -5,7 +5,7 @@ NULL
 
 .kinesis$add_tags_to_stream_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamName = structure(logical(0), tags = list(    type = "string")), Tags = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "map"))), tags = list(    type = "structure"))
+  shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -15,7 +15,7 @@ NULL
 
 .kinesis$create_stream_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamName = structure(logical(0), tags = list(    type = "string")), ShardCount = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), ShardCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -25,7 +25,7 @@ NULL
 
 .kinesis$decrease_stream_retention_period_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamName = structure(logical(0), tags = list(    type = "string")), RetentionPeriodHours = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), RetentionPeriodHours = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -35,7 +35,7 @@ NULL
 
 .kinesis$delete_stream_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamName = structure(logical(0), tags = list(    type = "string")), EnforceConsumerDeletion = structure(logical(0), tags = list(    type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), EnforceConsumerDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -45,7 +45,7 @@ NULL
 
 .kinesis$deregister_stream_consumer_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamARN = structure(logical(0), tags = list(    type = "string")), ConsumerName = structure(logical(0), tags = list(    type = "string")), ConsumerARN = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamARN = structure(logical(0), tags = list(type = "string")), ConsumerName = structure(logical(0), tags = list(type = "string")), ConsumerARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -61,97 +61,97 @@ NULL
 
 .kinesis$describe_limits_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ShardLimit = structure(logical(0), tags = list(    type = "integer")), OpenShardCount = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(ShardLimit = structure(logical(0), tags = list(type = "integer")), OpenShardCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kinesis$describe_stream_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamName = structure(logical(0), tags = list(    type = "string")), Limit = structure(logical(0), tags = list(    type = "integer")), ExclusiveStartShardId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer")), ExclusiveStartShardId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kinesis$describe_stream_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamDescription = structure(list(StreamName = structure(logical(0), tags = list(    type = "string")), StreamARN = structure(logical(0), tags = list(    type = "string")), StreamStatus = structure(logical(0), tags = list(    type = "string")), Shards = structure(list(structure(list(    ShardId = structure(logical(0), tags = list(type = "string")), ParentShardId = structure(logical(0), tags = list(type = "string")), AdjacentParentShardId = structure(logical(0), tags = list(        type = "string")), HashKeyRange = structure(list(StartingHashKey = structure(logical(0), tags = list(        type = "string")), EndingHashKey = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure")), SequenceNumberRange = structure(list(StartingSequenceNumber = structure(logical(0), tags = list(        type = "string")), EndingSequenceNumber = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))), tags = list(type = "list")), HasMoreShards = structure(logical(0), tags = list(    type = "boolean")), RetentionPeriodHours = structure(logical(0), tags = list(    type = "integer")), StreamCreationTimestamp = structure(logical(0), tags = list(    type = "timestamp")), EnhancedMonitoring = structure(list(    structure(list(ShardLevelMetrics = structure(list(structure(logical(0), tags = list(        type = "string"))), tags = list(type = "list"))), tags = list(        type = "structure"))), tags = list(type = "list")), EncryptionType = structure(logical(0), tags = list(    type = "string")), KeyId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(StreamDescription = structure(list(StreamName = structure(logical(0), tags = list(type = "string")), StreamARN = structure(logical(0), tags = list(type = "string")), StreamStatus = structure(logical(0), tags = list(type = "string")), Shards = structure(list(structure(list(ShardId = structure(logical(0), tags = list(type = "string")), ParentShardId = structure(logical(0), tags = list(type = "string")), AdjacentParentShardId = structure(logical(0), tags = list(type = "string")), HashKeyRange = structure(list(StartingHashKey = structure(logical(0), tags = list(type = "string")), EndingHashKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SequenceNumberRange = structure(list(StartingSequenceNumber = structure(logical(0), tags = list(type = "string")), EndingSequenceNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), HasMoreShards = structure(logical(0), tags = list(type = "boolean")), RetentionPeriodHours = structure(logical(0), tags = list(type = "integer")), StreamCreationTimestamp = structure(logical(0), tags = list(type = "timestamp")), EnhancedMonitoring = structure(list(structure(list(ShardLevelMetrics = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), EncryptionType = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kinesis$describe_stream_consumer_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamARN = structure(logical(0), tags = list(    type = "string")), ConsumerName = structure(logical(0), tags = list(    type = "string")), ConsumerARN = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamARN = structure(logical(0), tags = list(type = "string")), ConsumerName = structure(logical(0), tags = list(type = "string")), ConsumerARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kinesis$describe_stream_consumer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConsumerDescription = structure(list(ConsumerName = structure(logical(0), tags = list(    type = "string")), ConsumerARN = structure(logical(0), tags = list(    type = "string")), ConsumerStatus = structure(logical(0), tags = list(    type = "string")), ConsumerCreationTimestamp = structure(logical(0), tags = list(    type = "timestamp")), StreamARN = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(ConsumerDescription = structure(list(ConsumerName = structure(logical(0), tags = list(type = "string")), ConsumerARN = structure(logical(0), tags = list(type = "string")), ConsumerStatus = structure(logical(0), tags = list(type = "string")), ConsumerCreationTimestamp = structure(logical(0), tags = list(type = "timestamp")), StreamARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kinesis$describe_stream_summary_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamName = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kinesis$describe_stream_summary_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamDescriptionSummary = structure(list(StreamName = structure(logical(0), tags = list(    type = "string")), StreamARN = structure(logical(0), tags = list(    type = "string")), StreamStatus = structure(logical(0), tags = list(    type = "string")), RetentionPeriodHours = structure(logical(0), tags = list(    type = "integer")), StreamCreationTimestamp = structure(logical(0), tags = list(    type = "timestamp")), EnhancedMonitoring = structure(list(    structure(list(ShardLevelMetrics = structure(list(structure(logical(0), tags = list(        type = "string"))), tags = list(type = "list"))), tags = list(        type = "structure"))), tags = list(type = "list")), EncryptionType = structure(logical(0), tags = list(    type = "string")), KeyId = structure(logical(0), tags = list(    type = "string")), OpenShardCount = structure(logical(0), tags = list(    type = "integer")), ConsumerCount = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(StreamDescriptionSummary = structure(list(StreamName = structure(logical(0), tags = list(type = "string")), StreamARN = structure(logical(0), tags = list(type = "string")), StreamStatus = structure(logical(0), tags = list(type = "string")), RetentionPeriodHours = structure(logical(0), tags = list(type = "integer")), StreamCreationTimestamp = structure(logical(0), tags = list(type = "timestamp")), EnhancedMonitoring = structure(list(structure(list(ShardLevelMetrics = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), EncryptionType = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string")), OpenShardCount = structure(logical(0), tags = list(type = "integer")), ConsumerCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kinesis$disable_enhanced_monitoring_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamName = structure(logical(0), tags = list(    type = "string")), ShardLevelMetrics = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), ShardLevelMetrics = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kinesis$disable_enhanced_monitoring_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamName = structure(logical(0), tags = list(    type = "string")), CurrentShardLevelMetrics = structure(list(    structure(logical(0), tags = list(type = "string"))), tags = list(    type = "list")), DesiredShardLevelMetrics = structure(list(    structure(logical(0), tags = list(type = "string"))), tags = list(    type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), CurrentShardLevelMetrics = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DesiredShardLevelMetrics = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kinesis$enable_enhanced_monitoring_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamName = structure(logical(0), tags = list(    type = "string")), ShardLevelMetrics = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), ShardLevelMetrics = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kinesis$enable_enhanced_monitoring_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamName = structure(logical(0), tags = list(    type = "string")), CurrentShardLevelMetrics = structure(list(    structure(logical(0), tags = list(type = "string"))), tags = list(    type = "list")), DesiredShardLevelMetrics = structure(list(    structure(logical(0), tags = list(type = "string"))), tags = list(    type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), CurrentShardLevelMetrics = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DesiredShardLevelMetrics = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kinesis$get_records_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ShardIterator = structure(logical(0), tags = list(    type = "string")), Limit = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(ShardIterator = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kinesis$get_records_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Records = structure(list(structure(list(SequenceNumber = structure(logical(0), tags = list(    type = "string")), ApproximateArrivalTimestamp = structure(logical(0), tags = list(    type = "timestamp")), Data = structure(logical(0), tags = list(    type = "blob")), PartitionKey = structure(logical(0), tags = list(    type = "string")), EncryptionType = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "list")), NextShardIterator = structure(logical(0), tags = list(    type = "string")), MillisBehindLatest = structure(logical(0), tags = list(    type = "long"))), tags = list(type = "structure"))
+  shape <- structure(list(Records = structure(list(structure(list(SequenceNumber = structure(logical(0), tags = list(type = "string")), ApproximateArrivalTimestamp = structure(logical(0), tags = list(type = "timestamp")), Data = structure(logical(0), tags = list(type = "blob")), PartitionKey = structure(logical(0), tags = list(type = "string")), EncryptionType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextShardIterator = structure(logical(0), tags = list(type = "string")), MillisBehindLatest = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kinesis$get_shard_iterator_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamName = structure(logical(0), tags = list(    type = "string")), ShardId = structure(logical(0), tags = list(    type = "string")), ShardIteratorType = structure(logical(0), tags = list(    type = "string")), StartingSequenceNumber = structure(logical(0), tags = list(    type = "string")), Timestamp = structure(logical(0), tags = list(    type = "timestamp"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), ShardId = structure(logical(0), tags = list(type = "string")), ShardIteratorType = structure(logical(0), tags = list(type = "string")), StartingSequenceNumber = structure(logical(0), tags = list(type = "string")), Timestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kinesis$get_shard_iterator_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ShardIterator = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ShardIterator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kinesis$increase_stream_retention_period_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamName = structure(logical(0), tags = list(    type = "string")), RetentionPeriodHours = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), RetentionPeriodHours = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -161,55 +161,55 @@ NULL
 
 .kinesis$list_shards_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamName = structure(logical(0), tags = list(    type = "string")), NextToken = structure(logical(0), tags = list(    type = "string")), ExclusiveStartShardId = structure(logical(0), tags = list(    type = "string")), MaxResults = structure(logical(0), tags = list(    type = "integer")), StreamCreationTimestamp = structure(logical(0), tags = list(    type = "timestamp"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), ExclusiveStartShardId = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), StreamCreationTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kinesis$list_shards_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Shards = structure(list(structure(list(ShardId = structure(logical(0), tags = list(    type = "string")), ParentShardId = structure(logical(0), tags = list(    type = "string")), AdjacentParentShardId = structure(logical(0), tags = list(    type = "string")), HashKeyRange = structure(list(StartingHashKey = structure(logical(0), tags = list(    type = "string")), EndingHashKey = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure")), SequenceNumberRange = structure(list(    StartingSequenceNumber = structure(logical(0), tags = list(        type = "string")), EndingSequenceNumber = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Shards = structure(list(structure(list(ShardId = structure(logical(0), tags = list(type = "string")), ParentShardId = structure(logical(0), tags = list(type = "string")), AdjacentParentShardId = structure(logical(0), tags = list(type = "string")), HashKeyRange = structure(list(StartingHashKey = structure(logical(0), tags = list(type = "string")), EndingHashKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SequenceNumberRange = structure(list(StartingSequenceNumber = structure(logical(0), tags = list(type = "string")), EndingSequenceNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kinesis$list_stream_consumers_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamARN = structure(logical(0), tags = list(    type = "string")), NextToken = structure(logical(0), tags = list(    type = "string")), MaxResults = structure(logical(0), tags = list(    type = "integer")), StreamCreationTimestamp = structure(logical(0), tags = list(    type = "timestamp"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamARN = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), StreamCreationTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kinesis$list_stream_consumers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Consumers = structure(list(structure(list(ConsumerName = structure(logical(0), tags = list(    type = "string")), ConsumerARN = structure(logical(0), tags = list(    type = "string")), ConsumerStatus = structure(logical(0), tags = list(    type = "string")), ConsumerCreationTimestamp = structure(logical(0), tags = list(    type = "timestamp"))), tags = list(type = "structure"))), tags = list(    type = "list")), NextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Consumers = structure(list(structure(list(ConsumerName = structure(logical(0), tags = list(type = "string")), ConsumerARN = structure(logical(0), tags = list(type = "string")), ConsumerStatus = structure(logical(0), tags = list(type = "string")), ConsumerCreationTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kinesis$list_streams_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Limit = structure(logical(0), tags = list(type = "integer")), ExclusiveStartStreamName = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Limit = structure(logical(0), tags = list(type = "integer")), ExclusiveStartStreamName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kinesis$list_streams_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamNames = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list")), HasMoreStreams = structure(logical(0), tags = list(    type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), HasMoreStreams = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kinesis$list_tags_for_stream_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamName = structure(logical(0), tags = list(    type = "string")), ExclusiveStartTagKey = structure(logical(0), tags = list(    type = "string")), Limit = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), ExclusiveStartTagKey = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kinesis$list_tags_for_stream_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(    type = "string")), Value = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "list")), HasMoreTags = structure(logical(0), tags = list(    type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), HasMoreTags = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kinesis$merge_shards_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamName = structure(logical(0), tags = list(    type = "string")), ShardToMerge = structure(logical(0), tags = list(    type = "string")), AdjacentShardToMerge = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), ShardToMerge = structure(logical(0), tags = list(type = "string")), AdjacentShardToMerge = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -219,43 +219,43 @@ NULL
 
 .kinesis$put_record_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamName = structure(logical(0), tags = list(    type = "string")), Data = structure(logical(0), tags = list(    type = "blob")), PartitionKey = structure(logical(0), tags = list(    type = "string")), ExplicitHashKey = structure(logical(0), tags = list(    type = "string")), SequenceNumberForOrdering = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), Data = structure(logical(0), tags = list(type = "blob")), PartitionKey = structure(logical(0), tags = list(type = "string")), ExplicitHashKey = structure(logical(0), tags = list(type = "string")), SequenceNumberForOrdering = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kinesis$put_record_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ShardId = structure(logical(0), tags = list(type = "string")), SequenceNumber = structure(logical(0), tags = list(type = "string")), EncryptionType = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(ShardId = structure(logical(0), tags = list(type = "string")), SequenceNumber = structure(logical(0), tags = list(type = "string")), EncryptionType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kinesis$put_records_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Records = structure(list(structure(list(Data = structure(logical(0), tags = list(    type = "blob")), ExplicitHashKey = structure(logical(0), tags = list(    type = "string")), PartitionKey = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "list")), StreamName = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Records = structure(list(structure(list(Data = structure(logical(0), tags = list(type = "blob")), ExplicitHashKey = structure(logical(0), tags = list(type = "string")), PartitionKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), StreamName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kinesis$put_records_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FailedRecordCount = structure(logical(0), tags = list(    type = "integer")), Records = structure(list(structure(list(    SequenceNumber = structure(logical(0), tags = list(type = "string")), ShardId = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))), tags = list(type = "list")), EncryptionType = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(FailedRecordCount = structure(logical(0), tags = list(type = "integer")), Records = structure(list(structure(list(SequenceNumber = structure(logical(0), tags = list(type = "string")), ShardId = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EncryptionType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kinesis$register_stream_consumer_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamARN = structure(logical(0), tags = list(    type = "string")), ConsumerName = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamARN = structure(logical(0), tags = list(type = "string")), ConsumerName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kinesis$register_stream_consumer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Consumer = structure(list(ConsumerName = structure(logical(0), tags = list(    type = "string")), ConsumerARN = structure(logical(0), tags = list(    type = "string")), ConsumerStatus = structure(logical(0), tags = list(    type = "string")), ConsumerCreationTimestamp = structure(logical(0), tags = list(    type = "timestamp"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(Consumer = structure(list(ConsumerName = structure(logical(0), tags = list(type = "string")), ConsumerARN = structure(logical(0), tags = list(type = "string")), ConsumerStatus = structure(logical(0), tags = list(type = "string")), ConsumerCreationTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kinesis$remove_tags_from_stream_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamName = structure(logical(0), tags = list(    type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -265,7 +265,7 @@ NULL
 
 .kinesis$split_shard_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamName = structure(logical(0), tags = list(    type = "string")), ShardToSplit = structure(logical(0), tags = list(    type = "string")), NewStartingHashKey = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), ShardToSplit = structure(logical(0), tags = list(type = "string")), NewStartingHashKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -275,7 +275,7 @@ NULL
 
 .kinesis$start_stream_encryption_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamName = structure(logical(0), tags = list(    type = "string")), EncryptionType = structure(logical(0), tags = list(    type = "string")), KeyId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), EncryptionType = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -285,7 +285,7 @@ NULL
 
 .kinesis$stop_stream_encryption_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamName = structure(logical(0), tags = list(    type = "string")), EncryptionType = structure(logical(0), tags = list(    type = "string")), KeyId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), EncryptionType = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -295,12 +295,12 @@ NULL
 
 .kinesis$update_shard_count_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamName = structure(logical(0), tags = list(    type = "string")), TargetShardCount = structure(logical(0), tags = list(    type = "integer")), ScalingType = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), TargetShardCount = structure(logical(0), tags = list(type = "integer")), ScalingType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kinesis$update_shard_count_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamName = structure(logical(0), tags = list(    type = "string")), CurrentShardCount = structure(logical(0), tags = list(    type = "integer")), TargetShardCount = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), CurrentShardCount = structure(logical(0), tags = list(type = "integer")), TargetShardCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }

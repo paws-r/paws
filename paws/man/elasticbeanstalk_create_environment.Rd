@@ -32,7 +32,7 @@ your application.}
 \item{GroupName}{The name of the group to which the target environment belongs. Specify a
 group name only if the environment's name is specified in an
 environment manifest and not with the environment name parameter. See
-\href{http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html}{Environment Manifest (env.yaml)}
+\href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html}{Environment Manifest (env.yaml)}
 for details.}
 
 \item{Description}{Describes this environment.}
@@ -43,7 +43,7 @@ appending a random alphanumeric string to the environment name.}
 
 \item{Tier}{This specifies the tier to use for creating this environment.}
 
-\item{Tags}{This specifies the tags applied to resources in the environment.}
+\item{Tags}{Specifies the tags applied to resources in the environment.}
 
 \item{VersionLabel}{The name of the application version to deploy.
 
@@ -62,7 +62,7 @@ returns an \code{InvalidParameterValue} error.}
 Elastic Beanstalk sets the configuration values to the default values
 associated with the specified solution stack.
 
-For a list of current solution stacks, see \href{http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html}{Elastic Beanstalk Supported Platforms}.}
+For a list of current solution stacks, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html}{Elastic Beanstalk Supported Platforms}.}
 
 \item{PlatformArn}{The ARN of the platform.}
 

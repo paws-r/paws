@@ -120,9 +120,9 @@ Constraints to the amount of storage for each storage type are the
 following:
 \itemize{
 \item General Purpose (SSD) storage (gp2): Must be an integer from 20
-to 16384.
+to 32768.
 \item Provisioned IOPS storage (io1): Must be an integer from 100
-to 16384.
+to 32768.
 \item Magnetic storage (standard): Must be an integer from 5 to 3072.
 }
 
@@ -132,9 +132,9 @@ Constraints to the amount of storage for each storage type are the
 following:
 \itemize{
 \item General Purpose (SSD) storage (gp2): Must be an integer from 20
-to 16384.
+to 32768.
 \item Provisioned IOPS storage (io1): Must be an integer from 100
-to 16384.
+to 32768.
 \item Magnetic storage (standard): Must be an integer from 5 to 3072.
 }
 
@@ -144,9 +144,9 @@ Constraints to the amount of storage for each storage type are the
 following:
 \itemize{
 \item General Purpose (SSD) storage (gp2): Must be an integer from 20
-to 16384.
+to 32768.
 \item Provisioned IOPS storage (io1): Must be an integer from 100
-to 16384.
+to 32768.
 \item Magnetic storage (standard): Must be an integer from 5 to 3072.
 }
 
@@ -190,7 +190,7 @@ to 1024.
 \item{DBInstanceClass}{[required] The compute and memory capacity of the DB instance, for example,
 \code{db.m4.large}. Not all DB instance classes are available in all AWS
 Regions, or for all database engines. For the full list of DB instance
-classes, and availability for your engine, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html}{DB Instance Class}
+classes, and availability for your engine, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html}{DB Instance Class}
 in the \emph{Amazon RDS User Guide.}}
 
 \item{Engine}{[required] The name of the database engine to be used for this instance.
@@ -315,7 +315,7 @@ Default: The default EC2 VPC security group for the DB subnet group's
 VPC.}
 
 \item{AvailabilityZone}{The EC2 Availability Zone that the DB instance is created in. For
-information on AWS Regions and Availability Zones, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html}{Regions and Availability Zones}.
+information on AWS Regions and Availability Zones, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html}{Regions and Availability Zones}.
 
 Default: A random, system-chosen Availability Zone in the endpoint's
 AWS Region.
@@ -331,7 +331,7 @@ be in the same AWS Region as the current endpoint.}
 If there is no DB subnet group, then it is a non-VPC DB instance.}
 
 \item{PreferredMaintenanceWindow}{The time range each week during which system maintenance can occur, in
-Universal Coordinated Time (UTC). For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#Concepts.DBMaintenance}{Amazon RDS Maintenance Window}.
+Universal Coordinated Time (UTC). For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#Concepts.DBMaintenance}{Amazon RDS Maintenance Window}.
 
 Format: \code{ddd:hh24:mi-ddd:hh24:mi}
 
@@ -373,7 +373,7 @@ Constraints:
 
 \item{PreferredBackupWindow}{The daily time range during which automated backups are created if
 automated backups are enabled, using the \code{BackupRetentionPeriod}
-parameter. For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow}{The Backup Window}
+parameter. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow}{The Backup Window}
 in the \emph{Amazon RDS User Guide}.
 
 \strong{Amazon Aurora}
@@ -383,7 +383,7 @@ managed by the DB cluster. For more information, see CreateDBCluster.
 
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region. To see the time blocks available, see
-\href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow}{Adjusting the Preferred DB Instance Maintenance Window}
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow}{Adjusting the Preferred DB Instance Maintenance Window}
 in the \emph{Amazon RDS User Guide}.
 
 Constraints:
@@ -461,27 +461,27 @@ CreateDBCluster.
 
 \strong{MariaDB}
 
-See \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MariaDB.html#MariaDB.Concepts.VersionMgmt}{MariaDB on Amazon RDS Versions}
+See \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MariaDB.html#MariaDB.Concepts.VersionMgmt}{MariaDB on Amazon RDS Versions}
 in the \emph{Amazon RDS User Guide.}
 
 \strong{Microsoft SQL Server}
 
-See \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.FeatureSupport}{Version and Feature Support on Amazon RDS}
+See \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.FeatureSupport}{Version and Feature Support on Amazon RDS}
 in the \emph{Amazon RDS User Guide.}
 
 \strong{MySQL}
 
-See \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MySQL.html#MySQL.Concepts.VersionMgmt}{MySQL on Amazon RDS Versions}
+See \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MySQL.html#MySQL.Concepts.VersionMgmt}{MySQL on Amazon RDS Versions}
 in the \emph{Amazon RDS User Guide.}
 
 \strong{Oracle}
 
-See \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.Oracle.PatchComposition.html}{Oracle Database Engine Release Notes}
+See \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.Oracle.PatchComposition.html}{Oracle Database Engine Release Notes}
 in the \emph{Amazon RDS User Guide.}
 
 \strong{PostgreSQL}
 
-See \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts.General.DBVersions}{Supported PostgreSQL Database Versions}
+See \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts.General.DBVersions}{Supported PostgreSQL Database Versions}
 in the \emph{Amazon RDS User Guide.}}
 
 \item{AutoMinorVersionUpgrade}{Indicates that minor engine upgrades are applied automatically to the DB
@@ -496,7 +496,7 @@ Valid values: \code{license-included} \| \code{bring-your-own-license} \|
 
 \item{Iops}{The amount of Provisioned IOPS (input/output operations per second) to
 be initially allocated for the DB instance. For information about valid
-Iops values, see see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS}{Amazon RDS Provisioned IOPS Storage to Improve Performance}
+Iops values, see see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS}{Amazon RDS Provisioned IOPS Storage to Improve Performance}
 in the \emph{Amazon RDS User Guide}.
 
 Constraints: Must be a multiple between 1 and 50 of the storage amount
@@ -600,7 +600,13 @@ key for each AWS Region.}
 \item{Domain}{Specify the Active Directory Domain to create the instance in.}
 
 \item{CopyTagsToSnapshot}{True to copy all tags from the DB instance to snapshots of the DB
-instance, and otherwise false. The default is false.}
+instance, and otherwise false. The default is false.
+
+\strong{Amazon Aurora}
+
+Not applicable. Copying tags to snapshots is managed by the DB cluster.
+Setting this value for an Aurora DB instance has no effect on the DB
+cluster setting. For more information, see CreateDBCluster.}
 
 \item{MonitoringInterval}{The interval, in seconds, between points when Enhanced Monitoring
 metrics are collected for the DB instance. To disable collecting
@@ -614,7 +620,7 @@ Valid Values: \code{0, 1, 5, 10, 15, 30, 60}}
 \item{MonitoringRoleArn}{The ARN for the IAM role that permits RDS to send enhanced monitoring
 metrics to Amazon CloudWatch Logs. For example,
 \code{arn:aws:iam:123456789012:role/emaccess}. For information on creating a
-monitoring role, go to \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html#USER_Monitoring.OS.Enabling}{Setting Up and Enabling Enhanced Monitoring}
+monitoring role, go to \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html#USER_Monitoring.OS.Enabling}{Setting Up and Enabling Enhanced Monitoring}
 in the \emph{Amazon RDS User Guide}.
 
 If \code{MonitoringInterval} is set to a value other than 0, then you must
@@ -625,7 +631,7 @@ Directory Service.}
 
 \item{PromotionTier}{A value that specifies the order in which an Aurora Replica is promoted
 to the primary instance after a failure of the existing primary
-instance. For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance}{Fault Tolerance for an Aurora DB Cluster}
+instance. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance}{Fault Tolerance for an Aurora DB Cluster}
 in the \emph{Amazon Aurora User Guide}.
 
 Default: 1
@@ -633,7 +639,7 @@ Default: 1
 Valid Values: 0 - 15}
 
 \item{Timezone}{The time zone of the DB instance. The time zone parameter is currently
-supported only by \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.TimeZone}{Microsoft SQL Server}.}
+supported only by \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.TimeZone}{Microsoft SQL Server}.}
 
 \item{EnableIAMDatabaseAuthentication}{True to enable mapping of AWS Identity and Access Management (IAM)
 accounts to database accounts, and otherwise false.
@@ -657,7 +663,7 @@ Default: \code{false}}
 \item{EnablePerformanceInsights}{True to enable Performance Insights for the DB instance, and otherwise
 false.
 
-For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{Using Amazon Performance Insights}
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{Using Amazon Performance Insights}
 in the \emph{Amazon Relational Database Service User Guide}.}
 
 \item{PerformanceInsightsKMSKeyId}{The AWS KMS key identifier for encryption of Performance Insights data.
@@ -669,7 +675,7 @@ values are 7 or 731 (2 years).}
 
 \item{EnableCloudwatchLogsExports}{The list of log types that need to be enabled for exporting to
 CloudWatch Logs. The values in the list depend on the DB engine being
-used. For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
+used. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
 in the \emph{Amazon Relational Database Service User Guide}.}
 
 \item{ProcessorFeatures}{The number of CPU cores and the number of threads per core for the DB
@@ -677,7 +683,7 @@ instance class of the DB instance.}
 
 \item{DeletionProtection}{Indicates if the DB instance should have deletion protection enabled.
 The database can't be deleted when this value is set to true. The
-default is false. For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
+default is false. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
 }
 \description{
 Creates a new DB instance.

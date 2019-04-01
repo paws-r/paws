@@ -2,19 +2,19 @@
 % Please edit documentation in R/workmail_operations.R
 \name{workmail_put_mailbox_permissions}
 \alias{workmail_put_mailbox_permissions}
-\title{Sets permissions for a user or group}
+\title{Sets permissions for a user, group, or resource}
 \usage{
 workmail_put_mailbox_permissions(OrganizationId, EntityId, GranteeId,
   PermissionValues)
 }
 \arguments{
-\item{OrganizationId}{[required] The identifier of the organization under which the entity (user or
-group) exists.}
+\item{OrganizationId}{[required] The identifier of the organization under which the user, group, or
+resource exists.}
 
-\item{EntityId}{[required] The identifier of the entity (user or group) for which to update mailbox
-permissions.}
+\item{EntityId}{[required] The identifier of the user, group, or resource for which to update
+mailbox permissions.}
 
-\item{GranteeId}{[required] The identifier of the entity (user or group) to which to grant the
+\item{GranteeId}{[required] The identifier of the user, group, or resource to which to grant the
 permissions.}
 
 \item{PermissionValues}{[required] The permissions granted to the grantee. SEND\_AS allows the grantee to
@@ -26,8 +26,8 @@ access to the mailbox, irrespective of other folder-level permissions
 set on the mailbox.}
 }
 \description{
-Sets permissions for a user or group. This replaces any pre-existing
-permissions set for the entity.
+Sets permissions for a user, group, or resource. This replaces any
+pre-existing permissions.
 }
 \section{Request syntax}{
 \preformatted{workmail$put_mailbox_permissions(

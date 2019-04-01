@@ -38,6 +38,12 @@ results in a set of sequential pages.
 }
 \details{
 Build records are not listed in any particular order.
+
+\strong{Learn more}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/build-intro.html}{Working with Builds}
+
+\strong{Related operations}
 \itemize{
 \item CreateBuild
 \item ListBuilds

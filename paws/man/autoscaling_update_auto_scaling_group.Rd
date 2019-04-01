@@ -23,7 +23,10 @@ mixed instances policy.}
 
 \item{MixedInstancesPolicy}{The mixed instances policy to use to specify the updates. If you specify
 this parameter, you can't specify a launch configuration or a launch
-template.}
+template.
+
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-purchase-options.html}{Auto Scaling Groups with Multiple Instance Types and Purchase Options}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{MinSize}{The minimum size of the Auto Scaling group.}
 
@@ -34,49 +37,58 @@ group. This number must be greater than or equal to the minimum size of
 the group and less than or equal to the maximum size of the group.}
 
 \item{DefaultCooldown}{The amount of time, in seconds, after a scaling activity completes
-before another scaling activity can start. The default is 300.
+before another scaling activity can start. The default value is \code{300}.
 
-For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html}{Scaling Cooldowns}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html}{Scaling Cooldowns}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{AvailabilityZones}{One or more Availability Zones for the group.}
 
 \item{HealthCheckType}{The service to use for the health checks. The valid values are \code{EC2} and
-\code{ELB}.}
+\code{ELB}. If you configure an Auto Scaling group to use ELB health checks,
+it considers the instance unhealthy if it fails either the EC2 status
+checks or the load balancer health checks.}
 
 \item{HealthCheckGracePeriod}{The amount of time, in seconds, that Amazon EC2 Auto Scaling waits
 before checking the health status of an EC2 instance that has come into
-service. The default is 0.
+service. The default value is \code{0}.
 
-For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html}{Health Checks}
-in the \emph{Amazon EC2 Auto Scaling User Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html}{Health Checks for Auto Scaling Instances}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.
+
+Conditional: This parameter is required if you are adding an \code{ELB}
+health check.}
 
 \item{PlacementGroup}{The name of the placement group into which to launch your instances, if
-any. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement Groups}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+any. A placement group is a logical grouping of instances within a
+single Availability Zone. You cannot specify multiple Availability Zones
+and a placement group. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement Groups}
+in the \emph{Amazon EC2 User Guide for Linux Instances}.}
 
-\item{VPCZoneIdentifier}{The ID of the subnet, if you are launching into a VPC. You can specify
-several subnets in a comma-separated list.
+\item{VPCZoneIdentifier}{A comma-separated list of subnet IDs, if you are launching into a VPC.
 
-When you specify \code{VPCZoneIdentifier} with \code{AvailabilityZones}, ensure
-that the subnets' Availability Zones match the values you specify for
-\code{AvailabilityZones}.
-
-For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html}{Launching Auto Scaling Instances in a VPC}
-in the \emph{Amazon EC2 Auto Scaling User Guide}.}
+If you specify \code{VPCZoneIdentifier} with \code{AvailabilityZones}, the subnets
+that you specify for this parameter must reside in those Availability
+Zones.}
 
 \item{TerminationPolicies}{A standalone termination policy or a list of termination policies used
 to select the instance to terminate. The policies are executed in the
 order that they are listed.
 
-For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html}{Controlling Which Instances Auto Scaling Terminates During Scale In}
-in the \emph{Auto Scaling User Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html}{Controlling Which Instances Auto Scaling Terminates During Scale In}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{NewInstancesProtectedFromScaleIn}{Indicates whether newly launched instances are protected from
-termination by Auto Scaling when scaling in.}
+termination by Amazon EC2 Auto Scaling when scaling in.
+
+For more information about preventing instances from terminating on
+scale in, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html#instance-protection}{Instance Protection}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{ServiceLinkedRoleARN}{The Amazon Resource Name (ARN) of the service-linked role that the Auto
-Scaling group uses to call other AWS services on your behalf.}
+Scaling group uses to call other AWS services on your behalf. For more
+information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-service-linked-role.html}{Service-Linked Roles}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 }
 \description{
 Updates the configuration for the specified Auto Scaling group.

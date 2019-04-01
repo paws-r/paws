@@ -20,7 +20,8 @@ Scaling group.
 }
 \details{
 This operation detaches only Classic Load Balancers. If you have
-Application Load Balancers, use DetachLoadBalancerTargetGroups instead.
+Application Load Balancers or Network Load Balancers, use
+DetachLoadBalancerTargetGroups instead.
 
 When you detach a load balancer, it enters the \code{Removing} state while
 deregistering the instances in the group. When all instances are

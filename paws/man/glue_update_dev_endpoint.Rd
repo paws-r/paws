@@ -5,7 +5,8 @@
 \title{Updates a specified DevEndpoint}
 \usage{
 glue_update_dev_endpoint(EndpointName, PublicKey, AddPublicKeys,
-  DeletePublicKeys, CustomLibraries, UpdateEtlLibraries)
+  DeletePublicKeys, CustomLibraries, UpdateEtlLibraries, DeleteArguments,
+  AddArguments)
 }
 \arguments{
 \item{EndpointName}{[required] The name of the DevEndpoint to be updated.}
@@ -20,6 +21,12 @@ glue_update_dev_endpoint(EndpointName, PublicKey, AddPublicKeys,
 
 \item{UpdateEtlLibraries}{True if the list of custom libraries to be loaded in the development
 endpoint needs to be updated, or False otherwise.}
+
+\item{DeleteArguments}{The list of argument keys to be deleted from the map of arguments used
+to configure the DevEndpoint.}
+
+\item{AddArguments}{The map of arguments to add the map of arguments used to configure the
+DevEndpoint.}
 }
 \description{
 Updates a specified DevEndpoint.
@@ -38,7 +45,13 @@ Updates a specified DevEndpoint.
     ExtraPythonLibsS3Path = "string",
     ExtraJarsS3Path = "string"
   ),
-  UpdateEtlLibraries = TRUE|FALSE
+  UpdateEtlLibraries = TRUE|FALSE,
+  DeleteArguments = list(
+    "string"
+  ),
+  AddArguments = list(
+    "string"
+  )
 )
 }
 }

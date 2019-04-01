@@ -202,15 +202,13 @@ alexaforbusiness_associate_skill_with_skill_group <- function(SkillGroupArn = NU
 #' devices.
 #'
 #' @usage
-#' alexaforbusiness_associate_skill_with_users(OrganizationArn, SkillId)
+#' alexaforbusiness_associate_skill_with_users(SkillId)
 #'
-#' @param OrganizationArn The ARN of the organization.
-#' @param SkillId &#91;required&#93; The private skill ID you want to make available to enrolled users.\\>
+#' @param SkillId &#91;required&#93; The private skill ID you want to make available to enrolled users.
 #'
 #' @section Request syntax:
 #' ```
 #' alexaforbusiness$associate_skill_with_users(
-#'   OrganizationArn = "string",
 #'   SkillId = "string"
 #' )
 #' ```
@@ -218,14 +216,14 @@ alexaforbusiness_associate_skill_with_skill_group <- function(SkillGroupArn = NU
 #' @keywords internal
 #'
 #' @rdname alexaforbusiness_associate_skill_with_users
-alexaforbusiness_associate_skill_with_users <- function(OrganizationArn = NULL, SkillId) {
+alexaforbusiness_associate_skill_with_users <- function(SkillId) {
   op <- new_operation(
     name = "AssociateSkillWithUsers",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .alexaforbusiness$associate_skill_with_users_input(OrganizationArn = OrganizationArn, SkillId = SkillId)
+  input <- .alexaforbusiness$associate_skill_with_users_input(SkillId = SkillId)
   output <- .alexaforbusiness$associate_skill_with_users_output()
   svc <- .alexaforbusiness$service()
   request <- new_request(svc, op, input, output)
@@ -287,12 +285,15 @@ alexaforbusiness_create_address_book <- function(Name, Description = NULL, Clien
 #'   ClientRequestToken)
 #'
 #' @param ScheduleName The name identifier of the schedule.
-#' @param S3BucketName The S3 bucket name of the output reports.
+#' @param S3BucketName The S3 bucket name of the output reports. If this isn\'t specified, the
+#' report can be retrieved from a download link by calling
+#' ListBusinessReportSchedule.
 #' @param S3KeyPrefix The S3 key where the report is delivered.
 #' @param Format &#91;required&#93; The format of the generated report (individual CSV files or zipped files
 #' of individual files).
 #' @param ContentRange &#91;required&#93; The content range of the reports.
-#' @param Recurrence The recurrence of the reports.
+#' @param Recurrence The recurrence of the reports. If this isn\'t specified, the report will
+#' only be delivered one time when the API is called.
 #' @param ClientRequestToken The client request token.
 #'
 #' @section Request syntax:
@@ -1155,15 +1156,13 @@ alexaforbusiness_disassociate_skill_from_skill_group <- function(SkillGroupArn =
 #' from enabling it on their devices.
 #'
 #' @usage
-#' alexaforbusiness_disassociate_skill_from_users(OrganizationArn, SkillId)
+#' alexaforbusiness_disassociate_skill_from_users(SkillId)
 #'
-#' @param OrganizationArn The ARN of the organization.
 #' @param SkillId &#91;required&#93; The private skill ID you want to make unavailable for enrolled users.
 #'
 #' @section Request syntax:
 #' ```
 #' alexaforbusiness$disassociate_skill_from_users(
-#'   OrganizationArn = "string",
 #'   SkillId = "string"
 #' )
 #' ```
@@ -1171,14 +1170,14 @@ alexaforbusiness_disassociate_skill_from_skill_group <- function(SkillGroupArn =
 #' @keywords internal
 #'
 #' @rdname alexaforbusiness_disassociate_skill_from_users
-alexaforbusiness_disassociate_skill_from_users <- function(OrganizationArn = NULL, SkillId) {
+alexaforbusiness_disassociate_skill_from_users <- function(SkillId) {
   op <- new_operation(
     name = "DisassociateSkillFromUsers",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .alexaforbusiness$disassociate_skill_from_users_input(OrganizationArn = OrganizationArn, SkillId = SkillId)
+  input <- .alexaforbusiness$disassociate_skill_from_users_input(SkillId = SkillId)
   output <- .alexaforbusiness$disassociate_skill_from_users_output()
   svc <- .alexaforbusiness$service()
   request <- new_request(svc, op, input, output)
@@ -1432,6 +1431,39 @@ alexaforbusiness_get_device <- function(DeviceArn = NULL) {
   return(response)
 }
 .alexaforbusiness$operations$get_device <- alexaforbusiness_get_device
+
+#' Retrieves the configured values for the user enrollment invitation email
+#' template
+#'
+#' Retrieves the configured values for the user enrollment invitation email
+#' template.
+#'
+#' @usage
+#' alexaforbusiness_get_invitation_configuration()
+#'
+#' @section Request syntax:
+#' ```
+#' alexaforbusiness$get_invitation_configuration()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname alexaforbusiness_get_invitation_configuration
+alexaforbusiness_get_invitation_configuration <- function() {
+  op <- new_operation(
+    name = "GetInvitationConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .alexaforbusiness$get_invitation_configuration_input()
+  output <- .alexaforbusiness$get_invitation_configuration_output()
+  svc <- .alexaforbusiness$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.alexaforbusiness$operations$get_invitation_configuration <- alexaforbusiness_get_invitation_configuration
 
 #' Gets the details of a room profile by profile ARN
 #'
@@ -1717,17 +1749,18 @@ alexaforbusiness_list_device_events <- function(DeviceArn, EventType = NULL, Nex
 #' alexaforbusiness_list_skills(SkillGroupArn, EnablementType, SkillType,
 #'   NextToken, MaxResults)
 #'
-#' @param SkillGroupArn The ARN of the skill group for which to list enabled skills.
+#' @param SkillGroupArn The ARN of the skill group for which to list enabled skills. Required.
 #' @param EnablementType Whether the skill is enabled under the user\'s account, or if it
 #' requires linking to be used.
 #' @param SkillType Whether the skill is publicly available or is a private skill.
 #' @param NextToken An optional token returned from a prior request. Use this token for
 #' pagination of results from this action. If this parameter is specified,
 #' the response includes only results beyond the token, up to the value
-#' specified by `MaxResults`.
+#' specified by `MaxResults`. Required.
 #' @param MaxResults The maximum number of results to include in the response. If more
 #' results exist than the specified `MaxResults` value, a token is included
 #' in the response so that the remaining results can be retrieved.
+#' Required.
 #'
 #' @section Request syntax:
 #' ```
@@ -1959,6 +1992,52 @@ alexaforbusiness_put_conference_preference <- function(ConferencePreference) {
   return(response)
 }
 .alexaforbusiness$operations$put_conference_preference <- alexaforbusiness_put_conference_preference
+
+#' Configures the email template for the user enrollment invitation with
+#' the specified attributes
+#'
+#' Configures the email template for the user enrollment invitation with
+#' the specified attributes.
+#'
+#' @usage
+#' alexaforbusiness_put_invitation_configuration(OrganizationName,
+#'   ContactEmail, PrivateSkillIds)
+#'
+#' @param OrganizationName &#91;required&#93; The name of the organization sending the enrollment invite to a user.
+#' @param ContactEmail The email ID of the organization or individual contact that the enrolled
+#' user can use.
+#' @param PrivateSkillIds The list of private skill IDs that you want to recommend to the user to
+#' enable in the invitation.
+#'
+#' @section Request syntax:
+#' ```
+#' alexaforbusiness$put_invitation_configuration(
+#'   OrganizationName = "string",
+#'   ContactEmail = "string",
+#'   PrivateSkillIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname alexaforbusiness_put_invitation_configuration
+alexaforbusiness_put_invitation_configuration <- function(OrganizationName, ContactEmail = NULL, PrivateSkillIds = NULL) {
+  op <- new_operation(
+    name = "PutInvitationConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .alexaforbusiness$put_invitation_configuration_input(OrganizationName = OrganizationName, ContactEmail = ContactEmail, PrivateSkillIds = PrivateSkillIds)
+  output <- .alexaforbusiness$put_invitation_configuration_output()
+  svc <- .alexaforbusiness$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.alexaforbusiness$operations$put_invitation_configuration <- alexaforbusiness_put_invitation_configuration
 
 #' Updates room skill parameter details by room, skill, and parameter key
 #' ID

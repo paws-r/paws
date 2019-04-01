@@ -30,8 +30,8 @@ Keep the connection open until the function returns a response or
 times out. The API response includes the function response and
 additional data.
 \item \code{Event} - Invoke the function asynchronously. Send events that fail
-multiple times to the function's dead-letter queue (if configured).
-The API response only includes a status code.
+multiple times to the function's dead-letter queue (if it's
+configured). The API response only includes a status code.
 \item \code{DryRun} - Validate parameter values and verify that the user or
 role has permission to invoke the function.
 }}
@@ -41,34 +41,34 @@ role has permission to invoke the function.
 \item{ClientContext}{Up to 3583 bytes of base64-encoded data about the invoking client to
 pass to the function in the context object.}
 
-\item{Payload}{JSON that you want to provide to your Lambda function as input.}
+\item{Payload}{The JSON that you want to provide to your Lambda function as input.}
 
 \item{Qualifier}{Specify a version or alias to invoke a published version of the
 function.}
 }
 \description{
-Invokes a Lambda function. You can invoke a function synchronously and
-wait for the response, or asynchronously. To invoke a function
+Invokes a Lambda function. You can invoke a function synchronously (and
+wait for the response), or asynchronously. To invoke a function
 asynchronously, set \code{InvocationType} to \code{Event}.
 }
 \details{
 For synchronous invocation, details about the function response,
 including errors, are included in the response body and headers. For
-either invocation type, you can find more information in the \href{http://docs.aws.amazon.com/lambda/latest/dg/monitoring-functions.html}{execution log}
-and \href{http://docs.aws.amazon.com/lambda/latest/dg/dlq.html}{trace}. To
+either invocation type, you can find more information in the \href{https://docs.aws.amazon.com/lambda/latest/dg/monitoring-functions.html}{execution log}
+and \href{https://docs.aws.amazon.com/lambda/latest/dg/dlq.html}{trace}. To
 record function errors for asynchronous invocations, configure your
-function with a \href{http://docs.aws.amazon.com/lambda/latest/dg/dlq.html}{dead letter queue}.
+function with a \href{https://docs.aws.amazon.com/lambda/latest/dg/dlq.html}{dead letter queue}.
 
-The status code in the API response does not reflect function errors.
+The status code in the API response doesn't reflect function errors.
 Error codes are reserved for errors that prevent your function from
-executing, such as permissions errors, \href{http://docs.aws.amazon.com/lambda/latest/dg/limits.html}{limit errors}, or
+executing, such as permissions errors, \href{https://docs.aws.amazon.com/lambda/latest/dg/limits.html}{limit errors}, or
 issues with your function's code and configuration. For example, Lambda
 returns \code{TooManyRequestsException} if executing the function would cause
 you to exceed a concurrency limit at either the account level
 (\code{ConcurrentInvocationLimitExceeded}) or function level
 (\code{ReservedFunctionConcurrentInvocationLimitExceeded}).
 
-For functions with a long timeout, your client may be disconnected
+For functions with a long timeout, your client might be disconnected
 during synchronous invocation while it waits for a response. Configure
 your HTTP client, SDK, firewall, proxy, or operating system to allow for
 long connections with timeout or keep-alive settings.

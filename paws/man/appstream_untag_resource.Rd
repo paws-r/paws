@@ -18,7 +18,7 @@ Disassociates one or more specified tags from the specified AppStream
 \details{
 To list the current tags for your resources, use ListTagsForResource.
 
-For more information about tags, see \href{http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html}{Tagging Your Resources}
+For more information about tags, see \href{https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html}{Tagging Your Resources}
 in the \emph{Amazon AppStream 2.0 Developer Guide}.
 }
 \section{Request syntax}{

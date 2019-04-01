@@ -21,7 +21,7 @@ list of instances.}
 }
 \description{
 Retrieves detailed information about the health of instances in your AWS
-Elastic Beanstalk. This operation requires \href{http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html}{enhanced health reporting}.
+Elastic Beanstalk. This operation requires \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html}{enhanced health reporting}.
 }
 \section{Request syntax}{
 \preformatted{elasticbeanstalk$describe_instances_health(

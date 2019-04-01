@@ -58,9 +58,17 @@ NULL
 #' @param SourceImage &#91;required&#93; The input image as base64-encoded bytes or an S3 object. If you use the
 #' AWS CLI to call Amazon Rekognition operations, passing base64-encoded
 #' image bytes is not supported.
+#' 
+#' If you are using an AWS SDK to call Amazon Rekognition, you might not
+#' need to base64-encode image bytes passed using the `Bytes` field. For
+#' more information, see Images in the Amazon Rekognition developer guide.
 #' @param TargetImage &#91;required&#93; The target image as base64-encoded bytes or an S3 object. If you use the
 #' AWS CLI to call Amazon Rekognition operations, passing base64-encoded
 #' image bytes is not supported.
+#' 
+#' If you are using an AWS SDK to call Amazon Rekognition, you might not
+#' need to base64-encode image bytes passed using the `Bytes` field. For
+#' more information, see Images in the Amazon Rekognition developer guide.
 #' @param SimilarityThreshold The minimum level of confidence in the face matches that a match must
 #' meet to be included in the `FaceMatches` array.
 #'
@@ -511,6 +519,10 @@ rekognition_describe_stream_processor <- function(Name) {
 #' @param Image &#91;required&#93; The input image as base64-encoded bytes or an S3 object. If you use the
 #' AWS CLI to call Amazon Rekognition operations, passing base64-encoded
 #' image bytes is not supported.
+#' 
+#' If you are using an AWS SDK to call Amazon Rekognition, you might not
+#' need to base64-encode image bytes passed using the `Bytes` field. For
+#' more information, see Images in the Amazon Rekognition developer guide.
 #' @param Attributes An array of facial attributes you want to be returned. This can be the
 #' default list of attributes or all attributes. If you don\'t specify a
 #' value for `Attributes` or if you specify `\\["DEFAULT"\\]`, the API
@@ -650,8 +662,13 @@ rekognition_detect_faces <- function(Image, Attributes = NULL) {
 #' rekognition_detect_labels(Image, MaxLabels, MinConfidence)
 #'
 #' @param Image &#91;required&#93; The input image as base64-encoded bytes or an S3 object. If you use the
-#' AWS CLI to call Amazon Rekognition operations, passing base64-encoded
-#' image bytes is not supported.
+#' AWS CLI to call Amazon Rekognition operations, passing image bytes is
+#' not supported. Images stored in an S3 Bucket do not need to be
+#' base64-encoded.
+#' 
+#' If you are using an AWS SDK to call Amazon Rekognition, you might not
+#' need to base64-encode image bytes passed using the `Bytes` field. For
+#' more information, see Images in the Amazon Rekognition developer guide.
 #' @param MaxLabels Maximum number of labels you want the service to return in the response.
 #' The service returns the specified number of highest confidence labels.
 #' @param MinConfidence Specifies the minimum confidence level for the labels to return. Amazon
@@ -734,6 +751,10 @@ rekognition_detect_labels <- function(Image, MaxLabels = NULL, MinConfidence = N
 #' @param Image &#91;required&#93; The input image as base64-encoded bytes or an S3 object. If you use the
 #' AWS CLI to call Amazon Rekognition operations, passing base64-encoded
 #' image bytes is not supported.
+#' 
+#' If you are using an AWS SDK to call Amazon Rekognition, you might not
+#' need to base64-encode image bytes passed using the `Bytes` field. For
+#' more information, see Images in the Amazon Rekognition developer guide.
 #' @param MinConfidence Specifies the minimum confidence level for the labels to return. Amazon
 #' Rekognition doesn\'t return any labels with a confidence level lower
 #' than this specified value.
@@ -819,6 +840,10 @@ rekognition_detect_moderation_labels <- function(Image, MinConfidence = NULL) {
 #' @param Image &#91;required&#93; The input image as base64-encoded bytes or an Amazon S3 object. If you
 #' use the AWS CLI to call Amazon Rekognition operations, you can\'t pass
 #' image bytes.
+#' 
+#' If you are using an AWS SDK to call Amazon Rekognition, you might not
+#' need to base64-encode image bytes passed using the `Bytes` field. For
+#' more information, see Images in the Amazon Rekognition developer guide.
 #'
 #' @section Request syntax:
 #' ```
@@ -1004,14 +1029,14 @@ rekognition_get_celebrity_recognition <- function(JobId, MaxResults = NULL, Next
 #' Video analysis started by StartContentModeration.
 #' 
 #' Content moderation analysis of a video is an asynchronous operation. You
-#' start analysis by calling StartContentModeration. which returns a job
+#' start analysis by calling StartContentModeration which returns a job
 #' identifier (`JobId`). When analysis finishes, Amazon Rekognition Video
 #' publishes a completion status to the Amazon Simple Notification Service
 #' topic registered in the initial call to `StartContentModeration`. To get
 #' the results of the content moderation analysis, first check that the
 #' status value published to the Amazon SNS topic is `SUCCEEDED`. If so,
-#' call `GetCelebrityDetection` and pass the job identifier (`JobId`) from
-#' the initial call to `StartCelebrityDetection`.
+#' call `GetContentModeration` and pass the job identifier (`JobId`) from
+#' the initial call to `StartContentModeration`.
 #' 
 #' For more information, see Working with Stored Videos in the Amazon
 #' Rekognition Devlopers Guide.
@@ -1480,7 +1505,7 @@ rekognition_get_person_tracking <- function(JobId, MaxResults = NULL, NextToken 
 #' -   A confidence value, `Confidence`, which indicates the confidence
 #'     that the bounding box contains a face.
 #' 
-#' -   A face ID, `faceId`, assigned by the service for each face that\'s
+#' -   A face ID, `FaceId`, assigned by the service for each face that\'s
 #'     detected and stored.
 #' 
 #' -   An image ID, `ImageId`, assigned by the service for the input image.
@@ -1509,6 +1534,10 @@ rekognition_get_person_tracking <- function(JobId, MaxResults = NULL, NextToken 
 #' @param Image &#91;required&#93; The input image as base64-encoded bytes or an S3 object. If you use the
 #' AWS CLI to call Amazon Rekognition operations, passing base64-encoded
 #' image bytes isn\'t supported.
+#' 
+#' If you are using an AWS SDK to call Amazon Rekognition, you might not
+#' need to base64-encode image bytes passed using the `Bytes` field. For
+#' more information, see Images in the Amazon Rekognition developer guide.
 #' @param ExternalImageId The ID you want to assign to all the faces detected in the image.
 #' @param DetectionAttributes An array of facial attributes that you want to be returned. This can be
 #' the default list of attributes or all attributes. If you don\'t specify
@@ -1797,6 +1826,10 @@ rekognition_list_stream_processors <- function(NextToken = NULL, MaxResults = NU
 #' @param Image &#91;required&#93; The input image as base64-encoded bytes or an S3 object. If you use the
 #' AWS CLI to call Amazon Rekognition operations, passing base64-encoded
 #' image bytes is not supported.
+#' 
+#' If you are using an AWS SDK to call Amazon Rekognition, you might not
+#' need to base64-encode image bytes passed using the `Bytes` field. For
+#' more information, see Images in the Amazon Rekognition developer guide.
 #'
 #' @section Request syntax:
 #' ```
@@ -1949,6 +1982,10 @@ rekognition_search_faces <- function(CollectionId, FaceId, MaxFaces = NULL, Face
 #' @param Image &#91;required&#93; The input image as base64-encoded bytes or an S3 object. If you use the
 #' AWS CLI to call Amazon Rekognition operations, passing base64-encoded
 #' image bytes is not supported.
+#' 
+#' If you are using an AWS SDK to call Amazon Rekognition, you might not
+#' need to base64-encode image bytes passed using the `Bytes` field. For
+#' more information, see Images in the Amazon Rekognition developer guide.
 #' @param MaxFaces Maximum number of faces to return. The operation returns the maximum
 #' number of faces with the highest confidence in the match.
 #' @param FaceMatchThreshold (Optional) Specifies the minimum confidence in the face match to return.

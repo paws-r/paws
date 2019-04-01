@@ -7,9 +7,9 @@
 directconnect_disassociate_connection_from_lag(connectionId, lagId)
 }
 \arguments{
-\item{connectionId}{[required] The ID of the connection. For example, dxcon-abc123.}
+\item{connectionId}{[required] The ID of the connection.}
 
-\item{lagId}{[required] The ID of the LAG. For example, dxlag-abc123.}
+\item{lagId}{[required] The ID of the LAG.}
 }
 \description{
 Disassociates a connection from a link aggregation group (LAG). The
@@ -17,7 +17,7 @@ connection is interrupted and re-established as a standalone connection
 (the connection is not deleted; to delete the connection, use the
 DeleteConnection request). If the LAG has associated virtual interfaces
 or hosted connections, they remain associated with the LAG. A
-disassociated connection owned by an AWS Direct Connect partner is
+disassociated connection owned by an AWS Direct Connect Partner is
 automatically converted to an interconnect.
 }
 \details{
