@@ -7,7 +7,8 @@
 robomaker()
 }
 \description{
-his section provides documentation for the AWS RoboMaker API operations.
+This section provides documentation for the AWS RoboMaker API
+operations.
 }
 \section{Example}{
 \preformatted{robomaker <- paws::robomaker()

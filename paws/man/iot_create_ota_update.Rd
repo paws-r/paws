@@ -6,7 +6,7 @@
 \usage{
 iot_create_ota_update(otaUpdateId, description, targets,
   targetSelection, awsJobExecutionsRolloutConfig, files, roleArn,
-  additionalParameters)
+  additionalParameters, tags)
 }
 \arguments{
 \item{otaUpdateId}{[required] The ID of the OTA update to be created.}
@@ -30,6 +30,8 @@ values: CONTINUOUS \| SNAPSHOT.}
 \item{roleArn}{[required] The IAM role that allows access to the AWS IoT Jobs service.}
 
 \item{additionalParameters}{A list of additional OTA update parameters which are name-value pairs.}
+
+\item{tags}{Metadata which can be used to manage updates.}
 }
 \description{
 Creates an AWS IoT OTAUpdate on a target group of things or groups.
@@ -96,6 +98,12 @@ Creates an AWS IoT OTAUpdate on a target group of things or groups.
   roleArn = "string",
   additionalParameters = list(
     "string"
+  ),
+  tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
   )
 )
 }

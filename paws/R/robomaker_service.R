@@ -5,7 +5,8 @@ NULL
 #' AWS RoboMaker
 #'
 #' @description
-#' his section provides documentation for the AWS RoboMaker API operations.
+#' This section provides documentation for the AWS RoboMaker API
+#' operations.
 #'
 #' @section Example:
 #' ```

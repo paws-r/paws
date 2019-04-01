@@ -5,7 +5,7 @@
 \title{Create a new job template}
 \usage{
 mediaconvert_create_job_template(AccelerationSettings, Category,
-  Description, Name, Queue, Settings, Tags)
+  Description, Name, Queue, Settings, StatusUpdateInterval, Tags)
 }
 \arguments{
 \item{AccelerationSettings}{This is a beta feature. If you are interested in using this feature please contact AWS customer support.}
@@ -18,7 +18,9 @@ mediaconvert_create_job_template(AccelerationSettings, Category,
 
 \item{Queue}{Optional. The queue that jobs created from this template are assigned to. If you don't specify this, jobs will go to the default queue.}
 
-\item{Settings}{[required]}
+\item{Settings}{[required] JobTemplateSettings contains all the transcode settings saved in the template that will be applied to jobs created from it.}
+
+\item{StatusUpdateInterval}{Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval, in seconds, between status updates. MediaConvert sends an update at this interval from the time the service begins processing your job to the time it completes the transcode or encounters an error.}
 
 \item{Tags}{The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.}
 }
@@ -38,6 +40,15 @@ Create a new job template. For information about job templates see the User Guid
     AdAvailOffset = 123,
     AvailBlanking = list(
       AvailBlankingImage = "string"
+    ),
+    Esam = list(
+      ManifestConfirmConditionNotification = list(
+        MccXml = "string"
+      ),
+      ResponseSignalPreroll = 123,
+      SignalProcessingNotification = list(
+        SccXml = "string"
+      )
     ),
     Inputs = list(
       list(
@@ -157,7 +168,8 @@ Create a new job template. For information about job templates see the User Guid
             WhitePointY = 123
           ),
           Pid = 123,
-          ProgramNumber = 123
+          ProgramNumber = 123,
+          Rotate = "DEGREE_0"|"DEGREES_90"|"DEGREES_180"|"DEGREES_270"|"AUTO"
         )
       )
     ),
@@ -189,6 +201,14 @@ Create a new job template. For information about job templates see the User Guid
             ClientCache = "DISABLED"|"ENABLED",
             CodecSpecification = "RFC_6381"|"RFC_4281",
             Destination = "string",
+            DestinationSettings = list(
+              S3Settings = list(
+                Encryption = list(
+                  EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+                  KmsKeyArn = "string"
+                )
+              )
+            ),
             Encryption = list(
               ConstantInitializationVector = "string",
               EncryptionMethod = "SAMPLE_AES",
@@ -215,6 +235,14 @@ Create a new job template. For information about job templates see the User Guid
           DashIsoGroupSettings = list(
             BaseUrl = "string",
             Destination = "string",
+            DestinationSettings = list(
+              S3Settings = list(
+                Encryption = list(
+                  EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+                  KmsKeyArn = "string"
+                )
+              )
+            ),
             Encryption = list(
               SpekeKeyProvider = list(
                 CertificateArn = "string",
@@ -233,7 +261,15 @@ Create a new job template. For information about job templates see the User Guid
             WriteSegmentTimelineInRepresentation = "ENABLED"|"DISABLED"
           ),
           FileGroupSettings = list(
-            Destination = "string"
+            Destination = "string",
+            DestinationSettings = list(
+              S3Settings = list(
+                Encryption = list(
+                  EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+                  KmsKeyArn = "string"
+                )
+              )
+            )
           ),
           HlsGroupSettings = list(
             AdMarkers = list(
@@ -252,11 +288,20 @@ Create a new job template. For information about job templates see the User Guid
             ClientCache = "DISABLED"|"ENABLED",
             CodecSpecification = "RFC_6381"|"RFC_4281",
             Destination = "string",
+            DestinationSettings = list(
+              S3Settings = list(
+                Encryption = list(
+                  EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+                  KmsKeyArn = "string"
+                )
+              )
+            ),
             DirectoryStructure = "SINGLE_DIRECTORY"|"SUBDIRECTORY_PER_STREAM",
             Encryption = list(
               ConstantInitializationVector = "string",
               EncryptionMethod = "AES128"|"SAMPLE_AES",
               InitializationVectorInManifest = "INCLUDE"|"EXCLUDE",
+              OfflineEncrypted = "ENABLED"|"DISABLED",
               SpekeKeyProvider = list(
                 CertificateArn = "string",
                 ResourceId = "string",
@@ -291,6 +336,14 @@ Create a new job template. For information about job templates see the User Guid
           MsSmoothGroupSettings = list(
             AudioDeduplication = "COMBINE_DUPLICATE_STREAMS"|"NONE",
             Destination = "string",
+            DestinationSettings = list(
+              S3Settings = list(
+                Encryption = list(
+                  EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+                  KmsKeyArn = "string"
+                )
+              )
+            ),
             Encryption = list(
               SpekeKeyProvider = list(
                 CertificateArn = "string",
@@ -512,6 +565,9 @@ Create a new job template. For information about job templates see the User Guid
                 PrivateMetadataPid = 123,
                 ProgramNumber = 123,
                 RateMode = "VBR"|"CBR",
+                Scte35Esam = list(
+                  Scte35EsamPid = 123
+                ),
                 Scte35Pid = 123,
                 Scte35Source = "PASSTHROUGH"|"NONE",
                 SegmentationMarkers = "NONE"|"RAI_SEGSTART"|"RAI_ADAPT"|"PSI_SEGSTART"|"EBP"|"EBP_LEGACY",
@@ -815,6 +871,7 @@ Create a new job template. For information about job templates see the User Guid
       )
     )
   ),
+  StatusUpdateInterval = "SECONDS_10"|"SECONDS_12"|"SECONDS_15"|"SECONDS_20"|"SECONDS_30"|"SECONDS_60"|"SECONDS_120"|"SECONDS_180"|"SECONDS_240"|"SECONDS_300"|"SECONDS_360"|"SECONDS_420"|"SECONDS_480"|"SECONDS_540"|"SECONDS_600",
   Tags = list(
     "string"
   )

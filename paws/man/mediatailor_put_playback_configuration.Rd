@@ -2,10 +2,10 @@
 % Please edit documentation in R/mediatailor_operations.R
 \name{mediatailor_put_playback_configuration}
 \alias{mediatailor_put_playback_configuration}
-\title{Adds a new configuration to AWS Elemental MediaTailor}
+\title{Adds a new playback configuration to AWS Elemental MediaTailor}
 \usage{
 mediatailor_put_playback_configuration(AdDecisionServerUrl,
-  CdnConfiguration, DashConfiguration, Name, SlateAdUrl,
+  CdnConfiguration, DashConfiguration, Name, SlateAdUrl, Tags,
   TranscodeProfileName, VideoContentSourceUrl)
 }
 \arguments{
@@ -14,33 +14,35 @@ specification of static parameters and placeholders for dynamic
 parameters. AWS Elemental MediaTailor substitutes player-specific and
 session-specific parameters as needed when calling the ADS. Alternately,
 for testing you can provide a static VAST URL. The maximum length is
-25000 characters.}
+25,000 characters.}
 
 \item{CdnConfiguration}{The configuration for using a content delivery network (CDN), like
 Amazon CloudFront, for content and ad segment management.}
 
-\item{DashConfiguration}{The configuration object for DASH content.}
+\item{DashConfiguration}{The configuration for DASH content.}
 
-\item{Name}{The identifier for the configuration.}
+\item{Name}{The identifier for the playback configuration.}
 
 \item{SlateAdUrl}{The URL for a high-quality video asset to transcode and use to fill in
 time that's not used by ads. AWS Elemental MediaTailor shows the slate
 to fill in gaps in media content. Configuring the slate is optional for
-non-VPAID configurations. For VPAID, the slate is required because AWS
-Elemental MediaTailor provides it in the slots that are designated for
-dynamic ad content. The slate must be a high-quality asset that contains
-both audio and video.}
+non-VPAID configurations. For VPAID, the slate is required because
+MediaTailor provides it in the slots that are designated for dynamic ad
+content. The slate must be a high-quality asset that contains both audio
+and video.}
 
-\item{TranscodeProfileName}{Associate this playbackConfiguration with a custom transcode profile,
-overriding MediaTailor's dynamic transcoding defaults. Do not include
-this field if you have not setup custom profiles with the MediaTailor
-service team.}
+\item{Tags}{The tags to assign to the playback configuration.}
+
+\item{TranscodeProfileName}{The name that is used to associate this playback configuration with a
+custom transcode profile. This overrides the dynamic transcoding
+defaults of MediaTailor. Use this only if you have already set up custom
+profiles with the help of AWS Support.}
 
 \item{VideoContentSourceUrl}{The URL prefix for the master playlist for the stream, minus the asset
 ID. The maximum length is 512 characters.}
 }
 \description{
-Adds a new configuration to AWS Elemental MediaTailor.
+Adds a new playback configuration to AWS Elemental MediaTailor.
 }
 \section{Request syntax}{
 \preformatted{mediatailor$put_playback_configuration(
@@ -54,6 +56,9 @@ Adds a new configuration to AWS Elemental MediaTailor.
   ),
   Name = "string",
   SlateAdUrl = "string",
+  Tags = list(
+    "string"
+  ),
   TranscodeProfileName = "string",
   VideoContentSourceUrl = "string"
 )

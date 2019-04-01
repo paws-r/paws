@@ -20,7 +20,7 @@ the name that you specified as \strong{Name} in the Image Assistant.}
 \item{Validity}{The time that the streaming URL will be valid, in seconds. Specify a
 value between 1 and 604800 seconds. The default is 60 seconds.}
 
-\item{SessionContext}{The session context. For more information, see \href{http://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters}{Session Context}
+\item{SessionContext}{The session context. For more information, see \href{https://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters}{Session Context}
 in the \emph{Amazon AppStream 2.0 Developer Guide}.}
 }
 \description{

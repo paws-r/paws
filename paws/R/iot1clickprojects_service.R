@@ -5,7 +5,7 @@ NULL
 #' AWS IoT 1-Click Projects Service
 #'
 #' @description
-#' The AWS IoT 1-Click Project API Reference
+#' The AWS IoT 1-Click Projects API Reference
 #'
 #' @section Example:
 #' ```
@@ -25,7 +25,10 @@ NULL
 #'  \link[=iot1clickprojects_disassociate_device_from_placement]{disassociate_device_from_placement} \tab Removes a physical device from a placement \cr
 #'  \link[=iot1clickprojects_get_devices_in_placement]{get_devices_in_placement} \tab Returns an object enumerating the devices in a placement \cr
 #'  \link[=iot1clickprojects_list_placements]{list_placements} \tab Lists the placement(s) of a project \cr
-#'  \link[=iot1clickprojects_list_projects]{list_projects} \tab Lists the AWS IoT 1-Click project(s) associated with your AWS account and region\cr
+#'  \link[=iot1clickprojects_list_projects]{list_projects} \tab Lists the AWS IoT 1-Click project(s) associated with your AWS account and region \cr
+#'  \link[=iot1clickprojects_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags (metadata key/value pairs) which you have assigned to the resource\cr
+#'  \link[=iot1clickprojects_tag_resource]{tag_resource} \tab Creates or modifies tags for a resource \cr
+#'  \link[=iot1clickprojects_untag_resource]{untag_resource} \tab Removes one or more tags (metadata key/value pairs) from a resource \cr
 #'  \link[=iot1clickprojects_update_placement]{update_placement} \tab Updates a placement with the given attributes \cr
 #'  \link[=iot1clickprojects_update_project]{update_project} \tab Updates a project associated with your AWS account and region 
 #' }

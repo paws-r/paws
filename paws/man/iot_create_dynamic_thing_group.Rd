@@ -18,7 +18,7 @@ Currently one index is supported: "AWS\_Things".}
 
 \item{queryString}{[required] The dynamic thing group search query string.
 
-See \href{http://docs.aws.amazon.com/iot/latest/developerguide/query-syntax.html}{Query Syntax}
+See \href{https://docs.aws.amazon.com/iot/latest/developerguide/query-syntax.html}{Query Syntax}
 for information about query string syntax.}
 
 \item{queryVersion}{The dynamic thing group query version.

@@ -57,6 +57,7 @@ branch.
 Information about committed code in a repository, by calling the
 following:
 \itemize{
+\item CreateCommit, which creates a commit for changes to a repository.
 \item GetBlob, which returns the base-64 encoded content of an individual
 Git blob object within a repository.
 \item GetCommit, which returns information about a commit, including
@@ -128,6 +129,7 @@ codecommit$operation()
 \tabular{ll}{
 \link[=codecommit_batch_get_repositories]{batch_get_repositories} \tab Returns information about one or more repositories \cr
 \link[=codecommit_create_branch]{create_branch} \tab Creates a new branch in a repository and points the branch to a commit \cr
+\link[=codecommit_create_commit]{create_commit} \tab Creates a commit for a repository on the tip of a specified branch \cr
 \link[=codecommit_create_pull_request]{create_pull_request} \tab Creates a pull request in the specified repository \cr
 \link[=codecommit_create_repository]{create_repository} \tab Creates a new, empty repository \cr
 \link[=codecommit_delete_branch]{delete_branch} \tab Deletes a branch from a repository, unless that branch is the default branch for the repository \cr

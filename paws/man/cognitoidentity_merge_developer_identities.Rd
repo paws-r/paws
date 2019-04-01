@@ -35,6 +35,11 @@ merged. If the users to be merged are associated with the same public
 provider, but as two different users, an exception will be thrown.
 }
 \details{
+The number of linked logins is limited to 20. So, the number of linked
+logins for the source user, \code{SourceUserIdentifier}, and the destination
+user, \code{DestinationUserIdentifier}, together should not be larger than
+20. Otherwise, an exception will be thrown.
+
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{

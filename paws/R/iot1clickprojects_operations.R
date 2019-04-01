@@ -99,7 +99,7 @@ iot1clickprojects_create_placement <- function(placementName, projectName, attri
 #'
 #' @usage
 #' iot1clickprojects_create_project(projectName, description,
-#'   placementTemplate)
+#'   placementTemplate, tags)
 #'
 #' @param projectName &#91;required&#93; The name of the project to create.
 #' @param description An optional description for the project.
@@ -108,6 +108,10 @@ iot1clickprojects_create_placement <- function(placementName, projectName, attri
 #' add or remove device templates after the project has been created.
 #' However, you can update `callbackOverrides` for the device templates
 #' using the `UpdateProject` API.
+#' @param tags Optional tags (metadata key/value pairs) to be associated with the
+#' project. For example, `\{ \{"key1": "value1", "key2": "value2"\} \}`. For
+#' more information, see [AWS Tagging
+#' Strategies](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/).
 #'
 #' @section Request syntax:
 #' ```
@@ -126,6 +130,9 @@ iot1clickprojects_create_placement <- function(placementName, projectName, attri
 #'         )
 #'       )
 #'     )
+#'   ),
+#'   tags = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -133,14 +140,14 @@ iot1clickprojects_create_placement <- function(placementName, projectName, attri
 #' @keywords internal
 #'
 #' @rdname iot1clickprojects_create_project
-iot1clickprojects_create_project <- function(projectName, description = NULL, placementTemplate = NULL) {
+iot1clickprojects_create_project <- function(projectName, description = NULL, placementTemplate = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateProject",
     http_method = "POST",
     http_path = "/projects",
     paginator = list()
   )
-  input <- .iot1clickprojects$create_project_input(projectName = projectName, description = description, placementTemplate = placementTemplate)
+  input <- .iot1clickprojects$create_project_input(projectName = projectName, description = description, placementTemplate = placementTemplate, tags = tags)
   output <- .iot1clickprojects$create_project_output()
   svc <- .iot1clickprojects$service()
   request <- new_request(svc, op, input, output)
@@ -455,6 +462,127 @@ iot1clickprojects_list_projects <- function(nextToken = NULL, maxResults = NULL)
   return(response)
 }
 .iot1clickprojects$operations$list_projects <- iot1clickprojects_list_projects
+
+#' Lists the tags (metadata key/value pairs) which you have assigned to the
+#' resource
+#'
+#' Lists the tags (metadata key/value pairs) which you have assigned to the
+#' resource.
+#'
+#' @usage
+#' iot1clickprojects_list_tags_for_resource(resourceArn)
+#'
+#' @param resourceArn &#91;required&#93; The ARN of the resource whose tags you want to list.
+#'
+#' @section Request syntax:
+#' ```
+#' iot1clickprojects$list_tags_for_resource(
+#'   resourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iot1clickprojects_list_tags_for_resource
+iot1clickprojects_list_tags_for_resource <- function(resourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .iot1clickprojects$list_tags_for_resource_input(resourceArn = resourceArn)
+  output <- .iot1clickprojects$list_tags_for_resource_output()
+  svc <- .iot1clickprojects$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iot1clickprojects$operations$list_tags_for_resource <- iot1clickprojects_list_tags_for_resource
+
+#' Creates or modifies tags for a resource
+#'
+#' Creates or modifies tags for a resource. Tags are key/value pairs
+#' (metadata) that can be used to manage a resource. For more information,
+#' see [AWS Tagging
+#' Strategies](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/).
+#'
+#' @usage
+#' iot1clickprojects_tag_resource(resourceArn, tags)
+#'
+#' @param resourceArn &#91;required&#93; The ARN of the resouce for which tag(s) should be added or modified.
+#' @param tags &#91;required&#93; The new or modifying tag(s) for the resource. See [AWS IoT 1-Click
+#' Service
+#' Limits](https://docs.aws.amazon.com/iot-1-click/latest/developerguide/1click-appendix.html#1click-limits)
+#' for the maximum number of tags allowed per resource.
+#'
+#' @section Request syntax:
+#' ```
+#' iot1clickprojects$tag_resource(
+#'   resourceArn = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iot1clickprojects_tag_resource
+iot1clickprojects_tag_resource <- function(resourceArn, tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .iot1clickprojects$tag_resource_input(resourceArn = resourceArn, tags = tags)
+  output <- .iot1clickprojects$tag_resource_output()
+  svc <- .iot1clickprojects$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iot1clickprojects$operations$tag_resource <- iot1clickprojects_tag_resource
+
+#' Removes one or more tags (metadata key/value pairs) from a resource
+#'
+#' Removes one or more tags (metadata key/value pairs) from a resource.
+#'
+#' @usage
+#' iot1clickprojects_untag_resource(resourceArn, tagKeys)
+#'
+#' @param resourceArn &#91;required&#93; The ARN of the resource whose tag you want to remove.
+#' @param tagKeys &#91;required&#93; The keys of those tags which you want to remove.
+#'
+#' @section Request syntax:
+#' ```
+#' iot1clickprojects$untag_resource(
+#'   resourceArn = "string",
+#'   tagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iot1clickprojects_untag_resource
+iot1clickprojects_untag_resource <- function(resourceArn, tagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .iot1clickprojects$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
+  output <- .iot1clickprojects$untag_resource_output()
+  svc <- .iot1clickprojects$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iot1clickprojects$operations$untag_resource <- iot1clickprojects_untag_resource
 
 #' Updates a placement with the given attributes
 #'

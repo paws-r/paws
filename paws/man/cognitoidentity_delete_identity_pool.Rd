@@ -2,7 +2,7 @@
 % Please edit documentation in R/cognitoidentity_operations.R
 \name{cognitoidentity_delete_identity_pool}
 \alias{cognitoidentity_delete_identity_pool}
-\title{Deletes a user pool}
+\title{Deletes an identity pool}
 \usage{
 cognitoidentity_delete_identity_pool(IdentityPoolId)
 }
@@ -10,8 +10,8 @@ cognitoidentity_delete_identity_pool(IdentityPoolId)
 \item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
 }
 \description{
-Deletes a user pool. Once a pool is deleted, users will not be able to
-authenticate with the pool.
+Deletes an identity pool. Once a pool is deleted, users will not be able
+to authenticate with the pool.
 }
 \details{
 You must use AWS Developer credentials to call this API.

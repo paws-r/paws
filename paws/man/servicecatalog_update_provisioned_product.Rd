@@ -8,7 +8,7 @@ product}
 servicecatalog_update_provisioned_product(AcceptLanguage,
   ProvisionedProductName, ProvisionedProductId, ProductId,
   ProvisioningArtifactId, PathId, ProvisioningParameters,
-  ProvisioningPreferences, UpdateToken)
+  ProvisioningPreferences, Tags, UpdateToken)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -35,6 +35,10 @@ default path, and required if the product has more than one path.}
 
 \item{ProvisioningPreferences}{An object that contains information about the provisioning preferences
 for a stack set.}
+
+\item{Tags}{One or more tags. Requires the product to have \code{RESOURCE_UPDATE}
+constraint with \code{TagUpdatesOnProvisionedProduct} set to \code{ALLOWED} to
+allow tag updates.}
 
 \item{UpdateToken}{[required] The idempotency token that uniquely identifies the provisioning update
 request.}
@@ -78,6 +82,12 @@ You can check the status of this request using DescribeRecord.
     StackSetMaxConcurrencyCount = 123,
     StackSetMaxConcurrencyPercentage = 123,
     StackSetOperationType = "CREATE"|"UPDATE"|"DELETE"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
   ),
   UpdateToken = "string"
 )

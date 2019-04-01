@@ -264,6 +264,47 @@ quicksight_delete_user <- function(UserName, AwsAccountId, Namespace) {
 }
 .quicksight$operations$delete_user <- quicksight_delete_user
 
+#' Deletes a user after locating the user by its principal ID
+#'
+#' Deletes a user after locating the user by its principal ID.
+#'
+#' @usage
+#' quicksight_delete_user_by_principal_id(PrincipalId, AwsAccountId,
+#'   Namespace)
+#'
+#' @param PrincipalId &#91;required&#93; The principal ID of the user.
+#' @param AwsAccountId &#91;required&#93; The ID for the AWS account that the user is in. Currently, you use the
+#' ID for the AWS account that contains your Amazon QuickSight account.
+#' @param Namespace &#91;required&#93; The namespace. Currently, you should set this to `default`.
+#'
+#' @section Request syntax:
+#' ```
+#' quicksight$delete_user_by_principal_id(
+#'   PrincipalId = "string",
+#'   AwsAccountId = "string",
+#'   Namespace = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_delete_user_by_principal_id
+quicksight_delete_user_by_principal_id <- function(PrincipalId, AwsAccountId, Namespace) {
+  op <- new_operation(
+    name = "DeleteUserByPrincipalId",
+    http_method = "DELETE",
+    http_path = "/accounts/{AwsAccountId}/namespaces/{Namespace}/user-principals/{PrincipalId}",
+    paginator = list()
+  )
+  input <- .quicksight$delete_user_by_principal_id_input(PrincipalId = PrincipalId, AwsAccountId = AwsAccountId, Namespace = Namespace)
+  output <- .quicksight$delete_user_by_principal_id_output()
+  svc <- .quicksight$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$delete_user_by_principal_id <- quicksight_delete_user_by_principal_id
+
 #' Returns an Amazon QuickSight group's description and Amazon Resource
 #' Name (ARN)
 #'

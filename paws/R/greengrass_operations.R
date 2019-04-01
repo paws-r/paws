@@ -81,11 +81,12 @@ greengrass_associate_service_role_to_account <- function(RoleArn = NULL) {
 #'
 #' @usage
 #' greengrass_create_connector_definition(AmznClientToken, InitialVersion,
-#'   Name)
+#'   Name, tags)
 #'
 #' @param AmznClientToken A client token used to correlate requests and responses.
 #' @param InitialVersion Information about the initial version of the connector definition.
 #' @param Name The name of the connector definition.
+#' @param tags Tag(s) to add to the new resource
 #'
 #' @section Request syntax:
 #' ```
@@ -102,21 +103,24 @@ greengrass_associate_service_role_to_account <- function(RoleArn = NULL) {
 #'       )
 #'     )
 #'   ),
-#'   Name = "string"
+#'   Name = "string",
+#'   tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname greengrass_create_connector_definition
-greengrass_create_connector_definition <- function(AmznClientToken = NULL, InitialVersion = NULL, Name = NULL) {
+greengrass_create_connector_definition <- function(AmznClientToken = NULL, InitialVersion = NULL, Name = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateConnectorDefinition",
     http_method = "POST",
     http_path = "/greengrass/definition/connectors",
     paginator = list()
   )
-  input <- .greengrass$create_connector_definition_input(AmznClientToken = AmznClientToken, InitialVersion = InitialVersion, Name = Name)
+  input <- .greengrass$create_connector_definition_input(AmznClientToken = AmznClientToken, InitialVersion = InitialVersion, Name = Name, tags = tags)
   output <- .greengrass$create_connector_definition_output()
   svc <- .greengrass$service()
   request <- new_request(svc, op, input, output)
@@ -179,11 +183,13 @@ greengrass_create_connector_definition_version <- function(AmznClientToken = NUL
 #' Creates a core definition. You may provide the initial version of the core definition now or use ''CreateCoreDefinitionVersion'' at a later time. Greengrass groups must each contain exactly one Greengrass core.
 #'
 #' @usage
-#' greengrass_create_core_definition(AmznClientToken, InitialVersion, Name)
+#' greengrass_create_core_definition(AmznClientToken, InitialVersion, Name,
+#'   tags)
 #'
 #' @param AmznClientToken A client token used to correlate requests and responses.
 #' @param InitialVersion Information about the initial version of the core definition.
 #' @param Name The name of the core definition.
+#' @param tags Tag(s) to add to the new resource
 #'
 #' @section Request syntax:
 #' ```
@@ -199,21 +205,24 @@ greengrass_create_connector_definition_version <- function(AmznClientToken = NUL
 #'       )
 #'     )
 #'   ),
-#'   Name = "string"
+#'   Name = "string",
+#'   tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname greengrass_create_core_definition
-greengrass_create_core_definition <- function(AmznClientToken = NULL, InitialVersion = NULL, Name = NULL) {
+greengrass_create_core_definition <- function(AmznClientToken = NULL, InitialVersion = NULL, Name = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateCoreDefinition",
     http_method = "POST",
     http_path = "/greengrass/definition/cores",
     paginator = list()
   )
-  input <- .greengrass$create_core_definition_input(AmznClientToken = AmznClientToken, InitialVersion = InitialVersion, Name = Name)
+  input <- .greengrass$create_core_definition_input(AmznClientToken = AmznClientToken, InitialVersion = InitialVersion, Name = Name, tags = tags)
   output <- .greengrass$create_core_definition_output()
   svc <- .greengrass$service()
   request <- new_request(svc, op, input, output)
@@ -279,7 +288,7 @@ greengrass_create_core_definition_version <- function(AmznClientToken = NULL, Co
 #'
 #' @param AmznClientToken A client token used to correlate requests and responses.
 #' @param DeploymentId The ID of the deployment if you wish to redeploy a previous deployment.
-#' @param DeploymentType The type of deployment. When used in ''CreateDeployment'', only ''NewDeployment'' and ''Redeployment'' are valid.
+#' @param DeploymentType The type of deployment. When used for ''CreateDeployment'', only ''NewDeployment'' and ''Redeployment'' are valid.
 #' @param GroupId &#91;required&#93; The ID of the Greengrass group.
 #' @param GroupVersionId The ID of the group version to be deployed.
 #'
@@ -319,11 +328,12 @@ greengrass_create_deployment <- function(AmznClientToken = NULL, DeploymentId = 
 #'
 #' @usage
 #' greengrass_create_device_definition(AmznClientToken, InitialVersion,
-#'   Name)
+#'   Name, tags)
 #'
 #' @param AmznClientToken A client token used to correlate requests and responses.
 #' @param InitialVersion Information about the initial version of the device definition.
 #' @param Name The name of the device definition.
+#' @param tags Tag(s) to add to the new resource
 #'
 #' @section Request syntax:
 #' ```
@@ -339,21 +349,24 @@ greengrass_create_deployment <- function(AmznClientToken = NULL, DeploymentId = 
 #'       )
 #'     )
 #'   ),
-#'   Name = "string"
+#'   Name = "string",
+#'   tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname greengrass_create_device_definition
-greengrass_create_device_definition <- function(AmznClientToken = NULL, InitialVersion = NULL, Name = NULL) {
+greengrass_create_device_definition <- function(AmznClientToken = NULL, InitialVersion = NULL, Name = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateDeviceDefinition",
     http_method = "POST",
     http_path = "/greengrass/definition/devices",
     paginator = list()
   )
-  input <- .greengrass$create_device_definition_input(AmznClientToken = AmznClientToken, InitialVersion = InitialVersion, Name = Name)
+  input <- .greengrass$create_device_definition_input(AmznClientToken = AmznClientToken, InitialVersion = InitialVersion, Name = Name, tags = tags)
   output <- .greengrass$create_device_definition_output()
   svc <- .greengrass$service()
   request <- new_request(svc, op, input, output)
@@ -416,11 +429,12 @@ greengrass_create_device_definition_version <- function(AmznClientToken = NULL, 
 #'
 #' @usage
 #' greengrass_create_function_definition(AmznClientToken, InitialVersion,
-#'   Name)
+#'   Name, tags)
 #'
 #' @param AmznClientToken A client token used to correlate requests and responses.
 #' @param InitialVersion Information about the initial version of the function definition.
 #' @param Name The name of the function definition.
+#' @param tags Tag(s) to add to the new resource
 #'
 #' @section Request syntax:
 #' ```
@@ -429,7 +443,11 @@ greengrass_create_device_definition_version <- function(AmznClientToken = NULL, 
 #'   InitialVersion = list(
 #'     DefaultConfig = list(
 #'       Execution = list(
-#'         IsolationMode = "GreengrassContainer"|"NoContainer"
+#'         IsolationMode = "GreengrassContainer"|"NoContainer",
+#'         RunAs = list(
+#'           Gid = 123,
+#'           Uid = 123
+#'         )
 #'       )
 #'     ),
 #'     Functions = list(
@@ -466,21 +484,24 @@ greengrass_create_device_definition_version <- function(AmznClientToken = NULL, 
 #'       )
 #'     )
 #'   ),
-#'   Name = "string"
+#'   Name = "string",
+#'   tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname greengrass_create_function_definition
-greengrass_create_function_definition <- function(AmznClientToken = NULL, InitialVersion = NULL, Name = NULL) {
+greengrass_create_function_definition <- function(AmznClientToken = NULL, InitialVersion = NULL, Name = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateFunctionDefinition",
     http_method = "POST",
     http_path = "/greengrass/definition/functions",
     paginator = list()
   )
-  input <- .greengrass$create_function_definition_input(AmznClientToken = AmznClientToken, InitialVersion = InitialVersion, Name = Name)
+  input <- .greengrass$create_function_definition_input(AmznClientToken = AmznClientToken, InitialVersion = InitialVersion, Name = Name, tags = tags)
   output <- .greengrass$create_function_definition_output()
   svc <- .greengrass$service()
   request <- new_request(svc, op, input, output)
@@ -499,7 +520,7 @@ greengrass_create_function_definition <- function(AmznClientToken = NULL, Initia
 #'   DefaultConfig, FunctionDefinitionId, Functions)
 #'
 #' @param AmznClientToken A client token used to correlate requests and responses.
-#' @param DefaultConfig Default configuration that will apply to all Lambda functions in this function definition version
+#' @param DefaultConfig The default configuration that applies to all Lambda functions in this function definition version. Individual Lambda functions can override these settings.
 #' @param FunctionDefinitionId &#91;required&#93; The ID of the Lambda function definition.
 #' @param Functions A list of Lambda functions in this function definition version.
 #'
@@ -509,7 +530,11 @@ greengrass_create_function_definition <- function(AmznClientToken = NULL, Initia
 #'   AmznClientToken = "string",
 #'   DefaultConfig = list(
 #'     Execution = list(
-#'       IsolationMode = "GreengrassContainer"|"NoContainer"
+#'       IsolationMode = "GreengrassContainer"|"NoContainer",
+#'       RunAs = list(
+#'         Gid = 123,
+#'         Uid = 123
+#'       )
 #'     )
 #'   ),
 #'   FunctionDefinitionId = "string",
@@ -573,11 +598,12 @@ greengrass_create_function_definition_version <- function(AmznClientToken = NULL
 #' Creates a group. You may provide the initial version of the group or use ''CreateGroupVersion'' at a later time. Tip: You can use the ''gg_group_setup'' package (https://github.com/awslabs/aws-greengrass-group-setup) as a library or command-line application to create and deploy Greengrass groups.
 #'
 #' @usage
-#' greengrass_create_group(AmznClientToken, InitialVersion, Name)
+#' greengrass_create_group(AmznClientToken, InitialVersion, Name, tags)
 #'
 #' @param AmznClientToken A client token used to correlate requests and responses.
 #' @param InitialVersion Information about the initial version of the group.
 #' @param Name The name of the group.
+#' @param tags Tag(s) to add to the new resource
 #'
 #' @section Request syntax:
 #' ```
@@ -592,21 +618,24 @@ greengrass_create_function_definition_version <- function(AmznClientToken = NULL
 #'     ResourceDefinitionVersionArn = "string",
 #'     SubscriptionDefinitionVersionArn = "string"
 #'   ),
-#'   Name = "string"
+#'   Name = "string",
+#'   tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname greengrass_create_group
-greengrass_create_group <- function(AmznClientToken = NULL, InitialVersion = NULL, Name = NULL) {
+greengrass_create_group <- function(AmznClientToken = NULL, InitialVersion = NULL, Name = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateGroup",
     http_method = "POST",
     http_path = "/greengrass/groups",
     paginator = list()
   )
-  input <- .greengrass$create_group_input(AmznClientToken = AmznClientToken, InitialVersion = InitialVersion, Name = Name)
+  input <- .greengrass$create_group_input(AmznClientToken = AmznClientToken, InitialVersion = InitialVersion, Name = Name, tags = tags)
   output <- .greengrass$create_group_output()
   svc <- .greengrass$service()
   request <- new_request(svc, op, input, output)
@@ -713,11 +742,12 @@ greengrass_create_group_version <- function(AmznClientToken = NULL, ConnectorDef
 #'
 #' @usage
 #' greengrass_create_logger_definition(AmznClientToken, InitialVersion,
-#'   Name)
+#'   Name, tags)
 #'
 #' @param AmznClientToken A client token used to correlate requests and responses.
 #' @param InitialVersion Information about the initial version of the logger definition.
 #' @param Name The name of the logger definition.
+#' @param tags Tag(s) to add to the new resource
 #'
 #' @section Request syntax:
 #' ```
@@ -734,21 +764,24 @@ greengrass_create_group_version <- function(AmznClientToken = NULL, ConnectorDef
 #'       )
 #'     )
 #'   ),
-#'   Name = "string"
+#'   Name = "string",
+#'   tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname greengrass_create_logger_definition
-greengrass_create_logger_definition <- function(AmznClientToken = NULL, InitialVersion = NULL, Name = NULL) {
+greengrass_create_logger_definition <- function(AmznClientToken = NULL, InitialVersion = NULL, Name = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateLoggerDefinition",
     http_method = "POST",
     http_path = "/greengrass/definition/loggers",
     paginator = list()
   )
-  input <- .greengrass$create_logger_definition_input(AmznClientToken = AmznClientToken, InitialVersion = InitialVersion, Name = Name)
+  input <- .greengrass$create_logger_definition_input(AmznClientToken = AmznClientToken, InitialVersion = InitialVersion, Name = Name, tags = tags)
   output <- .greengrass$create_logger_definition_output()
   svc <- .greengrass$service()
   request <- new_request(svc, op, input, output)
@@ -812,11 +845,12 @@ greengrass_create_logger_definition_version <- function(AmznClientToken = NULL, 
 #'
 #' @usage
 #' greengrass_create_resource_definition(AmznClientToken, InitialVersion,
-#'   Name)
+#'   Name, tags)
 #'
 #' @param AmznClientToken A client token used to correlate requests and responses.
 #' @param InitialVersion Information about the initial version of the resource definition.
 #' @param Name The name of the resource definition.
+#' @param tags Tag(s) to add to the new resource
 #'
 #' @section Request syntax:
 #' ```
@@ -861,21 +895,24 @@ greengrass_create_logger_definition_version <- function(AmznClientToken = NULL, 
 #'       )
 #'     )
 #'   ),
-#'   Name = "string"
+#'   Name = "string",
+#'   tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname greengrass_create_resource_definition
-greengrass_create_resource_definition <- function(AmznClientToken = NULL, InitialVersion = NULL, Name = NULL) {
+greengrass_create_resource_definition <- function(AmznClientToken = NULL, InitialVersion = NULL, Name = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateResourceDefinition",
     http_method = "POST",
     http_path = "/greengrass/definition/resources",
     paginator = list()
   )
-  input <- .greengrass$create_resource_definition_input(AmznClientToken = AmznClientToken, InitialVersion = InitialVersion, Name = Name)
+  input <- .greengrass$create_resource_definition_input(AmznClientToken = AmznClientToken, InitialVersion = InitialVersion, Name = Name, tags = tags)
   output <- .greengrass$create_resource_definition_output()
   svc <- .greengrass$service()
   request <- new_request(svc, op, input, output)
@@ -1018,11 +1055,12 @@ greengrass_create_software_update_job <- function(AmznClientToken = NULL, S3UrlS
 #'
 #' @usage
 #' greengrass_create_subscription_definition(AmznClientToken,
-#'   InitialVersion, Name)
+#'   InitialVersion, Name, tags)
 #'
 #' @param AmznClientToken A client token used to correlate requests and responses.
 #' @param InitialVersion Information about the initial version of the subscription definition.
 #' @param Name The name of the subscription definition.
+#' @param tags Tag(s) to add to the new resource
 #'
 #' @section Request syntax:
 #' ```
@@ -1038,21 +1076,24 @@ greengrass_create_software_update_job <- function(AmznClientToken = NULL, S3UrlS
 #'       )
 #'     )
 #'   ),
-#'   Name = "string"
+#'   Name = "string",
+#'   tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname greengrass_create_subscription_definition
-greengrass_create_subscription_definition <- function(AmznClientToken = NULL, InitialVersion = NULL, Name = NULL) {
+greengrass_create_subscription_definition <- function(AmznClientToken = NULL, InitialVersion = NULL, Name = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateSubscriptionDefinition",
     http_method = "POST",
     http_path = "/greengrass/definition/subscriptions",
     paginator = list()
   )
-  input <- .greengrass$create_subscription_definition_input(AmznClientToken = AmznClientToken, InitialVersion = InitialVersion, Name = Name)
+  input <- .greengrass$create_subscription_definition_input(AmznClientToken = AmznClientToken, InitialVersion = InitialVersion, Name = Name, tags = tags)
   output <- .greengrass$create_subscription_definition_output()
   svc <- .greengrass$service()
   request <- new_request(svc, op, input, output)
@@ -1108,6 +1149,45 @@ greengrass_create_subscription_definition_version <- function(AmznClientToken = 
   return(response)
 }
 .greengrass$operations$create_subscription_definition_version <- greengrass_create_subscription_definition_version
+
+#' Add tags to a resource
+#'
+#' Add tags to a resource.
+#'
+#' @usage
+#' greengrass_tag_resource(ResourceArn, tags)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
+#' @param tags &#91;required&#93; A map of the key-value pairs for the resource tag.
+#'
+#' @section Request syntax:
+#' ```
+#' greengrass$tag_resource(
+#'   ResourceArn = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname greengrass_tag_resource
+greengrass_tag_resource <- function(ResourceArn, tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/tags/{resource-arn}",
+    paginator = list()
+  )
+  input <- .greengrass$tag_resource_input(ResourceArn = ResourceArn, tags = tags)
+  output <- .greengrass$tag_resource_output()
+  svc <- .greengrass$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.greengrass$operations$tag_resource <- greengrass_tag_resource
 
 #' Deletes a connector definition
 #'
@@ -1388,6 +1468,45 @@ greengrass_delete_subscription_definition <- function(SubscriptionDefinitionId) 
   return(response)
 }
 .greengrass$operations$delete_subscription_definition <- greengrass_delete_subscription_definition
+
+#' Remove tags with specified keys from a resource
+#'
+#' Remove tags with specified keys from a resource.
+#'
+#' @usage
+#' greengrass_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
+#' @param TagKeys &#91;required&#93; A list of the keys to remove from the resource tags.
+#'
+#' @section Request syntax:
+#' ```
+#' greengrass$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname greengrass_untag_resource
+greengrass_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/tags/{resource-arn}",
+    paginator = list()
+  )
+  input <- .greengrass$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .greengrass$untag_resource_output()
+  svc <- .greengrass$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.greengrass$operations$untag_resource <- greengrass_untag_resource
 
 #' Disassociates the role from a group
 #'
@@ -3068,6 +3187,41 @@ greengrass_list_subscription_definitions <- function(MaxResults = NULL, NextToke
 }
 .greengrass$operations$list_subscription_definitions <- greengrass_list_subscription_definitions
 
+#' Retrieves the tags for a resource
+#'
+#' Retrieves the tags for a resource.
+#'
+#' @usage
+#' greengrass_list_tags_for_resource(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
+#'
+#' @section Request syntax:
+#' ```
+#' greengrass$list_tags_for_resource(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname greengrass_list_tags_for_resource
+greengrass_list_tags_for_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/tags/{resource-arn}",
+    paginator = list()
+  )
+  input <- .greengrass$list_tags_for_resource_input(ResourceArn = ResourceArn)
+  output <- .greengrass$list_tags_for_resource_output()
+  svc <- .greengrass$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.greengrass$operations$list_tags_for_resource <- greengrass_list_tags_for_resource
+
 #' Resets a group's deployments
 #'
 #' Resets a group's deployments.
@@ -3113,32 +3267,36 @@ greengrass_reset_deployments <- function(AmznClientToken = NULL, Force = NULL, G
 #'
 #' @usage
 #' greengrass_start_bulk_deployment(AmznClientToken, ExecutionRoleArn,
-#'   InputFileUri)
+#'   InputFileUri, tags)
 #'
 #' @param AmznClientToken A client token used to correlate requests and responses.
 #' @param ExecutionRoleArn The ARN of the execution role to associate with the bulk deployment operation. This IAM role must allow the ''greengrass:CreateDeployment'' action for all group versions that are listed in the input file. This IAM role must have access to the S3 bucket containing the input file.
 #' @param InputFileUri The URI of the input file contained in the S3 bucket. The execution role must have ''getObject'' permissions on this bucket to access the input file. The input file is a JSON-serialized, line delimited file with UTF-8 encoding that provides a list of group and version IDs and the deployment type. This file must be less than 100 MB. Currently, AWS IoT Greengrass supports only ''NewDeployment'' deployment types.
+#' @param tags Tag(s) to add to the new resource
 #'
 #' @section Request syntax:
 #' ```
 #' greengrass$start_bulk_deployment(
 #'   AmznClientToken = "string",
 #'   ExecutionRoleArn = "string",
-#'   InputFileUri = "string"
+#'   InputFileUri = "string",
+#'   tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname greengrass_start_bulk_deployment
-greengrass_start_bulk_deployment <- function(AmznClientToken = NULL, ExecutionRoleArn = NULL, InputFileUri = NULL) {
+greengrass_start_bulk_deployment <- function(AmznClientToken = NULL, ExecutionRoleArn = NULL, InputFileUri = NULL, tags = NULL) {
   op <- new_operation(
     name = "StartBulkDeployment",
     http_method = "POST",
     http_path = "/greengrass/bulk/deployments",
     paginator = list()
   )
-  input <- .greengrass$start_bulk_deployment_input(AmznClientToken = AmznClientToken, ExecutionRoleArn = ExecutionRoleArn, InputFileUri = InputFileUri)
+  input <- .greengrass$start_bulk_deployment_input(AmznClientToken = AmznClientToken, ExecutionRoleArn = ExecutionRoleArn, InputFileUri = InputFileUri, tags = tags)
   output <- .greengrass$start_bulk_deployment_output()
   svc <- .greengrass$service()
   request <- new_request(svc, op, input, output)

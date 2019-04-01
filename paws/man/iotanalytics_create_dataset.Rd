@@ -5,7 +5,7 @@
 \title{Creates a data set}
 \usage{
 iotanalytics_create_dataset(datasetName, actions, triggers,
-  contentDeliveryRules, retentionPeriod, tags)
+  contentDeliveryRules, retentionPeriod, versioningConfiguration, tags)
 }
 \arguments{
 \item{datasetName}{[required] The name of the data set.}
@@ -20,10 +20,19 @@ created. The list of triggers can be empty or contain up to five
 \item{contentDeliveryRules}{When data set contents are created they are delivered to destinations
 specified here.}
 
-\item{retentionPeriod}{[Optional] How long, in days, message data is kept for the data set.
-If not given or set to null, the latest version of the dataset content
-plus the latest succeeded version (if they are different) are retained
-for at most 90 days.}
+\item{retentionPeriod}{[Optional] How long, in days, versions of data set contents are kept
+for the data set. If not specified or set to null, versions of data set
+contents are retained for at most 90 days. The number of versions of
+data set contents retained is determined by the
+\code{versioningConfiguration} parameter. (For more information, see
+https://docs.aws.amazon.com/iotanalytics/latest/userguide/getting-started.html\#aws-iot-analytics-dataset-versions)}
+
+\item{versioningConfiguration}{[Optional] How many versions of data set contents are kept. If not
+specified or set to null, only the latest version plus the latest
+succeeded version (if they are different) are kept for the time period
+specified by the "retentionPeriod" parameter. (For more information,
+see
+https://docs.aws.amazon.com/iotanalytics/latest/userguide/getting-started.html\#aws-iot-analytics-dataset-versions)}
 
 \item{tags}{Metadata which can be used to manage the data set.}
 }
@@ -99,6 +108,10 @@ calling "CreateDatasetContent" or automatically according to a
   retentionPeriod = list(
     unlimited = TRUE|FALSE,
     numberOfDays = 123
+  ),
+  versioningConfiguration = list(
+    unlimited = TRUE|FALSE,
+    maxVersions = 123
   ),
   tags = list(
     list(

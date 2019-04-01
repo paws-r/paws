@@ -90,7 +90,7 @@ request will fail because the request tries to add a REGULAR rule (the
 default rule type) with the specified ID, which does not exist.
 
 For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the \href{http://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
+HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{waf$update_web_acl(

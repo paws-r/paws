@@ -13,14 +13,14 @@ storagegateway_create_storedi_scsi_volume(GatewayARN, DiskId,
 
 \item{DiskId}{[required] The unique identifier for the gateway local disk that is configured as a
 stored volume. Use
-\href{http://docs.aws.amazon.com/storagegateway/latest/userguide/API_ListLocalDisks.html}{ListLocalDisks}
+\href{https://docs.aws.amazon.com/storagegateway/latest/userguide/API_ListLocalDisks.html}{ListLocalDisks}
 to list disk IDs for a gateway.}
 
 \item{SnapshotId}{The snapshot ID (e.g. "snap-1122aabb") of the snapshot to restore as
 the new stored volume. Specify this field if you want to create the
 iSCSI storage volume from a snapshot otherwise do not include this
 field. To list snapshots for your account use
-\href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html}{DescribeSnapshots}
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html}{DescribeSnapshots}
 in the \emph{Amazon Elastic Compute Cloud API Reference}.}
 
 \item{PreserveExistingData}{[required] Specify this field as true if you want to preserve the data on the local
@@ -28,11 +28,14 @@ disk. Otherwise, specifying this field as false creates an empty volume.
 
 Valid Values: true, false}
 
-\item{TargetName}{[required] The name of the iSCSI target used by initiators to connect to the target
-and as a suffix for the target ARN. For example, specifying \code{TargetName}
-as \emph{myvolume} results in the target ARN of
-arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume.
-The target name must be unique across all volumes of a gateway.}
+\item{TargetName}{[required] The name of the iSCSI target used by an initiator to connect to a volume
+and used as a suffix for the target ARN. For example, specifying
+\code{TargetName} as \emph{myvolume} results in the target ARN of
+\code{arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume}.
+The target name must be unique across all volumes on a gateway.
+
+If you don't specify a value, Storage Gateway uses the value that was
+previously used for this volume as the new target name.}
 
 \item{NetworkInterfaceId}{[required] The network interface of the gateway on which to expose the iSCSI
 target. Only IPv4 addresses are accepted. Use DescribeGatewayInformation

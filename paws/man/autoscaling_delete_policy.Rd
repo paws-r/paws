@@ -2,7 +2,7 @@
 % Please edit documentation in R/autoscaling_operations.R
 \name{autoscaling_delete_policy}
 \alias{autoscaling_delete_policy}
-\title{Deletes the specified Auto Scaling policy}
+\title{Deletes the specified scaling policy}
 \usage{
 autoscaling_delete_policy(AutoScalingGroupName, PolicyName)
 }
@@ -12,7 +12,7 @@ autoscaling_delete_policy(AutoScalingGroupName, PolicyName)
 \item{PolicyName}{[required] The name or Amazon Resource Name (ARN) of the policy.}
 }
 \description{
-Deletes the specified Auto Scaling policy.
+Deletes the specified scaling policy.
 }
 \details{
 Deleting a policy deletes the underlying alarm action, but does not

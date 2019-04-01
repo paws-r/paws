@@ -5,7 +5,7 @@
 \title{Creates a connector definition}
 \usage{
 greengrass_create_connector_definition(AmznClientToken, InitialVersion,
-  Name)
+  Name, tags)
 }
 \arguments{
 \item{AmznClientToken}{A client token used to correlate requests and responses.}
@@ -13,6 +13,8 @@ greengrass_create_connector_definition(AmznClientToken, InitialVersion,
 \item{InitialVersion}{Information about the initial version of the connector definition.}
 
 \item{Name}{The name of the connector definition.}
+
+\item{tags}{Tag(s) to add to the new resource}
 }
 \description{
 Creates a connector definition. You may provide the initial version of the connector definition now or use ''CreateConnectorDefinitionVersion'' at a later time.
@@ -31,7 +33,10 @@ Creates a connector definition. You may provide the initial version of the conne
       )
     )
   ),
-  Name = "string"
+  Name = "string",
+  tags = list(
+    "string"
+  )
 )
 }
 }

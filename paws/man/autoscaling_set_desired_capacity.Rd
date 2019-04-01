@@ -22,7 +22,7 @@ does not honor the cooldown period during manual scaling activities.}
 Sets the size of the specified Auto Scaling group.
 }
 \details{
-For more information about desired capacity, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/WhatIsAutoScaling.html}{What Is Amazon EC2 Auto Scaling?}
+For more information about desired capacity, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html}{What Is Amazon EC2 Auto Scaling?}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{

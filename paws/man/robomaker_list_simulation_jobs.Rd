@@ -20,12 +20,18 @@ purposes.}
 \code{ListSimulationJobs} in paginated output. When this parameter is used,
 \code{ListSimulationJobs} only returns \code{maxResults} results in a single page
 along with a \code{nextToken} response element. The remaining results of the
-initial request can be seen by sending another \code{ListFleets} request with
-the returned \code{nextToken} value. This value can be between 1 and 100. If
-this parameter is not used, then \code{ListSimulationJobs} returns up to 100
-results and a \code{nextToken} value if applicable.}
+initial request can be seen by sending another \code{ListSimulationJobs}
+request with the returned \code{nextToken} value. This value can be between 1
+and 100. If this parameter is not used, then \code{ListSimulationJobs}
+returns up to 100 results and a \code{nextToken} value if applicable.}
 
-\item{filters}{Optional filters to limit results.}
+\item{filters}{Optional filters to limit results.
+
+The filter names \code{status} and \code{simulationApplicationName} and
+\code{robotApplicationName} are supported. When filtering, you must use the
+complete value of the filtered item. You can use up to three filters,
+but they must be for the same named item. For example, if you are
+looking for items with the status \code{Preparing} or the status \code{Running}.}
 }
 \description{
 Returns a list of simulation jobs. You can optionally provide filters to

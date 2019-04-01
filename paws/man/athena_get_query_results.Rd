@@ -3,7 +3,8 @@
 \name{athena_get_query_results}
 \alias{athena_get_query_results}
 \title{Returns the results of a single query execution specified by
-QueryExecutionId}
+QueryExecutionId if you have access to the workgroup in which the query
+ran}
 \usage{
 athena_get_query_results(QueryExecutionId, NextToken, MaxResults)
 }
@@ -17,8 +18,9 @@ was truncated.}
 }
 \description{
 Returns the results of a single query execution specified by
-\code{QueryExecutionId}. This request does not execute the query but returns
-results. Use StartQueryExecution to run a query.
+\code{QueryExecutionId} if you have access to the workgroup in which the
+query ran. This request does not execute the query but returns results.
+Use StartQueryExecution to run a query.
 }
 \section{Request syntax}{
 \preformatted{athena$get_query_results(

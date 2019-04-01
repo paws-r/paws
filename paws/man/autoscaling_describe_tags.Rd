@@ -14,7 +14,7 @@ filters per filter type (for example, \code{auto-scaling-group}) is 1000.}
 from a previous call.)}
 
 \item{MaxRecords}{The maximum number of items to return with this call. The default value
-is 50 and the maximum value is 100.}
+is \code{50} and the maximum value is \code{100}.}
 }
 \description{
 Describes the specified tags.

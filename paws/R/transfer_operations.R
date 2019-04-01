@@ -15,9 +15,11 @@ NULL
 #' The response returns the `ServerId` value for the newly created server.
 #'
 #' @usage
-#' transfer_create_server(IdentityProviderDetails, IdentityProviderType,
-#'   LoggingRole, Tags)
+#' transfer_create_server(EndpointDetails, EndpointType,
+#'   IdentityProviderDetails, IdentityProviderType, LoggingRole, Tags)
 #'
+#' @param EndpointDetails 
+#' @param EndpointType 
 #' @param IdentityProviderDetails An array containing all of the information required to call a
 #' customer-supplied authentication API. This parameter is not required
 #' when the `IdentityProviderType` value of server that is created uses the
@@ -28,13 +30,17 @@ NULL
 #' `API_GATEWAY` indicates that user authentication requires a call to an
 #' API Gateway endpoint URL provided by you to integrate an identity
 #' provider of your choice.
-#' @param LoggingRole A value that allows the service to write your SFTP users' activity to
+#' @param LoggingRole A value that allows the service to write your SFTP users\' activity to
 #' your Amazon CloudWatch logs for monitoring and auditing purposes.
 #' @param Tags Key-value pairs that can be used to group and search for servers.
 #'
 #' @section Request syntax:
 #' ```
 #' transfer$create_server(
+#'   EndpointDetails = list(
+#'     VpcEndpointId = "string"
+#'   ),
+#'   EndpointType = "PUBLIC"|"VPC_ENDPOINT",
 #'   IdentityProviderDetails = list(
 #'     Url = "string",
 #'     InvocationRole = "string"
@@ -53,14 +59,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname transfer_create_server
-transfer_create_server <- function(IdentityProviderDetails = NULL, IdentityProviderType = NULL, LoggingRole = NULL, Tags = NULL) {
+transfer_create_server <- function(EndpointDetails = NULL, EndpointType = NULL, IdentityProviderDetails = NULL, IdentityProviderType = NULL, LoggingRole = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateServer",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .transfer$create_server_input(IdentityProviderDetails = IdentityProviderDetails, IdentityProviderType = IdentityProviderType, LoggingRole = LoggingRole, Tags = Tags)
+  input <- .transfer$create_server_input(EndpointDetails = EndpointDetails, EndpointType = EndpointType, IdentityProviderDetails = IdentityProviderDetails, IdentityProviderType = IdentityProviderType, LoggingRole = LoggingRole, Tags = Tags)
   output <- .transfer$create_server_output()
   svc <- .transfer$service()
   request <- new_request(svc, op, input, output)
@@ -93,12 +99,12 @@ transfer_create_server <- function(IdentityProviderDetails = NULL, IdentityProvi
 #' of their Amazon S3 bucket. Variables you can use inside this policy
 #' include `$\{Transfer:UserName\}`, `$\{Transfer:HomeDirectory\}`, and
 #' `$\{Transfer:HomeBucket\}`.
-#' @param Role &#91;required&#93; The IAM role that controls your user's access to your Amazon S3 bucket.
+#' @param Role &#91;required&#93; The IAM role that controls your user\'s access to your Amazon S3 bucket.
 #' The policies attached to this role will determine the level of access
 #' you want to provide your users when transferring files into and out of
 #' your Amazon S3 bucket or buckets. The IAM role should also contain a
 #' trust relationship that allows the SFTP server to access your resources
-#' when servicing your SFTP user's transfer requests.
+#' when servicing your SFTP user\'s transfer requests.
 #' @param ServerId &#91;required&#93; A system-assigned unique identifier for an SFTP server instance. This is
 #' the specific SFTP server that you added your user to.
 #' @param SshPublicKeyBody The public portion of the Secure Shall (SSH) key used to authenticate
@@ -196,7 +202,7 @@ transfer_delete_server <- function(ServerId) {
 #'
 #' @param ServerId &#91;required&#93; A system-assigned unique identifier for a Secure File Transfer Protocol
 #' (SFTP) server instance that has the user assigned to it.
-#' @param SshPublicKeyId &#91;required&#93; A unique identifier used to reference your user's specific SSH key.
+#' @param SshPublicKeyId &#91;required&#93; A unique identifier used to reference your user\'s specific SSH key.
 #' @param UserName &#91;required&#93; A unique string that identifies a user whose public key is being
 #' deleted.
 #'
@@ -454,8 +460,12 @@ transfer_list_servers <- function(MaxResults = NULL, NextToken = NULL) {
 #' @param Arn &#91;required&#93; Requests the tags associated with a particular Amazon Resource Name
 #' (ARN). An ARN is an identifier for a specific AWS resource, such as a
 #' server, user, or role.
-#' @param MaxResults 
-#' @param NextToken 
+#' @param MaxResults Specifies the number of tags to return as a response to the
+#' `ListTagsForResource` request.
+#' @param NextToken When you request additional results from the `ListTagsForResource` call,
+#' a `NextToken` parameter is returned in the input. You can then pass in a
+#' subsequent command the `NextToken` parameter to continue listing
+#' additional tags.
 #'
 #' @section Request syntax:
 #' ```
@@ -496,9 +506,9 @@ transfer_list_tags_for_resource <- function(Arn, MaxResults = NULL, NextToken = 
 #'
 #' @param MaxResults Specifies the number of users to return as a response to the `ListUsers`
 #' request.
-#' @param NextToken When you can get additional results from the `ListUsers`ListUsers call,
-#' a `NextToken` parameter is returned in the output. You can then pass in
-#' a subsequent command the `NextToken` parameter to continue listing
+#' @param NextToken When you can get additional results from the `ListUsers` call, a
+#' `NextToken` parameter is returned in the output. You can then pass in a
+#' subsequent command the `NextToken` parameter to continue listing
 #' additional users.
 #' @param ServerId &#91;required&#93; A system-assigned unique identifier for a Secure File Transfer Protocol
 #' (SFTP) server that has users are assigned to it.
@@ -773,8 +783,11 @@ transfer_untag_resource <- function(Arn, TagKeys) {
 #' Transfer Protocol (SFTP) server you updated.
 #'
 #' @usage
-#' transfer_update_server(IdentityProviderDetails, LoggingRole, ServerId)
+#' transfer_update_server(EndpointDetails, EndpointType,
+#'   IdentityProviderDetails, LoggingRole, ServerId)
 #'
+#' @param EndpointDetails 
+#' @param EndpointType 
 #' @param IdentityProviderDetails This response parameter is an array containing all of the information
 #' required to call a customer\'s authentication API method.
 #' @param LoggingRole Changes the AWS Identity and Access Management (IAM) role that allows
@@ -786,6 +799,10 @@ transfer_untag_resource <- function(Arn, TagKeys) {
 #' @section Request syntax:
 #' ```
 #' transfer$update_server(
+#'   EndpointDetails = list(
+#'     VpcEndpointId = "string"
+#'   ),
+#'   EndpointType = "PUBLIC"|"VPC_ENDPOINT",
 #'   IdentityProviderDetails = list(
 #'     Url = "string",
 #'     InvocationRole = "string"
@@ -798,14 +815,14 @@ transfer_untag_resource <- function(Arn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname transfer_update_server
-transfer_update_server <- function(IdentityProviderDetails = NULL, LoggingRole = NULL, ServerId) {
+transfer_update_server <- function(EndpointDetails = NULL, EndpointType = NULL, IdentityProviderDetails = NULL, LoggingRole = NULL, ServerId) {
   op <- new_operation(
     name = "UpdateServer",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .transfer$update_server_input(IdentityProviderDetails = IdentityProviderDetails, LoggingRole = LoggingRole, ServerId = ServerId)
+  input <- .transfer$update_server_input(EndpointDetails = EndpointDetails, EndpointType = EndpointType, IdentityProviderDetails = IdentityProviderDetails, LoggingRole = LoggingRole, ServerId = ServerId)
   output <- .transfer$update_server_output()
   svc <- .transfer$service()
   request <- new_request(svc, op, input, output)
@@ -835,13 +852,13 @@ transfer_update_server <- function(IdentityProviderDetails = NULL, LoggingRole =
 #' bucket. Variables you can use inside this policy include
 #' `$\{Transfer:UserName\}`, `$\{Transfer:HomeDirectory\}`, and
 #' `$\{Transfer:HomeBucket\}`.
-#' @param Role The IAM role that controls your user's access to your Amazon S3 bucket.
+#' @param Role The IAM role that controls your user\'s access to your Amazon S3 bucket.
 #' The policies attached to this role will determine the level of access
 #' you want to provide your users when transferring files into and out of
 #' your Amazon S3 bucket or buckets. The IAM role should also contain a
 #' trust relationship that allows the Secure File Transfer Protocol (SFTP)
-#' server to access your resources when servicing your SFTP user's transfer
-#' requests.
+#' server to access your resources when servicing your SFTP user\'s
+#' transfer requests.
 #' @param ServerId &#91;required&#93; A system-assigned unique identifier for an SFTP server instance that the
 #' user account is assigned to.
 #' @param UserName &#91;required&#93; A unique string that identifies a user and is associated with a server

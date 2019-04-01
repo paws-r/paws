@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_put_bucket_lifecycle}
 \alias{s3_put_bucket_lifecycle}
-\title{Deprecated, see the PutBucketLifecycleConfiguration operation}
+\title{No longer used, see the PutBucketLifecycleConfiguration operation}
 \usage{
 s3_put_bucket_lifecycle(Bucket, ContentMD5, LifecycleConfiguration)
 }
@@ -14,7 +14,7 @@ s3_put_bucket_lifecycle(Bucket, ContentMD5, LifecycleConfiguration)
 \item{LifecycleConfiguration}{}
 }
 \description{
-Deprecated, see the PutBucketLifecycleConfiguration operation.
+No longer used, see the PutBucketLifecycleConfiguration operation.
 }
 \section{Request syntax}{
 \preformatted{s3$put_bucket_lifecycle(
@@ -38,11 +38,11 @@ Deprecated, see the PutBucketLifecycleConfiguration operation.
             "2015-01-01"
           ),
           Days = 123,
-          StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"
+          StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"DEEP_ARCHIVE"
         ),
         NoncurrentVersionTransition = list(
           NoncurrentDays = 123,
-          StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"
+          StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"DEEP_ARCHIVE"
         ),
         NoncurrentVersionExpiration = list(
           NoncurrentDays = 123

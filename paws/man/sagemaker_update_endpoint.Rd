@@ -24,7 +24,7 @@ availability loss).
 When Amazon SageMaker receives the request, it sets the endpoint status
 to \code{Updating}. After updating the endpoint, it sets the status to
 \code{InService}. To check the status of an endpoint, use the
-\href{http://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html}{DescribeEndpoint}
+\href{https://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html}{DescribeEndpoint}
 API.
 
 You cannot update an endpoint with the current \code{EndpointConfig}. To

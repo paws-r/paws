@@ -9,7 +9,7 @@ databasemigrationservice_modify_endpoint(EndpointArn,
   ServerName, Port, DatabaseName, ExtraConnectionAttributes,
   CertificateArn, SslMode, ServiceAccessRoleArn, ExternalTableDefinition,
   DynamoDbSettings, S3Settings, DmsTransferSettings, MongoDbSettings,
-  KinesisSettings, ElasticsearchSettings)
+  KinesisSettings, ElasticsearchSettings, RedshiftSettings)
 }
 \arguments{
 \item{EndpointArn}{[required] The Amazon Resource Name (ARN) string that uniquely identifies the
@@ -55,11 +55,11 @@ use to modify the endpoint.}
 \item{ExternalTableDefinition}{The external table definition.}
 
 \item{DynamoDbSettings}{Settings in JSON format for the target Amazon DynamoDB endpoint. For
-more information about the available settings, see \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html}{Using Object Mapping to Migrate Data to DynamoDB}
+more information about the available settings, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html}{Using Object Mapping to Migrate Data to DynamoDB}
 in the \emph{AWS Database Migration Service User Guide.}}
 
 \item{S3Settings}{Settings in JSON format for the target Amazon S3 endpoint. For more
-information about the available settings, see \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html#CHAP_Target.S3.Configuring}{Extra Connection Attributes When Using Amazon S3 as a Target for AWS DMS}
+information about the available settings, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html#CHAP_Target.S3.Configuring}{Extra Connection Attributes When Using Amazon S3 as a Target for AWS DMS}
 in the \emph{AWS Database Migration Service User Guide.}}
 
 \item{DmsTransferSettings}{The settings in JSON format for the DMS transfer type of source
@@ -85,16 +85,18 @@ JSON syntax:
 
 \item{MongoDbSettings}{Settings in JSON format for the source MongoDB endpoint. For more
 information about the available settings, see the configuration
-properties section in \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html}{Using MongoDB as a Target for AWS Database Migration Service}
+properties section in \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html}{Using MongoDB as a Target for AWS Database Migration Service}
 in the \emph{AWS Database Migration Service User Guide.}}
 
 \item{KinesisSettings}{Settings in JSON format for the target Amazon Kinesis Data Streams
-endpoint. For more information about the available settings, see \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping\%20}{Using Object Mapping to Migrate Data to a Kinesis Data Stream}
+endpoint. For more information about the available settings, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping\%20}{Using Object Mapping to Migrate Data to a Kinesis Data Stream}
 in the \emph{AWS Database Migration User Guide.}}
 
 \item{ElasticsearchSettings}{Settings in JSON format for the target Elasticsearch endpoint. For more
-information about the available settings, see \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Elasticsearch.html#CHAP_Target.Elasticsearch.Configuration}{Extra Connection Attributes When Using Elasticsearch as a Target for AWS DMS}
+information about the available settings, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Elasticsearch.html#CHAP_Target.Elasticsearch.Configuration}{Extra Connection Attributes When Using Elasticsearch as a Target for AWS DMS}
 in the \emph{AWS Database Migration User Guide.}}
+
+\item{RedshiftSettings}{}
 }
 \description{
 Modifies the specified endpoint.
@@ -125,7 +127,17 @@ Modifies the specified endpoint.
     CsvDelimiter = "string",
     BucketFolder = "string",
     BucketName = "string",
-    CompressionType = "none"|"gzip"
+    CompressionType = "none"|"gzip",
+    EncryptionMode = "sse-s3"|"sse-kms",
+    ServerSideEncryptionKmsKeyId = "string",
+    DataFormat = "csv"|"parquet",
+    EncodingType = "plain"|"plain-dictionary"|"rle-dictionary",
+    DictPageSizeLimit = 123,
+    RowGroupLength = 123,
+    DataPageSize = 123,
+    ParquetVersion = "parquet-1-0"|"parquet-2-0",
+    EnableStatistics = TRUE|FALSE,
+    CdcInsertsOnly = TRUE|FALSE
   ),
   DmsTransferSettings = list(
     ServiceAccessRoleArn = "string",
@@ -155,6 +167,33 @@ Modifies the specified endpoint.
     EndpointUri = "string",
     FullLoadErrorPercentage = 123,
     ErrorRetryDuration = 123
+  ),
+  RedshiftSettings = list(
+    AcceptAnyDate = TRUE|FALSE,
+    AfterConnectScript = "string",
+    BucketFolder = "string",
+    BucketName = "string",
+    ConnectionTimeout = 123,
+    DatabaseName = "string",
+    DateFormat = "string",
+    EmptyAsNull = TRUE|FALSE,
+    EncryptionMode = "sse-s3"|"sse-kms",
+    FileTransferUploadStreams = 123,
+    LoadTimeout = 123,
+    MaxFileSize = 123,
+    Password = "string",
+    Port = 123,
+    RemoveQuotes = TRUE|FALSE,
+    ReplaceInvalidChars = "string",
+    ReplaceChars = "string",
+    ServerName = "string",
+    ServiceAccessRoleArn = "string",
+    ServerSideEncryptionKmsKeyId = "string",
+    TimeFormat = "string",
+    TrimBlanks = TRUE|FALSE,
+    TruncateColumns = TRUE|FALSE,
+    Username = "string",
+    WriteBufferSize = 123
   )
 )
 }

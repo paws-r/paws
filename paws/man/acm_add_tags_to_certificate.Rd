@@ -12,7 +12,7 @@ to be applied. This must be of the form:
 
 \code{arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012}
 
-For more information about ARNs, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
 
 \item{Tags}{[required] The key-value pair that defines the tag. The tag value is optional.}
 }
@@ -32,7 +32,7 @@ tag to multiple resources if you want to specify a relationship among
 those resources. For example, you can add the same tag to an ACM
 certificate and an Elastic Load Balancing load balancer to indicate that
 they are both used by the same website. For more information, see
-\href{http://docs.aws.amazon.com/acm/latest/userguide/tags.html}{Tagging ACM certificates}.
+\href{https://docs.aws.amazon.com/acm/latest/userguide/tags.html}{Tagging ACM certificates}.
 
 To remove one or more tags, use the RemoveTagsFromCertificate action. To
 view all of the tags that have been applied to the certificate, use the

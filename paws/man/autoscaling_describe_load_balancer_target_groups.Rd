@@ -14,7 +14,7 @@ autoscaling_describe_load_balancer_target_groups(AutoScalingGroupName,
 from a previous call.)}
 
 \item{MaxRecords}{The maximum number of items to return with this call. The default value
-is 100 and the maximum value is 100.}
+is \code{100} and the maximum value is \code{100}.}
 }
 \description{
 Describes the target groups for the specified Auto Scaling group.

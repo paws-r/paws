@@ -20,7 +20,7 @@ NULL
 #' certificate and an Elastic Load Balancing load balancer to indicate that
 #' they are both used by the same website. For more information, see
 #' [Tagging ACM
-#' certificates](http://docs.aws.amazon.com/acm/latest/userguide/tags.html).
+#' certificates](https://docs.aws.amazon.com/acm/latest/userguide/tags.html).
 #' 
 #' To remove one or more tags, use the RemoveTagsFromCertificate action. To
 #' view all of the tags that have been applied to the certificate, use the
@@ -36,7 +36,7 @@ NULL
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
 #' AWS Service
-#' Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 #' @param Tags &#91;required&#93; The key-value pair that defines the tag. The tag value is optional.
 #'
 #' @section Request syntax:
@@ -93,7 +93,7 @@ acm_add_tags_to_certificate <- function(CertificateArn, Tags) {
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
 #' AWS Service
-#' Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -135,7 +135,7 @@ acm_delete_certificate <- function(CertificateArn) {
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
 #' AWS Service
-#' Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -234,7 +234,7 @@ acm_export_certificate <- function(CertificateArn, Passphrase) {
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
 #' AWS Service
-#' Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -267,17 +267,17 @@ acm_get_certificate <- function(CertificateArn) {
 #'
 #' Imports a certificate into AWS Certificate Manager (ACM) to use with
 #' services that are integrated with ACM. Note that [integrated
-#' services](http://docs.aws.amazon.com/acm/latest/userguide/acm-services.html)
+#' services](https://docs.aws.amazon.com/acm/latest/userguide/acm-services.html)
 #' allow only certificate types and keys they support to be associated with
 #' their resources. Further, their support differs depending on whether the
 #' certificate is imported into IAM or into ACM. For more information, see
 #' the documentation for each service. For more information about importing
 #' certificates into ACM, see [Importing
-#' Certificates](http://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html)
+#' Certificates](https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html)
 #' in the *AWS Certificate Manager User Guide*.
 #' 
 #' ACM does not provide [managed
-#' renewal](http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html)
+#' renewal](https://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html)
 #' for certificates that you import.
 #' 
 #' Note the following guidelines when importing third party certificates:
@@ -320,7 +320,7 @@ acm_get_certificate <- function(CertificateArn) {
 #'     manner required by the programming language you\'re using.
 #' 
 #' This operation returns the [Amazon Resource Name
-#' (ARN)](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 #' of the imported certificate.
 #'
 #' @usage
@@ -328,7 +328,7 @@ acm_get_certificate <- function(CertificateArn) {
 #'   CertificateChain)
 #'
 #' @param CertificateArn The [Amazon Resource Name
-#' (ARN)](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 #' of an imported certificate to replace. To import a new certificate, omit
 #' this field.
 #' @param Certificate &#91;required&#93; The certificate to import.
@@ -444,7 +444,7 @@ acm_list_certificates <- function(CertificateStatuses = NULL, Includes = NULL, N
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
 #' AWS Service
-#' Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -494,7 +494,7 @@ acm_list_tags_for_certificate <- function(CertificateArn) {
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
 #' AWS Service
-#' Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 #' @param Tags &#91;required&#93; The key-value pair that defines the tag to remove.
 #'
 #' @section Request syntax:
@@ -529,6 +529,54 @@ acm_remove_tags_from_certificate <- function(CertificateArn, Tags) {
 }
 .acm$operations$remove_tags_from_certificate <- acm_remove_tags_from_certificate
 
+#' Renews an eligable ACM certificate
+#'
+#' Renews an eligable ACM certificate. At this time, only exported private
+#' certificates can be renewed with this operation. In order to renew your
+#' ACM PCA certificates with ACM, you must first [grant the ACM service
+#' principal permission to do
+#' so](acm-pca/latest/userguide/PcaPermissions.html). For more information,
+#' see [Testing Managed Renewal](acm/latest/userguide/manuel-renewal.html)
+#' in the ACM User Guide.
+#'
+#' @usage
+#' acm_renew_certificate(CertificateArn)
+#'
+#' @param CertificateArn &#91;required&#93; String that contains the ARN of the ACM certificate to be renewed. This
+#' must be of the form:
+#' 
+#' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
+#' 
+#' For more information about ARNs, see [Amazon Resource Names (ARNs) and
+#' AWS Service
+#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#'
+#' @section Request syntax:
+#' ```
+#' acm$renew_certificate(
+#'   CertificateArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname acm_renew_certificate
+acm_renew_certificate <- function(CertificateArn) {
+  op <- new_operation(
+    name = "RenewCertificate",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .acm$renew_certificate_input(CertificateArn = CertificateArn)
+  output <- .acm$renew_certificate_output()
+  svc <- .acm$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acm$operations$renew_certificate <- acm_renew_certificate
+
 #' Requests an ACM certificate for use with other AWS services
 #'
 #' Requests an ACM certificate for use with other AWS services. To request
@@ -540,9 +588,9 @@ acm_remove_tags_from_certificate <- function(CertificateArn, Tags) {
 #' required. If you are requesting a public certificate, each domain name
 #' that you specify must be validated to verify that you own or control the
 #' domain. You can use [DNS
-#' validation](http://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html)
+#' validation](https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html)
 #' or [email
-#' validation](http://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-email.html).
+#' validation](https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-email.html).
 #' We recommend that you use DNS validation. ACM issues public certificates
 #' after receiving approval from the domain owner.
 #'
@@ -562,9 +610,9 @@ acm_remove_tags_from_certificate <- function(CertificateArn, Tags) {
 #' up to 253 octets in length.
 #' @param ValidationMethod The method you want to use if you are requesting a public certificate to
 #' validate that you own or control domain. You can [validate with
-#' DNS](http://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html)
+#' DNS](https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html)
 #' or [validate with
-#' email](http://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-email.html).
+#' email](https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-email.html).
 #' We recommend that you use DNS validation.
 #' @param SubjectAlternativeNames Additional FQDNs to be included in the Subject Alternative Name
 #' extension of the ACM certificate. For example, add the name
@@ -574,7 +622,7 @@ acm_remove_tags_from_certificate <- function(CertificateArn, Tags) {
 #' 100. However, the initial limit is 10 domain names. If you need more
 #' than 10 names, you must request a limit increase. For more information,
 #' see
-#' [Limits](http://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html).
+#' [Limits](https://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html).
 #' 
 #' The maximum length of a SAN DNS name is 253 octets. The name is made up
 #' of multiple labels separated by periods. No label can be longer than 63
@@ -606,13 +654,13 @@ acm_remove_tags_from_certificate <- function(CertificateArn, Tags) {
 #' mistakenly or maliciously issued. Certificates that have not been logged
 #' typically produce an error message in a browser. For more information,
 #' see [Opting Out of Certificate Transparency
-#' Logging](http://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency).
+#' Logging](https://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency).
 #' @param CertificateAuthorityArn The Amazon Resource Name (ARN) of the private certificate authority (CA)
 #' that will be used to issue the certificate. If you do not provide an ARN
 #' and you are trying to request a private certificate, ACM will attempt to
 #' issue a public certificate. For more information about private CAs, see
 #' the [AWS Certificate Manager Private Certificate Authority
-#' (PCA)](http://docs.aws.amazon.com/acm-pca/latest/userguide/PcaWelcome.html)
+#' (PCA)](https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaWelcome.html)
 #' user guide. The ARN must have the following form:
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012`
@@ -671,7 +719,7 @@ acm_request_certificate <- function(DomainName, ValidationMethod = NULL, Subject
 #' your original request or since your last attempt to resend validation
 #' mail, you must request a new certificate. For more information about
 #' setting up your contact email addresses, see [Configure Email for your
-#' Domain](http://docs.aws.amazon.com/acm/latest/userguide/setup-email.html).
+#' Domain](https://docs.aws.amazon.com/acm/latest/userguide/setup-email.html).
 #'
 #' @usage
 #' acm_resend_validation_email(CertificateArn, Domain, ValidationDomain)
@@ -737,7 +785,7 @@ acm_resend_validation_email <- function(CertificateArn, Domain, ValidationDomain
 #' whether to opt in to or out of recording your certificate in a
 #' certificate transparency log. For more information, see [Opting Out of
 #' Certificate Transparency
-#' Logging](http://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency).
+#' Logging](https://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency).
 #'
 #' @usage
 #' acm_update_certificate_options(CertificateArn, Options)

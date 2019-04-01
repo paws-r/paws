@@ -4,10 +4,13 @@
 \alias{pinpointemail_create_email_identity}
 \title{Verifies an email identity for use with Amazon Pinpoint}
 \usage{
-pinpointemail_create_email_identity(EmailIdentity)
+pinpointemail_create_email_identity(EmailIdentity, Tags)
 }
 \arguments{
 \item{EmailIdentity}{[required] The email address or domain that you want to verify.}
+
+\item{Tags}{An object that defines the tags (keys and values) that you want to
+associate with the email identity.}
 }
 \description{
 Verifies an email identity for use with Amazon Pinpoint. In Amazon
@@ -31,7 +34,13 @@ verification process.
 }
 \section{Request syntax}{
 \preformatted{pinpointemail$create_email_identity(
-  EmailIdentity = "string"
+  EmailIdentity = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

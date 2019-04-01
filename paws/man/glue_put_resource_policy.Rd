@@ -10,9 +10,10 @@ glue_put_resource_policy(PolicyInJson, PolicyHashCondition,
 \arguments{
 \item{PolicyInJson}{[required] Contains the policy document to set, in JSON format.}
 
-\item{PolicyHashCondition}{This is the hash value returned when the previous policy was set using
-PutResourcePolicy. Its purpose is to prevent concurrent modifications of
-a policy. Do not use this parameter if no previous policy has been set.}
+\item{PolicyHashCondition}{The hash value returned when the previous policy was set using
+\code{PutResourcePolicy}. Its purpose is to prevent concurrent modifications
+of a policy. Do not use this parameter if no previous policy has been
+set.}
 
 \item{PolicyExistsCondition}{A value of \code{MUST_EXIST} is used to update a policy. A value of
 \code{NOT_EXIST} is used to create a new policy. If a value of \code{NONE} or a

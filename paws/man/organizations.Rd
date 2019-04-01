@@ -14,7 +14,7 @@ multiple AWS accounts into an \emph{organization} and centrally manage your
 accounts and their resources.
 
 This guide provides descriptions of the Organizations API. For more
-information about using this service, see the \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html}{AWS Organizations User Guide}.
+information about using this service, see the \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html}{AWS Organizations User Guide}.
 
 \strong{API Version}
 
@@ -33,7 +33,7 @@ install them, see \href{http://aws.amazon.com/tools/}{Tools for Amazon Web Servi
 We recommend that you use the AWS SDKs to make programmatic API calls to
 Organizations. However, you also can use the Organizations Query API to
 make direct calls to the Organizations web service. To learn more about
-the Organizations Query API, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_query-requests.html}{Making Query Requests}
+the Organizations Query API, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_query-requests.html}{Making Query Requests}
 in the \emph{AWS Organizations User Guide}. Organizations supports GET and
 POST requests for all actions. That is, the API does not require you to
 use GET for some actions and POST for others. However, GET requests are
@@ -53,7 +53,7 @@ privileges. As another option, use AWS Security Token Service to
 generate temporary security credentials, and use those credentials to
 sign requests.
 
-To sign requests, we recommend that you use \href{http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4}.
+To sign requests, we recommend that you use \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4}.
 If you have an existing application that uses Signature Version 2, you
 do not have to update it to use Signature Version 4. However, some
 operations now require Signature Version 4. The documentation for
@@ -96,7 +96,7 @@ endpoint:
 
 For the various SDKs used to call the APIs, see the documentation for
 the SDK of interest to learn how to direct the requests to a specific
-endpoint. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/rande.html#sts_region}{Regions and Endpoints}
+endpoint. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#sts_region}{Regions and Endpoints}
 in the \emph{AWS General Reference}.
 
 \strong{How examples are presented}
@@ -116,9 +116,9 @@ API calls for your AWS account and delivers log files to an Amazon S3
 bucket. By using information collected by AWS CloudTrail, you can
 determine which requests were successfully made to Organizations, who
 made the request, when it was made, and so on. For more about AWS
-Organizations and its support for AWS CloudTrail, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_monitoring.html#orgs_cloudtrail-integration}{Logging AWS Organizations Events with AWS CloudTrail}
+Organizations and its support for AWS CloudTrail, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_monitoring.html#orgs_cloudtrail-integration}{Logging AWS Organizations Events with AWS CloudTrail}
 in the \emph{AWS Organizations User Guide}. To learn more about CloudTrail,
-including how to turn it on and find your log files, see the \href{http://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html}{AWS CloudTrail User Guide}.
+including how to turn it on and find your log files, see the \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html}{AWS CloudTrail User Guide}.
 }
 \section{Example}{
 \preformatted{organizations <- paws::organizations()

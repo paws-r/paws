@@ -14,13 +14,13 @@ NULL
 #' `CreateStream` is an asynchronous operation.
 #' 
 #' For information about how the service works, see [How it
-#' Works](http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/how-it-works.html).
+#' Works](https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/how-it-works.html).
 #' 
 #' You must have permissions for the `KinesisVideo:CreateStream` action.
 #'
 #' @usage
 #' kinesisvideo_create_stream(DeviceName, StreamName, MediaType, KmsKeyId,
-#'   DataRetentionInHours)
+#'   DataRetentionInHours, Tags)
 #'
 #' @param DeviceName The name of the device that is writing to the stream.
 #' 
@@ -38,9 +38,6 @@ NULL
 #' Requirements](https://tools.ietf.org/html/rfc6838#section-4.2) for
 #' guidelines.
 #' 
-#' To play video on the console, the media must be H.264 encoded, and you
-#' need to specify this video type in this parameter as `video/h264`.
-#' 
 #' This parameter is optional; the default value is `null` (or empty in
 #' JSON).
 #' @param KmsKeyId The ID of the AWS Key Management Service (AWS KMS) key that you want
@@ -50,7 +47,7 @@ NULL
 #' (`aws/kinesisvideo`) is used.
 #' 
 #' For more information, see
-#' [DescribeKey](http://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters).
+#' [DescribeKey](https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters).
 #' @param DataRetentionInHours The number of hours that you want to retain the data in the stream.
 #' Kinesis Video Streams retains the data in a data store that is
 #' associated with the stream.
@@ -62,6 +59,8 @@ NULL
 #' the fragments that remain in the service host buffer, which has a
 #' retention time limit of 5 minutes and a retention memory limit of 200
 #' MB. Fragments are removed from the buffer when either limit is reached.
+#' @param Tags A list of tags to associate with the specified stream. Each tag is a
+#' key-value pair (the value is optional).
 #'
 #' @section Request syntax:
 #' ```
@@ -70,21 +69,24 @@ NULL
 #'   StreamName = "string",
 #'   MediaType = "string",
 #'   KmsKeyId = "string",
-#'   DataRetentionInHours = 123
+#'   DataRetentionInHours = 123,
+#'   Tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname kinesisvideo_create_stream
-kinesisvideo_create_stream <- function(DeviceName = NULL, StreamName, MediaType = NULL, KmsKeyId = NULL, DataRetentionInHours = NULL) {
+kinesisvideo_create_stream <- function(DeviceName = NULL, StreamName, MediaType = NULL, KmsKeyId = NULL, DataRetentionInHours = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateStream",
     http_method = "POST",
     http_path = "/createStream",
     paginator = list()
   )
-  input <- .kinesisvideo$create_stream_input(DeviceName = DeviceName, StreamName = StreamName, MediaType = MediaType, KmsKeyId = KmsKeyId, DataRetentionInHours = DataRetentionInHours)
+  input <- .kinesisvideo$create_stream_input(DeviceName = DeviceName, StreamName = StreamName, MediaType = MediaType, KmsKeyId = KmsKeyId, DataRetentionInHours = DataRetentionInHours, Tags = Tags)
   output <- .kinesisvideo$create_stream_output()
   svc <- .kinesisvideo$service()
   request <- new_request(svc, op, input, output)
@@ -339,7 +341,7 @@ kinesisvideo_list_tags_for_stream <- function(NextToken = NULL, StreamARN = NULL
 #' you specify a tag that already exists, the tag value is replaced with
 #' the value that you specify in the request. For more information, see
 #' [Using Cost Allocation
-#' Tags](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+#' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
 #' in the *AWS Billing and Cost Management User Guide*.
 #' 
 #' You must provide either the `StreamName` or the `StreamARN`.
@@ -474,7 +476,8 @@ kinesisvideo_untag_stream <- function(StreamARN = NULL, StreamName = NULL, TagKe
 #' API.
 #' @param Operation &#91;required&#93; Indicates whether you want to increase or decrease the retention period.
 #' @param DataRetentionChangeInHours &#91;required&#93; The retention period, in hours. The value you specify replaces the
-#' current value.
+#' current value. The maximum value for this parameter is 87600 (ten
+#' years).
 #'
 #' @section Request syntax:
 #' ```

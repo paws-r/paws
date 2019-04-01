@@ -2,10 +2,11 @@
 % Please edit documentation in R/glue_operations.R
 \name{glue_update_classifier}
 \alias{glue_update_classifier}
-\title{Modifies an existing classifier (a GrokClassifier, XMLClassifier, or
-JsonClassifier, depending on which field is present)}
+\title{Modifies an existing classifier (a GrokClassifier, an XMLClassifier, a
+JsonClassifier, or a CsvClassifier, depending on which field is present)}
 \usage{
-glue_update_classifier(GrokClassifier, XMLClassifier, JsonClassifier)
+glue_update_classifier(GrokClassifier, XMLClassifier, JsonClassifier,
+  CsvClassifier)
 }
 \arguments{
 \item{GrokClassifier}{A \code{GrokClassifier} object with updated fields.}
@@ -13,10 +14,13 @@ glue_update_classifier(GrokClassifier, XMLClassifier, JsonClassifier)
 \item{XMLClassifier}{An \code{XMLClassifier} object with updated fields.}
 
 \item{JsonClassifier}{A \code{JsonClassifier} object with updated fields.}
+
+\item{CsvClassifier}{A \code{CsvClassifier} object with updated fields.}
 }
 \description{
-Modifies an existing classifier (a \code{GrokClassifier}, \code{XMLClassifier}, or
-\code{JsonClassifier}, depending on which field is present).
+Modifies an existing classifier (a \code{GrokClassifier}, an \code{XMLClassifier},
+a \code{JsonClassifier}, or a \code{CsvClassifier}, depending on which field is
+present).
 }
 \section{Request syntax}{
 \preformatted{glue$update_classifier(
@@ -34,6 +38,17 @@ Modifies an existing classifier (a \code{GrokClassifier}, \code{XMLClassifier}, 
   JsonClassifier = list(
     Name = "string",
     JsonPath = "string"
+  ),
+  CsvClassifier = list(
+    Name = "string",
+    Delimiter = "string",
+    QuoteSymbol = "string",
+    ContainsHeader = "UNKNOWN"|"PRESENT"|"ABSENT",
+    Header = list(
+      "string"
+    ),
+    DisableValueTrimming = TRUE|FALSE,
+    AllowSingleColumn = TRUE|FALSE
   )
 )
 }

@@ -7,7 +7,7 @@ optional schedule}
 \usage{
 glue_create_crawler(Name, Role, DatabaseName, Description, Targets,
   Schedule, Classifiers, TablePrefix, SchemaChangePolicy, Configuration,
-  CrawlerSecurityConfiguration)
+  CrawlerSecurityConfiguration, Tags)
 }
 \arguments{
 \item{Name}{[required] Name of the new crawler.}
@@ -41,6 +41,11 @@ see \href{http://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html}{
 
 \item{CrawlerSecurityConfiguration}{The name of the SecurityConfiguration structure to be used by this
 Crawler.}
+
+\item{Tags}{The tags to use with this crawler request. You may use tags to limit
+access to the crawler. For more information about tags in AWS Glue, see
+\href{http://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html}{AWS Tags in AWS Glue} in
+the developer guide.}
 }
 \description{
 Creates a new crawler with specified targets, role, configuration, and
@@ -88,7 +93,10 @@ field.
     DeleteBehavior = "LOG"|"DELETE_FROM_DATABASE"|"DEPRECATE_IN_DATABASE"
   ),
   Configuration = "string",
-  CrawlerSecurityConfiguration = "string"
+  CrawlerSecurityConfiguration = "string",
+  Tags = list(
+    "string"
+  )
 )
 }
 }

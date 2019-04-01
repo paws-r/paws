@@ -201,6 +201,9 @@ Used to create or update a segment.
         )
       ),
       Include = "ALL"|"ANY"|"NONE"
+    ),
+    tags = list(
+      "string"
     )
   )
 )

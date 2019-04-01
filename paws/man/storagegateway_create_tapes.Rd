@@ -5,7 +5,7 @@
 \title{Creates one or more virtual tapes}
 \usage{
 storagegateway_create_tapes(GatewayARN, TapeSizeInBytes, ClientToken,
-  NumTapesToCreate, TapeBarcodePrefix, KMSEncrypted, KMSKey)
+  NumTapesToCreate, TapeBarcodePrefix, KMSEncrypted, KMSKey, PoolId)
 }
 \arguments{
 \item{GatewayARN}{[required] The unique Amazon Resource Name (ARN) that represents the gateway to
@@ -36,6 +36,14 @@ or false to use a key managed by Amazon S3. Optional.}
 \item{KMSKey}{The Amazon Resource Name (ARN) of the AWS KMS key used for Amazon S3
 server side encryption. This value can only be set when KMSEncrypted is
 true. Optional.}
+
+\item{PoolId}{The ID of the pool that you want to add your tape to for archiving. The
+tape in this pool is archived in the S3 storage class you chose when you
+created the tape. When you use your backup application to eject the
+tape, the tape is archived directly into the storage class (Glacier or
+Deep Archive).
+
+Valid values: "GLACIER", "DEEP\_ARCHIVE"}
 }
 \description{
 Creates one or more virtual tapes. You write data to the virtual tapes
@@ -55,7 +63,8 @@ gateway.
   NumTapesToCreate = 123,
   TapeBarcodePrefix = "string",
   KMSEncrypted = TRUE|FALSE,
-  KMSKey = "string"
+  KMSKey = "string",
+  PoolId = "string"
 )
 }
 }

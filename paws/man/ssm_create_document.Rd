@@ -5,7 +5,7 @@
 \title{Creates a Systems Manager document}
 \usage{
 ssm_create_document(Content, Attachments, Name, VersionName,
-  DocumentType, DocumentFormat, TargetType)
+  DocumentType, DocumentFormat, TargetType, Tags)
 }
 \arguments{
 \item{Content}{[required] A valid JSON or YAML string.}
@@ -41,6 +41,19 @@ the document can run on all types of resources. If you don't specify a
 value, the document can't run on any resources. For a list of valid
 resource types, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html}{AWS Resource Types Reference}
 in the \emph{AWS CloudFormation User Guide}.}
+
+\item{Tags}{Optional metadata that you assign to a resource. Tags enable you to
+categorize a resource in different ways, such as by purpose, owner, or
+environment. For example, you might want to tag an SSM document to
+identify the types of targets or the environment where it will run. In
+this case, you could specify the following key name/value pairs:
+\itemize{
+\item \code{Key=OS,Value=Windows}
+\item \code{Key=Environment,Value=Production}
+}
+
+To add tags to an existing SSM document, use the AddTagsToResource
+action.}
 }
 \description{
 Creates a Systems Manager document.
@@ -64,7 +77,13 @@ it with one or more running instances.
   VersionName = "string",
   DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package",
   DocumentFormat = "YAML"|"JSON",
-  TargetType = "string"
+  TargetType = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

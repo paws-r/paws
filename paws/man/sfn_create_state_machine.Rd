@@ -4,7 +4,7 @@
 \alias{sfn_create_state_machine}
 \title{Creates a state machine}
 \usage{
-sfn_create_state_machine(name, definition, roleArn)
+sfn_create_state_machine(name, definition, roleArn, tags)
 }
 \arguments{
 \item{name}{[required] The name of the state machine.
@@ -18,10 +18,12 @@ A name must \emph{not} contain:
 \item control characters (\code{U+0000-001F}, \code{U+007F-009F})
 }}
 
-\item{definition}{[required] The Amazon States Language definition of the state machine. See \href{http://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html}{Amazon States Language}.}
+\item{definition}{[required] The Amazon States Language definition of the state machine. See \href{https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html}{Amazon States Language}.}
 
 \item{roleArn}{[required] The Amazon Resource Name (ARN) of the IAM role to use for this state
 machine.}
+
+\item{tags}{Tags to be added when creating a state machine.}
 }
 \description{
 Creates a state machine. A state machine consists of a collection of
@@ -30,11 +32,21 @@ transition next (\code{Choice} states), stop an execution with an error
 (\code{Fail} states), and so on. State machines are specified using a
 JSON-based, structured language.
 }
+\details{
+This operation is eventually consistent. The results are best effort and
+may not reflect very recent updates and changes.
+}
 \section{Request syntax}{
 \preformatted{sfn$create_state_machine(
   name = "string",
   definition = "string",
-  roleArn = "string"
+  roleArn = "string",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
 )
 }
 }

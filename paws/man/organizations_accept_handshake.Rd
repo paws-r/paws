@@ -38,9 +38,9 @@ in the \emph{AWS Organizations User Guide}.
 principal from the master account.
 }
 
-For more information about invitations, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_invites.html}{Inviting an AWS Account to Join Your Organization}
+For more information about invitations, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_invites.html}{Inviting an AWS Account to Join Your Organization}
 in the \emph{AWS Organizations User Guide}. For more information about
-requests to enable all features in the organization, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html}{Enabling All Features in Your Organization}
+requests to enable all features in the organization, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html}{Enabling All Features in Your Organization}
 in the \emph{AWS Organizations User Guide}.
 
 After you accept a handshake, it continues to appear in the results of

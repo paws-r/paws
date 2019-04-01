@@ -22,8 +22,8 @@ is in the \code{STATE_RUNNING} state.
 A software update forces a system restart of your gateway. You can
 minimize the chance of any disruption to your applications by increasing
 your iSCSI Initiators' timeouts. For more information about increasing
-iSCSI Initiator timeouts for Windows and Linux, see \href{http://docs.aws.amazon.com/storagegateway/latest/userguide/ConfiguringiSCSIClientInitiatorWindowsClient.html#CustomizeWindowsiSCSISettings}{Customizing Your Windows iSCSI Settings}
-and \href{http://docs.aws.amazon.com/storagegateway/latest/userguide/ConfiguringiSCSIClientInitiatorRedHatClient.html#CustomizeLinuxiSCSISettings}{Customizing Your Linux iSCSI Settings},
+iSCSI Initiator timeouts for Windows and Linux, see \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/ConfiguringiSCSIClientInitiatorWindowsClient.html#CustomizeWindowsiSCSISettings}{Customizing Your Windows iSCSI Settings}
+and \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/ConfiguringiSCSIClientInitiatorRedHatClient.html#CustomizeLinuxiSCSISettings}{Customizing Your Linux iSCSI Settings},
 respectively.
 }
 \section{Request syntax}{

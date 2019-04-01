@@ -25,7 +25,7 @@ the volume you are deleting. You should also make sure there is no
 snapshot in progress. You can use the Amazon Elastic Compute Cloud
 (Amazon EC2) API to query snapshots on the volume you are deleting and
 check the snapshot status. For more information, go to
-\href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html}{DescribeSnapshots}
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html}{DescribeSnapshots}
 in the \emph{Amazon Elastic Compute Cloud API Reference}.
 
 In the request, you must provide the Amazon Resource Name (ARN) of the

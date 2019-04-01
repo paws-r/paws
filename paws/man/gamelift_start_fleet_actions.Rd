@@ -23,14 +23,29 @@ once again initiates scaling events as triggered by the fleet's scaling
 policies. If actions on the fleet were never stopped, this operation
 will have no effect. You can view a fleet's stopped actions using
 DescribeFleetAttributes.
+
+\strong{Learn more}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Working with Fleets}.
+
+\strong{Related operations}
 \itemize{
+\item CreateFleet
+\item ListFleets
+\item DeleteFleet
+\item Describe fleets:
+\item DescribeFleetAttributes
 \item DescribeFleetCapacity
-\item UpdateFleetCapacity
+\item DescribeFleetPortSettings
+\item DescribeFleetUtilization
+\item DescribeRuntimeConfiguration
 \item DescribeEC2InstanceLimits
-\item Manage scaling policies:
-\item PutScalingPolicy (auto-scaling)
-\item DescribeScalingPolicies (auto-scaling)
-\item DeleteScalingPolicy (auto-scaling)
+\item DescribeFleetEvents
+\item Update fleets:
+\item UpdateFleetAttributes
+\item UpdateFleetCapacity
+\item UpdateFleetPortSettings
+\item UpdateRuntimeConfiguration
 \item Manage fleet actions:
 \item StartFleetActions
 \item StopFleetActions

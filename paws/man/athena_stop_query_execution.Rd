@@ -10,7 +10,8 @@ athena_stop_query_execution(QueryExecutionId)
 \item{QueryExecutionId}{[required] The unique ID of the query execution to stop.}
 }
 \description{
-Stops a query execution.
+Stops a query execution. Requires you to have access to the workgroup in
+which the query ran.
 }
 \details{
 For code samples using the AWS SDK for Java, see \href{http://docs.aws.amazon.com/athena/latest/ug/code-samples.html}{Examples and Code Samples}

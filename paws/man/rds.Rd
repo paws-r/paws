@@ -37,16 +37,16 @@ some related topics from the user guide.
 
 \strong{Amazon RDS API Reference}
 \itemize{
-\item For the alphabetical list of API actions, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_Operations.html}{API Actions}.
-\item For the alphabetical list of data types, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_Types.html}{Data Types}.
-\item For a list of common query parameters, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/APIReference/CommonParameters.html}{Common Parameters}.
-\item For descriptions of the error codes, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/APIReference/CommonErrors.html}{Common Errors}.
+\item For the alphabetical list of API actions, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_Operations.html}{API Actions}.
+\item For the alphabetical list of data types, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_Types.html}{Data Types}.
+\item For a list of common query parameters, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/CommonParameters.html}{Common Parameters}.
+\item For descriptions of the error codes, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/CommonErrors.html}{Common Errors}.
 }
 
 \strong{Amazon RDS User Guide}
 \itemize{
-\item For a summary of the Amazon RDS interfaces, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html#Welcome.Interfaces}{Available RDS Interfaces}.
-\item For more information about how to use the Query API, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Using_the_Query_API.html}{Using the Query API}.
+\item For a summary of the Amazon RDS interfaces, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html#Welcome.Interfaces}{Available RDS Interfaces}.
+\item For more information about how to use the Query API, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Using_the_Query_API.html}{Using the Query API}.
 }
 }
 \section{Example}{

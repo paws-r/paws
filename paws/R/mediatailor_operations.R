@@ -3,14 +3,14 @@
 #' @include mediatailor_service.R
 NULL
 
-#' Deletes the configuration for the specified name
+#' Deletes the playback configuration for the specified name
 #'
-#' Deletes the configuration for the specified name.
+#' Deletes the playback configuration for the specified name.
 #'
 #' @usage
 #' mediatailor_delete_playback_configuration(Name)
 #'
-#' @param Name &#91;required&#93; The identifier for the configuration.
+#' @param Name &#91;required&#93; The identifier for the playback configuration.
 #'
 #' @section Request syntax:
 #' ```
@@ -38,14 +38,14 @@ mediatailor_delete_playback_configuration <- function(Name) {
 }
 .mediatailor$operations$delete_playback_configuration <- mediatailor_delete_playback_configuration
 
-#' Returns the configuration for the specified name
+#' Returns the playback configuration for the specified name
 #'
-#' Returns the configuration for the specified name.
+#' Returns the playback configuration for the specified name.
 #'
 #' @usage
 #' mediatailor_get_playback_configuration(Name)
 #'
-#' @param Name &#91;required&#93; The identifier for the configuration.
+#' @param Name &#91;required&#93; The identifier for the playback configuration.
 #'
 #' @section Request syntax:
 #' ```
@@ -73,22 +73,22 @@ mediatailor_get_playback_configuration <- function(Name) {
 }
 .mediatailor$operations$get_playback_configuration <- mediatailor_get_playback_configuration
 
-#' Returns a list of the configurations defined in AWS Elemental
+#' Returns a list of the playback configurations defined in AWS Elemental
 #' MediaTailor
 #'
-#' Returns a list of the configurations defined in AWS Elemental
-#' MediaTailor. You can specify a max number of configurations to return at
-#' a time. The default max is 50. Results are returned in pagefuls. If AWS
-#' Elemental MediaTailor has more configurations than the specified max, it
-#' provides parameters in the response that you can use to retrieve the
-#' next pageful.
+#' Returns a list of the playback configurations defined in AWS Elemental
+#' MediaTailor. You can specify a maximum number of configurations to
+#' return at a time. The default maximum is 50. Results are returned in
+#' pagefuls. If MediaTailor has more configurations than the specified
+#' maximum, it provides parameters in the response that you can use to
+#' retrieve the next pageful.
 #'
 #' @usage
 #' mediatailor_list_playback_configurations(MaxResults, NextToken)
 #'
 #' @param MaxResults Maximum number of records to return.
-#' @param NextToken Pagination token returned by the GET list request when results overrun
-#' the meximum allowed. Use the token to fetch the next page of results.
+#' @param NextToken Pagination token returned by the GET list request when results exceed
+#' the maximum allowed. Use the token to fetch the next page of results.
 #'
 #' @section Request syntax:
 #' ```
@@ -117,13 +117,51 @@ mediatailor_list_playback_configurations <- function(MaxResults = NULL, NextToke
 }
 .mediatailor$operations$list_playback_configurations <- mediatailor_list_playback_configurations
 
-#' Adds a new configuration to AWS Elemental MediaTailor
+#' Returns a list of the tags assigned to the specified playback
+#' configuration resource
 #'
-#' Adds a new configuration to AWS Elemental MediaTailor.
+#' Returns a list of the tags assigned to the specified playback
+#' configuration resource.
+#'
+#' @usage
+#' mediatailor_list_tags_for_resource(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the playback configuration. You can
+#' get this from the response to any playback configuration request.
+#'
+#' @section Request syntax:
+#' ```
+#' mediatailor$list_tags_for_resource(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediatailor_list_tags_for_resource
+mediatailor_list_tags_for_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/tags/{ResourceArn}",
+    paginator = list()
+  )
+  input <- .mediatailor$list_tags_for_resource_input(ResourceArn = ResourceArn)
+  output <- .mediatailor$list_tags_for_resource_output()
+  svc <- .mediatailor$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediatailor$operations$list_tags_for_resource <- mediatailor_list_tags_for_resource
+
+#' Adds a new playback configuration to AWS Elemental MediaTailor
+#'
+#' Adds a new playback configuration to AWS Elemental MediaTailor.
 #'
 #' @usage
 #' mediatailor_put_playback_configuration(AdDecisionServerUrl,
-#'   CdnConfiguration, DashConfiguration, Name, SlateAdUrl,
+#'   CdnConfiguration, DashConfiguration, Name, SlateAdUrl, Tags,
 #'   TranscodeProfileName, VideoContentSourceUrl)
 #'
 #' @param AdDecisionServerUrl The URL for the ad decision server (ADS). This includes the
@@ -131,22 +169,23 @@ mediatailor_list_playback_configurations <- function(MaxResults = NULL, NextToke
 #' parameters. AWS Elemental MediaTailor substitutes player-specific and
 #' session-specific parameters as needed when calling the ADS. Alternately,
 #' for testing you can provide a static VAST URL. The maximum length is
-#' 25000 characters.
+#' 25,000 characters.
 #' @param CdnConfiguration The configuration for using a content delivery network (CDN), like
 #' Amazon CloudFront, for content and ad segment management.
-#' @param DashConfiguration The configuration object for DASH content.
-#' @param Name The identifier for the configuration.
+#' @param DashConfiguration The configuration for DASH content.
+#' @param Name The identifier for the playback configuration.
 #' @param SlateAdUrl The URL for a high-quality video asset to transcode and use to fill in
 #' time that\'s not used by ads. AWS Elemental MediaTailor shows the slate
 #' to fill in gaps in media content. Configuring the slate is optional for
-#' non-VPAID configurations. For VPAID, the slate is required because AWS
-#' Elemental MediaTailor provides it in the slots that are designated for
-#' dynamic ad content. The slate must be a high-quality asset that contains
-#' both audio and video.
-#' @param TranscodeProfileName Associate this playbackConfiguration with a custom transcode profile,
-#' overriding MediaTailor\'s dynamic transcoding defaults. Do not include
-#' this field if you have not setup custom profiles with the MediaTailor
-#' service team.
+#' non-VPAID configurations. For VPAID, the slate is required because
+#' MediaTailor provides it in the slots that are designated for dynamic ad
+#' content. The slate must be a high-quality asset that contains both audio
+#' and video.
+#' @param Tags The tags to assign to the playback configuration.
+#' @param TranscodeProfileName The name that is used to associate this playback configuration with a
+#' custom transcode profile. This overrides the dynamic transcoding
+#' defaults of MediaTailor. Use this only if you have already set up custom
+#' profiles with the help of AWS Support.
 #' @param VideoContentSourceUrl The URL prefix for the master playlist for the stream, minus the asset
 #' ID. The maximum length is 512 characters.
 #'
@@ -163,6 +202,9 @@ mediatailor_list_playback_configurations <- function(MaxResults = NULL, NextToke
 #'   ),
 #'   Name = "string",
 #'   SlateAdUrl = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
 #'   TranscodeProfileName = "string",
 #'   VideoContentSourceUrl = "string"
 #' )
@@ -171,14 +213,14 @@ mediatailor_list_playback_configurations <- function(MaxResults = NULL, NextToke
 #' @keywords internal
 #'
 #' @rdname mediatailor_put_playback_configuration
-mediatailor_put_playback_configuration <- function(AdDecisionServerUrl = NULL, CdnConfiguration = NULL, DashConfiguration = NULL, Name = NULL, SlateAdUrl = NULL, TranscodeProfileName = NULL, VideoContentSourceUrl = NULL) {
+mediatailor_put_playback_configuration <- function(AdDecisionServerUrl = NULL, CdnConfiguration = NULL, DashConfiguration = NULL, Name = NULL, SlateAdUrl = NULL, Tags = NULL, TranscodeProfileName = NULL, VideoContentSourceUrl = NULL) {
   op <- new_operation(
     name = "PutPlaybackConfiguration",
     http_method = "PUT",
     http_path = "/playbackConfiguration",
     paginator = list()
   )
-  input <- .mediatailor$put_playback_configuration_input(AdDecisionServerUrl = AdDecisionServerUrl, CdnConfiguration = CdnConfiguration, DashConfiguration = DashConfiguration, Name = Name, SlateAdUrl = SlateAdUrl, TranscodeProfileName = TranscodeProfileName, VideoContentSourceUrl = VideoContentSourceUrl)
+  input <- .mediatailor$put_playback_configuration_input(AdDecisionServerUrl = AdDecisionServerUrl, CdnConfiguration = CdnConfiguration, DashConfiguration = DashConfiguration, Name = Name, SlateAdUrl = SlateAdUrl, Tags = Tags, TranscodeProfileName = TranscodeProfileName, VideoContentSourceUrl = VideoContentSourceUrl)
   output <- .mediatailor$put_playback_configuration_output()
   svc <- .mediatailor$service()
   request <- new_request(svc, op, input, output)
@@ -186,3 +228,87 @@ mediatailor_put_playback_configuration <- function(AdDecisionServerUrl = NULL, C
   return(response)
 }
 .mediatailor$operations$put_playback_configuration <- mediatailor_put_playback_configuration
+
+#' Adds tags to the specified playback configuration resource
+#'
+#' Adds tags to the specified playback configuration resource. You can
+#' specify one or more tags to add.
+#'
+#' @usage
+#' mediatailor_tag_resource(ResourceArn, Tags)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the playback configuration. You can
+#' get this from the response to any playback configuration request.
+#' @param Tags &#91;required&#93; A comma-separated list of tag key:value pairs. For example: \{ \"Key1\":
+#' \"Value1\", \"Key2\": \"Value2\" \}
+#'
+#' @section Request syntax:
+#' ```
+#' mediatailor$tag_resource(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediatailor_tag_resource
+mediatailor_tag_resource <- function(ResourceArn, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/tags/{ResourceArn}",
+    paginator = list()
+  )
+  input <- .mediatailor$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+  output <- .mediatailor$tag_resource_output()
+  svc <- .mediatailor$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediatailor$operations$tag_resource <- mediatailor_tag_resource
+
+#' Removes tags from the specified playback configuration resource
+#'
+#' Removes tags from the specified playback configuration resource. You can
+#' specify one or more tags to remove.
+#'
+#' @usage
+#' mediatailor_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the playback configuration. You can
+#' get this from the response to any playback configuration request.
+#' @param TagKeys &#91;required&#93; A comma-separated list of the tag keys to remove from the playback
+#' configuration.
+#'
+#' @section Request syntax:
+#' ```
+#' mediatailor$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediatailor_untag_resource
+mediatailor_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/tags/{ResourceArn}",
+    paginator = list()
+  )
+  input <- .mediatailor$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .mediatailor$untag_resource_output()
+  svc <- .mediatailor$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediatailor$operations$untag_resource <- mediatailor_untag_resource

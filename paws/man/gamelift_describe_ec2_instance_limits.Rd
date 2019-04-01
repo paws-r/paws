@@ -31,6 +31,12 @@ Retrieves the following information for the specified EC2 instance type:
 Service limits vary depending on region. Available regions for Amazon
 GameLift can be found in the AWS Management Console for Amazon GameLift
 (see the drop-down list in the upper right corner).
+
+\strong{Learn more}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Working with Fleets}.
+
+\strong{Related operations}
 \itemize{
 \item CreateFleet
 \item ListFleets

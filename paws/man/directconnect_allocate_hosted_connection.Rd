@@ -3,7 +3,7 @@
 \name{directconnect_allocate_hosted_connection}
 \alias{directconnect_allocate_hosted_connection}
 \title{Creates a hosted connection on the specified interconnect or a link
-aggregation group (LAG)}
+aggregation group (LAG) of interconnects}
 \usage{
 directconnect_allocate_hosted_connection(connectionId, ownerAccount,
   bandwidth, connectionName, vlan)
@@ -13,8 +13,11 @@ directconnect_allocate_hosted_connection(connectionId, ownerAccount,
 
 \item{ownerAccount}{[required] The ID of the AWS account ID of the customer for the connection.}
 
-\item{bandwidth}{[required] The bandwidth of the hosted connection, in Mbps. The possible values are
-50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, and 500Mbps.}
+\item{bandwidth}{[required] The bandwidth of the connection. The possible values are 50Mbps,
+100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, and
+10Gbps. Note that only those AWS Direct Connect Partners who have met
+specific requirements are allowed to create a 1Gbps, 2Gbps, 5Gbps or
+10Gbps hosted connection.}
 
 \item{connectionName}{[required] The name of the hosted connection.}
 
@@ -22,13 +25,16 @@ directconnect_allocate_hosted_connection(connectionId, ownerAccount,
 }
 \description{
 Creates a hosted connection on the specified interconnect or a link
-aggregation group (LAG).
+aggregation group (LAG) of interconnects.
 }
 \details{
-Allocates a VLAN number and a specified amount of bandwidth for use by a
-hosted connection on the specified interconnect or LAG.
+Allocates a VLAN number and a specified amount of capacity (bandwidth)
+for use by a hosted connection on the specified interconnect or LAG of
+interconnects. AWS polices the hosted connection for the specified
+capacity and the AWS Direct Connect Partner must also police the hosted
+connection for the specified capacity.
 
-Intended for use by AWS Direct Connect partners only.
+Intended for use by AWS Direct Connect Partners only.
 }
 \section{Request syntax}{
 \preformatted{directconnect$allocate_hosted_connection(

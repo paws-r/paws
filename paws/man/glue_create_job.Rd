@@ -6,7 +6,7 @@
 \usage{
 glue_create_job(Name, Description, LogUri, Role, ExecutionProperty,
   Command, DefaultArguments, Connections, MaxRetries, AllocatedCapacity,
-  Timeout, MaxCapacity, NotificationProperty, SecurityConfiguration)
+  Timeout, MaxCapacity, NotificationProperty, SecurityConfiguration, Tags)
 }
 \arguments{
 \item{Name}{[required] The name you assign to this job definition. It must be unique in your
@@ -51,15 +51,31 @@ capacity and 16 GB of memory. For more information, see the \href{https://aws.am
 consume resources before it is terminated and enters \code{TIMEOUT} status.
 The default is 2,880 minutes (48 hours).}
 
-\item{MaxCapacity}{AWS Glue supports running jobs on a \code{JobCommand.Name}="pythonshell"
-with allocated processing as low as 0.0625 DPU, which can be specified
-using \code{MaxCapacity}. Glue ETL jobs running in any other way cannot have
-fractional DPU allocations.}
+\item{MaxCapacity}{The number of AWS Glue data processing units (DPUs) that can be
+allocated when this job runs. A DPU is a relative measure of processing
+power that consists of 4 vCPUs of compute capacity and 16 GB of memory.
+For more information, see the \href{https://aws.amazon.com/glue/pricing/}{AWS Glue pricing page}.
+
+The value that can be allocated for \code{MaxCapacity} depends on whether you
+are running a python shell job, or an Apache Spark ETL job:
+\itemize{
+\item When you specify a python shell job
+(\code{JobCommand.Name}="pythonshell"), you can allocate either 0.0625
+or 1 DPU. The default is 0.0625 DPU.
+\item When you specify an Apache Spark ETL job
+(\code{JobCommand.Name}="glueetl"), you can allocate from 2 to 100
+DPUs. The default is 10 DPUs. This job type cannot have a fractional
+DPU allocation.
+}}
 
 \item{NotificationProperty}{Specifies configuration properties of a job notification.}
 
 \item{SecurityConfiguration}{The name of the SecurityConfiguration structure to be used with this
 job.}
+
+\item{Tags}{The tags to use with this job. You may use tags to limit access to the
+job. For more information about tags in AWS Glue, see \href{http://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html}{AWS Tags in AWS Glue} in
+the developer guide.}
 }
 \description{
 Creates a new job definition.
@@ -92,7 +108,10 @@ Creates a new job definition.
   NotificationProperty = list(
     NotifyDelayAfter = 123
   ),
-  SecurityConfiguration = "string"
+  SecurityConfiguration = "string",
+  Tags = list(
+    "string"
+  )
 )
 }
 }

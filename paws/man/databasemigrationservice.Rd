@@ -15,7 +15,7 @@ service supports homogeneous migrations such as Oracle to Oracle, as
 well as heterogeneous migrations between different database platforms,
 such as Oracle to MySQL or SQL Server to PostgreSQL.
 
-For more information about AWS DMS, see \href{http://docs.aws.amazon.com/dms/latest/userguide/Welcome.html}{What Is AWS Database Migration Service?}
+For more information about AWS DMS, see \href{https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html}{What Is AWS Database Migration Service?}
 in the \emph{AWS Database Migration User Guide.}
 }
 \section{Example}{
@@ -28,6 +28,7 @@ databasemigrationservice$operation()
 
 \tabular{ll}{
 \link[=databasemigrationservice_add_tags_to_resource]{add_tags_to_resource} \tab Adds metadata tags to an AWS DMS resource, including replication instance, endpoint, security group, and migration task \cr
+\link[=databasemigrationservice_apply_pending_maintenance_action]{apply_pending_maintenance_action} \tab Applies a pending maintenance action to a resource (for example, to a replication instance) \cr
 \link[=databasemigrationservice_create_endpoint]{create_endpoint} \tab Creates an endpoint using the provided settings \cr
 \link[=databasemigrationservice_create_event_subscription]{create_event_subscription} \tab Creates an AWS DMS event notification subscription \cr
 \link[=databasemigrationservice_create_replication_instance]{create_replication_instance} \tab Creates the replication instance using the specified parameters \cr
@@ -48,6 +49,7 @@ databasemigrationservice$operation()
 \link[=databasemigrationservice_describe_event_subscriptions]{describe_event_subscriptions} \tab Lists all the event subscriptions for a customer account \cr
 \link[=databasemigrationservice_describe_events]{describe_events} \tab Lists events for a given source identifier and source type \cr
 \link[=databasemigrationservice_describe_orderable_replication_instances]{describe_orderable_replication_instances} \tab Returns information about the replication instance types that can be created in the specified region \cr
+\link[=databasemigrationservice_describe_pending_maintenance_actions]{describe_pending_maintenance_actions} \tab For internal use only \cr
 \link[=databasemigrationservice_describe_refresh_schemas_status]{describe_refresh_schemas_status} \tab Returns the status of the RefreshSchemas operation \cr
 \link[=databasemigrationservice_describe_replication_instance_task_logs]{describe_replication_instance_task_logs} \tab Returns information about the task logs for the specified task \cr
 \link[=databasemigrationservice_describe_replication_instances]{describe_replication_instances} \tab Returns information about replication instances for your account in the current region \cr

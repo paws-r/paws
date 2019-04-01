@@ -22,7 +22,7 @@ Constraints:
 specify a valid DB snapshot identifier.
 \item If the source snapshot is in a different AWS Region than the copy,
 specify a valid DB cluster snapshot ARN. For more information, go to
-\href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_CopySnapshot.html#USER_CopySnapshot.AcrossRegions}{Copying Snapshots Across AWS Regions}
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_CopySnapshot.html#USER_CopySnapshot.AcrossRegions}{Copying Snapshots Across AWS Regions}
 in the \emph{Amazon Aurora User Guide.}
 }
 
@@ -91,8 +91,8 @@ example:
 }
 
 To learn how to generate a Signature Version 4 signed request, see
-\href{http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html}{Authenticating Requests: Using Query Parameters (AWS Signature Version 4)}
-and \href{http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4 Signing Process}.
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html}{Authenticating Requests: Using Query Parameters (AWS Signature Version 4)}
+and \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4 Signing Process}.
 
 If you supply a value for this operation's \code{SourceRegion} parameter, a
 pre-signed URL will be calculated on your behalf.}
@@ -151,8 +151,8 @@ following example:
 }
 
 To learn how to generate a Signature Version 4 signed request, see
-\href{http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html}{Authenticating Requests: Using Query Parameters (AWS Signature Version 4)}
-and \href{http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4 Signing Process}.
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html}{Authenticating Requests: Using Query Parameters (AWS Signature Version 4)}
+and \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4 Signing Process}.
 \itemize{
 \item \code{TargetDBClusterSnapshotIdentifier} - The identifier for the new
 copy of the DB cluster snapshot in the destination AWS Region.
@@ -168,11 +168,13 @@ DB cluster snapshot identified by \code{TargetDBClusterSnapshotIdentifier}
 while that DB cluster snapshot is in "copying" status.
 
 For more information on copying encrypted DB cluster snapshots from one
-AWS Region to another, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_CopySnapshot.html}{Copying a Snapshot}
+AWS Region to another, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_CopySnapshot.html}{Copying a Snapshot}
 in the \emph{Amazon Aurora User Guide.}
 
-For more information on Amazon Aurora, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
+For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
 in the \emph{Amazon Aurora User Guide.}
+
+This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
 \preformatted{rds$copy_db_cluster_snapshot(

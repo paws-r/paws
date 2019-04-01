@@ -46,10 +46,13 @@ cloudwatch$operation()
 \link[=cloudwatch_get_metric_widget_image]{get_metric_widget_image} \tab You can use the GetMetricWidgetImage API to retrieve a snapshot graph of one or more Amazon CloudWatch metrics as a bitmap image \cr
 \link[=cloudwatch_list_dashboards]{list_dashboards} \tab Returns a list of the dashboards for your account \cr
 \link[=cloudwatch_list_metrics]{list_metrics} \tab List the specified metrics \cr
+\link[=cloudwatch_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with a CloudWatch resource \cr
 \link[=cloudwatch_put_dashboard]{put_dashboard} \tab Creates a dashboard if it does not already exist, or updates an existing dashboard \cr
 \link[=cloudwatch_put_metric_alarm]{put_metric_alarm} \tab Creates or updates an alarm and associates it with the specified metric or metric math expression \cr
 \link[=cloudwatch_put_metric_data]{put_metric_data} \tab Publishes metric data points to Amazon CloudWatch \cr
-\link[=cloudwatch_set_alarm_state]{set_alarm_state} \tab Temporarily sets the state of an alarm for testing purposes
+\link[=cloudwatch_set_alarm_state]{set_alarm_state} \tab Temporarily sets the state of an alarm for testing purposes \cr
+\link[=cloudwatch_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified CloudWatch resource \cr
+\link[=cloudwatch_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource
 }
 }
 

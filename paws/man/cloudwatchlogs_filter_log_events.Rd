@@ -33,7 +33,7 @@ are not returned.}
 Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time
 are not returned.}
 
-\item{filterPattern}{The filter pattern to use. For more information, see \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html}{Filter and Pattern Syntax}.
+\item{filterPattern}{The filter pattern to use. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html}{Filter and Pattern Syntax}.
 
 If not provided, all the events are matched.}
 

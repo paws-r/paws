@@ -23,6 +23,9 @@ endpoint. Only relevant if the list of static members is empty.}
 \description{
 Modifies the properties of an endpoint in an Amazon Aurora DB cluster.
 }
+\details{
+This action only applies to Aurora DB clusters.
+}
 \section{Request syntax}{
 \preformatted{rds$modify_db_cluster_endpoint(
   DBClusterEndpointIdentifier = "string",

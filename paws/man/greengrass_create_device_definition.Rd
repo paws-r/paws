@@ -5,7 +5,7 @@
 \title{Creates a device definition}
 \usage{
 greengrass_create_device_definition(AmznClientToken, InitialVersion,
-  Name)
+  Name, tags)
 }
 \arguments{
 \item{AmznClientToken}{A client token used to correlate requests and responses.}
@@ -13,6 +13,8 @@ greengrass_create_device_definition(AmznClientToken, InitialVersion,
 \item{InitialVersion}{Information about the initial version of the device definition.}
 
 \item{Name}{The name of the device definition.}
+
+\item{tags}{Tag(s) to add to the new resource}
 }
 \description{
 Creates a device definition. You may provide the initial version of the device definition now or use ''CreateDeviceDefinitionVersion'' at a later time.
@@ -30,7 +32,10 @@ Creates a device definition. You may provide the initial version of the device d
       )
     )
   ),
-  Name = "string"
+  Name = "string",
+  tags = list(
+    "string"
+  )
 )
 }
 }

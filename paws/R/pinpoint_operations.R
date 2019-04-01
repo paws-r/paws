@@ -16,7 +16,10 @@ NULL
 #' ```
 #' pinpoint$create_app(
 #'   CreateApplicationRequest = list(
-#'     Name = "string"
+#'     Name = "string",
+#'     tags = list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -317,6 +320,9 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'     ),
 #'     SegmentId = "string",
 #'     SegmentVersion = 123,
+#'     tags = list(
+#'       "string"
+#'     ),
 #'     TreatmentDescription = "string",
 #'     TreatmentName = "string"
 #'   )
@@ -628,6 +634,9 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'         )
 #'       ),
 #'       Include = "ALL"|"ANY"|"NONE"
+#'     ),
+#'     tags = list(
+#'       "string"
 #'     )
 #'   )
 #' )
@@ -2413,6 +2422,41 @@ pinpoint_get_voice_channel <- function(ApplicationId) {
 }
 .pinpoint$operations$get_voice_channel <- pinpoint_get_voice_channel
 
+#' List tags for resource
+#'
+#' 
+#'
+#' @usage
+#' pinpoint_list_tags_for_resource(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; 
+#'
+#' @section Request syntax:
+#' ```
+#' pinpoint$list_tags_for_resource(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpoint_list_tags_for_resource
+pinpoint_list_tags_for_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/v1/tags/{resource-arn}",
+    paginator = list()
+  )
+  input <- .pinpoint$list_tags_for_resource_input(ResourceArn = ResourceArn)
+  output <- .pinpoint$list_tags_for_resource_output()
+  svc <- .pinpoint$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpoint$operations$list_tags_for_resource <- pinpoint_list_tags_for_resource
+
 #' Returns information about the specified phone number
 #'
 #' Returns information about the specified phone number.
@@ -3120,6 +3164,86 @@ pinpoint_send_users_messages <- function(ApplicationId, SendUsersMessageRequest)
 }
 .pinpoint$operations$send_users_messages <- pinpoint_send_users_messages
 
+#' Tag resource
+#'
+#' 
+#'
+#' @usage
+#' pinpoint_tag_resource(ResourceArn, TagsModel)
+#'
+#' @param ResourceArn &#91;required&#93; 
+#' @param TagsModel &#91;required&#93; 
+#'
+#' @section Request syntax:
+#' ```
+#' pinpoint$tag_resource(
+#'   ResourceArn = "string",
+#'   TagsModel = list(
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpoint_tag_resource
+pinpoint_tag_resource <- function(ResourceArn, TagsModel) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/v1/tags/{resource-arn}",
+    paginator = list()
+  )
+  input <- .pinpoint$tag_resource_input(ResourceArn = ResourceArn, TagsModel = TagsModel)
+  output <- .pinpoint$tag_resource_output()
+  svc <- .pinpoint$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpoint$operations$tag_resource <- pinpoint_tag_resource
+
+#' Untag resource
+#'
+#' 
+#'
+#' @usage
+#' pinpoint_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; 
+#' @param TagKeys &#91;required&#93; The key(s) of tag to be deleted
+#'
+#' @section Request syntax:
+#' ```
+#' pinpoint$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpoint_untag_resource
+pinpoint_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/v1/tags/{resource-arn}",
+    paginator = list()
+  )
+  input <- .pinpoint$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .pinpoint$untag_resource_output()
+  svc <- .pinpoint$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpoint$operations$untag_resource <- pinpoint_untag_resource
+
 #' Update an ADM channel
 #'
 #' Update an ADM channel.
@@ -3723,6 +3847,9 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'     ),
 #'     SegmentId = "string",
 #'     SegmentVersion = 123,
+#'     tags = list(
+#'       "string"
+#'     ),
 #'     TreatmentDescription = "string",
 #'     TreatmentName = "string"
 #'   )
@@ -4194,6 +4321,9 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'         )
 #'       ),
 #'       Include = "ALL"|"ANY"|"NONE"
+#'     ),
+#'     tags = list(
+#'       "string"
 #'     )
 #'   )
 #' )

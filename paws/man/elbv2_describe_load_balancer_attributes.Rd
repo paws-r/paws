@@ -15,8 +15,8 @@ Describes the attributes for the specified Application Load Balancer or
 Network Load Balancer.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html#load-balancer-attributes}{Load Balancer Attributes}
-in the \emph{Application Load Balancers Guide} or \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html#load-balancer-attributes}{Load Balancer Attributes}
+For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html#load-balancer-attributes}{Load Balancer Attributes}
+in the \emph{Application Load Balancers Guide} or \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html#load-balancer-attributes}{Load Balancer Attributes}
 in the \emph{Network Load Balancers Guide}.
 }
 \section{Request syntax}{

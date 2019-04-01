@@ -15,9 +15,9 @@ lambda_list_layers(CompatibleRuntime, Marker, MaxItems)
 \item{MaxItems}{The maximum number of layers to return.}
 }
 \description{
-Lists \href{http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layers}
+Lists \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layers}
 and shows information about the latest version of each. Specify a
-\href{http://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html}{runtime identifier}
+\href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html}{runtime identifier}
 to list only layers that indicate that they're compatible with that
 runtime.
 }

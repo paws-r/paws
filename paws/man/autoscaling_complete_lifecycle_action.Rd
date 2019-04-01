@@ -47,7 +47,7 @@ the instance in a pending state.
 lifecycle action.}
 }
 
-For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroupLifecycle.html}{Auto Scaling Lifecycle}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/lifecycle-hooks.html}{Amazon EC2 Auto Scaling Lifecycle Hooks}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{

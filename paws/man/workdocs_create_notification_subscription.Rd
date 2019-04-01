@@ -11,7 +11,7 @@ workdocs_create_notification_subscription(OrganizationId, Endpoint,
 \item{OrganizationId}{[required] The ID of the organization.}
 
 \item{Endpoint}{[required] The endpoint to receive the notifications. If the protocol is HTTPS, the
-endpoint is a URL that begins with "https://".}
+endpoint is a URL that begins with \code{https}.}
 
 \item{Protocol}{[required] The protocol to use. The supported value is https, which delivers
 JSON-encoded messages using HTTPS POST.}
@@ -23,7 +23,7 @@ Configure Amazon WorkDocs to use Amazon SNS notifications. The endpoint
 receives a confirmation message, and must confirm the subscription.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/workdocs/latest/developerguide/subscribe-notifications.html}{Subscribe to Notifications}
+For more information, see \href{https://docs.aws.amazon.com/workdocs/latest/developerguide/subscribe-notifications.html}{Subscribe to Notifications}
 in the \emph{Amazon WorkDocs Developer Guide}.
 }
 \section{Request syntax}{

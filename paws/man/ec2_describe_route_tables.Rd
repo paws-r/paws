@@ -69,11 +69,11 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 Default: Describes all your route tables.}
 
-\item{NextToken}{The token to retrieve the next page of results.}
+\item{NextToken}{The token for the next page of results.}
 
-\item{MaxResults}{The maximum number of results to return in a single call. To retrieve
-the remaining results, make another call with the returned \strong{NextToken}
-value. This value can be between 5 and 100.}
+\item{MaxResults}{The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned \code{nextToken}
+value.}
 }
 \description{
 Describes one or more of your route tables.

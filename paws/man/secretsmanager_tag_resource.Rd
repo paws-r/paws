@@ -30,7 +30,7 @@ that end with a hyphen followed by six characters.}
 
 This parameter to the API requires a JSON text string argument. For
 information on how to format a JSON parameter for the various command
-line tool environments, see \href{http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json}{Using JSON for Parameters}
+line tool environments, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json}{Using JSON for Parameters}
 in the \emph{AWS CLI User Guide}. For the AWS CLI, you can also use the
 syntax:
 \code{--Tags Key="Key1",Value="Value1",Key="Key2",Value="Value2"\\[,â€¦\\]}}

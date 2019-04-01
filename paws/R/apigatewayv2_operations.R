@@ -17,7 +17,7 @@ NULL
 #' @param Description The description of the API.
 #' @param DisableSchemaValidation Avoid validating models when creating a deployment.
 #' @param Name &#91;required&#93; The name of the API.
-#' @param ProtocolType &#91;required&#93; The API protocol: HTTP or WEBSOCKET.
+#' @param ProtocolType &#91;required&#93; The API protocol: Currently only WEBSOCKET is supported.
 #' @param RouteSelectionExpression &#91;required&#93; The route selection expression for the API.
 #' @param Version A version identifier for the API.
 #'
@@ -280,12 +280,10 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #'   RequestTemplates, TemplateSelectionExpression, TimeoutInMillis)
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
-#' @param ConnectionId The identifier of the VpcLink used for the integration when the
-#' connectionType is VPC\\_LINK; otherwise undefined.
-#' @param ConnectionType The type of the network connection to the integration endpoint. The
-#' valid value is INTERNET for connections through the public routable
-#' internet or VPC\\_LINK for private connections between API Gateway and a
-#' network load balancer in a VPC. The default value is INTERNET.
+#' @param ConnectionId The connection ID.
+#' @param ConnectionType The type of the network connection to the integration endpoint.
+#' Currently the only valid value is INTERNET, for connections through the
+#' public routable internet.
 #' @param ContentHandlingStrategy Specifies how to handle response payload content type conversions.
 #' Supported values are CONVERT\\_TO\\_BINARY and CONVERT\\_TO\\_TEXT, with the
 #' following behaviors:
@@ -307,7 +305,7 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #' permissions on supported AWS services, specify null.
 #' @param Description The description of the integration.
 #' @param IntegrationMethod Specifies the integration\'s HTTP method type.
-#' @param IntegrationType The integration type of an integration. One of the following:
+#' @param IntegrationType &#91;required&#93; The integration type of an integration. One of the following:
 #' 
 #' AWS: for integrating the route or method request with an AWS service
 #' action, including the Lambda function-invoking action. With the Lambda
@@ -319,42 +317,16 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #' function-invoking action with the client request passed through as-is.
 #' This integration is also referred to as Lambda proxy integration.
 #' 
-#' HTTP: for integrating the route or method request with an HTTP endpoint,
-#' including a private HTTP endpoint within a VPC. This integration is also
-#' referred to as the HTTP custom integration.
+#' HTTP: for integrating the route or method request with an HTTP endpoint.
+#' This integration is also referred to as HTTP custom integration.
 #' 
 #' HTTP\\_PROXY: for integrating route or method request with an HTTP
-#' endpoint, including a private HTTP endpoint within a VPC, with the
-#' client request passed through as-is. This is also referred to as HTTP
-#' proxy integration.
+#' endpoint, with the client request passed through as-is. This is also
+#' referred to as HTTP proxy integration.
 #' 
 #' MOCK: for integrating the route or method request with API Gateway as a
 #' \"loopback\" endpoint without invoking any backend.
-#' @param IntegrationUri Specifies the Uniform Resource Identifier (URI) of the integration
-#' endpoint.
-#' 
-#' For HTTP or HTTP\\_PROXY integrations, the URI must be a fully formed,
-#' encoded HTTP(S) URL according to the [RFC-3986
-#' specification](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier),
-#' for either standard integration, where connectionType is not VPC\\_LINK,
-#' or private integration, where connectionType is VPC\\_LINK. For a private
-#' HTTP integration, the URI is not used for routing.
-#' 
-#' For AWS or AWS\\_PROXY integrations, the URI is of the form
-#' arn:aws:apigateway:\{region\}:\{subdomain.service\\|service\}:path\\|action/\{service\\_api\}.
-#' Here, \{Region\} is the API Gateway region (e.g., us-east-1); \{service\} is
-#' the name of the integrated AWS service (e.g., s3); and \{subdomain\} is a
-#' designated subdomain supported by certain AWS service for fast host-name
-#' lookup. action can be used for an AWS service action-based API, using an
-#' Action=\{name\}&\{p1\}=\{v1\}&p2=\{v2\}\\... query string. The ensuing
-#' \{service\\_api\} refers to a supported action \{name\} plus any required
-#' input parameters. Alternatively, path can be used for an AWS service
-#' path-based API. The ensuing service\\_api refers to the path to an AWS
-#' service resource, including the region of the integrated AWS service, if
-#' applicable. For example, for integration with the S3 API of GetObject,
-#' the URI can be either
-#' arn:aws:apigateway:us-west-2:s3:action/GetObject&Bucket=\{bucket\}&Key=\{key\}
-#' or arn:aws:apigateway:us-west-2:s3:path/\{bucket\}/\{key\}
+#' @param IntegrationUri For a Lambda proxy integration, this is the URI of the Lambda function.
 #' @param PassthroughBehavior Specifies the pass-through behavior for incoming requests based on the
 #' Content-Type header in the request, and the available mapping templates
 #' specified as the requestTemplates property on the Integration resource.
@@ -414,7 +386,7 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_create_integration
-apigatewayv2_create_integration <- function(ApiId, ConnectionId = NULL, ConnectionType = NULL, ContentHandlingStrategy = NULL, CredentialsArn = NULL, Description = NULL, IntegrationMethod = NULL, IntegrationType = NULL, IntegrationUri = NULL, PassthroughBehavior = NULL, RequestParameters = NULL, RequestTemplates = NULL, TemplateSelectionExpression = NULL, TimeoutInMillis = NULL) {
+apigatewayv2_create_integration <- function(ApiId, ConnectionId = NULL, ConnectionType = NULL, ContentHandlingStrategy = NULL, CredentialsArn = NULL, Description = NULL, IntegrationMethod = NULL, IntegrationType, IntegrationUri = NULL, PassthroughBehavior = NULL, RequestParameters = NULL, RequestTemplates = NULL, TemplateSelectionExpression = NULL, TimeoutInMillis = NULL) {
   op <- new_operation(
     name = "CreateIntegration",
     http_method = "POST",
@@ -519,7 +491,7 @@ apigatewayv2_create_integration_response <- function(ApiId, ContentHandlingStrat
 #' @param ContentType The content-type for the model, for example, \"application/json\".
 #' @param Description The description of the model.
 #' @param Name &#91;required&#93; The name of the model. Must be alphanumeric.
-#' @param Schema The schema for the model. For application/json models, this should be
+#' @param Schema &#91;required&#93; The schema for the model. For application/json models, this should be
 #' JSON schema draft 4 model.
 #'
 #' @section Request syntax:
@@ -536,7 +508,7 @@ apigatewayv2_create_integration_response <- function(ApiId, ContentHandlingStrat
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_create_model
-apigatewayv2_create_model <- function(ApiId, ContentType = NULL, Description = NULL, Name, Schema = NULL) {
+apigatewayv2_create_model <- function(ApiId, ContentType = NULL, Description = NULL, Name, Schema) {
   op <- new_operation(
     name = "CreateModel",
     http_method = "POST",
@@ -566,9 +538,11 @@ apigatewayv2_create_model <- function(ApiId, ContentType = NULL, Description = N
 #' @param ApiKeyRequired Specifies whether an API key is required for the route.
 #' @param AuthorizationScopes The authorization scopes supported by this route.
 #' @param AuthorizationType The authorization type for the route. Valid values are NONE for open
-#' access, AWS\\_IAM for using AWS IAM permissions.
+#' access, AWS\\_IAM for using AWS IAM permissions, and CUSTOM for using a
+#' Lambda authorizer.
 #' @param AuthorizerId The identifier of the Authorizer resource to be associated with this
-#' route.
+#' route, if the authorizationType is CUSTOM . The authorizer identifier is
+#' generated by API Gateway when you created the authorizer.
 #' @param ModelSelectionExpression The model selection expression for the route.
 #' @param OperationName The operation name for the route.
 #' @param RequestModels The request models for the route.
@@ -788,16 +762,14 @@ apigatewayv2_delete_api <- function(ApiId) {
 #' Deletes an API mapping.
 #'
 #' @usage
-#' apigatewayv2_delete_api_mapping(ApiId, ApiMappingId, DomainName)
+#' apigatewayv2_delete_api_mapping(ApiMappingId, DomainName)
 #'
-#' @param ApiId &#91;required&#93; The identifier of the API.
 #' @param ApiMappingId &#91;required&#93; The API mapping identifier.
 #' @param DomainName &#91;required&#93; The domain name.
 #'
 #' @section Request syntax:
 #' ```
 #' apigatewayv2$delete_api_mapping(
-#'   ApiId = "string",
 #'   ApiMappingId = "string",
 #'   DomainName = "string"
 #' )
@@ -806,14 +778,14 @@ apigatewayv2_delete_api <- function(ApiId) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_delete_api_mapping
-apigatewayv2_delete_api_mapping <- function(ApiId, ApiMappingId, DomainName) {
+apigatewayv2_delete_api_mapping <- function(ApiMappingId, DomainName) {
   op <- new_operation(
     name = "DeleteApiMapping",
     http_method = "DELETE",
     http_path = "/v2/domainnames/{domainName}/apimappings/{apiMappingId}",
     paginator = list()
   )
-  input <- .apigatewayv2$delete_api_mapping_input(ApiId = ApiId, ApiMappingId = ApiMappingId, DomainName = DomainName)
+  input <- .apigatewayv2$delete_api_mapping_input(ApiMappingId = ApiMappingId, DomainName = DomainName)
   output <- .apigatewayv2$delete_api_mapping_output()
   svc <- .apigatewayv2$service()
   request <- new_request(svc, op, input, output)
@@ -1198,16 +1170,14 @@ apigatewayv2_get_api <- function(ApiId) {
 #' The API mapping.
 #'
 #' @usage
-#' apigatewayv2_get_api_mapping(ApiId, ApiMappingId, DomainName)
+#' apigatewayv2_get_api_mapping(ApiMappingId, DomainName)
 #'
-#' @param ApiId &#91;required&#93; The identifier of the API.
 #' @param ApiMappingId &#91;required&#93; The API mapping identifier.
 #' @param DomainName &#91;required&#93; The domain name.
 #'
 #' @section Request syntax:
 #' ```
 #' apigatewayv2$get_api_mapping(
-#'   ApiId = "string",
 #'   ApiMappingId = "string",
 #'   DomainName = "string"
 #' )
@@ -1216,14 +1186,14 @@ apigatewayv2_get_api <- function(ApiId) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_get_api_mapping
-apigatewayv2_get_api_mapping <- function(ApiId, ApiMappingId, DomainName) {
+apigatewayv2_get_api_mapping <- function(ApiMappingId, DomainName) {
   op <- new_operation(
     name = "GetApiMapping",
     http_method = "GET",
     http_path = "/v2/domainnames/{domainName}/apimappings/{apiMappingId}",
     paginator = list()
   )
-  input <- .apigatewayv2$get_api_mapping_input(ApiId = ApiId, ApiMappingId = ApiMappingId, DomainName = DomainName)
+  input <- .apigatewayv2$get_api_mapping_input(ApiMappingId = ApiMappingId, DomainName = DomainName)
   output <- .apigatewayv2$get_api_mapping_output()
   svc <- .apigatewayv2$service()
   request <- new_request(svc, op, input, output)
@@ -2329,12 +2299,10 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #'   TimeoutInMillis)
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
-#' @param ConnectionId The identifier of the VpcLink used for the integration when the
-#' connectionType is VPC\\_LINK; otherwise undefined.
-#' @param ConnectionType The type of the network connection to the integration endpoint. The
-#' valid value is INTERNET for connections through the public routable
-#' internet or VPC\\_LINK for private connections between API Gateway and a
-#' network load balancer in a VPC. The default value is INTERNET.
+#' @param ConnectionId The connection ID.
+#' @param ConnectionType The type of the network connection to the integration endpoint.
+#' Currently the only valid value is INTERNET, for connections through the
+#' public routable internet.
 #' @param ContentHandlingStrategy Specifies how to handle response payload content type conversions.
 #' Supported values are CONVERT\\_TO\\_BINARY and CONVERT\\_TO\\_TEXT, with the
 #' following behaviors:
@@ -2369,42 +2337,16 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #' function-invoking action with the client request passed through as-is.
 #' This integration is also referred to as Lambda proxy integration.
 #' 
-#' HTTP: for integrating the route or method request with an HTTP endpoint,
-#' including a private HTTP endpoint within a VPC. This integration is also
-#' referred to as the HTTP custom integration.
+#' HTTP: for integrating the route or method request with an HTTP endpoint.
+#' This integration is also referred to as the HTTP custom integration.
 #' 
 #' HTTP\\_PROXY: for integrating route or method request with an HTTP
-#' endpoint, including a private HTTP endpoint within a VPC, with the
-#' client request passed through as-is. This is also referred to as HTTP
-#' proxy integration.
+#' endpoint, with the client request passed through as-is. This is also
+#' referred to as HTTP proxy integration.
 #' 
 #' MOCK: for integrating the route or method request with API Gateway as a
 #' \"loopback\" endpoint without invoking any backend.
-#' @param IntegrationUri Specifies the Uniform Resource Identifier (URI) of the integration
-#' endpoint.
-#' 
-#' For HTTP or HTTP\\_PROXY integrations, the URI must be a fully formed,
-#' encoded HTTP(S) URL according to the [RFC-3986
-#' specification](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier),
-#' for either standard integration, where connectionType is not VPC\\_LINK,
-#' or private integration, where connectionType is VPC\\_LINK. For a private
-#' HTTP integration, the URI is not used for routing.
-#' 
-#' For AWS or AWS\\_PROXY integrations, the URI is of the form
-#' arn:aws:apigateway:\{region\}:\{subdomain.service\\|service\}:path\\|action/\{service\\_api\}.
-#' Here, \{Region\} is the API Gateway region (e.g., us-east-1); \{service\} is
-#' the name of the integrated AWS service (e.g., s3); and \{subdomain\} is a
-#' designated subdomain supported by certain AWS service for fast host-name
-#' lookup. action can be used for an AWS service action-based API, using an
-#' Action=\{name\}&\{p1\}=\{v1\}&p2=\{v2\}\\... query string. The ensuing
-#' \{service\\_api\} refers to a supported action \{name\} plus any required
-#' input parameters. Alternatively, path can be used for an AWS service
-#' path-based API. The ensuing service\\_api refers to the path to an AWS
-#' service resource, including the region of the integrated AWS service, if
-#' applicable. For example, for integration with the S3 API of GetObject,
-#' the URI can be either
-#' arn:aws:apigateway:us-west-2:s3:action/GetObject&Bucket=\{bucket\}&Key=\{key\}
-#' or arn:aws:apigateway:us-west-2:s3:path/\{bucket\}/\{key\}
+#' @param IntegrationUri For a Lambda proxy integration, this is the URI of the Lambda function.
 #' @param PassthroughBehavior Specifies the pass-through behavior for incoming requests based on the
 #' Content-Type header in the request, and the available mapping templates
 #' specified as the requestTemplates property on the Integration resource.
@@ -2622,9 +2564,11 @@ apigatewayv2_update_model <- function(ApiId, ContentType = NULL, Description = N
 #' @param ApiKeyRequired Specifies whether an API key is required for the route.
 #' @param AuthorizationScopes The authorization scopes supported by this route.
 #' @param AuthorizationType The authorization type for the route. Valid values are NONE for open
-#' access, AWS\\_IAM for using AWS IAM permissions.
+#' access, AWS\\_IAM for using AWS IAM permissions, and CUSTOM for using a
+#' Lambda authorizer.
 #' @param AuthorizerId The identifier of the Authorizer resource to be associated with this
-#' route.
+#' route, if the authorizationType is CUSTOM . The authorizer identifier is
+#' generated by API Gateway when you created the authorizer.
 #' @param ModelSelectionExpression The model selection expression for the route.
 #' @param OperationName The operation name for the route.
 #' @param RequestModels The request models for the route.

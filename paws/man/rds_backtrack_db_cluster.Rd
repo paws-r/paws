@@ -49,8 +49,10 @@ Backtracks a DB cluster to a specific time, without creating a new DB
 cluster.
 }
 \details{
-For more information on backtracking, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Managing.Backtrack.html}{Backtracking an Aurora DB Cluster}
+For more information on backtracking, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Managing.Backtrack.html}{Backtracking an Aurora DB Cluster}
 in the \emph{Amazon Aurora User Guide.}
+
+This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
 \preformatted{rds$backtrack_db_cluster(

@@ -27,7 +27,7 @@ CreateAutoScalingGroup.}
 Sets the health status of the specified instance.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html}{Health Checks}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html}{Health Checks for Auto Scaling Instances}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{

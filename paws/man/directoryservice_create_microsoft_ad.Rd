@@ -5,7 +5,7 @@
 \title{Creates an AWS Managed Microsoft AD directory}
 \usage{
 directoryservice_create_microsoft_ad(Name, ShortName, Password,
-  Description, VpcSettings, Edition)
+  Description, VpcSettings, Edition, Tags)
 }
 \arguments{
 \item{Name}{[required] The fully qualified domain name for the directory, such as
@@ -27,6 +27,8 @@ operation.}
 
 \item{Edition}{AWS Managed Microsoft AD is available in two editions: Standard and
 Enterprise. Enterprise is the default.}
+
+\item{Tags}{The tags to be assigned to the AWS Managed Microsoft AD directory.}
 }
 \description{
 Creates an AWS Managed Microsoft AD directory.
@@ -49,7 +51,13 @@ operation, see \href{http://docs.aws.amazon.com/directoryservice/latest/admin-gu
       "string"
     )
   ),
-  Edition = "Enterprise"|"Standard"
+  Edition = "Enterprise"|"Standard",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

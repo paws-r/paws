@@ -67,7 +67,7 @@ associated with an Application Load Balancer.
 Rules are evaluated in priority order, from the lowest value to the
 highest value. When the conditions for a rule are met, its actions are
 performed. If the conditions for no rules are met, the actions for the
-default rule are performed. For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules}{Listener Rules}
+default rule are performed. For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules}{Listener Rules}
 in the \emph{Application Load Balancers Guide}.
 
 To view your current rules, use DescribeRules. To update a rule, use
@@ -82,6 +82,40 @@ To delete a rule, use DeleteRule.
       Field = "string",
       Values = list(
         "string"
+      ),
+      HostHeaderConfig = list(
+        Values = list(
+          "string"
+        )
+      ),
+      PathPatternConfig = list(
+        Values = list(
+          "string"
+        )
+      ),
+      HttpHeaderConfig = list(
+        HttpHeaderName = "string",
+        Values = list(
+          "string"
+        )
+      ),
+      QueryStringConfig = list(
+        Values = list(
+          list(
+            Key = "string",
+            Value = "string"
+          )
+        )
+      ),
+      HttpRequestMethodConfig = list(
+        Values = list(
+          "string"
+        )
+      ),
+      SourceIpConfig = list(
+        Values = list(
+          "string"
+        )
       )
     )
   ),
@@ -103,7 +137,8 @@ To delete a rule, use DeleteRule.
         AuthenticationRequestExtraParams = list(
           "string"
         ),
-        OnUnauthenticatedRequest = "deny"|"allow"|"authenticate"
+        OnUnauthenticatedRequest = "deny"|"allow"|"authenticate",
+        UseExistingClientSecret = TRUE|FALSE
       ),
       AuthenticateCognitoConfig = list(
         UserPoolArn = "string",

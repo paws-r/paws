@@ -20,11 +20,14 @@ a JSON document. For example:
 \item{billingGroupName}{The name of the billing group the thing will be added to.}
 }
 \description{
-Creates a thing record in the registry.
+Creates a thing record in the registry. If this call is made multiple
+times using the same thing name and configuration, the call will
+succeed. If this call is made with the same thing name but different
+configuration a \code{ResourceAlreadyExistsException} is thrown.
 }
 \details{
 This is a control plane operation. See
-\href{http://docs.aws.amazon.com/iot/latest/developerguide/authorization.html}{Authorization}
+\href{https://docs.aws.amazon.com/iot/latest/developerguide/authorization.html}{Authorization}
 for information about authorizing control plane actions.
 }
 \section{Request syntax}{

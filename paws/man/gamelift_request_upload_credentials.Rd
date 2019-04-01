@@ -20,6 +20,19 @@ To request new credentials, specify the build ID as returned with an
 initial \code{CreateBuild} request. If successful, a new set of credentials
 are returned, along with the S3 storage location associated with the
 build ID.
+
+\strong{Learn more}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html}{Uploading Your Game}
+
+\strong{Related operations}
+\itemize{
+\item CreateBuild
+\item ListBuilds
+\item DescribeBuild
+\item UpdateBuild
+\item DeleteBuild
+}
 }
 \section{Request syntax}{
 \preformatted{gamelift$request_upload_credentials(

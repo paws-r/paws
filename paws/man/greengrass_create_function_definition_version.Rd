@@ -11,7 +11,7 @@ greengrass_create_function_definition_version(AmznClientToken,
 \arguments{
 \item{AmznClientToken}{A client token used to correlate requests and responses.}
 
-\item{DefaultConfig}{Default configuration that will apply to all Lambda functions in this function definition version}
+\item{DefaultConfig}{The default configuration that applies to all Lambda functions in this function definition version. Individual Lambda functions can override these settings.}
 
 \item{FunctionDefinitionId}{[required] The ID of the Lambda function definition.}
 
@@ -25,7 +25,11 @@ Creates a version of a Lambda function definition that has already been defined.
   AmznClientToken = "string",
   DefaultConfig = list(
     Execution = list(
-      IsolationMode = "GreengrassContainer"|"NoContainer"
+      IsolationMode = "GreengrassContainer"|"NoContainer",
+      RunAs = list(
+        Gid = 123,
+        Uid = 123
+      )
     )
   ),
   FunctionDefinitionId = "string",

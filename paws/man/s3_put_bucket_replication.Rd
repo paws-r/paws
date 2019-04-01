@@ -54,7 +54,7 @@ more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.
         Destination = list(
           Bucket = "string",
           Account = "string",
-          StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER",
+          StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE",
           AccessControlTranslation = list(
             Owner = "Destination"
           ),

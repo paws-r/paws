@@ -12,7 +12,7 @@ iot_register_certificate(certificatePem, caCertificatePem, setAsActive,
 
 \item{caCertificatePem}{The CA certificate used to sign the device certificate being registered.}
 
-\item{setAsActive}{A boolean value that specifies if the CA certificate is set to active.}
+\item{setAsActive}{A boolean value that specifies if the certificate is set to active.}
 
 \item{status}{The status of the register certificate request.}
 }

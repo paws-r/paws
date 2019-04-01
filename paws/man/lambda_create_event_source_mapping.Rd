@@ -54,9 +54,9 @@ Lambda reads items from the event source and triggers the function.
 \details{
 For details about each event source type, see the following topics.
 \itemize{
-\item \href{http://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html}{Using AWS Lambda with Amazon Kinesis}
-\item \href{http://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html}{Using AWS Lambda with Amazon SQS}
-\item \href{http://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html}{Using AWS Lambda with Amazon DynamoDB}
+\item \href{https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html}{Using AWS Lambda with Amazon Kinesis}
+\item \href{https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html}{Using AWS Lambda with Amazon SQS}
+\item \href{https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html}{Using AWS Lambda with Amazon DynamoDB}
 }
 }
 \section{Request syntax}{

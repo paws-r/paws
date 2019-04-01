@@ -47,12 +47,11 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 Default: Describes all your VPC peering connections.}
 
-\item{NextToken}{The token to request the next page of results. (You received this token
-from a prior call.)}
+\item{NextToken}{The token for the next page of results.}
 
-\item{MaxResults}{The maximum number of results to return for this request. The request
-returns a token that you can specify in a subsequent call to get the
-next set of results.}
+\item{MaxResults}{The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned \code{nextToken}
+value.}
 }
 \description{
 Describes one or more of your VPC peering connections.

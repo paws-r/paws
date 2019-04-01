@@ -6,12 +6,13 @@ NULL
 #' Use this API to retrieve media content from a Kinesis video stream
 #'
 #' Use this API to retrieve media content from a Kinesis video stream. In
-#' the request, you identify stream name or stream Amazon Resource Name
+#' the request, you identify the stream name or stream Amazon Resource Name
 #' (ARN), and the starting chunk. Kinesis Video Streams then returns a
 #' stream of chunks in order by fragment number.
 #' 
-#' You must first call the `GetDataEndpoint` API to get an endpoint to
-#' which you can then send the `GetMedia` requests.
+#' You must first call the `GetDataEndpoint` API to get an endpoint. Then
+#' send the `GetMedia` requests to this endpoint using the [\\--endpoint-url
+#' parameter](https://docs.aws.amazon.com/cli/latest/reference/).
 #' 
 #' When you put media data (fragments) on a stream, Kinesis Video Streams
 #' stores each incoming fragment and related metadata in what is called a

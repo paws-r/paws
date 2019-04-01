@@ -2,7 +2,7 @@
 % Please edit documentation in R/costandusagereportservice_operations.R
 \name{costandusagereportservice_delete_report_definition}
 \alias{costandusagereportservice_delete_report_definition}
-\title{Delete a specified report definition}
+\title{Deletes the specified report}
 \usage{
 costandusagereportservice_delete_report_definition(ReportName)
 }
@@ -10,7 +10,7 @@ costandusagereportservice_delete_report_definition(ReportName)
 \item{ReportName}{}
 }
 \description{
-Delete a specified report definition
+Deletes the specified report.
 }
 \section{Request syntax}{
 \preformatted{costandusagereportservice$delete_report_definition(
@@ -19,4 +19,12 @@ Delete a specified report definition
 }
 }
 
+\examples{
+# The following example deletes the AWS Cost and Usage report named
+# ExampleReport.
+\donttest{costandusagereportservice$delete_report_definition(
+  ReportName = "ExampleReport"
+)}
+
+}
 \keyword{internal}

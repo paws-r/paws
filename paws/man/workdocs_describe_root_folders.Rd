@@ -26,7 +26,7 @@ for SigV4 (administrative API) clients.
 \details{
 This action requires an authentication token. To get an authentication
 token, register an application with Amazon WorkDocs. For more
-information, see \href{http://docs.aws.amazon.com/workdocs/latest/developerguide/wd-auth-user.html}{Authentication and Access Control for User Applications}
+information, see \href{https://docs.aws.amazon.com/workdocs/latest/developerguide/wd-auth-user.html}{Authentication and Access Control for User Applications}
 in the \emph{Amazon WorkDocs Developer Guide}.
 }
 \section{Request syntax}{

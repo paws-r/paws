@@ -10,13 +10,15 @@ cloudwatchlogs_start_query(logGroupName, startTime, endTime,
 \arguments{
 \item{logGroupName}{[required] The log group on which to perform the query.}
 
-\item{startTime}{[required] The beginning of the time range to query. Specified as epoch time, the
-number of seconds since January 1, 1970, 00:00:00 UTC.}
+\item{startTime}{[required] The beginning of the time range to query. The range is inclusive, so the
+specified start time is included in the query. Specified as epoch time,
+the number of seconds since January 1, 1970, 00:00:00 UTC.}
 
-\item{endTime}{[required] The end of the time range to query. Specified as epoch time, the number
-of seconds since January 1, 1970, 00:00:00 UTC.}
+\item{endTime}{[required] The end of the time range to query. The range is inclusive, so the
+specified end time is included in the query. Specified as epoch time,
+the number of seconds since January 1, 1970, 00:00:00 UTC.}
 
-\item{queryString}{[required] The query string to use. For more information, see \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html}{CloudWatch Logs Insights Query Syntax}.}
+\item{queryString}{[required] The query string to use. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html}{CloudWatch Logs Insights Query Syntax}.}
 
 \item{limit}{The maximum number of log events to return in the query. If the query
 string uses the \code{fields} command, only the specified fields and their
@@ -28,7 +30,7 @@ specify the log group and time range to query, and the query string to
 use.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html}{CloudWatch Logs Insights Query Syntax}.
+For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html}{CloudWatch Logs Insights Query Syntax}.
 }
 \section{Request syntax}{
 \preformatted{cloudwatchlogs$start_query(

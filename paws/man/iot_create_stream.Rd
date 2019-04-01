@@ -5,7 +5,7 @@
 \title{Creates a stream for delivering one or more large files in chunks over
 MQTT}
 \usage{
-iot_create_stream(streamId, description, files, roleArn)
+iot_create_stream(streamId, description, files, roleArn, tags)
 }
 \arguments{
 \item{streamId}{[required] The stream ID.}
@@ -16,6 +16,8 @@ iot_create_stream(streamId, description, files, roleArn)
 
 \item{roleArn}{[required] An IAM role that allows the IoT service principal assumes to access your
 S3 files.}
+
+\item{tags}{Metadata which can be used to manage streams.}
 }
 \description{
 Creates a stream for delivering one or more large files in chunks over
@@ -41,7 +43,13 @@ old stream by incrementing the version by 1.
       )
     )
   ),
-  roleArn = "string"
+  roleArn = "string",
+  tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

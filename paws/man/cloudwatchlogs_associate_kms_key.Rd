@@ -11,7 +11,7 @@ cloudwatchlogs_associate_kms_key(logGroupName, kmsKeyId)
 \item{logGroupName}{[required] The name of the log group.}
 
 \item{kmsKeyId}{[required] The Amazon Resource Name (ARN) of the CMK to use when encrypting log
-data. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms}{Amazon Resource Names - AWS Key Management Service (AWS KMS)}.}
+data. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms}{Amazon Resource Names - AWS Key Management Service (AWS KMS)}.}
 }
 \description{
 Associates the specified AWS Key Management Service (AWS KMS) customer

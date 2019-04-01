@@ -5,7 +5,7 @@ NULL
 
 .s3control$delete_public_access_block_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AccountId = structure(logical(0), tags = list(    location = "header", locationName = "x-amz-account-id", type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-account-id", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -15,19 +15,19 @@ NULL
 
 .s3control$get_public_access_block_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AccountId = structure(logical(0), tags = list(    location = "header", locationName = "x-amz-account-id", type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-account-id", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .s3control$get_public_access_block_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PublicAccessBlockConfiguration = structure(list(    BlockPublicAcls = structure(logical(0), tags = list(locationName = "BlockPublicAcls", type = "boolean")), IgnorePublicAcls = structure(logical(0), tags = list(        locationName = "IgnorePublicAcls", type = "boolean")), BlockPublicPolicy = structure(logical(0), tags = list(locationName = "BlockPublicPolicy", type = "boolean")), RestrictPublicBuckets = structure(logical(0), tags = list(        locationName = "RestrictPublicBuckets", type = "boolean"))), tags = list(    type = "structure"))), tags = list(type = "structure", payload = "PublicAccessBlockConfiguration"))
+  shape <- structure(list(PublicAccessBlockConfiguration = structure(list(BlockPublicAcls = structure(logical(0), tags = list(locationName = "BlockPublicAcls", type = "boolean")), IgnorePublicAcls = structure(logical(0), tags = list(locationName = "IgnorePublicAcls", type = "boolean")), BlockPublicPolicy = structure(logical(0), tags = list(locationName = "BlockPublicPolicy", type = "boolean")), RestrictPublicBuckets = structure(logical(0), tags = list(locationName = "RestrictPublicBuckets", type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "PublicAccessBlockConfiguration"))
   return(populate(args, shape))
 }
 
 .s3control$put_public_access_block_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PublicAccessBlockConfiguration = structure(list(    BlockPublicAcls = structure(logical(0), tags = list(locationName = "BlockPublicAcls", type = "boolean")), IgnorePublicAcls = structure(logical(0), tags = list(        locationName = "IgnorePublicAcls", type = "boolean")), BlockPublicPolicy = structure(logical(0), tags = list(locationName = "BlockPublicPolicy", type = "boolean")), RestrictPublicBuckets = structure(logical(0), tags = list(        locationName = "RestrictPublicBuckets", type = "boolean"))), tags = list(    locationName = "PublicAccessBlockConfiguration", type = "structure")), AccountId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-account-id", type = "string"))), tags = list(    type = "structure", payload = "PublicAccessBlockConfiguration"))
+  shape <- structure(list(PublicAccessBlockConfiguration = structure(list(BlockPublicAcls = structure(logical(0), tags = list(locationName = "BlockPublicAcls", type = "boolean")), IgnorePublicAcls = structure(logical(0), tags = list(locationName = "IgnorePublicAcls", type = "boolean")), BlockPublicPolicy = structure(logical(0), tags = list(locationName = "BlockPublicPolicy", type = "boolean")), RestrictPublicBuckets = structure(logical(0), tags = list(locationName = "RestrictPublicBuckets", type = "boolean"))), tags = list(locationName = "PublicAccessBlockConfiguration", type = "structure")), AccountId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-account-id", type = "string"))), tags = list(type = "structure", payload = "PublicAccessBlockConfiguration"))
   return(populate(args, shape))
 }
 

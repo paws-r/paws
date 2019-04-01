@@ -23,7 +23,10 @@ NULL
 #'  \link[=iot1clickdevicesservice_invoke_device_method]{invoke_device_method} \tab Given a device ID, issues a request to invoke a named device method (with possible parameters) \cr
 #'  \link[=iot1clickdevicesservice_list_device_events]{list_device_events} \tab Using a device ID, returns a DeviceEventsResponse object containing an array of events for the device \cr
 #'  \link[=iot1clickdevicesservice_list_devices]{list_devices} \tab Lists the 1-Click compatible devices associated with your AWS account \cr
+#'  \link[=iot1clickdevicesservice_list_tags_for_resource]{list_tags_for_resource} \tab List all tags on an AWS IoT 1-Click resource \cr
+#'  \link[=iot1clickdevicesservice_tag_resource]{tag_resource} \tab Associate a set of tags with an AWS IoT 1-Click resource \cr
 #'  \link[=iot1clickdevicesservice_unclaim_device]{unclaim_device} \tab Disassociates a device from your AWS account using its device ID \cr
+#'  \link[=iot1clickdevicesservice_untag_resource]{untag_resource} \tab Removes the association of tags from an AWS IoT 1-Click resource \cr
 #'  \link[=iot1clickdevicesservice_update_device_state]{update_device_state} \tab Using a Boolean value (true or false), this operation enables or disables the device given a device ID
 #' }
 #'

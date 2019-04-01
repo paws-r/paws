@@ -8,7 +8,7 @@ gateway}
 storagegateway_create_nfs_file_share(ClientToken, NFSFileShareDefaults,
   GatewayARN, KMSEncrypted, KMSKey, Role, LocationARN,
   DefaultStorageClass, ObjectACL, ClientList, Squash, ReadOnly,
-  GuessMIMETypeEnabled, RequesterPays)
+  GuessMIMETypeEnabled, RequesterPays, Tags)
 }
 \arguments{
 \item{ClientToken}{[required] A unique string value that you supply that is used by file gateway to
@@ -43,7 +43,8 @@ S3 bucket that a file gateway puts objects into. The default value is
 \item{ClientList}{The list of clients that are allowed to access the file gateway. The
 list must contain either valid IP addresses or valid CIDR blocks.}
 
-\item{Squash}{Maps a user to anonymous user. Valid options are the following:
+\item{Squash}{A value that maps a user to anonymous user. Valid options are the
+following:
 \itemize{
 \item \code{RootSquash} - Only root is mapped to anonymous user.
 \item \code{NoSquash} - No one is mapped to anonymous user
@@ -60,6 +61,14 @@ guessing, and otherwise to false. The default value is true.}
 \item{RequesterPays}{A value that sets the access control list permission for objects in the
 Amazon S3 bucket that a file gateway puts objects into. The default
 value is \code{private}.}
+
+\item{Tags}{A list of up to 10 tags that can be assigned to the NFS file share. Each
+tag is a key-value pair.
+
+Valid characters for key and value are letters, spaces, and numbers
+representable in UTF-8 format, and the following special characters: + -
+= . \_ : / @. The maximum length of a tag's key is 128 characters, and
+the maximum length for a tag's value is 256.}
 }
 \description{
 Creates a Network File System (NFS) file share on an existing file
@@ -101,7 +110,13 @@ share.
   Squash = "string",
   ReadOnly = TRUE|FALSE,
   GuessMIMETypeEnabled = TRUE|FALSE,
-  RequesterPays = TRUE|FALSE
+  RequesterPays = TRUE|FALSE,
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

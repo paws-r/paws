@@ -2,19 +2,19 @@
 % Please edit documentation in R/athena_operations.R
 \name{athena_create_named_query}
 \alias{athena_create_named_query}
-\title{Creates a named query}
+\title{Creates a named query in the specified workgroup}
 \usage{
 athena_create_named_query(Name, Description, Database, QueryString,
-  ClientRequestToken)
+  ClientRequestToken, WorkGroup)
 }
 \arguments{
-\item{Name}{[required] The plain language name for the query.}
+\item{Name}{[required] The query name.}
 
-\item{Description}{A brief explanation of the query.}
+\item{Description}{The query description.}
 
 \item{Database}{[required] The database to which the query belongs.}
 
-\item{QueryString}{[required] The text of the query itself. In other words, all query statements.}
+\item{QueryString}{[required] The contents of the query with all query statements.}
 
 \item{ClientRequestToken}{A unique case-sensitive string used to ensure the request to create the
 query is idempotent (executes only once). If another \code{CreateNamedQuery}
@@ -26,9 +26,12 @@ This token is listed as not required because AWS SDKs (for example the
 AWS SDK for Java) auto-generate the token for users. If you are not
 using the AWS SDK or the AWS CLI, you must provide this token or the
 action will fail.}
+
+\item{WorkGroup}{The name of the workgroup in which the named query is being created.}
 }
 \description{
-Creates a named query.
+Creates a named query in the specified workgroup. Requires that you have
+access to the workgroup.
 }
 \details{
 For code samples using the AWS SDK for Java, see \href{http://docs.aws.amazon.com/athena/latest/ug/code-samples.html}{Examples and Code Samples}
@@ -40,7 +43,8 @@ in the \emph{Amazon Athena User Guide}.
   Description = "string",
   Database = "string",
   QueryString = "string",
-  ClientRequestToken = "string"
+  ClientRequestToken = "string",
+  WorkGroup = "string"
 )
 }
 }

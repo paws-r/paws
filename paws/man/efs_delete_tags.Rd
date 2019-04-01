@@ -7,15 +7,15 @@
 efs_delete_tags(FileSystemId, TagKeys)
 }
 \arguments{
-\item{FileSystemId}{[required] ID of the file system whose tags you want to delete (String).}
+\item{FileSystemId}{[required] The ID of the file system whose tags you want to delete (String).}
 
-\item{TagKeys}{[required] List of tag keys to delete.}
+\item{TagKeys}{[required] A list of tag keys to delete.}
 }
 \description{
 Deletes the specified tags from a file system. If the \code{DeleteTags}
-request includes a tag key that does not exist, Amazon EFS ignores it
+request includes a tag key that doesn't exist, Amazon EFS ignores it
 and doesn't cause an error. For more information about tags and related
-restrictions, see \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Tag Restrictions}
+restrictions, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Tag Restrictions}
 in the \emph{AWS Billing and Cost Management User Guide}.
 }
 \details{

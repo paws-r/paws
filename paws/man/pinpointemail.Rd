@@ -8,14 +8,15 @@ pinpointemail()
 }
 \description{
 This document contains reference information for the \href{https://aws.amazon.com/pinpoint}{Amazon Pinpoint} Email API, version 1.0. This
-document is best used in conjunction with the \href{http://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html}{Amazon Pinpoint Developer Guide}.
+document is best used in conjunction with the \href{https://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html}{Amazon Pinpoint Developer Guide}.
 
 The Amazon Pinpoint Email API is available in the US East (N. Virginia),
-US West (Oregon) and the EU (Ireland) Regions at the following
-endpoints:
+US West (Oregon), EU (Frankfurt), and EU (Ireland) Regions at the
+following endpoints:
 \itemize{
 \item \strong{US East (N. Virginia)}: \code{email.us-east-1.amazonaws.com}
 \item \strong{US West (Oregon)}: \code{email.us-west-2.amazonaws.com}
+\item \strong{EU (Frankfurt)}: \code{email.eu-central-1.amazonaws.com}
 \item \strong{EU (Ireland)}: \code{email.eu-west-1.amazonaws.com}
 }
 }
@@ -51,6 +52,7 @@ pinpointemail$operation()
 \link[=pinpointemail_list_dedicated_ip_pools]{list_dedicated_ip_pools} \tab List all of the dedicated IP pools that exist in your Amazon Pinpoint account in the current AWS Region \cr
 \link[=pinpointemail_list_deliverability_test_reports]{list_deliverability_test_reports} \tab Show a list of the predictive inbox placement tests that you've performed, regardless of their statuses \cr
 \link[=pinpointemail_list_email_identities]{list_email_identities} \tab Returns a list of all of the email identities that are associated with your Amazon Pinpoint account \cr
+\link[=pinpointemail_list_tags_for_resource]{list_tags_for_resource} \tab Retrieve a list of the tags (keys and values) that are associated with a specific resource \cr
 \link[=pinpointemail_put_account_dedicated_ip_warmup_attributes]{put_account_dedicated_ip_warmup_attributes} \tab Enable or disable the automatic warm-up feature for dedicated IP addresses \cr
 \link[=pinpointemail_put_account_sending_attributes]{put_account_sending_attributes} \tab Enable or disable the ability of your account to send email \cr
 \link[=pinpointemail_put_configuration_set_delivery_options]{put_configuration_set_delivery_options} \tab Associate a configuration set with a dedicated IP pool \cr
@@ -64,6 +66,8 @@ pinpointemail$operation()
 \link[=pinpointemail_put_email_identity_feedback_attributes]{put_email_identity_feedback_attributes} \tab Used to enable or disable feedback forwarding for an identity \cr
 \link[=pinpointemail_put_email_identity_mail_from_attributes]{put_email_identity_mail_from_attributes} \tab Used to enable or disable the custom Mail-From domain configuration for an email identity \cr
 \link[=pinpointemail_send_email]{send_email} \tab Sends an email message \cr
+\link[=pinpointemail_tag_resource]{tag_resource} \tab Add one or more tags (keys and values) to one or more specified resources \cr
+\link[=pinpointemail_untag_resource]{untag_resource} \tab Remove one or more tags (keys and values) from a specified resource \cr
 \link[=pinpointemail_update_configuration_set_event_destination]{update_configuration_set_event_destination} \tab Update the configuration of an event destination for a configuration set
 }
 }

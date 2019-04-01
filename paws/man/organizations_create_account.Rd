@@ -29,8 +29,8 @@ If you don't specify this parameter, the role name defaults to
 \code{OrganizationAccountAccessRole}.
 
 For more information about how to use this role to access the member
-account, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role}{Accessing and Administering the Member Accounts in Your Organization}
-in the \emph{AWS Organizations User Guide}, and steps 2 and 3 in \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html}{Tutorial: Delegate Access Across AWS Accounts Using IAM Roles}
+account, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role}{Accessing and Administering the Member Accounts in Your Organization}
+in the \emph{AWS Organizations User Guide}, and steps 2 and 3 in \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html}{Tutorial: Delegate Access Across AWS Accounts Using IAM Roles}
 in the \emph{IAM User Guide}.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} that is used to
@@ -41,7 +41,7 @@ the following characters: =,.@-}
 \item{IamUserAccessToBilling}{If set to \code{ALLOW}, the new account enables IAM users to access account
 billing information \emph{if} they have the required permissions. If set to
 \code{DENY}, only the root user of the new account can access account billing
-information. For more information, see \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate}{Activating Access to the Billing and Cost Management Console}
+information. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate}{Activating Access to the Billing and Cost Management Console}
 in the \emph{AWS Billing and Cost Management User Guide}.
 
 If you don't specify this parameter, the value defaults to \code{ALLOW}, and
@@ -64,7 +64,7 @@ provide as a parameter to the DescribeCreateAccountStatus operation.
 \item Check the AWS CloudTrail log for the \code{CreateAccountResult} event.
 For information on using AWS CloudTrail with Organizations, see
 \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_monitoring.html}{Monitoring the Activity in Your Organization}
-in the \emph{AWS Organizations User Guide}.
+in the \emph{AWS Organizations User Guide.}
 }
 
 The user who calls the API to create an account must have the
@@ -84,8 +84,8 @@ the organization's master account.
 This operation can be called only from the organization's master
 account.
 
-For more information about creating accounts, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_create.html}{Creating an AWS Account in Your Organization}
-in the \emph{AWS Organizations User Guide}.
+For more information about creating accounts, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_create.html}{Creating an AWS Account in Your Organization}
+in the \emph{AWS Organizations User Guide.}
 \itemize{
 \item When you create an account in an organization using the AWS
 Organizations console, API, or CLI commands, the information
@@ -100,7 +100,7 @@ account limits for the organization, contact \href{https://console.aws.amazon.co
 \item If you get an exception that indicates that the operation failed
 because your organization is still initializing, wait one hour and
 then try again. If the error persists, contact \href{https://console.aws.amazon.com/support/home#/}{AWS Support}.
-\item Using CreateAccount to create multiple temporary accounts is not
+\item Using CreateAccount to create multiple temporary accounts isn't
 recommended. You can only close an account from the Billing and Cost
 Management Console, and you must be signed in as the root user. For
 information on the requirements and process for closing an account,
@@ -114,7 +114,7 @@ Billing Information} switch enabled. If you enable it, IAM users and
 roles that have appropriate permissions can view billing information for
 the account. If you disable it, only the account root user can access
 billing information. For information about how to disable this switch
-for an account, see \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html}{Granting Access to Your Billing Information and Tools}.
+for an account, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html}{Granting Access to Your Billing Information and Tools}.
 }
 \section{Request syntax}{
 \preformatted{organizations$create_account(

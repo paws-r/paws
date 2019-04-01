@@ -13,13 +13,13 @@ appmesh_update_route(clientToken, meshName, routeName, spec,
 idempotency of the request. Up to 36 letters, numbers, hyphens, and
 underscores are allowed.}
 
-\item{meshName}{[required] The name of the service mesh in which the route resides.}
+\item{meshName}{[required] The name of the service mesh that the route resides in.}
 
 \item{routeName}{[required] The name of the route to update.}
 
 \item{spec}{[required] The new route specification to apply. This overwrites the existing data.}
 
-\item{virtualRouterName}{[required] The name of the virtual router with which the route is associated.}
+\item{virtualRouterName}{[required] The name of the virtual router that the route is associated with.}
 }
 \description{
 Updates an existing route for a specified service mesh and virtual
@@ -42,6 +42,16 @@ router.
       ),
       match = list(
         prefix = "string"
+      )
+    ),
+    tcpRoute = list(
+      action = list(
+        weightedTargets = list(
+          list(
+            virtualNode = "string",
+            weight = 123
+          )
+        )
       )
     )
   ),

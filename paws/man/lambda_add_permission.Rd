@@ -36,12 +36,12 @@ function through that service.}
 \item{SourceArn}{For AWS services, the ARN of the AWS resource that invokes the function.
 For example, an Amazon S3 bucket or Amazon SNS topic.}
 
-\item{SourceAccount}{For AWS services, the ID of the account that owns the resource. Use
-instead of \code{SourceArn} to grant permission to resources owned by another
-account (e.g. all of an account's Amazon S3 buckets). Or use together
-with \code{SourceArn} to ensure that the resource is owned by the specified
-account. For example, an Amazon S3 bucket could be deleted by its owner
-and recreated by another account.}
+\item{SourceAccount}{For AWS services, the ID of the account that owns the resource. Use this
+instead of \code{SourceArn} to grant permission to resources that are owned
+by another account (for example, all of an account's Amazon S3
+buckets). Or use it together with \code{SourceArn} to ensure that the
+resource is owned by the specified account. For example, an Amazon S3
+bucket could be deleted by its owner and recreated by another account.}
 
 \item{EventSourceToken}{For Alexa Smart Home functions, a token that must be supplied by the
 invoker.}
@@ -49,9 +49,9 @@ invoker.}
 \item{Qualifier}{Specify a version or alias to add permissions to a published version of
 the function.}
 
-\item{RevisionId}{Only update the policy if the revision ID matches the ID specified. Use
-this option to avoid modifying a policy that has changed since you last
-read it.}
+\item{RevisionId}{Only update the policy if the revision ID matches the ID that's
+specified. Use this option to avoid modifying a policy that has changed
+since you last read it.}
 }
 \description{
 Grants an AWS service or another account permission to use a function.
@@ -71,7 +71,7 @@ specifying the source, other accounts could potentially configure
 resources in their account to invoke your Lambda function.
 
 This action adds a statement to a resource-based permission policy for
-the function. For more information about function policies, see \href{http://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html}{Lambda Function Policies}.
+the function. For more information about function policies, see \href{https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html}{Lambda Function Policies}.
 }
 \section{Request syntax}{
 \preformatted{lambda$add_permission(

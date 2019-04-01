@@ -310,7 +310,9 @@ iot_attach_security_profile <- function(securityProfileName, securityProfileTarg
 
 #' Attaches the specified principal to the specified thing
 #'
-#' Attaches the specified principal to the specified thing.
+#' Attaches the specified principal to the specified thing. A principal can
+#' be X.509 certificates, IAM users, groups, and roles, Amazon Cognito
+#' identities or federated identities.
 #'
 #' @usage
 #' iot_attach_thing_principal(thingName, principal)
@@ -764,7 +766,7 @@ iot_create_certificate_from_csr <- function(certificateSigningRequest, setAsActi
 #' @param queryString &#91;required&#93; The dynamic thing group search query string.
 #' 
 #' See [Query
-#' Syntax](http://docs.aws.amazon.com/iot/latest/developerguide/query-syntax.html)
+#' Syntax](https://docs.aws.amazon.com/iot/latest/developerguide/query-syntax.html)
 #' for information about query string syntax.
 #' @param queryVersion The dynamic thing group query version.
 #' 
@@ -971,7 +973,7 @@ iot_create_keys_and_certificate <- function(setAsActive = NULL) {
 #' @usage
 #' iot_create_ota_update(otaUpdateId, description, targets,
 #'   targetSelection, awsJobExecutionsRolloutConfig, files, roleArn,
-#'   additionalParameters)
+#'   additionalParameters, tags)
 #'
 #' @param otaUpdateId &#91;required&#93; The ID of the OTA update to be created.
 #' @param description The description of the OTA update.
@@ -987,6 +989,7 @@ iot_create_keys_and_certificate <- function(setAsActive = NULL) {
 #' @param files &#91;required&#93; The files to be streamed by the OTA update.
 #' @param roleArn &#91;required&#93; The IAM role that allows access to the AWS IoT Jobs service.
 #' @param additionalParameters A list of additional OTA update parameters which are name-value pairs.
+#' @param tags Metadata which can be used to manage updates.
 #'
 #' @section Request syntax:
 #' ```
@@ -1051,6 +1054,12 @@ iot_create_keys_and_certificate <- function(setAsActive = NULL) {
 #'   roleArn = "string",
 #'   additionalParameters = list(
 #'     "string"
+#'   ),
+#'   tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1058,14 +1067,14 @@ iot_create_keys_and_certificate <- function(setAsActive = NULL) {
 #' @keywords internal
 #'
 #' @rdname iot_create_ota_update
-iot_create_ota_update <- function(otaUpdateId, description = NULL, targets, targetSelection = NULL, awsJobExecutionsRolloutConfig = NULL, files, roleArn, additionalParameters = NULL) {
+iot_create_ota_update <- function(otaUpdateId, description = NULL, targets, targetSelection = NULL, awsJobExecutionsRolloutConfig = NULL, files, roleArn, additionalParameters = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateOTAUpdate",
     http_method = "POST",
     http_path = "/otaUpdates/{otaUpdateId}",
     paginator = list()
   )
-  input <- .iot$create_ota_update_input(otaUpdateId = otaUpdateId, description = description, targets = targets, targetSelection = targetSelection, awsJobExecutionsRolloutConfig = awsJobExecutionsRolloutConfig, files = files, roleArn = roleArn, additionalParameters = additionalParameters)
+  input <- .iot$create_ota_update_input(otaUpdateId = otaUpdateId, description = description, targets = targets, targetSelection = targetSelection, awsJobExecutionsRolloutConfig = awsJobExecutionsRolloutConfig, files = files, roleArn = roleArn, additionalParameters = additionalParameters, tags = tags)
   output <- .iot$create_ota_update_output()
   svc <- .iot$service()
   request <- new_request(svc, op, input, output)
@@ -1215,7 +1224,7 @@ iot_create_role_alias <- function(roleAlias, roleArn, credentialDurationSeconds 
 #'
 #' @usage
 #' iot_create_scheduled_audit(frequency, dayOfMonth, dayOfWeek,
-#'   targetCheckNames, scheduledAuditName)
+#'   targetCheckNames, tags, scheduledAuditName)
 #'
 #' @param frequency &#91;required&#93; How often the scheduled audit takes place. Can be one of \"DAILY\",
 #' \"WEEKLY\", \"BIWEEKLY\" or \"MONTHLY\". The actual start time of each
@@ -1233,6 +1242,7 @@ iot_create_role_alias <- function(roleAlias, roleArn, credentialDurationSeconds 
 #' enabled for your account. (Use `DescribeAccountAuditConfiguration` to
 #' see the list of all checks including those that are enabled or
 #' `UpdateAccountAuditConfiguration` to select which checks are enabled.)
+#' @param tags Metadata which can be used to manage the scheduled audit.
 #' @param scheduledAuditName &#91;required&#93; The name you want to give to the scheduled audit. (Max. 128 chars)
 #'
 #' @section Request syntax:
@@ -1244,6 +1254,12 @@ iot_create_role_alias <- function(roleAlias, roleArn, credentialDurationSeconds 
 #'   targetCheckNames = list(
 #'     "string"
 #'   ),
+#'   tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
 #'   scheduledAuditName = "string"
 #' )
 #' ```
@@ -1251,14 +1267,14 @@ iot_create_role_alias <- function(roleAlias, roleArn, credentialDurationSeconds 
 #' @keywords internal
 #'
 #' @rdname iot_create_scheduled_audit
-iot_create_scheduled_audit <- function(frequency, dayOfMonth = NULL, dayOfWeek = NULL, targetCheckNames, scheduledAuditName) {
+iot_create_scheduled_audit <- function(frequency, dayOfMonth = NULL, dayOfWeek = NULL, targetCheckNames, tags = NULL, scheduledAuditName) {
   op <- new_operation(
     name = "CreateScheduledAudit",
     http_method = "POST",
     http_path = "/audit/scheduledaudits/{scheduledAuditName}",
     paginator = list()
   )
-  input <- .iot$create_scheduled_audit_input(frequency = frequency, dayOfMonth = dayOfMonth, dayOfWeek = dayOfWeek, targetCheckNames = targetCheckNames, scheduledAuditName = scheduledAuditName)
+  input <- .iot$create_scheduled_audit_input(frequency = frequency, dayOfMonth = dayOfMonth, dayOfWeek = dayOfWeek, targetCheckNames = targetCheckNames, tags = tags, scheduledAuditName = scheduledAuditName)
   output <- .iot$create_scheduled_audit_output()
   svc <- .iot$service()
   request <- new_request(svc, op, input, output)
@@ -1273,15 +1289,19 @@ iot_create_scheduled_audit <- function(frequency, dayOfMonth = NULL, dayOfWeek =
 #'
 #' @usage
 #' iot_create_security_profile(securityProfileName,
-#'   securityProfileDescription, behaviors, alertTargets, tags)
+#'   securityProfileDescription, behaviors, alertTargets,
+#'   additionalMetricsToRetain, tags)
 #'
 #' @param securityProfileName &#91;required&#93; The name you are giving to the security profile.
 #' @param securityProfileDescription A description of the security profile.
-#' @param behaviors &#91;required&#93; Specifies the behaviors that, when violated by a device (thing), cause
+#' @param behaviors Specifies the behaviors that, when violated by a device (thing), cause
 #' an alert.
 #' @param alertTargets Specifies the destinations to which alerts are sent. (Alerts are always
 #' sent to the console.) Alerts are generated when a device (thing)
 #' violates a behavior.
+#' @param additionalMetricsToRetain A list of metrics whose data is retained (stored). By default, data is
+#' retained for any metric used in the profile\'s `behaviors` but it is
+#' also retained for any metric specified here.
 #' @param tags Metadata which can be used to manage the security profile.
 #'
 #' @section Request syntax:
@@ -1304,7 +1324,12 @@ iot_create_scheduled_audit <- function(frequency, dayOfMonth = NULL, dayOfWeek =
 #'             123
 #'           )
 #'         ),
-#'         durationSeconds = 123
+#'         durationSeconds = 123,
+#'         consecutiveDatapointsToAlarm = 123,
+#'         consecutiveDatapointsToClear = 123,
+#'         statisticalThreshold = list(
+#'           statistic = "string"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -1313,6 +1338,9 @@ iot_create_scheduled_audit <- function(frequency, dayOfMonth = NULL, dayOfWeek =
 #'       alertTargetArn = "string",
 #'       roleArn = "string"
 #'     )
+#'   ),
+#'   additionalMetricsToRetain = list(
+#'     "string"
 #'   ),
 #'   tags = list(
 #'     list(
@@ -1326,14 +1354,14 @@ iot_create_scheduled_audit <- function(frequency, dayOfMonth = NULL, dayOfWeek =
 #' @keywords internal
 #'
 #' @rdname iot_create_security_profile
-iot_create_security_profile <- function(securityProfileName, securityProfileDescription = NULL, behaviors, alertTargets = NULL, tags = NULL) {
+iot_create_security_profile <- function(securityProfileName, securityProfileDescription = NULL, behaviors = NULL, alertTargets = NULL, additionalMetricsToRetain = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateSecurityProfile",
     http_method = "POST",
     http_path = "/security-profiles/{securityProfileName}",
     paginator = list()
   )
-  input <- .iot$create_security_profile_input(securityProfileName = securityProfileName, securityProfileDescription = securityProfileDescription, behaviors = behaviors, alertTargets = alertTargets, tags = tags)
+  input <- .iot$create_security_profile_input(securityProfileName = securityProfileName, securityProfileDescription = securityProfileDescription, behaviors = behaviors, alertTargets = alertTargets, additionalMetricsToRetain = additionalMetricsToRetain, tags = tags)
   output <- .iot$create_security_profile_output()
   svc <- .iot$service()
   request <- new_request(svc, op, input, output)
@@ -1355,13 +1383,14 @@ iot_create_security_profile <- function(securityProfileName, securityProfileDesc
 #' old stream by incrementing the version by 1.
 #'
 #' @usage
-#' iot_create_stream(streamId, description, files, roleArn)
+#' iot_create_stream(streamId, description, files, roleArn, tags)
 #'
 #' @param streamId &#91;required&#93; The stream ID.
 #' @param description A description of the stream.
 #' @param files &#91;required&#93; The files to stream.
 #' @param roleArn &#91;required&#93; An IAM role that allows the IoT service principal assumes to access your
 #' S3 files.
+#' @param tags Metadata which can be used to manage streams.
 #'
 #' @section Request syntax:
 #' ```
@@ -1378,21 +1407,27 @@ iot_create_security_profile <- function(securityProfileName, securityProfileDesc
 #'       )
 #'     )
 #'   ),
-#'   roleArn = "string"
+#'   roleArn = "string",
+#'   tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname iot_create_stream
-iot_create_stream <- function(streamId, description = NULL, files, roleArn) {
+iot_create_stream <- function(streamId, description = NULL, files, roleArn, tags = NULL) {
   op <- new_operation(
     name = "CreateStream",
     http_method = "POST",
     http_path = "/streams/{streamId}",
     paginator = list()
   )
-  input <- .iot$create_stream_input(streamId = streamId, description = description, files = files, roleArn = roleArn)
+  input <- .iot$create_stream_input(streamId = streamId, description = description, files = files, roleArn = roleArn, tags = tags)
   output <- .iot$create_stream_output()
   svc <- .iot$service()
   request <- new_request(svc, op, input, output)
@@ -1403,10 +1438,13 @@ iot_create_stream <- function(streamId, description = NULL, files, roleArn) {
 
 #' Creates a thing record in the registry
 #'
-#' Creates a thing record in the registry.
+#' Creates a thing record in the registry. If this call is made multiple
+#' times using the same thing name and configuration, the call will
+#' succeed. If this call is made with the same thing name but different
+#' configuration a `ResourceAlreadyExistsException` is thrown.
 #' 
 #' This is a control plane operation. See
-#' [Authorization](http://docs.aws.amazon.com/iot/latest/developerguide/authorization.html)
+#' [Authorization](https://docs.aws.amazon.com/iot/latest/developerguide/authorization.html)
 #' for information about authorizing control plane actions.
 #'
 #' @usage
@@ -1460,7 +1498,7 @@ iot_create_thing <- function(thingName, thingTypeName = NULL, attributePayload =
 #' Create a thing group.
 #' 
 #' This is a control plane operation. See
-#' [Authorization](http://docs.aws.amazon.com/iot/latest/developerguide/authorization.html)
+#' [Authorization](https://docs.aws.amazon.com/iot/latest/developerguide/authorization.html)
 #' for information about authorizing control plane actions.
 #'
 #' @usage
@@ -3515,7 +3553,9 @@ iot_detach_security_profile <- function(securityProfileName, securityProfileTarg
 
 #' Detaches the specified principal from the specified thing
 #'
-#' Detaches the specified principal from the specified thing.
+#' Detaches the specified principal from the specified thing. A principal
+#' can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito
+#' identities or federated identities.
 #' 
 #' This call is asynchronous. It might take several seconds for the
 #' detachment to propagate.
@@ -3907,6 +3947,49 @@ iot_get_registration_code <- function() {
   return(response)
 }
 .iot$operations$get_registration_code <- iot_get_registration_code
+
+#' Gets statistics about things that match the specified query
+#'
+#' Gets statistics about things that match the specified query.
+#'
+#' @usage
+#' iot_get_statistics(indexName, queryString, aggregationField,
+#'   queryVersion)
+#'
+#' @param indexName The name of the index to search. The default value is `AWS_Things`.
+#' @param queryString &#91;required&#93; The query used to search. You can specify \"\*\" for the query string to
+#' get the count of all indexed things in your AWS account.
+#' @param aggregationField The aggregation field name. Currently not supported.
+#' @param queryVersion The version of the query used to search.
+#'
+#' @section Request syntax:
+#' ```
+#' iot$get_statistics(
+#'   indexName = "string",
+#'   queryString = "string",
+#'   aggregationField = "string",
+#'   queryVersion = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iot_get_statistics
+iot_get_statistics <- function(indexName = NULL, queryString, aggregationField = NULL, queryVersion = NULL) {
+  op <- new_operation(
+    name = "GetStatistics",
+    http_method = "POST",
+    http_path = "/indices/statistics",
+    paginator = list()
+  )
+  input <- .iot$get_statistics_input(indexName = indexName, queryString = queryString, aggregationField = aggregationField, queryVersion = queryVersion)
+  output <- .iot$get_statistics_output()
+  svc <- .iot$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iot$operations$get_statistics <- iot_get_statistics
 
 #' Gets information about the rule
 #'
@@ -4402,8 +4485,8 @@ iot_list_certificates_by_ca <- function(caCertificateId, pageSize = NULL, marker
 #' @usage
 #' iot_list_indices(nextToken, maxResults)
 #'
-#' @param nextToken The token used to get the next set of results, or **null** if there are
-#' no additional results.
+#' @param nextToken The token used to get the next set of results, or null if there are no
+#' additional results.
 #' @param maxResults The maximum number of results to return at one time.
 #'
 #' @section Request syntax:
@@ -4774,7 +4857,7 @@ iot_list_policy_versions <- function(policyName) {
 #'
 #' Lists the policies attached to the specified principal. If you use an
 #' Cognito identity, the ID must be in [AmazonCognito Identity
-#' format](http://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetCredentialsForIdentity.html#API_GetCredentialsForIdentity_RequestSyntax).
+#' format](https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetCredentialsForIdentity.html#API_GetCredentialsForIdentity_RequestSyntax).
 #' 
 #' **Note:** This API is deprecated. Please use ListAttachedPolicies
 #' instead.
@@ -4819,7 +4902,9 @@ iot_list_principal_policies <- function(principal, marker = NULL, pageSize = NUL
 
 #' Lists the things associated with the specified principal
 #'
-#' Lists the things associated with the specified principal.
+#' Lists the things associated with the specified principal. A principal
+#' can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito
+#' identities or federated identities.
 #'
 #' @usage
 #' iot_list_principal_things(nextToken, maxResults, principal)
@@ -5260,7 +5345,9 @@ iot_list_thing_groups_for_thing <- function(thingName, nextToken = NULL, maxResu
 
 #' Lists the principals associated with the specified thing
 #'
-#' Lists the principals associated with the specified thing.
+#' Lists the principals associated with the specified thing. A principal
+#' can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito
+#' identities or federated identities.
 #'
 #' @usage
 #' iot_list_thing_principals(thingName)
@@ -5747,7 +5834,7 @@ iot_register_ca_certificate <- function(caCertificate, verificationCertificate, 
 #'
 #' @param certificatePem &#91;required&#93; The certificate data, in PEM format.
 #' @param caCertificatePem The CA certificate used to sign the device certificate being registered.
-#' @param setAsActive A boolean value that specifies if the CA certificate is set to active.
+#' @param setAsActive A boolean value that specifies if the certificate is set to active.
 #' @param status The status of the register certificate request.
 #'
 #' @section Request syntax:
@@ -5787,10 +5874,10 @@ iot_register_certificate <- function(certificatePem, caCertificatePem = NULL, se
 #' iot_register_thing(templateBody, parameters)
 #'
 #' @param templateBody &#91;required&#93; The provisioning template. See [Programmatic
-#' Provisioning](http://docs.aws.amazon.com/iot/latest/developerguide/programmatic-provisioning.html)
+#' Provisioning](https://docs.aws.amazon.com/iot/latest/developerguide/programmatic-provisioning.html)
 #' for more information.
 #' @param parameters The parameters for provisioning a thing. See [Programmatic
-#' Provisioning](http://docs.aws.amazon.com/iot/latest/developerguide/programmatic-provisioning.html)
+#' Provisioning](https://docs.aws.amazon.com/iot/latest/developerguide/programmatic-provisioning.html)
 #' for more information.
 #'
 #' @section Request syntax:
@@ -6196,8 +6283,8 @@ iot_replace_topic_rule <- function(ruleName, topicRulePayload) {
 #'
 #' @param indexName The search index name.
 #' @param queryString &#91;required&#93; The search query string.
-#' @param nextToken The token used to get the next set of results, or **null** if there are
-#' no additional results.
+#' @param nextToken The token used to get the next set of results, or null if there are no
+#' additional results.
 #' @param maxResults The maximum number of results to return at one time.
 #' @param queryVersion The query version.
 #'
@@ -7372,13 +7459,27 @@ iot_update_scheduled_audit <- function(frequency = NULL, dayOfMonth = NULL, dayO
 #'
 #' @usage
 #' iot_update_security_profile(securityProfileName,
-#'   securityProfileDescription, behaviors, alertTargets, expectedVersion)
+#'   securityProfileDescription, behaviors, alertTargets,
+#'   additionalMetricsToRetain, deleteBehaviors, deleteAlertTargets,
+#'   deleteAdditionalMetricsToRetain, expectedVersion)
 #'
 #' @param securityProfileName &#91;required&#93; The name of the security profile you want to update.
 #' @param securityProfileDescription A description of the security profile.
 #' @param behaviors Specifies the behaviors that, when violated by a device (thing), cause
 #' an alert.
 #' @param alertTargets Where the alerts are sent. (Alerts are always sent to the console.)
+#' @param additionalMetricsToRetain A list of metrics whose data is retained (stored). By default, data is
+#' retained for any metric used in the profile\'s `behaviors` but it is
+#' also retained for any metric specified here.
+#' @param deleteBehaviors If true, delete all `behaviors` defined for this security profile. If
+#' any `behaviors` are defined in the current invocation an exception
+#' occurs.
+#' @param deleteAlertTargets If true, delete all `alertTargets` defined for this security profile. If
+#' any `alertTargets` are defined in the current invocation an exception
+#' occurs.
+#' @param deleteAdditionalMetricsToRetain If true, delete all `additionalMetricsToRetain` defined for this
+#' security profile. If any `additionalMetricsToRetain` are defined in the
+#' current invocation an exception occurs.
 #' @param expectedVersion The expected version of the security profile. A new version is generated
 #' whenever the security profile is updated. If you specify a value that is
 #' different than the actual version, a `VersionConflictException` is
@@ -7404,7 +7505,12 @@ iot_update_scheduled_audit <- function(frequency = NULL, dayOfMonth = NULL, dayO
 #'             123
 #'           )
 #'         ),
-#'         durationSeconds = 123
+#'         durationSeconds = 123,
+#'         consecutiveDatapointsToAlarm = 123,
+#'         consecutiveDatapointsToClear = 123,
+#'         statisticalThreshold = list(
+#'           statistic = "string"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -7414,6 +7520,12 @@ iot_update_scheduled_audit <- function(frequency = NULL, dayOfMonth = NULL, dayO
 #'       roleArn = "string"
 #'     )
 #'   ),
+#'   additionalMetricsToRetain = list(
+#'     "string"
+#'   ),
+#'   deleteBehaviors = TRUE|FALSE,
+#'   deleteAlertTargets = TRUE|FALSE,
+#'   deleteAdditionalMetricsToRetain = TRUE|FALSE,
 #'   expectedVersion = 123
 #' )
 #' ```
@@ -7421,14 +7533,14 @@ iot_update_scheduled_audit <- function(frequency = NULL, dayOfMonth = NULL, dayO
 #' @keywords internal
 #'
 #' @rdname iot_update_security_profile
-iot_update_security_profile <- function(securityProfileName, securityProfileDescription = NULL, behaviors = NULL, alertTargets = NULL, expectedVersion = NULL) {
+iot_update_security_profile <- function(securityProfileName, securityProfileDescription = NULL, behaviors = NULL, alertTargets = NULL, additionalMetricsToRetain = NULL, deleteBehaviors = NULL, deleteAlertTargets = NULL, deleteAdditionalMetricsToRetain = NULL, expectedVersion = NULL) {
   op <- new_operation(
     name = "UpdateSecurityProfile",
     http_method = "PATCH",
     http_path = "/security-profiles/{securityProfileName}",
     paginator = list()
   )
-  input <- .iot$update_security_profile_input(securityProfileName = securityProfileName, securityProfileDescription = securityProfileDescription, behaviors = behaviors, alertTargets = alertTargets, expectedVersion = expectedVersion)
+  input <- .iot$update_security_profile_input(securityProfileName = securityProfileName, securityProfileDescription = securityProfileDescription, behaviors = behaviors, alertTargets = alertTargets, additionalMetricsToRetain = additionalMetricsToRetain, deleteBehaviors = deleteBehaviors, deleteAlertTargets = deleteAlertTargets, deleteAdditionalMetricsToRetain = deleteAdditionalMetricsToRetain, expectedVersion = expectedVersion)
   output <- .iot$update_security_profile_output()
   svc <- .iot$service()
   request <- new_request(svc, op, input, output)
@@ -7673,7 +7785,12 @@ iot_update_thing_groups_for_thing <- function(thingName = NULL, thingGroupsToAdd
 #'             123
 #'           )
 #'         ),
-#'         durationSeconds = 123
+#'         durationSeconds = 123,
+#'         consecutiveDatapointsToAlarm = 123,
+#'         consecutiveDatapointsToClear = 123,
+#'         statisticalThreshold = list(
+#'           statistic = "string"
+#'         )
 #'       )
 #'     )
 #'   )

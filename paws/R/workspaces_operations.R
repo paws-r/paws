@@ -107,11 +107,12 @@ workspaces_authorize_ip_rules <- function(GroupId, UserRules) {
 #' directory.
 #'
 #' @usage
-#' workspaces_create_ip_group(GroupName, GroupDesc, UserRules)
+#' workspaces_create_ip_group(GroupName, GroupDesc, UserRules, Tags)
 #'
 #' @param GroupName &#91;required&#93; The name of the group.
 #' @param GroupDesc The description of the group.
 #' @param UserRules The rules to add to the group.
+#' @param Tags The tags. Each WorkSpaces resource can have a maximum of 50 tags.
 #'
 #' @section Request syntax:
 #' ```
@@ -123,6 +124,12 @@ workspaces_authorize_ip_rules <- function(GroupId, UserRules) {
 #'       ipRule = "string",
 #'       ruleDesc = "string"
 #'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -130,14 +137,14 @@ workspaces_authorize_ip_rules <- function(GroupId, UserRules) {
 #' @keywords internal
 #'
 #' @rdname workspaces_create_ip_group
-workspaces_create_ip_group <- function(GroupName, GroupDesc = NULL, UserRules = NULL) {
+workspaces_create_ip_group <- function(GroupName, GroupDesc = NULL, UserRules = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateIpGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .workspaces$create_ip_group_input(GroupName = GroupName, GroupDesc = GroupDesc, UserRules = UserRules)
+  input <- .workspaces$create_ip_group_input(GroupName = GroupName, GroupDesc = GroupDesc, UserRules = UserRules, Tags = Tags)
   output <- .workspaces$create_ip_group_output()
   svc <- .workspaces$service()
   request <- new_request(svc, op, input, output)
@@ -443,7 +450,7 @@ workspaces_describe_account_modifications <- function(NextToken = NULL) {
 #' @usage
 #' workspaces_describe_client_properties(ResourceIds)
 #'
-#' @param ResourceIds &#91;required&#93; The resource identifiers, in the form of directory IDs.
+#' @param ResourceIds &#91;required&#93; The resource identifier, in the form of directory IDs.
 #'
 #' @section Request syntax:
 #' ```
@@ -843,12 +850,13 @@ workspaces_disassociate_ip_groups <- function(DirectoryId, GroupIds) {
 #'
 #' @usage
 #' workspaces_import_workspace_image(Ec2ImageId, IngestionProcess,
-#'   ImageName, ImageDescription)
+#'   ImageName, ImageDescription, Tags)
 #'
 #' @param Ec2ImageId &#91;required&#93; The identifier of the EC2 image.
 #' @param IngestionProcess &#91;required&#93; The ingestion process to be used when importing the image.
 #' @param ImageName &#91;required&#93; The name of the WorkSpace image.
 #' @param ImageDescription &#91;required&#93; The description of the WorkSpace image.
+#' @param Tags The tags. Each WorkSpaces resource can have a maximum of 50 tags.
 #'
 #' @section Request syntax:
 #' ```
@@ -856,21 +864,27 @@ workspaces_disassociate_ip_groups <- function(DirectoryId, GroupIds) {
 #'   Ec2ImageId = "string",
 #'   IngestionProcess = "BYOL_REGULAR"|"BYOL_GRAPHICS"|"BYOL_GRAPHICSPRO",
 #'   ImageName = "string",
-#'   ImageDescription = "string"
+#'   ImageDescription = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname workspaces_import_workspace_image
-workspaces_import_workspace_image <- function(Ec2ImageId, IngestionProcess, ImageName, ImageDescription) {
+workspaces_import_workspace_image <- function(Ec2ImageId, IngestionProcess, ImageName, ImageDescription, Tags = NULL) {
   op <- new_operation(
     name = "ImportWorkspaceImage",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .workspaces$import_workspace_image_input(Ec2ImageId = Ec2ImageId, IngestionProcess = IngestionProcess, ImageName = ImageName, ImageDescription = ImageDescription)
+  input <- .workspaces$import_workspace_image_input(Ec2ImageId = Ec2ImageId, IngestionProcess = IngestionProcess, ImageName = ImageName, ImageDescription = ImageDescription, Tags = Tags)
   output <- .workspaces$import_workspace_image_output()
   svc <- .workspaces$service()
   request <- new_request(svc, op, input, output)
@@ -976,9 +990,9 @@ workspaces_modify_account <- function(DedicatedTenancySupport = NULL, DedicatedT
 }
 .workspaces$operations$modify_account <- workspaces_modify_account
 
-#' Modifies the properties of the specified Amazon WorkSpaces client
+#' Modifies the properties of the specified Amazon WorkSpaces clients
 #'
-#' Modifies the properties of the specified Amazon WorkSpaces client.
+#' Modifies the properties of the specified Amazon WorkSpaces clients.
 #'
 #' @usage
 #' workspaces_modify_client_properties(ResourceId, ClientProperties)
@@ -1155,7 +1169,7 @@ workspaces_reboot_workspaces <- function(RebootWorkspaceRequests) {
 #' 
 #' Rebuilding a WorkSpace is a potentially destructive action that can
 #' result in the loss of data. For more information, see [Rebuild a
-#' WorkSpace](http://docs.aws.amazon.com/workspaces/latest/adminguide/reset-workspace.html).
+#' WorkSpace](https://docs.aws.amazon.com/workspaces/latest/adminguide/reset-workspace.html).
 #' 
 #' This operation is asynchronous and returns before the WorkSpaces have
 #' been completely rebuilt.

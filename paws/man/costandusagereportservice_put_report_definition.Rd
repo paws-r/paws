@@ -2,35 +2,61 @@
 % Please edit documentation in R/costandusagereportservice_operations.R
 \name{costandusagereportservice_put_report_definition}
 \alias{costandusagereportservice_put_report_definition}
-\title{Create a new report definition}
+\title{Creates a new report using the description that you provide}
 \usage{
 costandusagereportservice_put_report_definition(ReportDefinition)
 }
 \arguments{
-\item{ReportDefinition}{[required]}
+\item{ReportDefinition}{[required] Represents the output of the PutReportDefinition operation. The content
+consists of the detailed metadata and data file information.}
 }
 \description{
-Create a new report definition
+Creates a new report using the description that you provide.
 }
 \section{Request syntax}{
 \preformatted{costandusagereportservice$put_report_definition(
   ReportDefinition = list(
     ReportName = "string",
     TimeUnit = "HOURLY"|"DAILY",
-    Format = "textORcsv",
-    Compression = "ZIP"|"GZIP",
+    Format = "textORcsv"|"Parquet",
+    Compression = "ZIP"|"GZIP"|"Parquet",
     AdditionalSchemaElements = list(
       "RESOURCES"
     ),
     S3Bucket = "string",
     S3Prefix = "string",
-    S3Region = "us-east-1"|"us-west-1"|"us-west-2"|"eu-central-1"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1",
+    S3Region = "us-east-1"|"us-west-1"|"us-west-2"|"eu-central-1"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"eu-north-1"|"ap-northeast-3",
     AdditionalArtifacts = list(
-      "REDSHIFT"|"QUICKSIGHT"
-    )
+      "REDSHIFT"|"QUICKSIGHT"|"ATHENA"
+    ),
+    RefreshClosedReports = TRUE|FALSE,
+    ReportVersioning = "CREATE_NEW_REPORT"|"OVERWRITE_REPORT"
   )
 )
 }
 }
 
+\examples{
+# The following example creates a AWS Cost and Usage report named
+# ExampleReport.
+\donttest{costandusagereportservice$put_report_definition(
+  ReportDefinition = list(
+    AdditionalArtifacts = list(
+      "REDSHIFT",
+      "QUICKSIGHT"
+    ),
+    AdditionalSchemaElements = list(
+      "RESOURCES"
+    ),
+    Compression = "ZIP",
+    Format = "textORcsv",
+    ReportName = "ExampleReport",
+    S3Bucket = "example-s3-bucket",
+    S3Prefix = "exampleprefix",
+    S3Region = "us-east-1",
+    TimeUnit = "DAILY"
+  )
+)}
+
+}
 \keyword{internal}

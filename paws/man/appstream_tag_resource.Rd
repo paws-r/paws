@@ -9,11 +9,11 @@ appstream_tag_resource(ResourceArn, Tags)
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource.}
 
-\item{Tags}{[required] The tags to associate. A tag is a key-value pair (the value is
-optional). For example, \code{Environment=Test}, or, if you do not specify a
-value, \code{Environment=}.
+\item{Tags}{[required] The tags to associate. A tag is a key-value pair, and the value is
+optional. For example, Environment=Test. If you do not specify a value,
+Environment=.
 
-If you do not specify a value, we set the value to an empty string.}
+If you do not specify a value, the value is set to an empty string.}
 }
 \description{
 Adds or overwrites one or more tags for the specified AppStream 2.0
@@ -27,7 +27,7 @@ has a tag with the same key, this operation updates its value.
 To list the current tags for your resources, use ListTagsForResource. To
 disassociate tags from your resources, use UntagResource.
 
-For more information about tags, see \href{http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html}{Tagging Your Resources}
+For more information about tags, see \href{https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html}{Tagging Your Resources}
 in the \emph{Amazon AppStream 2.0 Developer Guide}.
 }
 \section{Request syntax}{

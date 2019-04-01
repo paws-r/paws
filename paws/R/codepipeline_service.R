@@ -11,7 +11,7 @@ NULL
 #' descriptions of the actions and data types for AWS CodePipeline. Some
 #' functionality for your pipeline is only configurable through the API.
 #' For additional information, see the [AWS CodePipeline User
-#' Guide](http://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html).
+#' Guide](https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html).
 #' 
 #' You can use the AWS CodePipeline API to work with pipelines, stages,
 #' actions, and transitions, as described below.
@@ -58,7 +58,7 @@ NULL
 #' entire structure of the pipeline, including the stages of that pipeline.
 #' For more information about the structure of stages and actions, also
 #' refer to the [AWS CodePipeline Pipeline Structure
-#' Reference](http://docs.aws.amazon.com/codepipeline/latest/userguide/pipeline-structure.html).
+#' Reference](https://docs.aws.amazon.com/codepipeline/latest/userguide/pipeline-structure.html).
 #' 
 #' Pipeline stages include *actions*, which are categorized into categories
 #' such as source or build actions performed within a stage of a pipeline.
@@ -160,6 +160,7 @@ NULL
 #'  \link[=codepipeline_get_pipeline_execution]{get_pipeline_execution} \tab Returns information about an execution of a pipeline, including details about artifacts, the pipeline execution ID, and the name, version, and status of the pipeline\cr
 #'  \link[=codepipeline_get_pipeline_state]{get_pipeline_state} \tab Returns information about the state of a pipeline, including the stages and actions \cr
 #'  \link[=codepipeline_get_third_party_job_details]{get_third_party_job_details} \tab Requests the details of a job for a third party action \cr
+#'  \link[=codepipeline_list_action_executions]{list_action_executions} \tab Lists the action executions that have occurred in a pipeline \cr
 #'  \link[=codepipeline_list_action_types]{list_action_types} \tab Gets a summary of all AWS CodePipeline action types associated with your account \cr
 #'  \link[=codepipeline_list_pipeline_executions]{list_pipeline_executions} \tab Gets a summary of the most recent executions for a pipeline \cr
 #'  \link[=codepipeline_list_pipelines]{list_pipelines} \tab Gets a summary of all of the pipelines associated with your account \cr

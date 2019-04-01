@@ -280,7 +280,7 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' string argument and specify key/value pairs. For information on how to
 #' format a JSON parameter for the various command line tool environments,
 #' see [Using JSON for
-#' Parameters](http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
+#' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
 #' in the *AWS CLI User Guide*. For example:
 #' 
 #' `\\[\{"username":"bob"\},\{"password":"abc123xyz456"\}\\]`
@@ -305,7 +305,7 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' This parameter requires a JSON text string argument. For information on
 #' how to format a JSON parameter for the various command line tool
 #' environments, see [Using JSON for
-#' Parameters](http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
+#' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
 #' in the *AWS CLI User Guide*. For example:
 #' 
 #' `\\[\{"Key":"CostCenter","Value":"12345"\},\{"Key":"environment","Value":"production"\}\\]`
@@ -1116,7 +1116,7 @@ secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL) {
 #' Manager](http://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_resource-based-policies.html).
 #' For the complete description of the AWS policy syntax and grammar, see
 #' [IAM JSON Policy
-#' Reference](http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html)
+#' Reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html)
 #' in the *IAM User Guide*.
 #' 
 #' **Minimum permissions**
@@ -1173,7 +1173,7 @@ secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL) {
 #' # The following example shows how to add a resource-based policy to a
 #' # secret.
 #' \donttest{secretsmanager$put_resource_policy(
-#'   ResourcePolicy = "{\n\"Version\":\"2012-10-17\",\n\"Statement\":[{\n\"Effect\":\"Allow\",\...",
+#'   ResourcePolicy = "{\n\"Version\":\"2012-10-17\",\n\"Statement\":[{\n\"Effect\":\"Allow\",...",
 #'   SecretId = "MyTestDatabaseSecret"
 #' )}
 #'
@@ -1350,7 +1350,7 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy) {
 #' string argument and specify key/value pairs. For information on how to
 #' format a JSON parameter for the various command line tool environments,
 #' see [Using JSON for
-#' Parameters](http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
+#' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
 #' in the *AWS CLI User Guide*.
 #' 
 #' For example:
@@ -1501,7 +1501,7 @@ secretsmanager_restore_secret <- function(SecretId) {
 #' new version. For more information about rotating secrets and how to
 #' configure a Lambda function to rotate the secrets for your protected
 #' service, see [Rotating Secrets in AWS Secrets
-#' Manager](http://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html)
 #' in the *AWS Secrets Manager User Guide*.
 #' 
 #' Secrets Manager schedules the next rotation when the previous one is
@@ -1716,7 +1716,7 @@ secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, Ro
 #' This parameter to the API requires a JSON text string argument. For
 #' information on how to format a JSON parameter for the various command
 #' line tool environments, see [Using JSON for
-#' Parameters](http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
+#' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
 #' in the *AWS CLI User Guide*. For the AWS CLI, you can also use the
 #' syntax:
 #' `--Tags Key="Key1",Value="Value1",Key="Key2",Value="Value2"\\[,â€¦\\]`
@@ -1821,7 +1821,7 @@ secretsmanager_tag_resource <- function(SecretId, Tags) {
 #' This parameter to the API requires a JSON text string argument. For
 #' information on how to format a JSON parameter for the various command
 #' line tool environments, see [Using JSON for
-#' Parameters](http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
+#' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
 #' in the *AWS CLI User Guide*.
 #'
 #' @section Request syntax:
@@ -2030,7 +2030,7 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' string argument and specify key/value pairs. For information on how to
 #' format a JSON parameter for the various command line tool environments,
 #' see [Using JSON for
-#' Parameters](http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
+#' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
 #' in the *AWS CLI User Guide*. For example:
 #' 
 #' `\\[\{"username":"bob"\},\{"password":"abc123xyz456"\}\\]`
@@ -2108,7 +2108,7 @@ secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, De
 #' to another version, then it is moved\\--removed from the other version
 #' first and then attached to this one. For more information about staging
 #' labels, see [Staging
-#' Labels](http://docs.aws.amazon.com/secretsmanager/latest/userguide/terms-concepts.html#term_staging-label)
+#' Labels](https://docs.aws.amazon.com/secretsmanager/latest/userguide/terms-concepts.html#term_staging-label)
 #' in the *AWS Secrets Manager User Guide*.
 #' 
 #' The staging labels that you specify in the `VersionStage` parameter are

@@ -19,6 +19,11 @@ requested fleet ID. If the requested fleet has been deleted, the result
 set is empty.
 }
 \details{
+\strong{Learn more}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Working with Fleets}.
+
+\strong{Related operations}
 \itemize{
 \item CreateFleet
 \item ListFleets

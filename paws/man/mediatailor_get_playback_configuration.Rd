@@ -2,15 +2,15 @@
 % Please edit documentation in R/mediatailor_operations.R
 \name{mediatailor_get_playback_configuration}
 \alias{mediatailor_get_playback_configuration}
-\title{Returns the configuration for the specified name}
+\title{Returns the playback configuration for the specified name}
 \usage{
 mediatailor_get_playback_configuration(Name)
 }
 \arguments{
-\item{Name}{[required] The identifier for the configuration.}
+\item{Name}{[required] The identifier for the playback configuration.}
 }
 \description{
-Returns the configuration for the specified name.
+Returns the playback configuration for the specified name.
 }
 \section{Request syntax}{
 \preformatted{mediatailor$get_playback_configuration(

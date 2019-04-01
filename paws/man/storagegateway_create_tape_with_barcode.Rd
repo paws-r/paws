@@ -5,7 +5,7 @@
 \title{Creates a virtual tape by using your own barcode}
 \usage{
 storagegateway_create_tape_with_barcode(GatewayARN, TapeSizeInBytes,
-  TapeBarcode, KMSEncrypted, KMSKey)
+  TapeBarcode, KMSEncrypted, KMSKey, PoolId)
 }
 \arguments{
 \item{GatewayARN}{[required] The unique Amazon Resource Name (ARN) that represents the gateway to
@@ -27,6 +27,14 @@ or false to use a key managed by Amazon S3. Optional.}
 \item{KMSKey}{The Amazon Resource Name (ARN) of the AWS KMS Key used for Amazon S3
 server side encryption. This value can only be set when KMSEncrypted is
 true. Optional.}
+
+\item{PoolId}{The ID of the pool that you want to add your tape to for archiving. The
+tape in this pool is archived in the S3 storage class that is associated
+with the pool. When you use your backup application to eject the tape,
+the tape is archived directly into the storage class (Glacier or Deep
+Archive) that corresponds to the pool.
+
+Valid values: "GLACIER", "DEEP\_ARCHIVE"}
 }
 \description{
 Creates a virtual tape by using your own barcode. You write data to the
@@ -46,7 +54,8 @@ gateway.
   TapeSizeInBytes = 123,
   TapeBarcode = "string",
   KMSEncrypted = TRUE|FALSE,
-  KMSKey = "string"
+  KMSKey = "string",
+  PoolId = "string"
 )
 }
 }

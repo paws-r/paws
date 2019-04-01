@@ -5,7 +5,7 @@
 \title{Creates a new Kinesis video stream}
 \usage{
 kinesisvideo_create_stream(DeviceName, StreamName, MediaType, KmsKeyId,
-  DataRetentionInHours)
+  DataRetentionInHours, Tags)
 }
 \arguments{
 \item{DeviceName}{The name of the device that is writing to the stream.
@@ -24,9 +24,6 @@ types, see \href{http://www.iana.org/assignments/media-types/media-types.xhtml}{
 If you choose to specify the \code{MediaType}, see \href{https://tools.ietf.org/html/rfc6838#section-4.2}{Naming Requirements} for
 guidelines.
 
-To play video on the console, the media must be H.264 encoded, and you
-need to specify this video type in this parameter as \code{video/h264}.
-
 This parameter is optional; the default value is \code{null} (or empty in
 JSON).}
 
@@ -37,7 +34,7 @@ If no key ID is specified, the default, Kinesis Video-managed key
 (\code{aws/kinesisvideo}) is used.
 
 For more information, see
-\href{http://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters}{DescribeKey}.}
+\href{https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters}{DescribeKey}.}
 
 \item{DataRetentionInHours}{The number of hours that you want to retain the data in the stream.
 Kinesis Video Streams retains the data in a data store that is
@@ -50,6 +47,9 @@ When the \code{DataRetentionInHours} value is 0, consumers can still consume
 the fragments that remain in the service host buffer, which has a
 retention time limit of 5 minutes and a retention memory limit of 200
 MB. Fragments are removed from the buffer when either limit is reached.}
+
+\item{Tags}{A list of tags to associate with the specified stream. Each tag is a
+key-value pair (the value is optional).}
 }
 \description{
 Creates a new Kinesis video stream.
@@ -61,7 +61,7 @@ updates the version.
 
 \code{CreateStream} is an asynchronous operation.
 
-For information about how the service works, see \href{http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/how-it-works.html}{How it Works}.
+For information about how the service works, see \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/how-it-works.html}{How it Works}.
 
 You must have permissions for the \code{KinesisVideo:CreateStream} action.
 }
@@ -71,7 +71,10 @@ You must have permissions for the \code{KinesisVideo:CreateStream} action.
   StreamName = "string",
   MediaType = "string",
   KmsKeyId = "string",
-  DataRetentionInHours = 123
+  DataRetentionInHours = 123,
+  Tags = list(
+    "string"
+  )
 )
 }
 }

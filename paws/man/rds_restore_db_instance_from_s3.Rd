@@ -45,7 +45,7 @@ for future growth.}
 \item{DBInstanceClass}{[required] The compute and memory capacity of the DB instance, for example,
 \code{db.m4.large}. Not all DB instance classes are available in all AWS
 Regions, or for all database engines. For the full list of DB instance
-classes, and availability for your engine, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html}{DB Instance Class}
+classes, and availability for your engine, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html}{DB Instance Class}
 in the \emph{Amazon RDS User Guide.}
 
 Importing from Amazon S3 is not supported on the db.t2.micro DB instance
@@ -76,7 +76,7 @@ Default: The default DB security group for the database engine.}
 \item{VpcSecurityGroupIds}{A list of VPC security groups to associate with this DB instance.}
 
 \item{AvailabilityZone}{The Availability Zone that the DB instance is created in. For
-information about AWS Regions and Availability Zones, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html}{Regions and Availability Zones}
+information about AWS Regions and Availability Zones, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html}{Regions and Availability Zones}
 in the \emph{Amazon RDS User Guide.}
 
 Default: A random, system-chosen Availability Zone in the endpoint's
@@ -91,7 +91,7 @@ be in the same AWS Region as the current endpoint.}
 \item{DBSubnetGroupName}{A DB subnet group to associate with this DB instance.}
 
 \item{PreferredMaintenanceWindow}{The time range each week during which system maintenance can occur, in
-Universal Coordinated Time (UTC). For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#Concepts.DBMaintenance}{Amazon RDS Maintenance Window}
+Universal Coordinated Time (UTC). For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#Concepts.DBMaintenance}{Amazon RDS Maintenance Window}
 in the \emph{Amazon RDS User Guide.}
 
 Constraints:
@@ -112,7 +112,7 @@ this parameter to a positive number enables backups. For more
 information, see CreateDBInstance.}
 
 \item{PreferredBackupWindow}{The time range each day during which automated backups are created if
-automated backups are enabled. For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow}{The Backup Window}
+automated backups are enabled. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow}{The Backup Window}
 in the \emph{Amazon RDS User Guide.}
 
 Constraints:
@@ -147,7 +147,7 @@ Default: \code{true}}
 
 \item{Iops}{The amount of Provisioned IOPS (input/output operations per second) to
 allocate initially for the DB instance. For information about valid Iops
-values, see see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS}{Amazon RDS Provisioned IOPS Storage to Improve Performance}
+values, see see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS}{Amazon RDS Provisioned IOPS Storage to Improve Performance}
 in the \emph{Amazon RDS User Guide.}}
 
 \item{OptionGroupName}{The name of the option group to associate with this DB instance. If this
@@ -161,7 +161,7 @@ an internal instance with a DNS name that resolves to a private IP
 address. For more information, see CreateDBInstance.}
 
 \item{Tags}{A list of tags to associate with this DB instance. For more information,
-see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html}{Tagging Amazon RDS Resources}
+see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html}{Tagging Amazon RDS Resources}
 in the \emph{Amazon RDS User Guide.}}
 
 \item{StorageType}{Specifies the storage type to be associated with the DB instance.
@@ -190,8 +190,8 @@ default encryption key. AWS KMS creates the default encryption key for
 your AWS account. Your AWS account has a different default encryption
 key for each AWS Region.}
 
-\item{CopyTagsToSnapshot}{True to copy all tags from the DB instance to snapshots of the DB
-instance, and otherwise false.
+\item{CopyTagsToSnapshot}{True to copy all tags from the restored DB instance to snapshots of the
+restored DB instance, and otherwise false.
 
 Default: false.}
 
@@ -209,7 +209,7 @@ Default: \code{0}}
 \item{MonitoringRoleArn}{The ARN for the IAM role that permits RDS to send enhanced monitoring
 metrics to Amazon CloudWatch Logs. For example,
 \code{arn:aws:iam:123456789012:role/emaccess}. For information on creating a
-monitoring role, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html#USER_Monitoring.OS.Enabling}{Setting Up and Enabling Enhanced Monitoring}
+monitoring role, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html#USER_Monitoring.OS.Enabling}{Setting Up and Enabling Enhanced Monitoring}
 in the \emph{Amazon RDS User Guide.}
 
 If \code{MonitoringInterval} is set to a value other than 0, then you must
@@ -239,7 +239,7 @@ access your Amazon S3 bucket.}
 \item{EnablePerformanceInsights}{True to enable Performance Insights for the DB instance, and otherwise
 false.
 
-For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{Using Amazon Performance Insights}
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{Using Amazon Performance Insights}
 in the \emph{Amazon Relational Database Service User Guide}.}
 
 \item{PerformanceInsightsKMSKeyId}{The AWS KMS key identifier for encryption of Performance Insights data.
@@ -251,7 +251,7 @@ values are 7 or 731 (2 years).}
 
 \item{EnableCloudwatchLogsExports}{The list of logs that the restored DB instance is to export to
 CloudWatch Logs. The values in the list depend on the DB engine being
-used. For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
+used. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
 in the \emph{Amazon RDS User Guide}.}
 
 \item{ProcessorFeatures}{The number of CPU cores and the number of threads per core for the DB
@@ -262,14 +262,14 @@ uses its default processor features.}
 
 \item{DeletionProtection}{Indicates if the DB instance should have deletion protection enabled.
 The database can't be deleted when this value is set to true. The
-default is false. For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
+default is false. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
 }
 \description{
 Amazon Relational Database Service (Amazon RDS) supports importing MySQL
 databases by using backup files. You can create a backup of your
 on-premises database, store it on Amazon Simple Storage Service (Amazon
 S3), and then restore the backup file onto a new Amazon RDS DB instance
-running MySQL. For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Procedural.Importing.html}{Importing Data into an Amazon RDS MySQL DB Instance}
+running MySQL. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Procedural.Importing.html}{Importing Data into an Amazon RDS MySQL DB Instance}
 in the \emph{Amazon RDS User Guide.}
 }
 \section{Request syntax}{

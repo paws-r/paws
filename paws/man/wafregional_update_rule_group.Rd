@@ -47,7 +47,7 @@ If you want to replace one \code{Rule} with another, you delete the existing
 one and add the new one.
 
 For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the \href{http://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
+HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{wafregional$update_rule_group(

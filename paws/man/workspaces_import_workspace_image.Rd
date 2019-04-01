@@ -6,7 +6,7 @@
 (BYOL) image into Amazon WorkSpaces}
 \usage{
 workspaces_import_workspace_image(Ec2ImageId, IngestionProcess,
-  ImageName, ImageDescription)
+  ImageName, ImageDescription, Tags)
 }
 \arguments{
 \item{Ec2ImageId}{[required] The identifier of the EC2 image.}
@@ -16,6 +16,8 @@ workspaces_import_workspace_image(Ec2ImageId, IngestionProcess,
 \item{ImageName}{[required] The name of the WorkSpace image.}
 
 \item{ImageDescription}{[required] The description of the WorkSpace image.}
+
+\item{Tags}{The tags. Each WorkSpaces resource can have a maximum of 50 tags.}
 }
 \description{
 Imports the specified Windows 7 or Windows 10 bring your own license
@@ -28,7 +30,13 @@ image.
   Ec2ImageId = "string",
   IngestionProcess = "BYOL_REGULAR"|"BYOL_GRAPHICS"|"BYOL_GRAPHICSPRO",
   ImageName = "string",
-  ImageDescription = "string"
+  ImageDescription = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

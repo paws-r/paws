@@ -23,8 +23,8 @@ ListResourceDataSync.
 By default, data is not encrypted in Amazon S3. We strongly recommend
 that you enable encryption in Amazon S3 to ensure secure data storage.
 We also recommend that you secure access to the Amazon S3 bucket by
-creating a restrictive bucket policy. To view an example of a
-restrictive Amazon S3 bucket policy for Resource Data Sync, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync-create.html}{Create a Resource Data Sync for Inventory}
+creating a restrictive bucket policy. For more information, see
+\href{http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync.html}{Configuring Resource Data Sync for Inventory}
 in the \emph{AWS Systems Manager User Guide}.
 }
 \section{Request syntax}{

@@ -104,23 +104,24 @@ acmpca_create_certificate_authority <- function(CertificateAuthorityConfiguratio
 }
 .acmpca$operations$create_certificate_authority <- acmpca_create_certificate_authority
 
-#' Creates an audit report that lists every time that the your CA private
-#' key is used
+#' Creates an audit report that lists every time that your CA private key
+#' is used
 #'
-#' Creates an audit report that lists every time that the your CA private
-#' key is used. The report is saved in the Amazon S3 bucket that you
-#' specify on input. The IssueCertificate and RevokeCertificate operations
-#' use the private key. You can generate a new report every 30 minutes.
+#' Creates an audit report that lists every time that your CA private key
+#' is used. The report is saved in the Amazon S3 bucket that you specify on
+#' input. The IssueCertificate and RevokeCertificate operations use the
+#' private key. You can generate a new report every 30 minutes.
 #'
 #' @usage
 #' acmpca_create_certificate_authority_audit_report(
 #'   CertificateAuthorityArn, S3BucketName, AuditReportResponseFormat)
 #'
-#' @param CertificateAuthorityArn &#91;required&#93; Amazon Resource Name (ARN) of the CA to be audited. This is of the form:
+#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) of the CA to be audited. This is of the
+#' form:
 #' 
 #' `arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> `.
-#' @param S3BucketName &#91;required&#93; Name of the S3 bucket that will contain the audit report.
-#' @param AuditReportResponseFormat &#91;required&#93; Format in which to create the report. This can be either **JSON** or
+#' @param S3BucketName &#91;required&#93; The name of the S3 bucket that will contain the audit report.
+#' @param AuditReportResponseFormat &#91;required&#93; The format in which to create the report. This can be either **JSON** or
 #' **CSV**.
 #'
 #' @section Request syntax:
@@ -151,6 +152,67 @@ acmpca_create_certificate_authority_audit_report <- function(CertificateAuthorit
 }
 .acmpca$operations$create_certificate_authority_audit_report <- acmpca_create_certificate_authority_audit_report
 
+#' Assigns permissions from a private CA to a designated AWS service
+#'
+#' Assigns permissions from a private CA to a designated AWS service.
+#' Services are specified by their service principals and can be given
+#' permission to create and retrieve certificates on a private CA. Services
+#' can also be given permission to list the active permissions that the
+#' private CA has granted. For ACM to automatically renew your private
+#' CA\'s certificates, you must assign all possible permissions from the CA
+#' to the ACM service principal.
+#' 
+#' At this time, you can only assign permissions to ACM
+#' (`acm.amazonaws.com`). Permissions can be revoked with the
+#' DeletePermission operation and listed with the ListPermissions
+#' operation.
+#'
+#' @usage
+#' acmpca_create_permission(CertificateAuthorityArn, Principal,
+#'   SourceAccount, Actions)
+#'
+#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) of the CA that grants the permissions.
+#' You can find the ARN by calling the ListCertificateAuthorities
+#' operation. This must have the following form:
+#' 
+#' `arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> `.
+#' @param Principal &#91;required&#93; The AWS service or identity that receives the permission. At this time,
+#' the only valid principal is `acm.amazonaws.com`.
+#' @param SourceAccount The ID of the calling account.
+#' @param Actions &#91;required&#93; The actions that the specified AWS service principal can use. These
+#' include `IssueCertificate`, `GetCertificate`, and `ListPermissions`.
+#'
+#' @section Request syntax:
+#' ```
+#' acmpca$create_permission(
+#'   CertificateAuthorityArn = "string",
+#'   Principal = "string",
+#'   SourceAccount = "string",
+#'   Actions = list(
+#'     "IssueCertificate"|"GetCertificate"|"ListPermissions"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname acmpca_create_permission
+acmpca_create_permission <- function(CertificateAuthorityArn, Principal, SourceAccount = NULL, Actions) {
+  op <- new_operation(
+    name = "CreatePermission",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .acmpca$create_permission_input(CertificateAuthorityArn = CertificateAuthorityArn, Principal = Principal, SourceAccount = SourceAccount, Actions = Actions)
+  output <- .acmpca$create_permission_output()
+  svc <- .acmpca$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acmpca$operations$create_permission <- acmpca_create_permission
+
 #' Deletes a private certificate authority (CA)
 #'
 #' Deletes a private certificate authority (CA). You must provide the ARN
@@ -166,15 +228,15 @@ acmpca_create_certificate_authority_audit_report <- function(CertificateAuthorit
 #' haven\'t yet imported the signed certificate (the **Status** is
 #' `PENDING_CERTIFICATE`) into ACM PCA.
 #' 
-#' If the CA is in one of the aforementioned states and you call
+#' If the CA is in one of the previously mentioned states and you call
 #' DeleteCertificateAuthority, the CA\'s status changes to `DELETED`.
-#' However, the CA won\'t be permentantly deleted until the restoration
+#' However, the CA won\'t be permanently deleted until the restoration
 #' period has passed. By default, if you do not set the
 #' `PermanentDeletionTimeInDays` parameter, the CA remains restorable for
 #' 30 days. You can set the parameter from 7 to 30 days. The
 #' DescribeCertificateAuthority operation returns the time remaining in the
 #' restoration window of a Private CA in the `DELETED` state. To restore an
-#' eligable CA, call the RestoreCertificateAuthority operation.
+#' eligible CA, call the RestoreCertificateAuthority operation.
 #'
 #' @usage
 #' acmpca_delete_certificate_authority(CertificateAuthorityArn,
@@ -213,6 +275,54 @@ acmpca_delete_certificate_authority <- function(CertificateAuthorityArn, Permane
   return(response)
 }
 .acmpca$operations$delete_certificate_authority <- acmpca_delete_certificate_authority
+
+#' Revokes permissions that a private CA assigned to a designated AWS
+#' service
+#'
+#' Revokes permissions that a private CA assigned to a designated AWS
+#' service. Permissions can be created with the CreatePermission operation
+#' and listed with the ListPermissions operation.
+#'
+#' @usage
+#' acmpca_delete_permission(CertificateAuthorityArn, Principal,
+#'   SourceAccount)
+#'
+#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Number (ARN) of the private CA that issued the
+#' permissions. You can find the CA\'s ARN by calling the
+#' ListCertificateAuthorities operation. This must have the following form:
+#' 
+#' `arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> `.
+#' @param Principal &#91;required&#93; The AWS service or identity that will have its CA permissions revoked.
+#' At this time, the only valid service principal is `acm.amazonaws.com`
+#' @param SourceAccount The AWS account that calls this operation.
+#'
+#' @section Request syntax:
+#' ```
+#' acmpca$delete_permission(
+#'   CertificateAuthorityArn = "string",
+#'   Principal = "string",
+#'   SourceAccount = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname acmpca_delete_permission
+acmpca_delete_permission <- function(CertificateAuthorityArn, Principal, SourceAccount = NULL) {
+  op <- new_operation(
+    name = "DeletePermission",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .acmpca$delete_permission_input(CertificateAuthorityArn = CertificateAuthorityArn, Principal = Principal, SourceAccount = SourceAccount)
+  output <- .acmpca$delete_permission_output()
+  svc <- .acmpca$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acmpca$operations$delete_permission <- acmpca_delete_permission
 
 #' Lists information about your private certificate authority (CA)
 #'
@@ -642,6 +752,59 @@ acmpca_list_certificate_authorities <- function(NextToken = NULL, MaxResults = N
   return(response)
 }
 .acmpca$operations$list_certificate_authorities <- acmpca_list_certificate_authorities
+
+#' Lists all the permissions, if any, that have been assigned by a private
+#' CA
+#'
+#' Lists all the permissions, if any, that have been assigned by a private
+#' CA. Permissions can be granted with the CreatePermission operation and
+#' revoked with the DeletePermission operation.
+#'
+#' @usage
+#' acmpca_list_permissions(CertificateAuthorityArn, NextToken, MaxResults)
+#'
+#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Number (ARN) of the private CA to inspect. You can
+#' find the ARN by calling the ListCertificateAuthorities operation. This
+#' must be of the form:
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012`
+#' You can get a private CA\'s ARN by running the
+#' ListCertificateAuthorities operation.
+#' @param NextToken When paginating results, use this parameter in a subsequent request
+#' after you receive a response with truncated results. Set it to the value
+#' of **NextToken** from the response you just received.
+#' @param MaxResults When paginating results, use this parameter to specify the maximum
+#' number of items to return in the response. If additional items exist
+#' beyond the number you specify, the **NextToken** element is sent in the
+#' response. Use this **NextToken** value in a subsequent request to
+#' retrieve additional items.
+#'
+#' @section Request syntax:
+#' ```
+#' acmpca$list_permissions(
+#'   CertificateAuthorityArn = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname acmpca_list_permissions
+acmpca_list_permissions <- function(CertificateAuthorityArn, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListPermissions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .acmpca$list_permissions_input(CertificateAuthorityArn = CertificateAuthorityArn, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .acmpca$list_permissions_output()
+  svc <- .acmpca$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acmpca$operations$list_permissions <- acmpca_list_permissions
 
 #' Lists the tags, if any, that are associated with your private CA
 #'

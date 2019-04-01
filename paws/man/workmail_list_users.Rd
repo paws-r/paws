@@ -9,7 +9,8 @@ workmail_list_users(OrganizationId, NextToken, MaxResults)
 \arguments{
 \item{OrganizationId}{[required] The identifier for the organization under which the users exist.}
 
-\item{NextToken}{TBD}
+\item{NextToken}{The token to use to retrieve the next page of results. The first call
+does not contain any tokens.}
 
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }

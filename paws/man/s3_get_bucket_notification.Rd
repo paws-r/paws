@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_get_bucket_notification}
 \alias{s3_get_bucket_notification}
-\title{Deprecated, see the GetBucketNotificationConfiguration operation}
+\title{No longer used, see the GetBucketNotificationConfiguration operation}
 \usage{
 s3_get_bucket_notification(Bucket)
 }
@@ -10,7 +10,7 @@ s3_get_bucket_notification(Bucket)
 \item{Bucket}{[required] Name of the bucket to get the notification configuration for.}
 }
 \description{
-Deprecated, see the GetBucketNotificationConfiguration operation.
+No longer used, see the GetBucketNotificationConfiguration operation.
 }
 \section{Request syntax}{
 \preformatted{s3$get_bucket_notification(

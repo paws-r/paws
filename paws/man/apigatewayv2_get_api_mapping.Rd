@@ -4,11 +4,9 @@
 \alias{apigatewayv2_get_api_mapping}
 \title{The API mapping}
 \usage{
-apigatewayv2_get_api_mapping(ApiId, ApiMappingId, DomainName)
+apigatewayv2_get_api_mapping(ApiMappingId, DomainName)
 }
 \arguments{
-\item{ApiId}{[required] The identifier of the API.}
-
 \item{ApiMappingId}{[required] The API mapping identifier.}
 
 \item{DomainName}{[required] The domain name.}
@@ -18,7 +16,6 @@ The API mapping.
 }
 \section{Request syntax}{
 \preformatted{apigatewayv2$get_api_mapping(
-  ApiId = "string",
   ApiMappingId = "string",
   DomainName = "string"
 )

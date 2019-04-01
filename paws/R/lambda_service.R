@@ -9,9 +9,9 @@ NULL
 #' 
 #' This is the *AWS Lambda API Reference*. The AWS Lambda Developer Guide
 #' provides additional information. For the service overview, see [What is
-#' AWS Lambda](http://docs.aws.amazon.com/lambda/latest/dg/welcome.html),
+#' AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html),
 #' and for information about how the service works, see [AWS Lambda: How it
-#' Works](http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html)
+#' Works](https://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html)
 #' in the **AWS Lambda Developer Guide**.
 #'
 #' @section Example:
@@ -32,11 +32,11 @@ NULL
 #'  \link[=lambda_delete_function]{delete_function} \tab Deletes a Lambda function \cr
 #'  \link[=lambda_delete_function_concurrency]{delete_function_concurrency} \tab Removes a concurrent execution limit from a function \cr
 #'  \link[=lambda_delete_layer_version]{delete_layer_version} \tab Deletes a version of an AWS Lambda layer \cr
-#'  \link[=lambda_get_account_settings]{get_account_settings} \tab Retrieves details about your account's limits and usage in a region \cr
+#'  \link[=lambda_get_account_settings]{get_account_settings} \tab Retrieves details about your account's limits and usage in an AWS Region \cr
 #'  \link[=lambda_get_alias]{get_alias} \tab Returns details about a Lambda function alias \cr
 #'  \link[=lambda_get_event_source_mapping]{get_event_source_mapping} \tab Returns details about an event source mapping \cr
-#'  \link[=lambda_get_function]{get_function} \tab Returns information about function or function version, with a link to download the deployment package that's valid for 10 minutes\cr
-#'  \link[=lambda_get_function_configuration]{get_function_configuration} \tab Returns a the version-specific settings of a Lambda function or version \cr
+#'  \link[=lambda_get_function]{get_function} \tab Returns information about the function or function version, with a link to download the deployment package that's valid for 10 minutes\cr
+#'  \link[=lambda_get_function_configuration]{get_function_configuration} \tab Returns the version-specific settings of a Lambda function or version \cr
 #'  \link[=lambda_get_layer_version]{get_layer_version} \tab Returns information about a version of an AWS Lambda layer, with a link to download the layer archive that's valid for 10 minutes \cr
 #'  \link[=lambda_get_layer_version_policy]{get_layer_version_policy} \tab Returns the permission policy for a version of an AWS Lambda layer \cr
 #'  \link[=lambda_get_policy]{get_policy} \tab Returns the resource-based IAM policy for a function, version, or alias \cr
@@ -53,7 +53,7 @@ NULL
 #'  \link[=lambda_publish_version]{publish_version} \tab Creates a version from the current code and configuration of a function \cr
 #'  \link[=lambda_put_function_concurrency]{put_function_concurrency} \tab Sets the maximum number of simultaneous executions for a function, and reserves capacity for that concurrency level \cr
 #'  \link[=lambda_remove_layer_version_permission]{remove_layer_version_permission} \tab Removes a statement from the permissions policy for a version of an AWS Lambda layer \cr
-#'  \link[=lambda_remove_permission]{remove_permission} \tab Revokes function use permission from an AWS service or another account \cr
+#'  \link[=lambda_remove_permission]{remove_permission} \tab Revokes function-use permission from an AWS service or another account \cr
 #'  \link[=lambda_tag_resource]{tag_resource} \tab Adds tags to a function \cr
 #'  \link[=lambda_untag_resource]{untag_resource} \tab Removes tags from a function \cr
 #'  \link[=lambda_update_alias]{update_alias} \tab Updates the configuration of a Lambda function alias \cr

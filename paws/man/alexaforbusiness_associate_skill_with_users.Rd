@@ -5,12 +5,10 @@
 \title{Makes a private skill available for enrolled users to enable on their
 devices}
 \usage{
-alexaforbusiness_associate_skill_with_users(OrganizationArn, SkillId)
+alexaforbusiness_associate_skill_with_users(SkillId)
 }
 \arguments{
-\item{OrganizationArn}{The ARN of the organization.}
-
-\item{SkillId}{[required] The private skill ID you want to make available to enrolled users.\>}
+\item{SkillId}{[required] The private skill ID you want to make available to enrolled users.}
 }
 \description{
 Makes a private skill available for enrolled users to enable on their
@@ -18,7 +16,6 @@ devices.
 }
 \section{Request syntax}{
 \preformatted{alexaforbusiness$associate_skill_with_users(
-  OrganizationArn = "string",
   SkillId = "string"
 )
 }

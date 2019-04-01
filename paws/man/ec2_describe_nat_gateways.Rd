@@ -24,16 +24,13 @@ regardless of the tag value.
 \item \code{vpc-id} - The ID of the VPC in which the NAT gateway resides.
 }}
 
-\item{MaxResults}{The maximum number of items to return for this request. The request
-returns a token that you can specify in a subsequent call to get the
-next set of results.
-
-Constraint: If the value specified is greater than 1000, we return only
-1000 items.}
+\item{MaxResults}{The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned \code{nextToken}
+value.}
 
 \item{NatGatewayIds}{One or more NAT gateway IDs.}
 
-\item{NextToken}{The token to retrieve the next page of results.}
+\item{NextToken}{The token for the next page of results.}
 }
 \description{
 Describes one or more of your NAT gateways.

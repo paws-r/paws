@@ -5,7 +5,7 @@ NULL
 
 .pinpointemail$create_configuration_set_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(    type = "string")), TrackingOptions = structure(list(CustomRedirectDomain = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure")), DeliveryOptions = structure(list(    SendingPoolName = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure")), ReputationOptions = structure(list(    ReputationMetricsEnabled = structure(logical(0), tags = list(        type = "boolean")), LastFreshStart = structure(logical(0), tags = list(        type = "timestamp"))), tags = list(type = "structure")), SendingOptions = structure(list(SendingEnabled = structure(logical(0), tags = list(        type = "boolean"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(type = "string")), TrackingOptions = structure(list(CustomRedirectDomain = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DeliveryOptions = structure(list(SendingPoolName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ReputationOptions = structure(list(ReputationMetricsEnabled = structure(logical(0), tags = list(type = "boolean")), LastFreshStart = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), SendingOptions = structure(list(SendingEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -17,7 +17,7 @@ NULL
 
 .pinpointemail$create_configuration_set_event_destination_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(    location = "uri", locationName = "ConfigurationSetName", type = "string")), EventDestinationName = structure(logical(0), tags = list(    type = "string")), EventDestination = structure(list(Enabled = structure(logical(0), tags = list(    type = "boolean")), MatchingEventTypes = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list")), KinesisFirehoseDestination = structure(list(    IamRoleArn = structure(logical(0), tags = list(type = "string")), DeliveryStreamArn = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure")), CloudWatchDestination = structure(list(    DimensionConfigurations = structure(list(structure(list(DimensionName = structure(logical(0), tags = list(        type = "string")), DimensionValueSource = structure(logical(0), tags = list(        type = "string")), DefaultDimensionValue = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(        type = "list"))), tags = list(type = "structure")), SnsDestination = structure(list(    TopicArn = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure")), PinpointDestination = structure(list(    ApplicationArn = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(location = "uri", locationName = "ConfigurationSetName", type = "string")), EventDestinationName = structure(logical(0), tags = list(type = "string")), EventDestination = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), MatchingEventTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), KinesisFirehoseDestination = structure(list(IamRoleArn = structure(logical(0), tags = list(type = "string")), DeliveryStreamArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CloudWatchDestination = structure(list(DimensionConfigurations = structure(list(structure(list(DimensionName = structure(logical(0), tags = list(type = "string")), DimensionValueSource = structure(logical(0), tags = list(type = "string")), DefaultDimensionValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), SnsDestination = structure(list(TopicArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PinpointDestination = structure(list(ApplicationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -29,7 +29,7 @@ NULL
 
 .pinpointemail$create_dedicated_ip_pool_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PoolName = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(PoolName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -41,31 +41,31 @@ NULL
 
 .pinpointemail$create_deliverability_test_report_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReportName = structure(logical(0), tags = list(    type = "string")), FromEmailAddress = structure(logical(0), tags = list(    type = "string")), Content = structure(list(Simple = structure(list(    Subject = structure(list(Data = structure(logical(0), tags = list(        type = "string")), Charset = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure")), Body = structure(list(Text = structure(list(Data = structure(logical(0), tags = list(        type = "string")), Charset = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure")), Html = structure(list(Data = structure(logical(0), tags = list(            type = "string")), Charset = structure(logical(0), tags = list(            type = "string"))), tags = list(type = "structure"))), tags = list(        type = "structure"))), tags = list(type = "structure")), Raw = structure(list(Data = structure(logical(0), tags = list(        type = "blob"))), tags = list(type = "structure"))), tags = list(    type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ReportName = structure(logical(0), tags = list(type = "string")), FromEmailAddress = structure(logical(0), tags = list(type = "string")), Content = structure(list(Simple = structure(list(Subject = structure(list(Data = structure(logical(0), tags = list(type = "string")), Charset = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Body = structure(list(Text = structure(list(Data = structure(logical(0), tags = list(type = "string")), Charset = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Html = structure(list(Data = structure(logical(0), tags = list(type = "string")), Charset = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), Raw = structure(list(Data = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .pinpointemail$create_deliverability_test_report_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReportId = structure(logical(0), tags = list(type = "string")), DeliverabilityTestStatus = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ReportId = structure(logical(0), tags = list(type = "string")), DeliverabilityTestStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .pinpointemail$create_email_identity_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EmailIdentity = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(EmailIdentity = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .pinpointemail$create_email_identity_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IdentityType = structure(logical(0), tags = list(    type = "string")), VerifiedForSendingStatus = structure(logical(0), tags = list(    type = "boolean")), DkimAttributes = structure(list(SigningEnabled = structure(logical(0), tags = list(    type = "boolean")), Status = structure(logical(0), tags = list(    type = "string")), Tokens = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(IdentityType = structure(logical(0), tags = list(type = "string")), VerifiedForSendingStatus = structure(logical(0), tags = list(type = "boolean")), DkimAttributes = structure(list(SigningEnabled = structure(logical(0), tags = list(type = "boolean")), Status = structure(logical(0), tags = list(type = "string")), Tokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .pinpointemail$delete_configuration_set_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(    location = "uri", locationName = "ConfigurationSetName", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(location = "uri", locationName = "ConfigurationSetName", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -77,7 +77,7 @@ NULL
 
 .pinpointemail$delete_configuration_set_event_destination_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(    location = "uri", locationName = "ConfigurationSetName", type = "string")), EventDestinationName = structure(logical(0), tags = list(    location = "uri", locationName = "EventDestinationName", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(location = "uri", locationName = "ConfigurationSetName", type = "string")), EventDestinationName = structure(logical(0), tags = list(location = "uri", locationName = "EventDestinationName", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -89,7 +89,7 @@ NULL
 
 .pinpointemail$delete_dedicated_ip_pool_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PoolName = structure(logical(0), tags = list(location = "uri", locationName = "PoolName", type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(PoolName = structure(logical(0), tags = list(location = "uri", locationName = "PoolName", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -101,7 +101,7 @@ NULL
 
 .pinpointemail$delete_email_identity_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EmailIdentity = structure(logical(0), tags = list(    location = "uri", locationName = "EmailIdentity", type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(EmailIdentity = structure(logical(0), tags = list(location = "uri", locationName = "EmailIdentity", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -119,43 +119,43 @@ NULL
 
 .pinpointemail$get_account_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SendQuota = structure(list(Max24HourSend = structure(logical(0), tags = list(    type = "double")), MaxSendRate = structure(logical(0), tags = list(    type = "double")), SentLast24Hours = structure(logical(0), tags = list(    type = "double"))), tags = list(type = "structure")), SendingEnabled = structure(logical(0), tags = list(    type = "boolean")), DedicatedIpAutoWarmupEnabled = structure(logical(0), tags = list(    type = "boolean")), EnforcementStatus = structure(logical(0), tags = list(    type = "string")), ProductionAccessEnabled = structure(logical(0), tags = list(    type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(SendQuota = structure(list(Max24HourSend = structure(logical(0), tags = list(type = "double")), MaxSendRate = structure(logical(0), tags = list(type = "double")), SentLast24Hours = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), SendingEnabled = structure(logical(0), tags = list(type = "boolean")), DedicatedIpAutoWarmupEnabled = structure(logical(0), tags = list(type = "boolean")), EnforcementStatus = structure(logical(0), tags = list(type = "string")), ProductionAccessEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .pinpointemail$get_blacklist_reports_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BlacklistItemNames = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(BlacklistItemNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .pinpointemail$get_blacklist_reports_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BlacklistReport = structure(list(structure(list(    structure(list(RblName = structure(logical(0), tags = list(        type = "string")), ListingTime = structure(logical(0), tags = list(        type = "timestamp")), Description = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(    type = "list"))), tags = list(type = "map"))), tags = list(    type = "structure"))
+  shape <- structure(list(BlacklistReport = structure(list(structure(list(structure(list(RblName = structure(logical(0), tags = list(type = "string")), ListingTime = structure(logical(0), tags = list(type = "timestamp")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .pinpointemail$get_configuration_set_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(    location = "uri", locationName = "ConfigurationSetName", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(location = "uri", locationName = "ConfigurationSetName", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .pinpointemail$get_configuration_set_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(    type = "string")), TrackingOptions = structure(list(CustomRedirectDomain = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure")), DeliveryOptions = structure(list(    SendingPoolName = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure")), ReputationOptions = structure(list(    ReputationMetricsEnabled = structure(logical(0), tags = list(        type = "boolean")), LastFreshStart = structure(logical(0), tags = list(        type = "timestamp"))), tags = list(type = "structure")), SendingOptions = structure(list(SendingEnabled = structure(logical(0), tags = list(        type = "boolean"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(type = "string")), TrackingOptions = structure(list(CustomRedirectDomain = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DeliveryOptions = structure(list(SendingPoolName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ReputationOptions = structure(list(ReputationMetricsEnabled = structure(logical(0), tags = list(type = "boolean")), LastFreshStart = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), SendingOptions = structure(list(SendingEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .pinpointemail$get_configuration_set_event_destinations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(    location = "uri", locationName = "ConfigurationSetName", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(location = "uri", locationName = "ConfigurationSetName", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .pinpointemail$get_configuration_set_event_destinations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EventDestinations = structure(list(structure(list(    Name = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean")), MatchingEventTypes = structure(list(structure(logical(0), tags = list(        type = "string"))), tags = list(type = "list")), KinesisFirehoseDestination = structure(list(        IamRoleArn = structure(logical(0), tags = list(type = "string")), DeliveryStreamArn = structure(logical(0), tags = list(            type = "string"))), tags = list(type = "structure")), CloudWatchDestination = structure(list(DimensionConfigurations = structure(list(        structure(list(DimensionName = structure(logical(0), tags = list(            type = "string")), DimensionValueSource = structure(logical(0), tags = list(            type = "string")), DefaultDimensionValue = structure(logical(0), tags = list(            type = "string"))), tags = list(type = "structure"))), tags = list(        type = "list"))), tags = list(type = "structure")), SnsDestination = structure(list(        TopicArn = structure(logical(0), tags = list(type = "string"))), tags = list(        type = "structure")), PinpointDestination = structure(list(        ApplicationArn = structure(logical(0), tags = list(type = "string"))), tags = list(        type = "structure"))), tags = list(type = "structure"))), tags = list(    type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(EventDestinations = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean")), MatchingEventTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), KinesisFirehoseDestination = structure(list(IamRoleArn = structure(logical(0), tags = list(type = "string")), DeliveryStreamArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CloudWatchDestination = structure(list(DimensionConfigurations = structure(list(structure(list(DimensionName = structure(logical(0), tags = list(type = "string")), DimensionValueSource = structure(logical(0), tags = list(type = "string")), DefaultDimensionValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), SnsDestination = structure(list(TopicArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PinpointDestination = structure(list(ApplicationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -167,19 +167,19 @@ NULL
 
 .pinpointemail$get_dedicated_ip_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DedicatedIp = structure(list(Ip = structure(logical(0), tags = list(    type = "string")), WarmupStatus = structure(logical(0), tags = list(    type = "string")), WarmupPercentage = structure(logical(0), tags = list(    type = "integer")), PoolName = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(DedicatedIp = structure(list(Ip = structure(logical(0), tags = list(type = "string")), WarmupStatus = structure(logical(0), tags = list(type = "string")), WarmupPercentage = structure(logical(0), tags = list(type = "integer")), PoolName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .pinpointemail$get_dedicated_ips_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PoolName = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer"))), tags = list(    type = "structure"))
+  shape <- structure(list(PoolName = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .pinpointemail$get_dedicated_ips_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DedicatedIps = structure(list(structure(list(Ip = structure(logical(0), tags = list(    type = "string")), WarmupStatus = structure(logical(0), tags = list(    type = "string")), WarmupPercentage = structure(logical(0), tags = list(    type = "integer")), PoolName = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "list")), NextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(DedicatedIps = structure(list(structure(list(Ip = structure(logical(0), tags = list(type = "string")), WarmupStatus = structure(logical(0), tags = list(type = "string")), WarmupPercentage = structure(logical(0), tags = list(type = "integer")), PoolName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -191,97 +191,109 @@ NULL
 
 .pinpointemail$get_deliverability_dashboard_options_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DashboardEnabled = structure(logical(0), tags = list(    type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(DashboardEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .pinpointemail$get_deliverability_test_report_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReportId = structure(logical(0), tags = list(location = "uri", locationName = "ReportId", type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(ReportId = structure(logical(0), tags = list(location = "uri", locationName = "ReportId", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .pinpointemail$get_deliverability_test_report_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DeliverabilityTestReport = structure(list(ReportId = structure(logical(0), tags = list(    type = "string")), ReportName = structure(logical(0), tags = list(    type = "string")), Subject = structure(logical(0), tags = list(    type = "string")), FromEmailAddress = structure(logical(0), tags = list(    type = "string")), CreateDate = structure(logical(0), tags = list(    type = "timestamp")), DeliverabilityTestStatus = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure")), OverallPlacement = structure(list(    InboxPercentage = structure(logical(0), tags = list(type = "double")), SpamPercentage = structure(logical(0), tags = list(type = "double")), MissingPercentage = structure(logical(0), tags = list(type = "double")), SpfPercentage = structure(logical(0), tags = list(type = "double")), DkimPercentage = structure(logical(0), tags = list(type = "double"))), tags = list(    type = "structure")), IspPlacements = structure(list(structure(list(    IspName = structure(logical(0), tags = list(type = "string")), PlacementStatistics = structure(list(InboxPercentage = structure(logical(0), tags = list(        type = "double")), SpamPercentage = structure(logical(0), tags = list(        type = "double")), MissingPercentage = structure(logical(0), tags = list(        type = "double")), SpfPercentage = structure(logical(0), tags = list(        type = "double")), DkimPercentage = structure(logical(0), tags = list(        type = "double"))), tags = list(type = "structure"))), tags = list(    type = "structure"))), tags = list(type = "list")), Message = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(DeliverabilityTestReport = structure(list(ReportId = structure(logical(0), tags = list(type = "string")), ReportName = structure(logical(0), tags = list(type = "string")), Subject = structure(logical(0), tags = list(type = "string")), FromEmailAddress = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), DeliverabilityTestStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OverallPlacement = structure(list(InboxPercentage = structure(logical(0), tags = list(type = "double")), SpamPercentage = structure(logical(0), tags = list(type = "double")), MissingPercentage = structure(logical(0), tags = list(type = "double")), SpfPercentage = structure(logical(0), tags = list(type = "double")), DkimPercentage = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), IspPlacements = structure(list(structure(list(IspName = structure(logical(0), tags = list(type = "string")), PlacementStatistics = structure(list(InboxPercentage = structure(logical(0), tags = list(type = "double")), SpamPercentage = structure(logical(0), tags = list(type = "double")), MissingPercentage = structure(logical(0), tags = list(type = "double")), SpfPercentage = structure(logical(0), tags = list(type = "double")), DkimPercentage = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .pinpointemail$get_domain_statistics_report_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Domain = structure(logical(0), tags = list(location = "uri", locationName = "Domain", type = "string")), StartDate = structure(logical(0), tags = list(    type = "timestamp")), EndDate = structure(logical(0), tags = list(    type = "timestamp"))), tags = list(type = "structure"))
+  shape <- structure(list(Domain = structure(logical(0), tags = list(location = "uri", locationName = "Domain", type = "string")), StartDate = structure(logical(0), tags = list(type = "timestamp")), EndDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .pinpointemail$get_domain_statistics_report_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OverallVolume = structure(list(VolumeStatistics = structure(list(    InboxRawCount = structure(logical(0), tags = list(type = "long")), SpamRawCount = structure(logical(0), tags = list(type = "long")), ProjectedInbox = structure(logical(0), tags = list(type = "long")), ProjectedSpam = structure(logical(0), tags = list(type = "long"))), tags = list(    type = "structure")), ReadRatePercent = structure(logical(0), tags = list(    type = "double")), DomainIspPlacements = structure(list(structure(list(    IspName = structure(logical(0), tags = list(type = "string")), InboxRawCount = structure(logical(0), tags = list(type = "long")), SpamRawCount = structure(logical(0), tags = list(type = "long")), InboxPercentage = structure(logical(0), tags = list(type = "double")), SpamPercentage = structure(logical(0), tags = list(type = "double"))), tags = list(    type = "structure"))), tags = list(type = "list"))), tags = list(    type = "structure")), DailyVolumes = structure(list(structure(list(    StartDate = structure(logical(0), tags = list(type = "timestamp")), VolumeStatistics = structure(list(InboxRawCount = structure(logical(0), tags = list(        type = "long")), SpamRawCount = structure(logical(0), tags = list(        type = "long")), ProjectedInbox = structure(logical(0), tags = list(        type = "long")), ProjectedSpam = structure(logical(0), tags = list(        type = "long"))), tags = list(type = "structure")), DomainIspPlacements = structure(list(        structure(list(IspName = structure(logical(0), tags = list(            type = "string")), InboxRawCount = structure(logical(0), tags = list(            type = "long")), SpamRawCount = structure(logical(0), tags = list(            type = "long")), InboxPercentage = structure(logical(0), tags = list(            type = "double")), SpamPercentage = structure(logical(0), tags = list(            type = "double"))), tags = list(type = "structure"))), tags = list(        type = "list"))), tags = list(type = "structure"))), tags = list(    type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(OverallVolume = structure(list(VolumeStatistics = structure(list(InboxRawCount = structure(logical(0), tags = list(type = "long")), SpamRawCount = structure(logical(0), tags = list(type = "long")), ProjectedInbox = structure(logical(0), tags = list(type = "long")), ProjectedSpam = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), ReadRatePercent = structure(logical(0), tags = list(type = "double")), DomainIspPlacements = structure(list(structure(list(IspName = structure(logical(0), tags = list(type = "string")), InboxRawCount = structure(logical(0), tags = list(type = "long")), SpamRawCount = structure(logical(0), tags = list(type = "long")), InboxPercentage = structure(logical(0), tags = list(type = "double")), SpamPercentage = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), DailyVolumes = structure(list(structure(list(StartDate = structure(logical(0), tags = list(type = "timestamp")), VolumeStatistics = structure(list(InboxRawCount = structure(logical(0), tags = list(type = "long")), SpamRawCount = structure(logical(0), tags = list(type = "long")), ProjectedInbox = structure(logical(0), tags = list(type = "long")), ProjectedSpam = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), DomainIspPlacements = structure(list(structure(list(IspName = structure(logical(0), tags = list(type = "string")), InboxRawCount = structure(logical(0), tags = list(type = "long")), SpamRawCount = structure(logical(0), tags = list(type = "long")), InboxPercentage = structure(logical(0), tags = list(type = "double")), SpamPercentage = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .pinpointemail$get_email_identity_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EmailIdentity = structure(logical(0), tags = list(    location = "uri", locationName = "EmailIdentity", type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(EmailIdentity = structure(logical(0), tags = list(location = "uri", locationName = "EmailIdentity", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .pinpointemail$get_email_identity_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IdentityType = structure(logical(0), tags = list(    type = "string")), FeedbackForwardingStatus = structure(logical(0), tags = list(    type = "boolean")), VerifiedForSendingStatus = structure(logical(0), tags = list(    type = "boolean")), DkimAttributes = structure(list(SigningEnabled = structure(logical(0), tags = list(    type = "boolean")), Status = structure(logical(0), tags = list(    type = "string")), Tokens = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure")), MailFromAttributes = structure(list(    MailFromDomain = structure(logical(0), tags = list(type = "string")), MailFromDomainStatus = structure(logical(0), tags = list(        type = "string")), BehaviorOnMxFailure = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(IdentityType = structure(logical(0), tags = list(type = "string")), FeedbackForwardingStatus = structure(logical(0), tags = list(type = "boolean")), VerifiedForSendingStatus = structure(logical(0), tags = list(type = "boolean")), DkimAttributes = structure(list(SigningEnabled = structure(logical(0), tags = list(type = "boolean")), Status = structure(logical(0), tags = list(type = "string")), Tokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), MailFromAttributes = structure(list(MailFromDomain = structure(logical(0), tags = list(type = "string")), MailFromDomainStatus = structure(logical(0), tags = list(type = "string")), BehaviorOnMxFailure = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .pinpointemail$list_configuration_sets_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(    type = "string")), PageSize = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .pinpointemail$list_configuration_sets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationSets = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ConfigurationSets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .pinpointemail$list_dedicated_ip_pools_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(    type = "string")), PageSize = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .pinpointemail$list_dedicated_ip_pools_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DedicatedIpPools = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(DedicatedIpPools = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .pinpointemail$list_deliverability_test_reports_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(    type = "string")), PageSize = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .pinpointemail$list_deliverability_test_reports_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DeliverabilityTestReports = structure(list(structure(list(    ReportId = structure(logical(0), tags = list(type = "string")), ReportName = structure(logical(0), tags = list(type = "string")), Subject = structure(logical(0), tags = list(type = "string")), FromEmailAddress = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), DeliverabilityTestStatus = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(    type = "list")), NextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(DeliverabilityTestReports = structure(list(structure(list(ReportId = structure(logical(0), tags = list(type = "string")), ReportName = structure(logical(0), tags = list(type = "string")), Subject = structure(logical(0), tags = list(type = "string")), FromEmailAddress = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), DeliverabilityTestStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .pinpointemail$list_email_identities_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(    type = "string")), PageSize = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .pinpointemail$list_email_identities_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EmailIdentities = structure(list(structure(list(    IdentityType = structure(logical(0), tags = list(type = "string")), IdentityName = structure(logical(0), tags = list(type = "string")), SendingEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(    type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(EmailIdentities = structure(list(structure(list(IdentityType = structure(logical(0), tags = list(type = "string")), IdentityName = structure(logical(0), tags = list(type = "string")), SendingEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.pinpointemail$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.pinpointemail$list_tags_for_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .pinpointemail$put_account_dedicated_ip_warmup_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AutoWarmupEnabled = structure(logical(0), tags = list(    type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(AutoWarmupEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -293,7 +305,7 @@ NULL
 
 .pinpointemail$put_account_sending_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SendingEnabled = structure(logical(0), tags = list(    type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(SendingEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -305,7 +317,7 @@ NULL
 
 .pinpointemail$put_configuration_set_delivery_options_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(    location = "uri", locationName = "ConfigurationSetName", type = "string")), SendingPoolName = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(location = "uri", locationName = "ConfigurationSetName", type = "string")), SendingPoolName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -317,7 +329,7 @@ NULL
 
 .pinpointemail$put_configuration_set_reputation_options_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(    location = "uri", locationName = "ConfigurationSetName", type = "string")), ReputationMetricsEnabled = structure(logical(0), tags = list(    type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(location = "uri", locationName = "ConfigurationSetName", type = "string")), ReputationMetricsEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -329,7 +341,7 @@ NULL
 
 .pinpointemail$put_configuration_set_sending_options_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(    location = "uri", locationName = "ConfigurationSetName", type = "string")), SendingEnabled = structure(logical(0), tags = list(    type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(location = "uri", locationName = "ConfigurationSetName", type = "string")), SendingEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -341,7 +353,7 @@ NULL
 
 .pinpointemail$put_configuration_set_tracking_options_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(    location = "uri", locationName = "ConfigurationSetName", type = "string")), CustomRedirectDomain = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(location = "uri", locationName = "ConfigurationSetName", type = "string")), CustomRedirectDomain = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -353,7 +365,7 @@ NULL
 
 .pinpointemail$put_dedicated_ip_in_pool_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Ip = structure(logical(0), tags = list(location = "uri", locationName = "IP", type = "string")), DestinationPoolName = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Ip = structure(logical(0), tags = list(location = "uri", locationName = "IP", type = "string")), DestinationPoolName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -365,7 +377,7 @@ NULL
 
 .pinpointemail$put_dedicated_ip_warmup_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Ip = structure(logical(0), tags = list(location = "uri", locationName = "IP", type = "string")), WarmupPercentage = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(Ip = structure(logical(0), tags = list(location = "uri", locationName = "IP", type = "string")), WarmupPercentage = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -377,7 +389,7 @@ NULL
 
 .pinpointemail$put_deliverability_dashboard_option_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DashboardEnabled = structure(logical(0), tags = list(    type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(DashboardEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -389,7 +401,7 @@ NULL
 
 .pinpointemail$put_email_identity_dkim_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EmailIdentity = structure(logical(0), tags = list(    location = "uri", locationName = "EmailIdentity", type = "string")), SigningEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(    type = "structure"))
+  shape <- structure(list(EmailIdentity = structure(logical(0), tags = list(location = "uri", locationName = "EmailIdentity", type = "string")), SigningEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -401,7 +413,7 @@ NULL
 
 .pinpointemail$put_email_identity_feedback_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EmailIdentity = structure(logical(0), tags = list(    location = "uri", locationName = "EmailIdentity", type = "string")), EmailForwardingEnabled = structure(logical(0), tags = list(        type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(EmailIdentity = structure(logical(0), tags = list(location = "uri", locationName = "EmailIdentity", type = "string")), EmailForwardingEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -413,7 +425,7 @@ NULL
 
 .pinpointemail$put_email_identity_mail_from_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EmailIdentity = structure(logical(0), tags = list(    location = "uri", locationName = "EmailIdentity", type = "string")), MailFromDomain = structure(logical(0), tags = list(type = "string")), BehaviorOnMxFailure = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(EmailIdentity = structure(logical(0), tags = list(location = "uri", locationName = "EmailIdentity", type = "string")), MailFromDomain = structure(logical(0), tags = list(type = "string")), BehaviorOnMxFailure = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -425,19 +437,43 @@ NULL
 
 .pinpointemail$send_email_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FromEmailAddress = structure(logical(0), tags = list(    type = "string")), Destination = structure(list(ToAddresses = structure(list(    structure(logical(0), tags = list(type = "string"))), tags = list(    type = "list")), CcAddresses = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list")), BccAddresses = structure(list(    structure(logical(0), tags = list(type = "string"))), tags = list(    type = "list"))), tags = list(type = "structure")), ReplyToAddresses = structure(list(    structure(logical(0), tags = list(type = "string"))), tags = list(    type = "list")), FeedbackForwardingEmailAddress = structure(logical(0), tags = list(    type = "string")), Content = structure(list(Simple = structure(list(    Subject = structure(list(Data = structure(logical(0), tags = list(        type = "string")), Charset = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure")), Body = structure(list(Text = structure(list(Data = structure(logical(0), tags = list(        type = "string")), Charset = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure")), Html = structure(list(Data = structure(logical(0), tags = list(            type = "string")), Charset = structure(logical(0), tags = list(            type = "string"))), tags = list(type = "structure"))), tags = list(        type = "structure"))), tags = list(type = "structure")), Raw = structure(list(Data = structure(logical(0), tags = list(        type = "blob"))), tags = list(type = "structure"))), tags = list(    type = "structure")), EmailTags = structure(list(structure(list(    Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))), tags = list(type = "list")), ConfigurationSetName = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(FromEmailAddress = structure(logical(0), tags = list(type = "string")), Destination = structure(list(ToAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CcAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), BccAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ReplyToAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), FeedbackForwardingEmailAddress = structure(logical(0), tags = list(type = "string")), Content = structure(list(Simple = structure(list(Subject = structure(list(Data = structure(logical(0), tags = list(type = "string")), Charset = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Body = structure(list(Text = structure(list(Data = structure(logical(0), tags = list(type = "string")), Charset = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Html = structure(list(Data = structure(logical(0), tags = list(type = "string")), Charset = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), Raw = structure(list(Data = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure"))), tags = list(type = "structure")), EmailTags = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ConfigurationSetName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .pinpointemail$send_email_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MessageId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(MessageId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.pinpointemail$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.pinpointemail$tag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.pinpointemail$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "querystring", locationName = "ResourceArn", type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "TagKeys", type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.pinpointemail$untag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .pinpointemail$update_configuration_set_event_destination_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(    location = "uri", locationName = "ConfigurationSetName", type = "string")), EventDestinationName = structure(logical(0), tags = list(    location = "uri", locationName = "EventDestinationName", type = "string")), EventDestination = structure(list(Enabled = structure(logical(0), tags = list(    type = "boolean")), MatchingEventTypes = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list")), KinesisFirehoseDestination = structure(list(    IamRoleArn = structure(logical(0), tags = list(type = "string")), DeliveryStreamArn = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure")), CloudWatchDestination = structure(list(    DimensionConfigurations = structure(list(structure(list(DimensionName = structure(logical(0), tags = list(        type = "string")), DimensionValueSource = structure(logical(0), tags = list(        type = "string")), DefaultDimensionValue = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(        type = "list"))), tags = list(type = "structure")), SnsDestination = structure(list(    TopicArn = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure")), PinpointDestination = structure(list(    ApplicationArn = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(location = "uri", locationName = "ConfigurationSetName", type = "string")), EventDestinationName = structure(logical(0), tags = list(location = "uri", locationName = "EventDestinationName", type = "string")), EventDestination = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), MatchingEventTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), KinesisFirehoseDestination = structure(list(IamRoleArn = structure(logical(0), tags = list(type = "string")), DeliveryStreamArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CloudWatchDestination = structure(list(DimensionConfigurations = structure(list(structure(list(DimensionName = structure(logical(0), tags = list(type = "string")), DimensionValueSource = structure(logical(0), tags = list(type = "string")), DefaultDimensionValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), SnsDestination = structure(list(TopicArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PinpointDestination = structure(list(ApplicationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

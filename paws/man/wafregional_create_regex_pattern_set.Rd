@@ -32,7 +32,7 @@ you want AWS WAF to watch for.
 }
 
 For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the \href{http://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
+HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{wafregional$create_regex_pattern_set(

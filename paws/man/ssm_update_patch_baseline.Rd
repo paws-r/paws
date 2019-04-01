@@ -14,7 +14,7 @@ ssm_update_patch_baseline(BaselineId, Name, GlobalFilters,
 
 \item{Name}{The name of the patch baseline.}
 
-\item{GlobalFilters}{A set of global filters used to exclude patches from the baseline.}
+\item{GlobalFilters}{A set of global filters used to include patches in the baseline.}
 
 \item{ApprovalRules}{A set of rules used to include patches in the baseline.}
 

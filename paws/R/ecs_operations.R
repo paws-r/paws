@@ -72,7 +72,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL) {
 #' definition
 #'
 #' Runs and maintains a desired number of tasks from a specified task
-#' definition. If the number of tasks running in a service drops below
+#' definition. If the number of tasks running in a service drops below the
 #' `desiredCount`, Amazon ECS spawns another copy of the task in the
 #' specified cluster. To update an existing service, see UpdateService.
 #' 
@@ -83,25 +83,52 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL) {
 #' Balancing](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
+#' Tasks for services that *do not* use a load balancer are considered
+#' healthy if they\'re in the `RUNNING` state. Tasks for services that *do*
+#' use a load balancer are considered healthy if they\'re in the `RUNNING`
+#' state and the container instance that they\'re hosted on is reported as
+#' healthy by the load balancer.
+#' 
+#' There are two service scheduler strategies available:
+#' 
+#' -   `REPLICA` - The replica scheduling strategy places and maintains the
+#'     desired number of tasks across your cluster. By default, the service
+#'     scheduler spreads tasks across Availability Zones. You can use task
+#'     placement strategies and constraints to customize task placement
+#'     decisions. For more information, see [Service Scheduler
+#'     Concepts](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html)
+#'     in the *Amazon Elastic Container Service Developer Guide*.
+#' 
+#' -   `DAEMON` - The daemon scheduling strategy deploys exactly one task
+#'     on each active container instance that meets all of the task
+#'     placement constraints that you specify in your cluster. When using
+#'     this strategy, you don\'t need to specify a desired number of tasks,
+#'     a task placement strategy, or use Service Auto Scaling policies. For
+#'     more information, see [Service Scheduler
+#'     Concepts](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html)
+#'     in the *Amazon Elastic Container Service Developer Guide*.
+#' 
 #' You can optionally specify a deployment configuration for your service.
 #' The deployment is triggered by changing properties, such as the task
 #' definition or the desired count of a service, with an UpdateService
-#' operation.
+#' operation. The default value for a replica service for
+#' `minimumHealthyPercent` is 100\%. The default value for a daemon service
+#' for `minimumHealthyPercent` is 0\%.
 #' 
-#' If a service is using the `ECS` deployment controller, the **minimum
-#' healthy percent** represents a lower limit on the number of tasks in a
+#' If a service is using the `ECS` deployment controller, the minimum
+#' healthy percent represents a lower limit on the number of tasks in a
 #' service that must remain in the `RUNNING` state during a deployment, as
 #' a percentage of the desired number of tasks (rounded up to the nearest
 #' integer), and while any container instances are in the `DRAINING` state
 #' if the service contains tasks using the EC2 launch type. This parameter
 #' enables you to deploy without using additional cluster capacity. For
 #' example, if your service has a desired number of four tasks and a
-#' minimum healthy percent of 50\%, the scheduler may stop two existing
+#' minimum healthy percent of 50\%, the scheduler might stop two existing
 #' tasks to free up cluster capacity before starting two new tasks. Tasks
 #' for services that *do not* use a load balancer are considered healthy if
-#' they are in the `RUNNING` state; tasks for services that *do* use a load
-#' balancer are considered healthy if they are in the `RUNNING` state and
-#' they are reported as healthy by the load balancer. The default value for
+#' they\'re in the `RUNNING` state. Tasks for services that *do* use a load
+#' balancer are considered healthy if they\'re in the `RUNNING` state and
+#' they\'re reported as healthy by the load balancer. The default value for
 #' minimum healthy percent is 100\%.
 #' 
 #' If a service is using the `ECS` deployment controller, the **maximum
@@ -117,22 +144,22 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL) {
 #' resources required to do this are available). The default value for
 #' maximum percent is 200\%.
 #' 
-#' If a service is using the `CODE_DEPLOY` deployment controller and tasks
-#' that use the EC2 launch type, the **minimum healthy percent** and
-#' **maximum percent** values are only used to define the lower and upper
-#' limit on the number of the tasks in the service that remain in the
-#' `RUNNING` state while the container instances are in the `DRAINING`
-#' state. If the tasks in the service use the Fargate launch type, the
-#' minimum healthy percent and maximum percent values are not used,
-#' although they are currently visible when describing your service.
+#' If a service is using either the `CODE_DEPLOY` or `EXTERNAL` deployment
+#' controller types and tasks that use the EC2 launch type, the **minimum
+#' healthy percent** and **maximum percent** values are used only to define
+#' the lower and upper limit on the number of the tasks in the service that
+#' remain in the `RUNNING` state while the container instances are in the
+#' `DRAINING` state. If the tasks in the service use the Fargate launch
+#' type, the minimum healthy percent and maximum percent values aren\'t
+#' used, although they\'re currently visible when describing your service.
 #' 
-#' Tasks for services that *do not* use a load balancer are considered
-#' healthy if they are in the `RUNNING` state. Tasks for services that *do*
-#' use a load balancer are considered healthy if they are in the `RUNNING`
-#' state and the container instance they are hosted on is reported as
-#' healthy by the load balancer. The default value for a replica service
-#' for `minimumHealthyPercent` is 100\%. The default value for a daemon
-#' service for `minimumHealthyPercent` is 0\%.
+#' When creating a service that uses the `EXTERNAL` deployment controller,
+#' you can specify only parameters that aren\'t controlled at the task set
+#' level. The only required parameter is the service name. You control your
+#' services using the CreateTaskSet operation. For more information, see
+#' [Amazon ECS Deployment
+#' Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
 #' When the service scheduler launches new tasks, it determines task
 #' placement in your cluster using the following logic:
@@ -173,9 +200,12 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL) {
 #' numbers, hyphens, and underscores are allowed. Service names must be
 #' unique within a cluster, but you can have similarly named services in
 #' multiple clusters within a Region or across multiple Regions.
-#' @param taskDefinition &#91;required&#93; The `family` and `revision` (`family:revision`) or full ARN of the task
+#' @param taskDefinition The `family` and `revision` (`family:revision`) or full ARN of the task
 #' definition to run in your service. If a `revision` is not specified, the
 #' latest `ACTIVE` revision is used.
+#' 
+#' A task definition must be specified if the service is using the `ECS`
+#' deployment controller.
 #' @param loadBalancers A load balancer object representing the load balancer to use with your
 #' service.
 #' 
@@ -236,9 +266,9 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL) {
 #' [Amazon ECS Launch
 #' Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
-#' @param platformVersion The platform version on which your tasks in the service are running. A
-#' platform version is only specified for tasks using the Fargate launch
-#' type. If one is not specified, the `LATEST` platform version is used by
+#' @param platformVersion The platform version that your tasks in the service are running on. A
+#' platform version is specified only for tasks using the Fargate launch
+#' type. If one isn\'t specified, the `LATEST` platform version is used by
 #' default. For more information, see [AWS Fargate Platform
 #' Versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
@@ -283,10 +313,10 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL) {
 #' after a task has first started. This is only valid if your service is
 #' configured to use a load balancer. If your service\'s tasks take a while
 #' to start and respond to Elastic Load Balancing health checks, you can
-#' specify a health check grace period of up to 7,200 seconds. During that
-#' time, the ECS service scheduler ignores health check status. This grace
-#' period can prevent the ECS service scheduler from marking tasks as
-#' unhealthy and stopping them before they have time to come up.
+#' specify a health check grace period of up to 2,147,483,647 seconds.
+#' During that time, the ECS service scheduler ignores health check status.
+#' This grace period can prevent the ECS service scheduler from marking
+#' tasks as unhealthy and stopping them before they have time to come up.
 #' @param schedulingStrategy The scheduling strategy to use for the service. For more information,
 #' see
 #' [Services](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html).
@@ -297,18 +327,18 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL) {
 #'     desired number of tasks across your cluster. By default, the service
 #'     scheduler spreads tasks across Availability Zones. You can use task
 #'     placement strategies and constraints to customize task placement
-#'     decisions. This scheduler strategy is required if using the
-#'     `CODE_DEPLOY` deployment controller.
+#'     decisions. This scheduler strategy is required if the service is
+#'     using the `CODE_DEPLOY` or `EXTERNAL` deployment controller types.
 #' 
 #' -   `DAEMON`-The daemon scheduling strategy deploys exactly one task on
 #'     each active container instance that meets all of the task placement
-#'     constraints that you specify in your cluster. When you are using
-#'     this strategy, there is no need to specify a desired number of
-#'     tasks, a task placement strategy, or use Service Auto Scaling
-#'     policies.
+#'     constraints that you specify in your cluster. When you\'re using
+#'     this strategy, you don\'t need to specify a desired number of tasks,
+#'     a task placement strategy, or use Service Auto Scaling policies.
 #' 
-#'     Tasks using the Fargate launch type or the `CODE_DEPLOY` deploymenet
-#'     controller do not support the `DAEMON` scheduling strategy.
+#'     Tasks using the Fargate launch type or the `CODE_DEPLOY` or
+#'     `EXTERNAL` deployment controller types don\'t support the `DAEMON`
+#'     scheduling strategy.
 #' @param deploymentController The deployment controller to use for the service.
 #' @param tags The metadata that you apply to the service to help you categorize and
 #' organize them. Each tag consists of a key and an optional value, both of
@@ -382,7 +412,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL) {
 #'   healthCheckGracePeriodSeconds = 123,
 #'   schedulingStrategy = "REPLICA"|"DAEMON",
 #'   deploymentController = list(
-#'     type = "ECS"|"CODE_DEPLOY"
+#'     type = "ECS"|"CODE_DEPLOY"|"EXTERNAL"
 #'   ),
 #'   tags = list(
 #'     list(
@@ -426,7 +456,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname ecs_create_service
-ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition, loadBalancers = NULL, serviceRegistries = NULL, desiredCount = NULL, clientToken = NULL, launchType = NULL, platformVersion = NULL, role = NULL, deploymentConfiguration = NULL, placementConstraints = NULL, placementStrategy = NULL, networkConfiguration = NULL, healthCheckGracePeriodSeconds = NULL, schedulingStrategy = NULL, deploymentController = NULL, tags = NULL, enableECSManagedTags = NULL, propagateTags = NULL) {
+ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NULL, loadBalancers = NULL, serviceRegistries = NULL, desiredCount = NULL, clientToken = NULL, launchType = NULL, platformVersion = NULL, role = NULL, deploymentConfiguration = NULL, placementConstraints = NULL, placementStrategy = NULL, networkConfiguration = NULL, healthCheckGracePeriodSeconds = NULL, schedulingStrategy = NULL, deploymentController = NULL, tags = NULL, enableECSManagedTags = NULL, propagateTags = NULL) {
   op <- new_operation(
     name = "CreateService",
     http_method = "POST",
@@ -441,6 +471,111 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition, load
   return(response)
 }
 .ecs$operations$create_service <- ecs_create_service
+
+#' Create a task set in the specified cluster and service
+#'
+#' Create a task set in the specified cluster and service. This is used
+#' when a service uses the `EXTERNAL` deployment controller type. For more
+#' information, see [Amazon ECS Deployment
+#' Types](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
+#'
+#' @usage
+#' ecs_create_task_set(service, cluster, externalId, taskDefinition,
+#'   networkConfiguration, loadBalancers, serviceRegistries, launchType,
+#'   platformVersion, scale, clientToken)
+#'
+#' @param service &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the service to
+#' create the task set in.
+#' @param cluster &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the cluster that
+#' hosts the service to create the task set in.
+#' @param externalId An optional non-unique tag that identifies this task set in external
+#' systems. If the task set is associated with a service discovery
+#' registry, the tasks in this task set will have the
+#' `ECS_TASK_SET_EXTERNAL_ID` AWS Cloud Map attribute set to the provided
+#' value.
+#' @param taskDefinition &#91;required&#93; The task definition for the tasks in the task set to use.
+#' @param networkConfiguration 
+#' @param loadBalancers A load balancer object representing the load balancer to use with the
+#' task set. The supported load balancer types are either an Application
+#' Load Balancer or a Network Load Balancer.
+#' @param serviceRegistries The details of the service discovery registries to assign to this task
+#' set. For more information, see [Service
+#' Discovery](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html).
+#' @param launchType The launch type that new tasks in the task set will use. For more
+#' information, see [Amazon ECS Launch
+#' Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
+#' @param platformVersion The platform version that the tasks in the task set should use. A
+#' platform version is specified only for tasks using the Fargate launch
+#' type. If one isn\'t specified, the `LATEST` platform version is used by
+#' default.
+#' @param scale 
+#' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. Up to 32 ASCII characters are allowed.
+#'
+#' @section Request syntax:
+#' ```
+#' ecs$create_task_set(
+#'   service = "string",
+#'   cluster = "string",
+#'   externalId = "string",
+#'   taskDefinition = "string",
+#'   networkConfiguration = list(
+#'     awsvpcConfiguration = list(
+#'       subnets = list(
+#'         "string"
+#'       ),
+#'       securityGroups = list(
+#'         "string"
+#'       ),
+#'       assignPublicIp = "ENABLED"|"DISABLED"
+#'     )
+#'   ),
+#'   loadBalancers = list(
+#'     list(
+#'       targetGroupArn = "string",
+#'       loadBalancerName = "string",
+#'       containerName = "string",
+#'       containerPort = 123
+#'     )
+#'   ),
+#'   serviceRegistries = list(
+#'     list(
+#'       registryArn = "string",
+#'       port = 123,
+#'       containerName = "string",
+#'       containerPort = 123
+#'     )
+#'   ),
+#'   launchType = "EC2"|"FARGATE",
+#'   platformVersion = "string",
+#'   scale = list(
+#'     value = 123.0,
+#'     unit = "PERCENT"
+#'   ),
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_create_task_set
+ecs_create_task_set <- function(service, cluster, externalId = NULL, taskDefinition, networkConfiguration = NULL, loadBalancers = NULL, serviceRegistries = NULL, launchType = NULL, platformVersion = NULL, scale = NULL, clientToken = NULL) {
+  op <- new_operation(
+    name = "CreateTaskSet",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecs$create_task_set_input(service = service, cluster = cluster, externalId = externalId, taskDefinition = taskDefinition, networkConfiguration = networkConfiguration, loadBalancers = loadBalancers, serviceRegistries = serviceRegistries, launchType = launchType, platformVersion = platformVersion, scale = scale, clientToken = clientToken)
+  output <- .ecs$create_task_set_output()
+  svc <- .ecs$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$create_task_set <- ecs_create_task_set
 
 #' Modifies the ARN and resource ID format of a resource for a specified
 #' IAM user, IAM role, or the root user for an account
@@ -668,6 +803,55 @@ ecs_delete_service <- function(cluster = NULL, service, force = NULL) {
   return(response)
 }
 .ecs$operations$delete_service <- ecs_delete_service
+
+#' Deletes a specified task set within a service
+#'
+#' Deletes a specified task set within a service. This is used when a
+#' service uses the `EXTERNAL` deployment controller type. For more
+#' information, see [Amazon ECS Deployment
+#' Types](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
+#'
+#' @usage
+#' ecs_delete_task_set(cluster, service, taskSet, force)
+#'
+#' @param cluster &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the cluster that
+#' hosts the service that the task set exists in to delete.
+#' @param service &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the service that
+#' hosts the task set to delete.
+#' @param taskSet &#91;required&#93; The task set ID or full Amazon Resource Name (ARN) of the task set to
+#' delete.
+#' @param force If `true`, this allows you to delete a task set even if it hasn\'t been
+#' scaled down to zero.
+#'
+#' @section Request syntax:
+#' ```
+#' ecs$delete_task_set(
+#'   cluster = "string",
+#'   service = "string",
+#'   taskSet = "string",
+#'   force = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_delete_task_set
+ecs_delete_task_set <- function(cluster, service, taskSet, force = NULL) {
+  op <- new_operation(
+    name = "DeleteTaskSet",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecs$delete_task_set_input(cluster = cluster, service = service, taskSet = taskSet, force = force)
+  output <- .ecs$delete_task_set_output()
+  svc <- .ecs$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$delete_task_set <- ecs_delete_task_set
 
 #' Deregisters an Amazon ECS container instance from the specified cluster
 #'
@@ -1047,6 +1231,53 @@ ecs_describe_task_definition <- function(taskDefinition, include = NULL) {
   return(response)
 }
 .ecs$operations$describe_task_definition <- ecs_describe_task_definition
+
+#' Describes the task sets in the specified cluster and service
+#'
+#' Describes the task sets in the specified cluster and service. This is
+#' used when a service uses the `EXTERNAL` deployment controller type. For
+#' more information, see [Amazon ECS Deployment
+#' Types](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
+#'
+#' @usage
+#' ecs_describe_task_sets(cluster, service, taskSets)
+#'
+#' @param cluster &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the cluster that
+#' hosts the service that the task sets exist in.
+#' @param service &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the service that
+#' the task sets exist in.
+#' @param taskSets The ID or full Amazon Resource Name (ARN) of task sets to describe.
+#'
+#' @section Request syntax:
+#' ```
+#' ecs$describe_task_sets(
+#'   cluster = "string",
+#'   service = "string",
+#'   taskSets = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_describe_task_sets
+ecs_describe_task_sets <- function(cluster, service, taskSets = NULL) {
+  op <- new_operation(
+    name = "DescribeTaskSets",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecs$describe_task_sets_input(cluster = cluster, service = service, taskSets = taskSets)
+  output <- .ecs$describe_task_sets_output()
+  svc <- .ecs$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$describe_task_sets <- ecs_describe_task_sets
 
 #' Describes a specified task or tasks
 #'
@@ -2153,7 +2384,8 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' @usage
 #' ecs_register_task_definition(family, taskRoleArn, executionRoleArn,
 #'   networkMode, containerDefinitions, volumes, placementConstraints,
-#'   requiresCompatibilities, cpu, memory, tags, pidMode, ipcMode)
+#'   requiresCompatibilities, cpu, memory, tags, pidMode, ipcMode,
+#'   proxyConfiguration)
 #'
 #' @param family &#91;required&#93; You must specify a `family` for a task definition, which allows you to
 #' track multiple versions of the same task definition. The `family` is
@@ -2332,6 +2564,7 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' 
 #' This parameter is not supported for Windows containers or tasks using
 #' the Fargate launch type.
+#' @param proxyConfiguration 
 #'
 #' @section Request syntax:
 #' ```
@@ -2422,6 +2655,14 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #'           valueFrom = "string"
 #'         )
 #'       ),
+#'       dependsOn = list(
+#'         list(
+#'           containerName = "string",
+#'           condition = "START"|"COMPLETE"|"SUCCESS"|"HEALTHY"
+#'         )
+#'       ),
+#'       startTimeout = 123,
+#'       stopTimeout = 123,
 #'       hostname = "string",
 #'       user = "string",
 #'       workingDirectory = "string",
@@ -2521,7 +2762,17 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #'     )
 #'   ),
 #'   pidMode = "host"|"task",
-#'   ipcMode = "host"|"task"|"none"
+#'   ipcMode = "host"|"task"|"none",
+#'   proxyConfiguration = list(
+#'     type = "APPMESH",
+#'     containerName = "string",
+#'     properties = list(
+#'       list(
+#'         name = "string",
+#'         value = "string"
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -2549,14 +2800,14 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' @keywords internal
 #'
 #' @rdname ecs_register_task_definition
-ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRoleArn = NULL, networkMode = NULL, containerDefinitions, volumes = NULL, placementConstraints = NULL, requiresCompatibilities = NULL, cpu = NULL, memory = NULL, tags = NULL, pidMode = NULL, ipcMode = NULL) {
+ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRoleArn = NULL, networkMode = NULL, containerDefinitions, volumes = NULL, placementConstraints = NULL, requiresCompatibilities = NULL, cpu = NULL, memory = NULL, tags = NULL, pidMode = NULL, ipcMode = NULL, proxyConfiguration = NULL) {
   op <- new_operation(
     name = "RegisterTaskDefinition",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ecs$register_task_definition_input(family = family, taskRoleArn = taskRoleArn, executionRoleArn = executionRoleArn, networkMode = networkMode, containerDefinitions = containerDefinitions, volumes = volumes, placementConstraints = placementConstraints, requiresCompatibilities = requiresCompatibilities, cpu = cpu, memory = memory, tags = tags, pidMode = pidMode, ipcMode = ipcMode)
+  input <- .ecs$register_task_definition_input(family = family, taskRoleArn = taskRoleArn, executionRoleArn = executionRoleArn, networkMode = networkMode, containerDefinitions = containerDefinitions, volumes = volumes, placementConstraints = placementConstraints, requiresCompatibilities = requiresCompatibilities, cpu = cpu, memory = memory, tags = tags, pidMode = pidMode, ipcMode = ipcMode, proxyConfiguration = proxyConfiguration)
   output <- .ecs$register_task_definition_output()
   svc <- .ecs$service()
   request <- new_request(svc, op, input, output)
@@ -2935,7 +3186,7 @@ ecs_start_task <- function(cluster = NULL, taskDefinition, overrides = NULL, con
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' hosts the task to stop. If you do not specify a cluster, the default
 #' cluster is assumed.
-#' @param task &#91;required&#93; The task ID or full ARN entry of the task to stop.
+#' @param task &#91;required&#93; The task ID or full Amazon Resource Name (ARN) of the task to stop.
 #' @param reason An optional message specified when a task is stopped. For example, if
 #' you are using a custom scheduler, you can use this parameter to specify
 #' the reason for stopping the task here, and the message appears in
@@ -3386,6 +3637,12 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' [CreateDeployment](https://docs.aws.amazon.com/codedeploy/latest/APIReference/API_CreateDeployment.html)
 #' in the *AWS CodeDeploy API Reference*.
 #' 
+#' For services using an external deployment controller, you can update
+#' only the desired count and health check grace period using this API. If
+#' the launch type, load balancer, network configuration, platform version,
+#' or task definition need to be updated, you should create a new task set.
+#' For more information, see CreateTaskSet.
+#' 
 #' You can add to or subtract from the number of instantiations of a task
 #' definition in a service by specifying the cluster that the service is
 #' running in and a new `desiredCount` parameter.
@@ -3585,3 +3842,102 @@ ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, tas
   return(response)
 }
 .ecs$operations$update_service <- ecs_update_service
+
+#' Modifies which task set in a service is the primary task set
+#'
+#' Modifies which task set in a service is the primary task set. Any
+#' parameters that are updated on the primary task set in a service will
+#' transition to the service. This is used when a service uses the
+#' `EXTERNAL` deployment controller type. For more information, see [Amazon
+#' ECS Deployment
+#' Types](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
+#'
+#' @usage
+#' ecs_update_service_primary_task_set(cluster, service, primaryTaskSet)
+#'
+#' @param cluster &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the cluster that
+#' hosts the service that the task set exists in.
+#' @param service &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the service that
+#' the task set exists in.
+#' @param primaryTaskSet &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the task set to set
+#' as the primary task set in the deployment.
+#'
+#' @section Request syntax:
+#' ```
+#' ecs$update_service_primary_task_set(
+#'   cluster = "string",
+#'   service = "string",
+#'   primaryTaskSet = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_update_service_primary_task_set
+ecs_update_service_primary_task_set <- function(cluster, service, primaryTaskSet) {
+  op <- new_operation(
+    name = "UpdateServicePrimaryTaskSet",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecs$update_service_primary_task_set_input(cluster = cluster, service = service, primaryTaskSet = primaryTaskSet)
+  output <- .ecs$update_service_primary_task_set_output()
+  svc <- .ecs$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$update_service_primary_task_set <- ecs_update_service_primary_task_set
+
+#' Modifies a task set
+#'
+#' Modifies a task set. This is used when a service uses the `EXTERNAL`
+#' deployment controller type. For more information, see [Amazon ECS
+#' Deployment
+#' Types](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
+#'
+#' @usage
+#' ecs_update_task_set(cluster, service, taskSet, scale)
+#'
+#' @param cluster &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the cluster that
+#' hosts the service that the task set exists in.
+#' @param service &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the service that
+#' the task set exists in.
+#' @param taskSet &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the task set to
+#' update.
+#' @param scale &#91;required&#93; 
+#'
+#' @section Request syntax:
+#' ```
+#' ecs$update_task_set(
+#'   cluster = "string",
+#'   service = "string",
+#'   taskSet = "string",
+#'   scale = list(
+#'     value = 123.0,
+#'     unit = "PERCENT"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_update_task_set
+ecs_update_task_set <- function(cluster, service, taskSet, scale) {
+  op <- new_operation(
+    name = "UpdateTaskSet",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecs$update_task_set_input(cluster = cluster, service = service, taskSet = taskSet, scale = scale)
+  output <- .ecs$update_task_set_output()
+  svc <- .ecs$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$update_task_set <- ecs_update_task_set

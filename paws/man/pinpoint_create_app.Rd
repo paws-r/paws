@@ -15,7 +15,10 @@ Creates or updates an app.
 \section{Request syntax}{
 \preformatted{pinpoint$create_app(
   CreateApplicationRequest = list(
-    Name = "string"
+    Name = "string",
+    tags = list(
+      "string"
+    )
   )
 )
 }

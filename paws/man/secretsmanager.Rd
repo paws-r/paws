@@ -13,7 +13,7 @@ AWS Secrets Manager is a web service that enables you to store, manage,
 and retrieve, secrets.
 
 This guide provides descriptions of the Secrets Manager API. For more
-information about using this service, see the \href{http://docs.aws.amazon.com/secretsmanager/latest/userguide/introduction.html}{AWS Secrets Manager User Guide}.
+information about using this service, see the \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/introduction.html}{AWS Secrets Manager User Guide}.
 
 \strong{API Version}
 
@@ -32,7 +32,7 @@ install them, see \href{http://aws.amazon.com/tools/}{Tools for Amazon Web Servi
 We recommend that you use the AWS SDKs to make programmatic API calls to
 Secrets Manager. However, you also can use the Secrets Manager HTTP
 Query API to make direct calls to the Secrets Manager web service. To
-learn more about the Secrets Manager HTTP Query API, see \href{http://docs.aws.amazon.com/secretsmanager/latest/userguide/query-requests.html}{Making Query Requests}
+learn more about the Secrets Manager HTTP Query API, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/query-requests.html}{Making Query Requests}
 in the \emph{AWS Secrets Manager User Guide}.
 
 Secrets Manager supports GET and POST requests for all actions. That is,
@@ -68,7 +68,7 @@ can determine which requests were successfully made to Secrets Manager,
 who made the request, when it was made, and so on. For more about AWS
 Secrets Manager and its support for AWS CloudTrail, see \href{http://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring.html#monitoring_cloudtrail}{Logging AWS Secrets Manager Events with AWS CloudTrail}
 in the \emph{AWS Secrets Manager User Guide}. To learn more about CloudTrail,
-including how to turn it on and find your log files, see the \href{http://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html}{AWS CloudTrail User Guide}.
+including how to turn it on and find your log files, see the \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html}{AWS CloudTrail User Guide}.
 }
 \section{Example}{
 \preformatted{secretsmanager <- paws::secretsmanager()

@@ -13,8 +13,8 @@ elbv2_describe_target_group_attributes(TargetGroupArn)
 Describes the attributes for the specified target group.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#target-group-attributes}{Target Group Attributes}
-in the \emph{Application Load Balancers Guide} or \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#target-group-attributes}{Target Group Attributes}
+For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#target-group-attributes}{Target Group Attributes}
+in the \emph{Application Load Balancers Guide} or \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#target-group-attributes}{Target Group Attributes}
 in the \emph{Network Load Balancers Guide}.
 }
 \section{Request syntax}{

@@ -32,7 +32,8 @@ referenced by the Content-Type header field.}
 \item{ContentLength}{Size of the body in bytes. This parameter is useful when the size of the
 body cannot be determined automatically.}
 
-\item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the part data.}
+\item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the part data. This parameter
+is auto-populated when using the command from the CLI}
 
 \item{ContentType}{A standard MIME type describing the format of the object data.}
 
@@ -117,7 +118,7 @@ Adds an object to a bucket.
     "string"
   ),
   ServerSideEncryption = "AES256"|"aws:kms",
-  StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER",
+  StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE",
   WebsiteRedirectLocation = "string",
   SSECustomerAlgorithm = "string",
   SSECustomerKey = raw,
@@ -135,12 +136,44 @@ Adds an object to a bucket.
 }
 
 \examples{
+# The following example uploads an object. The request specifies optional
+# object tags. The bucket is versioned, therefore S3 returns version ID of
+# the newly created object.
+\donttest{s3$put_object(
+  Body = "c:\\\\HappyFace.jpg",
+  Bucket = "examplebucket",
+  Key = "HappyFace.jpg",
+  Tagging = "key1=value1&key2=value2"
+)}
+
+# The following example uploads and object. The request specifies optional
+# canned ACL (access control list) to all READ access to authenticated
+# users. If the bucket is versioning enabled, S3 returns version ID in
+# response.
+\donttest{s3$put_object(
+  ACL = "authenticated-read",
+  Body = "filetoupload",
+  Bucket = "examplebucket",
+  Key = "exampleobject"
+)}
+
 # The following example creates an object. If the bucket is versioning
 # enabled, S3 returns version ID in response.
 \donttest{s3$put_object(
   Body = "filetoupload",
   Bucket = "examplebucket",
   Key = "objectkey"
+)}
+
+# The following example uploads an object. The request specifies optional
+# request headers to directs S3 to use specific storage class and use
+# server-side encryption.
+\donttest{s3$put_object(
+  Body = "HappyFace.jpg",
+  Bucket = "examplebucket",
+  Key = "HappyFace.jpg",
+  ServerSideEncryption = "AES256",
+  StorageClass = "STANDARD_IA"
 )}
 
 # The following example uploads an object to a versioning-enabled bucket.
@@ -150,18 +183,6 @@ Adds an object to a bucket.
   Body = "HappyFace.jpg",
   Bucket = "examplebucket",
   Key = "HappyFace.jpg"
-)}
-
-# The following example uploads and object. The request specifies the
-# optional server-side encryption option. The request also specifies
-# optional object tags. If the bucket is versioning enabled, S3 returns
-# version ID in response.
-\donttest{s3$put_object(
-  Body = "filetoupload",
-  Bucket = "examplebucket",
-  Key = "exampleobject",
-  ServerSideEncryption = "AES256",
-  Tagging = "key1=value1&key2=value2"
 )}
 
 # The following example creates an object. The request also specifies
@@ -177,36 +198,16 @@ Adds an object to a bucket.
   )
 )}
 
-# The following example uploads an object. The request specifies optional
-# object tags. The bucket is versioned, therefore S3 returns version ID of
-# the newly created object.
+# The following example uploads and object. The request specifies the
+# optional server-side encryption option. The request also specifies
+# optional object tags. If the bucket is versioning enabled, S3 returns
+# version ID in response.
 \donttest{s3$put_object(
-  Body = "c:\\\\HappyFace.jpg",
-  Bucket = "examplebucket",
-  Key = "HappyFace.jpg",
-  Tagging = "key1=value1&key2=value2"
-)}
-
-# The following example uploads an object. The request specifies optional
-# request headers to directs S3 to use specific storage class and use
-# server-side encryption.
-\donttest{s3$put_object(
-  Body = "HappyFace.jpg",
-  Bucket = "examplebucket",
-  Key = "HappyFace.jpg",
-  ServerSideEncryption = "AES256",
-  StorageClass = "STANDARD_IA"
-)}
-
-# The following example uploads and object. The request specifies optional
-# canned ACL (access control list) to all READ access to authenticated
-# users. If the bucket is versioning enabled, S3 returns version ID in
-# response.
-\donttest{s3$put_object(
-  ACL = "authenticated-read",
   Body = "filetoupload",
   Bucket = "examplebucket",
-  Key = "exampleobject"
+  Key = "exampleobject",
+  ServerSideEncryption = "AES256",
+  Tagging = "key1=value1&key2=value2"
 )}
 
 }

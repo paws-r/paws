@@ -19,8 +19,8 @@ Identity and Access Management (IAM) users. For those applications, you
 must explicitly acknowledge their capabilities by specifying this
 parameter.
 
-The only valid values are CAPABILITY\_IAM, CAPABILITY\_NAMED\_IAM, and
-CAPABILITY\_RESOURCE\_POLICY.
+The only valid values are CAPABILITY\_IAM, CAPABILITY\_NAMED\_IAM,
+CAPABILITY\_RESOURCE\_POLICY, and CAPABILITY\_AUTO\_EXPAND.
 
 The following resources require you to specify CAPABILITY\_IAM or
 CAPABILITY\_NAMED\_IAM:
@@ -44,13 +44,13 @@ CAPABILITY\_RESOURCE\_POLICY:
 and
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-policy.html}{AWS::SNS:TopicPolicy}.
 
+Applications that contain one or more nested applications require you to
+specify CAPABILITY\_AUTO\_EXPAND.
+
 If your application template contains any of the above resources, we
 recommend that you review all permissions associated with the
 application before deploying. If you don't specify this parameter for
-an application that requires capabilities, the call will fail.
-
-Valid values: CAPABILITY\_IAM \| CAPABILITY\_NAMED\_IAM \|
-CAPABILITY\_RESOURCE\_POLICY}
+an application that requires capabilities, the call will fail.}
 
 \item{ChangeSetName}{This property corresponds to the parameter of the same name for the \emph{AWS
 CloudFormation

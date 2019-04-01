@@ -38,6 +38,10 @@ test_that("describe_orderable_replication_instances", {
   expect_error(svc$describe_orderable_replication_instances(), NA)
 })
 
+test_that("describe_pending_maintenance_actions", {
+  expect_error(svc$describe_pending_maintenance_actions(), NA)
+})
+
 test_that("describe_replication_instances", {
   expect_error(svc$describe_replication_instances(), NA)
 })

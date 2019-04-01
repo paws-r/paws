@@ -10,7 +10,7 @@ applicationautoscaling_delete_scheduled_action(ServiceNamespace,
 \arguments{
 \item{ServiceNamespace}{[required] The namespace of the AWS service that provides the resource or
 \code{custom-resource} for a resource provided by your own application or
-service. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces}
+service. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces}
 in the \emph{Amazon Web Services General Reference}.}
 
 \item{ScheduledActionName}{[required] The name of the scheduled action.}
@@ -46,7 +46,7 @@ is defined by the service provider. More information is available in
 our \href{https://github.com/aws/aws-auto-scaling-custom-resource}{GitHub repository}.
 }}
 
-\item{ScalableDimension}{The scalable dimension. This string consists of the service namespace,
+\item{ScalableDimension}{[required] The scalable dimension. This string consists of the service namespace,
 resource type, and scaling property.
 \itemize{
 \item \code{ecs:service:DesiredCount} - The desired task count of an ECS

@@ -41,7 +41,7 @@ CreateDBInstance.}
 \item{DBInstanceClass}{The new compute and memory capacity of the DB instance, for example,
 \code{db.m4.large}. Not all DB instance classes are available in all AWS
 Regions, or for all database engines. For the full list of DB instance
-classes, and availability for your engine, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html}{DB Instance Class}
+classes, and availability for your engine, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html}{DB Instance Class}
 in the \emph{Amazon RDS User Guide.}
 
 If you modify the DB instance class, an outage occurs during the change.
@@ -94,7 +94,7 @@ of the \code{PreferredMaintenanceWindow} setting for the DB instance.
 If this parameter is set to \code{false}, changes to the DB instance are
 applied during the next maintenance window. Some parameter changes can
 cause an outage and are applied on the next call to RebootDBInstance, or
-the next failure reboot. Review the table of parameters in \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html}{Modifying a DB Instance and Using the Apply Immediately Parameter}
+the next failure reboot. Review the table of parameters in \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html}{Modifying a DB Instance and Using the Apply Immediately Parameter}
 in the \emph{Amazon RDS User Guide.} to see the impact that setting
 \code{ApplyImmediately} to \code{true} or \code{false} has for each modified parameter
 and to determine when the changes are applied.
@@ -358,7 +358,13 @@ prior to this operation. Currently only a Microsoft SQL Server instance
 can be created in a Active Directory Domain.}
 
 \item{CopyTagsToSnapshot}{True to copy all tags from the DB instance to snapshots of the DB
-instance, and otherwise false. The default is false.}
+instance, and otherwise false. The default is false.
+
+\strong{Amazon Aurora}
+
+Not applicable. Copying tags to snapshots is managed by the DB cluster.
+Setting this value for an Aurora DB instance has no effect on the DB
+cluster setting. For more information, see ModifyDBCluster.}
 
 \item{MonitoringInterval}{The interval, in seconds, between points when Enhanced Monitoring
 metrics are collected for the DB instance. To disable collecting
@@ -434,7 +440,7 @@ Default: false}
 \item{MonitoringRoleArn}{The ARN for the IAM role that permits RDS to send enhanced monitoring
 metrics to Amazon CloudWatch Logs. For example,
 \code{arn:aws:iam:123456789012:role/emaccess}. For information on creating a
-monitoring role, go to \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole}{To create an IAM role for Amazon RDS Enhanced Monitoring}
+monitoring role, go to \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole}{To create an IAM role for Amazon RDS Enhanced Monitoring}
 in the \emph{Amazon RDS User Guide.}
 
 If \code{MonitoringInterval} is set to a value other than 0, then you must
@@ -445,7 +451,7 @@ Service.}
 
 \item{PromotionTier}{A value that specifies the order in which an Aurora Replica is promoted
 to the primary instance after a failure of the existing primary
-instance. For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance}{Fault Tolerance for an Aurora DB Cluster}
+instance. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance}{Fault Tolerance for an Aurora DB Cluster}
 in the \emph{Amazon Aurora User Guide}.
 
 Default: 1
@@ -474,7 +480,7 @@ Default: \code{false}}
 \item{EnablePerformanceInsights}{True to enable Performance Insights for the DB instance, and otherwise
 false.
 
-For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{Using Amazon Performance Insights}
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{Using Amazon Performance Insights}
 in the \emph{Amazon Relational Database Service User Guide}.}
 
 \item{PerformanceInsightsKMSKeyId}{The AWS KMS key identifier for encryption of Performance Insights data.
@@ -499,7 +505,7 @@ uses its default processor features.}
 
 \item{DeletionProtection}{Indicates if the DB instance has deletion protection enabled. The
 database can't be deleted when this value is set to true. For more
-information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
+information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
 }
 \description{
 Modifies settings for a DB instance. You can change one or more database

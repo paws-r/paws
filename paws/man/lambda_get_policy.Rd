@@ -25,7 +25,7 @@ function name, it is limited to 64 characters in length.}
 \item{Qualifier}{Specify a version or alias to get the policy for that resource.}
 }
 \description{
-Returns the \href{http://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html}{resource-based IAM policy}
+Returns the \href{https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html}{resource-based IAM policy}
 for a function, version, or alias.
 }
 \section{Request syntax}{

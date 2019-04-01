@@ -8,7 +8,7 @@ gateway}
 storagegateway_create_smb_file_share(ClientToken, GatewayARN,
   KMSEncrypted, KMSKey, Role, LocationARN, DefaultStorageClass, ObjectACL,
   ReadOnly, GuessMIMETypeEnabled, RequesterPays, ValidUserList,
-  InvalidUserList, Authentication)
+  InvalidUserList, Authentication, Tags)
 }
 \arguments{
 \item{ClientToken}{[required] A unique string value that you supply that is used by file gateway to
@@ -63,6 +63,14 @@ For example \code{@group1}. Can only be set if Authentication is set to
 
 Valid values are \code{ActiveDirectory} or \code{GuestAccess}. The default is
 \code{ActiveDirectory}.}
+
+\item{Tags}{A list of up to 10 tags that can be assigned to the NFS file share. Each
+tag is a key-value pair.
+
+Valid characters for key and value are letters, spaces, and numbers
+representable in UTF-8 format, and the following special characters: + -
+= . \_ : / @. The maximum length of a tag's key is 128 characters, and
+the maximum length for a tag's value is 256.}
 }
 \description{
 Creates a Server Message Block (SMB) file share on an existing file
@@ -76,7 +84,7 @@ File gateways require AWS Security Token Service (AWS STS) to be
 activated to enable you to create a file share. Make sure that AWS STS
 is activated in the AWS Region you are creating your file gateway in. If
 AWS STS is not activated in this AWS Region, activate it. For
-information about how to activate AWS STS, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html}{Activating and Deactivating AWS STS in an AWS Region}
+information about how to activate AWS STS, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html}{Activating and Deactivating AWS STS in an AWS Region}
 in the \emph{AWS Identity and Access Management User Guide.}
 
 File gateways don't support creating hard or symbolic links on a file
@@ -101,7 +109,13 @@ share.
   InvalidUserList = list(
     "string"
   ),
-  Authentication = "string"
+  Authentication = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

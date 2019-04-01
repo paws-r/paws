@@ -22,7 +22,7 @@ NULL
 #' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service that provides the resource or
 #' `custom-resource` for a resource provided by your own application or
 #' service. For more information, see [AWS Service
-#' Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
+#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
 #' in the *Amazon Web Services General Reference*.
 #' @param ResourceId &#91;required&#93; The identifier of the resource associated with the scalable target. This
 #' string consists of the resource type and unique identifier.
@@ -149,7 +149,7 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service that provides the resource or
 #' `custom-resource` for a resource provided by your own application or
 #' service. For more information, see [AWS Service
-#' Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
+#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
 #' in the *Amazon Web Services General Reference*.
 #' @param ScheduledActionName &#91;required&#93; The name of the scheduled action.
 #' @param ResourceId &#91;required&#93; The identifier of the resource associated with the scheduled action.
@@ -190,7 +190,7 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #'     is defined by the service provider. More information is available in
 #'     our [GitHub
 #'     repository](https://github.com/aws/aws-auto-scaling-custom-resource).
-#' @param ScalableDimension The scalable dimension. This string consists of the service namespace,
+#' @param ScalableDimension &#91;required&#93; The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property.
 #' 
 #' -   `ecs:service:DesiredCount` - The desired task count of an ECS
@@ -240,7 +240,7 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #' @keywords internal
 #'
 #' @rdname applicationautoscaling_delete_scheduled_action
-applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, ScheduledActionName, ResourceId, ScalableDimension = NULL) {
+applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, ScheduledActionName, ResourceId, ScalableDimension) {
   op <- new_operation(
     name = "DeleteScheduledAction",
     http_method = "POST",
@@ -273,7 +273,7 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service that provides the resource or
 #' `custom-resource` for a resource provided by your own application or
 #' service. For more information, see [AWS Service
-#' Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
+#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
 #' in the *Amazon Web Services General Reference*.
 #' @param ResourceId &#91;required&#93; The identifier of the resource associated with the scalable target. This
 #' string consists of the resource type and unique identifier.
@@ -405,7 +405,7 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service that provides the resource or
 #' `custom-resource` for a resource provided by your own application or
 #' service. For more information, see [AWS Service
-#' Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
+#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
 #' in the *Amazon Web Services General Reference*.
 #' @param ResourceIds The identifier of the resource associated with the scalable target. This
 #' string consists of the resource type and unique identifier. If you
@@ -554,7 +554,7 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service that provides the resource or
 #' `custom-resource` for a resource provided by your own application or
 #' service. For more information, see [AWS Service
-#' Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
+#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
 #' in the *Amazon Web Services General Reference*.
 #' @param ResourceId The identifier of the resource associated with the scaling activity.
 #' This string consists of the resource type and unique identifier. If you
@@ -700,7 +700,7 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service that provides the resource or
 #' `custom-resource` for a resource provided by your own application or
 #' service. For more information, see [AWS Service
-#' Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
+#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
 #' in the *Amazon Web Services General Reference*.
 #' @param ResourceId The identifier of the resource associated with the scaling policy. This
 #' string consists of the resource type and unique identifier. If you
@@ -847,7 +847,7 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service that provides the resource or
 #' `custom-resource` for a resource provided by your own application or
 #' service. For more information, see [AWS Service
-#' Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
+#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
 #' in the *Amazon Web Services General Reference*.
 #' @param ResourceId The identifier of the resource associated with the scheduled action.
 #' This string consists of the resource type and unique identifier. If you
@@ -987,6 +987,21 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' You can view the scaling policies for a service namespace using
 #' DescribeScalingPolicies. If you are no longer using a scaling policy,
 #' you can delete it using DeleteScalingPolicy.
+#' 
+#' Multiple scaling policies can be in force at the same time for the same
+#' scalable target. You can have one or more target tracking scaling
+#' policies, one or more step scaling policies, or both. However, there is
+#' a chance that multiple policies could conflict, instructing the scalable
+#' target to scale out or in at the same time. Application Auto Scaling
+#' gives precedence to the policy that provides the largest capacity for
+#' both scale in and scale out. For example, if one policy increases
+#' capacity by 3, another policy increases capacity by 200 percent, and the
+#' current capacity is 10, Application Auto Scaling uses the policy with
+#' the highest calculated capacity (200\% of 10 = 20) and scales out to 30.
+#' 
+#' Learn more about how to work with scaling policies in the [Application
+#' Auto Scaling User
+#' Guide](https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html).
 #'
 #' @usage
 #' applicationautoscaling_put_scaling_policy(PolicyName, ServiceNamespace,
@@ -998,7 +1013,7 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service that provides the resource or
 #' `custom-resource` for a resource provided by your own application or
 #' service. For more information, see [AWS Service
-#' Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
+#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
 #' in the *Amazon Web Services General Reference*.
 #' @param ResourceId &#91;required&#93; The identifier of the resource associated with the scaling policy. This
 #' string consists of the resource type and unique identifier.
@@ -1078,16 +1093,18 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' scaling policy.
 #' 
 #' For information on which services do not support `StepScaling` or
-#' `TargetTrackingScaling`, see [Step Scaling Policies for Application Auto
-#' Scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html)
-#' and [Target Tracking Scaling Policies for Application Auto
-#' Scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html)
+#' `TargetTrackingScaling`, see the information about **Limits** in [Step
+#' Scaling
+#' Policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html)
+#' and [Target Tracking Scaling
+#' Policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html)
 #' in the *Application Auto Scaling User Guide*.
 #' @param StepScalingPolicyConfiguration A step scaling policy.
 #' 
 #' This parameter is required if you are creating a policy and the policy
 #' type is `StepScaling`.
-#' @param TargetTrackingScalingPolicyConfiguration A target tracking policy.
+#' @param TargetTrackingScalingPolicyConfiguration A target tracking scaling policy. Includes support for predefined or
+#' customized metrics.
 #' 
 #' This parameter is required if you are creating a policy and the policy
 #' type is `TargetTrackingScaling`.
@@ -1221,6 +1238,10 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' You can view the scheduled actions using DescribeScheduledActions. If
 #' you are no longer using a scheduled action, you can delete it using
 #' DeleteScheduledAction.
+#' 
+#' Learn more about how to work with scheduled actions in the [Application
+#' Auto Scaling User
+#' Guide](https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html).
 #'
 #' @usage
 #' applicationautoscaling_put_scheduled_action(ServiceNamespace, Schedule,
@@ -1230,7 +1251,7 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service that provides the resource or
 #' `custom-resource` for a resource provided by your own application or
 #' service. For more information, see [AWS Service
-#' Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
+#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
 #' in the *Amazon Web Services General Reference*.
 #' @param Schedule The schedule for this action. The following formats are supported:
 #' 
@@ -1289,8 +1310,7 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #'     is defined by the service provider. More information is available in
 #'     our [GitHub
 #'     repository](https://github.com/aws/aws-auto-scaling-custom-resource).
-#' @param ScalableDimension The scalable dimension. This parameter is required if you are creating a
-#' scheduled action. This string consists of the service namespace,
+#' @param ScalableDimension &#91;required&#93; The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property.
 #' 
 #' -   `ecs:service:DesiredCount` - The desired task count of an ECS
@@ -1358,7 +1378,7 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' @keywords internal
 #'
 #' @rdname applicationautoscaling_put_scheduled_action
-applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedule = NULL, ScheduledActionName, ResourceId, ScalableDimension = NULL, StartTime = NULL, EndTime = NULL, ScalableTargetAction = NULL) {
+applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedule = NULL, ScheduledActionName, ResourceId, ScalableDimension, StartTime = NULL, EndTime = NULL, ScalableTargetAction = NULL) {
   op <- new_operation(
     name = "PutScheduledAction",
     http_method = "POST",
@@ -1377,7 +1397,7 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' Registers or updates a scalable target
 #'
 #' Registers or updates a scalable target. A scalable target is a resource
-#' that Application Auto Scaling can scale in and scale out. Each scalable
+#' that Application Auto Scaling can scale out and scale in. Each scalable
 #' target has a resource ID, scalable dimension, and namespace, as well as
 #' values for minimum and maximum capacity.
 #' 
@@ -1397,7 +1417,7 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service that provides the resource or
 #' `custom-resource` for a resource provided by your own application or
 #' service. For more information, see [AWS Service
-#' Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
+#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
 #' in the *Amazon Web Services General Reference*.
 #' @param ResourceId &#91;required&#93; The identifier of the resource associated with the scalable target. This
 #' string consists of the resource type and unique identifier.
@@ -1473,9 +1493,9 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' 
 #' -   `custom-resource:ResourceType:Property` - The scalable dimension for
 #'     a custom resource provided by your own application or service.
-#' @param MinCapacity The minimum value to scale to in response to a scale in event. This
+#' @param MinCapacity The minimum value to scale to in response to a scale-in event. This
 #' parameter is required to register a scalable target.
-#' @param MaxCapacity The maximum value to scale to in response to a scale out event. This
+#' @param MaxCapacity The maximum value to scale to in response to a scale-out event. This
 #' parameter is required to register a scalable target.
 #' @param RoleARN Application Auto Scaling creates a service-linked role that grants it
 #' permissions to modify the scalable target on your behalf. For more

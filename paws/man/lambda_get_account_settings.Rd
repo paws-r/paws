@@ -2,14 +2,14 @@
 % Please edit documentation in R/lambda_operations.R
 \name{lambda_get_account_settings}
 \alias{lambda_get_account_settings}
-\title{Retrieves details about your account's limits and usage in a region}
+\title{Retrieves details about your account's limits and usage in an AWS Region}
 \usage{
 lambda_get_account_settings()
 }
 \description{
 Retrieves details about your account's
-\href{http://docs.aws.amazon.com/lambda/latest/dg/limits.html}{limits} and
-usage in a region.
+\href{https://docs.aws.amazon.com/lambda/latest/dg/limits.html}{limits} and
+usage in an AWS Region.
 }
 \section{Request syntax}{
 \preformatted{lambda$get_account_settings()

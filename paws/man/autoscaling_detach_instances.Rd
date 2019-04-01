@@ -31,7 +31,7 @@ the instances are deregistered from the load balancer. If there are
 target groups attached to the Auto Scaling group, the instances are
 deregistered from the target groups.
 
-For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/detach-instance-asg.html}{Detach EC2 Instances from Your Auto Scaling Group}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/detach-instance-asg.html}{Detach EC2 Instances from Your Auto Scaling Group}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{

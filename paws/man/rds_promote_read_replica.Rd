@@ -34,7 +34,7 @@ parameter.
 
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region. To see the time blocks available, see
-\href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html}{Adjusting the Preferred Maintenance Window}
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html}{Adjusting the Preferred Maintenance Window}
 in the \emph{Amazon RDS User Guide.}
 
 Constraints:

@@ -71,12 +71,15 @@ pinpoint$operation()
 \link[=pinpoint_get_sms_channel]{get_sms_channel} \tab Get an SMS channel \cr
 \link[=pinpoint_get_user_endpoints]{get_user_endpoints} \tab Returns information about the endpoints that are associated with a User ID\cr
 \link[=pinpoint_get_voice_channel]{get_voice_channel} \tab Get a Voice Channel \cr
+\link[=pinpoint_list_tags_for_resource]{list_tags_for_resource} \tab List tags for resource \cr
 \link[=pinpoint_phone_number_validate]{phone_number_validate} \tab Returns information about the specified phone number \cr
 \link[=pinpoint_put_event_stream]{put_event_stream} \tab Use to create or update the event stream for an app \cr
 \link[=pinpoint_put_events]{put_events} \tab Use to record events for endpoints \cr
 \link[=pinpoint_remove_attributes]{remove_attributes} \tab Used to remove the attributes for an app \cr
 \link[=pinpoint_send_messages]{send_messages} \tab Used to send a direct message \cr
 \link[=pinpoint_send_users_messages]{send_users_messages} \tab Used to send a message to a list of users \cr
+\link[=pinpoint_tag_resource]{tag_resource} \tab Tag resource \cr
+\link[=pinpoint_untag_resource]{untag_resource} \tab Untag resource \cr
 \link[=pinpoint_update_adm_channel]{update_adm_channel} \tab Update an ADM channel \cr
 \link[=pinpoint_update_apns_channel]{update_apns_channel} \tab Use to update the APNs channel for an app \cr
 \link[=pinpoint_update_apns_sandbox_channel]{update_apns_sandbox_channel} \tab Update an APNS sandbox channel \cr

@@ -41,6 +41,9 @@ out.}
 \item{encryptionKey}{The AWS Key Management Service (AWS KMS) customer master key (CMK) to be
 used for encrypting the build output artifacts.
 
+You can use a cross-account KMS key to encrypt the build output
+artifacts if your service role has permission to that key.
+
 You can specify either the Amazon Resource Name (ARN) of the CMK or, if
 available, the CMK's alias (using the format
 \code{alias/<i>alias-name</i> }).}
@@ -69,6 +72,9 @@ Creates a build project.
     type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
     location = "string",
     gitCloneDepth = 123,
+    gitSubmodulesConfig = list(
+      fetchSubmodules = TRUE|FALSE
+    ),
     buildspec = "string",
     auth = list(
       type = "OAUTH",
@@ -83,6 +89,9 @@ Creates a build project.
       type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
       location = "string",
       gitCloneDepth = 123,
+      gitSubmodulesConfig = list(
+        fetchSubmodules = TRUE|FALSE
+      ),
       buildspec = "string",
       auth = list(
         type = "OAUTH",
@@ -118,8 +127,11 @@ Creates a build project.
     )
   ),
   cache = list(
-    type = "NO_CACHE"|"S3",
-    location = "string"
+    type = "NO_CACHE"|"S3"|"LOCAL",
+    location = "string",
+    modes = list(
+      "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
+    )
   ),
   environment = list(
     type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER",
@@ -168,7 +180,8 @@ Creates a build project.
     ),
     s3Logs = list(
       status = "ENABLED"|"DISABLED",
-      location = "string"
+      location = "string",
+      encryptionDisabled = TRUE|FALSE
     )
   )
 )

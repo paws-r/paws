@@ -482,15 +482,31 @@ codedeploy_create_application <- function(applicationName, computePlatform = NUL
 #' configuration associated with it, CodeDeployDefault.OneAtATime is used
 #' by default.
 #' @param description A comment about the deployment.
-#' @param ignoreApplicationStopFailures If set to true, then if the deployment causes the ApplicationStop
-#' deployment lifecycle event to an instance to fail, the deployment to
-#' that instance is considered to have failed at that point and continues
-#' on to the BeforeInstall deployment lifecycle event.
+#' @param ignoreApplicationStopFailures If true, then if an ApplicationStop, BeforeBlockTraffic, or
+#' AfterBlockTraffic deployment lifecycle event to an instance fails, then
+#' the deployment continues to the next deployment lifecycle event. For
+#' example, if ApplicationStop fails, the deployment continues with
+#' DownloadBundle. If BeforeBlockTraffic fails, the deployment continues
+#' with BlockTraffic. If AfterBlockTraffic fails, the deployment continues
+#' with ApplicationStop.
 #' 
-#' If set to false or not specified, then if the deployment causes the
-#' ApplicationStop deployment lifecycle event to fail to an instance, the
-#' deployment to that instance stops, and the deployment to that instance
-#' is considered to have failed.
+#' If false or not specified, then if a lifecycle event fails during a
+#' deployment to an instance, that deployment fails. If deployment to that
+#' instance is part of an overall deployment and the number of healthy
+#' hosts is not less than the minimum number of healthy hosts, then a
+#' deployment to the next instance is attempted.
+#' 
+#' During a deployment, the AWS CodeDeploy agent runs the scripts specified
+#' for ApplicationStop, BeforeBlockTraffic, and AfterBlockTraffic in the
+#' AppSpec file from the previous successful deployment. (All other scripts
+#' are run from the AppSpec file in the current deployment.) If one of
+#' these scripts contains an error and does not run successfully, the
+#' deployment can fail.
+#' 
+#' If the cause of the failure is a script from the last successful
+#' deployment that will never run successfully, create a new deployment and
+#' use `ignoreApplicationStopFailures` to specify that the ApplicationStop,
+#' BeforeBlockTraffic, and AfterBlockTraffic failures should be ignored.
 #' @param targetInstances Information about the instances that belong to the replacement
 #' environment in a blue/green deployment.
 #' @param autoRollbackConfiguration Configuration information for an automatic rollback that is added when a
@@ -696,7 +712,7 @@ codedeploy_create_deployment_config <- function(deploymentConfigName, minimumHea
 #' 
 #' For more information about the predefined deployment configurations in
 #' AWS CodeDeploy, see [Working with Deployment Groups in AWS
-#' CodeDeploy](http://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html)
+#' CodeDeploy](https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html)
 #' in the AWS CodeDeploy User Guide.
 #' @param ec2TagFilters The Amazon EC2 tags on which to filter. The deployment group includes
 #' EC2 instances with any of the specified tags. Cannot be used in the same
@@ -709,7 +725,7 @@ codedeploy_create_deployment_config <- function(deploymentConfigName, minimumHea
 #' behalf when interacting with AWS services.
 #' @param triggerConfigurations Information about triggers to create when the deployment group is
 #' created. For examples, see [Create a Trigger for an AWS CodeDeploy
-#' Event](http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html)
+#' Event](https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html)
 #' in the AWS CodeDeploy User Guide.
 #' @param alarmConfiguration Information to add about Amazon CloudWatch alarms when the deployment
 #' group is created.
@@ -1160,6 +1176,11 @@ codedeploy_get_application_revision <- function(applicationName, revision) {
 #' Gets information about a deployment
 #'
 #' Gets information about a deployment.
+#' 
+#' The `content` property of the `appSpecContent` object in the returned
+#' revision is always null. Use `GetApplicationRevision` and the `sha256`
+#' property of the returned `appSpecContent` object to get the content of
+#' the deployment's AppSpec file.
 #'
 #' @usage
 #' codedeploy_get_deployment(deploymentId)
@@ -2195,7 +2216,7 @@ codedeploy_update_application <- function(applicationName = NULL, newApplication
 #' @param triggerConfigurations Information about triggers to change when the deployment group is
 #' updated. For examples, see [Modify Triggers in an AWS CodeDeploy
 #' Deployment
-#' Group](http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-edit.html)
+#' Group](https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-edit.html)
 #' in the AWS CodeDeploy User Guide.
 #' @param alarmConfiguration Information to add or change about Amazon CloudWatch alarms when the
 #' deployment group is updated.

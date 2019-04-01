@@ -10,7 +10,7 @@ sagemaker_list_endpoint_configs(SortBy, SortOrder, NextToken,
 \arguments{
 \item{SortBy}{The field to sort results by. The default is \code{CreationTime}.}
 
-\item{SortOrder}{The sort order for results. The default is \code{Ascending}.}
+\item{SortOrder}{The sort order for results. The default is \code{Descending}.}
 
 \item{NextToken}{If the result of the previous \code{ListEndpointConfig} request was
 truncated, the response includes a \code{NextToken}. To retrieve the next set

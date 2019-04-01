@@ -9,7 +9,7 @@ sagemaker_update_notebook_instance(NotebookInstanceName, InstanceType,
   VolumeSizeInGB, DefaultCodeRepository, AdditionalCodeRepositories,
   AcceleratorTypes, DisassociateAcceleratorTypes,
   DisassociateDefaultCodeRepository,
-  DisassociateAdditionalCodeRepositories)
+  DisassociateAdditionalCodeRepositories, RootAccess)
 }
 \arguments{
 \item{NotebookInstanceName}{[required] The name of the notebook instance to update.}
@@ -18,13 +18,13 @@ sagemaker_update_notebook_instance(NotebookInstanceName, InstanceType,
 
 \item{RoleArn}{The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker can
 assume to access the notebook instance. For more information, see
-\href{http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html}{Amazon SageMaker Roles}.
+\href{https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html}{Amazon SageMaker Roles}.
 
 To be able to pass this role to Amazon SageMaker, the caller of this API
 must have the \code{iam:PassRole} permission.}
 
 \item{LifecycleConfigName}{The name of a lifecycle configuration to associate with the notebook
-instance. For information about lifestyle configurations, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html}{Step 2.1: (Optional) Customize a Notebook Instance}.}
+instance. For information about lifestyle configurations, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html}{Step 2.1: (Optional) Customize a Notebook Instance}.}
 
 \item{DisassociateLifecycleConfig}{Set to \code{true} to remove the notebook instance lifecycle configuration
 currently associated with the notebook instance.}
@@ -43,7 +43,7 @@ information, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-re
 \item{AdditionalCodeRepositories}{An array of up to three Git repositories to associate with the notebook
 instance. These can be either the names of Git repositories stored as
 resources in your account, or the URL of Git repositories in \href{http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html}{AWS CodeCommit}
-or in any other Git repository.. These repositories are cloned at the
+or in any other Git repository. These repositories are cloned at the
 same level as the default repository of your notebook instance. For more
 information, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html}{Associating Git Repositories with Amazon SageMaker Notebook Instances}.}
 
@@ -59,6 +59,13 @@ notebook instance.}
 
 \item{DisassociateAdditionalCodeRepositories}{A list of names or URLs of the default Git repositories to remove from
 this notebook instance.}
+
+\item{RootAccess}{Whether root access is enabled or disabled for users of the notebook
+instance. The default value is \code{Enabled}.
+
+If you set this to \code{Disabled}, users don't have root access on the
+notebook instance, but lifecycle configuration scripts still run with
+root permissions.}
 }
 \description{
 Updates a notebook instance. NotebookInstance updates include upgrading
@@ -83,7 +90,8 @@ update the VPC security groups.
   ),
   DisassociateAcceleratorTypes = TRUE|FALSE,
   DisassociateDefaultCodeRepository = TRUE|FALSE,
-  DisassociateAdditionalCodeRepositories = TRUE|FALSE
+  DisassociateAdditionalCodeRepositories = TRUE|FALSE,
+  RootAccess = "Enabled"|"Disabled"
 )
 }
 }

@@ -38,6 +38,12 @@ Amazon GameLift simply adds new server processes to fit the current
 run-time configuration. As a result, the run-time configuration changes
 are applied gradually as existing processes shut down and new processes
 are launched in Amazon GameLift's normal process recycling activity.
+
+\strong{Learn more}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Working with Fleets}.
+
+\strong{Related operations}
 \itemize{
 \item CreateFleet
 \item ListFleets

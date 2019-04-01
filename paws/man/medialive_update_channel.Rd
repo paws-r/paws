@@ -33,6 +33,11 @@ Updates a channel.
   Destinations = list(
     list(
       Id = "string",
+      MediaPackageSettings = list(
+        list(
+          ChannelId = "string"
+        )
+      ),
       Settings = list(
         list(
           PasswordParam = "string",
@@ -244,6 +249,7 @@ Updates a channel.
         InputLossImageType = "COLOR"|"SLATE",
         RepeatFrameMsec = 123
       ),
+      OutputLockingMode = "EPOCH_LOCKING"|"PIPELINE_LOCKING",
       OutputTimingSource = "INPUT_CLOCK"|"SYSTEM_CLOCK",
       SupportLowFramerateInputs = "DISABLED"|"ENABLED"
     ),
@@ -349,6 +355,11 @@ Updates a channel.
             TimedMetadataId3Period = 123,
             TimestampDeltaMilliseconds = 123,
             TsFileMode = "SEGMENTED_FILES"|"SINGLE_FILE"
+          ),
+          MediaPackageGroupSettings = list(
+            Destination = list(
+              DestinationRefId = "string"
+            )
           ),
           MsSmoothGroupSettings = list(
             AcquisitionPointId = "string",
@@ -501,6 +512,7 @@ Updates a channel.
                 NameModifier = "string",
                 SegmentModifier = "string"
               ),
+              MediaPackageOutputSettings = list(),
               MsSmoothOutputSettings = list(
                 NameModifier = "string"
               ),

@@ -13,6 +13,9 @@ rds_delete_global_cluster(GlobalClusterIdentifier)
 Deletes a global database cluster. The primary and secondary clusters
 must already be detached or destroyed first.
 }
+\details{
+This action only applies to Aurora DB clusters.
+}
 \section{Request syntax}{
 \preformatted{rds$delete_global_cluster(
   GlobalClusterIdentifier = "string"

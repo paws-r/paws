@@ -24,8 +24,8 @@ the function name, it is limited to 64 characters in length.}
 \item{ZipFile}{The base64-encoded contents of the deployment package. AWS SDK and AWS
 CLI clients handle the encoding for you.}
 
-\item{S3Bucket}{An Amazon S3 bucket in the same region as your function. The bucket can
-be in a different AWS account.}
+\item{S3Bucket}{An Amazon S3 bucket in the same AWS Region as your function. The bucket
+can be in a different AWS account.}
 
 \item{S3Key}{The Amazon S3 key of the deployment package.}
 
@@ -38,15 +38,15 @@ code. This has the same effect as calling PublishVersion separately.}
 \item{DryRun}{Set to true to validate the request parameters and access permissions
 without modifying the function code.}
 
-\item{RevisionId}{Only update the function if the revision ID matches the ID specified.
-Use this option to avoid modifying a function that has changed since you
-last read it.}
+\item{RevisionId}{Only update the function if the revision ID matches the ID that's
+specified. Use this option to avoid modifying a function that has
+changed since you last read it.}
 }
 \description{
 Updates a Lambda function's code.
 }
 \details{
-The function's code is locked when you publish a version. You cannot
+The function's code is locked when you publish a version. You can't
 modify the code of a published version, only the unpublished version.
 }
 \section{Request syntax}{

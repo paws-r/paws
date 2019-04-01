@@ -10,7 +10,8 @@ workmail_list_group_members(OrganizationId, GroupId, NextToken,
 \arguments{
 \item{OrganizationId}{[required] The identifier for the organization under which the group exists.}
 
-\item{GroupId}{[required] The identifier for the group to which the members are associated.}
+\item{GroupId}{[required] The identifier for the group to which the members (users or groups) are
+associated.}
 
 \item{NextToken}{The token to use to retrieve the next page of results. The first call
 does not contain any tokens.}
@@ -18,7 +19,8 @@ does not contain any tokens.}
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
 \description{
-Returns an overview of the members of a group.
+Returns an overview of the members of a group. Users and groups can be
+members of a group.
 }
 \section{Request syntax}{
 \preformatted{workmail$list_group_members(

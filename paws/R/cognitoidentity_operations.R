@@ -26,7 +26,7 @@ NULL
 #' cognitoidentity_create_identity_pool(IdentityPoolName,
 #'   AllowUnauthenticatedIdentities, SupportedLoginProviders,
 #'   DeveloperProviderName, OpenIdConnectProviderARNs,
-#'   CognitoIdentityProviders, SamlProviderARNs)
+#'   CognitoIdentityProviders, SamlProviderARNs, IdentityPoolTags)
 #'
 #' @param IdentityPoolName &#91;required&#93; A string that you provide.
 #' @param AllowUnauthenticatedIdentities &#91;required&#93; TRUE if the identity pool supports unauthenticated logins.
@@ -40,9 +40,12 @@ NULL
 #' Once you have set a developer provider name, you cannot change it.
 #' Please take care in setting this parameter.
 #' @param OpenIdConnectProviderARNs A list of OpendID Connect provider ARNs.
-#' @param CognitoIdentityProviders An array of Amazon Cognito Identity user pools and their client IDs.
+#' @param CognitoIdentityProviders An array of Amazon Cognito user pools and their client IDs.
 #' @param SamlProviderARNs An array of Amazon Resource Names (ARNs) of the SAML provider for your
 #' identity pool.
+#' @param IdentityPoolTags Tags to assign to the identity pool. A tag is a label that you can apply
+#' to identity pools to categorize and manage them in different ways, such
+#' as by purpose, owner, environment, or other criteria.
 #'
 #' @section Request syntax:
 #' ```
@@ -65,6 +68,9 @@ NULL
 #'   ),
 #'   SamlProviderARNs = list(
 #'     "string"
+#'   ),
+#'   IdentityPoolTags = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -72,14 +78,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname cognitoidentity_create_identity_pool
-cognitoidentity_create_identity_pool <- function(IdentityPoolName, AllowUnauthenticatedIdentities, SupportedLoginProviders = NULL, DeveloperProviderName = NULL, OpenIdConnectProviderARNs = NULL, CognitoIdentityProviders = NULL, SamlProviderARNs = NULL) {
+cognitoidentity_create_identity_pool <- function(IdentityPoolName, AllowUnauthenticatedIdentities, SupportedLoginProviders = NULL, DeveloperProviderName = NULL, OpenIdConnectProviderARNs = NULL, CognitoIdentityProviders = NULL, SamlProviderARNs = NULL, IdentityPoolTags = NULL) {
   op <- new_operation(
     name = "CreateIdentityPool",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cognitoidentity$create_identity_pool_input(IdentityPoolName = IdentityPoolName, AllowUnauthenticatedIdentities = AllowUnauthenticatedIdentities, SupportedLoginProviders = SupportedLoginProviders, DeveloperProviderName = DeveloperProviderName, OpenIdConnectProviderARNs = OpenIdConnectProviderARNs, CognitoIdentityProviders = CognitoIdentityProviders, SamlProviderARNs = SamlProviderARNs)
+  input <- .cognitoidentity$create_identity_pool_input(IdentityPoolName = IdentityPoolName, AllowUnauthenticatedIdentities = AllowUnauthenticatedIdentities, SupportedLoginProviders = SupportedLoginProviders, DeveloperProviderName = DeveloperProviderName, OpenIdConnectProviderARNs = OpenIdConnectProviderARNs, CognitoIdentityProviders = CognitoIdentityProviders, SamlProviderARNs = SamlProviderARNs, IdentityPoolTags = IdentityPoolTags)
   output <- .cognitoidentity$create_identity_pool_output()
   svc <- .cognitoidentity$service()
   request <- new_request(svc, op, input, output)
@@ -128,10 +134,10 @@ cognitoidentity_delete_identities <- function(IdentityIdsToDelete) {
 }
 .cognitoidentity$operations$delete_identities <- cognitoidentity_delete_identities
 
-#' Deletes a user pool
+#' Deletes an identity pool
 #'
-#' Deletes a user pool. Once a pool is deleted, users will not be able to
-#' authenticate with the pool.
+#' Deletes an identity pool. Once a pool is deleted, users will not be able
+#' to authenticate with the pool.
 #' 
 #' You must use AWS Developer credentials to call this API.
 #'
@@ -259,7 +265,17 @@ cognitoidentity_describe_identity_pool <- function(IdentityPoolId) {
 #'
 #' @param IdentityId &#91;required&#93; A unique identifier in the format REGION:GUID.
 #' @param Logins A set of optional name-value pairs that map provider names to provider
-#' tokens.
+#' tokens. The name-value pair will follow the syntax \"provider\\_name\":
+#' \"provider\\_user\\_identifier\".
+#' 
+#' Logins should not be specified when trying to get credentials for an
+#' unauthenticated identity.
+#' 
+#' The Logins parameter is required when using identities associated with
+#' external identity providers such as FaceBook. For examples of `Logins`
+#' maps, see the code examples in the [External Identity
+#' Providers](http://docs.aws.amazon.com/cognito/latest/developerguide/external-identity-providers.html)
+#' section of the Amazon Cognito Developer Guide.
 #' @param CustomRoleArn The Amazon Resource Name (ARN) of the role to be assumed when multiple
 #' roles were received in the token from the identity provider. For
 #' example, a SAML-based identity provider. This parameter is optional for
@@ -312,8 +328,10 @@ cognitoidentity_get_credentials_for_identity <- function(IdentityId, Logins = NU
 #' 
 #' -   Facebook: `graph.facebook.com`
 #' 
-#' -   Amazon Cognito Identity Provider:
-#'     `cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789`
+#' -   Amazon Cognito user pool:
+#'     `cognito-idp.&lt;region&gt;.amazonaws.com/&lt;YOUR_USER_POOL_ID&gt;`,
+#'     for example,
+#'     `cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789`.
 #' 
 #' -   Google: `accounts.google.com`
 #' 
@@ -396,7 +414,7 @@ cognitoidentity_get_identity_pool_roles <- function(IdentityPoolId) {
 #' returned by GetId. You can optionally add additional logins for the
 #' identity. Supplying multiple logins creates an implicit link.
 #' 
-#' The OpenId token is valid for 15 minutes.
+#' The OpenId token is valid for 10 minutes.
 #' 
 #' This is a public API. You do not need any credentials to call this API.
 #'
@@ -407,7 +425,7 @@ cognitoidentity_get_identity_pool_roles <- function(IdentityPoolId) {
 #' @param Logins A set of optional name-value pairs that map provider names to provider
 #' tokens. When using graph.facebook.com and www.amazon.com, supply the
 #' access\\_token returned from the provider\'s authflow. For
-#' accounts.google.com, an Amazon Cognito Identity Provider, or any other
+#' accounts.google.com, an Amazon Cognito user pool provider, or any other
 #' OpenId Connect provider, always include the `id_token`.
 #'
 #' @section Request syntax:
@@ -517,9 +535,9 @@ cognitoidentity_get_open_id_token_for_developer_identity <- function(IdentityPoo
 }
 .cognitoidentity$operations$get_open_id_token_for_developer_identity <- cognitoidentity_get_open_id_token_for_developer_identity
 
-#' Lists the identities in a pool
+#' Lists the identities in an identity pool
 #'
-#' Lists the identities in a pool.
+#' Lists the identities in an identity pool.
 #' 
 #' You must use AWS Developer credentials to call this API.
 #'
@@ -602,12 +620,54 @@ cognitoidentity_list_identity_pools <- function(MaxResults, NextToken = NULL) {
 }
 .cognitoidentity$operations$list_identity_pools <- cognitoidentity_list_identity_pools
 
+#' Lists the tags that are assigned to an Amazon Cognito identity pool
+#'
+#' Lists the tags that are assigned to an Amazon Cognito identity pool.
+#' 
+#' A tag is a label that you can apply to identity pools to categorize and
+#' manage them in different ways, such as by purpose, owner, environment,
+#' or other criteria.
+#' 
+#' You can use this action up to 10 times per second, per account.
+#'
+#' @usage
+#' cognitoidentity_list_tags_for_resource(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the identity pool that the tags are
+#' assigned to.
+#'
+#' @section Request syntax:
+#' ```
+#' cognitoidentity$list_tags_for_resource(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cognitoidentity_list_tags_for_resource
+cognitoidentity_list_tags_for_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cognitoidentity$list_tags_for_resource_input(ResourceArn = ResourceArn)
+  output <- .cognitoidentity$list_tags_for_resource_output()
+  svc <- .cognitoidentity$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cognitoidentity$operations$list_tags_for_resource <- cognitoidentity_list_tags_for_resource
+
 #' Retrieves the IdentityID associated with a DeveloperUserIdentifier or
-#' the list of DeveloperUserIdentifiers associated with an IdentityId for
-#' an existing identity
+#' the list of DeveloperUserIdentifier values associated with an IdentityId
+#' for an existing identity
 #'
 #' Retrieves the `IdentityID` associated with a `DeveloperUserIdentifier`
-#' or the list of `DeveloperUserIdentifier`s associated with an
+#' or the list of `DeveloperUserIdentifier` values associated with an
 #' `IdentityId` for an existing identity. Either `IdentityID` or
 #' `DeveloperUserIdentifier` must not be null. If you supply only one of
 #' these values, the other value will be searched in the database and
@@ -616,6 +676,13 @@ cognitoidentity_list_identity_pools <- function(MaxResults, NextToken = NULL) {
 #' values are verified against the database, the response returns both
 #' values and is the same as the request. Otherwise a
 #' `ResourceConflictException` is thrown.
+#' 
+#' `LookupDeveloperIdentity` is intended for low-throughput control plane
+#' operations: for example, to enable customer service to locate an
+#' identity ID by username. If you are using it for higher-volume
+#' operations such as user authentication, your requests are likely to be
+#' throttled. GetOpenIdTokenForDeveloperIdentity is a better option for
+#' higher-volume operations for user authentication.
 #' 
 #' You must use AWS Developer credentials to call this API.
 #'
@@ -677,6 +744,11 @@ cognitoidentity_lookup_developer_identity <- function(IdentityPoolId, IdentityId
 #' `DestinationUserIdentifier`. Only developer-authenticated users can be
 #' merged. If the users to be merged are associated with the same public
 #' provider, but as two different users, an exception will be thrown.
+#' 
+#' The number of linked logins is limited to 20. So, the number of linked
+#' logins for the source user, `SourceUserIdentifier`, and the destination
+#' user, `DestinationUserIdentifier`, together should not be larger than
+#' 20. Otherwise, an exception will be thrown.
 #' 
 #' You must use AWS Developer credentials to call this API.
 #'
@@ -792,6 +864,65 @@ cognitoidentity_set_identity_pool_roles <- function(IdentityPoolId, Roles, RoleM
 }
 .cognitoidentity$operations$set_identity_pool_roles <- cognitoidentity_set_identity_pool_roles
 
+#' Assigns a set of tags to an Amazon Cognito identity pool
+#'
+#' Assigns a set of tags to an Amazon Cognito identity pool. A tag is a
+#' label that you can use to categorize and manage identity pools in
+#' different ways, such as by purpose, owner, environment, or other
+#' criteria.
+#' 
+#' Each tag consists of a key and value, both of which you define. A key is
+#' a general category for more specific values. For example, if you have
+#' two versions of an identity pool, one for testing and another for
+#' production, you might assign an `Environment` tag key to both identity
+#' pools. The value of this key might be `Test` for one identity pool and
+#' `Production` for the other.
+#' 
+#' Tags are useful for cost tracking and access control. You can activate
+#' your tags so that they appear on the Billing and Cost Management
+#' console, where you can track the costs associated with your identity
+#' pools. In an IAM policy, you can constrain permissions for identity
+#' pools based on specific tags or tag values.
+#' 
+#' You can use this action up to 5 times per second, per account. An
+#' identity pool can have as many as 50 tags.
+#'
+#' @usage
+#' cognitoidentity_tag_resource(ResourceArn, Tags)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the identity pool to assign the tags
+#' to.
+#' @param Tags The tags to assign to the identity pool.
+#'
+#' @section Request syntax:
+#' ```
+#' cognitoidentity$tag_resource(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cognitoidentity_tag_resource
+cognitoidentity_tag_resource <- function(ResourceArn, Tags = NULL) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cognitoidentity$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+  output <- .cognitoidentity$tag_resource_output()
+  svc <- .cognitoidentity$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cognitoidentity$operations$tag_resource <- cognitoidentity_tag_resource
+
 #' Unlinks a DeveloperUserIdentifier from an existing identity
 #'
 #' Unlinks a `DeveloperUserIdentifier` from an existing identity. Unlinked
@@ -889,9 +1020,50 @@ cognitoidentity_unlink_identity <- function(IdentityId, Logins, LoginsToRemove) 
 }
 .cognitoidentity$operations$unlink_identity <- cognitoidentity_unlink_identity
 
-#' Updates a user pool
+#' Removes the specified tags from an Amazon Cognito identity pool
 #'
-#' Updates a user pool.
+#' Removes the specified tags from an Amazon Cognito identity pool. You can
+#' use this action up to 5 times per second, per account
+#'
+#' @usage
+#' cognitoidentity_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the identity pool that the tags are
+#' assigned to.
+#' @param TagKeys The keys of the tags to remove from the user pool.
+#'
+#' @section Request syntax:
+#' ```
+#' cognitoidentity$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cognitoidentity_untag_resource
+cognitoidentity_untag_resource <- function(ResourceArn, TagKeys = NULL) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cognitoidentity$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .cognitoidentity$untag_resource_output()
+  svc <- .cognitoidentity$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cognitoidentity$operations$untag_resource <- cognitoidentity_untag_resource
+
+#' Updates an identity pool
+#'
+#' Updates an identity pool.
 #' 
 #' You must use AWS Developer credentials to call this API.
 #'
@@ -899,7 +1071,7 @@ cognitoidentity_unlink_identity <- function(IdentityId, Logins, LoginsToRemove) 
 #' cognitoidentity_update_identity_pool(IdentityPoolId, IdentityPoolName,
 #'   AllowUnauthenticatedIdentities, SupportedLoginProviders,
 #'   DeveloperProviderName, OpenIdConnectProviderARNs,
-#'   CognitoIdentityProviders, SamlProviderARNs)
+#'   CognitoIdentityProviders, SamlProviderARNs, IdentityPoolTags)
 #'
 #' @param IdentityPoolId &#91;required&#93; An identity pool ID in the format REGION:GUID.
 #' @param IdentityPoolName &#91;required&#93; A string that you provide.
@@ -907,10 +1079,13 @@ cognitoidentity_unlink_identity <- function(IdentityId, Logins, LoginsToRemove) 
 #' @param SupportedLoginProviders Optional key:value pairs mapping provider names to provider app IDs.
 #' @param DeveloperProviderName The \"domain\" by which Cognito will refer to your users.
 #' @param OpenIdConnectProviderARNs A list of OpendID Connect provider ARNs.
-#' @param CognitoIdentityProviders A list representing an Amazon Cognito Identity User Pool and its client
-#' ID.
+#' @param CognitoIdentityProviders A list representing an Amazon Cognito user pool and its client ID.
 #' @param SamlProviderARNs An array of Amazon Resource Names (ARNs) of the SAML provider for your
 #' identity pool.
+#' @param IdentityPoolTags The tags that are assigned to the identity pool. A tag is a label that
+#' you can apply to identity pools to categorize and manage them in
+#' different ways, such as by purpose, owner, environment, or other
+#' criteria.
 #'
 #' @section Request syntax:
 #' ```
@@ -934,6 +1109,9 @@ cognitoidentity_unlink_identity <- function(IdentityId, Logins, LoginsToRemove) 
 #'   ),
 #'   SamlProviderARNs = list(
 #'     "string"
+#'   ),
+#'   IdentityPoolTags = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -941,14 +1119,14 @@ cognitoidentity_unlink_identity <- function(IdentityId, Logins, LoginsToRemove) 
 #' @keywords internal
 #'
 #' @rdname cognitoidentity_update_identity_pool
-cognitoidentity_update_identity_pool <- function(IdentityPoolId, IdentityPoolName, AllowUnauthenticatedIdentities, SupportedLoginProviders = NULL, DeveloperProviderName = NULL, OpenIdConnectProviderARNs = NULL, CognitoIdentityProviders = NULL, SamlProviderARNs = NULL) {
+cognitoidentity_update_identity_pool <- function(IdentityPoolId, IdentityPoolName, AllowUnauthenticatedIdentities, SupportedLoginProviders = NULL, DeveloperProviderName = NULL, OpenIdConnectProviderARNs = NULL, CognitoIdentityProviders = NULL, SamlProviderARNs = NULL, IdentityPoolTags = NULL) {
   op <- new_operation(
     name = "UpdateIdentityPool",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cognitoidentity$update_identity_pool_input(IdentityPoolId = IdentityPoolId, IdentityPoolName = IdentityPoolName, AllowUnauthenticatedIdentities = AllowUnauthenticatedIdentities, SupportedLoginProviders = SupportedLoginProviders, DeveloperProviderName = DeveloperProviderName, OpenIdConnectProviderARNs = OpenIdConnectProviderARNs, CognitoIdentityProviders = CognitoIdentityProviders, SamlProviderARNs = SamlProviderARNs)
+  input <- .cognitoidentity$update_identity_pool_input(IdentityPoolId = IdentityPoolId, IdentityPoolName = IdentityPoolName, AllowUnauthenticatedIdentities = AllowUnauthenticatedIdentities, SupportedLoginProviders = SupportedLoginProviders, DeveloperProviderName = DeveloperProviderName, OpenIdConnectProviderARNs = OpenIdConnectProviderARNs, CognitoIdentityProviders = CognitoIdentityProviders, SamlProviderARNs = SamlProviderARNs, IdentityPoolTags = IdentityPoolTags)
   output <- .cognitoidentity$update_identity_pool_output()
   svc <- .cognitoidentity$service()
   request <- new_request(svc, op, input, output)

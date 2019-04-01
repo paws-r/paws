@@ -18,21 +18,21 @@ NULL
 #' Service API Reference*:
 #' 
 #' -   [AWS Storage Gateway Required Request
-#'     Headers](http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewayHTTPRequestsHeaders):
+#'     Headers](https://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewayHTTPRequestsHeaders):
 #'     Describes the required headers that you must send with every POST
 #'     request to AWS Storage Gateway.
 #' 
 #' -   [Signing
-#'     Requests](http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewaySigningRequests):
+#'     Requests](https://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewaySigningRequests):
 #'     AWS Storage Gateway requires that you authenticate every request you
 #'     send; this topic describes how sign such a request.
 #' 
 #' -   [Error
-#'     Responses](http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#APIErrorResponses):
+#'     Responses](https://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#APIErrorResponses):
 #'     Provides reference information about AWS Storage Gateway errors.
 #' 
 #' -   [Operations in AWS Storage
-#'     Gateway](http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_Operations.html):
+#'     Gateway](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_Operations.html):
 #'     Contains detailed descriptions of all AWS Storage Gateway
 #'     operations, their request parameters, response elements, possible
 #'     errors, and examples of requests and responses.

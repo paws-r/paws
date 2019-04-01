@@ -4,7 +4,7 @@
 \alias{ec2_describe_vpcs}
 \title{Describes one or more of your VPCs}
 \usage{
-ec2_describe_vpcs(Filters, VpcIds, DryRun)
+ec2_describe_vpcs(Filters, VpcIds, DryRun, NextToken, MaxResults)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -48,6 +48,12 @@ Default: Describes all your VPCs.}
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{NextToken}{The token for the next page of results.}
+
+\item{MaxResults}{The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned \code{nextToken}
+value.}
 }
 \description{
 Describes one or more of your VPCs.
@@ -65,7 +71,9 @@ Describes one or more of your VPCs.
   VpcIds = list(
     "string"
   ),
-  DryRun = TRUE|FALSE
+  DryRun = TRUE|FALSE,
+  NextToken = "string",
+  MaxResults = 123
 )
 }
 }

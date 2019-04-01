@@ -3,9 +3,9 @@
 #' @include costandusagereportservice_service.R
 NULL
 
-#' Delete a specified report definition
+#' Deletes the specified report
 #'
-#' Delete a specified report definition
+#' Deletes the specified report.
 #'
 #' @usage
 #' costandusagereportservice_delete_report_definition(ReportName)
@@ -18,6 +18,13 @@ NULL
 #'   ReportName = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' # The following example deletes the AWS Cost and Usage report named
+#' # ExampleReport.
+#' \donttest{costandusagereportservice$delete_report_definition(
+#'   ReportName = "ExampleReport"
+#' )}
 #'
 #' @keywords internal
 #'
@@ -38,9 +45,9 @@ costandusagereportservice_delete_report_definition <- function(ReportName = NULL
 }
 .costandusagereportservice$operations$delete_report_definition <- costandusagereportservice_delete_report_definition
 
-#' Describe a list of report definitions owned by the account
+#' Lists the AWS Cost and Usage reports available to this account
 #'
-#' Describe a list of report definitions owned by the account
+#' Lists the AWS Cost and Usage reports available to this account.
 #'
 #' @usage
 #' costandusagereportservice_describe_report_definitions(MaxResults,
@@ -56,6 +63,13 @@ costandusagereportservice_delete_report_definition <- function(ReportName = NULL
 #'   NextToken = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' # The following example lists the AWS Cost and Usage reports for the
+#' # account.
+#' \donttest{costandusagereportservice$describe_report_definitions(
+#'   MaxResults = 5L
+#' )}
 #'
 #' @keywords internal
 #'
@@ -76,14 +90,15 @@ costandusagereportservice_describe_report_definitions <- function(MaxResults = N
 }
 .costandusagereportservice$operations$describe_report_definitions <- costandusagereportservice_describe_report_definitions
 
-#' Create a new report definition
+#' Creates a new report using the description that you provide
 #'
-#' Create a new report definition
+#' Creates a new report using the description that you provide.
 #'
 #' @usage
 #' costandusagereportservice_put_report_definition(ReportDefinition)
 #'
-#' @param ReportDefinition &#91;required&#93; 
+#' @param ReportDefinition &#91;required&#93; Represents the output of the PutReportDefinition operation. The content
+#' consists of the detailed metadata and data file information.
 #'
 #' @section Request syntax:
 #' ```
@@ -91,20 +106,44 @@ costandusagereportservice_describe_report_definitions <- function(MaxResults = N
 #'   ReportDefinition = list(
 #'     ReportName = "string",
 #'     TimeUnit = "HOURLY"|"DAILY",
-#'     Format = "textORcsv",
-#'     Compression = "ZIP"|"GZIP",
+#'     Format = "textORcsv"|"Parquet",
+#'     Compression = "ZIP"|"GZIP"|"Parquet",
 #'     AdditionalSchemaElements = list(
 #'       "RESOURCES"
 #'     ),
 #'     S3Bucket = "string",
 #'     S3Prefix = "string",
-#'     S3Region = "us-east-1"|"us-west-1"|"us-west-2"|"eu-central-1"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1",
+#'     S3Region = "us-east-1"|"us-west-1"|"us-west-2"|"eu-central-1"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"eu-north-1"|"ap-northeast-3",
 #'     AdditionalArtifacts = list(
-#'       "REDSHIFT"|"QUICKSIGHT"
-#'     )
+#'       "REDSHIFT"|"QUICKSIGHT"|"ATHENA"
+#'     ),
+#'     RefreshClosedReports = TRUE|FALSE,
+#'     ReportVersioning = "CREATE_NEW_REPORT"|"OVERWRITE_REPORT"
 #'   )
 #' )
 #' ```
+#'
+#' @examples
+#' # The following example creates a AWS Cost and Usage report named
+#' # ExampleReport.
+#' \donttest{costandusagereportservice$put_report_definition(
+#'   ReportDefinition = list(
+#'     AdditionalArtifacts = list(
+#'       "REDSHIFT",
+#'       "QUICKSIGHT"
+#'     ),
+#'     AdditionalSchemaElements = list(
+#'       "RESOURCES"
+#'     ),
+#'     Compression = "ZIP",
+#'     Format = "textORcsv",
+#'     ReportName = "ExampleReport",
+#'     S3Bucket = "example-s3-bucket",
+#'     S3Prefix = "exampleprefix",
+#'     S3Region = "us-east-1",
+#'     TimeUnit = "DAILY"
+#'   )
+#' )}
 #'
 #' @keywords internal
 #'

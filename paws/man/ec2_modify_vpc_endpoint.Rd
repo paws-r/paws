@@ -20,8 +20,10 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{ResetPolicy}{(Gateway endpoint) Specify \code{true} to reset the policy document to the
 default policy. The default policy allows full access to the service.}
 
-\item{PolicyDocument}{(Gateway endpoint) A policy document to attach to the endpoint. The
-policy must be in valid JSON format.}
+\item{PolicyDocument}{A policy to attach to the endpoint that controls access to the service.
+The policy must be in valid JSON format. If this parameter is not
+specified, we attach a default policy that allows full access to the
+service.}
 
 \item{AddRouteTableIds}{(Gateway endpoint) One or more route tables IDs to associate with the
 endpoint.}

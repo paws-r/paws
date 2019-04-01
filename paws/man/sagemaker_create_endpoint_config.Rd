@@ -10,13 +10,13 @@ sagemaker_create_endpoint_config(EndpointConfigName, ProductionVariants,
 }
 \arguments{
 \item{EndpointConfigName}{[required] The name of the endpoint configuration. You specify this name in a
-\href{http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html}{CreateEndpoint}
+\href{https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html}{CreateEndpoint}
 request.}
 
 \item{ProductionVariants}{[required] An array of \code{ProductionVariant} objects, one for each model that you
 want to host at this endpoint.}
 
-\item{Tags}{An array of key-value pairs. For more information, see \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}
+\item{Tags}{An array of key-value pairs. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}
 in the \emph{AWS Billing and Cost Management User Guide}.}
 
 \item{KmsKeyId}{The Amazon Resource Name (ARN) of a AWS Key Management Service key that
@@ -28,7 +28,7 @@ Creates an endpoint configuration that Amazon SageMaker hosting services
 uses to deploy models. In the configuration, you identify one or more
 models, created using the \code{CreateModel} API, to deploy and the resources
 that you want Amazon SageMaker to provision. Then you call the
-\href{http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html}{CreateEndpoint}
+\href{https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html}{CreateEndpoint}
 API.
 }
 \details{

@@ -69,8 +69,10 @@ specified by \code{MaxRecords}.}
 Returns information about backtracks for a DB cluster.
 }
 \details{
-For more information on Amazon Aurora, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
+For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
 in the \emph{Amazon Aurora User Guide.}
+
+This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
 \preformatted{rds$describe_db_cluster_backtracks(

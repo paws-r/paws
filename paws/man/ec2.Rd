@@ -299,6 +299,7 @@ ec2$operation()
 \link[=ec2_modify_instance_attribute]{modify_instance_attribute} \tab Modifies the specified attribute of the specified instance \cr
 \link[=ec2_modify_instance_capacity_reservation_attributes]{modify_instance_capacity_reservation_attributes} \tab Modifies the Capacity Reservation settings for a stopped instance \cr
 \link[=ec2_modify_instance_credit_specification]{modify_instance_credit_specification} \tab Modifies the credit option for CPU usage on a running or stopped T2 or T3 instance \cr
+\link[=ec2_modify_instance_event_start_time]{modify_instance_event_start_time} \tab Modifies the start time for a scheduled Amazon EC2 instance event \cr
 \link[=ec2_modify_instance_placement]{modify_instance_placement} \tab Modifies the placement attributes for a specified instance \cr
 \link[=ec2_modify_launch_template]{modify_launch_template} \tab Modifies a launch template \cr
 \link[=ec2_modify_network_interface_attribute]{modify_network_interface_attribute} \tab Modifies the specified network interface attribute \cr

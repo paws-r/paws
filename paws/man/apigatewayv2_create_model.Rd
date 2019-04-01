@@ -15,7 +15,7 @@ apigatewayv2_create_model(ApiId, ContentType, Description, Name, Schema)
 
 \item{Name}{[required] The name of the model. Must be alphanumeric.}
 
-\item{Schema}{The schema for the model. For application/json models, this should be
+\item{Schema}{[required] The schema for the model. For application/json models, this should be
 JSON schema draft 4 model.}
 }
 \description{

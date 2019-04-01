@@ -154,6 +154,9 @@ codebuild_batch_get_projects <- function(names) {
 #' @param encryptionKey The AWS Key Management Service (AWS KMS) customer master key (CMK) to be
 #' used for encrypting the build output artifacts.
 #' 
+#' You can use a cross-account KMS key to encrypt the build output
+#' artifacts if your service role has permission to that key.
+#' 
 #' You can specify either the Amazon Resource Name (ARN) of the CMK or, if
 #' available, the CMK\'s alias (using the format
 #' `alias/<i>alias-name</i> `).
@@ -176,6 +179,9 @@ codebuild_batch_get_projects <- function(names) {
 #'     type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
 #'     location = "string",
 #'     gitCloneDepth = 123,
+#'     gitSubmodulesConfig = list(
+#'       fetchSubmodules = TRUE|FALSE
+#'     ),
 #'     buildspec = "string",
 #'     auth = list(
 #'       type = "OAUTH",
@@ -190,6 +196,9 @@ codebuild_batch_get_projects <- function(names) {
 #'       type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
 #'       location = "string",
 #'       gitCloneDepth = 123,
+#'       gitSubmodulesConfig = list(
+#'         fetchSubmodules = TRUE|FALSE
+#'       ),
 #'       buildspec = "string",
 #'       auth = list(
 #'         type = "OAUTH",
@@ -225,8 +234,11 @@ codebuild_batch_get_projects <- function(names) {
 #'     )
 #'   ),
 #'   cache = list(
-#'     type = "NO_CACHE"|"S3",
-#'     location = "string"
+#'     type = "NO_CACHE"|"S3"|"LOCAL",
+#'     location = "string",
+#'     modes = list(
+#'       "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
+#'     )
 #'   ),
 #'   environment = list(
 #'     type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER",
@@ -275,7 +287,8 @@ codebuild_batch_get_projects <- function(names) {
 #'     ),
 #'     s3Logs = list(
 #'       status = "ENABLED"|"DISABLED",
-#'       location = "string"
+#'       location = "string",
+#'       encryptionDisabled = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -318,36 +331,54 @@ codebuild_create_project <- function(name, description = NULL, source, secondary
 #' CodePipeline, we recommend that you disable webhooks in AWS CodeBuild.
 #' In the AWS CodeBuild console, clear the Webhook box. For more
 #' information, see step 5 in [Change a Build Project\'s
-#' Settings](http://docs.aws.amazon.com/codebuild/latest/userguide/change-project.html#change-project-console).
+#' Settings](https://docs.aws.amazon.com/codebuild/latest/userguide/change-project.html#change-project-console).
 #'
 #' @usage
-#' codebuild_create_webhook(projectName, branchFilter)
+#' codebuild_create_webhook(projectName, branchFilter, filterGroups)
 #'
 #' @param projectName &#91;required&#93; The name of the AWS CodeBuild project.
 #' @param branchFilter A regular expression used to determine which repository branches are
 #' built when a webhook is triggered. If the name of a branch matches the
 #' regular expression, then it is built. If `branchFilter` is empty, then
 #' all branches are built.
+#' 
+#' It is recommended that you use `filterGroups` instead of `branchFilter`.
+#' @param filterGroups An array of arrays of `WebhookFilter` objects used to determine which
+#' webhooks are triggered. At least one `WebhookFilter` in the array must
+#' specify `EVENT` as its `type`.
+#' 
+#' For a build to be triggered, at least one filter group in the
+#' `filterGroups` array must pass. For a filter group to pass, each of its
+#' filters must pass.
 #'
 #' @section Request syntax:
 #' ```
 #' codebuild$create_webhook(
 #'   projectName = "string",
-#'   branchFilter = "string"
+#'   branchFilter = "string",
+#'   filterGroups = list(
+#'     list(
+#'       list(
+#'         type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH",
+#'         pattern = "string",
+#'         excludeMatchedPattern = TRUE|FALSE
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname codebuild_create_webhook
-codebuild_create_webhook <- function(projectName, branchFilter = NULL) {
+codebuild_create_webhook <- function(projectName, branchFilter = NULL, filterGroups = NULL) {
   op <- new_operation(
     name = "CreateWebhook",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codebuild$create_webhook_input(projectName = projectName, branchFilter = branchFilter)
+  input <- .codebuild$create_webhook_input(projectName = projectName, branchFilter = branchFilter, filterGroups = filterGroups)
   output <- .codebuild$create_webhook_output()
   svc <- .codebuild$service()
   request <- new_request(svc, op, input, output)
@@ -788,9 +819,9 @@ codebuild_list_source_credentials <- function() {
 #'   secondarySourcesVersionOverride, sourceVersion, artifactsOverride,
 #'   secondaryArtifactsOverride, environmentVariablesOverride,
 #'   sourceTypeOverride, sourceLocationOverride, sourceAuthOverride,
-#'   gitCloneDepthOverride, buildspecOverride, insecureSslOverride,
-#'   reportBuildStatusOverride, environmentTypeOverride, imageOverride,
-#'   computeTypeOverride, certificateOverride, cacheOverride,
+#'   gitCloneDepthOverride, gitSubmodulesConfigOverride, buildspecOverride,
+#'   insecureSslOverride, reportBuildStatusOverride, environmentTypeOverride,
+#'   imageOverride, computeTypeOverride, certificateOverride, cacheOverride,
 #'   serviceRoleOverride, privilegedModeOverride, timeoutInMinutesOverride,
 #'   queuedTimeoutInMinutesOverride, idempotencyToken, logsConfigOverride,
 #'   registryCredentialOverride, imagePullCredentialsTypeOverride)
@@ -834,6 +865,8 @@ codebuild_list_source_credentials <- function() {
 #' @param gitCloneDepthOverride The user-defined depth of history, with a minimum value of 0, that
 #' overrides, for this build only, any previous depth of history defined in
 #' the build project.
+#' @param gitSubmodulesConfigOverride Information about the Git submodules configuration for this build of an
+#' AWS CodeBuild build project.
 #' @param buildspecOverride A build spec declaration that overrides, for this build only, the latest
 #' one already defined in the build project.
 #' @param insecureSslOverride Enable this flag to override the insecure SSL setting that is specified
@@ -893,6 +926,9 @@ codebuild_list_source_credentials <- function() {
 #'       type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
 #'       location = "string",
 #'       gitCloneDepth = 123,
+#'       gitSubmodulesConfig = list(
+#'         fetchSubmodules = TRUE|FALSE
+#'       ),
 #'       buildspec = "string",
 #'       auth = list(
 #'         type = "OAUTH",
@@ -948,6 +984,9 @@ codebuild_list_source_credentials <- function() {
 #'     resource = "string"
 #'   ),
 #'   gitCloneDepthOverride = 123,
+#'   gitSubmodulesConfigOverride = list(
+#'     fetchSubmodules = TRUE|FALSE
+#'   ),
 #'   buildspecOverride = "string",
 #'   insecureSslOverride = TRUE|FALSE,
 #'   reportBuildStatusOverride = TRUE|FALSE,
@@ -956,8 +995,11 @@ codebuild_list_source_credentials <- function() {
 #'   computeTypeOverride = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE",
 #'   certificateOverride = "string",
 #'   cacheOverride = list(
-#'     type = "NO_CACHE"|"S3",
-#'     location = "string"
+#'     type = "NO_CACHE"|"S3"|"LOCAL",
+#'     location = "string",
+#'     modes = list(
+#'       "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
+#'     )
 #'   ),
 #'   serviceRoleOverride = "string",
 #'   privilegedModeOverride = TRUE|FALSE,
@@ -972,7 +1014,8 @@ codebuild_list_source_credentials <- function() {
 #'     ),
 #'     s3Logs = list(
 #'       status = "ENABLED"|"DISABLED",
-#'       location = "string"
+#'       location = "string",
+#'       encryptionDisabled = TRUE|FALSE
 #'     )
 #'   ),
 #'   registryCredentialOverride = list(
@@ -986,14 +1029,14 @@ codebuild_list_source_credentials <- function() {
 #' @keywords internal
 #'
 #' @rdname codebuild_start_build
-codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, secondarySourcesVersionOverride = NULL, sourceVersion = NULL, artifactsOverride = NULL, secondaryArtifactsOverride = NULL, environmentVariablesOverride = NULL, sourceTypeOverride = NULL, sourceLocationOverride = NULL, sourceAuthOverride = NULL, gitCloneDepthOverride = NULL, buildspecOverride = NULL, insecureSslOverride = NULL, reportBuildStatusOverride = NULL, environmentTypeOverride = NULL, imageOverride = NULL, computeTypeOverride = NULL, certificateOverride = NULL, cacheOverride = NULL, serviceRoleOverride = NULL, privilegedModeOverride = NULL, timeoutInMinutesOverride = NULL, queuedTimeoutInMinutesOverride = NULL, idempotencyToken = NULL, logsConfigOverride = NULL, registryCredentialOverride = NULL, imagePullCredentialsTypeOverride = NULL) {
+codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, secondarySourcesVersionOverride = NULL, sourceVersion = NULL, artifactsOverride = NULL, secondaryArtifactsOverride = NULL, environmentVariablesOverride = NULL, sourceTypeOverride = NULL, sourceLocationOverride = NULL, sourceAuthOverride = NULL, gitCloneDepthOverride = NULL, gitSubmodulesConfigOverride = NULL, buildspecOverride = NULL, insecureSslOverride = NULL, reportBuildStatusOverride = NULL, environmentTypeOverride = NULL, imageOverride = NULL, computeTypeOverride = NULL, certificateOverride = NULL, cacheOverride = NULL, serviceRoleOverride = NULL, privilegedModeOverride = NULL, timeoutInMinutesOverride = NULL, queuedTimeoutInMinutesOverride = NULL, idempotencyToken = NULL, logsConfigOverride = NULL, registryCredentialOverride = NULL, imagePullCredentialsTypeOverride = NULL) {
   op <- new_operation(
     name = "StartBuild",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codebuild$start_build_input(projectName = projectName, secondarySourcesOverride = secondarySourcesOverride, secondarySourcesVersionOverride = secondarySourcesVersionOverride, sourceVersion = sourceVersion, artifactsOverride = artifactsOverride, secondaryArtifactsOverride = secondaryArtifactsOverride, environmentVariablesOverride = environmentVariablesOverride, sourceTypeOverride = sourceTypeOverride, sourceLocationOverride = sourceLocationOverride, sourceAuthOverride = sourceAuthOverride, gitCloneDepthOverride = gitCloneDepthOverride, buildspecOverride = buildspecOverride, insecureSslOverride = insecureSslOverride, reportBuildStatusOverride = reportBuildStatusOverride, environmentTypeOverride = environmentTypeOverride, imageOverride = imageOverride, computeTypeOverride = computeTypeOverride, certificateOverride = certificateOverride, cacheOverride = cacheOverride, serviceRoleOverride = serviceRoleOverride, privilegedModeOverride = privilegedModeOverride, timeoutInMinutesOverride = timeoutInMinutesOverride, queuedTimeoutInMinutesOverride = queuedTimeoutInMinutesOverride, idempotencyToken = idempotencyToken, logsConfigOverride = logsConfigOverride, registryCredentialOverride = registryCredentialOverride, imagePullCredentialsTypeOverride = imagePullCredentialsTypeOverride)
+  input <- .codebuild$start_build_input(projectName = projectName, secondarySourcesOverride = secondarySourcesOverride, secondarySourcesVersionOverride = secondarySourcesVersionOverride, sourceVersion = sourceVersion, artifactsOverride = artifactsOverride, secondaryArtifactsOverride = secondaryArtifactsOverride, environmentVariablesOverride = environmentVariablesOverride, sourceTypeOverride = sourceTypeOverride, sourceLocationOverride = sourceLocationOverride, sourceAuthOverride = sourceAuthOverride, gitCloneDepthOverride = gitCloneDepthOverride, gitSubmodulesConfigOverride = gitSubmodulesConfigOverride, buildspecOverride = buildspecOverride, insecureSslOverride = insecureSslOverride, reportBuildStatusOverride = reportBuildStatusOverride, environmentTypeOverride = environmentTypeOverride, imageOverride = imageOverride, computeTypeOverride = computeTypeOverride, certificateOverride = certificateOverride, cacheOverride = cacheOverride, serviceRoleOverride = serviceRoleOverride, privilegedModeOverride = privilegedModeOverride, timeoutInMinutesOverride = timeoutInMinutesOverride, queuedTimeoutInMinutesOverride = queuedTimeoutInMinutesOverride, idempotencyToken = idempotencyToken, logsConfigOverride = logsConfigOverride, registryCredentialOverride = registryCredentialOverride, imagePullCredentialsTypeOverride = imagePullCredentialsTypeOverride)
   output <- .codebuild$start_build_output()
   svc <- .codebuild$service()
   request <- new_request(svc, op, input, output)
@@ -1069,10 +1112,13 @@ codebuild_stop_build <- function(id) {
 #' marked as completed.
 #' @param queuedTimeoutInMinutes The number of minutes a build is allowed to be queued before it times
 #' out.
-#' @param encryptionKey The replacement AWS Key Management Service (AWS KMS) customer master key
-#' (CMK) to be used for encrypting the build output artifacts.
+#' @param encryptionKey The AWS Key Management Service (AWS KMS) customer master key (CMK) to be
+#' used for encrypting the build output artifacts.
 #' 
-#' You can specify either the Amazon Resource Name (ARN)of the CMK or, if
+#' You can use a cross-account KMS key to encrypt the build output
+#' artifacts if your service role has permission to that key.
+#' 
+#' You can specify either the Amazon Resource Name (ARN) of the CMK or, if
 #' available, the CMK\'s alias (using the format
 #' `alias/<i>alias-name</i> `).
 #' @param tags The replacement set of tags for this build project.
@@ -1094,6 +1140,9 @@ codebuild_stop_build <- function(id) {
 #'     type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
 #'     location = "string",
 #'     gitCloneDepth = 123,
+#'     gitSubmodulesConfig = list(
+#'       fetchSubmodules = TRUE|FALSE
+#'     ),
 #'     buildspec = "string",
 #'     auth = list(
 #'       type = "OAUTH",
@@ -1108,6 +1157,9 @@ codebuild_stop_build <- function(id) {
 #'       type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
 #'       location = "string",
 #'       gitCloneDepth = 123,
+#'       gitSubmodulesConfig = list(
+#'         fetchSubmodules = TRUE|FALSE
+#'       ),
 #'       buildspec = "string",
 #'       auth = list(
 #'         type = "OAUTH",
@@ -1143,8 +1195,11 @@ codebuild_stop_build <- function(id) {
 #'     )
 #'   ),
 #'   cache = list(
-#'     type = "NO_CACHE"|"S3",
-#'     location = "string"
+#'     type = "NO_CACHE"|"S3"|"LOCAL",
+#'     location = "string",
+#'     modes = list(
+#'       "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
+#'     )
 #'   ),
 #'   environment = list(
 #'     type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER",
@@ -1193,7 +1248,8 @@ codebuild_stop_build <- function(id) {
 #'     ),
 #'     s3Logs = list(
 #'       status = "ENABLED"|"DISABLED",
-#'       location = "string"
+#'       location = "string",
+#'       encryptionDisabled = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -1225,37 +1281,52 @@ codebuild_update_project <- function(name, description = NULL, source = NULL, se
 #' If you use Bitbucket for your repository, `rotateSecret` is ignored.
 #'
 #' @usage
-#' codebuild_update_webhook(projectName, branchFilter, rotateSecret)
+#' codebuild_update_webhook(projectName, branchFilter, rotateSecret,
+#'   filterGroups)
 #'
 #' @param projectName &#91;required&#93; The name of the AWS CodeBuild project.
 #' @param branchFilter A regular expression used to determine which repository branches are
 #' built when a webhook is triggered. If the name of a branch matches the
 #' regular expression, then it is built. If `branchFilter` is empty, then
 #' all branches are built.
+#' 
+#' It is recommended that you use `filterGroups` instead of `branchFilter`.
 #' @param rotateSecret A boolean value that specifies whether the associated GitHub
 #' repository\'s secret token should be updated. If you use Bitbucket for
 #' your repository, `rotateSecret` is ignored.
+#' @param filterGroups An array of arrays of `WebhookFilter` objects used to determine if a
+#' webhook event can trigger a build. A filter group must pcontain at least
+#' one `EVENT` `WebhookFilter`.
 #'
 #' @section Request syntax:
 #' ```
 #' codebuild$update_webhook(
 #'   projectName = "string",
 #'   branchFilter = "string",
-#'   rotateSecret = TRUE|FALSE
+#'   rotateSecret = TRUE|FALSE,
+#'   filterGroups = list(
+#'     list(
+#'       list(
+#'         type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH",
+#'         pattern = "string",
+#'         excludeMatchedPattern = TRUE|FALSE
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname codebuild_update_webhook
-codebuild_update_webhook <- function(projectName, branchFilter = NULL, rotateSecret = NULL) {
+codebuild_update_webhook <- function(projectName, branchFilter = NULL, rotateSecret = NULL, filterGroups = NULL) {
   op <- new_operation(
     name = "UpdateWebhook",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codebuild$update_webhook_input(projectName = projectName, branchFilter = branchFilter, rotateSecret = rotateSecret)
+  input <- .codebuild$update_webhook_input(projectName = projectName, branchFilter = branchFilter, rotateSecret = rotateSecret, filterGroups = filterGroups)
   output <- .codebuild$update_webhook_output()
   svc <- .codebuild$service()
   request <- new_request(svc, op, input, output)

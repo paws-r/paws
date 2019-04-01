@@ -7,7 +7,8 @@ containerDefinitions}
 \usage{
 ecs_register_task_definition(family, taskRoleArn, executionRoleArn,
   networkMode, containerDefinitions, volumes, placementConstraints,
-  requiresCompatibilities, cpu, memory, tags, pidMode, ipcMode)
+  requiresCompatibilities, cpu, memory, tags, pidMode, ipcMode,
+  proxyConfiguration)
 }
 \arguments{
 \item{family}{[required] You must specify a \code{family} for a task definition, which allows you to
@@ -185,6 +186,8 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
 
 This parameter is not supported for Windows containers or tasks using
 the Fargate launch type.}
+
+\item{proxyConfiguration}{}
 }
 \description{
 Registers a new task definition from the supplied \code{family} and
@@ -298,6 +301,14 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
           valueFrom = "string"
         )
       ),
+      dependsOn = list(
+        list(
+          containerName = "string",
+          condition = "START"|"COMPLETE"|"SUCCESS"|"HEALTHY"
+        )
+      ),
+      startTimeout = 123,
+      stopTimeout = 123,
       hostname = "string",
       user = "string",
       workingDirectory = "string",
@@ -397,7 +408,17 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
     )
   ),
   pidMode = "host"|"task",
-  ipcMode = "host"|"task"|"none"
+  ipcMode = "host"|"task"|"none",
+  proxyConfiguration = list(
+    type = "APPMESH",
+    containerName = "string",
+    properties = list(
+      list(
+        name = "string",
+        value = "string"
+      )
+    )
+  )
 )
 }
 }

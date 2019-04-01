@@ -11,14 +11,14 @@ ec2_copy_snapshot(Description, DestinationRegion, Encrypted, KmsKeyId,
 \arguments{
 \item{Description}{A description for the EBS snapshot.}
 
-\item{DestinationRegion}{The destination region to use in the \code{PresignedUrl} parameter of a
+\item{DestinationRegion}{The destination Region to use in the \code{PresignedUrl} parameter of a
 snapshot copy operation. This parameter is only valid for specifying the
-destination region in a \code{PresignedUrl} parameter, where it is required.
+destination Region in a \code{PresignedUrl} parameter, where it is required.
 
 The snapshot copy is sent to the regional endpoint that you sent the
 HTTP request to (for example, \code{ec2.us-east-1.amazonaws.com}). With the
 AWS CLI, this is specified using the \code{--region} parameter or the default
-region in your AWS configuration file.}
+Region in your AWS configuration file.}
 
 \item{Encrypted}{Specifies whether the destination snapshot should be encrypted. You can
 encrypt a copy of an unencrypted snapshot, but you cannot use it to
@@ -67,7 +67,7 @@ in the \emph{Amazon Simple Storage Service API Reference}. An invalid or
 improperly signed \code{PresignedUrl} will cause the copy operation to fail
 asynchronously, and the snapshot will move to an \code{error} state.}
 
-\item{SourceRegion}{[required] The ID of the region that contains the snapshot to be copied.}
+\item{SourceRegion}{[required] The ID of the Region that contains the snapshot to be copied.}
 
 \item{SourceSnapshotId}{[required] The ID of the EBS snapshot to copy.}
 
@@ -78,7 +78,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Copies a point-in-time snapshot of an EBS volume and stores it in Amazon
-S3. You can copy the snapshot within the same region or from one region
+S3. You can copy the snapshot within the same Region or from one Region
 to another. You can use the snapshot to create EBS volumes or Amazon
 Machine Images (AMIs). The snapshot is copied to the regional endpoint
 that you send the HTTP request to.

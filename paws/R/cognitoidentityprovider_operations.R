@@ -1990,9 +1990,9 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #' @param DeviceConfiguration The device configuration.
 #' @param EmailConfiguration The email configuration.
 #' @param SmsConfiguration The SMS configuration.
-#' @param UserPoolTags The cost allocation tags for the user pool. For more information, see
-#' [Adding Cost Allocation Tags to Your User
-#' Pool](http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html)
+#' @param UserPoolTags The tag keys and values to assign to the user pool. A tag is a label
+#' that you can use to categorize and manage user pools in different ways,
+#' such as by purpose, owner, environment, or other criteria.
 #' @param AdminCreateUserConfig The configuration for `AdminCreateUser` requests.
 #' @param Schema An array of schema attributes for the new user pool. These attributes
 #' can be standard or custom attributes.
@@ -2140,7 +2140,7 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' client lacks write access to a mapped attribute, Amazon Cognito throws
 #' an error when it attempts to update the attribute. For more information,
 #' see [Specifying Identity Provider Attribute Mappings for Your User
-#' Pool](http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html).
+#' Pool](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html).
 #' @param ExplicitAuthFlows The explicit authentication flows.
 #' @param SupportedIdentityProviders A list of provider names for the identity providers that are supported
 #' on this client.
@@ -2272,7 +2272,7 @@ cognitoidentityprovider_create_user_pool_client <- function(UserPoolId, ClientNa
 #' 
 #' For more information about the hosted domain and custom domains, see
 #' [Configuring a User Pool
-#' Domain](http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-assign-domain.html).
+#' Domain](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-assign-domain.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -3606,6 +3606,48 @@ cognitoidentityprovider_list_resource_servers <- function(UserPoolId, MaxResults
 }
 .cognitoidentityprovider$operations$list_resource_servers <- cognitoidentityprovider_list_resource_servers
 
+#' Lists the tags that are assigned to an Amazon Cognito user pool
+#'
+#' Lists the tags that are assigned to an Amazon Cognito user pool.
+#' 
+#' A tag is a label that you can apply to user pools to categorize and
+#' manage them in different ways, such as by purpose, owner, environment,
+#' or other criteria.
+#' 
+#' You can use this action up to 10 times per second, per account.
+#'
+#' @usage
+#' cognitoidentityprovider_list_tags_for_resource(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the user pool that the tags are
+#' assigned to.
+#'
+#' @section Request syntax:
+#' ```
+#' cognitoidentityprovider$list_tags_for_resource(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cognitoidentityprovider_list_tags_for_resource
+cognitoidentityprovider_list_tags_for_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cognitoidentityprovider$list_tags_for_resource_input(ResourceArn = ResourceArn)
+  output <- .cognitoidentityprovider$list_tags_for_resource_output()
+  svc <- .cognitoidentityprovider$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cognitoidentityprovider$operations$list_tags_for_resource <- cognitoidentityprovider_list_tags_for_resource
+
 #' Lists the user import jobs
 #'
 #' Lists the user import jobs.
@@ -4459,6 +4501,104 @@ cognitoidentityprovider_stop_user_import_job <- function(UserPoolId, JobId) {
 }
 .cognitoidentityprovider$operations$stop_user_import_job <- cognitoidentityprovider_stop_user_import_job
 
+#' Assigns a set of tags to an Amazon Cognito user pool
+#'
+#' Assigns a set of tags to an Amazon Cognito user pool. A tag is a label
+#' that you can use to categorize and manage user pools in different ways,
+#' such as by purpose, owner, environment, or other criteria.
+#' 
+#' Each tag consists of a key and value, both of which you define. A key is
+#' a general category for more specific values. For example, if you have
+#' two versions of a user pool, one for testing and another for production,
+#' you might assign an `Environment` tag key to both user pools. The value
+#' of this key might be `Test` for one user pool and `Production` for the
+#' other.
+#' 
+#' Tags are useful for cost tracking and access control. You can activate
+#' your tags so that they appear on the Billing and Cost Management
+#' console, where you can track the costs associated with your user pools.
+#' In an IAM policy, you can constrain permissions for user pools based on
+#' specific tags or tag values.
+#' 
+#' You can use this action up to 5 times per second, per account. A user
+#' pool can have as many as 50 tags.
+#'
+#' @usage
+#' cognitoidentityprovider_tag_resource(ResourceArn, Tags)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the user pool to assign the tags to.
+#' @param Tags The tags to assign to the user pool.
+#'
+#' @section Request syntax:
+#' ```
+#' cognitoidentityprovider$tag_resource(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cognitoidentityprovider_tag_resource
+cognitoidentityprovider_tag_resource <- function(ResourceArn, Tags = NULL) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cognitoidentityprovider$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+  output <- .cognitoidentityprovider$tag_resource_output()
+  svc <- .cognitoidentityprovider$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cognitoidentityprovider$operations$tag_resource <- cognitoidentityprovider_tag_resource
+
+#' Removes the specified tags from an Amazon Cognito user pool
+#'
+#' Removes the specified tags from an Amazon Cognito user pool. You can use
+#' this action up to 5 times per second, per account
+#'
+#' @usage
+#' cognitoidentityprovider_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the user pool that the tags are
+#' assigned to.
+#' @param TagKeys The keys of the tags to remove from the user pool.
+#'
+#' @section Request syntax:
+#' ```
+#' cognitoidentityprovider$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cognitoidentityprovider_untag_resource
+cognitoidentityprovider_untag_resource <- function(ResourceArn, TagKeys = NULL) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cognitoidentityprovider$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .cognitoidentityprovider$untag_resource_output()
+  svc <- .cognitoidentityprovider$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cognitoidentityprovider$operations$untag_resource <- cognitoidentityprovider_untag_resource
+
 #' Provides the feedback for an authentication event whether it was from a
 #' valid user or not
 #'
@@ -4778,9 +4918,9 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
 #' @param DeviceConfiguration Device configuration.
 #' @param EmailConfiguration Email configuration.
 #' @param SmsConfiguration SMS configuration.
-#' @param UserPoolTags The cost allocation tags for the user pool. For more information, see
-#' [Adding Cost Allocation Tags to Your User
-#' Pool](http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html)
+#' @param UserPoolTags The tag keys and values to assign to the user pool. A tag is a label
+#' that you can use to categorize and manage user pools in different ways,
+#' such as by purpose, owner, environment, or other criteria.
 #' @param AdminCreateUserConfig The configuration for `AdminCreateUser` requests.
 #' @param UserPoolAddOns Used to enable advanced security risk detection. Set the key
 #' `AdvancedSecurityMode` to the value \"AUDIT\".
@@ -5042,7 +5182,7 @@ cognitoidentityprovider_update_user_pool_client <- function(UserPoolId, ClientId
 #' 
 #' For more information about adding a custom domain to your user pool, see
 #' [Using Your Own Domain for the Hosted
-#' UI](http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-add-custom-domain.html).
+#' UI](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-add-custom-domain.html).
 #'
 #' @usage
 #' cognitoidentityprovider_update_user_pool_domain(Domain, UserPoolId,

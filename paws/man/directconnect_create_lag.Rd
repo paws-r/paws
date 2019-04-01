@@ -16,7 +16,8 @@ the LAG.}
 \item{location}{[required] The location for the LAG.}
 
 \item{connectionsBandwidth}{[required] The bandwidth of the individual physical connections bundled by the LAG.
-The possible values are 1Gbps and 10Gbps.}
+The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps,
+500Mbps, 1Gbps, 2Gbps, 5Gbps, and 10Gbps.}
 
 \item{lagName}{[required] The name of the LAG.}
 
@@ -47,7 +48,7 @@ connection are automatically disassociated and re-associated with the
 LAG. The connection ID does not change.
 
 If the AWS account used to create a LAG is a registered AWS Direct
-Connect partner, the LAG is automatically enabled to host
+Connect Partner, the LAG is automatically enabled to host
 sub-connections. For a LAG owned by a partner, any associated virtual
 interfaces cannot be directly configured.
 }

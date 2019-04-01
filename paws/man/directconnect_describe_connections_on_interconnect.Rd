@@ -16,7 +16,7 @@ Deprecated. Use DescribeHostedConnections instead.
 Lists the connections that have been provisioned on the specified
 interconnect.
 
-Intended for use by AWS Direct Connect partners only.
+Intended for use by AWS Direct Connect Partners only.
 }
 \section{Request syntax}{
 \preformatted{directconnect$describe_connections_on_interconnect(

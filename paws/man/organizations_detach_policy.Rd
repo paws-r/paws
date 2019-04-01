@@ -43,12 +43,12 @@ attached. If you want to replace the default \code{FullAWSAccess} policy with
 one that limits the permissions that can be delegated, then you must
 attach the replacement policy before you can remove the default one.
 This is the authorization strategy of
-\href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_whitelist}{whitelisting}.
+\href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_whitelist}{whitelisting}.
 If you instead attach a second SCP and leave the \code{FullAWSAccess} SCP
 still attached, and specify \code{"Effect": "Deny"} in the second SCP to
 override the \code{"Effect": "Allow"} in the \code{FullAWSAccess} policy (or any
 other attached SCP), then you are using the authorization strategy of
-\href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_blacklist}{blacklisting}.
+\href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_blacklist}{blacklisting}.
 
 This operation can be called only from the organization's master
 account.

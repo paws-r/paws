@@ -65,7 +65,10 @@ values for a dimension, they are OR'd together.
 
 If you don't provide a \code{SERVICE} filter, Cost Explorer defaults to EC2.}
 
-\item{Metrics}{}
+\item{Metrics}{The measurement that you want your reservation coverage reported in.
+
+Valid values are \code{Hour}, \code{Unit}, and \code{Cost}. You can use multiple values
+in a request.}
 
 \item{NextPageToken}{The token to retrieve the next set of results. AWS provides the token
 when the response from a previous call has more results than the maximum

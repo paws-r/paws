@@ -21,6 +21,9 @@ cluster. The cluster becomes a standalone cluster with read-write
 capability instead of being read-only and receiving data from a primary
 cluster in a different region.
 }
+\details{
+This action only applies to Aurora DB clusters.
+}
 \section{Request syntax}{
 \preformatted{rds$remove_from_global_cluster(
   GlobalClusterIdentifier = "string",

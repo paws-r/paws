@@ -7,12 +7,16 @@
 appmesh_delete_virtual_node(meshName, virtualNodeName)
 }
 \arguments{
-\item{meshName}{[required] The name of the service mesh in which to delete the virtual node.}
+\item{meshName}{[required] The name of the service mesh to delete the virtual node in.}
 
 \item{virtualNodeName}{[required] The name of the virtual node to delete.}
 }
 \description{
 Deletes an existing virtual node.
+}
+\details{
+You must delete any virtual services that list a virtual node as a
+service provider before you can delete the virtual node itself.
 }
 \section{Request syntax}{
 \preformatted{appmesh$delete_virtual_node(

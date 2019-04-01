@@ -21,7 +21,7 @@ Create a thing group.
 }
 \details{
 This is a control plane operation. See
-\href{http://docs.aws.amazon.com/iot/latest/developerguide/authorization.html}{Authorization}
+\href{https://docs.aws.amazon.com/iot/latest/developerguide/authorization.html}{Authorization}
 for information about authorizing control plane actions.
 }
 \section{Request syntax}{

@@ -12,18 +12,18 @@ feature set supports different levels of functionality.
 \itemize{
 \item \emph{CONSOLIDATED\_BILLING}: All member accounts have their bills
 consolidated to and paid by the master account. For more
-information, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only}{Consolidated billing}
+information, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only}{Consolidated billing}
 in the \emph{AWS Organizations User Guide}.
 \item \emph{ALL}: In addition to all the features supported by the consolidated
 billing feature set, the master account can also apply any type of
 policy to any member account in the organization. For more
-information, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all}{All features}
+information, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all}{All features}
 in the \emph{AWS Organizations User Guide}.
 }}
 }
 \description{
 Creates an AWS organization. The account whose user is calling the
-CreateOrganization operation automatically becomes the \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/orgs_getting-started_concepts.html#account}{master account}
+CreateOrganization operation automatically becomes the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/orgs_getting-started_concepts.html#account}{master account}
 of the new organization.
 }
 \details{

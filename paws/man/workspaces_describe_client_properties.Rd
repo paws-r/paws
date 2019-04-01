@@ -8,7 +8,7 @@ clients}
 workspaces_describe_client_properties(ResourceIds)
 }
 \arguments{
-\item{ResourceIds}{[required] The resource identifiers, in the form of directory IDs.}
+\item{ResourceIds}{[required] The resource identifier, in the form of directory IDs.}
 }
 \description{
 Retrieves a list that describes one or more specified Amazon WorkSpaces

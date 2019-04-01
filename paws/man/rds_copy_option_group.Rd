@@ -9,7 +9,7 @@ rds_copy_option_group(SourceOptionGroupIdentifier,
 }
 \arguments{
 \item{SourceOptionGroupIdentifier}{[required] The identifier or ARN for the source option group. For information about
-creating an ARN, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an ARN for Amazon RDS}
+creating an ARN, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an ARN for Amazon RDS}
 in the \emph{Amazon RDS User Guide}.
 
 Constraints:

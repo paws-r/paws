@@ -7,12 +7,12 @@
 appmesh_list_meshes(limit, nextToken)
 }
 \arguments{
-\item{limit}{The maximum number of mesh results returned by \code{ListMeshes} in paginated
-output. When this parameter is used, \code{ListMeshes} only returns \code{limit}
-results in a single page along with a \code{nextToken} response element. The
-remaining results of the initial request can be seen by sending another
+\item{limit}{The maximum number of results returned by \code{ListMeshes} in paginated
+output. When you use this parameter, \code{ListMeshes} returns only \code{limit}
+results in a single page along with a \code{nextToken} response element. You
+can see the remaining results of the initial request by sending another
 \code{ListMeshes} request with the returned \code{nextToken} value. This value can
-be between 1 and 100. If this parameter is not used, then \code{ListMeshes}
+be between 1 and 100. If you don't use this parameter, \code{ListMeshes}
 returns up to 100 results and a \code{nextToken} value if applicable.}
 
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated \code{ListMeshes}
@@ -20,7 +20,7 @@ request where \code{limit} was used and the results exceeded the value of
 that parameter. Pagination continues from the end of the previous
 results that returned the \code{nextToken} value.
 
-This token should be treated as an opaque identifier that is only used
+This token should be treated as an opaque identifier that is used only
 to retrieve the next items in a list and not for other programmatic
 purposes.}
 }

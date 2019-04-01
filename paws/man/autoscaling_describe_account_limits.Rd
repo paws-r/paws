@@ -2,15 +2,18 @@
 % Please edit documentation in R/autoscaling_operations.R
 \name{autoscaling_describe_account_limits}
 \alias{autoscaling_describe_account_limits}
-\title{Describes the current Auto Scaling resource limits for your AWS account}
+\title{Describes the current Amazon EC2 Auto Scaling resource limits for your
+AWS account}
 \usage{
 autoscaling_describe_account_limits()
 }
 \description{
-Describes the current Auto Scaling resource limits for your AWS account.
+Describes the current Amazon EC2 Auto Scaling resource limits for your
+AWS account.
 }
 \details{
-For information about requesting an increase in these limits, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html}{Auto Scaling Limits}
+For information about requesting an increase in these limits, see
+\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html}{Amazon EC2 Auto Scaling Limits}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \examples{

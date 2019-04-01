@@ -6,7 +6,7 @@
 \usage{
 ssm_create_maintenance_window(Name, Description, StartDate, EndDate,
   Schedule, ScheduleTimezone, Duration, Cutoff, AllowUnassociatedTargets,
-  ClientToken)
+  ClientToken, Tags)
 }
 \arguments{
 \item{Name}{[required] The name of the Maintenance Window.}
@@ -45,6 +45,21 @@ previously-registered targets when you register a task with the
 Maintenance Window.}
 
 \item{ClientToken}{User-provided idempotency token.}
+
+\item{Tags}{Optional metadata that you assign to a resource. Tags enable you to
+categorize a resource in different ways, such as by purpose, owner, or
+environment. For example, you might want to tag a Maintenance Window to
+identify the type of tasks it will run, the types of targets, and the
+environment it will run in. In this case, you could specify the
+following key name/value pairs:
+\itemize{
+\item \code{Key=TaskType,Value=AgentUpdate}
+\item \code{Key=OS,Value=Windows}
+\item \code{Key=Environment,Value=Production}
+}
+
+To add tags to an existing Maintenance Window, use the AddTagsToResource
+action.}
 }
 \description{
 Creates a new Maintenance Window.
@@ -60,7 +75,13 @@ Creates a new Maintenance Window.
   Duration = 123,
   Cutoff = 123,
   AllowUnassociatedTargets = TRUE|FALSE,
-  ClientToken = "string"
+  ClientToken = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

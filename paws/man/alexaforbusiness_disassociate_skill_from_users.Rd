@@ -5,11 +5,9 @@
 \title{Makes a private skill unavailable for enrolled users and prevents them
 from enabling it on their devices}
 \usage{
-alexaforbusiness_disassociate_skill_from_users(OrganizationArn, SkillId)
+alexaforbusiness_disassociate_skill_from_users(SkillId)
 }
 \arguments{
-\item{OrganizationArn}{The ARN of the organization.}
-
 \item{SkillId}{[required] The private skill ID you want to make unavailable for enrolled users.}
 }
 \description{
@@ -18,7 +16,6 @@ from enabling it on their devices.
 }
 \section{Request syntax}{
 \preformatted{alexaforbusiness$disassociate_skill_from_users(
-  OrganizationArn = "string",
   SkillId = "string"
 )
 }

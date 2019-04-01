@@ -12,7 +12,7 @@ sagemaker_delete_model(ModelName)
 \description{
 Deletes a model. The \code{DeleteModel} API deletes only the model entry that
 was created in Amazon SageMaker when you called the
-\href{http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateModel.html}{CreateModel}
+\href{https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateModel.html}{CreateModel}
 API. It does not delete model artifacts, inference code, or the IAM role
 that you specified when creating the model.
 }

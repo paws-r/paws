@@ -2,22 +2,21 @@
 % Please edit documentation in R/workmail_operations.R
 \name{workmail_delete_mailbox_permissions}
 \alias{workmail_delete_mailbox_permissions}
-\title{Deletes permissions granted to a user or group}
+\title{Deletes permissions granted to a member (user or group)}
 \usage{
 workmail_delete_mailbox_permissions(OrganizationId, EntityId, GranteeId)
 }
 \arguments{
-\item{OrganizationId}{[required] The identifier of the organization under which the entity (user or
+\item{OrganizationId}{[required] The identifier of the organization under which the member (user or
 group) exists.}
 
-\item{EntityId}{[required] The identifier of the entity (user or group) for which to delete mailbox
-permissions.}
+\item{EntityId}{[required] The identifier of the member (user or group)that owns the mailbox.}
 
-\item{GranteeId}{[required] The identifier of the entity (user or group) for which to delete granted
+\item{GranteeId}{[required] The identifier of the member (user or group) for which to delete granted
 permissions.}
 }
 \description{
-Deletes permissions granted to a user or group.
+Deletes permissions granted to a member (user or group).
 }
 \section{Request syntax}{
 \preformatted{workmail$delete_mailbox_permissions(

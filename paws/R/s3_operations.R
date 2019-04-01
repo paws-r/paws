@@ -243,7 +243,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #'   MetadataDirective = "COPY"|"REPLACE",
 #'   TaggingDirective = "COPY"|"REPLACE",
 #'   ServerSideEncryption = "AES256"|"aws:kms",
-#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER",
+#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE",
 #'   WebsiteRedirectLocation = "string",
 #'   SSECustomerAlgorithm = "string",
 #'   SSECustomerKey = raw,
@@ -329,11 +329,6 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ContentDispo
 #' ```
 #'
 #' @examples
-#' # The following example creates a bucket.
-#' \donttest{s3$create_bucket(
-#'   Bucket = "examplebucket"
-#' )}
-#' 
 #' # The following example creates a bucket. The request specifies an AWS
 #' # region where to create the bucket.
 #' \donttest{s3$create_bucket(
@@ -341,6 +336,11 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ContentDispo
 #'   CreateBucketConfiguration = list(
 #'     LocationConstraint = "eu-west-1"
 #'   )
+#' )}
+#' 
+#' # The following example creates a bucket.
+#' \donttest{s3$create_bucket(
+#'   Bucket = "examplebucket"
 #' )}
 #'
 #' @keywords internal
@@ -449,7 +449,7 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #'     "string"
 #'   ),
 #'   ServerSideEncryption = "AES256"|"aws:kms",
-#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER",
+#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE",
 #'   WebsiteRedirectLocation = "string",
 #'   SSECustomerAlgorithm = "string",
 #'   SSECustomerKey = raw,
@@ -972,16 +972,16 @@ s3_delete_bucket_website <- function(Bucket) {
 #' ```
 #'
 #' @examples
-#' # The following example deletes an object from an S3 bucket.
-#' \donttest{s3$delete_object(
-#'   Bucket = "examplebucket",
-#'   Key = "objectkey.jpg"
-#' )}
-#' 
 #' # The following example deletes an object from a non-versioned bucket.
 #' \donttest{s3$delete_object(
 #'   Bucket = "ExampleBucket",
 #'   Key = "HappyFace.jpg"
+#' )}
+#' 
+#' # The following example deletes an object from an S3 bucket.
+#' \donttest{s3$delete_object(
+#'   Bucket = "examplebucket",
+#'   Key = "objectkey.jpg"
 #' )}
 #'
 #' @keywords internal
@@ -1421,9 +1421,9 @@ s3_get_bucket_inventory_configuration <- function(Bucket, Id) {
 }
 .s3$operations$get_bucket_inventory_configuration <- s3_get_bucket_inventory_configuration
 
-#' Deprecated, see the GetBucketLifecycleConfiguration operation
+#' No longer used, see the GetBucketLifecycleConfiguration operation
 #'
-#' Deprecated, see the GetBucketLifecycleConfiguration operation.
+#' No longer used, see the GetBucketLifecycleConfiguration operation.
 #'
 #' @usage
 #' s3_get_bucket_lifecycle(Bucket)
@@ -1621,9 +1621,9 @@ s3_get_bucket_metrics_configuration <- function(Bucket, Id) {
 }
 .s3$operations$get_bucket_metrics_configuration <- s3_get_bucket_metrics_configuration
 
-#' Deprecated, see the GetBucketNotificationConfiguration operation
+#' No longer used, see the GetBucketNotificationConfiguration operation
 #'
-#' Deprecated, see the GetBucketNotificationConfiguration operation.
+#' No longer used, see the GetBucketNotificationConfiguration operation.
 #'
 #' @usage
 #' s3_get_bucket_notification(Bucket)
@@ -3334,7 +3334,8 @@ s3_put_bucket_cors <- function(Bucket, CORSConfiguration, ContentMD5 = NULL) {
 #' @param Bucket &#91;required&#93; The name of the bucket for which the server-side encryption
 #' configuration is set.
 #' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the server-side encryption
-#' configuration.
+#' configuration. This parameter is auto-populated when using the command
+#' from the CLI
 #' @param ServerSideEncryptionConfiguration &#91;required&#93; 
 #'
 #' @section Request syntax:
@@ -3443,9 +3444,9 @@ s3_put_bucket_inventory_configuration <- function(Bucket, Id, InventoryConfigura
 }
 .s3$operations$put_bucket_inventory_configuration <- s3_put_bucket_inventory_configuration
 
-#' Deprecated, see the PutBucketLifecycleConfiguration operation
+#' No longer used, see the PutBucketLifecycleConfiguration operation
 #'
-#' Deprecated, see the PutBucketLifecycleConfiguration operation.
+#' No longer used, see the PutBucketLifecycleConfiguration operation.
 #'
 #' @usage
 #' s3_put_bucket_lifecycle(Bucket, ContentMD5, LifecycleConfiguration)
@@ -3477,11 +3478,11 @@ s3_put_bucket_inventory_configuration <- function(Bucket, Id, InventoryConfigura
 #'             "2015-01-01"
 #'           ),
 #'           Days = 123,
-#'           StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"
+#'           StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"DEEP_ARCHIVE"
 #'         ),
 #'         NoncurrentVersionTransition = list(
 #'           NoncurrentDays = 123,
-#'           StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"
+#'           StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"DEEP_ARCHIVE"
 #'         ),
 #'         NoncurrentVersionExpiration = list(
 #'           NoncurrentDays = 123
@@ -3564,13 +3565,13 @@ s3_put_bucket_lifecycle <- function(Bucket, ContentMD5 = NULL, LifecycleConfigur
 #'               "2015-01-01"
 #'             ),
 #'             Days = 123,
-#'             StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"
+#'             StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"DEEP_ARCHIVE"
 #'           )
 #'         ),
 #'         NoncurrentVersionTransitions = list(
 #'           list(
 #'             NoncurrentDays = 123,
-#'             StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"
+#'             StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"DEEP_ARCHIVE"
 #'           )
 #'         ),
 #'         NoncurrentVersionExpiration = list(
@@ -3772,9 +3773,9 @@ s3_put_bucket_metrics_configuration <- function(Bucket, Id, MetricsConfiguration
 }
 .s3$operations$put_bucket_metrics_configuration <- s3_put_bucket_metrics_configuration
 
-#' Deprecated, see the PutBucketNotificationConfiguraiton operation
+#' No longer used, see the PutBucketNotificationConfiguration operation
 #'
-#' Deprecated, see the PutBucketNotificationConfiguraiton operation.
+#' No longer used, see the PutBucketNotificationConfiguration operation.
 #'
 #' @usage
 #' s3_put_bucket_notification(Bucket, ContentMD5,
@@ -4053,7 +4054,7 @@ s3_put_bucket_policy <- function(Bucket, ContentMD5 = NULL, ConfirmRemoveSelfBuc
 #'         Destination = list(
 #'           Bucket = "string",
 #'           Account = "string",
-#'           StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER",
+#'           StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE",
 #'           AccessControlTranslation = list(
 #'             Owner = "Destination"
 #'           ),
@@ -4392,7 +4393,8 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #' @param ContentLanguage The language the content is in.
 #' @param ContentLength Size of the body in bytes. This parameter is useful when the size of the
 #' body cannot be determined automatically.
-#' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the part data.
+#' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the part data. This parameter
+#' is auto-populated when using the command from the CLI
 #' @param ContentType A standard MIME type describing the format of the object data.
 #' @param Expires The date and time at which the object is no longer cacheable.
 #' @param GrantFullControl Gives the grantee READ, READ\\_ACP, and WRITE\\_ACP permissions on the
@@ -4455,7 +4457,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #'     "string"
 #'   ),
 #'   ServerSideEncryption = "AES256"|"aws:kms",
-#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER",
+#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE",
 #'   WebsiteRedirectLocation = "string",
 #'   SSECustomerAlgorithm = "string",
 #'   SSECustomerKey = raw,
@@ -4472,12 +4474,44 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #' ```
 #'
 #' @examples
+#' # The following example uploads an object. The request specifies optional
+#' # object tags. The bucket is versioned, therefore S3 returns version ID of
+#' # the newly created object.
+#' \donttest{s3$put_object(
+#'   Body = "c:\\HappyFace.jpg",
+#'   Bucket = "examplebucket",
+#'   Key = "HappyFace.jpg",
+#'   Tagging = "key1=value1&key2=value2"
+#' )}
+#' 
+#' # The following example uploads and object. The request specifies optional
+#' # canned ACL (access control list) to all READ access to authenticated
+#' # users. If the bucket is versioning enabled, S3 returns version ID in
+#' # response.
+#' \donttest{s3$put_object(
+#'   ACL = "authenticated-read",
+#'   Body = "filetoupload",
+#'   Bucket = "examplebucket",
+#'   Key = "exampleobject"
+#' )}
+#' 
 #' # The following example creates an object. If the bucket is versioning
 #' # enabled, S3 returns version ID in response.
 #' \donttest{s3$put_object(
 #'   Body = "filetoupload",
 #'   Bucket = "examplebucket",
 #'   Key = "objectkey"
+#' )}
+#' 
+#' # The following example uploads an object. The request specifies optional
+#' # request headers to directs S3 to use specific storage class and use
+#' # server-side encryption.
+#' \donttest{s3$put_object(
+#'   Body = "HappyFace.jpg",
+#'   Bucket = "examplebucket",
+#'   Key = "HappyFace.jpg",
+#'   ServerSideEncryption = "AES256",
+#'   StorageClass = "STANDARD_IA"
 #' )}
 #' 
 #' # The following example uploads an object to a versioning-enabled bucket.
@@ -4487,18 +4521,6 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #'   Body = "HappyFace.jpg",
 #'   Bucket = "examplebucket",
 #'   Key = "HappyFace.jpg"
-#' )}
-#' 
-#' # The following example uploads and object. The request specifies the
-#' # optional server-side encryption option. The request also specifies
-#' # optional object tags. If the bucket is versioning enabled, S3 returns
-#' # version ID in response.
-#' \donttest{s3$put_object(
-#'   Body = "filetoupload",
-#'   Bucket = "examplebucket",
-#'   Key = "exampleobject",
-#'   ServerSideEncryption = "AES256",
-#'   Tagging = "key1=value1&key2=value2"
 #' )}
 #' 
 #' # The following example creates an object. The request also specifies
@@ -4514,36 +4536,16 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #'   )
 #' )}
 #' 
-#' # The following example uploads an object. The request specifies optional
-#' # object tags. The bucket is versioned, therefore S3 returns version ID of
-#' # the newly created object.
+#' # The following example uploads and object. The request specifies the
+#' # optional server-side encryption option. The request also specifies
+#' # optional object tags. If the bucket is versioning enabled, S3 returns
+#' # version ID in response.
 #' \donttest{s3$put_object(
-#'   Body = "c:\\HappyFace.jpg",
-#'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg",
-#'   Tagging = "key1=value1&key2=value2"
-#' )}
-#' 
-#' # The following example uploads an object. The request specifies optional
-#' # request headers to directs S3 to use specific storage class and use
-#' # server-side encryption.
-#' \donttest{s3$put_object(
-#'   Body = "HappyFace.jpg",
-#'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg",
-#'   ServerSideEncryption = "AES256",
-#'   StorageClass = "STANDARD_IA"
-#' )}
-#' 
-#' # The following example uploads and object. The request specifies optional
-#' # canned ACL (access control list) to all READ access to authenticated
-#' # users. If the bucket is versioning enabled, S3 returns version ID in
-#' # response.
-#' \donttest{s3$put_object(
-#'   ACL = "authenticated-read",
 #'   Body = "filetoupload",
 #'   Bucket = "examplebucket",
-#'   Key = "exampleobject"
+#'   Key = "exampleobject",
+#'   ServerSideEncryption = "AES256",
+#'   Tagging = "key1=value1&key2=value2"
 #' )}
 #'
 #' @keywords internal
@@ -4726,7 +4728,7 @@ s3_put_object_legal_hold <- function(Bucket, Key, LegalHold = NULL, RequestPayer
 #' @param ObjectLockConfiguration The Object Lock configuration that you want to apply to the specified
 #' bucket.
 #' @param RequestPayer 
-#' @param Token 
+#' @param Token A token to allow Object Lock to be enabled for an existing bucket.
 #' @param ContentMD5 The MD5 hash for the request body.
 #'
 #' @section Request syntax:
@@ -5042,7 +5044,7 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, PublicAccessBl
 #'             Value = "string"
 #'           )
 #'         ),
-#'         StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"
+#'         StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"
 #'       )
 #'     )
 #'   ),
@@ -5103,13 +5105,13 @@ s3_restore_object <- function(Bucket, Key, VersionId = NULL, RestoreRequest = NU
 #' @param Key &#91;required&#93; The object key.
 #' @param SSECustomerAlgorithm The SSE Algorithm used to encrypt the object. For more information, see
 #' [Server-Side Encryption (Using Customer-Provided Encryption
-#' Keys](http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html).
+#' Keys](https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html).
 #' @param SSECustomerKey The SSE Customer Key. For more information, see [Server-Side Encryption
 #' (Using Customer-Provided Encryption
-#' Keys](http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html).
+#' Keys](https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html).
 #' @param SSECustomerKeyMD5 The SSE Customer Key MD5. For more information, see [Server-Side
 #' Encryption (Using Customer-Provided Encryption
-#' Keys](http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html).
+#' Keys](https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html).
 #' @param Expression &#91;required&#93; The expression that is used to query the object.
 #' @param ExpressionType &#91;required&#93; The type of the provided expression (for example., SQL).
 #' @param RequestProgress Specifies if periodic request progress information should be enabled.
@@ -5290,7 +5292,7 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' use the form bytes=first-last, where the first and last are the
 #' zero-based byte offsets to copy. For example, bytes=0-9 indicates that
 #' you want to copy the first ten bytes of the source. You can copy a range
-#' only if the source object is greater than 5 GB.
+#' only if the source object is greater than 5 MB.
 #' @param Key &#91;required&#93; 
 #' @param PartNumber &#91;required&#93; Part number of part being copied. This is a positive integer between 1
 #' and 10,000.

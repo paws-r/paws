@@ -12,7 +12,7 @@ appmesh_update_virtual_node(clientToken, meshName, spec,
 idempotency of the request. Up to 36 letters, numbers, hyphens, and
 underscores are allowed.}
 
-\item{meshName}{[required] The name of the service mesh in which the virtual node resides.}
+\item{meshName}{[required] The name of the service mesh that the virtual node resides in.}
 
 \item{spec}{[required] The new virtual node specification to apply. This overwrites the
 existing data.}
@@ -28,7 +28,11 @@ Updates an existing virtual node in a specified service mesh.
   meshName = "string",
   spec = list(
     backends = list(
-      "string"
+      list(
+        virtualService = list(
+          virtualServiceName = "string"
+        )
+      )
     ),
     listeners = list(
       list(
@@ -47,9 +51,16 @@ Updates an existing virtual node in a specified service mesh.
         )
       )
     ),
+    logging = list(
+      accessLog = list(
+        file = list(
+          path = "string"
+        )
+      )
+    ),
     serviceDiscovery = list(
       dns = list(
-        serviceName = "string"
+        hostname = "string"
       )
     )
   ),

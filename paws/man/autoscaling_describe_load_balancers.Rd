@@ -14,15 +14,15 @@ autoscaling_describe_load_balancers(AutoScalingGroupName, NextToken,
 from a previous call.)}
 
 \item{MaxRecords}{The maximum number of items to return with this call. The default value
-is 100 and the maximum value is 100.}
+is \code{100} and the maximum value is \code{100}.}
 }
 \description{
 Describes the load balancers for the specified Auto Scaling group.
 }
 \details{
 This operation describes only Classic Load Balancers. If you have
-Application Load Balancers, use DescribeLoadBalancerTargetGroups
-instead.
+Application Load Balancers or Network Load Balancers, use
+DescribeLoadBalancerTargetGroups instead.
 }
 \section{Request syntax}{
 \preformatted{autoscaling$describe_load_balancers(

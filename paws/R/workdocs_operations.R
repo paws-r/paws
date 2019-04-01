@@ -341,7 +341,7 @@ workdocs_create_labels <- function(ResourceId, Labels, AuthenticationToken = NUL
 #' receives a confirmation message, and must confirm the subscription.
 #' 
 #' For more information, see [Subscribe to
-#' Notifications](http://docs.aws.amazon.com/workdocs/latest/developerguide/subscribe-notifications.html)
+#' Notifications](https://docs.aws.amazon.com/workdocs/latest/developerguide/subscribe-notifications.html)
 #' in the *Amazon WorkDocs Developer Guide*.
 #'
 #' @usage
@@ -350,7 +350,7 @@ workdocs_create_labels <- function(ResourceId, Labels, AuthenticationToken = NUL
 #'
 #' @param OrganizationId &#91;required&#93; The ID of the organization.
 #' @param Endpoint &#91;required&#93; The endpoint to receive the notifications. If the protocol is HTTPS, the
-#' endpoint is a URL that begins with \"https://\".
+#' endpoint is a URL that begins with `https`.
 #' @param Protocol &#91;required&#93; The protocol to use. The supported value is https, which delivers
 #' JSON-encoded messages using HTTPS POST.
 #' @param SubscriptionType &#91;required&#93; The notification type.
@@ -1197,7 +1197,7 @@ workdocs_describe_resource_permissions <- function(AuthenticationToken = NULL, R
 #' This action requires an authentication token. To get an authentication
 #' token, register an application with Amazon WorkDocs. For more
 #' information, see [Authentication and Access Control for User
-#' Applications](http://docs.aws.amazon.com/workdocs/latest/developerguide/wd-auth-user.html)
+#' Applications](https://docs.aws.amazon.com/workdocs/latest/developerguide/wd-auth-user.html)
 #' in the *Amazon WorkDocs Developer Guide*.
 #'
 #' @usage

@@ -2,8 +2,8 @@
 % Please edit documentation in R/kinesisvideoarchivedmedia_operations.R
 \name{kinesisvideoarchivedmedia_list_fragments}
 \alias{kinesisvideoarchivedmedia_list_fragments}
-\title{Returns a list of Fragment objects from the specified stream and start
-location within the archived data}
+\title{Returns a list of Fragment objects from the specified stream and
+timestamp range within the archived data}
 \usage{
 kinesisvideoarchivedmedia_list_fragments(StreamName, MaxResults,
   NextToken, FragmentSelector)
@@ -19,12 +19,23 @@ can use to resume pagination.}
 \item{NextToken}{A token to specify where to start paginating. This is the
 ListFragmentsOutput\$NextToken from a previously truncated response.}
 
-\item{FragmentSelector}{Describes the time stamp range and time stamp origin for the range of
+\item{FragmentSelector}{Describes the timestamp range and timestamp origin for the range of
 fragments to return.}
 }
 \description{
-Returns a list of Fragment objects from the specified stream and start
-location within the archived data.
+Returns a list of Fragment objects from the specified stream and
+timestamp range within the archived data.
+}
+\details{
+Listing fragments is eventually consistent. This means that even if the
+producer receives an acknowledgment that a fragment is persisted, the
+result might not be returned immediately from a request to
+\code{ListFragments}. However, results are typically available in less than
+one second.
+
+You must first call the \code{GetDataEndpoint} API to get an endpoint. Then
+send the \code{ListFragments} requests to this endpoint using the
+\href{https://docs.aws.amazon.com/cli/latest/reference/}{\--endpoint-url parameter}.
 }
 \section{Request syntax}{
 \preformatted{kinesisvideoarchivedmedia$list_fragments(

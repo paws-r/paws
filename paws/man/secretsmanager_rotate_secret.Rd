@@ -69,7 +69,7 @@ the new credentials, the function marks the new secret with the staging
 label \code{AWSCURRENT} so that your clients all immediately begin to use the
 new version. For more information about rotating secrets and how to
 configure a Lambda function to rotate the secrets for your protected
-service, see \href{http://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html}{Rotating Secrets in AWS Secrets Manager}
+service, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html}{Rotating Secrets in AWS Secrets Manager}
 in the \emph{AWS Secrets Manager User Guide}.
 
 Secrets Manager schedules the next rotation when the previous one is

@@ -17,9 +17,9 @@ include a value for each dimension. CloudWatch treats each unique
 combination of dimensions as a separate metric. If a specific
 combination of dimensions was not published, you can't retrieve
 statistics for it. You must specify the same dimensions that were used
-when the metrics were created. For an example, see \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations}{Dimension Combinations}
+when the metrics were created. For an example, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations}{Dimension Combinations}
 in the \emph{Amazon CloudWatch User Guide}. For more information about
-specifying dimensions, see \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html}{Publishing Metrics}
+specifying dimensions, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html}{Publishing Metrics}
 in the \emph{Amazon CloudWatch User Guide}.}
 
 \item{StartTime}{[required] The time stamp that determines the first data point to return. Start
@@ -147,7 +147,7 @@ CloudWatch started retaining 5-minute and 1-hour metric data as of July
 9, 2016.
 
 For information about metrics and dimensions supported by AWS services,
-see the \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CW_Support_For_AWS.html}{Amazon CloudWatch Metrics and Dimensions Reference}
+see the \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CW_Support_For_AWS.html}{Amazon CloudWatch Metrics and Dimensions Reference}
 in the \emph{Amazon CloudWatch User Guide}.
 }
 \section{Request syntax}{

@@ -109,6 +109,7 @@ ssm$operation()
 \link[=ssm_get_parameters_by_path]{get_parameters_by_path} \tab Retrieve parameters in a specific hierarchy \cr
 \link[=ssm_get_patch_baseline]{get_patch_baseline} \tab Retrieves information about a patch baseline \cr
 \link[=ssm_get_patch_baseline_for_patch_group]{get_patch_baseline_for_patch_group} \tab Retrieves the patch baseline that should be used for the specified patch group \cr
+\link[=ssm_get_service_setting]{get_service_setting} \tab ServiceSetting is an account-level setting for an AWS service \cr
 \link[=ssm_label_parameter_version]{label_parameter_version} \tab A parameter label is a user-defined alias to help you manage different versions of a parameter \cr
 \link[=ssm_list_association_versions]{list_association_versions} \tab Retrieves all versions of an association for a specific association ID \cr
 \link[=ssm_list_associations]{list_associations} \tab Lists the associations for the specified Systems Manager document or instance \cr
@@ -131,6 +132,7 @@ ssm$operation()
 \link[=ssm_register_target_with_maintenance_window]{register_target_with_maintenance_window} \tab Registers a target with a Maintenance Window \cr
 \link[=ssm_register_task_with_maintenance_window]{register_task_with_maintenance_window} \tab Adds a new task to a Maintenance Window \cr
 \link[=ssm_remove_tags_from_resource]{remove_tags_from_resource} \tab Removes all tags from the specified resource \cr
+\link[=ssm_reset_service_setting]{reset_service_setting} \tab ServiceSetting is an account-level setting for an AWS service \cr
 \link[=ssm_resume_session]{resume_session} \tab Reconnects a session to an instance after it has been disconnected \cr
 \link[=ssm_send_automation_signal]{send_automation_signal} \tab Sends a signal to an Automation execution to change the current behavior or status of the execution \cr
 \link[=ssm_send_command]{send_command} \tab Executes commands on one or more managed instances \cr
@@ -147,7 +149,8 @@ ssm$operation()
 \link[=ssm_update_maintenance_window_target]{update_maintenance_window_target} \tab Modifies the target of an existing Maintenance Window \cr
 \link[=ssm_update_maintenance_window_task]{update_maintenance_window_task} \tab Modifies a task assigned to a Maintenance Window \cr
 \link[=ssm_update_managed_instance_role]{update_managed_instance_role} \tab Assigns or changes an Amazon Identity and Access Management (IAM) role to the managed instance \cr
-\link[=ssm_update_patch_baseline]{update_patch_baseline} \tab Modifies an existing patch baseline
+\link[=ssm_update_patch_baseline]{update_patch_baseline} \tab Modifies an existing patch baseline \cr
+\link[=ssm_update_service_setting]{update_service_setting} \tab ServiceSetting is an account-level setting for an AWS service
 }
 }
 

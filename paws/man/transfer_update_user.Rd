@@ -23,8 +23,8 @@ The policies attached to this role will determine the level of access
 you want to provide your users when transferring files into and out of
 your Amazon S3 bucket or buckets. The IAM role should also contain a
 trust relationship that allows the Secure File Transfer Protocol (SFTP)
-server to access your resources when servicing your SFTP user's transfer
-requests.}
+server to access your resources when servicing your SFTP user's
+transfer requests.}
 
 \item{ServerId}{[required] A system-assigned unique identifier for an SFTP server instance that the
 user account is assigned to.}

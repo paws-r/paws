@@ -21,15 +21,11 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item \code{prefix-list-name}: The name of a prefix list.
 }}
 
-\item{MaxResults}{The maximum number of items to return for this request. The request
-returns a token that you can specify in a subsequent call to get the
-next set of results.
+\item{MaxResults}{The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned \code{nextToken}
+value.}
 
-Constraint: If the value specified is greater than 1000, we return only
-1000 items.}
-
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a prior call.)}
+\item{NextToken}{The token for the next page of results.}
 
 \item{PrefixListIds}{One or more prefix list IDs.}
 }

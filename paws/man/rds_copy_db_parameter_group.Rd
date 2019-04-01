@@ -10,7 +10,7 @@ rds_copy_db_parameter_group(SourceDBParameterGroupIdentifier,
 }
 \arguments{
 \item{SourceDBParameterGroupIdentifier}{[required] The identifier or ARN for the source DB parameter group. For information
-about creating an ARN, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an ARN for Amazon RDS}
+about creating an ARN, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an ARN for Amazon RDS}
 in the \emph{Amazon RDS User Guide}.
 
 Constraints:

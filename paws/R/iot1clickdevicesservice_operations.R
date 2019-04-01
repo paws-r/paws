@@ -87,28 +87,32 @@ iot1clickdevicesservice_describe_device <- function(DeviceId) {
 #' device event can be published by simply clicking the device.
 #'
 #' @usage
-#' iot1clickdevicesservice_finalize_device_claim(DeviceId)
+#' iot1clickdevicesservice_finalize_device_claim(DeviceId, Tags)
 #'
 #' @param DeviceId &#91;required&#93; The unique identifier of the device.
+#' @param Tags The tags to be assigned to the AWS IoT 1-Click device.
 #'
 #' @section Request syntax:
 #' ```
 #' iot1clickdevicesservice$finalize_device_claim(
-#'   DeviceId = "string"
+#'   DeviceId = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname iot1clickdevicesservice_finalize_device_claim
-iot1clickdevicesservice_finalize_device_claim <- function(DeviceId) {
+iot1clickdevicesservice_finalize_device_claim <- function(DeviceId, Tags = NULL) {
   op <- new_operation(
     name = "FinalizeDeviceClaim",
     http_method = "PUT",
     http_path = "/devices/{deviceId}/finalize-claim",
     paginator = list()
   )
-  input <- .iot1clickdevicesservice$finalize_device_claim_input(DeviceId = DeviceId)
+  input <- .iot1clickdevicesservice$finalize_device_claim_input(DeviceId = DeviceId, Tags = Tags)
   output <- .iot1clickdevicesservice$finalize_device_claim_output()
   svc <- .iot1clickdevicesservice$service()
   request <- new_request(svc, op, input, output)
@@ -331,6 +335,84 @@ iot1clickdevicesservice_list_devices <- function(DeviceType = NULL, MaxResults =
 }
 .iot1clickdevicesservice$operations$list_devices <- iot1clickdevicesservice_list_devices
 
+#' List all tags on an AWS IoT 1-Click resource
+#'
+#' List all tags on an AWS IoT 1-Click resource.
+#'
+#' @usage
+#' iot1clickdevicesservice_list_tags_for_resource(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The AWS IoT 1-Click resource with tags to be listed. This value is an
+#' Amazon Resource Name (ARN).
+#'
+#' @section Request syntax:
+#' ```
+#' iot1clickdevicesservice$list_tags_for_resource(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iot1clickdevicesservice_list_tags_for_resource
+iot1clickdevicesservice_list_tags_for_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/tags/{resource-arn}",
+    paginator = list()
+  )
+  input <- .iot1clickdevicesservice$list_tags_for_resource_input(ResourceArn = ResourceArn)
+  output <- .iot1clickdevicesservice$list_tags_for_resource_output()
+  svc <- .iot1clickdevicesservice$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iot1clickdevicesservice$operations$list_tags_for_resource <- iot1clickdevicesservice_list_tags_for_resource
+
+#' Associate a set of tags with an AWS IoT 1-Click resource
+#'
+#' Associate a set of tags with an AWS IoT 1-Click resource. You can then
+#' activate these user-defined tags so that they appear on the Billing and
+#' Cost Management console for cost allocation tracking.
+#'
+#' @usage
+#' iot1clickdevicesservice_tag_resource(ResourceArn, Tags)
+#'
+#' @param ResourceArn &#91;required&#93; Identifies the AWS IoT 1-Click resource to which tags should be added.
+#' This value is an Amazon Resource Name (ARN).
+#' @param Tags &#91;required&#93; The tags to be assigned to the AWS IoT 1-Click resource.
+#'
+#' @section Request syntax:
+#' ```
+#' iot1clickdevicesservice$tag_resource(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iot1clickdevicesservice_tag_resource
+iot1clickdevicesservice_tag_resource <- function(ResourceArn, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/tags/{resource-arn}",
+    paginator = list()
+  )
+  input <- .iot1clickdevicesservice$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+  output <- .iot1clickdevicesservice$tag_resource_output()
+  svc <- .iot1clickdevicesservice$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iot1clickdevicesservice$operations$tag_resource <- iot1clickdevicesservice_tag_resource
+
 #' Disassociates a device from your AWS account using its device ID
 #'
 #' Disassociates a device from your AWS account using its device ID.
@@ -365,6 +447,47 @@ iot1clickdevicesservice_unclaim_device <- function(DeviceId) {
   return(response)
 }
 .iot1clickdevicesservice$operations$unclaim_device <- iot1clickdevicesservice_unclaim_device
+
+#' Removes the association of tags from an AWS IoT 1-Click resource
+#'
+#' Removes the association of tags from an AWS IoT 1-Click resource.
+#'
+#' @usage
+#' iot1clickdevicesservice_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; The AWS IoT 1-Click resource the tags will be removed from. This value
+#' is an Amazon Resource Name (ARN).
+#' @param TagKeys &#91;required&#93; A list of tag keys. Existing tags of the resource whose keys are members
+#' of this list will be removed from the AWS IoT 1-Click resource.
+#'
+#' @section Request syntax:
+#' ```
+#' iot1clickdevicesservice$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iot1clickdevicesservice_untag_resource
+iot1clickdevicesservice_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/tags/{resource-arn}",
+    paginator = list()
+  )
+  input <- .iot1clickdevicesservice$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .iot1clickdevicesservice$untag_resource_output()
+  svc <- .iot1clickdevicesservice$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iot1clickdevicesservice$operations$untag_resource <- iot1clickdevicesservice_untag_resource
 
 #' Using a Boolean value (true or false), this operation enables or
 #' disables the device given a device ID

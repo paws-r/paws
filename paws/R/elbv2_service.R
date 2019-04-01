@@ -31,7 +31,7 @@ NULL
 #' either at the transport layer (TCP/SSL) or the application layer
 #' (HTTP/HTTPS), and supports either EC2-Classic or a VPC. For more
 #' information, see the [Elastic Load Balancing User
-#' Guide](http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/).
+#' Guide](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/).
 #' 
 #' This reference covers the 2015-12-01 API, which supports Application
 #' Load Balancers and Network Load Balancers. The 2012-06-01 API supports

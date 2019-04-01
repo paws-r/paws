@@ -3,8 +3,8 @@
 \name{cognitoidentity_lookup_developer_identity}
 \alias{cognitoidentity_lookup_developer_identity}
 \title{Retrieves the IdentityID associated with a DeveloperUserIdentifier or
-the list of DeveloperUserIdentifiers associated with an IdentityId for
-an existing identity}
+the list of DeveloperUserIdentifier values associated with an IdentityId
+for an existing identity}
 \usage{
 cognitoidentity_lookup_developer_identity(IdentityPoolId, IdentityId,
   DeveloperUserIdentifier, MaxResults, NextToken)
@@ -29,7 +29,7 @@ call the API again and get results starting from the 11th match.}
 }
 \description{
 Retrieves the \code{IdentityID} associated with a \code{DeveloperUserIdentifier}
-or the list of \code{DeveloperUserIdentifier}s associated with an
+or the list of \code{DeveloperUserIdentifier} values associated with an
 \code{IdentityId} for an existing identity. Either \code{IdentityID} or
 \code{DeveloperUserIdentifier} must not be null. If you supply only one of
 these values, the other value will be searched in the database and
@@ -40,6 +40,13 @@ values and is the same as the request. Otherwise a
 \code{ResourceConflictException} is thrown.
 }
 \details{
+\code{LookupDeveloperIdentity} is intended for low-throughput control plane
+operations: for example, to enable customer service to locate an
+identity ID by username. If you are using it for higher-volume
+operations such as user authentication, your requests are likely to be
+throttled. GetOpenIdTokenForDeveloperIdentity is a better option for
+higher-volume operations for user authentication.
+
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{

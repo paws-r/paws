@@ -8,7 +8,7 @@ gamelift_create_fleet(Name, Description, BuildId, ServerLaunchPath,
   ServerLaunchParameters, LogPaths, EC2InstanceType,
   EC2InboundPermissions, NewGameSessionProtectionPolicy,
   RuntimeConfiguration, ResourceCreationLimitPolicy, MetricGroups,
-  PeerVpcAwsAccountId, PeerVpcId, FleetType)
+  PeerVpcAwsAccountId, PeerVpcId, FleetType, InstanceRoleArn)
 }
 \arguments{
 \item{Name}{[required] Descriptive label that is associated with a fleet. Fleet names do not
@@ -99,6 +99,14 @@ for a fixed price and keep them as long as you need them. Spot instances
 have lower prices, but spot pricing is variable, and while in use they
 can be interrupted (with a two-minute notification). Learn more about
 Amazon GameLift spot instances with at \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-credentials.html}{Set up Access to External Services}.}
+
+\item{InstanceRoleArn}{Unique identifier for an AWS IAM role that manages access to your AWS
+services. Any application that runs on an instance in this fleet can
+assume the role, including install scripts, server processs, daemons
+(background processes). Create a role or look up a role's ARN using the
+\href{https://console.aws.amazon.com/iam/}{IAM dashboard} in the AWS
+Management Console. Learn more about using on-box credentials for your
+game servers at \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-resources.html}{Access external resources from a game server}.}
 }
 \description{
 Creates a new fleet to run your game servers. A fleet is a set of Amazon
@@ -138,7 +146,7 @@ is ready to host a game session.
 
 \strong{Learn more}
 
-See Amazon GameLift Developer Guide topics in \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Working with Fleets}.
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Working with Fleets}.
 
 \strong{Related operations}
 \itemize{
@@ -203,7 +211,8 @@ See Amazon GameLift Developer Guide topics in \href{https://docs.aws.amazon.com/
   ),
   PeerVpcAwsAccountId = "string",
   PeerVpcId = "string",
-  FleetType = "ON_DEMAND"|"SPOT"
+  FleetType = "ON_DEMAND"|"SPOT",
+  InstanceRoleArn = "string"
 )
 }
 }

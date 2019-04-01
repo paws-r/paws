@@ -6,7 +6,7 @@
 Amazon Transcribe handles transcription of an audio file}
 \usage{
 transcribeservice_create_vocabulary(VocabularyName, LanguageCode,
-  Phrases)
+  Phrases, VocabularyFileUri)
 }
 \arguments{
 \item{VocabularyName}{[required] The name of the vocabulary. The name must be unique within an AWS
@@ -14,7 +14,22 @@ account. The name is case-sensitive.}
 
 \item{LanguageCode}{[required] The language code of the vocabulary entries.}
 
-\item{Phrases}{[required] An array of strings that contains the vocabulary entries.}
+\item{Phrases}{An array of strings that contains the vocabulary entries.}
+
+\item{VocabularyFileUri}{The S3 location of the text file that contains the definition of the
+custom vocabulary. The URI must be in the same region as the API
+endpoint that you are calling. The general form is
+
+\code{https://s3-&lt;aws-region&gt;.amazonaws.com/&lt;bucket-name&gt;/&lt;keyprefix&gt;/&lt;objectkey&gt;}
+
+For example:
+
+\code{https://s3-us-east-1.amazonaws.com/examplebucket/vocab.txt}
+
+For more information about S3 object names, see \href{http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys}{Object Keys}
+in the \emph{Amazon S3 Developer Guide}.
+
+For more information about custom vocabularies, see \href{http://docs.aws.amazon.com/transcribe/latest/dg/how-it-works.html#how-vocabulary}{Custom Vocabularies}.}
 }
 \description{
 Creates a new custom vocabulary that you can use to change the way
@@ -23,10 +38,11 @@ Amazon Transcribe handles transcription of an audio file.
 \section{Request syntax}{
 \preformatted{transcribeservice$create_vocabulary(
   VocabularyName = "string",
-  LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT",
+  LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR",
   Phrases = list(
     "string"
-  )
+  ),
+  VocabularyFileUri = "string"
 )
 }
 }

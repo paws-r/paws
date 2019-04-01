@@ -11,7 +11,7 @@ rds_apply_pending_maintenance_action(ResourceIdentifier, ApplyAction,
 \arguments{
 \item{ResourceIdentifier}{[required] The RDS Amazon Resource Name (ARN) of the resource that the pending
 maintenance action applies to. For information about creating an ARN,
-see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an RDS Amazon Resource Name (ARN)}.}
+see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an RDS Amazon Resource Name (ARN)}.}
 
 \item{ApplyAction}{[required] The pending maintenance action to apply to this resource.
 

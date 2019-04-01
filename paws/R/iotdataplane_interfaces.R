@@ -5,31 +5,31 @@ NULL
 
 .iotdataplane$delete_thing_shadow_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(thingName = structure(logical(0), tags = list(    location = "uri", locationName = "thingName", type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(thingName = structure(logical(0), tags = list(location = "uri", locationName = "thingName", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .iotdataplane$delete_thing_shadow_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(payload = structure(logical(0), tags = list(type = "blob"))), tags = list(    type = "structure", payload = "payload"))
+  shape <- structure(list(payload = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure", payload = "payload"))
   return(populate(args, shape))
 }
 
 .iotdataplane$get_thing_shadow_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(thingName = structure(logical(0), tags = list(    location = "uri", locationName = "thingName", type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(thingName = structure(logical(0), tags = list(location = "uri", locationName = "thingName", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .iotdataplane$get_thing_shadow_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(payload = structure(logical(0), tags = list(type = "blob"))), tags = list(    type = "structure", payload = "payload"))
+  shape <- structure(list(payload = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure", payload = "payload"))
   return(populate(args, shape))
 }
 
 .iotdataplane$publish_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(topic = structure(logical(0), tags = list(location = "uri", locationName = "topic", type = "string")), qos = structure(logical(0), tags = list(    location = "querystring", locationName = "qos", type = "integer")), payload = structure(logical(0), tags = list(type = "blob"))), tags = list(    type = "structure", payload = "payload"))
+  shape <- structure(list(topic = structure(logical(0), tags = list(location = "uri", locationName = "topic", type = "string")), qos = structure(logical(0), tags = list(location = "querystring", locationName = "qos", type = "integer")), payload = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure", payload = "payload"))
   return(populate(args, shape))
 }
 
@@ -39,12 +39,12 @@ NULL
 
 .iotdataplane$update_thing_shadow_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(thingName = structure(logical(0), tags = list(    location = "uri", locationName = "thingName", type = "string")), payload = structure(logical(0), tags = list(type = "blob"))), tags = list(    type = "structure", payload = "payload"))
+  shape <- structure(list(thingName = structure(logical(0), tags = list(location = "uri", locationName = "thingName", type = "string")), payload = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure", payload = "payload"))
   return(populate(args, shape))
 }
 
 .iotdataplane$update_thing_shadow_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(payload = structure(logical(0), tags = list(type = "blob"))), tags = list(    type = "structure", payload = "payload"))
+  shape <- structure(list(payload = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure", payload = "payload"))
   return(populate(args, shape))
 }

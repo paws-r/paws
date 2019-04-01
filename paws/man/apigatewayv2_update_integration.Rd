@@ -13,13 +13,11 @@ apigatewayv2_update_integration(ApiId, ConnectionId, ConnectionType,
 \arguments{
 \item{ApiId}{[required] The API identifier.}
 
-\item{ConnectionId}{The identifier of the VpcLink used for the integration when the
-connectionType is VPC\_LINK; otherwise undefined.}
+\item{ConnectionId}{The connection ID.}
 
-\item{ConnectionType}{The type of the network connection to the integration endpoint. The
-valid value is INTERNET for connections through the public routable
-internet or VPC\_LINK for private connections between API Gateway and a
-network load balancer in a VPC. The default value is INTERNET.}
+\item{ConnectionType}{The type of the network connection to the integration endpoint.
+Currently the only valid value is INTERNET, for connections through the
+public routable internet.}
 
 \item{ContentHandlingStrategy}{Specifies how to handle response payload content type conversions.
 Supported values are CONVERT\_TO\_BINARY and CONVERT\_TO\_TEXT, with the
@@ -60,42 +58,17 @@ AWS\_PROXY: for integrating the route or method request with the Lambda
 function-invoking action with the client request passed through as-is.
 This integration is also referred to as Lambda proxy integration.
 
-HTTP: for integrating the route or method request with an HTTP endpoint,
-including a private HTTP endpoint within a VPC. This integration is also
-referred to as the HTTP custom integration.
+HTTP: for integrating the route or method request with an HTTP endpoint.
+This integration is also referred to as the HTTP custom integration.
 
 HTTP\_PROXY: for integrating route or method request with an HTTP
-endpoint, including a private HTTP endpoint within a VPC, with the
-client request passed through as-is. This is also referred to as HTTP
-proxy integration.
+endpoint, with the client request passed through as-is. This is also
+referred to as HTTP proxy integration.
 
 MOCK: for integrating the route or method request with API Gateway as a
 "loopback" endpoint without invoking any backend.}
 
-\item{IntegrationUri}{Specifies the Uniform Resource Identifier (URI) of the integration
-endpoint.
-
-For HTTP or HTTP\_PROXY integrations, the URI must be a fully formed,
-encoded HTTP(S) URL according to the \href{https://en.wikipedia.org/wiki/Uniform_Resource_Identifier}{RFC-3986 specification},
-for either standard integration, where connectionType is not VPC\_LINK,
-or private integration, where connectionType is VPC\_LINK. For a private
-HTTP integration, the URI is not used for routing.
-
-For AWS or AWS\_PROXY integrations, the URI is of the form
-arn:aws:apigateway:{region}:{subdomain.service\|service}:path\|action/{service\_api}.
-Here, {Region} is the API Gateway region (e.g., us-east-1); {service} is
-the name of the integrated AWS service (e.g., s3); and {subdomain} is a
-designated subdomain supported by certain AWS service for fast host-name
-lookup. action can be used for an AWS service action-based API, using an
-Action={name}&{p1}={v1}&p2={v2}\... query string. The ensuing
-{service\_api} refers to a supported action {name} plus any required
-input parameters. Alternatively, path can be used for an AWS service
-path-based API. The ensuing service\_api refers to the path to an AWS
-service resource, including the region of the integrated AWS service, if
-applicable. For example, for integration with the S3 API of GetObject,
-the URI can be either
-arn:aws:apigateway:us-west-2:s3:action/GetObject&Bucket={bucket}&Key={key}
-or arn:aws:apigateway:us-west-2:s3:path/{bucket}/{key}}
+\item{IntegrationUri}{For a Lambda proxy integration, this is the URI of the Lambda function.}
 
 \item{PassthroughBehavior}{Specifies the pass-through behavior for incoming requests based on the
 Content-Type header in the request, and the available mapping templates

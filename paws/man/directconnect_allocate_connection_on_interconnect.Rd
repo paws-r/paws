@@ -8,16 +8,18 @@ directconnect_allocate_connection_on_interconnect(bandwidth,
   connectionName, ownerAccount, interconnectId, vlan)
 }
 \arguments{
-\item{bandwidth}{[required] The bandwidth of the connection, in Mbps. The possible values are
-50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, and 500Mbps.}
+\item{bandwidth}{[required] The bandwidth of the connection. The possible values are 50Mbps,
+100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, and
+10Gbps. Note that only those AWS Direct Connect Partners who have met
+specific requirements are allowed to create a 1Gbps, 2Gbps, 5Gbps or
+10Gbps hosted connection.}
 
 \item{connectionName}{[required] The name of the provisioned connection.}
 
 \item{ownerAccount}{[required] The ID of the AWS account of the customer for whom the connection will
 be provisioned.}
 
-\item{interconnectId}{[required] The ID of the interconnect on which the connection will be provisioned.
-For example, dxcon-456abc78.}
+\item{interconnectId}{[required] The ID of the interconnect on which the connection will be provisioned.}
 
 \item{vlan}{[required] The dedicated VLAN provisioned to the connection.}
 }
@@ -30,7 +32,7 @@ Creates a hosted connection on an interconnect.
 Allocates a VLAN number and a specified amount of bandwidth for use by a
 hosted connection on the specified interconnect.
 
-Intended for use by AWS Direct Connect partners only.
+Intended for use by AWS Direct Connect Partners only.
 }
 \section{Request syntax}{
 \preformatted{directconnect$allocate_connection_on_interconnect(

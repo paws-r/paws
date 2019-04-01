@@ -13,7 +13,7 @@ omit this parameter, all Auto Scaling instances are described. If you
 specify an ID that does not exist, it is ignored with no error.}
 
 \item{MaxRecords}{The maximum number of items to return with this call. The default value
-is 50 and the maximum value is 50.}
+is \code{50} and the maximum value is \code{50}.}
 
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}

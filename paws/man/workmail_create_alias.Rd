@@ -2,19 +2,21 @@
 % Please edit documentation in R/workmail_operations.R
 \name{workmail_create_alias}
 \alias{workmail_create_alias}
-\title{Adds an alias to the set of a given member of Amazon WorkMail}
+\title{Adds an alias to the set of a given member (user or group) of Amazon
+WorkMail}
 \usage{
 workmail_create_alias(OrganizationId, EntityId, Alias)
 }
 \arguments{
-\item{OrganizationId}{[required] The organization under which the member exists.}
+\item{OrganizationId}{[required] The organization under which the member (user or group) exists.}
 
-\item{EntityId}{[required] The alias is added to this Amazon WorkMail entity.}
+\item{EntityId}{[required] The member (user or group) to which this alias is added.}
 
-\item{Alias}{[required] The alias to add to the user.}
+\item{Alias}{[required] The alias to add to the member set.}
 }
 \description{
-Adds an alias to the set of a given member of Amazon WorkMail.
+Adds an alias to the set of a given member (user or group) of Amazon
+WorkMail.
 }
 \section{Request syntax}{
 \preformatted{workmail$create_alias(

@@ -6,7 +6,7 @@
 \usage{
 elasticbeanstalk_create_configuration_template(ApplicationName,
   TemplateName, SolutionStackName, PlatformArn, SourceConfiguration,
-  EnvironmentId, Description, OptionSettings)
+  EnvironmentId, Description, OptionSettings, Tags)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application to associate with this configuration
@@ -60,6 +60,8 @@ error.}
 \item{OptionSettings}{If specified, AWS Elastic Beanstalk sets the specified configuration
 option to the requested value. The new value overrides the value
 obtained from the solution stack or the source configuration template.}
+
+\item{Tags}{Specifies the tags applied to the configuration template.}
 }
 \description{
 Creates a configuration template. Templates are associated with a
@@ -94,6 +96,12 @@ Related Topics
       ResourceName = "string",
       Namespace = "string",
       OptionName = "string",
+      Value = "string"
+    )
+  ),
+  Tags = list(
+    list(
+      Key = "string",
       Value = "string"
     )
   )

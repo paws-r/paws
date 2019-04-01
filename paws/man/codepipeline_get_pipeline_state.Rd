@@ -14,6 +14,11 @@ codepipeline_get_pipeline_state(name)
 Returns information about the state of a pipeline, including the stages
 and actions.
 }
+\details{
+Values returned in the revisionId and revisionUrl fields indicate the
+source revision information, such as the commit ID, for the current
+state.
+}
 \section{Request syntax}{
 \preformatted{codepipeline$get_pipeline_state(
   name = "string"

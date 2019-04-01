@@ -433,7 +433,7 @@ sagemaker_create_code_repository <- function(CodeRepositoryName, GitConfig) {
 #'   ),
 #'   OutputConfig = list(
 #'     S3OutputLocation = "string",
-#'     TargetDevice = "ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"jetson_tx1"|"jetson_tx2"|"rasp3b"|"deeplens"
+#'     TargetDevice = "ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"jetson_tx1"|"jetson_tx2"|"rasp3b"|"deeplens"|"rk3399"|"rk3288"
 #'   ),
 #'   StoppingCondition = list(
 #'     MaxRuntimeInSeconds = 123
@@ -466,7 +466,7 @@ sagemaker_create_compilation_job <- function(CompilationJobName, RoleArn, InputC
 #' Creates an endpoint using the endpoint configuration specified in the
 #' request. Amazon SageMaker uses the endpoint to provision resources and
 #' deploy models. You create the endpoint configuration with the
-#' [CreateEndpointConfig](http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html)
+#' [CreateEndpointConfig](https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html)
 #' API.
 #' 
 #' Use this API only for hosting models using Amazon SageMaker hosting
@@ -483,12 +483,12 @@ sagemaker_create_compilation_job <- function(CompilationJobName, RoleArn, InputC
 #' to `Creating`. After it creates the endpoint, it sets the status to
 #' `InService`. Amazon SageMaker can then process incoming requests for
 #' inferences. To check the status of an endpoint, use the
-#' [DescribeEndpoint](http://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html)
+#' [DescribeEndpoint](https://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html)
 #' API.
 #' 
 #' For an example, see [Exercise 1: Using the K-Means Algorithm Provided by
 #' Amazon
-#' SageMaker](http://docs.aws.amazon.com/sagemaker/latest/dg/ex1.html).
+#' SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/ex1.html).
 #' 
 #' If any of the models hosted at this endpoint get model data from an
 #' Amazon S3 location, Amazon SageMaker uses AWS Security Token Service to
@@ -506,10 +506,10 @@ sagemaker_create_compilation_job <- function(CompilationJobName, RoleArn, InputC
 #' @param EndpointName &#91;required&#93; The name of the endpoint. The name must be unique within an AWS Region
 #' in your AWS account.
 #' @param EndpointConfigName &#91;required&#93; The name of an endpoint configuration. For more information, see
-#' [CreateEndpointConfig](http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html).
+#' [CreateEndpointConfig](https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html).
 #' @param Tags An array of key-value pairs. For more information, see [Using Cost
 #' Allocation
-#' Tags](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)in
+#' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)in
 #' the *AWS Billing and Cost Management User Guide*.
 #'
 #' @section Request syntax:
@@ -552,7 +552,7 @@ sagemaker_create_endpoint <- function(EndpointName, EndpointConfigName, Tags = N
 #' uses to deploy models. In the configuration, you identify one or more
 #' models, created using the `CreateModel` API, to deploy and the resources
 #' that you want Amazon SageMaker to provision. Then you call the
-#' [CreateEndpoint](http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html)
+#' [CreateEndpoint](https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html)
 #' API.
 #' 
 #' Use this API only if you want to use Amazon SageMaker hosting services
@@ -575,13 +575,13 @@ sagemaker_create_endpoint <- function(EndpointName, EndpointConfigName, Tags = N
 #'   Tags, KmsKeyId)
 #'
 #' @param EndpointConfigName &#91;required&#93; The name of the endpoint configuration. You specify this name in a
-#' [CreateEndpoint](http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html)
+#' [CreateEndpoint](https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html)
 #' request.
 #' @param ProductionVariants &#91;required&#93; An array of `ProductionVariant` objects, one for each model that you
 #' want to host at this endpoint.
 #' @param Tags An array of key-value pairs. For more information, see [Using Cost
 #' Allocation
-#' Tags](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
+#' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
 #' in the *AWS Billing and Cost Management User Guide*.
 #' @param KmsKeyId The Amazon Resource Name (ARN) of a AWS Key Management Service key that
 #' Amazon SageMaker uses to encrypt data on the storage volume attached to
@@ -686,7 +686,7 @@ sagemaker_create_endpoint_config <- function(EndpointConfigName, ProductionVaria
 #' sagemaker$create_hyper_parameter_tuning_job(
 #'   HyperParameterTuningJobName = "string",
 #'   HyperParameterTuningJobConfig = list(
-#'     Strategy = "Bayesian",
+#'     Strategy = "Bayesian"|"Random",
 #'     HyperParameterTuningJobObjective = list(
 #'       Type = "Maximize"|"Minimize",
 #'       MetricName = "string"
@@ -700,14 +700,16 @@ sagemaker_create_endpoint_config <- function(EndpointConfigName, ProductionVaria
 #'         list(
 #'           Name = "string",
 #'           MinValue = "string",
-#'           MaxValue = "string"
+#'           MaxValue = "string",
+#'           ScalingType = "Auto"|"Linear"|"Logarithmic"|"ReverseLogarithmic"
 #'         )
 #'       ),
 #'       ContinuousParameterRanges = list(
 #'         list(
 #'           Name = "string",
 #'           MinValue = "string",
-#'           MaxValue = "string"
+#'           MaxValue = "string",
+#'           ScalingType = "Auto"|"Linear"|"Logarithmic"|"ReverseLogarithmic"
 #'         )
 #'       ),
 #'       CategoricalParameterRanges = list(
@@ -1054,22 +1056,23 @@ sagemaker_create_labeling_job <- function(LabelingJobName, LabelAttributeName, I
 #' compute instances or for batch transform jobs. Deploying on ML compute
 #' instances is part of model hosting. For more information, see [Amazon
 #' SageMaker
-#' Roles](http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
+#' Roles](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
 #' 
 #' To be able to pass this role to Amazon SageMaker, the caller of this API
 #' must have the `iam:PassRole` permission.
 #' @param Tags An array of key-value pairs. For more information, see [Using Cost
 #' Allocation
-#' Tags](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
+#' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
 #' in the *AWS Billing and Cost Management User Guide*.
 #' @param VpcConfig A VpcConfig object that specifies the VPC that you want your model to
 #' connect to. Control access to and from your model container by
 #' configuring the VPC. `VpcConfig` is used in hosting services and in
 #' batch transform. For more information, see [Protect Endpoints by Using
 #' an Amazon Virtual Private
-#' Cloud](http://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html) and
-#' [Protect Data in Batch Transform Jobs by Using an Amazon Virtual Private
-#' Cloud](http://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html).
+#' Cloud](https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html)
+#' and [Protect Data in Batch Transform Jobs by Using an Amazon Virtual
+#' Private
+#' Cloud](https://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html).
 #' @param EnableNetworkIsolation Isolates the model container. No inbound or outbound network calls can
 #' be made to or from the model container.
 #' 
@@ -1314,13 +1317,14 @@ sagemaker_create_model_package <- function(ModelPackageName, ModelPackageDescrip
 #' validate hosted models.
 #' 
 #' For more information, see [How It
-#' Works](http://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html).
+#' Works](https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html).
 #'
 #' @usage
 #' sagemaker_create_notebook_instance(NotebookInstanceName, InstanceType,
 #'   SubnetId, SecurityGroupIds, RoleArn, KmsKeyId, Tags,
 #'   LifecycleConfigName, DirectInternetAccess, VolumeSizeInGB,
-#'   AcceleratorTypes, DefaultCodeRepository, AdditionalCodeRepositories)
+#'   AcceleratorTypes, DefaultCodeRepository, AdditionalCodeRepositories,
+#'   RootAccess)
 #'
 #' @param NotebookInstanceName &#91;required&#93; The name of the new notebook instance.
 #' @param InstanceType &#91;required&#93; The type of ML compute instance to launch for the notebook instance.
@@ -1334,7 +1338,7 @@ sagemaker_create_model_package <- function(ModelPackageName, ModelPackageDescrip
 #' perform these tasks. The policy must allow the Amazon SageMaker service
 #' principal (sagemaker.amazonaws.com) permissions to assume this role. For
 #' more information, see [Amazon SageMaker
-#' Roles](http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
+#' Roles](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
 #' 
 #' To be able to pass this role to Amazon SageMaker, the caller of this API
 #' must have the `iam:PassRole` permission.
@@ -1349,7 +1353,7 @@ sagemaker_create_model_package <- function(ModelPackageName, ModelPackageDescrip
 #' @param LifecycleConfigName The name of a lifecycle configuration to associate with the notebook
 #' instance. For information about lifestyle configurations, see [Step 2.1:
 #' (Optional) Customize a Notebook
-#' Instance](http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
+#' Instance](https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
 #' @param DirectInternetAccess Sets whether Amazon SageMaker provides internet access to the notebook
 #' instance. If you set this to `Disabled` this notebook instance will be
 #' able to access resources only in your VPC, and will not be able to
@@ -1357,7 +1361,7 @@ sagemaker_create_model_package <- function(ModelPackageName, ModelPackageDescrip
 #' configure a NAT Gateway in your VPC.
 #' 
 #' For more information, see [Notebook Instances Are Internet-Enabled by
-#' Default](http://docs.aws.amazon.com/sagemaker/latest/dg/appendix-additional-considerations.html#appendix-notebook-and-internet-access).
+#' Default](https://docs.aws.amazon.com/sagemaker/latest/dg/appendix-additional-considerations.html#appendix-notebook-and-internet-access).
 #' You can set the value of this parameter to `Disabled` only if you set a
 #' value for the `SubnetId` parameter.
 #' @param VolumeSizeInGB The size, in GB, of the ML storage volume to attach to the notebook
@@ -1385,6 +1389,13 @@ sagemaker_create_model_package <- function(ModelPackageName, ModelPackageDescrip
 #' information, see [Associating Git Repositories with Amazon SageMaker
 #' Notebook
 #' Instances](http://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html).
+#' @param RootAccess Whether root access is enabled or disabled for users of the notebook
+#' instance. The default value is `Enabled`.
+#' 
+#' Lifecycle configurations need root access to be able to set up a
+#' notebook instance. Because of this, lifecycle configurations associated
+#' with a notebook instance always run with root access even if you disable
+#' root access for users.
 #'
 #' @section Request syntax:
 #' ```
@@ -1412,21 +1423,22 @@ sagemaker_create_model_package <- function(ModelPackageName, ModelPackageDescrip
 #'   DefaultCodeRepository = "string",
 #'   AdditionalCodeRepositories = list(
 #'     "string"
-#'   )
+#'   ),
+#'   RootAccess = "Enabled"|"Disabled"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_notebook_instance
-sagemaker_create_notebook_instance <- function(NotebookInstanceName, InstanceType, SubnetId = NULL, SecurityGroupIds = NULL, RoleArn, KmsKeyId = NULL, Tags = NULL, LifecycleConfigName = NULL, DirectInternetAccess = NULL, VolumeSizeInGB = NULL, AcceleratorTypes = NULL, DefaultCodeRepository = NULL, AdditionalCodeRepositories = NULL) {
+sagemaker_create_notebook_instance <- function(NotebookInstanceName, InstanceType, SubnetId = NULL, SecurityGroupIds = NULL, RoleArn, KmsKeyId = NULL, Tags = NULL, LifecycleConfigName = NULL, DirectInternetAccess = NULL, VolumeSizeInGB = NULL, AcceleratorTypes = NULL, DefaultCodeRepository = NULL, AdditionalCodeRepositories = NULL, RootAccess = NULL) {
   op <- new_operation(
     name = "CreateNotebookInstance",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$create_notebook_instance_input(NotebookInstanceName = NotebookInstanceName, InstanceType = InstanceType, SubnetId = SubnetId, SecurityGroupIds = SecurityGroupIds, RoleArn = RoleArn, KmsKeyId = KmsKeyId, Tags = Tags, LifecycleConfigName = LifecycleConfigName, DirectInternetAccess = DirectInternetAccess, VolumeSizeInGB = VolumeSizeInGB, AcceleratorTypes = AcceleratorTypes, DefaultCodeRepository = DefaultCodeRepository, AdditionalCodeRepositories = AdditionalCodeRepositories)
+  input <- .sagemaker$create_notebook_instance_input(NotebookInstanceName = NotebookInstanceName, InstanceType = InstanceType, SubnetId = SubnetId, SecurityGroupIds = SecurityGroupIds, RoleArn = RoleArn, KmsKeyId = KmsKeyId, Tags = Tags, LifecycleConfigName = LifecycleConfigName, DirectInternetAccess = DirectInternetAccess, VolumeSizeInGB = VolumeSizeInGB, AcceleratorTypes = AcceleratorTypes, DefaultCodeRepository = DefaultCodeRepository, AdditionalCodeRepositories = AdditionalCodeRepositories, RootAccess = RootAccess)
   output <- .sagemaker$create_notebook_instance_output()
   svc <- .sagemaker$service()
   request <- new_request(svc, op, input, output)
@@ -1457,7 +1469,7 @@ sagemaker_create_notebook_instance <- function(NotebookInstanceName, InstanceTyp
 #' 
 #' For information about notebook instance lifestyle configurations, see
 #' [Step 2.1: (Optional) Customize a Notebook
-#' Instance](http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
+#' Instance](https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
 #'
 #' @usage
 #' sagemaker_create_notebook_instance_lifecycle_config(
@@ -1524,7 +1536,7 @@ sagemaker_create_notebook_instance_lifecycle_config <- function(NotebookInstance
 #' condition context key to specify the list of IP addresses that you want
 #' to have access to the notebook instance. For more information, see
 #' [Limit Access to a Notebook Instance by IP
-#' Address](http://docs.aws.amazon.com/sagemaker/latest/dg/howitworks-access-ws.html#nbi-ip-filter).
+#' Address](https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-ip-filter.html).
 #'
 #' @usage
 #' sagemaker_create_presigned_notebook_instance_url(NotebookInstanceName,
@@ -1568,8 +1580,8 @@ sagemaker_create_presigned_notebook_instance_url <- function(NotebookInstanceNam
 #' 
 #' If you choose to host your model using Amazon SageMaker hosting
 #' services, you can use the resulting model artifacts as part of the
-#' model. You can also use the artifacts in a deep learning service other
-#' than Amazon SageMaker, provided that you know how to use them for
+#' model. You can also use the artifacts in a machine learning service
+#' other than Amazon SageMaker, provided that you know how to use them for
 #' inferences.
 #' 
 #' In the request body, you provide the following:
@@ -1580,7 +1592,7 @@ sagemaker_create_presigned_notebook_instance_url <- function(NotebookInstanceNam
 #'     influence the quality of the final model. For a list of
 #'     hyperparameters for each training algorithm provided by Amazon
 #'     SageMaker, see
-#'     [Algorithms](http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
+#'     [Algorithms](https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
 #' 
 #' -   `InputDataConfig` - Describes the training dataset and the Amazon S3
 #'     location where it is stored.
@@ -1601,7 +1613,7 @@ sagemaker_create_presigned_notebook_instance_url <- function(NotebookInstanceNam
 #'     parameter to cap model training costs.
 #' 
 #' For more information about Amazon SageMaker, see [How It
-#' Works](http://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html).
+#' Works](https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html).
 #'
 #' @usage
 #' sagemaker_create_training_job(TrainingJobName, HyperParameters,
@@ -1615,7 +1627,7 @@ sagemaker_create_presigned_notebook_instance_url <- function(NotebookInstanceNam
 #' You set hyperparameters before you start the learning process. For a
 #' list of hyperparameters for each training algorithm provided by Amazon
 #' SageMaker, see
-#' [Algorithms](http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
+#' [Algorithms](https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
 #' 
 #' You can specify a maximum of 100 hyperparameters. Each hyperparameter is
 #' a key-value pair. Each key and value is limited to 256 characters, as
@@ -1623,10 +1635,10 @@ sagemaker_create_presigned_notebook_instance_url <- function(NotebookInstanceNam
 #' @param AlgorithmSpecification &#91;required&#93; The registry path of the Docker image that contains the training
 #' algorithm and algorithm-specific metadata, including the input mode. For
 #' more information about algorithms provided by Amazon SageMaker, see
-#' [Algorithms](http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
+#' [Algorithms](https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
 #' For information about providing your own algorithms, see [Using Your Own
 #' Algorithms with Amazon
-#' SageMaker](http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html).
+#' SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html).
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can
 #' assume to perform tasks on your behalf.
 #' 
@@ -1636,7 +1648,7 @@ sagemaker_create_presigned_notebook_instance_url <- function(NotebookInstanceNam
 #' Amazon CloudWatch Logs, and publish metrics to Amazon CloudWatch. You
 #' grant permissions for all of these tasks to an IAM role. For more
 #' information, see [Amazon SageMaker
-#' Roles](http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
+#' Roles](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
 #' 
 #' To be able to pass this role to Amazon SageMaker, the caller of this API
 #' must have the `iam:PassRole` permission.
@@ -1669,7 +1681,7 @@ sagemaker_create_presigned_notebook_instance_url <- function(NotebookInstanceNam
 #' job to connect to. Control access to and from your training container by
 #' configuring the VPC. For more information, see [Protect Training Jobs by
 #' Using an Amazon Virtual Private
-#' Cloud](http://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html).
+#' Cloud](https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html).
 #' @param StoppingCondition &#91;required&#93; Sets a duration for training. Use this parameter to cap model training
 #' costs. To stop a job, Amazon SageMaker sends the algorithm the `SIGTERM`
 #' signal, which delays job termination for 120 seconds. Algorithms might
@@ -1681,7 +1693,7 @@ sagemaker_create_presigned_notebook_instance_url <- function(NotebookInstanceNam
 #' artifact. You can use it to create a model using the `CreateModel` API.
 #' @param Tags An array of key-value pairs. For more information, see [Using Cost
 #' Allocation
-#' Tags](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
+#' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
 #' in the *AWS Billing and Cost Management User Guide*.
 #' @param EnableNetworkIsolation Isolates the training container. No inbound or outbound network calls
 #' can be made, except for calls between peers within a training cluster
@@ -1693,9 +1705,13 @@ sagemaker_create_presigned_notebook_instance_url <- function(NotebookInstanceNam
 #' The Semantic Segmentation built-in algorithm does not support network
 #' isolation.
 #' @param EnableInterContainerTrafficEncryption To encrypt all communications between ML compute instances in
-#' distributed training, choose `True`,. Encryption provides greater
-#' security for distributed training, but training can take longer because
-#' of additional communications between ML compute instances.
+#' distributed training, choose `True`. Encryption provides greater
+#' security for distributed training, but training might take longer. How
+#' long it takes depends on the amount of communication between compute
+#' instances, especially if you use a deep learning algorithm in
+#' distributed training. For more information, see [Protect Communications
+#' Between ML Compute Instances in a Distributed Training
+#' Job](https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -1819,7 +1835,7 @@ sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NUL
 #' 
 #' For more information about how batch transformation works Amazon
 #' SageMaker, see [How It
-#' Works](http://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html).
+#' Works](https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html).
 #'
 #' @usage
 #' sagemaker_create_transform_job(TransformJobName, ModelName,
@@ -1831,34 +1847,37 @@ sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NUL
 #' @param ModelName &#91;required&#93; The name of the model that you want to use for the transform job.
 #' `ModelName` must be the name of an existing Amazon SageMaker model
 #' within an AWS Region in an AWS account.
-#' @param MaxConcurrentTransforms The maximum number of parallel requests that can be sent to an algorithm
-#' container on an instance. This is good for algorithms that implement
-#' multiple workers on larger instances . The default value is `1`. To
-#' allow Amazon SageMaker to determine the appropriate number for
-#' `MaxConcurrentTransforms`, do not set the value in the API.
-#' @param MaxPayloadInMB The maximum payload size allowed, in MB. A payload is the data portion
-#' of a record (without metadata). The value in `MaxPayloadInMB` must be
-#' greater or equal to the size of a single record. You can approximate the
-#' size of a record by dividing the size of your dataset by the number of
-#' records. Then multiply this value by the number of records you want in a
-#' mini-batch. We recommend to enter a slightly larger value than this to
-#' ensure the records fit within the maximum payload size. The default
+#' @param MaxConcurrentTransforms The maximum number of parallel requests that can be sent to each
+#' instance in a transform job. The default value is `1`. To allow Amazon
+#' SageMaker to determine the appropriate number for
+#' `MaxConcurrentTransforms`, set the value to `0`.
+#' @param MaxPayloadInMB The maximum allowed size of the payload, in MB. A *payload* is the data
+#' portion of a record (without metadata). The value in `MaxPayloadInMB`
+#' must be greater than, or equal to, the size of a single record. To
+#' estimate the size of a record in MB, divide the size of your dataset by
+#' the number of records. To ensure that the records fit within the maximum
+#' payload size, we recommend using a slightly larger value. The default
 #' value is `6` MB.
 #' 
 #' For cases where the payload might be arbitrarily large and is
 #' transmitted using HTTP chunked encoding, set the value to `0`. This
-#' feature only works in supported algorithms. Currently, Amazon SageMaker
-#' built-in algorithms do not support this feature.
-#' @param BatchStrategy Determines the number of records to include in a mini-batch. If you want
-#' to include only one record in a mini-batch, specify `SingleRecord`.. If
-#' you want mini-batches to contain a maximum of the number of records
-#' specified in the `MaxPayloadInMB` parameter, specify `MultiRecord`.
+#' feature works only in supported algorithms. Currently, Amazon SageMaker
+#' built-in algorithms do not support HTTP chunked encoding.
+#' @param BatchStrategy Specifies the number of records to include in a mini-batch for an HTTP
+#' inference request. A *record* is a single unit of input data that
+#' inference can be made on. For example, a single line in a CSV file is a
+#' record.
 #' 
-#' If you set `SplitType` to `Line` and `BatchStrategy` to `MultiRecord`, a
-#' batch transform automatically splits your input data into the specified
-#' payload size. There\'s no need to split the dataset into smaller files
-#' or to use larger payload sizes unless the records in your dataset are
-#' very large.
+#' To enable the batch strategy, you must set `SplitType` to `Line`,
+#' `RecordIO`, or `TFRecord`.
+#' 
+#' To use only one record when making an HTTP invocation request to a
+#' container, set `BatchStrategy` to `SingleRecord` and `SplitType` to
+#' `Line`.
+#' 
+#' To fit as many records in a mini-batch as can fit within the
+#' `MaxPayloadInMB` limit, set `BatchStrategy` to `MultiRecord` and
+#' `SplitType` to `Line`.
 #' @param Environment The environment variables to set in the Docker container. We support up
 #' to 16 key and values entries in the map.
 #' @param TransformInput &#91;required&#93; Describes the input source and the way the transform job consumes it.
@@ -1867,7 +1886,7 @@ sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NUL
 #' count, to use for the transform job.
 #' @param Tags (Optional) An array of key-value pairs. For more information, see [Using
 #' Cost Allocation
-#' Tags](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
+#' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
 #' in the *AWS Billing and Cost Management User Guide*.
 #'
 #' @section Request syntax:
@@ -2148,7 +2167,7 @@ sagemaker_delete_endpoint_config <- function(EndpointConfigName) {
 #'
 #' Deletes a model. The `DeleteModel` API deletes only the model entry that
 #' was created in Amazon SageMaker when you called the
-#' [CreateModel](http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateModel.html)
+#' [CreateModel](https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateModel.html)
 #' API. It does not delete model artifacts, inference code, or the IAM role
 #' that you specified when creating the model.
 #'
@@ -2749,7 +2768,7 @@ sagemaker_describe_notebook_instance <- function(NotebookInstanceName) {
 #' 
 #' For information about notebook instance lifestyle configurations, see
 #' [Step 2.1: (Optional) Customize a Notebook
-#' Instance](http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
+#' Instance](https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
 #'
 #' @usage
 #' sagemaker_describe_notebook_instance_lifecycle_config(
@@ -3182,7 +3201,7 @@ sagemaker_list_compilation_jobs <- function(NextToken = NULL, MaxResults = NULL,
 #'   MaxResults, NameContains, CreationTimeBefore, CreationTimeAfter)
 #'
 #' @param SortBy The field to sort results by. The default is `CreationTime`.
-#' @param SortOrder The sort order for results. The default is `Ascending`.
+#' @param SortOrder The sort order for results. The default is `Descending`.
 #' @param NextToken If the result of the previous `ListEndpointConfig` request was
 #' truncated, the response includes a `NextToken`. To retrieve the next set
 #' of endpoint configurations, use the token in the next request.
@@ -3240,7 +3259,7 @@ sagemaker_list_endpoint_configs <- function(SortBy = NULL, SortOrder = NULL, Nex
 #'   LastModifiedTimeBefore, LastModifiedTimeAfter, StatusEquals)
 #'
 #' @param SortBy Sorts the list of results. The default is `CreationTime`.
-#' @param SortOrder The sort order for results. The default is `Ascending`.
+#' @param SortOrder The sort order for results. The default is `Descending`.
 #' @param NextToken If the result of a `ListEndpoints` request was truncated, the response
 #' includes a `NextToken`. To retrieve the next set of endpoints, use the
 #' token in the next request.
@@ -3566,7 +3585,7 @@ sagemaker_list_model_packages <- function(CreationTimeAfter = NULL, CreationTime
 #' Lists models created with the CreateModel API
 #'
 #' Lists models created with the
-#' [CreateModel](http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateModel.html)
+#' [CreateModel](https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateModel.html)
 #' API.
 #'
 #' @usage
@@ -3574,7 +3593,7 @@ sagemaker_list_model_packages <- function(CreationTimeAfter = NULL, CreationTime
 #'   NameContains, CreationTimeBefore, CreationTimeAfter)
 #'
 #' @param SortBy Sorts the list of results. The default is `CreationTime`.
-#' @param SortOrder The sort order for results. The default is `Ascending`.
+#' @param SortOrder The sort order for results. The default is `Descending`.
 #' @param NextToken If the response to a previous `ListModels` request was truncated, the
 #' response includes a `NextToken`. To retrieve the next set of models, use
 #' the token in the next request.
@@ -4463,11 +4482,6 @@ sagemaker_stop_notebook_instance <- function(NotebookInstanceName) {
 #' seconds. Algorithms might use this 120-second window to save the model
 #' artifacts, so the results of the training is not lost.
 #' 
-#' Training algorithms provided by Amazon SageMaker save the intermediate
-#' results of a model training job. This intermediate data is a valid model
-#' artifact. You can use the model artifacts that are saved when Amazon
-#' SageMaker stops a training job to create a model.
-#' 
 #' When it receives a `StopTrainingJob` request, Amazon SageMaker changes
 #' the status of the job to `Stopping`. After Amazon SageMaker stops the
 #' job, it sets the status to `Stopped`.
@@ -4602,7 +4616,7 @@ sagemaker_update_code_repository <- function(CodeRepositoryName, GitConfig = NUL
 #' When Amazon SageMaker receives the request, it sets the endpoint status
 #' to `Updating`. After updating the endpoint, it sets the status to
 #' `InService`. To check the status of an endpoint, use the
-#' [DescribeEndpoint](http://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html)
+#' [DescribeEndpoint](https://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html)
 #' API.
 #' 
 #' You cannot update an endpoint with the current `EndpointConfig`. To
@@ -4650,7 +4664,7 @@ sagemaker_update_endpoint <- function(EndpointName, EndpointConfigName) {
 #' existing endpoint. When it receives the request, Amazon SageMaker sets
 #' the endpoint status to `Updating`. After updating the endpoint, it sets
 #' the status to `InService`. To check the status of an endpoint, use the
-#' [DescribeEndpoint](http://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html)
+#' [DescribeEndpoint](https://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html)
 #' API.
 #'
 #' @usage
@@ -4706,21 +4720,21 @@ sagemaker_update_endpoint_weights_and_capacities <- function(EndpointName, Desir
 #'   VolumeSizeInGB, DefaultCodeRepository, AdditionalCodeRepositories,
 #'   AcceleratorTypes, DisassociateAcceleratorTypes,
 #'   DisassociateDefaultCodeRepository,
-#'   DisassociateAdditionalCodeRepositories)
+#'   DisassociateAdditionalCodeRepositories, RootAccess)
 #'
 #' @param NotebookInstanceName &#91;required&#93; The name of the notebook instance to update.
 #' @param InstanceType The Amazon ML compute instance type.
 #' @param RoleArn The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker can
 #' assume to access the notebook instance. For more information, see
 #' [Amazon SageMaker
-#' Roles](http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
+#' Roles](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
 #' 
 #' To be able to pass this role to Amazon SageMaker, the caller of this API
 #' must have the `iam:PassRole` permission.
 #' @param LifecycleConfigName The name of a lifecycle configuration to associate with the notebook
 #' instance. For information about lifestyle configurations, see [Step 2.1:
 #' (Optional) Customize a Notebook
-#' Instance](http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
+#' Instance](https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
 #' @param DisassociateLifecycleConfig Set to `true` to remove the notebook instance lifecycle configuration
 #' currently associated with the notebook instance.
 #' @param VolumeSizeInGB The size, in GB, of the ML storage volume to attach to the notebook
@@ -4739,7 +4753,7 @@ sagemaker_update_endpoint_weights_and_capacities <- function(EndpointName, Desir
 #' instance. These can be either the names of Git repositories stored as
 #' resources in your account, or the URL of Git repositories in [AWS
 #' CodeCommit](http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
-#' or in any other Git repository.. These repositories are cloned at the
+#' or in any other Git repository. These repositories are cloned at the
 #' same level as the default repository of your notebook instance. For more
 #' information, see [Associating Git Repositories with Amazon SageMaker
 #' Notebook
@@ -4755,6 +4769,12 @@ sagemaker_update_endpoint_weights_and_capacities <- function(EndpointName, Desir
 #' notebook instance.
 #' @param DisassociateAdditionalCodeRepositories A list of names or URLs of the default Git repositories to remove from
 #' this notebook instance.
+#' @param RootAccess Whether root access is enabled or disabled for users of the notebook
+#' instance. The default value is `Enabled`.
+#' 
+#' If you set this to `Disabled`, users don\'t have root access on the
+#' notebook instance, but lifecycle configuration scripts still run with
+#' root permissions.
 #'
 #' @section Request syntax:
 #' ```
@@ -4774,21 +4794,22 @@ sagemaker_update_endpoint_weights_and_capacities <- function(EndpointName, Desir
 #'   ),
 #'   DisassociateAcceleratorTypes = TRUE|FALSE,
 #'   DisassociateDefaultCodeRepository = TRUE|FALSE,
-#'   DisassociateAdditionalCodeRepositories = TRUE|FALSE
+#'   DisassociateAdditionalCodeRepositories = TRUE|FALSE,
+#'   RootAccess = "Enabled"|"Disabled"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_notebook_instance
-sagemaker_update_notebook_instance <- function(NotebookInstanceName, InstanceType = NULL, RoleArn = NULL, LifecycleConfigName = NULL, DisassociateLifecycleConfig = NULL, VolumeSizeInGB = NULL, DefaultCodeRepository = NULL, AdditionalCodeRepositories = NULL, AcceleratorTypes = NULL, DisassociateAcceleratorTypes = NULL, DisassociateDefaultCodeRepository = NULL, DisassociateAdditionalCodeRepositories = NULL) {
+sagemaker_update_notebook_instance <- function(NotebookInstanceName, InstanceType = NULL, RoleArn = NULL, LifecycleConfigName = NULL, DisassociateLifecycleConfig = NULL, VolumeSizeInGB = NULL, DefaultCodeRepository = NULL, AdditionalCodeRepositories = NULL, AcceleratorTypes = NULL, DisassociateAcceleratorTypes = NULL, DisassociateDefaultCodeRepository = NULL, DisassociateAdditionalCodeRepositories = NULL, RootAccess = NULL) {
   op <- new_operation(
     name = "UpdateNotebookInstance",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$update_notebook_instance_input(NotebookInstanceName = NotebookInstanceName, InstanceType = InstanceType, RoleArn = RoleArn, LifecycleConfigName = LifecycleConfigName, DisassociateLifecycleConfig = DisassociateLifecycleConfig, VolumeSizeInGB = VolumeSizeInGB, DefaultCodeRepository = DefaultCodeRepository, AdditionalCodeRepositories = AdditionalCodeRepositories, AcceleratorTypes = AcceleratorTypes, DisassociateAcceleratorTypes = DisassociateAcceleratorTypes, DisassociateDefaultCodeRepository = DisassociateDefaultCodeRepository, DisassociateAdditionalCodeRepositories = DisassociateAdditionalCodeRepositories)
+  input <- .sagemaker$update_notebook_instance_input(NotebookInstanceName = NotebookInstanceName, InstanceType = InstanceType, RoleArn = RoleArn, LifecycleConfigName = LifecycleConfigName, DisassociateLifecycleConfig = DisassociateLifecycleConfig, VolumeSizeInGB = VolumeSizeInGB, DefaultCodeRepository = DefaultCodeRepository, AdditionalCodeRepositories = AdditionalCodeRepositories, AcceleratorTypes = AcceleratorTypes, DisassociateAcceleratorTypes = DisassociateAcceleratorTypes, DisassociateDefaultCodeRepository = DisassociateDefaultCodeRepository, DisassociateAdditionalCodeRepositories = DisassociateAdditionalCodeRepositories, RootAccess = RootAccess)
   output <- .sagemaker$update_notebook_instance_output()
   svc <- .sagemaker$service()
   request <- new_request(svc, op, input, output)

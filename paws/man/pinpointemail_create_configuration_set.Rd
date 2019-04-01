@@ -5,7 +5,8 @@
 \title{Create a configuration set}
 \usage{
 pinpointemail_create_configuration_set(ConfigurationSetName,
-  TrackingOptions, DeliveryOptions, ReputationOptions, SendingOptions)
+  TrackingOptions, DeliveryOptions, ReputationOptions, SendingOptions,
+  Tags)
 }
 \arguments{
 \item{ConfigurationSetName}{The name of the configuration set.}
@@ -22,6 +23,9 @@ configuration set.}
 
 \item{SendingOptions}{An object that defines whether or not Amazon Pinpoint can send email
 that you send using the configuration set.}
+
+\item{Tags}{An object that defines the tags (keys and values) that you want to
+associate with the configuration set.}
 }
 \description{
 Create a configuration set. \emph{Configuration sets} are groups of rules
@@ -48,6 +52,12 @@ set are applied to the email.
   ),
   SendingOptions = list(
     SendingEnabled = TRUE|FALSE
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
   )
 )
 }

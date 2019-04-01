@@ -27,7 +27,7 @@ Two lists can be passed: \code{TagsToAdd} for tags to add or update, and
 }
 \details{
 Currently, Elastic Beanstalk only supports tagging of Elastic Beanstalk
-environments. For details about environment tagging, see \href{http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.tagging.html}{Tagging Resources in Your Elastic Beanstalk Environment}.
+environments. For details about environment tagging, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.tagging.html}{Tagging Resources in Your Elastic Beanstalk Environment}.
 
 If you create a custom IAM user policy to control permission to this
 operation, specify one of the following two virtual actions (or both)
@@ -43,7 +43,7 @@ elasticbeanstalk:RemoveTags
 :   Controls permission to call \code{UpdateTagsForResource} and pass a list
 of tag keys to remove in the \code{TagsToRemove} parameter.
 
-For details about creating a custom user policy, see \href{http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#AWSHowTo.iam.policies}{Creating a Custom User Policy}.
+For details about creating a custom user policy, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#AWSHowTo.iam.policies}{Creating a Custom User Policy}.
 }
 \section{Request syntax}{
 \preformatted{elasticbeanstalk$update_tags_for_resource(

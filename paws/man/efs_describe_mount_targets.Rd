@@ -9,8 +9,8 @@ efs_describe_mount_targets(MaxItems, Marker, FileSystemId,
   MountTargetId)
 }
 \arguments{
-\item{MaxItems}{(Optional) Maximum number of mount targets to return in the response. It
-must be an integer with a value greater than zero.}
+\item{MaxItems}{(Optional) Maximum number of mount targets to return in the response.
+Currently, this number is automatically set to 10.}
 
 \item{Marker}{(Optional) Opaque pagination token returned from a previous
 \code{DescribeMountTargets} operation (String). If present, it specifies to

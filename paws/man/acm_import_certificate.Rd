@@ -9,7 +9,7 @@ acm_import_certificate(CertificateArn, Certificate, PrivateKey,
   CertificateChain)
 }
 \arguments{
-\item{CertificateArn}{The \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Name (ARN)}
+\item{CertificateArn}{The \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Name (ARN)}
 of an imported certificate to replace. To import a new certificate, omit
 this field.}
 
@@ -21,16 +21,16 @@ this field.}
 }
 \description{
 Imports a certificate into AWS Certificate Manager (ACM) to use with
-services that are integrated with ACM. Note that \href{http://docs.aws.amazon.com/acm/latest/userguide/acm-services.html}{integrated services}
+services that are integrated with ACM. Note that \href{https://docs.aws.amazon.com/acm/latest/userguide/acm-services.html}{integrated services}
 allow only certificate types and keys they support to be associated with
 their resources. Further, their support differs depending on whether the
 certificate is imported into IAM or into ACM. For more information, see
 the documentation for each service. For more information about importing
-certificates into ACM, see \href{http://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html}{Importing Certificates}
+certificates into ACM, see \href{https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html}{Importing Certificates}
 in the \emph{AWS Certificate Manager User Guide}.
 }
 \details{
-ACM does not provide \href{http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html}{managed renewal}
+ACM does not provide \href{https://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html}{managed renewal}
 for certificates that you import.
 
 Note the following guidelines when importing third party certificates:
@@ -63,7 +63,7 @@ certificate, the certificate chain, and the private key files in the
 manner required by the programming language you're using.
 }
 
-This operation returns the \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Name (ARN)}
+This operation returns the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Name (ARN)}
 of the imported certificate.
 }
 \section{Request syntax}{

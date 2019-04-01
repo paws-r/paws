@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_put_bucket_notification}
 \alias{s3_put_bucket_notification}
-\title{Deprecated, see the PutBucketNotificationConfiguraiton operation}
+\title{No longer used, see the PutBucketNotificationConfiguration operation}
 \usage{
 s3_put_bucket_notification(Bucket, ContentMD5,
   NotificationConfiguration)
@@ -15,7 +15,7 @@ s3_put_bucket_notification(Bucket, ContentMD5,
 \item{NotificationConfiguration}{[required]}
 }
 \description{
-Deprecated, see the PutBucketNotificationConfiguraiton operation.
+No longer used, see the PutBucketNotificationConfiguration operation.
 }
 \section{Request syntax}{
 \preformatted{s3$put_bucket_notification(

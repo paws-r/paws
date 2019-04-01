@@ -12,8 +12,8 @@ NULL
 #' @usage
 #' serverlessapplicationrepository_create_application(Author, Description,
 #'   HomePageUrl, Labels, LicenseBody, LicenseUrl, Name, ReadmeBody,
-#'   ReadmeUrl, SemanticVersion, SourceCodeUrl, SpdxLicenseId, TemplateBody,
-#'   TemplateUrl)
+#'   ReadmeUrl, SemanticVersion, SourceCodeArchiveUrl, SourceCodeUrl,
+#'   SpdxLicenseId, TemplateBody, TemplateUrl)
 #'
 #' @param Author &#91;required&#93; The name of the author publishing the app.
 #' 
@@ -68,7 +68,12 @@ NULL
 #' @param SemanticVersion The semantic version of the application:
 #' 
 #' <https://semver.org/>
-#' @param SourceCodeUrl A link to a public repository for the source code of your application.
+#' @param SourceCodeArchiveUrl A link to the S3 object that contains the ZIP archive of the source code
+#' for this version of your application.
+#' 
+#' Maximum size 50 MB
+#' @param SourceCodeUrl A link to a public repository for the source code of your application,
+#' for example the URL of a specific GitHub commit.
 #' @param SpdxLicenseId A valid identifier from <https://spdx.org/licenses/>.
 #' @param TemplateBody The local raw packaged AWS SAM template file of your application. The
 #' file has the format file://\\<path\\>/\\<filename\\>.
@@ -96,6 +101,7 @@ NULL
 #'   ReadmeBody = "string",
 #'   ReadmeUrl = "string",
 #'   SemanticVersion = "string",
+#'   SourceCodeArchiveUrl = "string",
 #'   SourceCodeUrl = "string",
 #'   SpdxLicenseId = "string",
 #'   TemplateBody = "string",
@@ -106,14 +112,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname serverlessapplicationrepository_create_application
-serverlessapplicationrepository_create_application <- function(Author, Description, HomePageUrl = NULL, Labels = NULL, LicenseBody = NULL, LicenseUrl = NULL, Name, ReadmeBody = NULL, ReadmeUrl = NULL, SemanticVersion = NULL, SourceCodeUrl = NULL, SpdxLicenseId = NULL, TemplateBody = NULL, TemplateUrl = NULL) {
+serverlessapplicationrepository_create_application <- function(Author, Description, HomePageUrl = NULL, Labels = NULL, LicenseBody = NULL, LicenseUrl = NULL, Name, ReadmeBody = NULL, ReadmeUrl = NULL, SemanticVersion = NULL, SourceCodeArchiveUrl = NULL, SourceCodeUrl = NULL, SpdxLicenseId = NULL, TemplateBody = NULL, TemplateUrl = NULL) {
   op <- new_operation(
     name = "CreateApplication",
     http_method = "POST",
     http_path = "/applications",
     paginator = list()
   )
-  input <- .serverlessapplicationrepository$create_application_input(Author = Author, Description = Description, HomePageUrl = HomePageUrl, Labels = Labels, LicenseBody = LicenseBody, LicenseUrl = LicenseUrl, Name = Name, ReadmeBody = ReadmeBody, ReadmeUrl = ReadmeUrl, SemanticVersion = SemanticVersion, SourceCodeUrl = SourceCodeUrl, SpdxLicenseId = SpdxLicenseId, TemplateBody = TemplateBody, TemplateUrl = TemplateUrl)
+  input <- .serverlessapplicationrepository$create_application_input(Author = Author, Description = Description, HomePageUrl = HomePageUrl, Labels = Labels, LicenseBody = LicenseBody, LicenseUrl = LicenseUrl, Name = Name, ReadmeBody = ReadmeBody, ReadmeUrl = ReadmeUrl, SemanticVersion = SemanticVersion, SourceCodeArchiveUrl = SourceCodeArchiveUrl, SourceCodeUrl = SourceCodeUrl, SpdxLicenseId = SpdxLicenseId, TemplateBody = TemplateBody, TemplateUrl = TemplateUrl)
   output <- .serverlessapplicationrepository$create_application_output()
   svc <- .serverlessapplicationrepository$service()
   request <- new_request(svc, op, input, output)
@@ -128,12 +134,17 @@ serverlessapplicationrepository_create_application <- function(Author, Descripti
 #'
 #' @usage
 #' serverlessapplicationrepository_create_application_version(
-#'   ApplicationId, SemanticVersion, SourceCodeUrl, TemplateBody,
-#'   TemplateUrl)
+#'   ApplicationId, SemanticVersion, SourceCodeArchiveUrl, SourceCodeUrl,
+#'   TemplateBody, TemplateUrl)
 #'
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
 #' @param SemanticVersion &#91;required&#93; The semantic version of the new version.
-#' @param SourceCodeUrl A link to a public repository for the source code of your application.
+#' @param SourceCodeArchiveUrl A link to the S3 object that contains the ZIP archive of the source code
+#' for this version of your application.
+#' 
+#' Maximum size 50 MB
+#' @param SourceCodeUrl A link to a public repository for the source code of your application,
+#' for example the URL of a specific GitHub commit.
 #' @param TemplateBody The raw packaged AWS SAM template of your application.
 #' @param TemplateUrl A link to the packaged AWS SAM template of your application.
 #'
@@ -142,6 +153,7 @@ serverlessapplicationrepository_create_application <- function(Author, Descripti
 #' serverlessapplicationrepository$create_application_version(
 #'   ApplicationId = "string",
 #'   SemanticVersion = "string",
+#'   SourceCodeArchiveUrl = "string",
 #'   SourceCodeUrl = "string",
 #'   TemplateBody = "string",
 #'   TemplateUrl = "string"
@@ -151,14 +163,14 @@ serverlessapplicationrepository_create_application <- function(Author, Descripti
 #' @keywords internal
 #'
 #' @rdname serverlessapplicationrepository_create_application_version
-serverlessapplicationrepository_create_application_version <- function(ApplicationId, SemanticVersion, SourceCodeUrl = NULL, TemplateBody = NULL, TemplateUrl = NULL) {
+serverlessapplicationrepository_create_application_version <- function(ApplicationId, SemanticVersion, SourceCodeArchiveUrl = NULL, SourceCodeUrl = NULL, TemplateBody = NULL, TemplateUrl = NULL) {
   op <- new_operation(
     name = "CreateApplicationVersion",
     http_method = "PUT",
     http_path = "/applications/{applicationId}/versions/{semanticVersion}",
     paginator = list()
   )
-  input <- .serverlessapplicationrepository$create_application_version_input(ApplicationId = ApplicationId, SemanticVersion = SemanticVersion, SourceCodeUrl = SourceCodeUrl, TemplateBody = TemplateBody, TemplateUrl = TemplateUrl)
+  input <- .serverlessapplicationrepository$create_application_version_input(ApplicationId = ApplicationId, SemanticVersion = SemanticVersion, SourceCodeArchiveUrl = SourceCodeArchiveUrl, SourceCodeUrl = SourceCodeUrl, TemplateBody = TemplateBody, TemplateUrl = TemplateUrl)
   output <- .serverlessapplicationrepository$create_application_version_output()
   svc <- .serverlessapplicationrepository$service()
   request <- new_request(svc, op, input, output)
@@ -185,8 +197,8 @@ serverlessapplicationrepository_create_application_version <- function(Applicati
 #' must explicitly acknowledge their capabilities by specifying this
 #' parameter.
 #' 
-#' The only valid values are CAPABILITY\\_IAM, CAPABILITY\\_NAMED\\_IAM, and
-#' CAPABILITY\\_RESOURCE\\_POLICY.
+#' The only valid values are CAPABILITY\\_IAM, CAPABILITY\\_NAMED\\_IAM,
+#' CAPABILITY\\_RESOURCE\\_POLICY, and CAPABILITY\\_AUTO\\_EXPAND.
 #' 
 #' The following resources require you to specify CAPABILITY\\_IAM or
 #' CAPABILITY\\_NAMED\\_IAM:
@@ -210,13 +222,13 @@ serverlessapplicationrepository_create_application_version <- function(Applicati
 #' and
 #' [AWS::SNS:TopicPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-policy.html).
 #' 
+#' Applications that contain one or more nested applications require you to
+#' specify CAPABILITY\\_AUTO\\_EXPAND.
+#' 
 #' If your application template contains any of the above resources, we
 #' recommend that you review all permissions associated with the
 #' application before deploying. If you don\'t specify this parameter for
 #' an application that requires capabilities, the call will fail.
-#' 
-#' Valid values: CAPABILITY\\_IAM \\| CAPABILITY\\_NAMED\\_IAM \\|
-#' CAPABILITY\\_RESOURCE\\_POLICY
 #' @param ChangeSetName This property corresponds to the parameter of the same name for the *AWS
 #' CloudFormation
 #' [CreateChangeSet](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)*

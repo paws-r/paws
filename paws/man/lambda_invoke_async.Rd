@@ -20,7 +20,7 @@ lambda_invoke_async(FunctionName, InvokeArgs)
 The length constraint applies only to the full ARN. If you specify only
 the function name, it is limited to 64 characters in length.}
 
-\item{InvokeArgs}{[required] JSON that you want to provide to your Lambda function as input.}
+\item{InvokeArgs}{[required] The JSON that you want to provide to your Lambda function as input.}
 }
 \description{
 For asynchronous function invocation, use Invoke.

@@ -26,6 +26,8 @@ the EBS volume.
 volume, in GiB.
 \item \code{block-device-mapping.volume-type} - The volume type of the EBS
 volume (\code{gp2} \| \code{io1} \| \code{st1 }\| \code{sc1} \| \code{standard}).
+\item \code{block-device-mapping.encrypted} - A Boolean that indicates whether
+the EBS volume is encrypted.
 \item \code{description} - The description of the image (provided during image
 creation).
 \item \code{ena-support} - A Boolean that indicates whether enhanced networking

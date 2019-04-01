@@ -9,7 +9,7 @@ cloudwatch_put_metric_alarm(AlarmName, AlarmDescription, ActionsEnabled,
   OKActions, AlarmActions, InsufficientDataActions, MetricName, Namespace,
   Statistic, ExtendedStatistic, Dimensions, Period, Unit,
   EvaluationPeriods, DatapointsToAlarm, Threshold, ComparisonOperator,
-  TreatMissingData, EvaluateLowSampleCountPercentile, Metrics)
+  TreatMissingData, EvaluateLowSampleCountPercentile, Metrics, Tags)
 }
 \arguments{
 \item{AlarmName}{[required] The name for the alarm. This name must be unique within your AWS
@@ -45,6 +45,7 @@ Name (ARN).
 Valid Values: \code{arn:aws:automate:<i>region</i>:ec2:stop} \|
 \code{arn:aws:automate:<i>region</i>:ec2:terminate} \|
 \code{arn:aws:automate:<i>region</i>:ec2:recover} \|
+\code{arn:aws:automate:<i>region</i>:ec2:reboot} \|
 \code{arn:aws:sns:<i>region</i>:<i>account-id</i>:<i>sns-topic-name</i> } \|
 \code{arn:aws:autoscaling:<i>region</i>:<i>account-id</i>:scalingPolicy:<i>policy-id</i>autoScalingGroupName/<i>group-friendly-name</i>:policyName/<i>policy-friendly-name</i> }
 
@@ -62,6 +63,7 @@ as an Amazon Resource Name (ARN).
 Valid Values: \code{arn:aws:automate:<i>region</i>:ec2:stop} \|
 \code{arn:aws:automate:<i>region</i>:ec2:terminate} \|
 \code{arn:aws:automate:<i>region</i>:ec2:recover} \|
+\code{arn:aws:automate:<i>region</i>:ec2:reboot} \|
 \code{arn:aws:sns:<i>region</i>:<i>account-id</i>:<i>sns-topic-name</i> } \|
 \code{arn:aws:autoscaling:<i>region</i>:<i>account-id</i>:scalingPolicy:<i>policy-id</i>autoScalingGroupName/<i>group-friendly-name</i>:policyName/<i>policy-friendly-name</i> }
 
@@ -135,7 +137,7 @@ seconds.}
 
 \item{DatapointsToAlarm}{The number of datapoints that must be breaching to trigger the alarm.
 This is used only if you are setting an "M out of N" alarm. In that
-case, this value is the M. For more information, see \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarm-evaluation}{Evaluating an Alarm}
+case, this value is the M. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarm-evaluation}{Evaluating an Alarm}
 in the \emph{Amazon CloudWatch User Guide}.}
 
 \item{Threshold}{[required] The value against which the specified statistic is compared.}
@@ -146,7 +148,7 @@ operand.}
 
 \item{TreatMissingData}{Sets how this alarm is to handle missing data points. If
 \code{TreatMissingData} is omitted, the default behavior of \code{missing} is
-used. For more information, see \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarms-and-missing-data}{Configuring How CloudWatch Alarms Treats Missing Data}.
+used. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarms-and-missing-data}{Configuring How CloudWatch Alarms Treats Missing Data}.
 
 Valid Values: \code{breaching | notBreaching | ignore | missing}}
 
@@ -155,7 +157,7 @@ alarm state does not change during periods with too few data points to
 be statistically significant. If you specify \code{evaluate} or omit this
 parameter, the alarm is always evaluated and possibly changes state no
 matter how many data points are available. For more information, see
-\href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#percentiles-with-low-samples}{Percentile-Based CloudWatch Alarms and Low Data Samples}.
+\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#percentiles-with-low-samples}{Percentile-Based CloudWatch Alarms and Low Data Samples}.
 
 Valid Values: \code{evaluate | ignore}}
 
@@ -163,11 +165,22 @@ Valid Values: \code{evaluate | ignore}}
 alarm based on the result of a metric math expression. Each item in the
 \code{Metrics} array either retrieves a metric or performs a math expression.
 
+One item in the \code{Metrics} array is the expression that the alarm
+watches. You designate this expression by setting \code{ReturnValue} to true
+for this object in the array. For more information, see MetricDataQuery.
+
 If you use the \code{Metrics} parameter, you cannot include the \code{MetricName},
 \code{Dimensions}, \code{Period}, \code{Namespace}, \code{Statistic}, or \code{ExtendedStatistic}
 parameters of \code{PutMetricAlarm} in the same operation. Instead, you
 retrieve the metrics you are using in your math expression as part of
 the \code{Metrics} array.}
+
+\item{Tags}{A list of key-value pairs to associate with the alarm or dashboard. You
+can associate as many as 50 tags with an alarm.
+
+Tags can help you organize and categorize your resources. You can also
+use them to scope user permissions, by granting a user permission to
+access or change only resources with certain tag values.}
 }
 \description{
 Creates or updates an alarm and associates it with the specified metric
@@ -190,8 +203,7 @@ alarm operations:
 alarms on EC2 instance status metrics
 \item \code{ec2:StopInstances} for alarms with stop actions
 \item \code{ec2:TerminateInstances} for alarms with terminate actions
-\item \code{ec2:DescribeInstanceRecoveryAttribute} and \code{ec2:RecoverInstances}
-for alarms with recover actions
+\item No specific permissions are needed for alarms with recover actions
 }
 
 If you have read/write permissions for Amazon CloudWatch but not for
@@ -211,7 +223,7 @@ you cannot stop or terminate an EC2 instance using alarm actions.
 The first time you create an alarm in the AWS Management Console, the
 CLI, or by using the PutMetricAlarm API, CloudWatch creates the
 necessary service-linked role for you. The service-linked role is called
-\code{AWSServiceRoleForCloudWatchEvents}. For more information, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role}{AWS service-linked role}.
+\code{AWSServiceRoleForCloudWatchEvents}. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role}{AWS service-linked role}.
 }
 \section{Request syntax}{
 \preformatted{cloudwatch$put_metric_alarm(
@@ -266,6 +278,12 @@ necessary service-linked role for you. The service-linked role is called
       Expression = "string",
       Label = "string",
       ReturnData = TRUE|FALSE
+    )
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
     )
   )
 )

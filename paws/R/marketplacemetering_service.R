@@ -41,7 +41,7 @@ NULL
 #'     you can do so if you want to receive usage data in your seller
 #'     reports. For more information on using the RegisterUsage operation,
 #'     see [Container-Based
-#'     Products](https://docs.aws.amazon.com/latest/userguide/entitlement-and-metering-for-paid-products.html).
+#'     Products](https://docs.aws.amazon.com/marketplace/latest/userguide/container-based-products.html).
 #' 
 #' BatchMeterUsage API calls are captured by AWS CloudTrail. You can use
 #' Cloudtrail to verify that the SaaS metering records that you sent are

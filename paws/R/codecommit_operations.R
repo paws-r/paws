@@ -89,6 +89,87 @@ codecommit_create_branch <- function(repositoryName, branchName, commitId) {
 }
 .codecommit$operations$create_branch <- codecommit_create_branch
 
+#' Creates a commit for a repository on the tip of a specified branch
+#'
+#' Creates a commit for a repository on the tip of a specified branch.
+#'
+#' @usage
+#' codecommit_create_commit(repositoryName, branchName, parentCommitId,
+#'   authorName, email, commitMessage, keepEmptyFolders, putFiles,
+#'   deleteFiles, setFileModes)
+#'
+#' @param repositoryName &#91;required&#93; The name of the repository where you will create the commit.
+#' @param branchName &#91;required&#93; The name of the branch where you will create the commit.
+#' @param parentCommitId The ID of the commit that is the parent of the commit you will create.
+#' If this is an empty repository, this is not required.
+#' @param authorName The name of the author who created the commit. This information will be
+#' used as both the author and committer for the commit.
+#' @param email The email address of the person who created the commit.
+#' @param commitMessage The commit message you want to include as part of creating the commit.
+#' Commit messages are limited to 256 KB. If no message is specified, a
+#' default message will be used.
+#' @param keepEmptyFolders If the commit contains deletions, whether to keep a folder or folder
+#' structure if the changes leave the folders empty. If this is specified
+#' as true, a .gitkeep file will be created for empty folders.
+#' @param putFiles The files to add or update in this commit.
+#' @param deleteFiles The files to delete in this commit. These files will still exist in
+#' prior commits.
+#' @param setFileModes The file modes to update for files in this commit.
+#'
+#' @section Request syntax:
+#' ```
+#' codecommit$create_commit(
+#'   repositoryName = "string",
+#'   branchName = "string",
+#'   parentCommitId = "string",
+#'   authorName = "string",
+#'   email = "string",
+#'   commitMessage = "string",
+#'   keepEmptyFolders = TRUE|FALSE,
+#'   putFiles = list(
+#'     list(
+#'       filePath = "string",
+#'       fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK",
+#'       fileContent = raw,
+#'       sourceFile = list(
+#'         filePath = "string",
+#'         isMove = TRUE|FALSE
+#'       )
+#'     )
+#'   ),
+#'   deleteFiles = list(
+#'     list(
+#'       filePath = "string"
+#'     )
+#'   ),
+#'   setFileModes = list(
+#'     list(
+#'       filePath = "string",
+#'       fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codecommit_create_commit
+codecommit_create_commit <- function(repositoryName, branchName, parentCommitId = NULL, authorName = NULL, email = NULL, commitMessage = NULL, keepEmptyFolders = NULL, putFiles = NULL, deleteFiles = NULL, setFileModes = NULL) {
+  op <- new_operation(
+    name = "CreateCommit",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codecommit$create_commit_input(repositoryName = repositoryName, branchName = branchName, parentCommitId = parentCommitId, authorName = authorName, email = email, commitMessage = commitMessage, keepEmptyFolders = keepEmptyFolders, putFiles = putFiles, deleteFiles = deleteFiles, setFileModes = setFileModes)
+  output <- .codecommit$create_commit_output()
+  svc <- .codecommit$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codecommit$operations$create_commit <- codecommit_create_commit
+
 #' Creates a pull request in the specified repository
 #'
 #' Creates a pull request in the specified repository.

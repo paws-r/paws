@@ -12,7 +12,7 @@ chime_create_account(Name)
 \description{
 Creates an Amazon Chime account under the administrator's AWS account.
 Only \code{Team} account types are currently supported for this action. For
-more information about different account types, see \href{http://docs.aws.amazon.com/chime/latest/ag/manage-chime-account.html}{Managing Your Amazon Chime Accounts}
+more information about different account types, see \href{https://docs.aws.amazon.com/chime/latest/ag/manage-chime-account.html}{Managing Your Amazon Chime Accounts}
 in the \emph{Amazon Chime Administration Guide}.
 }
 \section{Request syntax}{

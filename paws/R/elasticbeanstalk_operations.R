@@ -145,7 +145,7 @@ elasticbeanstalk_check_dns_availability <- function(CNAMEPrefix) {
 #' create or update. The name of each environment and other required
 #' information must be included in the source bundles in an environment
 #' manifest named `env.yaml`. See [Compose
-#' Environments](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-mgmt-compose.html)
+#' Environments](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-mgmt-compose.html)
 #' for details.
 #'
 #' @usage
@@ -158,7 +158,7 @@ elasticbeanstalk_check_dns_availability <- function(CNAMEPrefix) {
 #' group name only if the environment name defined in each target
 #' environment\'s manifest ends with a + (plus) character. See [Environment
 #' Manifest
-#' (env.yaml)](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html)
+#' (env.yaml)](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html)
 #' for details.
 #' @param VersionLabels A list of version labels, specifying one or more application source
 #' bundles that belong to the target application. Each source bundle must
@@ -204,7 +204,7 @@ elasticbeanstalk_compose_environments <- function(ApplicationName = NULL, GroupN
 #'
 #' @usage
 #' elasticbeanstalk_create_application(ApplicationName, Description,
-#'   ResourceLifecycleConfig)
+#'   ResourceLifecycleConfig, Tags)
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application.
 #' 
@@ -214,6 +214,10 @@ elasticbeanstalk_compose_environments <- function(ApplicationName = NULL, GroupN
 #' @param Description Describes the application.
 #' @param ResourceLifecycleConfig Specify an application resource lifecycle configuration to prevent your
 #' application from accumulating too many versions.
+#' @param Tags Specifies the tags applied to the application.
+#' 
+#' Elastic Beanstalk applies these tags only to the application.
+#' Environments that you create in the application don\'t inherit the tags.
 #'
 #' @section Request syntax:
 #' ```
@@ -234,6 +238,12 @@ elasticbeanstalk_compose_environments <- function(ApplicationName = NULL, GroupN
 #'         DeleteSourceFromS3 = TRUE|FALSE
 #'       )
 #'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -248,14 +258,14 @@ elasticbeanstalk_compose_environments <- function(ApplicationName = NULL, GroupN
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_create_application
-elasticbeanstalk_create_application <- function(ApplicationName, Description = NULL, ResourceLifecycleConfig = NULL) {
+elasticbeanstalk_create_application <- function(ApplicationName, Description = NULL, ResourceLifecycleConfig = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateApplication",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elasticbeanstalk$create_application_input(ApplicationName = ApplicationName, Description = Description, ResourceLifecycleConfig = ResourceLifecycleConfig)
+  input <- .elasticbeanstalk$create_application_input(ApplicationName = ApplicationName, Description = Description, ResourceLifecycleConfig = ResourceLifecycleConfig, Tags = Tags)
   output <- .elasticbeanstalk$create_application_output()
   svc <- .elasticbeanstalk$service()
   request <- new_request(svc, op, input, output)
@@ -290,7 +300,7 @@ elasticbeanstalk_create_application <- function(ApplicationName, Description = N
 #' @usage
 #' elasticbeanstalk_create_application_version(ApplicationName,
 #'   VersionLabel, Description, SourceBuildInformation, SourceBundle,
-#'   BuildConfiguration, AutoCreateApplication, Process)
+#'   BuildConfiguration, AutoCreateApplication, Process, Tags)
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application. If no application is found with this name,
 #' and `AutoCreateApplication` is `false`, returns an
@@ -327,6 +337,10 @@ elasticbeanstalk_create_application <- function(ApplicationName, Description = N
 #' The `Process` option validates Elastic Beanstalk configuration files. It
 #' doesn\'t validate your application\'s configuration files, like proxy
 #' server or Docker configuration.
+#' @param Tags Specifies the tags applied to the application version.
+#' 
+#' Elastic Beanstalk applies these tags only to the application version.
+#' Environments that use the application version don\'t inherit the tags.
 #'
 #' @section Request syntax:
 #' ```
@@ -351,7 +365,13 @@ elasticbeanstalk_create_application <- function(ApplicationName, Description = N
 #'     TimeoutInMinutes = 123
 #'   ),
 #'   AutoCreateApplication = TRUE|FALSE,
-#'   Process = TRUE|FALSE
+#'   Process = TRUE|FALSE,
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -373,14 +393,14 @@ elasticbeanstalk_create_application <- function(ApplicationName, Description = N
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_create_application_version
-elasticbeanstalk_create_application_version <- function(ApplicationName, VersionLabel, Description = NULL, SourceBuildInformation = NULL, SourceBundle = NULL, BuildConfiguration = NULL, AutoCreateApplication = NULL, Process = NULL) {
+elasticbeanstalk_create_application_version <- function(ApplicationName, VersionLabel, Description = NULL, SourceBuildInformation = NULL, SourceBundle = NULL, BuildConfiguration = NULL, AutoCreateApplication = NULL, Process = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateApplicationVersion",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elasticbeanstalk$create_application_version_input(ApplicationName = ApplicationName, VersionLabel = VersionLabel, Description = Description, SourceBuildInformation = SourceBuildInformation, SourceBundle = SourceBundle, BuildConfiguration = BuildConfiguration, AutoCreateApplication = AutoCreateApplication, Process = Process)
+  input <- .elasticbeanstalk$create_application_version_input(ApplicationName = ApplicationName, VersionLabel = VersionLabel, Description = Description, SourceBuildInformation = SourceBuildInformation, SourceBundle = SourceBundle, BuildConfiguration = BuildConfiguration, AutoCreateApplication = AutoCreateApplication, Process = Process, Tags = Tags)
   output <- .elasticbeanstalk$create_application_version_output()
   svc <- .elasticbeanstalk$service()
   request <- new_request(svc, op, input, output)
@@ -409,7 +429,7 @@ elasticbeanstalk_create_application_version <- function(ApplicationName, Version
 #' @usage
 #' elasticbeanstalk_create_configuration_template(ApplicationName,
 #'   TemplateName, SolutionStackName, PlatformArn, SourceConfiguration,
-#'   EnvironmentId, Description, OptionSettings)
+#'   EnvironmentId, Description, OptionSettings, Tags)
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application to associate with this configuration
 #' template. If no application is found with this name, AWS Elastic
@@ -455,6 +475,7 @@ elasticbeanstalk_create_application_version <- function(ApplicationName, Version
 #' @param OptionSettings If specified, AWS Elastic Beanstalk sets the specified configuration
 #' option to the requested value. The new value overrides the value
 #' obtained from the solution stack or the source configuration template.
+#' @param Tags Specifies the tags applied to the configuration template.
 #'
 #' @section Request syntax:
 #' ```
@@ -476,6 +497,12 @@ elasticbeanstalk_create_application_version <- function(ApplicationName, Version
 #'       OptionName = "string",
 #'       Value = "string"
 #'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -492,14 +519,14 @@ elasticbeanstalk_create_application_version <- function(ApplicationName, Version
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_create_configuration_template
-elasticbeanstalk_create_configuration_template <- function(ApplicationName, TemplateName, SolutionStackName = NULL, PlatformArn = NULL, SourceConfiguration = NULL, EnvironmentId = NULL, Description = NULL, OptionSettings = NULL) {
+elasticbeanstalk_create_configuration_template <- function(ApplicationName, TemplateName, SolutionStackName = NULL, PlatformArn = NULL, SourceConfiguration = NULL, EnvironmentId = NULL, Description = NULL, OptionSettings = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateConfigurationTemplate",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elasticbeanstalk$create_configuration_template_input(ApplicationName = ApplicationName, TemplateName = TemplateName, SolutionStackName = SolutionStackName, PlatformArn = PlatformArn, SourceConfiguration = SourceConfiguration, EnvironmentId = EnvironmentId, Description = Description, OptionSettings = OptionSettings)
+  input <- .elasticbeanstalk$create_configuration_template_input(ApplicationName = ApplicationName, TemplateName = TemplateName, SolutionStackName = SolutionStackName, PlatformArn = PlatformArn, SourceConfiguration = SourceConfiguration, EnvironmentId = EnvironmentId, Description = Description, OptionSettings = OptionSettings, Tags = Tags)
   output <- .elasticbeanstalk$create_configuration_template_output()
   svc <- .elasticbeanstalk$service()
   request <- new_request(svc, op, input, output)
@@ -540,14 +567,14 @@ elasticbeanstalk_create_configuration_template <- function(ApplicationName, Temp
 #' group name only if the environment\'s name is specified in an
 #' environment manifest and not with the environment name parameter. See
 #' [Environment Manifest
-#' (env.yaml)](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html)
+#' (env.yaml)](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html)
 #' for details.
 #' @param Description Describes this environment.
 #' @param CNAMEPrefix If specified, the environment attempts to use this value as the prefix
 #' for the CNAME. If not specified, the CNAME is generated automatically by
 #' appending a random alphanumeric string to the environment name.
 #' @param Tier This specifies the tier to use for creating this environment.
-#' @param Tags This specifies the tags applied to resources in the environment.
+#' @param Tags Specifies the tags applied to resources in the environment.
 #' @param VersionLabel The name of the application version to deploy.
 #' 
 #' If the specified application has no associated application versions, AWS
@@ -564,7 +591,7 @@ elasticbeanstalk_create_configuration_template <- function(ApplicationName, Temp
 #' associated with the specified solution stack.
 #' 
 #' For a list of current solution stacks, see [Elastic Beanstalk Supported
-#' Platforms](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html).
+#' Platforms](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html).
 #' @param PlatformArn The ARN of the platform.
 #' @param OptionSettings If specified, AWS Elastic Beanstalk sets the specified configuration
 #' options to the requested value in the configuration set for the new
@@ -650,13 +677,18 @@ elasticbeanstalk_create_environment <- function(ApplicationName, EnvironmentName
 #'
 #' @usage
 #' elasticbeanstalk_create_platform_version(PlatformName, PlatformVersion,
-#'   PlatformDefinitionBundle, EnvironmentName, OptionSettings)
+#'   PlatformDefinitionBundle, EnvironmentName, OptionSettings, Tags)
 #'
 #' @param PlatformName &#91;required&#93; The name of your custom platform.
 #' @param PlatformVersion &#91;required&#93; The number, such as 1.0.2, for the new platform version.
 #' @param PlatformDefinitionBundle &#91;required&#93; The location of the platform definition archive in Amazon S3.
 #' @param EnvironmentName The name of the builder environment.
 #' @param OptionSettings The configuration option settings to apply to the builder environment.
+#' @param Tags Specifies the tags applied to the new platform version.
+#' 
+#' Elastic Beanstalk applies these tags only to the platform version.
+#' Environments that you create using the platform version don\'t inherit
+#' the tags.
 #'
 #' @section Request syntax:
 #' ```
@@ -675,6 +707,12 @@ elasticbeanstalk_create_environment <- function(ApplicationName, EnvironmentName
 #'       OptionName = "string",
 #'       Value = "string"
 #'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -682,14 +720,14 @@ elasticbeanstalk_create_environment <- function(ApplicationName, EnvironmentName
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_create_platform_version
-elasticbeanstalk_create_platform_version <- function(PlatformName, PlatformVersion, PlatformDefinitionBundle, EnvironmentName = NULL, OptionSettings = NULL) {
+elasticbeanstalk_create_platform_version <- function(PlatformName, PlatformVersion, PlatformDefinitionBundle, EnvironmentName = NULL, OptionSettings = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreatePlatformVersion",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elasticbeanstalk$create_platform_version_input(PlatformName = PlatformName, PlatformVersion = PlatformVersion, PlatformDefinitionBundle = PlatformDefinitionBundle, EnvironmentName = EnvironmentName, OptionSettings = OptionSettings)
+  input <- .elasticbeanstalk$create_platform_version_input(PlatformName = PlatformName, PlatformVersion = PlatformVersion, PlatformDefinitionBundle = PlatformDefinitionBundle, EnvironmentName = EnvironmentName, OptionSettings = OptionSettings, Tags = Tags)
   output <- .elasticbeanstalk$create_platform_version_output()
   svc <- .elasticbeanstalk$service()
   request <- new_request(svc, op, input, output)
@@ -1638,7 +1676,7 @@ elasticbeanstalk_describe_events <- function(ApplicationName = NULL, VersionLabe
 #'
 #' Retrieves detailed information about the health of instances in your AWS
 #' Elastic Beanstalk. This operation requires [enhanced health
-#' reporting](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html).
+#' reporting](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html).
 #'
 #' @usage
 #' elasticbeanstalk_describe_instances_health(EnvironmentName,
@@ -1822,7 +1860,7 @@ elasticbeanstalk_list_platform_versions <- function(Filters = NULL, MaxRecords =
 #' Currently, Elastic Beanstalk only supports tagging of Elastic Beanstalk
 #' environments. For details about environment tagging, see [Tagging
 #' Resources in Your Elastic Beanstalk
-#' Environment](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.tagging.html).
+#' Environment](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.tagging.html).
 #'
 #' @usage
 #' elasticbeanstalk_list_tags_for_resource(ResourceArn)
@@ -2209,7 +2247,7 @@ elasticbeanstalk_swap_environment_cnam_es <- function(SourceEnvironmentId = NULL
 #'     the environment, but the AWS resources continue to operate.
 #' 
 #' For more information, see the [AWS Elastic Beanstalk User
-#' Guide.](http://docs.aws.amazon.com/elasticbeanstalk/latest/ug/)
+#' Guide.](https://docs.aws.amazon.com/elasticbeanstalk/latest/ug/)
 #' 
 #' Default: `true`
 #' 
@@ -2553,7 +2591,7 @@ elasticbeanstalk_update_configuration_template <- function(ApplicationName, Temp
 #' group name only if the environment\'s name is specified in an
 #' environment manifest and not with the environment name or environment ID
 #' parameters. See [Environment Manifest
-#' (env.yaml)](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html)
+#' (env.yaml)](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html)
 #' for details.
 #' @param Description If this parameter is specified, AWS Elastic Beanstalk updates the
 #' description of this environment.
@@ -2676,7 +2714,7 @@ elasticbeanstalk_update_environment <- function(ApplicationName = NULL, Environm
 #' Currently, Elastic Beanstalk only supports tagging of Elastic Beanstalk
 #' environments. For details about environment tagging, see [Tagging
 #' Resources in Your Elastic Beanstalk
-#' Environment](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.tagging.html).
+#' Environment](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.tagging.html).
 #' 
 #' If you create a custom IAM user policy to control permission to this
 #' operation, specify one of the following two virtual actions (or both)
@@ -2694,7 +2732,7 @@ elasticbeanstalk_update_environment <- function(ApplicationName = NULL, Environm
 #' 
 #' For details about creating a custom user policy, see [Creating a Custom
 #' User
-#' Policy](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#AWSHowTo.iam.policies).
+#' Policy](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#AWSHowTo.iam.policies).
 #'
 #' @usage
 #' elasticbeanstalk_update_tags_for_resource(ResourceArn, TagsToAdd,

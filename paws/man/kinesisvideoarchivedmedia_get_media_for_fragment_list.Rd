@@ -19,6 +19,10 @@ Gets media for a list of fragments (specified by fragment number) from
 the archived data in an Amazon Kinesis video stream.
 }
 \details{
+You must first call the \code{GetDataEndpoint} API to get an endpoint. Then
+send the \code{GetMediaForFragmentList} requests to this endpoint using the
+\href{https://docs.aws.amazon.com/cli/latest/reference/}{\--endpoint-url parameter}.
+
 The following limits apply when using the \code{GetMediaForFragmentList} API:
 \itemize{
 \item A client can call \code{GetMediaForFragmentList} up to five times per

@@ -294,6 +294,42 @@ cloudwatchevents_list_rules <- function(NamePrefix = NULL, NextToken = NULL, Lim
 }
 .cloudwatchevents$operations$list_rules <- cloudwatchevents_list_rules
 
+#' Displays the tags associated with a CloudWatch Events resource
+#'
+#' Displays the tags associated with a CloudWatch Events resource. In
+#' CloudWatch Events, rules can be tagged.
+#'
+#' @usage
+#' cloudwatchevents_list_tags_for_resource(ResourceARN)
+#'
+#' @param ResourceARN &#91;required&#93; The ARN of the CloudWatch Events rule for which you want to view tags.
+#'
+#' @section Request syntax:
+#' ```
+#' cloudwatchevents$list_tags_for_resource(
+#'   ResourceARN = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_list_tags_for_resource
+cloudwatchevents_list_tags_for_resource <- function(ResourceARN) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$list_tags_for_resource_input(ResourceARN = ResourceARN)
+  output <- .cloudwatchevents$list_tags_for_resource_output()
+  svc <- .cloudwatchevents$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$list_tags_for_resource <- cloudwatchevents_list_tags_for_resource
+
 #' Lists the targets assigned to the specified rule
 #'
 #' Lists the targets assigned to the specified rule.
@@ -408,7 +444,7 @@ cloudwatchevents_put_events <- function(Entries) {
 #' organization must specify a `RoleArn` with proper permissions when they
 #' use `PutTarget` to add your account\'s event bus as a target. For more
 #' information, see [Sending and Receiving Events Between AWS
-#' Accounts](http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEvents-CrossAccountEventDelivery.html)
+#' Accounts](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEvents-CrossAccountEventDelivery.html)
 #' in the *Amazon CloudWatch Events User Guide*.
 #' 
 #' The permission policy on the default event bus cannot exceed 10 KB in
@@ -437,7 +473,7 @@ cloudwatchevents_put_events <- function(Entries) {
 #' fulfill a certain condition, such as being a member of a certain AWS
 #' organization. For more information about AWS Organizations, see [What Is
 #' AWS
-#' Organizations](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html)
+#' Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html)
 #' in the *AWS Organizations User Guide*.
 #' 
 #' If you specify `Condition` with an AWS organization ID, and specify
@@ -501,6 +537,17 @@ cloudwatchevents_put_permission <- function(Action, Principal, StatementId, Cond
 #' in which case the rule triggers on matching events as well as on a
 #' schedule.
 #' 
+#' When you initially create a rule, you can optionally assign one or more
+#' tags to the rule. Tags can help you organize and categorize your
+#' resources. You can also use them to scope user permissions, by granting
+#' a user permission to access or change only rules with certain tag
+#' values. To use the `PutRule` operation and assign tags, you must have
+#' both the `events:PutRule` and `events:TagResource` permissions.
+#' 
+#' If you are updating an existing rule, any tags you specify in the
+#' `PutRule` operation are ignored. To update the tags of an existing rule,
+#' use TagResource and UntagResource.
+#' 
 #' Most services in AWS treat : or / as the same character in Amazon
 #' Resource Names (ARNs). However, CloudWatch Events uses an exact match in
 #' event patterns and rules. Be sure to use the correct ARN characters when
@@ -522,21 +569,22 @@ cloudwatchevents_put_permission <- function(Action, Principal, StatementId, Cond
 #' recommend that you use budgeting, which alerts you when charges exceed
 #' your specified limit. For more information, see [Managing Your Costs
 #' with
-#' Budgets](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/budgets-managing-costs.html).
+#' Budgets](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/budgets-managing-costs.html).
 #'
 #' @usage
 #' cloudwatchevents_put_rule(Name, ScheduleExpression, EventPattern, State,
-#'   Description, RoleArn)
+#'   Description, RoleArn, Tags)
 #'
 #' @param Name &#91;required&#93; The name of the rule that you are creating or updating.
 #' @param ScheduleExpression The scheduling expression. For example, \"cron(0 20 \* \* ? \*)\" or
 #' \"rate(5 minutes)\".
 #' @param EventPattern The event pattern. For more information, see [Events and Event
-#' Patterns](http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html)
+#' Patterns](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html)
 #' in the *Amazon CloudWatch Events User Guide*.
 #' @param State Indicates whether the rule is enabled or disabled.
 #' @param Description A description of the rule.
 #' @param RoleArn The Amazon Resource Name (ARN) of the IAM role associated with the rule.
+#' @param Tags The list of key-value pairs to associate with the rule.
 #'
 #' @section Request syntax:
 #' ```
@@ -546,21 +594,27 @@ cloudwatchevents_put_permission <- function(Action, Principal, StatementId, Cond
 #'   EventPattern = "string",
 #'   State = "ENABLED"|"DISABLED",
 #'   Description = "string",
-#'   RoleArn = "string"
+#'   RoleArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_put_rule
-cloudwatchevents_put_rule <- function(Name, ScheduleExpression = NULL, EventPattern = NULL, State = NULL, Description = NULL, RoleArn = NULL) {
+cloudwatchevents_put_rule <- function(Name, ScheduleExpression = NULL, EventPattern = NULL, State = NULL, Description = NULL, RoleArn = NULL, Tags = NULL) {
   op <- new_operation(
     name = "PutRule",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudwatchevents$put_rule_input(Name = Name, ScheduleExpression = ScheduleExpression, EventPattern = EventPattern, State = State, Description = Description, RoleArn = RoleArn)
+  input <- .cloudwatchevents$put_rule_input(Name = Name, ScheduleExpression = ScheduleExpression, EventPattern = EventPattern, State = State, Description = Description, RoleArn = RoleArn, Tags = Tags)
   output <- .cloudwatchevents$put_rule_output()
   svc <- .cloudwatchevents$service()
   request <- new_request(svc, op, input, output)
@@ -627,7 +681,7 @@ cloudwatchevents_put_rule <- function(Name, ScheduleExpression = NULL, EventPatt
 #' Functions state machines, CloudWatch Events relies on IAM roles that you
 #' specify in the `RoleARN` argument in `PutTargets`. For more information,
 #' see [Authentication and Access
-#' Control](http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/auth-and-access-control-cwe.html)
+#' Control](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/auth-and-access-control-cwe.html)
 #' in the *Amazon CloudWatch Events User Guide*.
 #' 
 #' If another AWS account is in the same region and has granted you
@@ -646,7 +700,7 @@ cloudwatchevents_put_rule <- function(Name, ScheduleExpression = NULL, EventPatt
 #' instead of directly by the account ID, then you must specify a `RoleArn`
 #' with proper permissions in the `Target` structure. For more information,
 #' see [Sending and Receiving Events Between AWS
-#' Accounts](http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEvents-CrossAccountEventDelivery.html)
+#' Accounts](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEvents-CrossAccountEventDelivery.html)
 #' in the *Amazon CloudWatch Events User Guide*.
 #' 
 #' For more information about enabling cross-account events, see
@@ -872,6 +926,64 @@ cloudwatchevents_remove_targets <- function(Rule, Ids, Force = NULL) {
 }
 .cloudwatchevents$operations$remove_targets <- cloudwatchevents_remove_targets
 
+#' Assigns one or more tags (key-value pairs) to the specified CloudWatch
+#' Events resource
+#'
+#' Assigns one or more tags (key-value pairs) to the specified CloudWatch
+#' Events resource. Tags can help you organize and categorize your
+#' resources. You can also use them to scope user permissions by granting a
+#' user permission to access or change only resources with certain tag
+#' values. In CloudWatch Events, rules can be tagged.
+#' 
+#' Tags don\'t have any semantic meaning to AWS and are interpreted
+#' strictly as strings of characters.
+#' 
+#' You can use the `TagResource` action with a rule that already has tags.
+#' If you specify a new tag key for the rule, this tag is appended to the
+#' list of tags associated with the rule. If you specify a tag key that is
+#' already associated with the rule, the new tag value that you specify
+#' replaces the previous value for that tag.
+#' 
+#' You can associate as many as 50 tags with a resource.
+#'
+#' @usage
+#' cloudwatchevents_tag_resource(ResourceARN, Tags)
+#'
+#' @param ResourceARN &#91;required&#93; The ARN of the CloudWatch Events rule that you\'re adding tags to.
+#' @param Tags &#91;required&#93; The list of key-value pairs to associate with the rule.
+#'
+#' @section Request syntax:
+#' ```
+#' cloudwatchevents$tag_resource(
+#'   ResourceARN = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_tag_resource
+cloudwatchevents_tag_resource <- function(ResourceARN, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
+  output <- .cloudwatchevents$tag_resource_output()
+  svc <- .cloudwatchevents$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$tag_resource <- cloudwatchevents_tag_resource
+
 #' Tests whether the specified event pattern matches the provided event
 #'
 #' Tests whether the specified event pattern matches the provided event.
@@ -886,7 +998,7 @@ cloudwatchevents_remove_targets <- function(Rule, Ids, Force = NULL) {
 #' cloudwatchevents_test_event_pattern(EventPattern, Event)
 #'
 #' @param EventPattern &#91;required&#93; The event pattern. For more information, see [Events and Event
-#' Patterns](http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html)
+#' Patterns](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html)
 #' in the *Amazon CloudWatch Events User Guide*.
 #' @param Event &#91;required&#93; The event, in JSON format, to test against the event pattern.
 #'
@@ -916,3 +1028,43 @@ cloudwatchevents_test_event_pattern <- function(EventPattern, Event) {
   return(response)
 }
 .cloudwatchevents$operations$test_event_pattern <- cloudwatchevents_test_event_pattern
+
+#' Removes one or more tags from the specified CloudWatch Events resource
+#'
+#' Removes one or more tags from the specified CloudWatch Events resource.
+#' In CloudWatch Events, rules can be tagged.
+#'
+#' @usage
+#' cloudwatchevents_untag_resource(ResourceARN, TagKeys)
+#'
+#' @param ResourceARN &#91;required&#93; The ARN of the CloudWatch Events rule from which you are removing tags.
+#' @param TagKeys &#91;required&#93; The list of tag keys to remove from the resource.
+#'
+#' @section Request syntax:
+#' ```
+#' cloudwatchevents$untag_resource(
+#'   ResourceARN = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_untag_resource
+cloudwatchevents_untag_resource <- function(ResourceARN, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
+  output <- .cloudwatchevents$untag_resource_output()
+  svc <- .cloudwatchevents$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$untag_resource <- cloudwatchevents_untag_resource

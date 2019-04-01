@@ -23,7 +23,25 @@ update.}
 
 \item{OutputLocation}{An Amazon S3 bucket where you want to store the results of this request.}
 
-\item{Name}{The name of the association document.}
+\item{Name}{The name of the SSM document that contains the configuration information
+for the instance. You can specify Command, Policy, or Automation
+documents.
+
+You can specify AWS-predefined documents, documents you created, or a
+document that is shared with you from another account.
+
+For SSM documents that are shared with you from other AWS accounts, you
+must specify the complete SSM document ARN, in the following format:
+
+\code{arn:aws:ssm:<i>region</i>:<i>account-id</i>:document/<i>document-name</i> }
+
+For example:
+
+\code{arn:aws:ssm:us-east-2:12345678912:document/My-Shared-Document}
+
+For AWS-predefined documents and SSM documents you created in your
+account, you only need to specify the document name. For example,
+\code{AWS-ApplyPatchBaseline} or \code{My-Document}.}
 
 \item{Targets}{The targets of the association.}
 

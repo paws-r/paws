@@ -14,7 +14,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ClientToken}{Unique, case-sensitive identifier you provide to ensure the idempotency
-of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
+of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.
+
+Constraint: Maximum 128 ASCII characters.}
 
 \item{LaunchTemplateId}{The ID of the launch template. You must specify either the launch
 template ID or launch template name in the request.}

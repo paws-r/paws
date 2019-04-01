@@ -5,7 +5,7 @@
 \title{Create an input}
 \usage{
 medialive_create_input(Destinations, InputSecurityGroups,
-  MediaConnectFlows, Name, RequestId, RoleArn, Sources, Tags, Type)
+  MediaConnectFlows, Name, RequestId, RoleArn, Sources, Tags, Type, Vpc)
 }
 \arguments{
 \item{Destinations}{Destination settings for PUSH type inputs.}
@@ -30,6 +30,8 @@ Only specify sources for PULL type Inputs. Leave Destinations empty.}
 \item{Tags}{A collection of key-value pairs.}
 
 \item{Type}{}
+
+\item{Vpc}{}
 }
 \description{
 Create an input
@@ -62,7 +64,15 @@ Create an input
   Tags = list(
     "string"
   ),
-  Type = "UDP_PUSH"|"RTP_PUSH"|"RTMP_PUSH"|"RTMP_PULL"|"URL_PULL"|"MP4_FILE"|"MEDIACONNECT"
+  Type = "UDP_PUSH"|"RTP_PUSH"|"RTMP_PUSH"|"RTMP_PULL"|"URL_PULL"|"MP4_FILE"|"MEDIACONNECT",
+  Vpc = list(
+    SecurityGroupIds = list(
+      "string"
+    ),
+    SubnetIds = list(
+      "string"
+    )
+  )
 )
 }
 }

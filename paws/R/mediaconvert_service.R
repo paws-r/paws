@@ -16,7 +16,7 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=mediaconvert_associate_certificate]{associate_certificate} \tab Associates an AWS Certificate Manager (ACM) Amazon Resource Name (ARN) with AWS Elemental MediaConvert \cr
-#'  \link[=mediaconvert_cancel_job]{cancel_job} \tab Permanently remove a job from a queue \cr
+#'  \link[=mediaconvert_cancel_job]{cancel_job} \tab Permanently cancel a job \cr
 #'  \link[=mediaconvert_create_job]{create_job} \tab Create a new transcoding job \cr
 #'  \link[=mediaconvert_create_job_template]{create_job_template} \tab Create a new job template \cr
 #'  \link[=mediaconvert_create_preset]{create_preset} \tab Create a new preset \cr

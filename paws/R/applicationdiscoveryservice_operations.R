@@ -434,10 +434,9 @@ applicationdiscoveryservice_describe_continuous_exports <- function(exportIds = 
 
 #' DescribeExportConfigurations is deprecated
 #'
-#' `DescribeExportConfigurations` is deprecated.
-#' 
-#' Use instead
-#' [`DescribeExportTasks`](http://docs.aws.amazon.com/application-discovery/latest/APIReference/API_DescribeExportTasks.html).
+#' `DescribeExportConfigurations` is deprecated. Use
+#' [DescribeImportTasks](https://docs.aws.amazon.com/application-discovery/latest/APIReference/API_DescribeExportTasks.html),
+#' instead.
 #'
 #' @usage
 #' applicationdiscoveryservice_describe_export_configurations(exportIds,

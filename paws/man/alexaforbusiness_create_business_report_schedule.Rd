@@ -12,7 +12,9 @@ alexaforbusiness_create_business_report_schedule(ScheduleName,
 \arguments{
 \item{ScheduleName}{The name identifier of the schedule.}
 
-\item{S3BucketName}{The S3 bucket name of the output reports.}
+\item{S3BucketName}{The S3 bucket name of the output reports. If this isn't specified, the
+report can be retrieved from a download link by calling
+ListBusinessReportSchedule.}
 
 \item{S3KeyPrefix}{The S3 key where the report is delivered.}
 
@@ -21,7 +23,8 @@ of individual files).}
 
 \item{ContentRange}{[required] The content range of the reports.}
 
-\item{Recurrence}{The recurrence of the reports.}
+\item{Recurrence}{The recurrence of the reports. If this isn't specified, the report will
+only be delivered one time when the API is called.}
 
 \item{ClientRequestToken}{The client request token.}
 }

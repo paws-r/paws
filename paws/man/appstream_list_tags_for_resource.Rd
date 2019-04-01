@@ -14,7 +14,7 @@ Retrieves a list of all tags for the specified AppStream 2.0 resource.
 You can tag AppStream 2.0 image builders, images, fleets, and stacks.
 }
 \details{
-For more information about tags, see \href{http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html}{Tagging Your Resources}
+For more information about tags, see \href{https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html}{Tagging Your Resources}
 in the \emph{Amazon AppStream 2.0 Developer Guide}.
 }
 \section{Request syntax}{

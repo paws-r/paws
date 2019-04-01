@@ -5,7 +5,7 @@ NULL
 
 .alexaforbusiness$approve_skill_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SkillId = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(SkillId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -17,7 +17,7 @@ NULL
 
 .alexaforbusiness$associate_contact_with_address_book_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContactArn = structure(logical(0), tags = list(    type = "string")), AddressBookArn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ContactArn = structure(logical(0), tags = list(type = "string")), AddressBookArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -29,7 +29,7 @@ NULL
 
 .alexaforbusiness$associate_device_with_room_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DeviceArn = structure(logical(0), tags = list(    type = "string")), RoomArn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(DeviceArn = structure(logical(0), tags = list(type = "string")), RoomArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -41,7 +41,7 @@ NULL
 
 .alexaforbusiness$associate_skill_group_with_room_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SkillGroupArn = structure(logical(0), tags = list(    type = "string")), RoomArn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(SkillGroupArn = structure(logical(0), tags = list(type = "string")), RoomArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -53,7 +53,7 @@ NULL
 
 .alexaforbusiness$associate_skill_with_skill_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SkillGroupArn = structure(logical(0), tags = list(    type = "string")), SkillId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(SkillGroupArn = structure(logical(0), tags = list(type = "string")), SkillId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -65,7 +65,7 @@ NULL
 
 .alexaforbusiness$associate_skill_with_users_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationArn = structure(logical(0), tags = list(    type = "string")), SkillId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(SkillId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -83,97 +83,97 @@ NULL
 
 .alexaforbusiness$create_address_book_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AddressBookArn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(AddressBookArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$create_business_report_schedule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ScheduleName = structure(logical(0), tags = list(    type = "string")), S3BucketName = structure(logical(0), tags = list(    type = "string")), S3KeyPrefix = structure(logical(0), tags = list(    type = "string")), Format = structure(logical(0), tags = list(    type = "string")), ContentRange = structure(list(Interval = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure")), Recurrence = structure(list(    StartDate = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure")), ClientRequestToken = structure(logical(0), tags = list(    idempotencyToken = TRUE, type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(ScheduleName = structure(logical(0), tags = list(type = "string")), S3BucketName = structure(logical(0), tags = list(type = "string")), S3KeyPrefix = structure(logical(0), tags = list(type = "string")), Format = structure(logical(0), tags = list(type = "string")), ContentRange = structure(list(Interval = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Recurrence = structure(list(StartDate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$create_business_report_schedule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ScheduleArn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ScheduleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$create_conference_provider_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConferenceProviderName = structure(logical(0), tags = list(    type = "string")), ConferenceProviderType = structure(logical(0), tags = list(    type = "string")), IPDialIn = structure(list(Endpoint = structure(logical(0), tags = list(    type = "string")), CommsProtocol = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure")), PSTNDialIn = structure(list(    CountryCode = structure(logical(0), tags = list(type = "string")), PhoneNumber = structure(logical(0), tags = list(type = "string")), OneClickIdDelay = structure(logical(0), tags = list(type = "string")), OneClickPinDelay = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure")), MeetingSetting = structure(list(RequirePin = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure")), ClientRequestToken = structure(logical(0), tags = list(    idempotencyToken = TRUE, type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(ConferenceProviderName = structure(logical(0), tags = list(type = "string")), ConferenceProviderType = structure(logical(0), tags = list(type = "string")), IPDialIn = structure(list(Endpoint = structure(logical(0), tags = list(type = "string")), CommsProtocol = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PSTNDialIn = structure(list(CountryCode = structure(logical(0), tags = list(type = "string")), PhoneNumber = structure(logical(0), tags = list(type = "string")), OneClickIdDelay = structure(logical(0), tags = list(type = "string")), OneClickPinDelay = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MeetingSetting = structure(list(RequirePin = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$create_conference_provider_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConferenceProviderArn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ConferenceProviderArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$create_contact_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DisplayName = structure(logical(0), tags = list(    type = "string")), FirstName = structure(logical(0), tags = list(    type = "string")), LastName = structure(logical(0), tags = list(    type = "string")), PhoneNumber = structure(logical(0), tags = list(    type = "string", sensitive = TRUE)), ClientRequestToken = structure(logical(0), tags = list(    idempotencyToken = TRUE, type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(DisplayName = structure(logical(0), tags = list(type = "string")), FirstName = structure(logical(0), tags = list(type = "string")), LastName = structure(logical(0), tags = list(type = "string")), PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$create_contact_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContactArn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ContactArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$create_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileName = structure(logical(0), tags = list(    type = "string")), Timezone = structure(logical(0), tags = list(    type = "string")), Address = structure(logical(0), tags = list(    type = "string")), DistanceUnit = structure(logical(0), tags = list(    type = "string")), TemperatureUnit = structure(logical(0), tags = list(    type = "string")), WakeWord = structure(logical(0), tags = list(    type = "string")), ClientRequestToken = structure(logical(0), tags = list(    idempotencyToken = TRUE, type = "string")), SetupModeDisabled = structure(logical(0), tags = list(    type = "boolean")), MaxVolumeLimit = structure(logical(0), tags = list(    type = "integer")), PSTNEnabled = structure(logical(0), tags = list(    type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(ProfileName = structure(logical(0), tags = list(type = "string")), Timezone = structure(logical(0), tags = list(type = "string")), Address = structure(logical(0), tags = list(type = "string")), DistanceUnit = structure(logical(0), tags = list(type = "string")), TemperatureUnit = structure(logical(0), tags = list(type = "string")), WakeWord = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), SetupModeDisabled = structure(logical(0), tags = list(type = "boolean")), MaxVolumeLimit = structure(logical(0), tags = list(type = "integer")), PSTNEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$create_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileArn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ProfileArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$create_room_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RoomName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ProfileArn = structure(logical(0), tags = list(type = "string")), ProviderCalendarId = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Tags = structure(list(structure(list(        Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(        type = "structure"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(RoomName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ProfileArn = structure(logical(0), tags = list(type = "string")), ProviderCalendarId = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$create_room_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RoomArn = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(RoomArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$create_skill_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SkillGroupName = structure(logical(0), tags = list(    type = "string")), Description = structure(logical(0), tags = list(    type = "string")), ClientRequestToken = structure(logical(0), tags = list(    idempotencyToken = TRUE, type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(SkillGroupName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$create_skill_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SkillGroupArn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(SkillGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$create_user_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UserId = structure(logical(0), tags = list(type = "string")), FirstName = structure(logical(0), tags = list(type = "string")), LastName = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Tags = structure(list(structure(list(        Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(        type = "structure"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(UserId = structure(logical(0), tags = list(type = "string")), FirstName = structure(logical(0), tags = list(type = "string")), LastName = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$create_user_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UserArn = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(UserArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$delete_address_book_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AddressBookArn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(AddressBookArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -185,7 +185,7 @@ NULL
 
 .alexaforbusiness$delete_business_report_schedule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ScheduleArn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ScheduleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -197,7 +197,7 @@ NULL
 
 .alexaforbusiness$delete_conference_provider_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConferenceProviderArn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ConferenceProviderArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -209,7 +209,7 @@ NULL
 
 .alexaforbusiness$delete_contact_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContactArn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ContactArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -221,7 +221,7 @@ NULL
 
 .alexaforbusiness$delete_device_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DeviceArn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(DeviceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -233,7 +233,7 @@ NULL
 
 .alexaforbusiness$delete_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileArn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ProfileArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -245,7 +245,7 @@ NULL
 
 .alexaforbusiness$delete_room_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RoomArn = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(RoomArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -257,7 +257,7 @@ NULL
 
 .alexaforbusiness$delete_room_skill_parameter_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RoomArn = structure(logical(0), tags = list(type = "string")), SkillId = structure(logical(0), tags = list(type = "string")), ParameterKey = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(RoomArn = structure(logical(0), tags = list(type = "string")), SkillId = structure(logical(0), tags = list(type = "string")), ParameterKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -269,7 +269,7 @@ NULL
 
 .alexaforbusiness$delete_skill_authorization_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SkillId = structure(logical(0), tags = list(type = "string")), RoomArn = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(SkillId = structure(logical(0), tags = list(type = "string")), RoomArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -281,7 +281,7 @@ NULL
 
 .alexaforbusiness$delete_skill_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SkillGroupArn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(SkillGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -293,7 +293,7 @@ NULL
 
 .alexaforbusiness$delete_user_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UserArn = structure(logical(0), tags = list(type = "string")), EnrollmentId = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(UserArn = structure(logical(0), tags = list(type = "string")), EnrollmentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -305,7 +305,7 @@ NULL
 
 .alexaforbusiness$disassociate_contact_from_address_book_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContactArn = structure(logical(0), tags = list(    type = "string")), AddressBookArn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ContactArn = structure(logical(0), tags = list(type = "string")), AddressBookArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -317,7 +317,7 @@ NULL
 
 .alexaforbusiness$disassociate_device_from_room_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DeviceArn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(DeviceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -329,7 +329,7 @@ NULL
 
 .alexaforbusiness$disassociate_skill_from_skill_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SkillGroupArn = structure(logical(0), tags = list(    type = "string")), SkillId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(SkillGroupArn = structure(logical(0), tags = list(type = "string")), SkillId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -341,7 +341,7 @@ NULL
 
 .alexaforbusiness$disassociate_skill_from_users_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationArn = structure(logical(0), tags = list(    type = "string")), SkillId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(SkillId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -353,7 +353,7 @@ NULL
 
 .alexaforbusiness$disassociate_skill_group_from_room_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SkillGroupArn = structure(logical(0), tags = list(    type = "string")), RoomArn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(SkillGroupArn = structure(logical(0), tags = list(type = "string")), RoomArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -365,7 +365,7 @@ NULL
 
 .alexaforbusiness$forget_smart_home_appliances_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RoomArn = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(RoomArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -377,13 +377,13 @@ NULL
 
 .alexaforbusiness$get_address_book_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AddressBookArn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(AddressBookArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$get_address_book_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AddressBook = structure(list(AddressBookArn = structure(logical(0), tags = list(    type = "string")), Name = structure(logical(0), tags = list(    type = "string")), Description = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(AddressBook = structure(list(AddressBookArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -395,193 +395,205 @@ NULL
 
 .alexaforbusiness$get_conference_preference_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Preference = structure(list(DefaultConferenceProviderArn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(Preference = structure(list(DefaultConferenceProviderArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$get_conference_provider_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConferenceProviderArn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ConferenceProviderArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$get_conference_provider_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConferenceProvider = structure(list(Arn = structure(logical(0), tags = list(    type = "string")), Name = structure(logical(0), tags = list(    type = "string")), Type = structure(logical(0), tags = list(    type = "string")), IPDialIn = structure(list(Endpoint = structure(logical(0), tags = list(    type = "string")), CommsProtocol = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure")), PSTNDialIn = structure(list(    CountryCode = structure(logical(0), tags = list(type = "string")), PhoneNumber = structure(logical(0), tags = list(type = "string")), OneClickIdDelay = structure(logical(0), tags = list(type = "string")), OneClickPinDelay = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure")), MeetingSetting = structure(list(RequirePin = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ConferenceProvider = structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), IPDialIn = structure(list(Endpoint = structure(logical(0), tags = list(type = "string")), CommsProtocol = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PSTNDialIn = structure(list(CountryCode = structure(logical(0), tags = list(type = "string")), PhoneNumber = structure(logical(0), tags = list(type = "string")), OneClickIdDelay = structure(logical(0), tags = list(type = "string")), OneClickPinDelay = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MeetingSetting = structure(list(RequirePin = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$get_contact_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContactArn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ContactArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$get_contact_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Contact = structure(list(ContactArn = structure(logical(0), tags = list(    type = "string")), DisplayName = structure(logical(0), tags = list(    type = "string")), FirstName = structure(logical(0), tags = list(    type = "string")), LastName = structure(logical(0), tags = list(    type = "string")), PhoneNumber = structure(logical(0), tags = list(    type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(Contact = structure(list(ContactArn = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), FirstName = structure(logical(0), tags = list(type = "string")), LastName = structure(logical(0), tags = list(type = "string")), PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$get_device_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DeviceArn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(DeviceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$get_device_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Device = structure(list(DeviceArn = structure(logical(0), tags = list(    type = "string")), DeviceSerialNumber = structure(logical(0), tags = list(    type = "string")), DeviceType = structure(logical(0), tags = list(    type = "string")), DeviceName = structure(logical(0), tags = list(    type = "string")), SoftwareVersion = structure(logical(0), tags = list(    type = "string")), MacAddress = structure(logical(0), tags = list(    type = "string")), RoomArn = structure(logical(0), tags = list(    type = "string")), DeviceStatus = structure(logical(0), tags = list(    type = "string")), DeviceStatusInfo = structure(list(DeviceStatusDetails = structure(list(    structure(list(Code = structure(logical(0), tags = list(type = "string"))), tags = list(        type = "structure"))), tags = list(type = "list")), ConnectionStatus = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Device = structure(list(DeviceArn = structure(logical(0), tags = list(type = "string")), DeviceSerialNumber = structure(logical(0), tags = list(type = "string")), DeviceType = structure(logical(0), tags = list(type = "string")), DeviceName = structure(logical(0), tags = list(type = "string")), SoftwareVersion = structure(logical(0), tags = list(type = "string")), MacAddress = structure(logical(0), tags = list(type = "string")), RoomArn = structure(logical(0), tags = list(type = "string")), DeviceStatus = structure(logical(0), tags = list(type = "string")), DeviceStatusInfo = structure(list(DeviceStatusDetails = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ConnectionStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$get_invitation_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$get_invitation_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationName = structure(logical(0), tags = list(type = "string")), ContactEmail = structure(logical(0), tags = list(type = "string")), PrivateSkillIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$get_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileArn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ProfileArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$get_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Profile = structure(list(ProfileArn = structure(logical(0), tags = list(    type = "string")), ProfileName = structure(logical(0), tags = list(    type = "string")), IsDefault = structure(logical(0), tags = list(    type = "boolean")), Address = structure(logical(0), tags = list(    type = "string")), Timezone = structure(logical(0), tags = list(    type = "string")), DistanceUnit = structure(logical(0), tags = list(    type = "string")), TemperatureUnit = structure(logical(0), tags = list(    type = "string")), WakeWord = structure(logical(0), tags = list(    type = "string")), SetupModeDisabled = structure(logical(0), tags = list(    type = "boolean")), MaxVolumeLimit = structure(logical(0), tags = list(    type = "integer")), PSTNEnabled = structure(logical(0), tags = list(    type = "boolean")), AddressBookArn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(Profile = structure(list(ProfileArn = structure(logical(0), tags = list(type = "string")), ProfileName = structure(logical(0), tags = list(type = "string")), IsDefault = structure(logical(0), tags = list(type = "boolean")), Address = structure(logical(0), tags = list(type = "string")), Timezone = structure(logical(0), tags = list(type = "string")), DistanceUnit = structure(logical(0), tags = list(type = "string")), TemperatureUnit = structure(logical(0), tags = list(type = "string")), WakeWord = structure(logical(0), tags = list(type = "string")), SetupModeDisabled = structure(logical(0), tags = list(type = "boolean")), MaxVolumeLimit = structure(logical(0), tags = list(type = "integer")), PSTNEnabled = structure(logical(0), tags = list(type = "boolean")), AddressBookArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$get_room_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RoomArn = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(RoomArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$get_room_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Room = structure(list(RoomArn = structure(logical(0), tags = list(    type = "string")), RoomName = structure(logical(0), tags = list(    type = "string")), Description = structure(logical(0), tags = list(    type = "string")), ProviderCalendarId = structure(logical(0), tags = list(    type = "string")), ProfileArn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(Room = structure(list(RoomArn = structure(logical(0), tags = list(type = "string")), RoomName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ProviderCalendarId = structure(logical(0), tags = list(type = "string")), ProfileArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$get_room_skill_parameter_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RoomArn = structure(logical(0), tags = list(type = "string")), SkillId = structure(logical(0), tags = list(type = "string")), ParameterKey = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(RoomArn = structure(logical(0), tags = list(type = "string")), SkillId = structure(logical(0), tags = list(type = "string")), ParameterKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$get_room_skill_parameter_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RoomSkillParameter = structure(list(ParameterKey = structure(logical(0), tags = list(    type = "string")), ParameterValue = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(RoomSkillParameter = structure(list(ParameterKey = structure(logical(0), tags = list(type = "string")), ParameterValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$get_skill_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SkillGroupArn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(SkillGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$get_skill_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SkillGroup = structure(list(SkillGroupArn = structure(logical(0), tags = list(    type = "string")), SkillGroupName = structure(logical(0), tags = list(    type = "string")), Description = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(SkillGroup = structure(list(SkillGroupArn = structure(logical(0), tags = list(type = "string")), SkillGroupName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$list_business_report_schedules_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(    type = "string")), MaxResults = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$list_business_report_schedules_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BusinessReportSchedules = structure(list(structure(list(    ScheduleArn = structure(logical(0), tags = list(type = "string")), ScheduleName = structure(logical(0), tags = list(type = "string")), S3BucketName = structure(logical(0), tags = list(type = "string")), S3KeyPrefix = structure(logical(0), tags = list(type = "string")), Format = structure(logical(0), tags = list(type = "string")), ContentRange = structure(list(Interval = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure")), Recurrence = structure(list(StartDate = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure")), LastBusinessReport = structure(list(Status = structure(logical(0), tags = list(        type = "string")), FailureCode = structure(logical(0), tags = list(        type = "string")), S3Location = structure(list(Path = structure(logical(0), tags = list(        type = "string")), BucketName = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure")), DeliveryTime = structure(logical(0), tags = list(type = "timestamp")), DownloadUrl = structure(logical(0), tags = list(type = "string"))), tags = list(        type = "structure"))), tags = list(type = "structure"))), tags = list(    type = "list")), NextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(BusinessReportSchedules = structure(list(structure(list(ScheduleArn = structure(logical(0), tags = list(type = "string")), ScheduleName = structure(logical(0), tags = list(type = "string")), S3BucketName = structure(logical(0), tags = list(type = "string")), S3KeyPrefix = structure(logical(0), tags = list(type = "string")), Format = structure(logical(0), tags = list(type = "string")), ContentRange = structure(list(Interval = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Recurrence = structure(list(StartDate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LastBusinessReport = structure(list(Status = structure(logical(0), tags = list(type = "string")), FailureCode = structure(logical(0), tags = list(type = "string")), S3Location = structure(list(Path = structure(logical(0), tags = list(type = "string")), BucketName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DeliveryTime = structure(logical(0), tags = list(type = "timestamp")), DownloadUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$list_conference_providers_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(    type = "string")), MaxResults = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$list_conference_providers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConferenceProviders = structure(list(structure(list(    Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), IPDialIn = structure(list(Endpoint = structure(logical(0), tags = list(        type = "string")), CommsProtocol = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure")), PSTNDialIn = structure(list(CountryCode = structure(logical(0), tags = list(        type = "string")), PhoneNumber = structure(logical(0), tags = list(        type = "string")), OneClickIdDelay = structure(logical(0), tags = list(        type = "string")), OneClickPinDelay = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure")), MeetingSetting = structure(list(RequirePin = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ConferenceProviders = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), IPDialIn = structure(list(Endpoint = structure(logical(0), tags = list(type = "string")), CommsProtocol = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PSTNDialIn = structure(list(CountryCode = structure(logical(0), tags = list(type = "string")), PhoneNumber = structure(logical(0), tags = list(type = "string")), OneClickIdDelay = structure(logical(0), tags = list(type = "string")), OneClickPinDelay = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MeetingSetting = structure(list(RequirePin = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$list_device_events_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DeviceArn = structure(logical(0), tags = list(    type = "string")), EventType = structure(logical(0), tags = list(    type = "string")), NextToken = structure(logical(0), tags = list(    type = "string")), MaxResults = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(DeviceArn = structure(logical(0), tags = list(type = "string")), EventType = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$list_device_events_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DeviceEvents = structure(list(structure(list(Type = structure(logical(0), tags = list(    type = "string")), Value = structure(logical(0), tags = list(    type = "string")), Timestamp = structure(logical(0), tags = list(    type = "timestamp"))), tags = list(type = "structure"))), tags = list(    type = "list")), NextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(DeviceEvents = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Timestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$list_skills_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SkillGroupArn = structure(logical(0), tags = list(    type = "string")), EnablementType = structure(logical(0), tags = list(    type = "string")), SkillType = structure(logical(0), tags = list(    type = "string")), NextToken = structure(logical(0), tags = list(    type = "string")), MaxResults = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(SkillGroupArn = structure(logical(0), tags = list(type = "string")), EnablementType = structure(logical(0), tags = list(type = "string")), SkillType = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$list_skills_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SkillSummaries = structure(list(structure(list(    SkillId = structure(logical(0), tags = list(type = "string")), SkillName = structure(logical(0), tags = list(type = "string")), SupportsLinking = structure(logical(0), tags = list(type = "boolean")), EnablementType = structure(logical(0), tags = list(type = "string")), SkillType = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(SkillSummaries = structure(list(structure(list(SkillId = structure(logical(0), tags = list(type = "string")), SkillName = structure(logical(0), tags = list(type = "string")), SupportsLinking = structure(logical(0), tags = list(type = "boolean")), EnablementType = structure(logical(0), tags = list(type = "string")), SkillType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$list_skills_store_categories_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(    type = "string")), MaxResults = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$list_skills_store_categories_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CategoryList = structure(list(structure(list(CategoryId = structure(logical(0), tags = list(    type = "long")), CategoryName = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "list")), NextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(CategoryList = structure(list(structure(list(CategoryId = structure(logical(0), tags = list(type = "long")), CategoryName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$list_skills_store_skills_by_category_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CategoryId = structure(logical(0), tags = list(    type = "long")), NextToken = structure(logical(0), tags = list(    type = "string")), MaxResults = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(CategoryId = structure(logical(0), tags = list(type = "long")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$list_skills_store_skills_by_category_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SkillsStoreSkills = structure(list(structure(list(    SkillId = structure(logical(0), tags = list(type = "string")), SkillName = structure(logical(0), tags = list(type = "string")), ShortDescription = structure(logical(0), tags = list(type = "string")), IconUrl = structure(logical(0), tags = list(type = "string")), SampleUtterances = structure(list(structure(logical(0), tags = list(        type = "string"))), tags = list(type = "list")), SkillDetails = structure(list(        ProductDescription = structure(logical(0), tags = list(            type = "string")), InvocationPhrase = structure(logical(0), tags = list(            type = "string")), ReleaseDate = structure(logical(0), tags = list(            type = "string")), EndUserLicenseAgreement = structure(logical(0), tags = list(            type = "string")), GenericKeywords = structure(list(            structure(logical(0), tags = list(type = "string"))), tags = list(            type = "list")), BulletPoints = structure(list(structure(logical(0), tags = list(            type = "string"))), tags = list(type = "list")), NewInThisVersionBulletPoints = structure(list(structure(logical(0), tags = list(            type = "string"))), tags = list(type = "list")), SkillTypes = structure(list(structure(logical(0), tags = list(            type = "string"))), tags = list(type = "list")), Reviews = structure(list(structure(logical(0), tags = list(            type = "string"))), tags = list(type = "map")), DeveloperInfo = structure(list(            DeveloperName = structure(logical(0), tags = list(                type = "string")), PrivacyPolicy = structure(logical(0), tags = list(                type = "string")), Email = structure(logical(0), tags = list(                type = "string")), Url = structure(logical(0), tags = list(                type = "string"))), tags = list(type = "structure"))), tags = list(        type = "structure")), SupportsLinking = structure(logical(0), tags = list(        type = "boolean"))), tags = list(type = "structure"))), tags = list(    type = "list")), NextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(SkillsStoreSkills = structure(list(structure(list(SkillId = structure(logical(0), tags = list(type = "string")), SkillName = structure(logical(0), tags = list(type = "string")), ShortDescription = structure(logical(0), tags = list(type = "string")), IconUrl = structure(logical(0), tags = list(type = "string")), SampleUtterances = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SkillDetails = structure(list(ProductDescription = structure(logical(0), tags = list(type = "string")), InvocationPhrase = structure(logical(0), tags = list(type = "string")), ReleaseDate = structure(logical(0), tags = list(type = "string")), EndUserLicenseAgreement = structure(logical(0), tags = list(type = "string")), GenericKeywords = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), BulletPoints = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NewInThisVersionBulletPoints = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SkillTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Reviews = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), DeveloperInfo = structure(list(DeveloperName = structure(logical(0), tags = list(type = "string")), PrivacyPolicy = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string")), Url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), SupportsLinking = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$list_smart_home_appliances_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RoomArn = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(RoomArn = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$list_smart_home_appliances_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SmartHomeAppliances = structure(list(structure(list(    FriendlyName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ManufacturerName = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(SmartHomeAppliances = structure(list(structure(list(FriendlyName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ManufacturerName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$list_tags_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(    type = "structure"))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$list_tags_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(    type = "string")), Value = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "list")), NextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$put_conference_preference_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConferencePreference = structure(list(DefaultConferenceProviderArn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(ConferencePreference = structure(list(DefaultConferenceProviderArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -591,9 +603,21 @@ NULL
   return(populate(args, shape))
 }
 
+.alexaforbusiness$put_invitation_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationName = structure(logical(0), tags = list(type = "string")), ContactEmail = structure(logical(0), tags = list(type = "string")), PrivateSkillIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$put_invitation_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .alexaforbusiness$put_room_skill_parameter_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RoomArn = structure(logical(0), tags = list(type = "string")), SkillId = structure(logical(0), tags = list(type = "string")), RoomSkillParameter = structure(list(ParameterKey = structure(logical(0), tags = list(        type = "string")), ParameterValue = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(RoomArn = structure(logical(0), tags = list(type = "string")), SkillId = structure(logical(0), tags = list(type = "string")), RoomSkillParameter = structure(list(ParameterKey = structure(logical(0), tags = list(type = "string")), ParameterValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -605,7 +629,7 @@ NULL
 
 .alexaforbusiness$put_skill_authorization_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthorizationResult = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "map", sensitive = TRUE)), SkillId = structure(logical(0), tags = list(type = "string")), RoomArn = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(AuthorizationResult = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), SkillId = structure(logical(0), tags = list(type = "string")), RoomArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -617,19 +641,19 @@ NULL
 
 .alexaforbusiness$register_avs_device_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClientId = structure(logical(0), tags = list(type = "string")), UserCode = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), DeviceSerialNumber = structure(logical(0), tags = list(type = "string")), AmazonId = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(ClientId = structure(logical(0), tags = list(type = "string")), UserCode = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), DeviceSerialNumber = structure(logical(0), tags = list(type = "string")), AmazonId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$register_avs_device_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DeviceArn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(DeviceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$reject_skill_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SkillId = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(SkillId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -641,19 +665,19 @@ NULL
 
 .alexaforbusiness$resolve_room_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UserId = structure(logical(0), tags = list(type = "string")), SkillId = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(UserId = structure(logical(0), tags = list(type = "string")), SkillId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$resolve_room_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RoomArn = structure(logical(0), tags = list(type = "string")), RoomName = structure(logical(0), tags = list(type = "string")), RoomSkillParameters = structure(list(structure(list(ParameterKey = structure(logical(0), tags = list(        type = "string")), ParameterValue = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(        type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(RoomArn = structure(logical(0), tags = list(type = "string")), RoomName = structure(logical(0), tags = list(type = "string")), RoomSkillParameters = structure(list(structure(list(ParameterKey = structure(logical(0), tags = list(type = "string")), ParameterValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$revoke_invitation_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UserArn = structure(logical(0), tags = list(type = "string")), EnrollmentId = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(UserArn = structure(logical(0), tags = list(type = "string")), EnrollmentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -665,91 +689,91 @@ NULL
 
 .alexaforbusiness$search_address_books_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Filters = structure(list(structure(list(Key = structure(logical(0), tags = list(    type = "string")), Values = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))), tags = list(type = "list")), SortCriteria = structure(list(    structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(        type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(    type = "string")), MaxResults = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(Filters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), SortCriteria = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$search_address_books_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AddressBooks = structure(list(structure(list(AddressBookArn = structure(logical(0), tags = list(    type = "string")), Name = structure(logical(0), tags = list(    type = "string")), Description = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "list")), NextToken = structure(logical(0), tags = list(    type = "string")), TotalCount = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(AddressBooks = structure(list(structure(list(AddressBookArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), TotalCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$search_contacts_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Filters = structure(list(structure(list(Key = structure(logical(0), tags = list(    type = "string")), Values = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))), tags = list(type = "list")), SortCriteria = structure(list(    structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(        type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(    type = "string")), MaxResults = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(Filters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), SortCriteria = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$search_contacts_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Contacts = structure(list(structure(list(ContactArn = structure(logical(0), tags = list(    type = "string")), DisplayName = structure(logical(0), tags = list(    type = "string")), FirstName = structure(logical(0), tags = list(    type = "string")), LastName = structure(logical(0), tags = list(    type = "string")), PhoneNumber = structure(logical(0), tags = list(    type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(    type = "list")), NextToken = structure(logical(0), tags = list(    type = "string")), TotalCount = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(Contacts = structure(list(structure(list(ContactArn = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), FirstName = structure(logical(0), tags = list(type = "string")), LastName = structure(logical(0), tags = list(type = "string")), PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), TotalCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$search_devices_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(    type = "string")), MaxResults = structure(logical(0), tags = list(    type = "integer")), Filters = structure(list(structure(list(    Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(        type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))), tags = list(type = "list")), SortCriteria = structure(list(    structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(        type = "structure"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), Filters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), SortCriteria = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$search_devices_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Devices = structure(list(structure(list(DeviceArn = structure(logical(0), tags = list(    type = "string")), DeviceSerialNumber = structure(logical(0), tags = list(    type = "string")), DeviceType = structure(logical(0), tags = list(    type = "string")), DeviceName = structure(logical(0), tags = list(    type = "string")), SoftwareVersion = structure(logical(0), tags = list(    type = "string")), MacAddress = structure(logical(0), tags = list(    type = "string")), DeviceStatus = structure(logical(0), tags = list(    type = "string")), RoomArn = structure(logical(0), tags = list(    type = "string")), RoomName = structure(logical(0), tags = list(    type = "string")), DeviceStatusInfo = structure(list(DeviceStatusDetails = structure(list(    structure(list(Code = structure(logical(0), tags = list(type = "string"))), tags = list(        type = "structure"))), tags = list(type = "list")), ConnectionStatus = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(    type = "string")), TotalCount = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(Devices = structure(list(structure(list(DeviceArn = structure(logical(0), tags = list(type = "string")), DeviceSerialNumber = structure(logical(0), tags = list(type = "string")), DeviceType = structure(logical(0), tags = list(type = "string")), DeviceName = structure(logical(0), tags = list(type = "string")), SoftwareVersion = structure(logical(0), tags = list(type = "string")), MacAddress = structure(logical(0), tags = list(type = "string")), DeviceStatus = structure(logical(0), tags = list(type = "string")), RoomArn = structure(logical(0), tags = list(type = "string")), RoomName = structure(logical(0), tags = list(type = "string")), DeviceStatusInfo = structure(list(DeviceStatusDetails = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ConnectionStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), TotalCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$search_profiles_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(    type = "string")), MaxResults = structure(logical(0), tags = list(    type = "integer")), Filters = structure(list(structure(list(    Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(        type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))), tags = list(type = "list")), SortCriteria = structure(list(    structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(        type = "structure"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), Filters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), SortCriteria = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$search_profiles_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Profiles = structure(list(structure(list(ProfileArn = structure(logical(0), tags = list(    type = "string")), ProfileName = structure(logical(0), tags = list(    type = "string")), IsDefault = structure(logical(0), tags = list(    type = "boolean")), Address = structure(logical(0), tags = list(    type = "string")), Timezone = structure(logical(0), tags = list(    type = "string")), DistanceUnit = structure(logical(0), tags = list(    type = "string")), TemperatureUnit = structure(logical(0), tags = list(    type = "string")), WakeWord = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "list")), NextToken = structure(logical(0), tags = list(    type = "string")), TotalCount = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(Profiles = structure(list(structure(list(ProfileArn = structure(logical(0), tags = list(type = "string")), ProfileName = structure(logical(0), tags = list(type = "string")), IsDefault = structure(logical(0), tags = list(type = "boolean")), Address = structure(logical(0), tags = list(type = "string")), Timezone = structure(logical(0), tags = list(type = "string")), DistanceUnit = structure(logical(0), tags = list(type = "string")), TemperatureUnit = structure(logical(0), tags = list(type = "string")), WakeWord = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), TotalCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$search_rooms_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(    type = "string")), MaxResults = structure(logical(0), tags = list(    type = "integer")), Filters = structure(list(structure(list(    Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(        type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))), tags = list(type = "list")), SortCriteria = structure(list(    structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(        type = "structure"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), Filters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), SortCriteria = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$search_rooms_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Rooms = structure(list(structure(list(RoomArn = structure(logical(0), tags = list(    type = "string")), RoomName = structure(logical(0), tags = list(    type = "string")), Description = structure(logical(0), tags = list(    type = "string")), ProviderCalendarId = structure(logical(0), tags = list(    type = "string")), ProfileArn = structure(logical(0), tags = list(    type = "string")), ProfileName = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "list")), NextToken = structure(logical(0), tags = list(    type = "string")), TotalCount = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(Rooms = structure(list(structure(list(RoomArn = structure(logical(0), tags = list(type = "string")), RoomName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ProviderCalendarId = structure(logical(0), tags = list(type = "string")), ProfileArn = structure(logical(0), tags = list(type = "string")), ProfileName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), TotalCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$search_skill_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(    type = "string")), MaxResults = structure(logical(0), tags = list(    type = "integer")), Filters = structure(list(structure(list(    Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(        type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))), tags = list(type = "list")), SortCriteria = structure(list(    structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(        type = "structure"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), Filters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), SortCriteria = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$search_skill_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SkillGroups = structure(list(structure(list(SkillGroupArn = structure(logical(0), tags = list(    type = "string")), SkillGroupName = structure(logical(0), tags = list(    type = "string")), Description = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "list")), NextToken = structure(logical(0), tags = list(    type = "string")), TotalCount = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(SkillGroups = structure(list(structure(list(SkillGroupArn = structure(logical(0), tags = list(type = "string")), SkillGroupName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), TotalCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$search_users_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(    type = "string")), MaxResults = structure(logical(0), tags = list(    type = "integer")), Filters = structure(list(structure(list(    Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(        type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))), tags = list(type = "list")), SortCriteria = structure(list(    structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(        type = "structure"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), Filters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), SortCriteria = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$search_users_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Users = structure(list(structure(list(UserArn = structure(logical(0), tags = list(    type = "string")), FirstName = structure(logical(0), tags = list(    type = "string")), LastName = structure(logical(0), tags = list(    type = "string")), Email = structure(logical(0), tags = list(    type = "string")), EnrollmentStatus = structure(logical(0), tags = list(    type = "string")), EnrollmentId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "list")), NextToken = structure(logical(0), tags = list(    type = "string")), TotalCount = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(Users = structure(list(structure(list(UserArn = structure(logical(0), tags = list(type = "string")), FirstName = structure(logical(0), tags = list(type = "string")), LastName = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string")), EnrollmentStatus = structure(logical(0), tags = list(type = "string")), EnrollmentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), TotalCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .alexaforbusiness$send_invitation_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UserArn = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(UserArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -761,7 +785,7 @@ NULL
 
 .alexaforbusiness$start_device_sync_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RoomArn = structure(logical(0), tags = list(type = "string")), DeviceArn = structure(logical(0), tags = list(type = "string")), Features = structure(list(structure(logical(0), tags = list(        type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(RoomArn = structure(logical(0), tags = list(type = "string")), DeviceArn = structure(logical(0), tags = list(type = "string")), Features = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -773,7 +797,7 @@ NULL
 
 .alexaforbusiness$start_smart_home_appliance_discovery_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RoomArn = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(RoomArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -785,7 +809,7 @@ NULL
 
 .alexaforbusiness$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(        type = "string")), Value = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(        type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -797,7 +821,7 @@ NULL
 
 .alexaforbusiness$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(        type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -809,7 +833,7 @@ NULL
 
 .alexaforbusiness$update_address_book_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AddressBookArn = structure(logical(0), tags = list(    type = "string")), Name = structure(logical(0), tags = list(    type = "string")), Description = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(AddressBookArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -821,7 +845,7 @@ NULL
 
 .alexaforbusiness$update_business_report_schedule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ScheduleArn = structure(logical(0), tags = list(    type = "string")), S3BucketName = structure(logical(0), tags = list(    type = "string")), S3KeyPrefix = structure(logical(0), tags = list(    type = "string")), Format = structure(logical(0), tags = list(    type = "string")), ScheduleName = structure(logical(0), tags = list(    type = "string")), Recurrence = structure(list(StartDate = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(ScheduleArn = structure(logical(0), tags = list(type = "string")), S3BucketName = structure(logical(0), tags = list(type = "string")), S3KeyPrefix = structure(logical(0), tags = list(type = "string")), Format = structure(logical(0), tags = list(type = "string")), ScheduleName = structure(logical(0), tags = list(type = "string")), Recurrence = structure(list(StartDate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -833,7 +857,7 @@ NULL
 
 .alexaforbusiness$update_conference_provider_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConferenceProviderArn = structure(logical(0), tags = list(    type = "string")), ConferenceProviderType = structure(logical(0), tags = list(    type = "string")), IPDialIn = structure(list(Endpoint = structure(logical(0), tags = list(    type = "string")), CommsProtocol = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure")), PSTNDialIn = structure(list(    CountryCode = structure(logical(0), tags = list(type = "string")), PhoneNumber = structure(logical(0), tags = list(type = "string")), OneClickIdDelay = structure(logical(0), tags = list(type = "string")), OneClickPinDelay = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure")), MeetingSetting = structure(list(RequirePin = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(ConferenceProviderArn = structure(logical(0), tags = list(type = "string")), ConferenceProviderType = structure(logical(0), tags = list(type = "string")), IPDialIn = structure(list(Endpoint = structure(logical(0), tags = list(type = "string")), CommsProtocol = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PSTNDialIn = structure(list(CountryCode = structure(logical(0), tags = list(type = "string")), PhoneNumber = structure(logical(0), tags = list(type = "string")), OneClickIdDelay = structure(logical(0), tags = list(type = "string")), OneClickPinDelay = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MeetingSetting = structure(list(RequirePin = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -845,7 +869,7 @@ NULL
 
 .alexaforbusiness$update_contact_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContactArn = structure(logical(0), tags = list(    type = "string")), DisplayName = structure(logical(0), tags = list(    type = "string")), FirstName = structure(logical(0), tags = list(    type = "string")), LastName = structure(logical(0), tags = list(    type = "string")), PhoneNumber = structure(logical(0), tags = list(    type = "string", sensitive = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(ContactArn = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), FirstName = structure(logical(0), tags = list(type = "string")), LastName = structure(logical(0), tags = list(type = "string")), PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -857,7 +881,7 @@ NULL
 
 .alexaforbusiness$update_device_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DeviceArn = structure(logical(0), tags = list(    type = "string")), DeviceName = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(DeviceArn = structure(logical(0), tags = list(type = "string")), DeviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -869,7 +893,7 @@ NULL
 
 .alexaforbusiness$update_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileArn = structure(logical(0), tags = list(    type = "string")), ProfileName = structure(logical(0), tags = list(    type = "string")), IsDefault = structure(logical(0), tags = list(    type = "boolean")), Timezone = structure(logical(0), tags = list(    type = "string")), Address = structure(logical(0), tags = list(    type = "string")), DistanceUnit = structure(logical(0), tags = list(    type = "string")), TemperatureUnit = structure(logical(0), tags = list(    type = "string")), WakeWord = structure(logical(0), tags = list(    type = "string")), SetupModeDisabled = structure(logical(0), tags = list(    type = "boolean")), MaxVolumeLimit = structure(logical(0), tags = list(    type = "integer")), PSTNEnabled = structure(logical(0), tags = list(    type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(ProfileArn = structure(logical(0), tags = list(type = "string")), ProfileName = structure(logical(0), tags = list(type = "string")), IsDefault = structure(logical(0), tags = list(type = "boolean")), Timezone = structure(logical(0), tags = list(type = "string")), Address = structure(logical(0), tags = list(type = "string")), DistanceUnit = structure(logical(0), tags = list(type = "string")), TemperatureUnit = structure(logical(0), tags = list(type = "string")), WakeWord = structure(logical(0), tags = list(type = "string")), SetupModeDisabled = structure(logical(0), tags = list(type = "boolean")), MaxVolumeLimit = structure(logical(0), tags = list(type = "integer")), PSTNEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -881,7 +905,7 @@ NULL
 
 .alexaforbusiness$update_room_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RoomArn = structure(logical(0), tags = list(type = "string")), RoomName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ProviderCalendarId = structure(logical(0), tags = list(type = "string")), ProfileArn = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(RoomArn = structure(logical(0), tags = list(type = "string")), RoomName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ProviderCalendarId = structure(logical(0), tags = list(type = "string")), ProfileArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -893,7 +917,7 @@ NULL
 
 .alexaforbusiness$update_skill_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SkillGroupArn = structure(logical(0), tags = list(    type = "string")), SkillGroupName = structure(logical(0), tags = list(    type = "string")), Description = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(SkillGroupArn = structure(logical(0), tags = list(type = "string")), SkillGroupName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

@@ -115,7 +115,7 @@ storage and stops charging you for the parts storage.
     "string"
   ),
   ServerSideEncryption = "AES256"|"aws:kms",
-  StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER",
+  StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE",
   WebsiteRedirectLocation = "string",
   SSECustomerAlgorithm = "string",
   SSECustomerKey = raw,

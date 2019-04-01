@@ -61,12 +61,12 @@ are not streaming apps.}
 \item{VpcConfig}{The VPC configuration for the fleet.}
 
 \item{MaxUserDurationInSeconds}{The maximum time that a streaming session can run, in seconds. Specify a
-value between 600 and 57600.}
+value between 600 and 360000.}
 
 \item{DisconnectTimeoutInSeconds}{The time after disconnection when a session is considered to have ended,
 in seconds. If a user who was disconnected reconnects within this time
 interval, the user is connected to their previous session. Specify a
-value between 60 and 57600.}
+value between 60 and 360000.}
 
 \item{Description}{The description to display.}
 
@@ -77,13 +77,13 @@ value between 60 and 57600.}
 \item{DomainJoinInfo}{The name of the directory and organizational unit (OU) to use to join
 the fleet to a Microsoft Active Directory domain.}
 
-\item{Tags}{The tags to associate with the fleet. A tag is a key-value pair (the
-value is optional). For example, Environment=Test, or, if you do not
-specify a value, Environment=.
+\item{Tags}{The tags to associate with the fleet. A tag is a key-value pair, and the
+value is optional. For example, Environment=Test. If you do not specify
+a value, Environment=.
 
-If you do not specify a value, we set the value to an empty string.
+If you do not specify a value, the value is set to an empty string.
 
-For more information, see \href{http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html}{Tagging Your Resources}
+For more information, see \href{https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html}{Tagging Your Resources}
 in the \emph{Amazon AppStream 2.0 Developer Guide}.}
 }
 \description{

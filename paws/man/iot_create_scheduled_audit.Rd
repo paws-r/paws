@@ -5,7 +5,7 @@
 \title{Creates a scheduled audit that is run at a specified time interval}
 \usage{
 iot_create_scheduled_audit(frequency, dayOfMonth, dayOfWeek,
-  targetCheckNames, scheduledAuditName)
+  targetCheckNames, tags, scheduledAuditName)
 }
 \arguments{
 \item{frequency}{[required] How often the scheduled audit takes place. Can be one of "DAILY",
@@ -28,6 +28,8 @@ enabled for your account. (Use \code{DescribeAccountAuditConfiguration} to
 see the list of all checks including those that are enabled or
 \code{UpdateAccountAuditConfiguration} to select which checks are enabled.)}
 
+\item{tags}{Metadata which can be used to manage the scheduled audit.}
+
 \item{scheduledAuditName}{[required] The name you want to give to the scheduled audit. (Max. 128 chars)}
 }
 \description{
@@ -40,6 +42,12 @@ Creates a scheduled audit that is run at a specified time interval.
   dayOfWeek = "SUN"|"MON"|"TUE"|"WED"|"THU"|"FRI"|"SAT",
   targetCheckNames = list(
     "string"
+  ),
+  tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
   ),
   scheduledAuditName = "string"
 )

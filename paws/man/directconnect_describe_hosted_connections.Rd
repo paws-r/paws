@@ -15,7 +15,7 @@ Lists the hosted connections that have been provisioned on the specified
 interconnect or link aggregation group (LAG).
 }
 \details{
-Intended for use by AWS Direct Connect partners only.
+Intended for use by AWS Direct Connect Partners only.
 }
 \section{Request syntax}{
 \preformatted{directconnect$describe_hosted_connections(

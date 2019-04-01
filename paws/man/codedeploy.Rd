@@ -72,9 +72,9 @@ deployment, and to get details about Amazon ECS service deployments.
 
 \strong{AWS CodeDeploy Information Resources}
 \itemize{
-\item \href{http://docs.aws.amazon.com/codedeploy/latest/userguide}{AWS CodeDeploy User Guide}
-\item \href{http://docs.aws.amazon.com/codedeploy/latest/APIReference/}{AWS CodeDeploy API Reference Guide}
-\item \href{http://docs.aws.amazon.com/cli/latest/reference/deploy/index.html}{AWS CLI Reference for AWS CodeDeploy}
+\item \href{https://docs.aws.amazon.com/codedeploy/latest/userguide}{AWS CodeDeploy User Guide}
+\item \href{https://docs.aws.amazon.com/codedeploy/latest/APIReference/}{AWS CodeDeploy API Reference Guide}
+\item \href{https://docs.aws.amazon.com/cli/latest/reference/deploy/index.html}{AWS CLI Reference for AWS CodeDeploy}
 \item \href{https://forums.aws.amazon.com/forum.jspa?forumID=179}{AWS CodeDeploy Developer Forum}
 }
 }

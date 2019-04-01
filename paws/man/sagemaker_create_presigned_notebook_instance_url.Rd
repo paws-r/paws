@@ -29,7 +29,7 @@ Management user, group, or role used to access the notebook instance.
 Use the \code{NotIpAddress} condition operator and the \code{aws:SourceIP}
 condition context key to specify the list of IP addresses that you want
 to have access to the notebook instance. For more information, see
-\href{http://docs.aws.amazon.com/sagemaker/latest/dg/howitworks-access-ws.html#nbi-ip-filter}{Limit Access to a Notebook Instance by IP Address}.
+\href{https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-ip-filter.html}{Limit Access to a Notebook Instance by IP Address}.
 }
 \section{Request syntax}{
 \preformatted{sagemaker$create_presigned_notebook_instance_url(

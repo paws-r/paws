@@ -19,7 +19,7 @@ group by the number of instances moved to \code{Standby} mode.}
 Moves the specified instances into the standby state.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enter-exit-standby.html}{Temporarily Removing Instances from Your Auto Scaling Group}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enter-exit-standby.html}{Temporarily Removing Instances from Your Auto Scaling Group}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{

@@ -5,7 +5,7 @@ NULL
 
 .applicationdiscoveryservice$associate_configuration_items_to_application_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationConfigurationId = structure(logical(0), tags = list(    type = "string")), configurationIds = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(applicationConfigurationId = structure(logical(0), tags = list(type = "string")), configurationIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -17,31 +17,31 @@ NULL
 
 .applicationdiscoveryservice$batch_delete_import_data_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(importTaskIds = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(importTaskIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationdiscoveryservice$batch_delete_import_data_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(errors = structure(list(structure(list(importTaskId = structure(logical(0), tags = list(    type = "string")), errorCode = structure(logical(0), tags = list(    type = "string")), errorDescription = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(errors = structure(list(structure(list(importTaskId = structure(logical(0), tags = list(type = "string")), errorCode = structure(logical(0), tags = list(type = "string")), errorDescription = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationdiscoveryservice$create_application_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationdiscoveryservice$create_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configurationId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(configurationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationdiscoveryservice$create_tags_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configurationIds = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list")), tags = structure(list(    structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(        type = "structure"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(configurationIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -53,7 +53,7 @@ NULL
 
 .applicationdiscoveryservice$delete_applications_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configurationIds = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(configurationIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -65,7 +65,7 @@ NULL
 
 .applicationdiscoveryservice$delete_tags_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configurationIds = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list")), tags = structure(list(    structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(        type = "structure"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(configurationIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -77,91 +77,91 @@ NULL
 
 .applicationdiscoveryservice$describe_agents_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(agentIds = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list")), filters = structure(list(    structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(            type = "string"))), tags = list(type = "list")), condition = structure(logical(0), tags = list(type = "string"))), tags = list(        type = "structure"))), tags = list(type = "list")), maxResults = structure(logical(0), tags = list(    type = "integer")), nextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(agentIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), filters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), condition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), maxResults = structure(logical(0), tags = list(type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationdiscoveryservice$describe_agents_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(agentsInfo = structure(list(structure(list(agentId = structure(logical(0), tags = list(    type = "string")), hostName = structure(logical(0), tags = list(    type = "string")), agentNetworkInfoList = structure(list(    structure(list(ipAddress = structure(logical(0), tags = list(        type = "string")), macAddress = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(    type = "list")), connectorId = structure(logical(0), tags = list(    type = "string")), version = structure(logical(0), tags = list(    type = "string")), health = structure(logical(0), tags = list(    type = "string")), lastHealthPingTime = structure(logical(0), tags = list(    type = "string")), collectionStatus = structure(logical(0), tags = list(    type = "string")), agentType = structure(logical(0), tags = list(    type = "string")), registeredTime = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "list")), nextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(agentsInfo = structure(list(structure(list(agentId = structure(logical(0), tags = list(type = "string")), hostName = structure(logical(0), tags = list(type = "string")), agentNetworkInfoList = structure(list(structure(list(ipAddress = structure(logical(0), tags = list(type = "string")), macAddress = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), connectorId = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), health = structure(logical(0), tags = list(type = "string")), lastHealthPingTime = structure(logical(0), tags = list(type = "string")), collectionStatus = structure(logical(0), tags = list(type = "string")), agentType = structure(logical(0), tags = list(type = "string")), registeredTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationdiscoveryservice$describe_configurations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configurationIds = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(configurationIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationdiscoveryservice$describe_configurations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configurations = structure(list(structure(list(    structure(logical(0), tags = list(type = "string"))), tags = list(    type = "map"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(configurations = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationdiscoveryservice$describe_continuous_exports_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(exportIds = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list")), maxResults = structure(logical(0), tags = list(    type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(exportIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationdiscoveryservice$describe_continuous_exports_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(descriptions = structure(list(structure(list(exportId = structure(logical(0), tags = list(    type = "string")), status = structure(logical(0), tags = list(    type = "string")), statusDetail = structure(logical(0), tags = list(    type = "string")), s3Bucket = structure(logical(0), tags = list(    type = "string")), startTime = structure(logical(0), tags = list(    type = "timestamp")), stopTime = structure(logical(0), tags = list(    type = "timestamp")), dataSource = structure(logical(0), tags = list(    type = "string")), schemaStorageConfig = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "map"))), tags = list(    type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(descriptions = structure(list(structure(list(exportId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusDetail = structure(logical(0), tags = list(type = "string")), s3Bucket = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp")), stopTime = structure(logical(0), tags = list(type = "timestamp")), dataSource = structure(logical(0), tags = list(type = "string")), schemaStorageConfig = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationdiscoveryservice$describe_export_configurations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(exportIds = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list")), maxResults = structure(logical(0), tags = list(    type = "integer")), nextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(exportIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), maxResults = structure(logical(0), tags = list(type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationdiscoveryservice$describe_export_configurations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(exportsInfo = structure(list(structure(list(exportId = structure(logical(0), tags = list(    type = "string")), exportStatus = structure(logical(0), tags = list(    type = "string")), statusMessage = structure(logical(0), tags = list(    type = "string")), configurationsDownloadUrl = structure(logical(0), tags = list(    type = "string")), exportRequestTime = structure(logical(0), tags = list(    type = "timestamp")), isTruncated = structure(logical(0), tags = list(    type = "boolean")), requestedStartTime = structure(logical(0), tags = list(    type = "timestamp")), requestedEndTime = structure(logical(0), tags = list(    type = "timestamp"))), tags = list(type = "structure"))), tags = list(    type = "list")), nextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(exportsInfo = structure(list(structure(list(exportId = structure(logical(0), tags = list(type = "string")), exportStatus = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), configurationsDownloadUrl = structure(logical(0), tags = list(type = "string")), exportRequestTime = structure(logical(0), tags = list(type = "timestamp")), isTruncated = structure(logical(0), tags = list(type = "boolean")), requestedStartTime = structure(logical(0), tags = list(type = "timestamp")), requestedEndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationdiscoveryservice$describe_export_tasks_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(exportIds = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list")), filters = structure(list(    structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(            type = "string"))), tags = list(type = "list")), condition = structure(logical(0), tags = list(type = "string"))), tags = list(        type = "structure"))), tags = list(type = "list")), maxResults = structure(logical(0), tags = list(    type = "integer")), nextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(exportIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), filters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), condition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), maxResults = structure(logical(0), tags = list(type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationdiscoveryservice$describe_export_tasks_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(exportsInfo = structure(list(structure(list(exportId = structure(logical(0), tags = list(    type = "string")), exportStatus = structure(logical(0), tags = list(    type = "string")), statusMessage = structure(logical(0), tags = list(    type = "string")), configurationsDownloadUrl = structure(logical(0), tags = list(    type = "string")), exportRequestTime = structure(logical(0), tags = list(    type = "timestamp")), isTruncated = structure(logical(0), tags = list(    type = "boolean")), requestedStartTime = structure(logical(0), tags = list(    type = "timestamp")), requestedEndTime = structure(logical(0), tags = list(    type = "timestamp"))), tags = list(type = "structure"))), tags = list(    type = "list")), nextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(exportsInfo = structure(list(structure(list(exportId = structure(logical(0), tags = list(type = "string")), exportStatus = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), configurationsDownloadUrl = structure(logical(0), tags = list(type = "string")), exportRequestTime = structure(logical(0), tags = list(type = "timestamp")), isTruncated = structure(logical(0), tags = list(type = "boolean")), requestedStartTime = structure(logical(0), tags = list(type = "timestamp")), requestedEndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationdiscoveryservice$describe_import_tasks_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(filters = structure(list(structure(list(name = structure(logical(0), tags = list(    type = "string")), values = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))), tags = list(type = "list")), maxResults = structure(logical(0), tags = list(    type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(filters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationdiscoveryservice$describe_import_tasks_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(    type = "string")), tasks = structure(list(structure(list(    importTaskId = structure(logical(0), tags = list(type = "string")), clientRequestToken = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), importUrl = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), importRequestTime = structure(logical(0), tags = list(type = "timestamp")), importCompletionTime = structure(logical(0), tags = list(        type = "timestamp")), importDeletedTime = structure(logical(0), tags = list(        type = "timestamp")), serverImportSuccess = structure(logical(0), tags = list(        type = "integer")), serverImportFailure = structure(logical(0), tags = list(        type = "integer")), applicationImportSuccess = structure(logical(0), tags = list(        type = "integer")), applicationImportFailure = structure(logical(0), tags = list(        type = "integer")), errorsAndFailedEntriesZip = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(    type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), tasks = structure(list(structure(list(importTaskId = structure(logical(0), tags = list(type = "string")), clientRequestToken = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), importUrl = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), importRequestTime = structure(logical(0), tags = list(type = "timestamp")), importCompletionTime = structure(logical(0), tags = list(type = "timestamp")), importDeletedTime = structure(logical(0), tags = list(type = "timestamp")), serverImportSuccess = structure(logical(0), tags = list(type = "integer")), serverImportFailure = structure(logical(0), tags = list(type = "integer")), applicationImportSuccess = structure(logical(0), tags = list(type = "integer")), applicationImportFailure = structure(logical(0), tags = list(type = "integer")), errorsAndFailedEntriesZip = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationdiscoveryservice$describe_tags_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(filters = structure(list(structure(list(name = structure(logical(0), tags = list(    type = "string")), values = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))), tags = list(type = "list")), maxResults = structure(logical(0), tags = list(    type = "integer")), nextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(filters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), maxResults = structure(logical(0), tags = list(type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationdiscoveryservice$describe_tags_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(list(configurationType = structure(logical(0), tags = list(    type = "string")), configurationId = structure(logical(0), tags = list(    type = "string")), key = structure(logical(0), tags = list(    type = "string")), value = structure(logical(0), tags = list(    type = "string")), timeOfCreation = structure(logical(0), tags = list(    type = "timestamp"))), tags = list(type = "structure"))), tags = list(    type = "list")), nextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(tags = structure(list(structure(list(configurationType = structure(logical(0), tags = list(type = "string")), configurationId = structure(logical(0), tags = list(type = "string")), key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), timeOfCreation = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationdiscoveryservice$disassociate_configuration_items_from_application_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationConfigurationId = structure(logical(0), tags = list(    type = "string")), configurationIds = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(applicationConfigurationId = structure(logical(0), tags = list(type = "string")), configurationIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -177,7 +177,7 @@ NULL
 
 .applicationdiscoveryservice$export_configurations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(exportId = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(exportId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -189,31 +189,31 @@ NULL
 
 .applicationdiscoveryservice$get_discovery_summary_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(servers = structure(logical(0), tags = list(type = "long")), applications = structure(logical(0), tags = list(type = "long")), serversMappedToApplications = structure(logical(0), tags = list(        type = "long")), serversMappedtoTags = structure(logical(0), tags = list(        type = "long")), agentSummary = structure(list(activeAgents = structure(logical(0), tags = list(        type = "integer")), healthyAgents = structure(logical(0), tags = list(        type = "integer")), blackListedAgents = structure(logical(0), tags = list(        type = "integer")), shutdownAgents = structure(logical(0), tags = list(        type = "integer")), unhealthyAgents = structure(logical(0), tags = list(        type = "integer")), totalAgents = structure(logical(0), tags = list(        type = "integer")), unknownAgents = structure(logical(0), tags = list(        type = "integer"))), tags = list(type = "structure")), connectorSummary = structure(list(activeConnectors = structure(logical(0), tags = list(        type = "integer")), healthyConnectors = structure(logical(0), tags = list(        type = "integer")), blackListedConnectors = structure(logical(0), tags = list(        type = "integer")), shutdownConnectors = structure(logical(0), tags = list(        type = "integer")), unhealthyConnectors = structure(logical(0), tags = list(        type = "integer")), totalConnectors = structure(logical(0), tags = list(        type = "integer")), unknownConnectors = structure(logical(0), tags = list(        type = "integer"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(servers = structure(logical(0), tags = list(type = "long")), applications = structure(logical(0), tags = list(type = "long")), serversMappedToApplications = structure(logical(0), tags = list(type = "long")), serversMappedtoTags = structure(logical(0), tags = list(type = "long")), agentSummary = structure(list(activeAgents = structure(logical(0), tags = list(type = "integer")), healthyAgents = structure(logical(0), tags = list(type = "integer")), blackListedAgents = structure(logical(0), tags = list(type = "integer")), shutdownAgents = structure(logical(0), tags = list(type = "integer")), unhealthyAgents = structure(logical(0), tags = list(type = "integer")), totalAgents = structure(logical(0), tags = list(type = "integer")), unknownAgents = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), connectorSummary = structure(list(activeConnectors = structure(logical(0), tags = list(type = "integer")), healthyConnectors = structure(logical(0), tags = list(type = "integer")), blackListedConnectors = structure(logical(0), tags = list(type = "integer")), shutdownConnectors = structure(logical(0), tags = list(type = "integer")), unhealthyConnectors = structure(logical(0), tags = list(type = "integer")), totalConnectors = structure(logical(0), tags = list(type = "integer")), unknownConnectors = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationdiscoveryservice$list_configurations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configurationType = structure(logical(0), tags = list(    type = "string")), filters = structure(list(structure(list(    name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(        type = "string"))), tags = list(type = "list")), condition = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(    type = "list")), maxResults = structure(logical(0), tags = list(    type = "integer")), nextToken = structure(logical(0), tags = list(    type = "string")), orderBy = structure(list(structure(list(    fieldName = structure(logical(0), tags = list(type = "string")), sortOrder = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(configurationType = structure(logical(0), tags = list(type = "string")), filters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), condition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), maxResults = structure(logical(0), tags = list(type = "integer")), nextToken = structure(logical(0), tags = list(type = "string")), orderBy = structure(list(structure(list(fieldName = structure(logical(0), tags = list(type = "string")), sortOrder = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationdiscoveryservice$list_configurations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configurations = structure(list(structure(list(    structure(logical(0), tags = list(type = "string"))), tags = list(    type = "map"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(configurations = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationdiscoveryservice$list_server_neighbors_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configurationId = structure(logical(0), tags = list(    type = "string")), portInformationNeeded = structure(logical(0), tags = list(    type = "boolean")), neighborConfigurationIds = structure(list(    structure(logical(0), tags = list(type = "string"))), tags = list(    type = "list")), maxResults = structure(logical(0), tags = list(    type = "integer")), nextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(configurationId = structure(logical(0), tags = list(type = "string")), portInformationNeeded = structure(logical(0), tags = list(type = "boolean")), neighborConfigurationIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), maxResults = structure(logical(0), tags = list(type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationdiscoveryservice$list_server_neighbors_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(neighbors = structure(list(structure(list(sourceServerId = structure(logical(0), tags = list(    type = "string")), destinationServerId = structure(logical(0), tags = list(    type = "string")), destinationPort = structure(logical(0), tags = list(    type = "integer", box = TRUE)), transportProtocol = structure(logical(0), tags = list(    type = "string")), connectionsCount = structure(logical(0), tags = list(    type = "long"))), tags = list(type = "structure"))), tags = list(    type = "list")), nextToken = structure(logical(0), tags = list(    type = "string")), knownDependencyCount = structure(logical(0), tags = list(    type = "long"))), tags = list(type = "structure"))
+  shape <- structure(list(neighbors = structure(list(structure(list(sourceServerId = structure(logical(0), tags = list(type = "string")), destinationServerId = structure(logical(0), tags = list(type = "string")), destinationPort = structure(logical(0), tags = list(type = "integer", box = TRUE)), transportProtocol = structure(logical(0), tags = list(type = "string")), connectionsCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string")), knownDependencyCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -225,73 +225,73 @@ NULL
 
 .applicationdiscoveryservice$start_continuous_export_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(exportId = structure(logical(0), tags = list(type = "string")), s3Bucket = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp")), dataSource = structure(logical(0), tags = list(type = "string")), schemaStorageConfig = structure(list(structure(logical(0), tags = list(        type = "string"))), tags = list(type = "map"))), tags = list(    type = "structure"))
+  shape <- structure(list(exportId = structure(logical(0), tags = list(type = "string")), s3Bucket = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp")), dataSource = structure(logical(0), tags = list(type = "string")), schemaStorageConfig = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationdiscoveryservice$start_data_collection_by_agent_ids_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(agentIds = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(agentIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationdiscoveryservice$start_data_collection_by_agent_ids_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(agentsConfigurationStatus = structure(list(structure(list(    agentId = structure(logical(0), tags = list(type = "string")), operationSucceeded = structure(logical(0), tags = list(type = "boolean")), description = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(agentsConfigurationStatus = structure(list(structure(list(agentId = structure(logical(0), tags = list(type = "string")), operationSucceeded = structure(logical(0), tags = list(type = "boolean")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationdiscoveryservice$start_export_task_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(exportDataFormat = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list")), filters = structure(list(    structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(            type = "string"))), tags = list(type = "list")), condition = structure(logical(0), tags = list(type = "string"))), tags = list(        type = "structure"))), tags = list(type = "list")), startTime = structure(logical(0), tags = list(    type = "timestamp")), endTime = structure(logical(0), tags = list(    type = "timestamp"))), tags = list(type = "structure"))
+  shape <- structure(list(exportDataFormat = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), filters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), condition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationdiscoveryservice$start_export_task_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(exportId = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(exportId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationdiscoveryservice$start_import_task_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientRequestToken = structure(logical(0), tags = list(    idempotencyToken = TRUE, type = "string")), name = structure(logical(0), tags = list(    type = "string")), importUrl = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), name = structure(logical(0), tags = list(type = "string")), importUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationdiscoveryservice$start_import_task_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(task = structure(list(importTaskId = structure(logical(0), tags = list(    type = "string")), clientRequestToken = structure(logical(0), tags = list(    type = "string")), name = structure(logical(0), tags = list(    type = "string")), importUrl = structure(logical(0), tags = list(    type = "string")), status = structure(logical(0), tags = list(    type = "string")), importRequestTime = structure(logical(0), tags = list(    type = "timestamp")), importCompletionTime = structure(logical(0), tags = list(    type = "timestamp")), importDeletedTime = structure(logical(0), tags = list(    type = "timestamp")), serverImportSuccess = structure(logical(0), tags = list(    type = "integer")), serverImportFailure = structure(logical(0), tags = list(    type = "integer")), applicationImportSuccess = structure(logical(0), tags = list(    type = "integer")), applicationImportFailure = structure(logical(0), tags = list(    type = "integer")), errorsAndFailedEntriesZip = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(task = structure(list(importTaskId = structure(logical(0), tags = list(type = "string")), clientRequestToken = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), importUrl = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), importRequestTime = structure(logical(0), tags = list(type = "timestamp")), importCompletionTime = structure(logical(0), tags = list(type = "timestamp")), importDeletedTime = structure(logical(0), tags = list(type = "timestamp")), serverImportSuccess = structure(logical(0), tags = list(type = "integer")), serverImportFailure = structure(logical(0), tags = list(type = "integer")), applicationImportSuccess = structure(logical(0), tags = list(type = "integer")), applicationImportFailure = structure(logical(0), tags = list(type = "integer")), errorsAndFailedEntriesZip = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationdiscoveryservice$stop_continuous_export_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(exportId = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(exportId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationdiscoveryservice$stop_continuous_export_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(startTime = structure(logical(0), tags = list(    type = "timestamp")), stopTime = structure(logical(0), tags = list(    type = "timestamp"))), tags = list(type = "structure"))
+  shape <- structure(list(startTime = structure(logical(0), tags = list(type = "timestamp")), stopTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationdiscoveryservice$stop_data_collection_by_agent_ids_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(agentIds = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(agentIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationdiscoveryservice$stop_data_collection_by_agent_ids_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(agentsConfigurationStatus = structure(list(structure(list(    agentId = structure(logical(0), tags = list(type = "string")), operationSucceeded = structure(logical(0), tags = list(type = "boolean")), description = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(agentsConfigurationStatus = structure(list(structure(list(agentId = structure(logical(0), tags = list(type = "string")), operationSucceeded = structure(logical(0), tags = list(type = "boolean")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationdiscoveryservice$update_application_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configurationId = structure(logical(0), tags = list(    type = "string")), name = structure(logical(0), tags = list(    type = "string")), description = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(configurationId = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

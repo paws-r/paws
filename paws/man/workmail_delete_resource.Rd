@@ -7,7 +7,7 @@
 workmail_delete_resource(OrganizationId, ResourceId)
 }
 \arguments{
-\item{OrganizationId}{[required] The identifier associated with the organization for which the resource
+\item{OrganizationId}{[required] The identifier associated with the organization from which the resource
 is deleted.}
 
 \item{ResourceId}{[required] The identifier of the resource to be deleted.}

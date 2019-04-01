@@ -8,16 +8,16 @@ glue_get_connection(CatalogId, Name, HidePassword)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog in which the connection resides. If none is
-supplied, the AWS account ID is used by default.}
+provided, the AWS account ID is used by default.}
 
 \item{Name}{[required] The name of the connection definition to retrieve.}
 
-\item{HidePassword}{Allow you to retrieve the connection metadata without displaying the
+\item{HidePassword}{Allows you to retrieve the connection metadata without returning the
 password. For instance, the AWS Glue console uses this flag to retrieve
-connections, since the console does not display passwords. Set this
-parameter where the caller may not have permission to use the KMS key to
+the connection, and does not display the password. Set this parameter
+when the caller might not have permission to use the AWS KMS key to
 decrypt the password, but does have permission to access the rest of the
-connection metadata (that is, the other connection properties).}
+connection properties.}
 }
 \description{
 Retrieves a connection definition from the Data Catalog.

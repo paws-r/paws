@@ -25,7 +25,10 @@ value. This value can be between 1 and 100. If this parameter is not
 used, then \code{ListFleets} returns up to 100 results and a \code{nextToken}
 value if applicable.}
 
-\item{filters}{Optional filters to limit results.}
+\item{filters}{Optional filters to limit results.
+
+The filter name \code{name} is supported. When filtering, you must use the
+complete value of the filtered item. You can use up to three filters.}
 }
 \description{
 Returns a list of fleets. You can optionally provide filters to retrieve

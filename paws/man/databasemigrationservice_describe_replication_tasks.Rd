@@ -6,7 +6,7 @@
 current region}
 \usage{
 databasemigrationservice_describe_replication_tasks(Filters, MaxRecords,
-  Marker)
+  Marker, WithoutSettings)
 }
 \arguments{
 \item{Filters}{Filters applied to the describe action.
@@ -26,6 +26,10 @@ Constraints: Minimum 20, maximum 100.}
 \item{Marker}{An optional pagination token provided by a previous request. If this
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
+
+\item{WithoutSettings}{Set this flag to avoid returning setting information. Use this to reduce
+overhead when settings are too large. Choose TRUE to use this flag,
+otherwise choose FALSE (default).}
 }
 \description{
 Returns information about replication tasks for your account in the
@@ -42,7 +46,8 @@ current region.
     )
   ),
   MaxRecords = 123,
-  Marker = "string"
+  Marker = "string",
+  WithoutSettings = TRUE|FALSE
 )
 }
 }

@@ -3,16 +3,16 @@
 #' @include workmail_service.R
 NULL
 
-#' Adds a member to the resource's set of delegates
+#' Adds a member (user or group) to the resource's set of delegates
 #'
-#' Adds a member to the resource\'s set of delegates.
+#' Adds a member (user or group) to the resource\'s set of delegates.
 #'
 #' @usage
 #' workmail_associate_delegate_to_resource(OrganizationId, ResourceId,
 #'   EntityId)
 #'
 #' @param OrganizationId &#91;required&#93; The organization under which the resource exists.
-#' @param ResourceId &#91;required&#93; The resource for which members are associated.
+#' @param ResourceId &#91;required&#93; The resource for which members (users or groups) are associated.
 #' @param EntityId &#91;required&#93; The member (user or group) to associate to the resource.
 #'
 #' @section Request syntax:
@@ -43,16 +43,16 @@ workmail_associate_delegate_to_resource <- function(OrganizationId, ResourceId, 
 }
 .workmail$operations$associate_delegate_to_resource <- workmail_associate_delegate_to_resource
 
-#' Adds a member to the group's set
+#' Adds a member (user or group) to the group's set
 #'
-#' Adds a member to the group\'s set.
+#' Adds a member (user or group) to the group\'s set.
 #'
 #' @usage
 #' workmail_associate_member_to_group(OrganizationId, GroupId, MemberId)
 #'
 #' @param OrganizationId &#91;required&#93; The organization under which the group exists.
-#' @param GroupId &#91;required&#93; The group for which the member is associated.
-#' @param MemberId &#91;required&#93; The member to associate to the group.
+#' @param GroupId &#91;required&#93; The group to which the member (user or group) is associated.
+#' @param MemberId &#91;required&#93; The member (user or group) to associate to the group.
 #'
 #' @section Request syntax:
 #' ```
@@ -82,16 +82,18 @@ workmail_associate_member_to_group <- function(OrganizationId, GroupId, MemberId
 }
 .workmail$operations$associate_member_to_group <- workmail_associate_member_to_group
 
-#' Adds an alias to the set of a given member of Amazon WorkMail
+#' Adds an alias to the set of a given member (user or group) of Amazon
+#' WorkMail
 #'
-#' Adds an alias to the set of a given member of Amazon WorkMail.
+#' Adds an alias to the set of a given member (user or group) of Amazon
+#' WorkMail.
 #'
 #' @usage
 #' workmail_create_alias(OrganizationId, EntityId, Alias)
 #'
-#' @param OrganizationId &#91;required&#93; The organization under which the member exists.
-#' @param EntityId &#91;required&#93; The alias is added to this Amazon WorkMail entity.
-#' @param Alias &#91;required&#93; The alias to add to the user.
+#' @param OrganizationId &#91;required&#93; The organization under which the member (user or group) exists.
+#' @param EntityId &#91;required&#93; The member (user or group) to which this alias is added.
+#' @param Alias &#91;required&#93; The alias to add to the member set.
 #'
 #' @section Request syntax:
 #' ```
@@ -162,16 +164,16 @@ workmail_create_group <- function(OrganizationId, Name) {
 
 #' Creates a new Amazon WorkMail resource
 #'
-#' Creates a new Amazon WorkMail resource. The available types are
-#' equipment and room.
+#' Creates a new Amazon WorkMail resource.
 #'
 #' @usage
 #' workmail_create_resource(OrganizationId, Name, Type)
 #'
 #' @param OrganizationId &#91;required&#93; The identifier associated with the organization for which the resource
 #' is created.
-#' @param Name &#91;required&#93; The name of the created resource.
-#' @param Type &#91;required&#93; The type of the created resource.
+#' @param Name &#91;required&#93; The name of the new resource.
+#' @param Type &#91;required&#93; The type of the new resource. The available types are `equipment` and
+#' `room`.
 #'
 #' @section Request syntax:
 #' ```
@@ -211,9 +213,10 @@ workmail_create_resource <- function(OrganizationId, Name, Type) {
 #' workmail_create_user(OrganizationId, Name, DisplayName, Password)
 #'
 #' @param OrganizationId &#91;required&#93; The identifier of the organization for which the user is created.
-#' @param Name &#91;required&#93; The name for the user to be created.
-#' @param DisplayName &#91;required&#93; The display name for the user to be created.
-#' @param Password &#91;required&#93; The password for the user to be created.
+#' @param Name &#91;required&#93; The name for the new user. Simple AD or AD Connector user names have a
+#' maximum length of 20. All others have a maximum length of 64.
+#' @param DisplayName &#91;required&#93; The display name for the new user.
+#' @param Password &#91;required&#93; The password for the new user.
 #'
 #' @section Request syntax:
 #' ```
@@ -244,16 +247,18 @@ workmail_create_user <- function(OrganizationId, Name, DisplayName, Password) {
 }
 .workmail$operations$create_user <- workmail_create_user
 
-#' Remove the alias from a set of aliases for a given user
+#' Remove one or more specified aliases from a set of aliases for a given
+#' user
 #'
-#' Remove the alias from a set of aliases for a given user.
+#' Remove one or more specified aliases from a set of aliases for a given
+#' user.
 #'
 #' @usage
 #' workmail_delete_alias(OrganizationId, EntityId, Alias)
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization under which the user exists.
-#' @param EntityId &#91;required&#93; The identifier for the Amazon WorkMail entity to have the aliases
-#' removed.
+#' @param EntityId &#91;required&#93; The identifier for the member (user or group) from which to have the
+#' aliases removed.
 #' @param Alias &#91;required&#93; The aliases to be removed from the user\'s set of aliases. Duplicate
 #' entries in the list are collapsed into single entries (the list is
 #' transformed into a set).
@@ -323,18 +328,17 @@ workmail_delete_group <- function(OrganizationId, GroupId) {
 }
 .workmail$operations$delete_group <- workmail_delete_group
 
-#' Deletes permissions granted to a user or group
+#' Deletes permissions granted to a member (user or group)
 #'
-#' Deletes permissions granted to a user or group.
+#' Deletes permissions granted to a member (user or group).
 #'
 #' @usage
 #' workmail_delete_mailbox_permissions(OrganizationId, EntityId, GranteeId)
 #'
-#' @param OrganizationId &#91;required&#93; The identifier of the organization under which the entity (user or
+#' @param OrganizationId &#91;required&#93; The identifier of the organization under which the member (user or
 #' group) exists.
-#' @param EntityId &#91;required&#93; The identifier of the entity (user or group) for which to delete mailbox
-#' permissions.
-#' @param GranteeId &#91;required&#93; The identifier of the entity (user or group) for which to delete granted
+#' @param EntityId &#91;required&#93; The identifier of the member (user or group)that owns the mailbox.
+#' @param GranteeId &#91;required&#93; The identifier of the member (user or group) for which to delete granted
 #' permissions.
 #'
 #' @section Request syntax:
@@ -372,7 +376,7 @@ workmail_delete_mailbox_permissions <- function(OrganizationId, EntityId, Grante
 #' @usage
 #' workmail_delete_resource(OrganizationId, ResourceId)
 #'
-#' @param OrganizationId &#91;required&#93; The identifier associated with the organization for which the resource
+#' @param OrganizationId &#91;required&#93; The identifier associated with the organization from which the resource
 #' is deleted.
 #' @param ResourceId &#91;required&#93; The identifier of the resource to be deleted.
 #'
@@ -405,14 +409,17 @@ workmail_delete_resource <- function(OrganizationId, ResourceId) {
 
 #' Deletes a user from Amazon WorkMail and all subsequent systems
 #'
-#' Deletes a user from Amazon WorkMail and all subsequent systems. The
-#' action can\'t be undone. The mailbox is kept as-is for a minimum of 30
-#' days, without any means to restore it.
+#' Deletes a user from Amazon WorkMail and all subsequent systems. Before
+#' you can delete a user, the user state must be `DISABLED`. Use the
+#' DescribeUser action to confirm the user state.
+#' 
+#' Deleting a user is permanent and cannot be undone. WorkMail archives
+#' user mailboxes for 30 days before they are permanently removed.
 #'
 #' @usage
 #' workmail_delete_user(OrganizationId, UserId)
 #'
-#' @param OrganizationId &#91;required&#93; The organization that contains the user.
+#' @param OrganizationId &#91;required&#93; The organization that contains the user to be deleted.
 #' @param UserId &#91;required&#93; The identifier of the user to be deleted.
 #'
 #' @section Request syntax:
@@ -446,7 +453,7 @@ workmail_delete_user <- function(OrganizationId, UserId) {
 #'
 #' Mark a user, group, or resource as no longer used in Amazon WorkMail.
 #' This action disassociates the mailbox and schedules it for clean-up.
-#' Amazon WorkMail keeps mailboxes for 30 days before they are permanently
+#' WorkMail keeps mailboxes for 30 days before they are permanently
 #' removed. The functionality in the console is *Disable*.
 #'
 #' @usage
@@ -454,7 +461,7 @@ workmail_delete_user <- function(OrganizationId, UserId) {
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization under which the Amazon WorkMail
 #' entity exists.
-#' @param EntityId &#91;required&#93; The identifier for the entity to be updated.
+#' @param EntityId &#91;required&#93; The identifier for the member (user or group) to be updated.
 #'
 #' @section Request syntax:
 #' ```
@@ -760,14 +767,16 @@ workmail_list_aliases <- function(OrganizationId, EntityId, NextToken = NULL, Ma
 
 #' Returns an overview of the members of a group
 #'
-#' Returns an overview of the members of a group.
+#' Returns an overview of the members of a group. Users and groups can be
+#' members of a group.
 #'
 #' @usage
 #' workmail_list_group_members(OrganizationId, GroupId, NextToken,
 #'   MaxResults)
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization under which the group exists.
-#' @param GroupId &#91;required&#93; The identifier for the group to which the members are associated.
+#' @param GroupId &#91;required&#93; The identifier for the group to which the members (users or groups) are
+#' associated.
 #' @param NextToken The token to use to retrieve the next page of results. The first call
 #' does not contain any tokens.
 #' @param MaxResults The maximum number of results to return in a single call.
@@ -841,17 +850,19 @@ workmail_list_groups <- function(OrganizationId, NextToken = NULL, MaxResults = 
 }
 .workmail$operations$list_groups <- workmail_list_groups
 
-#' Lists the mailbox permissions associated with a mailbox
+#' Lists the mailbox permissions associated with a user, group, or resource
+#' mailbox
 #'
-#' Lists the mailbox permissions associated with a mailbox.
+#' Lists the mailbox permissions associated with a user, group, or resource
+#' mailbox.
 #'
 #' @usage
 #' workmail_list_mailbox_permissions(OrganizationId, EntityId, NextToken,
 #'   MaxResults)
 #'
-#' @param OrganizationId &#91;required&#93; The identifier of the organization under which the entity (user or
-#' group) exists.
-#' @param EntityId &#91;required&#93; The identifier of the entity (user or group) for which to list mailbox
+#' @param OrganizationId &#91;required&#93; The identifier of the organization under which the user, group, or
+#' resource exists.
+#' @param EntityId &#91;required&#93; The identifier of the user, group, or resource for which to list mailbox
 #' permissions.
 #' @param NextToken The token to use to retrieve the next page of results. The first call
 #' does not contain any tokens.
@@ -1017,7 +1028,8 @@ workmail_list_resources <- function(OrganizationId, NextToken = NULL, MaxResults
 #' workmail_list_users(OrganizationId, NextToken, MaxResults)
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization under which the users exist.
-#' @param NextToken TBD
+#' @param NextToken The token to use to retrieve the next page of results. The first call
+#' does not contain any tokens.
 #' @param MaxResults The maximum number of results to return in a single call.
 #'
 #' @section Request syntax:
@@ -1048,20 +1060,20 @@ workmail_list_users <- function(OrganizationId, NextToken = NULL, MaxResults = N
 }
 .workmail$operations$list_users <- workmail_list_users
 
-#' Sets permissions for a user or group
+#' Sets permissions for a user, group, or resource
 #'
-#' Sets permissions for a user or group. This replaces any pre-existing
-#' permissions set for the entity.
+#' Sets permissions for a user, group, or resource. This replaces any
+#' pre-existing permissions.
 #'
 #' @usage
 #' workmail_put_mailbox_permissions(OrganizationId, EntityId, GranteeId,
 #'   PermissionValues)
 #'
-#' @param OrganizationId &#91;required&#93; The identifier of the organization under which the entity (user or
-#' group) exists.
-#' @param EntityId &#91;required&#93; The identifier of the entity (user or group) for which to update mailbox
-#' permissions.
-#' @param GranteeId &#91;required&#93; The identifier of the entity (user or group) to which to grant the
+#' @param OrganizationId &#91;required&#93; The identifier of the organization under which the user, group, or
+#' resource exists.
+#' @param EntityId &#91;required&#93; The identifier of the user, group, or resource for which to update
+#' mailbox permissions.
+#' @param GranteeId &#91;required&#93; The identifier of the user, group, or resource to which to grant the
 #' permissions.
 #' @param PermissionValues &#91;required&#93; The permissions granted to the grantee. SEND\\_AS allows the grantee to
 #' send email as the owner of the mailbox (the grantee is not mentioned on
@@ -1102,27 +1114,28 @@ workmail_put_mailbox_permissions <- function(OrganizationId, EntityId, GranteeId
 }
 .workmail$operations$put_mailbox_permissions <- workmail_put_mailbox_permissions
 
-#' Registers an existing and disabled user, group, or resource/entity for
-#' Amazon WorkMail use by associating a mailbox and calendaring
-#' capabilities
+#' Registers an existing and disabled user, group, or resource for Amazon
+#' WorkMail use by associating a mailbox and calendaring capabilities
 #'
-#' Registers an existing and disabled user, group, or resource/entity for
-#' Amazon WorkMail use by associating a mailbox and calendaring
-#' capabilities. It performs no change if the entity is enabled and fails
-#' if the entity is deleted. This operation results in the accumulation of
-#' costs. For more information, see
-#' [Pricing](http://aws.amazon.com/workmail/pricing). The equivalent
-#' console functionality for this operation is *Enable*. Users can either
-#' be created by calling the CreateUser API or they can be synchronized
-#' from your directory. For more information, see DeregisterFromWorkMail.
+#' Registers an existing and disabled user, group, or resource for Amazon
+#' WorkMail use by associating a mailbox and calendaring capabilities. It
+#' performs no change if the user, group, or resource is enabled and fails
+#' if the user, group, or resource is deleted. This operation results in
+#' the accumulation of costs. For more information, see
+#' [Pricing](https://aws.amazon.com//workmail/pricing). The equivalent
+#' console functionality for this operation is *Enable*.
+#' 
+#' Users can either be created by calling the CreateUser API operation or
+#' they can be synchronized from your directory. For more information, see
+#' DeregisterFromWorkMail.
 #'
 #' @usage
 #' workmail_register_to_work_mail(OrganizationId, EntityId, Email)
 #'
-#' @param OrganizationId &#91;required&#93; The identifier for the organization under which the Amazon WorkMail
-#' entity exists.
-#' @param EntityId &#91;required&#93; The identifier for the entity to be updated.
-#' @param Email &#91;required&#93; The email for the entity to be updated.
+#' @param OrganizationId &#91;required&#93; The identifier for the organization under which the user, group, or
+#' resource exists.
+#' @param EntityId &#91;required&#93; The identifier for the user, group, or resource to be updated.
+#' @param Email &#91;required&#93; The email for the user, group, or resource to be updated.
 #'
 #' @section Request syntax:
 #' ```
@@ -1192,18 +1205,18 @@ workmail_reset_password <- function(OrganizationId, UserId, Password) {
 }
 .workmail$operations$reset_password <- workmail_reset_password
 
-#' Updates the primary email for an entity
+#' Updates the primary email for a user, group, or resource
 #'
-#' Updates the primary email for an entity. The current email is moved into
-#' the list of aliases (or swapped between an existing alias and the
-#' current primary email) and the email provided in the input is promoted
-#' as the primary.
+#' Updates the primary email for a user, group, or resource. The current
+#' email is moved into the list of aliases (or swapped between an existing
+#' alias and the current primary email), and the email provided in the
+#' input is promoted as the primary.
 #'
 #' @usage
 #' workmail_update_primary_email_address(OrganizationId, EntityId, Email)
 #'
-#' @param OrganizationId &#91;required&#93; The organization that contains the entity to update.
-#' @param EntityId &#91;required&#93; The entity to update (user, group, or resource).
+#' @param OrganizationId &#91;required&#93; The organization that contains the user, group, or resource to update.
+#' @param EntityId &#91;required&#93; The user, group, or resource to update.
 #' @param Email &#91;required&#93; The value of the email to be updated as primary.
 #'
 #' @section Request syntax:
@@ -1236,9 +1249,10 @@ workmail_update_primary_email_address <- function(OrganizationId, EntityId, Emai
 
 #' Updates data for the resource
 #'
-#' Updates data for the resource. It must be preceded by a describe call in
-#' order to have the latest information. The dataset in the request should
-#' be the one expected when performing another describe call.
+#' Updates data for the resource. To have the latest information, it must
+#' be preceded by a DescribeResource call. The dataset in the request
+#' should be the one expected when performing another `DescribeResource`
+#' call.
 #'
 #' @usage
 #' workmail_update_resource(OrganizationId, ResourceId, Name,

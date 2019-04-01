@@ -11,11 +11,11 @@ mediaconvert_list_jobs(MaxResults, NextToken, Order, Queue, Status)
 
 \item{NextToken}{Use this string, provided with the response to a previous request, to request the next batch of jobs.}
 
-\item{Order}{}
+\item{Order}{When you request lists of resources, you can optionally specify whether they are sorted in ASCENDING or DESCENDING order. Default varies by resource.}
 
 \item{Queue}{Provide a queue name to get back only jobs from that queue.}
 
-\item{Status}{}
+\item{Status}{A job's status can be SUBMITTED, PROGRESSING, COMPLETE, CANCELED, or ERROR.}
 }
 \description{
 Retrieve a JSON array of up to twenty of your most recently created jobs. This array includes in-process, completed, and errored jobs. This will return the jobs themselves, not just a list of the jobs. To retrieve the twenty next most recent jobs, use the nextToken string returned with the array.

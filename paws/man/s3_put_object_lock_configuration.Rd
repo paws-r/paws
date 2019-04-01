@@ -16,7 +16,7 @@ bucket.}
 
 \item{RequestPayer}{}
 
-\item{Token}{}
+\item{Token}{A token to allow Object Lock to be enabled for an existing bucket.}
 
 \item{ContentMD5}{The MD5 hash for the request body.}
 }

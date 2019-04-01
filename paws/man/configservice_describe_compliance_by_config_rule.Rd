@@ -12,8 +12,7 @@ configservice_describe_compliance_by_config_rule(ConfigRuleNames,
 
 \item{ComplianceTypes}{Filters the results by compliance.
 
-The allowed values are \code{COMPLIANT}, \code{NON_COMPLIANT}, and
-\code{INSUFFICIENT_DATA}.}
+The allowed values are \code{COMPLIANT} and \code{NON_COMPLIANT}.}
 
 \item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
 the next page of results in a paginated response.}

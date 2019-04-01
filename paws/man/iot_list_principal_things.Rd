@@ -14,7 +14,9 @@ iot_list_principal_things(nextToken, maxResults, principal)
 \item{principal}{[required] The principal.}
 }
 \description{
-Lists the things associated with the specified principal.
+Lists the things associated with the specified principal. A principal
+can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito
+identities or federated identities.
 }
 \section{Request syntax}{
 \preformatted{iot$list_principal_things(

@@ -7,7 +7,7 @@
 efs_describe_mount_target_security_groups(MountTargetId)
 }
 \arguments{
-\item{MountTargetId}{[required] ID of the mount target whose security groups you want to retrieve.}
+\item{MountTargetId}{[required] The ID of the mount target whose security groups you want to retrieve.}
 }
 \description{
 Returns the security groups currently in effect for a mount target. This

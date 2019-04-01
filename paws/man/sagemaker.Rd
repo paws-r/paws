@@ -7,7 +7,7 @@
 sagemaker()
 }
 \description{
-Definition of the public APIs exposed by SageMaker
+Provides APIs for creating and managing Amazon SageMaker resources.
 }
 \section{Example}{
 \preformatted{sagemaker <- paws::sagemaker()

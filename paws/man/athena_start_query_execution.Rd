@@ -2,10 +2,10 @@
 % Please edit documentation in R/athena_operations.R
 \name{athena_start_query_execution}
 \alias{athena_start_query_execution}
-\title{Runs (executes) the SQL query statements contained in the Query string}
+\title{Runs the SQL query statements contained in the Query}
 \usage{
 athena_start_query_execution(QueryString, ClientRequestToken,
-  QueryExecutionContext, ResultConfiguration)
+  QueryExecutionContext, ResultConfiguration, WorkGroup)
 }
 \arguments{
 \item{QueryString}{[required] The SQL query statements to be executed.}
@@ -23,12 +23,19 @@ action will fail.}
 
 \item{QueryExecutionContext}{The database within which the query executes.}
 
-\item{ResultConfiguration}{[required] Specifies information about where and how to save the results of the
-query execution.}
+\item{ResultConfiguration}{Specifies information about where and how to save the results of the
+query execution. If the query runs in a workgroup, then workgroup's
+settings may override query settings. This affects the query results
+location. The workgroup settings override is specified in
+EnforceWorkGroupConfiguration (true/false) in the
+WorkGroupConfiguration. See
+WorkGroupConfiguration\$EnforceWorkGroupConfiguration.}
+
+\item{WorkGroup}{The name of the workgroup in which the query is being started.}
 }
 \description{
-Runs (executes) the SQL query statements contained in the \code{Query}
-string.
+Runs the SQL query statements contained in the \code{Query}. Requires you to
+have access to the workgroup in which the query ran.
 }
 \details{
 For code samples using the AWS SDK for Java, see \href{http://docs.aws.amazon.com/athena/latest/ug/code-samples.html}{Examples and Code Samples}
@@ -47,7 +54,8 @@ in the \emph{Amazon Athena User Guide}.
       EncryptionOption = "SSE_S3"|"SSE_KMS"|"CSE_KMS",
       KmsKey = "string"
     )
-  )
+  ),
+  WorkGroup = "string"
 )
 }
 }

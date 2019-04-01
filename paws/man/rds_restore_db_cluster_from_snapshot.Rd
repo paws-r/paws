@@ -9,7 +9,7 @@ rds_restore_db_cluster_from_snapshot(AvailabilityZones,
   DBSubnetGroupName, DatabaseName, OptionGroupName, VpcSecurityGroupIds,
   Tags, KmsKeyId, EnableIAMDatabaseAuthentication, BacktrackWindow,
   EnableCloudwatchLogsExports, EngineMode, ScalingConfiguration,
-  DBClusterParameterGroupName, DeletionProtection)
+  DBClusterParameterGroupName, DeletionProtection, CopyTagsToSnapshot)
 }
 \arguments{
 \item{AvailabilityZones}{Provides the list of Amazon EC2 Availability Zones that instances in the
@@ -105,7 +105,7 @@ Constraints:
 
 \item{EnableCloudwatchLogsExports}{The list of logs that the restored DB cluster is to export to Amazon
 CloudWatch Logs. The values in the list depend on the DB engine being
-used. For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
+used. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
 in the \emph{Amazon Aurora User Guide}.}
 
 \item{EngineMode}{The DB engine mode of the DB cluster, either \code{provisioned},
@@ -130,6 +130,9 @@ parameter group.
 \item{DeletionProtection}{Indicates if the DB cluster should have deletion protection enabled. The
 database can't be deleted when this value is set to true. The default
 is false.}
+
+\item{CopyTagsToSnapshot}{True to copy all tags from the restored DB cluster to snapshots of the
+restored DB cluster, and otherwise false. The default is false.}
 }
 \description{
 Creates a new DB cluster from a DB snapshot or DB cluster snapshot.
@@ -144,8 +147,10 @@ from the source DB cluster restore point with the same configuration as
 the original source DB cluster, except that the new DB cluster is
 created with the default security group.
 
-For more information on Amazon Aurora, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
+For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
 in the \emph{Amazon Aurora User Guide.}
+
+This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
 \preformatted{rds$restore_db_cluster_from_snapshot(
@@ -183,7 +188,8 @@ in the \emph{Amazon Aurora User Guide.}
     SecondsUntilAutoPause = 123
   ),
   DBClusterParameterGroupName = "string",
-  DeletionProtection = TRUE|FALSE
+  DeletionProtection = TRUE|FALSE,
+  CopyTagsToSnapshot = TRUE|FALSE
 )
 }
 }

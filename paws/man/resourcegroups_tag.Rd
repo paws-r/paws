@@ -2,7 +2,7 @@
 % Please edit documentation in R/resourcegroups_operations.R
 \name{resourcegroups_tag}
 \alias{resourcegroups_tag}
-\title{Adds specified tags to a resource with the specified ARN}
+\title{Adds tags to a resource group with the specified ARN}
 \usage{
 resourcegroups_tag(Arn, Tags)
 }
@@ -15,8 +15,8 @@ map of key-value pairs. Tag keys can have a maximum character length of
 characters.}
 }
 \description{
-Adds specified tags to a resource with the specified ARN. Existing tags
-on a resource are not changed if they are not specified in the request
+Adds tags to a resource group with the specified ARN. Existing tags on a
+resource group are not changed if they are not specified in the request
 parameters.
 }
 \section{Request syntax}{

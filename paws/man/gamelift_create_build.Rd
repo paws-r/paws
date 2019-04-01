@@ -36,25 +36,22 @@ Amazon Simple Storage Service (Amazon S3) location.
 }
 \details{
 Game server binaries must be combined into a \code{.zip} file for use with
-Amazon GameLift. See \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html}{Uploading Your Game}
-for more information.
+Amazon GameLift.
 
 To create new builds quickly and easily, use the AWS CLI command
 \strong{\href{https://docs.aws.amazon.com/cli/latest/reference/gamelift/upload-build.html}{upload-build}}
 . This helper command uploads your build and creates a new build record
-in one step, and automatically handles the necessary permissions. See
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html}{Upload Build Files to Amazon GameLift}
-for more help.
+in one step, and automatically handles the necessary permissions.
 
 The \code{CreateBuild} operation should be used only when you need to
 manually upload your build files, as in the following scenarios:
 \itemize{
 \item Store a build file in an Amazon S3 bucket under your own AWS
 account. To use this option, you must first give Amazon GameLift
-access to that Amazon S3 bucket. See \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build}{Create a Build with Files in Amazon S3}
-for detailed help. To create a new build record using files in your
-Amazon S3 bucket, call \code{CreateBuild} and specify a build name,
-operating system, and the storage location of your game build.
+access to that Amazon S3 bucket. To create a new build record using
+files in your Amazon S3 bucket, call \code{CreateBuild} and specify a
+build name, operating system, and the storage location of your game
+build.
 \item Upload a build file directly to Amazon GameLift's Amazon S3
 account. To use this option, you first call \code{CreateBuild} with a
 build name and operating system. This action creates a new build
@@ -69,6 +66,14 @@ If successful, this operation creates a new build record with a unique
 build ID and places it in \code{INITIALIZED} status. You can use
 DescribeBuild to check the status of your build. A build must be in
 \code{READY} status before it can be used to create fleets.
+
+\strong{Learn more}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html}{Uploading Your Game}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build}{Create a Build with Files in Amazon S3}
+
+\strong{Related operations}
 \itemize{
 \item CreateBuild
 \item ListBuilds

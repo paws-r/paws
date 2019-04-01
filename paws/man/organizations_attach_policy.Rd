@@ -50,9 +50,10 @@ OU and in any child OUs.
 only that account.
 }
 
-SCPs essentially are permission "filters". When you attach one SCP
-to a higher level root or OU, and you also attach a different SCP to
-a child OU or to an account, the child policy can further restrict
+SCPs are JSON policies that specify the maximum permissions for an
+organization or organizational unit (OU). When you attach one SCP to
+a higher level root or OU, and you also attach a different SCP to a
+child OU or to an account, the child policy can further restrict
 only the permissions that pass through the parent filter and are
 available to the child. An SCP that is attached to a child cannot
 grant a permission that is not already granted by the parent. For
@@ -73,7 +74,7 @@ policy, you must replace it with a policy that specifies the
 permissions that you want to allow in that OU or account.
 
 For more information about how Organizations policies permissions
-work, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html}{Using Service Control Policies}
+work, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html}{Using Service Control Policies}
 in the \emph{AWS Organizations User Guide}.
 
 This operation can be called only from the organization's master

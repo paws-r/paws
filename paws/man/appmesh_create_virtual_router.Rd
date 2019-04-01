@@ -2,9 +2,9 @@
 % Please edit documentation in R/appmesh_operations.R
 \name{appmesh_create_virtual_router}
 \alias{appmesh_create_virtual_router}
-\title{Creates a new virtual router within a service mesh}
+\title{Creates a virtual router within a service mesh}
 \usage{
-appmesh_create_virtual_router(clientToken, meshName, spec,
+appmesh_create_virtual_router(clientToken, meshName, spec, tags,
   virtualRouterName)
 }
 \arguments{
@@ -12,28 +12,48 @@ appmesh_create_virtual_router(clientToken, meshName, spec,
 idempotency of the request. Up to 36 letters, numbers, hyphens, and
 underscores are allowed.}
 
-\item{meshName}{[required] The name of the service mesh in which to create the virtual router.}
+\item{meshName}{[required] The name of the service mesh to create the virtual router in.}
 
 \item{spec}{[required] The virtual router specification to apply.}
+
+\item{tags}{Optional metadata that you can apply to the virtual router to assist
+with categorization and organization. Each tag consists of a key and an
+optional value, both of which you define. Tag keys can have a maximum
+character length of 128 characters, and tag values can have a maximum
+length of 256 characters.}
 
 \item{virtualRouterName}{[required] The name to use for the virtual router.}
 }
 \description{
-Creates a new virtual router within a service mesh.
+Creates a virtual router within a service mesh.
 }
 \details{
-Virtual routers handle traffic for one or more service names within your
-mesh. After you create your virtual router, create and associate routes
-for your virtual router that direct incoming requests to different
-virtual nodes.
+Any inbound traffic that your virtual router expects should be specified
+as a \code{listener}.
+
+Virtual routers handle traffic for one or more virtual services within
+your mesh. After you create your virtual router, create and associate
+routes for your virtual router that direct incoming requests to
+different virtual nodes.
 }
 \section{Request syntax}{
 \preformatted{appmesh$create_virtual_router(
   clientToken = "string",
   meshName = "string",
   spec = list(
-    serviceNames = list(
-      "string"
+    listeners = list(
+      list(
+        portMapping = list(
+          port = 123,
+          protocol = "http"|"tcp"
+        )
+      )
+    )
+  ),
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
     )
   ),
   virtualRouterName = "string"

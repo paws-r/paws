@@ -34,6 +34,11 @@ retrieve results as a set of sequential pages. If successful, a
 collection of event log entries matching the request are returned.
 }
 \details{
+\strong{Learn more}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Working with Fleets}.
+
+\strong{Related operations}
 \itemize{
 \item CreateFleet
 \item ListFleets

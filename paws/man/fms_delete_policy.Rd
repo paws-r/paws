@@ -10,9 +10,20 @@ fms_delete_policy(PolicyId, DeleteAllPolicyResources)
 \item{PolicyId}{[required] The ID of the policy that you want to delete. \code{PolicyId} is returned by
 \code{PutPolicy} and by \code{ListPolicies}.}
 
-\item{DeleteAllPolicyResources}{If \code{True}, the request will also delete all web ACLs in this policy.
-Associated resources will no longer be protected by web ACLs in this
-policy.}
+\item{DeleteAllPolicyResources}{If \code{True}, the request will also perform a clean-up process that will:
+\itemize{
+\item Delete rule groups created by AWS Firewall Manager
+\item Remove web ACLs from in-scope resources
+\item Delete web ACLs that contain no rules or rule groups
+}
+
+After the cleanup, in-scope resources will no longer be protected by web
+ACLs in this policy. Protection of out-of-scope resources will remain
+unchanged. Scope is determined by tags and accounts associated with the
+policy. When creating the policy, if you specified that only resources
+in specific accounts or with specific tags be protected by the policy,
+those resources are in-scope. All others are out of scope. If you did
+not specify tags or accounts, all resources are in-scope.}
 }
 \description{
 Permanently deletes an AWS Firewall Manager policy.

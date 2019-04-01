@@ -4,10 +4,12 @@
 \alias{iot1clickdevicesservice_finalize_device_claim}
 \title{Given a device ID, finalizes the claim request for the associated device}
 \usage{
-iot1clickdevicesservice_finalize_device_claim(DeviceId)
+iot1clickdevicesservice_finalize_device_claim(DeviceId, Tags)
 }
 \arguments{
 \item{DeviceId}{[required] The unique identifier of the device.}
+
+\item{Tags}{The tags to be assigned to the AWS IoT 1-Click device.}
 }
 \description{
 Given a device ID, finalizes the claim request for the associated
@@ -20,7 +22,10 @@ device event can be published by simply clicking the device.
 }
 \section{Request syntax}{
 \preformatted{iot1clickdevicesservice$finalize_device_claim(
-  DeviceId = "string"
+  DeviceId = "string",
+  Tags = list(
+    "string"
+  )
 )
 }
 }

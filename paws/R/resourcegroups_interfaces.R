@@ -5,49 +5,49 @@ NULL
 
 .resourcegroups$create_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ResourceQuery = structure(list(Type = structure(logical(0), tags = list(        type = "string")), Query = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(        type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ResourceQuery = structure(list(Type = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .resourcegroups$create_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Group = structure(list(GroupArn = structure(logical(0), tags = list(    type = "string")), Name = structure(logical(0), tags = list(    type = "string")), Description = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure")), ResourceQuery = structure(list(    Type = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure")), Tags = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "map"))), tags = list(    type = "structure"))
+  shape <- structure(list(Group = structure(list(GroupArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ResourceQuery = structure(list(Type = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .resourcegroups$delete_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GroupName = structure(logical(0), tags = list(    location = "uri", locationName = "GroupName", type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(GroupName = structure(logical(0), tags = list(location = "uri", locationName = "GroupName", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .resourcegroups$delete_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Group = structure(list(GroupArn = structure(logical(0), tags = list(    type = "string")), Name = structure(logical(0), tags = list(    type = "string")), Description = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(Group = structure(list(GroupArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .resourcegroups$get_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GroupName = structure(logical(0), tags = list(    location = "uri", locationName = "GroupName", type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(GroupName = structure(logical(0), tags = list(location = "uri", locationName = "GroupName", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .resourcegroups$get_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Group = structure(list(GroupArn = structure(logical(0), tags = list(    type = "string")), Name = structure(logical(0), tags = list(    type = "string")), Description = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(Group = structure(list(GroupArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .resourcegroups$get_group_query_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GroupName = structure(logical(0), tags = list(    location = "uri", locationName = "GroupName", type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(GroupName = structure(logical(0), tags = list(location = "uri", locationName = "GroupName", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .resourcegroups$get_group_query_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GroupQuery = structure(list(GroupName = structure(logical(0), tags = list(    type = "string")), ResourceQuery = structure(list(Type = structure(logical(0), tags = list(    type = "string")), Query = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(GroupQuery = structure(list(GroupName = structure(logical(0), tags = list(type = "string")), ResourceQuery = structure(list(Type = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -59,90 +59,90 @@ NULL
 
 .resourcegroups$get_tags_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(        type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .resourcegroups$list_group_resources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GroupName = structure(logical(0), tags = list(    location = "uri", locationName = "GroupName", type = "string")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(        type = "string")), Values = structure(list(structure(logical(0), tags = list(        type = "string"))), tags = list(type = "list"))), tags = list(        type = "structure"))), tags = list(type = "list")), MaxResults = structure(logical(0), tags = list(        location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(        location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(GroupName = structure(logical(0), tags = list(location = "uri", locationName = "GroupName", type = "string")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .resourcegroups$list_group_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceIdentifiers = structure(list(structure(list(    ResourceArn = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(    type = "string")), QueryErrors = structure(list(structure(list(    ErrorCode = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(ResourceIdentifiers = structure(list(structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), QueryErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .resourcegroups$list_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(    type = "string")), Values = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))), tags = list(type = "list")), MaxResults = structure(logical(0), tags = list(    location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .resourcegroups$list_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GroupIdentifiers = structure(list(structure(list(    GroupName = structure(logical(0), tags = list(type = "string")), GroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))), tags = list(type = "list")), Groups = structure(list(    structure(list(GroupArn = structure(logical(0), tags = list(        type = "string")), Name = structure(logical(0), tags = list(        type = "string")), Description = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(    deprecated = TRUE, deprecatedMessage = "This field is deprecated, use GroupIdentifiers instead.", type = "list")), NextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(GroupIdentifiers = structure(list(structure(list(GroupName = structure(logical(0), tags = list(type = "string")), GroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Groups = structure(list(structure(list(GroupArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(deprecated = TRUE, deprecatedMessage = "This field is deprecated, use GroupIdentifiers instead.", type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .resourcegroups$search_resources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceQuery = structure(list(Type = structure(logical(0), tags = list(    type = "string")), Query = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure")), MaxResults = structure(logical(0), tags = list(    type = "integer")), NextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ResourceQuery = structure(list(Type = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .resourcegroups$search_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceIdentifiers = structure(list(structure(list(    ResourceArn = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(    type = "string")), QueryErrors = structure(list(structure(list(    ErrorCode = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(ResourceIdentifiers = structure(list(structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), QueryErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .resourcegroups$tag_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(location = "uri", locationName = "Arn", type = "string")), Tags = structure(list(    structure(logical(0), tags = list(type = "string"))), tags = list(    type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(location = "uri", locationName = "Arn", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .resourcegroups$tag_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(        type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .resourcegroups$untag_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(location = "uri", locationName = "Arn", type = "string")), Keys = structure(list(    structure(logical(0), tags = list(type = "string"))), tags = list(    type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(location = "uri", locationName = "Arn", type = "string")), Keys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .resourcegroups$untag_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), Keys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(        type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), Keys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .resourcegroups$update_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GroupName = structure(logical(0), tags = list(    location = "uri", locationName = "GroupName", type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(GroupName = structure(logical(0), tags = list(location = "uri", locationName = "GroupName", type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .resourcegroups$update_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Group = structure(list(GroupArn = structure(logical(0), tags = list(    type = "string")), Name = structure(logical(0), tags = list(    type = "string")), Description = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(Group = structure(list(GroupArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .resourcegroups$update_group_query_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GroupName = structure(logical(0), tags = list(    location = "uri", locationName = "GroupName", type = "string")), ResourceQuery = structure(list(Type = structure(logical(0), tags = list(        type = "string")), Query = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(GroupName = structure(logical(0), tags = list(location = "uri", locationName = "GroupName", type = "string")), ResourceQuery = structure(list(Type = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .resourcegroups$update_group_query_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GroupQuery = structure(list(GroupName = structure(logical(0), tags = list(    type = "string")), ResourceQuery = structure(list(Type = structure(logical(0), tags = list(    type = "string")), Query = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(GroupQuery = structure(list(GroupName = structure(logical(0), tags = list(type = "string")), ResourceQuery = structure(list(Type = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }

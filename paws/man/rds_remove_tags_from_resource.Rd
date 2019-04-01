@@ -9,7 +9,7 @@ rds_remove_tags_from_resource(ResourceName, TagKeys)
 \arguments{
 \item{ResourceName}{[required] The Amazon RDS resource that the tags are removed from. This value is an
 Amazon Resource Name (ARN). For information about creating an ARN, see
-\href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an ARN for Amazon RDS}
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an ARN for Amazon RDS}
 in the \emph{Amazon RDS User Guide.}}
 
 \item{TagKeys}{[required] The tag key (name) of the tag to be removed.}
@@ -18,7 +18,7 @@ in the \emph{Amazon RDS User Guide.}}
 Removes metadata tags from an Amazon RDS resource.
 }
 \details{
-For an overview on tagging an Amazon RDS resource, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html}{Tagging Amazon RDS Resources}
+For an overview on tagging an Amazon RDS resource, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html}{Tagging Amazon RDS Resources}
 in the \emph{Amazon RDS User Guide.}
 }
 \section{Request syntax}{

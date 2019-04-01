@@ -10,11 +10,19 @@ rekognition_compare_faces(SourceImage, TargetImage, SimilarityThreshold)
 \arguments{
 \item{SourceImage}{[required] The input image as base64-encoded bytes or an S3 object. If you use the
 AWS CLI to call Amazon Rekognition operations, passing base64-encoded
-image bytes is not supported.}
+image bytes is not supported.
+
+If you are using an AWS SDK to call Amazon Rekognition, you might not
+need to base64-encode image bytes passed using the \code{Bytes} field. For
+more information, see Images in the Amazon Rekognition developer guide.}
 
 \item{TargetImage}{[required] The target image as base64-encoded bytes or an S3 object. If you use the
 AWS CLI to call Amazon Rekognition operations, passing base64-encoded
-image bytes is not supported.}
+image bytes is not supported.
+
+If you are using an AWS SDK to call Amazon Rekognition, you might not
+need to base64-encode image bytes passed using the \code{Bytes} field. For
+more information, see Images in the Amazon Rekognition developer guide.}
 
 \item{SimilarityThreshold}{The minimum level of confidence in the face matches that a match must
 meet to be included in the \code{FaceMatches} array.}

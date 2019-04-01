@@ -2,8 +2,9 @@
 % Please edit documentation in R/lightsail_operations.R
 \name{lightsail_create_domain_entry}
 \alias{lightsail_create_domain_entry}
-\title{Creates one of the following entry records associated with the domain: A
-record, CNAME record, TXT record, or MX record}
+\title{Creates one of the following entry records associated with the domain:
+Address (A), canonical name (CNAME), mail exchanger (MX), name server
+(NS), start of authority (SOA), service locator (SRV), or text (TXT)}
 \usage{
 lightsail_create_domain_entry(domainName, domainEntry)
 }
@@ -15,8 +16,9 @@ domain entry.}
 entry request.}
 }
 \description{
-Creates one of the following entry records associated with the domain: A
-record, CNAME record, TXT record, or MX record.
+Creates one of the following entry records associated with the domain:
+Address (A), canonical name (CNAME), mail exchanger (MX), name server
+(NS), start of authority (SOA), service locator (SRV), or text (TXT).
 }
 \details{
 The \code{create domain entry} operation supports tag-based access control

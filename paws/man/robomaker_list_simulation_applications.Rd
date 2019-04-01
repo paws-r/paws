@@ -24,13 +24,15 @@ purposes.}
 used, \code{ListSimulationApplications} only returns \code{maxResults} results in
 a single page along with a \code{nextToken} response element. The remaining
 results of the initial request can be seen by sending another
-\code{ListFleets} request with the returned \code{nextToken} value. This value can
-be between 1 and 100. If this parameter is not used, then
-\code{ListSimulationApplications} returns up to 100 results and a \code{nextToken}
-value if applicable.}
+\code{ListSimulationApplications} request with the returned \code{nextToken}
+value. This value can be between 1 and 100. If this parameter is not
+used, then \code{ListSimulationApplications} returns up to 100 results and a
+\code{nextToken} value if applicable.}
 
-\item{filters}{Optional list of filters to limit results. The only valid filter name is
-\code{name}.}
+\item{filters}{Optional list of filters to limit results.
+
+The filter name \code{name} is supported. When filtering, you must use the
+complete value of the filtered item. You can use up to three filters.}
 }
 \description{
 Returns a list of simulation applications. You can optionally provide

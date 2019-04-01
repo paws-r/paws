@@ -29,6 +29,13 @@ NULL
 #'           InputSwitchSettings = list(
 #'             InputAttachmentNameReference = "string"
 #'           ),
+#'           PauseStateSettings = list(
+#'             Pipelines = list(
+#'               list(
+#'                 PipelineId = "PIPELINE_0"|"PIPELINE_1"
+#'               )
+#'             )
+#'           ),
 #'           Scte35ReturnToNetworkSettings = list(
 #'             SpliceEventId = 123
 #'           ),
@@ -149,6 +156,11 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'   Destinations = list(
 #'     list(
 #'       Id = "string",
+#'       MediaPackageSettings = list(
+#'         list(
+#'           ChannelId = "string"
+#'         )
+#'       ),
 #'       Settings = list(
 #'         list(
 #'           PasswordParam = "string",
@@ -360,6 +372,7 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'         InputLossImageType = "COLOR"|"SLATE",
 #'         RepeatFrameMsec = 123
 #'       ),
+#'       OutputLockingMode = "EPOCH_LOCKING"|"PIPELINE_LOCKING",
 #'       OutputTimingSource = "INPUT_CLOCK"|"SYSTEM_CLOCK",
 #'       SupportLowFramerateInputs = "DISABLED"|"ENABLED"
 #'     ),
@@ -465,6 +478,11 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'             TimedMetadataId3Period = 123,
 #'             TimestampDeltaMilliseconds = 123,
 #'             TsFileMode = "SEGMENTED_FILES"|"SINGLE_FILE"
+#'           ),
+#'           MediaPackageGroupSettings = list(
+#'             Destination = list(
+#'               DestinationRefId = "string"
+#'             )
 #'           ),
 #'           MsSmoothGroupSettings = list(
 #'             AcquisitionPointId = "string",
@@ -617,6 +635,7 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'                 NameModifier = "string",
 #'                 SegmentModifier = "string"
 #'               ),
+#'               MediaPackageOutputSettings = list(),
 #'               MsSmoothOutputSettings = list(
 #'                 NameModifier = "string"
 #'               ),
@@ -882,7 +901,7 @@ medialive_create_channel <- function(Destinations = NULL, EncoderSettings = NULL
 #'
 #' @usage
 #' medialive_create_input(Destinations, InputSecurityGroups,
-#'   MediaConnectFlows, Name, RequestId, RoleArn, Sources, Tags, Type)
+#'   MediaConnectFlows, Name, RequestId, RoleArn, Sources, Tags, Type, Vpc)
 #'
 #' @param Destinations Destination settings for PUSH type inputs.
 #' @param InputSecurityGroups A list of security groups referenced by IDs to attach to the input.
@@ -898,6 +917,7 @@ medialive_create_channel <- function(Destinations = NULL, EncoderSettings = NULL
 #' Only specify sources for PULL type Inputs. Leave Destinations empty.
 #' @param Tags A collection of key-value pairs.
 #' @param Type 
+#' @param Vpc 
 #'
 #' @section Request syntax:
 #' ```
@@ -928,21 +948,29 @@ medialive_create_channel <- function(Destinations = NULL, EncoderSettings = NULL
 #'   Tags = list(
 #'     "string"
 #'   ),
-#'   Type = "UDP_PUSH"|"RTP_PUSH"|"RTMP_PUSH"|"RTMP_PULL"|"URL_PULL"|"MP4_FILE"|"MEDIACONNECT"
+#'   Type = "UDP_PUSH"|"RTP_PUSH"|"RTMP_PUSH"|"RTMP_PULL"|"URL_PULL"|"MP4_FILE"|"MEDIACONNECT",
+#'   Vpc = list(
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     SubnetIds = list(
+#'       "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname medialive_create_input
-medialive_create_input <- function(Destinations = NULL, InputSecurityGroups = NULL, MediaConnectFlows = NULL, Name = NULL, RequestId = NULL, RoleArn = NULL, Sources = NULL, Tags = NULL, Type = NULL) {
+medialive_create_input <- function(Destinations = NULL, InputSecurityGroups = NULL, MediaConnectFlows = NULL, Name = NULL, RequestId = NULL, RoleArn = NULL, Sources = NULL, Tags = NULL, Type = NULL, Vpc = NULL) {
   op <- new_operation(
     name = "CreateInput",
     http_method = "POST",
     http_path = "/prod/inputs",
     paginator = list()
   )
-  input <- .medialive$create_input_input(Destinations = Destinations, InputSecurityGroups = InputSecurityGroups, MediaConnectFlows = MediaConnectFlows, Name = Name, RequestId = RequestId, RoleArn = RoleArn, Sources = Sources, Tags = Tags, Type = Type)
+  input <- .medialive$create_input_input(Destinations = Destinations, InputSecurityGroups = InputSecurityGroups, MediaConnectFlows = MediaConnectFlows, Name = Name, RequestId = RequestId, RoleArn = RoleArn, Sources = Sources, Tags = Tags, Type = Type, Vpc = Vpc)
   output <- .medialive$create_input_output()
   svc <- .medialive$service()
   request <- new_request(svc, op, input, output)
@@ -1817,6 +1845,11 @@ medialive_stop_channel <- function(ChannelId) {
 #'   Destinations = list(
 #'     list(
 #'       Id = "string",
+#'       MediaPackageSettings = list(
+#'         list(
+#'           ChannelId = "string"
+#'         )
+#'       ),
 #'       Settings = list(
 #'         list(
 #'           PasswordParam = "string",
@@ -2028,6 +2061,7 @@ medialive_stop_channel <- function(ChannelId) {
 #'         InputLossImageType = "COLOR"|"SLATE",
 #'         RepeatFrameMsec = 123
 #'       ),
+#'       OutputLockingMode = "EPOCH_LOCKING"|"PIPELINE_LOCKING",
 #'       OutputTimingSource = "INPUT_CLOCK"|"SYSTEM_CLOCK",
 #'       SupportLowFramerateInputs = "DISABLED"|"ENABLED"
 #'     ),
@@ -2133,6 +2167,11 @@ medialive_stop_channel <- function(ChannelId) {
 #'             TimedMetadataId3Period = 123,
 #'             TimestampDeltaMilliseconds = 123,
 #'             TsFileMode = "SEGMENTED_FILES"|"SINGLE_FILE"
+#'           ),
+#'           MediaPackageGroupSettings = list(
+#'             Destination = list(
+#'               DestinationRefId = "string"
+#'             )
 #'           ),
 #'           MsSmoothGroupSettings = list(
 #'             AcquisitionPointId = "string",
@@ -2285,6 +2324,7 @@ medialive_stop_channel <- function(ChannelId) {
 #'                 NameModifier = "string",
 #'                 SegmentModifier = "string"
 #'               ),
+#'               MediaPackageOutputSettings = list(),
 #'               MsSmoothOutputSettings = list(
 #'                 NameModifier = "string"
 #'               ),

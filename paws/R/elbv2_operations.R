@@ -140,10 +140,10 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
 #' settings, each call succeeds.
 #' 
 #' For more information, see [Listeners for Your Application Load
-#' Balancers](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html)
+#' Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html)
 #' in the *Application Load Balancers Guide* and [Listeners for Your
 #' Network Load
-#' Balancers](http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html)
+#' Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html)
 #' in the *Network Load Balancers Guide*.
 #'
 #' @usage
@@ -214,7 +214,8 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
 #'         AuthenticationRequestExtraParams = list(
 #'           "string"
 #'         ),
-#'         OnUnauthenticatedRequest = "deny"|"allow"|"authenticate"
+#'         OnUnauthenticatedRequest = "deny"|"allow"|"authenticate",
+#'         UseExistingClientSecret = TRUE|FALSE
 #'       ),
 #'       AuthenticateCognitoConfig = list(
 #'         UserPoolArn = "string",
@@ -320,10 +321,10 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol, Port, SslPolicy = N
 #' DeleteLoadBalancer.
 #' 
 #' For limit information, see [Limits for Your Application Load
-#' Balancer](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html)
+#' Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html)
 #' in the *Application Load Balancers Guide* and [Limits for Your Network
 #' Load
-#' Balancer](http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html)
+#' Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html)
 #' in the *Network Load Balancers Guide*.
 #' 
 #' This operation is idempotent, which means that it completes at most one
@@ -331,9 +332,9 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol, Port, SslPolicy = N
 #' settings, each call succeeds.
 #' 
 #' For more information, see [Application Load
-#' Balancers](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html)
+#' Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html)
 #' in the *Application Load Balancers Guide* and [Network Load
-#' Balancers](http://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html)
+#' Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html)
 #' in the *Network Load Balancers Guide*.
 #'
 #' @usage
@@ -463,7 +464,7 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
 #' highest value. When the conditions for a rule are met, its actions are
 #' performed. If the conditions for no rules are met, the actions for the
 #' default rule are performed. For more information, see [Listener
-#' Rules](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules)
+#' Rules](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules)
 #' in the *Application Load Balancers Guide*.
 #' 
 #' To view your current rules, use DescribeRules. To update a rule, use
@@ -536,6 +537,40 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
 #'       Field = "string",
 #'       Values = list(
 #'         "string"
+#'       ),
+#'       HostHeaderConfig = list(
+#'         Values = list(
+#'           "string"
+#'         )
+#'       ),
+#'       PathPatternConfig = list(
+#'         Values = list(
+#'           "string"
+#'         )
+#'       ),
+#'       HttpHeaderConfig = list(
+#'         HttpHeaderName = "string",
+#'         Values = list(
+#'           "string"
+#'         )
+#'       ),
+#'       QueryStringConfig = list(
+#'         Values = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         )
+#'       ),
+#'       HttpRequestMethodConfig = list(
+#'         Values = list(
+#'           "string"
+#'         )
+#'       ),
+#'       SourceIpConfig = list(
+#'         Values = list(
+#'           "string"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -557,7 +592,8 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
 #'         AuthenticationRequestExtraParams = list(
 #'           "string"
 #'         ),
-#'         OnUnauthenticatedRequest = "deny"|"allow"|"authenticate"
+#'         OnUnauthenticatedRequest = "deny"|"allow"|"authenticate",
+#'         UseExistingClientSecret = TRUE|FALSE
 #'       ),
 #'       AuthenticateCognitoConfig = list(
 #'         UserPoolArn = "string",
@@ -651,10 +687,10 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions) {
 #' settings, each call succeeds.
 #' 
 #' For more information, see [Target Groups for Your Application Load
-#' Balancers](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html)
+#' Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html)
 #' in the *Application Load Balancers Guide* or [Target Groups for Your
 #' Network Load
-#' Balancers](http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html)
+#' Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html)
 #' in the *Network Load Balancers Guide*.
 #'
 #' @usage
@@ -1024,10 +1060,10 @@ elbv2_deregister_targets <- function(TargetGroupArn, Targets) {
 #' AWS account.
 #' 
 #' For more information, see [Limits for Your Application Load
-#' Balancers](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html)
+#' Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html)
 #' in the *Application Load Balancer Guide* or [Limits for Your Network
 #' Load
-#' Balancers](http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html)
+#' Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html)
 #' in the *Network Load Balancers Guide*.
 #'
 #' @usage
@@ -1167,9 +1203,9 @@ elbv2_describe_listeners <- function(LoadBalancerArn = NULL, ListenerArns = NULL
 #' Network Load Balancer.
 #' 
 #' For more information, see [Load Balancer
-#' Attributes](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html#load-balancer-attributes)
+#' Attributes](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html#load-balancer-attributes)
 #' in the *Application Load Balancers Guide* or [Load Balancer
-#' Attributes](http://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html#load-balancer-attributes)
+#' Attributes](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html#load-balancer-attributes)
 #' in the *Network Load Balancers Guide*.
 #'
 #' @usage
@@ -1328,7 +1364,7 @@ elbv2_describe_rules <- function(ListenerArn = NULL, RuleArns = NULL, Marker = N
 #' negotiation.
 #' 
 #' For more information, see [Security
-#' Policies](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies)
+#' Policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies)
 #' in the *Application Load Balancers Guide*.
 #'
 #' @usage
@@ -1429,9 +1465,9 @@ elbv2_describe_tags <- function(ResourceArns) {
 #' Describes the attributes for the specified target group.
 #' 
 #' For more information, see [Target Group
-#' Attributes](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#target-group-attributes)
+#' Attributes](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#target-group-attributes)
 #' in the *Application Load Balancers Guide* or [Target Group
-#' Attributes](http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#target-group-attributes)
+#' Attributes](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#target-group-attributes)
 #' in the *Network Load Balancers Guide*.
 #'
 #' @usage
@@ -1620,7 +1656,7 @@ elbv2_describe_target_health <- function(TargetGroupArn, Targets = NULL) {
 #' Load Balancers support the TCP and TLS protocols.
 #' @param SslPolicy \[HTTPS and TLS listeners\] The security policy that defines which
 #' protocols and ciphers are supported. For more information, see [Security
-#' Policies](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies)
+#' Policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies)
 #' in the *Application Load Balancers Guide*.
 #' @param Certificates \[HTTPS and TLS listeners\] The default SSL server certificate. You must
 #' provide exactly one certificate. Set `CertificateArn` to the certificate
@@ -1678,7 +1714,8 @@ elbv2_describe_target_health <- function(TargetGroupArn, Targets = NULL) {
 #'         AuthenticationRequestExtraParams = list(
 #'           "string"
 #'         ),
-#'         OnUnauthenticatedRequest = "deny"|"allow"|"authenticate"
+#'         OnUnauthenticatedRequest = "deny"|"allow"|"authenticate",
+#'         UseExistingClientSecret = TRUE|FALSE
 #'       ),
 #'       AuthenticateCognitoConfig = list(
 #'         UserPoolArn = "string",
@@ -1920,6 +1957,40 @@ elbv2_modify_load_balancer_attributes <- function(LoadBalancerArn, Attributes) {
 #'       Field = "string",
 #'       Values = list(
 #'         "string"
+#'       ),
+#'       HostHeaderConfig = list(
+#'         Values = list(
+#'           "string"
+#'         )
+#'       ),
+#'       PathPatternConfig = list(
+#'         Values = list(
+#'           "string"
+#'         )
+#'       ),
+#'       HttpHeaderConfig = list(
+#'         HttpHeaderName = "string",
+#'         Values = list(
+#'           "string"
+#'         )
+#'       ),
+#'       QueryStringConfig = list(
+#'         Values = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         )
+#'       ),
+#'       HttpRequestMethodConfig = list(
+#'         Values = list(
+#'           "string"
+#'         )
+#'       ),
+#'       SourceIpConfig = list(
+#'         Values = list(
+#'           "string"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -1940,7 +2011,8 @@ elbv2_modify_load_balancer_attributes <- function(LoadBalancerArn, Attributes) {
 #'         AuthenticationRequestExtraParams = list(
 #'           "string"
 #'         ),
-#'         OnUnauthenticatedRequest = "deny"|"allow"|"authenticate"
+#'         OnUnauthenticatedRequest = "deny"|"allow"|"authenticate",
+#'         UseExistingClientSecret = TRUE|FALSE
 #'       ),
 #'       AuthenticateCognitoConfig = list(
 #'         UserPoolArn = "string",

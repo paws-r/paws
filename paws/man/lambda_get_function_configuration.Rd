@@ -2,7 +2,7 @@
 % Please edit documentation in R/lambda_operations.R
 \name{lambda_get_function_configuration}
 \alias{lambda_get_function_configuration}
-\title{Returns a the version-specific settings of a Lambda function or version}
+\title{Returns the version-specific settings of a Lambda function or version}
 \usage{
 lambda_get_function_configuration(FunctionName, Qualifier)
 }
@@ -26,7 +26,7 @@ function name, it is limited to 64 characters in length.}
 the function.}
 }
 \description{
-Returns a the version-specific settings of a Lambda function or version.
+Returns the version-specific settings of a Lambda function or version.
 The output includes only options that can vary between versions of a
 function. To modify these settings, use UpdateFunctionConfiguration.
 }

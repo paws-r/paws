@@ -37,7 +37,7 @@ working with the DMS API, provide the JSON as the parameter value.
 For example, \--table-mappings file://mappingfile.json}
 
 \item{ReplicationTaskSettings}{Settings for the task, such as target metadata settings. For a complete
-list of task settings, see \href{http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html}{Task Settings for AWS Database Migration Service Tasks}
+list of task settings, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html}{Task Settings for AWS Database Migration Service Tasks}
 in the \emph{AWS Database Migration User Guide.}}
 
 \item{CdcStartTime}{Indicates the start time for a change data capture (CDC) operation. Use

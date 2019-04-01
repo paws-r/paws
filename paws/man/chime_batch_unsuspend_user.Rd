@@ -16,7 +16,7 @@ chime_batch_unsuspend_user(AccountId, UserIdList)
 Removes the suspension from up to 50 previously suspended users for the
 specified Amazon Chime \code{EnterpriseLWA} account. Only users on
 \code{EnterpriseLWA} accounts can be unsuspended using this action. For more
-information about different account types, see \href{http://docs.aws.amazon.com/chime/latest/ag/manage-chime-account.html}{Managing Your Amazon Chime Accounts}
+information about different account types, see \href{https://docs.aws.amazon.com/chime/latest/ag/manage-chime-account.html}{Managing Your Amazon Chime Accounts}
 in the \emph{Amazon Chime Administration Guide}.
 }
 \details{

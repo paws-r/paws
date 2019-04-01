@@ -83,6 +83,9 @@ robomaker_cancel_simulation_job <- function(job) {
 #' consistency reasons. To create a new version, use
 #' `CreateRobotApplicationVersion` or see [Creating a Robot Application
 #' Version](https://docs.aws.amazon.com/robomaker/latest/dg/create-robot-application-version.html).
+#' 
+#' After 90 days, deployment jobs expire and will be deleted. They will no
+#' longer be accessible.
 #'
 #' @usage
 #' robomaker_create_deployment_job(deploymentConfig, clientRequestToken,
@@ -432,6 +435,9 @@ robomaker_create_simulation_application_version <- function(application, current
 #' Creates a simulation job
 #'
 #' Creates a simulation job.
+#' 
+#' After 90 days, simulation jobs expire and will be deleted. They will no
+#' longer be accessible.
 #'
 #' @usage
 #' robomaker_create_simulation_job(clientRequestToken, outputLocation,
@@ -942,6 +948,12 @@ robomaker_describe_simulation_job <- function(job) {
 #' robomaker_list_deployment_jobs(filters, nextToken, maxResults)
 #'
 #' @param filters Optional filters to limit results.
+#' 
+#' The filter names `status` and `fleetName` are supported. When filtering,
+#' you must use the complete value of the filtered item. You can use up to
+#' three filters, but they must be for the same named item. For example, if
+#' you are looking for items with the status `InProgress` or the status
+#' `Pending`.
 #' @param nextToken The `nextToken` value returned from a previous paginated
 #' `ListDeploymentJobs` request where `maxResults` was used and the results
 #' exceeded the value of that parameter. Pagination continues from the end
@@ -1019,6 +1031,9 @@ robomaker_list_deployment_jobs <- function(filters = NULL, nextToken = NULL, max
 #' used, then `ListFleets` returns up to 100 results and a `nextToken`
 #' value if applicable.
 #' @param filters Optional filters to limit results.
+#' 
+#' The filter name `name` is supported. When filtering, you must use the
+#' complete value of the filtered item. You can use up to three filters.
 #'
 #' @section Request syntax:
 #' ```
@@ -1078,11 +1093,14 @@ robomaker_list_fleets <- function(nextToken = NULL, maxResults = NULL, filters =
 #' used, `ListRobotApplications` only returns `maxResults` results in a
 #' single page along with a `nextToken` response element. The remaining
 #' results of the initial request can be seen by sending another
-#' `ListFleets` request with the returned `nextToken` value. This value can
-#' be between 1 and 100. If this parameter is not used, then
+#' `ListRobotApplications` request with the returned `nextToken` value.
+#' This value can be between 1 and 100. If this parameter is not used, then
 #' `ListRobotApplications` returns up to 100 results and a `nextToken`
 #' value if applicable.
 #' @param filters Optional filters to limit results.
+#' 
+#' The filter name `name` is supported. When filtering, you must use the
+#' complete value of the filtered item. You can use up to three filters.
 #'
 #' @section Request syntax:
 #' ```
@@ -1140,11 +1158,17 @@ robomaker_list_robot_applications <- function(versionQualifier = NULL, nextToken
 #' paginated output. When this parameter is used, `ListRobots` only returns
 #' `maxResults` results in a single page along with a `nextToken` response
 #' element. The remaining results of the initial request can be seen by
-#' sending another `ListFleets` request with the returned `nextToken`
+#' sending another `ListRobots` request with the returned `nextToken`
 #' value. This value can be between 1 and 100. If this parameter is not
 #' used, then `ListRobots` returns up to 100 results and a `nextToken`
 #' value if applicable.
 #' @param filters Optional filters to limit results.
+#' 
+#' The filter names `status` and `fleetName` are supported. When filtering,
+#' you must use the complete value of the filtered item. You can use up to
+#' three filters, but they must be for the same named item. For example, if
+#' you are looking for items with the status `Registered` or the status
+#' `Available`.
 #'
 #' @section Request syntax:
 #' ```
@@ -1204,12 +1228,14 @@ robomaker_list_robots <- function(nextToken = NULL, maxResults = NULL, filters =
 #' used, `ListSimulationApplications` only returns `maxResults` results in
 #' a single page along with a `nextToken` response element. The remaining
 #' results of the initial request can be seen by sending another
-#' `ListFleets` request with the returned `nextToken` value. This value can
-#' be between 1 and 100. If this parameter is not used, then
-#' `ListSimulationApplications` returns up to 100 results and a `nextToken`
-#' value if applicable.
-#' @param filters Optional list of filters to limit results. The only valid filter name is
-#' `name`.
+#' `ListSimulationApplications` request with the returned `nextToken`
+#' value. This value can be between 1 and 100. If this parameter is not
+#' used, then `ListSimulationApplications` returns up to 100 results and a
+#' `nextToken` value if applicable.
+#' @param filters Optional list of filters to limit results.
+#' 
+#' The filter name `name` is supported. When filtering, you must use the
+#' complete value of the filtered item. You can use up to three filters.
 #'
 #' @section Request syntax:
 #' ```
@@ -1267,11 +1293,17 @@ robomaker_list_simulation_applications <- function(versionQualifier = NULL, next
 #' `ListSimulationJobs` in paginated output. When this parameter is used,
 #' `ListSimulationJobs` only returns `maxResults` results in a single page
 #' along with a `nextToken` response element. The remaining results of the
-#' initial request can be seen by sending another `ListFleets` request with
-#' the returned `nextToken` value. This value can be between 1 and 100. If
-#' this parameter is not used, then `ListSimulationJobs` returns up to 100
-#' results and a `nextToken` value if applicable.
+#' initial request can be seen by sending another `ListSimulationJobs`
+#' request with the returned `nextToken` value. This value can be between 1
+#' and 100. If this parameter is not used, then `ListSimulationJobs`
+#' returns up to 100 results and a `nextToken` value if applicable.
 #' @param filters Optional filters to limit results.
+#' 
+#' The filter names `status` and `simulationApplicationName` and
+#' `robotApplicationName` are supported. When filtering, you must use the
+#' complete value of the filtered item. You can use up to three filters,
+#' but they must be for the same named item. For example, if you are
+#' looking for items with the status `Preparing` or the status `Running`.
 #'
 #' @section Request syntax:
 #' ```
@@ -1509,7 +1541,7 @@ robomaker_tag_resource <- function(resourceArn, tags) {
 #' 
 #' To remove a tag, specify the tag key. To change the tag value of an
 #' existing tag key, use
-#' [`TagResource`](https://docs.aws.amazon.com/robomaker/latest/dg//API_Reference.htmlAPI_TagResource.html).
+#' [`TagResource`](https://docs.aws.amazon.com/robomaker/latest/dg/API_TagResource.html).
 #'
 #' @usage
 #' robomaker_untag_resource(resourceArn, tagKeys)

@@ -12,8 +12,9 @@ lambda_untag_resource(Resource, TagKeys)
 \item{TagKeys}{[required] A list of tag keys to remove from the function.}
 }
 \description{
-Removes \href{http://docs.aws.amazon.com/lambda/latest/dg/tagging.html}{tags}
-from a function.
+Removes
+\href{https://docs.aws.amazon.com/lambda/latest/dg/tagging.html}{tags} from a
+function.
 }
 \section{Request syntax}{
 \preformatted{lambda$untag_resource(

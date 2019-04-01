@@ -2,7 +2,7 @@
 % Please edit documentation in R/mediatailor_operations.R
 \name{mediatailor_list_playback_configurations}
 \alias{mediatailor_list_playback_configurations}
-\title{Returns a list of the configurations defined in AWS Elemental
+\title{Returns a list of the playback configurations defined in AWS Elemental
 MediaTailor}
 \usage{
 mediatailor_list_playback_configurations(MaxResults, NextToken)
@@ -10,16 +10,16 @@ mediatailor_list_playback_configurations(MaxResults, NextToken)
 \arguments{
 \item{MaxResults}{Maximum number of records to return.}
 
-\item{NextToken}{Pagination token returned by the GET list request when results overrun
-the meximum allowed. Use the token to fetch the next page of results.}
+\item{NextToken}{Pagination token returned by the GET list request when results exceed
+the maximum allowed. Use the token to fetch the next page of results.}
 }
 \description{
-Returns a list of the configurations defined in AWS Elemental
-MediaTailor. You can specify a max number of configurations to return at
-a time. The default max is 50. Results are returned in pagefuls. If AWS
-Elemental MediaTailor has more configurations than the specified max, it
-provides parameters in the response that you can use to retrieve the
-next pageful.
+Returns a list of the playback configurations defined in AWS Elemental
+MediaTailor. You can specify a maximum number of configurations to
+return at a time. The default maximum is 50. Results are returned in
+pagefuls. If MediaTailor has more configurations than the specified
+maximum, it provides parameters in the response that you can use to
+retrieve the next pageful.
 }
 \section{Request syntax}{
 \preformatted{mediatailor$list_playback_configurations(

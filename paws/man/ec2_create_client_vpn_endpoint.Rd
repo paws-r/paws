@@ -6,7 +6,7 @@
 \usage{
 ec2_create_client_vpn_endpoint(ClientCidrBlock, ServerCertificateArn,
   AuthenticationOptions, ConnectionLogOptions, DnsServers,
-  TransportProtocol, Description, DryRun, ClientToken)
+  TransportProtocol, Description, DryRun, ClientToken, TagSpecifications)
 }
 \arguments{
 \item{ClientCidrBlock}{[required] The IPv4 address range, in CIDR notation, from which to assign client IP
@@ -15,8 +15,7 @@ VPC in which the associated subnet is located, or the routes that you
 add manually. The address range cannot be changed after the Client VPN
 endpoint has been created. The CIDR block should be /22 or greater.}
 
-\item{ServerCertificateArn}{[required] The ARN of the server certificate. For more information, see the \href{acm/latest/userguide/acm-overview.html}{AWS Certificate Manager User Guide}
-.}
+\item{ServerCertificateArn}{[required] The ARN of the server certificate. For more information, see the \href{https://docs.aws.amazon.com/acm/latest/userguide/}{AWS Certificate Manager User Guide}.}
 
 \item{AuthenticationOptions}{[required] Information about the authentication method to be used to authenticate
 clients.}
@@ -51,6 +50,8 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ClientToken}{Unique, case-sensitive identifier you provide to ensure the idempotency
 of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
+
+\item{TagSpecifications}{The tags to apply to the Client VPN endpoint during creation.}
 }
 \description{
 Creates a Client VPN endpoint. A Client VPN endpoint is the resource you
@@ -83,7 +84,18 @@ destination endpoint at which all client VPN sessions are terminated.
   TransportProtocol = "tcp"|"udp",
   Description = "string",
   DryRun = TRUE|FALSE,
-  ClientToken = "string"
+  ClientToken = "string",
+  TagSpecifications = list(
+    list(
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"host-reservation"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-instances-request"|"subnet"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
 )
 }
 }

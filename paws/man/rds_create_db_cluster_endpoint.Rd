@@ -29,6 +29,9 @@ endpoint. Only relevant if the list of static members is empty.}
 Creates a new custom endpoint and associates it with an Amazon Aurora DB
 cluster.
 }
+\details{
+This action only applies to Aurora DB clusters.
+}
 \section{Request syntax}{
 \preformatted{rds$create_db_cluster_endpoint(
   DBClusterIdentifier = "string",

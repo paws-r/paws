@@ -8,9 +8,9 @@ codebuild_start_build(projectName, secondarySourcesOverride,
   secondarySourcesVersionOverride, sourceVersion, artifactsOverride,
   secondaryArtifactsOverride, environmentVariablesOverride,
   sourceTypeOverride, sourceLocationOverride, sourceAuthOverride,
-  gitCloneDepthOverride, buildspecOverride, insecureSslOverride,
-  reportBuildStatusOverride, environmentTypeOverride, imageOverride,
-  computeTypeOverride, certificateOverride, cacheOverride,
+  gitCloneDepthOverride, gitSubmodulesConfigOverride, buildspecOverride,
+  insecureSslOverride, reportBuildStatusOverride, environmentTypeOverride,
+  imageOverride, computeTypeOverride, certificateOverride, cacheOverride,
   serviceRoleOverride, privilegedModeOverride, timeoutInMinutesOverride,
   queuedTimeoutInMinutesOverride, idempotencyToken, logsConfigOverride,
   registryCredentialOverride, imagePullCredentialsTypeOverride)
@@ -63,6 +63,9 @@ source is BitBucket or GitHub.}
 \item{gitCloneDepthOverride}{The user-defined depth of history, with a minimum value of 0, that
 overrides, for this build only, any previous depth of history defined in
 the build project.}
+
+\item{gitSubmodulesConfigOverride}{Information about the Git submodules configuration for this build of an
+AWS CodeBuild build project.}
 
 \item{buildspecOverride}{A build spec declaration that overrides, for this build only, the latest
 one already defined in the build project.}
@@ -140,6 +143,9 @@ Starts running a build.
       type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
       location = "string",
       gitCloneDepth = 123,
+      gitSubmodulesConfig = list(
+        fetchSubmodules = TRUE|FALSE
+      ),
       buildspec = "string",
       auth = list(
         type = "OAUTH",
@@ -195,6 +201,9 @@ Starts running a build.
     resource = "string"
   ),
   gitCloneDepthOverride = 123,
+  gitSubmodulesConfigOverride = list(
+    fetchSubmodules = TRUE|FALSE
+  ),
   buildspecOverride = "string",
   insecureSslOverride = TRUE|FALSE,
   reportBuildStatusOverride = TRUE|FALSE,
@@ -203,8 +212,11 @@ Starts running a build.
   computeTypeOverride = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE",
   certificateOverride = "string",
   cacheOverride = list(
-    type = "NO_CACHE"|"S3",
-    location = "string"
+    type = "NO_CACHE"|"S3"|"LOCAL",
+    location = "string",
+    modes = list(
+      "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
+    )
   ),
   serviceRoleOverride = "string",
   privilegedModeOverride = TRUE|FALSE,
@@ -219,7 +231,8 @@ Starts running a build.
     ),
     s3Logs = list(
       status = "ENABLED"|"DISABLED",
-      location = "string"
+      location = "string",
+      encryptionDisabled = TRUE|FALSE
     )
   ),
   registryCredentialOverride = list(

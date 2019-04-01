@@ -34,17 +34,14 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{InstanceIds}{One or more instance IDs. Must be instances linked to a VPC through
 ClassicLink.}
 
-\item{MaxResults}{The maximum number of results to return for the request in a single
-page. The remaining results of the initial request can be seen by
-sending another request with the returned \code{NextToken} value. This value
-can be between 5 and 1000. If \code{MaxResults} is given a value larger than
-1000, only 1000 results are returned. You cannot specify this parameter
-and the instance IDs parameter in the same request.
+\item{MaxResults}{The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned \code{nextToken}
+value.
 
 Constraint: If the value is greater than 1000, we return only 1000
 items.}
 
-\item{NextToken}{The token to retrieve the next page of results.}
+\item{NextToken}{The token for the next page of results.}
 }
 \description{
 Describes one or more of your linked EC2-Classic instances. This request

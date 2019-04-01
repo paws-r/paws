@@ -12,14 +12,17 @@ NULL
 #' This function lets Step Functions know the existence of your activity
 #' and returns an identifier for use in a state machine and when polling
 #' from the activity.
+#' 
+#' This operation is eventually consistent. The results are best effort and
+#' may not reflect very recent updates and changes.
 #'
 #' @usage
-#' sfn_create_activity(name)
+#' sfn_create_activity(name, tags)
 #'
 #' @param name &#91;required&#93; The name of the activity to create. This name must be unique for your
 #' AWS account and region for 90 days. For more information, see [Limits
 #' Related to State Machine
-#' Executions](http://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions)
+#' Executions](https://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions)
 #' in the *AWS Step Functions Developer Guide*.
 #' 
 #' A name must *not* contain:
@@ -33,25 +36,32 @@ NULL
 #' -   special characters `` \" # \% \\ ^ | ~ \` $ &amp; , ; : / ``
 #' 
 #' -   control characters (`U+0000-001F`, `U+007F-009F`)
+#' @param tags The list of tags to add to a resource.
 #'
 #' @section Request syntax:
 #' ```
 #' sfn$create_activity(
-#'   name = "string"
+#'   name = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname sfn_create_activity
-sfn_create_activity <- function(name) {
+sfn_create_activity <- function(name, tags = NULL) {
   op <- new_operation(
     name = "CreateActivity",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sfn$create_activity_input(name = name)
+  input <- .sfn$create_activity_input(name = name, tags = tags)
   output <- .sfn$create_activity_output()
   svc <- .sfn$service()
   request <- new_request(svc, op, input, output)
@@ -67,9 +77,12 @@ sfn_create_activity <- function(name) {
 #' transition next (`Choice` states), stop an execution with an error
 #' (`Fail` states), and so on. State machines are specified using a
 #' JSON-based, structured language.
+#' 
+#' This operation is eventually consistent. The results are best effort and
+#' may not reflect very recent updates and changes.
 #'
 #' @usage
-#' sfn_create_state_machine(name, definition, roleArn)
+#' sfn_create_state_machine(name, definition, roleArn, tags)
 #'
 #' @param name &#91;required&#93; The name of the state machine.
 #' 
@@ -86,30 +99,37 @@ sfn_create_activity <- function(name) {
 #' -   control characters (`U+0000-001F`, `U+007F-009F`)
 #' @param definition &#91;required&#93; The Amazon States Language definition of the state machine. See [Amazon
 #' States
-#' Language](http://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html).
+#' Language](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html).
 #' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role to use for this state
 #' machine.
+#' @param tags Tags to be added when creating a state machine.
 #'
 #' @section Request syntax:
 #' ```
 #' sfn$create_state_machine(
 #'   name = "string",
 #'   definition = "string",
-#'   roleArn = "string"
+#'   roleArn = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname sfn_create_state_machine
-sfn_create_state_machine <- function(name, definition, roleArn) {
+sfn_create_state_machine <- function(name, definition, roleArn, tags = NULL) {
   op <- new_operation(
     name = "CreateStateMachine",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sfn$create_state_machine_input(name = name, definition = definition, roleArn = roleArn)
+  input <- .sfn$create_state_machine_input(name = name, definition = definition, roleArn = roleArn, tags = tags)
   output <- .sfn$create_state_machine_output()
   svc <- .sfn$service()
   request <- new_request(svc, op, input, output)
@@ -364,7 +384,7 @@ sfn_describe_state_machine_for_execution <- function(executionArn) {
 #' 
 #' Polling with `GetActivityTask` can cause latency in some
 #' implementations. See [Avoid Latency When Polling for Activity
-#' Tasks](http://docs.aws.amazon.com/step-functions/latest/dg/bp-activity-pollers.html)
+#' Tasks](https://docs.aws.amazon.com/step-functions/latest/dg/bp-activity-pollers.html)
 #' in the Step Functions Developer Guide.
 #'
 #' @usage
@@ -829,10 +849,10 @@ sfn_send_task_success <- function(taskToken, output) {
 #' sfn_start_execution(stateMachineArn, name, input)
 #'
 #' @param stateMachineArn &#91;required&#93; The Amazon Resource Name (ARN) of the state machine to execute.
-#' @param name The name of the execution. This name must be unique for your AWS account
-#' and region for 90 days. For more information, see [Limits Related to
-#' State Machine
-#' Executions](http://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions)
+#' @param name The name of the execution. This name must be unique for your AWS
+#' account, region, and state machine for 90 days. For more information,
+#' see [Limits Related to State Machine
+#' Executions](https://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions)
 #' in the *AWS Step Functions Developer Guide*.
 #' 
 #' A name must *not* contain:
@@ -1027,7 +1047,7 @@ sfn_untag_resource <- function(resourceArn, tagKeys) {
 #' @param stateMachineArn &#91;required&#93; The Amazon Resource Name (ARN) of the state machine.
 #' @param definition The Amazon States Language definition of the state machine. See [Amazon
 #' States
-#' Language](http://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html).
+#' Language](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html).
 #' @param roleArn The Amazon Resource Name (ARN) of the IAM role of the state machine.
 #'
 #' @section Request syntax:

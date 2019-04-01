@@ -10,7 +10,8 @@ mediastore_delete_lifecycle_policy(ContainerName)
 \item{ContainerName}{[required] The name of the container that holds the object lifecycle policy.}
 }
 \description{
-Removes an object lifecycle policy from a container.
+Removes an object lifecycle policy from a container. It takes up to 20
+minutes for the change to take effect.
 }
 \section{Request syntax}{
 \preformatted{mediastore$delete_lifecycle_policy(

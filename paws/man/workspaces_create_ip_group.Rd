@@ -4,7 +4,7 @@
 \alias{workspaces_create_ip_group}
 \title{Creates an IP access control group}
 \usage{
-workspaces_create_ip_group(GroupName, GroupDesc, UserRules)
+workspaces_create_ip_group(GroupName, GroupDesc, UserRules, Tags)
 }
 \arguments{
 \item{GroupName}{[required] The name of the group.}
@@ -12,6 +12,8 @@ workspaces_create_ip_group(GroupName, GroupDesc, UserRules)
 \item{GroupDesc}{The description of the group.}
 
 \item{UserRules}{The rules to add to the group.}
+
+\item{Tags}{The tags. Each WorkSpaces resource can have a maximum of 50 tags.}
 }
 \description{
 Creates an IP access control group.
@@ -38,6 +40,12 @@ directory.
     list(
       ipRule = "string",
       ruleDesc = "string"
+    )
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
     )
   )
 )

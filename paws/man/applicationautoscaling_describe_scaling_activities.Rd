@@ -11,7 +11,7 @@ applicationautoscaling_describe_scaling_activities(ServiceNamespace,
 \arguments{
 \item{ServiceNamespace}{[required] The namespace of the AWS service that provides the resource or
 \code{custom-resource} for a resource provided by your own application or
-service. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces}
+service. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces}
 in the \emph{Amazon Web Services General Reference}.}
 
 \item{ResourceId}{The identifier of the resource associated with the scaling activity.

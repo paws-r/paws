@@ -5,7 +5,7 @@
 \title{Creates a Simple AD directory}
 \usage{
 directoryservice_create_directory(Name, ShortName, Password,
-  Description, Size, VpcSettings)
+  Description, Size, VpcSettings, Tags)
 }
 \arguments{
 \item{Name}{[required] The fully qualified name for the directory, such as \code{corp.example.com}.}
@@ -22,6 +22,8 @@ process creates a directory administrator account with the user name
 
 \item{VpcSettings}{A DirectoryVpcSettings object that contains additional information for
 the operation.}
+
+\item{Tags}{The tags to be assigned to the Simple AD directory.}
 }
 \description{
 Creates a Simple AD directory.
@@ -43,6 +45,12 @@ operation, see \href{http://docs.aws.amazon.com/directoryservice/latest/admin-gu
     VpcId = "string",
     SubnetIds = list(
       "string"
+    )
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
     )
   )
 )

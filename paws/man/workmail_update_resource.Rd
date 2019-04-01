@@ -18,9 +18,10 @@ is updated.}
 \item{BookingOptions}{The resource's booking options to be updated.}
 }
 \description{
-Updates data for the resource. It must be preceded by a describe call in
-order to have the latest information. The dataset in the request should
-be the one expected when performing another describe call.
+Updates data for the resource. To have the latest information, it must
+be preceded by a DescribeResource call. The dataset in the request
+should be the one expected when performing another \code{DescribeResource}
+call.
 }
 \section{Request syntax}{
 \preformatted{workmail$update_resource(

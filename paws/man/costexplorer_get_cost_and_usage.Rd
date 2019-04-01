@@ -8,7 +8,7 @@ costexplorer_get_cost_and_usage(TimePeriod, Granularity, Filter,
   Metrics, GroupBy, NextPageToken)
 }
 \arguments{
-\item{TimePeriod}{Sets the start and end dates for retrieving AWS costs. The start date is
+\item{TimePeriod}{[required] Sets the start and end dates for retrieving AWS costs. The start date is
 inclusive, but the end date is exclusive. For example, if \code{start} is
 \code{2017-01-01} and \code{end} is \code{2017-05-01}, then the cost and usage data is
 retrieved from \code{2017-01-01} up to and including \code{2017-04-30} but not

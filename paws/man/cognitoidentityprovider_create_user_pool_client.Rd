@@ -32,7 +32,7 @@ provider attributes. Amazon Cognito updates mapped attributes when users
 sign in to your application through an identity provider. If your app
 client lacks write access to a mapped attribute, Amazon Cognito throws
 an error when it attempts to update the attribute. For more information,
-see \href{http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html}{Specifying Identity Provider Attribute Mappings for Your User Pool}.}
+see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html}{Specifying Identity Provider Attribute Mappings for Your User Pool}.}
 
 \item{ExplicitAuthFlows}{The explicit authentication flows.}
 

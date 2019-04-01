@@ -5,19 +5,19 @@ NULL
 
 .codecommit$batch_get_repositories_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryNames = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(repositoryNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$batch_get_repositories_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositories = structure(list(structure(list(accountId = structure(logical(0), tags = list(    type = "string")), repositoryId = structure(logical(0), tags = list(    type = "string")), repositoryName = structure(logical(0), tags = list(    type = "string")), repositoryDescription = structure(logical(0), tags = list(    type = "string")), defaultBranch = structure(logical(0), tags = list(    type = "string")), lastModifiedDate = structure(logical(0), tags = list(    type = "timestamp")), creationDate = structure(logical(0), tags = list(    type = "timestamp")), cloneUrlHttp = structure(logical(0), tags = list(    type = "string")), cloneUrlSsh = structure(logical(0), tags = list(    type = "string")), Arn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "list")), repositoriesNotFound = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(repositories = structure(list(structure(list(accountId = structure(logical(0), tags = list(type = "string")), repositoryId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryDescription = structure(logical(0), tags = list(type = "string")), defaultBranch = structure(logical(0), tags = list(type = "string")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), cloneUrlHttp = structure(logical(0), tags = list(type = "string")), cloneUrlSsh = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), repositoriesNotFound = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$create_branch_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryName = structure(logical(0), tags = list(    type = "string")), branchName = structure(logical(0), tags = list(    type = "string")), commitId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), branchName = structure(logical(0), tags = list(type = "string")), commitId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -25,381 +25,393 @@ NULL
   list()
 }
 
+.codecommit$create_commit_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), branchName = structure(logical(0), tags = list(type = "string")), parentCommitId = structure(logical(0), tags = list(type = "string")), authorName = structure(logical(0), tags = list(type = "string")), email = structure(logical(0), tags = list(type = "string")), commitMessage = structure(logical(0), tags = list(type = "string")), keepEmptyFolders = structure(logical(0), tags = list(type = "boolean")), putFiles = structure(list(structure(list(filePath = structure(logical(0), tags = list(type = "string")), fileMode = structure(logical(0), tags = list(type = "string")), fileContent = structure(logical(0), tags = list(type = "blob")), sourceFile = structure(list(filePath = structure(logical(0), tags = list(type = "string")), isMove = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), deleteFiles = structure(list(structure(list(filePath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), setFileModes = structure(list(structure(list(filePath = structure(logical(0), tags = list(type = "string")), fileMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$create_commit_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(commitId = structure(logical(0), tags = list(type = "string")), treeId = structure(logical(0), tags = list(type = "string")), filesAdded = structure(list(structure(list(absolutePath = structure(logical(0), tags = list(type = "string")), blobId = structure(logical(0), tags = list(type = "string")), fileMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), filesUpdated = structure(list(structure(list(absolutePath = structure(logical(0), tags = list(type = "string")), blobId = structure(logical(0), tags = list(type = "string")), fileMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), filesDeleted = structure(list(structure(list(absolutePath = structure(logical(0), tags = list(type = "string")), blobId = structure(logical(0), tags = list(type = "string")), fileMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .codecommit$create_pull_request_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(title = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), targets = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(        type = "string")), sourceReference = structure(logical(0), tags = list(        type = "string")), destinationReference = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(        type = "list")), clientRequestToken = structure(logical(0), tags = list(        idempotencyToken = TRUE, type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(title = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), targets = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), sourceReference = structure(logical(0), tags = list(type = "string")), destinationReference = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$create_pull_request_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pullRequest = structure(list(pullRequestId = structure(logical(0), tags = list(    type = "string")), title = structure(logical(0), tags = list(    type = "string")), description = structure(logical(0), tags = list(    type = "string")), lastActivityDate = structure(logical(0), tags = list(    type = "timestamp")), creationDate = structure(logical(0), tags = list(    type = "timestamp")), pullRequestStatus = structure(logical(0), tags = list(    type = "string")), authorArn = structure(logical(0), tags = list(    type = "string")), pullRequestTargets = structure(list(structure(list(    repositoryName = structure(logical(0), tags = list(type = "string")), sourceReference = structure(logical(0), tags = list(type = "string")), destinationReference = structure(logical(0), tags = list(        type = "string")), destinationCommit = structure(logical(0), tags = list(        type = "string")), sourceCommit = structure(logical(0), tags = list(        type = "string")), mergeBase = structure(logical(0), tags = list(        type = "string")), mergeMetadata = structure(list(isMerged = structure(logical(0), tags = list(        type = "boolean")), mergedBy = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(pullRequest = structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastActivityDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), pullRequestStatus = structure(logical(0), tags = list(type = "string")), authorArn = structure(logical(0), tags = list(type = "string")), pullRequestTargets = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), sourceReference = structure(logical(0), tags = list(type = "string")), destinationReference = structure(logical(0), tags = list(type = "string")), destinationCommit = structure(logical(0), tags = list(type = "string")), sourceCommit = structure(logical(0), tags = list(type = "string")), mergeBase = structure(logical(0), tags = list(type = "string")), mergeMetadata = structure(list(isMerged = structure(logical(0), tags = list(type = "boolean")), mergedBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$create_repository_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryName = structure(logical(0), tags = list(    type = "string")), repositoryDescription = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), repositoryDescription = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$create_repository_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryMetadata = structure(list(accountId = structure(logical(0), tags = list(    type = "string")), repositoryId = structure(logical(0), tags = list(    type = "string")), repositoryName = structure(logical(0), tags = list(    type = "string")), repositoryDescription = structure(logical(0), tags = list(    type = "string")), defaultBranch = structure(logical(0), tags = list(    type = "string")), lastModifiedDate = structure(logical(0), tags = list(    type = "timestamp")), creationDate = structure(logical(0), tags = list(    type = "timestamp")), cloneUrlHttp = structure(logical(0), tags = list(    type = "string")), cloneUrlSsh = structure(logical(0), tags = list(    type = "string")), Arn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(repositoryMetadata = structure(list(accountId = structure(logical(0), tags = list(type = "string")), repositoryId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryDescription = structure(logical(0), tags = list(type = "string")), defaultBranch = structure(logical(0), tags = list(type = "string")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), cloneUrlHttp = structure(logical(0), tags = list(type = "string")), cloneUrlSsh = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$delete_branch_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryName = structure(logical(0), tags = list(    type = "string")), branchName = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), branchName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$delete_branch_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deletedBranch = structure(list(branchName = structure(logical(0), tags = list(    type = "string")), commitId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(deletedBranch = structure(list(branchName = structure(logical(0), tags = list(type = "string")), commitId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$delete_comment_content_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(commentId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(commentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$delete_comment_content_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(comment = structure(list(commentId = structure(logical(0), tags = list(    type = "string")), content = structure(logical(0), tags = list(    type = "string")), inReplyTo = structure(logical(0), tags = list(    type = "string")), creationDate = structure(logical(0), tags = list(    type = "timestamp")), lastModifiedDate = structure(logical(0), tags = list(    type = "timestamp")), authorArn = structure(logical(0), tags = list(    type = "string")), deleted = structure(logical(0), tags = list(    type = "boolean")), clientRequestToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(comment = structure(list(commentId = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), inReplyTo = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), authorArn = structure(logical(0), tags = list(type = "string")), deleted = structure(logical(0), tags = list(type = "boolean")), clientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$delete_file_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryName = structure(logical(0), tags = list(    type = "string")), branchName = structure(logical(0), tags = list(    type = "string")), filePath = structure(logical(0), tags = list(    type = "string")), parentCommitId = structure(logical(0), tags = list(    type = "string")), keepEmptyFolders = structure(logical(0), tags = list(    type = "boolean")), commitMessage = structure(logical(0), tags = list(    type = "string")), name = structure(logical(0), tags = list(    type = "string")), email = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), branchName = structure(logical(0), tags = list(type = "string")), filePath = structure(logical(0), tags = list(type = "string")), parentCommitId = structure(logical(0), tags = list(type = "string")), keepEmptyFolders = structure(logical(0), tags = list(type = "boolean")), commitMessage = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), email = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$delete_file_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(commitId = structure(logical(0), tags = list(type = "string")), blobId = structure(logical(0), tags = list(type = "string")), treeId = structure(logical(0), tags = list(type = "string")), filePath = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(commitId = structure(logical(0), tags = list(type = "string")), blobId = structure(logical(0), tags = list(type = "string")), treeId = structure(logical(0), tags = list(type = "string")), filePath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$delete_repository_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryName = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$delete_repository_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(repositoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$describe_pull_request_events_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pullRequestId = structure(logical(0), tags = list(    type = "string")), pullRequestEventType = structure(logical(0), tags = list(    type = "string")), actorArn = structure(logical(0), tags = list(    type = "string")), nextToken = structure(logical(0), tags = list(    type = "string")), maxResults = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), pullRequestEventType = structure(logical(0), tags = list(type = "string")), actorArn = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$describe_pull_request_events_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pullRequestEvents = structure(list(structure(list(    pullRequestId = structure(logical(0), tags = list(type = "string")), eventDate = structure(logical(0), tags = list(type = "timestamp")), pullRequestEventType = structure(logical(0), tags = list(        type = "string")), actorArn = structure(logical(0), tags = list(        type = "string")), pullRequestCreatedEventMetadata = structure(list(        repositoryName = structure(logical(0), tags = list(type = "string")), sourceCommitId = structure(logical(0), tags = list(type = "string")), destinationCommitId = structure(logical(0), tags = list(            type = "string")), mergeBase = structure(logical(0), tags = list(            type = "string"))), tags = list(type = "structure")), pullRequestStatusChangedEventMetadata = structure(list(pullRequestStatus = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure")), pullRequestSourceReferenceUpdatedEventMetadata = structure(list(        repositoryName = structure(logical(0), tags = list(type = "string")), beforeCommitId = structure(logical(0), tags = list(type = "string")), afterCommitId = structure(logical(0), tags = list(type = "string")), mergeBase = structure(logical(0), tags = list(type = "string"))), tags = list(        type = "structure")), pullRequestMergedStateChangedEventMetadata = structure(list(        repositoryName = structure(logical(0), tags = list(type = "string")), destinationReference = structure(logical(0), tags = list(            type = "string")), mergeMetadata = structure(list(            isMerged = structure(logical(0), tags = list(type = "boolean")), mergedBy = structure(logical(0), tags = list(type = "string"))), tags = list(            type = "structure"))), tags = list(type = "structure"))), tags = list(    type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(pullRequestEvents = structure(list(structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), eventDate = structure(logical(0), tags = list(type = "timestamp")), pullRequestEventType = structure(logical(0), tags = list(type = "string")), actorArn = structure(logical(0), tags = list(type = "string")), pullRequestCreatedEventMetadata = structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), sourceCommitId = structure(logical(0), tags = list(type = "string")), destinationCommitId = structure(logical(0), tags = list(type = "string")), mergeBase = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), pullRequestStatusChangedEventMetadata = structure(list(pullRequestStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), pullRequestSourceReferenceUpdatedEventMetadata = structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), beforeCommitId = structure(logical(0), tags = list(type = "string")), afterCommitId = structure(logical(0), tags = list(type = "string")), mergeBase = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), pullRequestMergedStateChangedEventMetadata = structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), destinationReference = structure(logical(0), tags = list(type = "string")), mergeMetadata = structure(list(isMerged = structure(logical(0), tags = list(type = "boolean")), mergedBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$get_blob_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryName = structure(logical(0), tags = list(    type = "string")), blobId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), blobId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$get_blob_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(content = structure(logical(0), tags = list(type = "blob"))), tags = list(    type = "structure"))
+  shape <- structure(list(content = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$get_branch_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryName = structure(logical(0), tags = list(    type = "string")), branchName = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), branchName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$get_branch_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(branch = structure(list(branchName = structure(logical(0), tags = list(    type = "string")), commitId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(branch = structure(list(branchName = structure(logical(0), tags = list(type = "string")), commitId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$get_comment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(commentId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(commentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$get_comment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(comment = structure(list(commentId = structure(logical(0), tags = list(    type = "string")), content = structure(logical(0), tags = list(    type = "string")), inReplyTo = structure(logical(0), tags = list(    type = "string")), creationDate = structure(logical(0), tags = list(    type = "timestamp")), lastModifiedDate = structure(logical(0), tags = list(    type = "timestamp")), authorArn = structure(logical(0), tags = list(    type = "string")), deleted = structure(logical(0), tags = list(    type = "boolean")), clientRequestToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(comment = structure(list(commentId = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), inReplyTo = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), authorArn = structure(logical(0), tags = list(type = "string")), deleted = structure(logical(0), tags = list(type = "boolean")), clientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$get_comments_for_compared_commit_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryName = structure(logical(0), tags = list(    type = "string")), beforeCommitId = structure(logical(0), tags = list(    type = "string")), afterCommitId = structure(logical(0), tags = list(    type = "string")), nextToken = structure(logical(0), tags = list(    type = "string")), maxResults = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), beforeCommitId = structure(logical(0), tags = list(type = "string")), afterCommitId = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$get_comments_for_compared_commit_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(commentsForComparedCommitData = structure(list(    structure(list(repositoryName = structure(logical(0), tags = list(        type = "string")), beforeCommitId = structure(logical(0), tags = list(        type = "string")), afterCommitId = structure(logical(0), tags = list(        type = "string")), beforeBlobId = structure(logical(0), tags = list(        type = "string")), afterBlobId = structure(logical(0), tags = list(        type = "string")), location = structure(list(filePath = structure(logical(0), tags = list(        type = "string")), filePosition = structure(logical(0), tags = list(        type = "long")), relativeFileVersion = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure")), comments = structure(list(structure(list(commentId = structure(logical(0), tags = list(            type = "string")), content = structure(logical(0), tags = list(            type = "string")), inReplyTo = structure(logical(0), tags = list(            type = "string")), creationDate = structure(logical(0), tags = list(            type = "timestamp")), lastModifiedDate = structure(logical(0), tags = list(            type = "timestamp")), authorArn = structure(logical(0), tags = list(            type = "string")), deleted = structure(logical(0), tags = list(            type = "boolean")), clientRequestToken = structure(logical(0), tags = list(            type = "string"))), tags = list(type = "structure"))), tags = list(            type = "list"))), tags = list(type = "structure"))), tags = list(    type = "list")), nextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(commentsForComparedCommitData = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), beforeCommitId = structure(logical(0), tags = list(type = "string")), afterCommitId = structure(logical(0), tags = list(type = "string")), beforeBlobId = structure(logical(0), tags = list(type = "string")), afterBlobId = structure(logical(0), tags = list(type = "string")), location = structure(list(filePath = structure(logical(0), tags = list(type = "string")), filePosition = structure(logical(0), tags = list(type = "long")), relativeFileVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), comments = structure(list(structure(list(commentId = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), inReplyTo = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), authorArn = structure(logical(0), tags = list(type = "string")), deleted = structure(logical(0), tags = list(type = "boolean")), clientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$get_comments_for_pull_request_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pullRequestId = structure(logical(0), tags = list(    type = "string")), repositoryName = structure(logical(0), tags = list(    type = "string")), beforeCommitId = structure(logical(0), tags = list(    type = "string")), afterCommitId = structure(logical(0), tags = list(    type = "string")), nextToken = structure(logical(0), tags = list(    type = "string")), maxResults = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), beforeCommitId = structure(logical(0), tags = list(type = "string")), afterCommitId = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$get_comments_for_pull_request_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(commentsForPullRequestData = structure(list(structure(list(    pullRequestId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), beforeCommitId = structure(logical(0), tags = list(type = "string")), afterCommitId = structure(logical(0), tags = list(type = "string")), beforeBlobId = structure(logical(0), tags = list(type = "string")), afterBlobId = structure(logical(0), tags = list(type = "string")), location = structure(list(filePath = structure(logical(0), tags = list(        type = "string")), filePosition = structure(logical(0), tags = list(        type = "long")), relativeFileVersion = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure")), comments = structure(list(structure(list(commentId = structure(logical(0), tags = list(        type = "string")), content = structure(logical(0), tags = list(        type = "string")), inReplyTo = structure(logical(0), tags = list(        type = "string")), creationDate = structure(logical(0), tags = list(        type = "timestamp")), lastModifiedDate = structure(logical(0), tags = list(        type = "timestamp")), authorArn = structure(logical(0), tags = list(        type = "string")), deleted = structure(logical(0), tags = list(        type = "boolean")), clientRequestToken = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(        type = "list"))), tags = list(type = "structure"))), tags = list(    type = "list")), nextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(commentsForPullRequestData = structure(list(structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), beforeCommitId = structure(logical(0), tags = list(type = "string")), afterCommitId = structure(logical(0), tags = list(type = "string")), beforeBlobId = structure(logical(0), tags = list(type = "string")), afterBlobId = structure(logical(0), tags = list(type = "string")), location = structure(list(filePath = structure(logical(0), tags = list(type = "string")), filePosition = structure(logical(0), tags = list(type = "long")), relativeFileVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), comments = structure(list(structure(list(commentId = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), inReplyTo = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), authorArn = structure(logical(0), tags = list(type = "string")), deleted = structure(logical(0), tags = list(type = "boolean")), clientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$get_commit_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryName = structure(logical(0), tags = list(    type = "string")), commitId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), commitId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$get_commit_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(commit = structure(list(commitId = structure(logical(0), tags = list(    type = "string")), treeId = structure(logical(0), tags = list(    type = "string")), parents = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list")), message = structure(logical(0), tags = list(    type = "string")), author = structure(list(name = structure(logical(0), tags = list(    type = "string")), email = structure(logical(0), tags = list(    type = "string")), date = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure")), committer = structure(list(    name = structure(logical(0), tags = list(type = "string")), email = structure(logical(0), tags = list(type = "string")), date = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure")), additionalData = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(commit = structure(list(commitId = structure(logical(0), tags = list(type = "string")), treeId = structure(logical(0), tags = list(type = "string")), parents = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), message = structure(logical(0), tags = list(type = "string")), author = structure(list(name = structure(logical(0), tags = list(type = "string")), email = structure(logical(0), tags = list(type = "string")), date = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), committer = structure(list(name = structure(logical(0), tags = list(type = "string")), email = structure(logical(0), tags = list(type = "string")), date = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), additionalData = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$get_differences_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryName = structure(logical(0), tags = list(    type = "string")), beforeCommitSpecifier = structure(logical(0), tags = list(    type = "string")), afterCommitSpecifier = structure(logical(0), tags = list(    type = "string")), beforePath = structure(logical(0), tags = list(    type = "string")), afterPath = structure(logical(0), tags = list(    type = "string")), MaxResults = structure(logical(0), tags = list(    type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), beforeCommitSpecifier = structure(logical(0), tags = list(type = "string")), afterCommitSpecifier = structure(logical(0), tags = list(type = "string")), beforePath = structure(logical(0), tags = list(type = "string")), afterPath = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$get_differences_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(differences = structure(list(structure(list(beforeBlob = structure(list(    blobId = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), mode = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure")), afterBlob = structure(list(blobId = structure(logical(0), tags = list(    type = "string")), path = structure(logical(0), tags = list(    type = "string")), mode = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure")), changeType = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "list")), NextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(differences = structure(list(structure(list(beforeBlob = structure(list(blobId = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), mode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), afterBlob = structure(list(blobId = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), mode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), changeType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$get_file_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryName = structure(logical(0), tags = list(    type = "string")), commitSpecifier = structure(logical(0), tags = list(    type = "string")), filePath = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), commitSpecifier = structure(logical(0), tags = list(type = "string")), filePath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$get_file_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(commitId = structure(logical(0), tags = list(type = "string")), blobId = structure(logical(0), tags = list(type = "string")), filePath = structure(logical(0), tags = list(type = "string")), fileMode = structure(logical(0), tags = list(type = "string")), fileSize = structure(logical(0), tags = list(type = "long")), fileContent = structure(logical(0), tags = list(type = "blob"))), tags = list(    type = "structure"))
+  shape <- structure(list(commitId = structure(logical(0), tags = list(type = "string")), blobId = structure(logical(0), tags = list(type = "string")), filePath = structure(logical(0), tags = list(type = "string")), fileMode = structure(logical(0), tags = list(type = "string")), fileSize = structure(logical(0), tags = list(type = "long")), fileContent = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$get_folder_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryName = structure(logical(0), tags = list(    type = "string")), commitSpecifier = structure(logical(0), tags = list(    type = "string")), folderPath = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), commitSpecifier = structure(logical(0), tags = list(type = "string")), folderPath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$get_folder_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(commitId = structure(logical(0), tags = list(type = "string")), folderPath = structure(logical(0), tags = list(type = "string")), treeId = structure(logical(0), tags = list(type = "string")), subFolders = structure(list(structure(list(treeId = structure(logical(0), tags = list(        type = "string")), absolutePath = structure(logical(0), tags = list(        type = "string")), relativePath = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(        type = "list")), files = structure(list(structure(list(        blobId = structure(logical(0), tags = list(type = "string")), absolutePath = structure(logical(0), tags = list(type = "string")), relativePath = structure(logical(0), tags = list(type = "string")), fileMode = structure(logical(0), tags = list(type = "string"))), tags = list(        type = "structure"))), tags = list(type = "list")), symbolicLinks = structure(list(        structure(list(blobId = structure(logical(0), tags = list(            type = "string")), absolutePath = structure(logical(0), tags = list(            type = "string")), relativePath = structure(logical(0), tags = list(            type = "string")), fileMode = structure(logical(0), tags = list(            type = "string"))), tags = list(type = "structure"))), tags = list(        type = "list")), subModules = structure(list(structure(list(        commitId = structure(logical(0), tags = list(type = "string")), absolutePath = structure(logical(0), tags = list(type = "string")), relativePath = structure(logical(0), tags = list(type = "string"))), tags = list(        type = "structure"))), tags = list(type = "list"))), tags = list(    type = "structure"))
+  shape <- structure(list(commitId = structure(logical(0), tags = list(type = "string")), folderPath = structure(logical(0), tags = list(type = "string")), treeId = structure(logical(0), tags = list(type = "string")), subFolders = structure(list(structure(list(treeId = structure(logical(0), tags = list(type = "string")), absolutePath = structure(logical(0), tags = list(type = "string")), relativePath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), files = structure(list(structure(list(blobId = structure(logical(0), tags = list(type = "string")), absolutePath = structure(logical(0), tags = list(type = "string")), relativePath = structure(logical(0), tags = list(type = "string")), fileMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), symbolicLinks = structure(list(structure(list(blobId = structure(logical(0), tags = list(type = "string")), absolutePath = structure(logical(0), tags = list(type = "string")), relativePath = structure(logical(0), tags = list(type = "string")), fileMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), subModules = structure(list(structure(list(commitId = structure(logical(0), tags = list(type = "string")), absolutePath = structure(logical(0), tags = list(type = "string")), relativePath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$get_merge_conflicts_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryName = structure(logical(0), tags = list(    type = "string")), destinationCommitSpecifier = structure(logical(0), tags = list(    type = "string")), sourceCommitSpecifier = structure(logical(0), tags = list(    type = "string")), mergeOption = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), destinationCommitSpecifier = structure(logical(0), tags = list(type = "string")), sourceCommitSpecifier = structure(logical(0), tags = list(type = "string")), mergeOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$get_merge_conflicts_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(mergeable = structure(logical(0), tags = list(    type = "boolean")), destinationCommitId = structure(logical(0), tags = list(    type = "string")), sourceCommitId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(mergeable = structure(logical(0), tags = list(type = "boolean")), destinationCommitId = structure(logical(0), tags = list(type = "string")), sourceCommitId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$get_pull_request_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pullRequestId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(pullRequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$get_pull_request_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pullRequest = structure(list(pullRequestId = structure(logical(0), tags = list(    type = "string")), title = structure(logical(0), tags = list(    type = "string")), description = structure(logical(0), tags = list(    type = "string")), lastActivityDate = structure(logical(0), tags = list(    type = "timestamp")), creationDate = structure(logical(0), tags = list(    type = "timestamp")), pullRequestStatus = structure(logical(0), tags = list(    type = "string")), authorArn = structure(logical(0), tags = list(    type = "string")), pullRequestTargets = structure(list(structure(list(    repositoryName = structure(logical(0), tags = list(type = "string")), sourceReference = structure(logical(0), tags = list(type = "string")), destinationReference = structure(logical(0), tags = list(        type = "string")), destinationCommit = structure(logical(0), tags = list(        type = "string")), sourceCommit = structure(logical(0), tags = list(        type = "string")), mergeBase = structure(logical(0), tags = list(        type = "string")), mergeMetadata = structure(list(isMerged = structure(logical(0), tags = list(        type = "boolean")), mergedBy = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(pullRequest = structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastActivityDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), pullRequestStatus = structure(logical(0), tags = list(type = "string")), authorArn = structure(logical(0), tags = list(type = "string")), pullRequestTargets = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), sourceReference = structure(logical(0), tags = list(type = "string")), destinationReference = structure(logical(0), tags = list(type = "string")), destinationCommit = structure(logical(0), tags = list(type = "string")), sourceCommit = structure(logical(0), tags = list(type = "string")), mergeBase = structure(logical(0), tags = list(type = "string")), mergeMetadata = structure(list(isMerged = structure(logical(0), tags = list(type = "boolean")), mergedBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$get_repository_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryName = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$get_repository_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryMetadata = structure(list(accountId = structure(logical(0), tags = list(    type = "string")), repositoryId = structure(logical(0), tags = list(    type = "string")), repositoryName = structure(logical(0), tags = list(    type = "string")), repositoryDescription = structure(logical(0), tags = list(    type = "string")), defaultBranch = structure(logical(0), tags = list(    type = "string")), lastModifiedDate = structure(logical(0), tags = list(    type = "timestamp")), creationDate = structure(logical(0), tags = list(    type = "timestamp")), cloneUrlHttp = structure(logical(0), tags = list(    type = "string")), cloneUrlSsh = structure(logical(0), tags = list(    type = "string")), Arn = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(repositoryMetadata = structure(list(accountId = structure(logical(0), tags = list(type = "string")), repositoryId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryDescription = structure(logical(0), tags = list(type = "string")), defaultBranch = structure(logical(0), tags = list(type = "string")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), cloneUrlHttp = structure(logical(0), tags = list(type = "string")), cloneUrlSsh = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$get_repository_triggers_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryName = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$get_repository_triggers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configurationId = structure(logical(0), tags = list(    type = "string")), triggers = structure(list(structure(list(    name = structure(logical(0), tags = list(type = "string")), destinationArn = structure(logical(0), tags = list(type = "string")), customData = structure(logical(0), tags = list(type = "string")), branches = structure(list(structure(logical(0), tags = list(        type = "string"))), tags = list(type = "list")), events = structure(list(        structure(logical(0), tags = list(type = "string"))), tags = list(        type = "list"))), tags = list(type = "structure"))), tags = list(    type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(configurationId = structure(logical(0), tags = list(type = "string")), triggers = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), destinationArn = structure(logical(0), tags = list(type = "string")), customData = structure(logical(0), tags = list(type = "string")), branches = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), events = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$list_branches_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryName = structure(logical(0), tags = list(    type = "string")), nextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$list_branches_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(branches = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(branches = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$list_pull_requests_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryName = structure(logical(0), tags = list(    type = "string")), authorArn = structure(logical(0), tags = list(    type = "string")), pullRequestStatus = structure(logical(0), tags = list(    type = "string")), nextToken = structure(logical(0), tags = list(    type = "string")), maxResults = structure(logical(0), tags = list(    type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), authorArn = structure(logical(0), tags = list(type = "string")), pullRequestStatus = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$list_pull_requests_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pullRequestIds = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(pullRequestIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$list_repositories_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(    type = "string")), sortBy = structure(logical(0), tags = list(    type = "string")), order = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), sortBy = structure(logical(0), tags = list(type = "string")), order = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$list_repositories_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositories = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(    type = "string")), repositoryId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "list")), nextToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(repositories = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), repositoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$merge_pull_request_by_fast_forward_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pullRequestId = structure(logical(0), tags = list(    type = "string")), repositoryName = structure(logical(0), tags = list(    type = "string")), sourceCommitId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), sourceCommitId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$merge_pull_request_by_fast_forward_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pullRequest = structure(list(pullRequestId = structure(logical(0), tags = list(    type = "string")), title = structure(logical(0), tags = list(    type = "string")), description = structure(logical(0), tags = list(    type = "string")), lastActivityDate = structure(logical(0), tags = list(    type = "timestamp")), creationDate = structure(logical(0), tags = list(    type = "timestamp")), pullRequestStatus = structure(logical(0), tags = list(    type = "string")), authorArn = structure(logical(0), tags = list(    type = "string")), pullRequestTargets = structure(list(structure(list(    repositoryName = structure(logical(0), tags = list(type = "string")), sourceReference = structure(logical(0), tags = list(type = "string")), destinationReference = structure(logical(0), tags = list(        type = "string")), destinationCommit = structure(logical(0), tags = list(        type = "string")), sourceCommit = structure(logical(0), tags = list(        type = "string")), mergeBase = structure(logical(0), tags = list(        type = "string")), mergeMetadata = structure(list(isMerged = structure(logical(0), tags = list(        type = "boolean")), mergedBy = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(pullRequest = structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastActivityDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), pullRequestStatus = structure(logical(0), tags = list(type = "string")), authorArn = structure(logical(0), tags = list(type = "string")), pullRequestTargets = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), sourceReference = structure(logical(0), tags = list(type = "string")), destinationReference = structure(logical(0), tags = list(type = "string")), destinationCommit = structure(logical(0), tags = list(type = "string")), sourceCommit = structure(logical(0), tags = list(type = "string")), mergeBase = structure(logical(0), tags = list(type = "string")), mergeMetadata = structure(list(isMerged = structure(logical(0), tags = list(type = "boolean")), mergedBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$post_comment_for_compared_commit_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryName = structure(logical(0), tags = list(    type = "string")), beforeCommitId = structure(logical(0), tags = list(    type = "string")), afterCommitId = structure(logical(0), tags = list(    type = "string")), location = structure(list(filePath = structure(logical(0), tags = list(    type = "string")), filePosition = structure(logical(0), tags = list(    type = "long")), relativeFileVersion = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure")), content = structure(logical(0), tags = list(    type = "string")), clientRequestToken = structure(logical(0), tags = list(    idempotencyToken = TRUE, type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), beforeCommitId = structure(logical(0), tags = list(type = "string")), afterCommitId = structure(logical(0), tags = list(type = "string")), location = structure(list(filePath = structure(logical(0), tags = list(type = "string")), filePosition = structure(logical(0), tags = list(type = "long")), relativeFileVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), content = structure(logical(0), tags = list(type = "string")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$post_comment_for_compared_commit_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryName = structure(logical(0), tags = list(    type = "string")), beforeCommitId = structure(logical(0), tags = list(    type = "string")), afterCommitId = structure(logical(0), tags = list(    type = "string")), beforeBlobId = structure(logical(0), tags = list(    type = "string")), afterBlobId = structure(logical(0), tags = list(    type = "string")), location = structure(list(filePath = structure(logical(0), tags = list(    type = "string")), filePosition = structure(logical(0), tags = list(    type = "long")), relativeFileVersion = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure")), comment = structure(list(    commentId = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), inReplyTo = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), authorArn = structure(logical(0), tags = list(type = "string")), deleted = structure(logical(0), tags = list(type = "boolean")), clientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), beforeCommitId = structure(logical(0), tags = list(type = "string")), afterCommitId = structure(logical(0), tags = list(type = "string")), beforeBlobId = structure(logical(0), tags = list(type = "string")), afterBlobId = structure(logical(0), tags = list(type = "string")), location = structure(list(filePath = structure(logical(0), tags = list(type = "string")), filePosition = structure(logical(0), tags = list(type = "long")), relativeFileVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), comment = structure(list(commentId = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), inReplyTo = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), authorArn = structure(logical(0), tags = list(type = "string")), deleted = structure(logical(0), tags = list(type = "boolean")), clientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$post_comment_for_pull_request_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pullRequestId = structure(logical(0), tags = list(    type = "string")), repositoryName = structure(logical(0), tags = list(    type = "string")), beforeCommitId = structure(logical(0), tags = list(    type = "string")), afterCommitId = structure(logical(0), tags = list(    type = "string")), location = structure(list(filePath = structure(logical(0), tags = list(    type = "string")), filePosition = structure(logical(0), tags = list(    type = "long")), relativeFileVersion = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure")), content = structure(logical(0), tags = list(    type = "string")), clientRequestToken = structure(logical(0), tags = list(    idempotencyToken = TRUE, type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), beforeCommitId = structure(logical(0), tags = list(type = "string")), afterCommitId = structure(logical(0), tags = list(type = "string")), location = structure(list(filePath = structure(logical(0), tags = list(type = "string")), filePosition = structure(logical(0), tags = list(type = "long")), relativeFileVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), content = structure(logical(0), tags = list(type = "string")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$post_comment_for_pull_request_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryName = structure(logical(0), tags = list(    type = "string")), pullRequestId = structure(logical(0), tags = list(    type = "string")), beforeCommitId = structure(logical(0), tags = list(    type = "string")), afterCommitId = structure(logical(0), tags = list(    type = "string")), beforeBlobId = structure(logical(0), tags = list(    type = "string")), afterBlobId = structure(logical(0), tags = list(    type = "string")), location = structure(list(filePath = structure(logical(0), tags = list(    type = "string")), filePosition = structure(logical(0), tags = list(    type = "long")), relativeFileVersion = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure")), comment = structure(list(    commentId = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), inReplyTo = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), authorArn = structure(logical(0), tags = list(type = "string")), deleted = structure(logical(0), tags = list(type = "boolean")), clientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), pullRequestId = structure(logical(0), tags = list(type = "string")), beforeCommitId = structure(logical(0), tags = list(type = "string")), afterCommitId = structure(logical(0), tags = list(type = "string")), beforeBlobId = structure(logical(0), tags = list(type = "string")), afterBlobId = structure(logical(0), tags = list(type = "string")), location = structure(list(filePath = structure(logical(0), tags = list(type = "string")), filePosition = structure(logical(0), tags = list(type = "long")), relativeFileVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), comment = structure(list(commentId = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), inReplyTo = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), authorArn = structure(logical(0), tags = list(type = "string")), deleted = structure(logical(0), tags = list(type = "boolean")), clientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$post_comment_reply_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(inReplyTo = structure(logical(0), tags = list(    type = "string")), clientRequestToken = structure(logical(0), tags = list(    idempotencyToken = TRUE, type = "string")), content = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(inReplyTo = structure(logical(0), tags = list(type = "string")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), content = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$post_comment_reply_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(comment = structure(list(commentId = structure(logical(0), tags = list(    type = "string")), content = structure(logical(0), tags = list(    type = "string")), inReplyTo = structure(logical(0), tags = list(    type = "string")), creationDate = structure(logical(0), tags = list(    type = "timestamp")), lastModifiedDate = structure(logical(0), tags = list(    type = "timestamp")), authorArn = structure(logical(0), tags = list(    type = "string")), deleted = structure(logical(0), tags = list(    type = "boolean")), clientRequestToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(comment = structure(list(commentId = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), inReplyTo = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), authorArn = structure(logical(0), tags = list(type = "string")), deleted = structure(logical(0), tags = list(type = "boolean")), clientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$put_file_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryName = structure(logical(0), tags = list(    type = "string")), branchName = structure(logical(0), tags = list(    type = "string")), fileContent = structure(logical(0), tags = list(    type = "blob")), filePath = structure(logical(0), tags = list(    type = "string")), fileMode = structure(logical(0), tags = list(    type = "string")), parentCommitId = structure(logical(0), tags = list(    type = "string")), commitMessage = structure(logical(0), tags = list(    type = "string")), name = structure(logical(0), tags = list(    type = "string")), email = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), branchName = structure(logical(0), tags = list(type = "string")), fileContent = structure(logical(0), tags = list(type = "blob")), filePath = structure(logical(0), tags = list(type = "string")), fileMode = structure(logical(0), tags = list(type = "string")), parentCommitId = structure(logical(0), tags = list(type = "string")), commitMessage = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), email = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$put_file_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(commitId = structure(logical(0), tags = list(type = "string")), blobId = structure(logical(0), tags = list(type = "string")), treeId = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(commitId = structure(logical(0), tags = list(type = "string")), blobId = structure(logical(0), tags = list(type = "string")), treeId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$put_repository_triggers_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryName = structure(logical(0), tags = list(    type = "string")), triggers = structure(list(structure(list(    name = structure(logical(0), tags = list(type = "string")), destinationArn = structure(logical(0), tags = list(type = "string")), customData = structure(logical(0), tags = list(type = "string")), branches = structure(list(structure(logical(0), tags = list(        type = "string"))), tags = list(type = "list")), events = structure(list(        structure(logical(0), tags = list(type = "string"))), tags = list(        type = "list"))), tags = list(type = "structure"))), tags = list(    type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), triggers = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), destinationArn = structure(logical(0), tags = list(type = "string")), customData = structure(logical(0), tags = list(type = "string")), branches = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), events = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$put_repository_triggers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configurationId = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(configurationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$test_repository_triggers_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryName = structure(logical(0), tags = list(    type = "string")), triggers = structure(list(structure(list(    name = structure(logical(0), tags = list(type = "string")), destinationArn = structure(logical(0), tags = list(type = "string")), customData = structure(logical(0), tags = list(type = "string")), branches = structure(list(structure(logical(0), tags = list(        type = "string"))), tags = list(type = "list")), events = structure(list(        structure(logical(0), tags = list(type = "string"))), tags = list(        type = "list"))), tags = list(type = "structure"))), tags = list(    type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), triggers = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), destinationArn = structure(logical(0), tags = list(type = "string")), customData = structure(logical(0), tags = list(type = "string")), branches = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), events = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$test_repository_triggers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(successfulExecutions = structure(list(structure(logical(0), tags = list(    type = "string"))), tags = list(type = "list")), failedExecutions = structure(list(    structure(list(trigger = structure(logical(0), tags = list(        type = "string")), failureMessage = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(    type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(successfulExecutions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), failedExecutions = structure(list(structure(list(trigger = structure(logical(0), tags = list(type = "string")), failureMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$update_comment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(commentId = structure(logical(0), tags = list(    type = "string")), content = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(commentId = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$update_comment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(comment = structure(list(commentId = structure(logical(0), tags = list(    type = "string")), content = structure(logical(0), tags = list(    type = "string")), inReplyTo = structure(logical(0), tags = list(    type = "string")), creationDate = structure(logical(0), tags = list(    type = "timestamp")), lastModifiedDate = structure(logical(0), tags = list(    type = "timestamp")), authorArn = structure(logical(0), tags = list(    type = "string")), deleted = structure(logical(0), tags = list(    type = "boolean")), clientRequestToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(comment = structure(list(commentId = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), inReplyTo = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), authorArn = structure(logical(0), tags = list(type = "string")), deleted = structure(logical(0), tags = list(type = "boolean")), clientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$update_default_branch_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryName = structure(logical(0), tags = list(    type = "string")), defaultBranchName = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), defaultBranchName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -409,43 +421,43 @@ NULL
 
 .codecommit$update_pull_request_description_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pullRequestId = structure(logical(0), tags = list(    type = "string")), description = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$update_pull_request_description_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pullRequest = structure(list(pullRequestId = structure(logical(0), tags = list(    type = "string")), title = structure(logical(0), tags = list(    type = "string")), description = structure(logical(0), tags = list(    type = "string")), lastActivityDate = structure(logical(0), tags = list(    type = "timestamp")), creationDate = structure(logical(0), tags = list(    type = "timestamp")), pullRequestStatus = structure(logical(0), tags = list(    type = "string")), authorArn = structure(logical(0), tags = list(    type = "string")), pullRequestTargets = structure(list(structure(list(    repositoryName = structure(logical(0), tags = list(type = "string")), sourceReference = structure(logical(0), tags = list(type = "string")), destinationReference = structure(logical(0), tags = list(        type = "string")), destinationCommit = structure(logical(0), tags = list(        type = "string")), sourceCommit = structure(logical(0), tags = list(        type = "string")), mergeBase = structure(logical(0), tags = list(        type = "string")), mergeMetadata = structure(list(isMerged = structure(logical(0), tags = list(        type = "boolean")), mergedBy = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(pullRequest = structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastActivityDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), pullRequestStatus = structure(logical(0), tags = list(type = "string")), authorArn = structure(logical(0), tags = list(type = "string")), pullRequestTargets = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), sourceReference = structure(logical(0), tags = list(type = "string")), destinationReference = structure(logical(0), tags = list(type = "string")), destinationCommit = structure(logical(0), tags = list(type = "string")), sourceCommit = structure(logical(0), tags = list(type = "string")), mergeBase = structure(logical(0), tags = list(type = "string")), mergeMetadata = structure(list(isMerged = structure(logical(0), tags = list(type = "boolean")), mergedBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$update_pull_request_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pullRequestId = structure(logical(0), tags = list(    type = "string")), pullRequestStatus = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), pullRequestStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$update_pull_request_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pullRequest = structure(list(pullRequestId = structure(logical(0), tags = list(    type = "string")), title = structure(logical(0), tags = list(    type = "string")), description = structure(logical(0), tags = list(    type = "string")), lastActivityDate = structure(logical(0), tags = list(    type = "timestamp")), creationDate = structure(logical(0), tags = list(    type = "timestamp")), pullRequestStatus = structure(logical(0), tags = list(    type = "string")), authorArn = structure(logical(0), tags = list(    type = "string")), pullRequestTargets = structure(list(structure(list(    repositoryName = structure(logical(0), tags = list(type = "string")), sourceReference = structure(logical(0), tags = list(type = "string")), destinationReference = structure(logical(0), tags = list(        type = "string")), destinationCommit = structure(logical(0), tags = list(        type = "string")), sourceCommit = structure(logical(0), tags = list(        type = "string")), mergeBase = structure(logical(0), tags = list(        type = "string")), mergeMetadata = structure(list(isMerged = structure(logical(0), tags = list(        type = "boolean")), mergedBy = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(pullRequest = structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastActivityDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), pullRequestStatus = structure(logical(0), tags = list(type = "string")), authorArn = structure(logical(0), tags = list(type = "string")), pullRequestTargets = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), sourceReference = structure(logical(0), tags = list(type = "string")), destinationReference = structure(logical(0), tags = list(type = "string")), destinationCommit = structure(logical(0), tags = list(type = "string")), sourceCommit = structure(logical(0), tags = list(type = "string")), mergeBase = structure(logical(0), tags = list(type = "string")), mergeMetadata = structure(list(isMerged = structure(logical(0), tags = list(type = "boolean")), mergedBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$update_pull_request_title_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pullRequestId = structure(logical(0), tags = list(    type = "string")), title = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$update_pull_request_title_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pullRequest = structure(list(pullRequestId = structure(logical(0), tags = list(    type = "string")), title = structure(logical(0), tags = list(    type = "string")), description = structure(logical(0), tags = list(    type = "string")), lastActivityDate = structure(logical(0), tags = list(    type = "timestamp")), creationDate = structure(logical(0), tags = list(    type = "timestamp")), pullRequestStatus = structure(logical(0), tags = list(    type = "string")), authorArn = structure(logical(0), tags = list(    type = "string")), pullRequestTargets = structure(list(structure(list(    repositoryName = structure(logical(0), tags = list(type = "string")), sourceReference = structure(logical(0), tags = list(type = "string")), destinationReference = structure(logical(0), tags = list(        type = "string")), destinationCommit = structure(logical(0), tags = list(        type = "string")), sourceCommit = structure(logical(0), tags = list(        type = "string")), mergeBase = structure(logical(0), tags = list(        type = "string")), mergeMetadata = structure(list(isMerged = structure(logical(0), tags = list(        type = "boolean")), mergedBy = structure(logical(0), tags = list(        type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))), tags = list(    type = "structure"))
+  shape <- structure(list(pullRequest = structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastActivityDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), pullRequestStatus = structure(logical(0), tags = list(type = "string")), authorArn = structure(logical(0), tags = list(type = "string")), pullRequestTargets = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), sourceReference = structure(logical(0), tags = list(type = "string")), destinationReference = structure(logical(0), tags = list(type = "string")), destinationCommit = structure(logical(0), tags = list(type = "string")), sourceCommit = structure(logical(0), tags = list(type = "string")), mergeBase = structure(logical(0), tags = list(type = "string")), mergeMetadata = structure(list(isMerged = structure(logical(0), tags = list(type = "boolean")), mergedBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$update_repository_description_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryName = structure(logical(0), tags = list(    type = "string")), repositoryDescription = structure(logical(0), tags = list(    type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), repositoryDescription = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -455,7 +467,7 @@ NULL
 
 .codecommit$update_repository_name_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(oldName = structure(logical(0), tags = list(type = "string")), newName = structure(logical(0), tags = list(type = "string"))), tags = list(    type = "structure"))
+  shape <- structure(list(oldName = structure(logical(0), tags = list(type = "string")), newName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

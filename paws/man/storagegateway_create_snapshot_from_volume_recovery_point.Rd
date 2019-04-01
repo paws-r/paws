@@ -8,9 +8,14 @@ storagegateway_create_snapshot_from_volume_recovery_point(VolumeARN,
   SnapshotDescription)
 }
 \arguments{
-\item{VolumeARN}{[required]}
+\item{VolumeARN}{[required] The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
+DescribeStorediSCSIVolumes operation to return to retrieve the TargetARN
+for specified VolumeARN.}
 
-\item{SnapshotDescription}{[required]}
+\item{SnapshotDescription}{[required] Textual description of the snapshot that appears in the Amazon EC2
+console, Elastic Block Store snapshots panel in the \strong{Description}
+field, and in the AWS Storage Gateway snapshot \strong{Details} pane,
+\strong{Description} field}
 }
 \description{
 Initiates a snapshot of a gateway from a volume recovery point. This

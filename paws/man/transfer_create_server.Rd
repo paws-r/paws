@@ -5,10 +5,14 @@
 \title{Instantiates an autoscaling virtual server based on Secure File Transfer
 Protocol (SFTP) in AWS}
 \usage{
-transfer_create_server(IdentityProviderDetails, IdentityProviderType,
-  LoggingRole, Tags)
+transfer_create_server(EndpointDetails, EndpointType,
+  IdentityProviderDetails, IdentityProviderType, LoggingRole, Tags)
 }
 \arguments{
+\item{EndpointDetails}{}
+
+\item{EndpointType}{}
+
 \item{IdentityProviderDetails}{An array containing all of the information required to call a
 customer-supplied authentication API. This parameter is not required
 when the \code{IdentityProviderType} value of server that is created uses the
@@ -38,6 +42,10 @@ The response returns the \code{ServerId} value for the newly created server.
 }
 \section{Request syntax}{
 \preformatted{transfer$create_server(
+  EndpointDetails = list(
+    VpcEndpointId = "string"
+  ),
+  EndpointType = "PUBLIC"|"VPC_ENDPOINT",
   IdentityProviderDetails = list(
     Url = "string",
     InvocationRole = "string"

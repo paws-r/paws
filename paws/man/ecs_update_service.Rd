@@ -80,6 +80,12 @@ CodeDeploy deployment should be created. For more information, see
 \href{https://docs.aws.amazon.com/codedeploy/latest/APIReference/API_CreateDeployment.html}{CreateDeployment}
 in the \emph{AWS CodeDeploy API Reference}.
 
+For services using an external deployment controller, you can update
+only the desired count and health check grace period using this API. If
+the launch type, load balancer, network configuration, platform version,
+or task definition need to be updated, you should create a new task set.
+For more information, see CreateTaskSet.
+
 You can add to or subtract from the number of instantiations of a task
 definition in a service by specifying the cluster that the service is
 running in and a new \code{desiredCount} parameter.

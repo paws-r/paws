@@ -2,7 +2,7 @@
 % Please edit documentation in R/workmail_operations.R
 \name{workmail_associate_delegate_to_resource}
 \alias{workmail_associate_delegate_to_resource}
-\title{Adds a member to the resource's set of delegates}
+\title{Adds a member (user or group) to the resource's set of delegates}
 \usage{
 workmail_associate_delegate_to_resource(OrganizationId, ResourceId,
   EntityId)
@@ -10,12 +10,12 @@ workmail_associate_delegate_to_resource(OrganizationId, ResourceId,
 \arguments{
 \item{OrganizationId}{[required] The organization under which the resource exists.}
 
-\item{ResourceId}{[required] The resource for which members are associated.}
+\item{ResourceId}{[required] The resource for which members (users or groups) are associated.}
 
 \item{EntityId}{[required] The member (user or group) to associate to the resource.}
 }
 \description{
-Adds a member to the resource's set of delegates.
+Adds a member (user or group) to the resource's set of delegates.
 }
 \section{Request syntax}{
 \preformatted{workmail$associate_delegate_to_resource(

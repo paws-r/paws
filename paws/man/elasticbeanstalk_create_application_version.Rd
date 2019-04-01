@@ -6,7 +6,7 @@
 \usage{
 elasticbeanstalk_create_application_version(ApplicationName,
   VersionLabel, Description, SourceBuildInformation, SourceBundle,
-  BuildConfiguration, AutoCreateApplication, Process)
+  BuildConfiguration, AutoCreateApplication, Process, Tags)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application. If no application is found with this name,
@@ -51,6 +51,11 @@ from a source bundle in Amazon S3, processing is optional.
 The \code{Process} option validates Elastic Beanstalk configuration files. It
 doesn't validate your application's configuration files, like proxy
 server or Docker configuration.}
+
+\item{Tags}{Specifies the tags applied to the application version.
+
+Elastic Beanstalk applies these tags only to the application version.
+Environments that use the application version don't inherit the tags.}
 }
 \description{
 Creates an application version for the specified application. You can
@@ -97,7 +102,13 @@ to launch an environment from the application version.
     TimeoutInMinutes = 123
   ),
   AutoCreateApplication = TRUE|FALSE,
-  Process = TRUE|FALSE
+  Process = TRUE|FALSE,
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }
