@@ -4,9 +4,18 @@
 \name{paws-package}
 \alias{paws}
 \alias{paws-package}
-\title{paws: Paws Amazon Web Services SDK}
+\title{paws: An Amazon Web Services Software Development Kit}
 \description{
-An Amazon Web Services software development kit.
+R interface to Amazon Web Services <https://aws.amazon.com>.
+    This package supports a wide variety of services, including compute,
+    storage, database, machine learning, and more.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/paws-r/paws}
+}
+
 }
 \author{
 \strong{Maintainer}: David Kretch \email{david.kretch@gmail.com}
