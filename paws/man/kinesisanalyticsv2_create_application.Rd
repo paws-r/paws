@@ -27,7 +27,8 @@ monitor application configuration errors.}
 }
 \description{
 Creates an Amazon Kinesis Data Analytics application. For information
-about creating a Kinesis Data Analytics application, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/Java/creating-app.html}{Creating an Application}.
+about creating a Kinesis Data Analytics application, see Creating an
+Application.
 }
 \details{
 SQL is not enabled for this private beta release. Using SQL parameters

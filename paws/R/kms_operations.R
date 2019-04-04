@@ -82,11 +82,8 @@ kms_cancel_key_deletion <- function(KeyId) {
 #' 
 #' To connect a custom key store, its associated AWS CloudHSM cluster must
 #' have at least one active HSM. To get the number of active HSMs in a
-#' cluster, use the
-#' [DescribeClusters](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters)
-#' operation. To add HSMs to the cluster, use the
-#' [CreateHsm](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_CreateHsm)
-#' operation.
+#' cluster, use the DescribeClusters operation. To add HSMs to the cluster,
+#' use the CreateHsm operation.
 #' 
 #' The connection process can take an extended amount of time to complete;
 #' up to 20 minutes. This operation starts the connection process, but it
@@ -996,10 +993,8 @@ kms_delete_imported_key_material <- function(KeyId) {
 #' associated AWS CloudHSM cluster is active and contains the minimum
 #' number of HSMs required for the operation, if any.
 #' 
-#' For help repairing your custom key store, see the [Troubleshooting
-#' Custom Key
-#' Stores](http://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore-html)
-#' topic in the *AWS Key Management Service Developer Guide*.
+#' For help repairing your custom key store, see the Troubleshooting Custom
+#' Key Stores topic in the *AWS Key Management Service Developer Guide*.
 #'
 #' @usage
 #' kms_describe_custom_key_stores(CustomKeyStoreId, CustomKeyStoreName,

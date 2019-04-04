@@ -813,9 +813,8 @@ s3_delete_bucket_policy <- function(Bucket) {
 #' Deletes the replication configuration from the bucket
 #'
 #' Deletes the replication configuration from the bucket. For information
-#' about replication configuration, see [Cross-Region Replication
-#' (CRR)](https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html) in the
-#' *Amazon S3 Developer Guide*.
+#' about replication configuration, see Cross-Region Replication (CRR) in
+#' the *Amazon S3 Developer Guide*.
 #'
 #' @usage
 #' s3_delete_bucket_replication(Bucket)
@@ -4006,9 +4005,8 @@ s3_put_bucket_policy <- function(Bucket, ContentMD5 = NULL, ConfirmRemoveSelfBuc
 #' Creates a replication configuration or replaces an existing one
 #'
 #' Creates a replication configuration or replaces an existing one. For
-#' more information, see [Cross-Region Replication
-#' (CRR)](https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html) in the
-#' *Amazon S3 Developer Guide*.
+#' more information, see Cross-Region Replication (CRR) in the *Amazon S3
+#' Developer Guide*.
 #'
 #' @usage
 #' s3_put_bucket_replication(Bucket, ContentMD5, ReplicationConfiguration)

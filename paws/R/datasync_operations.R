@@ -61,9 +61,7 @@ datasync_cancel_task_execution <- function(TaskExecutionArn) {
 #' agents, all of them need to have status AVAILABLE for the task to run.
 #' If you use multiple agents for a source location, the status of all the
 #' agents must be AVAILABLE for the task to run. For more information, see
-#' [Activating a Sync
-#' Agent](https://docs.aws.amazon.com/sync-service/latest/userguide/working-with-sync-agents.html#activating-sync-agent)
-#' in the *AWS DataSync User Guide.*
+#' Activating a Sync Agent in the *AWS DataSync User Guide.*
 #' 
 #' Agents are automatically updated by AWS on a regular basis, using a
 #' mechanism that ensures minimal interruption to your tasks.
@@ -81,9 +79,7 @@ datasync_cancel_task_execution <- function(TaskExecutionArn) {
 #' might also include other activation-related parameters; however, these
 #' are merely defaults. The arguments you pass to this API call determine
 #' the actual configuration of your agent. For more information, see
-#' [Activating a Sync
-#' Agent](https://docs.aws.amazon.com/sync-service/latest/userguide/working-with-sync-agents.html#activating-sync-agent)
-#' in the *AWS DataSync User Guide.*
+#' Activating a Sync Agent in the *AWS DataSync User Guide.*
 #' @param AgentName The name you configured for your agent. This value is a text reference
 #' that is used to identify the agent in the console.
 #' @param Tags The key-value pair that represents the tag you want to associate with
@@ -211,10 +207,8 @@ datasync_create_location_efs <- function(Subdirectory, EfsFilesystemArn, Ec2Conf
 #' all of the files that you want sync allow read access for all users.
 #' Doing either enables the agent to read the files. For the agent to
 #' access directories, you must additionally enable all execute access. For
-#' information about NFS export configuration, see [18.7. The /etc/exports
-#' Configuration
-#' File](https://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-nfs-server-config-exports.html)
-#' in the Centos documentation.
+#' information about NFS export configuration, see 18.7. The /etc/exports
+#' Configuration File in the Centos documentation.
 #' @param ServerHostname &#91;required&#93; The name of the NFS server. This value is the IP address or Domain Name
 #' Service (DNS) name of the NFS server. An agent that is installed
 #' on-premises uses this host name to mount the NFS server in a network.
@@ -274,9 +268,8 @@ datasync_create_location_nfs <- function(Subdirectory, ServerHostname, OnPremCon
 #' permissions. You can set up the required permissions by creating an IAM
 #' policy that grants the required permissions and attaching the policy to
 #' the role. An example of such a policy is shown in the examples section.
-#' For more information, see [Configuring Amazon S3 Location
-#' Settings](https://docs.aws.amazon.com/sync-service/latest/userguide/configuring-s3-locations.html)
-#' in the *AWS DataSync User Guide*.
+#' For more information, see Configuring Amazon S3 Location Settings in the
+#' *AWS DataSync User Guide*.
 #'
 #' @usage
 #' datasync_create_location_s3(Subdirectory, S3BucketArn, S3Config, Tags)
@@ -976,9 +969,8 @@ datasync_list_tasks <- function(MaxResults = NULL, NextToken = NULL) {
 #' `TaskExecution` has the following transition phases: INITIALIZING \\|
 #' PREPARING \\| TRANSFERRING \\| VERIFYING \\| SUCCESS/FAILURE.
 #' 
-#' For detailed information, see *Task Execution* in [Components and
-#' Terminology](https://docs.aws.amazon.com/sync-service/latest/userguide/how-awssync-works.html#terminology)
-#' in the *AWS DataSync User Guide*.
+#' For detailed information, see *Task Execution* in Components and
+#' Terminology in the *AWS DataSync User Guide*.
 #'
 #' @usage
 #' datasync_start_task_execution(TaskArn, OverrideOptions)

@@ -23,11 +23,8 @@ disconnect and reconnect a custom key store at any time.
 
 To connect a custom key store, its associated AWS CloudHSM cluster must
 have at least one active HSM. To get the number of active HSMs in a
-cluster, use the
-\href{http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters}{DescribeClusters}
-operation. To add HSMs to the cluster, use the
-\href{http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_CreateHsm}{CreateHsm}
-operation.
+cluster, use the DescribeClusters operation. To add HSMs to the cluster,
+use the CreateHsm operation.
 
 The connection process can take an extended amount of time to complete;
 up to 20 minutes. This operation starts the connection process, but it

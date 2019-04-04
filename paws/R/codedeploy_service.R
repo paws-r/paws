@@ -82,8 +82,7 @@ NULL
 #' -   [AWS CLI Reference for AWS
 #'     CodeDeploy](https://docs.aws.amazon.com/cli/latest/reference/deploy/index.html)
 #' 
-#' -   [AWS CodeDeploy Developer
-#'     Forum](https://forums.aws.amazon.com/forum.jspa?forumID=179)
+#' -   AWS CodeDeploy Developer Forum
 #'
 #' @section Example:
 #' ```

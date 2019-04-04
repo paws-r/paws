@@ -4924,8 +4924,7 @@ iam_list_attached_role_policies <- function(RoleName, PathPrefix = NULL, Marker 
 #' @param UserName &#91;required&#93; The name (friendly name, not ARN) of the user to list attached policies
 #' for.
 #' 
-#' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' This parameter allows (through its regex pattern) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@-
 #' @param PathPrefix The path prefix for filtering the results. This parameter is optional.
@@ -6309,8 +6308,7 @@ iam_list_signing_certificates <- function(UserName = NULL, Marker = NULL, MaxIte
 #'
 #' @param UserName &#91;required&#93; The name of the user to list policies for.
 #' 
-#' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' This parameter allows (through its regex pattern) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@-
 #' @param Marker Use this parameter only when paginating results and only after you
@@ -9114,9 +9112,8 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
 #' certificate entity includes a public key certificate, a private key, and
 #' an optional certificate chain, which should all be PEM-encoded.
 #' 
-#' We recommend that you use [AWS Certificate
-#' Manager](http://docs.aws.amazon.com/certificate-manager/) to provision,
-#' manage, and deploy your server certificates. With ACM you can request a
+#' We recommend that you use AWS Certificate Manager to provision, manage,
+#' and deploy your server certificates. With ACM you can request a
 #' certificate, deploy it to AWS resources, and let ACM handle certificate
 #' renewals for you. Certificates provided by ACM are free. For more
 #' information about using ACM, see the [AWS Certificate Manager User

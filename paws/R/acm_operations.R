@@ -535,8 +535,9 @@ acm_remove_tags_from_certificate <- function(CertificateArn, Tags) {
 #' certificates can be renewed with this operation. In order to renew your
 #' ACM PCA certificates with ACM, you must first [grant the ACM service
 #' principal permission to do
-#' so](acm-pca/latest/userguide/PcaPermissions.html). For more information,
-#' see [Testing Managed Renewal](acm/latest/userguide/manuel-renewal.html)
+#' so](https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaPermissions.html).
+#' For more information, see [Testing Managed
+#' Renewal](https://docs.aws.amazon.com/acm/latest/userguide/manuel-renewal.html)
 #' in the ACM User Guide.
 #'
 #' @usage

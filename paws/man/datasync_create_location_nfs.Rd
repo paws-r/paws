@@ -26,8 +26,8 @@ the NFS export with \code{no_root_squash,} or ensure that the permissions for
 all of the files that you want sync allow read access for all users.
 Doing either enables the agent to read the files. For the agent to
 access directories, you must additionally enable all execute access. For
-information about NFS export configuration, see \href{https://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-nfs-server-config-exports.html}{18.7. The /etc/exports Configuration File}
-in the Centos documentation.}
+information about NFS export configuration, see 18.7. The /etc/exports
+Configuration File in the Centos documentation.}
 
 \item{ServerHostname}{[required] The name of the NFS server. This value is the IP address or Domain Name
 Service (DNS) name of the NFS server. An agent that is installed

@@ -20,8 +20,8 @@ represents an individual run of a task. Each task can have at most one
 \code{TaskExecution} has the following transition phases: INITIALIZING \|
 PREPARING \| TRANSFERRING \| VERIFYING \| SUCCESS/FAILURE.
 
-For detailed information, see \emph{Task Execution} in \href{https://docs.aws.amazon.com/sync-service/latest/userguide/how-awssync-works.html#terminology}{Components and Terminology}
-in the \emph{AWS DataSync User Guide}.
+For detailed information, see \emph{Task Execution} in Components and
+Terminology in the \emph{AWS DataSync User Guide}.
 }
 \section{Request syntax}{
 \preformatted{datasync$start_task_execution(

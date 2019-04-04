@@ -3850,11 +3850,9 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' more information about IP addresses for which you can\'t create health
 #' checks, see the following documents:
 #' 
-#' -   [RFC 5735, Special Use IPv4
-#'     Addresses](https://tools.ietf.org/html/rfc5735)
+#' -   RFC 5735, Special Use IPv4 Addresses
 #' 
-#' -   [RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address
-#'     Space](https://tools.ietf.org/html/rfc6598)
+#' -   RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address Space
 #' 
 #' -   [RFC 5156, Special-Use IPv6
 #'     Addresses](https://tools.ietf.org/html/rfc5156)
