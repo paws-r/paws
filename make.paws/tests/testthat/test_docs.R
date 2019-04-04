@@ -407,6 +407,30 @@ test_that("convert", {
   text <- "<p>foo \\a \\b</p>"
   expected <- c("foo `\\\\a` `\\\\b`")
   expect_equal(convert(text), expected)
+
+  text <- "<a href='http://www.example.com'>foo</a>"
+  expected <- c("[foo](http://www.example.com)")
+  expect_equal(convert(text), expected)
+
+  text <- "<a href='https://httpbin.org/invalid'>foo</a>"
+  expected <- c("foo")
+  expect_equal(convert(text), expected)
+
+  text <- "<a href='http://invalid'>foo</a>"
+  expected <- c("foo")
+  expect_equal(convert(text), expected)
+
+  text <- "<a>foo</a>"
+  expected <- c("foo")
+  expect_equal(convert(text), expected)
+
+  text <- "<a href='acm/'>foo</a>"
+  expected <- c("[foo](https://docs.aws.amazon.com/acm/)")
+  expect_equal(convert(text), expected)
+
+  text <- "<a href='mailto:foo@bar.com'>foo@bar.com</a>"
+  expected <- c("<foo@bar.com>")
+  expect_equal(convert(text), expected)
 })
 
 test_that("first_sentence", {

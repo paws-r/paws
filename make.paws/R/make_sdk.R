@@ -17,7 +17,7 @@ make_sdk <- function(in_dir, out_dir) {
 
 # Clear out files from the output directory.
 clear_dir <- function(path) {
-  keep <- c(".Rbuildignore", "DESCRIPTION", "cran-comments.md")
+  keep <- c(".Rbuildignore", "DESCRIPTION", "cran-comments.md", "NEWS.md")
   files <- list.files(path, recursive = TRUE)
   delete <- setdiff(files, keep)
   sapply(file.path(path, delete), file.remove)
