@@ -470,8 +470,7 @@ apigateway_create_domain_name <- function(domainName, certificateName = NULL, ce
 #' @param name &#91;required&#93; \[Required\] The name of the model. Must be alphanumeric.
 #' @param description The description of the model.
 #' @param schema The schema for the model. For `application/json` models, this should be
-#' [JSON schema draft
-#' 4](https://tools.ietf.org/html/draft-zyp-json-schema-04) model.
+#' JSON schema draft 4 model.
 #' @param contentType &#91;required&#93; \[Required\] The content-type for the model.
 #'
 #' @section Request syntax:
@@ -4215,9 +4214,7 @@ apigateway_put_integration_response <- function(restApiId, resourceId, httpMetho
 #' @param apiKeyRequired Specifies whether the method required a valid ApiKey.
 #' @param operationName A human-friendly operation identifier for the method. For example, you
 #' can assign the `operationName` of `ListPets` for the `GET /pets` method
-#' in
-#' [PetStore](https://petstore-demo-endpoint.execute-api.com/petstore/pets)
-#' example.
+#' in PetStore example.
 #' @param requestParameters A key-value map defining required or optional method request parameters
 #' that can be accepted by API Gateway. A key defines a method request
 #' parameter name matching the pattern of

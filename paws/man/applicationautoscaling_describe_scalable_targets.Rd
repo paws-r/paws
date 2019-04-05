@@ -42,7 +42,7 @@ and the unique identifier is the resource ID. Example:
 parameter must specify the \code{OutputValue} from the CloudFormation
 template stack used to access the resources. The unique identifier
 is defined by the service provider. More information is available in
-our \href{https://github.com/aws/aws-auto-scaling-custom-resource}{GitHub repository}.
+our GitHub repository.
 }}
 
 \item{ScalableDimension}{The scalable dimension associated with the scalable target. This string

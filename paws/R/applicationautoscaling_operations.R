@@ -444,8 +444,7 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #'     parameter must specify the `OutputValue` from the CloudFormation
 #'     template stack used to access the resources. The unique identifier
 #'     is defined by the service provider. More information is available in
-#'     our [GitHub
-#'     repository](https://github.com/aws/aws-auto-scaling-custom-resource).
+#'     our GitHub repository.
 #' @param ScalableDimension The scalable dimension associated with the scalable target. This string
 #' consists of the service namespace, resource type, and scaling property.
 #' If you specify a scalable dimension, you must also specify a resource

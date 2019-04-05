@@ -362,8 +362,8 @@ kinesisanalyticsv2_add_application_reference_data_source <- function(Application
 #' Creates an Amazon Kinesis Data Analytics application
 #'
 #' Creates an Amazon Kinesis Data Analytics application. For information
-#' about creating a Kinesis Data Analytics application, see [Creating an
-#' Application](https://docs.aws.amazon.com/kinesisanalytics/latest/Java/creating-app.html).
+#' about creating a Kinesis Data Analytics application, see Creating an
+#' Application.
 #' 
 #' SQL is not enabled for this private beta release. Using SQL parameters
 #' (such as SqlApplicationConfiguration) will result in an error.

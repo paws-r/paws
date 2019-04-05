@@ -15,6 +15,7 @@ Imports:
     desc,
     devtools,
     glue,
+    httr,
     jsonlite,
     methods,
     paws.common,

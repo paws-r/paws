@@ -299,8 +299,8 @@ length.
 '@'.
 }
 
-For more information, see \href{http://redis.io/commands/AUTH}{AUTH password}
-at http://redis.io/commands/AUTH.}
+For more information, see AUTH password at
+http://redis.io/commands/AUTH.}
 
 \item{TransitEncryptionEnabled}{A flag that enables in-transit encryption when set to \code{true}.
 

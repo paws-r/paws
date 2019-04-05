@@ -28,8 +28,8 @@ Identity and Access Management (IAM) role that has the required
 permissions. You can set up the required permissions by creating an IAM
 policy that grants the required permissions and attaching the policy to
 the role. An example of such a policy is shown in the examples section.
-For more information, see \href{https://docs.aws.amazon.com/sync-service/latest/userguide/configuring-s3-locations.html}{Configuring Amazon S3 Location Settings}
-in the \emph{AWS DataSync User Guide}.
+For more information, see Configuring Amazon S3 Location Settings in the
+\emph{AWS DataSync User Guide}.
 }
 \section{Request syntax}{
 \preformatted{datasync$create_location_s3(

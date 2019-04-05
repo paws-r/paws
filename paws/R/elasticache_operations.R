@@ -506,8 +506,8 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #' -   Cannot contain any of the following characters: \'/\', \'\"\', or
 #'     \'@\'.
 #' 
-#' For more information, see [AUTH password](http://redis.io/commands/AUTH)
-#' at http://redis.io/commands/AUTH.
+#' For more information, see AUTH password at
+#' http://redis.io/commands/AUTH.
 #'
 #' @section Request syntax:
 #' ```
@@ -1048,8 +1048,8 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' -   Cannot contain any of the following characters: \'/\', \'\"\', or
 #'     \'@\'.
 #' 
-#' For more information, see [AUTH password](http://redis.io/commands/AUTH)
-#' at http://redis.io/commands/AUTH.
+#' For more information, see AUTH password at
+#' http://redis.io/commands/AUTH.
 #' @param TransitEncryptionEnabled A flag that enables in-transit encryption when set to `true`.
 #' 
 #' You cannot modify the value of `TransitEncryptionEnabled` after the

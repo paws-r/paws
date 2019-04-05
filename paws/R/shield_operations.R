@@ -63,11 +63,9 @@ shield_associate_drt_log_bucket <- function(LogBucket) {
 #' Prior to making the `AssociateDRTRole` request, you must attach the
 #' [AWSShieldDRTAccessPolicy](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/service-role/AWSShieldDRTAccessPolicy)
 #' managed policy to the role you will specify in the request. For more
-#' information see [Attaching and Detaching IAM
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html).
-#' The role must also trust the service principal
-#' ` drt.shield.amazonaws.com`. For more information, see [IAM JSON Policy
-#' Elements:
+#' information see Attaching and Detaching IAM Policies. The role must also
+#' trust the service principal ` drt.shield.amazonaws.com`. For more
+#' information, see [IAM JSON Policy Elements:
 #' Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html).
 #' 
 #' The DRT will have access only to your AWS WAF and Shield resources. By
@@ -95,9 +93,8 @@ shield_associate_drt_log_bucket <- function(LogBucket) {
 #' 
 #' Prior to making the `AssociateDRTRole` request, you must attach the
 #' [AWSShieldDRTAccessPolicy](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/service-role/AWSShieldDRTAccessPolicy)
-#' managed policy to this role. For more information see [Attaching and
-#' Detaching IAM
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html).
+#' managed policy to this role. For more information see Attaching and
+#' Detaching IAM Policies.
 #'
 #' @section Request syntax:
 #' ```

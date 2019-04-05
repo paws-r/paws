@@ -266,8 +266,8 @@ length.
 '@'.
 }
 
-For more information, see \href{http://redis.io/commands/AUTH}{AUTH password}
-at http://redis.io/commands/AUTH.}
+For more information, see AUTH password at
+http://redis.io/commands/AUTH.}
 }
 \description{
 Creates a cluster. All nodes in the cluster run the same

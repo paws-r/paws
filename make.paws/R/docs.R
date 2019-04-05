@@ -198,12 +198,16 @@ comment <- function(s, char = "#") {
 # The conversion pipeline goes
 # 1. raw html
 # 2. escape unmatched quotes in code snippets
-# 3. convert html to markdown with Pandoc
-# 4. escape special characters
-# 5. finished documentation added to generated R code
+# 3. check whether links are valid and delete dead links
+# 4. convert html to markdown with Pandoc
+# 5. escape special characters
+# 6. finished documentation added to generated R code
 #
 # Unmatched quotes are escaped while still in html because it is easier to
 # identify code snippets as they are all in <code></code> nodes.
+#
+# Likewise, we check the validity of links while in html because it is easy
+# to find all <a> nodes.
 #
 # Special characters % { } \ are escaped after converting to html because
 # this avoids any changes that would otherwise be made by Pandoc.
@@ -219,35 +223,67 @@ convert <- function(docs) {
   result
 }
 
-# Clean HTML to escape special characters that will go into Rd files.
-# See https://developer.r-project.org/parseRd.pdf.
+# Clean an HTML string to avoid issues that result in invalid Rd
+# R documentation files.
 clean_html <- function(text) {
   if (length(text) == 1 && text == "") return("")
   html <- xml2::read_html(text)
   as.character(clean_html_node(html))
 }
 
-# Escape unmatched quotes in code snippets.
-# Note: this modifies its inputs.
+# Clean an HTML node.
+# Note: This function, and all the clean_html functions, modify their inputs.
 clean_html_node <- function(node) {
-  if (xml2::xml_name(node) == "code") {
-    text <- as.character(node)
-    text <- gsub("^<code>(.*)</code>$", "\\1", text)
-    text <- escape_unmatched_quotes(text)
-
-    # R's Rd generator inserts garbage when it sees some un-escaped brackets
-    # within code snippets. To avoid, add escaping backslashes. We need two
-    # backslashes instead of one, since Pandoc converts "\[" to "[".
-    text <- mask(text, c("[" = "\\\\[", "]" = "\\\\]"))
-
-    new_node <- xml2::xml_new_root("code")
-    xml2::xml_text(new_node) <- text
-    xml2::xml_replace(node, new_node)
-  }
+  switch(
+    xml2::xml_name(node),
+    code = clean_html_code(node),
+    a = clean_html_a(node)
+  )
   for (child in xml2::xml_children(node)) {
     child <- clean_html_node(child)
   }
   node
+}
+
+# Escape unmatched quotes in code snippets, which are invalid in Rd files.
+# See https://developer.r-project.org/parseRd.pdf.
+clean_html_code <- function(node) {
+  text <- as.character(node)
+  text <- gsub("^<code>(.*)</code>$", "\\1", text)
+  text <- escape_unmatched_quotes(text)
+
+  # R's Rd generator inserts garbage when it sees some un-escaped brackets
+  # within code snippets. To avoid, add escaping backslashes. We need two
+  # backslashes instead of one, since Pandoc converts "\[" to "[".
+  text <- mask(text, c("[" = "\\\\[", "]" = "\\\\]"))
+
+  new_node <- xml2::xml_new_root("code")
+  xml2::xml_text(new_node) <- text
+  xml2::xml_replace(node, new_node)
+}
+
+# Check that links are valid, and if not replace them with the link text.
+clean_html_a <- function(node) {
+  url <- xml2::xml_attr(node, "href")
+  if (length(url) == 0 || is.na(url) || url == "") return()
+
+  if (startsWith(url, "mailto:")) return()
+
+  # Add hostname to relative AWS documentation links.
+  if (grepl("^[a-zA-Z0-9\\-]+/", url)) {
+    url <- sprintf("https://docs.aws.amazon.com/%s", url)
+    xml2::xml_attr(node, "href") <- url
+  }
+
+  # TODO: This will randomly return that a link is bad.
+  status_code <- tryCatch(
+    httr::status_code(httr::HEAD(url, httr::timeout(1))),
+    error = function(e) NA
+  )
+  # Delete URLs when the page is unreachable or explicitly missing.
+  if (is.na(status_code) || status_code == 404) {
+    xml2::xml_attr(node, "href") <- NULL
+  }
 }
 
 # Escape special characters % { }, and single \ not followed by another special

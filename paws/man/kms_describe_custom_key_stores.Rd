@@ -61,8 +61,8 @@ operation to disconnect it. If your custom key store state is
 associated AWS CloudHSM cluster is active and contains the minimum
 number of HSMs required for the operation, if any.
 
-For help repairing your custom key store, see the \href{http://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore-html}{Troubleshooting Custom Key Stores}
-topic in the \emph{AWS Key Management Service Developer Guide}.
+For help repairing your custom key store, see the Troubleshooting Custom
+Key Stores topic in the \emph{AWS Key Management Service Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{kms$describe_custom_key_stores(

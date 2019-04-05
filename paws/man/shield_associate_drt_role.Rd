@@ -14,7 +14,8 @@ your AWS account.
 
 Prior to making the \code{AssociateDRTRole} request, you must attach the
 \href{https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/service-role/AWSShieldDRTAccessPolicy}{AWSShieldDRTAccessPolicy}
-managed policy to this role. For more information see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html}{Attaching and Detaching IAM Policies}.}
+managed policy to this role. For more information see Attaching and
+Detaching IAM Policies.}
 }
 \description{
 Authorizes the DDoS Response team (DRT), using the specified role, to
@@ -30,9 +31,9 @@ associated role, the new \code{RoleArn} will replace the existing \code{RoleArn}
 Prior to making the \code{AssociateDRTRole} request, you must attach the
 \href{https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/service-role/AWSShieldDRTAccessPolicy}{AWSShieldDRTAccessPolicy}
 managed policy to the role you will specify in the request. For more
-information see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html}{Attaching and Detaching IAM Policies}.
-The role must also trust the service principal
-\code{ drt.shield.amazonaws.com}. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html}{IAM JSON Policy Elements: Principal}.
+information see Attaching and Detaching IAM Policies. The role must also
+trust the service principal \code{ drt.shield.amazonaws.com}. For more
+information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html}{IAM JSON Policy Elements: Principal}.
 
 The DRT will have access only to your AWS WAF and Shield resources. By
 submitting this request, you authorize the DRT to inspect your AWS WAF

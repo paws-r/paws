@@ -15,11 +15,11 @@ simpledb_list_domains(MaxNumberOfDomains, NextToken)
 \description{
 The \code{ListDomains} operation lists all domains associated with the Access
 Key ID. It returns domain names up to the limit set by
-\href{#MaxNumberOfDomains}{MaxNumberOfDomains}. A \href{#NextToken}{NextToken} is
-returned if there are more than \code{MaxNumberOfDomains} domains. Calling
-\code{ListDomains} successive times with the \code{NextToken} provided by the
-operation returns up to \code{MaxNumberOfDomains} more domain names with each
-successive operation call.
+MaxNumberOfDomains. A NextToken is returned if there are more than
+\code{MaxNumberOfDomains} domains. Calling \code{ListDomains} successive times
+with the \code{NextToken} provided by the operation returns up to
+\code{MaxNumberOfDomains} more domain names with each successive operation
+call.
 }
 \section{Request syntax}{
 \preformatted{simpledb$list_domains(

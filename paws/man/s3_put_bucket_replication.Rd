@@ -15,8 +15,8 @@ s3_put_bucket_replication(Bucket, ContentMD5, ReplicationConfiguration)
 }
 \description{
 Creates a replication configuration or replaces an existing one. For
-more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html}{Cross-Region Replication (CRR)} in the
-\emph{Amazon S3 Developer Guide}.
+more information, see Cross-Region Replication (CRR) in the \emph{Amazon S3
+Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{s3$put_bucket_replication(

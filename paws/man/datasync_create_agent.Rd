@@ -17,8 +17,7 @@ key for your agent in the query string parameter \code{activationKey}. It
 might also include other activation-related parameters; however, these
 are merely defaults. The arguments you pass to this API call determine
 the actual configuration of your agent. For more information, see
-\href{https://docs.aws.amazon.com/sync-service/latest/userguide/working-with-sync-agents.html#activating-sync-agent}{Activating a Sync Agent}
-in the \emph{AWS DataSync User Guide.}}
+Activating a Sync Agent in the \emph{AWS DataSync User Guide.}}
 
 \item{AgentName}{The name you configured for your agent. This value is a text reference
 that is used to identify the agent in the console.}
@@ -44,8 +43,7 @@ You can use an agent for more than one location. If a task uses multiple
 agents, all of them need to have status AVAILABLE for the task to run.
 If you use multiple agents for a source location, the status of all the
 agents must be AVAILABLE for the task to run. For more information, see
-\href{https://docs.aws.amazon.com/sync-service/latest/userguide/working-with-sync-agents.html#activating-sync-agent}{Activating a Sync Agent}
-in the \emph{AWS DataSync User Guide.}
+Activating a Sync Agent in the \emph{AWS DataSync User Guide.}
 
 Agents are automatically updated by AWS on a regular basis, using a
 mechanism that ensures minimal interruption to your tasks.
