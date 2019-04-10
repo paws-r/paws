@@ -13,7 +13,7 @@ code <- function(x) {
 # Format code so differences in style don't affect comparisons.
 format_test_code <- function(code) {
   formatted <- formatR::tidy_source(text = code, output = FALSE)
-  result <- formatted$text.tidy
+  result <- strsplit(paste(formatted$text.tidy, collapse = "\n"), "\n")[[1]]
   return(result)
 }
 
@@ -107,6 +107,8 @@ test_that("make_tests", {
 
     svc <- paws::api()
 
+    if (Sys.getenv("NOT_CRAN") == "true") {
+
     test_that("describe_foo", {
       expect_error(svc$describe_foo(), NA)
     })
@@ -118,10 +120,11 @@ test_that("make_tests", {
     test_that("list_bar", {
       expect_error(svc$list_bar(), NA)
     })
+
+    }
   })
   actual <- format_test_code(a)
   expected <- format_test_code(e)
-  expected <- sapply(expected, function(x) c(x, "")) # re-insert blank lines.
-  expected <- expected[-length(expected)] # no trailing blank line.
+  actual <- Filter(function(x) !grepl("^ *$", x), actual) # Delete blank lines.
   expect_equal(actual, expected)
 })
