@@ -2,6 +2,8 @@ context("rekognition")
 
 svc <- paws::rekognition()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("list_collections", {
   expect_error(svc$list_collections(), NA)
 })
@@ -17,3 +19,5 @@ test_that("list_stream_processors", {
 test_that("list_stream_processors", {
   expect_error(svc$list_stream_processors(MaxResults = 20), NA)
 })
+
+}

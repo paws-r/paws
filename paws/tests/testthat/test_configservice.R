@@ -2,6 +2,8 @@ context("configservice")
 
 svc <- paws::configservice()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("describe_aggregation_authorizations", {
   expect_error(svc$describe_aggregation_authorizations(), NA)
 })
@@ -49,3 +51,5 @@ test_that("describe_pending_aggregation_requests", {
 test_that("describe_retention_configurations", {
   expect_error(svc$describe_retention_configurations(), NA)
 })
+
+}

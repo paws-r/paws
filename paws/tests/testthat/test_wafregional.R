@@ -2,6 +2,8 @@ context("wafregional")
 
 svc <- paws::wafregional()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("list_byte_match_sets", {
   expect_error(svc$list_byte_match_sets(), NA)
 })
@@ -53,3 +55,5 @@ test_that("list_web_ac_ls", {
 test_that("list_xss_match_sets", {
   expect_error(svc$list_xss_match_sets(), NA)
 })
+
+}

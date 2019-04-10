@@ -2,6 +2,8 @@ context("clouddirectory")
 
 svc <- paws::clouddirectory()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("list_development_schema_arns", {
   expect_error(svc$list_development_schema_arns(), NA)
 })
@@ -33,3 +35,5 @@ test_that("list_published_schema_arns", {
 test_that("list_published_schema_arns", {
   expect_error(svc$list_published_schema_arns(MaxResults = 20), NA)
 })
+
+}

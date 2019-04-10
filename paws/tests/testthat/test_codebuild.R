@@ -2,6 +2,8 @@ context("codebuild")
 
 svc <- paws::codebuild()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("list_builds", {
   expect_error(svc$list_builds(), NA)
 })
@@ -17,3 +19,5 @@ test_that("list_projects", {
 test_that("list_source_credentials", {
   expect_error(svc$list_source_credentials(), NA)
 })
+
+}

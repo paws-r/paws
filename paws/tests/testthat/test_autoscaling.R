@@ -2,6 +2,8 @@ context("autoscaling")
 
 svc <- paws::autoscaling()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("describe_account_limits", {
   expect_error(svc$describe_account_limits(), NA)
 })
@@ -61,3 +63,5 @@ test_that("describe_tags", {
 test_that("describe_termination_policy_types", {
   expect_error(svc$describe_termination_policy_types(), NA)
 })
+
+}

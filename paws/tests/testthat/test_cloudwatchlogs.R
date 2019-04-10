@@ -2,6 +2,8 @@ context("cloudwatchlogs")
 
 svc <- paws::cloudwatchlogs()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("describe_destinations", {
   expect_error(svc$describe_destinations(), NA)
 })
@@ -25,3 +27,5 @@ test_that("describe_queries", {
 test_that("describe_resource_policies", {
   expect_error(svc$describe_resource_policies(), NA)
 })
+
+}

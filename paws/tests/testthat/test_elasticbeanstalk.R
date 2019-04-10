@@ -2,6 +2,8 @@ context("elasticbeanstalk")
 
 svc <- paws::elasticbeanstalk()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("describe_account_attributes", {
   expect_error(svc$describe_account_attributes(), NA)
 })
@@ -29,3 +31,5 @@ test_that("list_available_solution_stacks", {
 test_that("list_platform_versions", {
   expect_error(svc$list_platform_versions(), NA)
 })
+
+}

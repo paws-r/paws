@@ -2,6 +2,8 @@ context("sns")
 
 svc <- paws::sns()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("list_phone_numbers_opted_out", {
   expect_error(svc$list_phone_numbers_opted_out(), NA)
 })
@@ -17,3 +19,5 @@ test_that("list_subscriptions", {
 test_that("list_topics", {
   expect_error(svc$list_topics(), NA)
 })
+
+}

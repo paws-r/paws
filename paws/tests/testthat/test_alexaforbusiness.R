@@ -2,6 +2,8 @@ context("alexaforbusiness")
 
 svc <- paws::alexaforbusiness()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("list_business_report_schedules", {
   expect_error(svc$list_business_report_schedules(), NA)
 })
@@ -25,3 +27,5 @@ test_that("list_skills_store_categories", {
 test_that("list_skills_store_categories", {
   expect_error(svc$list_skills_store_categories(MaxResults = 20), NA)
 })
+
+}

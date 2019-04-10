@@ -2,6 +2,8 @@ context("rds")
 
 svc <- paws::rds()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("describe_account_attributes", {
   expect_error(svc$describe_account_attributes(), NA)
 })
@@ -89,3 +91,5 @@ test_that("describe_reserved_db_instances_offerings", {
 test_that("describe_source_regions", {
   expect_error(svc$describe_source_regions(), NA)
 })
+
+}

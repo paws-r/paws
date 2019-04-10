@@ -2,6 +2,8 @@ context("lambda")
 
 svc <- paws::lambda()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("list_event_source_mappings", {
   expect_error(svc$list_event_source_mappings(), NA)
 })
@@ -13,3 +15,5 @@ test_that("list_functions", {
 test_that("list_layers", {
   expect_error(svc$list_layers(), NA)
 })
+
+}

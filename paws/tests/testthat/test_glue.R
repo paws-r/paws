@@ -2,6 +2,8 @@ context("glue")
 
 svc <- paws::glue()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("list_crawlers", {
   expect_error(svc$list_crawlers(), NA)
 })
@@ -33,3 +35,5 @@ test_that("list_triggers", {
 test_that("list_triggers", {
   expect_error(svc$list_triggers(MaxResults = 20), NA)
 })
+
+}

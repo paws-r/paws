@@ -2,6 +2,8 @@ context("servicecatalog")
 
 svc <- paws::servicecatalog()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("list_accepted_portfolio_shares", {
   expect_error(svc$list_accepted_portfolio_shares(), NA)
 })
@@ -21,3 +23,5 @@ test_that("list_record_history", {
 test_that("list_service_actions", {
   expect_error(svc$list_service_actions(), NA)
 })
+
+}

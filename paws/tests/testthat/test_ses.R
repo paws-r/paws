@@ -2,6 +2,8 @@ context("ses")
 
 svc <- paws::ses()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("describe_active_receipt_rule_set", {
   expect_error(svc$describe_active_receipt_rule_set(), NA)
 })
@@ -37,3 +39,5 @@ test_that("list_templates", {
 test_that("list_verified_email_addresses", {
   expect_error(svc$list_verified_email_addresses(), NA)
 })
+
+}

@@ -2,6 +2,8 @@ context("elasticache")
 
 svc <- paws::elasticache()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("describe_cache_clusters", {
   expect_error(svc$describe_cache_clusters(), NA)
 })
@@ -37,3 +39,5 @@ test_that("describe_reserved_cache_nodes_offerings", {
 test_that("describe_snapshots", {
   expect_error(svc$describe_snapshots(), NA)
 })
+
+}

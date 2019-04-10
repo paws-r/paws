@@ -2,6 +2,8 @@ context("appstream")
 
 svc <- paws::appstream()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("describe_directory_configs", {
   expect_error(svc$describe_directory_configs(), NA)
 })
@@ -33,3 +35,5 @@ test_that("describe_images", {
 test_that("describe_stacks", {
   expect_error(svc$describe_stacks(), NA)
 })
+
+}

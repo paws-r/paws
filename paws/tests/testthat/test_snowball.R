@@ -2,6 +2,8 @@ context("snowball")
 
 svc <- paws::snowball()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("describe_addresses", {
   expect_error(svc$describe_addresses(), NA)
 })
@@ -33,3 +35,5 @@ test_that("list_jobs", {
 test_that("list_jobs", {
   expect_error(svc$list_jobs(MaxResults = 20), NA)
 })
+
+}

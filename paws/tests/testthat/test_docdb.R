@@ -2,6 +2,8 @@ context("docdb")
 
 svc <- paws::docdb()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("describe_db_cluster_parameter_groups", {
   expect_error(svc$describe_db_cluster_parameter_groups(), NA)
 })
@@ -37,3 +39,5 @@ test_that("describe_events", {
 test_that("describe_pending_maintenance_actions", {
   expect_error(svc$describe_pending_maintenance_actions(), NA)
 })
+
+}

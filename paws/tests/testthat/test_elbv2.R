@@ -2,6 +2,8 @@ context("elbv2")
 
 svc <- paws::elbv2()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("describe_account_limits", {
   expect_error(svc$describe_account_limits(), NA)
 })
@@ -17,3 +19,5 @@ test_that("describe_ssl_policies", {
 test_that("describe_target_groups", {
   expect_error(svc$describe_target_groups(), NA)
 })
+
+}

@@ -2,6 +2,8 @@ context("sagemaker")
 
 svc <- paws::sagemaker()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("list_algorithms", {
   expect_error(svc$list_algorithms(), NA)
 })
@@ -121,3 +123,5 @@ test_that("list_workteams", {
 test_that("list_workteams", {
   expect_error(svc$list_workteams(MaxResults = 20), NA)
 })
+
+}

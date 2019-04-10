@@ -2,6 +2,8 @@ context("directoryservice")
 
 svc <- paws::directoryservice()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("describe_directories", {
   expect_error(svc$describe_directories(), NA)
 })
@@ -21,3 +23,5 @@ test_that("describe_trusts", {
 test_that("list_log_subscriptions", {
   expect_error(svc$list_log_subscriptions(), NA)
 })
+
+}

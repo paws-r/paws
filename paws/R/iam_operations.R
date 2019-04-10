@@ -4924,7 +4924,8 @@ iam_list_attached_role_policies <- function(RoleName, PathPrefix = NULL, Marker 
 #' @param UserName &#91;required&#93; The name (friendly name, not ARN) of the user to list attached policies
 #' for.
 #' 
-#' This parameter allows (through its regex pattern) a string of characters
+#' This parameter allows (through its [regex
+#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@-
 #' @param PathPrefix The path prefix for filtering the results. This parameter is optional.
@@ -6025,9 +6026,8 @@ iam_list_saml_providers <- function() {
 #' The SSH public keys returned by this operation are used only for
 #' authenticating the IAM user to an AWS CodeCommit repository. For more
 #' information about using SSH keys to authenticate to an AWS CodeCommit
-#' repository, see [Set up AWS CodeCommit for SSH
-#' Connections](http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html)
-#' in the *AWS CodeCommit User Guide*.
+#' repository, see Set up AWS CodeCommit for SSH Connections in the *AWS
+#' CodeCommit User Guide*.
 #' 
 #' Although each user is limited to a small number of keys, you can still
 #' paginate the results using the `MaxItems` and `Marker` parameters.
@@ -6308,7 +6308,8 @@ iam_list_signing_certificates <- function(UserName = NULL, Marker = NULL, MaxIte
 #'
 #' @param UserName &#91;required&#93; The name of the user to list policies for.
 #' 
-#' This parameter allows (through its regex pattern) a string of characters
+#' This parameter allows (through its [regex
+#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@-
 #' @param Marker Use this parameter only when paginating results and only after you
@@ -7888,10 +7889,10 @@ iam_tag_role <- function(RoleName, Tags) {
 #'
 #' @param UserName &#91;required&#93; The name of the user that you want to add tags to.
 #' 
-#' This parameter accepts (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters that
-#' consist of upper and lowercase alphanumeric characters with no spaces.
-#' You can also include any of the following characters: =,.@-
+#' This parameter accepts (through its regex pattern) a string of
+#' characters that consist of upper and lowercase alphanumeric characters
+#' with no spaces. You can also include any of the following characters:
+#' =,.@-
 #' @param Tags &#91;required&#93; The list of tags that you want to attach to the user. Each tag consists
 #' of a key name and an associated value.
 #'

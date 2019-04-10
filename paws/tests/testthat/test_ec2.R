@@ -2,6 +2,8 @@ context("ec2")
 
 svc <- paws::ec2()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("describe_account_attributes", {
   expect_error(svc$describe_account_attributes(), NA)
 })
@@ -477,3 +479,5 @@ test_that("describe_vpn_connections", {
 test_that("describe_vpn_gateways", {
   expect_error(svc$describe_vpn_gateways(), NA)
 })
+
+}

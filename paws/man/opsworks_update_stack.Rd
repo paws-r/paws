@@ -46,7 +46,8 @@ custom AMIs with OpsWorks, see \href{http://docs.aws.amazon.com/opsworks/latest/
 }
 
 The default option is the stack's current operating system. For more
-information about supported operating systems, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html}{AWS OpsWorks Stacks Operating Systems}.}
+information about supported operating systems, see AWS OpsWorks Stacks
+Operating Systems.}
 
 \item{HostnameTheme}{The stack's new host name theme, with spaces replaced by underscores.
 The theme is used to generate host names for the stack's instances. By

@@ -2,6 +2,8 @@ context("ssm")
 
 svc <- paws::ssm()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("describe_activations", {
   expect_error(svc$describe_activations(), NA)
 })
@@ -121,3 +123,5 @@ test_that("list_resource_data_sync", {
 test_that("list_resource_data_sync", {
   expect_error(svc$list_resource_data_sync(MaxResults = 20), NA)
 })
+
+}

@@ -2,6 +2,8 @@ context("elastictranscoder")
 
 svc <- paws::elastictranscoder()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("list_pipelines", {
   expect_error(svc$list_pipelines(), NA)
 })
@@ -9,3 +11,5 @@ test_that("list_pipelines", {
 test_that("list_presets", {
   expect_error(svc$list_presets(), NA)
 })
+
+}

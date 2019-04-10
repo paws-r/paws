@@ -2,6 +2,8 @@ context("databasemigrationservice")
 
 svc <- paws::databasemigrationservice()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("describe_account_attributes", {
   expect_error(svc$describe_account_attributes(), NA)
 })
@@ -53,3 +55,5 @@ test_that("describe_replication_subnet_groups", {
 test_that("describe_replication_tasks", {
   expect_error(svc$describe_replication_tasks(), NA)
 })
+
+}

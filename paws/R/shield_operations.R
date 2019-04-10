@@ -529,9 +529,7 @@ shield_disassociate_drt_log_bucket <- function(LogBucket) {
 #' Removes the DDoS Response team\'s (DRT) access to your AWS account.
 #' 
 #' To make a `DisassociateDRTRole` request, you must be subscribed to the
-#' [Business Support
-#' plan](https://aws.amazon.com/premiumsupport/business-support/) or the
-#' [Enterprise Support
+#' Business Support plan or the [Enterprise Support
 #' plan](https://aws.amazon.com/premiumsupport/enterprise-support/).
 #' However, if you are not subscribed to one of these support plans, but
 #' had been previously and had granted the DRT access to your account, you

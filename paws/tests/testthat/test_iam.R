@@ -2,6 +2,8 @@ context("iam")
 
 svc <- paws::iam()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("list_access_keys", {
   expect_error(svc$list_access_keys(), NA)
 })
@@ -61,3 +63,5 @@ test_that("list_users", {
 test_that("list_virtual_mfa_devices", {
   expect_error(svc$list_virtual_mfa_devices(), NA)
 })
+
+}

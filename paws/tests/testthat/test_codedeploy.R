@@ -2,6 +2,8 @@ context("codedeploy")
 
 svc <- paws::codedeploy()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("list_applications", {
   expect_error(svc$list_applications(), NA)
 })
@@ -21,3 +23,5 @@ test_that("list_git_hub_account_token_names", {
 test_that("list_on_premises_instances", {
   expect_error(svc$list_on_premises_instances(), NA)
 })
+
+}

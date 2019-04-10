@@ -2,6 +2,8 @@ context("chime")
 
 svc <- paws::chime()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("list_accounts", {
   expect_error(svc$list_accounts(), NA)
 })
@@ -33,3 +35,5 @@ test_that("list_voice_connectors", {
 test_that("list_voice_connectors", {
   expect_error(svc$list_voice_connectors(MaxResults = 20), NA)
 })
+
+}

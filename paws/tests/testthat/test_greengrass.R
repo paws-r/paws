@@ -2,6 +2,8 @@ context("greengrass")
 
 svc <- paws::greengrass()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("list_bulk_deployments", {
   expect_error(svc$list_bulk_deployments(), NA)
 })
@@ -73,3 +75,5 @@ test_that("list_subscription_definitions", {
 test_that("list_subscription_definitions", {
   expect_error(svc$list_subscription_definitions(MaxResults = 20), NA)
 })
+
+}

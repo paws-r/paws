@@ -2,6 +2,8 @@ context("medialive")
 
 svc <- paws::medialive()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("list_channels", {
   expect_error(svc$list_channels(), NA)
 })
@@ -41,3 +43,5 @@ test_that("list_reservations", {
 test_that("list_reservations", {
   expect_error(svc$list_reservations(MaxResults = 20), NA)
 })
+
+}

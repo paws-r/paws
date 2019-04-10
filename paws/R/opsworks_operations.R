@@ -4584,9 +4584,8 @@ opsworks_update_rds_db_instance <- function(RdsDbInstanceArn, DbUser = NULL, DbP
 #'     AMIs](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
 #' 
 #' The default option is the stack\'s current operating system. For more
-#' information about supported operating systems, see [AWS OpsWorks Stacks
-#' Operating
-#' Systems](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
+#' information about supported operating systems, see AWS OpsWorks Stacks
+#' Operating Systems.
 #' @param HostnameTheme The stack\'s new host name theme, with spaces replaced by underscores.
 #' The theme is used to generate host names for the stack\'s instances. By
 #' default, `HostnameTheme` is set to `Layer_Dependent`, which creates host

@@ -2,6 +2,8 @@ context("backup")
 
 svc <- paws::backup()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("list_backup_jobs", {
   expect_error(svc$list_backup_jobs(), NA)
 })
@@ -49,3 +51,5 @@ test_that("list_restore_jobs", {
 test_that("list_restore_jobs", {
   expect_error(svc$list_restore_jobs(MaxResults = 20), NA)
 })
+
+}

@@ -2,6 +2,8 @@ context("elasticsearchservice")
 
 svc <- paws::elasticsearchservice()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("describe_reserved_elasticsearch_instance_offerings", {
   expect_error(svc$describe_reserved_elasticsearch_instance_offerings(), NA)
 })
@@ -29,3 +31,5 @@ test_that("list_elasticsearch_versions", {
 test_that("list_elasticsearch_versions", {
   expect_error(svc$list_elasticsearch_versions(MaxResults = 20), NA)
 })
+
+}

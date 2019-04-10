@@ -2,6 +2,8 @@ context("guardduty")
 
 svc <- paws::guardduty()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("list_detectors", {
   expect_error(svc$list_detectors(), NA)
 })
@@ -17,3 +19,5 @@ test_that("list_invitations", {
 test_that("list_invitations", {
   expect_error(svc$list_invitations(MaxResults = 20), NA)
 })
+
+}

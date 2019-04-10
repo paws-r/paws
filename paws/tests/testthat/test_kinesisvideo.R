@@ -2,6 +2,8 @@ context("kinesisvideo")
 
 svc <- paws::kinesisvideo()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("describe_stream", {
   expect_error(svc$describe_stream(), NA)
 })
@@ -17,3 +19,5 @@ test_that("list_streams", {
 test_that("list_tags_for_stream", {
   expect_error(svc$list_tags_for_stream(), NA)
 })
+
+}

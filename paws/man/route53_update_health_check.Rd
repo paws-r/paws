@@ -78,7 +78,7 @@ checks, see the following documents:
 \itemize{
 \item RFC 5735, Special Use IPv4 Addresses
 \item RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address Space
-\item \href{https://tools.ietf.org/html/rfc5156}{RFC 5156, Special-Use IPv6 Addresses}
+\item RFC 5156, Special-Use IPv6 Addresses
 }}
 
 \item{Port}{The port on the endpoint on which you want Amazon Route 53 to perform

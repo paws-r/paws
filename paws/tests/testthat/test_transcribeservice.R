@@ -2,6 +2,8 @@ context("transcribeservice")
 
 svc <- paws::transcribeservice()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("list_transcription_jobs", {
   expect_error(svc$list_transcription_jobs(), NA)
 })
@@ -17,3 +19,5 @@ test_that("list_vocabularies", {
 test_that("list_vocabularies", {
   expect_error(svc$list_vocabularies(MaxResults = 20), NA)
 })
+
+}

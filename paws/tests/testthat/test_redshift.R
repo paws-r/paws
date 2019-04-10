@@ -2,6 +2,8 @@ context("redshift")
 
 svc <- paws::redshift()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("describe_account_attributes", {
   expect_error(svc$describe_account_attributes(), NA)
 })
@@ -81,3 +83,5 @@ test_that("describe_storage", {
 test_that("describe_tags", {
   expect_error(svc$describe_tags(), NA)
 })
+
+}

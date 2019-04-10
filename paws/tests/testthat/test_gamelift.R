@@ -2,6 +2,8 @@ context("gamelift")
 
 svc <- paws::gamelift()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("describe_ec2_instance_limits", {
   expect_error(svc$describe_ec2_instance_limits(), NA)
 })
@@ -49,3 +51,5 @@ test_that("list_builds", {
 test_that("list_fleets", {
   expect_error(svc$list_fleets(), NA)
 })
+
+}

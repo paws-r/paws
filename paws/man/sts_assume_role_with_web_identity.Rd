@@ -92,9 +92,9 @@ or any OpenID Connect-compatible identity provider.
 }
 \details{
 For mobile applications, we recommend that you use Amazon Cognito. You
-can use Amazon Cognito with the \href{http://aws.amazon.com/sdkforios/}{AWS SDK for iOS} and the \href{http://aws.amazon.com/sdkforandroid/}{AWS SDK for Android} to uniquely identify a
-user and supply the user with a consistent identity throughout the
-lifetime of an application.
+can use Amazon Cognito with the \href{http://aws.amazon.com/sdkforios/}{AWS SDK for iOS} and the AWS SDK for Android to
+uniquely identify a user and supply the user with a consistent identity
+throughout the lifetime of an application.
 
 To learn more about Amazon Cognito, see \href{http://docs.aws.amazon.com/mobile/sdkforandroid/developerguide/cognito-auth.html#d0e840}{Amazon Cognito Overview}
 in the \emph{AWS SDK for Android Developer Guide} guide and \href{http://docs.aws.amazon.com/mobile/sdkforios/developerguide/cognito-auth.html#d0e664}{Amazon Cognito Overview}

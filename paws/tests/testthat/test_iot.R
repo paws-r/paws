@@ -2,6 +2,8 @@ context("iot")
 
 svc <- paws::iot()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("describe_account_audit_configuration", {
   expect_error(svc$describe_account_audit_configuration(), NA)
 })
@@ -89,3 +91,5 @@ test_that("list_things", {
 test_that("list_topic_rules", {
   expect_error(svc$list_topic_rules(), NA)
 })
+
+}

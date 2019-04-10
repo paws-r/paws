@@ -2,6 +2,8 @@ context("dax")
 
 svc <- paws::dax()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("describe_clusters", {
   expect_error(svc$describe_clusters(), NA)
 })
@@ -41,3 +43,5 @@ test_that("describe_subnet_groups", {
 test_that("describe_subnet_groups", {
   expect_error(svc$describe_subnet_groups(MaxResults = 20), NA)
 })
+
+}

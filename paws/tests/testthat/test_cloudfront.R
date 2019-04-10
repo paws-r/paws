@@ -2,6 +2,8 @@ context("cloudfront")
 
 svc <- paws::cloudfront()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("list_cloud_front_origin_access_identities", {
   expect_error(svc$list_cloud_front_origin_access_identities(), NA)
 })
@@ -25,3 +27,5 @@ test_that("list_public_keys", {
 test_that("list_streaming_distributions", {
   expect_error(svc$list_streaming_distributions(), NA)
 })
+
+}

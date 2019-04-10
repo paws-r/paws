@@ -2,6 +2,8 @@ context("inspector")
 
 svc <- paws::inspector()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("describe_cross_account_access_role", {
   expect_error(svc$describe_cross_account_access_role(), NA)
 })
@@ -29,3 +31,5 @@ test_that("list_findings", {
 test_that("list_rules_packages", {
   expect_error(svc$list_rules_packages(), NA)
 })
+
+}

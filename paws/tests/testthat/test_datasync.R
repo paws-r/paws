@@ -2,6 +2,8 @@ context("datasync")
 
 svc <- paws::datasync()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("list_agents", {
   expect_error(svc$list_agents(), NA)
 })
@@ -33,3 +35,5 @@ test_that("list_tasks", {
 test_that("list_tasks", {
   expect_error(svc$list_tasks(MaxResults = 20), NA)
 })
+
+}

@@ -2,6 +2,8 @@ context("ecs")
 
 svc <- paws::ecs()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("describe_clusters", {
   expect_error(svc$describe_clusters(), NA)
 })
@@ -21,3 +23,5 @@ test_that("list_task_definition_families", {
 test_that("list_task_definitions", {
   expect_error(svc$list_task_definitions(), NA)
 })
+
+}

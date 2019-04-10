@@ -386,10 +386,9 @@ sts_assume_role <- function(RoleArn, RoleSessionName, Policy = NULL, DurationSec
 #' way to further restrict the permissions for the resulting temporary
 #' security credentials. You cannot use the passed policy to grant
 #' permissions that are in excess of those allowed by the access policy of
-#' the role that is being assumed. For more information, [Permissions for
-#' AssumeRole, AssumeRoleWithSAML, and
-#' AssumeRoleWithWebIdentity](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_assumerole.html)
-#' in the *IAM User Guide*.
+#' the role that is being assumed. For more information, Permissions for
+#' AssumeRole, AssumeRoleWithSAML, and AssumeRoleWithWebIdentity in the
+#' *IAM User Guide*.
 #' 
 #' The format for this parameter, as described by its regex pattern, is a
 #' string of characters up to 2048 characters in length. The characters can
@@ -470,10 +469,9 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' 
 #' For mobile applications, we recommend that you use Amazon Cognito. You
 #' can use Amazon Cognito with the [AWS SDK for
-#' iOS](http://aws.amazon.com/sdkforios/) and the [AWS SDK for
-#' Android](http://aws.amazon.com/sdkforandroid/) to uniquely identify a
-#' user and supply the user with a consistent identity throughout the
-#' lifetime of an application.
+#' iOS](http://aws.amazon.com/sdkforios/) and the AWS SDK for Android to
+#' uniquely identify a user and supply the user with a consistent identity
+#' throughout the lifetime of an application.
 #' 
 #' To learn more about Amazon Cognito, see [Amazon Cognito
 #' Overview](http://docs.aws.amazon.com/mobile/sdkforandroid/developerguide/cognito-auth.html#d0e840)

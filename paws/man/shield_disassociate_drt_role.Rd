@@ -11,8 +11,7 @@ Removes the DDoS Response team's (DRT) access to your AWS account.
 }
 \details{
 To make a \code{DisassociateDRTRole} request, you must be subscribed to the
-\href{https://aws.amazon.com/premiumsupport/business-support/}{Business Support plan} or the
-\href{https://aws.amazon.com/premiumsupport/enterprise-support/}{Enterprise Support plan}.
+Business Support plan or the \href{https://aws.amazon.com/premiumsupport/enterprise-support/}{Enterprise Support plan}.
 However, if you are not subscribed to one of these support plans, but
 had been previously and had granted the DRT access to your account, you
 can submit a \code{DisassociateDRTRole} request to remove this access.

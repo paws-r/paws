@@ -2,6 +2,8 @@ context("sfn")
 
 svc <- paws::sfn()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("list_activities", {
   expect_error(svc$list_activities(), NA)
 })
@@ -9,3 +11,5 @@ test_that("list_activities", {
 test_that("list_state_machines", {
   expect_error(svc$list_state_machines(), NA)
 })
+
+}

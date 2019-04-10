@@ -2,6 +2,8 @@ context("storagegateway")
 
 svc <- paws::storagegateway()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("describe_tape_archives", {
   expect_error(svc$describe_tape_archives(), NA)
 })
@@ -21,3 +23,5 @@ test_that("list_tapes", {
 test_that("list_volumes", {
   expect_error(svc$list_volumes(), NA)
 })
+
+}

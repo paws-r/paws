@@ -2,6 +2,8 @@ context("servicediscovery")
 
 svc <- paws::servicediscovery()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("list_namespaces", {
   expect_error(svc$list_namespaces(), NA)
 })
@@ -25,3 +27,5 @@ test_that("list_services", {
 test_that("list_services", {
   expect_error(svc$list_services(MaxResults = 20), NA)
 })
+
+}

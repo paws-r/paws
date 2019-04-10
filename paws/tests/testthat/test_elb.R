@@ -2,6 +2,8 @@ context("elb")
 
 svc <- paws::elb()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("describe_account_limits", {
   expect_error(svc$describe_account_limits(), NA)
 })
@@ -17,3 +19,5 @@ test_that("describe_load_balancer_policy_types", {
 test_that("describe_load_balancers", {
   expect_error(svc$describe_load_balancers(), NA)
 })
+
+}

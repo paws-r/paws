@@ -2,6 +2,8 @@ context("athena")
 
 svc <- paws::athena()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("list_named_queries", {
   expect_error(svc$list_named_queries(), NA)
 })
@@ -25,3 +27,5 @@ test_that("list_work_groups", {
 test_that("list_work_groups", {
   expect_error(svc$list_work_groups(MaxResults = 20), NA)
 })
+
+}

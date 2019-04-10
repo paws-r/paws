@@ -2,6 +2,8 @@ context("route53")
 
 svc <- paws::route53()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("list_geo_locations", {
   expect_error(svc$list_geo_locations(), NA)
 })
@@ -37,3 +39,5 @@ test_that("list_traffic_policies", {
 test_that("list_traffic_policy_instances", {
   expect_error(svc$list_traffic_policy_instances(), NA)
 })
+
+}

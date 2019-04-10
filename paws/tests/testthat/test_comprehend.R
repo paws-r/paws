@@ -2,6 +2,8 @@ context("comprehend")
 
 svc <- paws::comprehend()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("list_document_classification_jobs", {
   expect_error(svc$list_document_classification_jobs(), NA)
 })
@@ -65,3 +67,5 @@ test_that("list_topics_detection_jobs", {
 test_that("list_topics_detection_jobs", {
   expect_error(svc$list_topics_detection_jobs(MaxResults = 20), NA)
 })
+
+}

@@ -2,6 +2,8 @@ context("opsworks")
 
 svc <- paws::opsworks()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("describe_my_user_profile", {
   expect_error(svc$describe_my_user_profile(), NA)
 })
@@ -21,3 +23,5 @@ test_that("describe_stacks", {
 test_that("describe_user_profiles", {
   expect_error(svc$describe_user_profiles(), NA)
 })
+
+}

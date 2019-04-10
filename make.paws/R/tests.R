@@ -8,7 +8,11 @@ test_file_template <- template(
 
   svc <- paws::${service}()
 
+  if (Sys.getenv("NOT_CRAN") == "true") {
+
   ${tests}
+
+  }
   `
 )
 

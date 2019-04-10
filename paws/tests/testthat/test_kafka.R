@@ -2,6 +2,8 @@ context("kafka")
 
 svc <- paws::kafka()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("list_clusters", {
   expect_error(svc$list_clusters(), NA)
 })
@@ -9,3 +11,5 @@ test_that("list_clusters", {
 test_that("list_clusters", {
   expect_error(svc$list_clusters(MaxResults = 20), NA)
 })
+
+}

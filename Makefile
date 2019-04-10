@@ -19,8 +19,9 @@ help:
 	@echo "  install            build and install the AWS SDK"
 	@echo "  common             build and install common functions"
 	@echo "  codegen            build and install the code generator"
-	@echo "  unit               run unit tests (for common and codegen)"
-	@echo "  integration        run integration tests (for AWS SDK)"
+	@echo "  unit               run unit tests for common and codegen"
+	@echo "  integration        run integration tests for AWS SDK"
+	@echo "  check              run R CMD check for the AWS SDK"
 	@echo "  deps               get project dependencies"
 	@echo "  update-deps        update project dependencies"
 
@@ -38,6 +39,10 @@ unit: test-common test-codegen
 integration:
 	@echo "run integration tests"
 	@Rscript -e "options('testthat.summary.max_reports' = 1e6); devtools::test('${OUT_DIR}', reporter = 'summary')"
+
+check:
+	@echo "run R CMD check"
+	@Rscript -e "devtools::check('${OUT_DIR}')"
 
 common:
 	@echo "build and install common functions"

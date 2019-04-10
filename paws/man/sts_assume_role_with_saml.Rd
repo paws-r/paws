@@ -28,8 +28,9 @@ is being assumed, \emph{\strong{and}} the policy that you pass. This gives you a
 way to further restrict the permissions for the resulting temporary
 security credentials. You cannot use the passed policy to grant
 permissions that are in excess of those allowed by the access policy of
-the role that is being assumed. For more information, \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_assumerole.html}{Permissions for AssumeRole, AssumeRoleWithSAML, and AssumeRoleWithWebIdentity}
-in the \emph{IAM User Guide}.
+the role that is being assumed. For more information, Permissions for
+AssumeRole, AssumeRoleWithSAML, and AssumeRoleWithWebIdentity in the
+\emph{IAM User Guide}.
 
 The format for this parameter, as described by its regex pattern, is a
 string of characters up to 2048 characters in length. The characters can

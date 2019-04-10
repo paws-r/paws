@@ -2,6 +2,8 @@ context("iotanalytics")
 
 svc <- paws::iotanalytics()
 
+if (Sys.getenv("NOT_CRAN") == "true") {
+
 test_that("list_channels", {
   expect_error(svc$list_channels(), NA)
 })
@@ -17,3 +19,5 @@ test_that("list_datastores", {
 test_that("list_pipelines", {
   expect_error(svc$list_pipelines(), NA)
 })
+
+}
