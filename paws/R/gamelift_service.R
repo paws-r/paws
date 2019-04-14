@@ -59,15 +59,13 @@ NULL
 #'     Guide](https://docs.aws.amazon.com/gamelift/latest/developerguide/)
 #'     \\-- Read about Amazon GameLift features and how to use them.
 #' 
-#' -   Tutorials \\-- Get started fast with walkthroughs and sample
-#'     projects.
+#' -   [Tutorials](https://gamedev.amazon.com/forums/tutorials) \\-- Get
+#'     started fast with walkthroughs and sample projects.
 #' 
 #' -   [GameDev Blog](https://gamedev.amazon.com/blogs/gamedev/) \\-- Stay
 #'     up to date with new features and techniques.
 #' 
-#' -   [GameDev
-#'     Forums](https://gamedev.amazon.com/forums/spaces/123/gamelift-discussion.html)
-#'     \\-- Connect with the GameDev community.
+#' -   GameDev Forums \\-- Connect with the GameDev community.
 #' 
 #' -   [Release
 #'     notes](https://aws.amazon.com/releasenotes/Amazon-GameLift/) and

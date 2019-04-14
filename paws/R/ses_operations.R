@@ -2479,9 +2479,9 @@ ses_send_bounce <- function(OriginalMessageId, BounceSender, Explanation = NULL,
 #' Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 #' 
 #' Amazon SES does not support the SMTPUTF8 extension, as described in
-#' RFC6531. For this reason, the *local part* of a source email address
-#' (the part of the email address that precedes the @ sign) may only
-#' contain [7-bit ASCII
+#' [RFC6531](https://tools.ietf.org/html/rfc6531). For this reason, the
+#' *local part* of a source email address (the part of the email address
+#' that precedes the @ sign) may only contain [7-bit ASCII
 #' characters](https://en.wikipedia.org/wiki/Email_address#Local-part). If
 #' the *domain part* of an address (the part after the @ sign) contains
 #' non-ASCII characters, they must be encoded using Punycode, as described

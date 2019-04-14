@@ -73,8 +73,9 @@ NULL
 #' 
 #' We welcome your feedback. Send your comments to
 #' <feedback-awsorganizations@amazon.com> or post your feedback and
-#' questions in the AWS Organizations support forum. For more information
-#' about the AWS support forums, see [Forums
+#' questions in the [AWS Organizations support
+#' forum](http://forums.aws.amazon.com/forum.jspa?forumID=219). For more
+#' information about the AWS support forums, see [Forums
 #' Help](http://forums.aws.amazon.com/help.jspa).
 #' 
 #' **Endpoint to Call When Using the CLI or the AWS API**

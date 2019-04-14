@@ -52,12 +52,11 @@ either the AWS CLI or programmatically. See \href{https://docs.aws.amazon.com/ga
 \itemize{
 \item \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/}{Developer Guide}
 \-- Read about Amazon GameLift features and how to use them.
-\item Tutorials \-- Get started fast with walkthroughs and sample
-projects.
+\item \href{https://gamedev.amazon.com/forums/tutorials}{Tutorials} \-- Get
+started fast with walkthroughs and sample projects.
 \item \href{https://gamedev.amazon.com/blogs/gamedev/}{GameDev Blog} \-- Stay
 up to date with new features and techniques.
-\item \href{https://gamedev.amazon.com/forums/spaces/123/gamelift-discussion.html}{GameDev Forums}
-\-- Connect with the GameDev community.
+\item GameDev Forums \-- Connect with the GameDev community.
 \item \href{https://aws.amazon.com/releasenotes/Amazon-GameLift/}{Release notes} and
 \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/doc-history.html}{document history}
 \-- Stay current with updates to the Amazon GameLift service, SDKs,

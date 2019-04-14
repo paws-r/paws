@@ -161,7 +161,7 @@ the Advanced Video Coding (AVC) for H.264 format (MPEG-4
 specification ISO/IEC 14496-15). For information about adapting
 stream data to a given format, see \href{http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html}{NAL Adaptation Flags}.
 \item The audio track (if present) of each fragment must contain codec
-private data in the AAC format (AAC specification ISO/IEC 13818-7).
+private data in the AAC format (\href{https://www.iso.org/standard/43345.html}{AAC specification ISO/IEC 13818-7}).
 }
 
 Kinesis Video Streams HLS sessions contain fragments in the fragmented

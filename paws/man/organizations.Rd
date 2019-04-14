@@ -71,8 +71,8 @@ release, a single organization will support multiple roots.
 
 We welcome your feedback. Send your comments to
 \href{mailto:feedback-awsorganizations@amazon.com}{feedback-awsorganizations@amazon.com} or post your feedback and
-questions in the AWS Organizations support forum. For more information
-about the AWS support forums, see \href{http://forums.aws.amazon.com/help.jspa}{Forums Help}.
+questions in the \href{http://forums.aws.amazon.com/forum.jspa?forumID=219}{AWS Organizations support forum}. For more
+information about the AWS support forums, see \href{http://forums.aws.amazon.com/help.jspa}{Forums Help}.
 
 \strong{Endpoint to Call When Using the CLI or the AWS API}
 

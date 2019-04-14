@@ -10,7 +10,7 @@ iam_list_attached_user_policies(UserName, PathPrefix, Marker, MaxItems)
 \item{UserName}{[required] The name (friendly name, not ARN) of the user to list attached policies
 for.
 
-This parameter allows (through its regex pattern) a string of characters
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \_+=,.@-}
 
