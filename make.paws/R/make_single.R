@@ -3,6 +3,10 @@ NULL
 
 #' Make all single-service packages
 #'
+#' @param in_dir Directory containing API files.
+#' @param sdk_dir Directory containing the output of `make_sdk`.
+#' @param out_dir Directory of the R package.
+#'
 #' @export
 make_single <- function(in_dir, sdk_dir, out_dir) {
   apis <- list_apis(file.path(in_dir, "apis"))
