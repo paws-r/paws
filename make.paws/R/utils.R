@@ -43,3 +43,17 @@ quietly <- function(expr) {
     )
   )
 }
+
+# Returns whether a URL points to a page that still exists -- not 404.
+url_ok <- function(url, tries = 3) {
+  try <- 0
+  while (try < tries) {
+    resp <- tryCatch(
+      httr::status_code(httr::HEAD(url, httr::timeout(1))),
+      error = function(e) NA
+    )
+    if (!is.na(resp) && resp != 404) return(TRUE)
+    try <- try + 1
+  }
+  FALSE
+}
