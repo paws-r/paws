@@ -275,13 +275,8 @@ clean_html_a <- function(node) {
     xml2::xml_attr(node, "href") <- url
   }
 
-  # TODO: This will randomly return that a link is bad.
-  status_code <- tryCatch(
-    httr::status_code(httr::HEAD(url, httr::timeout(1))),
-    error = function(e) NA
-  )
   # Delete URLs when the page is unreachable or explicitly missing.
-  if (is.na(status_code) || status_code == 404) {
+  if (!url_ok(url)) {
     xml2::xml_attr(node, "href") <- NULL
   }
 }
