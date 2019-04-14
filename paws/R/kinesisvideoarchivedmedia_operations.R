@@ -27,7 +27,8 @@ NULL
 #'     Flags](http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html).
 #' 
 #' -   The audio track (if present) of each fragment must contain codec
-#'     private data in the AAC format (AAC specification ISO/IEC 13818-7).
+#'     private data in the AAC format ([AAC specification ISO/IEC
+#'     13818-7](https://www.iso.org/standard/43345.html)).
 #' 
 #' Kinesis Video Streams HLS sessions contain fragments in the fragmented
 #' MPEG-4 form (also called fMP4 or CMAF), rather than the MPEG-2 form
