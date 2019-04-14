@@ -2,14 +2,16 @@ language: r
 
 cache: packages
 
+apt_packages:
+  - r-cran-devtools
+
 r_github_packages:
   - r-lib/covr
-  - r-lib/remotes
 
 install:
-  - R -e "remotes::install_deps('paws.common', dep = T)"
-  - R -e "remotes::install_deps('make.paws', dep = T)"
-  - R -e "remotes::install('paws.common')"
+  - R -e "devtools::install_deps('paws.common', dep = T)"
+  - R -e "devtools::install_deps('make.paws', dep = T)"
+  - R -e "devtools::install('paws.common')"
 
 script:
   - R CMD build paws.common && R CMD check paws.common*.tar.gz
