@@ -19,7 +19,7 @@ make_cran <- function(sdk_dir, out_dir) {
     description <- category$description
 
     if (is.null(name) || is.null(title) || is.null(description)) {
-      stop("missing name, services, title, or description")
+      stop("missing name, title, or description")
     }
 
     if (length(services) == 0) next
