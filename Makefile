@@ -24,7 +24,7 @@ help:
 	@echo "  deps               get project dependencies"
 	@echo "  update-deps        update project dependencies"
 
-build: build-full build-single build-cran
+build: build-full build-cran
 
 install: build
 	@echo "install the AWS SDK package"
@@ -34,11 +34,9 @@ build-full: deps codegen
 	@echo "build the AWS SDK package"
 	@Rscript -e "library(make.paws); make_sdk('${IN_DIR}', '${OUT_DIR}')"
 
-build-single: build-full
-	@echo "build single-service packages"
-	@Rscript -e "library(make.paws); make_single('${IN_DIR}', '${OUT_DIR}', '${SINGLE_DIR}')"
-
-build-cran: build-single
+build-cran: build-full
+	@echo "build CRAN packages"
+	@Rscript -e "library(make.paws); make_cran('${IN_DIR}', '${OUT_DIR}', '${SINGLE_DIR}')"
 
 unit: test-common test-codegen
 

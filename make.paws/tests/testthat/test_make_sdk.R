@@ -95,11 +95,11 @@ test_that("make_sdk", {
   expect_true(all(files %in% list.files(file.path(path_out, "R"))))
 })
 
-test_that("make_single", {
-  path_single <- file.path(path, "single")
-  dir.create(path_single)
-  expect_error(make_single(path_in, path_out, path_single), NA)
-  expect_true(file.exists(file.path(path_single, "foo")))
+test_that("make_cran", {
+  path_cran <- file.path(path, "cran")
+  dir.create(path_cran)
+  expect_error(make_cran(path_out, path_cran), NA)
+  expect_true(file.exists(file.path(path_cran, "compute")))
 })
 
 test_that("list_apis", {
