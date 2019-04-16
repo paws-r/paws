@@ -1,0 +1,61 @@
+Package: paws.media.services
+Title: Amazon Web Services Media Services APIs
+Version: 0.1.0
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut",
+             email = "adam.banker39@gmail.com"),
+      person(given = "Amazon.com, Inc.",
+             role = "cph"))
+Description: Interface to Amazon Web Services' media services
+    APIs, including 'Kinesis' video stream capture and processing, format
+    conversion, and more <https://aws.amazon.com/media-services/>.
+License: Apache License (>= 2.0)
+Imports: 
+    paws.common
+Suggests: 
+    testthat
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
+    "collate"))
+RoxygenNote: 6.1.1
+Collate: 
+    'elastictranscoder_service.R'
+    'elastictranscoder_interfaces.R'
+    'elastictranscoder_operations.R'
+    'kinesisvideo_service.R'
+    'kinesisvideo_interfaces.R'
+    'kinesisvideo_operations.R'
+    'kinesisvideoarchivedmedia_service.R'
+    'kinesisvideoarchivedmedia_interfaces.R'
+    'kinesisvideoarchivedmedia_operations.R'
+    'kinesisvideomedia_service.R'
+    'kinesisvideomedia_interfaces.R'
+    'kinesisvideomedia_operations.R'
+    'mediaconnect_service.R'
+    'mediaconnect_interfaces.R'
+    'mediaconnect_operations.R'
+    'mediaconvert_service.R'
+    'mediaconvert_interfaces.R'
+    'mediaconvert_operations.R'
+    'medialive_service.R'
+    'medialive_interfaces.R'
+    'medialive_operations.R'
+    'mediapackage_service.R'
+    'mediapackage_interfaces.R'
+    'mediapackage_operations.R'
+    'mediastore_service.R'
+    'mediastore_interfaces.R'
+    'mediastore_operations.R'
+    'mediastoredata_service.R'
+    'mediastoredata_interfaces.R'
+    'mediastoredata_operations.R'
+    'mediatailor_service.R'
+    'mediatailor_interfaces.R'
+    'mediatailor_operations.R'

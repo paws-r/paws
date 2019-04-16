@@ -1,0 +1,52 @@
+Package: paws.internet.of.things
+Title: Amazon Web Services Internet of Things APIs
+Version: 0.1.0
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut",
+             email = "adam.banker39@gmail.com"),
+      person(given = "Amazon.com, Inc.",
+             role = "cph"))
+Description: Interface to Amazon Web Services' internet of
+    things (IoT) APIs, including data collection, management, and analysis
+    for IoT devices. <https://aws.amazon.com/iot/>.
+License: Apache License (>= 2.0)
+Imports: 
+    paws.common
+Suggests: 
+    testthat
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
+    "collate"))
+RoxygenNote: 6.1.1
+Collate: 
+    'greengrass_service.R'
+    'greengrass_interfaces.R'
+    'greengrass_operations.R'
+    'iot1clickdevicesservice_service.R'
+    'iot1clickdevicesservice_interfaces.R'
+    'iot1clickdevicesservice_operations.R'
+    'iot1clickprojects_service.R'
+    'iot1clickprojects_interfaces.R'
+    'iot1clickprojects_operations.R'
+    'iot_service.R'
+    'iot_interfaces.R'
+    'iot_operations.R'
+    'iotanalytics_service.R'
+    'iotanalytics_interfaces.R'
+    'iotanalytics_operations.R'
+    'iotdataplane_service.R'
+    'iotdataplane_interfaces.R'
+    'iotdataplane_operations.R'
+    'iotjobsdataplane_service.R'
+    'iotjobsdataplane_interfaces.R'
+    'iotjobsdataplane_operations.R'
+    'signer_service.R'
+    'signer_interfaces.R'
+    'signer_operations.R'

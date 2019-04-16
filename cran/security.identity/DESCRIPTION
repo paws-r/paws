@@ -1,0 +1,95 @@
+Package: paws.security.identity
+Title: Amazon Web Services Security, Identity, & Compliance APIs
+Version: 0.1.0
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut",
+             email = "adam.banker39@gmail.com"),
+      person(given = "Amazon.com, Inc.",
+             role = "cph"))
+Description: Interface to Amazon Web Services' security,
+    identity, and compliance APIs, including 'Identity & Access
+    Management' (IAM) service for managing access to AWS services and
+    resources, and more <https://aws.amazon.com/>.
+License: Apache License (>= 2.0)
+Imports: 
+    paws.common
+Suggests: 
+    testthat
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
+    "collate"))
+RoxygenNote: 6.1.1
+Collate: 
+    'acm_service.R'
+    'acm_interfaces.R'
+    'acm_operations.R'
+    'acmpca_service.R'
+    'acmpca_interfaces.R'
+    'acmpca_operations.R'
+    'clouddirectory_service.R'
+    'clouddirectory_interfaces.R'
+    'clouddirectory_operations.R'
+    'cloudhsm_service.R'
+    'cloudhsm_interfaces.R'
+    'cloudhsm_operations.R'
+    'cloudhsmv2_service.R'
+    'cloudhsmv2_interfaces.R'
+    'cloudhsmv2_operations.R'
+    'cognitoidentity_service.R'
+    'cognitoidentity_interfaces.R'
+    'cognitoidentity_operations.R'
+    'cognitoidentityprovider_service.R'
+    'cognitoidentityprovider_interfaces.R'
+    'cognitoidentityprovider_operations.R'
+    'cognitosync_service.R'
+    'cognitosync_interfaces.R'
+    'cognitosync_operations.R'
+    'directoryservice_service.R'
+    'directoryservice_interfaces.R'
+    'directoryservice_operations.R'
+    'fms_service.R'
+    'fms_interfaces.R'
+    'fms_operations.R'
+    'guardduty_service.R'
+    'guardduty_interfaces.R'
+    'guardduty_operations.R'
+    'iam_service.R'
+    'iam_interfaces.R'
+    'iam_operations.R'
+    'inspector_service.R'
+    'inspector_interfaces.R'
+    'inspector_operations.R'
+    'kms_service.R'
+    'kms_interfaces.R'
+    'kms_operations.R'
+    'macie_service.R'
+    'macie_interfaces.R'
+    'macie_operations.R'
+    'ram_service.R'
+    'ram_interfaces.R'
+    'ram_operations.R'
+    'secretsmanager_service.R'
+    'secretsmanager_interfaces.R'
+    'secretsmanager_operations.R'
+    'securityhub_service.R'
+    'securityhub_interfaces.R'
+    'securityhub_operations.R'
+    'shield_service.R'
+    'shield_interfaces.R'
+    'shield_operations.R'
+    'sts_service.R'
+    'sts_interfaces.R'
+    'sts_operations.R'
+    'waf_service.R'
+    'waf_interfaces.R'
+    'waf_operations.R'
+    'wafregional_service.R'
+    'wafregional_interfaces.R'
+    'wafregional_operations.R'

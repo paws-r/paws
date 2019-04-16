@@ -1,0 +1,49 @@
+Package: paws.cost.management
+Title: Amazon Web Services Cost Management APIs
+Version: 0.1.0
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut",
+             email = "adam.banker39@gmail.com"),
+      person(given = "Amazon.com, Inc.",
+             role = "cph"))
+Description: Interface to Amazon Web Services' cost management
+    APIs, including cost and usage reports, budgets, pricing, and more.
+    <https://aws.amazon.com/>.
+License: Apache License (>= 2.0)
+Imports: 
+    paws.common
+Suggests: 
+    testthat
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
+    "collate"))
+RoxygenNote: 6.1.1
+Collate: 
+    'budgets_service.R'
+    'budgets_interfaces.R'
+    'budgets_operations.R'
+    'costandusagereportservice_service.R'
+    'costandusagereportservice_interfaces.R'
+    'costandusagereportservice_operations.R'
+    'costexplorer_service.R'
+    'costexplorer_interfaces.R'
+    'costexplorer_operations.R'
+    'marketplacecommerceanalytics_service.R'
+    'marketplacecommerceanalytics_interfaces.R'
+    'marketplacecommerceanalytics_operations.R'
+    'marketplaceentitlementservice_service.R'
+    'marketplaceentitlementservice_interfaces.R'
+    'marketplaceentitlementservice_operations.R'
+    'marketplacemetering_service.R'
+    'marketplacemetering_interfaces.R'
+    'marketplacemetering_operations.R'
+    'pricing_service.R'
+    'pricing_interfaces.R'
+    'pricing_operations.R'

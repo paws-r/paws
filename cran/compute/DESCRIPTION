@@ -1,0 +1,55 @@
+Package: paws.compute
+Title: Amazon Web Services Compute APIs
+Version: 0.1.0
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut",
+             email = "adam.banker39@gmail.com"),
+      person(given = "Amazon.com, Inc.",
+             role = "cph"))
+Description: Interface to Amazon Web Services' compute APIs,
+    including 'Elastic Compute Cloud' (EC2), 'Lambda' serverless compute,
+    containers, batch processing, and more <https://aws.amazon.com/>.
+License: Apache License (>= 2.0)
+Imports: 
+    paws.common
+Suggests: 
+    testthat
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
+    "collate"))
+RoxygenNote: 6.1.1
+Collate: 
+    'batch_service.R'
+    'batch_interfaces.R'
+    'batch_operations.R'
+    'ec2_service.R'
+    'ec2_interfaces.R'
+    'ec2_operations.R'
+    'ecr_service.R'
+    'ecr_interfaces.R'
+    'ecr_operations.R'
+    'ecs_service.R'
+    'ecs_interfaces.R'
+    'ecs_operations.R'
+    'eks_service.R'
+    'eks_interfaces.R'
+    'eks_operations.R'
+    'elasticbeanstalk_service.R'
+    'elasticbeanstalk_interfaces.R'
+    'elasticbeanstalk_operations.R'
+    'lambda_service.R'
+    'lambda_interfaces.R'
+    'lambda_operations.R'
+    'lightsail_service.R'
+    'lightsail_interfaces.R'
+    'lightsail_operations.R'
+    'serverlessapplicationrepository_service.R'
+    'serverlessapplicationrepository_interfaces.R'
+    'serverlessapplicationrepository_operations.R'

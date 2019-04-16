@@ -1,0 +1,68 @@
+Package: paws.networking
+Title: Amazon Web Services Networking & Content Delivery APIs
+Version: 0.1.0
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut",
+             email = "adam.banker39@gmail.com"),
+      person(given = "Amazon.com, Inc.",
+             role = "cph"))
+Description: Interface to Amazon Web Services' networking and
+    content delivery APIs, including 'Route 53' DNS service, 'CloudFront'
+    content delivery, API endpoints, load balancing, and more
+    <https://aws.amazon.com/>.
+License: Apache License (>= 2.0)
+Imports: 
+    paws.common
+Suggests: 
+    testthat
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
+    "collate"))
+RoxygenNote: 6.1.1
+Collate: 
+    'apigateway_service.R'
+    'apigateway_interfaces.R'
+    'apigateway_operations.R'
+    'apigatewaymanagementapi_service.R'
+    'apigatewaymanagementapi_interfaces.R'
+    'apigatewaymanagementapi_operations.R'
+    'apigatewayv2_service.R'
+    'apigatewayv2_interfaces.R'
+    'apigatewayv2_operations.R'
+    'appmesh_service.R'
+    'appmesh_interfaces.R'
+    'appmesh_operations.R'
+    'cloudfront_service.R'
+    'cloudfront_interfaces.R'
+    'cloudfront_operations.R'
+    'directconnect_service.R'
+    'directconnect_interfaces.R'
+    'directconnect_operations.R'
+    'elb_service.R'
+    'elb_interfaces.R'
+    'elb_operations.R'
+    'elbv2_service.R'
+    'elbv2_interfaces.R'
+    'elbv2_operations.R'
+    'globalaccelerator_service.R'
+    'globalaccelerator_interfaces.R'
+    'globalaccelerator_operations.R'
+    'route53_service.R'
+    'route53_interfaces.R'
+    'route53_operations.R'
+    'route53domains_service.R'
+    'route53domains_interfaces.R'
+    'route53domains_operations.R'
+    'route53resolver_service.R'
+    'route53resolver_interfaces.R'
+    'route53resolver_operations.R'
+    'servicediscovery_service.R'
+    'servicediscovery_interfaces.R'
+    'servicediscovery_operations.R'

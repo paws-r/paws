@@ -1,0 +1,43 @@
+Package: paws.customer.engagement
+Title: Amazon Web Services Customer Engagement APIs
+Version: 0.1.0
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut",
+             email = "adam.banker39@gmail.com"),
+      person(given = "Amazon.com, Inc.",
+             role = "cph"))
+Description: Interface to Amazon Web Services' customer
+    engagement APIs, including 'Simple Email Service', 'Connect' contact
+    center service, and more. <https://aws.amazon.com/>.
+License: Apache License (>= 2.0)
+Imports: 
+    paws.common
+Suggests: 
+    testthat
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
+    "collate"))
+RoxygenNote: 6.1.1
+Collate: 
+    'connect_service.R'
+    'connect_interfaces.R'
+    'connect_operations.R'
+    'pinpoint_service.R'
+    'pinpoint_interfaces.R'
+    'pinpoint_operations.R'
+    'pinpointemail_service.R'
+    'pinpointemail_interfaces.R'
+    'pinpointemail_operations.R'
+    'pinpointsmsvoice_service.R'
+    'pinpointsmsvoice_interfaces.R'
+    'pinpointsmsvoice_operations.R'
+    'ses_service.R'
+    'ses_interfaces.R'
+    'ses_operations.R'
