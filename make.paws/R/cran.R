@@ -53,7 +53,9 @@ write_skeleton_category <- function(path) {
   for (dir in c("man", "R", "tests/testthat")) {
     dir.create(file.path(path, dir), recursive = TRUE)
   }
-  file.copy(system_file(file.path("templates", ".Rbuildignore")), ".")
+  package <- methods::getPackageName()
+  rbuildignore <- system_file("templates/.Rbuildignore", package = package)
+  file.copy(rbuildignore, path)
 }
 
 # Write the DESCRIPTION file for a category package.
